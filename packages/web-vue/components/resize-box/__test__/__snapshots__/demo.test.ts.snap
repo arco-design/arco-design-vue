@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<resize-box> demo: render [basic] correctly 1`] = `
+"<div>
+  <div class=\\"arco-resizebox\\" style=\\"width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;\\">
+    <div class=\\"arco-typography\\">We are building the future of content discovery and creation.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-divider arco-divider-horizontal\\">
+      <!---->
+    </div>
+    <div class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
+    <div class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-vertical arco-resizebox-direction-right\\">
+      <!-- @slot 自定义内容 -->
+      <div class=\\"arco-resizebox-trigger-icon-wrapper\\">
+        <!-- @slot 自定义 icon --><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical arco-resizebox-trigger-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          <path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path>
+        </svg>
+      </div>
+    </div>
+    <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-horizontal arco-resizebox-direction-bottom\\">
+      <!-- @slot 自定义内容 -->
+      <div class=\\"arco-resizebox-trigger-icon-wrapper\\">
+        <!-- @slot 自定义 icon --><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot arco-resizebox-trigger-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M40 17v2h-2v-2h2ZM25 17v2h-2v-2h2ZM10 17v2H8v-2h2ZM40 29v2h-2v-2h2ZM25 29v2h-2v-2h2ZM10 29v2H8v-2h2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          <path d=\\"M40 17v2h-2v-2h2ZM25 17v2h-2v-2h2ZM10 17v2H8v-2h2ZM40 29v2h-2v-2h2ZM25 29v2h-2v-2h2ZM10 29v2H8v-2h2Z\\"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<resize-box> demo: render [controlled] correctly 1`] = `
+"<div>
+  <div class=\\"arco-resizebox\\" style=\\"min-width: 100px; max-width: 100%; text-align: center; width: 500px; height: 200px;\\">
+    <div class=\\"arco-typography\\">We are building the future of content discovery and creation.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-divider arco-divider-horizontal\\">
+      <!---->
+    </div>
+    <div class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
+    <div class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-vertical arco-resizebox-direction-right\\">
+      <!-- @slot 自定义内容 -->
+      <div class=\\"arco-resizebox-trigger-icon-wrapper\\">
+        <!-- @slot 自定义 icon --><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical arco-resizebox-trigger-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          <path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path>
+        </svg>
+      </div>
+    </div>
+    <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-horizontal arco-resizebox-direction-bottom\\">
+      <!-- @slot 自定义内容 -->
+      <div class=\\"arco-resizebox-trigger-icon-wrapper\\">
+        <!-- @slot 自定义 icon --><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot arco-resizebox-trigger-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M40 17v2h-2v-2h2ZM25 17v2h-2v-2h2ZM10 17v2H8v-2h2ZM40 29v2h-2v-2h2ZM25 29v2h-2v-2h2ZM10 29v2H8v-2h2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          <path d=\\"M40 17v2h-2v-2h2ZM25 17v2h-2v-2h2ZM10 17v2H8v-2h2ZM40 29v2h-2v-2h2ZM25 29v2h-2v-2h2ZM10 29v2H8v-2h2Z\\"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<resize-box> demo: render [custom-triggers] correctly 1`] = `
+"<div class=\\"arco-resizebox\\" style=\\"width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;\\">
+  <div class=\\"arco-typography\\">We are building the future of content discovery and creation.
+    <!---->
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"arco-divider arco-divider-horizontal\\">
+    <!---->
+  </div>
+  <div class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
+    <!---->
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
+  <div class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
+    <!---->
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-vertical arco-resizebox-direction-right\\">
+    <!-- @slot 自定义内容 -->
+    <div class=\\"resizebox-demo resizebox-demo-vertical\\">
+      <div class=\\"resizebox-demo-line\\"></div>
+    </div>
+  </div>
+  <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-horizontal arco-resizebox-direction-bottom\\">
+    <!-- @slot 自定义内容 -->
+    <div class=\\"resizebox-demo resizebox-demo-horizontal\\">
+      <div class=\\"resizebox-demo-line\\"></div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<resize-box> demo: render [layout] correctly 1`] = `
+"<div class=\\"layout-demo\\">
+  <section class=\\"arco-layout\\">
+    <header class=\\"arco-layout-header\\">Header</header>
+    <section class=\\"arco-layout\\">
+      <div class=\\"arco-resizebox arco-layout-sider arco-layout-sider-light\\" style=\\"width: 200px;\\">
+        <div class=\\"arco-layout-sider-children\\"> Sider </div>
+        <!--v-if-->
+        <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-vertical arco-resizebox-direction-right\\">
+          <!-- @slot 自定义内容 -->
+          <div class=\\"arco-resizebox-trigger-icon-wrapper\\">
+            <!-- @slot 自定义 icon --><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical arco-resizebox-trigger-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+              <path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <main class=\\"arco-layout-content\\">Content</main>
+    </section>
+    <footer class=\\"arco-layout-footer\\">Footer</footer>
+  </section>
+</div>"
+`;

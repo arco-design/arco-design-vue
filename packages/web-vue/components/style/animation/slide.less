@@ -1,0 +1,158 @@
+@import '../theme/index.less';
+
+// used by cascader select treeselect ... like picker
+.slide-dynamic-origin-enter-from,
+.slide-dynamic-origin-appear-from {
+  transform: scaleY(0.9) translateZ(0);
+  transform-origin: 0 0;
+  opacity: 0;
+}
+
+.slide-dynamic-origin-enter-to,
+.slide-dynamic-origin-appear-to {
+  transform: scaleY(1) translateZ(0);
+  transform-origin: 0 0;
+  opacity: 1;
+}
+
+.slide-dynamic-origin-enter-active,
+.slide-dynamic-origin-appear-active {
+  transition: transform @transition-duration-2
+      @transition-timing-function-standard,
+    opacity @transition-duration-2 @transition-timing-function-standard;
+}
+
+.slide-dynamic-origin-leave-from {
+  transform: scaleY(1) translateZ(0);
+  transform-origin: 0 0;
+  opacity: 1;
+}
+
+.slide-dynamic-origin-leave-to {
+  transform: scaleY(0.9) translateZ(0);
+  transform-origin: 0 0;
+  opacity: 0;
+}
+
+.slide-dynamic-origin-leave-active {
+  transition: transform @transition-duration-2
+      @transition-timing-function-standard,
+    opacity @transition-duration-2 @transition-timing-function-standard;
+}
+
+// used by drawer
+.slide-left-enter-from,
+.slide-left-appear-from {
+  transform: translateX(-100%);
+}
+
+.slide-left-enter-to,
+.slide-left-appear-to {
+  transform: translateX(0);
+}
+
+.slide-left-enter-active,
+.slide-left-appear-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.slide-left-leave-from {
+  transform: translateX(0);
+}
+
+.slide-left-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-left-leave-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.slide-right-enter-from,
+.slide-right-appear-from {
+  transform: translateX(100%);
+}
+
+.slide-right-enter-to,
+.slide-right-appear-to {
+  transform: translateX(0);
+}
+
+.slide-right-enter-active,
+.slide-right-appear-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.slide-right-leave-from {
+  transform: translateX(0);
+}
+
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-right-leave-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.slide-top-enter-from,
+.slide-top-appear-from {
+  transform: translateY(-100%);
+}
+
+.slide-top-enter-to,
+.slide-top-appear-to {
+  transform: translateY(0);
+}
+
+.slide-top-enter-active,
+.slide-top-appear-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.slide-top-leave-from {
+  transform: translateY(0);
+}
+
+.slide-top-leave-to {
+  transform: translateY(-100%);
+}
+
+.slide-top-leave-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.slide-bottom-enter-from,
+.slide-bottom-appear-from {
+  transform: translateY(100%);
+}
+
+.slide-bottom-enter-to,
+.slide-bottom-appear-to {
+  transform: translateY(0);
+}
+
+.slide-bottom-enter-active,
+.slide-bottom-appear-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.slide-bottom-leave-from {
+  transform: translateY(0);
+}
+
+.slide-bottom-leave-to {
+  transform: translateY(100%);
+}
+
+.slide-bottom-leave-active {
+  transition: transform @transition-duration-3
+    @transition-timing-function-standard;
+}

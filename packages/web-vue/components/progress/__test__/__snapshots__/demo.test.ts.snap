@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<progress> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-normal\\" style=\\"width: 50%;\\">
+  <div class=\\"arco-progress-line-wrapper\\">
+    <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
+      <div class=\\"arco-progress-line-bar-buffer\\"></div>
+      <div class=\\"arco-progress-line-bar\\" style=\\"width: 20%;\\"></div>
+    </div>
+    <div class=\\"arco-progress-line-text\\">20%
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<progress> demo: render [circle] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-medium arco-progress-status-normal\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 64px; height: 64px;\\"><svg viewBox=\\"0 0 64 64\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"2\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 188.49555921538757; stroke-dashoffset: 150.79644737231007;\\"></circle>
+        </svg>
+        <div class=\\"arco-progress-circle-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-medium arco-progress-status-warning\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 64px; height: 64px;\\"><svg viewBox=\\"0 0 64 64\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"2\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 188.49555921538757; stroke-dashoffset: 150.79644737231007;\\"></circle>
+        </svg>
+        <div class=\\"arco-progress-circle-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-medium arco-progress-status-danger\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 64px; height: 64px;\\"><svg viewBox=\\"0 0 64 64\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"2\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 188.49555921538757; stroke-dashoffset: 150.79644737231007;\\"></circle>
+        </svg>
+        <div class=\\"arco-progress-circle-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style=\\"margin-top: 20px;\\">
+  <div class=\\"arco-slider\\" style=\\"width: 150px;\\">
+    <div class=\\"arco-slider-track\\">
+      <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 80%;\\"></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
+exports[`<progress> demo: render [mini] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"width: 100%;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-mini arco-progress-status-normal\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"0 0 16 16\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"6\\" stroke-width=\\"4\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"6\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 37.69911184307752; stroke-dashoffset: 30.159289474462014;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-mini arco-progress-status-warning\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"0 0 16 16\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"6\\" stroke-width=\\"4\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"6\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 37.69911184307752; stroke-dashoffset: 30.159289474462014;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-mini arco-progress-status-danger\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"0 0 16 16\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"6\\" stroke-width=\\"4\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"6\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 37.69911184307752; stroke-dashoffset: 30.159289474462014;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"width: 100%; margin-top: 20px;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-mini arco-progress-status-normal\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"0 0 16 16\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"4\\" stroke-width=\\"8\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"4\\" stroke-width=\\"8\\" style=\\"stroke-dasharray: 25.132741228718345; stroke-dashoffset: 20.106192982974676;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-mini arco-progress-status-warning\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"0 0 16 16\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"4\\" stroke-width=\\"8\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"4\\" stroke-width=\\"8\\" style=\\"stroke-dasharray: 25.132741228718345; stroke-dashoffset: 20.106192982974676;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-mini arco-progress-status-danger\\">
+      <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 16px; height: 16px;\\"><svg viewBox=\\"0 0 16 16\\" class=\\"arco-progress-circle-svg\\">
+          <!--v-if-->
+          <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"4\\" stroke-width=\\"8\\"></circle>
+          <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"8\\" cy=\\"8\\" r=\\"4\\" stroke-width=\\"8\\" style=\\"stroke-dasharray: 25.132741228718345; stroke-dashoffset: 20.106192982974676;\\"></circle>
+        </svg>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>
+<div style=\\"margin-top: 20px;\\">
+  <div class=\\"arco-slider\\" style=\\"width: 150px;\\">
+    <div class=\\"arco-slider-track\\">
+      <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 80%;\\"></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
+exports[`<progress> demo: render [size] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 50%;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></span><span class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></span></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-normal\\">
+      <div class=\\"arco-progress-line-wrapper\\">
+        <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
+          <div class=\\"arco-progress-line-bar-buffer\\"></div>
+          <div class=\\"arco-progress-line-bar\\" style=\\"width: 20%;\\"></div>
+        </div>
+        <div class=\\"arco-progress-line-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-warning\\">
+      <div class=\\"arco-progress-line-wrapper\\">
+        <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
+          <div class=\\"arco-progress-line-bar-buffer\\"></div>
+          <div class=\\"arco-progress-line-bar\\" style=\\"width: 20%;\\"></div>
+        </div>
+        <div class=\\"arco-progress-line-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-danger\\">
+      <div class=\\"arco-progress-line-wrapper\\">
+        <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
+          <div class=\\"arco-progress-line-bar-buffer\\"></div>
+          <div class=\\"arco-progress-line-bar\\" style=\\"width: 20%;\\"></div>
+        </div>
+        <div class=\\"arco-progress-line-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+        <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-medium arco-progress-status-normal\\">
+          <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 64px; height: 64px;\\"><svg viewBox=\\"0 0 64 64\\" class=\\"arco-progress-circle-svg\\">
+              <!--v-if-->
+              <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"2\\"></circle>
+              <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 188.49555921538757; stroke-dashoffset: 150.79644737231007;\\"></circle>
+            </svg>
+            <div class=\\"arco-progress-circle-text\\">20%
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+        <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-medium arco-progress-status-warning\\">
+          <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 64px; height: 64px;\\"><svg viewBox=\\"0 0 64 64\\" class=\\"arco-progress-circle-svg\\">
+              <!--v-if-->
+              <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"2\\"></circle>
+              <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 188.49555921538757; stroke-dashoffset: 150.79644737231007;\\"></circle>
+            </svg>
+            <div class=\\"arco-progress-circle-text\\">20%
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"arco-space-item\\">
+        <div class=\\"arco-progress arco-progress-type-circle arco-progress-size-medium arco-progress-status-danger\\">
+          <div class=\\"arco-progress-circle-wrapper\\" style=\\"width: 64px; height: 64px;\\"><svg viewBox=\\"0 0 64 64\\" class=\\"arco-progress-circle-svg\\">
+              <!--v-if-->
+              <circle class=\\"arco-progress-circle-bg\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"2\\"></circle>
+              <circle class=\\"arco-progress-circle-bar\\" fill=\\"none\\" cx=\\"32\\" cy=\\"32\\" r=\\"30\\" stroke-width=\\"4\\" style=\\"stroke-dasharray: 188.49555921538757; stroke-dashoffset: 150.79644737231007;\\"></circle>
+            </svg>
+            <div class=\\"arco-progress-circle-text\\">20%
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<progress> demo: render [status] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 50%;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-normal\\">
+      <div class=\\"arco-progress-line-wrapper\\">
+        <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
+          <div class=\\"arco-progress-line-bar-buffer\\"></div>
+          <div class=\\"arco-progress-line-bar\\" style=\\"width: 20%;\\"></div>
+        </div>
+        <div class=\\"arco-progress-line-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-warning\\">
+      <div class=\\"arco-progress-line-wrapper\\">
+        <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
+          <div class=\\"arco-progress-line-bar-buffer\\"></div>
+          <div class=\\"arco-progress-line-bar\\" style=\\"width: 20%;\\"></div>
+        </div>
+        <div class=\\"arco-progress-line-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-danger\\">
+      <div class=\\"arco-progress-line-wrapper\\">
+        <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
+          <div class=\\"arco-progress-line-bar-buffer\\"></div>
+          <div class=\\"arco-progress-line-bar\\" style=\\"width: 20%;\\"></div>
+        </div>
+        <div class=\\"arco-progress-line-text\\">20%
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style=\\"margin-top: 20px;\\">
+  <div class=\\"arco-slider\\" style=\\"width: 150px;\\">
+    <div class=\\"arco-slider-track\\">
+      <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 80%;\\"></div>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
+exports[`<progress> demo: render [steps] correctly 1`] = `
+"<div class=\\"arco-progress arco-progress-type-steps arco-progress-size-medium arco-progress-status-normal\\">
+  <div class=\\"arco-progress-steps-wrapper\\">
+    <div class=\\"arco-progress-steps\\" style=\\"height: 4px;\\">
+      <div class=\\"arco-progress-steps-item arco-progress-steps-item-active\\"></div>
+      <div class=\\"arco-progress-steps-item\\"></div>
+      <div class=\\"arco-progress-steps-item\\"></div>
+    </div>
+    <div class=\\"arco-progress-steps-text\\">30%
+      <!--v-if-->
+    </div>
+  </div>
+</div>
+<div class=\\"arco-progress arco-progress-type-steps arco-progress-size-medium arco-progress-status-warning\\">
+  <div class=\\"arco-progress-steps-wrapper\\">
+    <div class=\\"arco-progress-steps\\" style=\\"height: 4px;\\">
+      <div class=\\"arco-progress-steps-item arco-progress-steps-item-active\\"></div>
+      <div class=\\"arco-progress-steps-item arco-progress-steps-item-active\\"></div>
+      <div class=\\"arco-progress-steps-item arco-progress-steps-item-active\\"></div>
+      <div class=\\"arco-progress-steps-item arco-progress-steps-item-active\\"></div>
+      <div class=\\"arco-progress-steps-item arco-progress-steps-item-active\\"></div>
+    </div>
+    <div class=\\"arco-progress-steps-text\\">100%
+      <!--v-if-->
+    </div>
+  </div>
+</div>
+<div class=\\"arco-progress arco-progress-type-steps arco-progress-size-small arco-progress-status-normal\\">
+  <div class=\\"arco-progress-steps-wrapper\\">
+    <div class=\\"arco-progress-steps\\" style=\\"height: 8px;\\">
+      <div class=\\"arco-progress-steps-item arco-progress-steps-item-active\\"></div>
+      <div class=\\"arco-progress-steps-item\\"></div>
+      <div class=\\"arco-progress-steps-item\\"></div>
+    </div>
+    <div class=\\"arco-progress-steps-text\\">30%
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;

@@ -1,0 +1,87 @@
+.@{timeline-prefix-cls}-direction-horizontal {
+  display: flex;
+  flex-direction: row;
+
+  &.@{timeline-prefix-cls}-is-reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.@{timeline-prefix-cls}-item-dot-line-is-horizontal {
+  top: 50%;
+  right: @timeline-horizontal-margin-line-right;
+  left: @timeline-dot-size-width + @timeline-horizontal-margin-line-left;
+  width: unset;
+  height: @timeline-size-line-width;
+  border-top-width: @timeline-size-line-width;
+  border-left: none;
+  transform: translateY(-50%);
+}
+
+.@{timeline-prefix-cls}-item-horizontal-bottom,
+.@{timeline-prefix-cls}-item-horizontal-top {
+  flex: 1;
+  min-height: unset;
+  padding-right: 0;
+  padding-left: 0;
+
+  > .@{timeline-prefix-cls}-item-dot-wrapper {
+    top: 0;
+    width: 100%;
+    height: auto;
+
+    .@{timeline-prefix-cls}-item-dot {
+      top: unset;
+      margin-top: unset;
+    }
+
+    .@{timeline-prefix-cls}-item-dot-content {
+      height: 6px;
+      line-height: 6px;
+    }
+  }
+}
+
+.@{timeline-prefix-cls}-item-horizontal-top {
+  padding-top: @timeline-dot-size-width;
+
+  > .@{timeline-prefix-cls}-item-dot-wrapper {
+    top: 0;
+    bottom: unset;
+  }
+
+  > .@{timeline-prefix-cls}-item-content-wrapper {
+    margin-top: @timeline-horizontal-margin-content-spacing;
+    margin-left: 0;
+  }
+}
+
+.@{timeline-prefix-cls}-item-horizontal-bottom {
+  padding-bottom: @timeline-dot-size-width;
+
+  > .@{timeline-prefix-cls}-item-dot-wrapper {
+    top: unset;
+    bottom: 0;
+  }
+
+  > .@{timeline-prefix-cls}-item-content-wrapper {
+    margin-bottom: @timeline-horizontal-margin-content-spacing;
+    margin-left: 0;
+  }
+}
+
+.@{timeline-prefix-cls}-alternate.@{timeline-prefix-cls}-direction-horizontal {
+  align-items: center;
+  min-height: 200px;
+  overflow: visible;
+
+  .@{timeline-prefix-cls}-item-horizontal-bottom {
+    margin-top: @timeline-dot-size-width;
+    transform: translateY(-50%);
+  }
+
+  .@{timeline-prefix-cls}-item-horizontal-top {
+    margin-top: -@timeline-dot-size-width;
+    transform: translateY(50%);
+  }
+}

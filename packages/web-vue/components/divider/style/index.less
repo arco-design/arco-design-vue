@@ -1,0 +1,52 @@
+@import './token.less';
+
+@divider-prefix-cls: ~'@{prefix}-divider';
+
+.@{divider-prefix-cls} {
+  &-horizontal {
+    position: relative;
+    clear: both;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin: @divider-margin-vertical 0;
+    border-bottom: @divider-size @divider-line-style @divider-color-bg;
+  }
+
+  &-vertical {
+    display: inline-block;
+    min-width: 1px;
+    max-width: 1px;
+    height: 1em;
+    margin: 0 @divider-margin-horizontal;
+    vertical-align: middle;
+    border-left: @divider-size @divider-line-style @divider-color-bg;
+  }
+
+  // Only the horizontal dividing line supports text, and only the horizontal situation is considered
+  &-text {
+    position: absolute;
+    top: 50%;
+    box-sizing: border-box;
+    padding: 0 @divider-margin-text;
+    color: @divider-color-text;
+    font-weight: @divider-font-weight;
+    font-size: @divider-font-size;
+    line-height: 2;
+    background: var(--color-bg-2);
+    transform: translateY(-50%);
+
+    &-center {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &-left {
+      left: @divider-position-text-left;
+    }
+
+    &-right {
+      right: @divider-position-text-right;
+    }
+  }
+}

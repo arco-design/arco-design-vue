@@ -1,0 +1,122 @@
+@import '../../style/mixins/index.less';
+@import './token.less';
+
+@page-header-prefix-cls: ~'@{prefix}-page-header';
+
+.@{page-header-prefix-cls} {
+  padding: @page-header-padding-vertical 0;
+
+  &-breadcrumb + &-header {
+    margin-top: @page-header-margin-breadcrumb-bottom;
+  }
+
+  &-wrapper {
+    padding-right: @page-header-padding-right;
+    padding-left: @page-header-padding-left;
+  }
+
+  // 头部
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: @page-header-line-height;
+
+    &-left {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-main {
+    display: flex;
+    align-items: center;
+    // 最小高度避免按钮hover下背景被hidden
+    min-height: @page-header-size-back-icon-bg_hover;
+
+    // 带有返回按钮时，避免 overflow:hidden 导致返回按钮hover状态背景色显示不全
+    &-with-back {
+      margin-left: (@page-header-size-back-icon / 2) -
+        (@page-header-size-back-icon-bg_hover / 2);
+      padding-left: (@page-header-size-back-icon-bg_hover / 2) -
+        (@page-header-size-back-icon / 2);
+    }
+  }
+
+  &-extra {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &-back-btn {
+    margin-right: @page-header-margin-back-icon-right;
+    color: @page-header-color-back-icon;
+    font-size: @page-header-size-back-icon;
+
+    .icon-hover(@prefix, @page-header-size-back-icon, @page-header-size-back-icon-bg_hover);
+
+    &-icon {
+      position: relative;
+    }
+  }
+
+  &-title {
+    .text-ellipsis();
+
+    color: @page-header-color-title-text;
+    font-weight: @page-header-weight-title-text;
+    font-size: @page-header-size-title-text;
+  }
+
+  &-divider {
+    width: @page-header-size-divider-width;
+    height: @page-header-size-divider-height;
+    margin-right: @page-header-margin-divider-right;
+    margin-left: @page-header-margin-divider-left;
+    background-color: @page-header-color-divider-bg;
+  }
+
+  &-subtitle {
+    .text-ellipsis();
+
+    color: @page-header-color-sub-title-text;
+    font-size: @page-header-size-sub-title-text;
+  }
+
+  // 内容区
+  &-content {
+    padding: @page-header-padding-content-vertical
+      @page-header-padding-content-horizontal;
+    border-top: @page-header-border-header-width
+      @page-header-border-header-style @page-header-color-header-border;
+  }
+
+  &-footer {
+    padding: @page-header-padding-vertical @page-header-padding-right 0
+      @page-header-padding-left;
+  }
+
+  &-with-breadcrumb {
+    padding: @page-header-padding-vertical_breadcrumb 0;
+
+    .@{page-header-prefix-cls}-footer {
+      padding-top: @page-header-padding-vertical_breadcrumb;
+    }
+  }
+
+  &-with-content &-wrapper {
+    padding-bottom: @page-header-padding-vertical_breadcrumb;
+  }
+
+  &-with-footer {
+    padding-bottom: 0;
+  }
+
+  &-wrapper &-header {
+    flex-wrap: wrap;
+
+    .@{page-header-prefix-cls}-head-extra {
+      margin-top: @page-header-margin-breadcrumb-bottom;
+    }
+  }
+}

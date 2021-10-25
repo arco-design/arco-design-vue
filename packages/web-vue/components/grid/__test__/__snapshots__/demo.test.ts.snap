@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<grid> demo: render [adaptation] correctly 1`] = `
+"<div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+  <div class=\\"arco-col arco-col-xs-2 arco-col-sm-4 arco-col-md-6 arco-col-lg-8 arco-col-xl-10 arco-col-xxl-8\\"> Col </div>
+  <div class=\\"arco-col arco-col-xs-20 arco-col-sm-16 arco-col-md-12 arco-col-lg-8 arco-col-xl-4 arco-col-xxl-8\\"> Col </div>
+  <div class=\\"arco-col arco-col-xs-2 arco-col-sm-4 arco-col-md-6 arco-col-lg-8 arco-col-xl-10 arco-col-xxl-8\\"> Col </div>
+</div>"
+`;
+
+exports[`<grid> demo: render [adaptation-object] correctly 1`] = `
+"<div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+    <div class=\\"arco-col arco-col-xs-5 arco-col-xs-offset-1 arco-col-lg-6 arco-col-lg-offset-2\\"> Col </div>
+    <div class=\\"arco-col arco-col-xs-11 arco-col-xs-offset-1 arco-col-lg-6 arco-col-lg-offset-2\\"> Col </div>
+    <div class=\\"arco-col arco-col-xs-5 arco-col-xs-offset-1 arco-col-lg-6 arco-col-lg-offset-2\\"> Col </div>
+  </div>
+</div>"
+`;
+
+exports[`<grid> demo: render [basic] correctly 1`] = `
+"<div class=\\"grid-demo-background\\">
+  <div class=\\"arco-space arco-space-vertical\\" style=\\"display: block;\\">
+    <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
+      <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+        <div class=\\"arco-col arco-col-24\\">
+          <div>24 - 100%</div>
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
+      <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+        <div class=\\"arco-col arco-col-12\\">
+          <div>12 - 50%</div>
+        </div>
+        <div class=\\"arco-col arco-col-12\\">
+          <div>12 - 50%</div>
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
+      <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+        <div class=\\"arco-col arco-col-8\\">
+          <div>8 - 33.33%</div>
+        </div>
+        <div class=\\"arco-col arco-col-8\\">
+          <div>8 - 33.33%</div>
+        </div>
+        <div class=\\"arco-col arco-col-8\\">
+          <div>8 - 33.33%</div>
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
+      <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+        <div class=\\"arco-col arco-col-6\\">
+          <div>6 - 25%</div>
+        </div>
+        <div class=\\"arco-col arco-col-6\\">
+          <div>6 - 25%</div>
+        </div>
+        <div class=\\"arco-col arco-col-6\\">
+          <div>6 - 25%</div>
+        </div>
+        <div class=\\"arco-col arco-col-6\\">
+          <div>6 - 25%</div>
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-space-item\\">
+      <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+        <div class=\\"arco-col arco-col-4\\">
+          <div>4 - 16.66%</div>
+        </div>
+        <div class=\\"arco-col arco-col-4\\">
+          <div>4 - 16.66%</div>
+        </div>
+        <div class=\\"arco-col arco-col-4\\">
+          <div>4 - 16.66%</div>
+        </div>
+        <div class=\\"arco-col arco-col-4\\">
+          <div>4 - 16.66%</div>
+        </div>
+        <div class=\\"arco-col arco-col-4\\">
+          <div>4 - 16.66%</div>
+        </div>
+        <div class=\\"arco-col arco-col-4\\">
+          <div>4 - 16.66%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<grid> demo: render [flex-align] correctly 1`] = `
+"<div>
+  <p>Arrange top</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+  </div>
+  <p>Arrange right</p>
+  <div class=\\"arco-row arco-row-align-center arco-row-justify-start grid-demo\\">
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+  </div>
+  <p>Arrange bottom</p>
+  <div class=\\"arco-row arco-row-align-end arco-row-justify-start grid-demo\\">
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\">
+      <div>col - 6</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<grid> demo: render [flex-justify] correctly 1`] = `
+"<div>
+  <p>Arrange left</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+  </div>
+  <p>Arrange center</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-center grid-demo\\">
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+  </div>
+  <p>Arrange right</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-end grid-demo\\">
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+  </div>
+  <p>Space around</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-space-around grid-demo\\">
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+  </div>
+  <p>Space between</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-space-between grid-demo\\">
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+    <div class=\\"arco-col arco-col-4\\">
+      <div>col - 4</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<grid> demo: render [gutter] correctly 1`] = `
+"<div>
+  <p>Horizontal</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\" style=\\"margin-left: -12px; margin-right: -12px;\\">
+    <div class=\\"arco-col arco-col-12\\" style=\\"padding-left: 12px; padding-right: 12px;\\">
+      <div>col - 12</div>
+    </div>
+    <div class=\\"arco-col arco-col-12\\" style=\\"padding-left: 12px; padding-right: 12px;\\">
+      <div>col - 12</div>
+    </div>
+  </div>
+  <p>Responsive</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\" style=\\"margin-left: -16px; margin-right: -16px;\\">
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
+      <div>col - 6</div>
+    </div>
+  </div>
+  <p>Horizontal and Vertical</p>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\" style=\\"margin: -6px -12px -6px -12px;\\">
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding: 6px 12px 6px 12px;\\">
+      <div>col - 6</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<grid> demo: render [offset] correctly 1`] = `
+"<div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\" style=\\"margin-bottom: 16px;\\">
+    <div class=\\"arco-col arco-col-8\\">col - 8</div>
+    <div class=\\"arco-col arco-col-8 arco-col-offset-8\\"> col - 8 | offset - 8 </div>
+  </div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\" style=\\"margin-bottom: 16px;\\">
+    <div class=\\"arco-col arco-col-6 arco-col-offset-8\\"> col - 6 | offset - 8 </div>
+    <div class=\\"arco-col arco-col-6 arco-col-offset-4\\"> col - 6 | offset - 4 </div>
+  </div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+    <div class=\\"arco-col arco-col-12 arco-col-offset-8\\"> col - 12 | offset - 8 </div>
+  </div>
+</div>"
+`;
+
+exports[`<grid> demo: render [order] correctly 1`] = `
+"<div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
+    <div class=\\"arco-col arco-col-order-4 arco-col-6\\">
+      <div>1 col-order-4</div>
+    </div>
+    <div class=\\"arco-col arco-col-order-3 arco-col-6\\">
+      <div>2 col-order-3</div>
+    </div>
+    <div class=\\"arco-col arco-col-order-2 arco-col-6\\">
+      <div>3 col-order-2</div>
+    </div>
+    <div class=\\"arco-col arco-col-order-1 arco-col-6\\">
+      <div>4 col-order-1</div>
+    </div>
+  </div>
+</div>"
+`;

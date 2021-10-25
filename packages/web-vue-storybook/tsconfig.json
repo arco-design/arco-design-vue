@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "es",
+    "target": "ES2015",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "strict": true,
+    "allowJs": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@web-vue/*": [
+        "../web-vue/*"
+      ]
+    }
+  }
+}

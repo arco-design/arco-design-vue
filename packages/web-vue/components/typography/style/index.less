@@ -1,0 +1,198 @@
+@import './token.less';
+@import '../../input/style/token.less';
+
+@typography-prefix-cls: ~'@{prefix}-typography';
+
+.@{typography-prefix-cls} {
+  color: @typography-color-text;
+  line-height: @typography-paragraph-line-height;
+
+  // Title
+  h1&,
+  h2&,
+  h3&,
+  h4&,
+  h5&,
+  h6& {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: @typography-heading-font-weight;
+  }
+
+  h1& {
+    font-size: @typography-font-size-h1;
+    line-height: 1.23;
+  }
+
+  h2& {
+    font-size: @typography-font-size-h2;
+    line-height: 1.25;
+  }
+
+  h3& {
+    font-size: @typography-font-size-h3;
+    line-height: 1.29;
+  }
+
+  h4& {
+    font-size: @typography-font-size-h4;
+    line-height: 1.33;
+  }
+
+  h5& {
+    font-size: @typography-font-size-h5;
+    line-height: 1.4;
+  }
+
+  h6& {
+    font-size: @typography-font-size-h6;
+    line-height: 1.5;
+  }
+
+  div&,
+  p& {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  // Text
+  &-primary {
+    color: @typography-text-color-text-primary;
+  }
+
+  &-secondary {
+    color: @typography-text-color-text-secondary;
+  }
+
+  &-success {
+    color: @typography-text-color-text-success;
+  }
+
+  &-warning {
+    color: @typography-text-color-text-warning;
+  }
+
+  &-danger {
+    color: @typography-text-color-text-error;
+  }
+
+  &-disabled {
+    color: @typography-text-color-text_disabled;
+    cursor: not-allowed;
+  }
+
+  & mark {
+    background-color: @typography-text-color-bg-mark;
+  }
+
+  & u {
+    text-decoration: underline;
+  }
+
+  & del {
+    text-decoration: line-through;
+  }
+
+  & b {
+    font-weight: @typography-text-font-weight-bold;
+  }
+
+  & code {
+    margin: 0 @typography-text-margin-code-horizontal;
+    padding: @typography-text-padding-code-vertical
+      @typography-text-padding-code-horizontal;
+    color: @typography-text-color-code;
+    font-size: 85%;
+    background-color: @typography-text-color-code-bg;
+    border: 1px solid @typography-text-color-code-border;
+    border-radius: 2px;
+  }
+
+  & blockquote {
+    margin: 0;
+    margin-bottom: 1em;
+    padding-left: 8px;
+    background-color: @typography-color-blockquote-bg;
+    border-left: @typography-color-blockquote-border-width solid
+      @typography-color-blockquote-border-left;
+  }
+
+  & ol,
+  & ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  & ul li,
+  & ol li {
+    margin-left: 20px;
+  }
+
+  & ul {
+    list-style: circle;
+  }
+
+  &-spacing-close {
+    line-height: @typography-paragraph-line-height-close;
+  }
+
+  // Operations
+  &-operation-copy,
+  &-operation-copied {
+    margin-left: @typography-operation-margin-left;
+    padding: 2px;
+  }
+
+  &-operation-copy {
+    color: @typography-color-icon-copy;
+    background-color: @typography-color-bg-icon-copy;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color @transition-duration-1
+      @transition-timing-function-linear;
+
+    &:hover {
+      color: @typography-color-icon-copy_hover;
+      background-color: @typography-color-bg-icon-copy_hover;
+    }
+  }
+
+  &-operation-copied {
+    color: @typography-color-icon-copy_copied;
+  }
+
+  &-operation-edit {
+    margin-left: @typography-operation-margin-left;
+    padding: 2px;
+    color: @typography-color-icon-edit;
+    background-color: @typography-color-bg-icon-edit;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color @transition-duration-1
+      @transition-timing-function-linear;
+
+    &:hover {
+      color: @typography-color-icon-edit_hover;
+      background-color: @typography-color-bg-icon-edit_hover;
+    }
+  }
+
+  &-operation-expand {
+    margin: 0 4px;
+    color: @typography-color-expand-text;
+    cursor: pointer;
+
+    &:hover {
+      color: @typography-color-expand-text_hover;
+    }
+  }
+
+  // edit content
+  &-edit-content {
+    position: relative;
+    left: -(@textarea-padding-horizontal + @input-border-width);
+    margin-top: -(@textarea-padding-vertical + @input-border-width);
+    margin-right: -(@textarea-padding-horizontal + @input-border-width);
+    margin-bottom: calc(1em - @textarea-padding-vertical - @input-border-width);
+  }
+}

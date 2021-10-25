@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<notification> demo: render [basic] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Open Notification
+</button>"
+`;
+
+exports[`<notification> demo: render [position] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Top Right Message
+    </button></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Top Left Message
+    </button></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Bottom Right Message
+    </button></div>
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Bottom Left Message
+    </button></div>
+</div>"
+`;
+
+exports[`<notification> demo: render [type] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Info Message
+    </button></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-success\\" type=\\"button\\">
+      <!--v-if-->Success Message
+    </button></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning\\" type=\\"button\\">
+      <!--v-if-->Warning Message
+    </button></div>
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-danger\\" type=\\"button\\">
+      <!--v-if-->Error Message
+    </button></div>
+</div>"
+`;

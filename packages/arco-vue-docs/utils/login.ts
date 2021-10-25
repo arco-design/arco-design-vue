@@ -1,0 +1,36 @@
+import axios from 'axios';
+
+// @ts-ignore
+const isProduction = import.meta.env.PROD;
+
+export async function checkLogin() {
+  if (!isProduction) {
+    window.isLogin = true;
+    window.user = {
+      email: 'xiaoming@bytedance.com',
+      nickname: '小明',
+      picture:
+        'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/fbbdefc1702398f2f394c57270f7f727.png~tplv-uwbnlip3yd-png.png',
+      username: 'xiaoming',
+    };
+  } else {
+    if (!window.isLogin) {
+      try {
+        const { data } = await axios.get('/api/auth/userInfo', {
+          withCredentials: true,
+        });
+        window.isLogin = true;
+        window.user = data.result;
+      } catch {
+        window.isLogin = false;
+      }
+    }
+    try {
+      window.collectEvent('init', {
+        app_id: 2252,
+        channel: 'cn',
+      });
+      window.collectEvent('start');
+    } catch {}
+  }
+}

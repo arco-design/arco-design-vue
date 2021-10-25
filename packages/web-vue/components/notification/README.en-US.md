@@ -1,0 +1,62 @@
+```yaml
+meta:
+  type: Component
+  category: Feedback
+title: Notification
+description: Globally display notification reminders to convey information to users in a timely and effective manner.
+```
+
+*Auto translate by google.*
+
+@import ./__demo__/basic.md
+
+@import ./__demo__/type.md
+
+@import ./__demo__/position.md
+
+
+
+
+
+### `Notification` Global methods
+
+The global methods provided by Notification can be used in the following three ways:
+1. Called by this.$notification
+2. In the Composition API, call getCurrentInstance().appContext.config.globalProperties.$notification
+3. Import Notification, call through Notification itself
+
+
+### NotificationMethod
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|info|Show info notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
+|success|Show success notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
+|warning|Show warning notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
+|error|Show error notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
+|clear|Clear all notifications|`(position?: NotificationPosition) => void`|`-`|
+
+
+
+### NotificationConfig
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|content|Content|`RenderContent`|`-`|
+|title|Title|`RenderContent`|`-`|
+|icon|Icon|`RenderFunction`|`-`|
+|id|Unique id|`string`|`-`|
+|position|Position|`'topLeft'\|'topRight'\|'bottomLeft'\|'bottomRight'`|`-`|
+|showIcon|Whether to show icon|`boolean`|`false`|
+|closable|Whether it can be closed|`boolean`|`false`|
+|duration|Display duration|`number`|`-`|
+
+
+
+### NotificationReturn
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|close|Close the current notification|`() => void`|`-`|
+
+

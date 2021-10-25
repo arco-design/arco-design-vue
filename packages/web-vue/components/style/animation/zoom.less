@@ -1,0 +1,217 @@
+@import '../theme/index.less';
+
+// modal use
+.zoom-in-enter-from,
+.zoom-in-appear-from {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.zoom-in-enter-to,
+.zoom-in-appear-to {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-enter-active,
+.zoom-in-appear-active {
+  transition: opacity @transition-duration-3
+      @transition-timing-function-standard,
+    transform @transition-duration-3 @transition-timing-function-standard;
+}
+
+.zoom-in-leave-from {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-leave-to {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.zoom-in-leave-active {
+  transition: opacity @transition-duration-3
+      @transition-timing-function-overshoot,
+    transform @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+// used by tooltip。缩放出现，渐隐退出
+.zoom-in-fade-out-enter-from,
+.zoom-in-fade-out-appear-from {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.zoom-in-fade-out-enter-to,
+.zoom-in-fade-out-appear-to {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-fade-out-enter-active,
+.zoom-in-fade-out-appear-active {
+  transition: opacity @transition-duration-3
+      @transition-timing-function-overshoot,
+    transform @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+.zoom-in-fade-out-leave-from {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-fade-out-leave-to {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.zoom-in-fade-out-leave-active {
+  transition: opacity @transition-duration-3
+      @transition-timing-function-overshoot,
+    transform @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+// used by slide, table filter
+.zoom-in-big-enter-from,
+.zoom-in-big-appear-from {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.zoom-in-big-enter-to,
+.zoom-in-big-appear-to {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-big-enter-active,
+.zoom-in-big-appear-active {
+  transition: opacity @transition-duration-2 @transition-timing-function-linear,
+    transform @transition-duration-2 @transition-timing-function-linear;
+}
+
+.zoom-in-big-leave-from {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-big-leave-to {
+  transform: scale(0.2, 0.2);
+  opacity: 0;
+}
+
+.zoom-in-big-leave-active {
+  transition: opacity @transition-duration-2 @transition-timing-function-linear,
+    transform @transition-duration-2 @transition-timing-function-linear;
+}
+
+.zoom-in-left-enter-from,
+.zoom-in-left-appear-from {
+  transform: scale(0.1, 0.1);
+  opacity: 0.1;
+}
+
+.zoom-in-left-enter-to,
+.zoom-in-left-appear-to {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-left-enter-active,
+.zoom-in-left-appear-active {
+  transform-origin: 0 50%;
+  transition: opacity @transition-duration-3 @transition-timing-function-linear,
+    transform @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+.zoom-in-left-leave-from {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-in-left-leave-to {
+  transform: scale(0.1, 0.1);
+  opacity: 0.1;
+}
+
+.zoom-in-left-leave-active {
+  transform-origin: 0 50%;
+  transition: opacity @transition-duration-3 @transition-timing-function-linear,
+    transform @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+// used by alert form
+.zoom-in-top-enter-from,
+.zoom-in-top-appear-from {
+  transform: scaleY(0.8) translateZ(0);
+  opacity: 0;
+}
+
+.zoom-in-top-enter-to,
+.zoom-in-top-appear-to {
+  transform: scaleY(1) translateZ(0);
+  opacity: 1;
+}
+
+.zoom-in-top-enter-active,
+.zoom-in-top-appear-active {
+  transform-origin: 0 0;
+  transition: transform @transition-duration-3
+      @transition-timing-function-overshoot,
+    opacity @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+.zoom-in-top-leave-from {
+  transform: scaleY(1) translateZ(0);
+  opacity: 1;
+}
+
+.zoom-in-top-leave-to {
+  transform: scaleY(0.8) translateZ(0);
+  opacity: 0;
+}
+
+.zoom-in-top-leave-active {
+  transform-origin: 0 0;
+  transition: transform @transition-duration-3
+      @transition-timing-function-overshoot,
+    opacity @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+.zoom-in-bottom-enter-from,
+.zoom-in-bottom-appear-from {
+  transform: scaleY(0.8) translateZ(0);
+  opacity: 0;
+}
+
+.zoom-in-bottom-enter-to,
+.zoom-in-bottom-appear-to {
+  transform: scaleY(1) translateZ(0);
+  opacity: 1;
+}
+
+.zoom-in-bottom-enter-active,
+.zoom-in-bottom-appear-active {
+  transform-origin: 100% 100%;
+  transition: transform @transition-duration-3
+      @transition-timing-function-overshoot,
+    opacity @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+.zoom-in-bottom-leave-from {
+  transform: scaleY(1) translateZ(0);
+  opacity: 1;
+}
+
+.zoom-in-bottom-leave-to {
+  transform: scaleY(0.8) translateZ(0);
+  opacity: 0;
+}
+
+.zoom-in-bottom-leave-active {
+  transform-origin: 100% 100%;
+  transition: transform @transition-duration-3
+      @transition-timing-function-overshoot,
+    opacity @transition-duration-3 @transition-timing-function-overshoot;
+}

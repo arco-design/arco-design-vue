@@ -1,0 +1,198 @@
+@import '../../style/mixins/index.less';
+@import './token.less';
+
+@message-prefix-cls: ~'@{prefix}-message';
+
+.@{message-prefix-cls}-list {
+  position: fixed;
+  z-index: @z-index-message;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+  text-align: center;
+  pointer-events: none;
+
+  &-top {
+    top: @message-wrapper-margin-top;
+  }
+
+  &-bottom {
+    bottom: @message-wrapper-margin-bottom;
+  }
+}
+
+.@{message-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  margin-bottom: @message-margin-bottom;
+  padding: @message-padding-top @message-padding-right @message-padding-bottom
+    @message-padding-left;
+  overflow: hidden;
+  line-height: 1;
+  text-align: center;
+  list-style: none;
+  background-color: @message-normal-color-bg;
+  border: @message-border-width @message-border-style
+    @message-normal-color-border;
+  border-radius: @message-border-radius;
+  box-shadow: @shadow2-down;
+  transition: all @transition-duration-1 @transition-timing-function-linear;
+  pointer-events: auto;
+
+  &-closable {
+    padding-right: @message-padding-right + @message-close-icon-font-size + 8px;
+  }
+
+  &-icon {
+    display: inline-block;
+    margin-right: @message-icon-margin-right;
+    color: @message-normal-color-icon;
+    font-size: @message-font-size-icon;
+    vertical-align: middle;
+    animation: ~'@{prefix}-msg-fade' @transition-duration-1 @transition-timing-function-linear,
+      ~'@{prefix}-msg-fade' @transition-duration-4 @transition-timing-function-overshoot;
+  }
+
+  &-content {
+    color: @message-normal-color-content;
+    vertical-align: middle;
+  }
+
+  &-info {
+    background-color: @message-info-color-bg;
+    border-color: @message-info-color-border;
+  }
+
+  &-info &-icon {
+    color: @message-info-color-icon;
+  }
+
+  &-info &-content {
+    color: @message-info-color-content;
+  }
+
+  &-success {
+    background-color: @message-success-color-bg;
+    border-color: @message-success-color-border;
+  }
+
+  &-success &-icon {
+    color: @message-success-color-icon;
+  }
+
+  &-success &-content {
+    color: @message-success-color-content;
+  }
+
+  &-warning {
+    background-color: @message-warning-color-bg;
+    border-color: @message-warning-color-border;
+  }
+
+  &-warning &-icon {
+    color: @message-warning-color-icon;
+  }
+
+  &-warning &-content {
+    color: @message-warning-color-content;
+  }
+
+  &-error {
+    background-color: @message-error-color-bg;
+    border-color: @message-error-color-border;
+  }
+
+  &-error &-icon {
+    color: @message-error-color-icon;
+  }
+
+  &-error &-content {
+    color: @message-error-color-content;
+  }
+
+  &-loading {
+    background-color: @message-loading-color-bg;
+    border-color: @message-loading-color-border;
+  }
+
+  &-loading &-icon {
+    color: @message-loading-color-icon;
+  }
+
+  &-loading &-content {
+    color: @message-loading-color-content;
+  }
+
+  &-close-btn {
+    position: absolute;
+    top: @message-close-icon-top;
+    right: @message-close-icon-right;
+    color: @message-color-close-icon;
+    font-size: @message-close-icon-font-size;
+
+    > svg {
+      position: relative;
+    }
+  }
+
+  .icon-hover(
+    @message-prefix-cls,
+    @message-close-icon-font-size,
+    @message-close-icon-font-size + 8px
+  );
+}
+
+.fade-message-enter-from,
+.fade-message-appear-from {
+  opacity: 0;
+}
+
+.fade-message-enter-to,
+.fade-message-appear-to {
+  opacity: 1;
+}
+
+.fade-message-enter-active,
+.fade-message-appear-active {
+  transition: opacity @transition-duration-1 @transition-timing-function-linear;
+}
+
+.fade-message-leave-from {
+  opacity: 1;
+}
+
+.fade-message-leave-to {
+  opacity: 0;
+}
+
+.fade-message-leave-active {
+  position: absolute;
+}
+
+.flip-list-move {
+  transition: transform 0.8s ease;
+}
+
+@keyframes ~ '@{prefix}-msg-fade' {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ~ '@{prefix}-msg-scale' {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

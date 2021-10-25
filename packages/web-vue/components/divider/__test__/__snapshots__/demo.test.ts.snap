@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<divider> demo: render [basic] correctly 1`] = `
+"<div class=\\"divider-demo\\">
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div class=\\"arco-divider arco-divider-horizontal\\">
+    <!---->
+  </div>
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div class=\\"arco-divider arco-divider-horizontal\\" style=\\"border-bottom-style: dashed;\\">
+    <!---->
+  </div>
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div class=\\"arco-divider arco-divider-horizontal\\" style=\\"border-bottom-width: 2px; border-bottom-style: dotted;\\">
+    <!---->
+  </div>
+  <p>A design is a plan or specification for the construction of an object.</p>
+</div>
+<div class=\\"divider-demo\\" style=\\"margin-top: 48px;\\">
+  <div class=\\"flex-box\\"><span class=\\"avatar\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-image\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m24 33 9-9v9h-9Zm0 0-3.5-4.5L17 33h7Zm15 8H9a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h30a2 2 0 0 1 2 2v30a2 2 0 0 1-2 2ZM15 15h2v2h-2v-2Z\\"></path><path d=\\"M33 33v-9l-9 9h9ZM23.5 33l-3-4-3 4h6ZM15 15h2v2h-2z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div class=\\"content\\">
+      <h6 class=\\"arco-typography\\">Image
+        <!---->
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </h6> May 4, 2010
+    </div>
+  </div>
+  <div class=\\"arco-divider arco-divider-horizontal half-divider\\">
+    <!---->
+  </div>
+  <div class=\\"flex-box\\"><span class=\\"avatar\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span>
+    <div class=\\"content\\">
+      <h6 class=\\"arco-typography\\">Avatar
+        <!---->
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </h6> May 4, 2010
+    </div>
+  </div>
+  <div class=\\"arco-divider arco-divider-horizontal half-divider\\">
+    <!---->
+  </div>
+  <div class=\\"flex-box\\"><span class=\\"avatar\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-pen\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m28.364 11.565 7.07 7.071M7.15 32.778 33.313 6.615l7.071 7.071L14.221 39.85h-7.07v-7.07Z\\"></path></svg></span>
+    <div class=\\"content\\">
+      <h6 class=\\"arco-typography\\">Icon
+        <!---->
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </h6> May 4, 2010
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<divider> demo: render [vertical] correctly 1`] = `
+"<div class=\\"divider-demo\\"><span>Item 1</span>
+  <div class=\\"arco-divider arco-divider-vertical\\">
+    <!---->
+  </div><span>Item 2</span>
+  <div class=\\"arco-divider arco-divider-vertical\\">
+    <!---->
+  </div><span>Item 3</span>
+</div>"
+`;
+
+exports[`<divider> demo: render [with-text] correctly 1`] = `
+"<div class=\\"divider-demo\\">
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-left\\">Text</span></div>
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">Text</span></div>
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-right\\">Text</span></div>
+</div>"
+`;

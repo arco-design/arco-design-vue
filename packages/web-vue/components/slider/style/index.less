@@ -1,0 +1,273 @@
+@import './token.less';
+
+@slider-prefix: ~'@{prefix}-slider';
+
+.@{slider-prefix} {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+
+  &-vertical {
+    display: inline-block;
+    width: auto;
+    min-width: @slider-size-button-width + 10;
+    height: auto;
+
+    .@{slider-prefix}-wrapper {
+      flex-direction: column;
+    }
+  }
+
+  &-with-marks {
+    margin-bottom: @slider-spacing-margin-bottom_with-mark;
+    padding: @slider-spacing-padding_width-mark;
+  }
+
+  &-track {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: @slider-size-button-height;
+    cursor: pointer;
+
+    &::before {
+      // 局中
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: 100%;
+      height: @slider-size-road-width;
+      background-color: @slider-color-road-bg;
+      border-radius: @slider-size-road-width;
+      transform: translateY(-50%);
+      content: '';
+    }
+
+    &&-vertical {
+      width: @slider-size-button-width;
+      max-width: @slider-size-button-width;
+      height: 100%;
+      min-height: @slider-size-height_vertical;
+      margin-right: 0;
+      margin-bottom: @slider-spacing-margin-bottom_vertical;
+      transform: translateY(0);
+
+      &::before {
+        // 局中
+        top: unset;
+        left: 50%;
+        width: @slider-size-road-width;
+        height: 100%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &&-disabled {
+      &::before {
+        background-color: @slider-color-road-bg_disabled;
+      }
+
+      .@{slider-prefix}-bar {
+        background-color: @slider-color-bar-bg_disabled;
+      }
+
+      .@{slider-prefix}-btn {
+        cursor: not-allowed;
+
+        &::after {
+          border-color: @slider-color-button-border_disabled;
+        }
+      }
+
+      .@{slider-prefix}-dots {
+        .@{slider-prefix}-dot {
+          border-color: @slider-color-road-bg_disabled;
+
+          &-active {
+            border-color: @slider-color-bar-bg_disabled;
+          }
+        }
+      }
+
+      .@{slider-prefix}-ticks {
+        .@{slider-prefix}-tick {
+          background: @slider-color-road-bg_disabled;
+
+          &-active {
+            background: @slider-color-bar-bg_disabled;
+          }
+        }
+      }
+    }
+  }
+
+  &-bar {
+    position: absolute;
+    // 局中
+    position: absolute;
+    top: 50%;
+    height: @slider-size-road-width;
+    background-color: @slider-color-bar-bg;
+    border-radius: @slider-size-road-width;
+    transform: translateY(-50%);
+
+    .@{slider-prefix}-track-vertical & {
+      // 局中
+      top: unset;
+      left: 50%;
+      width: @slider-size-road-width;
+      height: unset;
+      transform: translateX(-50%);
+    }
+  }
+
+  &-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @slider-size-button-width;
+    height: @slider-size-button-height;
+    transform: translateX(-50%);
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      box-sizing: border-box;
+      width: @slider-size-button-width;
+      height: @slider-size-button-width;
+      background: @slider-color-button-bg;
+      border: @slider-border-size-button solid @slider-color-button-border;
+      border-radius: 50%;
+      transition: all @transition-duration-3
+        @transition-timing-function-overshoot;
+      content: '';
+    }
+
+    &&-active,
+    &:hover {
+      &::after {
+        box-shadow: @slider-shadow-button_active;
+        transform: scale(1.1667);
+      }
+    }
+
+    .@{slider-prefix}-track-vertical & {
+      top: unset;
+      bottom: 0;
+      left: 0;
+      transform: translateY(50%);
+    }
+  }
+
+  &-marks {
+    position: absolute;
+    top: @slider-size-button-width;
+    width: 100%;
+
+    .@{slider-prefix}-mark {
+      position: absolute;
+      color: @slider-color-mark-font;
+      font-size: @slider-font-size-mark;
+      line-height: 1;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+
+    .@{slider-prefix}-track-vertical & {
+      top: 0;
+      left: @slider-size-button-width + 3;
+      height: 100%;
+
+      &-text {
+        transform: translateY(50%);
+      }
+    }
+  }
+
+  &-dots {
+    height: 100%;
+
+    .@{slider-prefix}-dot-wrapper {
+      position: absolute;
+      top: 50%;
+      font-size: @slider-font-size-dot;
+      transform: translate(-50%, -50%);
+
+      .@{slider-prefix}-track-vertical & {
+        top: unset;
+        left: 50%;
+        transform: translate(-50%, 50%);
+      }
+
+      .@{slider-prefix}-dot {
+        box-sizing: border-box;
+        width: @slider-size-dot-width;
+        height: @slider-size-dot-width;
+        background-color: @slider-color-dot-bg;
+        border: @slider-border-size-dot solid @slider-color-road-bg;
+        border-radius: 50%;
+        border-radius: 50%;
+
+        &-active {
+          border-color: @slider-color-bar-bg;
+        }
+      }
+    }
+  }
+
+  &-ticks {
+    .@{slider-prefix}-tick {
+      position: absolute;
+      top: 50%;
+      width: @slider-size-tick-width;
+      height: @slider-size-tick-height;
+      margin-top: -(@slider-size-road-width / 2);
+      background: @slider-color-road-bg;
+      transform: translate(-50%, -100%);
+
+      &-active {
+        background: @slider-color-bar-bg;
+      }
+
+      .@{slider-prefix}-vertical & {
+        top: unset;
+        left: 50%;
+        width: @slider-size-tick-height;
+        height: @slider-size-tick-width;
+        margin-top: unset;
+        transform: translate((@slider-size-road-width / 2), 50%);
+      }
+    }
+  }
+
+  &-input {
+    display: flex;
+    align-items: center;
+    margin-left: @slider-spacing-input-margin-left;
+
+    .@{slider-prefix}-vertical & {
+      margin-left: 0;
+    }
+
+    > .@{prefix}-input-number {
+      width: @slider-size-input-width;
+      height: @slider-size-input-height;
+      overflow: visible;
+      line-height: normal;
+
+      input {
+        text-align: center;
+      }
+    }
+
+    &-hyphens {
+      /* prettier-ignore */
+      margin: 0 ((@slider-size-input_range-width - @slider-size-input_range_content-width) / 2);
+      width: @slider-size-input_range_content-width;
+      height: @slider-size-input_range_content-height;
+      background: @slider-color-input_range_content-bg;
+    }
+  }
+}

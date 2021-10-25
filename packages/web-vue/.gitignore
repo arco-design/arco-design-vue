@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+.coverage/
+
+node_modules/
+**/.DS_Store
+
+dist/
+lib/
+es/
+
+components/icon
+icon/icons.json
+
+.eslintcache

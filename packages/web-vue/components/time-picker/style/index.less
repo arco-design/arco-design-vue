@@ -1,0 +1,94 @@
+@import './token.less';
+
+@time-picker-prefix-cls: ~'@{prefix}-timepicker';
+
+.@{time-picker-prefix-cls} {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+
+  &-container {
+    overflow: hidden;
+    background-color: var(--color-bg-popup);
+    border: 1px solid @timepicker-color-border;
+    border-radius: @timepicker-wrapper-border-radius;
+    box-shadow: @popup-box-shadow-base;
+  }
+
+  &-column {
+    box-sizing: border-box;
+    width: @timepicker-column-width;
+    height: @timepicker-column-height;
+    overflow: hidden;
+
+    &:not(:last-child) {
+      border-right: 1px solid @timepicker-color-border;
+    }
+
+    &:hover {
+      overflow-y: auto;
+    }
+
+    ul {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      &::after {
+        display: block;
+        width: 100%;
+        height: @timepicker-column-height - @timepicker-cell-height -
+          @timepicker-cell-spacing * 2;
+        content: '';
+      }
+    }
+  }
+
+  &-cell {
+    padding: @timepicker-cell-spacing 0;
+    color: @timepicker-color-text-cell;
+    font-weight: @timepicker-font-weight-cell;
+    cursor: pointer;
+
+    &-inner {
+      height: @timepicker-cell-height;
+      padding-left: 24px;
+      font-size: 14px;
+      line-height: @timepicker-cell-height;
+    }
+
+    &:not(&-selected):not(&-disabled):hover &-inner {
+      background-color: @timepicker-color-bg-cell_hover;
+    }
+  }
+
+  &-cell-selected &-cell-inner {
+    font-weight: @timepicker-font-weight-cell_active;
+    background-color: @timepicker-color-bg-cell_active;
+  }
+
+  &-cell-disabled {
+    color: @timepicker-color-text-cell_disabled;
+    cursor: not-allowed;
+  }
+
+  &-footer-extra-wrapper {
+    padding: 8px;
+    color: var(--color-text-1);
+    font-size: @font-size-body-1;
+    border-top: 1px solid @timepicker-color-border;
+  }
+
+  &-footer-btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-top: 1px solid @timepicker-color-border;
+
+    & :only-child {
+      margin-left: auto;
+    }
+  }
+}

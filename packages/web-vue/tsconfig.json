@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "es",
+    "target": "ES2015",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "strict": true,
+    "allowJs": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "preserve"
+  }
+}

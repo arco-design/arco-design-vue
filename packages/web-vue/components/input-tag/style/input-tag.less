@@ -1,0 +1,110 @@
+@import '../../style/mixins/index.less';
+@import '../../input/style/token.less';
+@import '../../input/style/input.less';
+@import './token.less';
+
+.input-tag-style(@cls) {
+  .input-wrapper-style(@cls);
+
+  &-has-tag {
+    padding-right: @input-tag-padding-horizontal;
+    padding-left: @input-tag-padding-horizontal;
+  }
+
+  &-has-prefix {
+    padding-left: @input-padding-horizontal;
+  }
+
+  &-has-suffix {
+    padding-right: @input-padding-horizontal;
+  }
+
+  &-inner {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .@{cls}-tag {
+      display: inline-flex;
+      align-items: center;
+      color: @input-tag-color-text_default;
+      background-color: @input-tag-tag-color-bg;
+      border-color: @input-tag-tag-color-border;
+      margin-right: @input-tag-tag-margin-right;
+      font-size: @input-tag-tag-font-size;
+
+      .@{prefix}-icon-hover:hover::before {
+        background-color: @input-tag-tag-remove-icon-color-bg;
+      }
+    }
+
+  }
+
+  &-input {
+    .input-style();
+  }
+
+  &-mirror {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: pre;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &.@{cls}-focus {
+    .@{cls}-tag {
+      background-color: @input-tag-tag-color-bg_focus;
+      border-color: @input-tag-tag-color-border_focus;
+    }
+
+    .@{prefix}-icon-hover:hover::before {
+      background-color: @input-tag-tag-remove-icon-color-bg_focus;
+    }
+  }
+
+  &.@{cls}-disabled {
+    .@{cls}-tag {
+      color: @input-tag-color-text_disabled;
+      background-color: @input-tag-tag-color-bg_disabled;
+      border-color: @input-tag-tag-color-border_disabled;
+    }
+  }
+
+  &-readonly {
+    cursor: default;
+  }
+
+  .size(@size) {
+    &-size-@{size} {
+      @font-size: ~'input-tag-size-@{size}-font-size';
+      @height: ~'input-tag-size-@{size}-height';
+      @tag-height: ~'input-tag-size-@{size}-tag-height';
+
+      font-size: @@font-size;
+
+      .@{cls}-inner {
+        min-height: @@height - (@input-tag-border-width * 2);
+        padding-top: (@@height / 2) - (@@tag-height / 2) -
+          @input-tag-border-width - @input-tag-tag-margin-vertical;
+        padding-bottom: $padding-top;
+      }
+
+      .@{cls}-tag,
+      .@{cls}-input {
+        height: @@tag-height;
+        margin-top: (@input-tag-tag-margin-vertical / 2);
+        margin-bottom: $margin-top;
+        line-height: $height - 2;
+      }
+    }
+  }
+
+  .size(mini);
+  .size(medium);
+  .size(small);
+  .size(large);
+}

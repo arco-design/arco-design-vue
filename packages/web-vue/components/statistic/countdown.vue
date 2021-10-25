@@ -1,0 +1,133 @@
+<template>
+  <div :class="[`${prefixCls}`, `${prefixCls}-countdown`]">
+    <div v-if="title || $slots.title" :class="`${prefixCls}-title`">
+      <slot name="title">
+        {{ title }}
+      </slot>
+    </div>
+    <div :class="`${prefixCls}-content`">
+      <div :class="`${prefixCls}-value`">
+        {{ displayValue }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import {
+  defineComponent,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
+import dayjs from 'dayjs';
+import { getPrefixCls } from '../_utils/global-config';
+import { getDateString } from './utils';
+
+export default defineComponent({
+  name: 'Countdown',
+  props: {
+    /**
+     * @zh 倒计时的标题
+     * @en Countdown title
+     */
+    title: String,
+    /**
+     * @zh 倒计时的值
+     * @en Countdown value
+     */
+    value: {
+      type: Number,
+      default: () => Date.now() + 300000,
+    },
+    /**
+     * @zh 用于修正初始化时间显示不正确
+     * @en Used to correct the incorrect display of the initialization time
+     */
+    now: {
+      type: Number,
+      default: () => Date.now(),
+    },
+    /**
+     * @zh 倒计时的展示格式
+     * @en Countdown display format
+     */
+    format: {
+      type: String,
+      default: 'HH:mm:ss',
+    },
+    /**
+     * @zh 是否开始倒计时
+     * @en Whether to start the countdown
+     */
+    start: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  emits: ['finish'],
+  /**
+   * @zh 标题
+   * @en Title
+   * @slot title
+   */
+  setup(props, { emit }) {
+    const prefixCls = getPrefixCls('statistic');
+    const { start } = toRefs(props);
+
+    const displayValue = ref(
+      getDateString(
+        Math.max(dayjs(props.value).diff(dayjs(props.now), 'millisecond'), 0),
+        props.format
+      )
+    );
+
+    const timer = ref(0);
+
+    const stopTimer = () => {
+      if (timer.value) {
+        window.clearInterval(timer.value);
+        timer.value = 0;
+      }
+    };
+
+    const startTimer = () => {
+      if (dayjs(props.value).valueOf() < Date.now()) {
+        return;
+      }
+
+      timer.value = window.setInterval(() => {
+        const _value = dayjs(props.value).diff(dayjs(), 'millisecond');
+        if (_value <= 0) {
+          stopTimer();
+          emit('finish');
+        }
+        displayValue.value = getDateString(Math.max(_value, 0), props.format);
+      }, 1000 / 30);
+    };
+
+    onMounted(() => {
+      if (props.start) {
+        startTimer();
+      }
+    });
+
+    onBeforeUnmount(() => {
+      stopTimer();
+    });
+
+    watch(start, (value) => {
+      if (value && !timer.value) {
+        startTimer();
+      }
+    });
+
+    return {
+      prefixCls,
+      displayValue,
+    };
+  },
+});
+</script>

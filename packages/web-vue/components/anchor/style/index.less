@@ -1,0 +1,99 @@
+@import './token.less';
+
+@anchor-prefix-cls: ~'@{prefix}-anchor';
+
+.@{anchor-prefix-cls} {
+  position: relative;
+  width: @anchor-width;
+  overflow: auto;
+
+  &-line {
+    &-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: @anchor-line-width;
+      height: @anchor-line-slider-height;
+      margin-top: 4px + @anchor-title-padding-vertical;
+      background-color: @anchor-color-bg-line_active;
+      transition: top @transition-duration-2
+        @transition-timing-function-standard;
+    }
+  }
+
+  &-list {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: @anchor-line-margin-right - @anchor-title-padding-horizontal;
+    padding-left: 0;
+    list-style: none;
+
+    &::before {
+      position: absolute;
+      left: -(@anchor-line-margin-right - @anchor-title-padding-horizontal);
+      width: @anchor-line-width;
+      height: 100%;
+      background-color: @anchor-color-bg-line;
+      content: '';
+    }
+  }
+
+  &-sublist {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &-link-item {
+    margin-bottom: @anchor-title-margin-bottom;
+
+    .@{anchor-prefix-cls}-link {
+      display: block;
+      margin-bottom: @anchor-title-margin-bottom;
+      padding: @anchor-title-padding-vertical @anchor-title-padding-horizontal;
+      overflow: hidden;
+      color: @anchor-color-title;
+      font-size: @anchor-font-size-title;
+      line-height: @line-height-base;
+      white-space: nowrap;
+      text-decoration: none;
+      text-overflow: ellipsis;
+      border-radius: @anchor-border-radius-title-hover;
+      cursor: pointer;
+
+      &:hover {
+        color: @anchor-color-title_hover;
+        font-weight: @anchor-font-weight-title_hover;
+        background-color: @anchor-color-bg-title_hover;
+      }
+    }
+  }
+
+  &-link-active > &-link {
+    color: @anchor-color-title_active;
+    font-weight: @anchor-font-weight-title_active;
+    transition: all @transition-duration-1 @transition-timing-function-linear;
+  }
+
+  &-link-item &-link-item {
+    margin-left: @anchor-item-inner-margin-left;
+  }
+
+  // line-less
+  &-line-less &-list {
+    margin-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &-line-less &-link-active > &-link {
+    color: @anchor-lineless-color-title_active;
+    font-weight: @anchor-lineless-font-weight-title_active;
+    background-color: @anchor-lineless-bg-title_active;
+  }
+}

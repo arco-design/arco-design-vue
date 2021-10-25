@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<textarea> demo: render [auto-size] correctly 1`] = `
+"<div class=\\"arco-textarea-wrapper\\">
+  <div class=\\"arco-textarea-mirror\\">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
+  </div><textarea class=\\"arco-textarea\\"></textarea>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`<textarea> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-textarea-wrapper\\">
+  <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`<textarea> demo: render [word-limit] correctly 1`] = `
+"<div class=\\"arco-textarea-wrapper\\">
+  <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
+  <div class=\\"arco-textarea-word-limit\\">0/10</div>
+  <!--v-if-->
+</div>"
+`;

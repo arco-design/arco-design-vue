@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<skeleton> demo: render [animation] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>Animation</span></div>
+      <div class=\\"arco-space-item\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+          <!--v-if-->
+        </button></div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-skeleton arco-skeleton-animation\\">
+      <div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+        <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+          <ul class=\\"arco-skeleton-line\\">
+            <li class=\\"arco-skeleton-line-row\\" style=\\"height: 20px;\\"></li>
+          </ul>
+          <ul class=\\"arco-skeleton-line\\">
+            <li class=\\"arco-skeleton-line-row\\" style=\\"height: 20px; margin-top: 15px;\\"></li>
+          </ul>
+          <ul class=\\"arco-skeleton-line\\">
+            <li class=\\"arco-skeleton-line-row\\" style=\\"height: 20px; margin-top: 15px;\\"></li>
+          </ul>
+        </div>
+        <div class=\\"arco-space-item\\">
+          <div class=\\"arco-skeleton-shape arco-skeleton-shape-square arco-skeleton-shape-medium\\"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<skeleton> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-skeleton\\">
+  <div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+    <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+      <ul class=\\"arco-skeleton-line\\">
+        <li class=\\"arco-skeleton-line-row\\" style=\\"height: 20px;\\"></li>
+      </ul>
+      <ul class=\\"arco-skeleton-line\\">
+        <li class=\\"arco-skeleton-line-row\\" style=\\"height: 20px; margin-top: 15px;\\"></li>
+      </ul>
+      <ul class=\\"arco-skeleton-line\\">
+        <li class=\\"arco-skeleton-line-row\\" style=\\"height: 20px; margin-top: 15px;\\"></li>
+      </ul>
+    </div>
+    <div class=\\"arco-space-item\\">
+      <div class=\\"arco-skeleton-shape arco-skeleton-shape-square arco-skeleton-shape-medium\\"></div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<skeleton> demo: render [type] correctly 1`] = `
+"<div class=\\"arco-skeleton\\">
+  <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+    <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+      <div class=\\"arco-skeleton-shape arco-skeleton-shape-square arco-skeleton-shape-small\\"></div>
+    </div>
+    <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+      <div class=\\"arco-skeleton-shape arco-skeleton-shape-square arco-skeleton-shape-medium\\"></div>
+    </div>
+    <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+      <div class=\\"arco-skeleton-shape arco-skeleton-shape-square arco-skeleton-shape-large\\"></div>
+    </div>
+    <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+      <div class=\\"arco-skeleton-shape arco-skeleton-shape-circle arco-skeleton-shape-small\\"></div>
+    </div>
+    <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+      <div class=\\"arco-skeleton-shape arco-skeleton-shape-circle arco-skeleton-shape-medium\\"></div>
+    </div>
+    <div class=\\"arco-space-item\\">
+      <div class=\\"arco-skeleton-shape arco-skeleton-shape-circle arco-skeleton-shape-large\\"></div>
+    </div>
+  </div>
+</div>"
+`;

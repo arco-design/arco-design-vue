@@ -1,0 +1,45 @@
+.arco-vue-aside {
+  position: fixed;
+  top: 61px;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 180px;
+  padding: 0 24px;
+  background-color: var(--color-bg-1);
+  border-left: 1px solid var(--color-border);
+  transition: right 200ms;
+
+  .aside-top {
+    margin: 40px 0;
+  }
+
+  .aside-collapse-btn {
+    position: relative;
+    left: 0;
+    transition: left 200ms;
+
+    &-collapse {
+      left: -52px;
+      width: 28px;
+      background-color: var(--color-bg-5);
+      border-radius: 18px 0 0 18px;
+      box-shadow: -1px 0 5px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .aside-expand-btn {
+    position: absolute;
+    left: -28px;
+    width: 28px;
+    color: var(--color-text-2);
+    background-color: var(--color-bg-5);
+    border: 1px solid transparent;
+    border-radius: 18px 0 0 18px;
+    box-shadow: -1px 0 5px 0 rgb(0 0 0 / 10%);
+  }
+
+  &&-collapse {
+    right: -180px;
+  }
+}

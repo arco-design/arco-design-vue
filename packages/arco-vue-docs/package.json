@@ -1,0 +1,52 @@
+{
+  "name": "@arco-design/arco-vue-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Arco Design Vue 2.0 Docs",
+  "author": "wangchen <wangchen.flsion@bytedance.com>",
+  "homepage": "https://arco.design/vue",
+  "license": "MIT",
+  "scripts": {
+    "start": "arco-vue-scripts dev:site",
+    "build": "arco-vue-scripts build:site",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{less,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@arco-design/arco-vue-docs-navbar": "^0.1.0",
+    "@arco-design/arco-vue-scripts": "^0.2.0",
+    "@arco-design/web-vue": "^2.0.0-beta.10",
+    "@types/nprogress": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "axios": "^0.21.1",
+    "clipboard": "^2.0.6",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.7.0",
+    "nprogress": "^0.2.0",
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "typescript": "^4.2.4",
+    "vue": "^3.2.2",
+    "vue-i18n": "^9.1.6",
+    "vue-router": "^4.0.10"
+  }
+}

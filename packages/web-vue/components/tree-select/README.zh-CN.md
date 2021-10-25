@@ -1,0 +1,89 @@
+```yaml
+meta:
+  type: 组件
+  category: 数据输入
+title: 树选择 TreeSelect
+description: 可以对树形结构数据进行选择。
+```
+
+@import ./__demo__/basic.md
+
+@import ./__demo__/label-in-value.md
+
+@import ./__demo__/control.md
+
+@import ./__demo__/load-more.md
+
+@import ./__demo__/search.md
+
+@import ./__demo__/search-remote.md
+
+@import ./__demo__/size.md
+
+@import ./__demo__/trigger-element.md
+
+@import ./__demo__/multiple.md
+
+@import ./__demo__/checkable.md
+
+@import ./__demo__/checked-strategy.md
+
+@import ./__demo__/popup-visible.md
+
+@import ./__demo__/field-names.md
+
+@import ./__demo__/virtual.md
+
+
+### `<tree-select>` Props
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|disabled|是否禁用|`boolean`|`false`|
+|loading|是否为加载中状态|`boolean`|`false`|
+|error|是否为错误状态|`boolean`|`false`|
+|size|选择框的大小。对应 `24px`, `28px`, `32px`, `36px`|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|border|是否显示边框|`boolean`|`false`|
+|allow-search|是否允许搜索|`boolean`|`false`|
+|allow-clear|是否允许清除|`boolean`|`false`|
+|placeholder|提示文案|`string`|`-`|
+|retain-input-value|是否在搜索框聚焦时保留现有内容|`boolean`|`true`|
+|max-tags|最多显示的标签数量，仅在多选模式有效|`number`|`-`|
+|multiple|是否支持多选|`boolean`|`false`|
+|default-value|默认值|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
+|model-value **(v-model)**|绑定值|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
+|field-names|指定节点数据中的字段名|`FieldNames`|`-`|
+|data|数据|`TreeNodeData[]`|`[]`|
+|label-in-value|设置value格式。默认是string，设置为true时候，value格式为： { label: string, value: string }|`boolean`|`false`|
+|tree-checkable|是否展示复选框|`boolean`|`false`|
+|tree-check-strictly|父子节点是否关联|`boolean`|`false`|
+|tree-checked-strategy|定制回显方式|`'all' \| 'parent' \| 'child'`|`'all'`|
+|tree-props|可以接受所有 [Tree](/vue/component/tree) 组件的Props|`Partial<TreeProps>`|`-`|
+|trigger-props|可以接受所有 [Tigger](/vue/component/trigger) 组件的Props|`Record<string, any>`|`-`|
+|popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`|
+|default-popup-visible|默认弹出框是否可见|`boolean`|`false`|
+|dropdown-style|下拉框样式|`CSSProperties`|`-`|
+|dropdown-class-name|下拉框样式 class|`string \| string[]`|`-`|
+|filter-tree-node|自定义节点过滤函数|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`|
+|load-more|动态加载数据|`(nodeData: TreeNodeData) => Promise<void>`|`-`|
+|disable-filter|禁用内部过滤逻辑|`boolean`|`false`|
+|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
+### `<tree-select>` Events
+
+|事件名|描述|参数|
+|---|---|---|
+|change|值改变时触发|selectedValue: `string \| LabelValue \| string[] \| LabelValue[] \| undefined`|
+|popup-visible-change|下拉框显示状态改变时触发|visible: `boolean`|
+|search|搜索值变化时触发|searchKey: `string`|
+|clear|点击清除时触发|-|
+### `<tree-select>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|trigger|自定义触发元素|-|
+|prefix|前缀|-|
+|tag|标签|-|
+|loader|定制加载中显示的内容|-|
+|empty|定制空数据展示|-|
+
+

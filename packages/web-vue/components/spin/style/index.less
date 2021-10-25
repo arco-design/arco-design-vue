@@ -1,0 +1,56 @@
+@import './token.less';
+@import './dot-loading.less';
+
+@spin-prefix-cls: ~'@{prefix}-spin';
+
+.@{spin-prefix-cls} {
+  display: inline-block;
+
+  &-with-tip {
+    text-align: center;
+  }
+
+  &-icon {
+    color: @spin-color-icon;
+    font-size: @spin-font-size-icon;
+  }
+
+  &-tip {
+    margin-top: @spin-margin-top-tip;
+    color: @spin-color-text;
+    font-weight: @spin-font-weight;
+    font-size: @spin-font-size-text;
+  }
+
+  &-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    text-align: center;
+    background-color: var(--color-spin-layer-bg);
+    transition: opacity @transition-duration-1
+      @transition-timing-function-linear;
+    user-select: none;
+  }
+
+  &-loading {
+    position: relative;
+    user-select: none;
+  }
+
+  &-loading &-mask-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+  }
+
+  &-loading &-children::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

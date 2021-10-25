@@ -1,0 +1,477 @@
+@import '../../style/mixins/index.less';
+@import './token.less';
+@import '../../dropdown/style/token.less';
+
+@menu-prefix-cls: ~'@{prefix}-menu';
+
+.applyStyleToItem(@style) {
+  .@{menu-prefix-cls}-item,
+  .@{menu-prefix-cls}-group-title,
+  .@{menu-prefix-cls}-pop-header,
+  .@{menu-prefix-cls}-inline-header {
+    @style();
+  }
+}
+
+.@{menu-prefix-cls} {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: @menu-font-size;
+  line-height: @menu-line-height;
+  transition: width @transition-duration-2 @transition-timing-function-standard;
+
+  // 设置菜单层级的缩进
+  &-indent {
+    display: inline-block;
+    width: @menu-item-indent-spacing;
+  }
+
+  // menu-item 一些与 theme 和 mode 无关的样式
+  .item-base() {
+    @style: {
+      position: relative;
+      box-sizing: border-box;
+      border-radius: @menu-border-radius;
+      cursor: pointer;
+
+      &.@{menu-prefix-cls}-disabled {
+        cursor: not-allowed;
+      }
+
+      &.@{menu-prefix-cls}-selected {
+        font-weight: @menu-font-weight-item-selected;
+        transition: color @transition-duration-2
+          @transition-timing-function-linear;
+      }
+
+      .@{prefix}-icon {
+        margin-right: @menu-margin-right-item-prefix-icon;
+      }
+    };
+
+    .applyStyleToItem(@style);
+  }
+
+  .item-mode(@mode) {
+    @style-both: {
+      padding: 0 ~'@{menu-@{mode}-item-padding-horizontal}';
+      line-height: ~'@{menu-@{mode}-item-height}';
+
+      .@{menu-prefix-cls}-icon-suffix .@{prefix}-icon {
+        margin-right: 0;
+      }
+    };
+
+    @style-vertical-only: {
+      margin-bottom: @menu-item-gap;
+      .text-ellipsis();
+
+      .@{menu-prefix-cls}-item-inner {
+        .text-ellipsis();
+
+        width: 100%;
+      }
+
+      .@{menu-prefix-cls}-icon-suffix {
+        position: absolute;
+        right: @menu-vertical-item-padding-horizontal;
+      }
+    };
+
+    @style-horizontal-only: {
+      .@{prefix}-icon {
+        margin-right: @menu-horizontal-margin-right-item-prefix-icon;
+      }
+
+      .@{menu-prefix-cls}-icon-suffix {
+        margin-left: @menu-margin-left-item-suffix-icon;
+      }
+    };
+
+    .applyStyleToItem(@style-both);
+    .applyStyleToItem(if(@mode = vertical, @style-vertical-only, @style-horizontal-only));
+  }
+
+  .theme(@theme) {
+    &-@{theme} {
+      background-color: ~'@{menu-@{theme}-color-bg}';
+
+      // 处理普通菜单项的状态变化
+      @item-style: {
+        color: ~'@{menu-@{theme}-color-item_default}';
+        background-color: ~'@{menu-@{theme}-color-bg-item_default}';
+
+        .@{prefix}-icon {
+          color: ~'@{menu-@{theme}-color-icon_default}';
+        }
+
+        &:hover {
+          color: ~'@{menu-@{theme}-color-item_hover}';
+          background-color: ~'@{menu-@{theme}-color-bg-item_hover}';
+
+          .@{prefix}-icon {
+            color: ~'@{menu-@{theme}-color-icon_hover}';
+          }
+        }
+
+        &.@{menu-prefix-cls}-selected {
+          color: ~'@{menu-@{theme}-color-item_selected}';
+
+          .@{prefix}-icon {
+            color: ~'@{menu-@{theme}-color-icon_selected}';
+          }
+        }
+
+        &.@{menu-prefix-cls}-disabled {
+          color: ~'@{menu-@{theme}-color-item_disabled}';
+          background-color: ~'@{menu-@{theme}-color-bg-item_disabled}';
+
+          .@{prefix}-icon {
+            color: ~'@{menu-@{theme}-color-icon_disabled}';
+          }
+        }
+      };
+
+      .applyStyleToItem(@item-style);
+
+      // 只有 menuItem 选中时需要背景色
+      .@{menu-prefix-cls}-item.@{menu-prefix-cls}-selected {
+        background-color: ~'@{menu-@{theme}-color-bg-item_selected}';
+      }
+
+      //  子菜单被选中时，没有背景色，所以可以单独设置字体色
+      .@{menu-prefix-cls}-inline-header.@{menu-prefix-cls}-selected {
+        color: ~'@{menu-@{theme}-color-submenu_selected}';
+
+        .@{prefix}-icon {
+          color: ~'@{menu-@{theme}-color-submenu_selected}';
+        }
+
+        &:hover {
+          background-color: ~'@{menu-@{theme}-color-bg-submenu_selected_hover}';
+        }
+      }
+
+      // 为水平菜单添加项目选中的样式
+      &.@{menu-prefix-cls}-horizontal {
+        @item-selected-style: {
+          &.@{menu-prefix-cls}-selected {
+            background: none;
+            transition: color @transition-duration-2
+              @transition-timing-function-linear;
+
+            &:hover {
+              background-color: ~'@{menu-@{theme}-color-bg-item_hover}';
+            }
+          }
+        };
+
+        .applyStyleToItem(@item-selected-style);
+      }
+
+      // 处理标题样式
+      .@{menu-prefix-cls}-group-title {
+        color: ~'@{menu-@{theme}-color-group-title}';
+        // 快速消除 hover 的特殊样式
+        pointer-events: none;
+      }
+
+      // 展开折叠按钮颜色
+      .@{menu-prefix-cls}-collapse-button {
+        color: ~'@{menu-@{theme}-color-button}';
+        background-color: ~'@{menu-@{theme}-color-bg-button}';
+
+        &:hover {
+          background-color: ~'@{menu-@{theme}-color-bg-button_hover}';
+        }
+      }
+    }
+  }
+
+  .item-base();
+  .theme(light);
+  .theme(dark);
+
+  // 校正 a 标签颜色
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+    color: inherit;
+    text-decoration: none;
+    cursor: inherit;
+  }
+
+  &-inner {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  // 展开折叠图标
+  &-icon-suffix {
+    &.is-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-vertical {
+    .item-mode(vertical);
+
+    .@{menu-prefix-cls}-inner {
+      padding: @menu-vertical-padding-vertical @menu-vertical-padding-horizontal;
+    }
+
+    .@{menu-prefix-cls}-item.@{menu-prefix-cls}-item-indented {
+      display: flex;
+    }
+
+    // 为 header 右侧预留下放置 suffixIcon 的空间
+    .@{menu-prefix-cls}-pop-header,
+    .@{menu-prefix-cls}-inline-header {
+      padding-right: @menu-vertical-item-padding-horizontal + 16;
+    }
+  }
+
+  // 水平菜单中，仅允许出现普通 item 和 popSubMenu
+  &-horizontal {
+    width: auto;
+    height: auto;
+
+    .item-mode(horizontal);
+
+    .@{menu-prefix-cls}-inner {
+      display: flex;
+      align-items: center;
+      padding: @menu-horizontal-padding-vertical
+        @menu-horizontal-padding-horizontal;
+    }
+
+    .@{menu-prefix-cls}-item,
+    .@{menu-prefix-cls}-pop {
+      display: inline-block;
+      vertical-align: middle;
+
+      &:not(:first-child) {
+        margin-left: @menu-horizontal-item-gap;
+      }
+    }
+  }
+
+  // 水平菜单的动态折叠容器
+  &-overflow {
+    &-wrap {
+      width: 100%;
+    }
+
+    &-sub-menu-mirror,
+    &-hidden-menu-item {
+      position: absolute !important;
+      white-space: nowrap;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  // 选中状态下的提示浮标，相对于 MenuItem 定位
+  &-selected-label {
+    position: absolute;
+    right: $left;
+    bottom: -@menu-horizontal-padding-vertical;
+    left: @menu-horizontal-item-padding-horizontal;
+    height: @menu-height-label-item-selected;
+    background-color: @menu-color-label-item-selected;
+  }
+
+  &-pop-button {
+    width: auto;
+    background: none;
+    box-shadow: none;
+
+    &.@{menu-prefix-cls}-collapsed {
+      width: auto;
+    }
+
+    @item-style: {
+      width: @menu-pop-button-size;
+      height: $width;
+      margin-bottom: @menu-pop-button-margin-bottom;
+      line-height: $height;
+      border: 1px solid @menu-pop-button-border-color;
+      border-radius: 50%;
+      box-shadow: @menu-pop-button-box-shadow;
+    };
+
+    .applyStyleToItem(@item-style);
+  }
+
+  // 折叠样式
+  &-collapsed {
+    width: @menu-collapse-width;
+
+    .@{menu-prefix-cls}-inner {
+      padding: @menu-collapse-padding-vertical @menu-collapse-padding-horizontal;
+    }
+
+    .@{menu-prefix-cls}-icon-suffix {
+      display: none;
+    }
+  }
+
+  // 折叠按钮
+  &-collapse-button {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: @menu-width-collapse-button;
+    height: @menu-height-collapse-button;
+    border-radius: @menu-border-radius-collapse-button;
+    cursor: pointer;
+  }
+
+  // sub-menu-inline 的内容区域样式
+  &-inline-content {
+    height: auto;
+    overflow: hidden;
+    transition: height @transition-duration-2
+      @transition-timing-function-standard;
+
+    &-hide {
+      height: 0;
+    }
+  }
+
+  // 弹出的 ToolTip 中 a 标签的样式
+  &-item-tooltip a {
+    color: inherit;
+    cursor: text;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: inherit;
+    }
+  }
+
+  &-pop-trigger.@{prefix}-trigger-position-bl {
+    transform: translateY(@menu-horizontal-padding-vertical);
+
+    .@{prefix}-trigger-arrow {
+      z-index: 0;
+      border-top: 1px solid @menu-color-border-popup;
+      border-left: 1px solid @menu-color-border-popup;
+    }
+  }
+
+  &-pop-trigger.@{prefix}-trigger-position-rt {
+    transform: translateX(@menu-vertical-padding-horizontal);
+
+    .@{prefix}-trigger-arrow {
+      z-index: 0;
+      border-bottom: 1px solid @menu-color-border-popup;
+      border-left: 1px solid @menu-color-border-popup;
+    }
+  }
+}
+
+// trigger 里的 menu
+.@{prefix}-trigger {
+  &-menu {
+    position: relative;
+    box-sizing: border-box;
+    max-height: @dropdown-max-height;
+    padding: @dropdown-padding-vertical 0;
+    overflow: auto;
+    background-color: @dropdown-color-bg;
+    border: 1px solid @dropdown-color-border;
+    border-radius: @dropdown-border-radius;
+    box-shadow: @dropdown-box-shadow;
+
+    &-hidden {
+      display: none;
+    }
+
+    &-item,
+    &-pop-header {
+      position: relative;
+      // 避免 Trigger 的小箭头位于其上方
+      z-index: 1;
+      box-sizing: border-box;
+      width: 100%;
+      height: @dropdown-option-height;
+      padding: 0 @dropdown-option-padding-horizontal;
+
+      // default
+      color: @dropdown-option-color-text_default;
+      font-size: @dropdown-font-size;
+      line-height: $height;
+      text-align: left;
+      background-color: @dropdown-option-color-bg_default;
+      cursor: pointer;
+      .text-ellipsis();
+
+      // selected
+      &.@{prefix}-trigger-menu-selected {
+        color: @dropdown-option-color-text_selected;
+        font-weight: @dropdown-option-font-weight_selected;
+        background-color: @dropdown-option-color-bg_selected;
+        transition: all @transition-duration-1
+          @transition-timing-function-linear;
+      }
+
+      // hover
+      &:hover {
+        color: @dropdown-option-color-text_hover;
+        background-color: @dropdown-option-color-bg_hover;
+      }
+
+      // disabled
+      &.@{prefix}-trigger-menu-disabled {
+        color: @dropdown-option-color-text_disabled;
+        background-color: @dropdown-option-color-bg_disabled;
+        cursor: not-allowed;
+      }
+    }
+
+    &-pop-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .@{prefix}-trigger-menu-icon-suffix {
+        margin-left: @dropdown-margin-left-suffix-icon;
+      }
+    }
+
+    &-group {
+      &:first-child &-title {
+        padding-top: @dropdown-group-title-padding-top -
+          @dropdown-padding-vertical;
+      }
+    }
+
+    &-group-title {
+      box-sizing: border-box;
+      width: 100%;
+      padding: @dropdown-group-title-padding-top
+        @dropdown-group-title-padding-horizontal 0
+        @dropdown-group-title-padding-horizontal;
+      color: @dropdown-group-title-color-text;
+      font-size: @dropdown-group-title-font-size;
+      line-height: @dropdown-group-title-height;
+      .text-ellipsis();
+    }
+  }
+
+  &-menu-pop-trigger {
+    // 下拉框的 menu 弹出不需要小箭头
+    .@{prefix}-trigger-arrow {
+      display: none;
+    }
+  }
+}

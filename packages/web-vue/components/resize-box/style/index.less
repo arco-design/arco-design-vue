@@ -1,0 +1,60 @@
+@import './token.less';
+
+@resizebox-prefix-cls: ~'@{prefix}-resizebox';
+@resizebox-trigger-prefix-cls: ~'@{resizebox-prefix-cls}-trigger';
+
+.@{resizebox-prefix-cls} {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &-direction-left,
+  &-direction-right,
+  &-direction-top,
+  &-direction-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  &-direction-right {
+    right: 0;
+    left: unset;
+  }
+
+  &-direction-bottom {
+    top: unset;
+    bottom: 0;
+  }
+}
+
+// 伸缩触发杆
+.@{resizebox-trigger-prefix-cls} {
+  &-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: @resizeBox-trigger-color-icon;
+    font-size: @resizeBox-trigger-font-size-icon;
+    line-height: 1;
+    background-color: @resizeBox-trigger-color-background;
+  }
+
+  &-icon {
+    display: inline-block;
+    margin: -(@resizeBox-trigger-font-size-icon / 4);
+  }
+
+  &-vertical {
+    height: 100%;
+    cursor: col-resize;
+  }
+
+  &-horizontal {
+    width: 100%;
+    cursor: row-resize;
+  }
+}

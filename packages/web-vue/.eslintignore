@@ -1,0 +1,6 @@
+components/icon/*
+dist/*
+es/*
+lib/*
+/*.json
+/*.js

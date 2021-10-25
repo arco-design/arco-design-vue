@@ -1,0 +1,153 @@
+@import '../../style/mixins/index.less';
+@import './token.less';
+
+.input-wrapper-style(@cls) {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: @input-padding-horizontal;
+  padding-left: @input-padding-horizontal;
+  color: @input-color-text;
+  font-size: @input-size-default-font-size;
+  background-color: @input-color-bg;
+  border: @input-border-width solid @input-color-border;
+  border-radius: @input-border-radius;
+  cursor: text;
+  transition: color @transition-duration-1 @transition-timing-function-linear,
+    border-color @transition-duration-1 @transition-timing-function-linear,
+    background-color @transition-duration-1 @transition-timing-function-linear;
+
+  &:hover {
+    background-color: @input-color-bg_hover;
+    border-color: @input-color-border_hover;
+  }
+
+  &:focus-within,
+  &.@{cls}-focus {
+    background-color: @input-color-bg_focus;
+    border-color: @input-color-border_focus;
+    box-shadow: 0 0 0 @input-size-shadow_focus @input-color-shadow_focus;
+  }
+
+  // 禁用状态样式
+  &.@{cls}-disabled {
+    color: @input-color-text_disabled;
+    background-color: @input-color-bg_disabled;
+    border-color: @input-color-border_disabled;
+    cursor: not-allowed;
+
+    &:hover {
+      color: @input-color-text_disabled;
+      background-color: @input-color-bg_disabled;
+      border-color: @input-color-border_disabled;
+    }
+
+    .@{cls}-prefix,
+    .@{cls}-suffix {
+      color: inherit;
+    }
+  }
+
+  // 错误状态样式
+  &.@{cls}-error {
+    background-color: @input-color-bg_error;
+    border-color: @input-color-border_error;
+
+    &:hover {
+      background-color: @input-color-bg_error_hover;
+      border-color: @input-color-border_error_hover;
+    }
+  }
+
+  &.@{cls}-error:focus-within,
+  &.@{cls}-error&-focus {
+    background-color: @input-color-bg_error_focus;
+    border-color: @input-color-border_error_focus;
+    box-shadow: 0 0 0 @input-size-shadow_error_focus
+      @input-color-shadow_error_focus;
+  }
+
+  // 前后缀样式
+  .@{cls}-prefix,
+  .@{cls}-suffix {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    user-select: none;
+
+    > svg {
+      font-size: @input-size-default-icon-suffix-size;
+    }
+  }
+
+  .@{cls}-prefix {
+    padding-right: @input-padding-horizontal;
+    color: @input-color-prefix-text;
+  }
+
+  .@{cls}-suffix {
+    padding-left: @input-padding-horizontal;
+    color: @input-color-suffix-text;
+  }
+
+  // 清除按钮样式
+  .@{cls}-clear-btn {
+    display: none;
+    color: @input-color-icon-clear;
+    font-size: @input-size-icon-clear;
+    cursor: pointer;
+
+    > svg {
+      position: relative;
+      transition: color @transition-duration-1
+        @transition-timing-function-linear;
+    }
+  }
+
+  &:hover .@{cls}-clear-btn {
+    display: block;
+  }
+
+  // 没有选中情况下显示深色
+  &:not(.@{cls}-focus) .@{cls}-icon-hover:hover::before {
+    background-color: @input-color-icon-clear-bg_hover;
+  }
+}
+
+.input-style() {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  color: inherit;
+  line-height: @line-height-base;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  cursor: inherit;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &::placeholder {
+    color: @input-color-placeholder-text;
+  }
+
+  &[disabled]::placeholder {
+    color: @input-color-text_disabled;
+  }
+}
+
+.input-size(@size) {
+  @height: ~'input-size-@{size}-height';
+  @font-size: ~'input-size-@{size}-font-size';
+  @line-height: ~'input-size-@{size}-line-height';
+
+  /* prettier-ignore */
+  padding-top: (round(@@height - @input-border-width * 2 - $line-height * $font-size) / 2);
+
+  /* prettier-ignore */
+  padding-bottom: (round(@@height - @input-border-width * 2 - $line-height * $font-size) / 2);
+  font-size: @@font-size;
+  line-height: @@line-height;
+}

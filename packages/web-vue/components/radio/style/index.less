@@ -1,0 +1,293 @@
+@import '../../style/mixins/index.less';
+@import './token.less';
+
+@radio-prefix-cls: ~'@{prefix}-radio';
+
+.@{radio-prefix-cls},
+.@{radio-prefix-cls}-button {
+  > input[type='radio'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:focus + .@{prefix}-radio-icon-hover::before {
+      background-color: @icon-hover-color-bg;
+    }
+  }
+}
+
+.icon-hover(@radio-prefix-cls, @radio-layout-height, @radio-size-mask-height);
+
+.@{radio-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  padding-left: (@radio-size-mask-height / 2) - (@radio-layout-height / 2);
+  font-size: @radio-font-text-size;
+  line-height: unset;
+  cursor: pointer;
+
+  // radio circle
+  &-label {
+    margin-left: @radio-margin-text-left;
+    color: @radio-color-text;
+  }
+
+  &-icon-hover {
+    position: relative;
+    top: -0.09em;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  &-icon {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: @radio-layout-height;
+    height: @radio-layout-height;
+    line-height: @radio-layout-height;
+    border: @radio-border-width solid @radio-color-border;
+    border-radius: @radio-border-radius;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      box-sizing: border-box;
+      width: @radio-layout-height - @radio-border-width * 2;
+      height: @radio-layout-height - @radio-border-width * 2;
+      background-color: @radio-color-bg;
+      border-radius: @radio-border-radius;
+      transform: scale(1);
+      transition: transform @transition-duration-3
+        @transition-timing-function-overshoot;
+      content: '';
+    }
+  }
+
+  &:hover &-icon {
+    border-color: @radio-color-border_hover;
+  }
+
+  &-checked &-icon {
+    background-color: @radio-color-bg_checked;
+    border-color: @radio-color-bg_checked;
+
+    &::after {
+      background-color: var(--color-white);
+      transform: scale(0.4);
+    }
+  }
+
+  &-checked:hover &-icon {
+    border-color: @radio-color-bg_checked;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+
+    .@{prefix}-radio-icon-hover {
+      cursor: not-allowed;
+    }
+
+    .@{radio-prefix-cls}-label {
+      color: @radio-color-text_disabled;
+    }
+  }
+
+  &-disabled &-icon {
+    border-color: @radio-color-border_disabled;
+
+    &::after {
+      background-color: @radio-color-bg_disabled;
+    }
+  }
+
+  &-disabled:hover &-icon {
+    border-color: @radio-color-border_disabled;
+  }
+
+  &-checked&-disabled {
+    .@{radio-prefix-cls}-icon,
+    &:hover .@{radio-prefix-cls}-icon {
+      background-color: @radio-color-bg_checked_disabled;
+      border-color: @color-transparent;
+    }
+
+    .@{radio-prefix-cls}-label {
+      color: @radio-color-text_checked_disabled;
+    }
+  }
+
+  &:hover {
+    .@{prefix}-radio-icon-hover::before {
+      background-color: @radio-mask-bg-color-bg;
+    }
+  }
+}
+
+// group type
+.@{radio-prefix-cls}-group {
+  display: inline-block;
+  box-sizing: border-box;
+
+  .@{radio-prefix-cls} {
+    margin-right: @radio-group-margin-right;
+  }
+
+  // button type
+  &-button {
+    // ButtonGroup 中使用了 z-index: -1 的伪元素实现背景，为容器提供独立的层叠上下文以保证内部 Radio 表现正常
+    position: relative;
+    z-index: 0;
+    padding: (@radio-button-spacing / 2);
+    line-height: @radio-size-default-height - @radio-button-spacing * 2;
+  }
+}
+
+.@{radio-prefix-cls}-button {
+  position: relative;
+  display: inline-block;
+  margin: (@radio-button-spacing / 2);
+  color: @radio-button-color-text;
+  font-size: @radio-font-text-size;
+  line-height: @radio-size-default-height - @radio-button-spacing * 2;
+  background-color: @radio-button-color-bg;
+  border-radius: @radio-button-border-radius;
+  cursor: pointer;
+  transition: all @transition-duration-1 @transition-timing-function-linear;
+
+  &-content {
+    position: relative;
+    display: block;
+    padding: 0 @radio-button-padding-horizontal;
+  }
+
+  // 按钮之间的分割线
+  &:not(:first-of-type)::before {
+    position: absolute;
+    top: 50%;
+    left: -((@radio-button-spacing - @radio-button-size-separator-width) / 2) - @radio-button-size-separator-width;
+    display: block;
+    width: @radio-button-size-separator-width;
+    height: @radio-button-size-separator-height;
+    background-color: @radio-button-color-separator-bg;
+    transform: translateY(-50%);
+    transition: all @transition-duration-1 @transition-timing-function-linear;
+    content: '';
+  }
+
+  // 被选中的按钮不需要左右的分割线
+  &:hover::before,
+  &:hover + &::before,
+  &.@{radio-prefix-cls}-checked::before,
+  &.@{radio-prefix-cls}-checked + &::before {
+    opacity: 0;
+  }
+
+  // 按钮下层的背景色
+  &::after {
+    position: absolute;
+    top: $left;
+    right: $left;
+    bottom: $left;
+    left: -@radio-button-spacing;
+    z-index: -1;
+    display: block;
+    background-color: @radio-group-button-color-bg;
+    content: ' ';
+    pointer-events: none;
+  }
+
+  &:first-of-type::after {
+    border-top-left-radius: @radio-button-border-radius;
+    border-bottom-left-radius: @radio-button-border-radius;
+  }
+
+  &:last-of-type::after {
+    border-top-right-radius: @radio-button-border-radius;
+    border-bottom-right-radius: @radio-button-border-radius;
+  }
+
+  &:hover {
+    color: @radio-button-color-text_hover;
+    background-color: @radio-button-color-bg_hover;
+  }
+
+  &.@{radio-prefix-cls}-checked {
+    color: @radio-button-color-text_active;
+    font-weight: @radio-button-font-text-weight_active;
+    background-color: @radio-button-color-bg_active;
+  }
+
+  &.@{radio-prefix-cls}-disabled {
+    color: @radio-button-color-text_disabled;
+    background-color: @radio-button-color-bg_disabled;
+    cursor: not-allowed;
+  }
+
+  &.@{radio-prefix-cls}-disabled.@{radio-prefix-cls}-checked {
+    color: @radio-button-color-text_checked_disabled;
+    background-color: @radio-button-color-bg_checked_disabled;
+  }
+}
+
+// size small default large huge
+.@{radio-prefix-cls}-group {
+  &-size-small {
+    line-height: @radio-size-small-height;
+
+    &.@{radio-prefix-cls}-group-button,
+    .@{radio-prefix-cls}-button {
+      font-size: @radio-font-text-size_small;
+      line-height: @radio-size-small-height - @radio-button-spacing * 2;
+    }
+  }
+
+  &-size-large {
+    line-height: @radio-size-large-height;
+
+    &.@{radio-prefix-cls}-group-button,
+    .@{radio-prefix-cls}-button {
+      font-size: @radio-font-text-size_large;
+      line-height: @radio-size-large-height - @radio-button-spacing * 2;
+    }
+  }
+
+  &-size-mini {
+    line-height: @radio-size-mini-height;
+
+    &.@{radio-prefix-cls}-group-button,
+    .@{radio-prefix-cls}-button {
+      font-size: @radio-font-text-size_mini;
+      line-height: @radio-size-mini-height - @radio-button-spacing * 2;
+    }
+  }
+}
+
+// vertical direction
+.@{radio-prefix-cls}-group-direction-vertical {
+  // default radio
+  .@{radio-prefix-cls} {
+    display: block;
+    margin-right: 0;
+    line-height: @radio-group-size-line-height_vertical;
+  }
+}
+
+// dark mode
+
+@{arco-theme-tag}[arco-theme='dark'] {
+  .@{radio-prefix-cls}-button.@{radio-prefix-cls}-checked,
+  .@{radio-prefix-cls}-button:not(.@{radio-prefix-cls}-disabled):hover {
+    background-color: var(--color-fill-3);
+  }
+
+  .@{radio-prefix-cls}-button::after {
+    background-color: var(--color-bg-3);
+  }
+}

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<affix> demo: render [basic] correctly 1`] = `
+"<div>
+  <!--v-if-->
+  <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Affix Top
+    </button></div>
+</div>"
+`;
+
+exports[`<affix> demo: render [bottom] correctly 1`] = `
+"<div>
+  <!--v-if-->
+  <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->120px to affix bottom
+    </button></div>
+</div>"
+`;
+
+exports[`<affix> demo: render [container] correctly 1`] = `
+"<div style=\\"height: 200px; overflow: auto;\\">
+  <div style=\\"height: 400px; background: rgb(204, 204, 204); overflow: hidden;\\">
+    <div style=\\"margin: 40px;\\">
+      <!--v-if-->
+      <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+          <!--v-if-->Affix in scrolling container
+        </button></div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<affix> demo: render [fix-change] correctly 1`] = `
+"<div>
+  <!--v-if-->
+  <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->80px to affix bottom
+    </button></div>
+</div>"
+`;
+
+exports[`<affix> demo: render [top] correctly 1`] = `
+"<div>
+  <!--v-if-->
+  <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->80px to affix top
+    </button></div>
+</div>"
+`;

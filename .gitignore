@@ -1,0 +1,16 @@
+.idea/
+# .vscode/
+
+node_modules/
+**/.DS_Store
+
+package-lock.json
+yarn.lock
+lerna-debug.log
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

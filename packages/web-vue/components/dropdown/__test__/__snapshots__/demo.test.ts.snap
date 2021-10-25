@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<dropdown> demo: render [basic] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Click Me
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<dropdown> demo: render [context-menu] correctly 1`] = `
+"<div style=\\"display: flex; align-items: center; justify-content: center; height: 300px;\\">
+  <div>Click Me</div>
+</div>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<dropdown> demo: render [group] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Click Me
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<dropdown> demo: render [icon] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Click Me
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<dropdown> demo: render [position] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Bottom Left
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Bottom
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Bottom Right
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Top Left
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Top
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Top Right
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+</div>"
+`;
+
+exports[`<dropdown> demo: render [submenu] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Click Me
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<dropdown> demo: render [trigger] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Click Me
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Hover Me
+    </button>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+</div>"
+`;

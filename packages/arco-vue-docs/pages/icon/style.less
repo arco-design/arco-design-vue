@@ -1,0 +1,55 @@
+@import '../../../web-vue/components/style/theme/css-variables.less';
+
+.arco-vue-icon-header {
+  margin-top: 48px;
+}
+
+.arco-vue-icon-section {
+  margin-top: 40px;
+
+  &-title {
+    margin: 0;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+  }
+
+  .icon {
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-left: 1px solid var(--color-border);
+    }
+
+    &-item {
+      position: relative;
+      box-sizing: border-box;
+      width: 16.66%;
+      height: 140px;
+      border-right: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+
+      &-name {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: var(--color-text-1);
+      }
+
+      &-component {
+        margin-top: 10px;
+        font-size: 32px;
+        line-height: 140px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 200ms ease;
+
+        &:hover {
+          font-size: 48px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+```yaml
+meta:
+  type: Component
+  category: Layout
+title: Space
+description: Set the spacing between components.
+```
+
+*Auto translate by google.*
+
+@import ./__demo__/basic.md
+
+@import ./__demo__/vertical.md
+
+@import ./__demo__/size.md
+
+@import ./__demo__/align.md
+
+@import ./__demo__/wrap.md
+
+
+### `<space>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|align|Alignment|`'start' \| 'end' \| 'center' \| 'baseline'`|`-`|
+|direction|Spacing direction|`'vertical' \| 'horizontal'`|`'horizontal'`|
+|size|Spacing size, support for setting horizontal and vertical spacing separately|`number \| 'mini' \| 'small' \| 'medium' \| 'large' \| [SpaceSize, SpaceSize]`|`'small'`|
+|wrap|The spacing of the wrapping type, used in the scene of wrapping.|`boolean`|`false`|
+
+

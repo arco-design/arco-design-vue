@@ -1,0 +1,128 @@
+@import '../../time-picker/style/token.less';
+
+@date-panel-prefix-cls: ~'@{prefix}-panel-date';
+@time-picker-prefix-cls: ~'@{prefix}-timepicker';
+
+@datepicker-timepicker-height: 276px;
+
+.@{date-panel-prefix-cls} {
+  display: flex;
+  box-sizing: border-box;
+
+  &-inner {
+    width: @picker-panel-date-width;
+  }
+
+  &-inner .@{prefix}-picker-body {
+    padding-top: 0;
+  }
+
+  &-timepicker {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid @picker-panel-color-border;
+
+    &-title {
+      width: 100%;
+      height: 40px;
+      color: var(--color-text-1);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 40px;
+      text-align: center;
+      border-bottom: 1px solid @picker-panel-color-border;
+    }
+
+    .@{time-picker-prefix-cls} {
+      height: @datepicker-timepicker-height;
+      padding: 0 6px;
+      overflow: hidden;
+
+      &-column {
+        box-sizing: border-box;
+        width: auto;
+        height: 100%;
+        padding: 0 4px;
+
+        &::-webkit-scrollbar {
+          width: 0;
+        }
+      }
+
+      &-column:not(:last-child) {
+        border-right: 0;
+      }
+
+      ul::after {
+        height: @datepicker-timepicker-height - @timepicker-cell-height -
+          @timepicker-cell-spacing * 2;
+      }
+
+      &-cell {
+        width: 36px;
+
+        &-inner {
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    border-right: 1px solid @picker-panel-color-border;
+  }
+
+  &-with-view-tabs {
+    flex-direction: column;
+    min-width: 265px;
+
+    .@{date-panel-prefix-cls}-timepicker {
+      .@{time-picker-prefix-cls} {
+        &-column {
+          flex: 1;
+
+          &::-webkit-scrollbar {
+            width: 0;
+          }
+        }
+
+        &-cell {
+          width: 100%;
+          text-align: center;
+
+          &-inner {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &-view-tabs {
+    display: flex;
+    border-top: 1px solid @picker-panel-color-border;
+  }
+
+  &-view-tab-pane {
+    flex: 1;
+    height: @datepicker-view-tabs-height;
+    color: @datepicker-view-tab-pane-color-text_unactive;
+    font-size: @datepicker-view-tab-pane-font-size;
+    line-height: @datepicker-view-tabs-height;
+    text-align: center;
+    border-right: 1px solid @picker-panel-color-border;
+    cursor: pointer;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &-text {
+      margin-left: @datepicker-view-tab-pane-spacing-text-icon;
+    }
+
+    &-active {
+      color: @datepicker-view-tab-pane-color-text_active;
+    }
+  }
+}

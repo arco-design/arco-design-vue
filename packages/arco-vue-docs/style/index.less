@@ -1,0 +1,52 @@
+@import '../../web-vue/components/style/index.less';
+@import './demo.less';
+
+.arco-vue-site {
+  color: var(--color-text-2);
+  font-size: 14px;
+  background-color: var(--color-bg-1);
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-text-1);
+    font-weight: 500;
+  }
+
+  .arco-vue-body {
+    padding-top: 61px;
+  }
+
+  .site-backtop-btn {
+    background: var(--color-bg-5) !important;
+    border: 1px solid var(--color-fill-3) !important;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .link {
+    color: rgb(var(--arcoblue-6));
+    text-decoration: none;
+  }
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  background: none !important;
+}
+
+#nprogress .bar {
+  background: rgb(var(--arcoblue-6));
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px rgb(var(--arcoblue-6)), 0 0 5px rgb(var(--arcoblue-6));
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  text-shadow: none !important;
+}

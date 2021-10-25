@@ -1,0 +1,125 @@
+@import './token.less';
+
+@avatar-prefix-cls: ~'@{prefix}-avatar';
+
+.@{avatar-prefix-cls} {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  color: @avatar-color-text;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: @avatar-color-bg;
+
+  &-circle {
+    border-radius: @avatar-circle-border-radius;
+  }
+
+  &-circle &-image {
+    overflow: hidden;
+    border-radius: @avatar-circle-border-radius;
+  }
+
+  &-square {
+    border-radius: @avatar-square-border-radius;
+  }
+
+  &-square &-image {
+    overflow: hidden;
+    border-radius: @avatar-square-border-radius;
+  }
+
+  &-text {
+    position: absolute;
+    left: 50%;
+    font-weight: @avatar-font-weight-text;
+    // 避免继承行高导致的文字不居中
+    line-height: 1;
+    transform: translateX(-50%);
+    transform-origin: 0 center;
+  }
+
+  &-image {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    img,
+    picture {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-trigger-icon-button {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    z-index: 1;
+    width: @avatar-size-trigger-button;
+    height: @avatar-size-trigger-button;
+    color: @avatar-color-bg;
+    font-size: 12px;
+    line-height: @avatar-size-trigger-button;
+    text-align: center;
+    background-color: @avatar-color-trigger-button-bg;
+    border-radius: @radius-circle;
+    transition: background-color @transition-duration-1
+      @transition-timing-function-linear;
+  }
+
+  &-trigger-icon-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: @avatar-color-trigger-mask-icon;
+    font-size: 16px;
+    background-color: fade(@gray-10, @avatar-opacity-trigger-mask-bg);
+    border-radius: @avatar-square-border-radius;
+    opacity: 0;
+    transition: all @transition-duration-1 @transition-timing-function-linear;
+  }
+
+  &-circle &-trigger-icon-mask {
+    border-radius: @avatar-circle-border-radius;
+  }
+
+  &-with-trigger-icon {
+    cursor: pointer;
+  }
+
+  &-with-trigger-icon:hover &-trigger-icon-mask {
+    z-index: 2;
+    opacity: 1;
+  }
+
+  &-with-trigger-icon:hover &-trigger-icon-button {
+    background-color: @avatar-color-trigger-button-bg_hover;
+  }
+
+  // Group
+  &-group {
+    display: inline-block;
+    line-height: 0;
+
+    &-max-count-avatar {
+      cursor: default;
+    }
+  }
+
+  &-group & {
+    border: @avatar-group-item-border-width solid
+      @avatar-color-group-item-border;
+  }
+
+  &-group-popover &:not(:first-child) {
+    margin-left: @avatar-group-popover-item-spacing;
+  }
+}

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer should render Drawer 1`] = `
+"<!--teleport start-->
+<transition-stub>
+  <div class=\\"arco-drawer-container\\" style=\\"z-index: 1000; display: none;\\">
+    <transition-stub>
+      <div class=\\"arco-drawer-mask\\" style=\\"display: none;\\"></div>
+    </transition-stub>
+    <transition-stub>
+      <div class=\\"arco-drawer\\" style=\\"right: 0px; width: 250px; display: none;\\">
+        <div class=\\"arco-drawer-header\\">
+          <div class=\\"arco-drawer-title\\">Title</div>
+          <div class=\\"arco-drawer-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+        </div>
+        <div class=\\"arco-drawer-body\\">
+          <div>Modal Body</div>
+        </div>
+        <div class=\\"arco-drawer-footer\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <!--v-if-->取消
+          </button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <!--v-if-->确定
+          </button></div>
+      </div>
+    </transition-stub>
+  </div>
+</transition-stub>
+<!--teleport end-->"
+`;

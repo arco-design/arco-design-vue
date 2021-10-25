@@ -1,0 +1,57 @@
+@import './token.less';
+
+@trigger-prefix-cls: ~'@{prefix}-trigger';
+
+.@{trigger-prefix-cls} {
+  &-wrapper {
+    display: inline-block;
+  }
+
+  &-popup {
+    position: absolute;
+    z-index: @z-index-popup;
+  }
+
+  &-arrow {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    box-sizing: border-box;
+    width: @trigger-size-arrow-width;
+    height: @trigger-size-arrow-width;
+    background-color: @trigger-color-arrow-bg;
+    content: '';
+  }
+
+  &-popup[trigger-placement='top'] &-arrow,
+  &-popup[trigger-placement='tl'] &-arrow,
+  &-popup[trigger-placement='tr'] &-arrow {
+    border-top: none;
+    border-left: none;
+    border-bottom-right-radius: @trigger-border-arrow-radius;
+  }
+
+  &-popup[trigger-placement='bottom'] &-arrow,
+  &-popup[trigger-placement='bl'] &-arrow,
+  &-popup[trigger-placement='br'] &-arrow {
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: @trigger-border-arrow-radius;
+  }
+
+  &-popup[trigger-placement='left'] &-arrow,
+  &-popup[trigger-placement='lt'] &-arrow,
+  &-popup[trigger-placement='lb'] &-arrow {
+    border-bottom: none;
+    border-left: none;
+    border-top-right-radius: @trigger-border-arrow-radius;
+  }
+
+  &-popup[trigger-placement='right'] &-arrow,
+  &-popup[trigger-placement='rt'] &-arrow,
+  &-popup[trigger-placement='rb'] &-arrow {
+    border-top: none;
+    border-right: none;
+    border-bottom-left-radius: @trigger-border-arrow-radius;
+  }
+}

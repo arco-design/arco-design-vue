@@ -1,0 +1,42 @@
+@import '../web-vue/components/style/theme/css-variables.less';
+
+.cell-code {
+  margin-top: 12px;
+  //&&-collapse {
+  //  max-height: 240px;
+  //}
+  &-content {
+    margin-top: 16px;
+    overflow: hidden;
+    background-color: var(--color-fill-1);
+    transition: height 200ms;
+  }
+
+  &-operation {
+    display: flex;
+    justify-content: flex-end;
+
+    & &-btn {
+      margin-left: 8px;
+      background-color: var(--color-bg-4);
+      border: 1px solid var(--color-fill-3);
+
+      &:hover {
+        color: rgb(var(--primary-6));
+        border-color: rgb(var(--primary-6));
+      }
+
+      &-active {
+        color: rgb(var(--gray-1));
+        background-color: rgb(var(--gray-10));
+        border-color: rgb(var(--gray-1));
+
+        &:hover {
+          color: rgb(var(--gray-1));
+          background-color: rgb(var(--gray-10));
+          border-color: rgb(var(--gray-1));
+        }
+      }
+    }
+  }
+}

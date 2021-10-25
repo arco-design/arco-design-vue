@@ -1,0 +1,60 @@
+@import '../../input/style/token.less';
+@import '../../input/style/input.less';
+
+@textarea-prefix-cls: ~'@{prefix}-textarea';
+
+.@{textarea-prefix-cls}-wrapper {
+  .input-wrapper-style(@textarea-prefix-cls);
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .@{textarea-prefix-cls}-word-limit {
+    position: absolute;
+    right: @textarea-layout-tip-right;
+    bottom: @textarea-layout-tip-bottom;
+    color: @textarea-color-tip-text;
+    font-size: @textarea-font-tip-size;
+    user-select: none;
+  }
+
+  &.@{textarea-prefix-cls}-scroll .@{textarea-prefix-cls}-word-limit {
+    right: @textarea-layout-tip-right + 15px;
+  }
+
+  .@{textarea-prefix-cls}-clear-btn {
+    position: absolute;
+    top: 50%;
+    right: @textarea-layout-tip-right;
+    transform: translateY(-50%);
+  }
+
+  &.@{textarea-prefix-cls}-scroll .@{textarea-prefix-cls}-clear-btn {
+    right: @textarea-layout-tip-right + 15px;
+  }
+
+  &:hover {
+    .@{textarea-prefix-cls}-clear-btn {
+      display: block;
+    }
+  }
+
+  .@{textarea-prefix-cls}-mirror {
+    position: absolute;
+    visibility: hidden;
+  }
+}
+
+.@{textarea-prefix-cls} {
+  .input-style();
+  display: block;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: @textarea-padding-vertical @textarea-padding-horizontal;
+  font-size: @textarea-font-size;
+  line-height: @line-height-base;
+  vertical-align: top;
+  min-height: @textarea-size-min-height;
+}

@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<card> demo: render [actions] correctly 1`] = `
+"<div class=\\"arco-card arco-card-size-medium arco-card-bordered\\" style=\\"width: 360px;\\">
+  <!---->
+  <div class=\\"arco-card-cover\\">
+    <div style=\\"height: 204px; overflow: hidden;\\"><img style=\\"width: 100%; transform: translateY(-20px);\\" alt=\\"dessert\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/bb4d85edbb3a40b2b9540f7aec6cac17~tplv-uwbnlip3yd-image.image\\"></div>
+  </div>
+  <div class=\\"arco-card-body\\">
+    <div class=\\"arco-card-meta\\">
+      <div class=\\"arco-card-meta-content\\">
+        <div class=\\"arco-card-meta-title\\">Card Title</div>
+        <div class=\\"arco-card-meta-description\\">This is the description</div>
+      </div>
+      <div class=\\"arco-card-meta-footer\\">
+        <div class=\\"arco-card-meta-avatar\\">
+          <div style=\\"display: flex; align-items: center; color: rgb(29, 33, 41);\\">
+            <div style=\\"width: 24px; height: 24px; font-size: 12px; margin-right: 8px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/5ee428f1389b4291b1f9bbd82b24105d~tplv-uwbnlip3yd-image.image\\"></span>
+              <!--v-if-->
+            </div><span class=\\"arco-typography\\">Username<!----><!--v-if--><!--v-if--><!--v-if--></span>
+          </div>
+        </div>
+        <div class=\\"arco-card-actions\\">
+          <div class=\\"arco-card-actions-right\\"><span class=\\"arco-card-actions-item\\"><span class=\\"icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-thumb-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 17v26m35.17-21.394-5.948 18.697a1 1 0 0 1-.953.697H14V19h3l9.403-12.223a1 1 0 0 1 1.386-.196l2.535 1.87a6 6 0 0 1 2.044 6.974L31 19h9.265a2 2 0 0 1 1.906 2.606Z\\"></path></svg></span></span><span class=\\"arco-card-actions-item\\"><span class=\\"icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-share-internal\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M40 35v6H8v-6m1.108-4c1.29-8.868 13.917-15.85 29.392-15.998M30 6l9 9-9 9\\"></path></svg></span></span><span class=\\"arco-card-actions-item\\"><span class=\\"icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-more\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\"></path></svg></span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-card-actions\\">
+      <div class=\\"arco-card-actions-right\\"><span class=\\"arco-card-actions-item\\"><span class=\\"icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-thumb-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 17v26m35.17-21.394-5.948 18.697a1 1 0 0 1-.953.697H14V19h3l9.403-12.223a1 1 0 0 1 1.386-.196l2.535 1.87a6 6 0 0 1 2.044 6.974L31 19h9.265a2 2 0 0 1 1.906 2.606Z\\"></path></svg></span></span><span class=\\"arco-card-actions-item\\"><span class=\\"icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-share-internal\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M40 35v6H8v-6m1.108-4c1.29-8.868 13.917-15.85 29.392-15.998M30 6l9 9-9 9\\"></path></svg></span></span><span class=\\"arco-card-actions-item\\"><span class=\\"icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-more\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\"></path></svg></span></span></div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<card> demo: render [basic] correctly 1`] = `
+"<div style=\\"display: flex;\\">
+  <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\" style=\\"width: 360px;\\">
+    <div class=\\"arco-card-header\\">
+      <div class=\\"arco-card-header-title\\">Arco Card</div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+    </div>
+    <!---->
+    <div class=\\"arco-card-body\\"> ByteDance's core product, Toutiao (\\"Headlines\\"), is a content platform in China and around the world. Toutiao started out as a news recommendation engine and gradually evolved into a platform delivering content in various formats.
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<card> demo: render [bordered] correctly 1`] = `
+"<div style=\\"display: flex; width: 100%; box-sizing: border-box; padding: 40px;\\">
+  <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 360px;\\">
+    <div class=\\"arco-card-header\\">
+      <div class=\\"arco-card-header-title\\">Arco Card</div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+    </div>
+    <!---->
+    <div class=\\"arco-card-body\\"> Card content <br> Card content
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-card arco-card-size-medium arco-card-hoverable\\" style=\\"width: 360px; margin-left: 24px;\\">
+    <div class=\\"arco-card-header\\">
+      <div class=\\"arco-card-header-title\\">Hover me</div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+    </div>
+    <!---->
+    <div class=\\"arco-card-body\\"> Card content <br> Card content
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<card> demo: render [content] correctly 1`] = `
+"<div class=\\"arco-card arco-card-size-medium arco-card-bordered arco-card-hoverable\\" style=\\"width: 360px; margin-bottom: 20px;\\">
+  <!---->
+  <!---->
+  <div class=\\"arco-card-body\\">
+    <div style=\\"display: flex; align-items: center; justify-content: space-between;\\"><span style=\\"display: flex; align-items: center; color: rgb(29, 33, 41);\\"><div style=\\"width: 28px; height: 28px; font-size: 14px; margin-right: 8px; background-color: rgb(22, 93, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/5ee428f1389b4291b1f9bbd82b24105d~tplv-uwbnlip3yd-image.image\\"></span>
+      <!--v-if-->
+    </div><span class=\\"arco-typography\\">Username<!----><!--v-if--><!--v-if--><!--v-if--></span></span><a class=\\"arco-link arco-link-status-normal\\">More</a>
+  </div>
+  <!---->
+</div>
+</div>"
+`;
+
+exports[`<card> demo: render [grid] correctly 1`] = `
+"<div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
+  <!---->
+  <!---->
+  <div class=\\"arco-card-body\\">
+    <div class=\\"arco-card-grid arco-card-grid-hoverable\\" style=\\"width: 25%;\\">
+      <div class=\\"arco-card arco-card-size-medium card-demo\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\">
+          <p style=\\"margin: 0px;\\">Card allow to hover</p>
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-card-grid\\" style=\\"width: 25%;\\">
+      <div class=\\"arco-card arco-card-size-medium card-demo\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\">
+          <p style=\\"margin: 0px;\\">Card content</p>
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-card-grid arco-card-grid-hoverable\\" style=\\"width: 25%;\\">
+      <div class=\\"arco-card arco-card-size-medium card-demo\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\">
+          <p style=\\"margin: 0px;\\">Card allow to hover</p>
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-card-grid\\" style=\\"width: 25%;\\">
+      <div class=\\"arco-card arco-card-size-medium card-demo\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\">
+          <p style=\\"margin: 0px;\\">Card content</p>
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-card-grid arco-card-grid-hoverable\\" style=\\"width: 25%;\\">
+      <div class=\\"arco-card arco-card-size-medium card-demo\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\">
+          <p style=\\"margin: 0px;\\">Card allow to hover</p>
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-card-grid\\" style=\\"width: 25%;\\">
+      <div class=\\"arco-card arco-card-size-medium card-demo\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\">
+          <p style=\\"margin: 0px;\\">Card content</p>
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-card-grid arco-card-grid-hoverable\\" style=\\"width: 25%;\\">
+      <div class=\\"arco-card arco-card-size-medium card-demo\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\">
+          <p style=\\"margin: 0px;\\">Card allow to hover</p>
+          <!---->
+        </div>
+      </div>
+    </div>
+    <!---->
+  </div>
+</div>"
+`;
+
+exports[`<card> demo: render [hoverable] correctly 1`] = `
+"<div style=\\"display: flex;\\">
+  <div class=\\"arco-card arco-card-size-medium arco-card-bordered arco-card-hoverable\\" style=\\"width: 360px;\\">
+    <div class=\\"arco-card-header\\">
+      <div class=\\"arco-card-header-title\\">Arco Card</div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+    </div>
+    <!---->
+    <div class=\\"arco-card-body\\"> Card content <br> Card content
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-card arco-card-size-medium arco-card-bordered arco-card-hoverable card-demo\\">
+    <div class=\\"arco-card-header\\">
+      <div class=\\"arco-card-header-title\\">Custom hover style</div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+    </div>
+    <!---->
+    <div class=\\"arco-card-body\\"> Card content <br> Card content
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<card> demo: render [inner] correctly 1`] = `
+"<div class=\\"arco-card arco-card-size-medium arco-card-bordered\\">
+  <div class=\\"arco-card-header\\">
+    <div class=\\"arco-card-header-title\\">Arco Card</div>
+    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-card-body\\">
+    <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\" style=\\"margin-bottom: 20px;\\">
+      <div class=\\"arco-card-header\\">
+        <div class=\\"arco-card-header-title\\">Inner Card Title</div>
+        <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+      </div>
+      <!---->
+      <div class=\\"arco-card-body\\"> Inner Card Content
+        <!---->
+      </div>
+    </div>
+    <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\">
+      <div class=\\"arco-card-header\\">
+        <div class=\\"arco-card-header-title\\">Inner Card Title</div>
+        <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+      </div>
+      <!---->
+      <div class=\\"arco-card-body\\"> Inner Card Content
+        <!---->
+      </div>
+    </div>
+    <!---->
+  </div>
+</div>"
+`;
+
+exports[`<card> demo: render [meta] correctly 1`] = `
+"<div class=\\"arco-card arco-card-size-medium arco-card-bordered arco-card-hoverable\\" style=\\"width: 360px;\\">
+  <!---->
+  <div class=\\"arco-card-cover\\">
+    <div style=\\"height: 204px; overflow: hidden;\\"><img style=\\"width: 100%; transform: translateY(-20px);\\" alt=\\"dessert\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/bb4d85edbb3a40b2b9540f7aec6cac17~tplv-uwbnlip3yd-image.image\\"></div>
+  </div>
+  <div class=\\"arco-card-body\\">
+    <div class=\\"arco-card-meta\\">
+      <div class=\\"arco-card-meta-content\\">
+        <div class=\\"arco-card-meta-title\\">Card Title</div>
+        <div class=\\"arco-card-meta-description\\"> Card content <br> Card content </div>
+      </div>
+      <!---->
+    </div>
+    <!---->
+  </div>
+</div>"
+`;
+
+exports[`<card> demo: render [row] correctly 1`] = `
+"<div style=\\"box-sizing: border-box; width: 100%; padding: 40px;\\">
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start\\" style=\\"margin-left: -10px; margin-right: -10px; margin-bottom: 20px;\\">
+    <div class=\\"arco-col arco-col-8\\" style=\\"padding-left: 10px; padding-right: 10px;\\">
+      <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\"> Card content
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-col arco-col-8\\" style=\\"padding-left: 10px; padding-right: 10px;\\">
+      <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\"> Card content
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-col arco-col-8\\" style=\\"padding-left: 10px; padding-right: 10px;\\">
+      <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\"> Card content
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start\\" style=\\"margin-left: -10px; margin-right: -10px;\\">
+    <div class=\\"arco-col arco-col-16\\" style=\\"padding-left: 10px; padding-right: 10px;\\">
+      <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\"> Card content
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class=\\"arco-col arco-col-8\\" style=\\"padding-left: 10px; padding-right: 10px;\\">
+      <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
+        <div class=\\"arco-card-header\\">
+          <div class=\\"arco-card-header-title\\">Arco Card</div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        </div>
+        <!---->
+        <div class=\\"arco-card-body\\"> Card content
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

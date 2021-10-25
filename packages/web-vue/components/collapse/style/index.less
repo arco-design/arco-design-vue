@@ -1,0 +1,171 @@
+@import '../../style/mixins/index.less';
+@import './token.less';
+
+@collapse-prefix-cls: ~'@{prefix}-collapse';
+
+.icon-hover(
+  ~'@{collapse-prefix-cls}-item',
+  @collapse-expand-icon-size,
+  @collapse-expand-icon-size-bg
+);
+
+.@{collapse-prefix-cls} {
+  overflow: hidden;
+  line-height: @collapse-line-height;
+  border: @collapse-border-width solid @collapse-color-border;
+  border-radius: @collapse-border-radius;
+
+  &-item {
+    box-sizing: border-box;
+    border-bottom: @collapse-title-border-width solid
+      @collapse-title-color-border;
+
+    &-active {
+      > .@{collapse-prefix-cls}-item-header {
+        background-color: @collapse-title-color-bg_active;
+        border-color: @collapse-title-color-border;
+        transition: border-color 0s ease 0s;
+
+        .@{collapse-prefix-cls}-item-header-title {
+          font-weight: @collapse-title-font-weight_active;
+        }
+
+        .@{collapse-prefix-cls}-item-expand-icon {
+          transform: rotate(90deg);
+        }
+
+        .@{collapse-prefix-cls}-item-icon-right .@{collapse-prefix-cls}-item-expand-icon {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    &-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      min-height: @collapse-title-min-height;
+      padding-top: @collapse-title-padding-vertical;
+      padding-bottom: $padding-top;
+      overflow: hidden;
+      color: @collapse-title-color-text;
+      background-color: @collapse-title-color-bg;
+      border-bottom: 1px solid @color-transparent;
+      cursor: pointer;
+      // Ensure that the border is hidden when the collapse animation is complete
+      transition: border-color 0s ease 0.19s;
+
+      &-left {
+        padding-right: @collapse-title-padding-horizontal;
+        padding-left: @collapse-title-padding-horizontal +
+          @collapse-expand-icon-size-bg + @collapse-expand-icon-spacing-text;
+      }
+
+      &-right {
+        padding-right: @collapse-title-padding-horizontal +
+          @collapse-expand-icon-size-bg + @collapse-expand-icon-spacing-text;
+        padding-left: @collapse-title-padding-horizontal;
+      }
+
+      &-disabled {
+        color: @collapse-title-color-text_disabled;
+        background-color: @collapse-title-color-bg_disabled;
+        cursor: not-allowed;
+
+        .@{collapse-prefix-cls}-item-header-icon {
+          color: @collapse-title-color-text_disabled;
+        }
+      }
+
+      &-title {
+        display: inline;
+      }
+
+      &-extra {
+        float: right;
+      }
+    }
+
+    // expand icon style
+    & &-icon-hover {
+      position: absolute;
+      top: 50%;
+      left: @collapse-title-padding-horizontal;
+      text-align: center;
+      transform: translateY(-50%);
+
+
+    }
+
+    & &-icon-right {
+      right: @collapse-title-padding-horizontal;
+      left: unset;
+
+      > .@{collapse-prefix-cls}-item-header-icon-down {
+        transform: rotate(-90deg);
+      }
+    }
+
+    & &-expand-icon {
+      position: relative;
+      display: block;
+      color: @collapse-color-expand-icon;
+      font-size: @collapse-expand-icon-size;
+      vertical-align: middle;
+      transition: transform @transition-duration-2
+        @transition-timing-function-standard;
+    }
+
+    &-content {
+      position: relative;
+      display: none;
+      padding-right: @collapse-title-padding-horizontal;
+      padding-left: @collapse-title-padding-horizontal +
+        @collapse-expand-icon-size-bg + @collapse-expand-icon-spacing-text;
+      overflow: hidden;
+      color: @collapse-content-color-text;
+      font-size: @collapse-content-font-size;
+      background-color: @collapse-content-color-bg;
+
+      &-expanded {
+        display: block;
+        height: auto;
+      }
+
+      &-box {
+        padding: @collapse-content-padding-vertical 0;
+      }
+    }
+
+    &-no-icon > &-header {
+      padding-right: @collapse-title-padding-horizontal;
+      padding-left: @collapse-title-padding-horizontal;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  &.@{collapse-prefix-cls}-borderless {
+    border: none;
+  }
+
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+.collapse-slider-enter-from,
+.collapse-slider-leave-to {
+  height: 0;
+}
+
+.collapse-slider-enter-active,
+.collapse-slider-leave-active {
+  transition: height @transition-duration-2 @transition-timing-function-standard;
+}

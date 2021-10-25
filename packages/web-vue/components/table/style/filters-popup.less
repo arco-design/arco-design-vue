@@ -1,0 +1,51 @@
+@table-prefix-cls: ~'@{prefix}-table';
+
+.@{table-prefix-cls} {
+  &-filters-content {
+    box-sizing: border-box;
+    min-width: @table-popup-min-width;
+    background: @table-color-bg-filters-popup;
+    border: 1px solid @table-color-border-filters-popup;
+    border-radius: @table-popup-border-radius;
+    box-shadow: @shadow1-down;
+  }
+
+  &-filters-list {
+    max-height: @table-popup-max-height;
+    padding: 4px 0;
+    overflow-y: auto;
+  }
+
+  &-filters-item {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 32px;
+  }
+
+  &-filters-text {
+    width: 100%;
+    max-width: 160px;
+    height: 34px;
+    margin-right: 0;
+    padding-left: 10px;
+    overflow: hidden;
+    line-height: 32px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+
+  &-filters-bottom {
+    box-sizing: border-box;
+    height: 38px;
+    padding: 0 12px;
+    overflow: hidden;
+    line-height: 38px;
+    border-top: 1px solid @table-color-border;
+
+    > *:not(*:last-child) {
+      margin-right: 8px;
+    }
+  }
+}

@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<image> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`<image> demo: render [caption] correctly 1`] = `
+"<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" title=\\"A user’s avatar\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class=\\"arco-image arco-image-with-footer-outer\\" style=\\"width: 200px; margin-left: 67px; vertical-align: top;\\"><img class=\\"arco-image-img\\" title=\\"A user’s avatar\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`<image> demo: render [component-preview] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Click me to preview image
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<image> demo: render [component-preview-group] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Click me to preview multiple image
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<image> demo: render [custom-preview-actions] correctly 1`] = `
+"<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`<image> demo: render [error] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 20px;\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 300px; width: 400px;\\"><img class=\\"arco-image-img\\">
+      <div class=\\"arco-image-overlay\\">
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 300px; width: 400px;\\"><img class=\\"arco-image-img\\">
+      <div class=\\"arco-image-overlay\\">
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<image> demo: render [extra] correctly 1`] = `
+"<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 260px; margin-right: 67px; vertical-align: top;\\"><img class=\\"arco-image-img\\" title=\\"A user’s avatar\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class=\\"arco-image arco-image-with-footer-outer\\" style=\\"width: 260px;\\"><img class=\\"arco-image-img\\" title=\\"A user’s avatar\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`<image> demo: render [loader] correctly 1`] = `
+"<div><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-bottom: 20px;\\">
+    <!--v-if--> reload
+  </button></div>
+<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 200px; width: 200px;\\"><img class=\\"arco-image-img\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 200px; width: 200px; margin-left: 67px;\\"><img class=\\"arco-image-img\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`<image> demo: render [preview-group] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\">
+      <div class=\\"arco-image-overlay\\">
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\">
+      <div class=\\"arco-image-overlay\\">
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\">
+      <div class=\\"arco-image-overlay\\">
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\">
+      <div class=\\"arco-image-overlay\\">
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+</div>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<image> demo: render [preview-popup-container] correctly 1`] = `
+"<div id=\\"image-demo-preview-popup-container\\" style=\\"width: 100%; height: 400px; position: relative; overflow: hidden; line-height: 400px; text-align: center;\\">
+  <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\">
+    <div class=\\"arco-image-overlay\\">
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
+exports[`<image> demo: render [progressive-loader] correctly 1`] = `
+"<div><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-bottom: 20px;\\">
+    <!--v-if--> reload
+  </button></div>
+<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 200px; width: 200px;\\"><img class=\\"arco-image-img\\">
+  <div class=\\"arco-image-overlay\\">
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;

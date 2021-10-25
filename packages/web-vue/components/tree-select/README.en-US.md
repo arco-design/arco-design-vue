@@ -1,0 +1,91 @@
+```yaml
+meta:
+  type: Component
+  category: Data Entry
+title: TreeSelect
+description: The tree structure data can be selected.
+```
+
+*Auto translate by google.*
+
+@import ./__demo__/basic.md
+
+@import ./__demo__/label-in-value.md
+
+@import ./__demo__/control.md
+
+@import ./__demo__/load-more.md
+
+@import ./__demo__/search.md
+
+@import ./__demo__/search-remote.md
+
+@import ./__demo__/size.md
+
+@import ./__demo__/trigger-element.md
+
+@import ./__demo__/multiple.md
+
+@import ./__demo__/checkable.md
+
+@import ./__demo__/checked-strategy.md
+
+@import ./__demo__/popup-visible.md
+
+@import ./__demo__/field-names.md
+
+@import ./__demo__/virtual.md
+
+
+### `<tree-select>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|disabled|Whether to disable|`boolean`|`false`|
+|loading|Whether it is loading state|`boolean`|`false`|
+|error|Whether it is an error state|`boolean`|`false`|
+|size|The size of the selection box. Corresponds to `24px`, `28px`, `32px`, `36px`|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|border|Whether to show the border|`boolean`|`false`|
+|allow-search|Whether to allow searching|`boolean`|`false`|
+|allow-clear|Whether to allow clear|`boolean`|`false`|
+|placeholder|Prompt copy|`string`|`-`|
+|retain-input-value|Whether to keep existing content when the search box is focused|`boolean`|`true`|
+|max-tags|The maximum number of labels displayed, only valid in multi-select mode|`number`|`-`|
+|multiple|Whether to support multiple selection|`boolean`|`false`|
+|default-value|Default value|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
+|model-value **(v-model)**|Value|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
+|field-names|Specify the field name in the node data|`FieldNames`|`-`|
+|data|Data|`TreeNodeData[]`|`[]`|
+|label-in-value|Set the value format. The default is string, when set to true, the value format is: {label: string, value: string}|`boolean`|`false`|
+|tree-checkable|Whether to show checkbox|`boolean`|`false`|
+|tree-check-strictly|Whether the parent and child nodes are related|`boolean`|`false`|
+|tree-checked-strategy|Customized echo method|`'all' \| 'parent' \| 'child'`|`'all'`|
+|tree-props|Can accept Props of all [Tree](/vue/component/tree) components|`Partial<TreeProps>`|`-`|
+|trigger-props|Can accept Props of all [Tigger](/vue/component/trigger) components|`Record<string, any>`|`-`|
+|popup-visible **(v-model)**|Whether the pop-up box is visible|`boolean`|`-`|
+|default-popup-visible|Whether the default pop-up box is visible|`boolean`|`false`|
+|dropdown-style|Drop-down box style|`CSSProperties`|`-`|
+|dropdown-class-name|Drop-down box style class|`string \| string[]`|`-`|
+|filter-tree-node|Custom node filter function|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`|
+|load-more|Load data dynamically|`(nodeData: TreeNodeData) => Promise<void>`|`-`|
+|disable-filter|Disable internal filtering logic|`boolean`|`false`|
+|popup-container|Mount container for pop-up box|`string \| HTMLElement \| null \| undefined`|`-`|
+### `<tree-select>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|change|Trigger when the value changes|selectedValue: `string \| LabelValue \| string[] \| LabelValue[] \| undefined`|
+|popup-visible-change|Triggered when the status of the drop-down box changes|visible: `boolean`|
+|search|Triggered when the search value changes|searchKey: `string`|
+|clear|Triggered when clear is clicked|-|
+### `<tree-select>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|trigger|Custom trigger element|-|
+|prefix|Prefix|-|
+|tag|Tag|-|
+|loader|Customizing the content displayed during loading|-|
+|empty|Custom empty data display|-|
+
+

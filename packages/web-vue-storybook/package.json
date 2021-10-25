@@ -1,0 +1,25 @@
+{
+  "name": "@arco-design/web-vue-storybook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The storybook of Arco Design Vue 2.0",
+  "author": "wangchen <wangchen.flsion@bytedance.com>",
+  "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.0",
+    "@storybook/addon-essentials": "^6.3.0",
+    "@storybook/addon-links": "^6.3.0",
+    "@storybook/vue3": "^6.3.0",
+    "babel-loader": "^8.2.2",
+    "less": "^4.1.1",
+    "less-loader": "^7.3.0",
+    "vue-loader": "^16.2.0"
+  },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  }
+}

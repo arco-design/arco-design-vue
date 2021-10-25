@@ -1,0 +1,391 @@
+@import './token.less';
+@import '../../style/mixins/index.less';
+
+@tree-prefix-cls: ~'@{prefix}-tree';
+@tree-node-prefix-cls: ~'@{prefix}-tree-node';
+
+/******* icon ******/
+
+.icon-hover(@tree-node-prefix-cls, @tree-size-default-icon-size, @tree-size-expand-icon-bg_hover);
+
+.getLinePos(@size) {
+  top: (@size / 2) + (@tree-showline-size-switcher-icon / 2) +
+    @tree-showline-spacing-line-vertical;
+  bottom: min(
+    -((@size / 2) - (@tree-showline-size-switcher-icon / 2) -
+          @tree-showline-spacing-line-vertical),
+    0
+  );
+}
+
+.getIndentLinePos(@size) {
+  top: @tree-showline-spacing-line-vertical -
+    ((@size / 2) - (@tree-showline-size-switcher-icon / 2));
+  // 计算：距离上一节点的图标和下一节点的图标都是 @tree-showline-spacing-line-vertical
+  bottom: min(
+    -((@size / 2) - (@tree-showline-size-switcher-icon / 2) -
+          @tree-showline-spacing-line-vertical),
+    0
+  );
+}
+
+.@{tree-node-prefix-cls} {
+  &-switcher {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    width: @tree-size-default-icon-size;
+    height: @tree-size-default-line-height;
+    margin-right: @tree-margin-switcher-icon-right;
+    color: @tree-color-switcher-icon;
+    font-size: @tree-size-default-icon-size;
+    cursor: pointer;
+    user-select: none;
+
+    &-icon {
+      position: relative;
+      margin: 0 auto;
+
+      svg {
+        position: relative;
+        transform: rotate(-90deg);
+        transition: transform @transition-duration-2
+          @transition-timing-function-standard;
+      }
+    }
+  }
+
+  &-expanded &-switcher-icon svg,
+  &-is-leaf &-switcher-icon svg {
+    transform: rotate(0);
+  }
+
+  &-drag-icon {
+    margin-left: @tree-spacing-drag-icon-text;
+    color: @tree-color-drag-icon;
+    opacity: 0;
+  }
+
+  // 自定义icon
+  &-custom-icon {
+    margin-right: @tree-margin-custom-icon-right;
+    font-size: inherit;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .@{prefix}-icon-loading {
+    color: @tree-color-loading-icon;
+  }
+
+  &-minus-icon,
+  &-plus-icon {
+    position: relative;
+    display: block;
+    width: @tree-showline-size-switcher-icon;
+    height: @tree-showline-size-switcher-icon;
+    background: @tree-showline-color-plus-icon-bg;
+    border-radius: @tree-showline-border-plus-icon-radius;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: @tree-showline-size-plus-icon-width;
+      height: @tree-showline-size-plus-icon-stroke;
+      margin-top: -(@tree-showline-size-plus-icon-stroke / 2);
+      margin-left: -(@tree-showline-size-plus-icon-width / 2);
+      color: @tree-color-switcher-icon;
+      background-color: @tree-color-switcher-icon;
+      border-radius: 0.5px;
+      content: '';
+    }
+  }
+
+  &-plus-icon::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: @tree-showline-size-plus-icon-stroke;
+    height: @tree-showline-size-plus-icon-width;
+    margin-top: -(@tree-showline-size-plus-icon-width / 2);
+    margin-left: -(@tree-showline-size-plus-icon-stroke / 2);
+    color: @tree-color-switcher-icon;
+    background-color: @tree-color-switcher-icon;
+    border-radius: 0.5px;
+    content: '';
+  }
+}
+
+/******* tree ***********/
+.@{tree-prefix-cls} {
+  color: @tree-color-title-text;
+
+  .@{prefix}-checkbox {
+    margin-right: @tree-margin-checkbox-right;
+    padding-left: 0;
+    line-height: @tree-size-default-line-height;
+  }
+
+  &-node {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding-left: (@tree-size-expand-icon-bg_hover / 2) -
+      (@tree-size-default-icon-size / 2);
+    color: @tree-color-title-text;
+    line-height: @line-height-base;
+    cursor: pointer;
+
+    &-selected &-title,
+    &-selected &-title:hover {
+      color: @tree-color-title-text_active;
+      transition: color @transition-duration-2
+        @transition-timing-function-linear;
+    }
+
+    &-disabled-selectable,
+    &-disabled {
+      .@{tree-node-prefix-cls}-title,
+      .@{tree-node-prefix-cls}-title:hover {
+        color: @tree-color-title-text_disabled;
+        background: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &-disabled&-selected &-title {
+      color: @tree-color-title-text_active_disabled;
+    }
+  }
+
+  &-node-title-block {
+    flex: 1;
+    box-sizing: content-box;
+
+    .@{tree-node-prefix-cls}-drag-icon {
+      position: absolute;
+      right: @tree-spacing-drag-icon-right;
+    }
+  }
+
+  &-node-indent {
+    position: relative;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  &-node-indent-block {
+    position: relative;
+    display: inline-block;
+    width: @tree-size-default-icon-size;
+    height: 100%;
+    margin-right: @tree-margin-switcher-icon-right;
+  }
+
+  &-node-draggable {
+    margin-top: @tree-draggable-size-gap-height;
+  }
+
+  &-node-title {
+    position: relative;
+    margin-left: -@tree-padding-title-horizontal;
+    padding: (
+        round((@tree-size-default-line-height - @line-height-base * $font-size)) /
+          2
+      )
+      0;
+    padding-right: @tree-padding-title-horizontal;
+    padding-left: @tree-padding-title-horizontal;
+    font-size: @tree-size-default-font-size;
+    border-radius: @tree-node-border-radius;
+    // overflow: hidden;
+    &:hover {
+      color: @tree-color-title-text_hover;
+      background-color: @tree-color-title-bg_hover;
+
+      .@{tree-node-prefix-cls}-drag-icon {
+        opacity: 1;
+      }
+    }
+
+    // &-draggable {
+    //   margin-top: @tree-draggable-size-gap-height;
+    // }
+    &-draggable::before {
+      position: absolute;
+      top: -@tree-draggable-size-gap-height;
+      right: 0;
+      left: 0;
+      display: block;
+      height: @tree-draggable-size-gap-height;
+      border-radius: (@tree-draggable-size-gap-height / 2);
+      content: '';
+    }
+
+    &-gap-bottom::before {
+      top: unset;
+      bottom: -@tree-draggable-size-gap-height;
+      background-color: @tree-draggable-color-gap-bg;
+    }
+
+    &-gap-top::before {
+      background-color: @tree-draggable-color-gap-bg;
+    }
+
+    &-highlight {
+      color: @tree-color-title-text_highlight;
+      background-color: @tree-color-title-bg_highlight;
+    }
+
+    &-dragging,
+    &-dragging:hover {
+      color: @tree-color-title-text_dragging;
+      background-color: @tree-color-title-bg_dragging;
+    }
+  }
+
+  // show line
+  &-show-line {
+    padding-left: (@tree-size-expand-icon-bg_hover / 2) -
+      (@tree-showline-size-switcher-icon / 2);
+
+    .@{tree-prefix-cls}-node-switcher {
+      width: @tree-showline-size-switcher-icon;
+      text-align: center;
+
+      .@{prefix}-tree-node-icon-hover {
+        width: 100%;
+      }
+    }
+
+    .@{tree-prefix-cls}-node-indent-block {
+      width: @tree-showline-size-switcher-icon;
+    }
+
+    .@{tree-prefix-cls}-node-indent-block::before {
+      position: absolute;
+      left: 50%;
+      box-sizing: border-box;
+      width: @tree-showline-size-line-width;
+      border-left: @tree-showline-size-line-width @tree-showline-style-line
+        @tree-showline-color-line-bg;
+      transform: translateX(-50%);
+      content: '';
+
+      .getIndentLinePos(@tree-size-default-line-height);
+    }
+
+    .@{tree-prefix-cls}-node-is-leaf:not(.@{tree-prefix-cls}-node-is-tail)
+      .@{tree-prefix-cls}-node-indent::after {
+      position: absolute;
+      right: -(@tree-showline-size-switcher-icon / 2);
+      box-sizing: border-box;
+      width: @tree-showline-size-line-width;
+      border-left: @tree-showline-size-line-width @tree-showline-style-line
+        @tree-showline-color-line-bg;
+      transform: translateX(50%);
+      content: '';
+
+      .getLinePos(@tree-size-default-line-height);
+    }
+
+    .@{tree-prefix-cls}-node-indent-block-lineless:before {
+      display: none;
+    }
+  }
+}
+
+/******** size *******/
+
+.@{tree-prefix-cls}-size-mini {
+  .@{tree-prefix-cls}-node-switcher {
+    height: @tree-size-mini-line-height;
+  }
+
+  .@{prefix}-checkbox {
+    line-height: @tree-size-mini-line-height;
+  }
+
+  .@{tree-prefix-cls}-node-title {
+    padding-top: (
+      round((@tree-size-mini-line-height - $line-height * $font-size)) / 2
+    );
+    padding-bottom: $padding-top;
+    font-size: @tree-size-mini-font-size;
+    line-height: 1.667;
+  }
+
+  .@{tree-prefix-cls}-node-indent-block::before {
+    .getLinePos(@tree-size-mini-line-height);
+  }
+
+  .@{tree-prefix-cls}-node-is-leaf:not(.@{tree-prefix-cls}-node-is-tail)
+    .@{tree-prefix-cls}-node-indent::after {
+    .getIndentLinePos(@tree-size-mini-line-height);
+  }
+}
+
+.@{tree-prefix-cls}-size-small {
+  .@{tree-prefix-cls}-node-switcher {
+    height: @tree-size-small-line-height;
+  }
+
+  .@{prefix}-checkbox {
+    line-height: @tree-size-small-line-height;
+  }
+
+  .@{tree-prefix-cls}-node-title {
+    padding-top: (
+      round((@tree-size-small-line-height - @line-height-base * $font-size)) / 2
+    );
+    padding-bottom: $padding-top;
+    font-size: @tree-size-small-font-size;
+  }
+
+  .@{tree-prefix-cls}-node-indent-block::before {
+    .getLinePos(@tree-size-small-line-height);
+  }
+
+  .@{tree-prefix-cls}-node-is-leaf:not(.@{tree-prefix-cls}-node-is-tail)
+    .@{tree-prefix-cls}-node-indent::after {
+    .getIndentLinePos(@tree-size-small-line-height);
+  }
+}
+
+.@{tree-prefix-cls}-size-large {
+  .@{tree-prefix-cls}-node-switcher {
+    height: @tree-size-large-line-height;
+  }
+
+  .@{prefix}-checkbox {
+    line-height: @tree-size-large-line-height;
+  }
+
+  .@{tree-prefix-cls}-node-title {
+    padding-top: (
+      round((@tree-size-large-line-height - @line-height-base * $font-size)) / 2
+    );
+    padding-bottom: $padding-top;
+    font-size: @tree-size-large-font-size;
+  }
+
+  .@{tree-prefix-cls}-node-indent-block::before {
+    .getLinePos(@tree-size-large-line-height);
+  }
+
+  .@{tree-prefix-cls}-node-is-leaf:not(.@{tree-prefix-cls}-node-is-tail)
+    .@{tree-prefix-cls}-node-indent::after {
+    .getIndentLinePos(@tree-size-large-line-height);
+  }
+}
+
+.@{tree-prefix-cls}-node-list {
+  overflow: hidden;
+  transition: height @transition-duration-2 @transition-timing-function-standard;
+}

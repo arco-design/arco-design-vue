@@ -1,0 +1,48 @@
+{
+  "name": "arco-design-vue-monorepo",
+  "description": "Arco Design Vue 2.0 Monorepo",
+  "private": true,
+  "scripts": {
+    "init": "lerna run build --stream --scope=@arco-design/{vite-plugin-arco-vue-docs,arco-vue-scripts} && lerna link && lerna run build --scope=@arco-design/arco-vue-docs-navbar && lerna run init --scope=@arco-design/web-vue",
+    "start": "lerna run start --scope=@arco-design/arco-vue-docs",
+    "build:site": "lerna run build --scope=@arco-design/arco-vue-docs",
+    "build:component": "lerna run build --scope=@arco-design/web-vue",
+    "test": "lerna run test",
+    "storybook": "lerna run storybook --scope=@arco-design/web-vue"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "author": "ArcoDesign Team",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lerna run lint-staged && lerna run test"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.7.0",
+    "husky": "^4.3.7",
+    "lerna": "^4.0.0",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "typescript": "^4.2.4",
+    "yarn": "^1.22.10"
+  }
+}

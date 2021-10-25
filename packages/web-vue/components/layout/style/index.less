@@ -1,0 +1,103 @@
+@import './token.less';
+
+@layout-prefix-cls: ~'@{prefix}-layout';
+
+.@{layout-prefix-cls} {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+
+  &-sider {
+    position: relative;
+    flex: none; // flex: 0 0 auto; 当右侧文字过长的时候不会被压缩。
+    width: auto;
+    margin: 0;
+    padding: 0;
+    background: @layout-sider-background;
+    transition: width @transition-duration-2
+      @transition-timing-function-standard;
+
+    &-children {
+      height: 100%;
+      overflow: auto;
+    }
+
+    &-collapsed &-children {
+      /* width */
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+
+      // /* Track */
+      // &::-webkit-scrollbar-track {
+      //   background: #f1f1f1;
+      // }
+
+      // /* Handle */
+      // &::-webkit-scrollbar-thumb {
+      //   background: #888;
+      // }
+
+      // /* Handle on hover */
+      // &::-webkit-scrollbar-thumb:hover {
+      //   background: #555;
+      // }
+    }
+
+    &-has-trigger {
+      box-sizing: border-box;
+      padding-bottom: @layout-trigger-height;
+    }
+
+    &-trigger {
+      z-index: 1;
+      box-sizing: border-box;
+      width: 100%;
+      height: @layout-trigger-height;
+      color: var(--color-white);
+      line-height: @layout-trigger-height;
+      text-align: center;
+      background: @layout-trigger-dark-color;
+      cursor: pointer;
+      transition: width @transition-duration-2
+        @transition-timing-function-standard;
+
+      &-light {
+        color: @layout-font-color;
+        background: @layout-sider-background-light;
+        border-top: 1px solid @layout-trigger-light-color-border;
+      }
+    }
+  }
+
+  &-sider-light {
+    background: @layout-sider-background-light;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  &-header {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  &-content {
+    flex: 1;
+  }
+
+  &-footer {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+}
+
+.@{layout-prefix-cls}-has-sider {
+  flex-direction: row;
+
+  > .@{layout-prefix-cls},
+  > .@{layout-prefix-cls}-content {
+    overflow-x: hidden;
+  }
+}

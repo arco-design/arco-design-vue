@@ -1,0 +1,35 @@
+@import './token.less';
+
+@popover-prefix-cls: ~'@{prefix}-popover';
+
+.@{popover-prefix-cls} {
+  &-popup-content {
+    box-sizing: border-box;
+    padding: @popup-padding-vertical @popup-padding-horizontal;
+    color: @popup-color-content-text;
+    font-size: @popup-font-size;
+    line-height: @line-height-base;
+    background-color: @popup-color-content-bg;
+    border: @border-1 solid @popup-color-border;
+    border-radius: @popup-border-radius;
+    box-shadow: @popup-shadow;
+  }
+
+  &-title {
+    color: @popup-color-title-text;
+    font-weight: @font-weight-500;
+    font-size: @popup-font-title-size;
+  }
+
+  &-content {
+    margin-top: @popup-margin-content-top;
+    text-align: left;
+    word-wrap: break-word;
+  }
+
+  &-popup-arrow {
+    z-index: 1;
+    background-color: @popup-color-content-bg;
+    border: @border-1 solid @popup-color-border;
+  }
+}

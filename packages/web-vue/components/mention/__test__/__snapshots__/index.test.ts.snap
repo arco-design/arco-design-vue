@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mention mention correctly 1`] = `
+"<div class=\\"arco-dropdown\\">
+  <div class=\\"arco-spin\\" style=\\"width: 100%;\\">
+    <div class=\\"arco-dropdown-list-wrapper\\">
+      <ul class=\\"arco-dropdown-list\\">
+        <li class=\\"arco-dropdown-option arco-dropdown-option-active\\">Bytedance</li>
+        <li class=\\"arco-dropdown-option\\">Bytedesign</li>
+        <li class=\\"arco-dropdown-option\\">Bytenumner</li>
+      </ul>
+    </div>
+    <!--v-if-->
+  </div>
+</div>"
+`;

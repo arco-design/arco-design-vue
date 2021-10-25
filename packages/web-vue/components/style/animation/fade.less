@@ -1,0 +1,57 @@
+@import '../theme/index.less';
+
+.fade-in-standard-enter-from,
+.fade-in-standard-appear-from {
+  opacity: 0;
+}
+
+.fade-in-standard-enter-to,
+.fade-in-standard-appear-to {
+  opacity: 1;
+}
+
+.fade-in-standard-enter-active,
+.fade-in-standard-appear-active {
+  transition: opacity @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.fade-in-standard-leave-from {
+  opacity: 1;
+}
+
+.fade-in-standard-leave-to {
+  opacity: 0;
+}
+
+.fade-in-standard-leave-active {
+  transition: opacity @transition-duration-3
+    @transition-timing-function-standard;
+}
+
+.fade-in-enter-from,
+.fade-in-appear-from {
+  opacity: 0;
+}
+
+.fade-in-enter-to,
+.fade-in-appear-to {
+  opacity: 1;
+}
+
+.fade-in-enter-active,
+.fade-in-appear-active {
+  transition: opacity @transition-duration-1 @transition-timing-function-linear;
+}
+
+.fade-in-leave-from {
+  opacity: 1;
+}
+
+.fade-in-leave-to {
+  opacity: 0;
+}
+
+.fade-in-leave-active {
+  transition: opacity @transition-duration-1 @transition-timing-function-linear;
+}

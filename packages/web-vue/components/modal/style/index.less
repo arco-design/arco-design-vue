@@ -1,0 +1,234 @@
+@import './token.less';
+
+@modal-prefix-cls: ~'@{prefix}-modal';
+
+.@{modal-prefix-cls}-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: @z-index-modal;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-mask-bg);
+}
+
+.@{modal-prefix-cls}-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: @z-index-modal;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  &-no-mask {
+    pointer-events: none;
+
+    .@{modal-prefix-cls} {
+      pointer-events: auto;
+    }
+  }
+
+  &-hide {
+    display: none;
+  }
+
+  &&-align-center {
+    white-space: nowrap;
+    text-align: center;
+
+    &::before {
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+      content: '';
+    }
+
+    .@{modal-prefix-cls} {
+      top: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.@{modal-prefix-cls} {
+  position: relative;
+  top: @modal-margin-top;
+  width: @modal-default-size-width;
+  margin: 0 auto;
+  line-height: @line-height-base;
+  white-space: initial;
+  text-align: left;
+  background-color: var(--color-bg-3);
+  border-radius: @modal-border-radius;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: @modal-default-size-header-height;
+    padding: 0 @modal-default-padding-horizontal;
+    border-bottom: @border-1 solid @modal-color-border;
+
+    .@{modal-prefix-cls}-title {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &-body {
+    position: relative;
+    padding: @modal-default-padding-content-vertical
+      @modal-default-padding-horizontal;
+    color: @modal-color-content-text;
+  }
+
+  &-footer {
+    box-sizing: border-box;
+    width: 100%;
+    padding: @modal-default-padding-footer-vertical
+      @modal-default-padding-horizontal;
+    text-align: right;
+    border-top: @border-1 solid @modal-color-border;
+
+    > .@{prefix}-btn {
+      margin-left: @modal-margin-footer-button-left;
+    }
+  }
+
+  &-close-btn {
+    position: absolute;
+    //top: (
+    //  (@modal-default-size-header-height - @modal-font-size-close-icon) / 2
+    //);
+    right: @modal-position-close-icon-right +
+      ((@icon-hover-size-default-height - @modal-font-size-close-icon) / 2);
+    color: @modal-color-header-text;
+    font-size: @modal-font-size-close-icon;
+    cursor: pointer;
+  }
+
+  &-title {
+    color: @modal-color-header-text;
+    font-weight: @font-weight-500;
+    font-size: @modal-font-header-size;
+
+    .@{prefix}-icon {
+      margin-right: @modal-margin-tip-icon-right;
+      font-size: @modal-size-tip-icon;
+      vertical-align: -0.15em;
+
+      &-info-circle-fill {
+        color: @color-primary-6;
+      }
+
+      &-check-circle-fill {
+        color: @color-success-6;
+      }
+
+      &-exclamation-circle-fill {
+        color: @color-warning-6;
+      }
+
+      &-close-circle-fill {
+        color: @color-danger-6;
+      }
+    }
+  }
+}
+
+// 简洁模式
+.@{modal-prefix-cls}-simple {
+  width: @modal-simple-size-width;
+  padding: @modal-simple-padding-top @modal-simple-padding-horizontal
+    @modal-simple-padding-bottom;
+
+  .@{modal-prefix-cls}-header,
+  .@{modal-prefix-cls}-footer {
+    height: unset;
+    padding: 0;
+    border: none;
+  }
+
+  .@{modal-prefix-cls}-header {
+    margin-bottom: @modal-simple-margin-content-top;
+  }
+
+  .@{modal-prefix-cls}-footer {
+    margin-top: @modal-simple-margin-footer-top;
+    text-align: center;
+  }
+
+  .@{modal-prefix-cls}-content {
+    padding: 0;
+  }
+}
+
+.zoom-modal-enter-from,
+.zoom-modal-appear-from {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.zoom-modal-enter-to,
+.zoom-modal-appear-to {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-modal-enter-active,
+.zoom-modal-appear-active {
+  transition: opacity @transition-duration-4
+      @transition-timing-function-overshoot,
+    transform @transition-duration-4 @transition-timing-function-overshoot;
+}
+
+.zoom-modal-leave-from {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.zoom-modal-leave-to {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.zoom-modal-leave-active {
+  transition: opacity @transition-duration-4
+      @transition-timing-function-overshoot,
+    transform @transition-duration-4 @transition-timing-function-overshoot;
+}
+
+.fade-modal-enter-from,
+.fade-modal-appear-from {
+  opacity: 0;
+}
+
+.fade-modal-enter-to,
+.fade-modal-appear-to {
+  opacity: 1;
+}
+
+.fad-modal-enter-active,
+.fade-modal-appear-active {
+  transition: opacity @transition-duration-4
+    @transition-timing-function-overshoot;
+}
+
+.fade-modal-leave-from {
+  opacity: 1;
+}
+
+.fade-modal-leave-to {
+  opacity: 0;
+}
+
+.fade-modal-leave-active {
+  transition: opacity @transition-duration-4
+    @transition-timing-function-overshoot;
+}

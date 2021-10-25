@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<link> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><a href=\\"link\\" class=\\"arco-link arco-link-status-normal\\">Link</a></div>
+  <div class=\\"arco-space-item\\"><a class=\\"arco-link arco-link-status-normal arco-link-disabled\\">Link</a></div>
+</div>"
+`;
+
+exports[`<link> demo: render [status] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><a href=\\"link\\" class=\\"arco-link arco-link-status-normal\\">Normal Link</a></div>
+      <div class=\\"arco-space-item\\"><a class=\\"arco-link arco-link-status-normal arco-link-disabled\\">Normal Link</a></div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><a href=\\"link\\" class=\\"arco-link arco-link-status-success\\">Success Link</a></div>
+      <div class=\\"arco-space-item\\"><a class=\\"arco-link arco-link-status-success arco-link-disabled\\">Success Link</a></div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><a href=\\"link\\" class=\\"arco-link arco-link-status-warning\\">Warning Link</a></div>
+      <div class=\\"arco-space-item\\"><a class=\\"arco-link arco-link-status-warning arco-link-disabled\\">Warning Link</a></div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><a href=\\"link\\" class=\\"arco-link arco-link-status-danger\\">Danger Link</a></div>
+      <div class=\\"arco-space-item\\"><a class=\\"arco-link arco-link-status-danger arco-link-disabled\\">Danger Link</a></div>
+    </div>
+  </div>
+</div>"
+`;

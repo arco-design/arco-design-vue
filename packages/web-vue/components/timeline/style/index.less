@@ -1,0 +1,265 @@
+@import './token.less';
+
+@timeline-prefix-cls: ~'@{prefix}-timeline';
+@timeline-item-prefix-cls: ~'@{prefix}-timeline-item';
+
+.@{timeline-prefix-cls} {
+  display: flex;
+  flex-direction: column;
+
+  &-item {
+    position: relative;
+    min-height: @timeline-item-min-height;
+    padding-left: @timeline-dot-size-width;
+    color: @timeline-color-content-text;
+    font-size: @timeline-font-content-size;
+
+    &-label {
+      color: @timeline-color-label-text;
+      font-size: @timeline-font-label-size;
+      line-height: 1.667;
+    }
+
+    &-content {
+      margin-bottom: @timeline-vertical-margin-content-bottom;
+      color: @timeline-color-content-text;
+      font-size: @timeline-font-content-size;
+      line-height: 1.5715;
+
+      &-wrapper {
+        position: relative;
+        margin-left: @timeline-vertical-margin-content-left;
+      }
+    }
+  }
+}
+
+// 节点的样式
+.@{timeline-prefix-cls}-item {
+  &&-last {
+    > .@{timeline-prefix-cls}-item-dot-wrapper
+      .@{timeline-prefix-cls}-item-dot-line {
+      display: none;
+    }
+  }
+
+  &-dot-wrapper {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    text-align: center;
+
+    .@{timeline-prefix-cls}-item-dot-content {
+      position: relative;
+      width: @timeline-dot-size-width;
+      height: 1.5715 * @timeline-font-content-size;
+      line-height: $height;
+    }
+  }
+
+  &-dot {
+    position: relative;
+    top: 50%;
+    box-sizing: border-box;
+    width: @timeline-dot-size-width;
+    height: @timeline-dot-size-width;
+    margin-top: -50%;
+    color: @timeline-color-dot-bg;
+    border-radius: @timeline-dot-border-radius;
+
+    &-solid {
+      background-color: @timeline-color-dot-bg;
+    }
+
+    &-hollow {
+      background-color: @timeline-color-dot-bg_hollow;
+      border: @timeline-dot-border-width_hollow solid @timeline-color-dot-bg;
+    }
+
+    &-custom {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-flex;
+      box-sizing: border-box;
+      color: @timeline-color-dot-bg;
+      background-color: var(--color-bg-2);
+      transform: translateX(-50%) translateY(-50%);
+      transform-origin: center;
+
+      svg {
+        color: inherit;
+      }
+    }
+  }
+
+  &-dot-line {
+    // bottom: -7px;
+    position: absolute;
+    top: 1.5715 * (@timeline-font-content-size / 2) +
+      (@timeline-dot-size-width / 2) + @timeline-vertical-margin-line-top;
+    bottom: -(1.5715 * (@timeline-font-content-size / 2) -
+          (@timeline-dot-size-width / 2) - @timeline-vertical-margin-line-bottom);
+    left: 50%;
+    box-sizing: border-box;
+    width: @timeline-size-line-width;
+    border-color: @timeline-color-line-bg;
+    border-left-width: @timeline-size-line-width;
+    transform: translateX(-50%);
+  }
+}
+
+/* reverse  */
+.@{timeline-prefix-cls} {
+  &-is-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+/* mode  */
+.@{timeline-prefix-cls} {
+  &-alternate {
+    overflow: hidden;
+
+    .@{timeline-item-prefix-cls}-vertical-left {
+      padding-left: 0;
+
+      > .@{timeline-item-prefix-cls}-dot-wrapper {
+        left: 50%;
+      }
+
+      > .@{timeline-item-prefix-cls}-content-wrapper {
+        left: 50%;
+        width: 50%;
+        margin-left: @timeline-vertical-margin-content-left +
+          @timeline-dot-size-width;
+        padding-right: @timeline-vertical-margin-content-left +
+          @timeline-dot-size-width;
+      }
+    }
+
+    .@{timeline-item-prefix-cls}-vertical-right {
+      padding-right: 0;
+
+      > .@{timeline-item-prefix-cls}-dot-wrapper {
+        left: 50%;
+      }
+
+      > .@{timeline-item-prefix-cls}-content-wrapper {
+        left: 0;
+        width: 50%;
+        margin-right: 0;
+        margin-left: -@timeline-vertical-margin-content-left;
+        padding-right: @timeline-vertical-margin-content-left;
+        text-align: right;
+      }
+    }
+  }
+
+  &-right {
+    .@{timeline-item-prefix-cls}-vertical-right {
+      padding-right: @timeline-dot-size-width;
+
+      > .@{timeline-item-prefix-cls}-dot-wrapper {
+        right: 0;
+        left: unset;
+      }
+
+      > .@{timeline-item-prefix-cls}-content-wrapper {
+        margin-right: @timeline-vertical-margin-content-left;
+        margin-left: 0;
+        text-align: right;
+      }
+    }
+  }
+}
+
+/* label position */
+.@{timeline-prefix-cls}-item {
+  &-label-relative {
+    > .@{timeline-prefix-cls}-item-label {
+      position: absolute;
+      top: 0;
+      box-sizing: border-box;
+      max-width: 100px;
+    }
+  }
+
+  &-vertical-left&-label-relative {
+    margin-left: 100px;
+
+    > .@{timeline-prefix-cls}-item-label {
+      left: 0;
+      padding-right: @timeline-vertical-margin-content-left;
+      text-align: right;
+      transform: translateX(-100%);
+    }
+  }
+
+  &-vertical-right&-label-relative {
+    margin-right: 100px;
+
+    > .@{timeline-prefix-cls}-item-label {
+      right: 0;
+      padding-left: @timeline-vertical-margin-content-left;
+      text-align: left;
+      transform: translateX(100%);
+    }
+  }
+
+  &-horizontal-top&-label-relative {
+    margin-top: 50px;
+
+    > .@{timeline-prefix-cls}-item-label {
+      padding-bottom: @timeline-horizontal-margin-content-spacing;
+      transform: translateY(-100%);
+    }
+
+    > .@{timeline-prefix-cls}-item-content {
+      margin-bottom: 0;
+    }
+  }
+
+  &-horizontal-bottom&-label-relative {
+    margin-bottom: 50px;
+
+    > .@{timeline-prefix-cls}-item-content {
+      margin-bottom: 0;
+    }
+
+    > .@{timeline-prefix-cls}-item-label {
+      top: unset;
+      bottom: 0;
+      padding-top: @timeline-horizontal-margin-content-spacing;
+      text-align: left;
+      transform: translateY(100%);
+    }
+  }
+}
+
+.@{timeline-prefix-cls}-alternate {
+  .@{timeline-prefix-cls}-item-vertical-left.@{timeline-prefix-cls}-item-label-relative {
+    margin-left: 0;
+
+    > .@{timeline-prefix-cls}-item-label {
+      left: 0;
+      width: 50%;
+      max-width: unset;
+      transform: none;
+    }
+  }
+
+  .@{timeline-prefix-cls}-item-vertical-right.@{timeline-prefix-cls}-item-label-relative {
+    margin-right: 0;
+  }
+
+  .@{timeline-prefix-cls}-item-horizontal-top.@{timeline-prefix-cls}-item-label-relative {
+    margin-top: 0;
+  }
+
+  .@{timeline-prefix-cls}-item-horizontal-bottom.@{timeline-prefix-cls}-item-label-relative {
+    margin-bottom: 0;
+  }
+}
+
+@import './horizontal.less';

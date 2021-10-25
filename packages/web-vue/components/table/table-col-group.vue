@@ -1,0 +1,48 @@
+<template>
+  <colgroup>
+    <col
+      v-for="item of operations"
+      :key="`arco-col-${item.name}`"
+      :style="fixedWidth(item.width)"
+    />
+    <col
+      v-for="item of dataColumns"
+      :key="`arco-col-${item.dataIndex}`"
+      :style="fixedWidth(item.width)"
+    />
+  </colgroup>
+</template>
+
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
+import { TableColumn, TableOperationColumn } from './interface';
+
+export default defineComponent({
+  name: 'ColGroup',
+  props: {
+    dataColumns: {
+      type: Array as PropType<TableColumn[]>,
+      required: true,
+    },
+    operations: {
+      type: Array as PropType<TableOperationColumn[]>,
+      required: true,
+    },
+  },
+  setup() {
+    const fixedWidth = (width: number) => {
+      if (width) {
+        return {
+          width: `${width}px`,
+          minWidth: `${width}px`,
+          maxWidth: `${width}px`,
+        };
+      }
+      return undefined;
+    };
+    return {
+      fixedWidth,
+    };
+  },
+});
+</script>

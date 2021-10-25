@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<statistic> demo: render [animation] correctly 1`] = `
+"<div class=\\"arco-statistic\\">
+  <div class=\\"arco-statistic-title\\">User Growth Rate</div>
+  <div class=\\"arco-statistic-content\\">
+    <div class=\\"arco-statistic-value\\"><span class=\\"arco-statistic-prefix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-arrow-rise\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.992 6.01a.01.01 0 0 1 .016 0l9.978 11.974a.01.01 0 0 1-.007.016H14.02a.01.01 0 0 1-.007-.016l9.978-11.975Z\\"></path><path d=\\"m24 6 10 12H14L24 6Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M26 42h-4V16h4z\\"></path><path fill=\\"currentColor\\" stroke=\\"none\\" d=\\"M26 42h-4V16h4z\\"></path></svg></span><span class=\\"arco-statistic-value-integer\\">0</span><span class=\\"arco-statistic-value-decimal\\"> .00</span><span class=\\"arco-statistic-suffix\\">%</span></div>
+    <!--v-if-->
+  </div>
+</div><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Start
+</button>"
+`;
+
+exports[`<statistic> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-statistic\\">
+      <div class=\\"arco-statistic-title\\">Downloads</div>
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\">
+          <!--v-if--><span class=\\"arco-statistic-value-integer\\">125,670</span>
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-statistic\\">
+      <!--v-if-->
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\">
+          <!--v-if--><span class=\\"arco-statistic-value-integer\\">40509</span><span class=\\"arco-statistic-value-decimal\\"> .00</span>
+          <!--v-if-->
+        </div>
+        <div class=\\"arco-statistic-extra\\">Comments</div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<statistic> demo: render [countdown] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Start
+    </button></div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-statistic arco-statistic-countdown\\">
+      <div class=\\"arco-statistic-title\\">Countdown</div>
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\">02:00:00</div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<statistic> demo: render [prefix] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+    <div class=\\"arco-statistic\\">
+      <div class=\\"arco-statistic-title\\">New Users</div>
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\">
+          <!--v-if--><span class=\\"arco-statistic-value-integer\\">125,670</span>
+          <!--v-if--><span class=\\"arco-statistic-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-arrow-rise\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.992 6.01a.01.01 0 0 1 .016 0l9.978 11.974a.01.01 0 0 1-.007.016H14.02a.01.01 0 0 1-.007-.016l9.978-11.975Z\\"></path><path d=\\"m24 6 10 12H14L24 6Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M26 42h-4V16h4z\\"></path><path fill=\\"currentColor\\" stroke=\\"none\\" d=\\"M26 42h-4V16h4z\\"></path></svg></span>
+        </div>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-statistic\\">
+      <div class=\\"arco-statistic-title\\">User Growth Rate</div>
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\"><span class=\\"arco-statistic-prefix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-arrow-rise\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.992 6.01a.01.01 0 0 1 .016 0l9.978 11.974a.01.01 0 0 1-.007.016H14.02a.01.01 0 0 1-.007-.016l9.978-11.975Z\\"></path><path d=\\"m24 6 10 12H14L24 6Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M26 42h-4V16h4z\\"></path><path fill=\\"currentColor\\" stroke=\\"none\\" d=\\"M26 42h-4V16h4z\\"></path></svg></span><span class=\\"arco-statistic-value-integer\\">50</span><span class=\\"arco-statistic-value-decimal\\"> .52</span><span class=\\"arco-statistic-suffix\\">%</span></div>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>"
+`;

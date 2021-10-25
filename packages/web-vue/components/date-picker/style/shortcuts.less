@@ -1,0 +1,25 @@
+@import '../../style/theme/index.less';
+
+@date-picker-prefix-cls: ~'@{prefix}-datepicker';
+
+.@{date-picker-prefix-cls}-shortcuts-wrapper {
+  box-sizing: border-box;
+  width: 106px;
+  height: 100%;
+  max-height: 300px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+
+  > li {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 16px;
+    cursor: pointer;
+
+    &:hover {
+      color: @color-primary-6;
+    }
+  }
+}

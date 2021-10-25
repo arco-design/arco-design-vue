@@ -1,0 +1,173 @@
+// 前置后置标签
+.addon(@position, @size-height, @size-font-size) {
+  .item-style() {
+    width: auto;
+    height: 100%;
+    margin-top: -1px;
+    margin-bottom: -1px;
+
+    & when (@position = before) {
+      margin-right: -@input-padding-horizontal;
+      margin-left: -@input-padding-horizontal - 1px;
+    }
+
+    & when (@position = after) {
+      margin-right: -@input-padding-horizontal - 1px;
+      margin-left: -@input-padding-horizontal;
+    }
+  }
+
+  // select,input 的边角和边框
+  .border-radius() {
+    & when (@position = before) {
+      border-color: transparent;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    & when (@position = after) {
+      border-color: transparent;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .@{prefix}-input {
+    .item-style();
+    .border-radius();
+  }
+
+  // 作为前置/后置标签时，重写一些select的样式
+  .@{prefix}-select {
+    .item-style();
+
+    .@{prefix}-select-view {
+      background-color: inherit;
+      border-color: transparent;
+      border-radius: 0;
+    }
+
+    &.@{prefix}-select-single {
+      .@{prefix}-select-view {
+        height: 100%;
+      }
+    }
+  }
+}
+
+// 不同尺寸的高度
+.size-height {
+  .height (@size-height, @size-font-size) {
+    .get-padding(@size-height, @size-font-size);
+
+    font-size: @size-font-size;
+  }
+
+  &-size-mini {
+    /* prettier-ignore */
+    padding-top: (round(@input-size-mini-height - @input-border-width * 2 - $line-height * $font-size) / 2);
+
+    /* prettier-ignore */
+    padding-bottom: (round(@input-size-mini-height - @input-border-width * 2 - $line-height * $font-size) / 2);
+    font-size: @input-size-mini-font-size;
+    line-height: 1.667;
+  }
+
+  &-size-small {
+    .height(@input-size-small-height, @input-size-small-font-size);
+  }
+
+  &-size-large {
+    .height(@input-size-large-height, @input-size-large-font-size);
+  }
+}
+
+// 不同尺寸的带有前置后置标签的高度
+.outer-size() {
+  .size-font-size(@size-input-height, @size-font-size, @suffix-icon-size, @addon-icon-size) {
+    .@{input-prefix-cls}-outer {
+      font-size: @size-font-size;
+    }
+
+    .@{input-prefix-cls}-wrapper {
+      .@{input-prefix-cls}-prefix,
+      .@{input-prefix-cls}-suffix {
+        font-size: @size-font-size;
+
+        > svg {
+          font-size: @suffix-icon-size;
+        }
+      }
+    }
+
+    .@{input-prefix-cls}-prepend,
+    .@{input-prefix-cls}-append {
+      height: @size-input-height - 2;
+      font-size: @size-font-size;
+
+      > svg {
+        font-size: @addon-icon-size;
+      }
+    }
+
+    .@{input-prefix-cls}-prepend {
+      .addon(after, @size-input-height, @size-font-size);
+    }
+
+    .@{input-prefix-cls}-append {
+      .addon(before, @size-input-height, @size-font-size);
+    }
+  }
+
+  &&-size-mini {
+    .size-font-size(
+      @input-size-mini-height,
+      @input-size-mini-font-size,
+      @input-size-mini-icon-suffix-size,
+      @input-size-mini-icon-addon-size
+    );
+  }
+
+  &&-size-small {
+    .size-font-size(
+      @input-size-small-height,
+      @input-size-small-font-size,
+      @input-size-small-icon-suffix-size,
+      @input-size-small-icon-addon-size
+    );
+  }
+
+  &&-size-large {
+    .size-font-size(
+      @input-size-large-height,
+      @input-size-large-font-size,
+      @input-size-large-icon-suffix-size,
+      @input-size-large-icon-addon-size
+    );
+  }
+
+  //&.@{input-prefix-cls}-custom-height {
+  //  .size-font-size(
+  //    @input-size-mini-height,
+  //    @input-size-default-font-size,
+  //    @input-size-default-icon-suffix-size,
+  //    @input-size-default-icon-addon-size
+  //  );
+  //
+  //  .@{input-prefix-cls}-inner-wrapper {
+  //    height: 100%;
+  //
+  //    .@{input-prefix-cls} {
+  //      height: 100%;
+  //    }
+  //
+  //    .@{input-prefix-cls}-clear-wrapper {
+  //      height: 100%;
+  //
+  //      .@{input-prefix-cls} {
+  //        height: 100%;
+  //      }
+  //    }
+  //  }
+  //}
+}

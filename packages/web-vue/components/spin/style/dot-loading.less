@@ -1,0 +1,64 @@
+@import './token.less';
+
+@dot-prefix-cls: ~'@{prefix}-dot-loading';
+
+.@{dot-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  width: @spin-dot-size-width * 7;
+  height: @spin-dot-size-width;
+  transform-style: preserve-3d;
+  perspective: 200px;
+
+  &-item {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: @spin-dot-size-width;
+    height: @spin-dot-size-width;
+    background-color: @spin-color-icon;
+    border-radius: @radius-circle;
+    transform: translateX(-50%) scale(0);
+    animation: @dot-prefix-cls 2s @transition-timing-function-linear infinite
+      forwards;
+
+    &:nth-child(2) {
+      background-color: @color-primary-5;
+      animation-delay: 400ms;
+    }
+
+    &:nth-child(3) {
+      background-color: @color-primary-4;
+      animation-delay: 800ms;
+    }
+
+    &:nth-child(4) {
+      background-color: @color-primary-4;
+      animation-delay: 1200ms;
+    }
+
+    &:nth-child(5) {
+      background-color: @color-primary-2;
+      animation-delay: 1600ms;
+    }
+  }
+}
+
+/* prettier-ignore */
+@keyframes @dot-prefix-cls {
+/* prettier-ignore */
+each(range(36), {
+  @percent: round(percentage(((@value - 1) / 36)), 3);
+
+  // 半径
+  @radius: 280%;
+  @xOffset: round(sin((pi() / 180 * @value * 10)) * @radius, 3) * -1;
+  @zOffset: round(cos((pi() / 180 * @value * 10)), 3) * -1px;
+
+  @scaleOffset: round((1 - cos((pi() / 180) * @value * 10)) * 0.75 + 0.5, 3);
+
+  @{percent} {
+    transform: ~'translate3D(@{xOffset}, 0, @{zOffset}) scale(@{scaleOffset})'
+  }
+});
+}

@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<back-top> demo: render [basic] correctly 1`] = `
+"<div class=\\"wrapper\\">
+  <ul id=\\"basic-demo\\">
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+  </ul>
+  <transition-stub style=\\"position: absolute;\\">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`<back-top> demo: render [custom] correctly 1`] = `
+"<div class=\\"wrapper\\">
+  <ul id=\\"custom-demo\\">
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+    <li>This is the content</li>
+  </ul>
+  <transition-stub style=\\"position: absolute;\\">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;

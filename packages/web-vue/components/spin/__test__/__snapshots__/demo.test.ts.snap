@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<spin> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-spin\\">
+  <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+      <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+    </svg></div>
+</div>"
+`;
+
+exports[`<spin> demo: render [container] correctly 1`] = `
+"<div class=\\"arco-spin arco-spin-loading\\">
+  <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\">
+    <div class=\\"arco-card-header\\">
+      <div class=\\"arco-card-header-title\\">Arco Card</div>
+      <!---->
+    </div>
+    <!---->
+    <div class=\\"arco-card-body\\"> ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around the world. Toutiao started out as a news recommendation engine and gradually evolved into a platform delivering content in various formats.
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-spin-mask\\">
+    <div class=\\"arco-spin-mask-icon\\">
+      <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+        </svg></div>
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<spin> demo: render [dot] correctly 1`] = `
+"<div class=\\"arco-spin\\">
+  <div class=\\"arco-spin-icon\\">
+    <div class=\\"arco-dot-loading\\" style=\\"width: 56px; height: 8px;\\">
+      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
+      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
+      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
+      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
+      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
+    </div>
+  </div>
+</div>"
+`;

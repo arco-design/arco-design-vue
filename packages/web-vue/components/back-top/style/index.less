@@ -1,0 +1,33 @@
+@import './token.less';
+
+@backtop-prefix-cls: ~'@{prefix}-back-top';
+
+.@{backtop-prefix-cls} {
+  position: fixed;
+  right: @backtop-margin-right;
+  bottom: @backtop-margin-bottom;
+  z-index: 100;
+
+  &-btn {
+    width: @backtop-button-size-width;
+    height: @backtop-button-size-width;
+    color: @backtop-button-color-text;
+    font-size: @backtop-button-size-font;
+    text-align: center;
+    background-color: @backtop-button-color-bg;
+    border: none;
+    border-radius: @backtop-button-border-radius;
+    outline: none;
+    cursor: pointer;
+    cursor: pointer;
+    transition: all @transition-duration-2 @transition-timing-function-linear;
+
+    &:hover {
+      background-color: @backtop-button-color-bg_hover;
+    }
+
+    svg {
+      font-size: @backtop-button-size-icon;
+    }
+  }
+}

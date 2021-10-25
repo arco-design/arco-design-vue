@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<mention> demo: render [basic] correctly 1`] = `
+"<span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"enter something\\"><!----><!----></span>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<mention> demo: render [prefix] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"input @\\"><!----><!----></span>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"input #\\"><!----><!----></span>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"input $\\"><!----><!----></span>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+</div>"
+`;

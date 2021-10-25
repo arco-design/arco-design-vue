@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<badge> demo: render [alone] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>2</span></span></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\" style=\\"background: rgb(229, 230, 235); color: rgb(134, 144, 156);\\"><span>2</span></span></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>16</span></span></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>99+</span></span></span></div>
+</div>"
+`;
+
+exports[`<badge> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"></span>
+    <!--v-if-->
+  </div><span class=\\"arco-badge-number\\"><span>9</span></span></span>
+</div>
+<div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"></span>
+  <!--v-if-->
+</div><span class=\\"arco-badge-dot\\" style=\\"width: 10px; height: 10px;\\"></span></span></div>
+<div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"></span>
+  <!--v-if-->
+</div><span class=\\"arco-badge-custom-dot\\" style=\\"height: 16px; width: 16px; font-size: 14px;\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-clock-circle\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\" style=\\"vertical-align: middle;\\"><path d=\\"M24 14v10h9.5m8.5 0c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z\\"></path></svg></span></span></div>
+</div>"
+`;
+
+exports[`<badge> demo: render [color] correctly 1`] = `
+"<div><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-red\\"></span><span class=\\"arco-badge-status-text\\">red</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-orangered\\"></span><span class=\\"arco-badge-status-text\\">orangered</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-orange\\"></span><span class=\\"arco-badge-status-text\\">orange</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-gold\\"></span><span class=\\"arco-badge-status-text\\">gold</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-lime\\"></span><span class=\\"arco-badge-status-text\\">lime</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-green\\"></span><span class=\\"arco-badge-status-text\\">green</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-cyan\\"></span><span class=\\"arco-badge-status-text\\">cyan</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-arcoblue\\"></span><span class=\\"arco-badge-status-text\\">arcoblue</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-purple\\"></span><span class=\\"arco-badge-status-text\\">purple</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-pinkpurple\\"></span><span class=\\"arco-badge-status-text\\">pinkpurple</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-magenta\\"></span><span class=\\"arco-badge-status-text\\">magenta</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-gray\\"></span><span class=\\"arco-badge-status-text\\">gray</span></span></span></div><br>
+<div><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#F53F3F\\" style=\\"background-color: rgb(245, 63, 63);\\"></span><span class=\\"arco-badge-status-text\\">#F53F3F</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#7816FF\\" style=\\"background-color: rgb(120, 22, 255);\\"></span><span class=\\"arco-badge-status-text\\">#7816FF</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#00B42A\\" style=\\"background-color: rgb(0, 180, 42);\\"></span><span class=\\"arco-badge-status-text\\">#00B42A</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#165DFF\\" style=\\"background-color: rgb(22, 93, 255);\\"></span><span class=\\"arco-badge-status-text\\">#165DFF</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#FF7D00\\" style=\\"background-color: rgb(255, 125, 0);\\"></span><span class=\\"arco-badge-status-text\\">#FF7D00</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#EB0AA4\\" style=\\"background-color: rgb(235, 10, 164);\\"></span><span class=\\"arco-badge-status-text\\">#EB0AA4</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#7BC616\\" style=\\"background-color: rgb(123, 198, 22);\\"></span><span class=\\"arco-badge-status-text\\">#7BC616</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#86909C\\" style=\\"background-color: rgb(134, 144, 156);\\"></span><span class=\\"arco-badge-status-text\\">#86909C</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#B71DE8\\" style=\\"background-color: rgb(183, 29, 232);\\"></span><span class=\\"arco-badge-status-text\\">#B71DE8</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#0FC6C2\\" style=\\"background-color: rgb(15, 198, 194);\\"></span><span class=\\"arco-badge-status-text\\">#0FC6C2</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#FFB400\\" style=\\"background-color: rgb(255, 180, 0);\\"></span><span class=\\"arco-badge-status-text\\">#FFB400</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#168CFF\\" style=\\"background-color: rgb(22, 140, 255);\\"></span><span class=\\"arco-badge-status-text\\">#168CFF</span></span></span><span class=\\"arco-badge arco-badge-no-children\\" style=\\"margin-right: 24px;\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-color-#FF5722\\" style=\\"background-color: rgb(255, 87, 34);\\"></span><span class=\\"arco-badge-status-text\\">#FF5722</span></span></span></div>"
+`;
+
+exports[`<badge> demo: render [dot] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><a href=\\"#\\">Link</a><span class=\\"arco-badge-dot\\" style=\\"margin-right: -6px; margin-top: -2px;\\"></span></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-notification\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\" style=\\"color: rgb(136, 136, 136); font-size: 18px; vertical-align: -3px;\\"><path d=\\"M24 9c7.18 0 13 5.82 13 13v13H11V22c0-7.18 5.82-13 13-13Zm0 0V4M6 35h36m-25 7h14\\"></path></svg><span class=\\"arco-badge-dot\\" style=\\"margin-right: -2px; margin-top: -2px;\\"></span></span></div>
+</div>"
+`;
+
+exports[`<badge> demo: render [max] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+    <!--v-if-->
+  </div><span class=\\"arco-badge-number\\"><span>10+</span></span></span>
+</div>
+<div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+  <!--v-if-->
+</div><span class=\\"arco-badge-number\\"><span>99+</span></span></span></div>
+<div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+  <!--v-if-->
+</div><span class=\\"arco-badge-number\\"><span>999+</span></span></span></div>
+</div>"
+`;
+
+exports[`<badge> demo: render [status] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-normal\\"></span>
+        <!----></span></span>
+      </div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-processing\\"></span>
+        <!----></span></span>
+      </div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-success\\"></span>
+        <!----></span></span>
+      </div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-warning\\"></span>
+        <!----></span></span>
+      </div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-danger\\"></span>
+        <!----></span></span>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-normal\\"></span><span class=\\"arco-badge-status-text\\">Normal</span></span></span></div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-processing\\"></span><span class=\\"arco-badge-status-text\\">Processing</span></span></span></div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-success\\"></span><span class=\\"arco-badge-status-text\\">Success</span></span></span></div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-warning\\"></span><span class=\\"arco-badge-status-text\\">Warning</span></span></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-danger\\"></span><span class=\\"arco-badge-status-text\\">Danger</span></span></span></div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<badge> demo: render [text] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+    <!--v-if-->
+  </div><span class=\\"arco-badge-text\\">NEW</span></span>
+</div>
+<div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+  <!--v-if-->
+</div><span class=\\"arco-badge-text\\">HOT</span></span></div>
+</div>"
+`;

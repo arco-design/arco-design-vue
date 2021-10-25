@@ -1,0 +1,53 @@
+@import './token.less';
+
+@split-prefix-cls: ~'@{prefix}-split';
+@split-trigger-prefix-cls: ~'@{split-prefix-cls}-trigger';
+
+.@{split-prefix-cls} {
+  display: flex;
+
+  &-pane {
+    overflow: auto;
+  }
+
+  &-pane-second {
+    flex: 1;
+  }
+
+  &-horizontal {
+    flex-direction: row;
+  }
+
+  &-vertical {
+    flex-direction: column;
+  }
+}
+
+// 伸缩触发杆
+.@{split-trigger-prefix-cls} {
+  &-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: @split-trigger-color-icon;
+    font-size: @split-trigger-font-size-icon;
+    line-height: 1;
+    background-color: @split-trigger-color-background;
+  }
+
+  &-icon {
+    display: inline-block;
+    margin: -(@resizeBox-trigger-font-size-icon / 4);
+  }
+
+  &-vertical {
+    height: 100%;
+    cursor: col-resize;
+  }
+
+  &-horizontal {
+    width: 100%;
+    cursor: row-resize;
+  }
+}

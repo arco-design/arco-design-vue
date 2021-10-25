@@ -1,0 +1,5 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="4">
+<rect x="7" y="21" width="34" height="20" rx="1" stroke-linecap="butt"></rect>
+<path d="M33 15V15C33 10.0294 28.9706 6 24 6V6C19.0294 6 15 10.0294 15 15V21" stroke-linecap="butt"></path>
+<line x1="24" y1="36" x2="24" y2="26" stroke-linecap="butt"></line>
+</svg>

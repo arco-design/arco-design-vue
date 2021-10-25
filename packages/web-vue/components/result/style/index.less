@@ -1,0 +1,89 @@
+@import './token.less';
+
+@result-prefix-cls: ~'@{prefix}-result';
+
+.icon-status (@status) {
+  @color: ~'result-color-icon_@{status}';
+  @bg: ~'result-color-icon-bg_@{status}';
+
+  color: @@color;
+  background-color: @@bg;
+}
+
+.@{result-prefix-cls} {
+  box-sizing: border-box;
+  width: 100%;
+  padding: @result-padding-top_icon @result-padding-horizontal
+    @result-padding-bottom;
+
+  &-404,
+  &-403,
+  &-500 {
+    padding-top: @result-padding-top;
+
+    .@{result-prefix-cls}-icon-tip {
+      width: @result-size-image-width;
+      height: @result-size-image-width;
+      line-height: @result-size-image-width;
+    }
+  }
+
+  &-icon {
+    margin-bottom: @result-margin-icon-bottom;
+    font-size: @result-size-icon;
+    text-align: center;
+
+    &-tip {
+      display: inline-block;
+      width: @result-size-icon-wrapper;
+      height: @result-size-icon-wrapper;
+      line-height: @result-size-icon-wrapper;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    &-custom &-tip {
+      font-size: @result-size-icon-wrapper;
+    }
+
+    &-success &-tip {
+      .icon-status(success);
+    }
+
+    &-error &-tip {
+      .icon-status(error);
+    }
+
+    &-info &-tip {
+      .icon-status(info);
+    }
+
+    &-warning &-tip {
+      .icon-status(warning);
+    }
+  }
+
+  &-title {
+    color: @result-color-title-text;
+    font-weight: @result-font-title-weight;
+    font-size: @result-font-title-size;
+    line-height: 1.5715;
+    text-align: center;
+  }
+
+  &-subtitle {
+    color: @result-color-subtitle-text;
+    font-size: @result-font-subtitle-size;
+    line-height: 1.5715;
+    text-align: center;
+  }
+
+  &-extra {
+    margin-top: @result-margin-extra-top;
+    text-align: center;
+  }
+
+  &-content {
+    margin-top: @result-margin-content-top;
+  }
+}

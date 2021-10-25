@@ -1,0 +1,172 @@
+@import './token.less';
+
+@list-prefix-cls: ~'@{prefix}-list';
+
+.@{list-prefix-cls} {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-y: auto;
+  color: @list-color-text;
+  font-size: @list-font-size;
+  line-height: @list-line-height;
+  border-radius: @list-border-radius;
+
+  &-wrapper {
+    overflow: hidden;
+  }
+
+  .size(@size) {
+    &-@{size} {
+      @ref-padding-vertical-header: ~'list-size-@{size}-padding-vertical-header';
+      @ref-padding-horizontal-header: ~'list-size-@{size}-padding-horizontal-header';
+      @ref-padding-vertical-item: ~'list-size-@{size}-padding-vertical-item';
+      @ref-padding-horizontal-item: ~'list-size-@{size}-padding-horizontal-item';
+
+      > .@{list-prefix-cls}-header {
+        padding: @@ref-padding-vertical-header @@ref-padding-horizontal-header;
+      }
+
+      // 在存在列表嵌套的时候，通过 > 限定 size 仅对其直接子元素生效，避免影响被嵌套的列表的样式
+      > .@{list-prefix-cls}-footer,
+      > .@{list-prefix-cls}-content > .@{list-prefix-cls}-item,
+      > .@{list-prefix-cls}-content
+        .@{list-prefix-cls}-col
+        > .@{list-prefix-cls}-item,
+      > .@{list-prefix-cls}-content.@{list-prefix-cls}-virtual
+        .@{list-prefix-cls}-item {
+        padding: @@ref-padding-vertical-item @@ref-padding-horizontal-item;
+      }
+    }
+  }
+
+  .border() {
+    &-bordered {
+      border: @list-border-width solid @list-border-color;
+    }
+
+    &-bordered &-header,
+    &-bordered &-item:not(:last-child) {
+      border-bottom: @list-border-width solid @list-border-color;
+    }
+
+    &-bordered &-footer {
+      border-top: @list-border-width solid @list-border-color;
+    }
+
+    &-bordered &-no-split {
+      .@{list-prefix-cls}-header,
+      .@{list-prefix-cls}-footer,
+      .@{list-prefix-cls}-item {
+        border: none;
+      }
+    }
+  }
+
+  .size(small);
+  .size(medium);
+  .size(large);
+  .border();
+
+  &-header {
+    color: @list-color-text-header;
+    font-weight: @list-font-weight-header;
+    font-size: @list-font-size-header;
+    line-height: @list-line-height-header;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+
+    &-main {
+      flex: 1;
+
+      .@{list-prefix-cls}-item-action:not(:first-child) {
+        margin-top: @list-action-margin-top;
+      }
+    }
+
+    &-meta {
+      display: flex;
+      align-items: center;
+      padding: @list-meta-padding-vertical @list-meta-padding-horizontal;
+
+      &-avatar {
+        display: flex;
+
+        &:not(:last-child) {
+          margin-right: @list-meta-margin-right-avatar;
+        }
+      }
+
+      &-title {
+        color: @list-meta-color-title;
+        font-weight: @list-meta-font-weight-title;
+
+        &:not(:last-child) {
+          margin-bottom: @list-meta-margin-bottom-title;
+        }
+      }
+
+      &-description {
+        color: @list-mete-color-description;
+      }
+    }
+
+    &-action {
+      display: flex;
+      flex-wrap: nowrap;
+      align-self: center;
+      list-style: none;
+
+      > li {
+        display: inline-block;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: @list-action-gap;
+        }
+      }
+    }
+  }
+
+  &-hoverable &-item:hover {
+    background-color: @list-color-bg-item-hover;
+  }
+
+  &-pagination {
+    float: right;
+    margin-top: @list-pagination-margin-top;
+
+    &::after {
+      display: block;
+      clear: both;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      content: '';
+    }
+  }
+
+  &-scroll-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-content {
+    flex: 1;
+
+    .@{prefix}-empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+  }
+}
