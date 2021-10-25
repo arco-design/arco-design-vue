@@ -11,7 +11,7 @@
 
 A comprehensive Vue UI components library based on the [Arco Design](https://arco.design/) system.
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arco-design/arco-design-vue/blob/master/LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arco-design/arco-design-vue/blob/main/LICENSE)
 
 </div>
 

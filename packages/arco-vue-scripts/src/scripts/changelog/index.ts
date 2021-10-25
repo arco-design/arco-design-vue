@@ -41,7 +41,7 @@ const getRecords = (mr: any) => {
 
   const records: Array<Record<string, any>> = [];
 
-  const typeRule = new RegExp('## Types of changes.+?\\[x\\] (.+?)\\n', 's');
+  const typeRule = new RegExp('## Types of changes.+?\\[x] (.+?)\\n', 's');
 
   const typeString = content.match(typeRule)?.[1];
 
@@ -90,8 +90,8 @@ const getRecords = (mr: any) => {
             return data;
           },
           {
-            mrId: mr.id,
-            mrURL: mr.url,
+            mrId: mr.number,
+            mrURL: mr.html_url,
             type,
           } as Record<string, any>
         );
@@ -107,10 +107,17 @@ const addAll = (data: any, changelog: any) => {
   if (!changelog[data.type]) {
     changelog[data.type] = [];
   }
-  changelog[data.type].push(`**${data.component}:** ${data.content}`);
+  if (!data.component || data.component === 'common') {
+    changelog[data.type].push(data.content);
+  } else {
+    changelog[data.type].push(`**${data.component}:** ${data.content}`);
+  }
 };
 
 const addComponent = (data: any, changelog: any) => {
+  if (!data.component || data.component === 'common') {
+    return;
+  }
   if (!changelog[data.component]) {
     changelog[data.component] = {};
   }
@@ -127,8 +134,8 @@ const getEmitsFromChangelog = (changelog: Changelog): EmitInfo[] => {
   const componentEN: Record<string, any> = {};
 
   for (const item of changelog.list) {
-    const contentCN = `${item['changelog(cn)']} ([!${item.mrId}](${item.mrURL}))`;
-    const contentEN = `${item['changelog(en)']} ([!${item.mrId}](${item.mrURL}))`;
+    const contentCN = `${item['changelog(cn)']} ([#${item.mrId}](${item.mrURL}))`;
+    const contentEN = `${item['changelog(en)']} ([#${item.mrId}](${item.mrURL}))`;
     addAll({ ...item, content: contentCN }, allCN);
     addAll({ ...item, content: contentEN }, addEN);
     addComponent({ ...item, content: contentCN }, componentCN);
@@ -202,15 +209,12 @@ const run = async () => {
 
   const { version } = answer;
 
-  const res = await axios.get(
-    'https://api.github.com/repos/arco-design/arco-design-vue/pulls',
-    {
-      params: {
-        accept: 'application/vnd.github.v3+json',
-        head: '',
-      },
-    }
-  );
+  const res = await axios.get('https://api.github.com/search/issues', {
+    params: {
+      accept: 'application/vnd.github.v3+json',
+      q: `repo:arco-design/arco-design-vue+is:pr+is:closed+milestone:${version}`,
+    },
+  });
 
   if (res.status === 200) {
     const { data } = res;

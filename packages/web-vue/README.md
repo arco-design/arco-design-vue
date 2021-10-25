@@ -10,8 +10,8 @@ The goal of ArcoDesign is to solve experience problems in products through a uni
 
 ## ArcoDesign Component
 
-* [React Component](https://arco.design/react/)
-* [Vue Component](https://arco.design/vue/)
+* [React Component](https://arco.design/react/docs/start/)
+* [Vue Component](https://arco.design/vue/docs/start/)
 
 ## Docs
 
