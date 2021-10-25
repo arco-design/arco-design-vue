@@ -9,7 +9,7 @@
   "scripts": {
     "start": "arco-vue-scripts dev:site",
     "build": "arco-vue-scripts build:site",
-    "lint-staged": "lint-staged"
+    "lint-staged": "npx lint-staged"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,vue}": [

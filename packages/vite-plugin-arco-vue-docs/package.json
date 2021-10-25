@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
-    "lint-staged": "lint-staged"
+    "lint-staged": "npx lint-staged"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
