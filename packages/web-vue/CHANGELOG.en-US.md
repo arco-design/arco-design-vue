@@ -6,8 +6,6 @@ changelog: true
 
 `2021-10-26`
 
-### 💅 Style
-
 - Component library default font adjustment
 
 ## 2.0.1
