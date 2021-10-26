@@ -86,13 +86,13 @@ app.mount('#app');
 | --------------------- | ------------------------------------------------------- |
 | [React 组件库] | 基于 [Arco Design](https://arco.design/) 的 React UI 组件库。 |
 | [风格配置平台] | 精确到组件级的主题视觉配置平台 |
-| [物料市场] | 丰富可共享的业务定制物料，让效率突破猛进 |
+| [物料平台] | 丰富可共享的业务定制物料，让效率突破猛进 |
 | [图标平台] | 一站式图标管理平台 |
 | [Arco Pro] | 快速构建中后台的前端解决方案 |
 
 [React 组件库]: https://arco.design/react/docs/start
 [风格配置平台]: https://arco.design/themes
-[物料市场]: https://arco.design/material
+[物料平台]: https://arco.design/material
 [图标平台]: https://arco.design/iconbox
 [Arco Pro]: https://arco.design/pro/
 

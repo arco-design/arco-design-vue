@@ -14,7 +14,7 @@
     "dtsgen": "tsc"
   },
   "devDependencies": {
-    "@arco-design/arco-site-navbar": "^1.9.0",
+    "@arco-design/arco-site-navbar": "^1.10.1",
     "@arco-design/web-react": "^2.23.1",
     "@svgr/core": "^5.5.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
