@@ -7,9 +7,7 @@
     <nav class="aside-nav">
       <div class="aside-nav-header">
         <div class="type-radio-group">
-          <a class="type-radio-button" href="/react/docs/start">
-            React
-          </a>
+          <a class="type-radio-button" href="/react/docs/start">React</a>
           <a class="type-radio-button type-radio-button-active">Vue</a>
         </div>
       </div>
