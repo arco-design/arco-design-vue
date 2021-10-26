@@ -7,14 +7,17 @@ description: 跟随以下的步骤，快速上手组件库的使用。
 
 ## Vue 版本
 
-vue >= 3.1.0
+vue >= 3.2.0
 
 **注意**： `Vue3` 不支持IE浏览器环境，如果需要可以增加 `polyfill`。
 
 ## 安装
 
 ```shell
-npm i @arco-design/web-vue
+# npm
+npm install --save-dev @arco-design/web-vue
+# yarn
+yarn add --dev @arco-design/web-vue
 ```
 
 ## 完整引入

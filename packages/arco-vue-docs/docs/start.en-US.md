@@ -9,14 +9,17 @@ description: Follow the steps below to quickly get started using the component l
 
 ## Vue Version
 
-vue >= 3.1.0
+vue >= 3.2.0
 
 **Note**: `Vue3` does not support IE browser environment, you can add `polyfill` if necessary.
 
 ## Install
 
 ```shell
-npm i @arco-design/web-vue
+# npm
+npm install --save-dev @arco-design/web-vue
+# yarn
+yarn add --dev @arco-design/web-vue
 ```
 
 ## Full import
