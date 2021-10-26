@@ -80,7 +80,7 @@ const getRecords = (mr: any) => {
               case 'related issues': {
                 const match = (items[index] ?? '').match(/#\d+/g);
                 if (match) {
-                  data[title] = match.map((item: string) => item.slice(1));
+                  data.issue = match.map((item: string) => item.slice(1));
                 }
                 break;
               }
@@ -209,12 +209,9 @@ const run = async () => {
 
   const { version } = answer;
 
-  const res = await axios.get('https://api.github.com/search/issues', {
-    params: {
-      accept: 'application/vnd.github.v3+json',
-      q: `repo:arco-design/arco-design-vue+is:pr+is:closed+milestone:${version}`,
-    },
-  });
+  const res = await axios.get(
+    `https://api.github.com/search/issues?accept=application/vnd.github.v3+json&q=repo:arco-design/arco-design-vue+is:pr+is:closed+milestone:${version}`
+  );
 
   if (res.status === 200) {
     const { data } = res;
@@ -224,7 +221,7 @@ const run = async () => {
       list: [] as Record<string, any>[],
     };
 
-    for (const item of data) {
+    for (const item of data?.items ?? []) {
       const records = getRecords(item);
       changelog.list.push(...records);
     }
