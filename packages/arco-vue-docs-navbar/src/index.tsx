@@ -25,6 +25,7 @@ const ReactApp = ({
           onChangeLanguage={handleLanguageChange}
           hideSearch
           defaultVersion={version}
+          loginHref={`/login?redirectUrl=${window.location.href}`}
           versions={[
             {
               version: '1.x',
