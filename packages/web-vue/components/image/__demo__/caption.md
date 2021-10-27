@@ -37,7 +37,7 @@ By setting title and description, the title and description of the picture can b
   export default {
     setup() {
       return {
-        src: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/890b73629ed64a8cadae8b270e1f993d~tplv-uwbnlip3yd-image.image',
+        src: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp',
         title: 'A user’s avatar',
         description: 'Present by Arco Design',
       }

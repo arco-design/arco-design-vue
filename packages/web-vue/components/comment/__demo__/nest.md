@@ -20,7 +20,7 @@ Comments can be nested.
 <template>
   <a-comment
     author="Socrates"
-    avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image"
+    avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
     content="Comment body content."
     datetime="1 hour"
   >
@@ -29,7 +29,7 @@ Comments can be nested.
     </template>
     <a-comment
       author="Balzac"
-      avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image"
+      avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp"
       content="Comment body content."
       datetime="1 hour"
     >
@@ -38,7 +38,7 @@ Comments can be nested.
       </template>
       <a-comment
         author="Austen"
-        avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a83a4f9b13464f609922b2c41eca552b~tplv-uwbnlip3yd-image.image"
+        avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/8361eeb82904210b4f55fab888fe8416.png~tplv-uwbnlip3yd-webp.webp"
         content="Reply content"
         datetime="1 hour"
       >
@@ -48,7 +48,7 @@ Comments can be nested.
       </a-comment>
       <a-comment
         author="Plato"
-        avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/d25cec706293400989fde1eddfeb9cf0~tplv-uwbnlip3yd-image.image"
+        avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
         content="Reply content"
         datetime="1 hour"
       >
