@@ -29,7 +29,7 @@ Use `Card.Meta` to support more flexible content (cover, avatar, title, descript
         <img
           :style="{ width: '100%', transform: 'translateY(-20px)' }"
           alt="dessert"
-          src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/bb4d85edbb3a40b2b9540f7aec6cac17~tplv-uwbnlip3yd-image.image"
+          src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"
         />
       </div>
     </template>

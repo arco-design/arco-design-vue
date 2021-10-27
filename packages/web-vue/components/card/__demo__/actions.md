@@ -34,7 +34,7 @@ The `actions` slot can be used to display the bottom button group.
         <img
           :style="{ width: '100%', transform: 'translateY(-20px)' }"
           alt="dessert"
-          src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/bb4d85edbb3a40b2b9540f7aec6cac17~tplv-uwbnlip3yd-image.image"
+          src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"
         />
       </div>
     </template>
@@ -44,10 +44,7 @@ The `actions` slot can be used to display the bottom button group.
           :style="{ display: 'flex', alignItems: 'center', color: '#1D2129' }"
         >
           <a-avatar :size="24" :style="{ marginRight: '8px' }">
-            <img
-              alt="avatar"
-              src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/5ee428f1389b4291b1f9bbd82b24105d~tplv-uwbnlip3yd-image.image"
-            />
+            A
           </a-avatar>
           <a-typography-text>Username</a-typography-text>
         </div>
