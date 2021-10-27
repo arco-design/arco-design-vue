@@ -41,7 +41,7 @@ export default {
         {
           uid: '-3',
           name: '20200717-103937.png',
-          url: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/701131f3576449d483d0650a525b57ee~tplv-uwbnlip3yd-image.image',
+          url: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp',
         },
       ]
     }

@@ -21,7 +21,7 @@ Use with replay
   <a-comment
     align="right"
     author="Balzac"
-    avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image"
+    avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
     content="A design is a plan or specification for the construction of an object
           or system or for the implementation of an activity or process, or the
           result of that plan or specification in the form of a prototype,
@@ -33,7 +33,7 @@ Use with replay
     </template>
     <a-comment
       align="right"
-      avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image"
+      avatar="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
     >
       <template #actions>
         <a-button key="0" type="secondary"> Cancel </a-button>

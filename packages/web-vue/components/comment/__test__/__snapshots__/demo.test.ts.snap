@@ -3,7 +3,7 @@
 exports[`<comment> demo: render [align] correctly 1`] = `
 "<div class=\\"arco-comment\\">
   <div class=\\"arco-comment-avatar\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image\\"></span>
+    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <!--v-if-->
     </div>
   </div>
@@ -23,7 +23,7 @@ exports[`<comment> demo: render [align] correctly 1`] = `
 exports[`<comment> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-comment\\">
   <div class=\\"arco-comment-avatar\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image\\"></span>
+    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <!--v-if-->
     </div>
   </div>
@@ -40,7 +40,7 @@ exports[`<comment> demo: render [basic] correctly 1`] = `
 
 exports[`<comment> demo: render [editor] correctly 1`] = `
 "<div class=\\"arco-comment\\">
-  <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image\\" alt=\\"comment-avatar\\"></div>
+  <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
   <div class=\\"arco-comment-inner\\">
     <div class=\\"arco-comment-inner-content\\">
       <div class=\\"arco-comment-title arco-comment-title-align-right\\"><span class=\\"arco-comment-author\\"><span>Balzac</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
@@ -52,7 +52,7 @@ exports[`<comment> demo: render [editor] correctly 1`] = `
     </div>
     <div class=\\"arco-comment-inner-comment\\">
       <div class=\\"arco-comment\\">
-        <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image\\" alt=\\"comment-avatar\\"></div>
+        <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
         <div class=\\"arco-comment-inner\\">
           <div class=\\"arco-comment-inner-content\\">
             <!--v-if-->
@@ -73,7 +73,7 @@ exports[`<comment> demo: render [editor] correctly 1`] = `
 
 exports[`<comment> demo: render [nest] correctly 1`] = `
 "<div class=\\"arco-comment\\">
-  <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image\\" alt=\\"comment-avatar\\"></div>
+  <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
   <div class=\\"arco-comment-inner\\">
     <div class=\\"arco-comment-inner-content\\">
       <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Socrates</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
@@ -82,7 +82,7 @@ exports[`<comment> demo: render [nest] correctly 1`] = `
     </div>
     <div class=\\"arco-comment-inner-comment\\">
       <div class=\\"arco-comment\\">
-        <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b8659bfc202d44c49aad938b95884e7a~tplv-uwbnlip3yd-image.image\\" alt=\\"comment-avatar\\"></div>
+        <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
         <div class=\\"arco-comment-inner\\">
           <div class=\\"arco-comment-inner-content\\">
             <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Balzac</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
@@ -91,7 +91,7 @@ exports[`<comment> demo: render [nest] correctly 1`] = `
           </div>
           <div class=\\"arco-comment-inner-comment\\">
             <div class=\\"arco-comment\\">
-              <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a83a4f9b13464f609922b2c41eca552b~tplv-uwbnlip3yd-image.image\\" alt=\\"comment-avatar\\"></div>
+              <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/8361eeb82904210b4f55fab888fe8416.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
               <div class=\\"arco-comment-inner\\">
                 <div class=\\"arco-comment-inner-content\\">
                   <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Austen</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
@@ -102,7 +102,7 @@ exports[`<comment> demo: render [nest] correctly 1`] = `
               </div>
             </div>
             <div class=\\"arco-comment\\">
-              <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/d25cec706293400989fde1eddfeb9cf0~tplv-uwbnlip3yd-image.image\\" alt=\\"comment-avatar\\"></div>
+              <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
               <div class=\\"arco-comment-inner\\">
                 <div class=\\"arco-comment-inner-content\\">
                   <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Plato</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>

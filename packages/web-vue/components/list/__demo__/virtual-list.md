@@ -32,7 +32,7 @@ By specifying `virtualListProps` to turn on the virtual list, high performance c
         >
           <template #avatar>
             <a-avatar shape="square">
-              <img alt="avatar" :src="item.avatar" />
+              A
             </a-avatar>
           </template>
         </a-list-item-meta>
@@ -48,7 +48,6 @@ export default {
       list: new Array(10000).fill(null).map((_, index) => {
         const prefix = `0000${index}`.slice(-5);
         return {
-          avatar: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/5ee428f1389b4291b1f9bbd82b24105d~tplv-uwbnlip3yd-image.image',
           title: 'Beijing Bytedance Technology Co., Ltd.',
           description: `(${prefix}) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.`,
         };

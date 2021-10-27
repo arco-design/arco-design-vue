@@ -33,10 +33,7 @@ A card that only has a content area.
           :style="{ marginRight: '8px', backgroundColor: '#165DFF' }"
           :size="28"
         >
-          <img
-            alt="avatar"
-            src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/5ee428f1389b4291b1f9bbd82b24105d~tplv-uwbnlip3yd-image.image"
-          />
+          A
         </a-avatar>
         <a-typography-text>Username</a-typography-text>
       </span>
