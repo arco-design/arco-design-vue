@@ -69,7 +69,7 @@ app.mount('#app');
 
 2. Use `yarn install` to install the dependencies of each package in `workspaces`
 
-3. Use `lerna init` to initialize the project
+3. Use `npm run init` to initialize the project
 
 # Useful Links
 
