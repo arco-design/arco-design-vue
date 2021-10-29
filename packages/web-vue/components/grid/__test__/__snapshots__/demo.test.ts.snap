@@ -110,7 +110,7 @@ exports[`<grid> demo: render [flex-align] correctly 1`] = `
       <div>col - 6</div>
     </div>
   </div>
-  <p>Arrange right</p>
+  <p>Arrange center</p>
   <div class=\\"arco-row arco-row-align-center arco-row-justify-start grid-demo\\">
     <div class=\\"arco-col arco-col-6\\">
       <div>col - 6</div>

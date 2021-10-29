@@ -533,7 +533,7 @@ export default defineComponent({
     };
 
     const handleClear = (e: Event) => {
-      e.stopPropagation();
+      e?.stopPropagation();
       if (isArray(computedValue.value)) {
         // Keep the option value that has been selected but disabled
         const newValue = computedValue.value.filter((v) => {

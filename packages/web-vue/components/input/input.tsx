@@ -179,7 +179,7 @@ export default defineComponent({
     // 状态相关
     const focused = ref(false);
     const showClearBtn = computed(
-      () => props.allowClear && !props.disabled && computedValue.value
+      () => props.allowClear && !props.disabled && Boolean(computedValue.value)
     );
 
     // 输入法相关
