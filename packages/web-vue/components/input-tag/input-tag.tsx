@@ -148,6 +148,10 @@ export default defineComponent({
     onBlur: {
       type: Function as PropType<() => void>,
     },
+    hideSuffixOnClear: {
+      type: Boolean,
+      default: false,
+    },
     // private
     baseCls: String,
   },
@@ -235,7 +239,7 @@ export default defineComponent({
     const prefixSlot = usePickSlots(slots, 'prefix');
     const suffixSlot = usePickSlots(slots, 'suffix');
 
-    const hasSuffix = computed(() => showClearBtn.value || suffixSlot.value);
+    const hasSuffix = computed(() => suffixSlot.value);
 
     const handleMousedown = (e: MouseEvent) => {
       if (inputRef.value && e.target !== inputRef.value) {
@@ -281,16 +285,19 @@ export default defineComponent({
       emit('change', newValue);
     };
 
-    const handleClear = () => {
+    const handleClear = (e: Event) => {
       const newValue: any[] = [];
       _value.value = newValue;
-      emit('clear');
+      emit('clear', e);
       emit('update:modelValue', newValue);
       emit('change', newValue);
     };
 
     const showClearBtn = computed(
-      () => props.allowClear && !props.disabled && computedValue.value.length
+      () =>
+        props.allowClear &&
+        !props.disabled &&
+        Boolean(computedValue.value.length)
     );
 
     const handlePressEnter = () => {
@@ -364,7 +371,7 @@ export default defineComponent({
         [`${prefixCls}-readonly`]: props.readonly,
         [`${prefixCls}-has-tag`]: tags.value.length > 0,
         [`${prefixCls}-has-prefix`]: Boolean(prefixSlot.value),
-        [`${prefixCls}-has-suffix`]: hasSuffix.value,
+        [`${prefixCls}-has-suffix`]: hasSuffix.value || showClearBtn.value,
         [`${prefixCls}-has-placeholder`]: !computedValue.value.length,
       },
     ]);
@@ -415,13 +422,25 @@ export default defineComponent({
             {...inputAttrs}
           />
         </TransitionGroup>
+        {showClearBtn.value && (
+          <IconHover
+            class={`${prefixCls}-clear-btn`}
+            onClick={handleClear}
+            onMousedown={(e: Event) => e.stopPropagation()}
+          >
+            <IconClose />
+          </IconHover>
+        )}
         {hasSuffix.value && (
-          <span class={`${prefixCls}-suffix`}>
-            {showClearBtn.value && (
-              <IconHover class={`${prefixCls}-clear-btn`} onClick={handleClear}>
-                <IconClose />
-              </IconHover>
-            )}
+          <span
+            class={[
+              `${prefixCls}-suffix`,
+              {
+                [`${prefixCls}-suffix-hide-on-clear`]:
+                  props.hideSuffixOnClear && showClearBtn.value,
+              },
+            ]}
+          >
             {slots.suffix?.()}
           </span>
         )}

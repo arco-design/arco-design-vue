@@ -325,13 +325,16 @@ export default defineComponent({
           inputValue={props.inputValue}
           placeholder={props.placeholder}
           disabled={props.disabled}
+          allowClear={props.allowClear}
           size={props.size}
           error={props.error}
           maxTagCount={props.maxTagCount}
           retainInputValue
+          hideSuffixOnClear={true}
           onInputValueChange={handleInputValueChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onClear={handleClear}
           onRemove={handleRemove}
           {...attrs}
         />
