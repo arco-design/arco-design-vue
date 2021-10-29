@@ -34,7 +34,7 @@ Use `align` for vertical layout.
         <div>col - 6</div>
       </a-col>
     </a-row>
-    <p>Arrange right</p>
+    <p>Arrange center</p>
     <a-row class="grid-demo" align="center">
       <a-col :span="6">
         <div>col - 6</div>
