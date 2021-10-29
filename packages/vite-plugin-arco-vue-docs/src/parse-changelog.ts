@@ -28,7 +28,10 @@ export const parseChangelog = (tokens: Token[]) => {
   const changelog = [];
 
   let data = { version: '', date: '', list: [], extra: [] };
-  tokens.forEach((item, index) => {
+
+  for (let i = 0; i < tokens.length; i++) {
+    const item = tokens[i];
+
     if (item.type === 'heading' && item.depth === 2) {
       if (data.version) {
         changelog.push({ ...data });
@@ -48,24 +51,22 @@ export const parseChangelog = (tokens: Token[]) => {
         typeText: item.text,
         list: [],
       };
-      for (let i = index + 1; i < tokens.length; i++) {
-        // @ts-ignore
-        if (tokens[i].type === 'heading' && tokens[i].depth === 3) {
-          break;
-        }
-        if (tokens[i].type === 'list') {
-          const listToken = tokens[i];
+      for (let j = i + 1; j < tokens.length; j++) {
+        if (tokens[j].type === 'list') {
+          const listToken = tokens[j];
           // @ts-ignore
           for (const item of listToken.items) {
             // @ts-ignore
             content.list.push(marked(item.text));
           }
+          i = j;
+          break;
         }
       }
       // @ts-ignore
       data.list.push(content);
     }
-  });
+  }
 
   if (data.version) {
     changelog.push({ ...data });
