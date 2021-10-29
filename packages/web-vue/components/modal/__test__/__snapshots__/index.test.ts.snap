@@ -20,7 +20,7 @@ exports[`Modal should render modal and emit ok/cancel event 1`] = `
         </div>
         <div class=\\"arco-modal-footer\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->取消
-          </button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+          </button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->确定
           </button></div>
       </div>
@@ -50,7 +50,7 @@ exports[`Modal should render simple modal 1`] = `
         </div>
         <div class=\\"arco-modal-footer\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->取消
-          </button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+          </button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->确定
           </button></div>
       </div>
@@ -60,4 +60,4 @@ exports[`Modal should render simple modal 1`] = `
 <!--teleport end-->"
 `;
 
-exports[`Modal should show modal and call cb 1`] = `"<body style=\\"overflow: hidden; width: -1024px; box-sizing: border-box;\\"><div class=\\"arco-overlay arco-overlay-modal\\"><!--teleport start--><div content=\\"content\\" class=\\"arco-modal-container\\"><transition-stub><div class=\\"arco-modal-mask\\" style=\\"z-index: 1000;\\"></div></transition-stub><transition-stub><div class=\\"arco-modal-wrapper\\" style=\\"z-index: 1000;\\"><div class=\\"arco-modal\\"><div class=\\"arco-modal-header\\"><div class=\\"arco-modal-title\\"><!--v-if-->title</div><div class=\\"arco-modal-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div></div><div class=\\"arco-modal-body\\">content</div><div class=\\"arco-modal-footer\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->取消</button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->确定</button></div></div></div></transition-stub></div><!--teleport end--></div></body>"`;
+exports[`Modal should show modal and call cb 1`] = `"<body style=\\"overflow: hidden; width: -1024px; box-sizing: border-box;\\"><div class=\\"arco-overlay arco-overlay-modal\\"><!--teleport start--><div content=\\"content\\" class=\\"arco-modal-container\\"><transition-stub><div class=\\"arco-modal-mask\\" style=\\"z-index: 1000;\\"></div></transition-stub><transition-stub><div class=\\"arco-modal-wrapper\\" style=\\"z-index: 1000;\\"><div class=\\"arco-modal\\"><div class=\\"arco-modal-header\\"><div class=\\"arco-modal-title\\"><!--v-if-->title</div><div class=\\"arco-modal-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div></div><div class=\\"arco-modal-body\\">content</div><div class=\\"arco-modal-footer\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->取消</button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->确定</button></div></div></div></transition-stub></div><!--teleport end--></div></body>"`;

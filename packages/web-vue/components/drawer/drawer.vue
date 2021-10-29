@@ -44,7 +44,11 @@
                 <arco-button @click="handleCancel">
                   {{ cancelText || t('drawer.cancelText') }}
                 </arco-button>
-                <arco-button :loading="okLoading" @click="handleOk">
+                <arco-button
+                  type="primary"
+                  :loading="okLoading"
+                  @click="handleOk"
+                >
                   {{ okText || t('drawer.okText') }}
                 </arco-button>
               </slot>

@@ -73,6 +73,7 @@
                   {{ cancelDisplayText }}
                 </arco-button>
                 <arco-button
+                  type="primary"
                   v-bind="okButtonProps"
                   :loading="okLoading"
                   @click="handleOk"
