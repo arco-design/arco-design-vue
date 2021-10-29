@@ -30,7 +30,7 @@ export default defineComponent({
      * @vModel
      */
     activeKey: {
-      type: [String, Array] as PropType<string | string[]>,
+      type: Array as PropType<string[]>,
       default: undefined,
     },
     /**
@@ -38,7 +38,7 @@ export default defineComponent({
      * @en The `key` of the panel expanded by default (uncontrolled mode)
      */
     defaultActiveKey: {
-      type: [String, Array] as PropType<string | string[]>,
+      type: Array as PropType<string[]>,
       default: () => [],
     },
     /**
@@ -94,9 +94,17 @@ export default defineComponent({
 
     const handleClick = (key: string, e: Event) => {
       if (props.accordion) {
-        _activeKey.value = key;
-        emit('update:activeKey', key);
-        emit('change', key, e);
+        if (computedActiveKeys.value.includes(key)) {
+          const newActiveKeys: string[] = [];
+          _activeKey.value = newActiveKeys;
+          emit('update:activeKey', newActiveKeys);
+          emit('change', newActiveKeys, e);
+        } else {
+          const newActiveKeys = [key];
+          _activeKey.value = newActiveKeys;
+          emit('update:activeKey', newActiveKeys);
+          emit('change', newActiveKeys, e);
+        }
       } else {
         let newActiveKeys = [...computedActiveKeys.value];
         const _index = newActiveKeys.indexOf(key);

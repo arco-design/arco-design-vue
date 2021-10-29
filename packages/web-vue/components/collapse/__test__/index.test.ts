@@ -25,6 +25,6 @@ describe('Collapse', () => {
     expect(wrapper.emitted('change')[0][0]).toEqual(['3']);
     await wrapper.setProps({ accordion: true });
     await headers[0].trigger('click');
-    expect(wrapper.emitted('change')[1][0]).toBe('1');
+    expect(wrapper.emitted('change')[1][0]).toEqual(['1']);
   });
 });
