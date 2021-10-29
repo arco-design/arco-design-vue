@@ -18,7 +18,7 @@ exports[`Drawer should render Drawer 1`] = `
         </div>
         <div class=\\"arco-drawer-footer\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->取消
-          </button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+          </button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->确定
           </button></div>
       </div>
