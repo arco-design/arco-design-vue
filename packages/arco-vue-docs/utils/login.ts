@@ -26,11 +26,16 @@ export async function checkLogin() {
       }
     }
     try {
-      const appId = /arco\.design/.test(window.location.href) ? 26344 : 4374;
+      const appId = /arco\.design/.test(window.location.href) ? 4374 : 263440;
 
       window.collectEvent('init', {
         app_id: appId,
         channel: 'cn',
+      });
+      window.collectEvent('config', {
+        evtParams: {
+          site: 'ArcoDesignVue',
+        },
       });
       window.collectEvent('start');
     } catch {}

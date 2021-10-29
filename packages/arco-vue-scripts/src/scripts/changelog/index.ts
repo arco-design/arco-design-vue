@@ -29,7 +29,7 @@ const typeMap: Record<string, string> = {
   'Coding style change': 'unused',
   'Refactoring': 'unused',
   'Component style change': 'style',
-  'Performance improvement': 'optimization',
+  'Performance improvement': 'performance',
   'Test cases': 'unused',
   'Continuous integration': 'unused',
   'Typescript definition change': 'typescript',
@@ -63,7 +63,7 @@ const getRecords = (mr: any) => {
     if (matchResult) {
       const titles = matchResult[1]
         .split('|')
-        .map((item: string) => item.toLowerCase());
+        .map((item: string) => item.toLowerCase().trim());
       const lines = matchResult[2]
         .split('\n')
         .filter((value: string) => Boolean(value.trim()));
@@ -149,7 +149,7 @@ const getEmitsFromChangelog = (changelog: Changelog): EmitInfo[] => {
       data: { version: changelog.version, date: changelog.date, ...allCN },
     },
     {
-      filename: 'CHANGELOG.en-US.md',
+      filename: 'CHANGELOG.md',
       template: 'template/main.en-US.njk',
       data: { version: changelog.version, date: changelog.date, ...addEN },
     },
@@ -168,7 +168,7 @@ const getEmitsFromChangelog = (changelog: Changelog): EmitInfo[] => {
   }
   for (const component of Object.keys(componentEN)) {
     emits.push({
-      filename: `components/${component}/CHANGELOG.en-US.md`,
+      filename: `components/${component}/CHANGELOG.md`,
       template: 'template/main.en-US.njk',
       data: {
         version: changelog.version,
@@ -210,7 +210,7 @@ const run = async () => {
   const { version } = answer;
 
   const res = await axios.get(
-    `https://api.github.com/search/issues?accept=application/vnd.github.v3+json&q=repo:arco-design/arco-design-vue+is:pr+is:closed+milestone:${version}`
+    `https://api.github.com/search/issues?accept=application/vnd.github.v3+json&q=repo:arco-design/arco-design-vue+is:pr+is:merged+milestone:${version}`
   );
 
   if (res.status === 200) {

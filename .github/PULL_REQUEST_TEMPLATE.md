@@ -21,6 +21,7 @@
 - [ ] Continuous integration
 - [ ] Typescript definition change
 - [ ] Breaking change
+- [ ] Others
 
 ## Background and context
 
