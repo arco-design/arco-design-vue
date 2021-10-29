@@ -9,7 +9,7 @@
     "build:site": "yarn workspace @arco-design/arco-vue-docs run build",
     "build:component": "yarn workspace @arco-design/web-vue run build",
     "test": "yarn workspace @arco-design/web-vue run test",
-    "storybook": "yarn workspace @arco-design/web-vue run storybook"
+    "storybook": "yarn workspace @arco-design/web-vue-storybook run storybook"
   },
   "workspaces": [
     "packages/*"
