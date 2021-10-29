@@ -782,12 +782,24 @@ export default defineComponent({
 
     const isVirtualList = computed(() => Boolean(props.virtualListProps));
 
+    const hasScrollBar = computed(() => {
+      return (
+        (tbodyRef.value &&
+          tbodyRef.value.offsetWidth > tbodyRef.value.clientWidth) ??
+        false
+      );
+    });
+
     const renderContent = () => {
       if (isScroll.value.y || isVirtualList.value) {
+        const style: CSSProperties = {
+          overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
+        };
+
         return (
           <>
             {props.showHeader && (
-              <div ref={theadRef} class={`${prefixCls}-header`}>
+              <div ref={theadRef} class={`${prefixCls}-header`} style={style}>
                 <table
                   cellpadding={0}
                   cellspacing={0}
