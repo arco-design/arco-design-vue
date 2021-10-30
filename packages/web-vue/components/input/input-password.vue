@@ -1,5 +1,8 @@
 <template>
   <a-input :type="invisible ? 'password' : 'text'">
+    <template #prefix v-if="$slots.prefix">
+      <slot name="prefix"></slot>
+    </template>
     <template #suffix>
       <span @click="handleInvisible">
         <a-icon-hover>
