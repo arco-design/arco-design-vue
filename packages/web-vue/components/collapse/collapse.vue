@@ -93,22 +93,15 @@ export default defineComponent({
     });
 
     const handleClick = (key: string, e: Event) => {
+      let newActiveKeys: string[] = [];
       if (props.accordion) {
-        if (computedActiveKeys.value.includes(key)) {
-          const newActiveKeys: string[] = [];
-          _activeKey.value = newActiveKeys;
-          emit('update:activeKey', newActiveKeys);
-          emit('change', newActiveKeys, e);
-        } else {
-          const newActiveKeys = [key];
-          _activeKey.value = newActiveKeys;
-          emit('update:activeKey', newActiveKeys);
-          emit('change', newActiveKeys, e);
+        if (!computedActiveKeys.value.includes(key)) {
+          newActiveKeys = [key];
         }
+        _activeKey.value = newActiveKeys;
       } else {
-        let newActiveKeys = [...computedActiveKeys.value];
+        newActiveKeys = [...computedActiveKeys.value];
         const _index = newActiveKeys.indexOf(key);
-
         if (_index > -1) {
           newActiveKeys.splice(_index, 1);
         } else if (props.accordion) {
@@ -116,11 +109,10 @@ export default defineComponent({
         } else {
           newActiveKeys.push(key);
         }
-
         _activeKey.value = newActiveKeys;
-        emit('update:activeKey', newActiveKeys);
-        emit('change', newActiveKeys, e);
       }
+      emit('update:activeKey', newActiveKeys);
+      emit('change', newActiveKeys, e);
     };
 
     provide(
