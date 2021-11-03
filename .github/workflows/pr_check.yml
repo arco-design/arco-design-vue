@@ -21,9 +21,7 @@ jobs:
           node-version: 16
           cache: 'yarn'
 
-      - run: YARN_CHECKSUM_BEHAVIOR=update yarn
-
-      - run: yarn install
+      - run: YARN_CHECKSUM_BEHAVIOR=update yarn install
 
       - run: npm run init
 
