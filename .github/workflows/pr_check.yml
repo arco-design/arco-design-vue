@@ -20,8 +20,6 @@ jobs:
         with:
           node-version: 16
 
-      - run: YARN_CHECKSUM_BEHAVIOR=update yarn
-
       - run: yarn install
 
       - run: npm run init
