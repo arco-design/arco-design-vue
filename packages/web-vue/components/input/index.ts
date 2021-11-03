@@ -2,7 +2,7 @@ import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _Input from './input';
-import _InputSearch from './input-search.vue';
+import _InputSearch from './input-search';
 import _InputPassword from './input-password.vue';
 import _InputGroup from './input-group.vue';
 
