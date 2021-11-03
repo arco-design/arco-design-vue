@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
 
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
 
       - run: npm run init
 
