@@ -363,6 +363,7 @@ export default defineComponent({
           onFocus={handleFocus}
           onBlur={handleBlur}
           {...attrs}
+          type="text"
         />
       );
     };
