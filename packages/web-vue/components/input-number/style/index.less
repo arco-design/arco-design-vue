@@ -9,7 +9,16 @@
   //display: inline-block;
   width: 100%;
   border-radius: @input-number-border-radius;
-
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  
+  .input[type='number'] {
+    -moz-appearance: textfield;
+  }
+  
   .transition() {
     transition: all @transition-duration-1 @transition-timing-function-linear;
   }
