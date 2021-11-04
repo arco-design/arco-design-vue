@@ -1,12 +1,25 @@
 <template>
-  <a-input :type="invisible ? 'password' : 'text'">
-    <template #suffix>
-      <span @click="handleInvisible">
-        <a-icon-hover>
-          <icon-eye v-if="invisible" />
-          <icon-eye-invisible v-else />
-        </a-icon-hover>
-      </span>
+  <a-input ref="inputRef" :type="invisible ? 'password' : 'text'">
+    <template v-if="$slots.prepend" #prepend>
+      <slot name="prepend" />
+    </template>
+    <template v-if="$slots.prefix" #prefix>
+      <slot name="prefix" />
+    </template>
+    <template v-if="invisibleButton || $slots.suffix" #suffix>
+      <a-icon-hover
+        v-if="invisibleButton"
+        @click="handleInvisible"
+        @mousedown.prevent
+        @mouseup.prevent
+      >
+        <icon-eye v-if="invisible" />
+        <icon-eye-invisible v-else />
+      </a-icon-hover>
+      <slot name="suffix" />
+    </template>
+    <template v-if="$slots.append" #append>
+      <slot name="append" />
     </template>
   </a-input>
 </template>
@@ -33,13 +46,11 @@ export default defineComponent({
      */
     invisibleButton: {
       type: Boolean,
-      default: (props: any) => {
-        return props.type === 'password';
-      },
+      default: true,
     },
   },
   setup() {
-    // 是否隐藏输入内容
+    const inputRef = ref();
     const invisible = ref(true);
 
     const handleInvisible = () => {
@@ -47,9 +58,18 @@ export default defineComponent({
     };
 
     return {
+      inputRef,
       invisible,
       handleInvisible,
     };
+  },
+  methods: {
+    focus() {
+      (this.inputRef as HTMLInputElement)?.focus();
+    },
+    blur() {
+      (this.inputRef as HTMLInputElement)?.blur();
+    },
   },
 });
 </script>
