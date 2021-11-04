@@ -284,25 +284,35 @@ export default defineComponent({
       },
     ]);
 
+    let styleDeclaration: CSSStyleDeclaration;
+
+    const getMirrorStyle = () => {
+      mirrorStyle.value = getSizeStyles(styleDeclaration);
+      nextTick(() => {
+        const mirrorHeight = mirrorRef.value?.offsetHeight;
+
+        textareaStyle.value = {
+          height: `${mirrorHeight}px`,
+          resize: 'none',
+          overflow: 'hidden',
+        };
+      });
+    };
+
     onMounted(() => {
       if (textareaRef.value) {
-        const styleDeclaration = window.getComputedStyle(textareaRef.value);
-        mirrorStyle.value = getSizeStyles(styleDeclaration);
+        styleDeclaration = window.getComputedStyle(textareaRef.value);
         if (props.autoSize) {
-          nextTick(() => {
-            const mirrorHeight = mirrorRef.value?.offsetHeight;
-
-            textareaStyle.value = {
-              height: `${mirrorHeight}px`,
-              resize: 'none',
-            };
-          });
+          getMirrorStyle();
         }
       }
       computeIsScroll();
     });
 
     const handleResize = () => {
+      if (props.autoSize && mirrorRef.value) {
+        getMirrorStyle();
+      }
       computeIsScroll();
     };
 
@@ -317,20 +327,10 @@ export default defineComponent({
     };
 
     onUpdated(() => {
-      computeIsScroll();
-    });
-
-    watch(computedValue, () => {
       if (props.autoSize && mirrorRef.value) {
-        nextTick(() => {
-          const mirrorHeight = mirrorRef.value?.offsetHeight;
-
-          textareaStyle.value = {
-            height: `${mirrorHeight}px`,
-            resize: 'none',
-          };
-        });
+        getMirrorStyle();
       }
+      computeIsScroll();
     });
 
     return {
