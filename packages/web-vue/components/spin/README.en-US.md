@@ -10,17 +10,30 @@ description: Used for the loading state of pages and blocks-when a part of the p
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/size.md
+
 @import ./__demo__/dot.md
 
 @import ./__demo__/container.md
+
+@import ./__demo__/tip.md
+
+@import ./__demo__/icon.md
 
 
 ### `<spin>` Props
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|loading|Whether it is loading state|`boolean`|`false`|
+|size|Size|`number`|`-`|
+|loading|Whether it is loading state (Only effective in container mode)|`boolean`|`false`|
 |dot|Whether to use dot type animation|`boolean`|`false`|
 |tip|Prompt content|`string`|`-`|
+### `<spin>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|element|Custom element|-|
+|icon|Custom icon (auto-rotation)|-|
 
 
