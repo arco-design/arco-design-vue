@@ -382,7 +382,9 @@ export default defineComponent({
     const render = () => (
       <span class={cls.value} onMousedown={handleMousedown} {...wrapperAttrs}>
         <span ref={mirrorRef} class={`${prefixCls}-mirror`}>
-          {computedInputValue.value || props.placeholder}
+          {tags.value.length > 0
+            ? computedInputValue.value
+            : computedInputValue.value || props.placeholder}
         </span>
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
