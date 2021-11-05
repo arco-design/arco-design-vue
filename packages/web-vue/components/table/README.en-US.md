@@ -84,6 +84,12 @@ description: It is used for data collection, display, analysis and processing, a
 |ellipsis|Whether to display as omitted|`boolean`|`false`|
 |sortable|Sorting related options|`TableSortable`|`-`|
 |filterable|Filter related options|`TableFilterable`|`-`|
+### `<table-column>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|title|Title|-|
+|cell|Cell|record: `TableData`<br>column: `TableColumn`|
 
 
 

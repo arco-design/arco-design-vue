@@ -65,7 +65,12 @@ export default defineComponent({
    * @binding {TableData} record
    * @binding {TableColumn} column
    */
-  render() {
-    return null;
+  /**
+   * @zh 标题
+   * @en Title
+   * @slot title
+   */
+  setup() {
+    return () => null;
   },
 });
