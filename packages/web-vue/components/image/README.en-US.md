@@ -53,6 +53,13 @@ description: Used to show and preview pictures.
 |Event Name|Description|Parameters|
 |---|---|---|
 |preview-visible-change|Preview opening and closing events|visible: `boolean`|
+### `<image>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|error|Customize error content.|-|
+|error-icon|Customize the icon of error content.|-|
+|loader|Customize loading effect.|-|
 
 
 

@@ -51,6 +51,13 @@ description: 展示和预览图片。
 |事件名|描述|参数|
 |---|---|---|
 |preview-visible-change|预览的打开和关闭事件|visible: `boolean`|
+### `<image>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|error|自定义错误状态内容|-|
+|error-icon|自定义错误状态的图标|-|
+|loader|自定义加载状态效果|-|
 
 
 
