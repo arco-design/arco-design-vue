@@ -140,7 +140,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -148,7 +148,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -156,7 +156,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -164,7 +164,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -172,7 +172,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
             </tr>
             <!---->
           </tbody>
