@@ -41,6 +41,7 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 |placeholder|提示文字|`string`|`-`|
 |max-length|输入值得最大长度|`number`|`-`|
 |show-word-limit|是否显示字数统计|`boolean`|`false`|
+|word-length|字符长度的计算方法|`(value: string) => number`|`-`|
 ### `<input>` Events
 
 |事件名|描述|参数|
@@ -77,7 +78,7 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|invisible-button|是否显示可见按钮|`boolean`|`(props: any) => {  return props.type === 'password';}`|
+|invisible-button|是否显示可见按钮|`boolean`|`true`|
 
 
 
