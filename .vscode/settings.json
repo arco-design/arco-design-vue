@@ -1,9 +1,5 @@
 {
-  "eslint.workingDirectories": [
-    { "directory": "packages/web-vue", "changeProcessCWD": true },
-    { "directory": "packages/vue-site", "changeProcessCWD": true },
-    { "directory": "packages/vite-plugin-vue-md", "changeProcessCWD": true },
-    { "directory": "packages/arco-vue-site-nav", "changeProcessCWD": true },
-    { "directory": "packages/arco-vue-scripts", "changeProcessCWD": true }
-  ]
+  "eslint.workingDirectories": [{
+    "pattern": "./packages/*/"
+  }]
 }

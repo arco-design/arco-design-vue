@@ -13,7 +13,9 @@
       <slot v-if="isError" name="error">
         <div :class="`${prefixCls}-error`">
           <div :class="`${prefixCls}-error-icon`">
-            <IconImageClose />
+            <slot name="error-icon">
+              <IconImageClose />
+            </slot>
           </div>
           <div :class="`${prefixCls}-error-alt`">{{ alt || description }}</div>
         </div>
@@ -197,6 +199,21 @@ export default defineComponent({
     'preview-visible-change',
     'update:previewVisible',
   ],
+  /**
+   * @zh 自定义错误状态的图标
+   * @en Customize the icon of error content.
+   * @slot error-icon
+   */
+  /**
+   * @zh 自定义错误状态内容
+   * @en Customize error content.
+   * @slot error
+   */
+  /**
+   * @zh 自定义加载状态效果
+   * @en Customize loading effect.
+   * @slot loader
+   */
   setup(props: ImageProps, { attrs, slots, emit }) {
     const { t } = useI18n();
     const {
