@@ -547,7 +547,7 @@ export default defineComponent({
 
     // 外部事件
     const removeOutsideListener = () => {
-      off(document.body, 'mousedown', handleOutsideClick);
+      off(document.documentElement, 'mousedown', handleOutsideClick);
       outsideListener = false;
     };
 
@@ -604,7 +604,7 @@ export default defineComponent({
         }
 
         if (!outsideListener) {
-          on(document.body, 'mousedown', handleOutsideClick);
+          on(document.documentElement, 'mousedown', handleOutsideClick);
           outsideListener = true;
         }
       }
