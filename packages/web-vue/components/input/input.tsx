@@ -255,7 +255,6 @@ export default defineComponent({
       if (!isComposition.value && keyCode === Enter.code) {
         emit('change', computedValue.value);
         emit('pressEnter', e);
-        e.preventDefault();
       }
     };
 
