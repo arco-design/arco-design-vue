@@ -48,13 +48,17 @@ export default defineComponent({
     const prefixCls = getPrefixCls('slider-btn');
     const isDragging = ref(false);
 
-    const handleMouseDown = () => {
+    const handleMouseDown = (e: MouseEvent) => {
       if (props.disabled) {
         return;
       }
+
+      e.preventDefault();
+
       isDragging.value = true;
       on(window, 'mousemove', handleMouseMove);
       on(window, 'mouseup', handleMouseUp);
+      on(window, 'contextmenu', handleMouseUp);
       emit('movestart');
     };
 
