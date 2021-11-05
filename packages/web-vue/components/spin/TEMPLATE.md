@@ -19,8 +19,14 @@ description: Used for the loading state of pages and blocks-when a part of the p
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/size.md
+
 @import ./__demo__/dot.md
 
 @import ./__demo__/container.md
 
-%%API(spin.vue)%%
+@import ./__demo__/tip.md
+
+@import ./__demo__/icon.md
+
+%%API(spin.tsx)%%
