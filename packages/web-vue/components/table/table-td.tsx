@@ -130,7 +130,7 @@ export default defineComponent({
               {slots.expandBtn?.()}
             </span>
           )}
-          {renderContent()}
+          {String(renderContent())}
         </span>
       </td>
     );

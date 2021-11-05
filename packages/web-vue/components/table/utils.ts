@@ -2,7 +2,7 @@ import type { CSSProperties, VNode } from 'vue';
 import { TableCell, TableColumn, TableOperationColumn } from './interface';
 import { isArray, isUndefined } from '../_utils/is';
 import {
-  getBooleanProp,
+  resolveProps,
   isNamedComponent,
   isSlotsChildren,
 } from '../_utils/vue-utils';
@@ -274,14 +274,13 @@ export const getOperationStyle = (
 
 /**
  * Obtain table column data through the <TableColumn> component
- * @param vns
+ * @param {VNode[]} vns
  */
 export const getColumnsFromSlot = (vns: VNode[]) => {
   const columns: TableColumn[] = [];
   for (const vn of vns) {
     if (isNamedComponent(vn, 'TableColumn')) {
-      const column = vn.props as TableColumn;
-      column.ellipsis = getBooleanProp(vn.props?.ellipsis);
+      const column = resolveProps(vn) as TableColumn;
       if (isSlotsChildren(vn, vn.children)) {
         if (vn.children.default) {
           column.children = getColumnsFromSlot(vn.children.default());
