@@ -1,11 +1,10 @@
-import { computed, defineComponent, PropType, ref, VNode } from 'vue';
+import { computed, defineComponent, PropType, ref } from 'vue';
 import { Direction, Size } from '../_utils/constant';
-import { Positions, TabList, Types } from './interface';
+import { Positions, Types } from './interface';
 import {
-  foreachComponent,
   getBooleanProp,
   getChildrenComponents,
-  isSlotsChildren,
+  getValueFromSlotsOrProps,
 } from '../_utils/vue-utils';
 import { getPrefixCls } from '../_utils/global-config';
 import TabsNav from './tabs-nav';
@@ -160,28 +159,34 @@ export default defineComponent({
 
     const defaultSlot = usePickSlots(slots, 'default');
 
-    // Get tab from TabPane
-    const tabs = computed(() => {
-      const tabs: TabList = [];
-      const children = defaultSlot.value?.() ?? [];
-      foreachComponent(children, 'TabPane', (node) => {
-        tabs.push({
-          title:
-            isSlotsChildren(node, node.children) && node.children.title
-              ? node.children.title
-              : () => node.props?.title,
-          key: String(node.key),
-          disabled: getBooleanProp(node.props?.disabled),
-          closable: getBooleanProp(node.props?.closable),
-        });
-      });
+    const children = computed(() =>
+      getChildrenComponents(defaultSlot.value?.() ?? [], 'TabPane')
+    );
 
-      return tabs;
+    // Get tab from TabPane
+    const tabs = computed(() =>
+      children.value.map((vn) => ({
+        // @ts-ignore
+        title: getValueFromSlotsOrProps('title', vn.props, vn.children),
+        key: String(vn.key),
+        disabled: getBooleanProp(vn.props?.disabled),
+        closable: getBooleanProp(vn.props?.closable),
+      }))
+    );
+
+    const tabKeys = computed(() => tabs.value.map((item) => item.key));
+
+    const _activeTab = ref(props.defaultActiveKey);
+    const computedActiveTab = computed(() => {
+      const activeKey = props.activeKey ?? _activeTab.value;
+      if (tabKeys.value.includes(activeKey)) {
+        return activeKey;
+      }
+      return tabKeys.value[0];
     });
 
-    const _activeTab = ref(props.defaultActiveKey || tabs.value[0]?.key);
-    const computedActiveTab = computed(
-      () => props.activeKey ?? _activeTab.value
+    const activeIndex = computed(() =>
+      tabKeys.value.indexOf(computedActiveTab.value)
     );
 
     const loadedTabs = new Set<string>([computedActiveTab.value]);
@@ -196,19 +201,6 @@ export default defineComponent({
       emit('tabClick', key, e);
     };
 
-    const children = computed(() =>
-      getChildrenComponents(slots.default?.() ?? [], 'TabPane')
-    );
-
-    const activeIndex = computed(() => {
-      for (let i = 0; i < tabs.value.length; i++) {
-        if (tabs.value[i].key === computedActiveTab.value) {
-          return i;
-        }
-      }
-      return 0;
-    });
-
     const getIsRender = (isActive: boolean, key: string) => {
       if (isActive) {
         return true;
@@ -219,14 +211,19 @@ export default defineComponent({
       return !props.destroyOnHide;
     };
 
+    const handleAdd = () => {
+      emit('add');
+      // nextTick(() => {
+      //   _activeTab.value = tabKeys.value[tabKeys.value.length - 1];
+      // });
+    };
+
     const renderContent = () => {
-      const list: VNode[] = [];
-
-      foreachComponent(children.value, 'TabPane', (vn) => {
+      const list = children.value.map((vn, index) => {
         const key = String(vn.key);
-        const isActive = key === computedActiveTab.value;
+        const isActive = index === activeIndex.value;
 
-        list.push(
+        return (
           <div
             key={key}
             class={[
@@ -240,6 +237,7 @@ export default defineComponent({
           </div>
         );
       });
+
       return (
         <div class={`${prefixCls}-content`}>
           <div
@@ -274,15 +272,18 @@ export default defineComponent({
         <TabsNav
           v-slots={{ extra: slots.extra }}
           tabs={tabs.value}
+          tabKeys={tabKeys.value}
           activeTab={computedActiveTab.value}
+          activeIndex={activeIndex.value}
           direction={mergedDirection.value}
           position={mergedPosition.value}
           editable={props.editable}
           animation={props.animation}
+          showAddButton={props.showAddButton}
           size={props.size}
           type={props.type}
           onClick={handleClick}
-          onAdd={() => emit('add')}
+          onAdd={handleAdd}
           onDelete={(key: string) => emit('delete', key)}
         />
         {mergedPosition.value !== 'bottom' && renderContent()}

@@ -25,16 +25,13 @@ export default defineComponent({
       type: Function,
       required: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
     const prefixCls = getPrefixCls('tabs-nav-button');
-    const disabledPrev = computed(() => {
-      return false;
-    });
-
-    const disabledNext = computed(() => {
-      return false;
-    });
 
     const renderIcon = () => {
       if (props.direction === 'horizontal') {
@@ -52,6 +49,7 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       {
+        [`${prefixCls}-disabled`]: props.disabled,
         [`${prefixCls}-left`]:
           props.direction === 'horizontal' && props.type === 'previous',
         [`${prefixCls}-right`]:
@@ -65,7 +63,7 @@ export default defineComponent({
 
     return () => (
       <div class={cls.value} onClick={() => props.onClick(props.type)}>
-        <IconHover>{renderIcon()}</IconHover>
+        <IconHover disabled={props.disabled}>{renderIcon()}</IconHover>
       </div>
     );
   },
