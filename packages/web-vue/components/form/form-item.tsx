@@ -135,6 +135,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否隐藏星号
+     * @en Whether to hide the asterisk
+     */
+    hideAsterisk: {
+      type: Boolean,
+      default: false,
+    },
     labelColStyle: Object,
     wrapperColStyle: Object,
   },
@@ -410,7 +418,7 @@ export default defineComponent({
               {...mergedLabelCol.value}
             >
               <FormItemLabel
-                required={isRequired.value}
+                required={props.hideAsterisk ? false : isRequired.value}
                 showColon={props.showColon}
               >
                 {slots.label?.() ?? props.label}
