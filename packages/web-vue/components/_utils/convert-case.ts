@@ -1,31 +1,19 @@
-type StringConvertFuncType = (string: string) => string;
-
-const cacheStringFunction = (
-  fn: StringConvertFuncType
-): StringConvertFuncType => {
-  const cache = Object.create(null);
-  return (string: string) => {
-    const hit = cache[string];
-    return hit || (cache[string] = fn(string));
-  };
+export const toKebabCase = (string: string): string => {
+  return string.replace(/\B([A-Z])/g, '-$1').toLowerCase();
 };
 
-export const toKebabCase = cacheStringFunction((string: string): string => {
-  return string.replace(/\B([A-Z])/g, '-$1').toLowerCase();
-});
-
-export const toPascalCase = cacheStringFunction((string: string): string => {
+export const toPascalCase = (string: string): string => {
   return string
-    .replace(/^./, (match) => match.toLocaleUpperCase())
-    .replace(/-(.)/g, (match, p1: string) => {
-      return p1.toLocaleUpperCase();
+    .replace(/^./, (match) => match.toUpperCase())
+    .replace(/-(\w)/g, (_, p1: string) => {
+      return p1?.toUpperCase() ?? '';
     });
-});
+};
 
-export const toCamelCase = cacheStringFunction((string: string): string => {
+export const toCamelCase = (string: string): string => {
   return string
-    .replace(/^./, (match) => match.toLocaleLowerCase())
-    .replace(/-(\w)/g, (_match, p1) => {
-      return p1 ? p1.toUpperCase() : '';
+    .replace(/^./, (match) => match.toLowerCase())
+    .replace(/-(\w)/g, (_, p1: string) => {
+      return p1?.toUpperCase() ?? '';
     });
-});
+};

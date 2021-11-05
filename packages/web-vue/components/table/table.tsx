@@ -37,6 +37,7 @@ import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
+import { getChildrenComponents } from '../_utils/vue-utils';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -334,7 +335,9 @@ export default defineComponent({
 
     const slotColumns = computed(() => {
       if (columnsSlot.value) {
-        return getColumnsFromSlot(columnsSlot.value());
+        return getColumnsFromSlot(
+          getChildrenComponents(columnsSlot.value(), 'TableColumn')
+        );
       }
       return undefined;
     });
@@ -347,6 +350,7 @@ export default defineComponent({
       () => [props.columns, slotColumns.value],
       ([columns, slotColumns]) => {
         const result = getGroupColumns(slotColumns ?? columns ?? []);
+        // @ts-ignore
         dataColumns.value = result.dataColumns;
         groupColumns.value = result.groupColumns;
       },
@@ -840,7 +844,7 @@ export default defineComponent({
       }
 
       return (
-        <table cellpadding={0} cellspacing={0}>
+        <table cellpadding={0} cellspacing={0} style={contentStyle.value}>
           <ColGroup
             dataColumns={dataColumns.value}
             operations={operations.value}
