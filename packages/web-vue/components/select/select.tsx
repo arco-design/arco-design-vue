@@ -606,6 +606,9 @@ export default defineComponent({
       return (
         <Dropdown
           ref={dropdownRef}
+          v-slots={{
+            empty: slots.empty,
+          }}
           class={`${prefixCls}-dropdown`}
           loading={props.loading}
           isEmpty={optionNodes.value.length === 0}
