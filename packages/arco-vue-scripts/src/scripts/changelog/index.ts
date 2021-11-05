@@ -70,6 +70,7 @@ const getRecords = (mr: any) => {
       for (const line of lines) {
         const items = line
           .split('|')
+          .map((value: string) => value.trim())
           .filter((value: string) => Boolean(value.trim()));
         const data = titles.reduce(
           (data: Record<string, any>, title: string, index: number) => {
