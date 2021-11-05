@@ -353,8 +353,10 @@ export default defineComponent({
 
       return (
         <ArcoInput
+          {...attrs}
           ref={inputRef}
           class={cls.value}
+          type="text"
           modelValue={computedValue.value}
           placeholder={props.placeholder}
           disabled={props.disabled}
@@ -362,8 +364,6 @@ export default defineComponent({
           onInput={handleInput}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          {...attrs}
-          type="text"
         />
       );
     };
