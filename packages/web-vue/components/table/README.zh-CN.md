@@ -82,6 +82,12 @@ description: 用于数据收集展示、分析整理、操作处理。
 |ellipsis|是否显示为省略|`boolean`|`false`|
 |sortable|排序相关选项|`TableSortable`|`-`|
 |filterable|过滤相关选项|`TableFilterable`|`-`|
+### `<table-column>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|title|标题|-|
+|cell|单元格|record: `TableData`<br>column: `TableColumn`|
 
 
 

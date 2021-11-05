@@ -289,6 +289,10 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
           // @ts-ignore
           column.render = vn.children.cell;
         }
+        if (vn.children.title) {
+          // @ts-ignore
+          column.title = vn.children.title;
+        }
       }
       columns.push(column);
     }
