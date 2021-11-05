@@ -50,6 +50,7 @@
           :selected-keys="selectedKeys"
           :checkable="treeCheckable"
           :tree-props="{
+            blockNode: true,
             ...treeProps,
             data,
             checkStrictly: treeCheckStrictly,
