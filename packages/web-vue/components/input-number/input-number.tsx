@@ -196,8 +196,8 @@ export default defineComponent({
         numberValue = props.max;
       }
 
-      return isNumber(mergedPrecision)
-        ? NP.round(numberValue, mergedPrecision)
+      return isNumber(mergedPrecision.value)
+        ? NP.round(numberValue, mergedPrecision.value)
         : numberValue;
     };
 
