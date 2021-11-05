@@ -19,10 +19,15 @@ Enable the photo wall mode by setting `list-type="picture-card"`.
 ```vue
 
 <template>
-  <a-upload list-type="picture-card" action="/" :default-file-list="fileList" />
+  <a-upload
+    list-type="picture-card"
+    action="/"
+    :default-file-list="fileList"
+    @preview="onPreview"
+  />
 </template>
 
-<script>
+<script lang="jsx">
 export default {
   data() {
     return {
@@ -34,6 +39,18 @@ export default {
             'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp',
         }
       ]
+    }
+  },
+  methods: {
+    onPreview(file) {
+      this.$modal.info({
+        title: 'Preview',
+        content: (
+          <div style="text-align: center">
+            <img style="max-width: 100%" src={file.url || URL.createObjectURL(file.originFile)} />
+          </div>
+        )
+      });
     }
   }
 }
