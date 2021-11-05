@@ -69,6 +69,7 @@ description: A form with data collection, verification and submission functions,
 |label-col-props|Label element layout options. The parameters are the same as the `<col>` component|`object`|`-`|
 |wrapper-col-props|Form control layout options. The parameters are the same as the `<col>` component|`object`|`-`|
 |hide-label|Whether to hide the label|`boolean`|`false`|
+|hide-asterisk|Whether to hide the asterisk|`boolean`|`false`|
 
 
 
