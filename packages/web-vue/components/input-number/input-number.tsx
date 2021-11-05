@@ -139,10 +139,10 @@ export default defineComponent({
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
     const _value = ref(
-      props.defaultValue
-        ? props.formatter?.(String(props.defaultValue)) ??
-            String(props.defaultValue)
-        : ''
+      isUndefined(props.defaultValue)
+        ? ''
+        : props.formatter?.(String(props.defaultValue)) ??
+        String(props.defaultValue)
     );
     const mergedPrecision = computed(() => {
       if (isNumber(props.precision)) {
@@ -363,6 +363,7 @@ export default defineComponent({
           onFocus={handleFocus}
           onBlur={handleBlur}
           {...attrs}
+          type="text"
         />
       );
     };
