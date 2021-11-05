@@ -43,4 +43,4 @@ description: Basic form components have been expanded on the basis of native con
 
 %%API(input-password.vue)%%
 
-%%API(input-search.vue)%%
+%%API(input-search.tsx)%%

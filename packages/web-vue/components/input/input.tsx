@@ -7,6 +7,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
+import { isFunction } from '../_utils/is';
 
 const INPUT_TYPES = ['text', 'password'] as const;
 type InputType = typeof INPUT_TYPES[number];
@@ -89,6 +90,13 @@ export default defineComponent({
     showWordLimit: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 字符长度的计算方法
+     * @en Calculation method of word length
+     */
+    wordLength: {
+      type: Function as PropType<(value: string) => number>,
     },
     // private
     type: {
@@ -277,6 +285,13 @@ export default defineComponent({
       },
     ]);
 
+    const valueLength = computed(() => {
+      if (isFunction(props.wordLength)) {
+        return props.wordLength(computedValue.value);
+      }
+      return computedValue.value?.length ?? 0;
+    });
+
     const wrapperCls = computed(() => [
       `${prefixCls}-wrapper`,
       {
@@ -330,7 +345,7 @@ export default defineComponent({
           <span class={`${prefixCls}-suffix`}>
             {props.maxLength && props.showWordLimit && (
               <span class={`${prefixCls}-word-limit`}>
-                {computedValue.value.length}/{props.maxLength}
+                {valueLength.value}/{props.maxLength}
               </span>
             )}
             {slots.suffix?.()}

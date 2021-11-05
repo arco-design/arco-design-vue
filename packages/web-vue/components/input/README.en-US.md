@@ -43,6 +43,7 @@ description: Basic form components have been expanded on the basis of native con
 |placeholder|Prompt text|`string`|`-`|
 |max-length|Enter the maximum length of the value|`number`|`-`|
 |show-word-limit|Whether to display word count|`boolean`|`false`|
+|word-length|Calculation method of word length|`(value: string) => number`|`-`|
 ### `<input>` Events
 
 |Event Name|Description|Parameters|
@@ -79,7 +80,7 @@ description: Basic form components have been expanded on the basis of native con
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|invisible-button|Whether to show visible buttons|`boolean`|`(props: any) => {  return props.type === 'password';}`|
+|invisible-button|Whether to show visible buttons|`boolean`|`true`|
 
 
 
