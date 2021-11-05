@@ -99,7 +99,7 @@ export default defineComponent({
           column: props.column,
         });
       }
-      return getValueByPath(props.record, props.column.dataIndex) ?? '';
+      return String(getValueByPath(props.record, props.column.dataIndex) ?? '');
     };
 
     return () => (
@@ -130,7 +130,7 @@ export default defineComponent({
               {slots.expandBtn?.()}
             </span>
           )}
-          {String(renderContent())}
+          {renderContent()}
         </span>
       </td>
     );

@@ -142,7 +142,7 @@ export default defineComponent({
       isUndefined(props.defaultValue)
         ? ''
         : props.formatter?.(String(props.defaultValue)) ??
-        String(props.defaultValue)
+            String(props.defaultValue)
     );
     const mergedPrecision = computed(() => {
       if (isNumber(props.precision)) {

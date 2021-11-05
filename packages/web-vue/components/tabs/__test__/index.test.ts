@@ -37,6 +37,7 @@ describe('Tabs', () => {
       },
       props: {
         editable: true,
+        showAddButton: true,
       },
     });
 

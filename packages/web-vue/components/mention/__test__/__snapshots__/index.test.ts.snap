@@ -10,7 +10,7 @@ exports[`Mention mention correctly 1`] = `
         <li class=\\"arco-dropdown-option\\">Bytenumner</li>
       </ul>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;

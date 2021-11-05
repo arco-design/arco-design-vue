@@ -91,7 +91,7 @@ exports[`<table> demo: render [basic] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -140,7 +140,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -148,7 +148,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -156,7 +156,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -164,7 +164,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
@@ -172,7 +172,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->[object Object]</span></td>
             </tr>
             <!---->
           </tbody>
@@ -197,7 +197,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -300,7 +300,7 @@ exports[`<table> demo: render [expand] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -416,7 +416,7 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -570,7 +570,7 @@ exports[`<table> demo: render [group] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -783,7 +783,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -896,7 +896,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -1011,7 +1011,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -1107,7 +1107,7 @@ exports[`<table> demo: render [sort] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -1211,7 +1211,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
         <!---->
       </div>
     </div>
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
@@ -1341,7 +1341,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
     </div>
     <!---->
     <!---->
-    <!--v-if-->
+    <!---->
   </div>
 </div>"
 `;
