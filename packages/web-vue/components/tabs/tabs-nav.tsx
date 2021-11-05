@@ -6,9 +6,10 @@ import {
   onMounted,
   PropType,
   ref,
+  toRefs,
   watch,
 } from 'vue';
-import { getDiffRect, getTabListStyle } from './utils';
+import { getTabListStyle } from './utils';
 import { getPrefixCls } from '../_utils/global-config';
 import { Direction } from '../_utils/constant';
 import Tab from './tabs-tab.vue';
@@ -17,6 +18,7 @@ import TabsNavInk from './tabs-nav-ink.vue';
 import { TabList, Types } from './interface';
 import IconHover from '../_components/icon-hover.vue';
 import IconPlus from '../icon/icon-plus';
+import ResizeObserver from '../_components/resize-observer';
 
 export default defineComponent({
   name: 'TabsNav',
@@ -33,8 +35,16 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    activeIndex: {
+      type: Number,
+      required: true,
+    },
     tabs: {
       type: Array as PropType<TabList>,
+      required: true,
+    },
+    tabKeys: {
+      type: Array as PropType<string[]>,
       required: true,
     },
     position: {
@@ -44,6 +54,10 @@ export default defineComponent({
     size: {
       type: String,
       required: true,
+    },
+    showAddButton: {
+      type: Boolean,
+      default: false,
     },
     editable: {
       type: Boolean,
@@ -58,9 +72,57 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('tabs-nav');
 
+    const { tabs, tabKeys, activeIndex, direction } = toRefs(props);
+
     const wrapperRef = ref<HTMLElement>();
     const listRef = ref<HTMLElement>();
     const tabsRef = ref<Record<string, HTMLElement>>({});
+
+    const wrapperLength = ref(0);
+    const maxOffset = ref(0);
+
+    const getWrapperLength = () => {
+      return (
+        (direction.value === 'vertical'
+          ? wrapperRef.value?.offsetHeight
+          : wrapperRef.value?.offsetWidth) ?? 0
+      );
+    };
+
+    const getMaxOffset = () => {
+      if (!listRef.value || !wrapperRef.value) {
+        return 0;
+      }
+
+      if (direction.value === 'vertical') {
+        return listRef.value.offsetHeight - wrapperRef.value.offsetHeight;
+      }
+      return listRef.value.offsetWidth - wrapperRef.value.offsetWidth;
+    };
+
+    const getTabEndOffsets = () => {
+      return tabs.value.map((item) => {
+        const ele = tabsRef.value[item.key];
+        if (direction.value === 'vertical') {
+          return ele.offsetTop + ele.offsetHeight;
+        }
+        return ele.offsetLeft + ele.offsetWidth;
+      });
+    };
+
+    const getSize = () => {
+      isScroll.value = isOverflow();
+      if (isScroll.value) {
+        wrapperLength.value = getWrapperLength();
+        maxOffset.value = getMaxOffset();
+        tabEndOffsets.value = getTabEndOffsets();
+        if (offset.value > maxOffset.value) {
+          offset.value = maxOffset.value;
+        }
+      } else {
+        offset.value = 0;
+      }
+    };
 
     const activeTabRef = computed(() => tabsRef.value[props.activeTab]);
 
@@ -76,10 +138,39 @@ export default defineComponent({
     const isScroll = ref(false);
 
     onMounted(() => {
-      isScroll.value = isOverflow();
+      getSize();
     });
 
+    const tabEndOffsets = ref<number[]>([]);
+
     const offset = ref(0);
+
+    const isInView = (index: number) => {
+      return (
+        (tabEndOffsets.value[index - 1] ?? 0) >= offset.value &&
+        tabEndOffsets.value[index] <= offset.value + wrapperLength.value
+      );
+    };
+
+    watch(activeIndex, (current, pre) => {
+      nextTick(() => {
+        if (isScroll.value) {
+          if (current >= pre) {
+            const offsetIndex =
+              current < tabEndOffsets.value.length - 1 ? current + 1 : current;
+            if (!isInView(offsetIndex)) {
+              offset.value =
+                tabEndOffsets.value[offsetIndex] - wrapperLength.value;
+            }
+          } else {
+            const offsetIndex = current > 0 ? current - 1 : current;
+            if (!isInView(offsetIndex)) {
+              offset.value = tabEndOffsets.value[offsetIndex - 1] ?? 0;
+            }
+          }
+        }
+      });
+    });
 
     const mergedEditable = computed(
       () =>
@@ -91,20 +182,14 @@ export default defineComponent({
         return 0;
       }
 
-      if (props.direction === 'horizontal') {
-        if (props.type === 'capsule') {
-          return type === 'previous'
-            ? offset.value + wrapperRef.value.offsetWidth
-            : offset.value - wrapperRef.value.offsetWidth;
-        }
+      if (props.type === 'capsule') {
         return type === 'previous'
-          ? offset.value - wrapperRef.value.offsetWidth
-          : offset.value + wrapperRef.value.offsetWidth;
+          ? offset.value + wrapperLength.value
+          : offset.value - wrapperLength.value;
       }
-      if (type === 'previous') {
-        return offset.value - wrapperRef.value.offsetHeight;
-      }
-      return offset.value + wrapperRef.value.offsetHeight;
+      return type === 'previous'
+        ? offset.value - wrapperLength.value
+        : offset.value + wrapperLength.value;
     };
 
     const handleButtonClick = (type: string) => {
@@ -112,98 +197,37 @@ export default defineComponent({
     };
 
     const getValidOffset = (offset: number) => {
-      if (offset < 0) {
+      if (!wrapperRef.value || !listRef.value || offset < 0) {
         return 0;
       }
-      if (!listRef.value || !wrapperRef.value) {
-        return offset;
-      }
-
-      const maxOffset =
-        props.direction === 'vertical'
-          ? listRef.value.offsetHeight - wrapperRef.value.offsetHeight
-          : listRef.value.offsetWidth - wrapperRef.value.offsetWidth;
-
-      if (offset > maxOffset) {
-        return maxOffset;
+      if (offset > maxOffset.value) {
+        return maxOffset.value;
       }
       return offset;
     };
 
-    const getActiveTabOffset = () => {
-      if (!listRef.value || !wrapperRef.value) {
-        return 0;
-      }
-      const activeTabNode = tabsRef.value[props.activeTab];
-      if (!activeTabNode) {
-        return 0;
-      }
+    watch(tabs, () => {
+      nextTick(() => {
+        getSize();
+      });
+    });
 
-      const diffRect = getDiffRect(activeTabNode, wrapperRef.value);
-
-      // 垂直方向的 offset 计算，不分type
-      if (props.direction === 'vertical') {
-        if (diffRect.top < 0) {
-          // 不完全在可见区
-          return offset.value + diffRect.top;
-        }
-        if (diffRect.bottom > 0) {
-          // 不完全在可见区
-          return offset.value + diffRect.bottom;
-        }
-      } else if (props.type === 'capsule') {
-        // 水平方向的 offset 计算，分为 capsule 和其他，因为 capsule 是右对齐
-        if (diffRect.left < 0) {
-          // 不完全在可见区
-          return offset.value - diffRect.left;
-        }
-        if (diffRect.right > 0) {
-          // 不完全在可见区
-          return offset.value - diffRect.right;
-        }
-      } else {
-        if (diffRect.left < 0) {
-          // 不完全在可见区
-          return offset.value + diffRect.left;
-        }
-        if (diffRect.right > 0) {
-          // 不完全在可见区
-          return offset.value + diffRect.right;
-        }
-      }
-      return undefined;
+    const handleResize = () => {
+      getSize();
     };
 
-    watch(
-      () => props.tabs,
-      () => {
-        nextTick(() => {
-          isScroll.value = isOverflow();
-          if (!isScroll.value) {
-            offset.value = 0;
-          }
-        });
+    const renderAddBtn = () => {
+      if (!mergedEditable.value || !props.showAddButton) {
+        return null;
       }
-    );
-
-    watch(
-      () => [props.activeTab, props.tabs],
-      () => {
-        const nextOffset = getActiveTabOffset();
-
-        if (nextOffset && nextOffset !== offset.value) {
-          offset.value = nextOffset;
-        }
-      }
-    );
-
-    const renderAddBtn = () => (
-      <div class={`${prefixCls}-add-btn`} onClick={() => emit('add')}>
-        <IconHover>
-          <IconPlus />
-        </IconHover>
-      </div>
-    );
+      return (
+        <div class={`${prefixCls}-add-btn`} onClick={() => emit('add')}>
+          <IconHover>
+            <IconPlus />
+          </IconHover>
+        </div>
+      );
+    };
 
     const cls = computed(() => [
       prefixCls,
@@ -219,62 +243,66 @@ export default defineComponent({
           <TabsButton
             type="previous"
             direction={props.direction}
+            disabled={offset.value <= 0}
             onClick={handleButtonClick}
           />
         )}
         <div class={`${prefixCls}-tab`} ref={wrapperRef}>
-          <div
-            class={[
-              `${prefixCls}-tab-list`,
-              {
-                [`${prefixCls}-tab-list-no-padding`]:
-                  props.direction === 'horizontal' &&
-                  ['line', 'text'].includes(props.type),
-              },
-            ]}
-            style={getTabListStyle({
-              direction: props.direction,
-              type: props.type,
-              offset: offset.value,
-            })}
-            ref={listRef}
-          >
-            {props.tabs.map((tab, index) => (
-              <Tab
-                ref={(component: ComponentPublicInstance) => {
-                  if (component?.$el) {
-                    tabsRef.value[tab.key] = component.$el;
-                  }
-                }}
-                v-slots={{ title: () => tab.title() }}
-                isActive={props.activeTab === tab.key}
-                key={tab.key}
-                tab={tab}
-                editable={props.editable}
-                onClick={(key: string, e: Event) => emit('click', key, e)}
-                onDelete={(key: string) => emit('delete', key)}
-              />
-            ))}
-            {props.type === 'line' && activeTabRef.value && (
-              <TabsNavInk
-                activeTabRef={activeTabRef.value}
-                direction={props.direction}
-                disabled={false}
-                animation={props.animation}
-              />
-            )}
-          </div>
-          {!isScroll.value && mergedEditable.value && renderAddBtn()}
+          <ResizeObserver onResize={handleResize}>
+            <div
+              class={[
+                `${prefixCls}-tab-list`,
+                {
+                  [`${prefixCls}-tab-list-no-padding`]:
+                    props.direction === 'horizontal' &&
+                    ['line', 'text'].includes(props.type),
+                },
+              ]}
+              style={getTabListStyle({
+                direction: props.direction,
+                type: props.type,
+                offset: offset.value,
+              })}
+              ref={listRef}
+            >
+              {props.tabs.map((tab, index) => (
+                <Tab
+                  ref={(component: ComponentPublicInstance) => {
+                    if (component?.$el) {
+                      tabsRef.value[tab.key] = component.$el;
+                    }
+                  }}
+                  v-slots={{ title: () => tab.title() }}
+                  isActive={props.activeIndex === index}
+                  key={tab.key}
+                  tab={tab}
+                  editable={props.editable}
+                  onClick={(key: string, e: Event) => emit('click', key, e)}
+                  onDelete={(key: string) => emit('delete', key)}
+                />
+              ))}
+              {props.type === 'line' && activeTabRef.value && (
+                <TabsNavInk
+                  activeTabRef={activeTabRef.value}
+                  direction={props.direction}
+                  disabled={false}
+                  animation={props.animation}
+                />
+              )}
+            </div>
+          </ResizeObserver>
+          {!isScroll.value && renderAddBtn()}
         </div>
         {isScroll.value && (
           <TabsButton
             type="next"
             direction={props.direction}
+            disabled={offset.value >= maxOffset.value}
             onClick={handleButtonClick}
           />
         )}
         <div class={`${prefixCls}-extra`}>
-          {isScroll.value && mergedEditable.value && renderAddBtn()}
+          {isScroll.value && renderAddBtn()}
           {slots.extra?.()}
         </div>
       </div>
