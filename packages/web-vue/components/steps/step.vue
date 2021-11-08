@@ -67,35 +67,34 @@ export default defineComponent({
     // private
     step: {
       type: Number,
-      required: true,
+      default: 1,
     },
     current: {
       type: Number,
-      required: true,
+      default: 1,
     },
     type: {
       type: String as PropType<StepsType>,
-      required: true,
+      default: 'default',
     },
     direction: {
       type: String as PropType<Direction>,
-      required: true,
+      default: 'horizontal',
     },
     labelPlacement: {
       type: String as PropType<Direction>,
-      required: true,
+      default: 'horizontal',
     },
     lineLess: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     changeable: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     onClick: {
       type: Function,
-      required: true,
     },
   },
   /**
@@ -129,7 +128,7 @@ export default defineComponent({
 
     const handleClick = (e: Event) => {
       if (props.changeable) {
-        props.onClick(props.step, e);
+        props.onClick?.(props.step, e);
       }
     };
 
