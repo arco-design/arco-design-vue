@@ -144,6 +144,9 @@ export default defineComponent({
         : props.formatter?.(String(props.defaultValue)) ??
             String(props.defaultValue)
     );
+
+    const numberPrefix = ref('');
+
     const mergedPrecision = computed(() => {
       if (isNumber(props.precision)) {
         const decimal = `${props.step}`.split('.')[1];
@@ -163,6 +166,9 @@ export default defineComponent({
           props.formatter?.(String(props.modelValue)) ??
           String(props.modelValue)
         );
+      }
+      if (numberPrefix.value && !_value.value) {
+        return numberPrefix.value;
       }
       return _value.value;
     });
@@ -187,6 +193,10 @@ export default defineComponent({
       }
 
       let numberValue = isNumber(value) ? value : Number(value);
+
+      if (Number.isNaN(numberValue)) {
+        return undefined;
+      }
 
       if (isNumber(props.min) && numberValue < props.min) {
         numberValue = props.min;
@@ -270,6 +280,11 @@ export default defineComponent({
       value = props.parser?.(value) ?? value;
 
       if (isNumber(Number(value)) || /^\.|-$/.test(value)) {
+        if (/^\.|-$/.test(value)) {
+          numberPrefix.value = value;
+        } else if (numberPrefix.value) {
+          numberPrefix.value = '';
+        }
         _value.value = props.formatter?.(value) ?? value;
         updateValue(value);
       }
