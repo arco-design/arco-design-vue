@@ -77,6 +77,7 @@ app.mount('#app');
 * [Dark mode](https://arco.design/vue/docs/dark)
 * [Theme customization](https://arco.design/vue/docs/theme)
 * [Figma component library](https://www.figma.com/file/FVu1DydEeXvJqXrkOb90Oi/ArcoDesign%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1_2.0?node-id=5472%3A308)
+* [Awesome Arco](https://github.com/arco-design/awesome-arco)
 
 # Ecosystems
 
@@ -102,6 +103,10 @@ app.mount('#app');
 
 Developers interested in contributing should read the [Code of Conduct](./CODE_OF_CONDUCT.md) and
 the [Contributing Guide](./CONTRIBUTING.md).
+
+Thank you to all the people who already contributed to ArcoDesign!
+
+<a href="https://github.com/arco-design/arco-design-vue/graphs/contributors"><img src="https://contrib.rocks/image?repo=arco-design/arco-design-vue" /></a>
 
 # License
 

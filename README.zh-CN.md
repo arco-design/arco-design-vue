@@ -79,6 +79,7 @@ app.mount('#app');
 * [暗黑模式](https://arco.design/vue/docs/dark)
 * [主题配置](https://arco.design/vue/docs/theme)
 * [Figma 设计资源](https://www.figma.com/file/FVu1DydEeXvJqXrkOb90Oi/ArcoDesign%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1_2.0?node-id=5472%3A308)
+* [Awesome Arco](https://github.com/arco-design/awesome-arco)
 
 # 生态
 
@@ -99,6 +100,10 @@ app.mount('#app');
 # 参与贡献
 
 贡献之前请先阅读 [行为准则](./CODE_OF_CONDUCT.md) 和 [贡献指南](./CONTRIBUTING.zh-CN.md)。
+
+感谢所有为 ArcoDesign 做过贡献的人!
+
+<a href="https://github.com/arco-design/arco-design-vue/graphs/contributors"><img src="https://contrib.rocks/image?repo=arco-design/arco-design-vue" /></a>
 
 # License
 
