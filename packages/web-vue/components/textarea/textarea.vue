@@ -46,7 +46,6 @@ import {
   defineComponent,
   nextTick,
   onMounted,
-  onUpdated,
   ref,
   watch,
 } from 'vue';
@@ -326,7 +325,7 @@ export default defineComponent({
       }
     };
 
-    onUpdated(() => {
+    watch(computedValue, () => {
       if (props.autoSize && mirrorRef.value) {
         getMirrorStyle();
       }
