@@ -79,6 +79,7 @@ app.mount('#app');
 * [暗黑模式](https://arco.design/vue/docs/dark)
 * [主题配置](https://arco.design/vue/docs/theme)
 * [Figma 设计资源](https://www.figma.com/file/FVu1DydEeXvJqXrkOb90Oi/ArcoDesign%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1_2.0?node-id=5472%3A308)
+* [Awesome Arco](https://github.com/arco-design/awesome-arco)
 
 # 生态
 
