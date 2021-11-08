@@ -29,7 +29,7 @@ const typeMap: Record<string, string> = {
   'Coding style change': 'unused',
   'Refactoring': 'unused',
   'Component style change': 'style',
-  'Performance improvement': 'performance',
+  'Performance improvement': 'optimization',
   'Test cases': 'unused',
   'Continuous integration': 'unused',
   'Typescript definition change': 'typescript',
@@ -188,13 +188,14 @@ const appendChangelog = async (emit: EmitInfo) => {
 
   try {
     await fs.access(filename);
+    const origin = await fs.readFile(filename, 'utf-8');
+    const match = origin.match(/^(```yaml\n.*?\n```\n\n)?(.*)$/s);
+    if (match) {
+      await fs.writeFile(filename, `${match[1] ?? ''}${content}\n${match[2]}`);
+    }
   } catch {
-    await fs.writeFile(filename, content);
-  }
-  const origin = await fs.readFile(filename, 'utf-8');
-  const match = origin.match(/^(```yaml\n.*?\n```\n\n)?(.*)$/s);
-  if (match) {
-    await fs.writeFile(filename, `${match[1] ?? ''}${content}\n${match[2]}`);
+    // eslint-disable-next-line
+    await fs.writeFile(filename, '```yaml\nchangelog: true\n```\n\n' + content);
   }
 };
 

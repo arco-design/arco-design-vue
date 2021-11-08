@@ -6,7 +6,7 @@ changelog: true
 
 `2021-11-05`
 
-### 💎 Performance
+### 💎 Optimization
 
 - **tree-select:** The clickable range of options occupies the entire row by default ([#90](https://github.com/arco-design/arco-design-vue/pull/90))
 - **tabs:** Optimize the scrolling method of the tab bar ([#87](https://github.com/arco-design/arco-design-vue/pull/87))
