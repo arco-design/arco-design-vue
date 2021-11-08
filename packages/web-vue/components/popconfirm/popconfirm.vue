@@ -29,10 +29,15 @@
         </span>
       </div>
       <div :class="`${prefixCls}-footer`">
-        <arco-button @click="handleCancel">
+        <arco-button v-bind="cancelButtonProps" @click="handleCancel">
           {{ cancelText || t('popconfirm.cancelText') }}
         </arco-button>
-        <arco-button type="primary" @click="handleOk">
+        <arco-button
+          v-bind="okButtonProps"
+          type="primary"
+          :loading="okLoading"
+          @click="handleOk"
+        >
           {{ okText || t('popconfirm.okText') }}
         </arco-button>
       </div>
