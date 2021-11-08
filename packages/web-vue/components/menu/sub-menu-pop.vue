@@ -1,6 +1,6 @@
 <template>
   <Trigger
-    trigger="click"
+    trigger="hover"
     :class="tirggerClassNames"
     :position="needPopOnBottom ? 'bl' : 'rt'"
     show-arrow
