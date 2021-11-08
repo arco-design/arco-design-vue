@@ -38,8 +38,8 @@
             ]"
             :style="modalStyle"
           >
-            <div v-if="$slots.title || closable" :class="`${prefixCls}-header`">
-              <div v-if="$slots.title" :class="`${prefixCls}-title`">
+            <div v-if="$slots.title || title || closable" :class="`${prefixCls}-header`">
+              <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
                 <div v-if="messageType" :class="`${prefixCls}-title-icon`">
                   <icon-info-circle-fill v-if="messageType === 'info'" />
                   <icon-check-circle-fill v-if="messageType === 'success'" />
