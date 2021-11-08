@@ -11,18 +11,18 @@ export default defineComponent({
   props: {
     total: {
       type: Number,
-      required: true,
+      default: 0,
     },
     maxCount: {
       type: Number,
-      required: true,
+      default: 0,
     },
     separator: {
       type: Function as PropType<Slot>,
     },
     index: {
       type: Number,
-      required: true,
+      default: 0,
     },
   },
   setup(props, { slots }) {
