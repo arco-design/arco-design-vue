@@ -4,6 +4,7 @@
       ref="refImg"
       :class="`${prefixCls}-img`"
       v-bind="imgProps"
+      :style="imgStyle"
       :title="title"
       @load="onImgLoaded"
       @error="onImgLoadError"
@@ -237,9 +238,11 @@ export default defineComponent({
 
     const { isLoaded, isError, isLoading, setLoadStatus } = useImageLoadState();
 
-    const sizeStyle = computed(() => ({
-      height: normalizeImageSizeProp(height?.value),
+    const widthStyle = computed(() => ({
       width: normalizeImageSizeProp(width?.value),
+    }));
+    const heightStyle = computed(() => ({
+      height: normalizeImageSizeProp(height?.value),
     }));
 
     const wrapperClassNames = computed(() => [
@@ -254,7 +257,7 @@ export default defineComponent({
       attrs.class,
     ]);
 
-    const wrapperStyles = computed(() => [sizeStyle.value, attrs.style]);
+    const wrapperStyles = computed(() => [widthStyle.value, attrs.style]);
 
     const showFooter = computed(
       () =>
@@ -324,6 +327,7 @@ export default defineComponent({
       wrapperStyles,
       showFooter,
       imgProps,
+      imgStyle: heightStyle,
       isLoaded,
       isError,
       isLoading,

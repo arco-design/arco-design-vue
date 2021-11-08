@@ -60,7 +60,7 @@ exports[`<image> demo: render [custom-preview-actions] correctly 1`] = `
 exports[`<image> demo: render [error] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 20px;\\">
-    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 300px; width: 400px;\\"><img class=\\"arco-image-img\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 400px;\\"><img class=\\"arco-image-img\\" style=\\"height: 300px;\\">
       <div class=\\"arco-image-overlay\\">
         <!--v-if-->
         <!--v-if-->
@@ -70,7 +70,7 @@ exports[`<image> demo: render [error] correctly 1`] = `
     </div>
   </div>
   <div class=\\"arco-space-item\\">
-    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 300px; width: 400px;\\"><img class=\\"arco-image-img\\">
+    <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 400px;\\"><img class=\\"arco-image-img\\" style=\\"height: 300px;\\">
       <div class=\\"arco-image-overlay\\">
         <!--v-if-->
         <!--v-if-->
@@ -105,7 +105,7 @@ exports[`<image> demo: render [loader] correctly 1`] = `
 "<div><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-bottom: 20px;\\">
     <!--v-if--> reload
   </button></div>
-<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 200px; width: 200px;\\"><img class=\\"arco-image-img\\">
+<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"height: 200px;\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
     <!--v-if-->
@@ -113,7 +113,7 @@ exports[`<image> demo: render [loader] correctly 1`] = `
   <!--v-if-->
   <!--v-if-->
 </div>
-<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 200px; width: 200px; margin-left: 67px;\\"><img class=\\"arco-image-img\\">
+<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px; margin-left: 67px;\\"><img class=\\"arco-image-img\\" style=\\"height: 200px;\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
     <!--v-if-->
@@ -187,7 +187,7 @@ exports[`<image> demo: render [progressive-loader] correctly 1`] = `
 "<div><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-bottom: 20px;\\">
     <!--v-if--> reload
   </button></div>
-<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"height: 200px; width: 200px;\\"><img class=\\"arco-image-img\\">
+<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"height: 200px;\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
     <!--v-if-->
