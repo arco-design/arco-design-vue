@@ -5,7 +5,7 @@
       auto-size
       :model-value="text"
       @blur="onBlur"
-      @change="onChange"
+      @input="onChange"
       @keydown.enter="onEnd"
     />
   </div>
