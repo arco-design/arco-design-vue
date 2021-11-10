@@ -1,5 +1,13 @@
 import type { PropType } from 'vue';
-import { defineComponent, provide, reactive, ref, toRefs, watch } from 'vue';
+import {
+  defineComponent,
+  provide,
+  reactive,
+  ref,
+  toRefs,
+  watch,
+  computed,
+} from 'vue';
 import type { Data } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction } from '../_utils/is';
@@ -206,11 +214,14 @@ export default defineComponent({
     const { fileList } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
 
-    const isMax = ref(false);
     // Internally maintained picture list
     const _fileList = ref<FileItem[]>([]);
     const fileMap = new Map<string, FileItem>();
     const requestMap = new Map<string, UploadRequest>();
+
+    const isMax = computed(() => {
+      return props.limit > 0 && _fileList.value.length === props.limit;
+    });
 
     const checkFileList = (fileList?: FileItem[]) => {
       fileMap.clear();
