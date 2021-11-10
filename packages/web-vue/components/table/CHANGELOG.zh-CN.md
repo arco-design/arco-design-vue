@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.2.0
+
+`2021-11-10`
+
+### 🆕 新增功能
+
+- 增加 `row-key` 属性 ([#128](https://github.com/arco-design/arco-design-vue/pull/128))
+- 增加 `expandable` 中的 `expandedRowRender ` 和 `icon` 属性 ([#128](https://github.com/arco-design/arco-design-vue/pull/128))
+- 增加 `expand-icon` 和 `expand-row` 插槽 ([#128](https://github.com/arco-design/arco-design-vue/pull/128))
+
+### 🐛 问题修复
+
+- 修复表头分组中表格操作项占位错误的问题 ([#127](https://github.com/arco-design/arco-design-vue/pull/127))
+
+
 ## 2.1.0
 
 `2021-11-05`

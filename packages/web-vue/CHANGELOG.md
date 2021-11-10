@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.2.0
+
+`2021-11-10`
+
+### 🆕 Feature
+
+- **table:** Add `row-key` prop ([#128](https://github.com/arco-design/arco-design-vue/pull/128))
+- **table:** Add `expandedRowRender` and `icon` props in `expandable` ([#128](https://github.com/arco-design/arco-design-vue/pull/128))
+- **table:** Add `expand-icon` and `expand-row` slots ([#128](https://github.com/arco-design/arco-design-vue/pull/128))
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that the table operation items in the header grouping are occupied incorrectly ([#127](https://github.com/arco-design/arco-design-vue/pull/127))
+- **trigger:** Fix the problem of invalid state switching of `disabled` ([#126](https://github.com/arco-design/arco-design-vue/pull/126))
+- **upload:** Fix the problem of invalid `limit` prop ([#123](https://github.com/arco-design/arco-design-vue/pull/123))
+- **typography:** Fixed the problem of unable input ([#121](https://github.com/arco-design/arco-design-vue/pull/121))
+
+
 ## 2.1.1
 
 `2021-11-08`
