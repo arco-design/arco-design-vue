@@ -926,6 +926,7 @@ export default defineComponent({
                   operationColumn={operation}
                   operations={operations.value}
                   rowSelection={props.rowSelection}
+                  rowSpan={groupColumns.value.length}
                   expandable={props.expandable}
                   selectedNumber={currentSelectedRowKeys.value.length}
                   totalNumber={currentAllRowKeys.value.length}
