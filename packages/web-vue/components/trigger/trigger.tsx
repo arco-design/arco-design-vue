@@ -467,7 +467,7 @@ export default defineComponent({
     };
 
     const handleClick = (e: MouseEvent) => {
-      if (computedVisible.value && !props.clickToClose) {
+      if (props.disabled || (computedVisible.value && !props.clickToClose)) {
         return;
       }
       updateMousePosition(e);
@@ -475,22 +475,38 @@ export default defineComponent({
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
+      if (props.disabled) {
+        return;
+      }
+
       triggerCtx?.onMouseenter();
       updateMousePosition(e);
       changeVisible(true, props.mouseEnterDelay);
     };
 
     const handleMouseLeave = () => {
+      if (props.disabled) {
+        return;
+      }
+
       triggerCtx?.onMouseleave();
       changeVisible(false, props.mouseLeaveDelay);
     };
 
     const handleFocusin = () => {
+      if (props.disabled) {
+        return;
+      }
+
       triggerCtx?.onFocusin();
       changeVisible(true, props.focusDelay);
     };
 
     const handleFocusout = () => {
+      if (props.disabled) {
+        return;
+      }
+
       triggerCtx?.onFocusout();
       if (!props.blurToClose) {
         return;
@@ -652,13 +668,12 @@ export default defineComponent({
 
     return () => {
       const children = slots.default?.() ?? [];
-      if (!props.disabled && children) {
-        mergeFirstChild(children, {
-          ref: triggerRef,
-          class: triggerCls.value,
-          ...triggerEvent,
-        });
-      }
+
+      mergeFirstChild(children, {
+        ref: triggerRef,
+        class: triggerCls.value,
+        ...triggerEvent,
+      });
 
       return (
         <>

@@ -220,7 +220,7 @@ export default defineComponent({
     const requestMap = new Map<string, UploadRequest>();
 
     const isMax = computed(() => {
-      return props.limit > 0 && _fileList.value.length === props.limit;
+      return props.limit > 0 && _fileList.value.length >= props.limit;
     });
 
     const checkFileList = (fileList?: FileItem[]) => {
