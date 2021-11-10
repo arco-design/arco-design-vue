@@ -14,10 +14,10 @@ export type TablePagePosition = typeof TABLE_PAGE_POSITION[number];
 
 export interface TableData {
   /**
-   * @zh 数据行的key（必须）
-   * @en The key of the data row (required)
+   * @zh 数据行的key
+   * @en The key of the data row
    */
-  key: string;
+  key?: string;
   /**
    * @zh 扩展行内容
    * @en Expand row content
@@ -255,10 +255,10 @@ export interface TableExpandable {
    */
   defaultExpandAllRows?: boolean;
   /**
-   * @zh 是否默认展开所有的行
-   * @en Whether to expand all rows by default
+   * @zh 自定义展开行内容
+   * @en Customize expanded row content
    */
-  expandedRowRender: (record: TableData, index: number) => VNode;
+  expandedRowRender: (record: TableData) => VNode;
   /**
    * @zh 展开图标
    * @en Expand icon

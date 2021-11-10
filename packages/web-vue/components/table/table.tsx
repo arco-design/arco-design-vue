@@ -1,5 +1,11 @@
-import type { CSSProperties, PropType, Slot } from 'vue';
-import { computed, defineComponent, onMounted, ref, watch } from 'vue';
+import type {
+  ComponentPublicInstance,
+  CSSProperties,
+  PropType,
+  Slot,
+  VNode,
+} from 'vue';
+import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
@@ -169,6 +175,14 @@ export default defineComponent({
       default: 16,
     },
     /**
+     * @zh 表格行 `key` 的取值字段
+     * @en Value field of table row `key`
+     */
+    rowKey: {
+      type: String,
+      default: 'key',
+    },
+    /**
      * @zh 是否显示表头
      * @en Whether to show the header
      */
@@ -293,7 +307,19 @@ export default defineComponent({
      */
     'headerClick',
   ],
+  /**
+   * @zh 展开行图标
+   * @en Expand row icon
+   * @slot expand-icon
+   */
+  /**
+   * @zh 展开行内容
+   * @en Expand row content
+   * @slot expand-row
+   * @binding {TableData} record
+   */
   setup(props, { emit, slots }) {
+    const { rowKey } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const bordered = computed(() => {
       if (isObject(props.bordered)) {
@@ -501,9 +527,9 @@ export default defineComponent({
       const travelData = (data: TableData[]) => {
         if (isArray(data) && data.length > 0) {
           for (const record of data) {
-            allRowKeys.push(record.key);
+            allRowKeys.push(record[rowKey.value]);
             if (record.disabled) {
-              disabledKeys.add(record.key);
+              disabledKeys.add(record[rowKey.value]);
             }
             if (record.children) {
               travelData(record.children);
@@ -518,14 +544,14 @@ export default defineComponent({
     });
 
     const currentAllRowKeys = computed(() =>
-      flattenData.value.map((column) => column.key)
+      flattenData.value.map((record) => record[rowKey.value])
     );
 
     const currentAllEnabledRowKeys = computed(() => {
       const keys: string[] = [];
-      for (const column of flattenData.value) {
-        if (!column.disabled) {
-          keys.push(column.key);
+      for (const record of flattenData.value) {
+        if (!record.disabled) {
+          keys.push(record[rowKey.value]);
         }
       }
       return keys;
@@ -917,7 +943,8 @@ export default defineComponent({
             {index === 0 &&
               operations.value.map((operation, index) => (
                 <OperationTh
-                  ref={(ins) => {
+                  // @ts-ignore
+                  ref={(ins: ComponentPublicInstance): void => {
                     if (ins?.$el) {
                       thRefs.value.operation[index] = ins.$el;
                     }
@@ -943,7 +970,8 @@ export default defineComponent({
               return (
                 <Th
                   key={`th-${index}`}
-                  ref={(ins) => {
+                  // @ts-ignore
+                  ref={(ins: ComponentPublicInstance) => {
                     if (ins?.$el) {
                       thRefs.value.data[column.dataIndex] = ins.$el;
                     }
@@ -955,7 +983,7 @@ export default defineComponent({
                   filterValue={computedFilters.value[column.dataIndex] ?? []}
                   onSorterChange={handleSorterChange}
                   onFilterChange={handleFilterChange}
-                  onClick={(e) => handleHeaderClick(column)}
+                  onClick={(e: Event) => handleHeaderClick(column)}
                 />
               );
             })}
@@ -975,23 +1003,30 @@ export default defineComponent({
     };
 
     const renderExpandContent = (record: TableData) => {
-      if (slots.expand) {
-        return slots.expand({ record });
-      }
       if (isFunction(record.expand)) {
         return record.expand();
       }
-      return record.expand;
+      if (record.expand) {
+        return record.expand;
+      }
+      if (slots['expand-row']) {
+        return slots['expand-row']({ record });
+      }
+      if (props.expandable?.expandedRowRender) {
+        return props.expandable.expandedRowRender(record);
+      }
+
+      return undefined;
     };
 
     const renderExpandBtn = (record: TableData) => {
-      const rowKey = record.key;
-      const expanded = expandedRowKeys.value.includes(rowKey);
+      const currentKey = record[rowKey.value];
+      const expanded = expandedRowKeys.value.includes(currentKey);
 
       return (
         <button
           class={`${prefixCls}-expand-btn`}
-          onClick={() => handleExpand(rowKey)}
+          onClick={() => handleExpand(currentKey)}
         >
           {slots.expandIcon?.({ expanded, record }) ?? expanded ? (
             <IconMinus />
@@ -1002,10 +1037,10 @@ export default defineComponent({
       );
     };
 
-    const renderRecord = (record: TableData, indentSize: number) => {
-      const rowKey = record.key;
+    const renderRecord = (record: TableData, indentSize: number): VNode => {
+      const currentKey = record[rowKey.value];
       const expandContent = renderExpandContent(record);
-      const showExpand = expandedRowKeys.value.includes(rowKey);
+      const showExpand = expandedRowKeys.value.includes(currentKey);
 
       const hasSubTree = Boolean(record.children);
       const subTreeHasSubData =
@@ -1014,9 +1049,9 @@ export default defineComponent({
       return (
         <>
           <Tr
-            onClick={(e) => handleRowClick(record)}
+            onClick={(e: Event) => handleRowClick(record)}
             style={{ position: 'flex' }}
-            key={rowKey}
+            key={currentKey}
           >
             {operations.value.map((operation, index) => {
               const style =
@@ -1029,14 +1064,19 @@ export default defineComponent({
 
               return (
                 <OperationTd
+                  v-slots={{
+                    'expand-icon': slots['expand-icon'],
+                  }}
                   key={`operation-td-${index}`}
                   style={style}
                   record={record}
+                  rowKey={rowKey.value}
                   isRadio={isRadio.value}
                   hasExpand={Boolean(expandContent)}
                   operationColumn={operation}
                   operations={operations.value}
                   selectedRowKeys={selectedRowKeys.value}
+                  expandedIcon={props.expandable?.icon}
                   expandedRowKeys={expandedRowKeys.value}
                   onSelect={handleSelect}
                   onExpand={handleExpand}
@@ -1075,7 +1115,7 @@ export default defineComponent({
                   operations={operations.value}
                   dataColumns={dataColumns.value}
                   {...extraProps}
-                  onClick={(e) => handleCellClick(record, column)}
+                  onClick={(e: Event) => handleCellClick(record, column)}
                 >
                   {{ expandBtn: () => renderExpandBtn(record) }}
                 </Td>
@@ -1093,7 +1133,7 @@ export default defineComponent({
                 )
               )
             ) : (
-              <Tr isExpandRow key={`${rowKey}-expand`}>
+              <Tr isExpandRow key={`${currentKey}-expand`}>
                 <Td
                   isFixedExpand={hasLeftFixedColumn || hasRightFixedColumn}
                   containerWidth={containerRef.value?.offsetWidth}
@@ -1159,26 +1199,4 @@ export default defineComponent({
       );
     };
   },
-  /**
-   * @zh 展开行图标
-   * @en Expand row icon
-   * @slot expandIcon
-   */
-  /**
-   * @zh 展开行内容
-   * @en Expand row content
-   * @slot expandedRow
-   */
-  /**
-   * @zh 筛选按钮图标
-   * @en Filter button icon
-   * @slot filterIcon
-   */
-  /**
-   * @zh 筛选弹出框内容
-   * @en The content of filter popup box
-   * @slot filterContent
-   */
-  // 生成文档使用
-  render: undefined,
 });

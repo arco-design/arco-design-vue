@@ -21,6 +21,10 @@ export default defineComponent({
       type: Object as PropType<TableData>,
       required: true,
     },
+    rowKey: {
+      type: String,
+      default: 'key',
+    },
     operationColumn: {
       type: Object as PropType<TableOperationColumn>,
       required: true,
@@ -39,15 +43,17 @@ export default defineComponent({
       type: Array,
       required: true,
     },
+    expandedIcon: {
+      type: Function,
+    },
     expandedRowKeys: {
       type: Array,
       required: true,
     },
   },
   emits: ['select', 'expand'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('table');
-    const tableCtx = inject(tableInjectionKey, undefined);
 
     const style = computed(() =>
       getOperationStyle(props.operationColumn, props.operations)
@@ -67,7 +73,7 @@ export default defineComponent({
     ]);
 
     const renderSelection = () => {
-      const rowKey = props.record.key;
+      const rowKey = props.record[props.rowKey];
 
       if (props.isRadio) {
         return (
@@ -91,11 +97,7 @@ export default defineComponent({
     };
 
     const renderExpand = () => {
-      if (!props.record.expand) {
-        return null;
-      }
-
-      const rowKey = props.record.key;
+      const rowKey = props.record[props.rowKey];
       const expanded = props.expandedRowKeys.includes(rowKey);
 
       return (
@@ -103,12 +105,9 @@ export default defineComponent({
           class={`${prefixCls}-expand-btn`}
           onClick={() => emit('expand', rowKey)}
         >
-          {tableCtx?.expandIcon?.({ expanded, record: props.record }) ??
-          expanded ? (
-            <IconMinus />
-          ) : (
-            <IconPlus />
-          )}
+          {slots['expand-icon']?.({ expanded, record: props.record }) ??
+            props.expandedIcon?.(expanded, props.record) ??
+            (expanded ? <IconMinus /> : <IconPlus />)}
         </button>
       );
     };

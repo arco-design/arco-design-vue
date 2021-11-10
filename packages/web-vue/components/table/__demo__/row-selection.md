@@ -18,7 +18,7 @@ Turn on the row selector by setting `row-selection`.
 
 ```vue
 <template>
-  <a-table :columns="columns" :data="data" :row-selection="rowSelection" />
+  <a-table row-key="name" :columns="columns" :data="data" :row-selection="rowSelection" />
 </template>
 
 <script>

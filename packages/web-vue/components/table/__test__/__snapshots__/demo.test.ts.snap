@@ -940,7 +940,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
           </thead>
           <tbody>
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Jane Doe\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></span></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
@@ -950,7 +950,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"2\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Alisa Ross\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></span></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
@@ -960,7 +960,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"3\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"Kevin Sandra\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></span></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
@@ -970,7 +970,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"4\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Ed Hellen\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></span></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
@@ -980,7 +980,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"5\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"William Smith\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></span></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
