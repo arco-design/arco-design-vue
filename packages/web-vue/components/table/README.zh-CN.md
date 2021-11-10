@@ -48,6 +48,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |pagination|分页的属性配置|`boolean \| PaginationProps`|`true`|
 |page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`|
 |indent-size|树形表格的缩进距离|`number`|`16`|
+|row-key|表格行 `key` 的取值字段|`string`|`'key'`|
 |show-header|是否显示表头|`boolean`|`true`|
 |virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`|
 ### `<table>` Events
@@ -66,6 +67,12 @@ description: 用于数据收集展示、分析整理、操作处理。
 |cell-click|点击单元格时触发|-|
 |row-click|点击行数据时触发|-|
 |header-click|点击表头数据时触发|-|
+### `<table>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|expand-row|展开行内容|record: `TableData`|
+|expand-icon|展开行图标|-|
 
 
 
@@ -96,7 +103,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|key|数据行的key（必须）|`string`|`-`|
+|key|数据行的key|`string`|`-`|
 |expand|扩展行内容|`string \| (() => VNode)`|`-`|
 |children|子数据|`TableData[]`|`-`|
 |disabled|是否禁用行选择器|`boolean`|`false`|
@@ -176,7 +183,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |expandedRowKeys|显示的展开行（受控模式）|`string[]`|`-`|
 |defaultExpandedRowKeys|默认显示的展开行（非受控模式）|`string[]`|`-`|
 |defaultExpandAllRows|是否默认展开所有的行|`boolean`|`false`|
-|expandedRowRender|是否默认展开所有的行|`(record: TableData, index: number) => VNode`|`-`|
+|expandedRowRender|自定义展开行内容|`(record: TableData) => VNode`|`-`|
 |icon|展开图标|`(expanded: boolean, record: TableData) => VNode`|`-`|
 |title|列标题|`string`|`-`|
 |width|列宽度|`number`|`-`|

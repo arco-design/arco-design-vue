@@ -50,6 +50,7 @@ description: It is used for data collection, display, analysis and processing, a
 |pagination|Pagination properties configuration|`boolean \| PaginationProps`|`true`|
 |page-position|The position of the page selector|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`|
 |indent-size|The indentation distance of the tree table|`number`|`16`|
+|row-key|Value field of table row `key`|`string`|`'key'`|
 |show-header|Whether to show the header|`boolean`|`true`|
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling|`VirtualListProps`|`-`|
 ### `<table>` Events
@@ -68,6 +69,12 @@ description: It is used for data collection, display, analysis and processing, a
 |cell-click|Triggered when a cell is clicked|-|
 |row-click|Triggered when row data is clicked|-|
 |header-click|Triggered when the header data is clicked|-|
+### `<table>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|expand-row|Expand row content|record: `TableData`|
+|expand-icon|Expand row icon|-|
 
 
 
@@ -98,7 +105,7 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|key|The key of the data row (required)|`string`|`-`|
+|key|The key of the data row|`string`|`-`|
 |expand|Expand row content|`string \| (() => VNode)`|`-`|
 |children|Sub data|`TableData[]`|`-`|
 |disabled|Whether to disable the row selector|`boolean`|`false`|
@@ -178,7 +185,7 @@ description: It is used for data collection, display, analysis and processing, a
 |expandedRowKeys|Displayed Expanded Row (Controlled Mode)|`string[]`|`-`|
 |defaultExpandedRowKeys|Expand row displayed by default (Uncontrolled mode)|`string[]`|`-`|
 |defaultExpandAllRows|Whether to expand all rows by default|`boolean`|`false`|
-|expandedRowRender|Whether to expand all rows by default|`(record: TableData, index: number) => VNode`|`-`|
+|expandedRowRender|Customize expanded row content|`(record: TableData) => VNode`|`-`|
 |icon|Expand icon|`(expanded: boolean, record: TableData) => VNode`|`-`|
 |title|Column title|`string`|`-`|
 |width|Column width|`number`|`-`|
