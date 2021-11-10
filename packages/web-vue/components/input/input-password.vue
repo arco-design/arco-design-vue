@@ -13,8 +13,8 @@
         @mousedown.prevent
         @mouseup.prevent
       >
-        <icon-eye v-if="invisible" />
-        <icon-eye-invisible v-else />
+        <icon-eye-invisible v-if="invisible" />
+        <icon-eye v-else />
       </a-icon-hover>
       <slot name="suffix" />
     </template>
