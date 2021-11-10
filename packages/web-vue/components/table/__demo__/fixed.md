@@ -21,7 +21,7 @@ Specify `fixed:'left'` or `fixed:'right'` in `columns` to fix the column to the 
 
 ```vue
 <template>
-  <a-table :columns="columns" :data="data" :scroll="scroll" :expandable="expandable"/>
+  <a-table :columns="columns" :data="data" :scroll="scroll" :expandable="expandable" />
 </template>
 
 <script>
