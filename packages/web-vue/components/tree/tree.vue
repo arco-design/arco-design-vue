@@ -78,7 +78,7 @@ export default defineComponent({
      * @zh 是否默认展开父节点
      * @en Whether to expand the parent node by default
      */
-    defaultExpandAll: {
+    autoExpandParent: {
       type: Boolean,
       default: true,
     },
@@ -325,7 +325,7 @@ export default defineComponent({
       blockNode,
       fieldNames,
       size,
-      defaultExpandAll,
+      autoExpandParent,
       filterTreeNode,
       draggable,
       allowDrop,
@@ -390,7 +390,7 @@ export default defineComponent({
         });
         return [...expandedKeysSet];
       }
-      return defaultExpandAll.value
+      return autoExpandParent.value
         ? flattenTreeData.value
             .filter((node) => node.children && node.children.length)
             .map((node) => node.key)
