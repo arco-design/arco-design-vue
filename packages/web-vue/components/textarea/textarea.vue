@@ -12,6 +12,7 @@
       <textarea
         ref="textareaRef"
         v-bind="$attrs"
+        :disabled="disabled"
         :class="cls"
         :style="textareaStyle"
         :value="computedValue"
