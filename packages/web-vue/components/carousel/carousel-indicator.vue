@@ -82,14 +82,16 @@ export default defineComponent({
             const x = event.offsetX;
             const width = event.currentTarget.clientWidth;
             if (event.target === event.currentTarget) {
-              const index = ~~((x / width) * count);
-              index !== activeIndex && onSelectIndex!(index);
+              const index = Math.floor((x / width) * count);
+              if (index !== activeIndex) {
+                onSelectIndex?.(index);
+              }
             }
           } else {
             const index = +event.target.getAttribute('data-index');
-            !Number.isNaN(index) &&
-              index !== activeIndex &&
-              onSelectIndex!(index);
+            if (!Number.isNaN(index) && index !== activeIndex) {
+              onSelectIndex?.(index);
+            }
           }
         },
       };

@@ -47,6 +47,7 @@
     />
   </div>
 </template>
+
 <script lang="ts">
 import { computed, defineComponent, PropType, reactive, toRefs } from 'vue';
 import { Dayjs } from 'dayjs';
@@ -155,13 +156,13 @@ export default defineComponent({
     },
   },
   emits: [
-    'cell-click',
-    'time-picker-select',
-    'shortcut-click',
-    'shortcut-mouse-enter',
-    'shortcut-mouse-leave',
+    'cellClick',
+    'timePickerSelect',
+    'shortcutClick',
+    'shortcutMouseEnter',
+    'shortcutMouseLeave',
     'confirm',
-    'today-btn-click',
+    'todayBtnClick',
   ],
   setup(props, { emit }) {
     const {
@@ -214,24 +215,24 @@ export default defineComponent({
     }
 
     function onShortcutClick(shortcut: ShortcutType) {
-      emit('shortcut-click', getShortcutValue(shortcut), shortcut);
+      emit('shortcutClick', getShortcutValue(shortcut), shortcut);
     }
     function onShortcutMouseEnter(shortcut: ShortcutType) {
-      emit('shortcut-mouse-enter', getShortcutValue(shortcut));
+      emit('shortcutMouseEnter', getShortcutValue(shortcut));
     }
     function onShortcutMouseLeave(shortcut: ShortcutType) {
-      emit('shortcut-mouse-leave', getShortcutValue(shortcut));
+      emit('shortcutMouseLeave', getShortcutValue(shortcut));
     }
 
     function onPanelSelect(date: Dayjs) {
-      emit('cell-click', date);
+      emit('cellClick', date);
     }
     function onTimePickerSelect(time: Dayjs) {
-      emit('time-picker-select', time);
+      emit('timePickerSelect', time);
     }
 
     function onTodayBtnClick() {
-      emit('today-btn-click', getNow());
+      emit('todayBtnClick', getNow());
     }
 
     function onConfirmBtnClick() {

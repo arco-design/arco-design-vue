@@ -1,4 +1,4 @@
-import type { PropType } from 'vue';
+import type { ComponentPublicInstance, PropType } from 'vue';
 import {
   computed,
   createVNode,
@@ -398,7 +398,7 @@ export default defineComponent({
     };
 
     // Dropdown Events
-    const handleSelect = (value: string | number, e: Event) => {
+    const handleSelect = (value: string | number) => {
       if (props.multiple) {
         if (isArray(computedValue.value)) {
           if (computedValue.value.includes(value)) {
@@ -419,14 +419,14 @@ export default defineComponent({
       }
     };
 
-    const handleMouseEnter = (value: string | number, e: Event) => {
+    const handleMouseEnter = (value: string | number) => {
       const optionInfo = optionInfoMap.get(value);
       if (optionInfo) {
         activeOption.value = optionInfo;
       }
     };
 
-    const handleMouseLeave = (e: Event) => {
+    const handleMouseLeave = () => {
       activeOption.value = undefined;
     };
 
@@ -465,7 +465,7 @@ export default defineComponent({
           (e: Event) => {
             if (computedPopupVisible.value) {
               if (activeOption.value) {
-                handleSelect(activeOption.value.value, e);
+                handleSelect(activeOption.value.value);
               }
             } else {
               handlePopupVisibleChange(true);
@@ -581,7 +581,8 @@ export default defineComponent({
       return createVNode(
         DropDownOption,
         {
-          ref: (ref) => {
+          // @ts-ignore
+          ref: (ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }

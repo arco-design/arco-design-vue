@@ -6,7 +6,7 @@ export default function usePropOrSlot<T = { [key: string]: any }>(
   propName: string
 ) {
   return computed(
-    () => props[propName] || (slots[propName] && slots[propName]!())
+    () => props[propName] || (slots[propName] && slots[propName]?.())
   );
 }
 

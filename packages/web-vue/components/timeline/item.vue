@@ -132,19 +132,18 @@ export default defineComponent({
     onMounted(() => {
       if (context?.addItem) {
         context.addItem({
-          uid: instance!.uid,
+          uid: instance?.uid ?? 0,
         });
       }
     });
     onUnmounted(() => {
       if (context?.removeItem) {
-        context.removeItem(instance!.uid);
+        context.removeItem(instance?.uid ?? 0);
       }
     });
     const myIndexRef = computed(() => {
       const items = context?.items || [];
-      const index = items.findIndex((it) => it.uid === instance?.uid);
-      return index;
+      return items.findIndex((it) => it.uid === instance?.uid);
     });
 
     const contextDirection = computed(() => {
@@ -157,12 +156,12 @@ export default defineComponent({
 
     const cls = computed(() => {
       const index = myIndexRef.value;
-      const { items = [], reverse, labelPosition, mode } = context! || {};
+      const { items = [], reverse, labelPosition, mode } = context ?? {};
       const direction = contextDirection.value;
       const computedPosition = getDefaultPosition(
         index,
-        mode,
-        direction,
+        mode ?? 'left',
+        direction ?? 'horizontal',
         props.position
       );
       return [
@@ -170,8 +169,7 @@ export default defineComponent({
         {
           [`${prefixCls}-${direction}-${computedPosition}`]: direction,
           [`${prefixCls}-label-${labelPosition}`]: labelPosition,
-          [`${prefixCls}-last`]:
-            index === (reverse === true ? 0 : items.length - 1),
+          [`${prefixCls}-last`]: index === (reverse ? 0 : items.length - 1),
         },
       ];
     });
@@ -184,7 +182,7 @@ export default defineComponent({
     });
 
     const computedDotLineStyle = computed(() => {
-      const { direction } = context! || {};
+      const { direction } = context ?? {};
       return {
         [direction === 'horizontal' ? 'borderTopStyle' : 'borderLeftStyle']:
           props.lineType,

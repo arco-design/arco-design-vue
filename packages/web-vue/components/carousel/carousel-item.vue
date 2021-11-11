@@ -21,7 +21,7 @@ export default defineComponent({
   setup() {
     const prefixCls = getPrefixCls('carousel-item');
     const instance = getCurrentInstance();
-    const instanceId = instance!.uid;
+    const instanceId = instance?.uid ?? 0;
     const context = inject<CarouselContext>(carouselInjectionKey);
     onMounted(() => {
       if (context?.addItem) {
@@ -37,14 +37,14 @@ export default defineComponent({
     });
     const myIndexRef = computed(() => {
       const items = context?.items || [];
-      const index = items.findIndex((it) => it.uid === instanceId);
-      return index;
+      return items.findIndex((it) => it.uid === instanceId);
     });
     const cls = computed(() => {
       const { previousIndex, animationName, slideDirection, mergedIndexes } =
-        context!;
+        context ?? {};
       const index = myIndexRef.value;
-      const { mergedPrevIndex, mergedNextIndex, mergedIndex } = mergedIndexes;
+      const { mergedPrevIndex, mergedNextIndex, mergedIndex } =
+        mergedIndexes ?? {};
       return {
         [`${prefixCls}-prev`]: index === mergedPrevIndex,
         [`${prefixCls}-next`]: index === mergedNextIndex,
@@ -58,7 +58,7 @@ export default defineComponent({
       };
     });
     const animationStyle = computed(() => {
-      const { transitionTimingFunction, moveSpeed } = context!;
+      const { transitionTimingFunction, moveSpeed } = context ?? {};
       return {
         transitionTimingFunction,
         transitionDuration: `${moveSpeed}ms`,

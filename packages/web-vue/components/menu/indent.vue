@@ -8,6 +8,7 @@
     />
   </span>
 </template>
+
 <script>
 import { defineComponent, toRef } from 'vue';
 import useMenuContext from './hooks/use-menu-context';

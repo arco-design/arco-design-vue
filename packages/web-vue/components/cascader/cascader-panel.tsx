@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref, TransitionGroup } from 'vue';
+import { defineComponent, PropType, TransitionGroup } from 'vue';
 import { CascaderOptionInfo } from './interface';
 import CascaderOption from './cascader-option';
 import { getPrefixCls } from '../_utils/global-config';
@@ -29,8 +29,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('cascader');
 
-    const panelRefs = ref([]);
-    const optionRefs = ref([]);
+    // const panelRefs = ref([]);
+    // const optionRefs = ref([]);
 
     const renderEmpty = () => {
       return <Empty />;

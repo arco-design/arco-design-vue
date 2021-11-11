@@ -1,5 +1,5 @@
 import { computed, defineComponent, PropType, ref } from 'vue';
-import { Direction, DIRECTIONS } from '../_utils/constant';
+import { Direction } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { mergePropsWithIndex } from '../_utils/vue-utils';
 import { StepStatus, StepsType } from './interface';

@@ -79,7 +79,7 @@ export default defineComponent({
       type: Function as PropType<RenderFunc>,
     },
   },
-  emits: ['select', 'cell-mouse-enter'],
+  emits: ['select', 'cellMouseEnter'],
   setup(props, { emit }) {
     const { headerValue } = toRefs(props);
     const prefixCls = computed(() => getPrefixCls('panel-year'));
@@ -117,7 +117,7 @@ export default defineComponent({
     }
 
     function onCellMouseEnter(cellData: Cell) {
-      emit('cell-mouse-enter', cellData.value);
+      emit('cellMouseEnter', cellData.value);
     }
 
     return {

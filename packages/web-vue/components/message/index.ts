@@ -89,6 +89,7 @@ const messageInstance: {
 } = {};
 
 const message = MESSAGE_TYPES.reduce((pre, value) => {
+  // @ts-ignore
   pre[value] = (config) => {
     if (isString(config)) {
       config = { content: config };
@@ -98,7 +99,7 @@ const message = MESSAGE_TYPES.reduce((pre, value) => {
     if (!messageInstance[position]) {
       messageInstance[position] = new MessageManger(_config);
     }
-    return messageInstance[position]!.add(_config);
+    return messageInstance[position]?.add(_config);
   };
   return pre;
 }, {} as MessageMethod);

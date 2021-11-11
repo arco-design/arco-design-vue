@@ -15,6 +15,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import {
   computed,
@@ -202,14 +203,14 @@ export default defineComponent({
      * @en Triggered when the menu item is clicked
      * @param {string} key
      */
-    'menu-item-click',
+    'menuItemClick',
     /**
      * @zh 点击子菜单时触发
      * @en Triggered when the submenu is clicked
      * @param {string} key
      * @param {string[]} openKeys
      */
-    'sub-menu-click',
+    'subMenuClick',
   ],
   /**
    * @zh 折叠图标
@@ -379,7 +380,7 @@ export default defineComponent({
       onMenuItemClick: (key: string) => {
         setSelectedKeys([key]);
         emit('update:selectedKeys', [key]);
-        emit('menu-item-click', key);
+        emit('menuItemClick', key);
       },
       onSubMenuClick: (key: string, level: number) => {
         let newOpenKeys: string[] = [];
@@ -396,7 +397,7 @@ export default defineComponent({
         }
         setOpenKeys(newOpenKeys);
         emit('update:openKeys', newOpenKeys);
-        emit('sub-menu-click', key, newOpenKeys);
+        emit('subMenuClick', key, newOpenKeys);
       },
       collectSubMenuKey: (key: string) => {
         subMenuKeys.value.push(key);

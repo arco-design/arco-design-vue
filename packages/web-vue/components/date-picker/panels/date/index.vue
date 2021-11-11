@@ -176,9 +176,9 @@ export default defineComponent({
   },
   emits: [
     'select',
-    'time-picker-select',
-    'cell-mouse-enter',
-    'current-view-change',
+    'timePickerSelect',
+    'cellMouseEnter',
+    'currentViewChange',
     'update:currentView',
   ],
   setup(props, { emit }) {
@@ -288,11 +288,11 @@ export default defineComponent({
     }
 
     function onTimePanelSelect(time: Dayjs) {
-      emit('time-picker-select', time);
+      emit('timePickerSelect', time);
     }
 
     function onCellMouseEnter(cellData: Cell) {
-      emit('cell-mouse-enter', cellData.value);
+      emit('cellMouseEnter', cellData.value);
     }
 
     return {
@@ -313,7 +313,7 @@ export default defineComponent({
       showDateView,
       showTimeView,
       changeViewTo: (newView: 'date' | 'time') => {
-        emit('current-view-change', newView);
+        emit('currentViewChange', newView);
         emit('update:currentView', newView);
         setLocalCurrentView(newView);
       },

@@ -29,7 +29,7 @@ export default defineComponent({
       default: 0,
     },
   },
-  emits: ['select', 'cell-mouse-enter'],
+  emits: ['select', 'cellMouseEnter'],
   setup(props, { emit }) {
     const { locale } = useI18n();
     const isSameTime: IsSameTime = (current, target) => {
@@ -48,7 +48,7 @@ export default defineComponent({
       },
       onCellMouseEnter: (value: Dayjs) => {
         const startDateOfWeek = methods.startOf(value, 'week');
-        emit('cell-mouse-enter', startDateOfWeek);
+        emit('cellMouseEnter', startDateOfWeek);
       },
     };
   },

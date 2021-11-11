@@ -7,6 +7,7 @@
     @check="onCheck"
   />
 </template>
+
 <script lang="ts">
 import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
 import Tree from '../tree';

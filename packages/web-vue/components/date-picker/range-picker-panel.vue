@@ -90,6 +90,7 @@
     />
   </div>
 </template>
+
 <script lang="ts">
 import {
   computed,
@@ -213,12 +214,12 @@ export default defineComponent({
     },
   },
   emits: [
-    'cell-click',
-    'cell-mouse-enter',
-    'time-picker-select',
-    'shortcut-click',
-    'shortcut-mouse-enter',
-    'shortcut-mouse-leave',
+    'cellClick',
+    'cellMouseEnter',
+    'timePickerSelect',
+    'shortcutClick',
+    'shortcutMouseEnter',
+    'shortcutMouseLeave',
     'confirm',
   ],
   setup(props, { emit }) {
@@ -270,21 +271,21 @@ export default defineComponent({
     }
 
     function onShortcutClick(shortcut: ShortcutType) {
-      emit('shortcut-click', getShortcutValue(shortcut), shortcut);
+      emit('shortcutClick', getShortcutValue(shortcut), shortcut);
     }
     function onShortcutMouseEnter(shortcut: ShortcutType) {
-      emit('shortcut-mouse-enter', getShortcutValue(shortcut));
+      emit('shortcutMouseEnter', getShortcutValue(shortcut));
     }
     function onShortcutMouseLeave(shortcut: ShortcutType) {
-      emit('shortcut-mouse-leave', getShortcutValue(shortcut));
+      emit('shortcutMouseLeave', getShortcutValue(shortcut));
     }
 
     function onPanelCellClick(date: Dayjs) {
-      emit('cell-click', date);
+      emit('cellClick', date);
     }
 
     function onPanelCellMouseEnter(date: Dayjs) {
-      emit('cell-mouse-enter', date);
+      emit('cellMouseEnter', date);
     }
 
     function onConfirmBtnClick() {
@@ -292,11 +293,11 @@ export default defineComponent({
     }
 
     function onStartTimePickerSelect(time: Dayjs) {
-      emit('time-picker-select', time, 'start');
+      emit('timePickerSelect', time, 'start');
     }
 
     function onEndTimePickerSelect(time: Dayjs) {
-      emit('time-picker-select', time, 'end');
+      emit('timePickerSelect', time, 'end');
     }
 
     function getDisabledDateFunc(index: 0 | 1) {

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// @ts-ignore
 const isProduction = import.meta.env.PROD;
 
 export async function checkLogin() {

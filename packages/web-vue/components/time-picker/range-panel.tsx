@@ -19,7 +19,7 @@ export default defineComponent({
       default: 0,
     },
   },
-  emits: ['select', 'confirm', 'update:displayIndex', 'display-index-change'],
+  emits: ['select', 'confirm', 'update:displayIndex', 'displayIndexChange'],
   setup(props, { emit }) {
     const { value, displayIndex } = toRefs(props);
 
@@ -43,7 +43,7 @@ export default defineComponent({
       if (!isValidRangeValue(value?.value)) {
         const newIndex = (localDisplayIndex.value + 1) % 2;
         localDisplayIndex.value = newIndex;
-        emit('display-index-change', newIndex);
+        emit('displayIndexChange', newIndex);
         emit('update:displayIndex', newIndex);
       } else {
         emit('confirm', value?.value);

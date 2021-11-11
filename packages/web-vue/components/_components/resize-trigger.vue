@@ -14,6 +14,7 @@
     </div>
   </ResizeObserver>
 </template>
+
 <script lang="tsx">
 import { computed, defineComponent, PropType, toRefs } from 'vue';
 import IconDragDot from '../icon/icon-drag-dot';

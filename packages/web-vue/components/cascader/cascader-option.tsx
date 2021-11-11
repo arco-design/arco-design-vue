@@ -62,7 +62,7 @@ export default defineComponent({
             modelValue={checkedStatus.value.checked}
             indeterminate={checkedStatus.value.indeterminate}
             disabled={props.option.disabled}
-            onClick={(e: Event) => {
+            onClick={() => {
               emit('clickOption', props.option, !checkedStatus.value.checked);
               emit('pathChange', props.option);
             }}

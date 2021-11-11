@@ -71,7 +71,7 @@ import SliderMarks from './slider-marks.vue';
 import SliderTicks from './slider-ticks.vue';
 import SliderInput from './slider-input.vue';
 import { isArray, isUndefined } from '../_utils/is';
-import { Direction, DIRECTIONS } from '../_utils/constant';
+import { Direction } from '../_utils/constant';
 import { getOffsetPercent, getPositionStyle } from './utils';
 
 export default defineComponent({
@@ -258,7 +258,7 @@ export default defineComponent({
     };
 
     // 通过坐标获取value值
-    function getValueByCoords(x: number, y: number): number {
+    function getValueByCoords(x: number, y: number): number | undefined {
       if (!trackRect.value) {
         return undefined;
       }
@@ -276,8 +276,7 @@ export default defineComponent({
     }
 
     const handleEndMoving = (x: number, y: number) => {
-      const value = getValueByCoords(x, y);
-      endValue.value = value;
+      endValue.value = getValueByCoords(x, y) ?? 0;
       if (props.range) {
         emit('update:modelValue', [startValue.value, endValue.value]);
         emit('change', [startValue.value, endValue.value]);
@@ -298,8 +297,7 @@ export default defineComponent({
         trackRect.value = trackRef.value.getBoundingClientRect();
       }
 
-      const value = getValueByCoords(clientX, clientY);
-      endValue.value = value;
+      endValue.value = getValueByCoords(clientX, clientY) ?? 0;
       if (props.range) {
         emit('update:modelValue', [startValue.value, endValue.value]);
         emit('change', [startValue.value, endValue.value]);
@@ -331,8 +329,7 @@ export default defineComponent({
     }
 
     const handleStartMoving = (x: number, y: number) => {
-      const value = getValueByCoords(x, y);
-      startValue.value = value;
+      startValue.value = getValueByCoords(x, y) ?? 0;
       emit('update:modelValue', [startValue.value, endValue.value]);
       emit('change', [startValue.value, endValue.value]);
     };

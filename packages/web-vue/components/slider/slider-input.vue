@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 import InputNumber from '../input-number';
 import { getPrefixCls } from '../_utils/global-config';
 
@@ -56,7 +56,7 @@ export default defineComponent({
     },
   },
   emits: ['startChange', 'endChange'],
-  setup(props, { emit }) {
+  setup() {
     const prefixCls = getPrefixCls('slider');
 
     return {

@@ -51,22 +51,22 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  emits: ['item-click', 'item-mouse-enter', 'item-mouse-leave', 'now-click'],
+  emits: ['itemClick', 'itemMouseEnter', 'itemMouseLeave', 'nowClick'],
   setup(props: ShortcutsProps, { emit }) {
     const datePickerT = useInjectDatePickerTransform();
     return {
       datePickerT,
       onItemClick: (item: ShortcutType) => {
-        emit('item-click', item);
+        emit('itemClick', item);
       },
       onItemMouseEnter: (item: ShortcutType) => {
-        emit('item-mouse-enter', item);
+        emit('itemMouseEnter', item);
       },
       onItemMouseLeave: (item: ShortcutType) => {
-        emit('item-mouse-leave', item);
+        emit('itemMouseLeave', item);
       },
       onNowClick: () => {
-        emit('now-click');
+        emit('nowClick');
       },
       isFunction,
     };

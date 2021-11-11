@@ -67,6 +67,7 @@
     </template>
   </Trigger>
 </template>
+
 <script lang="ts">
 import {
   computed,
@@ -339,7 +340,7 @@ export default defineComponent({
      * @en Triggered when the status of the drop-down box changes
      * @param {boolean} visible
      */
-    'popup-visible-change',
+    'popupVisibleChange',
     'update:popupVisible',
     /**
      * @zh 搜索值变化时触发
@@ -446,7 +447,7 @@ export default defineComponent({
     const setPanelVisible = (visible: boolean) => {
       if (visible !== panelVisible.value) {
         setLocalPanelVisible(visible);
-        emit('popup-visible-change', visible);
+        emit('popupVisibleChange', visible);
         emit('update:popupVisible', visible);
       }
 

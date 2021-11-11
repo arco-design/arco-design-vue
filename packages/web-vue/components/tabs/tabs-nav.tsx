@@ -72,7 +72,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('tabs-nav');
 
-    const { tabs, tabKeys, activeIndex, direction } = toRefs(props);
+    const { tabs, activeIndex, direction } = toRefs(props);
 
     const wrapperRef = ref<HTMLElement>();
     const listRef = ref<HTMLElement>();

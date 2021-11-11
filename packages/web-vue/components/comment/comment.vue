@@ -36,6 +36,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { defineComponent, computed } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';

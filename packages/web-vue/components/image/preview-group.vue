@@ -13,6 +13,7 @@
     @close="onClose"
   />
 </template>
+
 <script lang="tsx">
 import {
   defineComponent,
@@ -139,7 +140,7 @@ export default defineComponent({
      * @zh 预览的打开和关闭
      * @en Preview visibility change
      */
-    'visible-change',
+    'visibleChange',
     'update:visible',
   ],
   setup(props: ImagePreviewGroupProps, { emit }) {
@@ -160,7 +161,7 @@ export default defineComponent({
     );
     const setVisible = (newVisible: boolean) => {
       if (newVisible !== mergedVisible.value) {
-        emit('visible-change', newVisible);
+        emit('visibleChange', newVisible);
         emit('update:visible', newVisible);
         setLocalVisible(newVisible);
       }
