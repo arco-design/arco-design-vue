@@ -14,6 +14,10 @@ import { getVNodeChildrenString } from '../_utils/vue-utils';
 export default defineComponent({
   name: 'Doption',
   props: {
+    /**
+     * @zh 选项的值
+     * @en Option Value
+     */
     value: {
       type: [String, Number],
     },

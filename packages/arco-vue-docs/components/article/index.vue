@@ -55,7 +55,7 @@ export default defineComponent({
     description: String,
     meta: Object as PropType<{ category: string; type: string }>,
   },
-  setup(props) {
+  setup() {
     const { locale } = useI18n();
     const collapseCtx = inject<CollapseContext>(collapseInjectionKey);
 
@@ -64,6 +64,7 @@ export default defineComponent({
     };
 
     const anchors = reactive<AnchorData[]>([]);
+    const hrefs = computed(() => anchors.map((item) => item.href));
 
     provide(
       articleInjectionKey,
@@ -72,7 +73,12 @@ export default defineComponent({
         addAnchor: (data: AnchorData) => {
           anchors.push(data);
         },
-        removeAnchor: (href: string) => {},
+        removeAnchor: (href: string) => {
+          const index = hrefs.value.indexOf(href);
+          if (index > -1) {
+            anchors.splice(index, 1);
+          }
+        },
       })
     );
 

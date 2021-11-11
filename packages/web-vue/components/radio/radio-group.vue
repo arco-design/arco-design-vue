@@ -90,7 +90,7 @@ export default defineComponent({
   ],
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('radio-group');
-    const { size, type, disabled, modelValue } = toRefs(props);
+    const { size, type, disabled } = toRefs(props);
 
     const _value = ref(props.defaultValue);
 

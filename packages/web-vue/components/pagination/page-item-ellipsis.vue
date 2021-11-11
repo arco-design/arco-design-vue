@@ -40,8 +40,8 @@ export default defineComponent({
       })
     );
 
-    const handleClick = (e: MouseEvent) => {
-      emit('click', nextPage.value);
+    const handleClick = (e: Event) => {
+      emit('click', nextPage.value, e);
     };
 
     const cls = computed(() => [prefixCls, `${prefixCls}-ellipsis`]);

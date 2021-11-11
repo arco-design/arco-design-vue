@@ -17,6 +17,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';

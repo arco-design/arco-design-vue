@@ -320,7 +320,7 @@ export default defineComponent({
      * @en Pop-up box expand and collapse
      * @param {boolean} visible
      */
-    'popup-visible-change',
+    'popupVisibleChange',
     'update:popupVisible',
   ],
   /**
@@ -381,7 +381,7 @@ export default defineComponent({
     const setPanelVisible = (newVisible: boolean) => {
       if (newVisible !== panelVisible.value) {
         setLocalVisible(newVisible);
-        emit('popup-visible-change', newVisible);
+        emit('popupVisibleChange', newVisible);
         emit('update:popupVisible', newVisible);
       }
     };

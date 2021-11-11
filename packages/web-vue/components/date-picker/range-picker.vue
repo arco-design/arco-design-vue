@@ -50,6 +50,7 @@
   </Trigger>
   <RangePickerPanel v-else v-bind="{ ...$attrs, ...rangePanelProps }" />
 </template>
+
 <script lang="ts">
 import { Dayjs } from 'dayjs';
 import {
@@ -282,7 +283,7 @@ export default defineComponent({
      * @en Open or close the pop-up box
      * @param {boolean} visible
      */
-    'popup-visible-change',
+    'popupVisibleChange',
     'update:popupVisible',
     /**
      * @zh 点击确认按钮
@@ -301,14 +302,14 @@ export default defineComponent({
      * @en Click on the shortcut option
      * @param {ShortcutType} shortcut
      */
-    'select-shortcut',
+    'selectShortcut',
     /**
      * @zh 面板日期改变
      * @en Panel date change
      * @param {string[]} dateString
      * @param {Date[]} date
      */
-    'picker-value-change',
+    'pickerValueChange',
     'update:pickerValue',
   ],
   setup(props: RangePickerProps, { emit, slots }) {
@@ -421,7 +422,7 @@ export default defineComponent({
     const setPanelVisible = (newVisible: boolean) => {
       if (panelVisible.value !== newVisible) {
         setLocalPanelVisible(newVisible);
-        emit('popup-visible-change', newVisible);
+        emit('popupVisibleChange', newVisible);
         emit('update:popupVisible', newVisible);
       }
     };
@@ -446,7 +447,7 @@ export default defineComponent({
             computedFormat.value
           ) as string[];
           const dateValue = getDateValue(newVal);
-          emit('picker-value-change', formattedValue, dateValue);
+          emit('pickerValueChange', formattedValue, dateValue);
           emit('update:pickerValue', formattedValue);
         },
       })
@@ -684,7 +685,7 @@ export default defineComponent({
       value: Array<Dayjs | undefined>,
       shortcut: ShortcutType
     ) {
-      emit('select-shortcut', shortcut);
+      emit('selectShortcut', shortcut);
       confirm(value, false);
     }
 

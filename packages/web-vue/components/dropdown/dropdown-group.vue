@@ -20,7 +20,7 @@ export default defineComponent({
      */
     title: String,
   },
-  setup(props) {
+  setup() {
     const prefixCls = getPrefixCls('dropdown-group');
 
     return {

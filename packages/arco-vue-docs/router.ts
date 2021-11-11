@@ -650,7 +650,7 @@ nProgress.configure({ minimum: 0.4, showSpinner: false });
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     // Always scroll to the top
     return { top: 0 };
   },

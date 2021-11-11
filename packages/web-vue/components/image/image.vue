@@ -52,6 +52,7 @@
     />
   </div>
 </template>
+
 <script lang="ts">
 import {
   defineComponent,
@@ -197,7 +198,7 @@ export default defineComponent({
      * @en Preview opening and closing events
      * @param {boolean} visible
      */
-    'preview-visible-change',
+    'previewVisibleChange',
     'update:previewVisible',
   ],
   /**
@@ -309,13 +310,13 @@ export default defineComponent({
       if (groupContext?.preview) {
         groupContext.preview(imageId);
       } else {
-        emit('preview-visible-change', true);
+        emit('previewVisibleChange', true);
         setPreviewVisible(true);
       }
     }
 
     function onPreviewClose() {
-      emit('preview-visible-change', false);
+      emit('previewVisibleChange', false);
       setPreviewVisible(false);
     }
 

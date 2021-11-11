@@ -98,6 +98,7 @@ const notificationInstance: {
 } = {};
 
 const notification = MESSAGE_TYPES.reduce((pre, value) => {
+  // @ts-ignore
   pre[value] = (config) => {
     if (isString(config)) {
       config = { content: config };
@@ -108,7 +109,7 @@ const notification = MESSAGE_TYPES.reduce((pre, value) => {
     if (!notificationInstance[position]) {
       notificationInstance[position] = new NotificationManger(_config);
     }
-    return notificationInstance[position]!.add(_config);
+    return notificationInstance[position]?.add(_config);
   };
   return pre;
 }, {} as NotificationMethod);

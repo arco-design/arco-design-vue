@@ -28,13 +28,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  getCurrentInstance,
-  inject,
-  toRefs,
-} from 'vue';
+import { computed, defineComponent, getCurrentInstance, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { collapseKey } from './context';
 import IconHover from '../_components/icon-hover.vue';

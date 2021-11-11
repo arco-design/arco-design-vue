@@ -37,6 +37,7 @@
     </slot>
   </a>
 </template>
+
 <script>
 import { defineComponent, computed } from 'vue';
 import Tooltip from '../tooltip';

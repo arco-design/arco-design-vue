@@ -45,7 +45,7 @@ const parseContent = (content: string) => {
   };
 };
 
-const post = (data) => {
+const post = (data: any) => {
   const form = document.createElement('form');
   form.action = 'https://codepen.io/pen/define';
   form.target = '_blank';

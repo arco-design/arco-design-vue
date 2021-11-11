@@ -278,7 +278,7 @@ export default defineComponent({
 
     watch(
       options,
-      (_options) => {
+      () => {
         leafOptionSet.clear();
         leafOptionMap.clear();
         leafOptionValueMap.clear();
@@ -497,7 +497,7 @@ export default defineComponent({
       new Map([
         [
           CODE.ENTER,
-          (e) => {
+          () => {
             if (computedPopupVisible.value) {
               if (activeNode.value) {
                 handleClickOption(activeNode.value);
@@ -509,13 +509,13 @@ export default defineComponent({
         ],
         [
           CODE.ESC,
-          (e) => {
+          () => {
             handlePopupVisibleChange(false);
           },
         ],
         [
           CODE.ARROW_DOWN,
-          (e) => {
+          (e: Event) => {
             const activeNode = getNextActiveNode('next');
             setActiveNode(activeNode);
             e?.preventDefault();
@@ -523,7 +523,7 @@ export default defineComponent({
         ],
         [
           CODE.ARROW_UP,
-          (e) => {
+          (e: Event) => {
             const activeNode = getNextActiveNode('preview');
             setActiveNode(activeNode);
             e?.preventDefault();
@@ -541,7 +541,7 @@ export default defineComponent({
         ],
         [
           CODE.ARROW_LEFT,
-          (e) => {
+          (e: Event) => {
             if (activeNode.value?.parent) {
               setActiveNode(activeNode.value?.parent);
               setSelectedPath(activeNode.value?.parent);

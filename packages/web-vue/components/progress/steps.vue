@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
 

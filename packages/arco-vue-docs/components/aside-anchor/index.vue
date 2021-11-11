@@ -24,9 +24,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, onMounted, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
-import anchor from '@web-vue/components/anchor/anchor.vue';
 
 export default defineComponent({
   name: 'AsideAnchor',

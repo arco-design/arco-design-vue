@@ -102,7 +102,7 @@ export default defineComponent({
       type: Function as PropType<RenderFunc>,
     },
   },
-  emits: ['cell-click', 'cell-mouse-enter'],
+  emits: ['cellClick', 'cellMouseEnter'],
   setup(props, { emit }) {
     const { prefixCls, value, disabledDate, isSameTime, mode, rangeValues } =
       toRefs(props);
@@ -132,17 +132,17 @@ export default defineComponent({
       onCellClick: (cellData: Cell) => {
         const disabled = isCellDisabled(cellData);
         if (disabled) return;
-        emit('cell-click', cellData);
+        emit('cellClick', cellData);
       },
       onCellMouseEnter: (cellData: Cell) => {
         const disabled = isCellDisabled(cellData);
         if (disabled) return;
-        emit('cell-mouse-enter', cellData);
+        emit('cellMouseEnter', cellData);
       },
       onCellMouseLeave: (cellData: Cell) => {
         const disabled = isCellDisabled(cellData);
         if (disabled) return;
-        emit('cell-mouse-enter', cellData);
+        emit('cellMouseEnter', cellData);
       },
       getDateValue,
     };

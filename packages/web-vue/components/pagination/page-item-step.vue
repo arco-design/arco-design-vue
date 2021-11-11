@@ -63,9 +63,9 @@ export default defineComponent({
       })
     );
 
-    const handleClick = (e: MouseEvent) => {
+    const handleClick = (e: Event) => {
       if (!mergedDisabled.value) {
-        emit('click', nextPage.value);
+        emit('click', nextPage.value, e);
       }
     };
 

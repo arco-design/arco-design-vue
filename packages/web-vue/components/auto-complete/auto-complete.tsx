@@ -5,6 +5,7 @@ import {
   PropType,
   toRefs,
   createVNode,
+  ComponentPublicInstance,
 } from 'vue';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
@@ -171,19 +172,19 @@ export default defineComponent({
 
     // Dropdown事件
     const handleSelect = (value: string, e: Event) => {
-      emit('select', value);
+      emit('select', value, e);
       handleChange(value);
       inputRef.value?.blur();
     };
 
-    const handleMouseEnter = (value: string | number, e: Event) => {
+    const handleMouseEnter = (value: string | number) => {
       const optionInfo = optionInfoMap.get(value);
       if (optionInfo) {
         activeOption.value = optionInfo;
       }
     };
 
-    const handleMouseLeave = (e: Event) => {
+    const handleMouseLeave = () => {
       activeOption.value = undefined;
     };
 
@@ -247,7 +248,8 @@ export default defineComponent({
       return createVNode(
         DropDownOption,
         {
-          ref: (ref) => {
+          // @ts-ignore
+          ref: (ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }

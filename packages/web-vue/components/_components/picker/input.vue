@@ -76,7 +76,7 @@ export default defineComponent({
       required: true,
     },
   },
-  emits: ['clear', 'press-enter', 'change'],
+  emits: ['clear', 'pressEnter', 'change'],
   setup(props, { emit }) {
     const { error, focused, disabled, size, value, format, inputValue } =
       toRefs(props);
@@ -110,7 +110,7 @@ export default defineComponent({
       displayValue,
       refInput,
       onPressEnter() {
-        emit('press-enter');
+        emit('pressEnter');
       },
       onChange(e: Event) {
         emit('change', e);

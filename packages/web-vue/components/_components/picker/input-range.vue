@@ -44,6 +44,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { Dayjs } from 'dayjs';
 import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
@@ -105,11 +106,11 @@ export default defineComponent({
     },
   },
   emits: [
-    'focused-index-change',
+    'focusedIndexChange',
     'update:focusedIndex',
     'change',
     'clear',
-    'press-enter',
+    'pressEnter',
   ],
   setup(props, { emit }) {
     const {
@@ -171,7 +172,7 @@ export default defineComponent({
     const displayValue1 = computed(() => getDisplayValue(1));
 
     function changeFocusedInput(index: number) {
-      emit('focused-index-change', index);
+      emit('focusedIndexChange', index);
       emit('update:focusedIndex', index);
     }
 
@@ -181,7 +182,7 @@ export default defineComponent({
     }
 
     function onPressEnter() {
-      emit('press-enter');
+      emit('pressEnter');
     }
 
     function onPressTab(e: Event) {

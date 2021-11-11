@@ -1,4 +1,5 @@
 import {
+  ComponentPublicInstance,
   computed,
   createVNode,
   defineComponent,
@@ -80,7 +81,7 @@ export default defineComponent({
   setup(props, { emit, attrs }) {
     const { data } = toRefs(props);
     const dropdownRef = ref();
-    const optionRefs = ref({});
+    const optionRefs = ref<Record<string, HTMLElement>>({});
     const _value = ref(props.defaultValue);
     const computeValue = computed(() => props.modelValue ?? _value.value);
     const measureInfo = ref<MeasureInfo>({
@@ -143,6 +144,7 @@ export default defineComponent({
       activeOption,
       getNextActiveOption,
       scrollIntoView,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       enabledOptionSet,
       optionInfoMap,
     } = useOptions({
@@ -153,7 +155,7 @@ export default defineComponent({
       optionRefs,
     });
 
-    const handleSelect = (value: string, e: Event) => {
+    const handleSelect = (value: string | number, e: Event) => {
       const measureStart = measureInfo.value.location;
       const measureEnd =
         measureInfo.value.location + measureInfo.value.text.length;
@@ -173,20 +175,20 @@ export default defineComponent({
       const nextValue = `${head}${match}${tail}`;
 
       _value.value = nextValue;
-      emit('select', value);
+      emit('select', value, e);
       emit('update:modelValue', value);
       emit('change', nextValue);
       resetMeasureInfo();
     };
 
-    const handleMouseEnter = (value: string | number, e: Event) => {
+    const handleMouseEnter = (value: string | number) => {
       const optionInfo = optionInfoMap.get(value);
       if (optionInfo) {
         activeOption.value = optionInfo;
       }
     };
 
-    const handleMouseLeave = (e: Event) => {
+    const handleMouseLeave = () => {
       activeOption.value = undefined;
     };
 
@@ -244,7 +246,8 @@ export default defineComponent({
       return createVNode(
         DropDownOption,
         {
-          ref: (ref) => {
+          // @ts-ignore
+          ref: (ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }

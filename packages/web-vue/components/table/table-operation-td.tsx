@@ -1,4 +1,4 @@
-import { computed, defineComponent, inject, PropType } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { TableData, TableOperationColumn } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { getOperationFixedCls, getOperationStyle } from './utils';
@@ -6,7 +6,6 @@ import Checkbox from '../checkbox';
 import Radio from '../radio';
 import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
-import { TableContext, tableInjectionKey } from './context';
 
 export default defineComponent({
   name: 'OperationTd',

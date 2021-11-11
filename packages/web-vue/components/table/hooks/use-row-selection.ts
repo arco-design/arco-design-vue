@@ -4,11 +4,11 @@ import { TableProps } from '../interface';
 export const useRowSelection = (
   props: TableProps,
   {
-    allRowKeys,
+    // allRowKeys,
     currentAllRowKeys,
     currentAllEnabledRowKeys,
   }: {
-    allRowKeys: Ref<string[]>;
+    // allRowKeys: Ref<string[]>;
     currentAllRowKeys: Ref<string[]>;
     currentAllEnabledRowKeys: Ref<string[]>;
   },

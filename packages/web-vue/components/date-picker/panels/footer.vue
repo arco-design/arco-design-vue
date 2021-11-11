@@ -54,16 +54,16 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  emits: ['today-btn-click', 'confirm-btn-click'],
+  emits: ['todayBtnClick', 'confirmBtnClick'],
   setup(_, { emit }) {
     const datePickerT = useInjectDatePickerTransform();
     return {
       datePickerT,
       onTodayClick: () => {
-        emit('today-btn-click');
+        emit('todayBtnClick');
       },
       onConfirmBtnClick: () => {
-        emit('confirm-btn-click');
+        emit('confirmBtnClick');
       },
     };
   },
