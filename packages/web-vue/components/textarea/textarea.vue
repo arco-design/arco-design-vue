@@ -24,7 +24,7 @@
         @compositionend="handleComposition"
       />
     </resize-observer>
-    <slot />
+    <slot name="suffix"/>
     <div v-if="maxLength && showWordLimit" :class="`${prefixCls}-word-limit`">
       {{ getTextLength(computedValue) }}/{{ maxLength }}
     </div>
