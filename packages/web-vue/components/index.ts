@@ -44,7 +44,7 @@ export { default as Transfer } from './transfer';
 export { default as Tree } from './tree';
 export { default as Upload } from './upload';
 export { default as TreeSelect } from './tree-select';
-export { default as Alter } from './alert';
+export { default as Alert } from './alert';
 export { default as Drawer } from './drawer';
 export { default as Message } from './message';
 export { default as Modal } from './modal';
