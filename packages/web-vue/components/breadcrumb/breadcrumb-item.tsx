@@ -6,7 +6,7 @@ import IconObliqueLine from '../icon/icon-oblique-line';
 
 export default defineComponent({
   name: 'BreadcrumbItem',
-  components: { IconObliqueLine, IconMore },
+  inheritAttrs: false,
   // private
   props: {
     total: {
@@ -25,7 +25,7 @@ export default defineComponent({
       default: 0,
     },
   },
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const prefixCls = getPrefixCls('breadcrumb-item');
 
     const show = computed(() => {
@@ -50,7 +50,7 @@ export default defineComponent({
       if (show.value) {
         return (
           <>
-            <div class={prefixCls}>
+            <div class={prefixCls} {...attrs}>
               {displayMore.value ? <IconMore /> : slots.default?.() ?? ''}
             </div>
             {props.index !== props.total - 1 && (
