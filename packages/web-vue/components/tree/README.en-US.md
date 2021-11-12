@@ -47,7 +47,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |---|---|---|:---:|
 |size|Size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |block-node|Whether the node occupies a row|`boolean`|`false`|
-|default-expand-all|Whether to expand the parent node by default|`boolean`|`true`|
+|auto-expand-parent|Whether to expand the parent node by default|`boolean`|`true`|
 |multiple|Whether to support multiple selection|`boolean`|`false`|
 |checkable|Whether to add a checkbox before the node|`boolean`|`false`|
 |selectable|Whether to support selection|`boolean`|`true`|

@@ -45,7 +45,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |---|---|---|:---:|
 |size|尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |block-node|节点是否占据一行|`boolean`|`false`|
-|default-expand-all|是否默认展开父节点|`boolean`|`true`|
+|auto-expand-parent|是否默认展开父节点|`boolean`|`true`|
 |multiple|是否支持多选|`boolean`|`false`|
 |checkable|是否在节点前添加复选框|`boolean`|`false`|
 |selectable|是否支持选择|`boolean`|`true`|
