@@ -243,8 +243,7 @@ export const getChildrenComponents = (
       } else {
         result.push(item);
       }
-    }
-    if (isArrayChildren(item, item.children)) {
+    } else if (isArrayChildren(item, item.children)) {
       result.push(...getChildrenComponents(item.children, name, props));
     } else if (isSlotsChildren(item, item.children)) {
       const defaultChildren = item.children.default?.() ?? [];
