@@ -1,4 +1,11 @@
-import { computed, defineComponent, ref, watchEffect } from 'vue';
+import {
+  computed,
+  defineComponent,
+  ref,
+  watchEffect,
+  onMounted,
+  onUnmounted,
+} from 'vue';
 import scrollIntoView from 'scroll-into-view-if-needed';
 import Tooltip from '../tooltip';
 import useIsMounted from '../_hooks/use-is-mounted';
@@ -8,6 +15,7 @@ import useLevel from './hooks/use-level';
 import { omit } from '../_utils/omit';
 import MenuIndent from './indent.vue';
 import useMenuContext from './hooks/use-menu-context';
+import { useMenuDataCollectorContext } from './hooks/use-menu-data-collector';
 
 export default defineComponent({
   name: 'MenuItem',
@@ -44,6 +52,17 @@ export default defineComponent({
     const clearTimer = () => {
       timer.value && clearTimeout(timer.value);
     };
+
+    const { collectMenuItemKey, removeMenuItemKey } =
+      useMenuDataCollectorContext();
+
+    onMounted(() => {
+      collectMenuItemKey && collectMenuItemKey(key.value);
+    });
+
+    onUnmounted(() => {
+      removeMenuItemKey && removeMenuItemKey(key.value);
+    });
 
     watchEffect((onInvalidate) => {
       if (

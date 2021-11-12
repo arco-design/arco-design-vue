@@ -22,8 +22,6 @@ export type MenuContext = Readonly<
     collapsed: boolean;
     expandIconDown?: () => VNodeTypes;
     expandIconRight?: () => VNodeTypes;
-    collectSubMenuKey?: (key: string) => void;
-    removeSubMenuKey?: (key: string) => void;
     onSubMenuClick?: (key: string, level: number) => void;
     onMenuItemClick?: (key: string) => void;
   }
@@ -34,4 +32,17 @@ export const LevelInjectionKey: InjectionKey<string> =
 
 export type LevelContext = Readonly<{
   level: number;
+}>;
+
+export const DataCollectorInjectionKey: InjectionKey<string> = Symbol(
+  'DataCollectorInjectionKey'
+);
+
+export type DataCollectorContext = Readonly<{
+  collectSubMenuKey: (keys: string) => void;
+  removeSubMenuKey: (keys: string) => void;
+  updateSubMenuKeys: (keys: string[], prevKeys: string[]) => void;
+  collectMenuItemKey: (keys: string) => void;
+  removeMenuItemKey: (keys: string) => void;
+  updateMenuItemKeys: (keys: string[], prevKeys: string[]) => void;
 }>;

@@ -1,6 +1,10 @@
 import { CSSProperties } from 'vue';
 import { Data } from '../_utils/types';
 
+export type MenuTheme = 'light' | 'dark';
+
+export type MenuMode = 'vertical' | 'horizontal' | 'pop' | 'popButton';
+
 export interface SubMenuChildDataType {
   key: string;
   children?: SubMenuChildDataType[];
@@ -8,8 +12,8 @@ export interface SubMenuChildDataType {
 
 export interface MenuProps {
   style?: CSSProperties;
-  theme: 'light' | 'dark';
-  mode: 'vertical' | 'horizontal' | 'pop' | 'popButton';
+  theme?: MenuTheme;
+  mode: MenuMode;
   levelIndent?: number;
   autoOpen: boolean;
   collapsed: boolean | undefined;
@@ -29,6 +33,7 @@ export interface MenuProps {
   prefixCls?: string;
   inTrigger: boolean;
   siderCollapsed: boolean;
+  isRoot: boolean;
 }
 
 export interface SubMenuProps {
@@ -49,9 +54,11 @@ export interface MenuItemProps {
 
 export interface SubMenuInlineProps {
   title?: string;
+  isChildrenSelected: boolean;
 }
 
 export interface SubMenuPopProps {
   title?: string;
   selectable: boolean;
+  isChildrenSelected: boolean;
 }

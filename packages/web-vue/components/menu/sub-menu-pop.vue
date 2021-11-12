@@ -11,10 +11,11 @@
     :auto-fit-popup-min-width="true"
     :duration="100"
     v-bind="triggerProps"
+    :unmount-on-close="false"
     :popup-visible="popVisible"
     @popupVisibleChange="onVisibleChange"
   >
-    <div :class="classNames" v-bind="attrs" @click="onClick">
+    <div :class="classNames" v-bind="$attrs" @click="onClick">
       <!-- header -->
       <MenuIndent :level="level" />
       <slot name="title">{{ title }}</slot>
@@ -59,7 +60,6 @@ import useMenu from './hooks/use-menu';
 import useLevel from './hooks/use-level';
 import { omit } from '../_utils/omit';
 import { getPrefixCls } from '../_utils/global-config';
-import { isChildrenSelected } from './utils';
 import MenuIndent from './indent.vue';
 import useMenuContext from './hooks/use-menu-context';
 import RenderFunction from '../_components/render-function';
@@ -80,11 +80,14 @@ export default defineComponent({
     selectable: {
       type: Boolean,
     },
+    isChildrenSelected: {
+      type: Boolean,
+    },
   },
-  setup(props: SubMenuPopProps, { attrs, slots }) {
+  setup(props: SubMenuPopProps) {
     const { key } = useMenu();
     const { level } = useLevel();
-    const { selectable } = toRefs(props);
+    const { selectable, isChildrenSelected } = toRefs(props);
     const menuContext = useMenuContext();
     const { onSubMenuClick, onMenuItemClick } = menuContext;
 
@@ -96,7 +99,7 @@ export default defineComponent({
     const isSelected = computed(
       () =>
         (selectable.value && selectedKeys.value.includes(key.value)) ||
-        isChildrenSelected(slots.default?.(), selectedKeys.value)
+        isChildrenSelected.value
     );
     const classNames = computed(() => [
       `${prefixCls.value}`,
@@ -122,7 +125,6 @@ export default defineComponent({
     );
 
     return {
-      attrs,
       menuPrefixCls,
       mode,
       level,

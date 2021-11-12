@@ -1,12 +1,4 @@
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  PropType,
-  toRef,
-  toRefs,
-} from 'vue';
+import { computed, defineComponent, PropType, toRef, toRefs } from 'vue';
 import { SubMenuProps } from './interface';
 import SubMenuInline from './sub-menu-inline.vue';
 import SubMenuPop from './sub-menu-pop.vue';
@@ -15,6 +7,7 @@ import useLevel from './hooks/use-level';
 import IconDown from '../icon/icon-down';
 import IconRight from '../icon/icon-right';
 import useMenuContext from './hooks/use-menu-context';
+import useMenuDataCollector from './hooks/use-menu-data-collector';
 
 export default defineComponent({
   name: 'SubMenu',
@@ -77,15 +70,31 @@ export default defineComponent({
       return forcePopup || collapsed || inTrigger || mode !== 'vertical';
     });
 
-    onMounted(() => {
-      menuContext.collectSubMenuKey && menuContext.collectSubMenuKey(key.value);
+    const { subMenuKeys, menuItemKeys } = useMenuDataCollector({
+      key: key.value,
     });
 
-    onUnmounted(() => {
-      menuContext.removeSubMenuKey && menuContext.removeSubMenuKey(key.value);
+    const isChildrenSelected = computed(() => {
+      const selectedKeys = menuContext.selectedKeys || [];
+      const checkSelected = (menuKeys: string[]) => {
+        for (let i = 0; i < selectedKeys.length; i++) {
+          const selectedKey = selectedKeys[i];
+          if (menuKeys.includes(selectedKey)) {
+            return true;
+          }
+        }
+        return false;
+      };
+
+      return (
+        checkSelected(subMenuKeys.value) || checkSelected(menuItemKeys.value)
+      );
     });
 
     return {
+      subMenuKeys,
+      menuItemKeys,
+      isChildrenSelected,
       props,
       attrs,
       computedKey: key,
@@ -102,11 +111,13 @@ export default defineComponent({
       computedPopup,
       expandIconDown,
       expandIconRight,
+      isChildrenSelected,
     } = this;
     const _props = {
       ...props,
       ...attrs,
       key: computedKey,
+      isChildrenSelected,
     };
     const _slots = {
       ...this.$slots,
