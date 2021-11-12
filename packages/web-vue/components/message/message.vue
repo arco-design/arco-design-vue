@@ -12,6 +12,7 @@
         <icon-check-circle-fill v-else-if="type === 'success'" />
         <icon-exclamation-circle-fill v-else-if="type === 'warning'" />
         <icon-close-circle-fill v-else-if="type === 'error'" />
+        <icon-loading v-else-if="type === 'loading'" />
       </slot>
     </span>
     <span :class="`${prefixCls}-content`">
@@ -40,6 +41,7 @@ import IconInfoCircleFill from '../icon/icon-info-circle-fill';
 import IconCheckCircleFill from '../icon/icon-check-circle-fill';
 import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
 import IconCloseCircleFill from '../icon/icon-close-circle-fill';
+import IconLoading from '../icon/icon-loading';
 
 export default defineComponent({
   name: 'Message',
@@ -50,10 +52,11 @@ export default defineComponent({
     IconExclamationCircleFill,
     IconCloseCircleFill,
     IconClose,
+    IconLoading,
   },
   props: {
     type: {
-      type: String as PropType<MessageType>,
+      type: String as PropType<MessageType | 'loading'>,
       default: 'info',
       validator: (value: any) => {
         return MESSAGE_TYPES.includes(value);

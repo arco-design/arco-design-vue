@@ -83,6 +83,12 @@ export interface NotificationConfig {
    * @default 3000
    */
   duration?: number;
+  /**
+   * @zh 关闭时的回调函数
+   * @en Callback function when closing
+   * @param id
+   */
+  onClose?: (id: number | string) => void;
 }
 
 export interface NotificationReturn {
@@ -103,4 +109,5 @@ export interface NotificationItem {
   closable?: boolean;
   duration?: number;
   resetOnUpdate?: boolean;
+  onClose?: (id: number | string) => void;
 }

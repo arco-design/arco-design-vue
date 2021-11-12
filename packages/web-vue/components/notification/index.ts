@@ -2,7 +2,7 @@ import type { App, AppContext, Ref } from 'vue';
 import { createVNode, render, reactive, ref } from 'vue';
 import { MESSAGE_TYPES, MessageType } from '../_utils/constant';
 import { getOverlay } from '../_utils/dom';
-import { isString, isUndefined } from '../_utils/is';
+import { isFunction, isString, isUndefined } from '../_utils/is';
 import NotificationList from './notification-list';
 import {
   NotificationConfig,
@@ -77,7 +77,13 @@ class NotificationManger {
 
   remove = (id: number | string) => {
     for (let i = 0; i < this.notifications.value.length; i++) {
-      if (this.notifications.value[i].id === id) {
+      const item = this.notifications.value[i];
+
+      if (item.id === id) {
+        if (isFunction(item.onClose)) {
+          item.onClose(id);
+        }
+
         this.notifications.value.splice(i, 1);
         this.notificationIds.delete(id);
         break;

@@ -2,7 +2,7 @@ import type { App, AppContext, Ref } from 'vue';
 import { createVNode, render, ref, reactive } from 'vue';
 import { MESSAGE_TYPES, MessageType } from '../_utils/constant';
 import { getOverlay } from '../_utils/dom';
-import { isString, isUndefined } from '../_utils/is';
+import { isFunction, isString, isUndefined } from '../_utils/is';
 import MessageList from './message-list';
 import {
   MessageConfig,
@@ -11,7 +11,7 @@ import {
   MessagePosition,
 } from './interface';
 
-type _MessageConfig = MessageConfig & { type: MessageType };
+type _MessageConfig = MessageConfig & { type: MessageType | 'loading' };
 
 class MessageManger {
   private readonly container: HTMLElement;
@@ -70,7 +70,12 @@ class MessageManger {
 
   remove = (id: number | string) => {
     for (let i = 0; i < this.messages.value.length; i++) {
-      if (this.messages.value[i].id === id) {
+      const item = this.messages.value[i];
+      if (item.id === id) {
+        if (isFunction(item.onClose)) {
+          item.onClose(id);
+        }
+
         this.messages.value.splice(i, 1);
         this.messageIds.delete(id);
         break;
@@ -88,7 +93,9 @@ const messageInstance: {
   bottom?: MessageManger;
 } = {};
 
-const message = MESSAGE_TYPES.reduce((pre, value) => {
+const types = [...MESSAGE_TYPES, 'loading'] as const;
+
+const message = types.reduce((pre, value) => {
   pre[value] = (config) => {
     if (isString(config)) {
       config = { content: config };
