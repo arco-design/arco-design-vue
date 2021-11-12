@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.3.0
+
+`2021-11-12`
+
+### 🆕 Feature
+
+- **form:** Add `setFields` method ([#150](https://github.com/arco-design/arco-design-vue/pull/150))
+- **message:** Added `onClose` callback method ([#149](https://github.com/arco-design/arco-design-vue/pull/149))
+- **message:** Added `loading` method ([#149](https://github.com/arco-design/arco-design-vue/pull/149))
+- **notification:** Added `onClose` callback method ([#149](https://github.com/arco-design/arco-design-vue/pull/149))
+- **alert:** Add `#action` slot ([#148](https://github.com/arco-design/arco-design-vue/pull/148))
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that `<table-column>` is wrong in the header of the grouping table ([#151](https://github.com/arco-design/arco-design-vue/pull/151))
+- **menu:** Fix the problem that the parent menu is not selected when nesting custom components ([#147](https://github.com/arco-design/arco-design-vue/pull/147))
+- **alert:** Fix the problem of incorrect name export by alert ([#142](https://github.com/arco-design/arco-design-vue/pull/142))
+- **textarea:** Fix the problem that `disabled` does not take effect ([#139](https://github.com/arco-design/arco-design-vue/pull/139))
+- **textarea:** Fix the issue of missing `style/index.js` ([#139](https://github.com/arco-design/arco-design-vue/pull/139))
+- **breadcrumb:** Fix the problem of `breadcrumb-item` not inheriting Attribute ([#137](https://github.com/arco-design/arco-design-vue/pull/137))
+- **tree:** Fix the problem that the setting of `default-checked-keys` is invalid ([#131](https://github.com/arco-design/arco-design-vue/pull/131))
+- Reset VNode cache when virtual list `data` changes ([#129](https://github.com/arco-design/arco-design-vue/pull/129))
+
+
 ## 2.2.0
 
 `2021-11-10`

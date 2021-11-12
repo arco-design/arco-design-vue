@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.3.0
+
+`2021-11-12`
+
+### 🐛 BugFix
+
+- Fix the problem that the parent menu is not selected when nesting custom components ([#147](https://github.com/arco-design/arco-design-vue/pull/147))
+
+
 ## 2.1.1
 
 `2021-11-08`

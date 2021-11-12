@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.3.0
+
+`2021-11-12`
+
+### 🐛 BugFix
+
+- Fix the problem that `<table-column>` is wrong in the header of the grouping table ([#151](https://github.com/arco-design/arco-design-vue/pull/151))
+
+
 ## 2.2.0
 
 `2021-11-10`

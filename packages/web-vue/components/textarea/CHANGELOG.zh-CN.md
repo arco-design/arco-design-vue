@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.3.0
+
+`2021-11-12`
+
+### 🐛 问题修复
+
+- 修复 `disabled` 不生效的问题 ([#139](https://github.com/arco-design/arco-design-vue/pull/139))
+- 修复缺失 `style/index.js` 的问题 ([#139](https://github.com/arco-design/arco-design-vue/pull/139))
+
+
 ## 2.1.1
 
 `2021-11-08`

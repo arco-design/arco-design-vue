@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.3.0
+
+`2021-11-12`
+
+### 🐛 问题修复
+
+- 修复 `<table-column>` 在分组表头错误的问题 ([#151](https://github.com/arco-design/arco-design-vue/pull/151))
+
+
 ## 2.2.0
 
 `2021-11-10`

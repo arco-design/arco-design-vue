@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.3.0
+
+`2021-11-12`
+
+### 🐛 BugFix
+
+- Fix the problem that `disabled` does not take effect ([#139](https://github.com/arco-design/arco-design-vue/pull/139))
+- Fix the issue of missing `style/index.js` ([#139](https://github.com/arco-design/arco-design-vue/pull/139))
+
+
 ## 2.1.1
 
 `2021-11-08`
