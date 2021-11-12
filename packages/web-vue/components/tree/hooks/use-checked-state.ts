@@ -22,6 +22,8 @@ export default function useCheckedState(props: {
     });
   };
 
+  const isInitialized = ref(false);
+
   const initLocalState = getStateByInitKeys(
     propCheckedKeys.value || defaultCheckedKeys?.value || []
   );
@@ -30,15 +32,19 @@ export default function useCheckedState(props: {
 
   const computedCheckedKeys = ref<string[]>();
   const computedIndeterminateKeys = ref<string[]>();
+
   watchEffect(() => {
     if (propCheckedKeys.value) {
       [computedCheckedKeys.value, computedIndeterminateKeys.value] =
         getStateByInitKeys(propCheckedKeys.value);
-    } else {
+    } else if (isInitialized.value) {
       computedCheckedKeys.value = undefined;
       computedIndeterminateKeys.value = undefined;
       localCheckedKeys.value = [];
       localIndeterminateKeys.value = [];
+    }
+    if (!isInitialized.value) {
+      isInitialized.value = true;
     }
   });
 
