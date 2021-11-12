@@ -40,8 +40,11 @@ exports[`<message> demo: render [type] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning\\" type=\\"button\\">
       <!--v-if-->Warning Message
     </button></div>
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-danger\\" type=\\"button\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-danger\\" type=\\"button\\">
       <!--v-if-->Error Message
+    </button></div>
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-primary\\" type=\\"button\\">
+      <!--v-if-->Loading Message
     </button></div>
 </div>"
 `;

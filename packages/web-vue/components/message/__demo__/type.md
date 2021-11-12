@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-全局提示有 5 种不同的类型，分别为：`info`, `success`, `warning`, `error`, `normal`。
+全局提示有 6 种不同的类型，分别为：`info`, `success`, `warning`, `error`, `loading`, `normal`。
 
 ---
 
 ## en-US
 
-There are 5 different types of global prompts, namely: `info`, `success`, `warning`, `error`, `normal`.
+There are 6 different types of global prompts, namely: `info`, `success`, `warning`, `error`, `loading`, `normal`.
 
 ---
 
@@ -23,6 +23,7 @@ There are 5 different types of global prompts, namely: `info`, `success`, `warni
     <a-button @click="()=>this.$message.success('This is a success message!')" status="success">Success Message</a-button>
     <a-button @click="()=>this.$message.warning('This is a warning message!')" status="warning">Warning Message</a-button>
     <a-button @click="()=>this.$message.error('This is an error message!')" status="danger">Error Message</a-button>
+    <a-button @click="()=>this.$message.loading('This is a loading message!')" status="primary">Loading Message</a-button>
   </a-space>
 </template>
 ```

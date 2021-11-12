@@ -48,6 +48,7 @@ Notification提供的全局方法，可以通过一下三种方法使用：
 |showIcon|是否显示图标|`boolean`|`false`|
 |closable|是否可关闭|`boolean`|`false`|
 |duration|显示的持续时间|`number`|`-`|
+|onClose|关闭时的回调函数|`(id: number \| string) => void`|`-`|
 
 
 

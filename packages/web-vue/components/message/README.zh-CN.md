@@ -34,6 +34,7 @@ Message提供的全局方法，可以通过一下三种方法使用：
 |success|显示成功提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
 |warning|显示警告提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
 |error|显示错误提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
+|loading|显示加载中提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
 |clear|清空全部提示|`(position?: MessagePosition) => void`|`-`|
 
 
@@ -49,6 +50,7 @@ Message提供的全局方法，可以通过一下三种方法使用：
 |showIcon|是否显示图标|`boolean`|`false`|
 |closable|是否显示关闭按钮|`boolean`|`false`|
 |duration|消息显示的持续时间|`number`|`-`|
+|onClose|关闭时的回调函数|`(id: number \| string) => void`|`-`|
 
 
 

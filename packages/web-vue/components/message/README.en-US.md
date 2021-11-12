@@ -36,6 +36,7 @@ The global methods provided by Message can be used in the following three ways:
 |success|Show success message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
 |warning|Show warning message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
 |error|Show error message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
+|loading|Show loading message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
 |clear|Clear all messages|`(position?: MessagePosition) => void`|`-`|
 
 
@@ -51,6 +52,7 @@ The global methods provided by Message can be used in the following three ways:
 |showIcon|Whether to show icon|`boolean`|`false`|
 |closable|Whether to show the close button|`boolean`|`false`|
 |duration|The duration of the message display|`number`|`-`|
+|onClose|Callback function when closing|`(id: number \| string) => void`|`-`|
 
 
 

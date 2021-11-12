@@ -28,6 +28,11 @@ export interface MessageMethod {
    */
   error: (config: string | MessageConfig) => MessageReturn;
   /**
+   * @zh 显示加载中提示
+   * @en Show loading message
+   */
+  loading: (config: string | MessageConfig) => MessageReturn;
+  /**
    * @zh 清空全部提示
    * @en Clear all messages
    */
@@ -71,6 +76,12 @@ export interface MessageConfig {
    * @en The duration of the message display
    */
   duration?: number;
+  /**
+   * @zh 关闭时的回调函数
+   * @en Callback function when closing
+   * @param id
+   */
+  onClose?: (id: number | string) => void;
 }
 
 export interface MessageReturn {
@@ -84,10 +95,11 @@ export interface MessageReturn {
 export interface MessageItem {
   id: number | string;
   content: RenderContent;
-  type?: MessageType;
+  type?: MessageType | 'loading';
   icon?: RenderFunction;
   showIcon?: boolean;
   closable?: boolean;
   duration?: number;
   resetOnUpdate?: boolean;
+  onClose?: (id: number | string) => void;
 }

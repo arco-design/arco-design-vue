@@ -50,6 +50,7 @@ The global methods provided by Notification can be used in the following three w
 |showIcon|Whether to show icon|`boolean`|`false`|
 |closable|Whether it can be closed|`boolean`|`false`|
 |duration|Display duration|`number`|`-`|
+|onClose|Callback function when closing|`(id: number \| string) => void`|`-`|
 
 
 
