@@ -213,6 +213,7 @@ export default defineComponent({
     const itemRender = usePickSlots(slots, 'item') as Ref<ItemSlot>;
     const renderChildren = useRenderChildren(
       reactive({
+        internalData,
         visibleData,
         itemRender,
         itemRef: (el: HTMLElement | null, key: string) => {

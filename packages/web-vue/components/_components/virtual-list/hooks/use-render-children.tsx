@@ -2,11 +2,12 @@ import { toRefs, VNode, cloneVNode, watch } from 'vue';
 import { ItemSlot, InternalDataItem } from '../interface';
 
 export function useRenderChildren(props: {
+  internalData: InternalDataItem[];
   visibleData: InternalDataItem[];
   itemRef: (el: HTMLElement, key: string) => void;
   itemRender: ItemSlot;
 }) {
-  const { visibleData, itemRender, itemRef } = toRefs(props);
+  const { internalData, visibleData, itemRender, itemRef } = toRefs(props);
   let itemRenderCache: { [index: number]: VNode } = {};
 
   const internalItemRender = (item: unknown, index: number) => {
@@ -44,7 +45,7 @@ export function useRenderChildren(props: {
     return children;
   };
 
-  watch(itemRender, () => {
+  watch([internalData, itemRender], () => {
     itemRenderCache = {};
   });
 
