@@ -19,6 +19,9 @@
           <slot />
         </div>
       </div>
+      <div v-if="$slots.action" :class="`${prefixCls}-action`">
+        <slot name="action" />
+      </div>
       <div
         v-if="closable"
         :class="`${prefixCls}-close-btn`"

@@ -16,6 +16,8 @@ description: 向用户显示警告的信息时，通过警告提示，展现需�
 
 @import ./__demo__/icon.md
 
+@import ./__demo__/action.md
+
 @import ./__demo__/banner.md
 
 

@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<alert> demo: render [action] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <transition-stub>
+      <div class=\\"arco-alert arco-alert-info\\">
+        <div class=\\"arco-alert-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-info-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm2-30a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2Zm0 17h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h1v-8a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v11Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          </svg></div>
+        <div class=\\"arco-alert-body\\">
+          <!--v-if-->
+          <div class=\\"arco-alert-content\\"> This is an info alert. </div>
+        </div>
+        <div class=\\"arco-alert-action\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <!--v-if-->Detail
+          </button></div>
+        <!--v-if-->
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <transition-stub>
+      <div class=\\"arco-alert arco-alert-info arco-alert-with-title\\">
+        <div class=\\"arco-alert-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-info-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm2-30a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2Zm0 17h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h1v-8a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v11Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          </svg></div>
+        <div class=\\"arco-alert-body\\">
+          <div class=\\"arco-alert-title\\">Example</div>
+          <div class=\\"arco-alert-content\\"> This is an info alert. </div>
+        </div>
+        <div class=\\"arco-alert-action\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <!--v-if-->Detail
+          </button></div>
+        <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
 exports[`<alert> demo: render [banner] correctly 1`] = `
 "<transition-stub>
   <div class=\\"arco-alert arco-alert-info arco-alert-banner\\">
@@ -10,6 +49,7 @@ exports[`<alert> demo: render [banner] correctly 1`] = `
       <!--v-if-->
       <div class=\\"arco-alert-content\\">This is an info alert.</div>
     </div>
+    <!--v-if-->
     <!--v-if-->
   </div>
 </transition-stub>"
@@ -25,6 +65,7 @@ exports[`<alert> demo: render [basic] correctly 1`] = `
       <!--v-if-->
       <div class=\\"arco-alert-content\\">This is an info alert.</div>
     </div>
+    <!--v-if-->
     <!--v-if-->
   </div>
 </transition-stub>"
@@ -42,6 +83,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <!--v-if-->
           <div class=\\"arco-alert-content\\">This is an info alert.</div>
         </div>
+        <!--v-if-->
         <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
@@ -56,6 +98,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <!--v-if-->
           <div class=\\"arco-alert-content\\">This is an success alert.</div>
         </div>
+        <!--v-if-->
         <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
@@ -70,6 +113,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <div class=\\"arco-alert-title\\"> Warning </div>
           <div class=\\"arco-alert-content\\"> This is an warning alert. </div>
         </div>
+        <!--v-if-->
         <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
@@ -84,6 +128,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <div class=\\"arco-alert-title\\"> Error </div>
           <div class=\\"arco-alert-content\\"> This is an error alert. </div>
         </div>
+        <!--v-if-->
         <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
@@ -102,6 +147,7 @@ exports[`<alert> demo: render [icon] correctly 1`] = `
           <div class=\\"arco-alert-content\\">This is an info alert.</div>
         </div>
         <!--v-if-->
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -113,6 +159,7 @@ exports[`<alert> demo: render [icon] correctly 1`] = `
           <!--v-if-->
           <div class=\\"arco-alert-content\\">This is an success alert.</div>
         </div>
+        <!--v-if-->
         <!--v-if-->
       </div>
     </transition-stub>
@@ -126,6 +173,7 @@ exports[`<alert> demo: render [icon] correctly 1`] = `
           <div class=\\"arco-alert-content\\"> This is an warning alert. </div>
         </div>
         <!--v-if-->
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -137,6 +185,7 @@ exports[`<alert> demo: render [icon] correctly 1`] = `
           <div class=\\"arco-alert-title\\"> Error </div>
           <div class=\\"arco-alert-content\\"> This is an error alert. </div>
         </div>
+        <!--v-if-->
         <!--v-if-->
       </div>
     </transition-stub>
@@ -157,6 +206,7 @@ exports[`<alert> demo: render [title] correctly 1`] = `
           <div class=\\"arco-alert-content\\">This is an info alert.</div>
         </div>
         <!--v-if-->
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -170,6 +220,7 @@ exports[`<alert> demo: render [title] correctly 1`] = `
           <div class=\\"arco-alert-title\\">Success</div>
           <div class=\\"arco-alert-content\\">This is an success alert.</div>
         </div>
+        <!--v-if-->
         <!--v-if-->
       </div>
     </transition-stub>
@@ -185,6 +236,7 @@ exports[`<alert> demo: render [title] correctly 1`] = `
           <div class=\\"arco-alert-content\\"> This is an warning alert. </div>
         </div>
         <!--v-if-->
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -198,6 +250,7 @@ exports[`<alert> demo: render [title] correctly 1`] = `
           <div class=\\"arco-alert-title\\"> Error </div>
           <div class=\\"arco-alert-content\\"> This is an error alert. </div>
         </div>
+        <!--v-if-->
         <!--v-if-->
       </div>
     </transition-stub>
@@ -218,6 +271,7 @@ exports[`<alert> demo: render [type] correctly 1`] = `
           <div class=\\"arco-alert-content\\">This is an info alert.</div>
         </div>
         <!--v-if-->
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -231,6 +285,7 @@ exports[`<alert> demo: render [type] correctly 1`] = `
           <!--v-if-->
           <div class=\\"arco-alert-content\\">This is an success alert.</div>
         </div>
+        <!--v-if-->
         <!--v-if-->
       </div>
     </transition-stub>
@@ -246,6 +301,7 @@ exports[`<alert> demo: render [type] correctly 1`] = `
           <div class=\\"arco-alert-content\\">This is an warning alert.</div>
         </div>
         <!--v-if-->
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -259,6 +315,7 @@ exports[`<alert> demo: render [type] correctly 1`] = `
           <!--v-if-->
           <div class=\\"arco-alert-content\\">This is an error alert.</div>
         </div>
+        <!--v-if-->
         <!--v-if-->
       </div>
     </transition-stub>
