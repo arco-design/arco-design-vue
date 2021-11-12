@@ -152,7 +152,11 @@ export default defineComponent({
       type: String as PropType<ListType>,
       default: 'text',
     },
-    uploadedImageKey: {
+    /**
+     * @zh Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片
+     * @en Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image
+     */
+    responseURLKey: {
       type: String,
     },
     customIcon: {
@@ -272,8 +276,8 @@ export default defineComponent({
           file.status = 'done';
           file.percent = 1;
           file.response = response;
-          if (props.uploadedImageKey && response[props.uploadedImageKey]) {
-            file.url = response[props.uploadedImageKey];
+          if (props.responseURLKey && response[props.responseURLKey]) {
+            file.url = response[props.responseURLKey];
           }
 
           requestMap.delete(file.uid);

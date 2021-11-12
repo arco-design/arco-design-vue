@@ -56,6 +56,11 @@ const run = async () => {
     }
   }
 
+  fs.writeFileSync(
+    paths.resolvePath('dist/arco.less'),
+    "@import '../es/index.less';\n\n"
+  );
+
   // 拷贝并编译less入口文件
   console.log('build target css');
   const indexLessPath = paths.resolvePath('components/index.less');

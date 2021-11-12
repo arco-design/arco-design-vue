@@ -1,7 +1,7 @@
 ```yaml
 meta:
-  type: Development Guide
-title: Started quickly
+  type: Developer Guide
+title: Getting Started
 description: Follow the steps below to quickly get started using the component library.
 ```
 
