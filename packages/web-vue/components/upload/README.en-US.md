@@ -17,6 +17,8 @@ description: Users can transfer files or submit corresponding content.
 
 @import ./__demo__/draggable.md
 
+@import ./__demo__/request.md
+
 
 ### `<upload>` Props
 
@@ -38,6 +40,7 @@ description: Users can transfer files or submit corresponding content.
 |auto-upload|Whether to upload files automatically|`boolean`|`true`|
 |show-file-list|Whether to display the file list|`boolean`|`true`|
 |list-type|Picture list type|`'text' \| 'picture' \| 'picture-card'`|`'text'`|
+|response-u-r-l-key|Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image|`string`|`-`|
 |on-before-upload|Trigger before uploading a picture|`(file: File) => Promise<boolean>`|`-`|
 |on-before-remove|Triggered before removing the picture|`(fileItem: FileItem) => Promise<boolean>`|`-`|
 ### `<upload>` Events

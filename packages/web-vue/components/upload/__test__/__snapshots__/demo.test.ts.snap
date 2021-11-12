@@ -33,6 +33,13 @@ exports[`<upload> demo: render [picture-card] correctly 1`] = `
 </div></span></transition-group-stub><span class=\\"arco-upload arco-upload-type-picture-card\\"><input type=\\"file\\" style=\\"display: none;\\"><div class=\\"arco-upload-picture-card\\"><div class=\\"arco-upload-picture-card-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></div><!----></div></span></div>"
 `;
 
+exports[`<upload> demo: render [request] correctly 1`] = `
+"<div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\"><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-upload\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6\\"></path></svg></span>点击上传</button></span>
+  <transition-group-stub></transition-group-stub>
+  <!---->
+</div>"
+`;
+
 exports[`<upload> demo: render [upload-list] correctly 1`] = `
 "<div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\"><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-upload\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6\\"></path></svg></span>点击上传</button></span>
   <transition-group-stub>

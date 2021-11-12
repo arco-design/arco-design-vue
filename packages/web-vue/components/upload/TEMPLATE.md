@@ -26,6 +26,8 @@ description: Users can transfer files or submit corresponding content.
 
 @import ./__demo__/draggable.md
 
+@import ./__demo__/request.md
+
 %%API(upload.tsx)%%
 
 %%INTERFACE(interfaces.ts)%%

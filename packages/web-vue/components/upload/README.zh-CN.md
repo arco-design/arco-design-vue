@@ -15,6 +15,8 @@ description: 用户可传输文件或提交相应的内容。
 
 @import ./__demo__/draggable.md
 
+@import ./__demo__/request.md
+
 
 ### `<upload>` Props
 
@@ -36,6 +38,7 @@ description: 用户可传输文件或提交相应的内容。
 |auto-upload|是否自动上传文件|`boolean`|`true`|
 |show-file-list|是否显示文件列表|`boolean`|`true`|
 |list-type|图片列表类型|`'text' \| 'picture' \| 'picture-card'`|`'text'`|
+|response-u-r-l-key|Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片|`string`|`-`|
 |on-before-upload|上传图片前触发|`(file: File) => Promise<boolean>`|`-`|
 |on-before-remove|移除图片前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`|
 ### `<upload>` Events

@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Development Guide
+  type: Developer Guide
 title: Custom theme
 description: ArcoVue provides a set of blue themes (ArcoBlue), users can customize new themes according to their own needs to meet the diverse needs of business and brand.
 ```

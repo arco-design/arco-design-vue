@@ -1,6 +1,6 @@
 ```yaml
 meta:
-  type: Development Guide
+  type: Developer Guide
 title: Dark mode
 description: The dark theme is built in the component library, and you can easily switch to dark.
 ```
