@@ -18,6 +18,9 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 @import ./__demo__/disabled.md
 
+@import ./__demo__/async.md
+
+
 
 ### `<form>` Props
 
@@ -45,6 +48,7 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |validateField|校验部分表单数据|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
 |resetFields|重置表单数据|-|-|
 |clearValidate|清除校验状态|-|-|
+|setFields|设置表单项的值和状态|data: `Record<string, FieldData>`|-|
 
 
 
@@ -97,6 +101,16 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |empty|是否为空（object）|`boolean`|`false`|
 |hasKeys|对象是否包含给定属性（object）|`string[]`|`-`|
 |validator|自定义校验规则|`(    value: FieldValue \| undefined,    callback: (error?: string) => void  ) => void`|`-`|
+
+
+
+### FieldData
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|value|字段的值|`any`|`-`|
+|status|字段的状态|`ValidateStatus`|`-`|
+|message|字段的错误信息|`string`|`-`|
 
 
 

@@ -20,6 +20,9 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/disabled.md
 
+@import ./__demo__/async.md
+
+
 
 ### `<form>` Props
 
@@ -47,6 +50,7 @@ description: A form with data collection, verification and submission functions,
 |validateField|Validate part of the form data|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
 |resetFields|Reset form data|-|-|
 |clearValidate|Clear verification status|-|-|
+|setFields|Set the value and status of the form item|data: `Record<string, FieldData>`|-|
 
 
 
@@ -99,6 +103,16 @@ description: A form with data collection, verification and submission functions,
 |empty|Is it empty (object)|`boolean`|`false`|
 |hasKeys|Does the object contain the given attribute (object)|`string[]`|`-`|
 |validator|Custom verification rules|`(    value: FieldValue \| undefined,    callback: (error?: string) => void  ) => void`|`-`|
+
+
+
+### FieldData
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|value|Field value|`any`|`-`|
+|status|Field status|`ValidateStatus`|`-`|
+|message|Field error message|`string`|`-`|
 
 
 

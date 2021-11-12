@@ -29,6 +29,9 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/disabled.md
 
+@import ./__demo__/async.md
+
+
 %%API(form.vue)%%
 
 %%API(form-item.tsx)%%

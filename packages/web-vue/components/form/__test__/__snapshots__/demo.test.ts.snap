@@ -1,5 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<form> demo: render [async] correctly 1`] = `
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->Username
+      </label></div>
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
+      <div class=\\"arco-form-item-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->Post
+      </label></div>
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
+      <div class=\\"arco-form-item-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
+      <div class=\\"arco-form-item-content\\"><span class=\\"arco-checkbox\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
+      <div class=\\"arco-form-item-content\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" error=\\"false\\">
+          <!--v-if-->Set Status
+        </button></div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</form> {
+\\"name\\": \\"\\",
+\\"post\\": \\"\\",
+\\"isRead\\": false
+}"
+`;
+
 exports[`<form> demo: render [basic] correctly 1`] = `
 "<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">

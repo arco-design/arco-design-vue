@@ -130,6 +130,24 @@ export interface FieldRule<FieldValue = any> {
   ) => void;
 }
 
+export interface FieldData {
+  /**
+   * @zh 字段的值
+   * @en Field value
+   */
+  value?: any;
+  /**
+   * @zh 字段的状态
+   * @en Field status
+   */
+  status?: ValidateStatus;
+  /**
+   * @zh 字段的错误信息
+   * @en Field error message
+   */
+  message?: string;
+}
+
 export interface ValidatedError {
   /**
    * @zh 字段名
