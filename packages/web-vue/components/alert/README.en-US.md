@@ -18,6 +18,8 @@ description: When warning information is displayed to the user, the warning prom
 
 @import ./__demo__/icon.md
 
+@import ./__demo__/action.md
+
 @import ./__demo__/banner.md
 
 
