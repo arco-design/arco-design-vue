@@ -17,7 +17,7 @@ import { FormItemInfo, formKey } from './context';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
 import { isArray, isFunction } from '../_utils/is';
-import { ValidatedError } from './interface';
+import { FieldData, ValidatedError } from './interface';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
 type FormLayout = typeof FORM_LAYOUTS[number];
@@ -141,6 +141,14 @@ export default defineComponent({
       if (formItemInfo && formItemInfo.field) {
         fields.splice(fields.indexOf(formItemInfo), 1);
       }
+    };
+
+    const setFields = (data: Record<string, FieldData>) => {
+      fields.forEach((field) => {
+        if (data[field.field]) {
+          field.setField(data[field.field]);
+        }
+      });
     };
 
     const resetFields = () => {
@@ -276,6 +284,7 @@ export default defineComponent({
       innerValidateField: validateField,
       innerResetFields: resetFields,
       innerClearValidate: clearValidate,
+      innerSetFields: setFields,
     };
   },
   methods: {
@@ -318,6 +327,15 @@ export default defineComponent({
      */
     clearValidate() {
       return this.innerClearValidate();
+    },
+    /**
+     * @zh 设置表单项的值和状态
+     * @en Set the value and status of the form item
+     * @param {Record<string, FieldData>} data
+     * @public
+     */
+    setFields(data: Record<string, FieldData>) {
+      return this.innerSetFields(data);
     },
   },
 });

@@ -14,7 +14,12 @@ import {
 // @ts-ignore
 import { Schema } from 'b-validate';
 import { FormItemInfo, formItemKey, formKey } from './context';
-import { FieldRule, ValidateStatus, ValidateTrigger } from './interface';
+import {
+  FieldData,
+  FieldRule,
+  ValidateStatus,
+  ValidateTrigger,
+} from './interface';
 import Grid from '../grid';
 import FormItemLabel from './form-item-label.vue';
 import FormItemMessage from './form-item-message.vue';
@@ -241,6 +246,9 @@ export default defineComponent({
 
       const rules = getRules();
       if (!field.value || rules.length === 0) {
+        if (finalStatus.value) {
+          clearValidate();
+        }
         return Promise.resolve();
       }
 
@@ -327,6 +335,27 @@ export default defineComponent({
       }
     };
 
+    const setField = ({ value, status, message }: FieldData) => {
+      if (field.value) {
+        validateDisabled.value = true;
+
+        if (value && formCtx?.model[field.value]) {
+          formCtx.model[field.value] = value;
+        }
+
+        if (status || message) {
+          updateValidateState(field.value, {
+            status: status ?? '',
+            message: message ?? '',
+          });
+        }
+
+        nextTick(() => {
+          validateDisabled.value = false;
+        });
+      }
+    };
+
     const resetField = () => {
       clearValidate();
       validateDisabled.value = true;
@@ -346,6 +375,7 @@ export default defineComponent({
       validate: validateField,
       clearValidate,
       resetField,
+      setField,
     });
 
     onMounted(() => {

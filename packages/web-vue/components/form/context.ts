@@ -1,6 +1,6 @@
 import { InjectionKey } from 'vue';
 import { Data } from '../_utils/types';
-import { ValidatedError, ValidateStatus } from './interface';
+import { FieldData, ValidatedError, ValidateStatus } from './interface';
 import { Size } from '../_utils/constant';
 
 export interface FormContext {
@@ -37,6 +37,7 @@ export interface FormItemInfo {
   validate: () => Promise<any>;
   clearValidate: () => void;
   resetField: () => void;
+  setField: (data: FieldData) => void;
 }
 
 export const formItemKey: InjectionKey<FormItemContext> = Symbol('formItemCtx');
