@@ -59,6 +59,7 @@ export default defineComponent({
         theme={theme.value as any}
         inTrigger={false}
         siderCollapsed={siderCollapsed.value}
+        isRoot
       />
     );
   },

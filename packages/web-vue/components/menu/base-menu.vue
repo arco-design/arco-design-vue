@@ -37,6 +37,7 @@ import { MenuContext, MenuInjectionKey } from './context';
 import { MenuProps } from './interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
+import useMenuDataCollector from './hooks/use-menu-data-collector';
 
 /**
  * @displayName Menu
@@ -186,6 +187,9 @@ export default defineComponent({
     siderCollapsed: {
       type: Boolean,
     },
+    isRoot: {
+      type: Boolean,
+    },
   },
   emits: [
     'update:collapsed',
@@ -251,6 +255,7 @@ export default defineComponent({
       // internal
       inTrigger,
       siderCollapsed,
+      isRoot,
     } = toRefs(props);
 
     const isMounted = useIsMounted();
@@ -297,7 +302,7 @@ export default defineComponent({
     );
     const classNames = computed(() => [
       computedPrefixCls.value,
-      `${computedPrefixCls.value}-${theme.value}`,
+      `${computedPrefixCls.value}-${theme?.value}`,
       {
         [`${computedPrefixCls.value}-horizontal`]: mode.value === 'horizontal',
         [`${computedPrefixCls.value}-vertical`]: mode.value !== 'horizontal',
@@ -326,7 +331,9 @@ export default defineComponent({
     });
 
     // Used for autoOpen to set openKeys
-    const subMenuKeys = ref<string[]>([]);
+    const { subMenuKeys } = useMenuDataCollector({
+      isRoot: isRoot.value,
+    });
     let prevSubMenuKeys: string[] = [];
     let shadowOpenKeys: string[] = [];
     watchEffect(() => {
@@ -397,12 +404,6 @@ export default defineComponent({
         setOpenKeys(newOpenKeys);
         emit('update:openKeys', newOpenKeys);
         emit('sub-menu-click', key, newOpenKeys);
-      },
-      collectSubMenuKey: (key: string) => {
-        subMenuKeys.value.push(key);
-      },
-      removeSubMenuKey: (key: string) => {
-        subMenuKeys.value = subMenuKeys.value.filter((i) => i !== key);
       },
     });
     provide<MenuContext>(MenuInjectionKey, menuContext);
