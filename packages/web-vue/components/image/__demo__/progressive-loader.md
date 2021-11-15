@@ -35,7 +35,7 @@ When you need to display a large image, you can pass a smaller image to `loader`
     <template #loader>
       <img
         width="200"
-        src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/d18824f28b084505a263052965e0b30d~tplv-uwbnlip3yd-image.image"
+        src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
         style="filter: blur(5px);"
       />
     </template>
