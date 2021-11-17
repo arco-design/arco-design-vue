@@ -1,5 +1,5 @@
 import { Data } from './types';
-import { isUndefined } from './is';
+import { isNull, isUndefined } from './is';
 
 export const getValueByPath = <T = any>(
   obj: Data | undefined,
@@ -18,7 +18,7 @@ export const getValueByPath = <T = any>(
   let result: T | undefined;
 
   for (let i = 0; i < keyArray.length; i++) {
-    if (isUndefined(temp[keyArray[i]])) {
+    if (isUndefined(temp[keyArray[i]]) || isNull(temp[keyArray[i]])) {
       return undefined;
     }
     if (i === keyArray.length - 1) {
