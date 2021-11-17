@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.4.0
+
+`2021-11-17`
+
+### 🆕 新增功能
+
+- 增加 `option` 插槽 ([#170](https://github.com/arco-design/arco-design-vue/pull/170))
+- `options.label` 支持自定义渲染 ([#170](https://github.com/arco-design/arco-design-vue/pull/170))
+
+
 ## 2.1.0
 
 `2021-11-05`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.4.0
+
+`2021-11-17`
+
+### 💎 Optimization
+
+- Manage the zIndex of the popup ([#167](https://github.com/arco-design/arco-design-vue/pull/167))
+
+
 ## 2.1.1
 
 `2021-11-08`

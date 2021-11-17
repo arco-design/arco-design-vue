@@ -71,6 +71,7 @@ import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
 import { getElement } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
+import { isNumber } from '../_utils/is';
 
 const DRAWER_PLACEMENTS = ['top', 'right', 'bottom', 'left'] as const;
 type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];

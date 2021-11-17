@@ -117,7 +117,7 @@ exports[`Cascader should render panel 2`] = `
 `;
 
 exports[`Cascader should render search panel 1`] = `
-"<div class=\\"arco-cascader-panel\\">
+"<div class=\\"arco-cascader-panel arco-cascader-search-panel\\">
   <ul class=\\"arco-cascader-list arco-cascader-search-list\\">
     <li class=\\"arco-cascader-option arco-cascader-search-option\\">
       <!---->

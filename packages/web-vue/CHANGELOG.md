@@ -2,6 +2,39 @@
 changelog: true
 ```
 
+## 2.4.0
+
+`2021-11-17`
+
+### 💎 Optimization
+
+- **modal:** Manage the zIndex of the popup ([#167](https://github.com/arco-design/arco-design-vue/pull/167))
+
+### 🆕 Feature
+
+- **cascader:** Add `options.value` number type and `options.label` custom rendering support ([#176](https://github.com/arco-design/arco-design-vue/pull/176))
+- **upload:** Added `upload-button` and `upload-item` slots ([#174](https://github.com/arco-design/arco-design-vue/pull/174))
+- **upload:** Added `success` and `error` events ([#174](https://github.com/arco-design/arco-design-vue/pull/174))
+- **upload:** Add `on-click-button`, `custom-icon`, `directory` attributes ([#174](https://github.com/arco-design/arco-design-vue/pull/174))
+- **drawer:** `width` and `height` added support for character types ([#172](https://github.com/arco-design/arco-design-vue/pull/172))
+- **select:** Add `option` slot ([#170](https://github.com/arco-design/arco-design-vue/pull/170))
+- **select:** `options.label` supports custom rendering ([#170](https://github.com/arco-design/arco-design-vue/pull/170))
+- **tree:** `key` support `number` ([#169](https://github.com/arco-design/arco-design-vue/pull/169))
+
+### 🐛 BugFix
+
+- **cascader:** Fix the problem that the search input box cannot be scrolled ([#175](https://github.com/arco-design/arco-design-vue/pull/175))
+- **form:** Fix the problem that the input of null in the `filed` field causes an error to be reported ([#173](https://github.com/arco-design/arco-design-vue/pull/173))
+- **input-tag:** Fix Chinese input method problem ([#171](https://github.com/arco-design/arco-design-vue/pull/171))
+- **input-tag:** Fix the issue that the Enter key triggers form submission ([#171](https://github.com/arco-design/arco-design-vue/pull/171))
+- **trigger:** Fix the problem of `<svg>` element positioning error ([#162](https://github.com/arco-design/arco-design-vue/pull/162))
+- **input-tag:** fix tag can be close in the disabled state ([#161](https://github.com/arco-design/arco-design-vue/pull/161))
+
+### 💅 Style
+
+- **image:** set the max size of error to fit parent ([#160](https://github.com/arco-design/arco-design-vue/pull/160))
+
+
 ## 2.3.0
 
 `2021-11-12`

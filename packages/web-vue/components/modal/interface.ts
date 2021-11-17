@@ -48,6 +48,11 @@ export interface ModalConfig {
    */
   okLoading?: boolean;
   /**
+   * @zh 是否隐藏取消按钮
+   * @en Whether to hide the cancel button
+   */
+  hideCancel?: boolean;
+  /**
    * @zh 是否显示遮罩层
    * @en Whether to show the mask
    */
