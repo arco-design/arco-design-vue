@@ -1,6 +1,6 @@
 import type { CSSProperties, VNode } from 'vue';
 import { TableCell, TableColumn, TableOperationColumn } from './interface';
-import { isArray, isUndefined } from '../_utils/is';
+import { isArray, isNull, isUndefined } from '../_utils/is';
 import {
   resolveProps,
   isNamedComponent,
@@ -87,7 +87,7 @@ export const getGroupColumns = (
           }
         }
 
-        if (!cell.dataIndex) {
+        if (isUndefined(cell.dataIndex) || isNull(cell.dataIndex)) {
           cell.dataIndex = `__arco_data_index_${dataColumns.length}`;
         }
 
