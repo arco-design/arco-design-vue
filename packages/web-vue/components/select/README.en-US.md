@@ -72,7 +72,29 @@ description: When users need to select one or more from a group of similar data,
 
 |Slot Name|Description|Parameters|
 |---|---|---|
-|label|Display content of options|data: `OptionInfo`|
+|label|Display content of label|data: `OptionInfo`|
+|option|Display content of options|data: `OptionInfo`|
 |empty|Display content when the option is empty|-|
+
+
+
+
+### OptionData
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|value|Option Value|`string \| number`|`-`|
+|label|Option content|`string \| (() => VNode)`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|
+
+
+
+### GroupOption
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|isGroup|Whether it is an option group|`true`|`-`|
+|label|Option group title|`string`|`-`|
+|options|Options in the option group|`Option[]`|`-`|
 
 

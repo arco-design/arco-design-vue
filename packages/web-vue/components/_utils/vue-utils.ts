@@ -6,6 +6,7 @@ import type {
   VNodeTypes,
   VNodeArrayChildren,
   ComponentPublicInstance,
+  RenderFunction,
 } from 'vue';
 import { createVNode, cloneVNode, mergeProps, Fragment, isVNode } from 'vue';
 import { Data, RenderContent } from './types';
@@ -106,6 +107,16 @@ export const getVNodeChildrenString = (vn: VNode): string => {
     }
   }
   return text;
+};
+
+export const getChildrenFunc = (vn: VNode): RenderFunction | undefined => {
+  if (isTextChildren(vn, vn.children) || isArrayChildren(vn, vn.children)) {
+    return (() => vn.children) as RenderFunction;
+  }
+  if (isSlotsChildren(vn, vn.children)) {
+    return vn.children.default;
+  }
+  return undefined;
 };
 
 export const getChildrenTextOrSlot = (vn: VNode): string | Slot | undefined => {
