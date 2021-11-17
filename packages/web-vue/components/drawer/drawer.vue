@@ -163,7 +163,7 @@ export default defineComponent({
      * @en The width of the drawer (only available when placement is right, left)
      */
     width: {
-      type: Number,
+      type: [Number, String],
       default: 250,
     },
     /**
@@ -171,7 +171,7 @@ export default defineComponent({
      * @en The height of the drawer (only available when placement is top, bottom)
      */
     height: {
-      type: Number,
+      type: [Number, String],
       default: 250,
     },
     /**
@@ -295,9 +295,11 @@ export default defineComponent({
         ...(props.drawerStyle ?? {}),
       };
       if (['right', 'left'].includes(props.placement)) {
-        style.width = `${props.width}px`;
+        style.width = isNumber(props.width) ? `${props.width}px` : props.width;
       } else {
-        style.height = `${props.height}px`;
+        style.height = isNumber(props.height)
+          ? `${props.height}px`
+          : props.height;
       }
       return style;
     });

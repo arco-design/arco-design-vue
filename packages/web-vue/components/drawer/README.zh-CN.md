@@ -27,8 +27,8 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |ok-text|确认按钮的内容|`string`|`-`|
 |cancel-text|取消按钮的内容|`string`|`-`|
 |ok-loading|确认按钮是否为加载中状态|`boolean`|`false`|
-|width|抽屉的宽度（仅在placement为right,left时可用）|`number`|`250`|
-|height|抽屉的高度（仅在placement为top,bottom时可用）|`number`|`250`|
+|width|抽屉的宽度（仅在placement为right,left时可用）|`number\|string`|`250`|
+|height|抽屉的高度（仅在placement为top,bottom时可用）|`number\|string`|`250`|
 |popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`'body'`|
 |drawer-style|抽屉的样式|`CSSProperties`|`-`|
 ### `<drawer>` Events

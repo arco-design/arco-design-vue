@@ -29,8 +29,8 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |ok-text|The content of the ok button|`string`|`-`|
 |cancel-text|The content of the cancel button|`string`|`-`|
 |ok-loading|Whether the ok button is in the loading state|`boolean`|`false`|
-|width|The width of the drawer (only available when placement is right, left)|`number`|`250`|
-|height|The height of the drawer (only available when placement is top, bottom)|`number`|`250`|
+|width|The width of the drawer (only available when placement is right, left)|`number\|string`|`250`|
+|height|The height of the drawer (only available when placement is top, bottom)|`number\|string`|`250`|
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`'body'`|
 |drawer-style|Drawer style|`CSSProperties`|`-`|
 ### `<drawer>` Events
