@@ -25,21 +25,21 @@
     flex: 1;
     flex-wrap: wrap;
     align-items: center;
+    overflow: hidden;
 
     .@{cls}-tag {
       display: inline-flex;
       align-items: center;
+      margin-right: @input-tag-tag-margin-right;
       color: @input-tag-color-text_default;
+      font-size: @input-tag-tag-font-size;
       background-color: @input-tag-tag-color-bg;
       border-color: @input-tag-tag-color-border;
-      margin-right: @input-tag-tag-margin-right;
-      font-size: @input-tag-tag-font-size;
 
       .@{prefix}-icon-hover:hover::before {
         background-color: @input-tag-tag-remove-icon-color-bg;
       }
     }
-
   }
 
   &-input {

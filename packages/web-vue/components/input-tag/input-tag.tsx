@@ -218,7 +218,7 @@ export default defineComponent({
       emit('update:inputValue', value);
     };
 
-    const handleComposition = (e: Event) => {
+    const handleComposition = (e: InputEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -228,6 +228,7 @@ export default defineComponent({
         updateInputValue(value);
       } else {
         isComposition.value = true;
+        compositionValue.value = computedInputValue.value + (e.data ?? '');
       }
     };
 
@@ -254,8 +255,6 @@ export default defineComponent({
       if (!isComposition.value) {
         emit('inputValueChange', value, e);
         updateInputValue(value);
-      } else {
-        compositionValue.value = value;
       }
     };
 
@@ -277,8 +276,8 @@ export default defineComponent({
       return valueData;
     });
 
-    const handleTagClose = (value: string | number) => {
-      const newValue = computedValue.value.filter((v) => v !== value);
+    const handleRemove = (value: string | number, index: number) => {
+      const newValue = computedValue.value?.filter((_, i) => i !== index);
       _value.value = newValue;
       emit('remove', value);
       emit('update:modelValue', newValue);
@@ -300,17 +299,20 @@ export default defineComponent({
         Boolean(computedValue.value.length)
     );
 
-    const handlePressEnter = () => {
-      const newValue = computedValue.value.concat(computedInputValue.value);
-      _value.value = newValue;
-      emit('update:modelValue', newValue);
-      emit('change', newValue);
-      emit('pressEnter', computedInputValue.value);
+    const handlePressEnter = (e: Event) => {
+      if (computedInputValue.value) {
+        e.preventDefault();
+        const newValue = computedValue.value.concat(computedInputValue.value);
+        _value.value = newValue;
+        emit('update:modelValue', newValue);
+        emit('change', newValue);
+        emit('pressEnter', computedInputValue.value);
 
-      if (!props.retainInputValue) {
-        _inputValue.value = '';
-        emit('update:inputValue', '');
-        emit('inputValueChange', '');
+        if (!props.retainInputValue) {
+          _inputValue.value = '';
+          emit('update:inputValue', '');
+          emit('inputValueChange', '');
+        }
       }
     };
 
@@ -331,7 +333,7 @@ export default defineComponent({
         computedInputValue.value &&
         keyCode === Enter.code
       ) {
-        handlePressEnter();
+        handlePressEnter(e);
       }
     };
 
@@ -383,20 +385,22 @@ export default defineComponent({
       <span class={cls.value} onMousedown={handleMousedown} {...wrapperAttrs}>
         <span ref={mirrorRef} class={`${prefixCls}-mirror`}>
           {tags.value.length > 0
-            ? computedInputValue.value
-            : computedInputValue.value || props.placeholder}
+            ? compositionValue.value || computedInputValue.value
+            : compositionValue.value ||
+              computedInputValue.value ||
+              props.placeholder}
         </span>
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
         <TransitionGroup tag="span" name="zoom-in" class={`${prefixCls}-inner`}>
-          {tags.value.map((item) => (
+          {tags.value.map((item, index) => (
             <Tag
               key={`tag-${item.value}`}
               class={`${prefixCls}-tag`}
               closable={item.closable}
               visible
-              onClose={() => handleTagClose(item.value)}
+              onClose={() => handleRemove(item.value, index)}
             >
               {slots.tag?.({ data: item }) ??
                 props.formatTag?.(item) ??
