@@ -28,7 +28,7 @@ export default defineComponent({
     };
 
     return () => (
-      <div class={`${prefixCls}-panel`}>
+      <div class={[`${prefixCls}-panel`, `${prefixCls}-search-panel`]}>
         {props.options.length > 0 ? (
           <ul
             class={[
