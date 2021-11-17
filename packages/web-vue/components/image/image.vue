@@ -62,6 +62,7 @@ import {
   ref,
   reactive,
   inject,
+  StyleValue,
 } from 'vue';
 import type { ImageProps, ImagePreviewProps } from './interface';
 import IconImageClose from '../icon/icon-image-close';
@@ -238,10 +239,8 @@ export default defineComponent({
 
     const { isLoaded, isError, isLoading, setLoadStatus } = useImageLoadState();
 
-    const widthStyle = computed(() => ({
+    const sizeStyle = computed(() => ({
       width: normalizeImageSizeProp(width?.value),
-    }));
-    const heightStyle = computed(() => ({
       height: normalizeImageSizeProp(height?.value),
     }));
 
@@ -249,6 +248,7 @@ export default defineComponent({
       `${prefixCls}`,
       {
         [`${prefixCls}-loading`]: isLoading.value,
+        [`${prefixCls}-loading-error`]: isError.value,
         [`${prefixCls}-with-footer-inner`]:
           isLoaded && showFooter && footerPosition.value === 'inner',
         [`${prefixCls}-with-footer-outer`]:
@@ -257,7 +257,10 @@ export default defineComponent({
       attrs.class,
     ]);
 
-    const wrapperStyles = computed(() => [widthStyle.value, attrs.style]);
+    const wrapperStyles = computed<StyleValue[]>(() => [
+      sizeStyle.value,
+      attrs.style as StyleValue,
+    ]);
 
     const showFooter = computed(
       () =>
@@ -327,7 +330,7 @@ export default defineComponent({
       wrapperStyles,
       showFooter,
       imgProps,
-      imgStyle: heightStyle,
+      imgStyle: sizeStyle.value,
       isLoaded,
       isError,
       isLoading,
