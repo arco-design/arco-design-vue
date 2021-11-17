@@ -1,10 +1,11 @@
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, PropType, ref } from 'vue';
 import { getFiles, loopDirectory } from './utils';
 import { useI18n } from '../locale';
 import { getPrefixCls } from '../_utils/global-config';
 import IconPlus from '../icon/icon-plus';
 import Button from '../button';
 import IconUpload from '../icon/icon-upload';
+import { isFunction, isPromise } from '../_utils/is';
 
 export default defineComponent({
   name: 'UploadButton',
@@ -38,6 +39,9 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    onButtonClick: {
+      type: Function as PropType<(event: Event) => Promise<FileList> | void>,
+    },
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('upload');
@@ -46,8 +50,18 @@ export default defineComponent({
     const inputRef = ref<HTMLInputElement | null>(null);
     const dropRef = ref<HTMLElement | null>(null);
 
-    const handleClick = () => {
-      if (!props.disabled && inputRef.value) {
+    const handleClick = (e: Event) => {
+      if (props.disabled) return;
+      if (isFunction(props.onButtonClick)) {
+        const result = props.onButtonClick(e);
+        if (isPromise<FileList>(result)) {
+          result.then((files) => {
+            props.uploadFiles(getFiles(files));
+          });
+          return;
+        }
+      }
+      if (inputRef.value) {
         inputRef.value.click();
       }
     };
@@ -68,10 +82,9 @@ export default defineComponent({
         return;
       }
 
-      if (props.directory) {
-        loopDirectory(e.dataTransfer?.items, props.accept, (file) => {
-          // eslint-disable-next-line no-console
-          console.log();
+      if (props.directory && e.dataTransfer?.items) {
+        loopDirectory(e.dataTransfer.items, props.accept, (file) => {
+          props.uploadFiles([file]);
         });
       } else {
         const files = getFiles(e.dataTransfer?.files, props.accept);
@@ -164,6 +177,7 @@ export default defineComponent({
           disabled={props.disabled}
           accept={props.accept}
           multiple={props.multiple}
+          {...(props.directory ? { webkitdirectory: 'webkitdirectory' } : {})}
           onChange={handleInputChange}
         />
         {renderButton()}
