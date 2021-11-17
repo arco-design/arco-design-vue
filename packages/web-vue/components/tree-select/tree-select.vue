@@ -61,6 +61,7 @@
             filterTreeNode: computedFilterTreeNode,
             size,
           }"
+          :tree-slots="pickSubCompSlots($slots, 'tree')"
           @change="onSelectChange"
         />
       </div>
@@ -83,7 +84,7 @@ import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue, TreeSelectProps } from './interface';
 import Trigger from '../trigger';
 import SelectView from '../_components/select-view/select-view';
-import Panel from './panel.vue';
+import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
 import useSelectedState from './hooks/use-selected-state';
 import useTreeData from '../tree/hooks/use-tree-data';
@@ -97,6 +98,7 @@ import { isArray, isEmptyObject } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
+import pickSubCompSlots from '../_utils/pick-sub-comp-slots';
 
 const isEmpty = (val: any) => {
   return !val || (isArray(val) && val.length === 0) || isEmptyObject(val);
@@ -512,6 +514,7 @@ export default defineComponent({
         setSelectedKeys([]);
         emit('clear');
       },
+      pickSubCompSlots,
     };
   },
 });

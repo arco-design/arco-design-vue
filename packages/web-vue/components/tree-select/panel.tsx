@@ -1,14 +1,4 @@
-<template>
-  <Tree
-    ref="refTree"
-    v-bind="computedTreeProps"
-    :checkable="checkable"
-    @select="onSelect"
-    @check="onCheck"
-  />
-</template>
-<script lang="ts">
-import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
+import { computed, defineComponent, PropType, ref, toRefs, Slots } from 'vue';
 import Tree from '../tree';
 import { TreeProps, TreeNodeKey } from '../tree/interface';
 
@@ -27,6 +17,10 @@ export default defineComponent({
     },
     checkable: {
       type: Boolean,
+    },
+    treeSlots: {
+      type: Object as PropType<Slots>,
+      default: () => ({}),
     },
   },
   emits: ['change'],
@@ -59,5 +53,16 @@ export default defineComponent({
       },
     };
   },
+  render() {
+    return (
+      <Tree
+        ref="refTree"
+        {...this.computedTreeProps}
+        checkable={this.checkable}
+        onSelect={this.onSelect}
+        onCheck={this.onCheck}
+        v-slots={this.treeSlots}
+      />
+    );
+  },
 });
-</script>
