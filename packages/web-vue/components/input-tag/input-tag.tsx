@@ -394,7 +394,7 @@ export default defineComponent({
             <Tag
               key={`tag-${item.value}`}
               class={`${prefixCls}-tag`}
-              closable={item.closable}
+              closable={item.closable && !props.disabled}
               visible
               onClose={() => handleTagClose(item.value)}
             >
