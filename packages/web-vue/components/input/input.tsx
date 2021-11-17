@@ -229,7 +229,7 @@ export default defineComponent({
       emit('blur', e);
     };
 
-    const handleComposition = (e: Event) => {
+    const handleComposition = (e: InputEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -239,6 +239,7 @@ export default defineComponent({
         updateValue(value);
       } else {
         isComposition.value = true;
+        compositionValue.value = computedValue.value + (e.data ?? '');
       }
     };
 
@@ -248,8 +249,6 @@ export default defineComponent({
       if (!isComposition.value) {
         emit('input', value, e);
         updateValue(value);
-      } else {
-        compositionValue.value = value;
       }
     };
 
