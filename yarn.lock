@@ -233,11 +233,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@arco-design/arco-site-navbar@npm:^1.10.4":
-  version: 1.10.4
-  resolution: "@arco-design/arco-site-navbar@npm:1.10.4"
+"@arco-design/arco-site-navbar@npm:^1.10.6":
+  version: 1.10.6
+  resolution: "@arco-design/arco-site-navbar@npm:1.10.6"
   dependencies:
     "@antv/g2": ^4.1.12
+    "@arco-design/arco-site-utils": ^1.0.1
     axios: ^0.21.1
     classnames: ^2.2.6
     dayjs: ^1.10.4
@@ -247,7 +248,21 @@ __metadata:
     "@arco-design/web-react": ">=2.0.0"
     react: ">=16"
     react-dom: ">=16"
-  checksum: 509edb8564cae934418959ed9a5fe21176088ff281fdd1c10d3668334e929f691a384a5fb39df6cf1163adc04aa1e06b121fc593b2b1a2ba3c0187f63c2c2c36
+  checksum: dc916ec4651d9274946cda4efd636fcf0201afa017b9710df65ff15b81acae5c0ccd465a0bcbd338590a332c25995de6f24fa44425d8269613e0e5306d78561a
+  languageName: node
+  linkType: hard
+
+"@arco-design/arco-site-utils@npm:^1.0.1, @arco-design/arco-site-utils@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@arco-design/arco-site-utils@npm:1.0.2"
+  dependencies:
+    axios: ^0.24.0
+    lodash.throttle: ^4.1.1
+  peerDependencies:
+    "@arco-design/web-react": ">=2.0.0"
+    react: ">=16"
+    react-dom: ^16.0.1
+  checksum: c1708a1e8b143fdef14a87e1067491b09a8198e66ddcdce616e3b8e539a93ad3e9133def7045274326e91a2c338ebb36e26ed2e05325f83637577b44d864f50e
   languageName: node
   linkType: hard
 
@@ -255,7 +270,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@arco-design/arco-vue-docs-navbar@workspace:packages/arco-vue-docs-navbar"
   dependencies:
-    "@arco-design/arco-site-navbar": ^1.10.4
+    "@arco-design/arco-site-navbar": ^1.10.6
     "@arco-design/web-react": ^2.23.4
     "@svgr/core": ^5.5.0
     "@typescript-eslint/eslint-plugin": ^4.18.0
@@ -280,6 +295,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@arco-design/arco-vue-docs@workspace:packages/arco-vue-docs"
   dependencies:
+    "@arco-design/arco-site-utils": ^1.0.2
     "@arco-design/arco-vue-docs-navbar": ^0.1.0
     "@arco-design/arco-vue-scripts": ^0.2.1
     "@arco-design/web-vue": ^2.0.3
@@ -6801,6 +6817,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.24.0":
+  version: 0.24.0
+  resolution: "axios@npm:0.24.0"
+  dependencies:
+    follow-redirects: ^1.14.4
+  checksum: 468cf496c08a6aadfb7e699bebdac02851e3043d4e7d282350804ea8900e30d368daa6e3cd4ab83b8ddb5a3b1e17a5a21ada13fc9cebd27b74828f47a4236316
+  languageName: node
+  linkType: hard
+
 "b-tween@npm:^0.3.3":
   version: 0.3.3
   resolution: "b-tween@npm:0.3.3"
@@ -10946,7 +10971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.0":
+"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.14.4":
   version: 1.14.5
   resolution: "follow-redirects@npm:1.14.5"
   peerDependenciesMeta:
@@ -14430,6 +14455,13 @@ fsevents@^1.2.7:
   dependencies:
     lodash._reinterpolate: ^3.0.0
   checksum: 863e025478b092997e11a04e9d9e735875eeff1ffcd6c61742aa8272e3c2cddc89ce795eb9726c4e74cef5991f722897ff37df7738a125895f23fc7d12a7bb59
+  languageName: node
+  linkType: hard
+
+"lodash.throttle@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.throttle@npm:4.1.1"
+  checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
   languageName: node
   linkType: hard
 

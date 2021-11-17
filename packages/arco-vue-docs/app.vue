@@ -13,7 +13,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, reactive, ref } from 'vue';
+import {
+  defineComponent,
+  provide,
+  reactive,
+  ref,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue';
+import { useRoute } from 'vue-router';
+import { PageDurationTracker, teaLog } from '@arco-design/arco-site-utils';
 import { collapseInjectionKey } from './context';
 import AsideNav from './components/aside-nav/index.vue';
 // import Locale from '@arco-design/web-vue/es/locale';
@@ -50,11 +60,32 @@ export default defineComponent({
       })
     );
 
-    // provide('theme', theme);
     // provide('toggleTheme', toggleTheme);
     // provide('lang', lang);
     // locale.value = lang.value;
     // provide('changeLanguage', changeLanguage);
+
+    const route = useRoute();
+    let tracker: PageDurationTracker;
+    let originPath = route.path;
+
+    onMounted(() => {
+      tracker = new PageDurationTracker((params) => {
+        teaLog('page_view', { ...params, url_path: originPath });
+      });
+    });
+
+    onBeforeUnmount(() => {
+      tracker = null;
+    });
+
+    watch(
+      () => route.path,
+      (path, prePath) => {
+        originPath = prePath;
+        tracker.handleReport();
+      }
+    );
 
     return {
       showNav,
