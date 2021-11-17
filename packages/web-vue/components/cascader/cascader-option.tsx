@@ -4,6 +4,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { CascaderOptionInfo } from './interface';
 import IconRight from '../icon/icon-right';
 import { getCheckedStatus } from './utils';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'CascaderOption',
@@ -55,6 +56,13 @@ export default defineComponent({
       getCheckedStatus(props.option, props.computedKeys)
     );
 
+    const renderLabelContent = () => {
+      if (isFunction(props.option.label)) {
+        return props.option.label();
+      }
+      return props.option.label;
+    };
+
     return () => (
       <li class={cls.value} {...events}>
         {props.multiple && (
@@ -69,7 +77,7 @@ export default defineComponent({
           />
         )}
         <div class={`${prefixCls}-label`}>
-          {props.option.label}
+          {renderLabelContent()}
           {!props.option.isLeaf && <IconRight />}
         </div>
       </li>

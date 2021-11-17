@@ -32,3 +32,5 @@ description: Refers to the use of multi-level classification to separate the opt
 @import ./__demo__/path.md
 
 %%API(cascader.vue)%%
+
+%%INTERFACE(interface.ts)%%

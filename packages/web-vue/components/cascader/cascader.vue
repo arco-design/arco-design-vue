@@ -45,6 +45,7 @@
         :computed-keys="computedKeys"
         :multiple="multiple"
         :expand-trigger="expandTrigger"
+        :total-level="totalLevel"
         @click-option="handleClickOption"
         @active-change="setActiveNode"
         @path-change="setSelectedPath"
@@ -98,8 +99,12 @@ export default defineComponent({
      * @en Value
      */
     modelValue: {
-      type: [String, Array] as PropType<
-        string | string[] | undefined | (string | string[])[]
+      type: [String, Number, Array] as PropType<
+        | string
+        | number
+        | Array<string | number>
+        | undefined
+        | (string | number | Array<string | number>)[]
       >,
     },
     /**
@@ -108,8 +113,12 @@ export default defineComponent({
      * @defaultValue '' | undefined | []
      */
     defaultValue: {
-      type: [String, Array] as PropType<
-        string | string[] | undefined | (string | string[])[]
+      type: [String, Number, Array] as PropType<
+        | string
+        | number
+        | Array<string | number>
+        | undefined
+        | (string | number | Array<string | number>)[]
       >,
       default: (props: Data) =>
         props.multiple ? [] : props.mode === 'value' ? '' : undefined,
@@ -272,9 +281,10 @@ export default defineComponent({
     const _popupVisible = ref(props.defaultPopupVisible);
 
     const optionInfos = ref<CascaderOptionInfo[]>([]);
+    const totalLevel = ref(1);
     const leafOptionSet = new Set<CascaderOptionInfo>();
-    const leafOptionMap = new Map<string, CascaderOptionInfo>();
-    const leafOptionValueMap = new Map<string, CascaderOptionInfo>();
+    const leafOptionMap = new Map<string | number, CascaderOptionInfo>();
+    const leafOptionValueMap = new Map<string | number, CascaderOptionInfo>();
 
     watch(
       options,
@@ -286,6 +296,7 @@ export default defineComponent({
           leafOptionSet,
           leafOptionMap,
           leafOptionValueMap,
+          totalLevel,
         });
       },
       {
@@ -312,14 +323,19 @@ export default defineComponent({
       Array.from(leafOptionSet).filter(
         (item) =>
           props.filterOption?.(computedInputValue.value, item) ??
-          item.label?.includes(computedInputValue.value)
+          item.labelString?.includes(computedInputValue.value)
       )
     );
 
     const updateValue = (
       options?: CascaderOptionInfo | CascaderOptionInfo[]
     ) => {
-      let value: string | string[] | undefined | (string | string[])[];
+      let value:
+        | string
+        | number
+        | Array<string | number>
+        | undefined
+        | (string | number | Array<string | number>)[];
       if (!options) {
         if (!props.pathMode) {
           value = '';
@@ -392,7 +408,7 @@ export default defineComponent({
     };
 
     const getOptionLabel = (option: CascaderOptionInfo) => {
-      return option.path.map((item) => item.label).join(' / ');
+      return option.path.map((item) => item.labelString).join(' / ');
     };
 
     const handleInputValueChange = (
@@ -425,6 +441,10 @@ export default defineComponent({
           }
         }
       } else {
+        if (computedKeys.value.length === 0) {
+          setSelectedPath();
+          setActiveNode();
+        }
         handleInputValueChange('', 'optionListHide');
       }
     });
@@ -560,7 +580,7 @@ export default defineComponent({
           if (option) {
             const value = {
               value: key,
-              label: getOptionLabel(option),
+              label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
               closable: !option.disabled,
             };
             result.push(value);
@@ -602,6 +622,7 @@ export default defineComponent({
       handleBlur,
       handleRemove,
       handleKeyDown,
+      totalLevel,
     };
   },
 });

@@ -1,14 +1,16 @@
+import { VNode } from 'vue';
+
 export interface CascaderOption {
   /**
    * @zh 选项值
    * @en Option value
    */
-  value: string;
+  value: string | number;
   /**
    * @zh 选项文本
    * @en Option text
    */
-  label?: string;
+  label?: string | (() => VNode);
   /**
    * @zh 是否禁用
    * @en Whether to disable
@@ -46,7 +48,8 @@ export interface CascaderNode extends CascaderOption {
 }
 
 export interface CascaderOptionInfo extends CascaderOptionWithTotal {
-  label: string;
+  label: string | (() => VNode);
+  labelString: string;
   disabled: boolean;
   key: string;
   level: number;
