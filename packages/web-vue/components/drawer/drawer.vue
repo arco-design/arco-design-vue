@@ -62,26 +62,15 @@
 
 <script lang="ts">
 import type { CSSProperties, PropType } from 'vue';
-import {
-  computed,
-  defineComponent,
-  inject,
-  onMounted,
-  provide,
-  reactive,
-  ref,
-  watch,
-} from 'vue';
+import { computed, defineComponent, onMounted, ref, watch } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import ArcoButton from '../button';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { useI18n } from '../locale';
-import { zIndexInjectionKey } from '../modal/context';
 import { useOverflow } from '../_hooks/use-overflow';
 import { getElement } from '../_utils/dom';
-
-const Z_INDEX_STEP = 1000;
+import usePopupManager from '../_hooks/use-popup-manager';
 
 const DRAWER_PLACEMENTS = ['top', 'right', 'bottom', 'left'] as const;
 type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];
@@ -248,11 +237,7 @@ export default defineComponent({
     const _visible = ref(props.defaultVisible);
     const computedVisible = computed(() => props.visible ?? _visible.value);
 
-    // z-index上下文
-    const zIndexCtx = inject(zIndexInjectionKey, undefined);
-    const zIndex = (zIndexCtx?.zIndex ?? 0) + Z_INDEX_STEP;
-
-    provide(zIndexInjectionKey, reactive({ zIndex }));
+    const { zIndex } = usePopupManager(computedVisible);
 
     const close = () => {
       _visible.value = false;

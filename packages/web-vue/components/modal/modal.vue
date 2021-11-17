@@ -94,16 +94,7 @@
 
 <script lang="tsx">
 import type { ComputedRef, CSSProperties, PropType } from 'vue';
-import {
-  defineComponent,
-  computed,
-  ref,
-  watch,
-  inject,
-  provide,
-  reactive,
-  onMounted,
-} from 'vue';
+import { defineComponent, computed, ref, watch, onMounted } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { MessageType } from '../_utils/constant';
 import IconHover from '../_components/icon-hover.vue';
@@ -114,11 +105,9 @@ import IconCheckCircleFill from '../icon/icon-check-circle-fill';
 import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
 import IconCloseCircleFill from '../icon/icon-close-circle-fill';
 import { useI18n } from '../locale';
-import { zIndexInjectionKey } from './context';
 import { useOverflow } from '../_hooks/use-overflow';
 import { getElement } from '../_utils/dom';
-
-const Z_INDEX_STEP = 1000;
+import usePopupManager from '../_hooks/use-popup-manager';
 
 export default defineComponent({
   name: 'Modal',
@@ -331,12 +320,6 @@ export default defineComponent({
     const { t } = useI18n();
     const containerRef = ref<HTMLElement>();
 
-    // z-index上下文
-    const zIndexCtx = inject(zIndexInjectionKey, undefined);
-    const zIndex = (zIndexCtx?.zIndex ?? 0) + Z_INDEX_STEP;
-
-    provide(zIndexInjectionKey, reactive({ zIndex }));
-
     const _visible = ref(props.defaultVisible);
     const computedVisible = computed(() => props.visible ?? _visible.value);
 
@@ -345,6 +328,8 @@ export default defineComponent({
     const okDisplayText = props.okText || computed(() => t('modal.okText'));
     const cancelDisplayText =
       props.cancelText || computed(() => t('modal.cancelText'));
+
+    const { zIndex } = usePopupManager(computedVisible);
 
     const close = () => {
       _visible.value = false;
@@ -400,7 +385,7 @@ export default defineComponent({
 
     const mergedMaskStyle: ComputedRef<CSSProperties> = computed(() => {
       return {
-        zIndex,
+        zIndex: zIndex.value,
         ...(props.maskStyle ?? {}),
       };
     });

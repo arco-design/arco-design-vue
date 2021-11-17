@@ -5,7 +5,7 @@ exports[`Image Should show preview on click 1`] = `
   <!--v-if-->
   <!--v-if-->
   <!--teleport start-->
-  <div class=\\"arco-image-preview\\">
+  <div class=\\"arco-image-preview\\" style=\\"z-index: 1000; position: fixed; z-index: 1000;\\">
     <transition-stub>
       <div class=\\"arco-image-preview-mask\\"></div>
     </transition-stub>
