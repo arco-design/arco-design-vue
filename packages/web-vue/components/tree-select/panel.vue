@@ -10,7 +10,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
 import Tree from '../tree';
-import { TreeProps } from '../tree/interface';
+import { TreeProps, TreeNodeKey } from '../tree/interface';
 
 export default defineComponent({
   name: 'TreeSelectPanel',
@@ -23,7 +23,7 @@ export default defineComponent({
       default: () => ({}),
     },
     selectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<TreeNodeKey[]>,
     },
     checkable: {
       type: Boolean,
@@ -47,14 +47,14 @@ export default defineComponent({
     return {
       refTree,
       computedTreeProps,
-      onSelect(newVal: string[], e: Event) {
+      onSelect(newVal: TreeNodeKey[], e: Event) {
         if (checkable.value) {
           refTree.value?.toggleCheck?.(newVal[0], e);
         } else {
           emit('change', newVal);
         }
       },
-      onCheck(newVal: string[]) {
+      onCheck(newVal: TreeNodeKey[]) {
         emit('change', newVal);
       },
     };

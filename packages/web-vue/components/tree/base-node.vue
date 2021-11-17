@@ -132,7 +132,7 @@ export default defineComponent({
   props: {
     /** 唯一标示 */
     key: {
-      type: String,
+      type: [String, Number] as PropType<string | number>,
     },
     /** 标题 */
     title: {

@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { omit } from '../../_utils/omit';
 import { isUndefined } from '../../_utils/is';
-import { TreeNodeData, Node, FieldNames } from '../interface';
+import { TreeNodeData, Node, FieldNames, TreeNodeKey } from '../interface';
 
 interface TreeProps {
   fieldNames?: FieldNames;
@@ -87,7 +87,7 @@ function generateNode(options: NodeOptions): Node {
     parent: parentNode,
     parentKey: parentNode?.key,
     pathParentKeys: parentNode
-      ? [...parentNode.pathParentKeys, parentNode.key as string]
+      ? [...parentNode.pathParentKeys, parentNode.key as TreeNodeKey]
       : [],
   };
 

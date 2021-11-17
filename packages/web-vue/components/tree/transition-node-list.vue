@@ -11,11 +11,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
+import { defineComponent, toRefs, computed, PropType } from 'vue';
 import ExpandTransition from './expand-transition.vue';
 import { getPrefixCls } from '../_utils/global-config';
 import useTreeContext from './hooks/use-tree-context';
 import BaseTreeNode from './base-node.vue';
+import { TreeNodeKey } from './interface';
 
 export default defineComponent({
   name: 'TransitionNodeList',
@@ -25,7 +26,7 @@ export default defineComponent({
   },
   props: {
     nodeKey: {
-      type: String,
+      type: [String, Number] as PropType<TreeNodeKey>,
       required: true,
     },
   },

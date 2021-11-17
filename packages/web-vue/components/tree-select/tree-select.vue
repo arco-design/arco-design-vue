@@ -77,6 +77,7 @@ import {
   reactive,
   ref,
   toRefs,
+  StyleValue,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue, TreeSelectProps } from './interface';
@@ -86,7 +87,12 @@ import Panel from './panel.vue';
 import { getPrefixCls } from '../_utils/global-config';
 import useSelectedState from './hooks/use-selected-state';
 import useTreeData from '../tree/hooks/use-tree-data';
-import { FieldNames, TreeNodeData, TreeProps } from '../tree/interface';
+import {
+  FieldNames,
+  TreeNodeData,
+  TreeProps,
+  TreeNodeKey,
+} from '../tree/interface';
 import { isArray, isEmptyObject } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
@@ -192,8 +198,8 @@ export default defineComponent({
      * @en Default value
      * */
     defaultValue: {
-      type: [String, Array, Object] as PropType<
-        string | string[] | LabelValue | LabelValue[]
+      type: [String, Number, Array, Object] as PropType<
+        string | number | Array<string | number> | LabelValue | LabelValue[]
       >,
     },
     /**
@@ -201,8 +207,8 @@ export default defineComponent({
      * @en Value
      * */
     modelValue: {
-      type: [String, Array, Object] as PropType<
-        string | string[] | LabelValue | LabelValue[]
+      type: [String, Number, Array, Object] as PropType<
+        string | number | Array<string | number> | LabelValue | LabelValue[]
       >,
     },
     /**
@@ -330,7 +336,7 @@ export default defineComponent({
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @param {string | LabelValue | string[] | LabelValue[] | undefined} selectedValue
+     * @param {string | number | LabelValue | Array<string | number> | LabelValue[] | undefined} selectedValue
      */
     'change',
     'update:modelValue',
@@ -425,8 +431,8 @@ export default defineComponent({
       setLocalSelectedKeys(newVal);
 
       nextTick(() => {
-        let emitValue: string | string[] | LabelValue | LabelValue[] =
-          labelInValue.value ? selectedValue.value : newVal;
+        let emitValue: TreeNodeKey | TreeNodeKey[] | LabelValue | LabelValue[] =
+          (labelInValue.value ? selectedValue.value : newVal) || [];
 
         emitValue = isMultiple.value ? emitValue : emitValue[0];
 
@@ -471,12 +477,10 @@ export default defineComponent({
 
     const refSelectView = ref();
 
-    const computedDropdownStyle = computed<Array<CSSProperties | undefined>>(
-      () => [
-        dropdownStyle?.value,
-        treeProps?.value?.virtualListProps ? { 'max-height': 'unset' } : {},
-      ]
-    );
+    const computedDropdownStyle = computed<StyleValue[]>(() => [
+      dropdownStyle?.value || {},
+      treeProps?.value?.virtualListProps ? { 'max-height': 'unset' } : {},
+    ]);
 
     return {
       refSelectView,

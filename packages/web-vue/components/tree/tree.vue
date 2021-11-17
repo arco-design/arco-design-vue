@@ -39,10 +39,11 @@ import {
   TreeProps,
   FilterTreeNode,
   DropPosition,
+  TreeNodeKey,
 } from './interface';
 import { getCheckedStateByCheck, isNodeCheckable } from './utils';
 import TreeNode from './node';
-import { isFunction } from '../_utils/is';
+import { isFunction, isUndefined } from '../_utils/is';
 import useMergeState from '../_hooks/use-merge-state';
 import useCheckedState from './hooks/use-checked-state';
 import useTreeData from './hooks/use-tree-data';
@@ -124,7 +125,7 @@ export default defineComponent({
      * @en Tree node selected by default
      * */
     defaultSelectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<Array<string | number>>,
     },
     /**
      * @zh 选中的树节点
@@ -132,14 +133,14 @@ export default defineComponent({
      * @vModel
      */
     selectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<Array<string | number>>,
     },
     /**
      * @zh 默认选中复选框的树节点
      * @en Tree node with checkbox selected by default
      * */
     defaultCheckedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<Array<string | number>>,
     },
     /**
      * @zh 选中复选框的树节点
@@ -147,14 +148,14 @@ export default defineComponent({
      * @vModel
      */
     checkedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<Array<string | number>>,
     },
     /**
      * @zh 默认展开的节点
      * @en Nodes expanded by default
      * */
     defaultExpandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<Array<string | number>>,
     },
     /**
      * @zh 展开的节点
@@ -162,7 +163,7 @@ export default defineComponent({
      * @vModel
      */
     expandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<Array<string | number>>,
     },
     /**
      * @zh 传入`data`,生成对应的树结构
@@ -227,7 +228,7 @@ export default defineComponent({
     /**
      * @zh 点击树节点时触发
      * @en Triggered when the tree node is clicked
-     * @param {string[]} selectedKeys
+     * @param {Array<string | number>} selectedKeys
      * @param {{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
      */
     'select',
@@ -235,7 +236,7 @@ export default defineComponent({
     /**
      * @zh 点击树节点复选框时触发
      * @en Triggered when the tree node checkbox is clicked
-     * @param {string[]} checkedKeys
+     * @param {Array<string | number>} checkedKeys
      * @param {{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
      */
     'check',
@@ -243,7 +244,7 @@ export default defineComponent({
     /**
      * @zh 展开/关闭
      * @en Expand/close
-     * @param {string[]} expandKeys
+     * @param {Array<string | number>} expandKeys
      * @param {{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
      */
     'expand',
@@ -368,19 +369,19 @@ export default defineComponent({
         key2TreeNode,
       })
     );
-    const [selectedKeys, setSelectedKeys] = useMergeState<string[]>(
+    const [selectedKeys, setSelectedKeys] = useMergeState<TreeNodeKey[]>(
       defaultSelectedKeys?.value || [],
       reactive({
         value: propSelectedKeys,
       })
     );
-    const loadingKeys = ref<string[]>([]);
+    const loadingKeys = ref<TreeNodeKey[]>([]);
 
     const dragNode = ref<TreeNodeData>();
 
     function getDefaultExpandedKeys() {
       if (defaultExpandedKeys?.value) {
-        const expandedKeysSet = new Set<string>([]);
+        const expandedKeysSet = new Set<TreeNodeKey>([]);
         defaultExpandedKeys.value.forEach((_key) => {
           if (expandedKeysSet.has(_key)) return;
           const node = key2TreeNode.value[_key];
@@ -397,14 +398,14 @@ export default defineComponent({
         : [];
     }
 
-    const [expandedKeys, setExpandKeys] = useMergeState<string[]>(
+    const [expandedKeys, setExpandKeys] = useMergeState<TreeNodeKey[]>(
       getDefaultExpandedKeys(),
       reactive({
         value: propExpandedKeys,
       })
     );
 
-    const currentExpandKeys = ref<string[]>([]);
+    const currentExpandKeys = ref<TreeNodeKey[]>([]);
 
     const visibleTreeNodeList = computed(() => {
       const expandedKeysSet = new Set(expandedKeys.value);
@@ -418,7 +419,7 @@ export default defineComponent({
 
         if (!passFilter) return false;
 
-        const isRoot = !node.parentKey;
+        const isRoot = isUndefined(node.parentKey);
 
         const isVisibleNode = node.pathParentKeys?.every(
           (_key) => expandedKeysSet.has(_key) && !currentExpandKeysSet.has(_key)
@@ -428,7 +429,7 @@ export default defineComponent({
       });
     });
 
-    function onCheck(checked: boolean, key: string, e: Event) {
+    function onCheck(checked: boolean, key: TreeNodeKey, e: Event) {
       const node = key2TreeNode.value[key];
       const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck({
         node,
@@ -444,7 +445,10 @@ export default defineComponent({
       if (checkedStrategy.value === 'parent') {
         publicCheckedKeys = newCheckedKeys.filter((_key) => {
           const item = key2TreeNode.value[_key];
-          return !(item.parentKey && newCheckedKeys.includes(item.parentKey));
+          return !(
+            !isUndefined(item.parentKey) &&
+            newCheckedKeys.includes(item.parentKey)
+          );
         });
       } else if (checkedStrategy.value === 'child') {
         publicCheckedKeys = newCheckedKeys.filter((_key) => {
@@ -464,9 +468,9 @@ export default defineComponent({
       emit('update:checkedKeys', publicCheckedKeys);
     }
 
-    function onSelect(key: string, e: Event) {
+    function onSelect(key: TreeNodeKey, e: Event) {
       const node = key2TreeNode.value[key];
-      let newSelectedKeys: string[];
+      let newSelectedKeys: TreeNodeKey[];
       let selected: boolean;
 
       if (multiple.value) {
@@ -491,7 +495,7 @@ export default defineComponent({
       emit('update:selectedKeys', newSelectedKeys);
     }
 
-    function onExpand(expanded: boolean, key: string, e?: Event) {
+    function onExpand(expanded: boolean, key: TreeNodeKey, e?: Event) {
       // 如果当前 key 节点正在展开/收起，不执行操作。
       if (currentExpandKeys.value.includes(key)) return;
 
@@ -515,14 +519,14 @@ export default defineComponent({
       emit('update:expandedKeys', newExpandedKeys);
     }
 
-    function onExpandEnd(key: string) {
+    function onExpandEnd(key: TreeNodeKey) {
       const index = currentExpandKeys.value.indexOf(key);
       currentExpandKeys.value.splice(index, 1);
     }
 
     const onLoadMore = computed(() =>
       loadMore?.value
-        ? async (key: string) => {
+        ? async (key: TreeNodeKey) => {
             if (!isFunction(loadMore.value)) return;
 
             const node = key2TreeNode.value[key];
@@ -563,7 +567,7 @@ export default defineComponent({
       onSelect,
       onExpand,
       onExpandEnd,
-      allowDrop(key: string, dropPosition: DropPosition) {
+      allowDrop(key: TreeNodeKey, dropPosition: DropPosition) {
         const nodeData = key2TreeNode.value[key];
         if (nodeData && isFunction(allowDrop?.value)) {
           return !!allowDrop?.value({
@@ -573,33 +577,33 @@ export default defineComponent({
         }
         return true;
       },
-      onDragStart(key: string, e: DragEvent) {
+      onDragStart(key: TreeNodeKey, e: DragEvent) {
         const nodeData = key2TreeNode.value[key];
         dragNode.value = nodeData;
         if (nodeData) {
           emit('dragStart', e, nodeData);
         }
       },
-      onDragEnd(key: string, e: DragEvent) {
+      onDragEnd(key: TreeNodeKey, e: DragEvent) {
         const nodeData = key2TreeNode.value[key];
         dragNode.value = undefined;
         if (nodeData) {
           emit('dragEnd', e, nodeData);
         }
       },
-      onDragOver(key: string, e: DragEvent) {
+      onDragOver(key: TreeNodeKey, e: DragEvent) {
         const nodeData = key2TreeNode.value[key];
         if (nodeData) {
           emit('dragOver', e, nodeData);
         }
       },
-      onDragLeave(key: string, e: DragEvent) {
+      onDragLeave(key: TreeNodeKey, e: DragEvent) {
         const nodeData = key2TreeNode.value[key];
         if (nodeData) {
           emit('dragLeave', e, nodeData);
         }
       },
-      onDrop(key: string, dropPosition: number, e: DragEvent) {
+      onDrop(key: TreeNodeKey, dropPosition: number, e: DragEvent) {
         const nodeData = key2TreeNode.value[key];
         if (
           dragNode.value &&
@@ -619,7 +623,7 @@ export default defineComponent({
       },
     });
 
-    provide<TreeContext>(TreeInjectionKey, treeContext);
+    provide(TreeInjectionKey, treeContext);
 
     return {
       classNames,
@@ -630,7 +634,7 @@ export default defineComponent({
   },
 
   methods: {
-    toggleCheck(key: string, e: Event) {
+    toggleCheck(key: TreeNodeKey, e: Event) {
       const { key2TreeNode, onCheck, checkedKeys } = this.treeContext;
       const checked = !checkedKeys.includes(key);
       const node = key2TreeNode[key];
