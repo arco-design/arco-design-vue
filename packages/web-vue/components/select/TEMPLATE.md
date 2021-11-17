@@ -40,3 +40,5 @@ description: When users need to select one or more from a group of similar data,
 @import ./__demo__/linkage.md
 
 %%API(select.tsx)%%
+
+%%INTERFACE(../_components/dropdown/interface.ts)%%

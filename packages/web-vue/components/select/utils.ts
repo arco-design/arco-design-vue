@@ -1,4 +1,4 @@
-import { isArray } from '../_utils/is';
+import { isArray, isUndefined } from '../_utils/is';
 import { ValueData } from '../_utils/types';
 import { OptionInfo } from '../_components/dropdown/interface';
 
@@ -6,7 +6,7 @@ const getValueData = (
   value: string | number | undefined,
   optionInfoMap: Map<string | number, OptionInfo>
 ): ValueData | undefined => {
-  if (!value) {
+  if (isUndefined(value)) {
     return undefined;
   }
 
@@ -18,6 +18,7 @@ const getValueData = (
 
   return {
     ...optionInfo,
+    label: optionInfo.labelString,
     closable: !optionInfo.disabled,
   };
 };

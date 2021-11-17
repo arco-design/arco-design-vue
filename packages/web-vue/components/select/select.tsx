@@ -1,4 +1,4 @@
-import type { PropType } from 'vue';
+import type { ComponentPublicInstance, PropType } from 'vue';
 import {
   computed,
   createVNode,
@@ -9,7 +9,7 @@ import {
   watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { isArray, isObject } from '../_utils/is';
+import { isArray, isFunction, isObject } from '../_utils/is';
 import { getValueDataFromModelValue } from './utils';
 import Trigger from '../trigger';
 import SelectView from '../_components/select-view/select-view';
@@ -289,8 +289,14 @@ export default defineComponent({
    * @slot empty
    */
   /**
-   * @zh 选项的显示内容
+   * @zh 选项内容
    * @en Display content of options
+   * @slot option
+   * @binding {OptionInfo} data
+   */
+  /**
+   * @zh 选择框的显示内容
+   * @en Display content of label
    * @slot label
    * @binding {OptionInfo} data
    */
@@ -567,6 +573,18 @@ export default defineComponent({
       }
     });
 
+    const getOptionContentFunc = (item: OptionNode) => {
+      if (isFunction(slots.option) && item.value) {
+        const optionInfo = optionInfoMap.get(item.value);
+        const optionSlot = slots.option;
+        return () => optionSlot({ optionInfo });
+      }
+      if (isFunction(item.label)) {
+        return item.label;
+      }
+      return () => item.label;
+    };
+
     const renderOption = (item: OptionNode) => {
       if (item.type === 'optGroup') {
         return createVNode(DropDownOptGroup, {
@@ -581,7 +599,8 @@ export default defineComponent({
       return createVNode(
         DropDownOption,
         {
-          ref: (ref) => {
+          // @ts-ignore
+          ref: (ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }
@@ -597,7 +616,7 @@ export default defineComponent({
           onMouseleave: handleMouseLeave,
         },
         {
-          default: () => item.label,
+          default: getOptionContentFunc(item),
         }
       );
     };
