@@ -1,9 +1,10 @@
 import { toRefs, ref, watchEffect, computed } from 'vue';
+import { TreeNodeKey } from '../interface';
 import { getCheckedStateByInitKeys, Key2TreeNode } from '../utils';
 
 export default function useCheckedState(props: {
-  defaultCheckedKeys: string[] | undefined;
-  checkedKeys: string[] | undefined;
+  defaultCheckedKeys: TreeNodeKey[] | undefined;
+  checkedKeys: TreeNodeKey[] | undefined;
   key2TreeNode: Key2TreeNode;
   checkStrictly: boolean;
 }) {
@@ -14,7 +15,7 @@ export default function useCheckedState(props: {
     checkStrictly,
   } = toRefs(props);
 
-  const getStateByInitKeys = (initKeys: string[]) => {
+  const getStateByInitKeys = (initKeys: TreeNodeKey[]) => {
     return getCheckedStateByInitKeys({
       initCheckedKeys: initKeys,
       key2TreeNode: key2TreeNode.value,
@@ -30,8 +31,8 @@ export default function useCheckedState(props: {
   const localCheckedKeys = ref(initLocalState[0]);
   const localIndeterminateKeys = ref(initLocalState[1]);
 
-  const computedCheckedKeys = ref<string[]>();
-  const computedIndeterminateKeys = ref<string[]>();
+  const computedCheckedKeys = ref<TreeNodeKey[]>();
+  const computedIndeterminateKeys = ref<TreeNodeKey[]>();
 
   watchEffect(() => {
     if (propCheckedKeys.value) {
@@ -55,7 +56,10 @@ export default function useCheckedState(props: {
     indeterminateKeys: computed(
       () => computedIndeterminateKeys.value || localIndeterminateKeys.value
     ),
-    setCheckedState(newCheckedKeys: string[], newIndeterminateKeys: string[]) {
+    setCheckedState(
+      newCheckedKeys: TreeNodeKey[],
+      newIndeterminateKeys: TreeNodeKey[]
+    ) {
       localCheckedKeys.value = newCheckedKeys;
       localIndeterminateKeys.value = newIndeterminateKeys;
     },

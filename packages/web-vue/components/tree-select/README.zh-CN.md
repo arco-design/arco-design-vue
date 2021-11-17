@@ -50,8 +50,8 @@ description: 可以对树形结构数据进行选择。
 |retain-input-value|是否在搜索框聚焦时保留现有内容|`boolean`|`true`|
 |max-tags|最多显示的标签数量，仅在多选模式有效|`number`|`-`|
 |multiple|是否支持多选|`boolean`|`false`|
-|default-value|默认值|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
-|model-value **(v-model)**|绑定值|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
+|default-value|默认值|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|
+|model-value **(v-model)**|绑定值|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|
 |field-names|指定节点数据中的字段名|`FieldNames`|`-`|
 |data|数据|`TreeNodeData[]`|`[]`|
 |label-in-value|设置value格式。默认是string，设置为true时候，value格式为： { label: string, value: string }|`boolean`|`false`|
@@ -72,7 +72,7 @@ description: 可以对树形结构数据进行选择。
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|selectedValue: `string \| LabelValue \| string[] \| LabelValue[] \| undefined`|
+|change|值改变时触发|selectedValue: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
 |popup-visible-change|下拉框显示状态改变时触发|visible: `boolean`|
 |search|搜索值变化时触发|searchKey: `string`|
 |clear|点击清除时触发|-|

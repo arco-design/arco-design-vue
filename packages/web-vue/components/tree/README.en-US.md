@@ -53,12 +53,12 @@ description: For content with many levels, such as folders, catalogs, and organi
 |selectable|Whether to support selection|`boolean`|`true`|
 |check-strictly|Whether to cancel the parent-child node association|`boolean`|`false`|
 |checked-strategy|Customized backfill method <br/> all: return all selected nodes <br/> parent: return only parent node when both parent and child nodes are selected <br/> child: return only child nodes|`'all' \| 'parent' \| 'child'`|`'all'`|
-|default-selected-keys|Tree node selected by default|`string[]`|`-`|
-|selected-keys **(v-model)**|Selected tree node|`string[]`|`-`|
-|default-checked-keys|Tree node with checkbox selected by default|`string[]`|`-`|
-|checked-keys **(v-model)**|Tree node with check box selected|`string[]`|`-`|
-|default-expanded-keys|Nodes expanded by default|`string[]`|`-`|
-|expanded-keys **(v-model)**|Expanded node|`string[]`|`-`|
+|default-selected-keys|Tree node selected by default|`Array<string \| number>`|`-`|
+|selected-keys **(v-model)**|Selected tree node|`Array<string \| number>`|`-`|
+|default-checked-keys|Tree node with checkbox selected by default|`Array<string \| number>`|`-`|
+|checked-keys **(v-model)**|Tree node with check box selected|`Array<string \| number>`|`-`|
+|default-expanded-keys|Nodes expanded by default|`Array<string \| number>`|`-`|
+|expanded-keys **(v-model)**|Expanded node|`Array<string \| number>`|`-`|
 |data|Pass in `data` to generate the corresponding tree structure|`TreeNodeData[]`|`[]`|
 |field-names|Specify the field name in the node data|`FieldNames`|`-`|
 |show-line|Whether to display the connection line|`boolean`|`false`|
@@ -70,9 +70,9 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|select|Triggered when the tree node is clicked|selectedKeys: `string[]`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|check|Triggered when the tree node checkbox is clicked|checkedKeys: `string[]`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|expand|Expand/close|expandKeys: `string[]`<br>event: `{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|check|Triggered when the tree node checkbox is clicked|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|expand|Expand/close|expandKeys: `Array<string \| number>`<br>event: `{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
 |drag-start|Node starts dragging|-|
 |drag-end|Node end drag|event: `DragEvent`<br>node: `TreeNodeData`|
 |drag-over|The node is dragged to the releasable target|event: `DragEvent`<br>node: `TreeNodeData`|
@@ -100,7 +100,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|key|Unique key|`string`|`-`|
+|key|Unique key|`string \| number`|`-`|
 |title|The title of the node|`string`|`-`|
 |selectable|Whether to allow selection|`boolean`|`false`|
 |disabled|Whether to disable the node|`boolean`|`false`|

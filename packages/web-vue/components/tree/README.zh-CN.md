@@ -51,12 +51,12 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |selectable|是否支持选择|`boolean`|`true`|
 |check-strictly|是否取消父子节点关联|`boolean`|`false`|
 |checked-strategy|定制回填方式 <br/> all: 返回所有选中的节点  <br/> parent: 父子节点都选中时只返回父节点 <br/> child: 只返回子节点|`'all' \| 'parent' \| 'child'`|`'all'`|
-|default-selected-keys|默认选中的树节点|`string[]`|`-`|
-|selected-keys **(v-model)**|选中的树节点|`string[]`|`-`|
-|default-checked-keys|默认选中复选框的树节点|`string[]`|`-`|
-|checked-keys **(v-model)**|选中复选框的树节点|`string[]`|`-`|
-|default-expanded-keys|默认展开的节点|`string[]`|`-`|
-|expanded-keys **(v-model)**|展开的节点|`string[]`|`-`|
+|default-selected-keys|默认选中的树节点|`Array<string \| number>`|`-`|
+|selected-keys **(v-model)**|选中的树节点|`Array<string \| number>`|`-`|
+|default-checked-keys|默认选中复选框的树节点|`Array<string \| number>`|`-`|
+|checked-keys **(v-model)**|选中复选框的树节点|`Array<string \| number>`|`-`|
+|default-expanded-keys|默认展开的节点|`Array<string \| number>`|`-`|
+|expanded-keys **(v-model)**|展开的节点|`Array<string \| number>`|`-`|
 |data|传入`data`,生成对应的树结构|`TreeNodeData[]`|`[]`|
 |field-names|指定节点数据中的字段名|`FieldNames`|`-`|
 |show-line|是否展示连接线|`boolean`|`false`|
@@ -68,9 +68,9 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 
 |事件名|描述|参数|
 |---|---|---|
-|select|点击树节点时触发|selectedKeys: `string[]`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|check|点击树节点复选框时触发|checkedKeys: `string[]`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|expand|展开/关闭|expandKeys: `string[]`<br>event: `{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|select|点击树节点时触发|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|check|点击树节点复选框时触发|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|expand|展开/关闭|expandKeys: `Array<string \| number>`<br>event: `{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
 |drag-start|节点开始拖拽|-|
 |drag-end|节点结束拖拽|event: `DragEvent`<br>node: `TreeNodeData`|
 |drag-over|节点被拖拽至可释放目标|event: `DragEvent`<br>node: `TreeNodeData`|
@@ -98,7 +98,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|key|唯一标示|`string`|`-`|
+|key|唯一标示|`string \| number`|`-`|
 |title|该节点显示的标题|`string`|`-`|
 |selectable|是否允许选中|`boolean`|`false`|
 |disabled|是否禁用节点|`boolean`|`false`|

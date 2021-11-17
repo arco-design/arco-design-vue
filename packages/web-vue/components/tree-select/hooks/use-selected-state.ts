@@ -2,8 +2,13 @@ import { computed, ref, toRefs, watchEffect, watch } from 'vue';
 import { isArray, isObject, isUndefined } from '../../_utils/is';
 import { LabelValue } from '../interface';
 import { Key2TreeNode } from '../../tree/utils';
+import { TreeNodeKey } from '../../tree/interface';
 
-type Value = string | LabelValue | (string | LabelValue)[] | undefined;
+type Value =
+  | TreeNodeKey
+  | LabelValue
+  | (TreeNodeKey | LabelValue)[]
+  | undefined;
 
 export default function useSelectedState(props: {
   defaultValue: Value;
@@ -23,12 +28,12 @@ export default function useSelectedState(props: {
     return isArray(value) ? value.slice(0, 1) : [value];
   }
 
-  function getKeys(value?: (string | LabelValue)[]) {
+  function getKeys(value?: (TreeNodeKey | LabelValue)[]) {
     if (!value) return undefined;
 
     const keys = value
       .map((item) => (isObject(item) ? item.value : item))
-      .filter((item) => !isUndefined(item)) as string[];
+      .filter((item) => !isUndefined(item)) as TreeNodeKey[];
 
     // if (treeCheckable?.value) {
     //   [keys] = getCheckedStateByInitKeys({
@@ -42,14 +47,14 @@ export default function useSelectedState(props: {
   }
 
   function getLabelValues(
-    value: (string | LabelValue)[],
+    value: (TreeNodeKey | LabelValue)[],
     originValue?: LabelValue[]
   ) {
     if (!value) {
       return undefined;
     }
 
-    const originValueMap = new Map<string, LabelValue>();
+    const originValueMap = new Map<TreeNodeKey, LabelValue>();
     originValue?.forEach((item) => {
       originValueMap.set(item.value, item);
     });
@@ -80,7 +85,7 @@ export default function useSelectedState(props: {
     });
   }
 
-  const computedModelValueKeys = ref<string[]>();
+  const computedModelValueKeys = ref<TreeNodeKey[]>();
   const computedModelValue = ref<LabelValue[]>();
   watchEffect(() => {
     const normalizeModelValue = normalizeValue(modelValue.value);
@@ -119,7 +124,7 @@ export default function useSelectedState(props: {
   return {
     selectedKeys,
     selectedValue,
-    setLocalSelectedKeys(keys: string[]) {
+    setLocalSelectedKeys(keys: TreeNodeKey[]) {
       localValueKeys.value = keys;
     },
   };

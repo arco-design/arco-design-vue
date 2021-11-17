@@ -1,9 +1,14 @@
 import { CSSProperties } from 'vue';
-import { FieldNames, TreeNodeData, TreeProps } from '../tree/interface';
+import {
+  FieldNames,
+  TreeNodeData,
+  TreeProps,
+  TreeNodeKey,
+} from '../tree/interface';
 
 export interface LabelValue {
-  value: string;
-  label: string;
+  value: TreeNodeKey;
+  label: string | number;
 }
 
 export type FilterTreeNode = (
@@ -34,8 +39,8 @@ export interface TreeSelectProps {
   /** 是否多选 */
   multiple: boolean;
 
-  defaultValue?: string | string[] | LabelValue | LabelValue[];
-  modelValue?: string | string[] | LabelValue | LabelValue[];
+  defaultValue?: TreeNodeKey | TreeNodeKey[] | LabelValue | LabelValue[];
+  modelValue?: TreeNodeKey | TreeNodeKey[] | LabelValue | LabelValue[];
   fieldNames?: FieldNames;
   data: TreeNodeData[];
   labelInValue: boolean;
