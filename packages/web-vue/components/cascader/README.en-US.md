@@ -29,8 +29,8 @@ description: Refers to the use of multi-level classification to separate the opt
 |---|---|---|:---:|
 |path-mode|Whether the value is a path|`boolean`|`false`|
 |multiple|Whether it is a multi-selection state|`boolean`|`false`|
-|model-value **(v-model)**|Value|`string \| string[] \| undefined \| (string \| string[])[]`|`-`|
-|default-value|Default value (uncontrolled state)|`string \| string[] \| undefined \| (string \| string[])[]`|`'' | undefined | []`|
+|model-value **(v-model)**|Value|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`|
+|default-value|Default value (uncontrolled state)|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' | undefined | []`|
 |options|Options for cascader|`CascaderOption[]`|`[]`|
 |disabled|Whether to disable|`boolean`|`false`|
 |error|Whether it is an error state|`boolean`|`false`|
@@ -55,5 +55,18 @@ description: Refers to the use of multi-level classification to separate the opt
 |popup-visible-change|Triggered when the display state of the dropdown changes|visible: `boolean`|
 |focus|Triggered when focus|-|
 |blur|Triggered when blur|-|
+
+
+
+
+### CascaderOption
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|value|Option value|`string \| number`|`-`|
+|label|Option text|`string \| (() => VNode)`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|
+|children|Next level options|`CascaderOption[]`|`-`|
+|isLeaf|Whether it is a leaf node|`boolean`|`false`|
 
 

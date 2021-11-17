@@ -27,8 +27,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |---|---|---|:---:|
 |path-mode|绑定值是否为路径|`boolean`|`false`|
 |multiple|是否为多选状态|`boolean`|`false`|
-|model-value **(v-model)**|绑定值|`string \| string[] \| undefined \| (string \| string[])[]`|`-`|
-|default-value|默认值（非受控状态）|`string \| string[] \| undefined \| (string \| string[])[]`|`'' | undefined | []`|
+|model-value **(v-model)**|绑定值|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`|
+|default-value|默认值（非受控状态）|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' | undefined | []`|
 |options|级联选择器的选项|`CascaderOption[]`|`[]`|
 |disabled|是否禁用|`boolean`|`false`|
 |error|是否为错误状态|`boolean`|`false`|
@@ -53,5 +53,18 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |popup-visible-change|下拉框的显示状态改变时触发|visible: `boolean`|
 |focus|获得焦点时触发|-|
 |blur|失去焦点时触发|-|
+
+
+
+
+### CascaderOption
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|value|选项值|`string \| number`|`-`|
+|label|选项文本|`string \| (() => VNode)`|`-`|
+|disabled|是否禁用|`boolean`|`false`|
+|children|下一级选项|`CascaderOption[]`|`-`|
+|isLeaf|是否是叶子节点|`boolean`|`false`|
 
 

@@ -1,9 +1,11 @@
+import { Ref, VNode } from 'vue';
 import {
   CascaderOption,
   CascaderOptionWithTotal,
   CascaderOptionInfo,
 } from './interface';
-import { isArray, isString } from '../_utils/is';
+import { isArray, isNumber, isString } from '../_utils/is';
+import { getVNodeChildrenString } from '../_utils/vue-utils';
 
 const getOptionsWithTotalLeaves = (options: CascaderOption[]) => {
   const _options: CascaderOptionWithTotal[] = [];
@@ -22,29 +24,46 @@ const getOptionsWithTotalLeaves = (options: CascaderOption[]) => {
   return _options;
 };
 
+const getLabelString = (label: string | (() => VNode)): string => {
+  if (isString(label)) {
+    return label;
+  }
+  const vn = label();
+  return getVNodeChildrenString(vn);
+};
+
 export const getOptionInfos = (
   options: CascaderOption[],
   {
     leafOptionSet,
     leafOptionMap,
     leafOptionValueMap,
+    totalLevel: innerLevel,
   }: {
     leafOptionSet: Set<CascaderOptionInfo>;
-    leafOptionMap: Map<string, CascaderOptionInfo>;
-    leafOptionValueMap: Map<string, CascaderOptionInfo>;
+    leafOptionMap: Map<string | number, CascaderOptionInfo>;
+    leafOptionValueMap: Map<string | number, CascaderOptionInfo>;
+    totalLevel: Ref<number>;
   }
 ) => {
   const _options = getOptionsWithTotalLeaves(options);
+  let totalLevel = 0;
 
   const travelOptions = (
     options: CascaderOptionWithTotal[],
-    parent?: CascaderOptionInfo
+    parent?: CascaderOptionInfo,
+    level?: number
   ) => {
     const parentPath = parent?.path ?? [];
+    totalLevel = level ?? 1;
+
     return options.map((item, index) => {
+      const labelString = getLabelString(item.label ?? String(item.value));
+
       const data = {
         ...item,
-        label: item.label ?? item.value,
+        label: item.label ?? String(item.value),
+        labelString,
         disabled: Boolean(item.disabled),
         level: parentPath.length,
         index,
@@ -57,7 +76,7 @@ export const getOptionInfos = (
 
       if (item.children) {
         data.isLeaf = false;
-        data.children = travelOptions(item.children, data);
+        data.children = travelOptions(item.children, data, (level ?? 1) + 1);
       } else {
         data.isLeaf = true;
         leafOptionSet.add(data);
@@ -71,7 +90,9 @@ export const getOptionInfos = (
     });
   };
 
-  return travelOptions(_options);
+  const result = travelOptions(_options);
+  innerLevel.value = totalLevel;
+  return result;
 };
 
 export const getCheckedStatus = (
@@ -119,29 +140,34 @@ export const getLeafOptionKeys = (option: CascaderOptionInfo) => {
 };
 
 export const getKeysFromValue = (
-  value: string | string[] | undefined | (string | string[])[],
+  value:
+    | string
+    | number
+    | Array<string | number>
+    | undefined
+    | (string | number | Array<string | number>)[],
   {
     pathMode,
     leafOptionMap,
     leafOptionValueMap,
   }: {
     pathMode: boolean;
-    leafOptionMap: Map<string, CascaderOptionInfo>;
-    leafOptionValueMap: Map<string, CascaderOptionInfo>;
+    leafOptionMap: Map<string | number, CascaderOptionInfo>;
+    leafOptionValueMap: Map<string | number, CascaderOptionInfo>;
   }
 ) => {
   const keys: string[] = [];
   if (!pathMode) {
     if (isArray(value)) {
       value.forEach((item) => {
-        if (isString(item)) {
+        if (isString(item) || isNumber(item)) {
           const option = leafOptionValueMap.get(item);
           if (option) {
             keys.push(option.key);
           }
         }
       });
-    } else if (isString(value)) {
+    } else if (isString(value) || isNumber(value)) {
       const option = leafOptionValueMap.get(value);
       if (option) {
         keys.push(option.key);
@@ -149,7 +175,7 @@ export const getKeysFromValue = (
     }
   } else if (isArray(value) && value.length > 0) {
     // TODO: 更好的写法？
-    if (isString(value[0])) {
+    if (isString(value[0]) || isNumber(value[0])) {
       const key = value.join('-');
       if (leafOptionMap.has(key)) {
         keys.push(key);
