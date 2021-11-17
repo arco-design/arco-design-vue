@@ -61,7 +61,7 @@ export default defineComponent({
                   {uploadCtx?.customIcon?.retryIcon?.() || <IconUpload />}
                 </span>
               )}
-              {!uploadCtx.disabled && (
+              {!uploadCtx?.disabled && (
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
                   onClick={() => uploadCtx?.onRemove(props.file)}

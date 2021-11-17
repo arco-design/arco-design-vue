@@ -73,7 +73,8 @@ export default defineComponent({
           )}
           {uploadCtx?.listType === 'text' && (
             <span class={`${itemCls}-file-icon`}>
-              {uploadCtx?.customIcon?.fileIcon?.() || renderFileIcon()}
+              {uploadCtx?.customIcon?.fileIcon?.(props.file) ||
+                renderFileIcon()}
             </span>
           )}
           <span class={`${itemCls}-name`}>

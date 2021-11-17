@@ -3,6 +3,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import UploadListItem from './upload-list-item';
 import UploadPictureItem from './upload-picture-item';
 import { FileItem, ListType } from './interfaces';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'UploadList',
@@ -20,7 +21,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, { slots }) {
     const prefixCls = getPrefixCls('upload');
 
     const cls = computed(() => [
@@ -29,6 +30,10 @@ export default defineComponent({
     ]);
 
     const renderItem = (fileItem: FileItem, index: number) => {
+      if (isFunction(slots['upload-item'])) {
+        return slots['upload-item']({ fileItem, index });
+      }
+
       if (props.listType === 'picture-card') {
         return <UploadPictureItem file={fileItem} key={`item-${index}`} />;
       }

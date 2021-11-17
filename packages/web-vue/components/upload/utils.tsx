@@ -43,6 +43,7 @@ export const processFileList = (fileList?: FileItem[]): FileItem[] => {
   if (isArray(fileList)) {
     return fileList.map((file, index) => {
       return {
+        // @ts-ignore
         uid: `${Date.now()}${index}`,
         status: 'done',
         percent: 1,
@@ -103,7 +104,7 @@ export const uploadRequest = ({
       formData.append(key, data[key]);
     }
   }
-  xhr.open('post', action, true);
+  xhr.open('post', action ?? '', true);
 
   for (const key of Object.keys(headers)) {
     xhr.setRequestHeader(key, headers[key]);
@@ -153,13 +154,13 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
 };
 
 export const loopDirectory = (
-  items: DataTransferItemList,
-  accept,
-  callback
+  itemList: DataTransferItemList,
+  accept: string | undefined,
+  callback: (file: File) => void
 ) => {
-  const _loopDirectory = (item) => {
+  const _loopDirectory = (item: FileSystemEntry) => {
     if (item.isFile) {
-      item.file((file) => {
+      (item as FileSystemFileEntry)?.file((file) => {
         if (isAcceptFile(file, accept)) {
           Object.defineProperty(file, 'webkitRelativePath', {
             value: item.fullPath.replace(/^\//, ''),
@@ -168,20 +169,19 @@ export const loopDirectory = (
         }
       });
     } else if (item.isDirectory) {
-      // item 是个文件夹
-      const reader = item.createReader();
+      const reader = (item as FileSystemDirectoryEntry).createReader();
       reader.readEntries((entries) => {
         entries.forEach(_loopDirectory);
       });
     }
   };
 
-  [].slice
-    .call(items)
-    .forEach(
-      (item: DataTransferItem) =>
-        item.webkitGetAsEntry && _loopDirectory(item.webkitGetAsEntry())
-    );
+  Array.from(itemList).forEach((item: DataTransferItem) => {
+    const fileSystem = item.webkitGetAsEntry();
+    if (fileSystem) {
+      _loopDirectory(fileSystem);
+    }
+  });
 };
 
 export const getDataURLFromFile = async (file: File): Promise<string> => {
@@ -206,5 +206,3 @@ export const getFiles = (fileList?: FileList, accept?: string): File[] => {
   }
   return files;
 };
-
-// export const getIcons = (customIcon: CustomIcon) => {};
