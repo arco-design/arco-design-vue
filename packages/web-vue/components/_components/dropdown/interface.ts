@@ -1,4 +1,4 @@
-import { VNode } from 'vue';
+import { RenderFunction } from 'vue';
 
 export interface OptionData {
   /**
@@ -10,7 +10,12 @@ export interface OptionData {
    * @zh 选项内容
    * @en Option content
    */
-  label: string | (() => VNode);
+  label: string;
+  /**
+   * @zh 自定义渲染
+   * @en Custom Render
+   */
+  render?: RenderFunction;
   /**
    * @zh 是否禁用
    * @en Whether to disable
@@ -49,7 +54,6 @@ export type Option = string | number | OptionData | GroupOption;
 export interface OptionInfo extends OptionData {
   index: number;
   key: string;
-  labelString: string;
   origin: 'children' | 'options' | 'extraOptions';
 }
 
@@ -57,8 +61,8 @@ export interface OptionNode {
   type: 'option' | 'optGroup';
   key: string;
   value?: string | number;
-  label: string | (() => VNode);
-  labelString: string;
+  label: string;
+  render?: RenderFunction;
   disabled?: boolean;
 }
 

@@ -323,7 +323,9 @@ export default defineComponent({
       Array.from(leafOptionSet).filter(
         (item) =>
           props.filterOption?.(computedInputValue.value, item) ??
-          item.labelString?.includes(computedInputValue.value)
+          item.label
+            ?.toLocaleLowerCase()
+            .includes(computedInputValue.value?.toLocaleLowerCase())
       )
     );
 
@@ -408,7 +410,7 @@ export default defineComponent({
     };
 
     const getOptionLabel = (option: CascaderOptionInfo) => {
-      return option.path.map((item) => item.labelString).join(' / ');
+      return option.path.map((item) => item.label).join(' / ');
     };
 
     const handleInputValueChange = (

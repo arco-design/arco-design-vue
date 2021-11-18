@@ -1,5 +1,5 @@
 import { VNode, isVNode } from 'vue';
-import { isArray, isFunction, isObject, isString } from '../../_utils/is';
+import { isArray, isFunction, isObject } from '../../_utils/is';
 import {
   getBooleanProp,
   getChildrenFunc,
@@ -19,14 +19,6 @@ import {
 
 const isGroupOption = (option: Option): option is GroupOption => {
   return isObject(option) && 'isGroup' in option;
-};
-
-const getLabelString = (label: string | (() => VNode)): string => {
-  if (isString(label)) {
-    return label;
-  }
-  const vn = label();
-  return getVNodeChildrenString(vn);
 };
 
 export const getOptionNodes = ({
@@ -56,9 +48,9 @@ export const getOptionNodes = ({
 
     let optionInfo: OptionInfo;
     if (isVNode(option)) {
-      const label = getChildrenFunc(option);
-      const labelString = getVNodeChildrenString(option);
-      const value = option.props?.value ?? labelString;
+      const label = option.props?.label ?? getVNodeChildrenString(option);
+      const value = option.props?.value ?? label;
+      const render = getChildrenFunc(option);
       const key = `option-${typeof value}-${value}`;
 
       optionInfo = {
@@ -66,7 +58,7 @@ export const getOptionNodes = ({
         key,
         value,
         label,
-        labelString,
+        render,
         disabled: getBooleanProp(option.props?.disabled),
         origin: 'children',
       };
@@ -77,8 +69,7 @@ export const getOptionNodes = ({
             index,
             key: `option-${typeof option.value}-${option.value}`,
             value: option.value,
-            label: option.label,
-            labelString: getLabelString(option.label),
+            label: option.label ?? String(option.value),
             disabled: Boolean(option.disabled),
             origin,
           }
@@ -87,7 +78,6 @@ export const getOptionNodes = ({
             key: `option-${typeof option}-${option}`,
             value: option,
             label: String(option),
-            labelString: String(option),
             disabled: false,
             origin,
           };
@@ -108,7 +98,7 @@ export const getOptionNodes = ({
     }
 
     if (filterOption) {
-      return optionInfo.labelString
+      return optionInfo.label
         .toLowerCase()
         .includes((inputValue ?? '').toLowerCase());
     }
@@ -127,7 +117,6 @@ export const getOptionNodes = ({
             type: 'optGroup',
             key: `group-${item.label}`,
             label: item.label,
-            labelString: item.label,
           });
           extendChildrenFromOptions(item.options, origin);
         }
@@ -139,7 +128,7 @@ export const getOptionNodes = ({
             key: optionInfo.key,
             value: optionInfo.value,
             label: optionInfo.label,
-            labelString: optionInfo.labelString,
+            render: optionInfo.render,
             disabled: optionInfo.disabled,
           });
           if (!optionInfo.disabled) {
@@ -158,7 +147,6 @@ export const getOptionNodes = ({
           type: 'optGroup',
           key: `group-${child.props?.label}`,
           label: child.props?.label,
-          labelString: child.props?.label,
         });
         // 添加Group下面的Options
         if (isSlotsChildren(child, child.children)) {
@@ -176,7 +164,7 @@ export const getOptionNodes = ({
             key: optionInfo.key,
             value: optionInfo.value,
             label: optionInfo.label,
-            labelString: optionInfo.labelString,
+            render: optionInfo.render,
             disabled: optionInfo.disabled,
           });
           if (!optionInfo.disabled) {

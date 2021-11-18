@@ -79,12 +79,33 @@ description: When users need to select one or more from a group of similar data,
 
 
 
+### `<option>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|value|Option value (if not filled, it will be obtained from the content)|`string\|number`|`-`|
+|label|Option label (if not filled, it will be obtained from the content)|`string`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|
+
+
+
+
+### `<optgroup>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|label|Title of option group|`string`|`-`|
+
+
+
+
 ### OptionData
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |value|Option Value|`string \| number`|`-`|
-|label|Option content|`string \| (() => VNode)`|`-`|
+|label|Option content|`string`|`-`|
+|render|Custom Render|`RenderFunction`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 
 

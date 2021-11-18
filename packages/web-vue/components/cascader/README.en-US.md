@@ -64,7 +64,8 @@ description: Refers to the use of multi-level classification to separate the opt
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |value|Option value|`string \| number`|`-`|
-|label|Option text|`string \| (() => VNode)`|`-`|
+|label|Option text|`string`|`-`|
+|render|Custom render|`RenderFunction`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 |children|Next level options|`CascaderOption[]`|`-`|
 |isLeaf|Whether it is a leaf node|`boolean`|`false`|

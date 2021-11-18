@@ -1,11 +1,10 @@
-import { Ref, VNode } from 'vue';
+import { Ref } from 'vue';
 import {
   CascaderOption,
   CascaderOptionWithTotal,
   CascaderOptionInfo,
 } from './interface';
 import { isArray, isNumber, isString } from '../_utils/is';
-import { getVNodeChildrenString } from '../_utils/vue-utils';
 
 const getOptionsWithTotalLeaves = (options: CascaderOption[]) => {
   const _options: CascaderOptionWithTotal[] = [];
@@ -22,14 +21,6 @@ const getOptionsWithTotalLeaves = (options: CascaderOption[]) => {
   }
 
   return _options;
-};
-
-const getLabelString = (label: string | (() => VNode)): string => {
-  if (isString(label)) {
-    return label;
-  }
-  const vn = label();
-  return getVNodeChildrenString(vn);
 };
 
 export const getOptionInfos = (
@@ -58,12 +49,9 @@ export const getOptionInfos = (
     totalLevel = level ?? 1;
 
     return options.map((item, index) => {
-      const labelString = getLabelString(item.label ?? String(item.value));
-
       const data = {
         ...item,
         label: item.label ?? String(item.value),
-        labelString,
         disabled: Boolean(item.disabled),
         level: parentPath.length,
         index,

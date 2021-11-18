@@ -57,8 +57,8 @@ export default defineComponent({
     );
 
     const renderLabelContent = () => {
-      if (isFunction(props.option.label)) {
-        return props.option.label();
+      if (isFunction(props.option.render)) {
+        return props.option.render();
       }
       return props.option.label;
     };
