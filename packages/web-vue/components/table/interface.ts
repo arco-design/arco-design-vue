@@ -171,15 +171,18 @@ export interface TableColumn {
   /**
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
-   * @param record
-   * @param column
+   * @param {TableData} record
+   * @param {TableColumn} column
+   * @param {number} rowIndex
    */
   render?: ({
     record,
     column,
+    rowIndex,
   }: {
     record: TableData;
     column: TableColumn;
+    rowIndex: number;
   }) => VNode;
   // private
   isLastLeftFixed?: boolean;
@@ -258,7 +261,7 @@ export interface TableExpandable {
    * @zh 自定义展开行内容
    * @en Customize expanded row content
    */
-  expandedRowRender: (record: TableData) => VNode;
+  expandedRowRender?: (record: TableData) => VNode;
   /**
    * @zh 展开图标
    * @en Expand icon
