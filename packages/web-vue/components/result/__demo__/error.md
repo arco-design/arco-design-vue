@@ -19,7 +19,9 @@ Show error status.
 ```vue
 <template>
   <a-result status="error">
-    This is title content
+    <template #subtitle>
+      This is title content
+    </template>
     <template #subtitle>
       This is subtitle content
     </template>

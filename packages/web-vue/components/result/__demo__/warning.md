@@ -19,7 +19,9 @@ Show warning status.
 ```vue
 <template>
   <a-result status="warning">
-    This is title content
+    <template #subtitle>
+      This is title content
+    </template>
     <template #subtitle>
       This is subtitle content
     </template>
