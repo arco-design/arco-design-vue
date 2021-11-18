@@ -2,7 +2,7 @@ import {
   ComponentInternalInstance,
   getCurrentInstance,
   onMounted,
-  onUnmounted,
+  onBeforeUnmount,
   ref,
   computed,
   Ref,
@@ -60,7 +60,13 @@ const generateId = (() => {
   };
 })();
 
-export default function usePopupManager(visible?: Ref<boolean>) {
+export default function usePopupManager({
+  visible,
+  runOnMounted,
+}: {
+  visible?: Ref<boolean>;
+  runOnMounted?: boolean;
+} = {}) {
   const id = generateId();
   const _zIndex = ref<number>();
 
@@ -82,7 +88,7 @@ export default function usePopupManager(visible?: Ref<boolean>) {
     popupManager.registerInstance(id, instance);
   });
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     popupManager.deregisterInstance(id);
   });
 
@@ -102,6 +108,14 @@ export default function usePopupManager(visible?: Ref<boolean>) {
       } else {
         close();
       }
+    });
+  } else if (runOnMounted) {
+    onMounted(() => {
+      open();
+    });
+
+    onBeforeUnmount(() => {
+      close();
     });
   }
 

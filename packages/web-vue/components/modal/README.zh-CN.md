@@ -79,6 +79,7 @@ Modal提供的全局方法，可以通过一下三种方法使用：
 |okButtonProps|确认按钮的Props|`any`|`-`|
 |cancelButtonProps|取消按钮的Props|`any`|`-`|
 |okLoading|确认按钮是否为加载中状态|`boolean`|`false`|
+|hideCancel|是否隐藏取消按钮|`boolean`|`false`|
 |mask|是否显示遮罩层|`boolean`|`false`|
 |maskClosable|是否点击遮罩层可以关闭对话框|`boolean`|`false`|
 |maskStyle|蒙层的样式|`CSSProperties`|`-`|

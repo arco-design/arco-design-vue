@@ -329,7 +329,7 @@ export default defineComponent({
     const cancelDisplayText =
       props.cancelText || computed(() => t('modal.cancelText'));
 
-    const { zIndex } = usePopupManager(computedVisible);
+    const { zIndex } = usePopupManager({ visible: computedVisible });
 
     const close = () => {
       _visible.value = false;

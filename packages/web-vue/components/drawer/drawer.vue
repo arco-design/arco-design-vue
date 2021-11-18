@@ -238,7 +238,7 @@ export default defineComponent({
     const _visible = ref(props.defaultVisible);
     const computedVisible = computed(() => props.visible ?? _visible.value);
 
-    const { zIndex } = usePopupManager(computedVisible);
+    const { zIndex } = usePopupManager({ visible: computedVisible });
 
     const close = () => {
       _visible.value = false;

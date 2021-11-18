@@ -81,6 +81,7 @@ The global methods provided by Modal can be used in the following three ways:
 |okButtonProps|Props of confirm button|`any`|`-`|
 |cancelButtonProps|Props of cancel button|`any`|`-`|
 |okLoading|Whether the confirm button is in the loading state|`boolean`|`false`|
+|hideCancel|Whether to hide the cancel button|`boolean`|`false`|
 |mask|Whether to show the mask|`boolean`|`false`|
 |maskClosable|Whether to close the modal when click the mask|`boolean`|`false`|
 |maskStyle|Mask style|`CSSProperties`|`-`|
