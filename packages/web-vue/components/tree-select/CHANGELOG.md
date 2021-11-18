@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.5.0
+
+`2021-11-18`
+
+### 🐛 BugFix
+
+- cannot select the option with key 0 ([#185](https://github.com/arco-design/arco-design-vue/pull/185))
+
+
 ## 2.1.0
 
 `2021-11-05`

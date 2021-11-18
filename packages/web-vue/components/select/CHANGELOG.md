@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.5.0
+
+`2021-11-18`
+
+### ⚠️ Important Attention
+
+- Move the custom rendering of `options.label` added in 2.4.0 to `options.render` ([#183](https://github.com/arco-design/arco-design-vue/pull/183))
+- `<option>` Add label prop support ([#183](https://github.com/arco-design/arco-design-vue/pull/183))
+
+
 ## 2.4.0
 
 `2021-11-17`

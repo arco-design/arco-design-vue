@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.5.0
+
+`2021-11-18`
+
+### ⚠️ Important Attention
+
+- **select:** Move the custom rendering of `options.label` added in 2.4.0 to `options.render` ([#183](https://github.com/arco-design/arco-design-vue/pull/183))
+- **cascader:** Move the custom rendering of `options.label` added in 2.4.0 to `options.render` ([#183](https://github.com/arco-design/arco-design-vue/pull/183))
+
+### 🆕 Feature
+
+- **select:** `<option>` Add label prop support ([#183](https://github.com/arco-design/arco-design-vue/pull/183))
+
+### 🐛 BugFix
+
+- **tree-select:** cannot select the option with key 0 ([#185](https://github.com/arco-design/arco-design-vue/pull/185))
+- Fix the problem that the input type component cannot get the focus in the pop-up layer ([#184](https://github.com/arco-design/arco-design-vue/pull/184))
+- Fix the problem of pop-up component `z-index` error ([#182](https://github.com/arco-design/arco-design-vue/pull/182))
+
+
 ## 2.4.0
 
 `2021-11-17`

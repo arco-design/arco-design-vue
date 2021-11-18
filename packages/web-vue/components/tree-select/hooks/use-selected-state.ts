@@ -33,7 +33,7 @@ export default function useSelectedState(props: {
 
     const keys = value
       .map((item) => (isObject(item) ? item.value : item))
-      .filter((item) => !isUndefined(item)) as TreeNodeKey[];
+      .filter((item) => !isUndefined(item) && item !== '') as TreeNodeKey[];
 
     return keys;
   }
@@ -51,7 +51,7 @@ export default function useSelectedState(props: {
       originValueMap.set(item.value, item);
     });
 
-    value = value.filter((item) => !isUndefined(item));
+    value = value.filter((item) => !isUndefined(item) && item !== '');
     if (!value.length) {
       return undefined;
     }
