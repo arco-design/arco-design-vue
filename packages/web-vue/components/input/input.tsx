@@ -212,7 +212,7 @@ export default defineComponent({
     };
 
     const handleMousedown = (e: MouseEvent) => {
-      if (inputRef.value && e.target !== inputRef.value) {
+      if (inputRef.value) {
         e.preventDefault();
         inputRef.value.focus();
       }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapperCls">
+  <div :class="wrapperCls" @mousedown="handleMousedown">
     <div
       v-if="autoSize"
       ref="mirrorRef"
@@ -316,6 +316,13 @@ export default defineComponent({
       computeIsScroll();
     };
 
+    const handleMousedown = (e: MouseEvent) => {
+      if (textareaRef.value) {
+        e.preventDefault();
+        textareaRef.value.focus();
+      }
+    };
+
     const computeIsScroll = () => {
       if (textareaRef.value) {
         if (textareaRef.value.scrollHeight > textareaRef.value.offsetHeight) {
@@ -350,6 +357,7 @@ export default defineComponent({
       handleComposition,
       handleClear,
       handleResize,
+      handleMousedown,
     };
   },
 });
