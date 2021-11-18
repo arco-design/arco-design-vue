@@ -64,6 +64,7 @@ export default defineComponent({
    * @slot cell
    * @binding {TableData} record
    * @binding {TableColumn} column
+   * @binding {number} rowIndex
    */
   /**
    * @zh 标题

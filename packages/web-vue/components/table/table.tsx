@@ -1037,7 +1037,11 @@ export default defineComponent({
       );
     };
 
-    const renderRecord = (record: TableData, indentSize: number): VNode => {
+    const renderRecord = (
+      record: TableData,
+      indentSize: number,
+      rowIndex: number
+    ): VNode => {
       const currentKey = record[rowKey.value];
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
@@ -1106,6 +1110,7 @@ export default defineComponent({
                 <Td
                   key={`td-${index}`}
                   style={style}
+                  rowIndex={rowIndex}
                   record={record}
                   isSorted={
                     Boolean(computedSorter.value.filed) &&
@@ -1124,12 +1129,13 @@ export default defineComponent({
           </Tr>
           {showExpand &&
             (hasSubTree ? (
-              record.children?.map((item) =>
+              record.children?.map((item, index) =>
                 renderRecord(
                   item,
                   subTreeHasSubData
                     ? indentSize + props.indentSize + 20
-                    : indentSize + props.indentSize
+                    : indentSize + props.indentSize,
+                  index
                 )
               )
             ) : (
@@ -1157,7 +1163,8 @@ export default defineComponent({
           {...props.virtualListProps}
           data={flattenData.value}
           v-slots={{
-            item: ({ item }: { item: TableData }) => renderRecord(item, 0),
+            item: ({ item, index }: { item: TableData; index: number }) =>
+              renderRecord(item, 0, index),
           }}
         />
       );
@@ -1171,8 +1178,8 @@ export default defineComponent({
       return (
         <Tbody>
           {flattenData.value.length > 0
-            ? flattenData.value.map((record) =>
-                renderRecord(record, hasSubData ? 20 : 0)
+            ? flattenData.value.map((record, index) =>
+                renderRecord(record, hasSubData ? 20 : 0, index)
               )
             : renderEmpty()}
         </Tbody>
