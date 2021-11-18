@@ -543,7 +543,8 @@ export default defineComponent({
       if (isArray(computedValue.value)) {
         // Keep the option value that has been selected but disabled
         const newValue = computedValue.value.filter((v) => {
-          return !enabledOptionSet.has(v);
+          const optionInfo = optionInfoMap.get(v);
+          return Boolean(optionInfo?.disabled);
         });
         updateValue(newValue);
       } else {
@@ -579,8 +580,8 @@ export default defineComponent({
         const optionSlot = slots.option;
         return () => optionSlot({ optionInfo });
       }
-      if (isFunction(item.label)) {
-        return item.label;
+      if (isFunction(item.render)) {
+        return item.render;
       }
       return () => item.label;
     };

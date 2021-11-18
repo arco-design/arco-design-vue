@@ -18,7 +18,7 @@ const getValueData = (
 
   return {
     ...optionInfo,
-    label: optionInfo.labelString,
+    label: optionInfo.label,
     closable: !optionInfo.disabled,
   };
 };

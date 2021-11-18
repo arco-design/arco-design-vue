@@ -41,4 +41,8 @@ description: When users need to select one or more from a group of similar data,
 
 %%API(select.tsx)%%
 
+%%API(../_components/dropdown/dropdown-option.vue)%%
+
+%%API(../_components/dropdown/dropdown-optgroup.vue)%%
+
 %%INTERFACE(../_components/dropdown/interface.ts)%%

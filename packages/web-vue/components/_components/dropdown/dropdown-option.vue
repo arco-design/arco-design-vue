@@ -36,6 +36,11 @@ export default defineComponent({
      */
     value: [String, Number],
     /**
+     * @zh 选项标签（如不填，会从内容中获取）
+     * @en Option label (if not filled, it will be obtained from the content)
+     */
+    label: String,
+    /**
      * @zh 是否禁用
      * @en Whether to disable
      */

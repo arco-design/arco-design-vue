@@ -1,4 +1,4 @@
-import { VNode } from 'vue';
+import { RenderFunction } from 'vue';
 
 export interface CascaderOption {
   /**
@@ -10,7 +10,12 @@ export interface CascaderOption {
    * @zh 选项文本
    * @en Option text
    */
-  label?: string | (() => VNode);
+  label?: string;
+  /**
+   * @zh 自定义渲染
+   * @en Custom render
+   */
+  render?: RenderFunction;
   /**
    * @zh 是否禁用
    * @en Whether to disable
@@ -48,8 +53,7 @@ export interface CascaderNode extends CascaderOption {
 }
 
 export interface CascaderOptionInfo extends CascaderOptionWithTotal {
-  label: string | (() => VNode);
-  labelString: string;
+  label: string;
   disabled: boolean;
   key: string;
   level: number;
