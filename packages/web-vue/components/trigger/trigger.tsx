@@ -42,10 +42,8 @@ import {
 } from '../_utils/vue-utils';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { triggerInjectionKey } from './context';
-import { zIndexInjectionKey } from '../modal/context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
-
-const Z_INDEX_STEP = 100;
+import usePopupManager from '../_hooks/use-popup-manager';
 
 export default defineComponent({
   name: 'Trigger',
@@ -343,9 +341,6 @@ export default defineComponent({
     // 用于多个trigger嵌套时，保持打开状态
     const childrenRefs = new Set<Ref<HTMLElement>>();
     const triggerCtx = inject(triggerInjectionKey, undefined);
-    // z-index上下文
-    const zIndexCtx = inject(zIndexInjectionKey, undefined);
-    const zIndex = (zIndexCtx?.zIndex ?? 0) + Z_INDEX_STEP;
     // trigger相关变量
     const triggerRef = ref<Element | ComponentPublicInstance>();
     const triggerEle = computed<HTMLElement>(() =>
@@ -375,6 +370,8 @@ export default defineComponent({
     const computedVisible = computed(
       () => props.popupVisible ?? popupVisible.value
     );
+
+    const { zIndex } = usePopupManager({ visible: computedVisible });
 
     let delayTimer = 0;
     let outsideListener = false;
@@ -559,8 +556,6 @@ export default defineComponent({
       })
     );
 
-    provide(zIndexInjectionKey, reactive({ zIndex }));
-
     // 外部事件
     const removeOutsideListener = () => {
       off(document.documentElement, 'mousedown', handleOutsideClick);
@@ -697,7 +692,7 @@ export default defineComponent({
                         `${prefixCls}-popup`,
                         `${prefixCls}-position-${popupPosition.value}`,
                       ]}
-                      style={{ ...popupStyle.value, zIndex }}
+                      style={{ ...popupStyle.value, zIndex: zIndex.value }}
                       trigger-placement={popupPosition.value}
                       {...popupEvent}
                       onMousedown={(e) => e.preventDefault()}

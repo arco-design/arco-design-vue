@@ -20,18 +20,22 @@ class MessageManger {
 
   private readonly messages: Ref<MessageItem[]>;
 
+  private readonly position: MessagePosition;
+
   private messageCount = 0;
 
   constructor(config: _MessageConfig, appContext?: AppContext) {
-    const { position } = config;
+    const { position = 'top' } = config;
     this.container = getOverlay('message');
     this.messageIds = new Set();
     this.messages = ref([]);
+    this.position = position;
 
     const vm = createVNode(MessageList, {
       messages: this.messages.value,
       position,
       onClose: this.remove,
+      onAfterClose: this.destroy,
     });
 
     if (appContext) {
@@ -85,6 +89,14 @@ class MessageManger {
 
   clear = () => {
     this.messages.value.splice(0);
+  };
+
+  destroy = () => {
+    if (this.messages.value.length === 0) {
+      render(null, this.container);
+      document.body.removeChild(this.container);
+      messageInstance[this.position] = undefined;
+    }
   };
 }
 

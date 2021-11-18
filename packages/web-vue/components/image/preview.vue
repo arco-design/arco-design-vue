@@ -231,7 +231,7 @@ export default defineComponent({
     );
 
     const isFixed = computed(() => container.value === document.body);
-    const { zIndex } = usePopupManager(mergedVisible);
+    const { zIndex } = usePopupManager({ visible: mergedVisible });
 
     const wrapperStyles = computed<CSSProperties>(() => {
       const positionStyles: CSSProperties = isFixed.value

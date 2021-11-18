@@ -9,6 +9,7 @@ import {
   NotificationItem,
   NotificationPosition,
 } from './interface';
+import usePopupManager from '../_hooks/use-popup-manager';
 
 export default defineComponent({
   name: 'NotificationList',
@@ -25,17 +26,20 @@ export default defineComponent({
       },
     },
   },
-  emits: ['close'],
+  emits: ['close', 'afterClose'],
   setup(props, context) {
     const prefixCls = getPrefixCls('notification-list');
     const kebabPosition = toKebabCase(props.position);
+    const { zIndex } = usePopupManager({ runOnMounted: true });
 
     const isRight = props.position.includes('Right');
 
     return () => (
       <TransitionGroup
         class={[prefixCls, `${prefixCls}-${kebabPosition}`]}
+        style={{ zIndex: zIndex.value }}
         name={`slide-${isRight ? 'right' : 'left'}-notification`}
+        onAfterLeave={() => context.emit('afterClose')}
         tag="ul"
       >
         {props.notifications.map((item) => {
