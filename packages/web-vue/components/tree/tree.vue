@@ -384,7 +384,10 @@ export default defineComponent({
         const expandedKeysSet = new Set<TreeNodeKey>([]);
         defaultExpandedKeys.value.forEach((_key) => {
           if (expandedKeysSet.has(_key)) return;
+
           const node = key2TreeNode.value[_key];
+          if (!node) return;
+
           [...(node.pathParentKeys || []), _key].forEach((_key) =>
             expandedKeysSet.add(_key)
           );
@@ -431,6 +434,8 @@ export default defineComponent({
 
     function onCheck(checked: boolean, key: TreeNodeKey, e: Event) {
       const node = key2TreeNode.value[key];
+      if (!node) return;
+
       const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck({
         node,
         checked,
@@ -470,6 +475,8 @@ export default defineComponent({
 
     function onSelect(key: TreeNodeKey, e: Event) {
       const node = key2TreeNode.value[key];
+      if (!node) return;
+
       let newSelectedKeys: TreeNodeKey[];
       let selected: boolean;
 
@@ -500,6 +507,8 @@ export default defineComponent({
       if (currentExpandKeys.value.includes(key)) return;
 
       const node = key2TreeNode.value[key];
+      if (!node) return;
+
       const expandedKeysSet = new Set(expandedKeys.value);
 
       expanded ? expandedKeysSet.add(key) : expandedKeysSet.delete(key);
@@ -530,6 +539,8 @@ export default defineComponent({
             if (!isFunction(loadMore.value)) return;
 
             const node = key2TreeNode.value[key];
+            if (!node) return;
+
             const { treeNodeData } = node;
 
             loadingKeys.value = [...new Set([...loadingKeys.value, key])];
