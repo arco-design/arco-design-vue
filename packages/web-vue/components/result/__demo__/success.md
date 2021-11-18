@@ -19,7 +19,9 @@ Show success status.
 ```vue
 <template>
   <a-result status="success">
-    This is title content
+    <template #title>
+      This is title content
+    </template>
     <template #subtitle>
       This is subtitle content
     </template>
