@@ -35,14 +35,6 @@ export default function useSelectedState(props: {
       .map((item) => (isObject(item) ? item.value : item))
       .filter((item) => !isUndefined(item)) as TreeNodeKey[];
 
-    // if (treeCheckable?.value) {
-    //   [keys] = getCheckedStateByInitKeys({
-    //     initCheckedKeys: keys,
-    //     key2TreeNode: key2TreeNode.value,
-    //     checkStrictly: treeCheckStrictly?.value,
-    //   });
-    // }
-
     return keys;
   }
 
@@ -59,7 +51,7 @@ export default function useSelectedState(props: {
       originValueMap.set(item.value, item);
     });
 
-    value = value.filter((item) => Boolean(item));
+    value = value.filter((item) => !isUndefined(item));
     if (!value.length) {
       return undefined;
     }
@@ -67,10 +59,10 @@ export default function useSelectedState(props: {
     return value.map((item) => {
       let res: LabelValue = isObject(item)
         ? { ...item }
-        : { value: item, label: '' };
+        : ({ value: item, label: undefined } as unknown as LabelValue);
 
       const node = key2TreeNode.value[res.value];
-      res.label = res.label || node?.title || res.value;
+      res.label = res.label ?? node?.title ?? res.value;
 
       if (originValueMap && originValueMap.has(res.value)) {
         res = {
@@ -79,7 +71,7 @@ export default function useSelectedState(props: {
         };
       }
 
-      res.label = res.label || res.value;
+      res.label = res.label ?? res.value;
 
       return res;
     });
