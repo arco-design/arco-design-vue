@@ -308,6 +308,11 @@ export default defineComponent({
    * @slot label
    * @binding {OptionInfo} data
    */
+  /**
+   * @zh 下拉框的页脚
+   * @en The footer of the drop-down box
+   * @slot footer
+   */
   setup(props, { slots, emit, attrs }) {
     const prefixCls = getPrefixCls('select');
     const { options, filterOption } = toRefs(props);
@@ -636,6 +641,7 @@ export default defineComponent({
           ref={dropdownRef}
           v-slots={{
             empty: slots.empty,
+            footer: slots.footer,
           }}
           class={`${prefixCls}-dropdown`}
           loading={props.loading}
