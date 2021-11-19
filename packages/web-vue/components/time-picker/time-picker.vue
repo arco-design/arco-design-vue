@@ -6,6 +6,7 @@
     :disabled="disabled"
     :popup-offset="4"
     :popup-visible="panelVisible"
+    :prevent-focus="true"
     :unmount-on-close="unmountOnClose"
     :popup-container="popupContainer"
     @popupVisibleChange="onPanelVisibleChange"

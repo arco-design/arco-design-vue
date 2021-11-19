@@ -1,5 +1,6 @@
 <template>
   <trigger
+    v-bind="triggerProps"
     trigger="click"
     :popup-visible="computedPopupVisible"
     position="bl"
@@ -7,6 +8,7 @@
     :popup-offset="4"
     :auto-fit-popup-width="showSearchPanel"
     :popup-container="popupContainer"
+    :prevent-focus="true"
     @popup-visible-change="handlePopupVisibleChange"
   >
     <select-view
@@ -57,7 +59,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
 import { getKeysFromValue, getLeafOptionKeys, getOptionInfos } from './utils';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import CascaderPanel from './cascader-panel';
 import CascaderSearchPanel from './cascader-search-panel';
@@ -230,6 +232,14 @@ export default defineComponent({
      */
     formatLabel: {
       type: Function as PropType<(options: CascaderOptionInfo[]) => string>,
+    },
+    /**
+     * @zh 下拉菜单的触发器属性
+     * @en Trigger props of the drop-down menu
+     * @type TriggerProps
+     */
+    triggerProps: {
+      type: Object as PropType<TriggerProps>,
     },
   },
   emits: [
