@@ -243,7 +243,7 @@ export default defineComponent({
     const hasSuffix = computed(() => suffixSlot.value);
 
     const handleMousedown = (e: MouseEvent) => {
-      if (inputRef.value) {
+      if (inputRef.value && e.target !== inputRef.value) {
         e.preventDefault();
         inputRef.value.focus();
       }

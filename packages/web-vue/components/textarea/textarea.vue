@@ -317,7 +317,7 @@ export default defineComponent({
     };
 
     const handleMousedown = (e: MouseEvent) => {
-      if (textareaRef.value) {
+      if (textareaRef.value && e.target !== textareaRef.value) {
         e.preventDefault();
         textareaRef.value.focus();
       }
