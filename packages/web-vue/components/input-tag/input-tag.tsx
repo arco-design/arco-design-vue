@@ -11,7 +11,7 @@ import {
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
-import { Enter } from '../_utils/keycode';
+import { Backspace, Enter } from '../_utils/keycode';
 import { getValueData } from './utils';
 import usePickSlots from '../_hooks/use-pick-slots';
 import Tag from '../tag';
@@ -154,6 +154,7 @@ export default defineComponent({
     },
     // private
     baseCls: String,
+    focused: Boolean,
   },
   emits: [
     'update:modelValue',
@@ -203,12 +204,14 @@ export default defineComponent({
 
     const inputRef = ref<HTMLInputElement>();
     const mirrorRef = ref<HTMLElement>();
-    const focused = ref(false);
+    const _focused = ref(false);
     const inputStyle = reactive({
       width: '12px',
     });
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
+
+    const mergedFocused = computed(() => props.focused || _focused.value);
 
     const isComposition = ref(false);
     const compositionValue = ref('');
@@ -317,12 +320,12 @@ export default defineComponent({
     };
 
     const handleFocus = () => {
-      focused.value = true;
+      _focused.value = true;
       emit('focus');
     };
 
     const handleBlur = () => {
-      focused.value = false;
+      _focused.value = false;
       emit('blur');
     };
 
@@ -334,6 +337,15 @@ export default defineComponent({
         keyCode === Enter.code
       ) {
         handlePressEnter(e);
+      }
+      if (
+        !isComposition.value &&
+        tags.value.length > 0 &&
+        !compositionValue.value &&
+        keyCode === Backspace.code
+      ) {
+        const lastIndex = tags.value.length - 1;
+        handleRemove(tags.value[lastIndex].value, lastIndex);
       }
     };
 
@@ -369,7 +381,7 @@ export default defineComponent({
       {
         [`${prefixCls}-disabled`]: props.disabled,
         [`${prefixCls}-error`]: props.error,
-        [`${prefixCls}-focus`]: focused.value,
+        [`${prefixCls}-focus`]: mergedFocused.value,
         [`${prefixCls}-readonly`]: props.readonly,
         [`${prefixCls}-has-tag`]: tags.value.length > 0,
         [`${prefixCls}-has-prefix`]: Boolean(prefixSlot.value),
