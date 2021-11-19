@@ -578,7 +578,7 @@ export default defineComponent({
       if (isFunction(slots.option) && item.value) {
         const optionInfo = optionInfoMap.get(item.value);
         const optionSlot = slots.option;
-        return () => optionSlot({ optionInfo });
+        return () => optionSlot({ data: optionInfo });
       }
       if (isFunction(item.render)) {
         return item.render;
