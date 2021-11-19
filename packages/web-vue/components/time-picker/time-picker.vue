@@ -421,8 +421,8 @@ export default defineComponent({
       if (isValueChange(value, computedValue.value)) {
         const formattedValue = getFormattedValue(value, computedFormat.value);
         const dateValue = getDateValue(value);
-        emit('change', formattedValue, dateValue);
         emit('update:modelValue', formattedValue);
+        emit('change', formattedValue, dateValue);
       }
     }
 

@@ -436,8 +436,8 @@ export default defineComponent({
 
         emitValue = isMultiple.value ? emitValue : emitValue[0];
 
-        emit('change', emitValue);
         emit('update:modelValue', emitValue);
+        emit('change', emitValue);
       });
     };
 

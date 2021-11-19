@@ -520,8 +520,8 @@ export default defineComponent({
       const formattedValue = getFormattedValue(value, computedFormat.value);
       const dateValue = getDateValue(value);
       if (isValueChange(value, selectedValue.value)) {
-        emit('change', formattedValue, dateValue);
         emit('update:modelValue', formattedValue);
+        emit('change', formattedValue, dateValue);
       }
       if (emitOk) {
         emit('ok', formattedValue, dateValue);
