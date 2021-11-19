@@ -195,6 +195,14 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
+    /**
+     * @zh 点击确认按钮是否关闭
+     * @en Close after click ok button
+     */
+    okClose: {
+      type: Boolean,
+      default: true
+    },
   },
   emits: [
     'update:popupVisible',
@@ -247,7 +255,9 @@ export default defineComponent({
 
     const handleOk = () => {
       emit('ok');
-      close();
+      if(props.okClose){
+        close();
+      }
     };
 
     const handleCancel = () => {
