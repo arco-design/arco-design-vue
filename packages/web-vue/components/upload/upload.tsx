@@ -540,11 +540,13 @@ export default defineComponent({
         >
           {props.listType !== 'picture-card' && renderButton()}
           <UploadList
-            v-slots={{ 'upload-item': slots['upload-item'] }}
+            v-slots={{
+              'upload-button': renderButton,
+              'upload-item': slots['upload-item'],
+            }}
             fileList={_fileList.value}
             listType={props.listType}
           />
-          {props.listType === 'picture-card' && renderButton()}
         </div>
       );
     };
