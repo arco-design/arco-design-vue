@@ -7,6 +7,7 @@
     v-bind="triggerProps"
     :position="position"
     :disabled="disabled"
+    :prevent-focus="true"
     :popup-visible="panelVisible"
     :unmount-on-close="unmountOnClose"
     :popup-container="popupContainer"

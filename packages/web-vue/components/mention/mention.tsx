@@ -279,6 +279,7 @@ export default defineComponent({
         trigger="focus"
         position="bl"
         popupOffset={4}
+        preventFocus={true}
         popupVisible={computedPopupVisible.value}
         clickToClose={false}
         autoFitPopupWidth

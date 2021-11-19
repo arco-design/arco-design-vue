@@ -5,6 +5,7 @@
     trigger="click"
     position="bl"
     :popup-offset="4"
+    :prevent-focus="true"
     v-bind="triggerProps"
     :disabled="disabled"
     :popup-visible="panelVisible"

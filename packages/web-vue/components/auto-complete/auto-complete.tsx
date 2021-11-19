@@ -287,6 +287,7 @@ export default defineComponent({
         position="bl"
         popupVisible={computedPopupVisible.value}
         clickToClose={false}
+        preventFocus={true}
         popupOffset={4}
         autoFitPopupWidth
         onPopupVisibleChange={handlePopupVisibleChange}

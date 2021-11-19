@@ -11,7 +11,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { isArray, isFunction, isObject } from '../_utils/is';
 import { getValueDataFromModelValue } from './utils';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
 import { Data } from '../_utils/types';
@@ -210,6 +210,14 @@ export default defineComponent({
      */
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
+    },
+    /**
+     * @zh 下拉菜单的触发器属性
+     * @en Trigger props of the drop-down menu
+     * @type TriggerProps
+     */
+    triggerProps: {
+      type: Object as PropType<TriggerProps>,
     },
     /**
      * @zh 格式化显示内容
@@ -663,10 +671,12 @@ export default defineComponent({
         popupVisible={computedPopupVisible.value}
         unmountOnClose={props.unmountOnClose}
         hideEmpty={true}
+        preventFocus={true}
         popupContainer={props.popupContainer}
         onPopupVisibleChange={handlePopupVisibleChange}
         autoFitPopupWidth
         autoFitTransformOrigin
+        {...props.triggerProps}
       >
         <SelectView
           v-slots={{ label: slots.label }}

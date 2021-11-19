@@ -314,6 +314,14 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 是否阻止弹出层中的元素点击时获取焦点
+     * @en Whether to prevent elements in the pop-up layer from gaining focus when clicked
+     */
+    preventFocus: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onPopupVisibleChange: {
       type: Function as PropType<(popupVisible: boolean) => void>,
@@ -598,6 +606,12 @@ export default defineComponent({
       }
     };
 
+    const handlePopupMouseDown = (e: Event) => {
+      if (props.preventFocus) {
+        e.preventDefault();
+      }
+    };
+
     triggerCtx?.addChildRef(popupRef);
 
     const triggerCls = computed(() => {
@@ -695,7 +709,7 @@ export default defineComponent({
                       style={{ ...popupStyle.value, zIndex: zIndex.value }}
                       trigger-placement={popupPosition.value}
                       {...popupEvent}
-                      onMousedown={(e) => e.preventDefault()}
+                      onMousedown={handlePopupMouseDown}
                       {...attrs}
                     >
                       <div
