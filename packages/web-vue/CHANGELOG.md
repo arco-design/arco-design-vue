@@ -2,6 +2,32 @@
 changelog: true
 ```
 
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 Feature
+
+- **input-tag:** Add support for backspace key ([#202](https://github.com/arco-design/arco-design-vue/pull/202))
+- **select:** Add `footer` slot ([#201](https://github.com/arco-design/arco-design-vue/pull/201))
+- **textarea:** Add `word-length` attribute ([#199](https://github.com/arco-design/arco-design-vue/pull/199))
+- **trigger:** Add `prevent-focus` property ([#197](https://github.com/arco-design/arco-design-vue/pull/197))
+- **select:** Add `trigger-props` property ([#197](https://github.com/arco-design/arco-design-vue/pull/197))
+- **cascader:** Add `trigger-props` property ([#197](https://github.com/arco-design/arco-design-vue/pull/197))
+
+### 🐛 BugFix
+
+- **select:** Fix the problem that the `data` parameter is not sent from the `option` slot ([#200](https://github.com/arco-design/arco-design-vue/pull/200))
+- **upload:** Fix the problem of overflow when the picture name is too long ([#198](https://github.com/arco-design/arco-design-vue/pull/198))
+- **upload:** Fix the problem that the photo wall mode cannot wrap when it exceeds the length ([#198](https://github.com/arco-design/arco-design-vue/pull/198))
+- Fix the problem that input type components repeatedly get focus ([#196](https://github.com/arco-design/arco-design-vue/pull/196))
+- **date-picker:** Fix the problem of abnormal verification in form ([#195](https://github.com/arco-design/arco-design-vue/pull/195))
+
+### 💅 Style
+
+- **menu:** pop menu adapts to dark theme ([#193](https://github.com/arco-design/arco-design-vue/pull/193))
+
+
 ## 2.5.0
 
 `2021-11-18`

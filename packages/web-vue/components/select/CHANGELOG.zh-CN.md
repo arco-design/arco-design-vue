@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 新增功能
+
+- 增加 `footer` 插槽 ([#201](https://github.com/arco-design/arco-design-vue/pull/201))
+- 增加 `trigger-props` 属性 ([#197](https://github.com/arco-design/arco-design-vue/pull/197))
+
+### 🐛 问题修复
+
+- 修复 `option` 插槽没有传出 `data` 参数的问题 ([#200](https://github.com/arco-design/arco-design-vue/pull/200))
+
+
 ## 2.5.0
 
 `2021-11-18`

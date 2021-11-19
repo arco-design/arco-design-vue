@@ -341,7 +341,7 @@ export default defineComponent({
       if (
         !isComposition.value &&
         tags.value.length > 0 &&
-        !compositionValue.value &&
+        !computedInputValue.value &&
         keyCode === Backspace.code
       ) {
         const lastIndex = tags.value.length - 1;

@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 Feature
+
+- Add `footer` slot ([#201](https://github.com/arco-design/arco-design-vue/pull/201))
+- Add `trigger-props` property ([#197](https://github.com/arco-design/arco-design-vue/pull/197))
+
+### 🐛 BugFix
+
+- Fix the problem that the `data` parameter is not sent from the `option` slot ([#200](https://github.com/arco-design/arco-design-vue/pull/200))
+
+
 ## 2.5.0
 
 `2021-11-18`

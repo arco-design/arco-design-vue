@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 Feature
+
+- Add `trigger-props` property ([#197](https://github.com/arco-design/arco-design-vue/pull/197))
+
+
 ## 2.5.0
 
 `2021-11-18`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 新增功能
+
+- 增加 `trigger-props` 属性 ([#197](https://github.com/arco-design/arco-design-vue/pull/197))
+
+
 ## 2.5.0
 
 `2021-11-18`

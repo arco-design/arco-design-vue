@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 Feature
+
+- Add support for backspace key ([#202](https://github.com/arco-design/arco-design-vue/pull/202))
+
+
 ## 2.4.0
 
 `2021-11-17`

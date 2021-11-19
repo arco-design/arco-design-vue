@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.6.0
+
+`2021-11-19`
+
+### 💅 Style
+
+- pop menu adapts to dark theme ([#193](https://github.com/arco-design/arco-design-vue/pull/193))
+
+
 ## 2.3.0
 
 `2021-11-12`

@@ -521,25 +521,25 @@ export default defineComponent({
             e.preventDefault();
           },
         ],
-        [
-          CODE.BACKSPACE,
-          (e: Event) => {
-            if (
-              isArray(computedValue.value) &&
-              !(e.target as HTMLInputElement).value &&
-              computedValue.value.length
-            ) {
-              const newValue = [...computedValue.value];
-              const popValue = newValue.pop();
-              if (popValue) {
-                const popValueOption = optionInfoMap.get(popValue);
-                if (popValueOption && !popValueOption.disabled) {
-                  uncheckOption(popValueOption.value);
-                }
-              }
-            }
-          },
-        ],
+        // [
+        //   CODE.BACKSPACE,
+        //   (e: Event) => {
+        //     if (
+        //       isArray(computedValue.value) &&
+        //       !(e.target as HTMLInputElement).value &&
+        //       computedValue.value.length
+        //     ) {
+        //       const newValue = [...computedValue.value];
+        //       const popValue = newValue.pop();
+        //       if (popValue) {
+        //         const popValueOption = optionInfoMap.get(popValue);
+        //         if (popValueOption && !popValueOption.disabled) {
+        //           uncheckOption(popValueOption.value);
+        //         }
+        //       }
+        //     }
+        //   },
+        // ],
       ])
     );
 
