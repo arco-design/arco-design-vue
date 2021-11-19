@@ -42,6 +42,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |placeholder|占位符|`string`|`-`|
 |popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
 |format-label|格式化展示内容|`(options: CascaderOptionInfo[]) => string`|`-`|
+|trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`|
 ### `<cascader>` Events
 
 |事件名|描述|参数|

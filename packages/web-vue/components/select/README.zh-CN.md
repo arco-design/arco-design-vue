@@ -53,6 +53,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |filter-option|是否过滤选项|`boolean`|`true`|
 |options|选项数据|`Option[]`|`[]`|
 |virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`|
+|trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`|
 |format-label|格式化显示内容|`(data: OptionInfo) => string`|`-`|
 ### `<select>` Events
 
@@ -70,6 +71,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 |插槽名|描述|参数|
 |---|:---:|---|
+|footer|下拉框的页脚|-|
 |label|选择框的显示内容|data: `OptionInfo`|
 |option|选项内容|data: `OptionInfo`|
 |empty|选项为空时的显示内容|-|

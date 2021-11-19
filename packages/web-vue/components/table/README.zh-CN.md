@@ -94,7 +94,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |插槽名|描述|参数|
 |---|:---:|---|
 |title|标题|-|
-|cell|单元格|record: `TableData`<br>column: `TableColumn`|
+|cell|单元格|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`|
 
 
 
@@ -158,7 +158,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |sortable|排序相关选项|`TableSortable`|`-`|
 |filterable|过滤相关选项|`TableFilterable`|`-`|
 |children|表头子数据，用于表头分组|`TableColumn[]`|`-`|
-|render|自定义列单元格的渲染|`({    record,    column,  }: {    record: TableData;    column: TableColumn;  }) => VNode`|`-`|
+|render|自定义列单元格的渲染|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`|
 
 
 

@@ -56,6 +56,7 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |update-at-scroll|是否在容器滚动时更新弹出框的位置|`boolean`|`false`|
 |auto-fit-position|是否自动调整弹出框位置，以适应窗口大小|`boolean`|`true`|
 |render-to-body|是否挂载在 `body` 元素下|`boolean`|`true`|
+|prevent-focus|是否阻止弹出层中的元素点击时获取焦点|`boolean`|`false`|
 ### `<trigger>` Events
 
 |事件名|描述|参数|

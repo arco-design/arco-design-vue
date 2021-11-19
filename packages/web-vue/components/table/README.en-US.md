@@ -96,7 +96,7 @@ description: It is used for data collection, display, analysis and processing, a
 |Slot Name|Description|Parameters|
 |---|---|---|
 |title|Title|-|
-|cell|Cell|record: `TableData`<br>column: `TableColumn`|
+|cell|Cell|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`|
 
 
 
@@ -160,7 +160,7 @@ description: It is used for data collection, display, analysis and processing, a
 |sortable|Sorting related options|`TableSortable`|`-`|
 |filterable|Filter related options|`TableFilterable`|`-`|
 |children|Header sub-data, used for header grouping|`TableColumn[]`|`-`|
-|render|Customize the rendering of column cells|`({    record,    column,  }: {    record: TableData;    column: TableColumn;  }) => VNode`|`-`|
+|render|Customize the rendering of column cells|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`|
 
 
 

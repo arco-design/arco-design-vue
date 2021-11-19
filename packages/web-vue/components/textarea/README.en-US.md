@@ -28,6 +28,7 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 |show-word-limit|Whether to display word count|`boolean`|`false`|
 |allow-clear|Whether to allow clearing the text|`boolean`|`false`|
 |auto-size|Whether to make the textarea adapt to the height of the content|`boolean`|`false`|
+|word-length|Calculation method of word length|`(value: string) => number`|`-`|
 ### `<textarea>` Events
 
 |Event Name|Description|Parameters|

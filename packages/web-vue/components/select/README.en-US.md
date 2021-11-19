@@ -55,6 +55,7 @@ description: When users need to select one or more from a group of similar data,
 |filter-option|Whether to filter options|`boolean`|`true`|
 |options|Option data|`Option[]`|`[]`|
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`|
+|trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`|
 |format-label|Format display content|`(data: OptionInfo) => string`|`-`|
 ### `<select>` Events
 
@@ -72,6 +73,7 @@ description: When users need to select one or more from a group of similar data,
 
 |Slot Name|Description|Parameters|
 |---|---|---|
+|footer|The footer of the drop-down box|-|
 |label|Display content of label|data: `OptionInfo`|
 |option|Display content of options|data: `OptionInfo`|
 |empty|Display content when the option is empty|-|

@@ -44,6 +44,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |placeholder|Placeholder|`string`|`-`|
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
 |format-label|Format display content|`(options: CascaderOptionInfo[]) => string`|`-`|
+|trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`|
 ### `<cascader>` Events
 
 |Event Name|Description|Parameters|
