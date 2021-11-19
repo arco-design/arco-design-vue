@@ -1,5 +1,5 @@
 <template>
-  <div :class="prefixCls">
+  <div :class="cls">
     <spin :loading="loading" :style="{ width: '100%' }">
       <div v-if="isEmpty" :class="`${prefixCls}-empty`">
         <slot name="empty">
@@ -17,12 +17,15 @@
           <slot />
         </ul>
       </div>
+      <div v-if="$slots.footer && !isEmpty" :class="`${prefixCls}-footer`">
+        <slot name="footer" />
+      </div>
     </spin>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+import { computed, defineComponent, PropType, ref } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 import Empty from '../../empty';
 import Spin from '../../spin';
@@ -58,7 +61,7 @@ export default defineComponent({
     },
   },
   emits: ['scroll', 'reachBottom'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('dropdown');
     const wrapperRef = ref<HTMLElement>();
 
@@ -71,8 +74,16 @@ export default defineComponent({
       emit('scroll', e);
     };
 
+    const cls = computed(() => [
+      prefixCls,
+      {
+        [`${prefixCls}-has-footer`]: Boolean(slots.footer),
+      },
+    ]);
+
     return {
       prefixCls,
+      cls,
       wrapperRef,
       handleScroll,
     };
