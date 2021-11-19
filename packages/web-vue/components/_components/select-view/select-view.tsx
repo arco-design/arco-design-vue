@@ -327,6 +327,7 @@ export default defineComponent({
           disabled={props.disabled}
           allowClear={props.allowClear}
           size={props.size}
+          focused={mergedFocused.value}
           error={props.error}
           maxTagCount={props.maxTagCount}
           retainInputValue
