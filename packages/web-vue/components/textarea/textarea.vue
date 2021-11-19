@@ -47,6 +47,7 @@ import {
   defineComponent,
   nextTick,
   onMounted,
+  PropType,
   ref,
   watch,
 } from 'vue';
@@ -55,6 +56,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from './utils';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'Textarea',
@@ -125,6 +127,13 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 字符长度的计算方法
+     * @en Calculation method of word length
+     */
+    wordLength: {
+      type: Function as PropType<(value: string) => number>,
+    },
   },
   emits: [
     'update:modelValue',
@@ -166,6 +175,10 @@ export default defineComponent({
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
     const getTextLength = (text: string) => {
+      if (isFunction(props.wordLength)) {
+        return props.wordLength(text);
+      }
+
       return text.replace(/\n|\r/g, '').length;
     };
 
