@@ -118,6 +118,9 @@ export default defineComponent({
     const triggerPrefixCls = getPrefixCls('trigger');
     const tirggerClassNames = computed(() => [
       `${prefixCls.value}-trigger`,
+      {
+        [`${prefixCls.value}-trigger-dark`]: menuContext.theme === 'dark',
+      },
       menuContext.triggerProps?.value?.class,
     ]);
     const triggerProps = computed(() =>
