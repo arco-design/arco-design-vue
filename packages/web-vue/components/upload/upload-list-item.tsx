@@ -64,7 +64,7 @@ export default defineComponent({
     };
 
     return () => (
-      <li class={[itemCls, `${itemCls}-${props.file.status}`]}>
+      <span class={[itemCls, `${itemCls}-${props.file.status}`]}>
         <span class={`${itemCls}-content`}>
           {uploadCtx?.listType === 'picture' && (
             <span class={`${itemCls}-thumbnail`}>
@@ -104,7 +104,7 @@ export default defineComponent({
             </span>
           </IconHover>
         </span>
-      </li>
+      </span>
     );
   },
 });
