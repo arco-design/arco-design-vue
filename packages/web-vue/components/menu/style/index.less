@@ -3,6 +3,7 @@
 @import '../../dropdown/style/token.less';
 
 @menu-prefix-cls: ~'@{prefix}-menu';
+@trigger-menu-prefix-cls: ~'@{prefix}-trigger-menu';
 
 .applyStyleToItem(@style) {
   .@{menu-prefix-cls}-item,
@@ -20,6 +21,10 @@
   font-size: @menu-font-size;
   line-height: @menu-line-height;
   transition: width @transition-duration-2 @transition-timing-function-standard;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-primary-light-2);
+  }
 
   // 设置菜单层级的缩进
   &-indent {
@@ -252,11 +257,21 @@
     .@{menu-prefix-cls}-item,
     .@{menu-prefix-cls}-pop {
       display: inline-block;
+      flex-shrink: 0;
       vertical-align: middle;
 
       &:not(:first-child) {
         margin-left: @menu-horizontal-item-gap;
       }
+    }
+
+    .@{menu-prefix-cls}-pop::after {
+      position: absolute;
+      bottom: -$height;
+      left: 0;
+      width: 100%;
+      height: @menu-horizontal-padding-vertical;
+      content: ' ';
     }
   }
 
@@ -318,6 +333,15 @@
     .@{menu-prefix-cls}-icon-suffix {
       display: none;
     }
+
+    // Hide text after icon when menu is collapsed
+    @style-item-text: {
+      .@{prefix}-icon {
+        margin-right: 100%;
+      }
+    };
+
+    .applyStyleToItem(@style-item-text);
   }
 
   // 折叠按钮
@@ -358,120 +382,165 @@
     }
   }
 
-  &-pop-trigger.@{prefix}-trigger-position-bl {
-    transform: translateY(@menu-horizontal-padding-vertical);
+  // 弹出菜单浮层三角箭头
+  &-pop-trigger {
+    &.@{prefix}-trigger-position-bl {
+      transform: translateY(@menu-horizontal-padding-vertical);
 
-    .@{prefix}-trigger-arrow {
-      z-index: 0;
-      border-top: 1px solid @menu-color-border-popup;
-      border-left: 1px solid @menu-color-border-popup;
+      .@{prefix}-trigger-arrow {
+        z-index: 0;
+        border-top: 1px solid @menu-color-border-popup;
+        border-left: 1px solid @menu-color-border-popup;
+      }
     }
-  }
 
-  &-pop-trigger.@{prefix}-trigger-position-rt {
-    transform: translateX(@menu-vertical-padding-horizontal);
+    &.@{prefix}-trigger-position-rt {
+      transform: translateX(@menu-vertical-padding-horizontal);
 
-    .@{prefix}-trigger-arrow {
-      z-index: 0;
-      border-bottom: 1px solid @menu-color-border-popup;
-      border-left: 1px solid @menu-color-border-popup;
+      .@{prefix}-trigger-arrow {
+        z-index: 0;
+        border-bottom: 1px solid @menu-color-border-popup;
+        border-left: 1px solid @menu-color-border-popup;
+      }
+    }
+
+    &.@{menu-prefix-cls}-pop-trigger-dark {
+      .@{prefix}-trigger-arrow {
+        background-color: @menu-dark-color-bg;
+        border-color: @menu-dark-color-bg;
+      }
     }
   }
 }
 
 // trigger 里的 menu
-.@{prefix}-trigger {
-  &-menu {
-    position: relative;
-    box-sizing: border-box;
-    max-height: @dropdown-max-height;
-    padding: @dropdown-padding-vertical 0;
-    overflow: auto;
-    background-color: @dropdown-color-bg;
-    border: 1px solid @dropdown-color-border;
-    border-radius: @dropdown-border-radius;
-    box-shadow: @dropdown-box-shadow;
+.@{trigger-menu-prefix-cls} {
+  position: relative;
+  box-sizing: border-box;
+  max-height: @dropdown-max-height;
+  padding: @dropdown-padding-vertical 0;
+  overflow: auto;
+  background-color: @dropdown-color-bg;
+  border: 1px solid @dropdown-color-border;
+  border-radius: @dropdown-border-radius;
+  box-shadow: @dropdown-box-shadow;
 
-    &-hidden {
-      display: none;
+  &-hidden {
+    display: none;
+  }
+
+  &-item,
+  &-pop-header {
+    position: relative;
+    // 避免 Trigger 的小箭头位于其上方
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    height: @dropdown-option-height;
+    padding: 0 @dropdown-option-padding-horizontal;
+
+    // default
+    color: @dropdown-option-color-text_default;
+    font-size: @dropdown-font-size;
+    line-height: $height;
+    text-align: left;
+    background-color: @dropdown-option-color-bg_default;
+    cursor: pointer;
+    .text-ellipsis();
+
+    // selected
+    &.@{trigger-menu-prefix-cls}-selected {
+      color: @dropdown-option-color-text_selected;
+      font-weight: @dropdown-option-font-weight_selected;
+      background-color: @dropdown-option-color-bg_selected;
+      transition: all @transition-duration-1 @transition-timing-function-linear;
     }
 
-    &-item,
-    &-pop-header {
-      position: relative;
-      // 避免 Trigger 的小箭头位于其上方
-      z-index: 1;
-      box-sizing: border-box;
-      width: 100%;
-      height: @dropdown-option-height;
-      padding: 0 @dropdown-option-padding-horizontal;
+    // hover
+    &:hover {
+      color: @dropdown-option-color-text_hover;
+      background-color: @dropdown-option-color-bg_hover;
+    }
 
+    // disabled
+    &.@{trigger-menu-prefix-cls}-disabled {
+      color: @dropdown-option-color-text_disabled;
+      background-color: @dropdown-option-color-bg_disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  &-pop-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .@{trigger-menu-prefix-cls}-icon-suffix {
+      margin-left: @dropdown-margin-left-suffix-icon;
+    }
+  }
+
+  &-group {
+    &:first-child &-title {
+      padding-top: @dropdown-group-title-padding-top -
+        @dropdown-padding-vertical;
+    }
+  }
+
+  &-group-title {
+    box-sizing: border-box;
+    width: 100%;
+    padding: @dropdown-group-title-padding-top
+      @dropdown-group-title-padding-horizontal 0
+      @dropdown-group-title-padding-horizontal;
+    color: @dropdown-group-title-color-text;
+    font-size: @dropdown-group-title-font-size;
+    line-height: @dropdown-group-title-height;
+    .text-ellipsis();
+  }
+
+  &-pop-trigger {
+    // 下拉框的 menu 弹出不需要小箭头
+    .@{prefix}-trigger-arrow {
+      display: none;
+    }
+  }
+
+  &-dark {
+    background-color: @dropdown-dark-color-bg;
+    border-color: @dropdown-dark-color-border;
+
+    .@{trigger-menu-prefix-cls}-item,
+    .@{trigger-menu-prefix-cls}-pop-header {
       // default
-      color: @dropdown-option-color-text_default;
-      font-size: @dropdown-font-size;
-      line-height: $height;
-      text-align: left;
-      background-color: @dropdown-option-color-bg_default;
-      cursor: pointer;
-      .text-ellipsis();
+      color: @dropdown-dark-option-color-text_default;
+      background-color: @dropdown-dark-option-color-bg_default;
 
       // selected
-      &.@{prefix}-trigger-menu-selected {
-        color: @dropdown-option-color-text_selected;
-        font-weight: @dropdown-option-font-weight_selected;
-        background-color: @dropdown-option-color-bg_selected;
-        transition: all @transition-duration-1
-          @transition-timing-function-linear;
+      &.@{trigger-menu-prefix-cls}-selected {
+        color: @dropdown-dark-option-color-text_selected;
+        background-color: @dropdown-dark-option-color-bg_selected;
+
+        &:hover {
+          color: @dropdown-dark-option-color-text_selected;
+        }
       }
 
       // hover
       &:hover {
-        color: @dropdown-option-color-text_hover;
-        background-color: @dropdown-option-color-bg_hover;
+        color: @dropdown-dark-option-color-text_hover;
+        background-color: @dropdown-dark-option-color-bg_hover;
       }
 
       // disabled
-      &.@{prefix}-trigger-menu-disabled {
-        color: @dropdown-option-color-text_disabled;
-        background-color: @dropdown-option-color-bg_disabled;
-        cursor: not-allowed;
+      &.@{trigger-menu-prefix-cls}-disabled {
+        color: @dropdown-dark-option-color-text_disabled;
+        background-color: @dropdown-dark-option-color-bg_disabled;
       }
     }
 
-    &-pop-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .@{prefix}-trigger-menu-icon-suffix {
-        margin-left: @dropdown-margin-left-suffix-icon;
-      }
-    }
-
-    &-group {
-      &:first-child &-title {
-        padding-top: @dropdown-group-title-padding-top -
-          @dropdown-padding-vertical;
-      }
-    }
-
-    &-group-title {
-      box-sizing: border-box;
-      width: 100%;
-      padding: @dropdown-group-title-padding-top
-        @dropdown-group-title-padding-horizontal 0
-        @dropdown-group-title-padding-horizontal;
-      color: @dropdown-group-title-color-text;
-      font-size: @dropdown-group-title-font-size;
-      line-height: @dropdown-group-title-height;
-      .text-ellipsis();
-    }
-  }
-
-  &-menu-pop-trigger {
-    // 下拉框的 menu 弹出不需要小箭头
-    .@{prefix}-trigger-arrow {
-      display: none;
+    .@{trigger-menu-prefix-cls}-group-title {
+      color: @dropdown-dark-group-title-color-text;
     }
   }
 }
