@@ -6,7 +6,7 @@ import {
   ref,
   toRefs,
 } from 'vue';
-import ArcoInput from '../input';
+import ArcoTextarea from '../textarea';
 import Trigger from '../trigger';
 import { Dropdown, DropDownOption } from '../_components/dropdown';
 import { useOptions } from '../_hooks/use-options';
@@ -75,6 +75,7 @@ export default defineComponent({
      * @en Triggered when the drop-down option is selected
      * @property {string} value
      */
+    'search', // 动态搜索时触发
     'select',
   ],
   setup(props, { emit, attrs }) {
@@ -99,7 +100,7 @@ export default defineComponent({
       };
     };
 
-    const inputRef = ref();
+    const textareaRef = ref();
 
     const measureText = computed(() => measureInfo.value.text);
     const filterOption = ref(true);
@@ -118,6 +119,7 @@ export default defineComponent({
             ...lastMeasure,
           };
         }
+        emit('search', measureText);
       } else if (measureInfo.value.location > -1) {
         resetMeasureInfo();
       }
@@ -285,21 +287,17 @@ export default defineComponent({
         autoFitPopupWidth
         onPopupVisibleChange={handlePopupVisibleChange}
       >
-        <ArcoInput
-          ref={inputRef}
+        <ArcoTextarea
+          ref={textareaRef}
           modelValue={computeValue.value}
           onInput={handleInput}
           onKeydown={handleKeyDown}
+          rows="1" // style height backward compatible
           {...attrs}
         />
       </Trigger>
     );
 
-    return {
-      render,
-    };
-  },
-  render() {
-    return this.render();
+    return render;
   },
 });
