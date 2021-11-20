@@ -18,10 +18,10 @@ Specify `prefix` to customize the trigger character. The default is `@`, which c
 
 ```vue
 <template>
-  <a-space direction="vertical" size="large">
-    <a-mention :data="['Bytedance', 'Bytedesign', 'Bytenumner']" placeholder="input @" :style="{width:'320px'}"/>
-    <a-mention prefix="#" :data="['Bytedance', 'Bytedesign', 'Bytenumner']" placeholder="input #" :style="{width:'320px'}"/>
-    <a-mention prefix="$" :data="['Bytedance', 'Bytedesign', 'Bytenumner']" placeholder="input $" :style="{width:'320px'}"/>
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-mention :data="['Bytedance', 'Bytedesign', 'Bytenumner']" placeholder="input @" />
+    <a-mention :data="['Bytedance', 'Bytedesign', 'Bytenumner']" prefix="#" placeholder="input #" />
+    <a-mention :data="['Bytedance', 'Bytedesign', 'Bytenumner']" prefix="$" placeholder="input $" />
   </a-space>
 </template>
 ```

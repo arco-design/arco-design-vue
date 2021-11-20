@@ -18,6 +18,14 @@ Used to mention someone or something in the input, often used for posting, chatt
 
 ```vue
 <template>
-  <a-mention placeholder="enter something" :data="['Bytedance', 'Bytedesign', 'Bytenumner']" :style="{width:'320px'}"/>
+  <a-mention :data="data" rows="3" placeholder="enter something" @search="search" style="width: 100%" />
 </template>
+<script setup>
+import { ref } from 'vue'
+
+const data = ref([])
+const search = (value) => value &&
+  (data.value = ['Bytedance', 'Bytedesign', 'Bytenumner']
+    .filter(item => item.toLowerCase().indexOf(value.toLowerCase()) > -1))
+</script>
 ```
