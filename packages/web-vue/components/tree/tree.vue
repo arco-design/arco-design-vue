@@ -432,7 +432,7 @@ export default defineComponent({
       });
     });
 
-    function onCheck(checked: boolean, key: TreeNodeKey, e: Event) {
+    function onCheck(checked: boolean, key: TreeNodeKey, e?: Event) {
       const node = key2TreeNode.value[key];
       if (!node) return;
 
@@ -549,6 +549,9 @@ export default defineComponent({
               await loadMore.value(treeNodeData);
               loadingKeys.value = loadingKeys.value.filter((v) => v !== key);
               onExpand(true, key);
+              if (checkedKeys.value.includes(node.key)) {
+                onCheck(true, node.key);
+              }
             } catch (err) {
               loadingKeys.value = loadingKeys.value.filter((v) => v !== key);
               // eslint-disable-next-line no-console
