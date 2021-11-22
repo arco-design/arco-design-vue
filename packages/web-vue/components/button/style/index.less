@@ -152,12 +152,13 @@
 
 .btn-size(@size) {
   @size-type: ~'size-@{size}';
+  @size-height: ~'btn-size-@{size}-height';
   @bsp: ~'btn-@{size-type}-padding-horizontal';
   @bsf: ~'btn-@{size-type}-font-size';
   @bss: ~'btn-@{size-type}-icon-spacing';
 
   .@{btn-prefix-cls}-@{size-type} {
-    height: @@size-type;
+    height: @@size-height;
     padding: 0 @@bsp;
     font-size: @@bsf;
     border-radius: ~'@{btn-@{size-type}-radius}';
