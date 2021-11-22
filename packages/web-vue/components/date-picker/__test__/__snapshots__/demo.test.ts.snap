@@ -484,7 +484,9 @@ exports[`<date-picker> demo: render [panel-only] correctly 1`] = `
       </div>
       <div class=\\"arco-picker-footer\\">
         <!--v-if-->
-        <div class=\\"arco-picker-footer-now-wrapper\\"><a class=\\"arco-link arco-link-status-normal\\">今天</a></div>
+        <div class=\\"arco-picker-footer-now-wrapper\\"><a class=\\"arco-link arco-link-status-normal\\">
+            <!--v-if-->今天
+          </a></div>
         <!--v-if-->
       </div>
     </div>

@@ -21,4 +21,9 @@ description: The basic style of the link.
 
 @import ./__demo__/status.md
 
+@import ./__demo__/hoverable.md
+
+@import ./__demo__/icon.md
+
+
 %%API(link.vue)%%
