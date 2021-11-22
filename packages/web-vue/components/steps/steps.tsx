@@ -1,7 +1,7 @@
 import { computed, defineComponent, PropType, ref } from 'vue';
 import { Direction, DIRECTIONS } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
-import { mergePropsWithIndex } from '../_utils/vue-utils';
+import { getChildrenComponents } from '../_utils/vue-utils';
 import { StepStatus, StepsType } from './interface';
 
 export default defineComponent({
@@ -132,27 +132,6 @@ export default defineComponent({
       return props.status;
     };
 
-    const children = computed(() => {
-      const children = slots.default?.() ?? [];
-      mergePropsWithIndex(children, 'Step', (index) => {
-        const step = index + 1;
-        const status = getStatus(step, computedCurrent.value);
-        return {
-          step,
-          current: computedCurrent.value,
-          status,
-          direction: direction.value,
-          labelPlacement: labelPlacement.value,
-          lineLess: props.lineLess,
-          type: props.type,
-          changeable: props.changeable,
-          onClick: handleClick,
-        };
-      });
-
-      return children;
-    });
-
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-${direction.value}`,
@@ -165,6 +144,28 @@ export default defineComponent({
       },
     ]);
 
-    return () => <div class={cls.value}>{children.value}</div>;
+    return () => {
+      const children = getChildrenComponents(
+        slots.default?.() ?? [],
+        'Step',
+        (vn, index) => {
+          const step = index + 1;
+          const status = getStatus(step, computedCurrent.value);
+          return {
+            step,
+            current: computedCurrent.value,
+            status: vn.props?.status ?? status,
+            direction: direction.value,
+            labelPlacement: labelPlacement.value,
+            lineLess: props.lineLess,
+            type: props.type,
+            changeable: props.changeable,
+            onClick: handleClick,
+          };
+        }
+      );
+
+      return <div class={cls.value}>{children}</div>;
+    };
   },
 });
