@@ -5,8 +5,10 @@ import {
   PropType,
   ref,
   toRefs,
+  h,
 } from 'vue';
 import ArcoTextarea from '../textarea';
+import ArcoInput from '../input';
 import Trigger from '../trigger';
 import { Dropdown, DropDownOption } from '../_components/dropdown';
 import { useOptions } from '../_hooks/use-options';
@@ -60,6 +62,14 @@ export default defineComponent({
     split: {
       type: String,
       default: ' ',
+    },
+    /**
+     * @zh 输入框或文本域
+     * @en default input or textarea
+     */
+    type: {
+      type: String,
+      default: 'text',
     },
   },
   emits: [
@@ -287,14 +297,13 @@ export default defineComponent({
         autoFitPopupWidth
         onPopupVisibleChange={handlePopupVisibleChange}
       >
-        <ArcoTextarea
-          ref={textareaRef}
-          modelValue={computeValue.value}
-          onInput={handleInput}
-          onKeydown={handleKeyDown}
-          rows="1" // style height backward compatible
-          {...attrs}
-        />
+        {h(props.type === 'textarea' ? ArcoTextarea : ArcoInput, {
+          ref: textareaRef,
+          modelValue: computeValue.value,
+          onInput: handleInput,
+          onKeydown: handleKeyDown,
+          ...attrs,
+        })}
       </Trigger>
     );
 

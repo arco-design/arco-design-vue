@@ -18,7 +18,10 @@ Used to mention someone or something in the input, often used for posting, chatt
 
 ```vue
 <template>
-  <a-mention :data="data" rows="3" placeholder="enter something" @search="search" style="width: 100%" />
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-mention :data="data" placeholder="enter something" @search="search" />
+    <a-mention :data="data" type="textarea" placeholder="enter something" @search="search" />
+  </a-space>
 </template>
 <script setup>
 import { ref } from 'vue'
