@@ -40,6 +40,8 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |mask-style|蒙层的样式|`CSSProperties`|`-`|
 |modal-class|对话框的类名|`string \| any[]`|`-`|
 |modal-style|对话框的样式|`CSSProperties`|`-`|
+|on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`|
+|on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`|
 ### `<modal>` Events
 
 |事件名|描述|参数|

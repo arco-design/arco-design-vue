@@ -42,6 +42,8 @@ description: Open a floating layer on the current page to carry related operatio
 |mask-style|Mask style|`CSSProperties`|`-`|
 |modal-class|The classname of the modal|`string \| any[]`|`-`|
 |modal-style|Modal style|`CSSProperties`|`-`|
+|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`|
+|on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|
