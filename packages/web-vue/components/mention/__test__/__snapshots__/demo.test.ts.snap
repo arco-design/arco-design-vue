@@ -6,7 +6,12 @@ exports[`<mention> demo: render [basic] correctly 1`] = `
     <!--teleport start-->
     <!--teleport end-->
   </div>
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"textarea\\" placeholder=\\"enter something\\"><!----><!----></span>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-textarea-wrapper\\">
+      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"enter something\\"></textarea>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
     <!--teleport start-->
     <!--teleport end-->
   </div>
