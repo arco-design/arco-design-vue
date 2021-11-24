@@ -9,6 +9,8 @@
   @collapse-expand-icon-size-bg
 );
 
+.icon-hover-bg(~'@{collapse-prefix-cls}-item', @collapse-expand-icon-color-bg);
+
 .@{collapse-prefix-cls} {
   overflow: hidden;
   line-height: @collapse-line-height;
@@ -18,7 +20,7 @@
   &-item {
     box-sizing: border-box;
     border-bottom: @collapse-title-border-width solid
-      @collapse-title-color-border;
+      @collapse-item-color-border;
 
     &-active {
       > .@{collapse-prefix-cls}-item-header {
@@ -34,7 +36,8 @@
           transform: rotate(90deg);
         }
 
-        .@{collapse-prefix-cls}-item-icon-right .@{collapse-prefix-cls}-item-expand-icon {
+        .@{collapse-prefix-cls}-item-icon-right
+          .@{collapse-prefix-cls}-item-expand-icon {
           transform: rotate(-90deg);
         }
       }
@@ -46,14 +49,15 @@
       align-items: center;
       justify-content: space-between;
       box-sizing: border-box;
-      min-height: @collapse-title-min-height;
       padding-top: @collapse-title-padding-vertical;
+      line-height: @collapse-title-line-height;
       padding-bottom: $padding-top;
       overflow: hidden;
       color: @collapse-title-color-text;
       background-color: @collapse-title-color-bg;
       border-bottom: 1px solid @color-transparent;
       cursor: pointer;
+      font-size: @collapse-title-font-size;
       // Ensure that the border is hidden when the collapse animation is complete
       transition: border-color 0s ease 0.19s;
 
@@ -95,8 +99,6 @@
       left: @collapse-title-padding-horizontal;
       text-align: center;
       transform: translateY(-50%);
-
-
     }
 
     & &-icon-right {
@@ -137,6 +139,10 @@
       &-box {
         padding: @collapse-content-padding-vertical 0;
       }
+    }
+
+    &&-disabled > &-content {
+      color: @collapse-content-color-text_disabled;
     }
 
     &-no-icon > &-header {
