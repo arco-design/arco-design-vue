@@ -154,9 +154,13 @@ export default defineComponent({
      * @en The title of the source and target selection boxes
      */
     title: {
-      type: Array as PropType<[string, string]>,
+      type: Array as PropType<string[]>,
       default: () => ['Source', 'Target'],
     },
+    // for JSX
+    onChange: [Function, Array],
+    onSelect: [Function, Array],
+    onSearch: [Function, Array],
   },
   emits: [
     'update:modelValue',

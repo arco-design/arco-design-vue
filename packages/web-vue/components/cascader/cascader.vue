@@ -66,7 +66,7 @@ import CascaderSearchPanel from './cascader-search-panel';
 import { CascaderOption, CascaderOptionInfo } from './interface';
 import { isArray } from '../_utils/is';
 import { InputValueChangeReason } from '../select/select';
-import { Data } from '../_utils/types';
+import { Data, EmitType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 
@@ -241,6 +241,29 @@ export default defineComponent({
     triggerProps: {
       type: Object as PropType<TriggerProps>,
     },
+    // for JSX
+    onChange: [Function, Array] as PropType<
+      EmitType<
+        (
+          value:
+            | string
+            | number
+            | Array<string | number>
+            | undefined
+            | (string | number | Array<string | number>)[]
+        ) => void
+      >
+    >,
+    onInputValueChange: [Function, Array] as PropType<
+      EmitType<(inputValue: string) => void>
+    >,
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
+    onClear: [Function, Array] as PropType<EmitType<() => void>>,
+    onSearch: [Function, Array] as PropType<
+      EmitType<(inputValue: string) => void>
+    >,
   },
   emits: [
     'update:modelValue',

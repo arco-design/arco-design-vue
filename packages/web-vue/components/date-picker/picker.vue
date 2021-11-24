@@ -90,6 +90,7 @@ import useHeaderValue from './hooks/use-header-value';
 import { omit } from '../_utils/omit';
 import useTimePickerValue from './hooks/use-time-picker-value';
 import { mergeValueWithTime } from './utils';
+import { EmitType } from '../_utils/types';
 
 /**
  * @displayName Common
@@ -282,6 +283,26 @@ export default defineComponent({
     defaultValue: {
       type: [Date, String, Number],
     },
+    // for JSX
+    onChange: [Function, Array] as PropType<
+      EmitType<(dateString: string, date: Date) => void>
+    >,
+    onSelect: [Function, Array] as PropType<
+      EmitType<(dateString: string, date: Date) => void>
+    >,
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
+    onOk: [Function, Array] as PropType<
+      EmitType<(dateString: string, date: Date) => void>
+    >,
+    onClear: [Function, Array] as PropType<EmitType<() => void>>,
+    onSelectShortcut: [Function, Array] as PropType<
+      EmitType<(shortcut: ShortcutType) => void>
+    >,
+    onPickerValueChange: [Function, Array] as PropType<
+      EmitType<(dateString: string, date: Date) => void>
+    >,
   },
   emits: [
     /**

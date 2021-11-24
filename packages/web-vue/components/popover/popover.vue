@@ -31,7 +31,7 @@ import { computed, CSSProperties, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { TRIGGER_POSITIONS, TRIGGER_EVENTS } from '../_utils/constant';
 import Trigger from '../trigger';
-import { ClassName } from '../_utils/types';
+import { ClassName, EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Popover',
@@ -135,6 +135,10 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
+    // for JSX
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
   },
   emits: [
     'update:popupVisible',

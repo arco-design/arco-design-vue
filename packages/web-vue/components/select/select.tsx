@@ -14,7 +14,7 @@ import { getValueDataFromModelValue } from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
-import { Data } from '../_utils/types';
+import { Data, EmitType } from '../_utils/types';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 import usePickSlots from '../_hooks/use-pick-slots';
 import {
@@ -227,26 +227,22 @@ export default defineComponent({
       type: Function as PropType<(data: OptionInfo) => string>,
     },
     // for JSX
-    onChange: {
-      type: Function as PropType<
-        (value: string | number | Array<string | number>) => void
-      >,
-    },
-    onInputValueChange: {
-      type: Function as PropType<(inputValue: string) => void>,
-    },
-    onPopupVisibleChange: {
-      type: Function as PropType<(popupVisible: boolean) => void>,
-    },
-    onClear: {
-      type: Function as PropType<() => void>,
-    },
-    onRemove: {
-      type: Function as PropType<(removed: string) => void>,
-    },
-    onSearch: {
-      type: Function as PropType<(inputValue: string) => void>,
-    },
+    onChange: [Function, Array] as PropType<
+      EmitType<(value: string | number | Array<string | number>) => void>
+    >,
+    onInputValueChange: [Function, Array] as PropType<
+      EmitType<(inputValue: string) => void>
+    >,
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
+    onClear: [Function, Array] as PropType<EmitType<() => void>>,
+    onRemove: [Function, Array] as PropType<
+      EmitType<(removed: string) => void>
+    >,
+    onSearch: [Function, Array] as PropType<
+      EmitType<(inputValue: string) => void>
+    >,
   },
   emits: [
     'update:modelValue',

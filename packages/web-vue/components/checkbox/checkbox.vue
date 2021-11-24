@@ -32,6 +32,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconCheck from './icon-check';
 import { isArray } from '../_utils/is';
 import { checkboxGroupKey } from './context';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Checkbox',
@@ -83,11 +84,9 @@ export default defineComponent({
       default: false,
     },
     // for JSX
-    onChange: {
-      type: Function as PropType<
-        (value: boolean | Array<string | number | boolean>) => void
-      >,
-    },
+    onChange: [Function, Array] as PropType<
+      EmitType<(value: boolean | Array<string | number | boolean>) => void>
+    >,
   },
   emits: [
     'update:modelValue',

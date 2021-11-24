@@ -23,7 +23,7 @@ import {
   vShow,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import type { AnimationDuration, ClassName } from '../_utils/types';
+import type { AnimationDuration, ClassName, EmitType } from '../_utils/types';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
 import { TRIGGER_EVENTS } from '../_utils/constant';
 import {
@@ -323,9 +323,9 @@ export default defineComponent({
       default: false,
     },
     // for JSX
-    onPopupVisibleChange: {
-      type: Function as PropType<(popupVisible: boolean) => void>,
-    },
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
   },
   emits: [
     'update:popupVisible',

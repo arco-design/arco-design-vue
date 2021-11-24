@@ -102,6 +102,7 @@ import RangePanel from './range-panel';
 import useIsDisabledTime from './hooks/use-is-disabled-time';
 import useMergeState from '../_hooks/use-merge-state';
 import { useI18n } from '../locale';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'TimePicker',
@@ -294,6 +295,27 @@ export default defineComponent({
     unmountOnClose: {
       type: Boolean,
     },
+    // for JSX
+    onChange: [Function, Array] as PropType<
+      EmitType<
+        (
+          timeString: string | Array<string | undefined> | undefined,
+          time: Date | Array<Date | undefined> | undefined
+        ) => void
+      >
+    >,
+    onSelect: [Function, Array] as PropType<
+      EmitType<
+        (
+          timeString: string | Array<string | undefined>,
+          time: Date | Array<Date | undefined>
+        ) => void
+      >
+    >,
+    onClear: [Function, Array] as PropType<EmitType<() => void>>,
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
   },
   emits: [
     /**
