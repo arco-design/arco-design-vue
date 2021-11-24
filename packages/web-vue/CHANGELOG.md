@@ -2,6 +2,27 @@
 changelog: true
 ```
 
+## 2.6.1
+
+`2021-11-24`
+
+### 💎 Optimization
+
+- **table:** Do not scroll when data is empty ([#245](https://github.com/arco-design/arco-design-vue/pull/245))
+
+### 🐛 BugFix
+
+- **trigger:** Fix the problem of triggering errors when nesting different types of `<trigger>` ([#244](https://github.com/arco-design/arco-design-vue/pull/244))
+- **page-header:** Fix the problem that the dividing line is still displayed when there is no subtitle ([#224](https://github.com/arco-design/arco-design-vue/pull/224))
+- **table:** Fix the issue that the expand row button triggers form submission ([#210](https://github.com/arco-design/arco-design-vue/pull/210))
+- **steps:** Fix the problem that the `status` attribute in the `<step>` component does not take effect ([#209](https://github.com/arco-design/arco-design-vue/pull/209))
+- **form:** Fix the problem that the additional content style of the form does not take effect ([#208](https://github.com/arco-design/arco-design-vue/pull/208))
+
+### 🆎 TypeScript
+
+- Fix the issue of type warning in the console when using input components in `<form>` ([#247](https://github.com/arco-design/arco-design-vue/pull/247))
+
+
 ## 2.6.0
 
 `2021-11-19`

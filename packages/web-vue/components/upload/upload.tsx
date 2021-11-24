@@ -507,6 +507,7 @@ export default defineComponent({
     const renderButton = () => {
       return (
         <UploadButton
+          key="arco-upload-button"
           v-slots={{
             default: slots['upload-button'],
           }}
