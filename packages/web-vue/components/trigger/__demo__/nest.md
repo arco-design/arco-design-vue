@@ -18,19 +18,19 @@ title:
 ```vue
 <template>
   <a-trigger trigger="click" class="trigger-demo-nest">
-    <a-button>Hover Me</a-button>
+    <a-button>Click Me</a-button>
     <template #content>
       <div>
         <a-empty />
-        <a-trigger trigger="click" class="trigger-demo-nest" position="right">
+        <a-trigger class="trigger-demo-nest" position="right">
           <a-button>Hover Me</a-button>
           <template #content>
             <a-empty />
             <a-trigger trigger="click" class="trigger-demo-nest" position="right">
-              <a-button>Hover Me</a-button>
+              <a-button>Click Me</a-button>
               <template #content>
                 <a-empty />
-                <a-trigger trigger="click" class="trigger-demo-nest" position="right">
+                <a-trigger class="trigger-demo-nest" position="right">
                   <a-button>Hover Me</a-button>
                   <template #content>
                     <a-empty />
