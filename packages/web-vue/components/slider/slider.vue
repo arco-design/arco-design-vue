@@ -73,6 +73,7 @@ import SliderInput from './slider-input.vue';
 import { isArray, isUndefined } from '../_utils/is';
 import { Direction, DIRECTIONS } from '../_utils/constant';
 import { getOffsetPercent, getPositionStyle } from './utils';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Slider',
@@ -176,9 +177,9 @@ export default defineComponent({
       type: Function,
     },
     // for JSX
-    onChange: {
-      type: Function as PropType<(value: number | [number, number]) => void>,
-    },
+    onChange: [Function, Array] as PropType<
+      EmitType<(value: number | [number, number]) => void>
+    >,
   },
   emits: [
     'update:modelValue',

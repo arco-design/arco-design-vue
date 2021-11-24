@@ -29,7 +29,7 @@
         :multiple="isMultiple"
         v-bind="$attrs"
         @inputValueChange="onSearchValueChange"
-        @clear="onClear"
+        @clear="onInnerClear"
       >
         <slot v-if="$slots.prefix" name="prefix" />
         <slot v-if="$slots.tag" name="tag" />
@@ -100,6 +100,7 @@ import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
 import pickSubCompSlots from '../_utils/pick-sub-comp-slots';
+import { EmitType } from '../_utils/types';
 
 const isEmpty = (val: any) => {
   return !val || (isArray(val) && val.length === 0) || isEmptyObject(val);
@@ -334,6 +335,27 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
+    // for JSX
+    onChange: [Function, Array] as PropType<
+      EmitType<
+        (
+          selectedValue:
+            | string
+            | number
+            | LabelValue
+            | Array<string | number>
+            | LabelValue[]
+            | undefined
+        ) => void
+      >
+    >,
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
+    onSearch: [Function, Array] as PropType<
+      EmitType<(searchValue: string) => void>
+    >,
+    onClear: [Function, Array] as PropType<EmitType<() => void>>,
   },
   emits: [
     /**
@@ -387,7 +409,7 @@ export default defineComponent({
    * @en Custom empty data display
    * @slot empty
    */
-  setup(props: TreeSelectProps, { emit }) {
+  setup(props, { emit }) {
     const {
       defaultValue,
       modelValue,
@@ -511,7 +533,7 @@ export default defineComponent({
         }
       },
       onVisibleChange: setPanelVisible,
-      onClear() {
+      onInnerClear() {
         setSelectedKeys([]);
         emit('clear');
       },

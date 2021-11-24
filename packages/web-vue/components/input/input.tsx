@@ -8,6 +8,7 @@ import IconClose from '../icon/icon-close';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { isFunction } from '../_utils/is';
+import { EmitType } from '../_utils/types';
 
 const INPUT_TYPES = ['text', 'password'] as const;
 type InputType = typeof INPUT_TYPES[number];
@@ -104,24 +105,18 @@ export default defineComponent({
       default: 'text',
     },
     // for JSX
-    onInput: {
-      type: Function as PropType<(value: string, e: Event) => void>,
-    },
-    onChange: {
-      type: Function as PropType<(value: string) => void>,
-    },
-    onPressEnter: {
-      type: Function as PropType<() => void>,
-    },
-    onClear: {
-      type: Function as PropType<() => void>,
-    },
-    onFocus: {
-      type: Function as PropType<() => void>,
-    },
-    onBlur: {
-      type: Function as PropType<() => void>,
-    },
+    onInput: [Function, Array] as PropType<
+      EmitType<(value: string, ev: Event) => void>
+    >,
+    onChange: [Function, Array] as PropType<
+      EmitType<(value: string, ev: Event) => void>
+    >,
+    onPressEnter: [Function, Array] as PropType<
+      EmitType<(ev: KeyboardEvent) => void>
+    >,
+    onClear: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    onFocus: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    onBlur: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
   },
   emits: [
     'update:modelValue',
@@ -218,18 +213,18 @@ export default defineComponent({
       }
     };
 
-    const handleFocus = (e: Event) => {
+    const handleFocus = (e: FocusEvent) => {
       focused.value = true;
       emit('focus', e);
     };
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = (e: FocusEvent) => {
       focused.value = false;
-      emit('change', computedValue.value);
+      emit('change', computedValue.value, e);
       emit('blur', e);
     };
 
-    const handleComposition = (e: InputEvent) => {
+    const handleComposition = (e: CompositionEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -252,15 +247,15 @@ export default defineComponent({
       }
     };
 
-    const handleClear = () => {
-      emit('clear');
+    const handleClear = (ev: MouseEvent) => {
+      emit('clear', ev);
       updateValue('');
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyCode = e.code || e.key;
       if (!isComposition.value && keyCode === Enter.code) {
-        emit('change', computedValue.value);
+        emit('change', computedValue.value, e);
         emit('pressEnter', e);
       }
     };

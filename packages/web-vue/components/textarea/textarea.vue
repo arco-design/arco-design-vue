@@ -57,6 +57,7 @@ import IconClose from '../icon/icon-close';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from './utils';
 import { isFunction } from '../_utils/is';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Textarea',
@@ -134,6 +135,16 @@ export default defineComponent({
     wordLength: {
       type: Function as PropType<(value: string) => number>,
     },
+    // for JSX
+    onInput: [Function, Array] as PropType<
+      EmitType<(value: string, ev: Event) => void>
+    >,
+    onChange: [Function, Array] as PropType<
+      EmitType<(value: string, ev: Event) => void>
+    >,
+    onClear: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    onFocus: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    onBlur: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
   },
   emits: [
     'update:modelValue',
@@ -231,18 +242,18 @@ export default defineComponent({
       });
     };
 
-    const handleFocus = (e: Event) => {
+    const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
-      emit('focus', e);
+      emit('focus', ev);
     };
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = (ev: FocusEvent) => {
       focused.value = false;
-      emit('change', computedValue.value);
-      emit('blur', e);
+      emit('change', computedValue.value, ev);
+      emit('blur', ev);
     };
 
-    const handleComposition = (e: Event) => {
+    const handleComposition = (e: CompositionEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -266,9 +277,9 @@ export default defineComponent({
       }
     };
 
-    const handleClear = () => {
+    const handleClear = (ev: MouseEvent) => {
       updateValue('');
-      emit('clear');
+      emit('clear', ev);
     };
 
     // modelValue发生改变时，更新内部值

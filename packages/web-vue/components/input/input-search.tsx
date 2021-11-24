@@ -1,4 +1,4 @@
-import { defineComponent, ref } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconSearch from '../icon/icon-search';
@@ -6,6 +6,7 @@ import IconLoading from '../icon/icon-loading';
 import Button from '../button';
 import Input from './input';
 import InputGroup from './input-group.vue';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'InputSearch',
@@ -27,6 +28,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    // for JSX
+    onSearch: [Function, Array] as PropType<
+      EmitType<(value: string, ev: MouseEvent) => void>
+    >,
   },
   emits: [
     /**
@@ -41,7 +46,7 @@ export default defineComponent({
 
     const inputRef = ref();
 
-    const handleClick = (e: Event) => {
+    const handleClick = (e: MouseEvent) => {
       if (inputRef.value.inputRef) {
         emit('search', (inputRef.value.inputRef as HTMLInputElement).value, e);
       }

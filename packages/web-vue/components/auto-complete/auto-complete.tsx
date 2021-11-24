@@ -19,6 +19,7 @@ import {
 import { isFunction } from '../_utils/is';
 import { Dropdown, DropDownOption } from '../_components/dropdown';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'AutoComplete',
@@ -83,15 +84,9 @@ export default defineComponent({
       default: true,
     },
     // for JSX
-    onChange: {
-      type: Function as PropType<(value: string) => void>,
-    },
-    onSearch: {
-      type: Function as PropType<(value: string) => void>,
-    },
-    onSelect: {
-      type: Function as PropType<(value: string) => void>,
-    },
+    onChange: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    onSearch: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    onSelect: [Function, Array] as PropType<EmitType<(value: string) => void>>,
   },
   emits: [
     'update:modelValue',

@@ -17,6 +17,8 @@ export type BaseType = string | number;
 export type Data = Record<string, any>;
 export type RenderContent = string | RenderFunction;
 
+export type EmitType<T> = T | T[];
+
 export type SFCWithInstall<T, D = Record<string, never>> = T &
   D & {
     install: (app: App, opt?: ArcoOptions) => void;

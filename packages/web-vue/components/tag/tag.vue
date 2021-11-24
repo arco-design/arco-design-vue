@@ -29,6 +29,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import IconLoading from '../icon/icon-loading';
 import { TAG_COLORS, TagColor } from './interface';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Tag',
@@ -114,12 +115,12 @@ export default defineComponent({
       default: true,
     },
     // for JSX
-    onClose: {
-      type: Function as PropType<() => void>,
-    },
-    onCheck: {
-      type: Function as PropType<(checked: boolean) => void>,
-    },
+    onClose: [Function, Array] as PropType<
+      EmitType<(event: MouseEvent) => void>
+    >,
+    onCheck: [Function, Array] as PropType<
+      EmitType<(checked: boolean, event: MouseEvent) => void>
+    >,
   },
   emits: [
     'update:visible',
@@ -160,18 +161,18 @@ export default defineComponent({
       props.checkable ? props.checked ?? _checked.value : true
     );
 
-    const handleClose = () => {
+    const handleClose = (ev: MouseEvent) => {
       _visible.value = false;
       emit('update:visible', false);
-      emit('close');
+      emit('close', ev);
     };
 
-    const handleClick = () => {
+    const handleClick = (ev: MouseEvent) => {
       if (props.checkable) {
         const newChecked = !computedChecked.value;
         _checked.value = newChecked;
         emit('update:checked', newChecked);
-        emit('check', newChecked);
+        emit('check', newChecked, ev);
       }
     };
 

@@ -20,6 +20,7 @@ import IconClose from '../icon/icon-close';
 import { TagData } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'InputTag',
@@ -126,28 +127,6 @@ export default defineComponent({
     formatTag: {
       type: Function as PropType<(data: TagData) => string>,
     },
-    // for JSX
-    onChange: {
-      type: Function as PropType<(value: string | number | TagData) => void>,
-    },
-    onInputValueChange: {
-      type: Function as PropType<(inputValue: string) => void>,
-    },
-    onPressEnter: {
-      type: Function as PropType<() => void>,
-    },
-    onRemove: {
-      type: Function as PropType<(removed: string | number) => void>,
-    },
-    onClear: {
-      type: Function as PropType<() => void>,
-    },
-    onFocus: {
-      type: Function as PropType<() => void>,
-    },
-    onBlur: {
-      type: Function as PropType<() => void>,
-    },
     hideSuffixOnClear: {
       type: Boolean,
       default: false,
@@ -155,6 +134,30 @@ export default defineComponent({
     // private
     baseCls: String,
     focused: Boolean,
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number | TagData) => void>
+      >,
+    },
+    onInputValueChange: {
+      type: [Function, Array] as PropType<(inputValue: string) => void>,
+    },
+    onPressEnter: {
+      type: [Function, Array] as PropType<() => void>,
+    },
+    onRemove: {
+      type: [Function, Array] as PropType<(removed: string | number) => void>,
+    },
+    onClear: {
+      type: [Function, Array] as PropType<() => void>,
+    },
+    onFocus: {
+      type: [Function, Array] as PropType<() => void>,
+    },
+    onBlur: {
+      type: [Function, Array] as PropType<() => void>,
+    },
   },
   emits: [
     'update:modelValue',
@@ -221,7 +224,7 @@ export default defineComponent({
       emit('update:inputValue', value);
     };
 
-    const handleComposition = (e: InputEvent) => {
+    const handleComposition = (e: CompositionEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -279,20 +282,20 @@ export default defineComponent({
       return valueData;
     });
 
-    const handleRemove = (value: string | number, index: number) => {
+    const handleRemove = (value: string | number, index: number, e: Event) => {
       const newValue = computedValue.value?.filter((_, i) => i !== index);
       _value.value = newValue;
-      emit('remove', value);
+      emit('remove', value, e);
       emit('update:modelValue', newValue);
-      emit('change', newValue);
+      emit('change', newValue, e);
     };
 
-    const handleClear = (e: Event) => {
+    const handleClear = (e: MouseEvent) => {
       const newValue: any[] = [];
       _value.value = newValue;
       emit('clear', e);
       emit('update:modelValue', newValue);
-      emit('change', newValue);
+      emit('change', newValue, e);
     };
 
     const showClearBtn = computed(
@@ -302,31 +305,31 @@ export default defineComponent({
         Boolean(computedValue.value.length)
     );
 
-    const handlePressEnter = (e: Event) => {
+    const handlePressEnter = (e: KeyboardEvent) => {
       if (computedInputValue.value) {
         e.preventDefault();
         const newValue = computedValue.value.concat(computedInputValue.value);
         _value.value = newValue;
         emit('update:modelValue', newValue);
-        emit('change', newValue);
-        emit('pressEnter', computedInputValue.value);
+        emit('change', newValue, e);
+        emit('pressEnter', computedInputValue.value, e);
 
         if (!props.retainInputValue) {
           _inputValue.value = '';
           emit('update:inputValue', '');
-          emit('inputValueChange', '');
+          emit('inputValueChange', '', e);
         }
       }
     };
 
-    const handleFocus = () => {
+    const handleFocus = (ev: FocusEvent) => {
       _focused.value = true;
-      emit('focus');
+      emit('focus', ev);
     };
 
-    const handleBlur = () => {
+    const handleBlur = (ev: FocusEvent) => {
       _focused.value = false;
-      emit('blur');
+      emit('blur', ev);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -345,7 +348,7 @@ export default defineComponent({
         keyCode === Backspace.code
       ) {
         const lastIndex = tags.value.length - 1;
-        handleRemove(tags.value[lastIndex].value, lastIndex);
+        handleRemove(tags.value[lastIndex].value, lastIndex, e);
       }
     };
 
@@ -412,7 +415,7 @@ export default defineComponent({
               class={`${prefixCls}-tag`}
               closable={item.closable && !props.disabled}
               visible
-              onClose={() => handleRemove(item.value, index)}
+              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
             >
               {slots.tag?.({ data: item }) ??
                 props.formatTag?.(item) ??
@@ -444,7 +447,7 @@ export default defineComponent({
           <IconHover
             class={`${prefixCls}-clear-btn`}
             onClick={handleClear}
-            onMousedown={(e: Event) => e.stopPropagation()}
+            onMousedown={(e: MouseEvent) => e.stopPropagation()}
           >
             <IconClose />
           </IconHover>

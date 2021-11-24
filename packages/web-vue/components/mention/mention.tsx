@@ -18,6 +18,7 @@ import {
 } from './utils';
 import { Option, OptionNode } from '../_components/dropdown/interface';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Mention',
@@ -61,6 +62,9 @@ export default defineComponent({
       type: String,
       default: ' ',
     },
+    // for JSX
+    onChange: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    onSelect: [Function, Array] as PropType<EmitType<(value: string) => void>>,
   },
   emits: [
     'update:modelValue',
