@@ -188,29 +188,6 @@ export const getComponentNumber = (vNodes: VNode[], componentName: string) => {
   return count;
 };
 
-export const mergePropsWithIndex = (
-  vNodes: VNode[],
-  componentName: string,
-  mergedProps: (index: number) => Data,
-  startIndex = 0
-) => {
-  let index = startIndex;
-  for (const item of vNodes) {
-    if (isComponent(item, item.type) && item.type.name === componentName) {
-      item.props = mergeProps(item.props ?? {}, mergedProps(index));
-      index++;
-    } else if (isArrayChildren(item, item.children)) {
-      index = mergePropsWithIndex(
-        item.children,
-        componentName,
-        mergedProps,
-        index
-      );
-    }
-  }
-  return index;
-};
-
 export const foreachComponent = (
   children: VNode[],
   name: string,
@@ -243,22 +220,28 @@ export const isEmptyChildren = (children?: VNode[]) => {
 export const getChildrenComponents = (
   children: VNode[],
   name: string,
-  props?: Data | ((node: VNode) => Data)
+  props?: Data | ((node: VNode, index: number) => Data),
+  startIndex = 0
 ): VNode[] => {
   const result = [];
   for (const item of children) {
-    if (isComponent(item, item.type) && item.type.name === name) {
+    if (isNamedComponent(item, name)) {
       if (props) {
-        const extraProps = isFunction(props) ? props(item) : props;
+        const index: number = startIndex + result.length;
+        const extraProps = isFunction(props) ? props(item, index) : props;
         result.push(cloneVNode(item, extraProps, true));
       } else {
         result.push(item);
       }
     } else if (isArrayChildren(item, item.children)) {
-      result.push(...getChildrenComponents(item.children, name, props));
+      result.push(
+        ...getChildrenComponents(item.children, name, props, result.length)
+      );
     } else if (isSlotsChildren(item, item.children)) {
       const defaultChildren = item.children.default?.() ?? [];
-      result.push(...getChildrenComponents(defaultChildren, name, props));
+      result.push(
+        ...getChildrenComponents(defaultChildren, name, props, result.length)
+      );
     }
   }
   return result;

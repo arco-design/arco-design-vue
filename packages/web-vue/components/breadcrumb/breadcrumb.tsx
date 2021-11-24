@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { getComponentNumber, mergePropsWithIndex } from '../_utils/vue-utils';
+import { getChildrenComponents, getComponentNumber } from '../_utils/vue-utils';
 
 /**
  * TODO: 下拉菜单功能
@@ -28,14 +28,18 @@ export default defineComponent({
     return () => {
       const children = slots.default?.() ?? [];
       const total = getComponentNumber(children, 'BreadcrumbItem');
-      mergePropsWithIndex(children, 'BreadcrumbItem', (index) => ({
-        index,
-        total,
-        maxCount: props.maxCount,
-        separator: slots.separator,
-      }));
+      const mergedChildren = getChildrenComponents(
+        children,
+        'BreadcrumbItem',
+        (vn, index) => ({
+          index,
+          total,
+          maxCount: props.maxCount,
+          separator: slots.separator,
+        })
+      );
 
-      return <div class={prefixCls}>{children}</div>;
+      return <div class={prefixCls}>{mergedChildren}</div>;
     };
   },
 });
