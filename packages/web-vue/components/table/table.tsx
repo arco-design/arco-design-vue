@@ -750,7 +750,7 @@ export default defineComponent({
 
     const contentStyle = computed(() => {
       const style: CSSProperties = {};
-      if (isScroll.value.x) {
+      if (isScroll.value.x && flattenData.value.length > 0) {
         style.width = `${props.scroll?.x}px`;
       }
       return style;
@@ -821,7 +821,10 @@ export default defineComponent({
     });
 
     const renderContent = () => {
-      if (isScroll.value.y || isVirtualList.value) {
+      if (
+        (isScroll.value.y || isVirtualList.value) &&
+        flattenData.value.length > 0
+      ) {
         const style: CSSProperties = {
           overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
         };
