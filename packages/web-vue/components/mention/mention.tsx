@@ -71,6 +71,9 @@ export default defineComponent({
       type: String,
       default: 'text',
     },
+    // for JSX
+    onChange: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    onSelect: [Function, Array] as PropType<EmitType<(value: string) => void>>,
   },
   emits: [
     'update:modelValue',
@@ -81,11 +84,16 @@ export default defineComponent({
      */
     'change',
     /**
+     * @zh 动态搜索时触发
+     * @en Trigger on dynamic search prefix
+     * @property {string} value
+     */
+    'search',
+    /**
      * @zh 选择下拉选项时触发
      * @en Triggered when the drop-down option is selected
      * @property {string} value
      */
-    'search', // 动态搜索时触发
     'select',
   ],
   setup(props, { emit, attrs }) {
