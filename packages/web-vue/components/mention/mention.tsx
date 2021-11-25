@@ -20,6 +20,7 @@ import {
 } from './utils';
 import { Option, OptionNode } from '../_components/dropdown/interface';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Mention',

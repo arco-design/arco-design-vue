@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.6.1
+
+`2021-11-24`
+
+### 💎 Optimization
+
+- Do not scroll when data is empty ([#245](https://github.com/arco-design/arco-design-vue/pull/245))
+
+### 🐛 BugFix
+
+- Fix the issue that the expand row button triggers form submission ([#210](https://github.com/arco-design/arco-design-vue/pull/210))
+
+
 ## 2.3.0
 
 `2021-11-12`

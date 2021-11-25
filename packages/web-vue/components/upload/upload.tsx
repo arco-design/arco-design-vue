@@ -21,6 +21,7 @@ import { getDataURLFromFile, uploadRequest } from './utils';
 import UploadButton from './upload-button';
 import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Upload',
@@ -201,28 +202,24 @@ export default defineComponent({
       type: Function as PropType<(event: Event) => Promise<FileList> | void>,
     },
     // for JSX
-    onChange: {
-      type: Function as PropType<
-        (fileList: FileItem[], fileItem: FileItem) => void
-      >,
-    },
-    onProgress: {
-      type: Function as PropType<
-        (fileItem: FileItem, event: ProgressEvent) => void
-      >,
-    },
-    onExceedLimit: {
-      type: Function as PropType<(fileList: FileItem[], files: File[]) => void>,
-    },
-    onPreview: {
-      type: Function as PropType<(fileItem: FileItem) => void>,
-    },
-    onSuccess: {
-      type: Function as PropType<(fileItem: FileItem) => void>,
-    },
-    onError: {
-      type: Function as PropType<(fileItem: FileItem) => void>,
-    },
+    onChange: [Function, Array] as PropType<
+      EmitType<(fileList: FileItem[], fileItem: FileItem) => void>
+    >,
+    onProgress: [Function, Array] as PropType<
+      EmitType<(fileItem: FileItem, event: ProgressEvent) => void>
+    >,
+    onExceedLimit: [Function, Array] as PropType<
+      EmitType<(fileList: FileItem[], files: File[]) => void>
+    >,
+    onPreview: [Function, Array] as PropType<
+      EmitType<(fileItem: FileItem) => void>
+    >,
+    onSuccess: [Function, Array] as PropType<
+      EmitType<(fileItem: FileItem) => void>
+    >,
+    onError: [Function, Array] as PropType<
+      EmitType<(fileItem: FileItem) => void>
+    >,
   },
   emits: [
     'update:fileList',
@@ -510,6 +507,7 @@ export default defineComponent({
     const renderButton = () => {
       return (
         <UploadButton
+          key="arco-upload-button"
           v-slots={{
             default: slots['upload-button'],
           }}

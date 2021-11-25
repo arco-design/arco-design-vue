@@ -19,6 +19,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import { isWindow, isUndefined } from '../_utils/is';
 import { on, off, getElement } from '../_utils/dom';
+import { EmitType } from '../_utils/types';
 
 function getTargetRect(target: HTMLElement | Window) {
   return isWindow(target)
@@ -68,9 +69,8 @@ export default defineComponent({
         string | HTMLElement | Window
       >,
     },
-    onChange: {
-      type: Function as unknown as PropType<(fixed: boolean) => void>,
-    },
+    // for JSX
+    onChange: [Function, Array] as PropType<EmitType<(fixed: boolean) => void>>,
   },
   emits: [
     /**

@@ -23,7 +23,7 @@ import {
   vShow,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import type { AnimationDuration, ClassName, Data } from '../_utils/types';
+import type { AnimationDuration, ClassName, EmitType } from '../_utils/types';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
 import { TRIGGER_EVENTS } from '../_utils/constant';
 import {
@@ -323,9 +323,9 @@ export default defineComponent({
       default: false,
     },
     // for JSX
-    onPopupVisibleChange: {
-      type: Function as PropType<(popupVisible: boolean) => void>,
-    },
+    onPopupVisibleChange: [Function, Array] as PropType<
+      EmitType<(popupVisible: boolean) => void>
+    >,
   },
   emits: [
     'update:popupVisible',
@@ -356,12 +356,10 @@ export default defineComponent({
         ? triggerRef.value.$el
         : triggerRef.value
     );
-    const triggerEvent: Data = {};
     // popup相关变量
     const popupRef = ref<HTMLElement>();
     const popupVisible = ref(props.defaultPopupVisible);
     const popupPosition = ref(props.position);
-    const popupEvent: Data = {};
     const popupStyle = ref<CSSProperties>({});
     const arrowStyle = ref<CSSProperties>({});
     // container相关变量
@@ -472,7 +470,11 @@ export default defineComponent({
     };
 
     const handleClick = (e: MouseEvent) => {
-      if (props.disabled || (computedVisible.value && !props.clickToClose)) {
+      if (
+        props.disabled ||
+        !triggerMethods.value.includes('click') ||
+        (computedVisible.value && !props.clickToClose)
+      ) {
         return;
       }
       updateMousePosition(e);
@@ -480,67 +482,53 @@ export default defineComponent({
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
-      if (props.disabled) {
+      triggerCtx?.onMouseenter(e);
+      if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
-
-      triggerCtx?.onMouseenter();
       updateMousePosition(e);
       changeVisible(true, props.mouseEnterDelay);
     };
 
-    const handleMouseLeave = () => {
-      if (props.disabled) {
+    const handleMouseLeave = (e: MouseEvent) => {
+      triggerCtx?.onMouseleave(e);
+      if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
-
-      triggerCtx?.onMouseleave();
       changeVisible(false, props.mouseLeaveDelay);
     };
 
-    const handleFocusin = () => {
-      if (props.disabled) {
+    const handleFocusin = (e: FocusEvent) => {
+      triggerCtx?.onFocusin(e);
+      if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
-
-      triggerCtx?.onFocusin();
       changeVisible(true, props.focusDelay);
     };
 
-    const handleFocusout = () => {
-      if (props.disabled) {
+    const handleFocusout = (e: FocusEvent) => {
+      triggerCtx?.onFocusout(e);
+      if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
-
-      triggerCtx?.onFocusout();
       if (!props.blurToClose) {
         return;
       }
       changeVisible(false);
     };
 
-    // 依据triggerMethods绑定事件
-    if (triggerMethods.value.includes('click')) {
-      triggerEvent.onClick = handleClick;
-    }
-    if (triggerMethods.value.includes('hover')) {
-      triggerEvent.onMouseenter = handleMouseEnter;
-      triggerEvent.onMouseleave = handleMouseLeave;
-      if (props.popupHoverStay) {
-        popupEvent.onMouseenter = handleMouseEnter;
-        popupEvent.onMouseleave = handleMouseLeave;
+    const handleContextmenu = (e: MouseEvent) => {
+      e.preventDefault();
+      if (
+        props.disabled ||
+        !triggerMethods.value.includes('contextMenu') ||
+        (computedVisible.value && !props.clickToClose)
+      ) {
+        return;
       }
-    }
-    if (triggerMethods.value.includes('focus')) {
-      triggerEvent.onFocusin = handleFocusin;
-      triggerEvent.onFocusout = handleFocusout;
-    }
-    if (triggerMethods.value.includes('contextMenu')) {
-      triggerEvent.onContextmenu = (e: MouseEvent) => {
-        e.preventDefault();
-        handleClick(e);
-      };
-    }
+      updateMousePosition(e);
+      changeVisible(!computedVisible.value);
+    };
 
     const addChildRef = (ref: any) => {
       childrenRefs.add(ref);
@@ -681,7 +669,12 @@ export default defineComponent({
       mergeFirstChild(children, {
         ref: triggerRef,
         class: triggerCls.value,
-        ...triggerEvent,
+        onClick: handleClick,
+        onMouseenter: handleMouseEnter,
+        onMouseleave: handleMouseLeave,
+        onFocusin: handleFocusin,
+        onFocusout: handleFocusout,
+        onContextmenu: handleContextmenu,
       });
 
       return (
@@ -708,7 +701,8 @@ export default defineComponent({
                       ]}
                       style={{ ...popupStyle.value, zIndex: zIndex.value }}
                       trigger-placement={popupPosition.value}
-                      {...popupEvent}
+                      onMouseenter={handleMouseEnter}
+                      onMouseleave={handleMouseLeave}
                       onMousedown={handlePopupMouseDown}
                       {...attrs}
                     >

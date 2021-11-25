@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.6.1
+
+`2021-11-24`
+
+### 🐛 BugFix
+
+- Fix the problem of triggering errors when nesting different types of `<trigger>` ([#244](https://github.com/arco-design/arco-design-vue/pull/244))
+
+
 ## 2.6.0
 
 `2021-11-19`

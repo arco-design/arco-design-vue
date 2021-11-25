@@ -8,6 +8,7 @@ import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
 import ArcoButton from '../button';
 import ArcoInput from '../input';
+import { EmitType } from '../_utils/types';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -107,13 +108,15 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: Function as PropType<(value: number | undefined) => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(value: number | undefined) => void>
+      >,
     },
     onFocus: {
-      type: Function,
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
     onBlur: {
-      type: Function,
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
   },
   emits: [
@@ -186,9 +189,11 @@ export default defineComponent({
       }
     };
 
-    const getLegalValue = (value: string | number): number | undefined => {
+    const getLegalValue = (
+      value: string | number | undefined
+    ): number | undefined => {
       // 空值时返回undefined
-      if (value === '') {
+      if (isUndefined(value) || value === '') {
         return undefined;
       }
 
@@ -221,7 +226,7 @@ export default defineComponent({
       }
     }
 
-    const updateValue = (value: string | number) => {
+    const updateValue = (value: string | number | undefined, ev: Event) => {
       const finalValue = getLegalValue(value);
       isMin.value = false;
       isMax.value = false;
@@ -234,7 +239,7 @@ export default defineComponent({
         }
       }
       emit('update:modelValue', finalValue);
-      emit('change', finalValue);
+      emit('change', finalValue, ev);
     };
 
     const handleStepButton = (
@@ -264,7 +269,7 @@ export default defineComponent({
       }
 
       _value.value = props.formatter?.(String(nextValue)) ?? String(nextValue);
-      updateValue(nextValue);
+      updateValue(nextValue, event);
 
       // 长按时持续触发
       if (needRepeat) {
@@ -275,7 +280,7 @@ export default defineComponent({
       }
     };
 
-    const handleInput = (value: string) => {
+    const handleInput = (value: string, ev: Event) => {
       value = value.trim().replace(/。/g, '.');
       value = props.parser?.(value) ?? value;
 
@@ -286,15 +291,15 @@ export default defineComponent({
           numberPrefix.value = '';
         }
         _value.value = props.formatter?.(value) ?? value;
-        updateValue(value);
+        updateValue(value, ev);
       }
     };
 
-    const handleFocus = (e: Event) => {
-      emit('focus', e);
+    const handleFocus = (ev: FocusEvent) => {
+      emit('focus', ev);
     };
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = (ev: FocusEvent) => {
       if (computedValue.value) {
         const numberValue = Number(
           props.parser?.(computedValue.value) ?? computedValue.value
@@ -303,11 +308,11 @@ export default defineComponent({
         if (finalValue !== numberValue) {
           _value.value =
             props.formatter?.(String(finalValue)) ?? String(finalValue);
-          updateValue(finalValue);
+          updateValue(finalValue, ev);
         }
       }
 
-      emit('blur', e);
+      emit('blur', ev);
     };
 
     watch(

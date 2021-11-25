@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.6.1
+
+`2021-11-24`
+
+### 🐛 BugFix
+
+- Fix the problem that the additional content style of the form does not take effect ([#208](https://github.com/arco-design/arco-design-vue/pull/208))
+
+
 ## 2.4.0
 
 `2021-11-17`

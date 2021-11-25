@@ -35,6 +35,7 @@ import IconHover from '../_components/icon-hover.vue';
 import type { RadioType } from './context';
 import { RADIO_TYPES, radioGroupKey } from './context';
 import { isUndefined } from '../_utils/is';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Radio',
@@ -85,11 +86,9 @@ export default defineComponent({
       default: false,
     },
     // for JSX
-    onChange: {
-      type: Function as PropType<
-        (value: string | number | boolean, e: Event) => void
-      >,
-    },
+    onChange: [Function, Array] as PropType<
+      EmitType<(value: string | number | boolean, e: Event) => void>
+    >,
   },
   emits: [
     'update:modelValue',

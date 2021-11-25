@@ -44,6 +44,7 @@ import { VirtualListProps } from '../_components/virtual-list/interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
 import { getChildrenComponents } from '../_utils/vue-utils';
+import { EmitType } from '../_utils/types';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -202,47 +203,47 @@ export default defineComponent({
       type: Object as PropType<TableComponents>,
     },
     // for JSX
-    onExpand: {
-      type: Function as PropType<(rowKey: string) => void>,
-    },
+    onExpand: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
     onExpandedChange: {
-      type: Function as PropType<(rowKeys: string[]) => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(rowKeys: string[]) => void>
+      >,
     },
     onSelect: {
-      type: Function as PropType<(rowKeys: string[]) => void>,
+      type: [Function, Array] as PropType<(rowKeys: string[]) => void>,
     },
     onSelectAll: {
-      type: Function as PropType<(checked: boolean) => void>,
+      type: [Function, Array] as PropType<(checked: boolean) => void>,
     },
     onSelectionChange: {
-      type: Function as PropType<(rowKeys: string[]) => void>,
+      type: [Function, Array] as PropType<(rowKeys: string[]) => void>,
     },
     onSorterChange: {
-      type: Function as PropType<
+      type: [Function, Array] as PropType<
         (dataIndex: string, direction: string) => void
       >,
     },
     onFilterChange: {
-      type: Function as PropType<
+      type: [Function, Array] as PropType<
         (dataIndex: string, filteredValues: string[]) => void
       >,
     },
     onPageChange: {
-      type: Function as PropType<(page: number) => void>,
+      type: [Function, Array] as PropType<(page: number) => void>,
     },
     onPageSizeChange: {
-      type: Function as PropType<(pageSize: number) => void>,
+      type: [Function, Array] as PropType<(pageSize: number) => void>,
     },
     onCellClick: {
-      type: Function as PropType<
+      type: [Function, Array] as PropType<
         (record: TableData, column: TableColumn) => void
       >,
     },
     onRowClick: {
-      type: Function as PropType<(record: TableData) => void>,
+      type: [Function, Array] as PropType<(record: TableData) => void>,
     },
     onHeaderClick: {
-      type: Function as PropType<(column: TableColumn) => void>,
+      type: [Function, Array] as PropType<(column: TableColumn) => void>,
     },
   },
   emits: [
@@ -750,7 +751,7 @@ export default defineComponent({
 
     const contentStyle = computed(() => {
       const style: CSSProperties = {};
-      if (isScroll.value.x) {
+      if (isScroll.value.x && flattenData.value.length > 0) {
         style.width = `${props.scroll?.x}px`;
       }
       return style;
@@ -821,7 +822,10 @@ export default defineComponent({
     });
 
     const renderContent = () => {
-      if (isScroll.value.y || isVirtualList.value) {
+      if (
+        (isScroll.value.y || isVirtualList.value) &&
+        flattenData.value.length > 0
+      ) {
         const style: CSSProperties = {
           overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
         };

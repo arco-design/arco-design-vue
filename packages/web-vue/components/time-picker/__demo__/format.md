@@ -21,13 +21,12 @@ By setting `format`, you can customize the hour, minute, and second.
   <a-time-picker format="HH:mm" :defaultValue="defaultValue" style="width: 130px;" />
 </template>
 <script>
-  import dayjs from 'dayjs';
-  export default {
-    data() {
-      return {
-        defaultValue: dayjs('09:24', 'HH:mm')
-      }
+export default {
+  data() {
+    return {
+      defaultValue: '09:24'
     }
   }
+}
 </script>
 ```

@@ -10,7 +10,9 @@ describe('InputTag', () => {
     input.trigger('keydown', { key: 'Enter' });
     const emits = wrapper.emitted('change');
     expect(emits).toHaveLength(1);
-    expect(emits[0]).toEqual([['test']]);
+
+    // @ts-ignore
+    expect(emits?.[0][0][0]).toEqual('test');
   });
 
   test('should clear content', async () => {
