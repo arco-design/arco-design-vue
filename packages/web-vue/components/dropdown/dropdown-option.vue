@@ -1,12 +1,12 @@
 <template>
-  <li :class="`${prefixCls}-option`" @click="handleClick">
+  <li :class="cls" @click="handleClick">
     <slot name="icon" />
     <slot />
   </li>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, VNode } from 'vue';
+import { computed, defineComponent, inject, VNode } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { dropdownKey } from './context';
 import { getVNodeChildrenString } from '../_utils/vue-utils';
@@ -14,8 +14,20 @@ import { getVNodeChildrenString } from '../_utils/vue-utils';
 export default defineComponent({
   name: 'Doption',
   props: {
+    /**
+     * @zh 选项值
+     * @en Value
+     */
     value: {
       type: [String, Number],
+    },
+    /**
+     * @zh 是否禁用
+     * @en Whether to disable
+     */
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props, { slots }) {
@@ -23,13 +35,23 @@ export default defineComponent({
     const dropdownCtx = inject(dropdownKey, undefined);
 
     const handleClick = () => {
-      dropdownCtx?.onClickOption?.(
-        props.value ?? getVNodeChildrenString(slots.default?.()?.[0] as VNode)
-      );
+      if (!props.disabled) {
+        dropdownCtx?.onClickOption?.(
+          props.value ?? getVNodeChildrenString(slots.default?.()?.[0] as VNode)
+        );
+      }
     };
+
+    const cls = computed(() => [
+      `${prefixCls}-option`,
+      {
+        [`${prefixCls}-option-disabled`]: props.disabled,
+      },
+    ]);
 
     return {
       prefixCls,
+      cls,
       handleClick,
     };
   },

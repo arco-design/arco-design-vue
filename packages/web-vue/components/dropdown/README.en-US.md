@@ -47,6 +47,12 @@ description: When there are too many commands on the page, the alternative comma
 
 
 
+### `<doption>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|value|Value|`string\|number`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|
 
 
 

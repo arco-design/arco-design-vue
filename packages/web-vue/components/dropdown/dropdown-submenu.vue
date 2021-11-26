@@ -23,7 +23,7 @@ export default defineComponent({
   components: {
     ATrigger,
   },
-  setup(props) {
+  setup() {
     const prefixCls = getPrefixCls('dropdown');
 
     return {
