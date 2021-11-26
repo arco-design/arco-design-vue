@@ -5,6 +5,7 @@
       :stroke-width="strokeWidth"
       :percent="percent"
       :color="color"
+      :track-color="trackColor"
       :width="width"
       :steps="steps"
       :size="size"
@@ -16,6 +17,7 @@
       :animation="animation"
       :percent="percent"
       :color="color"
+      :track-color="trackColor"
       :size="size"
       :buffer-color="bufferColor"
       :width="width"
@@ -29,6 +31,7 @@
       :width="width"
       :percent="percent"
       :color="color"
+      :track-color="trackColor"
       :size="size"
       :show-text="showText"
     />
@@ -118,9 +121,10 @@ export default defineComponent({
       type: [String, Object],
     },
     /**
-     * @zh 进度条缓冲区的颜色
-     * @en The color of the progress bar buffer
+     * @zh 进度条的轨道颜色
+     * @en The color of the progress track
      */
+    trackColor: String,
     bufferColor: {
       type: [String, Object],
     },

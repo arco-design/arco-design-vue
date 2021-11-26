@@ -74,6 +74,7 @@ export default defineComponent({
       type: [String, Object],
       default: undefined,
     },
+    trackColor: String,
     formatText: {
       type: Function,
       default: undefined,
@@ -96,7 +97,7 @@ export default defineComponent({
     const style = computed(() => ({
       width: props.width,
       height: `${strokeWidth.value}px`,
-      ...getBackground(props.color),
+      backgroundColor: props.trackColor,
     }));
 
     // const computedText = computed(() => {

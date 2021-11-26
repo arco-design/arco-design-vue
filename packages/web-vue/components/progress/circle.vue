@@ -25,7 +25,7 @@
         :r="radius"
         :stroke-width="mergedPathStrokeWidth"
         :style="{
-          stroke: pathStrokeColor,
+          stroke: trackColor,
         }"
       />
       <circle
@@ -100,6 +100,7 @@ export default defineComponent({
       type: [String, Object],
       default: undefined,
     },
+    trackColor: String,
     status: {
       type: String,
       default: undefined,
@@ -110,9 +111,6 @@ export default defineComponent({
     },
     pathStrokeWidth: {
       type: Number,
-    },
-    pathStrokeColor: {
-      type: String,
     },
   },
   setup(props) {
