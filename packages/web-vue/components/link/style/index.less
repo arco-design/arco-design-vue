@@ -7,7 +7,7 @@
   padding: @link-padding-vertical @link-padding-horizontal;
   color: @link-color-text;
   font-size: @link-font-size;
-  line-height: @line-height-base;
+  line-height: @link-line-height;
   text-decoration: none;
   background-color: @color-transparent;
   border-radius: @link-border-radius;
@@ -23,6 +23,18 @@
     color: @link-color-text_active;
     background-color: @link-color-bg_active;
     transition: none;
+  }
+
+
+  &&-hoverless {
+    background-color: unset;
+    padding: 0;
+    display: inline;
+
+    &:active,
+    &:hover {
+      background-color: unset;
+    }
   }
 
   &&-disabled {

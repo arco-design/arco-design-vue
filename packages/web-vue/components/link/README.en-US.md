@@ -12,6 +12,11 @@ description: The basic style of the link.
 
 @import ./__demo__/status.md
 
+@import ./__demo__/hoverable.md
+
+@import ./__demo__/icon.md
+
+
 
 ### `<link>` Props
 
@@ -19,6 +24,8 @@ description: The basic style of the link.
 |---|---|---|:---:|
 |href|Link address|`string`|`-`|
 |status|Link status|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`|
+|hoverable|Whether to hide background when hover|`boolean`|`true`|
+|icon|icon|`boolean`|`false`|
 |disabled|Whether the link is disabled|`boolean`|`false`|
 
 

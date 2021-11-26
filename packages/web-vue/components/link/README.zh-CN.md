@@ -10,6 +10,11 @@ description: 链接的基本样式。
 
 @import ./__demo__/status.md
 
+@import ./__demo__/hoverable.md
+
+@import ./__demo__/icon.md
+
+
 
 ### `<link>` Props
 
@@ -17,6 +22,8 @@ description: 链接的基本样式。
 |---|---|---|:---:|
 |href|链接地址|`string`|`-`|
 |status|链接的状态|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`|
+|hoverable|鼠标悬浮时存在底色|`boolean`|`true`|
+|icon|图标|`boolean`|`false`|
 |disabled|链接是否禁用|`boolean`|`false`|
 
 
