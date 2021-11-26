@@ -319,6 +319,11 @@ export default defineComponent({
    * @slot expand-row
    * @binding {TableData} record
    */
+  /**
+   * @zh 表格底部
+   * @en Table Footer
+   * @slot footer
+   */
   setup(props, { emit, slots }) {
     const { rowKey } = toRefs(props);
     const prefixCls = getPrefixCls('table');

@@ -73,6 +73,7 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Slot Name|Description|Parameters|
 |---|---|---|
+|footer|Table Footer|-|
 |expand-row|Expand row content|record: `TableData`|
 |expand-icon|Expand row icon|-|
 

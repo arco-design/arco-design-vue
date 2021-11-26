@@ -71,6 +71,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |插槽名|描述|参数|
 |---|:---:|---|
+|footer|表格底部|-|
 |expand-row|展开行内容|record: `TableData`|
 |expand-icon|展开行图标|-|
 
