@@ -121,10 +121,10 @@ export default defineComponent({
       {
         [`${prefixCls.value}-trigger-dark`]: menuContext.theme === 'dark',
       },
-      menuContext.triggerProps?.value?.class,
+      menuContext.triggerProps?.class,
     ]);
     const triggerProps = computed(() =>
-      omit(menuContext.triggerProps?.value || {}, ['class'])
+      omit(menuContext.triggerProps || {}, ['class'])
     );
 
     return {
