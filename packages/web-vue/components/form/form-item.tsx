@@ -98,12 +98,11 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 表单项校验规则
-     * @en Form item validation rules
+     * @zh 表单项校验规则（优先级高于 form 的 rules）
+     * @en Form item validation rules (The priority is higher than the rules of form)
      */
     rules: {
-      type: Array as PropType<FieldRule[]>,
-      default: () => [],
+      type: [Object, Array] as PropType<FieldRule | FieldRule[]>,
     },
     /**
      * @zh 校验状态
@@ -190,19 +189,22 @@ export default defineComponent({
       () => props.validateStatus ?? finalStatus.value
     );
     const isError = computed(() => finalStatus.value === 'error');
-    const isRequired = computed(() => {
-      if (props.required) {
-        return true;
+
+    const mergedRules = computed(() => {
+      const baseRules = ([] as FieldRule[]).concat(
+        props.rules ?? formCtx?.rules?.[props.field] ?? []
+      );
+      const hasRequiredRule = baseRules.some((item) => item.required);
+
+      if (props.required && !hasRequiredRule) {
+        return ([{ required: true }] as FieldRule[]).concat(baseRules);
       }
-      if (props.rules && props.rules.length > 0) {
-        for (const rule of props.rules) {
-          if (rule.required) {
-            return true;
-          }
-        }
-      }
-      return false;
+      return baseRules;
     });
+
+    const isRequired = computed(() =>
+      mergedRules.value.some((item) => item.required)
+    );
 
     const helpSlot = usePickSlots(slots, 'help');
 
@@ -233,18 +235,12 @@ export default defineComponent({
       })
     );
 
-    const getRules = (): FieldRule[] => {
-      const requiredRule = isRequired.value ? { required: true } : [];
-
-      return ([] as FieldRule[]).concat(requiredRule).concat(props.rules ?? []);
-    };
-
     const validateField = (): Promise<any> => {
       if (validateDisabled.value) {
         return Promise.resolve();
       }
 
-      const rules = getRules();
+      const rules = mergedRules.value;
       if (!field.value || rules.length === 0) {
         if (finalStatus.value) {
           clearValidate();

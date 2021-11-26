@@ -1,6 +1,11 @@
 import { InjectionKey } from 'vue';
 import { Data } from '../_utils/types';
-import { FieldData, ValidatedError, ValidateStatus } from './interface';
+import {
+  FieldData,
+  FieldRule,
+  ValidatedError,
+  ValidateStatus,
+} from './interface';
 import { Size } from '../_utils/constant';
 
 export interface FormContext {
@@ -13,6 +18,7 @@ export interface FormContext {
   wrapperColStyle?: any;
   model: Data;
   size: Size;
+  rules?: Record<string, FieldRule | FieldRule[]>;
   fields: FormItemInfo[];
   touchedFields: FormItemInfo[];
   addField: (field: FormItemInfo) => void;

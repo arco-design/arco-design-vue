@@ -33,6 +33,7 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |wrapper-col-props|表单控件布局选项。参数同 `<col>` 组件一致|`object`|` span: 19, offset: 0 `|
 |label-align|标签的对齐方向|`'left' \| 'right'`|`'right'`|
 |disabled|是否禁用表单|`boolean`|`-`|
+|rules|表单项校验规则|`Record<string, FieldRule \| FieldRule[]>`|`-`|
 ### `<form>` Events
 
 |事件名|描述|参数|
@@ -65,7 +66,7 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |help|帮助文案|`string`|`-`|
 |extra|额外显示的文案|`string`|`-`|
 |required|是否必须填写|`boolean`|`false`|
-|rules|表单项校验规则|`FieldRule[]`|`[]`|
+|rules|表单项校验规则（优先级高于 form 的 rules）|`FieldRule \| FieldRule[]`|`-`|
 |validate-status|校验状态|`'success' \| 'warning' \| 'error' \| 'validating'`|`-`|
 |validate-trigger|触发校验的事件|`'change' \| 'input' \| 'focus' \| 'blur'`|`'change'`|
 |label-col-props|标签元素布局选项。参数同 `<col>` 组件一致|`object`|`-`|
