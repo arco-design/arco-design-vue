@@ -354,12 +354,16 @@ export default defineComponent({
     };
 
     const handleOpen = () => {
-      emit('open');
+      if (computedVisible.value) {
+        emit('open');
+      }
     };
 
     const handleClose = () => {
-      mounted.value = false;
-      emit('close');
+      if (!computedVisible.value) {
+        mounted.value = false;
+        emit('close');
+      }
     };
 
     const { setOverflowHidden, resetOverflow } = useOverflow(containerRef);
