@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 💅 Style
+
+- Fix the problem of the connection color of the vertical step bar ([#276](https://github.com/arco-design/arco-design-vue/pull/276))
+
+
 ## 2.6.1
 
 `2021-11-24`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🆕 Feature
+
+- Add `footer` slot ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+- In normal mode, the scroll bar will be turned on when the table width is larger than the container ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+
+
 ## 2.6.1
 
 `2021-11-24`

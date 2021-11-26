@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🐛 BugFix
+
+- the prop trigger-props take no effect ([#265](https://github.com/arco-design/arco-design-vue/pull/265))
+- Horizontal menu items are not displayed normally when they are collapsed and then expanded ([#264](https://github.com/arco-design/arco-design-vue/pull/264))
+
+
 ## 2.6.0
 
 `2021-11-19`

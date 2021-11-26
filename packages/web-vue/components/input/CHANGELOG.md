@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🐛 BugFix
+
+- Fix the problem that the enter key of the numeric keyboard does not trigger `press-enter` ([#273](https://github.com/arco-design/arco-design-vue/pull/273))
+
+
 ## 2.1.0
 
 `2021-11-05`

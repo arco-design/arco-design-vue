@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🆕 Feature
+
+- Add `rules` prop ([#271](https://github.com/arco-design/arco-design-vue/pull/271))
+
+
 ## 2.6.1
 
 `2021-11-24`

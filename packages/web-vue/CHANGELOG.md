@@ -2,6 +2,43 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🆕 Feature
+
+- **progress:** Add `track-color` prop ([#277](https://github.com/arco-design/arco-design-vue/pull/277))
+- **pagination:** add `base-size` & `buffer-size` props ([#275](https://github.com/arco-design/arco-design-vue/pull/275))
+- Added support for smart prompts for web-types and vetur ([#272](https://github.com/arco-design/arco-design-vue/pull/272))
+- **form:** Add `rules` prop ([#271](https://github.com/arco-design/arco-design-vue/pull/271))
+- **dropdown:** Add `disabled` prop ([#270](https://github.com/arco-design/arco-design-vue/pull/270))
+- **descriptions:** Add the `align` prop ([#268](https://github.com/arco-design/arco-design-vue/pull/268))
+- **table:** Add `footer` slot ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+- **table:** In normal mode, the scroll bar will be turned on when the table width is larger than the container ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+- **avatar:** supports `maxStyle` and `maxPopoverTriggerProps` properties. ([#242](https://github.com/arco-design/arco-design-vue/pull/242))
+- **modal:** Added `on-before-ok` and `on-before-cancel` property events ([#229](https://github.com/arco-design/arco-design-vue/pull/229))
+- **drawer:** Added `on-before-ok` and `on-before-cancel` property events ([#229](https://github.com/arco-design/arco-design-vue/pull/229))
+- **popconfirm:** Added `on-before-ok` and `on-before-cancel` property events ([#229](https://github.com/arco-design/arco-design-vue/pull/229))
+- **link:** Add icon setting via `icon` property/slot property or slot ([#226](https://github.com/arco-design/arco-design-vue/pull/226))
+- **mention:** Add `type` prop ([#205](https://github.com/arco-design/arco-design-vue/pull/205))
+
+### 🐛 BugFix
+
+- **input:** Fix the problem that the enter key of the numeric keyboard does not trigger `press-enter` ([#273](https://github.com/arco-design/arco-design-vue/pull/273))
+- **modal:** Fix the issue of initial triggering of the `open` event ([#267](https://github.com/arco-design/arco-design-vue/pull/267))
+- **drawer:** Fix the issue of initial triggering of the `open` event ([#267](https://github.com/arco-design/arco-design-vue/pull/267))
+- **menu:** the prop trigger-props take no effect ([#265](https://github.com/arco-design/arco-design-vue/pull/265))
+- **menu:** Horizontal menu items are not displayed normally when they are collapsed and then expanded ([#264](https://github.com/arco-design/arco-design-vue/pull/264))
+
+### 💅 Style
+
+- **steps:** Fix the problem of the connection color of the vertical step bar ([#276](https://github.com/arco-design/arco-design-vue/pull/276))
+- Fix the problem that the outer border of the icon will appear when selecting the icon in the new version of the browser ([#274](https://github.com/arco-design/arco-design-vue/pull/274))
+- **descriptions:** Modify the style of the value area to support line-wrapping text ([#269](https://github.com/arco-design/arco-design-vue/pull/269))
+- **tree:** let the content of tree node centerd in vertical ([#260](https://github.com/arco-design/arco-design-vue/pull/260))
+
+
 ## 2.6.1
 
 `2021-11-24`

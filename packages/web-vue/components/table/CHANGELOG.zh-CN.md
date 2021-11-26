@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🆕 新增功能
+
+- 增加 `footer` 插槽 ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+- 常规模式下表格宽度大于容器时会开启滚动条 ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+
+
 ## 2.6.1
 
 `2021-11-24`

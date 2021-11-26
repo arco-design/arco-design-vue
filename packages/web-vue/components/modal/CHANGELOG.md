@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🆕 Feature
+
+- Added `on-before-ok` and `on-before-cancel` property events ([#229](https://github.com/arco-design/arco-design-vue/pull/229))
+
+### 🐛 BugFix
+
+- Fix the issue of initial triggering of the `open` event ([#267](https://github.com/arco-design/arco-design-vue/pull/267))
+
+
 ## 2.4.0
 
 `2021-11-17`

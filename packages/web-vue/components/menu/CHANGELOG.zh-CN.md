@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.7.0
+
+`2021-11-26`
+
+### 🐛 问题修复
+
+- `trigger-props` 不生效 ([#265](https://github.com/arco-design/arco-design-vue/pull/265))
+- 横向的菜单项收起再展开的时候没有正常显示 ([#264](https://github.com/arco-design/arco-design-vue/pull/264))
+
+
 ## 2.6.0
 
 `2021-11-19`

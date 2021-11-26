@@ -69,8 +69,8 @@ export default defineComponent({
      * @en default input or textarea
      */
     type: {
-      type: String,
-      default: 'text',
+      type: String as PropType<'input' | 'textarea'>,
+      default: 'input',
     },
     // for JSX
     onChange: [Function, Array] as PropType<EmitType<(value: string) => void>>,
