@@ -11,6 +11,9 @@
   white-space: nowrap;
   vertical-align: middle;
   background-color: @avatar-color-bg;
+  width: @avatar-size-default;
+  height: @avatar-size-default;
+  font-size: @avatar-font-size-text;
 
   &-circle {
     border-radius: @avatar-circle-border-radius;
@@ -54,17 +57,17 @@
 
   &-trigger-icon-button {
     position: absolute;
-    right: -4px;
-    bottom: -4px;
+    bottom: -@avatar-spacing-trigger-button-bottom;
+    right: -@avatar-spacing-trigger-button-right;
     z-index: 1;
     width: @avatar-size-trigger-button;
     height: @avatar-size-trigger-button;
-    color: @avatar-color-bg;
-    font-size: 12px;
+    color: @avatar-color-trigger-icon-button;
+    font-size: @avatar-size-trigger-icon;
     line-height: @avatar-size-trigger-button;
     text-align: center;
     background-color: @avatar-color-trigger-button-bg;
-    border-radius: @radius-circle;
+    border-radius: @avatar-border-trigger-button-radius;
     transition: background-color @transition-duration-1
       @transition-timing-function-linear;
   }
@@ -111,12 +114,18 @@
 
     &-max-count-avatar {
       cursor: default;
+      color: @avatar-color-max-count-text;
+      font-size: @avatar-font-size-max-count;
     }
   }
 
   &-group & {
     border: @avatar-group-item-border-width solid
       @avatar-color-group-item-border;
+  }
+
+  &-group &:not(:first-child) {
+    margin-left: @avatar-group-item-margin-left;
   }
 
   &-group-popover &:not(:first-child) {
