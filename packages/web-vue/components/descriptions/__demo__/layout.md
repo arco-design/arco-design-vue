@@ -18,10 +18,10 @@ There are four layout modes: horizontal arrangement, vertical arrangement, horiz
 
 ```vue
 <template>
-  <a-descriptions :data="data" title="User Info" bordered/>
-  <a-descriptions :data="data" title="User Info" layout="inline-horizontal" bordered/>
-  <a-descriptions :data="data" title="User Info" layout="vertical" bordered/>
-  <a-descriptions :data="data" title="User Info" layout="inline-vertical" bordered/>
+  <a-descriptions :data="data" title="User Info (horizontal)" bordered/>
+  <a-descriptions :data="data" title="User Info (inline-horizontal)" layout="inline-horizontal" bordered/>
+  <a-descriptions :data="data" title="User Info (vertical)" layout="vertical" bordered/>
+  <a-descriptions :data="data" title="User Info (inline-vertical)" layout="inline-vertical" bordered/>
 </template>
 
 <script>

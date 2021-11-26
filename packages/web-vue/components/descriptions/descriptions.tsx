@@ -1,6 +1,6 @@
 import type { PropType, VNode, CSSProperties } from 'vue';
 import { computed, defineComponent, ref } from 'vue';
-import type { Size } from '../_utils/constant';
+import type { Size, TextAlign } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isArray, isFunction, isObject } from '../_utils/is';
 
@@ -51,7 +51,7 @@ export default defineComponent({
      * @en The number of data placed in each row
      */
     column: {
-      type: [Number, Object],
+      type: Number,
       default: 3,
     },
     /**
@@ -67,6 +67,16 @@ export default defineComponent({
     layout: {
       type: String as PropType<DescLayout>,
       default: 'horizontal',
+    },
+    /**
+     *  @zh 文字的对齐位置
+     *  @en Alignment position of text
+     */
+    align: {
+      type: [String, Object] as PropType<
+        TextAlign | { label?: TextAlign; value?: TextAlign }
+      >,
+      default: 'left',
     },
     /**
      * @zh 描述列表的大小
@@ -126,6 +136,23 @@ export default defineComponent({
       isObject(props.column) ? props.column[screen.value] : props.column
     );
 
+    const labelAlign = computed(
+      () => (isObject(props.align) ? props.align.label : props.align) ?? 'left'
+    );
+    const valueAlign = computed(
+      () => (isObject(props.align) ? props.align.value : props.align) ?? 'left'
+    );
+
+    const labelStyle = computed<CSSProperties>(() => ({
+      textAlign: labelAlign.value,
+      ...props.labelStyle,
+    }));
+
+    const valueStyle = computed<CSSProperties>(() => ({
+      textAlign: valueAlign.value,
+      ...props.valueStyle,
+    }));
+
     const data = computed(() => {
       const data = [];
       if (isArray(props.data) && props.data.length > 0 && column.value > 0) {
@@ -172,7 +199,7 @@ export default defineComponent({
             <td
               key={`${item.key ?? index}_label`}
               class={`${prefixCls}-item-label`}
-              style={props.labelStyle}
+              style={labelStyle.value}
               colspan={item.span}
             >
               {slots.label?.({ label: item.label }) ??
@@ -185,7 +212,7 @@ export default defineComponent({
             <td
               key={`${item.key ?? index}_value`}
               class={`${prefixCls}-item-value`}
-              style={props.valueStyle}
+              style={valueStyle.value}
               colspan={item.span}
             >
               {slots.value?.({ value: item.value }) ??
@@ -200,13 +227,13 @@ export default defineComponent({
       <tr class={`${prefixCls}-row`} key={`tr-${index}`}>
         {data.map((item) => (
           <>
-            <td class={`${prefixCls}-item-label`} style={props.labelStyle}>
+            <td class={`${prefixCls}-item-label`} style={labelStyle.value}>
               {slots.label?.({ label: item.label }) ??
                 (isFunction(item.label) ? item.label() : item.label)}
             </td>
             <td
               class={`${prefixCls}-item-value`}
-              style={props.valueStyle}
+              style={valueStyle.value}
               colspan={item.span * 2 - 1}
             >
               {slots.value?.({ value: item.value }) ??
@@ -227,14 +254,14 @@ export default defineComponent({
           >
             <div
               class={`${prefixCls}-item-label-inline`}
-              style={props.labelStyle}
+              style={labelStyle.value}
             >
               {slots.label?.({ label: item.label }) ??
                 (isFunction(item.label) ? item.label() : item.label)}
             </div>
             <div
               class={`${prefixCls}-item-value-inline`}
-              style={props.valueStyle}
+              style={valueStyle.value}
             >
               {slots.value?.({ value: item.value }) ??
                 (isFunction(item.value) ? item.value() : item.value)}

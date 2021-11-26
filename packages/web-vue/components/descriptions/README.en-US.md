@@ -24,9 +24,10 @@ description: Generally used for the information display of the detail page.
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |data|Data for descriptions|`DescData[]`|`[]`|
-|column|The number of data placed in each row|`number\|object`|`3`|
+|column|The number of data placed in each row|`number`|`3`|
 |title|Title of descriptions|`string`|`-`|
 |layout|Arrangement of descriptions|`'horizontal' \| 'vertical' \| 'inline-horizontal' \| 'inline-vertical'`|`'horizontal'`|
+|align|Alignment position of text|`TextAlign \| { label?: TextAlign; value?: TextAlign }`|`'left'`|
 |size|The size of the descriptions|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |bordered|Whether to show the border|`boolean`|`false`|
 |label-style|Data label style|`CSSProperties`|`-`|
