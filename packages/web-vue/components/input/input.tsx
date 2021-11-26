@@ -253,8 +253,8 @@ export default defineComponent({
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      const keyCode = e.code || e.key;
-      if (!isComposition.value && keyCode === Enter.code) {
+      const keyCode = e.key || e.code;
+      if (!isComposition.value && keyCode === Enter.key) {
         emit('change', computedValue.value, e);
         emit('pressEnter', e);
       }
