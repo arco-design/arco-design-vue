@@ -333,11 +333,11 @@ export default defineComponent({
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      const keyCode = e.code || e.key;
+      const keyCode = e.key || e.code;
       if (
         !isComposition.value &&
         computedInputValue.value &&
-        keyCode === Enter.code
+        keyCode === Enter.key
       ) {
         handlePressEnter(e);
       }
@@ -345,7 +345,7 @@ export default defineComponent({
         !isComposition.value &&
         tags.value.length > 0 &&
         !computedInputValue.value &&
-        keyCode === Backspace.code
+        keyCode === Backspace.key
       ) {
         const lastIndex = tags.value.length - 1;
         handleRemove(tags.value[lastIndex].value, lastIndex, e);
