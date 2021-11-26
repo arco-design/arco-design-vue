@@ -31,7 +31,7 @@ description: 给予用户当前系统执行中任务运行状态的反馈，多�
 |stroke-width|进度条的线宽|`number`|`-`|
 |width|进度条的长度|`number\|string`|`-`|
 |color|进度条的颜色|`string\|object`|`-`|
-|buffer-color|进度条缓冲区的颜色|`string\|object`|`-`|
+|track-color|进度条的轨道颜色|`string`|`-`|
 |show-text|是否显示文字|`boolean`|`true`|
 |status|进度条状态|`'normal' \| 'success' \| 'warning' \| 'danger'`|`'normal'`|
 
