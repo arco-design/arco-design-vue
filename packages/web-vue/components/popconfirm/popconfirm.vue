@@ -35,7 +35,7 @@
         <arco-button
           v-bind="okButtonProps"
           type="primary"
-          :loading="okLoading"
+          :loading="mergedOkLoading"
           @click="handleOk"
         >
           {{ okText || t('popconfirm.okText') }}
@@ -63,6 +63,7 @@ import ArcoButton from '../button';
 import Trigger from '../trigger';
 import { useI18n } from '../locale';
 import { ClassName } from '../_utils/types';
+import { isBoolean, isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'Popconfirm',
@@ -195,6 +196,24 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
+    /**
+     * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。
+     * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.
+     */
+    onBeforeOk: {
+      type: [Function, Array] as PropType<
+        (done: (closed: boolean) => void) => void | boolean
+      >,
+    },
+    /**
+     * @zh 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。
+     * @en The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.
+     */
+    onBeforeCancel: {
+      type: [Function, Array] as PropType<() => boolean>,
+    },
+
+    // for JSX
   },
   emits: [
     'update:popupVisible',
@@ -232,27 +251,68 @@ export default defineComponent({
     const computedPopupVisible = computed(
       () => props.popupVisible ?? _popupVisible.value
     );
+    const _okLoading = ref(false);
+    const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
+
+    // Used to ignore closed Promises
+    let promiseNumber = 0;
 
     const close = () => {
+      promiseNumber++;
+      if (_okLoading.value) {
+        _okLoading.value = false;
+      }
       _popupVisible.value = false;
       emit('update:popupVisible', false);
       emit('popupVisibleChange', false);
     };
 
     const handlePopupVisibleChange = (visible: boolean) => {
-      _popupVisible.value = visible;
-      emit('update:popupVisible', visible);
-      emit('popupVisibleChange', visible);
+      if (!visible) {
+        close();
+      } else {
+        _popupVisible.value = visible;
+        emit('update:popupVisible', visible);
+        emit('popupVisibleChange', visible);
+      }
     };
 
     const handleOk = () => {
-      emit('ok');
-      close();
+      const currentPromiseNumber = promiseNumber;
+      const promise = new Promise((resolve: (closed?: boolean) => void) => {
+        if (isFunction(props.onBeforeOk)) {
+          const result = props.onBeforeOk(resolve);
+
+          if (isBoolean(result)) {
+            resolve(result);
+          } else {
+            _okLoading.value = true;
+          }
+        } else {
+          resolve();
+        }
+      });
+
+      promise.then((closed = true) => {
+        if (currentPromiseNumber === promiseNumber) {
+          _okLoading.value = false;
+          if (closed) {
+            emit('ok');
+            close();
+          }
+        }
+      });
     };
 
     const handleCancel = () => {
-      emit('cancel');
-      close();
+      let result = true;
+      if (isFunction(props.onBeforeCancel)) {
+        result = props.onBeforeCancel() ?? false;
+      }
+      if (result) {
+        emit('cancel');
+        close();
+      }
     };
 
     const contentCls = computed(() => [
@@ -267,9 +327,10 @@ export default defineComponent({
 
     return {
       prefixCls,
-      computedPopupVisible,
       contentCls,
       arrowCls,
+      computedPopupVisible,
+      mergedOkLoading,
       handlePopupVisibleChange,
       handleOk,
       handleCancel,

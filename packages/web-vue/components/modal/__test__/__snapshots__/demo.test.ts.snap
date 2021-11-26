@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<modal> demo: render [async] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Open Modal
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
 exports[`<modal> demo: render [basic] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Open Modal

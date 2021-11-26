@@ -19,7 +19,7 @@ The basic usage of the modal.
 ```vue
 <template>
   <a-button @click="handleClick">Open Modal</a-button>
-  <a-modal :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose>
+  <a-modal v-model:visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose @before-ok="handleBeforeOk">
     <template #title>
       Title
     </template>
@@ -42,10 +42,16 @@ export default {
       this.$modal({});
     },
     handleOk() {
-      this.visible = false;
+      // this.visible = false;
     },
     handleCancel() {
       this.visible = false;
+    },
+    handleBeforeOk( done){
+      window.setTimeout(()=>{
+        done()
+      },3000)
+
     }
   }
 };
