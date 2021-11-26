@@ -14,6 +14,7 @@ const MD_TEMPLATE = 'TEMPLATE.md';
 const MD_TARGET = 'README.zh-CN.md';
 const MD_TARGET_EN = 'README.en-US.md';
 const MD_MATERIAL_README = 'docs/README.md';
+const MD_MATERIAL_README_EN = 'docs/README.en-US.md';
 const TEMPLATE_GLOB = `components/*/${MD_TEMPLATE}`;
 
 type ComponentDocType = ComponentDoc | ComponentDoc[];
@@ -184,7 +185,12 @@ const docgen = async ({
       (match) => `${match}\n*Auto translate by google.*\n`
     );
 
-    result = await parseMaterial(result, {
+    zhResult = await parseMaterial(zhResult, {
+      matcher: /%%MATERIAL\((.+?)\)%%/,
+      dirname,
+    });
+
+    enResult = await parseMaterial(enResult, {
       matcher: /%%MATERIAL\((.+?)\)%%/,
       dirname,
     });
@@ -196,7 +202,9 @@ const docgen = async ({
 
       await fs.outputFile(outputPath, zhResult);
 
-      const outputPath2 = path.resolve(dirname, MD_TARGET_EN);
+      const outputPath2 = input
+        ? path.resolve(process.cwd(), MD_MATERIAL_README_EN)
+        : path.resolve(dirname, MD_TARGET_EN);
 
       await fs.outputFile(outputPath2, enResult);
 
