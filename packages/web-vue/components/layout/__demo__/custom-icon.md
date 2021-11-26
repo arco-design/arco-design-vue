@@ -22,26 +22,26 @@ By setting the `trigger` property of `Menu.Sider`, the icon of the collapse butt
     <a-layout-sider collapsible breakpoint="xl">
       <div class="logo" />
       <a-menu
-        :defaultOpenKeys="['1']"
-        :defaultSelectedKeys="['0_3']"
+        :default-open-keys="['1']"
+        :default-selected-keys="['0_3']"
         :style="{ width: '100%' }"
-        @menuItemClick="onClickMenuItem"
+        @menu-item-click="onClickMenuItem"
       >
         <a-menu-item key="0_1" disabled>
-          <IconHome />
+          <IconHome></IconHome>
           Menu 1
         </a-menu-item>
         <a-menu-item key="0_2">
-          <IconCalendar />
+          <IconCalendar></IconCalendar>
           Menu 2
         </a-menu-item>
         <a-menu-item key="0_3">
-          <IconCalendar />
+          <IconCalendar></IconCalendar>
           Menu 3
         </a-menu-item>
         <a-sub-menu key="1">
           <template #title>
-            <span><IconCalendar />Navigation 1</span>
+            <IconCalendar></IconCalendar> Navigation 1
           </template>
           <a-menu-item key="1_1">Menu 1</a-menu-item>
           <a-menu-item key="1_2">Menu 2</a-menu-item>
@@ -57,7 +57,7 @@ By setting the `trigger` property of `Menu.Sider`, the icon of the collapse butt
         </a-sub-menu>
         <a-sub-menu key="4">
           <template #title>
-            <span><IconCalendar />Navigation 4</span>
+            <IconCalendar></IconCalendar> Navigation 4
           </template>
           <a-menu-item key="4_1">Menu 1</a-menu-item>
           <a-menu-item key="4_2">Menu 2</a-menu-item>
@@ -66,8 +66,8 @@ By setting the `trigger` property of `Menu.Sider`, the icon of the collapse butt
       </a-menu>
       <!-- trigger -->
       <template #trigger="{ collapsed }">
-        <IconCaretRight v-if="collapsed" />
-        <IconCaretLeft v-else />
+        <IconCaretRight v-if="collapsed"></IconCaretRight>
+        <IconCaretLeft v-else></IconCaretLeft>
       </template>
     </a-layout-sider>
     <a-layout>

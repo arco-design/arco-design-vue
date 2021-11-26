@@ -12,7 +12,7 @@ import { getStyle } from '../_utils/style';
 import useMenuContext from './hooks/use-menu-context';
 import { SubMenuProps } from './interface';
 import SubMenu from './sub-menu';
-import { isFragmentChildren } from './utils';
+import { unFragment } from '../_utils/vue-utils';
 
 const OVERFLOW_THRESHOLD = 10;
 
@@ -131,28 +131,28 @@ export default defineComponent({
 
       const renderChildren = () => {
         const originChildren = slots.default?.() || [];
-        const children = isFragmentChildren(originChildren)
-          ? (originChildren[0].children as VNode[])
-          : originChildren;
+        const children = unFragment(originChildren) as VNode[];
 
         let overflowSubMenu = null;
         const overflowSubMenuMirror = renderSubMenu(null, { isMirror: true });
 
         const menuItems = children.map((child, index) => {
-          let item = child;
+          const item = cloneVNode(
+            child,
+            lastVisibleIndex.value !== null && index > lastVisibleIndex.value
+              ? { class: overflowMenuItemClass }
+              : {}
+          );
 
-          if (lastVisibleIndex.value !== null) {
-            if (index > lastVisibleIndex.value) {
-              item = cloneVNode(child, { class: overflowMenuItemClass });
-            }
+          if (
+            lastVisibleIndex.value !== null &&
+            index === lastVisibleIndex.value + 1
+          ) {
+            const overflowMenuItems = children
+              .slice(index)
+              .map((child) => cloneVNode(child));
 
-            if (index === lastVisibleIndex.value + 1) {
-              const overflowMenuItems = children
-                .slice(index)
-                .map((child) => cloneVNode(child));
-
-              overflowSubMenu = renderSubMenu(overflowMenuItems);
-            }
+            overflowSubMenu = renderSubMenu(overflowMenuItems);
           }
 
           return item;

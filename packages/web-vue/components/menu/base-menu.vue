@@ -86,6 +86,7 @@ export default defineComponent({
     /**
      * @zh 是否折叠菜单
      * @en Whether to collapse the menu
+     * @vModel
      */
     collapsed: {
       type: Boolean,
@@ -129,6 +130,7 @@ export default defineComponent({
     /**
      * @zh 选中的菜单项 key 数组
      * @en The selected menu item key array
+     * @vModel
      */
     selectedKeys: {
       type: Array as PropType<string[]>,
@@ -144,6 +146,7 @@ export default defineComponent({
     /**
      * @zh 展开的子菜单 key 数组
      * @en Expanded submenu key array
+     * @vModel
      */
     openKeys: {
       type: Array as PropType<string[]>,
