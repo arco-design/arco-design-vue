@@ -5,7 +5,9 @@ import {
   PropType,
   ref,
   toRefs,
+  h,
 } from 'vue';
+import ArcoTextarea from '../textarea';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
 import { Dropdown, DropDownOption } from '../_components/dropdown';
@@ -62,6 +64,14 @@ export default defineComponent({
       type: String,
       default: ' ',
     },
+    /**
+     * @zh 输入框或文本域
+     * @en default input or textarea
+     */
+    type: {
+      type: String,
+      default: 'text',
+    },
     // for JSX
     onChange: [Function, Array] as PropType<EmitType<(value: string) => void>>,
     onSelect: [Function, Array] as PropType<EmitType<(value: string) => void>>,
@@ -74,6 +84,12 @@ export default defineComponent({
      * @property {string} value
      */
     'change',
+    /**
+     * @zh 动态搜索时触发
+     * @en Trigger on dynamic search prefix
+     * @property {string} value
+     */
+    'search',
     /**
      * @zh 选择下拉选项时触发
      * @en Triggered when the drop-down option is selected
@@ -103,7 +119,7 @@ export default defineComponent({
       };
     };
 
-    const inputRef = ref();
+    const textareaRef = ref();
 
     const measureText = computed(() => measureInfo.value.text);
     const filterOption = ref(true);
@@ -122,6 +138,7 @@ export default defineComponent({
             ...lastMeasure,
           };
         }
+        emit('search', measureText);
       } else if (measureInfo.value.location > -1) {
         resetMeasureInfo();
       }
@@ -289,21 +306,16 @@ export default defineComponent({
         autoFitPopupWidth
         onPopupVisibleChange={handlePopupVisibleChange}
       >
-        <ArcoInput
-          ref={inputRef}
-          modelValue={computeValue.value}
-          onInput={handleInput}
-          onKeydown={handleKeyDown}
-          {...attrs}
-        />
+        {h(props.type === 'textarea' ? ArcoTextarea : ArcoInput, {
+          ref: textareaRef,
+          modelValue: computeValue.value,
+          onInput: handleInput,
+          onKeydown: handleKeyDown,
+          ...attrs,
+        })}
       </Trigger>
     );
 
-    return {
-      render,
-    };
-  },
-  render() {
-    return this.render();
+    return render;
   },
 });
