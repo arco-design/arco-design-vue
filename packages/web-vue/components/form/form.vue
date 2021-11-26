@@ -17,7 +17,7 @@ import { FormItemInfo, formKey } from './context';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
 import { isArray, isFunction } from '../_utils/is';
-import { FieldData, ValidatedError } from './interface';
+import { FieldData, FieldRule, ValidatedError } from './interface';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
 type FormLayout = typeof FORM_LAYOUTS[number];
@@ -88,6 +88,13 @@ export default defineComponent({
       type: Boolean,
       default: undefined,
     },
+    /**
+     * @zh 表单项校验规则
+     * @en Form item validation rules
+     */
+    rules: {
+      type: Object as PropType<Record<string, FieldRule | FieldRule[]>>,
+    },
     // for JSX
     onSubmit: {
       type: Function as PropType<() => void>,
@@ -126,6 +133,7 @@ export default defineComponent({
       labelColStyle,
       wrapperColStyle,
       size,
+      rules,
     } = toRefs(props);
 
     const fields: FormItemInfo[] = [];
@@ -263,6 +271,7 @@ export default defineComponent({
         wrapperColStyle,
         model,
         size,
+        rules,
         fields,
         touchedFields,
         addField,

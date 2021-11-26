@@ -35,6 +35,7 @@ description: A form with data collection, verification and submission functions,
 |wrapper-col-props|Form control layout options. The parameters are the same as the `<col>` component|`object`|` span: 19, offset: 0 `|
 |label-align|Alignment direction of the label|`'left' \| 'right'`|`'right'`|
 |disabled|Whether to disable the form|`boolean`|`-`|
+|rules|Form item validation rules|`Record<string, FieldRule \| FieldRule[]>`|`-`|
 ### `<form>` Events
 
 |Event Name|Description|Parameters|
@@ -67,7 +68,7 @@ description: A form with data collection, verification and submission functions,
 |help|Help copywriting|`string`|`-`|
 |extra|Additional display copy|`string`|`-`|
 |required|Is it required|`boolean`|`false`|
-|rules|Form item validation rules|`FieldRule[]`|`[]`|
+|rules|Form item validation rules (The priority is higher than the rules of form)|`FieldRule \| FieldRule[]`|`-`|
 |validate-status|Validate status|`'success' \| 'warning' \| 'error' \| 'validating'`|`-`|
 |validate-trigger|The event that triggers the verification|`'change' \| 'input' \| 'focus' \| 'blur'`|`'change'`|
 |label-col-props|Label element layout options. The parameters are the same as the `<col>` component|`object`|`-`|
