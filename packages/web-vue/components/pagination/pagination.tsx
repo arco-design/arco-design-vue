@@ -146,7 +146,18 @@ export default defineComponent({
     activePageItemStyle: {
       type: Object as PropType<CSSProperties>,
     },
-    // not opened
+    /**
+     * @zh 计算显示省略的基础个数。显示省略的个数为 `baseSize + 2 * bufferSize`
+     * @en Calculate and display the number of omitted bases. Display the omitted number as `baseSize + 2 * bufferSize`
+     */
+    baseSize: {
+      type: Number,
+      default: 6,
+    },
+    /**
+     * @zh 显示省略号时，当前页码左右显示的页码个数
+     * @en When the ellipsis is displayed, the number of page numbers displayed on the left and right of the current page number
+     */
     bufferSize: {
       type: Number,
       default: 2,
@@ -248,7 +259,7 @@ export default defineComponent({
     const pageList = computed(() => {
       const pageList: Array<JSX.Element | JSX.Element[]> = [];
 
-      if (pages.value < 6 + props.bufferSize * 2) {
+      if (pages.value < props.baseSize + props.bufferSize * 2) {
         for (let i = 1; i <= pages.value; i++) {
           pageList.push(
             renderPageItem(
@@ -264,16 +275,19 @@ export default defineComponent({
         let hasLeftEllipsis = false;
         let hasRightEllipsis = false;
 
-        if (computedCurrent.value > 2 * props.bufferSize) {
+        if (computedCurrent.value > 2 + props.bufferSize) {
           hasLeftEllipsis = true;
           left = Math.min(
-            computedCurrent.value - 2,
+            computedCurrent.value - props.bufferSize,
             pages.value - 2 * props.bufferSize
           );
         }
-        if (computedCurrent.value < pages.value - 3) {
+        if (computedCurrent.value < pages.value - (props.bufferSize + 1)) {
           hasRightEllipsis = true;
-          right = Math.max(computedCurrent.value + 2, 2 * props.bufferSize + 1);
+          right = Math.max(
+            computedCurrent.value + props.bufferSize,
+            2 * props.bufferSize + 1
+          );
         }
 
         if (hasLeftEllipsis) {

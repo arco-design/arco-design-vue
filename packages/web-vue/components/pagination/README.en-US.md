@@ -46,6 +46,8 @@ description: Use paging to control the amount of information in a single page, a
 |size|The size of the page selector|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |page-item-style|The style of the paging button|`CSSProperties`|`-`|
 |active-page-item-style|The style of the current paging button|`CSSProperties`|`-`|
+|base-size|Calculate and display the number of omitted bases. Display the omitted number as `baseSize + 2 * bufferSize`|`number`|`6`|
+|buffer-size|When the ellipsis is displayed, the number of page numbers displayed on the left and right of the current page number|`number`|`2`|
 ### `<pagination>` Events
 
 |Event Name|Description|Parameters|
