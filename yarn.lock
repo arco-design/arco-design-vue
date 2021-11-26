@@ -362,6 +362,7 @@ __metadata:
     eslint-import-resolver-typescript: ^2.4.0
     eslint-plugin-import: ^2.22.1
     eslint-plugin-prettier: ^3.3.1
+    fast-glob: ^3.2.7
     fs-extra: ^9.1.0
     glob: ^7.1.6
     inquirer: ^8.1.2
@@ -10661,7 +10662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.1.1, fast-glob@npm:^3.2.5":
+"fast-glob@npm:^3.1.1, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.7":
   version: 3.2.7
   resolution: "fast-glob@npm:3.2.7"
   dependencies:
