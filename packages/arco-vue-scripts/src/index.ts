@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import path from 'path';
+import fs from 'fs-extra';
 import { Command } from 'commander';
 import icongen from './scripts/icongen';
 import lessgen from './scripts/lessgen';
@@ -13,10 +15,20 @@ import buildSite from './scripts/build-site';
 import buildMaterial from './scripts/build-material';
 import test from './scripts/test';
 import changelog from './scripts/changelog';
+import jsongen from './scripts/jsongen';
 
 const program = new Command();
 
-program.version('0.1.0').name('arco-vue-scripts').usage('command [options]');
+const packageContent = fs.readFileSync(
+  path.resolve(__dirname, '../package.json'),
+  'utf8'
+);
+const packageData: any = JSON.parse(packageContent);
+
+program
+  .version(packageData.version)
+  .name('arco-vue-scripts')
+  .usage('command [options]');
 
 program
   .command('docgen')
@@ -115,6 +127,13 @@ program
   )
   .action(async () => {
     await changelog();
+  });
+
+program
+  .command('jsongen')
+  .description('generate vetur and web-types json files')
+  .action(async () => {
+    await jsongen();
   });
 
 program.parse(process.argv);
