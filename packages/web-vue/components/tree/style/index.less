@@ -71,6 +71,7 @@
   &-custom-icon {
     margin-right: @tree-margin-custom-icon-right;
     font-size: inherit;
+    line-height: 1;
     cursor: pointer;
     user-select: none;
   }
@@ -135,7 +136,7 @@
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: center;
     padding-left: (@tree-size-expand-icon-bg_hover / 2) -
       (@tree-size-default-icon-size / 2);
     color: @tree-color-title-text;
@@ -194,6 +195,8 @@
 
   &-node-title {
     position: relative;
+    display: flex;
+    align-items: center;
     margin-left: -@tree-padding-title-horizontal;
     padding: (
         round((@tree-size-default-line-height - @line-height-base * $font-size)) /
@@ -204,6 +207,7 @@
     padding-left: @tree-padding-title-horizontal;
     font-size: @tree-size-default-font-size;
     border-radius: @tree-node-border-radius;
+
     // overflow: hidden;
     &:hover {
       color: @tree-color-title-text_hover;
