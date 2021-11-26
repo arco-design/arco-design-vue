@@ -74,6 +74,10 @@ export default defineComponent({
       type: [String, Object],
       default: undefined,
     },
+    bufferColor: {
+      type: [String, Object],
+      default: undefined,
+    },
     formatText: {
       type: Function,
       default: undefined,
@@ -96,7 +100,7 @@ export default defineComponent({
     const style = computed(() => ({
       width: props.width,
       height: `${strokeWidth.value}px`,
-      ...getBackground(props.color),
+      ...getBackground(props.bufferColor),
     }));
 
     // const computedText = computed(() => {
