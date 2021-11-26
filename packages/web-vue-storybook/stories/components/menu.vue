@@ -43,10 +43,18 @@
       </MenuGroup>
     </SubMenu>
   </Menu>
+  <div>
+    <Switch v-model="hide">hide</Switch>
+    <Menu v-show="!hide" mode="horizontal">
+      <MenuItem v-for="index in 20" :key="index" @click="onItemClick"
+        >Menu {{ index }}
+      </MenuItem>
+    </Menu>
+  </div>
 </template>
 <script>
 import { defineComponent } from 'vue';
-import { Menu, Checkbox } from '@web-vue/components';
+import { Menu, Checkbox, Switch } from '@web-vue/components';
 import { IconApps, IconBug, IconBulb } from '@web-vue/components/icon';
 import CustomMenu from './custom-menu.vue';
 
@@ -61,6 +69,7 @@ export default defineComponent({
     IconBug,
     IconBulb,
     CustomMenu,
+    Switch,
   },
   setup() {},
   data() {
@@ -69,7 +78,13 @@ export default defineComponent({
       checked1: true,
       isVertical: true,
       collapsed: true,
+      hide: false,
     };
+  },
+  methods: {
+    onItemClick(args) {
+      console.log('menu item click: ', args);
+    },
   },
 });
 </script>
