@@ -549,8 +549,8 @@ export default defineComponent({
               await loadMore.value(treeNodeData);
               loadingKeys.value = loadingKeys.value.filter((v) => v !== key);
               onExpand(true, key);
-              if (checkedKeys.value.includes(node.key)) {
-                onCheck(true, node.key);
+              if (checkedKeys.value.includes(key)) {
+                onCheck(true, key);
               }
             } catch (err) {
               loadingKeys.value = loadingKeys.value.filter((v) => v !== key);
