@@ -520,7 +520,7 @@ export default defineComponent({
       emit('expand', newExpandedKeys, {
         expanded,
         node: node.treeNodeData,
-        selectedNodes: newExpandedKeys.map(
+        expandNodes: newExpandedKeys.map(
           (v) => key2TreeNode.value[v]?.treeNodeData
         ),
         e,
