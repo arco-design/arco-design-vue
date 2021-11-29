@@ -9,6 +9,7 @@
           <a-icon-hover
             v-if="showBack"
             :class="`${prefixCls}-back-btn`"
+            :prefix="prefixCls"
             @click="handleBack"
           >
             <icon-left />
