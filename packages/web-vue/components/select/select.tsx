@@ -227,22 +227,30 @@ export default defineComponent({
       type: Function as PropType<(data: OptionInfo) => string>,
     },
     // for JSX
-    onChange: [Function, Array] as PropType<
-      EmitType<(value: string | number | Array<string | number>) => void>
-    >,
-    onInputValueChange: [Function, Array] as PropType<
-      EmitType<(inputValue: string) => void>
-    >,
-    onPopupVisibleChange: [Function, Array] as PropType<
-      EmitType<(popupVisible: boolean) => void>
-    >,
-    onClear: [Function, Array] as PropType<EmitType<() => void>>,
-    onRemove: [Function, Array] as PropType<
-      EmitType<(removed: string) => void>
-    >,
-    onSearch: [Function, Array] as PropType<
-      EmitType<(inputValue: string) => void>
-    >,
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number | Array<string | number>) => void>
+      >,
+    },
+    onInputValueChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(inputValue: string) => void>
+      >,
+    },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onRemove: {
+      type: [Function, Array] as PropType<EmitType<(removed: string) => void>>,
+    },
+    onSearch: {
+      type: [Function, Array] as PropType<
+        EmitType<(inputValue: string) => void>
+      >,
+    },
   },
   emits: [
     'update:modelValue',

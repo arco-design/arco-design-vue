@@ -105,18 +105,30 @@ export default defineComponent({
       default: 'text',
     },
     // for JSX
-    onInput: [Function, Array] as PropType<
-      EmitType<(value: string, ev: Event) => void>
-    >,
-    onChange: [Function, Array] as PropType<
-      EmitType<(value: string, ev: Event) => void>
-    >,
-    onPressEnter: [Function, Array] as PropType<
-      EmitType<(ev: KeyboardEvent) => void>
-    >,
-    onClear: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
-    onFocus: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-    onBlur: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    onInput: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
+    },
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
+    },
+    onPressEnter: {
+      type: [Function, Array] as PropType<
+        EmitType<(ev: KeyboardEvent) => void>
+      >,
+    },
+    onClear: {
+      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    },
+    onFocus: {
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    },
+    onBlur: {
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    },
   },
   emits: [
     'update:modelValue',

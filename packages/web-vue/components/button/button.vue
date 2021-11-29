@@ -149,7 +149,9 @@ export default defineComponent({
      */
     href: String,
     // for JSX
-    onClick: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    onClick: {
+      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    },
   },
   emits: [
     /**

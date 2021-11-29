@@ -97,9 +97,9 @@ export default defineComponent({
       default: 'medium',
     },
     // for JSX
-    onChange: [Function, Array] as PropType<
-      EmitType<(checked: boolean) => void>
-    >,
+    onChange: {
+      type: [Function, Array] as PropType<EmitType<(checked: boolean) => void>>,
+    },
   },
   emits: [
     'update:modelValue',

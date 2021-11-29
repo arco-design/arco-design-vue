@@ -296,26 +296,32 @@ export default defineComponent({
       type: Boolean,
     },
     // for JSX
-    onChange: [Function, Array] as PropType<
-      EmitType<
-        (
-          timeString: string | Array<string | undefined> | undefined,
-          time: Date | Array<Date | undefined> | undefined
-        ) => void
-      >
-    >,
-    onSelect: [Function, Array] as PropType<
-      EmitType<
-        (
-          timeString: string | Array<string | undefined>,
-          time: Date | Array<Date | undefined>
-        ) => void
-      >
-    >,
-    onClear: [Function, Array] as PropType<EmitType<() => void>>,
-    onPopupVisibleChange: [Function, Array] as PropType<
-      EmitType<(popupVisible: boolean) => void>
-    >,
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<
+          (
+            timeString: string | Array<string | undefined> | undefined,
+            time: Date | Array<Date | undefined> | undefined
+          ) => void
+        >
+      >,
+    },
+    onSelect: {
+      type: [Function, Array] as PropType<
+        EmitType<
+          (
+            timeString: string | Array<string | undefined>,
+            time: Date | Array<Date | undefined>
+          ) => void
+        >
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
   },
   emits: [
     /**

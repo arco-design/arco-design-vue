@@ -84,9 +84,15 @@ export default defineComponent({
       default: true,
     },
     // for JSX
-    onChange: [Function, Array] as PropType<EmitType<(value: string) => void>>,
-    onSearch: [Function, Array] as PropType<EmitType<(value: string) => void>>,
-    onSelect: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    onChange: {
+      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    },
+    onSearch: {
+      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    },
+    onSelect: {
+      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
+    },
   },
   emits: [
     'update:modelValue',

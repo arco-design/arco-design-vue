@@ -336,26 +336,32 @@ export default defineComponent({
       >,
     },
     // for JSX
-    onChange: [Function, Array] as PropType<
-      EmitType<
-        (
-          selectedValue:
-            | string
-            | number
-            | LabelValue
-            | Array<string | number>
-            | LabelValue[]
-            | undefined
-        ) => void
-      >
-    >,
-    onPopupVisibleChange: [Function, Array] as PropType<
-      EmitType<(popupVisible: boolean) => void>
-    >,
-    onSearch: [Function, Array] as PropType<
-      EmitType<(searchValue: string) => void>
-    >,
-    onClear: [Function, Array] as PropType<EmitType<() => void>>,
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<
+          (
+            selectedValue:
+              | string
+              | number
+              | LabelValue
+              | Array<string | number>
+              | LabelValue[]
+              | undefined
+          ) => void
+        >
+      >,
+    },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
+    onSearch: {
+      type: [Function, Array] as PropType<
+        EmitType<(searchValue: string) => void>
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
   },
   emits: [
     /**

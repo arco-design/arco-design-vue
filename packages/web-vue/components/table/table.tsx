@@ -203,11 +203,15 @@ export default defineComponent({
       type: Object as PropType<TableComponents>,
     },
     // for JSX
-    onExpand: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
+    onExpand: {
+      type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
+    },
     onExpandedChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(rowKeys: string[]) => void>
-      >,
+      type: {
+        type: [Function, Array] as PropType<
+          EmitType<(rowKeys: string[]) => void>
+        >,
+      },
     },
     onSelect: {
       type: [Function, Array] as PropType<(rowKeys: string[]) => void>,

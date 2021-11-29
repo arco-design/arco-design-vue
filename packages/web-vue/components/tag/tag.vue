@@ -115,12 +115,16 @@ export default defineComponent({
       default: true,
     },
     // for JSX
-    onClose: [Function, Array] as PropType<
-      EmitType<(event: MouseEvent) => void>
-    >,
-    onCheck: [Function, Array] as PropType<
-      EmitType<(checked: boolean, event: MouseEvent) => void>
-    >,
+    onClose: {
+      type: [Function, Array] as PropType<
+        EmitType<(event: MouseEvent) => void>
+      >,
+    },
+    onCheck: {
+      type: [Function, Array] as PropType<
+        EmitType<(checked: boolean, event: MouseEvent) => void>
+      >,
+    },
   },
   emits: [
     'update:visible',

@@ -136,9 +136,11 @@ export default defineComponent({
     focused: Boolean,
     // for JSX
     onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string | number | TagData) => void>
-      >,
+      type: {
+        type: [Function, Array] as PropType<
+          EmitType<(value: string | number | TagData) => void>
+        >,
+      },
     },
     onInputValueChange: {
       type: [Function, Array] as PropType<(inputValue: string) => void>,

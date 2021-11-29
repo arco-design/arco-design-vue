@@ -76,10 +76,12 @@ export default defineComponent({
       default: false,
     },
     // for JSX
-    onChange: [Function, Array] as PropType<EmitType<(index: number) => void>>,
-    onHoverChange: [Function, Array] as PropType<
-      EmitType<(index: number) => void>
-    >,
+    onChange: {
+      type: [Function, Array] as PropType<EmitType<(index: number) => void>>,
+    },
+    onHoverChange: {
+      type: [Function, Array] as PropType<EmitType<(index: number) => void>>,
+    },
   },
   emits: [
     'update:modelValue',

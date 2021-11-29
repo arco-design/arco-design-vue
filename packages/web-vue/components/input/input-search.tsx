@@ -29,9 +29,11 @@ export default defineComponent({
       default: false,
     },
     // for JSX
-    onSearch: [Function, Array] as PropType<
-      EmitType<(value: string, ev: MouseEvent) => void>
-    >,
+    onSearch: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: MouseEvent) => void>
+      >,
+    },
   },
   emits: [
     /**

@@ -284,25 +284,37 @@ export default defineComponent({
       type: [Date, String, Number],
     },
     // for JSX
-    onChange: [Function, Array] as PropType<
-      EmitType<(dateString: string, date: Date) => void>
-    >,
-    onSelect: [Function, Array] as PropType<
-      EmitType<(dateString: string, date: Date) => void>
-    >,
-    onPopupVisibleChange: [Function, Array] as PropType<
-      EmitType<(popupVisible: boolean) => void>
-    >,
-    onOk: [Function, Array] as PropType<
-      EmitType<(dateString: string, date: Date) => void>
-    >,
-    onClear: [Function, Array] as PropType<EmitType<() => void>>,
-    onSelectShortcut: [Function, Array] as PropType<
-      EmitType<(shortcut: ShortcutType) => void>
-    >,
-    onPickerValueChange: [Function, Array] as PropType<
-      EmitType<(dateString: string, date: Date) => void>
-    >,
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
+    },
+    onSelect: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
+    },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
+    onOk: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onSelectShortcut: {
+      type: [Function, Array] as PropType<
+        EmitType<(shortcut: ShortcutType) => void>
+      >,
+    },
+    onPickerValueChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
+    },
   },
   emits: [
     /**

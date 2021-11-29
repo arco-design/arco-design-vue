@@ -177,9 +177,11 @@ export default defineComponent({
       type: Function,
     },
     // for JSX
-    onChange: [Function, Array] as PropType<
-      EmitType<(value: number | [number, number]) => void>
-    >,
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: number | [number, number]) => void>
+      >,
+    },
   },
   emits: [
     'update:modelValue',

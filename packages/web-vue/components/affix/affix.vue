@@ -70,7 +70,9 @@ export default defineComponent({
       >,
     },
     // for JSX
-    onChange: [Function, Array] as PropType<EmitType<(fixed: boolean) => void>>,
+    onChange: {
+      type: [Function, Array] as PropType<EmitType<(fixed: boolean) => void>>,
+    },
   },
   emits: [
     /**

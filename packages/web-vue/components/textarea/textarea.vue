@@ -25,7 +25,7 @@
         @compositionend="handleComposition"
       />
     </resize-observer>
-    <slot name="suffix"/>
+    <slot name="suffix" />
     <div v-if="maxLength && showWordLimit" :class="`${prefixCls}-word-limit`">
       {{ getTextLength(computedValue) }}/{{ maxLength }}
     </div>
@@ -137,15 +137,25 @@ export default defineComponent({
       type: Function as PropType<(value: string) => number>,
     },
     // for JSX
-    onInput: [Function, Array] as PropType<
-      EmitType<(value: string, ev: Event) => void>
-    >,
-    onChange: [Function, Array] as PropType<
-      EmitType<(value: string, ev: Event) => void>
-    >,
-    onClear: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
-    onFocus: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-    onBlur: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    onInput: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
+    },
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
+    },
+    onClear: {
+      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    },
+    onFocus: {
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    },
+    onBlur: {
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    },
   },
   emits: [
     'update:modelValue',

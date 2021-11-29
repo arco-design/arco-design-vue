@@ -323,9 +323,11 @@ export default defineComponent({
       default: false,
     },
     // for JSX
-    onPopupVisibleChange: [Function, Array] as PropType<
-      EmitType<(popupVisible: boolean) => void>
-    >,
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
   },
   emits: [
     'update:popupVisible',
