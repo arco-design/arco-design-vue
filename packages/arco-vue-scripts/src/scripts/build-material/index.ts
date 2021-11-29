@@ -6,6 +6,7 @@ import { build } from 'vite';
 import getConfig from '../../configs/vite.material.prod';
 import styleConfig from '../../configs/vite.material.style';
 import { getUserConfig } from '../../utils/config';
+import { getPackage } from '../../utils/get-package';
 
 async function buildLess() {
   try {
@@ -43,8 +44,11 @@ async function buildStyle() {
   }
 }
 
-async function run(input: string) {
-  const baseConfig = getConfig(input);
+async function run(buildInput: string) {
+  const packageData = await getPackage();
+  const input = packageData.buildInput ?? buildInput;
+  const name = packageData.umd?.module ?? 'ArcoMaterial';
+  const baseConfig = getConfig({ input, name });
   const userConfig = await getUserConfig('vite.config.js');
   const mergedConfig = userConfig?.(baseConfig) ?? baseConfig;
 

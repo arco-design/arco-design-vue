@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-let cache: Record<string, unknown> = {};
+let cache: Record<string, any>;
 
 export const getPackage = async () => {
   if (!cache) {
@@ -14,5 +14,5 @@ export const getPackage = async () => {
     } catch {}
   }
 
-  return cache;
+  return cache ?? {};
 };
