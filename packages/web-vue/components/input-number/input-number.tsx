@@ -108,21 +108,15 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: {
-        type: [Function, Array] as PropType<
-          EmitType<(value: number | undefined) => void>
-        >,
-      },
+      type: [Function, Array] as PropType<
+        EmitType<(value: number | undefined) => void>
+      >,
     },
     onFocus: {
-      type: {
-        type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-      },
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
     onBlur: {
-      type: {
-        type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-      },
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
   },
   emits: [

@@ -18,6 +18,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
 import { isArray, isFunction } from '../_utils/is';
 import { FieldData, FieldRule, ValidatedError } from './interface';
+import { EmitType } from '../_utils/types';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
 type FormLayout = typeof FORM_LAYOUTS[number];
@@ -97,7 +98,7 @@ export default defineComponent({
     },
     // for JSX
     onSubmit: {
-      type: Function as PropType<() => void>,
+      type: [Function, Array] as PropType<EmitType<() => void>>,
     },
   },
   emits: [

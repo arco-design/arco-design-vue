@@ -1,8 +1,8 @@
 import type { PropType, CSSProperties } from 'vue';
 import { computed, defineComponent, reactive, ref, toRefs, watch } from 'vue';
-import type { Data } from '../_utils/types';
+import type { Data, EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
-import { SIZES } from '../_utils/constant';
+import { Size } from '../_utils/constant';
 import Pager from './page-item.vue';
 import StepPager from './page-item-step.vue';
 import EllipsisPager from './page-item-ellipsis.vue';
@@ -129,7 +129,7 @@ export default defineComponent({
      * @values 'mini', 'small', 'medium', 'large'
      */
     size: {
-      type: String as PropType<typeof SIZES[number]>,
+      type: String as PropType<Size>,
       default: 'medium',
     },
     /**
@@ -164,10 +164,10 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: Function as PropType<(value: number) => void>,
+      type: [Function, Array] as PropType<EmitType<(value: number) => void>>,
     },
     onPageSizeChange: {
-      type: Function as PropType<(value: number) => void>,
+      type: [Function, Array] as PropType<EmitType<(value: number) => void>>,
     },
   },
   emits: [

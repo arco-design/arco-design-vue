@@ -207,11 +207,9 @@ export default defineComponent({
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
     },
     onExpandedChange: {
-      type: {
-        type: [Function, Array] as PropType<
-          EmitType<(rowKeys: string[]) => void>
-        >,
-      },
+      type: [Function, Array] as PropType<
+        EmitType<(rowKeys: string[]) => void>
+      >,
     },
     onSelect: {
       type: [Function, Array] as PropType<(rowKeys: string[]) => void>,
