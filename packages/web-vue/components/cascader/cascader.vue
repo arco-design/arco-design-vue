@@ -6,7 +6,7 @@
     position="bl"
     :disabled="disabled"
     :popup-offset="4"
-    :auto-fit-popup-width="showSearchPanel"
+    :auto-fit-popup-width="autoFitPopupWidth"
     :popup-container="popupContainer"
     :prevent-focus="true"
     @popup-visible-change="handlePopupVisibleChange"
@@ -362,6 +362,10 @@ export default defineComponent({
       )
     );
 
+    const autoFitPopupWidth = computed(() => {
+      return showSearchPanel.value || !displayColumns.value.length;
+    });
+
     const updateValue = (
       options?: CascaderOptionInfo | CascaderOptionInfo[]
     ) => {
@@ -645,6 +649,7 @@ export default defineComponent({
       displayColumns,
       computedInputValue,
       computedPopupVisible,
+      autoFitPopupWidth,
       handleClear,
       setSelectedPath,
       setActiveNode,

@@ -37,7 +37,11 @@ export default defineComponent({
     // const optionRefs = ref([]);
 
     const renderEmpty = () => {
-      return <Empty />;
+      return (
+        <div key="empty" class={`${prefixCls}-list-empty`}>
+          <Empty />
+        </div>
+      );
     };
 
     const renderColumn = (column: CascaderOptionInfo[], level = 0) => {

@@ -16,7 +16,9 @@ export const useSelectedPath = (
   // 当前选中的选项
   const activeNode = ref<CascaderOptionInfo>();
   const displayColumns = computed(() => {
-    const columns: CascaderOptionInfo[][] = [options.value];
+    const columns: CascaderOptionInfo[][] = options.value.length
+      ? [options.value]
+      : [];
     for (const item of selectedPath.value) {
       if (item.children) {
         columns.push(item.children);
