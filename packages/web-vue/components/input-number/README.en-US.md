@@ -12,6 +12,8 @@ description: Only input boxes in numeric format are allowed.
 
 @import ./__demo__/mode.md
 
+@import ./__demo__/size.md
+
 @import ./__demo__/precision.md
 
 @import ./__demo__/format.md
@@ -33,6 +35,7 @@ description: Only input boxes in numeric format are allowed.
 |parser|Convert from `formatter` to number, and use with `formatter`|`func`|`-`|
 |placeholder|Input prompt text|`string`|`-`|
 |hide-button|Whether to hide the button (only available in `embed` mode)|`boolean`|`false`|
+|size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 ### `<input-number>` Events
 
 |Event Name|Description|Parameters|
