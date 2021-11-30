@@ -1,10 +1,12 @@
 <template>
-  <teleport :to="popupContainer" :disabled="!renderToBody">
+  <teleport :to="containerNode" :disabled="!renderToBody">
     <transition name="fade-drawer" appear>
       <div
         v-show="computedVisible"
         :class="`${prefixCls}-container`"
-        :style="{ zIndex }"
+        :style="
+          isFixed ? { zIndex } : { zIndex: 'inherit', position: 'absolute' }
+        "
         v-bind="$attrs"
       >
         <transition name="fade-drawer" appear>
@@ -258,6 +260,18 @@ export default defineComponent({
     const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
 
     const { zIndex } = usePopupManager({ visible: computedVisible });
+    const isFixed = computed(() => {
+      return containerRef?.value === document.body;
+    });
+
+    const containerNode = computed(() => {
+      const ele = getElement(props.popupContainer);
+      if (!ele && !computedVisible.value) {
+        //  watch computedVisible
+        return 'body';
+      }
+      return ele || 'body';
+    });
 
     // Used to ignore closed Promises
     let promiseNumber = 0;
@@ -374,6 +388,8 @@ export default defineComponent({
       handleOpen,
       handleClose,
       handleMask,
+      isFixed,
+      containerNode,
     };
   },
 });

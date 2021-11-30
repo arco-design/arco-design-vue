@@ -3,7 +3,7 @@
 exports[`Drawer should render Drawer 1`] = `
 "<!--teleport start-->
 <transition-stub>
-  <div class=\\"arco-drawer-container\\" style=\\"z-index: 0; display: none;\\">
+  <div class=\\"arco-drawer-container\\" style=\\"z-index: inherit; position: absolute; display: none;\\">
     <transition-stub>
       <div class=\\"arco-drawer-mask\\" style=\\"display: none;\\"></div>
     </transition-stub>
