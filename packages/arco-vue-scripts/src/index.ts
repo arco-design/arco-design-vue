@@ -13,6 +13,7 @@ import buildComponent from './scripts/build-component';
 import buildStyle from './scripts/build-style';
 import buildSite from './scripts/build-site';
 import buildMaterial from './scripts/build-material';
+import buildMaterialLibrary from './scripts/build-material-library';
 import test from './scripts/test';
 import changelog from './scripts/changelog';
 import jsongen from './scripts/jsongen';
@@ -92,8 +93,9 @@ program
 program
   .command('build:style')
   .description('build style related files.')
-  .action(async () => {
-    await buildStyle();
+  .option('-M, --material', 'generate style for material')
+  .action(async ({ material }) => {
+    await buildStyle({ material });
   });
 
 program
@@ -108,6 +110,13 @@ program
   .description('build vue material.')
   .action(async (input) => {
     await buildMaterial(input);
+  });
+
+program
+  .command('build:material-library')
+  .description('build vue material library.')
+  .action(async () => {
+    await buildMaterialLibrary();
   });
 
 program

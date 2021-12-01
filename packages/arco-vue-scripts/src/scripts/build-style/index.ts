@@ -9,9 +9,11 @@ import paths from '../../utils/paths';
 import config from '../../configs/vite.prod.style';
 import lessgen from '../lessgen';
 
-const run = async () => {
+const run = async ({ material }: { material: boolean }) => {
   // 更新index.less文件
-  lessgen();
+  if (!material) {
+    lessgen();
+  }
 
   // 拷贝less文件到目标文件，index.less编译生成index.css
   const files = glob.sync('**/*.{less,js}', {
@@ -56,11 +58,6 @@ const run = async () => {
     }
   }
 
-  fs.writeFileSync(
-    paths.resolvePath('dist/arco.less'),
-    "@import '../es/index.less';\n\n"
-  );
-
   // 拷贝并编译less入口文件
   console.log('build target css');
   const indexLessPath = paths.resolvePath('components/index.less');
@@ -73,11 +70,23 @@ const run = async () => {
   });
 
   fs.ensureDirSync(paths.resolvePath('dist'));
-  fs.writeFileSync(paths.resolvePath('dist/arco.css'), result.css);
+
+  fs.writeFileSync(
+    paths.resolvePath(material ? 'dist/index.less' : 'dist/arco.less'),
+    "@import '../es/index.less';\n\n"
+  );
+
+  fs.writeFileSync(
+    paths.resolvePath(material ? 'dist/index.css' : 'dist/arco.css'),
+    result.css
+  );
 
   const compress = new CleanCSS().minify(result.css);
 
-  fs.writeFileSync(paths.resolvePath('dist/arco.min.css'), compress.styles);
+  fs.writeFileSync(
+    paths.resolvePath(material ? 'dist/index.min.css' : 'dist/arco.min.css'),
+    compress.styles
+  );
 
   console.log(`target build success`);
 

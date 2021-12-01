@@ -43,8 +43,8 @@ export async function build(input: string, options?: { outDir?: string }) {
   }
   const files = glob.sync(input, {
     ignore: /components\/icon/.test(input)
-      ? '**/__test__/*'
-      : ['**/__test__/*', 'components/icon/**/*'],
+      ? ['**/__test__/*', '**/__demo__/*']
+      : ['**/__test__/*', '**/__demo__/*', 'components/icon/**/*'],
   });
   const sourceFiles: SourceFile[] = [];
 
