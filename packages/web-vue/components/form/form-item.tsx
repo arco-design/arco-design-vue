@@ -331,18 +331,17 @@ export default defineComponent({
       }
     };
 
-    const setField = ({ value, status, message }: FieldData) => {
+    const setField = (data: FieldData) => {
       if (field.value) {
         validateDisabled.value = true;
-
-        if (value && formCtx?.model[field.value]) {
-          formCtx.model[field.value] = value;
+        if ('value' in data && formCtx?.model && field.value in formCtx.model) {
+          formCtx.model[field.value] = data.value;
         }
 
-        if (status || message) {
+        if (data.status || data.message) {
           updateValidateState(field.value, {
-            status: status ?? '',
-            message: message ?? '',
+            status: data.status ?? '',
+            message: data.message ?? '',
           });
         }
 

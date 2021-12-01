@@ -55,18 +55,18 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |事件名|描述|参数|
 |---|---|---|
-|expand|点击展开行时触发|-|
-|expanded-change|已展开的数据行发生改变时触发|-|
-|select|点击行选择器时触发|-|
-|select-all|点击全选选择器时触发|-|
-|selection-change|已选择的数据行发生改变时触发|-|
-|sorter-change|排序规则发生改变时触发|-|
-|filter-change|过滤选项发生改变时触发|-|
-|page-change|表格分页发生改变时触发|-|
-|page-size-change|表格每页数据数量发生改变时触发|-|
-|cell-click|点击单元格时触发|-|
-|row-click|点击行数据时触发|-|
-|header-click|点击表头数据时触发|-|
+|expand|点击展开行时触发|rowKey: `string`|
+|expanded-change|已展开的数据行发生改变时触发|rowKeys: `string[]`|
+|select|点击行选择器时触发|rowKeys: `string[]`|
+|select-all|点击全选选择器时触发|checked: `boolean`|
+|selection-change|已选择的数据行发生改变时触发|rowKeys: `string[]`|
+|sorter-change|排序规则发生改变时触发|dataIndex: `string`<br>direction: `string`|
+|filter-change|过滤选项发生改变时触发|dataIndex: `string`<br>filteredValues: `string[]`|
+|page-change|表格分页发生改变时触发|page: `number`|
+|page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`|
+|cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumn`|
+|row-click|点击行数据时触发|record: `TableData`|
+|header-click|点击表头数据时触发|column: `TableColumn`|
 ### `<table>` Slots
 
 |插槽名|描述|参数|
