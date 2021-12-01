@@ -290,6 +290,7 @@ export default defineComponent({
         clickToClose={false}
         preventFocus={true}
         popupOffset={4}
+        disabled={props.disabled}
         autoFitPopupWidth
         onPopupVisibleChange={handlePopupVisibleChange}
       >
@@ -297,6 +298,7 @@ export default defineComponent({
           ref={inputRef}
           modelValue={computedValue.value}
           onInput={handleInputValueChange}
+          disabled={props.disabled}
           onKeydown={handleKeyDown}
           {...attrs}
         />
