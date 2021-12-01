@@ -118,6 +118,10 @@
       border-color: @color-transparent;
     }
 
+    .@{radio-prefix-cls}-icon::after {
+      background-color: @radio-color-dot-bg_checked_disabled;
+    }
+
     .@{radio-prefix-cls}-label {
       color: @radio-color-text_checked_disabled;
     }
@@ -204,13 +208,13 @@
   }
 
   &:first-of-type::after {
-    border-top-left-radius: @radio-button-border-radius;
-    border-bottom-left-radius: @radio-button-border-radius;
+    border-top-left-radius: @radio-button-bg-border-radius;
+    border-bottom-left-radius: @radio-button-bg-border-radius;
   }
 
   &:last-of-type::after {
-    border-top-right-radius: @radio-button-border-radius;
-    border-bottom-right-radius: @radio-button-border-radius;
+    border-top-right-radius: @radio-button-bg-border-radius;
+    border-bottom-right-radius: @radio-button-bg-border-radius;
   }
 
   &:hover {
