@@ -625,6 +625,7 @@ export default defineComponent({
               value: key,
               label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
               closable: !option.disabled,
+              tagProps: option.tagProps,
             };
             result.push(value);
           }
@@ -641,6 +642,7 @@ export default defineComponent({
         value: option.key,
         label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
         closable: !option?.disabled,
+        tagProps: option.tagProps,
       };
     });
 

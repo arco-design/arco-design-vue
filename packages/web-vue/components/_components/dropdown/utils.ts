@@ -7,6 +7,7 @@ import {
   isArrayChildren,
   isNamedComponent,
   isSlotsChildren,
+  resolveProps,
 } from '../../_utils/vue-utils';
 import {
   Option,
@@ -48,12 +49,14 @@ export const getOptionNodes = ({
 
     let optionInfo: OptionInfo;
     if (isVNode(option)) {
-      const label = option.props?.label ?? getVNodeChildrenString(option);
-      const value = option.props?.value ?? label;
+      const props = resolveProps(option);
+      const label = props.label ?? getVNodeChildrenString(option);
+      const value = props.value ?? label;
       const render = getChildrenFunc(option);
       const key = `option-${typeof value}-${value}`;
 
       optionInfo = {
+        ...props,
         index,
         key,
         value,

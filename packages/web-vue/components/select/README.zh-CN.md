@@ -86,6 +86,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |value|选项值（如不填，会从内容中获取）|`string\|number`|`-`|
 |label|选项标签（如不填，会从内容中获取）|`string`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
+|tag-props|展示的标签属性|`TagProps`|`-`|
 
 
 

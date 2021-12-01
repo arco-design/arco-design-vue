@@ -416,6 +416,7 @@ export default defineComponent({
               closable={item.closable && !props.disabled}
               visible
               onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
+              {...item.tagProps}
             >
               {slots.tag?.({ data: item }) ??
                 props.formatTag?.(item) ??

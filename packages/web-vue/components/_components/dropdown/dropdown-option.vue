@@ -20,9 +20,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 import Checkbox from '../../checkbox';
+import { TagProps } from '../../tag';
 
 export default defineComponent({
   name: 'Option',
@@ -45,6 +46,14 @@ export default defineComponent({
      * @en Whether to disable
      */
     disabled: Boolean,
+    /**
+     * @zh 展示的标签属性
+     * @en Displayed tag attributes
+     * @version 2.8.0
+     */
+    tagProps: {
+      type: Object as PropType<TagProps>,
+    },
     // private
     isSelected: Boolean,
     isActive: Boolean,
