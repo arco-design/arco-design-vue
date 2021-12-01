@@ -1,9 +1,9 @@
 import { computed, inject, provide, reactive, Ref, isRef } from 'vue';
-import { LevelContext, LevelInjectionKey } from '../context';
+import { LevelInjectionKey } from '../context';
 
 export function provideLevel(level: Ref<number> | number) {
   const computedLevel = computed(() => (isRef(level) ? level.value : level));
-  provide<LevelContext>(
+  provide(
     LevelInjectionKey,
     reactive({
       level: computedLevel,
@@ -13,7 +13,7 @@ export function provideLevel(level: Ref<number> | number) {
 
 export default function useLevel(props?: { provideNextLevel?: boolean }) {
   const { provideNextLevel } = props || {};
-  const levelContext = inject<LevelContext>(LevelInjectionKey);
+  const levelContext = inject(LevelInjectionKey);
   const level = computed(() => levelContext?.level || 1);
 
   if (provideNextLevel) {

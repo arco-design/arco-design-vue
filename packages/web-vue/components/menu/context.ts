@@ -1,7 +1,7 @@
 import { InjectionKey, VNodeTypes } from 'vue';
-import { MenuProps } from './interface';
+import { MenuData, MenuProps } from './interface';
 
-export const MenuInjectionKey: InjectionKey<string> =
+export const MenuInjectionKey: InjectionKey<MenuContext> =
   Symbol('MenuInjectionKey');
 
 export type MenuContext = Readonly<
@@ -27,22 +27,22 @@ export type MenuContext = Readonly<
   }
 >;
 
-export const LevelInjectionKey: InjectionKey<string> =
+export const LevelInjectionKey: InjectionKey<LevelContext> =
   Symbol('LevelInjectionKey');
 
 export type LevelContext = Readonly<{
   level: number;
 }>;
 
-export const DataCollectorInjectionKey: InjectionKey<string> = Symbol(
-  'DataCollectorInjectionKey'
-);
+export type MenuMapType = Map<string, string[]>;
+
+export const DataCollectorInjectionKey: InjectionKey<DataCollectorContext> =
+  Symbol('DataCollectorInjectionKey');
 
 export type DataCollectorContext = Readonly<{
-  collectSubMenuKey: (keys: string) => void;
-  removeSubMenuKey: (keys: string) => void;
-  updateSubMenuKeys: (keys: string[], prevKeys: string[]) => void;
-  collectMenuItemKey: (keys: string) => void;
-  removeMenuItemKey: (keys: string) => void;
-  updateMenuItemKeys: (keys: string[], prevKeys: string[]) => void;
+  collectSubMenu: (key: string, children: MenuData) => void;
+  removeSubMenu: (key: string) => void;
+  collectMenuItem: (key: string) => void;
+  removeMenuItem: (keys: string) => void;
+  reportMenuData: (data: MenuData) => void;
 }>;

@@ -44,6 +44,7 @@ description: Organize, arrange, and display a list of options.
 |scroll-config|Scroll to the configuration items in the visible area and receive all the parameters of [scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)|`{ [key: string]: any }`|`-`|
 |trigger-props|Accept all `Props` of `Trigger` in pop-up mode|`object`|`-`|
 |tooltip-props|Accept all `Props` of `ToolTip` in pop-up mode|`object`|`-`|
+|auto-open-selected|Expand the selected menus by default|`boolean`|`false`|
 ### `<menu>` Events
 
 |Event Name|Description|Parameters|

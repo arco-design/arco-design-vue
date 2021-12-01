@@ -53,15 +53,14 @@ export default defineComponent({
       timer.value && clearTimeout(timer.value);
     };
 
-    const { collectMenuItemKey, removeMenuItemKey } =
-      useMenuDataCollectorContext();
+    const { collectMenuItem, removeMenuItem } = useMenuDataCollectorContext();
 
     onMounted(() => {
-      collectMenuItemKey && collectMenuItemKey(key.value);
+      collectMenuItem && collectMenuItem(key.value);
     });
 
     onUnmounted(() => {
-      removeMenuItemKey && removeMenuItemKey(key.value);
+      removeMenuItem && removeMenuItem(key.value);
     });
 
     watchEffect((onInvalidate) => {
