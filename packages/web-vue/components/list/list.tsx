@@ -3,6 +3,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
 import Grid from '../grid';
 import Pagination from '../pagination';
+import Empty from '../empty';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import { ScrollIntoViewOptions } from '../_components/virtual-list/interface';
 
@@ -206,7 +207,7 @@ export default defineComponent({
         return props.gridProps ? renderGridItems(data) : renderListItems(data);
       }
 
-      return null;
+      return renderEmpty();
     };
 
     const renderPagination = () => {
@@ -250,7 +251,7 @@ export default defineComponent({
     const renderVirtualList = () => {
       const { currentPageItems, currentPageItemRenderFunc } =
         getListItemRenderMsg(props.data || []);
-      return (
+      return currentPageItems.length ? (
         <VirtualList
           ref={virtualListRef}
           {...props.virtualListProps}
@@ -262,7 +263,13 @@ export default defineComponent({
           }}
           onScroll={handleScroll}
         />
+      ) : (
+        renderEmpty()
       );
+    };
+
+    const renderEmpty = () => {
+      return <Empty />;
     };
 
     const renderList = () => {
