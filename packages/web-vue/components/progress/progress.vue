@@ -10,7 +10,11 @@
       :steps="steps"
       :size="size"
       :show-text="showText"
-    />
+    >
+      <template v-if="$slots.text" #text="scope">
+        <slot name="text" v-bind="scope"></slot>
+      </template>
+    </progress-steps>
     <progress-line
       v-else-if="type === 'line' && size !== 'mini'"
       :stroke-width="strokeWidth"
@@ -22,7 +26,11 @@
       :buffer-color="bufferColor"
       :width="width"
       :show-text="showText"
-    />
+    >
+      <template v-if="$slots.text" #text="scope">
+        <slot name="text" v-bind="scope"></slot>
+      </template>
+    </progress-line>
     <progress-circle
       v-else
       :type="type"
@@ -34,7 +42,11 @@
       :track-color="trackColor"
       :size="size"
       :show-text="showText"
-    />
+    >
+      <template v-if="$slots.text" #text="scope">
+        <slot name="text" v-bind="scope"></slot>
+      </template>
+    </progress-circle>
   </div>
 </template>
 
@@ -128,6 +140,7 @@ export default defineComponent({
     bufferColor: {
       type: [String, Object],
     },
+
     /**
      * @zh 是否显示文字
      * @en Whether to display text
@@ -145,6 +158,11 @@ export default defineComponent({
       type: String as PropType<Status>,
       default: 'normal',
     },
+    /**
+     * @zh 文本
+     * @en Text
+     * @slot text
+     */
   },
   setup(props) {
     const prefixCls = getPrefixCls('progress');

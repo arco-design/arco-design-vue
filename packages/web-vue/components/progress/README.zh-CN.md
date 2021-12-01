@@ -16,9 +16,11 @@ description: 给予用户当前系统执行中任务运行状态的反馈，多�
 
 @import ./__demo__/size.md
 
+@import ./__demo__/linear.md
+
 @import ./__demo__/steps.md
 
-
+@import ./__demo__/trackColor.md
 ### `<progress>` Props
 
 |参数名|描述|类型|默认值|

@@ -8,7 +8,7 @@
       :class="`${prefixCls}-svg`"
     >
       <defs v-if="isLinearGradient">
-        <linearGradient id="linearGradientId" x1="0" y1="1" x2="0" y2="0">
+        <linearGradient :id="linearGradientId" x1="0" y1="1" x2="0" y2="0">
           <stop
             v-for="key of Object.keys(color)"
             :key="key"
@@ -36,7 +36,7 @@
         :r="radius"
         :stroke-width="mergedStrokeWidth"
         :style="{
-          stroke: color,
+          stroke: isLinearGradient ? `url(#${linearGradientId})` : color,
           strokeDasharray: perimeter,
           strokeDashoffset: (percent >= 1 ? 0 : 1 - percent) * perimeter,
         }"
@@ -57,6 +57,8 @@ import { getPrefixCls } from '../_utils/global-config';
 import { isObject } from '../_utils/is';
 import { SIZES } from '../_utils/constant';
 import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
+
+let __ARCO_PROGRESS_SEED = 0;
 
 const DEFAULT_WIDTH = {
   mini: 16,
@@ -144,6 +146,11 @@ export default defineComponent({
     const perimeter = computed(() => Math.PI * 2 * radius.value);
     const center = computed(() => mergedWidth.value / 2);
 
+    const linearGradientId = computed(() => {
+      __ARCO_PROGRESS_SEED += 1;
+      return `${prefixCls}-linear-gradient-${__ARCO_PROGRESS_SEED}`;
+    });
+
     return {
       prefixCls,
       isLinearGradient,
@@ -153,6 +160,7 @@ export default defineComponent({
       mergedWidth,
       mergedStrokeWidth,
       mergedPathStrokeWidth,
+      linearGradientId,
     };
   },
 });
