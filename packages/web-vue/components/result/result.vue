@@ -23,6 +23,9 @@
         {{ subtitle }}
       </slot>
     </div>
+    <div v-if="$slots.extra" :class="`${prefixCls}-extra`">
+      <slot name="extra"></slot>
+    </div>
     <div />
   </div>
 </template>
@@ -99,6 +102,11 @@ export default defineComponent({
    * @zh 副标题
    * @en Subtitle
    * @slot subtitle
+   */
+  /**
+   * @zh 额外内容
+   * @en Extra
+   * @slot extra
    */
   setup() {
     const prefixCls = getPrefixCls('result');

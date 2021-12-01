@@ -35,5 +35,6 @@ description: 用于反馈一系列操作任务的处理结果，当有重要操�
 |icon|图标|-|
 |title|标题|-|
 |subtitle|副标题|-|
+|extra|额外内容|-|
 
 
