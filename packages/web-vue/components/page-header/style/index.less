@@ -48,12 +48,17 @@
     white-space: nowrap;
   }
 
+  .icon-hover(@page-header-prefix-cls, @page-header-size-back-icon, @page-header-size-back-icon-bg_hover);
+
+  .icon-hover-bg(
+      @page-header-prefix-cls,
+      @page-header-color-back-icon-bg_hover
+    );
+
   &-back-btn {
     margin-right: @page-header-margin-back-icon-right;
     color: @page-header-color-back-icon;
     font-size: @page-header-size-back-icon;
-
-    .icon-hover(@prefix, @page-header-size-back-icon, @page-header-size-back-icon-bg_hover);
 
     &-icon {
       position: relative;

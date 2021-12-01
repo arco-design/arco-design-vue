@@ -1,12 +1,15 @@
 <template>
   <span :class="cls">
-    <span v-if="!simple">{{ t('pagination.goto') }}</span>
+    <span v-if="!simple" :class="`${prefixCls}-text-goto`">{{
+      t('pagination.goto')
+    }}</span>
     <input-number
       v-model="inputValue"
       :class="`${prefixCls}-input`"
       :min="1"
       :max="pages"
       :size="size"
+      :disabled="disabled"
       hide-button
       @focus="handleFocus"
       @blur="handleBlur"
@@ -36,6 +39,10 @@ export default defineComponent({
       required: true,
     },
     simple: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
       type: Boolean,
       default: false,
     },

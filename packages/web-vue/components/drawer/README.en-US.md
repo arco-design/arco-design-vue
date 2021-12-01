@@ -14,6 +14,8 @@ description: A drawer-like panel that slides out from the side of the screen aft
 
 @import ./__demo__/nested.md
 
+@import ./__demo__/popup-container.md
+
 
 ### `<drawer>` Props
 

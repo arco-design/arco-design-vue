@@ -9,7 +9,7 @@ import EllipsisPager from './page-item-ellipsis.vue';
 import PageJumper from './page-jumper.vue';
 import PageOptions from './page-options.vue';
 import { useI18n } from '../locale';
-import { isFunction } from '../_utils/is';
+import { isFunction, isNumber } from '../_utils/is';
 import type { PageItemType } from './interface';
 import { SelectProps } from '../select';
 
@@ -209,7 +209,8 @@ export default defineComponent({
     );
 
     const handleClick = (page: number) => {
-      if (page !== computedCurrent.value) {
+      // when pageJumper blur and input.value is undefined, page is illegal
+      if (page !== computedCurrent.value && isNumber(page) && !props.disabled) {
         _current.value = page;
         emit('update:current', page);
         emit('change', page);
@@ -357,6 +358,7 @@ export default defineComponent({
               getPageItemElement('previous', { simple: true })
             )}
             <PageJumper
+              disabled={props.disabled}
               current={computedCurrent.value}
               pages={pages.value}
               simple
@@ -435,6 +437,7 @@ export default defineComponent({
           {renderPager()}
           {props.showPageSize && (
             <PageOptions
+              disabled={props.disabled}
               sizeOptions={props.pageSizeOptions}
               pageSize={computedPageSize.value}
               size={props.size}
@@ -444,6 +447,7 @@ export default defineComponent({
           )}
           {!props.simple && props.showJumper && (
             <PageJumper
+              disabled={props.disabled}
               current={computedCurrent.value}
               pages={pages.value}
               size={props.size}
