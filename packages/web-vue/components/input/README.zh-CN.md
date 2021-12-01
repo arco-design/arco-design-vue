@@ -89,6 +89,7 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 |---|---|---|:---:|
 |search-button|是否为后置按钮模式|`boolean`|`false`|
 |loading|是否为加载中状态|`boolean`|`false`|
+|size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 ### `<input-search>` Events
 
 |事件名|描述|参数|

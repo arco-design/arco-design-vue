@@ -2,17 +2,13 @@
 
 exports[`<collapse> demo: render [accordion] correctly 1`] = `
 "<div class=\\"arco-collapse\\">
-  <div class=\\"arco-collapse-item arco-collapse-item-active\\">
+  <div class=\\"arco-collapse-item\\">
     <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <div class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
-        <div class=\\"arco-collapse-item-content-box\\">
-          <div>Beijing Toutiao Technology Co., Ltd.</div>
-        </div>
-      </div>
+      <!--v-if-->
     </transition-stub>
   </div>
   <div class=\\"arco-collapse-item\\">

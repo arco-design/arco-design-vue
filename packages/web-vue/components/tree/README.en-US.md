@@ -71,8 +71,8 @@ description: For content with many levels, such as folders, catalogs, and organi
 |Event Name|Description|Parameters|
 |---|---|---|
 |select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|check|Triggered when the tree node checkbox is clicked|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e?: Event; }`|
-|expand|Expand/close|expandedKeys: `Array<string \| number>`<br>event: `{ expanded: boolean; expandedNodes: TreeNodeData[]; node: TreeNodeData; e?: Event; }`|
+|check|Triggered when the tree node checkbox is clicked|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|expand|Expand/close|expandKeys: `Array<string \| number>`<br>event: `{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
 |drag-start|Node starts dragging|-|
 |drag-end|Node end drag|event: `DragEvent`<br>node: `TreeNodeData`|
 |drag-over|The node is dragged to the releasable target|event: `DragEvent`<br>node: `TreeNodeData`|

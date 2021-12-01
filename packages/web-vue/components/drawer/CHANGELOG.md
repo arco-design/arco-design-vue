@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### 🐛 BugFix
+
+- Fix the problem that the drawer is still in the fixed layout when setting the popup-container property ([#297](https://github.com/arco-design/arco-design-vue/pull/297))
+
+
 ## 2.7.0
 
 `2021-11-26`

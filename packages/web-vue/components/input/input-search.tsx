@@ -7,6 +7,7 @@ import Button from '../button';
 import Input from './input';
 import InputGroup from './input-group.vue';
 import { EmitType } from '../_utils/types';
+import { Size, SIZES } from '../_utils/constant';
 
 export default defineComponent({
   name: 'InputSearch',
@@ -27,6 +28,18 @@ export default defineComponent({
     loading: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 输入框大小
+     * @en Input size
+     * @values 'mini', 'small', 'medium', 'large'
+     */
+    size: {
+      type: String as PropType<Size>,
+      default: 'medium',
+      validator: (value: any) => {
+        return SIZES.includes(value);
+      },
     },
     // for JSX
     onSearch: {
@@ -77,7 +90,14 @@ export default defineComponent({
         append: slots.append,
       };
 
-      return <Input ref={inputRef} v-slots={inputSlots} {...attrs} />;
+      return (
+        <Input
+          ref={inputRef}
+          v-slots={inputSlots}
+          size={props.size}
+          {...attrs}
+        />
+      );
     };
 
     const render = () => {
@@ -90,6 +110,7 @@ export default defineComponent({
                 icon: () => (props.loading ? <IconLoading /> : <IconSearch />),
               }}
               type="primary"
+              size={props.size}
               class={`${prefixCls}-btn`}
               loading={props.loading}
               onClick={handleClick}

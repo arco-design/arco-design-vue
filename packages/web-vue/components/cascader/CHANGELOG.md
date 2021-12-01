@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### 🆕 Feature
+
+- Add support for `tagProps` ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+
+### 💅 Style
+
+- Remove the option to select the bold effect ([#308](https://github.com/arco-design/arco-design-vue/pull/308))
+
+
 ## 2.6.0
 
 `2021-11-19`

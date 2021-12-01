@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### 🆕 新增功能
+
+- 增加 `tagProps` 的支持 ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+
+### 💅 样式更新
+
+- 去除选项选中加粗的效果 ([#308](https://github.com/arco-design/arco-design-vue/pull/308))
+
+
 ## 2.6.0
 
 `2021-11-19`

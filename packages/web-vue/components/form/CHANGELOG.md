@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### 🐛 BugFix
+
+- Fix the problem of invalid setting of null value in `setFields` method ([#311](https://github.com/arco-design/arco-design-vue/pull/311))
+
+
 ## 2.7.0
 
 `2021-11-26`

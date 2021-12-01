@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### 🐛 BugFix
+
+- Update checked keys after load more ([#206](https://github.com/arco-design/arco-design-vue/pull/206))
+
+
 ## 2.7.0
 
 `2021-11-26`

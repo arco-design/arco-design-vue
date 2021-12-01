@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### ⚠️ Important Attention
+
+- **spin:** No additional layer of `<div>` will be added when the container mode is not loaded
+
+### 🆕 Feature
+
+- **textarea:** Add support for min rows and max rows ([#309](https://github.com/arco-design/arco-design-vue/pull/309))
+- **select:** Add support for `tagProps` ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+- **cascader:** Add support for `tagProps` ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+- **input-tag:** Add support for `tagProps` ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+- **menu:** add prop    auto-open-selected ([#306](https://github.com/arco-design/arco-design-vue/pull/306))
+- **result:** Added `extra` slot and `default` slot ([#302](https://github.com/arco-design/arco-design-vue/pull/302))
+- **list:** Add the display of empty data ([#296](https://github.com/arco-design/arco-design-vue/pull/296))
+- Add the font-family on the body ([#287](https://github.com/arco-design/arco-design-vue/pull/287))
+
+### 🐛 BugFix
+
+- **form:** Fix the problem of invalid setting of null value in `setFields` method ([#311](https://github.com/arco-design/arco-design-vue/pull/311))
+- **auto-complete:** Fix the problem that disabled is unavailable ([#310](https://github.com/arco-design/arco-design-vue/pull/310))
+- **pagination:** Fix the problem that the input box and the number selector are not disabled when the `disabled` property is set to true ([#297](https://github.com/arco-design/arco-design-vue/pull/297))
+- **drawer:** Fix the problem that the drawer is still in the fixed layout when setting the popup-container property ([#297](https://github.com/arco-design/arco-design-vue/pull/297))
+- **input-number:** Fix the problem that the button does not add size in button mode ([#293](https://github.com/arco-design/arco-design-vue/pull/293))
+- **tree:** Update checked keys after load more ([#206](https://github.com/arco-design/arco-design-vue/pull/206))
+
+### 💅 Style
+
+- **radio:** Remove the selected bold effect in button mode ([#308](https://github.com/arco-design/arco-design-vue/pull/308))
+- **cascader:** Remove the option to select the bold effect ([#308](https://github.com/arco-design/arco-design-vue/pull/308))
+
+
 ## 2.7.0
 
 `2021-11-26`

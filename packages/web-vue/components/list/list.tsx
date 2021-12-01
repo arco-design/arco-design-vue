@@ -2,10 +2,12 @@ import { computed, defineComponent, PropType, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
 import Grid from '../grid';
-import Pagination from '../pagination';
+import Pagination, { PaginationProps } from '../pagination';
 import Empty from '../empty';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import { ScrollIntoViewOptions } from '../_components/virtual-list/interface';
+import { usePagination } from '../_hooks/use-pagination';
+import { omit } from '../_utils/omit';
 
 const LIST_SIZES = ['small', 'medium', 'large'] as const;
 type ListSize = typeof LIST_SIZES[number];
@@ -66,7 +68,7 @@ export default defineComponent({
      * @en List pagination configuration
      */
     paginationProps: {
-      type: Object,
+      type: Object as PropType<PaginationProps>,
     },
     /**
      * @zh 列表栅格配置
@@ -111,6 +113,18 @@ export default defineComponent({
      * @en Triggered when the list reaches the bottom
      */
     'reachBottom',
+    /**
+     * @zh 表格分页发生改变时触发
+     * @en Triggered when the table pagination changes
+     * @param {number} page
+     */
+    'pageChange',
+    /**
+     * @zh 表格每页数据数量发生改变时触发
+     * @en Triggered when the number of data per page of the table changes
+     * @param {number} pageSize
+     */
+    'pageSizeChange',
   ],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('list');
@@ -127,14 +141,16 @@ export default defineComponent({
       emit('scroll');
     };
 
+    const { current, pageSize, handlePageChange, handlePageSizeChange } =
+      usePagination(props, { emit });
+
     const getCurrentPageItems = (data: unknown[]) => {
       if (!props.paginationProps) {
         return data;
       }
 
-      const { current, pageSize } = props.paginationProps;
-      const startIndex = (current - 1) * pageSize;
-      return data.slice(startIndex, startIndex + pageSize);
+      const startIndex = (current.value - 1) * pageSize.value;
+      return data.slice(startIndex, startIndex + pageSize.value);
     };
 
     const renderGridItems = (data: unknown[]) => {
@@ -215,10 +231,21 @@ export default defineComponent({
         return null;
       }
 
+      const paginationProps = omit(props.paginationProps, [
+        'current',
+        'pageSize',
+        'defaultCurrent',
+        'defaultPageSize',
+      ]);
+
       return (
         <Pagination
-          {...props.paginationProps}
+          {...paginationProps}
           class={`${prefixCls}-pagination`}
+          current={current.value}
+          pageSize={pageSize.value}
+          onChange={handlePageChange}
+          onPageSizeChange={handlePageSizeChange}
         />
       );
     };

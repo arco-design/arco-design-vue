@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### 🐛 BugFix
+
+- Fix the problem that the input box and the number selector are not disabled when the `disabled` property is set to true ([#297](https://github.com/arco-design/arco-design-vue/pull/297))
+
+
 ## 2.7.0
 
 `2021-11-26`

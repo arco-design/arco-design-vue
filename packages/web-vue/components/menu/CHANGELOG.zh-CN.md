@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### 🆕 新增功能
+
+- 新增属性  `auto-open-selected` ([#306](https://github.com/arco-design/arco-design-vue/pull/306))
+
+
 ## 2.7.0
 
 `2021-11-26`

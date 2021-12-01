@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.8.0
+
+`2021-12-01`
+
+### ⚠️ 重点注意
+
+- **spin:** 容器模式的非加载情况下，不会再额外增加一层 `<div>`
+
+### 🆕 新增功能
+
+- **textarea:** 增加最小行和最大行的支持 ([#309](https://github.com/arco-design/arco-design-vue/pull/309))
+- **select:** 增加 `tagProps` 的支持 ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+- **cascader:** 增加 `tagProps` 的支持 ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+- **input-tag:** 增加 `tagProps` 的支持 ([#307](https://github.com/arco-design/arco-design-vue/pull/307))
+- **menu:** 新增属性  `auto-open-selected` ([#306](https://github.com/arco-design/arco-design-vue/pull/306))
+- **result:** 增加 `extra` 插槽和 `default` 插槽 ([#302](https://github.com/arco-design/arco-design-vue/pull/302))
+- **list:** 增加空数据的展示 ([#296](https://github.com/arco-design/arco-design-vue/pull/296))
+- 增加 body 上的 font-family ([#287](https://github.com/arco-design/arco-design-vue/pull/287))
+
+### 🐛 问题修复
+
+- **form:** 修复 `setFields` 方法设定空值失效的问题 ([#311](https://github.com/arco-design/arco-design-vue/pull/311))
+- **auto-complete:** 修复 disabled 不可用的问题 ([#310](https://github.com/arco-design/arco-design-vue/pull/310))
+- **pagination:** 修复 `disabled` 属性设置为 true 时，输入框和条数选择器未禁用的问题 ([#297](https://github.com/arco-design/arco-design-vue/pull/297))
+- **drawer:** 修复设置 `popup-container` 属性时，抽屉仍然是 `fixed` 布局的问题 ([#297](https://github.com/arco-design/arco-design-vue/pull/297))
+- **input-number:** 修复 button 模式下按钮没有添加 size 的问题 ([#293](https://github.com/arco-design/arco-design-vue/pull/293))
+- **tree:** 动态加载节点后更新勾选状态 ([#206](https://github.com/arco-design/arco-design-vue/pull/206))
+
+### 💅 样式更新
+
+- **radio:** 去除 button 模式下选中加粗的效果 ([#308](https://github.com/arco-design/arco-design-vue/pull/308))
+- **cascader:** 去除选项选中加粗的效果 ([#308](https://github.com/arco-design/arco-design-vue/pull/308))
+
+
 ## 2.7.0
 
 `2021-11-26`

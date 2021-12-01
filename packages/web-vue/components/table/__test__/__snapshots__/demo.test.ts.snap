@@ -2,224 +2,318 @@
 
 exports[`<table> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-            </tr>
-            <!---->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+          </tr>
           <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
     </div>
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>"
 `;
 
 exports[`<table> demo: render [custom] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Optional</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
-            <!---->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Optional</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+          </tr>
           <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
     </div>
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>"
 `;
 
 exports[`<table> demo: render [expand] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<table> demo: render [fixed] correctly 1`] = `
+"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
+  <!---->
+  <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right arco-table-scroll-position-both arco-table-scroll-y\\">
+    <div class=\\"arco-table-content\\">
+      <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
+        <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
           <colgroup>
             <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
+            <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
             <col>
             <col>
-            <col>
-            <col>
+            <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                 <!----></span>
                 <!---->
               </th>
@@ -231,346 +325,237 @@ exports[`<table> demo: render [expand] correctly 1`] = `
                 <!----></span>
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
                 <!----></span>
                 <!---->
               </th>
             </tr>
           </thead>
+        </table>
+      </div>
+      <div class=\\"arco-table-body\\" style=\\"max-height: 200px;\\">
+        <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <colgroup>
+            <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
+            <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
+            <col>
+            <col>
+            <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
+          </colgroup>
           <tbody>
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
             </tr>
             <!---->
           </tbody>
         </table>
       </div>
     </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
-          <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
-    </div>
-    <!---->
   </div>
-</div>"
-`;
-
-exports[`<table> demo: render [fixed] correctly 1`] = `
-"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right arco-table-scroll-position-both arco-table-scroll-y\\">
-      <div class=\\"arco-table-content\\">
-        <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
-            <colgroup>
-              <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
-              <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-              <col>
-              <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
-            </colgroup>
-            <thead>
-              <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                  <!----></span>
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                  <!----></span>
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                  <!----></span>
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                  <!----></span>
-                  <!---->
-                </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div class=\\"arco-table-body\\" style=\\"max-height: 200px;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
-            <colgroup>
-              <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
-              <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-              <col>
-              <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
-            </colgroup>
-            <tbody>
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-              </tr>
-              <!---->
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
     </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
-          <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
-    </div>
-    <!---->
   </div>
 </div>"
 `;
 
 exports[`<table> demo: render [group] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-border-header-cell arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-            <col>
-            <col>
-            <col>
-            <col>
-            <col>
-            <col>
-            <col style=\\"width: 120px; min-width: 120px; max-width: 120px;\\">
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"4\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">User Info</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Information</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-            <tr class=\\"arco-table-tr\\">
+  <!---->
+  <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col>
+          <col style=\\"width: 120px; min-width: 120px; max-width: 120px;\\">
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
               <!---->
-              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Birthday</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Phone</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-            <tr class=\\"arco-table-tr\\">
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"4\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">User Info</span>
+              <!----></span>
               <!---->
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">City</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Road</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">No.</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1994-04-21</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->34</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-            </tr>
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Information</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+          <tr class=\\"arco-table-tr\\">
             <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1994-05-21</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->37</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-            </tr>
+            <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Birthday</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Phone</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+          <tr class=\\"arco-table-tr\\">
             <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1992-02-11</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Paris</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Arco</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->67</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1991-06-21</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->317</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1996-08-21</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Paris</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->114</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-            </tr>
-            <!---->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">City</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Road</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">No.</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1994-04-21</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->34</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+          </tr>
           <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1994-05-21</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->37</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1992-02-11</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Paris</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Arco</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->67</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1991-06-21</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->317</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->1996-08-21</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Paris</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Park</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->114</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->12345678</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
     </div>
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>"
 `;
@@ -675,452 +660,540 @@ exports[`<table> demo: render [props] correctly 1`] = `
   </div>
 </form>
 <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"2\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"3\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"4\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"5\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-            </tr>
-            <!---->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+          </tr>
           <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"2\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"3\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"4\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"5\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
     </div>
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>"
 `;
 
 exports[`<table> demo: render [radio] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"></span></th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"4\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"5\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-            </tr>
-            <!---->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"></span></th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+          </tr>
           <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"4\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"5\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
     </div>
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>"
 `;
 
 exports[`<table> demo: render [row-selection] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!----></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Jane Doe\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Alisa Ross\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"Kevin Sandra\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Ed Hellen\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"William Smith\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
-                <!--v-if--></span></span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-            </tr>
-            <!---->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Jane Doe\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+          </tr>
           <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Alisa Ross\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"Kevin Sandra\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"Ed Hellen\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"William Smith\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <!--v-if--></span></span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
     </div>
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>"
 `;
 
 exports[`<table> demo: render [sort] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Name</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div></span></span>
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Salary</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><!----></span></span><span class=\\"arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
-                <!--teleport start-->
-                <!--teleport end-->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!----></span><span class=\\"arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
-                <!--teleport start-->
-                <!--teleport end-->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!----></span>
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-            </tr>
-            <!---->
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Name</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div></span></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Salary</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><!----></span></span><span class=\\"arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
+              <!--teleport start-->
+              <!--teleport end-->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span><span class=\\"arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
+              <!--teleport start-->
+              <!--teleport end-->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+          </tr>
           <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
     </div>
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
   </div>
 </div>"
 `;
 
 exports[`<table> demo: render [subtree] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content\\">
+  <!---->
+  <div class=\\"arco-table-container\\">
+    <div class=\\"arco-table-content\\">
+      <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <colgroup>
+          <col>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+        <thead>
+          <tr class=\\"arco-table-tr\\">
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <!----></span>
+              <!---->
+            </th>
+            <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <!----></span>
+              <!---->
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><span style=\\"display: inline-flex; margin-right: 6px;\\"><button class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span>Jane Doe</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
+              <!---->Alisa Ross</span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
+              <!---->Kevin Sandra</span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
+              <!---->Ed Hellen</span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+          </tr>
+          <!---->
+          <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
+              <!---->William Smith</span>
+            </td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
+            <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+          </tr>
+          <!---->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-table-pagination\\">
+    <div class=\\"arco-pagination arco-pagination-size-medium\\">
+      <!---->
+      <ul class=\\"arco-pagination-list\\">
+        <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg></li>
+        <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+        <!---->
+        <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg></li>
+      </ul>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<table> demo: render [virtual-list] correctly 1`] = `
+"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
+  <!---->
+  <div class=\\"arco-table-container arco-table-scroll-y\\">
+    <div class=\\"arco-table-content\\">
+      <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
         <table cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
-            <col>
             <col>
             <col>
             <col>
@@ -1131,10 +1204,6 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
                 <!----></span>
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!----></span>
-                <!---->
-              </th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
                 <!----></span>
                 <!---->
@@ -1145,203 +1214,101 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><span style=\\"display: inline-flex; margin-right: 6px;\\"><button class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span>Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
-                <!---->Alisa Ross</span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
-                <!---->Kevin Sandra</span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
-                <!---->Ed Hellen</span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-            </tr>
-            <!---->
-            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
-                <!---->William Smith</span>
-              </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-            </tr>
-            <!---->
-          </tbody>
         </table>
       </div>
-    </div>
-    <!---->
-    <div class=\\"arco-table-pagination\\">
-      <div class=\\"arco-pagination arco-pagination-size-medium\\">
-        <!---->
-        <ul class=\\"arco-pagination-list\\">
-          <li class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
-            </svg></li>
-          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
-          <!---->
-          <li class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-              <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-            </svg></li>
-        </ul>
-        <!---->
-        <!---->
-      </div>
-    </div>
-    <!---->
-  </div>
-</div>"
-`;
-
-exports[`<table> demo: render [virtual-list] correctly 1`] = `
-"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
-  <div class=\\"arco-spin\\">
-    <!---->
-    <div class=\\"arco-table-container arco-table-scroll-y\\">
-      <div class=\\"arco-table-content\\">
-        <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\">
-            <colgroup>
-              <col>
-              <col>
-              <col>
-            </colgroup>
-            <thead>
-              <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                  <!----></span>
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                  <!----></span>
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                  <!----></span>
-                  <!---->
-                </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div class=\\"arco-table-body\\" style=\\"overflow-y: auto; max-height: 400px;\\">
-          <div style=\\"height: 32000px; position: relative; overflow: hidden; z-index: 0;\\">
-            <div style=\\"display: flex; flex-direction: column; transform: translateY(0px); position: absolute; left: 0px; right: 0px; top: 0px;\\">
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 1</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.1@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 2</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.2@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 3</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.3@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 4</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.4@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 5</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.5@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 6</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.6@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 7</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.7@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 8</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.8@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 9</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.9@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 10</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.10@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 11</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.11@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 12</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.12@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 13</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.13@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 14</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.14@example.com</span></td>
-              </tr>
-              <!---->
-            </div>
+      <div class=\\"arco-table-body\\" style=\\"overflow-y: auto; max-height: 400px;\\">
+        <div style=\\"height: 32000px; position: relative; overflow: hidden; z-index: 0;\\">
+          <div style=\\"display: flex; flex-direction: column; transform: translateY(0px); position: absolute; left: 0px; right: 0px; top: 0px;\\">
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 1</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.1@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 2</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.2@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 3</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.3@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 4</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.4@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 5</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.5@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 6</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.6@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 7</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.7@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 8</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.8@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 9</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.9@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 10</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.10@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 11</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.11@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 12</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.12@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 13</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.13@example.com</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\" style=\\"position: flex;\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->User 14</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->user.14@example.com</span></td>
+            </tr>
+            <!---->
           </div>
         </div>
       </div>
     </div>
-    <!---->
-    <!---->
-    <!---->
   </div>
+  <!---->
+  <!---->
 </div>"
 `;
