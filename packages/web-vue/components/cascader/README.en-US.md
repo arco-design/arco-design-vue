@@ -68,6 +68,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |label|Option text|`string`|`-`|
 |render|Custom render|`RenderFunction`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
+|tagProps|Displayed tag attributes|`TagProps`|`-`|
 |children|Next level options|`CascaderOption[]`|`-`|
 |isLeaf|Whether it is a leaf node|`boolean`|`false`|
 

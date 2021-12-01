@@ -66,6 +66,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |label|选项文本|`string`|`-`|
 |render|自定义渲染|`RenderFunction`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
+|tagProps|展示的标签属性|`TagProps`|`-`|
 |children|下一级选项|`CascaderOption[]`|`-`|
 |isLeaf|是否是叶子节点|`boolean`|`false`|
 

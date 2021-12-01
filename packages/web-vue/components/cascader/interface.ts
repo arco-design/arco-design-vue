@@ -1,4 +1,5 @@
 import { RenderFunction } from 'vue';
+import { TagProps } from '../tag';
 
 export interface CascaderOption {
   /**
@@ -21,6 +22,12 @@ export interface CascaderOption {
    * @en Whether to disable
    */
   disabled?: boolean;
+  /**
+   * @zh 展示的标签属性
+   * @en Displayed tag attributes
+   * @version 2.8.0
+   */
+  tagProps?: TagProps;
   /**
    * @zh 下一级选项
    * @en Next level options

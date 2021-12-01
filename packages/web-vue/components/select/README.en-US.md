@@ -88,6 +88,7 @@ description: When users need to select one or more from a group of similar data,
 |value|Option value (if not filled, it will be obtained from the content)|`string\|number`|`-`|
 |label|Option label (if not filled, it will be obtained from the content)|`string`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
+|tag-props|Displayed tag attributes|`TagProps`|`-`|
 
 
 

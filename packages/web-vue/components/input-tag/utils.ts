@@ -1,8 +1,8 @@
-import { ValueData } from '../_utils/types';
 import { isObject } from '../_utils/is';
+import { TagData } from './interface';
 
-export const getValueData = (value: Array<string | number | ValueData>) => {
-  const result: ValueData[] = [];
+export const getValueData = (value: Array<string | number | TagData>) => {
+  const result: TagData[] = [];
   for (const item of value) {
     if (isObject(item)) {
       result.push(item);

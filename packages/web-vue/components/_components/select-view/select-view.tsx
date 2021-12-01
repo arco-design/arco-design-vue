@@ -1,6 +1,6 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, ref, watch } from 'vue';
-import type { Data, ValueData } from '../../_utils/types';
+import type { Data } from '../../_utils/types';
 import { getPrefixCls } from '../../_utils/global-config';
 import { INPUT_EVENTS, Size } from '../../_utils/constant';
 import { isArray } from '../../_utils/is';
@@ -13,6 +13,7 @@ import IconExpand from '../../icon/icon-expand';
 import IconSearch from '../../icon/icon-search';
 import { omit } from '../../_utils/omit';
 import pick from '../../_utils/pick';
+import { TagData } from '../../input-tag/interface';
 
 export default defineComponent({
   name: 'SelectView',
@@ -22,7 +23,7 @@ export default defineComponent({
      * 绑定值
      */
     modelValue: {
-      type: [Object, Array] as PropType<ValueData | ValueData[]>,
+      type: [Object, Array] as PropType<TagData | TagData[]>,
     },
     inputValue: {
       type: String,

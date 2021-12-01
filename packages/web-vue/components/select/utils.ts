@@ -1,11 +1,11 @@
 import { isArray, isUndefined } from '../_utils/is';
-import { ValueData } from '../_utils/types';
 import { OptionInfo } from '../_components/dropdown/interface';
+import { TagData } from '../input-tag/interface';
 
 const getValueData = (
   value: string | number | undefined,
   optionInfoMap: Map<string | number, OptionInfo>
-): ValueData | undefined => {
+): TagData | undefined => {
   if (isUndefined(value)) {
     return undefined;
   }
