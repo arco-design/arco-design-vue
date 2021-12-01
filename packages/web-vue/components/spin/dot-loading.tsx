@@ -8,24 +8,25 @@ export default defineComponent({
   props: {
     size: {
       type: Number,
-      default: 8,
     },
   },
   setup(props) {
     const prefixCls = getPrefixCls('dot-loading');
 
     return () => {
-      const style = {
-        width: `${props.size}px`,
-        height: `${props.size}px`,
-      };
+      const style = props.size
+        ? {
+            width: `${props.size}px`,
+            height: `${props.size}px`,
+          }
+        : {};
 
       return (
         <div
           class={prefixCls}
           style={{
-            width: `${props.size * 7}px`,
-            height: `${props.size}px`,
+            width: props.size ? `${props.size * 7}px` : undefined,
+            height: props.size ? `${props.size}px` : undefined,
           }}
         >
           {Array(DOT_NUMBER)
