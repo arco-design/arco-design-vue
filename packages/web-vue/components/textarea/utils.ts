@@ -1,5 +1,3 @@
-import { CSSProperties } from 'vue';
-
 const sizeStyles = [
   'border-width',
   'box-sizing',
@@ -22,7 +20,7 @@ const sizeStyles = [
 ];
 
 export const getSizeStyles = (styleDeclaration: CSSStyleDeclaration) => {
-  const styles: CSSProperties = {};
+  const styles: Record<string, any> = {};
   sizeStyles.forEach((item) => {
     styles[item] = styleDeclaration.getPropertyValue(item);
   });
