@@ -39,7 +39,7 @@
       text-align: right;
       flex-grow: 1;
       flex-shrink: 0;
-      min-width: 32px;
+      min-width: @progress-line-size-text-width;
 
       .@{prefix}-icon {
         font-size: @progress-line-size-default-icon-size;
@@ -162,9 +162,12 @@
   }
 
   &-status-warning {
-    .@{progress-prefix-cls}-line-bar,
-    .@{progress-prefix-cls}-steps-item-active {
+    .@{progress-prefix-cls}-line-bar {
       background-color: @progress-line-color-inner-bg_warning;
+    }
+
+    .@{progress-prefix-cls}-steps-item-active {
+      background-color: @progress-steps-color-item-bg_warning;
     }
 
     .@{progress-prefix-cls}-line-text .@{prefix}-icon,
@@ -174,9 +177,12 @@
   }
 
   &-status-success {
-    .@{progress-prefix-cls}-line-bar,
-    .@{progress-prefix-cls}-steps-item-active {
+    .@{progress-prefix-cls}-line-bar {
       background-color: @progress-line-color-inner-bg_success;
+    }
+
+    .@{progress-prefix-cls}-steps-item-active {
+      background-color: @progress-steps-color-item-bg_success;
     }
 
     .@{progress-prefix-cls}-line-text .@{prefix}-icon,
@@ -186,9 +192,12 @@
   }
 
   &-status-danger {
-    .@{progress-prefix-cls}-line-bar,
-    .@{progress-prefix-cls}-steps-item-active {
+    .@{progress-prefix-cls}-line-bar {
       background-color: @progress-line-color-inner-bg_error;
+    }
+
+    .@{progress-prefix-cls}-steps-item-active {
+      background-color: @progress-steps-color-item-bg_error;
     }
 
     .@{progress-prefix-cls}-line-text .@{prefix}-icon,

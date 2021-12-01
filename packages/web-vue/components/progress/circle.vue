@@ -3,7 +3,12 @@
     :class="`${prefixCls}-wrapper`"
     :style="{ width: `${mergedWidth}px`, height: `${mergedWidth}px` }"
   >
+    <icon-check
+      v-if="type === 'circle' && size === 'mini' && status === 'success'"
+      :style="{ fontSize: mergedWidth - 2, color }"
+    />
     <svg
+      v-else
       :viewBox="`0 0 ${mergedWidth} ${mergedWidth}`"
       :class="`${prefixCls}-svg`"
     >
@@ -44,8 +49,11 @@
     </svg>
     <div v-if="showText && size !== 'mini'" :class="`${prefixCls}-text`">
       <slot name="text" :percent="percent">
-        {{ `${percent * 100}%` }}
-        <icon-exclamation-circle-fill v-if="status === 'danger'" />
+        <icon-exclamation v-if="status === 'danger'" />
+        <icon-check v-else-if="status === 'success'" />
+        <template v-else>
+          {{ `${percent * 100}%` }}
+        </template>
       </slot>
     </div>
   </div>
@@ -56,7 +64,8 @@ import { computed, defineComponent, PropType } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { isObject } from '../_utils/is';
 import { SIZES } from '../_utils/constant';
-import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
+import IconExclamation from '../icon/icon-exclamation';
+import IconCheck from '../icon/icon-check';
 
 let __ARCO_PROGRESS_SEED = 0;
 
@@ -77,7 +86,8 @@ const DEFAULT_STROKE_WIDTH = {
 export default defineComponent({
   name: 'ProgressCircle',
   components: {
-    IconExclamationCircleFill,
+    IconExclamation,
+    IconCheck,
   },
   props: {
     percent: {

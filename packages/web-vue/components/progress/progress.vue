@@ -26,6 +26,7 @@
       :buffer-color="bufferColor"
       :width="width"
       :show-text="showText"
+      :status="computedStatus"
     >
       <template v-if="$slots.text" #text="scope">
         <slot name="text" v-bind="scope"></slot>
@@ -42,6 +43,7 @@
       :track-color="trackColor"
       :size="size"
       :show-text="showText"
+      :status="computedStatus"
     >
       <template v-if="$slots.text" #text="scope">
         <slot name="text" v-bind="scope"></slot>
@@ -156,7 +158,6 @@ export default defineComponent({
      */
     status: {
       type: String as PropType<Status>,
-      default: 'normal',
     },
     /**
      * @zh 文本
@@ -167,16 +168,20 @@ export default defineComponent({
   setup(props) {
     const prefixCls = getPrefixCls('progress');
     const type = computed(() => (props.steps > 0 ? 'steps' : props.type));
+    const computedStatus = computed(() => {
+      return props.status || (props.percent >= 1 ? 'success' : 'normal');
+    });
 
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-type-${type.value}`,
       `${prefixCls}-size-${props.size}`,
-      `${prefixCls}-status-${props.status}`,
+      `${prefixCls}-status-${computedStatus.value}`,
     ]);
 
     return {
       cls,
+      computedStatus,
     };
   },
 });
