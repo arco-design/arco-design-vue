@@ -289,6 +289,20 @@ export const getRenderFunc = (content: RenderContent) => {
   return () => content;
 };
 
+export const getAllElements = (vns: VNode[] | undefined) => {
+  const results: VNode[] = [];
+  for (const vn of vns ?? []) {
+    if (isElement(vn) || isComponent(vn) || isTextChildren(vn, vn.children)) {
+      results.push(vn);
+    } else if (isArrayChildren(vn, vn.children)) {
+      results.push(...getAllElements(vn.children));
+    } else if (isSlotsChildren(vn, vn.children)) {
+      results.push(...getAllElements(vn.children.default?.()));
+    }
+  }
+  return results;
+};
+
 /**
  * Remove Fragment
  * @param nodeList

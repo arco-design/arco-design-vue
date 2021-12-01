@@ -252,61 +252,76 @@ export default defineComponent({
     /**
      * @zh 点击展开行时触发
      * @en Triggered when a row is clicked to expand
+     * @param {string} rowKey
      */
     'expand',
     /**
      * @zh 已展开的数据行发生改变时触发
      * @en Triggered when the expanded data row changes
+     * @param {string[]} rowKeys
      */
     'expandedChange',
     /**
      * @zh 点击行选择器时触发
      * @en Triggered when the row selector is clicked
+     * @param {string[]} rowKeys
      */
     'select',
     /**
      * @zh 点击全选选择器时触发
      * @en Triggered when the select all selector is clicked
+     * @param {boolean} checked
      */
     'selectAll',
     /**
      * @zh 已选择的数据行发生改变时触发
      * @en Triggered when the selected data row changes
+     * @param {string[]} rowKeys
      */
     'selectionChange',
     /**
      * @zh 排序规则发生改变时触发
      * @en Triggered when the collation changes
+     * @param {string} dataIndex
+     * @param {string} direction
      */
     'sorterChange',
     /**
      * @zh 过滤选项发生改变时触发
      * @en Triggered when the filter options are changed
+     * @param {string} dataIndex
+     * @param {string[]} filteredValues
      */
     'filterChange',
     /**
      * @zh 表格分页发生改变时触发
      * @en Triggered when the table pagination changes
+     * @param {number} page
      */
     'pageChange',
     /**
      * @zh 表格每页数据数量发生改变时触发
      * @en Triggered when the number of data per page of the table changes
+     * @param {number} pageSize
      */
     'pageSizeChange',
     /**
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
+     * @param {TableData} record
+     * @param {TableColumn} column
      */
     'cellClick',
     /**
      * @zh 点击行数据时触发
      * @en Triggered when row data is clicked
+     * @param {TableData} record
      */
     'rowClick',
     /**
      * @zh 点击表头数据时触发
      * @en Triggered when the header data is clicked
+     * @param {TableColumn} column
      */
     'headerClick',
   ],

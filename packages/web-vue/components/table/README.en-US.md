@@ -57,18 +57,18 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|expand|Triggered when a row is clicked to expand|-|
-|expanded-change|Triggered when the expanded data row changes|-|
-|select|Triggered when the row selector is clicked|-|
-|select-all|Triggered when the select all selector is clicked|-|
-|selection-change|Triggered when the selected data row changes|-|
-|sorter-change|Triggered when the collation changes|-|
-|filter-change|Triggered when the filter options are changed|-|
-|page-change|Triggered when the table pagination changes|-|
-|page-size-change|Triggered when the number of data per page of the table changes|-|
-|cell-click|Triggered when a cell is clicked|-|
-|row-click|Triggered when row data is clicked|-|
-|header-click|Triggered when the header data is clicked|-|
+|expand|Triggered when a row is clicked to expand|rowKey: `string`|
+|expanded-change|Triggered when the expanded data row changes|rowKeys: `string[]`|
+|select|Triggered when the row selector is clicked|rowKeys: `string[]`|
+|select-all|Triggered when the select all selector is clicked|checked: `boolean`|
+|selection-change|Triggered when the selected data row changes|rowKeys: `string[]`|
+|sorter-change|Triggered when the collation changes|dataIndex: `string`<br>direction: `string`|
+|filter-change|Triggered when the filter options are changed|dataIndex: `string`<br>filteredValues: `string[]`|
+|page-change|Triggered when the table pagination changes|page: `number`|
+|page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`|
+|cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumn`|
+|row-click|Triggered when row data is clicked|record: `TableData`|
+|header-click|Triggered when the header data is clicked|column: `TableColumn`|
 ### `<table>` Slots
 
 |Slot Name|Description|Parameters|
