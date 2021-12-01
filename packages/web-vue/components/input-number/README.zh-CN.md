@@ -10,6 +10,8 @@ description: 仅允许输入数字格式的输入框。
 
 @import ./__demo__/mode.md
 
+@import ./__demo__/size.md
+
 @import ./__demo__/precision.md
 
 @import ./__demo__/format.md
@@ -31,6 +33,7 @@ description: 仅允许输入数字格式的输入框。
 |parser|从 `formatter` 转换为数字，和 `formatter` 搭配使用|`func`|`-`|
 |placeholder|输入框提示文字|`string`|`-`|
 |hide-button|是否隐藏按钮（仅在`embed`模式可用）|`boolean`|`false`|
+|size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 ### `<input-number>` Events
 
 |事件名|描述|参数|
