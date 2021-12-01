@@ -31,4 +31,9 @@ description: It is used to feed back the processing results of a series of opera
 
 @import ./__demo__/500.md
 
+@import ./__demo__/custom.md
+
+
+@import ./__demo__/all.md
+
 %%API(result.vue)%%

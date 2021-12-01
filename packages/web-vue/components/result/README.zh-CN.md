@@ -20,12 +20,17 @@ description: 用于反馈一系列操作任务的处理结果，当有重要操�
 
 @import ./__demo__/500.md
 
+@import ./__demo__/custom.md
+
+
+@import ./__demo__/all.md
+
 
 ### `<result>` Props
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|status|结果页显示的状态|`'info' \| 'success' \| 'warning' \| 'error' \| '403' \| '404' \| '500'`|`'info'`|
+|status|结果页显示的状态|`'info' \| 'success' \| 'warning' \| 'error' \| '403' \| '404' \| '500' \| null`|`'info'`|
 |title|标题内容|`string`|`-`|
 |subtitle|子标题内容|`string`|`-`|
 ### `<result>` Slots
@@ -35,5 +40,7 @@ description: 用于反馈一系列操作任务的处理结果，当有重要操�
 |icon|图标|-|
 |title|标题|-|
 |subtitle|副标题|-|
+|extra|操作区|-|
+|default|默认插槽|-|
 
 

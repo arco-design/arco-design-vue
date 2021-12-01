@@ -1,8 +1,16 @@
 <template>
   <div :class="prefixCls">
-    <div :class="[`${prefixCls}-icon`, `${prefixCls}-icon-${status}`]">
-      <slot name="icon">
-        <span :class="`${prefixCls}-icon-tip`">
+    <div
+      :class="[
+        `${prefixCls}-icon`,
+        {
+          [`${prefixCls}-icon-${status}`]: status,
+          [`${prefixCls}-icon-custom`]: status === null,
+        },
+      ]"
+    >
+      <div :class="`${prefixCls}-icon-tip`">
+        <slot name="icon">
           <icon-info v-if="status === 'info'" />
           <icon-check v-else-if="status === 'success'" />
           <icon-exclamation v-else-if="status === 'warning'" />
@@ -10,8 +18,8 @@
           <result-forbidden v-else-if="status === '403'" />
           <result-not-found v-else-if="status === '404'" />
           <result-server-error v-else-if="status === '500'" />
-        </span>
-      </slot>
+        </slot>
+      </div>
     </div>
     <div v-if="title || $slots.title" :class="`${prefixCls}-title`">
       <slot name="title">
@@ -23,7 +31,12 @@
         {{ subtitle }}
       </slot>
     </div>
-    <div />
+    <div v-if="$slots.extra" :class="`${prefixCls}-extra`">
+      <slot name="extra"></slot>
+    </div>
+    <div v-if="$slots.default" :class="`${prefixCls}-content`">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -46,6 +59,7 @@ const RESULT_STATUS = [
   '403',
   '404',
   '500',
+  null,
 ] as const;
 
 type ResultStatus = typeof RESULT_STATUS[number];
@@ -65,7 +79,7 @@ export default defineComponent({
     /**
      * @zh 结果页显示的状态
      * @en The status displayed on the result page
-     * @values 'info','success','warning','error','403','404','500'
+     * @values 'info','success','warning','error','403','404','500', null
      */
     status: {
       type: String as PropType<ResultStatus>,
@@ -99,6 +113,18 @@ export default defineComponent({
    * @zh 副标题
    * @en Subtitle
    * @slot subtitle
+   */
+  /**
+   * @zh 操作区
+   * @en Extra
+   * @slot extra
+   * @version 2.8.0
+   */
+  /**
+   * @zh 默认插槽
+   * @en Default
+   * @slot default
+   * @version 2.8.0
    */
   setup() {
     const prefixCls = getPrefixCls('result');

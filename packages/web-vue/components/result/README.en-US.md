@@ -22,12 +22,17 @@ description: It is used to feed back the processing results of a series of opera
 
 @import ./__demo__/500.md
 
+@import ./__demo__/custom.md
+
+
+@import ./__demo__/all.md
+
 
 ### `<result>` Props
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|status|The status displayed on the result page|`'info' \| 'success' \| 'warning' \| 'error' \| '403' \| '404' \| '500'`|`'info'`|
+|status|The status displayed on the result page|`'info' \| 'success' \| 'warning' \| 'error' \| '403' \| '404' \| '500' \| null`|`'info'`|
 |title|Title|`string`|`-`|
 |subtitle|Subtitle|`string`|`-`|
 ### `<result>` Slots
@@ -37,5 +42,7 @@ description: It is used to feed back the processing results of a series of opera
 |icon|Icon|-|
 |title|Title|-|
 |subtitle|Subtitle|-|
+|extra|Extra|-|
+|default|Default|-|
 
 
