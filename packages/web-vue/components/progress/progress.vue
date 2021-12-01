@@ -10,7 +10,11 @@
       :steps="steps"
       :size="size"
       :show-text="showText"
-    />
+    >
+      <template v-if="$slots.text" #text="scope">
+        <slot name="text" v-bind="scope"></slot>
+      </template>
+    </progress-steps>
     <progress-line
       v-else-if="type === 'line' && size !== 'mini'"
       :stroke-width="strokeWidth"
@@ -22,7 +26,12 @@
       :buffer-color="bufferColor"
       :width="width"
       :show-text="showText"
-    />
+      :status="computedStatus"
+    >
+      <template v-if="$slots.text" #text="scope">
+        <slot name="text" v-bind="scope"></slot>
+      </template>
+    </progress-line>
     <progress-circle
       v-else
       :type="type"
@@ -34,7 +43,12 @@
       :track-color="trackColor"
       :size="size"
       :show-text="showText"
-    />
+      :status="computedStatus"
+    >
+      <template v-if="$slots.text" #text="scope">
+        <slot name="text" v-bind="scope"></slot>
+      </template>
+    </progress-circle>
   </div>
 </template>
 
@@ -128,6 +142,7 @@ export default defineComponent({
     bufferColor: {
       type: [String, Object],
     },
+
     /**
      * @zh 是否显示文字
      * @en Whether to display text
@@ -143,22 +158,30 @@ export default defineComponent({
      */
     status: {
       type: String as PropType<Status>,
-      default: 'normal',
     },
+    /**
+     * @zh 文本
+     * @en Text
+     * @slot text
+     */
   },
   setup(props) {
     const prefixCls = getPrefixCls('progress');
     const type = computed(() => (props.steps > 0 ? 'steps' : props.type));
+    const computedStatus = computed(() => {
+      return props.status || (props.percent >= 1 ? 'success' : 'normal');
+    });
 
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-type-${type.value}`,
       `${prefixCls}-size-${props.size}`,
-      `${prefixCls}-status-${props.status}`,
+      `${prefixCls}-status-${computedStatus.value}`,
     ]);
 
     return {
       cls,
+      computedStatus,
     };
   },
 });

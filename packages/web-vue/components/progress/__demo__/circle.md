@@ -22,6 +22,7 @@ Setting `type="circle"` will show a circular progress bar.
     <a-progress type="circle" :percent="percent"/>
     <a-progress type="circle" status='warning' :percent="percent"/>
     <a-progress type="circle" status='danger' :percent="percent"/>
+    <a-progress type="circle" status='success' :percent="percent"/>
   </a-space>
   <div :style="{marginTop:'20px'}">
     <a-slider v-model="percent" :max="1" :step="0.1" :style="{width: '150px'}" />
