@@ -42,6 +42,7 @@ description: 收纳、排列并展示一系列选项的列表。
 |scroll-config|滚动到可见区域的配置项，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数|`{ [key: string]: any }`|`-`|
 |trigger-props|弹出模式下可接受所有 `Trigger` 的 `Props`|`object`|`-`|
 |tooltip-props|弹出模式下可接受所有 `ToolTip` 的 `Props`|`object`|`-`|
+|auto-open-selected|默认展开选中的菜单|`boolean`|`false`|
 ### `<menu>` Events
 
 |事件名|描述|参数|

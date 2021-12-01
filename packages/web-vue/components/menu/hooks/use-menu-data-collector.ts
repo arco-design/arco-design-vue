@@ -1,93 +1,99 @@
-import { ref, provide, inject, onMounted, onUnmounted, watch } from 'vue';
+import { ref, provide, inject, computed, onMounted, onUnmounted } from 'vue';
 import { DataCollectorContext, DataCollectorInjectionKey } from '../context';
+import { MenuData, MenuDataItem } from '../interface';
 
-function union(arr1: string[], arr2: string[]) {
-  return [...new Set([...arr1, ...arr2])];
-}
+function getKeys(data: MenuData, condition: (item: MenuDataItem) => boolean) {
+  const keys: string[] = [];
 
-function without(arr: string[], excludeValues: string[]) {
-  return arr.filter((val) => !excludeValues.includes(val));
-}
+  const loop = (list: MenuData) => {
+    list.forEach((item) => {
+      if (condition(item)) {
+        keys.push(item.key);
+      }
+      if (item.children) {
+        loop(item.children);
+      }
+    });
+  };
 
-function update(arr: string[], arrCur: string[], arrPrev: string[]) {
-  const newArr = without(arr, arrPrev);
-  return union(newArr, arrCur);
+  loop(data);
+
+  return keys;
 }
 
 export function useMenuDataCollectorProvider() {
-  const subMenuKeys = ref<string[]>([]);
-  const menuItemKeys = ref<string[]>([]);
+  const data = ref<MenuData>([]);
+  const subMenuKeys = computed(() =>
+    getKeys(data.value, (item) => !!item.children)
+  );
+  const menuItemKeys = computed(() =>
+    getKeys(data.value, (item) => !item.children)
+  );
 
-  provide<DataCollectorContext>(DataCollectorInjectionKey, {
-    collectSubMenuKey(key) {
-      subMenuKeys.value = union(subMenuKeys.value, [key]);
+  provide(DataCollectorInjectionKey, {
+    collectSubMenu(key, children) {
+      data.value = [
+        ...data.value,
+        {
+          key,
+          children,
+        },
+      ];
     },
-    removeSubMenuKey(key) {
-      subMenuKeys.value = without(subMenuKeys.value, [key]);
+    removeSubMenu(key) {
+      data.value = data.value.filter((item) => item.key !== key);
     },
-    updateSubMenuKeys(keys, prevKeys) {
-      subMenuKeys.value = update(subMenuKeys.value, keys, prevKeys);
+    collectMenuItem(key) {
+      data.value.push({ key });
     },
-    collectMenuItemKey(key) {
-      menuItemKeys.value = union(menuItemKeys.value, [key]);
+    removeMenuItem(key) {
+      data.value = data.value.filter((item) => item.key !== key);
     },
-    removeMenuItemKey(key) {
-      menuItemKeys.value = without(menuItemKeys.value, [key]);
-    },
-    updateMenuItemKeys(keys, prevKeys) {
-      menuItemKeys.value = update(menuItemKeys.value, keys, prevKeys);
+    reportMenuData(reportData) {
+      data.value = reportData;
     },
   });
 
   return {
+    data,
     subMenuKeys,
     menuItemKeys,
   };
 }
 
-export function useMenuDataCollectorContext(): Partial<DataCollectorContext> {
-  const menuContext = inject<DataCollectorContext>(DataCollectorInjectionKey);
+export function useMenuDataCollectorContext(
+  isRoot = false
+): Partial<DataCollectorContext> {
+  const menuContext = isRoot ? {} : inject(DataCollectorInjectionKey);
   return menuContext || {};
 }
 
-export default function useMenuDataCollector({
-  key,
-  isRoot,
-}: {
-  key?: string;
-  isRoot?: boolean;
-}) {
-  const { subMenuKeys, menuItemKeys } = useMenuDataCollectorProvider();
+export default function useMenuDataCollector(
+  props: { isRoot?: boolean; key?: string } = { isRoot: false }
+) {
+  const { isRoot, key } = props;
+  const { data, subMenuKeys, menuItemKeys } = useMenuDataCollectorProvider();
+  const { collectSubMenu, removeSubMenu, reportMenuData } =
+    useMenuDataCollectorContext(isRoot);
 
-  if (!isRoot) {
-    const {
-      collectSubMenuKey,
-      removeSubMenuKey,
-      updateSubMenuKeys,
-      updateMenuItemKeys,
-    } = useMenuDataCollectorContext();
-
-    watch(subMenuKeys, (curSubMenuKeys, prevSubMenuKeys) => {
-      updateSubMenuKeys && updateSubMenuKeys(curSubMenuKeys, prevSubMenuKeys);
+  if (key !== undefined) {
+    onMounted(() => {
+      collectSubMenu && collectSubMenu(key, data.value);
     });
 
-    watch(menuItemKeys, (curMenuItemKeys, prevMenuItemKeys) => {
-      updateMenuItemKeys &&
-        updateMenuItemKeys(curMenuItemKeys, prevMenuItemKeys);
+    onUnmounted(() => {
+      removeSubMenu && removeSubMenu(key);
     });
+  }
 
-    if (key !== undefined) {
-      onMounted(() => {
-        collectSubMenuKey && collectSubMenuKey(key);
-      });
-
-      onUnmounted(() => {
-        removeSubMenuKey && removeSubMenuKey(key);
-      });
-    }
+  if (!isRoot && key === undefined) {
+    onMounted(() => {
+      reportMenuData && reportMenuData(data.value);
+    });
   }
 
   return {
+    menuData: data,
     subMenuKeys,
     menuItemKeys,
   };
