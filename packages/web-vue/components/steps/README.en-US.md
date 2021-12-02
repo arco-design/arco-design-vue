@@ -57,6 +57,7 @@ description: Clearly indicate the task flow and the current degree of completion
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
+|title|Title of the step|`string`|`-`|
 |description|Description of the step|`string`|`-`|
 |status|Status of the step|`'wait' \| 'process' \| 'finish' \| 'error'`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
