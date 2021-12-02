@@ -1,4 +1,10 @@
-import { computed, CSSProperties, defineComponent, PropType } from 'vue';
+import {
+  computed,
+  CSSProperties,
+  defineComponent,
+  PropType,
+  Comment,
+} from 'vue';
 import { isArray, isNumber } from '../_utils/is';
 import { getAllElements } from '../_utils/vue-utils';
 import { getPrefixCls } from '../_utils/global-config';
@@ -101,7 +107,9 @@ export default defineComponent({
     };
 
     return () => {
-      const children = getAllElements(slots.default?.());
+      const children = getAllElements(slots.default?.()).filter(
+        (item) => item.type !== Comment
+      );
 
       return (
         <div class={cls.value}>
