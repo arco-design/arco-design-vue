@@ -27,7 +27,6 @@ exports[`<space> demo: render [align] correctly 1`] = `
 exports[`<space> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\">Space:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-arcoblue arco-tag-checked\\"><!--v-if-->Tag<!--v-if--><!--v-if--></span></div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item1
     </button></div>

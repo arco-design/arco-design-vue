@@ -1,6 +1,6 @@
 <template>
   <div :class="cls">
-    <spin :loading="loading" :style="{ width: '100%' }">
+    <spin :loading="loading" :style="{ width: '100%', display: 'block' }">
       <div v-if="isEmpty" :class="`${prefixCls}-empty`">
         <slot name="empty">
           <empty />

@@ -29,4 +29,10 @@ description: The basic layout framework of the page is often used nested with co
 
 %%API(layout.vue)%%
 
+%%API(header.vue)%%
+
+%%API(content.vue)%%
+
+%%API(footer.vue)%%
+
 %%API(sider.vue)%%

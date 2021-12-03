@@ -37,12 +37,12 @@ description: It is used to feed back the processing results of a series of opera
 |subtitle|Subtitle|`string`|`-`|
 ### `<result>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|icon|Icon|-|
-|title|Title|-|
-|subtitle|Subtitle|-|
-|extra|Extra|-|
-|default|Default|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|icon|Icon|-|Icon|
+|title|Title|-|Title|
+|subtitle|Subtitle|-|Subtitle|
+|extra|Extra|-|Extra|
+|default|Default|-|Default|
 
 

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.9.0
+
+`2021-12-03`
+
+### 🆕 Feature
+
+- `Drawer` supports okButtonProps & cancelButtonProps ([#325](https://github.com/arco-design/arco-design-vue/pull/325))
+
+
 ## 2.8.0
 
 `2021-12-01`

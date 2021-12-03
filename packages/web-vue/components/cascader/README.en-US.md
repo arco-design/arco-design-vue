@@ -62,14 +62,14 @@ description: Refers to the use of multi-level classification to separate the opt
 
 ### CascaderOption
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|value|Option value|`string \| number`|`-`|
-|label|Option text|`string`|`-`|
-|render|Custom render|`RenderFunction`|`-`|
-|disabled|Whether to disable|`boolean`|`false`|
-|tagProps|Displayed tag attributes|`TagProps`|`-`|
-|children|Next level options|`CascaderOption[]`|`-`|
-|isLeaf|Whether it is a leaf node|`boolean`|`false`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|value|Option value|`string \| number`|`-`||
+|label|Option text|`string`|`-`||
+|render|Custom render|`RenderFunction`|`-`||
+|disabled|Whether to disable|`boolean`|`false`||
+|tagProps|Displayed tag attributes|`TagProps`|`-`|2.8.0|
+|children|Next level options|`CascaderOption[]`|`-`||
+|isLeaf|Whether it is a leaf node|`boolean`|`false`||
 
 

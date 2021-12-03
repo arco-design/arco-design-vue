@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.9.0
+
+`2021-12-03`
+
+### 🆕 新增功能
+
+- **drawer:** `Drawer` 支持 `okButtonProps` 和  `cancelButtonProps` 属性 ([#325](https://github.com/arco-design/arco-design-vue/pull/325))
+- **pagination:** 修改和增加插槽，支持模板自定义 ([#324](https://github.com/arco-design/arco-design-vue/pull/324))
+- **tree:** 新增属性 `default-expand-selected` `default-expand-checked` `auto-expand-parent` ([#322](https://github.com/arco-design/arco-design-vue/pull/322))
+- **steps:** 增加 title 属性 ([#316](https://github.com/arco-design/arco-design-vue/pull/316))
+
+### 🐛 问题修复
+
+- **table:** 修复树形展开按钮触发表单提交的问题 ([#321](https://github.com/arco-design/arco-design-vue/pull/321))
+- **spin:** 修复容器模式下切换状态导致子组件重新加载的问题 ([#320](https://github.com/arco-design/arco-design-vue/pull/320))
+- **space:** 修复渲染 v-if 节点的问题 ([#318](https://github.com/arco-design/arco-design-vue/pull/318))
+
+
 ## 2.8.0
 
 `2021-12-01`

@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.9.0
+
+`2021-12-03`
+
+### 🆕 Feature
+
+- **drawer:** `Drawer` supports okButtonProps & cancelButtonProps ([#325](https://github.com/arco-design/arco-design-vue/pull/325))
+- **pagination:** Modify and add slots, support template customization ([#324](https://github.com/arco-design/arco-design-vue/pull/324))
+- **tree:** add prop default-expand-selected default-expand-checked auto-expand-parent ([#322](https://github.com/arco-design/arco-design-vue/pull/322))
+- **steps:** add title props ([#316](https://github.com/arco-design/arco-design-vue/pull/316))
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that the tree expand button triggers form submission ([#321](https://github.com/arco-design/arco-design-vue/pull/321))
+- **spin:** Fix the problem that switching states in container mode causes sub-components to reload ([#320](https://github.com/arco-design/arco-design-vue/pull/320))
+- **space:** Fix the problem of rendering v-if nodes ([#318](https://github.com/arco-design/arco-design-vue/pull/318))
+
+
 ## 2.8.0
 
 `2021-12-01`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.9.0
+
+`2021-12-03`
+
+### 🆕 Feature
+
+- Modify and add slots, support template customization ([#324](https://github.com/arco-design/arco-design-vue/pull/324))
+
+
 ## 2.8.0
 
 `2021-12-01`

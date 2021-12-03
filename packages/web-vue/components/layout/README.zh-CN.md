@@ -26,6 +26,33 @@ description: 页面的基础布局框架，常与组件嵌套使用，构建页�
 
 
 
+### `<layout-header>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|default|内容|-|
+
+
+
+
+### `<layout-content>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|default|内容|-|
+
+
+
+
+### `<layout-footer>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|default|内容|-|
+
+
+
+
 ### `<layout-sider>` Props
 
 |参数名|描述|类型|默认值|

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.9.0
+
+`2021-12-03`
+
+### 🆕 新增功能
+
+- 新增属性 `default-expand-selected` `default-expand-checked` `auto-expand-parent` ([#322](https://github.com/arco-design/arco-design-vue/pull/322))
+
+
 ## 2.8.0
 
 `2021-12-01`

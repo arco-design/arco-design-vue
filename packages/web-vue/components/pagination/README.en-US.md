@@ -58,11 +58,11 @@ description: Use paging to control the amount of information in a single page, a
 |page-size-change|Triggered when the number of data items changes|pageSize: `number`|
 ### `<pagination>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|total|Total|total: `number`|
-|page-item-ellipsis|Page item (ellipsis)|-|
-|page-item-step|Page item (step)|type: `'previous'\|'next'`The type of page item step|
-|page-item|Page item|page: `number`The page number of the paging button|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|total|Total|total: `number`|Total|
+|page-item-ellipsis|Page item (ellipsis)|-|Page item (ellipsis)|
+|page-item-step|Page item (step)|type: `'previous'\|'next'`The type of page item step|Page item (step)|
+|page-item|Page item|page: `number`The page number of the paging button|Page item|
 
 

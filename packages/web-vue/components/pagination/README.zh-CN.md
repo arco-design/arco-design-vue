@@ -56,11 +56,11 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 |page-size-change|数据条数改变时触发|pageSize: `number`|
 ### `<pagination>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|total|总数|total: `number`|
-|page-item-ellipsis|分页按钮（省略）|-|
-|page-item-step|分页按钮（步）|type: `'previous'\|'next'`The type of page item step|
-|page-item|分页按钮|page: `number`The page number of the paging button|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|total|总数|total: `number`|总数|
+|page-item-ellipsis|分页按钮（省略）|-|分页按钮（省略）|
+|page-item-step|分页按钮（步）|type: `'previous'\|'next'`The type of page item step|分页按钮（步）|
+|page-item|分页按钮|page: `number`The page number of the paging button|分页按钮|
 
 

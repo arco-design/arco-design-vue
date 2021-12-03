@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.9.0
+
+`2021-12-03`
+
+### 🐛 BugFix
+
+- Fix the problem that the tree expand button triggers form submission ([#321](https://github.com/arco-design/arco-design-vue/pull/321))
+
+
 ## 2.7.0
 
 `2021-11-26`

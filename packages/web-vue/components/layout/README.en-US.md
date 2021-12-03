@@ -28,6 +28,33 @@ description: The basic layout framework of the page is often used nested with co
 
 
 
+### `<layout-header>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|default|Content|-|
+
+
+
+
+### `<layout-content>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|default|Content|-|
+
+
+
+
+### `<layout-footer>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|default|Content|-|
+
+
+
+
 ### `<layout-sider>` Props
 
 |Attribute|Description|Type|Default|

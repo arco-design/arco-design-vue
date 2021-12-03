@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.9.0
+
+`2021-12-03`
+
+### 🆕 Feature
+
+- add title props ([#316](https://github.com/arco-design/arco-design-vue/pull/316))
+
+
 ## 2.7.0
 
 `2021-11-26`
