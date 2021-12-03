@@ -14,7 +14,7 @@
     </div>
     <div :class="`${prefixCls}-content`">
       <div :class="`${prefixCls}-title`">
-        <slot />{{ !$slots.default ? title : '' }}
+        <slot>{{ title }}</slot>
       </div>
       <div
         v-if="description || $slots.description"
