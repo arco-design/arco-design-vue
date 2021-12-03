@@ -43,12 +43,13 @@
             </div>
             <div :class="`${prefixCls}-footer`">
               <slot name="footer">
-                <arco-button @click="handleCancel">
+                <arco-button v-bind="cancelButtonProps" @click="handleCancel">
                   {{ cancelText || t('drawer.cancelText') }}
                 </arco-button>
                 <arco-button
                   type="primary"
                   :loading="mergedOkLoading"
+                  v-bind="okButtonProps"
                   @click="handleOk"
                 >
                   {{ okText || t('drawer.okText') }}
@@ -160,6 +161,22 @@ export default defineComponent({
     okLoading: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 确认按钮的Props
+     * @en Props of confirm button
+     * @version 2.9.0
+     */
+    okButtonProps: {
+      type: Object,
+    },
+    /**
+     * @zh 取消按钮的Props
+     * @en Props of cancel button
+     * @version 2.9.0
+     */
+    cancelButtonProps: {
+      type: Object,
     },
     /**
      * @zh 抽屉的宽度（仅在placement为right,left时可用）
