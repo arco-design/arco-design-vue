@@ -41,29 +41,32 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 
 ### `<tree>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|size|尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|block-node|节点是否占据一行|`boolean`|`false`|
-|default-expand-all|是否默认展开父节点|`boolean`|`true`|
-|multiple|是否支持多选|`boolean`|`false`|
-|checkable|是否在节点前添加复选框|`boolean`|`false`|
-|selectable|是否支持选择|`boolean`|`true`|
-|check-strictly|是否取消父子节点关联|`boolean`|`false`|
-|checked-strategy|定制回填方式 <br/> all: 返回所有选中的节点  <br/> parent: 父子节点都选中时只返回父节点 <br/> child: 只返回子节点|`'all' \| 'parent' \| 'child'`|`'all'`|
-|default-selected-keys|默认选中的树节点|`Array<string \| number>`|`-`|
-|selected-keys **(v-model)**|选中的树节点|`Array<string \| number>`|`-`|
-|default-checked-keys|默认选中复选框的树节点|`Array<string \| number>`|`-`|
-|checked-keys **(v-model)**|选中复选框的树节点|`Array<string \| number>`|`-`|
-|default-expanded-keys|默认展开的节点|`Array<string \| number>`|`-`|
-|expanded-keys **(v-model)**|展开的节点|`Array<string \| number>`|`-`|
-|data|传入`data`,生成对应的树结构|`TreeNodeData[]`|`[]`|
-|field-names|指定节点数据中的字段名|`FieldNames`|`-`|
-|show-line|是否展示连接线|`boolean`|`false`|
-|load-more|异步加载数据的回调，返回一个 `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`|
-|draggable|是否可以拖拽|`boolean`|`false`|
-|allow-drop|拖拽时是否允许在某节点上释放|`(options: {  dropNode: TreeNodeData;  dropPosition: -1 \| 0 \| 1;}) => boolean`|`-`|
-|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|size|尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|block-node|节点是否占据一行|`boolean`|`false`||
+|default-expand-all|是否默认展开父节点|`boolean`|`true`||
+|multiple|是否支持多选|`boolean`|`false`||
+|checkable|是否在节点前添加复选框|`boolean`|`false`||
+|selectable|是否支持选择|`boolean`|`true`||
+|check-strictly|是否取消父子节点关联|`boolean`|`false`||
+|checked-strategy|定制回填方式 <br/> all: 返回所有选中的节点  <br/> parent: 父子节点都选中时只返回父节点 <br/> child: 只返回子节点|`'all' \| 'parent' \| 'child'`|`'all'`||
+|default-selected-keys|默认选中的树节点|`Array<string \| number>`|`-`||
+|selected-keys **(v-model)**|选中的树节点|`Array<string \| number>`|`-`||
+|default-checked-keys|默认选中复选框的树节点|`Array<string \| number>`|`-`||
+|checked-keys **(v-model)**|选中复选框的树节点|`Array<string \| number>`|`-`||
+|default-expanded-keys|默认展开的节点|`Array<string \| number>`|`-`||
+|expanded-keys **(v-model)**|展开的节点|`Array<string \| number>`|`-`||
+|data|传入`data`,生成对应的树结构|`TreeNodeData[]`|`[]`||
+|field-names|指定节点数据中的字段名|`FieldNames`|`-`||
+|show-line|是否展示连接线|`boolean`|`false`||
+|load-more|异步加载数据的回调，返回一个 `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`||
+|draggable|是否可以拖拽|`boolean`|`false`||
+|allow-drop|拖拽时是否允许在某节点上释放|`(options: {  dropNode: TreeNodeData;  dropPosition: -1 \| 0 \| 1;}) => boolean`|`-`||
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
+|default-expand-selected|是否默认展开已选中节点的父节点|`boolean`|`false`|2.9.0|
+|default-expand-checked|是否默认展开已选中复选框节点的父节点|`boolean`|`false`|2.9.0|
+|auto-expand-parent|是否自动展开已展开节点的父节点|`boolean`|`true`|2.9.0|
 ### `<tree>` Events
 
 |事件名|描述|参数|

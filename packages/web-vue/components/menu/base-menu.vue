@@ -280,7 +280,7 @@ export default defineComponent({
       })
     );
 
-    const { openKeys, localOpenKeys, open } = useMenuOpenState(
+    const { openKeys, setOpenKeys, open } = useMenuOpenState(
       reactive({
         modelValue: propOpenKeys,
         defaultValue: defaultOpenKeys,
@@ -292,10 +292,6 @@ export default defineComponent({
         accordion,
       })
     );
-
-    watch(localOpenKeys, () => {
-      emit('update:openKeys', localOpenKeys.value);
-    });
 
     const [collapsed, setCollapsed] = useMergeState(
       defaultCollapsed.value,
@@ -379,6 +375,8 @@ export default defineComponent({
       },
       onSubMenuClick: (key: string, level: number) => {
         const newOpenKeys = open(key, level);
+        setOpenKeys(newOpenKeys);
+        emit('update:openKeys', newOpenKeys);
         emit('sub-menu-click', key, newOpenKeys);
       },
     });
