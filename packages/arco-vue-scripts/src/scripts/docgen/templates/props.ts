@@ -12,11 +12,12 @@ const tmpl = (
   { isInterface = false }: { isInterface: boolean },
   lang: string
 ) => {
-  return props
-    .filter(
-      ({ name, description, tags }) =>
-        description || ['disabled'].includes(name) || lang in (tags ?? {})
-    )
+  const displayableProps = props.filter(
+    ({ name, description, tags }) =>
+      description || ['disabled'].includes(name) || lang in (tags ?? {})
+  );
+  const hasVersion = displayableProps.some((prop) => prop?.tags?.version);
+  const content = displayableProps
     .map((prop) => {
       const { name, type, values, defaultValue, required, tags } = prop;
       let { description } = prop;
@@ -91,9 +92,22 @@ const tmpl = (
         return defaultValue?.value || '-';
       };
 
-      return `|${getName()}|${getDescription()}|\`${getType()}\`|\`${getDefaultValue()}\`|`;
+      let lineContent = `|${getName()}|${getDescription()}|\`${getType()}\`|\`${getDefaultValue()}\`|`;
+
+      if (hasVersion) {
+        // tag 的 ts 类型有问题，所以忽略 ts 规则检查
+        // @ts-ignore-next-line
+        const version = tags?.version?.[0]?.description;
+        lineContent += `${version || ''}|`;
+      }
+
+      return lineContent;
     })
     .join('\n');
+  return {
+    hasVersion,
+    content,
+  };
 };
 
 export default (
@@ -101,28 +115,29 @@ export default (
   options: { isInterface: boolean },
   lang = 'zh'
 ) => {
-  const content = tmpl(props, options, lang);
+  const { content, hasVersion } = tmpl(props, options, lang);
   if (!content) return '';
 
+  let header: [string, string] = ['', ''];
   if (lang === 'en') {
-    if (options.isInterface) {
-      return `
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-${content}
-`;
+    header = options.isInterface
+      ? ['|Name|Description|Type|Default|', '|---|---|---|:---:|']
+      : ['|Attribute|Description|Type|Default|', '|---|---|---|:---:|'];
+    if (hasVersion) {
+      header[0] += 'version|';
+      header[1] += ':---|';
     }
-
-    return `
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-${content}
-`;
+  } else {
+    header = ['|参数名|描述|类型|默认值|', '|---|---|---|:---:|'];
+    if (hasVersion) {
+      header[0] += '版本|';
+      header[1] += ':---|';
+    }
   }
 
   return `
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
+${header[0]}
+${header[1]}
 ${content}
 `;
 };
