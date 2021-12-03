@@ -76,7 +76,6 @@
       cursor: not-allowed;
     }
 
-
     &:not(:last-child) {
       margin-right: @pagination-item-spacing;
     }
@@ -102,7 +101,7 @@
     }
   }
 
-  & &-item-prev&-item-disabled,
+  & &-item-previous&-item-disabled,
   & &-item-next&-item-disabled {
     color: @pagination-color-icon-arrow-text_disabled;
     background-color: @pagination-color-icon-arrow-bg_disabled;
@@ -113,7 +112,6 @@
   }
 
   /*** 快速跳转 ***/
-
   &-jumper {
     margin-left: @pagination-margin-jumper-left;
 
@@ -165,7 +163,6 @@
   }
 
   // simple
-
   &-jumper {
     &-separator {
       padding: 0 @pagination-simple-margin-separator-right 0
@@ -173,7 +170,8 @@
     }
 
     &-total-page {
-      margin-right: @pagination-simple-margin-next-left - @pagination-simple-margin-prev-right;
+      margin-right: @pagination-simple-margin-next-left -
+        @pagination-simple-margin-prev-right;
     }
   }
 

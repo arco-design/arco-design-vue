@@ -1,7 +1,9 @@
 <template>
   <component :is="simple ? 'span' : 'li'" :class="cls" @click="handleClick">
-    <icon-right v-if="isNext" />
-    <icon-left v-else />
+    <slot :type="isNext ? 'next' : 'previous'">
+      <icon-right v-if="isNext" />
+      <icon-left v-else />
+    </slot>
   </component>
 </template>
 

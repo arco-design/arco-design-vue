@@ -22,6 +22,8 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 
 @import ./__demo__/all.md
 
+@import ./__demo__/custom.md
+
 
 ### `<pagination>` Props
 
@@ -56,6 +58,9 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 
 |插槽名|描述|参数|
 |---|:---:|---|
-|page-item|分页按钮|type: `PageItemType`The type of page item<br>page: `number`The page number of the paging button (exists only when `type='page'`)<br>element: `VNode`Default page item|
+|total|总数|total: `number`|
+|page-item-ellipsis|分页按钮（省略）|-|
+|page-item-step|分页按钮（步）|type: `'previous'\|'next'`The type of page item step|
+|page-item|分页按钮|page: `number`The page number of the paging button|
 
 
