@@ -11,7 +11,7 @@ const Select = Object.assign(_Select, {
     setGlobalConfig(app, options);
     const componentPrefix = getComponentPrefix(options);
 
-    app.component(componentPrefix + _Select.name, _Select);
+    app.component(componentPrefix + _Select.displayName, _Select);
     app.component(componentPrefix + DropDownOption.name, DropDownOption);
     app.component(componentPrefix + DropDownOptGroup.name, DropDownOptGroup);
   },

@@ -6,6 +6,7 @@ import {
   ref,
   toRefs,
   h,
+  ComponentPublicInstance,
 } from 'vue';
 import ArcoTextarea from '../textarea';
 import ArcoInput from '../input';
@@ -104,7 +105,7 @@ export default defineComponent({
   setup(props, { emit, attrs }) {
     const { data } = toRefs(props);
     const dropdownRef = ref();
-    const optionRefs = ref({});
+    const optionRefs = ref<Record<string, HTMLElement>>({});
     const _value = ref(props.defaultValue);
     const computeValue = computed(() => props.modelValue ?? _value.value);
     const measureInfo = ref<MeasureInfo>({
@@ -156,7 +157,7 @@ export default defineComponent({
       () =>
         _popupVisible.value &&
         measureInfo.value.measuring &&
-        optionNodes.value.length > 0
+        nodes.value.length > 0
     );
 
     const handlePopupVisibleChange = (popupVisible: boolean) => {
@@ -164,7 +165,7 @@ export default defineComponent({
     };
 
     const {
-      optionNodes,
+      nodes,
       activeOption,
       getNextActiveOption,
       scrollIntoView,
@@ -222,7 +223,7 @@ export default defineComponent({
           (e: Event) => {
             if (computedPopupVisible.value) {
               if (activeOption.value) {
-                handleSelect(activeOption.value.value, e);
+                handleSelect(activeOption.value.value as string, e);
               }
               e.preventDefault();
             }
@@ -269,7 +270,8 @@ export default defineComponent({
       return createVNode(
         DropDownOption,
         {
-          ref: (ref) => {
+          // @ts-ignore
+          ref: (ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }
@@ -289,11 +291,11 @@ export default defineComponent({
     };
 
     const renderDropdown = () => {
-      if (!measureInfo.value.measuring || optionNodes.value.length === 0) {
+      if (!measureInfo.value.measuring || nodes.value.length === 0) {
         return null;
       }
 
-      const _children = optionNodes.value.map((node) => renderOption(node));
+      const _children = nodes.value.map((node) => renderOption(node));
 
       return <Dropdown ref={dropdownRef}>{_children}</Dropdown>;
     };

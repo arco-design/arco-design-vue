@@ -5,6 +5,7 @@ import {
   PropType,
   toRefs,
   createVNode,
+  ComponentPublicInstance,
 } from 'vue';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
@@ -142,9 +143,9 @@ export default defineComponent({
     });
 
     const {
+      nodes,
       optionInfoMap,
       activeOption,
-      optionNodes,
       getNextActiveOption,
       scrollIntoView,
     } = useOptions({
@@ -163,7 +164,7 @@ export default defineComponent({
 
     const _popupVisible = ref(false);
     const computedPopupVisible = computed(
-      () => _popupVisible.value && optionNodes.value.length > 0
+      () => _popupVisible.value && nodes.value.length > 0
     );
 
     const handlePopupVisibleChange = (popupVisible: boolean) => {
@@ -248,7 +249,8 @@ export default defineComponent({
       return createVNode(
         DropDownOption,
         {
-          ref: (ref) => {
+          // @ts-ignore
+          ref: (ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }
@@ -268,7 +270,7 @@ export default defineComponent({
     };
 
     const renderDropdown = () => {
-      const _children = optionNodes.value.map((node) => renderOption(node));
+      const _children = nodes.value.map((node) => renderOption(node));
 
       if (_children.length === 0) {
         return null;

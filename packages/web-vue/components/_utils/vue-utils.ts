@@ -10,7 +10,7 @@ import type {
 } from 'vue';
 import { createVNode, cloneVNode, mergeProps, Fragment, isVNode } from 'vue';
 import { Data, RenderContent } from './types';
-import { isFunction, isObject, isString } from './is';
+import { isFunction, isNumber, isObject, isString } from './is';
 import { toCamelCase, toKebabCase } from './convert-case';
 
 export enum ShapeFlags {
@@ -88,6 +88,26 @@ export const isSlotsChildren = (
   children: VNode['children']
 ): children is Slots => {
   return Boolean(vn && vn.shapeFlag & ShapeFlags.SLOTS_CHILDREN);
+};
+
+export const getChildrenString = (children: VNode[]): string => {
+  let text = '';
+  for (const child of children) {
+    if (isString(child) || isNumber(child)) {
+      text += String(child);
+    } else if (isTextChildren(child, child.children)) {
+      text += child.children;
+    } else if (isArrayChildren(child, child.children)) {
+      text += getChildrenString(child.children);
+    } else if (isSlotsChildren(child, child.children)) {
+      const _children = child.children.default?.();
+      if (_children) {
+        text += getChildrenString(_children);
+      }
+    }
+  }
+
+  return text;
 };
 
 export const getVNodeChildrenString = (vn: VNode): string => {
