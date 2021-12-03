@@ -6,7 +6,6 @@ import { getFirstComponent } from '../_utils/vue-utils';
 
 export default defineComponent({
   name: 'Spin',
-  inheritAttrs: false,
   props: {
     /**
      * @zh 尺寸
@@ -81,24 +80,21 @@ export default defineComponent({
       );
     };
 
-    return () => {
-      if (slots.default && !props.loading) {
-        return slots.default();
-      }
-      return (
-        <div class={cls.value} {...attrs}>
-          {slots.default ? (
-            <>
-              {slots.default()}
+    return () => (
+      <div class={cls.value}>
+        {slots.default ? (
+          <>
+            {slots.default()}
+            {props.loading && (
               <div class={`${prefixCls}-mask`}>
                 <div class={`${prefixCls}-mask-icon`}>{renderSpinIcon()}</div>
               </div>
-            </>
-          ) : (
-            renderSpinIcon()
-          )}
-        </div>
-      );
-    };
+            )}
+          </>
+        ) : (
+          renderSpinIcon()
+        )}
+      </div>
+    );
   },
 });
