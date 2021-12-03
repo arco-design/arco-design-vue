@@ -165,6 +165,7 @@ export default defineComponent({
     /**
      * @zh 确认按钮的Props
      * @en Props of confirm button
+     * @version 2.9.0
      */
     okButtonProps: {
       type: Object,
@@ -172,6 +173,7 @@ export default defineComponent({
     /**
      * @zh 取消按钮的Props
      * @en Props of cancel button
+     * @version 2.9.0
      */
     cancelButtonProps: {
       type: Object,
