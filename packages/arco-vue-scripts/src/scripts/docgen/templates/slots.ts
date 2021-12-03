@@ -1,4 +1,4 @@
-import { ParamTag, SlotDescriptor } from 'vue-docgen-api';
+import { SlotDescriptor } from 'vue-docgen-api';
 import { escapeCharacter, toKebabCase } from '../utils';
 
 const bindingsTmpl = (bindings: SlotDescriptor['bindings']): string => {
@@ -17,9 +17,12 @@ const bindingsTmpl = (bindings: SlotDescriptor['bindings']): string => {
     .join('\n');
 };
 
-const tmpl = (slots: SlotDescriptor[], lang: string): string => {
-  return slots
-    .filter((slot) => slot.description || lang in (slot.tags ?? {}))
+const tmpl = (slots: SlotDescriptor[], lang: string) => {
+  const displayableSlots = slots.filter(
+    (slot) => slot.description || lang in (slot.tags ?? {})
+  );
+  const hasVersion = displayableSlots.some((slot) => slot?.tags?.version);
+  const content = displayableSlots
     .map((slot) => {
       const { name, bindings, tags } = slot;
       let { description } = slot;
@@ -27,28 +30,44 @@ const tmpl = (slots: SlotDescriptor[], lang: string): string => {
         description = (tags[lang] as any).content as string;
       }
 
-      return `|${toKebabCase(name)}|${escapeCharacter(description || '')}|${
-        escapeCharacter(bindingsTmpl(bindings)) || '-'
-      }|`;
+      let lineContent = `|${toKebabCase(name)}|${escapeCharacter(
+        description || ''
+      )}|${escapeCharacter(bindingsTmpl(bindings)) || '-'}|`;
+
+      if (hasVersion) {
+        // tag 的 ts 类型有问题，所以忽略 ts 规则检查
+        // @ts-ignore-next-line
+        const version = (tags[lang] as any).content as string;
+        lineContent += `${version || ''}|`;
+      }
+
+      return lineContent;
     })
     .join('\n');
+
+  return {
+    hasVersion,
+    content,
+  };
 };
 
 export default (slots: SlotDescriptor[], lang: string) => {
-  const content = tmpl(slots, lang);
+  const { content, hasVersion } = tmpl(slots, lang);
   if (!content) return '';
 
-  if (lang === 'en') {
-    return `
-|Slot Name|Description|Parameters|
-|---|---|---|
-${content}
-`;
+  const header =
+    lang === 'en'
+      ? ['|Slot Name|Description|Parameters|', '|---|---|---|']
+      : ['|插槽名|描述|参数|', '|---|:---:|---|'];
+
+  if (hasVersion) {
+    header[0] += lang === 'en' ? 'version|' : '版本|';
+    header[1] += ':---|';
   }
 
   return `
-|插槽名|描述|参数|
-|---|:---:|---|
+${header[0]}
+${header[1]}
 ${content}
 `;
 };

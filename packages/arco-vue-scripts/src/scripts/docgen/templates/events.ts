@@ -17,42 +17,64 @@ const propertiesTmpl = (properties: EventDescriptor['properties']): string => {
     .join('\n');
 };
 
-const tmpl = (events: EventDescriptor[], lang: string): string => {
-  return events
-    .filter((event) => event.description || event.tags?.length)
+const tmpl = (events: EventDescriptor[], lang: string) => {
+  const displayableEvents = events.filter(
+    (event) => event.description || event.tags?.length
+  );
+  const hasVersion = displayableEvents.some((event) =>
+    event?.tags?.some((tag) => tag.title === 'version')
+  );
+  const content = displayableEvents
     .map((event) => {
       const { name, tags } = event;
       let { description } = event;
+      let version = '';
       if (tags?.length) {
         for (const item of tags) {
+          if (item.title === 'version') {
+            version = (item as Tag).content as string;
+            continue;
+          }
           if (item.title === lang) {
             description = (item as Tag).content as string;
           }
         }
       }
 
-      return `|${toKebabCase(name)}|${escapeCharacter(description || '')}|${
-        escapeCharacter(propertiesTmpl(event.properties)) || '-'
-      }|`;
+      let lineContent = `|${toKebabCase(name)}|${escapeCharacter(
+        description || ''
+      )}|${escapeCharacter(propertiesTmpl(event.properties)) || '-'}|`;
+
+      if (hasVersion) {
+        lineContent += `${version}|`;
+      }
+
+      return lineContent;
     })
     .join('\n');
+  return {
+    content,
+    hasVersion,
+  };
 };
 
 export default (events: EventDescriptor[], lang: string) => {
-  const content = tmpl(events, lang);
+  const { content, hasVersion } = tmpl(events, lang);
   if (!content) return '';
 
-  if (lang === 'en') {
-    return `
-|Event Name|Description|Parameters|
-|---|---|---|
-${content}
-`;
+  const header =
+    lang === 'en'
+      ? ['|Event Name|Description|Parameters|', '|---|---|---|']
+      : ['|事件名|描述|参数|', '|---|---|---|'];
+
+  if (hasVersion) {
+    header[0] += lang === 'en' ? 'version|' : '版本|';
+    header[1] += ':---|';
   }
 
   return `
-|事件名|描述|参数|
-|---|---|---|
+${header[0]}
+${header[1]}
 ${content}
 `;
 };
