@@ -1051,6 +1051,7 @@ export default defineComponent({
 
       return (
         <button
+          type="button"
           class={`${prefixCls}-expand-btn`}
           onClick={() => handleExpand(currentKey)}
         >
