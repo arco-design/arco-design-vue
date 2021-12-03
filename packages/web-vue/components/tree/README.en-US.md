@@ -43,29 +43,32 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 ### `<tree>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|size|Size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|block-node|Whether the node occupies a row|`boolean`|`false`|
-|default-expand-all|Whether to expand the parent node by default|`boolean`|`true`|
-|multiple|Whether to support multiple selection|`boolean`|`false`|
-|checkable|Whether to add a checkbox before the node|`boolean`|`false`|
-|selectable|Whether to support selection|`boolean`|`true`|
-|check-strictly|Whether to cancel the parent-child node association|`boolean`|`false`|
-|checked-strategy|Customized backfill method <br/> all: return all selected nodes <br/> parent: return only parent node when both parent and child nodes are selected <br/> child: return only child nodes|`'all' \| 'parent' \| 'child'`|`'all'`|
-|default-selected-keys|Tree node selected by default|`Array<string \| number>`|`-`|
-|selected-keys **(v-model)**|Selected tree node|`Array<string \| number>`|`-`|
-|default-checked-keys|Tree node with checkbox selected by default|`Array<string \| number>`|`-`|
-|checked-keys **(v-model)**|Tree node with check box selected|`Array<string \| number>`|`-`|
-|default-expanded-keys|Nodes expanded by default|`Array<string \| number>`|`-`|
-|expanded-keys **(v-model)**|Expanded node|`Array<string \| number>`|`-`|
-|data|Pass in `data` to generate the corresponding tree structure|`TreeNodeData[]`|`[]`|
-|field-names|Specify the field name in the node data|`FieldNames`|`-`|
-|show-line|Whether to display the connection line|`boolean`|`false`|
-|load-more|A callback for loading data asynchronously, returning a `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`|
-|draggable|Whether it can be dragged|`boolean`|`false`|
-|allow-drop|Whether to allow release on a node when dragging|`(options: {  dropNode: TreeNodeData;  dropPosition: -1 \| 0 \| 1;}) => boolean`|`-`|
-|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|size|Size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|block-node|Whether the node occupies a row|`boolean`|`false`||
+|default-expand-all|Whether to expand the parent node by default|`boolean`|`true`||
+|multiple|Whether to support multiple selection|`boolean`|`false`||
+|checkable|Whether to add a checkbox before the node|`boolean`|`false`||
+|selectable|Whether to support selection|`boolean`|`true`||
+|check-strictly|Whether to cancel the parent-child node association|`boolean`|`false`||
+|checked-strategy|Customized backfill method <br/> all: return all selected nodes <br/> parent: return only parent node when both parent and child nodes are selected <br/> child: return only child nodes|`'all' \| 'parent' \| 'child'`|`'all'`||
+|default-selected-keys|Tree node selected by default|`Array<string \| number>`|`-`||
+|selected-keys **(v-model)**|Selected tree node|`Array<string \| number>`|`-`||
+|default-checked-keys|Tree node with checkbox selected by default|`Array<string \| number>`|`-`||
+|checked-keys **(v-model)**|Tree node with check box selected|`Array<string \| number>`|`-`||
+|default-expanded-keys|Nodes expanded by default|`Array<string \| number>`|`-`||
+|expanded-keys **(v-model)**|Expanded node|`Array<string \| number>`|`-`||
+|data|Pass in `data` to generate the corresponding tree structure|`TreeNodeData[]`|`[]`||
+|field-names|Specify the field name in the node data|`FieldNames`|`-`||
+|show-line|Whether to display the connection line|`boolean`|`false`||
+|load-more|A callback for loading data asynchronously, returning a `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`||
+|draggable|Whether it can be dragged|`boolean`|`false`||
+|allow-drop|Whether to allow release on a node when dragging|`(options: {  dropNode: TreeNodeData;  dropPosition: -1 \| 0 \| 1;}) => boolean`|`-`||
+|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
+|default-expand-selected|Whether to expand the parent node of the selected node by default|`boolean`|`false`|2.9.0|
+|default-expand-checked|Whether to expand the parent node of the checked node by default|`boolean`|`false`|2.9.0|
+|auto-expand-parent|Whether to automatically expand the parent node of the expanded node|`boolean`|`true`|2.9.0|
 ### `<tree>` Events
 
 |Event Name|Description|Parameters|

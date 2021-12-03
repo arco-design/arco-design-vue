@@ -31,7 +31,7 @@ import {
   ref,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { TreeContext, TreeInjectionKey } from './context';
+import { TreeInjectionKey } from './context';
 import usePickSlots from '../_hooks/use-pick-slots';
 import {
   FieldNames,
@@ -223,6 +223,31 @@ export default defineComponent({
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
     },
+    /**
+     * @zh 是否默认展开已选中节点的父节点
+     * @en Whether to expand the parent node of the selected node by default
+     * @version 2.9.0
+     */
+    defaultExpandSelected: {
+      type: Boolean,
+    },
+    /**
+     * @zh 是否默认展开已选中复选框节点的父节点
+     * @en Whether to expand the parent node of the checked node by default
+     * @version 2.9.0
+     */
+    defaultExpandChecked: {
+      type: Boolean,
+    },
+    /**
+     * @zh 是否自动展开已展开节点的父节点
+     * @en Whether to automatically expand the parent node of the expanded node
+     * @version 2.9.0
+     */
+    autoExpandParent: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     /**
@@ -330,6 +355,9 @@ export default defineComponent({
       filterTreeNode,
       draggable,
       allowDrop,
+      defaultExpandSelected,
+      defaultExpandChecked,
+      autoExpandParent,
     } = toRefs(props);
 
     const prefixCls = getPrefixCls('tree');
@@ -388,17 +416,37 @@ export default defineComponent({
           const node = key2TreeNode.value[_key];
           if (!node) return;
 
-          [...(node.pathParentKeys || []), _key].forEach((_key) =>
-            expandedKeysSet.add(_key)
-          );
+          [
+            ...(autoExpandParent.value ? node.pathParentKeys : []),
+            _key,
+          ].forEach((_key) => expandedKeysSet.add(_key));
         });
         return [...expandedKeysSet];
       }
-      return defaultExpandAll.value
-        ? flattenTreeData.value
-            .filter((node) => node.children && node.children.length)
-            .map((node) => node.key)
-        : [];
+      if (defaultExpandAll.value) {
+        return flattenTreeData.value
+          .filter((node) => node.children && node.children.length)
+          .map((node) => node.key);
+      }
+      if (defaultSelectedKeys.value || defaultExpandChecked.value) {
+        const expandedKeysSet = new Set<TreeNodeKey>([]);
+        const addToExpandKeysSet = (keys: TreeNodeKey[]) => {
+          keys.forEach((key) => {
+            const node = key2TreeNode.value[key];
+            if (!node) return;
+
+            (node.pathParentKeys || []).forEach((k) => expandedKeysSet.add(k));
+          });
+        };
+        if (defaultExpandSelected.value) {
+          addToExpandKeysSet(selectedKeys.value);
+        }
+        if (defaultExpandChecked.value) {
+          addToExpandKeysSet(checkedKeys.value);
+        }
+        return [...expandedKeysSet];
+      }
+      return [];
     }
 
     const [expandedKeys, setExpandKeys] = useMergeState<TreeNodeKey[]>(

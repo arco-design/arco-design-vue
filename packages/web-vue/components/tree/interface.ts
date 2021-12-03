@@ -146,6 +146,9 @@ export interface TreeProps {
   virtualListProps?: VirtualListProps;
   showLine: boolean;
   loadMore?: LoadMore;
+  defaultExpandSelected?: boolean;
+  defaultExpandChecked?: boolean;
+  autoExpandParent?: boolean;
   dragIcon?: Slot;
   switcherIcon?: Slot;
   loadingIcon?: Slot;
