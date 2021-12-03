@@ -14,7 +14,7 @@
     </div>
     <div :class="`${prefixCls}-content`">
       <div :class="`${prefixCls}-title`">
-        <slot />
+        <slot>{{ title }}</slot>
       </div>
       <div
         v-if="description || $slots.description"
@@ -43,6 +43,11 @@ export default defineComponent({
     IconClose,
   },
   props: {
+    /**
+     * @zh 步骤的标题
+     * @en Title of the step
+     */
+    title: String,
     /**
      * @zh 步骤的描述信息
      * @en Description of the step
