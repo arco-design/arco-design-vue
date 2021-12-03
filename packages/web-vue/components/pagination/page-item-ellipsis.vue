@@ -1,6 +1,8 @@
 <template>
   <li :class="cls" @click="handleClick">
-    <icon-more />
+    <slot>
+      <icon-more />
+    </slot>
   </li>
 </template>
 

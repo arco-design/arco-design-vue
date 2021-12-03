@@ -24,6 +24,8 @@ description: Use paging to control the amount of information in a single page, a
 
 @import ./__demo__/all.md
 
+@import ./__demo__/custom.md
+
 
 ### `<pagination>` Props
 
@@ -58,6 +60,9 @@ description: Use paging to control the amount of information in a single page, a
 
 |Slot Name|Description|Parameters|
 |---|---|---|
-|page-item|Page item|type: `PageItemType`The type of page item<br>page: `number`The page number of the paging button (exists only when `type='page'`)<br>element: `VNode`Default page item|
+|total|Total|total: `number`|
+|page-item-ellipsis|Page item (ellipsis)|-|
+|page-item-step|Page item (step)|type: `'previous'\|'next'`The type of page item step|
+|page-item|Page item|page: `number`The page number of the paging button|
 
 
