@@ -1,7 +1,30 @@
-import { defineComponent, inject, PropType } from 'vue';
-import { isNumber, isObject } from '../_utils/is';
+<template>
+  <div :class="classNames" :style="styles">
+    <slot />
+  </div>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent, inject, PropType } from 'vue';
+import { isNumber, isObject, isString } from '../_utils/is';
 import { getPrefixCls } from '../_utils/global-config';
-import { RowContextState } from './interface';
+import { FlexType } from './interface';
+import { RowContextInjectionKey } from './context';
+
+function getAllowableFlexValue(flexValue: FlexType) {
+  if (
+    (isString(flexValue) &&
+      (['initial', 'auto', 'none'].includes(flexValue) ||
+        /^\d+$/.test(flexValue))) ||
+    isNumber(flexValue)
+  ) {
+    return flexValue;
+  }
+  if (isString(flexValue) && /^\d+(px|em|rem|%)$/.test(flexValue)) {
+    return `0 0 ${flexValue}`;
+  }
+  return undefined;
+}
 
 export default defineComponent({
   name: 'Col',
@@ -70,16 +93,32 @@ export default defineComponent({
     xxl: {
       type: [Number, Object] as PropType<number | { [key: string]: any }>,
     },
+    /**
+     * @zh 设置 flex 布局属性
+     * @en Set flex layout properties
+     * @version 2.10.0
+     */
+    flex: {
+      type: [Number, String] as PropType<
+        number | string | 'initial' | 'auto' | 'none'
+      >,
+    },
   },
-  setup(props, { slots }) {
+  setup(props) {
     const prefixCls = getPrefixCls('col');
-    const rowContext = inject<RowContextState>('rowContext');
+    const rowContext = inject(RowContextInjectionKey, {});
+    const flexValue = computed(() => getAllowableFlexValue(props.flex));
+    const mergeClassName = computed(() => {
+      const { div } = rowContext;
+      const { span, offset, order, xs, sm, md, lg, xl, xxl } = props;
+      const result = {
+        [`${prefixCls}`]: !div,
+        [`${prefixCls}-order-${order}`]: order,
+        [`${prefixCls}-${span}`]:
+          !div && !xs && !sm && !md && !lg && !xl && !xxl,
+        [`${prefixCls}-offset-${offset}`]: offset && offset > 0,
+      };
 
-    const adaptationGrid = (
-      prefixCls: string,
-      mergeClassName: { [key: string]: any }
-    ) => {
-      const { xs, sm, md, lg, xl, xxl } = props;
       const screenList: {
         [key: string]: number | { [key: string]: any } | undefined;
       } = { xs, sm, md, lg, xl, xxl };
@@ -87,36 +126,25 @@ export default defineComponent({
       Object.keys(screenList).forEach((screen) => {
         const screenValue = screenList[screen];
         if (screenValue && isNumber(screenValue)) {
-          mergeClassName[`${prefixCls}-${screen}-${screenValue}`] = true;
+          result[`${prefixCls}-${screen}-${screenValue}`] = true;
         } else if (screenValue && isObject(screenValue)) {
-          mergeClassName[`${prefixCls}-${screen}-${screenValue.span}`] =
+          result[`${prefixCls}-${screen}-${screenValue.span}`] =
             screenValue.span;
-          mergeClassName[
-            `${prefixCls}-${screen}-offset-${screenValue.offset}`
-          ] = screenValue.offset;
-          mergeClassName[`${prefixCls}-${screen}-order-${screenValue.order}`] =
+          result[`${prefixCls}-${screen}-offset-${screenValue.offset}`] =
+            screenValue.offset;
+          result[`${prefixCls}-${screen}-order-${screenValue.order}`] =
             screenValue.order;
         }
       });
 
-      return mergeClassName;
-    };
-
-    return () => {
-      const { span, offset, order, xs, sm, md, lg, xl, xxl } = props;
-      const div = rowContext && rowContext.div;
-      const gutter = rowContext && rowContext.gutter;
-
-      const mergeClassName = {
-        [`${prefixCls}`]: !div,
-        [`${prefixCls}-order-${order}`]: order,
-        [`${prefixCls}-${span}`]:
-          !div && !xs && !sm && !md && !lg && !xl && !xxl,
-        [`${prefixCls}-offset-${offset}`]: offset && offset > 0,
-      };
-      const classNames = adaptationGrid(prefixCls, mergeClassName);
-
-      const styles: {
+      return result;
+    });
+    const classNames = computed(() => {
+      return flexValue.value ? prefixCls : mergeClassName.value;
+    });
+    const paddingStyles = computed(() => {
+      const { gutter, div } = rowContext;
+      const result: {
         paddingLeft?: string;
         paddingRight?: string;
         paddingTop?: string;
@@ -126,20 +154,25 @@ export default defineComponent({
         const paddingHorizontal = (gutter[0] && gutter[0] / 2) || 0;
         const paddingVertical = (gutter[1] && gutter[1] / 2) || 0;
         if (paddingHorizontal) {
-          styles.paddingLeft = `${paddingHorizontal}px`;
-          styles.paddingRight = `${paddingHorizontal}px`;
+          result.paddingLeft = `${paddingHorizontal}px`;
+          result.paddingRight = `${paddingHorizontal}px`;
         }
         if (paddingVertical) {
-          styles.paddingTop = `${paddingVertical}px`;
-          styles.paddingBottom = `${paddingVertical}px`;
+          result.paddingTop = `${paddingVertical}px`;
+          result.paddingBottom = `${paddingVertical}px`;
         }
       }
 
-      return (
-        <div class={classNames} style={styles}>
-          {slots.default?.()}
-        </div>
-      );
+      return result;
+    });
+    const flexStyles = computed<{ flex?: FlexType }>(() =>
+      flexValue.value ? { flex: flexValue.value } : {}
+    );
+
+    return {
+      classNames,
+      styles: computed(() => ({ ...paddingStyles.value, ...flexStyles.value })),
     };
   },
 });
+</script>
