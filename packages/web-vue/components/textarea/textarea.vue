@@ -17,7 +17,7 @@
         ref="textareaRef"
         v-bind="getTextareaAttrs($attrs)"
         :disabled="disabled"
-        :class="cls"
+        :class="prefixCls"
         :style="textareaStyle"
         :value="computedValue"
         :placeholder="placeholder"
@@ -320,16 +320,10 @@ export default defineComponent({
     const wrapperCls = computed(() => [
       `${prefixCls}-wrapper`,
       {
-        [`${prefixCls}-scroll`]: isScroll.value,
-      },
-    ]);
-
-    const cls = computed(() => [
-      prefixCls,
-      {
         [`${prefixCls}-focus`]: focused.value,
         [`${prefixCls}-disabled`]: props.disabled,
         [`${prefixCls}-error`]: props.error,
+        [`${prefixCls}-scroll`]: isScroll.value,
       },
     ]);
 
@@ -427,7 +421,6 @@ export default defineComponent({
     return {
       prefixCls,
       wrapperCls,
-      cls,
       textareaRef,
       textareaStyle,
       mirrorRef,
