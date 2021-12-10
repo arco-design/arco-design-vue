@@ -108,7 +108,6 @@ export default defineComponent({
       <td
         class={cls.value}
         style={style.value}
-        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
         colspan={props.colSpan > 1 ? props.colSpan : undefined}
       >
         <span

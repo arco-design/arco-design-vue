@@ -22,8 +22,6 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/fixed.md
 
-@import ./__demo__/span.md
-
 @import ./__demo__/group.md
 
 @import ./__demo__/custom.md
@@ -33,27 +31,26 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 ### `<table>` Props
 
-|参数名|描述|类型|默认值|版本|
-|---|---|---|:---:|:---|
-|columns|表格的列描述信息|`TableColumn[]`|`[]`||
-|data|表格的数据|`TableData[]`|`[]`||
-|bordered|是否显示边框|`boolean \| TableBorder`|`true`||
-|hoverable|是否显示选中效果|`boolean`|`true`||
-|stripe|是否开启斑马纹效果|`boolean`|`false`||
-|size|表格的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`||
-|table-layout-fixed|表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。|`boolean`|`false`||
-|loading|是否为加载中状态|`boolean`|`false`||
-|hide-header|是否隐藏表头|`boolean`|`false`||
-|row-selection|表格的行选择器配置|`TableRowSelection`|`-`||
-|expandable|表格的展开行配置|`TableExpandable`|`-`||
-|scroll|表格的滚动属性配置|`{ x: number; y: number }`|`-`||
-|pagination|分页的属性配置|`boolean \| PaginationProps`|`true`||
-|page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
-|indent-size|树形表格的缩进距离|`number`|`16`||
-|row-key|表格行 `key` 的取值字段|`string`|`'key'`||
-|show-header|是否显示表头|`boolean`|`true`||
-|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`||
-|span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|columns|表格的列描述信息|`TableColumn[]`|`[]`|
+|data|表格的数据|`TableData[]`|`[]`|
+|bordered|是否显示边框|`boolean \| TableBorder`|`true`|
+|hoverable|是否显示选中效果|`boolean`|`true`|
+|stripe|是否开启斑马纹效果|`boolean`|`false`|
+|size|表格的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`|
+|table-layout-fixed|表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。|`boolean`|`false`|
+|loading|是否为加载中状态|`boolean`|`false`|
+|hide-header|是否隐藏表头|`boolean`|`false`|
+|row-selection|表格的行选择器配置|`TableRowSelection`|`-`|
+|expandable|表格的展开行配置|`TableExpandable`|`-`|
+|scroll|表格的滚动属性配置|`{ x: number; y: number }`|`-`|
+|pagination|分页的属性配置|`boolean \| PaginationProps`|`true`|
+|page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`|
+|indent-size|树形表格的缩进距离|`number`|`16`|
+|row-key|表格行 `key` 的取值字段|`string`|`'key'`|
+|show-header|是否显示表头|`boolean`|`true`|
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`|
 ### `<table>` Events
 
 |事件名|描述|参数|

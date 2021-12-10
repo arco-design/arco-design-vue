@@ -33,8 +33,6 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/fixed.md
 
-@import ./__demo__/span.md
-
 @import ./__demo__/group.md
 
 @import ./__demo__/custom.md
