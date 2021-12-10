@@ -47,6 +47,7 @@ export default defineComponent({
                 computedKeys={props.computedKeys}
                 isActive={item.key === props.activeNode?.key}
                 multiple={props.multiple}
+                searchOption
                 onClickOption={(
                   option: CascaderOptionInfo,
                   checked?: boolean

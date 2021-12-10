@@ -9,6 +9,7 @@
     :auto-fit-popup-width="showSearchPanel"
     :popup-container="popupContainer"
     :prevent-focus="true"
+    :click-to-close="!allowSearch"
     @popup-visible-change="handlePopupVisibleChange"
   >
     <select-view
@@ -48,6 +49,7 @@
         :multiple="multiple"
         :expand-trigger="expandTrigger"
         :total-level="totalLevel"
+        :check-strictly="checkStrictly"
         @click-option="handleClickOption"
         @active-change="setActiveNode"
         @path-change="setSelectedPath"
@@ -65,7 +67,6 @@ import CascaderPanel from './cascader-panel';
 import CascaderSearchPanel from './cascader-search-panel';
 import { CascaderOption, CascaderOptionInfo } from './interface';
 import { isArray } from '../_utils/is';
-import { InputValueChangeReason } from '../select/select';
 import { Data, EmitType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
@@ -241,6 +242,14 @@ export default defineComponent({
     triggerProps: {
       type: Object as PropType<TriggerProps>,
     },
+    /**
+     * @zh 是否开启严格选择模式
+     * @en Whether to enable strict selection mode
+     */
+    checkStrictly: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -316,7 +325,7 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit }) {
-    const { options } = toRefs(props);
+    const { options, checkStrictly } = toRefs(props);
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
     const _popupVisible = ref(props.defaultPopupVisible);
@@ -338,6 +347,7 @@ export default defineComponent({
           leafOptionMap,
           leafOptionValueMap,
           totalLevel,
+          checkStrictly,
         });
       },
       {
@@ -425,7 +435,9 @@ export default defineComponent({
     };
 
     const selectMultiple = (option: CascaderOptionInfo, checked: boolean) => {
-      const leafOptionKeys = getLeafOptionKeys(option);
+      const leafOptionKeys = props.checkStrictly
+        ? [option.key]
+        : getLeafOptionKeys(option);
 
       const newKeys = checked
         ? computedKeys.value.concat(
@@ -454,10 +466,7 @@ export default defineComponent({
       return option.path.map((item) => item.label).join(' / ');
     };
 
-    const handleInputValueChange = (
-      value: string,
-      reason: InputValueChangeReason
-    ): void => {
+    const handleInputValueChange = (value: string, reason: string): void => {
       if (value !== computedInputValue.value) {
         if (reason === 'manual' && !computedPopupVisible.value) {
           _popupVisible.value = true;

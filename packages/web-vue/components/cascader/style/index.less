@@ -80,15 +80,17 @@
     overflow-y: auto;
     list-style: none;
 
-    &-multiple {
-      .@{cascader-prefix-cls}-list-option-label {
+    &-multiple,
+    &-strictly {
+      .@{cascader-prefix-cls}-option-label {
         padding-left: 0;
       }
 
-      .@{cascader-prefix-cls}-list-option {
+      .@{cascader-prefix-cls}-option {
         padding-left: @cascader-padding-item-left;
 
-        .@{prefix}-checkbox {
+        .@{prefix}-checkbox,
+        .@{prefix}-radio {
           margin-right: @cascader-margin-checkbox-right;
           padding-left: 0;
         }
@@ -97,7 +99,7 @@
   }
 
   &-search-list&-list-multiple {
-    .@{cascader-prefix-cls}-list-option-label {
+    .@{cascader-prefix-cls}-option-label {
       padding-right: @cascader-padding-item-left;
     }
   }
@@ -161,6 +163,11 @@
 
     .@{prefix}-checkbox:not(.@{prefix}-checkbox-disabled):not(.@{prefix}-checkbox-checked):hover
       .@{prefix}-checkbox-icon-hover::before {
+      background-color: @cascader-color-checkbox-bg_hover;
+    }
+
+    .@{prefix}-radio:not(.@{prefix}-radio-disabled):not(.@{prefix}-radio-checked):hover
+      .@{prefix}-radio-icon-hover::before {
       background-color: @cascader-color-checkbox-bg_hover;
     }
   }

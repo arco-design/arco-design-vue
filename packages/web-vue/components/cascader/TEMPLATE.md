@@ -27,6 +27,8 @@ description: Refers to the use of multi-level classification to separate the opt
 
 @import ./__demo__/multiple.md
 
+@import ./__demo__/check-strictly.md
+
 @import ./__demo__/search.md
 
 @import ./__demo__/path.md
