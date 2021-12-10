@@ -26,7 +26,7 @@ description: Highlight a certain number or group of numbers and statistical data
 |format|Format of numerical display (used in date mode)|`string`|`'HH:mm:ss'`|
 |extra|Additional display content|`string`|`-`|
 |start|Whether to start animation|`boolean`|`true`|
-|precision|Decimal reserved digits (used in digital mode)|`number`|`-`|
+|precision|Decimal reserved digits (used in digital mode)|`number`|`0`|
 |separator|Carry separator (used in number mode)|`string`|`-`|
 |show-group-separator|Whether to display the carry separator (used in number mode)|`boolean`|`false`|
 |animation|Whether to turn on animation|`boolean`|`false`|

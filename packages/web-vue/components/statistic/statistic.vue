@@ -85,7 +85,10 @@ export default defineComponent({
      * @zh 小数保留位数（数字模式使用）
      * @en Decimal reserved digits (used in digital mode)
      */
-    precision: Number,
+    precision: {
+      type: Number,
+      default: 0,
+    },
     /**
      * @zh 进位分隔符（数字模式使用）
      * @en Carry separator (used in number mode)
@@ -177,7 +180,7 @@ export default defineComponent({
     const formatValue = computed(() => {
       let _value = innerValue.value;
       if (isNumber(_value)) {
-        if (props.precision) {
+        if (isNumber(props.precision)) {
           _value = NP.round(_value, props.precision).toFixed(props.precision);
         }
         const splitValue = String(_value).split('.');
@@ -218,7 +221,6 @@ export default defineComponent({
     return {
       prefixCls,
       formatValue,
-      innerValue,
     };
   },
 });
