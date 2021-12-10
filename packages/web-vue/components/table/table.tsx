@@ -5,7 +5,15 @@ import type {
   Slot,
   VNode,
 } from 'vue';
-import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
@@ -198,6 +206,21 @@ export default defineComponent({
      */
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
+    },
+    /**
+     * @zh 单元格合并方法（索引从数据项开始计数）
+     * @en Cell merge method (The index starts counting from the data item)
+     * @version 2.10.0
+     */
+    spanMethod: {
+      type: Function as PropType<
+        (data: {
+          record: TableData;
+          column: TableColumn;
+          rowIndex: number;
+          columnIndex: number;
+        }) => { rowspan?: number; colspan?: number } | void
+      >,
     },
     components: {
       type: Object as PropType<TableComponents>,
@@ -1064,6 +1087,27 @@ export default defineComponent({
       );
     };
 
+    // [row, column]
+    const tableSpan = reactive<Record<string, [number, number]>>({});
+
+    const removedCells = computed(() => {
+      const data: string[] = [];
+      for (const indexKey of Object.keys(tableSpan)) {
+        const indexArray = indexKey.split('-').map((item) => Number(item));
+        const span = tableSpan[indexKey];
+        for (let i = 1; i < span[0]; i++) {
+          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
+          for (let j = 1; j < span[1]; j++) {
+            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
+          }
+        }
+        for (let i = 1; i < span[1]; i++) {
+          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
+        }
+      }
+      return data;
+    });
+
     const renderRecord = (
       record: TableData,
       indentSize: number,
@@ -1133,6 +1177,24 @@ export default defineComponent({
                     }
                   : undefined;
 
+              const cellId = `${rowIndex}-${index}`;
+              const { rowspan = 1, colspan = 1 } =
+                props.spanMethod?.({
+                  record,
+                  column,
+                  rowIndex,
+                  columnIndex: index,
+                }) ?? {};
+
+              if (rowspan > 1 || colspan > 1) {
+                tableSpan[cellId] = [rowspan, colspan];
+              } else if (tableSpan[cellId]) {
+                delete tableSpan[cellId];
+              }
+              if (removedCells.value.includes(cellId)) {
+                return null;
+              }
+
               return (
                 <Td
                   key={`td-${index}`}
@@ -1146,6 +1208,8 @@ export default defineComponent({
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
+                  rowSpan={rowspan}
+                  colSpan={colspan}
                   {...extraProps}
                   onClick={(e: Event) => handleCellClick(record, column)}
                 >
