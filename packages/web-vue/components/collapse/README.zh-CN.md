@@ -19,8 +19,8 @@ description: 可以折叠 / 展开的内容区域。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|active-key **(v-model)**|当前展开的面板的 `key`|`string[]`|`-`|
-|default-active-key|默认展开的面板的 `key` （非受控模式）|`string[]`|`[]`|
+|active-key **(v-model)**|当前展开的面板的 `key`|`(string \| number)[]`|`-`|
+|default-active-key|默认展开的面板的 `key` （非受控模式）|`(string \| number)[]`|`[]`|
 |accordion|是否开启手风琴模式|`boolean`|`false`|
 |expand-icon-position|展开图标显示的位置|`'left' \| 'right'`|`'left'`|
 |bordered|是否显示边框|`boolean`|`true`|

@@ -30,7 +30,7 @@ export default defineComponent({
      * @vModel
      */
     activeKey: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<(string | number)[]>,
       default: undefined,
     },
     /**
@@ -38,7 +38,7 @@ export default defineComponent({
      * @en The `key` of the panel expanded by default (uncontrolled mode)
      */
     defaultActiveKey: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<(string | number)[]>,
       default: () => [],
     },
     /**
@@ -68,7 +68,9 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: Function as PropType<(activeKey: string | string[]) => void>,
+      type: Function as PropType<
+        (activeKey: string | number | (string | number)[]) => void
+      >,
     },
   },
   emits: [
@@ -92,8 +94,8 @@ export default defineComponent({
       return activeKey;
     });
 
-    const handleClick = (key: string, e: Event) => {
-      let newActiveKeys: string[] = [];
+    const handleClick = (key: string | number, e: Event) => {
+      let newActiveKeys: (string | number)[] = [];
       if (props.accordion) {
         if (!computedActiveKeys.value.includes(key)) {
           newActiveKeys = [key];

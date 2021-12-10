@@ -40,6 +40,7 @@ import { collapseKey } from './context';
 import IconHover from '../_components/icon-hover.vue';
 import IconCaretRight from '../icon/icon-caret-right';
 import IconCaretLeft from '../icon/icon-caret-left';
+import { isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'CollapseItem',
@@ -76,7 +77,10 @@ export default defineComponent({
     const prefixCls = getPrefixCls('collapse-item');
     const component = getCurrentInstance();
     const collapseCtx = inject(collapseKey, undefined);
-    const key = String(component?.vnode.key ?? '');
+    const key =
+      component && isNumber(component?.vnode.key)
+        ? component.vnode.key
+        : String(component?.vnode.key ?? '');
     const isActive = computed(() => collapseCtx?.activeKeys.includes(key));
     const expandIconPosition = computed(
       () => collapseCtx?.expandIconPosition ?? 'left'
