@@ -27,7 +27,8 @@
 
 .@{message-prefix-cls} {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin-bottom: @message-margin-bottom;
   padding: @message-padding-top @message-padding-right @message-padding-bottom
     @message-padding-left;
@@ -42,10 +43,6 @@
   box-shadow: @shadow2-down;
   transition: all @transition-duration-1 @transition-timing-function-linear;
   pointer-events: auto;
-
-  &-closable {
-    padding-right: @message-padding-right + @message-close-icon-font-size + 8px;
-  }
 
   &-icon {
     display: inline-block;
@@ -128,21 +125,15 @@
   }
 
   &-close-btn {
-    position: absolute;
-    top: @message-close-icon-top;
-    right: @message-close-icon-right;
+    margin-left: 8px;
     color: @message-color-close-icon;
     font-size: @message-close-icon-font-size;
-
-    > svg {
-      position: relative;
-    }
   }
 
   .icon-hover(
     @message-prefix-cls,
     @message-close-icon-font-size,
-    @message-close-icon-font-size + 8px
+      @message-close-icon-font-size + 8px
   );
 }
 

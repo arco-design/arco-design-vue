@@ -153,6 +153,7 @@ export default defineComponent({
     /**
      * @zh 是否允许搜索
      * @en Whether to allow searching
+     * @defaultValue false (single) | true (multiple)
      */
     allowSearch: {
       type: Boolean,
