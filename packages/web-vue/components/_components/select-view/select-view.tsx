@@ -135,15 +135,13 @@ export default defineComponent({
     const renderSuffix = () => (
       <>
         {showClearBtn.value && (
-          <span
+          <IconHover
             class={`${prefixCls}-clear-btn`}
             onClick={handleClear}
             onMousedown={(e) => e.stopPropagation()}
           >
-            <IconHover>
-              <IconClose />
-            </IconHover>
-          </span>
+            <IconClose />
+          </IconHover>
         )}
         <span class={`${prefixCls}-icon`}>{renderIcon()}</span>
       </>

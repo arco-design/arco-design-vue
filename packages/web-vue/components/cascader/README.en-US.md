@@ -30,13 +30,13 @@ description: Refers to the use of multi-level classification to separate the opt
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |path-mode|Whether the value is a path|`boolean`|`false`|
-|multiple|Whether it is a multi-selection state|`boolean`|`false`|
+|multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`|
 |model-value **(v-model)**|Value|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`|
 |default-value|Default value (uncontrolled state)|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' | undefined | []`|
 |options|Options for cascader|`CascaderOption[]`|`[]`|
 |disabled|Whether to disable|`boolean`|`false`|
 |error|Whether it is an error state|`boolean`|`false`|
-|allow-search|Whether to allow searching|`boolean`|`false`|
+|allow-search|Whether to allow searching|`boolean`|`false (single) | true (multiple)`|
 |allow-clear|Whether to allow clear|`boolean`|`false`|
 |input-value **(v-model)**|The value of the input|`string`|`-`|
 |default-input-value|The default value of the input (uncontrolled state)|`string`|`''`|

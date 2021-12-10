@@ -28,13 +28,13 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |path-mode|绑定值是否为路径|`boolean`|`false`|
-|multiple|是否为多选状态|`boolean`|`false`|
+|multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`|
 |model-value **(v-model)**|绑定值|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`|
 |default-value|默认值（非受控状态）|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' | undefined | []`|
 |options|级联选择器的选项|`CascaderOption[]`|`[]`|
 |disabled|是否禁用|`boolean`|`false`|
 |error|是否为错误状态|`boolean`|`false`|
-|allow-search|是否允许搜索|`boolean`|`false`|
+|allow-search|是否允许搜索|`boolean`|`false (single) | true (multiple)`|
 |allow-clear|是否允许清除|`boolean`|`false`|
 |input-value **(v-model)**|输入框的值|`string`|`-`|
 |default-input-value|输入框的默认值（非受控状态）|`string`|`''`|

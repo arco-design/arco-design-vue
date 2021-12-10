@@ -40,7 +40,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
-|multiple|是否开启多选模式|`boolean`|`false`||
+|multiple|是否开启多选模式（多选模式默认开启搜索）|`boolean`|`false`||
 |model-value **(v-model)**|绑定值|`string \| number \| (string \| number)[]`|`-`||
 |default-value|默认值（非受控模式）|`string \| number \| (string \| number)[]`|`'' | []`||
 |input-value **(v-model)**|输入框的值|`string`|`-`||
@@ -51,7 +51,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |disabled|是否禁用|`boolean`|`false`||
 |error|是否为错误状态|`boolean`|`false`||
 |allow-clear|是否允许清空|`boolean`|`false`||
-|allow-search|是否允许搜索|`boolean \| { retainInputValue?: boolean }`|`false`||
+|allow-search|是否允许搜索|`boolean \| { retainInputValue?: boolean }`|`false (single) | true (multiple)`||
 |allow-create|是否允许创建|`boolean`|`false`||
 |max-tag-count|多选模式下，最多显示的标签数量。0 表示不限制|`number`|`0`||
 |popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`||
