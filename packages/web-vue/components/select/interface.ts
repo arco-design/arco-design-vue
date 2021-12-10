@@ -21,6 +21,11 @@ export interface OptionData {
    * @en Whether to disable
    */
   disabled?: boolean;
+  /**
+   * @zh 选项标签的Props
+   * @en Props of option tag
+   */
+  tagProps?: any;
 
   [other: string]: any;
 }
@@ -52,24 +57,27 @@ export interface GroupOption {
 export type Option = string | number | OptionData | GroupOption;
 
 export interface OptionInfo extends OptionData {
+  /**
+   * @zh 选项的 index
+   * @en Option index
+   */
   index: number;
+  /**
+   * @zh 选项的 key
+   * @en Option key
+   */
   key: string;
-  origin: 'children' | 'options' | 'extraOptions';
+  /**
+   * @zh 选项的来源
+   * @en Source of option
+   */
+  origin: 'options' | 'extraOptions';
 }
 
-export interface OptionNode {
-  type: 'option' | 'optGroup';
-  key: string;
-  value?: string | number;
-  label: string;
-  render?: RenderFunction;
-  disabled?: boolean;
-}
+export type OptionNode =
+  | (OptionData & { key: string })
+  | (GroupOption & { options: OptionNode[]; key: string });
 
-/**
- * @zh 选项过滤
- * @en Option filter
- */
 export type FilterOption =
   | boolean
   | ((inputValue: string, optionInfo: OptionInfo) => boolean);

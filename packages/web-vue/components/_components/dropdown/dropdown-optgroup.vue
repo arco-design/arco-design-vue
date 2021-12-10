@@ -4,6 +4,7 @@
       {{ label }}
     </slot>
   </li>
+  <slot />
 </template>
 
 <script lang="ts">
@@ -11,7 +12,7 @@ import { defineComponent } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 
 export default defineComponent({
-  name: 'Optgroup',
+  name: 'DropdownOptgroup',
   props: {
     /**
      * @zh 选项组的标题

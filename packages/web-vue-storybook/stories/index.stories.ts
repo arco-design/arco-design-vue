@@ -5,6 +5,7 @@ import StoryTreeDraggable from './components/tree-draggable.vue';
 import StoryVirtual from './components/virtual-list.vue';
 import StorySpace from './components/space.vue';
 import StoryMenu from './components/menu.vue';
+import StorySelect from './components/select';
 
 export default {
   title: 'Components',
@@ -17,3 +18,4 @@ export const TreeDraggable = () => StoryTreeDraggable;
 export const Virtual = () => StoryVirtual;
 export const Space = () => StorySpace;
 export const Menu = () => StoryMenu;
+export const Select = () => StorySelect;
