@@ -35,9 +35,7 @@ const tmpl = (slots: SlotDescriptor[], lang: string) => {
       )}|${escapeCharacter(bindingsTmpl(bindings)) || '-'}|`;
 
       if (hasVersion) {
-        // tag 的 ts 类型有问题，所以忽略 ts 规则检查
-        // @ts-ignore-next-line
-        const version = (tags[lang] as any).content as string;
+        const version = (tags?.version as any)?.content as string;
         lineContent += `${version || ''}|`;
       }
 

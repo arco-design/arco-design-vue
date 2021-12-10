@@ -39,10 +39,10 @@ description: It is used to feed back the processing results of a series of opera
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|icon|Icon|-|Icon|
-|title|Title|-|Title|
-|subtitle|Subtitle|-|Subtitle|
-|extra|Extra|-|Extra|
-|default|Default|-|Default|
+|icon|Icon|-||
+|title|Title|-||
+|subtitle|Subtitle|-||
+|extra|Extra|-|2.8.0|
+|default|Default|-|2.8.0|
 
 

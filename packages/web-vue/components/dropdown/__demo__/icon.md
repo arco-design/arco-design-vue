@@ -25,19 +25,19 @@ Add an icon in front of the option via the `icon` slot.
         <template #icon>
           <icon-location />
         </template>
-        Option 1
+        <template #default>Option 1</template>
       </a-doption>
       <a-doption>
         <template #icon>
           <icon-location />
         </template>
-        Option 2
+        <template #default>Option 2</template>
       </a-doption>
       <a-doption>
         <template #icon>
           <icon-location />
         </template>
-        Option 3
+        <template #default>Option 3</template>
       </a-doption>
     </template>
   </a-dropdown>

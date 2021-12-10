@@ -104,8 +104,8 @@ description: When users need to select one or more from a group of similar data,
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|suffix|Suffix|-|Suffix|
-|icon|Icon|-|Icon|
+|suffix|Suffix|-|2.10.0|
+|icon|Icon|-|2.10.0|
 
 
 
@@ -119,7 +119,7 @@ description: When users need to select one or more from a group of similar data,
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|label|Title of option group|-|Title of option group|
+|label|Title of option group|-|2.10.0|
 
 
 
