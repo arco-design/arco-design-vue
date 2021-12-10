@@ -89,8 +89,8 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 是否为多选状态
-     * @en Whether it is a multi-selection state
+     * @zh 是否为多选状态（多选模式默认开启搜索）
+     * @en Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)
      */
     multiple: {
       type: Boolean,
@@ -155,7 +155,7 @@ export default defineComponent({
      */
     allowSearch: {
       type: Boolean,
-      default: false,
+      default: (props: Data) => Boolean(props.multiple),
     },
     /**
      * @zh 是否允许清除
