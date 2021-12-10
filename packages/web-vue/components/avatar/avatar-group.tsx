@@ -100,7 +100,7 @@ export default defineComponent({
                     key: '_arco_avatar_group_popup',
                     class: `${prefixCls}-max-count-avatar`,
                     style: props.maxStyle,
-                    size: props.size
+                    size: props.size,
                   },
                   () => <div>+{avatarsInPopover.length}</div>
                 ),
