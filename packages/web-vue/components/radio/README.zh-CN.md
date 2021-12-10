@@ -23,7 +23,7 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 |---|---|---|:---:|
 |model-value **(v-model)**|绑定值|`string \| number \| boolean`|`-`|
 |default-checked|默认是否选中（非受控状态）|`boolean`|`false`|
-|value|选项的 `value`|`string \| number \| boolean`|`-`|
+|value|选项的 `value`|`string \| number \| boolean`|`true`|
 |type|单选的类型|`'radio' \| 'button'`|`'radio'`|
 |disabled|是否禁用|`boolean`|`false`|
 ### `<radio>` Events

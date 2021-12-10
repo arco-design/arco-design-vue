@@ -66,6 +66,7 @@ export default defineComponent({
      */
     value: {
       type: [String, Number, Boolean] as PropType<string | number | boolean>,
+      default: true,
     },
     /**
      * @zh 单选的类型
