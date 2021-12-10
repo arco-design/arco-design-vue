@@ -31,10 +31,10 @@ description: When there are too many commands on the page, the alternative comma
 
 @import ./__demo__/icon.md
 
-%%API(dropdown.vue)%%
+%%API(dropdown.tsx)%%
 
-%%API(dropdown-option.vue)%%
+%%API(dropdown-option.ts)%%
 
-%%API(dropdown-group.vue)%%
+%%API(dropdown-group.ts)%%
 
-%%API(dropdown-submenu.vue)%%
+%%API(dropdown-submenu.ts)%%
