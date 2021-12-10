@@ -6,7 +6,7 @@ exports[`<tabs> demo: render [basic] correctly 1`] = `
   <div class=\\"arco-tabs-nav arco-tabs-nav-horizontal arco-tabs-nav-top arco-tabs-nav-size-medium arco-tabs-nav-type-line\\">
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
-      <div class=\\"arco-tabs-nav-tab-list arco-tabs-nav-tab-list-no-padding\\" style=\\"transform: translateX(0px);\\">
+      <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
         <div class=\\"arco-tabs-tab\\"><span class=\\"arco-tabs-tab-title\\">Tab 1</span>
           <!--v-if-->
         </div>
@@ -88,7 +88,7 @@ exports[`<tabs> demo: render [extra] correctly 1`] = `
   <div class=\\"arco-tabs-nav arco-tabs-nav-horizontal arco-tabs-nav-top arco-tabs-nav-size-medium arco-tabs-nav-type-line\\">
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
-      <div class=\\"arco-tabs-nav-tab-list arco-tabs-nav-tab-list-no-padding\\" style=\\"transform: translateX(0px);\\">
+      <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
         <div class=\\"arco-tabs-tab arco-tabs-tab-active\\"><span class=\\"arco-tabs-tab-title\\">Tab 1</span>
           <!--v-if-->
         </div>
@@ -131,7 +131,7 @@ exports[`<tabs> demo: render [icon] correctly 1`] = `
   <div class=\\"arco-tabs-nav arco-tabs-nav-horizontal arco-tabs-nav-top arco-tabs-nav-size-medium arco-tabs-nav-type-line\\">
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
-      <div class=\\"arco-tabs-nav-tab-list arco-tabs-nav-tab-list-no-padding\\" style=\\"transform: translateX(0px);\\">
+      <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
         <div class=\\"arco-tabs-tab arco-tabs-tab-active\\"><span class=\\"arco-tabs-tab-title\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg> Tab 1 </span>
           <!--v-if-->
         </div>
@@ -176,7 +176,7 @@ exports[`<tabs> demo: render [position] correctly 1`] = `
       <div class=\\"arco-tabs-nav arco-tabs-nav-horizontal arco-tabs-nav-top arco-tabs-nav-size-medium arco-tabs-nav-type-line\\">
         <!---->
         <div class=\\"arco-tabs-nav-tab\\">
-          <div class=\\"arco-tabs-nav-tab-list arco-tabs-nav-tab-list-no-padding\\" style=\\"transform: translateX(0px);\\">
+          <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
             <div class=\\"arco-tabs-tab arco-tabs-tab-active\\"><span class=\\"arco-tabs-tab-title\\">Tab 1</span>
               <!--v-if-->
             </div>
@@ -223,7 +223,7 @@ exports[`<tabs> demo: render [type] correctly 1`] = `
       <div class=\\"arco-tabs-nav arco-tabs-nav-horizontal arco-tabs-nav-top arco-tabs-nav-size-medium arco-tabs-nav-type-line\\">
         <!---->
         <div class=\\"arco-tabs-nav-tab\\">
-          <div class=\\"arco-tabs-nav-tab-list arco-tabs-nav-tab-list-no-padding\\" style=\\"transform: translateX(0px);\\">
+          <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
             <div class=\\"arco-tabs-tab arco-tabs-tab-active\\"><span class=\\"arco-tabs-tab-title\\">Tab 1</span>
               <!--v-if-->
             </div>
