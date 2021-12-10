@@ -43,7 +43,7 @@ exports[`Modal should render simple modal 1`] = `
           <div class=\\"arco-modal-title\\">
             <!--v-if-->Title
           </div>
-          <div class=\\"arco-modal-close-btn\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+          <!--v-if-->
         </div>
         <div class=\\"arco-modal-body\\">
           <div>Modal Body</div>

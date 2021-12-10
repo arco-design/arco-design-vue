@@ -54,7 +54,7 @@
                 <slot name="title">{{ title }}</slot>
               </div>
               <div
-                v-if="closable"
+                v-if="!simple && closable"
                 :class="`${prefixCls}-close-btn`"
                 @click="handleCancel"
               >
