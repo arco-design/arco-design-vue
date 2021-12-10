@@ -67,6 +67,10 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
+    headerPadding: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: ['click', 'add', 'delete'],
   setup(props, { emit, slots }) {
@@ -254,6 +258,7 @@ export default defineComponent({
                 `${prefixCls}-tab-list`,
                 {
                   [`${prefixCls}-tab-list-no-padding`]:
+                    !props.headerPadding &&
                     props.direction === 'horizontal' &&
                     ['line', 'text'].includes(props.type),
                 },
