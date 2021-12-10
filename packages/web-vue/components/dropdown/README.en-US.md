@@ -42,8 +42,8 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|footer|Footer|-|Footer|
-|content|Content|-|Content|
+|footer|Footer|-|2.10.0|
+|content|Content|-||
 
 
 
@@ -67,7 +67,7 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|title|Group title|-|Group title|
+|title|Group title|-|2.10.0|
 
 
 
@@ -84,6 +84,6 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|footer|Footer|-|Footer|
+|footer|Footer|-|2.10.0|
 
 
