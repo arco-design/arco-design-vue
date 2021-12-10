@@ -309,19 +309,20 @@ export default defineComponent({
 
     const cls = computed(() => [prefixCls, `${prefixCls}-size-${props.size}`]);
 
-    const wrapperAttrs = omit(attrs, INPUT_EVENTS);
-    const inputAttrs = pick(attrs, INPUT_EVENTS);
+    const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
+    const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
 
     const renderInput = () => (
       <span
+        {...wrapperAttrs.value}
         class={wrapperCls.value}
         onMousedown={handleMousedown}
-        {...wrapperAttrs}
       >
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
         <input
+          {...inputAttrs.value}
           ref={inputRef}
           class={cls.value}
           value={computedValue.value}
@@ -336,7 +337,6 @@ export default defineComponent({
           onCompositionstart={handleComposition}
           onCompositionupdate={handleComposition}
           onCompositionend={handleComposition}
-          {...inputAttrs}
         />
         {showClearBtn.value && (
           <IconHover

@@ -297,8 +297,8 @@ export default defineComponent({
       value = value.trim().replace(/。/g, '.');
       value = props.parser?.(value) ?? value;
 
-      if (isNumber(Number(value)) || /^\.|-$/.test(value)) {
-        if (/^\.|-$/.test(value)) {
+      if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
+        if (/^(\.|-)$/.test(value)) {
           numberPrefix.value = value;
         } else if (numberPrefix.value) {
           numberPrefix.value = '';
@@ -319,8 +319,9 @@ export default defineComponent({
         );
         const finalValue = getLegalValue(numberValue);
         if (finalValue !== numberValue) {
-          _value.value =
-            props.formatter?.(String(finalValue)) ?? String(finalValue);
+          _value.value = isUndefined(finalValue)
+            ? ''
+            : props.formatter?.(String(finalValue)) ?? String(finalValue);
           updateValue(finalValue, ev);
         }
       }
