@@ -5,3 +5,36 @@
 .@{input-tag-prefix-cls} {
   .input-tag-style(@input-tag-prefix-cls);
 }
+
+.input-tag-zoom-enter-from {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.input-tag-zoom-enter-to {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.input-tag-zoom-enter-active {
+  transition: all @transition-duration-3 @transition-timing-function-standard;
+}
+
+.input-tag-zoom-leave-from {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.input-tag-zoom-leave-to {
+  transform: scale(0.5, 0.5);
+  opacity: 0;
+}
+
+.input-tag-zoom-leave-active {
+  position: absolute;
+  transition: all @transition-duration-3 @transition-timing-function-overshoot;
+}
+
+.input-tag-zoom-move {
+  transition: all @transition-duration-3 @transition-timing-function-overshoot;
+}

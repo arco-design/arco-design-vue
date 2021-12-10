@@ -6,25 +6,21 @@
 .input-tag-style(@cls) {
   .input-wrapper-style(@cls);
 
-  &-has-tag {
+  &.@{cls}-has-tag {
     padding-right: @input-tag-padding-horizontal;
     padding-left: @input-tag-padding-horizontal;
   }
 
-  &-has-prefix {
+  &.@{cls}-has-prefix {
     padding-left: @input-padding-horizontal;
   }
 
-  &-has-suffix {
+  &.@{cls}-has-suffix {
     padding-right: @input-padding-horizontal;
   }
 
-  &-inner {
-    position: relative;
-    display: flex;
+  .@{cls}-inner {
     flex: 1;
-    flex-wrap: wrap;
-    align-items: center;
     overflow: hidden;
 
     .@{cls}-tag {
@@ -33,6 +29,8 @@
       margin-right: @input-tag-tag-margin-right;
       color: @input-tag-color-text_default;
       font-size: @input-tag-tag-font-size;
+      white-space: pre-wrap;
+      word-break: break-word;
       background-color: @input-tag-tag-color-bg;
       border-color: @input-tag-tag-color-border;
 
@@ -40,13 +38,15 @@
         background-color: @input-tag-tag-remove-icon-color-bg;
       }
     }
+
+    .@{cls}-input {
+      .input-style();
+
+      box-sizing: border-box;
+    }
   }
 
-  &-input {
-    .input-style();
-  }
-
-  &-mirror {
+  .@{cls}-mirror {
     position: absolute;
     top: 0;
     left: 0;
@@ -59,10 +59,10 @@
     .@{cls}-tag {
       background-color: @input-tag-tag-color-bg_focus;
       border-color: @input-tag-tag-color-border_focus;
-    }
 
-    .@{prefix}-icon-hover:hover::before {
-      background-color: @input-tag-tag-remove-icon-color-bg_focus;
+      .@{prefix}-icon-hover:hover::before {
+        background-color: @input-tag-tag-remove-icon-color-bg_focus;
+      }
     }
   }
 
@@ -74,12 +74,13 @@
     }
   }
 
-  &-readonly {
+  &.@{cls}-readonly,
+  &.@{cls}-disabled-input {
     cursor: default;
   }
 
   .size(@size) {
-    &-size-@{size} {
+    &.@{cls}-size-@{size} {
       @font-size: ~'input-tag-size-@{size}-font-size';
       @height: ~'input-tag-size-@{size}-height';
       @tag-height: ~'input-tag-size-@{size}-tag-height';
@@ -95,10 +96,19 @@
 
       .@{cls}-tag,
       .@{cls}-input {
-        height: @@tag-height;
         margin-top: (@input-tag-tag-margin-vertical / 2);
         margin-bottom: $margin-top;
-        line-height: $height - 2;
+        line-height: @@tag-height - 2;
+        vertical-align: text-top;
+      }
+
+      .@{cls}-tag {
+        height: auto;
+        min-height: @@tag-height;
+      }
+
+      .@{cls}-input {
+        height: @@tag-height;
       }
     }
   }
