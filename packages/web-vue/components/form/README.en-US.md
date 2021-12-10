@@ -58,23 +58,28 @@ description: A form with data collection, verification and submission functions,
 
 ### `<form-item>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|field|The path of the form element in the data object (required for the data item)|`string`|`''`|
-|label|Label text|`string`|`-`|
-|show-colon|Whether to show a colon|`boolean`|`false`|
-|no-style|Whether to remove the style|`boolean`|`false`|
-|disabled|Whether to disable|`boolean`|`-`|
-|help|Help copywriting|`string`|`-`|
-|extra|Additional display copy|`string`|`-`|
-|required|Is it required|`boolean`|`false`|
-|rules|Form item validation rules (The priority is higher than the rules of form)|`FieldRule \| FieldRule[]`|`-`|
-|validate-status|Validate status|`'success' \| 'warning' \| 'error' \| 'validating'`|`-`|
-|validate-trigger|The event that triggers the verification|`'change' \| 'input' \| 'focus' \| 'blur'`|`'change'`|
-|label-col-props|Label element layout options. The parameters are the same as the `<col>` component|`object`|`-`|
-|wrapper-col-props|Form control layout options. The parameters are the same as the `<col>` component|`object`|`-`|
-|hide-label|Whether to hide the label|`boolean`|`false`|
-|hide-asterisk|Whether to hide the asterisk|`boolean`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|field|The path of the form element in the data object (required for the data item)|`string`|`''`||
+|label|Label text|`string`|`-`||
+|show-colon|Whether to show a colon|`boolean`|`false`||
+|no-style|Whether to remove the style|`boolean`|`false`||
+|disabled|Whether to disable|`boolean`|`-`||
+|help|Help copywriting|`string`|`-`||
+|extra|Additional display copy|`string`|`-`||
+|required|Is it required|`boolean`|`false`||
+|rules|Form item validation rules (The priority is higher than the rules of form)|`FieldRule \| FieldRule[]`|`-`||
+|validate-status|Validate status|`'success' \| 'warning' \| 'error' \| 'validating'`|`-`||
+|validate-trigger|The event that triggers the verification|`'change' \| 'input' \| 'focus' \| 'blur'`|`'change'`||
+|label-col-props|Label element layout options. The parameters are the same as the `<col>` component|`object`|`-`||
+|wrapper-col-props|Form control layout options. The parameters are the same as the `<col>` component|`object`|`-`||
+|hide-label|Whether to hide the label|`boolean`|`false`||
+|hide-asterisk|Whether to hide the asterisk|`boolean`|`false`||
+|label-col-style|The style of the label element layout component|`object`|`-`|2.10.0|
+|wrapper-col-style|The style of the form control layout component|`object`|`-`|2.10.0|
+|row-props|Form item layout options. The parameters are the same as the `<row>` component|`object`|`-`|2.10.0|
+|row-class|The class of the form item layout component|`string\|array\|object`|`-`|2.10.0|
+|content-class|The class of the form control wrapping layer|`string\|array\|object`|`-`|2.10.0|
 
 
 

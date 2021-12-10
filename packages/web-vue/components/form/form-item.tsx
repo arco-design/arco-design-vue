@@ -147,8 +147,36 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 标签元素布局组件的 style
+     * @en The style of the label element layout component
+     * @version 2.10.0
+     */
     labelColStyle: Object,
+    /**
+     * @zh 表单控件布局组件的 style
+     * @en The style of the form control layout component
+     * @version 2.10.0
+     */
     wrapperColStyle: Object,
+    /**
+     * @zh 表单项布局选项。参数同 `<row>` 组件一致
+     * @en Form item layout options. The parameters are the same as the `<row>` component
+     * @version 2.10.0
+     */
+    rowProps: Object,
+    /**
+     * @zh 表单项布局组件的 class
+     * @en The class of the form item layout component
+     * @version 2.10.0
+     */
+    rowClass: [String, Array, Object],
+    /**
+     * @zh 表单控件包裹层的 class
+     * @en The class of the form control wrapping layer
+     * @version 2.10.0
+     */
+    contentClass: [String, Array, Object],
   },
   setup(props, { slots, attrs }) {
     const prefixCls = getPrefixCls('form-item');
@@ -396,6 +424,7 @@ export default defineComponent({
         [`${prefixCls}-has-help`]: Boolean(props.help),
         // [`${prefixCls}-has-feedback`]: itemStatus && props.hasFeedback,
       },
+      props.rowClass,
     ]);
 
     const labelColCls = computed(() => [
@@ -435,7 +464,11 @@ export default defineComponent({
       }
 
       return (
-        <ArcoRow class={cls.value} div={formCtx?.layout !== 'horizontal'}>
+        <ArcoRow
+          {...props.rowProps}
+          class={cls.value}
+          div={formCtx?.layout !== 'horizontal'}
+        >
           {!props.hideLabel && (
             <ArcoCol
               class={labelColCls.value}
@@ -455,7 +488,9 @@ export default defineComponent({
             style={mergedWrapperStyle.value}
             {...mergedWrapperCol.value}
           >
-            <div class={`${prefixCls}-content`}>{children.value}</div>
+            <div class={[`${prefixCls}-content`, props.contentClass]}>
+              {children.value}
+            </div>
             {showMessage.value && (
               <FormItemMessage
                 error={finalMessage.value}
