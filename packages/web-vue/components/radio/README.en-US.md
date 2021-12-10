@@ -25,7 +25,7 @@ description: In a set of related and mutually exclusive data, the user can only 
 |---|---|---|:---:|
 |model-value **(v-model)**|Value|`string \| number \| boolean`|`-`|
 |default-checked|Whether checked by default (uncontrolled state)|`boolean`|`false`|
-|value|The `value` of the option|`string \| number \| boolean`|`-`|
+|value|The `value` of the option|`string \| number \| boolean`|`true`|
 |type|Radio type|`'radio' \| 'button'`|`'radio'`|
 |disabled|Whether to disable|`boolean`|`false`|
 ### `<radio>` Events

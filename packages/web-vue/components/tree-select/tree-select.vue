@@ -5,11 +5,13 @@
     trigger="click"
     position="bl"
     :popup-offset="4"
+    animation-name="slide-dynamic-origin"
     :prevent-focus="true"
     v-bind="triggerProps"
     :disabled="disabled"
     :popup-visible="panelVisible"
     :popup-container="popupContainer"
+    auto-fit-transform-origin
     @popupVisibleChange="onVisibleChange"
   >
     <slot name="trigger">
@@ -23,6 +25,7 @@
         :size="size"
         :max-tags="maxTags"
         :disabled="disabled"
+        :opened="panelVisible"
         :error="error"
         :border="border"
         :placeholder="placeholder"

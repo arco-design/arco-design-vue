@@ -1,16 +1,15 @@
 import {
   computed,
-  createVNode,
   defineComponent,
   PropType,
   ref,
   toRefs,
-  h,
+  ComponentPublicInstance,
 } from 'vue';
 import ArcoTextarea from '../textarea';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
-import { Dropdown, DropDownOption } from '../_components/dropdown';
+import { DropdownPanel, DropDownOption } from '../_components/dropdown';
 import { useOptions } from '../_hooks/use-options';
 import { MeasureInfo } from './interface';
 import {
@@ -18,7 +17,7 @@ import {
   getTextBeforeSelection,
   isValidSearch,
 } from './utils';
-import { Option, OptionNode } from '../_components/dropdown/interface';
+import { Option, OptionNode } from '../select/interface';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 import { EmitType } from '../_utils/types';
 
@@ -104,7 +103,7 @@ export default defineComponent({
   setup(props, { emit, attrs }) {
     const { data } = toRefs(props);
     const dropdownRef = ref();
-    const optionRefs = ref({});
+    const optionRefs = ref<Record<string, HTMLElement>>({});
     const _value = ref(props.defaultValue);
     const computeValue = computed(() => props.modelValue ?? _value.value);
     const measureInfo = ref<MeasureInfo>({
@@ -123,7 +122,7 @@ export default defineComponent({
       };
     };
 
-    const textareaRef = ref();
+    const inputRef = ref<HTMLElement>();
 
     const measureText = computed(() => measureInfo.value.text);
     const filterOption = ref(true);
@@ -156,7 +155,7 @@ export default defineComponent({
       () =>
         _popupVisible.value &&
         measureInfo.value.measuring &&
-        optionNodes.value.length > 0
+        nodes.value.length > 0
     );
 
     const handlePopupVisibleChange = (popupVisible: boolean) => {
@@ -164,7 +163,7 @@ export default defineComponent({
     };
 
     const {
-      optionNodes,
+      nodes,
       activeOption,
       getNextActiveOption,
       scrollIntoView,
@@ -222,7 +221,7 @@ export default defineComponent({
           (e: Event) => {
             if (computedPopupVisible.value) {
               if (activeOption.value) {
-                handleSelect(activeOption.value.value, e);
+                handleSelect(activeOption.value.value as string, e);
               }
               e.preventDefault();
             }
@@ -266,59 +265,61 @@ export default defineComponent({
 
     const renderOption = (item: OptionNode) => {
       const { value = '' } = item;
-      return createVNode(
-        DropDownOption,
-        {
-          ref: (ref) => {
+      return (
+        <DropDownOption
+          ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }
-          },
-          key: item.key,
-          value: item.value,
-          disabled: item.disabled,
-          isActive: activeOption.value && value === activeOption.value.value,
-          onClick: handleSelect,
-          onMouseenter: handleMouseEnter,
-          onMouseleave: handleMouseLeave,
-        },
-        {
-          default: () => item.label,
-        }
+          }}
+          key={item.key}
+          value={value}
+          disabled={item.disabled}
+          isActive={activeOption.value && value === activeOption.value.value}
+          onClick={handleSelect}
+          onMouseenter={handleMouseEnter}
+          onMouseleave={handleMouseLeave}
+        >
+          {item.label}
+        </DropDownOption>
       );
     };
 
     const renderDropdown = () => {
-      if (!measureInfo.value.measuring || optionNodes.value.length === 0) {
+      if (!measureInfo.value.measuring || nodes.value.length === 0) {
         return null;
       }
 
-      const _children = optionNodes.value.map((node) => renderOption(node));
+      const _children = nodes.value.map((node) => renderOption(node));
 
-      return <Dropdown ref={dropdownRef}>{_children}</Dropdown>;
+      return <DropdownPanel ref={dropdownRef}>{_children}</DropdownPanel>;
     };
 
-    const render = () => (
-      <Trigger
-        v-slots={{ content: renderDropdown }}
-        trigger="focus"
-        position="bl"
-        popupOffset={4}
-        preventFocus={true}
-        popupVisible={computedPopupVisible.value}
-        clickToClose={false}
-        autoFitPopupWidth
-        onPopupVisibleChange={handlePopupVisibleChange}
-      >
-        {h(props.type === 'textarea' ? ArcoTextarea : ArcoInput, {
-          ref: textareaRef,
-          modelValue: computeValue.value,
-          onInput: handleInput,
-          onKeydown: handleKeyDown,
-          ...attrs,
-        })}
-      </Trigger>
-    );
+    const render = () => {
+      const ComponentName =
+        props.type === 'textarea' ? ArcoTextarea : ArcoInput;
+      return (
+        <Trigger
+          v-slots={{ content: renderDropdown }}
+          trigger="focus"
+          position="bl"
+          popupOffset={4}
+          preventFocus={true}
+          popupVisible={computedPopupVisible.value}
+          clickToClose={false}
+          autoFitPopupWidth
+          onPopupVisibleChange={handlePopupVisibleChange}
+        >
+          <ComponentName
+            {...attrs}
+            ref={inputRef}
+            modelValue={computeValue.value}
+            onInput={handleInput}
+            onKeydown={handleKeyDown}
+          />
+        </Trigger>
+      );
+    };
 
     return render;
   },

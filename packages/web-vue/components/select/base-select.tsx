@@ -26,8 +26,8 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     /**
-     * @zh 是否开启多选模式
-     * @en Whether to open multi-select mode
+     * @zh 是否开启多选模式（多选模式默认开启搜索）
+     * @en Whether to open multi-select mode (The search is turned on by default in the multi-select mode)
      */
     multiple: {
       type: Boolean,
@@ -123,7 +123,7 @@ export default defineComponent({
       type: [Boolean, Object] as PropType<
         boolean | { retainInputValue?: boolean }
       >,
-      default: false,
+      default: (props: Data) => Boolean(props.multiple),
     },
     /**
      * @zh 是否允许创建
