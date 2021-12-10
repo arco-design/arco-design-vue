@@ -20,8 +20,6 @@ changelog: true
 - **dropdown:** Add footer slot ([#350](https://github.com/arco-design/arco-design-vue/pull/350))
 - **cascader:** Add checkStrictly prop ([#349](https://github.com/arco-design/arco-design-vue/pull/349))
 - **select:** Add fallback-option and show-extra-options attributes ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
-- **select:** Fix the problem of warnings when components are used in JSX, and variables cannot be used in slots ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
-- **select:** Fix the problem that the drop-down menu cannot pop up when the icon is clicked for the first time in the multi-select input box ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
 - **grid:** add `flex` property to `a-col` ([#340](https://github.com/arco-design/arco-design-vue/pull/340))
 
 ### 🐛 BugFix
@@ -31,6 +29,8 @@ changelog: true
 - **tabs:** Fix the problem of tab closable failure in editable mode ([#356](https://github.com/arco-design/arco-design-vue/pull/356))
 - **menu:** fix the problem that the width of the menu cannot fill the parent element ([#346](https://github.com/arco-design/arco-design-vue/pull/346))
 - **carousel:** The out subitem is not hidden ([#343](https://github.com/arco-design/arco-design-vue/pull/343))
+- **select:** Fix the problem of warnings when components are used in JSX, and variables cannot be used in slots ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
+- **select:** Fix the problem that the drop-down menu cannot pop up when the icon is clicked for the first time in the multi-select input box ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
 
 ### 💅 Style
 

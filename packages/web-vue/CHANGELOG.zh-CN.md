@@ -20,8 +20,6 @@ changelog: true
 - **dropdown:** 增加 footer 插槽 ([#350](https://github.com/arco-design/arco-design-vue/pull/350))
 - **cascader:** 增加 checkStrictly 属性 ([#349](https://github.com/arco-design/arco-design-vue/pull/349))
 - **select:** 增加 fallback-option 和 show-extra-options 属性 ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
-- **select:** 修复组件在 JSX 使用中出现警告、插槽不能使用变量的问题 ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
-- **select:** 修复多选输入框首次点击图标不能弹出下拉菜单的问题 ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
 - **grid:** 组件 `a-col` 新增属性 `flex` ([#340](https://github.com/arco-design/arco-design-vue/pull/340))
 
 ### 🐛 问题修复
@@ -31,6 +29,8 @@ changelog: true
 - **tabs:** 修复可编辑模式下选项卡 closable 失效的问题 ([#356](https://github.com/arco-design/arco-design-vue/pull/356))
 - **menu:** 修复菜单宽度没有撑满父元素的问题 ([#346](https://github.com/arco-design/arco-design-vue/pull/346))
 - **carousel:** out子项内未隐藏 ([#343](https://github.com/arco-design/arco-design-vue/pull/343))
+- **select:** 修复组件在 JSX 使用中出现警告、插槽不能使用变量的问题 ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
+- **select:** 修复多选输入框首次点击图标不能弹出下拉菜单的问题 ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
 
 ### 💅 样式更新
 
