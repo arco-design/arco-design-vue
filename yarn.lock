@@ -233,9 +233,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@arco-design/arco-site-navbar@npm:^1.10.12":
-  version: 1.10.12
-  resolution: "@arco-design/arco-site-navbar@npm:1.10.12"
+"@arco-design/arco-site-navbar@npm:^1.10.15":
+  version: 1.10.15
+  resolution: "@arco-design/arco-site-navbar@npm:1.10.15"
   dependencies:
     "@antv/g2": ^4.1.12
     "@arco-design/arco-site-utils": ^1.0.1
@@ -248,7 +248,7 @@ __metadata:
     "@arco-design/web-react": ">=2.0.0"
     react: ">=16"
     react-dom: ">=16"
-  checksum: d7f126b0d7c5aacc9d606eb07bb67717d118a6218da0084b89c58ecd0553a55e8d044d574f4647b7a8d408cec18ff6d5312705c0aedf924f13cae8a366adfa5c
+  checksum: 803517dd18cbd6654d778cd988be3979778bb63803399195d351d689c640765e818751ec2ae2567f14533ca714f316023f9dc672ad69352bbda9a02de89c0319
   languageName: node
   linkType: hard
 
@@ -270,7 +270,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@arco-design/arco-vue-docs-navbar@workspace:packages/arco-vue-docs-navbar"
   dependencies:
-    "@arco-design/arco-site-navbar": ^1.10.12
+    "@arco-design/arco-site-navbar": ^1.10.15
     "@arco-design/web-react": ^2.23.4
     "@svgr/core": ^5.5.0
     "@typescript-eslint/eslint-plugin": ^4.18.0
@@ -480,7 +480,7 @@ __metadata:
     "@vue/babel-plugin-jsx": ^1.0.6
     "@vue/test-utils": ^2.0.0-beta.14
     b-tween: ^0.3.3
-    b-validate: ^1.2.3
+    b-validate: ^1.3.1
     compute-scroll-into-view: ^1.0.17
     dayjs: ^1.10.3
     eslint: ^7.21.0
@@ -6834,12 +6834,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"b-validate@npm:^1.2.3, b-validate@npm:^1.2.5":
+"b-validate@npm:^1.2.5":
   version: 1.2.5
   resolution: "b-validate@npm:1.2.5"
   dependencies:
     lodash.isequal: ^4.5.0
   checksum: 2060a2f0a135baf410aaaff53c464b8b9d44f11874f3e6611c1e259e175061ac68b6d6765e8b0998483f575d15eb1c5512ab2ea715d06ea58ebe6b500bf02aa4
+  languageName: node
+  linkType: hard
+
+"b-validate@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "b-validate@npm:1.3.1"
+  dependencies:
+    lodash.isequal: ^4.5.0
+  checksum: 121ebd4af02092d0e850ebed6ce05da6ad212868d3113a58584d1d1a38edca29957b4214c038bcf7eb715474f3bddf9bf9492dbcbd0e858ce396fac0e31c5e8f
   languageName: node
   linkType: hard
 

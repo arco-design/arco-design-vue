@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 🆕 Feature
+
+- Add span-method prop ([#360](https://github.com/arco-design/arco-design-vue/pull/360))
+
+
 ## 2.9.0
 
 `2021-12-03`

@@ -95,9 +95,9 @@ export default defineComponent({
     status: {
       type: String as PropType<Status>,
       default: 'normal',
-      validator: (value: any) => {
-        return STATUSES.includes(value);
-      },
+      // validator: (value: any) => {
+      //   return STATUSES.includes(value);
+      // },
     },
     /**
      * @zh 按钮的尺寸

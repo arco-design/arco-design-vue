@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 🆕 新增功能
+
+- 增加 span-method 属性 ([#360](https://github.com/arco-design/arco-design-vue/pull/360))
+
+
 ## 2.9.0
 
 `2021-12-03`

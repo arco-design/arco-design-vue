@@ -4,7 +4,7 @@
       <slot name="title" />
     </span>
     <span
-      v-if="showCloseBtn"
+      v-if="editable && tab.closable"
       :class="`${prefixCls}-close-btn`"
       @click.stop="handleDelete"
     >

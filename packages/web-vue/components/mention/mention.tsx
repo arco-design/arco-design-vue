@@ -161,6 +161,7 @@ export default defineComponent({
     const handlePopupVisibleChange = (popupVisible: boolean) => {
       _popupVisible.value = popupVisible;
     };
+    const extraOptions = ref([]);
 
     const {
       nodes,
@@ -171,6 +172,7 @@ export default defineComponent({
       optionInfoMap,
     } = useOptions({
       options: data,
+      extraOptions,
       inputValue: measureText,
       filterOption,
       dropdownRef,

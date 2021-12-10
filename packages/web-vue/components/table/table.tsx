@@ -1088,13 +1088,31 @@ export default defineComponent({
     };
 
     // [row, column]
-    const tableSpan = reactive<Record<string, [number, number]>>({});
+    const tableSpan = computed(() => {
+      const data: Record<string, [number, number]> = {};
+      flattenData.value.forEach((record, rowIndex) => {
+        dataColumns.value.forEach((column, columnIndex) => {
+          const { rowspan = 1, colspan = 1 } =
+            props.spanMethod?.({
+              record,
+              column,
+              rowIndex,
+              columnIndex,
+            }) ?? {};
+          if (rowspan > 1 || colspan > 1) {
+            data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
+          }
+        });
+      });
+
+      return data;
+    });
 
     const removedCells = computed(() => {
       const data: string[] = [];
-      for (const indexKey of Object.keys(tableSpan)) {
+      for (const indexKey of Object.keys(tableSpan.value)) {
         const indexArray = indexKey.split('-').map((item) => Number(item));
-        const span = tableSpan[indexKey];
+        const span = tableSpan.value[indexKey];
         for (let i = 1; i < span[0]; i++) {
           data.push(`${indexArray[0] + i}-${indexArray[1]}`);
           for (let j = 1; j < span[1]; j++) {
@@ -1178,19 +1196,10 @@ export default defineComponent({
                   : undefined;
 
               const cellId = `${rowIndex}-${index}`;
-              const { rowspan = 1, colspan = 1 } =
-                props.spanMethod?.({
-                  record,
-                  column,
-                  rowIndex,
-                  columnIndex: index,
-                }) ?? {};
+              const [rowspan, colspan] = tableSpan.value[
+                `${rowIndex}-${index}`
+              ] ?? [1, 1];
 
-              if (rowspan > 1 || colspan > 1) {
-                tableSpan[cellId] = [rowspan, colspan];
-              } else if (tableSpan[cellId]) {
-                delete tableSpan[cellId];
-              }
               if (removedCells.value.includes(cellId)) {
                 return null;
               }

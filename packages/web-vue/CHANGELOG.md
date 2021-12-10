@@ -2,6 +2,45 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💎 Optimization
+
+- **select:** When the input box is editable, clicking will not close the drop-down menu ([#348](https://github.com/arco-design/arco-design-vue/pull/348))
+- **cascader:** When the input box is editable, clicking will not close the drop-down menu ([#348](https://github.com/arco-design/arco-design-vue/pull/348))
+
+### 🆕 Feature
+
+- **tabs:** Add headerPadding property and enable it by default ([#362](https://github.com/arco-design/arco-design-vue/pull/362))
+- **form:** `form-item` adds layout and class name related attributes ([#361](https://github.com/arco-design/arco-design-vue/pull/361))
+- **table:** Add span-method prop ([#360](https://github.com/arco-design/arco-design-vue/pull/360))
+- **collapse:** key adds support for number ([#358](https://github.com/arco-design/arco-design-vue/pull/358))
+- **dropdown:** Add footer slot ([#350](https://github.com/arco-design/arco-design-vue/pull/350))
+- **cascader:** Add checkStrictly prop ([#349](https://github.com/arco-design/arco-design-vue/pull/349))
+- **select:** Add fallback-option and show-extra-options attributes ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
+- **select:** Fix the problem of warnings when components are used in JSX, and variables cannot be used in slots ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
+- **select:** Fix the problem that the drop-down menu cannot pop up when the icon is clicked for the first time in the multi-select input box ([#347](https://github.com/arco-design/arco-design-vue/pull/347))
+- **grid:** add `flex` property to `a-col` ([#340](https://github.com/arco-design/arco-design-vue/pull/340))
+
+### 🐛 BugFix
+
+- **input-number:** Fix the problem of repeatable input of `-` and `.` ([#359](https://github.com/arco-design/arco-design-vue/pull/359))
+- **statistic:** Fix the problem that it does not take effect when precision is 0 ([#357](https://github.com/arco-design/arco-design-vue/pull/357))
+- **tabs:** Fix the problem of tab closable failure in editable mode ([#356](https://github.com/arco-design/arco-design-vue/pull/356))
+- **menu:** fix the problem that the width of the menu cannot fill the parent element ([#346](https://github.com/arco-design/arco-design-vue/pull/346))
+- **carousel:** The out subitem is not hidden ([#343](https://github.com/arco-design/arco-design-vue/pull/343))
+
+### 💅 Style
+
+- **textarea:** Fix the style problem of prohibited mode ([#355](https://github.com/arco-design/arco-design-vue/pull/355))
+- **message:** Use flex layout to display message ([#354](https://github.com/arco-design/arco-design-vue/pull/354))
+- **modal:** Fix the problem of modal information display mode error ([#351](https://github.com/arco-design/arco-design-vue/pull/351))
+- **modal:** The title bar close button is not displayed in simple mode ([#351](https://github.com/arco-design/arco-design-vue/pull/351))
+- **input-tag:** Optimize label animation and close button style ([#345](https://github.com/arco-design/arco-design-vue/pull/345))
+
+
 ## 2.9.0
 
 `2021-12-03`

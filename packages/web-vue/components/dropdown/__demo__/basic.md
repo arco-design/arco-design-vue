@@ -18,7 +18,7 @@ Basic usage of the drop-down menu.
 
 ```vue
 <template>
-  <a-dropdown>
+  <a-dropdown @select="handle">
     <a-button>Click Me</a-button>
     <template #content>
       <a-doption>Option 1</a-doption>
@@ -27,4 +27,14 @@ Basic usage of the drop-down menu.
     </template>
   </a-dropdown>
 </template>
+
+<script>
+export default {
+  methods:{
+    handle(v) {
+      console.log(v)
+    }
+  }
+}
+</script>
 ```

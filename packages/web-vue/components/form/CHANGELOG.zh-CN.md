@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 🆕 新增功能
+
+- `form-item` 增加布局和类名相关属性 ([#361](https://github.com/arco-design/arco-design-vue/pull/361))
+
+
 ## 2.8.0
 
 `2021-12-01`

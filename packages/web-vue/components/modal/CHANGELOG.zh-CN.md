@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💅 样式更新
+
+- 修复 modal 信息展示模式错误的问题 ([#351](https://github.com/arco-design/arco-design-vue/pull/351))
+- 简单模式下不展示标题栏关闭按钮 ([#351](https://github.com/arco-design/arco-design-vue/pull/351))
+
+
 ## 2.7.0
 
 `2021-11-26`

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💎 功能优化
+
+- 输入框可编辑时，点击不会关闭下拉菜单 ([#348](https://github.com/arco-design/arco-design-vue/pull/348))
+
+### 🆕 新增功能
+
+- 增加 checkStrictly 属性 ([#349](https://github.com/arco-design/arco-design-vue/pull/349))
+
+
 ## 2.8.0
 
 `2021-12-01`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💅 Style
+
+- Fix the style problem of prohibited mode ([#355](https://github.com/arco-design/arco-design-vue/pull/355))
+
+
 ## 2.8.0
 
 `2021-12-01`

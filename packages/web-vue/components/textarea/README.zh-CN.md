@@ -8,6 +8,8 @@ description: 多行纯文本编辑控件，适用于评论或反馈表单中的�
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/status.md
+
 @import ./__demo__/word-limit.md
 
 @import ./__demo__/auto-size.md

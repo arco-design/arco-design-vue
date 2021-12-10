@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💅 Style
+
+- Optimize label animation and close button style ([#345](https://github.com/arco-design/arco-design-vue/pull/345))
+
+
 ## 2.8.0
 
 `2021-12-01`

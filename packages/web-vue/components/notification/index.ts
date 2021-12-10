@@ -102,8 +102,10 @@ class NotificationManger {
   destroy = () => {
     if (this.notifications.value.length === 0) {
       render(null, this.container);
-      document.body.removeChild(this.container);
-      notificationInstance[this.position] = undefined;
+      try {
+        document.body.removeChild(this.container);
+        notificationInstance[this.position] = undefined;
+      } catch (err) {}
     }
   };
 }

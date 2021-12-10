@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💅 Style
+
+- Fix the problem of modal information display mode error ([#351](https://github.com/arco-design/arco-design-vue/pull/351))
+- The title bar close button is not displayed in simple mode ([#351](https://github.com/arco-design/arco-design-vue/pull/351))
+
+
 ## 2.7.0
 
 `2021-11-26`

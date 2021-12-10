@@ -179,7 +179,7 @@ export default defineComponent({
         title: getValueFromSlotsOrProps('title', vn.props, vn.children),
         key: String(vn.key),
         disabled: getBooleanProp(vn.props?.disabled),
-        closable: getBooleanProp(vn.props?.closable),
+        closable: vn.props?.closable !== false,
       }))
     );
 

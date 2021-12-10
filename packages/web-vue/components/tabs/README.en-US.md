@@ -23,20 +23,21 @@ description: Organize content in the same view. You can view the content of one 
 
 ### `<tabs>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|active-key **(v-model)**|The `key` of the currently selected label|`string`|`-`|
-|default-active-key|The `key` of the tab selected by default (uncontrolled state, select the first tab page when it is empty)|`string`|`''`|
-|position|Position of the tab|`'left' \| 'right' \| 'top' \| 'bottom'`|`'top'`|
-|size|The size of the tab|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|type|The type of tab|`'line' \| 'card' \| 'card-gutter' \| 'text' \| 'rounded' \| 'capsule'`|`'line'`|
-|direction|The direction of tab|`'horizontal' \| 'vertical'`|`'horizontal'`|
-|editable|Whether to enable editable mode|`boolean`|`false`|
-|show-add-button|Whether to display the add button (only available in editable mode)|`boolean`|`false`|
-|destroy-on-hide|Whether to destroy the content when the label is not displayed|`boolean`|`false`|
-|lazy-load|Whether to mount the content when the label is first displayed|`boolean`|`false`|
-|justify|The height of the container is fully supported, and it only takes effect in horizontal mode.|`boolean`|`false`|
-|animation|Whether to enable option content transition animation|`boolean`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|active-key **(v-model)**|The `key` of the currently selected label|`string`|`-`||
+|default-active-key|The `key` of the tab selected by default (uncontrolled state, select the first tab page when it is empty)|`string`|`''`||
+|position|Position of the tab|`'left' \| 'right' \| 'top' \| 'bottom'`|`'top'`||
+|size|The size of the tab|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|type|The type of tab|`'line' \| 'card' \| 'card-gutter' \| 'text' \| 'rounded' \| 'capsule'`|`'line'`||
+|direction|The direction of tab|`'horizontal' \| 'vertical'`|`'horizontal'`||
+|editable|Whether to enable editable mode|`boolean`|`false`||
+|show-add-button|Whether to display the add button (only available in editable mode)|`boolean`|`false`||
+|destroy-on-hide|Whether to destroy the content when the label is not displayed|`boolean`|`false`||
+|lazy-load|Whether to mount the content when the label is first displayed|`boolean`|`false`||
+|justify|The height of the container is fully supported, and it only takes effect in horizontal mode.|`boolean`|`false`||
+|animation|Whether to enable option content transition animation|`boolean`|`false`||
+|header-padding|Whether there is a horizontal margin on the header of the tab. Only valid for tabs with `type` equal to `line` and `text` type|`boolean`|`true`|2.10.0|
 ### `<tabs>` Events
 
 |Event Name|Description|Parameters|

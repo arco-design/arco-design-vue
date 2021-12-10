@@ -140,6 +140,7 @@ export default defineComponent({
       }
       return props.filterOption;
     });
+    const extraOptions = ref([]);
 
     const {
       nodes,
@@ -149,6 +150,7 @@ export default defineComponent({
       scrollIntoView,
     } = useOptions({
       options: data,
+      extraOptions,
       inputValue: computedValue,
       filterOption: mergedFilterOption,
       dropdownRef,

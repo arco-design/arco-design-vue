@@ -1,6 +1,6 @@
 {
   "name": "@arco-design/web-vue",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "description": "Arco Design Vue 2.0: A Vue.js 3 UI Library",
   "keywords": [
     "arco",
@@ -92,7 +92,7 @@
   "dependencies": {
     "@arco-design/color": "^0.4.0",
     "b-tween": "^0.3.3",
-    "b-validate": "^1.2.3",
+    "b-validate": "^1.3.1",
     "compute-scroll-into-view": "^1.0.17",
     "dayjs": "^1.10.3",
     "number-precision": "^1.5.0",

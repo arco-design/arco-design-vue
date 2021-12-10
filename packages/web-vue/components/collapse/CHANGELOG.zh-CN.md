@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 🆕 新增功能
+
+- key增加对number的支持 ([#358](https://github.com/arco-design/arco-design-vue/pull/358))
+
+
 ## 2.0.3
 
 `2021-10-29`
