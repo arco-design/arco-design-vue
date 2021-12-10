@@ -30,11 +30,13 @@ export const getOptionInfos = (
     leafOptionMap,
     leafOptionValueMap,
     totalLevel: innerLevel,
+    checkStrictly,
   }: {
     leafOptionSet: Set<CascaderOptionInfo>;
     leafOptionMap: Map<string | number, CascaderOptionInfo>;
     leafOptionValueMap: Map<string | number, CascaderOptionInfo>;
     totalLevel: Ref<number>;
+    checkStrictly: Ref<boolean>;
   }
 ) => {
   const _options = getOptionsWithTotalLeaves(options);
@@ -67,6 +69,9 @@ export const getOptionInfos = (
         data.children = travelOptions(item.children, data, (level ?? 1) + 1);
       } else {
         data.isLeaf = true;
+      }
+
+      if (data.isLeaf || checkStrictly.value) {
         leafOptionSet.add(data);
         leafOptionMap.set(data.key, data);
         if (!leafOptionValueMap.has(data.value)) {

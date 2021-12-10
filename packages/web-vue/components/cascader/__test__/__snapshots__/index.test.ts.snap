@@ -6,12 +6,14 @@ exports[`Cascader should render panel (multiple) 1`] = `
     <ul class=\\"arco-cascader-list arco-cascader-list-multiple\\">
       <li class=\\"arco-cascader-option\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
         <!--v-if--></span>
+        <!---->
         <div class=\\"arco-cascader-option-label\\">Beijing<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
           </svg></div>
       </li>
       <li class=\\"arco-cascader-option\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
         <!--v-if--></span>
+        <!---->
         <div class=\\"arco-cascader-option-label\\">Shanghai<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
           </svg></div>
@@ -27,12 +29,14 @@ exports[`Cascader should render panel (multiple) 2`] = `
     <ul class=\\"arco-cascader-list arco-cascader-list-multiple\\">
       <li class=\\"arco-cascader-option arco-cascader-option-active\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
         <!--v-if--></span>
+        <!---->
         <div class=\\"arco-cascader-option-label\\">Beijing<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
           </svg></div>
       </li>
       <li class=\\"arco-cascader-option\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
         <!--v-if--></span>
+        <!---->
         <div class=\\"arco-cascader-option-label\\">Shanghai<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
           </svg></div>
@@ -43,12 +47,14 @@ exports[`Cascader should render panel (multiple) 2`] = `
     <ul class=\\"arco-cascader-list arco-cascader-list-multiple\\">
       <li class=\\"arco-cascader-option\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
         <!--v-if--></span>
+        <!---->
         <div class=\\"arco-cascader-option-label\\">ChaoYang
           <!---->
         </div>
       </li>
       <li class=\\"arco-cascader-option\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
         <!--v-if--></span>
+        <!---->
         <div class=\\"arco-cascader-option-label\\">Haidian
           <!---->
         </div>
@@ -64,11 +70,13 @@ exports[`Cascader should render panel 1`] = `
     <ul class=\\"arco-cascader-list\\">
       <li class=\\"arco-cascader-option\\">
         <!---->
+        <!---->
         <div class=\\"arco-cascader-option-label\\">Beijing<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
           </svg></div>
       </li>
       <li class=\\"arco-cascader-option\\">
+        <!---->
         <!---->
         <div class=\\"arco-cascader-option-label\\">Shanghai<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
@@ -85,11 +93,13 @@ exports[`Cascader should render panel 2`] = `
     <ul class=\\"arco-cascader-list\\">
       <li class=\\"arco-cascader-option arco-cascader-option-active\\">
         <!---->
+        <!---->
         <div class=\\"arco-cascader-option-label\\">Beijing<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
           </svg></div>
       </li>
       <li class=\\"arco-cascader-option\\">
+        <!---->
         <!---->
         <div class=\\"arco-cascader-option-label\\">Shanghai<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
@@ -101,11 +111,13 @@ exports[`Cascader should render panel 2`] = `
     <ul class=\\"arco-cascader-list\\">
       <li class=\\"arco-cascader-option\\">
         <!---->
+        <!---->
         <div class=\\"arco-cascader-option-label\\">ChaoYang
           <!---->
         </div>
       </li>
       <li class=\\"arco-cascader-option\\">
+        <!---->
         <!---->
         <div class=\\"arco-cascader-option-label\\">Haidian
           <!---->
@@ -121,17 +133,20 @@ exports[`Cascader should render search panel 1`] = `
   <ul class=\\"arco-cascader-list arco-cascader-search-list\\">
     <li class=\\"arco-cascader-option arco-cascader-search-option\\">
       <!---->
+      <!---->
       <div class=\\"arco-cascader-option-label\\">ChaoYang
         <!---->
       </div>
     </li>
     <li class=\\"arco-cascader-option arco-cascader-search-option\\">
       <!---->
+      <!---->
       <div class=\\"arco-cascader-option-label\\">Haidian
         <!---->
       </div>
     </li>
     <li class=\\"arco-cascader-option arco-cascader-search-option\\">
+      <!---->
       <!---->
       <div class=\\"arco-cascader-option-label\\">Huangpu
         <!---->

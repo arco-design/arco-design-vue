@@ -28,6 +28,7 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+    checkStrictly: Boolean,
   },
   emits: ['clickOption', 'activeChange', 'pathChange'],
   setup(props, { emit }) {
@@ -55,6 +56,7 @@ export default defineComponent({
                 `${prefixCls}-list`,
                 {
                   [`${prefixCls}-list-multiple`]: Boolean(props?.multiple),
+                  [`${prefixCls}-list-strictly`]: Boolean(props?.checkStrictly),
                 },
               ]}
             >
@@ -69,6 +71,7 @@ export default defineComponent({
                       item.key === props.activeNode?.key
                     }
                     multiple={props.multiple}
+                    checkStrictly={props.checkStrictly}
                     expandTrigger={props.expandTrigger}
                     onClickOption={(
                       option: CascaderOptionInfo,

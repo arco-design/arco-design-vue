@@ -16,6 +16,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 @import ./__demo__/multiple.md
 
+@import ./__demo__/check-strictly.md
+
 @import ./__demo__/search.md
 
 @import ./__demo__/path.md
@@ -43,6 +45,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
 |format-label|格式化展示内容|`(options: CascaderOptionInfo[]) => string`|`-`|
 |trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`|
+|check-strictly|是否开启严格选择模式|`boolean`|`false`|
 ### `<cascader>` Events
 
 |事件名|描述|参数|
