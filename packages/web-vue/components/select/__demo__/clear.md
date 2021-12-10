@@ -18,11 +18,21 @@ By setting `allow-clear`, the clear button is displayed.
 
 ```vue
 <template>
-  <a-select :style="{width:'320px'}" default-value="Shanghai" placeholder="Please select ..." allow-clear>
+  <a-select :style="{width:'320px'}" v-model="value" placeholder="Please select ..." allow-clear>
     <a-option>Beijing</a-option>
     <a-option>Shanghai</a-option>
     <a-option>Guangzhou</a-option>
     <a-option disabled>Disabled</a-option>
   </a-select>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      value:'Shanghai'
+    }
+  }
+}
+</script>
 ```

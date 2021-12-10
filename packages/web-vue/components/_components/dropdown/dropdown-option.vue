@@ -1,10 +1,14 @@
 <template>
-  <li
+  <component
+    :is="component"
     :class="cls"
     @click="handleClick"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
+    <span v-if="$slots.icon" :class="`${prefixCls}-icon`">
+      <slot name="icon" />
+    </span>
     <checkbox
       v-if="multiple"
       :class="`${prefixCls}-checkbox`"
@@ -16,48 +20,49 @@
     <template v-else>
       <slot />
     </template>
-  </li>
+    <span v-if="$slots.suffix" :class="`${prefixCls}-suffix`">
+      <slot name="suffix" />
+    </span>
+  </component>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 import Checkbox from '../../checkbox';
-import { TagProps } from '../../tag';
+import { EmitType } from '../../_utils/types';
 
 export default defineComponent({
-  name: 'Option',
+  name: 'DropdownOption',
   components: {
     Checkbox,
   },
   props: {
-    /**
-     * @zh 选项值（如不填，会从内容中获取）
-     * @en Option value (if not filled, it will be obtained from the content)
-     */
     value: [String, Number],
-    /**
-     * @zh 选项标签（如不填，会从内容中获取）
-     * @en Option label (if not filled, it will be obtained from the content)
-     */
     label: String,
-    /**
-     * @zh 是否禁用
-     * @en Whether to disable
-     */
     disabled: Boolean,
-    /**
-     * @zh 展示的标签属性
-     * @en Displayed tag attributes
-     * @version 2.8.0
-     */
-    tagProps: {
-      type: Object as PropType<TagProps>,
-    },
-    // private
+    multiple: Boolean,
     isSelected: Boolean,
     isActive: Boolean,
-    multiple: Boolean,
+    component: {
+      type: String,
+      default: 'li',
+    },
+    onClick: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number, ev: Event) => void>
+      >,
+    },
+    onMouseenter: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number, ev: Event) => void>
+      >,
+    },
+    onMouseleave: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number, ev: Event) => void>
+      >,
+    },
   },
   emits: ['click', 'mouseenter', 'mouseleave'],
   setup(props, { emit }) {
@@ -85,10 +90,8 @@ export default defineComponent({
       prefixCls,
       {
         [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-selected`]: props.isSelected,
         [`${prefixCls}-active`]: props.isActive,
         [`${prefixCls}-multiple`]: props.multiple,
-        // [`${prefixCls}-empty`]: !children,
       },
     ]);
 

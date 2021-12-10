@@ -6,17 +6,17 @@
           <empty />
         </slot>
       </div>
-      <slot v-else-if="virtualList" />
-      <div
-        v-else
-        ref="wrapperRef"
-        :class="`${prefixCls}-list-wrapper`"
-        @scroll="handleScroll"
-      >
-        <ul :class="`${prefixCls}-list`">
-          <slot />
-        </ul>
-      </div>
+      <slot name="virtual-list">
+        <div
+          ref="wrapperRef"
+          :class="`${prefixCls}-list-wrapper`"
+          @scroll="handleScroll"
+        >
+          <ul :class="`${prefixCls}-list`">
+            <slot />
+          </ul>
+        </div>
+      </slot>
       <div v-if="$slots.footer && !isEmpty" :class="`${prefixCls}-footer`">
         <slot name="footer" />
       </div>
@@ -29,9 +29,10 @@ import { computed, defineComponent, PropType, ref } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 import Empty from '../../empty';
 import Spin from '../../spin';
+import { EmitType } from '../../_utils/types';
 
 export default defineComponent({
-  name: 'DropDown',
+  name: 'DropdownPanel',
   components: {
     Empty,
     Spin,
@@ -50,14 +51,10 @@ export default defineComponent({
       default: 0,
     },
     onScroll: {
-      type: Function as PropType<(e: Event) => void>,
+      type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
     },
     onReachBottom: {
-      type: Function as PropType<(e: Event) => void>,
-    },
-    virtualList: {
-      type: Boolean,
-      default: false,
+      type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
     },
   },
   emits: ['scroll', 'reachBottom'],

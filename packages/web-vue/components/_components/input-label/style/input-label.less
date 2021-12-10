@@ -1,0 +1,61 @@
+@import '../../../style/mixins/index.less';
+@import '../../../input/style/token.less';
+@import '../../../input/style/input.less';
+@import './token.less';
+
+.input-label-style(@cls) {
+  .input-wrapper-style(@cls);
+
+  cursor: pointer;
+
+  .hide-input-element() {
+    // A div with width: 0 can also cause line breaks to cause the input box to be stretched, and to separate it from the standard document flow
+    position: absolute;
+    // Need to hide the input while ensuring that it can be focused by the Tab key
+    // So don't use display: none / visibility: hidden
+    width: 0 !important;
+  }
+
+  .@{cls}-input {
+    .input-style();
+
+    &-hidden {
+      .hide-input-element();
+    }
+  }
+
+  .@{cls}-value {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    .text-ellipsis();
+
+    // Fix the style problem that the height of the outer div of the select layer exceeds 4px when the value is an empty string.
+    &::after {
+      font-size: 0;
+      line-height: 0;
+      visibility: hidden;
+      content: '.';
+    }
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  &.@{cls}-search {
+    cursor: text;
+  }
+
+  .size(@size) {
+    &.@{cls}-size-@{size} .@{cls}-input,
+    &.@{cls}-size-@{size} .@{cls}-value {
+      .input-size(@size);
+    }
+  }
+
+  .size(mini);
+  .size(medium);
+  .size(small);
+  .size(large);
+}

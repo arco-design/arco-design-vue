@@ -1,28 +1,29 @@
-import { ComponentPublicInstance, computed, Ref, ref, Slot, watch } from 'vue';
+import { ComponentPublicInstance, Ref, ref, watch } from 'vue';
 import { getRelativeRect } from '../_utils/dom';
 import {
   FilterOption,
   Option,
   OptionInfo,
-} from '../_components/dropdown/interface';
+  OptionNode,
+} from '../select/interface';
 import { getOptionNodes } from '../_components/dropdown/utils';
 
 export const useOptions = ({
-  defaultSlot,
   options,
   extraOptions,
   inputValue,
   filterOption,
+  showExtraOptions,
   dropdownRef,
   optionRefs,
   virtualListRef,
 }: {
-  defaultSlot?: Ref<Slot | undefined>;
   options?: Ref<Option[]>;
-  extraOptions?: Ref<Array<string | number>>;
+  extraOptions?: Ref<Option[]>;
   inputValue?: Ref<string>;
   filterOption?: Ref<FilterOption>;
-  dropdownRef?: Ref<ComponentPublicInstance>;
+  showExtraOptions?: Ref<boolean>;
+  dropdownRef?: Ref<ComponentPublicInstance | undefined>;
   optionRefs?: Ref<Record<string | number, HTMLElement>>;
   virtualListRef?: Ref<any>;
 }) => {
@@ -73,37 +74,38 @@ export const useOptions = ({
     }
   };
 
-  const optionNodes = computed(() => {
-    optionInfoMap.clear();
-    enabledOptionSet.clear();
+  const nodes = ref<OptionNode[]>([]);
 
-    return getOptionNodes({
-      children: defaultSlot?.value?.(),
+  const setOptionNodes = () => {
+    nodes.value = getOptionNodes({
       options: options?.value,
       extraOptions: extraOptions?.value,
       inputValue: inputValue?.value,
       filterOption: filterOption?.value,
+      showExtraOptions: showExtraOptions?.value ?? true,
       optionInfoMap,
       enabledOptionSet,
     });
-  });
 
-  // When the option changes, recalculate the activeOption
+    if (
+      enabledOptionSet.size > 0 &&
+      (!activeOption.value || !enabledOptionSet.has(activeOption.value.value))
+    ) {
+      const enabledOptions = Array.from(enabledOptionSet);
+      activeOption.value = optionInfoMap.get(enabledOptions[0]);
+    }
+  };
+
   watch(
-    optionNodes,
+    [options, extraOptions, inputValue, filterOption],
     () => {
-      if (
-        enabledOptionSet.size > 0 &&
-        (!activeOption.value || !enabledOptionSet.has(activeOption.value.value))
-      ) {
-        activeOption.value = optionInfoMap.get(Array.from(enabledOptionSet)[0]);
-      }
+      setOptionNodes();
     },
     { immediate: true }
   );
 
   return {
-    optionNodes,
+    nodes,
     optionInfoMap,
     enabledOptionSet,
     activeOption,
