@@ -34,6 +34,8 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 @import ./__demo__/adaptation-object.md
 
-%%API(grid-row.tsx)%%
+@import ./__demo__/flex.md
 
-%%API(grid-col.tsx)%%
+%%API(grid-row.vue)%%
+
+%%API(grid-col.vue)%%

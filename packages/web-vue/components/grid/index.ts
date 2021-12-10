@@ -1,8 +1,8 @@
 import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _GridRow from './grid-row';
-import _GridCol from './grid-col';
+import _GridRow from './grid-row.vue';
+import _GridCol from './grid-col.vue';
 
 const Grid = {
   Row: _GridRow,
