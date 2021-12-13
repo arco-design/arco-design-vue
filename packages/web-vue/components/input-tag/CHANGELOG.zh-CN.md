@@ -37,7 +37,7 @@ changelog: true
 
 - 修复中文输入法问题 ([#171](https://github.com/arco-design/arco-design-vue/pull/171))
 - 修复 Enter 键触发 form 提交的问题 ([#171](https://github.com/arco-design/arco-design-vue/pull/171))
-- 修复disabled状态下标签仍可被关闭 ([#161](https://github.com/arco-design/arco-design-vue/pull/161))
+- 修复 disabled 状态下标签仍可被关闭 ([#161](https://github.com/arco-design/arco-design-vue/pull/161))
 
 
 ## 2.1.0

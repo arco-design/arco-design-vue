@@ -8,5 +8,5 @@ changelog: true
 
 ### 🐛 问题修复
 
-- out子项内未隐藏 ([#343](https://github.com/arco-design/arco-design-vue/pull/343))
+- out 子项内未隐藏 ([#343](https://github.com/arco-design/arco-design-vue/pull/343))
 
