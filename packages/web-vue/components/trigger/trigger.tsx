@@ -3,7 +3,6 @@ import type {
   CSSProperties,
   ComponentPublicInstance,
   Ref,
-  VNode,
 } from 'vue';
 import {
   defineComponent,
@@ -14,13 +13,11 @@ import {
   watch,
   inject,
   provide,
-  withDirectives,
   Teleport,
   Transition,
   onUpdated,
   onMounted,
   onBeforeUnmount,
-  vShow,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import type { AnimationDuration, ClassName, EmitType } from '../_utils/types';
@@ -370,9 +367,9 @@ export default defineComponent({
     );
     // 鼠标相关变量
     const arrowRef = ref<HTMLElement>();
-    const mousePosition = ref<CSSProperties>({
-      top: '0px',
-      left: '0px',
+    const mousePosition = ref({
+      top: 0,
+      left: 0,
     });
 
     const computedVisible = computed(
@@ -395,55 +392,59 @@ export default defineComponent({
       if (props.alignPoint) {
         const { pageX, pageY } = e;
         mousePosition.value = {
-          top: `${pageY}px`,
-          left: `${pageX}px`,
+          top: pageY,
+          left: pageX,
         };
       }
     };
 
     const updatePopupStyle = () => {
-      if (props.alignPoint) {
-        // 根据鼠标位置显示popup
-        popupStyle.value = mousePosition.value;
-      } else {
-        // 根据position显示popup
-        if (!triggerEle.value || !popupRef.value || !containerEle.value) {
-          return;
-        }
-        const containerRect = containerEle.value.getBoundingClientRect();
-        const triggerRect = getElementScrollRect(
-          triggerEle.value,
-          containerRect
-        );
-        const popupRect = getElementScrollRect(popupRef.value, containerRect);
-        const { style, position } = getPopupStyle(
-          props.position,
-          containerRect,
-          triggerRect,
-          popupRect,
-          {
-            offset: props.popupOffset,
-            translate: props.popupTranslate,
-            customStyle: props.popupStyle,
-            autoFitPosition: props.autoFitPosition,
-            autoFitTransformOrigin: props.autoFitTransformOrigin,
+      if (!triggerEle.value || !popupRef.value || !containerEle.value) {
+        return;
+      }
+      const containerRect = containerEle.value.getBoundingClientRect();
+      const triggerRect = props.alignPoint
+        ? {
+            top: mousePosition.value.top,
+            bottom: mousePosition.value.top,
+            left: mousePosition.value.left,
+            right: mousePosition.value.left,
+            scrollTop: mousePosition.value.top,
+            scrollBottom: mousePosition.value.top,
+            scrollLeft: mousePosition.value.left,
+            scrollRight: mousePosition.value.left,
+            width: 0,
+            height: 0,
           }
-        );
-        if (props.autoFitPopupMinWidth) {
-          style.minWidth = `${triggerRect.width}px`;
-        } else if (props.autoFitPopupWidth) {
-          style.width = `${triggerRect.width}px`;
+        : getElementScrollRect(triggerEle.value, containerRect);
+      const popupRect = getElementScrollRect(popupRef.value, containerRect);
+      const { style, position } = getPopupStyle(
+        props.position,
+        containerRect,
+        triggerRect,
+        popupRect,
+        {
+          offset: props.popupOffset,
+          translate: props.popupTranslate,
+          customStyle: props.popupStyle,
+          autoFitPosition: props.autoFitPosition,
+          autoFitTransformOrigin: props.autoFitTransformOrigin,
         }
+      );
+      if (props.autoFitPopupMinWidth) {
+        style.minWidth = `${triggerRect.width}px`;
+      } else if (props.autoFitPopupWidth) {
+        style.width = `${triggerRect.width}px`;
+      }
 
-        if (popupPosition.value !== position) {
-          popupPosition.value = position;
-        }
-        popupStyle.value = style;
-        if (props.showArrow) {
-          arrowStyle.value = getArrowStyle(position, triggerRect, {
-            customStyle: props.arrowStyle,
-          });
-        }
+      if (popupPosition.value !== position) {
+        popupPosition.value = position;
+      }
+      popupStyle.value = style;
+      if (props.showArrow) {
+        arrowStyle.value = getArrowStyle(position, triggerRect, {
+          customStyle: props.arrowStyle,
+        });
       }
     };
 
@@ -692,10 +693,10 @@ export default defineComponent({
           >
             <Transition name={props.animationName} duration={props.duration}>
               {(!props.unmountOnClose || computedVisible.value) &&
-                !hidePopup.value &&
-                withDirectives(
-                  (
+                !hidePopup.value && (
+                  <ResizeObserver onResize={handleResize}>
                     <div
+                      v-show={computedVisible.value}
                       ref={popupRef}
                       class={[
                         `${prefixCls}-popup`,
@@ -722,8 +723,7 @@ export default defineComponent({
                         />
                       )}
                     </div>
-                  ) as VNode,
-                  [[vShow, computedVisible.value]]
+                  </ResizeObserver>
                 )}
             </Transition>
           </Teleport>
