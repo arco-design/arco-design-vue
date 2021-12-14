@@ -1,3 +1,4 @@
+@plugin './touppercase.js';
 @import './token.less';
 @import './slide.less';
 
@@ -37,10 +38,11 @@
     > *:not(.@{carousel-prefix-cls}-item-current) {
       display: none;
     }
-    .item-position(@direction, @key) {
+    .item-position(@direction) {
+      @chars: text-uppercase(@direction);
       .@{carousel-prefix-cls}-item-slide-out {
         display: block;
-        transform: ~'translate@{key}(-100%)';
+        transform: ~'translate@{chars}(-100%)';
         animation: ~'@{prefix}-carousel-slide-@{direction}-out';
       }
 
@@ -61,11 +63,11 @@
     }
 
     &.@{carousel-prefix-cls}-horizontal {
-      .item-position(x, X);
+      .item-position(x);
     }
 
     &.@{carousel-prefix-cls}-vertical {
-      .item-position(y, Y);
+      .item-position(y);
     }
   }
 
