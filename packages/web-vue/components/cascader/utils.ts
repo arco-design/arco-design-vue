@@ -14,7 +14,11 @@ const getOptionsWithTotalLeaves = (options: CascaderOption[]) => {
     if (data.children) {
       data.children = getOptionsWithTotalLeaves(data.children);
       data.totalLeafOptions = data.children.reduce((pre, item) => {
-        return pre + (item.totalLeafOptions ?? 1);
+        if (isNumber(item.totalLeafOptions)) {
+          return pre + item.totalLeafOptions;
+        }
+
+        return pre + (item.isLeaf || !item.children ? 1 : 0);
       }, 0);
     }
     _options.push(data);
@@ -107,7 +111,10 @@ export const getCheckedStatus = (
       }
       return pre;
     }, 0);
-    if (checkedLeafOptionNumber === (option.totalLeafOptions ?? 1)) {
+    if (
+      checkedLeafOptionNumber > 0 &&
+      checkedLeafOptionNumber >= (option.totalLeafOptions ?? 1)
+    ) {
       checked = true;
     } else if (checkedLeafOptionNumber > 0) {
       indeterminate = true;
