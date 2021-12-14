@@ -8,5 +8,5 @@ changelog: true
 
 ### 🆕 新增功能
 
-- 支持 `maxStyle` 和 `maxPopoverTriggerProps` 属性。 ([#242](https://github.com/arco-design/arco-design-vue/pull/242))
+- 支持 `maxStyle` 和 `maxPopoverTriggerProps` 属性 ([#242](https://github.com/arco-design/arco-design-vue/pull/242))
 
