@@ -1,15 +1,15 @@
 import {
   defineComponent,
   PropType,
-  toRefs,
   computed,
   reactive,
   provide,
+  VNode,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
-import usePropOrSlot from '../_utils/use-prop-or-slot';
 import { CardContext, cardInjectionKey } from './context';
+import { getAllElements } from '../_utils/vue-utils';
 
 export const SIZES = ['medium', 'small'] as const;
 export type SizeType = typeof SIZES[number];
@@ -110,15 +110,13 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('card');
 
-    const actionListRef = computed(() => {
-      const actions = slots.actions && slots.actions();
-      if (actions === undefined || actions.length === 0) {
-        return null;
-      }
+    const renderActions = (vns: VNode[]) => {
+      const actions = getAllElements(vns);
+
       return (
         <div class={`${prefixCls}-actions`}>
           <div class={`${prefixCls}-actions-right`}>
-            {(actions || []).map((action, index) => (
+            {actions.map((action, index) => (
               <span key={`action-${index}`} class={`${prefixCls}-actions-item`}>
                 {action}
               </span>
@@ -126,79 +124,64 @@ export default defineComponent({
           </div>
         </div>
       );
-    });
+    };
 
-    const cardContext = reactive<CardContext>({
+    const cardContext = reactive({
       hasMeta: false,
       hasGrid: false,
-      actions: actionListRef.value,
+      slots,
+      renderActions,
     });
     provide(cardInjectionKey, cardContext);
 
-    const titleRef = usePropOrSlot(props, slots, 'title');
-    const extraRef = usePropOrSlot(props, slots, 'extra');
+    const cls = computed(() => [
+      prefixCls,
+      `${prefixCls}-size-${props.size}`,
+      {
+        [`${prefixCls}-loading`]: props.loading,
+        [`${prefixCls}-bordered`]: props.bordered,
+        [`${prefixCls}-hoverable`]: props.hoverable,
+        [`${prefixCls}-contain-grid`]: cardContext.hasGrid,
+      },
+    ]);
 
-    return {
-      cardContext,
-      slots,
-      computedTitle: titleRef,
-      computedExtra: extraRef,
-      prefixCls,
-      props,
-    };
-  },
-  render() {
-    const {
-      props,
-      computedTitle,
-      computedExtra,
-      cardContext,
-      prefixCls,
-      slots,
-    } = this;
-    const children = slots.default && slots.default();
-    const { hasGrid, hasMeta, actions } = cardContext;
-    const { bordered, loading, hoverable, size, headerStyle, bodyStyle } =
-      toRefs(props);
-    return (
-      <div
-        class={[
-          prefixCls,
-          `${prefixCls}-size-${size.value}`,
-          {
-            [`${prefixCls}-loading`]: loading.value,
-            [`${prefixCls}-bordered`]: bordered.value,
-            [`${prefixCls}-hoverable`]: hoverable.value,
-            [`${prefixCls}-contain-grid`]: hasGrid,
-          },
-        ]}
-      >
-        {computedTitle || computedExtra ? (
-          <div
-            class={[
-              `${prefixCls}-header`,
-              { [`${prefixCls}-header-no-title`]: !computedTitle },
-            ]}
-            style={headerStyle.value}
-          >
-            {computedTitle && (
-              <div class={`${prefixCls}-header-title`}>{computedTitle}</div>
-            )}
-            {computedExtra && (
-              <div class={`${prefixCls}-header-extra`}>{computedExtra}</div>
-            )}
+    return () => {
+      const hasTitle = Boolean(slots.title ?? props.title);
+      const hasExtra = Boolean(slots.extra ?? props.extra);
+
+      return (
+        <div class={cls.value}>
+          {(hasTitle || hasExtra) && (
+            <div
+              class={[
+                `${prefixCls}-header`,
+                { [`${prefixCls}-header-no-title`]: !hasTitle },
+              ]}
+              style={props.headerStyle}
+            >
+              {hasTitle && (
+                <div class={`${prefixCls}-header-title`}>
+                  {slots.title?.() ?? props.title}
+                </div>
+              )}
+              {hasExtra && (
+                <div class={`${prefixCls}-header-extra`}>
+                  {slots.extra?.() ?? props.extra}
+                </div>
+              )}
+            </div>
+          )}
+          {slots.cover && (
+            <div class={`${prefixCls}-cover`}>{slots.cover()}</div>
+          )}
+          <div class={`${prefixCls}-body`} style={props.bodyStyle}>
+            {props.loading ? <Spin /> : slots.default?.()}
+            {slots.actions &&
+              !cardContext.hasMeta &&
+              renderActions(slots.actions())}
           </div>
-        ) : null}
-
-        {slots.cover ? (
-          <div class={`${prefixCls}-cover`}>{slots.cover()}</div>
-        ) : null}
-
-        <div class={`${prefixCls}-body`} style={bodyStyle.value}>
-          {loading.value ? <Spin /> : children}
-          {hasMeta ? null : actions}
         </div>
-      </div>
-    );
+      );
+    };
   },
 });
