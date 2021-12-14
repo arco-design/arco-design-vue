@@ -65,11 +65,11 @@ app.mount('#app');
 
 ## Development
 
-1. Use `npm install` to install basic packages such as `lerna` and `yarn`
+1. Use `npm install -g` to install basic packages such as `lerna` and `yarn`.
 
-2. Use `yarn install` to install the dependencies of each package in `workspaces` (If you encounter a `YN0018` error, you can use `YARN_CHECKSUM_BEHAVIOR=update yarn` to install)
+2. Use `yarn install` to install the dependencies of each package in `workspaces` (If you encounter a `YN0018` error, you can use `YARN_CHECKSUM_BEHAVIOR=update yarn` to install).
 
-3. Use `npm run init` to initialize the project
+3. Use `npm run init` to initialize the project.
 
 # Useful Links
 

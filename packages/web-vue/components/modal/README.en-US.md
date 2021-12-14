@@ -85,6 +85,7 @@ The global methods provided by Modal can be used in the following three ways:
 |okLoading|Whether the confirm button is in the loading state|`boolean`|`false`|
 |hideCancel|Whether to hide the cancel button|`boolean`|`false`|
 |mask|Whether to show the mask|`boolean`|`false`|
+|simple|Whether to enable simple mode|`boolean`|`false`|
 |maskClosable|Whether to close the modal when click the mask|`boolean`|`false`|
 |maskStyle|Mask style|`CSSProperties`|`-`|
 |alignCenter|Whether the dialog box is displayed in the center|`boolean`|`false`|

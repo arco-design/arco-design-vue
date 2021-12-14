@@ -25,13 +25,14 @@ We use [Github issues](https://github.com/arco-design/arco-design-vue/issues) fo
 ## Sending a pull request
 
 1. Fork [the repository](https://github.com/arco-design/arco-design-vue) and create your branch from `main`. For new feature, please submit your changes directly to the `feature` branch. Other changes should go against `main` branch.
-1. Run `lerna bootstrap` in the repository root to install packages dependencies.
-1. Run `npm run init` in the repository root to init the project.
-1. Run `npm run start` to start and preview site.
-1. Make changes to the codebase. Please add tests if applicable.
-1. Make sure the test suite passes with `npm run test`. To watch for specific changes in development, use `npm run test --watch TestName`.
-1. Commit your changes, adhering to the [Commit Guidelines](#commit-guidelines)
-1. Open a new pull request, [referencing corresponding issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if available.
+2. Use `npm install -g` to install basic packages such as `lerna` and `yarn`.
+3. Use `yarn install` to install the dependencies of each package in `workspaces` (If you encounter a `YN0018` error, you can use `YARN_CHECKSUM_BEHAVIOR=update yarn` to install).
+4. Use `npm run init` to initialize the project.
+5. Run `npm run start` to start and preview site.
+6. Make changes to the codebase. Please add tests if applicable.
+7. Make sure the test suite passes with `npm run test`.
+8. Commit your changes, adhering to the [Commit Guidelines](#commit-guidelines)
+9. Open a new pull request, [referencing corresponding issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if available.
 
 ## Commit Guidelines
 
