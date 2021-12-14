@@ -631,6 +631,7 @@ export default defineComponent({
             }}
             {...item._props}
             key={item.key}
+            label={item.label}
           />
         );
       }
@@ -640,18 +641,20 @@ export default defineComponent({
         : value === computedValue.value;
       return (
         <DropDownOption
-          {...item._props}
           v-slots={{
             ...item._slots,
             default: getOptionContentFunc(item),
           }}
+          {...item._props}
           ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[value] = ref.$el;
             }
           }}
+          key={item.key}
           value={item.value}
           label={item.label}
+          disabled={item.disabled}
           component={props.virtualListProps ? 'div' : 'li'}
           isSelected={isSelected}
           isActive={activeOption.value && value === activeOption.value.value}

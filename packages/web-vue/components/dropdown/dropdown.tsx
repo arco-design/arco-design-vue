@@ -115,7 +115,17 @@ export default defineComponent({
 
     const renderOption = (item: DropdownOption, level = 1) => {
       if (isGroup(item)) {
-        return <OptGroup v-slots={{ label: item.render }} />;
+        return (
+          <OptGroup
+            v-slots={{
+              label: item._slots?.title,
+              default: () =>
+                item.options.map((item) => renderOption(item, level)),
+            }}
+            {...item._props}
+            label={item.title}
+          />
+        );
       }
       if (isSubmenu(item)) {
         return (
@@ -126,44 +136,47 @@ export default defineComponent({
                   v-slots={{
                     empty: slots.empty,
                     footer: item.footer,
+                    default: () =>
+                      item.children?.map((item) =>
+                        renderOption(item, level + 1)
+                      ),
                   }}
                   class={`${prefixCls}-submenu`}
                   isEmpty={item.children?.length === 0}
-                >
-                  {item.children?.map((item) => renderOption(item, level + 1))}
-                </DropdownPanel>
+                />
               ),
             }}
-            trigger="click"
-            position="rt"
+            disabled={item.disabled}
+            trigger={item.trigger ?? 'click'}
+            position={item.position ?? 'rt'}
             popupOffset={4}
             popupVisible={path.includes(item.value)}
-            onPopupVisibleChange={(visible) =>
+            onPopupVisibleChange={(visible: boolean) =>
               handleSubmenuChange(visible, item.value, level)
             }
           >
             <Option
               v-slots={{
-                icon: item.icon,
+                default: item.render,
                 suffix: () => <IconRight />,
               }}
+              {...item._props}
               value={item.value}
+              disabled={item.disabled}
               isActive={path.includes(item.value)}
-            >
-              {item.render()}
-            </Option>
+            />
           </Trigger>
         );
       }
 
       return (
         <Option
-          v-slots={{ icon: item.icon }}
+          v-slots={item._slots}
+          {...item._props}
           value={item.value}
+          disabled={item.disabled}
           onClick={handleClickOption}
-        >
-          {item.render()}
-        </Option>
+        />
       );
     };
 

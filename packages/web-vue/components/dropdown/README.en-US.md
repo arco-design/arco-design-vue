@@ -85,5 +85,6 @@ description: When there are too many commands on the page, the alternative comma
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
 |footer|Footer|-|2.10.0|
+|content|Submenu content|-||
 
 

@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, toRefs, watch } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { omit } from '../../_utils/omit';
 import { INPUT_EVENTS } from '../../_utils/constant';
 import pick from '../../_utils/pick';
@@ -20,10 +20,6 @@ export default defineComponent({
     baseCls: String,
     size: String,
     error: Boolean,
-    bordered: {
-      type: Boolean,
-      default: true,
-    },
     // used for outer focused
     focused: Boolean,
   },
@@ -63,7 +59,6 @@ export default defineComponent({
       prefixCls,
       `${prefixCls}-size-${props.size}`,
       {
-        [`${prefixCls}-bordered`]: props.bordered,
         [`${prefixCls}-search`]: props.enabledInput,
         [`${prefixCls}-focus`]: mergedFocused.value,
         [`${prefixCls}-disabled`]: props.disabled,

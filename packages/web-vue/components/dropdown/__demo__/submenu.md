@@ -21,14 +21,28 @@ Drop-down box with multi-level menu.
   <a-dropdown>
     <a-button>Click Me</a-button>
     <template #content>
-      <a-dsubmenu>
-        Option 1
+      <a-doption>Option 1</a-doption>
+      <a-dsubmenu value="option-1">
+        <template #default>Option 2</template>
         <template #content>
-          <a-doption>Option 1-1</a-doption>
-          <a-doption>Option 1-2</a-doption>
-          <a-doption>Option 1-3</a-doption>
+          <a-doption>Option 2-1</a-doption>
+          <a-dsubmenu value="option-2-2" trigger="hover">
+            <template #default>Option 2-2</template>
+            <template #content>
+              <a-doption>Option 2-1</a-doption>
+              <a-doption>Option 2-2</a-doption>
+              <a-doption>Option 2-3</a-doption>
+            </template>
+            <template #footer>
+              <div>
+                <a-button>Click</a-button>
+              </div>
+            </template>
+          </a-dsubmenu>
+          <a-doption>Option 2-3</a-doption>
         </template>
       </a-dsubmenu>
+      <a-doption>Option 3</a-doption>
     </template>
   </a-dropdown>
 </template>
