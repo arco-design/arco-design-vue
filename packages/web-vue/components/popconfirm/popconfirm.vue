@@ -29,12 +29,17 @@
         </span>
       </div>
       <div :class="`${prefixCls}-footer`">
-        <arco-button v-bind="cancelButtonProps" @click="handleCancel">
+        <arco-button
+          size="mini"
+          v-bind="cancelButtonProps"
+          @click="handleCancel"
+        >
           {{ cancelText || t('popconfirm.cancelText') }}
         </arco-button>
         <arco-button
-          v-bind="okButtonProps"
           type="primary"
+          size="mini"
+          v-bind="okButtonProps"
           :loading="mergedOkLoading"
           @click="handleOk"
         >
@@ -76,11 +81,6 @@ export default defineComponent({
     IconCloseCircleFill,
   },
   props: {
-    /**
-     * @zh 标题
-     * @en Title
-     */
-    title: String,
     /**
      * @zh 内容
      * @en Content

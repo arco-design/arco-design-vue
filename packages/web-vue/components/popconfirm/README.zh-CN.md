@@ -17,7 +17,6 @@ description: 点击元素，弹出气泡式的确认框。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|title|标题|`string`|`-`|
 |content|内容|`string`|`-`|
 |position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'top'`|
 |popup-visible **(v-model)**|气泡确认框是否可见|`boolean`|`-`|

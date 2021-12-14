@@ -7,6 +7,9 @@
   &-popup-content {
     box-sizing: border-box;
     padding: @popconfirm-padding-vertical @popconfirm-padding-horizontal;
+    color: @popup-color-content-text;
+    font-size: @popup-font-size;
+    line-height: @line-height-base;
     background-color: @popconfirm-color-content-bg;
     border: @border-1 solid @popconfirm-color-border;
     border-radius: @popconfirm-border-radius;
@@ -28,7 +31,7 @@
         font-size: @popconfirm-size-title-icon;
 
         .@{prefix}-icon-exclamation-circle-fill {
-          color: @color-warning-6;
+          color: @popconfirm-color-title-icon;
         }
       }
 
