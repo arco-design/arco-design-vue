@@ -37,9 +37,10 @@
     > *:not(.@{carousel-prefix-cls}-item-current) {
       display: none;
     }
-
-    .item-position(@direction) {
+    .item-position(@direction, @key) {
       .@{carousel-prefix-cls}-item-slide-out {
+        display: block;
+        transform: ~'translate@{key}(-100%)';
         animation: ~'@{prefix}-carousel-slide-@{direction}-out';
       }
 
@@ -60,11 +61,11 @@
     }
 
     &.@{carousel-prefix-cls}-horizontal {
-      .item-position(x);
+      .item-position(x, X);
     }
 
     &.@{carousel-prefix-cls}-vertical {
-      .item-position(y);
+      .item-position(y, Y);
     }
   }
 
