@@ -1,6 +1,5 @@
 import { defineComponent, inject, onMounted } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import usePropOrSlot from '../_utils/use-prop-or-slot';
 import { CardContext, cardInjectionKey } from './context';
 
 export const SIZES = ['default', 'small'] as const;
@@ -42,9 +41,6 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('card-meta');
 
-    const titleRef = usePropOrSlot(props, slots, 'title');
-    const descRef = usePropOrSlot(props, slots, 'description');
-
     const context = inject<CardContext>(cardInjectionKey);
 
     onMounted(() => {
@@ -53,45 +49,45 @@ export default defineComponent({
       }
     });
 
-    return {
-      computedTitle: titleRef,
-      computedDesc: descRef,
-      prefixCls,
-      context,
-      slots,
+    return () => {
+      const hasTitle = Boolean(slots.title ?? props.title);
+      const hasDesc = Boolean(slots.description ?? props.description);
+
+      return (
+        <div class={prefixCls}>
+          {(hasTitle || hasDesc) && (
+            <div class={`${prefixCls}-content`}>
+              {hasTitle && (
+                <div class={`${prefixCls}-title`}>
+                  {slots.title?.() ?? props.title}
+                </div>
+              )}
+              {hasDesc && (
+                <div class={`${prefixCls}-description`}>
+                  {slots.description?.() ?? props.description}
+                </div>
+              )}
+            </div>
+          )}
+          {(slots.avatar || context?.slots.actions) && (
+            <div
+              class={[
+                `${prefixCls}-footer `,
+                {
+                  [`${prefixCls}-footer-only-actions`]: !slots.avatar,
+                },
+              ]}
+            >
+              {slots.avatar && (
+                <div class={`${prefixCls}-avatar`}>{slots.avatar()}</div>
+              )}
+              {context &&
+                context.slots.actions &&
+                context.renderActions(context.slots.actions())}
+            </div>
+          )}
+        </div>
+      );
     };
-  },
-  render() {
-    const { computedTitle, computedDesc, prefixCls, context, slots } = this;
-    const { actions } = context || {};
-    return (
-      <div class={prefixCls}>
-        {computedTitle || computedDesc ? (
-          <div class={`${prefixCls}-content`}>
-            {computedTitle && (
-              <div class={`${prefixCls}-title`}>{computedTitle}</div>
-            )}
-            {computedDesc && (
-              <div class={`${prefixCls}-description`}>{computedDesc}</div>
-            )}
-          </div>
-        ) : null}
-        {slots.avatar || actions ? (
-          <div
-            class={[
-              `${prefixCls}-footer `,
-              {
-                [`${prefixCls}-footer-only-actions`]: !slots.avatar,
-              },
-            ]}
-          >
-            {slots.avatar ? (
-              <div class={`${prefixCls}-avatar`}>{slots.avatar()}</div>
-            ) : null}
-            {actions}
-          </div>
-        ) : null}
-      </div>
-    );
   },
 });

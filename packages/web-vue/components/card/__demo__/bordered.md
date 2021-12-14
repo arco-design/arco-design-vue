@@ -1,5 +1,4 @@
 ```yaml
-order: 2
 title:
   zh-CN: 无边框卡片
   en-US: No Border
