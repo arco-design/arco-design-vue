@@ -77,7 +77,11 @@
       display: flex;
       flex: 1;
       align-items: center;
-      justify-content: center;
+      justify-content: if(
+        (@modal-default-align-header = left),
+        start,
+        (if((@modal-default-align-header = right), end, center))
+      );
     }
   }
 
@@ -158,6 +162,14 @@
 
   .@{modal-prefix-cls}-header {
     margin-bottom: @modal-simple-margin-content-top;
+  }
+
+  .@{modal-prefix-cls}-title {
+    justify-content: if(
+      (@modal-default-align-header = left),
+      flex-start,
+      (if((@modal-default-align-header = right), flex-end, center))
+    );
   }
 
   .@{modal-prefix-cls}-footer {
