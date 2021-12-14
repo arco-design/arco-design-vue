@@ -19,7 +19,6 @@ description: Click on the element and a popconfirm will pop up.
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|title|Title|`string`|`-`|
 |content|Content|`string`|`-`|
 |position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'top'`|
 |popup-visible **(v-model)**|Whether the popconfirm is visible|`boolean`|`-`|
