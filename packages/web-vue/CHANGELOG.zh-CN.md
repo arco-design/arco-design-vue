@@ -2,6 +2,31 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 🐛 问题修复
+
+- **cascader:** 修复多选模式下存在空子菜单时计数错误的问题 ([#388](https://github.com/arco-design/arco-design-vue/pull/388))
+- **dropdown:** 修复 <doption> 组件 disabled 失效和属性继承的问题 ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+- **select:** 修复 options 属性中 disabled 失效的问题 ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+- **select:** 修复 bordered 属性未生效的问题，添加示例 ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+- **trigger:** 修复弹出层尺寸变化不会触发更新的问题 ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+- **trigger:** 修复 `align-point` 模式下位置和自适应不生效的问题 ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+- **card:** 修复 slots 内容存在不更新的问题 ([#380](https://github.com/arco-design/arco-design-vue/pull/380))
+
+### 💅 样式更新
+
+- **popconfirm:** 修正组件样式问题，并调整按钮默认大小为 `mini`，同React保持一致 ([#390](https://github.com/arco-design/arco-design-vue/pull/390))
+- **input-tag:** 修复组件高度问题 ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+- **input-tag:** 修复组件关闭按钮宽度问题 ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+
+### 🆎 类型修正
+
+- **modal:** `ModalConfig ` 增加 `simple` 属性注解 ([#389](https://github.com/arco-design/arco-design-vue/pull/389))
+
+
 ## 2.10.0
 
 `2021-12-10`

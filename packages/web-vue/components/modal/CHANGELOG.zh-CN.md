@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 🆎 类型修正
+
+- `ModalConfig ` 增加 `simple` 属性注解 ([#389](https://github.com/arco-design/arco-design-vue/pull/389))
+
+
 ## 2.10.0
 
 `2021-12-10`

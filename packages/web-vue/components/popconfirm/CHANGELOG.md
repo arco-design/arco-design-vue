@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 💅 Style
+
+- Fix the component style problem, and adjust the default size of the button to `mini`, which is consistent with React ([#390](https://github.com/arco-design/arco-design-vue/pull/390))
+
+
 ## 2.7.0
 
 `2021-11-26`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 🐛 BugFix
+
+- Fix the problem of disabled in the options attribute ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+- Fix the problem that the bordered property does not take effect, add an example ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+
+
 ## 2.10.0
 
 `2021-12-10`

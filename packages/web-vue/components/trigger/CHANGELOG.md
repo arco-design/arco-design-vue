@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 🐛 BugFix
+
+- Fix the problem that the pop-up layer size change will not trigger the update ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+- Fix the problem that the position and adaptation in `align-point` mode do not take effect ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+
+
 ## 2.6.1
 
 `2021-11-24`

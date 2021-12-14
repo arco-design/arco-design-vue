@@ -2,6 +2,31 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 🐛 BugFix
+
+- **cascader:** Fix the problem of counting errors when there is an empty sub-menu in multi-select mode ([#388](https://github.com/arco-design/arco-design-vue/pull/388))
+- **dropdown:** Fix <doption> component disabled failure and attribute inheritance issues ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+- **select:** Fix the problem of disabled in the options attribute ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+- **select:** Fix the problem that the bordered property does not take effect, add an example ([#385](https://github.com/arco-design/arco-design-vue/pull/385))
+- **trigger:** Fix the problem that the pop-up layer size change will not trigger the update ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+- **trigger:** Fix the problem that the position and adaptation in `align-point` mode do not take effect ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+- **card:** Fix the problem that the content of slots is not updated ([#380](https://github.com/arco-design/arco-design-vue/pull/380))
+
+### 💅 Style
+
+- **popconfirm:** Fix the component style problem, and adjust the default size of the button to `mini`, which is consistent with React ([#390](https://github.com/arco-design/arco-design-vue/pull/390))
+- **input-tag:** Fix the component height problem ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+- **input-tag:** Fix the width of the component close button ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+
+### 🆎 TypeScript
+
+- **modal:** `ModalConfig` adds `simple` attribute annotation ([#389](https://github.com/arco-design/arco-design-vue/pull/389))
+
+
 ## 2.10.0
 
 `2021-12-10`

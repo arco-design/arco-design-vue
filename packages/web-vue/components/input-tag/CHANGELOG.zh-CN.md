@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 💅 样式更新
+
+- 修复组件高度问题 ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+- 修复组件关闭按钮宽度问题 ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+
+
 ## 2.10.0
 
 `2021-12-10`

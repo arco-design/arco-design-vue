@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 💅 Style
+
+- Fix the component height problem ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+- Fix the width of the component close button ([#383](https://github.com/arco-design/arco-design-vue/pull/383))
+
+
 ## 2.10.0
 
 `2021-12-10`

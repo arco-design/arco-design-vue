@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 🐛 问题修复
+
+- 修复弹出层尺寸变化不会触发更新的问题 ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+- 修复 `align-point` 模式下位置和自适应不生效的问题 ([#382](https://github.com/arco-design/arco-design-vue/pull/382))
+
+
 ## 2.6.1
 
 `2021-11-24`

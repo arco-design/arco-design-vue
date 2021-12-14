@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.10.1
+
+`2021-12-14`
+
+### 🐛 BugFix
+
+- Fix the problem of counting errors when there is an empty sub-menu in multi-select mode ([#388](https://github.com/arco-design/arco-design-vue/pull/388))
+
+
 ## 2.10.0
 
 `2021-12-10`
