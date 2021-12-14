@@ -1,4 +1,4 @@
-@plugin './touppercase.js';
+@plugin './text-upper-case.js';
 @import './token.less';
 @import './slide.less';
 
@@ -39,7 +39,7 @@
       display: none;
     }
     .item-position(@direction) {
-      @chars: text-uppercase(@direction);
+      @chars: text-upper-case(@direction);
       .@{carousel-prefix-cls}-item-slide-out {
         display: block;
         transform: ~'translate@{chars}(-100%)';
