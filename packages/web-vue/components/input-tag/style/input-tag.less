@@ -22,6 +22,7 @@
   .@{cls}-inner {
     flex: 1;
     overflow: hidden;
+    line-height: 0;
 
     .@{cls}-tag {
       display: inline-flex;
@@ -88,9 +89,8 @@
       font-size: @@font-size;
 
       .@{cls}-inner {
-        min-height: @@height - (@input-tag-border-width * 2);
         padding-top: (@@height / 2) - (@@tag-height / 2) -
-          @input-tag-border-width - @input-tag-tag-margin-vertical;
+          @input-tag-border-width - (@input-tag-tag-margin-vertical / 2);
         padding-bottom: $padding-top;
       }
 
@@ -99,7 +99,7 @@
         margin-top: (@input-tag-tag-margin-vertical / 2);
         margin-bottom: $margin-top;
         line-height: @@tag-height - 2;
-        vertical-align: text-top;
+        vertical-align: middle;
       }
 
       .@{cls}-tag {
