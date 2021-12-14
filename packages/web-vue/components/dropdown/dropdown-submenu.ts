@@ -1,4 +1,4 @@
-import { defineComponent, PropType } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Dsubmenu',
@@ -40,6 +40,11 @@ export default defineComponent({
       default: 'rt',
     },
   },
+  /**
+   * @zh 子菜单内容
+   * @en Submenu content
+   * @slot content
+   */
   /**
    * @zh 页脚
    * @en Footer

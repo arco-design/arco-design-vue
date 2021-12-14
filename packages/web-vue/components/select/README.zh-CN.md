@@ -19,6 +19,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 @import ./__demo__/footer.md
 
+@import ./__demo__/border.md
+
 @import ./__demo__/create.md
 
 @import ./__demo__/search.md

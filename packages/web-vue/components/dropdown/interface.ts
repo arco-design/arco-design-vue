@@ -1,26 +1,30 @@
-import { RenderFunction, Slot } from 'vue';
+import { Slot, Slots } from 'vue';
+import { TriggerEvent, TriggerPosition } from '../_utils/constant';
 
 export interface DOption {
   value: string | number;
-  render: RenderFunction;
   disabled?: boolean;
 
   _props?: Record<string, any>;
+  _slots?: Slots;
 }
 
 export interface DGroup {
   isGroup: true;
-  render: RenderFunction;
+  options: DropdownOption[];
+  title?: string;
 
   _props?: Record<string, any>;
+  _slots?: Slots;
 }
 
 export interface DSubmenu extends DOption {
   isSubmenu: true;
+  render: Slot;
   children: DropdownOption[];
+  trigger?: TriggerEvent;
+  position?: TriggerPosition;
   footer?: Slot;
-
-  _props?: Record<string, any>;
 }
 
 export type DropdownOption = DOption | DGroup | DSubmenu;

@@ -161,6 +161,7 @@ export default defineComponent({
       `${prefixCls}-${props.multiple ? 'multiple' : 'single'}`,
       {
         [`${prefixCls}-opened`]: props.opened,
+        [`${prefixCls}-borderless`]: !props.bordered,
       },
     ]);
 
@@ -182,7 +183,6 @@ export default defineComponent({
             focused={props.opened}
             placeholder={props.placeholder}
             disabled={props.disabled}
-            bordered={props.bordered}
             size={props.size}
             error={props.error}
             maxTagCount={props.maxTagCount}
@@ -207,7 +207,6 @@ export default defineComponent({
           focused={props.opened}
           placeholder={props.placeholder}
           disabled={props.disabled}
-          bordered={props.bordered}
           size={props.size}
           error={props.error}
           formatLabel={props.formatLabel}
