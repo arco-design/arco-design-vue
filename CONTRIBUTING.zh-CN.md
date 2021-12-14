@@ -26,13 +26,14 @@
 ## 提交 Pull Request
 
 1. Fork [此仓库](https://github.com/arco-design/arco-design-vue)，从 `main` 创建分支。新功能实现请发 pull request 到 `feature` 分支。其他更改发到 `main` 分支。
-1. 在仓库根目录下执行 `lerna bootstrap` 安装子包依赖。
-1. 在仓库根目录下执行 `npm run init`。
-1. 执行 `npm run start` 启动和预览站点.
-1. 对代码库进行更改。如果适用的话，请确保写了相应的测试。
-1. 确认执行 `npm run test` 后所有的测试都是通过的。开发过程中可以用 `npm run test --watch TestName` 来运行指定的测试。
-1. 提交 git commit, 请同时遵守 [Commit 规范](#commit-指南)。
-1. 提交 pull request, 如果有对应的 issue，请进行[关联](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)。
+2. 使用 `npm install -g` 安装 `lerna` 和 `yarn` 等基础包。
+3. 执行 `yarn install` 安装 `workspaces` 中各个包的依赖（如果遇到 `YN0018` 错误，可以使用 `YARN_CHECKSUM_BEHAVIOR=update yarn` 进行安装）。
+4. 执行 `npm run init` 初始化项目。
+5. 执行 `npm run start` 启动和预览站点.
+6. 对代码库进行更改。如果适用的话，请确保写了相应的测试。
+7. 确认执行 `npm run test` 后所有的测试都是通过的。
+8. 提交 git commit, 请同时遵守 [Commit 规范](#commit-指南)。
+9. 提交 pull request, 如果有对应的 issue，请进行[关联](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)。
 
 ## Commit 指南
 
