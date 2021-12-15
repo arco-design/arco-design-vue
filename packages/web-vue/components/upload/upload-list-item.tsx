@@ -79,7 +79,7 @@ export default defineComponent({
           )}
           <span class={`${itemCls}-name`}>
             {uploadCtx?.customIcon?.fileName?.(props.file) || props.file.url ? (
-              <a class={`${itemCls}-name-link`} href={props.file.url}>
+              <a class={`${itemCls}-name-link`} target="_blank" href={props.file.url} download={props.file.name}>
                 {props.file.name}
               </a>
             ) : (
@@ -98,11 +98,11 @@ export default defineComponent({
           <UploadProgress file={props.file} listType={props.listType} />
         </span>
         <span class={`${itemCls}-operation`}>
-          <IconHover onClick={() => uploadCtx?.onRemove?.(props.file)}>
+          {uploadCtx?.showRemoveButton && <IconHover onClick={() => uploadCtx?.onRemove?.(props.file)}>
             <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}>
               {uploadCtx?.customIcon?.removeIcon?.() || <IconDelete />}
             </span>
-          </IconHover>
+          </IconHover>}
         </span>
       </span>
     );

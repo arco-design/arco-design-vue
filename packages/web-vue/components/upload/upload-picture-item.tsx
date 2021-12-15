@@ -41,7 +41,7 @@ export default defineComponent({
         <>
           <img src={props.file.url} />
           <div class={`${itemCls}-mask`}>
-            {props.file.status === 'error' && (
+            {props.file.status === 'error' && uploadCtx?.showCancelButtoon && (
               <div class={`${itemCls}-error-tip`}>
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-error`]}
@@ -59,7 +59,7 @@ export default defineComponent({
                   {uploadCtx?.customIcon?.previewIcon?.() || <IconEye />}
                 </span>
               )}
-              {['init', 'error'].includes(props.file.status as string) && (
+              {['init', 'error'].includes(props.file.status as string) && uploadCtx?.showRetryButton && (
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-upload`]}
                   onClick={() => uploadCtx?.onUpload(props.file)}
@@ -67,7 +67,7 @@ export default defineComponent({
                   {uploadCtx?.customIcon?.retryIcon?.() || <IconUpload />}
                 </span>
               )}
-              {!uploadCtx?.disabled && (
+              {!uploadCtx?.disabled && uploadCtx?.showRemoveButtoon && (
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
                   onClick={() => uploadCtx?.onRemove(props.file)}

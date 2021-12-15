@@ -158,6 +158,38 @@ export default defineComponent({
       default: true,
     },
     /**
+     * @zh 是否显示删除按钮
+     * @en Whether to display the remove button
+     */
+     showRemoveButton: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否显示重试按钮
+     * @en Whether to display the retry button
+     */
+     showRetryButton: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否显示取消按钮
+     * @en Whether to display the cancel button
+     */
+     showCancelButtoon: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否显示上传按钮
+     * @en Whether to display the retry button
+     */
+     showUploadButton: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * @zh 图片列表类型
      * @en Picture list type
      * @values 'text','picture','picture-card'
@@ -171,7 +203,9 @@ export default defineComponent({
      * @en Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image
      */
     responseUrlKey: {
-      type: String,
+      type: [String, Function] as PropType<
+        string | ((fileItem: FileItem) => string)
+      >,
     },
     /**
      * @zh 自定义图标
@@ -349,8 +383,12 @@ export default defineComponent({
           file.status = 'done';
           file.percent = 1;
           file.response = response;
-          if (props.responseUrlKey && response[props.responseUrlKey]) {
-            file.url = response[props.responseUrlKey];
+          if (props.responseUrlKey) {
+            if (isFunction(props.responseUrlKey)) {
+              file.url = props.responseUrlKey(file)
+            } else if (response[props.responseUrlKey]) {
+              file.url = response[props.responseUrlKey];
+            }
           }
 
           requestMap.delete(file.uid);
@@ -509,6 +547,9 @@ export default defineComponent({
         listType: props.listType,
         iconCls: `${prefixCls}-icon`,
         customIcon: props.customIcon,
+        showRemoveButtoon: props.showRemoveButtoon,
+        showRetryButton: props.showRetryButton,
+        showCancelButtoon: props.showCancelButtoon,
         onUpload: uploadFile,
         onAbort: abort,
         onRemove: handleRemove,
@@ -538,7 +579,7 @@ export default defineComponent({
 
     const render = () => {
       if (!props.showFileList) {
-        return renderButton();
+        return props.showUploadButton && renderButton();
       }
 
       return (
@@ -548,7 +589,7 @@ export default defineComponent({
             `${prefixCls}-wrapper-type-${props.listType}`,
           ]}
         >
-          {props.listType !== 'picture-card' && renderButton()}
+          {props.listType !== 'picture-card' && props.showUploadButton && renderButton()}
           <UploadList
             v-slots={{
               'upload-button': renderButton,
@@ -556,6 +597,8 @@ export default defineComponent({
             }}
             fileList={_fileList.value}
             listType={props.listType}
+            isMax={isMax.value}
+            showUploadButton={props.showUploadButton}
           />
         </div>
       );
