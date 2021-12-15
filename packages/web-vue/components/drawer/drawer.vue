@@ -115,7 +115,7 @@ export default defineComponent({
     /**
      * @zh 抽屉放置的位置
      * @en Where the drawer is placed
-     * @version 2.11.0
+     * @values 'top','right','bottom','left'
      */
     placement: {
       type: String as PropType<DrawerPlacements>,
@@ -207,9 +207,9 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 底部内容，当不需要默认底部按钮时，可以设为 :footer="false"
-     * @en Bottom content, which can be set to when the default bottom button is not required :footer="null"
-     * @values 'true', 'false'
+     * @zh 是否展示底部内容
+     * @en Whether to display the bottom content
+     * @version 2.11.0
      */
     footer: {
       type: Boolean,
