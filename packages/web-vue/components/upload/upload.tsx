@@ -160,6 +160,7 @@ export default defineComponent({
     /**
      * @zh 是否显示删除按钮
      * @en Whether to display the remove button
+     * @version 2.11.0
      */
      showRemoveButton: {
       type: Boolean,
@@ -168,6 +169,7 @@ export default defineComponent({
     /**
      * @zh 是否显示重试按钮
      * @en Whether to display the retry button
+     * @version 2.11.0
      */
      showRetryButton: {
       type: Boolean,
@@ -176,6 +178,7 @@ export default defineComponent({
     /**
      * @zh 是否显示取消按钮
      * @en Whether to display the cancel button
+     * @version 2.11.0
      */
      showCancelButtoon: {
       type: Boolean,
@@ -184,6 +187,7 @@ export default defineComponent({
     /**
      * @zh 是否显示上传按钮
      * @en Whether to display the retry button
+     * @version 2.11.0
      */
      showUploadButton: {
       type: Boolean,
