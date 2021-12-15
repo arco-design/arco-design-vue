@@ -33,7 +33,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |height|The height of the drawer (only available when placement is top, bottom)|`number`|`250`|
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`'body'`|
 |drawer-style|Drawer style|`CSSProperties`|`-`|
-|show-footer | Whether to display the bottom content|`boolean`|`true`|
+|footer | Whether to display the bottom content|`boolean`|`true`|
 ### `<drawer>` Events
 
 |Event Name|Description|Parameters|
