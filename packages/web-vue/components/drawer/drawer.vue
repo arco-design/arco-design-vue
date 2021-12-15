@@ -39,7 +39,7 @@
             <div :class="`${prefixCls}-body`">
               <slot />
             </div>
-            <div :class="`${prefixCls}-footer`">
+            <div v-if="isShowFooter" :class="`${prefixCls}-footer`">
               <slot name="footer">
                 <arco-button @click="handleCancel">
                   {{ cancelText || t('drawer.cancelText') }}
@@ -206,6 +206,15 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 底部内容，当不需要默认底部按钮时，可以设为 :showFooter="false"
+     * @en Bottom content, which can be set to when the default bottom button is not required :showFooter="null"
+     * @values 'true', 'false'
+     */
+    showFooter: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     'update:visible',
@@ -317,12 +326,17 @@ export default defineComponent({
       return style;
     });
 
+    const isShowFooter = computed(() => {
+      return props.showFooter === true;
+    });
+
     return {
       prefixCls,
       style,
       t,
       computedVisible,
       zIndex,
+      isShowFooter,
       handleOk,
       handleCancel,
       handleOpen,
