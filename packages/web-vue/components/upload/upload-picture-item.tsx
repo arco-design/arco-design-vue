@@ -39,7 +39,7 @@ export default defineComponent({
 
       return (
         <>
-          <img src={props.file.url} />
+          <img src={props.file.url} alt={props.file.name} loading={uploadCtx.imageLoading} />
           <div class={`${itemCls}-mask`}>
             {props.file.status === 'error' && uploadCtx?.showCancelButtoon && (
               <div class={`${itemCls}-error-tip`}>

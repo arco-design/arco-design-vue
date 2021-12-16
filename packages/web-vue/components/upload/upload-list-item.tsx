@@ -68,7 +68,7 @@ export default defineComponent({
         <span class={`${itemCls}-content`}>
           {uploadCtx?.listType === 'picture' && (
             <span class={`${itemCls}-thumbnail`}>
-              <img src={props.file.url} />
+              <img src={props.file.url} alt={props.file.name} loading={uploadCtx.imageLoading} />
             </span>
           )}
           {uploadCtx?.listType === 'text' && (

@@ -162,7 +162,7 @@ export default defineComponent({
      * @en Whether to display the remove button
      * @version 2.11.0
      */
-     showRemoveButton: {
+    showRemoveButton: {
       type: Boolean,
       default: true,
     },
@@ -171,7 +171,7 @@ export default defineComponent({
      * @en Whether to display the retry button
      * @version 2.11.0
      */
-     showRetryButton: {
+    showRetryButton: {
       type: Boolean,
       default: true,
     },
@@ -180,7 +180,7 @@ export default defineComponent({
      * @en Whether to display the cancel button
      * @version 2.11.0
      */
-     showCancelButtoon: {
+    showCancelButtoon: {
       type: Boolean,
       default: true,
     },
@@ -189,9 +189,17 @@ export default defineComponent({
      * @en Whether to display the retry button
      * @version 2.11.0
      */
-     showUploadButton: {
+    showUploadButton: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * @zh <img> 的原生属性
+     * @en <img> native attribute
+     * @version 2.11.0
+     */
+    imageLoading: {
+      type: String as PropType<'eager' | 'lazy'>,
     },
     /**
      * @zh 图片列表类型
@@ -554,6 +562,7 @@ export default defineComponent({
         showRemoveButtoon: props.showRemoveButtoon,
         showRetryButton: props.showRetryButton,
         showCancelButtoon: props.showCancelButtoon,
+        imageLoading: props.imageLoading,
         onUpload: uploadFile,
         onAbort: abort,
         onRemove: handleRemove,
