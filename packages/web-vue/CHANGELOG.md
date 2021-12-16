@@ -13,6 +13,7 @@ changelog: true
 ### 🆕 新增功能
 
 - **upload:** Add `show-remove-button` and `show-retry-button` and `show-cancel-buttoon` and `show-upload-button` property and enable it by default ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+- **upload:** Add `imageLoading` property, <img loading=""> native attribute ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
 
 ### 🐛 问题修复
 

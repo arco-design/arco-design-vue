@@ -13,6 +13,7 @@ changelog: true
 ### 🆕 新增功能
 
 - **upload:** 增加 `show-remove-button` 、 `show-retry-button` 、 `show-cancel-buttoon` 、 `show-upload-button` 属性并默认开启 ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+- **upload:** 增加  `imageLoading` 属性，为 <img loading=""> 的原生属性 ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
 
 ### 🐛 问题修复
 
