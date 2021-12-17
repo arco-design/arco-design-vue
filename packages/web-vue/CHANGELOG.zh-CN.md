@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.11
+
+`2021-12-17`
+
+### 💎 功能优化
+
+- **upload:**  点击 <a> 会在新标签页中打开，下载时会使用文件名 ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+
+### 🆕 新增功能
+
+- **upload:** 增加 `show-remove-button` 、 `show-retry-button` 、 `show-cancel-buttoon` 、 `show-upload-button` 属性并默认开启 ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+- **upload:** 增加  `imageLoading` 属性，为 <img loading=""> 的原生属性 ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+
+### 🐛 问题修复
+
+- **upload:** 修复 `picture-card` 模式下 `limit` 没有生效 ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+
+
 ## 2.10.1
 
 `2021-12-14`

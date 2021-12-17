@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.11
+
+`2021-12-17`
+
+### 💎 功能优化
+
+- **upload:**  Click <a> opens in a new tab, use file name when downloading ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+
+### 🆕 新增功能
+
+- **upload:** Add `show-remove-button` and `show-retry-button` and `show-cancel-buttoon` and `show-upload-button` property and enable it by default ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+- **upload:** Add `imageLoading` property, <img loading=""> native attribute ([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+
+### 🐛 问题修复
+
+- **upload:** Fix the problem that the `limit` property does not take effect([#396](https://github.com/arco-design/arco-design-vue/pull/396)
+
 ## 2.10.1
 
 `2021-12-14`

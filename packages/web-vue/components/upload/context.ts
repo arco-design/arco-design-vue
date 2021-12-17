@@ -6,6 +6,10 @@ export interface UploadContext {
   disabled?: boolean;
   iconCls?: string;
   customIcon?: CustomIcon;
+  showRemoveButtoon?: boolean;
+  showRetryButton?: boolean;
+  showCancelButtoon?: boolean;
+  imageLoading?: 'eager' | 'lazy';
   onRemove: (fileItem: FileItem) => void;
   onAbort: (fileItem: FileItem) => void;
   onUpload: (fileItem: FileItem) => void;
