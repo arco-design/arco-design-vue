@@ -37,7 +37,7 @@ The `treeCheckable` property can display checkbox.
     :data="treeData"
     placeholder="Please select ..."
     style="width: 300px;"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { ref } from 'vue';

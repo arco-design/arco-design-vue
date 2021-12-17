@@ -29,7 +29,7 @@ For example, in this demo, onVisibleChange is triggered when the mouse moves out
     :data="treeData"
     placeholder="Please select ..."
     style="width: 300px"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { ref } from 'vue';

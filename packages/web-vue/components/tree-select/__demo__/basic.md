@@ -22,7 +22,7 @@ Basic usage example.
     :data="treeData"
     placeholder="Please select ..."
     style="width: 300px"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { h } from 'vue';
