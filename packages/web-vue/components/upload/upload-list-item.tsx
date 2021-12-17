@@ -78,13 +78,14 @@ export default defineComponent({
                   renderFileIcon()}
               </span>
             )}
-            {uploadCtx?.customIcon?.fileName?.(props.file) || (props.file.url ? (
-              <a class={`${itemCls}-name-link`} href={props.file.url}>
-                {props.file.name}
-              </a>
-            ) : (
-              <span class={`${itemCls}-name-text`}>{props.file.name}</span>
-            ))}
+            {uploadCtx?.customIcon?.fileName?.(props.file) ||
+              (props.file.url ? (
+                <a class={`${itemCls}-name-link`} href={props.file.url}>
+                  {props.file.name}
+                </a>
+              ) : (
+                <span class={`${itemCls}-name-text`}>{props.file.name}</span>
+              ))}
             {props.file.status === 'error' && (
               <Tooltip content={t('upload.error')}>
                 <span

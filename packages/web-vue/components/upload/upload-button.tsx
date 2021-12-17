@@ -95,8 +95,8 @@ export default defineComponent({
       }
 
       if (props.directory && e.dataTransfer?.items) {
-        loopDirectory(e.dataTransfer.items, props.accept, (file) => {
-          props.uploadFiles([file]);
+        loopDirectory(e.dataTransfer.items, props.accept, (files) => {
+          props.uploadFiles(files);
         });
       } else {
         const files = getFiles(e.dataTransfer?.files, props.accept);
@@ -109,7 +109,7 @@ export default defineComponent({
       setDragEnterCount('subtract');
       if (dragEnterCount.value === 0) {
         isDragging.value = false;
-        setDragEnterCount('reset')
+        setDragEnterCount('reset');
       }
     };
 
