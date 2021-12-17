@@ -20,7 +20,7 @@ Basic usage of spacing components.
 <template>
   <a-space>
     <a-typography-text>Space:</a-typography-text>
-    <a-tag color='arcoblue'>Tag</a-tag>
+    <a-tag v-if="false" color='arcoblue'>Tag</a-tag>
     <a-button type="primary">Item1</a-button>
     <a-button type="primary">Item2</a-button>
     <a-switch defaultChecked />

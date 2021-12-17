@@ -1,9 +1,6 @@
 <template>
   <teleport :to="container" :disabled="!renderToBody">
-    <div
-      :class="classNames"
-      :style="isFixed ? {} : { zIndex: 'inherit', position: 'absolute' }"
-    >
+    <div :class="classNames" :style="wrapperStyles">
       <transition
         name="image-fade"
         @before-enter="
@@ -93,6 +90,7 @@ import {
   toRefs,
   ref,
   h,
+  CSSProperties,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { getPrefixCls } from '../_utils/global-config';
@@ -113,6 +111,7 @@ import usePopupOverHidden from '../_hooks/use-popup-overflow-hidden';
 import usePopupContainer from '../_hooks/use-popup-container';
 import getScale, { minScale, maxScale } from './utils/get-scale';
 import { useI18n } from '../locale';
+import usePopupManager from '../_hooks/use-popup-manager';
 
 const ROTATE_STEP = 90;
 
@@ -232,6 +231,15 @@ export default defineComponent({
     );
 
     const isFixed = computed(() => container.value === document.body);
+    const { zIndex } = usePopupManager({ visible: mergedVisible });
+
+    const wrapperStyles = computed<CSSProperties>(() => {
+      const positionStyles: CSSProperties = isFixed.value
+        ? { zIndex: zIndex.value, position: 'fixed' }
+        : { zIndex: 'inherit', position: 'absolute' };
+
+      return { ...positionStyles };
+    });
 
     const { isLoading, isLoaded, setLoadStatus } = useImageLoadStatus();
 
@@ -297,7 +305,7 @@ export default defineComponent({
       prefixCls,
       classNames,
       container,
-      isFixed,
+      wrapperStyles,
       scale,
       translate,
       rotate,

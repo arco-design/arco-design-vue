@@ -8,10 +8,10 @@ import {
   watch,
   computed,
 } from 'vue';
-import type { Data } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction } from '../_utils/is';
 import type {
+  CustomIcon,
   FileItem,
   ListType,
   RequestOption,
@@ -21,6 +21,7 @@ import { getDataURLFromFile, uploadRequest } from './utils';
 import UploadButton from './upload-button';
 import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Upload',
@@ -65,18 +66,26 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 是否支持拖拽上传
-     * @en Whether to support drag and drop upload
-     */
-    draggable: {
-      type: Boolean,
-      default: false,
-    },
-    /**
      * @zh 是否支持多文件上传
      * @en Whether to support multiple file upload
      */
     multiple: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否支持文件夹上传（需要浏览器支持）
+     * @en Whether to support folder upload (requires browser support)
+     */
+    directory: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否支持拖拽上传
+     * @en Whether to support drag and drop upload
+     */
+    draggable: {
       type: Boolean,
       default: false,
     },
@@ -96,7 +105,8 @@ export default defineComponent({
      */
     data: {
       type: [Object, Function] as PropType<
-        Data | ((fileItem: FileItem) => Data)
+        | Record<string, unknown>
+        | ((fileItem: FileItem) => Record<string, unknown>)
       >,
     },
     /**
@@ -108,6 +118,10 @@ export default defineComponent({
         string | ((fileItem: FileItem) => string)
       >,
     },
+    /**
+     * @zh 上传请求是否携带 cookie
+     * @en Whether the upload request carries cookies
+     */
     withCredentials: {
       type: Boolean,
       default: false,
@@ -156,11 +170,15 @@ export default defineComponent({
      * @zh Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片
      * @en Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image
      */
-    responseURLKey: {
+    responseUrlKey: {
       type: String,
     },
+    /**
+     * @zh 自定义图标
+     * @en Custom icon
+     */
     customIcon: {
-      type: Object,
+      type: Object as PropType<CustomIcon>,
     },
     /**
      * @zh 上传图片前触发
@@ -176,19 +194,43 @@ export default defineComponent({
     onBeforeRemove: {
       type: Function as PropType<(fileItem: FileItem) => Promise<boolean>>,
     },
+    /**
+     * @zh 点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）
+     * @en Click the upload button to trigger (if the Promise is returned, the default input upload will be closed)
+     */
+    onButtonClick: {
+      type: Function as PropType<(event: Event) => Promise<FileList> | void>,
+    },
     // for JSX
     onChange: {
-      type: Function as PropType<
-        (fileList: FileItem[], fileItem: FileItem) => void
+      type: [Function, Array] as PropType<
+        EmitType<(fileList: FileItem[], fileItem: FileItem) => void>
       >,
     },
     onProgress: {
-      type: Function as PropType<
-        (fileItem: FileItem, e: ProgressEvent) => void
+      type: [Function, Array] as PropType<
+        EmitType<(fileItem: FileItem, event: ProgressEvent) => void>
       >,
     },
     onExceedLimit: {
-      type: Function as PropType<(fileList: FileItem[], files: File[]) => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(fileList: FileItem[], files: File[]) => void>
+      >,
+    },
+    onPreview: {
+      type: [Function, Array] as PropType<
+        EmitType<(fileItem: FileItem) => void>
+      >,
+    },
+    onSuccess: {
+      type: [Function, Array] as PropType<
+        EmitType<(fileItem: FileItem) => void>
+      >,
+    },
+    onError: {
+      type: [Function, Array] as PropType<
+        EmitType<(fileItem: FileItem) => void>
+      >,
     },
   },
   emits: [
@@ -196,25 +238,56 @@ export default defineComponent({
     /**
      * @zh 上传的图片超出限制后触发
      * @en Triggered when the uploaded image exceeds the limit
+     * @param {FileItem[]} fileList
+     * @param {File[]} files
      */
     'exceedLimit',
     /**
      * @zh 上传的图片状态发生改变时触发
      * @en Triggered when the status of the uploaded image changes
+     * @param {FileItem[]} fileList
+     * @param {fileItem} fileItem
      */
     'change',
     /**
      * @zh 上传中的图片进度改变时触发
      * @en Triggered when the uploading image progress changes
+     * @param {fileItem} fileItem
+     * @param {ProgressEvent} event
      */
     'progress',
     /**
      * @zh 点击图片预览时的触发
      * @en Trigger when the image preview is clicked
+     * @param {FileItem} fileItem
      */
     'preview',
+    /**
+     * @zh 上传成功时触发
+     * @en Triggered when upload is successful
+     * @param {FileItem} fileItem
+     */
+    'success',
+    /**
+     * @zh 上传失败时触发
+     * @en Triggered when upload fails
+     * @param {FileItem} fileItem
+     */
+    'error',
   ],
-  setup(props, { emit }) {
+  /**
+   * @zh 上传列表的项目
+   * @en Upload list item
+   * @slot upload-item
+   * @binding {FileItem} fileItem
+   * @binding {number} index
+   */
+  /**
+   * @zh 上传图标
+   * @en Upload button
+   * @slot upload-button
+   */
+  setup(props, { emit, slots }) {
     const { fileList } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
 
@@ -276,11 +349,12 @@ export default defineComponent({
           file.status = 'done';
           file.percent = 1;
           file.response = response;
-          if (props.responseURLKey && response[props.responseURLKey]) {
-            file.url = response[props.responseURLKey];
+          if (props.responseUrlKey && response[props.responseUrlKey]) {
+            file.url = response[props.responseUrlKey];
           }
 
           requestMap.delete(file.uid);
+          emit('success', file);
           updateFileList(file);
         }
       };
@@ -293,6 +367,7 @@ export default defineComponent({
           file.response = response;
 
           requestMap.delete(file.uid);
+          emit('error', file);
           updateFileList(file);
         }
       };
@@ -444,12 +519,17 @@ export default defineComponent({
     const renderButton = () => {
       return (
         <UploadButton
+          key="arco-upload-button"
+          v-slots={{
+            default: slots['upload-button'],
+          }}
           disabled={props.disabled}
           draggable={props.draggable}
           listType={props.listType}
           isMax={isMax.value}
           uploadFiles={uploadFiles}
           multiple={props.multiple}
+          directory={props.directory}
           tip={props.tip}
           accept={props.accept}
         />
@@ -469,8 +549,14 @@ export default defineComponent({
           ]}
         >
           {props.listType !== 'picture-card' && renderButton()}
-          <UploadList fileList={_fileList.value} listType={props.listType} />
-          {props.listType === 'picture-card' && renderButton()}
+          <UploadList
+            v-slots={{
+              'upload-button': renderButton,
+              'upload-item': slots['upload-item'],
+            }}
+            fileList={_fileList.value}
+            listType={props.listType}
+          />
         </div>
       );
     };

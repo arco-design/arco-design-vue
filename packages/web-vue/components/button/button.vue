@@ -46,6 +46,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
+import { EmitType } from '../_utils/types';
 
 const BUTTON_TYPES = [
   'primary',
@@ -94,9 +95,9 @@ export default defineComponent({
     status: {
       type: String as PropType<Status>,
       default: 'normal',
-      validator: (value: any) => {
-        return STATUSES.includes(value);
-      },
+      // validator: (value: any) => {
+      //   return STATUSES.includes(value);
+      // },
     },
     /**
      * @zh 按钮的尺寸
@@ -149,7 +150,7 @@ export default defineComponent({
     href: String,
     // for JSX
     onClick: {
-      type: Function as PropType<(event: Event) => void>,
+      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
     },
   },
   emits: [

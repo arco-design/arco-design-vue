@@ -9,6 +9,7 @@
           <a-icon-hover
             v-if="showBack"
             :class="`${prefixCls}-back-btn`"
+            :prefix="prefixCls"
             @click="handleBack"
           >
             <icon-left />
@@ -16,8 +17,14 @@
           <span :class="`${prefixCls}-title`">
             <slot name="title">{{ title }}</slot>
           </span>
-          <span :class="`${prefixCls}-divider`" />
-          <span :class="`${prefixCls}-subtitle`">
+          <span
+            v-if="$slots.subtitle || subtitle"
+            :class="`${prefixCls}-divider`"
+          />
+          <span
+            v-if="$slots.subtitle || subtitle"
+            :class="`${prefixCls}-subtitle`"
+          >
             <slot name="subtitle">{{ subtitle }}</slot>
           </span>
         </span>

@@ -11,7 +11,7 @@
           },
         ]"
         :style="{
-          backgroundColor: active ? color : '',
+          backgroundColor: active ? color : trackColor,
         }"
       />
     </div>
@@ -50,6 +50,7 @@ export default defineComponent({
       type: [String, Object],
       default: undefined,
     },
+    trackColor: String,
     strokeWidth: {
       type: Number,
     },

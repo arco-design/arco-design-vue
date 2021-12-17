@@ -2,12 +2,14 @@
 import { Slot, VNode } from 'vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 
+export type TreeNodeKey = number | string;
+
 export interface TreeNodeData {
   /**
    * @zh 唯一标示
    * @en Unique key
    * */
-  key?: string;
+  key?: string | number;
   /**
    * @zh 该节点显示的标题
    * @en The title of the node
@@ -85,12 +87,12 @@ export interface TreeNodeProps extends Omit<TreeNodeData, 'children'> {
 }
 
 export interface Node extends TreeNodeProps {
-  key: string;
+  key: TreeNodeKey;
   treeNodeProps: TreeNodeProps;
   treeNodeData: TreeNodeData;
   parent?: Node;
-  parentKey?: string;
-  pathParentKeys: string[];
+  parentKey?: TreeNodeKey;
+  pathParentKeys: TreeNodeKey[];
   children?: Node[];
 }
 
@@ -133,24 +135,27 @@ export interface TreeProps {
   selectable: boolean;
   checkStrictly: boolean;
   checkedStrategy: 'all' | 'parent' | 'child';
-  defaultSelectedKeys?: string[];
-  selectedKeys?: string[];
-  defaultCheckedKeys?: string[];
-  checkedKeys?: string[];
-  defaultExpandedKeys?: string[];
-  expandedKeys?: string[];
+  defaultSelectedKeys?: TreeNodeKey[];
+  selectedKeys?: TreeNodeKey[];
+  defaultCheckedKeys?: TreeNodeKey[];
+  checkedKeys?: TreeNodeKey[];
+  defaultExpandedKeys?: TreeNodeKey[];
+  expandedKeys?: TreeNodeKey[];
   data: TreeNodeData[];
   fieldNames?: FieldNames;
   virtualListProps?: VirtualListProps;
   showLine: boolean;
   loadMore?: LoadMore;
+  defaultExpandSelected?: boolean;
+  defaultExpandChecked?: boolean;
+  autoExpandParent?: boolean;
   dragIcon?: Slot;
   switcherIcon?: Slot;
   loadingIcon?: Slot;
   extra?: Slot;
   title?: Slot;
   onSelect?: (
-    selectedKeys: string[],
+    selectedKeys: TreeNodeKey[],
     event: {
       selected: boolean;
       selectedNodes: TreeNodeData[];
@@ -159,7 +164,7 @@ export interface TreeProps {
     }
   ) => void;
   onCheck?: (
-    checkedKeys: string[],
+    checkedKeys: TreeNodeKey[],
     event: {
       checked: boolean;
       checkedNodes: TreeNodeData[];
@@ -168,7 +173,7 @@ export interface TreeProps {
     }
   ) => void;
   onExpand?: (
-    expandedKeys: string[],
+    expandedKeys: TreeNodeKey[],
     event: {
       expanded: boolean;
       expandedNodes: TreeNodeData[];

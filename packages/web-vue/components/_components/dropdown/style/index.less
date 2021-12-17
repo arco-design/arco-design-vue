@@ -1,0 +1,96 @@
+@import '../../../style/mixins/index.less';
+@import './token.less';
+
+@dropdown-prefix-cls: ~'@{prefix}-dropdown';
+
+.@{dropdown-prefix-cls} {
+  box-sizing: border-box;
+  padding: @dropdown-padding-vertical 0;
+  background-color: @dropdown-color-bg;
+  border: 1px solid @dropdown-color-border;
+  border-radius: @dropdown-border-radius;
+  box-shadow: @dropdown-box-shadow;
+
+  &-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+
+    &-wrapper {
+      max-height: @dropdown-max-height;
+      overflow-y: auto;
+    }
+  }
+
+  &-option {
+    position: relative;
+    // 避免 Trigger 的小箭头位于其上方
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 @dropdown-option-padding-horizontal;
+
+    // default
+    color: @dropdown-option-color-text_default;
+    font-size: @dropdown-font-size;
+    line-height: @dropdown-option-height;
+    text-align: left;
+    background-color: @dropdown-option-color-bg_default;
+    cursor: pointer;
+    .text-ellipsis();
+
+    // hover
+    &-active,
+    &:not(&-disabled):hover {
+      color: @dropdown-option-color-text_hover;
+      background-color: @dropdown-option-color-bg_hover;
+      transition: all @transition-duration-1 @transition-timing-function-linear;
+    }
+
+    // disabled
+    &-disabled {
+      color: @dropdown-option-color-text_disabled;
+      background-color: @dropdown-option-color-bg_disabled;
+      cursor: not-allowed;
+    }
+
+    &-icon {
+      margin-right: 8px;
+    }
+
+    &-suffix {
+      margin-left: @dropdown-margin-left-suffix-icon;
+    }
+  }
+
+  &-group {
+    &:first-child &-title {
+      margin-top: @dropdown-group-title-margin-top;
+    }
+
+    &-title {
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: @dropdown-group-title-margin-top;
+      padding: 0 @dropdown-group-title-padding-horizontal;
+      color: @dropdown-group-title-color-text;
+      font-size: @dropdown-group-title-font-size;
+      line-height: @dropdown-group-title-height;
+      cursor: default;
+      .text-ellipsis();
+    }
+  }
+
+  &-submenu {
+    margin-top: -@dropdown-padding-vertical;
+  }
+
+  &&-has-footer {
+    padding-bottom: 0;
+  }
+
+  &-footer {
+    border-top: 1px solid @dropdown-color-border;
+  }
+}

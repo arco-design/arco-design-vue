@@ -19,7 +19,9 @@ Show how to realize the linkage selection box.
 ```vue
 <template>
   <a-space>
-    <a-select :style="{width:'200px'}" :options="Object.keys(data)" v-model="province"/>
+    <a-select :style="{width:'200px'}" v-model="province">
+      <a-option v-for="value of Object.keys(data)">{{value}}</a-option>
+    </a-select>
     <a-select :style="{width:'200px'}" :options="data[province] || []" v-model="city" />
   </a-space>
 </template>
@@ -33,7 +35,7 @@ export default {
         Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
         Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou']
       },
-      province:'',
+      province:'Sichuan',
       city:''
     }
   }

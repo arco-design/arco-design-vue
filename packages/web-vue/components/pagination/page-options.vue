@@ -4,6 +4,7 @@
       :model-value="pageSize"
       :options="options"
       :size="size"
+      :disabled="disabled"
       v-bind="selectProps"
       @change="handleChange"
     />
@@ -27,6 +28,7 @@ export default defineComponent({
       required: true,
     },
     pageSize: Number,
+    disabled: Boolean,
     size: {
       type: String,
     },

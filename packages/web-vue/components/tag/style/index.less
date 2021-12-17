@@ -77,7 +77,7 @@
   }
 
   each(@colors, {
-    &-checked&-@{value} {
+    &&-checked&-@{value} {
       color: ~'@{tag-@{value}-color-text}';
       background-color: ~'@{tag-@{value}-color-bg}';
       border: @tag-border-width @tag-border-type ~'@{tag-@{value}-color-border}';
@@ -85,14 +85,14 @@
       .icon-hover-bg(@tag-prefix-cls, ~'@{tag-@{value}-color-icon-bg_hover}');
     }
 
-    &-checkable&-checked&-@{value}&:hover {
+    &&-checkable&-checked&-@{value}&:hover {
       background-color: ~'@{tag-@{value}-color-bg_hover}';
       border-color: ~'@{tag-@{value}-color-border_hover}';
     }
 
-    &-checked&-@{value} &-icon,
-    &-checked&-@{value} &-close-btn,
-    &-checked&-@{value} &-loading-icon {
+    &&-checked&-@{value} &-icon,
+    &&-checked&-@{value} &-close-btn,
+    &&-checked&-@{value} &-loading-icon {
       color: ~'@{tag-@{value}-color-icon}';
     }
   });

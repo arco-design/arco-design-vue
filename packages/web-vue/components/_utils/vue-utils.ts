@@ -6,10 +6,11 @@ import type {
   VNodeTypes,
   VNodeArrayChildren,
   ComponentPublicInstance,
+  RenderFunction,
 } from 'vue';
 import { createVNode, cloneVNode, mergeProps, Fragment, isVNode } from 'vue';
 import { Data, RenderContent } from './types';
-import { isFunction, isObject, isString } from './is';
+import { isFunction, isNumber, isObject, isString } from './is';
 import { toCamelCase, toKebabCase } from './convert-case';
 
 export enum ShapeFlags {
@@ -89,6 +90,26 @@ export const isSlotsChildren = (
   return Boolean(vn && vn.shapeFlag & ShapeFlags.SLOTS_CHILDREN);
 };
 
+export const getChildrenString = (children: VNode[]): string => {
+  let text = '';
+  for (const child of children) {
+    if (isString(child) || isNumber(child)) {
+      text += String(child);
+    } else if (isTextChildren(child, child.children)) {
+      text += child.children;
+    } else if (isArrayChildren(child, child.children)) {
+      text += getChildrenString(child.children);
+    } else if (isSlotsChildren(child, child.children)) {
+      const _children = child.children.default?.();
+      if (_children) {
+        text += getChildrenString(_children);
+      }
+    }
+  }
+
+  return text;
+};
+
 export const getVNodeChildrenString = (vn: VNode): string => {
   if (isText(vn, vn.children)) {
     return vn.children;
@@ -106,6 +127,16 @@ export const getVNodeChildrenString = (vn: VNode): string => {
     }
   }
   return text;
+};
+
+export const getChildrenFunc = (vn: VNode): RenderFunction | undefined => {
+  if (isTextChildren(vn, vn.children) || isArrayChildren(vn, vn.children)) {
+    return (() => vn.children) as RenderFunction;
+  }
+  if (isSlotsChildren(vn, vn.children)) {
+    return vn.children.default;
+  }
+  return undefined;
 };
 
 export const getChildrenTextOrSlot = (vn: VNode): string | Slot | undefined => {
@@ -177,29 +208,6 @@ export const getComponentNumber = (vNodes: VNode[], componentName: string) => {
   return count;
 };
 
-export const mergePropsWithIndex = (
-  vNodes: VNode[],
-  componentName: string,
-  mergedProps: (index: number) => Data,
-  startIndex = 0
-) => {
-  let index = startIndex;
-  for (const item of vNodes) {
-    if (isComponent(item, item.type) && item.type.name === componentName) {
-      item.props = mergeProps(item.props ?? {}, mergedProps(index));
-      index++;
-    } else if (isArrayChildren(item, item.children)) {
-      index = mergePropsWithIndex(
-        item.children,
-        componentName,
-        mergedProps,
-        index
-      );
-    }
-  }
-  return index;
-};
-
 export const foreachComponent = (
   children: VNode[],
   name: string,
@@ -232,22 +240,28 @@ export const isEmptyChildren = (children?: VNode[]) => {
 export const getChildrenComponents = (
   children: VNode[],
   name: string,
-  props?: Data | ((node: VNode) => Data)
+  props?: Data | ((node: VNode, index: number) => Data),
+  startIndex = 0
 ): VNode[] => {
   const result = [];
   for (const item of children) {
-    if (isComponent(item, item.type) && item.type.name === name) {
+    if (isNamedComponent(item, name)) {
       if (props) {
-        const extraProps = isFunction(props) ? props(item) : props;
+        const index: number = startIndex + result.length;
+        const extraProps = isFunction(props) ? props(item, index) : props;
         result.push(cloneVNode(item, extraProps, true));
       } else {
         result.push(item);
       }
     } else if (isArrayChildren(item, item.children)) {
-      result.push(...getChildrenComponents(item.children, name, props));
+      result.push(
+        ...getChildrenComponents(item.children, name, props, result.length)
+      );
     } else if (isSlotsChildren(item, item.children)) {
       const defaultChildren = item.children.default?.() ?? [];
-      result.push(...getChildrenComponents(defaultChildren, name, props));
+      result.push(
+        ...getChildrenComponents(defaultChildren, name, props, result.length)
+      );
     }
   }
   return result;
@@ -293,6 +307,20 @@ export const getRenderFunc = (content: RenderContent) => {
     return content;
   }
   return () => content;
+};
+
+export const getAllElements = (vns: VNode[] | undefined) => {
+  const results: VNode[] = [];
+  for (const vn of vns ?? []) {
+    if (isElement(vn) || isComponent(vn) || isTextChildren(vn, vn.children)) {
+      results.push(vn);
+    } else if (isArrayChildren(vn, vn.children)) {
+      results.push(...getAllElements(vn.children));
+    } else if (isSlotsChildren(vn, vn.children)) {
+      results.push(...getAllElements(vn.children.default?.()));
+    }
+  }
+  return results;
 };
 
 /**

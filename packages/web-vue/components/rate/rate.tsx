@@ -5,6 +5,7 @@ import IconFaceMehFill from '../icon/icon-face-meh-fill';
 import IconFaceSmileFill from '../icon/icon-face-smile-fill';
 import IconFaceFrownFill from '../icon/icon-face-frown-fill';
 import { getPrefixCls } from '../_utils/global-config';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Rate',
@@ -76,10 +77,10 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: Function as PropType<(index: number) => void>,
+      type: [Function, Array] as PropType<EmitType<(index: number) => void>>,
     },
     onHoverChange: {
-      type: Function as PropType<(index: number) => void>,
+      type: [Function, Array] as PropType<EmitType<(index: number) => void>>,
     },
   },
   emits: [

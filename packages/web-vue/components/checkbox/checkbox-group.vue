@@ -19,6 +19,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { DIRECTIONS, Direction } from '../_utils/constant';
 import { checkboxGroupKey } from './context';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'CheckboxGroup',
@@ -59,8 +60,8 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: Function as PropType<
-        (value: Array<string | number | boolean>, e: Event) => void
+      type: [Function, Array] as PropType<
+        EmitType<(value: Array<string | number | boolean>, e: Event) => void>
       >,
     },
   },

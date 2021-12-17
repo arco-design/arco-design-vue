@@ -19,6 +19,7 @@ export default defineComponent({
     isSorted: {
       type: Boolean,
     },
+    rowIndex: Number,
     record: {
       type: Object as PropType<TableData>,
       default: () => ({}),
@@ -97,6 +98,7 @@ export default defineComponent({
         return props.column.render({
           record: props.record,
           column: props.column,
+          rowIndex: props.rowIndex ?? -1,
         });
       }
       return String(getValueByPath(props.record, props.column.dataIndex) ?? '');
@@ -106,6 +108,7 @@ export default defineComponent({
       <td
         class={cls.value}
         style={style.value}
+        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
         colspan={props.colSpan > 1 ? props.colSpan : undefined}
       >
         <span

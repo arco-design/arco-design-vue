@@ -91,6 +91,7 @@ description: Basic form components have been expanded on the basis of native con
 |---|---|---|:---:|
 |search-button|Whether it is the rear button mode|`boolean`|`false`|
 |loading|Whether it is loading state|`boolean`|`false`|
+|size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 ### `<input-search>` Events
 
 |Event Name|Description|Parameters|

@@ -40,7 +40,7 @@ export default defineComponent({
    * @en Custom element
    * @slot element
    */
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const prefixCls = getPrefixCls('spin');
 
     const cls = computed(() => [

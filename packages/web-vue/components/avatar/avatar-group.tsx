@@ -1,8 +1,15 @@
-import { defineComponent, PropType, mergeProps, createVNode } from 'vue';
+import {
+  defineComponent,
+  PropType,
+  mergeProps,
+  createVNode,
+  CSSProperties,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { SHAPES, ShapeType } from './constants';
 import Avatar from './avatar.vue';
 import Popover from '../popover';
+import { TriggerProps } from '../trigger';
 
 export default defineComponent({
   name: 'AvatarGroup',
@@ -27,10 +34,7 @@ export default defineComponent({
      * @zh 头像的尺寸大小，单位是 `px`
      * @en The size of the avatar in the group, the unit is `px`
      */
-    size: {
-      type: Number,
-      default: 40,
-    },
+    size: Number,
     /**
      * @zh 是否自动根据头像尺寸调整字体大小
      * @en Whether to automatically adjust the font size according to the size of the avatar.
@@ -54,6 +58,22 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 多余头像样式。
+     * @en Style for +x.
+     * @version 2.7.0
+     */
+    maxStyle: {
+      type: Object as PropType<CSSProperties>,
+    },
+    /**
+     * @zh 多余头像气泡的 `TriggerProps`
+     * @en TriggerProps for popover around +x.
+     * @version 2.7.0
+     */
+    maxPopoverTriggerProps: {
+      type: Object as PropType<TriggerProps>,
+    },
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('avatar-group');
@@ -69,20 +89,22 @@ export default defineComponent({
         avatarsToRender = children.slice(0, props.maxCount);
         avatarsToRender.push(
           createVNode(
-            Avatar,
+            Popover,
+            { ...props.maxPopoverTriggerProps },
             {
-              key: '_arco_avatar_group_popup',
-              class: `${prefixCls}-max-count-avatar`,
-            },
-            () =>
-              createVNode(
-                Popover,
-                {},
-                {
-                  content: () => <div>{avatarsInPopover}</div>,
-                  default: () => <div>+{avatarsInPopover.length}</div>,
-                }
-              )
+              content: () => <div>{avatarsInPopover}</div>,
+              default: () =>
+                createVNode(
+                  Avatar,
+                  {
+                    key: '_arco_avatar_group_popup',
+                    class: `${prefixCls}-max-count-avatar`,
+                    style: props.maxStyle,
+                    size: props.size,
+                  },
+                  () => <div>+{avatarsInPopover.length}</div>
+                ),
+            }
           )
         );
       }
@@ -92,7 +114,11 @@ export default defineComponent({
           {avatarsToRender.map((item, index) => {
             const stackedStyle = {
               zIndex: props.zIndexAscend ? index + 1 : count - index,
-              marginLeft: index !== 0 ? `-${props.size / 4}px` : '0px',
+              marginLeft: props.size
+                ? index !== 0
+                  ? `-${props.size / 4}px`
+                  : '0px'
+                : '',
             };
             item.props = mergeProps(
               {

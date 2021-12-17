@@ -1,9 +1,11 @@
 import { computed, defineComponent, PropType } from 'vue';
 import Checkbox from '../checkbox';
+import Radio from '../radio';
 import { getPrefixCls } from '../_utils/global-config';
 import { CascaderOptionInfo } from './interface';
 import IconRight from '../icon/icon-right';
 import { getCheckedStatus } from './utils';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'CascaderOption',
@@ -21,6 +23,8 @@ export default defineComponent({
     expandTrigger: {
       type: String,
     },
+    checkStrictly: Boolean,
+    searchOption: Boolean,
   },
   emits: ['clickOption', 'activeChange', 'pathChange'],
   setup(props, { emit }) {
@@ -51,9 +55,22 @@ export default defineComponent({
       },
     ]);
 
-    const checkedStatus = computed(() =>
-      getCheckedStatus(props.option, props.computedKeys)
-    );
+    const checkedStatus = computed(() => {
+      if (props.checkStrictly) {
+        return {
+          checked: props.computedKeys.includes(props.option.key),
+          indeterminate: false,
+        };
+      }
+      return getCheckedStatus(props.option, props.computedKeys);
+    });
+
+    const renderLabelContent = () => {
+      if (isFunction(props.option.render)) {
+        return props.option.render();
+      }
+      return props.option.label;
+    };
 
     return () => (
       <li class={cls.value} {...events}>
@@ -68,9 +85,19 @@ export default defineComponent({
             }}
           />
         )}
+        {props.checkStrictly && !props.multiple && (
+          <Radio
+            modelValue={props.computedKeys.includes(props.option.key)}
+            disabled={props.option.disabled}
+            onClick={(e: Event) => {
+              emit('clickOption', props.option, true);
+              emit('pathChange', props.option);
+            }}
+          />
+        )}
         <div class={`${prefixCls}-label`}>
-          {props.option.label}
-          {!props.option.isLeaf && <IconRight />}
+          {renderLabelContent()}
+          {!props.searchOption && !props.option.isLeaf && <IconRight />}
         </div>
       </li>
     );

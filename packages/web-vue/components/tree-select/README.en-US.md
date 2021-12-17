@@ -52,8 +52,8 @@ description: The tree structure data can be selected.
 |retain-input-value|Whether to keep existing content when the search box is focused|`boolean`|`true`|
 |max-tags|The maximum number of labels displayed, only valid in multi-select mode|`number`|`-`|
 |multiple|Whether to support multiple selection|`boolean`|`false`|
-|default-value|Default value|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
-|model-value **(v-model)**|Value|`string \| string[] \| LabelValue \| LabelValue[]`|`-`|
+|default-value|Default value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|
+|model-value **(v-model)**|Value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|
 |field-names|Specify the field name in the node data|`FieldNames`|`-`|
 |data|Data|`TreeNodeData[]`|`[]`|
 |label-in-value|Set the value format. The default is string, when set to true, the value format is: {label: string, value: string}|`boolean`|`false`|
@@ -74,7 +74,7 @@ description: The tree structure data can be selected.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|selectedValue: `string \| LabelValue \| string[] \| LabelValue[] \| undefined`|
+|change|Trigger when the value changes|selectedValue: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
 |popup-visible-change|Triggered when the status of the drop-down box changes|visible: `boolean`|
 |search|Triggered when the search value changes|searchKey: `string`|
 |clear|Triggered when clear is clicked|-|

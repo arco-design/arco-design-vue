@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💅 Style
+
+- Fix the style problem of prohibited mode ([#355](https://github.com/arco-design/arco-design-vue/pull/355))
+
+
+## 2.8.0
+
+`2021-12-01`
+
+### 🆕 Feature
+
+- Add support for min rows and max rows ([#309](https://github.com/arco-design/arco-design-vue/pull/309))
+
+
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 Feature
+
+- Add `word-length` attribute ([#199](https://github.com/arco-design/arco-design-vue/pull/199))
+
+
 ## 2.3.0
 
 `2021-11-12`

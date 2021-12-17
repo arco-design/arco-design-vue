@@ -24,6 +24,8 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 @import ./__demo__/adaptation-object.md
 
+@import ./__demo__/flex.md
+
 
 ### `<row>` Props
 
@@ -39,16 +41,17 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 ### `<col>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|span|Number of grid space|`number`|`24`|
-|offset|The number of grids on the left side of the grid. There can be no grids in the grid.|`number`|`-`|
-|order|Sort elements|`number`|`-`|
-|xs|<576px responsive grid|`number \| { [key: string]: any }`|`-`|
-|sm|>= 576px responsive grid|`number \| { [key: string]: any }`|`-`|
-|md|>= 768px responsive grid|`number \| { [key: string]: any }`|`-`|
-|lg|>= 992px responsive grid|`number \| { [key: string]: any }`|`-`|
-|xl|>= 1200px responsive grid|`number \| { [key: string]: any }`|`-`|
-|xxl|>= 1600px responsive grid|`number \| { [key: string]: any }`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|span|Number of grid space|`number`|`24`||
+|offset|The number of grids on the left side of the grid. There can be no grids in the grid.|`number`|`-`||
+|order|Sort elements|`number`|`-`||
+|xs|<576px responsive grid|`number \| { [key: string]: any }`|`-`||
+|sm|>= 576px responsive grid|`number \| { [key: string]: any }`|`-`||
+|md|>= 768px responsive grid|`number \| { [key: string]: any }`|`-`||
+|lg|>= 992px responsive grid|`number \| { [key: string]: any }`|`-`||
+|xl|>= 1200px responsive grid|`number \| { [key: string]: any }`|`-`||
+|xxl|>= 1600px responsive grid|`number \| { [key: string]: any }`|`-`||
+|flex|Set flex layout properties|`number \| string \| 'initial' \| 'auto' \| 'none'`|`-`|2.10.0|
 
 

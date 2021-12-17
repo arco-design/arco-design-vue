@@ -19,7 +19,7 @@ By setting `:editable="true"`, you can turn on the dynamic increase and decrease
 ```vue
 <template>
   <a-tabs type="card-gutter" :editable="true" @add="handleAdd" @delete="handleDelete" show-add-button>
-    <a-tab-pane v-for="item of data" :key="item.key" :title="item.title">
+    <a-tab-pane v-for="(item, index) of data" :key="item.key" :title="item.title" :closable="index!==2">
       {{ item?.content }}
     </a-tab-pane>
   </a-tabs>

@@ -1,10 +1,10 @@
 import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Dropdown from './dropdown.vue';
-import _DropdownOption from './dropdown-option.vue';
-import _DropdownGroup from './dropdown-group.vue';
-import _DropdownSubmenu from './dropdown-submenu.vue';
+import _Dropdown from './dropdown';
+import _DropdownOption from './dropdown-option';
+import _DropdownGroup from './dropdown-group';
+import _DropdownSubmenu from './dropdown-submenu';
 
 const Dropdown = Object.assign(_Dropdown, {
   Option: _DropdownOption,

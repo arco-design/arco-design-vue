@@ -8,6 +8,8 @@ import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
 import ArcoButton from '../button';
 import ArcoInput from '../input';
+import { EmitType } from '../_utils/types';
+import { Size, SIZES } from '../_utils/constant';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -105,15 +107,29 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 输入框大小
+     * @en Input size
+     * @values 'mini', 'small', 'medium', 'large'
+     */
+    size: {
+      type: String as PropType<Size>,
+      default: 'medium',
+      validator: (value: any) => {
+        return SIZES.includes(value);
+      },
+    },
     // for JSX
     onChange: {
-      type: Function as PropType<(value: number | undefined) => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(value: number | undefined) => void>
+      >,
     },
     onFocus: {
-      type: Function,
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
     onBlur: {
-      type: Function,
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
   },
   emits: [
@@ -186,9 +202,11 @@ export default defineComponent({
       }
     };
 
-    const getLegalValue = (value: string | number): number | undefined => {
+    const getLegalValue = (
+      value: string | number | undefined
+    ): number | undefined => {
       // 空值时返回undefined
-      if (value === '') {
+      if (isUndefined(value) || value === '') {
         return undefined;
       }
 
@@ -221,7 +239,7 @@ export default defineComponent({
       }
     }
 
-    const updateValue = (value: string | number) => {
+    const updateValue = (value: string | number | undefined, ev: Event) => {
       const finalValue = getLegalValue(value);
       isMin.value = false;
       isMax.value = false;
@@ -234,7 +252,7 @@ export default defineComponent({
         }
       }
       emit('update:modelValue', finalValue);
-      emit('change', finalValue);
+      emit('change', finalValue, ev);
     };
 
     const handleStepButton = (
@@ -264,7 +282,7 @@ export default defineComponent({
       }
 
       _value.value = props.formatter?.(String(nextValue)) ?? String(nextValue);
-      updateValue(nextValue);
+      updateValue(nextValue, event);
 
       // 长按时持续触发
       if (needRepeat) {
@@ -275,39 +293,40 @@ export default defineComponent({
       }
     };
 
-    const handleInput = (value: string) => {
+    const handleInput = (value: string, ev: Event) => {
       value = value.trim().replace(/。/g, '.');
       value = props.parser?.(value) ?? value;
 
-      if (isNumber(Number(value)) || /^\.|-$/.test(value)) {
-        if (/^\.|-$/.test(value)) {
+      if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
+        if (/^(\.|-)$/.test(value)) {
           numberPrefix.value = value;
         } else if (numberPrefix.value) {
           numberPrefix.value = '';
         }
         _value.value = props.formatter?.(value) ?? value;
-        updateValue(value);
+        updateValue(value, ev);
       }
     };
 
-    const handleFocus = (e: Event) => {
-      emit('focus', e);
+    const handleFocus = (ev: FocusEvent) => {
+      emit('focus', ev);
     };
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = (ev: FocusEvent) => {
       if (computedValue.value) {
         const numberValue = Number(
           props.parser?.(computedValue.value) ?? computedValue.value
         );
         const finalValue = getLegalValue(numberValue);
         if (finalValue !== numberValue) {
-          _value.value =
-            props.formatter?.(String(finalValue)) ?? String(finalValue);
-          updateValue(finalValue);
+          _value.value = isUndefined(finalValue)
+            ? ''
+            : props.formatter?.(String(finalValue)) ?? String(finalValue);
+          updateValue(finalValue, ev);
         }
       }
 
-      emit('blur', e);
+      emit('blur', ev);
     };
 
     watch(
@@ -357,8 +376,11 @@ export default defineComponent({
         </button>
       </div>
     );
-
-    const cls = computed(() => [prefixCls, `${prefixCls}-mode-${props.mode}`]);
+    const cls = computed(() => [
+      prefixCls,
+      `${prefixCls}-mode-${props.mode}`,
+      `${prefixCls}-size-${props.size}`,
+    ]);
 
     const renderInput = () => {
       const inputSlots =
@@ -372,6 +394,7 @@ export default defineComponent({
           ref={inputRef}
           class={cls.value}
           type="text"
+          size={props.size}
           modelValue={computedValue.value}
           placeholder={props.placeholder}
           disabled={props.disabled}
@@ -391,6 +414,7 @@ export default defineComponent({
       return (
         <InputGroup>
           <ArcoButton
+            size={props.size}
             v-slots={{ icon: () => <IconMinus /> }}
             disabled={props.disabled || isMin.value}
             onMousedown={(e: MouseEvent) => handleStepButton(e, 'minus', true)}
@@ -399,6 +423,7 @@ export default defineComponent({
           />
           {renderInput()}
           <ArcoButton
+            size={props.size}
             v-slots={{ icon: () => <IconPlus /> }}
             disabled={props.disabled || isMax.value}
             onMousedown={(e: MouseEvent) => handleStepButton(e, 'plus', true)}

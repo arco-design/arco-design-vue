@@ -93,10 +93,9 @@
 
   // 清除按钮样式
   .@{cls}-clear-btn {
-    display: none;
-    margin-left: @input-margin-left-clear-btn;
     color: @input-color-icon-clear;
     font-size: @input-size-icon-clear;
+    visibility: hidden;
     cursor: pointer;
 
     > svg {
@@ -107,11 +106,7 @@
   }
 
   &:hover .@{cls}-clear-btn {
-    display: block;
-  }
-
-  &:hover .@{cls}-suffix-hide-on-clear {
-    display: none;
+    visibility: visible;
   }
 
   // 没有选中情况下显示深色

@@ -5,10 +5,13 @@
     trigger="click"
     position="bl"
     :popup-offset="4"
+    animation-name="slide-dynamic-origin"
+    :prevent-focus="true"
     v-bind="triggerProps"
     :disabled="disabled"
     :popup-visible="panelVisible"
     :popup-container="popupContainer"
+    auto-fit-transform-origin
     @popupVisibleChange="onVisibleChange"
   >
     <slot name="trigger">
@@ -22,13 +25,14 @@
         :size="size"
         :max-tags="maxTags"
         :disabled="disabled"
+        :opened="panelVisible"
         :error="error"
         :border="border"
         :placeholder="placeholder"
         :multiple="isMultiple"
         v-bind="$attrs"
         @inputValueChange="onSearchValueChange"
-        @clear="onClear"
+        @clear="onInnerClear"
       >
         <slot v-if="$slots.prefix" name="prefix" />
         <slot v-if="$slots.tag" name="tag" />
@@ -61,6 +65,7 @@
             filterTreeNode: computedFilterTreeNode,
             size,
           }"
+          :tree-slots="pickSubCompSlots($slots, 'tree')"
           @change="onSelectChange"
         />
       </div>
@@ -77,20 +82,28 @@ import {
   reactive,
   ref,
   toRefs,
+  StyleValue,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue, TreeSelectProps } from './interface';
 import Trigger from '../trigger';
 import SelectView from '../_components/select-view/select-view';
-import Panel from './panel.vue';
+import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
 import useSelectedState from './hooks/use-selected-state';
 import useTreeData from '../tree/hooks/use-tree-data';
-import { FieldNames, TreeNodeData, TreeProps } from '../tree/interface';
+import {
+  FieldNames,
+  TreeNodeData,
+  TreeProps,
+  TreeNodeKey,
+} from '../tree/interface';
 import { isArray, isEmptyObject } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
+import pickSubCompSlots from '../_utils/pick-sub-comp-slots';
+import { EmitType } from '../_utils/types';
 
 const isEmpty = (val: any) => {
   return !val || (isArray(val) && val.length === 0) || isEmptyObject(val);
@@ -192,8 +205,8 @@ export default defineComponent({
      * @en Default value
      * */
     defaultValue: {
-      type: [String, Array, Object] as PropType<
-        string | string[] | LabelValue | LabelValue[]
+      type: [String, Number, Array, Object] as PropType<
+        string | number | Array<string | number> | LabelValue | LabelValue[]
       >,
     },
     /**
@@ -201,8 +214,8 @@ export default defineComponent({
      * @en Value
      * */
     modelValue: {
-      type: [String, Array, Object] as PropType<
-        string | string[] | LabelValue | LabelValue[]
+      type: [String, Number, Array, Object] as PropType<
+        string | number | Array<string | number> | LabelValue | LabelValue[]
       >,
     },
     /**
@@ -325,12 +338,39 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<
+          (
+            selectedValue:
+              | string
+              | number
+              | LabelValue
+              | Array<string | number>
+              | LabelValue[]
+              | undefined
+          ) => void
+        >
+      >,
+    },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
+    onSearch: {
+      type: [Function, Array] as PropType<
+        EmitType<(searchValue: string) => void>
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
   },
   emits: [
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @param {string | LabelValue | string[] | LabelValue[] | undefined} selectedValue
+     * @param {string | number | LabelValue | Array<string | number> | LabelValue[] | undefined} selectedValue
      */
     'change',
     'update:modelValue',
@@ -378,7 +418,7 @@ export default defineComponent({
    * @en Custom empty data display
    * @slot empty
    */
-  setup(props: TreeSelectProps, { emit }) {
+  setup(props, { emit }) {
     const {
       defaultValue,
       modelValue,
@@ -425,13 +465,13 @@ export default defineComponent({
       setLocalSelectedKeys(newVal);
 
       nextTick(() => {
-        let emitValue: string | string[] | LabelValue | LabelValue[] =
-          labelInValue.value ? selectedValue.value : newVal;
+        let emitValue: TreeNodeKey | TreeNodeKey[] | LabelValue | LabelValue[] =
+          (labelInValue.value ? selectedValue.value : newVal) || [];
 
         emitValue = isMultiple.value ? emitValue : emitValue[0];
 
-        emit('change', emitValue);
         emit('update:modelValue', emitValue);
+        emit('change', emitValue);
       });
     };
 
@@ -471,12 +511,10 @@ export default defineComponent({
 
     const refSelectView = ref();
 
-    const computedDropdownStyle = computed<Array<CSSProperties | undefined>>(
-      () => [
-        dropdownStyle?.value,
-        treeProps?.value?.virtualListProps ? { 'max-height': 'unset' } : {},
-      ]
-    );
+    const computedDropdownStyle = computed<StyleValue[]>(() => [
+      dropdownStyle?.value || {},
+      treeProps?.value?.virtualListProps ? { 'max-height': 'unset' } : {},
+    ]);
 
     return {
       refSelectView,
@@ -504,10 +542,11 @@ export default defineComponent({
         }
       },
       onVisibleChange: setPanelVisible,
-      onClear() {
+      onInnerClear() {
         setSelectedKeys([]);
         emit('clear');
       },
+      pickSubCompSlots,
     };
   },
 });

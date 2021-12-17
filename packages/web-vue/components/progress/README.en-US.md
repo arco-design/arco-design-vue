@@ -18,7 +18,11 @@ description: Give users feedback on the running status of tasks in the current s
 
 @import ./__demo__/size.md
 
+@import ./__demo__/linear.md
+
 @import ./__demo__/steps.md
+
+@import ./__demo__/trackColor.md
 
 
 ### `<progress>` Props
@@ -33,8 +37,8 @@ description: Give users feedback on the running status of tasks in the current s
 |stroke-width|The line width of the progress bar|`number`|`-`|
 |width|The width of the progress bar|`number\|string`|`-`|
 |color|The color of the progress bar|`string\|object`|`-`|
-|buffer-color|The color of the progress bar buffer|`string\|object`|`-`|
+|track-color|The color of the progress track|`string`|`-`|
 |show-text|Whether to display text|`boolean`|`true`|
-|status|Progress bar status|`'normal' \| 'success' \| 'warning' \| 'danger'`|`'normal'`|
+|status|Progress bar status|`'normal' \| 'success' \| 'warning' \| 'danger'`|`-`|
 
 

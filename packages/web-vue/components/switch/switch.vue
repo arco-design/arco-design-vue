@@ -33,6 +33,7 @@ import type { PropType } from 'vue';
 import { computed, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
+import { EmitType } from '../_utils/types';
 
 const SWITCH_SIZES = ['small', 'medium'] as const;
 type SwitchSize = typeof SWITCH_SIZES[number];
@@ -97,7 +98,7 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: Function as PropType<(checked: boolean) => void>,
+      type: [Function, Array] as PropType<EmitType<(checked: boolean) => void>>,
     },
   },
   emits: [

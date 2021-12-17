@@ -216,21 +216,21 @@
     }
 
     &:hover {
-      .@{tabs-prefix-cls}-tab-text::before {
+      .@{tabs-prefix-cls}-tab-title::before {
         background-color: @tabs-line-color-title-bg_hover;
       }
     }
 
     &-active,
     &-active:hover {
-      .@{tabs-prefix-cls}-tab-text::before {
+      .@{tabs-prefix-cls}-tab-title::before {
         background-color: @tabs-line-color-title-bg_active;
       }
     }
 
     &-disabled,
     &-disabled:hover {
-      .@{tabs-prefix-cls}-tab-text::before {
+      .@{tabs-prefix-cls}-tab-title::before {
         opacity: 0;
       }
     }
@@ -383,22 +383,22 @@
       }
 
       &-active {
-        .@{tabs-prefix-cls}-tab-text,
-        .@{tabs-prefix-cls}-tab-text:hover {
+        .@{tabs-prefix-cls}-tab-title,
+        .@{tabs-prefix-cls}-tab-title:hover {
           background-color: @tabs-text-color-title-bg_active;
         }
       }
 
       &-disabled {
-        .@{tabs-prefix-cls}-tab-text,
-        .@{tabs-prefix-cls}-tab-text:hover {
+        .@{tabs-prefix-cls}-tab-title,
+        .@{tabs-prefix-cls}-tab-title:hover {
           background-color: @tabs-text-color-title-bg_disabled;
         }
       }
 
       &-active&-disabled {
-        .@{tabs-prefix-cls}-tab-text,
-        .@{tabs-prefix-cls}-tab-text:hover {
+        .@{tabs-prefix-cls}-tab-title,
+        .@{tabs-prefix-cls}-tab-title:hover {
           background-color: @tabs-text-color-title-bg_disabled_active;
         }
       }
@@ -483,20 +483,22 @@
       }
     }
 
-    &.@{tabs-prefix-cls}-nav-horizontal .@{tabs-prefix-cls}-tab:not(:first-of-type) {
+    &.@{tabs-prefix-cls}-nav-horizontal
+      .@{tabs-prefix-cls}-tab:not(:first-of-type) {
       margin-left: @tabs-capsule-margin-title-horizontal;
 
       &::before {
         position: absolute;
         top: 50%;
         left: -(@tabs-capsule-margin-title-horizontal / 2) - (@tabs-capsule-size-separator-width /
-                2);
+              2);
         display: block;
         width: @tabs-capsule-size-separator-width;
         height: @tabs-capsule-size-separator-height;
         background-color: @tabs-capsule-color-separator-bg;
         transform: translateY(-50%);
-        transition: all @transition-duration-2 @transition-timing-function-linear;
+        transition: all @transition-duration-2
+          @transition-timing-function-linear;
         content: '';
       }
     }

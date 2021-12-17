@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<auto-complete> demo: render [basic] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
+"<span style=\\"width: 360px;\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
 <!--teleport start-->
 <!--teleport end-->"
 `;
 
 exports[`<auto-complete> demo: render [strict] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
+"<span style=\\"width: 360px;\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
 <!--teleport start-->
 <!--teleport end-->"
 `;

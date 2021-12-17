@@ -87,6 +87,7 @@
       flex: 1;
 
       .@{list-prefix-cls}-item-action:not(:first-child) {
+
         margin-top: @list-action-margin-top;
       }
     }
@@ -123,6 +124,8 @@
       flex-wrap: nowrap;
       align-self: center;
       list-style: none;
+      padding: 0;
+      margin: 0;
 
       > li {
         display: inline-block;
@@ -135,7 +138,7 @@
     }
   }
 
-  &-hoverable &-item:hover {
+  &-hover &-item:hover {
     background-color: @list-color-bg-item-hover;
   }
 

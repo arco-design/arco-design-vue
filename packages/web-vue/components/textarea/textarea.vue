@@ -1,5 +1,9 @@
 <template>
-  <div :class="wrapperCls">
+  <div
+    v-bind="getWrapperAttrs($attrs)"
+    :class="wrapperCls"
+    @mousedown="handleMousedown"
+  >
     <div
       v-if="autoSize"
       ref="mirrorRef"
@@ -11,9 +15,9 @@
     <resize-observer @resize="handleResize">
       <textarea
         ref="textareaRef"
-        v-bind="$attrs"
+        v-bind="getTextareaAttrs($attrs)"
         :disabled="disabled"
-        :class="cls"
+        :class="prefixCls"
         :style="textareaStyle"
         :value="computedValue"
         :placeholder="placeholder"
@@ -25,6 +29,7 @@
         @compositionend="handleComposition"
       />
     </resize-observer>
+    <slot name="suffix" />
     <div v-if="maxLength && showWordLimit" :class="`${prefixCls}-word-limit`">
       {{ getTextLength(computedValue) }}/{{ maxLength }}
     </div>
@@ -47,6 +52,7 @@ import {
   defineComponent,
   nextTick,
   onMounted,
+  PropType,
   ref,
   watch,
 } from 'vue';
@@ -55,6 +61,11 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from './utils';
+import { isFunction, isObject } from '../_utils/is';
+import { EmitType } from '../_utils/types';
+import { omit } from '../_utils/omit';
+import { INPUT_EVENTS } from '../_utils/constant';
+import pick from '../_utils/pick';
 
 export default defineComponent({
   name: 'Textarea',
@@ -122,8 +133,37 @@ export default defineComponent({
      * @en Whether to make the textarea adapt to the height of the content
      */
     autoSize: {
-      type: Boolean,
+      type: [Boolean, Object] as PropType<
+        boolean | { minRows?: number; maxRows?: number }
+      >,
       default: false,
+    },
+    /**
+     * @zh 字符长度的计算方法
+     * @en Calculation method of word length
+     */
+    wordLength: {
+      type: Function as PropType<(value: string) => number>,
+    },
+    // for JSX
+    onInput: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
+    },
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
+    },
+    onClear: {
+      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    },
+    onFocus: {
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    },
+    onBlur: {
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
   },
   emits: [
@@ -154,7 +194,7 @@ export default defineComponent({
      */
     'blur',
   ],
-  setup(props, { emit }) {
+  setup(props, { emit, attrs }) {
     const prefixCls = getPrefixCls('textarea');
 
     const textareaRef = ref<HTMLInputElement>();
@@ -166,6 +206,10 @@ export default defineComponent({
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
     const getTextLength = (text: string) => {
+      if (isFunction(props.wordLength)) {
+        return props.wordLength(text);
+      }
+
       return text.replace(/\n|\r/g, '').length;
     };
 
@@ -218,18 +262,18 @@ export default defineComponent({
       });
     };
 
-    const handleFocus = (e: Event) => {
+    const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
-      emit('focus', e);
+      emit('focus', ev);
     };
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = (ev: FocusEvent) => {
       focused.value = false;
-      emit('change', computedValue.value);
-      emit('blur', e);
+      emit('change', computedValue.value, ev);
+      emit('blur', ev);
     };
 
-    const handleComposition = (e: Event) => {
+    const handleComposition = (e: CompositionEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -253,9 +297,9 @@ export default defineComponent({
       }
     };
 
-    const handleClear = () => {
+    const handleClear = (ev: MouseEvent) => {
       updateValue('');
-      emit('clear');
+      emit('clear', ev);
     };
 
     // modelValue发生改变时，更新内部值
@@ -268,33 +312,67 @@ export default defineComponent({
       }
     );
 
+    const getWrapperAttrs = (attr: Record<string, any>) =>
+      omit(attrs, INPUT_EVENTS);
+    const getTextareaAttrs = (attr: Record<string, any>) =>
+      pick(attrs, INPUT_EVENTS);
+
     const wrapperCls = computed(() => [
       `${prefixCls}-wrapper`,
-      {
-        [`${prefixCls}-scroll`]: isScroll.value,
-      },
-    ]);
-
-    const cls = computed(() => [
-      prefixCls,
       {
         [`${prefixCls}-focus`]: focused.value,
         [`${prefixCls}-disabled`]: props.disabled,
         [`${prefixCls}-error`]: props.error,
+        [`${prefixCls}-scroll`]: isScroll.value,
       },
     ]);
 
     let styleDeclaration: CSSStyleDeclaration;
 
+    const lineHeight = ref<number>(0);
+    const outerHeight = ref<number>(0);
+    const minHeight = computed(() => {
+      if (!isObject(props.autoSize) || !props.autoSize.minRows) {
+        return 0;
+      }
+      return props.autoSize.minRows * lineHeight.value + outerHeight.value;
+    });
+    const maxHeight = computed(() => {
+      if (!isObject(props.autoSize) || !props.autoSize.maxRows) {
+        return 0;
+      }
+      return props.autoSize.maxRows * lineHeight.value + outerHeight.value;
+    });
+
     const getMirrorStyle = () => {
-      mirrorStyle.value = getSizeStyles(styleDeclaration);
+      const styles = getSizeStyles(styleDeclaration);
+
+      lineHeight.value = Number.parseInt(styles['line-height'], 10);
+      outerHeight.value =
+        Number.parseInt(styles['border-width'], 10) * 2 +
+        Number.parseInt(styles['padding-top'], 10) +
+        Number.parseInt(styles['padding-bottom'], 10);
+
+      mirrorStyle.value = styles;
+
       nextTick(() => {
         const mirrorHeight = mirrorRef.value?.offsetHeight;
 
+        let height = mirrorHeight ?? 0;
+        let overflow = 'hidden';
+
+        if (minHeight.value && height < minHeight.value) {
+          height = minHeight.value;
+        }
+        if (maxHeight.value && height > maxHeight.value) {
+          height = maxHeight.value;
+          overflow = 'auto';
+        }
+
         textareaStyle.value = {
-          height: `${mirrorHeight}px`,
+          height: `${height}px`,
           resize: 'none',
-          overflow: 'hidden',
+          overflow,
         };
       });
     };
@@ -314,6 +392,13 @@ export default defineComponent({
         getMirrorStyle();
       }
       computeIsScroll();
+    };
+
+    const handleMousedown = (e: MouseEvent) => {
+      if (textareaRef.value && e.target !== textareaRef.value) {
+        e.preventDefault();
+        textareaRef.value.focus();
+      }
     };
 
     const computeIsScroll = () => {
@@ -336,7 +421,6 @@ export default defineComponent({
     return {
       prefixCls,
       wrapperCls,
-      cls,
       textareaRef,
       textareaStyle,
       mirrorRef,
@@ -344,12 +428,15 @@ export default defineComponent({
       computedValue,
       showClearBtn,
       getTextLength,
+      getWrapperAttrs,
+      getTextareaAttrs,
       handleInput,
       handleFocus,
       handleBlur,
       handleComposition,
       handleClear,
       handleResize,
+      handleMousedown,
     };
   },
 });

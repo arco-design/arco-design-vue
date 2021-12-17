@@ -6,6 +6,7 @@
     :disabled="disabled"
     :popup-offset="4"
     :popup-visible="panelVisible"
+    :prevent-focus="true"
     :unmount-on-close="unmountOnClose"
     :popup-container="popupContainer"
     @popupVisibleChange="onPanelVisibleChange"
@@ -101,6 +102,7 @@ import RangePanel from './range-panel';
 import useIsDisabledTime from './hooks/use-is-disabled-time';
 import useMergeState from '../_hooks/use-merge-state';
 import { useI18n } from '../locale';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'TimePicker',
@@ -293,6 +295,33 @@ export default defineComponent({
     unmountOnClose: {
       type: Boolean,
     },
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<
+          (
+            timeString: string | Array<string | undefined> | undefined,
+            time: Date | Array<Date | undefined> | undefined
+          ) => void
+        >
+      >,
+    },
+    onSelect: {
+      type: [Function, Array] as PropType<
+        EmitType<
+          (
+            timeString: string | Array<string | undefined>,
+            time: Date | Array<Date | undefined>
+          ) => void
+        >
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
   },
   emits: [
     /**
@@ -421,8 +450,8 @@ export default defineComponent({
       if (isValueChange(value, computedValue.value)) {
         const formattedValue = getFormattedValue(value, computedFormat.value);
         const dateValue = getDateValue(value);
-        emit('change', formattedValue, dateValue);
         emit('update:modelValue', formattedValue);
+        emit('change', formattedValue, dateValue);
       }
     }
 

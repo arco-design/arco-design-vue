@@ -23,22 +23,29 @@ Multiple sub-items can be embedded in the menu, and the items that are opened by
       :style="{ width: '200px', height: '100%' }"
       :default-open-keys="['0']"
       :default-selected-keys="['0_1']"
-      showCollapseButton
+      show-collapse-button
     >
+    <a-menu-item key="0_0_0" data-obj="1">Menu 1</a-menu-item>
       <a-sub-menu key="0">
-        <template #title><icon-apps /> Navigation 1</template>
+        <template #title>
+          <icon-apps></icon-apps> Navigation 1
+        </template>
         <a-menu-item key="0_0">Menu 1</a-menu-item>
         <a-menu-item key="0_1">Menu 2</a-menu-item>
         <a-menu-item key="0_2" disabled>Menu 3</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="1">
-        <template #title><icon-bug /> Navigation 2</template>
+        <template #title>
+          <icon-bug></icon-bug> Navigation 2
+        </template>
         <a-menu-item key="1_0">Menu 1</a-menu-item>
         <a-menu-item key="1_1">Menu 2</a-menu-item>
         <a-menu-item key="1_2">Menu 3</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="2">
-        <template #title><icon-bulb /> Navigation 3</template>
+        <template #title>
+          <icon-bulb></icon-bulb> Navigation 3
+        </template>
         <a-menu-item-group title="Menu Group 1">
           <a-menu-item key="2_0">Menu 1</a-menu-item>
           <a-menu-item key="2_1">Menu 2</a-menu-item>

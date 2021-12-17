@@ -135,13 +135,10 @@ export default defineComponent({
     /**
      * @zh 切换动画
      * @en The animation of the slide movement
-     * @values 'slide', 'fade'
+     * @values 'slide', 'fade', 'card'
      */
     animationName: {
-      type: String as PropType<AnimationType>,
-      validator: (value: AnimationType) => {
-        return ANIMATIONS.includes(value);
-      },
+      type: String as PropType<AnimationType | 'card'>,
       default: 'slide',
     },
     /**

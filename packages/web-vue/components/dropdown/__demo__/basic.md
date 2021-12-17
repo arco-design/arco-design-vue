@@ -18,13 +18,23 @@ Basic usage of the drop-down menu.
 
 ```vue
 <template>
-  <a-dropdown>
+  <a-dropdown @select="handle">
     <a-button>Click Me</a-button>
     <template #content>
       <a-doption>Option 1</a-doption>
-      <a-doption>Option 2</a-doption>
+      <a-doption disabled>Option 2</a-doption>
       <a-doption>Option 3</a-doption>
     </template>
   </a-dropdown>
 </template>
+
+<script>
+export default {
+  methods:{
+    handle(v) {
+      console.log(v)
+    }
+  }
+}
+</script>
 ```

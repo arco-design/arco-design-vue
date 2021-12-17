@@ -7,12 +7,7 @@ import {
   toRefs,
 } from 'vue';
 import { SiderInjectionKey } from '../layout/context';
-import {
-  LevelContext,
-  LevelInjectionKey,
-  MenuContext,
-  MenuInjectionKey,
-} from './context';
+import { LevelInjectionKey, MenuInjectionKey } from './context';
 import BaseMenu from './base-menu.vue';
 import OverflowWrap from './overflow-wrap';
 
@@ -42,8 +37,8 @@ export default defineComponent({
     );
 
     // 截断上下文
-    provide<MenuContext>(MenuInjectionKey, undefined as any);
-    provide<LevelContext>(LevelInjectionKey, undefined as any);
+    provide(MenuInjectionKey, undefined as any);
+    provide(LevelInjectionKey, undefined as any);
 
     return () => (
       <BaseMenu

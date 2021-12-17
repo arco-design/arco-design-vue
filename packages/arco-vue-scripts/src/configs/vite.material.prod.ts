@@ -4,7 +4,13 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
 import { terser } from 'rollup-plugin-terser';
 
-const getConfig = (input: string): InlineConfig => {
+const getConfig = ({
+  input,
+  name,
+}: {
+  input: string;
+  name: string;
+}): InlineConfig => {
   return {
     mode: 'production',
     build: {
@@ -13,7 +19,11 @@ const getConfig = (input: string): InlineConfig => {
       emptyOutDir: true,
       minify: false,
       rollupOptions: {
-        external: ['vue', /@arco-design\/web-vue/],
+        external: [
+          'vue',
+          '@arco-design/web-vue',
+          '@arco-design/web-vue/es/icon',
+        ],
         output: [
           {
             format: 'module',
@@ -27,10 +37,11 @@ const getConfig = (input: string): InlineConfig => {
             format: 'umd',
             entryFileNames: 'index.min.js',
             sourcemap: true,
-            name: 'ArcoMaterial',
+            name,
             globals: {
               'vue': 'Vue',
               '@arco-design/web-vue': 'ArcoVue',
+              '@arco-design/web-vue/es/icon': 'ArcoVueIcon',
             },
             plugins: [terser()],
           },

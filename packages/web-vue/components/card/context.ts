@@ -1,9 +1,10 @@
-import { InjectionKey } from 'vue';
+import { InjectionKey, Slots, VNode } from 'vue';
 
 export interface CardContext {
   hasMeta: boolean;
   hasGrid: boolean;
-  actions: JSX.Element | null;
+  slots: Slots;
+  renderActions: (vns: VNode[]) => JSX.Element;
 }
 
 export const cardInjectionKey: InjectionKey<CardContext> = Symbol('ArcoCard');

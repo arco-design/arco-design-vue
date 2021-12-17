@@ -98,12 +98,11 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 表单项校验规则
-     * @en Form item validation rules
+     * @zh 表单项校验规则（优先级高于 form 的 rules）
+     * @en Form item validation rules (The priority is higher than the rules of form)
      */
     rules: {
-      type: Array as PropType<FieldRule[]>,
-      default: () => [],
+      type: [Object, Array] as PropType<FieldRule | FieldRule[]>,
     },
     /**
      * @zh 校验状态
@@ -148,8 +147,36 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 标签元素布局组件的 style
+     * @en The style of the label element layout component
+     * @version 2.10.0
+     */
     labelColStyle: Object,
+    /**
+     * @zh 表单控件布局组件的 style
+     * @en The style of the form control layout component
+     * @version 2.10.0
+     */
     wrapperColStyle: Object,
+    /**
+     * @zh 表单项布局选项。参数同 `<row>` 组件一致
+     * @en Form item layout options. The parameters are the same as the `<row>` component
+     * @version 2.10.0
+     */
+    rowProps: Object,
+    /**
+     * @zh 表单项布局组件的 class
+     * @en The class of the form item layout component
+     * @version 2.10.0
+     */
+    rowClass: [String, Array, Object],
+    /**
+     * @zh 表单控件包裹层的 class
+     * @en The class of the form control wrapping layer
+     * @version 2.10.0
+     */
+    contentClass: [String, Array, Object],
   },
   setup(props, { slots, attrs }) {
     const prefixCls = getPrefixCls('form-item');
@@ -190,19 +217,22 @@ export default defineComponent({
       () => props.validateStatus ?? finalStatus.value
     );
     const isError = computed(() => finalStatus.value === 'error');
-    const isRequired = computed(() => {
-      if (props.required) {
-        return true;
+
+    const mergedRules = computed(() => {
+      const baseRules = ([] as FieldRule[]).concat(
+        props.rules ?? formCtx?.rules?.[props.field] ?? []
+      );
+      const hasRequiredRule = baseRules.some((item) => item.required);
+
+      if (props.required && !hasRequiredRule) {
+        return ([{ required: true }] as FieldRule[]).concat(baseRules);
       }
-      if (props.rules && props.rules.length > 0) {
-        for (const rule of props.rules) {
-          if (rule.required) {
-            return true;
-          }
-        }
-      }
-      return false;
+      return baseRules;
     });
+
+    const isRequired = computed(() =>
+      mergedRules.value.some((item) => item.required)
+    );
 
     const helpSlot = usePickSlots(slots, 'help');
 
@@ -233,18 +263,12 @@ export default defineComponent({
       })
     );
 
-    const getRules = (): FieldRule[] => {
-      const requiredRule = isRequired.value ? { required: true } : [];
-
-      return ([] as FieldRule[]).concat(requiredRule).concat(props.rules ?? []);
-    };
-
     const validateField = (): Promise<any> => {
       if (validateDisabled.value) {
         return Promise.resolve();
       }
 
-      const rules = getRules();
+      const rules = mergedRules.value;
       if (!field.value || rules.length === 0) {
         if (finalStatus.value) {
           clearValidate();
@@ -335,18 +359,17 @@ export default defineComponent({
       }
     };
 
-    const setField = ({ value, status, message }: FieldData) => {
+    const setField = (data: FieldData) => {
       if (field.value) {
         validateDisabled.value = true;
-
-        if (value && formCtx?.model[field.value]) {
-          formCtx.model[field.value] = value;
+        if ('value' in data && formCtx?.model && field.value in formCtx.model) {
+          formCtx.model[field.value] = data.value;
         }
 
-        if (status || message) {
+        if (data.status || data.message) {
           updateValidateState(field.value, {
-            status: status ?? '',
-            message: message ?? '',
+            status: data.status ?? '',
+            message: data.message ?? '',
           });
         }
 
@@ -401,6 +424,7 @@ export default defineComponent({
         [`${prefixCls}-has-help`]: Boolean(props.help),
         // [`${prefixCls}-has-feedback`]: itemStatus && props.hasFeedback,
       },
+      props.rowClass,
     ]);
 
     const labelColCls = computed(() => [
@@ -440,7 +464,11 @@ export default defineComponent({
       }
 
       return (
-        <ArcoRow class={cls.value} div={formCtx?.layout !== 'horizontal'}>
+        <ArcoRow
+          {...props.rowProps}
+          class={cls.value}
+          div={formCtx?.layout !== 'horizontal'}
+        >
           {!props.hideLabel && (
             <ArcoCol
               class={labelColCls.value}
@@ -460,7 +488,9 @@ export default defineComponent({
             style={mergedWrapperStyle.value}
             {...mergedWrapperCol.value}
           >
-            <div class={`${prefixCls}-content`}>{children.value}</div>
+            <div class={[`${prefixCls}-content`, props.contentClass]}>
+              {children.value}
+            </div>
             {showMessage.value && (
               <FormItemMessage
                 error={finalMessage.value}

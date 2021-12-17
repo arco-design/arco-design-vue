@@ -1,7 +1,8 @@
 import { computed, toRefs, watchEffect, ref } from 'vue';
 import { debounce } from '../../_utils/debounce';
-import { Node, TreeNodeData } from '../../tree/interface';
+import { Node, TreeNodeData, TreeNodeKey } from '../../tree/interface';
 import { FilterTreeNode } from '../interface';
+import { isUndefined } from '../../_utils/is';
 
 export default function useFilterTreeNode(props: {
   searchValue: string;
@@ -17,14 +18,14 @@ export default function useFilterTreeNode(props: {
   } = toRefs(props);
 
   const defaultFilterMethod = (keyword: string, node: TreeNodeData) => {
-    return !!node.key && node.key.indexOf(keyword) > -1;
+    return !isUndefined(node.key) && String(node.key).indexOf(keyword) > -1;
   };
 
   const filterMethod = computed(
     () => propFilterMethod?.value || defaultFilterMethod
   );
 
-  const filteredKeysSet = ref<Set<string>>();
+  const filteredKeysSet = ref<Set<TreeNodeKey>>();
 
   const isFiltering = computed(() => !!searchValue.value);
 
@@ -52,7 +53,7 @@ export default function useFilterTreeNode(props: {
         filterMethod.value(keyword, node.treeNodeData)
       );
 
-      const _keysSet = new Set<string>();
+      const _keysSet = new Set<TreeNodeKey>();
 
       hitNodes.forEach((node) => {
         _keysSet.add(node.key);

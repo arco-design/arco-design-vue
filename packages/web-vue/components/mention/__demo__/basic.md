@@ -18,6 +18,9 @@ Used to mention someone or something in the input, often used for posting, chatt
 
 ```vue
 <template>
-  <a-mention placeholder="enter something" :data="['Bytedance', 'Bytedesign', 'Bytenumner']" :style="{width:'320px'}"/>
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-mention :data="['Bytedance', 'Bytedesign', 'Bytenumner']" placeholder="enter something" />
+    <a-mention :data="['Bytedance', 'Bytedesign', 'Bytenumner']" type="textarea" placeholder="enter something" />
+  </a-space>
 </template>
 ```

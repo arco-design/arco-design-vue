@@ -23,21 +23,20 @@ import {
   PropType,
   provide,
   reactive,
-  ref,
   toRefs,
-  watchEffect,
+  watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconMenuFold from '../icon/icon-menu-fold';
 import IconMenuUnfold from '../icon/icon-menu-unfold';
 import useMergeState from '../_hooks/use-merge-state';
-import useIsMounted from '../_hooks/use-is-mounted';
 import { provideLevel } from './hooks/use-level';
-import { MenuContext, MenuInjectionKey } from './context';
+import { MenuInjectionKey } from './context';
 import { MenuProps } from './interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
 import useMenuDataCollector from './hooks/use-menu-data-collector';
+import useMenuOpenState from './hooks/use-menu-open-state';
 
 /**
  * @displayName Menu
@@ -86,6 +85,7 @@ export default defineComponent({
     /**
      * @zh 是否折叠菜单
      * @en Whether to collapse the menu
+     * @vModel
      */
     collapsed: {
       type: Boolean,
@@ -129,6 +129,7 @@ export default defineComponent({
     /**
      * @zh 选中的菜单项 key 数组
      * @en The selected menu item key array
+     * @vModel
      */
     selectedKeys: {
       type: Array as PropType<string[]>,
@@ -144,6 +145,7 @@ export default defineComponent({
     /**
      * @zh 展开的子菜单 key 数组
      * @en Expanded submenu key array
+     * @vModel
      */
     openKeys: {
       type: Array as PropType<string[]>,
@@ -176,6 +178,14 @@ export default defineComponent({
      */
     tooltipProps: {
       type: Object,
+    },
+    /**
+     * @zh 默认展开选中的菜单
+     * @en Expand the selected menus by default
+     * @version 2.8.0
+     */
+    autoOpenSelected: {
+      type: Boolean,
     },
     // internal
     prefixCls: {
@@ -252,13 +262,16 @@ export default defineComponent({
       prefixCls,
       triggerProps,
       tooltipProps,
+      autoOpenSelected,
       // internal
       inTrigger,
       siderCollapsed,
       isRoot,
     } = toRefs(props);
 
-    const isMounted = useIsMounted();
+    const { subMenuKeys, menuData } = useMenuDataCollector({
+      isRoot: isRoot.value,
+    });
 
     const [selectedKeys, setSelectedKeys] = useMergeState(
       defaultSelectedKeys.value,
@@ -267,10 +280,16 @@ export default defineComponent({
       })
     );
 
-    const [openKeys, setOpenKeys] = useMergeState(
-      defaultOpenKeys.value,
+    const { openKeys, setOpenKeys, open } = useMenuOpenState(
       reactive({
-        value: propOpenKeys,
+        modelValue: propOpenKeys,
+        defaultValue: defaultOpenKeys,
+        autoOpen,
+        autoOpenSelected,
+        selectedKeys,
+        subMenuKeys,
+        menuData,
+        accordion,
       })
     );
 
@@ -330,40 +349,6 @@ export default defineComponent({
       };
     });
 
-    // Used for autoOpen to set openKeys
-    const { subMenuKeys } = useMenuDataCollector({
-      isRoot: isRoot.value,
-    });
-    let prevSubMenuKeys: string[] = [];
-    let shadowOpenKeys: string[] = [];
-    watchEffect(() => {
-      shadowOpenKeys = [...openKeys.value];
-    });
-
-    // 初次渲染以及子菜单变化时需要响应 autoOpen
-    watchEffect(
-      () => {
-        if (!isMounted.value) return;
-
-        let validOpenKeys = shadowOpenKeys.filter(
-          (i) => subMenuKeys.value.indexOf(i) > -1
-        );
-        if (autoOpen.value) {
-          const keysAdded = subMenuKeys.value.filter(
-            (i) => prevSubMenuKeys.indexOf(i) < 0
-          );
-          validOpenKeys = (shadowOpenKeys || []).concat(keysAdded);
-        }
-        prevSubMenuKeys = subMenuKeys.value.slice();
-        setOpenKeys(
-          accordion.value ? validOpenKeys.slice(0, 1) : validOpenKeys
-        );
-      },
-      {
-        flush: 'post',
-      }
-    );
-
     const expandIconDown = usePickSlots(slots, 'expand-icon-down');
     const expandIconRight = usePickSlots(slots, 'expand-icon-right');
 
@@ -389,24 +374,13 @@ export default defineComponent({
         emit('menu-item-click', key);
       },
       onSubMenuClick: (key: string, level: number) => {
-        let newOpenKeys: string[] = [];
-        if (openKeys.value && openKeys.value.indexOf(key) > -1) {
-          if (accordion.value && level === 1) {
-            newOpenKeys = [];
-          } else {
-            newOpenKeys = openKeys.value.filter((i) => i !== key) || [];
-          }
-        } else if (accordion.value && level === 1) {
-          newOpenKeys = [key];
-        } else {
-          newOpenKeys = openKeys.value.concat([key]) || [];
-        }
+        const newOpenKeys = open(key, level);
         setOpenKeys(newOpenKeys);
         emit('update:openKeys', newOpenKeys);
         emit('sub-menu-click', key, newOpenKeys);
       },
     });
-    provide<MenuContext>(MenuInjectionKey, menuContext);
+    provide(MenuInjectionKey, menuContext);
 
     // provide LevelContext
     provideLevel(1);

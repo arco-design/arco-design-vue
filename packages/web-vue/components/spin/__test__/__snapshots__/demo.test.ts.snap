@@ -35,12 +35,12 @@ exports[`<spin> demo: render [container] correctly 1`] = `
 exports[`<spin> demo: render [dot] correctly 1`] = `
 "<div class=\\"arco-spin\\">
   <div class=\\"arco-spin-icon\\">
-    <div class=\\"arco-dot-loading\\" style=\\"width: 56px; height: 8px;\\">
-      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
-      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
-      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
-      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
-      <div class=\\"arco-dot-loading-item\\" style=\\"width: 8px; height: 8px;\\"></div>
+    <div class=\\"arco-dot-loading\\">
+      <div class=\\"arco-dot-loading-item\\"></div>
+      <div class=\\"arco-dot-loading-item\\"></div>
+      <div class=\\"arco-dot-loading-item\\"></div>
+      <div class=\\"arco-dot-loading-item\\"></div>
+      <div class=\\"arco-dot-loading-item\\"></div>
     </div>
   </div>
   <!---->

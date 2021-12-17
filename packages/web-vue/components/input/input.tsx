@@ -8,6 +8,7 @@ import IconClose from '../icon/icon-close';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { isFunction } from '../_utils/is';
+import { EmitType } from '../_utils/types';
 
 const INPUT_TYPES = ['text', 'password'] as const;
 type InputType = typeof INPUT_TYPES[number];
@@ -105,22 +106,28 @@ export default defineComponent({
     },
     // for JSX
     onInput: {
-      type: Function as PropType<(value: string, e: Event) => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
     },
     onChange: {
-      type: Function as PropType<(value: string) => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(value: string, ev: Event) => void>
+      >,
     },
     onPressEnter: {
-      type: Function as PropType<() => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(ev: KeyboardEvent) => void>
+      >,
     },
     onClear: {
-      type: Function as PropType<() => void>,
+      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
     },
     onFocus: {
-      type: Function as PropType<() => void>,
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
     onBlur: {
-      type: Function as PropType<() => void>,
+      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
     },
   },
   emits: [
@@ -218,18 +225,18 @@ export default defineComponent({
       }
     };
 
-    const handleFocus = (e: Event) => {
+    const handleFocus = (e: FocusEvent) => {
       focused.value = true;
       emit('focus', e);
     };
 
-    const handleBlur = (e: Event) => {
+    const handleBlur = (e: FocusEvent) => {
       focused.value = false;
-      emit('change', computedValue.value);
+      emit('change', computedValue.value, e);
       emit('blur', e);
     };
 
-    const handleComposition = (e: Event) => {
+    const handleComposition = (e: CompositionEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -239,6 +246,7 @@ export default defineComponent({
         updateValue(value);
       } else {
         isComposition.value = true;
+        compositionValue.value = computedValue.value + (e.data ?? '');
       }
     };
 
@@ -248,20 +256,18 @@ export default defineComponent({
       if (!isComposition.value) {
         emit('input', value, e);
         updateValue(value);
-      } else {
-        compositionValue.value = value;
       }
     };
 
-    const handleClear = () => {
-      emit('clear');
+    const handleClear = (ev: MouseEvent) => {
+      emit('clear', ev);
       updateValue('');
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      const keyCode = e.code || e.key;
-      if (!isComposition.value && keyCode === Enter.code) {
-        emit('change', computedValue.value);
+      const keyCode = e.key || e.code;
+      if (!isComposition.value && keyCode === Enter.key) {
+        emit('change', computedValue.value, e);
         emit('pressEnter', e);
       }
     };
@@ -303,19 +309,20 @@ export default defineComponent({
 
     const cls = computed(() => [prefixCls, `${prefixCls}-size-${props.size}`]);
 
-    const wrapperAttrs = omit(attrs, INPUT_EVENTS);
-    const inputAttrs = pick(attrs, INPUT_EVENTS);
+    const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
+    const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
 
     const renderInput = () => (
       <span
+        {...wrapperAttrs.value}
         class={wrapperCls.value}
         onMousedown={handleMousedown}
-        {...wrapperAttrs}
       >
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
         <input
+          {...inputAttrs.value}
           ref={inputRef}
           class={cls.value}
           value={computedValue.value}
@@ -330,7 +337,6 @@ export default defineComponent({
           onCompositionstart={handleComposition}
           onCompositionupdate={handleComposition}
           onCompositionend={handleComposition}
-          {...inputAttrs}
         />
         {showClearBtn.value && (
           <IconHover

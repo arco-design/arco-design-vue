@@ -24,7 +24,7 @@ description: 突出展示某个或某组数字、带描述的统计类数据。
 |format|数值显示的格式（日期模式使用）|`string`|`'HH:mm:ss'`|
 |extra|额外的显示内容|`string`|`-`|
 |start|是否开始动画|`boolean`|`true`|
-|precision|小数保留位数（数字模式使用）|`number`|`-`|
+|precision|小数保留位数（数字模式使用）|`number`|`0`|
 |separator|进位分隔符（数字模式使用）|`string`|`-`|
 |show-group-separator|是否展示进位分隔符（数字模式使用）|`boolean`|`false`|
 |animation|是否开启动画|`boolean`|`false`|

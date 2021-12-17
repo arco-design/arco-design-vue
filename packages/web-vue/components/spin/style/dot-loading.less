@@ -16,29 +16,29 @@
     left: 50%;
     width: @spin-dot-size-width;
     height: @spin-dot-size-width;
-    background-color: @spin-color-icon;
+    background-color: @spin-dot-color-icon_default;
     border-radius: @radius-circle;
     transform: translateX(-50%) scale(0);
     animation: @dot-prefix-cls 2s @transition-timing-function-linear infinite
       forwards;
 
     &:nth-child(2) {
-      background-color: @color-primary-5;
+      background-color: @spin-dot-color-icon_second;
       animation-delay: 400ms;
     }
 
     &:nth-child(3) {
-      background-color: @color-primary-4;
+      background-color: @spin-dot-color-icon_third;
       animation-delay: 800ms;
     }
 
     &:nth-child(4) {
-      background-color: @color-primary-4;
+      background-color: @spin-dot-color-icon_forth;
       animation-delay: 1200ms;
     }
 
     &:nth-child(5) {
-      background-color: @color-primary-2;
+      background-color: @spin-dot-color-icon_last;
       animation-delay: 1600ms;
     }
   }

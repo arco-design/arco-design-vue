@@ -1,19 +1,33 @@
+import { RenderFunction } from 'vue';
+import { TagProps } from '../tag';
+
 export interface CascaderOption {
   /**
    * @zh 选项值
    * @en Option value
    */
-  value: string;
+  value: string | number;
   /**
    * @zh 选项文本
    * @en Option text
    */
   label?: string;
   /**
+   * @zh 自定义渲染
+   * @en Custom render
+   */
+  render?: RenderFunction;
+  /**
    * @zh 是否禁用
    * @en Whether to disable
    */
   disabled?: boolean;
+  /**
+   * @zh 展示的标签属性
+   * @en Displayed tag attributes
+   * @version 2.8.0
+   */
+  tagProps?: TagProps;
   /**
    * @zh 下一级选项
    * @en Next level options

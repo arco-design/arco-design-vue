@@ -31,30 +31,34 @@ export default {
           label: 'Beijing',
           children: [
             {
-              value: 'Beijing',
-              label: 'Beijing',
+              value: 'chaoyang',
+              label: 'ChaoYang',
               children: [
                 {
-                  value: 'chaoyang',
-                  label: 'Chaoyang',
-                  children: [
-                    {
-                      value: 'datunli',
-                      label: 'Datunli',
-                    },
-                  ],
+                  value: 'datunli',
+                  label: 'Datunli',
+                },
+              ],
+            },
+            {
+              value: 'haidian',
+              label: 'Haidian',
+            },
+            {
+              value: 'dongcheng',
+              label: 'Dongcheng',
+            },
+            {
+              value: 'xicheng',
+              label: 'Xicheng',
+              children: [
+                {
+                  value: 'jinrongjie',
+                  label: 'Jinrongjie',
                 },
                 {
-                  value: 'dongcheng',
-                  label: 'Dongcheng',
-                },
-                {
-                  value: 'xicheng',
-                  label: 'Xicheng',
-                },
-                {
-                  value: 'haidian',
-                  label: 'Haidian',
+                  value: 'tianqiao',
+                  label: 'Tianqiao',
                 },
               ],
             },
@@ -65,14 +69,8 @@ export default {
           label: 'Shanghai',
           children: [
             {
-              value: 'shanghaishi',
-              label: 'Shanghai',
-              children: [
-                {
-                  value: 'huangpu',
-                  label: 'Huangpu',
-                },
-              ],
+              value: 'huangpu',
+              label: 'Huangpu',
             },
           ],
         },

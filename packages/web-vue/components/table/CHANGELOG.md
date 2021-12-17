@@ -2,6 +2,47 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 🆕 Feature
+
+- Add span-method prop ([#360](https://github.com/arco-design/arco-design-vue/pull/360))
+
+
+## 2.9.0
+
+`2021-12-03`
+
+### 🐛 BugFix
+
+- Fix the problem that the tree expand button triggers form submission ([#321](https://github.com/arco-design/arco-design-vue/pull/321))
+
+
+## 2.7.0
+
+`2021-11-26`
+
+### 🆕 Feature
+
+- Add `footer` slot ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+- In normal mode, the scroll bar will be turned on when the table width is larger than the container ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+
+
+## 2.6.1
+
+`2021-11-24`
+
+### 💎 Optimization
+
+- Do not scroll when data is empty ([#245](https://github.com/arco-design/arco-design-vue/pull/245))
+
+### 🐛 BugFix
+
+- Fix the issue that the expand row button triggers form submission ([#210](https://github.com/arco-design/arco-design-vue/pull/210))
+
+
 ## 2.3.0
 
 `2021-11-12`

@@ -46,8 +46,8 @@ export const getElementScrollRect = (
     scrollBottom: rect.bottom - containerRect.top,
     scrollLeft: rect.left - containerRect.left,
     scrollRight: rect.right - containerRect.left,
-    width: element.offsetWidth,
-    height: element.offsetHeight,
+    width: element.offsetWidth ?? element.clientWidth,
+    height: element.offsetHeight ?? element.clientHeight,
   };
 };
 

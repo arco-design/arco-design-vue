@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.4.0
+
+`2021-11-17`
+
+### 💅 Style
+
+- set the max size of error to fit parent ([#160](https://github.com/arco-design/arco-design-vue/pull/160))
+
+
 ## 2.1.1
 
 `2021-11-08`

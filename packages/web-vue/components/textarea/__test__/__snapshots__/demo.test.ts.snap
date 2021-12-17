@@ -6,6 +6,12 @@ exports[`<textarea> demo: render [auto-size] correctly 1`] = `
   </div><textarea class=\\"arco-textarea\\"></textarea>
   <!--v-if-->
   <!--v-if-->
+</div>
+<div style=\\"margin-top: 20px;\\" class=\\"arco-textarea-wrapper\\">
+  <div class=\\"arco-textarea-mirror\\">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
+  </div><textarea class=\\"arco-textarea\\"></textarea>
+  <!--v-if-->
+  <!--v-if-->
 </div>"
 `;
 
@@ -14,6 +20,25 @@ exports[`<textarea> demo: render [basic] correctly 1`] = `
   <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
   <!--v-if-->
   <!--v-if-->
+</div>"
+`;
+
+exports[`<textarea> demo: render [status] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <div class=\\"arco-textarea-wrapper arco-textarea-disabled\\">
+      <!--v-if--><textarea disabled=\\"\\" class=\\"arco-textarea\\" placeholder=\\"Disabled status\\"></textarea>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-textarea-wrapper arco-textarea-error\\">
+      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Error status\\"></textarea>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
 </div>"
 `;
 

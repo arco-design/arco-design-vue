@@ -23,7 +23,8 @@
 
 .@{radio-prefix-cls} {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding-left: (@radio-size-mask-height / 2) - (@radio-layout-height / 2);
   font-size: @radio-font-text-size;
   line-height: unset;
@@ -33,13 +34,6 @@
   &-label {
     margin-left: @radio-margin-text-left;
     color: @radio-color-text;
-  }
-
-  &-icon-hover {
-    position: relative;
-    top: -0.09em;
-    line-height: 1;
-    vertical-align: middle;
   }
 
   &-icon {
@@ -118,6 +112,10 @@
       border-color: @color-transparent;
     }
 
+    .@{radio-prefix-cls}-icon::after {
+      background-color: @radio-color-dot-bg_checked_disabled;
+    }
+
     .@{radio-prefix-cls}-label {
       color: @radio-color-text_checked_disabled;
     }
@@ -141,11 +139,11 @@
 
   // button type
   &-button {
-    // ButtonGroup 中使用了 z-index: -1 的伪元素实现背景，为容器提供独立的层叠上下文以保证内部 Radio 表现正常
-    position: relative;
-    z-index: 0;
+    display: inline-flex;
     padding: (@radio-button-spacing / 2);
     line-height: @radio-size-default-height - @radio-button-spacing * 2;
+    background-color: @radio-group-button-color-bg;
+    border-radius: @radio-button-bg-border-radius;
   }
 }
 
@@ -189,30 +187,6 @@
     opacity: 0;
   }
 
-  // 按钮下层的背景色
-  &::after {
-    position: absolute;
-    top: $left;
-    right: $left;
-    bottom: $left;
-    left: -@radio-button-spacing;
-    z-index: -1;
-    display: block;
-    background-color: @radio-group-button-color-bg;
-    content: ' ';
-    pointer-events: none;
-  }
-
-  &:first-of-type::after {
-    border-top-left-radius: @radio-button-border-radius;
-    border-bottom-left-radius: @radio-button-border-radius;
-  }
-
-  &:last-of-type::after {
-    border-top-right-radius: @radio-button-border-radius;
-    border-bottom-right-radius: @radio-button-border-radius;
-  }
-
   &:hover {
     color: @radio-button-color-text_hover;
     background-color: @radio-button-color-bg_hover;
@@ -220,7 +194,6 @@
 
   &.@{radio-prefix-cls}-checked {
     color: @radio-button-color-text_active;
-    font-weight: @radio-button-font-text-weight_active;
     background-color: @radio-button-color-bg_active;
   }
 
@@ -273,7 +246,7 @@
 .@{radio-prefix-cls}-group-direction-vertical {
   // default radio
   .@{radio-prefix-cls} {
-    display: block;
+    display: flex;
     margin-right: 0;
     line-height: @radio-group-size-line-height_vertical;
   }

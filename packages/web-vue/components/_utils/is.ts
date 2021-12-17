@@ -20,6 +20,10 @@ export function isObject(obj: any): obj is { [key: string]: any } {
   return opt.call(obj) === '[object Object]';
 }
 
+export const isPromise = <T>(obj: unknown): obj is Promise<T> => {
+  return opt.call(obj) === '[object Promise]';
+};
+
 export function isString(obj: any): obj is string {
   return opt.call(obj) === '[object String]';
 }

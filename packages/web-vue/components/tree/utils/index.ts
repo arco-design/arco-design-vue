@@ -1,4 +1,4 @@
-import { Node } from '../interface';
+import { Node, TreeNodeKey } from '../interface';
 
 export function getFlattenTreeData(tree: Node[]) {
   const flattenTreeData: Node[] = [];
@@ -16,7 +16,7 @@ export function getFlattenTreeData(tree: Node[]) {
   return flattenTreeData;
 }
 
-export type Key2TreeNode = Record<string, Node>;
+export type Key2TreeNode = Record<TreeNodeKey, Node>;
 export function getKey2TreeNode(flattenTreeData: Node[]) {
   const key2TreeNode: Key2TreeNode = {};
   flattenTreeData.forEach((node) => {
@@ -26,7 +26,7 @@ export function getKey2TreeNode(flattenTreeData: Node[]) {
 }
 
 export function getChildrenKeys(node: Node, filter?: (node: Node) => boolean) {
-  const keys: string[] = [];
+  const keys: TreeNodeKey[] = [];
 
   if (node.children) {
     const filterMethod = (node: Node) => {
@@ -55,8 +55,8 @@ export function isNodeCheckable(node: Node) {
 export function getCheckedStateByCheck(options: {
   node: Node;
   checked: boolean;
-  checkedKeys: string[];
-  indeterminateKeys: string[];
+  checkedKeys: TreeNodeKey[];
+  indeterminateKeys: TreeNodeKey[];
   checkStrictly?: boolean;
 }) {
   const {
@@ -96,14 +96,14 @@ export function getCheckedStateByCheck(options: {
 }
 
 export function getCheckedStateByInitKeys(options: {
-  initCheckedKeys: string[];
+  initCheckedKeys: TreeNodeKey[];
   key2TreeNode: Key2TreeNode;
   checkStrictly?: boolean;
 }) {
   const { initCheckedKeys, key2TreeNode, checkStrictly } = options;
 
-  let checkedKeysSet = new Set<string>();
-  let indeterminateKeys: string[] = [];
+  let checkedKeysSet = new Set<TreeNodeKey>();
+  let indeterminateKeys: TreeNodeKey[] = [];
 
   if (!checkStrictly) {
     initCheckedKeys.forEach((key) => {
@@ -132,8 +132,8 @@ export function getCheckedStateByInitKeys(options: {
 function updateChildrenCheckState(options: {
   node: Node;
   checked: boolean;
-  checkedKeysSet: Set<string>;
-  indeterminateKeysSet: Set<string>;
+  checkedKeysSet: Set<TreeNodeKey>;
+  indeterminateKeysSet: Set<TreeNodeKey>;
 }) {
   const { node, checked, checkedKeysSet, indeterminateKeysSet } = options;
 
@@ -157,8 +157,8 @@ function updateChildrenCheckState(options: {
 // 逐级更新父节点的选中状态
 function updateParentCheckState(options: {
   node: Node;
-  checkedKeysSet: Set<string>;
-  indeterminateKeysSet: Set<string>;
+  checkedKeysSet: Set<TreeNodeKey>;
+  indeterminateKeysSet: Set<TreeNodeKey>;
 }) {
   const { node, checkedKeysSet, indeterminateKeysSet } = options;
 
@@ -188,8 +188,8 @@ function updateParentCheckState(options: {
 
 function getStateFromNodes(options: {
   nodes: Node[];
-  checkedKeysSet: Set<string>;
-  indeterminateKeysSet: Set<string>;
+  checkedKeysSet: Set<TreeNodeKey>;
+  indeterminateKeysSet: Set<TreeNodeKey>;
 }) {
   const { nodes, checkedKeysSet, indeterminateKeysSet } = options;
 

@@ -46,7 +46,7 @@ exports[`<trigger> demo: render [basic] correctly 1`] = `
 
 exports[`<trigger> demo: render [nest] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
-  <!--v-if-->Hover Me
+  <!--v-if-->Click Me
 </button>
 <!--teleport start-->
 <!--teleport end-->"

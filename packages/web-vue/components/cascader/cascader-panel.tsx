@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref, TransitionGroup } from 'vue';
+import { defineComponent, PropType, TransitionGroup } from 'vue';
 import { CascaderOptionInfo } from './interface';
 import CascaderOption from './cascader-option';
 import { getPrefixCls } from '../_utils/global-config';
@@ -24,13 +24,18 @@ export default defineComponent({
     },
     expandTrigger: String,
     multiple: Boolean,
+    totalLevel: {
+      type: Number,
+      required: true,
+    },
+    checkStrictly: Boolean,
   },
   emits: ['clickOption', 'activeChange', 'pathChange'],
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('cascader');
 
-    const panelRefs = ref([]);
-    const optionRefs = ref([]);
+    // const panelRefs = ref([]);
+    // const optionRefs = ref([]);
 
     const renderEmpty = () => {
       return <Empty />;
@@ -38,7 +43,11 @@ export default defineComponent({
 
     const renderColumn = (column: CascaderOptionInfo[], level = 0) => {
       return (
-        <div class={`${prefixCls}-panel-column`} key={`column-${level}`}>
+        <div
+          class={`${prefixCls}-panel-column`}
+          key={`column-${level}`}
+          style={{ zIndex: props.totalLevel - level }}
+        >
           {column.length === 0 ? (
             <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
           ) : (
@@ -47,6 +56,7 @@ export default defineComponent({
                 `${prefixCls}-list`,
                 {
                   [`${prefixCls}-list-multiple`]: Boolean(props?.multiple),
+                  [`${prefixCls}-list-strictly`]: Boolean(props?.checkStrictly),
                 },
               ]}
             >
@@ -61,6 +71,7 @@ export default defineComponent({
                       item.key === props.activeNode?.key
                     }
                     multiple={props.multiple}
+                    checkStrictly={props.checkStrictly}
                     expandTrigger={props.expandTrigger}
                     onClickOption={(
                       option: CascaderOptionInfo,
@@ -82,7 +93,11 @@ export default defineComponent({
     };
 
     return () => (
-      <TransitionGroup tag="div" class={`${prefixCls}-panel`}>
+      <TransitionGroup
+        tag="div"
+        name="cascader-slide"
+        class={`${prefixCls}-panel`}
+      >
         {props.displayColumns.length > 0
           ? props.displayColumns.map((column, index) =>
               renderColumn(column, index)

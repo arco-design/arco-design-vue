@@ -32,7 +32,7 @@ description: A two-column multi-select component that moves elements from one co
 |simple|Whether to open the simple mode (click the option to move)|`boolean`|`false`|
 |one-way|Whether to open the one-way mode (only move to the target selection box)|`boolean`|`false`|
 |show-search|Whether to show the search input|`boolean`|`false`|
-|title|The title of the source and target selection boxes|`[string, string]`|`() => ['Source', 'Target']`|
+|title|The title of the source and target selection boxes|`string[]`|`['Source', 'Target']`|
 ### `<transfer>` Events
 
 |Event Name|Description|Parameters|

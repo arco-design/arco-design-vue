@@ -37,7 +37,9 @@ exports[`<card> demo: render [basic] correctly 1`] = `
   <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\" style=\\"width: 360px;\\">
     <div class=\\"arco-card-header\\">
       <div class=\\"arco-card-header-title\\">Arco Card</div>
-      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->More
+        </a></div>
     </div>
     <!---->
     <div class=\\"arco-card-body\\"> ByteDance's core product, Toutiao (\\"Headlines\\"), is a content platform in China and around the world. Toutiao started out as a news recommendation engine and gradually evolved into a platform delivering content in various formats.
@@ -52,7 +54,9 @@ exports[`<card> demo: render [bordered] correctly 1`] = `
   <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 360px;\\">
     <div class=\\"arco-card-header\\">
       <div class=\\"arco-card-header-title\\">Arco Card</div>
-      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->More
+        </a></div>
     </div>
     <!---->
     <div class=\\"arco-card-body\\"> Card content <br> Card content
@@ -62,7 +66,9 @@ exports[`<card> demo: render [bordered] correctly 1`] = `
   <div class=\\"arco-card arco-card-size-medium arco-card-hoverable\\" style=\\"width: 360px; margin-left: 24px;\\">
     <div class=\\"arco-card-header\\">
       <div class=\\"arco-card-header-title\\">Hover me</div>
-      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->More
+        </a></div>
     </div>
     <!---->
     <div class=\\"arco-card-body\\"> Card content <br> Card content
@@ -79,7 +85,9 @@ exports[`<card> demo: render [content] correctly 1`] = `
   <div class=\\"arco-card-body\\">
     <div style=\\"display: flex; align-items: center; justify-content: space-between;\\"><span style=\\"display: flex; align-items: center; color: rgb(29, 33, 41);\\"><div style=\\"width: 28px; height: 28px; font-size: 14px; margin-right: 8px; background-color: rgb(22, 93, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
       <!--v-if-->
-    </div><span class=\\"arco-typography\\">Username<!----><!--v-if--><!--v-if--><!--v-if--></span></span><a class=\\"arco-link arco-link-status-normal\\">More</a>
+    </div><span class=\\"arco-typography\\">Username<!----><!--v-if--><!--v-if--><!--v-if--></span></span><a class=\\"arco-link arco-link-status-normal\\">
+      <!--v-if-->More
+    </a>
   </div>
   <!---->
 </div>
@@ -95,7 +103,9 @@ exports[`<card> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium card-demo\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\">
@@ -108,7 +118,9 @@ exports[`<card> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium card-demo\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\">
@@ -121,7 +133,9 @@ exports[`<card> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium card-demo\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\">
@@ -134,7 +148,9 @@ exports[`<card> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium card-demo\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\">
@@ -147,7 +163,9 @@ exports[`<card> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium card-demo\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\">
@@ -160,7 +178,9 @@ exports[`<card> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium card-demo\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\">
@@ -173,7 +193,9 @@ exports[`<card> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium card-demo\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\">
@@ -192,7 +214,9 @@ exports[`<card> demo: render [hoverable] correctly 1`] = `
   <div class=\\"arco-card arco-card-size-medium arco-card-bordered arco-card-hoverable\\" style=\\"width: 360px;\\">
     <div class=\\"arco-card-header\\">
       <div class=\\"arco-card-header-title\\">Arco Card</div>
-      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->More
+        </a></div>
     </div>
     <!---->
     <div class=\\"arco-card-body\\"> Card content <br> Card content
@@ -202,7 +226,9 @@ exports[`<card> demo: render [hoverable] correctly 1`] = `
   <div class=\\"arco-card arco-card-size-medium arco-card-bordered arco-card-hoverable card-demo\\">
     <div class=\\"arco-card-header\\">
       <div class=\\"arco-card-header-title\\">Custom hover style</div>
-      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+      <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->More
+        </a></div>
     </div>
     <!---->
     <div class=\\"arco-card-body\\"> Card content <br> Card content
@@ -223,7 +249,9 @@ exports[`<card> demo: render [inner] correctly 1`] = `
     <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\" style=\\"margin-bottom: 20px;\\">
       <div class=\\"arco-card-header\\">
         <div class=\\"arco-card-header-title\\">Inner Card Title</div>
-        <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+            <!--v-if-->More
+          </a></div>
       </div>
       <!---->
       <div class=\\"arco-card-body\\"> Inner Card Content
@@ -233,7 +261,9 @@ exports[`<card> demo: render [inner] correctly 1`] = `
     <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\">
       <div class=\\"arco-card-header\\">
         <div class=\\"arco-card-header-title\\">Inner Card Title</div>
-        <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+        <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+            <!--v-if-->More
+          </a></div>
       </div>
       <!---->
       <div class=\\"arco-card-body\\"> Inner Card Content
@@ -271,7 +301,9 @@ exports[`<card> demo: render [row] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\"> Card content
@@ -283,7 +315,9 @@ exports[`<card> demo: render [row] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\"> Card content
@@ -295,7 +329,9 @@ exports[`<card> demo: render [row] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\"> Card content
@@ -309,7 +345,9 @@ exports[`<card> demo: render [row] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\"> Card content
@@ -321,7 +359,9 @@ exports[`<card> demo: render [row] correctly 1`] = `
       <div class=\\"arco-card arco-card-size-medium\\" style=\\"width: 100%;\\">
         <div class=\\"arco-card-header\\">
           <div class=\\"arco-card-header-title\\">Arco Card</div>
-          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">More</a></div>
+          <div class=\\"arco-card-header-extra\\"><a class=\\"arco-link arco-link-status-normal\\">
+              <!--v-if-->More
+            </a></div>
         </div>
         <!---->
         <div class=\\"arco-card-body\\"> Card content

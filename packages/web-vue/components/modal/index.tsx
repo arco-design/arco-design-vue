@@ -76,6 +76,7 @@ const modal: ModalMethod = {
   ...MESSAGE_TYPES.reduce((pre, value) => {
     pre[value] = (config: ModalConfig) => {
       const _config = {
+        simple: true,
         hideCancel: true,
         messageType: value,
         ...config,

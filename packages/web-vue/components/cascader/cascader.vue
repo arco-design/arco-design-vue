@@ -1,5 +1,6 @@
 <template>
   <trigger
+    v-bind="triggerProps"
     trigger="click"
     :popup-visible="computedPopupVisible"
     position="bl"
@@ -7,6 +8,8 @@
     :popup-offset="4"
     :auto-fit-popup-width="showSearchPanel"
     :popup-container="popupContainer"
+    :prevent-focus="true"
+    :click-to-close="!allowSearch"
     @popup-visible-change="handlePopupVisibleChange"
   >
     <select-view
@@ -45,6 +48,8 @@
         :computed-keys="computedKeys"
         :multiple="multiple"
         :expand-trigger="expandTrigger"
+        :total-level="totalLevel"
+        :check-strictly="checkStrictly"
         @click-option="handleClickOption"
         @active-change="setActiveNode"
         @path-change="setSelectedPath"
@@ -56,14 +61,13 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
 import { getKeysFromValue, getLeafOptionKeys, getOptionInfos } from './utils';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import CascaderPanel from './cascader-panel';
 import CascaderSearchPanel from './cascader-search-panel';
 import { CascaderOption, CascaderOptionInfo } from './interface';
 import { isArray } from '../_utils/is';
-import { InputValueChangeReason } from '../select/select';
-import { Data } from '../_utils/types';
+import { Data, EmitType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 
@@ -86,8 +90,8 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 是否为多选状态
-     * @en Whether it is a multi-selection state
+     * @zh 是否为多选状态（多选模式默认开启搜索）
+     * @en Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)
      */
     multiple: {
       type: Boolean,
@@ -98,8 +102,12 @@ export default defineComponent({
      * @en Value
      */
     modelValue: {
-      type: [String, Array] as PropType<
-        string | string[] | undefined | (string | string[])[]
+      type: [String, Number, Array] as PropType<
+        | string
+        | number
+        | Array<string | number>
+        | undefined
+        | (string | number | Array<string | number>)[]
       >,
     },
     /**
@@ -108,8 +116,12 @@ export default defineComponent({
      * @defaultValue '' | undefined | []
      */
     defaultValue: {
-      type: [String, Array] as PropType<
-        string | string[] | undefined | (string | string[])[]
+      type: [String, Number, Array] as PropType<
+        | string
+        | number
+        | Array<string | number>
+        | undefined
+        | (string | number | Array<string | number>)[]
       >,
       default: (props: Data) =>
         props.multiple ? [] : props.mode === 'value' ? '' : undefined,
@@ -141,10 +153,11 @@ export default defineComponent({
     /**
      * @zh 是否允许搜索
      * @en Whether to allow searching
+     * @defaultValue false (single) | true (multiple)
      */
     allowSearch: {
       type: Boolean,
-      default: false,
+      default: (props: Data) => Boolean(props.multiple),
     },
     /**
      * @zh 是否允许清除
@@ -222,6 +235,53 @@ export default defineComponent({
     formatLabel: {
       type: Function as PropType<(options: CascaderOptionInfo[]) => string>,
     },
+    /**
+     * @zh 下拉菜单的触发器属性
+     * @en Trigger props of the drop-down menu
+     * @type TriggerProps
+     */
+    triggerProps: {
+      type: Object as PropType<TriggerProps>,
+    },
+    /**
+     * @zh 是否开启严格选择模式
+     * @en Whether to enable strict selection mode
+     */
+    checkStrictly: {
+      type: Boolean,
+      default: false,
+    },
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<
+          (
+            value:
+              | string
+              | number
+              | Array<string | number>
+              | undefined
+              | (string | number | Array<string | number>)[]
+          ) => void
+        >
+      >,
+    },
+    onInputValueChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(inputValue: string) => void>
+      >,
+    },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onSearch: {
+      type: [Function, Array] as PropType<
+        EmitType<(inputValue: string) => void>
+      >,
+    },
   },
   emits: [
     'update:modelValue',
@@ -266,15 +326,16 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit }) {
-    const { options } = toRefs(props);
+    const { options, checkStrictly } = toRefs(props);
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
     const _popupVisible = ref(props.defaultPopupVisible);
 
     const optionInfos = ref<CascaderOptionInfo[]>([]);
+    const totalLevel = ref(1);
     const leafOptionSet = new Set<CascaderOptionInfo>();
-    const leafOptionMap = new Map<string, CascaderOptionInfo>();
-    const leafOptionValueMap = new Map<string, CascaderOptionInfo>();
+    const leafOptionMap = new Map<string | number, CascaderOptionInfo>();
+    const leafOptionValueMap = new Map<string | number, CascaderOptionInfo>();
 
     watch(
       options,
@@ -286,6 +347,8 @@ export default defineComponent({
           leafOptionSet,
           leafOptionMap,
           leafOptionValueMap,
+          totalLevel,
+          checkStrictly,
         });
       },
       {
@@ -312,14 +375,21 @@ export default defineComponent({
       Array.from(leafOptionSet).filter(
         (item) =>
           props.filterOption?.(computedInputValue.value, item) ??
-          item.label?.includes(computedInputValue.value)
+          item.label
+            ?.toLocaleLowerCase()
+            .includes(computedInputValue.value?.toLocaleLowerCase())
       )
     );
 
     const updateValue = (
       options?: CascaderOptionInfo | CascaderOptionInfo[]
     ) => {
-      let value: string | string[] | undefined | (string | string[])[];
+      let value:
+        | string
+        | number
+        | Array<string | number>
+        | undefined
+        | (string | number | Array<string | number>)[];
       if (!options) {
         if (!props.pathMode) {
           value = '';
@@ -366,7 +436,9 @@ export default defineComponent({
     };
 
     const selectMultiple = (option: CascaderOptionInfo, checked: boolean) => {
-      const leafOptionKeys = getLeafOptionKeys(option);
+      const leafOptionKeys = props.checkStrictly
+        ? [option.key]
+        : getLeafOptionKeys(option);
 
       const newKeys = checked
         ? computedKeys.value.concat(
@@ -395,10 +467,7 @@ export default defineComponent({
       return option.path.map((item) => item.label).join(' / ');
     };
 
-    const handleInputValueChange = (
-      value: string,
-      reason: InputValueChangeReason
-    ): void => {
+    const handleInputValueChange = (value: string, reason: string): void => {
       if (value !== computedInputValue.value) {
         if (reason === 'manual' && !computedPopupVisible.value) {
           _popupVisible.value = true;
@@ -425,6 +494,10 @@ export default defineComponent({
           }
         }
       } else {
+        if (computedKeys.value.length === 0) {
+          setSelectedPath();
+          setActiveNode();
+        }
         handleInputValueChange('', 'optionListHide');
       }
     });
@@ -560,8 +633,9 @@ export default defineComponent({
           if (option) {
             const value = {
               value: key,
-              label: getOptionLabel(option),
+              label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
               closable: !option.disabled,
+              tagProps: option.tagProps,
             };
             result.push(value);
           }
@@ -578,6 +652,7 @@ export default defineComponent({
         value: option.key,
         label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
         closable: !option?.disabled,
+        tagProps: option.tagProps,
       };
     });
 
@@ -602,6 +677,7 @@ export default defineComponent({
       handleBlur,
       handleRemove,
       handleKeyDown,
+      totalLevel,
     };
   },
 });

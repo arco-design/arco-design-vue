@@ -42,6 +42,8 @@ description: Open a floating layer on the current page to carry related operatio
 |mask-style|Mask style|`CSSProperties`|`-`|
 |modal-class|The classname of the modal|`string \| any[]`|`-`|
 |modal-style|Modal style|`CSSProperties`|`-`|
+|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`|
+|on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|
@@ -81,7 +83,9 @@ The global methods provided by Modal can be used in the following three ways:
 |okButtonProps|Props of confirm button|`any`|`-`|
 |cancelButtonProps|Props of cancel button|`any`|`-`|
 |okLoading|Whether the confirm button is in the loading state|`boolean`|`false`|
+|hideCancel|Whether to hide the cancel button|`boolean`|`false`|
 |mask|Whether to show the mask|`boolean`|`false`|
+|simple|Whether to enable simple mode|`boolean`|`false`|
 |maskClosable|Whether to close the modal when click the mask|`boolean`|`false`|
 |maskStyle|Mask style|`CSSProperties`|`-`|
 |alignCenter|Whether the dialog box is displayed in the center|`boolean`|`false`|

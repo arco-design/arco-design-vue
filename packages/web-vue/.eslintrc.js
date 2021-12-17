@@ -80,6 +80,7 @@ module.exports = {
       { allowShortCircuit: true, allowTernary: true },
     ],
     'no-continue': 0,
+    'no-console': 2,
     // TODO: Temporarily closed
     '@typescript-eslint/no-unused-vars': 0,
     '@typescript-eslint/no-empty-function': 0,

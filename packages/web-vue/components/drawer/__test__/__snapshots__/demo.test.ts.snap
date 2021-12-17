@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<drawer> demo: render [async] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Open Modal
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
 exports[`<drawer> demo: render [basic] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Open Modal
@@ -14,6 +22,16 @@ exports[`<drawer> demo: render [nested] correctly 1`] = `
 </button>
 <!--teleport start-->
 <!--teleport end-->
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<drawer> demo: render [popup-container] correctly 1`] = `
+"<div>
+  <div id=\\"parentNode\\" style=\\"width: 100%; height: 300px; position: relative; overflow: hidden; line-height: 300px; text-align: center;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Open Modal
+    </button></div>
+</div>
 <!--teleport start-->
 <!--teleport end-->"
 `;

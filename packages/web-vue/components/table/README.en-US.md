@@ -24,6 +24,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/fixed.md
 
+@import ./__demo__/span.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/custom.md
@@ -33,46 +35,48 @@ description: It is used for data collection, display, analysis and processing, a
 
 ### `<table>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|columns|Column info of the table|`TableColumn[]`|`[]`|
-|data|Table data|`TableData[]`|`[]`|
-|bordered|Whether to show the border|`boolean \| TableBorder`|`true`|
-|hoverable|Whether to show the hover effect|`boolean`|`true`|
-|stripe|Whether to enable the stripe effect|`boolean`|`false`|
-|size|The size of the table|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`|
-|table-layout-fixed|The table-layout property of the table is set to fixed. After it is set to fixed, the width of the table will not be stretched beyond 100% by the content.|`boolean`|`false`|
-|loading|Whether it is loading state|`boolean`|`false`|
-|hide-header|Whether to hide the header|`boolean`|`false`|
-|row-selection|Table row selector configuration|`TableRowSelection`|`-`|
-|expandable|Expand row configuration of the table|`TableExpandable`|`-`|
-|scroll|Scrolling attribute configuration of the table|`{ x: number; y: number }`|`-`|
-|pagination|Pagination properties configuration|`boolean \| PaginationProps`|`true`|
-|page-position|The position of the page selector|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`|
-|indent-size|The indentation distance of the tree table|`number`|`16`|
-|row-key|Value field of table row `key`|`string`|`'key'`|
-|show-header|Whether to show the header|`boolean`|`true`|
-|virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling|`VirtualListProps`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|columns|Column info of the table|`TableColumn[]`|`[]`||
+|data|Table data|`TableData[]`|`[]`||
+|bordered|Whether to show the border|`boolean \| TableBorder`|`true`||
+|hoverable|Whether to show the hover effect|`boolean`|`true`||
+|stripe|Whether to enable the stripe effect|`boolean`|`false`||
+|size|The size of the table|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`||
+|table-layout-fixed|The table-layout property of the table is set to fixed. After it is set to fixed, the width of the table will not be stretched beyond 100% by the content.|`boolean`|`false`||
+|loading|Whether it is loading state|`boolean`|`false`||
+|hide-header|Whether to hide the header|`boolean`|`false`||
+|row-selection|Table row selector configuration|`TableRowSelection`|`-`||
+|expandable|Expand row configuration of the table|`TableExpandable`|`-`||
+|scroll|Scrolling attribute configuration of the table|`{ x: number; y: number }`|`-`||
+|pagination|Pagination properties configuration|`boolean \| PaginationProps`|`true`||
+|page-position|The position of the page selector|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
+|indent-size|The indentation distance of the tree table|`number`|`16`||
+|row-key|Value field of table row `key`|`string`|`'key'`||
+|show-header|Whether to show the header|`boolean`|`true`||
+|virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling|`VirtualListProps`|`-`||
+|span-method|Cell merge method (The index starts counting from the data item)|`(data: {  record: TableData;  column: TableColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|expand|Triggered when a row is clicked to expand|-|
-|expanded-change|Triggered when the expanded data row changes|-|
-|select|Triggered when the row selector is clicked|-|
-|select-all|Triggered when the select all selector is clicked|-|
-|selection-change|Triggered when the selected data row changes|-|
-|sorter-change|Triggered when the collation changes|-|
-|filter-change|Triggered when the filter options are changed|-|
-|page-change|Triggered when the table pagination changes|-|
-|page-size-change|Triggered when the number of data per page of the table changes|-|
-|cell-click|Triggered when a cell is clicked|-|
-|row-click|Triggered when row data is clicked|-|
-|header-click|Triggered when the header data is clicked|-|
+|expand|Triggered when a row is clicked to expand|rowKey: `string`|
+|expanded-change|Triggered when the expanded data row changes|rowKeys: `string[]`|
+|select|Triggered when the row selector is clicked|rowKeys: `string[]`|
+|select-all|Triggered when the select all selector is clicked|checked: `boolean`|
+|selection-change|Triggered when the selected data row changes|rowKeys: `string[]`|
+|sorter-change|Triggered when the collation changes|dataIndex: `string`<br>direction: `string`|
+|filter-change|Triggered when the filter options are changed|dataIndex: `string`<br>filteredValues: `string[]`|
+|page-change|Triggered when the table pagination changes|page: `number`|
+|page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`|
+|cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumn`|
+|row-click|Triggered when row data is clicked|record: `TableData`|
+|header-click|Triggered when the header data is clicked|column: `TableColumn`|
 ### `<table>` Slots
 
 |Slot Name|Description|Parameters|
 |---|---|---|
+|footer|Table Footer|-|
 |expand-row|Expand row content|record: `TableData`|
 |expand-icon|Expand row icon|-|
 
@@ -96,7 +100,7 @@ description: It is used for data collection, display, analysis and processing, a
 |Slot Name|Description|Parameters|
 |---|---|---|
 |title|Title|-|
-|cell|Cell|record: `TableData`<br>column: `TableColumn`|
+|cell|Cell|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`|
 
 
 
@@ -160,7 +164,7 @@ description: It is used for data collection, display, analysis and processing, a
 |sortable|Sorting related options|`TableSortable`|`-`|
 |filterable|Filter related options|`TableFilterable`|`-`|
 |children|Header sub-data, used for header grouping|`TableColumn[]`|`-`|
-|render|Customize the rendering of column cells|`({    record,    column,  }: {    record: TableData;    column: TableColumn;  }) => VNode`|`-`|
+|render|Customize the rendering of column cells|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`|
 
 
 

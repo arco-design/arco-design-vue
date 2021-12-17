@@ -22,18 +22,22 @@ class NotificationManger {
 
   private readonly notifications: Ref<NotificationItem[]>;
 
+  private readonly position: NotificationPosition;
+
   private notificationCount = 0;
 
   constructor(config: _NotificationConfig, appContext?: AppContext) {
-    const { position } = config;
+    const { position = 'topRight' } = config;
     this.container = getOverlay('notification');
     this.notificationIds = new Set();
     this.notifications = ref([]);
+    this.position = position;
 
     const vm = createVNode(NotificationList, {
       notifications: this.notifications.value,
       position,
       onClose: this.remove,
+      onAfterClose: this.destroy,
     });
 
     if (appContext) {
@@ -93,6 +97,16 @@ class NotificationManger {
 
   clear = () => {
     this.notifications.value.splice(0);
+  };
+
+  destroy = () => {
+    if (this.notifications.value.length === 0) {
+      render(null, this.container);
+      try {
+        document.body.removeChild(this.container);
+        notificationInstance[this.position] = undefined;
+      } catch (err) {}
+    }
   };
 }
 

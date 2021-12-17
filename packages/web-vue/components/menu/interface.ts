@@ -29,6 +29,7 @@ export interface MenuProps {
   scrollConfig?: { [key: string]: any };
   triggerProps?: Data;
   tooltipProps?: Data;
+  autoOpenSelected: boolean;
   // internal
   prefixCls?: string;
   inTrigger: boolean;
@@ -62,3 +63,10 @@ export interface SubMenuPopProps {
   selectable: boolean;
   isChildrenSelected: boolean;
 }
+
+export interface MenuDataItem {
+  key: string;
+  children?: MenuData;
+}
+
+export type MenuData = MenuDataItem[];

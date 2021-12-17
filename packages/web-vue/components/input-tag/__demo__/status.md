@@ -6,21 +6,22 @@ title:
 
 ## zh-CN
 
-输入框有禁用和错误两种状态。
+输入框有禁用、只读和错误三种状态。
 
 ---
 
 ## en-US
 
-The input box has two states: disabled and error.
+The input box has three states: disabled, readonly and error.
 
 ---
 
 ```vue
 <template>
-  <a-space>
-    <a-input-tag :style="{width:'320px'}" placeholder="Please Enter" disabled/>
-    <a-input-tag :style="{width:'320px'}" placeholder="Please Enter" error/>
+  <a-space direction="vertical" size="large">
+    <a-input-tag :default-value="['test']" :style="{width:'320px'}" placeholder="Please Enter" disabled/>
+    <a-input-tag :default-value="['test']" :style="{width:'320px'}" placeholder="Please Enter" readonly/>
+    <a-input-tag :default-value="['test']" :style="{width:'320px'}" placeholder="Please Enter" error/>
   </a-space>
 </template>
 ```

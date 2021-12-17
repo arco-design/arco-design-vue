@@ -57,6 +57,7 @@ description: Used to add hover, click, focus and other events to the element, an
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
 |auto-fit-position|Whether to automatically adjust the position of the popup to fit the window size|`boolean`|`true`|
 |render-to-body|Whether to mount under the `body` element|`boolean`|`true`|
+|prevent-focus|Whether to prevent elements in the pop-up layer from gaining focus when clicked|`boolean`|`false`|
 ### `<trigger>` Events
 
 |Event Name|Description|Parameters|

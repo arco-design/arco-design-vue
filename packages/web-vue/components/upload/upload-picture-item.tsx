@@ -1,4 +1,4 @@
-import { defineComponent, inject, PropType } from 'vue';
+import { computed, defineComponent, inject, PropType } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import UploadProgress from './upload-progress';
 import { FileItem } from './interfaces';
@@ -23,6 +23,12 @@ export default defineComponent({
   setup(props) {
     const prefixCls = getPrefixCls('upload-list');
     const itemCls = `${prefixCls}-picture`;
+    const cls = computed(() => [
+      itemCls,
+      {
+        [`${itemCls}-status-error`]: props.file.status === 'error',
+      },
+    ]);
 
     const uploadCtx = inject(uploadInjectionKey, undefined);
 
@@ -61,7 +67,7 @@ export default defineComponent({
                   {uploadCtx?.customIcon?.retryIcon?.() || <IconUpload />}
                 </span>
               )}
-              {!uploadCtx.disabled && (
+              {!uploadCtx?.disabled && (
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
                   onClick={() => uploadCtx?.onRemove(props.file)}
@@ -75,6 +81,6 @@ export default defineComponent({
       );
     };
 
-    return () => <span class={itemCls}>{renderCard()}</span>;
+    return () => <span class={cls.value}>{renderCard()}</span>;
   },
 });

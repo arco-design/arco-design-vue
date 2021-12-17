@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 💅 样式更新
+
+- 修正禁止模式的样式问题 ([#355](https://github.com/arco-design/arco-design-vue/pull/355))
+
+
+## 2.8.0
+
+`2021-12-01`
+
+### 🆕 新增功能
+
+- 增加最小行和最大行的支持 ([#309](https://github.com/arco-design/arco-design-vue/pull/309))
+
+
+## 2.6.0
+
+`2021-11-19`
+
+### 🆕 新增功能
+
+- 增加 `word-length` 属性 ([#199](https://github.com/arco-design/arco-design-vue/pull/199))
+
+
 ## 2.3.0
 
 `2021-11-12`

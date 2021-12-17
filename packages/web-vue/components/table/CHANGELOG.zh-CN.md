@@ -2,6 +2,47 @@
 changelog: true
 ```
 
+## 2.10.0
+
+`2021-12-10`
+
+### 🆕 新增功能
+
+- 增加 span-method 属性 ([#360](https://github.com/arco-design/arco-design-vue/pull/360))
+
+
+## 2.9.0
+
+`2021-12-03`
+
+### 🐛 问题修复
+
+- 修复树形展开按钮触发表单提交的问题 ([#321](https://github.com/arco-design/arco-design-vue/pull/321))
+
+
+## 2.7.0
+
+`2021-11-26`
+
+### 🆕 新增功能
+
+- 增加 `footer` 插槽 ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+- 常规模式下表格宽度大于容器时会开启滚动条 ([#266](https://github.com/arco-design/arco-design-vue/pull/266))
+
+
+## 2.6.1
+
+`2021-11-24`
+
+### 💎 功能优化
+
+- 数据为空时不展示滚动 ([#245](https://github.com/arco-design/arco-design-vue/pull/245))
+
+### 🐛 问题修复
+
+- 修复展开行按钮触发表单提交的问题 ([#210](https://github.com/arco-design/arco-design-vue/pull/210))
+
+
 ## 2.3.0
 
 `2021-11-12`

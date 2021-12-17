@@ -114,6 +114,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 选项卡头部是否存在水平边距。仅对 `type` 等于 `line`、`text` 类型的选项卡生效
+     * @en Whether there is a horizontal margin on the header of the tab. Only valid for tabs with `type` equal to `line` and `text` type
+     * @version 2.10.0
+     */
+    headerPadding: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     'update:activeKey',
@@ -170,7 +179,7 @@ export default defineComponent({
         title: getValueFromSlotsOrProps('title', vn.props, vn.children),
         key: String(vn.key),
         disabled: getBooleanProp(vn.props?.disabled),
-        closable: getBooleanProp(vn.props?.closable),
+        closable: vn.props?.closable !== false,
       }))
     );
 
@@ -280,6 +289,7 @@ export default defineComponent({
           editable={props.editable}
           animation={props.animation}
           showAddButton={props.showAddButton}
+          headerPadding={props.headerPadding}
           size={props.size}
           type={props.type}
           onClick={handleClick}

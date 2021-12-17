@@ -23,25 +23,26 @@ description: 收纳、排列并展示一系列选项的列表。
 
 ### `<menu>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|theme|菜单的主题|`'light' \| 'dark'`|`'light'`|
-|mode|菜单的模式|`'vertical' \| 'horizontal' \| 'pop' \| 'popButton'`|`'vertical'`|
-|level-indent|层级之间的缩进量|`number`|`-`|
-|auto-open|默认展开所有多级菜单|`boolean`|`false`|
-|collapsed|是否折叠菜单|`boolean`|`-`|
-|default-collapsed|默认是否折叠菜单|`boolean`|`false`|
-|collapsed-width|折叠菜单宽度|`number`|`-`|
-|accordion|开启手风琴效果|`boolean`|`false`|
-|auto-scroll-into-view|是否自动滚动选中项目到可见区域|`boolean`|`false`|
-|show-collapse-button|是否内置折叠按钮|`boolean`|`false`|
-|selected-keys|选中的菜单项 key 数组|`string[]`|`-`|
-|default-selected-keys|默认选中的菜单项 key 数组|`string[]`|`[]`|
-|open-keys|展开的子菜单 key 数组|`string[]`|`-`|
-|default-open-keys|默认展开的子菜单 key 数组|`string[]`|`[]`|
-|scroll-config|滚动到可见区域的配置项，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数|`{ [key: string]: any }`|`-`|
-|trigger-props|弹出模式下可接受所有 `Trigger` 的 `Props`|`object`|`-`|
-|tooltip-props|弹出模式下可接受所有 `ToolTip` 的 `Props`|`object`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|theme|菜单的主题|`'light' \| 'dark'`|`'light'`||
+|mode|菜单的模式|`'vertical' \| 'horizontal' \| 'pop' \| 'popButton'`|`'vertical'`||
+|level-indent|层级之间的缩进量|`number`|`-`||
+|auto-open|默认展开所有多级菜单|`boolean`|`false`||
+|collapsed **(v-model)**|是否折叠菜单|`boolean`|`-`||
+|default-collapsed|默认是否折叠菜单|`boolean`|`false`||
+|collapsed-width|折叠菜单宽度|`number`|`-`||
+|accordion|开启手风琴效果|`boolean`|`false`||
+|auto-scroll-into-view|是否自动滚动选中项目到可见区域|`boolean`|`false`||
+|show-collapse-button|是否内置折叠按钮|`boolean`|`false`||
+|selected-keys **(v-model)**|选中的菜单项 key 数组|`string[]`|`-`||
+|default-selected-keys|默认选中的菜单项 key 数组|`string[]`|`[]`||
+|open-keys **(v-model)**|展开的子菜单 key 数组|`string[]`|`-`||
+|default-open-keys|默认展开的子菜单 key 数组|`string[]`|`[]`||
+|scroll-config|滚动到可见区域的配置项，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数|`{ [key: string]: any }`|`-`||
+|trigger-props|弹出模式下可接受所有 `Trigger` 的 `Props`|`object`|`-`||
+|tooltip-props|弹出模式下可接受所有 `ToolTip` 的 `Props`|`object`|`-`||
+|auto-open-selected|默认展开选中的菜单|`boolean`|`false`|2.8.0|
 ### `<menu>` Events
 
 |事件名|描述|参数|

@@ -1,228 +1,33 @@
-@import '../../../style/mixins/index.less';
-@import '../../../input/style/input.less';
+@import '../../input-label/style/input-label.less';
 @import '../../../input-tag/style/input-tag.less';
 @import './token.less';
 
 @select-view-prefix-cls: ~'@{prefix}-select-view';
-@select-view-input-prefix-cls: ~'@{select-view-prefix-cls}-input';
-@tail-icon-position-right: 10px;
-
-.size(@size) {
-  @ref-font-size: ~'select-size-@{size}-font-size';
-  @ref-height: ~'select-size-@{size}-height';
-  @ref-padding: ~'select-signal-size-@{size}-padding';
-
-  @font-size: @@ref-font-size;
-  @height: @@ref-height;
-  @padding: @@ref-padding - @select-border-width;
-  @multi-padding: @select-multi-padding - @select-border-width;
-
-  .@{select-view-prefix-cls} {
-    &-size-@{size}&-single {
-      height: @height;
-      padding: 0 @padding;
-      font-size: @font-size;
-      line-height: $height - @select-border-width * 2;
-
-      input {
-        font-size: @font-size;
-      }
-    }
-
-    &-size-@{size}&-multiple {
-      height: auto;
-      padding: 0 @multi-padding;
-      line-height: 0;
-
-      .@{select-view-prefix-cls}-with-prefix {
-        padding-left: @padding;
-      }
-
-      .@{select-view-prefix-cls}-suffix {
-        padding-right: @padding - @multi-padding;
-      }
-
-      input {
-        font-size: @font-size;
-      }
-    }
-  }
-}
-//
-//.color(@prefixCls, @status) {
-//  @suffix: if(@status = default, ~'', ~'-@{status}');
-//
-//  .@{select-view-prefix-cls}@{suffix} {
-//    & when (@status = default), (@status = disabled) {
-//      color: ~'@{select-color-text_@{status}}';
-//    }
-//
-//    &.@{prefixCls}-bordered {
-//      background-color: ~'@{select-color-bg_@{status}}';
-//      border: 1px solid ~'@{select-color-border_@{status}}';
-//    }
-//
-//    &:hover {
-//      background-color: ~'@{select-color-bg_@{status}_hover}';
-//      border-color: ~'@{select-color-border_@{status}_hover}';
-//    }
-//
-//    &.@{prefixCls}-focused when not (@status = disabled) {
-//      background-color: ~'@{select-color-bg_@{status}_focus}';
-//      border-color: ~'@{select-color-border_@{status}_focus}';
-//      box-shadow: 0 0 0 ~'@{select-shadow-distance_@{status}_focus}' ~'@{select-color-shadow_@{status}_focus}';
-//    }
-//
-//    .@{prefixCls}-suffix-icon,
-//    .@{prefixCls}-loading-icon,
-//    .@{prefixCls}-icon,
-//    .@{prefixCls}-clear-btn,
-//    .@{prefixCls}-arrow-icon,
-//    .@{prefixCls}-expand-icon {
-//      & when (@status = default), (@status = disabled) {
-//        color: ~'@{select-color-icon_@{status}}';
-//      }
-//    }
-//  }
-//}
-
-//.color(@select-view-prefix-cls, default);
-//.color(@select-view-prefix-cls, error);
-//.color(@select-view-prefix-cls, disabled);
-//
-//.size(mini);
-//.size(small);
-//.size(medium);
-//.size(large);
-
-.single-size(@size) {
-  &.@{select-view-prefix-cls}-size-@{size} .@{select-view-prefix-cls}-input,
-  &.@{select-view-prefix-cls}-size-@{size} .@{select-view-prefix-cls}-value {
-    .input-size(@size);
-  }
-}
-
 .@{select-view-prefix-cls} {
-  &&-single {
-    .input-wrapper-style(@select-view-prefix-cls);
-    cursor: pointer;
-
-    .hide-input-element() {
-      // A div with width: 0 can also cause line breaks to cause the input box to be stretched, and to separate it from the standard document flow
-      position: absolute;
-      // Need to hide the input while ensuring that it can be focused by the Tab key
-      // So don't use display: none / visibility: hidden
-      width: 0 !important;
-    }
-
-    .@{select-view-prefix-cls}-input {
-      .input-style();
-
-      &-hidden {
-        .hide-input-element();
-      }
-    }
-
-    .@{select-view-prefix-cls}-value {
-      display: inline-block;
-      box-sizing: border-box;
-      width: 100%;
-      .text-ellipsis();
-
-      // Fix the style problem that the height of the outer div of the select layer exceeds 4px when the value is an empty string.
-      &::after {
-        font-size: 0;
-        line-height: 0;
-        visibility: hidden;
-        content: '.';
-      }
-
-      &-hidden {
-        .hide-input-element();
-      }
-    }
-
-    .single-size(mini);
-    .single-size(small);
-    .single-size(medium);
-    .single-size(large);
-  }
-
-  &&-multiple {
-    .input-tag-style(@select-view-prefix-cls);
-  }
-
-  &-multiple,
-  &-single&-search {
-    cursor: text;
-  }
-
   &-single {
-    .@{select-view-prefix-cls}-input-wrapper {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 0;
-      background: transparent;
-      border: none;
-      outline: none;
-      .text-ellipsis();
-    }
+    .input-label-style(@select-view-prefix-cls);
   }
 
   &-multiple {
-    //padding: 0 @select-multi-padding;
-    //line-height: 0;
-    //vertical-align: top;
-    //
-    //.@{select-view-prefix-cls}-view-with-prefix {
-    //  padding-left: @select-signal-size-default-padding;
-    //}
-    //
-    //.@{select-view-prefix-cls}-input {
-    //  flex: 1;
-    //  padding: 0 !important;
-    //  background: none !important;
-    //  border: none !important;
-    //  box-shadow: none !important;
-    //}
-    //
-    //.@{select-view-prefix-cls}-tag {
-    //  max-width: 100%;
-    //}
-    //
-    //&:not(.@{select-view-prefix-cls}-focused) {
-    //  .@{select-view-prefix-cls}-input-tag input:not(:first-child)[value=''] {
-    //    .hide-input-element();
-    //  }
-    //}
+    .input-tag-style(@select-view-prefix-cls);
+
+    &.@{select-view-prefix-cls}-disabled-input {
+      cursor: pointer;
+    }
   }
 
-  //&-disabled {
-  //  cursor: not-allowed;
-  //
-  //  input::placeholder {
-  //    color: @select-color-placeholder_disabled;
-  //  }
-  //}
-
-  &-prefix {
-    display: flex;
-    align-items: center;
-    margin-right: 12px;
-    color: @select-color-icon_default;
-    white-space: nowrap;
-  }
-
-  &-suffix {
-    display: flex;
-    align-items: center;
-    margin-left: 4px;
+  &&-borderless {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   &-clear-btn,
   &-icon {
-    font-size: @select-size-icon;
-    transition: all @transition-duration-1 @transition-timing-function-linear;
+    svg {
+      display: block;
+      font-size: @select-size-icon;
+    }
   }
 
   &-opened &-arrow-icon {
@@ -236,11 +41,6 @@
   &-clear-btn {
     display: none;
     cursor: pointer;
-
-    > svg {
-      position: relative;
-      transition: all @transition-duration-1 @transition-timing-function-linear;
-    }
   }
 
   &:hover &-clear-btn {

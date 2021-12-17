@@ -31,7 +31,7 @@ description: The most basic list display, which can carry text, lists, pictures,
 |split|Whether to show the dividing line|`boolean`|`true`|
 |loading|Whether it is loading state|`boolean`|`false`|
 |hoverable|Whether to display the selected style|`boolean`|`false`|
-|pagination-props|List pagination configuration|`object`|`-`|
+|pagination-props|List pagination configuration|`PaginationProps`|`-`|
 |grid-props|List grid configuration|`object`|`-`|
 |max-height|Maximum height of the list|`number`|`0`|
 |bottom-offset|Trigger the distance threshold to reach the bottom|`number`|`0`|
@@ -42,6 +42,8 @@ description: The most basic list display, which can carry text, lists, pictures,
 |---|---|---|
 |scroll|Triggered when the list scrolls|-|
 |reach-bottom|Triggered when the list reaches the bottom|-|
+|page-change|Triggered when the table pagination changes|page: `number`|
+|page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`|
 ### `<list>` Methods
 
 |Method|Description|Parameters|Return|

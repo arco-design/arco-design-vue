@@ -22,6 +22,8 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 
 @import ./__demo__/all.md
 
+@import ./__demo__/custom.md
+
 
 ### `<pagination>` Props
 
@@ -44,6 +46,8 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 |size|分页选择器的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |page-item-style|分页按钮的样式|`CSSProperties`|`-`|
 |active-page-item-style|当前分页按钮的样式|`CSSProperties`|`-`|
+|base-size|计算显示省略的基础个数。显示省略的个数为 `baseSize + 2 * bufferSize`|`number`|`6`|
+|buffer-size|显示省略号时，当前页码左右显示的页码个数|`number`|`2`|
 ### `<pagination>` Events
 
 |事件名|描述|参数|
@@ -52,8 +56,11 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 |page-size-change|数据条数改变时触发|pageSize: `number`|
 ### `<pagination>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|page-item|分页按钮|type: `PageItemType`The type of page item<br>page: `number`The page number of the paging button (exists only when `type='page'`)<br>element: `VNode`Default page item|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|total|总数|total: `number`|2.9.0|
+|page-item-ellipsis|分页按钮（省略）|-|2.9.0|
+|page-item-step|分页按钮（步）|type: `'previous'\|'next'`The type of page item step|2.9.0|
+|page-item|分页按钮|page: `number`The page number of the paging button|2.9.0|
 
 

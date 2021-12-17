@@ -1,6 +1,8 @@
 <template>
   <li :class="cls" :style="mergedStyle" @click="handleClick">
-    {{ pageNumber }}
+    <slot :page="pageNumber">
+      {{ pageNumber }}
+    </slot>
   </li>
 </template>
 

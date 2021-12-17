@@ -5,7 +5,15 @@ import type {
   Slot,
   VNode,
 } from 'vue';
-import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
@@ -44,6 +52,7 @@ import { VirtualListProps } from '../_components/virtual-list/interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
 import { getChildrenComponents } from '../_utils/vue-utils';
+import { EmitType } from '../_utils/types';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -198,112 +207,144 @@ export default defineComponent({
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
     },
+    /**
+     * @zh 单元格合并方法（索引从数据项开始计数）
+     * @en Cell merge method (The index starts counting from the data item)
+     * @version 2.10.0
+     */
+    spanMethod: {
+      type: Function as PropType<
+        (data: {
+          record: TableData;
+          column: TableColumn;
+          rowIndex: number;
+          columnIndex: number;
+        }) => { rowspan?: number; colspan?: number } | void
+      >,
+    },
     components: {
       type: Object as PropType<TableComponents>,
     },
     // for JSX
     onExpand: {
-      type: Function as PropType<(rowKey: string) => void>,
+      type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
     },
     onExpandedChange: {
-      type: Function as PropType<(rowKeys: string[]) => void>,
+      type: [Function, Array] as PropType<
+        EmitType<(rowKeys: string[]) => void>
+      >,
     },
     onSelect: {
-      type: Function as PropType<(rowKeys: string[]) => void>,
+      type: [Function, Array] as PropType<(rowKeys: string[]) => void>,
     },
     onSelectAll: {
-      type: Function as PropType<(checked: boolean) => void>,
+      type: [Function, Array] as PropType<(checked: boolean) => void>,
     },
     onSelectionChange: {
-      type: Function as PropType<(rowKeys: string[]) => void>,
+      type: [Function, Array] as PropType<(rowKeys: string[]) => void>,
     },
     onSorterChange: {
-      type: Function as PropType<
+      type: [Function, Array] as PropType<
         (dataIndex: string, direction: string) => void
       >,
     },
     onFilterChange: {
-      type: Function as PropType<
+      type: [Function, Array] as PropType<
         (dataIndex: string, filteredValues: string[]) => void
       >,
     },
     onPageChange: {
-      type: Function as PropType<(page: number) => void>,
+      type: [Function, Array] as PropType<(page: number) => void>,
     },
     onPageSizeChange: {
-      type: Function as PropType<(pageSize: number) => void>,
+      type: [Function, Array] as PropType<(pageSize: number) => void>,
     },
     onCellClick: {
-      type: Function as PropType<
+      type: [Function, Array] as PropType<
         (record: TableData, column: TableColumn) => void
       >,
     },
     onRowClick: {
-      type: Function as PropType<(record: TableData) => void>,
+      type: [Function, Array] as PropType<(record: TableData) => void>,
     },
     onHeaderClick: {
-      type: Function as PropType<(column: TableColumn) => void>,
+      type: [Function, Array] as PropType<(column: TableColumn) => void>,
     },
   },
   emits: [
     /**
      * @zh 点击展开行时触发
      * @en Triggered when a row is clicked to expand
+     * @param {string} rowKey
      */
     'expand',
     /**
      * @zh 已展开的数据行发生改变时触发
      * @en Triggered when the expanded data row changes
+     * @param {string[]} rowKeys
      */
     'expandedChange',
     /**
      * @zh 点击行选择器时触发
      * @en Triggered when the row selector is clicked
+     * @param {string[]} rowKeys
      */
     'select',
     /**
      * @zh 点击全选选择器时触发
      * @en Triggered when the select all selector is clicked
+     * @param {boolean} checked
      */
     'selectAll',
     /**
      * @zh 已选择的数据行发生改变时触发
      * @en Triggered when the selected data row changes
+     * @param {string[]} rowKeys
      */
     'selectionChange',
     /**
      * @zh 排序规则发生改变时触发
      * @en Triggered when the collation changes
+     * @param {string} dataIndex
+     * @param {string} direction
      */
     'sorterChange',
     /**
      * @zh 过滤选项发生改变时触发
      * @en Triggered when the filter options are changed
+     * @param {string} dataIndex
+     * @param {string[]} filteredValues
      */
     'filterChange',
     /**
      * @zh 表格分页发生改变时触发
      * @en Triggered when the table pagination changes
+     * @param {number} page
      */
     'pageChange',
     /**
      * @zh 表格每页数据数量发生改变时触发
      * @en Triggered when the number of data per page of the table changes
+     * @param {number} pageSize
      */
     'pageSizeChange',
     /**
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
+     * @param {TableData} record
+     * @param {TableColumn} column
      */
     'cellClick',
     /**
      * @zh 点击行数据时触发
      * @en Triggered when row data is clicked
+     * @param {TableData} record
      */
     'rowClick',
     /**
      * @zh 点击表头数据时触发
      * @en Triggered when the header data is clicked
+     * @param {TableColumn} column
      */
     'headerClick',
   ],
@@ -317,6 +358,11 @@ export default defineComponent({
    * @en Expand row content
    * @slot expand-row
    * @binding {TableData} record
+   */
+  /**
+   * @zh 表格底部
+   * @en Table Footer
+   * @slot footer
    */
   setup(props, { emit, slots }) {
     const { rowKey } = toRefs(props);
@@ -750,7 +796,7 @@ export default defineComponent({
 
     const contentStyle = computed(() => {
       const style: CSSProperties = {};
-      if (isScroll.value.x) {
+      if (isScroll.value.x && flattenData.value.length > 0) {
         style.width = `${props.scroll?.x}px`;
       }
       return style;
@@ -821,7 +867,10 @@ export default defineComponent({
     });
 
     const renderContent = () => {
-      if (isScroll.value.y || isVirtualList.value) {
+      if (
+        (isScroll.value.y || isVirtualList.value) &&
+        flattenData.value.length > 0
+      ) {
         const style: CSSProperties = {
           overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
         };
@@ -1025,6 +1074,7 @@ export default defineComponent({
 
       return (
         <button
+          type="button"
           class={`${prefixCls}-expand-btn`}
           onClick={() => handleExpand(currentKey)}
         >
@@ -1037,7 +1087,50 @@ export default defineComponent({
       );
     };
 
-    const renderRecord = (record: TableData, indentSize: number): VNode => {
+    // [row, column]
+    const tableSpan = computed(() => {
+      const data: Record<string, [number, number]> = {};
+      flattenData.value.forEach((record, rowIndex) => {
+        dataColumns.value.forEach((column, columnIndex) => {
+          const { rowspan = 1, colspan = 1 } =
+            props.spanMethod?.({
+              record,
+              column,
+              rowIndex,
+              columnIndex,
+            }) ?? {};
+          if (rowspan > 1 || colspan > 1) {
+            data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
+          }
+        });
+      });
+
+      return data;
+    });
+
+    const removedCells = computed(() => {
+      const data: string[] = [];
+      for (const indexKey of Object.keys(tableSpan.value)) {
+        const indexArray = indexKey.split('-').map((item) => Number(item));
+        const span = tableSpan.value[indexKey];
+        for (let i = 1; i < span[0]; i++) {
+          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
+          for (let j = 1; j < span[1]; j++) {
+            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
+          }
+        }
+        for (let i = 1; i < span[1]; i++) {
+          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
+        }
+      }
+      return data;
+    });
+
+    const renderRecord = (
+      record: TableData,
+      indentSize: number,
+      rowIndex: number
+    ): VNode => {
       const currentKey = record[rowKey.value];
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
@@ -1102,10 +1195,20 @@ export default defineComponent({
                     }
                   : undefined;
 
+              const cellId = `${rowIndex}-${index}`;
+              const [rowspan, colspan] = tableSpan.value[
+                `${rowIndex}-${index}`
+              ] ?? [1, 1];
+
+              if (removedCells.value.includes(cellId)) {
+                return null;
+              }
+
               return (
                 <Td
                   key={`td-${index}`}
                   style={style}
+                  rowIndex={rowIndex}
                   record={record}
                   isSorted={
                     Boolean(computedSorter.value.filed) &&
@@ -1114,6 +1217,8 @@ export default defineComponent({
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
+                  rowSpan={rowspan}
+                  colSpan={colspan}
                   {...extraProps}
                   onClick={(e: Event) => handleCellClick(record, column)}
                 >
@@ -1124,12 +1229,13 @@ export default defineComponent({
           </Tr>
           {showExpand &&
             (hasSubTree ? (
-              record.children?.map((item) =>
+              record.children?.map((item, index) =>
                 renderRecord(
                   item,
                   subTreeHasSubData
                     ? indentSize + props.indentSize + 20
-                    : indentSize + props.indentSize
+                    : indentSize + props.indentSize,
+                  index
                 )
               )
             ) : (
@@ -1157,7 +1263,8 @@ export default defineComponent({
           {...props.virtualListProps}
           data={flattenData.value}
           v-slots={{
-            item: ({ item }: { item: TableData }) => renderRecord(item, 0),
+            item: ({ item, index }: { item: TableData; index: number }) =>
+              renderRecord(item, 0, index),
           }}
         />
       );
@@ -1171,8 +1278,8 @@ export default defineComponent({
       return (
         <Tbody>
           {flattenData.value.length > 0
-            ? flattenData.value.map((record) =>
-                renderRecord(record, hasSubData ? 20 : 0)
+            ? flattenData.value.map((record, index) =>
+                renderRecord(record, hasSubData ? 20 : 0, index)
               )
             : renderEmpty()}
         </Tbody>

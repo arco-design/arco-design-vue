@@ -4,6 +4,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { isFunction } from '../_utils/is';
 import Message from './message.vue';
 import { MESSAGE_POSITION, MessageItem, MessagePosition } from './interface';
+import usePopupManager from '../_hooks/use-popup-manager';
 
 export default defineComponent({
   name: 'MessageList',
@@ -20,15 +21,18 @@ export default defineComponent({
       },
     },
   },
-  emits: ['close'],
+  emits: ['close', 'afterClose'],
   setup(props, context) {
     const prefixCls = getPrefixCls('message-list');
+    const { zIndex } = usePopupManager({ runOnMounted: true });
 
     return () => (
       <TransitionGroup
         class={[prefixCls, `${prefixCls}-${props.position}`]}
         name="fade-message"
         tag="ul"
+        style={{ zIndex: zIndex.value }}
+        onAfterLeave={() => context.emit('afterClose')}
       >
         {props.messages.map((item) => {
           const slots = {

@@ -232,6 +232,7 @@
       padding: @upload-text-item-padding-vertical 0;
       padding-right: @upload-text-item-padding-progress-right;
       padding-left: @upload-text-item-padding-left;
+      overflow: hidden;
       font-size: @upload-text-item-font-size;
       background-color: @upload-text-item-color-bg;
       border-radius: @upload-text-item-border-radius;
@@ -260,6 +261,7 @@
 
     &-name {
       margin-right: @upload-text-item-margin-status-left;
+      overflow: hidden;
       color: @upload-text-item-color-text;
       font-size: @upload-text-item-font-size;
       line-height: 1.4286;
@@ -314,6 +316,7 @@
   /*** end ****/
   &&-type-picture-card {
     display: flex;
+    flex-wrap: wrap;
     vertical-align: top;
 
     .@{upload-prefix-cls}-list-status {
@@ -327,13 +330,14 @@
     display: inline-block;
     margin-top: 0;
     margin-right: @upload-picture-item-margin-right;
+    margin-bottom: @upload-picture-item-margin-right;
     padding-right: 0;
     overflow: hidden;
     vertical-align: top;
     transition: all @transition-duration-2 @transition-timing-function-standard;
   }
 
-  &-type-picture-card &-item-error &-item-picture-mask {
+  &-picture-status-error &-picture-mask {
     opacity: 1;
   }
 
@@ -380,7 +384,7 @@
     }
 
     &-error-tip {
-      .@{upload-prefix-cls}-list-error-icon {
+      .@{upload-prefix-cls}-icon-error {
         color: @upload-picture-item-color-error-icon;
         font-size: @upload-picture-item-size-error-icon;
       }

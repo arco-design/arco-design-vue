@@ -63,3 +63,50 @@ module.exports = {
   ...
 }
 ```
+
+## 风格配置平台主题包使用
+
+风格配置平台 Vue 的主题包功能正在开发中，完成后会开放使用。
+
+目前可以临时使用 React 的主题包的 less 文件定制 Vue 的主题，可能存在一些样式不生效的问题。
+
+### 使用方法
+
+`less` 需要编译工具的支持，请根据所使用工具开启对 `less` 的支持。
+
+查看主题包中的原始 `index.less` 文件，位于 `node_modules/{theme-package}/index.less`。如下：
+
+```less
+@import "../../@arco-design/web-react/dist/css/index.less";
+
+@import "./theme.less";
+
+@import "./variables.less";
+
+@import "./component.less";
+```
+
+在项目中新建一个 `theme.less` 文件，按照主题包中的内容将 React 样式文件替换为 Vue 样式文件，文件路径请根据实际项目调整。
+
+```less
+@import "../node_modules/@arco-design/web-vue/es/index.less";
+
+@import "../node_modules/{theme-package}/theme.less";
+
+@import "../node_modules/{theme-package}/variables.less";
+
+@import "../node_modules/{theme-package}/component.less";
+```
+
+然后在 `main.ts` 中单独导入这个 `theme.less` 文件引入主题样式
+
+```ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import ArcoVue from '@arco-design/web-vue';
+import './theme.less';
+
+const app = createApp(App);
+app.use(ArcoVue);
+app.mount('#app')
+```

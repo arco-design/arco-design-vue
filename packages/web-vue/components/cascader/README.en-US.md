@@ -18,6 +18,8 @@ description: Refers to the use of multi-level classification to separate the opt
 
 @import ./__demo__/multiple.md
 
+@import ./__demo__/check-strictly.md
+
 @import ./__demo__/search.md
 
 @import ./__demo__/path.md
@@ -28,13 +30,13 @@ description: Refers to the use of multi-level classification to separate the opt
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |path-mode|Whether the value is a path|`boolean`|`false`|
-|multiple|Whether it is a multi-selection state|`boolean`|`false`|
-|model-value **(v-model)**|Value|`string \| string[] \| undefined \| (string \| string[])[]`|`-`|
-|default-value|Default value (uncontrolled state)|`string \| string[] \| undefined \| (string \| string[])[]`|`'' | undefined | []`|
+|multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`|
+|model-value **(v-model)**|Value|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`|
+|default-value|Default value (uncontrolled state)|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' | undefined | []`|
 |options|Options for cascader|`CascaderOption[]`|`[]`|
 |disabled|Whether to disable|`boolean`|`false`|
 |error|Whether it is an error state|`boolean`|`false`|
-|allow-search|Whether to allow searching|`boolean`|`false`|
+|allow-search|Whether to allow searching|`boolean`|`false (single) | true (multiple)`|
 |allow-clear|Whether to allow clear|`boolean`|`false`|
 |input-value **(v-model)**|The value of the input|`string`|`-`|
 |default-input-value|The default value of the input (uncontrolled state)|`string`|`''`|
@@ -44,6 +46,8 @@ description: Refers to the use of multi-level classification to separate the opt
 |placeholder|Placeholder|`string`|`-`|
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
 |format-label|Format display content|`(options: CascaderOptionInfo[]) => string`|`-`|
+|trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`|
+|check-strictly|Whether to enable strict selection mode|`boolean`|`false`|
 ### `<cascader>` Events
 
 |Event Name|Description|Parameters|
@@ -55,5 +59,20 @@ description: Refers to the use of multi-level classification to separate the opt
 |popup-visible-change|Triggered when the display state of the dropdown changes|visible: `boolean`|
 |focus|Triggered when focus|-|
 |blur|Triggered when blur|-|
+
+
+
+
+### CascaderOption
+
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|value|Option value|`string \| number`|`-`||
+|label|Option text|`string`|`-`||
+|render|Custom render|`RenderFunction`|`-`||
+|disabled|Whether to disable|`boolean`|`false`||
+|tagProps|Displayed tag attributes|`TagProps`|`-`|2.8.0|
+|children|Next level options|`CascaderOption[]`|`-`||
+|isLeaf|Whether it is a leaf node|`boolean`|`false`||
 
 

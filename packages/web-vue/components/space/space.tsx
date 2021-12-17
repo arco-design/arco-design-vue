@@ -1,6 +1,12 @@
-import { Comment, CSSProperties, defineComponent, PropType, VNode } from 'vue';
+import {
+  computed,
+  CSSProperties,
+  defineComponent,
+  PropType,
+  Comment,
+} from 'vue';
 import { isArray, isNumber } from '../_utils/is';
-import { unFragment } from '../_utils/vue-utils';
+import { getAllElements } from '../_utils/vue-utils';
 import { getPrefixCls } from '../_utils/global-config';
 
 type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
@@ -45,65 +51,74 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('space');
 
-    return () => {
-      const { size, direction, align, wrap } = props;
-      const innerAlign = align || (direction === 'horizontal' ? 'center' : '');
-      const classNames = [
-        prefixCls,
-        {
-          [`${prefixCls}-${direction}`]: direction,
-          [`${prefixCls}-align-${innerAlign}`]: innerAlign,
-          [`${prefixCls}-wrap`]: wrap,
-        },
-      ];
+    const mergedAlign = computed(
+      () => props.align ?? (props.direction === 'horizontal' ? 'center' : '')
+    );
 
-      function getMargin(size: SpaceSize) {
-        if (isNumber(size)) {
-          return size;
-        }
-        switch (size) {
-          case 'mini':
-            return 4;
-          case 'small':
-            return 8;
-          case 'medium':
-            return 16;
-          case 'large':
-            return 24;
-          default:
-            return 8;
-        }
+    const cls = computed(() => [
+      prefixCls,
+      {
+        [`${prefixCls}-${props.direction}`]: props.direction,
+        [`${prefixCls}-align-${mergedAlign.value}`]: mergedAlign.value,
+        [`${prefixCls}-wrap`]: props.wrap,
+      },
+    ]);
+
+    function getMargin(size: SpaceSize) {
+      if (isNumber(size)) {
+        return size;
+      }
+      switch (size) {
+        case 'mini':
+          return 4;
+        case 'small':
+          return 8;
+        case 'medium':
+          return 16;
+        case 'large':
+          return 24;
+        default:
+          return 8;
+      }
+    }
+
+    const getMarginStyle = (index: number, isLast: boolean): CSSProperties => {
+      const style: CSSProperties = {};
+
+      const marginRight = `${getMargin(
+        isArray(props.size) ? props.size[0] : props.size
+      )}px`;
+      const marginBottom = `${getMargin(
+        isArray(props.size) ? props.size[1] : props.size
+      )}px`;
+
+      if (isLast) {
+        return props.wrap ? { marginBottom } : {};
       }
 
-      const childrenList = unFragment(slots.default?.() || []).filter(
-        (child) => (child as VNode)?.type !== Comment
+      if (props.direction === 'horizontal') {
+        style.marginRight = marginRight;
+      }
+      if (props.direction === 'vertical' || props.wrap) {
+        style.marginBottom = marginBottom;
+      }
+
+      return style;
+    };
+
+    return () => {
+      const children = getAllElements(slots.default?.()).filter(
+        (item) => item.type !== Comment
       );
 
-      const getMarginStyle = (index: number) => {
-        const isLastOne = childrenList.length === index + 1;
-
-        const marginRight = `${getMargin(isArray(size) ? size[0] : size)}px`;
-        const marginBottom = `${getMargin(isArray(size) ? size[1] : size)}px`;
-
-        if (isLastOne) {
-          return [wrap ? { marginBottom } : {}];
-        }
-
-        const style: CSSProperties[] = [];
-        if (direction === 'horizontal' || wrap) style.push({ marginRight });
-        if (direction === 'vertical' || wrap) style.push({ marginBottom });
-
-        return style;
-      };
-
       return (
-        <div class={classNames}>
-          {childrenList.map((child, index) => {
+        <div class={cls.value}>
+          {children.map((child, index) => {
             return (
               <div
-                class={`${prefixCls}-item`}
                 key={index}
-                style={getMarginStyle(index)}
+                class={`${prefixCls}-item`}
+                style={getMarginStyle(index, index === children.length - 1)}
               >
                 {child}
               </div>

@@ -10,6 +10,11 @@ import { getPrefixCls } from '../_utils/global-config';
 
 export default defineComponent({
   name: 'LayoutFooter',
+  /**
+   * @zh 内容
+   * @en Content
+   * @slot default
+   */
   setup() {
     const prefixCls = getPrefixCls('layout-footer');
     const classNames = [prefixCls];

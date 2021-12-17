@@ -4,7 +4,7 @@
       <slot name="title" />
     </span>
     <span
-      v-if="tab.closable || editable"
+      v-if="editable && tab.closable"
       :class="`${prefixCls}-close-btn`"
       @click.stop="handleDelete"
     >
@@ -21,6 +21,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { TabData } from './interface';
+import { isBoolean } from '../_utils/is';
 
 export default defineComponent({
   name: 'TabsTab',
@@ -64,9 +65,17 @@ export default defineComponent({
       },
     ]);
 
+    const showCloseBtn = computed(() => {
+      if (isBoolean(props.tab.closable)) {
+        return props.tab.closable;
+      }
+      return props.editable;
+    });
+
     return {
       prefixCls,
       cls,
+      showCloseBtn,
       handleClick,
       handleDelete,
     };

@@ -7,6 +7,7 @@
     v-bind="triggerProps"
     :position="position"
     :disabled="disabled"
+    :prevent-focus="true"
     :popup-visible="panelVisible"
     :unmount-on-close="unmountOnClose"
     :popup-container="popupContainer"
@@ -89,6 +90,7 @@ import useHeaderValue from './hooks/use-header-value';
 import { omit } from '../_utils/omit';
 import useTimePickerValue from './hooks/use-time-picker-value';
 import { mergeValueWithTime } from './utils';
+import { EmitType } from '../_utils/types';
 
 /**
  * @displayName Common
@@ -280,6 +282,38 @@ export default defineComponent({
     },
     defaultValue: {
       type: [Date, String, Number],
+    },
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
+    },
+    onSelect: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
+    },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
+    onOk: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onSelectShortcut: {
+      type: [Function, Array] as PropType<
+        EmitType<(shortcut: ShortcutType) => void>
+      >,
+    },
+    onPickerValueChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(dateString: string, date: Date) => void>
+      >,
     },
   },
   emits: [
@@ -509,8 +543,8 @@ export default defineComponent({
       const formattedValue = getFormattedValue(value, computedFormat.value);
       const dateValue = getDateValue(value);
       if (isValueChange(value, selectedValue.value)) {
-        emit('change', formattedValue, dateValue);
         emit('update:modelValue', formattedValue);
+        emit('change', formattedValue, dateValue);
       }
 
       if (emitOk) {

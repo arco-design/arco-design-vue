@@ -11,15 +11,15 @@ import {
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
-import { Enter } from '../_utils/keycode';
+import { Backspace, Enter } from '../_utils/keycode';
 import { getValueData } from './utils';
-import usePickSlots from '../_hooks/use-pick-slots';
 import Tag from '../tag';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { TagData } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'InputTag',
@@ -126,34 +126,34 @@ export default defineComponent({
     formatTag: {
       type: Function as PropType<(data: TagData) => string>,
     },
-    // for JSX
-    onChange: {
-      type: Function as PropType<(value: string | number | TagData) => void>,
-    },
-    onInputValueChange: {
-      type: Function as PropType<(inputValue: string) => void>,
-    },
-    onPressEnter: {
-      type: Function as PropType<() => void>,
-    },
-    onRemove: {
-      type: Function as PropType<(removed: string | number) => void>,
-    },
-    onClear: {
-      type: Function as PropType<() => void>,
-    },
-    onFocus: {
-      type: Function as PropType<() => void>,
-    },
-    onBlur: {
-      type: Function as PropType<() => void>,
-    },
-    hideSuffixOnClear: {
-      type: Boolean,
-      default: false,
-    },
     // private
     baseCls: String,
+    focused: Boolean,
+    disabledInput: Boolean,
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number | TagData) => void>
+      >,
+    },
+    onInputValueChange: {
+      type: [Function, Array] as PropType<(inputValue: string) => void>,
+    },
+    onPressEnter: {
+      type: [Function, Array] as PropType<() => void>,
+    },
+    onRemove: {
+      type: [Function, Array] as PropType<(removed: string | number) => void>,
+    },
+    onClear: {
+      type: [Function, Array] as PropType<() => void>,
+    },
+    onFocus: {
+      type: [Function, Array] as PropType<() => void>,
+    },
+    onBlur: {
+      type: [Function, Array] as PropType<() => void>,
+    },
   },
   emits: [
     'update:modelValue',
@@ -203,22 +203,25 @@ export default defineComponent({
 
     const inputRef = ref<HTMLInputElement>();
     const mirrorRef = ref<HTMLElement>();
-    const focused = ref(false);
+
+    const _focused = ref(false);
+    const _value = ref(props.defaultValue);
+    const _inputValue = ref(props.defaultInputValue);
+    const isComposition = ref(false);
+    const compositionValue = ref('');
+
     const inputStyle = reactive({
       width: '12px',
     });
-    const _value = ref(props.defaultValue);
-    const _inputValue = ref(props.defaultInputValue);
 
-    const isComposition = ref(false);
-    const compositionValue = ref('');
+    const mergedFocused = computed(() => props.focused || _focused.value);
 
     const updateInputValue = (value: string) => {
       _inputValue.value = value;
       emit('update:inputValue', value);
     };
 
-    const handleComposition = (e: Event) => {
+    const handleComposition = (e: CompositionEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
@@ -228,6 +231,7 @@ export default defineComponent({
         updateInputValue(value);
       } else {
         isComposition.value = true;
+        compositionValue.value = computedInputValue.value + (e.data ?? '');
       }
     };
 
@@ -235,11 +239,6 @@ export default defineComponent({
     const computedInputValue = computed(
       () => props.inputValue ?? _inputValue.value
     );
-
-    const prefixSlot = usePickSlots(slots, 'prefix');
-    const suffixSlot = usePickSlots(slots, 'suffix');
-
-    const hasSuffix = computed(() => suffixSlot.value);
 
     const handleMousedown = (e: MouseEvent) => {
       if (inputRef.value && e.target !== inputRef.value) {
@@ -254,8 +253,6 @@ export default defineComponent({
       if (!isComposition.value) {
         emit('inputValueChange', value, e);
         updateInputValue(value);
-      } else {
-        compositionValue.value = value;
       }
     };
 
@@ -277,61 +274,74 @@ export default defineComponent({
       return valueData;
     });
 
-    const handleTagClose = (value: string | number) => {
-      const newValue = computedValue.value.filter((v) => v !== value);
+    const handleRemove = (value: string | number, index: number, e: Event) => {
+      const newValue = computedValue.value?.filter((_, i) => i !== index);
       _value.value = newValue;
-      emit('remove', value);
+      emit('remove', value, e);
       emit('update:modelValue', newValue);
-      emit('change', newValue);
+      emit('change', newValue, e);
     };
 
-    const handleClear = (e: Event) => {
+    const handleClear = (e: MouseEvent) => {
       const newValue: any[] = [];
       _value.value = newValue;
       emit('clear', e);
       emit('update:modelValue', newValue);
-      emit('change', newValue);
+      emit('change', newValue, e);
     };
 
     const showClearBtn = computed(
       () =>
-        props.allowClear &&
         !props.disabled &&
+        !props.readonly &&
+        props.allowClear &&
         Boolean(computedValue.value.length)
     );
 
-    const handlePressEnter = () => {
-      const newValue = computedValue.value.concat(computedInputValue.value);
-      _value.value = newValue;
-      emit('update:modelValue', newValue);
-      emit('change', newValue);
-      emit('pressEnter', computedInputValue.value);
+    const handlePressEnter = (e: KeyboardEvent) => {
+      if (computedInputValue.value) {
+        e.preventDefault();
+        const newValue = computedValue.value.concat(computedInputValue.value);
+        _value.value = newValue;
+        emit('update:modelValue', newValue);
+        emit('change', newValue, e);
+        emit('pressEnter', computedInputValue.value, e);
 
-      if (!props.retainInputValue) {
-        _inputValue.value = '';
-        emit('update:inputValue', '');
-        emit('inputValueChange', '');
+        if (!props.retainInputValue) {
+          _inputValue.value = '';
+          emit('update:inputValue', '');
+          emit('inputValueChange', '', e);
+        }
       }
     };
 
-    const handleFocus = () => {
-      focused.value = true;
-      emit('focus');
+    const handleFocus = (ev: FocusEvent) => {
+      _focused.value = true;
+      emit('focus', ev);
     };
 
-    const handleBlur = () => {
-      focused.value = false;
-      emit('blur');
+    const handleBlur = (ev: FocusEvent) => {
+      _focused.value = false;
+      emit('blur', ev);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      const keyCode = e.code || e.key;
+      const keyCode = e.key || e.code;
       if (
         !isComposition.value &&
         computedInputValue.value &&
-        keyCode === Enter.code
+        keyCode === Enter.key
       ) {
-        handlePressEnter();
+        handlePressEnter(e);
+      }
+      if (
+        !isComposition.value &&
+        tags.value.length > 0 &&
+        !computedInputValue.value &&
+        keyCode === Backspace.key
+      ) {
+        const lastIndex = tags.value.length - 1;
+        handleRemove(tags.value[lastIndex].value, lastIndex, e);
       }
     };
 
@@ -343,13 +353,13 @@ export default defineComponent({
       }
     };
 
-    onUpdated(() => {
+    onMounted(() => {
       if (mirrorRef.value) {
         setInputWidth(mirrorRef.value.offsetWidth);
       }
     });
 
-    onMounted(() => {
+    onUpdated(() => {
       if (mirrorRef.value) {
         setInputWidth(mirrorRef.value.offsetWidth);
       }
@@ -366,37 +376,50 @@ export default defineComponent({
       `${prefixCls}-size-${props.size}`,
       {
         [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled-input`]: props.disabledInput,
         [`${prefixCls}-error`]: props.error,
-        [`${prefixCls}-focus`]: focused.value,
+        [`${prefixCls}-focus`]: mergedFocused.value,
         [`${prefixCls}-readonly`]: props.readonly,
         [`${prefixCls}-has-tag`]: tags.value.length > 0,
-        [`${prefixCls}-has-prefix`]: Boolean(prefixSlot.value),
-        [`${prefixCls}-has-suffix`]: hasSuffix.value || showClearBtn.value,
+        [`${prefixCls}-has-prefix`]: Boolean(slots.prefix),
+        [`${prefixCls}-has-suffix`]:
+          Boolean(slots.suffix) || showClearBtn.value,
         [`${prefixCls}-has-placeholder`]: !computedValue.value.length,
       },
     ]);
 
-    const wrapperAttrs = omit(attrs, INPUT_EVENTS);
-    const inputAttrs = pick(attrs, INPUT_EVENTS);
+    const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
+    const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
 
     const render = () => (
-      <span class={cls.value} onMousedown={handleMousedown} {...wrapperAttrs}>
+      <span
+        class={cls.value}
+        onMousedown={handleMousedown}
+        {...wrapperAttrs.value}
+      >
         <span ref={mirrorRef} class={`${prefixCls}-mirror`}>
           {tags.value.length > 0
-            ? computedInputValue.value
-            : computedInputValue.value || props.placeholder}
+            ? compositionValue.value || computedInputValue.value
+            : compositionValue.value ||
+              computedInputValue.value ||
+              props.placeholder}
         </span>
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
-        <TransitionGroup tag="span" name="zoom-in" class={`${prefixCls}-inner`}>
-          {tags.value.map((item) => (
+        <TransitionGroup
+          tag="span"
+          name="input-tag-zoom"
+          class={`${prefixCls}-inner`}
+        >
+          {tags.value.map((item, index) => (
             <Tag
+              {...item.tagProps}
               key={`tag-${item.value}`}
               class={`${prefixCls}-tag`}
-              closable={item.closable}
+              closable={!props.disabled && !props.readonly && item.closable}
               visible
-              onClose={() => handleTagClose(item.value)}
+              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
             >
               {slots.tag?.({ data: item }) ??
                 props.formatTag?.(item) ??
@@ -404,6 +427,7 @@ export default defineComponent({
             </Tag>
           ))}
           <input
+            {...inputAttrs.value}
             ref={inputRef}
             key="input-tag-input"
             class={`${prefixCls}-input`}
@@ -413,7 +437,7 @@ export default defineComponent({
               tags.value.length === 0 ? props.placeholder : undefined
             }
             disabled={props.disabled}
-            readonly={props.readonly}
+            readonly={props.readonly || props.disabledInput}
             onInput={handleInput}
             onKeydown={handleKeyDown}
             onFocus={handleFocus}
@@ -421,30 +445,19 @@ export default defineComponent({
             onCompositionstart={handleComposition}
             onCompositionupdate={handleComposition}
             onCompositionend={handleComposition}
-            {...inputAttrs}
           />
         </TransitionGroup>
         {showClearBtn.value && (
           <IconHover
             class={`${prefixCls}-clear-btn`}
             onClick={handleClear}
-            onMousedown={(e: Event) => e.stopPropagation()}
+            onMousedown={(e: MouseEvent) => e.stopPropagation()}
           >
             <IconClose />
           </IconHover>
         )}
-        {hasSuffix.value && (
-          <span
-            class={[
-              `${prefixCls}-suffix`,
-              {
-                [`${prefixCls}-suffix-hide-on-clear`]:
-                  props.hideSuffixOnClear && showClearBtn.value,
-              },
-            ]}
-          >
-            {slots.suffix?.()}
-          </span>
+        {slots.suffix && (
+          <span class={`${prefixCls}-suffix`}>{slots.suffix()}</span>
         )}
       </span>
     );

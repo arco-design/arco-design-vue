@@ -24,7 +24,7 @@ description: Used as an avatar, it can be displayed in the form of pictures, ico
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |shape|The shape of the avatar, there are two kinds of circle (circle) and square (square)|`'circle' \| 'square'`|`'circle'`|
-|size|The size of the avatar, the unit is `px`|`number`|`40`|
+|size|The size of the avatar, the unit is `px`|`number`|`-`|
 |auto-fix-font-size|Whether to automatically adjust the font size according to the size of the avatar.|`boolean`|`true`|
 |trigger-icon-style|Interactive icon style|`CSSProperties`|`-`|
 |trigger-type|Clickable avatar interaction type|`'mask' \| 'button'`|`'button'`|
@@ -44,12 +44,14 @@ description: Used as an avatar, it can be displayed in the form of pictures, ico
 
 ### `<avatar-group>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|shape|The shape of the avatar in the group, there are two kinds of circle (circle) and square (square)|`'circle' \| 'square'`|`'circle'`|
-|size|The size of the avatar in the group, the unit is `px`|`number`|`40`|
-|auto-fix-font-size|Whether to automatically adjust the font size according to the size of the avatar.|`boolean`|`true`|
-|max-count|The maximum number of avatars displayed in the avatar group. The excess avatars will be displayed in the form of `+x`.|`number`|`-`|
-|z-index-ascend|The avatar `z-index` in the avatar group increases, and the default is decreasing.|`boolean`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|shape|The shape of the avatar in the group, there are two kinds of circle (circle) and square (square)|`'circle' \| 'square'`|`'circle'`||
+|size|The size of the avatar in the group, the unit is `px`|`number`|`-`||
+|auto-fix-font-size|Whether to automatically adjust the font size according to the size of the avatar.|`boolean`|`true`||
+|max-count|The maximum number of avatars displayed in the avatar group. The excess avatars will be displayed in the form of `+x`.|`number`|`-`||
+|z-index-ascend|The avatar `z-index` in the avatar group increases, and the default is decreasing.|`boolean`|`false`||
+|max-style|Style for +x.|`CSSProperties`|`-`|2.7.0|
+|max-popover-trigger-props|TriggerProps for popover around +x.|`TriggerProps`|`-`|2.7.0|
 
 

@@ -13,7 +13,7 @@ describe('Mention', () => {
     await input.setValue('@');
 
     expect(
-      wrapper.findComponent({ name: 'DropDown' }).html()
+      wrapper.findComponent({ name: 'DropdownPanel' }).html()
     ).toMatchSnapshot();
   });
 
@@ -26,7 +26,7 @@ describe('Mention', () => {
     const input = wrapper.find('input');
     await input.trigger('focusin');
     await input.setValue('@');
-    const dropdown = wrapper.findComponent({ name: 'DropDown' });
+    const dropdown = wrapper.findComponent({ name: 'DropdownPanel' });
     await input.trigger('keydown', { code: 'ArrowDown' });
     expect(dropdown.find('.arco-dropdown-option-active').text()).toBe(
       'Bytedesign'

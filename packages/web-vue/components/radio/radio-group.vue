@@ -19,6 +19,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { SIZES, DIRECTIONS, Size, Direction } from '../_utils/constant';
 import { radioGroupKey, RADIO_TYPES, RadioType } from './context';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'RadioGroup',
@@ -77,6 +78,12 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false,
+    },
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number | boolean, e: Event) => void>
+      >,
     },
   },
   emits: [

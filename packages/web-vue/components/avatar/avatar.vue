@@ -1,5 +1,10 @@
 <template>
-  <div :style="wrapperStyle" :class="cls" @click="onClick">
+  <div
+    ref="avatarElementRef"
+    :style="wrapperStyle"
+    :class="cls"
+    @click="onClick"
+  >
     <span v-if="isImage" :class="`${prefixCls}-image`">
       <slot />
     </span>
@@ -51,10 +56,7 @@ export default defineComponent({
      * @zh 头像的尺寸大小，单位是 `px`
      * @en The size of the avatar, the unit is `px`
      */
-    size: {
-      type: Number,
-      default: 40,
-    },
+    size: Number,
     /**
      * @zh 是否自动根据头像尺寸调整字体大小
      * @en Whether to automatically adjust the font size according to the size of the avatar.
@@ -101,6 +103,7 @@ export default defineComponent({
     const { shape, size, autoFixFontSize, triggerType, triggerIconStyle } =
       toRefs(props);
     const textElementRef = ref<HTMLSpanElement>();
+    const avatarElementRef = ref<HTMLDivElement>();
     const hasTriggerIcon = computed(() => Boolean(slots['trigger-icon']));
     const isImage = useIsImage(slots);
     const wrapperStyle = useWrapperStyle(size.value);
@@ -116,8 +119,10 @@ export default defineComponent({
       }
       nextTick(() => {
         const textWidth = element.clientWidth;
-        const scale = size.value / (textWidth + 8);
-        if (scale < 1) {
+        const avatarWidth = size.value || avatarElementRef.value.offsetWidth;
+
+        const scale = avatarWidth / (textWidth + 8);
+        if (avatarWidth && scale < 1) {
           element.style.transform = `scale(${scale}) translateX(-50%)`;
         }
       });
@@ -144,6 +149,7 @@ export default defineComponent({
       wrapperStyle,
       prefixCls,
       textElementRef,
+      avatarElementRef,
       isImage,
       hasTriggerIcon,
       computedTriggerIconStyle,
@@ -176,11 +182,15 @@ const useTriggerIconStyle = ({
 };
 
 const useWrapperStyle = (size: number) => {
-  return computed(() => ({
-    width: `${size}px`,
-    height: `${size}px`,
-    fontSize: `${size / 2}px`,
-  }));
+  return computed(() =>
+    size
+      ? {
+          width: `${size}px`,
+          height: `${size}px`,
+          fontSize: `${size / 2}px`,
+        }
+      : {}
+  );
 };
 
 const useIsImage = (slots: Slots) => {

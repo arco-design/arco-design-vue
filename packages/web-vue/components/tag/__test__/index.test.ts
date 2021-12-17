@@ -10,6 +10,7 @@ describe('Tag', () => {
     });
     await wrapper.trigger('click');
 
-    expect(wrapper.emitted('check')?.[0]).toEqual([false]);
+    // @ts-ignore
+    expect(wrapper.emitted('check')?.[0][0]).toEqual(false);
   });
 });

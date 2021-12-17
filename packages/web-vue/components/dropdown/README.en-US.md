@@ -40,13 +40,20 @@ description: When there are too many commands on the page, the alternative comma
 |select|Triggered when the user selects|-|
 ### `<dropdown>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|content|Content|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|footer|Footer|-|2.10.0|
+|content|Content|-||
 
 
 
 
+### `<doption>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|value|Value|`string\|number`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|
 
 
 
@@ -56,9 +63,28 @@ description: When there are too many commands on the page, the alternative comma
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |title|Group title|`string`|`-`|
+### `<dgroup>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|title|Group title|-|2.10.0|
 
 
 
 
+### `<dsubmenu>` Props
+
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|value|Value|`string\|number`|`-`||
+|disabled|Whether to disable|`boolean`|`false`|2.10.0|
+|trigger|Trigger method|`'hover' \| 'click'`|`'click'`|2.10.0|
+|position|Popup position|`'rt' \| 'lt'`|`'rt'`|2.10.0|
+### `<dsubmenu>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|footer|Footer|-|2.10.0|
+|content|Submenu content|-||
 
 

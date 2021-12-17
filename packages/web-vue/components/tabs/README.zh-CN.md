@@ -21,20 +21,21 @@ description: 将内容组织同一视图中，一次可查看一个视图内容�
 
 ### `<tabs>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|active-key **(v-model)**|当前选中的标签的 `key`|`string`|`-`|
-|default-active-key|默认选中的标签的`key`（非受控状态，为空时选中第一个标签页）|`string`|`''`|
-|position|选项卡的位置|`'left' \| 'right' \| 'top' \| 'bottom'`|`'top'`|
-|size|选项卡的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|type|选项卡的类型|`'line' \| 'card' \| 'card-gutter' \| 'text' \| 'rounded' \| 'capsule'`|`'line'`|
-|direction|选项卡的方向|`'horizontal' \| 'vertical'`|`'horizontal'`|
-|editable|是否开启可编辑模式|`boolean`|`false`|
-|show-add-button|是否显示增加按钮（仅在可编辑模式可用）|`boolean`|`false`|
-|destroy-on-hide|是否在不显示标签时销毁内容|`boolean`|`false`|
-|lazy-load|是否在首次展示标签时挂载内容|`boolean`|`false`|
-|justify|高度撑满容器，只在水平模式下生效。|`boolean`|`false`|
-|animation|是否开启选项内容过渡动画|`boolean`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|active-key **(v-model)**|当前选中的标签的 `key`|`string`|`-`||
+|default-active-key|默认选中的标签的`key`（非受控状态，为空时选中第一个标签页）|`string`|`''`||
+|position|选项卡的位置|`'left' \| 'right' \| 'top' \| 'bottom'`|`'top'`||
+|size|选项卡的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|type|选项卡的类型|`'line' \| 'card' \| 'card-gutter' \| 'text' \| 'rounded' \| 'capsule'`|`'line'`||
+|direction|选项卡的方向|`'horizontal' \| 'vertical'`|`'horizontal'`||
+|editable|是否开启可编辑模式|`boolean`|`false`||
+|show-add-button|是否显示增加按钮（仅在可编辑模式可用）|`boolean`|`false`||
+|destroy-on-hide|是否在不显示标签时销毁内容|`boolean`|`false`||
+|lazy-load|是否在首次展示标签时挂载内容|`boolean`|`false`||
+|justify|高度撑满容器，只在水平模式下生效。|`boolean`|`false`||
+|animation|是否开启选项内容过渡动画|`boolean`|`false`||
+|header-padding|选项卡头部是否存在水平边距。仅对 `type` 等于 `line`、`text` 类型的选项卡生效|`boolean`|`true`|2.10.0|
 ### `<tabs>` Events
 
 |事件名|描述|参数|

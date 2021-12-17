@@ -43,31 +43,24 @@ export default {
             {
               value: 'haidian',
               label: 'Haidian',
-              children: [
-                {
-                  value: 'datunli',
-                  label: 'Datunli',
-                },
-              ],
+              disabled: true
             },
             {
               value: 'dongcheng',
               label: 'Dongcheng',
-              children: [
-                {
-                  value: 'datunli',
-                  label: 'Datunli',
-                },
-              ],
             },
             {
               value: 'xicheng',
-              label: 'XiCheng',
-              disabled: true,
+              label: 'Xicheng',
               children: [
                 {
-                  value: 'datunli',
-                  label: 'Datunli',
+                  value: 'jinrongjie',
+                  label: 'Jinrongjie',
+                },
+                {
+                  value: 'tianqiao',
+                  label: 'Tianqiao',
+                  disabled: true
                 },
               ],
             },
@@ -78,14 +71,8 @@ export default {
           label: 'Shanghai',
           children: [
             {
-              value: 'shanghaishi',
-              label: 'Shanghai',
-              children: [
-                {
-                  value: 'huangpu',
-                  label: 'Huangpu',
-                },
-              ],
+              value: 'huangpu',
+              label: 'Huangpu',
             },
           ],
         },

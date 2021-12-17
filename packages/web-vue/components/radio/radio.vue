@@ -35,6 +35,7 @@ import IconHover from '../_components/icon-hover.vue';
 import type { RadioType } from './context';
 import { RADIO_TYPES, radioGroupKey } from './context';
 import { isUndefined } from '../_utils/is';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Radio',
@@ -65,6 +66,7 @@ export default defineComponent({
      */
     value: {
       type: [String, Number, Boolean] as PropType<string | number | boolean>,
+      default: true,
     },
     /**
      * @zh 单选的类型
@@ -86,8 +88,8 @@ export default defineComponent({
     },
     // for JSX
     onChange: {
-      type: Function as PropType<
-        (value: string | number | boolean, e: Event) => void
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number | boolean, e: Event) => void>
       >,
     },
   },

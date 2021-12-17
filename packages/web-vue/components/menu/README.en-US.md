@@ -25,25 +25,26 @@ description: Organize, arrange, and display a list of options.
 
 ### `<menu>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|theme|Menu theme|`'light' \| 'dark'`|`'light'`|
-|mode|The mode of menu|`'vertical' \| 'horizontal' \| 'pop' \| 'popButton'`|`'vertical'`|
-|level-indent|Indentation between levels|`number`|`-`|
-|auto-open|Expand all multi-level menus by default|`boolean`|`false`|
-|collapsed|Whether to collapse the menu|`boolean`|`-`|
-|default-collapsed|Whether to collapse the menu by default|`boolean`|`false`|
-|collapsed-width|Collapse menu width|`number`|`-`|
-|accordion|Turn on the accordion effect|`boolean`|`false`|
-|auto-scroll-into-view|Whether to automatically scroll the selected item to the visible area|`boolean`|`false`|
-|show-collapse-button|Whether built-in folding button|`boolean`|`false`|
-|selected-keys|The selected menu item key array|`string[]`|`-`|
-|default-selected-keys|The key array of the menu items selected by default|`string[]`|`[]`|
-|open-keys|Expanded submenu key array|`string[]`|`-`|
-|default-open-keys|The default expanded submenu key array|`string[]`|`[]`|
-|scroll-config|Scroll to the configuration items in the visible area and receive all the parameters of [scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)|`{ [key: string]: any }`|`-`|
-|trigger-props|Accept all `Props` of `Trigger` in pop-up mode|`object`|`-`|
-|tooltip-props|Accept all `Props` of `ToolTip` in pop-up mode|`object`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|theme|Menu theme|`'light' \| 'dark'`|`'light'`||
+|mode|The mode of menu|`'vertical' \| 'horizontal' \| 'pop' \| 'popButton'`|`'vertical'`||
+|level-indent|Indentation between levels|`number`|`-`||
+|auto-open|Expand all multi-level menus by default|`boolean`|`false`||
+|collapsed **(v-model)**|Whether to collapse the menu|`boolean`|`-`||
+|default-collapsed|Whether to collapse the menu by default|`boolean`|`false`||
+|collapsed-width|Collapse menu width|`number`|`-`||
+|accordion|Turn on the accordion effect|`boolean`|`false`||
+|auto-scroll-into-view|Whether to automatically scroll the selected item to the visible area|`boolean`|`false`||
+|show-collapse-button|Whether built-in folding button|`boolean`|`false`||
+|selected-keys **(v-model)**|The selected menu item key array|`string[]`|`-`||
+|default-selected-keys|The key array of the menu items selected by default|`string[]`|`[]`||
+|open-keys **(v-model)**|Expanded submenu key array|`string[]`|`-`||
+|default-open-keys|The default expanded submenu key array|`string[]`|`[]`||
+|scroll-config|Scroll to the configuration items in the visible area and receive all the parameters of [scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)|`{ [key: string]: any }`|`-`||
+|trigger-props|Accept all `Props` of `Trigger` in pop-up mode|`object`|`-`||
+|tooltip-props|Accept all `Props` of `ToolTip` in pop-up mode|`object`|`-`||
+|auto-open-selected|Expand the selected menus by default|`boolean`|`false`|2.8.0|
 ### `<menu>` Events
 
 |Event Name|Description|Parameters|

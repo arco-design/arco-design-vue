@@ -3,27 +3,27 @@
 exports[`<avatar> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">A</span>
+    <div class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">A</span>
       <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px; background-color: rgb(51, 112, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span>
+    <div style=\\"background-color: rgb(51, 112, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span>
       <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px; background-color: rgb(20, 169, 248);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Arco</span>
+    <div style=\\"background-color: rgb(20, 169, 248);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Arco</span>
       <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px; background-color: rgb(0, 208, 182);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Design</span>
+    <div style=\\"background-color: rgb(0, 208, 182);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Design</span>
       <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-space-item\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+    <div class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <!--v-if-->
     </div>
   </div>
@@ -31,7 +31,7 @@ exports[`<avatar> demo: render [basic] correctly 1`] = `
 `;
 
 exports[`<avatar> demo: render [fit] correctly 1`] = `
-"<div style=\\"width: 40px; height: 40px; font-size: 20px; margin-right: 24px; vertical-align: middle; background-color: rgb(20, 169, 248);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">B</span>
+"<div style=\\"margin-right: 24px; vertical-align: middle; background-color: rgb(20, 169, 248);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">B</span>
   <!--v-if-->
 </div><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"vertical-align: middle;\\">
   <!--v-if--> Change
@@ -42,19 +42,19 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 32px;\\">
     <div class=\\"arco-avatar-group\\">
-      <div style=\\"width: 40px; height: 40px; font-size: 20px; z-index: 5; margin-left: 0px; background-color: rgb(123, 198, 22);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">A</span>
+      <div style=\\"z-index: 5; background-color: rgb(123, 198, 22);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">A</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 40px; height: 40px; font-size: 20px; z-index: 4; margin-left: -10px; background-color: rgb(20, 201, 201);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">B</span>
+      <div style=\\"z-index: 4; background-color: rgb(20, 201, 201);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">B</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 40px; height: 40px; font-size: 20px; z-index: 3; margin-left: -10px; background-color: rgb(22, 140, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">C</span>
+      <div style=\\"z-index: 3; background-color: rgb(22, 140, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">C</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 40px; height: 40px; font-size: 20px; z-index: 2; margin-left: -10px; background-color: rgb(255, 125, 0);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Arco</span>
+      <div style=\\"z-index: 2; background-color: rgb(255, 125, 0);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Arco</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 40px; height: 40px; font-size: 20px; z-index: 1; margin-left: -10px; background-color: rgb(255, 199, 46);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Design</span>
+      <div style=\\"z-index: 1; background-color: rgb(255, 199, 46);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">Design</span>
         <!--v-if-->
       </div>
     </div>
@@ -89,9 +89,11 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
       <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 3; margin-left: -6px; background-color: rgb(22, 140, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\">C</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 2; margin-left: -6px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon arco-avatar-group-max-count-avatar\\"><span class=\\"arco-avatar-text\\"><div>+2</div><!--teleport start--><!--teleport end--></span>
+      <div style=\\"width: 24px; height: 24px; font-size: 12px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon arco-avatar-group-max-count-avatar\\"><span class=\\"arco-avatar-text\\"><div>+2</div></span>
         <!--v-if-->
       </div>
+      <!--teleport start-->
+      <!--teleport end-->
     </div>
   </div>
 </div>"
@@ -100,28 +102,28 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
 exports[`<avatar> demo: render [icon] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px; background-color: rgb(22, 140, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+    <div style=\\"background-color: rgb(22, 140, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
       <div class=\\"arco-avatar-trigger-icon-button\\" style=\\"color: rgb(52, 145, 250);\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-camera\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
           <path d=\\"m33 12-1.862-3.724A.5.5 0 0 0 30.691 8H17.309a.5.5 0 0 0-.447.276L15 12m16 14a7 7 0 1 1-14 0 7 7 0 0 1 14 0ZM7 40h34a1 1 0 0 0 1-1V13a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v26a1 1 0 0 0 1 1Z\\"></path>
         </svg></div>
     </div>
   </div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px; background-color: rgb(20, 201, 201);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span>
+    <div style=\\"background-color: rgb(20, 201, 201);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span>
       <div class=\\"arco-avatar-trigger-icon-button\\" style=\\"color: rgb(20, 201, 201);\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-edit\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
           <path d=\\"m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36\\"></path>
         </svg></div>
     </div>
   </div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px; background-color: rgb(255, 199, 46);\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span>
+    <div style=\\"background-color: rgb(255, 199, 46);\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span>
       <div class=\\"arco-avatar-trigger-icon-button\\" style=\\"color: rgb(255, 199, 46);\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-edit\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
           <path d=\\"m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36\\"></path>
         </svg></div>
     </div>
   </div>
   <div class=\\"arco-space-item\\">
-    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+    <div class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <div class=\\"arco-avatar-trigger-icon-mask\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-edit\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
           <path d=\\"m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36\\"></path>
         </svg></div>

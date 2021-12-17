@@ -1,15 +1,15 @@
 import type { PropType, CSSProperties } from 'vue';
 import { computed, defineComponent, reactive, ref, toRefs, watch } from 'vue';
-import type { Data } from '../_utils/types';
+import type { Data, EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
-import { SIZES } from '../_utils/constant';
+import { Size } from '../_utils/constant';
 import Pager from './page-item.vue';
 import StepPager from './page-item-step.vue';
 import EllipsisPager from './page-item-ellipsis.vue';
 import PageJumper from './page-jumper.vue';
 import PageOptions from './page-options.vue';
 import { useI18n } from '../locale';
-import { isFunction } from '../_utils/is';
+import { isNumber } from '../_utils/is';
 import type { PageItemType } from './interface';
 import { SelectProps } from '../select';
 
@@ -129,7 +129,7 @@ export default defineComponent({
      * @values 'mini', 'small', 'medium', 'large'
      */
     size: {
-      type: String as PropType<typeof SIZES[number]>,
+      type: String as PropType<Size>,
       default: 'medium',
     },
     /**
@@ -146,17 +146,28 @@ export default defineComponent({
     activePageItemStyle: {
       type: Object as PropType<CSSProperties>,
     },
-    // not opened
+    /**
+     * @zh 计算显示省略的基础个数。显示省略的个数为 `baseSize + 2 * bufferSize`
+     * @en Calculate and display the number of omitted bases. Display the omitted number as `baseSize + 2 * bufferSize`
+     */
+    baseSize: {
+      type: Number,
+      default: 6,
+    },
+    /**
+     * @zh 显示省略号时，当前页码左右显示的页码个数
+     * @en When the ellipsis is displayed, the number of page numbers displayed on the left and right of the current page number
+     */
     bufferSize: {
       type: Number,
       default: 2,
     },
     // for JSX
     onChange: {
-      type: Function as PropType<(value: number) => void>,
+      type: [Function, Array] as PropType<EmitType<(value: number) => void>>,
     },
     onPageSizeChange: {
-      type: Function as PropType<(value: number) => void>,
+      type: [Function, Array] as PropType<EmitType<(value: number) => void>>,
     },
   },
   emits: [
@@ -178,10 +189,29 @@ export default defineComponent({
   /**
    * @zh 分页按钮
    * @en Page item
-   * @slot pageItem
-   * @binding {PageItemType} type The type of page item
-   * @binding {number} page The page number of the paging button (exists only when `type='page'`)
-   * @binding {VNode} element Default page item
+   * @version 2.9.0
+   * @slot page-item
+   * @binding {number} page The page number of the paging button
+   */
+  /**
+   * @zh 分页按钮（步）
+   * @en Page item (step)
+   * @version 2.9.0
+   * @slot page-item-step
+   * @binding {'previous'|'next'} type The type of page item step
+   */
+  /**
+   * @zh 分页按钮（省略）
+   * @en Page item (ellipsis)
+   * @version 2.9.0
+   * @slot page-item-ellipsis
+   */
+  /**
+   * @zh 总数
+   * @en Total
+   * @version 2.9.0
+   * @slot total
+   * @binding {number} total
    */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('pagination');
@@ -198,7 +228,8 @@ export default defineComponent({
     );
 
     const handleClick = (page: number) => {
-      if (page !== computedCurrent.value) {
+      // when pageJumper blur and input.value is undefined, page is illegal
+      if (page !== computedCurrent.value && isNumber(page) && !props.disabled) {
         _current.value = page;
         emit('update:current', page);
         emit('change', page);
@@ -222,41 +253,50 @@ export default defineComponent({
 
     const getPageItemElement = (type: PageItemType, props: Data = {}) => {
       if (type === 'more') {
-        return <EllipsisPager {...props} {...pagerProps} />;
+        return (
+          <EllipsisPager
+            v-slots={{ default: slots['page-item-ellipsis'] }}
+            {...props}
+            {...pagerProps}
+          />
+        );
       }
       if (type === 'previous') {
-        return <StepPager type="previous" {...props} {...pagerProps} />;
+        return (
+          <StepPager
+            v-slots={{ default: slots['page-item-step'] }}
+            type="previous"
+            {...props}
+            {...pagerProps}
+          />
+        );
       }
       if (type === 'next') {
-        return <StepPager type="next" {...props} {...pagerProps} />;
+        return (
+          <StepPager
+            v-slots={{ default: slots['page-item-step'] }}
+            type="next"
+            {...props}
+            {...pagerProps}
+          />
+        );
       }
 
-      return <Pager {...props} {...pagerProps} />;
-    };
-
-    const renderPageItem = (
-      page: number,
-      type: PageItemType,
-      element: JSX.Element
-    ) => {
-      if (isFunction(slots.pageItem)) {
-        return slots.pageItem({ page, type, element });
-      }
-      return element;
+      return (
+        <Pager
+          v-slots={{ default: slots['page-item'] }}
+          {...props}
+          {...pagerProps}
+        />
+      );
     };
 
     const pageList = computed(() => {
       const pageList: Array<JSX.Element | JSX.Element[]> = [];
 
-      if (pages.value < 6 + props.bufferSize * 2) {
+      if (pages.value < props.baseSize + props.bufferSize * 2) {
         for (let i = 1; i <= pages.value; i++) {
-          pageList.push(
-            renderPageItem(
-              i,
-              'page',
-              getPageItemElement('page', { key: i, pageNumber: i })
-            )
-          );
+          pageList.push(getPageItemElement('page', { key: i, pageNumber: i }));
         }
       } else {
         let left = 1;
@@ -264,68 +304,47 @@ export default defineComponent({
         let hasLeftEllipsis = false;
         let hasRightEllipsis = false;
 
-        if (computedCurrent.value > 2 * props.bufferSize) {
+        if (computedCurrent.value > 2 + props.bufferSize) {
           hasLeftEllipsis = true;
           left = Math.min(
-            computedCurrent.value - 2,
+            computedCurrent.value - props.bufferSize,
             pages.value - 2 * props.bufferSize
           );
         }
-        if (computedCurrent.value < pages.value - 3) {
+        if (computedCurrent.value < pages.value - (props.bufferSize + 1)) {
           hasRightEllipsis = true;
-          right = Math.max(computedCurrent.value + 2, 2 * props.bufferSize + 1);
+          right = Math.max(
+            computedCurrent.value + props.bufferSize,
+            2 * props.bufferSize + 1
+          );
         }
 
         if (hasLeftEllipsis) {
+          pageList.push(getPageItemElement('page', { key: 1, pageNumber: 1 }));
           pageList.push(
-            renderPageItem(
-              1,
-              'page',
-              getPageItemElement('page', { key: 1, pageNumber: 1 })
-            )
-          );
-          pageList.push(
-            renderPageItem(
-              0,
-              'more',
-              getPageItemElement('more', {
-                key: 'left-ellipsis-pager',
-                step: -(props.bufferSize * 2 + 1),
-              })
-            )
+            getPageItemElement('more', {
+              key: 'left-ellipsis-pager',
+              step: -(props.bufferSize * 2 + 1),
+            })
           );
         }
 
         for (let i = left; i <= right; i++) {
-          pageList.push(
-            renderPageItem(
-              i,
-              'page',
-              getPageItemElement('page', { key: i, pageNumber: i })
-            )
-          );
+          pageList.push(getPageItemElement('page', { key: i, pageNumber: i }));
         }
 
         if (hasRightEllipsis) {
           pageList.push(
-            renderPageItem(
-              0,
-              'more',
-              getPageItemElement('more', {
-                key: 'right-ellipsis-pager',
-                step: props.bufferSize * 2 + 1,
-              })
-            )
+            getPageItemElement('more', {
+              key: 'right-ellipsis-pager',
+              step: props.bufferSize * 2 + 1,
+            })
           );
           pageList.push(
-            renderPageItem(
-              pages.value,
-              'page',
-              getPageItemElement('page', {
-                key: pages.value,
-                pageNumber: pages.value,
-              })
-            )
+            getPageItemElement('page', {
+              key: pages.value,
+              pageNumber: pages.value,
+            })
           );
         }
       }
@@ -337,40 +356,29 @@ export default defineComponent({
       if (props.simple) {
         return (
           <span class={`${prefixCls}-simple`}>
-            {renderPageItem(
-              0,
-              'previous',
-              getPageItemElement('previous', { simple: true })
-            )}
+            {getPageItemElement('previous', { simple: true })}
             <PageJumper
+              disabled={props.disabled}
               current={computedCurrent.value}
               pages={pages.value}
               simple
               onChange={handleClick}
             />
-            {renderPageItem(
-              0,
-              'next',
-              getPageItemElement('next', { simple: true })
-            )}
+            {getPageItemElement('next', { simple: true })}
           </span>
         );
       }
 
       return (
         <ul class={`${prefixCls}-list`}>
-          {renderPageItem(0, 'previous', getPageItemElement('previous'))}
+          {getPageItemElement('previous', { simple: true })}
           {pageList.value}
           {props.showMore &&
-            renderPageItem(
-              0,
-              'more',
-              getPageItemElement('more', {
-                key: 'more',
-                step: props.bufferSize * 2 + 1,
-              })
-            )}
-          {renderPageItem(0, 'next', getPageItemElement('next'))}
+            getPageItemElement('more', {
+              key: 'more',
+              step: props.bufferSize * 2 + 1,
+            })}
+          {getPageItemElement('next', { simple: true })}
         </ul>
       );
     };
@@ -415,12 +423,14 @@ export default defineComponent({
         <div class={cls.value}>
           {props.showTotal && (
             <span class={`${prefixCls}-total`}>
-              {t('pagination.total', props.total)}
+              {slots.total?.({ total: props.total }) ??
+                t('pagination.total', props.total)}
             </span>
           )}
           {renderPager()}
           {props.showPageSize && (
             <PageOptions
+              disabled={props.disabled}
               sizeOptions={props.pageSizeOptions}
               pageSize={computedPageSize.value}
               size={props.size}
@@ -430,6 +440,7 @@ export default defineComponent({
           )}
           {!props.simple && props.showJumper && (
             <PageJumper
+              disabled={props.disabled}
               current={computedCurrent.value}
               pages={pages.value}
               size={props.size}

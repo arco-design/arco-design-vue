@@ -54,7 +54,7 @@
                 <slot name="title">{{ title }}</slot>
               </div>
               <div
-                v-if="closable"
+                v-if="!simple && closable"
                 :class="`${prefixCls}-close-btn`"
                 @click="handleCancel"
               >
@@ -78,7 +78,7 @@
                 <arco-button
                   type="primary"
                   v-bind="okButtonProps"
-                  :loading="okLoading"
+                  :loading="mergedOkLoading"
                   @click="handleOk"
                 >
                   {{ okDisplayText }}
@@ -94,16 +94,7 @@
 
 <script lang="tsx">
 import type { ComputedRef, CSSProperties, PropType } from 'vue';
-import {
-  defineComponent,
-  computed,
-  ref,
-  watch,
-  inject,
-  provide,
-  reactive,
-  onMounted,
-} from 'vue';
+import { defineComponent, computed, ref, watch, onMounted } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { MessageType } from '../_utils/constant';
 import IconHover from '../_components/icon-hover.vue';
@@ -114,11 +105,10 @@ import IconCheckCircleFill from '../icon/icon-check-circle-fill';
 import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
 import IconCloseCircleFill from '../icon/icon-close-circle-fill';
 import { useI18n } from '../locale';
-import { zIndexInjectionKey } from './context';
 import { useOverflow } from '../_hooks/use-overflow';
 import { getElement } from '../_utils/dom';
-
-const Z_INDEX_STEP = 1000;
+import usePopupManager from '../_hooks/use-popup-manager';
+import { isBoolean, isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'Modal',
@@ -288,6 +278,23 @@ export default defineComponent({
     modalStyle: {
       type: Object as PropType<CSSProperties>,
     },
+    /**
+     * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。
+     * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.
+     */
+    onBeforeOk: {
+      type: [Function, Array] as PropType<
+        (done: (closed: boolean) => void) => void | boolean
+      >,
+    },
+    /**
+     * @zh 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。
+     * @en The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.
+     */
+    onBeforeCancel: {
+      type: [Function, Array] as PropType<() => boolean>,
+    },
+
     // private
     messageType: {
       type: String as PropType<MessageType>,
@@ -331,14 +338,10 @@ export default defineComponent({
     const { t } = useI18n();
     const containerRef = ref<HTMLElement>();
 
-    // z-index上下文
-    const zIndexCtx = inject(zIndexInjectionKey, undefined);
-    const zIndex = (zIndexCtx?.zIndex ?? 0) + Z_INDEX_STEP;
-
-    provide(zIndexInjectionKey, reactive({ zIndex }));
-
     const _visible = ref(props.defaultVisible);
     const computedVisible = computed(() => props.visible ?? _visible.value);
+    const _okLoading = ref(false);
+    const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
 
     const mounted = ref(computedVisible.value);
 
@@ -346,35 +349,75 @@ export default defineComponent({
     const cancelDisplayText =
       props.cancelText || computed(() => t('modal.cancelText'));
 
+    const { zIndex } = usePopupManager({ visible: computedVisible });
+
+    // Used to ignore closed Promises
+    let promiseNumber = 0;
+
     const close = () => {
+      promiseNumber++;
+      if (_okLoading.value) {
+        _okLoading.value = false;
+      }
       _visible.value = false;
       emit('update:visible', false);
     };
 
     const handleOk = () => {
-      emit('ok');
-      close();
+      const currentPromiseNumber = promiseNumber;
+      const promise = new Promise((resolve: (closed?: boolean) => void) => {
+        if (isFunction(props.onBeforeOk)) {
+          const result = props.onBeforeOk(resolve);
+
+          if (isBoolean(result)) {
+            resolve(result);
+          } else {
+            _okLoading.value = true;
+          }
+        } else {
+          resolve();
+        }
+      });
+
+      promise.then((closed = true) => {
+        if (currentPromiseNumber === promiseNumber) {
+          _okLoading.value = false;
+          if (closed) {
+            emit('ok');
+            close();
+          }
+        }
+      });
     };
 
     const handleCancel = () => {
-      emit('cancel');
-      close();
-    };
-
-    const handleMask = () => {
-      if (props.mask && props.maskClosable) {
+      let result = true;
+      if (isFunction(props.onBeforeCancel)) {
+        result = props.onBeforeCancel() ?? false;
+      }
+      if (result) {
         emit('cancel');
         close();
       }
     };
 
+    const handleMask = () => {
+      if (props.mask && props.maskClosable) {
+        handleCancel();
+      }
+    };
+
     const handleOpen = () => {
-      emit('open');
+      if (computedVisible.value) {
+        emit('open');
+      }
     };
 
     const handleClose = () => {
-      mounted.value = false;
-      emit('close');
+      if (!computedVisible.value) {
+        mounted.value = false;
+        emit('close');
+      }
     };
 
     const { setOverflowHidden, resetOverflow } = useOverflow(containerRef);
@@ -400,7 +443,7 @@ export default defineComponent({
 
     const mergedMaskStyle: ComputedRef<CSSProperties> = computed(() => {
       return {
-        zIndex,
+        zIndex: zIndex.value,
         ...(props.maskStyle ?? {}),
       };
     });
@@ -419,6 +462,7 @@ export default defineComponent({
       handleMask,
       handleOpen,
       handleClose,
+      mergedOkLoading,
     };
   },
 });

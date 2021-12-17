@@ -274,7 +274,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <div class=\\"arco-list-item-content\\">
             <div class=\\"arco-list-item-meta\\">
               <div class=\\"arco-list-item-meta-avatar\\">
-                <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                   <!--v-if-->
                 </div>
               </div>
@@ -295,7 +295,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <div class=\\"arco-list-item-content\\">
             <div class=\\"arco-list-item-meta\\">
               <div class=\\"arco-list-item-meta-avatar\\">
-                <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                   <!--v-if-->
                 </div>
               </div>
@@ -316,7 +316,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <div class=\\"arco-list-item-content\\">
             <div class=\\"arco-list-item-meta\\">
               <div class=\\"arco-list-item-meta-avatar\\">
-                <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                   <!--v-if-->
                 </div>
               </div>
@@ -337,7 +337,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <div class=\\"arco-list-item-content\\">
             <div class=\\"arco-list-item-meta\\">
               <div class=\\"arco-list-item-meta-avatar\\">
-                <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                   <!--v-if-->
                 </div>
               </div>
@@ -492,7 +492,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -513,7 +513,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -534,7 +534,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -555,7 +555,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -576,7 +576,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -597,7 +597,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -618,7 +618,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -639,7 +639,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -660,7 +660,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -681,7 +681,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -702,7 +702,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -723,7 +723,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -744,7 +744,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -765,7 +765,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -786,7 +786,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -807,7 +807,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -828,7 +828,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -849,7 +849,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>
@@ -870,7 +870,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <div class=\\"arco-list-item-content\\">
                 <div class=\\"arco-list-item-meta\\">
                   <div class=\\"arco-list-item-meta-avatar\\">
-                    <div style=\\"width: 40px; height: 40px; font-size: 20px;\\" class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                    <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
                       <!--v-if-->
                     </div>
                   </div>

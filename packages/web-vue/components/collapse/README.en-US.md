@@ -21,8 +21,8 @@ description: The content area that can be collapsed/expanded.
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|active-key **(v-model)**|The `key` of the currently expanded panel|`string[]`|`-`|
-|default-active-key|The `key` of the panel expanded by default (uncontrolled mode)|`string[]`|`[]`|
+|active-key **(v-model)**|The `key` of the currently expanded panel|`(string \| number)[]`|`-`|
+|default-active-key|The `key` of the panel expanded by default (uncontrolled mode)|`(string \| number)[]`|`[]`|
 |accordion|Whether to enable accordion mode|`boolean`|`false`|
 |expand-icon-position|The location where the expand icon is displayed|`'left' \| 'right'`|`'left'`|
 |bordered|Whether to show the border|`boolean`|`true`|

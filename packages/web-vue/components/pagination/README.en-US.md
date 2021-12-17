@@ -24,6 +24,8 @@ description: Use paging to control the amount of information in a single page, a
 
 @import ./__demo__/all.md
 
+@import ./__demo__/custom.md
+
 
 ### `<pagination>` Props
 
@@ -46,6 +48,8 @@ description: Use paging to control the amount of information in a single page, a
 |size|The size of the page selector|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |page-item-style|The style of the paging button|`CSSProperties`|`-`|
 |active-page-item-style|The style of the current paging button|`CSSProperties`|`-`|
+|base-size|Calculate and display the number of omitted bases. Display the omitted number as `baseSize + 2 * bufferSize`|`number`|`6`|
+|buffer-size|When the ellipsis is displayed, the number of page numbers displayed on the left and right of the current page number|`number`|`2`|
 ### `<pagination>` Events
 
 |Event Name|Description|Parameters|
@@ -54,8 +58,11 @@ description: Use paging to control the amount of information in a single page, a
 |page-size-change|Triggered when the number of data items changes|pageSize: `number`|
 ### `<pagination>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|page-item|Page item|type: `PageItemType`The type of page item<br>page: `number`The page number of the paging button (exists only when `type='page'`)<br>element: `VNode`Default page item|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|total|Total|total: `number`|2.9.0|
+|page-item-ellipsis|Page item (ellipsis)|-|2.9.0|
+|page-item-step|Page item (step)|type: `'previous'\|'next'`The type of page item step|2.9.0|
+|page-item|Page item|page: `number`The page number of the paging button|2.9.0|
 
 

@@ -22,6 +22,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/fixed.md
 
+@import ./__demo__/span.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/custom.md
@@ -31,46 +33,48 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 ### `<table>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|columns|表格的列描述信息|`TableColumn[]`|`[]`|
-|data|表格的数据|`TableData[]`|`[]`|
-|bordered|是否显示边框|`boolean \| TableBorder`|`true`|
-|hoverable|是否显示选中效果|`boolean`|`true`|
-|stripe|是否开启斑马纹效果|`boolean`|`false`|
-|size|表格的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`|
-|table-layout-fixed|表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。|`boolean`|`false`|
-|loading|是否为加载中状态|`boolean`|`false`|
-|hide-header|是否隐藏表头|`boolean`|`false`|
-|row-selection|表格的行选择器配置|`TableRowSelection`|`-`|
-|expandable|表格的展开行配置|`TableExpandable`|`-`|
-|scroll|表格的滚动属性配置|`{ x: number; y: number }`|`-`|
-|pagination|分页的属性配置|`boolean \| PaginationProps`|`true`|
-|page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`|
-|indent-size|树形表格的缩进距离|`number`|`16`|
-|row-key|表格行 `key` 的取值字段|`string`|`'key'`|
-|show-header|是否显示表头|`boolean`|`true`|
-|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|columns|表格的列描述信息|`TableColumn[]`|`[]`||
+|data|表格的数据|`TableData[]`|`[]`||
+|bordered|是否显示边框|`boolean \| TableBorder`|`true`||
+|hoverable|是否显示选中效果|`boolean`|`true`||
+|stripe|是否开启斑马纹效果|`boolean`|`false`||
+|size|表格的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`||
+|table-layout-fixed|表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。|`boolean`|`false`||
+|loading|是否为加载中状态|`boolean`|`false`||
+|hide-header|是否隐藏表头|`boolean`|`false`||
+|row-selection|表格的行选择器配置|`TableRowSelection`|`-`||
+|expandable|表格的展开行配置|`TableExpandable`|`-`||
+|scroll|表格的滚动属性配置|`{ x: number; y: number }`|`-`||
+|pagination|分页的属性配置|`boolean \| PaginationProps`|`true`||
+|page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
+|indent-size|树形表格的缩进距离|`number`|`16`||
+|row-key|表格行 `key` 的取值字段|`string`|`'key'`||
+|show-header|是否显示表头|`boolean`|`true`||
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`||
+|span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 ### `<table>` Events
 
 |事件名|描述|参数|
 |---|---|---|
-|expand|点击展开行时触发|-|
-|expanded-change|已展开的数据行发生改变时触发|-|
-|select|点击行选择器时触发|-|
-|select-all|点击全选选择器时触发|-|
-|selection-change|已选择的数据行发生改变时触发|-|
-|sorter-change|排序规则发生改变时触发|-|
-|filter-change|过滤选项发生改变时触发|-|
-|page-change|表格分页发生改变时触发|-|
-|page-size-change|表格每页数据数量发生改变时触发|-|
-|cell-click|点击单元格时触发|-|
-|row-click|点击行数据时触发|-|
-|header-click|点击表头数据时触发|-|
+|expand|点击展开行时触发|rowKey: `string`|
+|expanded-change|已展开的数据行发生改变时触发|rowKeys: `string[]`|
+|select|点击行选择器时触发|rowKeys: `string[]`|
+|select-all|点击全选选择器时触发|checked: `boolean`|
+|selection-change|已选择的数据行发生改变时触发|rowKeys: `string[]`|
+|sorter-change|排序规则发生改变时触发|dataIndex: `string`<br>direction: `string`|
+|filter-change|过滤选项发生改变时触发|dataIndex: `string`<br>filteredValues: `string[]`|
+|page-change|表格分页发生改变时触发|page: `number`|
+|page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`|
+|cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumn`|
+|row-click|点击行数据时触发|record: `TableData`|
+|header-click|点击表头数据时触发|column: `TableColumn`|
 ### `<table>` Slots
 
 |插槽名|描述|参数|
 |---|:---:|---|
+|footer|表格底部|-|
 |expand-row|展开行内容|record: `TableData`|
 |expand-icon|展开行图标|-|
 
@@ -94,7 +98,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |插槽名|描述|参数|
 |---|:---:|---|
 |title|标题|-|
-|cell|单元格|record: `TableData`<br>column: `TableColumn`|
+|cell|单元格|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`|
 
 
 
@@ -158,7 +162,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |sortable|排序相关选项|`TableSortable`|`-`|
 |filterable|过滤相关选项|`TableFilterable`|`-`|
 |children|表头子数据，用于表头分组|`TableColumn[]`|`-`|
-|render|自定义列单元格的渲染|`({    record,    column,  }: {    record: TableData;    column: TableColumn;  }) => VNode`|`-`|
+|render|自定义列单元格的渲染|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`|
 
 
 

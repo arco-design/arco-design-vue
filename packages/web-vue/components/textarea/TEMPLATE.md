@@ -19,6 +19,8 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/status.md
+
 @import ./__demo__/word-limit.md
 
 @import ./__demo__/auto-size.md
