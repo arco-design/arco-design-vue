@@ -1,28 +1,27 @@
 ```yaml
 title:
-  zh-CN: 照片墙
-  en-US: Picture Card
+  zh-CN: 图标列表样式
+  en-US: Picture List
 ```
 
 ## zh-CN
 
-通过设置 `list-type="picture-card"` 开启照片墙模式。
+通过设置 `list-type="picture"` 开启图片列表样式
 
 ---
 
 ## en-US
 
-Enable the photo wall mode by setting `list-type="picture-card"`.
+Enable the picture list mode by setting `list-type="picture"`.
 
 ---
 
 ```vue
 <template>
   <a-upload
-    list-type="picture-card"
+    list-type="picture"
     action="/"
     :default-file-list="fileList"
-    @preview="onPreview"
   />
 </template>
 
@@ -43,21 +42,6 @@ export default {
         },
       ],
     };
-  },
-  methods: {
-    onPreview(file) {
-      this.$modal.info({
-        title: 'Preview',
-        content: (
-          <div style="text-align: center">
-            <img
-              style="max-width: 100%"
-              src={file.url || URL.createObjectURL(file.originFile)}
-            />
-          </div>
-        ),
-      });
-    },
   },
 };
 </script>

@@ -143,6 +143,7 @@ export default defineComponent({
 
       return (
         <Button
+          type="primary"
           v-slots={{ icon: () => <IconUpload /> }}
           disabled={props.disabled}
         >

@@ -64,39 +64,41 @@ export default defineComponent({
     };
 
     return () => (
-      <span class={[itemCls, `${itemCls}-${props.file.status}`]}>
-        <span class={`${itemCls}-content`}>
+      <div class={[itemCls, `${itemCls}-${props.file.status}`]}>
+        <div class={`${itemCls}-content`}>
           {uploadCtx?.listType === 'picture' && (
             <span class={`${itemCls}-thumbnail`}>
               <img src={props.file.url} />
             </span>
           )}
-          {uploadCtx?.listType === 'text' && (
-            <span class={`${itemCls}-file-icon`}>
-              {uploadCtx?.customIcon?.fileIcon?.(props.file) ||
-                renderFileIcon()}
-            </span>
-          )}
-          <span class={`${itemCls}-name`}>
-            {uploadCtx?.customIcon?.fileName?.(props.file) || props.file.url ? (
+          <div class={`${itemCls}-name`}>
+            {uploadCtx?.listType === 'text' && (
+              <span class={`${itemCls}-file-icon`}>
+                {uploadCtx?.customIcon?.fileIcon?.(props.file) ||
+                  renderFileIcon()}
+              </span>
+            )}
+            {uploadCtx?.customIcon?.fileName?.(props.file) || (props.file.url ? (
               <a class={`${itemCls}-name-link`} href={props.file.url}>
                 {props.file.name}
               </a>
             ) : (
               <span class={`${itemCls}-name-text`}>{props.file.name}</span>
+            ))}
+            {props.file.status === 'error' && (
+              <Tooltip content={t('upload.error')}>
+                <span
+                  class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-error`]}
+                >
+                  {uploadCtx?.customIcon?.errorIcon?.() || (
+                    <IconExclamationCircleFill />
+                  )}
+                </span>
+              </Tooltip>
             )}
-          </span>
-          {props.file.status === 'error' && (
-            <Tooltip content={t('upload.error')}>
-              <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-error`]}>
-                {uploadCtx?.customIcon?.errorIcon?.() || (
-                  <IconExclamationCircleFill />
-                )}
-              </span>
-            </Tooltip>
-          )}
+          </div>
           <UploadProgress file={props.file} listType={props.listType} />
-        </span>
+        </div>
         <span class={`${itemCls}-operation`}>
           <IconHover onClick={() => uploadCtx?.onRemove?.(props.file)}>
             <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}>
@@ -104,7 +106,7 @@ export default defineComponent({
             </span>
           </IconHover>
         </span>
-      </span>
+      </div>
     );
   },
 });
