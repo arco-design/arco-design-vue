@@ -41,6 +41,7 @@
     border-bottom: @border-1 solid @drawer-color-border;
 
     .@{drawer-prefix-cls}-title {
+      margin-right: auto;
       color: @drawer-color-header-text;
       font-weight: @drawer-font-header-weight;
       font-size: @drawer-font-header-size;
@@ -48,11 +49,7 @@
     }
 
     .@{drawer-prefix-cls}-close-btn {
-      position: absolute;
-      top: ((@drawer-size-header-height - @drawer-font-size-close-icon) / 2);
-      right: @drawer-position-close-icon-right +
-        ((@icon-hover-size-default-height - @drawer-font-size-close-icon) / 2);
-      z-index: 1;
+      margin-left: 8px;
       color: @drawer-color-header-text;
       font-size: @drawer-font-size-close-icon;
       cursor: pointer;
