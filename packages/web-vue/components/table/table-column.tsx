@@ -1,4 +1,4 @@
-import { defineComponent, PropType } from 'vue';
+import { CSSProperties, defineComponent, PropType } from 'vue';
 import { TableColumn, TableFilterable, TableSortable } from './interface';
 
 export default defineComponent({
@@ -56,6 +56,14 @@ export default defineComponent({
     filterable: {
       type: Object as PropType<TableFilterable>,
       default: undefined,
+    },
+    /**
+     * @zh 自定义单元格样式
+     * @en Custom cell style
+     * @version 2.11.0
+     */
+    cellStyle: {
+      type: Object as PropType<CSSProperties>,
     },
   },
   /**
