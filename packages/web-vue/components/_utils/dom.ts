@@ -76,16 +76,27 @@ export const getOverlay = (type: typeof OVERLAY_TYPES[number]) => {
   return popper;
 };
 
-export const querySelector = (selectors: string) => {
+export const querySelector = (
+  selectors: string,
+  container?: Document | HTMLElement
+) => {
   if (isServerRendering) {
     return NOOP();
   }
-  return document.querySelector(selectors) as HTMLElement | undefined | null;
+  return (
+    (container ?? document).querySelector<HTMLElement>(selectors) ?? undefined
+  );
 };
 
-export const getElement = (target: string | HTMLElement | undefined | null) => {
-  if (isString(target)) return querySelector(target);
-  return target || undefined;
+export const getElement = (
+  target: string | HTMLElement,
+  container?: Document | HTMLElement
+): HTMLElement | undefined => {
+  if (isString(target)) {
+    const selector = target[0] === '#' ? `[id='${target.slice(1)}']` : target;
+    return querySelector(selector, container);
+  }
+  return target;
 };
 
 /**

@@ -26,11 +26,12 @@ import {
 } from 'vue';
 import computeScrollIntoView from 'compute-scroll-into-view';
 import { getPrefixCls } from '../_utils/global-config';
-import { isNumber, isString } from '../_utils/is';
-import { off, on } from '../_utils/dom';
-import { findNode, slide } from './utils';
+import { isNumber } from '../_utils/is';
+import { getElement, off, on } from '../_utils/dom';
+import { slide } from './utils';
 import { anchorInjectionKey } from './context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
+import { isWindow } from '../../es/_utils/is';
 
 const BOUNDARY_POSITIONS = ['start', 'end', 'center', 'nearest'] as const;
 type BoundaryPosition = typeof BOUNDARY_POSITIONS[number];
@@ -99,13 +100,14 @@ export default defineComponent({
   ],
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('anchor');
-    const anchorRef = ref<HTMLElement | null>(null);
-    const lineSliderRef = ref<HTMLElement | null>(null);
+    const anchorRef = ref<HTMLElement>();
+    const lineSliderRef = ref<HTMLElement>();
     const links = reactive<Record<string, HTMLElement>>({});
     const currentLink = ref('');
     const isScrolling = ref(false);
 
-    // throttle(this.handleScroll, 30, { trailing: true })
+    const scrollContainerEle = ref<HTMLElement | Window>();
+    const containerEle = ref<HTMLElement>();
 
     const addLink = (hash: string, node: HTMLElement) => {
       if (!hash) return;
@@ -116,50 +118,31 @@ export default defineComponent({
       delete links[hash];
     };
 
-    const getContainer = (targetContainer?: HTMLElement) => {
-      let scrollContainer = targetContainer;
-      if (!scrollContainer) {
-        scrollContainer = props.scrollContainer;
-      }
-      if (isString(scrollContainer)) {
-        return findNode(document, scrollContainer) as HTMLElement;
-      }
-      return scrollContainer || window;
-    };
-
-    const getContainerElement = (): HTMLElement => {
-      if (isString(props.scrollContainer)) {
-        return findNode(document, props.scrollContainer) as HTMLElement;
-      }
-      if (props.scrollContainer && props.scrollContainer !== window) {
-        return props.scrollContainer;
-      }
-      return document.documentElement ?? document.body;
-    };
-
     const handleClick = (e: MouseEvent, hash?: string) => {
-      // const { onSelect, hash: changeHash } = this.props;
       if (!props.changeHash) {
         e.preventDefault();
       }
-      handleAnchorChange(hash);
-      scrollIntoView(hash);
+      if (hash) {
+        scrollIntoView(hash);
+        handleAnchorChange(hash);
+      }
       emit('select', hash, currentLink.value);
     };
 
     const scrollIntoView = (hash: string) => {
-      if (!hash) return;
       try {
-        const node = findNode(document, hash);
-        if (!node) return;
-        let block = props.boundary;
+        const element = getElement(hash);
+        if (!element) return;
+        let block: BoundaryPosition;
         let diff = 0;
         if (isNumber(props.boundary)) {
           block = 'start';
           diff = props.boundary;
+        } else {
+          block = props.boundary;
         }
 
-        const actions = computeScrollIntoView(node, { block });
+        const actions = computeScrollIntoView(element, { block });
         if (!actions.length) return;
         const { el, top } = actions[0];
         const targetTop = top - diff;
@@ -186,15 +169,11 @@ export default defineComponent({
     });
 
     const handleAnchorChange = (hash: string) => {
-      if (!hash) return;
       if (!links[hash] && anchorRef.value) {
-        const node = findNode(
-          anchorRef.value,
-          `a[data-href='${hash}']`
-        ) as HTMLElement;
-        if (!node) return;
+        const element = getElement(`a[data-href='${hash}']`, anchorRef.value);
+        if (!element) return;
 
-        links[hash] = node;
+        links[hash] = element;
       }
       if (hash !== currentLink.value) {
         currentLink.value = hash;
@@ -205,40 +184,27 @@ export default defineComponent({
     };
 
     const getFirstInViewportEle = (): HTMLElement | undefined => {
-      const boundary = isNumber(props.boundary) ? props.boundary : 0;
-      const container = getContainerElement();
-      const containerRect = container.getBoundingClientRect();
-      const { clientHeight } = document.documentElement;
+      if (!scrollContainerEle.value || !containerEle.value) {
+        return undefined;
+      }
 
-      const ele = getContainer();
+      const boundary = isNumber(props.boundary) ? props.boundary : 0;
+      const containerRect = containerEle.value.getBoundingClientRect();
+
       for (const hash of Object.keys(links)) {
-        const node = findNode(document, hash);
-        if (node) {
-          const { top } = node.getBoundingClientRect();
-          if (ele === window) {
-            const offsetTop = top - boundary;
-            if (offsetTop >= 0 && offsetTop <= clientHeight / 2) {
-              return node;
-            }
-          } else {
-            const offsetTop = top - containerRect.top - boundary;
-            if (offsetTop >= 0 && offsetTop <= containerRect.height / 2) {
-              return node;
-            }
+        const element = getElement(hash);
+        if (element) {
+          const { top } = element.getBoundingClientRect();
+          const offsetTop = isWindow(scrollContainerEle.value)
+            ? top - boundary
+            : top - containerRect.top - boundary;
+          if (offsetTop >= 0 && offsetTop <= containerRect.height / 2) {
+            return element;
           }
         }
       }
       return undefined;
     };
-
-    onMounted(() => {
-      handleScroll();
-      bindScrollEvent();
-    });
-
-    onBeforeUnmount(() => {
-      unbindScrollEvent();
-    });
 
     watch(currentLink, () => {
       const link = links[currentLink.value];
@@ -247,18 +213,53 @@ export default defineComponent({
       }
     });
 
-    const bindScrollEvent = (scrollContainer?: HTMLElement) => {
-      on(getContainer(scrollContainer), 'scroll', handleScroll);
+    const bindScrollEvent = () => {
+      if (scrollContainerEle.value) {
+        on(scrollContainerEle.value, 'scroll', handleScroll);
+      }
     };
 
-    const unbindScrollEvent = (scrollContainer?: HTMLElement) => {
-      off(getContainer(scrollContainer), 'scroll', handleScroll);
+    const unbindScrollEvent = () => {
+      if (scrollContainerEle.value) {
+        off(scrollContainerEle.value, 'scroll', handleScroll);
+      }
     };
+
+    const getContainer = () => {
+      if (props.scrollContainer) {
+        scrollContainerEle.value = isWindow(props.scrollContainer)
+          ? window
+          : getElement(props.scrollContainer);
+        containerEle.value = isWindow(props.scrollContainer)
+          ? document.documentElement
+          : getElement(props.scrollContainer);
+      } else {
+        scrollContainerEle.value = window;
+        containerEle.value = document.documentElement;
+      }
+    };
+
+    onMounted(() => {
+      getContainer();
+
+      const hash = decodeURIComponent(window.location.hash);
+      if (hash) {
+        scrollIntoView(hash);
+        handleAnchorChange(hash);
+      } else {
+        handleScroll();
+      }
+
+      bindScrollEvent();
+    });
+
+    onBeforeUnmount(() => {
+      unbindScrollEvent();
+    });
 
     provide(
       anchorInjectionKey,
       reactive({
-        name: 'ArcoAnchor',
         currentLink,
         addLink,
         removeLink,
