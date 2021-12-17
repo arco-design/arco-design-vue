@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 Feature
+
+- add icon slot for`sub-menu` and `menu-item` ([#412](https://github.com/arco-design/arco-design-vue/pull/412))
+
+### 💅 Style
+
+- Fix the problem of height overflow when the sidebar is collapsible ([#416](https://github.com/arco-design/arco-design-vue/pull/416))
+
+
 ## 2.10.0
 
 `2021-12-10`

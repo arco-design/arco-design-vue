@@ -23,7 +23,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |default-visible|对话框默认是否可见（非受控状态）|`boolean`|`false`|
 |mask|是否显示遮罩层|`boolean`|`true`|
 |title|标题|`string`|`-`|
-|align-center|对话框是否居中显示|`boolean`|`false`|
+|align-center|对话框是否居中显示|`boolean`|`true`|
 |unmount-on-close|关闭时是否卸载节点|`boolean`|`false`|
 |mask-closable|是否点击遮罩层可以关闭对话框|`boolean`|`true`|
 |hide-cancel|是否隐藏取消按钮|`boolean`|`false`|
@@ -36,7 +36,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |cancel-button-props|取消按钮的Props|`object`|`-`|
 |footer|是否展示页脚部分|`boolean`|`true`|
 |render-to-body|对话框是否挂载在 `body` 元素下|`boolean`|`true`|
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`'body'`|
+|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`'body'`|
 |mask-style|蒙层的样式|`CSSProperties`|`-`|
 |modal-class|对话框的类名|`string \| any[]`|`-`|
 |modal-style|对话框的样式|`CSSProperties`|`-`|

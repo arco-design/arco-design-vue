@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 BugFix
+
+- Fix the problem that scrolling is not recalculated when the width of the tab bar changes ([#409](https://github.com/arco-design/arco-design-vue/pull/409))
+- Fix the problem that the indicator width cannot follow the update when the width of the label option changes ([#409](https://github.com/arco-design/arco-design-vue/pull/409))
+
+
 ## 2.10.0
 
 `2021-12-10`

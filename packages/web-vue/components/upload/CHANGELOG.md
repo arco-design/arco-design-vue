@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 Feature
+
+- Add `download` attribute ([#418](https://github.com/arco-design/arco-design-vue/pull/418))
+- add `show-remove-buttoon` and `show-retry-button` and `show-cancel-button` property ([#396](https://github.com/arco-design/arco-design-vue/pull/396))
+- add `imageLoading` property ([#396](https://github.com/arco-design/arco-design-vue/pull/396))
+
+### 🐛 BugFix
+
+- Fix the problem of the wrong position of the icon in the upload ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- Fix the problem that not all files are obtained by the second parameter of `beforeUpload` when uploading folders by dragging and dropping ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- Fix the problem that the dragging style flashes when the mouse enters the internal text when dragging and uploading ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+
+
 ## 2.6.0
 
 `2021-11-19`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 BugFix
+
+- Fix the problem that the `alignCenter` property does not take effect ([#384](https://github.com/arco-design/arco-design-vue/pull/384))
+- The `alignCenter` property of the adjustment component defaults to `true` ([#384](https://github.com/arco-design/arco-design-vue/pull/384))
+
+
 ## 2.10.1
 
 `2021-12-14`

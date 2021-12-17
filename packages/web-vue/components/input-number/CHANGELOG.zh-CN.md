@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 问题修复
+
+- 修复 `model-value` 为 0 时展示错误的问题 ([#407](https://github.com/arco-design/arco-design-vue/pull/407))
+
+
 ## 2.10.0
 
 `2021-12-10`

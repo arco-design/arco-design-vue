@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 BugFix
+
+- fix the problem that search is invalid when rename the key field ([#405](https://github.com/arco-design/arco-design-vue/pull/405))
+
+
 ## 2.5.0
 
 `2021-11-18`

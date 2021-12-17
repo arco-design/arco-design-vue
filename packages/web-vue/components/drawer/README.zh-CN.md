@@ -37,7 +37,7 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |drawer-style|抽屉的样式|`CSSProperties`|`-`||
 |on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
-
+|footer|是否展示底部内容|`boolean`|`true`|2.11.0|
 ### `<drawer>` Events
 
 |事件名|描述|参数|

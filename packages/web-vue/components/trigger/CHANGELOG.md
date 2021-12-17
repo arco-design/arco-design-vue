@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 BugFix
+
+- Fix the problem of the wrong position of the pop-up layer caused by the change of container size ([#406](https://github.com/arco-design/arco-design-vue/pull/406))
+- Fix the problem that the pop-up layer is closed due to the hover method in nested use ([#406](https://github.com/arco-design/arco-design-vue/pull/406))
+
+
 ## 2.10.1
 
 `2021-12-14`

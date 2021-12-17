@@ -41,5 +41,10 @@ description: 可以折叠 / 展开的内容区域。
 |header|面板的标题|`string`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
 |show-expand-icon|是否显示展开图标|`boolean`|`true`|
+### `<collapse-item>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|header|面板的标题|-|
 
 

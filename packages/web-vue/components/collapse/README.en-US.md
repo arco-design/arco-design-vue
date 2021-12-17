@@ -43,5 +43,10 @@ description: The content area that can be collapsed/expanded.
 |header|The title of the panel|`string`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 |show-expand-icon|Whether to show the expand icon|`boolean`|`true`|
+### `<collapse-item>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|header|The title of the panel|-|
 
 

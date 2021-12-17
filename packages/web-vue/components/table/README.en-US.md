@@ -48,7 +48,7 @@ description: It is used for data collection, display, analysis and processing, a
 |hide-header|Whether to hide the header|`boolean`|`false`||
 |row-selection|Table row selector configuration|`TableRowSelection`|`-`||
 |expandable|Expand row configuration of the table|`TableExpandable`|`-`||
-|scroll|Scrolling attribute configuration of the table|`{ x: number; y: number }`|`-`||
+|scroll|Scrolling attribute configuration of the table|`{ x?: number; y?: number }`|`-`||
 |pagination|Pagination properties configuration|`boolean \| PaginationProps`|`true`||
 |page-position|The position of the page selector|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
 |indent-size|The indentation distance of the tree table|`number`|`16`||
@@ -85,16 +85,17 @@ description: It is used for data collection, display, analysis and processing, a
 
 ### `<table-column>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|data-index|Identifies the column information, corresponding to the data in TableData|`string`|`-`|
-|title|Column title|`string`|`-`|
-|width|Column width|`number`|`-`|
-|align|Alignment direction|`TableColumn['align']`|`-`|
-|fixed|Fixed position|`TableColumn['fixed']`|`-`|
-|ellipsis|Whether to display as omitted|`boolean`|`false`|
-|sortable|Sorting related options|`TableSortable`|`-`|
-|filterable|Filter related options|`TableFilterable`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|data-index|Identifies the column information, corresponding to the data in TableData|`string`|`-`||
+|title|Column title|`string`|`-`||
+|width|Column width|`number`|`-`||
+|align|Alignment direction|`TableColumn['align']`|`-`||
+|fixed|Fixed position|`TableColumn['fixed']`|`-`||
+|ellipsis|Whether to display as omitted|`boolean`|`false`||
+|sortable|Sorting related options|`TableSortable`|`-`||
+|filterable|Filter related options|`TableFilterable`|`-`||
+|cell-style|Custom cell style|`CSSProperties`|`-`|2.11.0|
 ### `<table-column>` Slots
 
 |Slot Name|Description|Parameters|
@@ -110,7 +111,7 @@ description: It is used for data collection, display, analysis and processing, a
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |key|The key of the data row|`string`|`-`|
-|expand|Expand row content|`string \| (() => VNode)`|`-`|
+|expand|Expand row content|`string \| RenderFunction`|`-`|
 |children|Sub data|`TableData[]`|`-`|
 |disabled|Whether to disable the row selector|`boolean`|`false`|
 
@@ -120,7 +121,7 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|sortDirections|Supported sort direction|`Array<'ascend' \| 'descend'>`|`-`|
+|sortDirections|Supported sort direction|`('ascend' \| 'descend')[]`|`-`|
 |sorter|Sorting function|`(a: any, b: any) => number`|`-`|
 |sortOrder|Sort direction|`'ascend' \| 'descend' \| ''`|`-`|
 |defaultSortOrder|Default sort direction (uncontrolled mode)|`'ascend' \| 'descend' \| ''`|`-`|
@@ -131,7 +132,7 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|text|Filter the content of the data option|`string \| (() => VNode)`|`-`|
+|text|Filter the content of the data option|`string \| RenderFunction`|`-`|
 |value|Filter the value of the data option|`string`|`-`|
 
 
@@ -153,18 +154,30 @@ description: It is used for data collection, display, analysis and processing, a
 
 ### TableColumn
 
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|dataIndex|The identifier of the column information, corresponding to the data in `TableData`|`string`|`-`||
+|title|Column header|`string \| RenderFunction`|`-`||
+|width|Column width|`number`|`-`||
+|align|Alignment direction|`'left' \| 'center' \| 'right'`|`-`||
+|fixed|Fixed position|`'left' \| 'right'`|`-`||
+|ellipsis|Whether to show ellipsis|`boolean`|`false`||
+|sortable|Sorting related options|`TableSortable`|`-`||
+|filterable|Filter related options|`TableFilterable`|`-`||
+|children|Header sub-data, used for header grouping|`TableColumn[]`|`-`||
+|cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
+|render|Customize the rendering of column cells|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+
+
+
+### TableBorder
+
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|dataIndex|The identifier of the column information, corresponding to the data in `TableData`|`string`|`-`|
-|title|Column header|`string \| (() => VNode)`|`-`|
-|width|Column width|`number`|`-`|
-|align|Alignment direction|`'left' \| 'center' \| 'right'`|`-`|
-|fixed|Fixed position|`'left' \| 'right'`|`-`|
-|ellipsis|Whether to show ellipsis|`boolean`|`false`|
-|sortable|Sorting related options|`TableSortable`|`-`|
-|filterable|Filter related options|`TableFilterable`|`-`|
-|children|Header sub-data, used for header grouping|`TableColumn[]`|`-`|
-|render|Customize the rendering of column cells|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`|
+|wrapper|TWhether to display the outer border|`boolean`|`false`|
+|cell|Whether to display the cell border (header + body)|`boolean`|`false`|
+|headerCell|Whether to display the header cell border|`boolean`|`false`|
+|bodyCell|Whether to display the body cell border|`boolean`|`false`|
 
 
 

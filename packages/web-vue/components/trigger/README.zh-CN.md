@@ -52,7 +52,7 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |auto-fit-popup-width|是否将弹出框宽度设置为触发器宽度|`boolean`|`false`|
 |auto-fit-popup-min-width|是否将弹出框的最小宽度设置为触发器宽度|`boolean`|`false`|
 |auto-fix-position|当触发器的尺寸发生变化时，是否重新计算弹出框位置|`boolean`|`true`|
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
+|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`|
 |update-at-scroll|是否在容器滚动时更新弹出框的位置|`boolean`|`false`|
 |auto-fit-position|是否自动调整弹出框位置，以适应窗口大小|`boolean`|`true`|
 |render-to-body|是否挂载在 `body` 元素下|`boolean`|`true`|

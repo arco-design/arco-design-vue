@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 BugFix
+
+- Fix the problem of displaying errors when `model-value` is 0 ([#407](https://github.com/arco-design/arco-design-vue/pull/407))
+
+
 ## 2.10.0
 
 `2021-12-10`

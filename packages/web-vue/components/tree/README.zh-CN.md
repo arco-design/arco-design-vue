@@ -73,7 +73,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |---|---|---|
 |select|点击树节点时触发|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
 |check|点击树节点复选框时触发|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|expand|展开/关闭|expandKeys: `Array<string \| number>`<br>event: `{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|expand|展开/关闭|expandKeys: `Array<string \| number>`<br>event: `{ expanded: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
 |drag-start|节点开始拖拽|-|
 |drag-end|节点结束拖拽|event: `DragEvent`<br>node: `TreeNodeData`|
 |drag-over|节点被拖拽至可释放目标|event: `DragEvent`<br>node: `TreeNodeData`|

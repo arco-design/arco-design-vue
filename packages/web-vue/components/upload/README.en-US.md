@@ -11,42 +11,67 @@ description: Users can transfer files or submit corresponding content.
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/avatar.md
+
 @import ./__demo__/upload-list.md
 
 @import ./__demo__/picture-card.md
 
 @import ./__demo__/draggable.md
 
+@import ./__demo__/picture-list.md
+
+@import ./__demo__/submit.md
+
+@import ./__demo__/beforeUpload.md
+
+@import ./__demo__/onRemove.md
+
+@import ./__demo__/limit.md
+
+@import ./__demo__/custom-button.md
+
+@import ./__demo__/custom-icon.md
+
 @import ./__demo__/request.md
+
+@import ./__demo__/directory.md
+
 
 
 ### `<upload>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|file-list **(v-model)**|File List|`FileItem[]`|`-`|
-|default-file-list|Default file list (uncontrolled state)|`FileItem[]`|`[]`|
-|accept|For the received upload file type, please refer to [HTML standard](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#htmlattrdefaccept "_blank")|`string`|`-`|
-|action|Uploaded URL|`string`|`-`|
-|disabled|Whether to disable|`boolean`|`false`|
-|multiple|Whether to support multiple file upload|`boolean`|`false`|
-|directory|Whether to support folder upload (requires browser support)|`boolean`|`false`|
-|draggable|Whether to support drag and drop upload|`boolean`|`false`|
-|tip|Prompt text|`string`|`-`|
-|headers|Additional header information for upload request|`object`|`-`|
-|data|Upload request additional data|`Record<string, unknown>\| ((fileItem: FileItem) => Record<string, unknown>)`|`-`|
-|name|Uploaded file name|`string \| ((fileItem: FileItem) => string)`|`-`|
-|with-credentials|Whether the upload request carries cookies|`boolean`|`false`|
-|custom-request|Custom upload behavior|`(option: RequestOption) => UploadRequest`|`-`|
-|limit|Limit the number of uploaded files. `0` means no limit|`number`|`0`|
-|auto-upload|Whether to upload files automatically|`boolean`|`true`|
-|show-file-list|Whether to display the file list|`boolean`|`true`|
-|list-type|Picture list type|`'text' \| 'picture' \| 'picture-card'`|`'text'`|
-|response-url-key|Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image|`string`|`-`|
-|custom-icon|Custom icon|`CustomIcon`|`-`|
-|on-before-upload|Trigger before uploading a picture|`(file: File) => Promise<boolean>`|`-`|
-|on-before-remove|Triggered before removing the picture|`(fileItem: FileItem) => Promise<boolean>`|`-`|
-|on-button-click|Click the upload button to trigger (if the Promise is returned, the default input upload will be closed)|`(event: Event) => Promise<FileList> \| void`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|file-list **(v-model)**|File List|`FileItem[]`|`-`||
+|default-file-list|Default file list (uncontrolled state)|`FileItem[]`|`[]`||
+|accept|For the received upload file type, please refer to [HTML standard](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#htmlattrdefaccept "_blank")|`string`|`-`||
+|action|Uploaded URL|`string`|`-`||
+|disabled|Whether to disable|`boolean`|`false`||
+|multiple|Whether to support multiple file upload|`boolean`|`false`||
+|directory|Whether to support folder upload (requires browser support)|`boolean`|`false`||
+|draggable|Whether to support drag and drop upload|`boolean`|`false`||
+|tip|Prompt text|`string`|`-`||
+|headers|Additional header information for upload request|`object`|`-`||
+|data|Upload request additional data|`Record<string, unknown>\| ((fileItem: FileItem) => Record<string, unknown>)`|`-`||
+|name|Uploaded file name|`string \| ((fileItem: FileItem) => string)`|`-`||
+|with-credentials|Whether the upload request carries cookies|`boolean`|`false`||
+|custom-request|Custom upload behavior|`(option: RequestOption) => UploadRequest`|`-`||
+|limit|Limit the number of uploaded files. `0` means no limit|`number`|`0`||
+|auto-upload|Whether to upload files automatically|`boolean`|`true`||
+|show-file-list|Whether to display the file list|`boolean`|`true`||
+|show-remove-button|Whether to display the remove button|`boolean`|`true`|2.11.0|
+|show-retry-button|Whether to display the retry button|`boolean`|`true`|2.11.0|
+|show-cancel-button|Whether to display the cancel button|`boolean`|`true`|2.11.0|
+|show-upload-button|Whether to display the retry button|`boolean`|`true`|2.11.0|
+|download|Whether to add download attribute to `<a>` link|`boolean`|`false`|2.11.0|
+|image-loading|Native HTML attributes of `<img>`, browser support is required|`'eager' \| 'lazy'`|`-`|2.11.0|
+|list-type|Picture list type|`'text' \| 'picture' \| 'picture-card'`|`'text'`||
+|response-url-key|Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image|`string \| ((fileItem: FileItem) => string)`|`-`||
+|custom-icon|Custom icon|`CustomIcon`|`-`||
+|on-before-upload|Trigger before uploading a picture|`(file: File) => Promise<boolean>`|`-`||
+|on-before-remove|Triggered before removing the picture|`(fileItem: FileItem) => Promise<boolean>`|`-`||
+|on-button-click|Click the upload button to trigger (if the Promise is returned, the default input upload will be closed)|`(event: Event) => Promise<FileList> \| void`|`-`||
 ### `<upload>` Events
 
 |Event Name|Description|Parameters|
@@ -57,6 +82,12 @@ description: Users can transfer files or submit corresponding content.
 |preview|Trigger when the image preview is clicked|fileItem: `FileItem`|
 |success|Triggered when upload is successful|fileItem: `FileItem`|
 |error|Triggered when upload fails|fileItem: `FileItem`|
+### `<upload>` Methods
+
+|Method|Description|Parameters|Return|
+|---|---|---|:---:|
+|submit|Upload file (file that has been initialized)|fileItem: `FileItem`|-|
+|abort|Abort upload|fileItem: `FileItem`|-|
 ### `<upload>` Slots
 
 |Slot Name|Description|Parameters|

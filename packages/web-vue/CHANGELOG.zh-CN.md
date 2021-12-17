@@ -2,6 +2,43 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 新增功能
+
+- **upload:** 增加 `download` 属性 ([#418](https://github.com/arco-design/arco-design-vue/pull/418))
+- **space:** 新增属性 `fill` ([#415](https://github.com/arco-design/arco-design-vue/pull/415))
+- **menu:** `sub-menu` 和 `menu-item` 新增 icon 的 slot ([#412](https://github.com/arco-design/arco-design-vue/pull/412))
+- **table:** `columns` 新增 cellStyle 属性 ([#411](https://github.com/arco-design/arco-design-vue/pull/411))
+- **upload:** 新增 `show-remove-buttoon` 、`show-retry-button`、`show-cancel-button` 属性 ([#396](https://github.com/arco-design/arco-design-vue/pull/396))
+- **upload:** 新增 `imageLoading` 属性 ([#396](https://github.com/arco-design/arco-design-vue/pull/396))
+- **drawer:** 新增属性 `footer` ([#394](https://github.com/arco-design/arco-design-vue/pull/394))
+
+### 🐛 问题修复
+
+- **upload:** 修复上传中的图标位置不对的问题 ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- **upload:** 修复拖拽上传文件夹时，`beforeUpload` 的第二个参数获取到的不是全部文件的问题 ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- **upload:** 修复拖拽上传时，鼠标进入内部文字，拖拽样式闪动的问题 ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- **table:** 修复固定列模式下，表格尺寸变化导致表头和主体宽度不一致问题 ([#410](https://github.com/arco-design/arco-design-vue/pull/410))
+- **tabs:** 修复标签栏宽度变化时，没有重新计算滚动的问题 ([#409](https://github.com/arco-design/arco-design-vue/pull/409))
+- **tabs:** 修复标签选项宽度变化时，指示器宽度不能跟随更新的问题 ([#409](https://github.com/arco-design/arco-design-vue/pull/409))
+- **input-tag:** 修复某些情况下内部 input 大小计算错误的问题 ([#408](https://github.com/arco-design/arco-design-vue/pull/408))
+- **input-number:** 修复 `model-value` 为 0 时展示错误的问题 ([#407](https://github.com/arco-design/arco-design-vue/pull/407))
+- **trigger:** 修复容器尺寸变化导致弹出层位置错误的问题 ([#406](https://github.com/arco-design/arco-design-vue/pull/406))
+- **trigger:** 修复嵌套使用中 hover 方式导致弹出层关闭的问题 ([#406](https://github.com/arco-design/arco-design-vue/pull/406))
+- **tree-select:** 修复设置 key 字段名的时候搜索失效的问题 ([#405](https://github.com/arco-design/arco-design-vue/pull/405))
+- **anchor:** 修复加载后不会定位到 hash 位置的问题 ([#400](https://github.com/arco-design/arco-design-vue/pull/400))
+- **cascader:** 修复层级 totalLevel 计算错误的问题 ([#399](https://github.com/arco-design/arco-design-vue/pull/399))
+- **modal:** 修复 `alignCenter` 属性不生效的问题 ([#384](https://github.com/arco-design/arco-design-vue/pull/384))
+- **modal:** 调整组件的 `alignCenter` 属性默认为 `true` ([#384](https://github.com/arco-design/arco-design-vue/pull/384))
+
+### 💅 样式更新
+
+- **menu:** 修复侧边栏可折叠的时候高度溢出的问题 ([#416](https://github.com/arco-design/arco-design-vue/pull/416))
+
+
 ## 2.10.1
 
 `2021-12-14`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 问题修复
+
+- 修复层级 totalLevel 计算错误的问题 ([#399](https://github.com/arco-design/arco-design-vue/pull/399))
+
+
 ## 2.10.1
 
 `2021-12-14`

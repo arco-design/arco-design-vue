@@ -46,7 +46,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |hide-header|是否隐藏表头|`boolean`|`false`||
 |row-selection|表格的行选择器配置|`TableRowSelection`|`-`||
 |expandable|表格的展开行配置|`TableExpandable`|`-`||
-|scroll|表格的滚动属性配置|`{ x: number; y: number }`|`-`||
+|scroll|表格的滚动属性配置|`{ x?: number; y?: number }`|`-`||
 |pagination|分页的属性配置|`boolean \| PaginationProps`|`true`||
 |page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
 |indent-size|树形表格的缩进距离|`number`|`16`||
@@ -83,16 +83,17 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 ### `<table-column>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|data-index|列信息的标识，对应TableData中的数据|`string`|`-`|
-|title|列标题|`string`|`-`|
-|width|列宽度|`number`|`-`|
-|align|对齐方向|`TableColumn['align']`|`-`|
-|fixed|固定位置|`TableColumn['fixed']`|`-`|
-|ellipsis|是否显示为省略|`boolean`|`false`|
-|sortable|排序相关选项|`TableSortable`|`-`|
-|filterable|过滤相关选项|`TableFilterable`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|data-index|列信息的标识，对应TableData中的数据|`string`|`-`||
+|title|列标题|`string`|`-`||
+|width|列宽度|`number`|`-`||
+|align|对齐方向|`TableColumn['align']`|`-`||
+|fixed|固定位置|`TableColumn['fixed']`|`-`||
+|ellipsis|是否显示为省略|`boolean`|`false`||
+|sortable|排序相关选项|`TableSortable`|`-`||
+|filterable|过滤相关选项|`TableFilterable`|`-`||
+|cell-style|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
 ### `<table-column>` Slots
 
 |插槽名|描述|参数|
@@ -108,7 +109,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |key|数据行的key|`string`|`-`|
-|expand|扩展行内容|`string \| (() => VNode)`|`-`|
+|expand|扩展行内容|`string \| RenderFunction`|`-`|
 |children|子数据|`TableData[]`|`-`|
 |disabled|是否禁用行选择器|`boolean`|`false`|
 
@@ -118,7 +119,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|sortDirections|支持的排序方向|`Array<'ascend' \| 'descend'>`|`-`|
+|sortDirections|支持的排序方向|`('ascend' \| 'descend')[]`|`-`|
 |sorter|排序函数|`(a: any, b: any) => number`|`-`|
 |sortOrder|排序方向|`'ascend' \| 'descend' \| ''`|`-`|
 |defaultSortOrder|默认排序方向（非受控模式）|`'ascend' \| 'descend' \| ''`|`-`|
@@ -129,7 +130,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|text|筛选数据选项的内容|`string \| (() => VNode)`|`-`|
+|text|筛选数据选项的内容|`string \| RenderFunction`|`-`|
 |value|筛选数据选项的值|`string`|`-`|
 
 
@@ -151,18 +152,30 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 ### TableColumn
 
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|dataIndex|列信息的标识，对应 `TableData` 中的数据|`string`|`-`||
+|title|列标题|`string \| RenderFunction`|`-`||
+|width|列宽度|`number`|`-`||
+|align|对齐方向|`'left' \| 'center' \| 'right'`|`-`||
+|fixed|固定位置|`'left' \| 'right'`|`-`||
+|ellipsis|是否显示省略号|`boolean`|`false`||
+|sortable|排序相关选项|`TableSortable`|`-`||
+|filterable|过滤相关选项|`TableFilterable`|`-`||
+|children|表头子数据，用于表头分组|`TableColumn[]`|`-`||
+|cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
+|render|自定义列单元格的渲染|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+
+
+
+### TableBorder
+
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|dataIndex|列信息的标识，对应 `TableData` 中的数据|`string`|`-`|
-|title|列标题|`string \| (() => VNode)`|`-`|
-|width|列宽度|`number`|`-`|
-|align|对齐方向|`'left' \| 'center' \| 'right'`|`-`|
-|fixed|固定位置|`'left' \| 'right'`|`-`|
-|ellipsis|是否显示省略号|`boolean`|`false`|
-|sortable|排序相关选项|`TableSortable`|`-`|
-|filterable|过滤相关选项|`TableFilterable`|`-`|
-|children|表头子数据，用于表头分组|`TableColumn[]`|`-`|
-|render|自定义列单元格的渲染|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`|
+|wrapper|是否展示外边框|`boolean`|`false`|
+|cell|是否展示单元格边框（表头+主体）|`boolean`|`false`|
+|headerCell|是否展示表头单元格边框|`boolean`|`false`|
+|bodyCell|是否展示主体单元格边框|`boolean`|`false`|
 
 
 

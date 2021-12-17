@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 新增功能
+
+- `columns` 新增 cellStyle 属性 ([#411](https://github.com/arco-design/arco-design-vue/pull/411))
+
+### 🐛 问题修复
+
+- 修复固定列模式下，表格尺寸变化导致表头和主体宽度不一致问题 ([#410](https://github.com/arco-design/arco-design-vue/pull/410))
+
+
 ## 2.10.0
 
 `2021-12-10`

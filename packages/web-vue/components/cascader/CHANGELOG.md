@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 BugFix
+
+- Fix the problem that the level totalLevel is calculated incorrectly ([#399](https://github.com/arco-design/arco-design-vue/pull/399))
+
+
 ## 2.10.1
 
 `2021-12-14`

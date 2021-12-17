@@ -25,7 +25,7 @@ description: Open a floating layer on the current page to carry related operatio
 |default-visible|Whether the modal is visible by default (uncontrolled state)|`boolean`|`false`|
 |mask|Whether to show the mask|`boolean`|`true`|
 |title|Title|`string`|`-`|
-|align-center|Whether the dialog box is displayed in the center|`boolean`|`false`|
+|align-center|Whether the dialog box is displayed in the center|`boolean`|`true`|
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`|
 |mask-closable|Whether to close the modal when click the mask|`boolean`|`true`|
 |hide-cancel|Whether to hide the cancel button|`boolean`|`false`|
@@ -38,7 +38,7 @@ description: Open a floating layer on the current page to carry related operatio
 |cancel-button-props|Props of cancel button|`object`|`-`|
 |footer|Whether to show the footer|`boolean`|`true`|
 |render-to-body|Whether the modal is mounted under the `body` element|`boolean`|`true`|
-|popup-container|Mount container for modal|`string \| HTMLElement \| null \| undefined`|`'body'`|
+|popup-container|Mount container for modal|`string \| HTMLElement`|`'body'`|
 |mask-style|Mask style|`CSSProperties`|`-`|
 |modal-class|The classname of the modal|`string \| any[]`|`-`|
 |modal-style|Modal style|`CSSProperties`|`-`|

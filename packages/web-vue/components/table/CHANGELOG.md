@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 Feature
+
+- `columns` added cellStyle property ([#411](https://github.com/arco-design/arco-design-vue/pull/411))
+
+### 🐛 BugFix
+
+- Fix the problem of inconsistent width between the header and the main body caused by the change of the table size in the fixed column mode ([#410](https://github.com/arco-design/arco-design-vue/pull/410))
+
+
 ## 2.10.0
 
 `2021-12-10`

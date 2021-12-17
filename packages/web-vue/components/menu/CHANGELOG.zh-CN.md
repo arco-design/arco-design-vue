@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 新增功能
+
+- `sub-menu` 和 `menu-item` 新增 icon 的 slot ([#412](https://github.com/arco-design/arco-design-vue/pull/412))
+
+### 💅 样式更新
+
+- 修复侧边栏可折叠的时候高度溢出的问题 ([#416](https://github.com/arco-design/arco-design-vue/pull/416))
+
+
 ## 2.10.0
 
 `2021-12-10`

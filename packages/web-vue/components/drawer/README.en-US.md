@@ -39,6 +39,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |drawer-style|Drawer style|`CSSProperties`|`-`||
 |on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
+|footer|Whether to display the bottom content|`boolean`|`true`|2.11.0|
 ### `<drawer>` Events
 
 |Event Name|Description|Parameters|

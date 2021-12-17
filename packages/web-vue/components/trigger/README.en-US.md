@@ -54,7 +54,7 @@ description: Used to add hover, click, focus and other events to the element, an
 |auto-fit-popup-width|Whether to set the width of the popup to the width of the trigger|`boolean`|`false`|
 |auto-fit-popup-min-width|Whether to set the minimum width of the popup to the trigger width|`boolean`|`false`|
 |auto-fix-position|When the size of the trigger changes, whether to recalculate the position of the popup|`boolean`|`true`|
-|popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
+|popup-container|Mount container for popup|`string \| HTMLElement`|`-`|
 |auto-fit-position|Whether to automatically adjust the position of the popup to fit the window size|`boolean`|`true`|
 |render-to-body|Whether to mount under the `body` element|`boolean`|`true`|
 |prevent-focus|Whether to prevent elements in the pop-up layer from gaining focus when clicked|`boolean`|`false`|

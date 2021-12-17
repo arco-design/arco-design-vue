@@ -2,6 +2,43 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 Feature
+
+- **upload:** Add `download` attribute ([#418](https://github.com/arco-design/arco-design-vue/pull/418))
+- **space:** add property `fill` ([#415](https://github.com/arco-design/arco-design-vue/pull/415))
+- **menu:** add icon slot for`sub-menu` and `menu-item` ([#412](https://github.com/arco-design/arco-design-vue/pull/412))
+- **table:** `columns` added cellStyle property ([#411](https://github.com/arco-design/arco-design-vue/pull/411))
+- **upload:** add `show-remove-buttoon` and `show-retry-button` and `show-cancel-button` property ([#396](https://github.com/arco-design/arco-design-vue/pull/396))
+- **upload:** add `imageLoading` property ([#396](https://github.com/arco-design/arco-design-vue/pull/396))
+- **drawer:** add property  `footer` ([#394](https://github.com/arco-design/arco-design-vue/pull/394))
+
+### 🐛 BugFix
+
+- **upload:** Fix the problem of the wrong position of the icon in the upload ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- **upload:** Fix the problem that not all files are obtained by the second parameter of `beforeUpload` when uploading folders by dragging and dropping ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- **upload:** Fix the problem that the dragging style flashes when the mouse enters the internal text when dragging and uploading ([#417](https://github.com/arco-design/arco-design-vue/pull/417))
+- **table:** Fix the problem of inconsistent width between the header and the main body caused by the change of the table size in the fixed column mode ([#410](https://github.com/arco-design/arco-design-vue/pull/410))
+- **tabs:** Fix the problem that scrolling is not recalculated when the width of the tab bar changes ([#409](https://github.com/arco-design/arco-design-vue/pull/409))
+- **tabs:** Fix the problem that the indicator width cannot follow the update when the width of the label option changes ([#409](https://github.com/arco-design/arco-design-vue/pull/409))
+- **input-tag:** Fix the problem that the internal input size is calculated incorrectly in some cases ([#408](https://github.com/arco-design/arco-design-vue/pull/408))
+- **input-number:** Fix the problem of displaying errors when `model-value` is 0 ([#407](https://github.com/arco-design/arco-design-vue/pull/407))
+- **trigger:** Fix the problem of the wrong position of the pop-up layer caused by the change of container size ([#406](https://github.com/arco-design/arco-design-vue/pull/406))
+- **trigger:** Fix the problem that the pop-up layer is closed due to the hover method in nested use ([#406](https://github.com/arco-design/arco-design-vue/pull/406))
+- **tree-select:** fix the problem that search is invalid when rename the key field ([#405](https://github.com/arco-design/arco-design-vue/pull/405))
+- **anchor:** Fix the problem that the hash position will not be located after loading ([#400](https://github.com/arco-design/arco-design-vue/pull/400))
+- **cascader:** Fix the problem that the level totalLevel is calculated incorrectly ([#399](https://github.com/arco-design/arco-design-vue/pull/399))
+- **modal:** Fix the problem that the `alignCenter` property does not take effect ([#384](https://github.com/arco-design/arco-design-vue/pull/384))
+- **modal:** The `alignCenter` property of the adjustment component defaults to `true` ([#384](https://github.com/arco-design/arco-design-vue/pull/384))
+
+### 💅 Style
+
+- **menu:** Fix the problem of height overflow when the sidebar is collapsible ([#416](https://github.com/arco-design/arco-design-vue/pull/416))
+
+
 ## 2.10.1
 
 `2021-12-14`

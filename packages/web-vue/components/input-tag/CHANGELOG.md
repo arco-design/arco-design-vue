@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🐛 BugFix
+
+- Fix the problem that the internal input size is calculated incorrectly in some cases ([#408](https://github.com/arco-design/arco-design-vue/pull/408))
+
+
 ## 2.10.1
 
 `2021-12-14`

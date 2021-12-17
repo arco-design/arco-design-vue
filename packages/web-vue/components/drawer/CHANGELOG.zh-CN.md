@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.0
+
+`2021-12-17`
+
+### 🆕 新增功能
+
+- 新增属性 `footer` ([#394](https://github.com/arco-design/arco-design-vue/pull/394))
+
+
 ## 2.9.0
 
 `2021-12-03`

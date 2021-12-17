@@ -36,33 +36,40 @@ description: 用户可传输文件或提交相应的内容。
 @import ./__demo__/directory.md
 
 
+
 ### `<upload>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|file-list **(v-model)**|文件列表|`FileItem[]`|`-`|
-|default-file-list|默认的文件列表（非受控状态）|`FileItem[]`|`[]`|
-|accept|接收的上传文件类型，具体参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#htmlattrdefaccept "_blank")|`string`|`-`|
-|action|上传的URL|`string`|`-`|
-|disabled|是否禁用|`boolean`|`false`|
-|multiple|是否支持多文件上传|`boolean`|`false`|
-|directory|是否支持文件夹上传（需要浏览器支持）|`boolean`|`false`|
-|draggable|是否支持拖拽上传|`boolean`|`false`|
-|tip|提示文字|`string`|`-`|
-|headers|上传请求附加的头信息|`object`|`-`|
-|data|上传请求附加的数据|`Record<string, unknown>\| ((fileItem: FileItem) => Record<string, unknown>)`|`-`|
-|name|上传的文件名|`string \| ((fileItem: FileItem) => string)`|`-`|
-|with-credentials|上传请求是否携带 cookie|`boolean`|`false`|
-|custom-request|自定义上传行为|`(option: RequestOption) => UploadRequest`|`-`|
-|limit|限制上传文件的数量。`0`表示不限制|`number`|`0`|
-|auto-upload|是否自动上传文件|`boolean`|`true`|
-|show-file-list|是否显示文件列表|`boolean`|`true`|
-|list-type|图片列表类型|`'text' \| 'picture' \| 'picture-card'`|`'text'`|
-|response-url-key|Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片|`string`|`-`|
-|custom-icon|自定义图标|`CustomIcon`|`-`|
-|on-before-upload|上传图片前触发|`(file: File) => Promise<boolean>`|`-`|
-|on-before-remove|移除图片前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`|
-|on-button-click|点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）|`(event: Event) => Promise<FileList> \| void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|file-list **(v-model)**|文件列表|`FileItem[]`|`-`||
+|default-file-list|默认的文件列表（非受控状态）|`FileItem[]`|`[]`||
+|accept|接收的上传文件类型，具体参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#htmlattrdefaccept "_blank")|`string`|`-`||
+|action|上传的URL|`string`|`-`||
+|disabled|是否禁用|`boolean`|`false`||
+|multiple|是否支持多文件上传|`boolean`|`false`||
+|directory|是否支持文件夹上传（需要浏览器支持）|`boolean`|`false`||
+|draggable|是否支持拖拽上传|`boolean`|`false`||
+|tip|提示文字|`string`|`-`||
+|headers|上传请求附加的头信息|`object`|`-`||
+|data|上传请求附加的数据|`Record<string, unknown>\| ((fileItem: FileItem) => Record<string, unknown>)`|`-`||
+|name|上传的文件名|`string \| ((fileItem: FileItem) => string)`|`-`||
+|with-credentials|上传请求是否携带 cookie|`boolean`|`false`||
+|custom-request|自定义上传行为|`(option: RequestOption) => UploadRequest`|`-`||
+|limit|限制上传文件的数量。`0`表示不限制|`number`|`0`||
+|auto-upload|是否自动上传文件|`boolean`|`true`||
+|show-file-list|是否显示文件列表|`boolean`|`true`||
+|show-remove-button|是否显示删除按钮|`boolean`|`true`|2.11.0|
+|show-retry-button|是否显示重试按钮|`boolean`|`true`|2.11.0|
+|show-cancel-button|是否显示取消按钮|`boolean`|`true`|2.11.0|
+|show-upload-button|是否显示上传按钮|`boolean`|`true`|2.11.0|
+|download|是否在 `<a>` 链接上添加 download 属性|`boolean`|`false`|2.11.0|
+|image-loading|`<img>` 的原生 HTML 属性，需要浏览器支持|`'eager' \| 'lazy'`|`-`|2.11.0|
+|list-type|图片列表类型|`'text' \| 'picture' \| 'picture-card'`|`'text'`||
+|response-url-key|Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片|`string \| ((fileItem: FileItem) => string)`|`-`||
+|custom-icon|自定义图标|`CustomIcon`|`-`||
+|on-before-upload|上传图片前触发|`(file: File) => Promise<boolean>`|`-`||
+|on-before-remove|移除图片前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`||
+|on-button-click|点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）|`(event: Event) => Promise<FileList> \| void`|`-`||
 ### `<upload>` Events
 
 |事件名|描述|参数|
@@ -73,6 +80,12 @@ description: 用户可传输文件或提交相应的内容。
 |preview|点击图片预览时的触发|fileItem: `FileItem`|
 |success|上传成功时触发|fileItem: `FileItem`|
 |error|上传失败时触发|fileItem: `FileItem`|
+### `<upload>` Methods
+
+|方法名|描述|参数|返回值|
+|---|---|---|---|
+|submit|上传文件（已经初始化完成的文件）|fileItem: `FileItem`|-|
+|abort|中止上传|fileItem: `FileItem`|-|
 ### `<upload>` Slots
 
 |插槽名|描述|参数|
