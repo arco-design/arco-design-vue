@@ -28,7 +28,7 @@ You can customize `treeData` by `fieldNames`.
     :data="treeData"
     placeholder="Please select ..."
     style="width: 300px;"
-  />
+  ></a-tree-select>
 </template>
 <script>
   export default {

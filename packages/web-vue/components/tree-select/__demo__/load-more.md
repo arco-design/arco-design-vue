@@ -23,7 +23,7 @@ Load nodes dynamically via `loadMore`. At this time, `isLeaf` can be set to indi
     :load-more="loadMore"
     placeholder="Please select ..."
     style="width: 300px"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { ref } from 'vue';

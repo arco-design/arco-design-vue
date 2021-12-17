@@ -45,7 +45,7 @@ Customize the return value through the `treeCheckStrategy` property.
     :data="treeData"
     placeholder="Please select ..."
     style="width: 300px;"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { ref } from 'vue';

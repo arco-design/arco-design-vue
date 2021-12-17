@@ -25,7 +25,7 @@ When `labelInValue` is `true`, the format of `value` is: `{ label: string, value
     placeholder="Please select ..."
     style="width: 300px"
     @change="onChange"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { h } from 'vue';
