@@ -85,9 +85,12 @@ export default defineComponent({
 
     const cellStyle = computed(() => {
       if (props.isFixedExpand && props.containerWidth) {
-        return { width: `${props.containerWidth}px` };
+        return {
+          width: `${props.containerWidth}px`,
+          ...props.column?.cellStyle,
+        };
       }
-      return undefined;
+      return props.column?.cellStyle;
     });
 
     const renderContent = () => {

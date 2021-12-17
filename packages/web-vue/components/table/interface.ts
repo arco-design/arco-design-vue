@@ -1,4 +1,4 @@
-import { Slot, VNode } from 'vue';
+import { CSSProperties, RenderFunction, Slot, VNode } from 'vue';
 import { Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
@@ -22,7 +22,7 @@ export interface TableData {
    * @zh 扩展行内容
    * @en Expand row content
    */
-  expand?: string | (() => VNode);
+  expand?: string | RenderFunction;
   /**
    * @zh 子数据
    * @en Sub data
@@ -42,7 +42,7 @@ export interface TableSortable {
    * @zh 支持的排序方向
    * @en Supported sort direction
    */
-  sortDirections: Array<'ascend' | 'descend'>;
+  sortDirections: ('ascend' | 'descend')[];
   /**
    * @zh 排序函数
    * @en Sorting function
@@ -65,7 +65,7 @@ interface TableFilterData {
    * @zh 筛选数据选项的内容
    * @en Filter the content of the data option
    */
-  text: string | (() => VNode);
+  text: string | RenderFunction;
   /**
    * @zh 筛选数据选项的值
    * @en Filter the value of the data option
@@ -102,7 +102,6 @@ export interface TableFilterable {
   /**
    * @zh 筛选框的内容
    * @en The content of filter box
-   * @param data
    */
   renderContent?: (data: {
     filterValue: string[];
@@ -132,7 +131,7 @@ export interface TableColumn {
    * @zh 列标题
    * @en Column header
    */
-  title?: string | (() => VNode);
+  title?: string | RenderFunction;
   /**
    * @zh 列宽度
    * @en Column width
@@ -169,11 +168,14 @@ export interface TableColumn {
    */
   children?: TableColumn[];
   /**
+   * @zh 自定义单元格样式
+   * @en Custom cell style
+   * @version 2.11.0
+   */
+  cellStyle?: CSSProperties;
+  /**
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
-   * @param {TableData} record
-   * @param {TableColumn} column
-   * @param {number} rowIndex
    */
   render?: ({
     record,
@@ -196,9 +198,25 @@ export interface TableCell extends TableColumn {
 }
 
 export interface TableBorder {
+  /**
+   * @zh 是否展示外边框
+   * @en TWhether to display the outer border
+   */
   wrapper?: boolean;
+  /**
+   * @zh 是否展示单元格边框（表头+主体）
+   * @en Whether to display the cell border (header + body)
+   */
   cell?: boolean;
+  /**
+   * @zh 是否展示表头单元格边框
+   * @en Whether to display the header cell border
+   */
   headerCell?: boolean;
+  /**
+   * @zh 是否展示主体单元格边框
+   * @en Whether to display the body cell border
+   */
   bodyCell?: boolean;
 }
 

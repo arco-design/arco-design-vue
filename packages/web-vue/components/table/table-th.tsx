@@ -174,6 +174,7 @@ export default defineComponent({
     const renderCell = () => (
       <span
         class={cellCls.value}
+        style={props.column?.cellStyle}
         onClick={hasSorter.value ? handleClickSorter : undefined}
       >
         <span class={`${prefixCls}-th-item-title`}>{renderTitle()}</span>
