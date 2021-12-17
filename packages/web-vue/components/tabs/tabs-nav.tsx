@@ -218,6 +218,9 @@ export default defineComponent({
 
     const handleResize = () => {
       getSize();
+      if (inkRef.value) {
+        inkRef.value.$forceUpdate();
+      }
     };
 
     const renderAddBtn = () => {
@@ -241,6 +244,8 @@ export default defineComponent({
       `${prefixCls}-type-${props.type}`,
     ]);
 
+    const inkRef = ref<ComponentPublicInstance>();
+
     return () => (
       <div class={cls.value}>
         {isScroll.value && (
@@ -251,53 +256,56 @@ export default defineComponent({
             onClick={handleButtonClick}
           />
         )}
-        <div class={`${prefixCls}-tab`} ref={wrapperRef}>
-          <ResizeObserver onResize={handleResize}>
-            <div
-              class={[
-                `${prefixCls}-tab-list`,
-                {
-                  [`${prefixCls}-tab-list-no-padding`]:
-                    !props.headerPadding &&
-                    props.direction === 'horizontal' &&
-                    ['line', 'text'].includes(props.type),
-                },
-              ]}
-              style={getTabListStyle({
-                direction: props.direction,
-                type: props.type,
-                offset: offset.value,
-              })}
-              ref={listRef}
-            >
-              {props.tabs.map((tab, index) => (
-                <Tab
-                  ref={(component: ComponentPublicInstance) => {
-                    if (component?.$el) {
-                      tabsRef.value[tab.key] = component.$el;
-                    }
-                  }}
-                  v-slots={{ title: () => tab.title() }}
-                  isActive={props.activeIndex === index}
-                  key={tab.key}
-                  tab={tab}
-                  editable={props.editable}
-                  onClick={(key: string, e: Event) => emit('click', key, e)}
-                  onDelete={(key: string) => emit('delete', key)}
-                />
-              ))}
-              {props.type === 'line' && activeTabRef.value && (
-                <TabsNavInk
-                  activeTabRef={activeTabRef.value}
-                  direction={props.direction}
-                  disabled={false}
-                  animation={props.animation}
-                />
-              )}
-            </div>
-          </ResizeObserver>
-          {!isScroll.value && renderAddBtn()}
-        </div>
+        <ResizeObserver onResize={() => getSize()}>
+          <div class={`${prefixCls}-tab`} ref={wrapperRef}>
+            <ResizeObserver onResize={handleResize}>
+              <div
+                class={[
+                  `${prefixCls}-tab-list`,
+                  {
+                    [`${prefixCls}-tab-list-no-padding`]:
+                      !props.headerPadding &&
+                      props.direction === 'horizontal' &&
+                      ['line', 'text'].includes(props.type),
+                  },
+                ]}
+                style={getTabListStyle({
+                  direction: props.direction,
+                  type: props.type,
+                  offset: offset.value,
+                })}
+                ref={listRef}
+              >
+                {props.tabs.map((tab, index) => (
+                  <Tab
+                    ref={(component: ComponentPublicInstance) => {
+                      if (component?.$el) {
+                        tabsRef.value[tab.key] = component.$el;
+                      }
+                    }}
+                    v-slots={{ title: () => tab.title() }}
+                    isActive={props.activeIndex === index}
+                    key={tab.key}
+                    tab={tab}
+                    editable={props.editable}
+                    onClick={(key: string, e: Event) => emit('click', key, e)}
+                    onDelete={(key: string) => emit('delete', key)}
+                  />
+                ))}
+                {props.type === 'line' && activeTabRef.value && (
+                  <TabsNavInk
+                    ref={inkRef}
+                    activeTabRef={activeTabRef.value}
+                    direction={props.direction}
+                    disabled={false}
+                    animation={props.animation}
+                  />
+                )}
+              </div>
+            </ResizeObserver>
+            {!isScroll.value && renderAddBtn()}
+          </div>
+        </ResizeObserver>
         {isScroll.value && (
           <TabsButton
             type="next"
