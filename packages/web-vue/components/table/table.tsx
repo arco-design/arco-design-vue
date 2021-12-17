@@ -5,15 +5,7 @@ import type {
   Slot,
   VNode,
 } from 'vue';
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  toRefs,
-  watch,
-} from 'vue';
+import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
@@ -48,6 +40,7 @@ import Td from './table-td';
 import OperationTh from './table-operation-th';
 import OperationTd from './table-operation-td';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import ResizeObserver from '../_components/resize-observer';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
@@ -156,7 +149,7 @@ export default defineComponent({
      * @en Scrolling attribute configuration of the table
      */
     scroll: {
-      type: Object as PropType<{ x: number; y: number }>,
+      type: Object as PropType<{ x?: number; y?: number }>,
     },
     /**
      * @zh 分页的属性配置
@@ -858,12 +851,24 @@ export default defineComponent({
 
     const isVirtualList = computed(() => Boolean(props.virtualListProps));
 
-    const hasScrollBar = computed(() => {
-      return (
-        (tbodyRef.value &&
-          tbodyRef.value.offsetWidth > tbodyRef.value.clientWidth) ??
-        false
-      );
+    const hasScrollBar = ref(false);
+
+    const isTbodyHasScrollBar = () => {
+      if (tbodyRef.value) {
+        return tbodyRef.value.offsetWidth > tbodyRef.value.clientWidth;
+      }
+      return false;
+    };
+
+    const handleTbodyResize = () => {
+      const _hasScrollBar = isTbodyHasScrollBar();
+      if (hasScrollBar.value !== _hasScrollBar) {
+        hasScrollBar.value = _hasScrollBar;
+      }
+    };
+
+    onMounted(() => {
+      hasScrollBar.value = isTbodyHasScrollBar();
     });
 
     const renderContent = () => {
@@ -892,28 +897,30 @@ export default defineComponent({
                 </table>
               </div>
             )}
-            {isVirtualList.value ? (
-              renderVirtualListBody()
-            ) : (
-              <div
-                ref={tbodyRef}
-                class={`${prefixCls}-body`}
-                style={{ maxHeight: `${props.scroll?.y}px` }}
-                onScroll={handleScroll}
-              >
-                <table
-                  cellpadding={0}
-                  cellspacing={0}
-                  style={contentStyle.value}
+            <ResizeObserver onResize={handleTbodyResize}>
+              {isVirtualList.value ? (
+                renderVirtualListBody()
+              ) : (
+                <div
+                  ref={tbodyRef}
+                  class={`${prefixCls}-body`}
+                  style={{ maxHeight: `${props.scroll?.y}px` }}
+                  onScroll={handleScroll}
                 >
-                  <ColGroup
-                    dataColumns={dataColumns.value}
-                    operations={operations.value}
-                  />
-                  {renderBody()}
-                </table>
-              </div>
-            )}
+                  <table
+                    cellpadding={0}
+                    cellspacing={0}
+                    style={contentStyle.value}
+                  >
+                    <ColGroup
+                      dataColumns={dataColumns.value}
+                      operations={operations.value}
+                    />
+                    {renderBody()}
+                  </table>
+                </div>
+              )}
+            </ResizeObserver>
           </>
         );
       }
