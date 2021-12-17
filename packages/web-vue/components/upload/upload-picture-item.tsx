@@ -39,9 +39,15 @@ export default defineComponent({
 
       return (
         <>
-          <img src={props.file.url} alt={props.file.name} loading={uploadCtx.imageLoading} />
+          <img
+            src={props.file.url}
+            alt={props.file.name}
+            {...(uploadCtx?.imageLoading
+              ? { loading: uploadCtx.imageLoading }
+              : undefined)}
+          />
           <div class={`${itemCls}-mask`}>
-            {props.file.status === 'error' && uploadCtx?.showCancelButtoon && (
+            {props.file.status === 'error' && uploadCtx?.showCancelButton && (
               <div class={`${itemCls}-error-tip`}>
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-error`]}
@@ -59,15 +65,16 @@ export default defineComponent({
                   {uploadCtx?.customIcon?.previewIcon?.() || <IconEye />}
                 </span>
               )}
-              {['init', 'error'].includes(props.file.status as string) && uploadCtx?.showRetryButton && (
-                <span
-                  class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-upload`]}
-                  onClick={() => uploadCtx?.onUpload(props.file)}
-                >
-                  {uploadCtx?.customIcon?.retryIcon?.() || <IconUpload />}
-                </span>
-              )}
-              {!uploadCtx?.disabled && uploadCtx?.showRemoveButtoon && (
+              {['init', 'error'].includes(props.file.status as string) &&
+                uploadCtx?.showRetryButton && (
+                  <span
+                    class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-upload`]}
+                    onClick={() => uploadCtx?.onUpload(props.file)}
+                  >
+                    {uploadCtx?.customIcon?.retryIcon?.() || <IconUpload />}
+                  </span>
+                )}
+              {!uploadCtx?.disabled && uploadCtx?.showRemoveButton && (
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
                   onClick={() => uploadCtx?.onRemove(props.file)}

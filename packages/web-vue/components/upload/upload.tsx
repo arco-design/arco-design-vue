@@ -180,7 +180,7 @@ export default defineComponent({
      * @en Whether to display the cancel button
      * @version 2.11.0
      */
-    showCancelButtoon: {
+    showCancelButton: {
       type: Boolean,
       default: true,
     },
@@ -194,8 +194,17 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh <img> 的原生属性
-     * @en <img> native attribute
+     * @zh 是否在 `<a>` 链接上添加 download 属性
+     * @en Whether to add download attribute to `<a>` link
+     * @version 2.11.0
+     */
+    download: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh `<img>` 的原生 HTML 属性，需要浏览器支持
+     * @en Native HTML attributes of `<img>`, browser support is required
      * @version 2.11.0
      */
     imageLoading: {
@@ -334,7 +343,17 @@ export default defineComponent({
    * @slot upload-button
    */
   setup(props, { emit, slots }) {
-    const { fileList, disabled, listType, customIcon } = toRefs(props);
+    const {
+      fileList,
+      disabled,
+      listType,
+      customIcon,
+      showRetryButton,
+      showCancelButton,
+      showRemoveButton,
+      imageLoading,
+      download,
+    } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
 
     // Internally maintained picture list
@@ -397,7 +416,7 @@ export default defineComponent({
           file.response = response;
           if (props.responseUrlKey) {
             if (isFunction(props.responseUrlKey)) {
-              file.url = props.responseUrlKey(file)
+              file.url = props.responseUrlKey(file);
             } else if (response[props.responseUrlKey]) {
               file.url = response[props.responseUrlKey];
             }
@@ -558,10 +577,11 @@ export default defineComponent({
         disabled,
         listType,
         iconCls: `${prefixCls}-icon`,
-        showRemoveButtoon: props.showRemoveButtoon,
-        showRetryButton: props.showRetryButton,
-        showCancelButtoon: props.showCancelButtoon,
-        imageLoading: props.imageLoading,
+        showRemoveButton,
+        showRetryButton,
+        showCancelButton,
+        imageLoading,
+        download,
         customIcon,
         onUpload: uploadFile,
         onAbort: abort,
@@ -602,7 +622,9 @@ export default defineComponent({
             `${prefixCls}-wrapper-type-${props.listType}`,
           ]}
         >
-          {props.listType !== 'picture-card' && props.showUploadButton && renderButton()}
+          {props.listType !== 'picture-card' &&
+            props.showUploadButton &&
+            renderButton()}
           <UploadList
             v-slots={{
               'upload-button': renderButton,
@@ -610,7 +632,6 @@ export default defineComponent({
             }}
             fileList={_fileList.value}
             listType={props.listType}
-            isMax={isMax.value}
             showUploadButton={props.showUploadButton}
           />
         </div>
