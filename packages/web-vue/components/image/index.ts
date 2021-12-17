@@ -25,4 +25,9 @@ export type ImageInstance = InstanceType<typeof _Image>;
 export type ImagePreviewInstance = InstanceType<typeof _ImagePreview>;
 export type ImagePreviewGroupInstance = InstanceType<typeof _ImagePreviewGroup>;
 
+export {
+  _ImagePreview as ImagePreview,
+  _ImagePreviewGroup as ImagePreviewGroup,
+};
+
 export default Image;

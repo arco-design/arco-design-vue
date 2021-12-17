@@ -18,4 +18,6 @@ const Collapse = Object.assign(_Collapse, {
 export type CollapseInstance = InstanceType<typeof _Collapse>;
 export type CollapseItemInstance = InstanceType<typeof _CollapseItem>;
 
+export { _CollapseItem as CollapseItem };
+
 export default Collapse;

@@ -26,4 +26,10 @@ export type MenuItemInstance = InstanceType<typeof _MenuItem>;
 export type MenuItemGroupInstance = InstanceType<typeof _MenuItemGroup>;
 export type MenuSubMenuInstance = InstanceType<typeof _MenuSubMenu>;
 
+export {
+  _MenuItem as MenuItem,
+  _MenuItemGroup as MenuItemGroup,
+  _MenuSubMenu as SubMenu,
+};
+
 export default Menu;

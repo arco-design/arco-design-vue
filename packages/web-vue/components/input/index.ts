@@ -26,4 +26,10 @@ export type InputSearchInstance = InstanceType<typeof _InputSearch>;
 export type InputPasswordInstance = InstanceType<typeof _InputPassword>;
 export type InputGroupInstance = InstanceType<typeof _InputGroup>;
 
+export {
+  _InputSearch as InputSearch,
+  _InputPassword as InputPassword,
+  _InputGroup as InputGroup,
+};
+
 export default Input;

@@ -18,4 +18,6 @@ const Radio = Object.assign(_Radio, {
 export type RadioInstance = InstanceType<typeof _Radio>;
 export type RadioGroupInstance = InstanceType<typeof _RadioGroup>;
 
+export { _RadioGroup as RadioGroup };
+
 export default Radio;

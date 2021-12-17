@@ -288,7 +288,7 @@ export default defineComponent({
    * @slot upload-button
    */
   setup(props, { emit, slots }) {
-    const { fileList } = toRefs(props);
+    const { fileList, disabled, listType, customIcon } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
 
     // Internally maintained picture list
@@ -505,10 +505,10 @@ export default defineComponent({
     provide(
       uploadInjectionKey,
       reactive({
-        disabled: props.disabled,
-        listType: props.listType,
+        disabled,
+        listType,
         iconCls: `${prefixCls}-icon`,
-        customIcon: props.customIcon,
+        customIcon,
         onUpload: uploadFile,
         onAbort: abort,
         onRemove: handleRemove,
@@ -563,10 +563,30 @@ export default defineComponent({
 
     return {
       prefixCls,
-      submit,
-      abort,
       render,
+      innerSubmit: submit,
+      innerAbort: abort,
     };
+  },
+  methods: {
+    /**
+     * @zh 上传文件（已经初始化完成的文件）
+     * @en Upload file (file that has been initialized)
+     * @public
+     * @param {FileItem} fileItem
+     */
+    submit(fileItem?: FileItem) {
+      return this.innerSubmit(fileItem);
+    },
+    /**
+     * @zh 中止上传
+     * @en Abort upload
+     * @public
+     * @param {FileItem} fileItem
+     */
+    abort(fileItem: FileItem) {
+      return this.innerAbort(fileItem);
+    },
   },
   render() {
     return this.render();

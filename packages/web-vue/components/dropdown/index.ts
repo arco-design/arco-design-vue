@@ -26,4 +26,10 @@ export type DropdownOptionInstance = InstanceType<typeof _DropdownOption>;
 export type DropdownGroupInstance = InstanceType<typeof _DropdownGroup>;
 export type DropdownSubmenuInstance = InstanceType<typeof _DropdownSubmenu>;
 
+export {
+  _DropdownOption as Doption,
+  _DropdownGroup as Dgroup,
+  _DropdownSubmenu as Dsubmenu,
+};
+
 export default Dropdown;

@@ -252,9 +252,7 @@ export default defineComponent({
      * @en Mount container for modal
      */
     popupContainer: {
-      type: [String, Object] as PropType<
-        string | HTMLElement | null | undefined
-      >,
+      type: [String, Object] as PropType<string | HTMLElement>,
       default: 'body',
     },
     /**

@@ -22,4 +22,6 @@ export type SelectInstance = CreateComponentPublicInstance<SelectProps>;
 export type SelectOptionInstance = InstanceType<typeof _Option>;
 export type SelectOptGroupInstance = InstanceType<typeof _Optgroup>;
 
+export { _Option as Option, _Optgroup as Optgroup };
+
 export default Select;

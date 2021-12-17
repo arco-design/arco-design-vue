@@ -18,4 +18,6 @@ const Breadcrumb = Object.assign(_Breadcrumb, {
 export type BreadcrumbInstance = InstanceType<typeof _Breadcrumb>;
 export type BreadcrumbItemInstance = InstanceType<typeof _BreadcrumbItem>;
 
+export { _BreadcrumbItem as BreadcrumbItem };
+
 export default Breadcrumb;

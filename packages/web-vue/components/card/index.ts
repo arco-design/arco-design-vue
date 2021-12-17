@@ -22,4 +22,6 @@ export type CardInstance = InstanceType<typeof _Card>;
 export type CardMetaInstance = InstanceType<typeof _CardMeta>;
 export type CardGridInstance = InstanceType<typeof _CardGrid>;
 
+export { _CardMeta as CardMeta, _CardGrid as CardGrid };
+
 export default Card;

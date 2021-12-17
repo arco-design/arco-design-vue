@@ -31,4 +31,10 @@ export type TypographyParagraphInstance = InstanceType<
 export type TypographyTitleInstance = InstanceType<typeof _TypographyTitle>;
 export type TypographyTextInstance = InstanceType<typeof _TypographyText>;
 
+export {
+  _TypographyParagraph as TypographyParagraph,
+  _TypographyTitle as TypographyTitle,
+  _TypographyText as TypographyText,
+};
+
 export default Typography;

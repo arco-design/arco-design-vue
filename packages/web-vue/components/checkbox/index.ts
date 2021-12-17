@@ -18,4 +18,6 @@ const Checkbox = Object.assign(_Checkbox, {
 export type CheckboxInstance = InstanceType<typeof _Checkbox>;
 export type CheckboxGroupInstance = InstanceType<typeof _CheckboxGroup>;
 
+export { _CheckboxGroup as CheckboxGroup };
+
 export default Checkbox;

@@ -18,4 +18,6 @@ const Statistic = Object.assign(_Statistic, {
 export type StatisticInstance = InstanceType<typeof _Statistic>;
 export type CountdownInstance = InstanceType<typeof _Countdown>;
 
+export { _Countdown as Countdown };
+
 export default Statistic;

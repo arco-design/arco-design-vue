@@ -18,4 +18,6 @@ const Anchor = Object.assign(_Anchor, {
 export type AnchorInstance = InstanceType<typeof _Anchor>;
 export type AnchorLinkInstance = InstanceType<typeof _AnchorLink>;
 
+export { _AnchorLink as AnchorLink };
+
 export default Anchor;

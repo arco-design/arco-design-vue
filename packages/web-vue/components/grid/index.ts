@@ -16,4 +16,6 @@ const Grid = {
   },
 };
 
+export { _GridRow as Row, _GridCol as Col };
+
 export default Grid;
