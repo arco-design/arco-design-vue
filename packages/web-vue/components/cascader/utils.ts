@@ -52,7 +52,7 @@ export const getOptionInfos = (
     level?: number
   ) => {
     const parentPath = parent?.path ?? [];
-    totalLevel = level ?? 1;
+    totalLevel = Math.max(totalLevel, level ?? 1);
 
     return options.map((item, index) => {
       const data = {
