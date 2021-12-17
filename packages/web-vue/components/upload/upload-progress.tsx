@@ -36,7 +36,8 @@ export default defineComponent({
             class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-upload`]}
             onClick={() => uploadCtx?.onUpload(props.file)}
           >
-            {uploadCtx?.showRetryButton && uploadCtx?.customIcon?.retryIcon?.() ||
+            {(uploadCtx?.showRetryButton &&
+              uploadCtx?.customIcon?.retryIcon?.()) ||
             props.listType === 'picture-card' ? (
               <IconUpload />
             ) : (
@@ -65,12 +66,13 @@ export default defineComponent({
         );
       }
       return (
-        uploadCtx?.showCancelButtoon &&
-        <Tooltip content={t('upload.cancel')}>
-          <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-cancel`]}>
-            {uploadCtx?.customIcon?.cancelIcon?.() || <IconPause />}
-          </span>
-        </Tooltip>
+        uploadCtx?.showCancelButton && (
+          <Tooltip content={t('upload.cancel')}>
+            <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-cancel`]}>
+              {uploadCtx?.customIcon?.cancelIcon?.() || <IconPause />}
+            </span>
+          </Tooltip>
+        )
       );
     };
 

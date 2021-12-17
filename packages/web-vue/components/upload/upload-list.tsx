@@ -4,7 +4,6 @@ import UploadListItem from './upload-list-item';
 import UploadPictureItem from './upload-picture-item';
 import { FileItem, ListType } from './interfaces';
 import { isFunction } from '../_utils/is';
-import { uploadInjectionKey } from './context';
 
 export default defineComponent({
   name: 'UploadList',
@@ -21,10 +20,7 @@ export default defineComponent({
       type: String as PropType<ListType>,
       required: true,
     },
-    isMax: {
-      type: Boolean,
-      default: false,
-    },
+    showUploadButton: Boolean,
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('upload');
@@ -33,8 +29,6 @@ export default defineComponent({
       `${prefixCls}-list`,
       `${prefixCls}-list-type-${props.listType}`,
     ]);
-
-    const uploadCtx = inject(uploadInjectionKey, undefined);
 
     const renderItem = (fileItem: FileItem, index: number) => {
       if (isFunction(slots['upload-item'])) {
@@ -56,7 +50,9 @@ export default defineComponent({
     return () => (
       <TransitionGroup tag="div" class={cls.value}>
         {props.fileList.map((item, index) => renderItem(item, index))}
-        {props.listType === 'picture-card' && !props.isMax && uploadCtx?.showUploadButton && slots['upload-button']?.()}
+        {props.listType === 'picture-card' &&
+          props.showUploadButton &&
+          slots['upload-button']?.()}
       </TransitionGroup>
     );
   },

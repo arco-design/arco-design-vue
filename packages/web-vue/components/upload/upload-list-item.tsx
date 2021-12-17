@@ -68,7 +68,13 @@ export default defineComponent({
         <div class={`${itemCls}-content`}>
           {uploadCtx?.listType === 'picture' && (
             <span class={`${itemCls}-thumbnail`}>
-              <img src={props.file.url} alt={props.file.name} loading={uploadCtx.imageLoading} />
+              <img
+                src={props.file.url}
+                alt={props.file.name}
+                {...(uploadCtx?.imageLoading
+                  ? { loading: uploadCtx.imageLoading }
+                  : undefined)}
+              />
             </span>
           )}
           <div class={`${itemCls}-name`}>
@@ -80,7 +86,14 @@ export default defineComponent({
             )}
             {uploadCtx?.customIcon?.fileName?.(props.file) ||
               (props.file.url ? (
-                <a class={`${itemCls}-name-link`} target="_blank" href={props.file.url} download={props.file.name}>
+                <a
+                  class={`${itemCls}-name-link`}
+                  target="_blank"
+                  href={props.file.url}
+                  {...(uploadCtx?.download
+                    ? { download: props.file.name }
+                    : undefined)}
+                >
                   {props.file.name}
                 </a>
               ) : (
@@ -101,11 +114,15 @@ export default defineComponent({
           <UploadProgress file={props.file} listType={props.listType} />
         </div>
         <span class={`${itemCls}-operation`}>
-          {uploadCtx?.showRemoveButton && <IconHover onClick={() => uploadCtx?.onRemove?.(props.file)}>
-            <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}>
-              {uploadCtx?.customIcon?.removeIcon?.() || <IconDelete />}
-            </span>
-          </IconHover>}
+          {uploadCtx?.showRemoveButton && (
+            <IconHover onClick={() => uploadCtx?.onRemove?.(props.file)}>
+              <span
+                class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
+              >
+                {uploadCtx?.customIcon?.removeIcon?.() || <IconDelete />}
+              </span>
+            </IconHover>
+          )}
         </span>
       </div>
     );
