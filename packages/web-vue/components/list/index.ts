@@ -24,4 +24,6 @@ export type ListInstance = InstanceType<typeof _List>;
 export type ListItemInstance = InstanceType<typeof _ListItem>;
 export type ListItemMetaInstance = InstanceType<typeof _ListItemMeta>;
 
+export { _ListItem as ListItem, _ListItemMeta as ListItemMeta };
+
 export default List;

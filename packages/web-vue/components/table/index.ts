@@ -32,4 +32,13 @@ const Table = Object.assign(_Table, {
 
 export type TableInstance = InstanceType<typeof _Table>;
 
+export {
+  _Thead as Thead,
+  _Tbody as Tbody,
+  _Tr as Tr,
+  _Th as Th,
+  _Td as Td,
+  _Column as TableColumn,
+};
+
 export default Table;

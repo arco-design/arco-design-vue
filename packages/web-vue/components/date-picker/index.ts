@@ -34,4 +34,12 @@ export type YearPickerInstance = InstanceType<typeof _YearPicker>;
 export type QuarterPickerInstance = InstanceType<typeof _QuarterPicker>;
 export type RangePickerInstance = InstanceType<typeof _RangePicker>;
 
+export {
+  _WeekPicker as WeekPicker,
+  _MonthPicker as MonthPicker,
+  _YearPicker as YearPicker,
+  _QuarterPicker as QuarterPicker,
+  _RangePicker as RangePicker,
+};
+
 export default DatePicker;

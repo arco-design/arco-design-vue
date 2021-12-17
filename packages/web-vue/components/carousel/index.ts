@@ -18,4 +18,6 @@ const Carousel = Object.assign(_Carousel, {
 export type CarouselInstance = InstanceType<typeof _Carousel>;
 export type CarouselItemInstance = InstanceType<typeof _CarouselItem>;
 
+export { _CarouselItem as CarouselItem };
+
 export default Carousel;

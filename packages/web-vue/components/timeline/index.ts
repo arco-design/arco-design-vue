@@ -18,4 +18,6 @@ const Timeline = Object.assign(_Timeline, {
 export type TimelineInstance = InstanceType<typeof _Timeline>;
 export type TimelineItemInstance = InstanceType<typeof _TimelineItem>;
 
+export { _TimelineItem as TimelineItem };
+
 export default Timeline;

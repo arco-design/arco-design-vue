@@ -18,4 +18,6 @@ const Form = Object.assign(_Form, {
 export type FormInstance = InstanceType<typeof _Form>;
 export type FormItemInstance = InstanceType<typeof _FormItem>;
 
+export { _FormItem as FormItem };
+
 export default Form;
