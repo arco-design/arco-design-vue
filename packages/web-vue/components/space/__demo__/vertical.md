@@ -18,10 +18,10 @@ You can set the spacing in the vertical direction.
 
 ```vue
 <template>
-  <a-space direction="vertical">
-    <a-button type="primary">Item1</a-button>
-    <a-button type="primary">Item2</a-button>
-    <a-button type="primary">Item3</a-button>
+  <a-space direction="vertical" fill>
+    <a-button type="primary" long>Item1</a-button>
+    <a-button type="primary" long>Item2</a-button>
+    <a-button type="primary" long>Item3</a-button>
   </a-space>
 </template>
 ```
