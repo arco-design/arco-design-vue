@@ -156,32 +156,54 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
 export const loopDirectory = (
   itemList: DataTransferItemList,
   accept: string | undefined,
-  callback: (file: File) => void
+  callback: (files: File[]) => void
 ) => {
-  const _loopDirectory = (item: FileSystemEntry) => {
-    if (item.isFile) {
-      (item as FileSystemFileEntry)?.file((file) => {
+  const files: File[] = [];
+
+  let restFileCount = 0; // 剩余上传文件的数量
+  const onFinish = () => {
+    !restFileCount && callback(files);
+  };
+
+  const _loopDirectory = (item: FileSystemEntry | null) => {
+    restFileCount += 1;
+
+    if (item?.isFile) {
+      (item as FileSystemFileEntry).file((file) => {
+        restFileCount -= 1;
         if (isAcceptFile(file, accept)) {
           Object.defineProperty(file, 'webkitRelativePath', {
             value: item.fullPath.replace(/^\//, ''),
           });
-          callback(file);
+          files.push(file);
         }
+        onFinish();
       });
-    } else if (item.isDirectory) {
+      return;
+    }
+    if (item?.isDirectory) {
+      // item 是个文件夹
       const reader = (item as FileSystemDirectoryEntry).createReader();
       reader.readEntries((entries) => {
+        restFileCount -= 1;
+        if (entries.length === 0) {
+          onFinish();
+        }
         entries.forEach(_loopDirectory);
       });
+      return;
     }
+
+    restFileCount -= 1;
+    onFinish();
   };
 
-  Array.from(itemList).forEach((item: DataTransferItem) => {
-    const fileSystem = item.webkitGetAsEntry();
-    if (fileSystem) {
-      _loopDirectory(fileSystem);
-    }
-  });
+  [].slice
+    .call(itemList)
+    .forEach(
+      (item: DataTransferItem) =>
+        item.webkitGetAsEntry && _loopDirectory(item.webkitGetAsEntry())
+    );
 };
 
 export const getDataURLFromFile = async (file: File): Promise<string> => {

@@ -5,8 +5,9 @@
 .@{upload-prefix-cls} {
   display: inline-block;
   cursor: pointer;
+  max-width: 100%;
 
-  &:not(&-type-picture-card) {
+  &&-draggable {
     width: 100%;
   }
 
@@ -141,12 +142,6 @@
   }
 }
 
-.@{upload-prefix-cls}-hide + .@{upload-prefix-cls}-list {
-  .@{upload-prefix-cls}-list-item:first-of-type {
-    margin-top: 0;
-  }
-}
-
 .@{upload-prefix-cls}-icon {
   cursor: pointer;
 
@@ -209,6 +204,10 @@
   &&-type-text,
   &&-type-picture {
     width: 100%;
+
+    .@{upload-prefix-cls}-list-item:first-of-type {
+      margin-top: @upload-list-margin-top;
+    }
   }
 
   /*** listtype is text ****/
@@ -267,6 +266,9 @@
       line-height: 1.4286;
       white-space: nowrap;
       text-overflow: ellipsis;
+      flex: 1;
+      display: flex;
+      align-items: center;
 
       &-link {
         overflow: hidden;
@@ -284,6 +286,7 @@
 
     & .@{upload-prefix-cls}-progress {
       margin-left: auto;
+      position: relative;
     }
 
     &-operation {
@@ -306,9 +309,8 @@
 
   &-type-text {
     .@{upload-prefix-cls}-list-item-error
-      .@{upload-prefix-cls}-list-item-text-name-link,
-    .@{upload-prefix-cls}-list-item-error
-      .@{upload-prefix-cls}-list-item-text-name {
+      .@{upload-prefix-cls}-list-item-name-link,
+    .@{upload-prefix-cls}-list-item-error .@{upload-prefix-cls}-list-item-name {
       color: @upload-text-item-color-text_error;
     }
   }
@@ -419,6 +421,12 @@
       .@{upload-prefix-cls}-list-item-text-name {
       color: @upload-picture-text-item-color-text_error;
     }
+  }
+}
+
+.@{upload-prefix-cls}-hide + .@{upload-prefix-cls}-list {
+  .@{upload-prefix-cls}-list-item:first-of-type {
+    margin-top: 0;
   }
 }
 

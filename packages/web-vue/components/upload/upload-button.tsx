@@ -49,6 +49,17 @@ export default defineComponent({
     const isDragging = ref(false);
     const inputRef = ref<HTMLInputElement | null>(null);
     const dropRef = ref<HTMLElement | null>(null);
+    const dragEnterCount = ref<number>(0); // the number of times ondragenter was triggered
+
+    const setDragEnterCount = (type: 'subtract' | 'add' | 'reset') => {
+      if (type === 'subtract') {
+        dragEnterCount.value -= 1;
+      } else if (type === 'add') {
+        dragEnterCount.value += 1;
+      } else if (type === 'reset') {
+        dragEnterCount.value = 0;
+      }
+    };
 
     const handleClick = (e: Event) => {
       if (props.disabled) return;
@@ -78,13 +89,14 @@ export default defineComponent({
     const handleDrop = (e: DragEvent) => {
       e.preventDefault();
       isDragging.value = false;
+      setDragEnterCount('reset');
       if (props.disabled) {
         return;
       }
 
       if (props.directory && e.dataTransfer?.items) {
-        loopDirectory(e.dataTransfer.items, props.accept, (file) => {
-          props.uploadFiles([file]);
+        loopDirectory(e.dataTransfer.items, props.accept, (files) => {
+          props.uploadFiles(files);
         });
       } else {
         const files = getFiles(e.dataTransfer?.files, props.accept);
@@ -94,8 +106,10 @@ export default defineComponent({
 
     const handleDragLeave = (e: DragEvent) => {
       e.preventDefault();
-      if (!dropRef.value || dropRef.value.contains(e.target as HTMLElement)) {
+      setDragEnterCount('subtract');
+      if (dragEnterCount.value === 0) {
         isDragging.value = false;
+        setDragEnterCount('reset');
       }
     };
 
@@ -143,6 +157,7 @@ export default defineComponent({
 
       return (
         <Button
+          type="primary"
           v-slots={{ icon: () => <IconUpload /> }}
           disabled={props.disabled}
         >
@@ -166,6 +181,9 @@ export default defineComponent({
         ref={dropRef}
         class={cls.value}
         onClick={handleClick}
+        onDragenter={() => {
+          setDragEnterCount('add');
+        }}
         onDrop={handleDrop}
         onDragover={handleDragOver}
         onDragleave={handleDragLeave}
