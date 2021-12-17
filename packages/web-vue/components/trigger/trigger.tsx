@@ -41,6 +41,7 @@ import usePickSlots from '../_hooks/use-pick-slots';
 import { triggerInjectionKey } from './context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import usePopupManager from '../_hooks/use-popup-manager';
+import { useResizeObserver } from '../_hooks/use-resize-observer';
 
 export default defineComponent({
   name: 'Trigger',
@@ -272,9 +273,7 @@ export default defineComponent({
      * @en Mount container for popup
      */
     popupContainer: {
-      type: [String, Object] as PropType<
-        string | HTMLElement | null | undefined
-      >,
+      type: [String, Object] as PropType<string | HTMLElement>,
     },
     /**
      * @zh 是否在容器滚动时更新弹出框的位置
@@ -349,7 +348,7 @@ export default defineComponent({
     const childrenRefs = new Set<Ref<HTMLElement>>();
     const triggerCtx = inject(triggerInjectionKey, undefined);
     // trigger相关变量
-    const triggerRef = ref<Element | ComponentPublicInstance>();
+    const triggerRef = ref<HTMLElement | ComponentPublicInstance>();
     const triggerEle = computed<HTMLElement>(() =>
       isComponentInstance(triggerRef.value)
         ? triggerRef.value.$el
@@ -362,9 +361,7 @@ export default defineComponent({
     const popupStyle = ref<CSSProperties>({});
     const arrowStyle = ref<CSSProperties>({});
     // container相关变量
-    const containerEle = computed(() =>
-      getElement(props.popupContainer ?? document.documentElement)
-    );
+    const containerEle = ref<HTMLElement>();
     // 鼠标相关变量
     const arrowRef = ref<HTMLElement>();
     const mousePosition = ref({
@@ -466,7 +463,9 @@ export default defineComponent({
 
       if (delay) {
         cleanDelayTimer();
-        delayTimer = window.setTimeout(update, delay);
+        if (visible !== computedVisible.value) {
+          delayTimer = window.setTimeout(update, delay);
+        }
       } else {
         update();
       }
@@ -485,7 +484,6 @@ export default defineComponent({
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
-      triggerCtx?.onMouseenter(e);
       if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
@@ -493,16 +491,24 @@ export default defineComponent({
       changeVisible(true, props.mouseEnterDelay);
     };
 
+    const handleMouseEnterWithContext = (e: MouseEvent) => {
+      triggerCtx?.onMouseenter(e);
+      handleMouseEnter(e);
+    };
+
     const handleMouseLeave = (e: MouseEvent) => {
-      triggerCtx?.onMouseleave(e);
       if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
       changeVisible(false, props.mouseLeaveDelay);
     };
 
+    const handleMouseLeaveWithContext = (e: MouseEvent) => {
+      triggerCtx?.onMouseleave(e);
+      handleMouseLeave(e);
+    };
+
     const handleFocusin = (e: FocusEvent) => {
-      triggerCtx?.onFocusin(e);
       if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
@@ -510,7 +516,6 @@ export default defineComponent({
     };
 
     const handleFocusout = (e: FocusEvent) => {
-      triggerCtx?.onFocusout(e);
       if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
@@ -546,10 +551,8 @@ export default defineComponent({
     provide(
       triggerInjectionKey,
       reactive({
-        onMouseenter: handleMouseEnter,
-        onMouseleave: handleMouseLeave,
-        onFocusin: handleFocusin,
-        onFocusout: handleFocusout,
+        onMouseenter: handleMouseEnterWithContext,
+        onMouseleave: handleMouseLeaveWithContext,
         addChildRef,
         removeChildRef,
       })
@@ -649,7 +652,20 @@ export default defineComponent({
       }
     );
 
+    const { createResizeObserver, destroyResizeObserver } = useResizeObserver({
+      elementRef: containerEle,
+      onResize: handleResize,
+    });
+
     onMounted(() => {
+      if (props.popupContainer) {
+        containerEle.value = getElement(props.popupContainer);
+      } else {
+        containerEle.value = document.documentElement;
+      }
+
+      createResizeObserver();
+
       // 默认显示时，更新popup位置
       if (computedVisible.value) {
         updatePopupStyle();
@@ -664,6 +680,7 @@ export default defineComponent({
 
     onBeforeUnmount(() => {
       triggerCtx?.removeChildRef(popupRef);
+      destroyResizeObserver();
     });
 
     return () => {
@@ -704,8 +721,8 @@ export default defineComponent({
                       ]}
                       style={{ ...popupStyle.value, zIndex: zIndex.value }}
                       trigger-placement={popupPosition.value}
-                      onMouseenter={handleMouseEnter}
-                      onMouseleave={handleMouseLeave}
+                      onMouseenter={handleMouseEnterWithContext}
+                      onMouseleave={handleMouseLeaveWithContext}
                       onMousedown={handlePopupMouseDown}
                       {...attrs}
                     >
