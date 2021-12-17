@@ -6,7 +6,6 @@ import {
   ref,
   watch,
   onMounted,
-  onUpdated,
   TransitionGroup,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
@@ -19,6 +18,7 @@ import IconClose from '../icon/icon-close';
 import { TagData } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
+import ResizeObserver from '../_components/resize-observer';
 import { EmitType } from '../_utils/types';
 
 export default defineComponent({
@@ -353,13 +353,13 @@ export default defineComponent({
       }
     };
 
-    onMounted(() => {
+    const handleResize = () => {
       if (mirrorRef.value) {
         setInputWidth(mirrorRef.value.offsetWidth);
       }
-    });
+    };
 
-    onUpdated(() => {
+    onMounted(() => {
       if (mirrorRef.value) {
         setInputWidth(mirrorRef.value.offsetWidth);
       }
@@ -397,13 +397,15 @@ export default defineComponent({
         onMousedown={handleMousedown}
         {...wrapperAttrs.value}
       >
-        <span ref={mirrorRef} class={`${prefixCls}-mirror`}>
-          {tags.value.length > 0
-            ? compositionValue.value || computedInputValue.value
-            : compositionValue.value ||
-              computedInputValue.value ||
-              props.placeholder}
-        </span>
+        <ResizeObserver onResize={handleResize}>
+          <span ref={mirrorRef} class={`${prefixCls}-mirror`}>
+            {tags.value.length > 0
+              ? compositionValue.value || computedInputValue.value
+              : compositionValue.value ||
+                computedInputValue.value ||
+                props.placeholder}
+          </span>
+        </ResizeObserver>
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
