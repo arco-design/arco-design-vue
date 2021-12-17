@@ -53,12 +53,13 @@
 
     &-trigger {
       z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-sizing: border-box;
       width: 100%;
       height: @layout-trigger-height;
       color: var(--color-white);
-      line-height: @layout-trigger-height;
-      text-align: center;
       background: @layout-trigger-dark-color;
       cursor: pointer;
       transition: width @transition-duration-2
