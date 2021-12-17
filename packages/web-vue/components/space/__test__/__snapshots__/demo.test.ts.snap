@@ -57,14 +57,14 @@ exports[`<space> demo: render [size] correctly 1`] = `
 `;
 
 exports[`<space> demo: render [vertical] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+"<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-long\\" type=\\"button\\">
       <!--v-if-->Item1
     </button></div>
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-long\\" type=\\"button\\">
       <!--v-if-->Item2
     </button></div>
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-long\\" type=\\"button\\">
       <!--v-if-->Item3
     </button></div>
 </div>"
