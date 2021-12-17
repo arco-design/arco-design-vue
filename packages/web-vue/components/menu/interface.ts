@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { CSSProperties, VNode } from 'vue';
 import { Data } from '../_utils/types';
 
 export type MenuTheme = 'light' | 'dark';

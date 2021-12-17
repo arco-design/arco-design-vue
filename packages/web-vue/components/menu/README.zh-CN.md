@@ -71,11 +71,12 @@ description: 收纳、排列并展示一系列选项的列表。
 |popup|是否强制使用弹出模式，`level` 表示当前子菜单的层级|`SubMenuProps['popup']`|`false`|
 ### `<sub-menu>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|title|标题|-|
-|expand-icon-right|向右展开的图标|-|
-|expand-icon-down|向下展开的图标|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|title|标题|-||
+|expand-icon-right|向右展开的图标|-||
+|expand-icon-down|向下展开的图标|-||
+|icon|菜单的图标|-|2.11.0|
 
 
 
@@ -100,5 +101,10 @@ description: 收纳、排列并展示一系列选项的列表。
 |---|---|---|:---:|
 |key|唯一标志|`string`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
+### `<menu-item>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|icon|菜单的图标|-|2.11.0|
 
 

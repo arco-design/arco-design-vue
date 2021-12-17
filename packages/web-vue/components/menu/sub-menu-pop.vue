@@ -15,10 +15,29 @@
     :popup-visible="popVisible"
     @popupVisibleChange="onVisibleChange"
   >
-    <div :class="classNames" v-bind="$attrs" @click="onClick">
+    <div
+      :class="[
+        classNames,
+        {
+          [`${menuPrefixCls}-has-icon`]: $slots.icon,
+        },
+      ]"
+      v-bind="$attrs"
+      @click="onClick"
+    >
       <!-- header -->
       <MenuIndent :level="level" />
-      <slot name="title">{{ title }}</slot>
+      <template v-if="$slots.icon">
+        <span :class="`${menuPrefixCls}-icon`">
+          <slot name="icon"></slot>
+        </span>
+        <span :class="`${menuPrefixCls}-title`">
+          <slot name="title">{{ title }}</slot>
+        </span>
+      </template>
+      <template v-else>
+        <slot name="title">{{ title }}</slot>
+      </template>
       <!-- suffix -->
       <span :class="`${menuPrefixCls}-icon-suffix`">
         <slot v-if="needPopOnBottom" name="expand-icon-down" />
@@ -40,7 +59,7 @@
         @menuItemClick="onMenuItemClick"
       >
         <slot />
-        <template v-if="menuContext.expandIconDown" #expand-icon-dowm>
+        <template v-if="menuContext.expandIconDown" #expand-icon-down>
           <RenderFunction :render-func="menuContext.expandIconDown" />
         </template>
         <template v-if="menuContext.expandIconRight" #expand-icon-right>

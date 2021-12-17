@@ -43,6 +43,12 @@ export default defineComponent({
     },
   },
   /**
+   * @zh 菜单的图标
+   * @en the icon of menu item
+   * @slot icon
+   * @version 2.11.0
+   */
+  /**
    * @zh 向下展开的图标
    * @en Icon expand down
    * @slot expand-icon-down
