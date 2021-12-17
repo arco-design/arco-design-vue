@@ -38,6 +38,12 @@ export default defineComponent({
     },
   },
   emits: ['click'],
+  /**
+   * @zh 菜单的图标
+   * @en the icon of menu item
+   * @slot icon
+   * @version 2.11.0
+   */
   setup(props: MenuItemProps, { emit }) {
     const { key } = useMenu();
     const { level } = useLevel();
@@ -110,6 +116,26 @@ export default defineComponent({
     const needTextIndent = mode === 'vertical' && level > 1;
     const children = this.$slots.default?.() || [];
     const showIndent = needTextIndent && !inTrigger && !collapsed;
+    const iconElement = this.$slots.icon && this.$slots.icon();
+
+    const content = [
+      showIndent && <MenuIndent level={level} />,
+      iconElement && <span class={`${prefixCls}-icon`}>{iconElement}</span>,
+      showIndent || iconElement ? (
+        <span
+          class={[
+            `${prefixCls}-item-inner`,
+            {
+              [`${prefixCls}-title`]: iconElement,
+            },
+          ]}
+        >
+          {children}
+        </span>
+      ) : (
+        children
+      ),
+    ].filter(Boolean);
 
     const itemElement = (
       <div
@@ -119,20 +145,14 @@ export default defineComponent({
           {
             [`${prefixCls}-disabled`]: disabled,
             [`${prefixCls}-selected`]: isSelected,
+            [`${prefixCls}-has-icon`]: iconElement,
           },
         ]}
         {...this.$attrs}
         onClick={onClick}
       >
         {/* 内容 */}
-        {showIndent ? (
-          <>
-            <MenuIndent level={level} />
-            <span class={`${prefixCls}-item-inner`}>{children}</span>
-          </>
-        ) : (
-          children
-        )}
+        {content}
         {/* 选中的下横线 */}
         {isSelected && mode === 'horizontal' && (
           <div class={`${prefixCls}-selected-label`} />

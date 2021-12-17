@@ -73,6 +73,11 @@ export default defineComponent({
       default: true,
     },
   },
+  /**
+   * @zh 面板的标题
+   * @en The title of the panel
+   * @slot header
+   */
   setup(props) {
     const prefixCls = getPrefixCls('collapse-item');
     const component = getCurrentInstance();

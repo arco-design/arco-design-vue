@@ -1,73 +1,88 @@
 import type { App, Plugin } from 'vue';
 import type { ArcoOptions } from './_utils/types';
 import { addI18nMessages, useLocale, getLocale } from './locale';
-import Button from './button';
-import Link from './link';
-import Typography from './typography';
-import Divider from './divider';
-import Grid from './grid';
-import Layout from './layout';
-import Space from './space';
-import Avatar from './avatar';
-import Badge from './badge';
-import Card from './card';
-import Carousel from './carousel';
-import Collapse from './collapse';
-import Comment from './comment';
-import Descriptions from './descriptions';
-import Empty from './empty';
-import Image from './image';
-import List from './list';
-import Popover from './popover';
-import Statistic from './statistic';
-import Table from './table';
-import Tabs from './tabs';
-import Tag from './tag';
-import Timeline from './timeline';
-import Tooltip from './tooltip';
+import Affix from './affix';
+import Alter from './alert';
+import Anchor, { AnchorLink } from './anchor';
 import AutoComplete from './auto-complete';
+import Avatar, { AvatarGroup } from './avatar';
+import BackTop from './back-top';
+import Badge from './badge';
+import Breadcrumb, { BreadcrumbItem } from './breadcrumb';
+import Button, { ButtonGroup } from './button';
+import Card, { CardMeta, CardGrid } from './card';
+import Carousel, { CarouselItem } from './carousel';
 import Cascader from './cascader';
-import Checkbox from './checkbox';
-import DatePicker from './date-picker';
-import Form from './form';
-import Input from './input';
+import Checkbox, { CheckboxGroup } from './checkbox';
+import Collapse, { CollapseItem } from './collapse';
+import Comment from './comment';
+import ConfigProvider from './config-provider';
+import DatePicker, {
+  WeekPicker,
+  MonthPicker,
+  YearPicker,
+  QuarterPicker,
+  RangePicker,
+} from './date-picker';
+import Descriptions from './descriptions';
+import Divider from './divider';
+import Drawer from './drawer';
+import Dropdown, { Doption, Dgroup, Dsubmenu } from './dropdown';
+import Empty from './empty';
+import Form, { FormItem } from './form';
+import Grid, { Row, Col } from './grid';
+import Image, { ImagePreview, ImagePreviewGroup } from './image';
+import Input, { InputGroup, InputSearch, InputPassword } from './input';
 import InputNumber from './input-number';
 import InputTag from './input-tag';
+import Layout, {
+  LayoutHeader,
+  LayoutContent,
+  LayoutFooter,
+  LayoutSider,
+} from './layout';
+import Link from './link';
+import List, { ListItem, ListItemMeta } from './list';
 import Mention from './mention';
-import Radio from './radio';
-import Rate from './rate';
-import Select from './select';
-import Slider from './slider';
-import Switch from './switch';
-import Textarea from './textarea';
-import TimePicker from './time-picker';
-import Transfer from './transfer';
-import Tree from './tree';
-import Upload from './upload';
-import TreeSelect from './tree-select';
-import Alter from './alert';
-import Drawer from './drawer';
+import Menu, { MenuItem, MenuItemGroup, SubMenu } from './menu';
 import Message from './message';
 import Modal from './modal';
 import Notification from './notification';
-import Popconfirm from './popconfirm';
-import Progress from './progress';
-import Result from './result';
-import Spin from './spin';
-import Skeleton from './skeleton';
-import Breadcrumb from './breadcrumb';
-import Dropdown from './dropdown';
-import Menu from './menu';
 import PageHeader from './page-header';
 import Pagination from './pagination';
-import Steps from './steps';
-import Affix from './affix';
-import Anchor from './anchor';
-import BackTop from './back-top';
-import ConfigProvider from './config-provider';
+import Popconfirm from './popconfirm';
+import Popover from './popover';
+import Progress from './progress';
+import Radio, { RadioGroup } from './radio';
+import Rate from './rate';
 import ResizeBox from './resize-box';
-import Trigger from './trigger';
+import Result from './result';
+import Select, { Option, Optgroup } from './select';
+import Skeleton, { SkeletonLine, SkeletonShape } from './skeleton';
+import Slider from './slider';
+import Space from './space';
+import Spin from './spin';
 import Split from './split';
+import Statistic, { Countdown } from './statistic';
+import Steps, { Step } from './steps';
+import Switch from './switch';
+import Table, { Thead, Td, Th, Tr, Tbody, TableColumn } from './table';
+import Tabs, { TabPane } from './tabs';
+import Tag from './tag';
+import Textarea from './textarea';
+import TimePicker from './time-picker';
+import Timeline, { TimelineItem } from './timeline';
+import Tooltip from './tooltip';
+import Transfer from './transfer';
+import Tree from './tree';
+import TreeSelect from './tree-select';
+import Trigger from './trigger';
+import Typography, {
+  TypographyParagraph,
+  TypographyTitle,
+  TypographyText,
+} from './typography';
+import Upload from './upload';
 
 const components: Record<string, Plugin> = {
   Button,
@@ -147,6 +162,58 @@ const install = (app: App, options?: ArcoOptions) => {
 
 const ArcoVue = {
   ...components,
+  AnchorLink,
+  AvatarGroup,
+  BreadcrumbItem,
+  ButtonGroup,
+  CardMeta,
+  CardGrid,
+  CarouselItem,
+  CheckboxGroup,
+  CollapseItem,
+  WeekPicker,
+  MonthPicker,
+  YearPicker,
+  QuarterPicker,
+  RangePicker,
+  Doption,
+  Dgroup,
+  Dsubmenu,
+  FormItem,
+  Row,
+  Col,
+  ImagePreview,
+  ImagePreviewGroup,
+  InputGroup,
+  InputSearch,
+  InputPassword,
+  LayoutHeader,
+  LayoutContent,
+  LayoutFooter,
+  LayoutSider,
+  ListItem,
+  ListItemMeta,
+  MenuItem,
+  MenuItemGroup,
+  SubMenu,
+  RadioGroup,
+  Option,
+  Optgroup,
+  SkeletonLine,
+  SkeletonShape,
+  Countdown,
+  Step,
+  Thead,
+  Td,
+  Th,
+  Tr,
+  Tbody,
+  TableColumn,
+  TabPane,
+  TimelineItem,
+  TypographyParagraph,
+  TypographyTitle,
+  TypographyText,
   install,
   addI18nMessages,
   useLocale,

@@ -27,7 +27,7 @@ Multiple Selection
       :data="treeData"
       placeholder="Please select ..."
       style="width: 300px"
-    />
+    ></a-tree-select>
     <a-tree-select
       v-model="selected"
       :multiple="true"
@@ -37,7 +37,7 @@ Multiple Selection
       :data="treeData"
       placeholder="Please select ..."
       style="width: 300px"
-    />
+    ></a-tree-select>
   </a-space>
 </template>
 <script>

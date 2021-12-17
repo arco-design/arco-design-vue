@@ -23,7 +23,7 @@ By specifying `treeProps.virtualListProps` to turn on the virtual list, high per
         height: 200
       },
     }"
-  />
+  ></a-tree-select>
 </template>
 <script>
   export default {

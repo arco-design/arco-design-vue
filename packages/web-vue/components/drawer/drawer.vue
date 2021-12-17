@@ -41,7 +41,7 @@
             <div :class="`${prefixCls}-body`">
               <slot />
             </div>
-            <div :class="`${prefixCls}-footer`">
+            <div v-if="footer" :class="`${prefixCls}-footer`">
               <slot name="footer">
                 <arco-button v-bind="cancelButtonProps" @click="handleCancel">
                   {{ cancelText || t('drawer.cancelText') }}
@@ -229,6 +229,15 @@ export default defineComponent({
     },
 
     renderToBody: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否展示底部内容
+     * @en Whether to display the bottom content
+     * @version 2.11.0
+     */
+    footer: {
       type: Boolean,
       default: true,
     },

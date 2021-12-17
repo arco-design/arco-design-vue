@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-$END$
+设置 `bordered="false"` 开启无边框模式，常用于沉浸式使用。
 
 ---
 
 ## en-US
 
-$END$
+Set `bordered="false"` to enable borderless mode, which is often used for immersive use.
 
 ---
 

@@ -7,11 +7,11 @@ import {
   computed,
   CSSProperties,
   defineComponent,
-  nextTick,
+  onMounted,
+  onUpdated,
   PropType,
   ref,
   toRefs,
-  watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { Direction } from '../_utils/constant';
@@ -33,28 +33,45 @@ export default defineComponent({
   setup(props) {
     const { activeTabRef, direction } = toRefs(props);
     const prefixCls = getPrefixCls('tabs-nav-ink');
+    const position = ref(0);
+    const size = ref(0);
+    const style = computed<CSSProperties>(() => {
+      if (props.direction === 'vertical') {
+        return {
+          top: `${position.value}px`,
+          height: `${size.value}px`,
+        };
+      }
+      return {
+        left: `${position.value}px`,
+        width: `${size.value}px`,
+      };
+    });
 
-    const style = ref<CSSProperties>({});
+    const getInkStyle = () => {
+      if (activeTabRef.value) {
+        const _position =
+          props.direction === 'vertical'
+            ? activeTabRef.value.offsetTop
+            : activeTabRef.value.offsetLeft;
+        const _size =
+          props.direction === 'vertical'
+            ? activeTabRef.value.offsetHeight
+            : activeTabRef.value.offsetWidth;
+        if (_position !== position.value || _size !== size.value) {
+          position.value = _position;
+          size.value = _size;
+        }
+      }
+    };
 
-    watch(
-      [activeTabRef, direction],
-      ([tabRef, direction]) => {
-        nextTick(() => {
-          if (direction === 'vertical') {
-            style.value = {
-              top: `${tabRef.offsetTop}px`,
-              height: `${tabRef.offsetHeight}px`,
-            };
-          } else {
-            style.value = {
-              left: `${tabRef.offsetLeft}px`,
-              width: `${tabRef.offsetWidth}px`,
-            };
-          }
-        });
-      },
-      { immediate: true }
-    );
+    onMounted(() => {
+      getInkStyle();
+    });
+
+    onUpdated(() => {
+      getInkStyle();
+    });
 
     const cls = computed(() => [
       prefixCls,

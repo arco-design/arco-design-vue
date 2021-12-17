@@ -1,7 +1,7 @@
 import { Ref, ref } from 'vue';
 import { getScrollBarWidth } from '../_utils/dom';
 
-export const useOverflow = (elementRef: Ref<HTMLElement>) => {
+export const useOverflow = (elementRef: Ref<HTMLElement | undefined>) => {
   const isSetOverflow = ref(false);
 
   const originStyle = {

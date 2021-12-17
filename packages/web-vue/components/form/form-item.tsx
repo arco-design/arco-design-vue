@@ -20,7 +20,7 @@ import {
   ValidateStatus,
   ValidateTrigger,
 } from './interface';
-import Grid from '../grid';
+import { Row as ArcoRow, Col as ArcoCol } from '../grid';
 import FormItemLabel from './form-item-label.vue';
 import FormItemMessage from './form-item-message.vue';
 import { getPrefixCls } from '../_utils/global-config';
@@ -29,8 +29,6 @@ import { Data } from '../_utils/types';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { mergeFirstChild } from '../_utils/vue-utils';
 import { getFinalValidateMessage, getFinalValidateStatus } from './utils';
-
-const { Row: ArcoRow, Col: ArcoCol } = Grid;
 
 export default defineComponent({
   name: 'FormItem',

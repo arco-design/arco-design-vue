@@ -85,7 +85,7 @@ import {
   StyleValue,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
-import { LabelValue, TreeSelectProps } from './interface';
+import { LabelValue } from './interface';
 import Trigger from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import Panel from './panel';
@@ -504,6 +504,7 @@ export default defineComponent({
           flattenTreeData,
           filterMethod: filterTreeNode,
           disableFilter,
+          fieldNames,
         })
       );
 

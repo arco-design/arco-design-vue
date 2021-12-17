@@ -73,11 +73,12 @@ description: Organize, arrange, and display a list of options.
 |popup|Whether to force the use of pop-up mode, `level` indicates the level of the current submenu|`SubMenuProps['popup']`|`false`|
 ### `<sub-menu>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|title|Title|-|
-|expand-icon-right|Icon expand right|-|
-|expand-icon-down|Icon expand down|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|title|Title|-||
+|expand-icon-right|Icon expand right|-||
+|expand-icon-down|Icon expand down|-||
+|icon|the icon of menu item|-|2.11.0|
 
 
 
@@ -102,5 +103,10 @@ description: Organize, arrange, and display a list of options.
 |---|---|---|:---:|
 |key|Unique key|`string`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
+### `<menu-item>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|icon|the icon of menu item|-|2.11.0|
 
 

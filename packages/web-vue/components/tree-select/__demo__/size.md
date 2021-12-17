@@ -32,7 +32,7 @@ Four sizes (small, default, large, huge) can be selected through `size`. The hei
     :data="treeData"
     placeholder="Please select ..."
     style="width: 300px;"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { ref } from 'vue';

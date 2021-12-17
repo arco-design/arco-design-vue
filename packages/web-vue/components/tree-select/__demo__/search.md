@@ -25,7 +25,7 @@ Set `:allow-search="true"` to enable the search function. You can only search in
       :data="treeData"
       placeholder="Please select ..."
       style="width: 300px"
-    />
+    ></a-tree-select>
     <a-tree-select
       :allow-search="true"
       :allow-clear="true"
@@ -33,7 +33,7 @@ Set `:allow-search="true"` to enable the search function. You can only search in
       :filter-tree-node="filterTreeNode"
       placeholder="Please select ..."
       style="width: 300px"
-    />
+    ></a-tree-select>
   </a-space>
 </template>
 <script>

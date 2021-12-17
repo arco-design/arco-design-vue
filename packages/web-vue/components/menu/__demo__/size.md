@@ -33,7 +33,8 @@ Freely specify width of menu and height of menu item through `style`.
       :style="{ width: `${width}px`, height: 'calc(100% - 28px)' }"
     >
       <a-sub-menu key="0">
-        <template #title><IconApps /> Navigation 1</template>
+        <template #icon><IconApps></IconApps></template>
+        <template #title>Navigation 1</template>
         <a-menu-item key="0_0">Menu 1</a-menu-item>
         <a-menu-item key="0_1">Menu 2</a-menu-item>
         <a-menu-item key="0_2" disabled>
@@ -41,13 +42,15 @@ Freely specify width of menu and height of menu item through `style`.
         </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="1">
-        <template #title><IconBug /> Navigation 2</template>
+        <template #icon><IconBug></IconBug></template>
+        <template #title>Navigation 2</template>
         <a-menu-item key="1_0">Menu 1</a-menu-item>
         <a-menu-item key="1_1">Menu 2</a-menu-item>
         <a-menu-item key="1_2">Menu 3</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="2">
-        <template #title><IconBulb /> Navigation 3</template>
+        <template #icon><IconBulb></IconBulb></template>
+        <template #title>Navigation 3</template>
         <a-menu-item key="2_0">Menu 1</a-menu-item>
         <a-menu-item key="2_1">Menu 2</a-menu-item>
         <a-menu-item key="2_2">Menu 3</a-menu-item>

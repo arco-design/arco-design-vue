@@ -18,7 +18,7 @@ You can specify a default list of uploaded files.
 
 ```vue
 <template>
-  <a-upload action="/" :default-file-list="fileList"/>
+  <a-upload action="/" :default-file-list="fileList" />
 </template>
 
 <script>
@@ -28,24 +28,25 @@ export default {
       fileList: [
         {
           uid: '-1',
-          name: 'test.png',
-          url: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/ff86e73c735540a88a8780d1db64b204~tplv-uwbnlip3yd-image.image',
+          name: 'ice.png',
+          url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp',
         },
         {
           status: 'error',
           uid: '-2',
           percent: 0,
-          name: '20200717-103937.png',
-          url: 'p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/701131f3576449d483d0650a525b57ee~tplv-uwbnlip3yd-image.image',
+          response: '上传错误提示',
+          name: 'cat.png',
+          url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp',
         },
         {
           uid: '-3',
-          name: '20200717-103937.png',
-          url: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp',
+          name: 'light.png',
+          url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp',
         },
-      ]
-    }
-  }
-}
+      ],
+    };
+  },
+};
 </script>
 ```

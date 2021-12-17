@@ -37,10 +37,12 @@ By setting `mode` to `popButton`, you can use a button group style floating menu
           showCollapseButton
         >
           <a-menu-item key="1">
-            <IconBug /> Bugs
+            <template #icon><IconBug></IconBug></template>
+            Bugs
           </a-menu-item>
           <a-menu-item key="2">
-            <IconBulb />Ideas
+            <template #icon><IconBulb></IconBulb></template>
+            Ideas
           </a-menu-item>
         </a-menu>
       </template>
@@ -64,10 +66,12 @@ By setting `mode` to `popButton`, you can use a button group style floating menu
           showCollapseButton
         >
           <a-menu-item key="1">
-            <IconBug /> Bugs
+            <template #icon><IconBug></IconBug></template>
+            Bugs
           </a-menu-item>
           <a-menu-item key="2">
-            <IconBulb />Ideas
+            <template #icon><IconBulb></IconBulb></template>
+            Ideas
           </a-menu-item>
         </a-menu>
       </template>

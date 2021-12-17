@@ -1,6 +1,11 @@
 import { computed, toRefs, watchEffect, ref } from 'vue';
 import { debounce } from '../../_utils/debounce';
-import { Node, TreeNodeData, TreeNodeKey } from '../../tree/interface';
+import {
+  FieldNames,
+  Node,
+  TreeNodeData,
+  TreeNodeKey,
+} from '../../tree/interface';
 import { FilterTreeNode } from '../interface';
 import { isUndefined } from '../../_utils/is';
 
@@ -9,16 +14,23 @@ export default function useFilterTreeNode(props: {
   flattenTreeData: Node[];
   filterMethod?: FilterTreeNode;
   disableFilter?: boolean;
+  fieldNames: FieldNames | undefined;
 }) {
   const {
     searchValue,
     flattenTreeData,
     filterMethod: propFilterMethod,
     disableFilter,
+    fieldNames,
   } = toRefs(props);
 
+  const keyField = computed(
+    () => (fieldNames.value?.key || 'key') as keyof TreeNodeData
+  );
+
   const defaultFilterMethod = (keyword: string, node: TreeNodeData) => {
-    return !isUndefined(node.key) && String(node.key).indexOf(keyword) > -1;
+    const key = node[keyField.value] as TreeNodeKey;
+    return !isUndefined(key) && String(key).indexOf(keyword) > -1;
   };
 
   const filterMethod = computed(
@@ -41,9 +53,10 @@ export default function useFilterTreeNode(props: {
     disableFilter?.value
       ? undefined
       : (node: TreeNodeData) => {
-          return (
-            !isFiltering.value || !!filteredKeysSet.value?.has(node.key || '')
-          );
+          if (!isFiltering.value) return true;
+
+          const key = node[keyField.value] as TreeNodeKey;
+          return filteredKeysSet.value?.has(key || '');
         }
   );
 

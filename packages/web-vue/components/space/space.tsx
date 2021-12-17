@@ -47,6 +47,14 @@ export default defineComponent({
     wrap: {
       type: Boolean,
     },
+    /**
+     * @zh 充满整行
+     * @en fill the block
+     * @version 2.11.0
+     */
+    fill: {
+      type: Boolean,
+    },
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('space');
@@ -61,6 +69,7 @@ export default defineComponent({
         [`${prefixCls}-${props.direction}`]: props.direction,
         [`${prefixCls}-align-${mergedAlign.value}`]: mergedAlign.value,
         [`${prefixCls}-wrap`]: props.wrap,
+        [`${prefixCls}-fill`]: props.fill,
       },
     ]);
 

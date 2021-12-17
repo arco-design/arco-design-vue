@@ -9,13 +9,31 @@ description: 用户可传输文件或提交相应的内容。
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/avatar.md
+
 @import ./__demo__/upload-list.md
 
 @import ./__demo__/picture-card.md
 
 @import ./__demo__/draggable.md
 
+@import ./__demo__/picture-list.md
+
+@import ./__demo__/submit.md
+
+@import ./__demo__/beforeUpload.md
+
+@import ./__demo__/onRemove.md
+
+@import ./__demo__/limit.md
+
+@import ./__demo__/custom-button.md
+
+@import ./__demo__/custom-icon.md
+
 @import ./__demo__/request.md
+
+@import ./__demo__/directory.md
 
 
 ### `<upload>` Props

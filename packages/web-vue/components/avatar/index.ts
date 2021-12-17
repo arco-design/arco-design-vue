@@ -18,4 +18,6 @@ const Avatar = Object.assign(_Avatar, {
 export type AvatarInstance = InstanceType<typeof _Avatar>;
 export type AvatarGroupInstance = InstanceType<typeof _AvatarGroup>;
 
+export { _AvatarGroup as AvatarGroup };
+
 export default Avatar;

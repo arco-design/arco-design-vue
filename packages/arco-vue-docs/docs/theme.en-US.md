@@ -65,3 +65,50 @@ module.exports = {
   ...
 }
 ```
+
+## Design System Lab theme package usage
+
+Design System Lab Vue's theme package function is under development and will be available for use after completion.
+
+At present, you can temporarily use the less file of React's theme package to customize the theme of Vue, and there may be some problems that the style does not take effect.
+
+### Usage
+
+`less` needs the support of the compiler tool, please enable support for `less` according to the tool used.
+
+Check the original `index.less` file in the theme package, located at `node_modules/{theme-package}/index.less`. as follows:
+
+```less
+@import "../../@arco-design/web-react/dist/css/index.less";
+
+@import "./theme.less";
+
+@import "./variables.less";
+
+@import "./component.less";
+```
+
+Create a new `theme.less` file in the project, and replace the React style file with the Vue style file according to the content in the theme package. Please adjust the file path according to the actual project.
+
+```less
+@import "../node_modules/@arco-design/web-vue/es/index.less";
+
+@import "../node_modules/{theme-package}/theme.less";
+
+@import "../node_modules/{theme-package}/variables.less";
+
+@import "../node_modules/{theme-package}/component.less";
+```
+
+Then import this `theme.less` file separately in `main.ts` to introduce theme styles
+
+```ts
+import {createApp} from'vue'
+import App from'./App.vue'
+import ArcoVue from'@arco-design/web-vue';
+import'./theme.less';
+
+const app = createApp(App);
+app.use(ArcoVue);
+app.mount('#app')
+```

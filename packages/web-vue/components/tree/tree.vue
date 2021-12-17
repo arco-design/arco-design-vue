@@ -270,7 +270,7 @@ export default defineComponent({
      * @zh 展开/关闭
      * @en Expand/close
      * @param {Array<string | number>} expandKeys
-     * @param {{ expand: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
+     * @param {{ expanded: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
      */
     'expand',
     'update:expandedKeys',

@@ -18,4 +18,6 @@ const Steps = Object.assign(_Steps, {
 export type StepsInstance = InstanceType<typeof _Steps>;
 export type StepsStepInstance = InstanceType<typeof _StepsStep>;
 
+export { _StepsStep as Step };
+
 export default Steps;

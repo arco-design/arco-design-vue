@@ -24,7 +24,7 @@
           v-show="computedVisible"
           :class="[
             `${prefixCls}-wrapper`,
-            { [`${prefixCls}-align-center`]: alignCenter },
+            { [`${prefixCls}-wrapper-align-center`]: alignCenter },
           ]"
           :style="{ zIndex }"
           @click.self="handleMask"
@@ -159,7 +159,10 @@ export default defineComponent({
      * @zh 对话框是否居中显示
      * @en Whether the dialog box is displayed in the center
      */
-    alignCenter: Boolean,
+    alignCenter: {
+      type: Boolean,
+      default: true,
+    },
     /**
      * @zh 关闭时是否卸载节点
      * @en Whether to uninstall the node when close
@@ -252,9 +255,7 @@ export default defineComponent({
      * @en Mount container for modal
      */
     popupContainer: {
-      type: [String, Object] as PropType<
-        string | HTMLElement | null | undefined
-      >,
+      type: [String, Object] as PropType<string | HTMLElement>,
       default: 'body',
     },
     /**

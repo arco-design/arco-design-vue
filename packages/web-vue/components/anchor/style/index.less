@@ -15,7 +15,7 @@
       z-index: 1;
       width: @anchor-line-width;
       height: @anchor-line-slider-height;
-      margin-top: 4px + @anchor-title-padding-vertical;
+      margin-top: ((@anchor-font-size-title * @line-height-base) / 2 + @anchor-title-padding-vertical - @anchor-line-slider-height / 2);
       background-color: @anchor-color-bg-line_active;
       transition: top @transition-duration-2
         @transition-timing-function-standard;

@@ -174,10 +174,7 @@ export default defineComponent({
 
     // 内部保持传递字符型数值
     const computedValue = computed(() => {
-      if (
-        isNumber(props.modelValue) &&
-        props.modelValue !== Number(_value.value)
-      ) {
+      if (isNumber(props.modelValue)) {
         return (
           props.formatter?.(String(props.modelValue)) ??
           String(props.modelValue)

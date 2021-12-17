@@ -23,7 +23,7 @@ The selected value supports two-way binding.
     v-model="selected"
     placeholder="Please select ..."
     style="width: 300px"
-  />
+  ></a-tree-select>
 </template>
 <script>
   import { h, ref } from 'vue';

@@ -1,7 +1,6 @@
 import { InjectionKey } from 'vue';
 
 export interface AnchorContext {
-  name: 'ArcoAnchor';
   currentLink: string;
   addLink: (hash: string, node: HTMLElement) => void;
   removeLink: () => void;
