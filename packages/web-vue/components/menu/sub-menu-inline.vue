@@ -5,15 +5,23 @@
         `${prefixCls}-header`,
         {
           [`${menuPrefixCls}-selected`]: isSelected,
+          [`${menuPrefixCls}-has-icon`]: $slots.icon,
         },
       ]"
       @click="onHeaderClick"
     >
       <MenuIndent :level="level" />
-      <slot name="title">
-        {{ title }}
-      </slot>
-
+      <template v-if="$slots.icon">
+        <span :class="`${menuPrefixCls}-icon`">
+          <slot name="icon"></slot>
+        </span>
+        <span :class="`${menuPrefixCls}-title`">
+          <slot name="title">{{ title }}</slot>
+        </span>
+      </template>
+      <template v-else>
+        <slot name="title">{{ title }}</slot>
+      </template>
       <span
         :class="[
           `${menuPrefixCls}-icon-suffix`,
