@@ -15,6 +15,7 @@ export const travelSelectChildren = (children: VNode[]): Option[] => {
   const options: Option[] = [];
 
   for (const child of children) {
+    if (!child) continue;
     if (isNamedComponent(child, 'Optgroup')) {
       const props = resolveProps(child);
       let slots: Slots | undefined;
@@ -67,6 +68,8 @@ export const travelSelectChildren = (children: VNode[]): Option[] => {
       if (_children) {
         options.push(...travelSelectChildren(_children));
       }
+    } else if (isArray(child)) {
+      options.push(...travelSelectChildren(child));
     }
   }
 

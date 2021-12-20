@@ -1,4 +1,5 @@
 import StoryButton from './components/button.vue';
+import StoryDropdown from './components/dropdown';
 import StoryTypography from './components/typography.vue';
 import StoryTree from './components/tree.vue';
 import StoryTreeDraggable from './components/tree-draggable.vue';
@@ -12,6 +13,7 @@ export default {
 };
 
 export const Button = () => StoryButton;
+export const Dropdown = () => StoryDropdown;
 export const Typography = () => StoryTypography;
 export const Tree = () => StoryTree;
 export const TreeDraggable = () => StoryTreeDraggable;
