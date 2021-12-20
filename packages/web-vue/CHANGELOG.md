@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.11.1
+
+`2021-12-20`
+
+### 🐛 BugFix
+
+- **input-tag:** Fix the problem of Chinese input failure caused by resize ([#428](https://github.com/arco-design/arco-design-vue/pull/428))
+- **dropdown:** Fix the problem that Group is unavailable when using JSX ([#427](https://github.com/arco-design/arco-design-vue/pull/427))
+- **select:** Fix the problem that Group is unavailable when using JSX ([#427](https://github.com/arco-design/arco-design-vue/pull/427))
+
+
 ## 2.11.0
 
 `2021-12-17`

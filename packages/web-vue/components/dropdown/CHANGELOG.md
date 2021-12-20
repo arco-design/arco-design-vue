@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.1
+
+`2021-12-20`
+
+### 🐛 BugFix
+
+- Fix the problem that Group is unavailable when using JSX ([#427](https://github.com/arco-design/arco-design-vue/pull/427))
+
+
 ## 2.10.1
 
 `2021-12-14`

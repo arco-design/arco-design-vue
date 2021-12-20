@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.11.1
+
+`2021-12-20`
+
+### 🐛 问题修复
+
+- **input-tag:** 修复 resize 导致的中文输入失效的问题 ([#428](https://github.com/arco-design/arco-design-vue/pull/428))
+- **dropdown:** 修复使用 JSX 时，Group 不可用的问题 ([#427](https://github.com/arco-design/arco-design-vue/pull/427))
+- **select:** 修复使用 JSX 时，Group 不可用的问题 ([#427](https://github.com/arco-design/arco-design-vue/pull/427))
+
+
 ## 2.11.0
 
 `2021-12-17`

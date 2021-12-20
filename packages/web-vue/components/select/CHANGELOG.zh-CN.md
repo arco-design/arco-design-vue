@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.11.1
+
+`2021-12-20`
+
+### 🐛 问题修复
+
+- 修复使用 JSX 时，Group 不可用的问题 ([#427](https://github.com/arco-design/arco-design-vue/pull/427))
+
+
 ## 2.10.1
 
 `2021-12-14`
