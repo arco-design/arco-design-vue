@@ -7,7 +7,7 @@ import {
   resolveProps,
 } from '../_utils/vue-utils';
 import { DropdownOption, DGroup, DSubmenu } from './interface';
-import { isObject } from '../_utils/is';
+import { isArray, isObject } from '../_utils/is';
 import { omit } from '../_utils/omit';
 
 export const isGroup = (option: DropdownOption): option is DGroup => {
@@ -22,6 +22,7 @@ export const travelDropDownChildren = (children: VNode[]): DropdownOption[] => {
   const options: DropdownOption[] = [];
 
   for (const child of children) {
+    if (!child) continue;
     if (isNamedComponent(child, 'Dgroup')) {
       const props = resolveProps(child);
       let slots: Slots | undefined;
@@ -83,6 +84,8 @@ export const travelDropDownChildren = (children: VNode[]): DropdownOption[] => {
       if (_children) {
         options.push(...travelDropDownChildren(_children));
       }
+    } else if (isArray(child)) {
+      options.push(...travelDropDownChildren(child));
     }
   }
 
