@@ -529,6 +529,10 @@
 
     .@{table-prefix-cls}-scroll-y {
       border-bottom: @table-border-width @table-border-style @table-color-border;
+
+      .@{table-prefix-cls}-body .@{table-cls-tr}:last-of-type .@{table-cls-td} {
+        border-bottom: none;
+      }
     }
 
     .@{table-cls-tr} .@{table-cls-th} {
