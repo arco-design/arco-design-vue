@@ -346,9 +346,10 @@ export default defineComponent({
 
     const mounted = ref(computedVisible.value);
 
-    const okDisplayText = props.okText || computed(() => t('modal.okText'));
-    const cancelDisplayText =
-      props.cancelText || computed(() => t('modal.cancelText'));
+    const okDisplayText = computed(() => props.okText || t('modal.okText'));
+    const cancelDisplayText = computed(
+      () => props.cancelText || t('modal.cancelText')
+    );
 
     const { zIndex } = usePopupManager({ visible: computedVisible });
 
