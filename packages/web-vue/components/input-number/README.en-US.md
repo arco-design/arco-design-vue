@@ -16,6 +16,8 @@ description: Only input boxes in numeric format are allowed.
 
 @import ./__demo__/precision.md
 
+@import ./__demo__/prefix.md
+
 @import ./__demo__/format.md
 
 

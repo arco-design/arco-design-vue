@@ -151,17 +151,26 @@ export default defineComponent({
      */
     'blur',
   ],
-  setup(props, { emit, attrs }) {
+  setup(props, { emit, attrs, slots }) {
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
-    const _value = ref(
-      isUndefined(props.defaultValue)
-        ? ''
-        : props.formatter?.(String(props.defaultValue)) ??
-            String(props.defaultValue)
-    );
 
-    const numberPrefix = ref('');
+    const getStringValue = (number: number | undefined) => {
+      return isUndefined(number)
+        ? ''
+        : props.formatter?.(String(number)) ?? String(number);
+    };
+
+    // inner input value to display
+    const _value = ref(getStringValue(props.modelValue ?? props.defaultValue));
+
+    const valueNumber = computed(() => {
+      if (!_value.value) {
+        return undefined;
+      }
+      const number = Number(props.parser?.(_value.value) ?? _value.value);
+      return Number.isNaN(number) ? undefined : number;
+    });
 
     const mergedPrecision = computed(() => {
       if (isNumber(props.precision)) {
@@ -172,22 +181,12 @@ export default defineComponent({
       return undefined;
     });
 
-    // 内部保持传递字符型数值
-    const computedValue = computed(() => {
-      if (isNumber(props.modelValue)) {
-        return (
-          props.formatter?.(String(props.modelValue)) ??
-          String(props.modelValue)
-        );
-      }
-      if (numberPrefix.value && !_value.value) {
-        return numberPrefix.value;
-      }
-      return _value.value;
-    });
-
-    const isMax = ref(false);
-    const isMin = ref(false);
+    const isMin = ref(
+      isNumber(valueNumber.value) && valueNumber.value <= props.min
+    );
+    const isMax = ref(
+      isNumber(valueNumber.value) && valueNumber.value >= props.max
+    );
 
     // 步长重复定时器
     let repeatTimer = 0;
@@ -199,57 +198,41 @@ export default defineComponent({
       }
     };
 
-    const getLegalValue = (
-      value: string | number | undefined
-    ): number | undefined => {
-      // 空值时返回undefined
-      if (isUndefined(value) || value === '') {
+    const getLegalValue = (value: number | undefined): number | undefined => {
+      if (isUndefined(value)) {
         return undefined;
       }
 
-      let numberValue = isNumber(value) ? value : Number(value);
-
-      if (Number.isNaN(numberValue)) {
-        return undefined;
+      if (isNumber(props.min) && value < props.min) {
+        value = props.min;
       }
 
-      if (isNumber(props.min) && numberValue < props.min) {
-        numberValue = props.min;
-      }
-
-      if (isNumber(props.max) && numberValue > props.max) {
-        numberValue = props.max;
+      if (isNumber(props.max) && value > props.max) {
+        value = props.max;
       }
 
       return isNumber(mergedPrecision.value)
-        ? NP.round(numberValue, mergedPrecision.value)
-        : numberValue;
+        ? NP.round(value, mergedPrecision.value)
+        : value;
     };
 
-    const finalValue = getLegalValue(computedValue.value);
-    if (isNumber(finalValue)) {
-      if (finalValue <= props.min) {
-        isMin.value = true;
-      }
-      if (finalValue >= props.max) {
-        isMax.value = true;
-      }
-    }
-
-    const updateValue = (value: string | number | undefined, ev: Event) => {
-      const finalValue = getLegalValue(value);
-      isMin.value = false;
-      isMax.value = false;
-      if (isNumber(finalValue)) {
-        if (finalValue <= props.min) {
-          isMin.value = true;
+    const updateNumberStatus = (number: number | undefined) => {
+      let _isMin = false;
+      let _isMax = false;
+      if (isNumber(number)) {
+        if (number <= props.min) {
+          _isMin = true;
         }
-        if (finalValue >= props.max) {
-          isMax.value = true;
+        if (number >= props.max) {
+          _isMax = true;
         }
       }
-      emit('update:modelValue', finalValue);
-      emit('change', finalValue, ev);
+      if (isMax.value !== _isMax) {
+        isMax.value = _isMax;
+      }
+      if (isMin.value !== _isMin) {
+        isMin.value = _isMin;
+      }
     };
 
     const handleStepButton = (
@@ -268,18 +251,17 @@ export default defineComponent({
         return;
       }
 
-      let nextValue: number;
-      if (!computedValue.value) {
-        nextValue = props.min === -Infinity ? 0 : props.min;
+      let nextValue: number | undefined;
+      if (isNumber(valueNumber.value)) {
+        nextValue = getLegalValue(NP[method](valueNumber.value, props.step));
       } else {
-        const numberValue = Number(
-          props.parser?.(computedValue.value) ?? computedValue.value
-        );
-        nextValue = NP[method](numberValue, props.step);
+        nextValue = props.min === -Infinity ? 0 : props.min;
       }
 
-      _value.value = props.formatter?.(String(nextValue)) ?? String(nextValue);
-      updateValue(nextValue, event);
+      _value.value = getStringValue(nextValue);
+      updateNumberStatus(nextValue);
+      emit('update:modelValue', nextValue);
+      emit('change', nextValue, event);
 
       // 长按时持续触发
       if (needRepeat) {
@@ -295,13 +277,8 @@ export default defineComponent({
       value = props.parser?.(value) ?? value;
 
       if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
-        if (/^(\.|-)$/.test(value)) {
-          numberPrefix.value = value;
-        } else if (numberPrefix.value) {
-          numberPrefix.value = '';
-        }
         _value.value = props.formatter?.(value) ?? value;
-        updateValue(value, ev);
+        updateNumberStatus(valueNumber.value);
       }
     };
 
@@ -309,69 +286,77 @@ export default defineComponent({
       emit('focus', ev);
     };
 
-    const handleBlur = (ev: FocusEvent) => {
-      if (computedValue.value) {
-        const numberValue = Number(
-          props.parser?.(computedValue.value) ?? computedValue.value
-        );
-        const finalValue = getLegalValue(numberValue);
-        if (finalValue !== numberValue) {
-          _value.value = isUndefined(finalValue)
-            ? ''
-            : props.formatter?.(String(finalValue)) ?? String(finalValue);
-          updateValue(finalValue, ev);
-        }
+    const handleChange = (value: string, ev: Event) => {
+      const finalValue = getLegalValue(valueNumber.value);
+      const stringValue = getStringValue(finalValue);
+      if (finalValue !== valueNumber.value || _value.value !== stringValue) {
+        _value.value = stringValue;
+        updateNumberStatus(finalValue);
       }
 
+      emit('update:modelValue', finalValue);
+      emit('change', finalValue, ev);
+    };
+
+    const handleBlur = (ev: FocusEvent) => {
       emit('blur', ev);
+    };
+
+    const handleClear = () => {
+      _value.value = '';
+      emit('update:modelValue', '');
+      emit('change', '');
     };
 
     watch(
       () => props.modelValue,
       (value: number | undefined) => {
-        let stringValue = isUndefined(value) ? '' : String(value);
-        stringValue = props.formatter?.(stringValue) ?? stringValue;
-        if (stringValue !== _value.value) {
-          _value.value = stringValue;
+        if (value !== valueNumber.value) {
+          // TODO: verify number
+          _value.value = getStringValue(value);
+          updateNumberStatus(value);
         }
       }
     );
 
     const renderSuffix = () => (
-      <div class={`${prefixCls}-step`}>
-        <button
-          class={[
-            `${prefixCls}-step-button`,
-            {
-              [`${prefixCls}-step-button-disabled`]:
-                props.disabled || isMax.value,
-            },
-          ]}
-          type="button"
-          disabled={props.disabled || isMax.value}
-          onMousedown={(e) => handleStepButton(e, 'plus', true)}
-          onMouseup={clearRepeatTimer}
-          onMouseleave={clearRepeatTimer}
-        >
-          <IconUp />
-        </button>
-        <button
-          class={[
-            `${prefixCls}-step-button`,
-            {
-              [`${prefixCls}-step-button-disabled`]:
-                props.disabled || isMin.value,
-            },
-          ]}
-          type="button"
-          disabled={props.disabled || isMin.value}
-          onMousedown={(e) => handleStepButton(e, 'minus', true)}
-          onMouseup={clearRepeatTimer}
-          onMouseleave={clearRepeatTimer}
-        >
-          <IconDown />
-        </button>
-      </div>
+      <>
+        {slots.suffix?.()}
+        <div class={`${prefixCls}-step`}>
+          <button
+            class={[
+              `${prefixCls}-step-button`,
+              {
+                [`${prefixCls}-step-button-disabled`]:
+                  props.disabled || isMax.value,
+              },
+            ]}
+            type="button"
+            disabled={props.disabled || isMax.value}
+            onMousedown={(e) => handleStepButton(e, 'plus', true)}
+            onMouseup={clearRepeatTimer}
+            onMouseleave={clearRepeatTimer}
+          >
+            <IconUp />
+          </button>
+          <button
+            class={[
+              `${prefixCls}-step-button`,
+              {
+                [`${prefixCls}-step-button-disabled`]:
+                  props.disabled || isMin.value,
+              },
+            ]}
+            type="button"
+            disabled={props.disabled || isMin.value}
+            onMousedown={(e) => handleStepButton(e, 'minus', true)}
+            onMouseup={clearRepeatTimer}
+            onMouseleave={clearRepeatTimer}
+          >
+            <IconDown />
+          </button>
+        </div>
+      </>
     );
     const cls = computed(() => [
       prefixCls,
@@ -382,23 +367,25 @@ export default defineComponent({
     const renderInput = () => {
       const inputSlots =
         props.mode === 'embed' && !props.hideButton
-          ? { suffix: renderSuffix }
-          : {};
+          ? { ...slots, suffix: renderSuffix }
+          : slots;
 
       return (
         <ArcoInput
+          v-slots={inputSlots}
           {...attrs}
           ref={inputRef}
           class={cls.value}
           type="text"
           size={props.size}
-          modelValue={computedValue.value}
+          modelValue={_value.value}
           placeholder={props.placeholder}
           disabled={props.disabled}
-          v-slots={inputSlots}
           onInput={handleInput}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onClear={handleClear}
+          onChange={handleChange}
         />
       );
     };
