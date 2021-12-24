@@ -10,9 +10,13 @@ description: Open a floating layer on the current page to carry related operatio
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/async.md
+
 @import ./__demo__/function.md
 
 @import ./__demo__/notice.md
+
+@import ./__demo__/width.md
 
 @import ./__demo__/custom.md
 
@@ -91,6 +95,8 @@ The global methods provided by Modal can be used in the following three ways:
 |alignCenter|Whether the dialog box is displayed in the center|`boolean`|`false`|
 |onOk|Callback function for clicking the OK button|`() => void`|`-`|
 |onCancel|Callback function for clicking the Cancel button|`() => void`|`-`|
+|onOpen|Triggered after the modal is opened (the animation ends)|`() => void`|`-`|
+|onClose|Triggered after the modal is closed (the animation ends)|`() => void`|`-`|
 
 
 

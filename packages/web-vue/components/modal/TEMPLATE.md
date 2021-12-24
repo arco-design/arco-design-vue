@@ -19,9 +19,13 @@ description: Open a floating layer on the current page to carry related operatio
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/async.md
+
 @import ./__demo__/function.md
 
 @import ./__demo__/notice.md
+
+@import ./__demo__/width.md
 
 @import ./__demo__/custom.md
 

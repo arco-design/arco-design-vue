@@ -7,6 +7,7 @@ import { getOverlay } from '../_utils/dom';
 import { isFunction } from '../_utils/is';
 import _Modal from './modal.vue';
 import { ModalConfig, ModalMethod } from './interface';
+import { omit } from '../_utils/omit';
 
 const open = (config: ModalConfig) => {
   const container = getOverlay('modal');
@@ -34,6 +35,10 @@ const open = (config: ModalConfig) => {
   const handleClose = () => {
     render(null, container);
     document.body.removeChild(container);
+
+    if (isFunction(config.onClose)) {
+      config.onClose();
+    }
   };
 
   const defaultConfig = {
@@ -47,7 +52,7 @@ const open = (config: ModalConfig) => {
   // @ts-ignore
   const vm = createVNode(
     _Modal,
-    { ...config, ...defaultConfig },
+    { ...omit(config, ['content', 'title', 'footer']), ...defaultConfig },
     {
       default: isFunction(config.content)
         ? config.content

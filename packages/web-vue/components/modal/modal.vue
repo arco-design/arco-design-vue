@@ -2,8 +2,10 @@
   <teleport :to="popupContainer" :disabled="!renderToBody">
     <div
       v-if="!unmountOnClose || computedVisible || mounted"
+      v-show="computedVisible || mounted"
       v-bind="$attrs"
       :class="`${prefixCls}-container`"
+      :style="{ zIndex }"
     >
       <transition name="fade-modal" appear>
         <div
@@ -11,7 +13,7 @@
           v-show="computedVisible"
           ref="maskRef"
           :class="`${prefixCls}-mask`"
-          :style="mergedMaskStyle"
+          :style="maskStyle"
         />
       </transition>
       <transition
@@ -26,7 +28,6 @@
             `${prefixCls}-wrapper`,
             { [`${prefixCls}-wrapper-align-center`]: alignCenter },
           ]"
-          :style="{ zIndex }"
           @click.self="handleMask"
         >
           <div
@@ -36,7 +37,7 @@
               modalClass,
               { [`${prefixCls}-simple`]: simple },
             ]"
-            :style="modalStyle"
+            :style="mergedModalStyle"
           >
             <div
               v-if="$slots.title || title || closable"
@@ -93,7 +94,7 @@
 </template>
 
 <script lang="tsx">
-import type { ComputedRef, CSSProperties, PropType } from 'vue';
+import type { CSSProperties, PropType } from 'vue';
 import { defineComponent, computed, ref, watch, onMounted } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { MessageType } from '../_utils/constant';
@@ -108,7 +109,7 @@ import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
 import { getElement } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
-import { isBoolean, isFunction } from '../_utils/is';
+import { isBoolean, isFunction, isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'Modal',
@@ -139,6 +140,20 @@ export default defineComponent({
     defaultVisible: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 对话框的宽度，不设置的情况下会使用样式中的宽度值
+     * @version 2.12.0
+     */
+    width: {
+      type: [Number, String],
+    },
+    /**
+     * @zh 对话框的距离顶部的高度，居中显示开启的情况下不生效
+     * @version 2.12.0
+     */
+    top: {
+      type: [Number, String],
     },
     /**
      * @zh 是否显示遮罩层
@@ -443,11 +458,17 @@ export default defineComponent({
       }
     });
 
-    const mergedMaskStyle: ComputedRef<CSSProperties> = computed(() => {
-      return {
-        zIndex: zIndex.value,
+    const mergedModalStyle = computed(() => {
+      const style: CSSProperties = {
         ...(props.maskStyle ?? {}),
       };
+      if (props.width) {
+        style.width = isNumber(props.width) ? `${props.width}px` : props.width;
+      }
+      if (!props.alignCenter && props.top) {
+        style.top = isNumber(props.top) ? `${props.top}px` : props.top;
+      }
+      return style;
     });
 
     return {
@@ -455,7 +476,7 @@ export default defineComponent({
       mounted,
       computedVisible,
       containerRef,
-      mergedMaskStyle,
+      mergedModalStyle,
       okDisplayText,
       cancelDisplayText,
       zIndex,

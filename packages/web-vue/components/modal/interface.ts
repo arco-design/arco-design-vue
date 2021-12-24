@@ -87,6 +87,16 @@ export interface ModalConfig {
    * @en Callback function for clicking the Cancel button
    */
   onCancel?: () => void;
+  /**
+   * @zh 对话框打开后（动画结束）触发
+   * @en Triggered after the modal is opened (the animation ends)
+   */
+  onOpen?: () => void;
+  /**
+   * @zh 对话框关闭后（动画结束）触发
+   * @en Triggered after the modal is closed (the animation ends)
+   */
+  onClose?: () => void;
 }
 
 export interface ModalReturn {

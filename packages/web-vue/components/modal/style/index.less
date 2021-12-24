@@ -2,53 +2,39 @@
 
 @modal-prefix-cls: ~'@{prefix}-modal';
 
-.@{modal-prefix-cls}-mask {
+.@{modal-prefix-cls}-container {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  z-index: @z-index-modal;
-  width: 100%;
-  height: 100%;
+}
+
+.@{modal-prefix-cls}-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-color: var(--color-mask-bg);
 }
 
 .@{modal-prefix-cls}-wrapper {
-  position: fixed;
+  position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  z-index: @z-index-modal;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   overflow: auto;
 
-  &-no-mask {
-    pointer-events: none;
-
-    .@{modal-prefix-cls} {
-      pointer-events: auto;
-    }
-  }
-
-  &-hide {
-    display: none;
-  }
-
   &&-align-center {
-    white-space: nowrap;
-    text-align: center;
-
-    &::before {
-      display: inline-block;
-      width: 0;
-      height: 100%;
-      vertical-align: middle;
-      content: '';
-    }
+    align-items: center;
 
     .@{modal-prefix-cls} {
       top: 0;
-      display: inline-block;
-      vertical-align: middle;
     }
   }
 }
@@ -57,7 +43,6 @@
   position: relative;
   top: @modal-margin-top;
   width: @modal-default-size-width;
-  margin: 0 auto;
   line-height: @line-height-base;
   white-space: initial;
   text-align: left;
