@@ -26,12 +26,11 @@ import {
 } from 'vue';
 import computeScrollIntoView from 'compute-scroll-into-view';
 import { getPrefixCls } from '../_utils/global-config';
-import { isNumber } from '../_utils/is';
+import { isNumber, isWindow } from '../_utils/is';
 import { getElement, off, on } from '../_utils/dom';
 import { slide } from './utils';
 import { anchorInjectionKey } from './context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
-import { isWindow } from '../../es/_utils/is';
 
 const BOUNDARY_POSITIONS = ['start', 'end', 'center', 'nearest'] as const;
 type BoundaryPosition = typeof BOUNDARY_POSITIONS[number];
