@@ -1,5 +1,5 @@
 <template>
-  <a :href="disabled ? undefined : href" :class="cls">
+  <a :href="disabled ? undefined : href" :class="cls" @click="handleClick">
     <span v-if="showIcon" :class="`${prefixCls}-icon`">
       <slot name="icon">
         <icon-link />
@@ -16,6 +16,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { Status, STATUSES } from '../_utils/constant';
 import IconLink from '../icon/icon-link';
 import { hasPropOrSlot } from '../_utils/use-prop-or-slot';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Link',
@@ -59,10 +60,21 @@ export default defineComponent({
      * @en Whether the link is disabled
      */
     disabled: Boolean,
+    // for JSX
+    onClick: {
+      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
+    },
   },
-  setup(props, { slots }) {
+  emits: ['click'],
+  setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('link');
     const showIcon = hasPropOrSlot(props, slots, 'icon');
+
+    const handleClick = (ev: MouseEvent) => {
+      if (!props.disabled) {
+        emit('click', ev);
+      }
+    };
 
     const cls = computed(() => [
       prefixCls,
@@ -78,6 +90,7 @@ export default defineComponent({
       cls,
       prefixCls,
       showIcon,
+      handleClick,
     };
   },
 });
