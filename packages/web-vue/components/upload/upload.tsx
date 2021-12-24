@@ -593,7 +593,7 @@ export default defineComponent({
     );
 
     const renderButton = () => {
-      return (
+      const button = (
         <UploadButton
           key="arco-upload-button"
           v-slots={{
@@ -610,6 +610,17 @@ export default defineComponent({
           accept={props.accept}
         />
       );
+
+      if (props.tip && props.listType !== 'picture-card' && !props.draggable) {
+        return (
+          <span>
+            {button}
+            <div class={`${prefixCls}-tip`}>{props.tip}</div>
+          </span>
+        );
+      }
+
+      return button;
     };
 
     const render = () => {
