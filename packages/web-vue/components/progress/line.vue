@@ -6,7 +6,7 @@
     </div>
     <div v-if="showText" :class="`${prefixCls}-text`">
       <slot name="text" :percent="percent">
-        {{ `${percent * 100}%` }}
+        {{ text }}
         <icon-exclamation-circle-fill v-if="status === 'danger'" />
       </slot>
     </div>
@@ -15,6 +15,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
+import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isObject } from '../_utils/is';
 import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
@@ -94,6 +95,8 @@ export default defineComponent({
       return DEFAULT_STROKE_WIDTH[props.size];
     });
 
+    const text = computed(() => `${NP.times(props.percent, 100)}%`);
+
     const style = computed(() => ({
       width: props.width,
       height: `${strokeWidth.value}px`,
@@ -116,6 +119,7 @@ export default defineComponent({
       prefixCls,
       style,
       barStyle,
+      text,
     };
   },
 });

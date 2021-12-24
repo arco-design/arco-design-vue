@@ -52,7 +52,7 @@
         <icon-exclamation v-if="status === 'danger'" />
         <icon-check v-else-if="status === 'success'" />
         <template v-else>
-          {{ `${percent * 100}%` }}
+          {{ text }}
         </template>
       </slot>
     </div>
@@ -61,6 +61,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
+import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isObject } from '../_utils/is';
 import { SIZES } from '../_utils/constant';
@@ -161,10 +162,13 @@ export default defineComponent({
       return `${prefixCls}-linear-gradient-${__ARCO_PROGRESS_SEED}`;
     });
 
+    const text = computed(() => `${NP.times(props.percent, 100)}%`);
+
     return {
       prefixCls,
       isLinearGradient,
       radius,
+      text,
       perimeter,
       center,
       mergedWidth,
