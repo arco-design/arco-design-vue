@@ -10,8 +10,8 @@
             :style="{ width: '100px' }"
           />
         </a-form-item>
-        <a-form-item field="fontSize" :label="t('icon.fontSize')">
-          <a-input-number v-model="form.fontSize" />
+        <a-form-item field="size" :label="t('icon.fontSize')">
+          <a-input-number v-model="form.size" />
         </a-form-item>
         <a-form-item field="strokeLinejoin" :label="t('icon.strokeLinejoin')">
           <a-select
@@ -44,11 +44,7 @@
         >
           <div class="icon-item-name">{{ item.name }}</div>
           <div class="icon-item-component">
-            <component
-              :is="item.componentName"
-              :style="{ fontSize: `${form.fontSize}px` }"
-              v-bind="form"
-            />
+            <component :is="item.componentName" v-bind="form" />
           </div>
         </li>
       </ul>
@@ -84,7 +80,7 @@ export default defineComponent({
 
     const form = reactive({
       strokeWidth: 4,
-      fontSize: 32,
+      size: 32,
       strokeLinejoin: 'miter',
       strokeLinecap: 'butt',
     });
