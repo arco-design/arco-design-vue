@@ -16,10 +16,14 @@ export const getIconVue = ({
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
+import { isNumber } from '../../_utils/is';
 
 export default defineComponent({
   name: '${componentName}',
   props: {
+    size: {
+      type: [Number, String],
+    },
     strokeWidth: {
       type: Number,
       default: 4
@@ -43,9 +47,18 @@ export default defineComponent({
   setup(props) {
     const prefixCls = getPrefixCls('icon');
     const cls = computed(() => [prefixCls, \`\${prefixCls}-${name.replace('icon-', '')}\`, { [\`\${prefixCls}-spin\`]: props.spin }]);
+    const sizeStyle = computed(() => {
+      if (props.size) {
+        return {
+          fontSize: isNumber(props.size) ? \`\${props.size}px\` : props.size,
+        };
+      }
+      return undefined;
+    });
 
     return {
-      cls
+      cls,
+      sizeStyle
     };
   }
 });

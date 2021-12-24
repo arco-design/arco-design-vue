@@ -16,7 +16,13 @@ const options: OptimizeOptions = {
     {
       name: 'removeAttrs',
       params: {
-        attrs: ['class', 'stroke-width', 'stroke-linecap', 'stroke-linejoin'],
+        attrs: [
+          'class',
+          'style',
+          'stroke-width',
+          'stroke-linecap',
+          'stroke-linejoin',
+        ],
       },
     },
     {
@@ -25,6 +31,7 @@ const options: OptimizeOptions = {
       params: {
         attributes: [
           { ':class': 'cls' },
+          { ':style': 'sizeStyle' },
           { ':stroke-width': 'strokeWidth' },
           { ':stroke-linecap': 'strokeLinecap' },
           { ':stroke-linejoin': 'strokeLinejoin' },

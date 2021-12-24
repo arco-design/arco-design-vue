@@ -10,7 +10,7 @@ import type {
 } from 'vue';
 import { createVNode, cloneVNode, mergeProps, Fragment, isVNode } from 'vue';
 import { Data, RenderContent } from './types';
-import { isFunction, isNumber, isObject, isString } from './is';
+import { isArray, isFunction, isNumber, isObject, isString } from './is';
 import { toCamelCase, toKebabCase } from './convert-case';
 
 export enum ShapeFlags {
@@ -185,6 +185,9 @@ export const getFirstComponent = (children: VNode[]): VNode | undefined => {
         const result = getFirstComponent(children);
         if (result) return result;
       }
+    } else if (isArray(child)) {
+      const result = getFirstComponent(child);
+      if (result) return result;
     }
   }
 

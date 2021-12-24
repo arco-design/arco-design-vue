@@ -91,7 +91,7 @@ const run = async ({ material }: { material: boolean }) => {
   console.log(`target build success`);
 
   // 构建style/index.ts
-  const indexFiles = glob.sync('**/style/index.ts', {
+  const indexFiles = glob.sync('components/**/style/index.ts', {
     cwd: paths.root,
   });
 
