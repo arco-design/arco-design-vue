@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### 🐛 问题修复
+
+- 修复按钮模式下 tip 没有显示的问题 ([#446](https://github.com/arco-design/arco-design-vue/pull/446))
+- 修复 `upload` 组件的禁用样式不生效的 bug ([#430](https://github.com/arco-design/arco-design-vue/pull/430))
+
+
 ## 2.11.0
 
 `2021-12-17`

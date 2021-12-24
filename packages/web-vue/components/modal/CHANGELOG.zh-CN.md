@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ 重点注意
+
+- 修改 wrapper 层展示 modal 的方式，并添加 `width` 和 `top` 属性 ([#454](https://github.com/arco-design/arco-design-vue/pull/454))
+
+### 🐛 问题修复
+
+- 修复按钮内容不能动态修改的问题 ([#453](https://github.com/arco-design/arco-design-vue/pull/453))
+
+
 ## 2.11.0
 
 `2021-12-17`

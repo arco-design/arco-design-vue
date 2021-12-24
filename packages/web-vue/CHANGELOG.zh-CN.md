@@ -2,6 +2,45 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ 重点注意
+
+- **modal:** 修改 wrapper 层展示 modal 的方式，并添加 `width` 和 `top` 属性 ([#454](https://github.com/arco-design/arco-design-vue/pull/454))
+- **textarea:** max-length 的计算不再排除回车情况，同 React 版本保持一致 ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+- **input:** 修改 change 事件仅在值发生改变时触发 ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+- **input-number:** 修改 change 事件仅在失焦和按下回车时触发，解决受控不能输入的问题 ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+
+### 💎 功能优化
+
+- **badge:** count 为 0 时不再渲染徽标 ([#445](https://github.com/arco-design/arco-design-vue/pull/445))
+
+### 🆕 新增功能
+
+- 图标类组件增加 size 属性 ([#455](https://github.com/arco-design/arco-design-vue/pull/455))
+- **input:** `max-length` 增加 `errorOnly` 属性，增加 `word-slice` 属性 ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+- **textarea:** `max-length` 增加 `errorOnly` 属性，增加 `word-slice` 属性 ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+- **input-number:** 增加对 input 插槽的支持 ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+- **link:** 增加 click 事件 ([#450](https://github.com/arco-design/arco-design-vue/pull/450))
+- **drawer:** 增加 unmount-on-close 属性 ([#449](https://github.com/arco-design/arco-design-vue/pull/449))
+- **switch:** 增加 `checked-value` 和 `unchecked-value` 属性 ([#444](https://github.com/arco-design/arco-design-vue/pull/444))
+- **switch:** 增加 `checked-color` 和 `unchecked-color` 属性 ([#444](https://github.com/arco-design/arco-design-vue/pull/444))
+
+### 🐛 问题修复
+
+- **modal:** 修复按钮内容不能动态修改的问题 ([#453](https://github.com/arco-design/arco-design-vue/pull/453))
+- **affix:** 修复与 anchor 组件组合使用，显示 warning 的问题 ([#448](https://github.com/arco-design/arco-design-vue/pull/448))
+- **progress:** 修复显示数值精度问题 ([#447](https://github.com/arco-design/arco-design-vue/pull/447))
+- **upload:** 修复按钮模式下 tip 没有显示的问题 ([#446](https://github.com/arco-design/arco-design-vue/pull/446))
+- **upload:** 修复 `upload` 组件的禁用样式不生效的 bug ([#430](https://github.com/arco-design/arco-design-vue/pull/430))
+
+### 💅 样式更新
+
+- **table:** 修复 table 滚动模式下最后一行多余边框的问题 ([#456](https://github.com/arco-design/arco-design-vue/pull/456))
+
+
 ## 2.11.1
 
 `2021-12-20`

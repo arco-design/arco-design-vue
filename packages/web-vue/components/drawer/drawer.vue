@@ -180,6 +180,7 @@ export default defineComponent({
     /**
      * @zh 关闭时是否卸载节点
      * @en Whether to uninstall the node when close
+     * @version 2.12.0
      */
     unmountOnClose: Boolean,
     /**

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ 重点注意
+
+- 修改 change 事件仅在值发生改变时触发 ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+
+### 🆕 新增功能
+
+- `max-length` 增加 `errorOnly` 属性，增加 `word-slice` 属性 ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+
+
 ## 2.7.0
 
 `2021-11-26`

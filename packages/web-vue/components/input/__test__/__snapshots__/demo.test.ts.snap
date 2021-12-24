@@ -67,7 +67,12 @@ exports[`<input> demo: render [status] correctly 1`] = `
 `;
 
 exports[`<input> demo: render [word-limit] correctly 1`] = `
-"<span style=\\"width: 320px;\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><span class=\\"arco-input-word-limit\\">0/10</span>
-<!----></span></span><span style=\\"width: 320px;\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><span class=\\"arco-input-word-limit\\">0/10</span>
-<!----></span></span>"
+"<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span style=\\"width: 320px;\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><span class=\\"arco-input-word-limit\\">0/10</span>
+    <!----></span></span>
+  </div>
+  <div class=\\"arco-space-item\\"><span style=\\"width: 320px;\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><span class=\\"arco-input-word-limit\\">0/10</span>
+    <!----></span></span>
+  </div>
+</div>"
 `;

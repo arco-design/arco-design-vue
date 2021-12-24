@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ 重点注意
+
+- max-length 的计算不再排除回车情况，同 React 版本保持一致 ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+
+### 🆕 新增功能
+
+- `max-length` 增加 `errorOnly` 属性，增加 `word-slice` 属性 ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+
+
 ## 2.10.0
 
 `2021-12-10`

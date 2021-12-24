@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ Important Attention
+
+- The calculation of max-length no longer excludes carriage returns, which is consistent with the React version ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+
+### 🆕 Feature
+
+- `max-length` adds `errorOnly` attribute and `word-slice` attribute ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+
+
 ## 2.10.0
 
 `2021-12-10`

@@ -2,6 +2,45 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ Important Attention
+
+- **modal:** Modify the way the wrapper layer displays modal, and add the `width` and `top` attributes ([#454](https://github.com/arco-design/arco-design-vue/pull/454))
+- **textarea:** The calculation of max-length no longer excludes carriage returns, which is consistent with the React version ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+- **input:** The change event is only triggered when the value changes ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+- **input-number:** Modify the change event to be triggered only when out of focus and press Enter to solve the problem that the control cannot be input ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+
+### 💎 Optimization
+
+- **badge:** No longer render the logo when count is 0 ([#445](https://github.com/arco-design/arco-design-vue/pull/445))
+
+### 🆕 Feature
+
+- Icon component adds size attribute ([#455](https://github.com/arco-design/arco-design-vue/pull/455))
+- **input:** `max-length` adds `errorOnly` attribute and `word-slice` attribute ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+- **textarea:** `max-length` adds `errorOnly` attribute and `word-slice` attribute ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+- **input-number:** Add support for input slot ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+- **link:** Add click event ([#450](https://github.com/arco-design/arco-design-vue/pull/450))
+- **drawer:** Add unmount-on-close attribute ([#449](https://github.com/arco-design/arco-design-vue/pull/449))
+- **switch:** Added `checked-value` and `unchecked-value` attributes ([#444](https://github.com/arco-design/arco-design-vue/pull/444))
+- **switch:** Added `checked-color` and `unchecked-color` attributes ([#444](https://github.com/arco-design/arco-design-vue/pull/444))
+
+### 🐛 BugFix
+
+- **modal:** Fix the problem that the button content cannot be modified dynamically ([#453](https://github.com/arco-design/arco-design-vue/pull/453))
+- **affix:** Fix the problem of displaying warning when used in combination with the anchor component ([#448](https://github.com/arco-design/arco-design-vue/pull/448))
+- **progress:** Fix the display value precision problem ([#447](https://github.com/arco-design/arco-design-vue/pull/447))
+- **upload:** Fix the problem that tip is not displayed in button mode ([#446](https://github.com/arco-design/arco-design-vue/pull/446))
+- **upload:** Fix the bug that the disabled style of the `upload` component does not take effect ([#430](https://github.com/arco-design/arco-design-vue/pull/430))
+
+### 💅 Style
+
+- **table:** Fix the problem of extra border on the last row in table scroll mode ([#456](https://github.com/arco-design/arco-design-vue/pull/456))
+
+
 ## 2.11.1
 
 `2021-12-20`

@@ -43,9 +43,20 @@ exports[`<textarea> demo: render [status] correctly 1`] = `
 `;
 
 exports[`<textarea> demo: render [word-limit] correctly 1`] = `
-"<div class=\\"arco-textarea-wrapper\\">
-  <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
-  <div class=\\"arco-textarea-word-limit\\">0/10</div>
-  <!--v-if-->
+"<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+    <div class=\\"arco-textarea-wrapper\\">
+      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
+      <div class=\\"arco-textarea-word-limit\\">0/10</div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-textarea-wrapper\\">
+      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
+      <div class=\\"arco-textarea-word-limit\\">0/10</div>
+      <!--v-if-->
+    </div>
+  </div>
 </div>"
 `;

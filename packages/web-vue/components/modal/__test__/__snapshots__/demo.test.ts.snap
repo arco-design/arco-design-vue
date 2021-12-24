@@ -54,3 +54,11 @@ exports[`<modal> demo: render [notice] correctly 1`] = `
     </button></div>
 </div>"
 `;
+
+exports[`<modal> demo: render [width] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Open Modal
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;

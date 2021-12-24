@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### 💅 Style
+
+- Fix the problem of extra border on the last row in table scroll mode ([#456](https://github.com/arco-design/arco-design-vue/pull/456))
+
+
 ## 2.11.0
 
 `2021-12-17`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### 🆕 新增功能
+
+- 增加 unmount-on-close 属性 ([#449](https://github.com/arco-design/arco-design-vue/pull/449))
+
+
 ## 2.11.0
 
 `2021-12-17`

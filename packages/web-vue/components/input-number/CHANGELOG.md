@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ Important Attention
+
+- Modify the change event to be triggered only when out of focus and press Enter to solve the problem that the control cannot be input ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+
+### 🆕 Feature
+
+- Add support for input slot ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+
+
 ## 2.11.0
 
 `2021-12-17`

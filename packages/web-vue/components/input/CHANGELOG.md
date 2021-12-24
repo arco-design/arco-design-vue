@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### ⚠️ Important Attention
+
+- The change event is only triggered when the value changes ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
+
+### 🆕 Feature
+
+- `max-length` adds `errorOnly` attribute and `word-slice` attribute ([#451](https://github.com/arco-design/arco-design-vue/pull/451))
+
+
 ## 2.7.0
 
 `2021-11-26`

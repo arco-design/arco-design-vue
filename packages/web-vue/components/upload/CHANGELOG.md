@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.12.0
+
+`2021-12-24`
+
+### 🐛 BugFix
+
+- Fix the problem that tip is not displayed in button mode ([#446](https://github.com/arco-design/arco-design-vue/pull/446))
+- Fix the bug that the disabled style of the `upload` component does not take effect ([#430](https://github.com/arco-design/arco-design-vue/pull/430))
+
+
 ## 2.11.0
 
 `2021-12-17`
