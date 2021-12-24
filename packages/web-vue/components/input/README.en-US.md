@@ -31,19 +31,20 @@ description: Basic form components have been expanded on the basis of native con
 
 ### `<input>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`string`|`-`|
-|default-value|Default value (uncontrolled state)|`string`|`''`|
-|size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|allow-clear|Whether to allow the input to be cleared|`boolean`|`false`|
-|disabled|Whether to disable|`boolean`|`false`|
-|readonly|Whether it is read-only|`boolean`|`false`|
-|error|Whether it is an error state|`boolean`|`false`|
-|placeholder|Prompt text|`string`|`-`|
-|max-length|Enter the maximum length of the value|`number`|`-`|
-|show-word-limit|Whether to display word count|`boolean`|`false`|
-|word-length|Calculation method of word length|`(value: string) => number`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`string`|`-`||
+|default-value|Default value (uncontrolled state)|`string`|`''`||
+|size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|allow-clear|Whether to allow the input to be cleared|`boolean`|`false`||
+|disabled|Whether to disable|`boolean`|`false`||
+|readonly|Whether it is read-only|`boolean`|`false`||
+|error|Whether it is an error state|`boolean`|`false`||
+|placeholder|Prompt text|`string`|`-`||
+|max-length|Enter the maximum length of the value, the errorOnly attribute was added in version 2.12.0|`number \| { length: number; errorOnly?: boolean }`|`0`||
+|show-word-limit|Whether to display word count|`boolean`|`false`||
+|word-length|Calculation method of word length|`(value: string) => number`|`-`||
+|word-slice|Character interception method, used together with wordLength|`(value: string, maxLength: number) => string`|`-`|2.12.0|
 ### `<input>` Events
 
 |Event Name|Description|Parameters|

@@ -7,7 +7,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
-import { isFunction } from '../_utils/is';
+import { isFunction, isObject } from '../_utils/is';
 import { EmitType } from '../_utils/types';
 
 const INPUT_TYPES = ['text', 'password'] as const;
@@ -80,10 +80,15 @@ export default defineComponent({
      */
     placeholder: String,
     /**
-     * @zh 输入值得最大长度
-     * @en Enter the maximum length of the value
+     * @zh 输入值得最大长度，errorOnly 属性在 2.12.0 版本添加
+     * @en Enter the maximum length of the value, the errorOnly attribute was added in version 2.12.0
      */
-    maxLength: Number,
+    maxLength: {
+      type: [Number, Object] as PropType<
+        number | { length: number; errorOnly?: boolean }
+      >,
+      default: 0,
+    },
     /**
      * @zh 是否显示字数统计
      * @en Whether to display word count
@@ -98,6 +103,14 @@ export default defineComponent({
      */
     wordLength: {
       type: Function as PropType<(value: string) => number>,
+    },
+    /**
+     * @zh 字符截取方法，同 wordLength 一起使用
+     * @en Character interception method, used together with wordLength
+     * @version 2.12.0
+     */
+    wordSlice: {
+      type: Function as PropType<(value: string, maxLength: number) => string>,
     },
     // private
     type: {
@@ -190,6 +203,7 @@ export default defineComponent({
     // 值相关
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+    let preValue = computedValue.value;
 
     // 状态相关
     const focused = ref(false);
@@ -201,9 +215,46 @@ export default defineComponent({
     const isComposition = ref(false);
     const compositionValue = ref('');
 
+    const getValueLength = (value: string) => {
+      if (isFunction(props.wordLength)) {
+        return props.wordLength(value);
+      }
+      return value.length ?? 0;
+    };
+
+    const valueLength = computed(() => getValueLength(computedValue.value));
+
+    const mergedError = computed(() => {
+      if (props.error) {
+        return props.error;
+      }
+      return Boolean(
+        isObject(props.maxLength) &&
+          props.maxLength.errorOnly &&
+          valueLength.value > maxLength.value
+      );
+    });
+
+    const maxLengthErrorOnly = computed(
+      () => isObject(props.maxLength) && Boolean(props.maxLength.errorOnly)
+    );
+
+    const maxLength = computed(() => {
+      if (isObject(props.maxLength)) {
+        return props.maxLength.length;
+      }
+      return props.maxLength;
+    });
+
     const updateValue = (value: string, inner = true) => {
-      if (props.maxLength && value.length > props.maxLength) {
-        value = value.slice(0, props.maxLength);
+      if (
+        maxLength.value &&
+        !maxLengthErrorOnly.value &&
+        getValueLength(value) > maxLength.value
+      ) {
+        value =
+          props.wordSlice?.(value, maxLength.value) ??
+          value.slice(0, maxLength.value);
       }
 
       _value.value = value;
@@ -225,6 +276,13 @@ export default defineComponent({
       }
     };
 
+    const emitChange = (value: string, ev: Event) => {
+      if (value !== preValue) {
+        preValue = value;
+        emit('change', value, ev);
+      }
+    };
+
     const handleFocus = (e: FocusEvent) => {
       focused.value = true;
       emit('focus', e);
@@ -232,7 +290,7 @@ export default defineComponent({
 
     const handleBlur = (e: FocusEvent) => {
       focused.value = false;
-      emit('change', computedValue.value, e);
+      emitChange(computedValue.value, e);
       emit('blur', e);
     };
 
@@ -267,7 +325,7 @@ export default defineComponent({
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyCode = e.key || e.code;
       if (!isComposition.value && keyCode === Enter.key) {
-        emit('change', computedValue.value, e);
+        emitChange(computedValue.value, e);
         emit('pressEnter', e);
       }
     };
@@ -291,17 +349,10 @@ export default defineComponent({
       },
     ]);
 
-    const valueLength = computed(() => {
-      if (isFunction(props.wordLength)) {
-        return props.wordLength(computedValue.value);
-      }
-      return computedValue.value?.length ?? 0;
-    });
-
     const wrapperCls = computed(() => [
       `${prefixCls}-wrapper`,
       {
-        [`${prefixCls}-error`]: props.error,
+        [`${prefixCls}-error`]: mergedError.value,
         [`${prefixCls}-disabled`]: props.disabled,
         [`${prefixCls}-focus`]: focused.value,
       },
@@ -347,11 +398,12 @@ export default defineComponent({
             <IconClose />
           </IconHover>
         )}
-        {(slots.suffix || (props.maxLength && props.showWordLimit)) && (
+        {(slots.suffix ||
+          (Boolean(props.maxLength) && props.showWordLimit)) && (
           <span class={`${prefixCls}-suffix`}>
-            {props.maxLength && props.showWordLimit && (
+            {Boolean(props.maxLength) && props.showWordLimit && (
               <span class={`${prefixCls}-word-limit`}>
-                {valueLength.value}/{props.maxLength}
+                {valueLength.value}/{maxLength.value}
               </span>
             )}
             {slots.suffix?.()}
