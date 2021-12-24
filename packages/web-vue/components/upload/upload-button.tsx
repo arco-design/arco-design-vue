@@ -177,34 +177,29 @@ export default defineComponent({
     ]);
 
     return () => (
-      <>
-        <span
-          ref={dropRef}
-          class={cls.value}
-          onClick={handleClick}
-          onDragenter={() => {
-            setDragEnterCount('add');
-          }}
-          onDrop={handleDrop}
-          onDragover={handleDragOver}
-          onDragleave={handleDragLeave}
-        >
-          <input
-            ref={inputRef}
-            type="file"
-            style={{ display: 'none' }}
-            disabled={props.disabled}
-            accept={props.accept}
-            multiple={props.multiple}
-            {...(props.directory ? { webkitdirectory: 'webkitdirectory' } : {})}
-            onChange={handleInputChange}
-          />
-          {renderButton()}
-        </span>
-        {props.tip && props.listType !== 'picture-card' && !props.draggable && (
-          <div class={`${prefixCls}-tip`}>{props.tip}</div>
-        )}
-      </>
+      <span
+        ref={dropRef}
+        class={cls.value}
+        onClick={handleClick}
+        onDragenter={() => {
+          setDragEnterCount('add');
+        }}
+        onDrop={handleDrop}
+        onDragover={handleDragOver}
+        onDragleave={handleDragLeave}
+      >
+        <input
+          ref={inputRef}
+          type="file"
+          style={{ display: 'none' }}
+          disabled={props.disabled}
+          accept={props.accept}
+          multiple={props.multiple}
+          {...(props.directory ? { webkitdirectory: 'webkitdirectory' } : {})}
+          onChange={handleInputChange}
+        />
+        {renderButton()}
+      </span>
     );
   },
 });
