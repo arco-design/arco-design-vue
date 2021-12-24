@@ -1,65 +1,64 @@
 <template>
   <teleport :to="containerNode" :disabled="!renderToBody">
-    <transition name="fade-drawer" appear>
-      <div
-        v-show="computedVisible"
-        :class="`${prefixCls}-container`"
-        :style="
-          isFixed ? { zIndex } : { zIndex: 'inherit', position: 'absolute' }
-        "
-        v-bind="$attrs"
+    <div
+      v-if="!unmountOnClose || computedVisible || mounted"
+      v-show="computedVisible || mounted"
+      :class="`${prefixCls}-container`"
+      :style="
+        isFixed ? { zIndex } : { zIndex: 'inherit', position: 'absolute' }
+      "
+      v-bind="$attrs"
+    >
+      <transition name="fade-drawer" appear>
+        <div
+          v-if="mask"
+          v-show="computedVisible"
+          :class="`${prefixCls}-mask`"
+          @click="handleMask"
+        />
+      </transition>
+      <transition
+        :name="`slide-${placement}-drawer`"
+        appear
+        @after-enter="handleOpen"
+        @after-leave="handleClose"
       >
-        <transition name="fade-drawer" appear>
-          <div
-            v-if="mask"
-            v-show="computedVisible"
-            :class="`${prefixCls}-mask`"
-            @click="handleMask"
-          />
-        </transition>
-        <transition
-          :name="`slide-${placement}-drawer`"
-          appear
-          @after-enter="handleOpen"
-          @after-leave="handleClose"
-        >
-          <div v-show="computedVisible" :class="prefixCls" :style="style">
-            <div :class="`${prefixCls}-header`">
-              <div :class="`${prefixCls}-title`">
-                <slot name="title">{{ title }}</slot>
-              </div>
-              <div
-                v-if="closable"
-                :class="`${prefixCls}-close-btn`"
-                @click="handleCancel"
-              >
-                <icon-hover>
-                  <icon-close />
-                </icon-hover>
-              </div>
+        <div v-show="computedVisible" :class="prefixCls" :style="style">
+          <div :class="`${prefixCls}-header`">
+            <div :class="`${prefixCls}-title`">
+              <slot name="title">{{ title }}</slot>
             </div>
-            <div :class="`${prefixCls}-body`">
-              <slot />
-            </div>
-            <div v-if="footer" :class="`${prefixCls}-footer`">
-              <slot name="footer">
-                <arco-button v-bind="cancelButtonProps" @click="handleCancel">
-                  {{ cancelText || t('drawer.cancelText') }}
-                </arco-button>
-                <arco-button
-                  type="primary"
-                  :loading="mergedOkLoading"
-                  v-bind="okButtonProps"
-                  @click="handleOk"
-                >
-                  {{ okText || t('drawer.okText') }}
-                </arco-button>
-              </slot>
+            <div
+              v-if="closable"
+              :class="`${prefixCls}-close-btn`"
+              @click="handleCancel"
+            >
+              <icon-hover>
+                <icon-close />
+              </icon-hover>
             </div>
           </div>
-        </transition>
-      </div>
-    </transition>
+          <div :class="`${prefixCls}-body`">
+            <slot />
+          </div>
+          <div v-if="footer" :class="`${prefixCls}-footer`">
+            <slot name="footer">
+              <arco-button v-bind="cancelButtonProps" @click="handleCancel">
+                {{ cancelText || t('drawer.cancelText') }}
+              </arco-button>
+              <arco-button
+                type="primary"
+                :loading="mergedOkLoading"
+                v-bind="okButtonProps"
+                @click="handleOk"
+              >
+                {{ okText || t('drawer.okText') }}
+              </arco-button>
+            </slot>
+          </div>
+        </div>
+      </transition>
+    </div>
   </teleport>
 </template>
 
@@ -179,6 +178,11 @@ export default defineComponent({
       type: Object,
     },
     /**
+     * @zh 关闭时是否卸载节点
+     * @en Whether to uninstall the node when close
+     */
+    unmountOnClose: Boolean,
+    /**
      * @zh 抽屉的宽度（仅在placement为right,left时可用）
      * @en The width of the drawer (only available when placement is right, left)
      */
@@ -285,6 +289,8 @@ export default defineComponent({
     const _okLoading = ref(false);
     const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
 
+    const mounted = ref(computedVisible.value);
+
     const { zIndex } = usePopupManager({ visible: computedVisible });
     const isFixed = computed(() => {
       return containerRef?.value === document.body;
@@ -363,6 +369,7 @@ export default defineComponent({
 
     const handleClose = () => {
       if (!computedVisible.value) {
+        mounted.value = false;
         emit('close');
       }
     };
@@ -381,6 +388,7 @@ export default defineComponent({
         _visible.value = visible;
       }
       if (visible) {
+        mounted.value = true;
         setOverflowHidden();
       } else {
         resetOverflow();
@@ -406,6 +414,7 @@ export default defineComponent({
       prefixCls,
       style,
       t,
+      mounted,
       computedVisible,
       mergedOkLoading,
       zIndex,

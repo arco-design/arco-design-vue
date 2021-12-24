@@ -33,6 +33,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |ok-loading|Whether the ok button is in the loading state|`boolean`|`false`||
 |ok-button-props|Props of confirm button|`object`|`-`|2.9.0|
 |cancel-button-props|Props of cancel button|`object`|`-`|2.9.0|
+|unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`||
 |width|The width of the drawer (only available when placement is right, left)|`number\|string`|`250`||
 |height|The height of the drawer (only available when placement is top, bottom)|`number\|string`|`250`||
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`'body'`||
