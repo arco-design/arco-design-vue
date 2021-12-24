@@ -1,25 +1,25 @@
 ```yaml
 title:
-  zh-CN: 基本用法
-  en-US: Basic Usage
+  zh-CN: 对话框的宽度
+  en-US: Modal width
 ```
 
 ## zh-CN
 
-对话框的基本用法。
+设置 `width="auto"` 可以让对话框自适应宽度
 
 ---
 
 ## en-US
 
-The basic usage of the modal.
+Set `width="auto"` to make the dialog box adapt to the width
 
 ---
 
 ```vue
 <template>
   <a-button @click="handleClick">Open Modal</a-button>
-  <a-modal v-model:visible="visible" @ok="handleOk" @cancel="handleCancel">
+  <a-modal width="auto" v-model:visible="visible" @ok="handleOk" @cancel="handleCancel">
     <template #title>
       Title
     </template>
