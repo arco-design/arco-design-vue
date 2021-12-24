@@ -40,8 +40,12 @@ exports[`<badge> demo: render [max] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
     <!--v-if-->
-  </div><span class=\\"arco-badge-number\\"><span>10+</span></span></span>
+  </div>
+  <!----></span>
 </div>
+<div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+  <!--v-if-->
+</div><span class=\\"arco-badge-number\\"><span>10+</span></span></span></div>
 <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
   <!--v-if-->
 </div><span class=\\"arco-badge-number\\"><span>99+</span></span></span></div>

@@ -189,6 +189,10 @@ export default defineComponent({
           />
         );
       }
+      if (countValue === 0) {
+        return null;
+      }
+
       return (
         <span class={`${prefixCls}-number`} style={mergedStyle}>
           <span>
@@ -199,6 +203,7 @@ export default defineComponent({
         </span>
       );
     };
+
     return () => {
       return (
         <span class={wrapperClassName.value}>

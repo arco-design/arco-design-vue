@@ -19,6 +19,13 @@ If the count is larger than `max-count`, the `${max-count}+` will be displayed. 
 ```vue
 <template>
   <a-space :size="40">
+    <a-badge :max-count="10" :count="0">
+      <a-avatar shape="square">
+        <span>
+          <IconUser />
+        </span>
+      </a-avatar>
+    </a-badge>
     <a-badge :max-count="10" :count="100">
       <a-avatar shape="square">
         <span>
