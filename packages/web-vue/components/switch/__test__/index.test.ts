@@ -5,6 +5,7 @@ describe('Switch', () => {
   test('should emit change event', async () => {
     const wrapper = mount(Switch);
     await wrapper.find('button').trigger('click');
-    expect(wrapper.emitted('change')?.[0]).toEqual([true]);
+    // @ts-ignore
+    expect(wrapper.emitted('change')?.[0]?.[0]).toEqual(true);
   });
 });
