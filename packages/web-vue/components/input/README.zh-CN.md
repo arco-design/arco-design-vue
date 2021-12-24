@@ -29,19 +29,20 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 
 ### `<input>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`string`|`-`|
-|default-value|默认值（非受控状态）|`string`|`''`|
-|size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|allow-clear|是否允许清空输入框|`boolean`|`false`|
-|disabled|是否禁用|`boolean`|`false`|
-|readonly|是否为只读状态|`boolean`|`false`|
-|error|是否为错误状态|`boolean`|`false`|
-|placeholder|提示文字|`string`|`-`|
-|max-length|输入值得最大长度|`number`|`-`|
-|show-word-limit|是否显示字数统计|`boolean`|`false`|
-|word-length|字符长度的计算方法|`(value: string) => number`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|绑定值|`string`|`-`||
+|default-value|默认值（非受控状态）|`string`|`''`||
+|size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|allow-clear|是否允许清空输入框|`boolean`|`false`||
+|disabled|是否禁用|`boolean`|`false`||
+|readonly|是否为只读状态|`boolean`|`false`||
+|error|是否为错误状态|`boolean`|`false`||
+|placeholder|提示文字|`string`|`-`||
+|max-length|输入值得最大长度，errorOnly 属性在 2.12.0 版本添加|`number \| { length: number; errorOnly?: boolean }`|`0`||
+|show-word-limit|是否显示字数统计|`boolean`|`false`||
+|word-length|字符长度的计算方法|`(value: string) => number`|`-`||
+|word-slice|字符截取方法，同 wordLength 一起使用|`(value: string, maxLength: number) => string`|`-`|2.12.0|
 ### `<input>` Events
 
 |事件名|描述|参数|

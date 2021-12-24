@@ -30,8 +30,11 @@
       />
     </resize-observer>
     <slot name="suffix" />
-    <div v-if="maxLength && showWordLimit" :class="`${prefixCls}-word-limit`">
-      {{ getTextLength(computedValue) }}/{{ maxLength }}
+    <div
+      v-if="computedMaxLength && showWordLimit"
+      :class="`${prefixCls}-word-limit`"
+    >
+      {{ valueLength }}/{{ computedMaxLength }}
     </div>
     <div
       v-if="showClearBtn"
@@ -108,10 +111,15 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 输入值的最大长度
-     * @en Maximum length of input value
+     * @zh 输入值的最大长度，errorOnly 属性在 2.12.0 版本添加
+     * @en Maximum length of input value, the errorOnly attribute was added in version 2.12.0
      */
-    maxLength: Number,
+    maxLength: {
+      type: [Number, Object] as PropType<
+        number | { length: number; errorOnly?: boolean }
+      >,
+      default: 0,
+    },
     /**
      * @zh 是否显示字数统计
      * @en Whether to display word count
@@ -144,6 +152,14 @@ export default defineComponent({
      */
     wordLength: {
       type: Function as PropType<(value: string) => number>,
+    },
+    /**
+     * @zh 字符截取方法，同 wordLength 一起使用
+     * @en Character interception method, used together with wordLength
+     * @version 2.12.0
+     */
+    wordSlice: {
+      type: Function as PropType<(value: string, maxLength: number) => string>,
     },
     // for JSX
     onInput: {
@@ -205,30 +221,36 @@ export default defineComponent({
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
-    const getTextLength = (text: string) => {
+    const maxLengthErrorOnly = computed(
+      () => isObject(props.maxLength) && Boolean(props.maxLength.errorOnly)
+    );
+
+    const computedMaxLength = computed(() => {
+      if (isObject(props.maxLength)) {
+        return props.maxLength.length;
+      }
+      return props.maxLength;
+    });
+
+    const getValueLength = (value: string) => {
       if (isFunction(props.wordLength)) {
-        return props.wordLength(text);
+        return props.wordLength(value);
       }
-
-      return text.replace(/\n|\r/g, '').length;
+      return value.length ?? 0;
     };
 
-    const sliceText = (text: string, length: number) => {
-      const chars = text.split('');
-      let count = 0;
-      let result = '';
+    const valueLength = computed(() => getValueLength(computedValue.value));
 
-      for (const char of chars) {
-        result += char;
-        if (!/\n|\r/.test(char)) {
-          count += 1;
-        }
-        if (count === length) {
-          return result;
-        }
+    const mergedError = computed(() => {
+      if (props.error) {
+        return props.error;
       }
-      return result;
-    };
+      return Boolean(
+        computedMaxLength.value &&
+          maxLengthErrorOnly.value &&
+          valueLength.value > computedMaxLength.value
+      );
+    });
 
     const isScroll = ref(false);
 
@@ -243,8 +265,14 @@ export default defineComponent({
     const compositionValue = ref('');
 
     const updateValue = (value: string, inner = true) => {
-      if (props.maxLength && getTextLength(value) > props.maxLength) {
-        value = sliceText(value, props.maxLength);
+      if (
+        computedMaxLength.value &&
+        !maxLengthErrorOnly.value &&
+        getValueLength(value) > computedMaxLength.value
+      ) {
+        value =
+          props.wordSlice?.(value, computedMaxLength.value) ??
+          value.slice(0, computedMaxLength.value);
       }
 
       _value.value = value;
@@ -322,7 +350,7 @@ export default defineComponent({
       {
         [`${prefixCls}-focus`]: focused.value,
         [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-error`]: props.error,
+        [`${prefixCls}-error`]: mergedError.value,
         [`${prefixCls}-scroll`]: isScroll.value,
       },
     ]);
@@ -427,7 +455,8 @@ export default defineComponent({
       mirrorStyle,
       computedValue,
       showClearBtn,
-      getTextLength,
+      valueLength,
+      computedMaxLength,
       getWrapperAttrs,
       getTextareaAttrs,
       handleInput,
