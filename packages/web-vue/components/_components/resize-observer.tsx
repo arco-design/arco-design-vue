@@ -2,12 +2,15 @@ import {
   defineComponent,
   onMounted,
   onUnmounted,
-  onUpdated,
-  getCurrentInstance,
-  ComponentInternalInstance,
+  ref,
+  ComponentPublicInstance,
+  computed,
+  cloneVNode,
+  watch,
 } from 'vue';
 import ResizeObserver from 'resize-observer-polyfill';
-import { findDomNode } from '../_utils/dom';
+import { getFirstComponent } from '../_utils/vue-utils';
+import { isComponentInstance } from '../_utils/is';
 
 export default defineComponent({
   name: 'ResizeObserver',
@@ -21,15 +24,13 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     let resizeObserver: ResizeObserver | null;
 
-    const findElement = (instance: ComponentInternalInstance): HTMLElement => {
-      return findDomNode(instance.vnode);
-    };
+    const componentRef = ref<HTMLElement | ComponentPublicInstance>();
 
-    const findOldElement = (
-      instance: ComponentInternalInstance
-    ): HTMLElement => {
-      return findDomNode(instance.subTree);
-    };
+    const element = computed<HTMLElement>(() =>
+      isComponentInstance(componentRef.value)
+        ? componentRef.value.$el
+        : componentRef.value
+    );
 
     const createResizeObserver = (target: HTMLElement) => {
       if (!target) return;
@@ -47,25 +48,14 @@ export default defineComponent({
       }
     };
 
-    onMounted(() => {
-      const instance = getCurrentInstance();
-      if (instance) {
-        const element = findElement(instance);
-        createResizeObserver(element);
-      }
+    watch(element, (_element) => {
+      if (resizeObserver) destroyResizeObserver();
+      if (_element) createResizeObserver(_element);
     });
 
-    onUpdated(() => {
-      const instance = getCurrentInstance();
-      if (instance) {
-        const element = findElement(instance);
-        const oldElement = findOldElement(instance);
-        if (element !== oldElement) {
-          if (resizeObserver) destroyResizeObserver();
-          createResizeObserver(element);
-        }
-      } else {
-        destroyResizeObserver();
+    onMounted(() => {
+      if (element.value) {
+        createResizeObserver(element.value);
       }
     });
 
@@ -74,8 +64,19 @@ export default defineComponent({
     });
 
     return () => {
-      const children = slots.default && slots.default();
-      return children && children.length ? children[0] : null;
+      const firstChild = getFirstComponent(slots.default?.() ?? []);
+
+      if (firstChild) {
+        return cloneVNode(
+          firstChild,
+          {
+            ref: componentRef,
+          },
+          true
+        );
+      }
+
+      return null;
     };
   },
 });
