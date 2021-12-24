@@ -64,7 +64,7 @@
       background-color: @upload-drag-color-bg_hover;
       border-color: @upload-drag-color-border_hover;
 
-      .@{upload-prefix-cls}-button-drag-text {
+      .@{upload-prefix-cls}-drag-text {
         color: @upload-drag-color-text_hover;
       }
 
@@ -88,7 +88,7 @@
     }
 
     .@{upload-prefix-cls}-tip {
-      margin-top: 0;
+      margin-top: @upload-drag-tip-margin-top;
     }
   }
 
@@ -116,27 +116,27 @@
   }
 
   &-disabled {
-    .@{upload-prefix-cls}-button-picture-card,
-    .@{upload-prefix-cls}-button-picture-card:hover {
+    .@{upload-prefix-cls}-picture-card,
+    .@{upload-prefix-cls}-picture-card:hover {
       color: @upload-picture-color-text_disabled;
       background-color: @upload-picture-color-bg_disabled;
       border-color: @upload-picture-color-border_disabled;
       cursor: not-allowed;
     }
 
-    .@{upload-prefix-cls}-button-drag,
-    .@{upload-prefix-cls}-button-drag:hover {
+    .@{upload-prefix-cls}-drag,
+    .@{upload-prefix-cls}-drag:hover {
       background-color: @upload-drag-color-bg_disabled;
       border-color: @upload-drag-color-border_disabled;
       cursor: not-allowed;
 
       .@{prefix}-icon-plus,
-      .@{upload-prefix-cls}-button-drag-text {
+      .@{upload-prefix-cls}-drag-text {
         color: @upload-drag-color-text_disabled;
       }
     }
 
-    .@{upload-prefix-cls}-button-tip {
+    .@{upload-prefix-cls}-tip {
       color: @upload-drag-color-text_disabled;
     }
   }
@@ -174,24 +174,12 @@
   &-upload {
     font-size: @upload-text-item-size-reupload-icon;
     transition: all @transition-duration-2 ease;
+    color: @upload-text-item-color-reupload-icon;
+    cursor: pointer;
 
     &:active,
     &:hover {
       color: @upload-text-item-color-reupload-icon_hover;
-    }
-  }
-}
-
-.@{upload-prefix-cls}-progress {
-  line-height: @upload-text-item-size-status-icon;
-
-  &:hover {
-    .@{prefix}-progress-circle-mask {
-      stroke: @upload-text-item-color-progress-bg_hover;
-    }
-
-    .@{prefix}-progress-circle-path {
-      stroke: @upload-text-item-color-progress-bg_hover_active;
     }
   }
 }
@@ -211,7 +199,7 @@
   }
 
   /*** listtype is text ****/
-  &-item-done &-item-text-file-icon {
+  &-item-done &-item-file-icon {
     color: @upload-text-item-color-file-icon_success;
   }
 
@@ -229,7 +217,7 @@
       box-sizing: border-box;
       width: 100%;
       padding: @upload-text-item-padding-vertical 0;
-      padding-right: @upload-text-item-padding-progress-right;
+      padding-right: @upload-text-item-padding-right;
       padding-left: @upload-text-item-padding-left;
       overflow: hidden;
       font-size: @upload-text-item-font-size;
@@ -287,6 +275,17 @@
     & .@{upload-prefix-cls}-progress {
       margin-left: auto;
       position: relative;
+      line-height: @upload-text-item-size-status-icon;
+
+      &:hover {
+        .@{prefix}-progress-circle-bg {
+          stroke: @upload-text-item-color-progress-bg_hover;
+        }
+
+        .@{prefix}-progress-circle-bar {
+          stroke: @upload-text-item-color-progress-bg_hover_active;
+        }
+      }
     }
 
     &-operation {
@@ -294,7 +293,7 @@
       color: @upload-text-item-color-remove-icon;
       font-size: @upload-text-item-size-operation-icon;
 
-      .@{upload-prefix-cls}-list-remove-icon {
+      .@{upload-prefix-cls}-icon-remove {
         font-size: inherit;
       }
     }
@@ -312,6 +311,20 @@
       .@{upload-prefix-cls}-list-item-name-link,
     .@{upload-prefix-cls}-list-item-error .@{upload-prefix-cls}-list-item-name {
       color: @upload-text-item-color-text_error;
+    }
+
+    .@{upload-prefix-cls}-list-item-done
+      .@{upload-prefix-cls}-list-item-name
+      when
+      not(@upload-text-item-color-text_success = unset) {
+      color: @upload-text-item-color-text_success;
+    }
+
+    .@{upload-prefix-cls}-list-item-uploading
+      .@{upload-prefix-cls}-list-item-name
+      when
+      not(@upload-text-item-color-text_uploading = unset) {
+      color: @upload-text-item-color-text_uploading;
     }
   }
 
@@ -332,7 +345,7 @@
     display: inline-block;
     margin-top: 0;
     margin-right: @upload-picture-item-margin-right;
-    margin-bottom: @upload-picture-item-margin-right;
+    margin-bottom: @upload-picture-item-margin-bottom;
     padding-right: 0;
     overflow: hidden;
     vertical-align: top;
@@ -407,19 +420,35 @@
   }
 
   // picture-list
-  &-type-picture-list {
-    .@{upload-prefix-cls}-list-item-error .@{upload-prefix-cls}-list-item-text {
-      background-color: rgba(
-        @upload-picture-text-item-color-bg_error,
-        @upload-picture-text-item-opacity-bg_error
-      );
+  &-type-picture {
+    .@{upload-prefix-cls}-list-item-content {
+      padding-top: @upload-picture-text-item-padding-vertical;
+      padding-bottom: @upload-picture-text-item-padding-vertical;
     }
 
     .@{upload-prefix-cls}-list-item-error
-      .@{upload-prefix-cls}-list-item-text-name-link,
+      .@{upload-prefix-cls}-list-item-content {
+      background-color: @upload-picture-text-item-color-bg_error;
+    }
+
     .@{upload-prefix-cls}-list-item-error
-      .@{upload-prefix-cls}-list-item-text-name {
+      .@{upload-prefix-cls}-list-item-name-link,
+    .@{upload-prefix-cls}-list-item-error .@{upload-prefix-cls}-list-item-name {
       color: @upload-picture-text-item-color-text_error;
+    }
+
+    .@{upload-prefix-cls}-list-item-done
+      .@{upload-prefix-cls}-list-item-name
+      when
+      not(@upload-picture-text-item-color-text_success = unset) {
+      color: @upload-picture-text-item-color-text_success;
+    }
+
+    .@{upload-prefix-cls}-list-item-uploading
+      .@{upload-prefix-cls}-list-item-name
+      when
+      not(@upload-picture-text-item-color-text_uploading = unset) {
+      color: @upload-picture-text-item-color-text_uploading;
     }
   }
 }

@@ -184,13 +184,22 @@ export const loopDirectory = (
     if (item?.isDirectory) {
       // item 是个文件夹
       const reader = (item as FileSystemDirectoryEntry).createReader();
-      reader.readEntries((entries) => {
-        restFileCount -= 1;
-        if (entries.length === 0) {
-          onFinish();
-        }
-        entries.forEach(_loopDirectory);
-      });
+      let flag = false;
+      const readEntries = () => {
+        reader.readEntries((entries) => {
+          if (!flag) {
+            restFileCount -= 1;
+            flag = true;
+          }
+          if (entries.length === 0) {
+            onFinish();
+          } else {
+            readEntries(); // the maximum files read using readEntries is 100
+            entries.forEach(_loopDirectory);
+          }
+        });
+      };
+      readEntries();
       return;
     }
 

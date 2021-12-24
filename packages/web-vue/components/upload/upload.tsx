@@ -368,11 +368,13 @@ export default defineComponent({
     const checkFileList = (fileList?: FileItem[]) => {
       fileMap.clear();
       const newFileList = fileList?.map((data, index) => {
+        const status = data.status ?? 'done';
         const fileItem = reactive({
           ...data,
           uid: data.uid ?? `${Date.now()}${index}`,
-          status: data.status ?? 'done',
-          percent: data.percent ?? (data.status === 'error' ? 0 : 1),
+          status,
+          percent:
+            data.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1),
         });
         fileMap.set(fileItem.uid, fileItem);
         return fileItem;
