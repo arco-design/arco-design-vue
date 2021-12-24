@@ -16,6 +16,10 @@ description: Mutually exclusive operation controls, users can turn on or turn of
 
 @import ./__demo__/disabled.md
 
+@import ./__demo__/color.md
+
+@import ./__demo__/value.md
+
 @import ./__demo__/loading.md
 
 @import ./__demo__/text.md
@@ -25,19 +29,23 @@ description: Mutually exclusive operation controls, users can turn on or turn of
 
 ### `<switch>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`boolean`|`-`|
-|default-checked|Default selected state (uncontrolled state)|`boolean`|`false`|
-|disabled|Whether to disable|`boolean`|`false`|
-|loading|Whether it is loading state|`boolean`|`false`|
-|type|Type of switch|`'circle' \| 'round' \| 'line'`|`'circle'`|
-|size|Size of switch|`'small' \| 'medium'`|`'medium'`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`string\|number\|boolean`|`-`||
+|default-checked|Default selected state (uncontrolled state)|`boolean`|`false`||
+|disabled|Whether to disable|`boolean`|`false`||
+|loading|Whether it is loading state|`boolean`|`false`||
+|type|Type of switch|`'circle' \| 'round' \| 'line'`|`'circle'`||
+|size|Size of switch|`'small' \| 'medium'`|`'medium'`||
+|checked-value|Value when checked|`string\|number\|boolean`|`true`|2.12.0|
+|unchecked-value|Value when unchecked|`string\|number\|boolean`|`false`|2.12.0|
+|checked-color|The color of the switch when checked|`string`|`-`|2.12.0|
+|unchecked-color|The color of the switch when unchecked|`string`|`-`|2.12.0|
 ### `<switch>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|checked: `boolean`|
+|change|Trigger when the value changes|value: `union`|
 ### `<switch>` Slots
 
 |Slot Name|Description|Parameters|
