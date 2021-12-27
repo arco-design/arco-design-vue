@@ -134,7 +134,7 @@ export default defineComponent({
 
     return () => (
       <td class={cls.value} style={style.value}>
-        <span class={`${prefixCls}-cell`}>{renderContent()}</span>
+        <span>{renderContent()}</span>
       </td>
     );
   },

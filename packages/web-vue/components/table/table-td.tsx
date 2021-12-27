@@ -119,6 +119,7 @@ export default defineComponent({
             `${prefixCls}-cell`,
             {
               [`${prefixCls}-cell-fixed-expand`]: props.isFixedExpand,
+              [`${prefixCls}-cell-expand-icon`]: props.showExpandBtn,
               [`${prefixCls}-cell-text-ellipsis`]: props.column?.ellipsis,
             },
           ]}
@@ -132,7 +133,7 @@ export default defineComponent({
             />
           )}
           {props.showExpandBtn && (
-            <span style={{ display: 'inline-flex', marginRight: '6px' }}>
+            <span class={`${prefixCls}-cell-inline-icon`}>
               {slots.expandBtn?.()}
             </span>
           )}
