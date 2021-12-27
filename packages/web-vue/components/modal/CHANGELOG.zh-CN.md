@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.12.2
+
+`2021-12-27`
+
+### 🐛 问题修复
+
+- 修复 modalStyle 失效的问题 ([#459](https://github.com/arco-design/arco-design-vue/pull/459))
+- 修复 flex 布局导致垂直居中且超出高度显示不全的问题 ([#459](https://github.com/arco-design/arco-design-vue/pull/459))
+
+
 ## 2.12.0
 
 `2021-12-24`

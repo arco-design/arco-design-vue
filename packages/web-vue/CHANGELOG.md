@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.12.2
+
+`2021-12-27`
+
+### 🐛 BugFix
+
+- **modal:** Fix the problem of invalid modalStyle ([#459](https://github.com/arco-design/arco-design-vue/pull/459))
+- **modal:** Fix the problem that the flex layout causes vertical centering and incomplete display beyond the height ([#459](https://github.com/arco-design/arco-design-vue/pull/459))
+
+
 ## 2.12.1
 
 `2021-12-24`
