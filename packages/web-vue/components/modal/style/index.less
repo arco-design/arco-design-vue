@@ -25,16 +25,24 @@
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   overflow: auto;
 
   &&-align-center {
-    align-items: center;
+    white-space: nowrap;
+    text-align: center;
+
+    &::after {
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+      content: '';
+    }
 
     .@{modal-prefix-cls} {
       top: 0;
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 }
@@ -43,6 +51,7 @@
   position: relative;
   top: @modal-margin-top;
   width: @modal-default-size-width;
+  margin: 0 auto;
   line-height: @line-height-base;
   white-space: initial;
   text-align: left;

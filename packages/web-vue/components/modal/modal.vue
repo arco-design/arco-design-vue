@@ -460,7 +460,7 @@ export default defineComponent({
 
     const mergedModalStyle = computed(() => {
       const style: CSSProperties = {
-        ...(props.maskStyle ?? {}),
+        ...(props.modalStyle ?? {}),
       };
       if (props.width) {
         style.width = isNumber(props.width) ? `${props.width}px` : props.width;
