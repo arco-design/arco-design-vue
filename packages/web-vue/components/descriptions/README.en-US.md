@@ -36,8 +36,8 @@ description: Generally used for the information display of the detail page.
 
 |Slot Name|Description|Parameters|
 |---|---|---|
-|value|Data value|value: `string`|
-|label|Data label|label: `string`|
+|value|Data value|value: `string`<br>index: `number`<br>data: `DescData`|
+|label|Data label|label: `string`<br>index: `number`<br>data: `DescData`|
 |title|Title|-|
 
 
