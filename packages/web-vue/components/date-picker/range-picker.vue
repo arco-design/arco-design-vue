@@ -22,7 +22,7 @@
         :visible="panelVisible"
         :error="error"
         :disabled="disabled"
-        :editable="!readonly"
+        :readonly="readonly"
         :allow-clear="allowClear"
         :placeholder="computedPlaceholder"
         :input-value="inputValue"
