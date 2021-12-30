@@ -27,12 +27,13 @@ description: 栅格可以有效的保证页面的一致性、逻辑性、加强�
 
 ### `<row>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|gutter|栅格间隔，单位是`px` 栅格间隔。可传入响应式对象写法 { xs: 4, sm: 6, md: 12}，传入数组 [ 水平间距， 垂直间距 ] 来设置两个方向。|`number\| Partial<Record<'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs', number>>\| GridRowGutter[]`|`0`|
-|justify|水平对齐方式 (`justify-content`)|`'start' \| 'center' \| 'end' \| 'space-around' \| 'space-between'`|`'start'`|
-|align|竖直对齐方式 ( `align-items` )|`'start' \| 'center' \| 'end' \| 'stretch'`|`'start'`|
-|div|开启这个选项`Row`和`Col`都会被当作div而不会附带任何Grid相关的类和样式|`boolean`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|gutter|栅格间隔，单位是`px` 栅格间隔。可传入响应式对象写法 { xs: 4, sm: 6, md: 12}，传入数组 [ 水平间距， 垂直间距 ] 来设置两个方向。|`number\| Partial<Record<'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs', number>>\| GridRowGutter[]`|`0`||
+|justify|水平对齐方式 (`justify-content`)|`'start' \| 'center' \| 'end' \| 'space-around' \| 'space-between'`|`'start'`||
+|align|竖直对齐方式 ( `align-items` )|`'start' \| 'center' \| 'end' \| 'stretch'`|`'start'`||
+|div|开启这个选项`Row`和`Col`都会被当作div而不会附带任何Grid相关的类和样式|`boolean`|`false`||
+|wrap|`Col` 是否支持换行|`boolean`|`true`|2.13.0|
 
 
 

@@ -29,12 +29,13 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 ### `<row>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|gutter|Grid interval in `px`. Pass in the responsive object like {xs: 4, sm: 6, md: 12}. Pass in the array [horizontal spacing, vertical spacing] to set two directions.|`number\| Partial<Record<'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs', number>>\| GridRowGutter[]`|`0`|
-|justify|Horizontal alignment (`justify-content`)|`'start' \| 'center' \| 'end' \| 'space-around' \| 'space-between'`|`'start'`|
-|align|Vertical alignment (`align-items`)|`'start' \| 'center' \| 'end' \| 'stretch'`|`'start'`|
-|div|Enabling this option `Row` and `Col` will be treated as divs without any Grid-related classes and styles|`boolean`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|gutter|Grid interval in `px`. Pass in the responsive object like {xs: 4, sm: 6, md: 12}. Pass in the array [horizontal spacing, vertical spacing] to set two directions.|`number\| Partial<Record<'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs', number>>\| GridRowGutter[]`|`0`||
+|justify|Horizontal alignment (`justify-content`)|`'start' \| 'center' \| 'end' \| 'space-around' \| 'space-between'`|`'start'`||
+|align|Vertical alignment (`align-items`)|`'start' \| 'center' \| 'end' \| 'stretch'`|`'start'`||
+|div|Enabling this option `Row` and `Col` will be treated as divs without any Grid-related classes and styles|`boolean`|`false`||
+|wrap|Whether `Col` can wrap onto multiple lines|`boolean`|`true`|2.13.0|
 
 
 
