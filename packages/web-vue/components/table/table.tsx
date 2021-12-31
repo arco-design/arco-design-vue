@@ -9,7 +9,13 @@ import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
-import { isArray, isFunction, isObject } from '../_utils/is';
+import {
+  isArray,
+  isFunction,
+  isNumber,
+  isObject,
+  isString,
+} from '../_utils/is';
 import type {
   Filters,
   Sorter,
@@ -367,7 +373,7 @@ export default defineComponent({
       return { ...DEFAULT_BORDERED, wrapper: props.bordered };
     });
 
-    // 获取滚动信息
+    // whether to scroll
     const isScroll = computed(() => {
       const x = Boolean(props.scroll?.x);
       const y = Boolean(props.scroll?.y);
@@ -426,29 +432,29 @@ export default defineComponent({
       ['tl', 'top', 'tr'].includes(props.pagePosition)
     );
 
-    // 获取固定列信息
-    const getFixedTable = () => {
-      let hasLeftFixedColumn = false;
-      let hasRightFixedColumn = false;
-      if (props.rowSelection?.fixed || props.expandable?.fixed) {
-        hasLeftFixedColumn = true;
-      }
+    const hasLeftFixedColumn = ref(false);
+    const hasRightFixedColumn = ref(false);
 
+    watchEffect(() => {
+      let _hasLeftFixedColumn = false;
+      let _hasRightFixedColumn = false;
+      if (props.rowSelection?.fixed || props.expandable?.fixed) {
+        _hasLeftFixedColumn = true;
+      }
       for (const column of dataColumns.value) {
         if (column.fixed === 'left') {
-          hasLeftFixedColumn = true;
+          _hasLeftFixedColumn = true;
         } else if (column.fixed === 'right') {
-          hasRightFixedColumn = true;
+          _hasRightFixedColumn = true;
         }
       }
-
-      return {
-        hasLeftFixedColumn,
-        hasRightFixedColumn,
-      };
-    };
-
-    const { hasLeftFixedColumn, hasRightFixedColumn } = getFixedTable();
+      if (_hasLeftFixedColumn !== hasLeftFixedColumn.value) {
+        hasLeftFixedColumn.value = _hasLeftFixedColumn;
+      }
+      if (_hasRightFixedColumn !== hasRightFixedColumn.value) {
+        hasRightFixedColumn.value = _hasRightFixedColumn;
+      }
+    });
 
     const hasEllipsis = computed(() => {
       for (const col of dataColumns.value) {
@@ -470,20 +476,6 @@ export default defineComponent({
       return filters;
     });
 
-    // External sorting, priority use
-    const outerSorter = computed((): Sorter => {
-      for (const item of dataColumns.value) {
-        if (item.dataIndex && item.sortable?.sortOrder) {
-          // Take the first existing collation
-          return {
-            filed: item.dataIndex,
-            direction: item.sortable.sortOrder,
-          };
-        }
-      }
-      return {};
-    });
-
     const getDefaultFilters = () => {
       const filters: Filters = {};
       for (const item of dataColumns.value) {
@@ -496,8 +488,8 @@ export default defineComponent({
 
     const getDefaultSorter = (): Sorter => {
       for (const item of dataColumns.value) {
+        // get first enabled sorter
         if (item.dataIndex && item.sortable?.defaultSortOrder) {
-          // 取第一个存在的排序规则
           return {
             filed: item.dataIndex,
             direction: item.sortable.defaultSortOrder,
@@ -515,10 +507,25 @@ export default defineComponent({
       ...outerFilters.value,
     }));
 
-    const computedSorter = computed<Sorter>(() => ({
-      ..._sorter.value,
-      ...outerSorter.value,
-    }));
+    const computedSorter = computed<Sorter>(() => {
+      for (const item of dataColumns.value) {
+        if (item.dataIndex && item.sortable) {
+          // Take the first existing collation
+          const direction = isString(item.sortable.sortOrder)
+            ? item.sortable.sortOrder
+            : _sorter.value.filed === item.dataIndex
+            ? _sorter.value.direction
+            : '';
+          if (direction) {
+            return {
+              filed: item.dataIndex,
+              direction,
+            };
+          }
+        }
+      }
+      return {} as Sorter;
+    });
 
     const handleFilterChange = (
       dataIndex: string,
@@ -684,36 +691,40 @@ export default defineComponent({
     const containerRef = ref<HTMLDivElement>();
     const containerScrollLeft = ref(0);
 
-    const getBodyScrollPosition = () => {
-      let alignLeft = true;
-      let alignRight = true;
+    const alignLeft = ref(true);
+    const alignRight = ref(true);
+
+    const setAlignPosition = () => {
+      let _alignLeft = true;
+      let _alignRight = true;
 
       const scrollContainer = isScroll.value.y
         ? tbodyRef.value
         : containerRef.value;
 
       if (scrollContainer) {
-        alignLeft = containerScrollLeft.value === 0;
-        alignRight =
+        _alignLeft = containerScrollLeft.value === 0;
+        _alignRight =
           containerScrollLeft.value + scrollContainer.offsetWidth >=
           scrollContainer.scrollWidth;
       }
 
-      return {
-        alignLeft,
-        alignRight,
-      };
+      if (_alignLeft !== alignLeft.value) {
+        alignLeft.value = _alignLeft;
+      }
+      if (_alignRight !== alignRight.value) {
+        alignRight.value = _alignRight;
+      }
     };
 
     const getTableScrollCls = () => {
-      const { alignLeft, alignRight } = getBodyScrollPosition();
-      if (alignLeft && alignRight) {
+      if (alignLeft.value && alignRight.value) {
         return `${prefixCls}-scroll-position-both`;
       }
-      if (alignLeft) {
+      if (alignLeft.value) {
         return `${prefixCls}-scroll-position-left`;
       }
-      if (alignRight) {
+      if (alignRight.value) {
         return `${prefixCls}-scroll-position-right`;
       }
       return `${prefixCls}-scroll-position-middle`;
@@ -721,10 +732,10 @@ export default defineComponent({
 
     const getTableFixedCls = () => {
       const cls = [];
-      if (hasLeftFixedColumn) {
+      if (hasLeftFixedColumn.value) {
         cls.push(`${prefixCls}-has-fixed-col-left`);
       }
-      if (hasRightFixedColumn) {
+      if (hasRightFixedColumn.value) {
         cls.push(`${prefixCls}-has-fixed-col-right`);
       }
       return cls;
@@ -738,6 +749,7 @@ export default defineComponent({
       if (isScroll.value.y && theadRef.value) {
         theadRef.value.scrollLeft = target.scrollLeft;
       }
+      setAlignPosition();
     };
 
     const handleRowClick = (record: TableData) => {
@@ -754,7 +766,8 @@ export default defineComponent({
 
     const getOperations = () => {
       const operations: TableOperationColumn[] = [];
-      const hasFixedColumn = hasLeftFixedColumn || hasRightFixedColumn;
+      const hasFixedColumn =
+        hasLeftFixedColumn.value || hasRightFixedColumn.value;
       let expand: TableOperationColumn | undefined;
       let selection: TableOperationColumn | undefined;
 
@@ -762,7 +775,7 @@ export default defineComponent({
         expand = {
           name: 'expand',
           title: props.expandable.title,
-          // width: props.expandable.width ?? 40,
+          width: props.expandable.width,
           fixed: props.expandable.fixed || hasFixedColumn,
         };
         operations.push(expand);
@@ -772,7 +785,7 @@ export default defineComponent({
         selection = {
           name: 'selection',
           title: props.rowSelection.title,
-          // width: props.rowSelection.width ?? 40,
+          width: props.rowSelection.width,
           fixed: props.rowSelection.fixed || hasFixedColumn,
         };
         operations.push(selection);
@@ -865,6 +878,7 @@ export default defineComponent({
       if (hasScrollBar.value !== _hasScrollBar) {
         hasScrollBar.value = _hasScrollBar;
       }
+      setAlignPosition();
     };
 
     onMounted(() => {
@@ -1249,7 +1263,9 @@ export default defineComponent({
             ) : (
               <Tr isExpandRow key={`${currentKey}-expand`}>
                 <Td
-                  isFixedExpand={hasLeftFixedColumn || hasRightFixedColumn}
+                  isFixedExpand={
+                    hasLeftFixedColumn.value || hasRightFixedColumn.value
+                  }
                   containerWidth={containerRef.value?.offsetWidth}
                   colSpan={dataColumns.value.length + operations.value.length}
                 >
