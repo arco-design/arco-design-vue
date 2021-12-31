@@ -29,7 +29,8 @@ export default {
   data() {
     return {
       expandable: {
-        title: 'Expand'
+        title: 'Expand',
+        width: 80
       },
       scroll: {
         x: 2000,

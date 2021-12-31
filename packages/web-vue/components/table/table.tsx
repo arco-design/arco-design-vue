@@ -3,9 +3,17 @@ import type {
   CSSProperties,
   PropType,
   Slot,
-  VNode,
 } from 'vue';
-import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  toRefs,
+  watch,
+  watchEffect,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
@@ -151,11 +159,11 @@ export default defineComponent({
       type: Object as PropType<TableExpandable>,
     },
     /**
-     * @zh 表格的滚动属性配置
-     * @en Scrolling attribute configuration of the table
+     * @zh 表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。
+     * @en Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values.
      */
     scroll: {
-      type: Object as PropType<{ x?: number; y?: number }>,
+      type: Object as PropType<{ x?: number | string; y?: number | string }>,
     },
     /**
      * @zh 分页的属性配置
@@ -224,6 +232,26 @@ export default defineComponent({
     components: {
       type: Object as PropType<TableComponents>,
     },
+    /**
+     * @zh 数据懒加载函数，传入时开启懒加载功能
+     * @en Data lazy loading function, open the lazy loading function when it is passed in
+     * @version 2.13.0
+     */
+    loadMore: {
+      type: Function as PropType<
+        (record: TableData, done: (children?: TableData[]) => void) => void
+      >,
+    },
+    /**
+     * @zh 筛选图标是否左对齐
+     * @en Whether the filter icon is aligned to the left
+     * @version 2.13.0
+     */
+    filterIconAlignLeft: {
+      type: Boolean,
+      default: false,
+    },
+
     // for JSX
     onExpand: {
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
@@ -328,6 +356,12 @@ export default defineComponent({
      */
     'pageSizeChange',
     /**
+     * @zh 表格数据发生变化时触发
+     * @param {TableData[]} data
+     * @param {any} extra
+     */
+    'change',
+    /**
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
      * @param {TableData} record
@@ -351,6 +385,8 @@ export default defineComponent({
    * @zh 展开行图标
    * @en Expand row icon
    * @slot expand-icon
+   * @binding {boolean} expanded
+   * @binding {TableData} record
    */
   /**
    * @zh 展开行内容
@@ -538,6 +574,7 @@ export default defineComponent({
       _filters.value = newFilters;
 
       emit('filterChange', dataIndex, filteredValues);
+      handleChange('filter');
     };
 
     const handleSorterChange = (
@@ -554,6 +591,7 @@ export default defineComponent({
       _sorter.value = newSorter;
 
       emit('sorterChange', dataIndex, direction);
+      handleChange('sorter');
     };
 
     const getColumnByDataIndex = (dataIndex: string) => {
@@ -625,32 +663,59 @@ export default defineComponent({
       emit
     );
 
-    const hasSubTree = ref(false);
+    const lazyLoadData = reactive<Record<string, TableData[]>>({});
 
-    const processData = (origin: TableData[]) => {
-      let data = isArray(origin) ? [...origin] : [];
-      if (data.length > 0) {
-        for (const field of Object.keys(computedFilters.value)) {
-          const filteredValues = computedFilters.value[field];
-          const column = getColumnByDataIndex(field);
-          if (
-            column &&
-            column.filterable?.filter &&
-            filteredValues.length > 0
-          ) {
-            data = data.filter((record) => {
-              const isValid = column.filterable?.filter(filteredValues, record);
-              if (isValid && record.children) {
-                if (!hasSubTree.value) {
-                  hasSubTree.value = true;
-                }
-                record.children = processData(record.children);
-              }
-              return isValid;
-            });
+    const addLazyLoadData = (
+      children: TableData[] | undefined,
+      record: TableData
+    ) => {
+      if (children) {
+        lazyLoadData[record[props.rowKey]] = children;
+      }
+    };
+
+    const isValidRecord = (record: TableData) => {
+      for (const field of Object.keys(computedFilters.value)) {
+        const filteredValues = computedFilters.value[field];
+        const column = getColumnByDataIndex(field);
+        if (column && column.filterable?.filter && filteredValues.length > 0) {
+          const result = column.filterable?.filter(filteredValues, record);
+          if (!result) {
+            return result;
           }
         }
+      }
+      return true;
+    };
 
+    const processData = (origin: TableData[]) => {
+      const travel = (data: TableData[]) => {
+        const result: TableData[] = [];
+
+        for (const record of data) {
+          if (isValidRecord(record)) {
+            // add lazy load children
+            if (
+              props.loadMore &&
+              !record.isLeaf &&
+              !record.children &&
+              lazyLoadData[record[props.rowKey]]
+            ) {
+              record.children = lazyLoadData[record[props.rowKey]];
+            }
+
+            if (record.children) {
+              record.children = travel(record.children);
+            }
+            result.push(record);
+          }
+        }
+        return result;
+      };
+
+      const data = travel(isArray(origin) ? origin : []);
+
+      if (data.length > 0) {
         if (computedSorter.value.filed) {
           const column = getColumnByDataIndex(computedSorter.value.filed);
           if (column) {
@@ -677,6 +742,17 @@ export default defineComponent({
 
     const { page, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, emit);
+
+    const handleChange = (type: 'pagination' | 'sorter' | 'filter') => {
+      const extra = {
+        type,
+        page: page.value,
+        pageSize: pageSize.value,
+        sorter: computedSorter.value,
+        filters: computedFilters.value,
+      };
+      emit('change', flattenData.value, extra);
+    };
 
     const flattenData = computed(() => {
       if (props.pagination && processedData.value.length > pageSize.value) {
@@ -801,11 +877,14 @@ export default defineComponent({
     const operations = computed(() => getOperations());
 
     const contentStyle = computed(() => {
-      const style: CSSProperties = {};
       if (isScroll.value.x && flattenData.value.length > 0) {
-        style.width = `${props.scroll?.x}px`;
+        return {
+          width: isNumber(props.scroll?.x)
+            ? `${props.scroll?.x}px`
+            : props.scroll?.x,
+        };
       }
-      return style;
+      return undefined;
     });
 
     const cls = computed(() => [
@@ -885,124 +964,250 @@ export default defineComponent({
       hasScrollBar.value = isTbodyHasScrollBar();
     });
 
-    const renderContent = () => {
-      if (
-        (isScroll.value.y || isVirtualList.value) &&
-        flattenData.value.length > 0
-      ) {
-        const style: CSSProperties = {
-          overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
-        };
-
-        return (
-          <>
-            {props.showHeader && (
-              <div ref={theadRef} class={`${prefixCls}-header`} style={style}>
-                <table
-                  cellpadding={0}
-                  cellspacing={0}
-                  style={contentStyle.value}
-                >
-                  <ColGroup
-                    dataColumns={dataColumns.value}
-                    operations={operations.value}
-                  />
-                  {renderHeader()}
-                </table>
-              </div>
-            )}
-            <ResizeObserver onResize={handleTbodyResize}>
-              {isVirtualList.value ? (
-                renderVirtualListBody()
-              ) : (
-                <div
-                  ref={tbodyRef}
-                  class={`${prefixCls}-body`}
-                  style={{ maxHeight: `${props.scroll?.y}px` }}
-                  onScroll={handleScroll}
-                >
-                  <table
-                    cellpadding={0}
-                    cellspacing={0}
-                    style={contentStyle.value}
-                  >
-                    <ColGroup
-                      dataColumns={dataColumns.value}
-                      operations={operations.value}
-                    />
-                    {renderBody()}
-                  </table>
-                </div>
-              )}
-            </ResizeObserver>
-          </>
-        );
-      }
-
-      return (
-        <table cellpadding={0} cellspacing={0} style={contentStyle.value}>
-          <ColGroup
-            dataColumns={dataColumns.value}
-            operations={operations.value}
-          />
-          {props.showHeader && renderHeader()}
-          {renderBody()}
-        </table>
-      );
-    };
-
-    const renderTable = (content?: Slot) => (
-      <>
-        <div
-          ref={containerRef}
-          class={[`${prefixCls}-container`, tableCls.value]}
-          onScroll={handleScroll}
-        >
-          <div class={`${prefixCls}-content`}>
-            {content ? (
-              <table
-                cellpadding={0}
-                cellspacing={0}
-                style={isScroll.value.y ? undefined : contentStyle.value}
-              >
-                {content()}
-              </table>
-            ) : (
-              renderContent()
-            )}
-          </div>
-        </div>
-        {slots.footer && (
-          <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
-        )}
-      </>
-    );
-
     const spinProps = computed(() =>
       isObject(props.loading) ? props.loading : { loading: props.loading }
     );
 
-    const renderPagination = () => {
-      const paginationProps = isObject(props.pagination)
-        ? omit(props.pagination, [
-            'current',
-            'pageSize',
-            'defaultCurrent',
-            'defaultPageSize',
-          ])
-        : {};
+    const renderEmpty = () => {
+      return (
+        <Tr isEmptyRow>
+          <Td colSpan={dataColumns.value.length + operations.value.length}>
+            {slots.empty?.() ?? <Empty />}
+          </Td>
+        </Tr>
+      );
+    };
+
+    const renderExpandContent = (record: TableData) => {
+      if (isFunction(record.expand)) {
+        return record.expand();
+      }
+      if (record.expand) {
+        return record.expand;
+      }
+      if (slots['expand-row']) {
+        return slots['expand-row']({ record });
+      }
+      if (props.expandable?.expandedRowRender) {
+        return props.expandable.expandedRowRender(record);
+      }
+
+      return undefined;
+    };
+
+    // [row, column]
+    const tableSpan = computed(() => {
+      const data: Record<string, [number, number]> = {};
+      flattenData.value.forEach((record, rowIndex) => {
+        dataColumns.value.forEach((column, columnIndex) => {
+          const { rowspan = 1, colspan = 1 } =
+            props.spanMethod?.({
+              record,
+              column,
+              rowIndex,
+              columnIndex,
+            }) ?? {};
+          if (rowspan > 1 || colspan > 1) {
+            data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
+          }
+        });
+      });
+
+      return data;
+    });
+
+    const removedCells = computed(() => {
+      const data: string[] = [];
+      for (const indexKey of Object.keys(tableSpan.value)) {
+        const indexArray = indexKey.split('-').map((item) => Number(item));
+        const span = tableSpan.value[indexKey];
+        for (let i = 1; i < span[0]; i++) {
+          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
+          for (let j = 1; j < span[1]; j++) {
+            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
+          }
+        }
+        for (let i = 1; i < span[1]; i++) {
+          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
+        }
+      }
+      return data;
+    });
+
+    const virtualListRef = ref();
+
+    const renderVirtualListBody = () => {
+      return (
+        <VirtualList
+          ref={virtualListRef}
+          class={`${prefixCls}-body`}
+          {...props.virtualListProps}
+          data={flattenData.value}
+          v-slots={{
+            item: ({ item, index }: { item: TableData; index: number }) =>
+              renderRecord(item, index),
+          }}
+        />
+      );
+    };
+
+    const renderExpandBtn = (record: TableData) => {
+      const currentKey = record[rowKey.value];
+      const expanded = expandedRowKeys.value.includes(currentKey);
 
       return (
-        <div class={paginationCls.value}>
-          <Pagination
-            total={processedData.value.length}
-            current={page.value}
-            pageSize={pageSize.value}
-            onChange={handlePageChange}
-            onPageSizeChange={handlePageSizeChange}
-            {...paginationProps}
-          />
-        </div>
+        <button
+          type="button"
+          class={`${prefixCls}-expand-btn`}
+          onClick={(ev: Event) => handleExpand(currentKey)}
+        >
+          {slots['expand-icon']?.({ expanded, record }) ??
+            props.expandable?.icon?.(expanded, record) ??
+            (expanded ? <IconMinus /> : <IconPlus />)}
+        </button>
+      );
+    };
+
+    const renderRecord = (
+      record: TableData,
+      rowIndex: number,
+      { indentSize = 0 }: { indentSize?: number } = {}
+    ): JSX.Element => {
+      const currentKey = record[rowKey.value];
+      const expandContent = renderExpandContent(record);
+      const showExpand = expandedRowKeys.value.includes(currentKey);
+      const hasSubTree = Boolean(
+        record.children || (props.loadMore && !record.isLeaf)
+      );
+      const subTreeHasSubData =
+        record.children?.some((record) => Boolean(record.children)) ?? false;
+
+      return (
+        <>
+          <Tr
+            key={currentKey}
+            checked={selectedRowKeys.value?.indexOf(currentKey) > -1}
+            onClick={(e: Event) => handleRowClick(record)}
+          >
+            {operations.value.map((operation, index) => {
+              const style =
+                isVirtualList.value &&
+                thRefs.value.operation[index]?.offsetWidth
+                  ? {
+                      width: `${thRefs.value.operation[index]?.offsetWidth}px`,
+                    }
+                  : undefined;
+
+              return (
+                <OperationTd
+                  key={`operation-td-${index}`}
+                  style={style}
+                  record={record}
+                  rowKey={rowKey.value}
+                  isRadio={isRadio.value}
+                  hasExpand={Boolean(expandContent)}
+                  operationColumn={operation}
+                  operations={operations.value}
+                  selectedRowKeys={selectedRowKeys.value}
+                  expandedIcon={props.expandable?.icon}
+                  expandedRowKeys={expandedRowKeys.value}
+                  renderExpandBtn={renderExpandBtn}
+                  onSelect={handleSelect}
+                  onExpand={handleExpand}
+                />
+              );
+            })}
+            {dataColumns.value.map((column, index) => {
+              const extraProps =
+                index === 0
+                  ? {
+                      showExpandBtn: hasSubTree,
+                      indentSize: hasSubTree ? indentSize - 20 : indentSize,
+                    }
+                  : {};
+
+              const style =
+                isVirtualList.value &&
+                thRefs.value.data[column.dataIndex]?.offsetWidth
+                  ? {
+                      width: `${
+                        thRefs.value.data[column.dataIndex]?.offsetWidth
+                      }px`,
+                    }
+                  : undefined;
+
+              const cellId = `${rowIndex}-${index}`;
+              const [rowspan, colspan] = tableSpan.value[
+                `${rowIndex}-${index}`
+              ] ?? [1, 1];
+
+              if (removedCells.value.includes(cellId)) {
+                return null;
+              }
+
+              return (
+                <Td
+                  key={`td-${index}`}
+                  style={style}
+                  rowIndex={rowIndex}
+                  record={record}
+                  isSorted={
+                    Boolean(computedSorter.value.filed) &&
+                    column.dataIndex === computedSorter.value.filed
+                  }
+                  column={column}
+                  operations={operations.value}
+                  dataColumns={dataColumns.value}
+                  loadMore={props.loadMore}
+                  addLazyLoadData={addLazyLoadData}
+                  rowSpan={rowspan}
+                  renderExpandBtn={renderExpandBtn}
+                  colSpan={colspan}
+                  {...extraProps}
+                  onClick={(e: Event) => handleCellClick(record, column)}
+                />
+              );
+            })}
+          </Tr>
+          {showExpand &&
+            (hasSubTree ? (
+              record.children?.map((item, index) =>
+                renderRecord(item, index, {
+                  indentSize: subTreeHasSubData
+                    ? indentSize + props.indentSize + 20
+                    : indentSize + props.indentSize,
+                })
+              )
+            ) : (
+              <Tr isExpandRow key={`${currentKey}-expand`}>
+                <Td
+                  isFixedExpand={
+                    hasLeftFixedColumn.value || hasRightFixedColumn.value
+                  }
+                  containerWidth={containerRef.value?.offsetWidth}
+                  colSpan={dataColumns.value.length + operations.value.length}
+                >
+                  {expandContent}
+                </Td>
+              </Tr>
+            ))}
+        </>
+      );
+    };
+
+    const renderBody = () => {
+      const hasSubData = flattenData.value.some((record) =>
+        Boolean(record.children)
+      );
+
+      return (
+        <Tbody>
+          {flattenData.value.length > 0
+            ? flattenData.value.map((record, index) =>
+                renderRecord(record, index, { indentSize: hasSubData ? 20 : 0 })
+              )
+            : renderEmpty()}
+        </Tbody>
       );
     };
 
@@ -1050,6 +1255,7 @@ export default defineComponent({
                   operations={operations.value}
                   dataColumns={dataColumns.value}
                   sortOrder={sortOrder}
+                  filterIconAlignLeft={props.filterIconAlignLeft}
                   filterValue={computedFilters.value[column.dataIndex] ?? []}
                   onSorterChange={handleSorterChange}
                   onFilterChange={handleFilterChange}
@@ -1062,251 +1268,129 @@ export default defineComponent({
       </Thead>
     );
 
-    const renderEmpty = () => {
-      return (
-        <Tr isEmptyRow>
-          <Td colSpan={dataColumns.value.length + operations.value.length}>
-            {slots.empty?.() ?? <Empty />}
-          </Td>
-        </Tr>
-      );
-    };
+    const renderContent = () => {
+      if (
+        isScroll.value.y ||
+        isVirtualList.value ||
+        (isScroll.value.x && flattenData.value.length === 0)
+      ) {
+        const style: CSSProperties = {
+          overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
+        };
 
-    const renderExpandContent = (record: TableData) => {
-      if (isFunction(record.expand)) {
-        return record.expand();
-      }
-      if (record.expand) {
-        return record.expand;
-      }
-      if (slots['expand-row']) {
-        return slots['expand-row']({ record });
-      }
-      if (props.expandable?.expandedRowRender) {
-        return props.expandable.expandedRowRender(record);
-      }
-
-      return undefined;
-    };
-
-    const renderExpandBtn = (record: TableData) => {
-      const currentKey = record[rowKey.value];
-      const expanded = expandedRowKeys.value.includes(currentKey);
-
-      return (
-        <button
-          type="button"
-          class={`${prefixCls}-expand-btn`}
-          onClick={() => handleExpand(currentKey)}
-        >
-          {slots.expandIcon?.({ expanded, record }) ?? expanded ? (
-            <IconMinus />
-          ) : (
-            <IconPlus />
-          )}
-        </button>
-      );
-    };
-
-    // [row, column]
-    const tableSpan = computed(() => {
-      const data: Record<string, [number, number]> = {};
-      flattenData.value.forEach((record, rowIndex) => {
-        dataColumns.value.forEach((column, columnIndex) => {
-          const { rowspan = 1, colspan = 1 } =
-            props.spanMethod?.({
-              record,
-              column,
-              rowIndex,
-              columnIndex,
-            }) ?? {};
-          if (rowspan > 1 || colspan > 1) {
-            data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
-          }
-        });
-      });
-
-      return data;
-    });
-
-    const removedCells = computed(() => {
-      const data: string[] = [];
-      for (const indexKey of Object.keys(tableSpan.value)) {
-        const indexArray = indexKey.split('-').map((item) => Number(item));
-        const span = tableSpan.value[indexKey];
-        for (let i = 1; i < span[0]; i++) {
-          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
-          for (let j = 1; j < span[1]; j++) {
-            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
-          }
-        }
-        for (let i = 1; i < span[1]; i++) {
-          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
-        }
-      }
-      return data;
-    });
-
-    const renderRecord = (
-      record: TableData,
-      indentSize: number,
-      rowIndex: number
-    ): VNode => {
-      const currentKey = record[rowKey.value];
-      const expandContent = renderExpandContent(record);
-      const showExpand = expandedRowKeys.value.includes(currentKey);
-
-      const hasSubTree = Boolean(record.children);
-      const subTreeHasSubData =
-        record.children?.some((record) => Boolean(record.children)) ?? false;
-
-      return (
-        <>
-          <Tr
-            checked={selectedRowKeys.value?.indexOf(currentKey) > -1}
-            onClick={(e: Event) => handleRowClick(record)}
-            style={{ position: 'flex' }}
-            key={currentKey}
-          >
-            {operations.value.map((operation, index) => {
-              const style =
-                isVirtualList.value &&
-                thRefs.value.operation[index]?.offsetWidth
-                  ? {
-                      width: `${thRefs.value.operation[index]?.offsetWidth}px`,
-                    }
-                  : undefined;
-
-              return (
-                <OperationTd
-                  v-slots={{
-                    'expand-icon': slots['expand-icon'],
+        return (
+          <>
+            {props.showHeader && (
+              <div ref={theadRef} class={`${prefixCls}-header`} style={style}>
+                <table
+                  cellpadding={0}
+                  cellspacing={0}
+                  style={contentStyle.value}
+                >
+                  <ColGroup
+                    dataColumns={dataColumns.value}
+                    operations={operations.value}
+                  />
+                  {renderHeader()}
+                </table>
+              </div>
+            )}
+            <ResizeObserver onResize={handleTbodyResize}>
+              {isVirtualList.value ? (
+                renderVirtualListBody()
+              ) : (
+                <div
+                  ref={tbodyRef}
+                  class={`${prefixCls}-body`}
+                  style={{
+                    maxHeight: isNumber(props.scroll?.y)
+                      ? `${props.scroll?.y}px`
+                      : props.scroll?.y,
                   }}
-                  key={`operation-td-${index}`}
-                  style={style}
-                  record={record}
-                  rowKey={rowKey.value}
-                  isRadio={isRadio.value}
-                  hasExpand={Boolean(expandContent)}
-                  operationColumn={operation}
-                  operations={operations.value}
-                  selectedRowKeys={selectedRowKeys.value}
-                  expandedIcon={props.expandable?.icon}
-                  expandedRowKeys={expandedRowKeys.value}
-                  onSelect={handleSelect}
-                  onExpand={handleExpand}
-                />
-              );
-            })}
-            {dataColumns.value.map((column, index) => {
-              const extraProps =
-                index === 0
-                  ? {
-                      showExpandBtn: hasSubTree,
-                      indentSize: hasSubTree ? indentSize - 20 : indentSize,
-                    }
-                  : {};
-
-              const style =
-                isVirtualList.value &&
-                thRefs.value.data[column.dataIndex]?.offsetWidth
-                  ? {
-                      width: `${
-                        thRefs.value.data[column.dataIndex]?.offsetWidth
-                      }px`,
-                    }
-                  : undefined;
-
-              const cellId = `${rowIndex}-${index}`;
-              const [rowspan, colspan] = tableSpan.value[
-                `${rowIndex}-${index}`
-              ] ?? [1, 1];
-
-              if (removedCells.value.includes(cellId)) {
-                return null;
-              }
-
-              return (
-                <Td
-                  key={`td-${index}`}
-                  style={style}
-                  rowIndex={rowIndex}
-                  record={record}
-                  isSorted={
-                    Boolean(computedSorter.value.filed) &&
-                    column.dataIndex === computedSorter.value.filed
-                  }
-                  column={column}
-                  operations={operations.value}
-                  dataColumns={dataColumns.value}
-                  rowSpan={rowspan}
-                  colSpan={colspan}
-                  {...extraProps}
-                  onClick={(e: Event) => handleCellClick(record, column)}
+                  onScroll={handleScroll}
                 >
-                  {{ expandBtn: () => renderExpandBtn(record) }}
-                </Td>
-              );
-            })}
-          </Tr>
-          {showExpand &&
-            (hasSubTree ? (
-              record.children?.map((item, index) =>
-                renderRecord(
-                  item,
-                  subTreeHasSubData
-                    ? indentSize + props.indentSize + 20
-                    : indentSize + props.indentSize,
-                  index
-                )
-              )
+                  <table
+                    cellpadding={0}
+                    cellspacing={0}
+                    style={contentStyle.value}
+                  >
+                    {flattenData.value.length !== 0 && (
+                      <ColGroup
+                        dataColumns={dataColumns.value}
+                        operations={operations.value}
+                      />
+                    )}
+                    {renderBody()}
+                  </table>
+                </div>
+              )}
+            </ResizeObserver>
+          </>
+        );
+      }
+
+      return (
+        <table cellpadding={0} cellspacing={0} style={contentStyle.value}>
+          <ColGroup
+            dataColumns={dataColumns.value}
+            operations={operations.value}
+          />
+          {props.showHeader && renderHeader()}
+          {renderBody()}
+        </table>
+      );
+    };
+
+    const renderTable = (content?: Slot) => (
+      <>
+        <div
+          ref={containerRef}
+          class={[`${prefixCls}-container`, tableCls.value]}
+          onScroll={handleScroll}
+        >
+          <div class={`${prefixCls}-content`}>
+            {content ? (
+              <table cellpadding={0} cellspacing={0}>
+                {content()}
+              </table>
             ) : (
-              <Tr isExpandRow key={`${currentKey}-expand`}>
-                <Td
-                  isFixedExpand={
-                    hasLeftFixedColumn.value || hasRightFixedColumn.value
-                  }
-                  containerWidth={containerRef.value?.offsetWidth}
-                  colSpan={dataColumns.value.length + operations.value.length}
-                >
-                  {expandContent}
-                </Td>
-              </Tr>
-            ))}
-        </>
-      );
-    };
+              renderContent()
+            )}
+          </div>
+        </div>
+        {slots.footer && (
+          <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
+        )}
+      </>
+    );
 
-    const virtualListRef = ref();
-
-    const renderVirtualListBody = () => {
-      return (
-        <VirtualList
-          ref={virtualListRef}
-          class={`${prefixCls}-body`}
-          {...props.virtualListProps}
-          data={flattenData.value}
-          v-slots={{
-            item: ({ item, index }: { item: TableData; index: number }) =>
-              renderRecord(item, 0, index),
-          }}
-        />
-      );
-    };
-
-    const renderBody = () => {
-      const hasSubData = flattenData.value.some((record) =>
-        Boolean(record.children)
-      );
+    const renderPagination = () => {
+      const paginationProps = isObject(props.pagination)
+        ? omit(props.pagination, [
+            'current',
+            'pageSize',
+            'defaultCurrent',
+            'defaultPageSize',
+          ])
+        : {};
 
       return (
-        <Tbody>
-          {flattenData.value.length > 0
-            ? flattenData.value.map((record, index) =>
-                renderRecord(record, hasSubData ? 20 : 0, index)
-              )
-            : renderEmpty()}
-        </Tbody>
+        <div class={paginationCls.value}>
+          <Pagination
+            total={processedData.value.length}
+            current={page.value}
+            pageSize={pageSize.value}
+            onChange={(page: number) => {
+              handlePageChange(page);
+              handleChange('pagination');
+            }}
+            onPageSizeChange={(pageSize: number) => {
+              handlePageSizeChange(pageSize);
+              handleChange('pagination');
+            }}
+            {...paginationProps}
+          />
+        </div>
       );
     };
 

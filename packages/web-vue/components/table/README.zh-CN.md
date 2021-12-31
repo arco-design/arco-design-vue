@@ -16,6 +16,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/subtree.md
 
+@import ./__demo__/lazy-load.md
+
 @import ./__demo__/props.md
 
 @import ./__demo__/sort.md

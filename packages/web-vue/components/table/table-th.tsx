@@ -12,7 +12,8 @@ import { useColumnSorter } from './hooks/use-column-sorter';
 import { useColumnFilter } from './hooks/use-column-filter';
 import { useI18n } from '../locale';
 import { getFixedCls, getStyle } from './utils';
-import { isFunction } from '../_utils/is';
+import { isBoolean, isFunction } from '../_utils/is';
+import IconHover from '../_components/icon-hover.vue';
 
 export default defineComponent({
   name: 'Th',
@@ -35,11 +36,22 @@ export default defineComponent({
     filterValue: {
       type: Array as PropType<string[]>,
     },
+    filterIconAlignLeft: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['sorterChange', 'filterChange'],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('table');
     const { t } = useI18n();
+
+    const filterIconAlignLeft = computed(() => {
+      if (isBoolean(props.column?.filterable?.alignLeft)) {
+        return props.column.filterable?.alignLeft;
+      }
+      return props.filterIconAlignLeft;
+    });
 
     const {
       hasSorter,
@@ -126,19 +138,24 @@ export default defineComponent({
           popupVisible={filterPopupVisible.value}
           trigger="click"
           autoFitPosition
+          popupOffset={filterIconAlignLeft.value ? 4 : 0}
           onPopupVisibleChange={handleFilterPopupVisibleChange}
           {...filterable.triggerProps}
         >
-          <span
+          <IconHover
             class={[
               `${prefixCls}-filters`,
               {
                 [`${prefixCls}-filters-active`]: isFilterActive.value,
+                [`${prefixCls}-filters-open`]: filterPopupVisible.value,
+                [`${prefixCls}-filters-align-left`]: filterIconAlignLeft.value,
               },
             ]}
+            disabled={!filterIconAlignLeft.value}
+            onClick={(ev: Event) => ev.stopPropagation()}
           >
             {filterable.icon?.() ?? <IconFilter />}
-          </span>
+          </IconHover>
         </Trigger>
       );
     };
@@ -156,6 +173,10 @@ export default defineComponent({
           [`${prefixCls}-cell-next-ascend`]: nextSortOrder.value === 'ascend',
           [`${prefixCls}-cell-next-descend`]: nextSortOrder.value === 'descend',
         });
+      }
+
+      if (filterIconAlignLeft.value) {
+        cls.push(`${prefixCls}-cell-with-filter`);
       }
 
       return cls;
@@ -208,6 +229,7 @@ export default defineComponent({
             )}
           </span>
         )}
+        {filterIconAlignLeft.value && renderFilter()}
       </span>
     );
 
@@ -238,7 +260,7 @@ export default defineComponent({
           rowspan={rowSpan > 1 ? rowSpan : undefined}
         >
           {renderCell()}
-          {renderFilter()}
+          {!filterIconAlignLeft.value && renderFilter()}
         </th>
       );
     };

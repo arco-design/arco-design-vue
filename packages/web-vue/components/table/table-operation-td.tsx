@@ -1,4 +1,4 @@
-import { computed, defineComponent, inject, PropType } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { TableData, TableOperationColumn } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { getOperationFixedCls, getOperationStyle } from './utils';
@@ -6,7 +6,6 @@ import Checkbox from '../checkbox';
 import Radio from '../radio';
 import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
-import { TableContext, tableInjectionKey } from './context';
 
 export default defineComponent({
   name: 'OperationTd',
@@ -48,6 +47,10 @@ export default defineComponent({
     },
     expandedRowKeys: {
       type: Array,
+      required: true,
+    },
+    renderExpandBtn: {
+      type: Function,
       required: true,
     },
   },
@@ -96,30 +99,13 @@ export default defineComponent({
       );
     };
 
-    const renderExpand = () => {
-      const rowKey = props.record[props.rowKey];
-      const expanded = props.expandedRowKeys.includes(rowKey);
-
-      return (
-        <button
-          type="button"
-          class={`${prefixCls}-expand-btn`}
-          onClick={() => emit('expand', rowKey)}
-        >
-          {slots['expand-icon']?.({ expanded, record: props.record }) ??
-            props.expandedIcon?.(expanded, props.record) ??
-            (expanded ? <IconMinus /> : <IconPlus />)}
-        </button>
-      );
-    };
-
     const renderContent = () => {
       if (props.operationColumn.name === 'selection') {
         return renderSelection();
       }
       if (props.operationColumn.name === 'expand') {
         if (props.hasExpand) {
-          return renderExpand();
+          return props.renderExpandBtn(props.record);
         }
         return null;
       }
