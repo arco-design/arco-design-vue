@@ -35,6 +35,7 @@ import IconCheck from '../icon/icon-check';
 import IconClose from '../icon/icon-close';
 import { StepStatus, StepsType } from './interface';
 import { Direction } from '../_utils/constant';
+import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Step',
@@ -94,14 +95,18 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    changeable: {
+    nextStepError: {
       type: Boolean,
       default: false,
     },
+    // for JSX
     onClick: {
-      type: Function,
+      type: [Function, Array] as PropType<
+        EmitType<(step: number, ev: Event) => void>
+      >,
     },
   },
+  emits: ['click'],
   /**
    * @zh 节点
    * @en Node
@@ -121,7 +126,7 @@ export default defineComponent({
    * @en Description
    * @slot description
    */
-  setup(props) {
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('steps-item');
     const iconCls = getPrefixCls('steps-icon');
 
@@ -131,9 +136,9 @@ export default defineComponent({
         (props.labelPlacement === 'vertical' || props.direction === 'vertical')
     );
 
-    const handleClick = (e: Event) => {
-      if (props.changeable) {
-        props.onClick?.(props.step, e);
+    const handleClick = (ev: Event) => {
+      if (!props.disabled) {
+        emit('click', props.step, ev);
       }
     };
 
@@ -142,7 +147,7 @@ export default defineComponent({
       `${prefixCls}-${props.status}`,
       {
         [`${prefixCls}-active`]: props.step === props.current,
-        // [`${prefixCls}-next-error`]: nextStepError,
+        [`${prefixCls}-next-error`]: props.nextStepError,
         [`${prefixCls}-disabled`]: props.disabled,
         // [`${prefixCls}-custom`]: !!icon,
       },
