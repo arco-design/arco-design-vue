@@ -203,6 +203,15 @@ export default defineComponent({
       default: false,
     },
     /**
+     * @zh 在列表模式下，如果上传的文件存在 URL 则展示链接。如果关闭仅展示文字并且点击可以触发 `preview` 事件。
+     * @en In the list mode, if the uploaded file has a URL, the link will be displayed. If you turn off only display text and click to trigger the `preview` event.
+     * @version 2.13.0
+     */
+    showLink: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * @zh `<img>` 的原生 HTML 属性，需要浏览器支持
      * @en Native HTML attributes of `<img>`, browser support is required
      * @version 2.11.0
@@ -353,6 +362,7 @@ export default defineComponent({
       showRemoveButton,
       imageLoading,
       download,
+      showLink,
     } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
 
@@ -582,6 +592,7 @@ export default defineComponent({
         showRemoveButton,
         showRetryButton,
         showCancelButton,
+        showLink,
         imageLoading,
         download,
         customIcon,
