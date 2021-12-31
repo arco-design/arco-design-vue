@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🆕 新增功能
+
+- 增加 `load-more` 属性，支持数据懒加载 ([#476](https://github.com/arco-design/arco-design-vue/pull/476))
+
+
 ## 2.11.0
 
 `2021-12-17`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🆕 Feature
+
+- Added `load-more` attribute to support lazy loading of data ([#476](https://github.com/arco-design/arco-design-vue/pull/476))
+
+
 ## 2.11.0
 
 `2021-12-17`

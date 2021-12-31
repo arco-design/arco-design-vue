@@ -2,6 +2,47 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### ⚠️ Important Attention
+
+- **form:** The `form-item` component adds a new `content-wrapper` div element to wrap the original `content` div element to support the new layout ([#488](https://github.com/arco-design/arco-design-vue/pull/488))
+
+### 🆕 Feature
+
+- **form:** Added `autoLabelWidth` property to support adaptive label width ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- **form:** Added `labelColFlex` property to support label width setting ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- **form:** Add `mergeProps` attribute, support custom attributes and event override ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- **table:** Added `loadMore` property to support sub-slacker loading ([#485](https://github.com/arco-design/arco-design-vue/pull/485))
+- **table:** Add `filterIconAlignLeft` property ([#485](https://github.com/arco-design/arco-design-vue/pull/485))
+- **table:** Added `change` event to get processed data ([#485](https://github.com/arco-design/arco-design-vue/pull/485))
+- **upload:** Add `show-link` attribute ([#483](https://github.com/arco-design/arco-design-vue/pull/483))
+- **auto-complete:** Increase input slot and option slot support ([#482](https://github.com/arco-design/arco-design-vue/pull/482))
+- **mention:** Increase input slot and option slot support ([#482](https://github.com/arco-design/arco-design-vue/pull/482))
+- **mention:** The drop-down menu under the text field type is displayed following the prompt text ([#482](https://github.com/arco-design/arco-design-vue/pull/482))
+- **cascader:** Added `load-more` attribute to support lazy loading of data ([#476](https://github.com/arco-design/arco-design-vue/pull/476))
+- **grid:** add property `wrap` to `Row` ([#471](https://github.com/arco-design/arco-design-vue/pull/471))
+- **descriptions:** The index and data parameters are added to the Value and Label slots ([#470](https://github.com/arco-design/arco-design-vue/pull/470))
+
+### 🐛 BugFix
+
+- **pagination:** Fix the problem that there is no clear value when the jump input box is out of focus ([#487](https://github.com/arco-design/arco-design-vue/pull/487))
+- **input-tag:** Fix Chinese input method problem ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- **select:** Fix the problem of Chinese input method when searching ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- **select:** Fix the incomplete display of placeholder in `drawer` ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- **form:** Fix the problem that the help content of the form item is displayed incorrectly ([#480](https://github.com/arco-design/arco-design-vue/pull/480))
+- **table:** Fix the problem of invalid `sortOrder` emptying ([#478](https://github.com/arco-design/arco-design-vue/pull/478))
+- **table:** Fix the issue that the `expand-icon` slot does not take effect in the subtree ([#478](https://github.com/arco-design/arco-design-vue/pull/478))
+- **table:** Fix the problem that the shadow of the fixed column does not display when the table size changes dynamically ([#478](https://github.com/arco-design/arco-design-vue/pull/478))
+- **date-picker:** fix the proplem that property `readonly` is invalid ([#472](https://github.com/arco-design/arco-design-vue/pull/472))
+
+### 💅 Style
+
+- **steps:** Fix the wrong connection color problem in the next step ([#477](https://github.com/arco-design/arco-design-vue/pull/477))
+
+
 ## 2.12.2
 
 `2021-12-27`

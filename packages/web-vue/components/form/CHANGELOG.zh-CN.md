@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### ⚠️ 重点注意
+
+- `form-item` 组件增加一个新的 `content-wrapper` div 元素包裹原先 `content` div 元素，以来支持新的布局方式 ([#488](https://github.com/arco-design/arco-design-vue/pull/488))
+
+### 🆕 新增功能
+
+- 增加 `autoLabelWidth` 属性，支持标签宽度自适应 ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- 增加 `labelColFlex` 属性，支持标签宽度设置 ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- 增加 `mergeProps` 属性，支持自定义属性和事件覆写 ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+
+### 🐛 问题修复
+
+- 修复表单项 help 内容显示错误的问题 ([#480](https://github.com/arco-design/arco-design-vue/pull/480))
+
+
 ## 2.10.0
 
 `2021-12-10`

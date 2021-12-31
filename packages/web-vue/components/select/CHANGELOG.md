@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🐛 BugFix
+
+- Fix the problem of Chinese input method when searching ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- Fix the incomplete display of placeholder in `drawer` ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+
+
 ## 2.11.1
 
 `2021-12-20`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🐛 BugFix
+
+- Fix the problem that there is no clear value when the jump input box is out of focus ([#487](https://github.com/arco-design/arco-design-vue/pull/487))
+
+
 ## 2.9.0
 
 `2021-12-03`

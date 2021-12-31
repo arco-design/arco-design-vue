@@ -2,6 +2,47 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### ⚠️ 重点注意
+
+- **form:** `form-item` 组件增加一个新的 `content-wrapper` div 元素包裹原先 `content` div 元素，以来支持新的布局方式 ([#488](https://github.com/arco-design/arco-design-vue/pull/488))
+
+### 🆕 新增功能
+
+- **form:** 增加 `autoLabelWidth` 属性，支持标签宽度自适应 ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- **form:** 增加 `labelColFlex` 属性，支持标签宽度设置 ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- **form:** 增加 `mergeProps` 属性，支持自定义属性和事件覆写 ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- **table:** 增加 `loadMore` 属性，支持子树懒加载 ([#485](https://github.com/arco-design/arco-design-vue/pull/485))
+- **table:** 增加 `filterIconAlignLeft` 属性 ([#485](https://github.com/arco-design/arco-design-vue/pull/485))
+- **table:** 增加 `change` 事件，可获取处理后数据 ([#485](https://github.com/arco-design/arco-design-vue/pull/485))
+- **upload:** 增加 `show-link` 属性 ([#483](https://github.com/arco-design/arco-design-vue/pull/483))
+- **auto-complete:** 增加 input 中的插槽和 option 插槽支持 ([#482](https://github.com/arco-design/arco-design-vue/pull/482))
+- **mention:** 增加 input 中的插槽和 option 插槽支持 ([#482](https://github.com/arco-design/arco-design-vue/pull/482))
+- **mention:** 文本域类型下的下拉菜单跟随提示文字显示 ([#482](https://github.com/arco-design/arco-design-vue/pull/482))
+- **cascader:** 增加 `load-more` 属性，支持数据懒加载 ([#476](https://github.com/arco-design/arco-design-vue/pull/476))
+- **grid:** `Row` 新增属性 `wrap` ([#471](https://github.com/arco-design/arco-design-vue/pull/471))
+- **descriptions:** `value` 和 `label` 插槽增加 index、data 参数 ([#470](https://github.com/arco-design/arco-design-vue/pull/470))
+
+### 🐛 问题修复
+
+- **pagination:** 修复跳转输入框失焦时没有清除值的问题 ([#487](https://github.com/arco-design/arco-design-vue/pull/487))
+- **input-tag:** 修复中文输入法问题 ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- **select:** 修复搜索时中文输入法问题 ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- **select:** 修复在 `drawer` 中 placeholder 显示不全的问题 ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- **form:** 修复表单项 help 内容显示错误的问题 ([#480](https://github.com/arco-design/arco-design-vue/pull/480))
+- **table:** 修复 `sortOrder ` 置空失效的问题 ([#478](https://github.com/arco-design/arco-design-vue/pull/478))
+- **table:** 修复 `expand-icon` 插槽在子树中不生效的问题 ([#478](https://github.com/arco-design/arco-design-vue/pull/478))
+- **table:** 修复固定列在表格尺寸动态变化时阴影不显示的问题 ([#478](https://github.com/arco-design/arco-design-vue/pull/478))
+- **date-picker:** 修复 `readonly` 无效的问题 ([#472](https://github.com/arco-design/arco-design-vue/pull/472))
+
+### 💅 样式更新
+
+- **steps:** 修复下一步错误连线颜色错误问题 ([#477](https://github.com/arco-design/arco-design-vue/pull/477))
+
+
 ## 2.12.2
 
 `2021-12-27`

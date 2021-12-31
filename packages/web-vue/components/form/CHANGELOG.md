@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### ⚠️ Important Attention
+
+- The `form-item` component adds a new `content-wrapper` div element to wrap the original `content` div element to support the new layout ([#488](https://github.com/arco-design/arco-design-vue/pull/488))
+
+### 🆕 Feature
+
+- Added `autoLabelWidth` property to support adaptive label width ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- Added `labelColFlex` property to support label width setting ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+- Add `mergeProps` attribute, support custom attributes and event override ([#486](https://github.com/arco-design/arco-design-vue/pull/486))
+
+### 🐛 BugFix
+
+- Fix the problem that the help content of the form item is displayed incorrectly ([#480](https://github.com/arco-design/arco-design-vue/pull/480))
+
+
 ## 2.10.0
 
 `2021-12-10`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🐛 问题修复
+
+- 修复搜索时中文输入法问题 ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+- 修复在 `drawer` 中 placeholder 显示不全的问题 ([#481](https://github.com/arco-design/arco-design-vue/pull/481))
+
+
 ## 2.11.1
 
 `2021-12-20`

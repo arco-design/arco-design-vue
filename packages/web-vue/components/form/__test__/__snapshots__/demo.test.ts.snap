@@ -412,7 +412,7 @@ exports[`<form> demo: render [grid] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [layout] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 600px;\\">
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><span class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"horizontal\\"><span class=\\"arco-radio-button-content\\">horizontal</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vertical\\"><span class=\\"arco-radio-button-content\\">vertical</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline\\"><span class=\\"arco-radio-button-content\\">inline</span></span></span></div>
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\">

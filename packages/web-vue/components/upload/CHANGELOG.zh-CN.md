@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🆕 新增功能
+
+- 增加 `show-link` 属性 ([#483](https://github.com/arco-design/arco-design-vue/pull/483))
+
+
 ## 2.12.1
 
 `2021-12-24`

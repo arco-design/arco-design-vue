@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🆕 新增功能
+
+- 增加 input 中的插槽和 option 插槽支持 ([#482](https://github.com/arco-design/arco-design-vue/pull/482))
+
+
 ## 2.8.0
 
 `2021-12-01`

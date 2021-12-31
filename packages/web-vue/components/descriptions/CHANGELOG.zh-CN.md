@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🆕 新增功能
+
+- `value` 和 `label` 插槽增加 index、data 参数 ([#470](https://github.com/arco-design/arco-design-vue/pull/470))
+
+
 ## 2.7.0
 
 `2021-11-26`

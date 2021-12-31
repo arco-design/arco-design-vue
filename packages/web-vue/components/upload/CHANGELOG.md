@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.13.0
+
+`2021-12-31`
+
+### 🆕 Feature
+
+- Add `show-link` attribute ([#483](https://github.com/arco-design/arco-design-vue/pull/483))
+
+
 ## 2.12.1
 
 `2021-12-24`
