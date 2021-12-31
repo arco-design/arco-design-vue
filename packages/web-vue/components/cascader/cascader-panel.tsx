@@ -12,30 +12,24 @@ export default defineComponent({
       required: true,
     },
     selectedPath: {
-      type: Array as PropType<CascaderOptionInfo[]>,
+      type: Array as PropType<string[]>,
       required: true,
     },
-    activeNode: {
-      type: Object as PropType<CascaderOptionInfo>,
-    },
+    activeKey: String,
     computedKeys: {
       type: Array as PropType<string[]>,
       required: true,
     },
-    expandTrigger: String,
-    multiple: Boolean,
     totalLevel: {
       type: Number,
       required: true,
     },
+    expandTrigger: String,
+    multiple: Boolean,
     checkStrictly: Boolean,
   },
-  emits: ['clickOption', 'activeChange', 'pathChange'],
-  setup(props, { emit }) {
+  setup(props) {
     const prefixCls = getPrefixCls('cascader');
-
-    // const panelRefs = ref([]);
-    // const optionRefs = ref([]);
 
     const renderEmpty = () => {
       return <Empty />;
@@ -66,23 +60,13 @@ export default defineComponent({
                     key={item.key}
                     option={item}
                     computedKeys={props.computedKeys}
-                    isActive={
-                      props.selectedPath.includes(item) ||
-                      item.key === props.activeNode?.key
+                    active={
+                      props.selectedPath.includes(item.key) ||
+                      item.key === props.activeKey
                     }
                     multiple={props.multiple}
                     checkStrictly={props.checkStrictly}
                     expandTrigger={props.expandTrigger}
-                    onClickOption={(
-                      option: CascaderOptionInfo,
-                      checked?: boolean
-                    ) => emit('clickOption', option, checked)}
-                    onActiveChange={(option: CascaderOptionInfo) =>
-                      emit('activeChange', option)
-                    }
-                    onPathChange={(option: CascaderOptionInfo) =>
-                      emit('pathChange', option)
-                    }
                   />
                 );
               })}

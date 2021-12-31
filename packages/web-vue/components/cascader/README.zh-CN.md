@@ -18,6 +18,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 @import ./__demo__/check-strictly.md
 
+@import ./__demo__/lazy-load.md
+
 @import ./__demo__/search.md
 
 @import ./__demo__/path.md

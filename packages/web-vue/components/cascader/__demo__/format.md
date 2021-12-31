@@ -19,7 +19,7 @@ Use `formatLabel` to customize the displayed content.
 ```vue
 
 <template>
-  <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." :format-label="format" />
+  <a-cascader :options="options" default-value="datunli" :style="{width:'320px'}" placeholder="Please select ..." :format-label="format" />
 </template>
 
 <script>
