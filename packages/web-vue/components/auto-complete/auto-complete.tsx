@@ -115,7 +115,14 @@ export default defineComponent({
      */
     'select',
   ],
-  setup(props, { emit, attrs }) {
+  /**
+   * @zh 选项内容
+   * @en Display content of options
+   * @slot option
+   * @binding {OptionInfo} data
+   * @version 2.13.0
+   */
+  setup(props, { emit, attrs, slots }) {
     const prefixCls = getPrefixCls('auto-complete');
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement>();
@@ -245,6 +252,15 @@ export default defineComponent({
       ])
     );
 
+    const getOptionContentFunc = (item: OptionNode) => {
+      if (isFunction(slots.option) && item.value) {
+        const optionInfo = optionInfoMap.get(item.value);
+        const optionSlot = slots.option;
+        return () => optionSlot({ data: optionInfo });
+      }
+      return () => item.label;
+    };
+
     const renderOption = (item: OptionNode) => {
       const { value = '' } = item;
 
@@ -255,6 +271,9 @@ export default defineComponent({
               optionRefs.value[value] = ref.$el;
             }
           }}
+          v-slots={{
+            default: getOptionContentFunc(item),
+          }}
           key={item.key}
           value={value}
           disabled={item.disabled}
@@ -262,9 +281,7 @@ export default defineComponent({
           onClick={handleSelect}
           onMouseenter={handleMouseEnter}
           onMouseleave={handleMouseLeave}
-        >
-          {item.label}
-        </DropDownOption>
+        />
       );
     };
 
@@ -296,6 +313,7 @@ export default defineComponent({
         onPopupVisibleChange={handlePopupVisibleChange}
       >
         <ArcoInput
+          v-slots={slots}
           ref={inputRef}
           modelValue={computedValue.value}
           onInput={handleInputValueChange}

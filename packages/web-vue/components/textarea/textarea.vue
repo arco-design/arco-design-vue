@@ -307,8 +307,8 @@ export default defineComponent({
       if (e.type === 'compositionend') {
         isComposition.value = false;
         compositionValue.value = '';
-        emit('input', value, e);
         updateValue(value);
+        emit('input', value, e);
       } else {
         isComposition.value = true;
       }
@@ -318,8 +318,8 @@ export default defineComponent({
       const { value } = e.target as HTMLInputElement;
 
       if (!isComposition.value) {
-        emit('input', value, e);
         updateValue(value);
+        emit('input', value, e);
       } else {
         compositionValue.value = value;
       }
