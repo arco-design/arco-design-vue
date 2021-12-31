@@ -92,13 +92,23 @@ export default defineComponent({
     div: {
       type: Boolean,
     },
+    /**
+     * @zh `Col` 是否支持换行
+     * @en Whether `Col` can wrap onto multiple lines
+     * @version 2.13.0
+     */
+    wrap: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props) {
-    const { gutter, align, justify, div } = toRefs(props);
+    const { gutter, align, justify, div, wrap } = toRefs(props);
     const prefixCls = getPrefixCls('row');
     const classNames = computed(() => {
       return {
         [`${prefixCls}`]: !div.value,
+        [`${prefixCls}-nowrap`]: !wrap.value,
         [`${prefixCls}-align-${align.value}`]: align.value,
         [`${prefixCls}-justify-${justify.value}`]: justify.value,
       };
