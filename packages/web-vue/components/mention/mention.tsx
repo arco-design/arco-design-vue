@@ -5,6 +5,9 @@ import {
   ref,
   toRefs,
   ComponentPublicInstance,
+  onMounted,
+  watch,
+  nextTick,
 } from 'vue';
 import ArcoTextarea from '../textarea';
 import ArcoInput from '../input';
@@ -20,6 +23,10 @@ import {
 import { Option, OptionNode } from '../select/interface';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 import { EmitType } from '../_utils/types';
+import { getPrefixCls } from '../_utils/global-config';
+import { getSizeStyles } from '../textarea/utils';
+import ResizeObserver from '../_components/resize-observer';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'Mention',
@@ -100,7 +107,18 @@ export default defineComponent({
      */
     'select',
   ],
-  setup(props, { emit, attrs }) {
+  /**
+   * @zh 选项内容
+   * @en Display content of options
+   * @slot option
+   * @binding {OptionInfo} data
+   * @version 2.13.0
+   */
+  setup(props, { emit, attrs, slots }) {
+    const prefixCls = getPrefixCls('mention');
+
+    let styleDeclaration: CSSStyleDeclaration;
+
     const { data } = toRefs(props);
     const dropdownRef = ref();
     const optionRefs = ref<Record<string, HTMLElement>>({});
@@ -135,13 +153,16 @@ export default defineComponent({
           lastMeasure.location + lastMeasure.prefix.length
         );
         if (isValidSearch(measureText, props.split)) {
+          _popupVisible.value = true;
           measureInfo.value = {
             measuring: true,
             text: measureText,
             ...lastMeasure,
           };
+          emit('search', measureText);
+        } else if (measureInfo.value.location > -1) {
+          resetMeasureInfo();
         }
-        emit('search', measureText);
       } else if (measureInfo.value.location > -1) {
         resetMeasureInfo();
       }
@@ -157,6 +178,10 @@ export default defineComponent({
         measureInfo.value.measuring &&
         nodes.value.length > 0
     );
+
+    const handleResize = () => {
+      mirrorStyle.value = getSizeStyles(styleDeclaration);
+    };
 
     const handlePopupVisibleChange = (popupVisible: boolean) => {
       _popupVisible.value = popupVisible;
@@ -216,6 +241,17 @@ export default defineComponent({
       activeOption.value = undefined;
     };
 
+    const mirrorStyle = ref();
+
+    onMounted(() => {
+      // @ts-ignore
+      if (props.type === 'textarea' && inputRef.value?.textareaRef) {
+        // @ts-ignore
+        styleDeclaration = window.getComputedStyle(inputRef.value.textareaRef);
+        mirrorStyle.value = getSizeStyles(styleDeclaration);
+      }
+    });
+
     const handleKeyDown = getKeyDownHandler(
       new Map([
         [
@@ -265,6 +301,15 @@ export default defineComponent({
       ])
     );
 
+    const getOptionContentFunc = (item: OptionNode) => {
+      if (isFunction(slots.option) && item.value) {
+        const optionInfo = optionInfoMap.get(item.value);
+        const optionSlot = slots.option;
+        return () => optionSlot({ data: optionInfo });
+      }
+      return () => item.label;
+    };
+
     const renderOption = (item: OptionNode) => {
       const { value = '' } = item;
       return (
@@ -274,6 +319,7 @@ export default defineComponent({
               optionRefs.value[value] = ref.$el;
             }
           }}
+          v-slots={{ default: getOptionContentFunc(item) }}
           key={item.key}
           value={value}
           disabled={item.disabled}
@@ -281,9 +327,7 @@ export default defineComponent({
           onClick={handleSelect}
           onMouseenter={handleMouseEnter}
           onMouseleave={handleMouseLeave}
-        >
-          {item.label}
-        </DropDownOption>
+        />
       );
     };
 
@@ -297,9 +341,62 @@ export default defineComponent({
       return <DropdownPanel ref={dropdownRef}>{_children}</DropdownPanel>;
     };
 
+    const mirrorRef = ref<HTMLElement>();
+
+    watch(computedPopupVisible, (visible) => {
+      if (props.type === 'textarea' && visible) {
+        nextTick(() => {
+          if (
+            // @ts-ignore
+            inputRef.value?.textareaRef &&
+            // @ts-ignore
+            inputRef.value.textareaRef.scrollTop > 0
+          ) {
+            // @ts-ignore
+            mirrorRef.value?.scrollTo(0, inputRef.value.textareaRef.scrollTop);
+          }
+        });
+      }
+    });
+
     const render = () => {
-      const ComponentName =
-        props.type === 'textarea' ? ArcoTextarea : ArcoInput;
+      if (props.type === 'textarea') {
+        return (
+          <div class={prefixCls}>
+            <ResizeObserver onResize={handleResize}>
+              <ArcoTextarea
+                {...attrs}
+                ref={inputRef}
+                modelValue={computeValue.value}
+                onInput={handleInput}
+                onKeydown={handleKeyDown}
+              />
+            </ResizeObserver>
+            {measureInfo.value.measuring && nodes.value.length > 0 && (
+              <div
+                ref={mirrorRef}
+                style={mirrorStyle.value}
+                class={`${prefixCls}-measure`}
+              >
+                {computeValue.value?.slice(0, measureInfo.value.location)}
+                <Trigger
+                  v-slots={{ content: renderDropdown }}
+                  trigger="focus"
+                  position="bl"
+                  popupOffset={4}
+                  preventFocus={true}
+                  popupVisible={computedPopupVisible.value}
+                  clickToClose={false}
+                  onPopupVisibleChange={handlePopupVisibleChange}
+                >
+                  <span>@</span>
+                </Trigger>
+              </div>
+            )}
+          </div>
+        );
+      }
+
       return (
         <Trigger
           v-slots={{ content: renderDropdown }}
@@ -312,7 +409,8 @@ export default defineComponent({
           autoFitPopupWidth
           onPopupVisibleChange={handlePopupVisibleChange}
         >
-          <ComponentName
+          <ArcoInput
+            v-slots={slots}
             {...attrs}
             ref={inputRef}
             modelValue={computeValue.value}
