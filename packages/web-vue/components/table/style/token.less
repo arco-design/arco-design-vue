@@ -1,18 +1,24 @@
 @import '../../style/theme/index.less';
 
-@table-size-default-padding-horizontal: 16px;
+@table-size-default-padding-horizontal: @spacing-7;
 @table-size-default-padding-vertical: 9px;
-@table-size-middle-padding-horizontal: 16px;
+@table-size-middle-padding-horizontal: @spacing-7;
 @table-size-middle-padding-vertical: 7px;
-@table-size-small-padding-horizontal: 16px;
+@table-size-small-padding-horizontal: @spacing-7;
 @table-size-small-padding-vertical: 5px;
-@table-size-mini-padding-horizontal: 16px;
+@table-size-mini-padding-horizontal: @spacing-7;
 @table-size-mini-padding-vertical: 2px;
 
 @table-size-default-font-size: @font-size-body-3;
 @table-size-middle-font-size: @font-size-body-3;
 @table-size-small-font-size: @font-size-body-3;
 @table-size-mini-font-size: @font-size-body-1;
+
+@table-size-default-font-header-size: @font-size-body-3;
+@table-size-middle-font-header-size: @font-size-body-3;
+@table-size-small-font-header-size: @font-size-body-3;
+@table-size-mini-font-header-size: @font-size-body-1;
+
 
 @table-border-width: @border-1;
 @table-border-style: solid;
@@ -28,7 +34,7 @@
 @table-color-text-header-cell: rgb(var(--gray-10));
 @table-color-bg-header-cell: var(--color-neutral-2);
 @table-color-bg-header-sorted-cell: var(--color-neutral-3);
-@table-color-bg-header-sorted-cell_hover: var(--color-neutral-4);
+@table-color-bg-header-sorted-cell_hover: rgba(var(--gray-4), 0.5);
 @table-color-header-filters-icon: var(--color-text-2);
 @table-color-header-filters-icon_active: @color-primary-6;
 @table-color-bg-header-filters-icon_hover: var(--color-neutral-4);
@@ -44,13 +50,17 @@
 @table-color-bg-body-row_active: var(--color-fill-1);
 
 @table-color-expand-icon: var(--color-text-2);
+@table-color-expand-icon-border: @color-transparent;
+@table-color-expand-icon-border_hover: @color-transparent;
 @table-color-expand-icon_hover: var(--color-text-1);
 @table-color-bg-expand-icon: var(--color-neutral-3);
 @table-color-bg-expand-icon_hover: var(--color-neutral-4);
-@table-color-bg-expand-content: var(--color-neutral-2);
+@table-color-bg-expand-content: var(--color-fill-1);
+@table-color-bg-expand-content_hover: var(--color-fill-1);
+@table-border-expand-icon-width: @border-1;
 
-@table-color-header-sorter-icon: var(--color-neutral-4);
-@table-color-header-sorter-icon_next: rgb(var(--gray-6));
+@table-color-header-sorter-icon: var(--color-neutral-5);
+@table-color-header-sorter-icon_next: var(--color-neutral-6);
 @table-color-header-sorter-icon_active: @color-primary-6;
 @table-spacing-header-sorter-icon-margin-left: @spacing-4;
 @table-size-header-sorter-icon-height: 8px;
@@ -80,7 +90,6 @@
 
 // selection
 @table-size-selection-col-width: 40px;
-@table-spacing-selection-padding-horizontal: @spacing-2;
 
 @table-size-expand-icon-col-width: 40px;
 @table-size-body-min-width: 40px;
@@ -90,7 +99,12 @@
 @table-size-large-padding-horizontal: @table-size-default-padding-horizontal;
 @table-size-large-padding-vertical: @table-size-default-padding-vertical;
 @table-size-large-font-size: @table-size-default-font-size;
+@table-size-large-font-header-size: @table-size-default-font-header-size;
 
 @table-size-medium-padding-horizontal: @table-size-middle-padding-horizontal;
 @table-size-medium-padding-vertical: @table-size-middle-padding-vertical;
 @table-size-medium-font-size: @table-size-middle-font-size;
+@table-size-medium-font-header-size: @table-size-middle-font-header-size;
+
+@table-color-bg-tfoot: var(--color-neutral-2);
+

@@ -97,7 +97,7 @@ export default defineComponent({
         style={style.value}
         rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
       >
-        <span class={`${prefixCls}-cell`}>{renderContent()}</span>
+        <span>{renderContent()}</span>
       </th>
     );
   },

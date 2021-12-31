@@ -17,7 +17,7 @@
   line-height: @table-size-expand-button;
   vertical-align: 1px;
   background-color: @table-color-bg-expand-icon;
-  border: none;
+  border: @table-border-expand-icon-width solid @table-color-expand-icon-border;
   border-radius: @table-border-radius-expand-button;
   outline: none;
   cursor: pointer;
@@ -31,6 +31,7 @@
   &:hover {
     color: @table-color-expand-icon_hover;
     background-color: @table-color-bg-expand-icon_hover;
+    border-color: @table-color-expand-icon-border_hover;
   }
 }
 
@@ -48,7 +49,10 @@
   //  padding: ~'@{table-size-@{size}-padding-vertical}' ~'@{table-size-@{size}-padding-horizontal}';
   //}
 
-  .@{table-cls-th},
+  .@{table-cls-th} {
+    font-size: ~'@{table-size-@{size}-font-header-size}';
+  }
+
   .@{table-cls-td} {
     font-size: ~'@{table-size-@{size}-font-size}';
   }
@@ -257,12 +261,9 @@
     .expandBtn();
   }
 
-  &-cell-expand-icon {
-    button {
-      .expandBtn();
-
-      margin-right: @table-spacing-expand-button-margin-right;
-    }
+  &-cell-expand-icon &-cell-inline-icon {
+    margin-right: @table-spacing-expand-button-margin-right;
+    display: inline-flex;
   }
 
   &-cell-expand-icon-hidden {
@@ -273,7 +274,7 @@
   }
 
   &-tr-expand .@{table-cls-td} {
-    background-color: @table-color-bg-body-row_hover;
+    background-color: @table-color-bg-expand-content;
   }
 
   &-cell-fixed-expand {
@@ -308,9 +309,14 @@
   //  padding-left: @table-spacing-selection-padding-horizontal;
   //}
 
-  //&-th&-operation &-th-item,
+  &-th&-operation,
   &-td&-operation {
     text-align: center;
+  }
+
+  &-th&-operation &-cell,
+  &-td&-operation &-cell {
+    padding: 0;
   }
 
   &-radio,
@@ -328,7 +334,7 @@
     .fixed-width(@table-size-selection-col-width);
   }
 
-  &-expand-icon-col {
+  &-expand-col {
     .fixed-width(@table-size-expand-icon-col-width);
   }
 
@@ -619,6 +625,12 @@
       }
     }
 
+    .@{table-cls-tr}-expand:not(.@{table-prefix-cls}-tr-empty):hover {
+      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(.@{table-prefix-cls}-col-fixed-right) {
+        background-color: @table-color-bg-expand-content_hover;
+      }
+    }
+
     // 去除嵌套子表格的 hover 效果
     .@{table-prefix-cls}-tr-expand .@{table-cls-td} & {
       .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty) {
@@ -637,7 +649,7 @@
   }
 
   // Active row
-  &-type-radio &-row-checked .@{table-cls-td} {
+  &&-type-selection &-tr-checked .@{table-cls-td} {
     background-color: @table-color-bg-body-row_active;
   }
 

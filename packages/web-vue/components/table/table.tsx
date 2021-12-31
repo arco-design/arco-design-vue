@@ -762,7 +762,7 @@ export default defineComponent({
         expand = {
           name: 'expand',
           title: props.expandable.title,
-          width: props.expandable.width ?? 40,
+          // width: props.expandable.width ?? 40,
           fixed: props.expandable.fixed || hasFixedColumn,
         };
         operations.push(expand);
@@ -772,7 +772,7 @@ export default defineComponent({
         selection = {
           name: 'selection',
           title: props.rowSelection.title,
-          width: props.rowSelection.width ?? 40,
+          // width: props.rowSelection.width ?? 40,
           fixed: props.rowSelection.fixed || hasFixedColumn,
         };
         operations.push(selection);
@@ -807,7 +807,7 @@ export default defineComponent({
           !bordered.value.cell && bordered.value.bodyCell,
         [`${prefixCls}-stripe`]: props.stripe,
         [`${prefixCls}-hover`]: props.hoverable,
-        // [`${prefixCls}-type-radio`]: rowSelection && rowSelection.type === 'radio',
+        [`${prefixCls}-type-selection`]: props.rowSelection,
         [`${prefixCls}-layout-fixed`]:
           props.tableLayoutFixed ||
           isScroll.value.x ||
@@ -1149,6 +1149,7 @@ export default defineComponent({
       return (
         <>
           <Tr
+            checked={selectedRowKeys.value?.indexOf(currentKey) > -1}
             onClick={(e: Event) => handleRowClick(record)}
             style={{ position: 'flex' }}
             key={currentKey}
