@@ -29,6 +29,8 @@ description: Refers to the use of multi-level classification to separate the opt
 
 @import ./__demo__/check-strictly.md
 
+@import ./__demo__/lazy-load.md
+
 @import ./__demo__/search.md
 
 @import ./__demo__/path.md

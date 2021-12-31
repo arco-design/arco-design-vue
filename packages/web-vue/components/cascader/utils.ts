@@ -30,17 +30,23 @@ const getOptionsWithTotalLeaves = (options: CascaderOption[]) => {
 export const getOptionInfos = (
   options: CascaderOption[],
   {
-    leafOptionSet,
+    optionMap,
     leafOptionMap,
     leafOptionValueMap,
+    leafOptionSet,
     totalLevel: innerLevel,
     checkStrictly,
+    enabledLazyLoad,
+    lazyLoadOptions,
   }: {
-    leafOptionSet: Set<CascaderOptionInfo>;
-    leafOptionMap: Map<string | number, CascaderOptionInfo>;
+    optionMap: Map<string, CascaderOptionInfo>;
+    leafOptionMap: Map<string, CascaderOptionInfo>;
     leafOptionValueMap: Map<string | number, CascaderOptionInfo>;
+    leafOptionSet: Set<CascaderOptionInfo>;
     totalLevel: Ref<number>;
     checkStrictly: Ref<boolean>;
+    enabledLazyLoad: boolean;
+    lazyLoadOptions: Record<string, CascaderOption[]>;
   }
 ) => {
   const _options = getOptionsWithTotalLeaves(options);
@@ -71,9 +77,20 @@ export const getOptionInfos = (
       if (item.children) {
         data.isLeaf = false;
         data.children = travelOptions(item.children, data, (level ?? 1) + 1);
+      } else if (enabledLazyLoad && !data.isLeaf) {
+        data.isLeaf = false;
+        if (lazyLoadOptions[key]) {
+          data.children = travelOptions(
+            lazyLoadOptions[key],
+            data,
+            (level ?? 1) + 1
+          );
+        }
       } else {
         data.isLeaf = true;
       }
+
+      optionMap.set(data.key, data);
 
       if (data.isLeaf || checkStrictly.value) {
         leafOptionSet.add(data);

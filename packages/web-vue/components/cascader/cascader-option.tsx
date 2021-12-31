@@ -1,11 +1,14 @@
-import { computed, defineComponent, PropType } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent, inject, ref } from 'vue';
 import Checkbox from '../checkbox';
 import Radio from '../radio';
 import { getPrefixCls } from '../_utils/global-config';
-import { CascaderOptionInfo } from './interface';
+import type { CascaderOption, CascaderOptionInfo } from './interface';
 import IconRight from '../icon/icon-right';
+import IconLoading from '../icon/icon-loading';
 import { getCheckedStatus } from './utils';
 import { isFunction } from '../_utils/is';
+import { cascaderInjectionKey } from './context';
 
 export default defineComponent({
   name: 'CascaderOption',
@@ -18,39 +21,57 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       required: true,
     },
-    isActive: Boolean,
+    active: Boolean,
     multiple: Boolean,
-    expandTrigger: {
-      type: String,
-    },
+    expandTrigger: String,
     checkStrictly: Boolean,
     searchOption: Boolean,
   },
-  emits: ['clickOption', 'activeChange', 'pathChange'],
-  setup(props, { emit }) {
+  setup(props) {
     const prefixCls = getPrefixCls('cascader-option');
+    const cascaderCtx = inject(cascaderInjectionKey, undefined);
 
+    const isLoading = ref(false);
     const events: Record<string, any> = {};
 
+    const handlePathChange = (ev: Event) => {
+      if (isFunction(cascaderCtx?.loadMore) && !props.option.isLeaf) {
+        const { isLeaf, children, key } = props.option;
+        if (!isLeaf && !children) {
+          isLoading.value = true;
+          new Promise<CascaderOption[] | undefined>((resolve) => {
+            cascaderCtx?.loadMore(props.option, resolve);
+          }).then((children?: CascaderOption[]) => {
+            isLoading.value = false;
+            if (children) {
+              cascaderCtx?.addLazyLoadOptions(children, key);
+            }
+          });
+        }
+      }
+      cascaderCtx?.setSelectedPath(props.option.key);
+    };
+
     if (!props.option.disabled) {
-      events.onMouseenter = [() => emit('activeChange', props.option)];
-      events.onMouseleave = () => emit('activeChange');
+      events.onMouseenter = [() => cascaderCtx?.setActiveKey(props.option.key)];
+      events.onMouseleave = () => cascaderCtx?.setActiveKey();
+
       if (props.option.isLeaf && !props.multiple) {
-        events.onClick = () => {
-          emit('clickOption', props.option);
-          emit('pathChange', props.option);
+        events.onClick = (ev: Event) => {
+          handlePathChange(ev);
+          cascaderCtx?.onClickOption(props.option);
         };
       } else if (props.expandTrigger === 'hover') {
-        events.onMouseenter.push(() => emit('pathChange', props.option));
+        events.onMouseenter.push((ev: Event) => handlePathChange(ev));
       } else {
-        events.onClick = () => emit('pathChange', props.option);
+        events.onClick = (ev: Event) => handlePathChange(ev);
       }
     }
 
     const cls = computed(() => [
       prefixCls,
       {
-        [`${prefixCls}-active`]: props.isActive,
+        [`${prefixCls}-active`]: props.active,
         [`${prefixCls}-disabled`]: props.option.disabled,
       },
     ]);
@@ -72,6 +93,16 @@ export default defineComponent({
       return props.option.label;
     };
 
+    const renderIcon = () => {
+      if (isLoading.value) {
+        return <IconLoading />;
+      }
+      if (!props.searchOption && !props.option.isLeaf) {
+        return <IconRight />;
+      }
+      return null;
+    };
+
     return () => (
       <li class={cls.value} {...events}>
         {props.multiple && (
@@ -79,9 +110,13 @@ export default defineComponent({
             modelValue={checkedStatus.value.checked}
             indeterminate={checkedStatus.value.indeterminate}
             disabled={props.option.disabled}
-            onClick={(e: Event) => {
-              emit('clickOption', props.option, !checkedStatus.value.checked);
-              emit('pathChange', props.option);
+            onClick={(ev: Event) => {
+              ev.stopPropagation();
+              handlePathChange(ev);
+              cascaderCtx?.onClickOption(
+                props.option,
+                !checkedStatus.value.checked
+              );
             }}
           />
         )}
@@ -89,15 +124,16 @@ export default defineComponent({
           <Radio
             modelValue={props.computedKeys.includes(props.option.key)}
             disabled={props.option.disabled}
-            onClick={(e: Event) => {
-              emit('clickOption', props.option, true);
-              emit('pathChange', props.option);
+            onClick={(ev: Event) => {
+              ev.stopPropagation();
+              handlePathChange(ev);
+              cascaderCtx?.onClickOption(props.option, true);
             }}
           />
         )}
         <div class={`${prefixCls}-label`}>
           {renderLabelContent()}
-          {!props.searchOption && !props.option.isLeaf && <IconRight />}
+          {renderIcon()}
         </div>
       </li>
     );

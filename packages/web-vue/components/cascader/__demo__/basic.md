@@ -18,7 +18,7 @@ The basic usage of cascader.
 
 ```vue
 <template>
-  <a-space>
+  <a-space direction="vertical" size="large">
     <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." />
     <a-cascader :options="options" default-value="datunli" expand-trigger="hover" :style="{width:'320px'}" placeholder="Please select ..." />
   </a-space>

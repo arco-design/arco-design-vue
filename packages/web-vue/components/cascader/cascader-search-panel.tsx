@@ -11,16 +11,14 @@ export default defineComponent({
       type: Array as PropType<CascaderOptionInfo[]>,
       required: true,
     },
-    multiple: Boolean,
     computedKeys: {
-      type: Array,
+      type: Array as PropType<string[]>,
+      required: true,
     },
-    activeNode: {
-      type: Object,
-    },
+    activeKey: String,
+    multiple: Boolean,
   },
-  emits: ['clickOption', 'activeChange'],
-  setup(props, { emit }) {
+  setup(props) {
     const prefixCls = getPrefixCls('cascader');
 
     const renderEmpty = () => {
@@ -45,16 +43,9 @@ export default defineComponent({
                 class={`${prefixCls}-search-option`}
                 option={item}
                 computedKeys={props.computedKeys}
-                isActive={item.key === props.activeNode?.key}
+                active={item.key === props.activeKey}
                 multiple={props.multiple}
                 searchOption
-                onClickOption={(
-                  option: CascaderOptionInfo,
-                  checked?: boolean
-                ) => emit('clickOption', option, checked)}
-                onActiveChange={(option: CascaderOptionInfo) =>
-                  emit('activeChange', option)
-                }
               />
             ))}
           </ul>

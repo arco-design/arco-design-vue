@@ -18,7 +18,7 @@ Allow clear.
 
 ```vue
 <template>
-  <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." allow-clear/>
+  <a-cascader :options="options" default-value="datunli" :style="{width:'320px'}" placeholder="Please select ..." allow-clear/>
 </template>
 
 <script>
