@@ -21,13 +21,13 @@ You can use the `help` attribute or slot. The verification information will be b
 ```vue
 <template>
   <a-form :model="form" :style="{width:'600px'}">
-    <a-form-item field="name" label="Username" required>
+    <a-form-item field="name" label="Username" validate-trigger="input" required>
       <a-input v-model="form.name" placeholder="please enter your username..." />
       <template #extra>
         <div>Used to login</div>
       </template>
     </a-form-item>
-    <a-form-item field="post" label="Post" required>
+    <a-form-item field="post" label="Post" validate-trigger="input" required>
       <a-input v-model="form.post" placeholder="please enter your post..." />
       <template #extra>
         <div>Used to login</div>

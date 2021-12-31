@@ -30,5 +30,10 @@ description: Used to mention someone or something in the input, often used for p
 |change|Triggered when the value changes|value: `string`|
 |search|Trigger on dynamic search prefix|value: `string`|
 |select|Triggered when the drop-down option is selected|value: `string`|
+### `<mention>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|option|Display content of options|data: `OptionInfo`|2.13.0|
 
 

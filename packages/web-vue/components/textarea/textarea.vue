@@ -187,11 +187,13 @@ export default defineComponent({
     /**
      * @zh 用户输入时触发
      * @en Emitted when the user enters
+     * @param {string} value
      */
     'input',
     /**
      * @zh 仅在文本框失焦时触发
      * @en Only emitted when the textarea is out of focus
+     * @param {string} value
      */
     'change',
     /**

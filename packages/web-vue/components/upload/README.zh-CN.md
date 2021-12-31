@@ -63,6 +63,7 @@ description: 用户可传输文件或提交相应的内容。
 |show-cancel-button|是否显示取消按钮|`boolean`|`true`|2.11.0|
 |show-upload-button|是否显示上传按钮|`boolean`|`true`|2.11.0|
 |download|是否在 `<a>` 链接上添加 download 属性|`boolean`|`false`|2.11.0|
+|show-link|在列表模式下，如果上传的文件存在 URL 则展示链接。如果关闭仅展示文字并且点击可以触发 `preview` 事件。|`boolean`|`true`|2.13.0|
 |image-loading|`<img>` 的原生 HTML 属性，需要浏览器支持|`'eager' \| 'lazy'`|`-`|2.11.0|
 |list-type|图片列表类型|`'text' \| 'picture' \| 'picture-card'`|`'text'`||
 |response-url-key|Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片|`string \| ((fileItem: FileItem) => string)`|`-`||

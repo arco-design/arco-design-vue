@@ -35,17 +35,18 @@ exports[`<pagination> demo: render [basic] correctly 1`] = `
 exports[`<pagination> demo: render [custom] correctly 1`] = `
 "<div class=\\"arco-pagination arco-pagination-size-medium\\">
   <!---->
-  <ul class=\\"arco-pagination-list\\"><span class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937L13.171 24.937Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
-    <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"20\\"> ~1~ </li>
-    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> ~2~ </li>
-    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> ~3~ </li>
-    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> ~4~ </li>
-    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> ~5~ </li>
-    <li class=\\"arco-pagination-item arco-pagination-item-ellipsis\\" disabled=\\"false\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-question\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-        <path d=\\"M13 17c0-5.523 4.925-10 11-10s11 4.477 11 10c0 3.607-2.1 6.767-5.25 8.526C26.857 27.142 24 29.686 24 33v3m0 5h.02v.02H24V41Z\\"></path>
+  <ul class=\\"arco-pagination-list\\"><span class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-send\\" style=\\"transform: rotate(180deg);\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m14 24-7-5V7l34 17L7 41V29l7-5Zm0 0h25\\" stroke-miterlimit=\\"3.864\\"></path></svg></span>
+    <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"20\\"> - 1 - </li>
+    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> - 2 - </li>
+    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> - 3 - </li>
+    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> - 4 - </li>
+    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> - 5 - </li>
+    <li class=\\"arco-pagination-item arco-pagination-item-ellipsis\\" disabled=\\"false\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-sun-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+        <circle cx=\\"24\\" cy=\\"24\\" r=\\"9\\" fill=\\"currentColor\\" stroke=\\"none\\"></circle>
+        <path d=\\"M21 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5ZM21 37.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5ZM42.5 21a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5h5ZM10.5 21a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5h5ZM39.203 34.96a.5.5 0 0 1 0 .707l-3.536 3.536a.5.5 0 0 1-.707 0l-3.535-3.536a.5.5 0 0 1 0-.707l3.535-3.535a.5.5 0 0 1 .707 0l3.536 3.535ZM16.575 12.333a.5.5 0 0 1 0 .707l-3.535 3.535a.5.5 0 0 1-.707 0L8.797 13.04a.5.5 0 0 1 0-.707l3.536-3.536a.5.5 0 0 1 .707 0l3.535 3.536ZM13.04 39.203a.5.5 0 0 1-.707 0l-3.536-3.536a.5.5 0 0 1 0-.707l3.536-3.535a.5.5 0 0 1 .707 0l3.536 3.535a.5.5 0 0 1 0 .707l-3.536 3.536ZM35.668 16.575a.5.5 0 0 1-.708 0l-3.535-3.535a.5.5 0 0 1 0-.707l3.535-3.536a.5.5 0 0 1 .708 0l3.535 3.536a.5.5 0 0 1 0 .707l-3.535 3.535Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
       </svg></li>
-    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> ~20~ </li>
-    <!----><span class=\\"arco-pagination-item arco-pagination-item-next\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <li class=\\"arco-pagination-item\\" pages=\\"20\\"> - 20 - </li>
+    <!----><span class=\\"arco-pagination-item arco-pagination-item-next\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-send\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m14 24-7-5V7l34 17L7 41V29l7-5Zm0 0h25\\" stroke-miterlimit=\\"3.864\\"></path></svg></span>
   </ul>
   <!---->
   <!---->

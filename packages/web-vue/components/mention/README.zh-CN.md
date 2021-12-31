@@ -28,5 +28,10 @@ description: 用于在输入中提及某人或某事，常用于发布、聊天�
 |change|值发生改变时触发|value: `string`|
 |search|动态搜索时触发|value: `string`|
 |select|选择下拉选项时触发|value: `string`|
+### `<mention>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|option|选项内容|data: `OptionInfo`|2.13.0|
 
 

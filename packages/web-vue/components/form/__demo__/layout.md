@@ -18,7 +18,7 @@ The form supports three layout methods: `horizontal`, `vertical` and `inline`.
 
 ```vue
 <template>
-  <a-space direction="vertical" size="large" :style="{width: '100%'}">
+  <a-space direction="vertical" size="large" :style="{width: '600px'}">
     <a-radio-group v-model="layout" type="button">
       <a-radio value="horizontal">horizontal</a-radio>
       <a-radio value="vertical">vertical</a-radio>

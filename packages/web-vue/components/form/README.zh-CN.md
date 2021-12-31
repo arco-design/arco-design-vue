@@ -30,16 +30,17 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 ### `<form>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|model **(必填)**|表单数据对象|`object`|`-`|
-|layout|表单的布局方式，包括水平、垂直、多列|`'horizontal' \| 'vertical' \| 'inline'`|`'horizontal'`|
-|size|表单控件的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|label-col-props|标签元素布局选项。参数同 `<col>` 组件一致|`object`|` span: 5, offset: 0 `|
-|wrapper-col-props|表单控件布局选项。参数同 `<col>` 组件一致|`object`|` span: 19, offset: 0 `|
-|label-align|标签的对齐方向|`'left' \| 'right'`|`'right'`|
-|disabled|是否禁用表单|`boolean`|`-`|
-|rules|表单项校验规则|`Record<string, FieldRule \| FieldRule[]>`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|model **(必填)**|表单数据对象|`object`|`-`||
+|layout|表单的布局方式，包括水平、垂直、多列|`'horizontal' \| 'vertical' \| 'inline'`|`'horizontal'`||
+|size|表单控件的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|label-col-props|标签元素布局选项。参数同 `<col>` 组件一致|`object`|` span: 5, offset: 0 `||
+|wrapper-col-props|表单控件布局选项。参数同 `<col>` 组件一致|`object`|` span: 19, offset: 0 `||
+|label-align|标签的对齐方向|`'left' \| 'right'`|`'right'`||
+|disabled|是否禁用表单|`boolean`|`-`||
+|rules|表单项校验规则|`Record<string, FieldRule \| FieldRule[]>`|`-`||
+|auto-label-width|是否开启自动标签宽度，仅在 `layout="horizontal"` 下生效。|`boolean`|`false`|2.13.0|
 ### `<form>` Events
 
 |事件名|描述|参数|
@@ -84,7 +85,9 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |row-props|表单项布局选项。参数同 `<row>` 组件一致|`object`|`-`|2.10.0|
 |row-class|表单项布局组件的 class|`string\|array\|object`|`-`|2.10.0|
 |content-class|表单控件包裹层的 class|`string\|array\|object`|`-`|2.10.0|
-|merged-props|控制传递到子元素上的 Props。默认包括 disabled、error、size、 events 和 FormItem 上的额外属性|`(props: Record<string, any>) => Record<string, any>`|`-`|2.12.0|
+|content-flex|内容层是否开启 flex 布局|`boolean`|`true`|2.13.0|
+|merge-props|控制传递到子元素上的 Props。默认包括 disabled、error、size、 events 和 FormItem 上的额外属性|`(props: Record<string, any>) => Record<string, any>`|`true`|2.13.0|
+|label-col-flex|设置标签 `Col` 组件的 flex 属性。设置时表单 `Col` 组件的 flex 属性会被设置为 `auto`。|`number\|string`|`-`|2.13.0|
 ### `<form-item>` Slots
 
 |插槽名|描述|参数|

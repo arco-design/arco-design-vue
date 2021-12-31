@@ -16,7 +16,9 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/nest.md
 
-@import ./__demo__/table.md
+@import ./__demo__/grid.md
+
+@import ./__demo__/auto-width.md
 
 @import ./__demo__/validation.md
 
@@ -30,16 +32,17 @@ description: A form with data collection, verification and submission functions,
 
 ### `<form>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model **(required)**|Form data object|`object`|`-`|
-|layout|The layout of the form, including horizontal, vertical, and multi-column|`'horizontal' \| 'vertical' \| 'inline'`|`'horizontal'`|
-|size|The size of the form|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|label-col-props|Label element layout options. The parameters are the same as the `<col>` component|`object`|` span: 5, offset: 0 `|
-|wrapper-col-props|Form control layout options. The parameters are the same as the `<col>` component|`object`|` span: 19, offset: 0 `|
-|label-align|Alignment direction of the label|`'left' \| 'right'`|`'right'`|
-|disabled|Whether to disable the form|`boolean`|`-`|
-|rules|Form item validation rules|`Record<string, FieldRule \| FieldRule[]>`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model **(required)**|Form data object|`object`|`-`||
+|layout|The layout of the form, including horizontal, vertical, and multi-column|`'horizontal' \| 'vertical' \| 'inline'`|`'horizontal'`||
+|size|The size of the form|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|label-col-props|Label element layout options. The parameters are the same as the `<col>` component|`object`|` span: 5, offset: 0 `||
+|wrapper-col-props|Form control layout options. The parameters are the same as the `<col>` component|`object`|` span: 19, offset: 0 `||
+|label-align|Alignment direction of the label|`'left' \| 'right'`|`'right'`||
+|disabled|Whether to disable the form|`boolean`|`-`||
+|rules|Form item validation rules|`Record<string, FieldRule \| FieldRule[]>`|`-`||
+|auto-label-width|Whether to enable automatic label width, it only takes effect under `layout="horizontal"`.|`boolean`|`false`|2.13.0|
 ### `<form>` Events
 
 |Event Name|Description|Parameters|
@@ -84,7 +87,9 @@ description: A form with data collection, verification and submission functions,
 |row-props|Form item layout options. The parameters are the same as the `<row>` component|`object`|`-`|2.10.0|
 |row-class|The class of the form item layout component|`string\|array\|object`|`-`|2.10.0|
 |content-class|The class of the form control wrapping layer|`string\|array\|object`|`-`|2.10.0|
-|merged-props|Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem|`(props: Record<string, any>) => Record<string, any>`|`-`|2.12.0|
+|content-flex|Whether to enable flex layout in the content layer|`boolean`|`true`|2.13.0|
+|merge-props|Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem|`(props: Record<string, any>) => Record<string, any>`|`true`|2.13.0|
+|label-col-flex|Set the flex property of the label `Col` component. When set, the flex property of the form `Col` component will be set to `auto`.|`number\|string`|`-`|2.13.0|
 ### `<form-item>` Slots
 
 |Slot Name|Description|Parameters|
