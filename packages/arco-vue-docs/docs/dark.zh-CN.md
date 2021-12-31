@@ -16,3 +16,7 @@ document.body.setAttribute('arco-theme', 'dark')
 // 恢复亮色主题
 document.body.removeAttribute('arco-theme');
 ```
+
+## 原理和内置颜色
+
+可参考 [暗黑模式](https://arco.design/react/docs/palette) 和 [颜色](https://arco.design/react/docs/palette)
