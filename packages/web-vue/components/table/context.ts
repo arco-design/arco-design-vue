@@ -1,8 +1,15 @@
-import type { InjectionKey, Slot } from 'vue';
+import type { InjectionKey } from 'vue';
+import { TableData } from './interface';
 
 export interface TableContext {
-  expandedRow: Slot;
-  expandIcon: Slot;
+  loadMore?: (
+    record: TableData,
+    done: (children?: TableData[]) => void
+  ) => void;
+  addLazyLoadData: (
+    children: TableData[] | undefined,
+    record: TableData
+  ) => void;
 }
 
 export const tableInjectionKey: InjectionKey<TableContext> =

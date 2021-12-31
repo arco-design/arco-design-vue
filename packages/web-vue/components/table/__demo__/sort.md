@@ -7,24 +7,38 @@ title:
 ## zh-CN
 
 通过设置 `columns` 中的 `sortable` 和 `filterable` 属性，可以配置排序和筛选功能。
+通过 `filter-icon-align-left` 属性可以让筛选按钮左对齐。
 
 ---
 
 ## en-US
 
 You can configure the sorting and filtering functions by setting the `sortable` and `filterable` attributes in `columns`.
+The filter button can be aligned to the left through the `filter-icon-align-left` property.
 
 ---
 
 ```vue
 <template>
-  <a-table :columns="columns" :data="data" />
+  <a-space direction="vertical" size="large" fill>
+    <a-space>
+      <a-switch v-model="alignLeft" />
+      <span>Filter icon align left: {{alignLeft}}</span>
+    </a-space>
+    <a-table :columns="columns" :data="data" :filter-icon-align-left="alignLeft" @change="handleChange" />
+  </a-space>
 </template>
 
 <script>
 export default {
+  methods: {
+    handleChange(data, extra) {
+      console.log('change', data, extra)
+    }
+  },
   data() {
     return {
+      alignLeft: false,
       columns: [
         {
           title: 'Name',
@@ -50,7 +64,7 @@ export default {
                 value: '30000',
               }
             ],
-            filter: (value, row) => row.salary > value,
+            filter: (value, record) => record.salary > value,
             multiple: true
           }
         },

@@ -27,6 +27,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/subtree.md
 
+@import ./__demo__/lazy-load.md
+
 @import ./__demo__/props.md
 
 @import ./__demo__/sort.md

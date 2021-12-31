@@ -33,6 +33,12 @@ export interface TableData {
    * @en Whether to disable the row selector
    */
   disabled?: boolean;
+  /**
+   * @zh 是否是叶子节点
+   * @en Whether it is a leaf node
+   * @version 2.13.0
+   */
+  isLeaf?: boolean;
 
   [name: string]: any;
 }
@@ -119,6 +125,12 @@ export interface TableFilterable {
    * @en Pop-up box configuration of filter box
    */
   triggerProps?: TriggerProps;
+  /**
+   * @zh 筛选图标是否左对齐
+   * @en Whether the filter icon is aligned to the left
+   * @version 2.13.0
+   */
+  alignLeft?: boolean;
 }
 
 export interface TableColumn {

@@ -9,13 +9,15 @@
 @table-cls-td: ~'@{table-prefix-cls}-td';
 
 .expandBtn() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: @table-size-expand-button;
   height: @table-size-expand-button;
   padding: 0;
   color: @table-color-expand-icon;
   font-size: @table-font-size-expand-button;
   line-height: @table-size-expand-button;
-  vertical-align: 1px;
   background-color: @table-color-bg-expand-icon;
   border: @table-border-expand-icon-width solid @table-color-expand-icon-border;
   border-radius: @table-border-radius-expand-button;
@@ -23,10 +25,6 @@
   cursor: pointer;
   transition: background-color @transition-duration-1
     @transition-timing-function-linear;
-
-  svg {
-    vertical-align: -1px;
-  }
 
   &:hover {
     color: @table-color-expand-icon_hover;
@@ -262,8 +260,12 @@
   }
 
   &-cell-expand-icon &-cell-inline-icon {
-    margin-right: @table-spacing-expand-button-margin-right;
     display: inline-flex;
+    margin-right: @table-spacing-expand-button-margin-right;
+
+    .@{prefix}-icon-loading {
+      color: @color-primary-6;
+    }
   }
 
   &-cell-expand-icon-hidden {
@@ -308,7 +310,6 @@
   //  padding-right: @table-spacing-selection-padding-horizontal;
   //  padding-left: @table-spacing-selection-padding-horizontal;
   //}
-
   &-th&-operation,
   &-td&-operation {
     text-align: center;
@@ -351,6 +352,11 @@
     &:hover {
       background-color: @table-color-bg-header-sorted-cell_hover;
     }
+  }
+
+  &-cell-with-filter {
+    display: flex;
+    align-items: center;
   }
 
   &-cell-next-ascend &-sorter-icon {
@@ -437,6 +443,26 @@
     &-active {
       svg {
         color: @table-color-header-filters-icon_active;
+      }
+    }
+
+    &-align-left {
+      position: relative;
+      width: auto;
+      margin-left: @table-spacing-header-sorter-icon-margin-left;
+
+      svg {
+        font-size: @table-font-size-header-sorter-icon;
+      }
+
+      &:hover,
+      &-open {
+        background: none;
+      }
+
+      &:hover::before,
+      &.@{table-prefix-cls}-filters-open::before {
+        background: @table-filters-icon-bg_hover;
       }
     }
   }
