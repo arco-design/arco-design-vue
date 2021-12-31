@@ -1,8 +1,8 @@
 <template>
   <span :class="cls">
-    <span v-if="!simple" :class="`${prefixCls}-text-goto`">{{
-      t('pagination.goto')
-    }}</span>
+    <span v-if="!simple" :class="`${prefixCls}-text-goto`">
+      {{ t('pagination.goto') }}
+    </span>
     <input-number
       v-model="inputValue"
       :class="`${prefixCls}-input`"
@@ -11,9 +11,7 @@
       :size="size"
       :disabled="disabled"
       hide-button
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @press-enter="handlePressEnter"
+      @change="handleChange"
     />
     <template v-if="simple">
       <span :class="`${prefixCls}-separator`">/</span>
@@ -23,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, ref, watch } from 'vue';
+import { computed, defineComponent, nextTick, PropType, ref, watch } from 'vue';
 import { useI18n } from '../locale';
 import { getPrefixCls } from '../_utils/global-config';
 import InputNumber from '../input-number';
@@ -62,10 +60,14 @@ export default defineComponent({
     const prefixCls = getPrefixCls('pagination-jumper');
     const { t } = useI18n();
     const inputValue = ref(props.simple ? props.current : undefined);
-    const focused = ref(false);
 
-    const handleFocus = () => {
-      focused.value = true;
+    const handleChange = (value: number) => {
+      emit('change', inputValue.value);
+      nextTick(() => {
+        if (!props.simple) {
+          inputValue.value = undefined;
+        }
+      });
     };
 
     watch(
@@ -76,17 +78,6 @@ export default defineComponent({
         }
       }
     );
-
-    const handleBlur = () => {
-      emit('change', inputValue.value);
-      if (!props.simple) {
-        inputValue.value = undefined;
-      }
-    };
-
-    const handlePressEnter = () => {
-      emit('change', inputValue.value);
-    };
 
     const cls = computed(() => [
       prefixCls,
@@ -100,9 +91,7 @@ export default defineComponent({
       cls,
       t,
       inputValue,
-      handleFocus,
-      handleBlur,
-      handlePressEnter,
+      handleChange,
     };
   },
 });
