@@ -191,7 +191,7 @@ export default defineComponent({
      */
     mergeProps: {
       type: [Boolean, Function] as PropType<
-        (props: Record<string, any>) => Record<string, any>
+        boolean | ((props: Record<string, any>) => Record<string, any>)
       >,
       default: true,
     },
