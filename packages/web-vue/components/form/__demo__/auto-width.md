@@ -1,24 +1,26 @@
 ```yaml
 title:
-  zh-CN: 基本用法
-  en-US: Basic Usage
+  zh-CN: 自动标签宽度
+  en-US: Auto Label Width
 ```
 
 ## zh-CN
 
-表单的基本用法。
+设置 `auto-label-width` 开启自动标签宽度。仅在 `layout="horizontal"` 布局下生效。
+_* 目前仅在首次加载后生效。_
 
 ---
 
 ## en-US
 
-Basic usage of the form.
+Set `auto-label-width` to enable automatic label width. It only takes effect under the layout of `layout="horizontal"`.
+_* Currently it only takes effect after the first load._
 
 ---
 
 ```vue
 <template>
-  <a-form :model="form" :style="{width:'600px'}" @submit="handleSubmit">
+  <a-form :model="form" :style="{width:'600px'}" auto-label-width @submit="handleSubmit">
     <a-form-item field="name" label="Username">
       <a-input v-model="form.name" placeholder="please enter your username..." />
     </a-form-item>

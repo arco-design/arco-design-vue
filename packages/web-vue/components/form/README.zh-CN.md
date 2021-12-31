@@ -8,9 +8,15 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/layout.md
+
+@import ./__demo__/extra.md
+
 @import ./__demo__/nest.md
 
-@import ./__demo__/layout.md
+@import ./__demo__/grid.md
+
+@import ./__demo__/auto-width.md
 
 @import ./__demo__/validation.md
 
@@ -78,6 +84,14 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |row-props|表单项布局选项。参数同 `<row>` 组件一致|`object`|`-`|2.10.0|
 |row-class|表单项布局组件的 class|`string\|array\|object`|`-`|2.10.0|
 |content-class|表单控件包裹层的 class|`string\|array\|object`|`-`|2.10.0|
+|merged-props|控制传递到子元素上的 Props。默认包括 disabled、error、size、 events 和 FormItem 上的额外属性|`(props: Record<string, any>) => Record<string, any>`|`-`|2.12.0|
+### `<form-item>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|extra|额外内容|-|
+|help|帮助信息|-|
+|label|标签|-|
 
 
 

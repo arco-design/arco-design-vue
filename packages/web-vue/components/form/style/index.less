@@ -50,7 +50,8 @@
       padding-right: @form-margin-label-right;
     }
 
-    &&-error {
+    &&-error,
+    &&-has-help {
       margin-bottom: 0;
     }
   }
@@ -147,6 +148,10 @@
       white-space: normal;
     }
 
+    &&-flex {
+      box-sizing: content-box;
+    }
+
     // 用处不明
     //&-flex.@{prefix}-col {
     //  flex: 0;
@@ -166,11 +171,21 @@
   }
 
   &-item-content {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    min-height: 32px;
+    flex: 1;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 32px;
+    }
+
+    &-flex {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
   }
 
   /** slider display: block **/
