@@ -7,12 +7,14 @@ title:
 ## zh-CN
 
 有**info**, **success**, **warning**, **error**四种类型的消息提示，仅提供一个确认按钮用于关闭消息提示对话框。
+消息默认会默认开启 `simple` 和 `hideCancel`，如果想要取消可以再次设置。
 
 ---
 
 ## en-US
 
 There are four types of notice: **info**, **success**, **warning**, **error**, and only a confirmation button is provided to close the notice.
+The message defaults to enable `simple` and `hideCancel` by default, if you want to cancel, you can set it again.
 
 ---
 

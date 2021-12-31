@@ -49,8 +49,8 @@ description: Basic form components have been expanded on the basis of native con
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|input|Triggered when the user enters|-|
-|change|Only triggered when the input box is out of focus or when you press Enter|-|
+|input|Triggered when the user enters|value: `string`|
+|change|Only triggered when the input box is out of focus or when you press Enter|value: `string`|
 |press-enter|Triggered when the user presses enter|-|
 |clear|Triggered when the user clicks the clear button|-|
 |focus|Triggered when the input box gets focus|-|

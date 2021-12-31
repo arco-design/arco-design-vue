@@ -173,7 +173,7 @@ exports[`<steps> demo: render [dot] correctly 1`] = `
 
 exports[`<steps> demo: render [error] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default\\">
-  <div class=\\"arco-steps-item arco-steps-item-finish\\">
+  <div class=\\"arco-steps-item arco-steps-item-finish arco-steps-item-next-error\\">
     <!--v-if-->
     <div class=\\"arco-steps-item-node\\">
       <div class=\\"arco-steps-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">

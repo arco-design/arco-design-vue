@@ -65,6 +65,7 @@ description: Users can transfer files or submit corresponding content.
 |show-cancel-button|Whether to display the cancel button|`boolean`|`true`|2.11.0|
 |show-upload-button|Whether to display the retry button|`boolean`|`true`|2.11.0|
 |download|Whether to add download attribute to `<a>` link|`boolean`|`false`|2.11.0|
+|show-link|In the list mode, if the uploaded file has a URL, the link will be displayed. If you turn off only display text and click to trigger the `preview` event.|`boolean`|`true`|2.13.0|
 |image-loading|Native HTML attributes of `<img>`, browser support is required|`'eager' \| 'lazy'`|`-`|2.11.0|
 |list-type|Picture list type|`'text' \| 'picture' \| 'picture-card'`|`'text'`||
 |response-url-key|Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image|`string \| ((fileItem: FileItem) => string)`|`-`||

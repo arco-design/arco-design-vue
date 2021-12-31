@@ -36,8 +36,8 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|input|Emitted when the user enters|-|
-|change|Only emitted when the textarea is out of focus|-|
+|input|Emitted when the user enters|value: `string`|
+|change|Only emitted when the textarea is out of focus|value: `string`|
 |clear|Emitted when the clear button is clicked|-|
 |focus|Emitted when the textarea gets focus|-|
 |blur|Emitted when the textarea loses focus|-|
