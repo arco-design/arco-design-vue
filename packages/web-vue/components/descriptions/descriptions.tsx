@@ -120,12 +120,16 @@ export default defineComponent({
    * @en Data label
    * @slot label
    * @binding {string} label
+   * @binding {number} index
+   * @binding {DescData} data
    */
   /**
    * @zh 数据内容
    * @en Data value
    * @slot value
    * @binding {string} value
+   * @binding {number} index
+   * @binding {DescData} data
    */
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('descriptions');
@@ -202,7 +206,7 @@ export default defineComponent({
               style={labelStyle.value}
               colspan={item.span}
             >
-              {slots.label?.({ label: item.label }) ??
+              {slots.label?.({ label: item.label, index, data: item }) ??
                 (isFunction(item.label) ? item.label() : item.label)}
             </td>
           ))}
@@ -215,7 +219,7 @@ export default defineComponent({
               style={valueStyle.value}
               colspan={item.span}
             >
-              {slots.value?.({ value: item.value }) ??
+              {slots.value?.({ value: item.value, index, data: item }) ??
                 (isFunction(item.value) ? item.value() : item.value)}
             </td>
           ))}
@@ -228,7 +232,7 @@ export default defineComponent({
         {data.map((item) => (
           <>
             <td class={`${prefixCls}-item-label`} style={labelStyle.value}>
-              {slots.label?.({ label: item.label }) ??
+              {slots.label?.({ label: item.label, index, data: item }) ??
                 (isFunction(item.label) ? item.label() : item.label)}
             </td>
             <td
@@ -236,7 +240,7 @@ export default defineComponent({
               style={valueStyle.value}
               colspan={item.span * 2 - 1}
             >
-              {slots.value?.({ value: item.value }) ??
+              {slots.value?.({ value: item.value, index, data: item }) ??
                 (isFunction(item.value) ? item.value() : item.value)}
             </td>
           </>
@@ -256,14 +260,14 @@ export default defineComponent({
               class={`${prefixCls}-item-label-inline`}
               style={labelStyle.value}
             >
-              {slots.label?.({ label: item.label }) ??
+              {slots.label?.({ label: item.label, index, data: item }) ??
                 (isFunction(item.label) ? item.label() : item.label)}
             </div>
             <div
               class={`${prefixCls}-item-value-inline`}
               style={valueStyle.value}
             >
-              {slots.value?.({ value: item.value }) ??
+              {slots.value?.({ value: item.value, index, data: item }) ??
                 (isFunction(item.value) ? item.value() : item.value)}
             </div>
           </td>

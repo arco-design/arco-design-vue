@@ -34,8 +34,8 @@ description: 一般用于详情页的信息展示。
 
 |插槽名|描述|参数|
 |---|:---:|---|
-|value|数据内容|value: `string`|
-|label|数据标签|label: `string`|
+|value|数据内容|value: `string`<br>index: `number`<br>data: `DescData`|
+|label|数据标签|label: `string`<br>index: `number`<br>data: `DescData`|
 |title|标题|-|
 
 
