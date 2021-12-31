@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, ref } from 'vue';
+import { computed, defineComponent, mergeProps, PropType, ref } from 'vue';
 import { Direction, DIRECTIONS } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { getChildrenComponents } from '../_utils/vue-utils';
@@ -117,9 +117,11 @@ export default defineComponent({
     });
 
     const handleClick = (step: number, e: Event) => {
-      _current.value = step;
-      emit('update:current', step);
-      emit('change', step, e);
+      if (props.changeable) {
+        _current.value = step;
+        emit('update:current', step);
+        emit('change', step, e);
+      }
     };
 
     const getStatus = (step: number, current: number): StepStatus => {
@@ -159,11 +161,19 @@ export default defineComponent({
             labelPlacement: labelPlacement.value,
             lineLess: props.lineLess,
             type: props.type,
-            changeable: props.changeable,
             onClick: handleClick,
           };
         }
       );
+
+      children.forEach((vn, index) => {
+        const next = children[index + 1];
+        if (next && next.props?.status === 'error') {
+          vn.props = mergeProps(vn.props ?? {}, {
+            nextStepError: true,
+          });
+        }
+      });
 
       return <div class={cls.value}>{children}</div>;
     };
