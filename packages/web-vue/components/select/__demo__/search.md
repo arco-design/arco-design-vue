@@ -37,6 +37,28 @@ By setting `allow-search`, you can make the selector support searching for optio
       <a-option>Chengdu</a-option>
       <a-option>Wuhan</a-option>
     </a-select>
+    <a-select :options="options" :style="{width:'320px'}" :loading="loading" placeholder="Please select ..." multiple
+              @search="handleSearch" />
   </a-space>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      loading: false,
+      options: ['Option1', 'Option2', 'Option3']
+    }
+  },
+  methods: {
+    handleSearch(value) {
+      this.loading = true;
+      window.setTimeout(() => {
+        this.options = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`]
+        this.loading = false;
+      }, 2000)
+    }
+  }
+}
+</script>
 ```

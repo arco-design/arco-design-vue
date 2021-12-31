@@ -7,7 +7,6 @@ import {
   watch,
   onMounted,
   TransitionGroup,
-  onUpdated,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
@@ -20,6 +19,7 @@ import { TagData } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { EmitType } from '../_utils/types';
+import ResizeObserver from '../_components/resize-observer';
 
 export default defineComponent({
   name: 'InputTag',
@@ -359,14 +359,18 @@ export default defineComponent({
       }
     });
 
-    onUpdated(() => {
+    const handleResize = () => {
       if (mirrorRef.value) {
         setInputWidth(mirrorRef.value.offsetWidth);
       }
-    });
+    };
 
     watch(computedInputValue, (value) => {
-      if (inputRef.value && value !== inputRef.value.value) {
+      if (
+        inputRef.value &&
+        !isComposition.value &&
+        value !== inputRef.value.value
+      ) {
         inputRef.value.value = value;
       }
     });
@@ -397,13 +401,15 @@ export default defineComponent({
         onMousedown={handleMousedown}
         {...wrapperAttrs.value}
       >
-        <span ref={mirrorRef} class={`${prefixCls}-mirror`}>
-          {tags.value.length > 0
-            ? compositionValue.value || computedInputValue.value
-            : compositionValue.value ||
-              computedInputValue.value ||
-              props.placeholder}
-        </span>
+        <ResizeObserver onResize={handleResize}>
+          <span ref={mirrorRef} class={`${prefixCls}-mirror`}>
+            {tags.value.length > 0
+              ? compositionValue.value || computedInputValue.value
+              : compositionValue.value ||
+                computedInputValue.value ||
+                props.placeholder}
+          </span>
+        </ResizeObserver>
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
@@ -414,12 +420,12 @@ export default defineComponent({
         >
           {tags.value.map((item, index) => (
             <Tag
-              {...item.tagProps}
               key={`tag-${item.value}`}
               class={`${prefixCls}-tag`}
               closable={!props.disabled && !props.readonly && item.closable}
               visible
               onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
+              {...item.tagProps}
             >
               {slots.tag?.({ data: item }) ??
                 props.formatTag?.(item) ??
@@ -432,7 +438,6 @@ export default defineComponent({
             key="input-tag-input"
             class={`${prefixCls}-input`}
             style={inputStyle}
-            value={computedInputValue.value}
             placeholder={
               tags.value.length === 0 ? props.placeholder : undefined
             }
