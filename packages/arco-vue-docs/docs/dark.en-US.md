@@ -18,3 +18,7 @@ document.body.setAttribute('arco-theme', 'dark')
 // Restore light theme
 document.body.removeAttribute('arco-theme');
 ```
+
+## Principle and built-in colors
+
+Refer to [Dark Mode](https://arco.design/react/docs/palette) and [Color](https://arco.design/react/docs/palette)
