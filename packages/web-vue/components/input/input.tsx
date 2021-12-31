@@ -148,11 +148,13 @@ export default defineComponent({
     /**
      * @zh 用户输入时触发
      * @en Triggered when the user enters
+     * @param {string} value
      */
     'input',
     /**
      * @zh 仅在输入框失焦或按下回车时触发
      * @en Only triggered when the input box is out of focus or when you press Enter
+     * @param {string} value
      */
     'change',
     /**
@@ -300,8 +302,8 @@ export default defineComponent({
       if (e.type === 'compositionend') {
         isComposition.value = false;
         compositionValue.value = '';
-        emit('input', value, e);
         updateValue(value);
+        emit('input', value, e);
       } else {
         isComposition.value = true;
         compositionValue.value = computedValue.value + (e.data ?? '');
@@ -312,14 +314,14 @@ export default defineComponent({
       const { value } = e.target as HTMLInputElement;
 
       if (!isComposition.value) {
-        emit('input', value, e);
         updateValue(value);
+        emit('input', value, e);
       }
     };
 
     const handleClear = (ev: MouseEvent) => {
-      emit('clear', ev);
       updateValue('');
+      emit('clear', ev);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -329,16 +331,6 @@ export default defineComponent({
         emit('pressEnter', e);
       }
     };
-
-    // modelValue发生改变时，更新内部值
-    watch(
-      () => props.modelValue,
-      (value: string | undefined) => {
-        if (value !== computedValue.value) {
-          updateValue(value ?? '', false);
-        }
-      }
-    );
 
     const outerCls = computed(() => [
       `${prefixCls}-outer`,

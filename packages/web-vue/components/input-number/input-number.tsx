@@ -304,8 +304,8 @@ export default defineComponent({
 
     const handleClear = () => {
       _value.value = '';
-      emit('update:modelValue', '');
-      emit('change', '');
+      emit('update:modelValue', undefined);
+      emit('change', undefined);
     };
 
     watch(
