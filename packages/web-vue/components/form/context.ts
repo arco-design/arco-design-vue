@@ -27,6 +27,10 @@ export interface FormContext {
     field: string | string[],
     callback?: (errors: undefined | Record<string, ValidatedError>) => void
   ) => Promise<undefined | Record<string, ValidatedError>>;
+  setLabelWidth: (width: number, uid?: number) => void;
+  removeLabelWidth: (uid?: number) => void;
+  maxLabelWidth: number;
+  autoLabelWidth: boolean;
 }
 
 export interface FormItemContext {
@@ -40,6 +44,7 @@ export interface FormItemInfo {
   field: string;
   disabled: boolean;
   error: boolean;
+  labelWidth?: number;
   validate: () => Promise<any>;
   clearValidate: () => void;
   resetField: () => void;

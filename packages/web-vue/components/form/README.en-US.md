@@ -10,9 +10,13 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/layout.md
+
+@import ./__demo__/extra.md
+
 @import ./__demo__/nest.md
 
-@import ./__demo__/layout.md
+@import ./__demo__/table.md
 
 @import ./__demo__/validation.md
 
@@ -80,6 +84,14 @@ description: A form with data collection, verification and submission functions,
 |row-props|Form item layout options. The parameters are the same as the `<row>` component|`object`|`-`|2.10.0|
 |row-class|The class of the form item layout component|`string\|array\|object`|`-`|2.10.0|
 |content-class|The class of the form control wrapping layer|`string\|array\|object`|`-`|2.10.0|
+|merged-props|Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem|`(props: Record<string, any>) => Record<string, any>`|`-`|2.12.0|
+### `<form-item>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|extra|Extra content|-|
+|help|Help message|-|
+|label|Label|-|
 
 
 

@@ -96,9 +96,24 @@ export default defineComponent({
     rules: {
       type: Object as PropType<Record<string, FieldRule | FieldRule[]>>,
     },
+    /**
+     * @zh 是否开启自动标签宽度，仅在 `layout="horizontal"` 下生效。
+     * @en Whether to enable automatic label width, it only takes effect under `layout="horizontal"`.
+     * @version 2.13.0
+     */
+    autoLabelWidth: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onSubmit: {
-      type: [Function, Array] as PropType<EmitType<() => void>>,
+      type: [Function, Array] as PropType<EmitType<(data: any) => void>>,
+    },
+    onSubmitSuccess: {
+      type: [Function, Array] as PropType<EmitType<(values: any) => void>>,
+    },
+    onSubmitFailed: {
+      type: [Function, Array] as PropType<EmitType<(data: any) => void>>,
     },
   },
   emits: [
@@ -137,8 +152,17 @@ export default defineComponent({
       rules,
     } = toRefs(props);
 
+    const autoLabelWidth = computed(
+      () => props.layout === 'horizontal' && props.autoLabelWidth
+    );
+
     const fields: FormItemInfo[] = [];
     const touchedFields: FormItemInfo[] = [];
+
+    const labelWidth = reactive<Record<string, number>>({});
+    const maxLabelWidth = computed(() =>
+      Math.max(...Object.values(labelWidth))
+    );
 
     const addField = (formItemInfo: FormItemInfo) => {
       if (formItemInfo && formItemInfo.field) {
@@ -158,6 +182,18 @@ export default defineComponent({
           field.setField(data[field.field]);
         }
       });
+    };
+
+    const setLabelWidth = (width: number, uid?: number) => {
+      if (uid && labelWidth[uid] !== width) {
+        labelWidth[uid] = width;
+      }
+    };
+
+    const removeLabelWidth = (uid?: number) => {
+      if (uid) {
+        delete labelWidth[uid];
+      }
     };
 
     const resetFields = () => {
@@ -278,6 +314,10 @@ export default defineComponent({
         addField,
         removeField,
         validateField,
+        setLabelWidth,
+        removeLabelWidth,
+        maxLabelWidth,
+        autoLabelWidth,
       })
     );
 

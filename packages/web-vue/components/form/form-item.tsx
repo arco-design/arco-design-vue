@@ -26,9 +26,9 @@ import FormItemMessage from './form-item-message.vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { getValueByPath } from '../_utils/get-value-by-path';
 import { Data } from '../_utils/types';
-import usePickSlots from '../_hooks/use-pick-slots';
 import { mergeFirstChild } from '../_utils/vue-utils';
 import { getFinalValidateMessage, getFinalValidateStatus } from './utils';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'FormItem',
@@ -175,17 +175,75 @@ export default defineComponent({
      * @version 2.10.0
      */
     contentClass: [String, Array, Object],
+    /**
+     * @zh 内容层是否开启 flex 布局
+     * @en Whether to enable flex layout in the content layer
+     * @version 2.13.0
+     */
+    contentFlex: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 控制传递到子元素上的 Props。默认包括 disabled、error、size、 events 和 FormItem 上的额外属性
+     * @en Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem
+     * @version 2.13.0
+     */
+    mergeProps: {
+      type: [Boolean, Function] as PropType<
+        (props: Record<string, any>) => Record<string, any>
+      >,
+      default: true,
+    },
+    /**
+     * @zh 设置标签 `Col` 组件的 flex 属性。设置时表单 `Col` 组件的 flex 属性会被设置为 `auto`。
+     * @en Set the flex property of the label `Col` component. When set, the flex property of the form `Col` component will be set to `auto`.
+     * @version 2.13.0
+     */
+    labelColFlex: {
+      type: [Number, String],
+    },
   },
+  /**
+   * @zh 标签
+   * @en Label
+   * @slot label
+   */
+  /**
+   * @zh 帮助信息
+   * @en Help message
+   * @slot help
+   */
+  /**
+   * @zh 额外内容
+   * @en Extra content
+   * @slot extra
+   */
   setup(props, { slots, attrs }) {
     const prefixCls = getPrefixCls('form-item');
     const { field } = toRefs(props);
     const formCtx = inject(formKey, undefined);
-    const mergedLabelCol = computed(
-      () => props.labelColProps ?? formCtx?.labelColProps
-    );
-    const mergedWrapperCol = computed(
-      () => props.wrapperColProps ?? formCtx?.wrapperColProps
-    );
+
+    const mergedLabelCol = computed(() => {
+      const colProps = { ...(props.labelColProps ?? formCtx?.labelColProps) };
+      if (props.labelColFlex) {
+        colProps.flex = props.labelColFlex;
+      } else if (formCtx?.autoLabelWidth) {
+        colProps.flex = `${formCtx?.maxLabelWidth}px`;
+      }
+      return colProps;
+    });
+
+    const mergedWrapperCol = computed(() => {
+      const colProps = {
+        ...(props.wrapperColProps ?? formCtx?.wrapperColProps),
+      };
+      if (props.labelColFlex || formCtx?.autoLabelWidth) {
+        colProps.flex = 'auto';
+      }
+      return colProps;
+    });
+
     const mergedLabelStyle = computed(
       () => props.labelColStyle ?? formCtx?.labelColStyle
     );
@@ -230,12 +288,6 @@ export default defineComponent({
 
     const isRequired = computed(() =>
       mergedRules.value.some((item) => item.required)
-    );
-
-    const helpSlot = usePickSlots(slots, 'help');
-
-    const showMessage = computed(
-      () => helpSlot.value || props.help || isError.value
     );
 
     const formItemCtx = props.noStyle
@@ -316,37 +368,40 @@ export default defineComponent({
       });
     };
 
-    const validateTriggers = ([] as ValidateTrigger[]).concat(
-      props.validateTrigger
+    const validateTriggers = computed(() =>
+      ([] as ValidateTrigger[]).concat(props.validateTrigger)
     );
-    const event = validateTriggers.reduce((event, trigger) => {
-      switch (trigger) {
-        case 'change':
-          event.onChange = () => {
-            validateField();
-          };
-          return event;
-        case 'input':
-          event.onInput = () => {
-            nextTick(() => {
+
+    const event = computed(() =>
+      validateTriggers.value.reduce((event, trigger) => {
+        switch (trigger) {
+          case 'change':
+            event.onChange = () => {
               validateField();
-            });
-          };
-          return event;
-        case 'focus':
-          event.onFocus = () => {
-            validateField();
-          };
-          return event;
-        case 'blur':
-          event.onBlur = () => {
-            validateField();
-          };
-          return event;
-        default:
-          return event;
-      }
-    }, {} as Record<string, () => void>);
+            };
+            return event;
+          case 'input':
+            event.onInput = () => {
+              nextTick(() => {
+                validateField();
+              });
+            };
+            return event;
+          case 'focus':
+            event.onFocus = () => {
+              validateField();
+            };
+            return event;
+          case 'blur':
+            event.onBlur = () => {
+              validateField();
+            };
+            return event;
+          default:
+            return event;
+        }
+      }, {} as Record<string, () => void>)
+    );
 
     const clearValidate = () => {
       if (field.value) {
@@ -419,7 +474,6 @@ export default defineComponent({
         [`${prefixCls}-status-${computedValidateStatus.value}`]: Boolean(
           computedValidateStatus.value
         ),
-        [`${prefixCls}-has-help`]: Boolean(props.help),
         // [`${prefixCls}-has-feedback`]: itemStatus && props.hasFeedback,
       },
       props.rowClass,
@@ -429,7 +483,8 @@ export default defineComponent({
       `${prefixCls}-label-col`,
       {
         [`${prefixCls}-label-col-left`]: formCtx?.labelAlign === 'left',
-        [`${prefixCls}-label-col-flex`]: !mergedLabelCol.value,
+        [`${prefixCls}-label-col-flex`]:
+          formCtx?.autoLabelWidth || props.labelColFlex,
       },
     ]);
 
@@ -440,32 +495,39 @@ export default defineComponent({
       },
     ]);
 
-    const defaultSlot = usePickSlots(slots, 'default');
-
-    const isHelpMessage = computed(() => Boolean(helpSlot.value ?? props.help));
-
-    const children = computed(() => {
-      const children = defaultSlot.value?.() ?? [];
-      mergeFirstChild(children, (vn) => ({
-        ...attrs,
-        disabled: vn.props?.disabled ?? computedDisabled.value,
-        error: vn.props?.error ?? isError.value,
-        size: vn.props?.size ?? formCtx?.size,
-        ...event,
-      }));
-      return children;
-    });
-
     return () => {
+      const children = slots.default?.() ?? [];
+
+      if (props.mergeProps) {
+        mergeFirstChild(children, (vn) => {
+          const extraProps = {
+            ...attrs,
+            disabled: vn.props?.disabled ?? computedDisabled.value,
+            error: vn.props?.error ?? isError.value,
+            size: vn.props?.size ?? formCtx?.size,
+            ...event.value,
+          };
+          return isFunction(props.mergeProps)
+            ? props.mergeProps(extraProps)
+            : extraProps;
+        });
+      }
+
       if (props.noStyle) {
-        return children.value;
+        return children;
       }
 
       return (
         <ArcoRow
+          class={[
+            ...cls.value,
+            {
+              [`${prefixCls}-has-help`]: Boolean(slots.help ?? props.help),
+            },
+          ]}
+          wrap={!(props.labelColFlex || formCtx?.autoLabelWidth)}
+          div={formCtx?.layout !== 'horizontal' || props.hideLabel}
           {...props.rowProps}
-          class={cls.value}
-          div={formCtx?.layout !== 'horizontal'}
         >
           {!props.hideLabel && (
             <ArcoCol
@@ -486,16 +548,25 @@ export default defineComponent({
             style={mergedWrapperStyle.value}
             {...mergedWrapperCol.value}
           >
-            <div class={[`${prefixCls}-content`, props.contentClass]}>
-              {children.value}
-            </div>
-            {showMessage.value && (
-              <FormItemMessage
-                error={finalMessage.value}
-                isHelp={isHelpMessage.value}
+            <div class={`${prefixCls}-content-wrapper`}>
+              <div
+                class={[
+                  `${prefixCls}-content`,
+                  {
+                    [`${prefixCls}-content-flex`]: props.contentFlex,
+                  },
+                  props.contentClass,
+                ]}
               >
-                {helpSlot.value?.() ?? props.help}
-              </FormItemMessage>
+                {children}
+              </div>
+            </div>
+            {(isError.value || props.help || slots.help) && (
+              <FormItemMessage
+                v-slots={{ help: slots.help }}
+                error={finalMessage.value}
+                help={props.help}
+              />
             )}
             {(props.extra || slots.extra) && (
               <div class={`${prefixCls}-extra`}>

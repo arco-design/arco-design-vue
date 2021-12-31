@@ -1,5 +1,6 @@
+@import './token.less';
 // copy from select
-.select-color (@prefixCls, @status) {
+.select-color(@prefixCls, @status) {
   .@{prefixCls}:not(.@{prefixCls}-disabled) {
     .@{prefixCls}-view {
       background-color: ~'@{form-color-bg_@{status}}';
@@ -88,7 +89,7 @@
   }
 
   .@{prefix}-form-item-status-@{status} {
-    .@{form-prefix-cls}-message-help {
+    .@{form-prefix-cls}-item-message-help {
       color: ~'@{form-color-tip-text_@{status}}';
     }
     .@{form-prefix-cls}-item-feedback {

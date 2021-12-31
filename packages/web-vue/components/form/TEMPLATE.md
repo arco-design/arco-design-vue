@@ -19,9 +19,15 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/layout.md
+
+@import ./__demo__/extra.md
+
 @import ./__demo__/nest.md
 
-@import ./__demo__/layout.md
+@import ./__demo__/grid.md
+
+@import ./__demo__/auto-width.md
 
 @import ./__demo__/validation.md
 
