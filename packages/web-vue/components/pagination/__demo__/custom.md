@@ -20,14 +20,13 @@ The content of the paging button can be customized through the slot
 <template>
   <a-pagination :total="200">
     <template #page-item="{ page }">
-      ~{{page}}~
+      - {{page}} -
     </template>
     <template #page-item-step="{ type }">
-      <icon-caret-left v-if="type==='previous'" />
-      <icon-caret-right v-else />
+      <icon-send :style="type==='previous' ? {transform:`rotate(180deg)`} : undefined" />
     </template>
     <template #page-item-ellipsis>
-      <icon-question />
+      <icon-sun-fill />
     </template>
   </a-pagination>
 </template>
