@@ -63,5 +63,5 @@ export const getFinalValidateMessage = (
       messages.push(_message);
     }
   }
-  return messages.join(' ');
+  return messages;
 };

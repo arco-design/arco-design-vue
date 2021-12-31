@@ -1,42 +1,33 @@
 <template>
-  <div v-if="isHelp" :class="cls">
-    <slot />
-  </div>
-  <transition v-else name="form-blink" appear>
-    <div :class="cls">
-      <slot>
-        {{ error }}
+  <transition v-if="help || $slots.help" name="form-blink" appear>
+    <div :class="[prefixCls, `${prefixCls}-help`]">
+      <slot name="help">
+        {{ help }}
       </slot>
+    </div>
+  </transition>
+  <transition v-for="item of error" v-else :key="item" name="form-blink" appear>
+    <div :class="[prefixCls]">
+      {{ item }}
     </div>
   </transition>
 </template>
 
 <script lang="tsx">
-import { computed, defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 
 export default defineComponent({
   name: 'FormItemMessage',
   props: {
-    error: String,
-    isHelp: {
-      type: Boolean,
-      default: false,
-    },
+    error: Array,
+    help: String,
   },
-  setup(props) {
+  setup() {
     const prefixCls = getPrefixCls('form-item-message');
-
-    const cls = computed(() => [
-      prefixCls,
-      {
-        [`${prefixCls}-help`]: props.isHelp,
-      },
-    ]);
 
     return {
       prefixCls,
-      cls,
     };
   },
 });
