@@ -8,13 +8,16 @@ description: 明示任务流程和当前完成程度，引导用户按照步骤�
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/small.md
+
 @import ./__demo__/description.md
+
+@import ./__demo__/icon.md
 
 @import ./__demo__/label-placement.md
 
 @import ./__demo__/error.md
 
-@import ./__demo__/icon.md
 
 @import ./__demo__/line-less.md
 
@@ -22,11 +25,15 @@ description: 明示任务流程和当前完成程度，引导用户按照步骤�
 
 @import ./__demo__/arrow.md
 
+@import ./__demo__/small-arrow.md
+
+@import ./__demo__/changeable.md
+
 @import ./__demo__/dot.md
 
 @import ./__demo__/navigation.md
 
-@import ./__demo__/changeable.md
+@import ./__demo__/custom-node.md
 
 
 ### `<steps>` Props

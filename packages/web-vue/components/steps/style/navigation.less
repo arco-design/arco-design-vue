@@ -25,14 +25,14 @@
     }
 
     &-active::after {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: calc(100% - 50px);
-      height: 2px;
-      background-color: @color-primary-6;
       content: '';
+      position: absolute;
+      display: block;
+      height: 2px;
+      left: @steps-navigation-spacing-ink-left;
+      right: @steps-navigation-spacing-ink-right;
+      bottom: 0;
+      background-color: @color-primary-6;
     }
 
     &-active:last-child::after {

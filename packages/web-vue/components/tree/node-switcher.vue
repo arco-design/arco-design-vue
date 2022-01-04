@@ -93,7 +93,15 @@ export default defineComponent({
       { class: `${prefixCls}-switcher-icon`, onClick },
       icon
     );
-    return needIconHover ? h(IconHover, () => content) : content;
+    return needIconHover
+      ? h(
+          IconHover,
+          {
+            class: `${prefixCls}-icon-hover`,
+          },
+          () => content
+        )
+      : content;
   },
 });
 </script>

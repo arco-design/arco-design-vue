@@ -1,6 +1,6 @@
 ```yaml
 title:
-  zh-CN: 错误状态
+  zh-CN: 步骤错误
   en-US: Error Status
 ```
 

@@ -1,25 +1,26 @@
 ```yaml
 title:
-  zh-CN: 基本用法
-  en-US: Basic Usage
+  zh-CN: 小型步骤条
+  en-US: small steps
 ```
 
 ## zh-CN
 
-步骤条的基本用法。
+通过 `small` 可以设置展示小型步骤条
+
 
 ---
 
 ## en-US
 
-Basic usage of the step bar.
+small steps
 
 ---
 
 ```vue
 <template>
   <div>
-    <a-steps :current="2">
+    <a-steps :current="2" small>
       <a-step>Succeeded</a-step>
       <a-step>Processing</a-step>
       <a-step>Pending</a-step>

@@ -30,72 +30,149 @@ exports[`<steps> demo: render [arrow] correctly 1`] = `
 `;
 
 exports[`<steps> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default\\">
-  <div class=\\"arco-steps-item arco-steps-item-finish\\">
-    <!--v-if-->
-    <div class=\\"arco-steps-item-node\\">
-      <div class=\\"arco-steps-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-          <path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path>
-        </svg></div>
-    </div>
-    <div class=\\"arco-steps-item-content\\">
-      <div class=\\"arco-steps-item-title\\">Succeeded</div>
+"<div>
+  <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default\\">
+    <div class=\\"arco-steps-item arco-steps-item-finish\\">
       <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path>
+          </svg></div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Succeeded</div>
+        <!--v-if-->
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-process arco-steps-item-active\\">
+      <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\">2</div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Processing</div>
+        <!--v-if-->
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\">3</div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Pending</div>
+        <!--v-if-->
+      </div>
     </div>
   </div>
-  <div class=\\"arco-steps-item arco-steps-item-process arco-steps-item-active\\">
-    <!--v-if-->
-    <div class=\\"arco-steps-item-node\\">
-      <div class=\\"arco-steps-icon\\">2</div>
-    </div>
-    <div class=\\"arco-steps-item-content\\">
-      <div class=\\"arco-steps-item-title\\">Processing</div>
+  <div class=\\"arco-divider arco-divider-horizontal\\">
+    <!---->
+  </div>
+  <div style=\\"line-height: 140px; text-align: center; color: rgb(201, 205, 212);\\"> Step 2 Content </div>
+</div>"
+`;
+
+exports[`<steps> demo: render [changeable] correctly 1`] = `
+"<div>
+  <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default arco-steps-changeable\\">
+    <div class=\\"arco-steps-item arco-steps-item-process arco-steps-item-active\\">
       <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\">1</div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Succeeded</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\">2</div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Processing</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\">3</div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Pending</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
     </div>
   </div>
-  <div class=\\"arco-steps-item arco-steps-item-wait\\">
-    <!--v-if-->
-    <div class=\\"arco-steps-item-node\\">
-      <div class=\\"arco-steps-icon\\">3</div>
-    </div>
-    <div class=\\"arco-steps-item-content\\">
-      <div class=\\"arco-steps-item-title\\">Pending</div>
-      <!--v-if-->
+  <div style=\\"width: 100%; height: 200px; text-align: center; color: rgb(194, 199, 204);\\">
+    <div style=\\"line-height: 160px;\\">Step1 Content</div>
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
+          <!--v-if--><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg> Back
+        </button></div>
+      <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+          <!--v-if--> Next <svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg>
+        </button></div>
     </div>
   </div>
 </div>"
 `;
 
-exports[`<steps> demo: render [changeable] correctly 1`] = `
-"<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default arco-steps-changeable\\">
-  <div class=\\"arco-steps-item arco-steps-item-process arco-steps-item-active\\">
-    <!--v-if-->
-    <div class=\\"arco-steps-item-node\\">
-      <div class=\\"arco-steps-icon\\">1</div>
+exports[`<steps> demo: render [custom-node] correctly 1`] = `
+"<div>
+  <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-vertical arco-steps-mode-default arco-steps-changeable\\">
+    <div class=\\"arco-steps-item arco-steps-item-process arco-steps-item-active\\">
+      <div class=\\"arco-steps-item-tail\\"></div>
+      <div class=\\"arco-steps-item-node\\"><span>1</span>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\"> Succeeded </div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
     </div>
-    <div class=\\"arco-steps-item-content\\">
-      <div class=\\"arco-steps-item-title\\">Succeeded</div>
-      <div class=\\"arco-steps-item-description\\">This is a description</div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <div class=\\"arco-steps-item-tail\\"></div>
+      <div class=\\"arco-steps-item-node\\"><span>2</span>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\"> Processing Succeeded </div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <div class=\\"arco-steps-item-tail\\"></div>
+      <div class=\\"arco-steps-item-node\\"><span>3</span>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Pending </div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
     </div>
   </div>
-  <div class=\\"arco-steps-item arco-steps-item-wait\\">
-    <!--v-if-->
-    <div class=\\"arco-steps-item-node\\">
-      <div class=\\"arco-steps-icon\\">2</div>
-    </div>
-    <div class=\\"arco-steps-item-content\\">
-      <div class=\\"arco-steps-item-title\\">Processing</div>
-      <div class=\\"arco-steps-item-description\\">This is a description</div>
-    </div>
-  </div>
-  <div class=\\"arco-steps-item arco-steps-item-wait\\">
-    <!--v-if-->
-    <div class=\\"arco-steps-item-node\\">
-      <div class=\\"arco-steps-icon\\">3</div>
-    </div>
-    <div class=\\"arco-steps-item-content\\">
-      <div class=\\"arco-steps-item-title\\">Pending</div>
-      <div class=\\"arco-steps-item-description\\">This is a description</div>
+  <div style=\\"margin-top: 20px; text-align: center;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
+          <!--v-if--><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
+          </svg> Back
+        </button></div>
+      <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+          <!--v-if--> Next <svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+          </svg>
+        </button></div>
     </div>
   </div>
 </div>"
@@ -354,6 +431,106 @@ exports[`<steps> demo: render [navigation] correctly 1`] = `
     <div class=\\"arco-steps-item-content\\">
       <div class=\\"arco-steps-item-title\\">Pending</div>
       <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<steps> demo: render [small] correctly 1`] = `
+"<div>
+  <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default arco-steps-size-small\\">
+    <div class=\\"arco-steps-item arco-steps-item-finish\\">
+      <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+            <path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path>
+          </svg></div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Succeeded</div>
+        <!--v-if-->
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-process arco-steps-item-active\\">
+      <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\">2</div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Processing</div>
+        <!--v-if-->
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <!--v-if-->
+      <div class=\\"arco-steps-item-node\\">
+        <div class=\\"arco-steps-icon\\">3</div>
+      </div>
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Pending</div>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-divider arco-divider-horizontal\\">
+    <!---->
+  </div>
+  <div style=\\"line-height: 140px; text-align: center; color: rgb(201, 205, 212);\\"> Step 2 Content </div>
+</div>"
+`;
+
+exports[`<steps> demo: render [small-arrow] correctly 1`] = `
+"<div>
+  <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-arrow arco-steps-size-small\\" style=\\"margin-bottom: 20px;\\">
+    <div class=\\"arco-steps-item arco-steps-item-finish\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Succeeded</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-process arco-steps-item-active\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Processing</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Pending</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-arrow arco-steps-size-small\\">
+    <div class=\\"arco-steps-item arco-steps-item-finish arco-steps-item-next-error\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Succeeded</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-error arco-steps-item-active\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Processing</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
+    </div>
+    <div class=\\"arco-steps-item arco-steps-item-wait\\">
+      <!--v-if-->
+      <!--v-if-->
+      <div class=\\"arco-steps-item-content\\">
+        <div class=\\"arco-steps-item-title\\">Pending</div>
+        <div class=\\"arco-steps-item-description\\">This is a description</div>
+      </div>
     </div>
   </div>
 </div>"

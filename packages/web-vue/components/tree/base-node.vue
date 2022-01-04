@@ -46,14 +46,13 @@
       </NodeSwitcher>
     </span>
     <!-- checkbox -->
-    <span v-if="checkable">
-      <Checkbox
-        :disabled="disableCheckbox || disabled"
-        :model-value="checked"
-        :indeterminate="indeterminate"
-        @change="onCheckboxChange"
-      />
-    </span>
+    <Checkbox
+      v-if="checkable"
+      :disabled="disableCheckbox || disabled"
+      :model-value="checked"
+      :indeterminate="indeterminate"
+      @change="onCheckboxChange"
+    />
 
     <!-- 内容 -->
     <span
