@@ -2,6 +2,11 @@
 
 @arco-theme-tag: body; // css 变量定义的选择器
 
+@arco-vars-prefix: ~''; // css 变量的前缀
+
+// --arco-color-white or --color-white
+@arco-cssvars-prefix: if(@arco-vars-prefix = ~'', -, ~'--@{arco-vars-prefix}');
+
 /******** borderSize *******/
 
 @border-none: 0;
@@ -192,76 +197,76 @@
 
 /******** Primary *******/
 
-@color-primary-1: rgb(var(--primary-1));
-@color-primary-2: rgb(var(--primary-2));
-@color-primary-3: rgb(var(--primary-3));
-@color-primary-4: rgb(var(--primary-4));
-@color-primary-5: rgb(var(--primary-5));
-@color-primary-6: rgb(var(--primary-6));
-@color-primary-7: rgb(var(--primary-7));
-@color-primary-8: rgb(var(--primary-8));
-@color-primary-9: rgb(var(--primary-9));
-@color-primary-10: rgb(var(--primary-10));
+@color-primary-1: rgb(var(~'@{arco-cssvars-prefix}-primary-1'));
+@color-primary-2: rgb(var(~'@{arco-cssvars-prefix}-primary-2'));
+@color-primary-3: rgb(var(~'@{arco-cssvars-prefix}-primary-3'));
+@color-primary-4: rgb(var(~'@{arco-cssvars-prefix}-primary-4'));
+@color-primary-5: rgb(var(~'@{arco-cssvars-prefix}-primary-5'));
+@color-primary-6: rgb(var(~'@{arco-cssvars-prefix}-primary-6'));
+@color-primary-7: rgb(var(~'@{arco-cssvars-prefix}-primary-7'));
+@color-primary-8: rgb(var(~'@{arco-cssvars-prefix}-primary-8'));
+@color-primary-9: rgb(var(~'@{arco-cssvars-prefix}-primary-9'));
+@color-primary-10: rgb(var(~'@{arco-cssvars-prefix}-primary-10'));
 
 /******** success *******/
 
-@color-success-1: rgb(var(--success-1));
-@color-success-2: rgb(var(--success-2));
-@color-success-3: rgb(var(--success-3));
-@color-success-4: rgb(var(--success-4));
-@color-success-5: rgb(var(--success-5));
-@color-success-6: rgb(var(--success-6));
-@color-success-7: rgb(var(--success-7));
-@color-success-8: rgb(var(--success-8));
-@color-success-9: rgb(var(--success-9));
-@color-success-10: rgb(var(--success-10));
+@color-success-1: rgb(var(~'@{arco-cssvars-prefix}-success-1'));
+@color-success-2: rgb(var(~'@{arco-cssvars-prefix}-success-2'));
+@color-success-3: rgb(var(~'@{arco-cssvars-prefix}-success-3'));
+@color-success-4: rgb(var(~'@{arco-cssvars-prefix}-success-4'));
+@color-success-5: rgb(var(~'@{arco-cssvars-prefix}-success-5'));
+@color-success-6: rgb(var(~'@{arco-cssvars-prefix}-success-6'));
+@color-success-7: rgb(var(~'@{arco-cssvars-prefix}-success-7'));
+@color-success-8: rgb(var(~'@{arco-cssvars-prefix}-success-8'));
+@color-success-9: rgb(var(~'@{arco-cssvars-prefix}-success-9'));
+@color-success-10: rgb(var(~'@{arco-cssvars-prefix}-success-10'));
 
 /******** warning *******/
 
-@color-warning-1: rgb(var(--warning-1));
-@color-warning-2: rgb(var(--warning-2));
-@color-warning-3: rgb(var(--warning-3));
-@color-warning-4: rgb(var(--warning-4));
-@color-warning-5: rgb(var(--warning-5));
-@color-warning-6: rgb(var(--warning-6));
-@color-warning-7: rgb(var(--warning-7));
-@color-warning-8: rgb(var(--warning-8));
-@color-warning-9: rgb(var(--warning-9));
-@color-warning-10: rgb(var(--warning-10));
+@color-warning-1: rgb(var(~'@{arco-cssvars-prefix}-warning-1'));
+@color-warning-2: rgb(var(~'@{arco-cssvars-prefix}-warning-2'));
+@color-warning-3: rgb(var(~'@{arco-cssvars-prefix}-warning-3'));
+@color-warning-4: rgb(var(~'@{arco-cssvars-prefix}-warning-4'));
+@color-warning-5: rgb(var(~'@{arco-cssvars-prefix}-warning-5'));
+@color-warning-6: rgb(var(~'@{arco-cssvars-prefix}-warning-6'));
+@color-warning-7: rgb(var(~'@{arco-cssvars-prefix}-warning-7'));
+@color-warning-8: rgb(var(~'@{arco-cssvars-prefix}-warning-8'));
+@color-warning-9: rgb(var(~'@{arco-cssvars-prefix}-warning-9'));
+@color-warning-10: rgb(var(~'@{arco-cssvars-prefix}-warning-10'));
 
 /******** danger *******/
 
-@color-danger-1: rgb(var(--danger-1));
-@color-danger-2: rgb(var(--danger-2));
-@color-danger-3: rgb(var(--danger-3));
-@color-danger-4: rgb(var(--danger-4));
-@color-danger-5: rgb(var(--danger-5));
-@color-danger-6: rgb(var(--danger-6));
-@color-danger-7: rgb(var(--danger-7));
-@color-danger-8: rgb(var(--danger-8));
-@color-danger-9: rgb(var(--danger-9));
-@color-danger-10: rgb(var(--danger-10));
+@color-danger-1: rgb(var(~'@{arco-cssvars-prefix}-danger-1'));
+@color-danger-2: rgb(var(~'@{arco-cssvars-prefix}-danger-2'));
+@color-danger-3: rgb(var(~'@{arco-cssvars-prefix}-danger-3'));
+@color-danger-4: rgb(var(~'@{arco-cssvars-prefix}-danger-4'));
+@color-danger-5: rgb(var(~'@{arco-cssvars-prefix}-danger-5'));
+@color-danger-6: rgb(var(~'@{arco-cssvars-prefix}-danger-6'));
+@color-danger-7: rgb(var(~'@{arco-cssvars-prefix}-danger-7'));
+@color-danger-8: rgb(var(~'@{arco-cssvars-prefix}-danger-8'));
+@color-danger-9: rgb(var(~'@{arco-cssvars-prefix}-danger-9'));
+@color-danger-10: rgb(var(~'@{arco-cssvars-prefix}-danger-10'));
 
 /******** link *******/
 
-@color-link-1: rgb(var(--link-1));
-@color-link-2: rgb(var(--link-2));
-@color-link-3: rgb(var(--link-3));
-@color-link-4: rgb(var(--link-4));
-@color-link-5: rgb(var(--link-5));
-@color-link-6: rgb(var(--link-6));
-@color-link-7: rgb(var(--link-7));
-@color-link-8: rgb(var(--link-8));
-@color-link-9: rgb(var(--link-9));
-@color-link-10: rgb(var(--link-10));
+@color-link-1: rgb(var(~'@{arco-cssvars-prefix}-link-1'));
+@color-link-2: rgb(var(~'@{arco-cssvars-prefix}-link-2'));
+@color-link-3: rgb(var(~'@{arco-cssvars-prefix}-link-3'));
+@color-link-4: rgb(var(~'@{arco-cssvars-prefix}-link-4'));
+@color-link-5: rgb(var(~'@{arco-cssvars-prefix}-link-5'));
+@color-link-6: rgb(var(~'@{arco-cssvars-prefix}-link-6'));
+@color-link-7: rgb(var(~'@{arco-cssvars-prefix}-link-7'));
+@color-link-8: rgb(var(~'@{arco-cssvars-prefix}-link-8'));
+@color-link-9: rgb(var(~'@{arco-cssvars-prefix}-link-9'));
+@color-link-10: rgb(var(~'@{arco-cssvars-prefix}-link-10'));
 
 /******** radius *******/
 
-@radius-none: var(--border-radius-none);
-@radius-small: var(--border-radius-small);
-@radius-medium: var(--border-radius-medium);
-@radius-large: var(--border-radius-large);
-@radius-circle: var(--border-radius-circle);
+@radius-none: var(~'@{arco-cssvars-prefix}-border-radius-none');
+@radius-small: var(~'@{arco-cssvars-prefix}-border-radius-small');
+@radius-medium: var(~'@{arco-cssvars-prefix}-border-radius-medium');
+@radius-large: var(~'@{arco-cssvars-prefix}-border-radius-large');
+@radius-circle: var(~'@{arco-cssvars-prefix}-border-radius-circle');
 
 // Other
 @color-white: #ffffff;
@@ -283,12 +288,12 @@
 @color-menu-light-bg: #ffffff;
 @color-spin-layer-bg: rgba(255, 255, 255, 0.6);
 @color-menu-dark-hover: fade(#fff, 4%);
-@color-tooltip-bg: rgb(var(--gray-10));
+@color-tooltip-bg: rgb(var(~'@{arco-cssvars-prefix}-gray-10'));
 
 // component
 @dark-color-tooltip-bg: #373739;
 @dark-color-spin-layer-bg: rgba(51, 51, 51, 0.6);
-@dark-color-menu-dark-hover: var(--color-fill-2);
+@dark-color-menu-dark-hover: var(~'@{arco-cssvars-prefix}-color-fill-2');
 
 // vue overwrite token
 @size-medium: @size-default;

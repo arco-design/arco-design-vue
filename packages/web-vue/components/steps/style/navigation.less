@@ -9,8 +9,9 @@
   }
 
   &-mode-navigation &-item {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-left: @steps-navigation-padding-left;
+    padding-right: @steps-navigation-spacing-arrow-right;
+    margin-right: @steps-navigation-margin-right;
 
     &:last-child {
       flex: 1;
@@ -47,7 +48,7 @@
     display: inline-block;
     width: @steps-navigation-size-arrow;
     height: @steps-navigation-size-arrow;
-    background-color: var(--color-bg-2);
+    background-color: var(~'@{arco-cssvars-prefix}-color-bg-2');
     border: @steps-navigation-size-arrow-line-width solid
       @steps-navigation-color-arrow;
     border-bottom: none;

@@ -8,7 +8,7 @@
   box-sizing: border-box;
   min-height: 60px;
   overflow: hidden;
-  background-color: var(--color-bg-popup);
+  background-color: var(~'@{arco-cssvars-prefix}-color-bg-popup');
   border: 1px solid @picker-panel-color-border;
   border-radius: @picker-container-border-radius;
   box-shadow: @popup-box-shadow-base;
@@ -68,7 +68,7 @@
 
     &-title {
       flex: 1;
-      color: var(--color-text-1);
+      color: var(~'@{arco-cssvars-prefix}-color-text-1');
       font-size: 14px;
       line-height: 24px;
       text-align: center;
@@ -262,7 +262,7 @@
     &-extra-wrapper {
       box-sizing: border-box;
       padding: 8px 24px;
-      color: var(--color-text-1);
+      color: var(~'@{arco-cssvars-prefix}-color-text-1');
       font-size: 12px;
       border-top: 1px solid @picker-panel-color-border;
     }
