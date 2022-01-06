@@ -34,11 +34,10 @@
  * @todo 添加twoChineseChars
  */
 import type { PropType } from 'vue';
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, inject } from 'vue';
 import {
   SIZES,
   BORDER_SHAPES,
-  STATUSES,
   BorderShape,
   Status,
   Size,
@@ -47,6 +46,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 const BUTTON_TYPES = [
   'primary',
@@ -103,13 +103,12 @@ export default defineComponent({
      * @zh 按钮的尺寸
      * @en Button size
      * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
-      validator: (value: any) => {
-        return SIZES.includes(value);
-      },
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 按钮的宽度是否随容器自适应。

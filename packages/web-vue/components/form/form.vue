@@ -8,6 +8,7 @@
 import {
   computed,
   defineComponent,
+  inject,
   PropType,
   provide,
   reactive,
@@ -19,6 +20,7 @@ import { Size } from '../_utils/constant';
 import { isArray, isFunction } from '../_utils/is';
 import { FieldData, FieldRule, ValidatedError } from './interface';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
 type FormLayout = typeof FORM_LAYOUTS[number];
@@ -48,11 +50,13 @@ export default defineComponent({
     /**
      * @zh 表单控件的尺寸
      * @en The size of the form
-     * @values 'mini', 'small', 'medium', 'large'
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 标签元素布局选项。参数同 `<col>` 组件一致

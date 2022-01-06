@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, ref, watch } from 'vue';
+import { computed, defineComponent, inject, PropType, ref, watch } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber, isUndefined } from '../_utils/is';
@@ -9,7 +9,10 @@ import IconMinus from '../icon/icon-minus';
 import ArcoButton from '../button';
 import ArcoInput from '../input';
 import { EmitType } from '../_utils/types';
-import { Size, SIZES } from '../_utils/constant';
+import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
+import pick from '../_utils/pick';
+import { omit } from '../_utils/omit';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -110,14 +113,13 @@ export default defineComponent({
     /**
      * @zh 输入框大小
      * @en Input size
-     * @values 'mini', 'small', 'medium', 'large'
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
-      validator: (value: any) => {
-        return SIZES.includes(value);
-      },
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     // for JSX
     onChange: {
@@ -364,6 +366,9 @@ export default defineComponent({
       `${prefixCls}-size-${props.size}`,
     ]);
 
+    const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
+    const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
+
     const renderInput = () => {
       const inputSlots =
         props.mode === 'embed' && !props.hideButton
@@ -373,7 +378,6 @@ export default defineComponent({
       return (
         <ArcoInput
           v-slots={inputSlots}
-          {...attrs}
           ref={inputRef}
           class={cls.value}
           type="text"
@@ -381,6 +385,7 @@ export default defineComponent({
           modelValue={_value.value}
           placeholder={props.placeholder}
           disabled={props.disabled}
+          {...(props.mode === 'embed' ? attrs : inputAttrs.value)}
           onInput={handleInput}
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -396,7 +401,7 @@ export default defineComponent({
       }
 
       return (
-        <InputGroup>
+        <InputGroup {...wrapperAttrs.value}>
           <ArcoButton
             size={props.size}
             v-slots={{ icon: () => <IconMinus /> }}

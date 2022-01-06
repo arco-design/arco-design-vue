@@ -7,6 +7,7 @@ import {
   watch,
   onMounted,
   TransitionGroup,
+  inject,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
@@ -20,6 +21,7 @@ import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { EmitType } from '../_utils/types';
 import ResizeObserver from '../_components/resize-observer';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'InputTag',
@@ -95,13 +97,13 @@ export default defineComponent({
     /**
      * @zh 输入框的大小
      * @en The size of the input
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
-      validator: (value: any) => {
-        return SIZES.includes(value);
-      },
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 最多展示的标签个数，`0` 表示不限制

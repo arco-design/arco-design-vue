@@ -83,6 +83,7 @@ import {
   ref,
   toRefs,
   StyleValue,
+  inject,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue } from './interface';
@@ -104,6 +105,8 @@ import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
 import pickSubCompSlots from '../_utils/pick-sub-comp-slots';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
+import { Size } from '../_utils/constant';
 
 const isEmpty = (val: any) => {
   return !val || (isArray(val) && val.length === 0) || isEmptyObject(val);
@@ -142,12 +145,15 @@ export default defineComponent({
       type: Boolean,
     },
     /**
-     * @zh 选择框的大小。对应 `24px`, `28px`, `32px`, `36px`
-     * @en The size of the selection box. Corresponds to `24px`, `28px`, `32px`, `36px`
+     * @zh 选择框的大小
+     * @en The size of the selection box.
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      * */
     size: {
-      type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      default: 'medium',
+      type: String as PropType<Size>,
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 是否显示边框

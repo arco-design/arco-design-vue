@@ -20,6 +20,7 @@
       :multiple="multiple"
       :allow-clear="allowClear"
       :allow-search="allowSearch"
+      :size="size"
       :opened="computedPopupVisible"
       :placeholder="placeholder"
       v-bind="$attrs"
@@ -57,6 +58,7 @@
 import {
   computed,
   defineComponent,
+  inject,
   PropType,
   provide,
   reactive,
@@ -75,6 +77,8 @@ import { Data, EmitType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 import { cascaderInjectionKey } from './context';
+import { Size } from '../_utils/constant';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Cascader',
@@ -154,6 +158,17 @@ export default defineComponent({
     error: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 选择框的大小
+     * @en The size of the select
+     * @values 'mini', 'small', 'medium', 'large'
+     * @defaultValue 'medium'
+     */
+    size: {
+      type: String as PropType<Size>,
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 是否允许搜索

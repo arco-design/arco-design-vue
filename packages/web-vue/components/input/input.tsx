@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref, nextTick, watch } from 'vue';
+import { computed, defineComponent, ref, nextTick, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
 import { Enter } from '../_utils/keycode';
@@ -9,6 +9,7 @@ import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { isFunction, isObject } from '../_utils/is';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 const INPUT_TYPES = ['text', 'password'] as const;
 type InputType = typeof INPUT_TYPES[number];
@@ -33,14 +34,13 @@ export default defineComponent({
     /**
      * @zh 输入框大小
      * @en Input size
-     * @values 'mini', 'small', 'medium', 'large'
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
-      validator: (value: any) => {
-        return SIZES.includes(value);
-      },
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 是否允许清空输入框

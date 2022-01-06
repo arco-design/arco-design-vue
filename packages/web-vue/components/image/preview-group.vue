@@ -62,7 +62,7 @@ export default defineComponent({
      */
     defaultCurrent: {
       type: Number,
-      default: 1,
+      default: 0,
     },
     /**
      * @zh 是否无限循环

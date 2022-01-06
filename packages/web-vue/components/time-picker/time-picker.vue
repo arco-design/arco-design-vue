@@ -68,6 +68,7 @@
 import {
   computed,
   defineComponent,
+  inject,
   nextTick,
   PropType,
   reactive,
@@ -103,6 +104,8 @@ import useIsDisabledTime from './hooks/use-is-disabled-time';
 import useMergeState from '../_hooks/use-merge-state';
 import { useI18n } from '../locale';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
+import { Size } from '../_utils/constant';
 
 export default defineComponent({
   name: 'TimePicker',
@@ -189,10 +192,13 @@ export default defineComponent({
     /**
      * @zh 输入框尺寸
      * @en Input box size
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      * */
     size: {
-      type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      default: 'medium',
+      type: String as PropType<Size>,
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 弹出框的挂载容器

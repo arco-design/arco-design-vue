@@ -6,7 +6,7 @@
 import { defineComponent, PropType, provide, reactive, toRefs } from 'vue';
 import { configProviderInjectionKey } from './context';
 import { ArcoLang } from '../locale/interface';
-import usePickSlots from '../_hooks/use-pick-slots';
+import { Size } from '../_utils/constant';
 
 export default defineComponent({
   name: 'ConfigProvider',
@@ -26,18 +26,25 @@ export default defineComponent({
     locale: {
       type: Object as PropType<ArcoLang>,
     },
+    /**
+     * @zh 大小
+     * @en Size
+     * @version 2.14.0
+     */
+    size: {
+      type: String as PropType<Size>,
+    },
   },
   setup(props, { slots }) {
-    const { prefixCls, locale } = toRefs(props);
-
-    const emptySlot = usePickSlots(slots, 'empty');
+    const { prefixCls, locale, size } = toRefs(props);
 
     provide(
       configProviderInjectionKey,
       reactive({
+        slots,
         prefixCls,
         locale,
-        emptySlot,
+        size,
       })
     );
   },
