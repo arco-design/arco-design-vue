@@ -203,6 +203,54 @@ const docs = [
   },
 ];
 
+const proDocs = [
+  {
+    name: 'start',
+    component: import('./docs/pro/start.zh-CN.md'),
+    componentEn: import('./docs/pro/start.en-US.md'),
+  },
+  {
+    name: 'npmScripts',
+    component: import('./docs/pro/npm-scripts.zh-CN.md'),
+    componentEn: import('./docs/pro/npm-scripts.en-US.md'),
+  },
+  {
+    name: 'directory',
+    component: import('./docs/pro/directory.zh-CN.md'),
+    componentEn: import('./docs/pro/directory.en-US.md'),
+  },
+  {
+    name: 'layout',
+    component: import('./docs/pro/layout.zh-CN.md'),
+    componentEn: import('./docs/pro/layout.en-US.md'),
+  },
+  {
+    name: 'routesAndMenu',
+    component: import('./docs/pro/routes-and-menu.zh-CN.md'),
+    componentEn: import('./docs/pro/routes-and-menu.en-US.md'),
+  },
+  {
+    name: 'stateManagement',
+    component: import('./docs/pro/state-management.zh-CN.md'),
+    componentEn: import('./docs/pro/state-management.en-US.md'),
+  },
+  {
+    name: 'i18n',
+    component: import('./docs/pro/i18n.zh-CN.md'),
+    componentEn: import('./docs/pro/i18n.en-US.md'),
+  },
+  {
+    name: 'mock',
+    component: import('./docs/pro/mock.zh-CN.md'),
+    componentEn: import('./docs/pro/mock.en-US.md'),
+  },
+  {
+    name: 'build',
+    component: import('./docs/pro/build.zh-CN.md'),
+    componentEn: import('./docs/pro/build.en-US.md'),
+  },
+];
+
 const components = [
   {
     name: 'common',
@@ -482,7 +530,7 @@ const components = [
         componentEn: PopconfirmEn,
       },
       {
-        name: 'progress',
+        name: 'gress',
         component: Progress,
         componentEn: ProgressEn,
       },
@@ -641,6 +689,25 @@ for (const group of components) {
   componentMenu.push(menuGroup);
 }
 
+const proDocsMenu: { path: string; name: string }[] = [];
+proDocs.forEach((item) => {
+  const path = `/vue/docs/pro/${toKebabCase(item.name)}`;
+  routes.push(
+    {
+      path,
+      component: item.component,
+    },
+    {
+      path: `/vue/en-US/docs/pro/${toKebabCase(item.name)}`,
+      component: item.componentEn ?? item.component,
+    }
+  );
+  proDocsMenu.push({
+    name: item.name,
+    path,
+  });
+});
+
 // Add redirects for unmatched routes at the end
 routes.push({ path: '/vue/en-US', redirect: '/vue/en-US/docs/start' });
 routes.push({ path: '/:pathMatch(.*)*', redirect: '/vue/docs/start' });
@@ -664,5 +731,16 @@ router.afterEach(() => {
   nProgress.done();
 });
 
-export { docsMenu, componentMenu };
+const docsMenuList = [
+  {
+    name: 'docs',
+    menu: docsMenu,
+  },
+  {
+    name: 'proDocs',
+    menu: proDocsMenu,
+  },
+];
+
+export { docsMenu, componentMenu, proDocsMenu, docsMenuList };
 export default router;

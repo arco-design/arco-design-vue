@@ -138,4 +138,16 @@ export default {
     logo: '商标类图标',
     general: '通用类图标',
   },
+  proDocs: {
+    name: 'Arco Pro 最佳实践',
+    start: '快速上手',
+    npmScripts: 'Npm 命令',
+    directory: '目录结构',
+    layout: '布局',
+    routesAndMenu: '路由和菜单',
+    stateManagement: '状态管理',
+    i18n: '国际化',
+    mock: '接口和数据模拟',
+    build: '打包构建',
+  },
 };

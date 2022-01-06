@@ -49,6 +49,12 @@
     line-height: 20px;
   }
 
+  .article-content {
+    &::v-deep(img) {
+      max-width: 100%;
+    }
+  }
+
   //& ::v-deep(a) {
   //  color: rgb(var(--arcoblue-6));
   //  text-decoration: none;
