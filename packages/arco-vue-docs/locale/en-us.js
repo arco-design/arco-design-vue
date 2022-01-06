@@ -138,4 +138,16 @@ export default {
     logo: 'Trademark icon',
     general: 'Universal icon',
   },
+  proDocs: {
+    name: 'Arco Pro',
+    start: 'Quick start',
+    npmScripts: 'Npm Scripts',
+    directory: 'Directory',
+    layout: 'Layout',
+    routesAndMenu: 'Routes and menu',
+    stateManagement: 'State management',
+    i18n: 'Internationalization',
+    mock: 'Interface and Mock',
+    build: 'Build',
+  },
 };

@@ -12,39 +12,44 @@
         </div>
       </div>
       <div v-show="showNav" class="aside-nav-body">
-        <div class="aside-nav-group">
-          <div class="aside-nav-group-name">{{ t('docs.name') }}</div>
-          <ul class="aside-nav-list">
-            <router-link
-              v-for="item of docsMenu"
-              :key="item.name"
-              v-slot="{ href, navigate, isActive }"
-              :to="
-                locale === 'en-US'
-                  ? item.path.replace('vue/', 'vue/en-US/')
-                  : item.path
-              "
-              custom
-            >
-              <li
-                :class="[
-                  'aside-nav-item',
-                  { 'aside-nav-item-active': isActive },
-                ]"
+        <template v-for="group in docsMenuList" :key="group.name">
+          <div class="aside-nav-group">
+            <div class="aside-nav-group-name">{{
+              t(`${group.name}.name`)
+            }}</div>
+            <ul class="aside-nav-list">
+              <router-link
+                v-for="item of group.menu"
+                :key="item.name"
+                v-slot="{ href, navigate, isActive }"
+                :to="
+                  locale === 'en-US'
+                    ? item.path.replace('vue/', 'vue/en-US/')
+                    : item.path
+                "
+                custom
               >
-                <a
-                  :href="
-                    locale === 'en-US' ? href.replace('#', '#/en-US') : href
-                  "
-                  class="aside-nav-item-link"
-                  @click="navigate"
+                <li
+                  :class="[
+                    'aside-nav-item',
+                    { 'aside-nav-item-active': isActive },
+                  ]"
                 >
-                  {{ t(`docs.${item.name}`) }}
-                </a>
-              </li>
-            </router-link>
-          </ul>
-        </div>
+                  <a
+                    :href="
+                      locale === 'en-US' ? href.replace('#', '#/en-US') : href
+                    "
+                    class="aside-nav-item-link"
+                    @click="navigate"
+                  >
+                    {{ t(`${group.name}.${item.name}`) }}
+                  </a>
+                </li>
+              </router-link>
+            </ul>
+          </div>
+        </template>
+
         <div class="aside-nav-group">
           <div class="aside-nav-group-name">{{ t('component.name') }}</div>
           <div
@@ -104,7 +109,7 @@
 <script>
 import { computed, defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { docsMenu, componentMenu } from '../../router';
+import { componentMenu, docsMenuList } from '../../router';
 
 export default defineComponent({
   name: 'AsideNav',
@@ -140,8 +145,8 @@ export default defineComponent({
 
     return {
       showNav,
-      docsMenu,
       componentMenu,
+      docsMenuList,
       t,
       locale,
       cls,
