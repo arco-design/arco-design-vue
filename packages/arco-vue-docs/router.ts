@@ -206,48 +206,48 @@ const docs = [
 const proDocs = [
   {
     name: 'start',
-    component: import('./docs/pro/start.zh-CN.md'),
-    componentEn: import('./docs/pro/start.en-US.md'),
+    component: () => import('./docs/pro/start.zh-CN.md'),
+    componentEn: () => import('./docs/pro/start.en-US.md'),
   },
   {
     name: 'npmScripts',
-    component: import('./docs/pro/npm-scripts.zh-CN.md'),
-    componentEn: import('./docs/pro/npm-scripts.en-US.md'),
+    component: () => import('./docs/pro/npm-scripts.zh-CN.md'),
+    componentEn: () => import('./docs/pro/npm-scripts.en-US.md'),
   },
   {
     name: 'directory',
-    component: import('./docs/pro/directory.zh-CN.md'),
-    componentEn: import('./docs/pro/directory.en-US.md'),
+    component: () => import('./docs/pro/directory.zh-CN.md'),
+    componentEn: () => import('./docs/pro/directory.en-US.md'),
   },
   {
     name: 'layout',
-    component: import('./docs/pro/layout.zh-CN.md'),
-    componentEn: import('./docs/pro/layout.en-US.md'),
+    component: () => import('./docs/pro/layout.zh-CN.md'),
+    componentEn: () => import('./docs/pro/layout.en-US.md'),
   },
   {
     name: 'routesAndMenu',
-    component: import('./docs/pro/routes-and-menu.zh-CN.md'),
-    componentEn: import('./docs/pro/routes-and-menu.en-US.md'),
+    component: () => import('./docs/pro/routes-and-menu.zh-CN.md'),
+    componentEn: () => import('./docs/pro/routes-and-menu.en-US.md'),
   },
   {
     name: 'stateManagement',
-    component: import('./docs/pro/state-management.zh-CN.md'),
-    componentEn: import('./docs/pro/state-management.en-US.md'),
+    component: () => import('./docs/pro/state-management.zh-CN.md'),
+    componentEn: () => import('./docs/pro/state-management.en-US.md'),
   },
   {
     name: 'i18n',
-    component: import('./docs/pro/i18n.zh-CN.md'),
-    componentEn: import('./docs/pro/i18n.en-US.md'),
+    component: () => import('./docs/pro/i18n.zh-CN.md'),
+    componentEn: () => import('./docs/pro/i18n.en-US.md'),
   },
   {
     name: 'mock',
-    component: import('./docs/pro/mock.zh-CN.md'),
-    componentEn: import('./docs/pro/mock.en-US.md'),
+    component: () => import('./docs/pro/mock.zh-CN.md'),
+    componentEn: () => import('./docs/pro/mock.en-US.md'),
   },
   {
     name: 'build',
-    component: import('./docs/pro/build.zh-CN.md'),
-    componentEn: import('./docs/pro/build.en-US.md'),
+    component: () => import('./docs/pro/build.zh-CN.md'),
+    componentEn: () => import('./docs/pro/build.en-US.md'),
   },
 ];
 
