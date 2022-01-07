@@ -57,7 +57,7 @@ export default defineConfig({
 });
 ```
 
-注意：这种方法并不会处理用户在 script 中手动导入的组件，比如 Message 组件，用户仍需要手动导入组件对应的样式文件，例如 `@arco-design/web-vue/es/index.less`。
+注意：这种方法并不会处理用户在 script 中手动导入的组件，比如 Message 组件，用户仍需要手动导入组件对应的样式文件，例如 `@arco-design/web-vue/es/message/style/css.js`。
 
 ## 按需加载
 

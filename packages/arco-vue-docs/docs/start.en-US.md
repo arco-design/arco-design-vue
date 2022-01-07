@@ -59,7 +59,7 @@ export default defineConfig({
 });
 ```
 
-Note: This method does not process the components manually imported by the user in the script, such as the Message component. The user still needs to manually import the style file corresponding to the component, such as `@arco-design/web-vue/es/index.less` .
+Note: This method does not process the components manually imported by the user in the script, such as the Message component. The user still needs to manually import the style file corresponding to the component, such as `@arco-design/web-vue/es/message/style/css.js` .
 
 ## On-demand Import
 
