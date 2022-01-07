@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.14.1
+
+`2022-01-08`
+
+### 🐛 BugFix
+
+- **form:** Fix the problem of the default size and style of the form ([#526](https://github.com/arco-design/arco-design-vue/pull/526))
+- **config-provider:** Fix the problem of loading styles on demand ([#526](https://github.com/arco-design/arco-design-vue/pull/526))
+
+
 ## 2.14.0
 
 `2022-01-07`

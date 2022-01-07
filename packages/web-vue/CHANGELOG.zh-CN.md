@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.14.1
+
+`2022-01-08`
+
+### 🐛 问题修复
+
+- **form:** 修复form默认大小样式问题 ([#526](https://github.com/arco-design/arco-design-vue/pull/526))
+- **config-provider:** 修复按需加载样式问题 ([#526](https://github.com/arco-design/arco-design-vue/pull/526))
+
+
 ## 2.14.0
 
 `2022-01-07`
