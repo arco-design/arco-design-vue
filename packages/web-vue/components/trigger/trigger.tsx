@@ -439,7 +439,7 @@ export default defineComponent({
       }
       popupStyle.value = style;
       if (props.showArrow) {
-        arrowStyle.value = getArrowStyle(position, triggerRect, {
+        arrowStyle.value = getArrowStyle(position, triggerRect, popupRect, {
           customStyle: props.arrowStyle,
         });
       }

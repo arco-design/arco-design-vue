@@ -430,6 +430,7 @@ const withRotate = (transform: string): string => {
 export const getArrowStyle = (
   position: TriggerPosition,
   triggerRect: ScrollRect,
+  popupRect: ScrollRect,
   {
     customStyle = {},
   }: {
@@ -444,20 +445,28 @@ export const getArrowStyle = (
         transform: withRotate('translate(-50%,50%)'),
         ...customStyle,
       };
-    case 'tl':
+    case 'tl': {
+      const halfWidth = triggerRect.width / 2;
       return {
-        left: `${Math.round(triggerRect.width / 2)}px`,
+        left: `${Math.round(
+          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
+        )}px`,
         bottom: '0',
         transform: withRotate('translate(-50%,50%)'),
         ...customStyle,
       };
-    case 'tr':
+    }
+    case 'tr': {
+      const halfWidth = triggerRect.width / 2;
       return {
-        right: `${Math.round(triggerRect.width / 2)}px`,
+        right: `${Math.round(
+          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
+        )}px`,
         bottom: '0',
         transform: withRotate('translate(50%,50%)'),
         ...customStyle,
       };
+    }
     case 'bottom':
       return {
         left: '50%',
@@ -465,20 +474,28 @@ export const getArrowStyle = (
         transform: withRotate('translate(-50%,-50%)'),
         ...customStyle,
       };
-    case 'bl':
+    case 'bl': {
+      const halfWidth = triggerRect.width / 2;
       return {
-        left: `${Math.round(triggerRect.width / 2)}px`,
+        left: `${Math.round(
+          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
+        )}px`,
         top: '0',
         transform: withRotate('translate(-50%,-50%)'),
         ...customStyle,
       };
-    case 'br':
+    }
+    case 'br': {
+      const halfWidth = triggerRect.width / 2;
       return {
-        right: `${Math.round(triggerRect.width / 2)}px`,
+        right: `${Math.round(
+          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
+        )}px`,
         top: '0',
         transform: withRotate('translate(50%,-50%)'),
         ...customStyle,
       };
+    }
     case 'left':
       return {
         right: '0',
@@ -486,20 +503,28 @@ export const getArrowStyle = (
         transform: withRotate('translate(50%,-50%)'),
         ...customStyle,
       };
-    case 'lt':
+    case 'lt': {
+      const halfHeight = triggerRect.height / 2;
       return {
         right: '0',
-        top: `${Math.round(triggerRect.height / 2)}px`,
+        top: `${Math.round(
+          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
+        )}px`,
         transform: withRotate('translate(50%,-50%)'),
         ...customStyle,
       };
-    case 'lb':
+    }
+    case 'lb': {
+      const halfHeight = triggerRect.height / 2;
       return {
         right: '0',
-        bottom: `${Math.round(triggerRect.height / 2)}px`,
+        bottom: `${Math.round(
+          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
+        )}px`,
         transform: withRotate('translate(50%,50%)'),
         ...customStyle,
       };
+    }
     case 'right':
       return {
         left: '0',
@@ -507,20 +532,28 @@ export const getArrowStyle = (
         transform: withRotate('translate(-50%,-50%)'),
         ...customStyle,
       };
-    case 'rt':
+    case 'rt': {
+      const halfHeight = triggerRect.height / 2;
       return {
         left: '0',
-        top: `${Math.round(triggerRect.height / 2)}px`,
+        top: `${Math.round(
+          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
+        )}px`,
         transform: withRotate('translate(-50%,-50%)'),
         ...customStyle,
       };
-    case 'rb':
+    }
+    case 'rb': {
+      const halfHeight = triggerRect.height / 2;
       return {
         left: '0',
-        bottom: `${Math.round(triggerRect.height / 2)}px`,
+        bottom: `${Math.round(
+          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
+        )}px`,
         transform: withRotate('translate(-50%,50%)'),
         ...customStyle,
       };
+    }
     default:
       return {};
   }
