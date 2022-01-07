@@ -24,8 +24,11 @@
         @after-leave="handleClose"
       >
         <div v-show="computedVisible" :class="prefixCls" :style="style">
-          <div :class="`${prefixCls}-header`">
-            <div :class="`${prefixCls}-title`">
+          <div
+            v-if="$slots.title || title || closable"
+            :class="`${prefixCls}-header`"
+          >
+            <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
               <slot name="title">{{ title }}</slot>
             </div>
             <div
