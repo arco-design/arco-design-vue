@@ -633,11 +633,19 @@ export default defineComponent({
 
     const currentAllEnabledRowKeys = computed(() => {
       const keys: string[] = [];
-      for (const record of flattenData.value) {
-        if (!record.disabled) {
-          keys.push(record[rowKey.value]);
+
+      const travel = (data: TableData[]) => {
+        for (const record of data) {
+          if (!record.disabled) {
+            keys.push(record[rowKey.value]);
+          }
+          if (record.children) {
+            travel(record.children);
+          }
         }
-      }
+      };
+      travel(flattenData.value);
+
       return keys;
     });
 
@@ -1082,6 +1090,10 @@ export default defineComponent({
       const subTreeHasSubData =
         record.children?.some((record) => Boolean(record.children)) ?? false;
 
+      const scrollContainer = isScroll.value.y
+        ? tbodyRef.value
+        : containerRef.value;
+
       return (
         <>
           <Tr
@@ -1184,7 +1196,7 @@ export default defineComponent({
                   isFixedExpand={
                     hasLeftFixedColumn.value || hasRightFixedColumn.value
                   }
-                  containerWidth={containerRef.value?.offsetWidth}
+                  containerWidth={scrollContainer?.clientWidth}
                   colSpan={dataColumns.value.length + operations.value.length}
                 >
                   {expandContent}
@@ -1330,14 +1342,16 @@ export default defineComponent({
       }
 
       return (
-        <table cellpadding={0} cellspacing={0} style={contentStyle.value}>
-          <ColGroup
-            dataColumns={dataColumns.value}
-            operations={operations.value}
-          />
-          {props.showHeader && renderHeader()}
-          {renderBody()}
-        </table>
+        <ResizeObserver onResize={() => setAlignPosition()}>
+          <table cellpadding={0} cellspacing={0} style={contentStyle.value}>
+            <ColGroup
+              dataColumns={dataColumns.value}
+              operations={operations.value}
+            />
+            {props.showHeader && renderHeader()}
+            {renderBody()}
+          </table>
+        </ResizeObserver>
       );
     };
 
