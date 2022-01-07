@@ -1,7 +1,7 @@
 <template>
   <component
     :is="component"
-    :class="cls"
+    :class="[cls, { [`${prefixCls}-has-suffix`]: Boolean($slots.suffix) }]"
     @click="handleClick"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
