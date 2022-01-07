@@ -530,7 +530,7 @@ const components = [
         componentEn: PopconfirmEn,
       },
       {
-        name: 'gress',
+        name: 'progress',
         component: Progress,
         componentEn: ProgressEn,
       },
