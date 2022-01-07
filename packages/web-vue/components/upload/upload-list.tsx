@@ -20,7 +20,6 @@ export default defineComponent({
       type: String as PropType<ListType>,
       required: true,
     },
-    showUploadButton: Boolean,
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('upload');
@@ -50,9 +49,7 @@ export default defineComponent({
     return () => (
       <TransitionGroup tag="div" class={cls.value}>
         {props.fileList.map((item, index) => renderItem(item, index))}
-        {props.listType === 'picture-card' &&
-          props.showUploadButton &&
-          slots['upload-button']?.()}
+        {props.listType === 'picture-card' && slots['upload-button']?.()}
       </TransitionGroup>
     );
   },

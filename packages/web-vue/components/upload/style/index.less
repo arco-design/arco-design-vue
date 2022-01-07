@@ -4,8 +4,8 @@
 
 .@{upload-prefix-cls} {
   display: inline-block;
-  cursor: pointer;
   max-width: 100%;
+  cursor: pointer;
 
   &&-draggable {
     width: 100%;
@@ -172,10 +172,10 @@
   }
 
   &-upload {
-    font-size: @upload-text-item-size-reupload-icon;
-    transition: all @transition-duration-2 ease;
     color: @upload-text-item-color-reupload-icon;
+    font-size: @upload-text-item-size-reupload-icon;
     cursor: pointer;
+    transition: all @transition-duration-2 ease;
 
     &:active,
     &:hover {
@@ -247,6 +247,9 @@
     }
 
     &-name {
+      display: flex;
+      flex: 1;
+      align-items: center;
       margin-right: @upload-text-item-margin-status-left;
       overflow: hidden;
       color: @upload-text-item-color-text;
@@ -254,9 +257,6 @@
       line-height: 1.4286;
       white-space: nowrap;
       text-overflow: ellipsis;
-      flex: 1;
-      display: flex;
-      align-items: center;
 
       &-link {
         overflow: hidden;
@@ -269,12 +269,13 @@
       &-text {
         overflow: hidden;
         text-overflow: ellipsis;
+        cursor: pointer;
       }
     }
 
     & .@{upload-prefix-cls}-progress {
-      margin-left: auto;
       position: relative;
+      margin-left: auto;
       line-height: @upload-text-item-size-status-icon;
 
       &:hover {

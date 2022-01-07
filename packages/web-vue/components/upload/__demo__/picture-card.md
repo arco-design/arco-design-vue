@@ -22,7 +22,7 @@ Enable the photo wall mode by setting `list-type="picture-card"`.
     list-type="picture-card"
     action="/"
     :default-file-list="fileList"
-    @preview="onPreview"
+    image-preview
   />
 </template>
 
@@ -43,21 +43,6 @@ export default {
         },
       ],
     };
-  },
-  methods: {
-    onPreview(file) {
-      this.$modal.info({
-        title: 'Preview',
-        content: (
-          <div style="text-align: center">
-            <img
-              style="max-width: 100%"
-              src={file.url || URL.createObjectURL(file.originFile)}
-            />
-          </div>
-        ),
-      });
-    },
   },
 };
 </script>

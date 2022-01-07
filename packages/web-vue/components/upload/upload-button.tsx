@@ -35,10 +35,7 @@ export default defineComponent({
       type: Function,
       required: true,
     },
-    isMax: {
-      type: Boolean,
-      default: false,
-    },
+    hide: Boolean,
     onButtonClick: {
       type: Function as PropType<(event: Event) => Promise<FileList> | void>,
     },
@@ -172,7 +169,7 @@ export default defineComponent({
         [`${prefixCls}-type-picture-card`]: props.listType === 'picture-card',
         [`${prefixCls}-draggable`]: props.draggable,
         [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-hide`]: props.isMax,
+        [`${prefixCls}-hide`]: props.hide,
       },
     ]);
 
