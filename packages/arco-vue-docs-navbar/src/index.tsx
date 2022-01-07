@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from '@arco-design/arco-site-navbar';
 import { ConfigProvider } from '@arco-design/web-react';
-import '@arco-design/web-react/dist/css/index.less';
+import './index.less';
 
 interface NavBarOptions {
   version?: string;
@@ -25,6 +25,9 @@ const ReactApp = ({
           onChangeLanguage={handleLanguageChange}
           hideSearch
           defaultVersion={version}
+          onChangeTheme={(theme: string) => {
+            document.querySelector('#react-root')?.setAttribute('arco-theme', theme)
+          }}
           loginHref={`/login?redirectUrl=${window.location.href}`}
           versions={[
             {

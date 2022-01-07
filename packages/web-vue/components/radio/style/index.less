@@ -72,7 +72,7 @@
     border-color: @radio-color-bg_checked;
 
     &::after {
-      background-color: var(--color-white);
+      background-color: var(~'@{arco-cssvars-prefix}-color-white');
       transform: scale(0.4);
     }
   }
@@ -257,10 +257,10 @@
 @{arco-theme-tag}[arco-theme='dark'] {
   .@{radio-prefix-cls}-button.@{radio-prefix-cls}-checked,
   .@{radio-prefix-cls}-button:not(.@{radio-prefix-cls}-disabled):hover {
-    background-color: var(--color-fill-3);
+    background-color: var(~'@{arco-cssvars-prefix}-color-fill-3');
   }
 
   .@{radio-prefix-cls}-button::after {
-    background-color: var(--color-bg-3);
+    background-color: var(~'@{arco-cssvars-prefix}-color-bg-3');
   }
 }
