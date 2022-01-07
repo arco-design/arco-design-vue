@@ -287,6 +287,7 @@ export default defineComponent({
 
     const handleFocus = (e: FocusEvent) => {
       focused.value = true;
+      preValue = computedValue.value;
       emit('focus', e);
     };
 
@@ -327,7 +328,8 @@ export default defineComponent({
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyCode = e.key || e.code;
       if (!isComposition.value && keyCode === Enter.key) {
-        emitChange(computedValue.value, e);
+        preValue = computedValue.value;
+        emit('change', computedValue.value, e);
         emit('pressEnter', e);
       }
     };
@@ -355,11 +357,11 @@ export default defineComponent({
     const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
     const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
 
-    const renderInput = () => (
+    const renderInput = (hasOuter?: boolean) => (
       <span
-        {...wrapperAttrs.value}
         class={wrapperCls.value}
         onMousedown={handleMousedown}
+        {...(!hasOuter ? wrapperAttrs.value : undefined)}
       >
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
@@ -407,11 +409,11 @@ export default defineComponent({
     const render = () => {
       if (slots.prepend || slots.append) {
         return (
-          <span class={outerCls.value}>
+          <span class={outerCls.value} {...wrapperAttrs}>
             {slots.prepend && (
               <span class={`${prefixCls}-prepend`}>{slots.prepend()}</span>
             )}
-            {renderInput()}
+            {renderInput(true)}
             {slots.append && (
               <span class={`${prefixCls}-append`}>{slots.append()}</span>
             )}
