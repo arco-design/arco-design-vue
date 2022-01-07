@@ -9,7 +9,7 @@ import {
   computed,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { isFunction } from '../_utils/is';
+import { isFunction, isObject } from '../_utils/is';
 import type {
   CustomIcon,
   FileItem,
@@ -21,7 +21,8 @@ import { getDataURLFromFile, uploadRequest } from './utils';
 import UploadButton from './upload-button';
 import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
-import { EmitType } from '../_utils/types';
+import { Data, EmitType } from '../_utils/types';
+import { ImagePreviewGroup } from '../image';
 
 export default defineComponent({
   name: 'Upload',
@@ -185,12 +186,14 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 是否显示上传按钮
-     * @en Whether to display the retry button
+     * @zh 是否显示上传按钮。2.14.0 版本新增 `showOnExceedLimit` 支持
+     * @en Whether to display the retry button. Added `showOnExceedLimit` support in version 2.14.0
      * @version 2.11.0
      */
     showUploadButton: {
-      type: Boolean,
+      type: [Boolean, Object] as PropType<
+        boolean | { showOnExceedLimit: boolean }
+      >,
       default: true,
     },
     /**
@@ -243,6 +246,14 @@ export default defineComponent({
      */
     customIcon: {
       type: Object as PropType<CustomIcon>,
+    },
+    /**
+     * @zh 是否使用 ImagePreview 组件进行预览
+     * @version 2.14.0
+     */
+    imagePreview: {
+      type: Boolean,
+      default: false,
     },
     /**
      * @zh 上传图片前触发
@@ -580,6 +591,14 @@ export default defineComponent({
     };
 
     const handlePreview = (fileItem: FileItem) => {
+      if (props.imagePreview) {
+        const current = imageList.value.indexOf(fileItem.url);
+        if (current > -1) {
+          imagePreviewCurrent.value = current;
+          imagePreviewVisible.value = true;
+        }
+      }
+
       emit('preview', fileItem);
     };
 
@@ -603,6 +622,16 @@ export default defineComponent({
       })
     );
 
+    const mergedAccept = computed(() => {
+      if (props.accept) {
+        return props.accept;
+      }
+      if (props.listType === 'picture' || props.listType === 'picture-card') {
+        return 'image/*';
+      }
+      return undefined;
+    });
+
     const renderButton = () => {
       const button = (
         <UploadButton
@@ -613,12 +642,19 @@ export default defineComponent({
           disabled={props.disabled}
           draggable={props.draggable}
           listType={props.listType}
-          isMax={isMax.value}
           uploadFiles={uploadFiles}
           multiple={props.multiple}
           directory={props.directory}
           tip={props.tip}
-          accept={props.accept}
+          hide={
+            !props.showUploadButton ||
+            (isMax.value &&
+              !(
+                isObject(props.showUploadButton) &&
+                props.showUploadButton.showOnExceedLimit
+              ))
+          }
+          accept={mergedAccept.value}
         />
       );
 
@@ -634,6 +670,24 @@ export default defineComponent({
       return button;
     };
 
+    const imagePreviewVisible = ref(false);
+
+    const imagePreviewCurrent = ref(0);
+
+    const handleImagePreviewChange = (current: number) => {
+      imagePreviewCurrent.value = current;
+    };
+
+    const handleImagePreviewVisibleChange = (visible: boolean) => {
+      imagePreviewVisible.value = visible;
+    };
+
+    const imageList = computed(() =>
+      _fileList.value
+        .filter((item) => Boolean(item.url))
+        .map((item) => item.url)
+    );
+
     const render = () => {
       if (!props.showFileList) {
         return props.showUploadButton && renderButton();
@@ -646,6 +700,13 @@ export default defineComponent({
             `${prefixCls}-wrapper-type-${props.listType}`,
           ]}
         >
+          <ImagePreviewGroup
+            srcList={imageList.value}
+            visible={imagePreviewVisible.value}
+            current={imagePreviewCurrent.value}
+            onChange={handleImagePreviewChange}
+            onVisibleChange={handleImagePreviewVisibleChange}
+          />
           {props.listType !== 'picture-card' &&
             props.showUploadButton &&
             renderButton()}
@@ -656,7 +717,6 @@ export default defineComponent({
             }}
             fileList={_fileList.value}
             listType={props.listType}
-            showUploadButton={props.showUploadButton}
           />
         </div>
       );
