@@ -75,7 +75,7 @@ export default defineComponent({
    */
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('statistic');
-    const { start } = toRefs(props);
+    const { start, value, now, format } = toRefs(props);
 
     const displayValue = ref(
       getDateString(
@@ -83,6 +83,16 @@ export default defineComponent({
         props.format
       )
     );
+
+    watch([value, now, format], () => {
+      const _value = getDateString(
+        Math.max(dayjs(props.value).diff(dayjs(props.now), 'millisecond'), 0),
+        props.format
+      );
+      if (_value !== displayValue.value) {
+        displayValue.value = _value;
+      }
+    });
 
     const timer = ref(0);
 
