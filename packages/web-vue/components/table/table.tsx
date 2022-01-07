@@ -255,7 +255,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-
+    /**
+     * @zh 是否在子树为空时隐藏展开按钮
+     * @en Whether to hide expand button when subtree is empty
+     * @version 2.14.0
+     */
+    hideExpandButtonOnEmpty: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onExpand: {
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
@@ -1089,7 +1097,11 @@ export default defineComponent({
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
       const hasSubTree = Boolean(
-        record.children || (props.loadMore && !record.isLeaf)
+        record.children
+          ? props.hideExpandButtonOnEmpty
+            ? record.children.length > 0
+            : true
+          : props.loadMore && !record.isLeaf
       );
       const subTreeHasSubData =
         record.children?.some((record) => Boolean(record.children)) ?? false;
