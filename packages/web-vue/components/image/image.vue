@@ -229,6 +229,7 @@ export default defineComponent({
       defaultPreviewVisible,
       previewVisible,
       preview,
+      previewProps,
     } = toRefs(props);
 
     const groupContext = inject(PreviewGroupInjectionKey, undefined);
@@ -291,7 +292,7 @@ export default defineComponent({
     watchEffect((onInvalidate) => {
       const unRegister = groupContext?.registerImageUrl?.(
         imageId,
-        src?.value || '',
+        (previewProps?.value?.src ?? src?.value) || '',
         preview.value
       );
       onInvalidate(() => {
