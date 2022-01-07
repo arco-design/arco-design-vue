@@ -1,3 +1,97 @@
+@import '../../style/mixins/index.less';
 @import './token.less';
 
 @select-prefix-cls: ~'@{prefix}-select';
+
+.@{select-prefix-cls}-dropdown {
+  box-sizing: border-box;
+  padding: @select-popup-padding-vertical 0;
+  background-color: @select-popup-color-bg;
+  border: 1px solid @select-popup-color-border;
+  border-radius: @select-popup-border-radius;
+  box-shadow: @select-popup-box-shadow;
+
+  &-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+
+    &-wrapper {
+      max-height: @select-popup-max-height;
+      overflow-y: auto;
+    }
+  }
+
+  &-option {
+    position: relative;
+    // 避免 Trigger 的小箭头位于其上方
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 @select-signal-popup-option-padding-horizontal;
+
+    // default
+    color: @select-popup-option-color-text_default;
+    font-size: @select-popup-font-size;
+    line-height: @select-popup-option-height;
+    text-align: left;
+    background-color: @select-popup-option-color-bg_default;
+    cursor: pointer;
+    .text-ellipsis();
+
+    &-has-suffix {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    // hover
+    &-active,
+    &:not(&-disabled):hover {
+      color: @select-popup-option-color-text_hover;
+      background-color: @select-popup-option-color-bg_hover;
+      transition: all @transition-duration-1 @transition-timing-function-linear;
+    }
+
+    // disabled
+    &-disabled {
+      color: @select-popup-option-color-text_disabled;
+      background-color: @select-popup-option-color-bg_disabled;
+      cursor: not-allowed;
+    }
+
+    &-icon {
+      margin-right: 8px;
+    }
+
+    //&-suffix {
+    //  margin-left: @dropdown-margin-left-suffix-icon;
+    //}
+  }
+
+  &-group {
+    &:first-child &-title {
+      margin-top: @select-popup-group-title-padding-top;
+    }
+
+    &-title {
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: @select-popup-group-title-padding-top;
+      padding: 0 @select-popup-group-title-padding-horizontal;
+      color: @select-popup-group-title-color-text;
+      font-size: @select-popup-group-title-font-size;
+      line-height: @select-popup-group-title-height;
+      cursor: default;
+      .text-ellipsis();
+    }
+  }
+
+  &&-has-footer {
+    padding-bottom: 0;
+  }
+
+  &-footer {
+    border-top: 1px solid @select-popup-color-border;
+  }
+}

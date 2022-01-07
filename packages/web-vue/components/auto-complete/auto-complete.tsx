@@ -83,6 +83,14 @@ export default defineComponent({
       type: [Boolean, Function] as PropType<FilterOption>,
       default: true,
     },
+    /**
+     * @zh trigger 组件属性
+     * @en trigger props
+     * @version 2.14.0
+     */
+    triggerProps: {
+      type: Object,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
@@ -310,6 +318,7 @@ export default defineComponent({
         popupOffset={4}
         disabled={props.disabled}
         autoFitPopupWidth
+        {...props.triggerProps}
         onPopupVisibleChange={handlePopupVisibleChange}
       >
         <ArcoInput
@@ -318,8 +327,8 @@ export default defineComponent({
           modelValue={computedValue.value}
           onInput={handleInputValueChange}
           disabled={props.disabled}
-          onKeydown={handleKeyDown}
           {...attrs}
+          onKeydown={handleKeyDown}
         />
       </Trigger>
     );
