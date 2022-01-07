@@ -149,7 +149,7 @@ export default defineComponent({
    */
   setup(props) {
     const prefixCls = getPrefixCls('statistic');
-    const innerValue = ref(props.valueFrom ?? props.value);
+    const innerValue = computed(() => props.valueFrom ?? props.value);
     const tween = ref(null);
 
     const animation = (
