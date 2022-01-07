@@ -7,6 +7,7 @@ import type {
 import {
   computed,
   defineComponent,
+  inject,
   onMounted,
   reactive,
   ref,
@@ -60,6 +61,7 @@ import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
 import { getChildrenComponents } from '../_utils/vue-utils';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -115,10 +117,12 @@ export default defineComponent({
      * @zh 表格的大小
      * @en The size of the table
      * @values 'mini','small','medium','large'
+     * @defaultValue 'large'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'large',
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'large',
     },
     /**
      * @zh 表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。

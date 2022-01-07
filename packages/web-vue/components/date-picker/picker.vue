@@ -58,6 +58,7 @@ import { Dayjs } from 'dayjs';
 import {
   computed,
   defineComponent,
+  inject,
   PropType,
   reactive,
   ref,
@@ -91,6 +92,8 @@ import { omit } from '../_utils/omit';
 import useTimePickerValue from './hooks/use-time-picker-value';
 import { mergeValueWithTime } from './utils';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
+import { Size } from '../_utils/constant';
 
 /**
  * @displayName Common
@@ -145,10 +148,13 @@ export default defineComponent({
     /**
      * @zh 日期选择器的尺寸
      * @en The size of the date picker
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      * */
     size: {
-      type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      default: 'medium',
+      type: String as PropType<Size>,
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 预设时间范围快捷选择

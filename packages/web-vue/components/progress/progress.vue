@@ -53,12 +53,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, inject, PropType } from 'vue';
 import ProgressLine from './line.vue';
 import ProgressCircle from './circle.vue';
 import ProgressSteps from './steps.vue';
 import { Size, Status } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 const PROGRESS_TYPES = ['line', 'circle'] as const;
 type ProgressType = typeof PROGRESS_TYPES[number];
@@ -83,11 +84,13 @@ export default defineComponent({
     /**
      * @zh 进度条的大小
      * @en The size of the progress bar
-     * @values 'mini', 'small', 'medium', 'large'
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 进度条当前的百分比

@@ -1,5 +1,13 @@
 import type { ComponentPublicInstance, PropType } from 'vue';
-import { computed, defineComponent, nextTick, ref, toRefs, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  inject,
+  nextTick,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { isArray, isFunction, isObject, isUndefined } from '../_utils/is';
 import { getTagDataFromModelValue } from './utils';
@@ -17,6 +25,7 @@ import { useOptions } from '../_hooks/use-options';
 import { Option, OptionData, OptionInfo, OptionNode } from './interface';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 /**
  * @displayName Select
@@ -72,11 +81,13 @@ export default defineComponent({
     /**
      * @zh 选择框的大小
      * @en The size of the select
-     * @values 'mini', 'small', 'medium', 'large'
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 占位符

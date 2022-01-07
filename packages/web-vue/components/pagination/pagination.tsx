@@ -1,5 +1,13 @@
 import type { PropType, CSSProperties } from 'vue';
-import { computed, defineComponent, reactive, ref, toRefs, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  inject,
+  reactive,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
 import type { Data, EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
@@ -12,6 +20,7 @@ import { useI18n } from '../locale';
 import { isNumber } from '../_utils/is';
 import type { PageItemType } from './interface';
 import { SelectProps } from '../select';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Pagination',
@@ -127,10 +136,12 @@ export default defineComponent({
      * @zh 分页选择器的大小
      * @en The size of the page selector
      * @values 'mini', 'small', 'medium', 'large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 分页按钮的样式

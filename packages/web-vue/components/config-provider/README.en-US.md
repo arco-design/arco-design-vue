@@ -13,9 +13,10 @@ description: Configure in the outermost layer of the application, set once, and 
 
 ### `<config-provider>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|prefix-cls|Component classname prefix|`string`|`'arco'`|
-|locale|Configure language pack|`ArcoLang`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|prefix-cls|Component classname prefix|`string`|`'arco'`||
+|locale|Configure language pack|`ArcoLang`|`-`||
+|size|Size|`Size`|`-`|2.14.0|
 
 

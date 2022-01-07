@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref } from 'vue';
+import { computed, defineComponent, inject, PropType, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconSearch from '../icon/icon-search';
@@ -7,7 +7,10 @@ import Button from '../button';
 import Input from './input';
 import InputGroup from './input-group.vue';
 import { EmitType } from '../_utils/types';
-import { Size, SIZES } from '../_utils/constant';
+import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
+import { omit } from '../_utils/omit';
+import pick from '../_utils/pick';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'InputSearch',
@@ -32,14 +35,20 @@ export default defineComponent({
     /**
      * @zh 输入框大小
      * @en Input size
-     * @values 'mini', 'small', 'medium', 'large'
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
-      validator: (value: any) => {
-        return SIZES.includes(value);
-      },
+      default: () =>
+        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
+    },
+    /**
+     * @zh 搜索按钮的属性
+     * @en Button props
+     */
+    buttonProps: {
+      type: Object,
     },
     // for JSX
     onSearch: {
@@ -82,6 +91,9 @@ export default defineComponent({
       );
     };
 
+    const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
+    const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
+
     const renderInput = () => {
       const inputSlots = {
         prepend: slots.prepend,
@@ -95,7 +107,7 @@ export default defineComponent({
           ref={inputRef}
           v-slots={inputSlots}
           size={props.size}
-          {...attrs}
+          {...(props.searchButton ? inputAttrs.value : attrs)}
         />
       );
     };
@@ -103,7 +115,7 @@ export default defineComponent({
     const render = () => {
       if (props.searchButton) {
         return (
-          <InputGroup>
+          <InputGroup {...wrapperAttrs.value}>
             {renderInput()}
             <Button
               v-slots={{
@@ -113,6 +125,7 @@ export default defineComponent({
               size={props.size}
               class={`${prefixCls}-btn`}
               loading={props.loading}
+              {...props.buttonProps}
               onClick={handleClick}
             />
           </InputGroup>

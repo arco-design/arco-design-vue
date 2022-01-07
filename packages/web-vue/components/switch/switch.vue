@@ -31,10 +31,11 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, inject, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
 import { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 const SWITCH_SIZES = ['small', 'medium'] as const;
 type SwitchSize = typeof SWITCH_SIZES[number];
@@ -92,10 +93,21 @@ export default defineComponent({
      * @zh 开关的大小
      * @en Size of switch
      * @values 'small', 'medium'
+     * @defaultValue 'medium'
      */
     size: {
       type: String as PropType<SwitchSize>,
-      default: 'medium',
+      default: () => {
+        const _size =
+          inject(configProviderInjectionKey, undefined)?.size ?? 'medium';
+        if (_size === 'mini') {
+          return 'small';
+        }
+        if (_size === 'large') {
+          return 'medium';
+        }
+        return _size;
+      },
     },
     /**
      * @zh 选中时的值
@@ -188,7 +200,8 @@ export default defineComponent({
       prefixCls,
       `${prefixCls}-type-${props.type}`,
       {
-        [`${prefixCls}-small`]: props.size === 'small',
+        [`${prefixCls}-small`]:
+          props.size === 'small' || (props.size as string) === 'mini',
         [`${prefixCls}-checked`]: computedCheck.value,
         [`${prefixCls}-disabled`]: props.disabled,
         [`${prefixCls}-loading`]: props.loading,
