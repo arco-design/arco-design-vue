@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🐛 BugFix
+
+- Fix change event trigger issue ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+- Fix the problem that the style setting is in the wrong position when there are front and rear tags ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+
+
 ## 2.12.0
 
 `2021-12-24`

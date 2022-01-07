@@ -38,6 +38,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |options|Options for cascader|`CascaderOption[]`|`[]`||
 |disabled|Whether to disable|`boolean`|`false`||
 |error|Whether it is an error state|`boolean`|`false`||
+|size|The size of the select|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |allow-search|Whether to allow searching|`boolean`|`false (single) | true (multiple)`||
 |allow-clear|Whether to allow clear|`boolean`|`false`||
 |input-value **(v-model)**|The value of the input|`string`|`-`||

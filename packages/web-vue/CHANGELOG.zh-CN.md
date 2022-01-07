@@ -2,6 +2,35 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 新增功能
+
+- **table:** 增加 hideExpandButtonOnEmpty 属性 ([#520](https://github.com/arco-design/arco-design-vue/pull/520))
+- **upload:** 增加 imagePreview 属性，可以使用内置图片预览功能 ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- **upload:** 当 `listType` 为图片类时，默认设置 accept 为 `image/*` ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- **upload:** 增加 `showOnExceedLimit` 属性 ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- **drawer:** 当没有设置 title 和 closable 时，隐藏标题栏 ([#515](https://github.com/arco-design/arco-design-vue/pull/515))
+- **statistic:** value 值支持响应式修改 ([#514](https://github.com/arco-design/arco-design-vue/pull/514))
+- **config-provider:** 增加 `size` 属性 ([#513](https://github.com/arco-design/arco-design-vue/pull/513))
+
+### 🐛 问题修复
+
+- **image:** `Image.PreviewGroup` 应该优先收集 `previewProps.src` ([#522](https://github.com/arco-design/arco-design-vue/pull/522))
+- **table:** 修复 x 轴 resize 问题 ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- **table:** 修复存在固定列时，展开行宽度设置错误的问题 ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- **table:** 修复存在子树时，复选框全选设置错误的问题 ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- **trigger:** 修复某些情况下弹出框箭头位置错误的问题 ([#518](https://github.com/arco-design/arco-design-vue/pull/518))
+- **input:** 修复 change 事件触发问题 ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+- **input:** 修复当存在前后置标签时，样式设置位置错误的问题 ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+
+### 💅 样式更新
+
+- **dropdown:** 修复选项后缀样式问题 ([#523](https://github.com/arco-design/arco-design-vue/pull/523))
+
+
 ## 2.13.0
 
 `2021-12-31`

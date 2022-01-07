@@ -60,6 +60,7 @@ description: It is used for data collection, display, analysis and processing, a
 |span-method|Cell merge method (The index starts counting from the data item)|`(data: {  record: TableData;  column: TableColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|Whether the filter icon is aligned to the left|`boolean`|`false`|2.13.0|
+|hide-expand-button-on-empty|Whether to hide expand button when subtree is empty|`boolean`|`false`|2.14.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|

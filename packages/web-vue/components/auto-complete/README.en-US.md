@@ -15,15 +15,16 @@ description: The auto-complete function of the input.
 
 ### `<auto-complete>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`string`|`-`|
-|default-value|Default value (uncontrolled mode)|`string`|`''`|
-|disabled|Whether to disable|`boolean`|`false`|
-|data|Data used for auto-complete|`Option[]`|`[]`|
-|popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
-|strict|Whether it is strict verification mode|`boolean`|`false`|
-|filter-option|Custom option filtering method|`FilterOption`|`true`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`string`|`-`||
+|default-value|Default value (uncontrolled mode)|`string`|`''`||
+|disabled|Whether to disable|`boolean`|`false`||
+|data|Data used for auto-complete|`Option[]`|`[]`||
+|popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`||
+|strict|Whether it is strict verification mode|`boolean`|`false`||
+|filter-option|Custom option filtering method|`FilterOption`|`true`||
+|trigger-props|trigger props|`object`|`-`|2.14.0|
 ### `<auto-complete>` Events
 
 |Event Name|Description|Parameters|

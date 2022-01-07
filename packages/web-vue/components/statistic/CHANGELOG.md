@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 Feature
+
+- value supports responsive modification ([#514](https://github.com/arco-design/arco-design-vue/pull/514))
+
+
 ## 2.10.0
 
 `2021-12-10`

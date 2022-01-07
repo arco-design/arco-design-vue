@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 Feature
+
+- Add hideExpandButtonOnEmpty property ([#520](https://github.com/arco-design/arco-design-vue/pull/520))
+
+### 🐛 BugFix
+
+- fix x-axis resize issue ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- Fix the problem that the width of the expanded row is incorrectly set when there are fixed columns ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- Fix the problem that the checkbox selection all is set incorrectly when there are subtrees ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+
+
 ## 2.13.0
 
 `2021-12-31`

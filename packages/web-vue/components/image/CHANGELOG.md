@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🐛 BugFix
+
+- the`Image.PreviewGroup` component should collect `previewProps.src` first ([#522](https://github.com/arco-design/arco-design-vue/pull/522))
+
+
 ## 2.4.0
 
 `2021-11-17`

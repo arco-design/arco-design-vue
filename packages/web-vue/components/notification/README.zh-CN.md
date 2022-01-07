@@ -18,7 +18,7 @@ description: 全局展示通知提醒，将信息及时有效的传达给用户�
 
 ### `Notification` 全局方法
 
-Notification提供的全局方法，可以通过以下三种方法使用：
+Notification提供的全局方法，可以通过一下三种方法使用：
 1. 通过this.$notification调用
 2. 在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$notification调用
 3. 导入Notification，通过Notification本身调用

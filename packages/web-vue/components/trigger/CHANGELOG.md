@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🐛 BugFix
+
+- Fix the problem that the arrow position of the popup box is wrong in some cases ([#518](https://github.com/arco-design/arco-design-vue/pull/518))
+
+
 ## 2.11.0
 
 `2021-12-17`

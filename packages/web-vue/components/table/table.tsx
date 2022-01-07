@@ -639,9 +639,20 @@ export default defineComponent({
       return allRowKeys;
     });
 
-    const currentAllRowKeys = computed(() =>
-      flattenData.value.map((record) => record[rowKey.value])
-    );
+    const currentAllRowKeys = computed(() => {
+      const keys: string[] = [];
+      const travel = (data: TableData[]) => {
+        for (const record of data) {
+          keys.push(record[rowKey.value]);
+          if (record.children) {
+            travel(record.children);
+          }
+        }
+      };
+      travel(flattenData.value);
+
+      return keys;
+    });
 
     const currentAllEnabledRowKeys = computed(() => {
       const keys: string[] = [];

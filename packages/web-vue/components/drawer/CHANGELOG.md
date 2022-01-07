@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 Feature
+
+- Hide the title bar when title and closable are not set ([#515](https://github.com/arco-design/arco-design-vue/pull/515))
+
+
 ## 2.12.0
 
 `2021-12-24`

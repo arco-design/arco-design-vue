@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 新增功能
+
+- 增加 hideExpandButtonOnEmpty 属性 ([#520](https://github.com/arco-design/arco-design-vue/pull/520))
+
+### 🐛 问题修复
+
+- 修复 x 轴 resize 问题 ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- 修复存在固定列时，展开行宽度设置错误的问题 ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- 修复存在子树时，复选框全选设置错误的问题 ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+
+
 ## 2.13.0
 
 `2021-12-31`

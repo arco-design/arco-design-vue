@@ -2,6 +2,35 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 Feature
+
+- **table:** Add hideExpandButtonOnEmpty property ([#520](https://github.com/arco-design/arco-design-vue/pull/520))
+- **upload:** Increase the imagePreview property, you can use the built-in image preview function ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- **upload:** When `listType` is an image class, the default accept is `image/*` ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- **upload:** Added `showOnExceedLimit` prop ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- **drawer:** Hide the title bar when title and closable are not set ([#515](https://github.com/arco-design/arco-design-vue/pull/515))
+- **statistic:** value supports responsive modification ([#514](https://github.com/arco-design/arco-design-vue/pull/514))
+- **config-provider:** Add `size` prop ([#513](https://github.com/arco-design/arco-design-vue/pull/513))
+
+### 🐛 BugFix
+
+- **image:** the`Image.PreviewGroup` component should collect `previewProps.src` first ([#522](https://github.com/arco-design/arco-design-vue/pull/522))
+- **table:** fix x-axis resize issue ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- **table:** Fix the problem that the width of the expanded row is incorrectly set when there are fixed columns ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- **table:** Fix the problem that the checkbox selection all is set incorrectly when there are subtrees ([#519](https://github.com/arco-design/arco-design-vue/pull/519))
+- **trigger:** Fix the problem that the arrow position of the popup box is wrong in some cases ([#518](https://github.com/arco-design/arco-design-vue/pull/518))
+- **input:** Fix change event trigger issue ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+- **input:** Fix the problem that the style setting is in the wrong position when there are front and rear tags ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+
+### 💅 Style
+
+- **dropdown:** fix option suffix style issue ([#523](https://github.com/arco-design/arco-design-vue/pull/523))
+
+
 ## 2.13.0
 
 `2021-12-31`

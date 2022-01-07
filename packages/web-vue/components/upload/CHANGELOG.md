@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 Feature
+
+- Increase the imagePreview property, you can use the built-in image preview function ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- When `listType` is an image class, the default accept is `image/*` ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+- Added `showOnExceedLimit` prop ([#517](https://github.com/arco-design/arco-design-vue/pull/517))
+
+
 ## 2.13.0
 
 `2021-12-31`

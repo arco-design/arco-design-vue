@@ -44,7 +44,7 @@ description: The tree structure data can be selected.
 |disabled|Whether to disable|`boolean`|`false`|
 |loading|Whether it is loading state|`boolean`|`false`|
 |error|Whether it is an error state|`boolean`|`false`|
-|size|The size of the selection box. Corresponds to `24px`, `28px`, `32px`, `36px`|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|The size of the selection box.|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |border|Whether to show the border|`boolean`|`false`|
 |allow-search|Whether to allow searching|`boolean`|`false`|
 |allow-clear|Whether to allow clear|`boolean`|`false`|

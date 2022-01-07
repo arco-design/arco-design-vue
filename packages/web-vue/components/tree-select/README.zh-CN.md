@@ -42,7 +42,7 @@ description: 可以对树形结构数据进行选择。
 |disabled|是否禁用|`boolean`|`false`|
 |loading|是否为加载中状态|`boolean`|`false`|
 |error|是否为错误状态|`boolean`|`false`|
-|size|选择框的大小。对应 `24px`, `28px`, `32px`, `36px`|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|选择框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |border|是否显示边框|`boolean`|`false`|
 |allow-search|是否允许搜索|`boolean`|`false`|
 |allow-clear|是否允许清除|`boolean`|`false`|

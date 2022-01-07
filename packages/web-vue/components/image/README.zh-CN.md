@@ -88,7 +88,7 @@ description: 展示和预览图片。
 |---|---|---|:---:|
 |src-list|图片列表（设置了本属性之后，将不再收集 a-image 子组件的图片信息）|`string[]`|`-`|
 |current **(v-model)**|当前展示的图片的下标|`number`|`-`|
-|default-current|第一张展示的图片的下标|`number`|`1`|
+|default-current|第一张展示的图片的下标|`number`|`0`|
 |infinite|是否无限循环|`boolean`|`false`|
 |visible **(v-model)**|是否可见，受控属性|`boolean`|`-`|
 |default-visible|默认是否可见，非受控|`boolean`|`false`|

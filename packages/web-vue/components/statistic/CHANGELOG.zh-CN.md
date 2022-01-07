@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🆕 新增功能
+
+- value 值支持响应式修改 ([#514](https://github.com/arco-design/arco-design-vue/pull/514))
+
+
 ## 2.10.0
 
 `2021-12-10`

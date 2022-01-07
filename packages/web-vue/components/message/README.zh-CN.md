@@ -20,7 +20,7 @@ description: 由用户的操作触发的轻量级全局反馈。
 
 ### `Message` 全局方法
 
-Message提供的全局方法，可以通过以下三种方法使用：
+Message提供的全局方法，可以通过一下三种方法使用：
 1. 通过this.$message调用
 2. 在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$message调用
 3. 导入Message，通过Message本身调用

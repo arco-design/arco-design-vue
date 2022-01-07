@@ -47,7 +47,7 @@ exports[`<slider> demo: render [input] correctly 1`] = `
         <!--teleport end-->
       </div>
       <div class=\\"arco-slider-input\\">
-        <!--v-if--><span class=\\"arco-input-number arco-input-number-mode-embed arco-input-number-size-medium arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+        <!--v-if--><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
       </div>
     </div>
   </div>
@@ -65,8 +65,8 @@ exports[`<slider> demo: render [input] correctly 1`] = `
         <!--teleport start-->
         <!--teleport end-->
       </div>
-      <div class=\\"arco-slider-input\\"><span class=\\"arco-input-number arco-input-number-mode-embed arco-input-number-size-medium arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
-        <div class=\\"arco-slider-input-hyphens\\"></div><span class=\\"arco-input-number arco-input-number-mode-embed arco-input-number-size-medium arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <div class=\\"arco-slider-input\\"><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+        <div class=\\"arco-slider-input-hyphens\\"></div><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
       </div>
     </div>
   </div>
@@ -135,7 +135,7 @@ exports[`<slider> demo: render [step] correctly 1`] = `
           </label></div>
         <div class=\\"arco-form-item-wrapper-col\\">
           <div class=\\"arco-form-item-content-wrapper\\">
-            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span style=\\"width: 100px;\\" class=\\"arco-input-number arco-input-number-mode-embed arco-input-number-size-medium arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><span class=\\"arco-input-suffix\\"><!----><!----><div class=\\"arco-input-number-step\\"><button class=\\"arco-input-number-step-button\\" type=\\"button\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 30.557 24.043 15 8.487 30.557\\"></path></svg></button><button class=\\"arco-input-number-step-button\\" type=\\"button\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></button></div></span></span></div>
+            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\" style=\\"width: 100px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><span class=\\"arco-input-suffix\\"><!----><!----><div class=\\"arco-input-number-step\\"><button class=\\"arco-input-number-step-button\\" type=\\"button\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 30.557 24.043 15 8.487 30.557\\"></path></svg></button><button class=\\"arco-input-number-step-button\\" type=\\"button\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></button></div></span></span></div>
           </div>
           <!---->
           <!---->
@@ -212,17 +212,46 @@ exports[`<slider> demo: render [tooltip] correctly 1`] = `
 `;
 
 exports[`<slider> demo: render [vertical] correctly 1`] = `
-"<div class=\\"arco-slider arco-slider-vertical\\" style=\\"height: 200px;\\">
-  <div class=\\"arco-slider-track arco-slider-track-vertical\\">
-    <div class=\\"arco-slider-bar\\" style=\\"bottom: 0%; top: 50%;\\"></div>
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-    <div style=\\"bottom: 50%;\\" class=\\"arco-slider-btn\\"></div>
-    <!--teleport start-->
-    <!--teleport end-->
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-start\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+    <div class=\\"arco-slider arco-slider-vertical\\">
+      <div class=\\"arco-slider-track arco-slider-track-vertical\\">
+        <div class=\\"arco-slider-bar\\" style=\\"bottom: 0%; top: 50%;\\"></div>
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+        <div style=\\"bottom: 50%;\\" class=\\"arco-slider-btn\\"></div>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+      <!--v-if-->
+    </div>
   </div>
-  <!--v-if-->
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-slider arco-slider-vertical arco-slider-with-marks\\" style=\\"width: 300px;\\">
+      <div class=\\"arco-slider-track arco-slider-track-vertical\\">
+        <div class=\\"arco-slider-bar\\" style=\\"bottom: 0%; top: 66.67%;\\"></div>
+        <!--v-if-->
+        <div class=\\"arco-slider-dots\\">
+          <div class=\\"arco-slider-dot-wrapper\\" style=\\"bottom: 33.33%;\\">
+            <div class=\\"arco-slider-dot arco-slider-dot-active\\"></div>
+          </div>
+          <div class=\\"arco-slider-dot-wrapper\\" style=\\"bottom: 66.67%;\\">
+            <div class=\\"arco-slider-dot\\"></div>
+          </div>
+        </div>
+        <div class=\\"arco-slider-marks\\">
+          <div class=\\"arco-slider-mark\\" style=\\"bottom: 33.33%;\\">5km</div>
+          <div class=\\"arco-slider-mark\\" style=\\"bottom: 66.67%;\\">10km</div>
+        </div>
+        <!--v-if-->
+        <div style=\\"bottom: 33.33%;\\" class=\\"arco-slider-btn\\"></div>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
 </div>"
 `;

@@ -28,7 +28,7 @@ description: 用来输入标签。
 |error|是否为错误状态|`boolean`|`false`|
 |readonly|是否为只读模式|`boolean`|`false`|
 |allow-clear|是否允许清空|`boolean`|`false`|
-|size|输入框的大小|`Size`|`'medium'`|
+|size|输入框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |max-tag-count|最多展示的标签个数，`0` 表示不限制|`number`|`0`|
 |retain-input-value|创建标签后是否保留输入框的内容|`boolean`|`false`|
 |format-tag|格式化标签内容|`(data: TagData) => string`|`-`|

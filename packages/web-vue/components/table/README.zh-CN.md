@@ -58,6 +58,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|筛选图标是否左对齐|`boolean`|`false`|2.13.0|
+|hide-expand-button-on-empty|是否在子树为空时隐藏展开按钮|`boolean`|`false`|2.14.0|
 ### `<table>` Events
 
 |事件名|描述|参数|

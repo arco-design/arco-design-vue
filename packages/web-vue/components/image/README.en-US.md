@@ -90,7 +90,7 @@ description: Used to show and preview pictures.
 |---|---|---|:---:|
 |src-list|Picture list (after setting this property, the picture information of a-image subcomponent will no longer be collected)|`string[]`|`-`|
 |current **(v-model)**|The index of the currently displayed image|`number`|`-`|
-|default-current|The index of the first image shown|`number`|`1`|
+|default-current|The index of the first image shown|`number`|`0`|
 |infinite|Whether to loop infinitely|`boolean`|`false`|
 |visible **(v-model)**|Whether is visible|`boolean`|`-`|
 |default-visible|Default visiblity|`boolean`|`false`|

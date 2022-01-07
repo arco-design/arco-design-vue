@@ -36,6 +36,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |options|级联选择器的选项|`CascaderOption[]`|`[]`||
 |disabled|是否禁用|`boolean`|`false`||
 |error|是否为错误状态|`boolean`|`false`||
+|size|选择框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |allow-search|是否允许搜索|`boolean`|`false (single) | true (multiple)`||
 |allow-clear|是否允许清除|`boolean`|`false`||
 |input-value **(v-model)**|输入框的值|`string`|`-`||

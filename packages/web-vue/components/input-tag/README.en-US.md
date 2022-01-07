@@ -30,7 +30,7 @@ description: Used to enter the label.
 |error|Whether it is an error state|`boolean`|`false`|
 |readonly|Whether it is read-only mode|`boolean`|`false`|
 |allow-clear|Whether to allow clear|`boolean`|`false`|
-|size|The size of the input|`Size`|`'medium'`|
+|size|The size of the input|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |max-tag-count|The maximum number of tags displayed, `0` means unlimited|`number`|`0`|
 |retain-input-value|Whether to keep the content of the input box after creating the label|`boolean`|`false`|
 |format-tag|Format tag content|`(data: TagData) => string`|`-`|

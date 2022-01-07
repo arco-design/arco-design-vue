@@ -13,15 +13,16 @@ description: 输入框的自动补全功能。
 
 ### `<auto-complete>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`string`|`-`|
-|default-value|默认值（非受控模式）|`string`|`''`|
-|disabled|是否禁用|`boolean`|`false`|
-|data|用于自动提示的数据|`Option[]`|`[]`|
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
-|strict|是否为严格校验模式|`boolean`|`false`|
-|filter-option|自定义选项过滤方法|`FilterOption`|`true`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|绑定值|`string`|`-`||
+|default-value|默认值（非受控模式）|`string`|`''`||
+|disabled|是否禁用|`boolean`|`false`||
+|data|用于自动提示的数据|`Option[]`|`[]`||
+|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`||
+|strict|是否为严格校验模式|`boolean`|`false`||
+|filter-option|自定义选项过滤方法|`FilterOption`|`true`||
+|trigger-props|trigger 组件属性|`object`|`-`|2.14.0|
 ### `<auto-complete>` Events
 
 |事件名|描述|参数|

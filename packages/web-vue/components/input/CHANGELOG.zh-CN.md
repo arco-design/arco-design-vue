@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.14.0
+
+`2022-01-07`
+
+### 🐛 问题修复
+
+- 修复 change 事件触发问题 ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+- 修复当存在前后置标签时，样式设置位置错误的问题 ([#516](https://github.com/arco-design/arco-design-vue/pull/516))
+
+
 ## 2.12.0
 
 `2021-12-24`
