@@ -40,7 +40,7 @@ PS：在Pro中没有明显的根节点，或者建议摒弃根节点，以模块
 
 1.  添加state
 
-```js
+```ts
 // store/modulers/user/state.ts
 export interface UserStateTypes {
   name?: string;
@@ -54,7 +54,7 @@ export const state: UserStateTypes = {
 
 2.  添加getter
 
-```js
+```ts
 // store/modulers/user/getters.ts
 import { GetterTree } from 'vuex';
 import { UserStateTypes } from './state';
@@ -74,7 +74,7 @@ export const getters: GetterTree<UserStateTypes, RootState> & UserGettersTypes =
 
 3.  添加mutation-types
 
-```js
+```ts
 // store/modulers/user/mutation-types.ts
 // 建议枚举值自行添加命名空间，以防止被覆盖。
 export enum MutationTypes {
@@ -84,7 +84,7 @@ export enum MutationTypes {
 
 4.  添加mutation
 
-```js
+```ts
 // store/modulers/user/mutations.ts
 import { MutationTree } from 'vuex';
 import { MutationTypes } from './mutation-types';
@@ -101,7 +101,7 @@ export const mutations: MutationTree<UserStateTypes> & UserMutationsTypes = {
 
 5.  添加action-types
 
-```js
+```ts
 // store/modulers/user/action-types.ts
 // 建议枚举值自行添加命名空间，以防止被覆盖。
 export enum ActionTypes {
@@ -111,7 +111,7 @@ export enum ActionTypes {
 
 6.  添加action
 
-```js
+```ts
 // store/modulers/user/action.ts
 import { ActionTree } from 'vuex';
 import { UserStateTypes } from './state';
@@ -148,7 +148,7 @@ export const actions: ActionTree<UserStateTypes, RootState> & UserActionsTypes =
 
 7.  模块声明
 
-```js
+```ts
 // store/modulers/user/type.ts
 import { Store as VuexStore, CommitOptions, DispatchOptions } from 'vuex';
 
@@ -191,7 +191,7 @@ export type UserStoreModuleTypes<S = UserStateTypes> = Omit<
 
 8.  模块拼装
 
-```js
+ ```ts
 import { Module } from 'vuex';
 import { UserStateTypes, RootState } from '@/store/interface';
 import { getters } from './getters';
@@ -212,7 +212,7 @@ export default user;
 
 9.  引用模块
 
-```js
+ ```ts
 // store/modulers/index.ts
 import { ModuleTree } from 'vuex';
 import { RootState } from '@/store/interface';
@@ -228,7 +228,7 @@ export default modules;
 
 10. 导入模块
 
-```js
+```ts
 // store/index.ts
 //此处示例，只保留关键语句。具体参见pro项目。
 import {
@@ -256,24 +256,24 @@ export type Store = UserStoreModuleTypes<Pick<StoreModules, 'user'>>
 
 ## 具体使用
 
-```js
-import { defineComponent } from 'vue';
-import { useStore } from '@/store';
+```ts
+import { defineComponent } from 'vue';
+import { useStore } from '@/store';
 import { MutationTypes } from '@/store/modules/user/mutation-types';
 import { ActionTypes } from '@/store/modules/user/action-types';
 
-export default defineComponent({ 
+export default defineComponent({
   setup() {
-    const store = useStore();
+    const store = useStore();
     const resetUserInfo = () => {
         store.commit(MutationTypes.USER_RESET_INFO)
     }
     const login = () => {
-      const userInfo ={
-        username: 'admin',
-        password: 'admin',
+      const userInfo ={
+        username: 'admin',
+        password: 'admin',
       };
-      await store.dispatch(ActionTypes.USER_LOGIN, userInfo);
+      await store.dispatch(ActionTypes.USER_LOGIN, userInfo);
     }
     return {
       login,

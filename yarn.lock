@@ -233,9 +233,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@arco-design/arco-site-navbar@npm:^1.12.0":
-  version: 1.12.0
-  resolution: "@arco-design/arco-site-navbar@npm:1.12.0"
+"@arco-design/arco-site-navbar@npm:^1.12.2":
+  version: 1.12.2
+  resolution: "@arco-design/arco-site-navbar@npm:1.12.2"
   dependencies:
     "@antv/g2": ^4.1.12
     "@arco-design/arco-site-utils": ^1.0.1
@@ -248,7 +248,7 @@ __metadata:
     "@arco-design/web-react": ">=2.0.0"
     react: ">=16"
     react-dom: ">=16"
-  checksum: 903fc55480c3bbd6b1b989e003b8fff209d4445551a797d9198b4e93b109b253482a133315a7d50f0a2712715bbfc2ca567f4e9fa51f4bd9a443358721f1e1cc
+  checksum: 5259941d99840d5a1347697ba1ef798cdb97e01ab1f32a5eb2e1a5f98c7242adf3607764effa7cc1f56f7b83c068979d758bd323ec38aa0ef7c4c0eff81f0280
   languageName: node
   linkType: hard
 
@@ -270,7 +270,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@arco-design/arco-vue-docs-navbar@workspace:packages/arco-vue-docs-navbar"
   dependencies:
-    "@arco-design/arco-site-navbar": ^1.12.0
+    "@arco-design/arco-site-navbar": ^1.12.2
     "@arco-design/web-react": ^2.23.4
     "@svgr/core": ^5.5.0
     "@typescript-eslint/eslint-plugin": ^4.18.0
@@ -394,7 +394,7 @@ __metadata:
   resolution: "@arco-design/color@npm:0.4.0"
   dependencies:
     color: ^3.1.3
-  checksum: 2e9e8a6c0992f12006011e11c42fee0acb3b7cc6ece69ce0b902f2b6071668cb71df09f95610df4606468168f00380d47c276ccbcbe82647bd293bd44b22eddd
+  checksum: b728a8d3e50f6074988b92b7f4f1c57e1ef285674411c2303995b502ecb5f67fb99de5714a9364765810de1f9c2a75272b3f34895c931c58e137d62302b362b1
   languageName: node
   linkType: hard
 
