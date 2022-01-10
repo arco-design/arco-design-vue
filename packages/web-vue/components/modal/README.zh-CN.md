@@ -67,7 +67,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 
 ### `<modal>` 全局方法
 
-Modal提供的全局方法，可以通过一下三种方法使用：
+Modal提供的全局方法，可以通过以下三种方法使用：
 
 1. 通过this.$modal调用
 2. 在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$modal调用
