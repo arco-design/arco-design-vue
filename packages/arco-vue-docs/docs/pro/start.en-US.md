@@ -54,7 +54,7 @@ Wait for the dependencies to be installed. . .
 
 When you see the following output, the creation is successful
 
-![](https://tech-proxy.bytedance.net/tos/images/1641465973343_8ae499ee698dc0e226b061ef206b329d)
+![](https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/8b78dd4bbdba4bf7939bd0a131357b31~tplv-uwbnlip3yd-image.image)
 
 ## Development
 
@@ -68,4 +68,4 @@ npm run dev
 
 Open [localhost:3000](http://localhost:3000) and you will see the following page
 
-![](https://tech-proxy.bytedance.net/tos/images/1641465973399_9b4916c858df7470a06ebede8aa2f4b4)
+![](https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/1e331a3b8e2446e2be6c78b1c86e5e50~tplv-uwbnlip3yd-image.image)

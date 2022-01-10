@@ -42,7 +42,7 @@ In Pro, for state, getter, action, and mutation, type definitions are performed 
 
 1. Add state
 
-```js
+ ```ts
 // store/modulers/user/state.ts
 export interface UserStateTypes {
    name?: string;
@@ -56,7 +56,7 @@ export const state: UserStateTypes = {
 
 2. Add a getter
 
-```js
+ ```ts
 // store/modulers/user/getters.ts
 import {GetterTree} from'vuex';
 import {UserStateTypes} from'./state';
@@ -76,7 +76,7 @@ export const getters: GetterTree<UserStateTypes, RootState> & UserGettersTypes =
 
 3. Add mutation-types
 
-```js
+ ```ts
 // store/modulers/user/mutation-types.ts
 // It is recommended to add a namespace to the enumeration value to prevent it from being overwritten.
 export enum MutationTypes {
@@ -86,7 +86,7 @@ export enum MutationTypes {
 
 4. Add mutation
 
-```js
+ ```ts
 // store/modulers/user/mutations.ts
 import {MutationTree} from'vuex';
 import {MutationTypes} from'./mutation-types';
@@ -103,7 +103,7 @@ export const mutations: MutationTree<UserStateTypes> & UserMutationsTypes = {
 
 5. Add action-types
 
-```js
+ ```ts
 // store/modulers/user/action-types.ts
 // It is recommended to add a namespace to the enumeration value to prevent it from being overwritten.
 export enum ActionTypes {
@@ -113,7 +113,7 @@ export enum ActionTypes {
 
 6. Add action
 
-```js
+ ```ts
 // store/modulers/user/action.ts
 import {ActionTree} from'vuex';
 import {UserStateTypes} from'./state';
@@ -150,7 +150,7 @@ export const actions: ActionTree<UserStateTypes, RootState> & UserActionsTypes =
 
 7. Module declaration
 
-```js
+ ```ts
 // store/modulers/user/type.ts
 import {Store as VuexStore, CommitOptions, DispatchOptions} from'vuex';
 
@@ -193,7 +193,7 @@ export type UserStoreModuleTypes<S = UserStateTypes> = Omit<
 
 8. Module assembly
 
-```js
+```ts
 import {Module} from'vuex';
 import {UserStateTypes, RootState} from'@/store/interface';
 import {getters} from'./getters';
@@ -214,7 +214,7 @@ export default user;
 
 9. Reference Module
 
-```js
+```ts
 // store/modulers/index.ts
 import {ModuleTree} from'vuex';
 import {RootState} from'@/store/interface';
@@ -230,7 +230,7 @@ export default modules;
 
 10. Import modules
 
-```js
+```ts
 // store/index.ts
 //In the example here, only key statements are kept. See the pro project for details.
 import {
@@ -258,7 +258,7 @@ For this example, there is still room for improvement and improvement. Feedback 
 
 ## Specific use
 
-```js
+```ts
 import {defineComponent} from 'vue';
 import {useStore} from '@/store';
 import {MutationTypes} from'@/store/modules/user/mutation-types';

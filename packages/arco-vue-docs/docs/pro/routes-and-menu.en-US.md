@@ -13,7 +13,7 @@ The routing is usually tied to the menu. In order to reduce the amount of mainte
 
 First of all, you need to understand the routing table configuration
 
-```js
+ ```ts
 import {createRouter, createWebHistory} from'vue-router';
 
 import Login from'./modules/login';
@@ -35,7 +35,7 @@ const router = createRouter({
 
 example
 
-```js
+ ```ts
 // In this example, the final path of the page is app/dashboard/workplace
 export default {
   path:'dashboard',
@@ -66,7 +66,7 @@ The menu generation process can be found in the menu component:
 
 - Get the routing tree with routing information through router.getRoutes().
 
-```js
+ ```ts
 // components/menu/index.vue
 import {defineComponent} from'vue';
 import {
@@ -110,7 +110,7 @@ After understanding the routing and menu generation, you can configure a new men
 
 - Add a monitor folder in views/dashboard and add index.vue to it
 
-```js
+ ```ts
 // template template
 // <template>
 // <div>Monitoring page</div>

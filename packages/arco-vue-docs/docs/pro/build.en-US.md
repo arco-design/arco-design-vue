@@ -25,7 +25,7 @@ If you don't need the Vue template compilation function, delete the correspondin
 
 If you need the ability to compile vue templates, you can configure it in the vite.config.prod.ts file (see below).
 
-```js
+ ```ts
 // config/vite.config.build.ts
 import {defineConfig} from'vite';
 

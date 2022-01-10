@@ -10,8 +10,8 @@ description: package.json script 预置方便实用的命令
 ```
 ├── README.md
 ├── config
-│   ├── vite.config.dev.ts  # 开发环境配置
-│   ├── vite.config.prod.ts  # 生产环境配置
+│   ├── vite.config.dev.ts  # 开发环境配置
+│   ├── vite.config.prod.ts  # 生产环境配置
 └── package.json
 ```
 

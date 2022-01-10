@@ -11,7 +11,7 @@ description: 路由和菜单的生成
 
 首先，需要先了解一下路由表的配置
 
-```js
+ ```ts
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Login from './modules/login';
@@ -33,7 +33,7 @@ const router = createRouter({
 
 示例
 
-```js
+ ```ts
 // 在本例子中，页面最终路径为 app/dashboard/workplace
 export default {
   path: 'dashboard',
@@ -62,9 +62,9 @@ export default {
 
 菜单组件中可以找到菜单生成过程：
 
-- 通过 router.getRoutes()，得到带有路由信息的路由树。
+- 通过 router.getRoutes()，得到带有路由信息的路由树。
 
-```js
+ ```ts
 // components/menu/index.vue
 import { defineComponent } from 'vue';
 import {
@@ -108,7 +108,7 @@ PS: 如果需要自动生成深层菜单，可以通过配置后的路由树，�
 
 - 在 views/dashboard 中新增一个 monitor 文件夹，并在其中新增 index.vue
 
-```js
+ ```ts
 // 模板template
 // <template>
 //  <div>监控页</div>

@@ -23,7 +23,7 @@ PS: 打包体积缩减提示！！！
 
 如果需要 vue 模板编译 能力，可在 vite.config.prod.ts 文件 中进行配置（如下）。
 
-```js
+ ```ts
 // config/vite.config.build.ts
 import { defineConfig } from 'vite';
 

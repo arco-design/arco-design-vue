@@ -13,7 +13,7 @@ Use axios to make remote interface requests.
 
 It is recommended to improve the type definition of the returned and requested data.
 
-```js
+ ```ts
 import axios from'axios';
 
 export interface UserToken {
@@ -34,7 +34,7 @@ export function getUserInfo(data: UserToken) {
 
 Multi-layer interceptors can be added according to the needs of your own system.
 
-```js
+ ```ts
 import axios, {AxiosRequestConfig, AxiosResponse} from'axios';
 // Users can modify according to their own background system
 export interface HttpResponse<T = unknown> {
@@ -86,7 +86,7 @@ Parallel development of the front and back ends means that the front end needs t
 
 Mock.js will intercept the ajax request. If there is a matching mock rule, the ajax will not be sent out, but the mock data will be returned. Mock.js has a wealth of simulation data generation methods, it is recommended to read the document first, the document is very clear and easy to understand [MockJs document](<http://mockjs.com/).>
 
-```js
+ ```ts
 import Mock from'mockjs';
 import {
   successResponseWrap,
@@ -117,7 +117,7 @@ When the request url sent by the client is matched by `new RegExp('/api/chatList
 
 In order to facilitate the opening and closing of the data simulation function, each `Mock` will be wrapped by `setupMock.setup`, the setupMock is as follows:
 
-```js
+ ```ts
 import {debug} from'./env';
 export default ({ mock, setup }: {mock?: boolean; setup: () => void; }) => {
   if (mock !== false && debug) setup();
@@ -126,7 +126,7 @@ export default ({ mock, setup }: {mock?: boolean; setup: () => void; }) => {
 
 Data simulation is started by default in a non-production environment. When we need to debug the interface, we only need to set the mock parameter of setupMock to false, as follows:
 
-```js
+ ```ts
 import Mock from'mockjs';
 import setupMock from'../utils/setupMock';
 
