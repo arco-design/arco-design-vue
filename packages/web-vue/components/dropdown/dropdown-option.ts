@@ -19,4 +19,10 @@ export default defineComponent({
       default: false,
     },
   },
+  /**
+   * @zh 图标
+   * @en Icon
+   * @slot icon
+   */
+  setup() {},
 });

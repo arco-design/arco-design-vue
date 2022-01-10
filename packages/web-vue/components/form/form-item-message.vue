@@ -13,7 +13,7 @@
   </transition>
 </template>
 
-<script lang="tsx">
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 

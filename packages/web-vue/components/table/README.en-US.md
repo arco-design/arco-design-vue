@@ -85,6 +85,7 @@ description: It is used for data collection, display, analysis and processing, a
 |footer|Table Footer|-|
 |expand-row|Expand row content|record: `TableData`|
 |expand-icon|Expand row icon|expanded: `boolean`<br>record: `TableData`|
+|columns|Table column definitions. When enabled, the columns attribute is masked|-|
 
 
 

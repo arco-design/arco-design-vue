@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 BugFix
+
+- **steps:** Fix the problem that small can be enabled in dot mode ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **form:** Label-col uses flex layout to solve the problem of wrong height under mini size ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **table:** Fix the problem that the table content exceeds the container, causing the border not to be displayed in some cases ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **select:** Fix on-demand loading without imported styles ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **input:** Fix the problem of wrong font color in disabled state in Safari browser ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **textarea:** Fix the problem that the downlink height setting is invalid in Firefox browser ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **statistic:** fix dynamic assignment issue ([#534](https://github.com/arco-design/arco-design-vue/pull/534))
+
+### 💅 Style
+
+- **button:** Fix onlyIcon mode icons not aligned ([#538](https://github.com/arco-design/arco-design-vue/pull/538))
+
+
 ## 2.14.1
 
 `2022-01-08`

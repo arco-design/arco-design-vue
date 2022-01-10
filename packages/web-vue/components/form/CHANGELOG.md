@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 BugFix
+
+- Label-col uses flex layout to solve the problem of wrong height under mini size ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+
+
 ## 2.14.1
 
 `2022-01-08`

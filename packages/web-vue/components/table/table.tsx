@@ -394,6 +394,11 @@ export default defineComponent({
     'headerClick',
   ],
   /**
+   * @zh 表格列定义。启用时会屏蔽 columns 属性
+   * @en Table column definitions. When enabled, the columns attribute is masked
+   * @slot columns
+   */
+  /**
    * @zh 展开行图标
    * @en Expand row icon
    * @slot expand-icon

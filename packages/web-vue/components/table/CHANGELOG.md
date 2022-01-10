@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 BugFix
+
+- Fix the problem that the table content exceeds the container, causing the border not to be displayed in some cases ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+
+
 ## 2.14.0
 
 `2022-01-07`

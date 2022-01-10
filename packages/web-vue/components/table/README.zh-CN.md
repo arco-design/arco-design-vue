@@ -83,6 +83,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |footer|表格底部|-|
 |expand-row|展开行内容|record: `TableData`|
 |expand-icon|展开行图标|expanded: `boolean`<br>record: `TableData`|
+|columns|表格列定义。启用时会屏蔽 columns 属性|-|
 
 
 

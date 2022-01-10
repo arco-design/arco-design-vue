@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 BugFix
+
+- Fix the problem that the downlink height setting is invalid in Firefox browser ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+
+
 ## 2.12.0
 
 `2021-12-24`

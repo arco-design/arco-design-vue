@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 问题修复
+
+- label-col 改用 flex 布局，解决 mini 尺寸下高度错误的问题 ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+
+
 ## 2.14.1
 
 `2022-01-08`

@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 问题修复
+
+- **steps:** 修复 dot 模式下可以开启 small 的问题 ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **form:** label-col 改用 flex 布局，解决 mini 尺寸下高度错误的问题 ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **table:** 修复 table 内容超出容器，导致某些情况下边框不显示的问题 ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **select:** 修复按需加载没有导入样式的问题 ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **input:** 修复在 Safari 浏览器下 disabled 状态字体颜色错误的问题 ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **textarea:** 修复在 Firefox 浏览器下行高设置失效的问题 ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+- **statistic:** 修复动态赋值问题 ([#534](https://github.com/arco-design/arco-design-vue/pull/534))
+
+### 💅 样式更新
+
+- **button:** 修复 onlyIcon 模式图标未对齐问题 ([#538](https://github.com/arco-design/arco-design-vue/pull/538))
+
+
 ## 2.14.1
 
 `2022-01-08`

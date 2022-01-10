@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 BugFix
+
+- fix dynamic assignment issue ([#534](https://github.com/arco-design/arco-design-vue/pull/534))
+
+
 ## 2.14.0
 
 `2022-01-07`

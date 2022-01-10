@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.2
+
+`2022-01-10`
+
+### 🐛 BugFix
+
+- Fix the problem that small can be enabled in dot mode ([#536](https://github.com/arco-design/arco-design-vue/pull/536))
+
+
 ## 2.13.0
 
 `2021-12-31`
