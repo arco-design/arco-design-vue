@@ -28,6 +28,56 @@
     color: rgb(var(--arcoblue-6));
     text-decoration: none;
   }
+
+  .arco-vue-body-has-notice {
+    padding-top: 99px;
+
+    .arco-vue-aside-left,
+    .arco-vue-aside {
+      top: 99px;
+    }
+  }
+
+  .site-global-notice {
+    position: fixed;
+    top: 61px;
+    z-index: 980;
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    color: var(--color-white);
+    line-height: 32px;
+    background-color: rgb(var(--blue-6));
+
+    .arco-alert-body {
+      display: flex;
+      justify-content: center;
+
+      .arco-alert-content a {
+        color: var(--color-white);
+        text-decoration: none;
+
+        .content {
+          margin-right: 48px;
+          margin-left: 36px;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .arco-alert-close-btn {
+      width: 20px;
+      height: 20px;
+      color: var(--color-white);
+      line-height: 20px;
+      text-align: center;
+      border-radius: 4px;
+
+      & .arco-icon-hover:hover::before {
+        background-color: hsla(0, 0%, 100%, 0.3);
+      }
+    }
+  }
 }
 
 .token.operator,

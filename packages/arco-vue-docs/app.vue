@@ -1,6 +1,32 @@
 <template>
   <div class="arco-vue-site">
-    <div class="arco-vue-body">
+    <div
+      :class="[
+        'arco-vue-body',
+        { 'arco-vue-body-has-notice': showGlobalNotice },
+      ]"
+    >
+      <a-alert
+        v-if="showGlobalNotice"
+        class="site-global-notice"
+        :show-icon="false"
+        closable
+        banner
+        @close="handleCloseGlobalNotice"
+      >
+        <a
+          href="https://bytedance.feishu.cn/docx/doxcneH4MAnUxcBvnLMuoywOp2f#doxcnaE2iEwuGmKcYVTvugYHveS"
+          rel="Arco Global Notice noreferrer"
+          target="_blank"
+        >
+          <b>Arco Design Pro</b>
+          <span class="content">Arco Pro v2.0 全新上线 🎉</span>
+          <b
+            >查看更多
+            <icon-right />
+          </b>
+        </a>
+      </a-alert>
       <aside-nav :show="showNav" @button-click="toggleNav" />
       <router-view />
     </div>
@@ -26,6 +52,7 @@ import { useRoute } from 'vue-router';
 import { PageDurationTracker, teaLog } from '@arco-design/arco-site-utils';
 import { collapseInjectionKey } from './context';
 import AsideNav from './components/aside-nav/index.vue';
+import { getLocalStorage, setLocalStorage } from './utils/local-storage';
 // import Locale from '@arco-design/web-vue/es/locale';
 // import { getLocalStorage, setLocalStorage } from './utils/local-storage';
 
@@ -42,6 +69,15 @@ export default defineComponent({
   setup() {
     const showNav = ref(true);
     const showAnchor = ref(true);
+    const showGlobalNotice = ref(
+      getLocalStorage('arco-global-notice') !== 'hide'
+    );
+
+    const handleCloseGlobalNotice = () => {
+      showGlobalNotice.value = false;
+      setLocalStorage('arco-global-notice', 'hide');
+    };
+
     const toggleNav = () => {
       showNav.value = !showNav.value;
     };
@@ -90,6 +126,8 @@ export default defineComponent({
     return {
       showNav,
       toggleNav,
+      showGlobalNotice,
+      handleCloseGlobalNotice,
     };
   },
 });
