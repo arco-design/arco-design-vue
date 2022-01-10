@@ -41,12 +41,17 @@
       text-decoration: none;
     }
 
-    &.@{btn-prefix-cls}-icon-only {
+    &.@{btn-prefix-cls}-only-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       vertical-align: top;
     }
+  }
+
+  &.@{btn-prefix-cls}-only-icon .@{btn-prefix-cls}-icon {
+    display: flex;
+    justify-content: center;
   }
 
   &-loading {
