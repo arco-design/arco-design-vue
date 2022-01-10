@@ -54,7 +54,7 @@ export default defineComponent({
     /**
      * @zh 默认值（非受控模式）
      * @en Default value (uncontrolled mode)
-     * @defaultValue '' | []
+     * @defaultValue '' \| []
      */
     defaultValue: {
       type: [String, Number, Array] as PropType<
@@ -129,7 +129,7 @@ export default defineComponent({
     /**
      * @zh 是否允许搜索
      * @en Whether to allow searching
-     * @defaultValue false (single) | true (multiple)
+     * @defaultValue false (single) \| true (multiple)
      */
     allowSearch: {
       type: [Boolean, Object] as PropType<

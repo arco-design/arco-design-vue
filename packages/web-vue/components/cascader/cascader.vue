@@ -23,6 +23,7 @@
       :size="size"
       :opened="computedPopupVisible"
       :placeholder="placeholder"
+      :max-tag-count="maxTagCount"
       v-bind="$attrs"
       @input-value-change="handleInputValueChange"
       @clear="handleClear"
@@ -122,7 +123,7 @@ export default defineComponent({
     /**
      * @zh 默认值（非受控状态）
      * @en Default value (uncontrolled state)
-     * @defaultValue '' | undefined | []
+     * @defaultValue '' \| undefined \| []
      */
     defaultValue: {
       type: [String, Number, Array] as PropType<
@@ -173,7 +174,7 @@ export default defineComponent({
     /**
      * @zh 是否允许搜索
      * @en Whether to allow searching
-     * @defaultValue false (single) | true (multiple)
+     * @defaultValue false (single) \| true (multiple)
      */
     allowSearch: {
       type: Boolean,
@@ -247,6 +248,14 @@ export default defineComponent({
       type: [String, Object] as PropType<
         string | HTMLElement | null | undefined
       >,
+    },
+    /**
+     * @zh 多选模式下，最多显示的标签数量。0 表示不限制
+     * @en In multi-select mode, the maximum number of labels displayed. 0 means unlimited
+     */
+    maxTagCount: {
+      type: Number,
+      default: 0,
     },
     /**
      * @zh 格式化展示内容

@@ -34,11 +34,11 @@
       display: block;
 
       > .@{form-item-prefix-cls}-label-col {
+        justify-content: flex-start;
         margin-bottom: @form-vertical-margin-label-bottom;
         padding: 0;
         line-height: @line-height-base;
         white-space: normal;
-        text-align: left;
       }
     }
 
@@ -133,13 +133,14 @@
   }
 
   &-item-label-col {
+    display: flex;
     flex-shrink: 0;
+    justify-content: flex-end;
     line-height: @size-default;
     white-space: nowrap;
-    text-align: right;
 
     &-left {
-      text-align: left;
+      justify-content: flex-start;
     }
 
     > label {

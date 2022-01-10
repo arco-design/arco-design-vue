@@ -46,7 +46,7 @@ description: When users need to select one or more from a group of similar data,
 |---|---|---|:---:|:---|
 |multiple|Whether to open multi-select mode (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
 |model-value **(v-model)**|Value|`string \| number \| (string \| number)[]`|`-`||
-|default-value|Default value (uncontrolled mode)|`string \| number \| (string \| number)[]`|`'' | []`||
+|default-value|Default value (uncontrolled mode)|`string \| number \| (string \| number)[]`|`'' \| []`||
 |input-value **(v-model)**|The value of the input|`string`|`-`||
 |default-input-value|The default value of the input (uncontrolled mode)|`string`|`''`||
 |size|The size of the select|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
@@ -55,7 +55,7 @@ description: When users need to select one or more from a group of similar data,
 |disabled|Whether to disable|`boolean`|`false`||
 |error|Whether it is an error state|`boolean`|`false`||
 |allow-clear|Whether to allow clear|`boolean`|`false`||
-|allow-search|Whether to allow searching|`boolean \| { retainInputValue?: boolean }`|`false (single) | true (multiple)`||
+|allow-search|Whether to allow searching|`boolean \| { retainInputValue?: boolean }`|`false (single) \| true (multiple)`||
 |allow-create|Whether to allow creation|`boolean`|`false`||
 |max-tag-count|In multi-select mode, the maximum number of labels displayed. 0 means unlimited|`number`|`0`||
 |popup-container|Mount container for popup|`string \| HTMLElement`|`-`||

@@ -141,7 +141,7 @@ export default defineComponent({
       `${prefixCls}-mode-${props.type}`,
       {
         [`${prefixCls}-changeable`]: props.changeable,
-        [`${prefixCls}-size-small`]: props.small,
+        [`${prefixCls}-size-small`]: props.small && props.type !== 'dot',
         [`${prefixCls}-line-less`]: props.lineLess,
       },
     ]);
