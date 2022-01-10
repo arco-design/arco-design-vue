@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, watch } from 'vue';
+import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue';
 import dayjs from 'dayjs';
 // @ts-ignore
 import BTween from 'b-tween';
@@ -149,8 +149,9 @@ export default defineComponent({
    */
   setup(props) {
     const prefixCls = getPrefixCls('statistic');
-    const innerValue = computed(() => props.valueFrom ?? props.value);
+    const innerValue = ref(props.valueFrom ?? props.value);
     const tween = ref(null);
+    const { value } = toRefs(props);
 
     const animation = (
       from: number = props.valueFrom ?? 0,
@@ -173,7 +174,7 @@ export default defineComponent({
             innerValue.value = to;
           },
         });
-        tween.value.start();
+        tween.value?.start();
       }
     };
 
@@ -212,11 +213,22 @@ export default defineComponent({
     watch(
       () => props.start,
       (value) => {
-        if (value && !tween.value) {
+        if (value && props.animation && !tween.value) {
           animation();
         }
       }
     );
+
+    watch(value, (value) => {
+      if (tween.value) {
+        tween.value.stop();
+        tween.value = null;
+      }
+      innerValue.value = value;
+      if (props.animation && props.start) {
+        animation();
+      }
+    });
 
     return {
       prefixCls,
