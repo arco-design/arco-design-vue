@@ -700,13 +700,15 @@ export default defineComponent({
             `${prefixCls}-wrapper-type-${props.listType}`,
           ]}
         >
-          <ImagePreviewGroup
-            srcList={imageList.value}
-            visible={imagePreviewVisible.value}
-            current={imagePreviewCurrent.value}
-            onChange={handleImagePreviewChange}
-            onVisibleChange={handleImagePreviewVisibleChange}
-          />
+          {props.imagePreview && imageList.value.length > 0 && (
+            <ImagePreviewGroup
+              srcList={imageList.value}
+              visible={imagePreviewVisible.value}
+              current={imagePreviewCurrent.value}
+              onChange={handleImagePreviewChange}
+              onVisibleChange={handleImagePreviewVisibleChange}
+            />
+          )}
           {props.listType !== 'picture-card' &&
             props.showUploadButton &&
             renderButton()}

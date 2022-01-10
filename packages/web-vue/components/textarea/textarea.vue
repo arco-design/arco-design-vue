@@ -377,11 +377,11 @@ export default defineComponent({
     const getMirrorStyle = () => {
       const styles = getSizeStyles(styleDeclaration);
 
-      lineHeight.value = Number.parseInt(styles['line-height'], 10);
+      lineHeight.value = Number.parseInt(styles['line-height'] || 0, 10);
       outerHeight.value =
-        Number.parseInt(styles['border-width'], 10) * 2 +
-        Number.parseInt(styles['padding-top'], 10) +
-        Number.parseInt(styles['padding-bottom'], 10);
+        Number.parseInt(styles['border-width'] || 0, 10) * 2 +
+        Number.parseInt(styles['padding-top'] || 0, 10) +
+        Number.parseInt(styles['padding-bottom'] || 0, 10);
 
       mirrorStyle.value = styles;
 

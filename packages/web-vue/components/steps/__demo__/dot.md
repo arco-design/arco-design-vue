@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-通过设置 `type="dot"` ， 可以使用点状的步骤条。
+通过设置 `type="dot"` ， 可以使用点状的步骤条。此模式没有 small 尺寸。
 
 ---
 
 ## en-US
 
-By setting `type="dot"`, you can use a dotted step bar.
+By setting `type="dot"`, you can use a dotted step bar. There is no small size for this mode.
 
 ---
 
