@@ -263,12 +263,6 @@ export default defineComponent({
       if (inner) {
         emit('update:modelValue', value);
       }
-
-      nextTick(() => {
-        if (inputRef.value && computedValue.value !== inputRef.value.value) {
-          inputRef.value.value = computedValue.value;
-        }
-      });
     };
 
     const handleMousedown = (e: MouseEvent) => {
@@ -409,7 +403,7 @@ export default defineComponent({
     const render = () => {
       if (slots.prepend || slots.append) {
         return (
-          <span class={outerCls.value} {...wrapperAttrs}>
+          <span class={outerCls.value} {...wrapperAttrs.value}>
             {slots.prepend && (
               <span class={`${prefixCls}-prepend`}>{slots.prepend()}</span>
             )}

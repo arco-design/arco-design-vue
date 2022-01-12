@@ -9,14 +9,11 @@ import IconMinus from '../icon/icon-minus';
 import ArcoButton from '../button';
 import ArcoInput from '../input';
 import { EmitType } from '../_utils/types';
-import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
-import pick from '../_utils/pick';
-import { omit } from '../_utils/omit';
+import { Size } from '../_utils/constant';
 import { configProviderInjectionKey } from '../config-provider/context';
 
 type StepMethods = 'minus' | 'plus';
 
-const InputGroup = ArcoInput.Group;
 const MODES = ['embed', 'button'] as const;
 const SPEED = 150;
 
@@ -24,7 +21,6 @@ NP.enableBoundaryChecking(false);
 
 export default defineComponent({
   name: 'InputNumber',
-  inheritAttrs: false,
   props: {
     /**
      * @zh 绑定值
@@ -153,7 +149,7 @@ export default defineComponent({
      */
     'blur',
   ],
-  setup(props, { emit, attrs, slots }) {
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
 
@@ -366,62 +362,60 @@ export default defineComponent({
       `${prefixCls}-size-${props.size}`,
     ]);
 
-    const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
-    const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
-
-    const renderInput = () => {
-      const inputSlots =
-        props.mode === 'embed' && !props.hideButton
-          ? { ...slots, suffix: renderSuffix }
-          : slots;
-
+    const renderPrependButton = () => {
       return (
-        <ArcoInput
-          v-slots={inputSlots}
-          ref={inputRef}
-          class={cls.value}
-          type="text"
+        <ArcoButton
           size={props.size}
-          modelValue={_value.value}
-          placeholder={props.placeholder}
-          disabled={props.disabled}
-          {...(props.mode === 'embed' ? attrs : inputAttrs.value)}
-          onInput={handleInput}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onClear={handleClear}
-          onChange={handleChange}
+          v-slots={{ icon: () => <IconMinus /> }}
+          class={`${prefixCls}-step-button`}
+          disabled={props.disabled || isMin.value}
+          onMousedown={(e: MouseEvent) => handleStepButton(e, 'minus', true)}
+          onMouseup={clearRepeatTimer}
+          onMouseleave={clearRepeatTimer}
         />
       );
     };
 
-    const render = () => {
-      if (props.mode === 'embed') {
-        return renderInput();
-      }
-
+    const renderAppendButton = () => {
       return (
-        <InputGroup {...wrapperAttrs.value}>
-          <ArcoButton
-            size={props.size}
-            v-slots={{ icon: () => <IconMinus /> }}
-            disabled={props.disabled || isMin.value}
-            onMousedown={(e: MouseEvent) => handleStepButton(e, 'minus', true)}
-            onMouseup={clearRepeatTimer}
-            onMouseleave={clearRepeatTimer}
-          />
-          {renderInput()}
-          <ArcoButton
-            size={props.size}
-            v-slots={{ icon: () => <IconPlus /> }}
-            disabled={props.disabled || isMax.value}
-            onMousedown={(e: MouseEvent) => handleStepButton(e, 'plus', true)}
-            onMouseup={clearRepeatTimer}
-            onMouseleave={clearRepeatTimer}
-          />
-        </InputGroup>
+        <ArcoButton
+          size={props.size}
+          v-slots={{ icon: () => <IconPlus /> }}
+          class={`${prefixCls}-step-button`}
+          disabled={props.disabled || isMax.value}
+          onMousedown={(e: MouseEvent) => handleStepButton(e, 'plus', true)}
+          onMouseup={clearRepeatTimer}
+          onMouseleave={clearRepeatTimer}
+        />
       );
     };
+
+    const render = () => (
+      <ArcoInput
+        v-slots={{
+          prepend:
+            props.mode === 'button' ? renderPrependButton : slots.prepend,
+          prefix: slots.prefix,
+          suffix:
+            props.mode === 'embed' && !props.hideButton
+              ? renderSuffix
+              : slots.suffix,
+          append: props.mode === 'button' ? renderAppendButton : slots.append,
+        }}
+        ref={inputRef}
+        class={cls.value}
+        type="text"
+        size={props.size}
+        modelValue={_value.value}
+        placeholder={props.placeholder}
+        disabled={props.disabled}
+        onInput={handleInput}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onClear={handleClear}
+        onChange={handleChange}
+      />
+    );
 
     return {
       inputRef,

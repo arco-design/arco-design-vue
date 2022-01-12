@@ -1,20 +1,16 @@
-import { computed, defineComponent, inject, PropType, ref } from 'vue';
+import { defineComponent, inject, PropType, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconSearch from '../icon/icon-search';
 import IconLoading from '../icon/icon-loading';
 import Button from '../button';
 import Input from './input';
-import InputGroup from './input-group.vue';
 import { EmitType } from '../_utils/types';
-import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
-import { omit } from '../_utils/omit';
-import pick from '../_utils/pick';
+import { Size } from '../_utils/constant';
 import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'InputSearch',
-  inheritAttrs: false,
   props: {
     /**
      * @zh 是否为后置按钮模式
@@ -29,6 +25,14 @@ export default defineComponent({
      * @en Whether it is loading state
      */
     loading: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否禁用
+     * @en Whether to disable
+     */
+    disabled: {
       type: Boolean,
       default: false,
     },
@@ -65,7 +69,7 @@ export default defineComponent({
      */
     'search',
   ],
-  setup(props, { emit, slots, attrs }) {
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('input-search');
 
     const inputRef = ref();
@@ -91,48 +95,37 @@ export default defineComponent({
       );
     };
 
-    const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
-    const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
-
-    const renderInput = () => {
-      const inputSlots = {
-        prepend: slots.prepend,
-        prefix: slots.prefix,
-        suffix: props.searchButton ? slots.suffix : renderSuffix,
-        append: slots.append,
-      };
-
+    const renderButton = () => {
       return (
-        <Input
-          ref={inputRef}
-          v-slots={inputSlots}
+        <Button
+          v-slots={{
+            icon: () => <IconSearch />,
+          }}
+          type="primary"
+          class={`${prefixCls}-btn`}
+          disabled={props.disabled}
           size={props.size}
-          {...(props.searchButton ? inputAttrs.value : attrs)}
+          loading={props.loading}
+          {...props.buttonProps}
+          onClick={handleClick}
         />
       );
     };
 
-    const render = () => {
-      if (props.searchButton) {
-        return (
-          <InputGroup {...wrapperAttrs.value}>
-            {renderInput()}
-            <Button
-              v-slots={{
-                icon: () => (props.loading ? <IconLoading /> : <IconSearch />),
-              }}
-              type="primary"
-              size={props.size}
-              class={`${prefixCls}-btn`}
-              loading={props.loading}
-              {...props.buttonProps}
-              onClick={handleClick}
-            />
-          </InputGroup>
-        );
-      }
-      return renderInput();
-    };
+    const render = () => (
+      <Input
+        ref={inputRef}
+        class={prefixCls}
+        v-slots={{
+          prepend: slots.prepend,
+          prefix: slots.prefix,
+          suffix: props.searchButton ? slots.suffix : renderSuffix,
+          append: props.searchButton ? renderButton : slots.append,
+        }}
+        size={props.size}
+        disabled={props.disabled}
+      />
+    );
 
     return {
       inputRef,

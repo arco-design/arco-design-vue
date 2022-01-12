@@ -1,7 +1,10 @@
 <template>
   <template v-if="href">
     <a
-      :class="cls"
+      :class="[
+        cls,
+        { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
+      ]"
       :href="disabled || loading ? undefined : href"
       @click="handleClick"
     >
@@ -14,7 +17,10 @@
   </template>
   <template v-else>
     <button
-      :class="cls"
+      :class="[
+        cls,
+        { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
+      ]"
       :type="htmlType"
       :disabled="disabled"
       @click="handleClick"
@@ -165,10 +171,8 @@ export default defineComponent({
    * @en Icon
    * @slot icon
    */
-  setup(props, { slots, emit }) {
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('btn');
-
-    const onlyIcon = computed(() => !slots.default && Boolean(slots.icon));
 
     const cls = computed(() => [
       prefixCls,
@@ -177,7 +181,6 @@ export default defineComponent({
       `${prefixCls}-size-${props.size}`,
       `${prefixCls}-status-${props.status}`,
       {
-        [`${prefixCls}-only-icon`]: onlyIcon.value,
         [`${prefixCls}-long`]: props.long,
         [`${prefixCls}-loading`]: props.loading,
         [`${prefixCls}-disabled`]: props.disabled,
@@ -185,11 +188,11 @@ export default defineComponent({
       },
     ]);
 
-    const handleClick = (e: Event) => {
+    const handleClick = (ev: Event) => {
       if (props.disabled || props.loading) {
         return;
       }
-      emit('click', e);
+      emit('click', ev);
     };
 
     return {

@@ -22,8 +22,6 @@
     padding: 0;
     color: @input-number-step-button-color;
     background-color: @input-number-step-button-color-bg_default;
-    border: none;
-    border-color: @input-number-step-button-color-border;
     cursor: pointer;
     user-select: none;
     .transition();
@@ -73,6 +71,8 @@
         width: 100%;
         height: 50%;
         font-size: 10px;
+        border: none;
+        border-color: @input-number-step-button-color-border;
       }
     }
 
@@ -90,8 +90,8 @@
       }
     }
 
-    // 修正 InputNumber hover 时 StepButton 的 hover 背景色
-    &.@{input-prefix-cls}-wrapper:not(.@{input-prefix-cls}-wrapper-focus) {
+    // 修正 InputNumber 未激活 hover 时 StepButton 的 hover 背景色
+    &.@{input-prefix-cls}-wrapper:not(.@{input-prefix-cls}-focus) {
       .@{input-number-prefix-cls}-step-button:not(.@{input-number-prefix-cls}-step-button-disabled):hover {
         background-color: @input-number-step-button-color-bg_default_active;
       }
@@ -101,57 +101,49 @@
   // button mode
   &-mode-button {
     .@{input-prefix-cls} {
-      text-align: center;
+      &-prepend,
+      &-append {
+        padding: 0;
+        border: none;
+      }
 
-      &-group {
-        position: relative;
+      &-prepend .@{input-number-prefix-cls}-step-button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
 
-        &-addbefore,
-        &-addafter {
-          padding: 0;
-        }
-
-        .@{input-number-prefix-cls}-step-button {
-          position: absolute;
-          top: 0;
-          height: 100%;
-          border: inherit;
-
-          &:active {
-            border-color: @input-number-step-button-color-bg_default_active;
-          }
-        }
-
-        &-addbefore .@{input-number-prefix-cls}-step-button {
-          left: 0;
+        &:not(&:active) {
           border-right-color: @input-number-step-button-color-border;
         }
+      }
 
-        &-addafter .@{input-number-prefix-cls}-step-button {
-          right: 0;
+      &-append .@{input-number-prefix-cls}-step-button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+        &:not(&:active) {
           border-left-color: @input-number-step-button-color-border;
         }
       }
     }
 
-    .size(@size) {
-      &.@{input-number-prefix-cls}-size-@{size} {
-        @width: ~'@{input-number-size-@{size}-step-button-width}';
-
-        .@{input-prefix-cls}-group-addbefore,
-        .@{input-prefix-cls}-group-addafter {
-          width: @width;
-
-          .@{input-number-prefix-cls}-step-button {
-            width: @width;
-          }
-        }
-      }
-    }
-
-    .size(mini);
-    .size(small);
-    .size(default);
-    .size(large);
+    //.size(@size) {
+    //  &.@{input-number-prefix-cls}-size-@{size} {
+    //    @width: ~'@{input-number-size-@{size}-step-button-width}';
+    //
+    //    .@{input-prefix-cls}-group-addbefore,
+    //    .@{input-prefix-cls}-group-addafter {
+    //      width: @width;
+    //
+    //      .@{input-number-prefix-cls}-step-button {
+    //        width: @width;
+    //      }
+    //    }
+    //  }
+    //}
+    //
+    //.size(mini);
+    //.size(small);
+    //.size(default);
+    //.size(large);
   }
 }

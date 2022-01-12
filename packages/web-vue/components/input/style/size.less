@@ -1,3 +1,5 @@
+@import './token.less';
+
 // 前置后置标签
 .addon(@position, @size-height, @size-font-size) {
   .item-style() {
@@ -102,7 +104,6 @@
 
     .@{input-prefix-cls}-prepend,
     .@{input-prefix-cls}-append {
-      height: @size-input-height - 2;
       font-size: @size-font-size;
 
       > svg {
