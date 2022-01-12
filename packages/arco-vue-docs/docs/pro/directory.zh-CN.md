@@ -17,7 +17,6 @@ description: 项目文件的组织结构
 │          └── style 全局样式
 │   ├── components  # 通用业务组件
 │   ├── config  # 全局配置(包含echarts主题)
-│   ├── hooks # 全局hooks
 │   ├── directives # 指令集（如需，可自行补充）
 │   ├── filters # 过滤器（如需，可自行补充）
 │   ├── hooks # 全局hooks
