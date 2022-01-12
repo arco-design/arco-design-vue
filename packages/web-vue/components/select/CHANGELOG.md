@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.3
+
+`2022-01-12`
+
+### 🐛 BugFix
+
+- missing arguments when calling scrollTo ([#543](https://github.com/arco-design/arco-design-vue/pull/543))
+
+
 ## 2.14.2
 
 `2022-01-10`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.3
+
+`2022-01-12`
+
+### 🐛 问题修复
+
+- 修复 input-search 在 button 模式属性失效的问题 ([#552](https://github.com/arco-design/arco-design-vue/pull/552))
+
+
 ## 2.14.2
 
 `2022-01-10`

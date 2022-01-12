@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.14.3
+
+`2022-01-12`
+
+### 🐛 BugFix
+
+- Fix the problem that the input-search attribute is invalid in button mode ([#552](https://github.com/arco-design/arco-design-vue/pull/552))
+
+
 ## 2.14.2
 
 `2022-01-10`

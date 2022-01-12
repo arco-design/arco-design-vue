@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.14.3
+
+`2022-01-12`
+
+### 🐛 问题修复
+
+- **input:** 修复 input-search 在 button 模式属性失效的问题 ([#552](https://github.com/arco-design/arco-design-vue/pull/552))
+- **input-number:** 修复输入时光标位置改变的问题 ([#552](https://github.com/arco-design/arco-design-vue/pull/552))
+- **select:** 调用虚拟列表的 `scrollTo` 函数时缺失了参数 ([#543](https://github.com/arco-design/arco-design-vue/pull/543))
+
+
 ## 2.14.2
 
 `2022-01-10`

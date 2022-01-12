@@ -299,6 +299,12 @@ export default defineComponent({
         compositionValue.value = '';
         updateValue(value);
         emit('input', value, e);
+
+        nextTick(() => {
+          if (inputRef.value && computedValue.value !== inputRef.value.value) {
+            inputRef.value.value = computedValue.value;
+          }
+        });
       } else {
         isComposition.value = true;
         compositionValue.value = computedValue.value + (e.data ?? '');
@@ -311,6 +317,12 @@ export default defineComponent({
       if (!isComposition.value) {
         updateValue(value);
         emit('input', value, e);
+
+        nextTick(() => {
+          if (inputRef.value && computedValue.value !== inputRef.value.value) {
+            inputRef.value.value = computedValue.value;
+          }
+        });
       }
     };
 
