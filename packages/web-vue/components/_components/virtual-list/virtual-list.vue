@@ -34,7 +34,7 @@ import {
   Ref,
   onUnmounted,
 } from 'vue';
-import { ItemSlot, VirtualListProps } from './interface';
+import { ItemSlot, ScrollOptions, VirtualListProps } from './interface';
 import { isString, isUndefined } from '../../_utils/is';
 import { raf, caf } from '../../_utils/raf';
 import usePickSlots from '../../_hooks/use-pick-slots';
@@ -45,7 +45,7 @@ import { useViewportHeight } from './hooks/use-viewport-height';
 import { useItemHeight } from './hooks/use-item-height';
 import { useRenderChildren } from './hooks/use-render-children';
 import { useRangeState } from './hooks/use-range-state';
-import { useScrollTo, ScrollOptions } from './hooks/use-scroll-to';
+import { useScrollTo } from './hooks/use-scroll-to';
 import {
   getScrollPercentage,
   getValidScrollTop,

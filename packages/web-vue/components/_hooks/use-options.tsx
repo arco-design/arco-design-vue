@@ -7,6 +7,7 @@ import {
   OptionNode,
 } from '../select/interface';
 import { getOptionNodes } from '../_components/dropdown/utils';
+import { VirtualListRef } from '../_components/virtual-list/interface';
 
 export const useOptions = ({
   options,
@@ -25,7 +26,7 @@ export const useOptions = ({
   showExtraOptions?: Ref<boolean>;
   dropdownRef?: Ref<ComponentPublicInstance | undefined>;
   optionRefs?: Ref<Record<string | number, HTMLElement>>;
-  virtualListRef?: Ref<any>;
+  virtualListRef?: Ref<VirtualListRef>;
 }) => {
   const optionInfoMap = new Map<string | number, OptionInfo>();
   const enabledOptionSet = new Set<string | number>();
@@ -53,7 +54,7 @@ export const useOptions = ({
 
   const scrollIntoView = (value: string | number) => {
     if (virtualListRef?.value) {
-      virtualListRef.value.scrollTo();
+      virtualListRef.value.scrollTo({ key: value });
     }
     const wrapperEle = dropdownRef?.value?.$refs?.wrapperRef as HTMLElement;
     const optionEle = optionRefs?.value[value];
