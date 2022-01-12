@@ -19,7 +19,6 @@ description: The organizational structure of the project file.
 │ └── style # Global style
 │ ├── components # General business components
 │ ├── config # Global configuration (including echarts theme)
-│ ├── hooks # global hooks
 │ ├── directives # Instruction set (if necessary, you can add it yourself)
 │ ├── filters # filter (if necessary, you can add it yourself)
 │ ├── hooks # global hooks
