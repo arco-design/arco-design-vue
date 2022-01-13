@@ -3,6 +3,7 @@ import { CascaderOptionInfo } from './interface';
 import CascaderOption from './cascader-option';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
+import Spin from '../spin';
 
 export default defineComponent({
   name: 'CascaderPanel',
@@ -27,6 +28,7 @@ export default defineComponent({
     expandTrigger: String,
     multiple: Boolean,
     checkStrictly: Boolean,
+    loading: Boolean,
   },
   setup(props) {
     const prefixCls = getPrefixCls('cascader');
@@ -76,17 +78,38 @@ export default defineComponent({
       );
     };
 
+    const renderContent = () => {
+      if (props.loading) {
+        return (
+          <div
+            class={[
+              `${prefixCls}-panel-column`,
+              `${prefixCls}-panel-column-loading`,
+            ]}
+          >
+            <Spin />
+          </div>
+        );
+      }
+      if (props.displayColumns.length === 0) {
+        return (
+          <div class={`${prefixCls}-panel-column`}>
+            <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
+          </div>
+        );
+      }
+      return props.displayColumns.map((column, index) =>
+        renderColumn(column, index)
+      );
+    };
+
     return () => (
       <TransitionGroup
         tag="div"
         name="cascader-slide"
         class={`${prefixCls}-panel`}
       >
-        {props.displayColumns.length > 0
-          ? props.displayColumns.map((column, index) =>
-              renderColumn(column, index)
-            )
-          : renderEmpty()}
+        {renderContent()}
       </TransitionGroup>
     );
   },

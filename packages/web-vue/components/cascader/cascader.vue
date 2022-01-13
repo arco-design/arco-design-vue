@@ -23,6 +23,7 @@
       :size="size"
       :opened="computedPopupVisible"
       :placeholder="placeholder"
+      :loading="loading"
       :max-tag-count="maxTagCount"
       v-bind="$attrs"
       @input-value-change="handleInputValueChange"
@@ -39,6 +40,7 @@
         :active-key="activeKey"
         :computed-keys="computedKeys"
         :multiple="multiple"
+        :loading="loading"
       />
       <cascader-panel
         v-else
@@ -50,6 +52,7 @@
         :expand-trigger="expandTrigger"
         :total-level="totalLevel"
         :check-strictly="checkStrictly"
+        :loading="loading"
       />
     </template>
   </trigger>
@@ -292,6 +295,15 @@ export default defineComponent({
           done: (children?: CascaderOption[]) => void
         ) => void
       >,
+    },
+    /**
+     * @zh 是否为加载中状态
+     * @en Whether it is loading state
+     * @version 2.15.0
+     */
+    loading: {
+      type: Boolean,
+      default: false,
     },
     // for JSX
     onChange: {
