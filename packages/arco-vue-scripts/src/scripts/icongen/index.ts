@@ -72,24 +72,26 @@ async function buildIconComponent(data: IconData[]) {
         path: item.path,
         ...svgoConfig,
       });
-      const { data } = optimizedSvg;
-      const svgElement = JSDOM.fragment(data).firstElementChild;
-      if (svgElement) {
-        fs.outputFile(
-          path.resolve(paths.iconComponents, `${item.name}/${item.name}.vue`),
-          getIconVue({
-            name: item.name,
-            componentName: item.componentName,
-            svgHtml: svgElement.outerHTML,
-          }),
-          (err) => {
-            if (err) {
-              console.log(`Build ${item.componentName} Failed: ${err}`);
-            } else {
-              console.log(`Build ${item.componentName} Success!`);
+      if ('data' in optimizedSvg) {
+        const { data } = optimizedSvg;
+        const svgElement = JSDOM.fragment(data).firstElementChild;
+        if (svgElement) {
+          fs.outputFile(
+            path.resolve(paths.iconComponents, `${item.name}/${item.name}.vue`),
+            getIconVue({
+              name: item.name,
+              componentName: item.componentName,
+              svgHtml: svgElement.outerHTML,
+            }),
+            (err) => {
+              if (err) {
+                console.log(`Build ${item.componentName} Failed: ${err}`);
+              } else {
+                console.log(`Build ${item.componentName} Success!`);
+              }
             }
-          }
-        );
+          );
+        }
       }
 
       const indexContent = getComponentIndex({
