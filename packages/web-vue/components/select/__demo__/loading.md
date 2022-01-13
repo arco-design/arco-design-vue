@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-下拉菜单显示加载中状态。
+选择框和下拉菜单显示加载中状态。
 
 ---
 
 ## en-US
 
-The drop-down menu shows the loading status.
+Select boxes and drop-down menus show loading status.
 
 ---
 

@@ -744,6 +744,7 @@ export default defineComponent({
           multiple={props.multiple}
           disabled={props.disabled}
           error={props.error}
+          loading={props.loading}
           allowClear={props.allowClear}
           allowCreate={props.allowCreate}
           allowSearch={Boolean(props.allowSearch)}
