@@ -31,6 +31,7 @@ export { default as Dropdown, Doption, Dgroup, Dsubmenu } from './dropdown';
 export { default as Empty } from './empty';
 export { default as Form, FormItem } from './form';
 export { default as Grid, Col, Row } from './grid';
+export { default as Icon } from './icon-component';
 export { default as Image, ImagePreview, ImagePreviewGroup } from './image';
 export {
   default as Input,

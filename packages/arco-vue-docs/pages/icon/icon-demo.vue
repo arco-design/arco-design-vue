@@ -52,6 +52,7 @@
     <basic-demo />
     <tree-shaking-demo />
     <spin-demo />
+    <icon-font />
   </arco-article>
 </template>
 
@@ -64,6 +65,7 @@ import { clipboard } from '@web-vue/components/_utils/clipboard';
 import Message from '@web-vue/components/message';
 import BasicDemo from './__demo__/basic.md';
 import SpinDemo from './__demo__/spin.md';
+import IconFont from './__demo__/icon-font.md';
 import TreeShakingDemo from './__demo__/tree-shaking.md';
 
 export default defineComponent({
@@ -72,8 +74,8 @@ export default defineComponent({
     ...components,
     BasicDemo,
     SpinDemo,
+    IconFont,
     TreeShakingDemo,
-    // ReadMe,
   },
   setup() {
     const { t, locale } = useI18n();

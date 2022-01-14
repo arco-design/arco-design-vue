@@ -31,6 +31,7 @@ import Dropdown, { Doption, Dgroup, Dsubmenu } from './dropdown';
 import Empty from './empty';
 import Form, { FormItem } from './form';
 import Grid, { Row, Col } from './grid';
+import Icon from './icon-component';
 import Image, { ImagePreview, ImagePreviewGroup } from './image';
 import Input, { InputGroup, InputSearch, InputPassword } from './input';
 import InputNumber from './input-number';
@@ -152,6 +153,7 @@ const components: Record<string, Plugin> = {
   ResizeBox,
   Trigger,
   Split,
+  Icon,
 };
 
 const install = (app: App, options?: ArcoOptions) => {
