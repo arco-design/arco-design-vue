@@ -128,6 +128,15 @@ export default defineComponent({
     formatTag: {
       type: Function as PropType<(data: TagData) => string>,
     },
+    /**
+     * @zh 是否仅创建唯一的值
+     * @en Whether to create only unique values
+     * @version 2.15.0
+     */
+    uniqueValue: {
+      type: Boolean,
+      default: false,
+    },
     // private
     baseCls: String,
     focused: Boolean,
@@ -303,11 +312,17 @@ export default defineComponent({
     const handlePressEnter = (e: KeyboardEvent) => {
       if (computedInputValue.value) {
         e.preventDefault();
+        emit('pressEnter', computedInputValue.value, e);
+        if (
+          props.uniqueValue &&
+          computedValue.value?.includes(computedInputValue.value)
+        ) {
+          return;
+        }
         const newValue = computedValue.value.concat(computedInputValue.value);
         _value.value = newValue;
         emit('update:modelValue', newValue);
         emit('change', newValue, e);
-        emit('pressEnter', computedInputValue.value, e);
 
         if (!props.retainInputValue) {
           _inputValue.value = '';
