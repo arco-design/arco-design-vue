@@ -1,26 +1,25 @@
 <template>
   <div :class="cls">
-    <spin :loading="loading" :style="{ width: '100%', display: 'block' }">
-      <div v-if="isEmpty" :class="`${prefixCls}-empty`">
-        <slot name="empty">
-          <empty />
-        </slot>
-      </div>
-      <slot name="virtual-list">
-        <div
-          ref="wrapperRef"
-          :class="`${prefixCls}-list-wrapper`"
-          @scroll="handleScroll"
-        >
-          <ul :class="`${prefixCls}-list`">
-            <slot />
-          </ul>
-        </div>
+    <spin v-if="loading" :class="`${prefixCls}-loading`" />
+    <div v-else-if="isEmpty" :class="`${prefixCls}-empty`">
+      <slot name="empty">
+        <empty />
       </slot>
-      <div v-if="$slots.footer && !isEmpty" :class="`${prefixCls}-footer`">
-        <slot name="footer" />
+    </div>
+    <slot v-else name="virtual-list">
+      <div
+        ref="wrapperRef"
+        :class="`${prefixCls}-list-wrapper`"
+        @scroll="handleScroll"
+      >
+        <ul :class="`${prefixCls}-list`">
+          <slot />
+        </ul>
       </div>
-    </spin>
+    </slot>
+    <div v-if="$slots.footer && !isEmpty" :class="`${prefixCls}-footer`">
+      <slot name="footer" />
+    </div>
   </div>
 </template>
 
