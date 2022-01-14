@@ -81,20 +81,22 @@ export default defineComponent({
       if (props.isRadio) {
         return (
           <Radio
-            modelValue={props.selectedRowKeys[0] ?? ''}
-            onChange={(value: string) => emit('select', [value])}
-            disabled={Boolean(props.record.disabled)}
             value={rowKey}
+            modelValue={props.selectedRowKeys[0] ?? ''}
+            disabled={Boolean(props.record.disabled)}
+            uninjectGroupContext
+            onChange={(value: string) => emit('select', [value])}
           />
         );
       }
 
       return (
         <Checkbox
-          modelValue={props.selectedRowKeys}
-          onChange={(values: string[]) => emit('select', values)}
-          disabled={Boolean(props.record.disabled)}
           value={rowKey}
+          modelValue={props.selectedRowKeys}
+          disabled={Boolean(props.record.disabled)}
+          uninjectGroupContext
+          onChange={(values: string[]) => emit('select', values)}
         />
       );
     };
