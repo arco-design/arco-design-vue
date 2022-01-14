@@ -26,6 +26,8 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 @import ./__demo__/flex.md
 
+@import ./__demo__/grid.md
+
 
 ### `<row>` Props
 
@@ -54,5 +56,29 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 |xl|>= 1200px responsive grid|`number \| { [key: string]: any }`|`-`||
 |xxl|>= 1600px responsive grid|`number \| { [key: string]: any }`|`-`||
 |flex|Set flex layout properties|`number \| string \| 'initial' \| 'auto' \| 'none'`|`-`|2.10.0|
+
+
+
+
+### `<grid>` Props (2.15.0)
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|cols|Number of columns displayed in each row|`number`|`24`|
+|row-gap|The space in row-to-row|`number`|`0`|
+|col-gap|The space in column-to-column|`number`|`0`|
+|collapsed|Whether to collapsed|`boolean`|`false`|
+|collapsed-rows|Number of rows displayed when collapsed|`number`|`1`|
+
+
+
+
+### `<grid-item>` Props (2.15.0)
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|span|Number of grids spanned|`number`|`1`|
+|offset|Number of grids on the left|`number`|`0`|
+|suffix|Is it a suffix element|`boolean`|`false`|
 
 

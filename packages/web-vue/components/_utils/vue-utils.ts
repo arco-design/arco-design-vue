@@ -8,11 +8,13 @@ import type {
   ComponentPublicInstance,
   RenderFunction,
 } from 'vue';
-import { createVNode, cloneVNode, mergeProps, Fragment, isVNode } from 'vue';
+import { createVNode, cloneVNode, Fragment, isVNode } from 'vue';
 import { Data, RenderContent } from './types';
 import { isArray, isFunction, isNumber, isObject, isString } from './is';
 import { toCamelCase, toKebabCase } from './convert-case';
 
+// Quoted from vue-next
+// https://github.com/vuejs/vue-next/blob/master/packages/shared/src/shapeFlags.ts
 export enum ShapeFlags {
   ELEMENT = 1,
   FUNCTIONAL_COMPONENT = 1 << 1,
@@ -25,6 +27,25 @@ export enum ShapeFlags {
   SUSPENSE = 1 << 7,
   COMPONENT_SHOULD_KEEP_ALIVE = 1 << 8,
   COMPONENT_KEPT_ALIVE = 1 << 9,
+}
+
+// Quoted from vue-next
+// https://github.com/vuejs/vue-next/blob/master/packages/shared/src/patchFlags.ts
+export enum PatchFlags {
+  TEXT = 1,
+  CLASS = 2,
+  STYLE = 4,
+  PROPS = 8,
+  FULL_PROPS = 16,
+  HYDRATE_EVENTS = 32,
+  STABLE_FRAGMENT = 64,
+  KEYED_FRAGMENT = 128,
+  UNKEYED_FRAGMENT = 256,
+  NEED_PATCH = 512,
+  DYNAMIC_SLOTS = 1024,
+  DEV_ROOT_FRAGMENT = 2048,
+  HOISTED = -1,
+  BAIL = -2,
 }
 
 export const getValueFromSlotsOrProps = (
