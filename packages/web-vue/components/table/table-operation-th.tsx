@@ -64,6 +64,7 @@ export default defineComponent({
               }}
               modelValue={checked}
               indeterminate={indeterminate}
+              uninjectGroupContext
               onChange={(value: boolean) => emit('selectAll', value)}
             />
           );

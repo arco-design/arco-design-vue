@@ -70,6 +70,7 @@ export default defineComponent({
             modelValue={transferCtx?.selected}
             onChange={props.onSelectChange}
             value={props.data.value}
+            uninjectGroupContext
           >
             {transferCtx?.itemSlot?.({ label: props.data.label }) ??
               props.data.label}

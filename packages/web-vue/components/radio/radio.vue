@@ -86,6 +86,11 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    // private
+    uninjectGroupContext: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -104,7 +109,9 @@ export default defineComponent({
   ],
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('radio');
-    const radioGroupCtx = inject(radioGroupKey, undefined);
+    const radioGroupCtx = !props.uninjectGroupContext
+      ? inject(radioGroupKey, undefined)
+      : undefined;
 
     const inputRef = ref<HTMLInputElement | null>(null);
     const _checked = ref(props.defaultChecked);

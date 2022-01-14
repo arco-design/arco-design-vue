@@ -14,6 +14,7 @@
       :class="`${prefixCls}-checkbox`"
       :model-value="isSelected"
       :disabled="disabled"
+      uninject-group-context
     >
       <slot />
     </checkbox>

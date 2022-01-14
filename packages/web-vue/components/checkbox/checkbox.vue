@@ -83,6 +83,11 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    // private
+    uninjectGroupContext: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -102,7 +107,9 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('checkbox');
     const checkboxRef = ref<HTMLInputElement>();
-    const checkboxGroupCtx = inject(checkboxGroupKey, undefined);
+    const checkboxGroupCtx = !props.uninjectGroupContext
+      ? inject(checkboxGroupKey, undefined)
+      : undefined;
     const isGroup = checkboxGroupCtx?.name === 'ArcoCheckboxGroup';
 
     const mergedDisabled = computed(

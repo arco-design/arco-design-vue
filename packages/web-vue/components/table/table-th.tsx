@@ -96,6 +96,7 @@ export default defineComponent({
                     <Checkbox
                       value={item.value}
                       modelValue={columnFilterValue.value}
+                      uninjectGroupContext
                       onChange={handleCheckboxFilterChange}
                     >
                       {item.text}
@@ -104,6 +105,7 @@ export default defineComponent({
                     <Radio
                       value={item.value}
                       modelValue={columnFilterValue.value[0] ?? ''}
+                      uninjectGroupContext
                       onChange={handleRadioFilterChange}
                     >
                       {item.text}

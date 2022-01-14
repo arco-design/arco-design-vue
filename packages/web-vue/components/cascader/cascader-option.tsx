@@ -110,6 +110,7 @@ export default defineComponent({
             modelValue={checkedStatus.value.checked}
             indeterminate={checkedStatus.value.indeterminate}
             disabled={props.option.disabled}
+            uninjectGroupContext
             onClick={(ev: Event) => {
               ev.stopPropagation();
               handlePathChange(ev);
@@ -124,6 +125,7 @@ export default defineComponent({
           <Radio
             modelValue={props.computedKeys.includes(props.option.key)}
             disabled={props.option.disabled}
+            uninjectGroupContext
             onClick={(ev: Event) => {
               ev.stopPropagation();
               handlePathChange(ev);

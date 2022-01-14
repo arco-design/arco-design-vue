@@ -7,6 +7,7 @@
           v-else
           :model-value="checked"
           :indeterminate="indeterminate"
+          uninject-group-context
           @change="handleSelectAllChange"
         >
           {{ title }}
