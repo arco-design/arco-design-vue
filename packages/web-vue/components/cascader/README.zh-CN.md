@@ -18,6 +18,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 @import ./__demo__/check-strictly.md
 
+@import ./__demo__/loading.md
+
 @import ./__demo__/lazy-load.md
 
 @import ./__demo__/search.md
@@ -51,6 +53,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`||
 |check-strictly|是否开启严格选择模式|`boolean`|`false`||
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|loading|是否为加载中状态|`boolean`|`false`|2.15.0|
 ### `<cascader>` Events
 
 |事件名|描述|参数|

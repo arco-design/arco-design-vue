@@ -20,6 +20,8 @@ description: Refers to the use of multi-level classification to separate the opt
 
 @import ./__demo__/check-strictly.md
 
+@import ./__demo__/loading.md
+
 @import ./__demo__/lazy-load.md
 
 @import ./__demo__/search.md
@@ -53,6 +55,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`||
 |check-strictly|Whether to enable strict selection mode|`boolean`|`false`||
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|loading|Whether it is loading state|`boolean`|`false`|2.15.0|
 ### `<cascader>` Events
 
 |Event Name|Description|Parameters|
