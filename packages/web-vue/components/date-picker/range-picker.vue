@@ -307,56 +307,82 @@ export default defineComponent({
       >,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 组件值发生改变
      * @en The component value changes
      * @param {(string | undefined)[] | undefined} dateString
      * @param {(Date | undefined)[] | undefined} date
      */
-    'change',
+    'change': (
+      dateString: (string | undefined)[] | undefined,
+      date: (Date | undefined)[] | undefined
+    ) => {
+      return true;
+    },
     /**
      * @zh 选中日期发生改变但组件值未改变
      * @en The selected date has changed but the component value has not changed
      * @param {(string | undefined)[]} dateString
      * @param {(Date | undefined)[]} date
      */
-    'select',
-    'update:modelValue',
+    'select': (
+      dateString: (string | undefined)[],
+      date: (Date | undefined)[]
+    ) => {
+      return true;
+    },
+    'update:modelValue': (dateString: (string | undefined)[] | undefined) => {
+      return true;
+    },
     /**
      * @zh 打开或关闭弹出框
      * @en Open or close the pop-up box
      * @param {boolean} visible
      */
-    'popup-visible-change',
-    'update:popupVisible',
+    'popup-visible-change': (visible: boolean) => {
+      return true;
+    },
+    'update:popupVisible': (visible: boolean) => {
+      return true;
+    },
     /**
      * @zh 点击确认按钮
      * @en Click the confirm button
      * @param {string[]} dateString
      * @param {Date[]} date
      */
-    'ok',
+    'ok': (dateString: string[], date: Date[]) => {
+      return true;
+    },
     /**
      * @zh 点击清除按钮
      * @en Click the clear button
      */
-    'clear',
+    'clear': () => {
+      return true;
+    },
     /**
      * @zh 点击快捷选项
      * @en Click on the shortcut option
      * @param {ShortcutType} shortcut
      */
-    'select-shortcut',
+    'select-shortcut': (shortcut: ShortcutType) => {
+      return true;
+    },
     /**
      * @zh 面板日期改变
      * @en Panel date change
      * @param {string[]} dateString
      * @param {Date[]} date
      */
-    'picker-value-change',
-    'update:pickerValue',
-  ],
+    'picker-value-change': (dateString: string[], date: Date[]) => {
+      return true;
+    },
+    'update:pickerValue': (dateString: string[]) => {
+      return true;
+    },
+  },
   setup(props: RangePickerProps, { emit, slots }) {
     const {
       mode,
