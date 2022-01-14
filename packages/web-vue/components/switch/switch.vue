@@ -3,7 +3,7 @@
     type="button"
     :class="cls"
     :style="buttonStyle"
-    :disabled="disabled || loading"
+    :disabled="disabled"
     @click="handleClick"
   >
     <span :class="`${prefixCls}-handle`">
@@ -190,6 +190,9 @@ export default defineComponent({
     );
 
     const handleClick = (ev: Event) => {
+      if (props.loading || props.disabled) {
+        return;
+      }
       const checked = !computedCheck.value;
       _checked.value = checked ? props.checkedValue : props.uncheckedValue;
       emit('update:modelValue', _checked.value);

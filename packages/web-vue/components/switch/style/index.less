@@ -78,6 +78,22 @@
     transform: translateX(-100%);
   }
 
+  &[disabled] &-handle {
+    color: @switch-color-dot-icon_off_disabled;
+  }
+
+  &[disabled]&-checked &-handle {
+    color: @switch-color-dot-icon_on_disabled;
+  }
+
+  &[disabled] &-handle {
+    color: @switch-color-dot-icon_off_disabled;
+  }
+
+  &[disabled]&-checked &-handle {
+    color: @switch-color-dot-icon_on_disabled;
+  }
+
   &-text-holder {
     margin: 0 8px 0 @switch-size-dot-default + @switch-size-default-gap + 6px;
     font-size: @switch-font-size-text;
@@ -98,6 +114,7 @@
 
   &-checked &-text {
     left: 8px;
+    color: @switch-color-text_on;
   }
 
   // Disabled
