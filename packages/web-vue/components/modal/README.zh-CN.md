@@ -48,6 +48,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |modal-style|对话框的样式|`CSSProperties`|`-`||
 |on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
+|esc-to-close|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 ### `<modal>` Events
 
 |事件名|描述|参数|
@@ -76,27 +77,28 @@ Modal提供的全局方法，可以通过以下三种方法使用：
 
 ### ModalConfig
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|title|标题|`RenderContent`|`-`|
-|content|内容|`RenderContent`|`-`|
-|footer|页脚|`RenderContent`|`-`|
-|closable|是否显示关闭按钮|`boolean`|`false`|
-|okText|确认按钮的内容|`string`|`-`|
-|cancelText|取消按钮的内容|`string`|`-`|
-|okButtonProps|确认按钮的Props|`any`|`-`|
-|cancelButtonProps|取消按钮的Props|`any`|`-`|
-|okLoading|确认按钮是否为加载中状态|`boolean`|`false`|
-|hideCancel|是否隐藏取消按钮|`boolean`|`false`|
-|mask|是否显示遮罩层|`boolean`|`false`|
-|simple|是否开启简单模式|`boolean`|`false`|
-|maskClosable|是否点击遮罩层可以关闭对话框|`boolean`|`false`|
-|maskStyle|蒙层的样式|`CSSProperties`|`-`|
-|alignCenter|对话框是否居中显示|`boolean`|`false`|
-|onOk|点击确定按钮的回调函数|`() => void`|`-`|
-|onCancel|点击取消按钮的回调函数|`() => void`|`-`|
-|onOpen|对话框打开后（动画结束）触发|`() => void`|`-`|
-|onClose|对话框关闭后（动画结束）触发|`() => void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|title|标题|`RenderContent`|`-`||
+|content|内容|`RenderContent`|`-`||
+|footer|页脚|`RenderContent`|`-`||
+|closable|是否显示关闭按钮|`boolean`|`false`||
+|okText|确认按钮的内容|`string`|`-`||
+|cancelText|取消按钮的内容|`string`|`-`||
+|okButtonProps|确认按钮的Props|`any`|`-`||
+|cancelButtonProps|取消按钮的Props|`any`|`-`||
+|okLoading|确认按钮是否为加载中状态|`boolean`|`false`||
+|hideCancel|是否隐藏取消按钮|`boolean`|`false`||
+|mask|是否显示遮罩层|`boolean`|`false`||
+|simple|是否开启简单模式|`boolean`|`false`||
+|maskClosable|是否点击遮罩层可以关闭对话框|`boolean`|`false`||
+|maskStyle|蒙层的样式|`CSSProperties`|`-`||
+|alignCenter|对话框是否居中显示|`boolean`|`false`||
+|escToClose|是否支持 ESC 键关闭对话框|`boolean`|`false`|2.15.0|
+|onOk|点击确定按钮的回调函数|`() => void`|`-`||
+|onCancel|点击取消按钮的回调函数|`() => void`|`-`||
+|onOpen|对话框打开后（动画结束）触发|`() => void`|`-`||
+|onClose|对话框关闭后（动画结束）触发|`() => void`|`-`||
 
 
 
