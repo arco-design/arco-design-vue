@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 🆕 Feature
+
+- `sortable.sorter` adds boolean type to support server-side sorting ([#575](https://github.com/arco-design/arco-design-vue/pull/575))
+
+
 ## 2.14.2
 
 `2022-01-10`

@@ -2,6 +2,36 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 💎 Optimization
+
+- The select box built into the optimization component will not be controlled by the external select box group ([#569](https://github.com/arco-design/arco-design-vue/pull/569))
+- **select:** Optimize loading status display ([#557](https://github.com/arco-design/arco-design-vue/pull/557))
+
+### 🆕 Feature
+
+- **input-tag:** Add the `uniqueValue` attribute to support the validation that the value is not repeated during input ([#578](https://github.com/arco-design/arco-design-vue/pull/578))
+- **modal:** Added `escToClose` property and enabled by default ([#577](https://github.com/arco-design/arco-design-vue/pull/577))
+- **drawer:** Added `escToClose` property and enabled by default ([#577](https://github.com/arco-design/arco-design-vue/pull/577))
+- **grid:** Added grid-based layout components `Grid` `Grid.Item` ([#576](https://github.com/arco-design/arco-design-vue/pull/576))
+- **table:** `sortable.sorter` adds boolean type to support server-side sorting ([#575](https://github.com/arco-design/arco-design-vue/pull/575))
+- Add `icon` component and provide support for iconfont.cn ([#574](https://github.com/arco-design/arco-design-vue/pull/574))
+- **cascader:** Add loading prop ([#558](https://github.com/arco-design/arco-design-vue/pull/558))
+
+### 🐛 BugFix
+
+- **date-picker:** fix the problem of missing event parameters ([#579](https://github.com/arco-design/arco-design-vue/pull/579))
+
+### 💅 Style
+
+- **tag:** Fix checkable state style bug ([#570](https://github.com/arco-design/arco-design-vue/pull/570))
+- **button:** Fix alignment of iconOnly buttons in button groups ([#567](https://github.com/arco-design/arco-design-vue/pull/567))
+- **input:** Fix the problem of wrong background color in dark mode ([#560](https://github.com/arco-design/arco-design-vue/pull/560))
+
+
 ## 2.14.3
 
 `2022-01-12`

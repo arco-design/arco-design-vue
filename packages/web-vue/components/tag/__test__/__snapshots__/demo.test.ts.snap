@@ -14,9 +14,9 @@ exports[`<tag> demo: render [basic] correctly 1`] = `
 
 exports[`<tag> demo: render [checkable] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkble arco-tag-checked\\"><!--v-if-->Awesome<!--v-if--><!--v-if--></span></div>
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkble arco-tag-checked\\"><!--v-if-->Toutiao<!--v-if--><!--v-if--></span></div>
-  <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkble arco-tag-checked\\"><!--v-if-->Lark<!--v-if--><!--v-if--></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable arco-tag-checked\\"><!--v-if-->Awesome<!--v-if--><!--v-if--></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable arco-tag-checked\\"><!--v-if-->Toutiao<!--v-if--><!--v-if--></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable arco-tag-checked\\"><!--v-if-->Lark<!--v-if--><!--v-if--></span></div>
 </div>"
 `;
 

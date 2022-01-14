@@ -256,6 +256,23 @@ exports[`<grid> demo: render [flex-justify] correctly 1`] = `
 </div>"
 `;
 
+exports[`<grid> demo: render [grid] correctly 1`] = `
+"<div style=\\"margin-bottom: 20px;\\"><span class=\\"arco-typography\\">折叠：<!----><!--v-if--><!--v-if--><!--v-if--></span><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\" checked=\\"false\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+    <!--v-if-->
+  </button></div>
+<div class=\\"arco-grid demo\\" style=\\"gap: 16px 12px; grid-template-columns: repeat(3, minmax(0px, 1fr));\\">
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1;\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1;\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1;\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 2 / span 2;\\">item | offset - 1</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1;\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 3 / span 3;\\">item | span - 3</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1;\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1;\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: 3 / span 1;\\"> suffix | overflow: false</div>
+</div>"
+`;
+
 exports[`<grid> demo: render [gutter] correctly 1`] = `
 "<div>
   <p>Horizontal</p>

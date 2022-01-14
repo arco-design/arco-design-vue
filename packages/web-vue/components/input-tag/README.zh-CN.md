@@ -17,21 +17,22 @@ description: 用来输入标签。
 
 ### `<input-tag>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`Array<string \| number \| TagData>`|`-`|
-|default-value|默认值（非受控状态）|`Array<string \| number \| TagData>`|`[]`|
-|input-value **(v-model)**|输入框的值|`string`|`-`|
-|default-input-value|输入框的默认值（非受控状态）|`string`|`''`|
-|placeholder|占位符|`string`|`-`|
-|disabled|是否禁用|`boolean`|`false`|
-|error|是否为错误状态|`boolean`|`false`|
-|readonly|是否为只读模式|`boolean`|`false`|
-|allow-clear|是否允许清空|`boolean`|`false`|
-|size|输入框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|max-tag-count|最多展示的标签个数，`0` 表示不限制|`number`|`0`|
-|retain-input-value|创建标签后是否保留输入框的内容|`boolean`|`false`|
-|format-tag|格式化标签内容|`(data: TagData) => string`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|绑定值|`Array<string \| number \| TagData>`|`-`||
+|default-value|默认值（非受控状态）|`Array<string \| number \| TagData>`|`[]`||
+|input-value **(v-model)**|输入框的值|`string`|`-`||
+|default-input-value|输入框的默认值（非受控状态）|`string`|`''`||
+|placeholder|占位符|`string`|`-`||
+|disabled|是否禁用|`boolean`|`false`||
+|error|是否为错误状态|`boolean`|`false`||
+|readonly|是否为只读模式|`boolean`|`false`||
+|allow-clear|是否允许清空|`boolean`|`false`||
+|size|输入框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|max-tag-count|最多展示的标签个数，`0` 表示不限制|`number`|`0`||
+|retain-input-value|创建标签后是否保留输入框的内容|`boolean`|`false`||
+|format-tag|格式化标签内容|`(data: TagData) => string`|`-`||
+|unique-value|是否仅创建唯一的值|`boolean`|`false`|2.15.0|
 ### `<input-tag>` Events
 
 |事件名|描述|参数|

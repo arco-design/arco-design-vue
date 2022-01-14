@@ -2,26 +2,22 @@
 
 exports[`Mention mention correctly 1`] = `
 "<div class=\\"arco-dropdown\\">
-  <div class=\\"arco-spin\\" style=\\"width: 100%; display: block;\\">
-    <!--v-if-->
-    <div class=\\"arco-dropdown-list-wrapper\\">
-      <ul class=\\"arco-dropdown-list\\">
-        <li class=\\"arco-dropdown-option arco-dropdown-option-active\\">
-          <!--v-if-->Bytedance
-          <!--v-if-->
-        </li>
-        <li class=\\"arco-dropdown-option\\">
-          <!--v-if-->Bytedesign
-          <!--v-if-->
-        </li>
-        <li class=\\"arco-dropdown-option\\">
-          <!--v-if-->Bytenumner
-          <!--v-if-->
-        </li>
-      </ul>
-    </div>
-    <!--v-if-->
-    <!---->
+  <div class=\\"arco-dropdown-list-wrapper\\">
+    <ul class=\\"arco-dropdown-list\\">
+      <li class=\\"arco-dropdown-option arco-dropdown-option-active\\">
+        <!--v-if-->Bytedance
+        <!--v-if-->
+      </li>
+      <li class=\\"arco-dropdown-option\\">
+        <!--v-if-->Bytedesign
+        <!--v-if-->
+      </li>
+      <li class=\\"arco-dropdown-option\\">
+        <!--v-if-->Bytenumner
+        <!--v-if-->
+      </li>
+    </ul>
   </div>
+  <!--v-if-->
 </div>"
 `;

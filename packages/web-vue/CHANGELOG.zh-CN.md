@@ -2,6 +2,36 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 💎 功能优化
+
+- 优化组件内置的选择框不会受到外部选择框组的控制 ([#569](https://github.com/arco-design/arco-design-vue/pull/569))
+- **select:** 优化加载中状态显示 ([#557](https://github.com/arco-design/arco-design-vue/pull/557))
+
+### 🆕 新增功能
+
+- **input-tag:** 增加 `uniqueValue` 属性，支持输入时验证值不重复 ([#578](https://github.com/arco-design/arco-design-vue/pull/578))
+- **modal:** 增加 `escToClose` 属性并默认开启 ([#577](https://github.com/arco-design/arco-design-vue/pull/577))
+- **drawer:** 增加 `escToClose` 属性并默认开启 ([#577](https://github.com/arco-design/arco-design-vue/pull/577))
+- **grid:** 新增基于 grid 的布局组件 `Grid` `Grid.Item` ([#576](https://github.com/arco-design/arco-design-vue/pull/576))
+- **table:** `sortable.sorter` 增加 boolean 类型，支持服务器端排序 ([#575](https://github.com/arco-design/arco-design-vue/pull/575))
+- 增加 `icon` 组件，并提供对 iconfont.cn 的支持 ([#574](https://github.com/arco-design/arco-design-vue/pull/574))
+- **cascader:** 增加 loading 属性 ([#558](https://github.com/arco-design/arco-design-vue/pull/558))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复事件参数缺失的问题 ([#579](https://github.com/arco-design/arco-design-vue/pull/579))
+
+### 💅 样式更新
+
+- **tag:** 修复 checkable 状态样式错误的问题 ([#570](https://github.com/arco-design/arco-design-vue/pull/570))
+- **button:** 修复按钮组中 iconOnly 按钮的对齐问题 ([#567](https://github.com/arco-design/arco-design-vue/pull/567))
+- **input:** 修复暗黑模式下背景颜色错误的问题 ([#560](https://github.com/arco-design/arco-design-vue/pull/560))
+
+
 ## 2.14.3
 
 `2022-01-12`

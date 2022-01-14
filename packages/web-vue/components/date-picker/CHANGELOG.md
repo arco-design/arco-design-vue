@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 🐛 BugFix
+
+- fix the problem of missing event parameters ([#579](https://github.com/arco-design/arco-design-vue/pull/579))
+
+
 ## 2.13.0
 
 `2021-12-31`

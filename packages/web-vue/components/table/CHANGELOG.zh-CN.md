@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 🆕 新增功能
+
+- `sortable.sorter` 增加 boolean 类型，支持服务器端排序 ([#575](https://github.com/arco-design/arco-design-vue/pull/575))
+
+
 ## 2.14.2
 
 `2022-01-10`

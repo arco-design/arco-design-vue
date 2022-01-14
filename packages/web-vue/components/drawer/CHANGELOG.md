@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 🆕 Feature
+
+- Added `escToClose` property and enabled by default ([#577](https://github.com/arco-design/arco-design-vue/pull/577))
+
+
 ## 2.14.0
 
 `2022-01-07`

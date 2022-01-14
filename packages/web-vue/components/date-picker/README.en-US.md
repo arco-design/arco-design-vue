@@ -69,14 +69,14 @@ description: Choose a date. Support year, month, week, day type, support range s
 |disabled|Whether to disable|`boolean`|`false`|
 |disabled-date|Unselectable date|`(current?: Date) => boolean`|`-`|
 |disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`|
-|picker-value **(v-model)**|Date displayed on the panel|`date\|string\|number`|`-`|
-|default-picker-value|The date displayed on the panel by default|`date\|string\|number`|`-`|
+|picker-value **(v-model)**|Date displayed on the panel|`Date \| string \| number`|`-`|
+|default-picker-value|The date displayed on the panel by default|`Date \| string \| number`|`-`|
 |popup-container|Mount container for pop-up box|`string \| HTMLElement \| null \| undefined`|`-`|
 ### `Common` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|The component value changes|dateString: `string`<br>date: `Date`|
+|change|The component value changes|dateString: `string \| undefined`<br>date: `Date \| undefined`|
 |select|The selected date has changed but the component value has not changed|dateString: `string`<br>date: `Date`|
 |popup-visible-change|Open or close the pop-up box|visible: `boolean`|
 |ok|Click the confirm button|dateString: `string`<br>date: `Date`|
@@ -102,8 +102,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|model-value **(v-model)**|Value|`date\|string\|number`|`-`|
-|default-value|Default value|`date\|string\|number`|`-`|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
+|default-value|Default value|`Date \| string \| number`|`-`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string \| ((current: Date) => string)`|`-`|
 |day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`|
 |show-time|Whether to increase time selection|`boolean`|`false`|
@@ -118,8 +118,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|model-value **(v-model)**|Value|`date\|string\|number`|`-`|
-|default-value|Default value|`date\|string\|number`|`-`|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
+|default-value|Default value|`Date \| string \| number`|`-`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'YYYY-MM'`|
 
 
@@ -129,8 +129,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|model-value **(v-model)**|Value|`date\|string\|number`|`-`|
-|default-value|Default value|`date\|string\|number`|`-`|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
+|default-value|Default value|`Date \| string \| number`|`-`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'YYYY'`|
 
 
@@ -140,8 +140,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|model-value **(v-model)**|Value|`date\|string\|number`|`-`|
-|default-value|Default value|`date\|string\|number`|`-`|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
+|default-value|Default value|`Date \| string \| number`|`-`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'YYYY-[Q]Q'`|
 
 
@@ -151,8 +151,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|model-value **(v-model)**|Value|`date\|string\|number`|`-`|
-|default-value|Default value|`date\|string\|number`|`-`|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
+|default-value|Default value|`Date \| string \| number`|`-`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'gggg-wo'`|
 |day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`|
 

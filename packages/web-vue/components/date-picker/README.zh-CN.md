@@ -67,14 +67,14 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |disabled|是否禁用|`boolean`|`false`|
 |disabled-date|不可选取的日期|`(current?: Date) => boolean`|`-`|
 |disabled-time|不可选取的时间|`(current: Date) => DisabledTimeProps`|`-`|
-|picker-value **(v-model)**|面板显示的日期|`date\|string\|number`|`-`|
-|default-picker-value|面板默认显示的日期|`date\|string\|number`|`-`|
+|picker-value **(v-model)**|面板显示的日期|`Date \| string \| number`|`-`|
+|default-picker-value|面板默认显示的日期|`Date \| string \| number`|`-`|
 |popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
 ### `Common` Events
 
 |事件名|描述|参数|
 |---|---|---|
-|change|组件值发生改变|dateString: `string`<br>date: `Date`|
+|change|组件值发生改变|dateString: `string \| undefined`<br>date: `Date \| undefined`|
 |select|选中日期发生改变但组件值未改变|dateString: `string`<br>date: `Date`|
 |popup-visible-change|打开或关闭弹出框|visible: `boolean`|
 |ok|点击确认按钮|dateString: `string`<br>date: `Date`|
@@ -100,8 +100,8 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`date\|string\|number`|`-`|
-|default-value|默认值|`date\|string\|number`|`-`|
+|model-value **(v-model)**|绑定值|`Date \| string \| number`|`-`|
+|default-value|默认值|`Date \| string \| number`|`-`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string \| ((current: Date) => string)`|`-`|
 |day-start-of-week|每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0)|`0 \| 1`|`0`|
 |show-time|是否增加时间选择|`boolean`|`false`|
@@ -116,8 +116,8 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`date\|string\|number`|`-`|
-|default-value|默认值|`date\|string\|number`|`-`|
+|model-value **(v-model)**|绑定值|`Date \| string \| number`|`-`|
+|default-value|默认值|`Date \| string \| number`|`-`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`'YYYY-MM'`|
 
 
@@ -127,8 +127,8 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`date\|string\|number`|`-`|
-|default-value|默认值|`date\|string\|number`|`-`|
+|model-value **(v-model)**|绑定值|`Date \| string \| number`|`-`|
+|default-value|默认值|`Date \| string \| number`|`-`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`'YYYY'`|
 
 
@@ -138,8 +138,8 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`date\|string\|number`|`-`|
-|default-value|默认值|`date\|string\|number`|`-`|
+|model-value **(v-model)**|绑定值|`Date \| string \| number`|`-`|
+|default-value|默认值|`Date \| string \| number`|`-`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`'YYYY-[Q]Q'`|
 
 
@@ -149,8 +149,8 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`date\|string\|number`|`-`|
-|default-value|默认值|`date\|string\|number`|`-`|
+|model-value **(v-model)**|绑定值|`Date \| string \| number`|`-`|
+|default-value|默认值|`Date \| string \| number`|`-`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`'gggg-wo'`|
 |day-start-of-week|每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0)|`0 \| 1`|`0`|
 

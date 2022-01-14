@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 🆕 新增功能
+
+- 增加 `escToClose` 属性并默认开启 ([#577](https://github.com/arco-design/arco-design-vue/pull/577))
+
+
 ## 2.12.2
 
 `2021-12-27`

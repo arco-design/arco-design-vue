@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.15.0
+
+`2022-01-14`
+
+### 🆕 Feature
+
+- Add the `uniqueValue` attribute to support the validation that the value is not repeated during input ([#578](https://github.com/arco-design/arco-design-vue/pull/578))
+
+
 ## 2.13.0
 
 `2021-12-31`

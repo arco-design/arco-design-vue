@@ -128,7 +128,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |sortDirections|支持的排序方向|`('ascend' \| 'descend')[]`|`-`|
-|sorter|排序函数|`(a: any, b: any) => number`|`-`|
+|sorter|排序函数。设置为 `true` 可关闭内部排序。|`((a: any, b: any) => number) \| boolean`|`-`|
 |sortOrder|排序方向|`'ascend' \| 'descend' \| ''`|`-`|
 |defaultSortOrder|默认排序方向（非受控模式）|`'ascend' \| 'descend' \| ''`|`-`|
 

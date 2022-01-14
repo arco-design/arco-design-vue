@@ -6,7 +6,7 @@
         :key="item.value"
         :ref="
           (el) => {
-            onItemRef(el as HTMLElement, item);
+            onItemRef(el, item);
           }
         "
         :class="[

@@ -130,7 +130,7 @@ description: It is used for data collection, display, analysis and processing, a
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |sortDirections|Supported sort direction|`('ascend' \| 'descend')[]`|`-`|
-|sorter|Sorting function|`(a: any, b: any) => number`|`-`|
+|sorter|Sorting function. Set to `true` to turn off internal sorting.|`((a: any, b: any) => number) \| boolean`|`-`|
 |sortOrder|Sort direction|`'ascend' \| 'descend' \| ''`|`-`|
 |defaultSortOrder|Default sort direction (uncontrolled mode)|`'ascend' \| 'descend' \| ''`|`-`|
 
