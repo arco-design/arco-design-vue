@@ -51,6 +51,14 @@ export function scrollTo(element: HTMLElement, to: number, duration: number) {
 }
 
 export function getFormattedValue(
+  time: Dayjs | undefined,
+  format: string
+): string | undefined;
+export function getFormattedValue(
+  time: Array<Dayjs | undefined> | undefined,
+  format: string
+): Array<string | undefined> | undefined;
+export function getFormattedValue(
   time: Dayjs | Array<Dayjs | undefined> | undefined,
   format: string
 ): string | Array<string | undefined> | undefined {

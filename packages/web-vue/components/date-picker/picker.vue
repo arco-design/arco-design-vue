@@ -244,14 +244,14 @@ export default defineComponent({
      * @vModel
      */
     pickerValue: {
-      type: [Date, String, Number],
+      type: [Object, String, Number] as PropType<Date | string | number>,
     },
     /**
      * @zh 面板默认显示的日期
      * @en The date displayed on the panel by default
      */
     defaultPickerValue: {
-      type: [Date, String, Number],
+      type: [Object, String, Number] as PropType<Date | string | number>,
     },
     /**
      * @zh 弹出框的挂载容器
@@ -284,15 +284,17 @@ export default defineComponent({
       default: 0,
     },
     modelValue: {
-      type: [Date, String, Number],
+      type: [Object, String, Number] as PropType<Date | string | number>,
     },
     defaultValue: {
-      type: [Date, String, Number],
+      type: [Object, String, Number] as PropType<Date | string | number>,
     },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
-        EmitType<(dateString: string, date: Date) => void>
+        EmitType<
+          (dateString: string | undefined, date: Date | undefined) => void
+        >
       >,
     },
     onSelect: {
@@ -322,56 +324,76 @@ export default defineComponent({
       >,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 组件值发生改变
      * @en The component value changes
-     * @param {string} dateString
-     * @param {Date} date
+     * @param {string | undefined} dateString
+     * @param {Date | undefined} date
      */
-    'change',
-    'update:modelValue',
+    'change': (dateString: string | undefined, date: Date | undefined) => {
+      return true;
+    },
+    'update:modelValue': (dateString: string | undefined) => {
+      return true;
+    },
     /**
      * @zh 选中日期发生改变但组件值未改变
      * @en The selected date has changed but the component value has not changed
      * @param {string} dateString
      * @param {Date} date
      */
-    'select',
+    'select': (dateString: string, date: Date) => {
+      return true;
+    },
     /**
      * @zh 打开或关闭弹出框
      * @en Open or close the pop-up box
      * @param {boolean} visible
      */
-    'popup-visible-change',
-    'update:popupVisible',
+    'popup-visible-change': (popupVisible: boolean) => {
+      return true;
+    },
+    'update:popupVisible': (popupVisible: boolean) => {
+      return true;
+    },
     /**
      * @zh 点击确认按钮
      * @en Click the confirm button
      * @param {string} dateString
      * @param {Date} date
      */
-    'ok',
+    'ok': (dateString: string, date: Date) => {
+      return true;
+    },
     /**
      * @zh 点击清除按钮
      * @en Click the clear button
      */
-    'clear',
+    'clear': () => {
+      return true;
+    },
     /**
      * @zh 点击快捷选项
      * @en Click on the shortcut option
      * @param {ShortcutType} shortcut
      */
-    'select-shortcut',
+    'select-shortcut': (shortcut: ShortcutType) => {
+      return true;
+    },
     /**
      * @zh 面板日期改变
      * @en Panel date change
      * @param {string} dateString
      * @param {Date} date
      */
-    'picker-value-change',
-    'update:pickerValue',
-  ],
+    'picker-value-change': (dateString: string, date: Date) => {
+      return true;
+    },
+    'update:pickerValue': (dateString: string, date: Date) => {
+      return true;
+    },
+  },
   /**
    * @zh 输入框后缀图标
    * @en Input box suffix icon
@@ -512,9 +534,13 @@ export default defineComponent({
         selectedValue: panelValue,
         format: computedFormat,
         onChange: (newVal: Dayjs) => {
+          const formattedValue = getFormattedValue(
+            newVal,
+            computedFormat.value
+          );
           const dateValue = getDateValue(newVal);
-          emit('picker-value-change', dateValue);
-          emit('update:pickerValue', dateValue);
+          emit('picker-value-change', formattedValue, dateValue);
+          emit('update:pickerValue', formattedValue, dateValue);
         },
       })
     );
@@ -581,7 +607,7 @@ export default defineComponent({
       if (emitSelect) {
         const formattedValue = getFormattedValue(value, computedFormat.value);
         const dateValue = getDateValue(value);
-        emit('select', dateValue, formattedValue);
+        emit('select', formattedValue, dateValue);
       }
     }
 

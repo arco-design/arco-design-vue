@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { YearPickerProps } from '../interface';
 import Picker from '../picker.vue';
 
@@ -10,14 +10,14 @@ export default defineComponent({
      * @en Value
      */
     modelValue: {
-      type: [Date, String, Number],
+      type: [Object, String, Number] as PropType<Date | string | number>,
     },
     /**
      * @zh 默认值
      * @en Default value
      */
     defaultValue: {
-      type: [Date, String, Number],
+      type: [Object, String, Number] as PropType<Date | string | number>,
     },
     /**
      * @zh 展示日期的格式，参考[字符串解析格式](#字符串解析格式)
