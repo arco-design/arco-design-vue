@@ -50,10 +50,10 @@ export interface TableSortable {
    */
   sortDirections: ('ascend' | 'descend')[];
   /**
-   * @zh 排序函数
-   * @en Sorting function
+   * @zh 排序函数。设置为 `true` 可关闭内部排序。
+   * @en Sorting function. Set to `true` to turn off internal sorting.
    */
-  sorter?: (a: any, b: any) => number;
+  sorter?: ((a: any, b: any) => number) | boolean;
   /**
    * @zh 排序方向
    * @en Sort direction

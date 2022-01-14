@@ -8,6 +8,7 @@ title:
 
 通过设置 `columns` 中的 `sortable` 和 `filterable` 属性，可以配置排序和筛选功能。
 通过 `filter-icon-align-left` 属性可以让筛选按钮左对齐。
+可以通过设置 `sortable.sorter=true` 来关闭内部排序，并通过 `change` 或者 `sorterChange` 事件来实现服务器端排序。
 
 ---
 
@@ -15,6 +16,7 @@ title:
 
 You can configure the sorting and filtering functions by setting the `sortable` and `filterable` attributes in `columns`.
 The filter button can be aligned to the left through the `filter-icon-align-left` property.
+Internal sorting can be turned off by setting `sortable.sorter=true`, and server-side sorting can be implemented via the `change` or `sorterChange` events.
 
 ---
 
