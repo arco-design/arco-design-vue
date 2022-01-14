@@ -78,6 +78,12 @@ export interface ModalConfig {
    */
   alignCenter?: boolean;
   /**
+   * @zh 是否支持 ESC 键关闭对话框
+   * @en Whether to support the ESC key to close the dialog
+   * @version 2.15.0
+   */
+  escToClose?: boolean;
+  /**
    * @zh 点击确定按钮的回调函数
    * @en Callback function for clicking the OK button
    */

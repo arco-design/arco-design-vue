@@ -95,7 +95,14 @@
 
 <script lang="tsx">
 import type { CSSProperties, PropType } from 'vue';
-import { defineComponent, computed, ref, watch, onMounted } from 'vue';
+import {
+  defineComponent,
+  computed,
+  ref,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { MessageType } from '../_utils/constant';
 import IconHover from '../_components/icon-hover.vue';
@@ -107,9 +114,10 @@ import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
 import IconCloseCircleFill from '../icon/icon-close-circle-fill';
 import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
-import { getElement } from '../_utils/dom';
+import { getElement, off, on } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { isBoolean, isFunction, isNumber } from '../_utils/is';
+import { CODE } from '../_utils/keyboard';
 
 export default defineComponent({
   name: 'Modal',
@@ -310,7 +318,15 @@ export default defineComponent({
     onBeforeCancel: {
       type: [Function, Array] as PropType<() => boolean>,
     },
-
+    /**
+     * @zh 是否支持 ESC 键关闭对话框
+     * @en Whether to support the ESC key to close the dialog
+     * @version 2.15.0
+     */
+    escToClose: {
+      type: Boolean,
+      default: true,
+    },
     // private
     messageType: {
       type: String as PropType<MessageType>,
@@ -367,6 +383,26 @@ export default defineComponent({
     );
 
     const { zIndex } = usePopupManager({ visible: computedVisible });
+
+    let globalKeyDownListener = false;
+
+    const handleGlobalKeyDown = (ev: KeyboardEvent) => {
+      if (props.escToClose && ev.code === CODE.ESC) {
+        handleCancel();
+      }
+    };
+
+    const addGlobalKeyDownListener = () => {
+      if (props.escToClose && !globalKeyDownListener) {
+        globalKeyDownListener = true;
+        on(document.documentElement, 'keydown', handleGlobalKeyDown);
+      }
+    };
+
+    const removeGlobalKeyDownListener = () => {
+      globalKeyDownListener = false;
+      off(document.documentElement, 'keydown', handleGlobalKeyDown);
+    };
 
     // Used to ignore closed Promises
     let promiseNumber = 0;
@@ -443,7 +479,14 @@ export default defineComponent({
       containerRef.value = getElement(props.popupContainer);
       if (computedVisible.value) {
         setOverflowHidden();
+        if (props.escToClose) {
+          addGlobalKeyDownListener();
+        }
       }
+    });
+
+    onBeforeUnmount(() => {
+      removeGlobalKeyDownListener();
     });
 
     watch(computedVisible, (value: boolean) => {
@@ -453,8 +496,10 @@ export default defineComponent({
       if (value) {
         mounted.value = true;
         setOverflowHidden();
+        addGlobalKeyDownListener();
       } else {
         resetOverflow();
+        removeGlobalKeyDownListener();
       }
     });
 

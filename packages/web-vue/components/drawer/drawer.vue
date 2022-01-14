@@ -67,16 +67,24 @@
 
 <script lang="ts">
 import type { CSSProperties, PropType } from 'vue';
-import { computed, defineComponent, onMounted, ref, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import ArcoButton from '../button';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
-import { getElement } from '../_utils/dom';
+import { getElement, off, on } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { isBoolean, isFunction, isNumber } from '../_utils/is';
+import { CODE } from '../_utils/keyboard';
 
 const DRAWER_PLACEMENTS = ['top', 'right', 'bottom', 'left'] as const;
 type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];
@@ -249,6 +257,15 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 是否支持 ESC 键关闭对话框
+     * @en Whether to support the ESC key to close the dialog
+     * @version 2.15.0
+     */
+    escToClose: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     'update:visible',
@@ -294,6 +311,26 @@ export default defineComponent({
     const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
 
     const mounted = ref(computedVisible.value);
+
+    let globalKeyDownListener = false;
+
+    const handleGlobalKeyDown = (ev: KeyboardEvent) => {
+      if (props.escToClose && ev.code === CODE.ESC) {
+        handleCancel();
+      }
+    };
+
+    const addGlobalKeyDownListener = () => {
+      if (props.escToClose && !globalKeyDownListener) {
+        globalKeyDownListener = true;
+        on(document.documentElement, 'keydown', handleGlobalKeyDown);
+      }
+    };
+
+    const removeGlobalKeyDownListener = () => {
+      globalKeyDownListener = false;
+      off(document.documentElement, 'keydown', handleGlobalKeyDown);
+    };
 
     const { zIndex } = usePopupManager({ visible: computedVisible });
     const isFixed = computed(() => {
@@ -384,7 +421,14 @@ export default defineComponent({
       containerRef.value = getElement(props.popupContainer);
       if (computedVisible.value) {
         setOverflowHidden();
+        if (props.escToClose) {
+          addGlobalKeyDownListener();
+        }
       }
+    });
+
+    onBeforeUnmount(() => {
+      removeGlobalKeyDownListener();
     });
 
     watch(computedVisible, (visible) => {
@@ -394,8 +438,10 @@ export default defineComponent({
       if (visible) {
         mounted.value = true;
         setOverflowHidden();
+        addGlobalKeyDownListener();
       } else {
         resetOverflow();
+        removeGlobalKeyDownListener();
       }
     });
 
