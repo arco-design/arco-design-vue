@@ -190,7 +190,7 @@ export default defineComponent({
         [`${prefixCls}-loading`]: props.loading,
         [`${prefixCls}-hide`]: !computedVisible.value,
         [`${prefixCls}-${props.color}`]: isBuiltInColor.value,
-        [`${prefixCls}-checkble`]: props.checkable,
+        [`${prefixCls}-checkable`]: props.checkable,
         [`${prefixCls}-checked`]: computedChecked.value,
         [`${prefixCls}-custom-color`]: isCustomColor.value,
       },
