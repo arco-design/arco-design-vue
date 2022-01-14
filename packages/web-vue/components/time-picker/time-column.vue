@@ -6,7 +6,7 @@
         :key="item.value"
         :ref="
           (el) => {
-            onItemRef(el, item);
+            onItemRef(el as HTMLElement, item);
           }
         "
         :class="[
@@ -53,7 +53,7 @@ export default defineComponent({
       required: true,
     },
     value: {
-      type: Number,
+      type: [Number, String],
     },
     visible: {
       type: Boolean,
