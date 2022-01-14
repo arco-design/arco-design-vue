@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'glob';
@@ -43,6 +44,11 @@ const getApiTmpl = (
           ? displayName
           : `<${toKebabCase(displayName)}>`;
         title = `\`${title}\` ${suffix}`;
+      }
+
+      if (tags?.version) {
+        const version = (tags.version[0] as any)?.description;
+        version && (title += ` (${version})`);
       }
 
       return `### ${title}\n${content}`;
@@ -97,6 +103,7 @@ const replacePlaceholderToDoc = async ({
       });
       result = result.replace(item[0], getApiTmpl(componentDoc, type, lang));
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err, dir);
     }
   }
@@ -139,7 +146,7 @@ const docgen = async ({
 
   for (const filename of files) {
     const dirname = path.dirname(filename);
-    let result = fs.readFileSync(filename, 'utf8');
+    const result = fs.readFileSync(filename, 'utf8');
     let zhResult = getTemplate(result, 'zh');
     let enResult = getTemplate(result, 'en');
     // API占位符替换
