@@ -754,14 +754,17 @@ export default defineComponent({
       if (data.length > 0) {
         if (computedSorter.value.filed) {
           const column = getColumnByDataIndex(computedSorter.value.filed);
-          if (column) {
+          if (column && column.sortable?.sorter !== true) {
             data.sort((a, b) => {
               const valueA = a[computedSorter.value.filed];
               const valueB = b[computedSorter.value.filed];
-              const result =
-                column.sortable?.sorter?.(valueA, valueB) ?? valueA > valueB
-                  ? 1
-                  : -1;
+              const result = (
+                isFunction(column.sortable?.sorter)
+                  ? column.sortable?.sorter?.(valueA, valueB)
+                  : valueA > valueB
+              )
+                ? 1
+                : -1;
               return computedSorter.value.direction === 'descend'
                 ? -result
                 : result;
