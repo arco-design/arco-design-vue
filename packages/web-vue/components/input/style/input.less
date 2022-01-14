@@ -121,7 +121,7 @@
   padding-left: 0;
   color: inherit;
   line-height: @line-height-base;
-  background-color: inherit;
+  background: none;
   border: none;
   border-radius: 0;
   outline: none;
@@ -135,6 +135,11 @@
 
   &[disabled]::placeholder {
     color: @input-color-text_disabled;
+  }
+
+  // fix color error under disabled status in safari
+  &[disabled] {
+    -webkit-text-fill-color: @input-color-text_disabled;
   }
 }
 
