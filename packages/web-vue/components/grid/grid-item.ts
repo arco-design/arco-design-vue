@@ -1,8 +1,10 @@
-import { FunctionalComponent } from 'vue';
-import { GridItemProps } from './interface';
+import { defineComponent } from 'vue';
 
-const GridItem: FunctionalComponent<GridItemProps> = () => {};
-
-GridItem.displayName = 'GridItem';
-
-export { GridItem };
+export default defineComponent({
+  name: 'GridItem',
+  props: {
+    span: Number,
+    offset: Number,
+    suffix: Boolean,
+  },
+});
