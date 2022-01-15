@@ -20,7 +20,7 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
 <template>
   <div style="margin-bottom: 20px;">
     <a-typography-text>折叠：</a-typography-text>
-    <a-switch :checked="collapsed" @click="() => { collapsed = !collapsed }"  />
+    <a-switch :checked="collapsed" @click="collapsed = !collapsed"  />
   </div>
   <a-grid :cols="3" :colGap="12" :rowGap="16" class="grid-demo-grid" :collapsed="collapsed">
     <a-grid-item class="demo-item">item</a-grid-item>
@@ -31,8 +31,8 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
     <a-grid-item class="demo-item" :span="3">item | span - 3</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
-    <a-grid-item class="demo-item" suffix #default="{ overflow }">
-      suffix | overflow: {{ overflow }}
+    <a-grid-item class="demo-item" suffix>
+      suffix | overflow
     </a-grid-item>
   </a-grid>
 </template>
@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .grid-demo-grid .demo-item,
 .grid-demo-grid .demo-suffix {
   height: 48px;
