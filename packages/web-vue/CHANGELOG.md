@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.15.1
+
+`2022-01-15`
+
+### 🐛 BugFix
+
+- **grid:** Fix component name registration error problem ([#581](https://github.com/arco-design/arco-design-vue/pull/581))
+
+
 ## 2.15.0
 
 `2022-01-14`
