@@ -31,7 +31,9 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
     <a-grid-item class="demo-item" :span="3">item | span - 3</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
-    <a-grid-item class="demo-item" suffix #="{ overflow }"> suffix | overflow: {{ overflow }} </a-grid-item>
+    <a-grid-item class="demo-item" suffix #default="{ overflow }">
+      suffix | overflow: {{ overflow }}
+    </a-grid-item>
   </a-grid>
 </template>
 
@@ -39,8 +41,8 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
 export default {
   data() {
     return {
-      hide:false,
-      collapsed:false
+      hide: false,
+      collapsed: false
     }
   }
 }
