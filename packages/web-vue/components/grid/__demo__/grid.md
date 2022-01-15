@@ -34,11 +34,18 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
     <a-grid-item class="demo-item" suffix #="{ overflow }"> suffix | overflow: {{ overflow }} </a-grid-item>
   </a-grid>
 </template>
-<script setup>
-  import { ref } from  'vue';
-  const hide = ref(false);
-  const collapsed =ref(false);
+
+<script>
+export default {
+  data() {
+    return {
+      hide:false,
+      collapsed:false
+    }
+  }
+}
 </script>
+
 <style scoped>
 .demo .demo-item,
 .demo .demo-suffix {
