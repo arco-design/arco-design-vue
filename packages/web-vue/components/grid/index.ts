@@ -17,8 +17,8 @@ const Grid = {
 
     app.component(componentPrefix + _GridRow.name, _GridRow);
     app.component(componentPrefix + _GridCol.name, _GridCol);
-    app.component(componentPrefix + _Grid.name, _Grid);
-    app.component(componentPrefix + _GridItem.name, _GridItem);
+    app.component(componentPrefix + _Grid.displayName, _Grid);
+    app.component(componentPrefix + _GridItem.displayName, _GridItem);
   },
 };
 
