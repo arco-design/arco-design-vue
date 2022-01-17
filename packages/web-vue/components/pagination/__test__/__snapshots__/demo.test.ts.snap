@@ -35,7 +35,7 @@ exports[`<pagination> demo: render [basic] correctly 1`] = `
 exports[`<pagination> demo: render [custom] correctly 1`] = `
 "<div class=\\"arco-pagination arco-pagination-size-medium\\">
   <!---->
-  <ul class=\\"arco-pagination-list\\"><span class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-send\\" style=\\"transform: rotate(180deg);\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m14 24-7-5V7l34 17L7 41V29l7-5Zm0 0h25\\" stroke-miterlimit=\\"3.864\\"></path></svg></span>
+  <ul class=\\"arco-pagination-list\\"><span class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-send\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\" style=\\"transform: rotate(180deg);\\"><path d=\\"m14 24-7-5V7l34 17L7 41V29l7-5Zm0 0h25\\" stroke-miterlimit=\\"3.864\\"></path></svg></span>
     <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"20\\"> - 1 - </li>
     <li class=\\"arco-pagination-item\\" pages=\\"20\\"> - 2 - </li>
     <li class=\\"arco-pagination-item\\" pages=\\"20\\"> - 3 - </li>
