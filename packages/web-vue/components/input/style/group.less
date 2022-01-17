@@ -6,10 +6,10 @@
   // select 圆角重置
   > .@{prefix}-select {
     vertical-align: unset;
+  }
 
-    .@{prefix}-select-view {
-      border-radius: 0;
-    }
+  > .@{prefix}-select-view {
+    border-radius: 0;
   }
 
   > * {
@@ -32,11 +32,9 @@
       border-top-left-radius: @input-group-border-radius_compact;
       border-bottom-left-radius: @input-group-border-radius_compact;
 
-      .@{prefix}-select {
-        .@{prefix}-select-view {
-          border-top-left-radius: @input-group-border-radius_compact;
-          border-bottom-left-radius: @input-group-border-radius_compact;
-        }
+      .@{prefix}-select-view {
+        border-top-left-radius: @input-group-border-radius_compact;
+        border-bottom-left-radius: @input-group-border-radius_compact;
       }
     }
 
@@ -45,19 +43,18 @@
       border-top-right-radius: @input-group-border-radius_compact;
       border-bottom-right-radius: @input-group-border-radius_compact;
 
-      .@{prefix}-select {
-        .@{prefix}-select-view {
-          border-top-right-radius: @input-group-border-radius_compact;
-          border-bottom-right-radius: @input-group-border-radius_compact;
-        }
+      .@{prefix}-select-view {
+        border-top-right-radius: @input-group-border-radius_compact;
+        border-bottom-right-radius: @input-group-border-radius_compact;
       }
     }
   }
 
   // 针对input边框颜色处理
-  > .@{input-prefix-cls}-wrapper:not(:last-child) {
-    border-right-color: @input-group-color-separator-border;
-
+  > .@{input-prefix-cls}-wrapper:not(:last-child),
+  > .@{input-prefix-cls}-outer:not(:last-child),
+  > .@{prefix}-input-tag:not(:last-child),
+  > .@{prefix}-select-view:not(:last-child) {
     &:focus-within {
       border-right-color: @input-color-border_focus;
     }
