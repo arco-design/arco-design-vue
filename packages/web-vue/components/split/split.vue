@@ -11,7 +11,7 @@
       :prefix-cls="`${prefixCls}-trigger`"
       :direction="isHorizontal ? 'vertical' : 'horizontal'"
       @mousedown="onMoveStart"
-      @resize="onTiggerResize"
+      @resize="onTriggerResize"
     >
       <template #default>
         <slot name="resize-trigger" />
@@ -33,11 +33,48 @@ import {
   reactive,
   ref,
   toRefs,
+  onMounted,
+  nextTick,
 } from 'vue';
 import ResizeTrigger from '../_components/resize-trigger.vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { getPrefixCls } from '../_utils/global-config';
 import { off, on } from '../_utils/dom';
+import { isNumber, isString } from '../_utils/is';
+import { SplitProps } from './interface';
+
+function getSizeConfig(size: number | string) {
+  const numberSize = isString(size) ? parseFloat(size) : size;
+  let unit = '';
+
+  if (isNumber(size) || String(numberSize) === size) {
+    unit = numberSize > 1 ? 'px' : '%';
+  } else {
+    unit = 'px';
+  }
+
+  return {
+    size: numberSize,
+    unit,
+    isPx: unit === 'px',
+  };
+}
+
+function getPxSize({
+  size,
+  defaultSize,
+  containerSize,
+}: {
+  size: number | string | undefined;
+  defaultSize?: string;
+  containerSize: number;
+}) {
+  const config = getSizeConfig(size ?? defaultSize);
+  if (config.isPx) {
+    return config.size;
+  }
+  return config.size * containerSize;
+}
 
 function px2percent(numerator: number | string, denominator: number | string) {
   return parseFloat(numerator as string) / parseFloat(denominator as string);
@@ -67,7 +104,7 @@ export default defineComponent({
     },
     /**
      * @zh 分割的大小，可以是 0~1 代表百分比，或具体数值的像素，如 300px
-     * @en The size of the segmentation can be 0~1 representing a percentage, or a specific number of pixels, such as 300px
+     * @en The size of the segmentation, it can be 0~1 representing a percentage, or a specific number of pixels, such as 300px
      * @vModel
      */
     size: {
@@ -75,23 +112,23 @@ export default defineComponent({
       default: undefined,
     },
     /**
-     * @zh 默认分割的大小
-     * @en Default split size
+     * @zh 默认分割的大小，可以是 0~1 代表百分比，或具体数值的像素，如 300px
+     * @en Default split size, it can be 0~1 representing a percentage, or a specific number of pixels, such as 300px
      */
     defaultSize: {
       type: [Number, String],
       default: 0.5,
     },
     /**
-     * @zh 最小阈值
-     * @en Minimum threshold
+     * @zh 最小阈值，可以是 0~1 代表百分比，或具体数值的像素，如 300px
+     * @en Minimum threshold, it can be 0~1 representing a percentage, or a specific number of pixels, such as 300px
      */
     min: {
       type: [Number, String],
     },
     /**
-     * @zh 最大阈值
-     * @en Maximum threshold
+     * @zh 最大阈值，可以是 0~1 代表百分比，或具体数值的像素，如 300px
+     * @en Maximum threshold, it can be 0~1 representing a percentage, or a specific number of pixels, such as 300px
      * */
     max: {
       type: [Number, String],
@@ -102,6 +139,7 @@ export default defineComponent({
      */
     disabled: {
       type: Boolean,
+      default: false,
     },
   },
   emits: [
@@ -142,17 +180,9 @@ export default defineComponent({
    * @en Resize pole icon
    * @slot resize-trigger-icon
    */
-  setup(props, { emit }) {
+  setup(props: SplitProps, { emit }) {
     const { direction, size: propSize, defaultSize, min, max } = toRefs(props);
     const triggerSize = ref(0);
-    const record = {
-      startPageX: 0,
-      startPageY: 0,
-      startWidth: 0,
-      startHeight: 0,
-      startSize: 0,
-      moving: false,
-    };
     const wrapperRef = ref<HTMLDivElement>();
     const prefixCls = getPrefixCls('split');
     const [size, setSize] = useMergeState(
@@ -161,9 +191,7 @@ export default defineComponent({
         value: propSize,
       })
     );
-    const numberSize = computed(() => {
-      return parseFloat(size.value as string);
-    });
+    const sizeConfig = computed(() => getSizeConfig(size.value));
     const isHorizontal = computed(() => direction.value === 'horizontal');
     const classNames = computed(() => [
       prefixCls,
@@ -172,79 +200,120 @@ export default defineComponent({
         [`${prefixCls}-vertical`]: !isHorizontal.value,
       },
     ]);
-    const isPxSize = computed(
-      () => propSize && typeof propSize.value === 'string'
-    );
     const firstPaneStyles = computed(() => {
-      let firstPaneSize = '0';
-      if (numberSize.value) {
-        const unit = isPxSize.value ? 'px' : '%';
-        const baseVal = isPxSize.value
-          ? numberSize.value
-          : numberSize.value * 100;
-        firstPaneSize = `calc(${baseVal}${unit} - ${triggerSize.value / 2}px)`;
-      }
+      const { size: numberSize, unit, isPx } = sizeConfig.value;
+      const baseVal = isPx ? numberSize : numberSize * 100;
       return {
-        flexBasis: firstPaneSize,
+        flex: `0 0 calc(${baseVal}${unit} - ${triggerSize.value / 2}px)`,
       };
     });
+    const record: {
+      startPageX: number;
+      startPageY: number;
+      startContainerSize: number;
+      startSize: number | string;
+    } = {
+      startPageX: 0,
+      startPageY: 0,
+      startContainerSize: 0,
+      startSize: 0,
+    };
 
-    function getNewSize({
-      startWrapperSize,
-      startSize,
-      startPosition,
-      endPosition,
-    }: {
-      startWrapperSize: number;
-      startSize: number;
-      startPosition: number;
-      endPosition: number;
-    }) {
-      const minOffset = min.value ? parseFloat(min.value as string) : 0;
-      const maxOffset = max.value
-        ? parseFloat(max.value as string)
-        : isPxSize.value
-        ? startWrapperSize
-        : 1;
-      let newSize = isPxSize.value
-        ? startSize + (endPosition - startPosition)
-        : px2percent(
-            startWrapperSize * startSize + endPosition - startPosition,
-            startWrapperSize
-          );
-      newSize = Math.max(newSize, minOffset);
-      newSize = Math.min(newSize, maxOffset);
-      return newSize;
+    async function getContainerSize() {
+      const getSize = () => {
+        return isHorizontal.value
+          ? wrapperRef.value?.clientWidth
+          : wrapperRef.value?.clientHeight || 0;
+      };
+
+      if (!wrapperRef.value || getSize()) {
+        await nextTick();
+      }
+
+      return getSize();
     }
 
-    // 移动中，更新 firstPane 的占位大小
-    function onMoving(e: MouseEvent) {
-      if (!record.moving) return;
+    function updateSize(newPxSize: number, containerSize: number) {
+      if (!containerSize) {
+        return;
+      }
 
-      emit('moving', e);
+      const newSize = sizeConfig.value.isPx
+        ? `${newPxSize}px`
+        : px2percent(newPxSize, containerSize);
 
-      let newSize: number | string = isHorizontal.value
-        ? getNewSize({
-            startWrapperSize: record.startWidth,
-            startSize: record.startSize,
-            startPosition: record.startPageX,
-            endPosition: e.pageX,
-          })
-        : getNewSize({
-            startWrapperSize: record.startHeight,
-            startSize: record.startSize,
-            startPosition: record.startPageY,
-            endPosition: e.pageY,
-          });
-      if (isPxSize.value) newSize = `${newSize}px`;
+      if (size.value === newSize) return;
       setSize(newSize);
       emit('update:size', newSize);
     }
 
+    function getLegalPxSize(size: number | string, containerSize: number) {
+      const pxSize = getPxSize({
+        size,
+        containerSize,
+      });
+      const minPxSize = getPxSize({
+        size: min.value,
+        defaultSize: '0px',
+        containerSize,
+      });
+      const maxPxSize = getPxSize({
+        size: max.value,
+        defaultSize: `${containerSize}px`,
+        containerSize,
+      });
+
+      let legalPxSize = pxSize;
+      legalPxSize = Math.max(legalPxSize, minPxSize);
+      legalPxSize = Math.min(legalPxSize, maxPxSize);
+
+      return legalPxSize;
+    }
+
+    function getNewPxSize({
+      startContainerSize,
+      startSize,
+      startPosition,
+      endPosition,
+    }: {
+      startContainerSize: number;
+      startSize: number | string;
+      startPosition: number;
+      endPosition: number;
+    }) {
+      const startPxSize = getPxSize({
+        size: startSize,
+        containerSize: startContainerSize,
+      });
+      return getLegalPxSize(
+        `${startPxSize + (endPosition - startPosition)}px`,
+        startContainerSize
+      );
+    }
+
+    // 移动中，更新 firstPane 的占位大小
+    function onMoving(e: MouseEvent) {
+      emit('moving', e);
+
+      const newPxSize = isHorizontal.value
+        ? getNewPxSize({
+            startContainerSize: record.startContainerSize,
+            startSize: record.startSize,
+            startPosition: record.startPageX,
+            endPosition: e.pageX,
+          })
+        : getNewPxSize({
+            startContainerSize: record.startContainerSize,
+            startSize: record.startSize,
+            startPosition: record.startPageY,
+            endPosition: e.pageY,
+          });
+
+      updateSize(newPxSize, record.startContainerSize);
+    }
+
     // 移动结束，解除事件绑定
     function onMovingEnd(e: MouseEvent) {
-      record.moving = false;
-
       off(window, 'mousemove', onMoving);
       off(window, 'mouseup', onMovingEnd);
       off(window, 'contextmenu', onMovingEnd);
@@ -254,15 +323,13 @@ export default defineComponent({
     }
 
     // 移动开始，记录初始值，绑定移动事件
-    function onMoveStart(e: MouseEvent) {
+    async function onMoveStart(e: MouseEvent) {
       emit('moveStart', e);
 
-      record.moving = true;
       record.startPageX = e.pageX;
       record.startPageY = e.pageY;
-      record.startWidth = wrapperRef.value?.clientWidth || 0;
-      record.startHeight = wrapperRef.value?.clientHeight || 0;
-      record.startSize = numberSize.value;
+      record.startContainerSize = await getContainerSize();
+      record.startSize = size.value;
 
       on(window, 'mousemove', onMoving);
       on(window, 'mouseup', onMovingEnd);
@@ -273,20 +340,24 @@ export default defineComponent({
         : 'row-resize';
     }
 
-    function onTiggerResize(entry: ResizeObserverEntry) {
+    function onTriggerResize(entry: ResizeObserverEntry) {
       const { width, height } = entry.contentRect;
       triggerSize.value = isHorizontal.value ? width : height;
     }
 
+    onMounted(async () => {
+      const containerSize = await getContainerSize();
+      const fixedPxSize = getLegalPxSize(size.value, containerSize);
+      updateSize(fixedPxSize, containerSize);
+    });
+
     return {
-      size1: size,
-      numberSize,
       prefixCls,
       classNames,
       isHorizontal,
       wrapperRef,
       onMoveStart,
-      onTiggerResize,
+      onTriggerResize,
       firstPaneStyles,
     };
   },
