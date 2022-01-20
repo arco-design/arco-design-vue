@@ -203,6 +203,15 @@ export default defineComponent({
     labelColFlex: {
       type: [Number, String],
     },
+    /**
+     * @zh 是否显示表单控件的反馈图标
+     * @en Whether to show the feedback icon for the form control
+     * @version 2.16.0
+     */
+    feedback: {
+      type: Boolean,
+      default: false,
+    },
   },
   /**
    * @zh 标签
@@ -329,7 +338,7 @@ export default defineComponent({
       const _field = field.value;
       const _value = fieldValue.value;
       updateValidateState(_field, {
-        status: 'validating',
+        status: '',
         message: '',
       });
 
@@ -349,7 +358,7 @@ export default defineComponent({
         schema.validate({ [_field]: _value }, (err: Data) => {
           const isError = Boolean(err?.[_field]);
           updateValidateState(_field, {
-            status: isError ? 'error' : 'success',
+            status: isError ? 'error' : '',
             message: err?.[_field].message ?? '',
           });
 
@@ -505,6 +514,11 @@ export default defineComponent({
             disabled: vn.props?.disabled ?? computedDisabled.value,
             error: vn.props?.error ?? isError.value,
             size: vn.props?.size ?? formCtx?.size,
+            feedback:
+              vn.props?.feedback ??
+              (props.feedback && computedValidateStatus.value)
+                ? computedValidateStatus.value
+                : undefined,
             ...event.value,
           };
           return isFunction(props.mergeProps)

@@ -31,10 +31,14 @@
 
 // 错误状态
 @input-color-bg_error: var(~'@{arco-cssvars-prefix}-color-danger-light-1');
-@input-color-bg_error_hover: var(~'@{arco-cssvars-prefix}-color-danger-light-2');
+@input-color-bg_error_hover: var(
+  ~'@{arco-cssvars-prefix}-color-danger-light-2'
+);
 @input-color-bg_error_focus: @input-color-bg_focus;
 @input-color-border_error_focus: @color-danger-6;
-@input-color-shadow_error_focus: var(~'@{arco-cssvars-prefix}-color-danger-light-2');
+@input-color-shadow_error_focus: var(
+  ~'@{arco-cssvars-prefix}-color-danger-light-2'
+);
 @input-size-shadow_error_focus: @shadow-distance-none;
 
 // 圆角
@@ -107,7 +111,9 @@
 // input.group
 @input-group-border-radius_compact: @radius-small;
 @input-group-border-separator-width: @border-1;
-@input-group-color-separator-border: var(~'@{arco-cssvars-prefix}-color-neutral-3');
+@input-group-color-separator-border: var(
+  ~'@{arco-cssvars-prefix}-color-neutral-3'
+);
 
 /******** 高级配置项 end *******/
 
@@ -118,3 +124,8 @@
 @input-size-small-line-height: @line-height-base;
 @input-size-medium-line-height: @line-height-base;
 @input-size-large-line-height: @line-height-base;
+
+@input-feedback-icon-color_success: @color-success-6;
+@input-feedback-icon-color_error: @color-danger-6;
+@input-feedback-icon-color_warning: @color-warning-6;
+@input-feedback-icon-color_validating: @color-primary-6;

@@ -22,6 +22,7 @@ import pick from '../_utils/pick';
 import { EmitType } from '../_utils/types';
 import ResizeObserver from '../_components/resize-observer';
 import { configProviderInjectionKey } from '../config-provider/context';
+import FeedbackIcon from '../_components/feedback-icon.vue';
 
 export default defineComponent({
   name: 'InputTag',
@@ -136,6 +137,9 @@ export default defineComponent({
     uniqueValue: {
       type: Boolean,
       default: false,
+    },
+    feedback: {
+      type: String,
     },
     // private
     baseCls: String,
@@ -404,7 +408,7 @@ export default defineComponent({
         [`${prefixCls}-has-tag`]: tags.value.length > 0,
         [`${prefixCls}-has-prefix`]: Boolean(slots.prefix),
         [`${prefixCls}-has-suffix`]:
-          Boolean(slots.suffix) || showClearBtn.value,
+          Boolean(slots.suffix) || showClearBtn.value || props.feedback,
         [`${prefixCls}-has-placeholder`]: !computedValue.value.length,
       },
     ]);
@@ -478,8 +482,11 @@ export default defineComponent({
             <IconClose />
           </IconHover>
         )}
-        {slots.suffix && (
-          <span class={`${prefixCls}-suffix`}>{slots.suffix()}</span>
+        {(slots.suffix || Boolean(props.feedback)) && (
+          <span class={`${prefixCls}-suffix`}>
+            {slots.suffix?.()}
+            {Boolean(props.feedback) && <FeedbackIcon type={props.feedback} />}
+          </span>
         )}
       </span>
     );

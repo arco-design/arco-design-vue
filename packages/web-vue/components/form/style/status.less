@@ -1,31 +1,12 @@
 @import './token.less';
-// copy from select
-.select-color(@prefixCls, @status) {
-  .@{prefixCls}:not(.@{prefixCls}-disabled) {
-    .@{prefixCls}-view {
-      background-color: ~'@{form-color-bg_@{status}}';
-      border-color: ~'@{form-color-border_@{status}}';
-    }
 
-    &:hover {
-      .@{prefixCls}-view {
-        background-color: ~'@{form-color-bg_@{status}_hover}';
-        border-color: ~'@{form-color-border_@{status}_hover}';
-      }
-    }
-  }
+// for input & textarea
+.input-status(@status) {
+  @input-prefix-cls: ~'@{prefix}-input';
+  @textarea-prefix-cls: ~'@{prefix}-textarea';
 
-  .@{prefixCls}:not(.@{prefixCls}-disabled).@{prefixCls}-focused {
-    .@{prefixCls}-view {
-      background-color: ~'@{form-color-bg_@{status}_focus}';
-      border-color: ~'@{form-color-border_@{status}_focus}';
-      box-shadow: 0 0 0 ~'@{form-size-shadow_@{status}_focus}' ~'@{form-color-shadow_@{status}_focus}';
-    }
-  }
-}
-
-.picker(@status) {
-  .@{prefix}-picker:not(.@{prefix}-picker-disabled) {
+  .@{input-prefix-cls}-wrapper:not(.@{input-prefix-cls}-disabled),
+  .@{textarea-prefix-cls}-wrapper:not(.@{textarea-prefix-cls}-disabled) {
     background-color: ~'@{form-color-bg_@{status}}';
     border-color: ~'@{form-color-border_@{status}}';
 
@@ -35,68 +16,54 @@
     }
   }
 
-  .@{prefix}-picker-focused:not(.@{prefix}-picker-disabled) {
-    &,
+  .@{input-prefix-cls}-wrapper:not(.@{input-prefix-cls}-disabled).@{input-prefix-cls}-focus,
+  .@{textarea-prefix-cls}-wrapper:not(.@{textarea-prefix-cls}-disabled).@{textarea-prefix-cls}-focus {
+    background-color: ~'@{form-color-bg_@{status}_focus}';
+    border-color: ~'@{form-color-border_@{status}_focus}';
+    box-shadow: 0 0 0 ~'@{form-size-shadow_@{status}_focus}' ~'@{form-color-shadow_@{status}_focus}';
+  }
+}
+
+.select-view-status(@status) {
+  @input-prefix-cls: ~'@{prefix}-input-tag';
+  @select-view-prefix-cls: ~'@{prefix}-select-view';
+
+  .@{select-view-prefix-cls}:not(.@{select-view-prefix-cls}-disabled),
+  .@{input-prefix-cls}:not(.@{input-prefix-cls}-disabled) {
+    background-color: ~'@{form-color-bg_@{status}}';
+    border-color: ~'@{form-color-border_@{status}}';
+
     &:hover {
-      background-color: ~'@{form-color-bg_@{status}_focus}';
-      border-color: ~'@{form-color-border_@{status}_focus}';
-      box-shadow: 0 0 0 ~'@{form-size-shadow_@{status}_focus}' ~'@{form-color-shadow_@{status}_focus}';
+      background-color: ~'@{form-color-bg_@{status}_hover}';
+      border-color: ~'@{form-color-border_@{status}_hover}';
     }
+  }
+
+  .@{select-view-prefix-cls}:not(.@{select-view-prefix-cls}-disabled).@{select-view-prefix-cls}-focus,
+  .@{input-prefix-cls}:not(.@{input-prefix-cls}-disabled).@{input-prefix-cls}-focus {
+    background-color: ~'@{form-color-bg_@{status}_focus}';
+    border-color: ~'@{form-color-border_@{status}_focus}';
+    box-shadow: 0 0 0 ~'@{form-size-shadow_@{status}_focus}' ~'@{form-color-shadow_@{status}_focus}';
   }
 }
 
 .validate-status (@status) {
-  /** input， input number **/
-  // copy from input
-  & {
-    // 禁用优先级u高于status
-    .@{prefix}-input-wrapper:not(.@{prefix}-input-wrapper-disabled),
-    .@{prefix}-textarea:not(.@{prefix}-textarea-disabled) {
-      .@{prefix}-form-item-status-@{status} & {
-        background-color: ~'@{form-color-bg_@{status}}';
-        border-color: ~'@{form-color-border_@{status}}';
-
-        &:hover {
-          background-color: ~'@{form-color-bg_@{status}_hover}';
-          border-color: ~'@{form-color-border_@{status}_hover}';
-        }
-      }
-    }
-
-    .@{prefix}-input-wrapper,
-    .@{prefix}-textarea {
-      .@{prefix}-form-item-status-@{status} &&-focus,
-      .@{prefix}-form-item-status-@{status} &&-focus:hover {
-        background-color: ~'@{form-color-bg_@{status}_focus}';
-        border-color: ~'@{form-color-border_@{status}_focus}';
-        box-shadow: 0 0 0 ~'@{form-size-shadow_@{status}_focus}' ~'@{form-color-shadow_@{status}_focus}';
-      }
-    }
-
-    .@{prefix}-form-item-status-@{status} {
-      /** select **/
-      .select-color(~'@{prefix}-select', @status);
-
-      /** cascader **/
-      .select-color(~'@{prefix}-cascader', @status);
-
-      /** treeselect **/
-      .select-color(~'@{prefix}-tree-select', @status);
-
-      /** Datepicker **/
-      .picker(@status);
-    }
+  .@{prefix}-form-item-status-@{status} {
+    .input-status(@status);
+    .select-view-status(@status);
   }
 
   .@{prefix}-form-item-status-@{status} {
     .@{form-prefix-cls}-item-message-help {
       color: ~'@{form-color-tip-text_@{status}}';
     }
+
     .@{form-prefix-cls}-item-feedback {
       color: ~'@{form-color-tip-icon-text_@{status}}';
     }
   }
 }
+
 .validate-status(validating);
 
 .validate-status(success);
