@@ -4,26 +4,26 @@ meta:
 title: State management - Pinia
 description: Site-wide status management
 ```
-
+*Auto translate by google.*
 ## Arco Pro Version
 
 Arco Pro >= 2.1.0
 
-**Note**： Arco Pro version 2.1.0 has replaced the state management library with Pinia.
+**Note**： Arco Pro Version 2.1.0 has replaced the state management library with Pinia.
 
-## Pinia instructions
+## Pinia description
 
-The use of Pinia to replace Vuex is based on forward-looking technology considerations.
+Replacing Vuex with Pinia is based on technological forward-looking considerations.
 
-Meanwhile, Evan You announced on Twitter on November 24, 2021 that Pinia has become the official vuejs status library, meaning Pinia is Vuex 5.
+At the same time, Evan You has announced on Twitter on November 24, 2021 that Pinia has officially become the official state library of vuejs, which means that Pinia is Vuex 5.
 
-You can learn about Pinia's many new features and usage on the [Pinia](https://pinia.vuejs.org/) website. This article will not go into too much detail.
+Regarding the many new features and usages brought by Pinia, you can learn about them on [Pinia](https://pinia.vuejs.org/)'s official website. This article will not go into too much detail.
 
 ## Foreword
 
-Global state management is an inevitable existence of a large system, because there are often some information that needs to be shared globally, such as user information, which needs to be stored, so vuex is built into PRO for information sharing.
+Global state management is an inevitable existence in a large-scale system, because there are often some information that needs to be shared globally, such as user information, so Pinia is built into PRO for information sharing.
 
-With Pinia, the catalog is much more concise. The support for Typescript is also more friendly and has unparalleled advantages.
+With Pinia, the table of contents is more concise and clear. At the same time, the support for Typescript is more friendly and has unparalleled advantages.
 
 ```
 ├── modulers
@@ -35,7 +35,7 @@ With Pinia, the catalog is much more concise. The support for Typescript is also
 
 ## Add new module
 
-1.  Add the state type declaration
+1.  Add state type declaration
 
 ```ts
 // store/modulers/user/types.ts
@@ -45,7 +45,7 @@ export interface UserState {
 }
 ```
 
-2.  Defining a Store is as simple as defining a component
+2.  Defining a store is as easy as defining a component
 
 ```ts
 // store/modulers/user/index.ts
