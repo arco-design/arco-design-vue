@@ -24,6 +24,8 @@ description: Basic form components have been expanded on the basis of native con
 
 @import ./__demo__/search.md
 
+@import ./__demo__/search-button.md
+
 @import ./__demo__/search-loading.md
 
 @import ./__demo__/password.md
@@ -88,13 +90,14 @@ description: Basic form components have been expanded on the basis of native con
 
 ### `<input-search>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|search-button|Whether it is the rear button mode|`boolean`|`false`|
-|loading|Whether it is loading state|`boolean`|`false`|
-|disabled|Whether to disable|`boolean`|`false`|
-|size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|button-props|Button props|`object`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|search-button|Whether it is the rear button mode|`boolean`|`false`||
+|loading|Whether it is loading state|`boolean`|`false`||
+|disabled|Whether to disable|`boolean`|`false`||
+|size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|button-text|The text of the search button will replace the original icon after use|`string`|`-`|2.16.0|
+|button-props|Button props|`object`|`-`||
 ### `<input-search>` Events
 
 |Event Name|Description|Parameters|
