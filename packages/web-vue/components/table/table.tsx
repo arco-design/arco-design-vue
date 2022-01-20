@@ -36,8 +36,9 @@ import type {
   TableComponents,
   TableData,
   TablePagePosition,
+  TableDraggable,
 } from './interface';
-import { getColumnsFromSlot, getGroupColumns } from './utils';
+import { getColumnsFromSlot, getGroupColumns, spliceFromPath } from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useExpand } from './hooks/use-expand';
 import { usePagination } from './hooks/use-pagination';
@@ -48,8 +49,8 @@ import Pagination, { PaginationProps } from '../pagination';
 import Empty from '../empty';
 import ColGroup from './table-col-group.vue';
 import Thead from './table-thead.vue';
-import Tbody from './table-tbody.vue';
-import Tr from './table-tr.vue';
+import Tbody from './table-tbody';
+import Tr from './table-tr';
 import Th from './table-th';
 import Td from './table-td';
 import OperationTh from './table-operation-th';
@@ -62,6 +63,8 @@ import { omit } from '../_utils/omit';
 import { getChildrenComponents } from '../_utils/vue-utils';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
+import { useDrag } from './hooks/use-drag';
+import { useColumnResize } from './hooks/use-column-resize';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -264,6 +267,34 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 表格行元素的类名
+     * @en The class name of the table row element
+     * @version 2.16.0
+     */
+    rowClass: {
+      type: [String, Array, Object],
+    },
+    /**
+     * @zh 表格拖拽排序的配置
+     * @en Table drag and drop sorting configuration
+     * @version 2.16.0
+     */
+    draggable: {
+      type: Object as PropType<TableDraggable>,
+    },
+    rowNumber: {
+      type: [Boolean, Object],
+    },
+    /**
+     * @zh 是否允许调整列宽
+     * @en Whether to allow the column width to be adjusted
+     * @version 2.16.0
+     */
+    columnResizable: {
+      type: Boolean,
+    },
+
     // for JSX
     onExpand: {
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
@@ -416,6 +447,30 @@ export default defineComponent({
    * @en Table Footer
    * @slot footer
    */
+  /**
+   * @zh 拖拽锚点图标
+   * @en Drag handle icon
+   * @slot drag-handle-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 自定义 tbody 元素
+   * @en Custom tbody element
+   * @slot tbody
+   * @version 2.16.0
+   */
+  /**
+   * @zh 自定义 tr 元素
+   * @en Custom tr element
+   * @slot tr
+   * @version 2.16.0
+   */
+  /**
+   * @zh 自定义 td 元素
+   * @en Custom td element
+   * @slot td
+   * @version 2.16.0
+   */
   setup(props, { emit, slots }) {
     const { rowKey } = toRefs(props);
     const prefixCls = getPrefixCls('table');
@@ -435,6 +490,13 @@ export default defineComponent({
 
     const theadRef = ref<HTMLElement>();
     const tbodyRef = ref<HTMLElement>();
+    const thRefs = ref<{
+      operation: HTMLElement[];
+      data: Record<string, HTMLElement>;
+    }>({
+      operation: [],
+      data: {},
+    });
 
     const handleBodyScroll = () => {
       if (theadRef.value && tbodyRef.value) {
@@ -724,11 +786,33 @@ export default defineComponent({
       return true;
     };
 
+    const dataMap = new Map<string, TableData>();
+
+    const {
+      dragState,
+      handleDragStart,
+      handleDragEnter,
+      handleDragLeave,
+      handleDragover,
+      handleDragEnd,
+      handleDrop,
+    } = useDrag();
+
+    const { resizingColumn, columnWidth, handleThMouseDown } =
+      useColumnResize(thRefs);
+
     const processData = (origin: TableData[]) => {
-      const travel = (data: TableData[]) => {
+      const travel = (data: TableData[], prefix?: string) => {
         const result: TableData[] = [];
 
-        for (const record of data) {
+        for (const _record of data) {
+          const record = { ..._record };
+          const key = `${prefix ? `${prefix}_` : ''}record_${props.rowKey}_${
+            record[props.rowKey]
+          }`;
+          dataMap.set(key, record);
+          record._key = key;
+
           if (isValidRecord(record)) {
             // add lazy load children
             if (
@@ -741,13 +825,14 @@ export default defineComponent({
             }
 
             if (record.children) {
-              record.children = travel(record.children);
+              record.children = travel(record.children, key);
             }
             result.push(record);
           }
         }
         return result;
       };
+      dataMap.clear();
 
       const data = travel(isArray(origin) ? origin : []);
 
@@ -771,6 +856,11 @@ export default defineComponent({
             });
           }
         }
+
+        if (dragState.dragging && dragState.targetPath.length > 0) {
+          const target = spliceFromPath(data, dragState.sourcePath);
+          spliceFromPath(data, dragState.targetPath, target);
+        }
       }
 
       return data;
@@ -782,13 +872,17 @@ export default defineComponent({
     const { page, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, emit);
 
-    const handleChange = (type: 'pagination' | 'sorter' | 'filter') => {
+    const handleChange = (
+      type: 'pagination' | 'sorter' | 'filter' | 'drag'
+    ) => {
       const extra = {
         type,
         page: page.value,
         pageSize: pageSize.value,
         sorter: computedSorter.value,
         filters: computedFilters.value,
+        dragTarget:
+          type === 'drag' ? dataMap.get(dragState.sourceKey) : undefined,
       };
       emit('change', flattenData.value, extra);
     };
@@ -886,6 +980,15 @@ export default defineComponent({
       let expand: TableOperationColumn | undefined;
       let selection: TableOperationColumn | undefined;
 
+      if (props.draggable?.type === 'handle') {
+        operations.push({
+          name: 'dragHandle',
+          title: props.draggable.title,
+          width: props.draggable.width,
+          fixed: props.draggable.fixed || hasFixedColumn,
+        });
+      }
+
       if (props.expandable) {
         expand = {
           name: 'expand',
@@ -904,6 +1007,12 @@ export default defineComponent({
           fixed: props.rowSelection.fixed || hasFixedColumn,
         };
         operations.push(selection);
+      }
+
+      if (props.rowNumber) {
+        operations.push({
+          name: 'rowNumber',
+        });
       }
 
       const operationsFn = props.components?.operations;
@@ -938,6 +1047,7 @@ export default defineComponent({
           !bordered.value.cell && bordered.value.bodyCell,
         [`${prefixCls}-stripe`]: props.stripe,
         [`${prefixCls}-hover`]: props.hoverable,
+        [`${prefixCls}-dragging`]: dragState.dragging,
         [`${prefixCls}-type-selection`]: props.rowSelection,
         [`${prefixCls}-layout-fixed`]:
           props.tableLayoutFixed ||
@@ -970,14 +1080,6 @@ export default defineComponent({
       }
 
       return cls;
-    });
-
-    const thRefs = ref<{
-      operation: HTMLElement[];
-      data: Record<string, HTMLElement>;
-    }>({
-      operation: [],
-      data: {},
     });
 
     const isVirtualList = computed(() => Boolean(props.virtualListProps));
@@ -1107,12 +1209,27 @@ export default defineComponent({
       );
     };
 
+    const dragType = computed(() => {
+      if (props.draggable) {
+        if (props.draggable?.type === 'handle') {
+          return 'handle';
+        }
+        return 'row';
+      }
+      return 'none';
+    });
+
     const renderRecord = (
       record: TableData,
       rowIndex: number,
-      { indentSize = 0 }: { indentSize?: number } = {}
+      {
+        indentSize = 0,
+        indexPath,
+        allowDrag = true,
+      }: { indentSize?: number; indexPath?: number[]; allowDrag?: boolean } = {}
     ): JSX.Element => {
       const currentKey = record[rowKey.value];
+      const currentPath = (indexPath ?? []).concat(rowIndex);
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
       const hasSubTree = Boolean(
@@ -1122,6 +1239,7 @@ export default defineComponent({
             : true
           : props.loadMore && !record.isLeaf
       );
+
       const subTreeHasSubData =
         record.children?.some((record) => Boolean(record.children)) ?? false;
 
@@ -1129,10 +1247,47 @@ export default defineComponent({
         ? tbodyRef.value
         : containerRef.value;
 
+      const isDragTarget = dragState.sourceKey === record._key;
+
+      const dragSourceEvent =
+        dragType.value !== 'none' && allowDrag
+          ? {
+              draggable: true,
+              onDragstart: (ev: DragEvent) =>
+                handleDragStart(ev, record._key, currentPath),
+              onDragend: (ev: DragEvent) => handleDragEnd(ev),
+            }
+          : {};
+
+      const dragTargetEvent =
+        dragType.value !== 'none' && allowDrag
+          ? {
+              onDragenter: (ev: DragEvent) => handleDragEnter(ev, currentPath),
+              onDragleave: (ev: DragEvent) => handleDragLeave(ev),
+              onDragover: (ev: DragEvent) => handleDragover(ev),
+              onDrop: (ev: DragEvent) => {
+                handleChange('drag');
+                handleDrop(ev);
+              },
+            }
+          : {};
+
       return (
         <>
           <Tr
+            {...(dragType.value === 'row' ? dragSourceEvent : {})}
+            {...dragTargetEvent}
+            class={[
+              {
+                [`${prefixCls}-tr-draggable`]: dragType.value === 'row',
+                [`${prefixCls}-tr-drag`]: isDragTarget,
+              },
+              props.rowClass,
+            ]}
             key={currentKey}
+            v-slots={{
+              tr: slots.tr,
+            }}
             checked={selectedRowKeys.value?.indexOf(currentKey) > -1}
             onClick={(e: Event) => handleRowClick(record)}
           >
@@ -1148,6 +1303,9 @@ export default defineComponent({
               return (
                 <OperationTd
                   key={`operation-td-${index}`}
+                  v-slots={{
+                    'drag-handle-icon': slots['drag-handle-icon'],
+                  }}
                   style={style}
                   record={record}
                   rowKey={rowKey.value}
@@ -1161,6 +1319,7 @@ export default defineComponent({
                   renderExpandBtn={renderExpandBtn}
                   onSelect={handleSelect}
                   onExpand={handleExpand}
+                  {...(dragType.value === 'handle' ? dragSourceEvent : {})}
                 />
               );
             })}
@@ -1195,6 +1354,9 @@ export default defineComponent({
               return (
                 <Td
                   key={`td-${index}`}
+                  v-slots={{
+                    td: slots.td,
+                  }}
                   style={style}
                   rowIndex={rowIndex}
                   record={record}
@@ -1210,6 +1372,7 @@ export default defineComponent({
                   rowSpan={rowspan}
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
+                  resizing={resizingColumn.value === column.dataIndex}
                   {...extraProps}
                   onClick={(e: Event) => handleCellClick(record, column)}
                 />
@@ -1223,6 +1386,8 @@ export default defineComponent({
                   indentSize: subTreeHasSubData
                     ? indentSize + props.indentSize + 20
                     : indentSize + props.indentSize,
+                  indexPath: currentPath,
+                  allowDrag: allowDrag && !isDragTarget,
                 })
               )
             ) : (
@@ -1248,7 +1413,11 @@ export default defineComponent({
       );
 
       return (
-        <Tbody>
+        <Tbody
+          v-slots={{
+            tbody: slots.tbody,
+          }}
+        >
           {flattenData.value.length > 0
             ? flattenData.value.map((record, index) =>
                 renderRecord(record, index, { indentSize: hasSubData ? 20 : 0 })
@@ -1289,6 +1458,11 @@ export default defineComponent({
                   ? computedSorter.value.direction
                   : '';
 
+              const resizable =
+                props.columnResizable &&
+                Boolean(column.dataIndex) &&
+                index < row.length - 1;
+
               return (
                 <Th
                   key={`th-${index}`}
@@ -1304,9 +1478,12 @@ export default defineComponent({
                   sortOrder={sortOrder}
                   filterIconAlignLeft={props.filterIconAlignLeft}
                   filterValue={computedFilters.value[column.dataIndex] ?? []}
+                  resizable={resizable}
+                  resizing={resizingColumn.value === column.dataIndex}
                   onSorterChange={handleSorterChange}
                   onFilterChange={handleFilterChange}
                   onClick={(e: Event) => handleHeaderClick(column)}
+                  onThMouseDown={handleThMouseDown}
                 />
               );
             })}
@@ -1337,6 +1514,7 @@ export default defineComponent({
                   <ColGroup
                     dataColumns={dataColumns.value}
                     operations={operations.value}
+                    columnWidth={columnWidth}
                   />
                   {renderHeader()}
                 </table>
@@ -1365,6 +1543,7 @@ export default defineComponent({
                       <ColGroup
                         dataColumns={dataColumns.value}
                         operations={operations.value}
+                        columnWidth={columnWidth}
                       />
                     )}
                     {renderBody()}
@@ -1382,6 +1561,7 @@ export default defineComponent({
             <ColGroup
               dataColumns={dataColumns.value}
               operations={operations.value}
+              columnWidth={columnWidth}
             />
             {props.showHeader && renderHeader()}
             {renderBody()}

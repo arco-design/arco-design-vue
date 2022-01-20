@@ -82,6 +82,16 @@
 .@{table-prefix-cls} {
   position: relative;
 
+  &-column-handle {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    z-index: 1;
+    width: 8px;
+    height: 100%;
+    cursor: col-resize;
+  }
+
   // spin
   .@{prefix}-spin {
     display: block;
@@ -186,6 +196,10 @@
     &-align-center {
       text-align: center;
     }
+
+    &-draggable {
+      cursor: move;
+    }
   }
 
   &-cell {
@@ -257,6 +271,11 @@
   // Expand
   .@{table-prefix-cls}-expand-btn {
     .expandBtn();
+  }
+
+  &-cell-expand-icon {
+    display: flex;
+    align-items: center;
   }
 
   &-cell-expand-icon &-cell-inline-icon {
@@ -603,6 +622,11 @@
     .@{table-cls-td}:not(.@{table-prefix-cls}-tr-expand) {
       border-right: @table-border-width @table-border-style @table-color-border;
     }
+
+    .@{table-cls-th}-resizing,
+    .@{table-cls-td}-resizing:not(.@{table-prefix-cls}-tr-expand) {
+      border-right-color: @table-color-border_resizing;
+    }
   }
 
   &-border-header-cell {
@@ -633,8 +657,14 @@
     }
   }
 
+  & .@{table-cls-tr}-draggable {
+    cursor: move;
+  }
+
   &-hover {
-    .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty):hover {
+    &:not(.@{table-prefix-cls}-dragging)
+      .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty):hover,
+    .@{table-cls-tr}-drag {
       .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(.@{table-prefix-cls}-col-fixed-right) {
         background-color: @table-color-bg-body-row_hover;
       }

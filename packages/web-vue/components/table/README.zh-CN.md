@@ -26,9 +26,17 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/span.md
 
+@import ./__demo__/column-resize.md
+
+@import ./__demo__/drag-row.md
+
+@import ./__demo__/drag-handle.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/custom.md
+
+@import ./__demo__/custom-dom.md
 
 @import ./__demo__/virtual-list.md
 
@@ -59,6 +67,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|筛选图标是否左对齐|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|是否在子树为空时隐藏展开按钮|`boolean`|`false`|2.14.0|
+|row-class|表格行元素的类名|`string\|array\|object`|`-`|2.16.0|
+|draggable|表格拖拽排序的配置|`TableDraggable`|`-`|2.16.0|
+|column-resizable|是否允许调整列宽|`boolean`|`false`|2.16.0|
 ### `<table>` Events
 
 |事件名|描述|参数|
@@ -78,12 +89,16 @@ description: 用于数据收集展示、分析整理、操作处理。
 |header-click|点击表头数据时触发|column: `TableColumn`|
 ### `<table>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|footer|表格底部|-|
-|expand-row|展开行内容|record: `TableData`|
-|expand-icon|展开行图标|expanded: `boolean`<br>record: `TableData`|
-|columns|表格列定义。启用时会屏蔽 columns 属性|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|td|自定义 td 元素|-|2.16.0|
+|tr|自定义 tr 元素|-|2.16.0|
+|tbody|自定义 tbody 元素|-|2.16.0|
+|drag-handle-icon|拖拽锚点图标|-|2.16.0|
+|footer|表格底部|-||
+|expand-row|展开行内容|record: `TableData`||
+|expand-icon|展开行图标|expanded: `boolean`<br>record: `TableData`||
+|columns|表格列定义。启用时会屏蔽 columns 属性|-||
 
 
 
@@ -211,6 +226,17 @@ description: 用于数据收集展示、分析整理、操作处理。
 |defaultExpandAllRows|是否默认展开所有的行|`boolean`|`false`|
 |expandedRowRender|自定义展开行内容|`(record: TableData) => VNode`|`-`|
 |icon|展开图标|`(expanded: boolean, record: TableData) => VNode`|`-`|
+|title|列标题|`string`|`-`|
+|width|列宽度|`number`|`-`|
+|fixed|是否固定|`boolean`|`false`|
+
+
+
+### TableDraggable
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|type|拖拽类型|`'row' \| 'handle'`|`-`|
 |title|列标题|`string`|`-`|
 |width|列宽度|`number`|`-`|
 |fixed|是否固定|`boolean`|`false`|

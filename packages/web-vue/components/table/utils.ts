@@ -1,5 +1,10 @@
 import type { CSSProperties, VNode } from 'vue';
-import { TableCell, TableColumn, TableOperationColumn } from './interface';
+import {
+  TableCell,
+  TableColumn,
+  TableData,
+  TableOperationColumn,
+} from './interface';
 import { isArray, isNull, isUndefined } from '../_utils/is';
 import {
   resolveProps,
@@ -298,4 +303,25 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
     }
   }
   return columns;
+};
+
+export const spliceFromPath = (
+  data: TableData[],
+  path: number[],
+  item?: TableData
+): TableData | undefined => {
+  let parent = data;
+  for (let i = 0; i < path.length; i++) {
+    const index = path[i];
+    const isLast = i >= path.length - 1;
+    if (isLast) {
+      if (item) {
+        parent.splice(index, 0, item);
+      } else {
+        return parent.splice(index, 1)[0];
+      }
+    }
+    parent = parent[index].children ?? [];
+  }
+  return undefined;
 };

@@ -28,9 +28,17 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/span.md
 
+@import ./__demo__/column-resize.md
+
+@import ./__demo__/drag-row.md
+
+@import ./__demo__/drag-handle.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/custom.md
+
+@import ./__demo__/custom-dom.md
 
 @import ./__demo__/virtual-list.md
 
@@ -61,6 +69,9 @@ description: It is used for data collection, display, analysis and processing, a
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|Whether the filter icon is aligned to the left|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|Whether to hide expand button when subtree is empty|`boolean`|`false`|2.14.0|
+|row-class|The class name of the table row element|`string\|array\|object`|`-`|2.16.0|
+|draggable|Table drag and drop sorting configuration|`TableDraggable`|`-`|2.16.0|
+|column-resizable|Whether to allow the column width to be adjusted|`boolean`|`false`|2.16.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|
@@ -80,12 +91,16 @@ description: It is used for data collection, display, analysis and processing, a
 |header-click|Triggered when the header data is clicked|column: `TableColumn`|
 ### `<table>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|footer|Table Footer|-|
-|expand-row|Expand row content|record: `TableData`|
-|expand-icon|Expand row icon|expanded: `boolean`<br>record: `TableData`|
-|columns|Table column definitions. When enabled, the columns attribute is masked|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|td|Custom td element|-|2.16.0|
+|tr|Custom tr element|-|2.16.0|
+|tbody|Custom tbody element|-|2.16.0|
+|drag-handle-icon|Drag handle icon|-|2.16.0|
+|footer|Table Footer|-||
+|expand-row|Expand row content|record: `TableData`||
+|expand-icon|Expand row icon|expanded: `boolean`<br>record: `TableData`||
+|columns|Table column definitions. When enabled, the columns attribute is masked|-||
 
 
 
@@ -213,6 +228,17 @@ description: It is used for data collection, display, analysis and processing, a
 |defaultExpandAllRows|Whether to expand all rows by default|`boolean`|`false`|
 |expandedRowRender|Customize expanded row content|`(record: TableData) => VNode`|`-`|
 |icon|Expand icon|`(expanded: boolean, record: TableData) => VNode`|`-`|
+|title|Column title|`string`|`-`|
+|width|Column width|`number`|`-`|
+|fixed|Is it fixed|`boolean`|`false`|
+
+
+
+### TableDraggable
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|type|drag type|`'row' \| 'handle'`|`-`|
 |title|Column title|`string`|`-`|
 |width|Column width|`number`|`-`|
 |fixed|Is it fixed|`boolean`|`false`|
