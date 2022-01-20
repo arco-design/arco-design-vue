@@ -67,6 +67,13 @@ description: Refers to the use of multi-level classification to separate the opt
 |popup-visible-change|Triggered when the display state of the dropdown changes|visible: `boolean`|
 |focus|Triggered when focus|-|
 |blur|Triggered when blur|-|
+### `<cascader>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|arrow-icon|Arrow icon for select box|-|2.16.0|
+|loading-icon|Loading icon for select box|-|2.16.0|
+|search-icon|Search icon for select box|-|2.16.0|
 
 
 

@@ -83,12 +83,15 @@ description: When users need to select one or more from a group of similar data,
 |dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|-|
 ### `<select>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|footer|The footer of the drop-down box|-|
-|label|Display content of label|data: `OptionInfo`|
-|option|Display content of options|data: `OptionInfo`|
-|empty|Display content when the option is empty|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|search-icon|Search icon for select box|-|2.16.0|
+|loading-icon|Loading icon for select box|-|2.16.0|
+|arrow-icon|Arrow icon for select box|-|2.16.0|
+|footer|The footer of the drop-down box|-||
+|label|Display content of label|data: `OptionInfo`||
+|option|Display content of options|data: `OptionInfo`||
+|empty|Display content when the option is empty|-||
 
 
 
