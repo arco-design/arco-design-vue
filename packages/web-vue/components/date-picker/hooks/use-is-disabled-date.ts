@@ -6,6 +6,7 @@ import {
   RangeDisabledDate,
   RangeDisabledTime,
 } from '../interface';
+import { getDateValue } from '../../_utils/date';
 
 interface IsDisabledProps {
   mode?: string;
@@ -23,9 +24,12 @@ export default function useIsDisabledDate(props: IsDisabledProps) {
   const isDisabledDate = computed(() => {
     return (current: Dayjs, type: 'start' | 'end') => {
       if (!disabledDate?.value) return false;
+
+      const dateValue = getDateValue(current);
+
       if (isRange?.value)
-        return (disabledDate.value as RangeDisabledDate)(current, type);
-      return (disabledDate.value as DisabledDate)(current);
+        return (disabledDate.value as RangeDisabledDate)(dateValue, type);
+      return (disabledDate.value as DisabledDate)(dateValue);
     };
   });
 
@@ -39,9 +43,11 @@ export default function useIsDisabledDate(props: IsDisabledProps) {
       if (!needCheckTime.value) return false;
       if (!disabledTime?.value) return false;
 
+      const dateValue = getDateValue(current);
+
       const disabledTimeProps = isRange?.value
-        ? (disabledTime.value as RangeDisabledTime)(current, type)
-        : (disabledTime.value as DisabledTime)(current);
+        ? (disabledTime.value as RangeDisabledTime)(dateValue, type)
+        : (disabledTime.value as DisabledTime)(dateValue);
 
       return (
         isDisabledItem(current.hour(), disabledTimeProps.disabledHours) ||

@@ -496,6 +496,8 @@ export default defineComponent({
         (!panelValue.value || isDisabledDate(panelValue.value))
     );
 
+    const isDateTime = computed(() => mode.value === 'date' && showTime.value);
+
     // 确认选中的值
     const { value: selectedValue, setValue: setSelectedValue } = usePickerState(
       reactive({ modelValue, defaultValue, format: computedFormat })
@@ -615,6 +617,11 @@ export default defineComponent({
       refInput.value && refInput.value.focus && refInput.value.focus(index);
     }
 
+    function getMergedOpValue(date: Dayjs, time?: Dayjs) {
+      if (!isDateTime.value) return date;
+      return mergeValueWithTime(getNow(), date, time);
+    }
+
     function onPanelVisibleChange(visible: boolean) {
       if (disabled.value) return;
       setPanelVisible(visible);
@@ -657,16 +664,12 @@ export default defineComponent({
     }
 
     function onPanelCellClick(value: Dayjs) {
-      const newValue = mergeValueWithTime(
-        getNow(),
-        value,
-        timePickerValue.value
-      );
+      const newValue = getMergedOpValue(value, timePickerValue.value);
       onPanelSelect(newValue);
     }
 
     function onTimePickerSelect(time: Dayjs) {
-      const newValue = mergeValueWithTime(getNow(), panelValue.value, time);
+      const newValue = getMergedOpValue(panelValue.value, time);
       onPanelSelect(newValue);
     }
 
