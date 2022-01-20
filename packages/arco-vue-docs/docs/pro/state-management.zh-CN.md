@@ -1,9 +1,16 @@
 ```yaml
 meta:
   type: Arco Pro 最佳实践
-title: 状态管理
+title: 状态管理 - Vuex
 description: 全站状态管理
 ```
+
+## Arco Pro Version
+
+Arco Pro < 2.1.0
+
+**注意**： `Arco Pro` 2.1.0 版本已经将状态管理库替换为 `Pinia`。
+
 
 ## 前言
 
