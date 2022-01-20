@@ -14,6 +14,8 @@ description: When there are too many commands on the page, the alternative comma
 
 @import ./__demo__/trigger.md
 
+@import ./__demo__/button.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/submenu.md
@@ -21,6 +23,8 @@ description: When there are too many commands on the page, the alternative comma
 @import ./__demo__/context-menu.md
 
 @import ./__demo__/icon.md
+
+`<dropdown>` 组件继承 `<trigger>` 组件的全部属性
 
 
 ### `<dropdown>` Props
@@ -42,8 +46,8 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|footer|Footer|-|2.10.0|
 |content|Content|-||
+|footer|Footer|-|2.10.0|
 
 
 
@@ -52,7 +56,7 @@ description: When there are too many commands on the page, the alternative comma
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|value|Value|`string\|number`|`-`|
+|value|Value|`string\|number\|object`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 ### `<doption>` Slots
 
@@ -81,7 +85,7 @@ description: When there are too many commands on the page, the alternative comma
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|value|Value|`string\|number`|`-`||
+|value|Value (Not useful after version 2.16.0)|`string\|number`|`-`||
 |disabled|Whether to disable|`boolean`|`false`|2.10.0|
 |trigger|Trigger method|`'hover' \| 'click'`|`'click'`|2.10.0|
 |position|Popup position|`'rt' \| 'lt'`|`'rt'`|2.10.0|
@@ -89,7 +93,7 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|footer|Footer|-|2.10.0|
 |content|Submenu content|-||
+|footer|Footer|-|2.10.0|
 
 

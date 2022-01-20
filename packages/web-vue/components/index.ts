@@ -27,7 +27,13 @@ export {
 export { default as Descriptions } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Drawer } from './drawer';
-export { default as Dropdown, Doption, Dgroup, Dsubmenu } from './dropdown';
+export {
+  default as Dropdown,
+  Doption,
+  Dgroup,
+  Dsubmenu,
+  DropdownButton,
+} from './dropdown';
 export { default as Empty } from './empty';
 export { default as Form, FormItem } from './form';
 export { default as Grid, Col, Row, GridItem } from './grid';
