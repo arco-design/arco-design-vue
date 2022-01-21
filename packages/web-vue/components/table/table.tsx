@@ -1098,7 +1098,10 @@ export default defineComponent({
         <button
           type="button"
           class={`${prefixCls}-expand-btn`}
-          onClick={(ev: Event) => handleExpand(currentKey)}
+          onClick={(ev: Event) => {
+            handleExpand(currentKey);
+            ev.stopPropagation();
+          }}
         >
           {slots['expand-icon']?.({ expanded, record }) ??
             props.expandable?.icon?.(expanded, record) ??
