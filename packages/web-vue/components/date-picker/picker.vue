@@ -73,6 +73,7 @@ import {
   PickerProps,
   ShortcutType,
   FormatFunc,
+  CalendarValue,
 } from './interface';
 import usePickerState from './hooks/use-picker-state';
 import DateInput from '../_components/picker/input.vue';
@@ -94,6 +95,7 @@ import { mergeValueWithTime } from './utils';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
+import { useReturnValue } from './hooks/use-value-format';
 
 /**
  * @displayName Common
@@ -269,6 +271,14 @@ export default defineComponent({
     format: {
       type: [String, Function] as PropType<string | FormatFunc>,
     },
+    /**
+     * @zh 值的格式，对 `value` `defaultValue` `pickerValue` `defaultPickerValue` 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考[字符串解析格式](#字符串解析格式)）。如果没有指定，将格式化为字符串，格式同 `format`。
+     * @en The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.
+     * @version 2.16.0
+     */
+    valueFormat: {
+      type: String as PropType<'timestamp' | 'Date' | string>,
+    },
     showTime: {
       type: Boolean,
     },
@@ -293,13 +303,17 @@ export default defineComponent({
     onChange: {
       type: [Function, Array] as PropType<
         EmitType<
-          (dateString: string | undefined, date: Date | undefined) => void
+          (
+            value: CalendarValue | undefined,
+            date: Date | undefined,
+            dateString: string | undefined
+          ) => void
         >
       >,
     },
     onSelect: {
       type: [Function, Array] as PropType<
-        EmitType<(dateString: string, date: Date) => void>
+        EmitType<(value: CalendarValue, date: Date, dateString: string) => void>
       >,
     },
     onPopupVisibleChange: {
@@ -309,7 +323,7 @@ export default defineComponent({
     },
     onOk: {
       type: [Function, Array] as PropType<
-        EmitType<(dateString: string, date: Date) => void>
+        EmitType<(value: CalendarValue, date: Date, dateString: string) => void>
       >,
     },
     onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
@@ -320,7 +334,7 @@ export default defineComponent({
     },
     onPickerValueChange: {
       type: [Function, Array] as PropType<
-        EmitType<(dateString: string, date: Date) => void>
+        EmitType<(value: CalendarValue, date: Date, dateString: string) => void>
       >,
     },
   },
@@ -328,22 +342,28 @@ export default defineComponent({
     /**
      * @zh 组件值发生改变
      * @en The component value changes
-     * @param {string | undefined} dateString
+     * @param {Date | string | number | undefined} value
      * @param {Date | undefined} date
+     * @param {string | undefined} dateString
      */
-    'change': (dateString: string | undefined, date: Date | undefined) => {
+    'change': (
+      value: CalendarValue | undefined,
+      date: Date | undefined,
+      dateString: string | undefined
+    ) => {
       return true;
     },
-    'update:modelValue': (dateString: string | undefined) => {
+    'update:modelValue': (value: CalendarValue | undefined) => {
       return true;
     },
     /**
      * @zh 选中日期发生改变但组件值未改变
      * @en The selected date has changed but the component value has not changed
-     * @param {string} dateString
+     * @param {Date | string | number} value
      * @param {Date} date
+     * @param {string} dateString
      */
-    'select': (dateString: string, date: Date) => {
+    'select': (value: CalendarValue, date: Date, dateString: string) => {
       return true;
     },
     /**
@@ -360,10 +380,11 @@ export default defineComponent({
     /**
      * @zh 点击确认按钮
      * @en Click the confirm button
-     * @param {string} dateString
+     * @param {Date | string | number} value
      * @param {Date} date
+     * @param {string} dateString
      */
-    'ok': (dateString: string, date: Date) => {
+    'ok': (value: CalendarValue, date: Date, dateString: string) => {
       return true;
     },
     /**
@@ -384,13 +405,18 @@ export default defineComponent({
     /**
      * @zh 面板日期改变
      * @en Panel date change
-     * @param {string} dateString
+     * @param {Date | string | number} value
      * @param {Date} date
+     * @param {string} dateString
      */
-    'picker-value-change': (dateString: string, date: Date) => {
+    'picker-value-change': (
+      value: CalendarValue,
+      date: Date,
+      dateString: string
+    ) => {
       return true;
     },
-    'update:pickerValue': (dateString: string, date: Date) => {
+    'update:pickerValue': (value: CalendarValue) => {
       return true;
     },
   },
@@ -408,7 +434,7 @@ export default defineComponent({
    * @zh 自定义日期单元格的内容
    * @en Customize the contents of the date cell
    * @slot cell
-   * @binding {Dayjs} date
+   * @binding {Date} date
    */
   /**
    * @zh 单箭头往前翻页图标
@@ -436,6 +462,7 @@ export default defineComponent({
       modelValue,
       defaultValue,
       format,
+      valueFormat,
       placeholder,
       popupVisible,
       defaultPopupVisible,
@@ -473,11 +500,22 @@ export default defineComponent({
         datePickerT('datePicker.placeholder.date')
     );
 
-    const computedFormat = useFormat(reactive({ format, mode, showTime }));
+    const {
+      format: computedFormat,
+      valueFormat: returnValueFormat,
+      parseValueFormat,
+    } = useFormat(reactive({ format, mode, showTime, valueFormat }));
+
     const inputFormat = computed(() =>
       format && isFunction(format.value)
         ? (value: Dayjs) => (format.value as FormatFunc)?.(getDateValue(value))
         : computedFormat.value
+    );
+
+    const getReturnValue = useReturnValue(
+      reactive({
+        format: returnValueFormat,
+      })
     );
 
     const isDisabledDate = useIsDisabledDate(
@@ -500,7 +538,11 @@ export default defineComponent({
 
     // 确认选中的值
     const { value: selectedValue, setValue: setSelectedValue } = usePickerState(
-      reactive({ modelValue, defaultValue, format: computedFormat })
+      reactive({
+        modelValue,
+        defaultValue,
+        format: parseValueFormat,
+      })
     );
 
     // 操作过程中的选中值
@@ -534,15 +576,16 @@ export default defineComponent({
         value: pickerValue,
         defaultValue: defaultPickerValue,
         selectedValue: panelValue,
-        format: computedFormat,
+        format: parseValueFormat,
         onChange: (newVal: Dayjs) => {
+          const returnValue = getReturnValue(newVal);
           const formattedValue = getFormattedValue(
             newVal,
-            computedFormat.value
+            parseValueFormat.value
           );
           const dateValue = getDateValue(newVal);
-          emit('picker-value-change', formattedValue, dateValue);
-          emit('update:pickerValue', formattedValue, dateValue);
+          emit('picker-value-change', returnValue, dateValue, formattedValue);
+          emit('update:pickerValue', returnValue);
         },
       })
     );
@@ -574,15 +617,16 @@ export default defineComponent({
     });
 
     function emitChange(value: Dayjs | undefined, emitOk?: boolean) {
-      const formattedValue = getFormattedValue(value, computedFormat.value);
+      const returnValue = value ? getReturnValue(value) : undefined;
+      const formattedValue = getFormattedValue(value, parseValueFormat.value);
       const dateValue = getDateValue(value);
       if (isValueChange(value, selectedValue.value)) {
-        emit('update:modelValue', formattedValue);
-        emit('change', formattedValue, dateValue);
+        emit('update:modelValue', returnValue);
+        emit('change', returnValue, dateValue, formattedValue);
       }
 
       if (emitOk) {
-        emit('ok', formattedValue, dateValue);
+        emit('ok', returnValue, dateValue, formattedValue);
       }
     }
 
@@ -607,9 +651,10 @@ export default defineComponent({
       setInputValue(undefined);
 
       if (emitSelect) {
-        const formattedValue = getFormattedValue(value, computedFormat.value);
+        const returnValue = value ? getReturnValue(value) : undefined;
+        const formattedValue = getFormattedValue(value, parseValueFormat.value);
         const dateValue = getDateValue(value);
-        emit('select', formattedValue, dateValue);
+        emit('select', returnValue, dateValue, formattedValue);
       }
     }
 
@@ -713,7 +758,7 @@ export default defineComponent({
         'showNowBtn',
       ]),
       prefixCls,
-      format: computedFormat.value,
+      format: parseValueFormat.value,
       value: panelValue.value,
       visible: panelVisible.value,
       showConfirmBtn: needConfirm.value,
@@ -747,7 +792,6 @@ export default defineComponent({
       inputValue,
       selectedValue,
       inputFormat,
-      computedFormat,
       computedPlaceholder,
       panelVisible,
       inputEditable,

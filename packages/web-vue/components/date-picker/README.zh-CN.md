@@ -48,46 +48,47 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 ### `Common` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|locale|国际化配置，用于覆盖locale中的 `datePicker` 字段|`Record<string, any>`|`-`|
-|hide-trigger|没有触发元素，只显示选择面板|`boolean`|`false`|
-|allow-clear|是否允许清除|`boolean`|`true`|
-|readonly|是否为只读|`boolean`|`false`|
-|error|是否为错误状态|`boolean`|`false`|
-|size|日期选择器的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|shortcuts|预设时间范围快捷选择|`ShortcutType[]`|`[]`|
-|shortcuts-position|预设范围在面板上的位置，默认放在下方，侧边一般用于大量预设时间的场景|`'left' \| 'bottom' \| 'right'`|`'bottom'`|
-|position|弹出的框的位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`|
-|popup-visible|控制弹出框的打开或者关闭状态|`boolean`|`-`|
-|default-popup-visible|默认弹出框是打开或者关闭|`boolean`|`false`|
-|trigger-props|可以传入 `Trigger` 组件的参数|`Record<string, unknown>`|`-`|
-|unmount-on-close|是否在隐藏的时候销毁DOM结构|`boolean`|`false`|
-|placeholder|提示文案|`string`|`-`|
-|disabled|是否禁用|`boolean`|`false`|
-|disabled-date|不可选取的日期|`(current?: Date) => boolean`|`-`|
-|disabled-time|不可选取的时间|`(current: Date) => DisabledTimeProps`|`-`|
-|picker-value **(v-model)**|面板显示的日期|`Date \| string \| number`|`-`|
-|default-picker-value|面板默认显示的日期|`Date \| string \| number`|`-`|
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|locale|国际化配置，用于覆盖locale中的 `datePicker` 字段|`Record<string, any>`|`-`||
+|hide-trigger|没有触发元素，只显示选择面板|`boolean`|`false`||
+|allow-clear|是否允许清除|`boolean`|`true`||
+|readonly|是否为只读|`boolean`|`false`||
+|error|是否为错误状态|`boolean`|`false`||
+|size|日期选择器的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|shortcuts|预设时间范围快捷选择|`ShortcutType[]`|`[]`||
+|shortcuts-position|预设范围在面板上的位置，默认放在下方，侧边一般用于大量预设时间的场景|`'left' \| 'bottom' \| 'right'`|`'bottom'`||
+|position|弹出的框的位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`||
+|popup-visible|控制弹出框的打开或者关闭状态|`boolean`|`-`||
+|default-popup-visible|默认弹出框是打开或者关闭|`boolean`|`false`||
+|trigger-props|可以传入 `Trigger` 组件的参数|`Record<string, unknown>`|`-`||
+|unmount-on-close|是否在隐藏的时候销毁DOM结构|`boolean`|`false`||
+|placeholder|提示文案|`string`|`-`||
+|disabled|是否禁用|`boolean`|`false`||
+|disabled-date|不可选取的日期|`(current?: Date) => boolean`|`-`||
+|disabled-time|不可选取的时间|`(current: Date) => DisabledTimeProps`|`-`||
+|picker-value **(v-model)**|面板显示的日期|`Date \| string \| number`|`-`||
+|default-picker-value|面板默认显示的日期|`Date \| string \| number`|`-`||
+|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`||
+|value-format|值的格式，对 `value` `defaultValue` `pickerValue` `defaultPickerValue` 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考[字符串解析格式](#字符串解析格式)）。如果没有指定，将格式化为字符串，格式同 `format`。|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
 ### `Common` Events
 
 |事件名|描述|参数|
 |---|---|---|
-|change|组件值发生改变|dateString: `string \| undefined`<br>date: `Date \| undefined`|
-|select|选中日期发生改变但组件值未改变|dateString: `string`<br>date: `Date`|
+|change|组件值发生改变|value: `Date \| string \| number \| undefined`<br>date: `Date \| undefined`<br>dateString: `string \| undefined`|
+|select|选中日期发生改变但组件值未改变|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 |popup-visible-change|打开或关闭弹出框|visible: `boolean`|
-|ok|点击确认按钮|dateString: `string`<br>date: `Date`|
+|ok|点击确认按钮|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 |clear|点击清除按钮|-|
 |select-shortcut|点击快捷选项|shortcut: `ShortcutType`|
-|picker-value-change|面板日期改变|dateString: `string`<br>date: `Date`|
+|picker-value-change|面板日期改变|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 ### `Common` Slots
 
 |插槽名|描述|参数|
 |---|:---:|---|
 |suffix-icon|输入框后缀图标|-|
 |extra|额外的页脚|-|
-|cell|自定义日期单元格的内容|date: `Dayjs`|
+|cell|自定义日期单元格的内容|date: `Date`|
 |icon-prev-double|双箭头往前翻页图标|-|
 |icon-prev|单箭头往前翻页图标|-|
 |icon-next|单箭头往后翻页图标|-|
@@ -159,33 +160,34 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 ### `<range-picker>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|mode|范围选择器的类型|`'date' \| 'year' \| 'quarter' \| 'month' \| 'week'`|`'date'`|
-|model-value **(v-model)**|绑定值|`(Date \| string \| number)[]`|`-`|
-|default-value|默认值|`(Date \| string \| number)[]`|`-`|
-|picker-value|默认面板显示的日期|`(Date \| string \| number)[]`|`-`|
-|default-picker-value|面板显示的日期|`(Date \| string \| number)[]`|`-`|
-|disabled|是否禁用|`boolean \| boolean[]`|`false`|
-|day-start-of-week|每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0)|`0 \| 1`|`0`|
-|format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`-`|
-|show-time|是否增加时间选择|`boolean`|`false`|
-|time-picker-props|时间显示的参数，参考 [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`|
-|placeholder|提示文案|`string[]`|`-`|
-|disabled-date|不可选的日期|`(current: Date, type: 'start' \| 'end') => boolean`|`-`|
-|disabled-time|不可选取的时间|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`|
-|separator|范围选择器输入框内的分割符号|`string`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|mode|范围选择器的类型|`'date' \| 'year' \| 'quarter' \| 'month' \| 'week'`|`'date'`||
+|model-value **(v-model)**|绑定值|`(Date \| string \| number)[]`|`-`||
+|default-value|默认值|`(Date \| string \| number)[]`|`-`||
+|picker-value|默认面板显示的日期|`(Date \| string \| number)[]`|`-`||
+|default-picker-value|面板显示的日期|`(Date \| string \| number)[]`|`-`||
+|disabled|是否禁用|`boolean \| boolean[]`|`false`||
+|day-start-of-week|每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0)|`0 \| 1`|`0`||
+|format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`-`||
+|value-format|值的格式，对 `value` `defaultValue` `pickerValue` `defaultPickerValue` 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考[字符串解析格式](#字符串解析格式)）。如果没有指定，将格式化为字符串，格式同 `format`。|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
+|show-time|是否增加时间选择|`boolean`|`false`||
+|time-picker-props|时间显示的参数，参考 [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`||
+|placeholder|提示文案|`string[]`|`-`||
+|disabled-date|不可选的日期|`(current: Date, type: 'start' \| 'end') => boolean`|`-`||
+|disabled-time|不可选取的时间|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
+|separator|范围选择器输入框内的分割符号|`string`|`-`||
 ### `<range-picker>` Events
 
 |事件名|描述|参数|
 |---|---|---|
-|change|组件值发生改变|dateString: `(string \| undefined)[] \| undefined`<br>date: `(Date \| undefined)[] \| undefined`|
-|select|选中日期发生改变但组件值未改变|dateString: `(string \| undefined)[]`<br>date: `(Date \| undefined)[]`|
+|change|组件值发生改变|value: `(Date \| string \| number \| undefined)[] \| undefined`<br>date: `(Date \| undefined)[] \| undefined`<br>dateString: `(string \| undefined)[] \| undefined`|
+|select|选中日期发生改变但组件值未改变|value: `(Date \| string \| number \| undefined)[]`<br>date: `(Date \| undefined)[]`<br>dateString: `(string \| undefined)[]`|
 |popup-visible-change|打开或关闭弹出框|visible: `boolean`|
-|ok|点击确认按钮|dateString: `string[]`<br>date: `Date[]`|
+|ok|点击确认按钮|value: `Date \| string \| number[]`<br>date: `Date[]`<br>dateString: `string[]`|
 |clear|点击清除按钮|-|
 |select-shortcut|点击快捷选项|shortcut: `ShortcutType`|
-|picker-value-change|面板日期改变|dateString: `string[]`<br>date: `Date[]`|
+|picker-value-change|面板日期改变|value: `Date \| string \| number[]`<br>date: `Date[]`<br>dateString: `string[]`|
 
 
 
