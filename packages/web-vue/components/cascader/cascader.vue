@@ -32,7 +32,20 @@
       @blur="handleBlur"
       @remove="handleRemove"
       @keydown="handleKeyDown"
-    />
+    >
+      <template v-if="$slots.label" #label="data">
+        <slot name="label" v-bind="data" />
+      </template>
+      <template v-if="$slots['arrow-icon']" #arrow-icon>
+        <slot name="arrow-icon" />
+      </template>
+      <template v-if="$slots['loading-icon']" #loading-icon>
+        <slot name="loading-icon" />
+      </template>
+      <template v-if="$slots['search-icon']" #search-icon>
+        <slot name="search-icon" />
+      </template>
+    </select-view>
     <template #content>
       <cascader-search-panel
         v-if="showSearchPanel"
@@ -380,6 +393,24 @@ export default defineComponent({
      */
     'blur',
   ],
+  /**
+   * @zh 选择框的箭头图标
+   * @en Arrow icon for select box
+   * @slot arrow-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 选择框的加载中图标
+   * @en Loading icon for select box
+   * @slot loading-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 选择框的搜索图标
+   * @en Search icon for select box
+   * @slot search-icon
+   * @version 2.16.0
+   */
   setup(props, { emit }) {
     const { options, checkStrictly, loadMore } = toRefs(props);
     const _value = ref(props.defaultValue);

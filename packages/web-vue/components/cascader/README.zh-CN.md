@@ -65,6 +65,13 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |popup-visible-change|下拉框的显示状态改变时触发|visible: `boolean`|
 |focus|获得焦点时触发|-|
 |blur|失去焦点时触发|-|
+### `<cascader>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|arrow-icon|选择框的箭头图标|-|2.16.0|
+|loading-icon|选择框的加载中图标|-|2.16.0|
+|search-icon|选择框的搜索图标|-|2.16.0|
 
 
 

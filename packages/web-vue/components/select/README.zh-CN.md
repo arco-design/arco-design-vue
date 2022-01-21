@@ -81,12 +81,15 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |dropdown-reach-bottom|下拉菜单滚动到底部时触发|-|
 ### `<select>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|footer|下拉框的页脚|-|
-|label|选择框的显示内容|data: `OptionInfo`|
-|option|选项内容|data: `OptionInfo`|
-|empty|选项为空时的显示内容|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|search-icon|选择框的搜索图标|-|2.16.0|
+|loading-icon|选择框的加载中图标|-|2.16.0|
+|arrow-icon|选择框的箭头图标|-|2.16.0|
+|footer|下拉框的页脚|-||
+|label|选择框的显示内容|data: `OptionInfo`||
+|option|选项内容|data: `OptionInfo`||
+|empty|选项为空时的显示内容|-||
 
 
 

@@ -344,6 +344,24 @@ export default defineComponent({
    * @en The footer of the drop-down box
    * @slot footer
    */
+  /**
+   * @zh 选择框的箭头图标
+   * @en Arrow icon for select box
+   * @slot arrow-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 选择框的加载中图标
+   * @en Loading icon for select box
+   * @slot loading-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 选择框的搜索图标
+   * @en Search icon for select box
+   * @slot search-icon
+   * @version 2.16.0
+   */
   setup(props, { slots, emit, attrs }) {
     const prefixCls = getPrefixCls('select');
     const { options, filterOption, showExtraOptions } = toRefs(props);
@@ -734,7 +752,12 @@ export default defineComponent({
       >
         <SelectView
           {...attrs}
-          v-slots={{ label: slots.label }}
+          v-slots={{
+            'label': slots.label,
+            'arrow-icon': slots['arrow-icon'],
+            'loading-icon': slots['loading-icon'],
+            'search-icon': slots['search-icon'],
+          }}
           class={prefixCls}
           modelValue={getTagDataFromModelValue(
             computedValue.value,
