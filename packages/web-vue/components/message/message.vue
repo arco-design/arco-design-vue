@@ -58,9 +58,6 @@ export default defineComponent({
     type: {
       type: String as PropType<MessageType | 'loading'>,
       default: 'info',
-      validator: (value: any) => {
-        return MESSAGE_TYPES.includes(value);
-      },
     },
     closable: {
       type: Boolean,

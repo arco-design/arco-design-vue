@@ -3,7 +3,7 @@ import { defineComponent, TransitionGroup } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction } from '../_utils/is';
 import Message from './message.vue';
-import { MESSAGE_POSITION, MessageItem, MessagePosition } from './interface';
+import { MessageItem, MessagePosition } from './interface';
 import usePopupManager from '../_hooks/use-popup-manager';
 
 export default defineComponent({
@@ -16,9 +16,6 @@ export default defineComponent({
     position: {
       type: String as PropType<MessagePosition>,
       default: 'top',
-      validator: (value: any) => {
-        return MESSAGE_POSITION.includes(value);
-      },
     },
   },
   emits: ['close', 'afterClose'],
