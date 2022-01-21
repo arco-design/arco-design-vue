@@ -23,4 +23,6 @@ description: When the mouse hovers, focus, or click on a component, a bubble-lik
 
 @import ./__demo__/position.md
 
+`<popover>` 组件继承 `<trigger>` 组件的全部属性
+
 %%API(popover.vue)%%
