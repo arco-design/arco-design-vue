@@ -95,6 +95,7 @@ export default defineComponent({
     /**
      * @zh 用户选择时触发
      * @en Triggered when the user selects
+     * @property {string | number | Record<string, unknown>} value
      */
     'select',
   ],
