@@ -233,6 +233,15 @@ export default defineComponent({
       type: String,
     },
     /**
+     * @zh 复制成功后，复制按钮恢复到可点击状态的延迟时间，单位是毫秒
+     * @en After the copy is successful, the delay time for the copy button to return to the clickable state, in milliseconds
+     * @version 2.16.0
+     */
+    copyDelay: {
+      type: Number,
+      default: 3000,
+    },
+    /**
      * @zh 自动溢出省略，具体参数配置看 [EllipsisConfig](#ellipsisconfig)
      * @en Automatic overflow omission, refer to [EllipsisConfig](#ellipsisconfig) for more information.
      */
@@ -306,6 +315,7 @@ export default defineComponent({
       editable,
       copyText,
       editText,
+      copyDelay,
       component,
     } = toRefs(props);
 
@@ -359,7 +369,7 @@ export default defineComponent({
 
       copyTimer = setTimeout(() => {
         isCopied.value = false;
-      }, 3000);
+      }, copyDelay.value);
     }
 
     onUnmounted(() => {

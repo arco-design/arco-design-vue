@@ -27,22 +27,23 @@ description: Used to display titles, paragraphs, and text content.
 
 ### `Common` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|type|Text type|`'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning'`|`-`|
-|bold|Whether enable bold style|`boolean`|`false`|
-|mark|Mark style|`boolean \| { color: string }`|`false`|
-|underline|Whether enable underline style|`boolean`|`false`|
-|delete|Whether enable delete style|`boolean`|`false`|
-|code|Whether enable code style|`boolean`|`false`|
-|disabled|Whether disabled|`boolean`|`false`|
-|editable|Whether it's editable|`boolean`|`false`|
-|editing **(v-model)**|Whether it's editing|`boolean`|`-`|
-|default-editing|Default editing state|`boolean`|`false`|
-|edit-text **(v-model)**|Edit text|`string`|`-`|
-|copyable|Whether turn on copy functionality|`boolean`|`false`|
-|copy-text|Copied text|`string`|`-`|
-|ellipsis|Automatic overflow omission, refer to [EllipsisConfig](#ellipsisconfig) for more information.|`boolean \| EllipsisConfig`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|type|Text type|`'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning'`|`-`||
+|bold|Whether enable bold style|`boolean`|`false`||
+|mark|Mark style|`boolean \| { color: string }`|`false`||
+|underline|Whether enable underline style|`boolean`|`false`||
+|delete|Whether enable delete style|`boolean`|`false`||
+|code|Whether enable code style|`boolean`|`false`||
+|disabled|Whether disabled|`boolean`|`false`||
+|editable|Whether it's editable|`boolean`|`false`||
+|editing **(v-model)**|Whether it's editing|`boolean`|`-`||
+|default-editing|Default editing state|`boolean`|`false`||
+|edit-text **(v-model)**|Edit text|`string`|`-`||
+|copyable|Whether turn on copy functionality|`boolean`|`false`||
+|copy-text|Copied text|`string`|`-`||
+|copy-delay|After the copy is successful, the delay time for the copy button to return to the clickable state, in milliseconds|`number`|`3000`|2.16.0|
+|ellipsis|Automatic overflow omission, refer to [EllipsisConfig](#ellipsisconfig) for more information.|`boolean \| EllipsisConfig`|`false`||
 ### `Common` Events
 
 |Event Name|Description|Parameters|
