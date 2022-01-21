@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 Feature
+
+- Added attribute `value-format` to format the return value ([#631](https://github.com/arco-design/arco-design-vue/pull/631))
+
+### 🐛 BugFix
+
+- do not open the popup when clear ([#633](https://github.com/arco-design/arco-design-vue/pull/633))
+- The return value should not concatenate the time when the time selection panel is not displayed ([#612](https://github.com/arco-design/arco-design-vue/pull/612))
+
+
 ## 2.15.0
 
 `2022-01-14`

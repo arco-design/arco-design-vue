@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 💅 Style
+
+- Fix link mode text not centered ([#636](https://github.com/arco-design/arco-design-vue/pull/636))
+
+
 ## 2.15.0
 
 `2022-01-14`

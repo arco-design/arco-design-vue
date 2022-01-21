@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 💎 Optimization
+
+- Internal buttons no longer fire `row-click` events ([#630](https://github.com/arco-design/arco-design-vue/pull/630))
+
+### 🆕 Feature
+
+- Add support for drag and drop sorting (experimental) ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- Add support for resizing column widths (experimental) ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- Added `tbody`, `tr`, `td` slots ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+
+
 ## 2.15.0
 
 `2022-01-14`

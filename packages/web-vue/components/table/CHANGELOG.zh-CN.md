@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 💎 功能优化
+
+- 内部按钮不再触发 `row-click` 事件 ([#630](https://github.com/arco-design/arco-design-vue/pull/630))
+
+### 🆕 新增功能
+
+- 增加拖拽排序的支持（实验性） ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- 增加调整列宽的支持（实验性） ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- 增加 `tbody`、`tr`、`td` 插槽 ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+
+
 ## 2.15.0
 
 `2022-01-14`

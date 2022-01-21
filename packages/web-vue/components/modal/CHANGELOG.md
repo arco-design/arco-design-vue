@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 Feature
+
+- Added `before-open` and `before-close` events ([#628](https://github.com/arco-design/arco-design-vue/pull/628))
+
+### 🐛 BugFix
+
+- Fix style file missing `<button>` component style reference ([#635](https://github.com/arco-design/arco-design-vue/pull/635))
+
+
 ## 2.15.0
 
 `2022-01-14`

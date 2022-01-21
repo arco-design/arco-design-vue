@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 Feature
+
+- Use context to refactor components to support nested use ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- value adds support for object ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- Added `dropdown-button` component ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- When the dropdown is open, add a class name to the trigger element ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+
+
 ## 2.14.0
 
 `2022-01-07`

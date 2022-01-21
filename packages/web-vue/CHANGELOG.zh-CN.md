@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 💎 功能优化
+
+- **table:** 内部按钮不再触发 `row-click` 事件 ([#630](https://github.com/arco-design/arco-design-vue/pull/630))
+
+### 🆕 新增功能
+
+- **select:** 增加自定义图标插槽 ([#634](https://github.com/arco-design/arco-design-vue/pull/634))
+- **typography:** 新增属性 `copy-delay` 用于自定义复制成功状态消失的延迟时间 ([#632](https://github.com/arco-design/arco-design-vue/pull/632))
+- **date-picker:** 增加属性 `value-format` 用于格式化返回值 ([#631](https://github.com/arco-design/arco-design-vue/pull/631))
+- **modal:** 增加 `before-open` 和 `before-close` 事件 ([#628](https://github.com/arco-design/arco-design-vue/pull/628))
+- **input:** `<input-search>` 组件增加自定义搜素按钮内容的功能 ([#625](https://github.com/arco-design/arco-design-vue/pull/625))
+- **form:** 增加表单和相应输入组件的反馈图标功能 ([#622](https://github.com/arco-design/arco-design-vue/pull/622))
+- **table:** 增加拖拽排序的支持（实验性） ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- **table:** 增加调整列宽的支持（实验性） ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- **table:** 增加 `tbody`、`tr`、`td` 插槽 ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- **dropdown:** 使用 context 重构组件，支持嵌套使用 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **dropdown:** value 增加对 object 的支持 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **dropdown:** 新增 `dropdown-button` 组件 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **dropdown:** 下拉菜单打开时，为触发元素增加标识类名 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **split:** 属性 `min` `max` 支持设置 px ([#607](https://github.com/arco-design/arco-design-vue/pull/607))
+
+### 🐛 问题修复
+
+- **message:** 修复使用 loading 类型时类型警告的问题 ([#635](https://github.com/arco-design/arco-design-vue/pull/635))
+- **modal:** 修复样式文件缺少 `<button>` 组件样式引用的问题 ([#635](https://github.com/arco-design/arco-design-vue/pull/635))
+- **date-picker:** 点击清除按钮的时候不要展开弹出层 ([#633](https://github.com/arco-design/arco-design-vue/pull/633))
+- **cascader:** 修复在 `check-strictly` 模式下，搜索中不能选择的问题 ([#627](https://github.com/arco-design/arco-design-vue/pull/627))
+- **date-picker:** 返回值在不显示时间选择面板的时候不应该拼接时间 ([#612](https://github.com/arco-design/arco-design-vue/pull/612))
+- **typography:** 修复 JSX 使用中存在警告的问题 ([#591](https://github.com/arco-design/arco-design-vue/pull/591))
+
+### 💅 样式更新
+
+- **button:** 修复链接模式文字未居中的问题 ([#636](https://github.com/arco-design/arco-design-vue/pull/636))
+- **input:** 修复 `<input-group>` 组件包裹 `<select>` 组件的样式问题 ([#588](https://github.com/arco-design/arco-design-vue/pull/588))
+
+
 ## 2.15.1
 
 `2022-01-15`

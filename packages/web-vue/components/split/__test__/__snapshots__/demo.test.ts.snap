@@ -2,8 +2,8 @@
 
 exports[`<split> demo: render [basic] correctly 1`] = `
 "<div>
-  <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 500px;\\">
-    <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex-basis: calc(50% - 0px);\\">
+  <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 100%; min-width: 500px;\\">
+    <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex: 0 0 calc(50% - 0px);\\">
       <div class=\\"arco-typography\\">Right
         <!---->
         <!--v-if-->
@@ -34,8 +34,8 @@ exports[`<split> demo: render [basic] correctly 1`] = `
 
 exports[`<split> demo: render [nested] correctly 1`] = `
 "<div>
-  <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 500px;\\">
-    <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex-basis: calc(50% - 0px);\\">
+  <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 100%; min-width: 500px;\\">
+    <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex: 0 0 calc(50% - 0px);\\">
       <div class=\\"arco-typography\\">Right
         <!---->
         <!--v-if-->
@@ -55,7 +55,7 @@ exports[`<split> demo: render [nested] correctly 1`] = `
     <div class=\\"arco-split-pane arco-split-pane-second\\">
       <div>
         <div class=\\"arco-split arco-split-vertical\\" style=\\"height: 200px;\\">
-          <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex-basis: calc(50% - 0px);\\">
+          <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex: 0 0 calc(50% - 0px);\\">
             <div class=\\"arco-typography\\">Top
               <!---->
               <!--v-if-->

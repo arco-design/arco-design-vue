@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🐛 BugFix
+
+- Fixed an issue where the search could not be selected in `check-strictly` mode ([#627](https://github.com/arco-design/arco-design-vue/pull/627))
+
+
 ## 2.15.0
 
 `2022-01-14`

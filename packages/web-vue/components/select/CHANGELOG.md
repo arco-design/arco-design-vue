@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 Feature
+
+- Added custom icon slot ([#634](https://github.com/arco-design/arco-design-vue/pull/634))
+
+
 ## 2.15.0
 
 `2022-01-14`

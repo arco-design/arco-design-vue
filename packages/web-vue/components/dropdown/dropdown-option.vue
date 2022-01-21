@@ -1,5 +1,6 @@
 <template>
   <li
+    ref="liRef"
     :class="[cls, { [`${prefixCls}-has-suffix`]: Boolean($slots.suffix) }]"
     @click="handleClick"
     @mouseenter="handleMouseEnter"
@@ -16,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject } from 'vue';
+import { computed, defineComponent, inject, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { dropdownInjectionKey } from './context';
 
@@ -49,6 +50,11 @@ export default defineComponent({
    */
   setup(props) {
     const prefixCls = getPrefixCls('dropdown-option');
+    const liRef = ref<HTMLElement>();
+
+    const computedValue = computed(
+      () => props.value ?? liRef.value?.textContent ?? undefined
+    );
 
     const dropdownCtx = !props.uninjectContext
       ? inject(dropdownInjectionKey, undefined)
@@ -56,7 +62,7 @@ export default defineComponent({
 
     const handleClick = (ev: Event) => {
       if (!props.disabled) {
-        dropdownCtx?.onOptionClick(props.value, ev);
+        dropdownCtx?.onOptionClick(computedValue.value, ev);
       }
     };
 
@@ -83,6 +89,7 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
+      liRef,
       handleClick,
       handleMouseEnter,
       handleMouseLeave,

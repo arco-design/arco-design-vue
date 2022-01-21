@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 新增功能
+
+- `<input-search>` 组件增加自定义搜素按钮内容的功能 ([#625](https://github.com/arco-design/arco-design-vue/pull/625))
+
+### 💅 样式更新
+
+- 修复 `<input-group>` 组件包裹 `<select>` 组件的样式问题 ([#588](https://github.com/arco-design/arco-design-vue/pull/588))
+
+
 ## 2.15.0
 
 `2022-01-14`

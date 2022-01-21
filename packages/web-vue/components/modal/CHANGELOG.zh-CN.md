@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 新增功能
+
+- 增加 `before-open` 和 `before-close` 事件 ([#628](https://github.com/arco-design/arco-design-vue/pull/628))
+
+### 🐛 问题修复
+
+- 修复样式文件缺少 `<button>` 组件样式引用的问题 ([#635](https://github.com/arco-design/arco-design-vue/pull/635))
+
+
 ## 2.15.0
 
 `2022-01-14`

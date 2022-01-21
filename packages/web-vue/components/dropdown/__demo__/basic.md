@@ -24,7 +24,7 @@ Basic usage of the drop-down menu.
       <template #content>
         <a-doption>Option 1</a-doption>
         <a-doption disabled>Option 2</a-doption>
-        <a-doption>Option 3</a-doption>
+        <a-doption :value="{ value: 'Option3' }">Option 3</a-doption>
       </template>
     </a-dropdown>
     <a-dropdown @select="handle" disabled>

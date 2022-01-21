@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 💎 Optimization
+
+- **table:** Internal buttons no longer fire `row-click` events ([#630](https://github.com/arco-design/arco-design-vue/pull/630))
+
+### 🆕 Feature
+
+- **select:** Added custom icon slot ([#634](https://github.com/arco-design/arco-design-vue/pull/634))
+- **typography:** add property `copy-delay` support customize the delay time for the disappearance of copy success status ([#632](https://github.com/arco-design/arco-design-vue/pull/632))
+- **date-picker:** Added attribute `value-format` to format the return value ([#631](https://github.com/arco-design/arco-design-vue/pull/631))
+- **modal:** Added `before-open` and `before-close` events ([#628](https://github.com/arco-design/arco-design-vue/pull/628))
+- **input:** The `<input-search>` component adds the ability to customize the content of the search button ([#625](https://github.com/arco-design/arco-design-vue/pull/625))
+- **form:** Added feedback icon function for forms and corresponding input components ([#622](https://github.com/arco-design/arco-design-vue/pull/622))
+- **table:** Add support for drag and drop sorting (experimental) ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- **table:** Add support for resizing column widths (experimental) ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- **table:** Added `tbody`, `tr`, `td` slots ([#619](https://github.com/arco-design/arco-design-vue/pull/619))
+- **dropdown:** Use context to refactor components to support nested use ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **dropdown:** value adds support for object ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **dropdown:** Added `dropdown-button` component ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **dropdown:** When the dropdown is open, add a class name to the trigger element ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- **split:** Attributes `min` and `max` support setting pixel values ([#607](https://github.com/arco-design/arco-design-vue/pull/607))
+
+### 🐛 BugFix
+
+- **message:** fix type warning when using loading type ([#635](https://github.com/arco-design/arco-design-vue/pull/635))
+- **modal:** Fix style file missing `<button>` component style reference ([#635](https://github.com/arco-design/arco-design-vue/pull/635))
+- **date-picker:** do not open the popup when clear ([#633](https://github.com/arco-design/arco-design-vue/pull/633))
+- **cascader:** Fixed an issue where the search could not be selected in `check-strictly` mode ([#627](https://github.com/arco-design/arco-design-vue/pull/627))
+- **date-picker:** The return value should not concatenate the time when the time selection panel is not displayed ([#612](https://github.com/arco-design/arco-design-vue/pull/612))
+- **typography:** Fix the problem of warning in JSX usage ([#591](https://github.com/arco-design/arco-design-vue/pull/591))
+
+### 💅 Style
+
+- **button:** Fix link mode text not centered ([#636](https://github.com/arco-design/arco-design-vue/pull/636))
+- **input:** Fix `<input-group>` component wrapping `<select>` component style issue ([#588](https://github.com/arco-design/arco-design-vue/pull/588))
+
+
 ## 2.15.1
 
 `2022-01-15`

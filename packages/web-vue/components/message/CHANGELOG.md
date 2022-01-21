@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🐛 BugFix
+
+- fix type warning when using loading type ([#635](https://github.com/arco-design/arco-design-vue/pull/635))
+
+
 ## 2.10.0
 
 `2021-12-10`

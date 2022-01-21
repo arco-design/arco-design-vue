@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 Feature
+
+- Added feedback icon function for forms and corresponding input components ([#622](https://github.com/arco-design/arco-design-vue/pull/622))
+
+
 ## 2.14.2
 
 `2022-01-10`

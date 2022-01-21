@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.16.0
+
+`2022-01-21`
+
+### 🆕 新增功能
+
+- 使用 context 重构组件，支持嵌套使用 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- value 增加对 object 的支持 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- 新增 `dropdown-button` 组件 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+- 下拉菜单打开时，为触发元素增加标识类名 ([#608](https://github.com/arco-design/arco-design-vue/pull/608))
+
+
 ## 2.14.0
 
 `2022-01-07`
