@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Checkbox from '../checkbox';
 import Radio from '../radio';
@@ -39,6 +39,11 @@ export default defineComponent({
     filterIconAlignLeft: {
       type: Boolean,
       default: false,
+    },
+    resizable: Boolean,
+    resizing: Boolean,
+    onThMouseDown: {
+      type: Function as PropType<(ev: MouseEvent, dataIndex: string) => void>,
     },
   },
   emits: ['sorterChange', 'filterChange'],
@@ -247,6 +252,7 @@ export default defineComponent({
       `${prefixCls}-th-align-${props.column?.align ?? 'left'}`,
       {
         [`${prefixCls}-col-sorted`]: Boolean(props.sortOrder),
+        [`${prefixCls}-th-resizing`]: props.resizing,
       },
       ...getFixedCls(prefixCls, props.column),
     ]);
@@ -263,6 +269,14 @@ export default defineComponent({
         >
           {renderCell()}
           {!filterIconAlignLeft.value && renderFilter()}
+          {props.resizable && (
+            <span
+              class={`${prefixCls}-column-handle`}
+              onMousedown={(ev) =>
+                props.onThMouseDown?.(ev, props.column?.dataIndex)
+              }
+            />
+          )}
         </th>
       );
     };

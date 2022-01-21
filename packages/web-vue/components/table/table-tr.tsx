@@ -1,11 +1,4 @@
-<template>
-  <tr :class="cls">
-    <slot />
-  </tr>
-</template>
-
-<script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, createVNode } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 
 export default defineComponent({
@@ -21,7 +14,7 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  setup(props) {
+  setup(props, { slots }) {
     const prefixCls = getPrefixCls('table');
 
     const cls = computed(() => [
@@ -33,10 +26,12 @@ export default defineComponent({
       },
     ]);
 
-    return {
-      prefixCls,
-      cls,
+    return () => {
+      return createVNode(
+        slots.tr?.()[0] ?? 'tr',
+        { class: cls.value },
+        slots.default?.()
+      );
     };
   },
 });
-</script>

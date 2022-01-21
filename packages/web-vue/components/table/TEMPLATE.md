@@ -37,9 +37,17 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/span.md
 
+@import ./__demo__/column-resize.md
+
+@import ./__demo__/drag-row.md
+
+@import ./__demo__/drag-handle.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/custom.md
+
+@import ./__demo__/custom-dom.md
 
 @import ./__demo__/virtual-list.md
 

@@ -6,6 +6,7 @@ import Checkbox from '../checkbox';
 import Radio from '../radio';
 import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
+import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
 
 export default defineComponent({
   name: 'OperationTd',
@@ -71,6 +72,8 @@ export default defineComponent({
         [`${prefixCls}-radio`]:
           props.operationColumn.name === 'selection' && props.isRadio,
         [`${prefixCls}-expand`]: props.operationColumn.name === 'expand',
+        [`${prefixCls}-td-draggable`]:
+          props.operationColumn.name === 'dragHandle',
       },
       ...getOperationFixedCls(prefixCls, props.operationColumn),
     ]);
@@ -112,6 +115,9 @@ export default defineComponent({
           return props.renderExpandBtn(props.record);
         }
         return null;
+      }
+      if (props.operationColumn.name === 'dragHandle') {
+        return slots['drag-handle-icon']?.() ?? <IconDragDotVertical />;
       }
       if (props.operationColumn.bodyNode) {
         return props.operationColumn.bodyNode(props.record, {

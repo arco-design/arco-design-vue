@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, ref } from 'vue';
+import { computed, createVNode, defineComponent, PropType, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { TableColumn, TableData, TableOperationColumn } from './interface';
 import { getFixedCls, getStyle } from './utils';
@@ -65,6 +65,7 @@ export default defineComponent({
       type: Number,
       default: 0,
     },
+    resizing: Boolean,
     loadMore: Function as PropType<
       (record: TableData, done: (children: TableData[]) => void) => void
     >,
@@ -90,6 +91,7 @@ export default defineComponent({
       `${prefixCls}-td-align-${props.column?.align ?? 'left'}`,
       {
         [`${prefixCls}-col-sorted`]: props.isSorted,
+        [`${prefixCls}-td-resizing`]: props.resizing,
       },
       ...getFixedCls(prefixCls, props.column),
     ]);
@@ -136,13 +138,8 @@ export default defineComponent({
       }
     };
 
-    return () => (
-      <td
-        class={cls.value}
-        style={style.value}
-        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
-        colspan={props.colSpan > 1 ? props.colSpan : undefined}
-      >
+    const renderCell = () => {
+      return (
         <span
           class={[
             `${prefixCls}-cell`,
@@ -172,7 +169,20 @@ export default defineComponent({
           )}
           {renderContent()}
         </span>
-      </td>
-    );
+      );
+    };
+
+    return () => {
+      return createVNode(
+        slots.td?.()[0] ?? 'td',
+        {
+          class: cls.value,
+          style: style.value,
+          rowspan: props.rowSpan > 1 ? props.rowSpan : undefined,
+          colspan: props.colSpan > 1 ? props.colSpan : undefined,
+        },
+        [renderCell()]
+      );
+    };
   },
 });

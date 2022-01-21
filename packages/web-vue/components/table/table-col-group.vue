@@ -9,7 +9,7 @@
     <col
       v-for="item of dataColumns"
       :key="`arco-col-${item.dataIndex}`"
-      :style="fixedWidth(item.width)"
+      :style="fixedWidth(columnWidth[item.dataIndex] || item.width)"
     />
   </colgroup>
 </template>
@@ -28,6 +28,9 @@ export default defineComponent({
     operations: {
       type: Array as PropType<TableOperationColumn[]>,
       required: true,
+    },
+    columnWidth: {
+      type: Object as PropType<Record<string, number>>,
     },
   },
   setup() {

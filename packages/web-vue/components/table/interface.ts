@@ -314,6 +314,29 @@ export interface TableExpandable {
   fixed?: boolean;
 }
 
+export interface TableDraggable {
+  /**
+   * @zh 拖拽类型
+   * @en drag type
+   */
+  type?: 'row' | 'handle';
+  /**
+   * @zh 列标题
+   * @en Column title
+   */
+  title?: string;
+  /**
+   * @zh 列宽度
+   * @en Column width
+   */
+  width?: number;
+  /**
+   * @zh 是否固定
+   * @en Is it fixed
+   */
+  fixed?: boolean;
+}
+
 export interface TableOperationColumn {
   name: string;
   title?: string;
