@@ -48,6 +48,14 @@ export default defineComponent({
         inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
+     * @zh 搜索按钮的文字，使用后会替换原本的图标
+     * @en The text of the search button will replace the original icon after use
+     * @version 2.16.0
+     */
+    buttonText: {
+      type: String,
+    },
+    /**
      * @zh 搜索按钮的属性
      * @en Button props
      */
@@ -96,11 +104,23 @@ export default defineComponent({
     };
 
     const renderButton = () => {
+      let _slots = {};
+      if (props.buttonText || slots['button-default'] || slots['button-icon']) {
+        _slots = {
+          default:
+            slots['button-default'] ??
+            (props.buttonText ? () => props.buttonText : undefined),
+          icon: slots['button-icon'],
+        };
+      } else {
+        _slots = {
+          icon: () => <IconSearch />,
+        };
+      }
+
       return (
         <Button
-          v-slots={{
-            icon: () => <IconSearch />,
-          }}
+          v-slots={_slots}
           type="primary"
           class={`${prefixCls}-btn`}
           disabled={props.disabled}

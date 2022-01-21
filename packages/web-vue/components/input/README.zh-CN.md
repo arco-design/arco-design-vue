@@ -22,6 +22,8 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 
 @import ./__demo__/search.md
 
+@import ./__demo__/search-button.md
+
 @import ./__demo__/search-loading.md
 
 @import ./__demo__/password.md
@@ -86,13 +88,14 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 
 ### `<input-search>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|search-button|是否为后置按钮模式|`boolean`|`false`|
-|loading|是否为加载中状态|`boolean`|`false`|
-|disabled|是否禁用|`boolean`|`false`|
-|size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|button-props|搜索按钮的属性|`object`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|search-button|是否为后置按钮模式|`boolean`|`false`||
+|loading|是否为加载中状态|`boolean`|`false`||
+|disabled|是否禁用|`boolean`|`false`||
+|size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|button-text|搜索按钮的文字，使用后会替换原本的图标|`string`|`-`|2.16.0|
+|button-props|搜索按钮的属性|`object`|`-`||
 ### `<input-search>` Events
 
 |事件名|描述|参数|
