@@ -66,7 +66,7 @@ import {
 import { TimePickerProps } from '../time-picker/interface';
 import { DisabledTimeProps, RangePickerProps, ShortcutType } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
-import { isArray } from '../_utils/is';
+import { isArray, isBoolean } from '../_utils/is';
 import pick from '../_utils/pick';
 import { getFormattedValue, isValidInputValue } from '../time-picker/utils';
 import {
@@ -602,7 +602,7 @@ export default defineComponent({
 
     function confirm(
       value: Array<Dayjs | undefined> | undefined,
-      showPanel: boolean,
+      showPanel?: boolean,
       emitOk?: boolean
     ) {
       if (
@@ -623,7 +623,10 @@ export default defineComponent({
       setProcessValue(undefined);
       setPreviewValue(undefined);
       setInputValue(undefined);
-      setPanelVisible(showPanel);
+
+      if (isBoolean(showPanel)) {
+        setPanelVisible(showPanel);
+      }
     }
 
     function select(
@@ -764,8 +767,9 @@ export default defineComponent({
       confirm(panelValue.value, false, true);
     }
 
-    function onInputClear() {
-      confirm(undefined, true);
+    function onInputClear(e: Event) {
+      e.stopPropagation();
+      confirm(undefined);
       emit('clear');
     }
 

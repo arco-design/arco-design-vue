@@ -188,8 +188,8 @@ export default defineComponent({
       e.preventDefault();
     }
 
-    function onClear() {
-      emit('clear');
+    function onClear(e: Event) {
+      emit('clear', e);
     }
 
     return {
