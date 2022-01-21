@@ -354,6 +354,18 @@ export default defineComponent({
      * @en Triggered after the modal is closed (the animation ends)
      */
     'close',
+    /**
+     * @zh 对话框打开前触发
+     * @en Triggered before dialog is opened
+     * @version 2.16.0
+     */
+    'beforeOpen',
+    /**
+     * @zh 对话框关闭前触发
+     * @en Triggered before dialog is closed
+     * @version 2.16.0
+     */
+    'beforeClose',
   ],
   /**
    * @zh 标题
@@ -494,10 +506,12 @@ export default defineComponent({
         _visible.value = value;
       }
       if (value) {
+        emit('beforeOpen');
         mounted.value = true;
         setOverflowHidden();
         addGlobalKeyDownListener();
       } else {
+        emit('beforeClose');
         resetOverflow();
         removeGlobalKeyDownListener();
       }
