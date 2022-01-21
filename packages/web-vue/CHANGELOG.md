@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.1
+
+`2022-01-21`
+
+### 🐛 BugFix
+
+- **dropdown:** `<dropdown-button>` component completes dropdown related properties ([#637](https://github.com/arco-design/arco-design-vue/pull/637))
+
+
 ## 2.16.0
 
 `2022-01-21`
@@ -35,7 +44,8 @@ changelog: true
 - **cascader:** Fixed an issue where the search could not be selected in `check-strictly` mode ([#627](https://github.com/arco-design/arco-design-vue/pull/627))
 - **date-picker:** The return value should not concatenate the time when the time selection panel is not displayed ([#612](https://github.com/arco-design/arco-design-vue/pull/612))
 - **typography:** Fix the problem of warning in JSX usage ([#591](https://github.com/arco-design/arco-design-vue/pull/591))
-
+- **icon:** fix missing icon-relation icon in version 2.15.0
+-
 ### 💅 Style
 
 - **button:** Fix link mode text not centered ([#636](https://github.com/arco-design/arco-design-vue/pull/636))

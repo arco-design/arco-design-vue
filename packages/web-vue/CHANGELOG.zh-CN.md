@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.1
+
+`2022-01-21`
+
+### 🐛 问题修复
+
+- **dropdown:** `<dropdown-button>` 组件补全 dropdown 相关属性 ([#637](https://github.com/arco-design/arco-design-vue/pull/637))
+
+
 ## 2.16.0
 
 `2022-01-21`
@@ -35,6 +44,7 @@ changelog: true
 - **cascader:** 修复在 `check-strictly` 模式下，搜索中不能选择的问题 ([#627](https://github.com/arco-design/arco-design-vue/pull/627))
 - **date-picker:** 返回值在不显示时间选择面板的时候不应该拼接时间 ([#612](https://github.com/arco-design/arco-design-vue/pull/612))
 - **typography:** 修复 JSX 使用中存在警告的问题 ([#591](https://github.com/arco-design/arco-design-vue/pull/591))
+- **icon:** 修复 2.15.0 版本缺失的 icon-relation 图标
 
 ### 💅 样式更新
 

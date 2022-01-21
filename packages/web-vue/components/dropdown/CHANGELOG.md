@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.1
+
+`2022-01-21`
+
+### 🐛 BugFix
+
+- `<dropdown-button>` component completes dropdown related properties ([#637](https://github.com/arco-design/arco-design-vue/pull/637))
+
+
 ## 2.16.0
 
 `2022-01-21`

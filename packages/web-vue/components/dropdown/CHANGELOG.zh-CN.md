@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.1
+
+`2022-01-21`
+
+### 🐛 问题修复
+
+- `<dropdown-button>` 组件补全 dropdown 相关属性 ([#637](https://github.com/arco-design/arco-design-vue/pull/637))
+
+
 ## 2.16.0
 
 `2022-01-21`
