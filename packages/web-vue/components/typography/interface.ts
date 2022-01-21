@@ -44,14 +44,14 @@ export interface EllipsisProps {
 
 export interface CopyProps {
   copyable: boolean;
-  copyText?: string;
+  copyText: string | undefined;
 }
 
 export interface EditProps {
   editable: boolean;
   editing: boolean | undefined;
   defaultEditing: boolean;
-  editText?: string;
+  editText: string | undefined;
 }
 
 export type OperationsProps = CopyProps & EditProps & EllipsisProps;

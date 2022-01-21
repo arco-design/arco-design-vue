@@ -19,7 +19,6 @@ import Operations from './operations.vue';
 import ResizeObserver from '../_components/resize-observer';
 import { omit } from '../_utils/omit';
 import useMergeState from '../_hooks/use-merge-state';
-import usePickSlots from '../_hooks/use-pick-slots';
 import measure from './utils/measure';
 import { clipboard } from '../_utils/clipboard';
 import getInnerText from './utils/getInnerText';
@@ -306,6 +305,8 @@ export default defineComponent({
       copyable,
       editable,
       copyText,
+      editText,
+      component,
     } = toRefs(props);
 
     const prefixCls = getPrefixCls('typography');
@@ -315,11 +316,7 @@ export default defineComponent({
     ]);
 
     const wrapperRef = ref();
-    const defaultSlot = usePickSlots(slots, 'default');
-    const children = computed<VNode[]>(() => {
-      return defaultSlot.value?.() || [];
-    });
-    const fullText = computed<string>(() => getInnerText(children.value));
+    let fullText = '';
 
     // for edit
     const [editing, setEditing] = useMergeState(
@@ -349,12 +346,10 @@ export default defineComponent({
 
     // for copy
     const isCopied = ref(false);
-    const copyTimer = ref();
+    let copyTimer: NodeJS.Timeout | null = null;
 
     function onCopyClick() {
-      const text = !isUndefined(copyText?.value)
-        ? copyText?.value
-        : fullText.value;
+      const text = !isUndefined(copyText?.value) ? copyText?.value : fullText;
 
       clipboard(text || '');
 
@@ -362,14 +357,14 @@ export default defineComponent({
 
       emit('copy', text);
 
-      copyTimer.value = setTimeout(() => {
+      copyTimer = setTimeout(() => {
         isCopied.value = false;
       }, 3000);
     }
 
     onUnmounted(() => {
-      copyTimer.value && clearTimeout(copyTimer as any);
-      copyTimer.value = null;
+      copyTimer && clearTimeout(copyTimer);
+      copyTimer = null;
     });
 
     // for ellipsis
@@ -381,7 +376,7 @@ export default defineComponent({
         (isObject(ellipsis?.value) && ellipsis?.value) || {}
       )
     );
-    const rafId = ref();
+    let rafId: number = null as any;
 
     function onExpandClick() {
       const newVal = !expanded.value;
@@ -418,7 +413,7 @@ export default defineComponent({
         wrapperRef.value,
         ellipsisConfig.value,
         renderOperations(!!ellipsisConfig.value.expandable),
-        fullText.value
+        fullText
       );
 
       if (isEllipsis.value !== ellipsis) {
@@ -435,20 +430,22 @@ export default defineComponent({
       const needCalEllipsis = !!ellipsis?.value && !expanded.value;
       if (!needCalEllipsis) return;
 
-      caf(rafId.value);
-      rafId.value = raf(() => {
+      caf(rafId);
+      rafId = raf(() => {
         calEllipsis();
       });
     }
 
     onUnmounted(() => {
-      caf(rafId.value);
+      caf(rafId);
     });
 
-    const rows = computed(() => ellipsisConfig.value.rows);
-    watch([rows, children], () => {
-      resizeOnNextFrame();
-    });
+    watch(
+      () => ellipsisConfig.value.rows,
+      () => {
+        resizeOnNextFrame();
+      }
+    );
     watch(ellipsis, (newVal) => {
       if (newVal) {
         resizeOnNextFrame();
@@ -457,88 +454,64 @@ export default defineComponent({
       }
     });
 
-    return {
-      props,
-      classNames,
-      children,
-      fullText,
-      isEllipsis,
-      expanded,
-      ellipsisText,
-      ellipsisConfig,
-      mergeEditing,
-      wrapperRef,
-      renderOperations,
-      onEditChange,
-      onEditEnd,
-      onResize() {
-        resizeOnNextFrame();
-      },
-    };
-  },
-  render() {
-    const {
-      props,
-      component: Component,
-      classNames,
-      isEllipsis,
-      expanded,
-      ellipsisText,
-      ellipsisConfig,
-      children,
-      fullText,
-      editText,
-      mergeEditing,
-      renderOperations,
-      onResize,
-      onEditChange,
-      onEditEnd,
-    } = this;
+    return () => {
+      const children = slots.default?.() || [];
+      fullText = getInnerText(children);
 
-    // 编辑中
-    if (mergeEditing) {
-      const _editText = !isUndefined(editText)
-        ? editText
-        : getEditText(children);
+      // 编辑中
+      if (mergeEditing.value) {
+        const _editText = editText.value ?? getEditText(children);
+
+        return (
+          <EditContent
+            text={_editText}
+            onChange={(text: string) => {
+              if (text !== _editText) {
+                onEditChange(text);
+              }
+            }}
+            onEnd={onEditEnd}
+          />
+        );
+      }
+
+      const {
+        suffix,
+        ellipsisStr,
+        showTooltip,
+        tooltipProps,
+        TooltipComponent,
+      } = ellipsisConfig.value;
+      const showEllipsis = isEllipsis.value && !expanded.value;
+      const Content = Wrap(props, showEllipsis ? ellipsisText.value : children);
+      const titleAttrs =
+        showEllipsis && !showTooltip ? { title: fullText } : {};
+      const Component = component.value;
 
       return (
-        <EditContent
-          text={_editText}
-          onChange={(text: string) => {
-            if (text !== _editText) {
-              onEditChange(text);
-            }
+        <ResizeObserver
+          onResize={() => {
+            resizeOnNextFrame();
           }}
-          onEnd={onEditEnd}
-        />
+        >
+          <Component class={classNames.value} ref={wrapperRef} {...titleAttrs}>
+            {showEllipsis && showTooltip ? (
+              <TooltipComponent
+                {...tooltipProps}
+                v-slots={{
+                  content: () => fullText,
+                  default: () => [<span>{Content}</span>],
+                }}
+              />
+            ) : (
+              Content
+            )}
+            {showEllipsis ? ellipsisStr : null}
+            {suffix}
+            {renderOperations()}
+          </Component>
+        </ResizeObserver>
       );
-    }
-
-    const { suffix, ellipsisStr, showTooltip, tooltipProps, TooltipComponent } =
-      ellipsisConfig;
-    const showEllipsis = isEllipsis && !expanded;
-    const Content = Wrap(props, showEllipsis ? ellipsisText : children);
-    const titleAttrs = showEllipsis && !showTooltip ? { title: fullText } : {};
-
-    return (
-      <ResizeObserver onResize={onResize}>
-        <Component class={classNames} ref="wrapperRef" {...titleAttrs}>
-          {showEllipsis && showTooltip ? (
-            <TooltipComponent
-              {...tooltipProps}
-              v-slots={{
-                content: () => fullText,
-                default: () => [<span>{Content}</span>],
-              }}
-            />
-          ) : (
-            Content
-          )}
-          {showEllipsis ? ellipsisStr : null}
-          {suffix}
-          {renderOperations()}
-        </Component>
-      </ResizeObserver>
-    );
+    };
   },
 });
