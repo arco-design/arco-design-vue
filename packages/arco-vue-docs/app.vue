@@ -15,14 +15,15 @@
         @close="handleCloseGlobalNotice"
       >
         <a
-          href="https://bytedance.feishu.cn/docx/doxcneH4MAnUxcBvnLMuoywOp2f#doxcnaE2iEwuGmKcYVTvugYHveS"
+          href="https://mp.weixin.qq.com/s/06ALEmhxJcUqBGIVL4IQvA"
           rel="Arco Global Notice noreferrer"
           target="_blank"
         >
-          <b>Arco Design Pro</b>
-          <span class="content">Arco Pro v2.0 全新上线 🎉</span>
-          <b
-            >查看更多
+          <span class="content">
+            Vue3 将成为默认版本，Arco 助力开发者轻装启航
+          </span>
+          <b>
+            查看更多
             <icon-right />
           </b>
         </a>
@@ -70,12 +71,12 @@ export default defineComponent({
     const showNav = ref(true);
     const showAnchor = ref(true);
     const showGlobalNotice = ref(
-      getLocalStorage('arco-global-notice') !== 'hide'
+      getLocalStorage('arco-global-notice') !== '3-vue'
     );
 
     const handleCloseGlobalNotice = () => {
       showGlobalNotice.value = false;
-      setLocalStorage('arco-global-notice', 'hide');
+      setLocalStorage('arco-global-notice', '3-vue');
     };
 
     const toggleNav = () => {
