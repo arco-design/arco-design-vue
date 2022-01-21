@@ -86,6 +86,7 @@ export default defineComponent({
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
             onChange={(value: string) => emit('select', [value])}
+            onClick={(ev: Event) => ev.stopPropagation()}
           />
         );
       }
@@ -97,6 +98,7 @@ export default defineComponent({
           disabled={Boolean(props.record.disabled)}
           uninjectGroupContext
           onChange={(values: string[]) => emit('select', values)}
+          onClick={(ev: Event) => ev.stopPropagation()}
         />
       );
     };
