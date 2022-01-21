@@ -82,7 +82,7 @@ import { getFormattedValue, isValidInputValue } from '../time-picker/utils';
 import PickerPanel from './picker-panel.vue';
 import pick from '../_utils/pick';
 import useFormat from './hooks/use-format';
-import { isFunction } from '../_utils/is';
+import { isFunction, isBoolean } from '../_utils/is';
 import { TimePickerProps } from '../time-picker/interface';
 import IconCalendar from '../icon/icon-calendar';
 import useIsDisabledDate from './hooks/use-is-disabled-date';
@@ -632,7 +632,7 @@ export default defineComponent({
 
     function confirm(
       value: Dayjs | undefined,
-      showPanel: boolean,
+      showPanel?: boolean,
       emitOk?: boolean
     ) {
       if (isDisabledDate(value)) {
@@ -643,7 +643,9 @@ export default defineComponent({
       setSelectedValue(value);
       setProcessValue(undefined);
       setInputValue(undefined);
-      setPanelVisible(showPanel);
+      if (isBoolean(showPanel)) {
+        setPanelVisible(showPanel);
+      }
     }
 
     function select(value: Dayjs | undefined, emitSelect?: boolean) {
@@ -672,8 +674,9 @@ export default defineComponent({
       setPanelVisible(visible);
     }
 
-    function onInputClear() {
-      confirm(undefined, true);
+    function onInputClear(e: Event) {
+      e.stopPropagation();
+      confirm(undefined);
       emit('clear');
     }
 

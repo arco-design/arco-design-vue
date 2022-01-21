@@ -115,8 +115,8 @@ export default defineComponent({
       onChange(e: Event) {
         emit('change', e);
       },
-      onClear() {
-        emit('clear');
+      onClear(e: Event) {
+        emit('clear', e);
       },
     };
   },
