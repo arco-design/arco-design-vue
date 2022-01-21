@@ -40,6 +40,7 @@
         :active-key="activeKey"
         :computed-keys="computedKeys"
         :multiple="multiple"
+        :check-strictly="checkStrictly"
         :loading="loading"
       />
       <cascader-panel
