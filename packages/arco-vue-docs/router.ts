@@ -230,6 +230,11 @@ const proDocs = [
     componentEn: () => import('./docs/pro/routes-and-menu.en-US.md'),
   },
   {
+    name: 'stateManagementPinia',
+    component: () => import('./docs/pro/state-management-pinia.zh-CN.md'),
+    componentEn: () => import('./docs/pro/state-management-pinia.en-US.md'),
+  },
+  {
     name: 'stateManagement',
     component: () => import('./docs/pro/state-management.zh-CN.md'),
     componentEn: () => import('./docs/pro/state-management.en-US.md'),

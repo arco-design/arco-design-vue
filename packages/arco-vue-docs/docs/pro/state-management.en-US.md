@@ -1,11 +1,17 @@
 ```yaml
 meta:
   type: Arco Pro
-title: State management
+title: State management - Vuex
 description: Site-wide status management
 ```
 
 *Auto translate by google.*
+
+## Arco Pro Version
+
+Arco Pro < 2.1.0
+
+**Note**： Arco Pro version 2.1.0 has replaced the state management library with Pinia.
 
 ## Foreword
 
