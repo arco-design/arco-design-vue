@@ -64,7 +64,12 @@ import {
   watch,
 } from 'vue';
 import { TimePickerProps } from '../time-picker/interface';
-import { DisabledTimeProps, RangePickerProps, ShortcutType } from './interface';
+import {
+  DisabledTimeProps,
+  RangePickerProps,
+  ShortcutType,
+  CalendarValue,
+} from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { isArray } from '../_utils/is';
 import pick from '../_utils/pick';
@@ -96,6 +101,7 @@ import IconCalendar from '../icon/icon-calendar';
 import useProvideDatePickerTransform from './hooks/use-provide-datepicker-transform';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
+import { getReturnRangeValue } from './hooks/use-value-format';
 
 export default defineComponent({
   name: 'RangePicker',
@@ -162,10 +168,18 @@ export default defineComponent({
     },
     /**
      * @zh 展示日期的格式，参考[字符串解析格式](#字符串解析格式)
-     * @en Display the format of the date, refer to [String Parsing Format](#String Parsing Format)
+     * @en Display the format of the date, refer to [String Parsing Format](#string-parsing-format)
      * */
     format: {
       type: String,
+    },
+    /**
+     * @zh 值的格式，对 `value` `defaultValue` `pickerValue` `defaultPickerValue` 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考[字符串解析格式](#字符串解析格式)）。如果没有指定，将格式化为字符串，格式同 `format`。
+     * @en The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.
+     * @version 2.16.0
+     */
+    valueFormat: {
+      type: String as PropType<'timestamp' | 'Date' | string>,
     },
     /**
      * @zh 是否增加时间选择
@@ -269,8 +283,9 @@ export default defineComponent({
       type: [Function, Array] as PropType<
         EmitType<
           (
-            dateString: (string | undefined)[] | undefined,
-            date: (Date | undefined)[] | undefined
+            value: (CalendarValue | undefined)[] | undefined,
+            date: (Date | undefined)[] | undefined,
+            dateString: (string | undefined)[] | undefined
           ) => void
         >
       >,
@@ -279,8 +294,9 @@ export default defineComponent({
       type: [Function, Array] as PropType<
         EmitType<
           (
-            dateString: (string | undefined)[],
-            date: (Date | undefined)[]
+            value: (CalendarValue | undefined)[],
+            date: (Date | undefined)[],
+            dateString: (string | undefined)[]
           ) => void
         >
       >,
@@ -292,7 +308,9 @@ export default defineComponent({
     },
     onOk: {
       type: [Function, Array] as PropType<
-        EmitType<(dateString: string[], date: Date[]) => void>
+        EmitType<
+          (value: CalendarValue[], date: Date[], dateString: string[]) => void
+        >
       >,
     },
     onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
@@ -303,7 +321,9 @@ export default defineComponent({
     },
     onPickerValueChange: {
       type: [Function, Array] as PropType<
-        EmitType<(dateString: string[], date: Date[]) => void>
+        EmitType<
+          (value: CalendarValue[], date: Date[], dateString: string[]) => void
+        >
       >,
     },
   },
@@ -311,28 +331,32 @@ export default defineComponent({
     /**
      * @zh 组件值发生改变
      * @en The component value changes
-     * @param {(string | undefined)[] | undefined} dateString
+     * @param {(Date | string | number | undefined)[] | undefined} value
      * @param {(Date | undefined)[] | undefined} date
+     * @param {(string | undefined)[] | undefined} dateString
      */
     'change': (
-      dateString: (string | undefined)[] | undefined,
-      date: (Date | undefined)[] | undefined
+      value: (CalendarValue | undefined)[] | undefined,
+      date: (Date | undefined)[] | undefined,
+      dateString: (string | undefined)[] | undefined
     ) => {
+      return true;
+    },
+    'update:modelValue': (value: (CalendarValue | undefined)[] | undefined) => {
       return true;
     },
     /**
      * @zh 选中日期发生改变但组件值未改变
      * @en The selected date has changed but the component value has not changed
-     * @param {(string | undefined)[]} dateString
+     * @param {(Date | string | number | undefined)[]} value
      * @param {(Date | undefined)[]} date
+     * @param {(string | undefined)[]} dateString
      */
     'select': (
-      dateString: (string | undefined)[],
-      date: (Date | undefined)[]
+      value: (CalendarValue | undefined)[],
+      date: (Date | undefined)[],
+      dateString: (string | undefined)[]
     ) => {
-      return true;
-    },
-    'update:modelValue': (dateString: (string | undefined)[] | undefined) => {
       return true;
     },
     /**
@@ -349,10 +373,11 @@ export default defineComponent({
     /**
      * @zh 点击确认按钮
      * @en Click the confirm button
-     * @param {string[]} dateString
+     * @param {Date | string | number[]} value
      * @param {Date[]} date
+     * @param {string[]} dateString
      */
-    'ok': (dateString: string[], date: Date[]) => {
+    'ok': (value: CalendarValue[], date: Date[], dateString: string[]) => {
       return true;
     },
     /**
@@ -373,13 +398,18 @@ export default defineComponent({
     /**
      * @zh 面板日期改变
      * @en Panel date change
-     * @param {string[]} dateString
+     * @param {Date | string | number[]} value
      * @param {Date[]} date
+     * @param {string[]} dateString
      */
-    'picker-value-change': (dateString: string[], date: Date[]) => {
+    'picker-value-change': (
+      value: CalendarValue[],
+      date: Date[],
+      dateString: string[]
+    ) => {
       return true;
     },
-    'update:pickerValue': (dateString: string[]) => {
+    'update:pickerValue': (value: CalendarValue[]) => {
       return true;
     },
   },
@@ -400,6 +430,7 @@ export default defineComponent({
       locale,
       pickerValue,
       defaultPickerValue,
+      valueFormat,
     } = toRefs(props);
 
     const datePickerT = useProvideDatePickerTransform(
@@ -423,11 +454,16 @@ export default defineComponent({
         (datePickerT('datePicker.rangePlaceholder.date') as unknown as string[])
     );
 
-    const computedFormat = useFormat(
+    const {
+      format: computedFormat,
+      valueFormat: returnValueFormat,
+      parseValueFormat,
+    } = useFormat(
       reactive({
         mode,
         format,
         showTime,
+        valueFormat,
       })
     );
 
@@ -465,7 +501,7 @@ export default defineComponent({
         reactive({
           modelValue,
           defaultValue,
-          format: computedFormat,
+          format: parseValueFormat,
         })
       );
 
@@ -511,15 +547,19 @@ export default defineComponent({
         value: pickerValue,
         defaultValue: defaultPickerValue,
         selectedValue: panelValue,
-        format: computedFormat,
+        format: parseValueFormat,
         onChange: (newVal: Dayjs[]) => {
+          const returnValue = getReturnRangeValue(
+            newVal,
+            returnValueFormat.value
+          );
           const formattedValue = getFormattedValue(
             newVal,
-            computedFormat.value
+            parseValueFormat.value
           ) as string[];
           const dateValue = getDateValue(newVal);
-          emit('picker-value-change', formattedValue, dateValue);
-          emit('update:pickerValue', formattedValue);
+          emit('picker-value-change', returnValue, dateValue, formattedValue);
+          emit('update:pickerValue', returnValue);
         },
       })
     );
@@ -589,14 +629,17 @@ export default defineComponent({
       value: Array<Dayjs | undefined> | undefined,
       emitOk?: boolean
     ) {
-      const formattedValue = getFormattedValue(value, computedFormat.value);
+      const returnValue = value
+        ? getReturnRangeValue(value, returnValueFormat.value)
+        : undefined;
+      const formattedValue = getFormattedValue(value, parseValueFormat.value);
       const dateValue = getDateValue(value);
       if (isValueChange(value, selectedValue.value)) {
-        emit('update:modelValue', formattedValue);
-        emit('change', formattedValue, dateValue);
+        emit('update:modelValue', returnValue);
+        emit('change', returnValue, dateValue, formattedValue);
       }
       if (emitOk) {
-        emit('ok', formattedValue, dateValue);
+        emit('ok', returnValue, dateValue, formattedValue);
       }
     }
 
@@ -639,9 +682,10 @@ export default defineComponent({
       setInputValue(undefined);
 
       if (emitSelect) {
-        const formattedValue = getFormattedValue(value, computedFormat.value);
+        const returnValue = getReturnRangeValue(value, returnValueFormat.value);
+        const formattedValue = getFormattedValue(value, parseValueFormat.value);
         const dateValue = getDateValue(value);
-        emit('select', formattedValue, dateValue);
+        emit('select', returnValue, dateValue, formattedValue);
       }
 
       if (updateHeader) {
@@ -857,7 +901,7 @@ export default defineComponent({
         'hideTrigger',
       ]),
       prefixCls,
-      format: computedFormat.value,
+      format: parseValueFormat.value,
       value: panelValue.value,
       showConfirmBtn: needConfirm.value,
       confirmBtnDisabled: confirmBtnDisabled.value,

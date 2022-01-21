@@ -4,6 +4,7 @@ import { TimePickerProps } from '../time-picker/interface';
 
 // 支持：Date ｜ 字符串 ｜ 时间戳
 export type CalendarValue = Date | string | number;
+export type ValueFormat = 'timestamp' | 'Date' | string;
 
 export interface ShortcutType {
   label: string | number | (() => VNode);
@@ -85,6 +86,7 @@ export interface BasePickerProps {
   defaultPopupVisible: boolean;
   triggerProps?: Record<string, unknown>;
   unmountOnClose: boolean;
+  valueFormat?: ValueFormat;
 }
 
 export type PickerProps = BasePickerProps &

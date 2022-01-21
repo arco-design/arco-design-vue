@@ -50,6 +50,7 @@ export function scrollTo(element: HTMLElement, to: number, duration: number) {
   );
 }
 
+export function getFormattedValue(time: Dayjs, format: string): string;
 export function getFormattedValue(
   time: Dayjs | undefined,
   format: string

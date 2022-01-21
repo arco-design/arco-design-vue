@@ -50,46 +50,47 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 ### `Common` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|locale|Internationalization configuration, used to cover the locale file in the `datePicker` field|`Record<string, any>`|`-`|
-|hide-trigger|There is no trigger element, only the selection panel is displayed|`boolean`|`false`|
-|allow-clear|Whether to allow clear|`boolean`|`true`|
-|readonly|Whether it is read-only|`boolean`|`false`|
-|error|Whether it is an error state|`boolean`|`false`|
-|size|The size of the date picker|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
-|shortcuts|Quick selection of preset time range|`ShortcutType[]`|`[]`|
-|shortcuts-position|The position of the preset range on the panel, which is placed at the bottom by default, and the side is generally used for scenes with a large number of preset times|`'left' \| 'bottom' \| 'right'`|`'bottom'`|
-|position|The position of the pop-up box|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`|
-|popup-visible|Control the open or closed state of the pop-up box|`boolean`|`-`|
-|default-popup-visible|The default pop-up box is open or closed|`boolean`|`false`|
-|trigger-props|You can pass in the parameters of the `Trigger` component|`Record<string, unknown>`|`-`|
-|unmount-on-close|Whether to destroy the DOM structure when hiding|`boolean`|`false`|
-|placeholder|Prompt copy|`string`|`-`|
-|disabled|Whether to disable|`boolean`|`false`|
-|disabled-date|Unselectable date|`(current?: Date) => boolean`|`-`|
-|disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`|
-|picker-value **(v-model)**|Date displayed on the panel|`Date \| string \| number`|`-`|
-|default-picker-value|The date displayed on the panel by default|`Date \| string \| number`|`-`|
-|popup-container|Mount container for pop-up box|`string \| HTMLElement \| null \| undefined`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|locale|Internationalization configuration, used to cover the locale file in the `datePicker` field|`Record<string, any>`|`-`||
+|hide-trigger|There is no trigger element, only the selection panel is displayed|`boolean`|`false`||
+|allow-clear|Whether to allow clear|`boolean`|`true`||
+|readonly|Whether it is read-only|`boolean`|`false`||
+|error|Whether it is an error state|`boolean`|`false`||
+|size|The size of the date picker|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|shortcuts|Quick selection of preset time range|`ShortcutType[]`|`[]`||
+|shortcuts-position|The position of the preset range on the panel, which is placed at the bottom by default, and the side is generally used for scenes with a large number of preset times|`'left' \| 'bottom' \| 'right'`|`'bottom'`||
+|position|The position of the pop-up box|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`||
+|popup-visible|Control the open or closed state of the pop-up box|`boolean`|`-`||
+|default-popup-visible|The default pop-up box is open or closed|`boolean`|`false`||
+|trigger-props|You can pass in the parameters of the `Trigger` component|`Record<string, unknown>`|`-`||
+|unmount-on-close|Whether to destroy the DOM structure when hiding|`boolean`|`false`||
+|placeholder|Prompt copy|`string`|`-`||
+|disabled|Whether to disable|`boolean`|`false`||
+|disabled-date|Unselectable date|`(current?: Date) => boolean`|`-`||
+|disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`||
+|picker-value **(v-model)**|Date displayed on the panel|`Date \| string \| number`|`-`||
+|default-picker-value|The date displayed on the panel by default|`Date \| string \| number`|`-`||
+|popup-container|Mount container for pop-up box|`string \| HTMLElement \| null \| undefined`|`-`||
+|value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
 ### `Common` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|The component value changes|dateString: `string \| undefined`<br>date: `Date \| undefined`|
-|select|The selected date has changed but the component value has not changed|dateString: `string`<br>date: `Date`|
+|change|The component value changes|value: `Date \| string \| number \| undefined`<br>date: `Date \| undefined`<br>dateString: `string \| undefined`|
+|select|The selected date has changed but the component value has not changed|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 |popup-visible-change|Open or close the pop-up box|visible: `boolean`|
-|ok|Click the confirm button|dateString: `string`<br>date: `Date`|
+|ok|Click the confirm button|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 |clear|Click the clear button|-|
 |select-shortcut|Click on the shortcut option|shortcut: `ShortcutType`|
-|picker-value-change|Panel date change|dateString: `string`<br>date: `Date`|
+|picker-value-change|Panel date change|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 ### `Common` Slots
 
 |Slot Name|Description|Parameters|
 |---|---|---|
 |suffix-icon|Input box suffix icon|-|
 |extra|Extra footer|-|
-|cell|Customize the contents of the date cell|date: `Dayjs`|
+|cell|Customize the contents of the date cell|date: `Date`|
 |icon-prev-double|Double arrow page forward icon|-|
 |icon-prev|Single arrow page forward icon|-|
 |icon-next|Single arrow page backward icon|-|
@@ -104,7 +105,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |---|---|---|:---:|
 |model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
 |default-value|Default value|`Date \| string \| number`|`-`|
-|format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string \| ((current: Date) => string)`|`-`|
+|format|Display the format of the date, refer to [String Parsing Format](#string-parsing-format)|`string \| ((current: Date) => string)`|`-`|
 |day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`|
 |show-time|Whether to increase time selection|`boolean`|`false`|
 |timepicker-props|Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`|
@@ -161,33 +162,34 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 ### `<range-picker>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|mode|Type of range selector|`'date' \| 'year' \| 'quarter' \| 'month' \| 'week'`|`'date'`|
-|model-value **(v-model)**|Value|`(Date \| string \| number)[]`|`-`|
-|default-value|Default value|`(Date \| string \| number)[]`|`-`|
-|picker-value|The date displayed in the default panel|`(Date \| string \| number)[]`|`-`|
-|default-picker-value|Date displayed on the panel|`(Date \| string \| number)[]`|`-`|
-|disabled|Whether to disable|`boolean \| boolean[]`|`false`|
-|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`|
-|format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`-`|
-|show-time|Whether to increase time selection|`boolean`|`false`|
-|time-picker-props|Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`|
-|placeholder|Prompt copy|`string[]`|`-`|
-|disabled-date|Non-selectable date|`(current: Date, type: 'start' \| 'end') => boolean`|`-`|
-|disabled-time|Unselectable time|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`|
-|separator|The segmentation symbol in the input box of the range selector|`string`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|mode|Type of range selector|`'date' \| 'year' \| 'quarter' \| 'month' \| 'week'`|`'date'`||
+|model-value **(v-model)**|Value|`(Date \| string \| number)[]`|`-`||
+|default-value|Default value|`(Date \| string \| number)[]`|`-`||
+|picker-value|The date displayed in the default panel|`(Date \| string \| number)[]`|`-`||
+|default-picker-value|Date displayed on the panel|`(Date \| string \| number)[]`|`-`||
+|disabled|Whether to disable|`boolean \| boolean[]`|`false`||
+|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`||
+|format|Display the format of the date, refer to [String Parsing Format](#string-parsing-format)|`string`|`-`||
+|value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
+|show-time|Whether to increase time selection|`boolean`|`false`||
+|time-picker-props|Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`||
+|placeholder|Prompt copy|`string[]`|`-`||
+|disabled-date|Non-selectable date|`(current: Date, type: 'start' \| 'end') => boolean`|`-`||
+|disabled-time|Unselectable time|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
+|separator|The segmentation symbol in the input box of the range selector|`string`|`-`||
 ### `<range-picker>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|The component value changes|dateString: `(string \| undefined)[] \| undefined`<br>date: `(Date \| undefined)[] \| undefined`|
-|select|The selected date has changed but the component value has not changed|dateString: `(string \| undefined)[]`<br>date: `(Date \| undefined)[]`|
+|change|The component value changes|value: `(Date \| string \| number \| undefined)[] \| undefined`<br>date: `(Date \| undefined)[] \| undefined`<br>dateString: `(string \| undefined)[] \| undefined`|
+|select|The selected date has changed but the component value has not changed|value: `(Date \| string \| number \| undefined)[]`<br>date: `(Date \| undefined)[]`<br>dateString: `(string \| undefined)[]`|
 |popup-visible-change|Open or close the pop-up box|visible: `boolean`|
-|ok|Click the confirm button|dateString: `string[]`<br>date: `Date[]`|
+|ok|Click the confirm button|value: `Date \| string \| number[]`<br>date: `Date[]`<br>dateString: `string[]`|
 |clear|Click the clear button|-|
 |select-shortcut|Click on the shortcut option|shortcut: `ShortcutType`|
-|picker-value-change|Panel date change|dateString: `string[]`<br>date: `Date[]`|
+|picker-value-change|Panel date change|value: `Date \| string \| number[]`<br>date: `Date[]`<br>dateString: `string[]`|
 
 
 
