@@ -41,7 +41,7 @@ description: When there are too many commands on the page, the alternative comma
 |Event Name|Description|Parameters|
 |---|---|---|
 |popup-visible-change|Triggered when the display status of the drop-down box changes|-|
-|select|Triggered when the user selects|-|
+|select|Triggered when the user selects|value: `string \| number \| Record<string, unknown>`|
 ### `<dropdown>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -95,5 +95,35 @@ description: When there are too many commands on the page, the alternative comma
 |---|---|---|:---|
 |content|Submenu content|-||
 |footer|Footer|-|2.10.0|
+
+
+
+
+### `<dropdown-button>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|popup-visible **(v-model)**|Whether the popup is visible|`boolean`|`-`|
+|default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`|
+|trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`|
+|position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'br'`|
+|popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|
+|type|Button type|`string`|`-`|
+|size|Button size|`string`|`-`|
+|button-props|Button props|`object`|`-`|
+### `<dropdown-button>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|popup-visible-change|Triggered when the display status of the drop-down box changes|-|
+|click|Emitted when the button is clicked|event: `Event`|
+|select|Triggered when the user selects|value: `string \| number \| Record<string, unknown>`|
+### `<dropdown-button>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|icon|Button icon|-|
+|content|Content|-|
 
 

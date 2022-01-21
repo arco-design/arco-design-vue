@@ -42,3 +42,5 @@ description: When there are too many commands on the page, the alternative comma
 %%API(dropdown-group.vue)%%
 
 %%API(dropdown-submenu.vue)%%
+
+%%API(dropdown-button.vue)%%
