@@ -34,7 +34,7 @@ Drop-down box with multi-level menu.
               <a-doption>Option 2-3</a-doption>
             </template>
             <template #footer>
-              <div>
+              <div style="padding: 6px; text-align: center;">
                 <a-button>Click</a-button>
               </div>
             </template>

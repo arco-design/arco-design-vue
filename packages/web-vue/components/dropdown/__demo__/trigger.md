@@ -18,7 +18,7 @@ Specify the trigger method by `trigger`.
 
 ```vue
 <template>
-  <a-space>
+  <a-space size="large">
     <a-dropdown>
       <a-button>Click Me</a-button>
       <template #content>

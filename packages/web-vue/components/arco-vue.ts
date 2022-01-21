@@ -27,7 +27,12 @@ import DatePicker, {
 import Descriptions from './descriptions';
 import Divider from './divider';
 import Drawer from './drawer';
-import Dropdown, { Doption, Dgroup, Dsubmenu } from './dropdown';
+import Dropdown, {
+  Doption,
+  Dgroup,
+  Dsubmenu,
+  DropdownButton,
+} from './dropdown';
 import Empty from './empty';
 import Form, { FormItem } from './form';
 import Grid, { Row, Col, GridItem } from './grid';
@@ -181,6 +186,7 @@ const ArcoVue = {
   Doption,
   Dgroup,
   Dsubmenu,
+  DropdownButton,
   FormItem,
   Row,
   Col,

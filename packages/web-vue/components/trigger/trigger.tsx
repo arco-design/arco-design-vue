@@ -291,8 +291,8 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    openedCls: {
-      type: String,
+    openedClass: {
+      type: [String, Array, Object],
     },
     /**
      * @zh 是否自动调整弹出框位置，以适应窗口大小
@@ -609,7 +609,7 @@ export default defineComponent({
     triggerCtx?.addChildRef(popupRef);
 
     const triggerCls = computed(() => {
-      return computedVisible.value ? props.openedCls : undefined;
+      return computedVisible.value ? props.openedClass : undefined;
     });
 
     let scrollElements: HTMLElement[];

@@ -23,6 +23,8 @@ description: When there are too many commands on the page, the alternative comma
 
 @import ./__demo__/trigger.md
 
+@import ./__demo__/button.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/submenu.md
@@ -31,10 +33,12 @@ description: When there are too many commands on the page, the alternative comma
 
 @import ./__demo__/icon.md
 
-%%API(dropdown.tsx)%%
+`<dropdown>` 组件继承 `<trigger>` 组件的全部属性
 
-%%API(dropdown-option.ts)%%
+%%API(dropdown.vue)%%
 
-%%API(dropdown-group.ts)%%
+%%API(dropdown-option.vue)%%
 
-%%API(dropdown-submenu.ts)%%
+%%API(dropdown-group.vue)%%
+
+%%API(dropdown-submenu.vue)%%
