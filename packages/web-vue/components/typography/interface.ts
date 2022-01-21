@@ -44,6 +44,7 @@ export interface EllipsisProps {
 
 export interface CopyProps {
   copyable: boolean;
+  copyDelay: number;
   copyText: string | undefined;
 }
 
