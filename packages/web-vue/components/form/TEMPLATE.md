@@ -31,6 +31,8 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/validation.md
 
+@import ./__demo__/status.md
+
 @import ./__demo__/dynamic.md
 
 @import ./__demo__/disabled.md

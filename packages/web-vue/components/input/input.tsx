@@ -2,6 +2,7 @@ import type { PropType } from 'vue';
 import { computed, defineComponent, ref, nextTick, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
+import FeedbackIcon from '../_components/feedback-icon.vue';
 import { Enter } from '../_utils/keycode';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
@@ -111,6 +112,9 @@ export default defineComponent({
      */
     wordSlice: {
       type: Function as PropType<(value: string, maxLength: number) => string>,
+    },
+    feedback: {
+      type: String,
     },
     // private
     type: {
@@ -399,14 +403,21 @@ export default defineComponent({
           </IconHover>
         )}
         {(slots.suffix ||
-          (Boolean(props.maxLength) && props.showWordLimit)) && (
-          <span class={`${prefixCls}-suffix`}>
+          (Boolean(props.maxLength) && props.showWordLimit) ||
+          Boolean(props.feedback)) && (
+          <span
+            class={[
+              `${prefixCls}-suffix`,
+              { [`${prefixCls}-suffix-has-feedback`]: props.feedback },
+            ]}
+          >
             {Boolean(props.maxLength) && props.showWordLimit && (
               <span class={`${prefixCls}-word-limit`}>
                 {valueLength.value}/{maxLength.value}
               </span>
             )}
             {slots.suffix?.()}
+            {Boolean(props.feedback) && <FeedbackIcon type={props.feedback} />}
           </span>
         )}
       </span>

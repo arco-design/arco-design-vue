@@ -4,6 +4,7 @@ import type { Data } from '../../_utils/types';
 import { getPrefixCls } from '../../_utils/global-config';
 import { Size } from '../../_utils/constant';
 import { isArray } from '../../_utils/is';
+import FeedbackIcon from '../feedback-icon.vue';
 import InputLabel from '../input-label/input-label';
 import InputTag from '../../input-tag';
 import IconHover from '../icon-hover.vue';
@@ -73,6 +74,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    feedback: String,
   },
   emits: ['remove', 'clear'],
   setup(props, { emit, slots, attrs }) {
@@ -118,13 +120,13 @@ export default defineComponent({
 
     const renderIcon = () => {
       if (props.loading) {
-        return slots.loadingIcon?.() ?? <IconLoading />;
+        return slots['loading-icon']?.() ?? <IconLoading />;
       }
       if (props.allowSearch && props.opened) {
-        return slots.searchIcon?.() ?? <IconSearch />;
+        return slots['search-icon']?.() ?? <IconSearch />;
       }
-      if (slots.arrowIcon) {
-        return slots.arrowIcon();
+      if (slots['arrow-icon']) {
+        return slots['arrow-icon']();
       }
       if (props.multiple || enabledInput.value) {
         return <IconExpand style={{ transform: 'rotate(-45deg)' }} />;
@@ -144,6 +146,7 @@ export default defineComponent({
           </IconHover>
         )}
         <span class={`${prefixCls}-icon`}>{renderIcon()}</span>
+        {Boolean(props.feedback) && <FeedbackIcon type={props.feedback} />}
       </>
     );
 
