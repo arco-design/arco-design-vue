@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.16.2
+
+`2022-01-24`
+
+### 🐛 BugFix
+
+- **date-picker:** `headerValue` reporting error in `vue 3.2.28` ([#643](https://github.com/arco-design/arco-design-vue/pull/643))
+- **table:** Fix the problem of preventing bubbling and causing lazy loading to fail ([#641](https://github.com/arco-design/arco-design-vue/pull/641))
+- **table:** fix the problem that empty rows are displayed after deletion when expanding rows
+
+### 💅 Style
+
+- Add the fill attribute to the custom icon component to solve the problem of custom color ([#642](https://github.com/arco-design/arco-design-vue/pull/642))
+- **input:** Fix `input-group` with rounded corners of input components ([#640](https://github.com/arco-design/arco-design-vue/pull/640))
+
+
 ## 2.16.1
 
 `2022-01-21`

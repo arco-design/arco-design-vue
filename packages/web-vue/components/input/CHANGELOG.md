@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.2
+
+`2022-01-24`
+
+### 💅 Style
+
+- Fix `input-group` with rounded corners of input components ([#640](https://github.com/arco-design/arco-design-vue/pull/640))
+
+
 ## 2.16.0
 
 `2022-01-21`

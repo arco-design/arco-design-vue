@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.2
+
+`2022-01-24`
+
+### 🐛 BugFix
+
+- `headerValue` reporting error in `vue 3.2.28` ([#643](https://github.com/arco-design/arco-design-vue/pull/643))
+
+
 ## 2.16.0
 
 `2022-01-21`

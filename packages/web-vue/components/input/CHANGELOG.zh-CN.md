@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.16.2
+
+`2022-01-24`
+
+### 💅 样式更新
+
+- 修复 `input-group` 中使用 input 组件圆角问题 ([#640](https://github.com/arco-design/arco-design-vue/pull/640))
+
+
 ## 2.16.0
 
 `2022-01-21`

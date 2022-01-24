@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.16.2
+
+`2022-01-24`
+
+### 🐛 BugFix
+
+- Fix the problem of preventing bubbling and causing lazy loading to fail ([#641](https://github.com/arco-design/arco-design-vue/pull/641))
+- **table:** fix the problem that empty rows are displayed after deletion when expanding rows
+
+
 ## 2.16.0
 
 `2022-01-21`

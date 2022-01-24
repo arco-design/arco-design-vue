@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.16.2
+
+`2022-01-24`
+
+### 🐛 问题修复
+
+- **date-picker:** `headerValue` 在 `vue 3.2.28` 中报错 ([#643](https://github.com/arco-design/arco-design-vue/pull/643))
+- **table:** 修复阻止冒泡导致懒加载失效的问题 ([#641](https://github.com/arco-design/arco-design-vue/pull/641))
+- **table:** 修复在展开行展开时，删除后显示空行的问题
+
+### 💅 样式更新
+
+- 自定义 icon 组件增加 fill 属性，解决自定义颜色问题 ([#642](https://github.com/arco-design/arco-design-vue/pull/642))
+- **input:** 修复 `input-group` 中使用 input 组件圆角问题 ([#640](https://github.com/arco-design/arco-design-vue/pull/640))
+
+
 ## 2.16.1
 
 `2022-01-21`

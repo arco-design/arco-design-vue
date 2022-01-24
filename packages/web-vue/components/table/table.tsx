@@ -1385,29 +1385,31 @@ export default defineComponent({
             })}
           </Tr>
           {showExpand &&
-            (hasSubTree ? (
-              record.children?.map((item, index) =>
-                renderRecord(item, index, {
-                  indentSize: subTreeHasSubData
-                    ? indentSize + props.indentSize + 20
-                    : indentSize + props.indentSize,
-                  indexPath: currentPath,
-                  allowDrag: allowDrag && !isDragTarget,
-                })
-              )
-            ) : (
-              <Tr isExpandRow key={`${currentKey}-expand`}>
-                <Td
-                  isFixedExpand={
-                    hasLeftFixedColumn.value || hasRightFixedColumn.value
-                  }
-                  containerWidth={scrollContainer?.clientWidth}
-                  colSpan={dataColumns.value.length + operations.value.length}
-                >
-                  {expandContent}
-                </Td>
-              </Tr>
-            ))}
+            (hasSubTree
+              ? record.children?.map((item, index) =>
+                  renderRecord(item, index, {
+                    indentSize: subTreeHasSubData
+                      ? indentSize + props.indentSize + 20
+                      : indentSize + props.indentSize,
+                    indexPath: currentPath,
+                    allowDrag: allowDrag && !isDragTarget,
+                  })
+                )
+              : Boolean(expandContent) && (
+                  <Tr isExpandRow key={`${currentKey}-expand`}>
+                    <Td
+                      isFixedExpand={
+                        hasLeftFixedColumn.value || hasRightFixedColumn.value
+                      }
+                      containerWidth={scrollContainer?.clientWidth}
+                      colSpan={
+                        dataColumns.value.length + operations.value.length
+                      }
+                    >
+                      {expandContent}
+                    </Td>
+                  </Tr>
+                ))}
         </>
       );
     };
