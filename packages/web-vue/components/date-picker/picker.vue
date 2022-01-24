@@ -769,7 +769,7 @@ export default defineComponent({
       timePickerProps: computedTimePickerProps.value,
       extra: slots.extra,
       dateRender: slots.cell,
-      headerValue,
+      headerValue: headerValue.value,
       headerIcons: {
         prev: slots['icon-prev'],
         prevDouble: slots['icon-prev-double'],
