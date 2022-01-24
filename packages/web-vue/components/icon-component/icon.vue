@@ -1,5 +1,5 @@
 <template>
-  <svg :class="cls" :style="sizeStyle">
+  <svg :class="cls" :style="sizeStyle" fill="currentColor">
     <slot />
   </svg>
 </template>
