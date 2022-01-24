@@ -122,7 +122,7 @@ export default defineComponent({
 
     const isLoading = ref(false);
 
-    const handleClick = () => {
+    const handleClick = (ev: Event) => {
       if (
         isFunction(props.loadMore) &&
         !props.record?.isLeaf &&
@@ -136,6 +136,7 @@ export default defineComponent({
           isLoading.value = false;
         });
       }
+      ev.stopPropagation();
     };
 
     const renderCell = () => {
@@ -163,7 +164,7 @@ export default defineComponent({
               {isLoading.value ? (
                 <IconLoading />
               ) : (
-                props.renderExpandBtn?.(props.record)
+                props.renderExpandBtn?.(props.record, false)
               )}
             </span>
           )}

@@ -1192,7 +1192,7 @@ export default defineComponent({
       );
     };
 
-    const renderExpandBtn = (record: TableData) => {
+    const renderExpandBtn = (record: TableData, stopPropagation = true) => {
       const currentKey = record[rowKey.value];
       const expanded = expandedRowKeys.value.includes(currentKey);
 
@@ -1202,7 +1202,9 @@ export default defineComponent({
           class={`${prefixCls}-expand-btn`}
           onClick={(ev: Event) => {
             handleExpand(currentKey);
-            ev.stopPropagation();
+            if (stopPropagation) {
+              ev.stopPropagation();
+            }
           }}
         >
           {slots['expand-icon']?.({ expanded, record }) ??
