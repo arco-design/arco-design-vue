@@ -423,10 +423,6 @@ export const getPopupStyle = (
   };
 };
 
-const withRotate = (transform: string): string => {
-  return `${transform} rotate(45deg)`;
-};
-
 export const getArrowStyle = (
   position: TriggerPosition,
   triggerRect: ScrollRect,
@@ -437,126 +433,60 @@ export const getArrowStyle = (
     customStyle?: CSSProperties;
   }
 ): CSSProperties => {
-  switch (position) {
-    case 'top':
+  if (['top', 'tl', 'tr', 'bottom', 'bl', 'br'].includes(position)) {
+    let offsetLeft = Math.abs(
+      triggerRect.scrollLeft + triggerRect.width / 2 - popupRect.scrollLeft
+    );
+
+    if (offsetLeft > popupRect.width - 8) {
+      if (triggerRect.width > popupRect.width) {
+        offsetLeft = popupRect.width / 2;
+      } else {
+        offsetLeft = popupRect.width - 8;
+      }
+    }
+
+    if (['top', 'tl', 'tr'].includes(position)) {
       return {
-        left: '50%',
+        left: `${offsetLeft}px`,
         bottom: '0',
-        transform: withRotate('translate(-50%,50%)'),
-        ...customStyle,
-      };
-    case 'tl': {
-      const halfWidth = triggerRect.width / 2;
-      return {
-        left: `${Math.round(
-          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
-        )}px`,
-        bottom: '0',
-        transform: withRotate('translate(-50%,50%)'),
+        transform: 'translate(-50%,50%) rotate(45deg)',
         ...customStyle,
       };
     }
-    case 'tr': {
-      const halfWidth = triggerRect.width / 2;
-      return {
-        right: `${Math.round(
-          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
-        )}px`,
-        bottom: '0',
-        transform: withRotate('translate(50%,50%)'),
-        ...customStyle,
-      };
-    }
-    case 'bottom':
-      return {
-        left: '50%',
-        top: '0',
-        transform: withRotate('translate(-50%,-50%)'),
-        ...customStyle,
-      };
-    case 'bl': {
-      const halfWidth = triggerRect.width / 2;
-      return {
-        left: `${Math.round(
-          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
-        )}px`,
-        top: '0',
-        transform: withRotate('translate(-50%,-50%)'),
-        ...customStyle,
-      };
-    }
-    case 'br': {
-      const halfWidth = triggerRect.width / 2;
-      return {
-        right: `${Math.round(
-          halfWidth < popupRect.width ? halfWidth : popupRect.width / 2
-        )}px`,
-        top: '0',
-        transform: withRotate('translate(50%,-50%)'),
-        ...customStyle,
-      };
-    }
-    case 'left':
-      return {
-        right: '0',
-        top: '50%',
-        transform: withRotate('translate(50%,-50%)'),
-        ...customStyle,
-      };
-    case 'lt': {
-      const halfHeight = triggerRect.height / 2;
-      return {
-        right: '0',
-        top: `${Math.round(
-          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
-        )}px`,
-        transform: withRotate('translate(50%,-50%)'),
-        ...customStyle,
-      };
-    }
-    case 'lb': {
-      const halfHeight = triggerRect.height / 2;
-      return {
-        right: '0',
-        bottom: `${Math.round(
-          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
-        )}px`,
-        transform: withRotate('translate(50%,50%)'),
-        ...customStyle,
-      };
-    }
-    case 'right':
-      return {
-        left: '0',
-        top: '50%',
-        transform: withRotate('translate(-50%,-50%)'),
-        ...customStyle,
-      };
-    case 'rt': {
-      const halfHeight = triggerRect.height / 2;
-      return {
-        left: '0',
-        top: `${Math.round(
-          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
-        )}px`,
-        transform: withRotate('translate(-50%,-50%)'),
-        ...customStyle,
-      };
-    }
-    case 'rb': {
-      const halfHeight = triggerRect.height / 2;
-      return {
-        left: '0',
-        bottom: `${Math.round(
-          halfHeight < popupRect.height ? halfHeight : popupRect.height / 2
-        )}px`,
-        transform: withRotate('translate(-50%,50%)'),
-        ...customStyle,
-      };
-    }
-    default:
-      return {};
+    return {
+      left: `${offsetLeft}px`,
+      top: '0',
+      transform: 'translate(-50%,-50%) rotate(45deg)',
+      ...customStyle,
+    };
   }
+  let offsetTop = Math.abs(
+    triggerRect.scrollTop + triggerRect.height / 2 - popupRect.scrollTop
+  );
+
+  if (offsetTop > popupRect.height - 8) {
+    if (triggerRect.height > popupRect.height) {
+      offsetTop = popupRect.height / 2;
+    } else {
+      offsetTop = popupRect.height - 8;
+    }
+  }
+
+  if (['left', 'lt', 'lb'].includes(position)) {
+    return {
+      top: `${offsetTop}px`,
+      right: '0',
+      transform: 'translate(50%,-50%) rotate(45deg)',
+      ...customStyle,
+    };
+  }
+  return {
+    top: `${offsetTop}px`,
+    left: '0',
+    transform: 'translate(-50%,-50%) rotate(45deg)',
+    ...customStyle,
+  };
 };
 
 export const isScrollElement = (element: HTMLElement) => {
