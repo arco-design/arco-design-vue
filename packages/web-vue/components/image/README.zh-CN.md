@@ -71,13 +71,18 @@ description: 展示和预览图片。
 |default-visible|默认是否可见，非受控|`boolean`|`false`|
 |mask-closable|点击 mask 是否触发关闭|`boolean`|`true`|
 |closable|是否显示关闭按钮|`boolean`|`true`|
-|actions-layout|控制条的布局|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
+|actions-layout|操作项的布局|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
 |popup-container|设置弹出框的挂载点，同 `teleport` 的 `to`，缺省值是 document.body|`HTMLElement`|`-`|
 ### `<image-preview>` Events
 
 |事件名|描述|参数|
 |---|---|---|
 |close|关闭事件|-|
+### `<image-preview>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|actions|自定义额外的操作项|-|2.17.0|
 
 
 
@@ -102,5 +107,15 @@ description: 展示和预览图片。
 |---|---|---|
 |change|切换图片|-|
 |visible-change|预览的打开和关闭|-|
+
+
+
+
+### `<image-preview-action>` Props (2.17.0)
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|name|名称|`string`|`-`|
+|disabled|是否禁用|`boolean`|`false`|
 
 

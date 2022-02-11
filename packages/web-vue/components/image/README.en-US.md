@@ -80,6 +80,11 @@ description: Used to show and preview pictures.
 |Event Name|Description|Parameters|
 |---|---|---|
 |close|Close event|-|
+### `<image-preview>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|actions|Customize additional action items|-|2.17.0|
 
 
 
@@ -104,5 +109,15 @@ description: Used to show and preview pictures.
 |---|---|---|
 |change|Image switch|-|
 |visible-change|Preview visibility change|-|
+
+
+
+
+### `<image-preview-action>` Props (2.17.0)
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|name|the name of the action|`string`|`-`|
+|disabled|Whether to disable the action|`boolean`|`false`|
 
 

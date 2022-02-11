@@ -49,7 +49,11 @@
       :visible="mergedPreviewVisible"
       :render-to-body="renderToBody"
       @close="onPreviewClose"
-    />
+    >
+      <template #actions>
+        <slot name="preview-actions" />
+      </template>
+    </ImagePreview>
   </div>
 </template>
 <script lang="ts">
