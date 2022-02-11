@@ -63,7 +63,9 @@
           v-if="isLoaded"
           :actions="actions"
           :actions-layout="actionsLayout"
-        />
+        >
+          <slot name="actions" />
+        </PreviewToolbar>
 
         <!-- close btn -->
         <div
@@ -169,7 +171,7 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 控制条的布局
+     * @zh 操作项的布局
      * @en Layout of action list
      */
     actionsLayout: {
@@ -207,6 +209,12 @@ export default defineComponent({
     'close',
     'update:visible',
   ],
+  /**
+   * @zh 自定义额外的操作项
+   * @en Customize additional action items
+   * @slot actions
+   * @version 2.17.0
+   */
   setup(props: ImagePreviewProps, { emit }) {
     const { t } = useI18n();
     const { src, popupContainer, visible, defaultVisible, maskClosable } =
