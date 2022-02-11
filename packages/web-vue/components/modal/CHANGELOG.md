@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.17.0
+
+`2022-02-11`
+
+### 🆕 Feature
+
+- Added `title-align` attribute ([#673](https://github.com/arco-design/arco-design-vue/pull/673))
+
+
 ## 2.16.0
 
 `2022-01-21`

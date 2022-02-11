@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.17.0
+
+`2022-02-11`
+
+### 💎 Optimization
+
+- Increase the transparent transmission of some original attributes of the input element ([#664](https://github.com/arco-design/arco-design-vue/pull/664))
+
+
 ## 2.16.2
 
 `2022-01-24`

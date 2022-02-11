@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.17.0
+
+`2022-02-11`
+
+### 💎 Optimization
+
+- **input:** Increase the transparent transmission of some original attributes of the input element ([#664](https://github.com/arco-design/arco-design-vue/pull/664))
+- **trigger:** Optimize the position of the arrow after auto-adjusting the position ([#655](https://github.com/arco-design/arco-design-vue/pull/655))
+
+### 🆕 Feature
+
+- **image:** Add slot `actions` for custom preview action items ([#679](https://github.com/arco-design/arco-design-vue/pull/679))
+- **modal:** Added `title-align` attribute ([#673](https://github.com/arco-design/arco-design-vue/pull/673))
+
+### 🐛 BugFix
+
+- **image:** Fix the problem of wrong rotation direction ([#678](https://github.com/arco-design/arco-design-vue/pull/678))
+- **image:** Fix the problem that the `Tooltip` of the action item is covered ([#677](https://github.com/arco-design/arco-design-vue/pull/677))
+- **tooltip:** Fix the issue of losing trigger style when loading on demand ([#674](https://github.com/arco-design/arco-design-vue/pull/674))
+- **transfer:** Fix search function should check option label ([#659](https://github.com/arco-design/arco-design-vue/pull/659))
+
+### 💅 Style
+
+- Fix the problem that the default color of some icons is inconsistent ([#676](https://github.com/arco-design/arco-design-vue/pull/676))
+- **switch:** Fixed the occasional jitter problem of switch animation ([#656](https://github.com/arco-design/arco-design-vue/pull/656))
+
+
 ## 2.16.2
 
 `2022-01-24`

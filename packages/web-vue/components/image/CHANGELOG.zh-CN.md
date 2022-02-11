@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.17.0
+
+`2022-02-11`
+
+### 🆕 新增功能
+
+- 新增 actions 插槽用于自定义预览的操作项 ([#679](https://github.com/arco-design/arco-design-vue/pull/679))
+
+### 🐛 问题修复
+
+- 修复旋转方向错误的问题 ([#678](https://github.com/arco-design/arco-design-vue/pull/678))
+- 修复操作项的 `Tooltip` 被遮盖的问题 ([#677](https://github.com/arco-design/arco-design-vue/pull/677))
+
+
 ## 2.14.0
 
 `2022-01-07`

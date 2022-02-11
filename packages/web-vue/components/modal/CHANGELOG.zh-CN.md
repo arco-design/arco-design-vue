@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.17.0
+
+`2022-02-11`
+
+### 🆕 新增功能
+
+- 增加 `title-align` 属性 ([#673](https://github.com/arco-design/arco-design-vue/pull/673))
+
+
 ## 2.16.0
 
 `2022-01-21`

@@ -116,7 +116,7 @@ describe('Image', () => {
     await rotateRightAction.trigger('click');
     expect(
       wrapper.find('.arco-image-preview-img').attributes('style')
-    ).toContain('rotate(270deg)');
+    ).toContain('rotate(90deg)');
   });
 
   test('Preview rotate left should work', async () => {
@@ -127,7 +127,7 @@ describe('Image', () => {
     await rotateLeftAction.trigger('click');
     expect(
       wrapper.find('.arco-image-preview-img').attributes('style')
-    ).toContain('rotate(90deg)');
+    ).toContain('rotate(270deg)');
   });
 
   test('Preview zoom in should work', async () => {

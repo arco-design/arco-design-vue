@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.17.0
+
+`2022-02-11`
+
+### 💎 功能优化
+
+- **input:** 增加 input 元素部分原始属性的透传 ([#664](https://github.com/arco-design/arco-design-vue/pull/664))
+- **trigger:** 优化自动调整位置后箭头的位置 ([#655](https://github.com/arco-design/arco-design-vue/pull/655))
+
+### 🆕 新增功能
+
+- **image:** 新增 actions 插槽用于自定义预览的操作项 ([#679](https://github.com/arco-design/arco-design-vue/pull/679))
+- **modal:** 增加 `title-align` 属性 ([#673](https://github.com/arco-design/arco-design-vue/pull/673))
+
+### 🐛 问题修复
+
+- **image:** 修复旋转方向错误的问题 ([#678](https://github.com/arco-design/arco-design-vue/pull/678))
+- **image:** 修复操作项的 `Tooltip` 被遮盖的问题 ([#677](https://github.com/arco-design/arco-design-vue/pull/677))
+- **tooltip:** 修复按需加载时丢失 trigger 样式的问题 ([#674](https://github.com/arco-design/arco-design-vue/pull/674))
+- **transfer:** 修复搜索功能应该检查选项的问题 ([#659](https://github.com/arco-design/arco-design-vue/pull/659))
+
+### 💅 样式更新
+
+- 修复部分图标默认颜色不统一问题 ([#676](https://github.com/arco-design/arco-design-vue/pull/676))
+- **switch:** 修复开关动画偶现抖动问题 ([#656](https://github.com/arco-design/arco-design-vue/pull/656))
+
+
 ## 2.16.2
 
 `2022-01-24`

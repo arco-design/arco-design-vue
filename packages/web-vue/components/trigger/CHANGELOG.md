@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.17.0
+
+`2022-02-11`
+
+### 💎 Optimization
+
+- Optimize the position of the arrow after auto-adjusting the position ([#655](https://github.com/arco-design/arco-design-vue/pull/655))
+
+
 ## 2.14.0
 
 `2022-01-07`
