@@ -355,10 +355,7 @@ export default defineComponent({
           name: t('imagePreview.rotateRight'),
           content: () => h(IconRotateRight),
           onClick: () => {
-            rotate.value =
-              rotate.value === 0
-                ? 360 - ROTATE_STEP
-                : rotate.value - ROTATE_STEP;
+            rotate.value = (rotate.value + ROTATE_STEP) % 360;
           },
         },
         /** 逆时针旋转 */
@@ -367,7 +364,10 @@ export default defineComponent({
           name: t('imagePreview.rotateLeft'),
           content: () => h(IconRotateLeft),
           onClick: () => {
-            rotate.value = (rotate.value + ROTATE_STEP) % 360;
+            rotate.value =
+              rotate.value === 0
+                ? 360 - ROTATE_STEP
+                : rotate.value - ROTATE_STEP;
           },
         },
         /** 放大 */
