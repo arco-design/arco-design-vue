@@ -122,7 +122,7 @@ export default defineComponent({
     const filteredData = computed(() =>
       props.dataInfo.data.filter((item) => {
         if (filter.value) {
-          return item.value.includes(filter.value);
+          return item.label.includes(filter.value);
         }
         return true;
       })
