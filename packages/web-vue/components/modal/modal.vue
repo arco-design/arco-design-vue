@@ -43,7 +43,13 @@
               v-if="$slots.title || title || closable"
               :class="`${prefixCls}-header`"
             >
-              <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
+              <div
+                v-if="$slots.title || title"
+                :class="[
+                  `${prefixCls}-title`,
+                  `${prefixCls}-title-align-${titleAlign}`,
+                ]"
+              >
                 <div v-if="messageType" :class="`${prefixCls}-title-icon`">
                   <icon-info-circle-fill v-if="messageType === 'info'" />
                   <icon-check-circle-fill v-if="messageType === 'success'" />
@@ -177,6 +183,14 @@ export default defineComponent({
      */
     title: {
       type: String,
+    },
+    /**
+     * @zh 标题的水平对齐方向
+     * @en horizontal alignment of the title
+     * @version 2.17.0
+     */
+    titleAlign: {
+      type: String as PropType<'start' | 'center'>,
     },
     /**
      * @zh 对话框是否居中显示
