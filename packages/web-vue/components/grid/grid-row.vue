@@ -8,10 +8,12 @@
 import {
   computed,
   defineComponent,
+  onMounted,
   onUnmounted,
   PropType,
   provide,
   reactive,
+  ref,
   toRefs,
 } from 'vue';
 import ResponsiveObserve, {
@@ -123,17 +125,7 @@ export default defineComponent({
         xxl: true,
       },
     });
-    const subscribeToken = ResponsiveObserve.subscribe((screens) => {
-      // 是否是响应式的 Gutter
-      if (
-        (!Array.isArray(gutter.value) && typeof gutter.value === 'object') ||
-        (Array.isArray(gutter.value) &&
-          (typeof gutter.value[0] === 'object' ||
-            typeof gutter.value[1] === 'object'))
-      ) {
-        state.screens = screens;
-      }
-    });
+
     const gutterHorizontal = computed(() =>
       getGutter(
         Array.isArray(gutter.value) ? gutter.value[0] : gutter.value,
@@ -169,8 +161,24 @@ export default defineComponent({
       return result;
     });
 
+    const responsiveObserveToken = ref<string>('');
+
+    onMounted(() => {
+      responsiveObserveToken.value = ResponsiveObserve.subscribe((screens) => {
+        // 是否是响应式的 Gutter
+        if (
+          (!Array.isArray(gutter.value) && typeof gutter.value === 'object') ||
+          (Array.isArray(gutter.value) &&
+            (typeof gutter.value[0] === 'object' ||
+              typeof gutter.value[1] === 'object'))
+        ) {
+          state.screens = screens;
+        }
+      });
+    });
+
     onUnmounted(() => {
-      ResponsiveObserve.unsubscribe(subscribeToken);
+      ResponsiveObserve.unsubscribe(responsiveObserveToken.value);
     });
 
     const resultGutter = computed<[number, number]>(() => [

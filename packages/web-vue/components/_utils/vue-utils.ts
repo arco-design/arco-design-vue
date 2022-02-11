@@ -398,3 +398,20 @@ export const resolveProps = (vn: VNode) => {
   }
   return props;
 };
+
+export const getFirstElement = (vn: VNode | VNode[]): HTMLElement | null => {
+  if (isArray(vn)) {
+    for (const child of vn) {
+      const result = getFirstElement(child);
+      if (result) return result;
+    }
+  } else if (isComponent(vn)) {
+    return vn.el as HTMLElement;
+  } else if (isArrayChildren(vn, vn.children)) {
+    for (const child of vn.children) {
+      const result = getFirstElement(child);
+      if (result) return result;
+    }
+  }
+  return null;
+};
