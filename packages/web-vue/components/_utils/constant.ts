@@ -57,6 +57,15 @@ export const INPUT_EVENTS = [
   'onCompositionend',
   // selection events
   'onSelect',
+  // attrs
+  'autocomplete',
+  'autofocus',
+  'maxlength',
+  'minlength',
+  'name',
+  'pattern',
+  'readonly',
+  'required',
 ];
 export const TEXT_ALIGNS = ['left', 'center', 'right'] as const;
 export type TextAlign = typeof TEXT_ALIGNS[number];
