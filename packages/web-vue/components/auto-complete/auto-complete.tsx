@@ -9,17 +9,13 @@ import {
 import ArcoInput from '../input';
 import Trigger from '../trigger';
 import { getPrefixCls } from '../_utils/global-config';
-import { useOptions } from '../_hooks/use-options';
-import {
-  Option,
-  OptionInfo,
-  FilterOption,
-  OptionNode,
-} from '../select/interface';
+import { Option, OptionInfo, FilterOption } from '../select/interface';
 import { isFunction } from '../_utils/is';
-import { DropdownPanel, DropDownOption } from '../_components/dropdown';
-import { CODE, getKeyDownHandler } from '../_utils/keyboard';
+import SelectDropdown from '../select/select-dropdown.vue';
+import SelectOption from '../select/option.vue';
 import { EmitType } from '../_utils/types';
+import { useSelect } from '../select/hooks/use-select';
+import { getKeyFromValue } from '../select/utils';
 
 export default defineComponent({
   name: 'AutoComplete',
@@ -135,9 +131,21 @@ export default defineComponent({
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement>();
     const computedValue = computed(() => props.modelValue ?? _value.value);
+    const computedValueKeys = computed(() =>
+      computedValue.value ? [getKeyFromValue(computedValue.value)] : []
+    );
     const { data } = toRefs(props);
     const dropdownRef = ref();
     const optionRefs = ref<Record<string, HTMLElement>>({});
+
+    const _popupVisible = ref(false);
+    const computedPopupVisible = computed(
+      () => _popupVisible.value && validOptionInfos.value.length > 0
+    );
+
+    const handlePopupVisibleChange = (popupVisible: boolean) => {
+      _popupVisible.value = popupVisible;
+    };
 
     const strictFilterOption: FilterOption = (
       inputValue: string,
@@ -155,22 +163,6 @@ export default defineComponent({
       }
       return props.filterOption;
     });
-    const extraOptions = ref([]);
-
-    const {
-      nodes,
-      optionInfoMap,
-      activeOption,
-      getNextActiveOption,
-      scrollIntoView,
-    } = useOptions({
-      options: data,
-      extraOptions,
-      inputValue: computedValue,
-      filterOption: mergedFilterOption,
-      dropdownRef,
-      optionRefs,
-    });
 
     const handleChange = (value: string) => {
       _value.value = value;
@@ -178,31 +170,12 @@ export default defineComponent({
       emit('change', value);
     };
 
-    const _popupVisible = ref(false);
-    const computedPopupVisible = computed(
-      () => _popupVisible.value && nodes.value.length > 0
-    );
-
-    const handlePopupVisibleChange = (popupVisible: boolean) => {
-      _popupVisible.value = popupVisible;
-    };
-
     // Dropdown事件
-    const handleSelect = (value: string, e: Event) => {
+    const handleSelect = (key: string, ev: Event) => {
+      const value = optionInfoMap.get(key)?.value as string;
       emit('select', value);
       handleChange(value);
       inputRef.value?.blur();
-    };
-
-    const handleMouseEnter = (value: string | number, e: Event) => {
-      const optionInfo = optionInfoMap.get(value);
-      if (optionInfo) {
-        activeOption.value = optionInfo;
-      }
-    };
-
-    const handleMouseLeave = (e: Event) => {
-      activeOption.value = undefined;
     };
 
     // Input事件
@@ -211,99 +184,54 @@ export default defineComponent({
       handleChange(value);
     };
 
-    const handleKeyDown = getKeyDownHandler(
-      new Map([
-        [
-          CODE.ENTER,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              if (activeOption.value) {
-                handleSelect(String(activeOption.value.value), e);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-        [
-          CODE.ESC,
-          (e: Event) => {
-            handlePopupVisibleChange(false);
-            e.preventDefault();
-          },
-        ],
-        [
-          CODE.ARROW_DOWN,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              const next = getNextActiveOption('down');
-              if (next) {
-                activeOption.value = next;
-                scrollIntoView(next.value);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-        [
-          CODE.ARROW_UP,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              const next = getNextActiveOption('up');
-              if (next) {
-                activeOption.value = next;
-                scrollIntoView(next.value);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-      ])
-    );
+    const { propOptionInfos, optionInfoMap, validOptionInfos, handleKeyDown } =
+      useSelect({
+        options: data,
+        inputValue: computedValue,
+        filterOption: mergedFilterOption,
+        popupVisible: computedPopupVisible,
+        valueKeys: computedValueKeys,
+        dropdownRef,
+        optionRefs,
+        onSelect: handleSelect,
+        onPopupVisibleChange: handlePopupVisibleChange,
+      });
 
-    const getOptionContentFunc = (item: OptionNode) => {
+    const getOptionContentFunc = (item: OptionInfo) => {
       if (isFunction(slots.option) && item.value) {
-        const optionInfo = optionInfoMap.get(item.value);
+        const optionInfo = optionInfoMap.get(item.key);
         const optionSlot = slots.option;
         return () => optionSlot({ data: optionInfo });
       }
       return () => item.label;
     };
 
-    const renderOption = (item: OptionNode) => {
-      const { value = '' } = item;
-
+    const renderOption = (item: OptionInfo) => {
       return (
-        <DropDownOption
+        <SelectOption
           ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
-              optionRefs.value[value] = ref.$el;
+              optionRefs.value[item.key] = ref.$el;
             }
           }}
           v-slots={{
             default: getOptionContentFunc(item),
           }}
           key={item.key}
-          value={value}
+          value={item.value}
           disabled={item.disabled}
-          isActive={activeOption.value && value === activeOption.value.value}
-          onClick={handleSelect}
-          onMouseenter={handleMouseEnter}
-          onMouseleave={handleMouseLeave}
+          internal
         />
       );
     };
 
     const renderDropdown = () => {
-      const _children = nodes.value.map((node) => renderOption(node));
-
-      if (_children.length === 0) {
-        return null;
-      }
-
       return (
-        <DropdownPanel ref={dropdownRef} class={`${prefixCls}-dropdown`}>
-          {_children}
-        </DropdownPanel>
+        <SelectDropdown ref={dropdownRef} class={`${prefixCls}-dropdown`}>
+          {propOptionInfos.value.map((info) =>
+            renderOption(info as OptionInfo)
+          )}
+        </SelectDropdown>
       );
     };
 

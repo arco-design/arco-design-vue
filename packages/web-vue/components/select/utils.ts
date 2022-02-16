@@ -1,115 +1,150 @@
-import { Slot, Slots, VNode } from 'vue';
-import { isArray, isUndefined } from '../_utils/is';
-import { Option, OptionInfo } from './interface';
-import { TagData } from '../input-tag/interface';
-import {
-  getChildrenString,
-  isArrayChildren,
-  isNamedComponent,
-  isSlotsChildren,
-  resolveProps,
-} from '../_utils/vue-utils';
-import { omit } from '../_utils/omit';
+import { isFunction, isNumber, isObject } from '../_utils/is';
+import type {
+  FilterOption,
+  GroupOption,
+  GroupOptionInfo,
+  Option,
+  OptionData,
+  OptionInfo,
+  OptionValue,
+} from './interface';
 
-export const travelSelectChildren = (children: VNode[]): Option[] => {
-  const options: Option[] = [];
-
-  for (const child of children) {
-    if (!child) continue;
-    if (isNamedComponent(child, 'Optgroup')) {
-      const props = resolveProps(child);
-      let slots: Slots | undefined;
-      let groupOptions: Option[] = [];
-
-      if (isSlotsChildren(child, child.children)) {
-        slots = child.children;
-        if (child.children.default) {
-          groupOptions = travelSelectChildren(child.children.default());
-        }
-      } else if (isArrayChildren(child, child.children)) {
-        groupOptions = travelSelectChildren(child.children);
-      }
-
-      options.push({
-        isGroup: true,
-        label: props.label,
-        options: groupOptions,
-        _props: props,
-        _slots: slots,
-      });
-    } else if (isNamedComponent(child, 'Option')) {
-      const props = resolveProps(child);
-      let slots: Slots | undefined;
-      let childrenString = '';
-      let render: Slot | undefined;
-
-      if (isSlotsChildren(child, child.children)) {
-        slots = child.children;
-        if (child.children.default) {
-          render = child.children.default;
-          childrenString = getChildrenString(child.children.default());
-        }
-      }
-
-      options.push({
-        ...props.extra,
-        value: props.value ?? childrenString,
-        label: props.label ?? childrenString,
-        render,
-        disabled: props.disabled,
-        tagProps: props.tagProps,
-        _props: omit(props, ['tagProps', 'extra']),
-        _slots: slots,
-      });
-    } else if (isArrayChildren(child, child.children)) {
-      options.push(...travelSelectChildren(child.children));
-    } else if (isSlotsChildren(child, child.children)) {
-      const _children = child.children.default?.();
-      if (_children) {
-        options.push(...travelSelectChildren(_children));
-      }
-    } else if (isArray(child)) {
-      options.push(...travelSelectChildren(child));
-    }
-  }
-
-  return options;
+export const isGroupOption = (option: Option): option is GroupOption => {
+  return isObject(option) && 'isGroup' in option;
 };
 
-const getTagData = (
-  value: string | number | undefined,
-  optionInfoMap: Map<string | number, OptionInfo>
-): TagData | undefined => {
-  if (isUndefined(value)) {
-    return undefined;
-  }
-
-  const optionInfo = optionInfoMap.get(value);
-
-  if (!optionInfo) {
-    return undefined;
-  }
-
-  return {
-    ...optionInfo,
-    label: optionInfo.label,
-    closable: !optionInfo.disabled,
-  };
+export const isGroupOptionInfo = (
+  option: Option | GroupOptionInfo
+): option is GroupOptionInfo => {
+  return isObject(option) && 'isGroup' in option;
 };
 
-export const getTagDataFromModelValue = (
-  modelValue: string | number | Array<string | number>,
-  optionInfoMap: Map<string | number, OptionInfo>
+export const getValueString = (value: OptionValue, valueKey = 'value') =>
+  String(isObject(value) ? value[valueKey] : value);
+
+export const getKeyFromValue = (value?: OptionValue, valueKey = 'value') => {
+  if (isObject(value)) {
+    return `option-object-${value[valueKey]}`;
+  }
+  if (value || isNumber(value)) {
+    return `option-${typeof value}-${value}`;
+  }
+  return '';
+};
+
+export const createOptionInfo = (
+  option: string | number | OptionData,
+  {
+    origin,
+    index = -1,
+    valueKey,
+  }: {
+    origin: 'slot' | 'options' | 'extraOptions';
+    index?: number;
+    valueKey?: string;
+  }
+): OptionInfo => {
+  const key = getKeyFromValue(
+    isObject(option) ? option.value : option,
+    valueKey
+  );
+
+  return isObject(option)
+    ? {
+        ...option,
+        index,
+        key,
+        origin,
+        value: option.value,
+        label: option.label ?? getValueString(option.value, valueKey),
+        disabled: Boolean(option.disabled),
+      }
+    : {
+        index,
+        key,
+        origin,
+        value: option,
+        label: String(option),
+        disabled: false,
+      };
+};
+
+export const getOptionInfos = (
+  options: Option[],
+  {
+    valueKey,
+    origin,
+  }: {
+    valueKey?: string;
+    origin: 'options' | 'extraOptions';
+  }
 ) => {
-  if (isArray(modelValue)) {
-    const result = [];
-    for (const item of modelValue) {
-      const valueData = getTagData(item, optionInfoMap);
-      if (valueData) {
-        result.push(valueData);
+  const infos: (OptionInfo | GroupOptionInfo)[] = [];
+
+  for (const item of options) {
+    if (isGroupOption(item)) {
+      const options = getOptionInfos(item.options ?? [], {
+        valueKey,
+        origin,
+      });
+      if (options.length > 0) {
+        infos.push({
+          ...item,
+          key: `group-${item.label}`,
+          options,
+        });
+      }
+    } else {
+      infos.push(
+        createOptionInfo(item, {
+          origin,
+          valueKey,
+        })
+      );
+    }
+  }
+  return infos;
+};
+
+export const createOptionInfoMap = (
+  optionInfos: (OptionInfo | GroupOptionInfo)[]
+) => {
+  const optionInfoMap = new Map<string, OptionInfo>();
+
+  const travel = (optionInfos: (OptionInfo | GroupOptionInfo)[]) => {
+    for (const item of optionInfos) {
+      if (isGroupOptionInfo(item)) {
+        travel(item.options ?? []);
+      } else if (!optionInfoMap.get(item.key)) {
+        optionInfoMap.set(item.key, item);
       }
     }
-    return result;
+  };
+
+  travel(optionInfos);
+
+  return optionInfoMap;
+};
+
+export const isValidOption = (
+  optionInfo: OptionInfo,
+  {
+    inputValue,
+    filterOption,
+  }: {
+    inputValue?: string;
+    filterOption?: FilterOption;
   }
-  return getTagData(modelValue, optionInfoMap);
+) => {
+  if (isFunction(filterOption)) {
+    return !inputValue || filterOption(inputValue, optionInfo);
+  }
+
+  if (filterOption) {
+    return optionInfo.label
+      .toLowerCase()
+      .includes((inputValue ?? '').toLowerCase());
+  }
+
+  return true;
 };

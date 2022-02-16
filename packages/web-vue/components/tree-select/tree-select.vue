@@ -17,7 +17,7 @@
     <slot name="trigger">
       <SelectView
         ref="refSelectView"
-        :model-value="selectedValue"
+        :model-value="selectViewValue"
         :input-value="searchValue"
         :allow-search="allowSearch"
         :allow-clear="allowClear"
@@ -99,7 +99,7 @@ import {
   TreeProps,
   TreeNodeKey,
 } from '../tree/interface';
-import { isArray, isEmptyObject } from '../_utils/is';
+import { isArray, isEmptyObject, isUndefined } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
@@ -467,6 +467,13 @@ export default defineComponent({
         })
       );
 
+    const selectViewValue = computed(() => {
+      if (isUndefined(selectedValue.value)) {
+        return [];
+      }
+      return selectedValue.value;
+    });
+
     const setSelectedKeys = (newVal: string[]) => {
       setLocalSelectedKeys(newVal);
 
@@ -534,6 +541,7 @@ export default defineComponent({
       isEmptyFilterResult,
       computedFilterTreeNode,
       isMultiple,
+      selectViewValue,
       computedDropdownStyle,
       onSearchValueChange(newVal: string) {
         setPanelVisible(true);

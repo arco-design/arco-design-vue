@@ -718,34 +718,20 @@ export default defineComponent({
     );
 
     const selectViewValue = computed(() => {
-      if (props.multiple) {
-        const result = [];
-        for (const key of computedKeys.value) {
-          const option = leafOptionMap.get(key);
-          if (option) {
-            const value = {
-              value: key,
-              label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
-              closable: !option.disabled,
-              tagProps: option.tagProps,
-            };
-            result.push(value);
-          }
+      const result = [];
+      for (const key of computedKeys.value) {
+        const option = leafOptionMap.get(key);
+        if (option) {
+          const value = {
+            value: key,
+            label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
+            closable: !option.disabled,
+            tagProps: option.tagProps,
+          };
+          result.push(value);
         }
-        return result;
       }
-      const option = leafOptionMap.get(computedKeys.value[0]);
-
-      if (!option) {
-        return undefined;
-      }
-
-      return {
-        value: option.key,
-        label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
-        closable: !option?.disabled,
-        tagProps: option.tagProps,
-      };
+      return result;
     });
 
     return {
