@@ -1,31 +1,9 @@
-import { Fragment, VNode } from 'vue';
-import { isNamedComponent, PatchFlags } from '../../_utils/vue-utils';
-import { GridItemProps, GridItemVNode, GridItemData } from '../interface';
-
-export function getGridItemChildren(children: VNode[]) {
-  let ret: GridItemVNode[] = [];
-  let keyedFragmentCount = 0;
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i];
-    if (child.type === Fragment) {
-      if (child.patchFlag & PatchFlags.KEYED_FRAGMENT) keyedFragmentCount++;
-      ret = ret.concat(getGridItemChildren(child.children as VNode[]));
-    } else if (isNamedComponent(child, 'GridItem')) {
-      ret.push(child as any);
-    }
-  }
-  if (keyedFragmentCount > 1) {
-    for (let i = 0; i < ret.length; i++) {
-      ret[i].patchFlag = PatchFlags.BAIL;
-    }
-  }
-  return ret;
-}
+import { GridItemProps, GridItemData } from '../interface';
 
 export function resolveItemData(
   cols: number,
   props: Partial<GridItemProps>
-): GridItemProps {
+): GridItemData {
   const originSpan = props.span ?? 1;
   const originOffset = props.offset ?? 0;
   const offset = Math.min(originOffset, cols);
@@ -44,15 +22,15 @@ export function setItemVisible({
   cols,
   collapsed,
   collapsedRows,
-  itemData,
+  itemDataList,
 }: {
   cols: number;
   collapsed: boolean;
   collapsedRows: number;
-  itemData: GridItemData[];
+  itemDataList: GridItemData[];
 }) {
   let overflow = false;
-  const displayList: number[] = [];
+  let displayIndexList: number[] = [];
 
   function isOverflow(span: number) {
     return Math.ceil(span / cols) > collapsedRows;
@@ -61,17 +39,17 @@ export function setItemVisible({
   if (collapsed) {
     let spanSum = 0;
 
-    for (let i = 0; i < itemData.length; i++) {
-      if (itemData[i].suffix) {
-        spanSum += itemData[i].span;
-        displayList.push(i);
+    for (let i = 0; i < itemDataList.length; i++) {
+      if (itemDataList[i].suffix) {
+        spanSum += itemDataList[i].span;
+        displayIndexList.push(i);
       }
     }
 
     if (!isOverflow(spanSum)) {
       let current = 0;
-      while (current < itemData.length) {
-        const item = itemData[current];
+      while (current < itemDataList.length) {
+        const item = itemDataList[current];
 
         if (!item.suffix) {
           spanSum += item.span;
@@ -80,25 +58,22 @@ export function setItemVisible({
             break;
           }
 
-          displayList.push(current);
+          displayIndexList.push(current);
         }
 
         current++;
       }
     }
 
-    overflow = itemData.some(
-      (item, index) => !item.suffix && !displayList.includes(index)
+    overflow = itemDataList.some(
+      (item, index) => !item.suffix && !displayIndexList.includes(index)
     );
+  } else {
+    displayIndexList = itemDataList.map((_, index) => index);
   }
 
   return {
     overflow,
-    displayItemData: collapsed
-      ? itemData.map((item, index) => ({
-          ...item,
-          visible: displayList.includes(index),
-        }))
-      : itemData,
+    displayIndexList,
   };
 }
