@@ -51,7 +51,12 @@ const getApiTmpl = (
         version && (title += ` (${version})`);
       }
 
-      return `### ${title}\n${content}`;
+      let description = '';
+      if (suffix === 'Props' && tags?.[lang]) {
+        description = (tags[lang][0] as any)?.description;
+      }
+
+      return `### ${title}${description ? `\n${description}` : ''}\n${content}`;
     };
 
     const propsTmpl = getTmpl(
