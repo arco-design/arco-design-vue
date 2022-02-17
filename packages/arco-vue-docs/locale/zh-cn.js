@@ -150,5 +150,6 @@ export default {
     i18n: '国际化',
     mock: '接口和数据模拟',
     build: '打包构建',
+    permission: '权限控制',
   },
 };
