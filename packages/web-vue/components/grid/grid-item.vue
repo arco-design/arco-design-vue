@@ -12,6 +12,8 @@ import {
   inject,
   watchEffect,
   computed,
+  PropType,
+  toRefs,
 } from 'vue';
 import { useIndex } from '../_hooks/use-index';
 import { getPrefixCls } from '../_utils/global-config';
@@ -19,10 +21,14 @@ import {
   GridContextInjectionKey,
   GridDataCollectorInjectionKey,
 } from './context';
+import { useResponsiveState } from './hook/use-responsive-state';
+import { ResponsiveValue } from './interface';
 import { resolveItemData } from './utils';
 
 /**
  * @version 2.15.0
+ * @zh 响应式配置从 `2.18.0` 开始支持，具体配置 [ResponsiveValue](#responsivevalue)
+ * @en Responsive configuration has been supported since `2.18.0`, the specific configuration [ResponsiveValue](#responsivevalue)
  */
 export default defineComponent({
   name: 'GridItem',
@@ -32,7 +38,7 @@ export default defineComponent({
      * @en Number of grids spanned
      */
     span: {
-      type: Number,
+      type: [Number, Object] as PropType<number | ResponsiveValue>,
       default: 1,
     },
     /**
@@ -40,7 +46,7 @@ export default defineComponent({
      * @en Number of grids on the left
      */
     offset: {
-      type: Number,
+      type: [Number, Object] as PropType<number | ResponsiveValue>,
       default: 0,
     },
     /**
@@ -65,7 +71,16 @@ export default defineComponent({
     const visible = computed(() =>
       gridContext?.displayIndexList?.includes(index.value)
     );
-    const itemData = computed(() => resolveItemData(gridContext.cols, props));
+    const { span: propSpan, offset: propOffset } = toRefs(props);
+    const rSpan = useResponsiveState(propSpan, 1);
+    const rOffset = useResponsiveState(propOffset, 0);
+    const itemData = computed(() =>
+      resolveItemData(gridContext.cols, {
+        ...props,
+        span: rSpan.value,
+        offset: rOffset.value,
+      })
+    );
     const prefixCls = getPrefixCls('grid-item');
     const classNames = computed(() => [prefixCls]);
     const offsetStyle = computed(() => {

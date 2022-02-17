@@ -8,39 +8,15 @@
 import {
   computed,
   defineComponent,
-  onMounted,
-  onUnmounted,
   PropType,
   provide,
   reactive,
-  ref,
   toRefs,
 } from 'vue';
-import ResponsiveObserve, {
-  responsiveArray,
-  ScreenMap,
-} from '../_utils/responsive-observe';
 import { getPrefixCls } from '../_utils/global-config';
-import { GridRowGutter } from './interface';
 import { RowContextInjectionKey } from './context';
-
-const getGutter = (gutter: GridRowGutter, screens: ScreenMap) => {
-  let result = 0;
-
-  if (typeof gutter === 'object') {
-    for (let i = 0; i < responsiveArray.length; i++) {
-      const breakpoint = responsiveArray[i];
-      if (screens[breakpoint] && gutter[breakpoint] !== undefined) {
-        result = gutter[breakpoint];
-        break;
-      }
-    }
-  } else {
-    result = gutter;
-  }
-
-  return result;
-};
+import { useResponsiveState } from './hook/use-responsive-state';
+import { ResponsiveValue } from './interface';
 
 export default defineComponent({
   name: 'Row',
@@ -51,9 +27,7 @@ export default defineComponent({
      */
     gutter: {
       type: [Number, Object, Array] as PropType<
-        | number
-        | Partial<Record<'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs', number>>
-        | GridRowGutter[]
+        number | ResponsiveValue | ResponsiveValue[]
       >,
       default: 0,
     },
@@ -115,29 +89,14 @@ export default defineComponent({
         [`${prefixCls}-justify-${justify.value}`]: justify.value,
       };
     });
-    const state = reactive<{ screens: ScreenMap }>({
-      screens: {
-        xs: true,
-        sm: true,
-        md: true,
-        lg: true,
-        xl: true,
-        xxl: true,
-      },
-    });
-
-    const gutterHorizontal = computed(() =>
-      getGutter(
-        Array.isArray(gutter.value) ? gutter.value[0] : gutter.value,
-        state.screens
-      )
+    const propGutterHorizontal = computed(() =>
+      Array.isArray(gutter.value) ? gutter.value[0] : gutter.value
     );
-    const gutterVertical = computed(() =>
-      getGutter(
-        Array.isArray(gutter.value) ? gutter.value[1] : 0,
-        state.screens
-      )
+    const propGutterVertical = computed(() =>
+      Array.isArray(gutter.value) ? gutter.value[1] : 0
     );
+    const gutterHorizontal = useResponsiveState(propGutterHorizontal, 0);
+    const gutterVertical = useResponsiveState(propGutterVertical, 0);
     const styles = computed(() => {
       const result: {
         marginTop?: string;
@@ -159,26 +118,6 @@ export default defineComponent({
       }
 
       return result;
-    });
-
-    const responsiveObserveToken = ref<string>('');
-
-    onMounted(() => {
-      responsiveObserveToken.value = ResponsiveObserve.subscribe((screens) => {
-        // 是否是响应式的 Gutter
-        if (
-          (!Array.isArray(gutter.value) && typeof gutter.value === 'object') ||
-          (Array.isArray(gutter.value) &&
-            (typeof gutter.value[0] === 'object' ||
-              typeof gutter.value[1] === 'object'))
-        ) {
-          state.screens = screens;
-        }
-      });
-    });
-
-    onUnmounted(() => {
-      ResponsiveObserve.unsubscribe(responsiveObserveToken.value);
     });
 
     const resultGutter = computed<[number, number]>(() => [

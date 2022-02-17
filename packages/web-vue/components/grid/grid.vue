@@ -11,17 +11,21 @@ import {
   provide,
   reactive,
   watchEffect,
+  PropType,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import {
   GridContextInjectionKey,
   GridDataCollectorInjectionKey,
 } from './context';
-import { GridItemData, GridProps } from './interface';
+import { useResponsiveState } from './hook/use-responsive-state';
+import { GridItemData, GridProps, ResponsiveValue } from './interface';
 import { setItemVisible } from './utils';
 
 /**
  * @version 2.15.0
+ * @zh 响应式配置从 `2.18.0` 开始支持，具体配置 [ResponsiveValue](#responsivevalue)
+ * @en Responsive configuration has been supported since `2.18.0`, the specific configuration [ResponsiveValue](#responsivevalue)
  */
 export default defineComponent({
   name: 'Grid',
@@ -31,7 +35,7 @@ export default defineComponent({
      * @en Number of columns displayed in each row
      */
     cols: {
-      type: Number,
+      type: [Number, Object] as PropType<number | ResponsiveValue>,
       default: 24,
     },
     /**
@@ -39,7 +43,7 @@ export default defineComponent({
      * @en The space in row-to-row
      */
     rowGap: {
-      type: Number,
+      type: [Number, Object] as PropType<number | ResponsiveValue>,
       default: 0,
     },
     /**
@@ -47,7 +51,7 @@ export default defineComponent({
      * @en The space in column-to-column
      */
     colGap: {
-      type: Number,
+      type: [Number, Object] as PropType<number | ResponsiveValue>,
       default: 0,
     },
     /**
@@ -68,7 +72,16 @@ export default defineComponent({
     },
   },
   setup(props: GridProps) {
-    const { cols, colGap, rowGap, collapsedRows, collapsed } = toRefs(props);
+    const {
+      cols: propCols,
+      rowGap: propRowGap,
+      colGap: propColGap,
+      collapsedRows,
+      collapsed,
+    } = toRefs(props);
+    const cols = useResponsiveState(propCols, 24);
+    const colGap = useResponsiveState(propColGap, 0);
+    const rowGap = useResponsiveState(propRowGap, 0);
     const prefixCls = getPrefixCls('grid');
     const classNames = computed(() => [prefixCls]);
     const style = computed(() => [
