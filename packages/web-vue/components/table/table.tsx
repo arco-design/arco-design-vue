@@ -1639,10 +1639,12 @@ export default defineComponent({
         <div class={cls.value}>
           <Spin {...spinProps.value}>
             {props.pagination !== false &&
+              flattenData.value.length > 0 &&
               isPaginationTop.value &&
               renderPagination()}
             {renderTable()}
             {props.pagination !== false &&
+              flattenData.value.length > 0 &&
               !isPaginationTop.value &&
               renderPagination()}
           </Spin>
