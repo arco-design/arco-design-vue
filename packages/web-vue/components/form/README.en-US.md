@@ -91,7 +91,7 @@ description: A form with data collection, verification and submission functions,
 |row-class|The class of the form item layout component|`string\|array\|object`|`-`|2.10.0|
 |content-class|The class of the form control wrapping layer|`string\|array\|object`|`-`|2.10.0|
 |content-flex|Whether to enable flex layout in the content layer|`boolean`|`true`|2.13.0|
-|merge-props|Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem|`boolean \| ((props: Record<string, any>) => Record<string, any>)`|`true`|2.13.0|
+|merge-props|(Repealed) Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem. Version 2.18.0 deprecated|`boolean \| ((props: Record<string, any>) => Record<string, any>)`|`true`|2.13.0|
 |label-col-flex|Set the flex property of the label `Col` component. When set, the flex property of the form `Col` component will be set to `auto`.|`number\|string`|`-`|2.13.0|
 |feedback|Whether to show the feedback icon for the form control|`boolean`|`false`|2.16.0|
 ### `<form-item>` Slots

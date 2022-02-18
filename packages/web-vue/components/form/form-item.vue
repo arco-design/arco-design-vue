@@ -250,8 +250,8 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 控制传递到子元素上的 Props。默认包括 disabled、error、size、 events 和 FormItem 上的额外属性
-     * @en Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem
+     * @zh （已废除）控制传递到子元素上的 Props。默认包括 disabled、error、size、 events 和 FormItem 上的额外属性。2.18.0 版本废除
+     * @en (Repealed) Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem. Version 2.18.0 deprecated
      * @version 2.13.0
      */
     mergeProps: {

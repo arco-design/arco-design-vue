@@ -70,6 +70,7 @@ description: When users need to select one or more from a group of similar data,
 |format-label|Format display content|`(data: OptionInfo) => string`|`-`||
 |fallback-option|Options that do not exist in custom values|`boolean\| ((value: string \| number \| Record<string, unknown>) => OptionData)`|`false`|2.10.0|
 |show-extra-options|Options that do not exist in custom values|`boolean`|`true`|2.10.0|
+|value-key|Used to determine the option key value attribute name|`string`|`'value'`|2.18.0|
 ### `<select>` Events
 
 |Event Name|Description|Parameters|

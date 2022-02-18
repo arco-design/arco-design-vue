@@ -68,7 +68,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |format-label|格式化显示内容|`(data: OptionInfo) => string`|`-`||
 |fallback-option|自定义值中不存在的选项|`boolean\| ((value: string \| number \| Record<string, unknown>) => OptionData)`|`false`|2.10.0|
 |show-extra-options|是否在下拉菜单中显示额外选项|`boolean`|`true`|2.10.0|
-|value-key|属性名|`string`|`'value'`||
+|value-key|用于确定选项键值得属性名|`string`|`'value'`|2.18.0|
 ### `<select>` Events
 
 |事件名|描述|参数|
