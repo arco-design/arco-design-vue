@@ -46,6 +46,7 @@ export default {
             {
               value: 'haidian',
               label: 'Haidian',
+              disabled: true
             },
             {
               value: 'dongcheng',

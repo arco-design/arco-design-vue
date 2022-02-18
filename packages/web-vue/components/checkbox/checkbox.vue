@@ -102,7 +102,9 @@ export default defineComponent({
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
-        EmitType<(value: boolean | Array<string | number | boolean>) => void>
+        EmitType<
+          (value: boolean | Array<string | number | boolean>, ev: Event) => void
+        >
       >,
     },
   },
@@ -226,6 +228,7 @@ export default defineComponent({
       mergedDisabled,
       computedValue,
       computedChecked,
+      handleChange,
       handleFocus,
       handleBlur,
     };
