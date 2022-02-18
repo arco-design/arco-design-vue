@@ -52,6 +52,7 @@ export default {
       meta: {
         locale: 'menu.dashboard.workplace', // 二级菜单名（语言包键名）
         requiresAuth: true, // 是否需要鉴权
+        roles: ['admin'], // 权限角色
       },
     },
   ],
@@ -67,39 +68,105 @@ export default {
  ```ts
 // components/menu/index.vue
 import { defineComponent } from 'vue';
-import {
-  useRouter
-} from 'vue-router';
+import { useRouter } from 'vue-router';
 export default defineComponent({
   setup() {
     const router = useRouter();
-    const appRoute = router.getRoutes().find((el) => el.path === '/app');
-    return {
-      appRoute,
-    };
+    const appRoute = computed(() => {
+      return router
+        .getRoutes()
+        .find((el) => el.name === 'root') as RouteRecordNormalized;
+    });
+    ......
   },
 });
 ```
 
-- 通过获取的路由树，生成菜单。
+- 使用上一步获取的业务路由树进行权限过滤，生成用于渲染的菜单树。
 
-PS: 如果需要自动生成深层菜单，可以通过配置后的路由树，使用jsx或者render函数进行生成。
+```tsx
+const menuTree = computed(() => {
+  const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children));
+  function travel(_routes: RouteRecordRaw[], layer: number) {
+    if (!_routes) return null;
+    const collector: any = _routes.map((element) => {
+      // no access
+      if (!permission.accessRouter(element)) {
+        return null;
+      }
 
-```vue
-  <a-menu>
-    <a-sub-menu v-for="route in appRoute.children" :key="route.name">
-      <template #title>
-        <component :is="route.meta.icon" />
-        {{ $t(route.meta.locale) }}
-      </template>
-      <a-menu-item
-        v-for="_route in route.children"
-        :key="_route.name"
-      >
-        {{ $t(_route.meta.locale) }}
-      </a-menu-item>
-    </a-sub-menu>
+      // leaf node
+      if (!element.children) {
+        return element;
+      }
+
+      // Associated child node
+      const subItem = travel(element.children, layer);
+      if (subItem.length) {
+        element.children = subItem;
+        return element;
+      }
+      // the else logic
+      if (layer > 1) {
+        element.children = subItem;
+        return element;
+      }
+      return null;
+    });
+    return collector.filter(Boolean);
+  }
+  return travel(copyRouter, 0);
+});
+```
+
+- 通过渲染菜单树，递归生成菜单。(本例子使用jsx语法)
+
+```tsx
+const renderSubMenu = () => {
+  function travel(_route: RouteRecordRaw[], nodes = []) {
+    if (_route) {
+      _route.forEach((element) => {
+        // This is demo, modify nodes as needed
+        const icon = element?.meta?.icon ? `<${element?.meta?.icon}/>` : ``;
+        const subMenuItem = (
+          <a-sub-menu
+            key={element?.name}
+            v-slots={{
+              icon: () => h(compile(icon)),
+              title: () => h(compile(t(element?.meta?.locale || ''))),
+            }}
+          >
+            {element?.children?.map((elem) => {
+              return (
+                <a-menu-item key={elem.name} onClick={() => goto(elem)}>
+                  {t(elem?.meta?.locale || '')}
+                  {travel(elem.children ?? [])}
+                </a-menu-item>
+              );
+            })}
+          </a-sub-menu>
+        );
+        nodes.push(subMenuItem as never);
+      });
+    }
+    return nodes;
+  }
+  return travel(menuTree.value); // 递归menuTree
+};
+return () => (
+  <a-menu
+    v-model:collapsed={collapsed.value}
+    show-collapse-button
+    auto-open={false}
+    selected-keys={selectedKey.value}
+    auto-open-selected={true}
+    level-indent={34}
+    style="height: 100%"
+    onCollapse={setCollapse}
+  >
+    {renderSubMenu()}
   </a-menu>
+);
 ```
 
 ## 新增一个菜单项的步骤
@@ -109,11 +176,6 @@ PS: 如果需要自动生成深层菜单，可以通过配置后的路由树，�
 - 在 views/dashboard 中新增一个 monitor 文件夹，并在其中新增 index.vue
 
  ```ts
-// 模板template
-// <template>
-//  <div>监控页</div>
-// </template>
-
 import { defineComponent } from 'vue';
 export default defineComponent({})
 ```
@@ -147,6 +209,7 @@ export default {
 +     meta: {
 +       locale: 'menu.dashboard.monitor',
 +       requiresAuth: true,
++       roles: ['admin'],
 +     },
 +   },
   ],

@@ -150,5 +150,6 @@ export default {
     i18n: 'Internationalization',
     mock: 'Interface and Mock',
     build: 'Build',
+    permission: 'Permission Control',
   },
 };
