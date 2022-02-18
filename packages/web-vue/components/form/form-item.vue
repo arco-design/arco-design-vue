@@ -1,3 +1,65 @@
+<template>
+  <slot v-if="noStyle" />
+  <ArcoRow
+    v-else
+    :class="[
+      cls,
+      {
+        [`${prefixCls}-has-help`]: Boolean($slots.help ?? help),
+      },
+    ]"
+    :wrap="!(labelColFlex || formCtx.autoLabelWidth)"
+    :div="formCtx.layout !== 'horizontal' || hideLabel"
+    v-bind="rowProps"
+  >
+    <ArcoCol
+      v-if="!hideLabel"
+      :class="labelColCls"
+      :style="mergedLabelStyle"
+      v-bind="mergedLabelCol"
+    >
+      <FormItemLabel
+        :required="hideAsterisk ? false : isRequired"
+        :show-colon="showColon"
+      >
+        <slot name="label">{{ label }}</slot>
+      </FormItemLabel>
+    </ArcoCol>
+    <ArcoCol
+      :class="wrapperColCls"
+      :style="mergedWrapperStyle"
+      v-bind="mergedWrapperCol"
+    >
+      <div :class="`${prefixCls}-content-wrapper`">
+        <div
+          :class="[
+            `${prefixCls}-content`,
+            {
+              [`${prefixCls}-content-flex`]: contentFlex,
+            },
+            contentClass,
+          ]"
+        >
+          <slot />
+        </div>
+      </div>
+      <FormItemMessage
+        v-if="isError || $slots.help || help"
+        :error="finalMessage"
+        :help="help"
+      >
+        <template v-if="$slots.help" #help>
+          <slot name="help" />
+        </template>
+      </FormItemMessage>
+      <div v-if="$slots.extra || extra" :class="`${prefixCls}-extra`">
+        <slot name="extra">{{ extra }}</slot>
+      </div>
+    </ArcoCol>
+  </ArcoRow>
+</template>
+
+<script lang="ts">
 import {
   computed,
   defineComponent,
@@ -9,16 +71,22 @@ import {
   provide,
   reactive,
   ref,
+  toRef,
   toRefs,
 } from 'vue';
 // @ts-ignore
 import { Schema } from 'b-validate';
-import { FormItemInfo, formItemKey, formKey } from './context';
+import {
+  formInjectionKey,
+  FormItemInfo,
+  formItemInjectionKey,
+} from './context';
 import {
   FieldData,
   FieldRule,
   ValidateStatus,
   ValidateTrigger,
+  FormItemEventHandler,
 } from './interface';
 import { Row as ArcoRow, Col as ArcoCol } from '../grid';
 import FormItemLabel from './form-item-label.vue';
@@ -26,9 +94,7 @@ import FormItemMessage from './form-item-message.vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { getValueByPath } from '../_utils/get-value-by-path';
 import { Data } from '../_utils/types';
-import { mergeFirstChild } from '../_utils/vue-utils';
 import { getFinalValidateMessage, getFinalValidateStatus } from './utils';
-import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'FormItem',
@@ -38,7 +104,6 @@ export default defineComponent({
     FormItemLabel,
     FormItemMessage,
   },
-  inheritAttrs: false,
   props: {
     /**
      * @zh 表单元素在数据对象中的path（数据项必填）
@@ -228,10 +293,10 @@ export default defineComponent({
    * @en Extra content
    * @slot extra
    */
-  setup(props, { slots, attrs }) {
+  setup(props) {
     const prefixCls = getPrefixCls('form-item');
     const { field } = toRefs(props);
-    const formCtx = inject(formKey, undefined);
+    const formCtx = inject(formInjectionKey, undefined);
 
     const mergedLabelCol = computed(() => {
       const colProps = { ...(props.labelColProps ?? formCtx?.labelColProps) };
@@ -300,7 +365,7 @@ export default defineComponent({
     );
 
     const formItemCtx = props.noStyle
-      ? inject(formItemKey, undefined)
+      ? inject(formItemInjectionKey, undefined)
       : undefined;
 
     const updateValidateState = (
@@ -315,11 +380,10 @@ export default defineComponent({
       }
     };
 
-    provide(
-      formItemKey,
-      reactive({
-        updateValidateState,
-      })
+    const computedFeedback = computed(() =>
+      props.feedback && computedValidateStatus.value
+        ? computedValidateStatus.value
+        : undefined
     );
 
     const validateField = (): Promise<any> => {
@@ -381,7 +445,7 @@ export default defineComponent({
       ([] as ValidateTrigger[]).concat(props.validateTrigger)
     );
 
-    const event = computed(() =>
+    const eventHandlers = computed(() =>
       validateTriggers.value.reduce((event, trigger) => {
         switch (trigger) {
           case 'change':
@@ -409,7 +473,19 @@ export default defineComponent({
           default:
             return event;
         }
-      }, {} as Record<string, () => void>)
+      }, {} as FormItemEventHandler)
+    );
+
+    provide(
+      formItemInjectionKey,
+      reactive({
+        eventHandlers,
+        size: formCtx && toRef(formCtx, 'size'),
+        disabled: computedDisabled,
+        error: isError,
+        feedback: computedFeedback,
+        updateValidateState,
+      })
     );
 
     const clearValidate = () => {
@@ -483,7 +559,6 @@ export default defineComponent({
         [`${prefixCls}-status-${computedValidateStatus.value}`]: Boolean(
           computedValidateStatus.value
         ),
-        // [`${prefixCls}-has-feedback`]: itemStatus && props.hasFeedback,
       },
       props.rowClass,
     ]);
@@ -504,92 +579,20 @@ export default defineComponent({
       },
     ]);
 
-    return () => {
-      const children = slots.default?.() ?? [];
-
-      if (props.mergeProps) {
-        mergeFirstChild(children, (vn) => {
-          const extraProps = {
-            ...attrs,
-            disabled: vn.props?.disabled ?? computedDisabled.value,
-            error: vn.props?.error ?? isError.value,
-            size: vn.props?.size ?? formCtx?.size,
-            feedback:
-              vn.props?.feedback ??
-              (props.feedback && computedValidateStatus.value)
-                ? computedValidateStatus.value
-                : undefined,
-            ...event.value,
-          };
-          return isFunction(props.mergeProps)
-            ? props.mergeProps(extraProps)
-            : extraProps;
-        });
-      }
-
-      if (props.noStyle) {
-        return children;
-      }
-
-      return (
-        <ArcoRow
-          class={[
-            ...cls.value,
-            {
-              [`${prefixCls}-has-help`]: Boolean(slots.help ?? props.help),
-            },
-          ]}
-          wrap={!(props.labelColFlex || formCtx?.autoLabelWidth)}
-          div={formCtx?.layout !== 'horizontal' || props.hideLabel}
-          {...props.rowProps}
-        >
-          {!props.hideLabel && (
-            <ArcoCol
-              class={labelColCls.value}
-              style={mergedLabelStyle.value}
-              {...mergedLabelCol.value}
-            >
-              <FormItemLabel
-                required={props.hideAsterisk ? false : isRequired.value}
-                showColon={props.showColon}
-              >
-                {slots.label?.() ?? props.label}
-              </FormItemLabel>
-            </ArcoCol>
-          )}
-          <ArcoCol
-            class={wrapperColCls.value}
-            style={mergedWrapperStyle.value}
-            {...mergedWrapperCol.value}
-          >
-            <div class={`${prefixCls}-content-wrapper`}>
-              <div
-                class={[
-                  `${prefixCls}-content`,
-                  {
-                    [`${prefixCls}-content-flex`]: props.contentFlex,
-                  },
-                  props.contentClass,
-                ]}
-              >
-                {children}
-              </div>
-            </div>
-            {(isError.value || props.help || slots.help) && (
-              <FormItemMessage
-                v-slots={{ help: slots.help }}
-                error={finalMessage.value}
-                help={props.help}
-              />
-            )}
-            {(props.extra || slots.extra) && (
-              <div class={`${prefixCls}-extra`}>
-                {slots.extra?.() ?? props.extra}
-              </div>
-            )}
-          </ArcoCol>
-        </ArcoRow>
-      );
+    return {
+      prefixCls,
+      cls,
+      formCtx,
+      isRequired,
+      isError,
+      finalMessage,
+      mergedLabelCol,
+      mergedWrapperCol,
+      labelColCls,
+      mergedLabelStyle,
+      wrapperColCls,
+      mergedWrapperStyle,
     };
   },
 });
+</script>

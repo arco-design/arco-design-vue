@@ -30,7 +30,7 @@ import {
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import ResizeObserver from '../_components/resize-observer';
-import { formKey } from './context';
+import { formInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
 
 export default defineComponent({
@@ -50,7 +50,7 @@ export default defineComponent({
   },
   setup() {
     const prefixCls = getPrefixCls('form-item-label');
-    const formCtx = inject(formKey, undefined);
+    const formCtx = inject(formInjectionKey, undefined);
     const instance = getCurrentInstance();
     const labelRef = ref<HTMLElement>();
 

@@ -1,31 +1,51 @@
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType, toRefs } from 'vue';
 import { omit } from '../../_utils/omit';
-import { INPUT_EVENTS } from '../../_utils/constant';
+import { INPUT_EVENTS, Size } from '../../_utils/constant';
 import pick from '../../_utils/pick';
 import { getPrefixCls } from '../../_utils/global-config';
 import { useInput } from '../../_hooks/use-input';
 import { TagData } from '../../input-tag/interface';
+import { useFormItem } from '../../_hooks/use-form-item';
+import { useSize } from '../../_hooks/use-size';
 
 export default defineComponent({
   name: 'InputLabel',
   inheritAttrs: false,
   props: {
     modelValue: Object as PropType<TagData>,
-    inputValue: String,
+    inputValue: {
+      type: String,
+      default: '',
+    },
     enabledInput: Boolean,
     formatLabel: Function,
     placeholder: String,
     retainInputValue: Boolean,
     disabled: Boolean,
     baseCls: String,
-    size: String,
+    size: String as PropType<Size>,
     error: Boolean,
     // used for outer focused
     focused: Boolean,
+    uninjectFormItemContext: Boolean,
   },
   emits: ['update:inputValue', 'inputValueChange', 'focus', 'blur'],
   setup(props, { attrs, emit, slots }) {
+    const { size, disabled, error, inputValue, uninjectFormItemContext } =
+      toRefs(props);
     const prefixCls = props.baseCls ?? getPrefixCls('input-label');
+    const {
+      mergedSize: _mergedSize,
+      mergedDisabled,
+      mergedError,
+      eventHandlers,
+    } = useFormItem({
+      size,
+      disabled,
+      error,
+      uninject: uninjectFormItemContext?.value,
+    });
+    const { mergedSize } = useSize(_mergedSize);
 
     const {
       inputRef,
@@ -36,9 +56,12 @@ export default defineComponent({
       handleFocus,
       handleBlur,
       handleMousedown,
-    } = useInput(props, {
+    } = useInput({
+      modelValue: inputValue,
       emit,
-      isInputValue: true,
+      eventName: 'inputValueChange',
+      updateEventName: 'update:inputValue',
+      eventHandlers,
     });
 
     const mergedFocused = computed(() => props.focused ?? _focused.value);
@@ -57,12 +80,12 @@ export default defineComponent({
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-search`]: props.enabledInput,
         [`${prefixCls}-focus`]: mergedFocused.value,
-        [`${prefixCls}-disabled`]: props.disabled,
-        [`${prefixCls}-error`]: props.error,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
+        [`${prefixCls}-error`]: mergedError.value,
       },
     ]);
 
@@ -90,7 +113,7 @@ export default defineComponent({
           value={computedInputValue.value}
           readonly={!props.enabledInput}
           placeholder={mergedPlaceholder.value}
-          disabled={props.disabled}
+          disabled={mergedDisabled.value}
           onInput={handleInput}
           onFocus={handleFocus}
           onBlur={handleBlur}

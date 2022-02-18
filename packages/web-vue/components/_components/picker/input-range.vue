@@ -57,6 +57,8 @@ import {
 } from '../../_utils/is';
 import IconClose from '../../icon/icon-close';
 import IconHover from '../icon-hover.vue';
+import { useFormItem } from '../../_hooks/use-form-item';
+import { useSize } from '../../_hooks/use-size';
 
 export default defineComponent({
   name: 'DateInputRange',
@@ -122,11 +124,22 @@ export default defineComponent({
       focusedIndex,
       inputValue,
     } = toRefs(props);
+    const {
+      mergedSize: _mergedSize,
+      mergedDisabled,
+      mergedError,
+      feedback,
+      eventHandlers,
+    } = useFormItem({ size, error });
+    const { mergedSize } = useSize(_mergedSize);
 
     const refInput0 = ref<HTMLInputElement>();
     const refInput1 = ref<HTMLInputElement>();
 
     const getDisabled = (index: number): boolean => {
+      if (mergedDisabled.value) {
+        return mergedDisabled.value;
+      }
       return isArray(disabled.value) ? disabled.value[index] : disabled.value;
     };
     const disabled0 = computed(() => getDisabled(0));
@@ -137,11 +150,11 @@ export default defineComponent({
     const classNames = computed(() => [
       prefixCls,
       `${prefixCls}-range`,
-      `${prefixCls}-size-${size.value}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-focused`]: focused.value,
         [`${prefixCls}-disabled`]: disabled0.value && disabled1.value,
-        [`${prefixCls}-error`]: error.value,
+        [`${prefixCls}-error`]: mergedError.value,
       },
     ]);
 
@@ -178,6 +191,7 @@ export default defineComponent({
     function onChange(e: Event) {
       e.stopPropagation();
       emit('change', e);
+      eventHandlers.value?.onChange?.(e);
     }
 
     function onPressEnter() {

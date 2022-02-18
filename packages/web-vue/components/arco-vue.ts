@@ -90,6 +90,8 @@ import Typography, {
 } from './typography';
 import Upload from './upload';
 
+import { useFormItem } from './_hooks/use-form-item';
+
 const components: Record<string, Plugin> = {
   Button,
   Link,
@@ -227,6 +229,7 @@ const ArcoVue = {
   addI18nMessages,
   useLocale,
   getLocale,
+  useFormItem,
 };
 
 export default ArcoVue;

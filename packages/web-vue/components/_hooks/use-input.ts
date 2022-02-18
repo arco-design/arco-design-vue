@@ -1,15 +1,26 @@
-import { computed, ref, watch } from 'vue';
+import { computed, Ref, ref, watch } from 'vue';
 import { Enter } from '../_utils/keycode';
+import { EmitFn } from '../_utils/types';
+import { FormItemEventHandler } from '../form/interface';
 
-export const useInput = (props: any, { emit, isInputValue = false }) => {
-  const propName = isInputValue ? 'inputValue' : 'modelValue';
-  const eventName = isInputValue ? 'inputValueChange' : 'input';
-
+export const useInput = ({
+  defaultValue,
+  modelValue,
+  emit,
+  eventName = 'input',
+  updateEventName = 'update:modelValue',
+  eventHandlers,
+}: {
+  defaultValue?: Ref<string>;
+  modelValue?: Ref<string>;
+  emit: EmitFn<any>;
+  eventName?: string;
+  updateEventName?: string;
+  eventHandlers?: Ref<FormItemEventHandler>;
+}) => {
   const inputRef = ref<HTMLInputElement>();
 
-  const _value = ref(
-    props[isInputValue ? 'defaultInputValue' : 'defaultValue']
-  );
+  const _value = ref(defaultValue?.value ?? '');
   const _focused = ref(false);
 
   const isComposition = ref(false);
@@ -17,24 +28,24 @@ export const useInput = (props: any, { emit, isInputValue = false }) => {
 
   let initialValue: string;
 
-  const computedValue = computed<string>(() => props[propName] ?? _value.value);
+  const computedValue = computed(() => modelValue?.value ?? _value.value);
 
-  const updateValue = (value: string) => {
+  const updateValue = (value: string, ev: Event) => {
     _value.value = value;
-    emit(`update:${propName}`, value);
+    emit(updateEventName, value);
+    emit(eventName, value, ev);
   };
 
   const handleInput = (ev: Event) => {
     const { value } = ev.target as HTMLInputElement;
 
     if (!isComposition.value) {
-      emit(eventName, value, ev);
-      updateValue(value);
+      updateValue(value, ev);
     }
   };
 
   const handleChange = (ev: Event) => {
-    if (!isInputValue && computedValue.value !== initialValue) {
+    if (computedValue.value !== initialValue) {
       initialValue = computedValue.value;
       emit('change', computedValue.value, ev);
     }
@@ -46,8 +57,7 @@ export const useInput = (props: any, { emit, isInputValue = false }) => {
     if (ev.type === 'compositionend') {
       isComposition.value = false;
       compositionValue.value = '';
-      emit(eventName, value, ev);
-      updateValue(value);
+      updateValue(value, ev);
     } else {
       isComposition.value = true;
       compositionValue.value = computedValue.value + (ev.data ?? '');
@@ -58,12 +68,14 @@ export const useInput = (props: any, { emit, isInputValue = false }) => {
     _focused.value = true;
     initialValue = computedValue.value;
     emit('focus', ev);
+    eventHandlers?.value?.onFocus?.(ev);
   };
 
   const handleBlur = (ev: FocusEvent) => {
     _focused.value = false;
-    handleChange(ev);
     emit('blur', ev);
+    eventHandlers?.value?.onBlur?.(ev);
+    handleChange(ev);
   };
 
   const handleKeyDown = (ev: KeyboardEvent) => {

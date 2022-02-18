@@ -55,7 +55,6 @@ import { Dayjs } from 'dayjs';
 import {
   computed,
   defineComponent,
-  inject,
   nextTick,
   PropType,
   reactive,
@@ -100,8 +99,8 @@ import useMergeState from '../_hooks/use-merge-state';
 import IconCalendar from '../icon/icon-calendar';
 import useProvideDatePickerTransform from './hooks/use-provide-datepicker-transform';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { getReturnRangeValue } from './hooks/use-value-format';
+import { Size } from '../_utils/constant';
 
 export default defineComponent({
   name: 'RangePicker',
@@ -249,9 +248,7 @@ export default defineComponent({
       type: Boolean,
     },
     size: {
-      type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
+      type: String as PropType<Size>,
     },
     shortcuts: {
       type: Array as PropType<ShortcutType[]>,
