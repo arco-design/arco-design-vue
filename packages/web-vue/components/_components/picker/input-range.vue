@@ -69,7 +69,6 @@ export default defineComponent({
   props: {
     size: {
       type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      required: true,
     },
     focused: {
       type: Boolean,

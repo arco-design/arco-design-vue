@@ -191,7 +191,8 @@ export default defineComponent({
       _popupVisible.value = popupVisible;
     };
 
-    const handleSelect = (value: string, e: Event) => {
+    const handleSelect = (key: string, e: Event) => {
+      const { value } = optionInfoMap.get(key) ?? {};
       const measureStart = measureInfo.value.location;
       const measureEnd =
         measureInfo.value.location + measureInfo.value.text.length;

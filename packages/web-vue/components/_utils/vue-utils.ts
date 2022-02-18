@@ -405,7 +405,7 @@ export const getFirstElement = (vn: VNode | VNode[]): HTMLElement | null => {
       const result = getFirstElement(child);
       if (result) return result;
     }
-  } else if (isComponent(vn)) {
+  } else if (isComponent(vn) && (vn.el as Node)?.nodeType === 1) {
     return vn.el as HTMLElement;
   } else if (isArrayChildren(vn, vn.children)) {
     for (const child of vn.children) {
