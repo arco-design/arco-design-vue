@@ -30,7 +30,7 @@ import {
   getElementScrollRect,
   getScrollElements,
 } from './utils';
-import ResizeObserver from '../_components/resize-observer';
+import ResizeObserver from '../_components/resize-observer.vue';
 import { getElement, off, on } from '../_utils/dom';
 import {
   isEmptyChildren,
@@ -708,10 +708,14 @@ export default defineComponent({
             to={props.popupContainer ?? 'body'}
             disabled={!props.renderToBody}
           >
-            <Transition name={props.animationName} duration={props.duration}>
-              {(!props.unmountOnClose || computedVisible.value) &&
-                !hidePopup.value && (
-                  <ResizeObserver onResize={handleResize}>
+            {(!props.unmountOnClose || computedVisible.value) &&
+              !hidePopup.value && (
+                <ResizeObserver onResize={handleResize}>
+                  <Transition
+                    name={props.animationName}
+                    duration={props.duration}
+                    appear
+                  >
                     <div
                       v-show={computedVisible.value}
                       ref={popupRef}
@@ -740,9 +744,9 @@ export default defineComponent({
                         />
                       )}
                     </div>
-                  </ResizeObserver>
-                )}
-            </Transition>
+                  </Transition>
+                </ResizeObserver>
+              )}
           </Teleport>
         </>
       );
