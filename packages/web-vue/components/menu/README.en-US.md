@@ -14,6 +14,8 @@ description: Organize, arrange, and display a list of options.
 
 @import ./__demo__/collapse-control.md
 
+@import ./__demo__/breakpoint.md
+
 @import ./__demo__/sub-menu.md
 
 @import ./__demo__/size.md
@@ -45,11 +47,12 @@ description: Organize, arrange, and display a list of options.
 |trigger-props|Accept all `Props` of `Trigger` in pop-up mode|`object`|`-`||
 |tooltip-props|Accept all `Props` of `ToolTip` in pop-up mode|`object`|`-`||
 |auto-open-selected|Expand the selected menus by default|`boolean`|`false`|2.8.0|
+|breakpoint|Responsive breakpoints, see [Responsive Grid](/vue/component/grid) for details|`'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs'`|`-`|2.18.0|
 ### `<menu>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|collapse|Triggered when the collapsed state changes|collapsed: `boolean`|
+|collapse|Triggered when the collapsed state changes|collapsed: `boolean`<br>type: `'clickTrigger'\|'responsive'`|
 |menu-item-click|Triggered when the menu item is clicked|key: `string`|
 |sub-menu-click|Triggered when the submenu is clicked|key: `string`<br>openKeys: `string[]`|
 ### `<menu>` Slots

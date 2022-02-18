@@ -24,7 +24,6 @@ import {
   provide,
   reactive,
   toRefs,
-  watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconMenuFold from '../icon/icon-menu-fold';
@@ -37,6 +36,7 @@ import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
 import useMenuDataCollector from './hooks/use-menu-data-collector';
 import useMenuOpenState from './hooks/use-menu-open-state';
+import { useResponsive } from '../_hooks/use-responsive';
 
 /**
  * @displayName Menu
@@ -187,6 +187,14 @@ export default defineComponent({
     autoOpenSelected: {
       type: Boolean,
     },
+    /**
+     * @zh 响应式的断点, 详见[响应式栅格](/vue/component/grid)
+     * @en Responsive breakpoints, see [Responsive Grid](/vue/component/grid) for details
+     * @version 2.18.0
+     */
+    breakpoint: {
+      type: String as PropType<'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'>,
+    },
     // internal
     prefixCls: {
       type: String,
@@ -209,6 +217,7 @@ export default defineComponent({
      * @zh 折叠状态改变时触发
      * @en Triggered when the collapsed state changes
      * @param {boolean} collapsed
+     * @param {'clickTrigger'|'responsive'} type
      */
     'collapse',
     /**
@@ -263,6 +272,7 @@ export default defineComponent({
       triggerProps,
       tooltipProps,
       autoOpenSelected,
+      breakpoint,
       // internal
       inTrigger,
       siderCollapsed,
@@ -309,12 +319,21 @@ export default defineComponent({
         !inTrigger.value &&
         showCollapseButton.value
     );
-    const onCollapseBtnClick = () => {
-      const nextCollapsed = !collapsed.value;
-      setCollapsed(nextCollapsed);
-      emit('update:collapsed', nextCollapsed);
-      emit('collapse', nextCollapsed);
+    const changeCollapsed = (
+      newVal: boolean,
+      type: 'clickTrigger' | 'responsive'
+    ) => {
+      if (newVal === collapsed.value) return;
+      setCollapsed(newVal);
+      emit('update:collapsed', newVal);
+      emit('collapse', newVal, type);
     };
+    const onCollapseBtnClick = () => {
+      changeCollapsed(!collapsed.value, 'clickTrigger');
+    };
+    useResponsive(breakpoint, (checked) => {
+      changeCollapsed(!checked, 'responsive');
+    });
 
     const computedPrefixCls = computed(
       () => prefixCls?.value || getPrefixCls('menu')

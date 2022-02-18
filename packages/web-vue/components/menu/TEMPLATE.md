@@ -23,6 +23,8 @@ description: Organize, arrange, and display a list of options.
 
 @import ./__demo__/collapse-control.md
 
+@import ./__demo__/breakpoint.md
+
 @import ./__demo__/sub-menu.md
 
 @import ./__demo__/size.md
