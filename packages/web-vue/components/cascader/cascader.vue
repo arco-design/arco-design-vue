@@ -465,15 +465,19 @@ export default defineComponent({
       () => props.popupVisible ?? _popupVisible.value
     );
 
-    const filteredLeafOptions = computed(() =>
-      Array.from(leafOptionSet).filter(
+    const filteredLeafOptions = computed(() => {
+      const options = props.checkStrictly
+        ? Array.from(optionMap.values())
+        : Array.from(leafOptionSet);
+
+      return options.filter(
         (item) =>
           props.filterOption?.(computedInputValue.value, item) ??
           item.label
             ?.toLocaleLowerCase()
             .includes(computedInputValue.value?.toLocaleLowerCase())
-      )
-    );
+      );
+    });
 
     const updateValue = (
       options?: CascaderOptionInfo | CascaderOptionInfo[]

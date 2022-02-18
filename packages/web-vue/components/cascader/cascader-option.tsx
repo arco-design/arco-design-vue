@@ -111,7 +111,7 @@ export default defineComponent({
             indeterminate={checkedStatus.value.indeterminate}
             disabled={props.option.disabled}
             uninjectGroupContext
-            onClick={(ev: Event) => {
+            onChange={(value: any, ev: Event) => {
               ev.stopPropagation();
               handlePathChange(ev);
               cascaderCtx?.onClickOption(
@@ -126,7 +126,7 @@ export default defineComponent({
             modelValue={props.computedKeys.includes(props.option.key)}
             disabled={props.option.disabled}
             uninjectGroupContext
-            onClick={(ev: Event) => {
+            onChange={(value: any, ev: Event) => {
               ev.stopPropagation();
               handlePathChange(ev);
               cascaderCtx?.onClickOption(props.option, true);
