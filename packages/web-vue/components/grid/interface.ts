@@ -1,20 +1,45 @@
-import { RendererElement, RendererNode, VNode } from 'vue';
-
-export type GridRowGutter =
-  | number
-  | Partial<Record<'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs', number>>;
+export interface ResponsiveValue {
+  /**
+   * @zh >= 1600px 响应式配置
+   * @en >= 1600px responsive configuration
+   */
+  xxl?: number;
+  /**
+   * @zh >= 1200px 响应式配置
+   * @en >= 1200px responsive configuration
+   */
+  xl?: number;
+  /**
+   * @zh >= 992px 响应式配置
+   * @en >= 992px responsive configuration
+   */
+  lg?: number;
+  /**
+   * @zh >= 768px 响应式配置
+   * @en >= 768px responsive configuration
+   */
+  md?: number;
+  /**
+   * @zh >= 576px 响应式配置
+   * @en >= 576px responsive configuration
+   */
+  sm?: number;
+  /**
+   * @zh < 576px 响应式配置
+   * @en <576px responsive configuration
+   */
+  xs?: number;
+}
 
 export type FlexType = number | string | 'initial' | 'auto' | 'none';
 
-export interface BaseGridProps {
-  cols: number;
-  rowGap: number;
-  colGap: number;
+export interface GridProps {
+  cols: number | ResponsiveValue;
+  rowGap: number | ResponsiveValue;
+  colGap: number | ResponsiveValue;
   collapsed: boolean;
   collapsedRows: number;
 }
-
-export type GridProps = BaseGridProps;
 
 export interface GridItemProps {
   span: number;
@@ -22,14 +47,8 @@ export interface GridItemProps {
   suffix: boolean;
 }
 
-export type GridItemVNode = VNode<RendererNode, RendererElement, GridItemProps>;
+export type GridItemData = GridItemProps;
 
-export interface BaseGridItemProps extends GridItemProps {
-  cols: number;
-  colGap: number;
-  overflow: boolean;
-}
-export interface GridItemData extends GridItemProps {
-  node: GridItemVNode;
-  visible?: boolean;
-}
+/**
+ * @version 2.18.0
+ */
