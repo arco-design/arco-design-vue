@@ -2,6 +2,38 @@
 changelog: true
 ```
 
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ Important Attention
+
+- This version is a beta version with major changes, please use it in the production environment after careful testing
+- **form:** <form-item> component refactoring to use context to manage input components. If the user has a custom input component, you can refer to the `custom input component` example to change. ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- Add injection of FormItemContext to all input components ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- **radio:** Outer wrapping DOM changed from span to label ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- **checkbox:** Outer wrapping DOM changed from span to label ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- **select:** Component uses context refactoring to allow encapsulation of Option components ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- **select:** Added `valueKey` attribute, option value supports object form ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- **select:** The class name of the <option> component is changed from arco-dropdown-option to arco-select-option, and flex is used to center the layout vertically ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- **dropdown:** The <doption> component modifies the vertical centering layout using flex ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+
+### 💎 Optimization
+
+- **table:** Does not show pagination when the data is empty ([#684](https://github.com/arco-design/arco-design-vue/pull/684))
+
+### 🆕 Feature
+
+- **menu:** Responsive collapsed support ([#700](https://github.com/arco-design/arco-design-vue/pull/700))
+- **grid:** support responsive configure ([#693](https://github.com/arco-design/arco-design-vue/pull/693))
+- Add ssr support (beta) ([#675](https://github.com/arco-design/arco-design-vue/pull/675))
+
+### 🐛 BugFix
+
+- **cascader:** Fixed an issue where disabled items could still be selected via radio selectors in strict mode ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+- **cascader:** Fixed an issue where search results in strict mode did not include path options ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+
+
 ## 2.17.0
 
 `2022-02-11`

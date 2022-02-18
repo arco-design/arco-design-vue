@@ -30,6 +30,8 @@
     box-sizing: border-box;
     width: 100%;
     padding: 0 @dropdown-option-padding-horizontal;
+    display: flex;
+    align-items: center;
 
     // default
     color: @dropdown-option-color-text_default;
@@ -41,7 +43,6 @@
     .text-ellipsis();
 
     &-has-suffix {
-      display: flex;
       justify-content: space-between;
     }
 

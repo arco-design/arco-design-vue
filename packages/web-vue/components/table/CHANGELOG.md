@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 💎 Optimization
+
+- Does not show pagination when the data is empty ([#684](https://github.com/arco-design/arco-design-vue/pull/684))
+
+
 ## 2.16.2
 
 `2022-01-24`

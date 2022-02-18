@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 🆕 Feature
+
+- support responsive configure ([#693](https://github.com/arco-design/arco-design-vue/pull/693))
+
+
 ## 2.15.1
 
 `2022-01-15`

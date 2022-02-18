@@ -87,6 +87,13 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 |disabled|是否禁用|`boolean`|`false`|2.10.0|
 |trigger|触发方式|`'hover' \| 'click'`|`'click'`|2.10.0|
 |position|弹出位置|`'rt' \| 'lt'`|`'rt'`|2.10.0|
+|popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`||
+|default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`||
+### `<dsubmenu>` Events
+
+|事件名|描述|参数|
+|---|---|---|
+|popup-visible-change|下拉框显示状态发生改变时触发|-|
 ### `<dsubmenu>` Slots
 
 |插槽名|描述|参数|版本|

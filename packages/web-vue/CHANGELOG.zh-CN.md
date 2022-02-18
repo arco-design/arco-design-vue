@@ -2,6 +2,38 @@
 changelog: true
 ```
 
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ 重点注意
+
+- 本版本为 beta 版本，存在较大改动，情谨慎测试后在生产环境使用
+- **form:** <form-item> 组件重构，使用 context 管理输入组件。如果用户存在自定义输入组件，可参考 `自定义输入组件` 示例更改。 ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- 所有输入组件增加 FormItemContext 的注入 ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- **radio:** 外层包裹 DOM 从 span 改为 label ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- **checkbox:** 外层包裹 DOM 从 span 改为 label ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+- **select:** 组件使用 context 重构，允许对 Option 组件的封装使用 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- **select:** 增加 `valueKey` 属性，选项 value 支持 object 形式 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- **select:** <option> 组件的类名由 arco-dropdown-option 改为 arco-select-option，并使用 flex 垂直居中布局 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- **dropdown:** <doption> 组件修改使用 flex 垂直居中布局 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+
+### 💎 功能优化
+
+- **table:** 在数据为空时，不展示分页组件 ([#684](https://github.com/arco-design/arco-design-vue/pull/684))
+
+### 🆕 新增功能
+
+- **menu:** 支持响应式收缩 ([#700](https://github.com/arco-design/arco-design-vue/pull/700))
+- **grid:** 支持响应式配置 ([#693](https://github.com/arco-design/arco-design-vue/pull/693))
+- 增加 ssr 支持（beta） ([#675](https://github.com/arco-design/arco-design-vue/pull/675))
+
+### 🐛 问题修复
+
+- **cascader:** 修复严格模式下禁用项仍可通过单选选择器选择的问题 ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+- **cascader:** 修复严格模式下搜索结果没有包含路径选项的问题 ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+
+
 ## 2.17.0
 
 `2022-02-11`

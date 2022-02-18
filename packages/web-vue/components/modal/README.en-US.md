@@ -29,6 +29,7 @@ description: Open a floating layer on the current page to carry related operatio
 |default-visible|Whether the modal is visible by default (uncontrolled state)|`boolean`|`false`||
 |mask|Whether to show the mask|`boolean`|`true`||
 |title|Title|`string`|`-`||
+|title-align|horizontal alignment of the title|`'start' \| 'center'`|`-`|2.17.0|
 |align-center|Whether the dialog box is displayed in the center|`boolean`|`true`||
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`||
 |mask-closable|Whether to close the modal when click the mask|`boolean`|`true`||

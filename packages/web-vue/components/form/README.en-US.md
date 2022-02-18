@@ -30,6 +30,7 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/async.md
 
+@import ./__demo__/custom.md
 
 
 ### `<form>` Props
@@ -97,9 +98,9 @@ description: A form with data collection, verification and submission functions,
 
 |Slot Name|Description|Parameters|
 |---|---|---|
-|extra|Extra content|-|
-|help|Help message|-|
 |label|Label|-|
+|help|Help message|-|
+|extra|Extra content|-|
 
 
 
@@ -153,3 +154,26 @@ description: A form with data collection, verification and submission functions,
 |message|Error message|`string`|`-`|
 
 
+
+### FormItemEventHandler
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|onChange|onChange|`(ev?: Event) => void`|`-`|
+|onInput|onInput|`(ev?: Event) => void`|`-`|
+|onFocus|onFocus|`(ev?: Event) => void`|`-`|
+|onBlur|onBlur|`(ev?: Event) => void`|`-`|
+
+
+
+useFormItem: ({
+size?: Ref<Size | undefined>;
+disabled?: Ref<boolean>;
+error?: Ref<boolean>;
+}) => ({
+mergedSize:Ref<Size>;
+mergedDisabled:Ref<boolean>;
+mergedError:Ref<boolean>;
+feedback:Ref<string>;
+eventHandlers:Ref<FormItemEventHandler>;
+}

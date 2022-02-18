@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ Important Attention
+
+- Component uses context refactoring to allow encapsulation of Option components ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- Added `valueKey` attribute, option value supports object form ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- The class name of the <option> component is changed from arco-dropdown-option to arco-select-option, and flex is used to center the layout vertically ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+
+
 ## 2.16.0
 
 `2022-01-21`

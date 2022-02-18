@@ -31,6 +31,7 @@ description: Only input boxes in numeric format are allowed.
 |precision|Precision|`number`|`-`|
 |step|Number change step|`number`|`1`|
 |disabled|Whether to disable|`boolean`|`false`|
+|error|Whether it is an error state|`boolean`|`false`|
 |max|Max|`number`|`Infinity`|
 |min|Min|`number`|`-Infinity`|
 |formatter|Define the display value of the input|`func`|`-`|

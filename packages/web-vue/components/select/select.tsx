@@ -16,7 +16,7 @@ import {
   isObject,
   isUndefined,
 } from '../_utils/is';
-import { getKeyFromValue, isGroupOptionInfo } from './utils';
+import { getKeyFromValue, isGroupOptionInfo, isValidOption } from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
@@ -677,6 +677,16 @@ export default defineComponent({
           </SelectOptGroup>
         );
       }
+
+      if (
+        !isValidOption(optionInfo, {
+          inputValue: computedInputValue.value,
+          filterOption: filterOption?.value,
+        })
+      ) {
+        return null;
+      }
+
       return (
         <SelectOption
           v-slots={{
@@ -719,7 +729,6 @@ export default defineComponent({
             'empty': slots.empty,
             'footer': slots.footer,
           }}
-          class={`${prefixCls}-dropdown`}
           loading={props.loading}
           empty={validOptionInfos.value.length === 0}
           virtualList={Boolean(props.virtualListProps)}

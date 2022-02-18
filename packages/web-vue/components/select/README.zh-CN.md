@@ -43,8 +43,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
 |multiple|是否开启多选模式（多选模式默认开启搜索）|`boolean`|`false`||
-|model-value **(v-model)**|绑定值|`string \| number \| (string \| number)[]`|`-`||
-|default-value|默认值（非受控模式）|`string \| number \| (string \| number)[]`|`'' \| []`||
+|model-value **(v-model)**|绑定值|`OptionValue \| OptionValue[]`|`-`||
+|default-value|默认值（非受控模式）|`OptionValue \| OptionValue[]`|`'' \| []`||
 |input-value **(v-model)**|输入框的值|`string`|`-`||
 |default-input-value|输入框的默认值（非受控模式）|`string`|`''`||
 |size|选择框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
@@ -59,14 +59,16 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`||
 |bordered|是否显示输入框的边框|`boolean`|`true`||
 |popup-visible **(v-model)**|是否显示下拉菜单|`boolean`|`-`||
-|unmount-on-close|是否在下拉菜单关闭时销毁元素|`boolean`|`true`||
+|default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`||
+|unmount-on-close|是否在下拉菜单关闭时销毁元素|`boolean`|`false`||
 |filter-option|是否过滤选项|`boolean \| ((inputValue: string, optionInfo: OptionInfo) => boolean)`|`true`||
 |options|选项数据|`Option[]`|`[]`||
 |virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
 |trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`||
 |format-label|格式化显示内容|`(data: OptionInfo) => string`|`-`||
-|fallback-option|自定义值中不存在的选项|`boolean \| ((value: string \| number) => OptionData)`|`false`|2.10.0|
+|fallback-option|自定义值中不存在的选项|`boolean\| ((value: string \| number \| Record<string, unknown>) => OptionData)`|`false`|2.10.0|
 |show-extra-options|是否在下拉菜单中显示额外选项|`boolean`|`true`|2.10.0|
+|value-key|属性名|`string`|`'value'`||
 ### `<select>` Events
 
 |事件名|描述|参数|
@@ -98,17 +100,11 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
-|value|选项值（如不填，会从内容中获取）|`string\|number`|`-`||
+|value|选项值（如不填，会从内容中获取）|`string\|number\|object`|`-`||
 |label|选项标签（如不填，会从内容中获取）|`string`|`-`||
 |disabled|是否禁用|`boolean`|`false`||
 |tag-props|展示的标签属性|`TagProps`|`-`|2.8.0|
 |extra|额外数据|`object`|`-`|2.10.0|
-### `<option>` Slots
-
-|插槽名|描述|参数|版本|
-|---|:---:|---|:---|
-|suffix|后缀|-|2.10.0|
-|icon|图标|-|2.10.0|
 
 
 
@@ -131,11 +127,11 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|value|选项值|`string \| number`|`-`|
+|value|选项值|`OptionValue`|`-`|
 |label|选项内容|`string`|`-`|
-|render|自定义渲染|`RenderFunction`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
-|tagProps|选项标签的Props|`any`|`-`|
+|tagProps|选项对应的多选标签的属性|`any`|`-`|
+|render|自定义渲染|`RenderFunction`|`-`|
 
 
 
@@ -153,8 +149,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|index|选项的 index|`number`|`-`|
-|key|选项的 key|`string`|`-`|
-|origin|选项的来源|`'options' \| 'extraOptions'`|`-`|
+|index|选项的索引|`number`|`-`|
+|key|选项的键值|`string`|`-`|
+|origin|选项的来源|`'slot' \| 'options' \| 'extraOptions'`|`-`|
 
 

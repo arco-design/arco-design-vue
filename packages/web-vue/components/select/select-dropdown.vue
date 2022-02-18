@@ -55,7 +55,7 @@ export default defineComponent({
   },
   emits: ['scroll', 'reachBottom'],
   setup(props, { emit, slots }) {
-    const prefixCls = getPrefixCls('dropdown');
+    const prefixCls = getPrefixCls('select-dropdown');
     const wrapperRef = ref<HTMLElement>();
 
     const handleScroll = (e: Event) => {

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 🆕 新增功能
+
+- 支持响应式收缩 ([#700](https://github.com/arco-design/arco-design-vue/pull/700))
+
+
 ## 2.11.0
 
 `2021-12-17`

@@ -44,7 +44,7 @@ description: In a set of related and mutually exclusive data, the user can only 
 |model-value **(v-model)**|Value|`string \| number \| boolean`|`-`|
 |default-value|Default value (uncontrolled state)|`string \| number \| boolean`|`''`|
 |type|Types of radio group|`'radio' \| 'button'`|`'radio'`|
-|size|The size of the radio group|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|The size of the radio group|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |direction|The direction of the radio group|`'horizontal' \| 'vertical'`|`'horizontal'`|
 |disabled|Whether to disable|`boolean`|`false`|
 ### `<radio-group>` Events

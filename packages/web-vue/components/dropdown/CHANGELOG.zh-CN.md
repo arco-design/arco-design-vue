@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ 重点注意
+
+- <doption> 组件修改使用 flex 垂直居中布局 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+
+
 ## 2.16.1
 
 `2022-01-21`

@@ -43,7 +43,7 @@ description: A form with data collection, verification and submission functions,
 
 %%API(form.vue)%%
 
-%%API(form-item.tsx)%%
+%%API(form-item.vue)%%
 
 %%INTERFACE(interface.ts)%%
 

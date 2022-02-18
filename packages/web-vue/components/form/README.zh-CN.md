@@ -30,6 +30,7 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 @import ./__demo__/custom.md
 
+
 ### `<form>` Props
 
 |参数名|描述|类型|默认值|版本|
@@ -95,9 +96,9 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 |插槽名|描述|参数|
 |---|:---:|---|
-|extra|额外内容|-|
-|help|帮助信息|-|
 |label|标签|-|
+|help|帮助信息|-|
+|extra|额外内容|-|
 
 
 
@@ -151,3 +152,26 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |message|错误信息|`string`|`-`|
 
 
+
+### FormItemEventHandler
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|onChange|onChange|`(ev?: Event) => void`|`-`|
+|onInput|onInput|`(ev?: Event) => void`|`-`|
+|onFocus|onFocus|`(ev?: Event) => void`|`-`|
+|onBlur|onBlur|`(ev?: Event) => void`|`-`|
+
+
+
+useFormItem: ({
+size?: Ref<Size | undefined>;
+disabled?: Ref<boolean>;
+error?: Ref<boolean>;
+}) => ({
+mergedSize:Ref<Size>;
+mergedDisabled:Ref<boolean>;
+mergedError:Ref<boolean>;
+feedback:Ref<string>;
+eventHandlers:Ref<FormItemEventHandler>;
+}

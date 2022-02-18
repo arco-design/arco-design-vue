@@ -45,8 +45,8 @@ description: When users need to select one or more from a group of similar data,
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |multiple|Whether to open multi-select mode (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
-|model-value **(v-model)**|Value|`string \| number \| (string \| number)[]`|`-`||
-|default-value|Default value (uncontrolled mode)|`string \| number \| (string \| number)[]`|`'' \| []`||
+|model-value **(v-model)**|Value|`OptionValue \| OptionValue[]`|`-`||
+|default-value|Default value (uncontrolled mode)|`OptionValue \| OptionValue[]`|`'' \| []`||
 |input-value **(v-model)**|The value of the input|`string`|`-`||
 |default-input-value|The default value of the input (uncontrolled mode)|`string`|`''`||
 |size|The size of the select|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
@@ -61,13 +61,14 @@ description: When users need to select one or more from a group of similar data,
 |popup-container|Mount container for popup|`string \| HTMLElement`|`-`||
 |bordered|Whether to display the border of the input box|`boolean`|`true`||
 |popup-visible **(v-model)**|Whether to show the dropdown|`boolean`|`-`||
-|unmount-on-close|Whether to destroy the element when the dropdown is closed|`boolean`|`true`||
+|default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`||
+|unmount-on-close|Whether to destroy the element when the dropdown is closed|`boolean`|`false`||
 |filter-option|Whether to filter options|`boolean \| ((inputValue: string, optionInfo: OptionInfo) => boolean)`|`true`||
 |options|Option data|`Option[]`|`[]`||
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
 |trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`||
 |format-label|Format display content|`(data: OptionInfo) => string`|`-`||
-|fallback-option|Options that do not exist in custom values|`boolean \| ((value: string \| number) => OptionData)`|`false`|2.10.0|
+|fallback-option|Options that do not exist in custom values|`boolean\| ((value: string \| number \| Record<string, unknown>) => OptionData)`|`false`|2.10.0|
 |show-extra-options|Options that do not exist in custom values|`boolean`|`true`|2.10.0|
 ### `<select>` Events
 
@@ -100,17 +101,11 @@ description: When users need to select one or more from a group of similar data,
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|value|Option value (if not filled, it will be obtained from the content)|`string\|number`|`-`||
+|value|Option value (if not filled, it will be obtained from the content)|`string\|number\|object`|`-`||
 |label|Option label (if not filled, it will be obtained from the content)|`string`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
 |tag-props|Displayed tag attributes|`TagProps`|`-`|2.8.0|
 |extra|Extra data|`object`|`-`|2.10.0|
-### `<option>` Slots
-
-|Slot Name|Description|Parameters|version|
-|---|---|---|:---|
-|suffix|Suffix|-|2.10.0|
-|icon|Icon|-|2.10.0|
 
 
 
@@ -133,11 +128,11 @@ description: When users need to select one or more from a group of similar data,
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|value|Option Value|`string \| number`|`-`|
+|value|Option Value|`OptionValue`|`-`|
 |label|Option content|`string`|`-`|
-|render|Custom Render|`RenderFunction`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
-|tagProps|Props of option tag|`any`|`-`|
+|tagProps|Props of the multi-select label corresponding to the option|`any`|`-`|
+|render|Custom Render|`RenderFunction`|`-`|
 
 
 
@@ -157,6 +152,6 @@ description: When users need to select one or more from a group of similar data,
 |---|---|---|:---:|
 |index|Option index|`number`|`-`|
 |key|Option key|`string`|`-`|
-|origin|Source of option|`'options' \| 'extraOptions'`|`-`|
+|origin|Source of option|`'slot' \| 'options' \| 'extraOptions'`|`-`|
 
 

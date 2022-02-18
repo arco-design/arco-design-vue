@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<form> demo: render [async] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -10,8 +10,8 @@ exports[`<form> demo: render [async] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -22,8 +22,8 @@ exports[`<form> demo: render [async] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -32,10 +32,10 @@ exports[`<form> demo: render [async] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -44,12 +44,12 @@ exports[`<form> demo: render [async] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" error=\\"false\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->Set Status
           </button></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form> {
@@ -60,7 +60,7 @@ exports[`<form> demo: render [async] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [auto-width] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -69,8 +69,8 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -81,8 +81,8 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -91,10 +91,10 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -103,12 +103,12 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\" error=\\"false\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
             <!--v-if-->Submit
           </button></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form> {
@@ -119,7 +119,7 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [basic] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -128,8 +128,8 @@ exports[`<form> demo: render [basic] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -140,8 +140,8 @@ exports[`<form> demo: render [basic] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -150,10 +150,10 @@ exports[`<form> demo: render [basic] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -162,12 +162,12 @@ exports[`<form> demo: render [basic] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\" error=\\"false\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
             <!--v-if-->Submit
           </button></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form> {
@@ -177,8 +177,29 @@ exports[`<form> demo: render [basic] correctly 1`] = `
 }"
 `;
 
+exports[`<form> demo: render [custom] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"margin-bottom: 20px;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+  <div class=\\"arco-space-item\\"> Disabled: false</div>
+</div>
+<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\"><strong class=\\"arco-form-item-label-required-symbol\\"><svg fill=\\"currentColor\\" viewBox=\\"0 0 1024 1024\\" width=\\"1em\\" height=\\"1em\\"><path d=\\"M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z\\"></path></svg></strong>Username </label></div>
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><input modelvalue=\\"\\" placeholder=\\"please enter your username...\\"></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+</form>"
+`;
+
 exports[`<form> demo: render [disabled] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -187,8 +208,8 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper arco-input-disabled\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\" disabled=\\"\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -199,8 +220,8 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper arco-input-disabled\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\" disabled=\\"\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -209,10 +230,10 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox arco-checkbox-disabled\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -221,12 +242,12 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\" error=\\"false\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
             <!--v-if-->Submit
           </button></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form> {
@@ -237,7 +258,7 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [dynamic] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -246,8 +267,8 @@ exports[`<form> demo: render [dynamic] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -260,8 +281,8 @@ exports[`<form> demo: render [dynamic] correctly 1`] = `
             <!--v-if-->Delete
           </button></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form>
@@ -278,14 +299,14 @@ exports[`<form> demo: render [dynamic] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [extra] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\"><strong class=\\"arco-form-item-label-required-symbol\\"><svg fill=\\"currentColor\\" viewBox=\\"0 0 1024 1024\\" width=\\"1em\\" height=\\"1em\\"><path d=\\"M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z\\"></path></svg></strong>Username </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
       </div>
-      <!---->
+      <!--v-if-->
       <div class=\\"arco-form-item-extra\\">
         <div>Used to login</div>
       </div>
@@ -313,10 +334,10 @@ exports[`<form> demo: render [extra] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form> {
@@ -327,7 +348,7 @@ exports[`<form> demo: render [extra] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [grid] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start\\" style=\\"margin-left: -8px; margin-right: -8px;\\">
     <div class=\\"arco-col arco-col-8\\" style=\\"padding-left: 8px; padding-right: 8px;\\">
       <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -338,8 +359,8 @@ exports[`<form> demo: render [grid] correctly 1`] = `
           <div class=\\"arco-form-item-content-wrapper\\">
             <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter...\\"><!----><!----></span></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
     </div>
@@ -352,8 +373,8 @@ exports[`<form> demo: render [grid] correctly 1`] = `
           <div class=\\"arco-form-item-content-wrapper\\">
             <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter...\\"><!----><!----></span></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
     </div>
@@ -366,8 +387,8 @@ exports[`<form> demo: render [grid] correctly 1`] = `
           <div class=\\"arco-form-item-content-wrapper\\">
             <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter...\\"><!----><!----></span></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
     </div>
@@ -382,8 +403,8 @@ exports[`<form> demo: render [grid] correctly 1`] = `
           <div class=\\"arco-form-item-content-wrapper\\">
             <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter...\\"><!----><!----></span></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
     </div>
@@ -396,8 +417,8 @@ exports[`<form> demo: render [grid] correctly 1`] = `
           <div class=\\"arco-form-item-content-wrapper\\">
             <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter...\\"><!----><!----></span></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
     </div>
@@ -413,9 +434,9 @@ exports[`<form> demo: render [grid] correctly 1`] = `
 
 exports[`<form> demo: render [layout] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 600px;\\">
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><span class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"horizontal\\"><span class=\\"arco-radio-button-content\\">horizontal</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vertical\\"><span class=\\"arco-radio-button-content\\">vertical</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline\\"><span class=\\"arco-radio-button-content\\">inline</span></span></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"horizontal\\"><span class=\\"arco-radio-button-content\\">horizontal</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vertical\\"><span class=\\"arco-radio-button-content\\">vertical</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline\\"><span class=\\"arco-radio-button-content\\">inline</span></label></span></div>
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
-    <form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\">
+    <form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
         <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
             <!--v-if-->Username
@@ -424,8 +445,8 @@ exports[`<form> demo: render [layout] correctly 1`] = `
           <div class=\\"arco-form-item-content-wrapper\\">
             <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -436,8 +457,8 @@ exports[`<form> demo: render [layout] correctly 1`] = `
           <div class=\\"arco-form-item-content-wrapper\\">
             <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -446,10 +467,10 @@ exports[`<form> demo: render [layout] correctly 1`] = `
           </label></div>
         <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
           <div class=\\"arco-form-item-content-wrapper\\">
-            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -458,12 +479,12 @@ exports[`<form> demo: render [layout] correctly 1`] = `
           </label></div>
         <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
           <div class=\\"arco-form-item-content-wrapper\\">
-            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" error=\\"false\\">
+            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
                 <!--v-if-->Submit
               </button></div>
           </div>
-          <!---->
-          <!---->
+          <!--v-if-->
+          <!--v-if-->
         </div>
       </div>
     </form>
@@ -479,7 +500,7 @@ exports[`<form> demo: render [layout] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [nest] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -493,7 +514,7 @@ exports[`<form> demo: render [nest] correctly 1`] = `
           </div>
         </div>
       </div>
-      <!---->
+      <!--v-if-->
       <div class=\\"arco-form-item-extra\\">Show error message together</div>
     </div>
   </div>
@@ -507,33 +528,33 @@ exports[`<form> demo: render [nest] correctly 1`] = `
           <div class=\\"arco-row arco-row-align-start arco-row-justify-start\\" style=\\"margin-left: -4px; margin-right: -4px;\\">
             <div class=\\"arco-col arco-col-12\\" style=\\"padding-left: 4px; padding-right: 4px;\\">
               <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
-                <!---->
+                <!--v-if-->
                 <div class=\\"arco-form-item-wrapper-col\\">
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your firstname...\\"><!----><!----></span></div>
                   </div>
-                  <!---->
+                  <!--v-if-->
                   <div class=\\"arco-form-item-extra\\">Show error message separate</div>
                 </div>
               </div>
             </div>
             <div class=\\"arco-col arco-col-12\\" style=\\"padding-left: 4px; padding-right: 4px;\\">
               <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
-                <!---->
+                <!--v-if-->
                 <div class=\\"arco-form-item-wrapper-col\\">
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your lastname...\\"><!----><!----></span></div>
                   </div>
-                  <!---->
-                  <!---->
+                  <!--v-if-->
+                  <!--v-if-->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -553,8 +574,8 @@ exports[`<form> demo: render [nest] correctly 1`] = `
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
                   </div>
-                  <!---->
-                  <!---->
+                  <!--v-if-->
+                  <!--v-if-->
                 </div>
               </div>
             </div>
@@ -567,16 +588,16 @@ exports[`<form> demo: render [nest] correctly 1`] = `
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
                   </div>
-                  <!---->
-                  <!---->
+                  <!--v-if-->
+                  <!--v-if-->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -585,10 +606,10 @@ exports[`<form> demo: render [nest] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox\\" error=\\"false\\" size=\\"medium\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form> {
@@ -610,8 +631,8 @@ exports[`<form> demo: render [nest] correctly 1`] = `
 
 exports[`<form> demo: render [status] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"validating\\"><span class=\\"arco-radio-button-content\\">validating</span></span><span class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"success\\"><span class=\\"arco-radio-button-content\\">success</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"error\\"><span class=\\"arco-radio-button-content\\">error</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"warning\\"><span class=\\"arco-radio-button-content\\">warning</span></span></span></div>
-  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></span><span class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></span></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"validating\\"><span class=\\"arco-radio-button-content\\">validating</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"success\\"><span class=\\"arco-radio-button-content\\">success</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"error\\"><span class=\\"arco-radio-button-content\\">error</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"warning\\"><span class=\\"arco-radio-button-content\\">warning</span></label></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
 </div>
 <form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px; margin-top: 20px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal arco-form-item-status-success arco-form-item-has-help\\">
@@ -673,8 +694,8 @@ exports[`<form> demo: render [status] correctly 1`] = `
           <!--teleport end-->
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form>"
@@ -688,10 +709,10 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\" error=\\"false\\"><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></span><span class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -700,8 +721,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><!----></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -710,8 +731,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your age...\\"><!----><span class=\\"arco-input-suffix\\"><!----><!----><div class=\\"arco-input-number-step\\"><button class=\\"arco-input-number-step-button\\" type=\\"button\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 30.557 24.043 15 8.487 30.557\\"></path></svg></button><button class=\\"arco-input-number-step-button\\" type=\\"button\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></button></div><!----></span></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -726,8 +747,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           <!--teleport end-->
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -742,8 +763,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           <!--teleport end-->
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -752,10 +773,10 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox-group arco-checkbox-group-direction-horizontal\\" error=\\"false\\" size=\\"medium\\"><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option one\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Section One</span></span><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option two\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Two</span></span><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option three\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Three</span></span><span class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option four\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Four</span></span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox-group arco-checkbox-group-direction-horizontal\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option one\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Section One</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option two\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Two</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option three\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Three</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option four\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Four</span></label></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -775,8 +796,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           <!--teleport end-->
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -785,10 +806,10 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\" error=\\"false\\"><span class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"radio one\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Radio One</span></span><span class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"radio two\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Radio Two</span></span></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"radio one\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Radio One</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"radio two\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Radio Two</span></label></span></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -798,7 +819,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\">
-          <div class=\\"arco-slider\\" error=\\"false\\" size=\\"medium\\">
+          <div class=\\"arco-slider\\">
             <div class=\\"arco-slider-track\\">
               <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 50%;\\"></div>
               <!--v-if-->
@@ -813,8 +834,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           </div>
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -824,7 +845,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\">
-          <div class=\\"arco-rate\\" error=\\"false\\" size=\\"medium\\">
+          <div class=\\"arco-rate\\">
             <div class=\\"arco-rate-character arco-rate-character-full\\">
               <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                   <path d=\\"M22.683 5.415c.568-1.043 2.065-1.043 2.634 0l5.507 10.098a1.5 1.5 0 0 0 1.04.756l11.306 2.117c1.168.219 1.63 1.642.814 2.505l-7.902 8.359a1.5 1.5 0 0 0-.397 1.223l1.48 11.407c.153 1.177-1.058 2.057-2.131 1.548l-10.391-4.933a1.5 1.5 0 0 0-1.287 0l-10.39 4.933c-1.073.51-2.284-.37-2.131-1.548l1.48-11.407a1.5 1.5 0 0 0-.398-1.223L4.015 20.89c-.816-.863-.353-2.286.814-2.505l11.306-2.117a1.5 1.5 0 0 0 1.04-.756l5.508-10.098Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
@@ -868,8 +889,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           </div>
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -878,12 +899,12 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\" error=\\"false\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -894,9 +915,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view arco-select-view-size-medium arco-select-view-has-tag arco-select-view-has-suffix arco-select-view-multiple arco-select\\"><span class=\\"arco-select-view-mirror\\"></span>
           <!---->
-          <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-select-view-tag\\"><!--v-if-->Section One<span class=\\"arco-icon-hover arco-tag-icon-hover arco-icon-hover-size-medium arco-tag-close-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
-            <!--v-if--></span><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\">
-          </transition-group-stub>
+          <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-select-view-tag\\"><!--v-if-->section one<!--v-if--><!--v-if--></span><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\"></transition-group-stub>
           <!----><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-expand\\" style=\\"transform: rotate(-45deg);\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 26v14c0 .552.444 1 .996 1H22m19-19V8c0-.552-.444-1-.996-1H26\\"></path></svg></span>
           <!---->
           <!----></span></span>
@@ -904,8 +923,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           <!--teleport end-->
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -920,8 +939,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           <!--teleport end-->
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -931,8 +950,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\">
-          <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" disabled=\\"false\\" error=\\"false\\">
-            <div class=\\"arco-space-item\\" style=\\"margin-right: 16px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
+          <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+            <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
                 <!--v-if-->Submit
               </button></div>
             <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -941,8 +960,8 @@ exports[`<form> demo: render [validation] correctly 1`] = `
           </div>
         </div>
       </div>
-      <!---->
-      <!---->
+      <!--v-if-->
+      <!--v-if-->
     </div>
   </div>
 </form> {

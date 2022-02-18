@@ -29,7 +29,7 @@ export default defineComponent({
    * @version 2.10.0
    */
   setup() {
-    const prefixCls = getPrefixCls('dropdown-group');
+    const prefixCls = getPrefixCls('select-group');
 
     return {
       prefixCls,

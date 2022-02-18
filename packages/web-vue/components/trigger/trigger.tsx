@@ -30,7 +30,7 @@ import {
   getElementScrollRect,
   getScrollElements,
 } from './utils';
-import ResizeObserver from '../_components/resize-observer.vue';
+import ResizeObserver from '../_components/resize-observer-v2.vue';
 import { getElement, off, on } from '../_utils/dom';
 import {
   isEmptyChildren,

@@ -274,14 +274,14 @@ exports[`<grid> demo: render [grid] correctly 1`] = `
 `;
 
 exports[`<grid> demo: render [grid-responsive] correctly 1`] = `
-"<div class=\\"arco-grid grid-demo-grid\\" style=\\"gap: 16px 12px; grid-template-columns: repeat(24, minmax(0px, 1fr));\\">
+"<div class=\\"arco-grid grid-demo-grid\\" style=\\"gap: 16px 12px; grid-template-columns: repeat(6, minmax(0px, 1fr));\\">
   <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
   <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
   <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
   <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
   <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
   <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: 24 / span 1; display: none;\\"> suffix </div>
+  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: 1 / span 6; display: none;\\"> suffix </div>
 </div>"
 `;
 
@@ -297,17 +297,17 @@ exports[`<grid> demo: render [gutter] correctly 1`] = `
     </div>
   </div>
   <p>Responsive</p>
-  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
-    <div class=\\"arco-col arco-col-6\\">
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\" style=\\"margin-left: -16px; margin-right: -16px;\\">
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
       <div>col - 6</div>
     </div>
-    <div class=\\"arco-col arco-col-6\\">
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
       <div>col - 6</div>
     </div>
-    <div class=\\"arco-col arco-col-6\\">
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
       <div>col - 6</div>
     </div>
-    <div class=\\"arco-col arco-col-6\\">
+    <div class=\\"arco-col arco-col-6\\" style=\\"padding-left: 16px; padding-right: 16px;\\">
       <div>col - 6</div>
     </div>
   </div>

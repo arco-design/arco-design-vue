@@ -11,6 +11,13 @@
   border-radius: @select-popup-border-radius;
   box-shadow: @select-popup-box-shadow;
 
+  & &-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+  }
+
   &-list {
     margin-top: 0;
     margin-bottom: 0;
@@ -23,7 +30,7 @@
     }
   }
 
-  &-option {
+  .@{select-prefix-cls}-option {
     position: relative;
     // 避免 Trigger 的小箭头位于其上方
     z-index: 1;
@@ -37,11 +44,12 @@
     line-height: @select-popup-option-height;
     text-align: left;
     background-color: @select-popup-option-color-bg_default;
+    display: flex;
+    align-items: center;
     cursor: pointer;
     .text-ellipsis();
 
     &-has-suffix {
-      display: flex;
       justify-content: space-between;
     }
 
@@ -64,12 +72,12 @@
       margin-right: 8px;
     }
 
-    //&-suffix {
-    //  margin-left: @dropdown-margin-left-suffix-icon;
-    //}
+    &-suffix {
+      margin-left: @dropdown-margin-left-suffix-icon;
+    }
   }
 
-  &-group {
+  .@{select-prefix-cls}-group {
     &:first-child &-title {
       margin-top: @select-popup-group-title-padding-top;
     }

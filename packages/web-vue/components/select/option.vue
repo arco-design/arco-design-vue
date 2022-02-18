@@ -91,7 +91,7 @@ export default defineComponent({
   },
   setup(props) {
     const { disabled, tagProps } = toRefs(props);
-    const prefixCls = getPrefixCls('dropdown-option');
+    const prefixCls = getPrefixCls('select-option');
     const selectCtx = inject(selectInjectionKey, undefined);
     const itemRef = ref<HTMLElement>();
 

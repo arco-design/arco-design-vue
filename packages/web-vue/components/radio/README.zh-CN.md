@@ -42,7 +42,7 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 |model-value **(v-model)**|绑定值|`string \| number \| boolean`|`-`|
 |default-value|默认值（非受控状态）|`string \| number \| boolean`|`''`|
 |type|单选框组的类型|`'radio' \| 'button'`|`'radio'`|
-|size|单选框组的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|单选框组的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |direction|单选框组的方向|`'horizontal' \| 'vertical'`|`'horizontal'`|
 |disabled|是否禁用|`boolean`|`false`|
 ### `<radio-group>` Events
