@@ -47,14 +47,18 @@ description: A form with data collection, verification and submission functions,
 
 %%INTERFACE(interface.ts)%%
 
-useFormItem: ({
-size?: Ref<Size | undefined>;
-disabled?: Ref<boolean>;
-error?: Ref<boolean>;
-}) => ({
-mergedSize:Ref<Size>;
-mergedDisabled:Ref<boolean>;
-mergedError:Ref<boolean>;
-feedback:Ref<string>;
-eventHandlers:Ref<FormItemEventHandler>;
+### useFormItem
+
+```ts
+const useFormItem = (data: {
+  size?: Ref<Size | undefined>;
+  disabled?: Ref<boolean>;
+  error?: Ref<boolean>;
+}) => {
+  mergedSize:Ref<Size>;
+  mergedDisabled:Ref<boolean>;
+  mergedError:Ref<boolean>;
+  feedback:Ref<string>;
+  eventHandlers:Ref<FormItemEventHandler>;
 }
+```

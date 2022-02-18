@@ -164,14 +164,18 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 
 
-useFormItem: ({
-size?: Ref<Size | undefined>;
-disabled?: Ref<boolean>;
-error?: Ref<boolean>;
-}) => ({
-mergedSize:Ref<Size>;
-mergedDisabled:Ref<boolean>;
-mergedError:Ref<boolean>;
-feedback:Ref<string>;
-eventHandlers:Ref<FormItemEventHandler>;
+### useFormItem
+
+```ts
+const useFormItem = (data: {
+  size?: Ref<Size | undefined>;
+  disabled?: Ref<boolean>;
+  error?: Ref<boolean>;
+}) => {
+  mergedSize:Ref<Size>;
+  mergedDisabled:Ref<boolean>;
+  mergedError:Ref<boolean>;
+  feedback:Ref<string>;
+  eventHandlers:Ref<FormItemEventHandler>;
 }
+```
