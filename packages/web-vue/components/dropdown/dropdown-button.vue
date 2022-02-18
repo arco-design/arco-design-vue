@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, toRefs } from 'vue';
 import IconMore from '../icon/icon-more';
 import Button, { ButtonGroup } from '../button';
 import Dropdown from './dropdown.vue';
@@ -157,12 +157,14 @@ export default defineComponent({
    * @slot icon
    */
   setup(props, { emit }) {
+    const { defaultPopupVisible, popupVisible } = toRefs(props);
     const prefixCls = getPrefixCls('dropdown');
 
-    const { computedPopupVisible, handlePopupVisibleChange } = useTrigger(
-      props,
-      { emit }
-    );
+    const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
+      defaultPopupVisible,
+      popupVisible,
+      emit,
+    });
 
     const handleClick = (ev: Event) => {
       emit('click', ev);

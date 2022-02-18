@@ -82,6 +82,7 @@ export default defineComponent({
       if (props.loading) {
         return (
           <div
+            key="panel-column-loading"
             class={[
               `${prefixCls}-panel-column`,
               `${prefixCls}-panel-column-loading`,
@@ -93,7 +94,7 @@ export default defineComponent({
       }
       if (props.displayColumns.length === 0) {
         return (
-          <div class={`${prefixCls}-panel-column`}>
+          <div key="panel-column-empty" class={`${prefixCls}-panel-column`}>
             <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
           </div>
         );

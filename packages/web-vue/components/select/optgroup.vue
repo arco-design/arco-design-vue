@@ -9,10 +9,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getPrefixCls } from '../../_utils/global-config';
+import { getPrefixCls } from '../_utils/global-config';
 
 export default defineComponent({
-  name: 'DropdownOptgroup',
+  name: 'Optgroup',
   props: {
     /**
      * @zh 选项组的标题
@@ -22,6 +22,12 @@ export default defineComponent({
       type: String,
     },
   },
+  /**
+   * @zh 选项组的标题
+   * @en Title of option group
+   * @slot label
+   * @version 2.10.0
+   */
   setup() {
     const prefixCls = getPrefixCls('dropdown-group');
 

@@ -12,21 +12,22 @@ import {
 import ArcoTextarea from '../textarea';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
-import { DropdownPanel, DropDownOption } from '../_components/dropdown';
-import { useOptions } from '../_hooks/use-options';
+import SelectDropdown from '../select/select-dropdown.vue';
+import SelectOption from '../select/option.vue';
 import { MeasureInfo } from './interface';
 import {
   getLastMeasureIndex,
   getTextBeforeSelection,
   isValidSearch,
 } from './utils';
-import { Option, OptionNode } from '../select/interface';
-import { CODE, getKeyDownHandler } from '../_utils/keyboard';
+import { Option, OptionInfo } from '../select/interface';
 import { EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from '../textarea/utils';
 import ResizeObserver from '../_components/resize-observer';
 import { isFunction } from '../_utils/is';
+import { useSelect } from '../select/hooks/use-select';
+import { getKeyFromValue } from '../select/utils';
 
 export default defineComponent({
   name: 'Mention',
@@ -123,7 +124,10 @@ export default defineComponent({
     const dropdownRef = ref();
     const optionRefs = ref<Record<string, HTMLElement>>({});
     const _value = ref(props.defaultValue);
-    const computeValue = computed(() => props.modelValue ?? _value.value);
+    const computedValue = computed(() => props.modelValue ?? _value.value);
+    const computedValueKeys = computed(() =>
+      computedValue.value ? [getKeyFromValue(computedValue.value)] : []
+    );
     const measureInfo = ref<MeasureInfo>({
       measuring: false,
       location: -1,
@@ -176,7 +180,7 @@ export default defineComponent({
       () =>
         _popupVisible.value &&
         measureInfo.value.measuring &&
-        nodes.value.length > 0
+        validOptionInfos.value.length > 0
     );
 
     const handleResize = () => {
@@ -186,23 +190,6 @@ export default defineComponent({
     const handlePopupVisibleChange = (popupVisible: boolean) => {
       _popupVisible.value = popupVisible;
     };
-    const extraOptions = ref([]);
-
-    const {
-      nodes,
-      activeOption,
-      getNextActiveOption,
-      scrollIntoView,
-      enabledOptionSet,
-      optionInfoMap,
-    } = useOptions({
-      options: data,
-      extraOptions,
-      inputValue: measureText,
-      filterOption,
-      dropdownRef,
-      optionRefs,
-    });
 
     const handleSelect = (value: string, e: Event) => {
       const measureStart = measureInfo.value.location;
@@ -230,16 +217,18 @@ export default defineComponent({
       resetMeasureInfo();
     };
 
-    const handleMouseEnter = (value: string | number, e: Event) => {
-      const optionInfo = optionInfoMap.get(value);
-      if (optionInfo) {
-        activeOption.value = optionInfo;
-      }
-    };
-
-    const handleMouseLeave = (e: Event) => {
-      activeOption.value = undefined;
-    };
+    const { propOptionInfos, optionInfoMap, validOptionInfos, handleKeyDown } =
+      useSelect({
+        options: data,
+        inputValue: measureText,
+        filterOption,
+        popupVisible: computedPopupVisible,
+        valueKeys: computedValueKeys,
+        dropdownRef,
+        optionRefs,
+        onSelect: handleSelect,
+        onPopupVisibleChange: handlePopupVisibleChange,
+      });
 
     const mirrorStyle = ref();
 
@@ -252,93 +241,40 @@ export default defineComponent({
       }
     });
 
-    const handleKeyDown = getKeyDownHandler(
-      new Map([
-        [
-          CODE.ENTER,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              if (activeOption.value) {
-                handleSelect(activeOption.value.value as string, e);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-        [
-          CODE.ESC,
-          (e: Event) => {
-            handlePopupVisibleChange(false);
-            e.preventDefault();
-          },
-        ],
-        [
-          CODE.ARROW_DOWN,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              const next = getNextActiveOption('down');
-              if (next) {
-                activeOption.value = next;
-                scrollIntoView(next.value);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-        [
-          CODE.ARROW_UP,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              const next = getNextActiveOption('up');
-              if (next) {
-                activeOption.value = next;
-                scrollIntoView(next.value);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-      ])
-    );
-
-    const getOptionContentFunc = (item: OptionNode) => {
+    const getOptionContentFunc = (item: OptionInfo) => {
       if (isFunction(slots.option) && item.value) {
-        const optionInfo = optionInfoMap.get(item.value);
+        const optionInfo = optionInfoMap.get(item.key);
         const optionSlot = slots.option;
         return () => optionSlot({ data: optionInfo });
       }
       return () => item.label;
     };
 
-    const renderOption = (item: OptionNode) => {
-      const { value = '' } = item;
+    const renderOption = (item: OptionInfo) => {
       return (
-        <DropDownOption
+        <SelectOption
           ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
-              optionRefs.value[value] = ref.$el;
+              optionRefs.value[item.key] = ref.$el;
             }
           }}
           v-slots={{ default: getOptionContentFunc(item) }}
           key={item.key}
-          value={value}
+          value={item.value}
           disabled={item.disabled}
-          isActive={activeOption.value && value === activeOption.value.value}
-          onClick={handleSelect}
-          onMouseenter={handleMouseEnter}
-          onMouseleave={handleMouseLeave}
+          internal
         />
       );
     };
 
     const renderDropdown = () => {
-      if (!measureInfo.value.measuring || nodes.value.length === 0) {
-        return null;
-      }
-
-      const _children = nodes.value.map((node) => renderOption(node));
-
-      return <DropdownPanel ref={dropdownRef}>{_children}</DropdownPanel>;
+      return (
+        <SelectDropdown ref={dropdownRef}>
+          {propOptionInfos.value.map((info) =>
+            renderOption(info as OptionInfo)
+          )}
+        </SelectDropdown>
+      );
     };
 
     const mirrorRef = ref<HTMLElement>();
@@ -367,18 +303,18 @@ export default defineComponent({
               <ArcoTextarea
                 {...attrs}
                 ref={inputRef}
-                modelValue={computeValue.value}
+                modelValue={computedValue.value}
                 onInput={handleInput}
                 onKeydown={handleKeyDown}
               />
             </ResizeObserver>
-            {measureInfo.value.measuring && nodes.value.length > 0 && (
+            {measureInfo.value.measuring && validOptionInfos.value.length > 0 && (
               <div
                 ref={mirrorRef}
                 style={mirrorStyle.value}
                 class={`${prefixCls}-measure`}
               >
-                {computeValue.value?.slice(0, measureInfo.value.location)}
+                {computedValue.value?.slice(0, measureInfo.value.location)}
                 <Trigger
                   v-slots={{ content: renderDropdown }}
                   trigger="focus"
@@ -413,7 +349,7 @@ export default defineComponent({
             v-slots={slots}
             {...attrs}
             ref={inputRef}
-            modelValue={computeValue.value}
+            modelValue={computedValue.value}
             onInput={handleInput}
             onKeydown={handleKeyDown}
           />

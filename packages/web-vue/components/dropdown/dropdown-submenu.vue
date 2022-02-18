@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, toRefs } from 'vue';
 import Trigger from '../trigger';
 import DropdownPanel from './dropdown-panel.vue';
 import DropdownOption from './dropdown-option.vue';
@@ -80,7 +80,32 @@ export default defineComponent({
       type: String as PropType<'rt' | 'lt'>,
       default: 'rt',
     },
+    /**
+     * @zh 弹出框是否可见
+     * @en Whether the popup is visible
+     * @vModel
+     */
+    popupVisible: {
+      type: Boolean,
+      default: undefined,
+    },
+    /**
+     * @zh 弹出框默认是否可见（非受控模式）
+     * @en Whether the popup is visible by default (uncontrolled mode)
+     */
+    defaultPopupVisible: {
+      type: Boolean,
+      default: false,
+    },
   },
+  emits: [
+    'update:popupVisible',
+    /**
+     * @zh 下拉框显示状态发生改变时触发
+     * @en Triggered when the display status of the drop-down box changes
+     */
+    'popupVisibleChange',
+  ],
   /**
    * @zh 子菜单内容
    * @en Submenu content
@@ -93,12 +118,14 @@ export default defineComponent({
    * @version 2.10.0
    */
   setup(props, { emit }) {
+    const { defaultPopupVisible, popupVisible } = toRefs(props);
     const prefixCls = getPrefixCls('dropdown');
 
-    const { computedPopupVisible, handlePopupVisibleChange } = useTrigger(
-      props,
-      { emit }
-    );
+    const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
+      defaultPopupVisible,
+      popupVisible,
+      emit,
+    });
 
     return {
       prefixCls,

@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, provide, reactive } from 'vue';
+import { defineComponent, PropType, provide, reactive, toRefs } from 'vue';
 import { TriggerEvent } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import Trigger from '../trigger';
@@ -111,12 +111,14 @@ export default defineComponent({
    * @version 2.10.0
    */
   setup(props, { emit }) {
+    const { defaultPopupVisible, popupVisible } = toRefs(props);
     const prefixCls = getPrefixCls('dropdown');
 
-    const { computedPopupVisible, handlePopupVisibleChange } = useTrigger(
-      props,
-      { emit }
-    );
+    const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
+      defaultPopupVisible,
+      popupVisible,
+      emit,
+    });
 
     const handleOptionClick = (
       value: string | number | Record<string, unknown> | undefined,

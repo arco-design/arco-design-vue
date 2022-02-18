@@ -19,7 +19,8 @@ export default defineComponent({
   name: 'SelectView',
   props: {
     modelValue: {
-      type: [Object, Array] as PropType<TagData | TagData[]>,
+      type: Array as PropType<TagData[]>,
+      required: true,
     },
     inputValue: String,
     placeholder: String,
@@ -68,7 +69,7 @@ export default defineComponent({
       default: 0,
     },
     formatLabel: {
-      type: Function,
+      type: Function as PropType<(data: TagData) => string>,
     },
     retainInputValue: {
       type: Boolean,
@@ -77,7 +78,7 @@ export default defineComponent({
     feedback: String,
   },
   emits: ['remove', 'clear'],
-  setup(props, { emit, slots, attrs }) {
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('select-view');
 
     const { opened } = toRefs(props);
@@ -88,23 +89,7 @@ export default defineComponent({
       () => componentRef.value?.inputRef
     );
 
-    const validValue = computed(() => {
-      // transform to array
-      if (props.multiple && !isArray(props.modelValue)) {
-        return props.modelValue ? [props.modelValue] : [];
-      }
-      // transform to object
-      if (!props.multiple && isArray(props.modelValue)) {
-        return props.modelValue[0];
-      }
-      return props.modelValue;
-    });
-
-    const isEmptyValue = computed(() =>
-      isArray(validValue.value)
-        ? validValue.value.length === 0
-        : !validValue.value
-    );
+    const isEmptyValue = computed(() => props.modelValue.length === 0);
     const enabledInput = computed(() => props.allowSearch || props.allowCreate);
     const showClearBtn = computed(
       () => props.allowClear && !props.disabled && !isEmptyValue.value
@@ -140,7 +125,7 @@ export default defineComponent({
           <IconHover
             class={`${prefixCls}-clear-btn`}
             onClick={handleClear}
-            onMousedown={(e) => e.stopPropagation()}
+            onMousedown={(ev: MouseEvent) => ev.stopPropagation()}
           >
             <IconClose />
           </IconHover>
@@ -169,7 +154,7 @@ export default defineComponent({
     ]);
 
     const render = () => {
-      if (isArray(validValue.value)) {
+      if (props.multiple) {
         return (
           <InputTag
             ref={componentRef}
@@ -180,7 +165,7 @@ export default defineComponent({
             }}
             baseCls={prefixCls}
             class={cls.value}
-            modelValue={validValue.value}
+            modelValue={props.modelValue}
             inputValue={props.inputValue}
             formatTag={props.formatLabel}
             focused={props.opened}
@@ -205,7 +190,7 @@ export default defineComponent({
           }}
           baseCls={prefixCls}
           class={cls.value}
-          modelValue={validValue.value}
+          modelValue={props.modelValue[0]}
           inputValue={props.inputValue}
           focused={props.opened}
           placeholder={props.placeholder}
