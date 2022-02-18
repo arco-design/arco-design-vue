@@ -1,4 +1,5 @@
-import { CSSProperties, VNode } from 'vue';
+import { CSSProperties } from 'vue';
+import { Breakpoint } from '../_utils/responsive-observe';
 import { Data } from '../_utils/types';
 
 export type MenuTheme = 'light' | 'dark';
@@ -30,6 +31,7 @@ export interface MenuProps {
   triggerProps?: Data;
   tooltipProps?: Data;
   autoOpenSelected: boolean;
+  breakpoint: Breakpoint | undefined;
   // internal
   prefixCls?: string;
   inTrigger: boolean;

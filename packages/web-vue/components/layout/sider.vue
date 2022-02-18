@@ -47,9 +47,9 @@ import IconLeft from '../icon/icon-left';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber } from '../_utils/is';
 import useMergeState from '../_hooks/use-merge-state';
-import responsiveObserve from '../_utils/responsive-observe';
 import { LayoutSiderInjectionKey, SiderInjectionKey } from './context';
 import ResizeBox from '../resize-box';
+import { useResponsive } from '../_hooks/use-responsive';
 
 const generateId = (() => {
   let i = 0;
@@ -224,26 +224,14 @@ export default defineComponent({
     };
 
     // Subscription Responsive
-    const responsiveObserveToken = ref<string>('');
-    onMounted(() => {
-      responsiveObserveToken.value = responsiveObserve.subscribe(
-        (screens, breakpointChecked) => {
-          if (!breakpoint || !breakpoint.value) return;
-          if (!breakpointChecked || breakpointChecked === breakpoint?.value) {
-            const newCollapsed = !screens[breakpoint.value];
-            if (newCollapsed !== localCollapsed.value) {
-              setLocalCollapsed(newCollapsed);
-              emit('update:collapsed', newCollapsed);
-              emit('collapse', newCollapsed, 'responsive');
-              emit('breakpoint', newCollapsed);
-            }
-          }
-        }
-      );
-    });
-    // Unsubscribe
-    onUnmounted(() => {
-      responsiveObserve.unsubscribe(responsiveObserveToken.value);
+    useResponsive(breakpoint, (checked) => {
+      const newCollapsed = !checked;
+      if (newCollapsed !== localCollapsed.value) {
+        setLocalCollapsed(newCollapsed);
+        emit('update:collapsed', newCollapsed);
+        emit('collapse', newCollapsed, 'responsive');
+        emit('breakpoint', newCollapsed);
+      }
     });
 
     const uniqueId = generateId('__arco_layout_sider');
