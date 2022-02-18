@@ -1,3 +1,6 @@
+import { Ref } from 'vue';
+import { Size } from '../_utils/constant';
+
 export const VALIDATE_STATUSES = [
   'success',
   'warning',
@@ -174,4 +177,27 @@ export interface ValidatedError {
    * @en Error message
    */
   message: string;
+}
+
+export interface FormItemEventHandler {
+  /**
+   * @zh onChange
+   * @en onChange
+   */
+  onChange?: (ev?: Event) => void;
+  /**
+   * @zh onInput
+   * @en onInput
+   */
+  onInput?: (ev?: Event) => void;
+  /**
+   * @zh onFocus
+   * @en onFocus
+   */
+  onFocus?: (ev?: Event) => void;
+  /**
+   * @zh onBlur
+   * @en onBlur
+   */
+  onBlur?: (ev?: Event) => void;
 }

@@ -20,6 +20,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { DIRECTIONS, Direction } from '../_utils/constant';
 import { checkboxGroupKey } from './context';
 import { EmitType } from '../_utils/types';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'CheckboxGroup',
@@ -77,6 +78,9 @@ export default defineComponent({
   setup(props, { emit }) {
     const { disabled } = toRefs(props);
     const prefixCls = getPrefixCls('checkbox-group');
+    const { mergedDisabled, eventHandlers } = useFormItem({
+      disabled,
+    });
 
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
@@ -84,9 +88,8 @@ export default defineComponent({
     const handleChange = (value: Array<string | number>, e: Event) => {
       _value.value = value;
       emit('update:modelValue', value);
-      nextTick(() => {
-        emit('change', value, e);
-      });
+      emit('change', value, e);
+      eventHandlers.value?.onChange?.(e);
     };
 
     provide(
@@ -94,7 +97,7 @@ export default defineComponent({
       reactive({
         name: 'ArcoCheckboxGroup',
         computedValue,
-        disabled,
+        disabled: mergedDisabled,
         handleChange,
       })
     );

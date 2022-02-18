@@ -76,7 +76,6 @@
 import {
   computed,
   defineComponent,
-  inject,
   PropType,
   provide,
   reactive,
@@ -96,7 +95,6 @@ import { useSelectedPath } from './hooks/use-selected-path';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 import { cascaderInjectionKey } from './context';
 import { Size } from '../_utils/constant';
-import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Cascader',
@@ -185,8 +183,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 是否允许搜索

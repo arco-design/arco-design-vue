@@ -23,6 +23,7 @@ import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
 import { Data, EmitType } from '../_utils/types';
 import { ImagePreviewGroup } from '../image';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Upload',
@@ -376,6 +377,7 @@ export default defineComponent({
       showLink,
     } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
+    const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
 
     // Internally maintained picture list
     const _fileList = ref<FileItem[]>([]);
@@ -417,6 +419,7 @@ export default defineComponent({
     const updateFileList = (file: FileItem) => {
       emit('update:fileList', _fileList.value);
       emit('change', _fileList.value, file);
+      eventHandlers.value?.onChange?.();
     };
 
     const uploadFile = (fileItem: FileItem) => {
@@ -605,7 +608,7 @@ export default defineComponent({
     provide(
       uploadInjectionKey,
       reactive({
-        disabled,
+        disabled: mergedDisabled,
         listType,
         iconCls: `${prefixCls}-icon`,
         showRemoveButton,
@@ -639,7 +642,7 @@ export default defineComponent({
           v-slots={{
             default: slots['upload-button'],
           }}
-          disabled={props.disabled}
+          disabled={mergedDisabled.value}
           draggable={props.draggable}
           listType={props.listType}
           uploadFiles={uploadFiles}

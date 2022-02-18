@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, ref } from 'vue';
+import { computed, defineComponent, PropType, ref, toRef, toRefs } from 'vue';
 import NP from 'number-precision';
 import IconStarFill from '../icon/icon-star-fill';
 import IconFaceMehFill from '../icon/icon-face-meh-fill';
@@ -6,6 +6,7 @@ import IconFaceSmileFill from '../icon/icon-face-smile-fill';
 import IconFaceFrownFill from '../icon/icon-face-frown-fill';
 import { getPrefixCls } from '../_utils/global-config';
 import { EmitType } from '../_utils/types';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Rate',
@@ -100,6 +101,9 @@ export default defineComponent({
   ],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('rate');
+    const { mergedDisabled: _mergedDisabled, eventHandlers } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
     const _value = ref(props.defaultValue);
 
     const animation = ref(false);
@@ -108,7 +112,9 @@ export default defineComponent({
 
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
-    const disabled = computed(() => props.disabled || props.readonly);
+    const mergedDisabled = computed(
+      () => _mergedDisabled.value || props.readonly
+    );
 
     const resetHoverIndex = () => {
       if (hoverIndex.value) {
@@ -132,10 +138,12 @@ export default defineComponent({
         _value.value = newValue;
         emit('update:modelValue', newValue);
         emit('change', newValue);
+        eventHandlers.value?.onChange?.();
       } else if (props.allowClear) {
         _value.value = 0;
         emit('update:modelValue', 0);
         emit('change', 0);
+        eventHandlers.value?.onChange?.();
       }
     };
 
@@ -169,13 +177,13 @@ export default defineComponent({
         ? renderGradingCharacter(index, displayIndex)
         : slots.character?.(index) ?? <IconStarFill />;
 
-      const leftProps = disabled.value
+      const leftProps = mergedDisabled.value
         ? {}
         : {
             onMouseenter: () => handleMouseEnter(index, true),
             onClick: () => handleClick(index, true),
           };
-      const rightProps = disabled.value
+      const rightProps = mergedDisabled.value
         ? {}
         : {
             onMouseenter: () => handleMouseEnter(index, false),
@@ -221,7 +229,7 @@ export default defineComponent({
       prefixCls,
       {
         [`${prefixCls}-readonly`]: props.readonly,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: _mergedDisabled.value,
       },
     ]);
 

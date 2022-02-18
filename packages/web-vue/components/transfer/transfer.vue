@@ -57,6 +57,7 @@ import {
   provide,
   reactive,
   ref,
+  toRef,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import ArcoButton from '../button';
@@ -65,6 +66,7 @@ import IconLeft from '../icon/icon-left';
 import IconRight from '../icon/icon-right';
 import { DataInfo, TransferItem } from './interface';
 import { transferInjectionKey } from './context';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Transfer',
@@ -191,6 +193,9 @@ export default defineComponent({
    * @slot item
    */
   setup(props, { emit, slots }) {
+    const { mergedDisabled, eventHandlers } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
     const prefixCls = getPrefixCls('transfer');
 
     const _target = ref(props.defaultValue);
@@ -264,6 +269,7 @@ export default defineComponent({
       _target.value = newTarget;
       emit('update:modelValue', newTarget);
       emit('change', newTarget);
+      eventHandlers.value?.onChange?.();
     };
 
     const handleClick = (target: 'target' | 'source') => {
@@ -293,7 +299,7 @@ export default defineComponent({
       prefixCls,
       {
         [`${prefixCls}-simple`]: props.simple,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
       },
     ]);
 

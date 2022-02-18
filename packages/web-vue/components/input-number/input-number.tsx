@@ -1,4 +1,4 @@
-import { computed, defineComponent, inject, PropType, ref, watch } from 'vue';
+import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber, isUndefined } from '../_utils/is';
@@ -10,7 +10,8 @@ import ArcoButton from '../button';
 import ArcoInput from '../input';
 import { EmitType } from '../_utils/types';
 import { Size } from '../_utils/constant';
-import { configProviderInjectionKey } from '../config-provider/context';
+import { useFormItem } from '../_hooks/use-form-item';
+import { useSize } from '../_hooks/use-size';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -60,6 +61,14 @@ export default defineComponent({
      * @en Whether to disable
      */
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否为错误状态
+     * @en Whether it is an error state
+     */
+    error: {
       type: Boolean,
       default: false,
     },
@@ -114,8 +123,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     // for JSX
     onChange: {
@@ -150,8 +157,15 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit, slots }) {
+    const { size, disabled, error } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
+    const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
+      size,
+      disabled,
+      error,
+    });
+    const { mergedSize } = useSize(_mergedSize);
 
     const getStringValue = (number: number | undefined) => {
       return isUndefined(number)
@@ -359,17 +373,17 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-mode-${props.mode}`,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
     ]);
 
     const renderPrependButton = () => {
       return (
         <ArcoButton
-          size={props.size}
+          size={mergedSize.value}
           v-slots={{ icon: () => <IconMinus /> }}
           class={`${prefixCls}-step-button`}
-          disabled={props.disabled || isMin.value}
-          onMousedown={(e: MouseEvent) => handleStepButton(e, 'minus', true)}
+          disabled={mergedDisabled.value || isMin.value}
+          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'minus', true)}
           onMouseup={clearRepeatTimer}
           onMouseleave={clearRepeatTimer}
         />
@@ -379,11 +393,11 @@ export default defineComponent({
     const renderAppendButton = () => {
       return (
         <ArcoButton
-          size={props.size}
+          size={mergedSize.value}
           v-slots={{ icon: () => <IconPlus /> }}
           class={`${prefixCls}-step-button`}
-          disabled={props.disabled || isMax.value}
-          onMousedown={(e: MouseEvent) => handleStepButton(e, 'plus', true)}
+          disabled={mergedDisabled.value || isMax.value}
+          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'plus', true)}
           onMouseup={clearRepeatTimer}
           onMouseleave={clearRepeatTimer}
         />
@@ -405,10 +419,10 @@ export default defineComponent({
         ref={inputRef}
         class={cls.value}
         type="text"
-        size={props.size}
+        size={mergedSize.value}
         modelValue={_value.value}
         placeholder={props.placeholder}
-        disabled={props.disabled}
+        disabled={mergedDisabled.value}
         onInput={handleInput}
         onFocus={handleFocus}
         onBlur={handleBlur}

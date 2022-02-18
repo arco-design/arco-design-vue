@@ -5,6 +5,7 @@ import {
   PropType,
   toRefs,
   ComponentPublicInstance,
+  toRef,
 } from 'vue';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
@@ -16,6 +17,7 @@ import SelectOption from '../select/option.vue';
 import { EmitType } from '../_utils/types';
 import { useSelect } from '../select/hooks/use-select';
 import { getKeyFromValue } from '../select/utils';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'AutoComplete',
@@ -128,6 +130,10 @@ export default defineComponent({
    */
   setup(props, { emit, attrs, slots }) {
     const prefixCls = getPrefixCls('auto-complete');
+    const { mergedDisabled } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
+
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement>();
     const computedValue = computed(() => props.modelValue ?? _value.value);
@@ -244,7 +250,7 @@ export default defineComponent({
         clickToClose={false}
         preventFocus={true}
         popupOffset={4}
-        disabled={props.disabled}
+        disabled={mergedDisabled.value}
         autoFitPopupWidth
         {...props.triggerProps}
         onPopupVisibleChange={handlePopupVisibleChange}
@@ -254,7 +260,7 @@ export default defineComponent({
           ref={inputRef}
           modelValue={computedValue.value}
           onInput={handleInputValueChange}
-          disabled={props.disabled}
+          disabled={mergedDisabled.value}
           {...attrs}
           onKeydown={handleKeyDown}
         />

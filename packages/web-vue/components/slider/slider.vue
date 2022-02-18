@@ -29,7 +29,7 @@
         :style="getBtnStyle(computedValue[0])"
         :value="computedValue[0]"
         :direction="direction"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :format-tooltip="formatTooltip"
         @movestart="handleMoveStart"
         @moving="handleStartMoving"
@@ -39,7 +39,7 @@
         :style="getBtnStyle(computedValue[1])"
         :value="computedValue[1]"
         :direction="direction"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :format-tooltip="formatTooltip"
         @movestart="handleMoveStart"
         @moving="handleEndMoving"
@@ -62,7 +62,7 @@
 
 <script lang="ts">
 import type { PropType, CSSProperties } from 'vue';
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref, toRef } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import SliderButton from './slider-button.vue';
@@ -74,6 +74,7 @@ import { isArray, isUndefined } from '../_utils/is';
 import { Direction, DIRECTIONS } from '../_utils/constant';
 import { getOffsetPercent, getPositionStyle } from './utils';
 import { EmitType } from '../_utils/types';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Slider',
@@ -194,6 +195,9 @@ export default defineComponent({
   ],
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('slider');
+    const { mergedDisabled, eventHandlers } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
 
     const trackRef = ref<HTMLElement | null>(null);
     const trackRect = ref<DOMRect>();
@@ -284,14 +288,16 @@ export default defineComponent({
       if (props.range) {
         emit('update:modelValue', [startValue.value, endValue.value]);
         emit('change', [startValue.value, endValue.value]);
+        eventHandlers.value?.onChange?.();
       } else {
         emit('update:modelValue', endValue.value);
         emit('change', endValue.value);
+        eventHandlers.value?.onChange?.();
       }
     };
 
     const handleClick = (e: MouseEvent) => {
-      if (props.disabled) {
+      if (mergedDisabled.value) {
         return;
       }
 
@@ -338,6 +344,7 @@ export default defineComponent({
       startValue.value = value;
       emit('update:modelValue', [startValue.value, endValue.value]);
       emit('change', [startValue.value, endValue.value]);
+      eventHandlers.value?.onChange?.();
     };
 
     const handleMoveEnd = () => {
@@ -355,7 +362,7 @@ export default defineComponent({
     const trackCls = computed(() => [
       `${prefixCls}-track`,
       {
-        [`${prefixCls}-track-disabled`]: props.disabled,
+        [`${prefixCls}-track-disabled`]: mergedDisabled.value,
         [`${prefixCls}-track-vertical`]: props.direction === 'vertical',
       },
     ]);
@@ -366,6 +373,7 @@ export default defineComponent({
       trackCls,
       trackRef,
       computedValue,
+      mergedDisabled,
       markList,
       getBtnStyle,
       getBarStyle,

@@ -14,6 +14,7 @@ import IconClose from '../../icon/icon-close';
 import IconExpand from '../../icon/icon-expand';
 import IconSearch from '../../icon/icon-search';
 import { TagData } from '../../input-tag/interface';
+import { useFormItem } from '../../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'SelectView',
@@ -42,7 +43,6 @@ export default defineComponent({
     },
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
     },
     bordered: {
       type: Boolean,
@@ -75,11 +75,11 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    feedback: String,
   },
-  emits: ['remove', 'clear'],
+  emits: ['remove', 'clear', 'focus', 'blur'],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('select-view');
+    const { feedback, eventHandlers } = useFormItem();
 
     const { opened } = toRefs(props);
 
@@ -94,6 +94,16 @@ export default defineComponent({
     const showClearBtn = computed(
       () => props.allowClear && !props.disabled && !isEmptyValue.value
     );
+
+    const handleFocus = (ev: FocusEvent) => {
+      emit('focus', ev);
+      eventHandlers.value?.onFocus?.(ev);
+    };
+
+    const handleBlur = (ev: FocusEvent) => {
+      emit('blur', ev);
+      eventHandlers.value?.onBlur?.(ev);
+    };
 
     const handleRemove = (tag: string) => {
       emit('remove', tag);
@@ -131,7 +141,7 @@ export default defineComponent({
           </IconHover>
         )}
         <span class={`${prefixCls}-icon`}>{renderIcon()}</span>
-        {Boolean(props.feedback) && <FeedbackIcon type={props.feedback} />}
+        {Boolean(feedback.value) && <FeedbackIcon type={feedback.value} />}
       </>
     );
 
@@ -176,7 +186,10 @@ export default defineComponent({
             maxTagCount={props.maxTagCount}
             disabledInput={!props.allowSearch && !props.allowCreate}
             retainInputValue
+            uninjectFormItemContext
             onRemove={handleRemove}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         );
       }
@@ -199,12 +212,17 @@ export default defineComponent({
           error={props.error}
           formatLabel={props.formatLabel}
           enabledInput={enabledInput.value}
+          uninjectFormItemContext
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       );
     };
 
     return {
       inputRef,
+      handleFocus,
+      handleBlur,
       render,
     };
   },

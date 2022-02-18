@@ -16,7 +16,7 @@
       <textarea
         ref="textareaRef"
         v-bind="getTextareaAttrs($attrs)"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :class="prefixCls"
         :style="textareaStyle"
         :value="computedValue"
@@ -57,6 +57,7 @@ import {
   onMounted,
   PropType,
   ref,
+  toRefs,
   watch,
 } from 'vue';
 import ResizeObserver from '../_components/resize-observer';
@@ -69,6 +70,7 @@ import { EmitType } from '../_utils/types';
 import { omit } from '../_utils/omit';
 import { INPUT_EVENTS } from '../_utils/constant';
 import pick from '../_utils/pick';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Textarea',
@@ -213,7 +215,13 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit, attrs }) {
+    const { disabled, error } = toRefs(props);
     const prefixCls = getPrefixCls('textarea');
+    const {
+      mergedDisabled,
+      mergedError: _mergedError,
+      eventHandlers,
+    } = useFormItem({ disabled, error });
 
     const textareaRef = ref<HTMLInputElement>();
     const textareaStyle = ref<CSSProperties>();
@@ -243,16 +251,15 @@ export default defineComponent({
 
     const valueLength = computed(() => getValueLength(computedValue.value));
 
-    const mergedError = computed(() => {
-      if (props.error) {
-        return props.error;
-      }
-      return Boolean(
-        computedMaxLength.value &&
-          maxLengthErrorOnly.value &&
-          valueLength.value > computedMaxLength.value
-      );
-    });
+    const mergedError = computed(
+      () =>
+        _mergedError.value ||
+        Boolean(
+          computedMaxLength.value &&
+            maxLengthErrorOnly.value &&
+            valueLength.value > computedMaxLength.value
+        )
+    );
 
     const isScroll = ref(false);
 
@@ -292,15 +299,27 @@ export default defineComponent({
       });
     };
 
+    let preValue = computedValue.value;
+    const emitChange = (value: string, ev: Event) => {
+      if (value !== preValue) {
+        preValue = value;
+        emit('change', value, ev);
+        eventHandlers.value?.onChange?.(ev);
+      }
+    };
+
     const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
+      preValue = computedValue.value;
       emit('focus', ev);
+      eventHandlers.value?.onFocus?.(ev);
     };
 
     const handleBlur = (ev: FocusEvent) => {
       focused.value = false;
-      emit('change', computedValue.value, ev);
       emit('blur', ev);
+      eventHandlers.value?.onBlur?.(ev);
+      emitChange(computedValue.value, ev);
     };
 
     const handleComposition = (e: CompositionEvent) => {
@@ -311,6 +330,7 @@ export default defineComponent({
         compositionValue.value = '';
         updateValue(value);
         emit('input', value, e);
+        eventHandlers.value?.onInput?.(e);
       } else {
         isComposition.value = true;
       }
@@ -322,6 +342,7 @@ export default defineComponent({
       if (!isComposition.value) {
         updateValue(value);
         emit('input', value, e);
+        eventHandlers.value?.onInput?.(e);
       } else {
         compositionValue.value = value;
       }
@@ -351,7 +372,7 @@ export default defineComponent({
       `${prefixCls}-wrapper`,
       {
         [`${prefixCls}-focus`]: focused.value,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-error`]: mergedError.value,
         [`${prefixCls}-scroll`]: isScroll.value,
       },
@@ -459,6 +480,7 @@ export default defineComponent({
       showClearBtn,
       valueLength,
       computedMaxLength,
+      mergedDisabled,
       getWrapperAttrs,
       getTextareaAttrs,
       handleInput,

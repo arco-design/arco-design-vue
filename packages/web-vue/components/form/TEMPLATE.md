@@ -39,9 +39,22 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/async.md
 
+@import ./__demo__/custom.md
 
 %%API(form.vue)%%
 
 %%API(form-item.tsx)%%
 
 %%INTERFACE(interface.ts)%%
+
+useFormItem: ({
+size?: Ref<Size | undefined>;
+disabled?: Ref<boolean>;
+error?: Ref<boolean>;
+}) => ({
+mergedSize:Ref<Size>;
+mergedDisabled:Ref<boolean>;
+mergedError:Ref<boolean>;
+feedback:Ref<string>;
+eventHandlers:Ref<FormItemEventHandler>;
+}

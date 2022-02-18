@@ -28,7 +28,7 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 @import ./__demo__/async.md
 
-
+@import ./__demo__/custom.md
 
 ### `<form>` Props
 

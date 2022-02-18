@@ -5,7 +5,7 @@
         cls,
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
       ]"
-      :href="disabled || loading ? undefined : href"
+      :href="mergedDisabled || loading ? undefined : href"
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
@@ -22,7 +22,7 @@
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
       ]"
       :type="htmlType"
-      :disabled="disabled"
+      :disabled="mergedDisabled"
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
@@ -40,19 +40,15 @@
  * @todo 添加twoChineseChars
  */
 import type { PropType } from 'vue';
-import { defineComponent, computed, inject } from 'vue';
-import {
-  SIZES,
-  BORDER_SHAPES,
-  BorderShape,
-  Status,
-  Size,
-} from '../_utils/constant';
+import { defineComponent, computed, inject, toRef, toRefs } from 'vue';
+import { BORDER_SHAPES, BorderShape, Status, Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
+import { useSize } from '../_hooks/use-size';
+import { useFormItem } from '../_hooks/use-form-item';
 
 const BUTTON_TYPES = [
   'primary',
@@ -101,9 +97,6 @@ export default defineComponent({
     status: {
       type: String as PropType<Status>,
       default: 'normal',
-      // validator: (value: any) => {
-      //   return STATUSES.includes(value);
-      // },
     },
     /**
      * @zh 按钮的尺寸
@@ -113,8 +106,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 按钮的宽度是否随容器自适应。
@@ -172,18 +163,24 @@ export default defineComponent({
    * @slot icon
    */
   setup(props, { emit }) {
+    const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('btn');
+    const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
+      size,
+      disabled,
+    });
+    const { mergedSize } = useSize(_mergedSize);
 
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-${props.type}`,
       `${prefixCls}-shape-${props.shape}`,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       `${prefixCls}-status-${props.status}`,
       {
         [`${prefixCls}-long`]: props.long,
         [`${prefixCls}-loading`]: props.loading,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-link`]: isString(props.href),
       },
     ]);
@@ -198,6 +195,7 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
+      mergedDisabled,
       handleClick,
     };
   },

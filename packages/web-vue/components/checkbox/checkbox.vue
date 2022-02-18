@@ -1,5 +1,5 @@
 <template>
-  <span :class="cls" @click="handleClick">
+  <label :class="cls">
     <input
       ref="checkboxRef"
       type="checkbox"
@@ -9,6 +9,8 @@
       :disabled="mergedDisabled"
       @click.stop
       @change="handleChange"
+      @focus="handleFocus"
+      @blur="handleBlur"
     />
     <icon-hover
       :class="`${prefixCls}-icon-hover`"
@@ -21,18 +23,27 @@
     <span v-if="$slots.default" :class="`${prefixCls}-label`">
       <slot />
     </span>
-  </span>
+  </label>
 </template>
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, inject, nextTick, ref, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  inject,
+  nextTick,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconCheck from './icon-check';
 import { isArray } from '../_utils/is';
 import { checkboxGroupKey } from './context';
 import { EmitType } from '../_utils/types';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Checkbox',
@@ -105,15 +116,19 @@ export default defineComponent({
     'change',
   ],
   setup(props, { emit }) {
+    const { disabled } = toRefs(props);
     const prefixCls = getPrefixCls('checkbox');
     const checkboxRef = ref<HTMLInputElement>();
     const checkboxGroupCtx = !props.uninjectGroupContext
       ? inject(checkboxGroupKey, undefined)
       : undefined;
     const isGroup = checkboxGroupCtx?.name === 'ArcoCheckboxGroup';
+    const { mergedDisabled: _mergedDisabled, eventHandlers } = useFormItem({
+      disabled,
+    });
 
     const mergedDisabled = computed(
-      () => checkboxGroupCtx?.disabled || props.disabled
+      () => checkboxGroupCtx?.disabled || _mergedDisabled?.value
     );
 
     const _checked = ref(props.defaultChecked);
@@ -148,6 +163,7 @@ export default defineComponent({
       } else {
         emit('update:modelValue', newValue);
         emit('change', newValue, e);
+        eventHandlers.value?.onChange?.(e);
       }
 
       nextTick(() => {
@@ -169,10 +185,23 @@ export default defineComponent({
       },
     ]);
 
-    const handleClick = (e: MouseEvent) => {
-      if (checkboxRef.value && e.target !== checkboxRef.value) {
-        checkboxRef.value.click();
-      }
+    // const handleClick = (ev: MouseEvent) => {
+    //   if (
+    //     !props.disabled &&
+    //     checkboxRef.value &&
+    //     ev.target !== checkboxRef.value
+    //   ) {
+    //     ev.preventDefault();
+    //     checkboxRef.value.click();
+    //   }
+    // };
+
+    const handleFocus = (ev: FocusEvent) => {
+      eventHandlers.value?.onFocus?.(ev);
+    };
+
+    const handleBlur = (ev: FocusEvent) => {
+      eventHandlers.value?.onBlur?.(ev);
     };
 
     watch(computedValue, (value) => {
@@ -197,8 +226,8 @@ export default defineComponent({
       mergedDisabled,
       computedValue,
       computedChecked,
-      handleClick,
-      handleChange,
+      handleFocus,
+      handleBlur,
     };
   },
 });

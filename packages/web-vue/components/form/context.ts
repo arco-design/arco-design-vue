@@ -3,6 +3,7 @@ import { Data } from '../_utils/types';
 import {
   FieldData,
   FieldRule,
+  FormItemEventHandler,
   ValidatedError,
   ValidateStatus,
 } from './interface';
@@ -34,6 +35,11 @@ export interface FormContext {
 }
 
 export interface FormItemContext {
+  eventHandlers: FormItemEventHandler;
+  size: Size | undefined;
+  disabled: boolean;
+  error: boolean;
+  feedback: string | undefined;
   updateValidateState: (
     field: string,
     { status, message }: { status: ValidateStatus | ''; message: string }
@@ -51,5 +57,8 @@ export interface FormItemInfo {
   setField: (data: FieldData) => void;
 }
 
-export const formItemKey: InjectionKey<FormItemContext> = Symbol('formItemCtx');
-export const formKey: InjectionKey<FormContext> = Symbol('formCtx');
+export const formItemInjectionKey: InjectionKey<FormItemContext> = Symbol(
+  'ArcoFormItemContext'
+);
+export const formInjectionKey: InjectionKey<FormContext> =
+  Symbol('ArcoFormContext');

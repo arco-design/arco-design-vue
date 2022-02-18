@@ -37,6 +37,7 @@ import { VirtualListProps } from '../_components/virtual-list/interface';
 import { useSelect } from './hooks/use-select';
 import { TagData } from '../input-tag/interface';
 import { useTrigger } from '../_hooks/use-trigger';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Select',
@@ -389,9 +390,23 @@ export default defineComponent({
    */
   setup(props, { slots, emit, attrs }) {
     // props
-    const { options, filterOption, valueKey, multiple, popupVisible } =
-      toRefs(props);
+    const {
+      size,
+      disabled,
+      error,
+      options,
+      filterOption,
+      valueKey,
+      multiple,
+      popupVisible,
+    } = toRefs(props);
     const prefixCls = getPrefixCls('select');
+    const { mergedSize, mergedDisabled, mergedError, eventHandlers } =
+      useFormItem({
+        size,
+        disabled,
+        error,
+      });
     const component = computed(() => (props.virtualListProps ? 'div' : 'li'));
     const retainInputValue = computed(
       () =>
@@ -516,6 +531,7 @@ export default defineComponent({
       _value.value = value;
       emit('update:modelValue', value);
       emit('change', value);
+      eventHandlers.value?.onChange?.();
     };
 
     const updateInputValue = (inputValue: string) => {
@@ -725,7 +741,7 @@ export default defineComponent({
         preventFocus
         autoFitPopupWidth
         autoFitTransformOrigin
-        disabled={props.disabled}
+        disabled={mergedDisabled.value}
         popupVisible={computedPopupVisible.value}
         unmountOnClose={props.unmountOnClose}
         clickToClose={!(props.allowSearch || props.allowCreate)}
@@ -744,8 +760,8 @@ export default defineComponent({
           modelValue={selectViewValue.value}
           inputValue={computedInputValue.value}
           multiple={props.multiple}
-          disabled={props.disabled}
-          error={props.error}
+          disabled={mergedDisabled.value}
+          error={mergedError.value}
           loading={props.loading}
           allowClear={props.allowClear}
           allowCreate={props.allowCreate}
@@ -754,7 +770,7 @@ export default defineComponent({
           maxTagCount={props.maxTagCount}
           placeholder={props.placeholder}
           bordered={props.bordered}
-          size={props.size}
+          size={mergedSize.value}
           formatLabel={formatLabel.value}
           onInputValueChange={handleInputValueChange}
           onRemove={handleRemove}

@@ -35,9 +35,6 @@ export default defineComponent({
     status: {
       type: String as PropType<Status>,
       default: 'normal',
-      validator: (value: any) => {
-        return STATUSES.includes(value);
-      },
     },
     /**
      * @zh 鼠标悬浮时存在底色

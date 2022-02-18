@@ -8,7 +8,7 @@
     animation-name="slide-dynamic-origin"
     :prevent-focus="true"
     v-bind="triggerProps"
-    :disabled="disabled"
+    :disabled="mergedDisabled"
     :popup-visible="panelVisible"
     :popup-container="popupContainer"
     auto-fit-transform-origin
@@ -24,7 +24,7 @@
         :loading="loading"
         :size="size"
         :max-tags="maxTags"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :opened="panelVisible"
         :error="error"
         :border="border"
@@ -83,7 +83,6 @@ import {
   ref,
   toRefs,
   StyleValue,
-  inject,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue } from './interface';
@@ -105,8 +104,8 @@ import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
 import pickSubCompSlots from '../_utils/pick-sub-comp-slots';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
+import { useFormItem } from '../_hooks/use-form-item';
 
 const isEmpty = (val: any) => {
   return !val || (isArray(val) && val.length === 0) || isEmptyObject(val);
@@ -152,8 +151,6 @@ export default defineComponent({
      * */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 是否显示边框
@@ -435,12 +432,16 @@ export default defineComponent({
       treeCheckStrictly,
       data,
       fieldNames,
+      disabled,
       labelInValue,
       filterTreeNode,
       disableFilter,
       dropdownStyle,
       treeProps,
     } = toRefs(props);
+    const { mergedDisabled, eventHandlers } = useFormItem({
+      disabled,
+    });
 
     const prefixCls = getPrefixCls('tree-select');
 
@@ -485,6 +486,7 @@ export default defineComponent({
 
         emit('update:modelValue', emitValue);
         emit('change', emitValue);
+        eventHandlers.value?.onChange?.();
       });
     };
 
@@ -535,6 +537,7 @@ export default defineComponent({
       prefixCls,
       selectedValue,
       selectedKeys,
+      mergedDisabled,
       searchValue,
       panelVisible,
       isEmptyTreeData,

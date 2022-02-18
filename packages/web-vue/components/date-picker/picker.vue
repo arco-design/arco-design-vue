@@ -58,7 +58,6 @@ import { Dayjs } from 'dayjs';
 import {
   computed,
   defineComponent,
-  inject,
   PropType,
   reactive,
   ref,
@@ -93,7 +92,6 @@ import { omit } from '../_utils/omit';
 import useTimePickerValue from './hooks/use-time-picker-value';
 import { mergeValueWithTime } from './utils';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
 
@@ -155,8 +153,6 @@ export default defineComponent({
      * */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 预设时间范围快捷选择
