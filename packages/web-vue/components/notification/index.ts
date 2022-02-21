@@ -16,13 +16,13 @@ type _NotificationConfig = NotificationConfig & {
 };
 
 class NotificationManger {
-  private readonly container: HTMLElement;
-
   private readonly notificationIds: Set<number | string>;
 
   private readonly notifications: Ref<NotificationItem[]>;
 
   private readonly position: NotificationPosition;
+
+  private container: HTMLElement | null;
 
   private notificationCount = 0;
 
@@ -100,12 +100,11 @@ class NotificationManger {
   };
 
   destroy = () => {
-    if (this.notifications.value.length === 0) {
+    if (this.notifications.value.length === 0 && this.container) {
       render(null, this.container);
-      try {
-        document.body.removeChild(this.container);
-        notificationInstance[this.position] = undefined;
-      } catch (err) {}
+      document.body.removeChild(this.container);
+      this.container = null;
+      notificationInstance[this.position] = undefined;
     }
   };
 }

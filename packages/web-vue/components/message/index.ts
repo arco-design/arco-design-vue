@@ -14,13 +14,13 @@ import {
 type _MessageConfig = MessageConfig & { type: MessageType | 'loading' };
 
 class MessageManger {
-  private readonly container: HTMLElement;
-
   private readonly messageIds: Set<number | string>;
 
   private readonly messages: Ref<MessageItem[]>;
 
   private readonly position: MessagePosition;
+
+  private container: HTMLElement | null;
 
   private messageCount = 0;
 
@@ -92,9 +92,10 @@ class MessageManger {
   };
 
   destroy = () => {
-    if (this.messages.value.length === 0) {
+    if (this.messages.value.length === 0 && this.container) {
       render(null, this.container);
       document.body.removeChild(this.container);
+      this.container = null;
       messageInstance[this.position] = undefined;
     }
   };
