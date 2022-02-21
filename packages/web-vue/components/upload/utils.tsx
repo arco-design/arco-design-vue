@@ -225,6 +225,10 @@ export const getDataURLFromFile = async (file: File): Promise<string> => {
   });
 };
 
+export const isImage = (file: File) => {
+  return file.type?.includes('image');
+};
+
 export const getFiles = (fileList?: FileList, accept?: string): File[] => {
   if (!fileList) {
     return [];
