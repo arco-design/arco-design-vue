@@ -35,7 +35,7 @@ import {
   onUnmounted,
 } from 'vue';
 import { ItemSlot, ScrollOptions, VirtualListProps } from './interface';
-import { isString, isUndefined } from '../../_utils/is';
+import { isFunction, isString, isUndefined } from '../../_utils/is';
 import { raf, caf } from '../../_utils/raf';
 import usePickSlots from '../../_hooks/use-pick-slots';
 import ResizeOberver from '../resize-observer';
@@ -121,11 +121,15 @@ export default defineComponent({
     } = toRefs(props);
 
     function getItemKey(item: any, index: number) {
-      return itemKey && itemKey.value
-        ? isString(itemKey.value)
-          ? item[itemKey.value]
-          : itemKey.value(item)
-        : index;
+      let result: string | number;
+      if (itemKey && itemKey.value) {
+        if (isString(itemKey.value)) {
+          result = item[itemKey.value];
+        } else if (isFunction(itemKey.value)) {
+          result = itemKey.value(item);
+        }
+      }
+      return result ?? index;
     }
 
     // Convert data to internal format: {key, index, item}
@@ -177,12 +181,11 @@ export default defineComponent({
       })
     );
 
-    const visibleData = computed(() =>
-      internalData.value.slice(
-        rangeState.startIndex,
-        Math.min(rangeState.endIndex + 1, itemCount.value)
-      )
-    );
+    const visibleData = computed(() => {
+      const start = rangeState.startIndex;
+      const end = Math.min(rangeState.endIndex + 1, itemCount.value);
+      return internalData.value.slice(start, end);
+    });
 
     const isVirtual = computed(
       () =>
@@ -216,7 +219,9 @@ export default defineComponent({
         internalData,
         visibleData,
         itemRender,
-        itemRef: (el: HTMLElement | null, key: string) => {
+      }),
+      {
+        onItemResize(el: HTMLElement | null, key: string) {
           const itemHeight = getItemHeight(key);
           if (el && isUndefined(itemHeight)) {
             if (
@@ -225,13 +230,14 @@ export default defineComponent({
             ) {
               setItemHeight(key, estimatedItemHeight.value);
             } else {
-              nextTick(() => {
-                setItemHeight(key, el.clientHeight);
-              });
+              const height = el.offsetHeight;
+              if (height) {
+                setItemHeight(key, height);
+              }
             }
           }
         },
-      })
+      }
     );
 
     const updateScrollOffset = () => {
@@ -343,7 +349,7 @@ export default defineComponent({
     };
 
     // Element size changes, viewport changes size changes, scroll position changes need to recalculate the start and end elements
-    watch([itemHeight, visibleCount, scrollTop], () => {
+    watch([itemHeight, visibleCount, scrollTop, data], () => {
       if (lockScrollRef.value) return;
       updateRangeState();
     });

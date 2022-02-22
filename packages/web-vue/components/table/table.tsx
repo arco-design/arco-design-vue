@@ -1182,6 +1182,7 @@ export default defineComponent({
         <VirtualList
           ref={virtualListRef}
           class={`${prefixCls}-body`}
+          itemKey="_key"
           {...props.virtualListProps}
           data={flattenData.value}
           v-slots={{

@@ -3,7 +3,7 @@ import { VNode } from 'vue';
 export type Key = string | number;
 
 export interface InternalDataItem {
-  key: string;
+  key: Key;
   index: number;
   item: unknown;
 }
@@ -12,7 +12,7 @@ export type ItemSlot = (props: { item: unknown; index: number }) => VNode[];
 
 export interface ScrollIntoViewOptions {
   index?: number;
-  key?: number | string;
+  key?: Key;
   align: 'auto' | 'top' | 'bottom';
 }
 
@@ -34,7 +34,7 @@ export interface VirtualListProps {
   isStaticItemHeight: boolean;
   estimatedItemHeight?: number;
   data: unknown[];
-  itemKey: string | ((item: unknown) => string | number);
+  itemKey: string | ((item: unknown) => Key);
   component: keyof HTMLElementTagNameMap;
 }
 

@@ -22,7 +22,9 @@ export function getScrollPercentage({
   clientHeight: number;
 }) {
   const scrollLength = scrollHeight - clientHeight;
-  return getValidScrollTop(scrollTop, scrollLength) / scrollLength;
+  return scrollLength
+    ? getValidScrollTop(scrollTop, scrollLength) / scrollLength
+    : 0;
 }
 
 /**
