@@ -68,28 +68,34 @@
       @click="onTitleClick"
     >
       <span
-        v-if="$slots.icon || icon"
+        v-if="$slots.icon || icon || treeNodeIcon"
         :class="[`${prefixCls}-icon`, `${prefixCls}-custom-icon`]"
       >
-        <!-- @slot 节点图标 -->
+        <!-- 节点图标 -->
         <slot v-if="$slots.icon" name="icon" />
-        <RenderFunction v-else :render-func="icon" />
+        <RenderFunction v-else-if="icon" :render-func="icon" />
+        <RenderFunction
+          v-else-if="treeNodeIcon"
+          :render-func="treeNodeIcon"
+          :node="treeNodeData"
+        />
       </span>
       <span :class="`${prefixCls}-title-text`">
         <RenderFunction v-if="treeTitle" :render-func="treeTitle" />
-        <!-- @slot 标题，优先级高于 props 的 title -->
+        <!-- 标题，treeTitle 优先级高于节点的 title -->
         <slot v-else name="title">{{ title }}</slot>
 
         <span
           v-if="draggable"
           :class="[`${prefixCls}-icon`, `${prefixCls}-drag-icon`]"
         >
-          <!-- @slot 拖拽图标 -->
+          <!-- 拖拽图标 -->
           <slot v-if="$slots['drag-icon']" name="drag-icon" />
           <RenderFunction v-else-if="dragIcon" :render-func="dragIcon" />
           <RenderFunction
             v-else-if="treeDragIcon"
             :render-func="treeDragIcon"
+            :node="treeNodeData"
           />
           <IconDragDotVertical v-else />
         </span>
@@ -270,6 +276,8 @@ export default defineComponent({
 
     const treeDragIcon = computed(() => treeContext.dragIcon);
 
+    const treeNodeIcon = computed(() => treeContext.nodeIcon);
+
     return {
       refTitle,
       prefixCls,
@@ -283,6 +291,7 @@ export default defineComponent({
       treeNodeData,
       loading,
       treeDragIcon,
+      treeNodeIcon,
       extra: computed(() =>
         treeContext.nodeExtra
           ? () => treeContext.nodeExtra?.(treeNodeData.value)

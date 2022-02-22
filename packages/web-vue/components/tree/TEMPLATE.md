@@ -53,39 +53,4 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 %%INTERFACE(interface.ts)%%
 
-## zh-CN
-### FieldNames
-
-```ts
-interface FieldNames {
-  // 指定 key 在 TreeNodeData 中对应的字段
-  key?: string;
-  // 指定 title 在 TreeNodeData 中对应的字段
-  title?: string;
-  disabled?: string;
-  children?: string;
-  isLeaf?: string;
-  disableCheckbox?: string;
-  checkable?: string;
-};
-```
----
-## en-US
-### FieldNames
-
-```ts
-interface FieldNames {
-  // Specify the key corresponding to the field in TreeNodeData
-  key?: string;
-  // Specify the corresponding field of title in TreeNodeData
-  title?: string;
-  disabled?: string;
-  children?: string;
-  isLeaf?: string;
-  disableCheckbox?: string;
-  checkable?: string;
-};
-```
----
-
 %%INTERFACE(../_components/virtual-list/interface.ts)%%

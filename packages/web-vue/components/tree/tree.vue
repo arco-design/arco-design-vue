@@ -308,19 +308,16 @@ export default defineComponent({
     'drop',
   ],
   /**
-   * @zh 标题
-   * @en Title
-   * @slot title
+   * @zh 定制节点图标
+   * @en Custom node icon
+   * @slot icon
+   * @binding {TreeNodeData} node
+   * @version 2.18.0
    */
   /**
-   * @zh 渲染额外的节点内容
-   * @en Render additional node content
-   * @slot extra
-   */
-  /**
-   * @zh 定制 drag 图标
-   * @en Custom drag icon
-   * @slot drag-icon
+   * @zh 定制 switcher 图标
+   * @en Custom switcher icon
+   * @slot switcher-icon
    */
   /**
    * @zh 定制 loading 图标
@@ -328,9 +325,20 @@ export default defineComponent({
    * @slot loading-icon
    */
   /**
-   * @zh 定制 switcher 图标
-   * @en Custom switcher icon
-   * @slot switcher-icon
+   * @zh 定制 drag 图标
+   * @en Custom drag icon
+   * @slot drag-icon
+   * @binding {TreeNodeData} node
+   */
+  /**
+   * @zh 渲染额外的节点内容
+   * @en Render additional node content
+   * @slot extra
+   */
+  /**
+   * @zh 标题
+   * @en Title
+   * @slot title
    */
   setup(props: TreeProps, { emit, slots }) {
     const {
@@ -373,6 +381,7 @@ export default defineComponent({
     const switcherIcon = usePickSlots(slots, 'switcher-icon');
     const loadingIcon = usePickSlots(slots, 'loading-icon');
     const dragIcon = usePickSlots(slots, 'drag-icon');
+    const nodeIcon = usePickSlots(slots, 'icon');
     const nodeTitle = usePickSlots(slots, 'title');
     const nodeExtra = usePickSlots(slots, 'extra');
 
@@ -613,6 +622,7 @@ export default defineComponent({
       switcherIcon,
       loadingIcon,
       dragIcon,
+      nodeIcon,
       nodeTitle,
       nodeExtra,
       treeData,

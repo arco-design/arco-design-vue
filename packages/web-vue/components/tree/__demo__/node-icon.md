@@ -6,25 +6,32 @@ title:
 
 ## zh-CN
 
-只需为节点指定 `icon` 属性的值即可为任意节点指定任意图标。
+节点图标可以通过 `tree` 的 `icon` 插槽全局指定，也可以通过节点的 `icon` 属性单独指定。
 
 ---
 
 ## en-US
 
-The property `icon` of node can specify an icon for the node.
+The icon of a node can be specified globally via the `icon` slot of the `tree`, or individually via the `icon` property of the node.
 
 ---
 
 ```vue
 <template>
-  <a-tree :data="treeData" />
+  <a-tree :data="treeData">
+    <template #icon>
+      <IconStar />
+    </template>
+  </a-tree>
 </template>
 <script>
   import { h } from 'vue';
-  import { IconStar } from '@arco-design/web-vue/es/icon';
+  import { IconStar, IconDriveFile } from '@arco-design/web-vue/es/icon';
 
   export default {
+    components: {
+      IconStar
+    },
     setup() {
       return {
         treeData,
@@ -36,29 +43,26 @@ The property `icon` of node can specify an icon for the node.
     {
       title: 'Trunk',
       key: 'node1',
-      icon: () => h(IconStar),
       children: [
         {
           title: 'Leaf',
           key: 'node2',
-          icon: () => h(IconStar),
         },
       ],
     },
     {
       title: 'Trunk',
       key: 'node3',
-      icon: () => h(IconStar),
       children: [
         {
           title: 'Leaf',
           key: 'node4',
-          icon: () => h(IconStar),
+          icon: () => h(IconDriveFile),
         },
         {
           title: 'Leaf',
           key: 'node5',
-          icon: () => h(IconStar),
+          icon: () => h(IconDriveFile),
         },
       ],
     },

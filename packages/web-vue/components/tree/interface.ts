@@ -100,21 +100,46 @@ export type FilterTreeNode = (node: TreeNodeData) => boolean;
 
 export interface FieldNames {
   /**
-   * @zh 指定 key 在 TreeNodeData 中对应的字段
+   * @zh 指定 key 在 TreeNodeData 中的字段名
+   * @en Specify the field name of key in TreeNodeData
+   * @defaultValue key
    */
   key?: string;
   /**
-   * @zh 指定 title 在 TreeNodeData 中对应的字段
+   * @zh 指定 title 在 TreeNodeData 中的字段名
+   * @en Specify the field name of title in TreeNodeData
+   * @defaultValue title
    */
   title?: string;
   /**
-   * 是否禁用
+   * @zh 指定 disabled 在 TreeNodeData 中的字段名
+   * @en Specify the field name of disabled in TreeNodeData
+   * @defaultValue disabled
    */
   disabled?: string;
-
+  /**
+   * @zh 指定 children 在 TreeNodeData 中的字段名
+   * @en Specify the field name of children in TreeNodeData
+   * @defaultValue children
+   */
   children?: string;
+  /**
+   * @zh 指定 isLeaf 在 TreeNodeData 中的字段名
+   * @en Specify the field name of isLeaf in TreeNodeData
+   * @defaultValue isLeaf
+   */
   isLeaf?: string;
+  /**
+   * @zh 指定 disableCheckbox 在 TreeNodeData 中的字段名
+   * @en Specify the field name of disableCheckbox in TreeNodeData
+   * @defaultValue disableCheckbox
+   */
   disableCheckbox?: string;
+  /**
+   * @zh 指定 checkable 在 TreeNodeData 中的字段名
+   * @en Specify the field name of checkable in TreeNodeData
+   * @defaultValue checkable
+   */
   checkable?: string;
 }
 
