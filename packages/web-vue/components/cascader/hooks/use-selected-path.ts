@@ -8,7 +8,7 @@ export const useSelectedPath = (
     filteredLeafOptions,
     showSearchPanel,
   }: {
-    optionMap: Map<string, CascaderOptionInfo>;
+    optionMap: Ref<Map<string, CascaderOptionInfo>>;
     filteredLeafOptions: ComputedRef<CascaderOptionInfo[]>;
     showSearchPanel: ComputedRef<boolean>;
   }
@@ -16,7 +16,7 @@ export const useSelectedPath = (
   // active node key
   const activeKey = ref<string>();
   const activeOption = computed(() => {
-    if (activeKey.value) return optionMap.get(activeKey.value);
+    if (activeKey.value) return optionMap.value.get(activeKey.value);
     return undefined;
   });
 
@@ -26,7 +26,7 @@ export const useSelectedPath = (
   const displayColumns = computed(() => {
     const columns: CascaderOptionInfo[][] = [options.value];
     for (const key of selectedPath.value) {
-      const option = optionMap.get(key);
+      const option = optionMap.value.get(key);
       if (option?.children) {
         columns.push(option.children);
       }
@@ -35,7 +35,7 @@ export const useSelectedPath = (
   });
 
   const setSelectedPath = (key?: string) => {
-    const option = key ? optionMap.get(key) : undefined;
+    const option = key ? optionMap.value.get(key) : undefined;
     selectedPath.value = option?.path.map((item) => item.key) ?? [];
   };
 

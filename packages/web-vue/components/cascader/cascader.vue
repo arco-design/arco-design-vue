@@ -415,10 +415,12 @@ export default defineComponent({
 
     const optionInfos = ref<CascaderOptionInfo[]>([]);
     const totalLevel = ref(1);
-    const optionMap = new Map<string, CascaderOptionInfo>();
-    const leafOptionMap = new Map<string, CascaderOptionInfo>();
-    const leafOptionValueMap = new Map<string | number, CascaderOptionInfo>();
-    const leafOptionSet = new Set<CascaderOptionInfo>();
+    const optionMap = ref(new Map<string, CascaderOptionInfo>());
+    const leafOptionMap = ref(new Map<string, CascaderOptionInfo>());
+    const leafOptionValueMap = ref(
+      new Map<string | number, CascaderOptionInfo>()
+    );
+    const leafOptionSet = ref(new Set<CascaderOptionInfo>());
 
     const lazyLoadOptions = reactive<Record<string, CascaderOption[]>>({});
 
@@ -429,21 +431,17 @@ export default defineComponent({
     watch(
       [options, lazyLoadOptions],
       ([_options, _lazyLoadOptions]) => {
-        optionMap.clear();
-        leafOptionMap.clear();
-        leafOptionValueMap.clear();
-        leafOptionSet.clear();
-
-        optionInfos.value = getOptionInfos(props.options, {
+        const optionInfoResult = getOptionInfos(props.options, {
           enabledLazyLoad: Boolean(props.loadMore),
           lazyLoadOptions,
-          optionMap,
-          leafOptionSet,
-          leafOptionMap,
-          leafOptionValueMap,
           totalLevel,
           checkStrictly,
         });
+        optionInfos.value = optionInfoResult.optionInfos;
+        optionMap.value = optionInfoResult.optionMap;
+        leafOptionMap.value = optionInfoResult.leafOptionMap;
+        leafOptionValueMap.value = optionInfoResult.leafOptionValueMap;
+        leafOptionSet.value = optionInfoResult.leafOptionSet;
       },
       {
         immediate: true,
@@ -453,8 +451,8 @@ export default defineComponent({
     const computedKeys = computed(() =>
       getKeysFromValue(props.modelValue ?? _value.value, {
         pathMode: props.pathMode,
-        leafOptionMap,
-        leafOptionValueMap,
+        leafOptionMap: leafOptionMap.value,
+        leafOptionValueMap: leafOptionValueMap.value,
       })
     );
 
@@ -467,8 +465,8 @@ export default defineComponent({
 
     const filteredLeafOptions = computed(() => {
       const options = props.checkStrictly
-        ? Array.from(optionMap.values())
-        : Array.from(leafOptionSet);
+        ? Array.from(optionMap.value.values())
+        : Array.from(leafOptionSet.value);
 
       return options.filter(
         (item) =>
@@ -521,7 +519,7 @@ export default defineComponent({
 
     const handleRemove = (key: string) => {
       if (props.multiple) {
-        const option = leafOptionMap.get(key);
+        const option = leafOptionMap.value.get(key);
         if (option) {
           selectMultiple(option, false);
         }
@@ -544,9 +542,7 @@ export default defineComponent({
           )
         : computedKeys.value.filter((item) => !leafOptionKeys.includes(item));
 
-      updateValue(
-        newKeys.map((key) => leafOptionMap.get(key) as CascaderOptionInfo)
-      );
+      updateValue(newKeys.map((key) => leafOptionMap.value.get(key)));
       handleInputValueChange('', 'optionChecked');
     };
 
@@ -585,7 +581,7 @@ export default defineComponent({
       if (value) {
         if (computedKeys.value.length > 0 && !activeKey.value) {
           const lastKey = computedKeys.value[computedKeys.value.length - 1];
-          const option = leafOptionMap.get(lastKey);
+          const option = leafOptionMap.value.get(lastKey);
           if (option) {
             setSelectedPath(option.key);
             setActiveKey(option.key);
@@ -605,7 +601,7 @@ export default defineComponent({
       if (props.multiple) {
         // 保留已经被选中但被disabled的选项值
         const newValue = computedKeys.value.reduce((pre, key) => {
-          const option = leafOptionMap.get(key);
+          const option = leafOptionMap.value.get(key);
           if (option?.disabled) {
             pre.push(option);
           }
@@ -720,7 +716,7 @@ export default defineComponent({
     const selectViewValue = computed(() => {
       const result = [];
       for (const key of computedKeys.value) {
-        const option = leafOptionMap.get(key);
+        const option = leafOptionMap.value.get(key);
         if (option) {
           const value = {
             value: key,

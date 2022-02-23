@@ -30,25 +30,21 @@ const getOptionsWithTotalLeaves = (options: CascaderOption[]) => {
 export const getOptionInfos = (
   options: CascaderOption[],
   {
-    optionMap,
-    leafOptionMap,
-    leafOptionValueMap,
-    leafOptionSet,
     totalLevel: innerLevel,
     checkStrictly,
     enabledLazyLoad,
     lazyLoadOptions,
   }: {
-    optionMap: Map<string, CascaderOptionInfo>;
-    leafOptionMap: Map<string, CascaderOptionInfo>;
-    leafOptionValueMap: Map<string | number, CascaderOptionInfo>;
-    leafOptionSet: Set<CascaderOptionInfo>;
     totalLevel: Ref<number>;
     checkStrictly: Ref<boolean>;
     enabledLazyLoad: boolean;
     lazyLoadOptions: Record<string, CascaderOption[]>;
   }
 ) => {
+  const optionMap = new Map<string, CascaderOptionInfo>();
+  const leafOptionMap = new Map<string, CascaderOptionInfo>();
+  const leafOptionValueMap = new Map<string | number, CascaderOptionInfo>();
+  const leafOptionSet = new Set<CascaderOptionInfo>();
   const _options = getOptionsWithTotalLeaves(options);
   let totalLevel = 0;
 
@@ -106,7 +102,13 @@ export const getOptionInfos = (
 
   const result = travelOptions(_options);
   innerLevel.value = totalLevel;
-  return result;
+  return {
+    optionInfos: result,
+    optionMap,
+    leafOptionMap,
+    leafOptionValueMap,
+    leafOptionSet,
+  };
 };
 
 export const getCheckedStatus = (
