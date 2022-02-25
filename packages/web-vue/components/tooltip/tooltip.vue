@@ -1,5 +1,5 @@
 <template>
-  <trigger
+  <Trigger
     :class="prefixCls"
     trigger="hover"
     :position="position"
@@ -11,13 +11,15 @@
     :arrow-class="arrowCls"
     :arrow-style="computedArrowStyle"
     :popup-container="popupContainer"
+    animation-name="zoom-in-fade-out"
+    auto-fit-transform-origin
     @popup-visible-change="handlePopupVisibleChange"
   >
     <slot />
     <template #content>
       <slot name="content">{{ content }}</slot>
     </template>
-  </trigger>
+  </Trigger>
 </template>
 
 <script lang="ts">
