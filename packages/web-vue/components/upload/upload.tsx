@@ -17,7 +17,7 @@ import type {
   RequestOption,
   UploadRequest,
 } from './interfaces';
-import { getDataURLFromFile, uploadRequest } from './utils';
+import { getDataURLFromFile, isImage, uploadRequest } from './utils';
 import UploadButton from './upload-button';
 import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
@@ -524,7 +524,10 @@ export default defineComponent({
     const initUpload = async (file: File, index: number) => {
       const uid = `${Date.now()}${index}`;
 
-      const dataURL = await getDataURLFromFile(file);
+      const dataURL = isImage(file)
+        ? await getDataURLFromFile(file)
+        : undefined;
+
       const fileItem: FileItem = reactive({
         uid,
         file,
