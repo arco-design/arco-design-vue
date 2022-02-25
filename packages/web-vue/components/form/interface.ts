@@ -153,6 +153,11 @@ export interface FieldData {
 
 export interface ValidatedError {
   /**
+   * @zh 标签的文本
+   * @en Label text
+   */
+  label: string;
+  /**
    * @zh 字段名
    * @en Field name
    */

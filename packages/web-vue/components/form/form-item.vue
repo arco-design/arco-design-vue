@@ -428,6 +428,7 @@ export default defineComponent({
 
           const error = isError
             ? {
+                label: props.label,
                 field: field.value,
                 value: err[_field].value,
                 type: err[_field].type,

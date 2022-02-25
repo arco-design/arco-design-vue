@@ -147,6 +147,7 @@ description: A form with data collection, verification and submission functions,
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
+|label|Label text|`string`|`-`|
 |field|Field name|`string`|`-`|
 |value|Field value|`any`|`-`|
 |type|Field Type|`string`|`-`|
