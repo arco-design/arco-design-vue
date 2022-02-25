@@ -16,6 +16,9 @@ import { getFirstElement } from '../_utils/vue-utils';
 
 export default defineComponent({
   name: 'ResizeObserver',
+  props: {
+    watchOnUpdated: Boolean,
+  },
   emits: [
     /**
      * resize 事件
@@ -56,7 +59,7 @@ export default defineComponent({
     });
 
     onUpdated(() => {
-      if (instance?.subTree) {
+      if (props.watchOnUpdated && instance?.subTree) {
         const _element = getFirstElement(instance.subTree);
         if (_element !== element.value) {
           if (resizeObserver) destroyResizeObserver();
