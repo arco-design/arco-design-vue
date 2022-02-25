@@ -116,7 +116,7 @@ export default defineComponent({
     };
 
     return () => {
-      const children = getAllElements(slots.default?.()).filter(
+      const children = getAllElements(slots.default?.(), true).filter(
         (item) => item.type !== Comment
       );
 
