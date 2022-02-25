@@ -20,6 +20,7 @@ export default defineComponent({
     activeKey: String,
     multiple: Boolean,
     checkStrictly: Boolean,
+    pathLabel: Boolean,
   },
   setup(props) {
     const prefixCls = getPrefixCls('cascader');
@@ -54,6 +55,7 @@ export default defineComponent({
               active={item.key === props.activeKey}
               multiple={props.multiple}
               checkStrictly={props.checkStrictly}
+              pathLabel={props.pathLabel}
               searchOption
             />
           ))}

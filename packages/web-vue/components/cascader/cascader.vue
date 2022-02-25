@@ -55,6 +55,7 @@
         :multiple="multiple"
         :check-strictly="checkStrictly"
         :loading="loading"
+        :path-label="!searchOptionOnlyLabel"
       />
       <cascader-panel
         v-else
@@ -83,7 +84,12 @@ import {
   toRefs,
   watch,
 } from 'vue';
-import { getKeysFromValue, getLeafOptionKeys, getOptionInfos } from './utils';
+import {
+  getKeysFromValue,
+  getLeafOptionKeys,
+  getOptionInfos,
+  getOptionLabel,
+} from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import CascaderPanel from './cascader-panel';
@@ -95,6 +101,7 @@ import { useSelectedPath } from './hooks/use-selected-path';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 import { cascaderInjectionKey } from './context';
 import { Size } from '../_utils/constant';
+import { debounce } from '../_utils/debounce';
 
 export default defineComponent({
   name: 'Cascader',
@@ -315,6 +322,24 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 搜索下拉菜单中的选项是否仅展示标签
+     * @en Whether the options in the search dropdown show only label
+     * @version 2.18.0
+     */
+    searchOptionOnlyLabel: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 触发搜索事件的延迟时间
+     * @en Delay time to trigger search event
+     * @version 2.18.0
+     */
+    searchDelay: {
+      type: Number,
+      default: 500,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -408,7 +433,7 @@ export default defineComponent({
    * @version 2.16.0
    */
   setup(props, { emit }) {
-    const { options, checkStrictly, loadMore } = toRefs(props);
+    const { options, checkStrictly, loadMore, formatLabel } = toRefs(props);
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
     const _popupVisible = ref(props.defaultPopupVisible);
@@ -561,9 +586,9 @@ export default defineComponent({
       }
     };
 
-    const getOptionLabel = (option: CascaderOptionInfo) => {
-      return option.path.map((item) => item.label).join(' / ');
-    };
+    const handleSearch = debounce((value: string) => {
+      emit('search', value);
+    }, props.searchDelay);
 
     const handleInputValueChange = (value: string, reason: string): void => {
       if (value !== computedInputValue.value) {
@@ -576,7 +601,7 @@ export default defineComponent({
         emit('inputValueChange', value);
 
         if (props.allowSearch) {
-          emit('search', value);
+          handleSearch(value);
         }
       }
     };
@@ -652,6 +677,7 @@ export default defineComponent({
         setSelectedPath,
         loadMore,
         addLazyLoadOptions,
+        formatLabel,
       })
     );
 

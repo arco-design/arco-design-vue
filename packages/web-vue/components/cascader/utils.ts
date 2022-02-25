@@ -210,3 +210,7 @@ export const getKeysFromValue = (
   }
   return keys;
 };
+
+export const getOptionLabel = (option: CascaderOptionInfo) => {
+  return option.path.map((item) => item.label).join(' / ');
+};
