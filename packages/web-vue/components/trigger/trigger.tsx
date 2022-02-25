@@ -333,6 +333,18 @@ export default defineComponent({
      * @property {boolean} popupVisible
      */
     'popupVisibleChange',
+    /**
+     * @zh 弹出框显示后（动画结束）触发
+     * @en Triggered after the trigger is shown (the animation ends)
+     * @version 2.18.0
+     */
+    'show',
+    /**
+     * @zh 弹出框隐藏后（动画结束）触发
+     * @en Triggered after the popup is hidden (the animation ends)
+     * @version 2.18.0
+     */
+    'hide',
   ],
   /**
    * @zh 弹出框内容
@@ -640,6 +652,10 @@ export default defineComponent({
           }
         }
       }
+
+      if (value) {
+        mounted.value = true;
+      }
     });
 
     // 影响popup显示的参数变化时，更新popup样式
@@ -682,6 +698,21 @@ export default defineComponent({
       triggerCtx?.removeChildRef(popupRef);
       destroyResizeObserver();
     });
+
+    const mounted = ref(computedVisible.value);
+
+    const handleShow = () => {
+      if (computedVisible.value) {
+        emit('show');
+      }
+    };
+
+    const handleHide = () => {
+      if (!computedVisible.value) {
+        mounted.value = false;
+        emit('hide');
+      }
+    };
 
     return () => {
       const children = slots.default?.() ?? [];
