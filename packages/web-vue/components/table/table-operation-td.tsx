@@ -54,6 +54,14 @@ export default defineComponent({
       type: Function,
       required: true,
     },
+    colSpan: {
+      type: Number,
+      default: 1,
+    },
+    rowSpan: {
+      type: Number,
+      default: 1,
+    },
   },
   emits: ['select', 'expand'],
   setup(props, { emit, slots }) {
@@ -129,7 +137,12 @@ export default defineComponent({
     };
 
     return () => (
-      <td class={cls.value} style={style.value}>
+      <td
+        class={cls.value}
+        style={style.value}
+        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
+        colspan={props.colSpan > 1 ? props.colSpan : undefined}
+      >
         <span class={`${prefixCls}-cell`}>{renderContent()}</span>
       </td>
     );

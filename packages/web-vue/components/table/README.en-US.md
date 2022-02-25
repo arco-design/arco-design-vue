@@ -65,7 +65,8 @@ description: It is used for data collection, display, analysis and processing, a
 |row-key|Value field of table row `key`|`string`|`'key'`||
 |show-header|Whether to show the header|`boolean`|`true`||
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling|`VirtualListProps`|`-`||
-|span-method|Cell merge method (The index starts counting from the data item)|`(data: {  record: TableData;  column: TableColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
+|span-method|Cell merge method (The index starts counting from the data item)|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
+|span-all|Whether to make the index of the span method contain all|`boolean`|`false`|2.18.0|
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|Whether the filter icon is aligned to the left|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|Whether to hide expand button when subtree is empty|`boolean`|`false`|2.14.0|
@@ -85,7 +86,7 @@ description: It is used for data collection, display, analysis and processing, a
 |filter-change|Triggered when the filter options are changed|dataIndex: `string`<br>filteredValues: `string[]`|
 |page-change|Triggered when the table pagination changes|page: `number`|
 |page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`|
-|change||data: `TableData[]`<br>extra: `any`|
+|change||data: `TableData[]`<br>extra: `TableChangeExtra`|
 |cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumn`|
 |row-click|Triggered when row data is clicked|record: `TableData`|
 |header-click|Triggered when the header data is clicked|column: `TableColumn`|
@@ -242,5 +243,18 @@ description: It is used for data collection, display, analysis and processing, a
 |title|Column title|`string`|`-`|
 |width|Column width|`number`|`-`|
 |fixed|Is it fixed|`boolean`|`false`|
+
+
+
+### TableChangeExtra
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|type|Trigger type|`'pagination' \| 'sorter' \| 'filter' \| 'drag'`|`-`|
+|page|page number|`number`|`-`|
+|pageSize|number per page|`number`|`-`|
+|sorter|Sort information|`Sorter`|`-`|
+|filters|Filter information|`Filters`|`-`|
+|dragTarget|Drag and drop information|`TableData`|`-`|
 
 
