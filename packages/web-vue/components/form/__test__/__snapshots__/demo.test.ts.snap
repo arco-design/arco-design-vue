@@ -60,7 +60,7 @@ exports[`<form> demo: render [async] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [auto-width] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined arco-form-auto-label-width\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💎 功能优化
+
+- `auto-label-width` 开启时不在允许标签换行，防止换行后计算错误 ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
+
+### 🆕 新增功能
+
+- 校验错误信息新增 label 属性 ([#724](https://github.com/arco-design/arco-design-vue/pull/724))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

@@ -2,6 +2,50 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### ⚠️ Important Attention
+
+- **trigger:** Add a layer of `wrapper div` to the pop-up layer to provide support for tranform animation ([#732](https://github.com/arco-design/arco-design-vue/pull/732))
+- **list:** The spin component is rendered by default to prevent the component from remounting when switching states ([#730](https://github.com/arco-design/arco-design-vue/pull/730))
+- **list:** Supports rendering of any child element ([#730](https://github.com/arco-design/arco-design-vue/pull/730))
+
+### 💎 Optimization
+
+- **form:** When `auto-label-width` is enabled, label wrapping is not allowed to prevent calculation errors after wrapping ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
+- **modal:** Optimize click mask layer off ([#737](https://github.com/arco-design/arco-design-vue/pull/737))
+
+### 🆕 Feature
+
+- **descriptions:** Added `descriptions-item` component ([#739](https://github.com/arco-design/arco-design-vue/pull/739))
+- **table:** Added `span-all` attribute ([#735](https://github.com/arco-design/arco-design-vue/pull/735))
+- **trigger:** Added `show` and `hide` events ([#731](https://github.com/arco-design/arco-design-vue/pull/731))
+- **cascader:** Added `search-delay` property and defaulted to `500ms` ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+- **cascader:** Add the `search-option-only-label` attribute and modify the default display path label of the options in the search drop-down menu ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+- **select:** Added `search-delay` property and defaulted to `500ms` ([#728](https://github.com/arco-design/arco-design-vue/pull/728))
+- **form:** Validated error info add label property ([#724](https://github.com/arco-design/arco-design-vue/pull/724))
+- **tree:** Add slot `icon` for customizing node icon globally ([#710](https://github.com/arco-design/arco-design-vue/pull/710))
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that v-for cannot render when table-column is nested ([#734](https://github.com/arco-design/arco-design-vue/pull/734))
+- **cascader:** Fix the problem that the selection box display is not updated after the option is updated ([#727](https://github.com/arco-design/arco-design-vue/pull/727))
+- **upload:** fix error when using slot `upload-item` ([#715](https://github.com/arco-design/arco-design-vue/pull/715))
+- Fixed an issue where data changes did not update the view in the border case where the scroll bar was shown and hidden ([#711](https://github.com/arco-design/arco-design-vue/pull/711))
+- Fix the problem that the row height calculation does not include the border ([#711](https://github.com/arco-design/arco-design-vue/pull/711))
+- **upload:** Generate initial preview image only if file type is image ([#706](https://github.com/arco-design/arco-design-vue/pull/706))
+- **message:** Fixed the problem of destroying an error when calling at the same time ([#705](https://github.com/arco-design/arco-design-vue/pull/705))
+
+### 💅 Style
+
+- **pagination:** Fix the problem that the jumper text is not aligned under safari ([#736](https://github.com/arco-design/arco-design-vue/pull/736))
+- **tooltip:** Optimized display animation, consistent with the react version ([#733](https://github.com/arco-design/arco-design-vue/pull/733))
+- **popover:** Optimize display animation ([#733](https://github.com/arco-design/arco-design-vue/pull/733))
+- **popconfirm:** Optimize display animation ([#733](https://github.com/arco-design/arco-design-vue/pull/733))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

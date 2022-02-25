@@ -145,14 +145,14 @@ description: A form with data collection, verification and submission functions,
 
 ### ValidatedError
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|label|Label text|`string`|`-`|
-|field|Field name|`string`|`-`|
-|value|Field value|`any`|`-`|
-|type|Field Type|`string`|`-`|
-|isRequiredError|Is it a `required` error|`boolean`|`false`|
-|message|Error message|`string`|`-`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|label|Label text|`string`|`-`|2.18.0|
+|field|Field name|`string`|`-`||
+|value|Field value|`any`|`-`||
+|type|Field Type|`string`|`-`||
+|isRequiredError|Is it a `required` error|`boolean`|`false`||
+|message|Error message|`string`|`-`||
 
 
 

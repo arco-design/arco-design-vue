@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### ⚠️ Important Attention
+
+- Add a layer of `wrapper div` to the pop-up layer to provide support for tranform animation ([#732](https://github.com/arco-design/arco-design-vue/pull/732))
+
+### 🆕 Feature
+
+- Added `show` and `hide` events ([#731](https://github.com/arco-design/arco-design-vue/pull/731))
+
+
 ## 2.17.0
 
 `2022-02-11`

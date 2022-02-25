@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 新增功能
+
+- 增加 `search-delay` 属性，并默认为 `500ms` ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+- 增加 `search-option-only-label` 属性，并修改搜索下拉菜单中的选项默认展示路径标签 ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+
+### 🐛 问题修复
+
+- 修复选项更新后选择框展示没有更新的问题 ([#727](https://github.com/arco-design/arco-design-vue/pull/727))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 Feature
+
+- Added `search-delay` property and defaulted to `500ms` ([#728](https://github.com/arco-design/arco-design-vue/pull/728))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

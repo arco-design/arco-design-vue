@@ -24,7 +24,7 @@ export {
   QuarterPicker,
   RangePicker,
 } from './date-picker';
-export { default as Descriptions } from './descriptions';
+export { default as Descriptions, DescriptionsItem } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Drawer } from './drawer';
 export {

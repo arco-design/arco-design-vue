@@ -19,4 +19,6 @@ export type DescriptionsInstance = InstanceType<typeof _Descriptions>;
 
 export type { DescData, DescLayout } from './interface';
 
+export { _DescriptionsItem as DescriptionsItem };
+
 export default Descriptions;

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 Feature
+
+- Added `span-all` attribute ([#735](https://github.com/arco-design/arco-design-vue/pull/735))
+
+### 🐛 BugFix
+
+- Fix the problem that v-for cannot render when table-column is nested ([#734](https://github.com/arco-design/arco-design-vue/pull/734))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

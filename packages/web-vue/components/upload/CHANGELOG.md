@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🐛 BugFix
+
+- fix error when using slot `upload-item` ([#715](https://github.com/arco-design/arco-design-vue/pull/715))
+- Generate initial preview image only if file type is image ([#706](https://github.com/arco-design/arco-design-vue/pull/706))
+
+
 ## 2.14.0
 
 `2022-01-07`

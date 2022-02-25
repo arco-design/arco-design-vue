@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💎 Optimization
+
+- When `auto-label-width` is enabled, label wrapping is not allowed to prevent calculation errors after wrapping ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
+
+### 🆕 Feature
+
+- Validated error info add label property ([#724](https://github.com/arco-design/arco-design-vue/pull/724))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

@@ -2,6 +2,50 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### ⚠️ 重点注意
+
+- **trigger:** 弹出层增加一层 `wrapper div` 用来提供对tranform动画的支持 ([#732](https://github.com/arco-design/arco-design-vue/pull/732))
+- **list:** 默认渲染 spin 组件，防止切换状态时导致组件重新挂载 ([#730](https://github.com/arco-design/arco-design-vue/pull/730))
+- **list:** 支持渲染任何子元素 ([#730](https://github.com/arco-design/arco-design-vue/pull/730))
+
+### 💎 功能优化
+
+- **form:** `auto-label-width` 开启时不在允许标签换行，防止换行后计算错误 ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
+- **modal:** 优化点击遮罩层关闭 ([#737](https://github.com/arco-design/arco-design-vue/pull/737))
+
+### 🆕 新增功能
+
+- **descriptions:** 增加 `descriptions-item` 组件 ([#739](https://github.com/arco-design/arco-design-vue/pull/739))
+- **table:** 增加 `span-all`  属性 ([#735](https://github.com/arco-design/arco-design-vue/pull/735))
+- **trigger:** 增加 `show` 和 `hide` 事件 ([#731](https://github.com/arco-design/arco-design-vue/pull/731))
+- **cascader:** 增加 `search-delay` 属性，并默认为 `500ms` ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+- **cascader:** 增加 `search-option-only-label` 属性，并修改搜索下拉菜单中的选项默认展示路径标签 ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+- **select:** 增加 `search-delay` 属性，并默认为 `500ms` ([#728](https://github.com/arco-design/arco-design-vue/pull/728))
+- **form:** 校验错误信息新增 label 属性 ([#724](https://github.com/arco-design/arco-design-vue/pull/724))
+- **tree:** 新增插槽 `icon` 用于全局定制节点图标 ([#710](https://github.com/arco-design/arco-design-vue/pull/710))
+
+### 🐛 问题修复
+
+- **table:** 修复 table-column 嵌套使用时，v-for 不能渲染的问题 ([#734](https://github.com/arco-design/arco-design-vue/pull/734))
+- **cascader:** 修复选项更新后选择框展示没有更新的问题 ([#727](https://github.com/arco-design/arco-design-vue/pull/727))
+- **upload:** 修复使用插槽 `upload-item` 报错的问题 ([#715](https://github.com/arco-design/arco-design-vue/pull/715))
+- 修复 `virtual-list` 在滚动条显示和隐藏的边界情况下数据变化没有更新视图的问题 ([#711](https://github.com/arco-design/arco-design-vue/pull/711))
+- 修复 `virtual-list` 行高计算没有包含边框的问题 ([#711](https://github.com/arco-design/arco-design-vue/pull/711))
+- **upload:** 仅在文件类型为图片时生成初始预览图片 ([#706](https://github.com/arco-design/arco-design-vue/pull/706))
+- **message:** 修复同时调用时，出现销毁报错的问题 ([#705](https://github.com/arco-design/arco-design-vue/pull/705))
+
+### 💅 样式更新
+
+- **pagination:** 修复在safari下跳转器文字没有对齐的问题 ([#736](https://github.com/arco-design/arco-design-vue/pull/736))
+- **tooltip:** 优化显示动画，同 react 版本保持一致 ([#733](https://github.com/arco-design/arco-design-vue/pull/733))
+- **popover:** 优化显示动画 ([#733](https://github.com/arco-design/arco-design-vue/pull/733))
+- **popconfirm:** 优化显示动画 ([#733](https://github.com/arco-design/arco-design-vue/pull/733))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

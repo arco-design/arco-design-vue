@@ -140,21 +140,21 @@ exports[`Cascader should render search panel 1`] = `
     <li class=\\"arco-cascader-option arco-cascader-search-option\\">
       <!---->
       <!---->
-      <div class=\\"arco-cascader-option-label\\">ChaoYang
+      <div class=\\"arco-cascader-option-label\\">Beijing / ChaoYang
         <!---->
       </div>
     </li>
     <li class=\\"arco-cascader-option arco-cascader-search-option\\">
       <!---->
       <!---->
-      <div class=\\"arco-cascader-option-label\\">Haidian
+      <div class=\\"arco-cascader-option-label\\">Beijing / Haidian
         <!---->
       </div>
     </li>
     <li class=\\"arco-cascader-option arco-cascader-search-option\\">
       <!---->
       <!---->
-      <div class=\\"arco-cascader-option-label\\">Huangpu
+      <div class=\\"arco-cascader-option-label\\">Shanghai / Huangpu
         <!---->
       </div>
     </li>

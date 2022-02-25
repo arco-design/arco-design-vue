@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 新增功能
+
+- 增加 `span-all`  属性 ([#735](https://github.com/arco-design/arco-design-vue/pull/735))
+
+### 🐛 问题修复
+
+- 修复 table-column 嵌套使用时，v-for 不能渲染的问题 ([#734](https://github.com/arco-design/arco-design-vue/pull/734))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

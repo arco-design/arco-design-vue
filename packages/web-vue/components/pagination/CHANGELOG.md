@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💅 Style
+
+- Fix the problem that the jumper text is not aligned under safari ([#736](https://github.com/arco-design/arco-design-vue/pull/736))
+
+
 ## 2.13.0
 
 `2021-12-31`

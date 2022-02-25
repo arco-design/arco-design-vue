@@ -1,4 +1,4 @@
-import { RenderFunction } from 'vue';
+import type { RenderFunction } from 'vue';
 
 /**
  * @zh 选项值

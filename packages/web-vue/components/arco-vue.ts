@@ -24,7 +24,7 @@ import DatePicker, {
   QuarterPicker,
   RangePicker,
 } from './date-picker';
-import Descriptions from './descriptions';
+import Descriptions, { DescriptionsItem } from './descriptions';
 import Divider from './divider';
 import Drawer from './drawer';
 import Dropdown, {
@@ -180,6 +180,7 @@ const ArcoVue = {
   CarouselItem,
   CheckboxGroup,
   CollapseItem,
+  DescriptionsItem,
   WeekPicker,
   MonthPicker,
   YearPicker,

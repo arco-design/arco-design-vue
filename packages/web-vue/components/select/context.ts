@@ -1,7 +1,7 @@
-import { InjectionKey } from 'vue';
-import { FilterOption, OptionInfo } from './interface';
+import type { InjectionKey } from 'vue';
+import type { FilterOption, OptionInfo } from './interface';
 
-interface SelectContext {
+export interface SelectContext {
   multiple?: boolean;
   valueKey?: string;
   inputValue?: string;
