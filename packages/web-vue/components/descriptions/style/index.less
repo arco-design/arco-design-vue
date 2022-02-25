@@ -7,15 +7,15 @@
     margin-bottom: ~'@{descriptions-size-@{size}-title-margin-bottom}';
   }
 
-  &-size-@{size} &-item-label,
-  &-size-@{size} &-item-value {
+  &-size-@{size} &-item-label-block,
+  &-size-@{size} &-item-value-block {
     padding-right: ~'@{descriptions-border-item-size-@{size}-padding-horizontal}';
     padding-bottom: ~'@{descriptions-item-size-@{size}-spacing-bottom}';
     font-size: ~'@{descriptions-size-@{size}-font-size-text}';
   }
 
-  &-size-@{size}&-border &-item-label,
-  &-size-@{size}&-border &-item-value {
+  &-size-@{size}&-border &-item-label-block,
+  &-size-@{size}&-border &-item-value-block {
     padding: ~'@{descriptions-border-item-size-@{size}-padding-vertical}' ~'@{descriptions-border-item-size-@{size}-padding-horizontal}';
   }
 
@@ -44,20 +44,21 @@
   &-item-label,
   &-item-value {
     box-sizing: border-box;
-    padding: 0 4px @descriptions-item-size-default-spacing-bottom 0;
     font-size: @descriptions-size-default-font-size-text;
     line-height: @line-height-base;
     text-align: left;
   }
 
-  &-item-label {
+  &-item-label-block {
     width: 1px;
+    padding: 0 4px @descriptions-item-size-default-spacing-bottom 0;
     color: @descriptions-color-text-label;
     font-weight: @descriptions-font-weight-text-label;
     white-space: nowrap;
   }
 
-  &-item-value {
+  &-item-value-block {
+    padding: 0 4px @descriptions-item-size-default-spacing-bottom 0;
     color: @descriptions-color-text-value;
     font-weight: @descriptions-font-weight-text-value;
     white-space: pre-wrap;
@@ -111,19 +112,19 @@
   }
 
   &-border &-item,
-  &-border &-item-label,
-  &-border &-item-value {
+  &-border &-item-label-block,
+  &-border &-item-value-block {
     padding: @descriptions-border-item-size-default-padding-vertical
       @descriptions-border-item-size-default-padding-horizontal;
     border-right: @descriptions-border-width @descriptions-border-style
       @descriptions-color-border;
   }
 
-  &-border &-item-label {
+  &-border &-item-label-block {
     background-color: @descriptions-border-color-bg-label;
   }
 
-  &-border &-item-value:last-child {
+  &-border &-item-value-block:last-child {
     border-right: none;
   }
 
@@ -131,11 +132,11 @@
     border-right: none;
   }
 
-  &-border&-layout-vertical &-item-label:last-child {
+  &-border&-layout-vertical &-item-label-block:last-child {
     border-right: none;
   }
 
-  &-layout-vertical:not(&-border) &-item-value:first-child {
+  &-layout-vertical:not(&-border) &-item-value-block:first-child {
     padding-left: 0;
   }
 

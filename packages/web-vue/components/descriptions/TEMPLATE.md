@@ -28,3 +28,7 @@ description: Generally used for the information display of the detail page.
 @import ./__demo__/layout.md
 
 %%API(descriptions.tsx)%%
+
+%%API(descriptions-item.vue)%%
+
+%%INTERFACE(interface.ts)%%
