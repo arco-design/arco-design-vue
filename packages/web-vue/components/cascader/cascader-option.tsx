@@ -6,7 +6,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import type { CascaderOption, CascaderOptionInfo } from './interface';
 import IconRight from '../icon/icon-right';
 import IconLoading from '../icon/icon-loading';
-import { getCheckedStatus } from './utils';
+import { getCheckedStatus, getOptionLabel } from './utils';
 import { isFunction } from '../_utils/is';
 import { cascaderInjectionKey } from './context';
 
@@ -26,6 +26,7 @@ export default defineComponent({
     expandTrigger: String,
     checkStrictly: Boolean,
     searchOption: Boolean,
+    pathLabel: Boolean,
   },
   setup(props) {
     const prefixCls = getPrefixCls('cascader-option');
@@ -87,6 +88,12 @@ export default defineComponent({
     });
 
     const renderLabelContent = () => {
+      if (props.pathLabel) {
+        return (
+          cascaderCtx?.formatLabel?.(props.option.path) ??
+          getOptionLabel(props.option)
+        );
+      }
       if (isFunction(props.option.render)) {
         return props.option.render();
       }

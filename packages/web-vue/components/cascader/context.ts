@@ -10,6 +10,7 @@ interface CascaderContext {
     done: (children?: CascaderOption[]) => void
   ) => void;
   addLazyLoadOptions: (children: CascaderOption[], key: string) => void;
+  formatLabel: (options: CascaderOptionInfo[]) => string;
 }
 
 export const cascaderInjectionKey: InjectionKey<CascaderContext> =

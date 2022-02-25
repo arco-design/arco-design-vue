@@ -56,6 +56,8 @@ description: Refers to the use of multi-level classification to separate the opt
 |check-strictly|Whether to enable strict selection mode|`boolean`|`false`||
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
 |loading|Whether it is loading state|`boolean`|`false`|2.15.0|
+|search-option-only-label|Whether the options in the search dropdown show only label|`boolean`|`false`|2.18.0|
+|search-delay|Delay time to trigger search event|`number`|`500`|2.18.0|
 ### `<cascader>` Events
 
 |Event Name|Description|Parameters|

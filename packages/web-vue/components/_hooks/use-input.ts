@@ -45,7 +45,7 @@ export const useInput = ({
   };
 
   const handleChange = (ev: Event) => {
-    if (computedValue.value !== initialValue) {
+    if (eventName === 'input' && computedValue.value !== initialValue) {
       initialValue = computedValue.value;
       emit('change', computedValue.value, ev);
     }
