@@ -10,6 +10,7 @@ import {
   resolveProps,
   isNamedComponent,
   isSlotsChildren,
+  isArrayChildren,
 } from '../_utils/vue-utils';
 
 const getDataColumnsNumber = (columns: TableColumn[]): number => {
@@ -300,6 +301,10 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
         }
       }
       columns.push(column);
+    } else if (isArrayChildren(vn, vn.children)) {
+      columns.push(...getColumnsFromSlot(vn.children));
+    } else if (isArray(vn)) {
+      columns.push(...getColumnsFromSlot(vn));
     }
   }
   return columns;
