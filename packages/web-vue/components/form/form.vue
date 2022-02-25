@@ -327,6 +327,9 @@ export default defineComponent({
       prefixCls,
       `${prefixCls}-layout-${props.layout}`,
       `${prefixCls}-size-${size.value}`,
+      {
+        [`${prefixCls}-auto-label-width`]: props.autoLabelWidth,
+      },
     ]);
 
     return {
