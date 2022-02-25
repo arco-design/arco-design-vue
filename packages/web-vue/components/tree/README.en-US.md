@@ -88,13 +88,14 @@ description: For content with many levels, such as folders, catalogs, and organi
 |scrollIntoView|Virtual list scroll to an element|options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}`|-|
 ### `<tree>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|switcher-icon|Custom switcher icon|-|
-|loading-icon|Custom loading icon|-|
-|drag-icon|Custom drag icon|-|
-|extra|Render additional node content|-|
-|title|Title|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|title|Title|-||
+|extra|Render additional node content|-||
+|drag-icon|Custom drag icon|node: `TreeNodeData`||
+|loading-icon|Custom loading icon|-||
+|switcher-icon|Custom switcher icon|-||
+|icon|Custom node icon|node: `TreeNodeData`|2.18.0|
 
 
 
@@ -123,25 +124,15 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|disabled|是否禁用|`string`|`-`|
+|key|Specify the field name of key in TreeNodeData|`string`|`key`|
+|title|Specify the field name of title in TreeNodeData|`string`|`title`|
+|disabled|Specify the field name of disabled in TreeNodeData|`string`|`disabled`|
+|children|Specify the field name of children in TreeNodeData|`string`|`children`|
+|isLeaf|Specify the field name of isLeaf in TreeNodeData|`string`|`isLeaf`|
+|disableCheckbox|Specify the field name of disableCheckbox in TreeNodeData|`string`|`disableCheckbox`|
+|checkable|Specify the field name of checkable in TreeNodeData|`string`|`checkable`|
 
 
-
-### FieldNames
-
-```ts
-interface FieldNames {
-  // Specify the key corresponding to the field in TreeNodeData
-  key?: string;
-  // Specify the corresponding field of title in TreeNodeData
-  title?: string;
-  disabled?: string;
-  children?: string;
-  isLeaf?: string;
-  disableCheckbox?: string;
-  checkable?: string;
-};
-```
 
 
 ### VirtualListProps

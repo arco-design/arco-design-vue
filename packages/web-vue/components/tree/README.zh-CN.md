@@ -86,13 +86,14 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |scrollIntoView|虚拟列表滚动某个元素|options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}`|-|
 ### `<tree>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|switcher-icon|定制 switcher 图标|-|
-|loading-icon|定制 loading 图标|-|
-|drag-icon|定制 drag 图标|-|
-|extra|渲染额外的节点内容|-|
-|title|标题|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|title|标题|-||
+|extra|渲染额外的节点内容|-||
+|drag-icon|定制 drag 图标|node: `TreeNodeData`||
+|loading-icon|定制 loading 图标|-||
+|switcher-icon|定制 switcher 图标|-||
+|icon|定制节点图标|node: `TreeNodeData`|2.18.0|
 
 
 
@@ -121,27 +122,15 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|key|指定 key 在 TreeNodeData 中对应的字段|`string`|`-`|
-|title|指定 title 在 TreeNodeData 中对应的字段|`string`|`-`|
-|disabled|是否禁用|`string`|`-`|
+|key|指定 key 在 TreeNodeData 中的字段名|`string`|`key`|
+|title|指定 title 在 TreeNodeData 中的字段名|`string`|`title`|
+|disabled|指定 disabled 在 TreeNodeData 中的字段名|`string`|`disabled`|
+|children|指定 children 在 TreeNodeData 中的字段名|`string`|`children`|
+|isLeaf|指定 isLeaf 在 TreeNodeData 中的字段名|`string`|`isLeaf`|
+|disableCheckbox|指定 disableCheckbox 在 TreeNodeData 中的字段名|`string`|`disableCheckbox`|
+|checkable|指定 checkable 在 TreeNodeData 中的字段名|`string`|`checkable`|
 
 
-
-### FieldNames
-
-```ts
-interface FieldNames {
-  // 指定 key 在 TreeNodeData 中对应的字段
-  key?: string;
-  // 指定 title 在 TreeNodeData 中对应的字段
-  title?: string;
-  disabled?: string;
-  children?: string;
-  isLeaf?: string;
-  disableCheckbox?: string;
-  checkable?: string;
-};
-```
 
 
 ### VirtualListProps

@@ -8,6 +8,7 @@ export const TreeInjectionKey: InjectionKey<TreeContext> =
 export type TreeContext = Readonly<{
   switcherIcon?: Slot;
   loadingIcon?: Slot;
+  nodeIcon?: Slot;
   dragIcon?: Slot;
   nodeTitle?: Slot;
   nodeExtra?: Slot;
