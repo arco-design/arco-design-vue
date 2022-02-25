@@ -10,7 +10,7 @@ import { ModalConfig, ModalMethod } from './interface';
 import { omit } from '../_utils/omit';
 
 const open = (config: ModalConfig) => {
-  const container = getOverlay('modal');
+  let container: HTMLElement | null = getOverlay('modal');
 
   const handleOk = () => {
     if (vm.component) {
@@ -33,8 +33,11 @@ const open = (config: ModalConfig) => {
   };
 
   const handleClose = () => {
-    render(null, container);
-    document.body.removeChild(container);
+    if (container) {
+      render(null, container);
+      document.body.removeChild(container);
+    }
+    container = null;
 
     if (isFunction(config.onClose)) {
       config.onClose();

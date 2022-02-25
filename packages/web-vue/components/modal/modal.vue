@@ -24,11 +24,13 @@
       >
         <div
           v-show="computedVisible"
+          ref="wrapperRef"
           :class="[
             `${prefixCls}-wrapper`,
             { [`${prefixCls}-wrapper-align-center`]: alignCenter },
           ]"
-          @click.self="handleMask"
+          @click.self="handleMaskClick"
+          @mousedown.self="handleMaskMouseDown"
         >
           <div
             ref="modalRef"
@@ -395,6 +397,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('modal');
     const { t } = useI18n();
     const containerRef = ref<HTMLElement>();
+    const wrapperRef = ref<HTMLElement>();
 
     const _visible = ref(props.defaultVisible);
     const computedVisible = computed(() => props.visible ?? _visible.value);
@@ -480,8 +483,16 @@ export default defineComponent({
       }
     };
 
-    const handleMask = () => {
-      if (props.mask && props.maskClosable) {
+    const currentIsMask = ref(false);
+
+    const handleMaskMouseDown = (ev: Event) => {
+      if (ev.target === wrapperRef.value) {
+        currentIsMask.value = true;
+      }
+    };
+
+    const handleMaskClick = () => {
+      if (props.mask && props.maskClosable && currentIsMask.value) {
         handleCancel();
       }
     };
@@ -522,6 +533,7 @@ export default defineComponent({
       if (value) {
         emit('beforeOpen');
         mounted.value = true;
+        currentIsMask.value = false;
         setOverflowHidden();
         addGlobalKeyDownListener();
       } else {
@@ -549,13 +561,15 @@ export default defineComponent({
       mounted,
       computedVisible,
       containerRef,
+      wrapperRef,
       mergedModalStyle,
       okDisplayText,
       cancelDisplayText,
       zIndex,
       handleOk,
       handleCancel,
-      handleMask,
+      handleMaskClick,
+      handleMaskMouseDown,
       handleOpen,
       handleClose,
       mergedOkLoading,
