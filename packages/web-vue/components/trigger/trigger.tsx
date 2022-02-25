@@ -29,6 +29,7 @@ import {
   PopupTranslate,
   getElementScrollRect,
   getScrollElements,
+  getTransformOrigin,
 } from './utils';
 import ResizeObserver from '../_components/resize-observer-v2.vue';
 import { getElement, off, on } from '../_utils/dom';
@@ -371,6 +372,7 @@ export default defineComponent({
     const popupVisible = ref(props.defaultPopupVisible);
     const popupPosition = ref(props.position);
     const popupStyle = ref<CSSProperties>({});
+    const transformStyle = ref<CSSProperties>({});
     const arrowStyle = ref<CSSProperties>({});
     // container相关变量
     const containerEle = ref<HTMLElement>();
@@ -437,9 +439,13 @@ export default defineComponent({
           translate: props.popupTranslate,
           customStyle: props.popupStyle,
           autoFitPosition: props.autoFitPosition,
-          autoFitTransformOrigin: props.autoFitTransformOrigin,
         }
       );
+      if (props.autoFitTransformOrigin) {
+        transformStyle.value = {
+          transformOrigin: getTransformOrigin(position),
+        };
+      }
       if (props.autoFitPopupMinWidth) {
         style.minWidth = `${triggerRect.width}px`;
       } else if (props.autoFitPopupWidth) {
@@ -739,43 +745,52 @@ export default defineComponent({
             to={props.popupContainer ?? 'body'}
             disabled={!props.renderToBody}
           >
-            {(!props.unmountOnClose || computedVisible.value) &&
+            {(!props.unmountOnClose ||
+              computedVisible.value ||
+              mounted.value) &&
               !hidePopup.value && (
                 <ResizeObserver onResize={handleResize}>
-                  <Transition
-                    name={props.animationName}
-                    duration={props.duration}
-                    appear
+                  <div
+                    ref={popupRef}
+                    class={[
+                      `${prefixCls}-popup`,
+                      `${prefixCls}-position-${popupPosition.value}`,
+                    ]}
+                    style={{ ...popupStyle.value, zIndex: zIndex.value }}
+                    trigger-placement={popupPosition.value}
+                    onMouseenter={handleMouseEnterWithContext}
+                    onMouseleave={handleMouseLeaveWithContext}
+                    onMousedown={handlePopupMouseDown}
+                    {...attrs}
                   >
-                    <div
-                      v-show={computedVisible.value}
-                      ref={popupRef}
-                      class={[
-                        `${prefixCls}-popup`,
-                        `${prefixCls}-position-${popupPosition.value}`,
-                      ]}
-                      style={{ ...popupStyle.value, zIndex: zIndex.value }}
-                      trigger-placement={popupPosition.value}
-                      onMouseenter={handleMouseEnterWithContext}
-                      onMouseleave={handleMouseLeaveWithContext}
-                      onMousedown={handlePopupMouseDown}
-                      {...attrs}
+                    <Transition
+                      name={props.animationName}
+                      duration={props.duration}
+                      appear
+                      onAfterEnter={handleShow}
+                      onAfterLeave={handleHide}
                     >
                       <div
-                        class={[`${prefixCls}-content`, props.contentClass]}
-                        style={props.contentStyle}
+                        class={`${prefixCls}-popup-wrapper`}
+                        style={transformStyle.value}
+                        v-show={computedVisible.value}
                       >
-                        {slots.content?.()}
-                      </div>
-                      {props.showArrow && (
                         <div
-                          ref={arrowRef}
-                          class={[`${prefixCls}-arrow`, props.arrowClass]}
-                          style={arrowStyle.value}
-                        />
-                      )}
-                    </div>
-                  </Transition>
+                          class={[`${prefixCls}-content`, props.contentClass]}
+                          style={props.contentStyle}
+                        >
+                          {slots.content?.()}
+                        </div>
+                        {props.showArrow && (
+                          <div
+                            ref={arrowRef}
+                            class={[`${prefixCls}-arrow`, props.arrowClass]}
+                            style={arrowStyle.value}
+                          />
+                        )}
+                      </div>
+                    </Transition>
+                  </div>
                 </ResizeObserver>
               )}
           </Teleport>

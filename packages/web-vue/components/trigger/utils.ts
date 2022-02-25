@@ -358,6 +358,22 @@ const getPopupOffset = (
   }
 };
 
+export const getTransformOrigin = (position: TriggerPosition) => {
+  let originX = '0';
+  if (['top', 'bottom'].includes(position)) {
+    originX = '50%';
+  } else if (['left', 'lt', 'lb', 'tr', 'br'].includes(position)) {
+    originX = '100%';
+  }
+  let originY = '0';
+  if (['left', 'right'].includes(position)) {
+    originY = '50%';
+  } else if (['top', 'tl', 'tr', 'lt', 'rt'].includes(position)) {
+    originY = '100%';
+  }
+  return `${originX} ${originY}`;
+};
+
 export const getPopupStyle = (
   position: TriggerPosition,
   containerRect: DOMRect,
@@ -368,13 +384,11 @@ export const getPopupStyle = (
     translate = [0, 0],
     customStyle = {},
     autoFitPosition = false,
-    autoFitTransformOrigin = false,
   }: {
     offset?: number;
     translate?: PopupTranslate;
     customStyle?: CSSProperties;
     autoFitPosition?: boolean;
-    autoFitTransformOrigin?: boolean;
   } = {}
 ): { style: CSSProperties; position: TriggerPosition } => {
   let finalPosition = position;
@@ -400,22 +414,6 @@ export const getPopupStyle = (
     top: `${popupPosition.top}px`,
     ...customStyle,
   };
-
-  if (autoFitTransformOrigin) {
-    let originX = '0';
-    if (['top', 'bottom'].includes(finalPosition)) {
-      originX = '50%';
-    } else if (['left', 'lt', 'lb', 'tr', 'br'].includes(finalPosition)) {
-      originX = '100%';
-    }
-    let originY = '0';
-    if (['left', 'right'].includes(finalPosition)) {
-      originY = '50%';
-    } else if (['top', 'tl', 'tr', 'lt', 'rt'].includes(finalPosition)) {
-      originY = '100%';
-    }
-    style.transformOrigin = `${originX} ${originY}`;
-  }
 
   return {
     style,
