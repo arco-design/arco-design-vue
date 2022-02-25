@@ -124,11 +124,14 @@ export default defineComponent({
     let isValid = ref(true);
 
     if (!props.internal) {
-      const { index } = useIndex(itemRef);
+      const { computedIndex } = useIndex({
+        itemRef,
+        selector: `.${prefixCls}`,
+      });
 
       const optionInfo = reactive({
         ref: itemRef,
-        index,
+        index: computedIndex,
         key,
         origin: 'slot' as const,
         value,

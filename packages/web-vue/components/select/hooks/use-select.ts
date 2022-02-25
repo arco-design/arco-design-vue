@@ -13,6 +13,7 @@ export const useSelect = ({
   extraOptions,
   inputValue,
   filterOption,
+  showExtraOptions,
   component,
   valueKey,
   popupVisible,
@@ -28,6 +29,7 @@ export const useSelect = ({
   extraOptions?: Ref<Option[]>;
   inputValue?: Ref<string>;
   filterOption?: Ref<FilterOption>;
+  showExtraOptions?: Ref<boolean>;
   component?: Ref<'li' | 'div'>;
   valueKey?: Ref<string>;
   popupVisible: Ref<boolean>;
@@ -51,6 +53,7 @@ export const useSelect = ({
     extraOptions,
     inputValue,
     filterOption,
+    showExtraOptions,
     valueKey,
   });
 

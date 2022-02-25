@@ -38,6 +38,7 @@ import { useSelect } from './hooks/use-select';
 import { TagData } from '../input-tag/interface';
 import { useTrigger } from '../_hooks/use-trigger';
 import { useFormItem } from '../_hooks/use-form-item';
+import { debounce } from '../_utils/debounce';
 
 export default defineComponent({
   name: 'Select',
@@ -279,6 +280,15 @@ export default defineComponent({
       type: String,
       default: 'value',
     },
+    /**
+     * @zh 触发搜索事件的延迟时间
+     * @en Delay time to trigger search event
+     * @version 2.18.0
+     */
+    searchDelay: {
+      type: Number,
+      default: 500,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -401,6 +411,7 @@ export default defineComponent({
       valueKey,
       multiple,
       popupVisible,
+      showExtraOptions,
     } = toRefs(props);
     const prefixCls = getPrefixCls('select');
     const { mergedSize, mergedDisabled, mergedError, eventHandlers } =
@@ -575,6 +586,10 @@ export default defineComponent({
       }
     };
 
+    const handleSearch = debounce((value: string) => {
+      emit('search', value);
+    }, props.searchDelay);
+
     const handleInputValueChange = (inputValue: string) => {
       if (inputValue !== computedInputValue.value) {
         if (!computedPopupVisible.value) {
@@ -584,7 +599,7 @@ export default defineComponent({
         updateInputValue(inputValue);
 
         if (props.allowSearch) {
-          emit('search', inputValue);
+          handleSearch(inputValue);
         }
       }
     };
@@ -627,6 +642,7 @@ export default defineComponent({
       extraOptions,
       inputValue: computedInputValue,
       filterOption,
+      showExtraOptions,
       component,
       valueKey,
       popupVisible: computedPopupVisible,
@@ -657,7 +673,7 @@ export default defineComponent({
 
     const internalOptionInfos = computed(() => [
       ...propOptionInfos.value,
-      ...(props.showExtraOptions ? extraOptionInfos.value : []),
+      ...(showExtraOptions?.value ? extraOptionInfos.value : []),
     ]);
 
     const getOptionContentFunc = (optionInfo: OptionInfo) => {

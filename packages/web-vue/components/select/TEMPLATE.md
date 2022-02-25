@@ -44,6 +44,8 @@ description: When users need to select one or more from a group of similar data,
 
 @import ./__demo__/fallback.md
 
+@import ./__demo__/remote.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/label.md
