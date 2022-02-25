@@ -415,10 +415,13 @@ export default defineComponent({
 
     const optionInfos = ref<CascaderOptionInfo[]>([]);
     const totalLevel = ref(1);
-    const optionMap = new Map<string, CascaderOptionInfo>();
-    const leafOptionMap = new Map<string, CascaderOptionInfo>();
-    const leafOptionValueMap = new Map<string | number, CascaderOptionInfo>();
-    const leafOptionSet = new Set<CascaderOptionInfo>();
+
+    const optionMap = reactive(new Map<string, CascaderOptionInfo>());
+    const leafOptionMap = reactive(new Map<string, CascaderOptionInfo>());
+    const leafOptionValueMap = reactive(
+      new Map<string | number, CascaderOptionInfo>()
+    );
+    const leafOptionSet = reactive(new Set<CascaderOptionInfo>());
 
     const lazyLoadOptions = reactive<Record<string, CascaderOption[]>>({});
 
