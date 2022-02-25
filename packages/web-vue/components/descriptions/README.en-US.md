@@ -41,3 +41,20 @@ description: Generally used for the information display of the detail page.
 |title|Title|-|
 
 
+
+
+### `<descriptions-item>` Props
+
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|span|number of columns|`number`|`1`|2.18.0|
+|label|Label|`string`|`-`|2.18.0|
+### `<descriptions-item>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|label|Label|-|2.18.0|
+
+
+
+

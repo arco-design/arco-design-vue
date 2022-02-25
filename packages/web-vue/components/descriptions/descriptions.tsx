@@ -1,37 +1,22 @@
 import type { PropType, VNode, CSSProperties } from 'vue';
-import { computed, defineComponent, ref } from 'vue';
+import {
+  computed,
+  defineComponent,
+  isVNode,
+  provide,
+  reactive,
+  ref,
+} from 'vue';
 import type { Size, TextAlign } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
-import { isArray, isFunction, isObject } from '../_utils/is';
+import { isFunction, isObject } from '../_utils/is';
+import { descriptionsInjectionKey } from './context';
+import { DescData, DescItemData, DescLayout, RenderData } from './interface';
+import { getAllElements, isSlotsChildren } from '../_utils/vue-utils';
 
-export type DescData = {
-  key: string;
-  label: string | (() => VNode);
-  value: string | (() => VNode);
-  span: number;
-};
-
-const DESC_LAYOUTS = [
-  'horizontal',
-  'vertical',
-  'inline-horizontal',
-  'inline-vertical',
-] as const;
-type DescLayout = typeof DESC_LAYOUTS[number];
-
-const getItemSpan = (item: DescData, column: number) => {
-  if (!item.span) {
-    return 1;
-  }
-  if (item.span > column) {
-    return column;
-  }
-  return item.span;
-};
-
-const getTotalSpan = (arr?: DescData[]) => {
-  return isArray(arr)
-    ? arr.reduce((total, data) => total + (data.span || 1), 0)
+const getTotalSpan = (renderData?: RenderData[]) => {
+  return renderData
+    ? renderData.reduce((total, data) => total + data.span, 0)
     : 0;
 };
 
@@ -136,8 +121,10 @@ export default defineComponent({
 
     const screen = ref();
 
-    const column = computed(() =>
-      isObject(props.column) ? props.column[screen.value] : props.column
+    const column = computed(
+      () =>
+        (isObject(props.column) ? props.column[screen.value] : props.column) ??
+        1
     );
 
     const labelAlign = computed(
@@ -157,125 +144,190 @@ export default defineComponent({
       ...props.valueStyle,
     }));
 
-    const data = computed(() => {
-      const data = [];
-      if (isArray(props.data) && props.data.length > 0 && column.value > 0) {
-        for (const item of props.data) {
-          const itemSpan = getItemSpan(item, column.value);
-          const lastData = data[data.length - 1];
-          const lastDataTotalSpan = getTotalSpan(lastData);
-          if (lastDataTotalSpan === 0 || lastDataTotalSpan >= column.value) {
-            data.push([
-              {
-                ...item,
-                span: itemSpan,
-              },
-            ]);
-          } else {
-            const span = item.span
-              ? item.span + lastDataTotalSpan > column.value
-                ? column.value - lastDataTotalSpan
-                : item.span
-              : 1;
-            lastData.push({
-              ...item,
-              span,
-            });
-          }
-        }
-        // 最后一列填满span
-        const lastData = data[data.length - 1];
-        const lastDataTotalSpan = getTotalSpan(lastData);
-        if (lastDataTotalSpan < column.value) {
-          lastData[lastData.length - 1].span =
-            lastData[lastData.length - 1].span +
-            column.value -
-            lastDataTotalSpan;
-        }
-      }
-      return data;
-    });
+    const descItemMap = reactive(new Map<number, DescItemData>());
+    const sortedSpans = computed(() =>
+      Array.from(descItemMap.values())
+        .sort((a, b) => a.index - b.index)
+        .map((data) => {
+          // eslint-disable-next-line no-console
+          console.log(data);
 
-    const renderVerticalItems = (data: DescData[]) => (
+          return data.span;
+        })
+    );
+
+    const addItem = (id: number, data: DescItemData) => {
+      descItemMap.set(id, data);
+    };
+
+    const removeItem = (id: number) => {
+      descItemMap.delete(id);
+    };
+
+    provide(
+      descriptionsInjectionKey,
+      reactive({
+        addItem,
+        removeItem,
+      })
+    );
+
+    const getGroupedData = (data: (DescData | VNode)[]) => {
+      const groupedData: RenderData[][] = [];
+      data.forEach((item, index) => {
+        const itemSpan = Math.min(
+          (isVNode(item) ? sortedSpans.value[index] : item.span) ?? 1,
+          column.value
+        );
+        const lastData = groupedData[groupedData.length - 1];
+        const lastDataTotalSpan = getTotalSpan(lastData);
+        if (lastDataTotalSpan === 0 || lastDataTotalSpan >= column.value) {
+          // add item to new row
+          groupedData.push([
+            {
+              data: item,
+              span: itemSpan,
+            },
+          ]);
+        } else {
+          // add item to current row
+          lastData.push({
+            data: item,
+            span:
+              itemSpan + lastDataTotalSpan > column.value
+                ? column.value - lastDataTotalSpan
+                : itemSpan,
+          });
+        }
+      });
+      const lastData = groupedData[groupedData.length - 1];
+      const lastDataTotalSpan = getTotalSpan(lastData);
+      if (lastDataTotalSpan < column.value) {
+        lastData[lastData.length - 1].span += column.value - lastDataTotalSpan;
+      }
+      return groupedData;
+    };
+
+    const groupedData = computed(() => getGroupedData(props.data ?? []));
+
+    const renderLabel = (item: DescData | VNode, index: number) => {
+      if (isVNode(item)) {
+        return (
+          (isSlotsChildren(item, item.children) && item.children.label?.()) ||
+          item.props?.label
+        );
+      }
+      return (
+        slots.label?.({ label: item.label, index, data: item }) ??
+        (isFunction(item.label) ? item.label() : item.label)
+      );
+    };
+
+    const renderValue = (item: DescData | VNode, index: number) => {
+      if (isVNode(item)) {
+        return item;
+      }
+      return (
+        slots.value?.({ value: item.value, index, data: item }) ??
+        (isFunction(item.value) ? item.value() : item.value)
+      );
+    };
+
+    const renderVerticalItems = (data: RenderData[]) => (
       <>
         <tr class={`${prefixCls}-row`}>
           {data.map((item, index) => (
             <td
-              key={`${item.key ?? index}_label`}
-              class={`${prefixCls}-item-label`}
+              key={`label-${index}`}
+              class={[
+                `${prefixCls}-item-label`,
+                `${prefixCls}-item-label-block`,
+              ]}
               style={labelStyle.value}
               colspan={item.span}
             >
-              {slots.label?.({ label: item.label, index, data: item }) ??
-                (isFunction(item.label) ? item.label() : item.label)}
+              {renderLabel(item.data, index)}
             </td>
           ))}
         </tr>
         <tr class={`${prefixCls}-row`}>
           {data.map((item, index) => (
             <td
-              key={`${item.key ?? index}_value`}
-              class={`${prefixCls}-item-value`}
+              key={`value-${index}`}
+              class={[
+                `${prefixCls}-item-value`,
+                `${prefixCls}-item-value-block`,
+              ]}
               style={valueStyle.value}
               colspan={item.span}
             >
-              {slots.value?.({ value: item.value, index, data: item }) ??
-                (isFunction(item.value) ? item.value() : item.value)}
+              {renderValue(item.data, index)}
             </td>
           ))}
         </tr>
       </>
     );
 
-    const renderHorizontalItems = (data: DescData[], index: number) => (
+    const renderHorizontalItems = (data: RenderData[], index: number) => (
       <tr class={`${prefixCls}-row`} key={`tr-${index}`}>
         {data.map((item) => (
           <>
-            <td class={`${prefixCls}-item-label`} style={labelStyle.value}>
-              {slots.label?.({ label: item.label, index, data: item }) ??
-                (isFunction(item.label) ? item.label() : item.label)}
+            <td
+              class={[
+                `${prefixCls}-item-label`,
+                `${prefixCls}-item-label-block`,
+              ]}
+              style={labelStyle.value}
+            >
+              {renderLabel(item.data, index)}
             </td>
             <td
-              class={`${prefixCls}-item-value`}
+              class={[
+                `${prefixCls}-item-value`,
+                `${prefixCls}-item-value-block`,
+              ]}
               style={valueStyle.value}
               colspan={item.span * 2 - 1}
             >
-              {slots.value?.({ value: item.value, index, data: item }) ??
-                (isFunction(item.value) ? item.value() : item.value)}
+              {renderValue(item.data, index)}
             </td>
           </>
         ))}
       </tr>
     );
 
-    const renderInlineItems = (data: DescData[], index: number) => (
+    const renderInlineItems = (data: RenderData[], index: number) => (
       <tr class={`${prefixCls}-row`} key={`inline-${index}`}>
         {data.map((item, index) => (
           <td
-            key={item.key ?? index}
+            key={`item-${index}`}
             class={`${prefixCls}-item`}
             colspan={item.span}
           >
             <div
-              class={`${prefixCls}-item-label-inline`}
+              class={[
+                `${prefixCls}-item-label`,
+                `${prefixCls}-item-label-inline`,
+              ]}
               style={labelStyle.value}
             >
-              {slots.label?.({ label: item.label, index, data: item }) ??
-                (isFunction(item.label) ? item.label() : item.label)}
+              {renderLabel(item.data, index)}
             </div>
             <div
-              class={`${prefixCls}-item-value-inline`}
+              class={[
+                `${prefixCls}-item-value`,
+                `${prefixCls}-item-value-inline`,
+              ]}
               style={valueStyle.value}
             >
-              {slots.value?.({ value: item.value, index, data: item }) ??
-                (isFunction(item.value) ? item.value() : item.value)}
+              {renderValue(item.data, index)}
             </div>
           </td>
         ))}
       </tr>
     );
 
-    const renderItems = (data: DescData[], index: number) => {
+    const renderItems = (data: RenderData[], index: number) => {
       if (['inline-horizontal', 'inline-vertical'].includes(props.layout)) {
         return renderInlineItems(data, index);
       }
@@ -302,17 +354,23 @@ export default defineComponent({
       return null;
     };
 
-    return () => (
-      <div class={cls.value}>
-        {renderTitle()}
-        <div class={`${prefixCls}-body`}>
-          <table class={`${prefixCls}-table`}>
-            <tbody>
-              {data.value.map((data, index) => renderItems(data, index))}
-            </tbody>
-          </table>
+    return () => {
+      const _groupedData = slots.default
+        ? getGroupedData(getAllElements(slots.default()))
+        : groupedData.value;
+
+      return (
+        <div class={cls.value}>
+          {renderTitle()}
+          <div class={`${prefixCls}-body`}>
+            <table class={`${prefixCls}-table`}>
+              <tbody>
+                {_groupedData.map((data, index) => renderItems(data, index))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    );
+      );
+    };
   },
 });
