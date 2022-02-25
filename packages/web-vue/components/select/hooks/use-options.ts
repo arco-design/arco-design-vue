@@ -8,12 +8,14 @@ export const useOptions = ({
   extraOptions,
   inputValue,
   filterOption,
+  showExtraOptions,
   valueKey,
 }: {
   options?: Ref<Option[]>;
   extraOptions?: Ref<Option[]>;
   inputValue?: Ref<string>;
   filterOption?: Ref<FilterOption>;
+  showExtraOptions?: Ref<boolean>;
   valueKey?: Ref<string>;
 }) => {
   const slotOptionInfoMap = reactive(new Map<string, OptionInfo>());
@@ -65,12 +67,18 @@ export const useOptions = ({
   );
 
   const validOptionInfos = computed(() =>
-    Array.from(optionInfoMap.values()).filter((optionInfo) =>
-      isValidOption(optionInfo, {
+    Array.from(optionInfoMap.values()).filter((optionInfo) => {
+      if (
+        optionInfo.origin === 'extraOptions' &&
+        showExtraOptions?.value === false
+      ) {
+        return false;
+      }
+      return isValidOption(optionInfo, {
         inputValue: inputValue?.value,
         filterOption: filterOption?.value,
-      })
-    )
+      });
+    })
   );
 
   const enabledOptionKeys = computed(() =>

@@ -59,8 +59,12 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const prefixCls = getPrefixCls('grid-item');
     const domRef = ref<HTMLDivElement>();
-    const { index } = useIndex(domRef);
+    const { computedIndex } = useIndex({
+      itemRef: domRef,
+      selector: `.${prefixCls}`,
+    });
     const gridContext = inject(GridContextInjectionKey, {
       overflow: false,
       displayIndexList: [],
@@ -69,7 +73,7 @@ export default defineComponent({
     });
     const gridDataCollector = inject(GridDataCollectorInjectionKey);
     const visible = computed(() =>
-      gridContext?.displayIndexList?.includes(index.value)
+      gridContext?.displayIndexList?.includes(computedIndex.value)
     );
     const { span: propSpan, offset: propOffset } = toRefs(props);
     const rSpan = useResponsiveState(propSpan, 1);
@@ -81,7 +85,7 @@ export default defineComponent({
         offset: rOffset.value,
       })
     );
-    const prefixCls = getPrefixCls('grid-item');
+
     const classNames = computed(() => [prefixCls]);
     const offsetStyle = computed(() => {
       const { offset, span } = itemData.value;
@@ -116,14 +120,14 @@ export default defineComponent({
     });
 
     watchEffect(() => {
-      if (index.value !== -1) {
-        gridDataCollector?.collectItemData(index.value, itemData.value);
+      if (computedIndex.value !== -1) {
+        gridDataCollector?.collectItemData(computedIndex.value, itemData.value);
       }
     });
 
     onUnmounted(() => {
-      if (index.value !== -1) {
-        gridDataCollector?.removeItemData(index.value);
+      if (computedIndex.value !== -1) {
+        gridDataCollector?.removeItemData(computedIndex.value);
       }
     });
 
