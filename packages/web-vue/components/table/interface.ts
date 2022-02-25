@@ -349,9 +349,43 @@ export interface TableOperationColumn {
 
 export interface TableComponents {
   operations: (operations: {
+    dragHandle?: TableOperationColumn;
     expand?: TableOperationColumn;
     selection?: TableOperationColumn;
   }) => TableOperationColumn[];
+}
+
+export interface TableChangeExtra {
+  /**
+   * @zh 触发类型
+   * @en Trigger type
+   */
+  type: 'pagination' | 'sorter' | 'filter' | 'drag';
+  /**
+   * @zh 页码
+   * @en page number
+   */
+  page?: number;
+  /**
+   * @zh 每页数据数
+   * @en number per page
+   */
+  pageSize?: number;
+  /**
+   * @zh 排序信息
+   * @en Sort information
+   */
+  sorter?: Sorter;
+  /**
+   * @zh 筛选信息
+   * @en Filter information
+   */
+  filters?: Filters;
+  /**
+   * @zh 拖拽信息
+   * @en Drag and drop information
+   */
+  dragTarget?: TableData;
 }
 
 export interface TableProps {

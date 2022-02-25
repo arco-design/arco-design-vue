@@ -63,7 +63,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 |row-key|表格行 `key` 的取值字段|`string`|`'key'`||
 |show-header|是否显示表头|`boolean`|`true`||
 |virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`||
-|span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
+|span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
+|span-all|是否让合并方法的索引包含所有|`boolean`|`false`|2.18.0|
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|筛选图标是否左对齐|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|是否在子树为空时隐藏展开按钮|`boolean`|`false`|2.14.0|
@@ -83,7 +84,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |filter-change|过滤选项发生改变时触发|dataIndex: `string`<br>filteredValues: `string[]`|
 |page-change|表格分页发生改变时触发|page: `number`|
 |page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`|
-|change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `any`|
+|change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`|
 |cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumn`|
 |row-click|点击行数据时触发|record: `TableData`|
 |header-click|点击表头数据时触发|column: `TableColumn`|
@@ -240,5 +241,18 @@ description: 用于数据收集展示、分析整理、操作处理。
 |title|列标题|`string`|`-`|
 |width|列宽度|`number`|`-`|
 |fixed|是否固定|`boolean`|`false`|
+
+
+
+### TableChangeExtra
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|type|触发类型|`'pagination' \| 'sorter' \| 'filter' \| 'drag'`|`-`|
+|page|页码|`number`|`-`|
+|pageSize|每页数据数|`number`|`-`|
+|sorter|排序信息|`Sorter`|`-`|
+|filters|筛选信息|`Filters`|`-`|
+|dragTarget|拖拽信息|`TableData`|`-`|
 
 

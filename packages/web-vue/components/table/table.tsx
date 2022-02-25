@@ -37,6 +37,7 @@ import type {
   TableData,
   TablePagePosition,
   TableDraggable,
+  TableChangeExtra,
 } from './interface';
 import { getColumnsFromSlot, getGroupColumns, spliceFromPath } from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
@@ -230,11 +231,20 @@ export default defineComponent({
       type: Function as PropType<
         (data: {
           record: TableData;
-          column: TableColumn;
+          column: TableColumn | TableOperationColumn;
           rowIndex: number;
           columnIndex: number;
         }) => { rowspan?: number; colspan?: number } | void
       >,
+    },
+    /**
+     * @zh 是否让合并方法的索引包含所有
+     * @en Whether to make the index of the span method contain all
+     * @version 2.18.0
+     */
+    spanAll: {
+      type: Boolean,
+      default: false,
     },
     components: {
       type: Object as PropType<TableComponents>,
@@ -401,7 +411,7 @@ export default defineComponent({
     /**
      * @zh 表格数据发生变化时触发
      * @param {TableData[]} data
-     * @param {any} extra
+     * @param {TableChangeExtra} extra
      */
     'change',
     /**
@@ -875,7 +885,7 @@ export default defineComponent({
     const handleChange = (
       type: 'pagination' | 'sorter' | 'filter' | 'drag'
     ) => {
-      const extra = {
+      const extra: TableChangeExtra = {
         type,
         page: page.value,
         pageSize: pageSize.value,
@@ -977,16 +987,18 @@ export default defineComponent({
       const operations: TableOperationColumn[] = [];
       const hasFixedColumn =
         hasLeftFixedColumn.value || hasRightFixedColumn.value;
+      let dragHandle: TableOperationColumn | undefined;
       let expand: TableOperationColumn | undefined;
       let selection: TableOperationColumn | undefined;
 
       if (props.draggable?.type === 'handle') {
-        operations.push({
+        dragHandle = {
           name: 'dragHandle',
           title: props.draggable.title,
           width: props.draggable.width,
           fixed: props.draggable.fixed || hasFixedColumn,
-        });
+        };
+        operations.push(dragHandle);
       }
 
       if (props.expandable) {
@@ -1009,16 +1021,10 @@ export default defineComponent({
         operations.push(selection);
       }
 
-      if (props.rowNumber) {
-        operations.push({
-          name: 'rowNumber',
-        });
-      }
-
       const operationsFn = props.components?.operations;
 
       return isFunction(operationsFn)
-        ? operationsFn({ expand, selection })
+        ? operationsFn({ dragHandle, expand, selection })
         : operations;
     };
 
@@ -1139,8 +1145,15 @@ export default defineComponent({
     // [row, column]
     const tableSpan = computed(() => {
       const data: Record<string, [number, number]> = {};
+      const columns = props.spanAll
+        ? ([] as (TableColumn | TableOperationColumn)[]).concat(
+            operations.value,
+            dataColumns.value
+          )
+        : dataColumns.value;
+
       flattenData.value.forEach((record, rowIndex) => {
-        dataColumns.value.forEach((column, columnIndex) => {
+        columns.forEach((column, columnIndex) => {
           const { rowspan = 1, colspan = 1 } =
             props.spanMethod?.({
               record,
@@ -1305,6 +1318,15 @@ export default defineComponent({
                     }
                   : undefined;
 
+              const cellId = `${rowIndex}-${index}`;
+              const [rowspan, colspan] = props.spanAll
+                ? tableSpan.value[cellId] ?? [1, 1]
+                : [1, 1];
+
+              if (props.spanAll && removedCells.value.includes(cellId)) {
+                return null;
+              }
+
               return (
                 <OperationTd
                   key={`operation-td-${index}`}
@@ -1321,6 +1343,8 @@ export default defineComponent({
                   selectedRowKeys={selectedRowKeys.value}
                   expandedIcon={props.expandable?.icon}
                   expandedRowKeys={expandedRowKeys.value}
+                  rowSpan={rowspan}
+                  colSpan={colspan}
                   renderExpandBtn={renderExpandBtn}
                   onSelect={handleSelect}
                   onExpand={handleExpand}
@@ -1347,10 +1371,10 @@ export default defineComponent({
                     }
                   : undefined;
 
-              const cellId = `${rowIndex}-${index}`;
-              const [rowspan, colspan] = tableSpan.value[
-                `${rowIndex}-${index}`
-              ] ?? [1, 1];
+              const cellId = `${rowIndex}-${
+                props.spanAll ? operations.value.length + index : index
+              }`;
+              const [rowspan, colspan] = tableSpan.value[cellId] ?? [1, 1];
 
               if (removedCells.value.includes(cellId)) {
                 return null;
