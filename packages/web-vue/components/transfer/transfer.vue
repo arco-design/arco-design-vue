@@ -2,6 +2,7 @@
   <div :class="cls">
     <transfer-view
       type="source"
+      :class="`${prefixCls}-view-source`"
       :title="sourceTitle"
       :data-info="dataInfo.sourceInfo"
       :data="dataInfo.sourceInfo.data"
@@ -36,6 +37,7 @@
     </div>
     <transfer-view
       type="target"
+      :class="`${prefixCls}-view-target`"
       :title="targetTitle"
       :data-info="dataInfo.targetInfo"
       :data="dataInfo.targetInfo.data"

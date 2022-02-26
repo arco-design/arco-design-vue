@@ -27,7 +27,7 @@
     <div v-if="showSearch" :class="`${prefixCls}-search`">
       <input-search v-model="filter" @change="handleSearch" />
     </div>
-    <list :bordered="false">
+    <list :class="`${prefixCls}-list`" :bordered="false">
       <transfer-list-item
         v-for="item of filteredData"
         :key="item.value"
