@@ -168,9 +168,9 @@ export default defineComponent({
     const { mergedSize } = useSize(_mergedSize);
 
     const getStringValue = (number: number | undefined) => {
-      return isUndefined(number)
-        ? ''
-        : props.formatter?.(String(number)) ?? String(number);
+      return isNumber(number)
+        ? props.formatter?.(String(number)) ?? String(number)
+        : '';
     };
 
     // inner input value to display

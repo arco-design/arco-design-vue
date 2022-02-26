@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref, nextTick, toRefs } from 'vue';
+import { computed, defineComponent, ref, nextTick, toRefs, watch } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size } from '../_utils/constant';
 import FeedbackIcon from '../_components/feedback-icon.vue';
@@ -8,7 +8,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
-import { isFunction, isObject } from '../_utils/is';
+import { isFunction, isNull, isObject, isUndefined } from '../_utils/is';
 import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
@@ -199,7 +199,7 @@ export default defineComponent({
    * @slot append
    */
   setup(props, { emit, slots, attrs }) {
-    const { size, disabled, error } = toRefs(props);
+    const { size, disabled, error, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('input');
     const inputRef = ref<HTMLInputElement>();
     const {
@@ -214,6 +214,13 @@ export default defineComponent({
     // 值相关
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = '';
+      }
+    });
+
     let preValue = computedValue.value;
 
     // 状态相关

@@ -12,6 +12,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import {
   isArray,
   isFunction,
+  isNull,
   isNumber,
   isObject,
   isUndefined,
@@ -412,6 +413,7 @@ export default defineComponent({
       multiple,
       popupVisible,
       showExtraOptions,
+      modelValue,
     } = toRefs(props);
     const prefixCls = getPrefixCls('select');
     const { mergedSize, mergedDisabled, mergedError, eventHandlers } =
@@ -462,6 +464,12 @@ export default defineComponent({
         key: getKeyFromValue(value, props.valueKey),
       }));
     });
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = multiple.value ? [] : '';
+      }
+    });
+
     const computedValueKeys = computed(() =>
       computedValueObjects.value.map((obj) => obj.key)
     );
