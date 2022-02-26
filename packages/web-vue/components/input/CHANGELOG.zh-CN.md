@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.3
+
+`2022-02-26`
+
+### 💎 功能优化
+
+- modelValue 支持 null ([#743](https://github.com/arco-design/arco-design-vue/pull/743))
+
+
 ## 2.17.0
 
 `2022-02-11`

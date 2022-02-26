@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<list> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-spin\\" style=\\"display: block;\\">
-  <div class=\\"arco-list-wrapper\\">
+"<div class=\\"arco-list-wrapper\\">
+  <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <div class=\\"arco-list-header\\"> List title </div>
       <div class=\\"arco-list-content\\">
@@ -55,14 +55,14 @@ exports[`<list> demo: render [basic] correctly 1`] = `
       <!---->
     </div>
     <!---->
+    <!---->
   </div>
-  <!---->
 </div>"
 `;
 
 exports[`<list> demo: render [grid] correctly 1`] = `
-"<div class=\\"arco-spin\\" style=\\"display: block;\\">
-  <div class=\\"arco-list-wrapper\\">
+"<div class=\\"arco-list-wrapper\\">
+  <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-split\\">
       <!---->
       <div class=\\"arco-list-content\\">
@@ -72,8 +72,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
-                  <div class=\\"arco-spin\\" style=\\"display: block;\\">
-                    <div class=\\"arco-list-wrapper\\">
+                  <div class=\\"arco-list-wrapper\\">
+                    <div class=\\"arco-spin arco-list-spin\\">
                       <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
                         <div class=\\"arco-list-header\\">Platform</div>
                         <div class=\\"arco-list-content\\">
@@ -108,8 +108,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
   <!---->
@@ -123,8 +123,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
     <div class=\\"arco-list-item-main\\">
       <!---->
       <div class=\\"arco-list-item-content\\">
-        <div class=\\"arco-spin\\" style=\\"display: block;\\">
-          <div class=\\"arco-list-wrapper\\">
+        <div class=\\"arco-list-wrapper\\">
+          <div class=\\"arco-spin arco-list-spin\\">
             <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
               <div class=\\"arco-list-header\\">Framework</div>
               <div class=\\"arco-list-content\\">
@@ -159,8 +159,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
 <!---->
 </div>
 <!---->
-</div>
 <!---->
+</div>
 </div>
 </div>
 <!---->
@@ -174,8 +174,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
     <div class=\\"arco-list-item-main\\">
       <!---->
       <div class=\\"arco-list-item-content\\">
-        <div class=\\"arco-spin\\" style=\\"display: block;\\">
-          <div class=\\"arco-list-wrapper\\">
+        <div class=\\"arco-list-wrapper\\">
+          <div class=\\"arco-spin arco-list-spin\\">
             <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
               <div class=\\"arco-list-header\\">Language</div>
               <div class=\\"arco-list-content\\">
@@ -210,8 +210,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
 <!---->
 </div>
 <!---->
-</div>
 <!---->
+</div>
 </div>
 </div>
 <!---->
@@ -225,8 +225,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
     <div class=\\"arco-list-item-main\\">
       <!---->
       <div class=\\"arco-list-item-content\\">
-        <div class=\\"arco-spin\\" style=\\"display: block;\\">
-          <div class=\\"arco-list-wrapper\\">
+        <div class=\\"arco-list-wrapper\\">
+          <div class=\\"arco-spin arco-list-spin\\">
             <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
               <div class=\\"arco-list-header\\">Component</div>
               <div class=\\"arco-list-content\\">
@@ -261,8 +261,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
 <!---->
 </div>
 <!---->
-</div>
 <!---->
+</div>
 </div>
 </div>
 <!---->
@@ -276,14 +276,14 @@ exports[`<list> demo: render [grid] correctly 1`] = `
 <!---->
 </div>
 <!---->
-</div>
 <!---->
+</div>
 </div>"
 `;
 
 exports[`<list> demo: render [meta] correctly 1`] = `
-"<div class=\\"arco-spin\\" style=\\"display: block;\\">
-  <div class=\\"arco-list-wrapper\\">
+"<div class=\\"arco-list-wrapper\\">
+  <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <!---->
       <div class=\\"arco-list-content\\">
@@ -375,14 +375,14 @@ exports[`<list> demo: render [meta] correctly 1`] = `
       <!---->
     </div>
     <!---->
+    <!---->
   </div>
-  <!---->
 </div>"
 `;
 
 exports[`<list> demo: render [scroll] correctly 1`] = `
-"<div class=\\"arco-spin\\" style=\\"display: block;\\">
-  <div class=\\"arco-list-wrapper\\">
+"<div class=\\"arco-list-wrapper\\">
+  <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\" style=\\"max-height: 200px;\\">
       <div class=\\"arco-list-header\\"> List title </div>
       <div class=\\"arco-list-content\\">
@@ -435,8 +435,8 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
       <!---->
     </div>
     <!---->
+    <!---->
   </div>
-  <!---->
 </div>"
 `;
 
@@ -444,8 +444,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></div>
   <div class=\\"arco-space-item\\">
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
           <div class=\\"arco-list-header\\"> List title </div>
           <div class=\\"arco-list-content\\">
@@ -498,8 +498,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
 </div>"
@@ -507,8 +507,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
 
 exports[`<list> demo: render [virtual-list] correctly 1`] = `
 "<h3>10000 items</h3>
-<div class=\\"arco-spin\\" style=\\"display: block; width: 600px;\\">
-  <div class=\\"arco-list-wrapper\\">
+<div class=\\"arco-list-wrapper\\" style=\\"width: 600px;\\">
+  <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <!---->
       <div class=\\"arco-list-content arco-list-virtual\\" style=\\"overflow-y: auto; max-height: 560px;\\">
@@ -919,7 +919,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
       <!---->
     </div>
     <!---->
+    <!---->
   </div>
-  <!---->
 </div>"
 `;
