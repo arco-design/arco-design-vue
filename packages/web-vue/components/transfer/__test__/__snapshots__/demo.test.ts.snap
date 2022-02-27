@@ -2,11 +2,11 @@
 
 exports[`<transfer> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -29,16 +29,16 @@ exports[`<transfer> demo: render [basic] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
   <div class=\\"arco-transfer-operations\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path></svg></span></button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span></button></div>
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-target\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Target</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 3</span></div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -55,8 +55,8 @@ exports[`<transfer> demo: render [basic] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
 </div>"
@@ -64,11 +64,11 @@ exports[`<transfer> demo: render [basic] correctly 1`] = `
 
 exports[`<transfer> demo: render [custom] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -91,16 +91,16 @@ exports[`<transfer> demo: render [custom] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
   <div class=\\"arco-transfer-operations\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path></svg></span></button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span></button></div>
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-target\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Target</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 3</span></div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -117,8 +117,8 @@ exports[`<transfer> demo: render [custom] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
 </div>"
@@ -126,11 +126,11 @@ exports[`<transfer> demo: render [custom] correctly 1`] = `
 
 exports[`<transfer> demo: render [one-way] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -153,18 +153,18 @@ exports[`<transfer> demo: render [one-way] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
   <div class=\\"arco-transfer-operations\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path></svg></span></button>
     <!--v-if-->
   </div>
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-target\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\">Target</span><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-transfer-view-header-clear-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -175,8 +175,8 @@ exports[`<transfer> demo: render [one-way] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
 </div>"
@@ -186,14 +186,14 @@ exports[`<transfer> demo: render [pagination] correctly 1`] = `"<!---->"`;
 
 exports[`<transfer> demo: render [search] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
     <div class=\\"arco-transfer-view-search\\"><span class=\\"arco-input-wrapper arco-input-search\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><span class=\\"arco-input-suffix\\"><!----><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-search\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0-6.248 6.248-6.248 16.379 0 22.627 6.248 6.248 16.38 6.248 22.628 0Zm0 0 8.485 8.485\\"></path></svg></span>
       <!---->
       <!----></span></span>
     </div>
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -216,19 +216,19 @@ exports[`<transfer> demo: render [search] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
   <div class=\\"arco-transfer-operations\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path></svg></span></button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span></button></div>
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-target\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-size-medium arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Target</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 3</span></div>
     <div class=\\"arco-transfer-view-search\\"><span class=\\"arco-input-wrapper arco-input-search\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><span class=\\"arco-input-suffix\\"><!----><span class=\\"arco-icon-hover arco-icon-hover-size-medium\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-search\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0-6.248 6.248-6.248 16.379 0 22.627 6.248 6.248 16.38 6.248 22.628 0Zm0 0 8.485 8.485\\"></path></svg></span>
       <!---->
       <!----></span></span>
     </div>
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -245,8 +245,8 @@ exports[`<transfer> demo: render [search] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
 </div>"
@@ -254,13 +254,13 @@ exports[`<transfer> demo: render [search] correctly 1`] = `
 
 exports[`<transfer> demo: render [simple] correctly 1`] = `
 "<div class=\\"arco-transfer arco-transfer-simple\\">
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\">Source</span>
       <!--v-if-->
     </div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -283,18 +283,18 @@ exports[`<transfer> demo: render [simple] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
   <!--v-if-->
-  <div class=\\"arco-transfer-view\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-target\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\">Target</span>
       <!--v-if-->
     </div>
     <!--v-if-->
-    <div class=\\"arco-spin\\" style=\\"display: block;\\">
-      <div class=\\"arco-list-wrapper\\">
+    <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+      <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-split\\">
           <!---->
           <div class=\\"arco-list-content\\">
@@ -311,8 +311,8 @@ exports[`<transfer> demo: render [simple] correctly 1`] = `
           <!---->
         </div>
         <!---->
+        <!---->
       </div>
-      <!---->
     </div>
   </div>
 </div>"

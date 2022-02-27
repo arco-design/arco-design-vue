@@ -290,8 +290,8 @@ export default defineComponent({
 
     const render = () => {
       return (
-        <Spin style={{ display: 'block' }} loading={props.loading}>
-          <div class={`${prefixCls}-wrapper`}>
+        <div class={`${prefixCls}-wrapper`}>
+          <Spin class={`${prefixCls}-spin`} loading={props.loading}>
             <div
               class={cls.value}
               style={contentStyle.value}
@@ -310,8 +310,8 @@ export default defineComponent({
               )}
             </div>
             {renderPagination()}
-          </div>
-        </Spin>
+          </Spin>
+        </div>
       );
     };
 
