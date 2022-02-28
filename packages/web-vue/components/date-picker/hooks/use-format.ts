@@ -3,7 +3,7 @@ import { isFunction } from '../../_utils/is';
 import { Mode, FormatFunc, ValueFormat } from '../interface';
 
 interface FormatProps {
-  format: string | FormatFunc | undefined;
+  format?: string | FormatFunc;
   valueFormat?: ValueFormat;
   mode?: Mode;
   showTime?: boolean;
@@ -36,7 +36,7 @@ export default function useFormat(props: FormatProps) {
 
   const format = computed(
     () =>
-      (!isFunction(propFormat.value) && propFormat?.value) ||
+      (!isFunction(propFormat?.value) && propFormat?.value) ||
       getDefaultFormat(mode?.value, showTime?.value)
   );
 

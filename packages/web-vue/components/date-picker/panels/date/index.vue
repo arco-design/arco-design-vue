@@ -8,6 +8,9 @@
         }"
         :prefix-cls="pickerPrefixCls"
         :title="headerTitle"
+        :mode="mode"
+        :value="headerValue"
+        :on-label-click="onHeaderLabelClick"
       />
       <PanelWeekList :prefix-cls="pickerPrefixCls" :week-list="weekList" />
       <PanelBody
@@ -84,7 +87,7 @@ import type {
   Mode,
 } from '../../interface';
 import { newArray } from '../../utils';
-import PanelHeader from '../header.vue';
+import PanelHeader, { HeaderLabelClickFunc } from '../header.vue';
 import PanelBody from '../body.vue';
 import PanelWeekList from '../week-list.vue';
 import TimePanel from '../../../time-picker/panel.vue';
@@ -172,6 +175,9 @@ export default defineComponent({
     },
     disabled: {
       type: Boolean,
+    },
+    onHeaderLabelClick: {
+      type: Function as PropType<HeaderLabelClickFunc>,
     },
   },
   emits: [
