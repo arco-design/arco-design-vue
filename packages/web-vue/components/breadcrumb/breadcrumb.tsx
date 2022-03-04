@@ -1,6 +1,15 @@
-import { defineComponent } from 'vue';
+import {
+  computed,
+  defineComponent,
+  mergeProps,
+  provide,
+  reactive,
+  ref,
+  toRefs,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { getChildrenComponents, getComponentNumber } from '../_utils/vue-utils';
+import { breadcrumbInjectKey } from './context';
+import { getAllElements } from '../_utils/vue-utils';
 
 /**
  * TODO: 下拉菜单功能
@@ -23,23 +32,40 @@ export default defineComponent({
    * @slot separator
    */
   setup(props, { slots }) {
+    const { maxCount } = toRefs(props);
     const prefixCls = getPrefixCls('breadcrumb');
 
-    return () => {
-      const children = slots.default?.() ?? [];
-      const total = getComponentNumber(children, 'BreadcrumbItem');
-      const mergedChildren = getChildrenComponents(
-        children,
-        'BreadcrumbItem',
-        (vn, index) => ({
-          index,
-          total,
-          maxCount: props.maxCount,
-          separator: slots.separator,
-        })
-      );
+    const total = ref(0);
 
-      return <div class={prefixCls}>{mergedChildren}</div>;
+    const needHide = computed(
+      () => maxCount.value > 0 && total.value > maxCount.value + 1
+    );
+
+    provide(
+      breadcrumbInjectKey,
+      reactive({
+        total,
+        maxCount,
+        needHide,
+        slots,
+      })
+    );
+
+    return () => {
+      const children = getAllElements(slots.default?.() ?? []);
+
+      if (total.value !== children.length) {
+        total.value = children.length;
+      }
+
+      return (
+        <div class={prefixCls}>
+          {children.map((child, index) => {
+            child.props = mergeProps(child.props ?? {}, { index });
+            return child;
+          })}
+        </div>
+      );
     };
   },
 });
