@@ -210,14 +210,27 @@ export default defineComponent({
       isArray(props.defaultValue) ? props.defaultValue[1] : props.defaultValue
     );
 
+    const handleChange = () => {
+      if (props.range) {
+        emit('update:modelValue', [startValue.value, endValue.value]);
+        emit('change', [startValue.value, endValue.value]);
+      } else {
+        emit('update:modelValue', endValue.value);
+        emit('change', endValue.value);
+      }
+      eventHandlers.value?.onChange?.();
+    };
+
     const handleStartChange = (value?: number) => {
       value = value ?? props.min;
       startValue.value = value;
+      handleChange();
     };
 
     const handleEndChange = (value?: number) => {
       value = value ?? props.min;
       endValue.value = value;
+      handleChange();
     };
 
     const computedValue = computed<[number, number]>(() => {
@@ -267,7 +280,7 @@ export default defineComponent({
     // 通过坐标获取value值
     function getValueByCoords(x: number, y: number): number {
       if (!trackRect.value) {
-        return undefined;
+        return 0;
       }
       const { left, top, width, height } = trackRect.value;
       const trackLength = props.direction === 'horizontal' ? width : height;
@@ -283,17 +296,8 @@ export default defineComponent({
     }
 
     const handleEndMoving = (x: number, y: number) => {
-      const value = getValueByCoords(x, y);
-      endValue.value = value;
-      if (props.range) {
-        emit('update:modelValue', [startValue.value, endValue.value]);
-        emit('change', [startValue.value, endValue.value]);
-        eventHandlers.value?.onChange?.();
-      } else {
-        emit('update:modelValue', endValue.value);
-        emit('change', endValue.value);
-        eventHandlers.value?.onChange?.();
-      }
+      endValue.value = getValueByCoords(x, y);
+      handleChange();
     };
 
     const handleClick = (e: MouseEvent) => {
@@ -307,15 +311,8 @@ export default defineComponent({
         trackRect.value = trackRef.value.getBoundingClientRect();
       }
 
-      const value = getValueByCoords(clientX, clientY);
-      endValue.value = value;
-      if (props.range) {
-        emit('update:modelValue', [startValue.value, endValue.value]);
-        emit('change', [startValue.value, endValue.value]);
-      } else {
-        emit('update:modelValue', endValue.value);
-        emit('change', endValue.value);
-      }
+      endValue.value = getValueByCoords(clientX, clientY);
+      handleChange();
     };
 
     function getBarStyle([start, end]: [number, number]): CSSProperties {
@@ -340,11 +337,8 @@ export default defineComponent({
     }
 
     const handleStartMoving = (x: number, y: number) => {
-      const value = getValueByCoords(x, y);
-      startValue.value = value;
-      emit('update:modelValue', [startValue.value, endValue.value]);
-      emit('change', [startValue.value, endValue.value]);
-      eventHandlers.value?.onChange?.();
+      startValue.value = getValueByCoords(x, y);
+      handleChange();
     };
 
     const handleMoveEnd = () => {
