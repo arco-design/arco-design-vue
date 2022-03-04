@@ -8,6 +8,9 @@
         }"
         :prefix-cls="pickerPrefixCls"
         :title="headerTitle"
+        mode="month"
+        :value="headerValue"
+        :on-label-click="onHeaderLabelClick"
       />
       <PanelBody
         mode="month"
@@ -39,7 +42,7 @@ import type {
   IsSameTime,
 } from '../../interface';
 import { newArray } from '../../utils';
-import PanelHeader from '../header.vue';
+import PanelHeader, { HeaderLabelClickFunc } from '../header.vue';
 import PanelBody from '../body.vue';
 import useInjectDatePickerTransform from '../../hooks/use-inject-datepicker-transform';
 
@@ -91,6 +94,9 @@ export default defineComponent({
     },
     dateRender: {
       type: Function as PropType<RenderFunc>,
+    },
+    onHeaderLabelClick: {
+      type: Function as PropType<HeaderLabelClickFunc>,
     },
   },
   emits: ['select', 'cell-mouse-enter'],

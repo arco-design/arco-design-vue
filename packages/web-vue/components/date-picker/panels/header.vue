@@ -18,7 +18,24 @@
         <IconLeft v-else />
       </template>
     </div>
-    <div :class="`${prefixCls}-header-title`">{{ title }}</div>
+    <div :class="`${prefixCls}-header-title`">
+      <template v-if="onLabelClick && (year || month)">
+        <span
+          v-if="year"
+          :class="`${prefixCls}-header-label`"
+          @click="() => onLabelClick('year')"
+          >{{ year }}</span
+        >
+        <span v-if="year && month">-</span>
+        <span
+          v-if="month"
+          :class="`${prefixCls}-header-label`"
+          @click="() => onLabelClick('month')"
+          >{{ month }}</span
+        >
+      </template>
+      <template v-else>{{ title }}</template>
+    </div>
     <div :class="getIconClassName(showNext)" @click="onNext">
       <template v-if="showNext">
         <RenderFunction
@@ -42,15 +59,18 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
+import { Dayjs } from 'dayjs';
 import { isFunction } from '../../_utils/is';
 import IconLeft from '../../icon/icon-left';
 import IconRight from '../../icon/icon-right';
 import IconDoubleLeft from '../../icon/icon-double-left';
 import IconDoubleRight from '../../icon/icon-double-right';
-import { HeaderIcons } from '../interface';
+import { HeaderIcons, Mode } from '../interface';
 import RenderFunction from '../../_components/render-function';
 
 type ClickCallbackFunc = (payload: MouseEvent) => void;
+
+export type HeaderLabelClickFunc = (label: 'year' | 'month') => void;
 
 export default defineComponent({
   name: 'PanelHeader',
@@ -70,6 +90,12 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    mode: {
+      type: String as PropType<Mode>,
+    },
+    value: {
+      type: Object as PropType<Dayjs>,
+    },
     icons: {
       type: Object as PropType<HeaderIcons>,
     },
@@ -85,13 +111,27 @@ export default defineComponent({
     onSuperNext: {
       type: Function as PropType<ClickCallbackFunc>,
     },
+    onLabelClick: {
+      type: Function as PropType<HeaderLabelClickFunc>,
+    },
   },
+  emits: ['label-click'],
   setup(props) {
     return {
       showPrev: computed(() => isFunction(props.onPrev)),
       showSuperPrev: computed(() => isFunction(props.onSuperPrev)),
       showNext: computed(() => isFunction(props.onNext)),
       showSuperNext: computed(() => isFunction(props.onSuperNext)),
+      year: computed(() =>
+        ['date', 'quarter', 'month', 'week'].includes(props.mode) && props.value
+          ? props.value.format('YYYY')
+          : ''
+      ),
+      month: computed(() =>
+        ['date', 'week'].includes(props.mode) && props.value
+          ? props.value.format('MM')
+          : ''
+      ),
       getIconClassName: (show?: boolean) => [
         `${props.prefixCls}-header-icon`,
         {
