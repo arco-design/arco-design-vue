@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts">
+import type { CSSProperties, PropType } from 'vue';
 import {
   computed,
-  CSSProperties,
   defineComponent,
+  nextTick,
   onMounted,
   onUpdated,
-  PropType,
   ref,
   toRefs,
 } from 'vue';
@@ -21,20 +21,19 @@ export default defineComponent({
   props: {
     activeTabRef: {
       type: Object as PropType<HTMLElement>,
-      required: true,
     },
     direction: {
       type: String as PropType<Direction>,
-      required: true,
     },
     disabled: Boolean,
     animation: Boolean,
   },
   setup(props) {
-    const { activeTabRef, direction } = toRefs(props);
+    const { activeTabRef } = toRefs(props);
     const prefixCls = getPrefixCls('tabs-nav-ink');
     const position = ref(0);
     const size = ref(0);
+
     const style = computed<CSSProperties>(() => {
       if (props.direction === 'vertical') {
         return {
@@ -66,7 +65,7 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      getInkStyle();
+      nextTick(() => getInkStyle());
     });
 
     onUpdated(() => {

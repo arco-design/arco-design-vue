@@ -25,6 +25,8 @@ description: Organize content in the same view. You can view the content of one 
 
 @import ./__demo__/type.md
 
+@import ./__demo__/lazy.md
+
 @import ./__demo__/extra.md
 
 @import ./__demo__/editable.md

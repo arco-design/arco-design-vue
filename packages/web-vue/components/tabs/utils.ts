@@ -1,3 +1,5 @@
+import { CSSProperties } from 'vue';
+
 export const getDiffRect = (node: HTMLElement, parentNode: HTMLElement) => {
   const nodeRect = node.getBoundingClientRect();
   const parentNodeRect = parentNode.getBoundingClientRect();
@@ -18,7 +20,7 @@ export const getTabListStyle = ({
   direction: string;
   type: string;
   offset: number;
-}) => {
+}): CSSProperties => {
   if (direction === 'vertical') {
     return { transform: `translateY(${-offset}px)` };
   }

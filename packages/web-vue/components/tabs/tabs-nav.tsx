@@ -11,11 +11,11 @@ import {
 } from 'vue';
 import { getTabListStyle } from './utils';
 import { getPrefixCls } from '../_utils/global-config';
-import { Direction } from '../_utils/constant';
-import Tab from './tabs-tab.vue';
+import type { Direction } from '../_utils/constant';
+import TabsTab from './tabs-tab.vue';
 import TabsButton from './tabs-button';
 import TabsNavInk from './tabs-nav-ink.vue';
-import { TabList, Types } from './interface';
+import type { TabData, TabsType } from './interface';
 import IconHover from '../_components/icon-hover.vue';
 import IconPlus from '../icon/icon-plus';
 import ResizeObserver from '../_components/resize-observer';
@@ -23,28 +23,23 @@ import ResizeObserver from '../_components/resize-observer';
 export default defineComponent({
   name: 'TabsNav',
   props: {
+    tabs: {
+      type: Array as PropType<TabData[]>,
+      required: true,
+    },
     direction: {
       type: String as PropType<Direction>,
       required: true,
     },
     type: {
-      type: String as PropType<Types>,
+      type: String as PropType<TabsType>,
       required: true,
     },
-    activeTab: {
-      type: String,
-      required: true,
+    activeKey: {
+      type: [String, Number],
     },
     activeIndex: {
       type: Number,
-      required: true,
-    },
-    tabs: {
-      type: Array as PropType<TabList>,
-      required: true,
-    },
-    tabKeys: {
-      type: Array as PropType<string[]>,
       required: true,
     },
     position: {
@@ -74,16 +69,29 @@ export default defineComponent({
   },
   emits: ['click', 'add', 'delete'],
   setup(props, { emit, slots }) {
+    const { tabs, activeKey, activeIndex, direction } = toRefs(props);
     const prefixCls = getPrefixCls('tabs-nav');
-
-    const { tabs, tabKeys, activeIndex, direction } = toRefs(props);
 
     const wrapperRef = ref<HTMLElement>();
     const listRef = ref<HTMLElement>();
-    const tabsRef = ref<Record<string, HTMLElement>>({});
+    const tabsRef = ref<Record<string | number, HTMLElement>>({});
+    const activeTabRef = computed(() => {
+      if (activeKey.value) {
+        return tabsRef.value[activeKey.value];
+      }
+      return undefined;
+    });
+    const inkRef = ref<ComponentPublicInstance>();
 
+    const mergedEditable = computed(
+      () =>
+        props.editable && ['line', 'card', 'card-gutter'].includes(props.type)
+    );
+    const isScroll = ref(false);
     const wrapperLength = ref(0);
     const maxOffset = ref(0);
+    const tabEndOffsets = ref<number[]>([]);
+    const offset = ref(0);
 
     const getWrapperLength = () => {
       return (
@@ -128,8 +136,6 @@ export default defineComponent({
       }
     };
 
-    const activeTabRef = computed(() => tabsRef.value[props.activeTab]);
-
     const isOverflow = () => {
       if (wrapperRef.value && listRef.value) {
         return props.direction === 'vertical'
@@ -139,22 +145,62 @@ export default defineComponent({
       return false;
     };
 
-    const isScroll = ref(false);
-
-    onMounted(() => {
-      getSize();
-    });
-
-    const tabEndOffsets = ref<number[]>([]);
-
-    const offset = ref(0);
-
     const isInView = (index: number) => {
       return (
         (tabEndOffsets.value[index - 1] ?? 0) >= offset.value &&
         tabEndOffsets.value[index] <= offset.value + wrapperLength.value
       );
     };
+
+    const getNextOffset = (type: string) => {
+      if (!wrapperRef.value) {
+        return 0;
+      }
+
+      if (props.type === 'capsule') {
+        return type === 'previous'
+          ? offset.value + wrapperLength.value
+          : offset.value - wrapperLength.value;
+      }
+      return type === 'previous'
+        ? offset.value - wrapperLength.value
+        : offset.value + wrapperLength.value;
+    };
+
+    const getValidOffset = (offset: number) => {
+      if (!wrapperRef.value || !listRef.value || offset < 0) {
+        return 0;
+      }
+      if (offset > maxOffset.value) {
+        return maxOffset.value;
+      }
+      return offset;
+    };
+
+    const handleClick = (key: string | number, ev: Event) => {
+      emit('click', key, ev);
+    };
+
+    const handleDelete = (key: string | number, ev: Event) => {
+      emit('delete', key, ev);
+    };
+
+    const handleButtonClick = (type: string) => {
+      offset.value = getValidOffset(getNextOffset(type));
+    };
+
+    const handleResize = () => {
+      getSize();
+      if (inkRef.value) {
+        inkRef.value.$forceUpdate();
+      }
+    };
+
+    watch(tabs, () => {
+      nextTick(() => {
+        getSize();
+      });
+    });
 
     watch(activeIndex, (current, pre) => {
       nextTick(() => {
@@ -176,59 +222,19 @@ export default defineComponent({
       });
     });
 
-    const mergedEditable = computed(
-      () =>
-        props.editable && ['line', 'card', 'card-gutter'].includes(props.type)
-    );
-
-    const getNextOffset = (type: string) => {
-      if (!wrapperRef.value) {
-        return 0;
-      }
-
-      if (props.type === 'capsule') {
-        return type === 'previous'
-          ? offset.value + wrapperLength.value
-          : offset.value - wrapperLength.value;
-      }
-      return type === 'previous'
-        ? offset.value - wrapperLength.value
-        : offset.value + wrapperLength.value;
-    };
-
-    const handleButtonClick = (type: string) => {
-      offset.value = getValidOffset(getNextOffset(type));
-    };
-
-    const getValidOffset = (offset: number) => {
-      if (!wrapperRef.value || !listRef.value || offset < 0) {
-        return 0;
-      }
-      if (offset > maxOffset.value) {
-        return maxOffset.value;
-      }
-      return offset;
-    };
-
-    watch(tabs, () => {
-      nextTick(() => {
-        getSize();
-      });
-    });
-
-    const handleResize = () => {
+    onMounted(() => {
       getSize();
-      if (inkRef.value) {
-        inkRef.value.$forceUpdate();
-      }
-    };
+    });
 
     const renderAddBtn = () => {
       if (!mergedEditable.value || !props.showAddButton) {
         return null;
       }
       return (
-        <div class={`${prefixCls}-add-btn`} onClick={() => emit('add')}>
+        <div
+          class={`${prefixCls}-add-btn`}
+          onClick={(ev: Event) => emit('add', ev)}
+        >
           <IconHover>
             <IconPlus />
           </IconHover>
@@ -244,7 +250,23 @@ export default defineComponent({
       `${prefixCls}-type-${props.type}`,
     ]);
 
-    const inkRef = ref<ComponentPublicInstance>();
+    const listCls = computed(() => [
+      `${prefixCls}-tab-list`,
+      {
+        [`${prefixCls}-tab-list-no-padding`]:
+          !props.headerPadding &&
+          ['line', 'text'].includes(props.type) &&
+          props.direction === 'horizontal',
+      },
+    ]);
+
+    const listStyle = computed(() =>
+      getTabListStyle({
+        direction: props.direction,
+        type: props.type,
+        offset: offset.value,
+      })
+    );
 
     return () => (
       <div class={cls.value}>
@@ -259,40 +281,25 @@ export default defineComponent({
         <ResizeObserver onResize={() => getSize()}>
           <div class={`${prefixCls}-tab`} ref={wrapperRef}>
             <ResizeObserver onResize={handleResize}>
-              <div
-                class={[
-                  `${prefixCls}-tab-list`,
-                  {
-                    [`${prefixCls}-tab-list-no-padding`]:
-                      !props.headerPadding &&
-                      props.direction === 'horizontal' &&
-                      ['line', 'text'].includes(props.type),
-                  },
-                ]}
-                style={getTabListStyle({
-                  direction: props.direction,
-                  type: props.type,
-                  offset: offset.value,
-                })}
-                ref={listRef}
-              >
+              <div ref={listRef} class={listCls.value} style={listStyle.value}>
                 {props.tabs.map((tab, index) => (
-                  <Tab
-                    ref={(component: ComponentPublicInstance) => {
+                  <TabsTab
+                    key={tab.key}
+                    ref={(component: any) => {
                       if (component?.$el) {
                         tabsRef.value[tab.key] = component.$el;
                       }
                     }}
-                    v-slots={{ title: () => tab.title() }}
-                    isActive={props.activeIndex === index}
-                    key={tab.key}
+                    active={tab.key === activeKey.value}
                     tab={tab}
                     editable={props.editable}
-                    onClick={(key: string, e: Event) => emit('click', key, e)}
-                    onDelete={(key: string) => emit('delete', key)}
-                  />
+                    onClick={handleClick}
+                    onDelete={handleDelete}
+                  >
+                    {tab.title()}
+                  </TabsTab>
                 ))}
-                {props.type === 'line' && activeTabRef.value && (
+                {props.type === 'line' && (
                   <TabsNavInk
                     ref={inkRef}
                     activeTabRef={activeTabRef.value}
