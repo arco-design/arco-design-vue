@@ -9,7 +9,6 @@
       :selected="computedSelected"
       :show-search="showSearch"
       :simple="simple"
-      @select-change="handleSelect"
       @search="handleSearch"
     />
     <div v-if="!simple" :class="[`${prefixCls}-operations`]">
@@ -45,7 +44,6 @@
       :allow-clear="oneWay"
       :show-search="showSearch"
       :simple="simple"
-      @select-change="handleSelect"
       @search="handleSearch"
     />
   </div>
@@ -291,9 +289,10 @@ export default defineComponent({
     provide(
       transferInjectionKey,
       reactive({
-        itemSlot: slots.item,
-        moveTo,
         selected: computedSelected,
+        slots,
+        moveTo,
+        onSelect: handleSelect,
       })
     );
 
@@ -313,7 +312,6 @@ export default defineComponent({
       sourceTitle,
       targetTitle,
       handleClick,
-      handleSelect,
       handleSearch,
     };
   },
