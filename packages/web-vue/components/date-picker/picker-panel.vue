@@ -5,41 +5,62 @@
       v-bind="shortcutsProps"
     />
     <div :class="`${prefixCls}-panel-wrapper`">
-      <WeekPanel
-        v-if="mode === 'week'"
-        v-bind="commonPanelProps"
-        :day-start-of-week="dayStartOfWeek"
-      />
-      <MonthPanel v-else-if="mode === 'month'" v-bind="commonPanelProps" />
-      <YearPanel v-else-if="mode === 'year'" v-bind="commonPanelProps" />
-      <QuarterPanel v-else-if="mode === 'quarter'" v-bind="commonPanelProps" />
-      <DatePanel
-        v-else
-        v-bind="commonPanelProps"
-        mode="date"
-        :show-time="showTime"
-        :time-picker-props="timePickerProps"
-        :day-start-of-week="dayStartOfWeek"
-        :footer-value="footerValue"
-        :time-picker-value="timePickerValue"
-        :disabled-time="disabledTime"
-        @timePickerSelect="onTimePickerSelect"
-      />
-      <PanelFooter
-        :prefix-cls="prefixCls"
-        :show-today-btn="!showTime && mode === 'date'"
-        :show-confirm-btn="showConfirmBtn"
-        :confirm-btn-disabled="confirmBtnDisabled"
-        @todayBtnClick="onTodayBtnClick"
-        @confirmBtnClick="onConfirmBtnClick"
-      >
-        <template v-if="extra" #extra>
-          <RenderFunction :render-func="extra" />
-        </template>
-        <template v-if="showShortcuts && shortcutsPosition === 'bottom'" #btn>
-          <PanelShortcuts v-bind="shortcutsProps" />
-        </template>
-      </PanelFooter>
+      <template v-if="headerMode">
+        <YearPanel
+          v-if="headerMode === 'year'"
+          :header-value="headerPanelHeaderValue"
+          :header-icons="headerIcons"
+          :header-operations="headerPanelHeaderOperations"
+          @select="onHeaderPanelSelect"
+        />
+        <MonthPanel
+          v-else-if="headerMode === 'month'"
+          :header-value="headerPanelHeaderValue"
+          :header-icons="headerIcons"
+          :header-operations="headerPanelHeaderOperations"
+          @select="onHeaderPanelSelect"
+        />
+      </template>
+      <template v-else>
+        <WeekPanel
+          v-if="mode === 'week'"
+          v-bind="commonPanelProps"
+          :day-start-of-week="dayStartOfWeek"
+        />
+        <MonthPanel v-else-if="mode === 'month'" v-bind="commonPanelProps" />
+        <YearPanel v-else-if="mode === 'year'" v-bind="commonPanelProps" />
+        <QuarterPanel
+          v-else-if="mode === 'quarter'"
+          v-bind="commonPanelProps"
+        />
+        <DatePanel
+          v-else
+          v-bind="commonPanelProps"
+          mode="date"
+          :show-time="showTime"
+          :time-picker-props="timePickerProps"
+          :day-start-of-week="dayStartOfWeek"
+          :footer-value="footerValue"
+          :time-picker-value="timePickerValue"
+          :disabled-time="disabledTime"
+          @timePickerSelect="onTimePickerSelect"
+        />
+        <PanelFooter
+          :prefix-cls="prefixCls"
+          :show-today-btn="!showTime && mode === 'date'"
+          :show-confirm-btn="showConfirmBtn"
+          :confirm-btn-disabled="confirmBtnDisabled"
+          @todayBtnClick="onTodayBtnClick"
+          @confirmBtnClick="onConfirmBtnClick"
+        >
+          <template v-if="extra" #extra>
+            <RenderFunction :render-func="extra" />
+          </template>
+          <template v-if="showShortcuts && shortcutsPosition === 'bottom'" #btn>
+            <PanelShortcuts v-bind="shortcutsProps" />
+          </template>
+        </PanelFooter>
+      </template>
     </div>
     <PanelShortcuts
       v-if="showShortcuts && shortcutsPosition === 'right'"
@@ -48,7 +69,14 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType, reactive, toRefs } from 'vue';
+import {
+  computed,
+  defineComponent,
+  PropType,
+  reactive,
+  toRefs,
+  watch,
+} from 'vue';
 import { Dayjs } from 'dayjs';
 import { isFunction } from '../_utils/is';
 import { getDayjsValue, getNow } from '../_utils/date';
@@ -69,6 +97,7 @@ import QuarterPanel from './panels/quarter/index.vue';
 import PanelFooter from './panels/footer.vue';
 import { TimePickerProps } from '../time-picker/interface';
 import RenderFunction, { RenderFunc } from '../_components/render-function';
+import useHeaderValue from './hooks/use-header-value';
 
 export default defineComponent({
   name: 'DatePikerPanel',
@@ -85,6 +114,9 @@ export default defineComponent({
   props: {
     mode: {
       type: String,
+    },
+    headerMode: {
+      type: String as PropType<'year' | 'month'>,
     },
     prefixCls: {
       type: String,
@@ -162,6 +194,8 @@ export default defineComponent({
     'shortcut-mouse-leave',
     'confirm',
     'today-btn-click',
+    'header-label-click',
+    'header-select',
   ],
   setup(props, { emit }) {
     const {
@@ -178,6 +212,7 @@ export default defineComponent({
       headerValue,
       headerIcons,
       headerOperations,
+      headerMode,
     } = toRefs(props);
 
     const hasShortcuts = computed(
@@ -204,6 +239,21 @@ export default defineComponent({
     ]);
 
     const footerValue = computed(() => value?.value || getNow());
+
+    const [
+      headerPanelHeaderValue,
+      setHeaderPanelHeaderValue,
+      headerPanelHeaderOperations,
+    ] = useHeaderValue(
+      reactive({
+        mode: headerMode,
+        format,
+      })
+    );
+
+    watch(headerValue, (val) => {
+      setHeaderPanelHeaderValue(val);
+    });
 
     function getShortcutValue(shortcut: ShortcutType) {
       const { value } = shortcut;
@@ -238,6 +288,14 @@ export default defineComponent({
       emit('confirm');
     }
 
+    function onPanelHeaderLabelClick(type: 'year' | 'month') {
+      emit('header-label-click', type);
+    }
+
+    function onHeaderPanelSelect(date: Dayjs) {
+      emit('header-select', date);
+    }
+
     const shortcutsProps = reactive({
       prefixCls,
       shortcuts,
@@ -256,6 +314,7 @@ export default defineComponent({
       disabledDate,
       dateRender,
       onSelect: onPanelSelect,
+      onHeaderLabelClick: onPanelHeaderLabelClick,
     });
 
     return {
@@ -267,6 +326,9 @@ export default defineComponent({
       onTodayBtnClick,
       onConfirmBtnClick,
       onTimePickerSelect,
+      onHeaderPanelSelect,
+      headerPanelHeaderValue,
+      headerPanelHeaderOperations,
     };
   },
 });

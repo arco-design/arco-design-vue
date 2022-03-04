@@ -5,10 +5,10 @@ import { Mode, HeaderOperations, CalendarValue } from '../interface';
 import usePanelSpan from './use-panel-span';
 
 interface HeaderValueProps {
-  mode: Mode;
-  value: CalendarValue | undefined;
-  defaultValue: CalendarValue | undefined;
-  selectedValue: Dayjs | undefined;
+  mode?: Mode;
+  value?: CalendarValue;
+  defaultValue?: CalendarValue;
+  selectedValue?: Dayjs;
   format: string;
   onChange?: (newVal: Dayjs) => void;
 }
@@ -25,23 +25,28 @@ export default function useHeaderValue(
   const { mode, value, defaultValue, selectedValue, format, onChange } =
     toRefs(props);
 
+  const computedMode = computed(() => mode?.value || 'date');
+
   const { span, superSpan } = usePanelSpan(
     reactive({
-      mode,
+      mode: computedMode,
     })
   );
 
   const isSame = (current: Dayjs, target: Dayjs) => {
-    const unit = mode.value === 'date' || mode.value === 'week' ? 'M' : 'y';
+    const unit =
+      computedMode.value === 'date' || computedMode.value === 'week'
+        ? 'M'
+        : 'y';
     return current.isSame(target, unit);
   };
 
   const computedValue = computed(() =>
-    getDayjsValue(value.value, format.value)
+    getDayjsValue(value?.value, format.value)
   );
 
   const computedDefaultValue = computed(() =>
-    getDayjsValue(defaultValue.value, format.value)
+    getDayjsValue(defaultValue?.value, format.value)
   );
 
   const localValue = ref(computedDefaultValue.value || getNow());
@@ -61,15 +66,18 @@ export default function useHeaderValue(
   };
 
   // Additional processing of selectedValue
-  if (selectedValue.value) {
+  if (selectedValue?.value) {
     setLocalValue(selectedValue.value);
   }
-  watch(selectedValue, (newVal) => {
-    setHeaderValue(newVal);
-  });
+  watch(
+    () => selectedValue?.value,
+    (newVal) => {
+      setHeaderValue(newVal);
+    }
+  );
 
   function getDefaultLocalValue() {
-    return selectedValue.value || computedDefaultValue.value || getNow();
+    return selectedValue?.value || computedDefaultValue.value || getNow();
   }
   function resetHeaderValue(emitChange = true) {
     const defaultLocalValue = getDefaultLocalValue();

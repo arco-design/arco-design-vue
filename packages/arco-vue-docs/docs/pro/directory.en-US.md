@@ -20,15 +20,16 @@ description: The organizational structure of the project file.
 │   ├── components # General business components
 │   ├── config # Global configuration (including echarts theme)
 │         └── settings.json # Configuration file
-│   ├── directives # Instruction set (if necessary, you can add it yourself)
+│   ├── directive # Instruction set (if necessary, you can add it yourself)
 │   ├── filters # filter (if necessary, you can add it yourself)
 │   ├── hooks # global hooks
 │   ├── layout # Layout
 │   ├── locale # Internationalized language pack
 │   ├── mock # Mock data
 │   ├── views # Page template
+|   |—— router # Routing configuration
 │   ├── store # State management center
-│   ├── types # Routing configuration
+│   ├── types # Typescript types
 │   └── utils # Tool library
 │   └── App.vue # View entrance
 │   └── main.ts # Entry file
