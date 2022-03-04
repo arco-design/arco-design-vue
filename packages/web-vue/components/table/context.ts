@@ -1,4 +1,4 @@
-import type { InjectionKey } from 'vue';
+import type { InjectionKey, Slots } from 'vue';
 import { TableData } from './interface';
 
 export interface TableContext {
@@ -10,6 +10,7 @@ export interface TableContext {
     children: TableData[] | undefined,
     record: TableData
   ) => void;
+  slots: Slots;
 }
 
 export const tableInjectionKey: InjectionKey<TableContext> =

@@ -94,7 +94,9 @@
 
   // spin
   .@{prefix}-spin {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   // ???
@@ -495,6 +497,7 @@
   }
 
   &-header {
+    flex-shrink: 0;
     border-radius: @table-border-radius @table-border-radius 0 0;
   }
 
@@ -507,7 +510,10 @@
     // border-radius: @table-border-radius @table-border-radius 0 0 0;
 
     .@{table-prefix-cls}-content {
+      display: flex;
+      flex-direction: column;
       width: auto;
+      height: 100%;
     }
 
     &::before,
@@ -745,7 +751,9 @@
 
 .@{table-prefix-cls}-pagination {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  margin-top: @table-spacing-pagination-margin;
 
   &-left {
     justify-content: flex-start;
@@ -758,9 +766,5 @@
   &-top {
     margin-top: 0;
     margin-bottom: @table-spacing-pagination-margin;
-  }
-
-  .@{prefix}-pagination {
-    margin-top: @table-spacing-pagination-margin;
   }
 }

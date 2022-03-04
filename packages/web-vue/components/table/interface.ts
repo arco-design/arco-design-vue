@@ -198,6 +198,13 @@ export interface TableColumn {
     column: TableColumn;
     rowIndex: number;
   }) => VNode;
+  /**
+   * @zh 设置当前列的渲染插槽的名字。插槽参数同 #cell
+   * @en Sets the name of the render slot for the current column. Slot parameters are the same as #cell
+   * @version 2.18.0
+   */
+  slotName?: string;
+
   // private
   isLastLeftFixed?: boolean;
   isFirstRightFixed?: boolean;
