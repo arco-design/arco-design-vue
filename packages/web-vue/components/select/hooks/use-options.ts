@@ -18,7 +18,7 @@ export const useOptions = ({
   showExtraOptions?: Ref<boolean>;
   valueKey?: Ref<string>;
 }) => {
-  const slotOptionInfoMap = reactive(new Map<string, OptionInfo>());
+  const slotOptionInfoMap = reactive(new Map<number, OptionInfo>());
   const sortedSlotOptionInfos = computed(() =>
     Array.from(slotOptionInfoMap.values()).sort((a, b) => a.index - b.index)
   );
@@ -43,11 +43,11 @@ export const useOptions = ({
   const optionInfoMap = reactive(new Map<string, OptionInfo>());
 
   watch(
-    [sortedSlotOptionInfos, propOptionInfoMap, extraOptionInfoMap],
-    ([sortedSlotArray, propMap, extraMap]) => {
+    [slotOptionInfoMap, propOptionInfoMap, extraOptionInfoMap],
+    ([_, propMap, extraMap]) => {
       optionInfoMap.clear();
 
-      sortedSlotArray.forEach((info, index) => {
+      sortedSlotOptionInfos.value.forEach((info, index) => {
         optionInfoMap.set(info.key, { ...info, index });
       });
       propMap.forEach((info) => {
@@ -87,12 +87,12 @@ export const useOptions = ({
       .map((info) => info.key)
   );
 
-  const addSlotOptionInfo = (key: string, optionInfo: OptionInfo) => {
-    slotOptionInfoMap.set(key, optionInfo);
+  const addSlotOptionInfo = (id: number, optionInfo: OptionInfo) => {
+    slotOptionInfoMap.set(id, optionInfo);
   };
 
-  const removeSlotOptionInfo = (key: string) => {
-    slotOptionInfoMap.delete(key);
+  const removeSlotOptionInfo = (id: number) => {
+    slotOptionInfoMap.delete(id);
   };
 
   return {

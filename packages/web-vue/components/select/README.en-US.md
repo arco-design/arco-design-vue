@@ -74,18 +74,20 @@ description: When users need to select one or more from a group of similar data,
 |show-extra-options|Options that do not exist in custom values|`boolean`|`true`|2.10.0|
 |value-key|Used to determine the option key value attribute name|`string`|`'value'`|2.18.0|
 |search-delay|Delay time to trigger search event|`number`|`500`|2.18.0|
+|limit|Maximum number of choices in multiple choice|`number`|`0`|2.18.0|
 ### `<select>` Events
 
-|Event Name|Description|Parameters|
-|---|---|---|
-|change|Triggered when the value changes|-|
-|input-value-change|Triggered when the value of the input changes|-|
-|popup-visible-change|Triggered when the display state of the drop-down box changes|-|
-|clear|Triggered when the clear button is clicked|-|
-|remove|Triggered when the delete button of the label is clicked|-|
-|search|Triggered when the user searches|-|
-|dropdown-scroll|Triggered when the drop-down scrolls|-|
-|dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|-|
+|Event Name|Description|Parameters|version|
+|---|---|---|:---|
+|change|Triggered when the value changes|-||
+|input-value-change|Triggered when the value of the input changes|-||
+|popup-visible-change|Triggered when the display state of the drop-down box changes|-||
+|clear|Triggered when the clear button is clicked|-||
+|remove|Triggered when the delete button of the label is clicked|-||
+|search|Triggered when the user searches|-||
+|dropdown-scroll|Triggered when the drop-down scrolls|-||
+|dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|-||
+|exceed-limit|Triggered when multiple selection exceeds the limit|value: `OptionValue`|2.18.0|
 ### `<select>` Slots
 
 |Slot Name|Description|Parameters|version|

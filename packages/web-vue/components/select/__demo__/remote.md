@@ -20,10 +20,14 @@ Use the `search` event to search remotely and change options.
 
 <template>
   <a-space direction="vertical" size="large">
+    <div>Show selections after search options</div>
+    <a-select :style="{width:'320px'}" :loading="loading" placeholder="Please select ..." multiple
+              @search="handleSearch" :filter-option="false" >
+      <a-option v-for="item of options" :value="item">{{item}}</a-option>
+    </a-select>
+    <div>Hide selections after search options</div>
     <a-select :options="options" :style="{width:'320px'}" :loading="loading" placeholder="Please select ..." multiple
-              @search="handleSearch" />
-    <a-select :options="options" :style="{width:'320px'}" :loading="loading" placeholder="Please select ..." multiple
-              @search="handleSearch" :show-extra-options="false" />
+              @search="handleSearch" :filter-option="false" :show-extra-options="false" />
   </a-space>
 </template>
 

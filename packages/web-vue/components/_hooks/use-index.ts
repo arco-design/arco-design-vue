@@ -10,7 +10,7 @@ export const useIndex = ({
 }: {
   itemRef: Ref<HTMLElement | undefined>;
   selector: string;
-  index?: Ref<number>;
+  index?: Ref<number | undefined>;
   parentClassName?: string;
 }) => {
   const _index = ref(-1);
