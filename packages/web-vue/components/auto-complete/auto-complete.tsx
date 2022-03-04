@@ -6,12 +6,13 @@ import {
   toRefs,
   ComponentPublicInstance,
   toRef,
+  watch,
 } from 'vue';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
 import { getPrefixCls } from '../_utils/global-config';
 import { Option, OptionInfo, FilterOption } from '../select/interface';
-import { isFunction } from '../_utils/is';
+import { isFunction, isNull, isUndefined } from '../_utils/is';
 import SelectDropdown from '../select/select-dropdown.vue';
 import SelectOption from '../select/option.vue';
 import { EmitType } from '../_utils/types';
@@ -129,6 +130,7 @@ export default defineComponent({
    * @version 2.13.0
    */
   setup(props, { emit, attrs, slots }) {
+    const { modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('auto-complete');
     const { mergedDisabled } = useFormItem({
       disabled: toRef(props, 'disabled'),
@@ -137,6 +139,13 @@ export default defineComponent({
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement>();
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = '';
+      }
+    });
+
     const computedValueKeys = computed(() =>
       computedValue.value ? [getKeyFromValue(computedValue.value)] : []
     );

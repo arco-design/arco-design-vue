@@ -25,7 +25,7 @@ import { EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from '../textarea/utils';
 import ResizeObserver from '../_components/resize-observer';
-import { isFunction } from '../_utils/is';
+import { isFunction, isNull, isUndefined } from '../_utils/is';
 import { useSelect } from '../select/hooks/use-select';
 import { getKeyFromValue } from '../select/utils';
 
@@ -120,11 +120,18 @@ export default defineComponent({
 
     let styleDeclaration: CSSStyleDeclaration;
 
-    const { data } = toRefs(props);
+    const { data, modelValue } = toRefs(props);
     const dropdownRef = ref();
     const optionRefs = ref<Record<string, HTMLElement>>({});
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = '';
+      }
+    });
+
     const computedValueKeys = computed(() =>
       computedValue.value ? [getKeyFromValue(computedValue.value)] : []
     );
