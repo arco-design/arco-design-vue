@@ -28,15 +28,20 @@ Show how to realize the linkage selection box.
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       data: {
         Beijing: ['Haidian', 'Chaoyang', 'Changping'],
         Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
         Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou']
       },
-      province:'Sichuan',
-      city:''
+      province: 'Sichuan',
+      city: 'Chengdu'
+    }
+  },
+  watch: {
+    province() {
+      this.city = ''
     }
   }
 }

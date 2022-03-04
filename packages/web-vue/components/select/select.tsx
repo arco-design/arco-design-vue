@@ -290,6 +290,15 @@ export default defineComponent({
       type: Number,
       default: 500,
     },
+    /**
+     * @zh 多选时最多的选择个数
+     * @en Maximum number of choices in multiple choice
+     * @version 2.18.0
+     */
+    limit: {
+      type: Number,
+      default: 0,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -360,6 +369,13 @@ export default defineComponent({
      * @en Triggered when the drop-down menu is scrolled to the bottom
      */
     'dropdownReachBottom',
+    /**
+     * @zh 多选超出限制时触发
+     * @en Triggered when multiple selection exceeds the limit
+     * @param {OptionValue} value
+     * @version 2.18.0
+     */
+    'exceedLimit',
   ],
   /**
    * @zh 选项为空时的显示内容
@@ -566,8 +582,16 @@ export default defineComponent({
       if (props.multiple) {
         if (!computedValueKeys.value.includes(key)) {
           if (enabledOptionKeys.value.includes(key)) {
-            const valueKeys = computedValueKeys.value.concat(key);
-            updateValue(valueKeys);
+            if (
+              props.limit > 0 &&
+              computedValueKeys.value.length >= props.limit
+            ) {
+              const info = optionInfoMap.get(key);
+              emit('exceedLimit', info?.value, ev);
+            } else {
+              const valueKeys = computedValueKeys.value.concat(key);
+              updateValue(valueKeys);
+            }
           }
         } else {
           const valueKeys = computedValueKeys.value.filter(
@@ -766,7 +790,6 @@ export default defineComponent({
 
     return () => (
       <Trigger
-        {...props.triggerProps}
         v-slots={{ content: renderDropDown }}
         trigger="click"
         position="bl"
@@ -782,9 +805,9 @@ export default defineComponent({
         clickToClose={!(props.allowSearch || props.allowCreate)}
         popupContainer={props.popupContainer}
         onPopupVisibleChange={handlePopupVisibleChange}
+        {...props.triggerProps}
       >
         <SelectView
-          {...attrs}
           v-slots={{
             'label': slots.label,
             'arrow-icon': slots['arrow-icon'],
@@ -811,6 +834,7 @@ export default defineComponent({
           onRemove={handleRemove}
           onClear={handleClear}
           onKeydown={handleKeyDown}
+          {...attrs}
         />
       </Trigger>
     );

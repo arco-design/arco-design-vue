@@ -72,18 +72,20 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |show-extra-options|是否在下拉菜单中显示额外选项|`boolean`|`true`|2.10.0|
 |value-key|用于确定选项键值得属性名|`string`|`'value'`|2.18.0|
 |search-delay|触发搜索事件的延迟时间|`number`|`500`|2.18.0|
+|limit|多选时最多的选择个数|`number`|`0`|2.18.0|
 ### `<select>` Events
 
-|事件名|描述|参数|
-|---|---|---|
-|change|值发生改变时触发|-|
-|input-value-change|输入框的值发生改变时触发|-|
-|popup-visible-change|下拉框的显示状态改变时触发|-|
-|clear|点击清除按钮时触发|-|
-|remove|点击标签的删除按钮时触发|-|
-|search|用户搜索时触发|-|
-|dropdown-scroll|下拉菜单发生滚动时触发|-|
-|dropdown-reach-bottom|下拉菜单滚动到底部时触发|-|
+|事件名|描述|参数|版本|
+|---|---|---|:---|
+|change|值发生改变时触发|-||
+|input-value-change|输入框的值发生改变时触发|-||
+|popup-visible-change|下拉框的显示状态改变时触发|-||
+|clear|点击清除按钮时触发|-||
+|remove|点击标签的删除按钮时触发|-||
+|search|用户搜索时触发|-||
+|dropdown-scroll|下拉菜单发生滚动时触发|-||
+|dropdown-reach-bottom|下拉菜单滚动到底部时触发|-||
+|exceed-limit|多选超出限制时触发|value: `OptionValue`|2.18.0|
 ### `<select>` Slots
 
 |插槽名|描述|参数|版本|
@@ -107,7 +109,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |label|选项标签（如不填，会从内容中获取）|`string`|`-`||
 |disabled|是否禁用|`boolean`|`false`||
 |tag-props|展示的标签属性|`TagProps`|`-`|2.8.0|
-|extra|额外数据|`object`|`-`|2.10.0|
+|extra|额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据|`object`|`-`|2.10.0|
 
 
 

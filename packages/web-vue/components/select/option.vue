@@ -18,10 +18,10 @@
       :disabled="disabled"
       uninject-group-context
     >
-      <slot />
+      <slot>{{ label }}</slot>
     </checkbox>
     <template v-else>
-      <slot />
+      <slot>{{ label }}</slot>
     </template>
     <span v-if="$slots.suffix" :class="`${prefixCls}-suffix`">
       <slot name="suffix" />
@@ -38,9 +38,11 @@ import {
   reactive,
   ref,
   toRefs,
-  watch,
   onBeforeUnmount,
   onMounted,
+  onUpdated,
+  getCurrentInstance,
+  watch,
 } from 'vue';
 import type { TagProps } from '../tag';
 import { getPrefixCls } from '../_utils/global-config';
@@ -48,6 +50,7 @@ import { useIndex } from '../_hooks/use-index';
 import Checkbox from '../checkbox';
 import { selectInjectionKey } from './context';
 import { getKeyFromValue, isValidOption } from './utils';
+import { isEqual } from '../_utils/is-equal';
 
 export default defineComponent({
   name: 'Option',
@@ -79,7 +82,7 @@ export default defineComponent({
       type: Object as PropType<TagProps>,
     },
     /**
-     * @zh 额外数据
+     * @zh 额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据
      * @en Extra data
      * @version 2.10.0
      */
@@ -90,30 +93,41 @@ export default defineComponent({
     internal: Boolean,
   },
   setup(props) {
-    const { disabled, tagProps } = toRefs(props);
+    const { disabled, tagProps: _tagProps } = toRefs(props);
     const prefixCls = getPrefixCls('select-option');
     const selectCtx = inject(selectInjectionKey, undefined);
+    const instance = getCurrentInstance();
     const itemRef = ref<HTMLElement>();
 
-    const value = ref(props.value ?? props.label ?? '');
-    const label = ref(props.label ?? '');
-    const component = computed(() => selectCtx?.component ?? 'li');
+    const tagProps = ref(props.tagProps);
 
-    onMounted(() => {
-      if ((value.value === '' || label.value === '') && itemRef.value) {
-        const text = itemRef.value.textContent ?? '';
-        if (value.value === '') {
-          value.value = text;
-        }
-        if (label.value === '') {
-          label.value = text;
-        }
+    watch(_tagProps, (cur, pre) => {
+      if (!isEqual(cur, pre)) {
+        tagProps.value = cur;
       }
     });
 
+    const textContent = ref('');
+    const value = computed(
+      () => props.value ?? props.label ?? textContent.value
+    );
+    const label = computed(() => props.label ?? textContent.value);
     const key = computed(() =>
       getKeyFromValue(value.value, selectCtx?.valueKey)
     );
+    const component = computed(() => selectCtx?.component ?? 'li');
+
+    const setTextContent = () => {
+      if (!props.label && itemRef.value) {
+        const text = itemRef.value.textContent ?? '';
+        if (textContent.value !== text) {
+          textContent.value = text;
+        }
+      }
+    };
+
+    onMounted(() => setTextContent());
+    onUpdated(() => setTextContent());
 
     const isSelected = computed(
       () => selectCtx?.valueKeys.includes(key.value) ?? false
@@ -147,21 +161,14 @@ export default defineComponent({
         })
       );
 
-      watch(
-        key,
-        (cur, pre) => {
-          if (pre) {
-            selectCtx?.removeSlotOptionInfo(pre);
-          }
-          if (cur) {
-            selectCtx?.addSlotOptionInfo(cur, optionInfo);
-          }
-        },
-        { immediate: true }
-      );
+      if (instance) {
+        selectCtx?.addSlotOptionInfo(instance.uid, optionInfo);
+      }
 
       onBeforeUnmount(() => {
-        selectCtx?.removeSlotOptionInfo(key.value);
+        if (instance) {
+          selectCtx?.removeSlotOptionInfo(instance.uid);
+        }
       });
     }
 

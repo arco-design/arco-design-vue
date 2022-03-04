@@ -11,8 +11,8 @@ export interface SelectContext {
   activeKey: string | undefined;
   onSelect: (key: string, ev: Event) => void;
   setActiveKey: (key?: string) => void;
-  addSlotOptionInfo: (key: string, optionInfo: OptionInfo) => void;
-  removeSlotOptionInfo: (key: string) => void;
+  addSlotOptionInfo: (id: number, optionInfo: OptionInfo) => void;
+  removeSlotOptionInfo: (id: number) => void;
 }
 
 export const selectInjectionKey: InjectionKey<SelectContext> =
