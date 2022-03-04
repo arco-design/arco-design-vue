@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 功能优化
+
+- 使用 Context 方式优化组件 ([#772](https://github.com/arco-design/arco-design-vue/pull/772))
+
+
 ## 2.14.2
 
 `2022-01-10`

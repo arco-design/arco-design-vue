@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 Optimization
+
+- Select box display using flex layout ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+- trigger-props properties can override default properties ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+
+### 🐛 BugFix
+
+- Fix the problem that the label attribute is invalid ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+- Fix the problem that the properties of option are not updated synchronously ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

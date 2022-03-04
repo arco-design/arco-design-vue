@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 新增功能
+
+- 滚动模式支持设置高度百分比 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- column 数据增加 slotName 属性，允许指定渲染插槽 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- 增加 `pagination-left` 和 `pagination-right` 插槽 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

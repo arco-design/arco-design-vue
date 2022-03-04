@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 Feature
+
+- Added `#option`, `#label` slots ([#781](https://github.com/arco-design/arco-design-vue/pull/781))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

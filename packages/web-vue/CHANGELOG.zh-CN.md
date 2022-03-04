@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 功能优化
+
+- **select:** 选择框展示使用 flex 布局方式 ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+- **select:** trigger-props 属性可以覆盖默认属性 ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+- **breadcrumb:** 使用 Context 方式优化组件 ([#774](https://github.com/arco-design/arco-design-vue/pull/774))
+- **avatar:** 使用 Context 方式优化组件 ([#773](https://github.com/arco-design/arco-design-vue/pull/773))
+- **steps:** 使用 Context 方式优化组件 ([#772](https://github.com/arco-design/arco-design-vue/pull/772))
+- **tabs:** 使用 Context 方式优化组件，支持对 TabPane 的二次封装 ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- **tabs:** key 支持 number 类型 ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- **tabs:** 增加 autoSwitch 属性 ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+
+### 🆕 新增功能
+
+- 增加 GlobalComponents 定义 ([#782](https://github.com/arco-design/arco-design-vue/pull/782))
+- **cascader:** 增加 `#option`, `#label` 插槽 ([#781](https://github.com/arco-design/arco-design-vue/pull/781))
+- **table:** 滚动模式支持设置高度百分比 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- **table:** column 数据增加 slotName 属性，允许指定渲染插槽 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- **table:** 增加 `pagination-left` 和 `pagination-right` 插槽 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- **rate:** 增加 color 属性 ([#770](https://github.com/arco-design/arco-design-vue/pull/770))
+- **checkbox:** 增加 checkbox 插槽，可以自定义复选框 ([#769](https://github.com/arco-design/arco-design-vue/pull/769))
+- **radio:** 增加 radio 插槽，可以自定义单选框 ([#769](https://github.com/arco-design/arco-design-vue/pull/769))
+- **date-picker:** 支持在头部快捷切换年月 ([#754](https://github.com/arco-design/arco-design-vue/pull/754))
+
+### 🐛 问题修复
+
+- **select:** 修复 label 属性失效的问题 ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+- **select:** 修复 option 的属性没有同步更新的问题 ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+- **list:** 列表项应渲染为 div ([#776](https://github.com/arco-design/arco-design-vue/pull/776))
+- **slider:** 修复输入框改变时不会触发 change 的问题 ([#775](https://github.com/arco-design/arco-design-vue/pull/775))
+- **form:** 修复嵌套数据中重置方法失效的问题 ([#768](https://github.com/arco-design/arco-design-vue/pull/768))
+
+### 💅 样式更新
+
+- **menu:** 菜单项的图标没有垂直居中 ([#767](https://github.com/arco-design/arco-design-vue/pull/767))
+
+
 ## 2.18.0-beta.3
 
 `2022-02-26`

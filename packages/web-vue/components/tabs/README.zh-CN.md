@@ -38,7 +38,7 @@ description: 将内容组织同一视图中，一次可查看一个视图内容�
 |justify|高度撑满容器，只在水平模式下生效。|`boolean`|`false`||
 |animation|是否开启选项内容过渡动画|`boolean`|`false`||
 |header-padding|选项卡头部是否存在水平边距。仅对 `type` 等于 `line`、`text` 类型的选项卡生效|`boolean`|`true`|2.10.0|
-|auto-switch|创建标签后是否切换到新标签|`boolean`|`false`|2.18.0|
+|auto-switch|创建标签后是否切换到新标签（最后一个）|`boolean`|`false`|2.18.0|
 ### `<tabs>` Events
 
 |事件名|描述|参数|

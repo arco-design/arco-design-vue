@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 Optimization
+
+- **select:** Select box display using flex layout ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+- **select:** trigger-props properties can override default properties ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+- **breadcrumb:** Use Context to optimize components ([#774](https://github.com/arco-design/arco-design-vue/pull/774))
+- **avatar:** Use Context to optimize components ([#773](https://github.com/arco-design/arco-design-vue/pull/773))
+- **steps:** Use Context to optimize components ([#772](https://github.com/arco-design/arco-design-vue/pull/772))
+- **tabs:** Use Context to optimize components and support secondary encapsulation of TabPane ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- **tabs:** key supports number type ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- **tabs:** Add autoSwitch attribute ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+
+### 🆕 Feature
+
+- Add definition of GlobalComponents ([#782](https://github.com/arco-design/arco-design-vue/pull/782))
+- **cascader:** Added `#option`, `#label` slots ([#781](https://github.com/arco-design/arco-design-vue/pull/781))
+- **table:** Scroll mode supports setting height percentage ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- **table:** The column data adds the slotName property to allow specifying a rendering slot ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- **table:** Added `pagination-left` and `pagination-right` slots ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- **rate:** Add color attribute ([#770](https://github.com/arco-design/arco-design-vue/pull/770))
+- **checkbox:** Add checkbox slot, you can customize the checkbox ([#769](https://github.com/arco-design/arco-design-vue/pull/769))
+- **radio:** Add radio slot, you can customize the radio ([#769](https://github.com/arco-design/arco-design-vue/pull/769))
+- **date-picker:** support quick switching of year and month in the head ([#754](https://github.com/arco-design/arco-design-vue/pull/754))
+
+### 🐛 BugFix
+
+- **select:** Fix the problem that the label attribute is invalid ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+- **select:** Fix the problem that the properties of option are not updated synchronously ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+- **list:** List items should be rendered as div ([#776](https://github.com/arco-design/arco-design-vue/pull/776))
+- **slider:** Fix the problem that change will not be triggered when the input box is changed ([#775](https://github.com/arco-design/arco-design-vue/pull/775))
+- **form:** Fix the problem of reset method invalid in nested data ([#768](https://github.com/arco-design/arco-design-vue/pull/768))
+
+### 💅 Style
+
+- **menu:** the icon of sub-menu are not centered in vertically ([#767](https://github.com/arco-design/arco-design-vue/pull/767))
+
+
 ## 2.18.0-beta.3
 
 `2022-02-26`

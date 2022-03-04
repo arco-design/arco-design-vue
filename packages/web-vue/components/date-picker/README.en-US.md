@@ -89,12 +89,12 @@ description: Choose a date. Support year, month, week, day type, support range s
 |Slot Name|Description|Parameters|
 |---|---|---|
 |suffix-icon|Input box suffix icon|-|
-|extra|Extra footer|-|
-|cell|Customize the contents of the date cell|date: `Date`|
-|icon-prev-double|Double arrow page forward icon|-|
-|icon-prev|Single arrow page forward icon|-|
-|icon-next|Single arrow page backward icon|-|
 |icon-next-double|Double arrow page backward icon|-|
+|icon-prev-double|Double arrow page forward icon|-|
+|icon-next|Single arrow page backward icon|-|
+|icon-prev|Single arrow page forward icon|-|
+|cell|Customize the contents of the date cell|date: `Date`|
+|extra|Extra footer|-|
 
 
 

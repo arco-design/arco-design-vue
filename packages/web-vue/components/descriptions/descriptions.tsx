@@ -148,12 +148,7 @@ export default defineComponent({
     const sortedSpans = computed(() =>
       Array.from(descItemMap.values())
         .sort((a, b) => a.index - b.index)
-        .map((data) => {
-          // eslint-disable-next-line no-console
-          console.log(data);
-
-          return data.span;
-        })
+        .map((data) => data.span)
     );
 
     const addItem = (id: number, data: DescItemData) => {

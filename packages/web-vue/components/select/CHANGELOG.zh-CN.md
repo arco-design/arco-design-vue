@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 功能优化
+
+- 选择框展示使用 flex 布局方式 ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+- trigger-props 属性可以覆盖默认属性 ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+
+### 🐛 问题修复
+
+- 修复 label 属性失效的问题 ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+- 修复 option 的属性没有同步更新的问题 ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

@@ -1,6 +1,6 @@
 {
   "name": "@arco-design/web-vue",
-  "version": "2.18.0-beta.3",
+  "version": "2.18.0",
   "description": "Arco Design Vue 2.0: A Vue.js 3 UI Library",
   "keywords": [
     "arco",
@@ -35,7 +35,7 @@
     "docgen": "arco-vue-scripts docgen",
     "icongen": "arco-vue-scripts icongen && yarn run dtsgen:icon",
     "lessgen": "arco-vue-scripts lessgen",
-    "jsongen": "arco-vue-scripts jsongen",
+    "jsongen": "arco-vue-scripts jsongen && node copy-global.js",
     "build": "yarn run build:component && yarn run build:style && yarn run dtsgen",
     "build:component": "arco-vue-scripts build:component -u",
     "build:style": "arco-vue-scripts build:style",

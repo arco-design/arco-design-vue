@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 功能优化
+
+- 使用 Context 方式优化组件，支持对 TabPane 的二次封装 ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- key 支持 number 类型 ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- 增加 autoSwitch 属性 ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+
+
 ## 2.11.0
 
 `2021-12-17`

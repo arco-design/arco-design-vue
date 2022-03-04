@@ -87,12 +87,12 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |插槽名|描述|参数|
 |---|:---:|---|
 |suffix-icon|输入框后缀图标|-|
-|extra|额外的页脚|-|
-|cell|自定义日期单元格的内容|date: `Date`|
-|icon-prev-double|双箭头往前翻页图标|-|
-|icon-prev|单箭头往前翻页图标|-|
-|icon-next|单箭头往后翻页图标|-|
 |icon-next-double|双箭头往后翻页图标|-|
+|icon-prev-double|双箭头往前翻页图标|-|
+|icon-next|单箭头往后翻页图标|-|
+|icon-prev|单箭头往前翻页图标|-|
+|cell|自定义日期单元格的内容|date: `Date`|
+|extra|额外的页脚|-|
 
 
 

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 Feature
+
+- support quick switching of year and month in the head ([#754](https://github.com/arco-design/arco-design-vue/pull/754))
+
+
 ## 2.16.2
 
 `2022-01-24`

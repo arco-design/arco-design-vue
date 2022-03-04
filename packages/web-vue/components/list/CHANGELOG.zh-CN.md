@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 🐛 问题修复
+
+- 列表项应渲染为 div ([#776](https://github.com/arco-design/arco-design-vue/pull/776))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

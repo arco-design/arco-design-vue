@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 Feature
+
+- Scroll mode supports setting height percentage ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- The column data adds the slotName property to allow specifying a rendering slot ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- Added `pagination-left` and `pagination-right` slots ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`
