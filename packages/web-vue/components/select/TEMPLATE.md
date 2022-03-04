@@ -60,4 +60,24 @@ description: When users need to select one or more from a group of similar data,
 
 %%API(optgroup.vue)%%
 
+```ts
+/**
+ * @zh 选项值
+ * @en Option
+ */
+type OptionValue = string | number | Record<string, unknown>;
+
+/**
+ * @zh 选项
+ * @en Option
+ */
+type Option = string | number | OptionData | GroupOption;
+
+/**
+ * @zh 筛选
+ * @en Filter
+ */
+type FilterOption = boolean | ((inputValue: string, optionInfo: OptionInfo) => boolean);
+```
+
 %%INTERFACE(interface.ts)%%

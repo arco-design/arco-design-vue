@@ -127,6 +127,26 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 
 
+```ts
+/**
+ * @zh 选项值
+ * @en Option
+ */
+type OptionValue = string | number | Record<string, unknown>;
+
+/**
+ * @zh 选项
+ * @en Option
+ */
+type Option = string | number | OptionData | GroupOption;
+
+/**
+ * @zh 筛选
+ * @en Filter
+ */
+type FilterOption = boolean | ((inputValue: string, optionInfo: OptionInfo) => boolean);
+```
+
 
 ### OptionData
 

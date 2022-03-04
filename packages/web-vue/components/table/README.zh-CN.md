@@ -261,3 +261,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |dragTarget|拖拽信息|`TableData`|`-`|
 
 
+
+```ts
+type Filters = Record<string, string[]>;
+
+type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string, never>;
+```

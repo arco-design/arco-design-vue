@@ -263,3 +263,9 @@ description: It is used for data collection, display, analysis and processing, a
 |dragTarget|Drag and drop information|`TableData`|`-`|
 
 
+
+```ts
+type Filters = Record<string, string[]>;
+
+type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string, never>;
+```
