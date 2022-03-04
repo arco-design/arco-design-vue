@@ -24,6 +24,7 @@ import ResizeObserver from '../_components/resize-observer';
 import FeedbackIcon from '../_components/feedback-icon.vue';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
+import { isNull, isUndefined } from '../_utils/is';
 
 export default defineComponent({
   name: 'InputTag',
@@ -211,7 +212,8 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit, slots, attrs }) {
-    const { size, disabled, error, uninjectFormItemContext } = toRefs(props);
+    const { size, disabled, error, uninjectFormItemContext, modelValue } =
+      toRefs(props);
     const prefixCls = props.baseCls || getPrefixCls('input-tag');
     const inputRef = ref<HTMLInputElement>();
     const mirrorRef = ref<HTMLElement>();
@@ -264,6 +266,12 @@ export default defineComponent({
     const computedInputValue = computed(
       () => props.inputValue ?? _inputValue.value
     );
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = [];
+      }
+    });
 
     const handleMousedown = (e: MouseEvent) => {
       if (inputRef.value && e.target !== inputRef.value) {

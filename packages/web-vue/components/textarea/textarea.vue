@@ -65,7 +65,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from './utils';
-import { isFunction, isObject } from '../_utils/is';
+import { isFunction, isNull, isObject, isUndefined } from '../_utils/is';
 import { EmitType } from '../_utils/types';
 import { omit } from '../_utils/omit';
 import { INPUT_EVENTS } from '../_utils/constant';
@@ -215,7 +215,7 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit, attrs }) {
-    const { disabled, error } = toRefs(props);
+    const { disabled, error, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('textarea');
     const {
       mergedDisabled,
@@ -230,6 +230,12 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = '';
+      }
+    });
 
     const maxLengthErrorOnly = computed(
       () => isObject(props.maxLength) && Boolean(props.maxLength.errorOnly)
