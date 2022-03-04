@@ -94,6 +94,9 @@ export default defineComponent({
           getOptionLabel(props.option)
         );
       }
+      if (cascaderCtx?.slots.option) {
+        return cascaderCtx.slots.option({ data: props.option });
+      }
       if (isFunction(props.option.render)) {
         return props.option.render();
       }

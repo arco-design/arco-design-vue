@@ -95,7 +95,7 @@ import SelectView from '../_components/select-view/select-view';
 import CascaderPanel from './cascader-panel';
 import CascaderSearchPanel from './cascader-search-panel';
 import { CascaderOption, CascaderOptionInfo } from './interface';
-import { isArray } from '../_utils/is';
+import { isArray, isNull, isUndefined } from '../_utils/is';
 import { Data, EmitType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
 import { CODE, getKeyDownHandler } from '../_utils/keyboard';
@@ -432,11 +432,32 @@ export default defineComponent({
    * @slot search-icon
    * @version 2.16.0
    */
-  setup(props, { emit }) {
-    const { options, checkStrictly, loadMore, formatLabel } = toRefs(props);
+  /**
+   * @zh 选项内容
+   * @en Display content of options
+   * @slot option
+   * @binding {CascaderOption} data
+   * @version 2.18.0
+   */
+  /**
+   * @zh 选择框的显示内容
+   * @en Display content of label
+   * @slot label
+   * @binding {CascaderOption} data
+   * @version 2.18.0
+   */
+  setup(props, { emit, slots }) {
+    const { options, checkStrictly, loadMore, formatLabel, modelValue } =
+      toRefs(props);
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
     const _popupVisible = ref(props.defaultPopupVisible);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = props.multiple ? [] : undefined;
+      }
+    });
 
     const optionInfos = ref<CascaderOptionInfo[]>([]);
     const totalLevel = ref(1);
@@ -462,7 +483,7 @@ export default defineComponent({
         leafOptionValueMap.clear();
         leafOptionSet.clear();
 
-        optionInfos.value = getOptionInfos(props.options, {
+        optionInfos.value = getOptionInfos(_options ?? [], {
           enabledLazyLoad: Boolean(props.loadMore),
           lazyLoadOptions,
           optionMap,
@@ -681,6 +702,7 @@ export default defineComponent({
         loadMore,
         addLazyLoadOptions,
         formatLabel,
+        slots,
       })
     );
 

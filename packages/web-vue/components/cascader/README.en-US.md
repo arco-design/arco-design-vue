@@ -73,9 +73,11 @@ description: Refers to the use of multi-level classification to separate the opt
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|label|Display content of label|data: `OptionInfo`|2.18.0|
 |arrow-icon|Arrow icon for select box|-|2.16.0|
 |loading-icon|Loading icon for select box|-|2.16.0|
 |search-icon|Search icon for select box|-|2.16.0|
+|option|Display content of options|data: `OptionInfo`|2.18.0|
 
 
 
