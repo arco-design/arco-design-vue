@@ -24,8 +24,9 @@ description: 项目文件的组织结构
 │   ├── locale  # 国际化语言包
 │   ├── mock  # 模拟数据
 │   ├── views  # 页面模板
+|   |—— router # 路由配置
 │   ├── store  # 状态管理中心
-│   ├── types  # 路由配置
+│   ├── types  # Typescript 类型
 │   ├── settings.json  # 配置文件
 │   └── utils  # 工具库
 │   └── App.vue  # 视图入口
