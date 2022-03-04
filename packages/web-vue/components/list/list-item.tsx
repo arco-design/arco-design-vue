@@ -47,7 +47,7 @@ export default defineComponent({
     };
 
     return () => (
-      <li class={prefixCls}>
+      <div class={prefixCls}>
         <div class={`${prefixCls}-main`}>
           {slots.meta?.()}
           <div class={`${prefixCls}-content`}>{slots.default?.()}</div>
@@ -55,7 +55,7 @@ export default defineComponent({
         </div>
         {props.actionLayout === 'horizontal' && renderAction()}
         {slots.extra && <div class={`${prefixCls}-extra`}>{slots.extra()}</div>}
-      </li>
+      </div>
     );
   },
 });

@@ -6,7 +6,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <div class=\\"arco-list-header\\"> List title </div>
       <div class=\\"arco-list-content\\">
-        <li class=\\"arco-list-item\\">
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Bytedance Technology Co., Ltd.</div>
@@ -14,8 +14,8 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Bytedance Technology Co., Ltd.</div>
@@ -23,8 +23,8 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Toutiao Technology Co., Ltd.</div>
@@ -32,8 +32,8 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Volcengine Technology Co., Ltd.</div>
@@ -41,8 +41,8 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">China Beijing Bytedance Technology Co., Ltd.</div>
@@ -50,7 +50,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
+        </div>
       </div>
       <!---->
     </div>
@@ -68,7 +68,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
       <div class=\\"arco-list-content\\">
         <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-list-row\\">
           <div class=\\"arco-col arco-col-6 arco-list-col\\">
-            <li class=\\"arco-list-item\\">
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -77,207 +77,207 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                       <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
                         <div class=\\"arco-list-header\\">Platform</div>
                         <div class=\\"arco-list-content\\">
-            <li class=\\"arco-list-item\\">
-              <div class=\\"arco-list-item-main\\">
-                <!---->
-                <div class=\\"arco-list-item-content\\">iOS</div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">iOS</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">iOS</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">iOS</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                        </div>
+                        <!---->
+                      </div>
+                      <!---->
+                      <!---->
+                    </div>
+                  </div>
+                </div>
                 <!---->
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
-              <div class=\\"arco-list-item-main\\">
-                <!---->
-                <div class=\\"arco-list-item-content\\">iOS</div>
-                <!---->
-              </div>
-              <!---->
-              <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
-              <div class=\\"arco-list-item-main\\">
-                <!---->
-                <div class=\\"arco-list-item-content\\">iOS</div>
-                <!---->
-              </div>
-              <!---->
-              <!---->
-            </li>
+            </div>
           </div>
-          <!---->
+          <div class=\\"arco-col arco-col-6 arco-list-col\\">
+            <div class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-wrapper\\">
+                    <div class=\\"arco-spin arco-list-spin\\">
+                      <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
+                        <div class=\\"arco-list-header\\">Framework</div>
+                        <div class=\\"arco-list-content\\">
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">Angular</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">Vue</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">React</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                        </div>
+                        <!---->
+                      </div>
+                      <!---->
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class=\\"arco-col arco-col-6 arco-list-col\\">
+            <div class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-wrapper\\">
+                    <div class=\\"arco-spin arco-list-spin\\">
+                      <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
+                        <div class=\\"arco-list-header\\">Language</div>
+                        <div class=\\"arco-list-content\\">
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">C++</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">JavaScript</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">Python</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                        </div>
+                        <!---->
+                      </div>
+                      <!---->
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+          <div class=\\"arco-col arco-col-6 arco-list-col\\">
+            <div class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-wrapper\\">
+                    <div class=\\"arco-spin arco-list-spin\\">
+                      <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
+                        <div class=\\"arco-list-header\\">Component</div>
+                        <div class=\\"arco-list-content\\">
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">Button</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">Breadcrumb</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                          <div class=\\"arco-list-item\\">
+                            <div class=\\"arco-list-item-main\\">
+                              <!---->
+                              <div class=\\"arco-list-item-content\\">Transfer</div>
+                              <!---->
+                            </div>
+                            <!---->
+                            <!---->
+                          </div>
+                        </div>
+                        <!---->
+                      </div>
+                      <!---->
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
         </div>
-        <!---->
-        <!---->
       </div>
+      <!---->
     </div>
+    <!---->
+    <!---->
   </div>
-  <!---->
-</div>
-<!---->
-<!---->
-</li>
-</div>
-<div class=\\"arco-col arco-col-6 arco-list-col\\">
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">
-        <div class=\\"arco-list-wrapper\\">
-          <div class=\\"arco-spin arco-list-spin\\">
-            <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
-              <div class=\\"arco-list-header\\">Framework</div>
-              <div class=\\"arco-list-content\\">
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">Angular</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">Vue</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">React</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-</div>
-<!---->
-</div>
-<!---->
-<!---->
-</div>
-</div>
-</div>
-<!---->
-</div>
-<!---->
-<!---->
-</li>
-</div>
-<div class=\\"arco-col arco-col-6 arco-list-col\\">
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">
-        <div class=\\"arco-list-wrapper\\">
-          <div class=\\"arco-spin arco-list-spin\\">
-            <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
-              <div class=\\"arco-list-header\\">Language</div>
-              <div class=\\"arco-list-content\\">
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">C++</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">JavaScript</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">Python</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-</div>
-<!---->
-</div>
-<!---->
-<!---->
-</div>
-</div>
-</div>
-<!---->
-</div>
-<!---->
-<!---->
-</li>
-</div>
-<div class=\\"arco-col arco-col-6 arco-list-col\\">
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">
-        <div class=\\"arco-list-wrapper\\">
-          <div class=\\"arco-spin arco-list-spin\\">
-            <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
-              <div class=\\"arco-list-header\\">Component</div>
-              <div class=\\"arco-list-content\\">
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">Button</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">Breadcrumb</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-  <li class=\\"arco-list-item\\">
-    <div class=\\"arco-list-item-main\\">
-      <!---->
-      <div class=\\"arco-list-item-content\\">Transfer</div>
-      <!---->
-    </div>
-    <!---->
-    <!---->
-  </li>
-</div>
-<!---->
-</div>
-<!---->
-<!---->
-</div>
-</div>
-</div>
-<!---->
-</div>
-<!---->
-<!---->
-</li>
-</div>
-</div>
-</div>
-<!---->
-</div>
-<!---->
-<!---->
-</div>
 </div>"
 `;
 
@@ -287,13 +287,13 @@ exports[`<list> demo: render [meta] correctly 1`] = `
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <!---->
       <div class=\\"arco-list-content\\">
-        <li class=\\"arco-list-item\\">
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
               <div class=\\"arco-list-item-meta\\">
                 <div class=\\"arco-list-item-meta-avatar\\">
-                  <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                  <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                     <!--v-if-->
                   </div>
                 </div>
@@ -307,14 +307,14 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
               <div class=\\"arco-list-item-meta\\">
                 <div class=\\"arco-list-item-meta-avatar\\">
-                  <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                  <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                     <!--v-if-->
                   </div>
                 </div>
@@ -328,14 +328,14 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
               <div class=\\"arco-list-item-meta\\">
                 <div class=\\"arco-list-item-meta-avatar\\">
-                  <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                  <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                     <!--v-if-->
                   </div>
                 </div>
@@ -349,14 +349,14 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
               <div class=\\"arco-list-item-meta\\">
                 <div class=\\"arco-list-item-meta-avatar\\">
-                  <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-image\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                  <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                     <!--v-if-->
                   </div>
                 </div>
@@ -370,7 +370,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
+        </div>
       </div>
       <!---->
     </div>
@@ -386,7 +386,7 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\" style=\\"max-height: 200px;\\">
       <div class=\\"arco-list-header\\"> List title </div>
       <div class=\\"arco-list-content\\">
-        <li class=\\"arco-list-item\\">
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Bytedance Technology Co., Ltd.</div>
@@ -394,8 +394,8 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Bytedance Technology Co., Ltd.</div>
@@ -403,8 +403,8 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Toutiao Technology Co., Ltd.</div>
@@ -412,8 +412,8 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Volcengine Technology Co., Ltd.</div>
@@ -421,8 +421,8 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
-        <li class=\\"arco-list-item\\">
+        </div>
+        <div class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">China Beijing Bytedance Technology Co., Ltd.</div>
@@ -430,7 +430,7 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
           </div>
           <!---->
           <!---->
-        </li>
+        </div>
       </div>
       <!---->
     </div>
@@ -449,7 +449,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
         <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
           <div class=\\"arco-list-header\\"> List title </div>
           <div class=\\"arco-list-content\\">
-            <li class=\\"arco-list-item\\">
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Beijing Bytedance Technology Co., Ltd.</div>
@@ -457,8 +457,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Bytedance Technology Co., Ltd.</div>
@@ -466,8 +466,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Beijing Toutiao Technology Co., Ltd.</div>
@@ -475,8 +475,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Beijing Volcengine Technology Co., Ltd.</div>
@@ -484,8 +484,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">China Beijing Bytedance Technology Co., Ltd.</div>
@@ -493,7 +493,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
+            </div>
           </div>
           <!---->
         </div>
@@ -514,13 +514,13 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
       <div class=\\"arco-list-content arco-list-virtual\\" style=\\"overflow-y: auto; max-height: 560px;\\">
         <div style=\\"height: 320000px; position: relative; overflow: hidden; z-index: 0;\\">
           <div style=\\"display: flex; flex-direction: column; transform: translateY(0px); position: absolute; left: 0px; right: 0px; top: 0px;\\">
-            <li class=\\"arco-list-item\\">
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -534,14 +534,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -555,14 +555,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -576,14 +576,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -597,14 +597,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -618,14 +618,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -639,14 +639,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -660,14 +660,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -681,14 +681,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -702,14 +702,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -723,14 +723,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -744,14 +744,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -765,14 +765,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -786,14 +786,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -807,14 +807,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -828,14 +828,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -849,14 +849,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -870,14 +870,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -891,14 +891,14 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
-            <li class=\\"arco-list-item\\">
+            </div>
+            <div class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
                   <div class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -912,7 +912,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               </div>
               <!---->
               <!---->
-            </li>
+            </div>
           </div>
         </div>
       </div>
