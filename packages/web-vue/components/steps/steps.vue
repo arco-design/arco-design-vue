@@ -1,8 +1,23 @@
-import { computed, defineComponent, mergeProps, PropType, ref } from 'vue';
+<template>
+  <div :class="cls">
+    <slot />
+  </div>
+</template>
+
+<script lang="ts">
+import {
+  computed,
+  defineComponent,
+  PropType,
+  provide,
+  reactive,
+  ref,
+  toRefs,
+} from 'vue';
 import { Direction, DIRECTIONS } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
-import { getChildrenComponents } from '../_utils/vue-utils';
-import { StepStatus, StepsType } from './interface';
+import { StepData, StepStatus, StepsType } from './interface';
+import { stepsInjectionKey } from './context';
 
 export default defineComponent({
   name: 'Steps',
@@ -95,9 +110,9 @@ export default defineComponent({
     'change',
   ],
   setup(props, { emit, slots }) {
+    const { type, lineLess } = toRefs(props);
     const prefixCls = getPrefixCls('steps');
     const _current = ref(props.defaultCurrent);
-
     const computedCurrent = computed(() => props.current ?? _current.value);
 
     const direction = computed(() =>
@@ -116,6 +131,16 @@ export default defineComponent({
       return props.labelPlacement;
     });
 
+    const getStatus = (step: number): StepStatus => {
+      if (step < computedCurrent.value) {
+        return 'finish';
+      }
+      if (step > computedCurrent.value) {
+        return 'wait';
+      }
+      return props.status;
+    };
+
     const handleClick = (step: number, e: Event) => {
       if (props.changeable) {
         _current.value = step;
@@ -124,58 +149,52 @@ export default defineComponent({
       }
     };
 
-    const getStatus = (step: number, current: number): StepStatus => {
-      if (step < current) {
-        return 'finish';
-      }
-      if (step > current) {
-        return 'wait';
-      }
-      return props.status;
+    const stepMap = reactive(new Map<number, StepData>());
+    const errorSteps = computed(() =>
+      Array.from(stepMap.values())
+        .filter((item) => item.status === 'error')
+        .map((item) => item.step)
+    );
+
+    const addItem = (step: number, data: StepData) => {
+      stepMap.set(step, data);
     };
+
+    const removeItem = (step: number) => {
+      stepMap.delete(step);
+    };
+
+    provide(
+      stepsInjectionKey,
+      reactive({
+        type,
+        direction,
+        labelPlacement,
+        lineLess,
+        current: computedCurrent,
+        errorSteps,
+        getStatus,
+        addItem,
+        removeItem,
+        onClick: handleClick,
+      })
+    );
 
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-${direction.value}`,
       `${prefixCls}-label-${labelPlacement.value}`,
-      `${prefixCls}-mode-${props.type}`,
+      `${prefixCls}-mode-${type.value}`,
       {
         [`${prefixCls}-changeable`]: props.changeable,
         [`${prefixCls}-size-small`]: props.small && props.type !== 'dot',
-        [`${prefixCls}-line-less`]: props.lineLess,
+        [`${prefixCls}-line-less`]: lineLess.value,
       },
     ]);
 
-    return () => {
-      const children = getChildrenComponents(
-        slots.default?.() ?? [],
-        'Step',
-        (vn, index) => {
-          const step = index + 1;
-          const status = getStatus(step, computedCurrent.value);
-          return {
-            step,
-            current: computedCurrent.value,
-            status: vn.props?.status ?? status,
-            direction: direction.value,
-            labelPlacement: labelPlacement.value,
-            lineLess: props.lineLess,
-            type: props.type,
-            onClick: handleClick,
-          };
-        }
-      );
-
-      children.forEach((vn, index) => {
-        const next = children[index + 1];
-        if (next && next.props?.status === 'error') {
-          vn.props = mergeProps(vn.props ?? {}, {
-            nextStepError: true,
-          });
-        }
-      });
-
-      return <div class={cls.value}>{children}</div>;
+    return {
+      cls,
     };
   },
 });
+</script>
