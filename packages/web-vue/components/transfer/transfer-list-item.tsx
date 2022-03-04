@@ -10,7 +10,7 @@ export default defineComponent({
   name: 'TransferListItem',
   props: {
     type: {
-      type: String,
+      type: String as PropType<'source' | 'target'>,
     },
     data: {
       type: Object as PropType<TransferItem>,
@@ -21,9 +21,6 @@ export default defineComponent({
     },
     disabled: {
       type: Boolean,
-    },
-    onSelectChange: {
-      type: Function,
     },
     draggable: {
       type: Boolean,
@@ -61,23 +58,29 @@ export default defineComponent({
       <div class={cls.value} onClick={handleClick}>
         {props.allowClear || props.simple ? (
           <span class={`${prefixCls}-content`}>
-            {transferCtx?.itemSlot?.({ label: props.data.label }) ??
+            {transferCtx?.slots.item?.({ label: props.data.label }) ??
               props.data.label}
           </span>
         ) : (
           <Checkbox
             class={`${prefixCls}-content`}
             modelValue={transferCtx?.selected}
-            onChange={props.onSelectChange}
             value={props.data.value}
+            onChange={(value: unknown) =>
+              transferCtx?.onSelect(value as string[])
+            }
             uninjectGroupContext
           >
-            {transferCtx?.itemSlot?.({ label: props.data.label }) ??
+            {transferCtx?.slots.item?.({ label: props.data.label }) ??
               props.data.label}
           </Checkbox>
         )}
         {props.allowClear && !props.disabled && (
-          <IconHover class={`${prefixCls}-remove-btn`} onClick={handleRemove}>
+          <IconHover
+            class={`${prefixCls}-remove-btn`}
+            // @ts-ignore
+            onClick={handleRemove}
+          >
             <IconClose />
           </IconHover>
         )}

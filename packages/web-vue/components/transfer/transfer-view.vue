@@ -35,7 +35,6 @@
         :data="item"
         :simple="simple"
         :allow-clear="allowClear"
-        @select-change="onSelectChange"
       />
     </list>
   </div>
@@ -65,7 +64,7 @@ export default defineComponent({
   },
   props: {
     type: {
-      type: String,
+      type: String as PropType<'source' | 'target'>,
     },
     dataInfo: {
       type: Object as PropType<DataInfo>,
@@ -78,15 +77,13 @@ export default defineComponent({
     },
     allowClear: Boolean,
     selected: {
-      type: Array,
-    },
-    onSelectChange: {
-      type: Function,
+      type: Array as PropType<string[]>,
+      required: true,
     },
     showSearch: Boolean,
     simple: Boolean,
   },
-  emits: ['selectChange', 'search'],
+  emits: ['search'],
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('transfer-view');
     const filter = ref('');
@@ -105,13 +102,12 @@ export default defineComponent({
 
     const handleSelectAllChange = (checked: boolean) => {
       if (checked) {
-        emit('selectChange', [
+        transferCtx?.onSelect([
           ...props.selected,
           ...props.dataInfo.allValidValues,
         ]);
       } else {
-        emit(
-          'selectChange',
+        transferCtx?.onSelect(
           props.selected.filter(
             (value) => !props.dataInfo.allValidValues.includes(value)
           )
