@@ -1,4 +1,4 @@
-import { InjectionKey } from 'vue';
+import { InjectionKey, Slots } from 'vue';
 import { CascaderOption, CascaderOptionInfo } from './interface';
 
 interface CascaderContext {
@@ -11,6 +11,7 @@ interface CascaderContext {
   ) => void;
   addLazyLoadOptions: (children: CascaderOption[], key: string) => void;
   formatLabel: (options: CascaderOptionInfo[]) => string;
+  slots: Slots;
 }
 
 export const cascaderInjectionKey: InjectionKey<CascaderContext> =
