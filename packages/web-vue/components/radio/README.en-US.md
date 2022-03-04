@@ -33,6 +33,11 @@ description: In a set of related and mutually exclusive data, the user can only 
 |Event Name|Description|Parameters|
 |---|---|---|
 |change|Trigger when the value changes|value: `string, number, boolean`|
+### `<radio>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|radio|Custom radio|-|2.18.0|
 
 
 

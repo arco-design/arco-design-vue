@@ -16,6 +16,8 @@ description: In a set of data, the user can select one or more data through the 
 
 @import ./__demo__/all.md
 
+@import ./__demo__/custom.md
+
 
 ### `<checkbox>` Props
 
@@ -31,6 +33,11 @@ description: In a set of data, the user can select one or more data through the 
 |Event Name|Description|Parameters|
 |---|---|---|
 |change|Trigger when the value changes|value: `boolean \| Array<string \| number \| boolean>`|
+### `<checkbox>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|checkbox|Custom checkbox|-|2.18.0|
 
 
 

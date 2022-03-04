@@ -13,12 +13,14 @@
       @blur="handleBlur"
     />
     <template v-if="mergedType === 'radio'">
-      <icon-hover
-        :class="`${prefixCls}-icon-hover`"
-        :disabled="mergedDisabled || computedChecked"
-      >
-        <span :class="`${prefixCls}-icon`" />
-      </icon-hover>
+      <slot name="radio" :checked="computedChecked" :disabled="mergedDisabled">
+        <icon-hover
+          :class="`${prefixCls}-icon-hover`"
+          :disabled="mergedDisabled || computedChecked"
+        >
+          <span :class="`${prefixCls}-icon`" />
+        </icon-hover>
+      </slot>
       <span v-if="$slots.default" :class="`${prefixCls}-label`">
         <slot />
       </span>
@@ -118,6 +120,12 @@ export default defineComponent({
      */
     'change',
   ],
+  /**
+   * @zh 自定义单选框
+   * @en Custom radio
+   * @slot radio
+   * @version 2.18.0
+   */
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('radio');
     const radioGroupCtx = !props.uninjectGroupContext

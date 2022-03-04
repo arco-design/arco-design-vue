@@ -12,14 +12,19 @@
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    <icon-hover
-      :class="`${prefixCls}-icon-hover`"
-      :disabled="mergedDisabled || computedChecked"
-    >
-      <div :class="`${prefixCls}-icon`">
-        <icon-check v-if="computedChecked" :class="`${prefixCls}-icon-check`" />
-      </div>
-    </icon-hover>
+    <slot name="checkbox" :checked="computedChecked" :disabled="mergedDisabled">
+      <icon-hover
+        :class="`${prefixCls}-icon-hover`"
+        :disabled="mergedDisabled || computedChecked"
+      >
+        <div :class="`${prefixCls}-icon`">
+          <icon-check
+            v-if="computedChecked"
+            :class="`${prefixCls}-icon-check`"
+          />
+        </div>
+      </icon-hover>
+    </slot>
     <span v-if="$slots.default" :class="`${prefixCls}-label`">
       <slot />
     </span>
@@ -117,6 +122,12 @@ export default defineComponent({
      */
     'change',
   ],
+  /**
+   * @zh 自定义复选框
+   * @en Custom checkbox
+   * @slot checkbox
+   * @version 2.18.0
+   */
   setup(props, { emit }) {
     const { disabled } = toRefs(props);
     const prefixCls = getPrefixCls('checkbox');
