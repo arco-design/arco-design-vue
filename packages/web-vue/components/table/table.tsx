@@ -9,6 +9,7 @@ import {
   defineComponent,
   inject,
   onMounted,
+  provide,
   reactive,
   ref,
   toRefs,
@@ -66,6 +67,7 @@ import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useDrag } from './hooks/use-drag';
 import { useColumnResize } from './hooks/use-column-resize';
+import { tableInjectionKey } from './context';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -481,8 +483,20 @@ export default defineComponent({
    * @slot td
    * @version 2.16.0
    */
+  /**
+   * @zh 分页器左侧内容
+   * @en Content on the left side of the pagination
+   * @slot pagination-left
+   * @version 2.18.0
+   */
+  /**
+   * @zh 分页器右侧内容
+   * @en Content on the right side of the pagination
+   * @slot pagination-right
+   * @version 2.18.0
+   */
   setup(props, { emit, slots }) {
-    const { rowKey } = toRefs(props);
+    const { rowKey, loadMore } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const bordered = computed(() => {
       if (isObject(props.bordered)) {
@@ -1041,6 +1055,15 @@ export default defineComponent({
       return undefined;
     });
 
+    provide(
+      tableInjectionKey,
+      reactive({
+        loadMore,
+        addLazyLoadData,
+        slots,
+      })
+    );
+
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-size-${props.size}`,
@@ -1070,6 +1093,8 @@ export default defineComponent({
           props.pagePosition === 'tl' || props.pagePosition === 'bl',
         [`${prefixCls}-pagination-center`]:
           props.pagePosition === 'top' || props.pagePosition === 'bottom',
+        [`${prefixCls}-pagination-right`]:
+          props.pagePosition === 'tr' || props.pagePosition === 'br',
         [`${prefixCls}-pagination-top`]: isPaginationTop.value,
       },
     ]);
@@ -1562,7 +1587,7 @@ export default defineComponent({
                   style={{
                     maxHeight: isNumber(props.scroll?.y)
                       ? `${props.scroll?.y}px`
-                      : props.scroll?.y,
+                      : '100%',
                   }}
                   onScroll={handleScroll}
                 >
@@ -1637,6 +1662,7 @@ export default defineComponent({
 
       return (
         <div class={paginationCls.value}>
+          {slots['pagination-left']?.()}
           <Pagination
             total={processedData.value.length}
             current={page.value}
@@ -1651,9 +1677,17 @@ export default defineComponent({
             }}
             {...paginationProps}
           />
+          {slots['pagination-right']?.()}
         </div>
       );
     };
+
+    const style = computed<CSSProperties | undefined>(() => {
+      if (isString(props.scroll?.y)) {
+        return { height: props.scroll?.y };
+      }
+      return undefined;
+    });
 
     return () => {
       if (slots.default) {
@@ -1661,7 +1695,7 @@ export default defineComponent({
       }
 
       return (
-        <div class={cls.value}>
+        <div class={cls.value} style={style.value}>
           <Spin {...spinProps.value}>
             {props.pagination !== false &&
               flattenData.value.length > 0 &&

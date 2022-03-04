@@ -24,6 +24,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/sort.md
 
+@import ./__demo__/scroll.md
+
 @import ./__demo__/fixed.md
 
 @import ./__demo__/span.md
@@ -94,6 +96,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|pagination-right|Content on the right side of the pagination|-|2.18.0|
+|pagination-left|Content on the left side of the pagination|-|2.18.0|
 |td|Custom td element|-|2.16.0|
 |tr|Custom tr element|-|2.16.0|
 |tbody|Custom tbody element|-|2.16.0|
@@ -192,6 +196,7 @@ description: It is used for data collection, display, analysis and processing, a
 |children|Header sub-data, used for header grouping|`TableColumn[]`|`-`||
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
 |render|Customize the rendering of column cells|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+|slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
 
 
 

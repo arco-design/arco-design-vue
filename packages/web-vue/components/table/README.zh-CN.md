@@ -22,6 +22,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/sort.md
 
+@import ./__demo__/scroll.md
+
 @import ./__demo__/fixed.md
 
 @import ./__demo__/span.md
@@ -92,6 +94,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
+|pagination-right|分页器右侧内容|-|2.18.0|
+|pagination-left|分页器左侧内容|-|2.18.0|
 |td|自定义 td 元素|-|2.16.0|
 |tr|自定义 tr 元素|-|2.16.0|
 |tbody|自定义 tbody 元素|-|2.16.0|
@@ -190,6 +194,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |children|表头子数据，用于表头分组|`TableColumn[]`|`-`||
 |cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
 |render|自定义列单元格的渲染|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+|slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
 
 
 

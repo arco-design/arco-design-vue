@@ -1,10 +1,18 @@
-import { computed, createVNode, defineComponent, PropType, ref } from 'vue';
+import {
+  computed,
+  createVNode,
+  defineComponent,
+  inject,
+  PropType,
+  ref,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { TableColumn, TableData, TableOperationColumn } from './interface';
 import { getFixedCls, getStyle } from './utils';
 import { getValueByPath } from '../_utils/get-value-by-path';
 import IconLoading from '../icon/icon-loading';
 import { isFunction } from '../_utils/is';
+import { TableContext, tableInjectionKey } from './context';
 
 const TD_TYPES = [
   'normal',
@@ -106,12 +114,21 @@ export default defineComponent({
       return props.column?.cellStyle;
     });
 
+    const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
+
     const renderContent = () => {
       if (slots.default) {
         return slots.default();
       }
       if (props.column.render) {
         return props.column.render({
+          record: props.record,
+          column: props.column,
+          rowIndex: props.rowIndex ?? -1,
+        });
+      }
+      if (props.column.slotName && tableCtx.slots?.[props.column.slotName]) {
+        return tableCtx.slots[props.column.slotName]?.({
           record: props.record,
           column: props.column,
           rowIndex: props.rowIndex ?? -1,

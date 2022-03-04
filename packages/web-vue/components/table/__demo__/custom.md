@@ -20,7 +20,12 @@ With the `#columns` slot and the `<a-table-column>` component, you can customize
 
 ```vue
 <template>
-  <a-table :data="data">
+  <a-table :columns="columns" :data="data" >
+    <template #optional="{ record }">
+      <a-button @click="$modal.info({ title:'Name', content:record.name })">view</a-button>
+    </template>
+  </a-table>
+  <a-table :data="data" style="margin-top: 30px">
     <template #columns>
       <a-table-column title="Name" data-index="name"></a-table-column>
       <a-table-column title="Salary" data-index="salary"></a-table-column>
@@ -39,6 +44,28 @@ With the `#columns` slot and the `<a-table-column>` component, you can customize
 export default {
   data() {
     return {
+      columns: [
+        {
+          title: 'Name',
+          dataIndex: 'name',
+        },
+        {
+          title: 'Salary',
+          dataIndex: 'salary',
+        },
+        {
+          title: 'Address',
+          dataIndex: 'address',
+        },
+        {
+          title: 'Email',
+          dataIndex: 'email',
+        },
+        {
+          title: 'Optional',
+          slotName: 'optional'
+        }
+      ],
       data: [{
         key: '1',
         name: 'Jane Doe',
