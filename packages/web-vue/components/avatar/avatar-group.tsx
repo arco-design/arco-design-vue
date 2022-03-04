@@ -1,22 +1,22 @@
 import {
   defineComponent,
   PropType,
-  mergeProps,
-  createVNode,
   CSSProperties,
+  reactive,
+  ref,
+  provide,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { SHAPES, ShapeType } from './constants';
+import { AvatarShape } from './interface';
 import Avatar from './avatar.vue';
 import Popover from '../popover';
 import { TriggerProps } from '../trigger';
+import { getAllElements } from '../_utils/vue-utils';
+import { avatarGroupInjectionKey } from './context';
 
-export default defineComponent({
+const AvatarGroup = defineComponent({
   name: 'AvatarGroup',
-  components: {
-    Avatar,
-    Popover,
-  },
   props: {
     /**
      * @zh 头像的形状，有圆形(circle)和正方形(square)两种
@@ -24,11 +24,8 @@ export default defineComponent({
      * @values 'circle', 'square'
      */
     shape: {
-      type: String as PropType<ShapeType>,
+      type: String as PropType<AvatarShape>,
       default: 'circle',
-      validator: (value: ShapeType) => {
-        return SHAPES.includes(value);
-      },
     },
     /**
      * @zh 头像的尺寸大小，单位是 `px`
@@ -49,6 +46,7 @@ export default defineComponent({
      */
     maxCount: {
       type: Number,
+      default: 0,
     },
     /**
      * @zh 头像组内的头像 `z-index` 递增，默认是递减。
@@ -76,63 +74,55 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
+    const { shape, size, autoFixFontSize, zIndexAscend } = toRefs(props);
     const prefixCls = getPrefixCls('avatar-group');
 
+    const total = ref(0);
+
+    provide(
+      avatarGroupInjectionKey,
+      reactive({
+        shape,
+        size,
+        autoFixFontSize,
+        zIndexAscend,
+        total,
+      })
+    );
+
     return () => {
-      const children = slots.default?.() ?? [];
+      const children = getAllElements(slots.default?.() ?? []);
+      const avatarsToRender =
+        props.maxCount > 0 ? children.slice(0, props.maxCount) : children;
+      const avatarsInPopover =
+        props.maxCount > 0 ? children.slice(props.maxCount) : [];
 
-      const count = children.length;
-      let avatarsToRender = children;
-
-      if (props.maxCount != null && count > props.maxCount) {
-        const avatarsInPopover = children.slice(props.maxCount);
-        avatarsToRender = children.slice(0, props.maxCount);
-        avatarsToRender.push(
-          createVNode(
-            Popover,
-            { ...props.maxPopoverTriggerProps },
-            {
-              content: () => <div>{avatarsInPopover}</div>,
-              default: () =>
-                createVNode(
-                  Avatar,
-                  {
-                    key: '_arco_avatar_group_popup',
-                    class: `${prefixCls}-max-count-avatar`,
-                    style: props.maxStyle,
-                    size: props.size,
-                  },
-                  () => <div>+{avatarsInPopover.length}</div>
-                ),
-            }
-          )
-        );
+      if (total.value !== avatarsToRender.length) {
+        total.value = avatarsToRender.length;
       }
 
       return (
         <div class={prefixCls}>
-          {avatarsToRender.map((item, index) => {
-            const stackedStyle = {
-              zIndex: props.zIndexAscend ? index + 1 : count - index,
-              marginLeft: props.size
-                ? index !== 0
-                  ? `-${props.size / 4}px`
-                  : '0px'
-                : '',
-            };
-            item.props = mergeProps(
-              {
-                size: props.size,
-                shape: props.shape,
-                autoFixFontSize: props.autoFixFontSize,
-                style: stackedStyle,
-              },
-              item.props || {}
-            );
-            return item;
-          })}
+          {avatarsToRender}
+          {avatarsInPopover.length > 0 && (
+            <Popover
+              v-slots={{
+                content: () => <div>{avatarsInPopover}</div>,
+              }}
+              {...(props.maxPopoverTriggerProps as unknown)}
+            >
+              <Avatar
+                class={`${prefixCls}-max-count-avatar`}
+                style={props.maxStyle}
+              >
+                +{avatarsInPopover.length}
+              </Avatar>
+            </Popover>
+          )}
         </div>
       );
     };
   },
 });
+
+export default AvatarGroup;

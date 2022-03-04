@@ -1,18 +1,20 @@
 <template>
   <div
-    ref="avatarElementRef"
-    :style="wrapperStyle"
-    :class="cls"
+    ref="itemRef"
+    :style="outerStyle"
+    :class="[
+      cls,
+      {
+        [`${prefixCls}-with-trigger-icon`]: Boolean($slots['trigger-icon']),
+      },
+    ]"
     @click="onClick"
   >
-    <span v-if="isImage" :class="`${prefixCls}-image`">
-      <slot />
-    </span>
-    <span v-else ref="textElementRef" :class="`${prefixCls}-text`">
+    <span ref="wrapperRef" :class="wrapperCls">
       <slot />
     </span>
     <div
-      v-if="hasTriggerIcon"
+      v-if="$slots['trigger-icon']"
       :class="`${prefixCls}-trigger-icon-${triggerType}`"
       :style="computedTriggerIconStyle"
     >
@@ -28,14 +30,17 @@ import {
   toRefs,
   watch,
   ref,
-  Slots,
   onMounted,
   nextTick,
   CSSProperties,
   PropType,
+  inject,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { SHAPES, ShapeType, TRIGGER_TYPES, TriggerType } from './constants';
+import { AvatarShape, AvatarTriggerType } from './interface';
+import { useIndex } from '../_hooks/use-index';
+import { avatarGroupInjectionKey } from './context';
+import { isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'Avatar',
@@ -46,15 +51,12 @@ export default defineComponent({
      * @values 'circle', 'square'
      */
     shape: {
-      type: String as PropType<ShapeType>,
+      type: String as PropType<AvatarShape>,
       default: 'circle',
-      validator: (value: ShapeType) => {
-        return SHAPES.includes(value);
-      },
     },
     /**
-     * @zh 头像的尺寸大小，单位是 `px`
-     * @en The size of the avatar, the unit is `px`
+     * @zh 头像的尺寸大小，单位是 `px`。未填写时使用样式中的大小 `40px`
+     * @en The size of the avatar, the unit is `px`. Use size `40px` in styles when not filled
      */
     size: Number,
     /**
@@ -66,23 +68,20 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 交互图标的样式
-     * @en Interactive icon style
-     */
-    triggerIconStyle: {
-      type: Object as PropType<CSSProperties>,
-    },
-    /**
      * @zh 可点击的头像交互类型
      * @en Clickable avatar interaction type
      * @values 'mask', 'button'
      */
     triggerType: {
-      type: String as PropType<TriggerType>,
+      type: String as PropType<AvatarTriggerType>,
       default: 'button',
-      validator: (value: TriggerType) => {
-        return TRIGGER_TYPES.includes(value);
-      },
+    },
+    /**
+     * @zh 交互图标的样式
+     * @en Interactive icon style
+     */
+    triggerIconStyle: {
+      type: Object as PropType<CSSProperties>,
     },
   },
   emits: [
@@ -99,60 +98,110 @@ export default defineComponent({
    * @slot trigger-icon
    */
   setup(props, { slots, emit, attrs }) {
-    const prefixCls = getPrefixCls('avatar');
     const { shape, size, autoFixFontSize, triggerType, triggerIconStyle } =
       toRefs(props);
-    const textElementRef = ref<HTMLSpanElement>();
-    const avatarElementRef = ref<HTMLDivElement>();
-    const hasTriggerIcon = computed(() => Boolean(slots['trigger-icon']));
-    const isImage = useIsImage(slots);
-    const wrapperStyle = useWrapperStyle(size.value);
+    const prefixCls = getPrefixCls('avatar');
+    const groupCtx = inject(avatarGroupInjectionKey, undefined);
+
+    const itemRef = ref<HTMLDivElement>();
+    const wrapperRef = ref<HTMLElement>();
+
+    const mergedShape = computed(() => groupCtx?.shape ?? shape.value);
+    const mergedSize = computed(() => groupCtx?.size ?? size.value);
+    const mergedAutoFixFontSize = computed(
+      () => groupCtx?.autoFixFontSize ?? autoFixFontSize.value
+    );
+    const isImage = ref(false);
+
+    const index = groupCtx
+      ? useIndex({
+          itemRef,
+          selector: `.${prefixCls}`,
+        }).computedIndex
+      : ref(-1);
+
+    const outerStyle = computed(() => {
+      const style: CSSProperties = isNumber(mergedSize.value)
+        ? {
+            width: `${mergedSize.value}px`,
+            height: `${mergedSize.value}px`,
+            fontSize: `${mergedSize.value / 2}px`,
+          }
+        : {};
+      if (groupCtx) {
+        style.zIndex = groupCtx.zIndexAscend
+          ? index.value + 1
+          : groupCtx.total - index.value;
+        style.marginLeft =
+          index.value !== 0 ? `-${(mergedSize.value ?? 40) / 4}px` : '0';
+      }
+
+      return style;
+    });
+
     const computedTriggerIconStyle = useTriggerIconStyle({
       triggerIconStyle: triggerIconStyle?.value,
       inlineStyle: attrs.style as CSSProperties,
       triggerType: triggerType.value,
     });
-    const autoFixFontSizeHandler = () => {
-      const { value: element } = textElementRef;
-      if (!element || !autoFixFontSize.value) {
-        return;
-      }
-      nextTick(() => {
-        const textWidth = element.clientWidth;
-        const avatarWidth = size.value || avatarElementRef.value.offsetWidth;
 
-        const scale = avatarWidth / (textWidth + 8);
-        if (avatarWidth && scale < 1) {
-          element.style.transform = `scale(${scale}) translateX(-50%)`;
-        }
-      });
+    const autoFixFontSizeHandler = () => {
+      if (!isImage.value) {
+        nextTick(() => {
+          if (!wrapperRef.value || !itemRef.value) {
+            return;
+          }
+          const textWidth = wrapperRef.value.clientWidth;
+          const avatarWidth = mergedSize.value ?? itemRef.value.offsetWidth;
+
+          const scale = avatarWidth / (textWidth + 8);
+          if (avatarWidth && scale < 1) {
+            wrapperRef.value.style.transform = `scale(${scale}) translateX(-50%)`;
+          }
+        });
+      }
     };
 
-    watch([size, slots.default], autoFixFontSizeHandler);
-    onMounted(autoFixFontSizeHandler);
+    onMounted(() => {
+      if (
+        wrapperRef.value?.firstElementChild &&
+        ['IMG', 'PICTURE'].includes(wrapperRef.value.firstElementChild.tagName)
+      ) {
+        isImage.value = true;
+      }
+      if (mergedAutoFixFontSize.value) {
+        autoFixFontSizeHandler();
+      }
+    });
+
+    watch([size, slots.default], () => {
+      if (mergedAutoFixFontSize.value) {
+        autoFixFontSizeHandler();
+      }
+    });
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-${shape.value}`,
-      {
-        [`${prefixCls}-with-trigger-icon`]: hasTriggerIcon,
-      },
+      `${prefixCls}-${mergedShape.value}`,
     ]);
+    const wrapperCls = computed(() =>
+      isImage.value ? `${prefixCls}-image` : `${prefixCls}-text`
+    );
 
     const onClick = (e: Event) => {
       emit('click', e);
     };
 
     return {
-      cls,
-      onClick,
-      wrapperStyle,
       prefixCls,
-      textElementRef,
-      avatarElementRef,
-      isImage,
-      hasTriggerIcon,
+      itemRef,
+      cls,
+      outerStyle,
+      wrapperRef,
+      wrapperCls,
       computedTriggerIconStyle,
+      isImage,
+      onClick,
     };
   },
 });
@@ -162,7 +211,7 @@ const useTriggerIconStyle = ({
   inlineStyle = {},
   triggerIconStyle = {},
 }: {
-  triggerType: TriggerType;
+  triggerType: AvatarTriggerType;
   inlineStyle?: CSSProperties;
   triggerIconStyle?: CSSProperties;
 }): CSSProperties => {
@@ -179,24 +228,5 @@ const useTriggerIconStyle = ({
     ...triggerIconStyle,
     ...addon,
   };
-};
-
-const useWrapperStyle = (size: number) => {
-  return computed(() =>
-    size
-      ? {
-          width: `${size}px`,
-          height: `${size}px`,
-          fontSize: `${size / 2}px`,
-        }
-      : {}
-  );
-};
-
-const useIsImage = (slots: Slots) => {
-  return computed(() => {
-    const child = slots.default && slots.default()[0];
-    return child && ['img', 'picture'].includes(child.type as string);
-  });
 };
 </script>
