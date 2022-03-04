@@ -4,7 +4,7 @@
       prefixCls,
       {
         [`${prefix}-icon-hover`]: prefix,
-        [`${prefixCls}-size-${size}`]: size !== 'default',
+        [`${prefixCls}-size-${size}`]: size !== 'medium',
         [`${prefixCls}-disabled`]: disabled,
       },
     ]"

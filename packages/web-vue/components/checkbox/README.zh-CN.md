@@ -14,6 +14,8 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 @import ./__demo__/all.md
 
+@import ./__demo__/custom.md
+
 
 ### `<checkbox>` Props
 
@@ -29,6 +31,11 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 |事件名|描述|参数|
 |---|---|---|
 |change|值改变时触发|value: `boolean \| Array<string \| number \| boolean>`|
+### `<checkbox>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|checkbox|自定义复选框|-|2.18.0|
 
 
 
