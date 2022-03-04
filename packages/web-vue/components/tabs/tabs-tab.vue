@@ -1,27 +1,25 @@
 <template>
   <div :class="cls" @click="handleClick">
     <span :class="`${prefixCls}-title`">
-      <slot name="title" />
+      <slot />
     </span>
-    <span
+    <icon-hover
       v-if="editable && tab.closable"
       :class="`${prefixCls}-close-btn`"
       @click.stop="handleDelete"
     >
-      <icon-hover>
-        <icon-close />
-      </icon-hover>
-    </span>
+      <icon-close />
+    </icon-hover>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
-import { TabData } from './interface';
-import { isBoolean } from '../_utils/is';
+import type { TabData } from './interface';
 
 export default defineComponent({
   name: 'TabsTab',
@@ -34,10 +32,7 @@ export default defineComponent({
       type: Object as PropType<TabData>,
       required: true,
     },
-    isActive: {
-      type: Boolean,
-      default: false,
-    },
+    active: Boolean,
     editable: Boolean,
   },
   emits: ['click', 'delete'],
@@ -59,23 +54,15 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       {
-        [`${prefixCls}-active`]: props.isActive,
+        [`${prefixCls}-active`]: props.active,
         [`${prefixCls}-closable`]: props.tab.closable,
         [`${prefixCls}-disabled`]: props.tab.disabled,
       },
     ]);
 
-    const showCloseBtn = computed(() => {
-      if (isBoolean(props.tab.closable)) {
-        return props.tab.closable;
-      }
-      return props.editable;
-    });
-
     return {
       prefixCls,
       cls,
-      showCloseBtn,
       handleClick,
       handleDelete,
     };

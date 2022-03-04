@@ -16,6 +16,8 @@ description: Organize content in the same view. You can view the content of one 
 
 @import ./__demo__/type.md
 
+@import ./__demo__/lazy.md
+
 @import ./__demo__/extra.md
 
 @import ./__demo__/editable.md
@@ -25,8 +27,8 @@ description: Organize content in the same view. You can view the content of one 
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|active-key **(v-model)**|The `key` of the currently selected label|`string`|`-`||
-|default-active-key|The `key` of the tab selected by default (uncontrolled state, select the first tab page when it is empty)|`string`|`''`||
+|active-key **(v-model)**|The `key` of the currently selected label|`string\|number`|`-`||
+|default-active-key|The `key` of the tab selected by default (uncontrolled state, select the first tab page when it is empty)|`string\|number`|`-`||
 |position|Position of the tab|`'left' \| 'right' \| 'top' \| 'bottom'`|`'top'`||
 |size|The size of the tab|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |type|The type of tab|`'line' \| 'card' \| 'card-gutter' \| 'text' \| 'rounded' \| 'capsule'`|`'line'`||
@@ -38,6 +40,7 @@ description: Organize content in the same view. You can view the content of one 
 |justify|The height of the container is fully supported, and it only takes effect in horizontal mode.|`boolean`|`false`||
 |animation|Whether to enable option content transition animation|`boolean`|`false`||
 |header-padding|Whether there is a horizontal margin on the header of the tab. Only valid for tabs with `type` equal to `line` and `text` type|`boolean`|`true`|2.10.0|
+|auto-switch|Whether to switch to a new tab after creating a tab|`boolean`|`false`|2.18.0|
 ### `<tabs>` Events
 
 |Event Name|Description|Parameters|

@@ -1,14 +1,14 @@
-import { computed, defineComponent, PropType } from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent } from 'vue';
 import IconHover from '../_components/icon-hover.vue';
 import IconLeft from '../icon/icon-left';
 import IconRight from '../icon/icon-right';
 import IconUp from '../icon/icon-up';
 import IconDown from '../icon/icon-down';
-import { Direction } from '../_utils/constant';
+import type { Direction } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 
-const BUTTON_TYPES = ['previous', 'next'];
-type ButtonTypes = typeof BUTTON_TYPES[number];
+type ButtonTypes = 'previous' | 'next';
 
 export default defineComponent({
   name: 'TabsButton',
@@ -21,17 +21,23 @@ export default defineComponent({
       type: String as PropType<Direction>,
       default: 'horizontal',
     },
-    onClick: {
-      type: Function,
-      required: true,
-    },
     disabled: {
       type: Boolean,
       default: false,
     },
+    onClick: {
+      type: Function as PropType<(type: ButtonTypes, ev: Event) => void>,
+    },
   },
-  setup(props) {
+  emits: ['click'],
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('tabs-nav-button');
+
+    const handleClick = (ev: Event) => {
+      if (!props.disabled) {
+        emit('click', props.type, ev);
+      }
+    };
 
     const renderIcon = () => {
       if (props.direction === 'horizontal') {
@@ -62,7 +68,7 @@ export default defineComponent({
     ]);
 
     return () => (
-      <div class={cls.value} onClick={() => props.onClick(props.type)}>
+      <div class={cls.value} onClick={handleClick}>
         <IconHover disabled={props.disabled}>{renderIcon()}</IconHover>
       </div>
     );

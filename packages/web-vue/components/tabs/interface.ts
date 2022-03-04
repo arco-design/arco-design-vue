@@ -1,28 +1,19 @@
 import type { RenderFunction } from 'vue';
 
-export const POSITIONS = ['left', 'right', 'top', 'bottom'] as const;
-export type Positions = typeof POSITIONS[number];
+export type TabsPosition = 'left' | 'right' | 'top' | 'bottom';
 
-export const TYPES = [
-  'line',
-  'card',
-  'card-gutter',
-  'text',
-  'rounded',
-  'capsule',
-];
-export type Types = typeof TYPES[number];
+export type TabsType =
+  | 'line'
+  | 'card'
+  | 'card-gutter'
+  | 'text'
+  | 'rounded'
+  | 'capsule';
 
 export interface TabData {
-  key: string;
-  title: string;
+  index: number;
+  key: string | number;
+  title: RenderFunction;
   disabled?: boolean;
   closable?: boolean;
 }
-
-export type TabList = Array<{
-  key: string;
-  title: RenderFunction;
-  disabled: boolean;
-  closable: boolean;
-}>;
