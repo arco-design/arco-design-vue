@@ -8,8 +8,8 @@
         [`${prefixCls}-has-help`]: Boolean($slots.help ?? help),
       },
     ]"
-    :wrap="!(labelColFlex || formCtx.autoLabelWidth)"
-    :div="formCtx.layout !== 'horizontal' || hideLabel"
+    :wrap="!(labelColFlex || autoLabelWidth)"
+    :div="layout !== 'horizontal' || hideLabel"
     v-bind="rowProps"
   >
     <ArcoCol
@@ -77,6 +77,7 @@ import {
 // @ts-ignore
 import { Schema } from 'b-validate';
 import {
+  FormContext,
   formInjectionKey,
   FormItemInfo,
   formItemInjectionKey,
@@ -92,7 +93,7 @@ import { Row as ArcoRow, Col as ArcoCol } from '../grid';
 import FormItemLabel from './form-item-label.vue';
 import FormItemMessage from './form-item-message.vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { getValueByPath } from '../_utils/get-value-by-path';
+import { getValueByPath, setValueByPath } from '../_utils/get-value-by-path';
 import { Data } from '../_utils/types';
 import { getFinalValidateMessage, getFinalValidateStatus } from './utils';
 
@@ -296,36 +297,37 @@ export default defineComponent({
   setup(props) {
     const prefixCls = getPrefixCls('form-item');
     const { field } = toRefs(props);
-    const formCtx = inject(formInjectionKey, undefined);
+    const formCtx = inject<Partial<FormContext>>(formInjectionKey, {});
+    const { autoLabelWidth, layout } = toRefs(formCtx);
 
     const mergedLabelCol = computed(() => {
-      const colProps = { ...(props.labelColProps ?? formCtx?.labelColProps) };
+      const colProps = { ...(props.labelColProps ?? formCtx.labelColProps) };
       if (props.labelColFlex) {
         colProps.flex = props.labelColFlex;
-      } else if (formCtx?.autoLabelWidth) {
-        colProps.flex = `${formCtx?.maxLabelWidth}px`;
+      } else if (formCtx.autoLabelWidth) {
+        colProps.flex = `${formCtx.maxLabelWidth}px`;
       }
       return colProps;
     });
 
     const mergedWrapperCol = computed(() => {
       const colProps = {
-        ...(props.wrapperColProps ?? formCtx?.wrapperColProps),
+        ...(props.wrapperColProps ?? formCtx.wrapperColProps),
       };
-      if (props.labelColFlex || formCtx?.autoLabelWidth) {
+      if (props.labelColFlex || formCtx.autoLabelWidth) {
         colProps.flex = 'auto';
       }
       return colProps;
     });
 
     const mergedLabelStyle = computed(
-      () => props.labelColStyle ?? formCtx?.labelColStyle
+      () => props.labelColStyle ?? formCtx.labelColStyle
     );
     const mergedWrapperStyle = computed(
-      () => props.wrapperColStyle ?? formCtx?.wrapperColStyle
+      () => props.wrapperColStyle ?? formCtx.wrapperColStyle
     );
     // 记录初始值，用于重置表单
-    const initialValue = getValueByPath(formCtx?.model, props.field);
+    const initialValue = getValueByPath(formCtx.model, props.field);
 
     const validateStatus = reactive<Record<string, ValidateStatus | ''>>({});
     const validateMessage = reactive<Record<string, string>>({});
@@ -337,7 +339,7 @@ export default defineComponent({
     const validateDisabled = ref(false);
 
     const fieldValue = computed(() =>
-      getValueByPath(formCtx?.model, props.field)
+      getValueByPath(formCtx.model, props.field)
     );
 
     const computedDisabled = computed(() =>
@@ -501,8 +503,8 @@ export default defineComponent({
     const setField = (data: FieldData) => {
       if (field.value) {
         validateDisabled.value = true;
-        if ('value' in data && formCtx?.model && field.value in formCtx.model) {
-          formCtx.model[field.value] = data.value;
+        if ('value' in data && formCtx?.model && field.value) {
+          setValueByPath(formCtx.model, field.value, data.value);
         }
 
         if (data.status || data.message) {
@@ -521,8 +523,8 @@ export default defineComponent({
     const resetField = () => {
       clearValidate();
       validateDisabled.value = true;
-      if (formCtx?.model[field.value]) {
-        formCtx.model[field.value] = initialValue;
+      if (formCtx?.model && field.value) {
+        setValueByPath(formCtx.model, field.value, initialValue);
       }
 
       nextTick(() => {
@@ -542,19 +544,19 @@ export default defineComponent({
 
     onMounted(() => {
       if (formItemInfo.field) {
-        formCtx?.addField(formItemInfo);
+        formCtx.addField?.(formItemInfo);
       }
     });
 
     onBeforeUnmount(() => {
       if (formItemInfo.field) {
-        formCtx?.removeField(formItemInfo);
+        formCtx.removeField?.(formItemInfo);
       }
     });
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-layout-${formCtx?.layout}`,
+      `${prefixCls}-layout-${formCtx.layout}`,
       {
         [`${prefixCls}-error`]: isError.value,
         [`${prefixCls}-status-${computedValidateStatus.value}`]: Boolean(
@@ -567,9 +569,9 @@ export default defineComponent({
     const labelColCls = computed(() => [
       `${prefixCls}-label-col`,
       {
-        [`${prefixCls}-label-col-left`]: formCtx?.labelAlign === 'left',
+        [`${prefixCls}-label-col-left`]: formCtx.labelAlign === 'left',
         [`${prefixCls}-label-col-flex`]:
-          formCtx?.autoLabelWidth || props.labelColFlex,
+          formCtx.autoLabelWidth || props.labelColFlex,
       },
     ]);
 
@@ -583,13 +585,14 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
-      formCtx,
       isRequired,
       isError,
       finalMessage,
       mergedLabelCol,
       mergedWrapperCol,
       labelColCls,
+      autoLabelWidth,
+      layout,
       mergedLabelStyle,
       wrapperColCls,
       mergedWrapperStyle,

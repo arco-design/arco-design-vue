@@ -1,5 +1,5 @@
 import { Data } from './types';
-import { isNull, isUndefined } from './is';
+import { isObject } from './is';
 
 export const getValueByPath = <T = any>(
   obj: Data | undefined,
@@ -9,24 +9,51 @@ export const getValueByPath = <T = any>(
     return undefined;
   }
 
-  const keyArray = path.split('.');
-  if (!obj || keyArray.length === 0) {
+  const keys = path.split('.');
+  if (keys.length === 0) {
     return undefined;
   }
 
   let temp = obj;
-  let result: T | undefined;
 
-  for (let i = 0; i < keyArray.length; i++) {
-    if (isUndefined(temp[keyArray[i]]) || isNull(temp[keyArray[i]])) {
+  for (let i = 0; i < keys.length; i++) {
+    if (!isObject(temp) || !keys[i]) {
       return undefined;
     }
-    if (i === keyArray.length - 1) {
-      result = temp[keyArray[i]];
+    if (i !== keys.length - 1) {
+      temp = temp[keys[i]];
     } else {
-      temp = temp[keyArray[i]];
+      return temp[keys[i]] as T;
     }
   }
 
-  return result;
+  return undefined;
+};
+
+export const setValueByPath = (
+  obj: Data | undefined,
+  path: string | undefined,
+  value: any
+) => {
+  if (!obj || !path) {
+    return;
+  }
+
+  const keys = path.split('.');
+  if (keys.length === 0) {
+    return;
+  }
+
+  let temp = obj;
+
+  for (let i = 0; i < keys.length; i++) {
+    if (!isObject(temp) || !keys[i]) {
+      return;
+    }
+    if (i !== keys.length - 1) {
+      temp = temp[keys[i]];
+    } else {
+      temp[keys[i]] = value;
+    }
+  }
 };
