@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.18.1
+
+`2022-03-07`
+
+### 🐛 BugFix
+
+- Fix the problem of incorrect upload progress calculation ([#786](https://github.com/arco-design/arco-design-vue/pull/786))
+- Fix the problem that the cancel button does not work during uploading ([#786](https://github.com/arco-design/arco-design-vue/pull/786))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

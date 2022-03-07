@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.18.1
+
+`2022-03-07`
+
+### 🐛 问题修复
+
+- 修复上传进度计算错误的问题 ([#786](https://github.com/arco-design/arco-design-vue/pull/786))
+- 修复上传中，取消按钮失效的问题 ([#786](https://github.com/arco-design/arco-design-vue/pull/786))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

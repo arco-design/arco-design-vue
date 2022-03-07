@@ -19,10 +19,10 @@ exports[`<tabs> demo: render [basic] correctly 1`] = `
   </div>
   <div class=\\"arco-tabs-content\\">
     <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
-      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+      <div class=\\"arco-tabs-content-item\\">
         <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1 </div>
       </div>
-      <div class=\\"arco-tabs-content-item\\">
+      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
         <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 2 </div>
       </div>
       <div class=\\"arco-tabs-content-item\\">
@@ -155,11 +155,11 @@ exports[`<tabs> demo: render [lazy] correctly 1`] = `
   </div>
   <div class=\\"arco-tabs-content\\">
     <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
-      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
-        <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1 </div>
-      </div>
       <div class=\\"arco-tabs-content-item\\">
         <!--v-if-->
+      </div>
+      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+        <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 2 </div>
       </div>
       <div class=\\"arco-tabs-content-item\\">
         <!--v-if-->

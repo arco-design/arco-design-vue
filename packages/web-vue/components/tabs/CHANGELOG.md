@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.1
+
+`2022-03-07`
+
+### 🐛 BugFix
+
+- Fix the problem that activeKey modification will be triggered during initialization ([#787](https://github.com/arco-design/arco-design-vue/pull/787))
+
+
 ## 2.18.0
 
 `2022-03-04`

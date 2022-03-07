@@ -19,6 +19,7 @@ import type { TabData, TabsType } from './interface';
 import IconHover from '../_components/icon-hover.vue';
 import IconPlus from '../icon/icon-plus';
 import ResizeObserver from '../_components/resize-observer';
+import { isUndefined } from '../_utils/is';
 
 export default defineComponent({
   name: 'TabsNav',
@@ -76,7 +77,7 @@ export default defineComponent({
     const listRef = ref<HTMLElement>();
     const tabsRef = ref<Record<string | number, HTMLElement>>({});
     const activeTabRef = computed(() => {
-      if (activeKey.value) {
+      if (!isUndefined(activeKey.value)) {
         return tabsRef.value[activeKey.value];
       }
       return undefined;
