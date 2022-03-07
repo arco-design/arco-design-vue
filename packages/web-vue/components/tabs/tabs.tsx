@@ -7,7 +7,7 @@ import {
   reactive,
   ref,
   toRefs,
-  watch,
+  // watch,
 } from 'vue';
 import type { Direction, Size } from '../_utils/constant';
 import type { TabsPosition, TabsType, TabData } from './interface';
@@ -251,13 +251,13 @@ export default defineComponent({
       emit('delete', key, ev);
     };
 
-    watch(tabKeys, (cur, pre) => {
-      if (computedActiveKey.value && !cur.includes(computedActiveKey.value)) {
-        const preIndex = pre.indexOf(computedActiveKey.value);
-        const newKey = cur[preIndex > 1 ? preIndex - 1 : 0];
-        handleChange(newKey);
-      }
-    });
+    // watch(tabKeys, (cur, pre) => {
+    //   if (computedActiveKey.value && !cur.includes(computedActiveKey.value)) {
+    //     const preIndex = pre.indexOf(computedActiveKey.value);
+    //     const newKey = cur[preIndex > 1 ? preIndex - 1 : 0];
+    //     handleChange(newKey);
+    //   }
+    // });
 
     const renderContent = () => {
       return (
