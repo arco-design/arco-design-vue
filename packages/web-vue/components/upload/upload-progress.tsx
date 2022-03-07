@@ -68,7 +68,10 @@ export default defineComponent({
       return (
         uploadCtx?.showCancelButton && (
           <Tooltip content={t('upload.cancel')}>
-            <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-cancel`]}>
+            <span
+              class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-cancel`]}
+              onClick={() => uploadCtx?.onAbort(props.file)}
+            >
               {uploadCtx?.customIcon?.cancelIcon?.() || <IconPause />}
             </span>
           </Tooltip>
