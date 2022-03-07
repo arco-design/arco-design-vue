@@ -1,3 +1,4 @@
+import NP from 'number-precision';
 import {
   FileItem,
   FileStatus,
@@ -80,7 +81,7 @@ export const uploadRequest = ({
   }
 
   xhr.upload.onprogress = (e: ProgressEvent) => {
-    const percent = e.total > 0 ? Math.round(e.loaded / e.total) : 0;
+    const percent = e.total > 0 ? NP.round(e.loaded / e.total, 2) : 0;
     onProgress(percent, e);
   };
   xhr.onerror = function error(e) {
