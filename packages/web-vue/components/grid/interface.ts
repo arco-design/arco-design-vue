@@ -49,6 +49,15 @@ export interface GridItemProps {
 
 export type GridItemData = GridItemProps;
 
-/**
- * @version 2.18.0
- */
+export interface ColProps {
+  span: number;
+  offset: number | undefined;
+  order: number | undefined;
+  xs: number | { [key: string]: any } | undefined;
+  sm: number | { [key: string]: any } | undefined;
+  md: number | { [key: string]: any } | undefined;
+  lg: number | { [key: string]: any } | undefined;
+  xl: number | { [key: string]: any } | undefined;
+  xxl: number | { [key: string]: any } | undefined;
+  flex: number | string | 'initial' | 'auto' | 'none' | undefined;
+}

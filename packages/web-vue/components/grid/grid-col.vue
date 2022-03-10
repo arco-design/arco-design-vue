@@ -1,5 +1,5 @@
 <template>
-  <div :class="classNames" :style="styles">
+  <div v-if="visible" :class="classNames" :style="styles">
     <slot />
   </div>
 </template>
@@ -8,8 +8,12 @@
 import { computed, defineComponent, inject, PropType } from 'vue';
 import { isNumber, isObject, isString } from '../_utils/is';
 import { getPrefixCls } from '../_utils/global-config';
-import { FlexType } from './interface';
+import { ColProps, FlexType } from './interface';
 import { RowContextInjectionKey } from './context';
+import { useResponsiveState } from './hook/use-responsive-state';
+import { useResponsiveValue } from './hook/use-responsive-value';
+import pick from '../_utils/pick';
+import { responsiveArray } from '../_utils/responsive-observe';
 
 function getAllowableFlexValue(flexValue: FlexType) {
   if (
@@ -104,7 +108,7 @@ export default defineComponent({
       >,
     },
   },
-  setup(props) {
+  setup(props: ColProps) {
     const prefixCls = getPrefixCls('col');
     const rowContext = inject(RowContextInjectionKey, {});
     const flexValue = computed(() => getAllowableFlexValue(props.flex));
@@ -169,7 +173,18 @@ export default defineComponent({
       flexValue.value ? { flex: flexValue.value } : {}
     );
 
+    const responsiveConfig = computed(() => pick(props, responsiveArray));
+    const propSpan = useResponsiveValue(
+      computed(() => ({
+        val: props.span,
+        key: 'span',
+        ...responsiveConfig.value,
+      }))
+    );
+    const span = useResponsiveState(propSpan, 24, true);
+
     return {
+      visible: computed(() => !!span.value),
       classNames,
       styles: computed(() => ({ ...paddingStyles.value, ...flexStyles.value })),
     };
