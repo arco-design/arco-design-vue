@@ -109,16 +109,20 @@ export function getCheckedStateByInitKeys(options: {
     initCheckedKeys.forEach((key) => {
       if (!checkedKeysSet.has(key)) {
         const node = key2TreeNode[key];
-        const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck({
-          node,
-          checkedKeys: [...checkedKeysSet],
-          indeterminateKeys,
-          checked: true,
-          checkStrictly,
-        });
+        if (node) {
+          const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck(
+            {
+              node,
+              checkedKeys: [...checkedKeysSet],
+              indeterminateKeys,
+              checked: true,
+              checkStrictly,
+            }
+          );
 
-        checkedKeysSet = new Set(newCheckedKeys);
-        indeterminateKeys = newIndeterminateKeys;
+          checkedKeysSet = new Set(newCheckedKeys);
+          indeterminateKeys = newIndeterminateKeys;
+        }
       }
     });
   } else {

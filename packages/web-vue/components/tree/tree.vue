@@ -507,15 +507,17 @@ export default defineComponent({
       if (checkedStrategy.value === 'parent') {
         publicCheckedKeys = newCheckedKeys.filter((_key) => {
           const item = key2TreeNode.value[_key];
-          return !(
-            !isUndefined(item.parentKey) &&
-            newCheckedKeys.includes(item.parentKey)
+          return (
+            item &&
+            !(
+              !isUndefined(item.parentKey) &&
+              newCheckedKeys.includes(item.parentKey)
+            )
           );
         });
       } else if (checkedStrategy.value === 'child') {
         publicCheckedKeys = newCheckedKeys.filter((_key) => {
-          const item = key2TreeNode.value[_key];
-          return !item.children?.length;
+          return !key2TreeNode.value[_key]?.children?.length;
         });
       }
 
