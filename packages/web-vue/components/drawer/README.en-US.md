@@ -42,6 +42,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |footer|Whether to display the bottom content|`boolean`|`true`|2.11.0|
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
+|hide-cancel|Whether to hide the cancel button|`boolean`|`false`|2.19.0|
 ### `<drawer>` Events
 
 |Event Name|Description|Parameters|
