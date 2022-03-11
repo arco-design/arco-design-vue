@@ -20,6 +20,12 @@ description: Open a floating layer on the current page to carry related operatio
 
 @import ./__demo__/custom.md
 
+@import ./__demo__/form.md
+
+@import ./__demo__/draggable.md
+
+@import ./__demo__/fullscreen.md
+
 
 ### `<modal>` Props
 
@@ -47,9 +53,11 @@ description: Open a floating layer on the current page to carry related operatio
 |mask-style|Mask style|`CSSProperties`|`-`||
 |modal-class|The classname of the modal|`string \| any[]`|`-`||
 |modal-style|Modal style|`CSSProperties`|`-`||
-|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
-|on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
+|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`|2.7.0|
+|on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|2.7.0|
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
+|draggable|Whether to support drag|`boolean`|`false`|2.19.0|
+|fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|version|
@@ -98,10 +106,16 @@ The global methods provided by Modal can be used in the following three ways:
 |maskStyle|Mask style|`CSSProperties`|`-`||
 |alignCenter|Whether the dialog box is displayed in the center|`boolean`|`false`||
 |escToClose|Whether to support the ESC key to close the dialog|`boolean`|`false`|2.15.0|
+|draggable|Whether to support drag|`boolean`|`false`|2.19.0|
+|fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 |onOk|Callback function for clicking the OK button|`() => void`|`-`||
 |onCancel|Callback function for clicking the Cancel button|`() => void`|`-`||
+|onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`|2.7.0|
+|onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|2.7.0|
 |onOpen|Triggered after the modal is opened (the animation ends)|`() => void`|`-`||
 |onClose|Triggered after the modal is closed (the animation ends)|`() => void`|`-`||
+|onBeforeOpen|Triggered before dialog is opened|`() => void`|`-`|2.16.0|
+|onBeforeClose|Triggered before dialog is closed|`() => void`|`-`|2.16.0|
 
 
 
@@ -117,11 +131,11 @@ The global methods provided by Modal can be used in the following three ways:
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|open|Open modal|`(config: ModalConfig) => ModalReturn`|`-`|
-|confirm|Open modal (simple mode)|`(config: ModalConfig) => ModalReturn`|`-`|
-|info|Open info modal|`(config: ModalConfig) => ModalReturn`|`-`|
-|success|Open success modal|`(config: ModalConfig) => ModalReturn`|`-`|
-|warning|Open warning modal|`(config: ModalConfig) => ModalReturn`|`-`|
-|error|Open error modal|`(config: ModalConfig) => ModalReturn`|`-`|
+|open|Open modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+|confirm|Open modal (simple mode)|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+|info|Open info modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+|success|Open success modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+|warning|Open warning modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+|error|Open error modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 
 

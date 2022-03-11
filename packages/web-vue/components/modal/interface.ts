@@ -1,4 +1,4 @@
-import { CSSProperties } from 'vue';
+import { AppContext, CSSProperties } from 'vue';
 import { RenderContent } from '../_utils/types';
 
 export interface ModalConfig {
@@ -84,6 +84,18 @@ export interface ModalConfig {
    */
   escToClose?: boolean;
   /**
+   * @zh 是否支持拖动
+   * @en Whether to support drag
+   * @version 2.19.0
+   */
+  draggable?: boolean;
+  /**
+   * @zh 是否开启全屏
+   * @en Whether to enable full screen
+   * @version 2.19.0
+   */
+  fullscreen?: boolean;
+  /**
    * @zh 点击确定按钮的回调函数
    * @en Callback function for clicking the OK button
    */
@@ -94,6 +106,18 @@ export interface ModalConfig {
    */
   onCancel?: () => void;
   /**
+   * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。
+   * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.
+   * @version 2.7.0
+   */
+  onBeforeOk?: (done: (closed: boolean) => void) => void | boolean;
+  /**
+   * @zh 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。
+   * @en The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.
+   * @version 2.7.0
+   */
+  onBeforeCancel?: () => boolean;
+  /**
    * @zh 对话框打开后（动画结束）触发
    * @en Triggered after the modal is opened (the animation ends)
    */
@@ -103,6 +127,18 @@ export interface ModalConfig {
    * @en Triggered after the modal is closed (the animation ends)
    */
   onClose?: () => void;
+  /**
+   * @zh 对话框打开前触发
+   * @en Triggered before dialog is opened
+   * @version 2.16.0
+   */
+  onBeforeOpen?: () => void;
+  /**
+   * @zh 对话框关闭前触发
+   * @en Triggered before dialog is closed
+   * @version 2.16.0
+   */
+  onBeforeClose?: () => void;
 }
 
 export interface ModalReturn {
@@ -118,30 +154,30 @@ export interface ModalMethod {
    * @zh 打开对话框
    * @en Open modal
    */
-  open: (config: ModalConfig) => ModalReturn;
+  open: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
   /**
    * @zh 打开对话框（简单模式）
    * @en Open modal (simple mode)
    */
-  confirm: (config: ModalConfig) => ModalReturn;
+  confirm: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
   /**
    * @zh 打开信息对话框
    * @en Open info modal
    */
-  info: (config: ModalConfig) => ModalReturn;
+  info: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
   /**
    * @zh 打开成功对话框
    * @en Open success modal
    */
-  success: (config: ModalConfig) => ModalReturn;
+  success: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
   /**
    * @zh 打开警告对话框
    * @en Open warning modal
    */
-  warning: (config: ModalConfig) => ModalReturn;
+  warning: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
   /**
    * @zh 打开错误对话框
    * @en Open error modal
    */
-  error: (config: ModalConfig) => ModalReturn;
+  error: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
 }

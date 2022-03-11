@@ -29,6 +29,12 @@ description: Open a floating layer on the current page to carry related operatio
 
 @import ./__demo__/custom.md
 
+@import ./__demo__/form.md
+
+@import ./__demo__/draggable.md
+
+@import ./__demo__/fullscreen.md
+
 %%API(modal.vue)%%
 
 ## zh-CN
