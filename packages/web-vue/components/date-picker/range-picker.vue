@@ -3,7 +3,7 @@
     v-if="!hideTrigger"
     trigger="click"
     :click-to-close="false"
-    :popup-translate="[0, 4]"
+    :popup-offset="4"
     v-bind="triggerProps"
     :unmount-on-close="unmountOnClose"
     :position="position"
