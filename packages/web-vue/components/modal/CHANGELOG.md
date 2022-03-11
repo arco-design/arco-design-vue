@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 Feature
+
+- Add `draggable` property to support draggable ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+- Added `fullscreen` property to support full screen display ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

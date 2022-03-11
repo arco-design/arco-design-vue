@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 新增功能
+
+- 增加 `draggable` 属性，支持可拖动 ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+- 增加 `fullscreen` 属性，支持全屏展示 ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

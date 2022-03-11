@@ -45,8 +45,8 @@ Shows how to use form validation.
         <a-option value="section three">Section Three</a-option>
       </a-select>
     </a-form-item>
-    <a-form-item field="province" label="Province">
-      <a-cascader v-model="form.province" :options="options" placeholder="Please select ..." />
+    <a-form-item field="province" label="Province" :rules="[{required:true,message:'province is required'}]">
+      <a-cascader v-model="form.province" :options="options" placeholder="Please select ..." allow-clear />
     </a-form-item>
     <a-form-item field="options" label="Options"
                  :rules="[{type:'array',minLength:2,message:'must select greater than two options'}]"

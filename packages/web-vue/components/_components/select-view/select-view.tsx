@@ -15,6 +15,7 @@ import IconExpand from '../../icon/icon-expand';
 import IconSearch from '../../icon/icon-search';
 import { TagData } from '../../input-tag/interface';
 import { useFormItem } from '../../_hooks/use-form-item';
+import { useSize } from '../../_hooks/use-size';
 
 export default defineComponent({
   name: 'SelectView',
@@ -78,8 +79,20 @@ export default defineComponent({
   },
   emits: ['remove', 'clear', 'focus', 'blur'],
   setup(props, { emit, slots }) {
+    const { size, disabled, error } = toRefs(props);
     const prefixCls = getPrefixCls('select-view');
-    const { feedback, eventHandlers } = useFormItem();
+    const {
+      feedback,
+      eventHandlers,
+      mergedDisabled,
+      mergedSize: _mergedSize,
+      mergedError,
+    } = useFormItem({
+      size,
+      disabled,
+      error,
+    });
+    const { mergedSize } = useSize(_mergedSize);
 
     const { opened } = toRefs(props);
 
@@ -180,9 +193,9 @@ export default defineComponent({
             formatTag={props.formatLabel}
             focused={props.opened}
             placeholder={props.placeholder}
-            disabled={props.disabled}
-            size={props.size}
-            error={props.error}
+            disabled={mergedDisabled.value}
+            size={mergedSize.value}
+            error={mergedError.value}
             maxTagCount={props.maxTagCount}
             disabledInput={!props.allowSearch && !props.allowCreate}
             retainInputValue
@@ -207,9 +220,9 @@ export default defineComponent({
           inputValue={props.inputValue}
           focused={props.opened}
           placeholder={props.placeholder}
-          disabled={props.disabled}
-          size={props.size}
-          error={props.error}
+          disabled={mergedDisabled.value}
+          size={mergedSize.value}
+          error={mergedError.value}
           formatLabel={props.formatLabel}
           enabledInput={enabledInput.value}
           uninjectFormItemContext

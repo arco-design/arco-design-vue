@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 新增功能
+
+- 支持设置半选节点 ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+- 实例上新增可调用的方法:  `getCheckedNodes` `getSelectedNodes` `getExpandedNodes` `getHalfCheckedNodes` ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+
+### 🐛 问题修复
+
+- 修复当节点找不到的时候组件渲染出错的问题 ([#800](https://github.com/arco-design/arco-design-vue/pull/800))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

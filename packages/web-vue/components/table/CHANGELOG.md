@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### ⚠️ Important Attention
+
+- Modify the outgoing data of the sorting function sorter to enhance the usage ([#810](https://github.com/arco-design/arco-design-vue/pull/810))
+
+
 ## 2.18.0
 
 `2022-03-04`

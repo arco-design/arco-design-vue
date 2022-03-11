@@ -36,7 +36,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`|2.12.0|
 |width|The width of the drawer (only available when placement is right, left)|`number\|string`|`250`||
 |height|The height of the drawer (only available when placement is top, bottom)|`number\|string`|`250`||
-|popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`'body'`||
+|popup-container|Mount container for popup|`string \| HTMLElement`|`'body'`||
 |drawer-style|Drawer style|`CSSProperties`|`-`||
 |on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||

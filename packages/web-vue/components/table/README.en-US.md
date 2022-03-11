@@ -150,7 +150,7 @@ description: It is used for data collection, display, analysis and processing, a
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |sortDirections|Supported sort direction|`('ascend' \| 'descend')[]`|`-`|
-|sorter|Sorting function. Set to `true` to turn off internal sorting.|`((a: any, b: any) => number) \| boolean`|`-`|
+|sorter|Sorting function. Set to `true` to turn off internal sorting. Version 2.19.0 modifies outgoing data.|`((        a: TableData,        b: TableData,        extra: { dataIndex: string; direction: 'ascend' \| 'descend' }      ) => number)    \| boolean`|`-`|
 |sortOrder|Sort direction|`'ascend' \| 'descend' \| ''`|`-`|
 |defaultSortOrder|Default sort direction (uncontrolled mode)|`'ascend' \| 'descend' \| ''`|`-`|
 

@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### ⚠️ Important Attention
+
+- **table:** Modify the outgoing data of the sorting function sorter to enhance the usage ([#810](https://github.com/arco-design/arco-design-vue/pull/810))
+
+### 💎 Optimization
+
+- `modal`, `message`, `notifaction` component function calls add support for appContext, see documentation for details ([#804](https://github.com/arco-design/arco-design-vue/pull/804))
+
+### 🆕 Feature
+
+- **tree:** support for setting half-checked nodes ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+- **tree:** add some methods in instance: `getCheckedNodes` `getSelectedNodes` `getExpandedNodes` `getHalfCheckedNodes` ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+- **drawer:** Added `hide-cancel` attribute ([#803](https://github.com/arco-design/arco-design-vue/pull/803))
+- **modal:** Add `draggable` property to support draggable ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+- **modal:** Added `fullscreen` property to support full screen display ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+- **grid:** `a-col` will be hidden when colspan is 0 ([#797](https://github.com/arco-design/arco-design-vue/pull/797))
+
+### 🐛 BugFix
+
+- **descriptions:** Fix the problem of error when `data` is empty data ([#812](https://github.com/arco-design/arco-design-vue/pull/812))
+- **form:** Fix the problem that the `field` property of `form-item` is invalid when there is an array in it ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+- **form:** Fixed the issue that some component functions are still available after `disabled` is enabled ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+- **tree:** Fix the problem of component rendering error when the node cannot be found ([#800](https://github.com/arco-design/arco-design-vue/pull/800))
+- **date-picker:** Fix the problem that the offset of the range selector popup layer is wrong ([#796](https://github.com/arco-design/arco-design-vue/pull/796))
+
+### 💅 Style
+
+- **form:** Fix form-item content can exceed container size ([#808](https://github.com/arco-design/arco-design-vue/pull/808))
+
+
 ## 2.18.1
 
 `2022-03-07`

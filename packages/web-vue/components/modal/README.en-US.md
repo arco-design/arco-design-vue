@@ -85,6 +85,16 @@ The global methods provided by Modal can be used in the following three ways:
 2. In the Composition API, call through getCurrentInstance().appContext.config.globalProperties.$modal
 3. Import Modal, call through Modal itself
 
+When used by import, the component has no way to obtain the current Vue Context. Content injected into the AppContext such as i18n or route cannot be used internally. You need to manually pass in the AppContext when calling, or specify the AppContext globally for the component.
+
+```ts
+import { createApp } from 'vue'
+import { Modal } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Modal._context = app._context;
+````
+
 
 ### ModalConfig
 

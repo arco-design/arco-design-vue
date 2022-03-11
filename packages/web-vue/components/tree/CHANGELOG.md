@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 Feature
+
+- support for setting half-checked nodes ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+- add some methods in instance: `getCheckedNodes` `getSelectedNodes` `getExpandedNodes` `getHalfCheckedNodes` ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+
+### 🐛 BugFix
+
+- Fix the problem of component rendering error when the node cannot be found ([#800](https://github.com/arco-design/arco-design-vue/pull/800))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

@@ -25,6 +25,16 @@ The global methods provided by Notification can be used in the following three w
 2. In the Composition API, call getCurrentInstance().appContext.config.globalProperties.$notification
 3. Import Notification, call through Notification itself
 
+When used by import, the component has no way to obtain the current Vue Context. Content injected into the AppContext such as i18n or route cannot be used internally. You need to manually pass in the AppContext when calling, or specify the AppContext globally for the component.
+
+```ts
+import { createApp } from 'vue'
+import { Notification } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Notification._context = app._context;
+````
+
 
 ### NotificationMethod
 

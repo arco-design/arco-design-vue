@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### ⚠️ 重点注意
+
+- **table:** 修改排序函数 sorter 的传出数据，增强使用 ([#810](https://github.com/arco-design/arco-design-vue/pull/810))
+
+### 💎 功能优化
+
+- `modal`, `message`, `notifaction` 组件的函数式调用增加 appContext 的支持，详情请参见文档 ([#804](https://github.com/arco-design/arco-design-vue/pull/804))
+
+### 🆕 新增功能
+
+- **tree:** 支持设置半选节点 ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+- **tree:** 实例上新增可调用的方法:  `getCheckedNodes` `getSelectedNodes` `getExpandedNodes` `getHalfCheckedNodes` ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+- **drawer:** 增加 `hide-cancel` 属性 ([#803](https://github.com/arco-design/arco-design-vue/pull/803))
+- **modal:** 增加 `draggable` 属性，支持可拖动 ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+- **modal:** 增加 `fullscreen` 属性，支持全屏展示 ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+- **grid:** 当列跨度为0的时候`a-col`将被隐藏 ([#797](https://github.com/arco-design/arco-design-vue/pull/797))
+
+### 🐛 问题修复
+
+- **descriptions:** 修复 `data` 为空数据时报错的问题 ([#812](https://github.com/arco-design/arco-design-vue/pull/812))
+- **form:** 修复 `form-item` 的 `field` 属性中存在数组时失效的问题 ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+- **form:** 修复 `disabled` 开启后，部分组件功能仍可用问题 ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+- **tree:** 修复当节点找不到的时候组件渲染出错的问题 ([#800](https://github.com/arco-design/arco-design-vue/pull/800))
+- **date-picker:** 修复范围选择器弹出层的偏移量错误的问题 ([#796](https://github.com/arco-design/arco-design-vue/pull/796))
+
+### 💅 样式更新
+
+- **form:** 修复 form-item 内容可以超出容器大小的问题 ([#808](https://github.com/arco-design/arco-design-vue/pull/808))
+
+
 ## 2.18.1
 
 `2022-03-07`

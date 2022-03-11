@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 Feature
+
+- Added `hide-cancel` attribute ([#803](https://github.com/arco-design/arco-design-vue/pull/803))
+
+
 ## 2.15.0
 
 `2022-01-14`

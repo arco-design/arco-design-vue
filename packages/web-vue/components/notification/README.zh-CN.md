@@ -23,6 +23,16 @@ Notification提供的全局方法，可以通过以下三种方法使用：
 2. 在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$notification调用
 3. 导入Notification，通过Notification本身调用
 
+当通过 import 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext
+
+```ts
+import { createApp } from 'vue'
+import { Notification } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Notification._context = app._context;
+```
+
 
 ### NotificationMethod
 

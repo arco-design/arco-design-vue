@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🐛 BugFix
+
+- Fix the problem that the offset of the range selector popup layer is wrong ([#796](https://github.com/arco-design/arco-design-vue/pull/796))
+
+
 ## 2.18.0
 
 `2022-03-04`

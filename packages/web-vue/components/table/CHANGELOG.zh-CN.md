@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### ⚠️ 重点注意
+
+- 修改排序函数 sorter 的传出数据，增强使用 ([#810](https://github.com/arco-design/arco-design-vue/pull/810))
+
+
 ## 2.18.0
 
 `2022-03-04`

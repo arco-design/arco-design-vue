@@ -148,7 +148,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |sortDirections|支持的排序方向|`('ascend' \| 'descend')[]`|`-`|
-|sorter|排序函数。设置为 `true` 可关闭内部排序。|`((a: any, b: any) => number) \| boolean`|`-`|
+|sorter|排序函数。设置为 `true` 可关闭内部排序。2.19.0 版本修改传出数据。|`((        a: TableData,        b: TableData,        extra: { dataIndex: string; direction: 'ascend' \| 'descend' }      ) => number)    \| boolean`|`-`|
 |sortOrder|排序方向|`'ascend' \| 'descend' \| ''`|`-`|
 |defaultSortOrder|默认排序方向（非受控模式）|`'ascend' \| 'descend' \| ''`|`-`|
 

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 Feature
+
+- `a-col` will be hidden when colspan is 0 ([#797](https://github.com/arco-design/arco-design-vue/pull/797))
+
+
 ## 2.18.0-beta.1
 
 `2022-02-18`

@@ -4,7 +4,7 @@
     trigger="click"
     :popup-visible="computedPopupVisible"
     position="bl"
-    :disabled="disabled"
+    :disabled="mergedDisabled"
     :popup-offset="4"
     :auto-fit-popup-width="showSearchPanel"
     :popup-container="popupContainer"
@@ -15,7 +15,7 @@
     <select-view
       :model-value="selectViewValue"
       :input-value="computedInputValue"
-      :disabled="disabled"
+      :disabled="mergedDisabled"
       :error="error"
       :multiple="multiple"
       :allow-clear="allowClear"
@@ -102,6 +102,7 @@ import { CODE, getKeyDownHandler } from '../_utils/keyboard';
 import { cascaderInjectionKey } from './context';
 import { Size } from '../_utils/constant';
 import { debounce } from '../_utils/debounce';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Cascader',
@@ -447,11 +448,19 @@ export default defineComponent({
    * @version 2.18.0
    */
   setup(props, { emit, slots }) {
-    const { options, checkStrictly, loadMore, formatLabel, modelValue } =
-      toRefs(props);
+    const {
+      options,
+      checkStrictly,
+      loadMore,
+      formatLabel,
+      modelValue,
+      disabled,
+    } = toRefs(props);
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
     const _popupVisible = ref(props.defaultPopupVisible);
+
+    const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
 
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
@@ -559,6 +568,7 @@ export default defineComponent({
       _value.value = value;
       emit('update:modelValue', value);
       emit('change', value);
+      eventHandlers.value?.onChange?.();
     };
 
     const handlePopupVisibleChange = (visible: boolean): void => {
@@ -802,6 +812,7 @@ export default defineComponent({
       handleFocus,
       handleBlur,
       handleRemove,
+      mergedDisabled,
       handleKeyDown,
       totalLevel,
     };

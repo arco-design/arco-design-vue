@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.19.0
+
+`2022-03-11`
+
+### 🐛 BugFix
+
+- Fix the problem of error when `data` is empty data ([#812](https://github.com/arco-design/arco-design-vue/pull/812))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`
