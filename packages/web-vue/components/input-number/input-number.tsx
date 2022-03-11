@@ -256,7 +256,7 @@ export default defineComponent({
       inputRef.value?.focus();
 
       if (
-        props.disabled ||
+        mergedDisabled.value ||
         (method === 'plus' && isMax.value) ||
         (method === 'minus' && isMin.value)
       ) {
@@ -340,11 +340,11 @@ export default defineComponent({
               `${prefixCls}-step-button`,
               {
                 [`${prefixCls}-step-button-disabled`]:
-                  props.disabled || isMax.value,
+                  mergedDisabled.value || isMax.value,
               },
             ]}
             type="button"
-            disabled={props.disabled || isMax.value}
+            disabled={mergedDisabled.value || isMax.value}
             onMousedown={(e) => handleStepButton(e, 'plus', true)}
             onMouseup={clearRepeatTimer}
             onMouseleave={clearRepeatTimer}
@@ -356,11 +356,11 @@ export default defineComponent({
               `${prefixCls}-step-button`,
               {
                 [`${prefixCls}-step-button-disabled`]:
-                  props.disabled || isMin.value,
+                  mergedDisabled.value || isMin.value,
               },
             ]}
             type="button"
-            disabled={props.disabled || isMin.value}
+            disabled={mergedDisabled.value || isMin.value}
             onMousedown={(e) => handleStepButton(e, 'minus', true)}
             onMouseup={clearRepeatTimer}
             onMouseleave={clearRepeatTimer}

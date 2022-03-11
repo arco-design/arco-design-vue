@@ -8,6 +8,7 @@ import {
   onMounted,
   watch,
   nextTick,
+  toRef,
 } from 'vue';
 import ArcoTextarea from '../textarea';
 import ArcoInput from '../input';
@@ -28,6 +29,7 @@ import ResizeObserver from '../_components/resize-observer';
 import { isFunction, isNull, isUndefined } from '../_utils/is';
 import { useSelect } from '../select/hooks/use-select';
 import { getKeyFromValue } from '../select/utils';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Mention',
@@ -79,6 +81,14 @@ export default defineComponent({
       type: String as PropType<'input' | 'textarea'>,
       default: 'input',
     },
+    /**
+     * @zh 是否禁用
+     * @en Whether to disable
+     */
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
@@ -119,6 +129,10 @@ export default defineComponent({
     const prefixCls = getPrefixCls('mention');
 
     let styleDeclaration: CSSStyleDeclaration;
+
+    const { mergedDisabled, eventHandlers } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
 
     const { data, modelValue } = toRefs(props);
     const dropdownRef = ref();
@@ -180,6 +194,7 @@ export default defineComponent({
       _value.value = value;
       emit('update:modelValue', value);
       emit('change', value);
+      eventHandlers.value?.onChange?.();
     };
 
     const _popupVisible = ref(false);
@@ -223,6 +238,7 @@ export default defineComponent({
       emit('update:modelValue', value);
       emit('change', nextValue);
       resetMeasureInfo();
+      eventHandlers.value?.onChange?.();
     };
 
     const { propOptionInfos, optionInfoMap, validOptionInfos, handleKeyDown } =
@@ -351,6 +367,7 @@ export default defineComponent({
           popupVisible={computedPopupVisible.value}
           clickToClose={false}
           autoFitPopupWidth
+          disabled={mergedDisabled.value}
           onPopupVisibleChange={handlePopupVisibleChange}
         >
           <ArcoInput
@@ -358,6 +375,7 @@ export default defineComponent({
             {...attrs}
             ref={inputRef}
             modelValue={computedValue.value}
+            disabled={mergedDisabled.value}
             onInput={handleInput}
             onKeydown={handleKeyDown}
           />

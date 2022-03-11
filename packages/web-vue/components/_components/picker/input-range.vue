@@ -31,7 +31,7 @@
     </div>
     <div :class="`${prefixCls}-suffix`">
       <IconHover
-        v-if="allowClear && !disabled && value.length === 2"
+        v-if="allowClear && !mergedDisabled && value.length === 2"
         :prefix="prefixCls"
         :class="`${prefixCls}-clear-icon`"
         @click="onClear"
@@ -127,8 +127,6 @@ export default defineComponent({
       mergedSize: _mergedSize,
       mergedDisabled,
       mergedError,
-      feedback,
-      eventHandlers,
     } = useFormItem({ size, error });
     const { mergedSize } = useSize(_mergedSize);
 
@@ -190,7 +188,6 @@ export default defineComponent({
     function onChange(e: Event) {
       e.stopPropagation();
       emit('change', e);
-      eventHandlers.value?.onChange?.(e);
     }
 
     function onPressEnter() {
@@ -212,6 +209,7 @@ export default defineComponent({
       refInput1,
       disabled0,
       disabled1,
+      mergedDisabled,
       getDisabled,
       getInputWrapClassName,
       displayValue0,

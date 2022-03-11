@@ -132,7 +132,7 @@ export default defineComponent({
   setup(props, { emit, attrs, slots }) {
     const { modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('auto-complete');
-    const { mergedDisabled } = useFormItem({
+    const { mergedDisabled, eventHandlers } = useFormItem({
       disabled: toRef(props, 'disabled'),
     });
 
@@ -183,6 +183,7 @@ export default defineComponent({
       _value.value = value;
       emit('update:modelValue', value);
       emit('change', value);
+      eventHandlers.value?.onChange?.();
     };
 
     // Dropdown事件

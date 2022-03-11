@@ -1,5 +1,5 @@
 import { Data } from './types';
-import { isObject } from './is';
+import { isArray, isObject } from './is';
 
 export const getValueByPath = <T = any>(
   obj: Data | undefined,
@@ -17,7 +17,7 @@ export const getValueByPath = <T = any>(
   let temp = obj;
 
   for (let i = 0; i < keys.length; i++) {
-    if (!isObject(temp) || !keys[i]) {
+    if ((!isObject(temp) && !isArray(temp)) || !keys[i]) {
       return undefined;
     }
     if (i !== keys.length - 1) {
@@ -47,7 +47,7 @@ export const setValueByPath = (
   let temp = obj;
 
   for (let i = 0; i < keys.length; i++) {
-    if (!isObject(temp) || !keys[i]) {
+    if ((!isObject(temp) && !isArray(temp)) || !keys[i]) {
       return;
     }
     if (i !== keys.length - 1) {

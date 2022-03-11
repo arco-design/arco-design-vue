@@ -101,6 +101,7 @@ import useProvideDatePickerTransform from './hooks/use-provide-datepicker-transf
 import { EmitType } from '../_utils/types';
 import { getReturnRangeValue } from './hooks/use-value-format';
 import { Size } from '../_utils/constant';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'RangePicker',
@@ -428,7 +429,19 @@ export default defineComponent({
       pickerValue,
       defaultPickerValue,
       valueFormat,
+      size,
+      error,
     } = toRefs(props);
+
+    const {
+      mergedSize,
+      mergedDisabled: formDisabled,
+      mergedError,
+      eventHandlers,
+    } = useFormItem({
+      size,
+      error,
+    });
 
     const datePickerT = useProvideDatePickerTransform(
       reactive({
@@ -467,9 +480,11 @@ export default defineComponent({
     const disabledArray = computed(() => {
       const disabled0 =
         disabled.value === true ||
+        formDisabled.value ||
         (isArray(disabled.value) && disabled.value[0] === true);
       const disabled1 =
         disabled.value === true ||
+        formDisabled.value ||
         (isArray(disabled.value) && disabled.value[1] === true);
       return [disabled0, disabled1];
     });
@@ -634,6 +649,7 @@ export default defineComponent({
       if (isValueChange(value, selectedValue.value)) {
         emit('update:modelValue', returnValue);
         emit('change', returnValue, dateValue, formattedValue);
+        eventHandlers.value?.onChange?.();
       }
       if (emitOk) {
         emit('ok', returnValue, dateValue, formattedValue);
@@ -934,6 +950,8 @@ export default defineComponent({
       inputValue,
       focusedIndex,
       triggerDisabled,
+      mergedSize,
+      mergedError,
       onPanelVisibleChange,
       onInputClear,
       onInputChange,
