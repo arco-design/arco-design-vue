@@ -45,10 +45,10 @@ description: Organize content in the same view. You can view the content of one 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Triggered when the current tag value changes|key: `string`|
-|tab-click|Triggered when the user clicks on the tab|key: `string`|
+|change|Triggered when the current tag value changes|key: `union`|
+|tab-click|Triggered when the user clicks on the tab|key: `union`|
 |add|Triggered when the user clicks the add button|-|
-|delete|Triggered when the user clicks the delete button|key: `string`|
+|delete|Triggered when the user clicks the delete button|key: `union`|
 ### `<tabs>` Slots
 
 |Slot Name|Description|Parameters|
