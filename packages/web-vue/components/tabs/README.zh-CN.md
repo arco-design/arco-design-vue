@@ -43,10 +43,10 @@ description: 将内容组织同一视图中，一次可查看一个视图内容�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|当前标签值改变时触发|key: `string`|
-|tab-click|用户点击标签时触发|key: `string`|
+|change|当前标签值改变时触发|key: `union`|
+|tab-click|用户点击标签时触发|key: `union`|
 |add|用户点击增加按钮时触发|-|
-|delete|用户点击删除按钮时触发|key: `string`|
+|delete|用户点击删除按钮时触发|key: `union`|
 ### `<tabs>` Slots
 
 |插槽名|描述|参数|

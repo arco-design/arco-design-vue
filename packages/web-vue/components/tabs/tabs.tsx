@@ -144,13 +144,13 @@ export default defineComponent({
     /**
      * @zh 当前标签值改变时触发
      * @en Triggered when the current tag value changes
-     * @property {string} key
+     * @property {string|number} key
      */
     'change',
     /**
      * @zh 用户点击标签时触发
      * @en Triggered when the user clicks on the tab
-     * @property {string} key
+     * @property {string|number} key
      */
     'tabClick',
     /**
@@ -161,7 +161,7 @@ export default defineComponent({
     /**
      * @zh 用户点击删除按钮时触发
      * @en Triggered when the user clicks the delete button
-     * @property {string} key
+     * @property {string|number} key
      */
     'delete',
   ],
