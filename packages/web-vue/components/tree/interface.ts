@@ -146,6 +146,8 @@ export interface FieldNames {
 export type LoadMore = (node: TreeNodeData) => Promise<void>;
 export type DropPosition = -1 | 0 | 1;
 
+export type CheckedStrategy = 'all' | 'parent' | 'child';
+
 export interface TreeProps {
   size: 'mini' | 'small' | 'medium' | 'large';
   blockNode: boolean;
@@ -159,11 +161,12 @@ export interface TreeProps {
   }) => boolean;
   selectable: boolean;
   checkStrictly: boolean;
-  checkedStrategy: 'all' | 'parent' | 'child';
+  checkedStrategy: CheckedStrategy;
   defaultSelectedKeys?: TreeNodeKey[];
   selectedKeys?: TreeNodeKey[];
   defaultCheckedKeys?: TreeNodeKey[];
   checkedKeys?: TreeNodeKey[];
+  halfCheckedKeys: TreeNodeKey[] | undefined;
   defaultExpandedKeys?: TreeNodeKey[];
   expandedKeys?: TreeNodeKey[];
   data: TreeNodeData[];
@@ -195,6 +198,8 @@ export interface TreeProps {
       checkedNodes: TreeNodeData[];
       node: TreeNodeData;
       e: Event;
+      halfCheckedKeys: TreeNodeKey[];
+      halfCheckedNodes: TreeNodeData[];
     }
   ) => void;
   onExpand?: (

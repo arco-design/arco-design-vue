@@ -40,6 +40,7 @@ import {
   FilterTreeNode,
   DropPosition,
   TreeNodeKey,
+  CheckedStrategy,
 } from './interface';
 import { getCheckedStateByCheck, isNodeCheckable } from './utils';
 import TreeNode from './node';
@@ -248,6 +249,15 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 半选状态的节点.仅在 checkable 且 checkStrictly 时生效
+     * @en The keys of half checked. Only valid when checkable and checkStrictly
+     * @version 2.19.0
+     * @vModel
+     */
+    halfCheckedKeys: {
+      type: Array as PropType<Array<string | number>>,
+    },
   },
   emits: [
     /**
@@ -259,13 +269,14 @@ export default defineComponent({
     'select',
     'update:selectedKeys',
     /**
-     * @zh 点击树节点复选框时触发
-     * @en Triggered when the tree node checkbox is clicked
+     * @zh 点击树节点复选框时触发。`halfCheckedKeys` 和 `halfCheckedNodes` 从 `2.19.0` 开始支持。
+     * @en Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.
      * @param {Array<string | number>} checkedKeys
-     * @param {{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
+     * @param {{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; halfCheckedKeys: <string | number>[]; halfCheckedNodes: TreeNodeData[]; }} event
      */
     'check',
     'update:checkedKeys',
+    'update:halfCheckedKeys',
     /**
      * @zh 展开/关闭
      * @en Expand/close
@@ -366,6 +377,7 @@ export default defineComponent({
       defaultExpandSelected,
       defaultExpandChecked,
       autoExpandParent,
+      halfCheckedKeys,
     } = toRefs(props);
 
     const prefixCls = getPrefixCls('tree');
@@ -404,6 +416,7 @@ export default defineComponent({
         checkedKeys: propCheckedKeys,
         checkStrictly,
         key2TreeNode,
+        halfCheckedKeys,
       })
     );
     const [selectedKeys, setSelectedKeys] = useMergeState<TreeNodeKey[]>(
@@ -489,6 +502,36 @@ export default defineComponent({
       });
     });
 
+    function getPublicCheckedKeys(
+      rawCheckedKeys: TreeNodeKey[],
+      rawCheckedStrategy = checkedStrategy.value
+    ) {
+      let publicCheckedKeys = [...rawCheckedKeys];
+      if (rawCheckedStrategy === 'parent') {
+        publicCheckedKeys = rawCheckedKeys.filter((_key) => {
+          const item = key2TreeNode.value[_key];
+          return (
+            item &&
+            !(
+              !isUndefined(item.parentKey) &&
+              rawCheckedKeys.includes(item.parentKey)
+            )
+          );
+        });
+      } else if (rawCheckedStrategy === 'child') {
+        publicCheckedKeys = rawCheckedKeys.filter((_key) => {
+          return !key2TreeNode.value[_key]?.children?.length;
+        });
+      }
+      return publicCheckedKeys;
+    }
+
+    function getNodes(keys: TreeNodeKey[]) {
+      return keys
+        .map((key) => key2TreeNode.value[key]?.treeNodeData || undefined)
+        .filter(Boolean);
+    }
+
     function onCheck(checked: boolean, key: TreeNodeKey, e?: Event) {
       const node = key2TreeNode.value[key];
       if (!node) return;
@@ -503,33 +546,18 @@ export default defineComponent({
 
       setCheckedState(newCheckedKeys, newIndeterminateKeys);
 
-      let publicCheckedKeys = [...newCheckedKeys];
-      if (checkedStrategy.value === 'parent') {
-        publicCheckedKeys = newCheckedKeys.filter((_key) => {
-          const item = key2TreeNode.value[_key];
-          return (
-            item &&
-            !(
-              !isUndefined(item.parentKey) &&
-              newCheckedKeys.includes(item.parentKey)
-            )
-          );
-        });
-      } else if (checkedStrategy.value === 'child') {
-        publicCheckedKeys = newCheckedKeys.filter((_key) => {
-          return !key2TreeNode.value[_key]?.children?.length;
-        });
-      }
+      const publicCheckedKeys = getPublicCheckedKeys(newCheckedKeys);
 
       emit('check', publicCheckedKeys, {
         checked,
         node: node.treeNodeData,
-        checkedNodes: publicCheckedKeys.map(
-          (v) => key2TreeNode.value[v]?.treeNodeData
-        ),
+        checkedNodes: getNodes(publicCheckedKeys),
+        halfCheckedKeys: newIndeterminateKeys,
+        halfCheckedNodes: getNodes(newIndeterminateKeys),
         e,
       });
       emit('update:checkedKeys', publicCheckedKeys);
+      emit('update:halfCheckedKeys', newIndeterminateKeys);
     }
 
     function onSelect(key: TreeNodeKey, e: Event) {
@@ -553,9 +581,7 @@ export default defineComponent({
       emit('select', newSelectedKeys, {
         selected,
         node: node.treeNodeData,
-        selectedNodes: newSelectedKeys.map(
-          (v) => key2TreeNode.value[v]?.treeNodeData
-        ),
+        selectedNodes: getNodes(newSelectedKeys),
         e,
       });
       emit('update:selectedKeys', newSelectedKeys);
@@ -579,9 +605,7 @@ export default defineComponent({
       emit('expand', newExpandedKeys, {
         expanded,
         node: node.treeNodeData,
-        expandedNodes: newExpandedKeys.map(
-          (v) => key2TreeNode.value[v]?.treeNodeData
-        ),
+        expandedNodes: getNodes(newExpandedKeys),
         e,
       });
       emit('update:expandedKeys', newExpandedKeys);
@@ -704,6 +728,12 @@ export default defineComponent({
       visibleTreeNodeList,
       treeContext,
       virtualListRef: ref(),
+      computedSelectedKeys: selectedKeys,
+      computedExpandedKeys: expandedKeys,
+      computedCheckedKeys: checkedKeys,
+      computedIndeterminateKeys: indeterminateKeys,
+      getPublicCheckedKeys,
+      getNodes,
     };
   },
 
@@ -724,6 +754,61 @@ export default defineComponent({
      */
     scrollIntoView(options: ScrollIntoViewOptions) {
       this.virtualListRef && this.virtualListRef.scrollTo(options);
+    },
+    /**
+     * @zh 获取选中的节点
+     * @en Get selected nodes
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getSelectedNodes() {
+      return this.getNodes(this.computedSelectedKeys);
+    },
+    /**
+     * @zh 获取选中复选框的节点。支持传入 `checkedStrategy`，没有传则取组件的配置。
+     * @en Get checked nodes. Supports passing in `checkedStrategy`, if not passed, the configuration of the component is taken.
+     * @param { checkedStrategy?: 'all' | 'parent' | 'child'; includeHalfChecked?: boolean; } options
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getCheckedNodes(
+      options: {
+        checkedStrategy?: CheckedStrategy;
+        includeHalfChecked?: boolean;
+      } = {}
+    ) {
+      const { checkedStrategy, includeHalfChecked } = options;
+      const checkedKeys = this.getPublicCheckedKeys(
+        this.computedCheckedKeys,
+        checkedStrategy
+      );
+      const checkedNodes = this.getNodes(checkedKeys);
+      return [
+        ...checkedNodes,
+        ...(includeHalfChecked ? this.getHalfCheckedNodes() : []),
+      ];
+    },
+    /**
+     * @zh 获取复选框半选的节点
+     * @en Get half checked nodes
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getHalfCheckedNodes() {
+      return this.getNodes(this.computedIndeterminateKeys);
+    },
+    /**
+     * @zh 获取展开的节点
+     * @en Get expanded nodes
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getExpandedNodes() {
+      return this.getNodes(this.computedExpandedKeys);
     },
   },
 });
