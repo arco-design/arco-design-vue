@@ -867,13 +867,18 @@ export default defineComponent({
             data.sort((a, b) => {
               const valueA = a[computedSorter.value.filed];
               const valueB = b[computedSorter.value.filed];
-              const result = (
-                isFunction(column.sortable?.sorter)
-                  ? column.sortable?.sorter?.(valueA, valueB)
-                  : valueA > valueB
-              )
-                ? 1
-                : -1;
+
+              if (
+                column.sortable?.sorter &&
+                isFunction(column.sortable.sorter)
+              ) {
+                return column.sortable.sorter(a, b, {
+                  dataIndex: computedSorter.value.filed,
+                  direction: computedSorter.value.direction,
+                });
+              }
+
+              const result = valueA > valueB ? 1 : -1;
               return computedSorter.value.direction === 'descend'
                 ? -result
                 : result;
