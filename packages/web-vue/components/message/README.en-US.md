@@ -32,11 +32,11 @@ The global methods provided by Message can be used in the following three ways:
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|info|Show info message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|success|Show success message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|warning|Show warning message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|error|Show error message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|loading|Show loading message|`(config: string \| MessageConfig) => MessageReturn`|`-`|
+|info|Show info message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|success|Show success message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|warning|Show warning message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|error|Show error message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|loading|Show loading message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
 |clear|Clear all messages|`(position?: MessagePosition) => void`|`-`|
 
 
