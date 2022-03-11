@@ -28,10 +28,10 @@ Notification提供的全局方法，可以通过以下三种方法使用：
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|info|显示信息提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|success|显示成功提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|warning|显示警告提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|error|显示错误提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
+|info|显示信息提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|success|显示成功提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|warning|显示警告提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|error|显示错误提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
 |clear|清除全部提醒框|`(position?: NotificationPosition) => void`|`-`|
 
 

@@ -30,10 +30,10 @@ The global methods provided by Notification can be used in the following three w
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|info|Show info notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|success|Show success notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|warning|Show warning notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|error|Show error notification|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
+|info|Show info notification|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|success|Show success notification|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|warning|Show warning notification|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|error|Show error notification|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
 |clear|Clear all notifications|`(position?: NotificationPosition) => void`|`-`|
 
 

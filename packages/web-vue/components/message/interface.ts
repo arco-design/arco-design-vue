@@ -1,4 +1,4 @@
-import { RenderFunction } from 'vue';
+import { AppContext, RenderFunction } from 'vue';
 import { RenderContent } from '../_utils/types';
 import { MessageType } from '../_utils/constant';
 
@@ -11,27 +11,42 @@ export interface MessageMethod {
    * @zh 显示信息提示
    * @en Show info message
    */
-  info: (config: string | MessageConfig) => MessageReturn;
+  info: (
+    config: string | MessageConfig,
+    appContext?: AppContext
+  ) => MessageReturn;
   /**
    * @zh 显示成功提示
    * @en Show success message
    */
-  success: (config: string | MessageConfig) => MessageReturn;
+  success: (
+    config: string | MessageConfig,
+    appContext?: AppContext
+  ) => MessageReturn;
   /**
    * @zh 显示警告提示
    * @en Show warning message
    */
-  warning: (config: string | MessageConfig) => MessageReturn;
+  warning: (
+    config: string | MessageConfig,
+    appContext?: AppContext
+  ) => MessageReturn;
   /**
    * @zh 显示错误提示
    * @en Show error message
    */
-  error: (config: string | MessageConfig) => MessageReturn;
+  error: (
+    config: string | MessageConfig,
+    appContext?: AppContext
+  ) => MessageReturn;
   /**
    * @zh 显示加载中提示
    * @en Show loading message
    */
-  loading: (config: string | MessageConfig) => MessageReturn;
+  loading: (
+    config: string | MessageConfig,
+    appContext?: AppContext
+  ) => MessageReturn;
   /**
    * @zh 清空全部提示
    * @en Clear all messages

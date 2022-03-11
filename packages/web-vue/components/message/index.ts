@@ -38,8 +38,8 @@ class MessageManger {
       onAfterClose: this.destroy,
     });
 
-    if (appContext) {
-      vm.appContext = appContext;
+    if (appContext ?? Message._context) {
+      vm.appContext = appContext ?? Message._context;
     }
     render(vm, this.container);
     document.body.appendChild(this.container);
@@ -109,14 +109,14 @@ const messageInstance: {
 const types = [...MESSAGE_TYPES, 'loading'] as const;
 
 const message = types.reduce((pre, value) => {
-  pre[value] = (config) => {
+  pre[value] = (config, appContext?: AppContext) => {
     if (isString(config)) {
       config = { content: config };
     }
     const _config: _MessageConfig = { type: value, ...config };
     const { position = 'top' } = _config;
     if (!messageInstance[position]) {
-      messageInstance[position] = new MessageManger(_config);
+      messageInstance[position] = new MessageManger(_config, appContext);
     }
     return messageInstance[position]!.add(_config);
   };
@@ -134,8 +134,18 @@ message.clear = (position?: MessagePosition) => {
 const Message = {
   ...message,
   install: (app: App): void => {
-    app.config.globalProperties.$message = message;
+    const _message = {
+      clear: message.clear,
+    } as MessageMethod;
+
+    for (const key of types) {
+      _message[key] = (config, appContext = app._context) =>
+        message[key](config, appContext);
+    }
+
+    app.config.globalProperties.$message = _message;
   },
+  _context: null as AppContext | null,
 };
 
 export default Message;
