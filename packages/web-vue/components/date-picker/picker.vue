@@ -6,7 +6,7 @@
     :popup-offset="4"
     v-bind="triggerProps"
     :position="position"
-    :disabled="disabled"
+    :disabled="mergedDisabled"
     :prevent-focus="true"
     :popup-visible="panelVisible"
     :unmount-on-close="unmountOnClose"
@@ -21,7 +21,7 @@
         :focused="panelVisible"
         :visible="panelVisible"
         :error="error"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :readonly="!inputEditable"
         :allow-clear="allowClear"
         :placeholder="computedPlaceholder"
@@ -87,6 +87,7 @@ import { mergeValueWithTime } from './utils';
 import { EmitType } from '../_utils/types';
 import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
+import { useFormItem } from '../_hooks/use-form-item';
 
 /**
  * @displayName Common
@@ -466,6 +467,8 @@ export default defineComponent({
       defaultPickerValue,
     } = toRefs(props);
 
+    const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
+
     const datePickerT = useProvideDatePickerTransform(
       reactive({
         locale,
@@ -616,6 +619,7 @@ export default defineComponent({
       if (isValueChange(value, selectedValue.value)) {
         emit('update:modelValue', returnValue);
         emit('change', returnValue, dateValue, formattedValue);
+        eventHandlers.value?.onChange?.();
       }
 
       if (emitOk) {
@@ -665,7 +669,7 @@ export default defineComponent({
     }
 
     function onPanelVisibleChange(visible: boolean) {
-      if (disabled.value) return;
+      if (mergedDisabled.value) return;
       setPanelVisible(visible);
     }
 
@@ -811,6 +815,7 @@ export default defineComponent({
       panelVisible,
       inputEditable,
       needConfirm,
+      mergedDisabled,
       onPanelVisibleChange,
       onInputClear,
       onInputChange,

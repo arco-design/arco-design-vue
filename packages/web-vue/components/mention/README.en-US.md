@@ -23,6 +23,7 @@ description: Used to mention someone or something in the input, often used for p
 |prefix|Keywords that trigger auto-completion|`string \| string[]`|`'@'`|
 |split|Before and after the selected item separator|`string`|`' '`|
 |type|default input or textarea|`'input' \| 'textarea'`|`'input'`|
+|disabled|Whether to disable|`boolean`|`false`|
 ### `<mention>` Events
 
 |Event Name|Description|Parameters|

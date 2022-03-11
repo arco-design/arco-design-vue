@@ -156,7 +156,7 @@ export default defineComponent({
         | (string | number | Array<string | number>)[]
       >,
       default: (props: Data) =>
-        props.multiple ? [] : props.mode === 'value' ? '' : undefined,
+        props.multiple ? [] : props.pathMode ? undefined : '',
     },
     /**
      * @zh 级联选择器的选项

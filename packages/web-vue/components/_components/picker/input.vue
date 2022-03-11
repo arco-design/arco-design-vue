@@ -85,8 +85,6 @@ export default defineComponent({
       mergedSize: _mergedSize,
       mergedDisabled,
       mergedError,
-      feedback,
-      eventHandlers,
     } = useFormItem({ size, disabled, error });
     const { mergedSize } = useSize(_mergedSize);
 
@@ -124,7 +122,6 @@ export default defineComponent({
       },
       onChange(e: Event) {
         emit('change', e);
-        eventHandlers.value?.onChange?.(e);
       },
       onClear(e: Event) {
         emit('clear', e);
