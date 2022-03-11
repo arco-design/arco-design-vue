@@ -195,10 +195,13 @@ export default defineComponent({
           });
         }
       });
-      const lastData = groupedData[groupedData.length - 1];
-      const lastDataTotalSpan = getTotalSpan(lastData);
-      if (lastDataTotalSpan < column.value) {
-        lastData[lastData.length - 1].span += column.value - lastDataTotalSpan;
+      if (groupedData.length) {
+        const lastData = groupedData[groupedData.length - 1];
+        const lastDataTotalSpan = getTotalSpan(lastData);
+        if (lastDataTotalSpan < column.value) {
+          lastData[lastData.length - 1].span +=
+            column.value - lastDataTotalSpan;
+        }
       }
       return groupedData;
     };
