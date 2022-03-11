@@ -69,12 +69,13 @@ description: For content with many levels, such as folders, catalogs, and organi
 |default-expand-selected|Whether to expand the parent node of the selected node by default|`boolean`|`false`|2.9.0|
 |default-expand-checked|Whether to expand the parent node of the checked node by default|`boolean`|`false`|2.9.0|
 |auto-expand-parent|Whether to automatically expand the parent node of the expanded node|`boolean`|`true`|2.9.0|
+|half-checked-keys **(v-model)**|The keys of half checked. Only valid when checkable and checkStrictly|`Array<string \| number>`|`-`|2.19.0|
 ### `<tree>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
 |select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|check|Triggered when the tree node checkbox is clicked|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|check|Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; halfCheckedKeys: <string \| number>[]; halfCheckedNodes: TreeNodeData[]; }`|
 |expand|Expand/close|expandKeys: `Array<string \| number>`<br>event: `{ expanded: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
 |drag-start|Node starts dragging|-|
 |drag-end|Node end drag|event: `DragEvent`<br>node: `TreeNodeData`|
@@ -83,9 +84,13 @@ description: For content with many levels, such as folders, catalogs, and organi
 |drop|The node is released on a releasable target|info: `{ e: DragEvent; dragNode: TreeNodeData; dropNode: TreeNodeData; dropPosition: -1 ｜ 0 ｜ 1; }`|
 ### `<tree>` Methods
 
-|Method|Description|Parameters|Return|
-|---|---|---|:---:|
-|scrollIntoView|Virtual list scroll to an element|options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}`|-|
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|scrollIntoView|Virtual list scroll to an element|options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}`|-||
+|getSelectedNodes|Get selected nodes|-|TreeNodeData[]|2.19.0|
+|getCheckedNodes|Get checked nodes. Supports passing in `checkedStrategy`, if not passed, the configuration of the component is taken.|options: ` checkedStrategy?: 'all' \| 'parent' \| 'child'; includeHalfChecked?: boolean; `|TreeNodeData[]|2.19.0|
+|getHalfCheckedNodes|Get half checked nodes|-|TreeNodeData[]|2.19.0|
+|getExpandedNodes|Get expanded nodes|-|TreeNodeData[]|2.19.0|
 ### `<tree>` Slots
 
 |Slot Name|Description|Parameters|version|

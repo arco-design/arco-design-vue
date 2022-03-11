@@ -67,12 +67,13 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |default-expand-selected|是否默认展开已选中节点的父节点|`boolean`|`false`|2.9.0|
 |default-expand-checked|是否默认展开已选中复选框节点的父节点|`boolean`|`false`|2.9.0|
 |auto-expand-parent|是否自动展开已展开节点的父节点|`boolean`|`true`|2.9.0|
+|half-checked-keys **(v-model)**|半选状态的节点.仅在 checkable 且 checkStrictly 时生效|`Array<string \| number>`|`-`|2.19.0|
 ### `<tree>` Events
 
 |事件名|描述|参数|
 |---|---|---|
 |select|点击树节点时触发|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|check|点击树节点复选框时触发|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|check|点击树节点复选框时触发。`halfCheckedKeys` 和 `halfCheckedNodes` 从 `2.19.0` 开始支持。|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; halfCheckedKeys: <string \| number>[]; halfCheckedNodes: TreeNodeData[]; }`|
 |expand|展开/关闭|expandKeys: `Array<string \| number>`<br>event: `{ expanded: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
 |drag-start|节点开始拖拽|-|
 |drag-end|节点结束拖拽|event: `DragEvent`<br>node: `TreeNodeData`|
@@ -81,9 +82,13 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |drop|节点在可释放目标上释放|info: `{ e: DragEvent; dragNode: TreeNodeData; dropNode: TreeNodeData; dropPosition: -1 ｜ 0 ｜ 1; }`|
 ### `<tree>` Methods
 
-|方法名|描述|参数|返回值|
-|---|---|---|---|
-|scrollIntoView|虚拟列表滚动某个元素|options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}`|-|
+|方法名|描述|参数|返回值|版本|
+|---|---|---|---|:---|
+|scrollIntoView|虚拟列表滚动某个元素|options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}`|-||
+|getSelectedNodes|获取选中的节点|-|TreeNodeData[]|2.19.0|
+|getCheckedNodes|获取选中复选框的节点。支持传入 `checkedStrategy`，没有传则取组件的配置。|options: ` checkedStrategy?: 'all' \| 'parent' \| 'child'; includeHalfChecked?: boolean; `|TreeNodeData[]|2.19.0|
+|getHalfCheckedNodes|获取复选框半选的节点|-|TreeNodeData[]|2.19.0|
+|getExpandedNodes|获取展开的节点|-|TreeNodeData[]|2.19.0|
 ### `<tree>` Slots
 
 |插槽名|描述|参数|版本|

@@ -5,6 +5,7 @@ import { getCheckedStateByInitKeys, Key2TreeNode } from '../utils';
 export default function useCheckedState(props: {
   defaultCheckedKeys: TreeNodeKey[] | undefined;
   checkedKeys: TreeNodeKey[] | undefined;
+  halfCheckedKeys: TreeNodeKey[] | undefined;
   key2TreeNode: Key2TreeNode;
   checkStrictly: boolean;
 }) {
@@ -13,6 +14,7 @@ export default function useCheckedState(props: {
     checkedKeys: propCheckedKeys,
     key2TreeNode,
     checkStrictly,
+    halfCheckedKeys,
   } = toRefs(props);
 
   const getStateByInitKeys = (initKeys: TreeNodeKey[]) => {
@@ -53,9 +55,12 @@ export default function useCheckedState(props: {
     checkedKeys: computed(
       () => computedCheckedKeys.value || localCheckedKeys.value
     ),
-    indeterminateKeys: computed(
-      () => computedIndeterminateKeys.value || localIndeterminateKeys.value
-    ),
+    indeterminateKeys: computed(() => {
+      if (checkStrictly.value && halfCheckedKeys.value) {
+        return halfCheckedKeys.value;
+      }
+      return computedIndeterminateKeys.value || localIndeterminateKeys.value;
+    }),
     setCheckedState(
       newCheckedKeys: TreeNodeKey[],
       newIndeterminateKeys: TreeNodeKey[]
