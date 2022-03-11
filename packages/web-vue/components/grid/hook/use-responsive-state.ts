@@ -14,7 +14,8 @@ function isResponsiveValue(
 
 export function useResponsiveState(
   val: Ref<number | ResponsiveValue>,
-  defaultVal: number
+  defaultVal: number,
+  fallbackToXs = false
 ) {
   const screens = ref<ScreenMap>({
     xs: true,
@@ -29,7 +30,11 @@ export function useResponsiveState(
     if (isResponsiveValue(val.value)) {
       for (let i = 0; i < responsiveArray.length; i++) {
         const breakpoint = responsiveArray[i];
-        if (screens.value[breakpoint] && val.value[breakpoint] !== undefined) {
+        if (
+          (screens.value[breakpoint] ||
+            (breakpoint === 'xs' && fallbackToXs)) &&
+          val.value[breakpoint] !== undefined
+        ) {
           res = val.value[breakpoint] as number;
           break;
         }
