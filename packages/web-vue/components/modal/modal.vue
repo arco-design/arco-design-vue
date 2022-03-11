@@ -25,25 +25,15 @@
         <div
           v-show="computedVisible"
           ref="wrapperRef"
-          :class="[
-            `${prefixCls}-wrapper`,
-            { [`${prefixCls}-wrapper-align-center`]: alignCenter },
-          ]"
+          :class="wrapperCls"
           @click.self="handleMaskClick"
           @mousedown.self="handleMaskMouseDown"
         >
-          <div
-            ref="modalRef"
-            :class="[
-              `${prefixCls}`,
-              modalClass,
-              { [`${prefixCls}-simple`]: simple },
-            ]"
-            :style="mergedModalStyle"
-          >
+          <div ref="modalRef" :class="modalCls" :style="mergedModalStyle">
             <div
               v-if="$slots.title || title || closable"
               :class="`${prefixCls}-header`"
+              @mousedown="handleMoveDown"
             >
               <div
                 v-if="$slots.title || title"
@@ -126,6 +116,7 @@ import { getElement, off, on } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { isBoolean, isFunction, isNumber } from '../_utils/is';
 import { CODE } from '../_utils/keyboard';
+import { useDraggable } from './hooks/use-draggable';
 
 export default defineComponent({
   name: 'Modal',
@@ -321,6 +312,7 @@ export default defineComponent({
     /**
      * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。
      * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.
+     * @version 2.7.0
      */
     onBeforeOk: {
       type: [Function, Array] as PropType<
@@ -330,6 +322,7 @@ export default defineComponent({
     /**
      * @zh 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。
      * @en The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.
+     * @version 2.7.0
      */
     onBeforeCancel: {
       type: [Function, Array] as PropType<() => boolean>,
@@ -342,6 +335,24 @@ export default defineComponent({
     escToClose: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * @zh 是否支持拖动
+     * @en Whether to support drag
+     * @version 2.19.0
+     */
+    draggable: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否开启全屏
+     * @en Whether to enable full screen
+     * @version 2.19.0
+     */
+    fullscreen: {
+      type: Boolean,
+      default: false,
     },
     // private
     messageType: {
@@ -398,11 +409,15 @@ export default defineComponent({
     const { t } = useI18n();
     const containerRef = ref<HTMLElement>();
     const wrapperRef = ref<HTMLElement>();
+    const modalRef = ref<HTMLElement>();
 
     const _visible = ref(props.defaultVisible);
     const computedVisible = computed(() => props.visible ?? _visible.value);
     const _okLoading = ref(false);
     const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
+    const mergedDraggable = computed(
+      () => props.draggable && !props.fullscreen
+    );
 
     const mounted = ref(computedVisible.value);
 
@@ -435,6 +450,12 @@ export default defineComponent({
 
     // Used to ignore closed Promises
     let promiseNumber = 0;
+
+    const { position, handleMoveDown } = useDraggable({
+      wrapperRef,
+      modalRef,
+      draggable: mergedDraggable,
+    });
 
     const close = () => {
       promiseNumber++;
@@ -505,6 +526,10 @@ export default defineComponent({
 
     const handleClose = () => {
       if (!computedVisible.value) {
+        if (mergedDraggable.value) {
+          position.value = undefined;
+        }
+
         mounted.value = false;
         emit('close');
       }
@@ -543,6 +568,25 @@ export default defineComponent({
       }
     });
 
+    const wrapperCls = computed(() => [
+      `${prefixCls}-wrapper`,
+      {
+        [`${prefixCls}-wrapper-align-center`]:
+          props.alignCenter && !props.fullscreen,
+        [`${prefixCls}-wrapper-moved`]: Boolean(position.value),
+      },
+    ]);
+
+    const modalCls = computed(() => [
+      `${prefixCls}`,
+      props.modalClass,
+      {
+        [`${prefixCls}-simple`]: props.simple,
+        [`${prefixCls}-draggable`]: mergedDraggable.value,
+        [`${prefixCls}-fullscreen`]: props.fullscreen,
+      },
+    ]);
+
     const mergedModalStyle = computed(() => {
       const style: CSSProperties = {
         ...(props.modalStyle ?? {}),
@@ -553,6 +597,10 @@ export default defineComponent({
       if (!props.alignCenter && props.top) {
         style.top = isNumber(props.top) ? `${props.top}px` : props.top;
       }
+      if (position.value) {
+        style.transform = `translate(${position.value[0]}px, ${position.value[1]}px)`;
+      }
+
       return style;
     });
 
@@ -573,6 +621,10 @@ export default defineComponent({
       handleOpen,
       handleClose,
       mergedOkLoading,
+      modalRef,
+      wrapperCls,
+      modalCls,
+      handleMoveDown,
     };
   },
 });

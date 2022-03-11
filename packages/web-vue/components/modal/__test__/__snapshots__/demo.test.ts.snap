@@ -24,7 +24,23 @@ exports[`<modal> demo: render [custom] correctly 1`] = `
 <!--teleport end-->"
 `;
 
+exports[`<modal> demo: render [draggable] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Open Draggable Modal
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
 exports[`<modal> demo: render [form] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Open Form Modal
+</button>
+<!--teleport start-->
+<!--teleport end-->"
+`;
+
+exports[`<modal> demo: render [fullscreen] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Open Modal
 </button>
