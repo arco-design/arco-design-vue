@@ -11,10 +11,6 @@ changelog: true
 - Fix the problem that the `field` property of `form-item` is invalid when there is an array in it ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
 - Fixed the issue that some component functions are still available after `disabled` is enabled ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
 
-### 💅 Style
-
-- Fix form-item content can exceed container size ([#808](https://github.com/arco-design/arco-design-vue/pull/808))
-
 
 ## 2.18.0
 

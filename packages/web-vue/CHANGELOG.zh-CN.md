@@ -31,10 +31,6 @@ changelog: true
 - **tree:** 修复当节点找不到的时候组件渲染出错的问题 ([#800](https://github.com/arco-design/arco-design-vue/pull/800))
 - **date-picker:** 修复范围选择器弹出层的偏移量错误的问题 ([#796](https://github.com/arco-design/arco-design-vue/pull/796))
 
-### 💅 样式更新
-
-- **form:** 修复 form-item 内容可以超出容器大小的问题 ([#808](https://github.com/arco-design/arco-design-vue/pull/808))
-
 
 ## 2.18.1
 

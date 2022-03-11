@@ -11,10 +11,6 @@ changelog: true
 - 修复 `form-item` 的 `field` 属性中存在数组时失效的问题 ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
 - 修复 `disabled` 开启后，部分组件功能仍可用问题 ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
 
-### 💅 样式更新
-
-- 修复 form-item 内容可以超出容器大小的问题 ([#808](https://github.com/arco-design/arco-design-vue/pull/808))
-
 
 ## 2.18.0
 

@@ -31,10 +31,6 @@ changelog: true
 - **tree:** Fix the problem of component rendering error when the node cannot be found ([#800](https://github.com/arco-design/arco-design-vue/pull/800))
 - **date-picker:** Fix the problem that the offset of the range selector popup layer is wrong ([#796](https://github.com/arco-design/arco-design-vue/pull/796))
 
-### 💅 Style
-
-- **form:** Fix form-item content can exceed container size ([#808](https://github.com/arco-design/arco-design-vue/pull/808))
-
 
 ## 2.18.1
 
