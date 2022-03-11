@@ -46,7 +46,11 @@
           </div>
           <div v-if="footer" :class="`${prefixCls}-footer`">
             <slot name="footer">
-              <arco-button v-bind="cancelButtonProps" @click="handleCancel">
+              <arco-button
+                v-if="!hideCancel"
+                v-bind="cancelButtonProps"
+                @click="handleCancel"
+              >
                 {{ cancelText || t('drawer.cancelText') }}
               </arco-button>
               <arco-button
@@ -215,9 +219,7 @@ export default defineComponent({
      * @en Mount container for popup
      */
     popupContainer: {
-      type: [String, Object] as PropType<
-        string | HTMLElement | null | undefined
-      >,
+      type: [String, Object] as PropType<string | HTMLElement>,
       default: 'body',
     },
     /**
@@ -265,6 +267,15 @@ export default defineComponent({
     escToClose: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * @zh 是否隐藏取消按钮
+     * @en Whether to hide the cancel button
+     * @version 2.19.0
+     */
+    hideCancel: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: [
@@ -328,8 +339,10 @@ export default defineComponent({
     };
 
     const removeGlobalKeyDownListener = () => {
-      globalKeyDownListener = false;
-      off(document.documentElement, 'keydown', handleGlobalKeyDown);
+      if (globalKeyDownListener) {
+        globalKeyDownListener = false;
+        off(document.documentElement, 'keydown', handleGlobalKeyDown);
+      }
     };
 
     const { zIndex } = usePopupManager({ visible: computedVisible });
@@ -420,14 +433,14 @@ export default defineComponent({
     onMounted(() => {
       containerRef.value = getElement(props.popupContainer);
       if (computedVisible.value) {
+        mounted.value = true;
         setOverflowHidden();
-        if (props.escToClose) {
-          addGlobalKeyDownListener();
-        }
+        addGlobalKeyDownListener();
       }
     });
 
     onBeforeUnmount(() => {
+      resetOverflow();
       removeGlobalKeyDownListener();
     });
 
