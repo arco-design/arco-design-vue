@@ -1527,7 +1527,7 @@ export default defineComponent({
 
               return (
                 <Th
-                  key={`th-${index}`}
+                  key={`th-${column.dataIndex ?? index}`}
                   // @ts-ignore
                   ref={(ins: ComponentPublicInstance) => {
                     if (ins?.$el) {
