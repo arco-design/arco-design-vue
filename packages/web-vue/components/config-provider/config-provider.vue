@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, provide, reactive, toRefs } from 'vue';
+import { defineComponent, PropType, inject, toRefs } from 'vue';
 import { configProviderInjectionKey } from './context';
 import { ArcoLang } from '../locale/interface';
 import { Size } from '../_utils/constant';
@@ -38,15 +38,10 @@ export default defineComponent({
   setup(props, { slots }) {
     const { prefixCls, locale, size } = toRefs(props);
 
-    provide(
-      configProviderInjectionKey,
-      reactive({
-        slots,
-        prefixCls,
-        locale,
-        size,
-      })
-    );
+    const configProvider = inject(configProviderInjectionKey);
+
+    // 修正全局注入
+    Object.assign(configProvider, { slots, prefixCls, locale, size });
   },
 });
 </script>
