@@ -326,7 +326,7 @@ export default defineComponent({
     ]);
 
     const wrapperRef = ref();
-    let fullText = '';
+    const fullText = '';
 
     // for edit
     const [editing, setEditing] = useMergeState(
@@ -466,7 +466,10 @@ export default defineComponent({
 
     return () => {
       const children = slots.default?.() || [];
-      fullText = getInnerText(children);
+      const newFullText = getInnerText(children);
+      if (newFullText !== fullText) {
+        calEllipsis();
+      }
 
       // 编辑中
       if (mergeEditing.value) {
