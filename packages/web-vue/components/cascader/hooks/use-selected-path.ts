@@ -10,7 +10,7 @@ export const useSelectedPath = (
   }: {
     optionMap: Map<string, CascaderOptionInfo>;
     filteredLeafOptions: ComputedRef<CascaderOptionInfo[]>;
-    showSearchPanel: ComputedRef<boolean>;
+    showSearchPanel?: ComputedRef<boolean>;
   }
 ) => {
   // active node key
@@ -44,7 +44,7 @@ export const useSelectedPath = (
   };
 
   const enabledOptions = computed(() => {
-    if (showSearchPanel.value) {
+    if (showSearchPanel?.value) {
       return filteredLeafOptions.value.filter((item) => !item.disabled);
     }
     if (activeOption.value && activeOption.value.parent) {

@@ -1,6 +1,7 @@
 <template>
   <Trigger
     trigger="click"
+    animation-name="slide-dynamic-origin"
     :click-to-close="false"
     :position="position"
     :disabled="mergedDisabled"

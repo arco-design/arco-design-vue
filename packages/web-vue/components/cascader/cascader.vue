@@ -2,6 +2,7 @@
   <trigger
     v-bind="triggerProps"
     trigger="click"
+    animation-name="slide-dynamic-origin"
     :popup-visible="computedPopupVisible"
     position="bl"
     :disabled="mergedDisabled"
@@ -57,7 +58,7 @@
         :loading="loading"
         :path-label="!searchOptionOnlyLabel"
       />
-      <cascader-panel
+      <base-cascader-panel
         v-else
         :display-columns="displayColumns"
         :selected-path="selectedPath"
@@ -68,6 +69,7 @@
         :total-level="totalLevel"
         :check-strictly="checkStrictly"
         :loading="loading"
+        dropdown
       />
     </template>
   </trigger>
@@ -92,13 +94,13 @@ import {
 } from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
-import CascaderPanel from './cascader-panel';
+import BaseCascaderPanel from './base-cascader-panel';
 import CascaderSearchPanel from './cascader-search-panel';
 import { CascaderOption, CascaderOptionInfo } from './interface';
 import { isArray, isNull, isUndefined } from '../_utils/is';
 import { Data, EmitType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
-import { CODE, getKeyDownHandler } from '../_utils/keyboard';
+import { KEYBOARD_KEY, getKeyDownHandler } from '../_utils/keyboard';
 import { cascaderInjectionKey } from './context';
 import { Size } from '../_utils/constant';
 import { debounce } from '../_utils/debounce';
@@ -109,7 +111,7 @@ export default defineComponent({
   components: {
     Trigger,
     SelectView,
-    CascaderPanel,
+    BaseCascaderPanel,
     CascaderSearchPanel,
   },
   inheritAttrs: false,
@@ -642,10 +644,10 @@ export default defineComponent({
 
     watch(computedPopupVisible, (value) => {
       if (value) {
-        if (computedKeys.value.length > 0 && !activeKey.value) {
+        if (computedKeys.value.length > 0) {
           const lastKey = computedKeys.value[computedKeys.value.length - 1];
           const option = leafOptionMap.get(lastKey);
-          if (option) {
+          if (option && option.key !== activeKey.value) {
             setSelectedPath(option.key);
             setActiveKey(option.key);
           }
@@ -719,7 +721,7 @@ export default defineComponent({
     const handleKeyDown = getKeyDownHandler(
       new Map([
         [
-          CODE.ENTER,
+          KEYBOARD_KEY.ENTER,
           (ev: Event) => {
             if (computedPopupVisible.value) {
               if (
@@ -734,13 +736,13 @@ export default defineComponent({
           },
         ],
         [
-          CODE.ESC,
+          KEYBOARD_KEY.ESC,
           (ev: Event) => {
             handlePopupVisibleChange(false);
           },
         ],
         [
-          CODE.ARROW_DOWN,
+          KEYBOARD_KEY.ARROW_DOWN,
           (ev: Event) => {
             ev.preventDefault();
             const activeNode = getNextActiveNode('next');
@@ -748,7 +750,7 @@ export default defineComponent({
           },
         ],
         [
-          CODE.ARROW_UP,
+          KEYBOARD_KEY.ARROW_UP,
           (ev: Event) => {
             ev.preventDefault();
             const activeNode = getNextActiveNode('preview');
@@ -756,7 +758,7 @@ export default defineComponent({
           },
         ],
         [
-          CODE.ARROW_RIGHT,
+          KEYBOARD_KEY.ARROW_RIGHT,
           (ev: Event) => {
             ev.preventDefault();
             if (activeOption.value?.children) {
@@ -766,7 +768,7 @@ export default defineComponent({
           },
         ],
         [
-          CODE.ARROW_LEFT,
+          KEYBOARD_KEY.ARROW_LEFT,
           (ev: Event) => {
             ev.preventDefault();
             if (activeOption.value?.parent) {

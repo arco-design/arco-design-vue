@@ -2,6 +2,7 @@
   <Trigger
     v-if="!hideTrigger"
     trigger="click"
+    animation-name="slide-dynamic-origin"
     :click-to-close="false"
     :popup-offset="4"
     v-bind="triggerProps"

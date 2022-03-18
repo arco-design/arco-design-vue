@@ -1,28 +1,24 @@
 ```yaml
 title:
-  zh-CN: 基本使用
-  en-US: Basic Usage
+  zh-CN: 级联菜单
+  en-US: Cascader Panel
 ```
 
 ## zh-CN
 
-级联选择器的基本用法。
+$END$
 
 ---
 
 ## en-US
 
-The basic usage of cascader.
+$END$
 
 ---
 
 ```vue
 <template>
-  <a-button @click="value='datunli'">aa</a-button>
-  <a-space direction="vertical" size="large">
-    <a-cascader v-model="value" :options="options" :style="{width:'320px'}" placeholder="Please select ..." />
-    <a-cascader :options="options" default-value="datunli" expand-trigger="hover" :style="{width:'320px'}" placeholder="Please select ..." />
-  </a-space>
+  <a-cascader-panel :options="options" v-model="value" />
 </template>
 
 <script>
