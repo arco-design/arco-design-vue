@@ -140,12 +140,12 @@ exports[`<descriptions> demo: render [basic] correctly 1`] = `
               <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->123-1234-1234<!--v-if--><!--v-if--></span></td>
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Residence</td>
               <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Beijing<!--v-if--><!--v-if--></span></td>
-            </tr>
-            <tr class=\\"arco-descriptions-row\\">
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Hometown</td>
               <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Beijing<!--v-if--><!--v-if--></span></td>
+            </tr>
+            <tr class=\\"arco-descriptions-row\\">
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Address</td>
-              <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"3\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Yingdu Building, Zhichun Road, Beijing<!--v-if--><!--v-if--></span></td>
+              <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"7\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Yingdu Building, Zhichun Road, Beijing<!--v-if--><!--v-if--></span></td>
             </tr>
           </tbody>
         </table>
