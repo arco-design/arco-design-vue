@@ -52,6 +52,14 @@ export function isNodeCheckable(node: Node) {
   return node.checkable && !node.disabled && !node.disableCheckbox;
 }
 
+export function isNodeSelectable(node: Node) {
+  return node.selectable && !node.disabled;
+}
+
+export function isNodeExpandable(node: Node) {
+  return !node.isLeaf && node.children;
+}
+
 export function getCheckedStateByCheck(options: {
   node: Node;
   checked: boolean;
