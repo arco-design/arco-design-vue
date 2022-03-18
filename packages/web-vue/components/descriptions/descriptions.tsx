@@ -5,7 +5,7 @@ import {
   isVNode,
   provide,
   reactive,
-  ref,
+  toRefs,
 } from 'vue';
 import type { Size, TextAlign } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
@@ -13,6 +13,8 @@ import { isFunction, isObject } from '../_utils/is';
 import { descriptionsInjectionKey } from './context';
 import { DescData, DescItemData, DescLayout, RenderData } from './interface';
 import { getAllElements, isSlotsChildren } from '../_utils/vue-utils';
+import { useResponsiveState } from '../grid/hook/use-responsive-state';
+import { ResponsiveValue } from '../grid/interface';
 
 const getTotalSpan = (renderData?: RenderData[]) => {
   return renderData
@@ -32,11 +34,11 @@ export default defineComponent({
       default: () => [],
     },
     /**
-     * @zh 每行放置的数据个数
-     * @en The number of data placed in each row
+     * @zh 每行放置的数据个数。2.20.0 版本支持响应式配置
+     * @en The number of data placed in each row. Version 2.20.0 supports reactive configuration
      */
     column: {
-      type: Number,
+      type: [Number, Object] as PropType<number | ResponsiveValue>,
       default: 3,
     },
     /**
@@ -117,15 +119,10 @@ export default defineComponent({
    * @binding {DescData} data
    */
   setup(props, { slots }) {
+    const { column } = toRefs(props);
     const prefixCls = getPrefixCls('descriptions');
 
-    const screen = ref();
-
-    const column = computed(
-      () =>
-        (isObject(props.column) ? props.column[screen.value] : props.column) ??
-        1
-    );
+    const computedColumn = useResponsiveState(column, 3, true);
 
     const labelAlign = computed(
       () => (isObject(props.align) ? props.align.label : props.align) ?? 'left'
@@ -172,11 +169,14 @@ export default defineComponent({
       data.forEach((item, index) => {
         const itemSpan = Math.min(
           (isVNode(item) ? sortedSpans.value[index] : item.span) ?? 1,
-          column.value
+          computedColumn.value
         );
         const lastData = groupedData[groupedData.length - 1];
         const lastDataTotalSpan = getTotalSpan(lastData);
-        if (lastDataTotalSpan === 0 || lastDataTotalSpan >= column.value) {
+        if (
+          lastDataTotalSpan === 0 ||
+          lastDataTotalSpan >= computedColumn.value
+        ) {
           // add item to new row
           groupedData.push([
             {
@@ -189,8 +189,8 @@ export default defineComponent({
           lastData.push({
             data: item,
             span:
-              itemSpan + lastDataTotalSpan > column.value
-                ? column.value - lastDataTotalSpan
+              itemSpan + lastDataTotalSpan > computedColumn.value
+                ? computedColumn.value - lastDataTotalSpan
                 : itemSpan,
           });
         }
@@ -198,9 +198,9 @@ export default defineComponent({
       if (groupedData.length) {
         const lastData = groupedData[groupedData.length - 1];
         const lastDataTotalSpan = getTotalSpan(lastData);
-        if (lastDataTotalSpan < column.value) {
+        if (lastDataTotalSpan < computedColumn.value) {
           lastData[lastData.length - 1].span +=
-            column.value - lastDataTotalSpan;
+            computedColumn.value - lastDataTotalSpan;
         }
       }
       return groupedData;

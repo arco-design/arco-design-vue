@@ -20,7 +20,7 @@ Simply display multiple read-only fields in groups, which are generally used for
 <template>
   <a-space direction="vertical" size="large" fill>
     <a-descriptions :data="data" title="User Info" layout="inline-horizontal"/>
-    <a-descriptions :data="data" title="User Info">
+    <a-descriptions :data="data" title="User Info" :column="{xs:1, md:3, lg:4}">
       <a-descriptions-item v-for="item of data" :label="item.label">
         <a-tag>{{ item.value }}</a-tag>
       </a-descriptions-item>
