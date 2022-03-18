@@ -110,6 +110,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |disabled|是否禁用|`boolean`|`false`||
 |tag-props|展示的标签属性|`TagProps`|`-`|2.8.0|
 |extra|额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据|`object`|`-`|2.10.0|
+|index|用于手动指定选项的 index|`number`|`-`|2.20.0|
 
 
 

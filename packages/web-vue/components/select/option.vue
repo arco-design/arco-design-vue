@@ -46,7 +46,6 @@ import {
 } from 'vue';
 import type { TagProps } from '../tag';
 import { getPrefixCls } from '../_utils/global-config';
-import { useIndex } from '../_hooks/use-index';
 import Checkbox from '../checkbox';
 import { selectInjectionKey } from './context';
 import { getKeyFromValue, isValidOption } from './utils';
@@ -88,6 +87,14 @@ export default defineComponent({
      */
     extra: {
       type: Object,
+    },
+    /**
+     * @zh 用于手动指定选项的 index
+     * @en index for manually specifying option
+     * @version 2.20.0
+     */
+    index: {
+      type: Number,
     },
     // private
     internal: Boolean,
@@ -138,14 +145,12 @@ export default defineComponent({
     let isValid = ref(true);
 
     if (!props.internal) {
-      const { computedIndex } = useIndex({
-        itemRef,
-        selector: `.${prefixCls}`,
-      });
+      const _index = selectCtx?.getNextSlotOptionIndex() ?? -1;
+      const index = computed(() => props.index ?? _index);
 
       const optionInfo = reactive({
         ref: itemRef,
-        index: computedIndex,
+        index,
         key,
         origin: 'slot' as const,
         value,

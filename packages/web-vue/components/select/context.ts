@@ -11,6 +11,7 @@ export interface SelectContext {
   activeKey: string | undefined;
   onSelect: (key: string, ev: Event) => void;
   setActiveKey: (key?: string) => void;
+  getNextSlotOptionIndex: () => number;
   addSlotOptionInfo: (id: number, optionInfo: OptionInfo) => void;
   removeSlotOptionInfo: (id: number) => void;
 }

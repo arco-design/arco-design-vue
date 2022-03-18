@@ -74,18 +74,22 @@ export const getOptionInfos = (
   {
     valueKey,
     origin,
+    optionInfoMap,
   }: {
     valueKey?: string;
     origin: 'options' | 'extraOptions';
+    optionInfoMap: Map<string, OptionInfo>;
   }
 ) => {
   const infos: (OptionInfo | GroupOptionInfo)[] = [];
+  optionInfoMap.clear();
 
   for (const item of options) {
     if (isGroupOption(item)) {
       const options = getOptionInfos(item.options ?? [], {
         valueKey,
         origin,
+        optionInfoMap,
       });
       if (options.length > 0) {
         infos.push({
@@ -95,12 +99,14 @@ export const getOptionInfos = (
         });
       }
     } else {
-      infos.push(
-        createOptionInfo(item, {
-          origin,
-          valueKey,
-        })
-      );
+      const optionInfo = createOptionInfo(item, {
+        origin,
+        valueKey,
+      });
+      infos.push(optionInfo);
+      if (!optionInfoMap.get(optionInfo.key)) {
+        optionInfoMap.set(optionInfo.key, optionInfo);
+      }
     }
   }
   return infos;
@@ -124,6 +130,35 @@ export const createOptionInfoMap = (
   travel(optionInfos);
 
   return optionInfoMap;
+};
+
+export const getValidOptions = (
+  optionInfos: (OptionInfo | GroupOptionInfo)[],
+  {
+    inputValue,
+    filterOption,
+  }: {
+    inputValue?: string;
+    filterOption?: FilterOption;
+  }
+) => {
+  const travel = (optionInfos: (OptionInfo | GroupOptionInfo)[]) => {
+    const options: (OptionInfo | GroupOptionInfo)[] = [];
+
+    for (const item of optionInfos) {
+      if (isGroupOptionInfo(item)) {
+        const _options = travel(item.options ?? []);
+        if (_options.length > 0) {
+          options.push({ ...item, options: _options });
+        }
+      } else if (isValidOption(item, { inputValue, filterOption })) {
+        options.push(item);
+      }
+    }
+    return options;
+  };
+
+  return travel(optionInfos);
 };
 
 export const isValidOption = (

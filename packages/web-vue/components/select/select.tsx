@@ -662,8 +662,7 @@ export default defineComponent({
     };
 
     const {
-      propOptionInfos,
-      extraOptionInfos,
+      validOptions,
       optionInfoMap,
       validOptionInfos,
       enabledOptionKeys,
@@ -702,11 +701,6 @@ export default defineComponent({
         } as TagData;
       })
     );
-
-    const internalOptionInfos = computed(() => [
-      ...propOptionInfos.value,
-      ...(showExtraOptions?.value ? extraOptionInfos.value : []),
-    ]);
 
     const getOptionContentFunc = (optionInfo: OptionInfo) => {
       if (isFunction(slots.option)) {
@@ -763,13 +757,13 @@ export default defineComponent({
           v-slots={{
             'default': () => [
               ...(slots.default?.() ?? []),
-              ...internalOptionInfos.value.map(renderOption),
+              ...validOptions.value.map(renderOption),
             ],
             'virtual-list': () => (
               <VirtualList
                 {...props.virtualListProps}
                 ref={virtualListRef}
-                data={internalOptionInfos.value}
+                data={validOptions.value}
                 v-slots={{
                   item: ({ item }: { item: OptionInfo | GroupOptionInfo }) =>
                     renderOption(item),

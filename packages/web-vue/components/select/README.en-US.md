@@ -112,6 +112,7 @@ description: When users need to select one or more from a group of similar data,
 |disabled|Whether to disable|`boolean`|`false`||
 |tag-props|Displayed tag attributes|`TagProps`|`-`|2.8.0|
 |extra|Extra data|`object`|`-`|2.10.0|
+|index|index for manually specifying option|`number`|`-`|2.20.0|
 
 
 
