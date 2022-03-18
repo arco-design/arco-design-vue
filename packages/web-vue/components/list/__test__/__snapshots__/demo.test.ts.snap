@@ -51,6 +51,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           <!---->
           <!---->
         </div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -104,6 +105,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
+                          <!---->
                         </div>
                         <!---->
                       </div>
@@ -155,6 +157,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
+                          <!---->
                         </div>
                         <!---->
                       </div>
@@ -206,6 +209,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
+                          <!---->
                         </div>
                         <!---->
                       </div>
@@ -257,6 +261,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
+                          <!---->
                         </div>
                         <!---->
                       </div>
@@ -272,6 +277,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
             </div>
           </div>
         </div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -371,6 +377,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <!---->
           <!---->
         </div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -386,50 +393,14 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\" style=\\"max-height: 200px;\\">
       <div class=\\"arco-list-header\\"> List title </div>
       <div class=\\"arco-list-content\\">
-        <div class=\\"arco-list-item\\">
-          <div class=\\"arco-list-item-main\\">
-            <!---->
-            <div class=\\"arco-list-item-content\\">Beijing Bytedance Technology Co., Ltd.</div>
-            <!---->
-          </div>
-          <!---->
-          <!---->
-        </div>
-        <div class=\\"arco-list-item\\">
-          <div class=\\"arco-list-item-main\\">
-            <!---->
-            <div class=\\"arco-list-item-content\\">Bytedance Technology Co., Ltd.</div>
+        <!---->
+        <div class=\\"arco-list-item arco-list-scroll-loading\\">
+          <div class=\\"arco-spin\\">
+            <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+                <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+              </svg></div>
             <!---->
           </div>
-          <!---->
-          <!---->
-        </div>
-        <div class=\\"arco-list-item\\">
-          <div class=\\"arco-list-item-main\\">
-            <!---->
-            <div class=\\"arco-list-item-content\\">Beijing Toutiao Technology Co., Ltd.</div>
-            <!---->
-          </div>
-          <!---->
-          <!---->
-        </div>
-        <div class=\\"arco-list-item\\">
-          <div class=\\"arco-list-item-main\\">
-            <!---->
-            <div class=\\"arco-list-item-content\\">Beijing Volcengine Technology Co., Ltd.</div>
-            <!---->
-          </div>
-          <!---->
-          <!---->
-        </div>
-        <div class=\\"arco-list-item\\">
-          <div class=\\"arco-list-item-main\\">
-            <!---->
-            <div class=\\"arco-list-item-content\\">China Beijing Bytedance Technology Co., Ltd.</div>
-            <!---->
-          </div>
-          <!---->
-          <!---->
         </div>
       </div>
       <!---->
@@ -494,6 +465,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
               <!---->
               <!---->
             </div>
+            <!---->
           </div>
           <!---->
         </div>
@@ -916,6 +888,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
           </div>
         </div>
       </div>
+      <!---->
       <!---->
     </div>
     <!---->

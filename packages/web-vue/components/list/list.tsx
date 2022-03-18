@@ -1,4 +1,11 @@
-import { computed, defineComponent, isVNode, PropType, ref } from 'vue';
+import {
+  computed,
+  defineComponent,
+  isVNode,
+  onMounted,
+  PropType,
+  ref,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
 import Grid from '../grid';
@@ -127,9 +134,32 @@ export default defineComponent({
      */
     'pageSizeChange',
   ],
+  /**
+   * @zh 头部信息
+   * @en Header
+   * @slot header
+   */
+  /**
+   * @zh 底部信息
+   * @en Footer
+   * @slot footer
+   */
+  /**
+   * @zh 列表项
+   * @en List Item
+   * @slot item
+   * @binding {number} index
+   * @binding {any} item
+   */
+  /**
+   * @zh 滚动加载状态时，滚动到底部的提示
+   * @en When scrolling loading state, scroll to the bottom tip
+   * @slot scroll-loading
+   * @version 2.20.0
+   */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('list');
-
+    const listRef = ref<HTMLElement>();
     const isVirtualList = computed(() => props.virtualListProps);
 
     const handleScroll = (e: Event) => {
@@ -140,6 +170,15 @@ export default defineComponent({
       }
       emit('scroll');
     };
+
+    onMounted(() => {
+      if (listRef.value) {
+        const { scrollTop, scrollHeight, offsetHeight } = listRef.value;
+        if (scrollHeight <= scrollTop + offsetHeight) {
+          emit('reachBottom');
+        }
+      }
+    });
 
     const { current, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, { emit });
@@ -284,7 +323,22 @@ export default defineComponent({
       );
     };
 
+    const renderScrollLoading = () => {
+      if (slots['scroll-loading']) {
+        return (
+          <div class={[`${prefixCls}-item`, `${prefixCls}-scroll-loading`]}>
+            {slots['scroll-loading']()}
+          </div>
+        );
+      }
+      return null;
+    };
+
     const renderEmpty = () => {
+      if (slots['scroll-loading']) {
+        return null;
+      }
+
       return <Empty />;
     };
 
@@ -293,6 +347,7 @@ export default defineComponent({
         <div class={`${prefixCls}-wrapper`}>
           <Spin class={`${prefixCls}-spin`} loading={props.loading}>
             <div
+              ref={listRef}
               class={cls.value}
               style={contentStyle.value}
               onScroll={handleScroll}
@@ -301,9 +356,15 @@ export default defineComponent({
                 <div class={`${prefixCls}-header`}>{slots.header()}</div>
               )}
               {isVirtualList.value && !props.gridProps ? (
-                renderVirtualList()
+                <>
+                  {renderVirtualList()}
+                  {renderScrollLoading()}
+                </>
               ) : (
-                <div class={contentCls.value}>{renderItems()}</div>
+                <div class={contentCls.value}>
+                  {renderItems()}
+                  {renderScrollLoading()}
+                </div>
               )}
               {slots.footer && (
                 <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
