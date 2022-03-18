@@ -23,12 +23,15 @@ You can customize `data` by `fieldNames`.
     :fieldNames="{
       key: 'value',
       title: 'label',
-      children: 'items'
+      children: 'items',
+      icon: 'customIcon'
     }"
     :data="treeData"
   />
 </template>
 <script>
+  import { h } from 'vue';
+  import { IconStar, IconDriveFile } from '@arco-design/web-vue/es/icon';
   export default {
     data() {
       return {
@@ -46,6 +49,7 @@ You can customize `data` by `fieldNames`.
           label: 'Branch 0-0-2',
           value: '0-0-2',
           selectable: false,
+          customIcon: () => h(IconDriveFile),
           items: [
             {
               label: 'Leaf',
@@ -57,6 +61,7 @@ You can customize `data` by `fieldNames`.
                   items: [
                     {
                       label: 'Leaf',
+                      customIcon: () => h(IconStar),
                       value: '0-0-2-1-0-0'
                     }
                   ]

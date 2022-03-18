@@ -140,7 +140,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |isLeaf|指定 isLeaf 在 TreeNodeData 中的字段名|`string`|`isLeaf`|
 |disableCheckbox|指定 disableCheckbox 在 TreeNodeData 中的字段名|`string`|`disableCheckbox`|
 |checkable|指定 checkable 在 TreeNodeData 中的字段名|`string`|`checkable`|
-
+|icon|指定 icon 在 TreeNodeData 中的字段名|`string`|`icon`|
 
 
 
