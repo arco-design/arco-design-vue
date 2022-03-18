@@ -466,7 +466,11 @@ export default defineComponent({
 
     return () => {
       const children = slots.default?.() || [];
-      fullText = getInnerText(children);
+      const newFullText = getInnerText(children);
+      if (newFullText !== fullText) {
+        fullText = newFullText;
+        calEllipsis();
+      }
 
       // 编辑中
       if (mergeEditing.value) {
