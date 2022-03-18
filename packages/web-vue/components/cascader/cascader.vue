@@ -644,10 +644,10 @@ export default defineComponent({
 
     watch(computedPopupVisible, (value) => {
       if (value) {
-        if (computedKeys.value.length > 0 && !activeKey.value) {
+        if (computedKeys.value.length > 0) {
           const lastKey = computedKeys.value[computedKeys.value.length - 1];
           const option = leafOptionMap.get(lastKey);
-          if (option) {
+          if (option && option.key !== activeKey.value) {
             setSelectedPath(option.key);
             setActiveKey(option.key);
           }
