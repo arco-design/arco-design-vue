@@ -30,15 +30,13 @@ export const useOverflow = (elementRef: Ref<HTMLElement | undefined>) => {
   };
 
   const resetOverflow = () => {
-    if (elementRef.value) {
+    if (elementRef.value && isSetOverflow.value) {
       const element = elementRef.value;
-      if (isSetOverflow.value) {
-        element.style.overflow = originStyle.overflow;
-        element.style.width = originStyle.width;
-        element.style.boxSizing = originStyle.boxSizing;
+      element.style.overflow = originStyle.overflow;
+      element.style.width = originStyle.width;
+      element.style.boxSizing = originStyle.boxSizing;
 
-        isSetOverflow.value = false;
-      }
+      isSetOverflow.value = false;
     }
   };
 
