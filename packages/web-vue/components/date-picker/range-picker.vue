@@ -686,6 +686,13 @@ export default defineComponent({
       }
     }
 
+    function emitSelectEvent(value: Array<Dayjs | undefined>) {
+      const returnValue = getReturnRangeValue(value, returnValueFormat.value);
+      const formattedValue = getFormattedValue(value, parseValueFormat.value);
+      const dateValue = getDateValue(value);
+      emit('select', returnValue, dateValue, formattedValue);
+    }
+
     function select(
       value: Array<Dayjs | undefined>,
       options?: {
@@ -699,10 +706,7 @@ export default defineComponent({
       setInputValue(undefined);
 
       if (emitSelect) {
-        const returnValue = getReturnRangeValue(value, returnValueFormat.value);
-        const formattedValue = getFormattedValue(value, parseValueFormat.value);
-        const dateValue = getDateValue(value);
-        emit('select', returnValue, dateValue, formattedValue);
+        emitSelectEvent(value);
       }
 
       if (updateHeader) {
@@ -774,10 +778,11 @@ export default defineComponent({
       );
       newValue[focusedIndex.value] = mergedOpValue;
 
+      emitSelectEvent(newValue);
       if (!needConfirm.value && isCompleteRangeValue(newValue)) {
         confirm(newValue, false);
       } else {
-        select(newValue, { emitSelect: true });
+        select(newValue);
         if (!isCompleteRangeValue(newValue)) {
           focusedIndex.value = nextFocusedIndex.value;
         }
