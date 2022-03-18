@@ -37,6 +37,8 @@ description: Refers to the use of multi-level classification to separate the opt
 
 @import ./__demo__/path.md
 
+@import ./__demo__/panel.md
+
 %%API(cascader.vue)%%
 
 %%API(cascader-panel.vue)%%

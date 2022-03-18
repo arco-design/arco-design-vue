@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-$END$
+级联菜单可以单独使用，此时为 `数据展示` 组件
 
 ---
 
 ## en-US
 
-$END$
+Cascading menu can be used alone, in this case it is the `data display` component
 
 ---
 
