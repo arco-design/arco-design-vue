@@ -73,8 +73,7 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   document.body.appendChild(container);
 
   return {
-    // eslint-disable-next-line no-restricted-globals
-    close,
+    close: handleClose,
   };
 };
 

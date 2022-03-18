@@ -88,7 +88,7 @@ import { useOverflow } from '../_hooks/use-overflow';
 import { getElement, off, on } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { isBoolean, isFunction, isNumber } from '../_utils/is';
-import { CODE } from '../_utils/keyboard';
+import { KEYBOARD_KEY } from '../_utils/keyboard';
 
 const DRAWER_PLACEMENTS = ['top', 'right', 'bottom', 'left'] as const;
 type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];
@@ -326,7 +326,7 @@ export default defineComponent({
     let globalKeyDownListener = false;
 
     const handleGlobalKeyDown = (ev: KeyboardEvent) => {
-      if (props.escToClose && ev.code === CODE.ESC) {
+      if (props.escToClose && ev.key === KEYBOARD_KEY.ESC) {
         handleCancel();
       }
     };
