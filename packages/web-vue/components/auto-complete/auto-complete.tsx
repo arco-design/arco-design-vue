@@ -200,7 +200,7 @@ export default defineComponent({
       handleChange(value);
     };
 
-    const { propOptionInfos, optionInfoMap, validOptionInfos, handleKeyDown } =
+    const { validOptions, optionInfoMap, validOptionInfos, handleKeyDown } =
       useSelect({
         options: data,
         inputValue: computedValue,
@@ -244,9 +244,7 @@ export default defineComponent({
     const renderDropdown = () => {
       return (
         <SelectDropdown ref={dropdownRef} class={`${prefixCls}-dropdown`}>
-          {propOptionInfos.value.map((info) =>
-            renderOption(info as OptionInfo)
-          )}
+          {validOptions.value.map((info) => renderOption(info as OptionInfo))}
         </SelectDropdown>
       );
     };
@@ -256,6 +254,7 @@ export default defineComponent({
         v-slots={{ content: renderDropdown }}
         trigger="focus"
         position="bl"
+        animationName="slide-dynamic-origin"
         popupVisible={computedPopupVisible.value}
         clickToClose={false}
         preventFocus={true}

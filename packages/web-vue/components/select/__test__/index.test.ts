@@ -24,19 +24,17 @@ describe('Select', () => {
     const input = wrapper.find('input');
     await input.trigger('click');
     const dropdown = wrapper.findComponent({ name: 'SelectDropdown' });
-    await input.trigger('keydown', { code: 'ArrowUp' });
+    await input.trigger('keydown', { key: 'ArrowUp' });
 
     expect(dropdown.find('.arco-select-option-active').text()).toBe(
       'Guangzhou'
     );
 
-    await input.trigger('keydown', { code: 'ArrowDown' });
+    await input.trigger('keydown', { key: 'ArrowDown' });
 
-    expect(dropdown.find('.arco-select-option-active').text()).toBe(
-      'Beijing'
-    );
+    expect(dropdown.find('.arco-select-option-active').text()).toBe('Beijing');
 
-    await input.trigger('keydown', { code: 'Enter' });
+    await input.trigger('keydown', { key: 'Enter' });
 
     expect(wrapper.emitted('change')?.[0]).toEqual(['Beijing']);
   });
@@ -87,7 +85,7 @@ describe('Select', () => {
     const input = wrapper.find('input');
     await input.trigger('click');
     await input.setValue('Xian');
-    await input.trigger('keydown', { code: 'Enter' });
+    await input.trigger('keydown', { key: 'Enter' });
 
     expect(wrapper.emitted('change')?.[0]).toEqual(['Xian']);
   });

@@ -4,7 +4,7 @@ import { FilterOption, Option } from '../interface';
 import { VirtualListRef } from '../../_components/virtual-list/interface';
 import { getRelativeRect } from '../../_utils/dom';
 import { useOptions } from './use-options';
-import { CODE, getKeyDownHandler } from '../../_utils/keyboard';
+import { KEYBOARD_KEY, getKeyDownHandler } from '../../_utils/keyboard';
 import { selectInjectionKey } from '../context';
 
 export const useSelect = ({
@@ -41,11 +41,11 @@ export const useSelect = ({
   onPopupVisibleChange: (visible: boolean) => void;
 }) => {
   const {
-    propOptionInfos,
-    extraOptionInfos,
+    validOptions,
     optionInfoMap,
     validOptionInfos,
     enabledOptionKeys,
+    getNextSlotOptionIndex,
     addSlotOptionInfo,
     removeSlotOptionInfo,
   } = useOptions({
@@ -136,7 +136,7 @@ export const useSelect = ({
   const handleKeyDown = getKeyDownHandler(
     new Map([
       [
-        CODE.ENTER,
+        KEYBOARD_KEY.ENTER,
         (e: Event) => {
           if (popupVisible.value) {
             if (activeKey.value) {
@@ -149,14 +149,14 @@ export const useSelect = ({
         },
       ],
       [
-        CODE.ESC,
+        KEYBOARD_KEY.ESC,
         (e: Event) => {
           onPopupVisibleChange(false);
           e.preventDefault();
         },
       ],
       [
-        CODE.ARROW_DOWN,
+        KEYBOARD_KEY.ARROW_DOWN,
         (e: Event) => {
           const next = getNextActiveKey('down');
           if (next) {
@@ -167,7 +167,7 @@ export const useSelect = ({
         },
       ],
       [
-        CODE.ARROW_UP,
+        KEYBOARD_KEY.ARROW_UP,
         (e: Event) => {
           const next = getNextActiveKey('up');
           if (next) {
@@ -192,14 +192,14 @@ export const useSelect = ({
       activeKey,
       setActiveKey,
       onSelect,
+      getNextSlotOptionIndex,
       addSlotOptionInfo,
       removeSlotOptionInfo,
     })
   );
 
   return {
-    propOptionInfos,
-    extraOptionInfos,
+    validOptions,
     optionInfoMap,
     validOptionInfos,
     enabledOptionKeys,
