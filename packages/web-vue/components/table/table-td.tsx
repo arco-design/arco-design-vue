@@ -26,9 +26,6 @@ type TdTypes = typeof TD_TYPES[number];
 export default defineComponent({
   name: 'Td',
   props: {
-    isSorted: {
-      type: Boolean,
-    },
     rowIndex: Number,
     record: {
       type: Object as PropType<TableData>,
@@ -73,13 +70,6 @@ export default defineComponent({
       type: Number,
       default: 0,
     },
-    resizing: Boolean,
-    loadMore: Function as PropType<
-      (record: TableData, done: (children: TableData[]) => void) => void
-    >,
-    addLazyLoadData: Function as PropType<
-      (children: TableData[] | undefined, record: TableData) => void
-    >,
     renderExpandBtn: {
       type: Function,
     },
@@ -94,12 +84,24 @@ export default defineComponent({
       })
     );
 
+    const isSorted = computed(
+      () =>
+        props.column?.dataIndex &&
+        tableCtx.sorter?.field === props.column.dataIndex
+    );
+
+    const resizing = computed(
+      () =>
+        props.column?.dataIndex &&
+        tableCtx.resizingColumn === props.column.dataIndex
+    );
+
     const cls = computed(() => [
       `${prefixCls}-td`,
       `${prefixCls}-td-align-${props.column?.align ?? 'left'}`,
       {
-        [`${prefixCls}-col-sorted`]: props.isSorted,
-        [`${prefixCls}-td-resizing`]: props.resizing,
+        [`${prefixCls}-col-sorted`]: isSorted.value,
+        [`${prefixCls}-td-resizing`]: resizing.value,
       },
       ...getFixedCls(prefixCls, props.column),
     ]);
@@ -119,6 +121,13 @@ export default defineComponent({
     const renderContent = () => {
       if (slots.default) {
         return slots.default();
+      }
+      if (props.column.slots?.cell) {
+        return props.column.slots.cell({
+          record: props.record,
+          column: props.column,
+          rowIndex: props.rowIndex ?? -1,
+        });
       }
       if (props.column.render) {
         return props.column.render({
@@ -141,15 +150,15 @@ export default defineComponent({
 
     const handleClick = (ev: Event) => {
       if (
-        isFunction(props.loadMore) &&
+        isFunction(tableCtx.loadMore) &&
         !props.record?.isLeaf &&
         !props.record?.children
       ) {
         isLoading.value = true;
         new Promise<TableData[] | undefined>((resolve) => {
-          props.loadMore?.(props.record, resolve);
+          tableCtx.loadMore?.(props.record, resolve);
         }).then((children?: TableData[]) => {
-          props.addLazyLoadData?.(children, props.record);
+          tableCtx.addLazyLoadData?.(children, props.record);
           isLoading.value = false;
         });
       }

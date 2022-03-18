@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-$END$
+开启 `feedback` 可以让部分输入组件展示当前状态信息
 
 ---
 
 ## en-US
 
-$END$
+Enable `feedback` to allow some input components to display current state information
 
 ---
 

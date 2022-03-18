@@ -27,8 +27,6 @@ import {
   isString,
 } from '../_utils/is';
 import type {
-  Filters,
-  Sorter,
   TableColumn,
   TableExpandable,
   TableOperationColumn,
@@ -40,7 +38,7 @@ import type {
   TableDraggable,
   TableChangeExtra,
 } from './interface';
-import { getColumnsFromSlot, getGroupColumns, spliceFromPath } from './utils';
+import { getGroupColumns, spliceFromPath } from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useExpand } from './hooks/use-expand';
 import { usePagination } from './hooks/use-pagination';
@@ -60,14 +58,14 @@ import OperationTd from './table-operation-td';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import ResizeObserver from '../_components/resize-observer';
 import { VirtualListProps } from '../_components/virtual-list/interface';
-import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
-import { getChildrenComponents } from '../_utils/vue-utils';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useDrag } from './hooks/use-drag';
 import { useColumnResize } from './hooks/use-column-resize';
 import { tableInjectionKey } from './context';
+import { useFilter } from './hooks/use-filter';
+import { useSorter } from './hooks/use-sorter';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -173,7 +171,12 @@ export default defineComponent({
      * @en Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values.
      */
     scroll: {
-      type: Object as PropType<{ x?: number | string; y?: number | string }>,
+      type: Object as PropType<{
+        x?: number | string;
+        y?: number | string;
+        minWidth?: number | string;
+        maxHeight?: number | string;
+      }>,
     },
     /**
      * @zh 分页的属性配置
@@ -306,7 +309,6 @@ export default defineComponent({
     columnResizable: {
       type: Boolean,
     },
-
     // for JSX
     onExpand: {
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
@@ -496,7 +498,8 @@ export default defineComponent({
    * @version 2.18.0
    */
   setup(props, { emit, slots }) {
-    const { rowKey, loadMore } = toRefs(props);
+    const { columns, rowKey, rowSelection, loadMore, filterIconAlignLeft } =
+      toRefs(props);
     const prefixCls = getPrefixCls('table');
     const bordered = computed(() => {
       if (isObject(props.bordered)) {
@@ -507,13 +510,15 @@ export default defineComponent({
 
     // whether to scroll
     const isScroll = computed(() => {
-      const x = Boolean(props.scroll?.x);
-      const y = Boolean(props.scroll?.y);
+      const x = Boolean(props.scroll?.x || props.scroll?.minWidth);
+      const y = Boolean(props.scroll?.y || props.scroll?.maxHeight);
       return { x, y };
     });
 
     const theadRef = ref<HTMLElement>();
     const tbodyRef = ref<HTMLElement>();
+
+    // TODO: merge to one object
     const thRefs = ref<{
       operation: HTMLElement[];
       data: Record<string, HTMLElement>;
@@ -541,26 +546,27 @@ export default defineComponent({
       });
     });
 
-    const columnsSlot = usePickSlots(slots, 'columns');
+    const slotColumnMap = reactive(new Map<number, TableColumn>());
 
     const slotColumns = computed(() => {
-      if (columnsSlot.value) {
-        return getColumnsFromSlot(
-          getChildrenComponents(columnsSlot.value(), 'TableColumn')
-        );
+      if (slotColumnMap.size > 0) {
+        return Array.from(slotColumnMap.values());
       }
       return undefined;
     });
 
     // 拆解分组后的数据表头信息
+    const dataColumnMap = new Map<string, TableColumn>();
     const dataColumns = ref<TableColumn[]>([]);
     const groupColumns = ref<TableColumn[][]>([]);
 
     watch(
-      () => [props.columns, slotColumns.value],
-      ([columns, slotColumns]) => {
-        const result = getGroupColumns(slotColumns ?? columns ?? []);
-        // @ts-ignore
+      [columns, slotColumnMap],
+      ([columns, _]) => {
+        const result = getGroupColumns(
+          slotColumns.value ?? columns ?? [],
+          dataColumnMap
+        );
         dataColumns.value = result.dataColumns;
         groupColumns.value = result.groupColumns;
       },
@@ -577,7 +583,11 @@ export default defineComponent({
     watchEffect(() => {
       let _hasLeftFixedColumn = false;
       let _hasRightFixedColumn = false;
-      if (props.rowSelection?.fixed || props.expandable?.fixed) {
+      if (
+        props.rowSelection?.fixed ||
+        props.expandable?.fixed ||
+        props.draggable?.fixed
+      ) {
         _hasLeftFixedColumn = true;
       }
       for (const column of dataColumns.value) {
@@ -604,77 +614,31 @@ export default defineComponent({
       return false;
     });
 
-    // 外部筛选项，优先使用
-    const outerFilters = computed(() => {
-      const filters: Filters = {};
-      for (const item of dataColumns.value) {
-        if (item.dataIndex && item.filterable?.filteredValue) {
-          filters[item.dataIndex] = item.filterable.filteredValue;
-        }
-      }
-      return filters;
-    });
+    const { _filters, computedFilters } = useFilter({ columns: dataColumns });
+    const { _sorter, computedSorter } = useSorter({ columns: dataColumns });
 
-    const getDefaultFilters = () => {
-      const filters: Filters = {};
-      for (const item of dataColumns.value) {
-        if (item.dataIndex && item.filterable?.defaultFilteredValue) {
-          filters[item.dataIndex] = item.filterable.defaultFilteredValue;
-        }
-      }
-      return filters;
+    const handleChange = (
+      type: 'pagination' | 'sorter' | 'filter' | 'drag'
+    ) => {
+      const extra: TableChangeExtra = {
+        type,
+        page: page.value,
+        pageSize: pageSize.value,
+        sorter: computedSorter.value,
+        filters: computedFilters.value,
+        dragTarget: type === 'drag' ? dragState.data : undefined,
+      };
+      emit('change', flattenData.value, extra);
     };
-
-    const getDefaultSorter = (): Sorter => {
-      for (const item of dataColumns.value) {
-        // get first enabled sorter
-        if (item.dataIndex && item.sortable?.defaultSortOrder) {
-          return {
-            filed: item.dataIndex,
-            direction: item.sortable.defaultSortOrder,
-          };
-        }
-      }
-      return {};
-    };
-
-    const _filters = ref(getDefaultFilters());
-    const _sorter = ref(getDefaultSorter());
-
-    const computedFilters = computed<Filters>(() => ({
-      ..._filters.value,
-      ...outerFilters.value,
-    }));
-
-    const computedSorter = computed<Sorter>(() => {
-      for (const item of dataColumns.value) {
-        if (item.dataIndex && item.sortable) {
-          // Take the first existing collation
-          const direction = isString(item.sortable.sortOrder)
-            ? item.sortable.sortOrder
-            : _sorter.value.filed === item.dataIndex
-            ? _sorter.value.direction
-            : '';
-          if (direction) {
-            return {
-              filed: item.dataIndex,
-              direction,
-            };
-          }
-        }
-      }
-      return {} as Sorter;
-    });
 
     const handleFilterChange = (
       dataIndex: string,
       filteredValues: string[]
     ) => {
-      const newFilters = {
+      _filters.value = {
         ...computedFilters.value,
         [dataIndex]: filteredValues,
       };
-      _filters.value = newFilters;
 
       emit('filterChange', dataIndex, filteredValues);
       handleChange('filter');
@@ -684,26 +648,15 @@ export default defineComponent({
       dataIndex: string,
       direction: 'ascend' | 'descend' | ''
     ) => {
-      const newSorter: Sorter = direction
+      _sorter.value = direction
         ? {
-            filed: dataIndex,
+            field: dataIndex,
             direction,
           }
-        : {};
-
-      _sorter.value = newSorter;
+        : undefined;
 
       emit('sorterChange', dataIndex, direction);
       handleChange('sorter');
-    };
-
-    const getColumnByDataIndex = (dataIndex: string) => {
-      for (const item of dataColumns.value) {
-        if (item.dataIndex === dataIndex) {
-          return item;
-        }
-      }
-      return undefined;
     };
 
     const disabledKeys = new Set();
@@ -769,15 +722,12 @@ export default defineComponent({
       currentSelectedRowKeys,
       handleSelect,
       handleSelectAll,
-    } = useRowSelection(
-      props,
-      {
-        allRowKeys,
-        currentAllRowKeys,
-        currentAllEnabledRowKeys,
-      },
-      emit
-    );
+    } = useRowSelection({
+      rowSelection,
+      currentAllRowKeys,
+      currentAllEnabledRowKeys,
+      emit,
+    });
 
     const { expandedRowKeys, handleExpand } = useExpand(
       props,
@@ -799,7 +749,7 @@ export default defineComponent({
     const isValidRecord = (record: TableData) => {
       for (const field of Object.keys(computedFilters.value)) {
         const filteredValues = computedFilters.value[field];
-        const column = getColumnByDataIndex(field);
+        const column = dataColumnMap.get(field);
         if (column && column.filterable?.filter && filteredValues.length > 0) {
           const result = column.filterable?.filter(filteredValues, record);
           if (!result) {
@@ -809,8 +759,6 @@ export default defineComponent({
       }
       return true;
     };
-
-    const dataMap = new Map<string, TableData>();
 
     const {
       dragState,
@@ -825,63 +773,85 @@ export default defineComponent({
     const { resizingColumn, columnWidth, handleThMouseDown } =
       useColumnResize(thRefs);
 
-    const processData = (origin: TableData[]) => {
+    const processedData = computed(() => {
       const travel = (data: TableData[], prefix?: string) => {
         const result: TableData[] = [];
 
         for (const _record of data) {
-          const record = { ..._record };
-          const key = `${prefix ? `${prefix}_` : ''}record_${props.rowKey}_${
-            record[props.rowKey]
-          }`;
-          dataMap.set(key, record);
-          record._key = key;
-
-          if (isValidRecord(record)) {
-            // add lazy load children
-            if (
-              props.loadMore &&
-              !record.isLeaf &&
-              !record.children &&
-              lazyLoadData[record[props.rowKey]]
-            ) {
-              record.children = lazyLoadData[record[props.rowKey]];
-            }
-
-            if (record.children) {
-              record.children = travel(record.children, key);
-            }
-            result.push(record);
+          const record: TableData = {
+            ..._record,
+            _key: `${prefix ? `${prefix}_` : ''}record_${props.rowKey}_${
+              _record[props.rowKey]
+            }`,
+          };
+          if (
+            props.loadMore &&
+            !record.isLeaf &&
+            !record.children &&
+            lazyLoadData[record[props.rowKey]]
+          ) {
+            record.children = lazyLoadData[record[props.rowKey]];
           }
+          if (record.children) {
+            record.children = travel(record.children, record._key);
+          }
+          record._subtree = Boolean(
+            record.children
+              ? props.hideExpandButtonOnEmpty
+                ? record.children.length > 0
+                : true
+              : props.loadMore && !record.isLeaf
+          );
+
+          result.push(record);
         }
         return result;
       };
-      dataMap.clear();
 
-      const data = travel(isArray(origin) ? origin : []);
+      return travel(props.data ?? []);
+    });
 
+    const validData = computed(() => {
+      const travel = (data: TableData[]) =>
+        data.filter((record) => {
+          if (isValidRecord(record)) {
+            if (record.children) {
+              record.children = travel(record.children);
+            }
+
+            return true;
+          }
+          return false;
+        });
+
+      return Object.keys(computedFilters.value).length > 0
+        ? travel(processedData.value)
+        : processedData.value;
+    });
+
+    const sortedData = computed(() => {
+      const data = [...validData.value];
       if (data.length > 0) {
-        if (computedSorter.value.filed) {
-          const column = getColumnByDataIndex(computedSorter.value.filed);
+        if (computedSorter.value?.field) {
+          const column = dataColumnMap.get(computedSorter.value.field);
           if (column && column.sortable?.sorter !== true) {
+            const { field, direction } = computedSorter.value;
             data.sort((a, b) => {
-              const valueA = a[computedSorter.value.filed];
-              const valueB = b[computedSorter.value.filed];
+              const valueA = a[field];
+              const valueB = b[field];
 
               if (
                 column.sortable?.sorter &&
                 isFunction(column.sortable.sorter)
               ) {
                 return column.sortable.sorter(a, b, {
-                  dataIndex: computedSorter.value.filed,
-                  direction: computedSorter.value.direction,
+                  dataIndex: field,
+                  direction,
                 });
               }
 
               const result = valueA > valueB ? 1 : -1;
-              return computedSorter.value.direction === 'descend'
-                ? -result
-                : result;
+              return direction === 'descend' ? -result : result;
             });
           }
         }
@@ -891,39 +861,20 @@ export default defineComponent({
           spliceFromPath(data, dragState.targetPath, target);
         }
       }
-
       return data;
-    };
-
-    // 数据处理（筛选和排序）
-    const processedData = computed(() => processData(props.data));
+    });
 
     const { page, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, emit);
 
-    const handleChange = (
-      type: 'pagination' | 'sorter' | 'filter' | 'drag'
-    ) => {
-      const extra: TableChangeExtra = {
-        type,
-        page: page.value,
-        pageSize: pageSize.value,
-        sorter: computedSorter.value,
-        filters: computedFilters.value,
-        dragTarget:
-          type === 'drag' ? dataMap.get(dragState.sourceKey) : undefined,
-      };
-      emit('change', flattenData.value, extra);
-    };
-
     const flattenData = computed(() => {
-      if (props.pagination && processedData.value.length > pageSize.value) {
-        return processedData.value.slice(
+      if (props.pagination && sortedData.value.length > pageSize.value) {
+        return sortedData.value.slice(
           (page.value - 1) * pageSize.value,
           page.value * pageSize.value
         );
       }
-      return processedData.value;
+      return sortedData.value;
     });
 
     const containerRef = ref<HTMLDivElement>();
@@ -990,19 +941,23 @@ export default defineComponent({
       setAlignPosition();
     };
 
-    const handleRowClick = (record: TableData) => {
-      emit('rowClick', record);
+    const handleRowClick = (record: TableData, ev: Event) => {
+      emit('rowClick', record, ev);
     };
 
-    const handleCellClick = (record: TableData, column: TableColumn) => {
-      emit('cellClick', record, column);
+    const handleCellClick = (
+      record: TableData,
+      column: TableColumn,
+      ev: Event
+    ) => {
+      emit('cellClick', record, column, ev);
     };
 
-    const handleHeaderClick = (column: TableColumn) => {
-      emit('headerClick', column);
+    const handleHeaderClick = (column: TableColumn, ev: Event) => {
+      emit('headerClick', column, ev);
     };
 
-    const getOperations = () => {
+    const operations = computed(() => {
       const operations: TableOperationColumn[] = [];
       const hasFixedColumn =
         hasLeftFixedColumn.value || hasRightFixedColumn.value;
@@ -1045,20 +1000,32 @@ export default defineComponent({
       return isFunction(operationsFn)
         ? operationsFn({ dragHandle, expand, selection })
         : operations;
-    };
-
-    const operations = computed(() => getOperations());
+    });
 
     const contentStyle = computed(() => {
       if (isScroll.value.x && flattenData.value.length > 0) {
-        return {
+        const style: CSSProperties = {
           width: isNumber(props.scroll?.x)
             ? `${props.scroll?.x}px`
             : props.scroll?.x,
         };
+        if (props.scroll?.minWidth) {
+          style.minWidth = isNumber(props.scroll.minWidth)
+            ? `${props.scroll.minWidth}px`
+            : props.scroll.minWidth;
+        }
+        return style;
       }
       return undefined;
     });
+
+    const addColumn = (id: number, column: TableColumn) => {
+      slotColumnMap.set(id, column);
+    };
+
+    const removeColumn = (id: number) => {
+      slotColumnMap.delete(id);
+    };
 
     provide(
       tableInjectionKey,
@@ -1066,6 +1033,15 @@ export default defineComponent({
         loadMore,
         addLazyLoadData,
         slots,
+        sorter: computedSorter,
+        filters: computedFilters,
+        filterIconAlignLeft,
+        resizingColumn,
+        addColumn,
+        removeColumn,
+        onSorterChange: handleSorterChange,
+        onFilterChange: handleFilterChange,
+        onThMouseDown: handleThMouseDown,
       })
     );
 
@@ -1156,11 +1132,8 @@ export default defineComponent({
     };
 
     const renderExpandContent = (record: TableData) => {
-      if (isFunction(record.expand)) {
-        return record.expand();
-      }
       if (record.expand) {
-        return record.expand;
+        return isFunction(record.expand) ? record.expand() : record.expand;
       }
       if (slots['expand-row']) {
         return slots['expand-row']({ record });
@@ -1281,16 +1254,6 @@ export default defineComponent({
       const currentPath = (indexPath ?? []).concat(rowIndex);
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
-      const hasSubTree = Boolean(
-        record.children
-          ? props.hideExpandButtonOnEmpty
-            ? record.children.length > 0
-            : true
-          : props.loadMore && !record.isLeaf
-      );
-
-      const subTreeHasSubData =
-        record.children?.some((record) => Boolean(record.children)) ?? false;
 
       const scrollContainer = isScroll.value.y
         ? tbodyRef.value
@@ -1303,7 +1266,7 @@ export default defineComponent({
           ? {
               draggable: true,
               onDragstart: (ev: DragEvent) =>
-                handleDragStart(ev, record._key, currentPath),
+                handleDragStart(ev, record._key, currentPath, record),
               onDragend: (ev: DragEvent) => handleDragEnd(ev),
             }
           : {};
@@ -1337,8 +1300,8 @@ export default defineComponent({
             v-slots={{
               tr: slots.tr,
             }}
-            checked={selectedRowKeys.value?.indexOf(currentKey) > -1}
-            onClick={(e: Event) => handleRowClick(record)}
+            checked={selectedRowKeys.value?.includes(currentKey)}
+            onClick={(ev: Event) => handleRowClick(record, ev)}
           >
             {operations.value.map((operation, index) => {
               const style =
@@ -1387,13 +1350,16 @@ export default defineComponent({
               const extraProps =
                 index === 0
                   ? {
-                      showExpandBtn: hasSubTree,
-                      indentSize: hasSubTree ? indentSize - 20 : indentSize,
+                      showExpandBtn: record._subtree,
+                      indentSize: record._subtree
+                        ? indentSize - 20
+                        : indentSize,
                     }
                   : {};
 
               const style =
                 isVirtualList.value &&
+                column.dataIndex &&
                 thRefs.value.data[column.dataIndex]?.offsetWidth
                   ? {
                       width: `${
@@ -1420,32 +1386,23 @@ export default defineComponent({
                   style={style}
                   rowIndex={rowIndex}
                   record={record}
-                  isSorted={
-                    Boolean(computedSorter.value.filed) &&
-                    column.dataIndex === computedSorter.value.filed
-                  }
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
-                  loadMore={props.loadMore}
-                  addLazyLoadData={addLazyLoadData}
                   rowSpan={rowspan}
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
-                  resizing={resizingColumn.value === column.dataIndex}
                   {...extraProps}
-                  onClick={(e: Event) => handleCellClick(record, column)}
+                  onClick={(ev: Event) => handleCellClick(record, column, ev)}
                 />
               );
             })}
           </Tr>
           {showExpand &&
-            (hasSubTree
+            (record._subtree
               ? record.children?.map((item, index) =>
                   renderRecord(item, index, {
-                    indentSize: subTreeHasSubData
-                      ? indentSize + props.indentSize + 20
-                      : indentSize + props.indentSize,
+                    indentSize: indentSize + props.indentSize,
                     indexPath: currentPath,
                     allowDrag: allowDrag && !isDragTarget,
                   })
@@ -1515,11 +1472,6 @@ export default defineComponent({
                 />
               ))}
             {row.map((column, index) => {
-              const sortOrder =
-                column.dataIndex === computedSorter.value.filed
-                  ? computedSorter.value.direction
-                  : '';
-
               const resizable =
                 props.columnResizable &&
                 Boolean(column.dataIndex) &&
@@ -1537,15 +1489,8 @@ export default defineComponent({
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
-                  sortOrder={sortOrder}
-                  filterIconAlignLeft={props.filterIconAlignLeft}
-                  filterValue={computedFilters.value[column.dataIndex] ?? []}
                   resizable={resizable}
-                  resizing={resizingColumn.value === column.dataIndex}
-                  onSorterChange={handleSorterChange}
-                  onFilterChange={handleFilterChange}
-                  onClick={(e: Event) => handleHeaderClick(column)}
-                  onThMouseDown={handleThMouseDown}
+                  onClick={(ev: Event) => handleHeaderClick(column, ev)}
                 />
               );
             })}
@@ -1632,28 +1577,34 @@ export default defineComponent({
       );
     };
 
-    const renderTable = (content?: Slot) => (
-      <>
-        <div
-          ref={containerRef}
-          class={[`${prefixCls}-container`, tableCls.value]}
-          onScroll={handleScroll}
-        >
-          <div class={`${prefixCls}-content`}>
-            {content ? (
-              <table cellpadding={0} cellspacing={0}>
-                {content()}
-              </table>
-            ) : (
-              renderContent()
-            )}
+    const renderTable = (content?: Slot) => {
+      const style = props.scroll?.maxHeight
+        ? { maxHeight: props.scroll.maxHeight }
+        : undefined;
+      return (
+        <>
+          <div
+            ref={containerRef}
+            class={[`${prefixCls}-container`, tableCls.value]}
+            style={style}
+            onScroll={handleScroll}
+          >
+            <div class={`${prefixCls}-content`}>
+              {content ? (
+                <table cellpadding={0} cellspacing={0}>
+                  {content()}
+                </table>
+              ) : (
+                renderContent()
+              )}
+            </div>
           </div>
-        </div>
-        {slots.footer && (
-          <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
-        )}
-      </>
-    );
+          {slots.footer && (
+            <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
+          )}
+        </>
+      );
+    };
 
     const renderPagination = () => {
       const paginationProps = isObject(props.pagination)
@@ -1669,7 +1620,7 @@ export default defineComponent({
         <div class={paginationCls.value}>
           {slots['pagination-left']?.()}
           <Pagination
-            total={processedData.value.length}
+            total={validData.value.length}
             current={page.value}
             pageSize={pageSize.value}
             onChange={(page: number) => {
@@ -1701,6 +1652,7 @@ export default defineComponent({
 
       return (
         <div class={cls.value} style={style.value}>
+          {slots.columns?.()}
           <Spin {...spinProps.value}>
             {props.pagination !== false &&
               flattenData.value.length > 0 &&

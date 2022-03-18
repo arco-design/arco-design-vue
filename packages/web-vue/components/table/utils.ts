@@ -1,10 +1,5 @@
 import type { CSSProperties, VNode } from 'vue';
-import {
-  TableCell,
-  TableColumn,
-  TableData,
-  TableOperationColumn,
-} from './interface';
+import { TableColumn, TableData, TableOperationColumn } from './interface';
 import { isArray, isNull, isUndefined } from '../_utils/is';
 import {
   resolveProps,
@@ -51,10 +46,12 @@ const getTotalHeaderRows = (columns: TableColumn[]): number => {
 
 // Get the grouped header row data
 export const getGroupColumns = (
-  columns: TableColumn[]
-): { dataColumns: TableColumn[]; groupColumns: TableColumn[][] } => {
+  columns: TableColumn[],
+  columnMap: Map<string, TableColumn>
+) => {
   const totalHeaderRows = getTotalHeaderRows(columns);
 
+  columnMap.clear();
   const dataColumns: TableColumn[] = [];
   const groupColumns: TableColumn[][] = [...Array(totalHeaderRows)].map(
     () => []
@@ -70,7 +67,7 @@ export const getGroupColumns = (
     fixed?: 'left' | 'right'
   ) => {
     for (const item of columns) {
-      const cell: TableCell = { ...item };
+      const cell: TableColumn = { ...item };
       if (isArray(cell.children)) {
         const colSpan = getDataColumnsNumber(cell.children);
         if (colSpan > 1) {
@@ -98,6 +95,7 @@ export const getGroupColumns = (
         }
 
         // dataColumns和groupColumns公用一个cell的引用
+        columnMap.set(cell.dataIndex, cell);
         dataColumns.push(cell);
         groupColumns[level].push(cell);
       }
@@ -221,25 +219,6 @@ export const getFixedCls = (
     ];
   }
   return [];
-};
-
-export const getFiltersAndSorter = (columns: TableColumn[]) => {
-  const filters: Record<string, any> = {};
-  const sorter: { field?: string; direction?: string } = {};
-
-  for (const item of columns) {
-    if (item.filterable) {
-      filters[item.dataIndex] =
-        item.filterable.filteredValue ?? item.filterable.defaultFilteredValue;
-    }
-    if (item.sortable && !sorter.field) {
-      sorter.field = item.dataIndex;
-      sorter.direction =
-        item.sortable.sortOrder ?? item.sortable.defaultSortOrder;
-    }
-  }
-
-  return { filters, sorter };
 };
 
 export const getStyle = (

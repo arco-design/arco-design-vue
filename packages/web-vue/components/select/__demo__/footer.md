@@ -12,7 +12,7 @@ title:
 
 ## en-US
 
-$END$
+custom dropdown menu footer
 
 ---
 

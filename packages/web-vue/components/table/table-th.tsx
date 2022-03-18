@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType, ref } from 'vue';
+import { computed, defineComponent, inject, PropType, toRefs } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Checkbox from '../checkbox';
 import Radio from '../radio';
@@ -7,19 +7,20 @@ import Trigger from '../trigger';
 import IconCaretDown from '../icon/icon-caret-down';
 import IconCaretUp from '../icon/icon-caret-up';
 import IconFilter from '../icon/icon-filter';
-import { TableCell, TableColumn, TableOperationColumn } from './interface';
+import { TableColumn, TableOperationColumn } from './interface';
 import { useColumnSorter } from './hooks/use-column-sorter';
 import { useColumnFilter } from './hooks/use-column-filter';
 import { useI18n } from '../locale';
 import { getFixedCls, getStyle } from './utils';
 import { isBoolean, isFunction } from '../_utils/is';
 import IconHover from '../_components/icon-hover.vue';
+import { TableContext, tableInjectionKey } from './context';
 
 export default defineComponent({
   name: 'Th',
   props: {
     column: {
-      type: Object as PropType<TableCell>,
+      type: Object as PropType<TableColumn>,
       default: () => ({}),
     },
     operations: {
@@ -30,41 +31,42 @@ export default defineComponent({
       type: Array as PropType<TableColumn[]>,
       default: () => [],
     },
-    sortOrder: {
-      type: String,
-    },
-    filterValue: {
-      type: Array as PropType<string[]>,
-    },
-    filterIconAlignLeft: {
-      type: Boolean,
-      default: false,
-    },
     resizable: Boolean,
-    resizing: Boolean,
-    onThMouseDown: {
-      type: Function as PropType<(ev: MouseEvent, dataIndex: string) => void>,
-    },
   },
-  emits: ['sorterChange', 'filterChange'],
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
+    const { column } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const { t } = useI18n();
 
+    const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
+
+    const resizing = computed(
+      () =>
+        props.column?.dataIndex &&
+        tableCtx.resizingColumn === props.column.dataIndex
+    );
+
     const filterIconAlignLeft = computed(() => {
-      if (isBoolean(props.column?.filterable?.alignLeft)) {
-        return props.column.filterable?.alignLeft;
+      if (
+        props.column?.filterable &&
+        isBoolean(props.column.filterable.alignLeft)
+      ) {
+        return props.column.filterable.alignLeft;
       }
-      return props.filterIconAlignLeft;
+      return tableCtx.filterIconAlignLeft;
     });
 
     const {
+      sortOrder,
       hasSorter,
       hasAscendBtn,
       hasDescendBtn,
       nextSortOrder,
       handleClickSorter,
-    } = useColumnSorter(props, emit);
+    } = useColumnSorter({
+      column,
+      tableCtx,
+    });
 
     const {
       filterPopupVisible,
@@ -77,10 +79,22 @@ export default defineComponent({
       handleRadioFilterChange,
       handleFilterConfirm,
       handleFilterReset,
-    } = useColumnFilter(props, emit);
+    } = useColumnFilter({
+      column,
+      tableCtx,
+    });
 
     const renderFilterContent = () => {
       const { filterable } = props.column;
+
+      if (filterable?.slotName) {
+        return tableCtx?.slots?.[filterable?.slotName]?.({
+          filterValue: columnFilterValue.value,
+          setFilterValue,
+          handleFilterConfirm,
+          handleFilterReset,
+        });
+      }
 
       if (filterable?.renderContent) {
         return filterable.renderContent({
@@ -94,7 +108,7 @@ export default defineComponent({
       return (
         <div class={`${prefixCls}-filters-content`}>
           <ul class={`${prefixCls}-filters-list`}>
-            {filterable?.filters.map((item, index) => {
+            {filterable?.filters?.map((item, index) => {
               return (
                 <li class={`${prefixCls}-filters-item`} key={index}>
                   {isMultipleFilter.value ? (
@@ -135,7 +149,7 @@ export default defineComponent({
     const renderFilter = () => {
       const { filterable } = props.column;
 
-      if (!filterable || filterable.filters.length === 0) {
+      if (!filterable) {
         return null;
       }
 
@@ -193,6 +207,9 @@ export default defineComponent({
       if (slots.default) {
         return slots.default();
       }
+      if (props.column?.slots?.title) {
+        return props.column.slots.title();
+      }
       if (isFunction(props.column.title)) {
         return props.column.title();
       }
@@ -214,7 +231,7 @@ export default defineComponent({
                   `${prefixCls}-sorter-icon`,
                   {
                     [`${prefixCls}-sorter-icon-active`]:
-                      props.sortOrder === 'ascend',
+                      sortOrder.value === 'ascend',
                   },
                 ]}
               >
@@ -227,7 +244,7 @@ export default defineComponent({
                   `${prefixCls}-sorter-icon`,
                   {
                     [`${prefixCls}-sorter-icon-active`]:
-                      props.sortOrder === 'descend',
+                      sortOrder.value === 'descend',
                   },
                 ]}
               >
@@ -251,11 +268,15 @@ export default defineComponent({
       `${prefixCls}-th`,
       `${prefixCls}-th-align-${props.column?.align ?? 'left'}`,
       {
-        [`${prefixCls}-col-sorted`]: Boolean(props.sortOrder),
-        [`${prefixCls}-th-resizing`]: props.resizing,
+        [`${prefixCls}-col-sorted`]: Boolean(sortOrder.value),
+        [`${prefixCls}-th-resizing`]: resizing.value,
       },
       ...getFixedCls(prefixCls, props.column),
     ]);
+
+    const handleMouseDown = (ev: MouseEvent) => {
+      tableCtx.onThMouseDown?.(props.column?.dataIndex, ev);
+    };
 
     return () => {
       const colSpan = props.column.colSpan ?? 1;
@@ -272,9 +293,7 @@ export default defineComponent({
           {props.resizable && (
             <span
               class={`${prefixCls}-column-handle`}
-              onMousedown={(ev) =>
-                props.onThMouseDown?.(ev, props.column?.dataIndex)
-              }
+              onMousedown={handleMouseDown}
             />
           )}
         </th>

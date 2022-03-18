@@ -60,7 +60,7 @@ description: It is used for data collection, display, analysis and processing, a
 |hide-header|Whether to hide the header|`boolean`|`false`||
 |row-selection|Table row selector configuration|`TableRowSelection`|`-`||
 |expandable|Expand row configuration of the table|`TableExpandable`|`-`||
-|scroll|Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values.|`{ x?: number \| string; y?: number \| string }`|`-`||
+|scroll|Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values.|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
 |pagination|Pagination properties configuration|`boolean \| PaginationProps`|`true`||
 |page-position|The position of the page selector|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
 |indent-size|The indentation distance of the tree table|`number`|`16`||

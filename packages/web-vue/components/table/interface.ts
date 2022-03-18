@@ -1,4 +1,4 @@
-import { CSSProperties, RenderFunction, Slot, VNode } from 'vue';
+import { CSSProperties, RenderFunction, Slot, Slots, VNode } from 'vue';
 import { Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
@@ -90,7 +90,7 @@ export interface TableFilterable {
    * @zh 筛选数据
    * @en Filter data
    */
-  filters: TableFilterData[];
+  filters?: TableFilterData[];
   /**
    * @zh 筛选函数
    * @en Filter function
@@ -137,6 +137,8 @@ export interface TableFilterable {
    * @version 2.13.0
    */
   alignLeft?: boolean;
+
+  slotName?: string;
 }
 
 export interface TableColumn {
@@ -144,7 +146,7 @@ export interface TableColumn {
    * @zh 列信息的标识，对应 `TableData` 中的数据
    * @en The identifier of the column information, corresponding to the data in `TableData`
    */
-  dataIndex: string;
+  dataIndex?: string;
   /**
    * @zh 列标题
    * @en Column header
@@ -212,12 +214,9 @@ export interface TableColumn {
   slotName?: string;
 
   // private
+  slots?: Slots;
   isLastLeftFixed?: boolean;
   isFirstRightFixed?: boolean;
-  slot?: Slot;
-}
-
-export interface TableCell extends TableColumn {
   colSpan?: number;
   rowSpan?: number;
 }
@@ -411,7 +410,6 @@ export interface TableProps {
   pagePosition?: string;
 }
 
+export type Sorter = { field: string; direction: 'ascend' | 'descend' };
+
 export type Filters = Record<string, string[]>;
-export type Sorter =
-  | { filed: string; direction: 'ascend' | 'descend' }
-  | Record<string, never>;
