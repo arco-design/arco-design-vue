@@ -185,21 +185,21 @@ export interface TreeProps {
   onSelect?: (
     selectedKeys: TreeNodeKey[],
     event: {
-      selected: boolean;
+      selected?: boolean;
       selectedNodes: TreeNodeData[];
-      node: TreeNodeData;
-      e: Event;
+      node?: TreeNodeData;
+      e?: Event;
     }
   ) => void;
   onCheck?: (
     checkedKeys: TreeNodeKey[],
     event: {
-      checked: boolean;
+      checked?: boolean;
       checkedNodes: TreeNodeData[];
-      node: TreeNodeData;
-      e: Event;
+      node?: TreeNodeData;
       halfCheckedKeys: TreeNodeKey[];
       halfCheckedNodes: TreeNodeData[];
+      e?: Event;
     }
   ) => void;
   onExpand?: (

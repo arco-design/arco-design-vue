@@ -1,4 +1,4 @@
-import { toRefs, ref, watchEffect, computed } from 'vue';
+import { toRefs, ref, watchEffect, computed, watch } from 'vue';
 import { TreeNodeKey } from '../interface';
 import { getCheckedStateByInitKeys, Key2TreeNode } from '../utils';
 
@@ -17,29 +17,31 @@ export default function useCheckedState(props: {
     halfCheckedKeys,
   } = toRefs(props);
 
-  const getStateByInitKeys = (initKeys: TreeNodeKey[]) => {
+  const isInitialized = ref(false);
+  const localCheckedKeys = ref<TreeNodeKey[]>([]);
+  const localIndeterminateKeys = ref<TreeNodeKey[]>([]);
+  const computedCheckedKeys = ref<TreeNodeKey[]>();
+  const computedIndeterminateKeys = ref<TreeNodeKey[]>();
+
+  const getStateByKeys = (keys: TreeNodeKey[]) => {
     return getCheckedStateByInitKeys({
-      initCheckedKeys: initKeys,
+      initCheckedKeys: keys,
       key2TreeNode: key2TreeNode.value,
       checkStrictly: checkStrictly.value,
     });
   };
 
-  const isInitialized = ref(false);
+  const init = (keys: TreeNodeKey[]) => {
+    const initState = getStateByKeys(keys);
+    [localCheckedKeys.value, localIndeterminateKeys.value] = initState;
+  };
 
-  const initLocalState = getStateByInitKeys(
-    propCheckedKeys.value || defaultCheckedKeys?.value || []
-  );
-  const localCheckedKeys = ref(initLocalState[0]);
-  const localIndeterminateKeys = ref(initLocalState[1]);
-
-  const computedCheckedKeys = ref<TreeNodeKey[]>();
-  const computedIndeterminateKeys = ref<TreeNodeKey[]>();
+  init(propCheckedKeys.value || defaultCheckedKeys?.value || []);
 
   watchEffect(() => {
     if (propCheckedKeys.value) {
       [computedCheckedKeys.value, computedIndeterminateKeys.value] =
-        getStateByInitKeys(propCheckedKeys.value);
+        getStateByKeys(propCheckedKeys.value);
     } else if (isInitialized.value) {
       computedCheckedKeys.value = undefined;
       computedIndeterminateKeys.value = undefined;
@@ -63,10 +65,16 @@ export default function useCheckedState(props: {
     }),
     setCheckedState(
       newCheckedKeys: TreeNodeKey[],
-      newIndeterminateKeys: TreeNodeKey[]
+      newIndeterminateKeys: TreeNodeKey[],
+      reinitialize = false
     ) {
-      localCheckedKeys.value = newCheckedKeys;
-      localIndeterminateKeys.value = newIndeterminateKeys;
+      if (reinitialize) {
+        init(newCheckedKeys);
+      } else {
+        localCheckedKeys.value = newCheckedKeys;
+        localIndeterminateKeys.value = newIndeterminateKeys;
+      }
+      return [localCheckedKeys.value, localIndeterminateKeys.value];
     },
   };
 }

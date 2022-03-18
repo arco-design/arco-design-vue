@@ -74,9 +74,9 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|check|Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; halfCheckedKeys: <string \| number>[]; halfCheckedNodes: TreeNodeData[]; }`|
-|expand|Expand/close|expandKeys: `Array<string \| number>`<br>event: `{ expanded: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>event: `{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
+|check|Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.|checkedKeys: `Array<string \| number>`<br>event: `{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: <string \| number>[]; halfCheckedNodes: TreeNodeData[]; }`|
+|expand|Expand/close|expandKeys: `Array<string \| number>`<br>event: `{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
 |drag-start|Node starts dragging|-|
 |drag-end|Node end drag|event: `DragEvent`<br>node: `TreeNodeData`|
 |drag-over|The node is dragged to the releasable target|event: `DragEvent`<br>node: `TreeNodeData`|
@@ -91,6 +91,12 @@ description: For content with many levels, such as folders, catalogs, and organi
 |getCheckedNodes|Get checked nodes. Supports passing in `checkedStrategy`, if not passed, the configuration of the component is taken.|options: ` checkedStrategy?: 'all' \| 'parent' \| 'child'; includeHalfChecked?: boolean; `|TreeNodeData[]|2.19.0|
 |getHalfCheckedNodes|Get half checked nodes|-|TreeNodeData[]|2.19.0|
 |getExpandedNodes|Get expanded nodes|-|TreeNodeData[]|2.19.0|
+|checkAll|Set the checkbox state of all nodes|checked: ` boolean `|-|2.20.0|
+|checkNode|Sets the checkbox state of the specified node|key: ` TreeNodeKey \| TreeNodeKey[] `<br>checked: ` boolean `|-|2.20.0|
+|selectAll|Set the selected state of all nodes|selected: ` boolean `|-|2.20.0|
+|selectNode|Sets the selected state of the specified node|key: ` TreeNodeKey \| TreeNodeKey[] `<br>selected: ` boolean `|-|2.20.0|
+|expandAll|Set the expanded state of all nodes|expanded: ` boolean `|-|2.20.0|
+|expandNode|Sets the expanded state of the specified node|key: ` TreeNodeKey \| TreeNodeKey[] `<br>expanded: ` boolean `|-|2.20.0|
 ### `<tree>` Slots
 
 |Slot Name|Description|Parameters|version|

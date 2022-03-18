@@ -72,9 +72,9 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 
 |事件名|描述|参数|
 |---|---|---|
-|select|点击树节点时触发|selectedKeys: `Array<string \| number>`<br>event: `{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
-|check|点击树节点复选框时触发。`halfCheckedKeys` 和 `halfCheckedNodes` 从 `2.19.0` 开始支持。|checkedKeys: `Array<string \| number>`<br>event: `{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; halfCheckedKeys: <string \| number>[]; halfCheckedNodes: TreeNodeData[]; }`|
-|expand|展开/关闭|expandKeys: `Array<string \| number>`<br>event: `{ expanded: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }`|
+|select|点击树节点时触发|selectedKeys: `Array<string \| number>`<br>event: `{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
+|check|点击树节点复选框时触发。`halfCheckedKeys` 和 `halfCheckedNodes` 从 `2.19.0` 开始支持。|checkedKeys: `Array<string \| number>`<br>event: `{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: <string \| number>[]; halfCheckedNodes: TreeNodeData[]; }`|
+|expand|展开/关闭|expandKeys: `Array<string \| number>`<br>event: `{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
 |drag-start|节点开始拖拽|-|
 |drag-end|节点结束拖拽|event: `DragEvent`<br>node: `TreeNodeData`|
 |drag-over|节点被拖拽至可释放目标|event: `DragEvent`<br>node: `TreeNodeData`|
@@ -89,6 +89,12 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |getCheckedNodes|获取选中复选框的节点。支持传入 `checkedStrategy`，没有传则取组件的配置。|options: ` checkedStrategy?: 'all' \| 'parent' \| 'child'; includeHalfChecked?: boolean; `|TreeNodeData[]|2.19.0|
 |getHalfCheckedNodes|获取复选框半选的节点|-|TreeNodeData[]|2.19.0|
 |getExpandedNodes|获取展开的节点|-|TreeNodeData[]|2.19.0|
+|checkAll|设置全部节点的复选框状态|checked: ` boolean `|-|2.20.0|
+|checkNode|设置指定节点的复选框状态|key: ` TreeNodeKey \| TreeNodeKey[] `<br>checked: ` boolean `|-|2.20.0|
+|selectAll|设置全部节点的选中状态|selected: ` boolean `|-|2.20.0|
+|selectNode|设置指定节点的选中状态|key: ` TreeNodeKey \| TreeNodeKey[] `<br>selected: ` boolean `|-|2.20.0|
+|expandAll|设置全部节点的展开状态|expanded: ` boolean `|-|2.20.0|
+|expandNode|设置指定节点的展开状态|key: ` TreeNodeKey \| TreeNodeKey[] `<br>expanded: ` boolean `|-|2.20.0|
 ### `<tree>` Slots
 
 |插槽名|描述|参数|版本|
