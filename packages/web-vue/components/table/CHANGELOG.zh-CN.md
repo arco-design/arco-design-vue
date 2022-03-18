@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- 使用 Context 方式重构组件，`table-colum` 支持二次封装 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- scroll 属性增加 `maxHeight`, `minWidth` 属性 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+### 💅 样式更新
+
+- 修复开启排序后，表头文字不能居中的问题 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
 ## 2.19.0
 
 `2022-03-11`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 BugFix
+
+- Fixed `close` function returning wrong in create method ([#840](https://github.com/arco-design/arco-design-vue/pull/840))
+
+
 ## 2.19.0
 
 `2022-03-11`

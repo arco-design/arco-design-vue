@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- Use Context to refactor components, `table-colum` supports secondary encapsulation ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- scroll property adds `maxHeight`, `minWidth` properties ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+### 💅 Style
+
+- Fixed the problem that the header text could not be centered after sorting was enabled ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+
 ## 2.19.0
 
 `2022-03-11`

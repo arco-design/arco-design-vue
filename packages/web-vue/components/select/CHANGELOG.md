@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 BugFix
+
+- Fixed the problem that the search function failed when the virtual list was opened ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+- Fix the problem that the `Enter` key on the small keyboard cannot be selected ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+
+
 ## 2.18.0
 
 `2022-03-04`

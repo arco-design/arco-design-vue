@@ -2,6 +2,32 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- **table:** 使用 Context 方式重构组件，`table-colum` 支持二次封装 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- **table:** scroll 属性增加 `maxHeight`, `minWidth` 属性 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- **cascader:** 增加 `cascader-panel` 组件 ([#842](https://github.com/arco-design/arco-design-vue/pull/842))
+- **descriptions:** `column` 属性支持响应式配置 ([#839](https://github.com/arco-design/arco-design-vue/pull/839))
+- **list:** 增加 `#scroll-loading` 插槽 ([#838](https://github.com/arco-design/arco-design-vue/pull/838))
+- **tree:** 添加树的实例方法 ([#837](https://github.com/arco-design/arco-design-vue/pull/837))
+
+### 🐛 问题修复
+
+- **date-picker:** 选择结束时间的时候没有触发 select 事件 ([#844](https://github.com/arco-design/arco-design-vue/pull/844))
+- **cascader:** 修复下拉菜单选中路径可能与当前值不符的问题 ([#843](https://github.com/arco-design/arco-design-vue/pull/843))
+- **select:** 修复开启虚拟列表时，搜索功能失败的问题 ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+- **select:** 修复小键盘 `Enter` 键不能选中的问题 ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+- **modal:** 修复创建方法中返回的 `close` 函数错误的问题 ([#840](https://github.com/arco-design/arco-design-vue/pull/840))
+- **typography:** 修复 `ellipsisText` 未更新的问题 ([#833](https://github.com/arco-design/arco-design-vue/pull/833))
+
+### 💅 样式更新
+
+- **table:** 修复开启排序后，表头文字不能居中的问题 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
 ## 2.19.0
 
 `2022-03-11`

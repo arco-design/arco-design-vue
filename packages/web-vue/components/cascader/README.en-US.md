@@ -82,6 +82,27 @@ description: Refers to the use of multi-level classification to separate the opt
 
 
 
+### `<cascader-panel>` Props
+
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|path-mode|Whether the value is a path|`boolean`|`false`||
+|multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
+|model-value **(v-model)**|Value|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
+|default-value|Default value (uncontrolled state)|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|options|Options for cascader|`CascaderOption[]`|`[]`||
+|expand-trigger|Expand the trigger method of the next level|`string`|`'click'`||
+|check-strictly|Whether to enable strict selection mode|`boolean`|`false`||
+|load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+### `<cascader-panel>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|change|Triggered when the selected value changes|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+
+
+
+
 ### CascaderOption
 
 |Name|Description|Type|Default|version|

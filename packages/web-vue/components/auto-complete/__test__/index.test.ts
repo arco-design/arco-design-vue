@@ -11,8 +11,8 @@ describe('AutoComplete', () => {
     const input = wrapper.find('input');
     await input.trigger('focusin');
     await input.setValue('e');
-    await input.trigger('keydown', { code: 'ArrowDown' });
-    await input.trigger('keydown', { code: 'Enter' });
+    await input.trigger('keydown', { key: 'ArrowDown' });
+    await input.trigger('keydown', { key: 'Enter' });
 
     expect(input.element.value).toBe('Chengdu');
   });

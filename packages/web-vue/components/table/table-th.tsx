@@ -63,6 +63,7 @@ export default defineComponent({
       hasDescendBtn,
       nextSortOrder,
       handleClickSorter,
+      // @ts-ignore
     } = useColumnSorter({
       column,
       tableCtx,
@@ -275,7 +276,9 @@ export default defineComponent({
     ]);
 
     const handleMouseDown = (ev: MouseEvent) => {
-      tableCtx.onThMouseDown?.(props.column?.dataIndex, ev);
+      if (props.column?.dataIndex) {
+        tableCtx.onThMouseDown?.(props.column?.dataIndex, ev);
+      }
     };
 
     return () => {

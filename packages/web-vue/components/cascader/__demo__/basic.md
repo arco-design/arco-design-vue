@@ -18,9 +18,8 @@ The basic usage of cascader.
 
 ```vue
 <template>
-  <a-button @click="value='datunli'">aa</a-button>
   <a-space direction="vertical" size="large">
-    <a-cascader v-model="value" :options="options" :style="{width:'320px'}" placeholder="Please select ..." />
+    <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." />
     <a-cascader :options="options" default-value="datunli" expand-trigger="hover" :style="{width:'320px'}" placeholder="Please select ..." />
   </a-space>
 </template>
@@ -29,7 +28,6 @@ The basic usage of cascader.
 export default {
   data() {
     return {
-      value:'',
       options: [
         {
           value: 'beijing',

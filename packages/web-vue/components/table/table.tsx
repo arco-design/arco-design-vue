@@ -167,8 +167,8 @@ export default defineComponent({
       type: Object as PropType<TableExpandable>,
     },
     /**
-     * @zh 表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。
-     * @en Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values.
+     * @zh 表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。`2.20.0` 版本增加 `minWidth`,`maxHeight` 的支持。
+     * @en Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values. `2.20.0` version adds support for `minWidth`, `maxHeight`.
      */
     scroll: {
       type: Object as PropType<{
@@ -1482,7 +1482,7 @@ export default defineComponent({
                   key={`th-${index}`}
                   // @ts-ignore
                   ref={(ins: ComponentPublicInstance) => {
-                    if (ins?.$el) {
+                    if (ins?.$el && column.dataIndex) {
                       thRefs.value.data[column.dataIndex] = ins.$el;
                     }
                   }}

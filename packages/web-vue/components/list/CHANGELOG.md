@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- Added `#scroll-loading` slot ([#838](https://github.com/arco-design/arco-design-vue/pull/838))
+
+
 ## 2.18.0
 
 `2022-03-04`

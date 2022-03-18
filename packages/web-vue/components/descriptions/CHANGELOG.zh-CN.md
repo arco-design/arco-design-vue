@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- `column` 属性支持响应式配置 ([#839](https://github.com/arco-design/arco-design-vue/pull/839))
+
+
 ## 2.19.0
 
 `2022-03-11`

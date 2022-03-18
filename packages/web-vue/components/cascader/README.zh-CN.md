@@ -80,6 +80,27 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 
 
+### `<cascader-panel>` Props
+
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|path-mode|绑定值是否为路径|`boolean`|`false`||
+|multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
+|model-value **(v-model)**|绑定值|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
+|default-value|默认值（非受控状态）|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|options|级联选择器的选项|`CascaderOption[]`|`[]`||
+|expand-trigger|展开下一级的触发方式|`string`|`'click'`||
+|check-strictly|是否开启严格选择模式|`boolean`|`false`||
+|load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+### `<cascader-panel>` Events
+
+|事件名|描述|参数|
+|---|---|---|
+|change|选中值改变时触发|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+
+
+
+
 ### CascaderOption
 
 |参数名|描述|类型|默认值|版本|

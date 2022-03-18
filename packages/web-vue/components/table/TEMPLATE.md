@@ -47,6 +47,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/group.md
 
+@import ./__demo__/editable.md
+
 @import ./__demo__/custom.md
 
 @import ./__demo__/custom-dom.md

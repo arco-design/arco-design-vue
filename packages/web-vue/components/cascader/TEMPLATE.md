@@ -39,4 +39,6 @@ description: Refers to the use of multi-level classification to separate the opt
 
 %%API(cascader.vue)%%
 
+%%API(cascader-panel.vue)%%
+
 %%INTERFACE(interface.ts)%%

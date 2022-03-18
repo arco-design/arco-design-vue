@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- add instance method to tree component ([#837](https://github.com/arco-design/arco-design-vue/pull/837))
+
+
 ## 2.19.0
 
 `2022-03-11`
