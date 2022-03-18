@@ -18,23 +18,47 @@ Limit the maximum height of the list by setting the `max-height` property. Throu
 
 ```vue
 <template>
-  <a-list :max-height="200" @reach-bottom="reachBottom">
+  <a-list :max-height="200" @reach-bottom="fetchData">
     <template #header>
       List title
     </template>
-    <a-list-item>Beijing Bytedance Technology Co., Ltd.</a-list-item>
-    <a-list-item>Bytedance Technology Co., Ltd.</a-list-item>
-    <a-list-item>Beijing Toutiao Technology Co., Ltd.</a-list-item>
-    <a-list-item>Beijing Volcengine Technology Co., Ltd.</a-list-item>
-    <a-list-item>China Beijing Bytedance Technology Co., Ltd.</a-list-item>
+    <template #scroll-loading>
+      <div v-if="bottom">No more data</div>
+      <a-spin v-else />
+    </template>
+    <a-list-item v-for="item of data">{{item}}</a-list-item>
   </a-list>
 </template>
 
 <script>
 export default {
   methods: {
-    reachBottom() {
-      console.log('reach bottom!')
+    fetchData() {
+      console.log('reach bottom!');
+      const _data = this.$data;
+      if (_data.current <= 5) {
+        window.setTimeout(() => {
+          const index = _data.data.length;
+          _data.data.push(
+            `Beijing Bytedance Technology Co., Ltd. ${index + 1}`,
+            `Bytedance Technology Co., Ltd. ${index + 2}`,
+            `Beijing Toutiao Technology Co., Ltd. ${index + 3}`,
+            `Beijing Volcengine Technology Co., Ltd. ${index + 4}`,
+            `China Beijing Bytedance Technology Co., Ltd. ${index + 5}`
+          );
+          _data.current += 1
+        }, 2000)
+      } else {
+        _data.bottom = true
+      }
+
+    }
+  },
+  data() {
+    return {
+      current: 1,
+      bottom: false,
+      data: []
     }
   }
 }
