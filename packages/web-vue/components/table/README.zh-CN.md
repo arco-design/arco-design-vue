@@ -58,7 +58,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |hide-header|是否隐藏表头|`boolean`|`false`||
 |row-selection|表格的行选择器配置|`TableRowSelection`|`-`||
 |expandable|表格的展开行配置|`TableExpandable`|`-`||
-|scroll|表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。|`{ x?: number \| string; y?: number \| string }`|`-`||
+|scroll|表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
 |pagination|分页的属性配置|`boolean \| PaginationProps`|`true`||
 |page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
 |indent-size|树形表格的缩进距离|`number`|`16`||

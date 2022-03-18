@@ -10,8 +10,8 @@ export const useColumnResize = (
   const resizingColumn = ref('');
   const columnWidth = reactive<Record<string, number>>({});
 
-  const handleThMouseDown = (e: MouseEvent, dataIndex: string) => {
-    e.preventDefault();
+  const handleThMouseDown = (dataIndex: string, ev: MouseEvent) => {
+    ev.preventDefault();
 
     resizingColumn.value = dataIndex;
     on(window, 'mousemove', handleThMouseMoving);

@@ -13,7 +13,8 @@ title:
 
 ## en-US
 
-$END$
+Setting the scroll property enables table scrolling. x refers to the actual width of the table. Generally, the value set will be larger than the width of the table container; y refers to the display height of the table. When the actual height of the table exceeds, a scroll bar will be displayed.
+After version 2.18.0, both x, y can set percentage. Setting y to 100% can make the height of the table container follow the outer container, and automatically display the scroll bar when it exceeds.
 
 ---
 

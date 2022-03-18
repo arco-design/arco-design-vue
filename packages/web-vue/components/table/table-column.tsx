@@ -1,5 +1,21 @@
-import { CSSProperties, defineComponent, PropType } from 'vue';
+import {
+  computed,
+  CSSProperties,
+  defineComponent,
+  getCurrentInstance,
+  inject,
+  onBeforeUnmount,
+  PropType,
+  provide,
+  reactive,
+  toRefs,
+} from 'vue';
 import { TableColumn, TableFilterable, TableSortable } from './interface';
+import {
+  tableColumnInjectionKey,
+  TableContext,
+  tableInjectionKey,
+} from './context';
 
 export default defineComponent({
   name: 'TableColumn',
@@ -79,7 +95,57 @@ export default defineComponent({
    * @en Title
    * @slot title
    */
-  setup() {
-    return () => null;
+  setup(props, { slots }) {
+    const instance = getCurrentInstance();
+    const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
+    const tableColumnCtx = inject(tableColumnInjectionKey, undefined);
+
+    const childrenColumnMap = reactive(new Map<number, TableColumn>());
+
+    const addChild = (id: number, data: any) => {
+      // eslint-disable-next-line no-console
+      console.log('te', id);
+
+      childrenColumnMap.set(id, data);
+    };
+
+    const removeChild = (id: number) => {
+      childrenColumnMap.delete(id);
+    };
+
+    provide(tableColumnInjectionKey, {
+      addChild,
+      removeChild,
+    });
+
+    const children = computed(() => {
+      if (childrenColumnMap.size > 0) {
+        return Array.from(childrenColumnMap.values());
+      }
+      return undefined;
+    });
+
+    const column = reactive({ ...toRefs(props), children, slots });
+
+    if (instance) {
+      if (tableColumnCtx) {
+        // @ts-ignore
+        tableColumnCtx.addChild(instance.uid, column);
+      } else {
+        tableCtx.addColumn?.(instance.uid, column);
+      }
+    }
+
+    onBeforeUnmount(() => {
+      if (instance) {
+        if (tableColumnCtx) {
+          tableColumnCtx.removeChild(instance.uid);
+        } else {
+          tableCtx.removeColumn?.(instance.uid);
+        }
+      }
+    });
+
+    return () => slots.default?.();
   },
 });

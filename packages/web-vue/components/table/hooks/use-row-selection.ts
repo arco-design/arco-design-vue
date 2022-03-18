@@ -1,25 +1,25 @@
-import { computed, Ref, ref } from 'vue';
-import { TableProps } from '../interface';
+import type { Ref } from 'vue';
+import { computed, ref } from 'vue';
+import type { EmitFn } from '../../_utils/types';
+import type { TableRowSelection } from '../interface';
 
-export const useRowSelection = (
-  props: TableProps,
-  {
-    allRowKeys,
-    currentAllRowKeys,
-    currentAllEnabledRowKeys,
-  }: {
-    allRowKeys: Ref<string[]>;
-    currentAllRowKeys: Ref<string[]>;
-    currentAllEnabledRowKeys: Ref<string[]>;
-  },
-  emit
-) => {
-  const isRadio = computed(() => props.rowSelection?.type === 'radio');
+export const useRowSelection = ({
+  rowSelection,
+  currentAllRowKeys,
+  currentAllEnabledRowKeys,
+  emit,
+}: {
+  rowSelection: Ref<TableRowSelection | undefined>;
+  currentAllRowKeys: Ref<string[]>;
+  currentAllEnabledRowKeys: Ref<string[]>;
+  emit: EmitFn<'select' | 'selectAll' | 'selectionChange'>;
+}) => {
+  const isRadio = computed(() => rowSelection.value?.type === 'radio');
   const _selectedRowKeys = ref(
-    props.rowSelection?.defaultSelectedRowKeys ?? []
+    rowSelection.value?.defaultSelectedRowKeys ?? []
   );
   const selectedRowKeys = computed(
-    () => props.rowSelection?.selectedRowKeys ?? _selectedRowKeys.value
+    () => rowSelection.value?.selectedRowKeys ?? _selectedRowKeys.value
   );
   const currentSelectedRowKeys = computed(() =>
     selectedRowKeys.value.filter((key) => currentAllRowKeys.value.includes(key))

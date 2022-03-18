@@ -6,6 +6,7 @@ export const useDrag = () => {
     sourceKey: '',
     sourcePath: [] as number[],
     targetPath: [] as number[],
+    data: {} as Record<string, unknown>,
   });
 
   const clearDragState = () => {
@@ -13,12 +14,14 @@ export const useDrag = () => {
     dragState.sourceKey = '';
     dragState.sourcePath = [];
     dragState.targetPath = [];
+    dragState.data = {};
   };
 
   const handleDragStart = (
     ev: DragEvent,
     targetKey: string,
-    targetPath: number[]
+    targetPath: number[],
+    data: Record<string, unknown>
   ) => {
     if (ev.dataTransfer) {
       ev.dataTransfer.effectAllowed = 'move';
@@ -32,6 +35,7 @@ export const useDrag = () => {
     dragState.dragging = true;
     dragState.sourceKey = targetKey;
     dragState.sourcePath = targetPath;
+    dragState.data = data;
   };
 
   const handleDragEnter = (ev: DragEvent, sourcePath: number[]) => {
