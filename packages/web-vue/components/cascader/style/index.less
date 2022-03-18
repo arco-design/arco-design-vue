@@ -7,9 +7,8 @@
 
 .@{cascader-prefix-cls} {
   &-panel {
-    top: 4px;
+    display: inline-block;
     box-sizing: border-box;
-    width: 100%;
     height: @select-popup-max-height;
     overflow: hidden;
     white-space: nowrap;
@@ -18,6 +17,11 @@
     border: 1px solid @select-popup-color-border;
     border-radius: @select-popup-border-radius;
     box-shadow: @select-popup-box-shadow;
+  }
+
+  &-dropdown-panel {
+    display: block;
+    width: 100%;
   }
 
   &-search-panel {

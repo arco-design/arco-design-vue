@@ -6,7 +6,7 @@ import Empty from '../empty';
 import Spin from '../spin';
 
 export default defineComponent({
-  name: 'CascaderPanel',
+  name: 'BaseCascaderPanel',
   props: {
     displayColumns: {
       type: Array as PropType<CascaderOptionInfo[][]>,
@@ -29,6 +29,7 @@ export default defineComponent({
     multiple: Boolean,
     checkStrictly: Boolean,
     loading: Boolean,
+    dropdown: Boolean,
   },
   setup(props) {
     const prefixCls = getPrefixCls('cascader');
@@ -108,7 +109,12 @@ export default defineComponent({
       <TransitionGroup
         tag="div"
         name="cascader-slide"
-        class={`${prefixCls}-panel`}
+        class={[
+          `${prefixCls}-panel`,
+          {
+            [`${prefixCls}-dropdown-panel`]: props.dropdown,
+          },
+        ]}
       >
         {renderContent()}
       </TransitionGroup>
