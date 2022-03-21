@@ -150,6 +150,13 @@
 
     &-content {
       font-size: @transfer-item-font-size;
+      .text-ellipsis();
+    }
+
+    &-checkbox {
+      .@{prefix}-checkbox-label {
+        .text-ellipsis();
+      }
     }
 
     &-disabled {
