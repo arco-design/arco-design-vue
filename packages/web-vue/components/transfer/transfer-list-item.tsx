@@ -63,7 +63,7 @@ export default defineComponent({
           </span>
         ) : (
           <Checkbox
-            class={`${prefixCls}-content`}
+            class={[`${prefixCls}-content`, `${prefixCls}-checkbox`]}
             modelValue={transferCtx?.selected}
             value={props.data.value}
             onChange={(value: unknown) =>

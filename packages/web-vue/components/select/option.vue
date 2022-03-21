@@ -21,7 +21,9 @@
       <slot>{{ label }}</slot>
     </checkbox>
     <template v-else>
-      <slot>{{ label }}</slot>
+      <span :class="`${prefixCls}-content`"
+        ><slot>{{ label }}</slot></span
+      >
     </template>
     <span v-if="$slots.suffix" :class="`${prefixCls}-suffix`">
       <slot name="suffix" />
