@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 Style
+
+- Fixed vertical centering of option #icon slots ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- Fix the problem that the omission is not displayed after the option exceeds the width ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
 ## 2.20.0
 
 `2022-03-18`

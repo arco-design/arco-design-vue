@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 🐛 问题修复
+
+- **tree:** 修复新版本中展开事件名称错误的问题 ([#853](https://github.com/arco-design/arco-design-vue/pull/853))
+
+### 💅 样式更新
+
+- **form:** 修复 `form-item` 星号与 windicss 的兼容问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **select:** 修复选项 #icon 插槽的垂直居中问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **select:** 修复选项超出宽度后没有显示省略的问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **transfer:** 修复选项超出宽度后没有显示省略的问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
 ## 2.20.0
 
 `2022-03-18`

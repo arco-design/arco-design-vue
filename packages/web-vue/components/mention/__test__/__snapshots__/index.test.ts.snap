@@ -7,15 +7,15 @@ exports[`Mention mention correctly 1`] = `
   <div class=\\"arco-select-dropdown-list-wrapper\\">
     <ul class=\\"arco-select-dropdown-list\\">
       <li class=\\"arco-select-option arco-select-option-active\\">
-        <!--v-if-->Bytedance
+        <!--v-if--><span class=\\"arco-select-option-content\\">Bytedance</span>
         <!--v-if-->
       </li>
       <li class=\\"arco-select-option\\">
-        <!--v-if-->Bytedesign
+        <!--v-if--><span class=\\"arco-select-option-content\\">Bytedesign</span>
         <!--v-if-->
       </li>
       <li class=\\"arco-select-option\\">
-        <!--v-if-->Bytenumner
+        <!--v-if--><span class=\\"arco-select-option-content\\">Bytenumner</span>
         <!--v-if-->
       </li>
     </ul>

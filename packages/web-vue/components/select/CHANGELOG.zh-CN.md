@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 样式更新
+
+- 修复选项 #icon 插槽的垂直居中问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- 修复选项超出宽度后没有显示省略的问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
 ## 2.20.0
 
 `2022-03-18`

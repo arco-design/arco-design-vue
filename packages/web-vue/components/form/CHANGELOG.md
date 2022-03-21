@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 Style
+
+- Fix `form-item` asterisk compatibility with windicss ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
 ## 2.19.0
 
 `2022-03-11`

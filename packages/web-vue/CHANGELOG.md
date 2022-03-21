@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 🐛 BugFix
+
+- **tree:** Fix the problem that the expansion event name is wrong in the new version ([#853](https://github.com/arco-design/arco-design-vue/pull/853))
+
+### 💅 Style
+
+- **form:** Fix `form-item` asterisk compatibility with windicss ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **select:** Fixed vertical centering of option #icon slots ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **select:** Fix the problem that the omission is not displayed after the option exceeds the width ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **transfer:** Fix the problem that the omission is not displayed after the option exceeds the width ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
 ## 2.20.0
 
 `2022-03-18`
