@@ -15,7 +15,7 @@ Arco Pro >= 2.1.0
 
 使用Pinia替换Vuex，有基于技术前瞻性的考虑。
 
-同时 Evan You 已经于 2021年11月24日 在推特宣布 Pinia 正式成為 vuejs 官方的狀態庫，意味著 Pinia 就是 Vuex 5 。
+同时 Evan You 已经于 2021年11月24日 在推特宣布 Pinia 正式成为 vuejs 官方的状态库，意味着 Pinia 就是 Vuex 5 。
 
 关于 Pinia 带来的众多新特性及用法，大家可以在 [Pinia](https://pinia.vuejs.org/) 官网进行学习了解。本文不做过多赘述。
 
