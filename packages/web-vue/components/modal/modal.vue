@@ -112,7 +112,7 @@ import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
 import IconCloseCircleFill from '../icon/icon-close-circle-fill';
 import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
-import { getElement, off, on } from '../_utils/dom';
+import { getElement, off, on, contains } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { isBoolean, isFunction, isNumber } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
@@ -520,6 +520,12 @@ export default defineComponent({
 
     const handleOpen = () => {
       if (computedVisible.value) {
+        if (
+          !contains(wrapperRef.value, document.activeElement) &&
+          document.activeElement instanceof HTMLElement
+        ) {
+          document.activeElement.blur();
+        }
         emit('open');
       }
     };
