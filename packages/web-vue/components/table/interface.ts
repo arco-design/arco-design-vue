@@ -219,6 +219,7 @@ export interface TableColumn {
   isFirstRightFixed?: boolean;
   colSpan?: number;
   rowSpan?: number;
+  index?: number;
 }
 
 export interface TableBorder {

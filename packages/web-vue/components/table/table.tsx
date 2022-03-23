@@ -547,12 +547,19 @@ export default defineComponent({
     });
 
     const slotColumnMap = reactive(new Map<number, TableColumn>());
+    const slotColumns = ref<TableColumn[]>();
 
-    const slotColumns = computed(() => {
+    watch(slotColumnMap, (slotColumnMap) => {
       if (slotColumnMap.size > 0) {
-        return Array.from(slotColumnMap.values());
+        slotColumns.value = Array.from(slotColumnMap.values()).sort((a, b) => {
+          if (isNumber(a.index) && isNumber(b.index)) {
+            return a.index - b.index;
+          }
+          return 0;
+        });
+      } else {
+        slotColumns.value = undefined;
       }
-      return undefined;
     });
 
     // 拆解分组后的数据表头信息
