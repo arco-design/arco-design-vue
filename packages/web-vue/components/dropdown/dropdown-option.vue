@@ -9,7 +9,9 @@
     <span v-if="$slots.icon" :class="`${prefixCls}-icon`">
       <slot name="icon" />
     </span>
-    <slot />
+    <span :class="`${prefixCls}-content`">
+      <slot />
+    </span>
     <span v-if="$slots.suffix" :class="`${prefixCls}-suffix`">
       <slot name="suffix" />
     </span>

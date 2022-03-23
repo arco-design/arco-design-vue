@@ -3,6 +3,7 @@
     v-if="!hideTrigger"
     trigger="click"
     animation-name="slide-dynamic-origin"
+    auto-fit-transform-origin
     :click-to-close="false"
     :popup-offset="4"
     v-bind="triggerProps"
