@@ -3,6 +3,7 @@
     v-bind="triggerProps"
     trigger="click"
     animation-name="slide-dynamic-origin"
+    auto-fit-transform-origin
     :popup-visible="computedPopupVisible"
     position="bl"
     :disabled="mergedDisabled"

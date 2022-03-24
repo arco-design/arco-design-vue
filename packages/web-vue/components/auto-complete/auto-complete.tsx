@@ -255,6 +255,7 @@ export default defineComponent({
         trigger="focus"
         position="bl"
         animationName="slide-dynamic-origin"
+        autoFitTransformOrigin
         popupVisible={computedPopupVisible.value}
         clickToClose={false}
         preventFocus={true}

@@ -366,6 +366,7 @@ export default defineComponent({
           popupVisible={computedPopupVisible.value}
           clickToClose={false}
           autoFitPopupWidth
+          autoFitTransformOrigin
           disabled={mergedDisabled.value}
           onPopupVisibleChange={handlePopupVisibleChange}
         >

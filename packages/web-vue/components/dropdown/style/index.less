@@ -27,11 +27,11 @@
     position: relative;
     // 避免 Trigger 的小箭头位于其上方
     z-index: 1;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
     width: 100%;
     padding: 0 @dropdown-option-padding-horizontal;
-    display: flex;
-    align-items: center;
 
     // default
     color: @dropdown-option-color-text_default;
@@ -40,7 +40,10 @@
     text-align: left;
     background-color: @dropdown-option-color-bg_default;
     cursor: pointer;
-    .text-ellipsis();
+
+    &-content {
+      .text-ellipsis();
+    }
 
     &-has-suffix {
       justify-content: space-between;
@@ -62,6 +65,7 @@
     }
 
     &-icon {
+      display: inline-flex;
       margin-right: 8px;
     }
 
