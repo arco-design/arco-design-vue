@@ -2,6 +2,7 @@ import type { Ref } from 'vue';
 import { computed, reactive, ref, watch } from 'vue';
 import type { FilterOption, Option, OptionInfo } from '../interface';
 import { getOptionInfos, getValidOptions, isValidOption } from '../utils';
+import { isNumber } from '../../_utils/is';
 
 export const useOptions = ({
   options,
@@ -19,9 +20,17 @@ export const useOptions = ({
   valueKey?: Ref<string>;
 }) => {
   const slotOptionInfoMap = reactive(new Map<number, OptionInfo>());
-  const sortedSlotOptionInfos = computed(() =>
-    Array.from(slotOptionInfoMap.values()).sort((a, b) => a.index - b.index)
-  );
+  const sortedSlotOptionInfos = ref<OptionInfo[]>([]);
+  watch(slotOptionInfoMap, (slotOptionInfoMap) => {
+    sortedSlotOptionInfos.value = Array.from(slotOptionInfoMap.values()).sort(
+      (a, b) => {
+        if (isNumber(a.index) && isNumber(b.index)) {
+          return a.index - b.index;
+        }
+        return 0;
+      }
+    );
+  });
 
   const propOptionData = computed(() => {
     const optionInfoMap = new Map<string, OptionInfo>();
