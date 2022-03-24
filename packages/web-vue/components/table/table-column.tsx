@@ -8,7 +8,9 @@ import {
   PropType,
   provide,
   reactive,
+  ref,
   toRefs,
+  watch,
 } from 'vue';
 import { TableColumn, TableFilterable, TableSortable } from './interface';
 import {
@@ -16,6 +18,8 @@ import {
   TableContext,
   tableInjectionKey,
 } from './context';
+import { isNumber } from '../_utils/is';
+import { isEqual } from '../_utils/is-equal';
 
 export default defineComponent({
   name: 'TableColumn',
@@ -81,6 +85,14 @@ export default defineComponent({
     cellStyle: {
       type: Object as PropType<CSSProperties>,
     },
+    /**
+     * @zh 用于手动指定选项的 index
+     * @en index for manually specifying option
+     * @version 2.20.2
+     */
+    index: {
+      type: Number,
+    },
   },
   /**
    * @zh 单元格
@@ -96,6 +108,38 @@ export default defineComponent({
    * @slot title
    */
   setup(props, { slots }) {
+    const {
+      dataIndex,
+      title,
+      width,
+      align,
+      fixed,
+      ellipsis,
+      sortable: _sortable,
+      filterable: _filterable,
+      cellStyle: _cellStyle,
+      index,
+    } = toRefs(props);
+    const sortable = ref(_sortable.value);
+    watch(_sortable, (cur, pre) => {
+      if (!isEqual(cur, pre)) {
+        sortable.value = cur;
+      }
+    });
+    const filterable = ref(_filterable.value);
+    watch(_filterable, (cur, pre) => {
+      if (!isEqual(cur, pre)) {
+        // @ts-ignore
+        filterable.value = cur;
+      }
+    });
+    const cellStyle = ref(_cellStyle.value);
+    watch(_cellStyle, (cur, pre) => {
+      if (!isEqual(cur, pre)) {
+        cellStyle.value = cur;
+      }
+    });
+
     const instance = getCurrentInstance();
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
     const tableColumnCtx = inject(tableColumnInjectionKey, undefined);
@@ -103,9 +147,6 @@ export default defineComponent({
     const childrenColumnMap = reactive(new Map<number, TableColumn>());
 
     const addChild = (id: number, data: any) => {
-      // eslint-disable-next-line no-console
-      console.log('te', id);
-
       childrenColumnMap.set(id, data);
     };
 
@@ -118,14 +159,34 @@ export default defineComponent({
       removeChild,
     });
 
-    const children = computed(() => {
+    const children = ref<TableColumn[]>();
+    watch(childrenColumnMap, (childrenColumnMap) => {
       if (childrenColumnMap.size > 0) {
-        return Array.from(childrenColumnMap.values());
+        children.value = Array.from(childrenColumnMap.values()).sort((a, b) => {
+          if (isNumber(a.index) && isNumber(b.index)) {
+            return a.index - b.index;
+          }
+          return 0;
+        });
+      } else {
+        children.value = undefined;
       }
-      return undefined;
     });
 
-    const column = reactive({ ...toRefs(props), children, slots });
+    const column = reactive({
+      dataIndex,
+      title,
+      width,
+      align,
+      fixed,
+      ellipsis,
+      sortable,
+      filterable,
+      cellStyle,
+      index,
+      children,
+      slots,
+    });
 
     if (instance) {
       if (tableColumnCtx) {
