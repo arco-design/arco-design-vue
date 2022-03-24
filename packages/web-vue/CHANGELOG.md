@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.20.2
+
+`2022-03-24`
+
+### 🐛 BugFix
+
+- **table:** Fixed the problem that the `table-column` component caused continuous updating when writing object parameters directly in the template ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- **table:** Fix the problem that there is no column data when there is only one `table-column` ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- **table:** Fix the sorting problem of `table-column`, which can be solved by the `index` parameter ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+
+### 💅 Style
+
+- **dropdown:** Fixed vertical centering of icons in options ([#862](https://github.com/arco-design/arco-design-vue/pull/862))
+- Fixed drop-down menu animation issues for some components ([#862](https://github.com/arco-design/arco-design-vue/pull/862))
+
+
 ## 2.20.1
 
 `2022-03-21`

@@ -123,6 +123,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |cell-style|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
+|index|用于手动指定选项的 index|`number`|`-`|2.20.2|
 ### `<table-column>` Slots
 
 |插槽名|描述|参数|

@@ -125,6 +125,7 @@ description: It is used for data collection, display, analysis and processing, a
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
 |cell-style|Custom cell style|`CSSProperties`|`-`|2.11.0|
+|index|index for manually specifying option|`number`|`-`|2.20.2|
 ### `<table-column>` Slots
 
 |Slot Name|Description|Parameters|
