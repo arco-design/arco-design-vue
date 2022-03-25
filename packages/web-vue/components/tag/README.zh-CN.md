@@ -26,7 +26,7 @@ description: 用于信息的选择、筛选、分类。用户通过标签进行�
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |color|标签的颜色|`'red' \| 'orangered' \| 'orange' \| 'gold' \| 'lime' \| 'green' \| 'cyan' \| 'blue' \| 'arcoblue' \| 'purple' \| 'pinkpurple' \| 'magenta' \| 'gray'`|`-`|
-|size|标签的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|标签的大小|`'small' \| 'medium' \| 'large'`|`'medium'`|
 |visible **(v-model)**|标签是否可见|`boolean`|`-`|
 |default-visible|标签默认是否可见|`boolean`|`true`|
 |loading|标签是否为加载中状态|`boolean`|`false`|

@@ -28,7 +28,7 @@ description: Used for the selection, screening and classification of information
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |color|Label color|`'red' \| 'orangered' \| 'orange' \| 'gold' \| 'lime' \| 'green' \| 'cyan' \| 'blue' \| 'arcoblue' \| 'purple' \| 'pinkpurple' \| 'magenta' \| 'gray'`|`-`|
-|size|Label size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|Label size|`'small' \| 'medium' \| 'large'`|`'medium'`|
 |visible **(v-model)**|Whether the tag is visible|`boolean`|`-`|
 |default-visible|Whether the tag is visible by default|`boolean`|`true`|
 |loading|Whether the tag is loading state|`boolean`|`false`|

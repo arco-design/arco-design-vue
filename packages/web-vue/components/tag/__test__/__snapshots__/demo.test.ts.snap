@@ -136,7 +136,6 @@ exports[`<tag> demo: render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-large arco-tag-checked\\"><!--v-if-->Large<!--v-if--><!--v-if--></span></div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Medium<!--v-if--><!--v-if--></span></div>
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-small arco-tag-checked\\"><!--v-if-->Small<!--v-if--><!--v-if--></span></div>
-  <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-mini arco-tag-checked\\"><!--v-if-->Mini<!--v-if--><!--v-if--></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-small arco-tag-checked\\"><!--v-if-->Small<!--v-if--><!--v-if--></span></div>
 </div>"
 `;
