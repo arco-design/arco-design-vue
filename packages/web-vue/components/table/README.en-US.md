@@ -30,6 +30,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/span.md
 
+@import ./__demo__/summary.md
+
 @import ./__demo__/column-resize.md
 
 @import ./__demo__/drag-row.md
@@ -77,6 +79,9 @@ description: It is used for data collection, display, analysis and processing, a
 |row-class|The class name of the table row element|`string\|array\|object`|`-`|2.16.0|
 |draggable|Table drag and drop sorting configuration|`TableDraggable`|`-`|2.16.0|
 |column-resizable|Whether to allow the column width to be adjusted|`boolean`|`false`|2.16.0|
+|summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumn[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
+|summary-text|The first column of text in the summary line|`string`|`'Summary'`|2.21.0|
+|summary-span-method|Cell Merge Method for Summarizing Rows|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|
