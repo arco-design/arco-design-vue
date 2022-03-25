@@ -22,7 +22,7 @@
         :required="hideAsterisk ? false : isRequired"
         :show-colon="showColon"
       >
-        <slot name="label">{{ label }}</slot>
+        <slot v-if="$slots.label || label" name="label">{{ label }}</slot>
       </FormItemLabel>
     </ArcoCol>
     <ArcoCol
