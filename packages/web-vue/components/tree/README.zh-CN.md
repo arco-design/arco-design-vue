@@ -68,6 +68,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |default-expand-checked|是否默认展开已选中复选框节点的父节点|`boolean`|`false`|2.9.0|
 |auto-expand-parent|是否自动展开已展开节点的父节点|`boolean`|`true`|2.9.0|
 |half-checked-keys **(v-model)**|半选状态的节点.仅在 checkable 且 checkStrictly 时生效|`Array<string \| number>`|`-`|2.19.0|
+|only-check-leaf|开启后 checkedKeys 只处理叶子节点，父节点状态由子节点决定（仅在 checkable 且 checkStrictly 为 false 时生效）|`boolean`|`false`|2.21.0|
 ### `<tree>` Events
 
 |事件名|描述|参数|
@@ -90,7 +91,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |getHalfCheckedNodes|获取复选框半选的节点|-|TreeNodeData[]|2.19.0|
 |getExpandedNodes|获取展开的节点|-|TreeNodeData[]|2.19.0|
 |checkAll|设置全部节点的复选框状态|checked: ` boolean `|-|2.20.0|
-|checkNode|设置指定节点的复选框状态|key: ` TreeNodeKey \| TreeNodeKey[] `<br>checked: ` boolean `|-|2.20.0|
+|checkNode|设置指定节点的复选框状态|key: ` TreeNodeKey \| TreeNodeKey[] `<br>checked: ` boolean `<br>onlyCheckLeaf: ` boolean `|-|2.20.0，onlyCheckLeaf from 2.21.0|
 |selectAll|设置全部节点的选中状态|selected: ` boolean `|-|2.20.0|
 |selectNode|设置指定节点的选中状态|key: ` TreeNodeKey \| TreeNodeKey[] `<br>selected: ` boolean `|-|2.20.0|
 |expandAll|设置全部节点的展开状态|expanded: ` boolean `|-|2.20.0|

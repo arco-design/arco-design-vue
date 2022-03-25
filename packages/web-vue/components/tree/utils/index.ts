@@ -1,3 +1,4 @@
+import { isBoolean } from '../../_utils/is';
 import { Node, TreeNodeKey } from '../interface';
 
 export function getFlattenTreeData(tree: Node[]) {
@@ -60,6 +61,11 @@ export function isNodeExpandable(node: Node) {
   return !node.isLeaf && node.children;
 }
 
+export function isLeafNode(node: Node) {
+  if (isBoolean(node.isLeaf)) return node.isLeaf;
+  return !node.children;
+}
+
 export function getCheckedStateByCheck(options: {
   node: Node;
   checked: boolean;
@@ -107,8 +113,10 @@ export function getCheckedStateByInitKeys(options: {
   initCheckedKeys: TreeNodeKey[];
   key2TreeNode: Key2TreeNode;
   checkStrictly?: boolean;
+  onlyCheckLeaf?: boolean;
 }) {
-  const { initCheckedKeys, key2TreeNode, checkStrictly } = options;
+  const { initCheckedKeys, key2TreeNode, checkStrictly, onlyCheckLeaf } =
+    options;
 
   let checkedKeysSet = new Set<TreeNodeKey>();
   let indeterminateKeys: TreeNodeKey[] = [];
@@ -117,7 +125,7 @@ export function getCheckedStateByInitKeys(options: {
     initCheckedKeys.forEach((key) => {
       if (!checkedKeysSet.has(key)) {
         const node = key2TreeNode[key];
-        if (node) {
+        if (node && (!onlyCheckLeaf || isLeafNode(node))) {
           const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck(
             {
               node,
