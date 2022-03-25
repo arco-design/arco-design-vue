@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 💅 Style
+
+- fix the indentation of menu item is wrapped ([#866](https://github.com/arco-design/arco-design-vue/pull/866))
+
+
 ## 2.18.0
 
 `2022-03-04`

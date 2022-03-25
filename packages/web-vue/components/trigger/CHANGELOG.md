@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🐛 BugFix
+
+- Fix the problem that the outermost `div` is not hidden when it is not unmounted ([#871](https://github.com/arco-design/arco-design-vue/pull/871))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

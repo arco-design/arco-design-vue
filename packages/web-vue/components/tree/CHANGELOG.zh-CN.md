@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 新增功能
+
+- 新增配置项 `onlyCheckLeaf` ([#876](https://github.com/arco-design/arco-design-vue/pull/876))
+- 支持关闭展开时的动效 ([#867](https://github.com/arco-design/arco-design-vue/pull/867))
+
+### 💅 样式更新
+
+- 修复连接线显示错乱的问题 ([#865](https://github.com/arco-design/arco-design-vue/pull/865))
+
+### 🆎 类型修正
+
+- 增加filednames的自定义icon功能 ([#848](https://github.com/arco-design/arco-design-vue/pull/848))
+
+
 ## 2.20.1
 
 `2022-03-21`

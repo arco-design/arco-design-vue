@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🐛 BugFix
+
+- Fixed an issue where a warning message would appear when there was no content ([#870](https://github.com/arco-design/arco-design-vue/pull/870))
+
+
 ## 2.18.0
 
 `2022-03-04`

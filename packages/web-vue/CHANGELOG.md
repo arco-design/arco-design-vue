@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 💎 Optimization
+
+- Support SSR usage ([#872](https://github.com/arco-design/arco-design-vue/pull/872))
+
+### 🆕 Feature
+
+- **table:** Add summary prop ([#877](https://github.com/arco-design/arco-design-vue/pull/877))
+- **tree:** add property `onlyCheckLeaf ` ([#876](https://github.com/arco-design/arco-design-vue/pull/876))
+- **date-picker:** `dayStartOfWeek` support set to 0-6 ([#874](https://github.com/arco-design/arco-design-vue/pull/874))
+- **tree:** support to turn off expand transition animation ([#867](https://github.com/arco-design/arco-design-vue/pull/867))
+
+### 🐛 BugFix
+
+- **tree-select:** Fix `max-tags` parameter name is wrong, it should be `max-tag-count` ([#873](https://github.com/arco-design/arco-design-vue/pull/873))
+- Fix the problem that some components use the `popup-container` specified container to report an error when the container does not exist ([#871](https://github.com/arco-design/arco-design-vue/pull/871))
+- **trigger:** Fix the problem that the outermost `div` is not hidden when it is not unmounted ([#871](https://github.com/arco-design/arco-design-vue/pull/871))
+- **avatar:** Fixed an issue where a warning message would appear when there was no content ([#870](https://github.com/arco-design/arco-design-vue/pull/870))
+- **tag:** Remove `mini` size type ([#860](https://github.com/arco-design/arco-design-vue/pull/860))
+- **modal:** Fix the bug that the enter key triggers modal display multiple times ([#860](https://github.com/arco-design/arco-design-vue/pull/860))
+
+### 💅 Style
+
+- **menu:** fix the indentation of menu item is wrapped ([#866](https://github.com/arco-design/arco-design-vue/pull/866))
+- **tree:** fix the connection line is displayed incorrectly ([#865](https://github.com/arco-design/arco-design-vue/pull/865))
+
+### 🆎 TypeScript
+
+- **tree:** Add the custom icon field of filednames ([#848](https://github.com/arco-design/arco-design-vue/pull/848))
+
+
 ## 2.20.2
 
 `2022-03-24`

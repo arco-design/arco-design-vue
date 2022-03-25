@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 Feature
+
+- add property `onlyCheckLeaf ` ([#876](https://github.com/arco-design/arco-design-vue/pull/876))
+- support to turn off expand transition animation ([#867](https://github.com/arco-design/arco-design-vue/pull/867))
+
+### 💅 Style
+
+- fix the connection line is displayed incorrectly ([#865](https://github.com/arco-design/arco-design-vue/pull/865))
+
+### 🆎 TypeScript
+
+- Add the custom icon field of filednames ([#848](https://github.com/arco-design/arco-design-vue/pull/848))
+
+
 ## 2.20.1
 
 `2022-03-21`

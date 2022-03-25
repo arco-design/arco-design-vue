@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 新增功能
+
+- `dayStartOfWeek` 支持设置为 0-6 ([#874](https://github.com/arco-design/arco-design-vue/pull/874))
+
+
 ## 2.20.0
 
 `2022-03-18`

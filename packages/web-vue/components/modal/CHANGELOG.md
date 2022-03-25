@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🐛 BugFix
+
+- Fix the bug that the enter key triggers modal display multiple times ([#860](https://github.com/arco-design/arco-design-vue/pull/860))
+
+
 ## 2.20.0
 
 `2022-03-18`

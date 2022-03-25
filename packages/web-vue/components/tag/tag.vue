@@ -22,17 +22,14 @@
 
 <script lang="ts">
 import type { CSSProperties, PropType } from 'vue';
-import { computed, defineComponent, inject, ref } from 'vue';
+import { computed, defineComponent, ref, toRefs } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import IconLoading from '../icon/icon-loading';
 import { TAG_COLORS, TagColor } from './interface';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
-
-const TAG_SIZES = ['small', 'medium', 'large'] as const;
-type TagSize = typeof TAG_SIZES[number];
+import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
   name: 'Tag',
@@ -57,12 +54,7 @@ export default defineComponent({
      * @defaultValue 'medium'
      */
     size: {
-      type: String as PropType<TagSize>,
-      default: () => {
-        const size =
-          inject(configProviderInjectionKey, undefined)?.size ?? 'medium';
-        return size === 'mini' ? 'small' : size;
-      },
+      type: String as PropType<'small' | 'medium' | 'large'>,
     },
     /**
      * @zh 标签是否可见
@@ -159,6 +151,7 @@ export default defineComponent({
    * @slot close-icon
    */
   setup(props, { emit }) {
+    const { size } = toRefs(props);
     const prefixCls = getPrefixCls('tag');
     const isBuiltInColor = computed(
       () => props.color && TAG_COLORS.includes(props.color)
@@ -172,6 +165,13 @@ export default defineComponent({
     const computedChecked = computed(() =>
       props.checkable ? props.checked ?? _checked.value : true
     );
+    const { mergedSize: _mergedSize } = useSize(size);
+    const mergedSize = computed(() => {
+      if (_mergedSize.value === 'mini') {
+        return 'small';
+      }
+      return _mergedSize.value;
+    });
 
     const handleClose = (ev: MouseEvent) => {
       _visible.value = false;
@@ -190,7 +190,7 @@ export default defineComponent({
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-loading`]: props.loading,
         [`${prefixCls}-hide`]: !computedVisible.value,

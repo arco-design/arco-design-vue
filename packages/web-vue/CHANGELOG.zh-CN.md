@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 💎 功能优化
+
+- 支持 SSR 使用 ([#872](https://github.com/arco-design/arco-design-vue/pull/872))
+
+### 🆕 新增功能
+
+- **table:** 增加总结行功能 ([#877](https://github.com/arco-design/arco-design-vue/pull/877))
+- **tree:** 新增配置项 `onlyCheckLeaf` ([#876](https://github.com/arco-design/arco-design-vue/pull/876))
+- **date-picker:** `dayStartOfWeek` 支持设置为 0-6 ([#874](https://github.com/arco-design/arco-design-vue/pull/874))
+- **tree:** 支持关闭展开时的动效 ([#867](https://github.com/arco-design/arco-design-vue/pull/867))
+
+### 🐛 问题修复
+
+- **tree-select:** 修复 `max-tags` 参数名错误的问题，应为 `max-tag-count` ([#873](https://github.com/arco-design/arco-design-vue/pull/873))
+- 修复部分组件使用 `popup-container` 指定的容器不存在时报错的问题 ([#871](https://github.com/arco-design/arco-design-vue/pull/871))
+- **trigger:** 修复在未卸载的情况下，最外层 `div` 没有隐藏的问题 ([#871](https://github.com/arco-design/arco-design-vue/pull/871))
+- **avatar:** 修复没有内容时会出现警告提示的问题 ([#870](https://github.com/arco-design/arco-design-vue/pull/870))
+- **tag:** 移除尺寸类型 `mini` ([#860](https://github.com/arco-design/arco-design-vue/pull/860))
+- **modal:** 修复使用函数方式触发Modal显示时，按钮处于焦点，此时点击回车会继续出发点击事件 ([#860](https://github.com/arco-design/arco-design-vue/pull/860))
+
+### 💅 样式更新
+
+- **menu:** 解决菜单项的缩进换行的问题 ([#866](https://github.com/arco-design/arco-design-vue/pull/866))
+- **tree:** 修复连接线显示错乱的问题 ([#865](https://github.com/arco-design/arco-design-vue/pull/865))
+
+### 🆎 类型修正
+
+- **tree:** 增加filednames的自定义icon功能 ([#848](https://github.com/arco-design/arco-design-vue/pull/848))
+
+
 ## 2.20.2
 
 `2022-03-24`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 Feature
+
+- Add summary prop ([#877](https://github.com/arco-design/arco-design-vue/pull/877))
+
+
 ## 2.20.2
 
 `2022-03-24`

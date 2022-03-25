@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🐛 问题修复
+
+- 修复 `max-tags` 参数名错误的问题，应为 `max-tag-count` ([#873](https://github.com/arco-design/arco-design-vue/pull/873))
+
+
 ## 2.11.0
 
 `2021-12-17`
