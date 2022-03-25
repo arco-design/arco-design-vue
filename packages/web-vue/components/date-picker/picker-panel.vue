@@ -87,6 +87,7 @@ import {
   HeaderIcons,
   HeaderOperations,
   ShortcutType,
+  WeekStart,
 } from './interface';
 import PanelShortcuts from './panels/shortcuts.vue';
 import DatePanel from './panels/date/index.vue';
@@ -151,7 +152,7 @@ export default defineComponent({
       required: true,
     },
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     disabledDate: {

@@ -63,6 +63,7 @@ import {
   ref,
   toRefs,
   watch,
+  watchEffect,
 } from 'vue';
 import { TimePickerProps } from '../time-picker/interface';
 import {
@@ -70,6 +71,7 @@ import {
   RangePickerProps,
   ShortcutType,
   CalendarValue,
+  WeekStart,
 } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { isArray, isBoolean } from '../_utils/is';
@@ -81,6 +83,7 @@ import {
   dayjs,
   getNow,
   getDateValue,
+  initializeDateLocale,
 } from '../_utils/date';
 import useState from '../_hooks/use-state';
 import {
@@ -104,6 +107,7 @@ import { EmitType } from '../_utils/types';
 import { getReturnRangeValue } from './hooks/use-value-format';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
+import { useI18n } from '../locale';
 
 export default defineComponent({
   name: 'RangePicker',
@@ -160,12 +164,13 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0)
-     * @en The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)
-     * @type number
+     * @zh 每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。
+     * @en The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.
+     * @type 0 | 1 | 2 | 3 | 4 | 5 | 6
+     * @version 2-6 from 2.21.0
      */
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     /**
@@ -433,7 +438,13 @@ export default defineComponent({
       valueFormat,
       size,
       error,
+      dayStartOfWeek,
     } = toRefs(props);
+
+    const { locale: globalLocal } = useI18n();
+    watchEffect(() => {
+      initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+    });
 
     const {
       mergedSize,
