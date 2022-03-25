@@ -8,6 +8,7 @@ export default function useCheckedState(props: {
   halfCheckedKeys: TreeNodeKey[] | undefined;
   key2TreeNode: Key2TreeNode;
   checkStrictly: boolean;
+  onlyCheckLeaf: boolean;
 }) {
   const {
     defaultCheckedKeys,
@@ -15,6 +16,7 @@ export default function useCheckedState(props: {
     key2TreeNode,
     checkStrictly,
     halfCheckedKeys,
+    onlyCheckLeaf,
   } = toRefs(props);
 
   const isInitialized = ref(false);
@@ -28,6 +30,7 @@ export default function useCheckedState(props: {
       initCheckedKeys: keys,
       key2TreeNode: key2TreeNode.value,
       checkStrictly: checkStrictly.value,
+      onlyCheckLeaf: onlyCheckLeaf.value,
     });
   };
 

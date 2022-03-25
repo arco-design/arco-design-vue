@@ -70,6 +70,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |default-expand-checked|Whether to expand the parent node of the checked node by default|`boolean`|`false`|2.9.0|
 |auto-expand-parent|Whether to automatically expand the parent node of the expanded node|`boolean`|`true`|2.9.0|
 |half-checked-keys **(v-model)**|The keys of half checked. Only valid when checkable and checkStrictly|`Array<string \| number>`|`-`|2.19.0|
+|only-check-leaf|When enabled, checkedKeys is only for checked leaf nodes, and the status of the parent node is determined by the child node.(Only valid when checkable and checkStrictly is false)|`boolean`|`false`|2.21.0|
 ### `<tree>` Events
 
 |Event Name|Description|Parameters|
@@ -92,7 +93,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |getHalfCheckedNodes|Get half checked nodes|-|TreeNodeData[]|2.19.0|
 |getExpandedNodes|Get expanded nodes|-|TreeNodeData[]|2.19.0|
 |checkAll|Set the checkbox state of all nodes|checked: ` boolean `|-|2.20.0|
-|checkNode|Sets the checkbox state of the specified node|key: ` TreeNodeKey \| TreeNodeKey[] `<br>checked: ` boolean `|-|2.20.0|
+|checkNode|Sets the checkbox state of the specified node|key: ` TreeNodeKey \| TreeNodeKey[] `<br>checked: ` boolean `<br>onlyCheckLeaf: ` boolean `|-|2.20.0，onlyCheckLeaf from 2.21.0|
 |selectAll|Set the selected state of all nodes|selected: ` boolean `|-|2.20.0|
 |selectNode|Sets the selected state of the specified node|key: ` TreeNodeKey \| TreeNodeKey[] `<br>selected: ` boolean `|-|2.20.0|
 |expandAll|Set the expanded state of all nodes|expanded: ` boolean `|-|2.20.0|

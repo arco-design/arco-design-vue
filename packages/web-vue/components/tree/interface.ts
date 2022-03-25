@@ -177,6 +177,7 @@ export interface TreeProps {
   defaultExpandSelected?: boolean;
   defaultExpandChecked?: boolean;
   autoExpandParent?: boolean;
+  onlyCheckLeaf: boolean;
   dragIcon?: Slot;
   switcherIcon?: Slot;
   loadingIcon?: Slot;
