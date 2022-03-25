@@ -17,22 +17,28 @@ title:
 ```vue
 <template>
   <a-space>
-    <a-trigger class="demo-basic" position="top" auto-fit-position>
+    <a-trigger position="top" auto-fit-position :unmount-on-close="false">
       <span>Hover Me</span>
       <template #content>
-        <a-empty />
+        <div class="demo-basic">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
-    <a-trigger class="demo-basic" trigger="click">
+    <a-trigger trigger="click" :unmount-on-close="false">
       <a-button>Click Me</a-button>
       <template #content>
-        <a-empty />
+        <div class="demo-basic">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
-    <a-trigger class="demo-basic" trigger="focus">
+    <a-trigger trigger="focus">
       <a-input placeholder="Focus on me" />
       <template #content>
-        <a-empty />
+        <div class="demo-basic">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
   </a-space>

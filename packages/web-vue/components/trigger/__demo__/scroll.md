@@ -20,10 +20,12 @@ Monitor the scrolling of the container by setting `update-at-scroll`.
 <template>
   <div :style="{height:'100px',overflowY:'scroll'}">
     <div :style="{height:'200px'}">
-      <a-trigger class="demo-basic" trigger="click" update-at-scroll>
+      <a-trigger trigger="click" update-at-scroll>
         <a-button :style="{marginTop:'80px'}">Click Me</a-button>
         <template #content>
-          <a-empty />
+          <div class="demo-basic">
+            <a-empty />
+          </div>
         </template>
       </a-trigger>
     </div>

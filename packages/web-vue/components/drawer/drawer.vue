@@ -1,72 +1,74 @@
 <template>
-  <teleport :to="containerNode" :disabled="!renderToBody">
-    <div
-      v-if="!unmountOnClose || computedVisible || mounted"
-      v-show="computedVisible || mounted"
-      :class="`${prefixCls}-container`"
-      :style="
-        isFixed ? { zIndex } : { zIndex: 'inherit', position: 'absolute' }
-      "
-      v-bind="$attrs"
-    >
-      <transition name="fade-drawer" appear>
-        <div
-          v-if="mask"
-          v-show="computedVisible"
-          :class="`${prefixCls}-mask`"
-          @click="handleMask"
-        />
-      </transition>
-      <transition
-        :name="`slide-${placement}-drawer`"
-        appear
-        @after-enter="handleOpen"
-        @after-leave="handleClose"
+  <client-only>
+    <teleport :to="teleportContainer" :disabled="!renderToBody">
+      <div
+        v-if="!unmountOnClose || computedVisible || mounted"
+        v-show="computedVisible || mounted"
+        :class="`${prefixCls}-container`"
+        :style="
+          isFixed ? { zIndex } : { zIndex: 'inherit', position: 'absolute' }
+        "
+        v-bind="$attrs"
       >
-        <div v-show="computedVisible" :class="prefixCls" :style="style">
+        <transition name="fade-drawer" appear>
           <div
-            v-if="$slots.title || title || closable"
-            :class="`${prefixCls}-header`"
-          >
-            <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
-              <slot name="title">{{ title }}</slot>
-            </div>
+            v-if="mask"
+            v-show="computedVisible"
+            :class="`${prefixCls}-mask`"
+            @click="handleMask"
+          />
+        </transition>
+        <transition
+          :name="`slide-${placement}-drawer`"
+          appear
+          @after-enter="handleOpen"
+          @after-leave="handleClose"
+        >
+          <div v-show="computedVisible" :class="prefixCls" :style="style">
             <div
-              v-if="closable"
-              :class="`${prefixCls}-close-btn`"
-              @click="handleCancel"
+              v-if="$slots.title || title || closable"
+              :class="`${prefixCls}-header`"
             >
-              <icon-hover>
-                <icon-close />
-              </icon-hover>
-            </div>
-          </div>
-          <div :class="`${prefixCls}-body`">
-            <slot />
-          </div>
-          <div v-if="footer" :class="`${prefixCls}-footer`">
-            <slot name="footer">
-              <arco-button
-                v-if="!hideCancel"
-                v-bind="cancelButtonProps"
+              <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
+                <slot name="title">{{ title }}</slot>
+              </div>
+              <div
+                v-if="closable"
+                :class="`${prefixCls}-close-btn`"
                 @click="handleCancel"
               >
-                {{ cancelText || t('drawer.cancelText') }}
-              </arco-button>
-              <arco-button
-                type="primary"
-                :loading="mergedOkLoading"
-                v-bind="okButtonProps"
-                @click="handleOk"
-              >
-                {{ okText || t('drawer.okText') }}
-              </arco-button>
-            </slot>
+                <icon-hover>
+                  <icon-close />
+                </icon-hover>
+              </div>
+            </div>
+            <div :class="`${prefixCls}-body`">
+              <slot />
+            </div>
+            <div v-if="footer" :class="`${prefixCls}-footer`">
+              <slot name="footer">
+                <arco-button
+                  v-if="!hideCancel"
+                  v-bind="cancelButtonProps"
+                  @click="handleCancel"
+                >
+                  {{ cancelText || t('drawer.cancelText') }}
+                </arco-button>
+                <arco-button
+                  type="primary"
+                  :loading="mergedOkLoading"
+                  v-bind="okButtonProps"
+                  @click="handleOk"
+                >
+                  {{ okText || t('drawer.okText') }}
+                </arco-button>
+              </slot>
+            </div>
           </div>
-        </div>
-      </transition>
-    </div>
-  </teleport>
+        </transition>
+      </div>
+    </teleport>
+  </client-only>
 </template>
 
 <script lang="ts">
@@ -77,18 +79,21 @@ import {
   onBeforeUnmount,
   onMounted,
   ref,
+  toRefs,
   watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
+import ClientOnly from '../_components/client-only';
 import ArcoButton from '../button';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
-import { getElement, off, on } from '../_utils/dom';
+import { off, on } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { isBoolean, isFunction, isNumber } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
+import { useTeleportContainer } from '../_hooks/use-teleport-container';
 
 const DRAWER_PLACEMENTS = ['top', 'right', 'bottom', 'left'] as const;
 type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];
@@ -96,6 +101,7 @@ type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];
 export default defineComponent({
   name: 'Drawer',
   components: {
+    ClientOnly,
     ArcoButton,
     IconHover,
     IconClose,
@@ -312,14 +318,19 @@ export default defineComponent({
    * @slot footer
    */
   setup(props, { emit }) {
+    const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('drawer');
     const { t } = useI18n();
-    const containerRef = ref<HTMLElement>();
 
     const _visible = ref(props.defaultVisible);
     const computedVisible = computed(() => props.visible ?? _visible.value);
     const _okLoading = ref(false);
     const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
+
+    const { teleportContainer, containerRef } = useTeleportContainer({
+      popupContainer,
+      visible: computedVisible,
+    });
 
     const mounted = ref(computedVisible.value);
 
@@ -348,15 +359,6 @@ export default defineComponent({
     const { zIndex } = usePopupManager({ visible: computedVisible });
     const isFixed = computed(() => {
       return containerRef?.value === document.body;
-    });
-
-    const containerNode = computed(() => {
-      const ele = getElement(props.popupContainer);
-      if (!ele && !computedVisible.value) {
-        //  watch computedVisible
-        return 'body';
-      }
-      return ele || 'body';
     });
 
     // Used to ignore closed Promises
@@ -431,7 +433,6 @@ export default defineComponent({
     const { setOverflowHidden, resetOverflow } = useOverflow(containerRef);
 
     onMounted(() => {
-      containerRef.value = getElement(props.popupContainer);
       if (computedVisible.value) {
         mounted.value = true;
         setOverflowHidden();
@@ -487,7 +488,7 @@ export default defineComponent({
       handleClose,
       handleMask,
       isFixed,
-      containerNode,
+      teleportContainer,
     };
   },
 });

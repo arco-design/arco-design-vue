@@ -89,7 +89,7 @@ export const querySelector = (
 };
 
 export const getElement = (
-  target: string | HTMLElement,
+  target: string | HTMLElement | undefined,
   container?: Document | HTMLElement
 ): HTMLElement | undefined => {
   if (isString(target)) {

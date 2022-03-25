@@ -17,10 +17,10 @@ title:
 
 ```vue
 <template>
-  <a-trigger trigger="click" class="trigger-demo-nest">
+  <a-trigger trigger="click">
     <a-button>Click Me</a-button>
     <template #content>
-      <div>
+      <div class="trigger-demo-nest">
         <a-empty />
         <a-trigger class="trigger-demo-nest" position="right">
           <a-button>Hover Me</a-button>

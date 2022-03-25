@@ -4,75 +4,60 @@ exports[`<popconfirm> demo: render [async] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click To Show
 </button>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<popconfirm> demo: render [basic] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click To Delete
 </button>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<popconfirm> demo: render [custom] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Discard
 </button>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<popconfirm> demo: render [position] correctly 1`] = `
 "<div style=\\"position: relative; width: 440px; height: 280px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 70px;\\">
     <!--v-if-->TL
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 180px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 180px;\\">
     <!--v-if-->TOP
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 290px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 290px;\\">
     <!--v-if-->TR
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 70px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 70px;\\">
     <!--v-if-->BL
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 180px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 180px;\\">
     <!--v-if-->BOTTOM
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 290px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 290px;\\">
     <!--v-if-->BR
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 60px; left: 10px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 60px; left: 10px;\\">
     <!--v-if-->LT
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 120px; left: 10px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 120px; left: 10px;\\">
     <!--v-if-->LEFT
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 180px; left: 10px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 180px; left: 10px;\\">
     <!--v-if-->LB
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 60px; left: 350px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 60px; left: 350px;\\">
     <!--v-if-->RT
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 120px; left: 350px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 120px; left: 350px;\\">
     <!--v-if-->RIGHT
   </button>
-  <!--teleport start-->
-  <!--teleport end--><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 180px; left: 350px;\\">
+  <!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 180px; left: 350px;\\">
     <!--v-if-->RB
   </button>
-  <!--teleport start-->
-  <!--teleport end-->
+  <!---->
 </div>"
 `;
