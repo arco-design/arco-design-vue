@@ -273,6 +273,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否开启展开时的过渡动效
+     * @en Whether to enable expand transition animation
+     * @version 2.21.0
+     */
+    animation: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     /**
@@ -394,6 +403,7 @@ export default defineComponent({
       autoExpandParent,
       halfCheckedKeys,
       onlyCheckLeaf,
+      animation,
     } = toRefs(props);
 
     const prefixCls = getPrefixCls('tree');
@@ -751,7 +761,10 @@ export default defineComponent({
       const newExpandedKeys = [...expandedKeysSet];
 
       setExpandState(newExpandedKeys);
-      currentExpandKeys.value.push(key);
+      if (animation.value) {
+        currentExpandKeys.value.push(key);
+      }
+
       emitExpandEvent({
         targetKey: key,
         targetExpanded: expanded,
