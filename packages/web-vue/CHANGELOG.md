@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.21.1
+
+`2022-03-25`
+
+### 🐛 BugFix
+
+- **affix:** Fix the problem of component reporting error under SSR ([#879](https://github.com/arco-design/arco-design-vue/pull/879))
+
+
 ## 2.21.0
 
 `2022-03-25`
