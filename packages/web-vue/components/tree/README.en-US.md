@@ -144,7 +144,8 @@ description: For content with many levels, such as folders, catalogs, and organi
 |isLeaf|Specify the field name of isLeaf in TreeNodeData|`string`|`isLeaf`|
 |disableCheckbox|Specify the field name of disableCheckbox in TreeNodeData|`string`|`disableCheckbox`|
 |checkable|Specify the field name of checkable in TreeNodeData|`string`|`checkable`|
-|icon|Specify the field name of icon in TreeNodeData|`string`|`icon`|
+|icon|Specify the field name of icon in TreeNodeData|`string`|`checkable`|
+
 
 
 
