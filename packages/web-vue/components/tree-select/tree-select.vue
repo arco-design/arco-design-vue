@@ -23,7 +23,7 @@
         :allow-clear="allowClear"
         :loading="loading"
         :size="size"
-        :max-tags="maxTags"
+        :max-tag-count="maxTagCount"
         :disabled="mergedDisabled"
         :opened="panelVisible"
         :error="error"
@@ -192,7 +192,7 @@ export default defineComponent({
      * @zh 最多显示的标签数量，仅在多选模式有效
      * @en The maximum number of labels displayed, only valid in multi-select mode
      * */
-    maxTags: {
+    maxTagCount: {
       type: Number,
     },
     /**

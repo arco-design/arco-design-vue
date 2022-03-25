@@ -48,7 +48,7 @@ description: 可以对树形结构数据进行选择。
 |allow-clear|是否允许清除|`boolean`|`false`|
 |placeholder|提示文案|`string`|`-`|
 |retain-input-value|是否在搜索框聚焦时保留现有内容|`boolean`|`true`|
-|max-tags|最多显示的标签数量，仅在多选模式有效|`number`|`-`|
+|max-tag-count|最多显示的标签数量，仅在多选模式有效|`number`|`-`|
 |multiple|是否支持多选|`boolean`|`false`|
 |default-value|默认值|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|
 |model-value **(v-model)**|绑定值|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|
