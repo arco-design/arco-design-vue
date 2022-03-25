@@ -1,3 +1,4 @@
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import Popconfirm from '../index';
 
@@ -14,6 +15,7 @@ describe('Popconfirm', () => {
       },
     });
 
+    await nextTick();
     const buttons = wrapper.findAllComponents({ name: 'Button' });
     await buttons[0].trigger('click');
     expect(wrapper.emitted('cancel')).toHaveLength(1);

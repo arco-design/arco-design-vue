@@ -9,8 +9,7 @@ exports[`<slider> demo: render [basic] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
     <div style=\\"left: 50%;\\" class=\\"arco-slider-btn\\"></div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <!--v-if-->
 </div>"
@@ -25,8 +24,7 @@ exports[`<slider> demo: render [disabled] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
     <div style=\\"left: 50%;\\" class=\\"arco-slider-btn\\"></div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <!--v-if-->
 </div>"
@@ -43,8 +41,7 @@ exports[`<slider> demo: render [input] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
         <div style=\\"left: 10%;\\" class=\\"arco-slider-btn\\"></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <div class=\\"arco-slider-input\\">
         <!--v-if--><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
@@ -59,11 +56,9 @@ exports[`<slider> demo: render [input] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
         <div style=\\"left: 10%;\\" class=\\"arco-slider-btn\\"></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
         <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <div class=\\"arco-slider-input\\"><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
         <div class=\\"arco-slider-input-hyphens\\"></div><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
@@ -100,8 +95,7 @@ exports[`<slider> demo: render [marks] correctly 1`] = `
     </div>
     <!--v-if-->
     <div style=\\"left: 33.33%;\\" class=\\"arco-slider-btn\\"></div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <!--v-if-->
 </div>"
@@ -115,11 +109,9 @@ exports[`<slider> demo: render [range] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
     <div style=\\"left: 0%;\\" class=\\"arco-slider-btn\\"></div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
     <div style=\\"left: 10%;\\" class=\\"arco-slider-btn\\"></div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <!--v-if-->
 </div>"
@@ -186,8 +178,7 @@ exports[`<slider> demo: render [step] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
         <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <!--v-if-->
     </div>
@@ -204,8 +195,7 @@ exports[`<slider> demo: render [tooltip] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
     <div style=\\"left: 0%;\\" class=\\"arco-slider-btn\\"></div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <!--v-if-->
 </div>"
@@ -222,8 +212,7 @@ exports[`<slider> demo: render [vertical] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
         <div style=\\"bottom: 50%;\\" class=\\"arco-slider-btn\\"></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <!--v-if-->
     </div>
@@ -247,8 +236,7 @@ exports[`<slider> demo: render [vertical] correctly 1`] = `
         </div>
         <!--v-if-->
         <div style=\\"bottom: 33.33%;\\" class=\\"arco-slider-btn\\"></div>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <!--v-if-->
     </div>

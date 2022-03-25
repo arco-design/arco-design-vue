@@ -806,13 +806,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Beijing</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Haidian</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
@@ -824,13 +822,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
@@ -842,13 +838,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Sichuan</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Mianyang</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
@@ -860,13 +854,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
@@ -878,13 +870,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                 <!----></span></span>
-                <!--teleport start-->
-                <!--teleport end--></span>
+                <!----></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
@@ -2164,15 +2154,13 @@ exports[`<table> demo: render [sort] correctly 1`] = `
                   </th>
                   <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Salary</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><!----></span>
                     <!----></span><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
-                    <!--teleport start-->
-                    <!--teleport end-->
+                    <!---->
                     <!---->
                   </th>
                   <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
                     <!---->
                     <!----></span><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
-                    <!--teleport start-->
-                    <!--teleport end-->
+                    <!---->
                     <!---->
                   </th>
                   <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>

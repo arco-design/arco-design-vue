@@ -4,8 +4,7 @@ exports[`<trigger> demo: render [align-point] correctly 1`] = `
 "<div class=\\"demo-point-trigger\\">
   <div>Click Me</div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<trigger> demo: render [arrow] correctly 1`] = `
@@ -13,14 +12,12 @@ exports[`<trigger> demo: render [arrow] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Click Me
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Click Me (Arrow)
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
 </div>"
 `;
@@ -28,18 +25,15 @@ exports[`<trigger> demo: render [arrow] correctly 1`] = `
 exports[`<trigger> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>Hover Me</span>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Click Me
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Focus on me\\"><!----><!----></span>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
 </div>"
 `;
@@ -48,8 +42,7 @@ exports[`<trigger> demo: render [nest] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
 </button>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<trigger> demo: render [scroll] correctly 1`] = `
@@ -57,8 +50,7 @@ exports[`<trigger> demo: render [scroll] correctly 1`] = `
   <div style=\\"height: 200px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-top: 80px;\\">
       <!--v-if-->Click Me
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
 </div>"
 `;
@@ -68,26 +60,22 @@ exports[`<trigger> demo: render [translate] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->BOTTOM
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->BOTTOM OFFSET[100, 20]
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->BOTTOM OFFSET[-100, 20]
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
 </div>"
 `;
 
 exports[`<trigger> demo: render [triggers] correctly 1`] = `
 "<span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Click/Hover/Focus on me\\"><!----><!----></span>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;

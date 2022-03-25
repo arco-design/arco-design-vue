@@ -17,16 +17,20 @@ title:
 ```vue
 <template>
   <a-space>
-    <a-trigger class="demo-arrow" trigger="click">
+    <a-trigger trigger="click">
       <a-button>Click Me</a-button>
       <template #content>
-        <a-empty />
+        <div class="demo-arrow">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
-    <a-trigger class="demo-arrow" trigger="click" show-arrow>
+    <a-trigger trigger="click" show-arrow>
       <a-button>Click Me (Arrow)</a-button>
       <template #content>
-        <a-empty />
+        <div class="demo-arrow">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
   </a-space>
