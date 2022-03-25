@@ -123,7 +123,7 @@ export default {
     expand: 'Expand code',
     collapse: 'Collapse code',
     copy: 'Copy code',
-    codepen: 'Open in CodePen',
+    codepen: 'Open in CodeSandbox',
   },
   icon: {
     strokeWidth: 'Stroke width',
