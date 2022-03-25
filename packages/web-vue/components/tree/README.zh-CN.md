@@ -69,6 +69,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |auto-expand-parent|是否自动展开已展开节点的父节点|`boolean`|`true`|2.9.0|
 |half-checked-keys **(v-model)**|半选状态的节点.仅在 checkable 且 checkStrictly 时生效|`Array<string \| number>`|`-`|2.19.0|
 |only-check-leaf|开启后 checkedKeys 只处理叶子节点，父节点状态由子节点决定（仅在 checkable 且 checkStrictly 为 false 时生效）|`boolean`|`false`|2.21.0|
+|animation|是否开启展开时的过渡动效|`boolean`|`true`|2.21.0|
 ### `<tree>` Events
 
 |事件名|描述|参数|

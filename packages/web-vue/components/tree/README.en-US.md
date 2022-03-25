@@ -71,6 +71,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |auto-expand-parent|Whether to automatically expand the parent node of the expanded node|`boolean`|`true`|2.9.0|
 |half-checked-keys **(v-model)**|The keys of half checked. Only valid when checkable and checkStrictly|`Array<string \| number>`|`-`|2.19.0|
 |only-check-leaf|When enabled, checkedKeys is only for checked leaf nodes, and the status of the parent node is determined by the child node.(Only valid when checkable and checkStrictly is false)|`boolean`|`false`|2.21.0|
+|animation|Whether to enable expand transition animation|`boolean`|`true`|2.21.0|
 ### `<tree>` Events
 
 |Event Name|Description|Parameters|
