@@ -22,9 +22,11 @@ import type { Size } from '../_utils/constant';
 import {
   isArray,
   isFunction,
+  isNull,
   isNumber,
   isObject,
   isString,
+  isUndefined,
 } from '../_utils/is';
 import type {
   TableColumn,
@@ -309,6 +311,44 @@ export default defineComponent({
     columnResizable: {
       type: Boolean,
     },
+    /**
+     * @zh 显示表尾总结行
+     * @en Show footer summary row
+     * @version 2.21.0
+     */
+    summary: {
+      type: [Boolean, Function] as PropType<
+        | boolean
+        | ((params: {
+            columns: TableColumn[];
+            data: TableData[];
+          }) => TableData[])
+      >,
+    },
+    /**
+     * @zh 总结行的首列文字
+     * @en The first column of text in the summary line
+     * @version 2.21.0
+     */
+    summaryText: {
+      type: String,
+      default: 'Summary',
+    },
+    /**
+     * @zh 总结行的单元格合并方法
+     * @en Cell Merge Method for Summarizing Rows
+     * @version 2.21.0
+     */
+    summarySpanMethod: {
+      type: Function as PropType<
+        (data: {
+          record: TableData;
+          column: TableColumn | TableOperationColumn;
+          rowIndex: number;
+          columnIndex: number;
+        }) => { rowspan?: number; colspan?: number } | void
+      >,
+    },
     // for JSX
     onExpand: {
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
@@ -517,6 +557,7 @@ export default defineComponent({
 
     const theadRef = ref<HTMLElement>();
     const tbodyRef = ref<HTMLElement>();
+    const summaryRef = ref<HTMLElement>();
 
     // TODO: merge to one object
     const thRefs = ref<{
@@ -884,6 +925,47 @@ export default defineComponent({
       return sortedData.value;
     });
 
+    const getSummaryData = () => {
+      return dataColumns.value.reduce((per, column, index) => {
+        if (column.dataIndex) {
+          if (index === 0) {
+            per[column.dataIndex] = props.summaryText;
+          } else {
+            let count = 0;
+            let isNotNumber = false;
+            flattenData.value.forEach((data) => {
+              if (column.dataIndex) {
+                if (isNumber(data[column.dataIndex])) {
+                  count += data[column.dataIndex];
+                } else if (
+                  !isUndefined(data[column.dataIndex]) &&
+                  !isNull(data[column.dataIndex])
+                ) {
+                  isNotNumber = true;
+                }
+              }
+            });
+            per[column.dataIndex] = isNotNumber ? '' : count;
+          }
+        }
+
+        return per;
+      }, {} as Record<string, any>);
+    };
+
+    const summaryData = computed(() => {
+      if (props.summary) {
+        if (isFunction(props.summary)) {
+          return props.summary({
+            columns: dataColumns.value,
+            data: flattenData.value,
+          });
+        }
+        return [getSummaryData()];
+      }
+      return undefined;
+    });
+
     const containerRef = ref<HTMLDivElement>();
     const containerScrollLeft = ref(0);
 
@@ -942,8 +1024,13 @@ export default defineComponent({
       if (target.scrollLeft !== containerScrollLeft.value) {
         containerScrollLeft.value = target.scrollLeft;
       }
-      if (isScroll.value.y && theadRef.value) {
-        theadRef.value.scrollLeft = target.scrollLeft;
+      if (isScroll.value.y) {
+        if (theadRef.value) {
+          theadRef.value.scrollLeft = target.scrollLeft;
+        }
+        if (summaryRef.value) {
+          summaryRef.value.scrollLeft = target.scrollLeft;
+        }
       }
       setAlignPosition();
     };
@@ -1155,27 +1242,29 @@ export default defineComponent({
     // [row, column]
     const tableSpan = computed(() => {
       const data: Record<string, [number, number]> = {};
-      const columns = props.spanAll
-        ? ([] as (TableColumn | TableOperationColumn)[]).concat(
-            operations.value,
-            dataColumns.value
-          )
-        : dataColumns.value;
+      if (props.spanMethod) {
+        const columns = props.spanAll
+          ? ([] as (TableColumn | TableOperationColumn)[]).concat(
+              operations.value,
+              dataColumns.value
+            )
+          : dataColumns.value;
 
-      flattenData.value.forEach((record, rowIndex) => {
-        columns.forEach((column, columnIndex) => {
-          const { rowspan = 1, colspan = 1 } =
-            props.spanMethod?.({
-              record,
-              column,
-              rowIndex,
-              columnIndex,
-            }) ?? {};
-          if (rowspan > 1 || colspan > 1) {
-            data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
-          }
+        flattenData.value.forEach((record, rowIndex) => {
+          columns.forEach((column, columnIndex) => {
+            const { rowspan = 1, colspan = 1 } =
+              props.spanMethod?.({
+                record,
+                column,
+                rowIndex,
+                columnIndex,
+              }) ?? {};
+            if (rowspan > 1 || colspan > 1) {
+              data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
+            }
+          });
         });
-      });
+      }
 
       return data;
     });
@@ -1197,6 +1286,129 @@ export default defineComponent({
       }
       return data;
     });
+
+    // copy
+    // [row, column]
+    const tableSummarySpan = computed(() => {
+      const data: Record<string, [number, number]> = {};
+      if (props.summarySpanMethod) {
+        const columns = ([] as (TableColumn | TableOperationColumn)[]).concat(
+          operations.value,
+          dataColumns.value
+        );
+        flattenData.value.forEach((record, rowIndex) => {
+          columns.forEach((column, columnIndex) => {
+            const { rowspan = 1, colspan = 1 } =
+              props.summarySpanMethod?.({
+                record,
+                column,
+                rowIndex,
+                columnIndex,
+              }) ?? {};
+            if (rowspan > 1 || colspan > 1) {
+              data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
+            }
+          });
+        });
+      }
+      return data;
+    });
+
+    const removedSummaryCells = computed(() => {
+      const data: string[] = [];
+      for (const indexKey of Object.keys(tableSummarySpan.value)) {
+        const indexArray = indexKey.split('-').map((item) => Number(item));
+        const span = tableSummarySpan.value[indexKey];
+        for (let i = 1; i < span[0]; i++) {
+          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
+          for (let j = 1; j < span[1]; j++) {
+            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
+          }
+        }
+        for (let i = 1; i < span[1]; i++) {
+          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
+        }
+      }
+      return data;
+    });
+
+    const renderSummaryRow = (record: TableData, rowIndex: number) => {
+      return (
+        <Tr
+          class={[props.rowClass, `${prefixCls}-tr-summary`]}
+          key={`table-summary-${rowIndex}`}
+          v-slots={{
+            tr: slots.tr,
+          }}
+          onClick={(ev: Event) => handleRowClick(record, ev)}
+        >
+          {operations.value.map((operation, index) => {
+            const cellId = `${rowIndex}-${index}`;
+            const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
+
+            if (removedSummaryCells.value.includes(cellId)) {
+              return null;
+            }
+
+            return (
+              <OperationTd
+                style={style}
+                record={record}
+                rowKey={rowKey.value}
+                isRadio={isRadio.value}
+                hasExpand={false}
+                operationColumn={operation}
+                operations={operations.value}
+                selectedRowKeys={selectedRowKeys.value}
+                expandedIcon={props.expandable?.icon}
+                expandedRowKeys={expandedRowKeys.value}
+                rowSpan={rowspan}
+                colSpan={colspan}
+                renderExpandBtn={renderExpandBtn}
+                onSelect={handleSelect}
+                onExpand={handleExpand}
+                summary
+              />
+            );
+          })}
+          {dataColumns.value.map((column, index) => {
+            const cellId = `${rowIndex}-${operations.value.length + index}`;
+            const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
+
+            if (removedSummaryCells.value.includes(cellId)) {
+              return null;
+            }
+
+            return (
+              <Td
+                key={`td-${cellId}`}
+                v-slots={{
+                  td: slots.td,
+                }}
+                style={style}
+                rowIndex={rowIndex}
+                record={record}
+                column={column}
+                operations={operations.value}
+                dataColumns={dataColumns.value}
+                rowSpan={rowspan}
+                colSpan={colspan}
+                onClick={(ev: Event) => handleCellClick(record, column, ev)}
+              />
+            );
+          })}
+        </Tr>
+      );
+    };
+
+    const renderSummary = () => {
+      if (summaryData.value) {
+        return summaryData.value.map((data, index) =>
+          renderSummaryRow(data, index)
+        );
+      }
+      return null;
+    };
 
     const virtualListRef = ref();
 
@@ -1433,6 +1645,10 @@ export default defineComponent({
       );
     };
 
+    const renderFooter = () => {
+      return <tfoot>{renderSummary()}</tfoot>;
+    };
+
     const renderBody = () => {
       const hasSubData = flattenData.value.some((record) =>
         Boolean(record.children)
@@ -1565,6 +1781,22 @@ export default defineComponent({
                 </div>
               )}
             </ResizeObserver>
+            {summaryData.value && summaryData.value.length && (
+              <div ref={summaryRef} class={`${prefixCls}-tfoot`} style={style}>
+                <table
+                  cellpadding={0}
+                  cellspacing={0}
+                  style={contentStyle.value}
+                >
+                  <ColGroup
+                    dataColumns={dataColumns.value}
+                    operations={operations.value}
+                    columnWidth={columnWidth}
+                  />
+                  {renderFooter()}
+                </table>
+              </div>
+            )}
           </>
         );
       }
@@ -1579,6 +1811,7 @@ export default defineComponent({
             />
             {props.showHeader && renderHeader()}
             {renderBody()}
+            {summaryData.value && summaryData.value.length && renderFooter()}
           </table>
         </ResizeObserver>
       );

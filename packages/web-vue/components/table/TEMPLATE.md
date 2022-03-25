@@ -39,6 +39,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/span.md
 
+@import ./__demo__/summary.md
+
 @import ./__demo__/column-resize.md
 
 @import ./__demo__/drag-row.md
