@@ -85,6 +85,7 @@ import type {
   HeaderOperations,
   IsSameTime,
   Mode,
+  WeekStart,
 } from '../../interface';
 import { newArray } from '../../utils';
 import PanelHeader, { HeaderLabelClickFunc } from '../header.vue';
@@ -145,7 +146,7 @@ export default defineComponent({
       default: () => ({}),
     },
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     disabledDate: {
@@ -246,9 +247,11 @@ export default defineComponent({
         {}
     );
 
-    const weekList = computed(() =>
-      dayStartOfWeek.value === 1 ? [1, 2, 3, 4, 5, 6, 0] : [0, 1, 2, 3, 4, 5, 6]
-    );
+    const weekList = computed(() => {
+      const list = [0, 1, 2, 3, 4, 5, 6];
+      const index = Math.max(dayStartOfWeek.value % 7, 0);
+      return [...list.slice(index), ...list.slice(0, index)];
+    });
 
     const rows = computed(() => {
       const startDate = methods.startOf(headerValue.value, 'month');

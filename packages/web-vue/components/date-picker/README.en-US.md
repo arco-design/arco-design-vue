@@ -101,16 +101,16 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 ### `<date-picker>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
-|default-value|Default value|`Date \| string \| number`|`-`|
-|format|Display the format of the date, refer to [String Parsing Format](#string-parsing-format)|`string \| ((current: Date) => string)`|`-`|
-|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`|
-|show-time|Whether to increase time selection|`boolean`|`false`|
-|timepicker-props|Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`|
-|disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`|
-|show-now-btn|Whether to display `showTime`, select the button of the current time|`boolean`|`true`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`||
+|default-value|Default value|`Date \| string \| number`|`-`||
+|format|Display the format of the date, refer to [String Parsing Format](#string-parsing-format)|`string \| ((current: Date) => string)`|`-`||
+|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.|`0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`|`0`|2-6 from 2.21.0|
+|show-time|Whether to increase time selection|`boolean`|`false`||
+|timepicker-props|Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`||
+|disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`||
+|show-now-btn|Whether to display `showTime`, select the button of the current time|`boolean`|`true`||
 
 
 
@@ -150,12 +150,12 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 ### `<week-picker>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
-|default-value|Default value|`Date \| string \| number`|`-`|
-|format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'gggg-wo'`|
-|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`||
+|default-value|Default value|`Date \| string \| number`|`-`||
+|format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'gggg-wo'`||
+|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.|`0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`|`0`|2-6 from 2.21.0|
 
 
 
@@ -170,7 +170,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |picker-value|The date displayed in the default panel|`(Date \| string \| number)[]`|`-`||
 |default-picker-value|Date displayed on the panel|`(Date \| string \| number)[]`|`-`||
 |disabled|Whether to disable|`boolean \| boolean[]`|`false`||
-|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)|`0 \| 1`|`0`||
+|day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.|`0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`|`0`|2-6 from 2.21.0|
 |format|Display the format of the date, refer to [String Parsing Format](#string-parsing-format)|`string`|`-`||
 |value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
 |show-time|Whether to increase time selection|`boolean`|`false`||

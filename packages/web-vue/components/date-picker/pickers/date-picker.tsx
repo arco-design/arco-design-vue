@@ -1,6 +1,6 @@
 import { defineComponent, PropType } from 'vue';
 import { TimePickerProps } from '../../time-picker/interface';
-import { DisabledTimeProps, DatePickerProps } from '../interface';
+import { DisabledTimeProps, DatePickerProps, WeekStart } from '../interface';
 import Picker from '../picker.vue';
 
 export default defineComponent({
@@ -30,12 +30,13 @@ export default defineComponent({
       >,
     },
     /**
-     * @zh 每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0)
-     * @en The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)
-     * @type number
+     * @zh 每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。
+     * @en The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.
+     * @type 0 | 1 | 2 | 3 | 4 | 5 | 6
+     * @version 2-6 from 2.21.0
      */
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     /**

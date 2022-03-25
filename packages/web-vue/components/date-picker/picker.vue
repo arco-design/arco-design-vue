@@ -58,8 +58,15 @@ import {
   ref,
   toRefs,
   watch,
+  watchEffect,
 } from 'vue';
-import { dayjs, getNow, isValueChange, getDateValue } from '../_utils/date';
+import {
+  dayjs,
+  getNow,
+  isValueChange,
+  getDateValue,
+  initializeDateLocale,
+} from '../_utils/date';
 import { getPrefixCls } from '../_utils/global-config';
 import useState from '../_hooks/use-state';
 import {
@@ -68,6 +75,7 @@ import {
   ShortcutType,
   FormatFunc,
   CalendarValue,
+  WeekStart,
 } from './interface';
 import usePickerState from './hooks/use-picker-state';
 import DateInput from '../_components/picker/input.vue';
@@ -90,6 +98,7 @@ import { EmitType } from '../_utils/types';
 import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
 import { useFormItem } from '../_hooks/use-form-item';
+import { useI18n } from '../locale';
 
 /**
  * @displayName Common
@@ -279,10 +288,10 @@ export default defineComponent({
     },
     showNowBtn: {
       type: Boolean,
-      defaut: true,
+      default: true,
     },
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     modelValue: {
@@ -467,7 +476,13 @@ export default defineComponent({
       locale,
       pickerValue,
       defaultPickerValue,
+      dayStartOfWeek,
     } = toRefs(props);
+
+    const { locale: globalLocal } = useI18n();
+    watchEffect(() => {
+      initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+    });
 
     const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
 
