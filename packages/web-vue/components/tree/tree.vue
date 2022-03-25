@@ -44,6 +44,7 @@ import {
 } from './interface';
 import {
   getCheckedStateByCheck,
+  isLeafNode,
   isNodeCheckable,
   isNodeExpandable,
   isNodeSelectable,
@@ -263,6 +264,24 @@ export default defineComponent({
     halfCheckedKeys: {
       type: Array as PropType<Array<string | number>>,
     },
+    /**
+     * @zh 开启后 checkedKeys 只处理叶子节点，父节点状态由子节点决定（仅在 checkable 且 checkStrictly 为 false 时生效）
+     * @en When enabled, checkedKeys is only for checked leaf nodes, and the status of the parent node is determined by the child node.(Only valid when checkable and checkStrictly is false)
+     * @version 2.21.0
+     */
+    onlyCheckLeaf: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否开启展开时的过渡动效
+     * @en Whether to enable expand transition animation
+     * @version 2.21.0
+     */
+    animation: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     /**
@@ -383,6 +402,8 @@ export default defineComponent({
       defaultExpandChecked,
       autoExpandParent,
       halfCheckedKeys,
+      onlyCheckLeaf,
+      animation,
     } = toRefs(props);
 
     const prefixCls = getPrefixCls('tree');
@@ -422,6 +443,7 @@ export default defineComponent({
         checkStrictly,
         key2TreeNode,
         halfCheckedKeys,
+        onlyCheckLeaf,
       })
     );
     const [selectedKeys, setSelectedState] = useMergeState<TreeNodeKey[]>(
@@ -561,7 +583,7 @@ export default defineComponent({
         halfCheckedNodes: getNodes(newIndeterminateKeys),
         e: event,
       });
-      emit('update:checkedKeys', checkedKeys);
+      emit('update:checkedKeys', publicCheckedKeys);
       emit('update:halfCheckedKeys', newIndeterminateKeys);
     }
 
@@ -590,13 +612,13 @@ export default defineComponent({
     }) {
       const { targetKey, targetExpanded, newExpandedKeys, event } = options;
       const targetNode = targetKey ? key2TreeNode.value[targetKey] : undefined;
-      emit('select', newExpandedKeys, {
+      emit('expand', newExpandedKeys, {
         expanded: targetExpanded,
         node: targetNode?.treeNodeData,
         expandedNodes: getNodes(newExpandedKeys),
         e: event,
       });
-      emit('update:selectedKeys', newExpandedKeys);
+      emit('update:expandedKeys', newExpandedKeys);
     }
 
     function setCheckedKeys(keys: TreeNodeKey[]) {
@@ -739,7 +761,10 @@ export default defineComponent({
       const newExpandedKeys = [...expandedKeysSet];
 
       setExpandState(newExpandedKeys);
-      currentExpandKeys.value.push(key);
+      if (animation.value) {
+        currentExpandKeys.value.push(key);
+      }
+
       emitExpandEvent({
         targetKey: key,
         targetExpanded: expanded,
@@ -974,14 +999,25 @@ export default defineComponent({
      * @en Sets the checkbox state of the specified node
      * @param { TreeNodeKey | TreeNodeKey[] } key
      * @param { boolean } checked
+     * @param { boolean } onlyCheckLeaf
      * @public
-     * @version 2.20.0
+     * @version 2.20.0，onlyCheckLeaf from 2.21.0
      */
-    checkNode(key: TreeNodeKey | TreeNodeKey[], checked = true) {
-      const { key2TreeNode } = this.treeContext;
-      const keys = (isArray(key) ? key : [key]).filter(
-        (key) => key2TreeNode[key] && isNodeCheckable(key2TreeNode[key])
-      );
+    checkNode(
+      key: TreeNodeKey | TreeNodeKey[],
+      checked = true,
+      onlyCheckLeaf = false
+    ) {
+      const { checkStrictly, treeContext } = this;
+      const { key2TreeNode } = treeContext;
+      const keys = (isArray(key) ? key : [key]).filter((key) => {
+        const node = key2TreeNode[key];
+        return (
+          node &&
+          isNodeCheckable(node) &&
+          (checkStrictly || !onlyCheckLeaf || isLeafNode(node)) // onlyCheckLeaf 仅在 checkStrictly 为 false 的时候有效
+        );
+      });
       this.internalCheckNodes(keys, checked);
     },
     /**

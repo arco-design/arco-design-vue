@@ -2,6 +2,31 @@
 changelog: true
 ```
 
+## 2.20.2
+
+`2022-03-24`
+
+### 🐛 BugFix
+
+- Fixed the problem that the `table-column` component caused continuous updating when writing object parameters directly in the template ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- Fix the problem that there is no column data when there is only one `table-column` ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- Fix the sorting problem of `table-column`, which can be solved by the `index` parameter ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- Use Context to refactor components, `table-colum` supports secondary encapsulation ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- scroll property adds `maxHeight`, `minWidth` properties ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+### 💅 Style
+
+- Fixed the problem that the header text could not be centered after sorting was enabled ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+
 ## 2.19.0
 
 `2022-03-11`

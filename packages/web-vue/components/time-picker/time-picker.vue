@@ -2,6 +2,7 @@
   <Trigger
     trigger="click"
     animation-name="slide-dynamic-origin"
+    auto-fit-transform-origin
     :click-to-close="false"
     :position="position"
     :disabled="mergedDisabled"

@@ -86,8 +86,7 @@ exports[`<progress> demo: render [circle] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
       <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <!---->
     </div>
     <!--v-if-->
   </div>
@@ -257,8 +256,7 @@ exports[`<progress> demo: render [mini] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
       <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <!---->
     </div>
     <!--v-if-->
   </div>
@@ -403,8 +401,7 @@ exports[`<progress> demo: render [status] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
       <div style=\\"left: 20%;\\" class=\\"arco-slider-btn\\"></div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <!---->
     </div>
     <!--v-if-->
   </div>

@@ -21,7 +21,9 @@
       <slot>{{ label }}</slot>
     </checkbox>
     <template v-else>
-      <slot>{{ label }}</slot>
+      <span :class="`${prefixCls}-content`"
+        ><slot>{{ label }}</slot></span
+      >
     </template>
     <span v-if="$slots.suffix" :class="`${prefixCls}-suffix`">
       <slot name="suffix" />
@@ -100,13 +102,13 @@ export default defineComponent({
     internal: Boolean,
   },
   setup(props) {
-    const { disabled, tagProps: _tagProps } = toRefs(props);
+    const { disabled, tagProps: _tagProps, index } = toRefs(props);
     const prefixCls = getPrefixCls('select-option');
     const selectCtx = inject(selectInjectionKey, undefined);
     const instance = getCurrentInstance();
     const itemRef = ref<HTMLElement>();
 
-    const tagProps = ref(props.tagProps);
+    const tagProps = ref(_tagProps.value);
 
     watch(_tagProps, (cur, pre) => {
       if (!isEqual(cur, pre)) {
@@ -145,9 +147,6 @@ export default defineComponent({
     let isValid = ref(true);
 
     if (!props.internal) {
-      const _index = selectCtx?.getNextSlotOptionIndex() ?? -1;
-      const index = computed(() => props.index ?? _index);
-
       const optionInfo = reactive({
         ref: itemRef,
         index,

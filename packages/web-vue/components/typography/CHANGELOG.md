@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 BugFix
+
+- Fix `ellipsisText` not updating ([#833](https://github.com/arco-design/arco-design-vue/pull/833))
+
+
 ## 2.16.0
 
 `2022-01-21`

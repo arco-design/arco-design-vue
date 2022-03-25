@@ -30,6 +30,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/span.md
 
+@import ./__demo__/summary.md
+
 @import ./__demo__/column-resize.md
 
 @import ./__demo__/drag-row.md
@@ -37,6 +39,8 @@ description: It is used for data collection, display, analysis and processing, a
 @import ./__demo__/drag-handle.md
 
 @import ./__demo__/group.md
+
+@import ./__demo__/editable.md
 
 @import ./__demo__/custom.md
 
@@ -60,7 +64,7 @@ description: It is used for data collection, display, analysis and processing, a
 |hide-header|Whether to hide the header|`boolean`|`false`||
 |row-selection|Table row selector configuration|`TableRowSelection`|`-`||
 |expandable|Expand row configuration of the table|`TableExpandable`|`-`||
-|scroll|Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values.|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
+|scroll|Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values. `2.20.0` version adds support for `minWidth`, `maxHeight`.|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
 |pagination|Pagination properties configuration|`boolean \| PaginationProps`|`true`||
 |page-position|The position of the page selector|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
 |indent-size|The indentation distance of the tree table|`number`|`16`||
@@ -75,6 +79,9 @@ description: It is used for data collection, display, analysis and processing, a
 |row-class|The class name of the table row element|`string\|array\|object`|`-`|2.16.0|
 |draggable|Table drag and drop sorting configuration|`TableDraggable`|`-`|2.16.0|
 |column-resizable|Whether to allow the column width to be adjusted|`boolean`|`false`|2.16.0|
+|summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumn[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
+|summary-text|The first column of text in the summary line|`string`|`'Summary'`|2.21.0|
+|summary-span-method|Cell Merge Method for Summarizing Rows|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|
@@ -123,6 +130,7 @@ description: It is used for data collection, display, analysis and processing, a
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
 |cell-style|Custom cell style|`CSSProperties`|`-`|2.11.0|
+|index|index for manually specifying option|`number`|`-`|2.20.2|
 ### `<table-column>` Slots
 
 |Slot Name|Description|Parameters|

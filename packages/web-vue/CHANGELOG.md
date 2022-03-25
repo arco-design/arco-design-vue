@@ -2,6 +2,65 @@
 changelog: true
 ```
 
+## 2.20.2
+
+`2022-03-24`
+
+### 🐛 BugFix
+
+- **table:** Fixed the problem that the `table-column` component caused continuous updating when writing object parameters directly in the template ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- **table:** Fix the problem that there is no column data when there is only one `table-column` ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- **table:** Fix the sorting problem of `table-column`, which can be solved by the `index` parameter ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+
+### 💅 Style
+
+- **dropdown:** Fixed vertical centering of icons in options ([#862](https://github.com/arco-design/arco-design-vue/pull/862))
+- Fixed drop-down menu animation issues for some components ([#862](https://github.com/arco-design/arco-design-vue/pull/862))
+
+
+## 2.20.1
+
+`2022-03-21`
+
+### 🐛 BugFix
+
+- **tree:** Fix the problem that the expansion event name is wrong in the new version ([#853](https://github.com/arco-design/arco-design-vue/pull/853))
+
+### 💅 Style
+
+- **form:** Fix `form-item` asterisk compatibility with windicss ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **select:** Fixed vertical centering of option #icon slots ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **select:** Fix the problem that the omission is not displayed after the option exceeds the width ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- **transfer:** Fix the problem that the omission is not displayed after the option exceeds the width ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- **table:** Use Context to refactor components, `table-colum` supports secondary encapsulation ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- **table:** scroll property adds `maxHeight`, `minWidth` properties ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- **cascader:** Add `cascader-panel` component ([#842](https://github.com/arco-design/arco-design-vue/pull/842))
+- **descriptions:** The `column` property supports reactive configuration ([#839](https://github.com/arco-design/arco-design-vue/pull/839))
+- **list:** Added `#scroll-loading` slot ([#838](https://github.com/arco-design/arco-design-vue/pull/838))
+- **tree:** add instance method to tree component ([#837](https://github.com/arco-design/arco-design-vue/pull/837))
+
+### 🐛 BugFix
+
+- **date-picker:** the select event is not triggered when the end time selected ([#844](https://github.com/arco-design/arco-design-vue/pull/844))
+- **cascader:** Fix the problem that the selected path of the drop-down menu may not match the current value ([#843](https://github.com/arco-design/arco-design-vue/pull/843))
+- **select:** Fixed the problem that the search function failed when the virtual list was opened ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+- **select:** Fix the problem that the `Enter` key on the small keyboard cannot be selected ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+- **modal:** Fixed `close` function returning wrong in create method ([#840](https://github.com/arco-design/arco-design-vue/pull/840))
+- **typography:** Fix `ellipsisText` not updating ([#833](https://github.com/arco-design/arco-design-vue/pull/833))
+
+### 💅 Style
+
+- **table:** Fixed the problem that the header text could not be centered after sorting was enabled ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+
 ## 2.19.0
 
 `2022-03-11`

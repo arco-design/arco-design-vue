@@ -1,3 +1,4 @@
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import Modal from '../index';
 import ModalComponent from '../modal.vue';
@@ -15,6 +16,7 @@ describe('Modal', () => {
       },
     });
 
+    await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
     const buttons = wrapper.findAll('button');
     await buttons[0].trigger('click');
@@ -51,7 +53,7 @@ describe('Modal', () => {
     expect(onOk).toBeCalled();
   });
 
-  test('should render simple modal', () => {
+  test('should render simple modal', async () => {
     const wrapper = mount(ModalComponent, {
       props: {
         defaultVisible: true,
@@ -64,6 +66,7 @@ describe('Modal', () => {
       },
     });
 
+    await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

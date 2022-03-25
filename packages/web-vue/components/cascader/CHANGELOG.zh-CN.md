@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- 增加 `cascader-panel` 组件 ([#842](https://github.com/arco-design/arco-design-vue/pull/842))
+
+### 🐛 问题修复
+
+- 修复下拉菜单选中路径可能与当前值不符的问题 ([#843](https://github.com/arco-design/arco-design-vue/pull/843))
+
+
 ## 2.18.0
 
 `2022-03-04`

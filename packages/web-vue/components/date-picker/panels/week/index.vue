@@ -14,7 +14,7 @@
 import { Dayjs } from 'dayjs';
 import { defineComponent, PropType } from 'vue';
 import { methods } from '../../../_utils/date';
-import { IsSameTime } from '../../interface';
+import { IsSameTime, WeekStart } from '../../interface';
 import DatePanel from '../date/index.vue';
 import { useI18n } from '../../../locale';
 
@@ -25,7 +25,7 @@ export default defineComponent({
   },
   props: {
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
   },

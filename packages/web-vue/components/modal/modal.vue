@@ -1,94 +1,96 @@
 <template>
-  <teleport :to="popupContainer" :disabled="!renderToBody">
-    <div
-      v-if="!unmountOnClose || computedVisible || mounted"
-      v-show="computedVisible || mounted"
-      v-bind="$attrs"
-      :class="`${prefixCls}-container`"
-      :style="{ zIndex }"
-    >
-      <transition name="fade-modal" appear>
-        <div
-          v-if="mask"
-          v-show="computedVisible"
-          ref="maskRef"
-          :class="`${prefixCls}-mask`"
-          :style="maskStyle"
-        />
-      </transition>
-      <transition
-        name="zoom-modal"
-        appear
-        @after-enter="handleOpen"
-        @after-leave="handleClose"
+  <client-only>
+    <teleport :to="teleportContainer" :disabled="!renderToBody">
+      <div
+        v-if="!unmountOnClose || computedVisible || mounted"
+        v-show="computedVisible || mounted"
+        v-bind="$attrs"
+        :class="`${prefixCls}-container`"
+        :style="{ zIndex }"
       >
-        <div
-          v-show="computedVisible"
-          ref="wrapperRef"
-          :class="wrapperCls"
-          @click.self="handleMaskClick"
-          @mousedown.self="handleMaskMouseDown"
+        <transition name="fade-modal" appear>
+          <div
+            v-if="mask"
+            v-show="computedVisible"
+            ref="maskRef"
+            :class="`${prefixCls}-mask`"
+            :style="maskStyle"
+          />
+        </transition>
+        <transition
+          name="zoom-modal"
+          appear
+          @after-enter="handleOpen"
+          @after-leave="handleClose"
         >
-          <div ref="modalRef" :class="modalCls" :style="mergedModalStyle">
-            <div
-              v-if="$slots.title || title || closable"
-              :class="`${prefixCls}-header`"
-              @mousedown="handleMoveDown"
-            >
+          <div
+            v-show="computedVisible"
+            ref="wrapperRef"
+            :class="wrapperCls"
+            @click.self="handleMaskClick"
+            @mousedown.self="handleMaskMouseDown"
+          >
+            <div ref="modalRef" :class="modalCls" :style="mergedModalStyle">
               <div
-                v-if="$slots.title || title"
-                :class="[
-                  `${prefixCls}-title`,
-                  `${prefixCls}-title-align-${titleAlign}`,
-                ]"
+                v-if="$slots.title || title || closable"
+                :class="`${prefixCls}-header`"
+                @mousedown="handleMoveDown"
               >
-                <div v-if="messageType" :class="`${prefixCls}-title-icon`">
-                  <icon-info-circle-fill v-if="messageType === 'info'" />
-                  <icon-check-circle-fill v-if="messageType === 'success'" />
-                  <icon-exclamation-circle-fill
-                    v-if="messageType === 'warning'"
-                  />
-                  <icon-close-circle-fill v-if="messageType === 'error'" />
+                <div
+                  v-if="$slots.title || title"
+                  :class="[
+                    `${prefixCls}-title`,
+                    `${prefixCls}-title-align-${titleAlign}`,
+                  ]"
+                >
+                  <div v-if="messageType" :class="`${prefixCls}-title-icon`">
+                    <icon-info-circle-fill v-if="messageType === 'info'" />
+                    <icon-check-circle-fill v-if="messageType === 'success'" />
+                    <icon-exclamation-circle-fill
+                      v-if="messageType === 'warning'"
+                    />
+                    <icon-close-circle-fill v-if="messageType === 'error'" />
+                  </div>
+                  <slot name="title">{{ title }}</slot>
                 </div>
-                <slot name="title">{{ title }}</slot>
-              </div>
-              <div
-                v-if="!simple && closable"
-                :class="`${prefixCls}-close-btn`"
-                @click="handleCancel"
-              >
-                <icon-hover>
-                  <icon-close />
-                </icon-hover>
-              </div>
-            </div>
-            <div :class="`${prefixCls}-body`">
-              <slot />
-            </div>
-            <div v-if="footer" :class="`${prefixCls}-footer`">
-              <slot name="footer">
-                <arco-button
-                  v-if="!hideCancel"
-                  v-bind="cancelButtonProps"
+                <div
+                  v-if="!simple && closable"
+                  :class="`${prefixCls}-close-btn`"
                   @click="handleCancel"
                 >
-                  {{ cancelDisplayText }}
-                </arco-button>
-                <arco-button
-                  type="primary"
-                  v-bind="okButtonProps"
-                  :loading="mergedOkLoading"
-                  @click="handleOk"
-                >
-                  {{ okDisplayText }}
-                </arco-button>
-              </slot>
+                  <icon-hover>
+                    <icon-close />
+                  </icon-hover>
+                </div>
+              </div>
+              <div :class="`${prefixCls}-body`">
+                <slot />
+              </div>
+              <div v-if="footer" :class="`${prefixCls}-footer`">
+                <slot name="footer">
+                  <arco-button
+                    v-if="!hideCancel"
+                    v-bind="cancelButtonProps"
+                    @click="handleCancel"
+                  >
+                    {{ cancelDisplayText }}
+                  </arco-button>
+                  <arco-button
+                    type="primary"
+                    v-bind="okButtonProps"
+                    :loading="mergedOkLoading"
+                    @click="handleOk"
+                  >
+                    {{ okDisplayText }}
+                  </arco-button>
+                </slot>
+              </div>
             </div>
           </div>
-        </div>
-      </transition>
-    </div>
-  </teleport>
+        </transition>
+      </div>
+    </teleport>
+  </client-only>
 </template>
 
 <script lang="tsx">
@@ -100,9 +102,11 @@ import {
   watch,
   onMounted,
   onBeforeUnmount,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { MessageType } from '../_utils/constant';
+import ClientOnly from '../_components/client-only';
 import IconHover from '../_components/icon-hover.vue';
 import ArcoButton from '../button';
 import IconClose from '../icon/icon-close';
@@ -112,15 +116,17 @@ import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
 import IconCloseCircleFill from '../icon/icon-close-circle-fill';
 import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
-import { getElement, off, on } from '../_utils/dom';
+import { getElement, off, on, contains } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { isBoolean, isFunction, isNumber } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useDraggable } from './hooks/use-draggable';
+import { useTeleportContainer } from '../_hooks/use-teleport-container';
 
 export default defineComponent({
   name: 'Modal',
   components: {
+    ClientOnly,
     ArcoButton,
     IconHover,
     IconClose,
@@ -405,9 +411,9 @@ export default defineComponent({
    * @slot footer
    */
   setup(props, { emit }) {
+    const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('modal');
     const { t } = useI18n();
-    const containerRef = ref<HTMLElement>();
     const wrapperRef = ref<HTMLElement>();
     const modalRef = ref<HTMLElement>();
 
@@ -418,6 +424,11 @@ export default defineComponent({
     const mergedDraggable = computed(
       () => props.draggable && !props.fullscreen
     );
+
+    const { teleportContainer, containerRef } = useTeleportContainer({
+      popupContainer,
+      visible: computedVisible,
+    });
 
     const mounted = ref(computedVisible.value);
 
@@ -520,6 +531,12 @@ export default defineComponent({
 
     const handleOpen = () => {
       if (computedVisible.value) {
+        if (
+          !contains(wrapperRef.value, document.activeElement) &&
+          document.activeElement instanceof HTMLElement
+        ) {
+          document.activeElement.blur();
+        }
         emit('open');
       }
     };
@@ -624,6 +641,7 @@ export default defineComponent({
       modalRef,
       wrapperCls,
       modalCls,
+      teleportContainer,
       handleMoveDown,
     };
   },

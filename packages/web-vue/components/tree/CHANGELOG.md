@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 🐛 BugFix
+
+- Fix the problem that the expansion event name is wrong in the new version ([#853](https://github.com/arco-design/arco-design-vue/pull/853))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- add instance method to tree component ([#837](https://github.com/arco-design/arco-design-vue/pull/837))
+
+
 ## 2.19.0
 
 `2022-03-11`

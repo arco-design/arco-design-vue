@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 BugFix
+
+- the select event is not triggered when the end time selected ([#844](https://github.com/arco-design/arco-design-vue/pull/844))
+
+
 ## 2.19.0
 
 `2022-03-11`

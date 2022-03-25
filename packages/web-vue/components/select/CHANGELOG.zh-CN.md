@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 样式更新
+
+- 修复选项 #icon 插槽的垂直居中问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- 修复选项超出宽度后没有显示省略的问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 问题修复
+
+- 修复开启虚拟列表时，搜索功能失败的问题 ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+- 修复小键盘 `Enter` 键不能选中的问题 ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+
+
 ## 2.18.0
 
 `2022-03-04`

@@ -563,7 +563,7 @@ exports[`<timeline> demo: render [type] correctly 1`] = `
     </div>
     <!--v-if-->
   </div>
-  <div class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same\\">
+  <div class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
     <div class=\\"arco-timeline-item-dot-wrapper\\">
       <div class=\\"arco-timeline-item-dot-line arco-timeline-item-dot-line-is-vertical\\" style=\\"border-left-style: dashed;\\"></div>
       <div class=\\"arco-timeline-item-dot-content\\">

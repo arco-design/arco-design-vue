@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.20.2
+
+`2022-03-24`
+
+### 🐛 问题修复
+
+- 修复 `table-column` 组件在模板中直接书写对象参数时导致不断更新的问题 ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- 修复仅有一个 `table-column` 时没有列数据的问题 ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- 修复 `table-column` 的排序问题，可通过 `index` 参数解决 ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- 使用 Context 方式重构组件，`table-colum` 支持二次封装 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- scroll 属性增加 `maxHeight`, `minWidth` 属性 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+### 💅 样式更新
+
+- 修复开启排序后，表头文字不能居中的问题 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
 ## 2.19.0
 
 `2022-03-11`

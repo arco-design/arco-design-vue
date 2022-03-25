@@ -16,12 +16,14 @@ title:
 
 ```vue
 <template>
-  <a-trigger class="demo-point" trigger="click" align-point>
+  <a-trigger trigger="click" align-point>
     <div class="demo-point-trigger">
       <div>Click Me</div>
     </div>
     <template #content>
-      <a-empty />
+      <div class="demo-point">
+        <a-empty />
+      </div>
     </template>
   </a-trigger>
 </template>

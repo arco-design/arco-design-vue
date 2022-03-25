@@ -140,8 +140,7 @@ exports[`<steps> demo: render [custom-node] correctly 1`] = `
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
       <div class=\\"arco-steps-item-tail\\"></div>
       <div class=\\"arco-steps-item-node\\"><span>0</span>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <div class=\\"arco-steps-item-content\\">
         <div class=\\"arco-steps-item-title\\"> Succeeded </div>
@@ -151,8 +150,7 @@ exports[`<steps> demo: render [custom-node] correctly 1`] = `
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
       <div class=\\"arco-steps-item-tail\\"></div>
       <div class=\\"arco-steps-item-node\\"><span>0</span>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <div class=\\"arco-steps-item-content\\">
         <div class=\\"arco-steps-item-title\\"> Processing Succeeded </div>
@@ -162,8 +160,7 @@ exports[`<steps> demo: render [custom-node] correctly 1`] = `
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
       <div class=\\"arco-steps-item-tail\\"></div>
       <div class=\\"arco-steps-item-node\\"><span>0</span>
-        <!--teleport start-->
-        <!--teleport end-->
+        <!---->
       </div>
       <div class=\\"arco-steps-item-content\\">
         <div class=\\"arco-steps-item-title\\">Pending </div>

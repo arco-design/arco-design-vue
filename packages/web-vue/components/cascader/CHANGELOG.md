@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- Add `cascader-panel` component ([#842](https://github.com/arco-design/arco-design-vue/pull/842))
+
+### 🐛 BugFix
+
+- Fix the problem that the selected path of the drop-down menu may not match the current value ([#843](https://github.com/arco-design/arco-design-vue/pull/843))
+
+
 ## 2.18.0
 
 `2022-03-04`

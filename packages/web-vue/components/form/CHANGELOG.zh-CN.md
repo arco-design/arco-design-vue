@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 样式更新
+
+- 修复 `form-item` 星号与 windicss 的兼容问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
 ## 2.19.0
 
 `2022-03-11`

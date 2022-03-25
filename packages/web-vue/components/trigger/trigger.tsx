@@ -18,6 +18,7 @@ import {
   onUpdated,
   onMounted,
   onBeforeUnmount,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import type { AnimationDuration, ClassName, EmitType } from '../_utils/types';
@@ -43,6 +44,8 @@ import { triggerInjectionKey } from './context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { useResizeObserver } from '../_hooks/use-resize-observer';
+import ClientOnly from '../_components/client-only';
+import { useTeleportContainer } from '../_hooks/use-teleport-container';
 
 export default defineComponent({
   name: 'Trigger',
@@ -353,6 +356,7 @@ export default defineComponent({
    * @slot content
    */
   setup(props, { emit, slots, attrs }) {
+    const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('trigger');
     const triggerMethods = computed(() =>
       ([] as Array<TriggerEvent>).concat(props.trigger)
@@ -374,8 +378,6 @@ export default defineComponent({
     const popupStyle = ref<CSSProperties>({});
     const transformStyle = ref<CSSProperties>({});
     const arrowStyle = ref<CSSProperties>({});
-    // container相关变量
-    const containerEle = ref<HTMLElement>();
     // 鼠标相关变量
     const arrowRef = ref<HTMLElement>();
     const mousePosition = ref({
@@ -386,6 +388,12 @@ export default defineComponent({
     const computedVisible = computed(
       () => props.popupVisible ?? popupVisible.value
     );
+
+    const { teleportContainer, containerRef } = useTeleportContainer({
+      popupContainer,
+      visible: computedVisible,
+      documentContainer: true,
+    });
 
     const { zIndex } = usePopupManager({ visible: computedVisible });
 
@@ -410,10 +418,10 @@ export default defineComponent({
     };
 
     const updatePopupStyle = () => {
-      if (!triggerEle.value || !popupRef.value || !containerEle.value) {
+      if (!triggerEle.value || !popupRef.value || !containerRef.value) {
         return;
       }
-      const containerRect = containerEle.value.getBoundingClientRect();
+      const containerRect = containerRef.value.getBoundingClientRect();
       const triggerRect = props.alignPoint
         ? {
             top: mousePosition.value.top,
@@ -675,17 +683,11 @@ export default defineComponent({
     );
 
     const { createResizeObserver, destroyResizeObserver } = useResizeObserver({
-      elementRef: containerEle,
+      elementRef: containerRef,
       onResize: handleResize,
     });
 
     onMounted(() => {
-      if (props.popupContainer) {
-        containerEle.value = getElement(props.popupContainer);
-      } else {
-        containerEle.value = document.documentElement;
-      }
-
       createResizeObserver();
 
       // 默认显示时，更新popup位置
@@ -741,59 +743,61 @@ export default defineComponent({
           ) : (
             children
           )}
-          <Teleport
-            to={props.popupContainer ?? 'body'}
-            disabled={!props.renderToBody}
-          >
-            {(!props.unmountOnClose ||
-              computedVisible.value ||
-              mounted.value) &&
-              !hidePopup.value && (
-                <ResizeObserver onResize={handleResize}>
-                  <div
-                    ref={popupRef}
-                    class={[
-                      `${prefixCls}-popup`,
-                      `${prefixCls}-position-${popupPosition.value}`,
-                    ]}
-                    style={{ ...popupStyle.value, zIndex: zIndex.value }}
-                    trigger-placement={popupPosition.value}
-                    onMouseenter={handleMouseEnterWithContext}
-                    onMouseleave={handleMouseLeaveWithContext}
-                    onMousedown={handlePopupMouseDown}
-                    {...attrs}
-                  >
-                    <Transition
-                      name={props.animationName}
-                      duration={props.duration}
-                      appear
-                      onAfterEnter={handleShow}
-                      onAfterLeave={handleHide}
+          <ClientOnly>
+            <Teleport
+              to={teleportContainer.value}
+              disabled={!props.renderToBody}
+            >
+              {(!props.unmountOnClose ||
+                computedVisible.value ||
+                mounted.value) &&
+                !hidePopup.value && (
+                  <ResizeObserver onResize={handleResize}>
+                    <div
+                      ref={popupRef}
+                      class={[
+                        `${prefixCls}-popup`,
+                        `${prefixCls}-position-${popupPosition.value}`,
+                      ]}
+                      style={{ ...popupStyle.value, zIndex: zIndex.value }}
+                      trigger-placement={popupPosition.value}
+                      onMouseenter={handleMouseEnterWithContext}
+                      onMouseleave={handleMouseLeaveWithContext}
+                      onMousedown={handlePopupMouseDown}
+                      {...attrs}
                     >
-                      <div
-                        class={`${prefixCls}-popup-wrapper`}
-                        style={transformStyle.value}
-                        v-show={computedVisible.value}
+                      <Transition
+                        name={props.animationName}
+                        duration={props.duration}
+                        appear
+                        onAfterEnter={handleShow}
+                        onAfterLeave={handleHide}
                       >
                         <div
-                          class={[`${prefixCls}-content`, props.contentClass]}
-                          style={props.contentStyle}
+                          class={`${prefixCls}-popup-wrapper`}
+                          style={transformStyle.value}
+                          v-show={computedVisible.value}
                         >
-                          {slots.content?.()}
-                        </div>
-                        {props.showArrow && (
                           <div
-                            ref={arrowRef}
-                            class={[`${prefixCls}-arrow`, props.arrowClass]}
-                            style={arrowStyle.value}
-                          />
-                        )}
-                      </div>
-                    </Transition>
-                  </div>
-                </ResizeObserver>
-              )}
-          </Teleport>
+                            class={[`${prefixCls}-content`, props.contentClass]}
+                            style={props.contentStyle}
+                          >
+                            {slots.content?.()}
+                          </div>
+                          {props.showArrow && (
+                            <div
+                              ref={arrowRef}
+                              class={[`${prefixCls}-arrow`, props.arrowClass]}
+                              style={arrowStyle.value}
+                            />
+                          )}
+                        </div>
+                      </Transition>
+                    </div>
+                  </ResizeObserver>
+                )}
+            </Teleport>
+          </ClientOnly>
         </>
       );
     };

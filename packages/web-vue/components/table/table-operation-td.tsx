@@ -62,6 +62,7 @@ export default defineComponent({
       type: Number,
       default: 1,
     },
+    summary: Boolean,
   },
   emits: ['select', 'expand'],
   setup(props, { emit, slots }) {
@@ -115,6 +116,10 @@ export default defineComponent({
     };
 
     const renderContent = () => {
+      if (props.summary) {
+        return null;
+      }
+
       if (props.operationColumn.name === 'selection') {
         return renderSelection();
       }

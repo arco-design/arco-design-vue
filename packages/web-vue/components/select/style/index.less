@@ -34,6 +34,8 @@
     position: relative;
     // 避免 Trigger 的小箭头位于其上方
     z-index: 1;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
     width: 100%;
     padding: 0 @select-signal-popup-option-padding-horizontal;
@@ -44,10 +46,19 @@
     line-height: @select-popup-option-height;
     text-align: left;
     background-color: @select-popup-option-color-bg_default;
-    display: flex;
-    align-items: center;
     cursor: pointer;
-    .text-ellipsis();
+
+    &-content {
+      .text-ellipsis();
+    }
+
+    &-checkbox {
+      overflow: hidden;
+
+      .@{prefix}-checkbox-label {
+        .text-ellipsis();
+      }
+    }
 
     &-has-suffix {
       justify-content: space-between;
@@ -69,6 +80,7 @@
     }
 
     &-icon {
+      display: inline-flex;
       margin-right: 8px;
     }
 

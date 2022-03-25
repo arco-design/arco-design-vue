@@ -72,7 +72,7 @@ export interface OptionInfo extends OptionData {
    * @zh 选项的索引
    * @en Option index
    */
-  index: number;
+  index?: number;
   /**
    * @zh 选项的键值
    * @en Option key

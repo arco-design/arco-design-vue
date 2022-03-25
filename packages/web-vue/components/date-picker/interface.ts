@@ -36,8 +36,10 @@ export type RangeDisabledTime = (
 
 export type Mode = 'date' | 'year' | 'quarter' | 'month' | 'week';
 
+export type WeekStart = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
 export interface DatePickerProps {
-  dayStartOfWeek: 0 | 1;
+  dayStartOfWeek: WeekStart;
   format?: string | FormatFunc;
   modelValue?: CalendarValue;
   defaultValue?: CalendarValue;
@@ -48,7 +50,7 @@ export interface DatePickerProps {
 }
 
 export interface WeekPickerProps {
-  dayStartOfWeek: 0 | 1;
+  dayStartOfWeek: WeekStart;
   format?: string;
   modelValue?: CalendarValue;
   defaultValue?: CalendarValue;
@@ -137,7 +139,7 @@ export interface RangePickerProps extends BasePickerProps {
   /** 是否禁用 */
   disabled: boolean | boolean[];
   /** 每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0) */
-  dayStartOfWeek: 0 | 1;
+  dayStartOfWeek: WeekStart;
   /** 展示日期的格式，参考[字符串解析格式](#字符串解析格式) */
   format?: string;
   /** 是否增加时间选择 */

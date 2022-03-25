@@ -24,11 +24,8 @@ if (!theme) {
   theme = 'light';
   setLocalStorage('arco-theme', theme);
 }
-let lang = getLocalStorage('arco-lang') ?? '';
-if (!lang) {
-  lang = 'zh-CN';
-  setLocalStorage('arco-lang', lang);
-}
+const lang = /en-US/i.test(window.location.href) ? 'en-US' : 'zh-CN';
+setLocalStorage('arco-lang', lang);
 
 const handleLanguageChange = (lang: string) => {
   if (lang === 'zh-CN' && /en-US/i.test(window.location.href)) {

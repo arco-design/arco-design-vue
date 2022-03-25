@@ -28,6 +28,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/span.md
 
+@import ./__demo__/summary.md
+
 @import ./__demo__/column-resize.md
 
 @import ./__demo__/drag-row.md
@@ -35,6 +37,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 @import ./__demo__/drag-handle.md
 
 @import ./__demo__/group.md
+
+@import ./__demo__/editable.md
 
 @import ./__demo__/custom.md
 
@@ -58,7 +62,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |hide-header|是否隐藏表头|`boolean`|`false`||
 |row-selection|表格的行选择器配置|`TableRowSelection`|`-`||
 |expandable|表格的展开行配置|`TableExpandable`|`-`||
-|scroll|表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
+|scroll|表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。`2.20.0` 版本增加 `minWidth`,`maxHeight` 的支持。|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
 |pagination|分页的属性配置|`boolean \| PaginationProps`|`true`||
 |page-position|分页选择器的位置|`'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'`|`'br'`||
 |indent-size|树形表格的缩进距离|`number`|`16`||
@@ -73,6 +77,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |row-class|表格行元素的类名|`string\|array\|object`|`-`|2.16.0|
 |draggable|表格拖拽排序的配置|`TableDraggable`|`-`|2.16.0|
 |column-resizable|是否允许调整列宽|`boolean`|`false`|2.16.0|
+|summary|显示表尾总结行|`boolean\| ((params: {    columns: TableColumn[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
+|summary-text|总结行的首列文字|`string`|`'Summary'`|2.21.0|
+|summary-span-method|总结行的单元格合并方法|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
 ### `<table>` Events
 
 |事件名|描述|参数|
@@ -121,6 +128,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |cell-style|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
+|index|用于手动指定选项的 index|`number`|`-`|2.20.2|
 ### `<table-column>` Slots
 
 |插槽名|描述|参数|

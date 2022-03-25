@@ -50,7 +50,7 @@ description: The tree structure data can be selected.
 |allow-clear|Whether to allow clear|`boolean`|`false`|
 |placeholder|Prompt copy|`string`|`-`|
 |retain-input-value|Whether to keep existing content when the search box is focused|`boolean`|`true`|
-|max-tags|The maximum number of labels displayed, only valid in multi-select mode|`number`|`-`|
+|max-tag-count|The maximum number of labels displayed, only valid in multi-select mode|`number`|`-`|
 |multiple|Whether to support multiple selection|`boolean`|`false`|
 |default-value|Default value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|
 |model-value **(v-model)**|Value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`|

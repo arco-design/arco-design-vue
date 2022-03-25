@@ -6,7 +6,7 @@
 import {
   defineComponent,
   onMounted,
-  onUnmounted,
+  onBeforeUnmount,
   getCurrentInstance,
   onUpdated,
   ref,
@@ -71,7 +71,7 @@ export default defineComponent({
       }
     });
 
-    onUnmounted(() => {
+    onBeforeUnmount(() => {
       destroyResizeObserver();
     });
   },

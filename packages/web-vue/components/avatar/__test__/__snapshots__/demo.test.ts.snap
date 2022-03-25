@@ -94,8 +94,7 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
       <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 4; margin-left: -6px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-group-max-count-avatar\\"><span class=\\"arco-avatar-text\\">+2</span>
         <!--v-if-->
       </div>
-      <!--teleport start-->
-      <!--teleport end-->
+      <!---->
     </div>
   </div>
 </div>"
