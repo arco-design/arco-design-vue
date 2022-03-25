@@ -281,7 +281,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
+ </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
@@ -407,7 +407,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
             </tr>
             <!---->
           </tbody>
-          <!---->
+    <!---->
         </table>
       </div>
     </div>
