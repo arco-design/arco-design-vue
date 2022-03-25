@@ -10,9 +10,11 @@
     ]"
     @click="onClick"
   >
-    <span ref="wrapperRef" :class="wrapperCls">
-      <slot />
-    </span>
+    <resize-observer @resize="handleResize">
+      <span ref="wrapperRef" :class="wrapperCls">
+        <slot />
+      </span>
+    </resize-observer>
     <div
       v-if="$slots['trigger-icon']"
       :class="`${prefixCls}-trigger-icon-${triggerType}`"
@@ -39,11 +41,15 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { AvatarShape, AvatarTriggerType } from './interface';
 import { useIndex } from '../_hooks/use-index';
+import ResizeObserver from '../_components/resize-observer-v2.vue';
 import { avatarGroupInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'Avatar',
+  components: {
+    ResizeObserver,
+  },
   props: {
     /**
      * @zh 头像的形状，有圆形(circle)和正方形(square)两种
@@ -174,7 +180,7 @@ export default defineComponent({
       }
     });
 
-    watch([size, slots.default], () => {
+    watch(size, () => {
       if (mergedAutoFixFontSize.value) {
         autoFixFontSizeHandler();
       }
@@ -192,6 +198,12 @@ export default defineComponent({
       emit('click', e);
     };
 
+    const handleResize = () => {
+      if (mergedAutoFixFontSize.value) {
+        autoFixFontSizeHandler();
+      }
+    };
+
     return {
       prefixCls,
       itemRef,
@@ -202,6 +214,7 @@ export default defineComponent({
       computedTriggerIconStyle,
       isImage,
       onClick,
+      handleResize,
     };
   },
 });
