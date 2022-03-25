@@ -1,5 +1,5 @@
 <template>
-  <span v-if="level > 1">
+  <span v-if="level > 1" :class="`${prefixCls}-indent-list`">
     <span
       v-for="index in level - 1"
       :key="index"
