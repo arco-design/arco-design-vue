@@ -38,6 +38,7 @@
     "jsongen": "arco-vue-scripts jsongen && node copy-global.js",
     "build": "yarn run build:component && yarn run build:style && yarn run dtsgen",
     "build:component": "arco-vue-scripts build:component -u",
+    "build:module": "arco-vue-scripts build:component",
     "build:style": "arco-vue-scripts build:style",
     "dtsgen": "arco-vue-scripts dtsgen 'components/**/*.{ts,tsx,vue}'",
     "dtsgen:icon": "arco-vue-scripts dtsgen 'components/icon/**/*.{ts,tsx,vue}' -o 'components/icon/@types'",

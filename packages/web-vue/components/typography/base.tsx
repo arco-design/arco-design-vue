@@ -10,6 +10,8 @@ import {
   VNodeTypes,
   watch,
   reactive,
+  onMounted,
+  onUpdated,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { isObject, isString, isUndefined } from '../_utils/is';
@@ -28,20 +30,6 @@ import Popover from '../popover';
 
 interface BaseInternalProps extends BaseProps {
   component: keyof HTMLElementTagNameMap;
-}
-
-function getClassNames(prefixCls: string, props: BaseInternalProps) {
-  const { type, disabled } = props;
-  const classNames = [];
-
-  if (type) {
-    classNames.push(`${prefixCls}-${type}`);
-  }
-  if (disabled) {
-    classNames.push(`${prefixCls}-disabled`);
-  }
-
-  return classNames;
 }
 
 function getComponentTags<K extends keyof HTMLElementTagNameMap>(
@@ -130,6 +118,7 @@ function normalizeEllipsisConfig(
  */
 export default defineComponent({
   name: 'TypographyBase',
+  inheritAttrs: false,
   props: {
     component: {
       type: String as PropType<BaseInternalProps['component']>,
@@ -306,7 +295,7 @@ export default defineComponent({
    * @slot expand-node
    * @binding {boolean} expanded
    */
-  setup(props: BaseInternalProps, { slots, emit }) {
+  setup(props: BaseInternalProps, { slots, emit, attrs }) {
     const {
       editing: propEditing,
       defaultEditing,
@@ -322,11 +311,14 @@ export default defineComponent({
     const prefixCls = getPrefixCls('typography');
     const classNames = computed(() => [
       prefixCls,
-      ...getClassNames(prefixCls, props),
+      {
+        [`${prefixCls}-${props.type}`]: props.type,
+        [`${prefixCls}-disabled`]: props.disabled,
+      },
     ]);
 
     const wrapperRef = ref();
-    let fullText = '';
+    const fullText = ref('');
 
     // for edit
     const [editing, setEditing] = useMergeState(
@@ -359,7 +351,9 @@ export default defineComponent({
     let copyTimer: NodeJS.Timeout | null = null;
 
     function onCopyClick() {
-      const text = !isUndefined(copyText?.value) ? copyText?.value : fullText;
+      const text = !isUndefined(copyText?.value)
+        ? copyText?.value
+        : fullText.value;
 
       clipboard(text || '');
 
@@ -423,7 +417,7 @@ export default defineComponent({
         wrapperRef.value,
         ellipsisConfig.value,
         renderOperations(!!ellipsisConfig.value.expandable),
-        fullText
+        fullText.value
       );
 
       if (isEllipsis.value !== ellipsis) {
@@ -464,13 +458,21 @@ export default defineComponent({
       }
     });
 
+    const getFullText = () => {
+      if (props.ellipsis) {
+        const _fullText = getInnerText(slots.default?.());
+        if (_fullText !== fullText.value) {
+          fullText.value = _fullText;
+          calEllipsis();
+        }
+      }
+    };
+
+    onMounted(() => getFullText());
+    onUpdated(() => getFullText());
+
     return () => {
       const children = slots.default?.() || [];
-      const newFullText = getInnerText(children);
-      if (newFullText !== fullText) {
-        fullText = newFullText;
-        calEllipsis();
-      }
 
       // 编辑中
       if (mergeEditing.value) {
@@ -499,24 +501,26 @@ export default defineComponent({
       const showEllipsis = isEllipsis.value && !expanded.value;
       const Content = Wrap(props, showEllipsis ? ellipsisText.value : children);
       const titleAttrs =
-        showEllipsis && !showTooltip ? { title: fullText } : {};
+        showEllipsis && !showTooltip ? { title: fullText.value } : {};
       const Component = component.value;
 
       return (
-        <ResizeObserver
-          onResize={() => {
-            resizeOnNextFrame();
-          }}
-        >
-          <Component class={classNames.value} ref={wrapperRef} {...titleAttrs}>
+        <ResizeObserver onResize={() => resizeOnNextFrame()}>
+          <Component
+            class={classNames.value}
+            ref={wrapperRef}
+            {...titleAttrs}
+            {...attrs}
+          >
             {showEllipsis && showTooltip ? (
               <TooltipComponent
                 {...tooltipProps}
                 v-slots={{
-                  content: () => fullText,
-                  default: () => [<span>{Content}</span>],
+                  content: () => fullText.value,
                 }}
-              />
+              >
+                <span>{Content}</span>
+              </TooltipComponent>
             ) : (
               Content
             )}
