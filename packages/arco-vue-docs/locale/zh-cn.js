@@ -123,7 +123,7 @@ export default {
     expand: '展开代码',
     collapse: '收起代码',
     copy: '复制代码',
-    codepen: '在CodePen打开',
+    codeSandbox: '在CodeSandbox打开',
   },
   icon: {
     strokeWidth: '线宽',
