@@ -100,9 +100,18 @@ export default defineComponent({
     },
     // private
     internal: Boolean,
+    /**
+     * @zh 多选模式下是否可以删除
+     * @en multiple mode possible to delete
+     * @version 2.21.2
+     */
+    closable: {
+      type: Boolean,
+      default: true
+    }
   },
   setup(props) {
-    const { disabled, tagProps: _tagProps, index } = toRefs(props);
+    const { disabled, tagProps: _tagProps, index, closable: _closable } = toRefs(props);
     const prefixCls = getPrefixCls('select-option');
     const selectCtx = inject(selectInjectionKey, undefined);
     const instance = getCurrentInstance();
@@ -113,6 +122,14 @@ export default defineComponent({
     watch(_tagProps, (cur, pre) => {
       if (!isEqual(cur, pre)) {
         tagProps.value = cur;
+      }
+    });
+
+    const closable = ref(_closable.value);
+
+    watch(_closable, (cur, pre) => {
+      if (!isEqual(cur, pre)) {
+        closable.value = cur;
       }
     });
 
@@ -156,6 +173,7 @@ export default defineComponent({
         label,
         disabled,
         tagProps,
+        closable
       });
 
       isValid = computed(() =>
