@@ -155,7 +155,7 @@ export default defineComponent({
         value,
         label,
         disabled,
-        tagProps
+        tagProps,
       });
 
       isValid = computed(() =>
