@@ -696,7 +696,7 @@ export default defineComponent({
             String(
               isObject(obj.value) ? obj.value[valueKey?.value] : obj.value
             ),
-          disabled: optionInfo?.disabled ?? false,
+          closable: !optionInfo?.disabled ?? false,
           tagProps: optionInfo?.tagProps,
         } as TagData;
       })
