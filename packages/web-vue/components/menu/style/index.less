@@ -509,6 +509,21 @@
     }
   }
 
+  .@{trigger-menu-prefix-cls}-has-icon {
+    display: flex;
+    align-items: center;
+    line-height: initial;
+
+    > * {
+      flex: none;
+    }
+
+    .@{trigger-menu-prefix-cls}-title {
+      flex: auto;
+      .text-ellipsis();
+    }
+  }
+
   &-pop-header {
     display: flex;
     align-items: center;
