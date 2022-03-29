@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.21.2
+
+`2022-03-29`
+
+### 🐛 问题修复
+
+- 修复 `fallback-option` 属性设置 false 失效的问题 ([#893](https://github.com/arco-design/arco-design-vue/pull/893))
+- 修复多选模式下选择的标签默认不显示删除的问题 ([#886](https://github.com/arco-design/arco-design-vue/pull/886))
+
+
 ## 2.20.1
 
 `2022-03-21`

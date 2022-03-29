@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.21.2
+
+`2022-03-29`
+
+### 🐛 BugFix
+
+- Fix the problem that `fallback-option` attribute setting false is invalid ([#893](https://github.com/arco-design/arco-design-vue/pull/893))
+- Fixed the problem that the selected label in the multi-selection mode does not display delete by default ([#886](https://github.com/arco-design/arco-design-vue/pull/886))
+
+
 ## 2.20.1
 
 `2022-03-21`
