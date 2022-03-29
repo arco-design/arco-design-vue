@@ -261,7 +261,7 @@ export default defineComponent({
         | boolean
         | ((value: string | number | Record<string, unknown>) => OptionData)
       >,
-      default: false,
+      default: true,
     },
     /**
      * @zh 是否在下拉菜单中显示额外选项
@@ -504,10 +504,17 @@ export default defineComponent({
     };
 
     const getExtraValueData = (): OptionValueWithKey[] => {
-      const valueArray = computedValueObjects.value.filter((obj) => {
-        const optionInfo = optionInfoMap.get(obj.key);
-        return !optionInfo || optionInfo.origin === 'extraOptions';
-      });
+      const valueArray: OptionValueWithKey[] = [];
+
+      if (props.allowCreate || props.fallbackOption) {
+        valueArray.push(
+          ...computedValueObjects.value.filter((obj) => {
+            const optionInfo = optionInfoMap.get(obj.key);
+            return !optionInfo || optionInfo.origin === 'extraOptions';
+          })
+        );
+      }
+
       if (props.allowCreate && computedInputValue.value) {
         const key = getKeyFromValue(computedInputValue.value);
         const optionInfo = optionInfoMap.get(key);
@@ -685,22 +692,26 @@ export default defineComponent({
       onPopupVisibleChange: handlePopupVisibleChange,
     });
 
-    const selectViewValue = computed(() =>
-      computedValueObjects.value.map((obj) => {
-        const optionInfo = optionInfoMap.get(obj.key);
-        return {
-          ...optionInfo,
-          value: obj.key,
-          label:
-            optionInfo?.label ??
-            String(
-              isObject(obj.value) ? obj.value[valueKey?.value] : obj.value
-            ),
-          closable: !optionInfo?.disabled ?? false,
-          tagProps: optionInfo?.tagProps,
-        } as TagData;
-      })
-    );
+    const selectViewValue = computed(() => {
+      const result: TagData[] = [];
+      for (const item of computedValueObjects.value) {
+        const optionInfo = optionInfoMap.get(item.key);
+        if (optionInfo) {
+          result.push({
+            ...optionInfo,
+            value: item.key,
+            label:
+              optionInfo?.label ??
+              String(
+                isObject(item.value) ? item.value[valueKey?.value] : item.value
+              ),
+            closable: !optionInfo?.disabled,
+            tagProps: optionInfo?.tagProps,
+          });
+        }
+      }
+      return result;
+    });
 
     const getOptionContentFunc = (optionInfo: OptionInfo) => {
       if (isFunction(slots.option)) {
