@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { Slot, VNode } from 'vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
+import { Size } from '../_utils/constant';
 
 export type TreeNodeKey = number | string;
 
@@ -151,11 +152,10 @@ export interface FieldNames {
 
 export type LoadMore = (node: TreeNodeData) => Promise<void>;
 export type DropPosition = -1 | 0 | 1;
-
 export type CheckedStrategy = 'all' | 'parent' | 'child';
 
 export interface TreeProps {
-  size: 'mini' | 'small' | 'medium' | 'large';
+  size: Size;
   blockNode: boolean;
   defaultExpandAll: boolean;
   multiple: boolean;
