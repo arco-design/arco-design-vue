@@ -10,13 +10,13 @@ import {
   toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
+import { INPUT_EVENTS, Size } from '../_utils/constant';
 import { Backspace, Enter } from '../_utils/keycode';
 import { getValueData } from './utils';
 import Tag from '../tag';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
-import { TagData } from './interface';
+import { InputTagFieldNames, TagData } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { EmitType } from '../_utils/types';
@@ -25,6 +25,13 @@ import FeedbackIcon from '../_components/feedback-icon.vue';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
 import { isNull, isUndefined } from '../_utils/is';
+
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+  closable: 'closable',
+  tagProps: 'tagProps',
+};
 
 export default defineComponent({
   name: 'InputTag',
@@ -138,6 +145,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 自定义 `TagData` 中的字段
+     * @en Customize fields in `TagData`
+     * @version 2.22.0
+     */
+    fieldNames: {
+      type: Object as PropType<InputTagFieldNames>,
+    },
     // private
     baseCls: String,
     focused: Boolean,
@@ -230,6 +245,10 @@ export default defineComponent({
       uninject: uninjectFormItemContext?.value,
     });
     const { mergedSize } = useSize(_mergedSize);
+    const mergedFieldNames = computed(() => ({
+      ...DEFAULT_FIELD_NAMES,
+      ...props.fieldNames,
+    }));
 
     const _focused = ref(false);
     const _value = ref(props.defaultValue);
@@ -290,16 +309,23 @@ export default defineComponent({
     };
 
     const tags = computed(() => {
-      const valueData = getValueData(computedValue.value);
+      const valueData = getValueData(
+        computedValue.value,
+        mergedFieldNames.value
+      );
 
       if (props.maxTagCount > 0) {
         const invisibleTags = valueData.length - props.maxTagCount;
         if (invisibleTags > 0) {
           const result = valueData.slice(0, props.maxTagCount);
-          result.push({
-            value: 'more',
+          const raw = {
+            value: '__arco__more',
             label: `+${invisibleTags}...`,
             closable: false,
+          };
+          result.push({
+            raw,
+            ...raw,
           });
           return result;
         }
@@ -458,6 +484,7 @@ export default defineComponent({
         <TransitionGroup
           tag="span"
           name="input-tag-zoom"
+          // @ts-ignore
           class={`${prefixCls}-inner`}
         >
           {tags.value.map((item, index) => (
@@ -468,11 +495,11 @@ export default defineComponent({
                 !mergedDisabled.value && !props.readonly && item.closable
               }
               visible
-              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
               {...item.tagProps}
+              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
             >
-              {slots.tag?.({ data: item }) ??
-                props.formatTag?.(item) ??
+              {slots.tag?.({ data: item.raw }) ??
+                props.formatTag?.(item.raw) ??
                 item.label}
             </Tag>
           ))}
@@ -499,6 +526,7 @@ export default defineComponent({
         {showClearBtn.value && (
           <IconHover
             class={`${prefixCls}-clear-btn`}
+            // @ts-ignore
             onClick={handleClear}
             onMousedown={(e: MouseEvent) => e.stopPropagation()}
           >
