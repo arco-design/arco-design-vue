@@ -404,32 +404,41 @@ export default defineComponent({
       );
     };
 
-    const render = () => (
-      <ArcoInput
-        v-slots={{
-          prepend:
-            props.mode === 'button' ? renderPrependButton : slots.prepend,
-          prefix: slots.prefix,
-          suffix:
-            props.mode === 'embed' && !props.hideButton
-              ? renderSuffix
-              : slots.suffix,
-          append: props.mode === 'button' ? renderAppendButton : slots.append,
-        }}
-        ref={inputRef}
-        class={cls.value}
-        type="text"
-        size={mergedSize.value}
-        modelValue={_value.value}
-        placeholder={props.placeholder}
-        disabled={mergedDisabled.value}
-        onInput={handleInput}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onClear={handleClear}
-        onChange={handleChange}
-      />
-    );
+    const render = () => {
+      const _slots =
+        props.mode === 'embed'
+          ? {
+              prepend: slots.prepend,
+              prefix: slots.prefix,
+              suffix: props.hideButton ? slots.suffix : renderSuffix,
+              append: slots.append,
+            }
+          : {
+              prepend: renderPrependButton,
+              prefix: slots.prefix,
+              suffix: slots.suffix,
+              append: renderAppendButton,
+            };
+
+      return (
+        <ArcoInput
+          key={`__arco__${props.mode}`}
+          v-slots={_slots}
+          ref={inputRef}
+          class={cls.value}
+          type="text"
+          size={mergedSize.value}
+          modelValue={_value.value}
+          placeholder={props.placeholder}
+          disabled={mergedDisabled.value}
+          onInput={handleInput}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onClear={handleClear}
+          onChange={handleChange}
+        />
+      );
+    };
 
     return {
       inputRef,
