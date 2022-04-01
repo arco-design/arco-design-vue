@@ -60,6 +60,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |loading|Whether it is loading state|`boolean`|`false`|2.15.0|
 |search-option-only-label|Whether the options in the search dropdown show only label|`boolean`|`false`|2.18.0|
 |search-delay|Delay time to trigger search event|`number`|`500`|2.18.0|
+|field-names|Customize fields in `CascaderOption`|`CascaderFieldNames`|`-`|2.22.0|
 ### `<cascader>` Events
 
 |Event Name|Description|Parameters|
@@ -96,6 +97,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |expand-trigger|Expand the trigger method of the next level|`string`|`'click'`||
 |check-strictly|Whether to enable strict selection mode|`boolean`|`false`||
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|field-names|Customize fields in `CascaderOption`|`CascaderFieldNames`|`-`|2.22.0|
 ### `<cascader-panel>` Events
 
 |Event Name|Description|Parameters|

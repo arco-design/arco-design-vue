@@ -97,7 +97,11 @@ import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import BaseCascaderPanel from './base-cascader-panel';
 import CascaderSearchPanel from './cascader-search-panel';
-import { CascaderOption, CascaderOptionInfo } from './interface';
+import {
+  CascaderFieldNames,
+  CascaderOption,
+  CascaderOptionInfo,
+} from './interface';
 import { isArray, isNull, isUndefined } from '../_utils/is';
 import { Data, EmitType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
@@ -344,6 +348,14 @@ export default defineComponent({
       type: Number,
       default: 500,
     },
+    /**
+     * @zh 自定义 `CascaderOption` 中的字段
+     * @en Customize fields in `CascaderOption`
+     * @version 2.22.0
+     */
+    fieldNames: {
+      type: Object as PropType<CascaderFieldNames>,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -487,9 +499,24 @@ export default defineComponent({
       lazyLoadOptions[key] = children;
     };
 
+    const DEFAULT_FIELD_NAMES = {
+      value: 'value',
+      label: 'label',
+      disabled: 'disabled',
+      children: 'children',
+      tagProps: 'tagProps',
+      render: 'render',
+      isLeaf: 'isLeaf',
+    };
+
+    const mergedFieldNames = computed(() => ({
+      ...DEFAULT_FIELD_NAMES,
+      ...props.fieldNames,
+    }));
+
     watch(
-      [options, lazyLoadOptions],
-      ([_options, _lazyLoadOptions]) => {
+      [options, lazyLoadOptions, mergedFieldNames],
+      ([_options, _lazyLoadOptions, _fieldNames]) => {
         optionMap.clear();
         leafOptionMap.clear();
         leafOptionValueMap.clear();
@@ -504,6 +531,7 @@ export default defineComponent({
           leafOptionValueMap,
           totalLevel,
           checkStrictly,
+          fieldNames: _fieldNames,
         });
       },
       {

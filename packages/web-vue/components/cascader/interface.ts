@@ -1,12 +1,13 @@
 import { RenderFunction } from 'vue';
 import { TagProps } from '../tag';
+import { FieldString } from '../_utils/types';
 
 export interface CascaderOption {
   /**
    * @zh 选项值
    * @en Option value
    */
-  value: string | number;
+  value?: string | number;
   /**
    * @zh 选项文本
    * @en Option text
@@ -38,7 +39,11 @@ export interface CascaderOption {
    * @en Whether it is a leaf node
    */
   isLeaf?: boolean;
+
+  [other: string]: any;
 }
+
+export type CascaderFieldNames = FieldString<CascaderOption>;
 
 export interface CascaderOptionWithTotal extends CascaderOption {
   children?: CascaderOptionWithTotal[];
@@ -60,13 +65,15 @@ export interface CascaderNode extends CascaderOption {
 }
 
 export interface CascaderOptionInfo extends CascaderOptionWithTotal {
-  label: string;
-  disabled: boolean;
+  raw: Record<string, unknown>;
   key: string;
   level: number;
   index: number;
+  value: string | number;
+  label: string;
+  disabled: boolean;
   isLeaf: boolean;
-  path: CascaderOptionInfo[];
-  children?: CascaderOptionInfo[];
   parent?: CascaderOptionInfo;
+  children?: CascaderOptionInfo[];
+  path: CascaderOptionInfo[];
 }
