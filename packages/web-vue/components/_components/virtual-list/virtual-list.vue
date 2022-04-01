@@ -1,5 +1,5 @@
 <template>
-  <ResizeOberver @resize="handleWrapperResize">
+  <ResizeOberver @resize="handleResize">
     <component
       :is="component"
       v-bind="$attrs"
@@ -109,7 +109,7 @@ export default defineComponent({
       default: 'div',
     },
   },
-  emits: ['scroll'],
+  emits: ['scroll', 'resize'],
   setup(props: VirtualListProps, { slots, emit }) {
     const {
       height,
@@ -295,7 +295,12 @@ export default defineComponent({
       })
     );
 
-    const handleWrapperResize = (entry: HTMLDivElement) => {
+    const handleResize = (entry: HTMLElement) => {
+      handleWrapperResize(entry);
+      emit('resize', entry);
+    };
+
+    const handleWrapperResize = (entry: HTMLElement) => {
       if (needMeasureViewportHeight.value) {
         setViewportHeight(entry.clientHeight);
       }
@@ -369,7 +374,7 @@ export default defineComponent({
       startOffset,
       isVirtual,
       renderChildren,
-      handleWrapperResize,
+      handleResize,
       handleScroll,
       scrollTo,
     };
