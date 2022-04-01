@@ -28,6 +28,10 @@ export type SFCWithInstall<T, D = Record<string, never>> = T &
 
 export type ClassName = string | Array<ClassName> | Record<string, boolean>;
 
+export type FieldString<T> = {
+  [K in keyof T]?: string;
+};
+
 export interface ValueData {
   value: string | number;
   label: string;
