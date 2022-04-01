@@ -1,6 +1,6 @@
 import type { ComponentPublicInstance, Ref } from 'vue';
 import { nextTick, provide, reactive, ref, watch } from 'vue';
-import { FilterOption, Option } from '../interface';
+import { FilterOption, Option, SelectFieldNames } from '../interface';
 import { VirtualListRef } from '../../_components/virtual-list/interface';
 import { getRelativeRect } from '../../_utils/dom';
 import { useOptions } from './use-options';
@@ -16,6 +16,8 @@ export const useSelect = ({
   showExtraOptions,
   component,
   valueKey,
+  fieldNames,
+  loading,
   popupVisible,
   valueKeys,
   dropdownRef,
@@ -32,6 +34,8 @@ export const useSelect = ({
   showExtraOptions?: Ref<boolean>;
   component?: Ref<'li' | 'div'>;
   valueKey?: Ref<string>;
+  fieldNames?: Ref<SelectFieldNames | undefined>;
+  loading?: Ref<boolean>;
   popupVisible: Ref<boolean>;
   valueKeys: Ref<string[]>;
   dropdownRef?: Ref<ComponentPublicInstance | undefined>;
@@ -55,6 +59,7 @@ export const useSelect = ({
     filterOption,
     showExtraOptions,
     valueKey,
+    fieldNames,
   });
 
   const activeKey = ref<string | undefined>();
@@ -138,12 +143,14 @@ export const useSelect = ({
       [
         KEYBOARD_KEY.ENTER,
         (e: Event) => {
-          if (popupVisible.value) {
-            if (activeKey.value) {
-              onSelect(activeKey.value, e);
+          if (!loading?.value) {
+            if (popupVisible.value) {
+              if (activeKey.value) {
+                onSelect(activeKey.value, e);
+              }
+            } else {
+              onPopupVisibleChange(true);
             }
-          } else {
-            onPopupVisibleChange(true);
           }
           e.preventDefault();
         },

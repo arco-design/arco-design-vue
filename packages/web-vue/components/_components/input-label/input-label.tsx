@@ -4,7 +4,7 @@ import { INPUT_EVENTS, Size } from '../../_utils/constant';
 import pick from '../../_utils/pick';
 import { getPrefixCls } from '../../_utils/global-config';
 import { useInput } from '../../_hooks/use-input';
-import { TagData } from '../../input-tag/interface';
+import { SelectViewValue } from '../select-view/interface';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
 
@@ -12,13 +12,13 @@ export default defineComponent({
   name: 'InputLabel',
   inheritAttrs: false,
   props: {
-    modelValue: Object as PropType<TagData>,
+    modelValue: Object as PropType<SelectViewValue>,
     inputValue: {
       type: String,
       default: '',
     },
     enabledInput: Boolean,
-    formatLabel: Function,
+    formatLabel: Function as PropType<(data?: SelectViewValue) => string>,
     placeholder: String,
     retainInputValue: Boolean,
     disabled: Boolean,
@@ -78,6 +78,17 @@ export default defineComponent({
       return props.placeholder;
     });
 
+    const renderLabel = () => {
+      if (props.modelValue) {
+        return (
+          slots.default?.({ data: props.modelValue }) ??
+          props.formatLabel?.(props.modelValue) ??
+          props.modelValue?.label
+        );
+      }
+      return null;
+    };
+
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-size-${mergedSize.value}`,
@@ -129,9 +140,7 @@ export default defineComponent({
             },
           ]}
         >
-          {slots.default?.({ data: props.modelValue }) ??
-            props.formatLabel?.(props.modelValue) ??
-            props.modelValue?.label}
+          {renderLabel()}
         </span>
         {slots.suffix && (
           <span class={`${prefixCls}-suffix`}>{slots.suffix()}</span>

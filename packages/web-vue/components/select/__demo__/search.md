@@ -43,22 +43,31 @@ By setting `allow-search`, you can make the selector support searching for optio
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const options = ref(['Option1', 'Option2', 'Option3']);
+    const loading = ref(false);
+
+    const handleSearch = (value) => {
+      if (value) {
+        loading.value = true;
+        window.setTimeout(() => {
+          options.value = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`]
+          loading.value = false;
+        }, 2000)
+      } else {
+        options.value = []
+      }
+    };
+
     return {
-      loading: false,
-      options: ['Option1', 'Option2', 'Option3']
+      options,
+      loading,
+      handleSearch
     }
   },
-  methods: {
-    handleSearch(value) {
-      this.loading = true;
-      window.setTimeout(() => {
-        this.options = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`]
-        this.loading = false;
-      }, 2000)
-    }
-  }
 }
 </script>
 ```

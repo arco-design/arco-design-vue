@@ -46,14 +46,17 @@ Use `fallback-option` to customize the value that does not exist in the option. 
 
 <script>
 export default {
-  methods: {
-    fallback(value) {
+  setup() {
+    const fallback = (value) => {
       return {
         value,
         label: `++${value}++`
       }
+    };
+    return {
+      fallback
     }
-  }
+  },
 }
 </script>
 ```

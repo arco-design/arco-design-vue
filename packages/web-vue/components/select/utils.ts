@@ -7,6 +7,7 @@ import type {
   OptionData,
   OptionInfo,
   OptionValue,
+  SelectFieldNames,
 } from './interface';
 
 export const isGroupOption = (option: Option): option is GroupOption => {
@@ -24,10 +25,10 @@ export const getValueString = (value: OptionValue, valueKey = 'value') =>
 
 export const getKeyFromValue = (value?: OptionValue, valueKey = 'value') => {
   if (isObject(value)) {
-    return `option-object-${value[valueKey]}`;
+    return `__arco__option__object__${value[valueKey]}`;
   }
   if (value || isNumber(value)) {
-    return `option-${typeof value}-${value}`;
+    return `__arco__option__${typeof value}-${value}`;
   }
   return '';
 };
@@ -35,48 +36,55 @@ export const getKeyFromValue = (value?: OptionValue, valueKey = 'value') => {
 export const createOptionInfo = (
   option: string | number | OptionData,
   {
+    valueKey,
+    fieldNames,
     origin,
     index = -1,
-    valueKey,
   }: {
+    valueKey: string;
+    fieldNames: Required<SelectFieldNames>;
     origin: 'slot' | 'options' | 'extraOptions';
     index?: number;
-    valueKey?: string;
   }
 ): OptionInfo => {
-  const key = getKeyFromValue(
-    isObject(option) ? option.value : option,
-    valueKey
-  );
+  if (isObject(option)) {
+    const value = option[fieldNames.value];
 
-  return isObject(option)
-    ? {
-        ...option,
-        index,
-        key,
-        origin,
-        value: option.value,
-        label: option.label ?? getValueString(option.value, valueKey),
-        disabled: Boolean(option.disabled),
-      }
-    : {
-        index,
-        key,
-        origin,
-        value: option,
-        label: String(option),
-        disabled: false,
-      };
+    return {
+      raw: option,
+      index,
+      key: getKeyFromValue(value, valueKey),
+      origin,
+      value,
+      label: option[fieldNames.label] ?? getValueString(value, valueKey),
+      disabled: Boolean(option[fieldNames.disabled]),
+    };
+  }
+  const raw = {
+    value: option,
+    label: String(option),
+    disabled: false,
+  };
+
+  return {
+    raw,
+    index,
+    key: getKeyFromValue(option, valueKey),
+    origin,
+    ...raw,
+  };
 };
 
 export const getOptionInfos = (
   options: Option[],
   {
     valueKey,
+    fieldNames,
     origin,
     optionInfoMap,
   }: {
-    valueKey?: string;
+    valueKey: string;
+    fieldNames: Required<SelectFieldNames>;
     origin: 'options' | 'extraOptions';
     optionInfoMap: Map<string, OptionInfo>;
   }
@@ -88,20 +96,22 @@ export const getOptionInfos = (
     if (isGroupOption(item)) {
       const options = getOptionInfos(item.options ?? [], {
         valueKey,
+        fieldNames,
         origin,
         optionInfoMap,
       });
       if (options.length > 0) {
         infos.push({
           ...item,
-          key: `group-${item.label}`,
+          key: `__arco__group__${item.label}`,
           options,
         });
       }
     } else {
       const optionInfo = createOptionInfo(item, {
-        origin,
         valueKey,
+        fieldNames,
+        origin,
       });
       infos.push(optionInfo);
       if (!optionInfoMap.get(optionInfo.key)) {
@@ -172,7 +182,7 @@ export const isValidOption = (
   }
 ) => {
   if (isFunction(filterOption)) {
-    return !inputValue || filterOption(inputValue, optionInfo);
+    return !inputValue || filterOption(inputValue, optionInfo.raw);
   }
 
   if (filterOption) {

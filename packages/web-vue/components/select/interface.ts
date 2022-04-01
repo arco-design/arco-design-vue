@@ -1,4 +1,5 @@
 import type { RenderFunction } from 'vue';
+import { FieldString } from '../_utils/types';
 
 /**
  * @zh 选项值
@@ -11,17 +12,19 @@ export interface OptionValueWithKey {
   key: string;
 }
 
+export type SelectFieldNames = FieldString<OptionData>;
+
 export interface OptionData {
   /**
    * @zh 选项值
    * @en Option Value
    */
-  value: OptionValue;
+  value?: OptionValue;
   /**
    * @zh 选项内容
    * @en Option content
    */
-  label: string;
+  label?: string;
   /**
    * @zh 是否禁用
    * @en Whether to disable
@@ -68,21 +71,12 @@ export interface GroupOption {
 export type Option = string | number | OptionData | GroupOption;
 
 export interface OptionInfo extends OptionData {
-  /**
-   * @zh 选项的索引
-   * @en Option index
-   */
-  index?: number;
-  /**
-   * @zh 选项的键值
-   * @en Option key
-   */
+  raw: Record<string, unknown>;
   key: string;
-  /**
-   * @zh 选项的来源
-   * @en Source of option
-   */
+  index?: number;
   origin: 'slot' | 'options' | 'extraOptions';
+  value: OptionValue;
+  label: string;
 }
 
 export interface GroupOptionInfo extends GroupOption {
@@ -96,4 +90,4 @@ export interface GroupOptionInfo extends GroupOption {
  */
 export type FilterOption =
   | boolean
-  | ((inputValue: string, optionInfo: OptionInfo) => boolean);
+  | ((inputValue: string, optionInfo: OptionData) => boolean);

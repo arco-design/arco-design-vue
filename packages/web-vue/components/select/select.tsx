@@ -32,14 +32,16 @@ import {
   OptionValue,
   GroupOptionInfo,
   OptionValueWithKey,
+  SelectFieldNames,
 } from './interface';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { useSelect } from './hooks/use-select';
-import { TagData } from '../input-tag/interface';
+import { TagData } from '../input-tag';
 import { useTrigger } from '../_hooks/use-trigger';
 import { useFormItem } from '../_hooks/use-form-item';
 import { debounce } from '../_utils/debounce';
+import { SelectViewValue } from '../_components/select-view/interface';
 
 export default defineComponent({
   name: 'Select',
@@ -216,7 +218,7 @@ export default defineComponent({
      */
     filterOption: {
       type: [Boolean, Function] as PropType<
-        boolean | ((inputValue: string, optionInfo: OptionInfo) => boolean)
+        boolean | ((inputValue: string, option: OptionData) => boolean)
       >,
       default: true,
     },
@@ -249,7 +251,7 @@ export default defineComponent({
      * @en Format display content
      */
     formatLabel: {
-      type: Function as PropType<(data: OptionInfo) => string>,
+      type: Function as PropType<(data: OptionData) => string>,
     },
     /**
      * @zh 自定义值中不存在的选项
@@ -298,6 +300,14 @@ export default defineComponent({
     limit: {
       type: Number,
       default: 0,
+    },
+    /**
+     * @zh 自定义 `OptionData` 中的字段
+     * @en Customize fields in `OptionData`
+     * @version 2.22.0
+     */
+    fieldNames: {
+      type: Object as PropType<SelectFieldNames>,
     },
     // for JSX
     onChange: {
@@ -417,6 +427,12 @@ export default defineComponent({
    * @slot search-icon
    * @version 2.16.0
    */
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   * @version 2.22.0
+   */
   setup(props, { slots, emit, attrs }) {
     // props
     const {
@@ -430,6 +446,8 @@ export default defineComponent({
       popupVisible,
       showExtraOptions,
       modelValue,
+      fieldNames,
+      loading,
     } = toRefs(props);
     const prefixCls = getPrefixCls('select');
     const { mergedSize, mergedDisabled, mergedError, eventHandlers } =
@@ -505,24 +523,30 @@ export default defineComponent({
 
     const getExtraValueData = (): OptionValueWithKey[] => {
       const valueArray: OptionValueWithKey[] = [];
+      const keyArray: string[] = [];
 
       if (props.allowCreate || props.fallbackOption) {
-        valueArray.push(
-          ...computedValueObjects.value.filter((obj) => {
-            const optionInfo = optionInfoMap.get(obj.key);
-            return !optionInfo || optionInfo.origin === 'extraOptions';
-          })
-        );
+        for (const item of computedValueObjects.value) {
+          if (!keyArray.includes(item.key)) {
+            const optionInfo = optionInfoMap.get(item.key);
+            if (!optionInfo || optionInfo.origin === 'extraOptions') {
+              valueArray.push(item);
+              keyArray.push(item.key);
+            }
+          }
+        }
       }
 
       if (props.allowCreate && computedInputValue.value) {
         const key = getKeyFromValue(computedInputValue.value);
-        const optionInfo = optionInfoMap.get(key);
-        if (!optionInfo || optionInfo.origin === 'extraOptions') {
-          valueArray.push({
-            value: computedInputValue.value,
-            key,
-          });
+        if (!keyArray.includes(key)) {
+          const optionInfo = optionInfoMap.get(key);
+          if (!optionInfo || optionInfo.origin === 'extraOptions') {
+            valueArray.push({
+              value: computedInputValue.value,
+              key,
+            });
+          }
         }
       }
       return valueArray;
@@ -683,6 +707,8 @@ export default defineComponent({
       showExtraOptions,
       component,
       valueKey,
+      fieldNames,
+      loading,
       popupVisible: computedPopupVisible,
       valueKeys: computedValueKeys,
       dropdownRef,
@@ -693,7 +719,7 @@ export default defineComponent({
     });
 
     const selectViewValue = computed(() => {
-      const result: TagData[] = [];
+      const result: SelectViewValue[] = [];
       for (const item of computedValueObjects.value) {
         const optionInfo = optionInfoMap.get(item.key);
         if (optionInfo) {
@@ -793,6 +819,19 @@ export default defineComponent({
       );
     };
 
+    const renderLabel = ({ data }: { data: SelectViewValue }) => {
+      if (slots.label || isFunction(props.formatLabel)) {
+        const optionInfo = optionInfoMap.get(data.value as string);
+        if (optionInfo?.raw) {
+          return (
+            slots.label?.({ data: optionInfo.raw }) ??
+            props.formatLabel?.(optionInfo.raw)
+          );
+        }
+      }
+      return data.label;
+    };
+
     return () => (
       <Trigger
         v-slots={{ content: renderDropDown }}
@@ -812,35 +851,37 @@ export default defineComponent({
         onPopupVisibleChange={handlePopupVisibleChange}
         {...props.triggerProps}
       >
-        <SelectView
-          v-slots={{
-            'label': slots.label,
-            'arrow-icon': slots['arrow-icon'],
-            'loading-icon': slots['loading-icon'],
-            'search-icon': slots['search-icon'],
-          }}
-          class={prefixCls}
-          modelValue={selectViewValue.value}
-          inputValue={computedInputValue.value}
-          multiple={props.multiple}
-          disabled={mergedDisabled.value}
-          error={mergedError.value}
-          loading={props.loading}
-          allowClear={props.allowClear}
-          allowCreate={props.allowCreate}
-          allowSearch={Boolean(props.allowSearch)}
-          opened={computedPopupVisible.value}
-          maxTagCount={props.maxTagCount}
-          placeholder={props.placeholder}
-          bordered={props.bordered}
-          size={mergedSize.value}
-          formatLabel={formatLabel.value}
-          onInputValueChange={handleInputValueChange}
-          onRemove={handleRemove}
-          onClear={handleClear}
-          onKeydown={handleKeyDown}
-          {...attrs}
-        />
+        {slots.trigger?.() ?? (
+          <SelectView
+            v-slots={{
+              'label': renderLabel,
+              'prefix': slots.prefix,
+              'arrow-icon': slots['arrow-icon'],
+              'loading-icon': slots['loading-icon'],
+              'search-icon': slots['search-icon'],
+            }}
+            class={prefixCls}
+            modelValue={selectViewValue.value}
+            inputValue={computedInputValue.value}
+            multiple={props.multiple}
+            disabled={mergedDisabled.value}
+            error={mergedError.value}
+            loading={props.loading}
+            allowClear={props.allowClear}
+            allowCreate={props.allowCreate}
+            allowSearch={Boolean(props.allowSearch)}
+            opened={computedPopupVisible.value}
+            maxTagCount={props.maxTagCount}
+            placeholder={props.placeholder}
+            bordered={props.bordered}
+            size={mergedSize.value}
+            onInputValueChange={handleInputValueChange}
+            onRemove={handleRemove}
+            onClear={handleClear}
+            onKeydown={handleKeyDown}
+            {...attrs}
+          />
+        )}
       </Trigger>
     );
   },

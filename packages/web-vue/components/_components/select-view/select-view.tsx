@@ -13,15 +13,15 @@ import IconLoading from '../../icon/icon-loading';
 import IconClose from '../../icon/icon-close';
 import IconExpand from '../../icon/icon-expand';
 import IconSearch from '../../icon/icon-search';
-import { TagData } from '../../input-tag/interface';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
+import { SelectViewValue } from './interface';
 
 export default defineComponent({
   name: 'SelectView',
   props: {
     modelValue: {
-      type: Array as PropType<TagData[]>,
+      type: Array as PropType<SelectViewValue[]>,
       required: true,
     },
     inputValue: String,
@@ -68,9 +68,6 @@ export default defineComponent({
     maxTagCount: {
       type: Number,
       default: 0,
-    },
-    formatLabel: {
-      type: Function as PropType<(data: TagData) => string>,
     },
     retainInputValue: {
       type: Boolean,
@@ -190,7 +187,6 @@ export default defineComponent({
             class={cls.value}
             modelValue={props.modelValue}
             inputValue={props.inputValue}
-            formatTag={props.formatLabel}
             focused={props.opened}
             placeholder={props.placeholder}
             disabled={mergedDisabled.value}
@@ -223,7 +219,6 @@ export default defineComponent({
           disabled={mergedDisabled.value}
           size={mergedSize.value}
           error={mergedError.value}
-          formatLabel={props.formatLabel}
           enabledInput={enabledInput.value}
           uninjectFormItemContext
           onFocus={handleFocus}
