@@ -17,6 +17,7 @@ Click to upload user's avatar, and validate size and format of picture with befo
 ---
 
 ```vue
+
 <template>
   <a-space direction="vertical" :style="{ width: '100%' }">
     <a-upload
@@ -64,27 +65,31 @@ Click to upload user's avatar, and validate size and format of picture with befo
     </a-upload>
   </a-space>
 </template>
+
 <script>
 import IconEdit from '@arco-design/web-vue/es/icon/icon-edit';
 import IconPlus from '@arco-design/web-vue/es/icon/icon-plus';
+import { ref } from 'vue';
 
 export default {
-  components: { IconPlus, IconEdit },
-  data() {
-    return {
-      file: '',
-    };
-  },
-  methods: {
-    onChange(_, currentFile) {
-      this.file = {
+  components: {IconPlus, IconEdit},
+  setup() {
+    const file = ref();
+
+    const onChange = (_, currentFile) => {
+      file.value = {
         ...currentFile,
         // url: URL.createObjectURL(currentFile.file),
       };
-    },
-    onProgress(currentFile) {
-      this.file = currentFile;
-    },
+    };
+    const onProgress = (currentFile) => {
+      file.value = currentFile;
+    };
+    return {
+      file,
+      onChange,
+      onProgress
+    }
   },
 };
 </script>

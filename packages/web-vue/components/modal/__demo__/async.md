@@ -31,27 +31,33 @@ Asynchronous shutdown can be implemented more concisely through on-before-ok
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      visible: false,
-    }
-  },
-  methods: {
-    handleClick() {
-      this.visible = true;
-    },
-    handleBeforeOk(done) {
+  setup() {
+    const visible = ref(false);
+
+    const handleClick = () => {
+      visible.value = true;
+    };
+    const handleBeforeOk = (done) => {
       window.setTimeout(() => {
         done()
         // prevent close
         // done(false)
       }, 3000)
-    },
-    handleCancel() {
-      this.visible = false;
+    };
+    const handleCancel = () => {
+      visible.value = false;
     }
-  }
+
+    return {
+      visible,
+      handleClick,
+      handleBeforeOk,
+      handleCancel
+    }
+  },
 }
 </script>
 ```

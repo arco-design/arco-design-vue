@@ -29,33 +29,42 @@ The message defaults to enable `simple` and `hideCancel` by default, if you want
 </template>
 
 <script>
+import { Modal } from '@arco-design/web-vue';
+
 export default {
-  methods:{
-    handleClickInfo() {
-      this.$modal.info({
+  setup() {
+    const handleClickInfo = () => {
+      Modal.info({
         title: 'Info Notification',
         content: 'This is an info description which directly indicates a neutral informative change or action.'
       });
-    },
-    handleClickSuccess(){
-      this.$modal.success({
+    };
+    const handleClickSuccess = () => {
+      Modal.success({
         title: 'Success Notification',
         content: 'This is a success notification'
       });
-    },
-    handleClickWarning(){
-      this.$modal.warning({
+    };
+    const handleClickWarning = () => {
+      Modal.warning({
         title: 'Warning Notification',
         content: 'This is a warning description which directly indicates a warning that might need attention.'
       });
-    },
-    handleClickError(){
-      this.$modal.error({
+    };
+    const handleClickError = () => {
+      Modal.error({
         title: 'Error Notification',
         content: 'This is an error description which directly indicates a dangerous or potentially negative action.'
       });
+    };
+
+    return {
+      handleClickInfo,
+      handleClickSuccess,
+      handleClickWarning,
+      handleClickError
     }
-  }
+  },
 }
 </script>
 ```

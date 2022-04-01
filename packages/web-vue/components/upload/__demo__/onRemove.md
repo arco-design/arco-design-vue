@@ -37,19 +37,26 @@ The function will be executed before each file remove. Removing will be aborted 
     />
   </a-space>
 </template>
+
 <script>
+import { Modal } from '@arco-design/web-vue';
+
 export default {
-  methods: {
-    beforeRemove(file) {
+  setup() {
+    const beforeRemove = (file) => {
       return new Promise((resolve, reject) => {
-        this.$modal.confirm({
+        Modal.confirm({
           title: 'on-before-remove',
           content: `确认删除 ${file.name}`,
           onOk: () => resolve(true),
           onCancel: () => reject('cancel'),
         });
       });
-    },
+    };
+
+    return {
+      beforeRemove
+    }
   },
 };
 </script>

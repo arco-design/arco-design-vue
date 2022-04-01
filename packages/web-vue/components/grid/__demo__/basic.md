@@ -81,6 +81,7 @@ Demonstrated the most basic 24 equal division applications
     </a-space>
   </div>
 </template>
+
 <style scoped>
 .grid-demo-background {
   background-image: linear-gradient(

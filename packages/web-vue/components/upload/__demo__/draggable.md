@@ -20,9 +20,4 @@ Enable drag and drop support by setting `draggable`.
 <template>
   <a-upload draggable action="/" />
 </template>
-
-<script>
-export default {
-}
-</script>
 ```

@@ -48,7 +48,7 @@ By setting the `flex` property of the `Col` component, you can configure the fle
     </a-col>
   </a-row>
 </template>
-<script></script>
+
 <style scoped>
 .grid-demo .arco-col {
   height: 48px;

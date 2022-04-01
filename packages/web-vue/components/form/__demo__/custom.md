@@ -18,7 +18,10 @@ Customize form components with `useFormItem`. Available since version 2.18.0.
 
 ```vue
 <template>
-  <a-space style="margin-bottom: 20px;"><a-switch v-model="disabled" /> Disabled: {{disabled}}</a-space>
+  <a-space style="margin-bottom: 20px;">
+    <a-switch v-model="disabled" />
+    Disabled: {{disabled}}
+  </a-space>
   <Form :model="form" :disabled="disabled" :style="{width:'600px'}">
     <FormItem field="name" label="Username"
               :rules="[{required:true,message:'name is required'},{minLength:5,message:'must be greater than 5 characters'}]">
@@ -28,7 +31,7 @@ Customize form components with `useFormItem`. Available since version 2.18.0.
 </template>
 
 <script lang="ts">
-import { h } from 'vue';
+import { h, reactive, ref } from 'vue';
 import { Form, FormItem, useFormItem } from '@arco-design/web-vue';
 
 const MyInput = {
@@ -50,12 +53,15 @@ export default {
     FormItem,
     MyInput
   },
-  data() {
+  setup() {
+    const disabled = ref(false);
+    const form = reactive({
+      name: ''
+    })
+
     return {
-      disabled: false,
-      form: {
-        name: '',
-      }
+      disabled,
+      form
     }
   },
 }

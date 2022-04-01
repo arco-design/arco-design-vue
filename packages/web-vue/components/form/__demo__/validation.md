@@ -97,103 +97,109 @@ Shows how to use form validation.
 </template>
 
 <script>
+import { reactive } from 'vue';
+
 export default {
-  data() {
-    return {
-      form: {
-        size: 'medium',
-        name: '',
-        age: undefined,
-        section: '',
-        province: 'haidian',
-        options: [],
-        date:'',
-        radio: 'radio one',
-        slider: 5,
-        score: 5,
-        switch: false,
-        multiSelect: ['section one'],
-        treeSelect: ''
-      },
-      options: [
-        {
-          value: 'beijing',
-          label: 'Beijing',
-          children: [
-            {
-              value: 'chaoyang',
-              label: 'ChaoYang',
-              children: [
-                {
-                  value: 'datunli',
-                  label: 'Datunli',
-                },
-              ],
-            },
-            {
-              value: 'haidian',
-              label: 'Haidian',
-            },
-            {
-              value: 'dongcheng',
-              label: 'Dongcheng',
-            },
-            {
-              value: 'xicheng',
-              label: 'XiCheng',
-            },
-          ],
-        },
-        {
-          value: 'shanghai',
-          label: 'Shanghai',
-          children: [
-            {
-              value: 'shanghaishi',
-              label: 'Shanghai',
-              children: [
-                {
-                  value: 'huangpu',
-                  label: 'Huangpu',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      treeData: [
-        {
-          key: 'node1',
-          title: 'Node1',
-          children: [
-            {
-              key: 'node2',
-              title: 'Node2',
-            },
-          ],
-        },
-        {
-          key: 'node3',
-          title: 'Node3',
-          children: [
-            {
-              key: 'node4',
-              title: 'Node4',
-            },
-            {
-              key: 'node5',
-              title: 'Node5',
-            },
-          ],
-        },
-      ]
-    }
-  },
-  methods: {
-    handleSubmit({ values, errors }) {
+  setup() {
+    const handleSubmit = ({values, errors}) => {
       console.log('values:', values, '\nerrors:', errors)
     }
-  }
+
+    const form = reactive({
+      size: 'medium',
+      name: '',
+      age: undefined,
+      section: '',
+      province: 'haidian',
+      options: [],
+      date: '',
+      radio: 'radio one',
+      slider: 5,
+      score: 5,
+      switch: false,
+      multiSelect: ['section one'],
+      treeSelect: ''
+    });
+    const options = [
+      {
+        value: 'beijing',
+        label: 'Beijing',
+        children: [
+          {
+            value: 'chaoyang',
+            label: 'ChaoYang',
+            children: [
+              {
+                value: 'datunli',
+                label: 'Datunli',
+              },
+            ],
+          },
+          {
+            value: 'haidian',
+            label: 'Haidian',
+          },
+          {
+            value: 'dongcheng',
+            label: 'Dongcheng',
+          },
+          {
+            value: 'xicheng',
+            label: 'XiCheng',
+          },
+        ],
+      },
+      {
+        value: 'shanghai',
+        label: 'Shanghai',
+        children: [
+          {
+            value: 'shanghaishi',
+            label: 'Shanghai',
+            children: [
+              {
+                value: 'huangpu',
+                label: 'Huangpu',
+              },
+            ],
+          },
+        ],
+      },
+    ];
+    const treeData = [
+      {
+        key: 'node1',
+        title: 'Node1',
+        children: [
+          {
+            key: 'node2',
+            title: 'Node2',
+          },
+        ],
+      },
+      {
+        key: 'node3',
+        title: 'Node3',
+        children: [
+          {
+            key: 'node4',
+            title: 'Node4',
+          },
+          {
+            key: 'node5',
+            title: 'Node5',
+          },
+        ],
+      },
+    ]
+
+    return {
+      form,
+      options,
+      treeData,
+      handleSubmit
+    }
+  },
 }
 </script>
 ```

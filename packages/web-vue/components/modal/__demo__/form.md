@@ -17,6 +17,7 @@ Using Form in Modal
 ---
 
 ```vue
+
 <template>
   <a-button @click="handleClick">Open Form Modal</a-button>
   <a-modal v-model:visible="visible" title="Modal Form" @cancel="handleCancel" @before-ok="handleBeforeOk">
@@ -37,32 +38,39 @@ Using Form in Modal
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      visible: false,
-      form: {
-        name: '',
-        post: ''
-      },
+import { reactive, ref } from 'vue';
 
-    }
-  },
-  methods: {
-    handleClick() {
-      this.visible = true
-    },
-    handleBeforeOk(done) {
-      console.log(this.form);
-      // submit your form data
+export default {
+  setup() {
+    const visible = ref(false);
+    const form = reactive({
+      name: '',
+      post: ''
+    });
+
+    const handleClick = () => {
+      visible.value = true;
+    };
+    const handleBeforeOk = (done) => {
+      console.log(form)
       window.setTimeout(() => {
         done()
+        // prevent close
+        // done(false)
       }, 3000)
-    },
-    handleCancel() {
-      this.visible = false
+    };
+    const handleCancel = () => {
+      visible.value = false;
     }
-  }
+
+    return {
+      visible,
+      form,
+      handleClick,
+      handleBeforeOk,
+      handleCancel
+    }
+  },
 }
 </script>
 ```

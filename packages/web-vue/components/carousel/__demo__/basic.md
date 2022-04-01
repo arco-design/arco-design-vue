@@ -24,7 +24,7 @@ Basic usage
       height: '240px',
     }"
     :default-current="2"
-    @change="log"
+    @change="handleChange"
   >
     <a-carousel-item v-for="image in images">
       <img
@@ -39,17 +39,19 @@ Basic usage
 
 <script>
 export default {
-  data() {
+  setup() {
+    const images = [
+      'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
+      'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
+      'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
+    ];
+    const handleChange=(value)=>{
+      console.log(value)
+    }
     return {
-      images: [
-        'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
-        'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
-        'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
-      ],
-    };
-  },
-  methods: {
-    log: console.log,
+      images,
+      handleChange
+    }
   },
 };
 </script>

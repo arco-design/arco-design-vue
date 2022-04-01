@@ -41,22 +41,28 @@ You can use 'popup-container' to set the mount position of the pop-up layer node
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      visible: false,
+  setup() {
+    const visible = ref(false);
+
+    const handleClick = () => {
+      visible.value = true;
     };
-  },
-  methods: {
-    handleClick() {
-      this.visible = true;
-    },
-    handleOk() {
-      this.visible = false;
-    },
-    handleCancel() {
-      this.visible = false;
-    },
+    const handleOk = () => {
+      visible.value = false;
+    };
+    const handleCancel = () => {
+      visible.value = false;
+    }
+
+    return {
+      visible,
+      handleClick,
+      handleOk,
+      handleCancel
+    }
   },
 };
 </script>
