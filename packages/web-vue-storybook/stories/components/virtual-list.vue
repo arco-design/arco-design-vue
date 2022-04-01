@@ -89,7 +89,7 @@ export default {
       new Array(10000).fill(null).map((_, index) => ({
         key: index,
         label: `label-${index}`,
-        height: Math.random() * 100 + 16,
+        height: Math.random() * 200 + 16,
         background: ['red', 'blue', 'yellow', 'green'][
           Math.floor(Math.random() * 4)
         ],

@@ -32,6 +32,10 @@ export function useItemHeight(props: {
     () => estimatedItemHeight.value || DEFAULT_ITEM_HEIGHT
   );
 
+  const minItemHeight = computed(() =>
+    Math.min(...Object.values(itemHeightCacheMap.value), itemHeight.value)
+  );
+
   const totalHeight = computed(() =>
     data.value.reduce((sum, { key }) => sum + getItemHeightOrDefault(key), 0)
   );
@@ -59,6 +63,7 @@ export function useItemHeight(props: {
 
   return {
     itemHeight,
+    minItemHeight,
     estimatedItemHeight,
     totalHeight,
     setItemHeight,
