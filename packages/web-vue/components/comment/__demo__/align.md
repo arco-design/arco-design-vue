@@ -17,6 +17,7 @@ Alignment of datetime and actions.
 ---
 
 ```vue
+
 <template>
   <a-comment author="Balzac" datetime="1 hour" align="right">
     <template #actions>
@@ -62,6 +63,7 @@ Alignment of datetime and actions.
 </template>
 
 <script>
+import { ref } from 'vue';
 import {
   IconHeart,
   IconMessage,
@@ -78,22 +80,26 @@ export default {
     IconStarFill,
     IconHeartFill,
   },
-  data: () => {
-    return {
-      like: false,
-      star: false,
+  setup() {
+    const like = ref(false);
+    const star = ref(false);
+    const onLikeChange = () => {
+      like.value = !like.value;
     };
-  },
-  methods: {
-    onStarChange() {
-      this.star = !this.star;
-    },
-    onLikeChange() {
-      this.like = !this.like;
-    },
+    const onStarChange = () => {
+      star.value = !star.value;
+    };
+
+    return {
+      like,
+      star,
+      onLikeChange,
+      onStarChange
+    }
   },
 };
 </script>
+
 <style scoped>
 .action {
   display: inline-block;
@@ -105,6 +111,7 @@ export default {
   cursor: pointer;
   transition: all 0.1s ease;
 }
+
 .action:hover {
   background: var(--color-fill-3);
 }

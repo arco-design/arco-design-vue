@@ -58,6 +58,7 @@ A basic comment component with author, avatar, time and actions.
 </template>
 
 <script>
+import { ref } from 'vue';
 import {
   IconHeart,
   IconMessage,
@@ -74,19 +75,22 @@ export default {
     IconStarFill,
     IconHeartFill,
   },
-  data: () => {
-    return {
-      like: false,
-      star: false,
+  setup() {
+    const like = ref(false);
+    const star = ref(false);
+    const onLikeChange = () => {
+      like.value = !like.value;
     };
-  },
-  methods: {
-    onStarChange() {
-      this.star = !this.star;
-    },
-    onLikeChange() {
-      this.like = !this.like;
-    },
+    const onStarChange = () => {
+      star.value = !star.value;
+    };
+
+    return {
+      like,
+      star,
+      onLikeChange,
+      onStarChange
+    }
   },
 };
 </script>

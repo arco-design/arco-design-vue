@@ -38,14 +38,18 @@ The entire form can be disabled through the `disabled` attribute.
 </template>
 
 <script>
+import { reactive } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const form = reactive({
+      name: '',
+      post: '',
+      isRead: false,
+    })
+
     return {
-      form: {
-        name: '',
-        post: '',
-        isRead: false,
-      }
+      form,
     }
   },
 }

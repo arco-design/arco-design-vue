@@ -28,23 +28,29 @@ Enables the `draggable` property, which allows the user to drag the dialog.
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const visible = ref(false);
+
+    const handleClick = () => {
+      visible.value = true;
+    };
+    const handleOk = () => {
+      visible.value = false;
+    };
+    const handleCancel = () => {
+      visible.value = false;
+    }
+
     return {
-      visible: false
+      visible,
+      handleClick,
+      handleOk,
+      handleCancel
     }
   },
-  methods: {
-    handleClick() {
-      this.visible = true;
-    },
-    handleOk() {
-      this.visible = false;
-    },
-    handleCancel() {
-      this.visible = false;
-    },
-  }
-};
+}
 </script>
 ```

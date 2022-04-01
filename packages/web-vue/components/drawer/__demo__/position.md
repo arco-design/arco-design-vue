@@ -29,29 +29,36 @@ Customize the position and click the trigger button to slide out the drawer from
     <template #title>
       Title
     </template>
-    <div>You can cusstomize modal body text by the current situation. This modal will be closed immediately once you press the OK button.</div>
+    <div>You can customize modal body text by the current situation. This modal will be closed immediately once you press the OK button.</div>
   </a-drawer>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const visible = ref(false);
+    const position = ref('right');
+
+    const handleClick = () => {
+      visible.value = true;
+    };
+    const handleOk = () => {
+      visible.value = false;
+    };
+    const handleCancel = () => {
+      visible.value = false;
+    }
+
     return {
-      position:'right',
-      visible: false
+      visible,
+      position,
+      handleClick,
+      handleOk,
+      handleCancel
     }
   },
-  methods: {
-    handleClick() {
-      this.visible = true;
-    },
-    handleOk() {
-      this.visible = false;
-    },
-    handleCancel() {
-      this.visible = false;
-    }
-  }
 };
 </script>
 ```

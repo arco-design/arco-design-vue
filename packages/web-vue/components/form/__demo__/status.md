@@ -53,19 +53,25 @@ Enable `feedback` to allow some input components to display current state inform
 </template>
 
 <script>
+import { reactive, ref } from 'vue';
+
 export default {
-  data(){
+  setup() {
+    const status = ref('success');
+    const size = ref('medium');
+    const form = reactive({
+      name: '',
+      post: undefined,
+      tags: ['tag1'],
+      section: '',
+    })
+
     return {
-      status:'success',
-      size:'medium',
-      form: {
-        name: '',
-        post: undefined,
-        tags:['tag1'],
-        section: '',
-      }
+      status,
+      size,
+      form,
     }
-  }
+  },
 }
 </script>
 ```

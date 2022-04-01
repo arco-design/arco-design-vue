@@ -41,11 +41,13 @@ The position of the tab bar can be customized through the `position` property.
 
 <script>
 export default {
-  data() {
+  setup() {
+    const position = ref('top');
+
     return {
-      position:'top'
+      position
     }
-  }
+  },
 }
 </script>
 ```

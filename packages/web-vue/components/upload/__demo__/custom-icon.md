@@ -17,6 +17,7 @@ custom icon
 ---
 
 ```vue
+
 <template>
   <div>
     <div style="margin-bottom: 20px;">
@@ -50,20 +51,16 @@ custom icon
 </template>
 
 <script>
-import { h } from 'vue';
+import { h, ref } from 'vue';
 import IconUpload from '@arco-design/web-vue/es/icon/icon-upload';
 import IconFileAudio from '@arco-design/web-vue/es/icon/icon-file-audio';
 import IconClose from '@arco-design/web-vue/es/icon/icon-close';
 import IconFaceFrownFill from '@arco-design/web-vue/es/icon/icon-face-frown-fill';
 
 export default {
-  data() {
-    return {
-      type: 'text',
-    };
-  },
-  methods: {
-    getCustomIcon() {
+  setup() {
+    const type = ref('text');
+    const getCustomIcon = () => {
       return {
         retryIcon: () => h(IconUpload),
         cancelIcon: () => h(IconClose),
@@ -74,7 +71,12 @@ export default {
           return `文件名： ${file.name}`
         },
       };
-    },
+    };
+
+    return {
+      type,
+      getCustomIcon
+    }
   },
 };
 </script>

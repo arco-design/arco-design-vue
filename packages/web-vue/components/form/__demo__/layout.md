@@ -47,17 +47,22 @@ The form supports three layout methods: `horizontal`, `vertical` and `inline`.
 </template>
 
 <script>
+import { reactive, ref } from 'vue';
+
 export default {
-  data(){
+  setup() {
+    const layout = ref('horizontal')
+    const form = reactive({
+      name: '',
+      post: '',
+      isRead: false,
+    })
+
     return {
-      layout:'horizontal',
-      form: {
-        name: '',
-        post: '',
-        isRead: false,
-      }
+      layout,
+      form,
     }
-  }
+  },
 }
 </script>
 ```

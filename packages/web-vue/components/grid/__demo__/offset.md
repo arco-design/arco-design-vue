@@ -40,6 +40,7 @@ Specify `offset` to translate the grid.
     </a-row>
   </div>
 </template>
+
 <style scoped>
 .grid-demo .arco-col {
   height: 48px;

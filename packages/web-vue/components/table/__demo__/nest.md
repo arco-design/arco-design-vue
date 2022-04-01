@@ -1,26 +1,28 @@
 ```yaml
 title:
-  zh-CN: 调整列宽
-  en-US: Column width resize
+  zh-CN: 嵌套子表格
+  en-US: Nest Table
 ```
 
 ## zh-CN
 
-（实验性）
-使用 `column-resizable` 属性开启列宽调整
+$END$
 
 ---
 
 ## en-US
 
-(experimental)
-Enable column resizing using the `column-resizable` attribute
+$END$
 
 ---
 
 ```vue
 <template>
-  <a-table :columns="columns" :data="data" column-resizable :bordered="{cell:true}"></a-table>
+  <a-table :columns="columns" :data="data" :expandable="expandable"  >
+    <template #expand-row>
+      <a-table :columns="columns" :data="data" :pagination="false"/>
+    </template>
+  </a-table>
 </template>
 
 <script>

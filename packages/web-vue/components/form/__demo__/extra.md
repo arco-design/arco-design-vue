@@ -46,14 +46,18 @@ You can use the `help` attribute or slot. The verification information will be b
 </template>
 
 <script>
+import { reactive } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const form = reactive({
+      name: '',
+      post: '',
+      isRead: false,
+    })
+
     return {
-      form: {
-        name: '',
-        post: '',
-        isRead: false,
-      }
+      form,
     }
   },
 }

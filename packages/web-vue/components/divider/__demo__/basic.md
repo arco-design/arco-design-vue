@@ -53,6 +53,7 @@ It divides the text paragraphs of different chapters, the default is a horizonta
     </div>
   </div>
 </template>
+
 <script>
 import {
   IconImage,
@@ -68,6 +69,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .divider-demo {
   box-sizing: border-box;

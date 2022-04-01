@@ -22,19 +22,25 @@ The function will be executed before each file upload. Uploading will be aborted
     <a-upload action="/" @before-upload="beforeUpload" />
   </a-space>
 </template>
+
 <script>
+import { Modal } from '@arco-design/web-vue';
+
 export default {
-  methods: {
-    beforeUpload(file) {
+  setup() {
+    const beforeUpload = (file) => {
       return new Promise((resolve, reject) => {
-        this.$modal.confirm({
+        Modal.confirm({
           title: 'beforeUpload',
           content: `确认上传 ${file.name}`,
           onOk: () => resolve(true),
           onCancel: () => reject('cancel'),
         });
       });
-    },
+    };
+    return {
+      beforeUpload
+    }
   },
 };
 </script>

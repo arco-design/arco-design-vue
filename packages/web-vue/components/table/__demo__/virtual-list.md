@@ -31,6 +31,18 @@ export default {
         {
           title: 'Name',
           dataIndex: 'name',
+        },{
+          title: 'Name',
+          dataIndex: 'name',
+        },{
+          title: 'Name',
+          dataIndex: 'name',
+        },{
+          title: 'Name',
+          dataIndex: 'name',
+        },{
+          title: 'Name',
+          dataIndex: 'name',
         },
         {
           title: 'Address',

@@ -40,21 +40,24 @@ _* Currently it only takes effect after the first load._
 </template>
 
 <script>
+import { reactive } from 'vue';
+
 export default {
-  data() {
-    return {
-      form: {
-        name: '',
-        post: '',
-        isRead: false,
-      }
-    }
-  },
-  methods:{
-    handleSubmit(data) {
+  setup() {
+    const form = reactive({
+      name: '',
+      post: '',
+      isRead: false,
+    })
+    const handleSubmit = (data) => {
       console.log(data)
     }
-  }
+
+    return {
+      form,
+      handleSubmit
+    }
+  },
 }
 </script>
 ```

@@ -26,15 +26,16 @@ Color can be customized through color. In addition, you can customize the color 
 
 <script>
 export default {
-  data() {
-    return {
-      color: {
-        2: 'red',
-        4: 'green',
-        5: 'blue'
-      }
+  setup() {
+    const color = {
+      2: 'red',
+      4: 'green',
+      5: 'blue'
     }
-  }
+    return {
+      color
+    }
+  },
 }
 </script>
 ```

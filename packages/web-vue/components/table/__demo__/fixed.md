@@ -33,7 +33,7 @@ export default {
         width: 80
       },
       scroll: {
-        x: 2000,
+        x: 500,
         y: 200
       },
       columns: [
@@ -54,8 +54,6 @@ export default {
         {
           title: 'Email',
           dataIndex: 'email',
-          fixed: 'right',
-          width: 200
         },
       ],
       data: [

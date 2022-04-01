@@ -24,66 +24,68 @@ Use `formatLabel` to customize the displayed content.
 
 <script>
 export default {
-  data() {
-    return {
-      options: [
-        {
-          value: 'beijing',
-          label: 'Beijing',
-          children: [
-            {
-              value: 'chaoyang',
-              label: 'ChaoYang',
-              children: [
-                {
-                  value: 'datunli',
-                  label: 'Datunli',
-                },
-              ],
-            },
-            {
-              value: 'haidian',
-              label: 'Haidian',
-            },
-            {
-              value: 'dongcheng',
-              label: 'Dongcheng',
-            },
-            {
-              value: 'xicheng',
-              label: 'Xicheng',
-              children: [
-                {
-                  value: 'jinrongjie',
-                  label: 'Jinrongjie',
-                },
-                {
-                  value: 'tianqiao',
-                  label: 'Tianqiao',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          value: 'shanghai',
-          label: 'Shanghai',
-          children: [
-            {
-              value: 'huangpu',
-              label: 'Huangpu',
-            },
-          ],
-        },
-      ]
-    }
-  },
-  methods: {
-    format(options) {
+  setup() {
+    const options = [
+      {
+        value: 'beijing',
+        label: 'Beijing',
+        children: [
+          {
+            value: 'chaoyang',
+            label: 'ChaoYang',
+            children: [
+              {
+                value: 'datunli',
+                label: 'Datunli',
+              },
+            ],
+          },
+          {
+            value: 'haidian',
+            label: 'Haidian',
+          },
+          {
+            value: 'dongcheng',
+            label: 'Dongcheng',
+          },
+          {
+            value: 'xicheng',
+            label: 'Xicheng',
+            children: [
+              {
+                value: 'jinrongjie',
+                label: 'Jinrongjie',
+              },
+              {
+                value: 'tianqiao',
+                label: 'Tianqiao',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        value: 'shanghai',
+        label: 'Shanghai',
+        children: [
+          {
+            value: 'huangpu',
+            label: 'Huangpu',
+          },
+        ],
+      },
+    ];
+
+    const format = (options) => {
       const labels = options.map(option => option.label)
       return labels.join('-')
     }
-  }
+
+    return {
+      options,
+      format
+    }
+  },
 }
 </script>
 ```
