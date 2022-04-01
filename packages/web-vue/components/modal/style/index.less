@@ -26,10 +26,10 @@
   bottom: 0;
   left: 0;
   overflow: auto;
+  text-align: center;
 
   &&-align-center {
     white-space: nowrap;
-    text-align: center;
 
     &::after {
       display: inline-block;
@@ -41,7 +41,6 @@
 
     .@{modal-prefix-cls} {
       top: 0;
-      display: inline-block;
       vertical-align: middle;
     }
   }
@@ -50,6 +49,7 @@
     text-align: left;
 
     .@{modal-prefix-cls} {
+      top: 0;
       vertical-align: top;
     }
   }
@@ -58,6 +58,7 @@
 .@{modal-prefix-cls} {
   position: relative;
   top: @modal-margin-top;
+  display: inline-block;
   width: @modal-default-size-width;
   margin: 0 auto;
   line-height: @line-height-base;

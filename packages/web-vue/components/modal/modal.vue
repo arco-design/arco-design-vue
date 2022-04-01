@@ -17,20 +17,24 @@
             :style="maskStyle"
           />
         </transition>
-        <transition
-          name="zoom-modal"
-          appear
-          @after-enter="handleOpen"
-          @after-leave="handleClose"
+        <div
+          ref="wrapperRef"
+          :class="wrapperCls"
+          @click.self="handleMaskClick"
+          @mousedown.self="handleMaskMouseDown"
         >
-          <div
-            v-show="computedVisible"
-            ref="wrapperRef"
-            :class="wrapperCls"
-            @click.self="handleMaskClick"
-            @mousedown.self="handleMaskMouseDown"
+          <transition
+            name="zoom-modal"
+            appear
+            @after-enter="handleOpen"
+            @after-leave="handleClose"
           >
-            <div ref="modalRef" :class="modalCls" :style="mergedModalStyle">
+            <div
+              v-show="computedVisible"
+              ref="modalRef"
+              :class="modalCls"
+              :style="mergedModalStyle"
+            >
               <div
                 v-if="$slots.title || title || closable"
                 :class="`${prefixCls}-header`"
@@ -86,8 +90,8 @@
                 </slot>
               </div>
             </div>
-          </div>
-        </transition>
+          </transition>
+        </div>
       </div>
     </teleport>
   </client-only>
@@ -548,6 +552,7 @@ export default defineComponent({
         }
 
         mounted.value = false;
+        resetOverflow();
         emit('close');
       }
     };
@@ -580,7 +585,6 @@ export default defineComponent({
         addGlobalKeyDownListener();
       } else {
         emit('beforeClose');
-        resetOverflow();
         removeGlobalKeyDownListener();
       }
     });
