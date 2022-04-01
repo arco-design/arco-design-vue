@@ -58,6 +58,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |loading|是否为加载中状态|`boolean`|`false`|2.15.0|
 |search-option-only-label|搜索下拉菜单中的选项是否仅展示标签|`boolean`|`false`|2.18.0|
 |search-delay|触发搜索事件的延迟时间|`number`|`500`|2.18.0|
+|field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
 ### `<cascader>` Events
 
 |事件名|描述|参数|
@@ -94,6 +95,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |expand-trigger|展开下一级的触发方式|`string`|`'click'`||
 |check-strictly|是否开启严格选择模式|`boolean`|`false`||
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
 ### `<cascader-panel>` Events
 
 |事件名|描述|参数|
