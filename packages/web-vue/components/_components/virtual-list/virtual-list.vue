@@ -152,6 +152,7 @@ export default defineComponent({
 
     const {
       itemHeight,
+      minItemHeight,
       estimatedItemHeight,
       totalHeight,
       setItemHeight,
@@ -167,7 +168,7 @@ export default defineComponent({
 
     const itemCount = computed(() => data.value.length);
     const visibleCount = computed(() =>
-      Math.ceil(viewportHeight.value / itemHeight.value)
+      Math.ceil(viewportHeight.value / minItemHeight.value)
     );
 
     const scrollTop = ref(0);
@@ -363,11 +364,9 @@ export default defineComponent({
 
     return {
       viewportRef,
-      visibleData,
       viewportHeight,
       totalHeight,
       startOffset,
-      itemHeight,
       isVirtual,
       renderChildren,
       handleWrapperResize,
