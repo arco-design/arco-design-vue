@@ -5,7 +5,6 @@ import {
   toRefs,
   computed,
   ref,
-  Text,
   onUnmounted,
   VNodeTypes,
   watch,
@@ -14,7 +13,7 @@ import {
   onUpdated,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { isObject, isString, isUndefined } from '../_utils/is';
+import { isObject } from '../_utils/is';
 import { BaseProps, EllipsisConfig, EllipsisInternalConfig } from './interface';
 import EditContent from './edit-content.vue';
 import Operations from './operations.vue';
@@ -55,22 +54,6 @@ function getComponentTags<K extends keyof HTMLElementTagNameMap>(
   }
 
   return componentTags as K[];
-}
-
-// 目前只能处理纯文字内容的编辑
-function getEditText(children: VNode[]) {
-  if (!children) return '';
-
-  const res: string[] = [];
-  children.some((child) => {
-    if (child.type === Text && isString(child.children)) {
-      res.push(String(child.children));
-      return true;
-    }
-    return false;
-  });
-
-  return res.join('');
 }
 
 function Wrap(props: BaseInternalProps, children: VNodeTypes) {
@@ -351,9 +334,7 @@ export default defineComponent({
     let copyTimer: NodeJS.Timeout | null = null;
 
     function onCopyClick() {
-      const text = !isUndefined(copyText?.value)
-        ? copyText?.value
-        : fullText.value;
+      const text = copyText.value ?? fullText.value;
 
       clipboard(text || '');
 
@@ -377,7 +358,7 @@ export default defineComponent({
     const ellipsisText = ref('');
     const ellipsisConfig = computed<EllipsisInternalConfig>(() =>
       normalizeEllipsisConfig(
-        (isObject(ellipsis?.value) && ellipsis?.value) || {}
+        (isObject(ellipsis.value) && ellipsis.value) || {}
       )
     );
     let rafId: number = null as any;
@@ -431,7 +412,7 @@ export default defineComponent({
     }
 
     function resizeOnNextFrame() {
-      const needCalEllipsis = !!ellipsis?.value && !expanded.value;
+      const needCalEllipsis = ellipsis.value && !expanded.value;
       if (!needCalEllipsis) return;
 
       caf(rafId);
@@ -458,25 +439,30 @@ export default defineComponent({
       }
     });
 
-    const getFullText = () => {
-      if (props.ellipsis) {
-        const _fullText = getInnerText(slots.default?.());
+    const childVNodes = ref<VNode[]>([]);
+    const updateFullText = () => {
+      if (ellipsis.value || copyable.value || editable.value) {
+        const _fullText = childVNodes.value.length
+          ? getInnerText(childVNodes)
+          : '';
+
         if (_fullText !== fullText.value) {
           fullText.value = _fullText;
-          calEllipsis();
+          resizeOnNextFrame();
         }
       }
     };
 
-    onMounted(() => getFullText());
-    onUpdated(() => getFullText());
+    onMounted(updateFullText);
+    onUpdated(updateFullText);
 
     return () => {
       const children = slots.default?.() || [];
+      childVNodes.value = children;
 
       // 编辑中
       if (mergeEditing.value) {
-        const _editText = editText.value ?? getEditText(children);
+        const _editText = editText.value ?? fullText.value;
 
         return (
           <EditContent

@@ -58,7 +58,7 @@ export interface EditProps {
 export type OperationsProps = CopyProps & EditProps & EllipsisProps;
 
 export interface BaseProps extends OperationsProps {
-  type?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
+  type: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | undefined;
   bold: boolean;
   mark: boolean | { color: string };
   underline: boolean;
