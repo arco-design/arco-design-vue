@@ -92,6 +92,8 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |merge-props|（已废除）控制传递到子元素上的 Props。默认包括 disabled、error、size、 events 和 FormItem 上的额外属性。2.18.0 版本废除|`boolean \| ((props: Record<string, any>) => Record<string, any>)`|`true`|2.13.0|
 |label-col-flex|设置标签 `Col` 组件的 flex 属性。设置时表单 `Col` 组件的 flex 属性会被设置为 `auto`。|`number\|string`|`-`|2.13.0|
 |feedback|是否显示表单控件的反馈图标|`boolean`|`false`|2.16.0|
+|label-component|表单项标签渲染的元素|`string`|`'label'`|2.22.0|
+|label-attrs|表单项元素的属性|`object`|`-`|2.22.0|
 ### `<form-item>` Slots
 
 |插槽名|描述|参数|

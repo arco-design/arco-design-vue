@@ -21,6 +21,8 @@
       <FormItemLabel
         :required="hideAsterisk ? false : isRequired"
         :show-colon="showColon"
+        :component="labelComponent"
+        :attrs="labelAttrs"
       >
         <slot v-if="$slots.label || label" name="label">{{ label }}</slot>
       </FormItemLabel>
@@ -278,6 +280,21 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 表单项标签渲染的元素
+     * @en The element that the form item label renders
+     * @version 2.22.0
+     */
+    labelComponent: {
+      type: String,
+      default: 'label',
+    },
+    /**
+     * @zh 表单项元素的属性
+     * @en Attributes of the form item element
+     * @version 2.22.0
+     */
+    labelAttrs: Object,
   },
   /**
    * @zh 标签

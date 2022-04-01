@@ -1,6 +1,6 @@
 <template>
   <ResizeObserver @resize="handleResize">
-    <label ref="labelRef" :class="prefixCls">
+    <component :is="component" ref="labelRef" :class="prefixCls" v-bind="attrs">
       <strong v-if="required" :class="`${prefixCls}-required-symbol`">
         <svg
           fill="currentColor"
@@ -15,7 +15,7 @@
       </strong>
       <slot />
       {{ showColon ? ':' : '' }}
-    </label>
+    </component>
   </ResizeObserver>
 </template>
 
@@ -47,6 +47,11 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    component: {
+      type: String,
+      default: 'label',
+    },
+    attrs: Object,
   },
   setup() {
     const prefixCls = getPrefixCls('form-item-label');

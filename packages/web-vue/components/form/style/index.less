@@ -24,7 +24,7 @@
   }
 
   &-auto-label-width &-item-label-col {
-    > label {
+    > .@{form-item-label-prefix-cls} {
       white-space: nowrap;
     }
   }
@@ -71,7 +71,7 @@
   &-size-mini &-item-label-col {
     line-height: @size-mini;
 
-    > label {
+    > .@{form-item-label-prefix-cls} {
       font-size: @form-size-mini-font-label-size;
     }
   }
@@ -87,7 +87,7 @@
   &-size-small &-item-label-col {
     line-height: @size-small;
 
-    > label {
+    > .@{form-item-label-prefix-cls} {
       font-size: @form-size-small-font-label-size;
     }
   }
@@ -103,7 +103,7 @@
   &-size-large &-item-label-col {
     line-height: @size-large;
 
-    > label {
+    > .@{form-item-label-prefix-cls} {
       font-size: @form-size-large-font-label-size;
     }
   }
@@ -149,7 +149,8 @@
       justify-content: flex-start;
     }
 
-    > label {
+    > .@{form-item-label-prefix-cls} {
+      max-width: 100%;
       color: @form-color-text-label;
       font-size: @form-size-default-font-label-size;
       white-space: normal;
@@ -179,6 +180,7 @@
 
   &-item-content {
     flex: 1;
+    max-width: 100%;
     min-height: @size-default;
 
     &-wrapper {
