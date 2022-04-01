@@ -661,6 +661,7 @@ export default defineComponent({
               ))
           }
           accept={mergedAccept.value}
+          onButtonClick={props.onButtonClick}
         />
       );
 
