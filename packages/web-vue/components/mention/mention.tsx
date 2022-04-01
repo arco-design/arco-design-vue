@@ -235,7 +235,7 @@ export default defineComponent({
 
       _value.value = nextValue;
       emit('select', value);
-      emit('update:modelValue', value);
+      emit('update:modelValue', nextValue);
       emit('change', nextValue);
       resetMeasureInfo();
       eventHandlers.value?.onChange?.();
