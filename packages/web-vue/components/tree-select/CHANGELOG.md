@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 Feature
+
+- add property `fallback-option` ([#894](https://github.com/arco-design/arco-design-vue/pull/894))
+
+### 🐛 BugFix
+
+- Fix the problem that the null value is displayed as empty ([#916](https://github.com/arco-design/arco-design-vue/pull/916))
+
+
 ## 2.21.0
 
 `2022-03-25`

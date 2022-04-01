@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 BugFix
+
+- The icon in the popup box is not aligned with the text ([#889](https://github.com/arco-design/arco-design-vue/pull/889))
+
+
 ## 2.21.0
 
 `2022-03-25`

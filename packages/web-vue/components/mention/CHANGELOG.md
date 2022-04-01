@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 BugFix
+
+- Fix v-model two-way binding error when selecting value ([#908](https://github.com/arco-design/arco-design-vue/pull/908))
+
+
 ## 2.13.0
 
 `2021-12-31`

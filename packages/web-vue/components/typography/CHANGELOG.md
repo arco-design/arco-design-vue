@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 BugFix
+
+- fix the problem that copy does not work ([#915](https://github.com/arco-design/arco-design-vue/pull/915))
+
+
 ## 2.20.0
 
 `2022-03-18`

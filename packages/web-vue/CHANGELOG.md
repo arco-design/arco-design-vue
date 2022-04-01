@@ -2,6 +2,41 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 💎 Optimization
+
+- **select:** Enter event can no longer be triggered in loading state ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🆕 Feature
+
+- **table:** Added `selectAll` method ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+- **form:** Rendering elements that support modifying form item labels ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+- **cascader:** Added `field-names` attribute to allow custom fields ([#912](https://github.com/arco-design/arco-design-vue/pull/912))
+- **select:** Added `field-names` attribute to allow custom fields ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+- **input-tag:** Added `field-names` attribute ([#910](https://github.com/arco-design/arco-design-vue/pull/910))
+- **tree-select:** add property `fallback-option` ([#894](https://github.com/arco-design/arco-design-vue/pull/894))
+
+### 🐛 BugFix
+
+- **table:** Fix the problem of wrong virtual list width in some cases ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+- **modal:** Fix auto width and drag error when `align-center="false"` ([#918](https://github.com/arco-design/arco-design-vue/pull/918))
+- Fixed the problem that the bottom blank of the virtual list appears when the item height deviation is large ([#917](https://github.com/arco-design/arco-design-vue/pull/917))
+- **tree-select:** Fix the problem that the null value is displayed as empty ([#916](https://github.com/arco-design/arco-design-vue/pull/916))
+- **typography:** fix the problem that copy does not work ([#915](https://github.com/arco-design/arco-design-vue/pull/915))
+- **select:** Fixed duplicate options in `allow-create` mode ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+- **input-number:** Fixed display error when switching `mode` ([#909](https://github.com/arco-design/arco-design-vue/pull/909))
+- **mention:** Fix v-model two-way binding error when selecting value ([#908](https://github.com/arco-design/arco-design-vue/pull/908))
+- **upload:** Fix onButtonClick property not available ([#907](https://github.com/arco-design/arco-design-vue/pull/907))
+- **menu:** The icon in the popup box is not aligned with the text ([#889](https://github.com/arco-design/arco-design-vue/pull/889))
+
+### 💅 Style
+
+- **form:** Form item content style increases maximum width to prevent overflow ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+
 ## 2.21.2
 
 `2022-03-29`

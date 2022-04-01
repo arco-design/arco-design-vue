@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 💎 Optimization
+
+- Enter event can no longer be triggered in loading state ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🆕 Feature
+
+- Added `field-names` attribute to allow custom fields ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🐛 BugFix
+
+- Fixed duplicate options in `allow-create` mode ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+
 ## 2.21.2
 
 `2022-03-29`

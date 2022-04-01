@@ -75,6 +75,13 @@ const getRecords = (mr: any) => {
         const data = titles.reduce(
           (data: Record<string, any>, title: string, index: number) => {
             switch (title) {
+              case 'type': {
+                const _type = typeMap[items[index]];
+                if (_type && _type !== 'unused') {
+                  data[title] = _type;
+                }
+                break;
+              }
               case 'component':
                 data[title] = items[index].toLowerCase();
                 break;

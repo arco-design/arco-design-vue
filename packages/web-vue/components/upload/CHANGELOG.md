@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 BugFix
+
+- Fix onButtonClick property not available ([#907](https://github.com/arco-design/arco-design-vue/pull/907))
+
+
 ## 2.18.1
 
 `2022-03-07`

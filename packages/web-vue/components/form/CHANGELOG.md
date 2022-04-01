@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 Feature
+
+- Rendering elements that support modifying form item labels ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+### 💅 Style
+
+- Form item content style increases maximum width to prevent overflow ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+
 ## 2.20.1
 
 `2022-03-21`

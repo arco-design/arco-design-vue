@@ -439,12 +439,9 @@ export default defineComponent({
       }
     });
 
-    const childVNodes = ref<VNode[]>([]);
     const updateFullText = () => {
       if (ellipsis.value || copyable.value || editable.value) {
-        const _fullText = childVNodes.value.length
-          ? getInnerText(childVNodes)
-          : '';
+        const _fullText = getInnerText(slots.default?.() ?? []);
 
         if (_fullText !== fullText.value) {
           fullText.value = _fullText;
@@ -458,7 +455,6 @@ export default defineComponent({
 
     return () => {
       const children = slots.default?.() || [];
-      childVNodes.value = children;
 
       // 编辑中
       if (mergeEditing.value) {

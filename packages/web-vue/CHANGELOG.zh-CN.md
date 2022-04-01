@@ -2,6 +2,41 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 💎 功能优化
+
+- **select:** 加载状态下不再可以触发回车事件 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🆕 新增功能
+
+- **table:** 增加 `selectAll` 方法 ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+- **form:** 支持修改表单项标签的渲染元素 ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+- **cascader:** 增加 `field-names` 属性，允许自定义字段 ([#912](https://github.com/arco-design/arco-design-vue/pull/912))
+- **select:** 增加 `field-names` 属性，允许自定义字段 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+- **input-tag:** 增加 `field-names` 属性 ([#910](https://github.com/arco-design/arco-design-vue/pull/910))
+- **tree-select:** 新增参数 `fallback-option` ([#894](https://github.com/arco-design/arco-design-vue/pull/894))
+
+### 🐛 问题修复
+
+- **table:** 修复某些情况下虚拟列表宽度错误的问题 ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+- **modal:** 修复 `align-center="false"` 时自动宽度和拖动错误的问题 ([#918](https://github.com/arco-design/arco-design-vue/pull/918))
+- 修复虚拟列表在项目高度偏差较大的时候出现底部空白的问题 ([#917](https://github.com/arco-design/arco-design-vue/pull/917))
+- **tree-select:** 修复  null 值显示为空的问题 ([#916](https://github.com/arco-design/arco-design-vue/pull/916))
+- **typography:** 修复复制无效的问题 ([#915](https://github.com/arco-design/arco-design-vue/pull/915))
+- **select:** 修复 `allow-create` 模式下会出现重复选项的问题 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+- **input-number:** 修复切换 `mode` 时展示错误的问题 ([#909](https://github.com/arco-design/arco-design-vue/pull/909))
+- **mention:** 修复 v-model 双向绑定在选择值时错误的问题 ([#908](https://github.com/arco-design/arco-design-vue/pull/908))
+- **upload:** 修复 onButtonClick 属性不可用的问题 ([#907](https://github.com/arco-design/arco-design-vue/pull/907))
+- **menu:** 弹出框中的图标与文字没有对齐 ([#889](https://github.com/arco-design/arco-design-vue/pull/889))
+
+### 💅 样式更新
+
+- **form:** 表单项内容样式增加最大宽度，防止溢出 ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+
 ## 2.21.2
 
 `2022-03-29`

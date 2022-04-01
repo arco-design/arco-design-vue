@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 新增功能
+
+- 新增参数 `fallback-option` ([#894](https://github.com/arco-design/arco-design-vue/pull/894))
+
+### 🐛 问题修复
+
+- 修复  null 值显示为空的问题 ([#916](https://github.com/arco-design/arco-design-vue/pull/916))
+
+
 ## 2.21.0
 
 `2022-03-25`

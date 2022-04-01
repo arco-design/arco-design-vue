@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 Feature
+
+- Added `selectAll` method ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+### 🐛 BugFix
+
+- Fix the problem of wrong virtual list width in some cases ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+
 ## 2.21.0
 
 `2022-03-25`

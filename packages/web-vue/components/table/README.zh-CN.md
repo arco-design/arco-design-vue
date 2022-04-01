@@ -97,6 +97,11 @@ description: 用于数据收集展示、分析整理、操作处理。
 |cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumn`|
 |row-click|点击行数据时触发|record: `TableData`|
 |header-click|点击表头数据时触发|column: `TableColumn`|
+### `<table>` Methods
+
+|方法名|描述|参数|返回值|版本|
+|---|---|---|---|:---|
+|selectAll|设置全选状态|checked: ` boolean `|-|2.22.0|
 ### `<table>` Slots
 
 |插槽名|描述|参数|版本|

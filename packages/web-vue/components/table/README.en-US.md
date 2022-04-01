@@ -99,6 +99,11 @@ description: It is used for data collection, display, analysis and processing, a
 |cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumn`|
 |row-click|Triggered when row data is clicked|record: `TableData`|
 |header-click|Triggered when the header data is clicked|column: `TableColumn`|
+### `<table>` Methods
+
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|selectAll|Set select all state|checked: ` boolean `|-|2.22.0|
 ### `<table>` Slots
 
 |Slot Name|Description|Parameters|version|

@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 💎 功能优化
+
+- 加载状态下不再可以触发回车事件 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🆕 新增功能
+
+- 增加 `field-names` 属性，允许自定义字段 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🐛 问题修复
+
+- 修复 `allow-create` 模式下会出现重复选项的问题 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+
 ## 2.21.2
 
 `2022-03-29`

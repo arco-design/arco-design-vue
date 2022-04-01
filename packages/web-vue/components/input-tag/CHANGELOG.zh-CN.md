@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 新增功能
+
+- 增加 `field-names` 属性 ([#910](https://github.com/arco-design/arco-design-vue/pull/910))
+
+
 ## 2.15.0
 
 `2022-01-14`

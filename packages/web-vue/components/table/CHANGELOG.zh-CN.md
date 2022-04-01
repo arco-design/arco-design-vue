@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 新增功能
+
+- 增加 `selectAll` 方法 ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+### 🐛 问题修复
+
+- 修复某些情况下虚拟列表宽度错误的问题 ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+
 ## 2.21.0
 
 `2022-03-25`
