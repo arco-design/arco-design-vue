@@ -1,16 +1,30 @@
 import type { Ref } from 'vue';
 import { computed, reactive, ref, watch } from 'vue';
-import type { FilterOption, Option, OptionInfo } from '../interface';
+import type {
+  FilterOption,
+  Option,
+  OptionInfo,
+  SelectFieldNames,
+} from '../interface';
 import { getOptionInfos, getValidOptions, isValidOption } from '../utils';
 import { isNumber } from '../../_utils/is';
 
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+  disabled: 'disabled',
+  tagProps: 'tagProps',
+  render: 'render',
+};
+
 export const useOptions = ({
   options,
-  extraOptions = ref([]),
+  extraOptions,
   inputValue,
   filterOption,
   showExtraOptions,
-  valueKey = ref('value'),
+  valueKey,
+  fieldNames,
 }: {
   options?: Ref<Option[]>;
   extraOptions?: Ref<Option[]>;
@@ -18,7 +32,13 @@ export const useOptions = ({
   filterOption?: Ref<FilterOption>;
   showExtraOptions?: Ref<boolean>;
   valueKey?: Ref<string>;
+  fieldNames?: Ref<SelectFieldNames | undefined>;
 }) => {
+  const mergedFieldNames = computed(() => ({
+    ...DEFAULT_FIELD_NAMES,
+    ...fieldNames?.value,
+  }));
+
   const slotOptionInfoMap = reactive(new Map<number, OptionInfo>());
   const sortedSlotOptionInfos = ref<OptionInfo[]>([]);
   watch(slotOptionInfoMap, (slotOptionInfoMap) => {
@@ -35,7 +55,8 @@ export const useOptions = ({
   const propOptionData = computed(() => {
     const optionInfoMap = new Map<string, OptionInfo>();
     const optionInfos = getOptionInfos(options?.value ?? [], {
-      valueKey: valueKey?.value,
+      valueKey: valueKey?.value ?? 'value',
+      fieldNames: mergedFieldNames.value,
       origin: 'options',
       optionInfoMap,
     });
@@ -50,7 +71,8 @@ export const useOptions = ({
     const optionInfoMap = new Map<string, OptionInfo>();
 
     const optionInfos = getOptionInfos(extraOptions?.value ?? [], {
-      valueKey: valueKey?.value,
+      valueKey: valueKey?.value ?? 'value',
+      fieldNames: mergedFieldNames.value,
       origin: 'extraOptions',
       optionInfoMap,
     });

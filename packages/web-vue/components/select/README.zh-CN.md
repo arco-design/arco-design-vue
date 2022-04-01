@@ -37,6 +37,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 @import ./__demo__/linkage.md
 
+@import ./__demo__/field-names.md
+
 @import ./__demo__/virtual-list.md
 
 
@@ -63,16 +65,17 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |popup-visible **(v-model)**|是否显示下拉菜单|`boolean`|`-`||
 |default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`||
 |unmount-on-close|是否在下拉菜单关闭时销毁元素|`boolean`|`false`||
-|filter-option|是否过滤选项|`boolean \| ((inputValue: string, optionInfo: OptionInfo) => boolean)`|`true`||
+|filter-option|是否过滤选项|`boolean \| ((inputValue: string, option: OptionData) => boolean)`|`true`||
 |options|选项数据|`Option[]`|`[]`||
 |virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
 |trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`||
-|format-label|格式化显示内容|`(data: OptionInfo) => string`|`-`||
-|fallback-option|自定义值中不存在的选项|`boolean\| ((value: string \| number \| Record<string, unknown>) => OptionData)`|`false`|2.10.0|
+|format-label|格式化显示内容|`(data: OptionData) => string`|`-`||
+|fallback-option|自定义值中不存在的选项|`boolean\| ((value: string \| number \| Record<string, unknown>) => OptionData)`|`true`|2.10.0|
 |show-extra-options|是否在下拉菜单中显示额外选项|`boolean`|`true`|2.10.0|
 |value-key|用于确定选项键值得属性名|`string`|`'value'`|2.18.0|
 |search-delay|触发搜索事件的延迟时间|`number`|`500`|2.18.0|
 |limit|多选时最多的选择个数|`number`|`0`|2.18.0|
+|field-names|自定义 `OptionData` 中的字段|`SelectFieldNames`|`-`|2.22.0|
 ### `<select>` Events
 
 |事件名|描述|参数|版本|
@@ -90,6 +93,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
+|prefix|前缀元素|-|2.22.0|
 |search-icon|选择框的搜索图标|-|2.16.0|
 |loading-icon|选择框的加载中图标|-|2.16.0|
 |arrow-icon|选择框的箭头图标|-|2.16.0|
@@ -168,15 +172,5 @@ type FilterOption = boolean | ((inputValue: string, optionInfo: OptionInfo) => b
 |isGroup|是否为选项组|`true`|`-`|
 |label|选项组标题|`string`|`-`|
 |options|选项组中的选项|`Option[]`|`-`|
-
-
-
-### OptionInfo
-
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|index|选项的索引|`number`|`-`|
-|key|选项的键值|`string`|`-`|
-|origin|选项的来源|`'slot' \| 'options' \| 'extraOptions'`|`-`|
 
 

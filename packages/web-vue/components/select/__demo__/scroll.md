@@ -22,8 +22,8 @@ You can monitor the scroll event of the drop-down menu through `dropdown-scroll`
     :style="{width:'320px'}"
     default-value="Beijing"
     placeholder="Please select ..."
-    @dropdown-scroll="scroll"
-    @dropdown-reach-bottom="reachBottom"
+    @dropdown-scroll="handleScroll"
+    @dropdown-reach-bottom="handleReachBottom"
   >
     <a-option>Beijing</a-option>
     <a-option>Shanghai</a-option>
@@ -37,14 +37,19 @@ You can monitor the scroll event of the drop-down menu through `dropdown-scroll`
 
 <script>
 export default {
-  methods: {
-    scroll: (e) => {
-      console.log('scroll', e)
-    },
-    reachBottom: (e) => {
-      console.log('reach the bottom', e)
+  setup() {
+    const handleScroll = (ev) => {
+      console.log('scroll', ev)
     }
-  }
+    const handleReachBottom = (ev) => {
+      console.log('reach the bottom', ev)
+    }
+
+    return {
+      handleScroll,
+      handleReachBottom
+    }
+  },
 }
 </script>
 ```

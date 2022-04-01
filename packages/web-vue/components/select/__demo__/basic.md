@@ -19,6 +19,7 @@ Use the `trigger-props` property to customize the properties of the drop-down bo
 ---
 
 ```vue
+
 <template>
   <a-space direction="vertical" size="large">
     <a-select :style="{width:'320px'}" placeholder="Please select ...">
@@ -47,29 +48,34 @@ Use the `trigger-props` property to customize the properties of the drop-down bo
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const value = ref();
+    const data = [{
+      value: 'beijing',
+      label: 'Beijing',
+      other: 'extra'
+    }, {
+      value: 'shanghai',
+      label: 'Shanghai',
+      other: 'extra'
+    }, {
+      value: 'guangzhou',
+      label: 'Guangzhou',
+      other: 'extra'
+    }, {
+      value: 'chengdu',
+      label: 'Chengdu',
+      other: 'extra'
+    }]
+
     return {
-      value: undefined,
-      data: [{
-        value: 'beijing',
-        label: 'Beijing',
-        other: 'extra'
-      }, {
-        value: 'shanghai',
-        label: 'Shanghai',
-        other: 'extra'
-      }, {
-        value: 'guangzhou',
-        label: 'Guangzhou',
-        other: 'extra'
-      }, {
-        value: 'chengdu',
-        label: 'Chengdu',
-        other: 'extra'
-      }]
+      value,
+      data
     }
-  }
+  },
 }
 </script>
 ```

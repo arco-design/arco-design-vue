@@ -22,7 +22,7 @@ Use the `search` event to search remotely and change options.
   <a-space direction="vertical" size="large">
     <div>Show selections after search options</div>
     <a-select :style="{width:'320px'}" :loading="loading" placeholder="Please select ..." multiple
-              @search="handleSearch" :filter-option="false" >
+              @search="handleSearch" :filter-option="false">
       <a-option v-for="item of options" :value="item">{{item}}</a-option>
     </a-select>
     <div>Hide selections after search options</div>
@@ -32,26 +32,31 @@ Use the `search` event to search remotely and change options.
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      loading: false,
-      options: ['Option1', 'Option2', 'Option3']
-    }
-  },
-  methods: {
-    handleSearch(value) {
+  setup() {
+    const options = ref(['Option1', 'Option2', 'Option3']);
+    const loading = ref(false);
+
+    const handleSearch = (value) => {
       if (value) {
-        this.loading = true;
+        loading.value = true;
         window.setTimeout(() => {
-          this.options = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`]
-          this.loading = false;
+          options.value = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`]
+          loading.value = false;
         }, 2000)
       } else {
-        this.options = []
+        options.value = []
       }
-    },
-  }
+    };
+
+    return {
+      options,
+      loading,
+      handleSearch
+    }
+  },
 }
 </script>
 ```

@@ -148,6 +148,12 @@ export default defineComponent({
 
     if (!props.internal) {
       const optionInfo = reactive({
+        raw: {
+          value,
+          label,
+          disabled,
+          tagProps,
+        },
         ref: itemRef,
         index,
         key,
