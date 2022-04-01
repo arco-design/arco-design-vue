@@ -1,11 +1,11 @@
 import { computed, ref, toRefs, watchEffect, watch } from 'vue';
-import { isArray, isFunction, isObject, isUndefined } from '../../_utils/is';
+import { isArray, isFunction, isObject } from '../../_utils/is';
 import { FallbackOption, LabelValue, TreeSelectValue } from '../interface';
 import { Key2TreeNode } from '../../tree/utils';
 import { FieldNames, TreeNodeData, TreeNodeKey } from '../../tree/interface';
 
 function isValidKey(key: TreeNodeKey) {
-  return !isUndefined(key) && key !== '';
+  return key !== undefined && key !== null && key !== '';
 }
 
 function getKey(value: TreeNodeKey | LabelValue) {
@@ -22,7 +22,7 @@ function isValidValue(value: TreeNodeKey | LabelValue) {
 }
 
 function getKeys(value: (TreeNodeKey | LabelValue)[]) {
-  return value.filter(isValidValue).map(getKey);
+  return value.map(getKey).filter(isValidKey);
 }
 
 export default function useSelectedState(props: {
@@ -107,16 +107,13 @@ export default function useSelectedState(props: {
   const computedModelValueKeys = ref<TreeNodeKey[]>();
   const computedModelValue = ref<LabelValue[]>();
   watchEffect(() => {
-    const normalizeModelValue = modelValue?.value
-      ? normalizeValue(modelValue?.value)
-      : undefined;
-    const modelValueKeys = getKeys(normalizeModelValue || []);
-    computedModelValue.value = normalizeModelValue
+    const isControlled = modelValue?.value !== undefined;
+    const normalizeModelValue = normalizeValue(modelValue?.value || []);
+    const modelValueKeys = getKeys(normalizeModelValue);
+    computedModelValue.value = isControlled
       ? getLabelValues(modelValueKeys, getLabelValues(normalizeModelValue))
       : undefined;
-    computedModelValueKeys.value = normalizeModelValue
-      ? modelValueKeys
-      : undefined;
+    computedModelValueKeys.value = isControlled ? modelValueKeys : undefined;
   });
 
   const normalizeDefaultValue = normalizeValue(defaultValue?.value || []);
@@ -136,10 +133,10 @@ export default function useSelectedState(props: {
   });
 
   const selectedKeys = computed(
-    () => computedModelValueKeys.value || localValueKeys.value
+    () => computedModelValueKeys.value ?? localValueKeys.value
   );
   const selectedValue = computed(
-    () => computedModelValue.value || localValue.value
+    () => computedModelValue.value ?? localValue.value
   );
 
   return {
