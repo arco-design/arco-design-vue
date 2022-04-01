@@ -68,6 +68,7 @@ import { useColumnResize } from './hooks/use-column-resize';
 import { tableInjectionKey } from './context';
 import { useFilter } from './hooks/use-filter';
 import { useSorter } from './hooks/use-sorter';
+import ClientOnly from '../_components/client-only';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -1412,19 +1413,28 @@ export default defineComponent({
 
     const virtualListRef = ref();
 
+    watch(virtualListRef, (instance) => {
+      tbodyRef.value = instance.$el;
+    });
+
     const renderVirtualListBody = () => {
       return (
-        <VirtualList
-          ref={virtualListRef}
-          class={`${prefixCls}-body`}
-          itemKey="_key"
-          {...props.virtualListProps}
-          data={flattenData.value}
-          v-slots={{
-            item: ({ item, index }: { item: TableData; index: number }) =>
-              renderRecord(item, index),
-          }}
-        />
+        <ClientOnly>
+          <VirtualList
+            ref={virtualListRef}
+            class={`${prefixCls}-body`}
+            itemKey="_key"
+            {...props.virtualListProps}
+            data={flattenData.value}
+            v-slots={{
+              item: ({ item, index }: { item: TableData; index: number }) =>
+                renderRecord(item, index),
+            }}
+            onResize={() => {
+              handleTbodyResize();
+            }}
+          />
+        </ClientOnly>
       );
     };
 
@@ -1750,10 +1760,10 @@ export default defineComponent({
                 </table>
               </div>
             )}
-            <ResizeObserver onResize={handleTbodyResize}>
-              {isVirtualList.value ? (
-                renderVirtualListBody()
-              ) : (
+            {isVirtualList.value ? (
+              renderVirtualListBody()
+            ) : (
+              <ResizeObserver onResize={handleTbodyResize}>
                 <div
                   ref={tbodyRef}
                   class={`${prefixCls}-body`}
@@ -1779,8 +1789,8 @@ export default defineComponent({
                     {renderBody()}
                   </table>
                 </div>
-              )}
-            </ResizeObserver>
+              </ResizeObserver>
+            )}
             {summaryData.value && summaryData.value.length && (
               <div ref={summaryRef} class={`${prefixCls}-tfoot`} style={style}>
                 <table
@@ -1885,7 +1895,7 @@ export default defineComponent({
       return undefined;
     });
 
-    return () => {
+    const render = () => {
       if (slots.default) {
         return <div class={cls.value}>{renderTable(slots.default)}</div>;
       }
@@ -1907,5 +1917,25 @@ export default defineComponent({
         </div>
       );
     };
+
+    return {
+      render,
+      handleSelectAll,
+    };
+  },
+  methods: {
+    /**
+     * @zh 设置全选状态
+     * @en Set select all state
+     * @param { boolean } checked
+     * @public
+     * @version 2.22.0
+     */
+    selectAll(checked: boolean) {
+      return this.handleSelectAll(checked);
+    },
+  },
+  render() {
+    return this.render();
   },
 });
