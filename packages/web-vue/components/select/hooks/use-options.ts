@@ -85,7 +85,12 @@ export const useOptions = ({
   const optionInfoMap = reactive(new Map<string, OptionInfo>());
 
   watch(
-    [slotOptionInfoMap, options, extraOptions, valueKey],
+    [
+      slotOptionInfoMap,
+      options ?? ref([]),
+      extraOptions ?? ref([]),
+      valueKey ?? ref('value'),
+    ],
     () => {
       optionInfoMap.clear();
 
