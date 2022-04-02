@@ -32,11 +32,16 @@ In addition, starting from `2.17.0`, the preview component `a-image-preview` pro
     </template>
   </a-image>
 </template>
+
 <script>
 export default {
-  methods: {
-    download() {
+  setup() {
+    const download = () => {
       console.log('点击下载图片')
+    };
+
+    return {
+      download
     }
   },
 }

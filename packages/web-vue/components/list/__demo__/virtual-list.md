@@ -15,6 +15,7 @@ title:
 By specifying `virtualListProps` to turn on the virtual list, high performance can be obtained when a large amount of data is used.
 
 ```vue
+
 <template>
   <h3 :style="{ color: 'var(--color-text-2)' }">10000 items</h3>
   <a-list
@@ -42,19 +43,22 @@ By specifying `virtualListProps` to turn on the virtual list, high performance c
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      list: new Array(10000).fill(null).map((_, index) => {
-        const prefix = `0000${index}`.slice(-5);
-        return {
-          title: 'Beijing Bytedance Technology Co., Ltd.',
-          description: `(${prefix}) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.`,
-        };
-      })
+import { reactive } from 'vue';
 
+export default {
+  setup() {
+    const list = reactive(Array(10000).fill(null).map((_, index) => {
+      const prefix = `0000${index}`.slice(-5);
+      return {
+        title: 'Beijing Bytedance Technology Co., Ltd.',
+        description: `(${prefix}) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.`,
+      };
+    }))
+
+    return {
+      list
     }
-  }
+  },
 }
 </script>
 ```

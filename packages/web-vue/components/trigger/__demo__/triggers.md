@@ -27,7 +27,7 @@ title:
   </a-trigger>
 </template>
 
-<style lang="less">
+<style scoped>
 .demo-trigger {
   padding: 10px;
   width: 200px;

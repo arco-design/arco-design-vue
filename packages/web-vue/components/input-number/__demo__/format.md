@@ -23,17 +23,23 @@ Use `formatter` and `parser` together to define the display value of the input b
 
 <script>
 export default {
-  methods:{
-    formatter(value) {
+  setup(){
+    const formatter = (value) => {
       const values = value.split('.');
       values[0]=values[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
       return values.join('.')
-    },
-    parser(value){
+    };
+
+    const parser = (value) => {
       return value.replace(/,/g, '')
+    };
+
+    return {
+      formatter,
+      parser
     }
-  }
+  },
 }
 </script>
 ```

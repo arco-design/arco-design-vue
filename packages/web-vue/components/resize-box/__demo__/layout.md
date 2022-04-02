@@ -31,6 +31,7 @@ The `ResizeBox` component is integrated in the [Layout](/react/components/Resize
   </a-layout>
 </div>
 </template>
+
 <style scoped>
 .layout-demo :deep(.arco-layout-header),
 .layout-demo :deep(.arco-layout-footer),

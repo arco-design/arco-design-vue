@@ -28,7 +28,7 @@ title:
   </a-trigger>
 </template>
 
-<style lang="less">
+<style scoped>
 .demo-point-trigger {
   display: flex;
   align-items: center;
@@ -43,10 +43,10 @@ title:
   background-color: var(--color-bg-popup);
   border-radius: 4px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
 
-  &-wrapper {
-    display: block;
-  }
+.demo-point-wrapper {
+  display: block;
 }
 </style>
 ```

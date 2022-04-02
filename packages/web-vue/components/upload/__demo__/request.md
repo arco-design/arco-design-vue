@@ -23,9 +23,9 @@ Custom upload request can be realized through `custom-request`.
 
 <script>
 export default {
-  methods:{
-    customRequest(option){
-      const { onProgress, onError, onSuccess, fileItem, name } = option
+  setup() {
+    const customRequest = (option) => {
+      const {onProgress, onError, onSuccess, fileItem, name} = option
       const xhr = new XMLHttpRequest();
       if (xhr.upload) {
         xhr.upload.onprogress = function (event) {
@@ -52,12 +52,16 @@ export default {
       xhr.send(formData);
 
       return {
-        abort () {
+        abort() {
           xhr.abort()
         }
       }
+    };
+
+    return {
+      customRequest
     }
-  }
+  },
 }
 </script>
 ```

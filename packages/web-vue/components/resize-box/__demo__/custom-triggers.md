@@ -42,6 +42,7 @@ The content of trigger in all directions can be customized through the slot `res
     <a-typography-paragraph>Yiming Zhang is the founder and CEO of ByteDance.</a-typography-paragraph>
   </a-resize-box>
 </template>
+
 <style scoped>
   .resizebox-demo {
     position: relative;

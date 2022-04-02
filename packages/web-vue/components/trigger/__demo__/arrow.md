@@ -36,7 +36,7 @@ title:
   </a-space>
 </template>
 
-<style lang="less">
+<style scoped>
 .demo-arrow {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
   padding: 10px;

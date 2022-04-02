@@ -63,6 +63,7 @@ export default {
 
     return {
       visible,
+      nestedVisible,
       handleClick,
       handleOk,
       handleCancel,

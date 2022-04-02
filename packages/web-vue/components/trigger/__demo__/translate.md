@@ -44,7 +44,7 @@ title:
   </a-space>
 </template>
 
-<style lang="less">
+<style scoped>
 .trigger-demo-translate {
   padding: 10px;
   width: 200px;

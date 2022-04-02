@@ -1,7 +1,7 @@
 ```yaml
 title:
   zh-CN: 移除前校验
-  en-US: on-before-remove
+  en-US: On Before Remove
 ```
 
 ## zh-CN

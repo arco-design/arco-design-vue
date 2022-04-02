@@ -21,9 +21,9 @@ description: 用户可传输文件或提交相应的内容。
 
 @import ./__demo__/submit.md
 
-@import ./__demo__/beforeUpload.md
+@import ./__demo__/before-upload.md
 
-@import ./__demo__/onRemove.md
+@import ./__demo__/before-remove.md
 
 @import ./__demo__/limit.md
 

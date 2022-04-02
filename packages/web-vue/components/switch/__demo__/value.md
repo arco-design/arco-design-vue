@@ -17,6 +17,7 @@ The value of the switch can be customized through `checked-value` and `unchecked
 ---
 
 ```vue
+
 <template>
   <a-space direction="vertical" size="large">
     <a-switch v-model="value" checked-value="yes" unchecked-value="no" />
@@ -25,12 +26,16 @@ The value of the switch can be customized through `checked-value` and `unchecked
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data(){
+  setup() {
+    const value = ref('');
+
     return {
-      value: ''
+      value
     }
-  }
+  },
 }
 </script>
 ```
