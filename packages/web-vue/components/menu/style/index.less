@@ -91,7 +91,7 @@
         }
 
         .@{menu-prefix-cls}-icon {
-          line-height: initial;
+          line-height: 1;
         }
 
         .@{menu-prefix-cls}-title {
@@ -512,7 +512,10 @@
   .@{trigger-menu-prefix-cls}-has-icon {
     display: flex;
     align-items: center;
-    line-height: initial;
+
+    .@{trigger-menu-prefix-cls}-icon {
+      line-height: 1;
+    }
 
     > * {
       flex: none;
