@@ -23,9 +23,9 @@ description: Users can transfer files or submit corresponding content.
 
 @import ./__demo__/submit.md
 
-@import ./__demo__/beforeUpload.md
+@import ./__demo__/before-upload.md
 
-@import ./__demo__/onRemove.md
+@import ./__demo__/before-remove.md
 
 @import ./__demo__/limit.md
 

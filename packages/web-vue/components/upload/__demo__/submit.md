@@ -28,8 +28,8 @@ When setting `auto-upload` to `false`, you can manually upload by calling the `s
     >
       <template #upload-button>
         <a-space>
-          <a-button> select file </a-button>
-          <a-button type="primary" @click="submit"> start upload </a-button>
+          <a-button> select file</a-button>
+          <a-button type="primary" @click="submit"> start upload</a-button>
           <a-button type="primary" @click="submitOne">
             only upload one
           </a-button>
@@ -38,31 +38,39 @@ When setting `auto-upload` to `false`, you can manually upload by calling the `s
     </a-upload>
   </div>
 </template>
+
 <script>
+import { ref } from 'vue';
 
 export default {
-  data() {
-    return {
-      files: [],
-    };
-  },
-  methods: {
-    submitOne(e) {
+  setup() {
+    const uploadRef = ref();
+    const files = ref([]);
+
+    const submitOne = (e) => {
       e.stopPropagation();
-      console.log(this.files)
-      this.$refs.uploadRef.submit(
-        this.files.find((x) => x.status === 'init')
+      console.log(files.value)
+      uploadRef.value.submit(
+        files.value.find((x) => x.status === 'init')
       );
-    },
+    };
 
-    submit(e) {
+    const submit = (e) => {
       e.stopPropagation();
-      this.$refs.uploadRef.submit();
-    },
+      uploadRef.value.submit();
+    };
 
-    onChange(fileList) {
-      this.files = fileList;
-    },
+    const onChange = (fileList) => {
+      files.value = fileList;
+    };
+
+    return {
+      files,
+      submitOne,
+      submit,
+      onChange
+    }
+
   },
 };
 </script>

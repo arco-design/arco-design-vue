@@ -1,7 +1,7 @@
 ```yaml
 title:
   zh-CN: 上传前校验
-  en-US: beforeUpload
+  en-US: On Before Upload
 ```
 
 ## zh-CN

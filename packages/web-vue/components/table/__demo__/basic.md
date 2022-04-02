@@ -26,7 +26,7 @@ import { reactive } from 'vue';
 
 export default {
   setup() {
-    const columns = reactive([
+    const columns = [
       {
         title: 'Name',
         dataIndex: 'name',
@@ -43,7 +43,7 @@ export default {
         title: 'Email',
         dataIndex: 'email',
       },
-    ]);
+    ];
     const data = reactive([{
       key: '1',
       name: 'Jane Doe',

@@ -44,7 +44,7 @@ title:
   </a-space>
 </template>
 
-<style lang="less">
+<style scoped>
 .demo-basic {
   padding: 10px;
   width: 200px;

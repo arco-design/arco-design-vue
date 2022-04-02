@@ -17,6 +17,7 @@ Limit the maximum height of the list by setting the `max-height` property. Throu
 ---
 
 ```vue
+
 <template>
   <a-list :max-height="200" @reach-bottom="fetchData">
     <template #header>
@@ -31,36 +32,40 @@ Limit the maximum height of the list by setting the `max-height` property. Throu
 </template>
 
 <script>
+import { reactive, ref } from 'vue';
+
 export default {
-  methods: {
-    fetchData() {
+  setup() {
+    const current = ref(1);
+    const bottom = ref(false);
+    const data = reactive([]);
+
+    const fetchData = () => {
       console.log('reach bottom!');
-      const _data = this.$data;
-      if (_data.current <= 5) {
+      if (current.value <= 5) {
         window.setTimeout(() => {
-          const index = _data.data.length;
-          _data.data.push(
+          const index = data.length;
+          data.push(
             `Beijing Bytedance Technology Co., Ltd. ${index + 1}`,
             `Bytedance Technology Co., Ltd. ${index + 2}`,
             `Beijing Toutiao Technology Co., Ltd. ${index + 3}`,
             `Beijing Volcengine Technology Co., Ltd. ${index + 4}`,
             `China Beijing Bytedance Technology Co., Ltd. ${index + 5}`
           );
-          _data.current += 1
+          current.value += 1
         }, 2000)
       } else {
-        _data.bottom = true
+        bottom.value = true
       }
+    }
 
+    return {
+      current,
+      bottom,
+      data,
+      fetchData
     }
   },
-  data() {
-    return {
-      current: 1,
-      bottom: false,
-      data: []
-    }
-  }
 }
 </script>
 ```

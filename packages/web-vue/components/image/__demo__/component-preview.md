@@ -24,8 +24,10 @@ title:
     v-model:visible="visible"
   />
 </template>
+
 <script>
 import { ref } from 'vue';
+
 export default {
   setup() {
     const visible = ref(false)

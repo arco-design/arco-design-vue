@@ -41,15 +41,17 @@ When you need to display a large image, you can pass a smaller image to `loader`
     </template>
   </a-image>
 </template>
+
 <script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const timestamp = ref('');
-      return {
-        timestamp,
-      }
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const timestamp = ref('');
+    return {
+      timestamp,
     }
   }
+}
 </script>
 ```

@@ -23,16 +23,17 @@ You can add text labels by setting `marks`.
 
 <script>
 export default {
-  data() {
+  setup() {
+    const marks = {
+      0: '0km',
+      5: '5km',
+      10: '10km',
+      15: '15km'
+    };
     return {
-      marks: {
-        0: '0km',
-        5: '5km',
-        10: '10km',
-        15: '15km'
-      }
+      marks
     }
-  }
+  },
 }
 </script>
 ```

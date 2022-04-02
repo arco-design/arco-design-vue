@@ -36,12 +36,16 @@ Set `size="mini"` to display a miniature progress bar.
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const percent = ref(0.2);
+
     return {
-      percent: 0.2
+      percent
     }
-  }
+  },
 }
 </script>
 ```

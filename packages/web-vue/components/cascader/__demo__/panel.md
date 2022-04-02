@@ -22,8 +22,12 @@ Cascading menu can be used alone, in this case it is the `data display` componen
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
   setup() {
+    const value = ref('');
+
     const options = [
       {
         value: 'beijing',
@@ -75,6 +79,7 @@ export default {
       },
     ];
     return {
+      value,
       options
     }
   },
