@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.1
+
+`2022-04-02`
+
+### 🐛 BugFix
+
+- Fixed the problem that the height of menu icon is wrong ([#928](https://github.com/arco-design/arco-design-vue/pull/928))
+
+
 ## 2.22.0
 
 `2022-04-01`

@@ -43,9 +43,6 @@ export default {
     }, {
       title: 'Email',
       dataIndex: 'email',
-    }, {
-      title: 'Optional',
-      slotName: 'optional'
     }];
     const data = [{
       key: '1',

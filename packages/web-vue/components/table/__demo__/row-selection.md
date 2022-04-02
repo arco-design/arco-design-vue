@@ -65,7 +65,8 @@ export default {
       name: 'Kevin Sandra',
       salary: 22000,
       address: '31 Park Road, London',
-      email: 'kevin.sandra@example.com'
+      email: 'kevin.sandra@example.com',
+      disabled: true
     }, {
       key: '4',
       name: 'Ed Hellen',

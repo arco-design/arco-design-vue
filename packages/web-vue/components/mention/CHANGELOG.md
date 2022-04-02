@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.1
+
+`2022-04-02`
+
+### 🐛 BugFix
+
+- Fix the problem of warning prompts in the development environment ([#925](https://github.com/arco-design/arco-design-vue/pull/925))
+
+
 ## 2.22.0
 
 `2022-04-01`

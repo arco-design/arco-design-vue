@@ -758,7 +758,6 @@ exports[`<table> demo: render [editable] correctly 1`] = `
             <col>
             <col>
             <col>
-            <col>
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
@@ -792,12 +791,6 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\"><!----></span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
                 <!---->
                 <!----></span>
@@ -819,7 +812,6 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <!----></span></span>
                 <!----></span>
               </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
             </tr>
             <!---->
@@ -835,7 +827,6 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <!----></span></span>
                 <!----></span>
               </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
             </tr>
             <!---->
@@ -851,7 +842,6 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <!----></span></span>
                 <!----></span>
               </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
             </tr>
             <!---->
@@ -867,7 +857,6 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <!----></span></span>
                 <!----></span>
               </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
             </tr>
             <!---->
@@ -883,7 +872,6 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <!----></span></span>
                 <!----></span>
               </td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
             </tr>
             <!---->

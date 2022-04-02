@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.1
+
+`2022-04-02`
+
+### 🐛 BugFix
+
+- Fix virtual list and scrolling used together ([#926](https://github.com/arco-design/arco-design-vue/pull/926))
+
+
 ## 2.22.0
 
 `2022-04-01`

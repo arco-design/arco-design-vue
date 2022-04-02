@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.22.1
+
+`2022-04-02`
+
+### 🐛 问题修复
+
+- **menu:** 修复菜单图标的高度不对的问题 ([#928](https://github.com/arco-design/arco-design-vue/pull/928))
+- **table:** 修复虚拟列表和滚动一起使用的问题 ([#926](https://github.com/arco-design/arco-design-vue/pull/926))
+- **mention:** 修复开发环境下出现警告提示的问题 ([#925](https://github.com/arco-design/arco-design-vue/pull/925))
+
+
 ## 2.22.0
 
 `2022-04-01`
