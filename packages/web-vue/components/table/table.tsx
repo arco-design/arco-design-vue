@@ -1025,7 +1025,7 @@ export default defineComponent({
       if (target.scrollLeft !== containerScrollLeft.value) {
         containerScrollLeft.value = target.scrollLeft;
       }
-      if (isScroll.value.y) {
+      if (isScroll.value.y || props.virtualListProps) {
         if (theadRef.value) {
           theadRef.value.scrollLeft = target.scrollLeft;
         }
@@ -1424,6 +1424,7 @@ export default defineComponent({
             ref={virtualListRef}
             class={`${prefixCls}-body`}
             itemKey="_key"
+            type="table"
             {...props.virtualListProps}
             data={flattenData.value}
             v-slots={{
@@ -1433,6 +1434,8 @@ export default defineComponent({
             onResize={() => {
               handleTbodyResize();
             }}
+            onScroll={handleScroll}
+            outerAttrs={{ style: contentStyle.value }}
           />
         </ClientOnly>
       );

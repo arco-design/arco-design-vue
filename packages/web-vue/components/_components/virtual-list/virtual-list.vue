@@ -14,6 +14,9 @@
       <Filler
         :height="totalHeight"
         :offset="isVirtual ? startOffset : undefined"
+        :type="type"
+        :outer-attrs="outerAttrs"
+        :inner-attrs="innerAttrs"
       >
         <RenderFunction :render-func="renderChildren" />
       </Filler>
@@ -108,6 +111,9 @@ export default defineComponent({
       type: String as PropType<VirtualListProps['component']>,
       default: 'div',
     },
+    type: String,
+    outerAttrs: Object,
+    innerAttrs: Object,
   },
   emits: ['scroll', 'resize'],
   setup(props: VirtualListProps, { slots, emit }) {

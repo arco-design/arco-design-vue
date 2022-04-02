@@ -1,6 +1,17 @@
 <template>
-  <div v-if="!disabled" :style="outerStyle">
-    <div :style="innerStyle">
+  <table
+    v-if="type === 'table'"
+    :style="outerStyle"
+    cellpadding="0"
+    cellspacing="0"
+    v-bind="outerAttrs"
+  >
+    <tbody :style="innerStyle" v-bind="innerAttrs">
+      <slot />
+    </tbody>
+  </table>
+  <div v-else-if="!disabled" :style="outerStyle" v-bind="outerAttrs">
+    <div :style="innerStyle" v-bind="innerAttrs">
       <slot />
     </div>
   </div>
@@ -22,6 +33,9 @@ export default defineComponent({
     disabled: {
       type: Boolean,
     },
+    type: String,
+    outerAttrs: Object,
+    innerAttrs: Object,
   },
   setup(props) {
     const { height, offset } = toRefs(props);
