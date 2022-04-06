@@ -53,6 +53,7 @@ export default {
         locale: 'menu.dashboard.workplace', // 二级菜单名（语言包键名）
         requiresAuth: true, // 是否需要鉴权
         roles: ['admin'], // 权限角色
+        hideInMenu: false, // 是否隐藏菜单项
       },
     },
   ],
