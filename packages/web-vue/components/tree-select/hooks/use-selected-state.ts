@@ -145,5 +145,7 @@ export default function useSelectedState(props: {
     setLocalSelectedKeys(keys: TreeNodeKey[]) {
       localValueKeys.value = keys;
     },
+    localSelectedKeys: localValueKeys,
+    localSelectedValue: localValue,
   };
 }
