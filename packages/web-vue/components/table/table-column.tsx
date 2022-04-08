@@ -1,5 +1,4 @@
 import {
-  computed,
   CSSProperties,
   defineComponent,
   getCurrentInstance,
@@ -106,6 +105,22 @@ export default defineComponent({
    * @zh 标题
    * @en Title
    * @slot title
+   */
+  /**
+   * @zh 自定义筛选弹出框内容
+   * @en Title
+   * @slot filter-content
+   * @binding {string[]} filterValue
+   * @binding {(filterValue: string[]) => void} setFilterValue
+   * @binding {(event: Event) => void} handleFilterConfirm
+   * @binding {(event: Event) => void} handleFilterReset
+   * @version 2.23.0
+   */
+  /**
+   * @zh 筛选按钮图标
+   * @en Title
+   * @slot filter-icon
+   * @version 2.23.0
    */
   setup(props, { slots }) {
     const {

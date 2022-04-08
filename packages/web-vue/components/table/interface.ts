@@ -197,11 +197,7 @@ export interface TableColumn {
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
    */
-  render?: ({
-    record,
-    column,
-    rowIndex,
-  }: {
+  render?: (data: {
     record: TableData;
     column: TableColumn;
     rowIndex: number;
@@ -212,6 +208,12 @@ export interface TableColumn {
    * @version 2.18.0
    */
   slotName?: string;
+  /**
+   * @zh 设置当前列的标题的渲染插槽的名字
+   * @en Set the name of the render slot for the header of the current column
+   * @version 2.23.0
+   */
+  titleSlotName?: string;
 
   // private
   slots?: Slots;
@@ -350,14 +352,19 @@ export interface TableDraggable {
   fixed?: boolean;
 }
 
+export type OperationName =
+  | 'selection-checkbox'
+  | 'selection-radio'
+  | 'expand'
+  | 'drag-handle';
+
 export interface TableOperationColumn {
-  name: string;
-  title?: string;
+  name: OperationName | string;
+  title?: string | RenderFunction;
   width?: number;
   fixed?: boolean;
+  render?: (record: TableData) => VNode;
   isLastLeftFixed?: boolean;
-  columnNode?: (props: any) => VNode;
-  bodyNode?: (record: TableData, props: any) => VNode;
 }
 
 export interface TableComponents {

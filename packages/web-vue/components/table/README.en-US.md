@@ -24,6 +24,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/sort.md
 
+@import ./__demo__/filter.md
+
 @import ./__demo__/scroll.md
 
 @import ./__demo__/fixed.md
@@ -108,6 +110,7 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|summary-cell|Content on the right side of the pagination|column: `TableColumn`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
 |pagination-right|Content on the right side of the pagination|-|2.18.0|
 |pagination-left|Content on the left side of the pagination|-|2.18.0|
 |td|Custom td element|-|2.16.0|
@@ -138,10 +141,12 @@ description: It is used for data collection, display, analysis and processing, a
 |index|index for manually specifying option|`number`|`-`|2.20.2|
 ### `<table-column>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|title|Title|-|
-|cell|Cell|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|filter-icon|Title|-|2.23.0|
+|filter-content|Title|filterValue: `string[]`<br>setFilterValue: `(filterValue: string[]) => void`<br>handleFilterConfirm: `(event: Event) => void`<br>handleFilterReset: `(event: Event) => void`|2.23.0|
+|title|Title|-||
+|cell|Cell|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`||
 
 
 
@@ -208,8 +213,9 @@ description: It is used for data collection, display, analysis and processing, a
 |filterable|Filter related options|`TableFilterable`|`-`||
 |children|Header sub-data, used for header grouping|`TableColumn[]`|`-`||
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
-|render|Customize the rendering of column cells|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+|render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
 |slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
+|titleSlotName|Set the name of the render slot for the header of the current column|`string`|`-`|2.23.0|
 
 
 

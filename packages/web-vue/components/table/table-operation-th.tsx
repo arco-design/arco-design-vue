@@ -3,6 +3,7 @@ import { getOperationFixedCls, getOperationStyle } from './utils';
 import { getPrefixCls } from '../_utils/global-config';
 import Checkbox from '../checkbox';
 import { TableOperationColumn } from './interface';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'OperationTh',
@@ -15,26 +16,18 @@ export default defineComponent({
       type: Array as PropType<TableOperationColumn[]>,
       required: true,
     },
-    isRadio: {
+    rowSpan: {
+      type: Number,
+      default: 1,
+    },
+    // for selection
+    selectAll: {
       type: Boolean,
-    },
-    rowSelection: {
-      type: Object,
-    },
-    expandable: {
-      type: Object,
+      default: false,
     },
     selectedNumber: {
       type: Number,
       default: 0,
-    },
-    totalNumber: {
-      type: Number,
-      default: 0,
-    },
-    rowSpan: {
-      type: Number,
-      default: 1,
     },
     totalEnabledNumber: {
       type: Number,
@@ -45,34 +38,39 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('table');
 
+    const checked = computed(
+      () =>
+        props.totalEnabledNumber > 0 &&
+        props.selectedNumber >= props.totalEnabledNumber
+    );
+    const indeterminate = computed(
+      () =>
+        props.selectedNumber > 0 &&
+        props.selectedNumber < props.totalEnabledNumber
+    );
+
     const renderContent = () => {
-      if (props.operationColumn.name === 'selection') {
-        if (props.rowSelection?.showCheckedAll) {
-          const checked =
-            props.totalNumber > 0 &&
-            props.selectedNumber >= props.totalEnabledNumber;
-          const indeterminate =
-            props.selectedNumber > 0 &&
-            props.selectedNumber < props.totalEnabledNumber;
-
-          return (
-            <Checkbox
-              v-slots={{
-                default: props.rowSelection?.title
-                  ? props.rowSelection.title
-                  : undefined,
-              }}
-              modelValue={checked}
-              indeterminate={indeterminate}
-              uninjectGroupContext
-              onChange={(value: boolean) => emit('selectAll', value)}
-            />
-          );
-        }
-
-        return props.rowSelection?.title ?? '';
+      if (props.selectAll) {
+        return (
+          <Checkbox
+            v-slots={{
+              default: isFunction(props.operationColumn.title)
+                ? props.operationColumn.title()
+                : props.operationColumn.title,
+            }}
+            modelValue={checked.value}
+            indeterminate={indeterminate.value}
+            uninjectGroupContext
+            onChange={(value: boolean) => emit('selectAll', value)}
+          />
+        );
       }
-      return props.expandable?.title ?? '';
+      if (props.operationColumn.title) {
+        return isFunction(props.operationColumn.title)
+          ? props.operationColumn.title()
+          : props.operationColumn.title;
+      }
+      return null;
     };
 
     const style = computed(() =>
@@ -83,11 +81,7 @@ export default defineComponent({
       `${prefixCls}-th`,
       `${prefixCls}-operation`,
       {
-        [`${prefixCls}-checkbox`]:
-          props.operationColumn.name === 'selection' && !props.isRadio,
-        [`${prefixCls}-radio`]:
-          props.operationColumn.name === 'selection' && props.isRadio,
-        [`${prefixCls}-expand`]: props.operationColumn.name === 'expand',
+        [`${prefixCls}-checkbox`]: props.selectAll,
       },
       ...getOperationFixedCls(prefixCls, props.operationColumn),
     ]);

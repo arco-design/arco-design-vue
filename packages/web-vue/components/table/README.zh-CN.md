@@ -22,6 +22,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/sort.md
 
+@import ./__demo__/filter.md
+
 @import ./__demo__/scroll.md
 
 @import ./__demo__/fixed.md
@@ -106,6 +108,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
+|summary-cell|总结行|column: `TableColumn`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
 |pagination-right|分页器右侧内容|-|2.18.0|
 |pagination-left|分页器左侧内容|-|2.18.0|
 |td|自定义 td 元素|-|2.16.0|
@@ -136,10 +139,12 @@ description: 用于数据收集展示、分析整理、操作处理。
 |index|用于手动指定选项的 index|`number`|`-`|2.20.2|
 ### `<table-column>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|title|标题|-|
-|cell|单元格|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|filter-icon|筛选按钮图标|-|2.23.0|
+|filter-content|自定义筛选弹出框内容|filterValue: `string[]`<br>setFilterValue: `(filterValue: string[]) => void`<br>handleFilterConfirm: `(event: Event) => void`<br>handleFilterReset: `(event: Event) => void`|2.23.0|
+|title|标题|-||
+|cell|单元格|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`||
 
 
 
@@ -206,8 +211,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |children|表头子数据，用于表头分组|`TableColumn[]`|`-`||
 |cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
-|render|自定义列单元格的渲染|`({    record,    column,    rowIndex,  }: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+|render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
 |slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
+|titleSlotName|设置当前列的标题的渲染插槽的名字|`string`|`-`|2.23.0|
 
 
 

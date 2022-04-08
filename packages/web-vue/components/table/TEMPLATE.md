@@ -33,6 +33,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/sort.md
 
+@import ./__demo__/filter.md
+
 @import ./__demo__/scroll.md
 
 @import ./__demo__/fixed.md
