@@ -55,6 +55,7 @@ export default {
         locale:'menu.dashboard.workplace', // secondary menu name (language pack key name)
         requiresAuth: true, // Whether authentication is required
         roles: ['admin'], // role
+        hideInMenu: false, // Hide menu items
       },
     },
   ],
