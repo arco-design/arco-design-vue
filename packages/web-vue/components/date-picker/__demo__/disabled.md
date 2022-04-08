@@ -47,8 +47,10 @@ Disabled.
 <script>
 import dayjs from 'dayjs';
 export default {
-  methods: {
-    dayjs
+  setup() {
+    return {
+      dayjs
+    };
   }
 }
 </script>
