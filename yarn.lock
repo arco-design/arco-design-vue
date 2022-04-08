@@ -412,7 +412,7 @@ __metadata:
   resolution: "@arco-design/arco-vue-docs-navbar@workspace:packages/arco-vue-docs-navbar"
   dependencies:
     "@arco-design/web-react": ^2.28.2
-    "@arco-materials/site-navbar": ^1.2.1
+    "@arco-materials/site-navbar": ^1.2.2
     "@svgr/core": ^5.5.0
     "@typescript-eslint/eslint-plugin": ^4.18.0
     "@typescript-eslint/parser": ^4.12.0
@@ -650,9 +650,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arco-materials/site-navbar@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@arco-materials/site-navbar@npm:1.2.1"
+"@arco-materials/site-navbar@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@arco-materials/site-navbar@npm:1.2.2"
   dependencies:
     "@antv/g2": ^4.1.12
     "@arco-materials/site-utils": ^1.0.1
@@ -666,7 +666,7 @@ __metadata:
     "@arco-design/web-react": ">=2.0.0"
     react: ">=16"
     react-dom: ">=16"
-  checksum: 33a35ee1001942aeb472ce852a53fe5ccbfa15b91d9794f32041a85691de31ad8042af92632aca537c63fec7b4cd518c6d1bda2609bad926dde9162c3fd56101
+  checksum: cc3e85a3ea225d80315fcb9068c4cc2d79c7c91b67e54d20a34e95a7eadcf445bf8b03183a644010a532d003860de7e8d3471c1c88c485c9174472b88effaeee
   languageName: node
   linkType: hard
 
