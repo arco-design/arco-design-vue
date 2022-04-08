@@ -46,6 +46,7 @@ description: 收纳、排列并展示一系列选项的列表。
 |tooltip-props|弹出模式下可接受所有 `ToolTip` 的 `Props`|`object`|`-`||
 |auto-open-selected|默认展开选中的菜单|`boolean`|`false`|2.8.0|
 |breakpoint|响应式的断点, 详见[响应式栅格](/vue/component/grid)|`'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs'`|`-`|2.18.0|
+|popup-max-height|弹出框的最大高度|`boolean \| number`|`true`|2.23.0|
 ### `<menu>` Events
 
 |事件名|描述|参数|
@@ -66,12 +67,13 @@ description: 收纳、排列并展示一系列选项的列表。
 
 ### `<sub-menu>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|key|唯一标志|`string`|`-`|
-|title|子菜单的标题|`string`|`-`|
-|selectable|弹出模式下，是否将多级菜单头也作为一个菜单项，支持点击选中等状态|`boolean`|`false`|
-|popup|是否强制使用弹出模式，`level` 表示当前子菜单的层级|`SubMenuProps['popup']`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|key|唯一标志|`string`|`-`||
+|title|子菜单的标题|`string`|`-`||
+|selectable|弹出模式下，是否将多级菜单头也作为一个菜单项，支持点击选中等状态|`boolean`|`false`||
+|popup|是否强制使用弹出模式，`level` 表示当前子菜单的层级|`boolean \| ((level: number) => boolean)`|`false`||
+|popup-max-height|弹出框的最大高度|`boolean \| number`|`true`|2.23.0|
 ### `<sub-menu>` Slots
 
 |插槽名|描述|参数|版本|
