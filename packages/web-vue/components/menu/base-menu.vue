@@ -31,12 +31,13 @@ import IconMenuUnfold from '../icon/icon-menu-unfold';
 import useMergeState from '../_hooks/use-merge-state';
 import { provideLevel } from './hooks/use-level';
 import { MenuInjectionKey } from './context';
-import { MenuProps } from './interface';
+import { InternalMenuProps } from './interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
 import useMenuDataCollector from './hooks/use-menu-data-collector';
 import useMenuOpenState from './hooks/use-menu-open-state';
 import { useResponsive } from '../_hooks/use-responsive';
+import { isNumber, isObject } from '../_utils/is';
 
 /**
  * @displayName Menu
@@ -195,6 +196,15 @@ export default defineComponent({
     breakpoint: {
       type: String as PropType<'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'>,
     },
+    /**
+     * @zh 弹出框的最大高度
+     * @en The maximum height of popover
+     * @version 2.23.0
+     */
+    popupMaxHeight: {
+      type: [Boolean, Number] as PropType<boolean | number>,
+      default: true,
+    },
     // internal
     prefixCls: {
       type: String,
@@ -250,7 +260,7 @@ export default defineComponent({
    * @en Icon expand right
    * @slot expand-icon-right
    */
-  setup(props: MenuProps, { emit, slots }) {
+  setup(props: InternalMenuProps, { emit, slots }) {
     const {
       style,
       mode,
@@ -268,12 +278,13 @@ export default defineComponent({
       defaultSelectedKeys,
       openKeys: propOpenKeys,
       defaultOpenKeys,
-      prefixCls,
       triggerProps,
       tooltipProps,
       autoOpenSelected,
       breakpoint,
+      popupMaxHeight,
       // internal
+      prefixCls,
       inTrigger,
       siderCollapsed,
       isRoot,
@@ -351,21 +362,22 @@ export default defineComponent({
       },
     ]);
     const computedStyle = computed(() => {
-      const pxCollapsedWidth =
-        collapsedWidth &&
-        collapsedWidth.value !== undefined &&
-        `${collapsedWidth.value}px`;
+      const pxCollapsedWidth = isNumber(collapsedWidth.value)
+        ? `${collapsedWidth.value}px`
+        : undefined;
+
+      const objectStyle = isObject(style.value)
+        ? (style.value as CSSProperties)
+        : undefined;
 
       const width = computedCollapsed.value
         ? pxCollapsedWidth
-        : style?.value?.width;
+        : objectStyle?.width;
 
-      const widthStyle = width ? { width } : {};
-
-      return {
-        ...omit(style?.value || {}, ['width']),
-        ...widthStyle,
-      };
+      return [
+        objectStyle ? omit(objectStyle, ['width']) : style.value,
+        { width },
+      ];
     });
 
     const expandIconDown = usePickSlots(slots, 'expand-icon-down');
@@ -385,6 +397,7 @@ export default defineComponent({
       collapsed: computedCollapsed,
       triggerProps,
       tooltipProps,
+      popupMaxHeight,
       expandIconDown,
       expandIconRight,
       onMenuItemClick: (key: string) => {

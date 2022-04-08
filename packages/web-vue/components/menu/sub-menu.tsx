@@ -38,8 +38,20 @@ export default defineComponent({
      * @en Whether to force the use of pop-up mode, `level` indicates the level of the current submenu
      */
     popup: {
-      type: Boolean as PropType<SubMenuProps['popup']>,
+      type: [Boolean, Function] as PropType<
+        boolean | ((level: number) => boolean)
+      >,
       default: false,
+    },
+    /**
+     * @zh 弹出框的最大高度
+     * @en The maximum height of popover
+     * @defaultValue true
+     * @version 2.23.0
+     */
+    popupMaxHeight: {
+      type: [Boolean, Number] as PropType<boolean | number>,
+      default: undefined,
     },
   },
   /**

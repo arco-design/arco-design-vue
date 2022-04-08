@@ -1,12 +1,12 @@
 import { InjectionKey, VNodeTypes } from 'vue';
-import { MenuData, MenuProps } from './interface';
+import { InternalMenuProps, MenuData } from './interface';
 
 export const MenuInjectionKey: InjectionKey<MenuContext> =
   Symbol('MenuInjectionKey');
 
 export type MenuContext = Readonly<
   Pick<
-    MenuProps,
+    InternalMenuProps,
     | 'mode'
     | 'theme'
     | 'levelIndent'
@@ -15,6 +15,7 @@ export type MenuContext = Readonly<
     | 'inTrigger'
     | 'triggerProps'
     | 'tooltipProps'
+    | 'popupMaxHeight'
   > & {
     selectedKeys: string[];
     openKeys: string[];
