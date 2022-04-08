@@ -1,7 +1,10 @@
 <template>
   <span :class="cls">
-    <span v-if="!simple" :class="`${prefixCls}-text-goto`">
-      {{ t('pagination.goto') }}
+    <span
+      v-if="!simple"
+      :class="[`${prefixCls}-prepend`, `${prefixCls}-text-goto`]"
+    >
+      <slot name="jumper-prepend">{{ t('pagination.goto') }}</slot>
     </span>
     <input-number
       v-model="inputValue"
@@ -13,6 +16,9 @@
       hide-button
       @change="handleChange"
     />
+    <span v-if="$slots['jumper-append']" :class="`${prefixCls}-append`"
+      ><slot name="jumper-append"
+    /></span>
     <template v-if="simple">
       <span :class="`${prefixCls}-separator`">/</span>
       <span :class="`${prefixCls}-total-page`">{{ pages }}</span>

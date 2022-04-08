@@ -395,25 +395,16 @@ export default defineComponent({
     };
 
     // When the number of data items changes, recalculate the page number
-    watch(computedPageSize, () => {
-      if (computedCurrent.value !== 1) {
-        _current.value = 1;
-        emit('update:current', 1);
-        emit('change', 1);
+    watch(computedPageSize, (curPageSize, prePageSize) => {
+      if (curPageSize !== prePageSize && computedCurrent.value > 1) {
+        const index = prePageSize * (computedCurrent.value - 1) + 1;
+        const newPage = Math.ceil(index / curPageSize);
+        if (newPage !== computedCurrent.value) {
+          _current.value = newPage;
+          emit('update:current', newPage);
+          emit('change', newPage);
+        }
       }
-
-      // if (curPageSize !== prePageSize && computedCurrent.value !== 1) {
-      //   let page = computedCurrent.value;
-      //   if (curPageSize < prePageSize) {
-      //     page -= 1;
-      //   }
-      //   const newPage = Math.ceil((page * prePageSize) / curPageSize);
-      //   if (newPage !== computedCurrent.value) {
-      //     _current.value = newPage;
-      //     emit('update:current', page);
-      //     emit('change', newPage);
-      //   }
-      // }
     });
 
     const cls = computed(() => [
@@ -451,6 +442,10 @@ export default defineComponent({
           )}
           {!props.simple && props.showJumper && (
             <PageJumper
+              v-slots={{
+                'jumper-prepend': slots['jumper-prepend'],
+                'jumper-append': slots['jumper-append'],
+              }}
               disabled={props.disabled}
               current={computedCurrent.value}
               pages={pages.value}
