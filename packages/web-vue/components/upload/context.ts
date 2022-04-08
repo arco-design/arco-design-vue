@@ -1,8 +1,8 @@
-import type { InjectionKey } from 'vue';
-import { CustomIcon, FileItem } from './interfaces';
+import type { InjectionKey, Slots } from 'vue';
+import { CustomIcon, FileItem, ListType } from './interfaces';
 
 export interface UploadContext {
-  listType?: string;
+  listType?: ListType;
   disabled?: boolean;
   iconCls?: string;
   customIcon?: CustomIcon;
@@ -12,6 +12,7 @@ export interface UploadContext {
   showLink?: boolean;
   imageLoading?: 'eager' | 'lazy';
   download?: boolean;
+  slots: Slots;
   onRemove: (fileItem: FileItem) => void;
   onAbort: (fileItem: FileItem) => void;
   onUpload: (fileItem: FileItem) => void;
