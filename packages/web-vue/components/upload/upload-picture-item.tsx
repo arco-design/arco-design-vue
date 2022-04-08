@@ -39,20 +39,23 @@ export default defineComponent({
 
       return (
         <>
-          <img
-            src={props.file.url}
-            alt={props.file.name}
-            {...(uploadCtx?.imageLoading
-              ? { loading: uploadCtx.imageLoading }
-              : undefined)}
-          />
+          {uploadCtx?.slots.image?.({ fileItem: props.file }) ?? (
+            <img
+              src={props.file.url}
+              alt={props.file.name}
+              {...(uploadCtx?.imageLoading
+                ? { loading: uploadCtx.imageLoading }
+                : undefined)}
+            />
+          )}
           <div class={`${itemCls}-mask`}>
             {props.file.status === 'error' && uploadCtx?.showCancelButton && (
               <div class={`${itemCls}-error-tip`}>
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-error`]}
                 >
-                  {uploadCtx?.customIcon?.errorIcon?.() || <IconImageClose />}
+                  {uploadCtx?.slots['error-icon']?.() ??
+                    uploadCtx?.customIcon?.errorIcon?.() ?? <IconImageClose />}
                 </span>
               </div>
             )}
@@ -62,7 +65,8 @@ export default defineComponent({
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-preview`]}
                   onClick={() => uploadCtx?.onPreview(props.file)}
                 >
-                  {uploadCtx?.customIcon?.previewIcon?.() || <IconEye />}
+                  {uploadCtx?.slots['preview-icon']?.() ??
+                    uploadCtx?.customIcon?.previewIcon?.() ?? <IconEye />}
                 </span>
               )}
               {['init', 'error'].includes(props.file.status as string) &&
@@ -71,7 +75,8 @@ export default defineComponent({
                     class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-upload`]}
                     onClick={() => uploadCtx?.onUpload(props.file)}
                   >
-                    {uploadCtx?.customIcon?.retryIcon?.() || <IconUpload />}
+                    {uploadCtx?.slots['retry-icon']?.() ??
+                      uploadCtx?.customIcon?.retryIcon?.() ?? <IconUpload />}
                   </span>
                 )}
               {!uploadCtx?.disabled && uploadCtx?.showRemoveButton && (
@@ -79,7 +84,8 @@ export default defineComponent({
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
                   onClick={() => uploadCtx?.onRemove(props.file)}
                 >
-                  {uploadCtx?.customIcon?.removeIcon?.() || <IconDelete />}
+                  {uploadCtx?.slots['remove-icon']?.() ??
+                    uploadCtx?.customIcon?.removeIcon?.() ?? <IconDelete />}
                 </span>
               )}
             </div>

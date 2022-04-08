@@ -14,4 +14,11 @@ const Upload = Object.assign(_Upload, {
 
 export type UploadInstance = InstanceType<typeof _Upload>;
 
+export type {
+  FileItem,
+  CustomIcon,
+  RequestOption,
+  UploadRequest,
+} from './interfaces';
+
 export default Upload;
