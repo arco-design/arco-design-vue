@@ -121,13 +121,22 @@
       font-size: @pagination-size-default-font-size;
     }
 
-    &-text-goto {
+    &-text-goto,
+    &-prepend,
+    &-append {
       color: @pagination-color-jumper-goto;
+    }
+
+    &-prepend {
+      margin-right: @pagination-item-spacing;
+    }
+
+    &-append {
+      margin-left: @pagination-item-spacing;
     }
 
     &-input {
       width: @patination-jumper-input-width;
-      margin-left: @pagination-item-spacing;
       padding-right: 2px;
       padding-left: 2px;
 
