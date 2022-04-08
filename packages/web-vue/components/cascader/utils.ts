@@ -71,6 +71,7 @@ export const getOptionInfos = (
         value: item[fieldNames.value],
         label: item[fieldNames.label] ?? String(item[fieldNames.value]),
         disabled: Boolean(item[fieldNames.disabled]),
+        isLeaf: item[fieldNames.isLeaf],
         parent,
       } as CascaderOptionInfo;
       const path = parentPath.concat(data);

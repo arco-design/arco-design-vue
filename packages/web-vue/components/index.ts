@@ -11,7 +11,7 @@ export { default as Breadcrumb, BreadcrumbItem } from './breadcrumb';
 export { default as Button, ButtonGroup } from './button';
 export { default as Card, CardMeta, CardGrid } from './card';
 export { default as Carousel, CarouselItem } from './carousel';
-export { default as Cascader } from './cascader';
+export { default as Cascader, CascaderPanel } from './cascader';
 export { default as Checkbox, CheckboxGroup } from './checkbox';
 export { default as Collapse, CollapseItem } from './collapse';
 export { default as Comment } from './comment';

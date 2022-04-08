@@ -8,7 +8,11 @@
     :expand-trigger="expandTrigger"
     :total-level="totalLevel"
     :check-strictly="checkStrictly"
-  />
+  >
+    <template v-if="$slots.empty" #empty>
+      <slot name="empty" />
+    </template>
+  </base-cascader-panel>
 </template>
 
 <script lang="ts">
@@ -141,6 +145,12 @@ export default defineComponent({
      */
     'change',
   ],
+  /**
+   * @zh 选项为空时的显示内容
+   * @en Display content when the option is empty
+   * @slot empty
+   * @version 2.23.0
+   */
   setup(props, { emit, slots }) {
     const { options, checkStrictly, loadMore, modelValue } = toRefs(props);
     const _value = ref(props.defaultValue);

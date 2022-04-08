@@ -77,9 +77,11 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
 |label|选择框的显示内容|data: `CascaderOption`|2.18.0|
+|prefix|前缀元素|-|2.23.0|
 |arrow-icon|选择框的箭头图标|-|2.16.0|
 |loading-icon|选择框的加载中图标|-|2.16.0|
 |search-icon|选择框的搜索图标|-|2.16.0|
+|empty|选项为空时的显示内容|-|2.23.0|
 |option|选项内容|data: `CascaderOption`|2.18.0|
 
 
@@ -103,6 +105,11 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |事件名|描述|参数|
 |---|---|---|
 |change|选中值改变时触发|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+### `<cascader-panel>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|empty|选项为空时的显示内容|-|2.23.0|
 
 
 

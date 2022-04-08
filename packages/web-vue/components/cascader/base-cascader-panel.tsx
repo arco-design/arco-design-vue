@@ -31,11 +31,11 @@ export default defineComponent({
     loading: Boolean,
     dropdown: Boolean,
   },
-  setup(props) {
+  setup(props, { slots }) {
     const prefixCls = getPrefixCls('cascader');
 
     const renderEmpty = () => {
-      return <Empty />;
+      return slots.empty?.() ?? <Empty />;
     };
 
     const renderColumn = (column: CascaderOptionInfo[], level = 0) => {

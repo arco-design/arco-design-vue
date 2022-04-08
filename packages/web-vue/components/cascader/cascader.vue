@@ -38,6 +38,9 @@
       <template v-if="$slots.label" #label="data">
         <slot name="label" v-bind="data" />
       </template>
+      <template v-if="$slots.prefix" #prefix>
+        <slot name="prefix" />
+      </template>
       <template v-if="$slots['arrow-icon']" #arrow-icon>
         <slot name="arrow-icon" />
       </template>
@@ -58,7 +61,11 @@
         :check-strictly="checkStrictly"
         :loading="loading"
         :path-label="!searchOptionOnlyLabel"
-      />
+      >
+        <template v-if="$slots.empty" #empty>
+          <slot name="empty" />
+        </template>
+      </cascader-search-panel>
       <base-cascader-panel
         v-else
         :display-columns="displayColumns"
@@ -71,7 +78,11 @@
         :check-strictly="checkStrictly"
         :loading="loading"
         dropdown
-      />
+      >
+        <template v-if="$slots.empty" #empty>
+          <slot name="empty" />
+        </template>
+      </base-cascader-panel>
     </template>
   </trigger>
 </template>
@@ -462,6 +473,18 @@ export default defineComponent({
    * @binding {CascaderOption} data
    * @version 2.18.0
    */
+  /**
+   * @zh 选项为空时的显示内容
+   * @en Display content when the option is empty
+   * @slot empty
+   * @version 2.23.0
+   */
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   * @version 2.23.0
+   */
   setup(props, { emit, slots }) {
     const {
       options,
@@ -536,6 +559,7 @@ export default defineComponent({
       },
       {
         immediate: true,
+        deep: true,
       }
     );
 

@@ -79,9 +79,11 @@ description: Refers to the use of multi-level classification to separate the opt
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
 |label|Display content of label|data: `CascaderOption`|2.18.0|
+|prefix|Prefix|-|2.23.0|
 |arrow-icon|Arrow icon for select box|-|2.16.0|
 |loading-icon|Loading icon for select box|-|2.16.0|
 |search-icon|Search icon for select box|-|2.16.0|
+|empty|Display content when the option is empty|-|2.23.0|
 |option|Display content of options|data: `CascaderOption`|2.18.0|
 
 
@@ -105,6 +107,11 @@ description: Refers to the use of multi-level classification to separate the opt
 |Event Name|Description|Parameters|
 |---|---|---|
 |change|Triggered when the selected value changes|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+### `<cascader-panel>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|empty|Display content when the option is empty|-|2.23.0|
 
 
 
