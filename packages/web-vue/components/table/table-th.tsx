@@ -88,6 +88,15 @@ export default defineComponent({
     const renderFilterContent = () => {
       const { filterable } = props.column;
 
+      if (props.column.slots?.['filter-content']) {
+        return props.column.slots?.['filter-content']({
+          filterValue: columnFilterValue.value,
+          setFilterValue,
+          handleFilterConfirm,
+          handleFilterReset,
+        });
+      }
+
       if (filterable?.slotName) {
         return tableCtx?.slots?.[filterable?.slotName]?.({
           filterValue: columnFilterValue.value,
@@ -176,7 +185,9 @@ export default defineComponent({
             disabled={!filterIconAlignLeft.value}
             onClick={(ev: Event) => ev.stopPropagation()}
           >
-            {filterable.icon?.() ?? <IconFilter />}
+            {props.column.slots?.['filter-icon']?.() ?? filterable.icon?.() ?? (
+              <IconFilter />
+            )}
           </IconHover>
         </Trigger>
       );
@@ -210,6 +221,12 @@ export default defineComponent({
       }
       if (props.column?.slots?.title) {
         return props.column.slots.title();
+      }
+      if (
+        props.column?.titleSlotName &&
+        tableCtx.slots?.[props.column.titleSlotName]
+      ) {
+        return tableCtx.slots[props.column.titleSlotName]?.();
       }
       if (isFunction(props.column.title)) {
         return props.column.title();

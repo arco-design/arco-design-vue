@@ -541,7 +541,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
       <div class=\\"arco-table-content\\">
         <table cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
-            <col class=\\"arco-table-dragHandle-col\\" style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
+            <col class=\\"arco-table-drag-handle-col\\" style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
             <col>
             <col>
             <col>
@@ -549,7 +549,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation\\"><span class=\\"arco-table-cell\\"></span></th>
+              <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -578,7 +578,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
           </thead>
           <tbody>
             <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-td-draggable\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-drag-handle\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
@@ -586,7 +586,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-td-draggable\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-drag-handle\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
@@ -594,7 +594,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-td-draggable\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-drag-handle\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
@@ -602,7 +602,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-td-draggable\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-drag-handle\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
@@ -610,7 +610,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-td-draggable\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-drag-handle\\" draggable=\\"true\\"><span class=\\"arco-table-cell\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-drag-dot-vertical\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M17 8h2v2h-2V8ZM17 23h2v2h-2v-2ZM17 38h2v2h-2v-2ZM29 8h2v2h-2V8ZM29 23h2v2h-2v-2ZM29 38h2v2h-2v-2Z\\"></path></svg></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
@@ -916,7 +916,7 @@ exports[`<table> demo: render [expand] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+              <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -1026,7 +1026,7 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+                <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
                 <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                   <!---->
                   <!----></span>
@@ -1535,7 +1535,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       <div class=\\"arco-table-content\\">
         <table cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
-            <col class=\\"arco-table-selection-col\\">
+            <col class=\\"arco-table-selection-checkbox-col\\">
             <col>
             <col>
             <col>
@@ -1543,7 +1543,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></label></span>
               </th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
@@ -1656,7 +1656,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
       <div class=\\"arco-table-content\\">
         <table cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
-            <col class=\\"arco-table-selection-col\\">
+            <col class=\\"arco-table-selection-radio-col\\">
             <col>
             <col>
             <col>
@@ -1664,7 +1664,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"></span></th>
+              <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -1775,7 +1775,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
       <div class=\\"arco-table-content\\">
         <table cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
-            <col class=\\"arco-table-selection-col\\">
+            <col class=\\"arco-table-selection-checkbox-col\\">
             <col>
             <col>
             <col>
@@ -1783,7 +1783,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></label></span>
               </th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
@@ -2451,7 +2451,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
           <div class=\\"arco-table-content\\">
             <table cellpadding=\\"0\\" cellspacing=\\"0\\">
               <colgroup>
-                <col class=\\"arco-table-selection-col\\">
+                <col class=\\"arco-table-selection-checkbox-col\\">
                 <col>
                 <col>
                 <col>
@@ -2459,7 +2459,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
               </colgroup>
               <thead>
                 <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"></span></th>
+                  <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
                   <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                     <!---->
                     <!----></span>
@@ -2672,125 +2672,93 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
 `;
 
 exports[`<table> demo: render [summary] correctly 1`] = `
-"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
+"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
     <!---->
-    <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right arco-table-scroll-position-both arco-table-scroll-y\\">
+    <div class=\\"arco-table-container arco-table-has-fixed-col-left\\">
       <div class=\\"arco-table-content\\">
-        <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
-            <colgroup>
-              <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
-              <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-              <col>
-              <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
-            </colgroup>
-            <thead>
-              <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div class=\\"arco-table-body\\" style=\\"max-height: 200px;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
-            <colgroup>
-              <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
-              <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-              <col>
-              <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
-            </colgroup>
-            <tbody>
-              <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-              </tr>
-              <!---->
-              <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-              </tr>
-              <!---->
-            </tbody>
-          </table>
-        </div>
-        <div class=\\"arco-table-tfoot\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
-            <colgroup>
-              <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
-              <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-              <col>
-              <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
-            </colgroup>
-            <tfoot>
-              <tr class=\\"arco-table-tr arco-table-tr-summary\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Summary</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->114000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+          <colgroup>
+            <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr class=\\"arco-table-tr\\">
+              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data1</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data2</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->10</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->8</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->9</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->-12</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->15</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->-2</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->2</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->3</span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->11</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->0</span></td>
+            </tr>
+            <!---->
+          </tbody>
+          <tfoot>
+            <tr class=\\"arco-table-tr arco-table-tr-summary\\">
+              <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Summary</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->114000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->47</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->-3</span></td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
     <!---->
@@ -2814,7 +2782,7 @@ exports[`<table> demo: render [summary] correctly 1`] = `
   <!---->
   <div class=\\"arco-spin\\">
     <!---->
-    <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right arco-table-scroll-position-both arco-table-scroll-y\\">
+    <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-table-content\\">
         <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
           <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
@@ -2823,11 +2791,11 @@ exports[`<table> demo: render [summary] correctly 1`] = `
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
               <col>
               <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
+              <col>
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+                <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
                 <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                   <!---->
                   <!----></span>
@@ -2840,13 +2808,13 @@ exports[`<table> demo: render [summary] correctly 1`] = `
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data1</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data2</span>
                   <!---->
                   <!----></span>
                   <!---->
@@ -2863,47 +2831,47 @@ exports[`<table> demo: render [summary] correctly 1`] = `
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
               <col>
               <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
+              <col>
             </colgroup>
             <tbody>
               <tr class=\\"arco-table-tr\\">
                 <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->10</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->8</span></td>
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
                 <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->9</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->-12</span></td>
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
                 <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->15</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->-2</span></td>
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
                 <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->2</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->3</span></td>
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
                 <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
                 <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->11</span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->0</span></td>
               </tr>
               <!---->
             </tbody>
@@ -2916,15 +2884,22 @@ exports[`<table> demo: render [summary] correctly 1`] = `
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
               <col>
               <col>
-              <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
+              <col>
             </colgroup>
             <tfoot>
               <tr class=\\"arco-table-tr arco-table-tr-summary\\">
                 <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!---->Avg</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22800</span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
-                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><!----><!----></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!----><div>Avg</div></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><div>22800</div></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><div style=\\"color: red;\\">9.4</div></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><div style=\\"color: green;\\">-0.6</div></span></td>
+              </tr>
+              <tr class=\\"arco-table-tr arco-table-tr-summary\\">
+                <td class=\\"arco-table-td arco-table-operation arco-table-expand arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><!----><!----><div>Sum</div></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><div>114000</div></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><div style=\\"color: red;\\">47</div></span></td>
+                <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><div style=\\"color: green;\\">-3</div></span></td>
               </tr>
             </tfoot>
           </table>
@@ -2951,21 +2926,25 @@ exports[`<table> demo: render [summary] correctly 1`] = `
 `;
 
 exports[`<table> demo: render [virtual-list] correctly 1`] = `
-"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
+"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-type-selection arco-table-layout-fixed\\">
   <!---->
   <div class=\\"arco-spin\\">
     <!---->
-    <div class=\\"arco-table-container arco-table-scroll-y\\">
+    <div class=\\"arco-table-container arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-table-content\\">
         <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 1000px;\\">
             <colgroup>
+              <col class=\\"arco-table-selection-checkbox-col\\">
               <col>
               <col>
               <col>
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
+                <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"1000\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
+                  <!--v-if--></label></span>
+                </th>
                 <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
                   <!---->
                   <!----></span>

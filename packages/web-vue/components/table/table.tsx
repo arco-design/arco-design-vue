@@ -29,16 +29,16 @@ import {
   isUndefined,
 } from '../_utils/is';
 import type {
-  TableColumn,
-  TableExpandable,
-  TableOperationColumn,
-  TableRowSelection,
   TableBorder,
+  TableChangeExtra,
+  TableColumn,
   TableComponents,
   TableData,
-  TablePagePosition,
   TableDraggable,
-  TableChangeExtra,
+  TableExpandable,
+  TableOperationColumn,
+  TablePagePosition,
+  TableRowSelection,
 } from './interface';
 import { getGroupColumns, spliceFromPath } from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
@@ -69,6 +69,7 @@ import { tableInjectionKey } from './context';
 import { useFilter } from './hooks/use-filter';
 import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
+import { getValueByPath } from '../_utils/get-value-by-path';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -538,6 +539,15 @@ export default defineComponent({
    * @slot pagination-right
    * @version 2.18.0
    */
+  /**
+   * @zh 总结行
+   * @en Content on the right side of the pagination
+   * @slot summary-cell
+   * @binding {TableColumn} column
+   * @binding {TableData} record
+   * @binding {number} rowIndex
+   * @version 2.23.0
+   */
   setup(props, { emit, slots }) {
     const { columns, rowKey, rowSelection, loadMore, filterIconAlignLeft } =
       toRefs(props);
@@ -559,15 +569,7 @@ export default defineComponent({
     const theadRef = ref<HTMLElement>();
     const tbodyRef = ref<HTMLElement>();
     const summaryRef = ref<HTMLElement>();
-
-    // TODO: merge to one object
-    const thRefs = ref<{
-      operation: HTMLElement[];
-      data: Record<string, HTMLElement>;
-    }>({
-      operation: [],
-      data: {},
-    });
+    const thRefs = ref<Record<string, HTMLElement>>({});
 
     const handleBodyScroll = () => {
       if (theadRef.value && tbodyRef.value) {
@@ -1062,7 +1064,7 @@ export default defineComponent({
 
       if (props.draggable?.type === 'handle') {
         dragHandle = {
-          name: 'dragHandle',
+          name: 'drag-handle',
           title: props.draggable.title,
           width: props.draggable.width,
           fixed: props.draggable.fixed || hasFixedColumn,
@@ -1082,7 +1084,10 @@ export default defineComponent({
 
       if (props.rowSelection) {
         selection = {
-          name: 'selection',
+          name:
+            props.rowSelection.type === 'radio'
+              ? 'selection-radio'
+              : 'selection-checkbox',
           title: props.rowSelection.title,
           width: props.rowSelection.width,
           fixed: props.rowSelection.fixed || hasFixedColumn,
@@ -1095,6 +1100,23 @@ export default defineComponent({
       return isFunction(operationsFn)
         ? operationsFn({ dragHandle, expand, selection })
         : operations;
+    });
+
+    const headerStyle = computed(() => {
+      if (isScroll.value.x) {
+        const style: CSSProperties = {
+          width: isNumber(props.scroll?.x)
+            ? `${props.scroll?.x}px`
+            : props.scroll?.x,
+        };
+        if (props.scroll?.minWidth) {
+          style.minWidth = isNumber(props.scroll.minWidth)
+            ? `${props.scroll.minWidth}px`
+            : props.scroll.minWidth;
+        }
+        return style;
+      }
+      return undefined;
     });
 
     const contentStyle = computed(() => {
@@ -1154,6 +1176,7 @@ export default defineComponent({
         [`${prefixCls}-hover`]: props.hoverable,
         [`${prefixCls}-dragging`]: dragState.dragging,
         [`${prefixCls}-type-selection`]: props.rowSelection,
+        [`${prefixCls}-empty`]: flattenData.value.length === 0,
         [`${prefixCls}-layout-fixed`]:
           props.tableLayoutFixed ||
           isScroll.value.x ||
@@ -1191,6 +1214,16 @@ export default defineComponent({
 
     const isVirtualList = computed(() => Boolean(props.virtualListProps));
 
+    const thWidth = ref<Record<string, number>>({});
+
+    const getThWidth = () => {
+      const width: Record<string, number> = {};
+      for (const key of Object.keys(thRefs.value)) {
+        width[key] = thRefs.value[key].offsetWidth;
+      }
+      thWidth.value = width;
+    };
+
     const hasScrollBar = ref(false);
 
     const isTbodyHasScrollBar = () => {
@@ -1206,10 +1239,12 @@ export default defineComponent({
         hasScrollBar.value = _hasScrollBar;
       }
       setAlignPosition();
+      getThWidth();
     };
 
     onMounted(() => {
       hasScrollBar.value = isTbodyHasScrollBar();
+      getThWidth();
     });
 
     const spinProps = computed(() =>
@@ -1351,23 +1386,21 @@ export default defineComponent({
               return null;
             }
 
+            const style =
+              isVirtualList.value &&
+              operation.name &&
+              thWidth.value[operation.name]
+                ? { width: `${thWidth.value[operation.name]}px` }
+                : undefined;
+
             return (
               <OperationTd
                 style={style}
-                record={record}
-                rowKey={rowKey.value}
-                isRadio={isRadio.value}
-                hasExpand={false}
                 operationColumn={operation}
                 operations={operations.value}
-                selectedRowKeys={selectedRowKeys.value}
-                expandedIcon={props.expandable?.icon}
-                expandedRowKeys={expandedRowKeys.value}
+                record={record}
                 rowSpan={rowspan}
                 colSpan={colspan}
-                renderExpandBtn={renderExpandBtn}
-                onSelect={handleSelect}
-                onExpand={handleExpand}
                 summary
               />
             );
@@ -1379,6 +1412,13 @@ export default defineComponent({
             if (removedSummaryCells.value.includes(cellId)) {
               return null;
             }
+
+            const style =
+              isVirtualList.value &&
+              column.dataIndex &&
+              thWidth.value[column.dataIndex]
+                ? { width: `${thWidth.value[column.dataIndex]}px` }
+                : undefined;
 
             return (
               <Td
@@ -1395,7 +1435,13 @@ export default defineComponent({
                 rowSpan={rowspan}
                 colSpan={colspan}
                 onClick={(ev: Event) => handleCellClick(record, column, ev)}
-              />
+              >
+                {slots['summary-cell']?.({
+                  record,
+                  column,
+                  rowIndex,
+                }) ?? String(getValueByPath(record, column.dataIndex) ?? '')}
+              </Td>
             );
           })}
         </Tr>
@@ -1536,14 +1582,6 @@ export default defineComponent({
             onClick={(ev: Event) => handleRowClick(record, ev)}
           >
             {operations.value.map((operation, index) => {
-              const style =
-                isVirtualList.value &&
-                thRefs.value.operation[index]?.offsetWidth
-                  ? {
-                      width: `${thRefs.value.operation[index]?.offsetWidth}px`,
-                    }
-                  : undefined;
-
               const cellId = `${rowIndex}-${index}`;
               const [rowspan, colspan] = props.spanAll
                 ? tableSpan.value[cellId] ?? [1, 1]
@@ -1553,6 +1591,13 @@ export default defineComponent({
                 return null;
               }
 
+              const style =
+                isVirtualList.value &&
+                operation.name &&
+                thWidth.value[operation.name]
+                  ? { width: `${thWidth.value[operation.name]}px` }
+                  : undefined;
+
               return (
                 <OperationTd
                   key={`operation-td-${index}`}
@@ -1560,15 +1605,12 @@ export default defineComponent({
                     'drag-handle-icon': slots['drag-handle-icon'],
                   }}
                   style={style}
-                  record={record}
-                  rowKey={rowKey.value}
-                  isRadio={isRadio.value}
-                  hasExpand={Boolean(expandContent)}
                   operationColumn={operation}
                   operations={operations.value}
+                  record={record}
+                  rowKey={rowKey.value}
+                  hasExpand={Boolean(expandContent)}
                   selectedRowKeys={selectedRowKeys.value}
-                  expandedIcon={props.expandable?.icon}
-                  expandedRowKeys={expandedRowKeys.value}
                   rowSpan={rowspan}
                   colSpan={colspan}
                   renderExpandBtn={renderExpandBtn}
@@ -1579,6 +1621,15 @@ export default defineComponent({
               );
             })}
             {dataColumns.value.map((column, index) => {
+              const cellId = `${rowIndex}-${
+                props.spanAll ? operations.value.length + index : index
+              }`;
+              const [rowspan, colspan] = tableSpan.value[cellId] ?? [1, 1];
+
+              if (removedCells.value.includes(cellId)) {
+                return null;
+              }
+
               const extraProps =
                 index === 0
                   ? {
@@ -1592,22 +1643,9 @@ export default defineComponent({
               const style =
                 isVirtualList.value &&
                 column.dataIndex &&
-                thRefs.value.data[column.dataIndex]?.offsetWidth
-                  ? {
-                      width: `${
-                        thRefs.value.data[column.dataIndex]?.offsetWidth
-                      }px`,
-                    }
+                thWidth.value[column.dataIndex]
+                  ? { width: `${thWidth.value[column.dataIndex]}px` }
                   : undefined;
-
-              const cellId = `${rowIndex}-${
-                props.spanAll ? operations.value.length + index : index
-              }`;
-              const [rowspan, colspan] = tableSpan.value[cellId] ?? [1, 1];
-
-              if (removedCells.value.includes(cellId)) {
-                return null;
-              }
 
               return (
                 <Td
@@ -1690,17 +1728,19 @@ export default defineComponent({
               operations.value.map((operation, index) => (
                 <OperationTh
                   // @ts-ignore
-                  ref={(ins: ComponentPublicInstance): void => {
-                    if (ins?.$el) {
-                      thRefs.value.operation[index] = ins.$el;
+                  ref={(ins: ComponentPublicInstance) => {
+                    if (ins?.$el && operation.name) {
+                      thRefs.value[operation.name] = ins.$el;
                     }
                   }}
                   key={`operation-th-${index}`}
                   operationColumn={operation}
                   operations={operations.value}
-                  rowSelection={props.rowSelection}
+                  selectAll={Boolean(
+                    operation.name === 'selection-checkbox' &&
+                      props.rowSelection?.showCheckedAll
+                  )}
                   rowSpan={groupColumns.value.length}
-                  expandable={props.expandable}
                   selectedNumber={currentSelectedRowKeys.value.length}
                   totalNumber={currentAllRowKeys.value.length}
                   totalEnabledNumber={currentAllEnabledRowKeys.value.length}
@@ -1719,7 +1759,7 @@ export default defineComponent({
                   // @ts-ignore
                   ref={(ins: ComponentPublicInstance) => {
                     if (ins?.$el && column.dataIndex) {
-                      thRefs.value.data[column.dataIndex] = ins.$el;
+                      thRefs.value[column.dataIndex] = ins.$el;
                     }
                   }}
                   column={column}
@@ -1752,7 +1792,7 @@ export default defineComponent({
                 <table
                   cellpadding={0}
                   cellspacing={0}
-                  style={contentStyle.value}
+                  style={headerStyle.value}
                 >
                   <ColGroup
                     dataColumns={dataColumns.value}

@@ -207,7 +207,7 @@
       text-align: center;
     }
 
-    &-draggable {
+    .@{table-prefix-cls}-drag-handle {
       cursor: move;
     }
   }
@@ -362,12 +362,17 @@
   }
 
   // colgroup selection
-  &-selection-col {
+  &-selection-checkbox-col,
+  &-selection-radio-col {
     .fixed-width(@table-size-selection-col-width);
   }
 
   &-expand-col {
     .fixed-width(@table-size-expand-icon-col-width);
+  }
+
+  &-drag-handle-col {
+    .fixed-width(@table-size-drag-handle-col-width);
   }
 
   &-th {
@@ -554,12 +559,16 @@
     overflow-x: hidden;
     background-color: @table-color-bg-header-cell;
     scrollbar-color: transparent transparent;
+  }
 
-    &::-webkit-scrollbar {
-      // 仅隐藏横向滚动条
-      height: 0;
-      background-color: transparent;
-    }
+  &:not(&-empty) &-header::-webkit-scrollbar {
+    // 仅隐藏横向滚动条
+    height: 0;
+    background-color: transparent;
+  }
+
+  &&-empty &-header {
+    overflow-x: auto;
   }
 
   &-body {
@@ -567,14 +576,6 @@
     min-height: @table-size-body-min-width;
     overflow: auto;
     background-color: @table-color-body-background;
-  }
-
-  &-empty {
-    box-sizing: border-box;
-    padding: 20px;
-    font-size: 14px;
-    line-height: 40px;
-    text-align: center;
   }
 
   &-border {
@@ -598,7 +599,8 @@
     .@{table-prefix-cls}-scroll-y {
       border-bottom: @table-border-width @table-border-style @table-color-border;
 
-      .@{table-prefix-cls}-body .@{table-cls-tr}:last-of-type .@{table-cls-td} {
+      .@{table-prefix-cls}-body .@{table-cls-tr}:last-of-type .@{table-cls-td},
+      tfoot .@{table-cls-tr}:last-of-type .@{table-cls-td} {
         border-bottom: none;
       }
     }

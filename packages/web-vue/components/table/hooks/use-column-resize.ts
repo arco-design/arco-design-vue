@@ -1,12 +1,7 @@
 import { reactive, ref, Ref } from 'vue';
 import { off, on } from '../../_utils/dom';
 
-export const useColumnResize = (
-  thRefs: Ref<{
-    operation: HTMLElement[];
-    data: Record<string, HTMLElement>;
-  }>
-) => {
+export const useColumnResize = (thRefs: Ref<Record<string, HTMLElement>>) => {
   const resizingColumn = ref('');
   const columnWidth = reactive<Record<string, number>>({});
 
@@ -27,7 +22,7 @@ export const useColumnResize = (
   };
 
   const handleThMouseMoving = (ev: MouseEvent) => {
-    const element = thRefs.value.data[resizingColumn.value];
+    const element = thRefs.value[resizingColumn.value];
     if (element) {
       const { clientX } = ev;
       const { x } = element.getBoundingClientRect();
