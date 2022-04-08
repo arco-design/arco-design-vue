@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- Add footer-class attribute ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+
+### 💅 Style
+
+- Fix the rounded corner style problem at the bottom of the footer area ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+
+
 ## 2.17.0
 
 `2022-02-11`

@@ -39,13 +39,15 @@ description: Only input boxes in numeric format are allowed.
 |placeholder|Input prompt text|`string`|`-`|
 |hide-button|Whether to hide the button (only available in `embed` mode)|`boolean`|`false`|
 |size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|allow-clear|Whether to allow the input to be cleared|`boolean`|`false`|
 ### `<input-number>` Events
 
-|Event Name|Description|Parameters|
-|---|---|---|
-|change|Triggered when the value changes|value: `union`|
-|focus|Triggered when the input gets focus|-|
-|blur|Triggered when the input box loses focus|-|
+|Event Name|Description|Parameters|version|
+|---|---|---|:---|
+|change|Triggered when the value changes|value: `union`||
+|focus|Triggered when the input gets focus|-||
+|blur|Triggered when the input box loses focus|-||
+|clear|Triggered when the user clicks the clear button|-|2.23.0|
 ### `<input-number>` Methods
 
 |Method|Description|Parameters|Return|

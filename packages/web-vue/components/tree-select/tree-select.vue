@@ -34,8 +34,12 @@
         @inputValueChange="onSearchValueChange"
         @clear="onInnerClear"
       >
-        <slot v-if="$slots.prefix" name="prefix" />
-        <slot v-if="$slots.tag" name="tag" />
+        <template v-if="$slots.prefix" #prefix>
+          <slot name="prefix" />
+        </template>
+        <template v-if="$slots.label" #label="data">
+          <slot name="label" v-bind="data" />
+        </template>
       </SelectView>
     </slot>
     <template #content>
@@ -406,9 +410,10 @@ export default defineComponent({
    * @slot prefix
    */
   /**
-   * @zh 标签
-   * @en Tag
-   * @slot tag
+   * @zh 自定义选择框显示
+   * @en Custom Label
+   * @slot label
+   * @binding data
    */
   /**
    * @zh 定制加载中显示的内容

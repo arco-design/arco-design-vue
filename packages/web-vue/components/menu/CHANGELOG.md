@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- Support set the set the maximum height of popover by `popup-max-height` ([#949](https://github.com/arco-design/arco-design-vue/pull/949))
+
+
 ## 2.22.1
 
 `2022-04-02`

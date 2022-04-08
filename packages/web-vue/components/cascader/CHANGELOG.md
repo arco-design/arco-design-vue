@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- add empty slot ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+### 🐛 BugFix
+
+- Fix the problem that lazy loaded isLeaf is invalid in version 2.22.0 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- Fixed an issue where the options property could not trigger an update in some cases ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+
 ## 2.22.0
 
 `2022-04-01`

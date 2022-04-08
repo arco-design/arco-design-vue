@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 新增功能
+
+- 增加 footer-class  属性 ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+
+### 💅 样式更新
+
+- 修复 footer 区域底部圆角样式问题 ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+
+
 ## 2.17.0
 
 `2022-02-11`

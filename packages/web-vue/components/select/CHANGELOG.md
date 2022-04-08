@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- add trigger slot ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+
 ## 2.22.0
 
 `2022-04-01`

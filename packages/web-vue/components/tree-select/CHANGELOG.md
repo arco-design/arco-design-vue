@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🐛 BugFix
+
+- When the prop label-in-value is true, the actual parameter value of the event change is wrong ([#939](https://github.com/arco-design/arco-design-vue/pull/939))
+
+
 ## 2.22.0
 
 `2022-04-01`

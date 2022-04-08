@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 Optimization
+
+- Optimize the page number change logic when switching pageSize ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+
+### 🆕 Feature
+
+- Added `jumper-prepend` and `jumper-append` slots ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

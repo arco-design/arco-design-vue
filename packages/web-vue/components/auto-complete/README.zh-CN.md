@@ -23,13 +23,15 @@ description: 输入框的自动补全功能。
 |strict|是否为严格校验模式|`boolean`|`false`||
 |filter-option|自定义选项过滤方法|`FilterOption`|`true`||
 |trigger-props|trigger 组件属性|`object`|`-`|2.14.0|
+|allow-clear|是否允许清空输入框|`boolean`|`false`|2.23.0|
 ### `<auto-complete>` Events
 
-|事件名|描述|参数|
-|---|---|---|
-|change|绑定值发生改变时触发|value: `string`|
-|search|用户搜索时触发|value: `string`|
-|select|选择选项时触发|value: `string`|
+|事件名|描述|参数|版本|
+|---|---|---|:---|
+|change|绑定值发生改变时触发|value: `string`||
+|search|用户搜索时触发|value: `string`||
+|select|选择选项时触发|value: `string`||
+|clear|用户点击清除按钮时触发|-|2.23.0|
 ### `<auto-complete>` Slots
 
 |插槽名|描述|参数|版本|

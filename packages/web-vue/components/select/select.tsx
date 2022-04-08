@@ -433,6 +433,12 @@ export default defineComponent({
    * @slot prefix
    * @version 2.22.0
    */
+  /**
+   * @zh 自定义触发元素
+   * @en Custom trigger element
+   * @slot trigger
+   * @version 2.22.0
+   */
   setup(props, { slots, emit, attrs }) {
     // props
     const {

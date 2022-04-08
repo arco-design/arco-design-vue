@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 功能优化
+
+- 横向滚动模式下，如果数据为空，表头会显示滚动条 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+### 🆕 新增功能
+
+- columns 属性增加 titleSlotName，filterable 属性增加 slotName ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- table-column 增加 filter-content，filter-content 插槽 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- 增加 summary-cell 插槽 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+
 ## 2.22.1
 
 `2022-04-02`

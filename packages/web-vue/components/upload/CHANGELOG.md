@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- Added icon related slots ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- Added updateFile method, onBeforeUpload supports returning File ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- Optimize initial image display logic ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+
+
 ## 2.22.0
 
 `2022-04-01`

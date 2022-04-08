@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 Optimization
+
+- The `clear` event of the input class component will also trigger the `change` event ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+
+
 ## 2.18.0-beta.3
 
 `2022-02-26`

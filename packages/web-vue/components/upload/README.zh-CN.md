@@ -50,8 +50,8 @@ description: 用户可传输文件或提交相应的内容。
 |directory|是否支持文件夹上传（需要浏览器支持）|`boolean`|`false`||
 |draggable|是否支持拖拽上传|`boolean`|`false`||
 |tip|提示文字|`string`|`-`||
-|headers|上传请求附加的头信息|`object`|`-`||
-|data|上传请求附加的数据|`Record<string, unknown>\| ((fileItem: FileItem) => Record<string, unknown>)`|`-`||
+|headers|上传请求附加的头信息|`Record<string, string>`|`-`||
+|data|上传请求附加的数据|`Record<string, string \| Blob>\| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`||
 |name|上传的文件名|`string \| ((fileItem: FileItem) => string)`|`-`||
 |with-credentials|上传请求是否携带 cookie|`boolean`|`false`||
 |custom-request|自定义上传行为|`(option: RequestOption) => UploadRequest`|`-`||
@@ -69,7 +69,7 @@ description: 用户可传输文件或提交相应的内容。
 |response-url-key|Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片|`string \| ((fileItem: FileItem) => string)`|`-`||
 |custom-icon|自定义图标|`CustomIcon`|`-`||
 |image-preview|是否使用 ImagePreview 组件进行预览|`boolean`|`false`|2.14.0|
-|on-before-upload|上传图片前触发|`(file: File) => Promise<boolean>`|`-`||
+|on-before-upload|上传图片前触发|`(file: File) => Promise<boolean \| File>`|`-`||
 |on-before-remove|移除图片前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`||
 |on-button-click|点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）|`(event: Event) => Promise<FileList> \| void`|`-`||
 ### `<upload>` Events
@@ -88,12 +88,23 @@ description: 用户可传输文件或提交相应的内容。
 |---|---|---|---|
 |submit|上传文件（已经初始化完成的文件）|fileItem: `FileItem`|-|
 |abort|中止上传|fileItem: `FileItem`|-|
+|updateFile|更新文件|id: `string`<br>file: `File`|-|
 ### `<upload>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|upload-button|上传图标|-|
-|upload-item|上传列表的项目|fileItem: `FileItem`<br>index: `number`|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|image|自定义图片|fileItem: `FileItem`|2.23.0|
+|file-name|文件名称|-|2.23.0|
+|file-icon|文件图标|-|2.23.0|
+|remove-icon|删除图标|-|2.23.0|
+|preview-icon|预览图标|-|2.23.0|
+|cancel-icon|取消图标|-|2.23.0|
+|start-icon|开始图标|-|2.23.0|
+|error-icon|失败图标|-|2.23.0|
+|success-icon|成功图标|-|2.23.0|
+|retry-icon|重试图标|-|2.23.0|
+|upload-button|上传按钮|-||
+|upload-item|上传列表的项目|fileItem: `FileItem`<br>index: `number`||
 
 
 
@@ -133,10 +144,10 @@ description: 用户可传输文件或提交相应的内容。
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |action|上传的URL|`string`|`-`|
-|headers|请求报文的头信息|`Data`|`-`|
+|headers|请求报文的头信息|`Record<string, string>`|`-`|
 |name|上传文件的文件名|`string \| ((fileItem: FileItem) => string)`|`-`|
 |fileItem|上传文件|`FileItem`|`-`|
-|data|附加的请求信息|`Data \| ((fileItem: FileItem) => Data)`|`-`|
+|data|附加的请求信息|`Record<string, string \| Blob>    \| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`|
 |withCredentials|是否携带cookie信息|`boolean`|`false`|
 |onProgress|更新当前文件的上传进度。percent: 当前上传进度百分比|`(percent: number, event?: ProgressEvent) => void`|`-`|
 |onSuccess|上传成功后，调用onSuccess方法，传入的response参数将会附加到当前上传文件的response字段上|`(response?: any) => void`|`-`|

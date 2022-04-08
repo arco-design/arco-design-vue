@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 新增功能
+
+- 增加图标相关插槽 ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- 增加 updateFile 方法，onBeforeUpload 支持返回 File ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- 优化初始图片显示逻辑 ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+
+
 ## 2.22.0
 
 `2022-04-01`

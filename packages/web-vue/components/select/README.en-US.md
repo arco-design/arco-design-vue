@@ -95,6 +95,7 @@ description: When users need to select one or more from a group of similar data,
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|trigger|Custom trigger element|-|2.22.0|
 |prefix|Prefix|-|2.22.0|
 |search-icon|Search icon for select box|-|2.16.0|
 |loading-icon|Loading icon for select box|-|2.16.0|

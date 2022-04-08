@@ -37,13 +37,15 @@ description: 仅允许输入数字格式的输入框。
 |placeholder|输入框提示文字|`string`|`-`|
 |hide-button|是否隐藏按钮（仅在`embed`模式可用）|`boolean`|`false`|
 |size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|allow-clear|是否允许清空输入框|`boolean`|`false`|
 ### `<input-number>` Events
 
-|事件名|描述|参数|
-|---|---|---|
-|change|值发生改变时触发|value: `union`|
-|focus|输入框获取焦点时触发|-|
-|blur|输入框失去焦点时触发|-|
+|事件名|描述|参数|版本|
+|---|---|---|:---|
+|change|值发生改变时触发|value: `union`||
+|focus|输入框获取焦点时触发|-||
+|blur|输入框失去焦点时触发|-||
+|clear|用户点击清除按钮时触发|-|2.23.0|
 ### `<input-number>` Methods
 
 |方法名|描述|参数|返回值|

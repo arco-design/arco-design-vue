@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- Added allow-clear property and event ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+
+
 ## 2.22.1
 
 `2022-04-02`

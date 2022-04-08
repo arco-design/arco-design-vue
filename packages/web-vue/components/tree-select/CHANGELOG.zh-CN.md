@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🐛 问题修复
+
+- 当 label-in-value 为 true 的时候，事件 change 的入参错误 ([#939](https://github.com/arco-design/arco-design-vue/pull/939))
+
+
 ## 2.22.0
 
 `2022-04-01`

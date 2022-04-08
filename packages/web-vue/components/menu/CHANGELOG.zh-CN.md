@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 新增功能
+
+- 支持通过 `popup-max-height` 设置弹出框的最大高度 ([#949](https://github.com/arco-design/arco-design-vue/pull/949))
+
+
 ## 2.22.1
 
 `2022-04-02`

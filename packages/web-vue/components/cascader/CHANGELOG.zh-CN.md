@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 新增功能
+
+- 增加 empty 插槽 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+### 🐛 问题修复
+
+- 修复 2.22.0 版本中懒加载的 isLeaf 失效的问题 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- 修复 options 属性在某些情况下不能触发更新的问题 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+
 ## 2.22.0
 
 `2022-04-01`

@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 Optimization
+
+- In horizontal scrolling mode, if the data is empty, the header will display a scroll bar ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+### 🆕 Feature
+
+- Add titleSlotName to the columns attribute and slotName to the filterable attribute ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- table-column adds filter-content, filter-content slot ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- Added summary-cell slot ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+
 ## 2.22.1
 
 `2022-04-02`

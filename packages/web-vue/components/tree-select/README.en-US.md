@@ -87,7 +87,7 @@ description: The tree structure data can be selected.
 |---|---|---|
 |trigger|Custom trigger element|-|
 |prefix|Prefix|-|
-|tag|Tag|-|
+|label|Custom Label|data: `mixed`|
 |loader|Customizing the content displayed during loading|-|
 |empty|Custom empty data display|-|
 

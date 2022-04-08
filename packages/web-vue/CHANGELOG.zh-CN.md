@@ -2,6 +2,45 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 功能优化
+
+- **pagination:** 优化切换 pageSize 时的页码改变逻辑 ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+- **input:** 输入类组件的 `clear` 事件会同时触发 `change` 事件 ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+- **table:** 横向滚动模式下，如果数据为空，表头会显示滚动条 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **modal:** 修复在滚动条为浮动的情况下，body没有锁定的问题 ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+### 🆕 新增功能
+
+- **pagination:** 增加 `jumper-prepend` 和  `jumper-append` 插槽 ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+- **image:** 增加 footer-class  属性 ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+- **cascader:** 增加 empty 插槽 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **select:** 增加 trigger 插槽 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **mention:** 增加 allow-clear 属性和事件 ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+- **auto-complete:** 增加 allow-clear 属性和事件 ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+- **menu:** 支持通过 `popup-max-height` 设置弹出框的最大高度 ([#949](https://github.com/arco-design/arco-design-vue/pull/949))
+- **table:** columns 属性增加 titleSlotName，filterable 属性增加 slotName ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **table:** table-column 增加 filter-content，filter-content 插槽 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **table:** 增加 summary-cell 插槽 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **upload:** 增加图标相关插槽 ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- **upload:** 增加 updateFile 方法，onBeforeUpload 支持返回 File ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- **upload:** 优化初始图片显示逻辑 ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+
+### 🐛 问题修复
+
+- **cascader:** 修复 2.22.0 版本中懒加载的 isLeaf 失效的问题 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **cascader:** 修复 options 属性在某些情况下不能触发更新的问题 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **tree-select:** 当 label-in-value 为 true 的时候，事件 change 的入参错误 ([#939](https://github.com/arco-design/arco-design-vue/pull/939))
+
+### 💅 样式更新
+
+- **image:** 修复 footer 区域底部圆角样式问题 ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+- **modal:** 修复在简单模式下，title-align 靠左对齐失效的问题 ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+
 ## 2.22.1
 
 `2022-04-02`

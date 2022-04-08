@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 Optimization
+
+- Fix the problem that the body is not locked when the scroll bar is floating ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+### 💅 Style
+
+- Fix the problem that title-align is left-aligned invalid in simple mode ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+
 ## 2.22.0
 
 `2022-04-01`

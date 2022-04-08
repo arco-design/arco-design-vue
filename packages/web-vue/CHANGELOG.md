@@ -2,6 +2,45 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 Optimization
+
+- **pagination:** Optimize the page number change logic when switching pageSize ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+- **input:** The `clear` event of the input class component will also trigger the `change` event ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+- **table:** In horizontal scrolling mode, if the data is empty, the header will display a scroll bar ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **modal:** Fix the problem that the body is not locked when the scroll bar is floating ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+### 🆕 Feature
+
+- **pagination:** Added `jumper-prepend` and `jumper-append` slots ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+- **image:** Add footer-class attribute ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+- **cascader:** add empty slot ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **select:** add trigger slot ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **mention:** Added allow-clear property and event ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+- **auto-complete:** Added allow-clear property and event ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+- **menu:** Support set the set the maximum height of popover by `popup-max-height` ([#949](https://github.com/arco-design/arco-design-vue/pull/949))
+- **table:** Add titleSlotName to the columns attribute and slotName to the filterable attribute ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **table:** table-column adds filter-content, filter-content slot ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **table:** Added summary-cell slot ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- **upload:** Added icon related slots ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- **upload:** Added updateFile method, onBeforeUpload supports returning File ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- **upload:** Optimize initial image display logic ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+
+### 🐛 BugFix
+
+- **cascader:** Fix the problem that lazy loaded isLeaf is invalid in version 2.22.0 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **cascader:** Fixed an issue where the options property could not trigger an update in some cases ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- **tree-select:** When the prop label-in-value is true, the actual parameter value of the event change is wrong ([#939](https://github.com/arco-design/arco-design-vue/pull/939))
+
+### 💅 Style
+
+- **image:** Fix the rounded corner style problem at the bottom of the footer area ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+- **modal:** Fix the problem that title-align is left-aligned invalid in simple mode ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+
 ## 2.22.1
 
 `2022-04-02`
