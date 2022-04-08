@@ -89,6 +89,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否允许清空输入框
+     * @en Whether to allow the input to be cleared
+     * @version 2.23.0
+     */
+    allowClear: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
@@ -117,6 +126,12 @@ export default defineComponent({
      * @property {string} value
      */
     'select',
+    /**
+     * @zh 用户点击清除按钮时触发
+     * @en Triggered when the user clicks the clear button
+     * @version 2.23.0
+     */
+    'clear',
   ],
   /**
    * @zh 选项内容
@@ -195,6 +210,14 @@ export default defineComponent({
       emit('update:modelValue', value);
       emit('change', value);
       eventHandlers.value?.onChange?.();
+    };
+
+    const handleClear = (ev: Event) => {
+      _value.value = '';
+      emit('update:modelValue', '');
+      emit('change', '');
+      eventHandlers.value?.onChange?.();
+      emit('clear', ev);
     };
 
     const _popupVisible = ref(false);
@@ -325,8 +348,10 @@ export default defineComponent({
               <ArcoTextarea
                 {...attrs}
                 ref={inputRef}
+                allowClear={props.allowClear}
                 modelValue={computedValue.value}
                 onInput={handleInput}
+                onClear={handleClear}
                 onKeydown={handleKeyDown}
               />
             </ResizeObserver>
@@ -374,9 +399,11 @@ export default defineComponent({
             v-slots={slots}
             {...attrs}
             ref={inputRef}
+            allowClear={props.allowClear}
             modelValue={computedValue.value}
             disabled={mergedDisabled.value}
             onInput={handleInput}
+            onClear={handleClear}
             onKeydown={handleKeyDown}
           />
         </Trigger>

@@ -1,4 +1,5 @@
 @import './token.less';
+@import '../../input/style/token.less';
 
 @input-prefix-cls: ~'@{prefix}-input';
 @input-number-prefix-cls: ~'@{prefix}-input-number';
@@ -112,6 +113,7 @@
       }
 
       &-prepend .@{input-number-prefix-cls}-step-button {
+        border-right: @input-border-addon-separator-width solid transparent;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
 
@@ -121,6 +123,7 @@
       }
 
       &-append .@{input-number-prefix-cls}-step-button {
+        border-left: @input-border-addon-separator-width solid transparent;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
 
@@ -129,25 +132,5 @@
         }
       }
     }
-
-    //.size(@size) {
-    //  &.@{input-number-prefix-cls}-size-@{size} {
-    //    @width: ~'@{input-number-size-@{size}-step-button-width}';
-    //
-    //    .@{input-prefix-cls}-group-addbefore,
-    //    .@{input-prefix-cls}-group-addafter {
-    //      width: @width;
-    //
-    //      .@{input-number-prefix-cls}-step-button {
-    //        width: @width;
-    //      }
-    //    }
-    //  }
-    //}
-    //
-    //.size(mini);
-    //.size(small);
-    //.size(default);
-    //.size(large);
   }
 }

@@ -342,14 +342,14 @@ export default defineComponent({
 
     const handleRemove = (value: string | number, index: number, e: Event) => {
       const newValue = computedValue.value?.filter((_, i) => i !== index);
-      emit('remove', value, e);
       updateValue(newValue, e);
+      emit('remove', value, e);
     };
 
     const handleClear = (e: MouseEvent) => {
       const newValue: any[] = [];
-      emit('clear', e);
       updateValue(newValue, e);
+      emit('clear', e);
     };
 
     const showClearBtn = computed(
