@@ -124,6 +124,14 @@ export default defineComponent({
     size: {
       type: String as PropType<Size>,
     },
+    /**
+     * @zh 是否允许清空输入框
+     * @en Whether to allow the input to be cleared
+     */
+    allowClear: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -155,6 +163,12 @@ export default defineComponent({
      * @en Triggered when the input box loses focus
      */
     'blur',
+    /**
+     * @zh 用户点击清除按钮时触发
+     * @en Triggered when the user clicks the clear button
+     * @version 2.23.0
+     */
+    'clear',
   ],
   setup(props, { emit, slots }) {
     const { size, disabled, error } = toRefs(props);
@@ -314,10 +328,11 @@ export default defineComponent({
       emit('blur', ev);
     };
 
-    const handleClear = () => {
+    const handleClear = (ev: Event) => {
       _value.value = '';
       emit('update:modelValue', undefined);
       emit('change', undefined);
+      emit('clear', ev);
     };
 
     watch(
@@ -427,6 +442,7 @@ export default defineComponent({
           ref={inputRef}
           class={cls.value}
           type="text"
+          allowClear={props.allowClear}
           size={mergedSize.value}
           modelValue={_value.value}
           placeholder={props.placeholder}

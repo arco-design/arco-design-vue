@@ -11,7 +11,12 @@ import {
 import ArcoInput from '../input';
 import Trigger from '../trigger';
 import { getPrefixCls } from '../_utils/global-config';
-import { Option, OptionInfo, FilterOption } from '../select/interface';
+import {
+  Option,
+  OptionInfo,
+  FilterOption,
+  OptionData,
+} from '../select/interface';
 import { isFunction, isNull, isUndefined } from '../_utils/is';
 import SelectDropdown from '../select/select-dropdown.vue';
 import SelectOption from '../select/option.vue';
@@ -90,6 +95,15 @@ export default defineComponent({
     triggerProps: {
       type: Object,
     },
+    /**
+     * @zh 是否允许清空输入框
+     * @en Whether to allow the input to be cleared
+     * @version 2.23.0
+     */
+    allowClear: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
@@ -121,6 +135,12 @@ export default defineComponent({
      * @property {string} value
      */
     'select',
+    /**
+     * @zh 用户点击清除按钮时触发
+     * @en Triggered when the user clicks the clear button
+     * @version 2.23.0
+     */
+    'clear',
   ],
   /**
    * @zh 选项内容
@@ -162,11 +182,8 @@ export default defineComponent({
       _popupVisible.value = popupVisible;
     };
 
-    const strictFilterOption: FilterOption = (
-      inputValue: string,
-      optionInfo: OptionInfo
-    ) => {
-      return optionInfo.label.includes(inputValue);
+    const strictFilterOption = (inputValue: string, option: OptionData) => {
+      return Boolean(option.label?.includes(inputValue));
     };
 
     const mergedFilterOption = computed(() => {
@@ -184,6 +201,14 @@ export default defineComponent({
       emit('update:modelValue', value);
       emit('change', value);
       eventHandlers.value?.onChange?.();
+    };
+
+    const handleClear = (ev: Event) => {
+      _value.value = '';
+      emit('update:modelValue', '');
+      emit('change', '');
+      eventHandlers.value?.onChange?.();
+      emit('clear', ev);
     };
 
     // Dropdown事件
@@ -268,10 +293,12 @@ export default defineComponent({
         <ArcoInput
           v-slots={slots}
           ref={inputRef}
-          modelValue={computedValue.value}
-          onInput={handleInputValueChange}
-          disabled={mergedDisabled.value}
           {...attrs}
+          allowClear={props.allowClear}
+          modelValue={computedValue.value}
+          disabled={mergedDisabled.value}
+          onInput={handleInputValueChange}
+          onClear={handleClear}
           onKeydown={handleKeyDown}
         />
       </Trigger>

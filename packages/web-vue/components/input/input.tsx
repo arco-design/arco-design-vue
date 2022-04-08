@@ -350,6 +350,7 @@ export default defineComponent({
 
     const handleClear = (ev: MouseEvent) => {
       updateValue('');
+      emitChange('', ev);
       emit('clear', ev);
     };
 
