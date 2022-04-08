@@ -426,6 +426,7 @@ export default defineComponent({
     const handleClose = () => {
       if (!computedVisible.value) {
         mounted.value = false;
+        resetOverflow();
         emit('close');
       }
     };
@@ -454,7 +455,6 @@ export default defineComponent({
         setOverflowHidden();
         addGlobalKeyDownListener();
       } else {
-        resetOverflow();
         removeGlobalKeyDownListener();
       }
     });

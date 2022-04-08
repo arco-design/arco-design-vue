@@ -121,6 +121,12 @@ export const getRelativeRect = (target: HTMLElement, relative: HTMLElement) => {
   };
 };
 
+export const isScroll = (element: HTMLElement) => {
+  return element.tagName === 'BODY'
+    ? window.innerHeight < element.offsetHeight
+    : element.scrollHeight > element.offsetHeight;
+};
+
 export const getScrollBarWidth = (element: HTMLElement) => {
   return element.tagName === 'BODY'
     ? window.innerWidth -
