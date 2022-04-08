@@ -456,19 +456,24 @@ export default defineComponent({
       })
     );
 
-    const { selectedKeys, selectedValue, setLocalSelectedKeys } =
-      useSelectedState(
-        reactive({
-          defaultValue,
-          modelValue,
-          key2TreeNode,
-          multiple,
-          treeCheckable,
-          treeCheckStrictly,
-          fallbackOption,
-          fieldNames,
-        })
-      );
+    const {
+      selectedKeys,
+      selectedValue,
+      setLocalSelectedKeys,
+      localSelectedKeys,
+      localSelectedValue,
+    } = useSelectedState(
+      reactive({
+        defaultValue,
+        modelValue,
+        key2TreeNode,
+        multiple,
+        treeCheckable,
+        treeCheckStrictly,
+        fallbackOption,
+        fieldNames,
+      })
+    );
 
     const selectViewValue = computed(() => {
       if (isUndefined(selectedValue.value)) {
@@ -481,10 +486,12 @@ export default defineComponent({
       setLocalSelectedKeys(newVal);
 
       nextTick(() => {
-        let emitValue: TreeNodeKey | TreeNodeKey[] | LabelValue | LabelValue[] =
-          (labelInValue.value ? selectedValue.value : newVal) || [];
+        const forEmitValue =
+          (labelInValue.value
+            ? localSelectedValue.value
+            : localSelectedKeys.value) || [];
 
-        emitValue = isMultiple.value ? emitValue : emitValue[0];
+        const emitValue = isMultiple.value ? forEmitValue : forEmitValue[0];
 
         emit('update:modelValue', emitValue);
         emit('change', emitValue);
