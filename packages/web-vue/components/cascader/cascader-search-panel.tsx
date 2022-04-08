@@ -22,7 +22,7 @@ export default defineComponent({
     checkStrictly: Boolean,
     pathLabel: Boolean,
   },
-  setup(props) {
+  setup(props, { slots }) {
     const prefixCls = getPrefixCls('cascader');
 
     const renderContent = () => {
@@ -32,7 +32,7 @@ export default defineComponent({
       if (props.options.length === 0) {
         return (
           <div class={`${prefixCls}-list-empty`}>
-            <Empty />
+            {slots.empty?.() ?? <Empty />}
           </div>
         );
       }

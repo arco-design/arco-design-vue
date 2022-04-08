@@ -12,7 +12,7 @@ import Breadcrumb, { BreadcrumbItem } from './breadcrumb';
 import Button, { ButtonGroup } from './button';
 import Card, { CardMeta, CardGrid } from './card';
 import Carousel, { CarouselItem } from './carousel';
-import Cascader from './cascader';
+import Cascader, { CascaderPanel } from './cascader';
 import Checkbox, { CheckboxGroup } from './checkbox';
 import Collapse, { CollapseItem } from './collapse';
 import Comment from './comment';
@@ -178,6 +178,7 @@ const ArcoVue = {
   CardMeta,
   CardGrid,
   CarouselItem,
+  CascaderPanel,
   CheckboxGroup,
   CollapseItem,
   DescriptionsItem,
