@@ -34,6 +34,7 @@
     </div>
     <ImageFooter
       v-if="isLoaded && showFooter"
+      :class="footerClass"
       :prefix-cls="prefixCls"
       :title="title"
       :description="description"
@@ -194,6 +195,14 @@ export default defineComponent({
      */
     previewProps: {
       type: Object as PropType<ImagePreviewProps>,
+    },
+    /**
+     * @zh 底部显示区域的类名
+     * @en The class name of the bottom display area
+     * @version 2.23.0
+     */
+    footerClass: {
+      type: [String, Array, Object],
     },
   },
   emits: [
