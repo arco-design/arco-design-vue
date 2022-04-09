@@ -164,6 +164,18 @@ export default defineComponent({
       stepMap.delete(step);
     };
 
+    const cls = computed(() => [
+      prefixCls,
+      `${prefixCls}-${direction.value}`,
+      `${prefixCls}-label-${labelPlacement.value}`,
+      `${prefixCls}-mode-${type.value}`,
+      {
+        [`${prefixCls}-changeable`]: props.changeable,
+        [`${prefixCls}-size-small`]: props.small && props.type !== 'dot',
+        [`${prefixCls}-line-less`]: lineLess.value,
+      },
+    ]);
+
     provide(
       stepsInjectionKey,
       reactive({
@@ -177,20 +189,9 @@ export default defineComponent({
         addItem,
         removeItem,
         onClick: handleClick,
+        parentCls: prefixCls,
       })
     );
-
-    const cls = computed(() => [
-      prefixCls,
-      `${prefixCls}-${direction.value}`,
-      `${prefixCls}-label-${labelPlacement.value}`,
-      `${prefixCls}-mode-${type.value}`,
-      {
-        [`${prefixCls}-changeable`]: props.changeable,
-        [`${prefixCls}-size-small`]: props.small && props.type !== 'dot',
-        [`${prefixCls}-line-less`]: lineLess.value,
-      },
-    ]);
 
     return {
       cls,
