@@ -1,5 +1,4 @@
 import { mount } from '@vue/test-utils';
-import { getPrefixCls } from '../../_utils/global-config';
 import Steps from '../index';
 
 describe('Steps', () => {
