@@ -25,7 +25,6 @@ describe('Steps', () => {
   });
 
   test('nested step can have correct index', () => {
-    const prefixCls = getPrefixCls('steps-item');
     const wrapper = mount(Steps, {
       props: {
         changeable: true,
