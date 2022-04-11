@@ -111,7 +111,11 @@ export default defineComponent({
     const type = computed(() => stepsCtx?.type ?? 'default');
 
     const itemRef = ref<HTMLElement>();
-    const { computedIndex } = useIndex({ itemRef, selector: `.${prefixCls}` });
+    const { computedIndex } = useIndex({
+      itemRef,
+      selector: `.${prefixCls}`,
+      parentClassName: stepsCtx?.parentCls,
+    });
     const stepNumber = computed(() => computedIndex.value + 1);
 
     const computedStatus = computed(

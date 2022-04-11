@@ -13,6 +13,7 @@ export interface StepsContext {
   removeItem: (step: number) => void;
   getStatus: (step: number) => StepStatus;
   onClick: (step: number, ev: Event) => void;
+  parentCls: string;
 }
 
 export const stepsInjectionKey: InjectionKey<StepsContext> =
