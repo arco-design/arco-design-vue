@@ -49,15 +49,8 @@ import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useSize } from '../_hooks/use-size';
 import { useFormItem } from '../_hooks/use-form-item';
-
-const BUTTON_TYPES = [
-  'primary',
-  'secondary',
-  'outline',
-  'dashed',
-  'text',
-] as const;
-type ButtonTypes = typeof BUTTON_TYPES[number];
+import { ButtonTypes, BUTTON_TYPES } from './constants';
+import { ButtonGroupContext, buttonGroupInjectionKey } from './context';
 
 export default defineComponent({
   name: 'Button',
@@ -69,10 +62,10 @@ export default defineComponent({
      * @zh 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。
      * @en Button types are divided into five types: secondary, primary, dashed, outline and text.
      * @values 'secondary','primary','dashed','outline','text'
+     * @defaultValue 'secondary'
      */
     type: {
       type: String as PropType<ButtonTypes>,
-      default: 'secondary',
       validator: (value: any) => {
         return BUTTON_TYPES.includes(value);
       },
@@ -93,10 +86,10 @@ export default defineComponent({
      * @zh 按钮的状态
      * @en Button state
      * @values 'normal','warning','success','danger'
+     * @defaultValue 'normal'
      */
     status: {
       type: String as PropType<Status>,
-      default: 'normal',
     },
     /**
      * @zh 按钮的尺寸
@@ -165,18 +158,21 @@ export default defineComponent({
   setup(props, { emit }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('btn');
+    const groupContext = inject<ButtonGroupContext>(buttonGroupInjectionKey);
+    const _size = computed(() => groupContext?.size || size.value);
+    const _disabled = computed(() => groupContext?.disabled || disabled.value);
     const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
-      size,
-      disabled,
+      size: _size,
+      disabled: _disabled,
     });
     const { mergedSize } = useSize(_mergedSize);
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-${props.type}`,
+      `${prefixCls}-${props.type ?? groupContext?.type ?? 'secondary'}`,
       `${prefixCls}-shape-${props.shape}`,
       `${prefixCls}-size-${mergedSize.value}`,
-      `${prefixCls}-status-${props.status}`,
+      `${prefixCls}-status-${props.status ?? groupContext?.status ?? 'normal'}`,
       {
         [`${prefixCls}-long`]: props.long,
         [`${prefixCls}-loading`]: props.loading,
