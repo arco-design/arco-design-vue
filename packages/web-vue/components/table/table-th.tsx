@@ -219,14 +219,14 @@ export default defineComponent({
       if (slots.default) {
         return slots.default();
       }
-      if (props.column?.slots?.title) {
-        return props.column.slots.title();
-      }
       if (
         props.column?.titleSlotName &&
         tableCtx.slots?.[props.column.titleSlotName]
       ) {
         return tableCtx.slots[props.column.titleSlotName]?.();
+      }
+      if (props.column?.slots?.title) {
+        return props.column.slots.title();
       }
       if (isFunction(props.column.title)) {
         return props.column.title();
