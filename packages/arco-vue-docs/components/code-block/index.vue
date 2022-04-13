@@ -1,6 +1,9 @@
 <template>
   <section class="code-block">
-    <h2>{{ title }}</h2>
+    <h2 class="article-head-level">
+      <a class="article-head-anchor" :href="`#${$attrs.id}`"><icon-link /></a>
+      {{ title }}
+    </h2>
     <slot name="description" />
     <slot />
   </section>

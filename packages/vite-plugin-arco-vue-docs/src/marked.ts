@@ -148,6 +148,11 @@ marked.use({
   breaks: true,
   xhtml: true,
   renderer: {
+    heading(text: string, level: number, raw: string) {
+      const anchor = raw.replace(/\s+/g, '-');
+      const anchorLink = `<a class="article-head-anchor" href="#${anchor}"><icon-link /></a>`;
+      return `<h${level} id="${anchor}" class="article-head-level">${anchorLink}${text}</h${level}>\n`;
+    },
     link(this: any, href, title, text) {
       href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);
       if (href === null) {
