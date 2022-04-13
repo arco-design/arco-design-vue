@@ -733,8 +733,10 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(() => {
-  nProgress.start();
+router.beforeEach((to, from) => {
+  if (to.path !== from.path) {
+    nProgress.start();
+  }
 });
 
 router.afterEach(() => {
