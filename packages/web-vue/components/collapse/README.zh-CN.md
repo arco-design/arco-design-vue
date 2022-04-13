@@ -14,6 +14,8 @@ description: 可以折叠 / 展开的内容区域。
 
 @import ./__demo__/icon-position.md
 
+## API
+
 
 ### `<collapse>` Props
 

@@ -16,6 +16,8 @@ description: 通过锚点可快速找到信息内容在当前页面的位置。
 
 @import ./__demo__/hash.md
 
+## API
+
 
 ### `<anchor>` Props
 

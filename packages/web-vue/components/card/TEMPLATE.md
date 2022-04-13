@@ -35,6 +35,8 @@ description: Card is generally used as a concise introduction or a large plate a
 
 @import ./__demo__/actions.md
 
+## API
+
 %%API(card.tsx)%%
 
 %%API(card-meta.tsx)%%

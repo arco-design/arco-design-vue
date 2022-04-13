@@ -41,6 +41,8 @@ description: Select the time on the pop-up panel to conveniently complete the ti
 
 @import ./__demo__/use-12-hours.md
 
+## API
+
 %%API(time-picker.vue)%%
 
 ## zh-CN

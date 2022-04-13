@@ -27,6 +27,8 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 @import ./__demo__/size.md
 
+## API
+
 %%API(radio.vue)%%
 
 %%API(radio-group.vue)%%

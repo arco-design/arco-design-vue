@@ -30,6 +30,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 @import ./__demo__/panel.md
 
+## API
+
 
 ### `<cascader>` Props
 

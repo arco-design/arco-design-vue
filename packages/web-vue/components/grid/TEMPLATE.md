@@ -40,6 +40,8 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 @import ./__demo__/grid-responsive.md
 
+## API
+
 %%API(grid-row.vue)%%
 
 %%API(grid-col.vue)%%

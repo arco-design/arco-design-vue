@@ -10,6 +10,8 @@ description: 将面板分割成两部分。
 
 @import ./__demo__/nested.md
 
+## API
+
 
 ### `<split>` Props
 

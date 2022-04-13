@@ -20,6 +20,8 @@ description: 一般出现在图标或文字的右上角。提供及时、重要�
 
 @import ./__demo__/color.md
 
+## API
+
 
 ### `<badge>` Props
 

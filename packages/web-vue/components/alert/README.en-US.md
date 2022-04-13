@@ -22,6 +22,8 @@ description: When warning information is displayed to the user, the warning prom
 
 @import ./__demo__/banner.md
 
+## API
+
 
 ### `<alert>` Props
 

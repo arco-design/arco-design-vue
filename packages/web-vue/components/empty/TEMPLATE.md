@@ -21,4 +21,6 @@ description: Refers to a state in which the current scene has no corresponding d
 
 @import ./__demo__/custom.md
 
+## API
+
 %%API(empty.vue)%%

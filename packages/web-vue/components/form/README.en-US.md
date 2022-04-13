@@ -32,6 +32,8 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/custom.md
 
+## API
+
 
 ### `<form>` Props
 

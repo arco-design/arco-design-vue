@@ -27,6 +27,8 @@ description: Through the anchor point, you can quickly find the position of the 
 
 @import ./__demo__/hash.md
 
+## API
+
 %%API(anchor.vue)%%
 
 %%API(anchor-link.vue)%%

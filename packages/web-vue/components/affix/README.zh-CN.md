@@ -16,6 +16,8 @@ description: 将页面元素钉在可视范围。当内容区域比较长，需�
 
 @import ./__demo__/container.md
 
+## API
+
 
 ### `<affix>` Props
 

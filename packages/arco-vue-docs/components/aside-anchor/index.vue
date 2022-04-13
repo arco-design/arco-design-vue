@@ -19,6 +19,7 @@
       >
         {{ item.title }}
       </a-anchor-link>
+      <a-anchor-link key="article-api" href="#API">API</a-anchor-link>
     </a-anchor>
   </aside>
 </template>

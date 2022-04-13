@@ -26,6 +26,8 @@ description: Use paging to control the amount of information in a single page, a
 
 @import ./__demo__/custom.md
 
+## API
+
 
 ### `<pagination>` Props
 

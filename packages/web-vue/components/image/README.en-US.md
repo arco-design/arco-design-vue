@@ -30,6 +30,8 @@ description: Used to show and preview pictures.
 
 @import ./__demo__/preview-popup-container.md
 
+## API
+
 
 ### `<image>` Props
 

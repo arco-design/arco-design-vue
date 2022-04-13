@@ -46,6 +46,7 @@ description: Users can transfer files or submit corresponding content.
 
 @import ./__demo__/directory.md
 
+## API
 
 %%API(upload.tsx)%%
 

@@ -27,4 +27,6 @@ description: Set the spacing between components.
 
 @import ./__demo__/wrap.md
 
+## API
+
 %%API(space.tsx)%%

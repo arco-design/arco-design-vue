@@ -23,6 +23,8 @@ description: Globally display notification reminders to convey information to us
 
 @import ./__demo__/position.md
 
+## API
+
 %%API(notification.vue)%%
 
 ## zh-CN

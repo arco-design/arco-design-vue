@@ -27,6 +27,8 @@ description: Breadcrumb is an auxiliary navigation mode used to identify the pos
 
 @import ./__demo__/ellipsis.md
 
+## API
+
 %%API(breadcrumb.tsx)%%
 
 %%API(breadcrumb-item.tsx)%%

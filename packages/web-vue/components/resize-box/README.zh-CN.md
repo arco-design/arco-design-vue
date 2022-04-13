@@ -14,6 +14,8 @@ description: 伸缩框组件。
 
 @import ./__demo__/custom-triggers.md
 
+## API
+
 
 ### `<resize-box>` Props
 

@@ -27,4 +27,6 @@ description: A tooltip that popup when the mouse hovers, focus, or click on a co
 
 `<tooltip>` 组件继承 `<trigger>` 组件的全部属性
 
+## API
+
 %%API(tooltip.vue)%%

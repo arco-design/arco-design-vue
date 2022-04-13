@@ -30,6 +30,8 @@ description: 在弹出面板上选择时间，以便捷完成时间输入的控�
 
 @import ./__demo__/use-12-hours.md
 
+## API
+
 
 ### `<time-picker>` Props
 

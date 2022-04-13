@@ -35,6 +35,7 @@ description: 用户可传输文件或提交相应的内容。
 
 @import ./__demo__/directory.md
 
+## API
 
 
 ### `<upload>` Props

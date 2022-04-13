@@ -56,6 +56,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 @import ./__demo__/panel-only.md
 
+## API
+
 %%API(picker.vue)%%
 
 %%API(pickers/date-picker.tsx)%%

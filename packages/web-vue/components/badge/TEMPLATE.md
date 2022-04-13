@@ -31,4 +31,6 @@ description: Badge normally appears in the upper right corner of the icon or tex
 
 @import ./__demo__/color.md
 
+## API
+
 %%API(badge.tsx)%%

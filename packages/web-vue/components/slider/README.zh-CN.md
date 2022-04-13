@@ -22,6 +22,8 @@ description: 滑动型输入器，展示当前值和可选范围。
 
 @import ./__demo__/tooltip.md
 
+## API
+
 
 ### `<slider>` Props
 

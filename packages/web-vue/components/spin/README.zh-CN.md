@@ -18,6 +18,8 @@ description: 用于页面和区块的加载中状态 - 页面局部处于等待�
 
 @import ./__demo__/icon.md
 
+## API
+
 
 ### `<spin>` Props
 

@@ -14,6 +14,8 @@ description: 页头位于页容器顶部，起到了内容概览和引导页级�
 
 @import ./__demo__/content.md
 
+## API
+
 
 ### `<page-header>` Props
 

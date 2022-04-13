@@ -10,6 +10,8 @@ description: Configure in the outermost layer of the application, set once, and 
 
 @import ./__demo__/basic.md
 
+## API
+
 
 ### `<config-provider>` Props
 

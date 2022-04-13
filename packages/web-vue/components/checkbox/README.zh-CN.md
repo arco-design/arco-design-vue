@@ -16,6 +16,8 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 @import ./__demo__/custom.md
 
+## API
+
 
 ### `<checkbox>` Props
 

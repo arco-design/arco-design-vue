@@ -18,6 +18,8 @@ description: 仅允许输入数字格式的输入框。
 
 @import ./__demo__/format.md
 
+## API
+
 
 ### `<input-number>` Props
 

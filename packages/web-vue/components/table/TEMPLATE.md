@@ -59,6 +59,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/virtual-list.md
 
+## API
+
 %%API(table.tsx)%%
 
 %%API(table-column.tsx)%%

@@ -24,6 +24,8 @@ description: 在当前页面打开一个浮层，承载相关操作。
 
 @import ./__demo__/fullscreen.md
 
+## API
+
 
 ### `<modal>` Props
 

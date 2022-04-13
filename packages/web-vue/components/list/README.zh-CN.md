@@ -18,6 +18,8 @@ description: 最基础的列表展示，可承载文字、列表、图片、段�
 
 @import ./__demo__/virtual-list.md
 
+## API
+
 
 ### `<list>` Props
 

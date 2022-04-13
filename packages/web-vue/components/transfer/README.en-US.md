@@ -18,6 +18,8 @@ description: A two-column multi-select component that moves elements from one co
 
 @import ./__demo__/simple.md
 
+## API
+
 
 ### `<transfer>` Props
 

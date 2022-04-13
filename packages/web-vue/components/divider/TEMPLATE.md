@@ -25,4 +25,6 @@ description: Divide the content area and separate the modules.
 
 @import ./__demo__/vertical.md
 
+## API
+
 %%API(divider.tsx)%%

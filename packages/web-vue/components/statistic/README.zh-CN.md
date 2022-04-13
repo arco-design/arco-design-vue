@@ -14,6 +14,8 @@ description: 突出展示某个或某组数字、带描述的统计类数据。
 
 @import ./__demo__/countdown.md
 
+## API
+
 
 ### `<statistic>` Props
 

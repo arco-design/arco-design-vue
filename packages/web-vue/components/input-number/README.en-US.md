@@ -20,6 +20,8 @@ description: Only input boxes in numeric format are allowed.
 
 @import ./__demo__/format.md
 
+## API
+
 
 ### `<input-number>` Props
 

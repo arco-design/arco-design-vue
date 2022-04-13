@@ -35,6 +35,8 @@ description: Button is a command component that can initiate an instant operatio
 
 @import ./__demo__/group.md
 
+## API
+
 %%API(button.vue)%%
 
 %%API(button-group.vue)%%

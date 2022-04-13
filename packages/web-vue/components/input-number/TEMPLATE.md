@@ -29,4 +29,6 @@ description: Only input boxes in numeric format are allowed.
 
 @import ./__demo__/format.md
 
+## API
+
 %%API(input-number.tsx)%%

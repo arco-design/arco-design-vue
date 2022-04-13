@@ -35,6 +35,8 @@ description: Open a floating layer on the current page to carry related operatio
 
 @import ./__demo__/fullscreen.md
 
+## API
+
 %%API(modal.vue)%%
 
 ## zh-CN

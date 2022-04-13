@@ -23,6 +23,8 @@ description: Use gray to place the data being loaded.
 
 @import ./__demo__/animation.md
 
+## API
+
 %%API(skeleton.vue)%%
 
 %%API(line.vue)%%
