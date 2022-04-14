@@ -149,9 +149,11 @@ marked.use({
   xhtml: true,
   renderer: {
     heading(text: string, level: number, raw: string) {
-      const anchor = raw.replace(/\s+/g, '-');
-      const anchorLink = `<a class="article-head-anchor" href="#${anchor}"><icon-link /></a>`;
-      return `<h${level} id="${anchor}" class="article-head-level">${anchorLink}${text}</h${level}>\n`;
+      if ([2, 3].includes(level)) {
+        const anchor = raw.replace(/\s+/g, '-');
+        return `<anchor-head level="${level}" href="${anchor}">${text}</anchor-head>`;
+      }
+      return `<h${level} id="${raw}">${text}</h${level}>`;
     },
     link(this: any, href, title, text) {
       href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);

@@ -1,0 +1,21 @@
+.anchor-head {
+  position: relative;
+
+  &:hover {
+    .anchor-link {
+      opacity: 1;
+    }
+  }
+
+  .anchor-link {
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    display: inline-block;
+    padding-right: 6px;
+    color: rgb(var(--arcoblue-6));
+    font-size: 16px;
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+}
