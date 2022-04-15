@@ -150,9 +150,9 @@ export default defineComponent({
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('btn');
     const groupContext = inject(buttonGroupInjectionKey, undefined);
-    const _size = computed(() => size.value ?? groupContext?.size ?? 'medium');
-    const _disabled = computed(
-      () => disabled.value ?? groupContext?.disabled ?? false
+    const _size = computed(() => size.value ?? groupContext?.size);
+    const _disabled = computed(() =>
+      Boolean(disabled.value || groupContext?.disabled)
     );
     const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
       size: _size,
