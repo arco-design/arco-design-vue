@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
 import { omit } from '../../_utils/omit';
 import { isUndefined } from '../../_utils/is';
-import { TreeNodeData, Node, FieldNames, TreeNodeKey } from '../interface';
+import { TreeNodeData, Node, TreeFieldNames, TreeNodeKey } from '../interface';
 
 interface TreeProps {
-  fieldNames?: FieldNames;
+  fieldNames?: TreeFieldNames;
   selectable: boolean;
   checkable: boolean;
   blockNode: boolean;

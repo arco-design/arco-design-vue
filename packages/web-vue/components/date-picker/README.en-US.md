@@ -193,6 +193,17 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 
 
+
+### ShortcutType
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|label|the content of shortcut|`string \| number \| (() => VNode)`|`-`|
+|value|the value of shortcut|`(Date \| string \| number)    \| (Date \| string \| number)[]    \| (() => (Date \| string \| number) \| (Date \| string \| number)[])`|`-`|
+|format|the format use to parse value, refer to [String Parsing Format](#string-parsing-format)|`string`|`-`|
+
+
+
 ### String parsing format
 
 Format|Output|Description

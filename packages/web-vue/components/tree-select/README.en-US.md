@@ -56,7 +56,7 @@ description: The tree structure data can be selected.
 |multiple|Whether to support multiple selection|`boolean`|`false`||
 |default-value|Default value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`||
 |model-value **(v-model)**|Value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`||
-|field-names|Specify the field name in the node data|`FieldNames`|`-`||
+|field-names|Specify the field name in the node data|`TreeFieldNames`|`-`||
 |data|Data|`TreeNodeData[]`|`[]`||
 |label-in-value|Set the value format. The default is string, when set to true, the value format is: {label: string, value: string}|`boolean`|`false`||
 |tree-checkable|Whether to show checkbox|`boolean`|`false`||

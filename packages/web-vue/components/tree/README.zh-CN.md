@@ -58,7 +58,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |default-expanded-keys|默认展开的节点|`Array<string \| number>`|`-`||
 |expanded-keys **(v-model)**|展开的节点|`Array<string \| number>`|`-`||
 |data|传入`data`,生成对应的树结构|`TreeNodeData[]`|`[]`||
-|field-names|指定节点数据中的字段名|`FieldNames`|`-`||
+|field-names|指定节点数据中的字段名|`TreeFieldNames`|`-`||
 |show-line|是否展示连接线|`boolean`|`false`||
 |load-more|异步加载数据的回调，返回一个 `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`||
 |draggable|是否可以拖拽|`boolean`|`false`||
@@ -131,7 +131,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 
 
 
-### FieldNames
+### TreeFieldNames
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|

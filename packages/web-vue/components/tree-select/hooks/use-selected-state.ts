@@ -2,7 +2,11 @@ import { computed, ref, toRefs, watchEffect, watch } from 'vue';
 import { isArray, isFunction, isObject } from '../../_utils/is';
 import { FallbackOption, LabelValue, TreeSelectValue } from '../interface';
 import { Key2TreeNode } from '../../tree/utils';
-import { FieldNames, TreeNodeData, TreeNodeKey } from '../../tree/interface';
+import {
+  TreeFieldNames,
+  TreeNodeData,
+  TreeNodeKey,
+} from '../../tree/interface';
 
 function isValidKey(key: TreeNodeKey) {
   return key !== undefined && key !== null && key !== '';
@@ -33,7 +37,7 @@ export default function useSelectedState(props: {
   treeCheckable?: boolean;
   treeCheckStrictly?: boolean;
   fallbackOption?: FallbackOption;
-  fieldNames?: FieldNames;
+  fieldNames?: TreeFieldNames;
 }) {
   const {
     defaultValue,

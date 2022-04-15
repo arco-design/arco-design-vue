@@ -34,7 +34,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { TreeInjectionKey } from './context';
 import usePickSlots from '../_hooks/use-pick-slots';
 import {
-  FieldNames,
+  TreeFieldNames,
   TreeNodeData,
   TreeProps,
   FilterTreeNode,
@@ -185,7 +185,7 @@ export default defineComponent({
      * @en Specify the field name in the node data
      * */
     fieldNames: {
-      type: Object as PropType<FieldNames>,
+      type: Object as PropType<TreeFieldNames>,
     },
     /**
      * @zh 是否展示连接线
