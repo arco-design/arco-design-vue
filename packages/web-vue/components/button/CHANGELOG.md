@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.24.1
+
+`2022-04-16`
+
+### 🐛 BugFix
+
+- Fix `config-provide` injection invalid problem ([#986](https://github.com/arco-design/arco-design-vue/pull/986))
+
+
+## 2.24.0
+
+`2022-04-15`
+
+### 🆕 Feature
+
+- `button-group` supports setting props for subcomponent `button` ([#967](https://github.com/arco-design/arco-design-vue/pull/967))
+
+
 ## 2.16.0
 
 `2022-01-21`

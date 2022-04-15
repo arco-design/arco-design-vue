@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.24.1
+
+`2022-04-16`
+
+### 🐛 BugFix
+
+- **button:** Fix `config-provide` injection invalid problem ([#986](https://github.com/arco-design/arco-design-vue/pull/986))
+
+
 ## 2.24.0
 
 `2022-04-15`
@@ -14,6 +23,7 @@ changelog: true
 ### 🆕 Feature
 
 - **modal:** Add animation name attribute ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+- **button:** `button-group` supports setting props for subcomponent `button` ([#967](https://github.com/arco-design/arco-design-vue/pull/967))
 
 ### 🐛 BugFix
 
@@ -21,6 +31,7 @@ changelog: true
 - **modal:** Fixed an issue where the body would not be locked in some cases ([#968](https://github.com/arco-design/arco-design-vue/pull/968))
 - **menu:** fix the problem that `auto-scroll-into-view` is invalid ([#966](https://github.com/arco-design/arco-design-vue/pull/966))
 - **cascader:** Fix the problem that the half-selected state of the checkbox is displayed incorrectly ([#963](https://github.com/arco-design/arco-design-vue/pull/963))
+- **steps:** Fix the problem of index error when Steps and Step components are not in direct parent-child relationship ([#959](https://github.com/arco-design/arco-design-vue/pull/959))
 
 ### 💅 Style
 

@@ -20,7 +20,7 @@ Asynchronous shutdown can be implemented more concisely through on-before-ok
 
 <template>
   <a-button @click="handleClick">Open Modal</a-button>
-  <a-modal v-model:visible="visible" @cancel="handleCancel" @before-ok="handleBeforeOk" unmountOnClose>
+  <a-modal v-model:visible="visible" @cancel="handleCancel" :on-before-ok="handleBeforeOk" unmountOnClose>
     <template #title>
       Title
     </template>

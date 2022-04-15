@@ -1,6 +1,6 @@
-import { MessageMethod } from './message/interface';
-import { NotificationMethod } from './notification/interface';
-import { ModalMethod } from './modal/interface';
+import { MessageMethod } from './message';
+import { NotificationMethod } from './notification';
+import { ModalMethod } from './modal';
 
 declare module 'vue' {
   export interface GlobalComponents {
@@ -23,6 +23,7 @@ declare module 'vue' {
     ACarousel: typeof import('@arco-design/web-vue')['Carousel'];
     ACarouselItem: typeof import('@arco-design/web-vue')['CarouselItem'];
     ACascader: typeof import('@arco-design/web-vue')['Cascader'];
+    ACascaderPanel: typeof import('@arco-design/web-vue')['CascaderPanel'];
     ACheckbox: typeof import('@arco-design/web-vue')['Checkbox'];
     ACheckboxGroup: typeof import('@arco-design/web-vue')['CheckboxGroup'];
     ACollapse: typeof import('@arco-design/web-vue')['Collapse'];

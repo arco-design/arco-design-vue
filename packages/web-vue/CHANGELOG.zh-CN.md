@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.24.1
+
+`2022-04-16`
+
+### 🐛 问题修复
+
+- **button:** 修复 `config-provide` 注入失效的问题 ([#986](https://github.com/arco-design/arco-design-vue/pull/986))
+
+
 ## 2.24.0
 
 `2022-04-15`
@@ -14,6 +23,7 @@ changelog: true
 ### 🆕 新增功能
 
 - **modal:** 增加动画名属性 ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+- **button:** `button-group` 支持为子组件 `button` 设置属性 ([#967](https://github.com/arco-design/arco-design-vue/pull/967))
 
 ### 🐛 问题修复
 
@@ -21,6 +31,7 @@ changelog: true
 - **modal:** 修复在某些情况下不会锁定 body 的问题 ([#968](https://github.com/arco-design/arco-design-vue/pull/968))
 - **menu:** 修复 `auto-scroll-into-view` 无效的问题 ([#966](https://github.com/arco-design/arco-design-vue/pull/966))
 - **cascader:** 修复复选框的半选状态显示错误的问题 ([#963](https://github.com/arco-design/arco-design-vue/pull/963))
+- **steps:** 修复 Steps 与 Step 组件非直接父子关系时 index 错误的问题 ([#959](https://github.com/arco-design/arco-design-vue/pull/959))
 
 ### 💅 样式更新
 

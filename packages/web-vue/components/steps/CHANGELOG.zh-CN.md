@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🐛 问题修复
+
+- 修复 Steps 与 Step 组件非直接父子关系时 index 错误的问题 ([#959](https://github.com/arco-design/arco-design-vue/pull/959))
+
+
 ## 2.18.0
 
 `2022-03-04`

@@ -2,10 +2,6 @@
 
 const fs = require('fs-extra');
 
-fs.copySync(
-  'global.d.ts',
-  'es/global.d.ts',
-  {
-    overwrite: true,
-  }
-);
+fs.copySync('components/global.d.ts', 'es/global.d.ts', {
+  overwrite: true,
+});
