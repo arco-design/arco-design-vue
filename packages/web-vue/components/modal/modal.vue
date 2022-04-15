@@ -8,7 +8,7 @@
         :class="`${prefixCls}-container`"
         :style="{ zIndex }"
       >
-        <transition name="fade-modal" appear>
+        <transition :name="maskAnimationName" appear>
           <div
             v-if="mask"
             v-show="computedVisible"
@@ -24,7 +24,7 @@
           @mousedown.self="handleMaskMouseDown"
         >
           <transition
-            name="zoom-modal"
+            :name="modalAnimationName"
             appear
             @after-enter="handleOpen"
             @after-leave="handleClose"
@@ -363,6 +363,36 @@ export default defineComponent({
     fullscreen: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 遮罩层动画名字
+     * @en Mask layer animation name
+     * @defaultValue -
+     * @version 2.24.0
+     */
+    maskAnimationName: {
+      type: String,
+      default: (props: Record<string, any>) => {
+        if (props.fullscreen) {
+          return 'fade-in-standard';
+        }
+        return 'fade-modal';
+      },
+    },
+    /**
+     * @zh 对话框动画名字
+     * @en Modal animation name
+     * @defaultValue -
+     * @version 2.24.0
+     */
+    modalAnimationName: {
+      type: String,
+      default: (props: Record<string, any>) => {
+        if (props.fullscreen) {
+          return 'zoom-in';
+        }
+        return 'zoom-modal';
+      },
     },
     // private
     messageType: {
