@@ -59,17 +59,13 @@ function getComponentTags<K extends keyof HTMLElementTagNameMap>(
 function Wrap(props: BaseInternalProps, children: VNodeTypes) {
   const { mark } = props;
   const componentTags = getComponentTags(props);
+  const markStyle =
+    isObject(mark) && mark.color ? { backgroundColor: mark.color } : {};
 
-  let content: VNodeTypes = children;
-  componentTags.forEach((Tag) => {
-    const attrs =
-      isObject(mark) && mark.color
-        ? { style: { backgroundColor: mark.color } }
-        : {};
-    content = <Tag {...attrs}>{content}</Tag>;
-  });
-
-  return content;
+  return componentTags.reduce((content, Tag) => {
+    const attrs = Tag === 'mark' ? { style: markStyle } : {};
+    return <Tag {...attrs}>{content}</Tag>;
+  }, children);
 }
 
 function normalizeEllipsisConfig(
@@ -439,9 +435,10 @@ export default defineComponent({
       }
     });
 
+    let children: VNode[] = [];
     const updateFullText = () => {
       if (ellipsis.value || copyable.value || editable.value) {
-        const _fullText = getInnerText(slots.default?.() ?? []);
+        const _fullText = getInnerText(children);
 
         if (_fullText !== fullText.value) {
           fullText.value = _fullText;
@@ -454,7 +451,7 @@ export default defineComponent({
     onUpdated(updateFullText);
 
     return () => {
-      const children = slots.default?.() || [];
+      children = slots.default?.() || [];
 
       // 编辑中
       if (mergeEditing.value) {
