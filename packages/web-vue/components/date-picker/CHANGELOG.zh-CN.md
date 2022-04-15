@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 功能优化
+
+- 传递了 timePickerProps 就会在最终值上拼接时间 ([#981](https://github.com/arco-design/arco-design-vue/pull/981))
+
+
 ## 2.21.0
 
 `2022-03-25`

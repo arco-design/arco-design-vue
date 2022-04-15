@@ -7,6 +7,7 @@ export interface ButtonGroupContext {
   status: Status;
   type: ButtonTypes;
   disabled: boolean;
+  shape: 'square' | 'round' | 'circle';
 }
 
 export const buttonGroupInjectionKey: InjectionKey<ButtonGroupContext> =

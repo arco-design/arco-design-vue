@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🆕 新增功能
+
+- 增加动画名属性 ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+### 🐛 问题修复
+
+- 修复在某些情况下不会锁定 body 的问题 ([#968](https://github.com/arco-design/arco-design-vue/pull/968))
+
+### 💅 样式更新
+
+- 修复全屏下动画导致闪现滚动条的问题 ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+
 ## 2.23.0
 
 `2022-04-08`

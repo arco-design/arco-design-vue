@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🆕 Feature
+
+- Add animation name attribute ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+### 🐛 BugFix
+
+- Fixed an issue where the body would not be locked in some cases ([#968](https://github.com/arco-design/arco-design-vue/pull/968))
+
+### 💅 Style
+
+- Fix the issue that the scroll bar flashes when the animation is in full screen ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+
 ## 2.23.0
 
 `2022-04-08`

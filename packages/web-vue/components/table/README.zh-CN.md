@@ -53,7 +53,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
-|columns|表格的列描述信息|`TableColumn[]`|`[]`||
+|columns|表格的列描述信息|`TableColumnData[]`|`[]`||
 |data|表格的数据|`TableData[]`|`[]`||
 |bordered|是否显示边框|`boolean \| TableBorder`|`true`||
 |hoverable|是否显示选中效果|`boolean`|`true`||
@@ -71,7 +71,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |row-key|表格行 `key` 的取值字段|`string`|`'key'`||
 |show-header|是否显示表头|`boolean`|`true`||
 |virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`||
-|span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
+|span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 |span-all|是否让合并方法的索引包含所有|`boolean`|`false`|2.18.0|
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|筛选图标是否左对齐|`boolean`|`false`|2.13.0|
@@ -79,9 +79,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |row-class|表格行元素的类名|`string\|array\|object`|`-`|2.16.0|
 |draggable|表格拖拽排序的配置|`TableDraggable`|`-`|2.16.0|
 |column-resizable|是否允许调整列宽|`boolean`|`false`|2.16.0|
-|summary|显示表尾总结行|`boolean\| ((params: {    columns: TableColumn[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
+|summary|显示表尾总结行|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|总结行的首列文字|`string`|`'Summary'`|2.21.0|
-|summary-span-method|总结行的单元格合并方法|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
+|summary-span-method|总结行的单元格合并方法|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
 ### `<table>` Events
 
 |事件名|描述|参数|
@@ -96,9 +96,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |page-change|表格分页发生改变时触发|page: `number`|
 |page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`|
 |change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`|
-|cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumn`|
+|cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumnData`|
 |row-click|点击行数据时触发|record: `TableData`|
-|header-click|点击表头数据时触发|column: `TableColumn`|
+|header-click|点击表头数据时触发|column: `TableColumnData`|
 ### `<table>` Methods
 
 |方法名|描述|参数|返回值|版本|
@@ -108,7 +108,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
-|summary-cell|总结行|column: `TableColumn`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
+|empty|空白展示|-||
+|summary-cell|总结行|column: `TableColumnData`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
 |pagination-right|分页器右侧内容|-|2.18.0|
 |pagination-left|分页器左侧内容|-|2.18.0|
 |td|自定义 td 元素|-|2.16.0|
@@ -130,8 +131,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 |data-index|列信息的标识，对应TableData中的数据|`string`|`-`||
 |title|列标题|`string`|`-`||
 |width|列宽度|`number`|`-`||
-|align|对齐方向|`TableColumn['align']`|`-`||
-|fixed|固定位置|`TableColumn['fixed']`|`-`||
+|align|对齐方向|`TableColumnData['align']`|`-`||
+|fixed|固定位置|`TableColumnData['fixed']`|`-`||
 |ellipsis|是否显示为省略|`boolean`|`false`||
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
@@ -144,7 +145,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |filter-icon|筛选按钮图标|-|2.23.0|
 |filter-content|自定义筛选弹出框内容|filterValue: `string[]`<br>setFilterValue: `(filterValue: string[]) => void`<br>handleFilterConfirm: `(event: Event) => void`<br>handleFilterReset: `(event: Event) => void`|2.23.0|
 |title|标题|-||
-|cell|单元格|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`||
+|cell|单元格|record: `TableData`<br>column: `TableColumnData`<br>rowIndex: `number`||
 
 
 
@@ -197,7 +198,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 
 
-### TableColumn
+### TableColumnData
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
@@ -209,9 +210,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |ellipsis|是否显示省略号|`boolean`|`false`||
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
-|children|表头子数据，用于表头分组|`TableColumn[]`|`-`||
+|children|表头子数据，用于表头分组|`TableColumnData[]`|`-`||
 |cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
-|render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+|render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNode`|`-`||
 |slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
 |titleSlotName|设置当前列的标题的渲染插槽的名字|`string`|`-`|2.23.0|
 

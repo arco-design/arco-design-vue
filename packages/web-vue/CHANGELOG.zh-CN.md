@@ -2,6 +2,39 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 功能优化
+
+- **date-picker:** 传递了 timePickerProps 就会在最终值上拼接时间 ([#981](https://github.com/arco-design/arco-design-vue/pull/981))
+- **table:** 当 columns 属性中存在 titleSlotName 时会优先使用 ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
+
+### 🆕 新增功能
+
+- **modal:** 增加动画名属性 ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+### 🐛 问题修复
+
+- **typography:** 解决 `slots.default` 报警告的问题 ([#980](https://github.com/arco-design/arco-design-vue/pull/980))
+- **modal:** 修复在某些情况下不会锁定 body 的问题 ([#968](https://github.com/arco-design/arco-design-vue/pull/968))
+- **menu:** 修复 `auto-scroll-into-view` 无效的问题 ([#966](https://github.com/arco-design/arco-design-vue/pull/966))
+- **cascader:** 修复复选框的半选状态显示错误的问题 ([#963](https://github.com/arco-design/arco-design-vue/pull/963))
+
+### 💅 样式更新
+
+- **modal:** 修复全屏下动画导致闪现滚动条的问题 ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+- **pagination:** 分页选择项增加 padding ([#984](https://github.com/arco-design/arco-design-vue/pull/984))
+
+### 🆎 类型修正
+
+- 增加常用 typescript 类型定义的导出 ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+- **select:** `Option、OptionData、GroupOption`  接口名修改为 `SelectOption、SelectOptionData、SelectOptionGroup` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+- **table:** `TableColumn` 接口名修改为 `TableColumnData` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+- **tree:** `FieldNames` 修改为 `TreeFieldNames` ([#977](https://github.com/arco-design/arco-design-vue/pull/977))
+
+
 ## 2.23.0
 
 `2022-04-08`

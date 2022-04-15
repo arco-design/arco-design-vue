@@ -548,6 +548,11 @@ export default defineComponent({
    * @binding {number} rowIndex
    * @version 2.23.0
    */
+  /**
+   * @zh 空白展示
+   * @en Empty
+   * @slot empty
+   */
   setup(props, { emit, slots }) {
     const { columns, rowKey, rowSelection, loadMore, filterIconAlignLeft } =
       toRefs(props);

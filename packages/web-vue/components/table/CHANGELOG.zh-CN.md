@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 功能优化
+
+- 当 columns 属性中存在 titleSlotName 时会优先使用 ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
+
+### 🆎 类型修正
+
+- `TableColumn` 接口名修改为 `TableColumnData` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+
+
 ## 2.23.0
 
 `2022-04-08`

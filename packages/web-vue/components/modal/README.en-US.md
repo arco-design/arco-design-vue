@@ -58,6 +58,8 @@ description: Open a floating layer on the current page to carry related operatio
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
 |draggable|Whether to support drag|`boolean`|`false`|2.19.0|
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
+|mask-animation-name|Mask layer animation name|`string`|`-`|2.24.0|
+|modal-animation-name|Modal animation name|`string`|`-`|2.24.0|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|version|

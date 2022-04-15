@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💅 Style
+
+- Add padding to pagination options ([#984](https://github.com/arco-design/arco-design-vue/pull/984))
+
+
 ## 2.23.0
 
 `2022-04-08`

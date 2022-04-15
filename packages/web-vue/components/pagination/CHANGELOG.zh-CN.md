@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💅 样式更新
+
+- 分页选择项增加 padding ([#984](https://github.com/arco-design/arco-design-vue/pull/984))
+
+
 ## 2.23.0
 
 `2022-04-08`

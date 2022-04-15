@@ -15,31 +15,40 @@ export default defineComponent({
   name: 'ButtonGroup',
   props: {
     /**
-     * @zh 子按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。
+     * @zh 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。
      * @en Children button types are divided into five types: secondary, primary, dashed, outline and text.
-     * @values 'secondary','primary','dashed','outline','text'
      */
     type: {
-      type: String as PropType<ButtonTypes>,
-      validator: (value: any) => {
-        return BUTTON_TYPES.includes(value);
-      },
+      type: String as PropType<
+        'primary' | 'secondary' | 'outline' | 'dashed' | 'text'
+      >,
+      default: 'secondary',
     },
     /**
-     * @zh 子按钮的状态
+     * @zh 按钮的状态
      * @en Children button state
      * @values 'normal','warning','success','danger'
      */
     status: {
       type: String as PropType<Status>,
+      default: 'normal',
     },
     /**
-     * @zh 子按钮的尺寸
+     * @zh 按钮的形状
+     * @en Button shape
+     */
+    shape: {
+      type: String as PropType<'square' | 'round' | 'circle'>,
+      default: 'square',
+    },
+    /**
+     * @zh 按钮的尺寸
      * @en Children button size
      * @values 'mini','small','medium','large'
      */
     size: {
       type: String as PropType<Size>,
+      default: 'medium',
     },
     /**
      * @zh 全部子按钮是否禁用
@@ -51,7 +60,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { type, size, status, disabled } = toRefs(props);
+    const { type, size, status, disabled,shape } = toRefs(props);
     const prefixCls = getPrefixCls('btn-group');
 
     provide(
@@ -59,6 +68,7 @@ export default defineComponent({
       reactive({
         type,
         size,
+        shape,
         status,
         disabled,
       })

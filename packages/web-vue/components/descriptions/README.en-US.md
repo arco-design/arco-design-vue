@@ -24,7 +24,7 @@ description: Generally used for the information display of the detail page.
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |data|Data for descriptions|`DescData[]`|`[]`|
-|column|The number of data placed in each row. Version 2.20.0 supports reactive configuration|`number \| ResponsiveValue`|`3`|
+|column|The number of data placed in each row. Version 2.20.0 supports reactive configuration, the configuration can refer to Grid|`number \| ResponsiveValue`|`3`|
 |title|Title of descriptions|`string`|`-`|
 |layout|Arrangement of descriptions|`'horizontal' \| 'vertical' \| 'inline-horizontal' \| 'inline-vertical'`|`'horizontal'`|
 |align|Alignment position of text|`TextAlign \| { label?: TextAlign; value?: TextAlign }`|`'left'`|

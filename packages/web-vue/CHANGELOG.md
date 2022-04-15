@@ -2,6 +2,39 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 Optimization
+
+- **date-picker:** the selected value will merge with time when timePickerProps has value ([#981](https://github.com/arco-design/arco-design-vue/pull/981))
+- **table:** When titleSlotName exists in the columns attribute, it will be used first ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
+
+### 🆕 Feature
+
+- **modal:** Add animation name attribute ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+### 🐛 BugFix
+
+- **typography:** fixed the warning of `slots.default` ([#980](https://github.com/arco-design/arco-design-vue/pull/980))
+- **modal:** Fixed an issue where the body would not be locked in some cases ([#968](https://github.com/arco-design/arco-design-vue/pull/968))
+- **menu:** fix the problem that `auto-scroll-into-view` is invalid ([#966](https://github.com/arco-design/arco-design-vue/pull/966))
+- **cascader:** Fix the problem that the half-selected state of the checkbox is displayed incorrectly ([#963](https://github.com/arco-design/arco-design-vue/pull/963))
+
+### 💅 Style
+
+- **modal:** Fix the issue that the scroll bar flashes when the animation is in full screen ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+- **pagination:** Add padding to pagination options ([#984](https://github.com/arco-design/arco-design-vue/pull/984))
+
+### 🆎 TypeScript
+
+- Increase the export of common typescript type definitions ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+- **select:** `Option, OptionData, GroupOption` interface names are changed to `SelectOption, SelectOptionData, SelectOptionGroup` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+- **table:** `TableColumn` interface name is changed to `TableColumnData` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+- **tree:** upgrate `FieldNames` to `TreeFieldNames` ([#977](https://github.com/arco-design/arco-design-vue/pull/977))
+
+
 ## 2.23.0
 
 `2022-04-08`

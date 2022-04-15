@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🐛 BugFix
+
+- fixed the warning of `slots.default` ([#980](https://github.com/arco-design/arco-design-vue/pull/980))
+
+
 ## 2.22.0
 
 `2022-04-01`

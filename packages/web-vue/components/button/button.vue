@@ -40,7 +40,7 @@
  * @todo 添加twoChineseChars
  */
 import type { PropType } from 'vue';
-import { defineComponent, computed, toRefs } from 'vue';
+import { defineComponent, computed, toRefs, inject } from 'vue';
 import { Status, Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
@@ -48,8 +48,7 @@ import IconLoading from '../icon/icon-loading';
 import { EmitType } from '../_utils/types';
 import { useSize } from '../_hooks/use-size';
 import { useFormItem } from '../_hooks/use-form-item';
-import { ButtonTypes, BUTTON_TYPES } from './constants';
-import { ButtonGroupContext, buttonGroupInjectionKey } from './context';
+import { buttonGroupInjectionKey } from './context';
 
 export default defineComponent({
   name: 'Button',
@@ -73,7 +72,6 @@ export default defineComponent({
      */
     shape: {
       type: String as PropType<'square' | 'round' | 'circle'>,
-      default: 'square',
     },
     /**
      * @zh 按钮的状态
@@ -112,10 +110,10 @@ export default defineComponent({
     /**
      * @zh 按钮是否禁用
      * @en Whether the button is disabled
+     * @defaultValue false
      */
     disabled: {
       type: Boolean,
-      default: false,
     },
     /**
      * @zh 设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
@@ -151,9 +149,11 @@ export default defineComponent({
   setup(props, { emit }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('btn');
-    const groupContext = inject<ButtonGroupContext>(buttonGroupInjectionKey);
-    const _size = computed(() => groupContext?.size || size.value);
-    const _disabled = computed(() => groupContext?.disabled || disabled.value);
+    const groupContext = inject(buttonGroupInjectionKey, undefined);
+    const _size = computed(() => size.value ?? groupContext?.size ?? 'medium');
+    const _disabled = computed(
+      () => disabled.value ?? groupContext?.disabled ?? false
+    );
     const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
       size: _size,
       disabled: _disabled,
@@ -163,7 +163,7 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-${props.type ?? groupContext?.type ?? 'secondary'}`,
-      `${prefixCls}-shape-${props.shape}`,
+      `${prefixCls}-shape-${props.shape ?? groupContext?.shape ?? 'square'}`,
       `${prefixCls}-size-${mergedSize.value}`,
       `${prefixCls}-status-${props.status ?? groupContext?.status ?? 'normal'}`,
       {

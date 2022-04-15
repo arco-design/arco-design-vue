@@ -17,7 +17,7 @@ description: 用于在输入中提及某人或某事，常用于发布、聊天�
 |---|---|---|:---:|:---|
 |model-value **(v-model)**|绑定值|`string`|`-`||
 |default-value|默认值（非受控状态）|`string`|`''`||
-|data|用于自动补全的数据|`Option[]`|`[]`||
+|data|用于自动补全的数据|`(string \| number \| SelectOptionData \| SelectOptionGroup)[]`|`[]`||
 |prefix|触发自动补全的关键字|`string \| string[]`|`'@'`||
 |split|选中项的前后分隔符|`string`|`' '`||
 |type|输入框或文本域|`'input' \| 'textarea'`|`'input'`||

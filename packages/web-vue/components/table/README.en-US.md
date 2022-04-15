@@ -55,7 +55,7 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|columns|Column info of the table|`TableColumn[]`|`[]`||
+|columns|Column info of the table|`TableColumnData[]`|`[]`||
 |data|Table data|`TableData[]`|`[]`||
 |bordered|Whether to show the border|`boolean \| TableBorder`|`true`||
 |hoverable|Whether to show the hover effect|`boolean`|`true`||
@@ -73,7 +73,7 @@ description: It is used for data collection, display, analysis and processing, a
 |row-key|Value field of table row `key`|`string`|`'key'`||
 |show-header|Whether to show the header|`boolean`|`true`||
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling|`VirtualListProps`|`-`||
-|span-method|Cell merge method (The index starts counting from the data item)|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
+|span-method|Cell merge method (The index starts counting from the data item)|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 |span-all|Whether to make the index of the span method contain all|`boolean`|`false`|2.18.0|
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|Whether the filter icon is aligned to the left|`boolean`|`false`|2.13.0|
@@ -81,9 +81,9 @@ description: It is used for data collection, display, analysis and processing, a
 |row-class|The class name of the table row element|`string\|array\|object`|`-`|2.16.0|
 |draggable|Table drag and drop sorting configuration|`TableDraggable`|`-`|2.16.0|
 |column-resizable|Whether to allow the column width to be adjusted|`boolean`|`false`|2.16.0|
-|summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumn[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
+|summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|The first column of text in the summary line|`string`|`'Summary'`|2.21.0|
-|summary-span-method|Cell Merge Method for Summarizing Rows|`(data: {  record: TableData;  column: TableColumn \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
+|summary-span-method|Cell Merge Method for Summarizing Rows|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|
@@ -98,9 +98,9 @@ description: It is used for data collection, display, analysis and processing, a
 |page-change|Triggered when the table pagination changes|page: `number`|
 |page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`|
 |change||data: `TableData[]`<br>extra: `TableChangeExtra`|
-|cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumn`|
+|cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumnData`|
 |row-click|Triggered when row data is clicked|record: `TableData`|
-|header-click|Triggered when the header data is clicked|column: `TableColumn`|
+|header-click|Triggered when the header data is clicked|column: `TableColumnData`|
 ### `<table>` Methods
 
 |Method|Description|Parameters|Return|version|
@@ -110,7 +110,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|summary-cell|Content on the right side of the pagination|column: `TableColumn`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
+|empty|Empty|-||
+|summary-cell|Content on the right side of the pagination|column: `TableColumnData`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
 |pagination-right|Content on the right side of the pagination|-|2.18.0|
 |pagination-left|Content on the left side of the pagination|-|2.18.0|
 |td|Custom td element|-|2.16.0|
@@ -132,8 +133,8 @@ description: It is used for data collection, display, analysis and processing, a
 |data-index|Identifies the column information, corresponding to the data in TableData|`string`|`-`||
 |title|Column title|`string`|`-`||
 |width|Column width|`number`|`-`||
-|align|Alignment direction|`TableColumn['align']`|`-`||
-|fixed|Fixed position|`TableColumn['fixed']`|`-`||
+|align|Alignment direction|`TableColumnData['align']`|`-`||
+|fixed|Fixed position|`TableColumnData['fixed']`|`-`||
 |ellipsis|Whether to display as omitted|`boolean`|`false`||
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
@@ -146,7 +147,7 @@ description: It is used for data collection, display, analysis and processing, a
 |filter-icon|Title|-|2.23.0|
 |filter-content|Title|filterValue: `string[]`<br>setFilterValue: `(filterValue: string[]) => void`<br>handleFilterConfirm: `(event: Event) => void`<br>handleFilterReset: `(event: Event) => void`|2.23.0|
 |title|Title|-||
-|cell|Cell|record: `TableData`<br>column: `TableColumn`<br>rowIndex: `number`||
+|cell|Cell|record: `TableData`<br>column: `TableColumnData`<br>rowIndex: `number`||
 
 
 
@@ -199,7 +200,7 @@ description: It is used for data collection, display, analysis and processing, a
 
 
 
-### TableColumn
+### TableColumnData
 
 |Name|Description|Type|Default|version|
 |---|---|---|:---:|:---|
@@ -211,9 +212,9 @@ description: It is used for data collection, display, analysis and processing, a
 |ellipsis|Whether to show ellipsis|`boolean`|`false`||
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
-|children|Header sub-data, used for header grouping|`TableColumn[]`|`-`||
+|children|Header sub-data, used for header grouping|`TableColumnData[]`|`-`||
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
-|render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumn;    rowIndex: number;  }) => VNode`|`-`||
+|render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNode`|`-`||
 |slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
 |titleSlotName|Set the name of the render slot for the header of the current column|`string`|`-`|2.23.0|
 

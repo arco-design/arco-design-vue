@@ -49,8 +49,8 @@ description: When users need to select one or more from a group of similar data,
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |multiple|Whether to open multi-select mode (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
-|model-value **(v-model)**|Value|`OptionValue \| OptionValue[]`|`-`||
-|default-value|Default value (uncontrolled mode)|`OptionValue \| OptionValue[]`|`'' \| []`||
+|model-value **(v-model)**|Value|`string\| number\| Record<string, unknown>\| (string \| number \| Record<string, unknown>)[]`|`-`||
+|default-value|Default value (uncontrolled mode)|`string\| number\| Record<string, unknown>\| (string \| number \| Record<string, unknown>)[]`|`'' \| []`||
 |input-value **(v-model)**|The value of the input|`string`|`-`||
 |default-input-value|The default value of the input (uncontrolled mode)|`string`|`''`||
 |size|The size of the select|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
@@ -67,17 +67,17 @@ description: When users need to select one or more from a group of similar data,
 |popup-visible **(v-model)**|Whether to show the dropdown|`boolean`|`-`||
 |default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`||
 |unmount-on-close|Whether to destroy the element when the dropdown is closed|`boolean`|`false`||
-|filter-option|Whether to filter options|`boolean \| ((inputValue: string, option: OptionData) => boolean)`|`true`||
-|options|Option data|`Option[]`|`[]`||
+|filter-option|Whether to filter options|`boolean \| ((inputValue: string, option: SelectOptionData) => boolean)`|`true`||
+|options|Option data|`(string \| number \| SelectOptionData \| SelectOptionGroup)[]`|`[]`||
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
 |trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`||
-|format-label|Format display content|`(data: OptionData) => string`|`-`||
-|fallback-option|Options that do not exist in custom values|`boolean\| ((value: string \| number \| Record<string, unknown>) => OptionData)`|`true`|2.10.0|
+|format-label|Format display content|`(data: SelectOptionData) => string`|`-`||
+|fallback-option|Options that do not exist in custom values|`boolean\| ((    value: string \| number \| Record<string, unknown>  ) => SelectOptionData)`|`true`|2.10.0|
 |show-extra-options|Options that do not exist in custom values|`boolean`|`true`|2.10.0|
 |value-key|Used to determine the option key value attribute name|`string`|`'value'`|2.18.0|
 |search-delay|Delay time to trigger search event|`number`|`500`|2.18.0|
 |limit|Maximum number of choices in multiple choice|`number`|`0`|2.18.0|
-|field-names|Customize fields in `OptionData`|`SelectFieldNames`|`-`|2.22.0|
+|field-names|Customize fields in `SelectOptionData`|`SelectFieldNames`|`-`|2.22.0|
 ### `<select>` Events
 
 |Event Name|Description|Parameters|version|
@@ -90,7 +90,7 @@ description: When users need to select one or more from a group of similar data,
 |search|Triggered when the user searches|-||
 |dropdown-scroll|Triggered when the drop-down scrolls|-||
 |dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|-||
-|exceed-limit|Triggered when multiple selection exceeds the limit|value: `OptionValue`|2.18.0|
+|exceed-limit|Triggered when multiple selection exceeds the limit|value: `mixed`|2.18.0|
 ### `<select>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -101,8 +101,8 @@ description: When users need to select one or more from a group of similar data,
 |loading-icon|Loading icon for select box|-|2.16.0|
 |arrow-icon|Arrow icon for select box|-|2.16.0|
 |footer|The footer of the drop-down box|-||
-|label|Display content of label|data: `OptionInfo`||
-|option|Display content of options|data: `OptionInfo`||
+|label|Display content of label|data: `SelectOptionData`||
+|option|Display content of options|data: `SelectOptionData`||
 |empty|Display content when the option is empty|-||
 
 
@@ -137,30 +137,24 @@ description: When users need to select one or more from a group of similar data,
 
 ```ts
 /**
- * @zh 选项值
- * @en Option
- */
-type OptionValue = string | number | Record<string, unknown>;
-
-/**
  * @zh 选项
  * @en Option
  */
-type Option = string | number | OptionData | GroupOption;
+type Option = string | number | SelectOptionData | SelectOptionGroup;
 
 /**
  * @zh 筛选
  * @en Filter
  */
-type FilterOption = boolean | ((inputValue: string, optionInfo: OptionInfo) => boolean);
+type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) => boolean);
 ```
 
 
-### OptionData
+### SelectOptionData
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|value|Option Value|`OptionValue`|`-`|
+|value|Option Value|`string \| number \| Record<string, unknown>`|`-`|
 |label|Option content|`string`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 |tagProps|Props of the multi-select label corresponding to the option|`any`|`-`|
@@ -168,12 +162,12 @@ type FilterOption = boolean | ((inputValue: string, optionInfo: OptionInfo) => b
 
 
 
-### GroupOption
+### SelectOptionGroup
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |isGroup|Whether it is an option group|`true`|`-`|
 |label|Option group title|`string`|`-`|
-|options|Options in the option group|`Option[]`|`-`|
+|options|Options in the option group|`SelectOption[]`|`-`|
 
 

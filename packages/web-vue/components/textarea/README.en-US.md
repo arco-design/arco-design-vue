@@ -41,5 +41,11 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 |clear|Emitted when the clear button is clicked|-|
 |focus|Emitted when the textarea gets focus|-|
 |blur|Emitted when the textarea loses focus|-|
+### `<textarea>` Methods
+
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|focus|Make the input box focus|-|-|2.24.0|
+|blur|Make the input box lose focus|-|-|2.24.0|
 
 

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 Optimization
+
+- When titleSlotName exists in the columns attribute, it will be used first ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
+
+### 🆎 TypeScript
+
+- `TableColumn` interface name is changed to `TableColumnData` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+
+
 ## 2.23.0
 
 `2022-04-08`

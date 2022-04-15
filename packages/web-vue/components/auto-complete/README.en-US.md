@@ -20,7 +20,7 @@ description: The auto-complete function of the input.
 |model-value **(v-model)**|Value|`string`|`-`||
 |default-value|Default value (uncontrolled mode)|`string`|`''`||
 |disabled|Whether to disable|`boolean`|`false`||
-|data|Data used for auto-complete|`Option[]`|`[]`||
+|data|Data used for auto-complete|`(string \| number \| SelectOptionData \| SelectOptionGroup)[]`|`[]`||
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`||
 |strict|Whether it is strict verification mode|`boolean`|`false`||
 |filter-option|Custom option filtering method|`FilterOption`|`true`||
