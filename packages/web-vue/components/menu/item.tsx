@@ -2,13 +2,12 @@ import {
   computed,
   defineComponent,
   ref,
-  watchEffect,
+  watch,
   onMounted,
   onUnmounted,
 } from 'vue';
 import scrollIntoView from 'scroll-into-view-if-needed';
 import Tooltip from '../tooltip';
-import useIsMounted from '../_hooks/use-is-mounted';
 import { MenuItemProps } from './interface';
 import useMenu from './hooks/use-menu';
 import useLevel from './hooks/use-level';
@@ -47,17 +46,11 @@ export default defineComponent({
   setup(props: MenuItemProps, { emit }) {
     const { key } = useMenu();
     const { level } = useLevel();
-    const isMounted = useIsMounted();
     const menuContext = useMenuContext();
     const refItemElement = ref<HTMLDivElement>();
     const isSelected = computed(
       () => (menuContext.selectedKeys || []).indexOf(key.value) > -1
     );
-
-    const timer = ref<NodeJS.Timeout | null>();
-    const clearTimer = () => {
-      timer.value && clearTimeout(timer.value);
-    };
 
     const { collectMenuItem, removeMenuItem } = useMenuDataCollectorContext();
 
@@ -69,31 +62,33 @@ export default defineComponent({
       removeMenuItem && removeMenuItem(key.value);
     });
 
-    watchEffect((onInvalidate) => {
+    function scrollTo() {
       if (
+        menuContext.autoScrollIntoView &&
         refItemElement.value &&
-        isSelected.value &&
-        menuContext.autoScrollIntoView
+        isSelected.value
       ) {
-        clearTimer();
-        timer.value = setTimeout(
-          () => {
-            scrollIntoView(refItemElement.value as HTMLDivElement, {
-              behavior: 'smooth',
-              block: 'start',
-              scrollMode: 'if-needed',
-              boundary: document.body,
-              ...(menuContext.scrollConfig || {}),
-            });
-            timer.value = null;
-          },
-          // 首次渲染需要等待展开动画结束之后滚动
-          isMounted.value ? 500 : 0
-        );
+        scrollIntoView(refItemElement.value as HTMLDivElement, {
+          behavior: 'smooth',
+          block: 'nearest',
+          scrollMode: 'if-needed',
+          boundary: document.documentElement,
+          ...(menuContext.scrollConfig || {}),
+        });
       }
-      onInvalidate(() => {
-        clearTimer();
-      });
+    }
+
+    let timer: NodeJS.Timeout;
+    onMounted(() => {
+      timer = setTimeout(() => {
+        scrollTo();
+      }, 500);
+    });
+    onUnmounted(() => {
+      clearTimeout(timer);
+    });
+    watch([isSelected], () => {
+      scrollTo();
     });
 
     return {
