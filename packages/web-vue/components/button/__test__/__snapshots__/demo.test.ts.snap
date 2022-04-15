@@ -113,7 +113,7 @@ exports[`<button> demo: render [group] correctly 1`] = `
         <!--v-if-->Publish
       </button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-only-icon\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-more\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\"></path></svg></span></button></div>
   </div>
-  <div class=\\"arco-space-item\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
     <div class=\\"arco-btn-group\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if--><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
           <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
@@ -123,6 +123,29 @@ exports[`<button> demo: render [group] correctly 1`] = `
           <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
         </svg>
       </button></div>
+  </div>
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+        <div class=\\"arco-btn-group\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <!--v-if--> copy
+          </button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <!--v-if--> cut
+          </button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <!--v-if--> find
+          </button></div>
+      </div>
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+        <div class=\\"arco-btn-group\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning arco-btn-only-icon\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 10.541c4.35-4.522 11.405-4.814 15.756-.292 4.35 4.522 4.15 11.365.448 17.135C36.153 33.7 28 41.5 24 42c-4-.5-12.152-8.3-16.204-14.616-3.702-5.77-3.902-12.613.448-17.135C12.595 5.727 19.65 6.019 24 10.54Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning arco-btn-only-icon\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.683 5.415c.568-1.043 2.065-1.043 2.634 0l5.507 10.098a1.5 1.5 0 0 0 1.04.756l11.306 2.117c1.168.219 1.63 1.642.814 2.505l-7.902 8.359a1.5 1.5 0 0 0-.397 1.223l1.48 11.407c.153 1.177-1.058 2.057-2.131 1.548l-10.391-4.933a1.5 1.5 0 0 0-1.287 0l-10.39 4.933c-1.073.51-2.284-.37-2.131-1.548l1.48-11.407a1.5 1.5 0 0 0-.398-1.223L4.015 20.89c-.816-.863-.353-2.286.814-2.505l11.306-2.117a1.5 1.5 0 0 0 1.04-.756l5.508-10.098Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning arco-btn-only-icon\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-thumb-up-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M5 43V17h4v26H5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M27.1 4.463a2 2 0 0 0-2.83.364L15.036 17H12v26h23.576a2 2 0 0 0 1.89-1.346l5.697-19.346c.899-2.598-1.03-5.308-3.78-5.308h-10.57l2.422-5.448a4 4 0 0 0-1.184-4.77L27.1 4.462Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></button></div>
+      </div>
+      <div class=\\"arco-space-item\\">
+        <div class=\\"arco-btn-group\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-small arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
+            <!--v-if--> prev
+          </button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-small arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
+            <!--v-if--> next
+          </button></div>
+      </div>
+    </div>
   </div>
 </div>"
 `;

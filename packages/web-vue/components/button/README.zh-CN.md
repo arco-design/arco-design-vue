@@ -52,5 +52,13 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 
 
+### `<button-group>` Props
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|type|子按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。|`'secondary' \| 'primary' \| 'dashed' \| 'outline' \| 'text'`|`-`|
+|status|子按钮的状态|`'normal' \| 'warning' \| 'success' \| 'danger'`|`-`|
+|size|子按钮的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
+|disabled|全部子按钮是否禁用|`boolean`|`false`|
 
 

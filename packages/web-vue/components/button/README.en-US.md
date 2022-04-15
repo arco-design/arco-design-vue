@@ -54,5 +54,13 @@ description: Button is a command component that can initiate an instant operatio
 
 
 
+### `<button-group>` Props
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|type|Children button types are divided into five types: secondary, primary, dashed, outline and text.|`'secondary' \| 'primary' \| 'dashed' \| 'outline' \| 'text'`|`-`|
+|status|Children button state|`'normal' \| 'warning' \| 'success' \| 'danger'`|`-`|
+|size|Children button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
+|disabled|All children whether the button is disabled|`boolean`|`false`|
 
 
