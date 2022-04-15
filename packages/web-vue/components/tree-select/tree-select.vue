@@ -37,8 +37,8 @@
         <template v-if="$slots.prefix" #prefix>
           <slot name="prefix" />
         </template>
-        <template v-if="$slots.label" #label="data">
-          <slot name="label" v-bind="data" />
+        <template v-if="$slots.label" #label="selectedData">
+          <slot name="label" v-bind="selectedData" />
         </template>
       </SelectView>
     </slot>
