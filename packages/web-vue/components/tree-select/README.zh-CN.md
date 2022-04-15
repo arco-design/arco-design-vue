@@ -54,7 +54,7 @@ description: 可以对树形结构数据进行选择。
 |multiple|是否支持多选|`boolean`|`false`||
 |default-value|默认值|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`||
 |model-value **(v-model)**|绑定值|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`||
-|field-names|指定节点数据中的字段名|`FieldNames`|`-`||
+|field-names|指定节点数据中的字段名|`TreeFieldNames`|`-`||
 |data|数据|`TreeNodeData[]`|`[]`||
 |label-in-value|设置value格式。默认是string，设置为true时候，value格式为： { label: string, value: string }|`boolean`|`false`||
 |tree-checkable|是否展示复选框|`boolean`|`false`||

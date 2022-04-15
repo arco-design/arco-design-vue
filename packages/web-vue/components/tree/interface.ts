@@ -99,7 +99,7 @@ export interface Node extends TreeNodeProps {
 
 export type FilterTreeNode = (node: TreeNodeData) => boolean;
 
-export interface FieldNames {
+export interface TreeFieldNames {
   /**
    * @zh 指定 key 在 TreeNodeData 中的字段名
    * @en Specify the field name of key in TreeNodeData
@@ -176,7 +176,7 @@ export interface TreeProps {
   defaultExpandedKeys?: TreeNodeKey[];
   expandedKeys?: TreeNodeKey[];
   data: TreeNodeData[];
-  fieldNames?: FieldNames;
+  fieldNames?: TreeFieldNames;
   virtualListProps?: VirtualListProps;
   showLine: boolean;
   loadMore?: LoadMore;

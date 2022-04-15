@@ -97,12 +97,7 @@ import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
 import useSelectedState from './hooks/use-selected-state';
 import useTreeData from '../tree/hooks/use-tree-data';
-import {
-  FieldNames,
-  TreeNodeData,
-  TreeProps,
-  TreeNodeKey,
-} from '../tree/interface';
+import { TreeFieldNames, TreeNodeData, TreeProps } from '../tree/interface';
 import { isArray, isEmptyObject, isUndefined } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
@@ -230,7 +225,7 @@ export default defineComponent({
      * @en Specify the field name in the node data
      * */
     fieldNames: {
-      type: Object as PropType<FieldNames>,
+      type: Object as PropType<TreeFieldNames>,
     },
     /**
      * @zh 数据

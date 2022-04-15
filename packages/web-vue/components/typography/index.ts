@@ -6,6 +6,8 @@ import _TypographyParagraph from './paragraph';
 import _TypographyTitle from './title';
 import _TypographyText from './text';
 
+export type { EllipsisConfig } from './interface';
+
 const Typography = Object.assign(_Typography, {
   Paragraph: _TypographyParagraph,
   Title: _TypographyTitle,

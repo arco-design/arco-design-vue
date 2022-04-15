@@ -24,6 +24,7 @@ export {
   QuarterPicker,
   RangePicker,
 } from './date-picker';
+export type { ShortcutType } from './date-picker';
 export { default as Descriptions, DescriptionsItem } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Drawer } from './drawer';
@@ -96,6 +97,7 @@ export { default as Timeline, TimelineItem } from './timeline';
 export { default as Tooltip } from './tooltip';
 export { default as Transfer } from './transfer';
 export { default as Tree } from './tree';
+export type { TreeNodeData, TreeFieldNames } from './tree';
 export { default as TreeSelect } from './tree-select';
 export { default as Trigger } from './trigger';
 export {
@@ -104,6 +106,7 @@ export {
   TypographyTitle,
   TypographyText,
 } from './typography';
+export type { EllipsisConfig } from './typography';
 export { default as Upload } from './upload';
 // hooks
 export { useFormItem } from './_hooks/use-form-item';

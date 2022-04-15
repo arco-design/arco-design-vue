@@ -60,7 +60,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |default-expanded-keys|Nodes expanded by default|`Array<string \| number>`|`-`||
 |expanded-keys **(v-model)**|Expanded node|`Array<string \| number>`|`-`||
 |data|Pass in `data` to generate the corresponding tree structure|`TreeNodeData[]`|`[]`||
-|field-names|Specify the field name in the node data|`FieldNames`|`-`||
+|field-names|Specify the field name in the node data|`TreeFieldNames`|`-`||
 |show-line|Whether to display the connection line|`boolean`|`false`||
 |load-more|A callback for loading data asynchronously, returning a `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`||
 |draggable|Whether it can be dragged|`boolean`|`false`||
@@ -133,7 +133,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 
 
-### FieldNames
+### TreeFieldNames
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
