@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'vue';
 import type { TriggerPosition } from '../_utils/constant';
 import { isArray } from '../_utils/is';
+import type { TriggerPopupTranslate } from './interface';
 
 const getViewPortSize = () => {
   return {
@@ -149,7 +150,7 @@ const getFitPosition = (
     triggerRect: ScrollRect;
     popupRect: ScrollRect;
     offset: number;
-    translate: PopupTranslate;
+    translate: TriggerPopupTranslate;
   }
 ) => {
   const direction = getBoundaryPosition(position);
@@ -254,10 +255,6 @@ const getFitPosition = (
   };
 };
 
-export type PopupTranslate =
-  | [number, number]
-  | { [key in TriggerPosition]?: [number, number] };
-
 const getPopupOffset = (
   position: TriggerPosition,
   triggerRect: ScrollRect,
@@ -267,7 +264,7 @@ const getPopupOffset = (
     translate = [0, 0],
   }: {
     offset?: number;
-    translate?: PopupTranslate;
+    translate?: TriggerPopupTranslate;
   } = {}
 ): PositionOffset => {
   // prettier-ignore
@@ -386,7 +383,7 @@ export const getPopupStyle = (
     autoFitPosition = false,
   }: {
     offset?: number;
-    translate?: PopupTranslate;
+    translate?: TriggerPopupTranslate;
     customStyle?: CSSProperties;
     autoFitPosition?: boolean;
   } = {}

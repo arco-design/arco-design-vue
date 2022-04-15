@@ -1,25 +1,69 @@
 import type { RenderFunction } from 'vue';
 import { FieldString } from '../_utils/types';
+import { Size } from '../_utils/constant';
+import { VirtualListProps } from '../_components/virtual-list/interface';
+import { TriggerProps } from '../trigger';
 
-/**
- * @zh 选项值
- * @en Option
- */
-export type OptionValue = string | number | Record<string, unknown>;
+export interface SelectProps {
+  options?: (string | number | SelectOptionData | SelectOptionGroup)[];
+  multiple?: boolean;
+  modelValue?:
+    | string
+    | number
+    | Record<string, unknown>
+    | (string | number | Record<string, unknown>)[];
+  defaultValue?:
+    | string
+    | number
+    | Record<string, unknown>
+    | (string | number | Record<string, unknown>)[];
+  inputValue?: string;
+  defaultInputValue?: string;
+  size?: Size;
+  placeholder?: string;
+  loading?: boolean;
+  disabled?: boolean;
+  error?: boolean;
+  allowClear?: boolean;
+  allowSearch?: boolean | { retainInputValue?: boolean };
+  allowCreate?: boolean;
+  maxTagCount?: number;
+  popupContainer?: string | HTMLElement;
+  bordered?: boolean;
+  popupVisible?: boolean;
+  defaultPopupVisible?: boolean;
+  unmountOnClose?: boolean;
+  filterOption?:
+    | boolean
+    | ((inputValue: string, option: SelectOptionData) => boolean);
+  virtualListProps?: VirtualListProps;
+  triggerProps?: TriggerProps;
+  formatLabel?: (data: SelectOptionData) => string;
+  fallbackOption?:
+    | boolean
+    | ((value: string | number | Record<string, unknown>) => SelectOptionData);
+  showExtraOptions?: boolean;
+  valueKey?: string;
+  searchDelay?: number;
+  limit?: number;
+  fieldNames?: SelectFieldNames;
+}
+
+export type SelectOptionValue = string | number | Record<string, unknown>;
 
 export interface OptionValueWithKey {
-  value: OptionValue;
+  value: SelectOptionValue;
   key: string;
 }
 
-export type SelectFieldNames = FieldString<OptionData>;
+export type SelectFieldNames = FieldString<SelectOptionData>;
 
-export interface OptionData {
+export interface SelectOptionData {
   /**
    * @zh 选项值
    * @en Option Value
    */
-  value?: OptionValue;
+  value?: string | number | Record<string, unknown>;
   /**
    * @zh 选项内容
    * @en Option content
@@ -44,7 +88,7 @@ export interface OptionData {
   [other: string]: any;
 }
 
-export interface GroupOption {
+export interface SelectOptionGroup {
   /**
    * @zh 是否为选项组
    * @en Whether it is an option group
@@ -59,7 +103,7 @@ export interface GroupOption {
    * @zh 选项组中的选项
    * @en Options in the option group
    */
-  options: Option[];
+  options: SelectOption[];
 
   [other: string]: any;
 }
@@ -68,20 +112,24 @@ export interface GroupOption {
  * @zh 选项
  * @en Option
  */
-export type Option = string | number | OptionData | GroupOption;
+export type SelectOption =
+  | string
+  | number
+  | SelectOptionData
+  | SelectOptionGroup;
 
-export interface OptionInfo extends OptionData {
+export interface SelectOptionInfo extends SelectOptionData {
   raw: Record<string, unknown>;
   key: string;
   index?: number;
   origin: 'slot' | 'options' | 'extraOptions';
-  value: OptionValue;
+  value: SelectOptionValue;
   label: string;
 }
 
-export interface GroupOptionInfo extends GroupOption {
+export interface SelectOptionGroupInfo extends SelectOptionGroup {
   key: string;
-  options: (OptionInfo | GroupOptionInfo)[];
+  options: (SelectOptionInfo | SelectOptionGroupInfo)[];
 }
 
 /**
@@ -90,4 +138,4 @@ export interface GroupOptionInfo extends GroupOption {
  */
 export type FilterOption =
   | boolean
-  | ((inputValue: string, optionInfo: OptionData) => boolean);
+  | ((inputValue: string, option: SelectOptionData) => boolean);

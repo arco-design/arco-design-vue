@@ -1,14 +1,14 @@
 import type { Ref } from 'vue';
 import { computed, ref, watch } from 'vue';
 import { isArray } from '../../_utils/is';
-import type { TableColumn } from '../interface';
+import type { TableColumnData } from '../interface';
 import type { TableContext } from '../context';
 
 export const useColumnFilter = ({
   column,
   tableCtx,
 }: {
-  column: Ref<TableColumn>;
+  column: Ref<TableColumnData>;
   tableCtx: Partial<TableContext>;
 }) => {
   const filterValue = computed(() => {

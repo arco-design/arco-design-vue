@@ -14,14 +14,18 @@ import ArcoTextarea from '../textarea';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
 import SelectDropdown from '../select/select-dropdown.vue';
-import SelectOption from '../select/option.vue';
+import Option from '../select/option.vue';
 import { MeasureInfo } from './interface';
 import {
   getLastMeasureIndex,
   getTextBeforeSelection,
   isValidSearch,
 } from './utils';
-import { Option, OptionInfo } from '../select/interface';
+import {
+  SelectOptionData,
+  SelectOptionGroup,
+  SelectOptionInfo,
+} from '../select/interface';
 import { EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from '../textarea/utils';
@@ -54,7 +58,9 @@ export default defineComponent({
      * @en Data for automatic completion
      */
     data: {
-      type: Array as PropType<Option[]>,
+      type: Array as PropType<
+        (string | number | SelectOptionData | SelectOptionGroup)[]
+      >,
       default: () => [],
     },
     /**
@@ -288,7 +294,7 @@ export default defineComponent({
       }
     });
 
-    const getOptionContentFunc = (item: OptionInfo) => {
+    const getOptionContentFunc = (item: SelectOptionInfo) => {
       if (isFunction(slots.option) && item.value) {
         const optionInfo = optionInfoMap.get(item.key);
         const optionSlot = slots.option;
@@ -297,9 +303,10 @@ export default defineComponent({
       return () => item.label;
     };
 
-    const renderOption = (item: OptionInfo) => {
+    const renderOption = (item: SelectOptionInfo) => {
       return (
-        <SelectOption
+        <Option
+          // @ts-ignore
           ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[item.key] = ref.$el;
@@ -317,7 +324,9 @@ export default defineComponent({
     const renderDropdown = () => {
       return (
         <SelectDropdown ref={dropdownRef}>
-          {validOptions.value.map((info) => renderOption(info as OptionInfo))}
+          {validOptions.value.map((info) =>
+            renderOption(info as SelectOptionInfo)
+          )}
         </SelectDropdown>
       );
     };
@@ -352,6 +361,7 @@ export default defineComponent({
                 modelValue={computedValue.value}
                 onInput={handleInput}
                 onClear={handleClear}
+                // @ts-ignore
                 onKeydown={handleKeyDown}
               />
             </ResizeObserver>
@@ -404,6 +414,7 @@ export default defineComponent({
             disabled={mergedDisabled.value}
             onInput={handleInput}
             onClear={handleClear}
+            // @ts-ignore
             onKeydown={handleKeyDown}
           />
         </Trigger>

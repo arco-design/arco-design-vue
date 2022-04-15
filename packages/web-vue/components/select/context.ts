@@ -1,5 +1,5 @@
 import type { InjectionKey } from 'vue';
-import type { FilterOption, OptionInfo } from './interface';
+import type { FilterOption, SelectOptionInfo } from './interface';
 
 export interface SelectContext {
   multiple?: boolean;
@@ -12,7 +12,7 @@ export interface SelectContext {
   onSelect: (key: string, ev: Event) => void;
   setActiveKey: (key?: string) => void;
   getNextSlotOptionIndex: () => number;
-  addSlotOptionInfo: (id: number, optionInfo: OptionInfo) => void;
+  addSlotOptionInfo: (id: number, optionInfo: SelectOptionInfo) => void;
   removeSlotOptionInfo: (id: number) => void;
 }
 

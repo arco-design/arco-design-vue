@@ -160,4 +160,10 @@ const Notification = {
   _context: null as AppContext | null,
 };
 
+export type {
+  NotificationMethod,
+  NotificationConfig,
+  NotificationReturn,
+} from './interface';
+
 export default Notification;

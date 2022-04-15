@@ -1,13 +1,13 @@
 import type { Ref } from 'vue';
 import { computed } from 'vue';
-import type { TableColumn } from '../interface';
+import type { TableColumnData } from '../interface';
 import type { TableContext } from '../context';
 
 export const useColumnSorter = ({
   column,
   tableCtx,
 }: {
-  column: Ref<TableColumn>;
+  column: Ref<TableColumnData>;
   tableCtx: Partial<TableContext>;
 }) => {
   const sortOrder = computed(() => {

@@ -15,6 +15,7 @@ const Upload = Object.assign(_Upload, {
 export type UploadInstance = InstanceType<typeof _Upload>;
 
 export type {
+  FileStatus,
   FileItem,
   CustomIcon,
   RequestOption,

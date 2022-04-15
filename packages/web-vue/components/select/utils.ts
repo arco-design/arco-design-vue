@@ -1,29 +1,34 @@
 import { isFunction, isNumber, isObject } from '../_utils/is';
 import type {
   FilterOption,
-  GroupOption,
-  GroupOptionInfo,
-  Option,
-  OptionData,
-  OptionInfo,
-  OptionValue,
+  SelectOptionGroup,
+  SelectOptionGroupInfo,
+  SelectOption,
+  SelectOptionData,
+  SelectOptionInfo,
+  SelectOptionValue,
   SelectFieldNames,
 } from './interface';
 
-export const isGroupOption = (option: Option): option is GroupOption => {
+export const isGroupOption = (
+  option: SelectOption
+): option is SelectOptionGroup => {
   return isObject(option) && 'isGroup' in option;
 };
 
 export const isGroupOptionInfo = (
-  option: Option | GroupOptionInfo
-): option is GroupOptionInfo => {
+  option: SelectOptionInfo | SelectOptionGroupInfo
+): option is SelectOptionGroupInfo => {
   return isObject(option) && 'isGroup' in option;
 };
 
-export const getValueString = (value: OptionValue, valueKey = 'value') =>
+export const getValueString = (value: SelectOptionValue, valueKey = 'value') =>
   String(isObject(value) ? value[valueKey] : value);
 
-export const getKeyFromValue = (value?: OptionValue, valueKey = 'value') => {
+export const getKeyFromValue = (
+  value?: SelectOptionValue,
+  valueKey = 'value'
+) => {
   if (isObject(value)) {
     return `__arco__option__object__${value[valueKey]}`;
   }
@@ -34,7 +39,7 @@ export const getKeyFromValue = (value?: OptionValue, valueKey = 'value') => {
 };
 
 export const createOptionInfo = (
-  option: string | number | OptionData,
+  option: string | number | SelectOptionData,
   {
     valueKey,
     fieldNames,
@@ -46,7 +51,7 @@ export const createOptionInfo = (
     origin: 'slot' | 'options' | 'extraOptions';
     index?: number;
   }
-): OptionInfo => {
+): SelectOptionInfo => {
   if (isObject(option)) {
     const value = option[fieldNames.value];
 
@@ -76,7 +81,7 @@ export const createOptionInfo = (
 };
 
 export const getOptionInfos = (
-  options: Option[],
+  options: SelectOption[],
   {
     valueKey,
     fieldNames,
@@ -86,10 +91,10 @@ export const getOptionInfos = (
     valueKey: string;
     fieldNames: Required<SelectFieldNames>;
     origin: 'options' | 'extraOptions';
-    optionInfoMap: Map<string, OptionInfo>;
+    optionInfoMap: Map<string, SelectOptionInfo>;
   }
 ) => {
-  const infos: (OptionInfo | GroupOptionInfo)[] = [];
+  const infos: (SelectOptionInfo | SelectOptionGroupInfo)[] = [];
   optionInfoMap.clear();
 
   for (const item of options) {
@@ -123,11 +128,13 @@ export const getOptionInfos = (
 };
 
 export const createOptionInfoMap = (
-  optionInfos: (OptionInfo | GroupOptionInfo)[]
+  optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[]
 ) => {
-  const optionInfoMap = new Map<string, OptionInfo>();
+  const optionInfoMap = new Map<string, SelectOptionInfo>();
 
-  const travel = (optionInfos: (OptionInfo | GroupOptionInfo)[]) => {
+  const travel = (
+    optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[]
+  ) => {
     for (const item of optionInfos) {
       if (isGroupOptionInfo(item)) {
         travel(item.options ?? []);
@@ -143,7 +150,7 @@ export const createOptionInfoMap = (
 };
 
 export const getValidOptions = (
-  optionInfos: (OptionInfo | GroupOptionInfo)[],
+  optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[],
   {
     inputValue,
     filterOption,
@@ -152,8 +159,10 @@ export const getValidOptions = (
     filterOption?: FilterOption;
   }
 ) => {
-  const travel = (optionInfos: (OptionInfo | GroupOptionInfo)[]) => {
-    const options: (OptionInfo | GroupOptionInfo)[] = [];
+  const travel = (
+    optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[]
+  ) => {
+    const options: (SelectOptionInfo | SelectOptionGroupInfo)[] = [];
 
     for (const item of optionInfos) {
       if (isGroupOptionInfo(item)) {
@@ -172,7 +181,7 @@ export const getValidOptions = (
 };
 
 export const isValidOption = (
-  optionInfo: OptionInfo,
+  optionInfo: SelectOptionInfo,
   {
     inputValue,
     filterOption,

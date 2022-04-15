@@ -8,14 +8,14 @@
 import { computed, defineComponent, inject, PropType } from 'vue';
 import { isNumber, isObject, isString } from '../_utils/is';
 import { getPrefixCls } from '../_utils/global-config';
-import { ColProps, FlexType } from './interface';
+import { FlexType } from './interface';
 import { RowContextInjectionKey } from './context';
 import { useResponsiveState } from './hook/use-responsive-state';
 import { useResponsiveValue } from './hook/use-responsive-value';
 import pick from '../_utils/pick';
 import { responsiveArray } from '../_utils/responsive-observe';
 
-function getAllowableFlexValue(flexValue: FlexType) {
+function getAllowableFlexValue(flexValue: FlexType | undefined) {
   if (
     (isString(flexValue) &&
       (['initial', 'auto', 'none'].includes(flexValue) ||
@@ -108,7 +108,7 @@ export default defineComponent({
       >,
     },
   },
-  setup(props: ColProps) {
+  setup(props) {
     const prefixCls = getPrefixCls('col');
     const rowContext = inject(RowContextInjectionKey, {});
     const flexValue = computed(() => getAllowableFlexValue(props.flex));

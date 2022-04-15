@@ -7,7 +7,7 @@ import {
   ref,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { TableColumn, TableData, TableOperationColumn } from './interface';
+import { TableColumnData, TableData, TableOperationColumn } from './interface';
 import { getFixedCls, getStyle } from './utils';
 import { getValueByPath } from '../_utils/get-value-by-path';
 import IconLoading from '../icon/icon-loading';
@@ -32,7 +32,7 @@ export default defineComponent({
       default: () => ({}),
     },
     column: {
-      type: Object as PropType<TableColumn>,
+      type: Object as PropType<TableColumnData>,
       default: () => ({}),
     },
     type: {
@@ -44,7 +44,7 @@ export default defineComponent({
       default: () => [],
     },
     dataColumns: {
-      type: Array as PropType<TableColumn[]>,
+      type: Array as PropType<TableColumnData[]>,
       default: () => [],
     },
     colSpan: {

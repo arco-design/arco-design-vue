@@ -11,10 +11,10 @@ import type { Size, TextAlign } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction, isObject } from '../_utils/is';
 import { descriptionsInjectionKey } from './context';
-import { DescData, DescItemData, DescLayout, RenderData } from './interface';
+import { DescData, DescItemData, RenderData } from './interface';
 import { getAllElements, isSlotsChildren } from '../_utils/vue-utils';
 import { useResponsiveState } from '../grid/hook/use-responsive-state';
-import { ResponsiveValue } from '../grid/interface';
+import { ResponsiveValue } from '../grid';
 
 const getTotalSpan = (renderData?: RenderData[]) => {
   return renderData
@@ -34,8 +34,8 @@ export default defineComponent({
       default: () => [],
     },
     /**
-     * @zh 每行放置的数据个数。2.20.0 版本支持响应式配置
-     * @en The number of data placed in each row. Version 2.20.0 supports reactive configuration
+     * @zh 每行放置的数据个数。2.20.0 版本支持响应式配置，配置可参考 Grid
+     * @en The number of data placed in each row. Version 2.20.0 supports reactive configuration, the configuration can refer to Grid
      */
     column: {
       type: [Number, Object] as PropType<number | ResponsiveValue>,
@@ -49,10 +49,11 @@ export default defineComponent({
     /**
      * @zh 描述列表的排列方式
      * @en Arrangement of descriptions
-     * @values 'horizontal', 'vertical', 'inline-horizontal', 'inline-vertical'
      */
     layout: {
-      type: String as PropType<DescLayout>,
+      type: String as PropType<
+        'horizontal' | 'vertical' | 'inline-horizontal' | 'inline-vertical'
+      >,
       default: 'horizontal',
     },
     /**

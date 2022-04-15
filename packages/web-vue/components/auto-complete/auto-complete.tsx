@@ -12,14 +12,14 @@ import ArcoInput from '../input';
 import Trigger from '../trigger';
 import { getPrefixCls } from '../_utils/global-config';
 import {
-  Option,
-  OptionInfo,
+  SelectOptionInfo,
   FilterOption,
-  OptionData,
+  SelectOptionData,
+  SelectOptionGroup,
 } from '../select/interface';
 import { isFunction, isNull, isUndefined } from '../_utils/is';
 import SelectDropdown from '../select/select-dropdown.vue';
-import SelectOption from '../select/option.vue';
+import Option from '../select/option.vue';
 import { EmitType } from '../_utils/types';
 import { useSelect } from '../select/hooks/use-select';
 import { getKeyFromValue } from '../select/utils';
@@ -59,7 +59,9 @@ export default defineComponent({
      * @en Data used for auto-complete
      */
     data: {
-      type: Array as PropType<Option[]>,
+      type: Array as PropType<
+        (string | number | SelectOptionData | SelectOptionGroup)[]
+      >,
       default: () => [],
     },
     /**
@@ -182,7 +184,10 @@ export default defineComponent({
       _popupVisible.value = popupVisible;
     };
 
-    const strictFilterOption = (inputValue: string, option: OptionData) => {
+    const strictFilterOption = (
+      inputValue: string,
+      option: SelectOptionData
+    ) => {
       return Boolean(option.label?.includes(inputValue));
     };
 
@@ -238,7 +243,7 @@ export default defineComponent({
         onPopupVisibleChange: handlePopupVisibleChange,
       });
 
-    const getOptionContentFunc = (item: OptionInfo) => {
+    const getOptionContentFunc = (item: SelectOptionInfo) => {
       if (isFunction(slots.option) && item.value) {
         const optionInfo = optionInfoMap.get(item.key);
         const optionSlot = slots.option;
@@ -247,9 +252,10 @@ export default defineComponent({
       return () => item.label;
     };
 
-    const renderOption = (item: OptionInfo) => {
+    const renderOption = (item: SelectOptionInfo) => {
       return (
-        <SelectOption
+        <Option
+          // @ts-ignore
           ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[item.key] = ref.$el;
@@ -269,7 +275,9 @@ export default defineComponent({
     const renderDropdown = () => {
       return (
         <SelectDropdown ref={dropdownRef} class={`${prefixCls}-dropdown`}>
-          {validOptions.value.map((info) => renderOption(info as OptionInfo))}
+          {validOptions.value.map((info) =>
+            renderOption(info as SelectOptionInfo)
+          )}
         </SelectDropdown>
       );
     };
@@ -299,6 +307,7 @@ export default defineComponent({
           disabled={mergedDisabled.value}
           onInput={handleInputValueChange}
           onClear={handleClear}
+          // @ts-ignore
           onKeydown={handleKeyDown}
         />
       </Trigger>

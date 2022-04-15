@@ -71,7 +71,7 @@ export default defineComponent({
       default: 1,
     },
   },
-  setup(props: GridProps) {
+  setup(props) {
     const {
       cols: propCols,
       rowGap: propRowGap,

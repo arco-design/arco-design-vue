@@ -119,4 +119,6 @@ const Modal = Object.assign(_Modal, {
   _context: null as AppContext | null,
 });
 
+export type { ModalMethod, ModalConfig, ModalReturn } from './interface';
+
 export default Modal;
