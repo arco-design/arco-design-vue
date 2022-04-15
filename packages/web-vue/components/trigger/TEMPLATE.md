@@ -32,3 +32,9 @@ description: Used to add hover, click, focus and other events to the element, an
 @import ./__demo__/translate.md
 
 %%API(trigger.tsx)%%
+
+```ts
+type TriggerPopupTranslate =
+  | [number, number]
+  | { [key in TriggerPosition]?: [number, number] };
+```

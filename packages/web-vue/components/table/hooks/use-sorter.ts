@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
 import { isString } from '../../_utils/is';
-import type { Sorter, TableColumn } from '../interface';
+import type { Sorter, TableColumnData } from '../interface';
 
-export const useSorter = ({ columns }: { columns: Ref<TableColumn[]> }) => {
+export const useSorter = ({ columns }: { columns: Ref<TableColumnData[]> }) => {
   const _sorter = ref<Sorter | undefined>(getDefaultSorter(columns.value));
 
   const computedSorter = computed<Sorter | undefined>(() => {
@@ -32,7 +32,7 @@ export const useSorter = ({ columns }: { columns: Ref<TableColumn[]> }) => {
   };
 };
 
-const getDefaultSorter = (columns: TableColumn[]): Sorter | undefined => {
+const getDefaultSorter = (columns: TableColumnData[]): Sorter | undefined => {
   for (const item of columns) {
     // get first enabled sorter
     if (item.dataIndex && item.sortable?.defaultSortOrder) {

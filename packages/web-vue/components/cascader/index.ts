@@ -16,6 +16,7 @@ const Cascader = Object.assign(_Cascader, {
 });
 
 export type CascaderInstance = InstanceType<typeof _Cascader>;
+export type { CascaderOption, CascaderFieldNames } from './interface';
 
 export { _CascaderPanel as CascaderPanel };
 export default Cascader;

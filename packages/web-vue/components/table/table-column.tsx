@@ -11,7 +11,7 @@ import {
   toRefs,
   watch,
 } from 'vue';
-import { TableColumn, TableFilterable, TableSortable } from './interface';
+import { TableColumnData, TableFilterable, TableSortable } from './interface';
 import {
   tableColumnInjectionKey,
   TableContext,
@@ -43,14 +43,14 @@ export default defineComponent({
      * @en Alignment direction
      */
     align: {
-      type: String as PropType<TableColumn['align']>,
+      type: String as PropType<TableColumnData['align']>,
     },
     /**
      * @zh 固定位置
      * @en Fixed position
      */
     fixed: {
-      type: String as PropType<TableColumn['fixed']>,
+      type: String as PropType<TableColumnData['fixed']>,
     },
     /**
      * @zh 是否显示为省略
@@ -98,7 +98,7 @@ export default defineComponent({
    * @en Cell
    * @slot cell
    * @binding {TableData} record
-   * @binding {TableColumn} column
+   * @binding {TableColumnData} column
    * @binding {number} rowIndex
    */
   /**
@@ -159,7 +159,7 @@ export default defineComponent({
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
     const tableColumnCtx = inject(tableColumnInjectionKey, undefined);
 
-    const childrenColumnMap = reactive(new Map<number, TableColumn>());
+    const childrenColumnMap = reactive(new Map<number, TableColumnData>());
 
     const addChild = (id: number, data: any) => {
       childrenColumnMap.set(id, data);
@@ -174,7 +174,7 @@ export default defineComponent({
       removeChild,
     });
 
-    const children = ref<TableColumn[]>();
+    const children = ref<TableColumnData[]>();
     watch(childrenColumnMap, (childrenColumnMap) => {
       if (childrenColumnMap.size > 0) {
         children.value = Array.from(childrenColumnMap.values()).sort((a, b) => {

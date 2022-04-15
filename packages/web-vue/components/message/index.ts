@@ -148,4 +148,6 @@ const Message = {
   _context: null as AppContext | null,
 };
 
+export type { MessageMethod, MessageConfig, MessageReturn } from './interface';
+
 export default Message;

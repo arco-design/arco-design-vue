@@ -39,9 +39,8 @@ export default defineComponent({
      * @values 'embed', 'button'
      */
     mode: {
-      type: String as PropType<typeof MODES[number]>,
+      type: String as PropType<'embed' | 'button'>,
       default: 'embed',
-      validator: (value: any) => MODES.includes(value),
     },
     /**
      * @zh 数字精度

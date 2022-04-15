@@ -40,24 +40,14 @@
  * @todo 添加twoChineseChars
  */
 import type { PropType } from 'vue';
-import { defineComponent, computed, inject, toRef, toRefs } from 'vue';
-import { BORDER_SHAPES, BorderShape, Status, Size } from '../_utils/constant';
+import { defineComponent, computed, toRefs } from 'vue';
+import { Status, Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { useSize } from '../_hooks/use-size';
 import { useFormItem } from '../_hooks/use-form-item';
-
-const BUTTON_TYPES = [
-  'primary',
-  'secondary',
-  'outline',
-  'dashed',
-  'text',
-] as const;
-type ButtonTypes = typeof BUTTON_TYPES[number];
 
 export default defineComponent({
   name: 'Button',
@@ -68,26 +58,20 @@ export default defineComponent({
     /**
      * @zh 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。
      * @en Button types are divided into five types: secondary, primary, dashed, outline and text.
-     * @values 'secondary','primary','dashed','outline','text'
      */
     type: {
-      type: String as PropType<ButtonTypes>,
+      type: String as PropType<
+        'primary' | 'secondary' | 'outline' | 'dashed' | 'text'
+      >,
       default: 'secondary',
-      validator: (value: any) => {
-        return BUTTON_TYPES.includes(value);
-      },
     },
     /**
      * @zh 按钮的形状
      * @en Button shape
-     * @values 'square','round','circle'
      */
     shape: {
-      type: String as PropType<BorderShape>,
+      type: String as PropType<'square' | 'round' | 'circle'>,
       default: 'square',
-      validator: (value: any) => {
-        return BORDER_SHAPES.includes(value);
-      },
     },
     /**
      * @zh 按钮的状态

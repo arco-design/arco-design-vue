@@ -1,8 +1,8 @@
 import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
-import type { Filters, TableColumn } from '../interface';
+import type { Filters, TableColumnData } from '../interface';
 
-export const useFilter = ({ columns }: { columns: Ref<TableColumn[]> }) => {
+export const useFilter = ({ columns }: { columns: Ref<TableColumnData[]> }) => {
   const _filters = ref<Filters>(getDefaultFilters(columns.value));
 
   const computedFilters = computed<Filters>(() => {
@@ -24,7 +24,7 @@ export const useFilter = ({ columns }: { columns: Ref<TableColumn[]> }) => {
   };
 };
 
-const getDefaultFilters = (columns: TableColumn[]) => {
+const getDefaultFilters = (columns: TableColumnData[]) => {
   const filters: Filters = {};
   for (const item of columns) {
     if (item.dataIndex && item.filterable?.defaultFilteredValue) {

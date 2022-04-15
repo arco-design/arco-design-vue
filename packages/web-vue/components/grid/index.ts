@@ -21,6 +21,13 @@ const Grid = Object.assign(_Grid, {
   },
 });
 
-export { _GridRow as Row, _GridCol as Col, _GridItem as GridItem };
+export type {
+  ResponsiveValue,
+  RowProps,
+  ColProps,
+  GridProps,
+  GridItemProps,
+} from './interface';
 
+export { _GridRow as Row, _GridCol as Col, _GridItem as GridItem };
 export default Grid;

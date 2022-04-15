@@ -42,7 +42,7 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { MESSAGE_TYPES, MessageType } from '../_utils/constant';
+import { MessageType } from '../_utils/constant';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import IconInfoCircleFill from '../icon/icon-info-circle-fill';
@@ -69,9 +69,6 @@ export default defineComponent({
     type: {
       type: String as PropType<MessageType>,
       default: 'info',
-      validator: (value: any) => {
-        return MESSAGE_TYPES.includes(value);
-      },
     },
     /**
      * @zh 是否展示图标

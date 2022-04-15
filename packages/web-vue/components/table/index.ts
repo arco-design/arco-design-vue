@@ -31,6 +31,18 @@ const Table = Object.assign(_Table, {
 });
 
 export type TableInstance = InstanceType<typeof _Table>;
+export type {
+  TableData,
+  TableSortable,
+  TableFilterData,
+  TableFilterable,
+  TableColumnData,
+  TableBorder,
+  TableRowSelection,
+  TableExpandable,
+  TableDraggable,
+  TableChangeExtra,
+} from './interface';
 
 export {
   _Thead as Thead,
