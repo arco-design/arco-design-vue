@@ -8,7 +8,6 @@
 import { defineComponent, PropType, provide, reactive, toRefs } from 'vue';
 import { Status, Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
-import { ButtonTypes, BUTTON_TYPES } from './constants';
 import { buttonGroupInjectionKey } from './context';
 
 export default defineComponent({
@@ -22,7 +21,6 @@ export default defineComponent({
       type: String as PropType<
         'primary' | 'secondary' | 'outline' | 'dashed' | 'text'
       >,
-      default: 'secondary',
     },
     /**
      * @zh 按钮的状态
@@ -31,7 +29,6 @@ export default defineComponent({
      */
     status: {
       type: String as PropType<Status>,
-      default: 'normal',
     },
     /**
      * @zh 按钮的形状
@@ -39,7 +36,6 @@ export default defineComponent({
      */
     shape: {
       type: String as PropType<'square' | 'round' | 'circle'>,
-      default: 'square',
     },
     /**
      * @zh 按钮的尺寸
@@ -48,7 +44,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
     },
     /**
      * @zh 全部子按钮是否禁用
@@ -56,11 +51,10 @@ export default defineComponent({
      */
     disabled: {
       type: Boolean,
-      default: false,
     },
   },
   setup(props) {
-    const { type, size, status, disabled,shape } = toRefs(props);
+    const { type, size, status, disabled, shape } = toRefs(props);
     const prefixCls = getPrefixCls('btn-group');
 
     provide(

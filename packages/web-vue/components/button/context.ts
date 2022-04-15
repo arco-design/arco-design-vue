@@ -3,11 +3,11 @@ import { Size, Status } from '../_utils/constant';
 import { ButtonTypes } from './constants';
 
 export interface ButtonGroupContext {
-  size: Size;
-  status: Status;
-  type: ButtonTypes;
+  size: Size | undefined;
+  status: Status | undefined;
+  type: ButtonTypes | undefined;
   disabled: boolean;
-  shape: 'square' | 'round' | 'circle';
+  shape: 'square' | 'round' | 'circle' | undefined;
 }
 
 export const buttonGroupInjectionKey: InjectionKey<ButtonGroupContext> =
