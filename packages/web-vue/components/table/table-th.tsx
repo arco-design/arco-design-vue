@@ -7,7 +7,7 @@ import Trigger from '../trigger';
 import IconCaretDown from '../icon/icon-caret-down';
 import IconCaretUp from '../icon/icon-caret-up';
 import IconFilter from '../icon/icon-filter';
-import { TableColumn, TableOperationColumn } from './interface';
+import { TableColumnData, TableOperationColumn } from './interface';
 import { useColumnSorter } from './hooks/use-column-sorter';
 import { useColumnFilter } from './hooks/use-column-filter';
 import { useI18n } from '../locale';
@@ -20,7 +20,7 @@ export default defineComponent({
   name: 'Th',
   props: {
     column: {
-      type: Object as PropType<TableColumn>,
+      type: Object as PropType<TableColumnData>,
       default: () => ({}),
     },
     operations: {
@@ -28,7 +28,7 @@ export default defineComponent({
       default: () => [],
     },
     dataColumns: {
-      type: Array as PropType<TableColumn[]>,
+      type: Array as PropType<TableColumnData[]>,
       default: () => [],
     },
     resizable: Boolean,
@@ -219,14 +219,14 @@ export default defineComponent({
       if (slots.default) {
         return slots.default();
       }
-      if (props.column?.slots?.title) {
-        return props.column.slots.title();
-      }
       if (
         props.column?.titleSlotName &&
         tableCtx.slots?.[props.column.titleSlotName]
       ) {
         return tableCtx.slots[props.column.titleSlotName]?.();
+      }
+      if (props.column?.slots?.title) {
+        return props.column.slots.title();
       }
       if (isFunction(props.column.title)) {
         return props.column.title();

@@ -2,8 +2,8 @@ import type { Ref } from 'vue';
 import { computed, reactive, ref, watch } from 'vue';
 import type {
   FilterOption,
-  Option,
-  OptionInfo,
+  SelectOption,
+  SelectOptionInfo,
   SelectFieldNames,
 } from '../interface';
 import { getOptionInfos, getValidOptions, isValidOption } from '../utils';
@@ -26,8 +26,8 @@ export const useOptions = ({
   valueKey,
   fieldNames,
 }: {
-  options?: Ref<Option[]>;
-  extraOptions?: Ref<Option[]>;
+  options?: Ref<SelectOption[]>;
+  extraOptions?: Ref<SelectOption[]>;
   inputValue?: Ref<string>;
   filterOption?: Ref<FilterOption>;
   showExtraOptions?: Ref<boolean>;
@@ -39,8 +39,8 @@ export const useOptions = ({
     ...fieldNames?.value,
   }));
 
-  const slotOptionInfoMap = reactive(new Map<number, OptionInfo>());
-  const sortedSlotOptionInfos = ref<OptionInfo[]>([]);
+  const slotOptionInfoMap = reactive(new Map<number, SelectOptionInfo>());
+  const sortedSlotOptionInfos = ref<SelectOptionInfo[]>([]);
   watch(
     slotOptionInfoMap,
     (slotOptionInfoMap) => {
@@ -57,7 +57,7 @@ export const useOptions = ({
   );
 
   const propOptionData = computed(() => {
-    const optionInfoMap = new Map<string, OptionInfo>();
+    const optionInfoMap = new Map<string, SelectOptionInfo>();
     const optionInfos = getOptionInfos(options?.value ?? [], {
       valueKey: valueKey?.value ?? 'value',
       fieldNames: mergedFieldNames.value,
@@ -72,7 +72,7 @@ export const useOptions = ({
   });
 
   const extraOptionData = computed(() => {
-    const optionInfoMap = new Map<string, OptionInfo>();
+    const optionInfoMap = new Map<string, SelectOptionInfo>();
 
     const optionInfos = getOptionInfos(extraOptions?.value ?? [], {
       valueKey: valueKey?.value ?? 'value',
@@ -86,7 +86,7 @@ export const useOptions = ({
     };
   });
 
-  const optionInfoMap = reactive(new Map<string, OptionInfo>());
+  const optionInfoMap = reactive(new Map<string, SelectOptionInfo>());
 
   watch(
     [
@@ -156,7 +156,7 @@ export const useOptions = ({
 
   const getNextSlotOptionIndex = () => slotOptionInfoMap.size;
 
-  const addSlotOptionInfo = (id: number, optionInfo: OptionInfo) => {
+  const addSlotOptionInfo = (id: number, optionInfo: SelectOptionInfo) => {
     slotOptionInfoMap.set(id, optionInfo);
   };
 

@@ -1,6 +1,6 @@
 import type { ComponentPublicInstance, Ref } from 'vue';
 import { nextTick, provide, reactive, ref, watch } from 'vue';
-import { FilterOption, Option, SelectFieldNames } from '../interface';
+import { FilterOption, SelectOption, SelectFieldNames } from '../interface';
 import { VirtualListRef } from '../../_components/virtual-list/interface';
 import { getRelativeRect } from '../../_utils/dom';
 import { useOptions } from './use-options';
@@ -27,8 +27,8 @@ export const useSelect = ({
   onPopupVisibleChange,
 }: {
   multiple?: Ref<boolean>;
-  options?: Ref<Option[]>;
-  extraOptions?: Ref<Option[]>;
+  options?: Ref<SelectOption[]>;
+  extraOptions?: Ref<SelectOption[]>;
   inputValue?: Ref<string>;
   filterOption?: Ref<FilterOption>;
   showExtraOptions?: Ref<boolean>;

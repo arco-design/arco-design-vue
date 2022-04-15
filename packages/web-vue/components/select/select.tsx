@@ -23,16 +23,15 @@ import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
 import { Data, EmitType } from '../_utils/types';
 import SelectDropdown from './select-dropdown.vue';
-import SelectOption from './option.vue';
-import SelectOptGroup from './optgroup.vue';
+import Option from './option.vue';
+import OptGroup from './optgroup.vue';
 import {
-  Option,
-  OptionData,
-  OptionInfo,
-  OptionValue,
-  GroupOptionInfo,
+  SelectOptionData,
+  SelectOptionInfo,
+  SelectOptionGroupInfo,
   OptionValueWithKey,
   SelectFieldNames,
+  SelectOptionGroup,
 } from './interface';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
@@ -65,7 +64,10 @@ export default defineComponent({
      */
     modelValue: {
       type: [String, Number, Object, Array] as PropType<
-        OptionValue | OptionValue[]
+        | string
+        | number
+        | Record<string, unknown>
+        | (string | number | Record<string, unknown>)[]
       >,
     },
     /**
@@ -75,7 +77,10 @@ export default defineComponent({
      */
     defaultValue: {
       type: [String, Number, Object, Array] as PropType<
-        OptionValue | OptionValue[]
+        | string
+        | number
+        | Record<string, unknown>
+        | (string | number | Record<string, unknown>)[]
       >,
       default: (props: Data) => (isUndefined(props.multiple) ? '' : []),
     },
@@ -218,7 +223,7 @@ export default defineComponent({
      */
     filterOption: {
       type: [Boolean, Function] as PropType<
-        boolean | ((inputValue: string, option: OptionData) => boolean)
+        boolean | ((inputValue: string, option: SelectOptionData) => boolean)
       >,
       default: true,
     },
@@ -227,7 +232,9 @@ export default defineComponent({
      * @en Option data
      */
     options: {
-      type: Array as PropType<Option[]>,
+      type: Array as PropType<
+        (string | number | SelectOptionData | SelectOptionGroup)[]
+      >,
       default: () => [],
     },
     /**
@@ -251,7 +258,7 @@ export default defineComponent({
      * @en Format display content
      */
     formatLabel: {
-      type: Function as PropType<(data: OptionData) => string>,
+      type: Function as PropType<(data: SelectOptionData) => string>,
     },
     /**
      * @zh 自定义值中不存在的选项
@@ -261,7 +268,9 @@ export default defineComponent({
     fallbackOption: {
       type: [Boolean, Function] as PropType<
         | boolean
-        | ((value: string | number | Record<string, unknown>) => OptionData)
+        | ((
+            value: string | number | Record<string, unknown>
+          ) => SelectOptionData)
       >,
       default: true,
     },
@@ -302,8 +311,8 @@ export default defineComponent({
       default: 0,
     },
     /**
-     * @zh 自定义 `OptionData` 中的字段
-     * @en Customize fields in `OptionData`
+     * @zh 自定义 `SelectOptionData` 中的字段
+     * @en Customize fields in `SelectOptionData`
      * @version 2.22.0
      */
     fieldNames: {
@@ -382,7 +391,7 @@ export default defineComponent({
     /**
      * @zh 多选超出限制时触发
      * @en Triggered when multiple selection exceeds the limit
-     * @param {OptionValue} value
+     * @param value
      * @version 2.18.0
      */
     'exceedLimit',
@@ -396,13 +405,13 @@ export default defineComponent({
    * @zh 选项内容
    * @en Display content of options
    * @slot option
-   * @binding {OptionInfo} data
+   * @binding {SelectOptionData} data
    */
   /**
    * @zh 选择框的显示内容
    * @en Display content of label
    * @slot label
-   * @binding {OptionInfo} data
+   * @binding {SelectOptionData} data
    */
   /**
    * @zh 下拉框的页脚
@@ -517,7 +526,7 @@ export default defineComponent({
     // extra value and option
     const getFallBackOption = (
       value: string | number | Record<string, unknown>
-    ): OptionData => {
+    ): SelectOptionData => {
       if (isFunction(props.fallbackOption)) {
         return props.fallbackOption(value);
       }
@@ -745,7 +754,7 @@ export default defineComponent({
       return result;
     });
 
-    const getOptionContentFunc = (optionInfo: OptionInfo) => {
+    const getOptionContentFunc = (optionInfo: SelectOptionInfo) => {
       if (isFunction(slots.option)) {
         const optionSlot = slots.option;
         return () => optionSlot({ data: optionInfo });
@@ -756,12 +765,14 @@ export default defineComponent({
       return () => optionInfo.label;
     };
 
-    const renderOption = (optionInfo: OptionInfo | GroupOptionInfo) => {
+    const renderOption = (
+      optionInfo: SelectOptionInfo | SelectOptionGroupInfo
+    ) => {
       if (isGroupOptionInfo(optionInfo)) {
         return (
-          <SelectOptGroup key={optionInfo.key} label={optionInfo.label}>
+          <OptGroup key={optionInfo.key} label={optionInfo.label}>
             {optionInfo.options.map((child) => renderOption(child))}
-          </SelectOptGroup>
+          </OptGroup>
         );
       }
 
@@ -775,10 +786,11 @@ export default defineComponent({
       }
 
       return (
-        <SelectOption
+        <Option
           v-slots={{
             default: getOptionContentFunc(optionInfo),
           }}
+          // @ts-ignore
           ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
               optionRefs.value[optionInfo.key] = ref.$el;
@@ -808,8 +820,11 @@ export default defineComponent({
                 ref={virtualListRef}
                 data={validOptions.value}
                 v-slots={{
-                  item: ({ item }: { item: OptionInfo | GroupOptionInfo }) =>
-                    renderOption(item),
+                  item: ({
+                    item,
+                  }: {
+                    item: SelectOptionInfo | SelectOptionGroupInfo;
+                  }) => renderOption(item),
                 }}
               />
             ),
@@ -881,6 +896,7 @@ export default defineComponent({
             placeholder={props.placeholder}
             bordered={props.bordered}
             size={mergedSize.value}
+            // @ts-ignore
             onInputValueChange={handleInputValueChange}
             onRemove={handleRemove}
             onClear={handleClear}

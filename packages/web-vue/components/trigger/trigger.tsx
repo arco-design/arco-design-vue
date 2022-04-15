@@ -21,19 +21,17 @@ import {
   toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import type { AnimationDuration, ClassName, EmitType } from '../_utils/types';
+import type { EmitType } from '../_utils/types';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
-import { TRIGGER_EVENTS } from '../_utils/constant';
 import {
   getArrowStyle,
   getPopupStyle,
-  PopupTranslate,
   getElementScrollRect,
   getScrollElements,
   getTransformOrigin,
 } from './utils';
 import ResizeObserver from '../_components/resize-observer-v2.vue';
-import { getElement, off, on } from '../_utils/dom';
+import { off, on } from '../_utils/dom';
 import {
   isEmptyChildren,
   isComponentInstance,
@@ -46,6 +44,7 @@ import usePopupManager from '../_hooks/use-popup-manager';
 import { useResizeObserver } from '../_hooks/use-resize-observer';
 import ClientOnly from '../_components/client-only';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
+import { TriggerPopupTranslate } from './interface';
 
 export default defineComponent({
   name: 'Trigger',
@@ -76,15 +75,6 @@ export default defineComponent({
     trigger: {
       type: [String, Array] as PropType<TriggerEvent | TriggerEvent[]>,
       default: 'hover',
-      validator: (value: any) => {
-        const values: any[] = [].concat(value);
-        for (const value of values) {
-          if (!TRIGGER_EVENTS.includes(value)) {
-            return false;
-          }
-        }
-        return true;
-      },
     },
     /**
      * @zh 弹出位置
@@ -116,7 +106,7 @@ export default defineComponent({
      * @en The moving distance of the popup
      */
     popupTranslate: {
-      type: [Array, Object] as PropType<PopupTranslate>,
+      type: [Array, Object] as PropType<TriggerPopupTranslate>,
     },
     /**
      * @zh 弹出框是否显示箭头
@@ -179,7 +169,7 @@ export default defineComponent({
      * @en The class name of the popup content
      */
     contentClass: {
-      type: [String, Array, Object] as PropType<ClassName>,
+      type: [String, Array, Object],
     },
     /**
      * @zh 弹出框内容的样式
@@ -193,7 +183,7 @@ export default defineComponent({
      * @en The class name of the popup arrow
      */
     arrowClass: {
-      type: [String, Array, Object] as PropType<ClassName>,
+      type: [String, Array, Object],
     },
     /**
      * @zh 弹出框箭头的样式
@@ -222,7 +212,13 @@ export default defineComponent({
      * @en The duration of the popup animation
      */
     duration: {
-      type: [Number, Object] as PropType<AnimationDuration>,
+      type: [Number, Object] as PropType<
+        | number
+        | {
+            enter: number;
+            leave: number;
+          }
+      >,
     },
     /**
      * @zh mouseenter事件延时触发的时间（毫秒）
@@ -638,17 +634,14 @@ export default defineComponent({
       return computedVisible.value ? props.openedClass : undefined;
     });
 
-    let scrollElements: HTMLElement[];
+    let scrollElements: HTMLElement[] | undefined;
 
     // 当popup显示状态改变时，修改外部点击事件
     watch(computedVisible, (value) => {
       if (props.clickOutsideToClose) {
-        if (outsideListener && !value) {
+        if (!value && outsideListener) {
           removeOutsideListener();
-          return;
-        }
-
-        if (!outsideListener) {
+        } else if (value && !outsideListener) {
           on(document.documentElement, 'mousedown', handleOutsideClick);
           outsideListener = true;
         }
@@ -664,6 +657,7 @@ export default defineComponent({
           for (const item of scrollElements) {
             item.removeEventListener('scroll', handleScroll);
           }
+          scrollElements = undefined;
         }
       }
 
@@ -705,6 +699,15 @@ export default defineComponent({
     onBeforeUnmount(() => {
       triggerCtx?.removeChildRef(popupRef);
       destroyResizeObserver();
+      if (outsideListener) {
+        removeOutsideListener();
+      }
+      if (scrollElements) {
+        for (const item of scrollElements) {
+          item.removeEventListener('scroll', handleScroll);
+        }
+        scrollElements = undefined;
+      }
     });
 
     const mounted = ref(computedVisible.value);

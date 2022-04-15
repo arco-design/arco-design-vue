@@ -34,31 +34,19 @@ export default defineComponent({
     /**
      * @zh 水平对齐方式 (`justify-content`)
      * @en Horizontal alignment (`justify-content`)
-     * @values 'start', 'center', 'end', 'space-around', 'space-between'
      */
     justify: {
-      type: String,
-      validator: (value: string) => {
-        return [
-          'start',
-          'center',
-          'end',
-          'space-around',
-          'space-between',
-        ].includes(value);
-      },
+      type: String as PropType<
+        'start' | 'center' | 'end' | 'space-around' | 'space-between'
+      >,
       default: 'start',
     },
     /**
      * @zh 竖直对齐方式 ( `align-items` )
      * @en Vertical alignment (`align-items`)
-     * @values 'start', 'center', 'end', 'stretch'
      */
     align: {
-      type: String,
-      validator: (value: string) => {
-        return ['start', 'center', 'end', 'stretch'].includes(value);
-      },
+      type: String as PropType<'start' | 'center' | 'end' | 'stretch'>,
       default: 'start',
     },
     /**

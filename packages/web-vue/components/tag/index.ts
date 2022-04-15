@@ -12,7 +12,7 @@ const Tag = Object.assign(_Tag, {
   },
 });
 
-export type { TagProps, TagColor } from './interface';
 export type TagInstance = InstanceType<typeof _Tag>;
+export type { TagProps, TagColor } from './interface';
 
 export default Tag;

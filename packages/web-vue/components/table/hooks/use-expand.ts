@@ -1,7 +1,11 @@
 import { computed, ref } from 'vue';
 import { TableProps } from '../interface';
 
-export const useExpand = (props: TableProps, allRowKeys: string[], emit) => {
+export const useExpand = (
+  props: TableProps,
+  allRowKeys: string[],
+  emit: any
+) => {
   const getDefaultExpandedRowKeys = (): string[] => {
     if (props.expandable?.defaultExpandedRowKeys) {
       return props.expandable?.defaultExpandedRowKeys;

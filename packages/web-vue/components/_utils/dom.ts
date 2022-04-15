@@ -123,7 +123,7 @@ export const getRelativeRect = (target: HTMLElement, relative: HTMLElement) => {
 
 export const isScroll = (element: HTMLElement) => {
   return element.tagName === 'BODY'
-    ? window.innerHeight < element.offsetHeight
+    ? document.documentElement.scrollHeight > window.innerHeight
     : element.scrollHeight > element.offsetHeight;
 };
 

@@ -1,6 +1,6 @@
 import { CSSProperties } from 'vue';
 import {
-  FieldNames,
+  TreeFieldNames,
   TreeNodeData,
   TreeProps,
   TreeNodeKey,
@@ -54,7 +54,7 @@ export interface TreeSelectProps {
   defaultValue: TreeSelectValue | undefined;
   modelValue: TreeSelectValue | undefined;
   multiple: boolean;
-  fieldNames: FieldNames | undefined;
+  fieldNames: TreeFieldNames | undefined;
   data: TreeNodeData[];
   labelInValue: boolean;
   treeCheckable: boolean;

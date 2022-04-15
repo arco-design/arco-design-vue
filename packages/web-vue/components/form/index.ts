@@ -17,6 +17,13 @@ const Form = Object.assign(_Form, {
 
 export type FormInstance = InstanceType<typeof _Form>;
 export type FormItemInstance = InstanceType<typeof _FormItem>;
+export type {
+  ValidateStatus,
+  ValidateTrigger,
+  ValidatedError,
+  FieldRule,
+  FormItemEventHandler,
+} from './interface';
 
 export { _FormItem as FormItem };
 

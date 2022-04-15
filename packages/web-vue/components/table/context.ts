@@ -1,5 +1,5 @@
 import type { InjectionKey, Slots } from 'vue';
-import { Filters, Sorter, TableColumn, TableData } from './interface';
+import { Filters, Sorter, TableColumnData, TableData } from './interface';
 
 export interface TableContext {
   loadMore?: (
@@ -15,7 +15,7 @@ export interface TableContext {
   filters: Filters;
   filterIconAlignLeft: boolean;
   resizingColumn: string;
-  addColumn: (id: number, column: TableColumn) => void;
+  addColumn: (id: number, column: TableColumnData) => void;
   removeColumn: (id: number) => void;
   onSorterChange: (
     dataIndex: string,
@@ -31,7 +31,7 @@ export interface TableContext {
 }
 
 export interface TableColumnContext {
-  addChild: (id: number, column: TableColumn) => void;
+  addChild: (id: number, column: TableColumnData) => void;
   removeChild: (id: number) => void;
 }
 

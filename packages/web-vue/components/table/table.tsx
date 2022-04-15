@@ -31,7 +31,7 @@ import {
 import type {
   TableBorder,
   TableChangeExtra,
-  TableColumn,
+  TableColumnData,
   TableComponents,
   TableData,
   TableDraggable,
@@ -86,7 +86,7 @@ export default defineComponent({
      * @en Column info of the table
      */
     columns: {
-      type: Array as PropType<TableColumn[]>,
+      type: Array as PropType<TableColumnData[]>,
       default: () => [],
     },
     /**
@@ -240,7 +240,7 @@ export default defineComponent({
       type: Function as PropType<
         (data: {
           record: TableData;
-          column: TableColumn | TableOperationColumn;
+          column: TableColumnData | TableOperationColumn;
           rowIndex: number;
           columnIndex: number;
         }) => { rowspan?: number; colspan?: number } | void
@@ -322,7 +322,7 @@ export default defineComponent({
       type: [Boolean, Function] as PropType<
         | boolean
         | ((params: {
-            columns: TableColumn[];
+            columns: TableColumnData[];
             data: TableData[];
           }) => TableData[])
       >,
@@ -345,7 +345,7 @@ export default defineComponent({
       type: Function as PropType<
         (data: {
           record: TableData;
-          column: TableColumn | TableOperationColumn;
+          column: TableColumnData | TableOperationColumn;
           rowIndex: number;
           columnIndex: number;
         }) => { rowspan?: number; colspan?: number } | void
@@ -387,14 +387,14 @@ export default defineComponent({
     },
     onCellClick: {
       type: [Function, Array] as PropType<
-        (record: TableData, column: TableColumn) => void
+        (record: TableData, column: TableColumnData) => void
       >,
     },
     onRowClick: {
       type: [Function, Array] as PropType<(record: TableData) => void>,
     },
     onHeaderClick: {
-      type: [Function, Array] as PropType<(column: TableColumn) => void>,
+      type: [Function, Array] as PropType<(column: TableColumnData) => void>,
     },
   },
   emits: [
@@ -464,7 +464,7 @@ export default defineComponent({
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
      * @param {TableData} record
-     * @param {TableColumn} column
+     * @param {TableColumnData} column
      */
     'cellClick',
     /**
@@ -476,7 +476,7 @@ export default defineComponent({
     /**
      * @zh 点击表头数据时触发
      * @en Triggered when the header data is clicked
-     * @param {TableColumn} column
+     * @param {TableColumnData} column
      */
     'headerClick',
   ],
@@ -543,7 +543,7 @@ export default defineComponent({
    * @zh 总结行
    * @en Content on the right side of the pagination
    * @slot summary-cell
-   * @binding {TableColumn} column
+   * @binding {TableColumnData} column
    * @binding {TableData} record
    * @binding {number} rowIndex
    * @version 2.23.0
@@ -590,8 +590,8 @@ export default defineComponent({
       });
     });
 
-    const slotColumnMap = reactive(new Map<number, TableColumn>());
-    const slotColumns = ref<TableColumn[]>();
+    const slotColumnMap = reactive(new Map<number, TableColumnData>());
+    const slotColumns = ref<TableColumnData[]>();
 
     watch(slotColumnMap, (slotColumnMap) => {
       if (slotColumnMap.size > 0) {
@@ -607,9 +607,9 @@ export default defineComponent({
     });
 
     // 拆解分组后的数据表头信息
-    const dataColumnMap = new Map<string, TableColumn>();
-    const dataColumns = ref<TableColumn[]>([]);
-    const groupColumns = ref<TableColumn[][]>([]);
+    const dataColumnMap = new Map<string, TableColumnData>();
+    const dataColumns = ref<TableColumnData[]>([]);
+    const groupColumns = ref<TableColumnData[][]>([]);
 
     watch(
       [columns, slotColumnMap],
@@ -1044,13 +1044,13 @@ export default defineComponent({
 
     const handleCellClick = (
       record: TableData,
-      column: TableColumn,
+      column: TableColumnData,
       ev: Event
     ) => {
       emit('cellClick', record, column, ev);
     };
 
-    const handleHeaderClick = (column: TableColumn, ev: Event) => {
+    const handleHeaderClick = (column: TableColumnData, ev: Event) => {
       emit('headerClick', column, ev);
     };
 
@@ -1136,7 +1136,7 @@ export default defineComponent({
       return undefined;
     });
 
-    const addColumn = (id: number, column: TableColumn) => {
+    const addColumn = (id: number, column: TableColumnData) => {
       slotColumnMap.set(id, column);
     };
 
@@ -1280,7 +1280,7 @@ export default defineComponent({
       const data: Record<string, [number, number]> = {};
       if (props.spanMethod) {
         const columns = props.spanAll
-          ? ([] as (TableColumn | TableOperationColumn)[]).concat(
+          ? ([] as (TableColumnData | TableOperationColumn)[]).concat(
               operations.value,
               dataColumns.value
             )
@@ -1328,10 +1328,9 @@ export default defineComponent({
     const tableSummarySpan = computed(() => {
       const data: Record<string, [number, number]> = {};
       if (props.summarySpanMethod) {
-        const columns = ([] as (TableColumn | TableOperationColumn)[]).concat(
-          operations.value,
-          dataColumns.value
-        );
+        const columns = (
+          [] as (TableColumnData | TableOperationColumn)[]
+        ).concat(operations.value, dataColumns.value);
         flattenData.value.forEach((record, rowIndex) => {
           columns.forEach((column, columnIndex) => {
             const { rowspan = 1, colspan = 1 } =

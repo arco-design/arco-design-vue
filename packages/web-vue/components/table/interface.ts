@@ -1,4 +1,4 @@
-import { CSSProperties, RenderFunction, Slot, Slots, VNode } from 'vue';
+import { CSSProperties, RenderFunction, Slots, VNode } from 'vue';
 import { Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
@@ -72,7 +72,7 @@ export interface TableSortable {
   defaultSortOrder?: 'ascend' | 'descend' | '';
 }
 
-interface TableFilterData {
+export interface TableFilterData {
   /**
    * @zh 筛选数据选项的内容
    * @en Filter the content of the data option
@@ -141,7 +141,7 @@ export interface TableFilterable {
   slotName?: string;
 }
 
-export interface TableColumn {
+export interface TableColumnData {
   /**
    * @zh 列信息的标识，对应 `TableData` 中的数据
    * @en The identifier of the column information, corresponding to the data in `TableData`
@@ -186,7 +186,7 @@ export interface TableColumn {
    * @zh 表头子数据，用于表头分组
    * @en Header sub-data, used for header grouping
    */
-  children?: TableColumn[];
+  children?: TableColumnData[];
   /**
    * @zh 自定义单元格样式
    * @en Custom cell style
@@ -199,7 +199,7 @@ export interface TableColumn {
    */
   render?: (data: {
     record: TableData;
-    column: TableColumn;
+    column: TableColumnData;
     rowIndex: number;
   }) => VNode;
   /**
@@ -409,7 +409,7 @@ export interface TableChangeExtra {
 }
 
 export interface TableProps {
-  columns: TableColumn[];
+  columns: TableColumnData[];
   data: TableData[];
   bordered?: boolean | TableBorder;
   rowSelection?: TableRowSelection;

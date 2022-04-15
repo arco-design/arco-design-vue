@@ -70,6 +70,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 %%API(range-picker.vue)%%
 
+%%INTERFACE(./interface.ts)%%
+
 ## zh-CN
 ### 字符串解析格式
 

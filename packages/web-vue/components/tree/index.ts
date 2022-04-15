@@ -3,6 +3,8 @@ import { ArcoOptions } from '../_utils/types';
 import { getComponentPrefix, setGlobalConfig } from '../_utils/global-config';
 import _Tree from './tree.vue';
 
+export type { TreeNodeData, TreeFieldNames } from './interface';
+
 const Tree = Object.assign(_Tree, {
   install: (app: App, options?: ArcoOptions) => {
     setGlobalConfig(app, options);

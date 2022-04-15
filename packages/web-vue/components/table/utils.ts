@@ -1,5 +1,5 @@
 import type { CSSProperties, VNode } from 'vue';
-import { TableColumn, TableData, TableOperationColumn } from './interface';
+import { TableColumnData, TableData, TableOperationColumn } from './interface';
 import { isArray, isNull, isUndefined } from '../_utils/is';
 import {
   resolveProps,
@@ -8,10 +8,10 @@ import {
   isArrayChildren,
 } from '../_utils/vue-utils';
 
-const getDataColumnsNumber = (columns: TableColumn[]): number => {
+const getDataColumnsNumber = (columns: TableColumnData[]): number => {
   let count = 0;
 
-  const travelColumns = (columns: TableColumn[]) => {
+  const travelColumns = (columns: TableColumnData[]) => {
     if (isArray(columns) && columns.length > 0) {
       for (const item of columns) {
         if (!item.children) {
@@ -28,7 +28,7 @@ const getDataColumnsNumber = (columns: TableColumn[]): number => {
 };
 
 // Get the total number of rows in the header
-const getTotalHeaderRows = (columns: TableColumn[]): number => {
+const getTotalHeaderRows = (columns: TableColumnData[]): number => {
   let count = 0;
   if (isArray(columns) && columns.length > 0) {
     count = 1;
@@ -46,14 +46,14 @@ const getTotalHeaderRows = (columns: TableColumn[]): number => {
 
 // Get the grouped header row data
 export const getGroupColumns = (
-  columns: TableColumn[],
-  columnMap: Map<string, TableColumn>
+  columns: TableColumnData[],
+  columnMap: Map<string, TableColumnData>
 ) => {
   const totalHeaderRows = getTotalHeaderRows(columns);
 
   columnMap.clear();
-  const dataColumns: TableColumn[] = [];
-  const groupColumns: TableColumn[][] = [...Array(totalHeaderRows)].map(
+  const dataColumns: TableColumnData[] = [];
+  const groupColumns: TableColumnData[][] = [...Array(totalHeaderRows)].map(
     () => []
   );
 
@@ -62,12 +62,12 @@ export const getGroupColumns = (
   let firstRightFixedIndex: number | undefined;
 
   const travelColumns = (
-    columns: TableColumn[],
+    columns: TableColumnData[],
     level = 0,
     fixed?: 'left' | 'right'
   ) => {
     for (const item of columns) {
-      const cell: TableColumn = { ...item };
+      const cell: TableColumnData = { ...item };
       if (isArray(cell.children)) {
         const colSpan = getDataColumnsNumber(cell.children);
         if (colSpan > 1) {
@@ -145,12 +145,12 @@ export const getOperationFixedNumber = (
 
 // Get the location data of a fixed column
 export const getFixedNumber = (
-  column: TableColumn,
+  column: TableColumnData,
   {
     dataColumns,
     operations,
   }: {
-    dataColumns: TableColumn[];
+    dataColumns: TableColumnData[];
     operations: TableOperationColumn[];
   }
 ) => {
@@ -200,7 +200,10 @@ export const getOperationFixedCls = (
 
 export const getFixedCls = (
   prefixCls: string,
-  column: Pick<TableColumn, 'fixed' | 'isLastLeftFixed' | 'isFirstRightFixed'>
+  column: Pick<
+    TableColumnData,
+    'fixed' | 'isLastLeftFixed' | 'isFirstRightFixed'
+  >
 ): any[] => {
   if (column.fixed === 'left') {
     return [
@@ -222,12 +225,12 @@ export const getFixedCls = (
 };
 
 export const getStyle = (
-  column: TableColumn,
+  column: TableColumnData,
   {
     dataColumns,
     operations,
   }: {
-    dataColumns: TableColumn[];
+    dataColumns: TableColumnData[];
     operations: TableOperationColumn[];
   }
 ): CSSProperties => {
@@ -258,14 +261,14 @@ export const getOperationStyle = (
 };
 
 /**
- * Obtain table column data through the <TableColumn> component
+ * Obtain table column data through the <TableColumnData> component
  * @param {VNode[]} vns
  */
 export const getColumnsFromSlot = (vns: VNode[]) => {
-  const columns: TableColumn[] = [];
+  const columns: TableColumnData[] = [];
   for (const vn of vns) {
     if (isNamedComponent(vn, 'TableColumn')) {
-      const column = resolveProps(vn) as TableColumn;
+      const column = resolveProps(vn) as TableColumnData;
       if (isSlotsChildren(vn, vn.children)) {
         if (vn.children.default) {
           column.children = getColumnsFromSlot(vn.children.default());

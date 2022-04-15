@@ -2,7 +2,7 @@ import { computed, ref } from 'vue';
 import { TableProps } from '../interface';
 import { isObject } from '../../_utils/is';
 
-export const usePagination = (props: TableProps, emit) => {
+export const usePagination = (props: TableProps, emit: any) => {
   const _page = ref(
     isObject(props.pagination) ? props.pagination.defaultCurrent ?? 1 : 1
   );

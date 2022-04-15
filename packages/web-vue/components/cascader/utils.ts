@@ -73,6 +73,7 @@ export const getOptionInfos = (
         disabled: Boolean(item[fieldNames.disabled]),
         isLeaf: item[fieldNames.isLeaf],
         parent,
+        totalLeafOptions: item.totalLeafOptions,
       } as CascaderOptionInfo;
       const path = parentPath.concat(data);
       const key = path.map((item) => item.value).join('-');

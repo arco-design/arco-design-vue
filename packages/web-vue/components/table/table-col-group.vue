@@ -16,13 +16,13 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { TableColumn, TableOperationColumn } from './interface';
+import { TableColumnData, TableOperationColumn } from './interface';
 
 export default defineComponent({
   name: 'ColGroup',
   props: {
     dataColumns: {
-      type: Array as PropType<TableColumn[]>,
+      type: Array as PropType<TableColumnData[]>,
       required: true,
     },
     operations: {

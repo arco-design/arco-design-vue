@@ -1,8 +1,8 @@
-import { GridItemProps, GridItemData } from '../interface';
+import { GridItemData } from '../interface';
 
 export function resolveItemData(
   cols: number,
-  props: Partial<GridItemProps>
+  props: GridItemData
 ): GridItemData {
   const originSpan = props.span ?? 1;
   const originOffset = props.offset ?? 0;
