@@ -747,7 +747,7 @@ export default defineComponent({
     }
 
     function getMergedOpValue(date: Dayjs, time?: Dayjs) {
-      if (!isDateTime.value) return date;
+      if (!isDateTime.value && !timePickerProps.value) return date;
       return mergeValueWithTime(getNow(), date, time);
     }
 
