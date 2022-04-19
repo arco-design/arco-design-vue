@@ -60,17 +60,17 @@ The basic usage of RangePicker.
   />
 </template>
 <script>
-import dayjs from 'dayjs';
 export default {
-  methods: {
-    dayjs,
-    onSelect(dateString, date) {
-      console.log('onSelect', dateString, date);
-    },
-    onChange(dateString, date) {
-      console.log('onChange: ', dateString, date);
-    },
-  }
+  setup() {
+    return {
+      onSelect(dateString, date) {
+        console.log('onSelect', dateString, date);
+      },
+      onChange(dateString, date) {
+        console.log('onChange: ', dateString, date);
+      },
+    };
+  },
 }
 </script>
 ```

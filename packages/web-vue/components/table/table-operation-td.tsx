@@ -1,4 +1,4 @@
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType, VNode } from 'vue';
 import { TableData, TableOperationColumn } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { getOperationFixedCls, getOperationStyle } from './utils';
@@ -17,14 +17,6 @@ export default defineComponent({
     IconMinus,
   },
   props: {
-    record: {
-      type: Object as PropType<TableData>,
-      required: true,
-    },
-    rowKey: {
-      type: String,
-      default: 'key',
-    },
     operationColumn: {
       type: Object as PropType<TableOperationColumn>,
       required: true,
@@ -33,26 +25,37 @@ export default defineComponent({
       type: Array as PropType<TableOperationColumn[]>,
       required: true,
     },
-    isRadio: {
-      type: Boolean,
+    record: {
+      type: Object as PropType<TableData>,
+      required: true,
+    },
+    rowKey: {
+      type: String,
+      default: 'key',
     },
     hasExpand: {
       type: Boolean,
+      default: false,
     },
     selectedRowKeys: {
-      type: Array,
-      required: true,
-    },
-    expandedIcon: {
-      type: Function,
-    },
-    expandedRowKeys: {
-      type: Array,
-      required: true,
+      type: Array as PropType<string[]>,
     },
     renderExpandBtn: {
-      type: Function,
-      required: true,
+      type: Function as PropType<
+        (record: TableData, stopPropagation?: boolean) => VNode
+      >,
+    },
+    colSpan: {
+      type: Number,
+      default: 1,
+    },
+    rowSpan: {
+      type: Number,
+      default: 1,
+    },
+    summary: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ['select', 'expand'],
@@ -68,24 +71,42 @@ export default defineComponent({
       `${prefixCls}-operation`,
       {
         [`${prefixCls}-checkbox`]:
-          props.operationColumn.name === 'selection' && !props.isRadio,
+          props.operationColumn.name === 'selection-checkbox',
         [`${prefixCls}-radio`]:
-          props.operationColumn.name === 'selection' && props.isRadio,
+          props.operationColumn.name === 'selection-radio',
         [`${prefixCls}-expand`]: props.operationColumn.name === 'expand',
-        [`${prefixCls}-td-draggable`]:
-          props.operationColumn.name === 'dragHandle',
+        [`${prefixCls}-drag-handle`]:
+          props.operationColumn.name === 'drag-handle',
       },
       ...getOperationFixedCls(prefixCls, props.operationColumn),
     ]);
 
-    const renderSelection = () => {
-      const rowKey = props.record[props.rowKey];
-
-      if (props.isRadio) {
+    const renderContent = () => {
+      if (props.summary) {
+        return null;
+      }
+      if (props.operationColumn.render) {
+        return props.operationColumn.render(props.record);
+      }
+      if (props.operationColumn.name === 'selection-checkbox') {
+        const value = props.record[props.rowKey];
+        return (
+          <Checkbox
+            value={value}
+            modelValue={props.selectedRowKeys ?? []}
+            disabled={Boolean(props.record.disabled)}
+            uninjectGroupContext
+            onChange={(values: string[]) => emit('select', values)}
+            onClick={(ev: Event) => ev.stopPropagation()}
+          />
+        );
+      }
+      if (props.operationColumn.name === 'selection-radio') {
+        const value = props.record[props.rowKey];
         return (
           <Radio
-            value={rowKey}
-            modelValue={props.selectedRowKeys[0] ?? ''}
+            value={value}
+            modelValue={props.selectedRowKeys?.[0] ?? ''}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
             onChange={(value: string) => emit('select', [value])}
@@ -93,43 +114,25 @@ export default defineComponent({
           />
         );
       }
-
-      return (
-        <Checkbox
-          value={rowKey}
-          modelValue={props.selectedRowKeys}
-          disabled={Boolean(props.record.disabled)}
-          uninjectGroupContext
-          onChange={(values: string[]) => emit('select', values)}
-          onClick={(ev: Event) => ev.stopPropagation()}
-        />
-      );
-    };
-
-    const renderContent = () => {
-      if (props.operationColumn.name === 'selection') {
-        return renderSelection();
-      }
       if (props.operationColumn.name === 'expand') {
-        if (props.hasExpand) {
+        if (props.hasExpand && props.renderExpandBtn) {
           return props.renderExpandBtn(props.record);
         }
         return null;
       }
-      if (props.operationColumn.name === 'dragHandle') {
+      if (props.operationColumn.name === 'drag-handle') {
         return slots['drag-handle-icon']?.() ?? <IconDragDotVertical />;
-      }
-      if (props.operationColumn.bodyNode) {
-        return props.operationColumn.bodyNode(props.record, {
-          class: cls.value,
-          style: style.value,
-        });
       }
       return null;
     };
 
     return () => (
-      <td class={cls.value} style={style.value}>
+      <td
+        class={cls.value}
+        style={style.value}
+        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
+        colspan={props.colSpan > 1 ? props.colSpan : undefined}
+      >
         <span class={`${prefixCls}-cell`}>{renderContent()}</span>
       </td>
     );

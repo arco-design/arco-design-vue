@@ -14,6 +14,8 @@ description: Organize, arrange, and display a list of options.
 
 @import ./__demo__/collapse-control.md
 
+@import ./__demo__/breakpoint.md
+
 @import ./__demo__/sub-menu.md
 
 @import ./__demo__/size.md
@@ -45,11 +47,13 @@ description: Organize, arrange, and display a list of options.
 |trigger-props|Accept all `Props` of `Trigger` in pop-up mode|`object`|`-`||
 |tooltip-props|Accept all `Props` of `ToolTip` in pop-up mode|`object`|`-`||
 |auto-open-selected|Expand the selected menus by default|`boolean`|`false`|2.8.0|
+|breakpoint|Responsive breakpoints, see [Responsive Grid](/vue/component/grid) for details|`'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs'`|`-`|2.18.0|
+|popup-max-height|The maximum height of popover|`boolean \| number`|`true`|2.23.0|
 ### `<menu>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|collapse|Triggered when the collapsed state changes|collapsed: `boolean`|
+|collapse|Triggered when the collapsed state changes|collapsed: `boolean`<br>type: `'clickTrigger'\|'responsive'`|
 |menu-item-click|Triggered when the menu item is clicked|key: `string`|
 |sub-menu-click|Triggered when the submenu is clicked|key: `string`<br>openKeys: `string[]`|
 ### `<menu>` Slots
@@ -65,12 +69,13 @@ description: Organize, arrange, and display a list of options.
 
 ### `<sub-menu>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|key|Unique key|`string`|`-`|
-|title|The title of the submenu|`string`|`-`|
-|selectable|In the pop-up mode, whether the multi-level menu header is also used as a menu item to support the state such as click to select|`boolean`|`false`|
-|popup|Whether to force the use of pop-up mode, `level` indicates the level of the current submenu|`SubMenuProps['popup']`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|key|Unique key|`string`|`-`||
+|title|The title of the submenu|`string`|`-`||
+|selectable|In the pop-up mode, whether the multi-level menu header is also used as a menu item to support the state such as click to select|`boolean`|`false`||
+|popup|Whether to force the use of pop-up mode, `level` indicates the level of the current submenu|`boolean \| ((level: number) => boolean)`|`false`||
+|popup-max-height|The maximum height of popover|`boolean \| number`|`true`|2.23.0|
 ### `<sub-menu>` Slots
 
 |Slot Name|Description|Parameters|version|

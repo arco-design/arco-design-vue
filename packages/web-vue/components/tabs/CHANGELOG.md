@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.18.1
+
+`2022-03-07`
+
+### 🐛 BugFix
+
+- Fix the problem that activeKey modification will be triggered during initialization ([#787](https://github.com/arco-design/arco-design-vue/pull/787))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 Optimization
+
+- Use Context to optimize components and support secondary encapsulation of TabPane ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- key supports number type ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+- Add autoSwitch attribute ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
+
+
 ## 2.11.0
 
 `2021-12-17`

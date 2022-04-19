@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-使用 `fallback-option` 自定义选项中不存在的值，默认不会在输入框中展示不存在的选项值。可能用于选项还没有获取完，或者远程搜索时选项改变了。
+使用 `fallback-option` 自定义选项中不存在的值，默认会在输入框中展示不存在的选项值。可能用于选项还没有获取完，或者远程搜索时选项改变了。
 
 ---
 
 ## en-US
 
-Use `fallback-option` to customize the value that does not exist in the option. By default, the value of the option that does not exist in the input box will not be displayed. It may be used when the options have not been obtained, or the options have changed during remote search.
+Use `fallback-option` to customize the value that does not exist in the option. By default, the value of the option that does not exist in the input box will display. It may be used when the options have not been obtained, or the options have changed during remote search.
 
 ---
 
@@ -46,14 +46,17 @@ Use `fallback-option` to customize the value that does not exist in the option. 
 
 <script>
 export default {
-  methods: {
-    fallback(value) {
+  setup() {
+    const fallback = (value) => {
       return {
         value,
         label: `++${value}++`
       }
+    };
+    return {
+      fallback
     }
-  }
+  },
 }
 </script>
 ```

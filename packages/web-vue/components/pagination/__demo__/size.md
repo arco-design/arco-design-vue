@@ -25,17 +25,21 @@ The pagination is divided into four sizes: `mini`, `small`, `medium`, and `large
       <a-radio value="medium">Medium</a-radio>
       <a-radio value="large">Large</a-radio>
     </a-radio-group>
-    <a-pagination :total="50" :size="size" show-total show-jumper show-page-size/>
+    <a-pagination :total="50" :size="size" show-total show-jumper show-page-size />
   </a-space>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data(){
+  setup() {
+    const size = ref('medium');
+
     return {
-      size:'medium'
+      size
     }
-  }
+  },
 }
 </script>
 ```

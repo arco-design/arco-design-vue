@@ -11,6 +11,13 @@
   border-radius: @select-popup-border-radius;
   box-shadow: @select-popup-box-shadow;
 
+  & &-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+  }
+
   &-list {
     margin-top: 0;
     margin-bottom: 0;
@@ -23,10 +30,12 @@
     }
   }
 
-  &-option {
+  .@{select-prefix-cls}-option {
     position: relative;
     // 避免 Trigger 的小箭头位于其上方
     z-index: 1;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
     width: 100%;
     padding: 0 @select-signal-popup-option-padding-horizontal;
@@ -38,10 +47,20 @@
     text-align: left;
     background-color: @select-popup-option-color-bg_default;
     cursor: pointer;
-    .text-ellipsis();
+
+    &-content {
+      .text-ellipsis();
+    }
+
+    &-checkbox {
+      overflow: hidden;
+
+      .@{prefix}-checkbox-label {
+        .text-ellipsis();
+      }
+    }
 
     &-has-suffix {
-      display: flex;
       justify-content: space-between;
     }
 
@@ -61,15 +80,16 @@
     }
 
     &-icon {
+      display: inline-flex;
       margin-right: 8px;
     }
 
-    //&-suffix {
-    //  margin-left: @dropdown-margin-left-suffix-icon;
-    //}
+    &-suffix {
+      margin-left: @dropdown-margin-left-suffix-icon;
+    }
   }
 
-  &-group {
+  .@{select-prefix-cls}-group {
     &:first-child &-title {
       margin-top: @select-popup-group-title-padding-top;
     }

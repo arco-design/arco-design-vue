@@ -18,20 +18,20 @@ import {
   onUpdated,
   onMounted,
   onBeforeUnmount,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import type { AnimationDuration, ClassName, EmitType } from '../_utils/types';
+import type { EmitType } from '../_utils/types';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
-import { TRIGGER_EVENTS } from '../_utils/constant';
 import {
   getArrowStyle,
   getPopupStyle,
-  PopupTranslate,
   getElementScrollRect,
   getScrollElements,
+  getTransformOrigin,
 } from './utils';
-import ResizeObserver from '../_components/resize-observer';
-import { getElement, off, on } from '../_utils/dom';
+import ResizeObserver from '../_components/resize-observer-v2.vue';
+import { off, on } from '../_utils/dom';
 import {
   isEmptyChildren,
   isComponentInstance,
@@ -42,6 +42,9 @@ import { triggerInjectionKey } from './context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import usePopupManager from '../_hooks/use-popup-manager';
 import { useResizeObserver } from '../_hooks/use-resize-observer';
+import ClientOnly from '../_components/client-only';
+import { useTeleportContainer } from '../_hooks/use-teleport-container';
+import { TriggerPopupTranslate } from './interface';
 
 export default defineComponent({
   name: 'Trigger',
@@ -72,15 +75,6 @@ export default defineComponent({
     trigger: {
       type: [String, Array] as PropType<TriggerEvent | TriggerEvent[]>,
       default: 'hover',
-      validator: (value: any) => {
-        const values: any[] = [].concat(value);
-        for (const value of values) {
-          if (!TRIGGER_EVENTS.includes(value)) {
-            return false;
-          }
-        }
-        return true;
-      },
     },
     /**
      * @zh 弹出位置
@@ -112,7 +106,7 @@ export default defineComponent({
      * @en The moving distance of the popup
      */
     popupTranslate: {
-      type: [Array, Object] as PropType<PopupTranslate>,
+      type: [Array, Object] as PropType<TriggerPopupTranslate>,
     },
     /**
      * @zh 弹出框是否显示箭头
@@ -175,7 +169,7 @@ export default defineComponent({
      * @en The class name of the popup content
      */
     contentClass: {
-      type: [String, Array, Object] as PropType<ClassName>,
+      type: [String, Array, Object],
     },
     /**
      * @zh 弹出框内容的样式
@@ -189,7 +183,7 @@ export default defineComponent({
      * @en The class name of the popup arrow
      */
     arrowClass: {
-      type: [String, Array, Object] as PropType<ClassName>,
+      type: [String, Array, Object],
     },
     /**
      * @zh 弹出框箭头的样式
@@ -218,7 +212,13 @@ export default defineComponent({
      * @en The duration of the popup animation
      */
     duration: {
-      type: [Number, Object] as PropType<AnimationDuration>,
+      type: [Number, Object] as PropType<
+        | number
+        | {
+            enter: number;
+            leave: number;
+          }
+      >,
     },
     /**
      * @zh mouseenter事件延时触发的时间（毫秒）
@@ -333,6 +333,18 @@ export default defineComponent({
      * @property {boolean} popupVisible
      */
     'popupVisibleChange',
+    /**
+     * @zh 弹出框显示后（动画结束）触发
+     * @en Triggered after the trigger is shown (the animation ends)
+     * @version 2.18.0
+     */
+    'show',
+    /**
+     * @zh 弹出框隐藏后（动画结束）触发
+     * @en Triggered after the popup is hidden (the animation ends)
+     * @version 2.18.0
+     */
+    'hide',
   ],
   /**
    * @zh 弹出框内容
@@ -340,6 +352,7 @@ export default defineComponent({
    * @slot content
    */
   setup(props, { emit, slots, attrs }) {
+    const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('trigger');
     const triggerMethods = computed(() =>
       ([] as Array<TriggerEvent>).concat(props.trigger)
@@ -359,9 +372,8 @@ export default defineComponent({
     const popupVisible = ref(props.defaultPopupVisible);
     const popupPosition = ref(props.position);
     const popupStyle = ref<CSSProperties>({});
+    const transformStyle = ref<CSSProperties>({});
     const arrowStyle = ref<CSSProperties>({});
-    // container相关变量
-    const containerEle = ref<HTMLElement>();
     // 鼠标相关变量
     const arrowRef = ref<HTMLElement>();
     const mousePosition = ref({
@@ -372,6 +384,12 @@ export default defineComponent({
     const computedVisible = computed(
       () => props.popupVisible ?? popupVisible.value
     );
+
+    const { teleportContainer, containerRef } = useTeleportContainer({
+      popupContainer,
+      visible: computedVisible,
+      documentContainer: true,
+    });
 
     const { zIndex } = usePopupManager({ visible: computedVisible });
 
@@ -396,10 +414,10 @@ export default defineComponent({
     };
 
     const updatePopupStyle = () => {
-      if (!triggerEle.value || !popupRef.value || !containerEle.value) {
+      if (!triggerEle.value || !popupRef.value || !containerRef.value) {
         return;
       }
-      const containerRect = containerEle.value.getBoundingClientRect();
+      const containerRect = containerRef.value.getBoundingClientRect();
       const triggerRect = props.alignPoint
         ? {
             top: mousePosition.value.top,
@@ -425,9 +443,13 @@ export default defineComponent({
           translate: props.popupTranslate,
           customStyle: props.popupStyle,
           autoFitPosition: props.autoFitPosition,
-          autoFitTransformOrigin: props.autoFitTransformOrigin,
         }
       );
+      if (props.autoFitTransformOrigin) {
+        transformStyle.value = {
+          transformOrigin: getTransformOrigin(position),
+        };
+      }
       if (props.autoFitPopupMinWidth) {
         style.minWidth = `${triggerRect.width}px`;
       } else if (props.autoFitPopupWidth) {
@@ -612,17 +634,14 @@ export default defineComponent({
       return computedVisible.value ? props.openedClass : undefined;
     });
 
-    let scrollElements: HTMLElement[];
+    let scrollElements: HTMLElement[] | undefined;
 
     // 当popup显示状态改变时，修改外部点击事件
     watch(computedVisible, (value) => {
       if (props.clickOutsideToClose) {
-        if (outsideListener && !value) {
+        if (!value && outsideListener) {
           removeOutsideListener();
-          return;
-        }
-
-        if (!outsideListener) {
+        } else if (value && !outsideListener) {
           on(document.documentElement, 'mousedown', handleOutsideClick);
           outsideListener = true;
         }
@@ -638,7 +657,12 @@ export default defineComponent({
           for (const item of scrollElements) {
             item.removeEventListener('scroll', handleScroll);
           }
+          scrollElements = undefined;
         }
+      }
+
+      if (value) {
+        mounted.value = true;
       }
     });
 
@@ -653,17 +677,11 @@ export default defineComponent({
     );
 
     const { createResizeObserver, destroyResizeObserver } = useResizeObserver({
-      elementRef: containerEle,
+      elementRef: containerRef,
       onResize: handleResize,
     });
 
     onMounted(() => {
-      if (props.popupContainer) {
-        containerEle.value = getElement(props.popupContainer);
-      } else {
-        containerEle.value = document.documentElement;
-      }
-
       createResizeObserver();
 
       // 默认显示时，更新popup位置
@@ -681,7 +699,31 @@ export default defineComponent({
     onBeforeUnmount(() => {
       triggerCtx?.removeChildRef(popupRef);
       destroyResizeObserver();
+      if (outsideListener) {
+        removeOutsideListener();
+      }
+      if (scrollElements) {
+        for (const item of scrollElements) {
+          item.removeEventListener('scroll', handleScroll);
+        }
+        scrollElements = undefined;
+      }
     });
+
+    const mounted = ref(computedVisible.value);
+
+    const handleShow = () => {
+      if (computedVisible.value) {
+        emit('show');
+      }
+    };
+
+    const handleHide = () => {
+      if (!computedVisible.value) {
+        mounted.value = false;
+        emit('hide');
+      }
+    };
 
     return () => {
       const children = slots.default?.() ?? [];
@@ -704,16 +746,17 @@ export default defineComponent({
           ) : (
             children
           )}
-          <Teleport
-            to={props.popupContainer ?? 'body'}
-            disabled={!props.renderToBody}
-          >
-            <Transition name={props.animationName} duration={props.duration}>
-              {(!props.unmountOnClose || computedVisible.value) &&
+          <ClientOnly>
+            <Teleport
+              to={teleportContainer.value}
+              disabled={!props.renderToBody}
+            >
+              {(!props.unmountOnClose ||
+                computedVisible.value ||
+                mounted.value) &&
                 !hidePopup.value && (
                   <ResizeObserver onResize={handleResize}>
                     <div
-                      v-show={computedVisible.value}
                       ref={popupRef}
                       class={[
                         `${prefixCls}-popup`,
@@ -726,24 +769,38 @@ export default defineComponent({
                       onMousedown={handlePopupMouseDown}
                       {...attrs}
                     >
-                      <div
-                        class={[`${prefixCls}-content`, props.contentClass]}
-                        style={props.contentStyle}
+                      <Transition
+                        name={props.animationName}
+                        duration={props.duration}
+                        appear
+                        onAfterEnter={handleShow}
+                        onAfterLeave={handleHide}
                       >
-                        {slots.content?.()}
-                      </div>
-                      {props.showArrow && (
                         <div
-                          ref={arrowRef}
-                          class={[`${prefixCls}-arrow`, props.arrowClass]}
-                          style={arrowStyle.value}
-                        />
-                      )}
+                          class={`${prefixCls}-popup-wrapper`}
+                          style={transformStyle.value}
+                          v-show={computedVisible.value}
+                        >
+                          <div
+                            class={[`${prefixCls}-content`, props.contentClass]}
+                            style={props.contentStyle}
+                          >
+                            {slots.content?.()}
+                          </div>
+                          {props.showArrow && (
+                            <div
+                              ref={arrowRef}
+                              class={[`${prefixCls}-arrow`, props.arrowClass]}
+                              style={arrowStyle.value}
+                            />
+                          )}
+                        </div>
+                      </Transition>
                     </div>
                   </ResizeObserver>
                 )}
-            </Transition>
-          </Teleport>
+            </Teleport>
+          </ClientOnly>
         </>
       );
     };

@@ -13,7 +13,7 @@ describe('Mention', () => {
     await input.setValue('@');
 
     expect(
-      wrapper.findComponent({ name: 'DropdownPanel' }).html()
+      wrapper.findComponent({ name: 'SelectDropdown' }).html()
     ).toMatchSnapshot();
   });
 
@@ -26,16 +26,16 @@ describe('Mention', () => {
     const input = wrapper.find('input');
     await input.trigger('focusin');
     await input.setValue('@');
-    const dropdown = wrapper.findComponent({ name: 'DropdownPanel' });
-    await input.trigger('keydown', { code: 'ArrowDown' });
-    expect(dropdown.find('.arco-dropdown-option-active').text()).toBe(
+    const dropdown = wrapper.findComponent({ name: 'SelectDropdown' });
+    await input.trigger('keydown', { key: 'ArrowDown' });
+    expect(dropdown.find('.arco-select-option-active').text()).toBe(
       'Bytedesign'
     );
-    await input.trigger('keydown', { code: 'ArrowUp' });
-    expect(dropdown.find('.arco-dropdown-option-active').text()).toBe(
+    await input.trigger('keydown', { key: 'ArrowUp' });
+    expect(dropdown.find('.arco-select-option-active').text()).toBe(
       'Bytedance'
     );
-    await input.trigger('keydown', { code: 'Enter' });
+    await input.trigger('keydown', { key: 'Enter' });
     expect(wrapper.emitted('change')?.[1]).toEqual(['@Bytedance']);
   });
 });

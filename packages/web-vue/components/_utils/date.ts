@@ -64,7 +64,7 @@ export const methods = {
     localeName: string
   ) {
     return date1
-      .locale({ ...dayjs.Ls[localeName], weekStart })
+      .locale({ ...dayjs.Ls[localeName.toLocaleLowerCase()], weekStart })
       .isSame(date2, 'week');
   },
 };
@@ -184,4 +184,8 @@ export function getDateValue(
   }
 
   return formatValue(value);
+}
+
+export function initializeDateLocale(localeName: string, weekStart: number) {
+  dayjs.locale({ ...dayjs.Ls[localeName.toLocaleLowerCase()], weekStart });
 }

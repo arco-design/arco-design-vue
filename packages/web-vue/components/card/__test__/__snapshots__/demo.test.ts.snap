@@ -15,7 +15,7 @@ exports[`<card> demo: render [actions] correctly 1`] = `
       <div class=\\"arco-card-meta-footer\\">
         <div class=\\"arco-card-meta-avatar\\">
           <div style=\\"display: flex; align-items: center; color: rgb(29, 33, 41);\\">
-            <div style=\\"width: 24px; height: 24px; font-size: 12px; margin-right: 8px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+            <div style=\\"width: 24px; height: 24px; font-size: 12px; margin-right: 8px;\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\"> A </span>
               <!--v-if-->
             </div><span class=\\"arco-typography\\">Username<!----><!--v-if--><!--v-if--><!--v-if--></span>
           </div>
@@ -83,7 +83,7 @@ exports[`<card> demo: render [content] correctly 1`] = `
   <!---->
   <!---->
   <div class=\\"arco-card-body\\">
-    <div style=\\"display: flex; align-items: center; justify-content: space-between;\\"><span style=\\"display: flex; align-items: center; color: rgb(29, 33, 41);\\"><div style=\\"width: 28px; height: 28px; font-size: 14px; margin-right: 8px; background-color: rgb(22, 93, 255);\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-with-trigger-icon\\"><span class=\\"arco-avatar-text\\"> A </span>
+    <div style=\\"display: flex; align-items: center; justify-content: space-between;\\"><span style=\\"display: flex; align-items: center; color: rgb(29, 33, 41);\\"><div style=\\"width: 28px; height: 28px; font-size: 14px; margin-right: 8px; background-color: rgb(22, 93, 255);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\"> A </span>
       <!--v-if-->
     </div><span class=\\"arco-typography\\">Username<!----><!--v-if--><!--v-if--><!--v-if--></span></span><a class=\\"arco-link arco-link-status-normal\\">
       <!--v-if-->More

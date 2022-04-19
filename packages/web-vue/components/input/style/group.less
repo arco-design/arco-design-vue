@@ -3,14 +3,6 @@
 .@{input-prefix-cls}-group {
   display: inline-flex;
   align-items: center;
-  // select 圆角重置
-  > .@{prefix}-select {
-    vertical-align: unset;
-  }
-
-  > .@{prefix}-select-view {
-    border-radius: 0;
-  }
 
   > * {
     border-radius: 0;
@@ -23,8 +15,6 @@
     &:not(:last-child) {
       position: relative;
       box-sizing: border-box;
-      border-right: @input-group-border-separator-width solid
-        @input-group-color-separator-border;
     }
 
     &:first-child,
@@ -55,6 +45,9 @@
   > .@{input-prefix-cls}-outer:not(:last-child),
   > .@{prefix}-input-tag:not(:last-child),
   > .@{prefix}-select-view:not(:last-child) {
+    border-right: @input-group-border-separator-width solid
+      @input-group-color-separator-border;
+
     &:focus-within {
       border-right-color: @input-color-border_focus;
     }

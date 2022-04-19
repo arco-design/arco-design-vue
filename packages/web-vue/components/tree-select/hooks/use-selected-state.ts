@@ -1,99 +1,130 @@
 import { computed, ref, toRefs, watchEffect, watch } from 'vue';
-import { isArray, isObject, isUndefined } from '../../_utils/is';
-import { LabelValue } from '../interface';
+import { isArray, isFunction, isObject } from '../../_utils/is';
+import { FallbackOption, LabelValue, TreeSelectValue } from '../interface';
 import { Key2TreeNode } from '../../tree/utils';
-import { TreeNodeKey } from '../../tree/interface';
+import {
+  TreeFieldNames,
+  TreeNodeData,
+  TreeNodeKey,
+} from '../../tree/interface';
 
-type Value =
-  | TreeNodeKey
-  | LabelValue
-  | (TreeNodeKey | LabelValue)[]
-  | undefined;
+function isValidKey(key: TreeNodeKey) {
+  return key !== undefined && key !== null && key !== '';
+}
+
+function getKey(value: TreeNodeKey | LabelValue) {
+  return isObject(value) ? value.value : value;
+}
+
+function getLabel(value: TreeNodeKey | LabelValue) {
+  return isObject(value) ? value.label : undefined;
+}
+
+function isValidValue(value: TreeNodeKey | LabelValue) {
+  const key = getKey(value);
+  return isValidKey(key);
+}
+
+function getKeys(value: (TreeNodeKey | LabelValue)[]) {
+  return value.map(getKey).filter(isValidKey);
+}
 
 export default function useSelectedState(props: {
-  defaultValue: Value;
-  modelValue: Value;
+  defaultValue?: TreeSelectValue;
+  modelValue?: TreeSelectValue;
   key2TreeNode: Key2TreeNode;
   multiple?: boolean;
   treeCheckable?: boolean;
   treeCheckStrictly?: boolean;
+  fallbackOption?: FallbackOption;
+  fieldNames?: TreeFieldNames;
 }) {
-  const { defaultValue, modelValue, key2TreeNode, multiple, treeCheckable } =
-    toRefs(props);
+  const {
+    defaultValue,
+    modelValue,
+    key2TreeNode,
+    multiple,
+    treeCheckable,
+    fallbackOption,
+    fieldNames,
+  } = toRefs(props);
 
-  function normalizeValue(value: Value) {
-    if (isUndefined(value)) return undefined;
-    if (multiple?.value || treeCheckable?.value)
-      return !isArray(value) ? [value] : value;
-    return isArray(value) ? value.slice(0, 1) : [value];
-  }
+  function normalizeValue(value: TreeSelectValue) {
+    const validValue = (isArray(value) ? value : [value]).filter(isValidValue);
 
-  function getKeys(value?: (TreeNodeKey | LabelValue)[]) {
-    if (!value) return undefined;
-
-    const keys = value
-      .map((item) => (isObject(item) ? item.value : item))
-      .filter((item) => !isUndefined(item) && item !== '') as TreeNodeKey[];
-
-    return keys;
+    return multiple?.value || treeCheckable?.value
+      ? validValue
+      : validValue.slice(0, 1);
   }
 
   function getLabelValues(
     value: (TreeNodeKey | LabelValue)[],
     originValue?: LabelValue[]
   ) {
-    if (!value) {
-      return undefined;
+    const res: LabelValue[] = [];
+    const validValue = value ? value.filter(isValidValue) : [];
+
+    if (validValue.length) {
+      const originValueMap = new Map<TreeNodeKey, LabelValue>();
+      originValue?.forEach((item) => {
+        originValueMap.set(item.value, item);
+      });
+
+      validValue.forEach((item) => {
+        const key = getKey(item);
+        const originValueItem = originValueMap.get(key);
+        const node = key2TreeNode.value[key];
+        let fallbackNodeData: TreeNodeData | null = null;
+        const nodeDataTitle = (fieldNames?.value?.title || 'title') as 'title';
+
+        if (!node) {
+          const fallbackResult = isFunction(fallbackOption?.value)
+            ? fallbackOption?.value(key)
+            : fallbackOption?.value;
+
+          if (fallbackResult === false) {
+            return;
+          }
+
+          if (isObject(fallbackResult)) {
+            fallbackNodeData = fallbackResult;
+          }
+        }
+
+        res.push({
+          ...(isObject(item) ? item : {}),
+          ...(originValueItem || {}),
+          value: key,
+          label:
+            getLabel(item) ??
+            node?.title ??
+            originValueItem?.label ??
+            fallbackNodeData?.[nodeDataTitle] ??
+            key,
+        });
+      });
     }
 
-    const originValueMap = new Map<TreeNodeKey, LabelValue>();
-    originValue?.forEach((item) => {
-      originValueMap.set(item.value, item);
-    });
-
-    value = value.filter((item) => !isUndefined(item) && item !== '');
-    if (!value.length) {
-      return undefined;
-    }
-
-    return value.map((item) => {
-      let res: LabelValue = isObject(item)
-        ? { ...item }
-        : ({ value: item, label: undefined } as unknown as LabelValue);
-
-      const node = key2TreeNode.value[res.value];
-      res.label = res.label ?? node?.title ?? res.value;
-
-      if (originValueMap && originValueMap.has(res.value)) {
-        res = {
-          ...res,
-          ...originValueMap.get(res.value),
-        };
-      }
-
-      res.label = res.label ?? res.value;
-
-      return res;
-    });
+    return res;
   }
 
   const computedModelValueKeys = ref<TreeNodeKey[]>();
   const computedModelValue = ref<LabelValue[]>();
   watchEffect(() => {
-    const normalizeModelValue = normalizeValue(modelValue.value);
+    const isControlled = modelValue?.value !== undefined;
+    const normalizeModelValue = normalizeValue(modelValue?.value || []);
     const modelValueKeys = getKeys(normalizeModelValue);
-    computedModelValueKeys.value = modelValueKeys;
-    computedModelValue.value =
-      normalizeModelValue &&
-      modelValueKeys &&
-      getLabelValues(modelValueKeys, getLabelValues(normalizeModelValue));
+    computedModelValue.value = isControlled
+      ? getLabelValues(modelValueKeys, getLabelValues(normalizeModelValue))
+      : undefined;
+    computedModelValueKeys.value = isControlled ? modelValueKeys : undefined;
   });
 
-  const normalizeDefaultValue = normalizeValue(defaultValue.value);
+  const normalizeDefaultValue = normalizeValue(defaultValue?.value || []);
   const defaultKeys = getKeys(normalizeDefaultValue);
   const defaultLabelValues = getLabelValues(
-    defaultKeys || [],
-    getLabelValues(normalizeDefaultValue || [])
+    defaultKeys,
+    getLabelValues(normalizeDefaultValue)
   );
   const localValueKeys = ref(defaultKeys || []);
   const localValue = ref(defaultLabelValues);
@@ -101,16 +132,15 @@ export default function useSelectedState(props: {
     localValue.value = getLabelValues(localValueKeys.value, defaultLabelValues);
   });
   watch([computedModelValueKeys, computedModelValue], ([valueKeys, value]) => {
-    // @ts-ignore
-    localValueKeys.value = valueKeys;
-    localValue.value = value;
+    localValueKeys.value = valueKeys || [];
+    localValue.value = value || [];
   });
 
   const selectedKeys = computed(
-    () => computedModelValueKeys.value || localValueKeys.value
+    () => computedModelValueKeys.value ?? localValueKeys.value
   );
   const selectedValue = computed(
-    () => computedModelValue.value || localValue.value
+    () => computedModelValue.value ?? localValue.value
   );
 
   return {
@@ -119,5 +149,7 @@ export default function useSelectedState(props: {
     setLocalSelectedKeys(keys: TreeNodeKey[]) {
       localValueKeys.value = keys;
     },
+    localSelectedKeys: localValueKeys,
+    localSelectedValue: localValue,
   };
 }

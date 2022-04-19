@@ -53,16 +53,20 @@ Shows how to use grid layout. You can use the `label-col-flex` property to speci
 </template>
 
 <script>
+import { reactive } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const form = reactive({
+      value1: '',
+      value2: '',
+      value3: '',
+      value4: '',
+      value5: '',
+    })
+
     return {
-      form: {
-        value1: '',
-        value2: '',
-        value3: '',
-        value4: '',
-        value5: '',
-      }
+      form,
     }
   },
 }

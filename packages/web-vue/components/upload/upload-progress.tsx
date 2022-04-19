@@ -37,7 +37,8 @@ export default defineComponent({
             onClick={() => uploadCtx?.onUpload(props.file)}
           >
             {(uploadCtx?.showRetryButton &&
-              uploadCtx?.customIcon?.retryIcon?.()) ||
+              (uploadCtx?.slots['retry-icon']?.() ??
+                uploadCtx?.customIcon?.retryIcon?.())) ||
             props.listType === 'picture-card' ? (
               <IconUpload />
             ) : (
@@ -49,7 +50,8 @@ export default defineComponent({
       if (props.file.status === 'done') {
         return (
           <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-success`]}>
-            {uploadCtx?.customIcon?.successIcon?.() || <IconCheck />}
+            {uploadCtx?.slots['success-icon']?.() ??
+              uploadCtx?.customIcon?.successIcon?.() ?? <IconCheck />}
           </span>
         );
       }
@@ -60,7 +62,8 @@ export default defineComponent({
               class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-start`]}
               onClick={() => uploadCtx?.onUpload(props.file)}
             >
-              {uploadCtx?.customIcon?.startIcon?.() || <IconPlayArrowFill />}
+              {uploadCtx?.slots['start-icon']?.() ??
+                uploadCtx?.customIcon?.startIcon?.() ?? <IconPlayArrowFill />}
             </span>
           </Tooltip>
         );
@@ -68,8 +71,12 @@ export default defineComponent({
       return (
         uploadCtx?.showCancelButton && (
           <Tooltip content={t('upload.cancel')}>
-            <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-cancel`]}>
-              {uploadCtx?.customIcon?.cancelIcon?.() || <IconPause />}
+            <span
+              class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-cancel`]}
+              onClick={() => uploadCtx?.onAbort(props.file)}
+            >
+              {uploadCtx?.slots['cancel-icon']?.() ??
+                uploadCtx?.customIcon?.cancelIcon?.() ?? <IconPause />}
             </span>
           </Tooltip>
         )

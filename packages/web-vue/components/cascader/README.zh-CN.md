@@ -26,6 +26,10 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 @import ./__demo__/path.md
 
+@import ./__demo__/field-names.md
+
+@import ./__demo__/panel.md
+
 
 ### `<cascader>` Props
 
@@ -54,6 +58,9 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |check-strictly|是否开启严格选择模式|`boolean`|`false`||
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
 |loading|是否为加载中状态|`boolean`|`false`|2.15.0|
+|search-option-only-label|搜索下拉菜单中的选项是否仅展示标签|`boolean`|`false`|2.18.0|
+|search-delay|触发搜索事件的延迟时间|`number`|`500`|2.18.0|
+|field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
 ### `<cascader>` Events
 
 |事件名|描述|参数|
@@ -69,9 +76,40 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
+|label|选择框的显示内容|data: `CascaderOption`|2.18.0|
+|prefix|前缀元素|-|2.23.0|
 |arrow-icon|选择框的箭头图标|-|2.16.0|
 |loading-icon|选择框的加载中图标|-|2.16.0|
 |search-icon|选择框的搜索图标|-|2.16.0|
+|empty|选项为空时的显示内容|-|2.23.0|
+|option|选项内容|data: `CascaderOption`|2.18.0|
+
+
+
+
+### `<cascader-panel>` Props
+
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|path-mode|绑定值是否为路径|`boolean`|`false`||
+|multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
+|model-value **(v-model)**|绑定值|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
+|default-value|默认值（非受控状态）|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|options|级联选择器的选项|`CascaderOption[]`|`[]`||
+|expand-trigger|展开下一级的触发方式|`string`|`'click'`||
+|check-strictly|是否开启严格选择模式|`boolean`|`false`||
+|load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
+### `<cascader-panel>` Events
+
+|事件名|描述|参数|
+|---|---|---|
+|change|选中值改变时触发|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+### `<cascader-panel>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|empty|选项为空时的显示内容|-|2.23.0|
 
 
 

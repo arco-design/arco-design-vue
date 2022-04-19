@@ -14,24 +14,25 @@ description: The organizational structure of the project file.
 ├── package.json
 ├── index.html
 ├── src
-│ ├── api # Request interface
-│ ├── assets # Static resources
-│ └── style # Global style
-│ ├── components # General business components
-│ ├── config # Global configuration (including echarts theme)
-│ ├── directives # Instruction set (if necessary, you can add it yourself)
-│ ├── filters # filter (if necessary, you can add it yourself)
-│ ├── hooks # global hooks
-│ ├── layout # Layout
-│ ├── locale # Internationalized language pack
-│ ├── mock # Mock data
-│ ├── views # Page template
-│ ├── store # State management center
-│ ├── types # Routing configuration
-│ ├── settings.json # Configuration file
-│ └── utils # Tool library
-│ └── App.vue # View entrance
-│ └── main.ts # Entry file
+│   ├── api # Request interface
+│   ├── assets # Static resources
+│         └── style # Global style
+│   ├── components # General business components
+│   ├── config # Global configuration (including echarts theme)
+│         └── settings.json # Configuration file
+│   ├── directive # Instruction set (if necessary, you can add it yourself)
+│   ├── filters # filter (if necessary, you can add it yourself)
+│   ├── hooks # global hooks
+│   ├── layout # Layout
+│   ├── locale # Internationalized language pack
+│   ├── mock # Mock data
+│   ├── views # Page template
+|   |—— router # Routing configuration
+│   ├── store # State management center
+│   ├── types # Typescript types
+│   └── utils # Tool library
+│   └── App.vue # View entrance
+│   └── main.ts # Entry file
 └── tsconfig.json
 ```
 

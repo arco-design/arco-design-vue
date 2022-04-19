@@ -1,4 +1,4 @@
-import { CSSProperties, RenderFunction, Slot, VNode } from 'vue';
+import { CSSProperties, RenderFunction, Slots, VNode } from 'vue';
 import { Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
@@ -50,10 +50,16 @@ export interface TableSortable {
    */
   sortDirections: ('ascend' | 'descend')[];
   /**
-   * @zh 排序函数。设置为 `true` 可关闭内部排序。
-   * @en Sorting function. Set to `true` to turn off internal sorting.
+   * @zh 排序函数。设置为 `true` 可关闭内部排序。2.19.0 版本修改传出数据。
+   * @en Sorting function. Set to `true` to turn off internal sorting. Version 2.19.0 modifies outgoing data.
    */
-  sorter?: ((a: any, b: any) => number) | boolean;
+  sorter?:
+    | ((
+        a: TableData,
+        b: TableData,
+        extra: { dataIndex: string; direction: 'ascend' | 'descend' }
+      ) => number)
+    | boolean;
   /**
    * @zh 排序方向
    * @en Sort direction
@@ -66,7 +72,7 @@ export interface TableSortable {
   defaultSortOrder?: 'ascend' | 'descend' | '';
 }
 
-interface TableFilterData {
+export interface TableFilterData {
   /**
    * @zh 筛选数据选项的内容
    * @en Filter the content of the data option
@@ -84,7 +90,7 @@ export interface TableFilterable {
    * @zh 筛选数据
    * @en Filter data
    */
-  filters: TableFilterData[];
+  filters?: TableFilterData[];
   /**
    * @zh 筛选函数
    * @en Filter function
@@ -131,14 +137,16 @@ export interface TableFilterable {
    * @version 2.13.0
    */
   alignLeft?: boolean;
+
+  slotName?: string;
 }
 
-export interface TableColumn {
+export interface TableColumnData {
   /**
    * @zh 列信息的标识，对应 `TableData` 中的数据
    * @en The identifier of the column information, corresponding to the data in `TableData`
    */
-  dataIndex: string;
+  dataIndex?: string;
   /**
    * @zh 列标题
    * @en Column header
@@ -178,7 +186,7 @@ export interface TableColumn {
    * @zh 表头子数据，用于表头分组
    * @en Header sub-data, used for header grouping
    */
-  children?: TableColumn[];
+  children?: TableColumnData[];
   /**
    * @zh 自定义单元格样式
    * @en Custom cell style
@@ -189,24 +197,31 @@ export interface TableColumn {
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
    */
-  render?: ({
-    record,
-    column,
-    rowIndex,
-  }: {
+  render?: (data: {
     record: TableData;
-    column: TableColumn;
+    column: TableColumnData;
     rowIndex: number;
   }) => VNode;
+  /**
+   * @zh 设置当前列的渲染插槽的名字。插槽参数同 #cell
+   * @en Sets the name of the render slot for the current column. Slot parameters are the same as #cell
+   * @version 2.18.0
+   */
+  slotName?: string;
+  /**
+   * @zh 设置当前列的标题的渲染插槽的名字
+   * @en Set the name of the render slot for the header of the current column
+   * @version 2.23.0
+   */
+  titleSlotName?: string;
+
   // private
+  slots?: Slots;
   isLastLeftFixed?: boolean;
   isFirstRightFixed?: boolean;
-  slot?: Slot;
-}
-
-export interface TableCell extends TableColumn {
   colSpan?: number;
   rowSpan?: number;
+  index?: number;
 }
 
 export interface TableBorder {
@@ -337,25 +352,64 @@ export interface TableDraggable {
   fixed?: boolean;
 }
 
+export type OperationName =
+  | 'selection-checkbox'
+  | 'selection-radio'
+  | 'expand'
+  | 'drag-handle';
+
 export interface TableOperationColumn {
-  name: string;
-  title?: string;
+  name: OperationName | string;
+  title?: string | RenderFunction;
   width?: number;
   fixed?: boolean;
+  render?: (record: TableData) => VNode;
   isLastLeftFixed?: boolean;
-  columnNode?: (props: any) => VNode;
-  bodyNode?: (record: TableData, props: any) => VNode;
 }
 
 export interface TableComponents {
   operations: (operations: {
+    dragHandle?: TableOperationColumn;
     expand?: TableOperationColumn;
     selection?: TableOperationColumn;
   }) => TableOperationColumn[];
 }
 
+export interface TableChangeExtra {
+  /**
+   * @zh 触发类型
+   * @en Trigger type
+   */
+  type: 'pagination' | 'sorter' | 'filter' | 'drag';
+  /**
+   * @zh 页码
+   * @en page number
+   */
+  page?: number;
+  /**
+   * @zh 每页数据数
+   * @en number per page
+   */
+  pageSize?: number;
+  /**
+   * @zh 排序信息
+   * @en Sort information
+   */
+  sorter?: Sorter;
+  /**
+   * @zh 筛选信息
+   * @en Filter information
+   */
+  filters?: Filters;
+  /**
+   * @zh 拖拽信息
+   * @en Drag and drop information
+   */
+  dragTarget?: TableData;
+}
+
 export interface TableProps {
-  columns: TableColumn[];
+  columns: TableColumnData[];
   data: TableData[];
   bordered?: boolean | TableBorder;
   rowSelection?: TableRowSelection;
@@ -364,7 +418,6 @@ export interface TableProps {
   pagePosition?: string;
 }
 
+export type Sorter = { field: string; direction: 'ascend' | 'descend' };
+
 export type Filters = Record<string, string[]>;
-export type Sorter =
-  | { filed: string; direction: 'ascend' | 'descend' }
-  | Record<string, never>;

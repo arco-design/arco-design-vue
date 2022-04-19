@@ -28,12 +28,16 @@ Numerical animation can be turned on through `animation`.
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data(){
+  setup() {
+    const start = ref(false);
+
     return {
-      start:false
+      start
     }
-  }
+  },
 }
 </script>
 ```

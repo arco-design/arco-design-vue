@@ -2,6 +2,91 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🆕 新增功能
+
+- 增加动画名属性 ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+### 🐛 问题修复
+
+- 修复在某些情况下不会锁定 body 的问题 ([#968](https://github.com/arco-design/arco-design-vue/pull/968))
+
+### 💅 样式更新
+
+- 修复全屏下动画导致闪现滚动条的问题 ([#985](https://github.com/arco-design/arco-design-vue/pull/985))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 功能优化
+
+- 修复在滚动条为浮动的情况下，body没有锁定的问题 ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+### 💅 样式更新
+
+- 修复在简单模式下，title-align 靠左对齐失效的问题 ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 问题修复
+
+- 修复 `align-center="false"` 时自动宽度和拖动错误的问题 ([#918](https://github.com/arco-design/arco-design-vue/pull/918))
+
+
+## 2.21.0
+
+`2022-03-25`
+
+### 🐛 问题修复
+
+- 修复使用函数方式触发Modal显示时，按钮处于焦点，此时点击回车会继续出发点击事件 ([#860](https://github.com/arco-design/arco-design-vue/pull/860))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 问题修复
+
+- 修复创建方法中返回的 `close` 函数错误的问题 ([#840](https://github.com/arco-design/arco-design-vue/pull/840))
+
+
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 新增功能
+
+- 增加 `draggable` 属性，支持可拖动 ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+- 增加 `fullscreen` 属性，支持全屏展示 ([#802](https://github.com/arco-design/arco-design-vue/pull/802))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💎 功能优化
+
+- 优化点击遮罩层关闭 ([#737](https://github.com/arco-design/arco-design-vue/pull/737))
+
+
+## 2.17.0
+
+`2022-02-11`
+
+### 🆕 新增功能
+
+- 增加 `title-align` 属性 ([#673](https://github.com/arco-design/arco-design-vue/pull/673))
+
+
 ## 2.16.0
 
 `2022-01-21`

@@ -1,33 +1,58 @@
+import type { Ref } from 'vue';
 import { computed } from 'vue';
-import { TableColumn } from '../interface';
+import type { TableColumnData } from '../interface';
+import type { TableContext } from '../context';
 
-export const useColumnSorter = (props, emit) => {
-  const { dataIndex, sortable } = props.column as TableColumn;
+export const useColumnSorter = ({
+  column,
+  tableCtx,
+}: {
+  column: Ref<TableColumnData>;
+  tableCtx: Partial<TableContext>;
+}) => {
+  const sortOrder = computed(() => {
+    if (
+      column.value.dataIndex &&
+      column.value.dataIndex === tableCtx.sorter?.field
+    ) {
+      return tableCtx.sorter.direction;
+    }
+    return undefined;
+  });
 
-  const hasSorter = computed(() => Boolean(sortable?.sortDirections?.length));
-
-  const hasAscendBtn = computed(
-    () => sortable?.sortDirections?.includes('ascend') ?? false
+  const sortDirections = computed(
+    () => column.value?.sortable?.sortDirections ?? []
   );
-  const hasDescendBtn = computed(
-    () => sortable?.sortDirections?.includes('descend') ?? false
+
+  const hasSorter = computed(() => sortDirections.value.length > 0);
+
+  const hasAscendBtn = computed(() => sortDirections.value.includes('ascend'));
+  const hasDescendBtn = computed(() =>
+    sortDirections.value.includes('descend')
   );
 
   const nextSortOrder = computed(() => {
-    if (!props.sortOrder) {
-      return sortable?.sortDirections?.[0] ?? '';
+    if (!sortOrder.value) {
+      return sortDirections.value[0] ?? '';
     }
-    if (props.sortOrder === sortable?.sortDirections?.[0]) {
-      return sortable?.sortDirections[1] ?? '';
+    if (sortOrder.value === sortDirections.value[0]) {
+      return sortDirections.value[1] ?? '';
     }
     return '';
   });
 
-  const handleClickSorter = (e: Event) => {
-    emit('sorterChange', dataIndex, nextSortOrder.value, e);
+  const handleClickSorter = (ev: Event) => {
+    if (column.value.dataIndex) {
+      tableCtx.onSorterChange?.(
+        column.value.dataIndex,
+        nextSortOrder.value,
+        ev
+      );
+    }
   };
 
   return {
+    sortOrder,
     hasSorter,
     hasAscendBtn,
     hasDescendBtn,

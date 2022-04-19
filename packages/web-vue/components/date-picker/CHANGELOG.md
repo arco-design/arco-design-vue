@@ -2,6 +2,51 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 Optimization
+
+- the selected value will merge with time when timePickerProps has value ([#981](https://github.com/arco-design/arco-design-vue/pull/981))
+
+
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 Feature
+
+- `dayStartOfWeek` support set to 0-6 ([#874](https://github.com/arco-design/arco-design-vue/pull/874))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 BugFix
+
+- the select event is not triggered when the end time selected ([#844](https://github.com/arco-design/arco-design-vue/pull/844))
+
+
+## 2.19.0
+
+`2022-03-11`
+
+### 🐛 BugFix
+
+- Fix the problem that the offset of the range selector popup layer is wrong ([#796](https://github.com/arco-design/arco-design-vue/pull/796))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 Feature
+
+- support quick switching of year and month in the head ([#754](https://github.com/arco-design/arco-design-vue/pull/754))
+
+
 ## 2.16.2
 
 `2022-01-24`

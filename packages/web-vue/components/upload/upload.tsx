@@ -9,7 +9,7 @@ import {
   computed,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { isFunction, isObject } from '../_utils/is';
+import { isBoolean, isFunction, isObject } from '../_utils/is';
 import type {
   CustomIcon,
   FileItem,
@@ -17,12 +17,13 @@ import type {
   RequestOption,
   UploadRequest,
 } from './interfaces';
-import { getDataURLFromFile, uploadRequest } from './utils';
+import { isImage, uploadRequest } from './utils';
 import UploadButton from './upload-button';
 import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
 import { Data, EmitType } from '../_utils/types';
 import { ImagePreviewGroup } from '../image';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Upload',
@@ -99,15 +100,17 @@ export default defineComponent({
      * @zh 上传请求附加的头信息
      * @en Additional header information for upload request
      */
-    headers: Object,
+    headers: {
+      type: Object as PropType<Record<string, string>>,
+    },
     /**
      * @zh 上传请求附加的数据
      * @en Upload request additional data
      */
     data: {
       type: [Object, Function] as PropType<
-        | Record<string, unknown>
-        | ((fileItem: FileItem) => Record<string, unknown>)
+        | Record<string, string | Blob>
+        | ((fileItem: FileItem) => Record<string, string | Blob>)
       >,
     },
     /**
@@ -260,7 +263,7 @@ export default defineComponent({
      * @en Trigger before uploading a picture
      */
     onBeforeUpload: {
-      type: Function as PropType<(file: File) => Promise<boolean>>,
+      type: Function as PropType<(file: File) => Promise<boolean | File>>,
     },
     /**
      * @zh 移除图片前触发
@@ -358,9 +361,70 @@ export default defineComponent({
    * @binding {number} index
    */
   /**
-   * @zh 上传图标
+   * @zh 上传按钮
    * @en Upload button
    * @slot upload-button
+   */
+  /**
+   * @zh 重试图标
+   * @en Retry icon
+   * @slot retry-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 成功图标
+   * @en Success icon
+   * @slot success-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 失败图标
+   * @en Error icon
+   * @slot error-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 开始图标
+   * @en Start icon
+   * @slot start-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 取消图标
+   * @en Cancel icon
+   * @slot cancel-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 预览图标
+   * @en Preview icon
+   * @slot preview-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 删除图标
+   * @en Remove icon
+   * @slot remove-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 文件图标
+   * @en File icon
+   * @slot file-icon
+   * @version 2.23.0
+   */
+  /**
+   * @zh 文件名称
+   * @en File name
+   * @slot file-name
+   * @version 2.23.0
+   */
+  /**
+   * @zh 自定义图片
+   * @en Image
+   * @slot image
+   * @binding {FileItem} fileItem
+   * @version 2.23.0
    */
   setup(props, { emit, slots }) {
     const {
@@ -376,6 +440,7 @@ export default defineComponent({
       showLink,
     } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
+    const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
 
     // Internally maintained picture list
     const _fileList = ref<FileItem[]>([]);
@@ -417,6 +482,17 @@ export default defineComponent({
     const updateFileList = (file: FileItem) => {
       emit('update:fileList', _fileList.value);
       emit('change', _fileList.value, file);
+      eventHandlers.value?.onChange?.();
+    };
+
+    const updateFile = (id: string, file: File) => {
+      for (const item of _fileList.value) {
+        if (item.uid === id) {
+          item.file = file;
+          updateFileList(item);
+          break;
+        }
+      }
     };
 
     const uploadFile = (fileItem: FileItem) => {
@@ -521,7 +597,8 @@ export default defineComponent({
     const initUpload = async (file: File, index: number) => {
       const uid = `${Date.now()}${index}`;
 
-      const dataURL = await getDataURLFromFile(file);
+      const dataURL = isImage(file) ? URL.createObjectURL(file) : undefined;
+
       const fileItem: FileItem = reactive({
         uid,
         file,
@@ -553,9 +630,9 @@ export default defineComponent({
         const file = files[i];
         if (isFunction(props.onBeforeUpload)) {
           Promise.resolve(props.onBeforeUpload(file))
-            .then((result: boolean) => {
+            .then((result: boolean | File) => {
               if (result) {
-                initUpload(file, i);
+                initUpload(isBoolean(result) ? file : result, i);
               }
             })
             .catch((err) => {
@@ -591,7 +668,7 @@ export default defineComponent({
     };
 
     const handlePreview = (fileItem: FileItem) => {
-      if (props.imagePreview) {
+      if (props.imagePreview && fileItem.url) {
         const current = imageList.value.indexOf(fileItem.url);
         if (current > -1) {
           imagePreviewCurrent.value = current;
@@ -605,7 +682,7 @@ export default defineComponent({
     provide(
       uploadInjectionKey,
       reactive({
-        disabled,
+        disabled: mergedDisabled,
         listType,
         iconCls: `${prefixCls}-icon`,
         showRemoveButton,
@@ -615,6 +692,7 @@ export default defineComponent({
         imageLoading,
         download,
         customIcon,
+        slots,
         onUpload: uploadFile,
         onAbort: abort,
         onRemove: handleRemove,
@@ -639,7 +717,7 @@ export default defineComponent({
           v-slots={{
             default: slots['upload-button'],
           }}
-          disabled={props.disabled}
+          disabled={mergedDisabled.value}
           draggable={props.draggable}
           listType={props.listType}
           uploadFiles={uploadFiles}
@@ -655,6 +733,7 @@ export default defineComponent({
               ))
           }
           accept={mergedAccept.value}
+          onButtonClick={props.onButtonClick}
         />
       );
 
@@ -685,7 +764,7 @@ export default defineComponent({
     const imageList = computed(() =>
       _fileList.value
         .filter((item) => Boolean(item.url))
-        .map((item) => item.url)
+        .map((item) => item.url as string)
     );
 
     const render = () => {
@@ -706,6 +785,7 @@ export default defineComponent({
               visible={imagePreviewVisible.value}
               current={imagePreviewCurrent.value}
               onChange={handleImagePreviewChange}
+              // @ts-ignore
               onVisibleChange={handleImagePreviewVisibleChange}
             />
           )}
@@ -729,6 +809,7 @@ export default defineComponent({
       render,
       innerSubmit: submit,
       innerAbort: abort,
+      innerUpdateFile: updateFile,
     };
   },
   methods: {
@@ -749,6 +830,16 @@ export default defineComponent({
      */
     abort(fileItem: FileItem) {
       return this.innerAbort(fileItem);
+    },
+    /**
+     * @zh 更新文件
+     * @en Update file
+     * @public
+     * @param {string} id
+     * @param {File} file
+     */
+    updateFile(id: string, file: File) {
+      return this.innerUpdateFile(id, file);
     },
   },
   render() {

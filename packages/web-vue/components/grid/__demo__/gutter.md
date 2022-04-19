@@ -72,6 +72,7 @@ By specifying `gutter` on `Row`, the area interval of the grid can be increased
     </a-row>
   </div>
 </template>
+
 <style scoped>
 .grid-demo .arco-col {
   height: 48px;

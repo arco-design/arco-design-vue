@@ -7,8 +7,7 @@ exports[`<date-picker> demo: render [basic] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [control] correctly 1`] = `
@@ -16,19 +15,17 @@ exports[`<date-picker> demo: render [control] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
     <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px;\\" visible=\\"false\\">
       <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
-      <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+      <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
     </div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px;\\" visible=\\"false\\">
       <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
       <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
-      <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+      <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
     </div>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
 </div>"
 `;
@@ -40,61 +37,52 @@ exports[`<date-picker> demo: render [date-render] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [default-value] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 240px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\" readonly=\\"\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择年份\\" class=\\"arco-picker-start-time\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择月份\\" class=\\"arco-picker-start-time\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择周\\" class=\\"arco-picker-start-time\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 360px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px; margin-bottom: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始月份\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束月份\\"></div>
-  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-icon-hover-size-medium arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [disabled] correctly 1`] = `
@@ -104,17 +92,13 @@ exports[`<date-picker> demo: render [disabled] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium arco-picker-disabled\\" style=\\"width: 300px; margin-bottom: 20px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input disabled=\\"\\" placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input disabled=\\"\\" placeholder=\\"结束日期\\"></div>
-  <div class=\\"arco-picker-suffix\\">
-    <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
-  </div>
+  <div class=\\"arco-picker-suffix\\"><span class=\\"arco-icon-hover arco-picker-icon-hover arco-picker-clear-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span></div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px; margin-bottom: 20px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input disabled=\\"\\" placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"结束日期\\"></div>
@@ -122,8 +106,7 @@ exports[`<date-picker> demo: render [disabled] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 380px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input disabled=\\"\\" placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"结束日期\\"></div>
@@ -131,8 +114,7 @@ exports[`<date-picker> demo: render [disabled] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [disabled-date] correctly 1`] = `
@@ -143,8 +125,7 @@ exports[`<date-picker> demo: render [disabled-date] correctly 1`] = `
       <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
     </div>
   </div>
-  <!--teleport start-->
-  <!--teleport end-->
+  <!---->
   <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 360px; margin-right: 24px; margin-bottom: 24px;\\" visible=\\"false\\">
     <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
     <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -152,16 +133,14 @@ exports[`<date-picker> demo: render [disabled-date] correctly 1`] = `
       <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
     </div>
   </div>
-  <!--teleport start-->
-  <!--teleport end-->
+  <!---->
   <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-right: 24px; margin-bottom: 24px;\\" visible=\\"false\\">
     <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
     <div class=\\"arco-picker-suffix\\">
       <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
     </div>
   </div>
-  <!--teleport start-->
-  <!--teleport end-->
+  <!---->
   <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 360px; margin-bottom: 24px;\\" visible=\\"false\\">
     <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
     <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -169,8 +148,7 @@ exports[`<date-picker> demo: render [disabled-date] correctly 1`] = `
       <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
     </div>
   </div>
-  <!--teleport start-->
-  <!--teleport end-->
+  <!---->
 </div>"
 `;
 
@@ -182,8 +160,7 @@ exports[`<date-picker> demo: render [disabled-date-advance] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [extra] correctly 1`] = `
@@ -193,8 +170,7 @@ exports[`<date-picker> demo: render [extra] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 360px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -202,8 +178,7 @@ exports[`<date-picker> demo: render [extra] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [month] correctly 1`] = `
@@ -213,8 +188,7 @@ exports[`<date-picker> demo: render [month] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [panel-only] correctly 1`] = `
@@ -231,7 +205,7 @@ exports[`<date-picker> demo: render [panel-only] correctly 1`] = `
             <div class=\\"arco-picker-header-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                 <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
               </svg></div>
-            <div class=\\"arco-picker-header-title\\">2019-06</div>
+            <div class=\\"arco-picker-header-title\\"><span class=\\"arco-picker-header-label\\">2019</span><span>-</span><span class=\\"arco-picker-header-label\\">06</span></div>
             <div class=\\"arco-picker-header-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                 <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
               </svg></div>
@@ -1040,8 +1014,7 @@ exports[`<date-picker> demo: render [quarter] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [range] correctly 1`] = `
@@ -1052,8 +1025,7 @@ exports[`<date-picker> demo: render [range] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 254px; margin-bottom: 20px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始周\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束周\\"></div>
@@ -1061,8 +1033,7 @@ exports[`<date-picker> demo: render [range] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 254px; margin-bottom: 20px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始月份\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束月份\\"></div>
@@ -1070,8 +1041,7 @@ exports[`<date-picker> demo: render [range] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 254px; margin-bottom: 20px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始年份\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束年份\\"></div>
@@ -1079,8 +1049,7 @@ exports[`<date-picker> demo: render [range] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 254px; margin-bottom: 20px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始季度\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束季度\\"></div>
@@ -1088,8 +1057,7 @@ exports[`<date-picker> demo: render [range] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 380px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -1097,8 +1065,7 @@ exports[`<date-picker> demo: render [range] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [shortcuts] correctly 1`] = `
@@ -1108,16 +1075,14 @@ exports[`<date-picker> demo: render [shortcuts] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 300px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择月份\\" class=\\"arco-picker-start-time\\"></div>
   <div class=\\"arco-picker-suffix\\">
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 400px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -1125,8 +1090,7 @@ exports[`<date-picker> demo: render [shortcuts] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px; margin-bottom: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始月份\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束月份\\"></div>
@@ -1134,8 +1098,7 @@ exports[`<date-picker> demo: render [shortcuts] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [shortcuts-position] correctly 1`] = `
@@ -1145,8 +1108,7 @@ exports[`<date-picker> demo: render [shortcuts-position] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px; margin-bottom: 20px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -1154,16 +1116,14 @@ exports[`<date-picker> demo: render [shortcuts-position] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end--><br>
+<!----><br>
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 254px; margin-right: 24px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
   <div class=\\"arco-picker-suffix\\">
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -1171,8 +1131,7 @@ exports[`<date-picker> demo: render [shortcuts-position] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [showtime] correctly 1`] = `
@@ -1182,16 +1141,14 @@ exports[`<date-picker> demo: render [showtime] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 220px; margin: 0px 24px 24px 0px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
   <div class=\\"arco-picker-suffix\\">
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->
+<!---->
 <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 360px; margin: 0px 24px 24px 0px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
   <div class=\\"arco-picker-input\\"><input placeholder=\\"结束日期\\"></div>
@@ -1199,20 +1156,18 @@ exports[`<date-picker> demo: render [showtime] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [size] correctly 1`] = `
-"<div style=\\"margin-bottom: 20px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></span><span class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></span><span class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></span></span></div>
+"<div style=\\"margin-bottom: 20px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
 <div class=\\"arco-picker arco-picker-size-small\\" style=\\"width: 254px;\\" visible=\\"false\\">
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
   <div class=\\"arco-picker-suffix\\">
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [trigger-element] correctly 1`] = `
@@ -1220,14 +1175,12 @@ exports[`<date-picker> demo: render [trigger-element] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->请选择日期
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->请选择日期范围
     </button>
-    <!--teleport start-->
-    <!--teleport end-->
+    <!---->
   </div>
 </div>"
 `;
@@ -1239,8 +1192,7 @@ exports[`<date-picker> demo: render [week] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;
 
 exports[`<date-picker> demo: render [year] correctly 1`] = `
@@ -1250,6 +1202,5 @@ exports[`<date-picker> demo: render [year] correctly 1`] = `
     <!--v-if--><span class=\\"arco-picker-suffix-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg></span>
   </div>
 </div>
-<!--teleport start-->
-<!--teleport end-->"
+<!---->"
 `;

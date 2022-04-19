@@ -1,4 +1,11 @@
-import { computed, defineComponent, PropType, ref } from 'vue';
+import {
+  computed,
+  defineComponent,
+  isVNode,
+  onMounted,
+  PropType,
+  ref,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
 import Grid from '../grid';
@@ -8,6 +15,7 @@ import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import { ScrollIntoViewOptions } from '../_components/virtual-list/interface';
 import { usePagination } from '../_hooks/use-pagination';
 import { omit } from '../_utils/omit';
+import { getAllElements } from '../_utils/vue-utils';
 
 const LIST_SIZES = ['small', 'medium', 'large'] as const;
 type ListSize = typeof LIST_SIZES[number];
@@ -126,10 +134,32 @@ export default defineComponent({
      */
     'pageSizeChange',
   ],
+  /**
+   * @zh 头部信息
+   * @en Header
+   * @slot header
+   */
+  /**
+   * @zh 底部信息
+   * @en Footer
+   * @slot footer
+   */
+  /**
+   * @zh 列表项
+   * @en List Item
+   * @slot item
+   * @binding {number} index
+   * @binding {any} item
+   */
+  /**
+   * @zh 滚动加载状态时，滚动到底部的提示
+   * @en When scrolling loading state, scroll to the bottom tip
+   * @slot scroll-loading
+   * @version 2.20.0
+   */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('list');
-    const hasChildren = computed(() => Boolean(slots.default));
-
+    const listRef = ref<HTMLElement>();
     const isVirtualList = computed(() => props.virtualListProps);
 
     const handleScroll = (e: Event) => {
@@ -140,6 +170,15 @@ export default defineComponent({
       }
       emit('scroll');
     };
+
+    onMounted(() => {
+      if (listRef.value) {
+        const { scrollTop, scrollHeight, offsetHeight } = listRef.value;
+        if (scrollHeight <= scrollTop + offsetHeight) {
+          emit('reachBottom');
+        }
+      }
+    });
 
     const { current, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, { emit });
@@ -157,8 +196,8 @@ export default defineComponent({
       if (!props.gridProps) {
         return null;
       }
-
       const currentPageItems = getCurrentPageItems(data);
+
       if (props.gridProps.span) {
         const items = [];
         const rowSize = 24 / props.gridProps.span;
@@ -177,7 +216,7 @@ export default defineComponent({
                   class={`${prefixCls}-col`}
                   span={props.gridProps?.span}
                 >
-                  {hasChildren.value ? item : slots.item?.({ item, index })}
+                  {isVNode(item) ? item : slots.item?.({ item, index })}
                 </Grid.Col>
               ))}
             </Grid.Row>
@@ -190,35 +229,24 @@ export default defineComponent({
         <Grid.Row class={`${prefixCls}-row`} gutter={props.gridProps.gutter}>
           {currentPageItems.map((item, index) => (
             <Grid.Col key={index} class={`${prefixCls}-col`}>
-              {hasChildren.value ? item : slots.item?.({ item, index })}
+              {isVNode(item) ? item : slots.item?.({ item, index })}
             </Grid.Col>
           ))}
         </Grid.Row>
       );
     };
 
-    const getListItemRenderMsg = (data: unknown[]) => {
-      const currentPageItems = getCurrentPageItems(data);
-      const currentPageItemRenderFunc = (item: unknown, index: number) =>
-        hasChildren.value
-          ? currentPageItems[index]
-          : slots.item?.({ item, index });
-
-      return {
-        currentPageItems,
-        currentPageItemRenderFunc,
-      };
-    };
-
     const renderListItems = (data: unknown[]) => {
-      const { currentPageItems, currentPageItemRenderFunc } =
-        getListItemRenderMsg(data);
+      const currentPageItems = getCurrentPageItems(data);
 
-      return currentPageItems.map(currentPageItemRenderFunc);
+      return currentPageItems.map((item, index) =>
+        isVNode(item) ? item : slots.item?.({ item, index })
+      );
     };
 
     const renderItems = () => {
-      const data = slots.default?.() ?? props.data;
+      const data = slots.default ? getAllElements(slots.default()) : props.data;
+
       if (data && data.length > 0) {
         return props.gridProps ? renderGridItems(data) : renderListItems(data);
       }
@@ -276,8 +304,8 @@ export default defineComponent({
 
     const virtualListRef = ref();
     const renderVirtualList = () => {
-      const { currentPageItems, currentPageItemRenderFunc } =
-        getListItemRenderMsg(props.data || []);
+      const currentPageItems = getCurrentPageItems(props.data ?? []);
+
       return currentPageItems.length ? (
         <VirtualList
           ref={virtualListRef}
@@ -286,7 +314,7 @@ export default defineComponent({
           data={currentPageItems}
           v-slots={{
             item: ({ item, index }: { item: unknown; index: number }) =>
-              currentPageItemRenderFunc(item, index),
+              slots.item?.({ item, index }),
           }}
           onScroll={handleScroll}
         />
@@ -295,38 +323,62 @@ export default defineComponent({
       );
     };
 
+    const renderScrollLoading = () => {
+      if (slots['scroll-loading']) {
+        return (
+          <div class={[`${prefixCls}-item`, `${prefixCls}-scroll-loading`]}>
+            {slots['scroll-loading']()}
+          </div>
+        );
+      }
+      return null;
+    };
+
     const renderEmpty = () => {
+      if (slots['scroll-loading']) {
+        return null;
+      }
+
       return <Empty />;
     };
 
-    const renderList = () => {
+    const render = () => {
       return (
         <div class={`${prefixCls}-wrapper`}>
-          <div
-            class={cls.value}
-            style={contentStyle.value}
-            onScroll={handleScroll}
-          >
-            {slots.header && (
-              <div class={`${prefixCls}-header`}>{slots.header()}</div>
-            )}
-            {isVirtualList.value && !props.gridProps ? (
-              renderVirtualList()
-            ) : (
-              <div class={contentCls.value}>{renderItems()}</div>
-            )}
-            {slots.footer && (
-              <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
-            )}
-          </div>
-          {renderPagination()}
+          <Spin class={`${prefixCls}-spin`} loading={props.loading}>
+            <div
+              ref={listRef}
+              class={cls.value}
+              style={contentStyle.value}
+              onScroll={handleScroll}
+            >
+              {slots.header && (
+                <div class={`${prefixCls}-header`}>{slots.header()}</div>
+              )}
+              {isVirtualList.value && !props.gridProps ? (
+                <>
+                  {renderVirtualList()}
+                  {renderScrollLoading()}
+                </>
+              ) : (
+                <div class={contentCls.value}>
+                  {renderItems()}
+                  {renderScrollLoading()}
+                </div>
+              )}
+              {slots.footer && (
+                <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
+              )}
+            </div>
+            {renderPagination()}
+          </Spin>
         </div>
       );
     };
 
     return {
       virtualListRef,
-      renderList,
+      render,
     };
   },
   methods: {
@@ -343,14 +395,6 @@ export default defineComponent({
     },
   },
   render() {
-    const { loading, renderList } = this;
-    if (loading) {
-      return (
-        <Spin style={{ display: 'block' }} loading>
-          {renderList()}
-        </Spin>
-      );
-    }
-    return renderList();
+    return this.render();
   },
 });

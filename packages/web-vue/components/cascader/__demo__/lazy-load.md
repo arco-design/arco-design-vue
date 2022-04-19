@@ -21,7 +21,6 @@ The `load-more` attribute provides a `done` function for callback, and lazy load
 ---
 
 ```vue
-
 <template>
   <a-space>
     <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." :load-more="loadMore"/>
@@ -30,8 +29,45 @@ The `load-more` attribute provides a `done` function for callback, and lazy load
 
 <script>
 export default {
-  methods: {
-    loadMore(option, done) {
+  setup() {
+    const options = [
+      {
+        value: 'beijing',
+        label: 'Beijing',
+        children: [
+          {
+            value: 'chaoyang',
+            label: 'ChaoYang',
+          },
+          {
+            value: 'haidian',
+            label: 'Haidian',
+            isLeaf: true
+          },
+          {
+            value: 'dongcheng',
+            label: 'Dongcheng',
+            isLeaf: true
+          },
+          {
+            value: 'xicheng',
+            label: 'Xicheng',
+          },
+        ],
+      },
+      {
+        value: 'shanghai',
+        label: 'Shanghai',
+        children: [
+          {
+            value: 'huangpu',
+            label: 'Huangpu',
+            isLeaf: true
+          },
+        ],
+      },
+    ];
+    const loadMore = (option, done) => {
       window.setTimeout(() => {
         const nodes = [{
           value: `${option.value}-option1`,
@@ -44,49 +80,13 @@ export default {
         }]
         done(nodes)
       }, 2000)
+    };
+
+    return {
+      options,
+      loadMore
     }
   },
-  data() {
-    return {
-      options: [
-        {
-          value: 'beijing',
-          label: 'Beijing',
-          children: [
-            {
-              value: 'chaoyang',
-              label: 'ChaoYang',
-            },
-            {
-              value: 'haidian',
-              label: 'Haidian',
-              isLeaf: true
-            },
-            {
-              value: 'dongcheng',
-              label: 'Dongcheng',
-              isLeaf: true
-            },
-            {
-              value: 'xicheng',
-              label: 'Xicheng',
-            },
-          ],
-        },
-        {
-          value: 'shanghai',
-          label: 'Shanghai',
-          children: [
-            {
-              value: 'huangpu',
-              label: 'Huangpu',
-              isLeaf: true
-            },
-          ],
-        },
-      ]
-    }
-  }
 }
 </script>
 ```

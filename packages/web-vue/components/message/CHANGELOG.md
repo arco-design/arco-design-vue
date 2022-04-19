@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🐛 BugFix
+
+- Fixed the problem of destroying an error when calling at the same time ([#705](https://github.com/arco-design/arco-design-vue/pull/705))
+
+
 ## 2.16.0
 
 `2022-01-21`

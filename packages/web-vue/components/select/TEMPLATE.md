@@ -44,18 +44,36 @@ description: When users need to select one or more from a group of similar data,
 
 @import ./__demo__/fallback.md
 
+@import ./__demo__/remote.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/label.md
 
 @import ./__demo__/linkage.md
 
+@import ./__demo__/field-names.md
+
 @import ./__demo__/virtual-list.md
 
-%%API(base-select.tsx)%%
+%%API(select.tsx)%%
 
-%%API(option.ts)%%
+%%API(option.vue)%%
 
-%%API(optgroup.ts)%%
+%%API(optgroup.vue)%%
+
+```ts
+/**
+ * @zh 选项
+ * @en Option
+ */
+type Option = string | number | SelectOptionData | SelectOptionGroup;
+
+/**
+ * @zh 筛选
+ * @en Filter
+ */
+type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) => boolean);
+```
 
 %%INTERFACE(interface.ts)%%

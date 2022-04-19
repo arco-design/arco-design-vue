@@ -16,13 +16,13 @@ type _NotificationConfig = NotificationConfig & {
 };
 
 class NotificationManger {
-  private readonly container: HTMLElement;
-
   private readonly notificationIds: Set<number | string>;
 
   private readonly notifications: Ref<NotificationItem[]>;
 
   private readonly position: NotificationPosition;
+
+  private container: HTMLElement | null;
 
   private notificationCount = 0;
 
@@ -40,8 +40,8 @@ class NotificationManger {
       onAfterClose: this.destroy,
     });
 
-    if (appContext) {
-      vm.appContext = appContext;
+    if (appContext ?? Notification._context) {
+      vm.appContext = appContext ?? Notification._context;
     }
     render(vm, this.container);
     document.body.appendChild(this.container);
@@ -100,12 +100,11 @@ class NotificationManger {
   };
 
   destroy = () => {
-    if (this.notifications.value.length === 0) {
+    if (this.notifications.value.length === 0 && this.container) {
       render(null, this.container);
-      try {
-        document.body.removeChild(this.container);
-        notificationInstance[this.position] = undefined;
-      } catch (err) {}
+      document.body.removeChild(this.container);
+      this.container = null;
+      notificationInstance[this.position] = undefined;
     }
   };
 }
@@ -118,7 +117,7 @@ const notificationInstance: {
 } = {};
 
 const notification = MESSAGE_TYPES.reduce((pre, value) => {
-  pre[value] = (config) => {
+  pre[value] = (config, appContext?: AppContext) => {
     if (isString(config)) {
       config = { content: config };
     }
@@ -126,7 +125,10 @@ const notification = MESSAGE_TYPES.reduce((pre, value) => {
     const _config: _NotificationConfig = { type: value, ...config };
     const { position = 'topRight' } = _config;
     if (!notificationInstance[position]) {
-      notificationInstance[position] = new NotificationManger(_config);
+      notificationInstance[position] = new NotificationManger(
+        _config,
+        appContext
+      );
     }
     return notificationInstance[position]!.add(_config);
   };
@@ -144,8 +146,24 @@ notification.clear = (position?: NotificationPosition) => {
 const Notification = {
   ...notification,
   install: (app: App) => {
-    app.config.globalProperties.$notification = notification;
+    const _notification = {
+      clear: notification.clear,
+    } as NotificationMethod;
+
+    for (const key of MESSAGE_TYPES) {
+      _notification[key] = (config, appContext = app._context) =>
+        notification[key](config, appContext);
+    }
+
+    app.config.globalProperties.$notification = _notification;
   },
+  _context: null as AppContext | null,
 };
+
+export type {
+  NotificationMethod,
+  NotificationConfig,
+  NotificationReturn,
+} from './interface';
 
 export default Notification;

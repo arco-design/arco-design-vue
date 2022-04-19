@@ -19,7 +19,7 @@ Basic usage of the drop-down menu.
 ```vue
 <template>
   <a-space size="large">
-    <a-dropdown @select="handle">
+    <a-dropdown @select="handleSelect">
       <a-button>Click Me</a-button>
       <template #content>
         <a-doption>Option 1</a-doption>
@@ -27,7 +27,7 @@ Basic usage of the drop-down menu.
         <a-doption :value="{ value: 'Option3' }">Option 3</a-doption>
       </template>
     </a-dropdown>
-    <a-dropdown @select="handle" disabled>
+    <a-dropdown @select="handleSelect" disabled>
       <a-button disabled>Click Me</a-button>
       <template #content>
         <a-doption>Option 1</a-doption>
@@ -35,7 +35,7 @@ Basic usage of the drop-down menu.
         <a-doption>Option 3</a-doption>
       </template>
     </a-dropdown>
-    <a-dropdown @select="handle">
+    <a-dropdown @select="handleSelect">
       <a-button>With Icon <icon-down/></a-button>
       <template #content>
         <a-doption>Option 1</a-doption>
@@ -48,11 +48,15 @@ Basic usage of the drop-down menu.
 
 <script>
 export default {
-  methods:{
-    handle(v) {
+  setup() {
+    const handleSelect = (v) => {
       console.log(v)
+    };
+
+    return {
+      handleSelect
     }
-  }
+  },
 }
 </script>
 

@@ -71,36 +71,36 @@ exports[`<layout> demo: render [breakpoint] correctly 1`] = `
             </div>
             <transition-stub>
               <div class=\\"arco-menu-inline-content\\">
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                   <!---->
                 </div>
                 <div class=\\"arco-menu-inline\\" selectable=\\"false\\" popup=\\"false\\">
-                  <div class=\\"arco-menu-inline-header\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 2<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+                  <div class=\\"arco-menu-inline-header\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 2<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
                   <transition-stub>
                     <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                         <!---->
                       </div>
                     </div>
                   </transition-stub>
                 </div>
                 <div class=\\"arco-menu-inline\\" selectable=\\"false\\" popup=\\"false\\">
-                  <div class=\\"arco-menu-inline-header\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 3<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+                  <div class=\\"arco-menu-inline-header\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 3<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
                   <transition-stub>
                     <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
                         <!---->
                       </div>
                     </div>
@@ -115,13 +115,13 @@ exports[`<layout> demo: render [breakpoint] correctly 1`] = `
             </div>
             <transition-stub>
               <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
                   <!---->
                 </div>
               </div>
@@ -147,8 +147,7 @@ exports[`<layout> demo: render [breakpoint] correctly 1`] = `
               <!--v-if--><span>...</span><!-- suffix --><span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
               <!--v-if-->
             </div>
-            <!--teleport start-->
-            <!--teleport end-->
+            <!---->
             <div class=\\"arco-menu-item arco-menu-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-home\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                 <path d=\\"M7 17 24 7l17 10v24H7V17Z\\"></path>
                 <path d=\\"M20 28h8v13h-8V28Z\\"></path>
@@ -164,15 +163,13 @@ exports[`<layout> demo: render [breakpoint] correctly 1`] = `
               <!--v-if--><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg>Navigation 1</span><!-- suffix --><span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
               <!--v-if-->
             </div>
-            <!--teleport start-->
-            <!--teleport end-->
+            <!---->
             <div class=\\"arco-menu-pop arco-menu-pop-header\\" popup=\\"false\\">
               <!-- header -->
               <!--v-if--><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-calendar\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z\\"></path></svg>Navigation 4</span><!-- suffix --><span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
               <!--v-if-->
             </div>
-            <!--teleport start-->
-            <!--teleport end-->
+            <!---->
             <!---->
           </div>
         </div>
@@ -228,36 +225,36 @@ exports[`<layout> demo: render [collapsed] correctly 1`] = `
             </div>
             <transition-stub>
               <div class=\\"arco-menu-inline-content\\">
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                   <!---->
                 </div>
                 <div class=\\"arco-menu-inline\\" selectable=\\"false\\" popup=\\"false\\">
-                  <div class=\\"arco-menu-inline-header\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 2<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+                  <div class=\\"arco-menu-inline-header\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 2<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
                   <transition-stub>
                     <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                         <!---->
                       </div>
                     </div>
                   </transition-stub>
                 </div>
                 <div class=\\"arco-menu-inline\\" selectable=\\"false\\" popup=\\"false\\">
-                  <div class=\\"arco-menu-inline-header\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 3<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+                  <div class=\\"arco-menu-inline-header\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 3<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
                   <transition-stub>
                     <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
                         <!---->
                       </div>
                     </div>
@@ -272,13 +269,13 @@ exports[`<layout> demo: render [collapsed] correctly 1`] = `
             </div>
             <transition-stub>
               <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
                   <!---->
                 </div>
               </div>
@@ -347,36 +344,36 @@ exports[`<layout> demo: render [custom-icon] correctly 1`] = `
             </div>
             <transition-stub>
               <div class=\\"arco-menu-inline-content\\">
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                   <!---->
                 </div>
                 <div class=\\"arco-menu-inline\\" selectable=\\"false\\" popup=\\"false\\">
-                  <div class=\\"arco-menu-inline-header\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 2<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+                  <div class=\\"arco-menu-inline-header\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 2<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
                   <transition-stub>
                     <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                         <!---->
                       </div>
                     </div>
                   </transition-stub>
                 </div>
                 <div class=\\"arco-menu-inline\\" selectable=\\"false\\" popup=\\"false\\">
-                  <div class=\\"arco-menu-inline-header\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 3<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+                  <div class=\\"arco-menu-inline-header\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span>Navigation 3<span class=\\"arco-menu-icon-suffix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
                   <transition-stub>
                     <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                         <!---->
                       </div>
-                      <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
+                      <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
                         <!---->
                       </div>
                     </div>
@@ -393,13 +390,13 @@ exports[`<layout> demo: render [custom-icon] correctly 1`] = `
             </div>
             <transition-stub>
               <div class=\\"arco-menu-inline-content\\" style=\\"display: none;\\">
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 1</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 2</span>
                   <!---->
                 </div>
-                <div class=\\"arco-menu-item\\"><span><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
+                <div class=\\"arco-menu-item\\"><span class=\\"arco-menu-indent-list\\"><span class=\\"arco-menu-indent\\" style=\\"\\"></span></span><span class=\\"arco-menu-item-inner\\">Menu 3</span>
                   <!---->
                 </div>
               </div>

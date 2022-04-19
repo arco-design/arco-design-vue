@@ -1,6 +1,6 @@
 @import '../../style/mixins/index.less';
 @import './token.less';
-@import '../../_components/dropdown/style/token.less';
+@import '../../dropdown/style/token.less';
 
 @menu-prefix-cls: ~'@{prefix}-menu';
 @trigger-menu-prefix-cls: ~'@{prefix}-trigger-menu';
@@ -83,6 +83,16 @@
 
       &.@{menu-prefix-cls}-has-icon {
         display: flex;
+        align-items: center;
+
+        > .@{menu-prefix-cls}-indent-list,
+        > .@{menu-prefix-cls}-icon {
+          flex: none;
+        }
+
+        .@{menu-prefix-cls}-icon {
+          line-height: 1;
+        }
 
         .@{menu-prefix-cls}-title {
           .text-ellipsis();
@@ -496,6 +506,24 @@
       color: @dropdown-option-color-text_disabled;
       background-color: @dropdown-option-color-bg_disabled;
       cursor: not-allowed;
+    }
+  }
+
+  .@{trigger-menu-prefix-cls}-has-icon {
+    display: flex;
+    align-items: center;
+
+    .@{trigger-menu-prefix-cls}-icon {
+      line-height: 1;
+    }
+
+    > * {
+      flex: none;
+    }
+
+    .@{trigger-menu-prefix-cls}-title {
+      flex: auto;
+      .text-ellipsis();
     }
   }
 

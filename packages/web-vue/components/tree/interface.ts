@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { Slot, VNode } from 'vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
+import { Size } from '../_utils/constant';
 
 export type TreeNodeKey = number | string;
 
@@ -98,31 +99,63 @@ export interface Node extends TreeNodeProps {
 
 export type FilterTreeNode = (node: TreeNodeData) => boolean;
 
-export interface FieldNames {
+export interface TreeFieldNames {
   /**
-   * @zh 指定 key 在 TreeNodeData 中对应的字段
+   * @zh 指定 key 在 TreeNodeData 中的字段名
+   * @en Specify the field name of key in TreeNodeData
+   * @defaultValue key
    */
   key?: string;
   /**
-   * @zh 指定 title 在 TreeNodeData 中对应的字段
+   * @zh 指定 title 在 TreeNodeData 中的字段名
+   * @en Specify the field name of title in TreeNodeData
+   * @defaultValue title
    */
   title?: string;
   /**
-   * 是否禁用
+   * @zh 指定 disabled 在 TreeNodeData 中的字段名
+   * @en Specify the field name of disabled in TreeNodeData
+   * @defaultValue disabled
    */
   disabled?: string;
-
+  /**
+   * @zh 指定 children 在 TreeNodeData 中的字段名
+   * @en Specify the field name of children in TreeNodeData
+   * @defaultValue children
+   */
   children?: string;
+  /**
+   * @zh 指定 isLeaf 在 TreeNodeData 中的字段名
+   * @en Specify the field name of isLeaf in TreeNodeData
+   * @defaultValue isLeaf
+   */
   isLeaf?: string;
+  /**
+   * @zh 指定 disableCheckbox 在 TreeNodeData 中的字段名
+   * @en Specify the field name of disableCheckbox in TreeNodeData
+   * @defaultValue disableCheckbox
+   */
   disableCheckbox?: string;
+  /**
+   * @zh 指定 checkable 在 TreeNodeData 中的字段名
+   * @en Specify the field name of checkable in TreeNodeData
+   * @defaultValue checkable
+   */
   checkable?: string;
+  /**
+   * @zh 指定 icon 在 TreeNodeData 中的字段名
+   * @en Specify the field name of icon in TreeNodeData
+   * @defaultValue checkable
+   */
+  icon?: string;
 }
 
 export type LoadMore = (node: TreeNodeData) => Promise<void>;
 export type DropPosition = -1 | 0 | 1;
+export type CheckedStrategy = 'all' | 'parent' | 'child';
 
 export interface TreeProps {
-  size: 'mini' | 'small' | 'medium' | 'large';
+  size: Size;
   blockNode: boolean;
   defaultExpandAll: boolean;
   multiple: boolean;
@@ -134,21 +167,24 @@ export interface TreeProps {
   }) => boolean;
   selectable: boolean;
   checkStrictly: boolean;
-  checkedStrategy: 'all' | 'parent' | 'child';
+  checkedStrategy: CheckedStrategy;
   defaultSelectedKeys?: TreeNodeKey[];
   selectedKeys?: TreeNodeKey[];
   defaultCheckedKeys?: TreeNodeKey[];
   checkedKeys?: TreeNodeKey[];
+  halfCheckedKeys: TreeNodeKey[] | undefined;
   defaultExpandedKeys?: TreeNodeKey[];
   expandedKeys?: TreeNodeKey[];
   data: TreeNodeData[];
-  fieldNames?: FieldNames;
+  fieldNames?: TreeFieldNames;
   virtualListProps?: VirtualListProps;
   showLine: boolean;
   loadMore?: LoadMore;
   defaultExpandSelected?: boolean;
   defaultExpandChecked?: boolean;
   autoExpandParent?: boolean;
+  onlyCheckLeaf: boolean;
+  animation: boolean;
   dragIcon?: Slot;
   switcherIcon?: Slot;
   loadingIcon?: Slot;
@@ -157,19 +193,21 @@ export interface TreeProps {
   onSelect?: (
     selectedKeys: TreeNodeKey[],
     event: {
-      selected: boolean;
+      selected?: boolean;
       selectedNodes: TreeNodeData[];
-      node: TreeNodeData;
-      e: Event;
+      node?: TreeNodeData;
+      e?: Event;
     }
   ) => void;
   onCheck?: (
     checkedKeys: TreeNodeKey[],
     event: {
-      checked: boolean;
+      checked?: boolean;
       checkedNodes: TreeNodeData[];
-      node: TreeNodeData;
-      e: Event;
+      node?: TreeNodeData;
+      halfCheckedKeys: TreeNodeKey[];
+      halfCheckedNodes: TreeNodeData[];
+      e?: Event;
     }
   ) => void;
   onExpand?: (

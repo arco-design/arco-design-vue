@@ -17,6 +17,7 @@ The basic usage of the countdown component `countdown`.
 ---
 
 ```vue
+
 <template>
   <a-space direction="vertical">
     <a-button @click="start=true">Start</a-button>
@@ -25,12 +26,16 @@ The basic usage of the countdown component `countdown`.
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const start = ref(false);
+
     return {
-      start: false
+      start
     }
-  }
+  },
 }
 </script>
 ```

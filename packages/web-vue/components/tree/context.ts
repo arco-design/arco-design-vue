@@ -8,6 +8,7 @@ export const TreeInjectionKey: InjectionKey<TreeContext> =
 export type TreeContext = Readonly<{
   switcherIcon?: Slot;
   loadingIcon?: Slot;
+  nodeIcon?: Slot;
   dragIcon?: Slot;
   nodeTitle?: Slot;
   nodeExtra?: Slot;
@@ -21,7 +22,7 @@ export type TreeContext = Readonly<{
   loadingKeys: TreeNodeKey[];
   currentExpandKeys: TreeNodeKey[];
   onLoadMore?: (key: TreeNodeKey) => void;
-  onCheck: (checked: boolean, key: TreeNodeKey, e: Event) => void;
+  onCheck: (checked: boolean, key: TreeNodeKey, e?: Event) => void;
   onSelect: (key: TreeNodeKey, e: Event) => void;
   onExpand: (expanded: boolean, key: TreeNodeKey, e?: Event) => void;
   onExpandEnd: (key: TreeNodeKey) => void;

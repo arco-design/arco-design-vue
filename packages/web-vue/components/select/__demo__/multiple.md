@@ -36,6 +36,14 @@ By setting `multiple`, the selector can support multiple selection. In addition,
       <a-option>Chengdu</a-option>
       <a-option>Wuhan</a-option>
     </a-select>
+    <a-select :default-value="['Beijing','Shanghai']" :style="{width:'360px'}" placeholder="Please select ..." multiple :limit="2">
+      <a-option>Beijing</a-option>
+      <a-option :tag-props="{color:'red'}">Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
   </a-space>
 </template>
 ```

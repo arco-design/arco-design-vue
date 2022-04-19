@@ -2,6 +2,131 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 功能优化
+
+- 当 columns 属性中存在 titleSlotName 时会优先使用 ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
+
+### 🆎 类型修正
+
+- `TableColumn` 接口名修改为 `TableColumnData` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 功能优化
+
+- 横向滚动模式下，如果数据为空，表头会显示滚动条 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+### 🆕 新增功能
+
+- columns 属性增加 titleSlotName，filterable 属性增加 slotName ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- table-column 增加 filter-content，filter-content 插槽 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- 增加 summary-cell 插槽 ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+
+## 2.22.1
+
+`2022-04-02`
+
+### 🐛 问题修复
+
+- 修复虚拟列表和滚动一起使用的问题 ([#926](https://github.com/arco-design/arco-design-vue/pull/926))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 新增功能
+
+- 增加 `selectAll` 方法 ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+### 🐛 问题修复
+
+- 修复某些情况下虚拟列表宽度错误的问题 ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 新增功能
+
+- 增加总结行功能 ([#877](https://github.com/arco-design/arco-design-vue/pull/877))
+
+
+## 2.20.2
+
+`2022-03-24`
+
+### 🐛 问题修复
+
+- 修复 `table-column` 组件在模板中直接书写对象参数时导致不断更新的问题 ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- 修复仅有一个 `table-column` 时没有列数据的问题 ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- 修复 `table-column` 的排序问题，可通过 `index` 参数解决 ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- 使用 Context 方式重构组件，`table-colum` 支持二次封装 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- scroll 属性增加 `maxHeight`, `minWidth` 属性 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+### 💅 样式更新
+
+- 修复开启排序后，表头文字不能居中的问题 ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+## 2.19.0
+
+`2022-03-11`
+
+### ⚠️ 重点注意
+
+- 修改排序函数 sorter 的传出数据，增强使用 ([#810](https://github.com/arco-design/arco-design-vue/pull/810))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 新增功能
+
+- 滚动模式支持设置高度百分比 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- column 数据增加 slotName 属性，允许指定渲染插槽 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- 增加 `pagination-left` 和 `pagination-right` 插槽 ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 新增功能
+
+- 增加 `span-all`  属性 ([#735](https://github.com/arco-design/arco-design-vue/pull/735))
+
+### 🐛 问题修复
+
+- 修复 table-column 嵌套使用时，v-for 不能渲染的问题 ([#734](https://github.com/arco-design/arco-design-vue/pull/734))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 💎 功能优化
+
+- 在数据为空时，不展示分页组件 ([#684](https://github.com/arco-design/arco-design-vue/pull/684))
+
+
 ## 2.16.2
 
 `2022-01-24`

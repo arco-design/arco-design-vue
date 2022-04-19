@@ -17,28 +17,34 @@ title:
 ```vue
 <template>
   <a-space>
-    <a-trigger class="trigger-demo-translate">
+    <a-trigger>
       <a-button>BOTTOM</a-button>
       <template #content>
-        <a-empty />
+        <div class="trigger-demo-translate">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
-    <a-trigger class="trigger-demo-translate" :popup-translate="[100, 20]">
+    <a-trigger :popup-translate="[100, 20]">
       <a-button>BOTTOM OFFSET[100, 20]</a-button>
       <template #content>
-        <a-empty />
+        <div class="trigger-demo-translate">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
-    <a-trigger class="trigger-demo-translate" :popup-translate="[-100, 20]">
+    <a-trigger :popup-translate="[-100, 20]">
       <a-button>BOTTOM OFFSET[-100, 20]</a-button>
       <template #content>
-        <a-empty />
+        <div class="trigger-demo-translate">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
   </a-space>
 </template>
 
-<style lang="less">
+<style scoped>
 .trigger-demo-translate {
   padding: 10px;
   width: 200px;

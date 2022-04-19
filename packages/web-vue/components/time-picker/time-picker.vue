@@ -1,9 +1,11 @@
 <template>
   <Trigger
     trigger="click"
+    animation-name="slide-dynamic-origin"
+    auto-fit-transform-origin
     :click-to-close="false"
     :position="position"
-    :disabled="disabled"
+    :disabled="mergedDisabled"
     :popup-offset="4"
     :popup-visible="panelVisible"
     :prevent-focus="true"
@@ -24,7 +26,7 @@
       :focused="panelVisible"
       :format="computedFormat"
       :visible="panelVisible"
-      :disabled="disabled"
+      :disabled="mergedDisabled"
       :error="error"
       :editable="!readonly"
       :allow-clear="allowClear"
@@ -106,6 +108,7 @@ import { useI18n } from '../locale';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'TimePicker',
@@ -380,6 +383,8 @@ export default defineComponent({
       disabledSeconds,
     } = toRefs(props);
 
+    const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
+
     const isRange = computed(() => type.value === 'time-range');
     const prefixCls = getPrefixCls('timepicker');
     const refInput = ref();
@@ -458,6 +463,7 @@ export default defineComponent({
         const dateValue = getDateValue(value);
         emit('update:modelValue', formattedValue);
         emit('change', formattedValue, dateValue);
+        eventHandlers.value?.onChange?.();
       }
     }
 
@@ -511,7 +517,7 @@ export default defineComponent({
     }
 
     function onPanelVisibleChange(newVisible: boolean) {
-      if (disabled.value) return;
+      if (mergedDisabled.value) return;
       setPanelVisible(newVisible);
 
       if (newVisible) {
@@ -664,6 +670,7 @@ export default defineComponent({
       computedUse12Hours,
       inputProps,
       panelProps,
+      mergedDisabled,
       onPanelVisibleChange: onPanelVisibleChange as any,
       onInputClear: onClear,
       onPanelSelect,

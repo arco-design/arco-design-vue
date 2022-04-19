@@ -1,4 +1,12 @@
-import { computed, defineComponent, PropType, ref } from 'vue';
+import {
+  computed,
+  defineComponent,
+  PropType,
+  ref,
+  toRef,
+  toRefs,
+  watch,
+} from 'vue';
 import NP from 'number-precision';
 import IconStarFill from '../icon/icon-star-fill';
 import IconFaceMehFill from '../icon/icon-face-meh-fill';
@@ -6,6 +14,8 @@ import IconFaceSmileFill from '../icon/icon-face-smile-fill';
 import IconFaceFrownFill from '../icon/icon-face-frown-fill';
 import { getPrefixCls } from '../_utils/global-config';
 import { EmitType } from '../_utils/types';
+import { useFormItem } from '../_hooks/use-form-item';
+import { isNull, isObject, isString, isUndefined } from '../_utils/is';
 
 export default defineComponent({
   name: 'Rate',
@@ -75,6 +85,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 颜色
+     * @en Color
+     * @version 2.18.0
+     */
+    color: {
+      type: [String, Object] as PropType<string | Record<string, string>>,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<EmitType<(index: number) => void>>,
@@ -98,17 +116,66 @@ export default defineComponent({
      */
     'hoverChange',
   ],
+  /**
+   * @zh 符号
+   * @en Character
+   * @slot character
+   * @binding {number} index
+   */
   setup(props, { emit, slots }) {
+    const { modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('rate');
+    const { mergedDisabled: _mergedDisabled, eventHandlers } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
     const _value = ref(props.defaultValue);
 
     const animation = ref(false);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = 0;
+      }
+    });
 
     const hoverIndex = ref(0);
 
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
-    const disabled = computed(() => props.disabled || props.readonly);
+    const displayIndex = computed(() => {
+      const fixedValue = props.allowHalf
+        ? NP.times(NP.round(NP.divide(computedValue.value, 0.5), 0), 0.5)
+        : Math.round(computedValue.value);
+
+      return hoverIndex.value || fixedValue;
+    });
+
+    const mergedDisabled = computed(
+      () => _mergedDisabled.value || props.readonly
+    );
+
+    const indexArray = computed<undefined[]>(() => [
+      ...Array(props.grading ? 5 : props.count),
+    ]);
+
+    const customColor = computed(() => {
+      if (isString(props.color)) {
+        return indexArray.value.map(() => props.color as string);
+      }
+      if (isObject(props.color)) {
+        const sortedKeys = Object.keys(props.color)
+          .map((key) => Number(key))
+          .sort((a, b) => b - a);
+        let threshold = sortedKeys.pop() ?? indexArray.value.length;
+        return indexArray.value.map((_, index) => {
+          if (index + 1 > threshold) {
+            threshold = sortedKeys.pop() ?? threshold;
+          }
+          return (props.color as Record<string, string>)[String(threshold)];
+        });
+      }
+      return undefined;
+    });
 
     const resetHoverIndex = () => {
       if (hoverIndex.value) {
@@ -132,10 +199,12 @@ export default defineComponent({
         _value.value = newValue;
         emit('update:modelValue', newValue);
         emit('change', newValue);
+        eventHandlers.value?.onChange?.();
       } else if (props.allowClear) {
         _value.value = 0;
         emit('update:modelValue', 0);
         emit('change', 0);
+        eventHandlers.value?.onChange?.();
       }
     };
 
@@ -159,23 +228,19 @@ export default defineComponent({
       return <IconFaceSmileFill />;
     };
 
+    // TODO: need to perf
     const renderCharacter = (index: number) => {
-      const fixedValue = props.allowHalf
-        ? NP.times(NP.round(NP.divide(computedValue.value, 0.5), 0), 0.5)
-        : Math.round(computedValue.value);
-
-      const displayIndex = hoverIndex.value || fixedValue;
       const displayCharacter = props.grading
-        ? renderGradingCharacter(index, displayIndex)
-        : slots.character?.(index) ?? <IconStarFill />;
+        ? renderGradingCharacter(index, displayIndex.value)
+        : slots.character?.({ index }) ?? <IconStarFill />;
 
-      const leftProps = disabled.value
+      const leftProps = mergedDisabled.value
         ? {}
         : {
             onMouseenter: () => handleMouseEnter(index, true),
             onClick: () => handleClick(index, true),
           };
-      const rightProps = disabled.value
+      const rightProps = mergedDisabled.value
         ? {}
         : {
             onMouseenter: () => handleMouseEnter(index, false),
@@ -184,14 +249,27 @@ export default defineComponent({
 
       const style = animation.value
         ? { animationDelay: `${50 * index}ms` }
-        : {};
+        : undefined;
+
+      const parseDisplayIndex = Math.ceil(displayIndex.value) - 1;
+
+      const leftStyle =
+        customColor.value &&
+        props.allowHalf &&
+        index + 0.5 === displayIndex.value
+          ? { color: customColor.value[parseDisplayIndex] }
+          : undefined;
+      const rightStyle =
+        customColor.value && index + 1 <= displayIndex.value
+          ? { color: customColor.value[parseDisplayIndex] }
+          : undefined;
 
       const cls = [
         `${prefixCls}-character`,
         {
           [`${prefixCls}-character-half`]:
-            props.allowHalf && index + 0.5 === displayIndex,
-          [`${prefixCls}-character-full`]: index + 1 <= displayIndex,
+            props.allowHalf && index + 0.5 === displayIndex.value,
+          [`${prefixCls}-character-full`]: index + 1 <= displayIndex.value,
           [`${prefixCls}-character-scale`]:
             animation.value && index + 1 < computedValue.value,
         },
@@ -203,25 +281,29 @@ export default defineComponent({
           style={style}
           onAnimationend={() => handleAnimationEnd(index)}
         >
-          <div class={`${prefixCls}-character-left`} {...leftProps}>
+          <div
+            class={`${prefixCls}-character-left`}
+            style={leftStyle}
+            {...leftProps}
+          >
             {displayCharacter}
           </div>
-          <div class={`${prefixCls}-character-right`} {...rightProps}>
+          <div
+            class={`${prefixCls}-character-right`}
+            style={rightStyle}
+            {...rightProps}
+          >
             {displayCharacter}
           </div>
         </div>
       );
     };
 
-    const indexArray = computed(() => [
-      ...Array(props.grading ? 5 : props.count),
-    ]);
-
     const cls = computed(() => [
       prefixCls,
       {
         [`${prefixCls}-readonly`]: props.readonly,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: _mergedDisabled.value,
       },
     ]);
 

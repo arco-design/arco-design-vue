@@ -22,15 +22,21 @@ Use the modal by function.
 </template>
 
 <script>
+import { Modal } from '@arco-design/web-vue';
+
 export default {
-  methods: {
-    handleClick() {
-      this.$modal.info({
+  setup() {
+    const handleClick = () => {
+      Modal.info({
         title: 'Info Title',
         content: 'This is an info message'
       });
+    };
+
+    return {
+      handleClick
     }
-  }
+  },
 }
 </script>
 ```

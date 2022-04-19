@@ -3,7 +3,7 @@
     <div :class="`${prefixCls}-input`">
       <input
         ref="refInput"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :placeholder="placeholder"
         :class="`${prefixCls}-start-time`"
         :value="displayValue"
@@ -14,7 +14,7 @@
     </div>
     <div :class="`${prefixCls}-suffix`">
       <IconHover
-        v-if="allowClear && !disabled && displayValue"
+        v-if="allowClear && !mergedDisabled && displayValue"
         :prefix="prefixCls"
         :class="`${prefixCls}-clear-icon`"
         @click="onClear"
@@ -35,6 +35,8 @@ import { getPrefixCls } from '../../_utils/global-config';
 import { isDayjs, isFunction } from '../../_utils/is';
 import IconClose from '../../icon/icon-close';
 import IconHover from '../icon-hover.vue';
+import { useFormItem } from '../../_hooks/use-form-item';
+import { useSize } from '../../_hooks/use-size';
 
 export default defineComponent({
   name: 'DateInput',
@@ -45,7 +47,6 @@ export default defineComponent({
   props: {
     size: {
       type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      required: true,
     },
     focused: {
       type: Boolean,
@@ -80,16 +81,22 @@ export default defineComponent({
   setup(props, { emit }) {
     const { error, focused, disabled, size, value, format, inputValue } =
       toRefs(props);
+    const {
+      mergedSize: _mergedSize,
+      mergedDisabled,
+      mergedError,
+    } = useFormItem({ size, disabled, error });
+    const { mergedSize } = useSize(_mergedSize);
 
     const prefixCls = getPrefixCls('picker');
 
     const classNames = computed(() => [
       prefixCls,
-      `${prefixCls}-size-${size.value}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-focused`]: focused.value,
-        [`${prefixCls}-disabled`]: disabled.value,
-        [`${prefixCls}-error`]: error.value,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
+        [`${prefixCls}-error`]: mergedError.value,
       },
     ]);
     const displayValue = computed(() => {
@@ -108,6 +115,7 @@ export default defineComponent({
       prefixCls,
       classNames,
       displayValue,
+      mergedDisabled,
       refInput,
       onPressEnter() {
         emit('press-enter');

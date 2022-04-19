@@ -39,31 +39,30 @@ Verify the form function through an asynchronous method.
 </template>
 
 <script>
+import { ref, reactive } from 'vue';
+
 export default {
-  data() {
-    return {
-      form: {
-        name: '',
-        post: '',
-        isRead: false,
-      },
-      rules: [{
-        validator: (value, cb) => {
-          return new Promise(resolve => {
-            window.setTimeout(() => {
-              if (value !== 'admin') {
-                cb('name must be admin')
-              }
-              resolve()
-            }, 2000)
-          })
-        }
-      }]
-    }
-  },
-  methods: {
-    handleClick() {
-      this.$refs.formRef.setFields({
+  setup() {
+    const formRef = ref()
+    const form = reactive({
+      name: '',
+      post: '',
+      isRead: false,
+    })
+    const rules = [{
+      validator: (value, cb) => {
+        return new Promise(resolve => {
+          window.setTimeout(() => {
+            if (value !== 'admin') {
+              cb('name must be admin')
+            }
+            resolve()
+          }, 2000)
+        })
+      }
+    }];
+    const handleClick = () => {
+      formRef.value.setFields({
         name: {
           status: 'error',
           message: 'async name error'
@@ -74,7 +73,14 @@ export default {
         }
       })
     }
-  }
+
+    return {
+      formRef,
+      form,
+      rules,
+      handleClick
+    }
+  },
 }
 </script>
 ```

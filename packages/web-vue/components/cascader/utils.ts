@@ -3,6 +3,7 @@ import {
   CascaderOption,
   CascaderOptionWithTotal,
   CascaderOptionInfo,
+  CascaderFieldNames,
 } from './interface';
 import { isArray, isNumber, isString } from '../_utils/is';
 
@@ -38,6 +39,7 @@ export const getOptionInfos = (
     checkStrictly,
     enabledLazyLoad,
     lazyLoadOptions,
+    fieldNames,
   }: {
     optionMap: Map<string, CascaderOptionInfo>;
     leafOptionMap: Map<string, CascaderOptionInfo>;
@@ -47,6 +49,7 @@ export const getOptionInfos = (
     checkStrictly: Ref<boolean>;
     enabledLazyLoad: boolean;
     lazyLoadOptions: Record<string, CascaderOption[]>;
+    fieldNames: Required<CascaderFieldNames>;
   }
 ) => {
   const _options = getOptionsWithTotalLeaves(options);
@@ -62,12 +65,15 @@ export const getOptionInfos = (
 
     return options.map((item, index) => {
       const data = {
-        ...item,
-        label: item.label ?? String(item.value),
-        disabled: Boolean(item.disabled),
+        raw: item,
         level: parentPath.length,
         index,
+        value: item[fieldNames.value],
+        label: item[fieldNames.label] ?? String(item[fieldNames.value]),
+        disabled: Boolean(item[fieldNames.disabled]),
+        isLeaf: item[fieldNames.isLeaf],
         parent,
+        totalLeafOptions: item.totalLeafOptions,
       } as CascaderOptionInfo;
       const path = parentPath.concat(data);
       const key = path.map((item) => item.value).join('-');
@@ -209,4 +215,8 @@ export const getKeysFromValue = (
     }
   }
   return keys;
+};
+
+export const getOptionLabel = (option: CascaderOptionInfo) => {
+  return option.path.map((item) => item.label).join(' / ');
 };

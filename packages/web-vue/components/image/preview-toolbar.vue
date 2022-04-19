@@ -1,38 +1,22 @@
 <template>
   <div :class="prefixCls">
-    <Tooltip
+    <PreviewAction
       v-for="action in resultActions"
       :key="action.key"
-      :class="`${prefixCls}-tooltip`"
-      :content="action.name"
+      :name="action.name"
+      :disabled="action.disabled"
+      @click="action.onClick"
     >
-      <div
-        :class="[
-          `${prefixCls}-action`,
-          {
-            [`${prefixCls}-action-disabled`]: action.disabled,
-          },
-        ]"
-        @click="action.onClick"
-        @mousedown="
-          (e) => {
-            /** 解决快速点击按钮的情况下 tooltip 被选中 */
-            e.preventDefault();
-          }
-        "
-      >
-        <span :class="`${prefixCls}-action-content`">
-          <RenderFunction :render-func="action.content" />
-        </span>
-      </div>
-    </Tooltip>
+      <RenderFunction :render-func="action.content" />
+    </PreviewAction>
+    <slot />
   </div>
 </template>
 <script lang="tsx">
 import { defineComponent, PropType, toRefs, computed } from 'vue';
 import RenderFunction, { RenderFunc } from '../_components/render-function';
 import { getPrefixCls } from '../_utils/global-config';
-import Tooltip from '../tooltip';
+import PreviewAction from './preview-action';
 
 interface ActionType {
   key: string;
@@ -46,7 +30,7 @@ export default defineComponent({
   name: 'ImagePreviewToolbar',
   components: {
     RenderFunction,
-    Tooltip,
+    PreviewAction,
   },
   props: {
     actions: {

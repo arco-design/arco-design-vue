@@ -2,6 +2,69 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 新增功能
+
+- 支持修改表单项标签的渲染元素 ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+### 💅 样式更新
+
+- 表单项内容样式增加最大宽度，防止溢出 ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 样式更新
+
+- 修复 `form-item` 星号与 windicss 的兼容问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
+## 2.19.0
+
+`2022-03-11`
+
+### 🐛 问题修复
+
+- 修复 `form-item` 的 `field` 属性中存在数组时失效的问题 ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+- 修复 `disabled` 开启后，部分组件功能仍可用问题 ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🐛 问题修复
+
+- 修复嵌套数据中重置方法失效的问题 ([#768](https://github.com/arco-design/arco-design-vue/pull/768))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💎 功能优化
+
+- `auto-label-width` 开启时不在允许标签换行，防止换行后计算错误 ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
+
+### 🆕 新增功能
+
+- 校验错误信息新增 label 属性 ([#724](https://github.com/arco-design/arco-design-vue/pull/724))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ 重点注意
+
+- <form-item> 组件重构，使用 context 管理输入组件。如果用户存在自定义输入组件，可参考 `自定义输入组件` 示例更改。 ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+
+
 ## 2.16.0
 
 `2022-01-21`

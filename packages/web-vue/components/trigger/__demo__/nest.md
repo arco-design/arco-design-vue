@@ -17,10 +17,10 @@ title:
 
 ```vue
 <template>
-  <a-trigger trigger="click" class="trigger-demo-nest">
+  <a-trigger trigger="click">
     <a-button>Click Me</a-button>
     <template #content>
-      <div>
+      <div class="trigger-demo-nest">
         <a-empty />
         <a-trigger class="trigger-demo-nest" position="right">
           <a-button>Hover Me</a-button>
@@ -45,17 +45,17 @@ title:
   </a-trigger>
 </template>
 
-<style lang="less">
+<style scoped>
 .trigger-demo-nest {
   padding: 10px;
   width: 200px;
   background-color: var(--color-bg-popup);
   border-radius: 4px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
 
-  &-popup-content {
-    text-align: right;
-  }
+.trigger-demo-nest-popup-content {
+  text-align: right;
 }
 </style>
 ```

@@ -17,6 +17,7 @@ Set the step size by `step`, the default step size is 1. It is recommended to se
 ---
 
 ```vue
+
 <template>
   <a-space direction="vertical" size="large">
     <a-form :model="data" layout="inline">
@@ -32,15 +33,19 @@ Set the step size by `step`, the default step size is 1. It is recommended to se
 </template>
 
 <script>
+import { reactive } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const data = reactive({
+      step: 5,
+      showTicks: true
+    });
+
     return {
-      data: {
-        step: 5,
-        showTicks: true
-      }
+      data
     }
-  }
+  },
 }
 </script>
 ```

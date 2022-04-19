@@ -1,7 +1,7 @@
 import { computed, toRefs, watchEffect, ref } from 'vue';
 import { debounce } from '../../_utils/debounce';
 import {
-  FieldNames,
+  TreeFieldNames,
   Node,
   TreeNodeData,
   TreeNodeKey,
@@ -14,7 +14,7 @@ export default function useFilterTreeNode(props: {
   flattenTreeData: Node[];
   filterMethod?: FilterTreeNode;
   disableFilter?: boolean;
-  fieldNames: FieldNames | undefined;
+  fieldNames: TreeFieldNames | undefined;
 }) {
   const {
     searchValue,

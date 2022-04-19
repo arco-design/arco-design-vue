@@ -34,6 +34,7 @@ For example, `:xs="8"` is equivalent to `:xs="{ span: 8 }"`
     </a-row>
   </div>
 </template>
+
 <style scoped>
 .grid-demo .arco-col {
   height: 48px;

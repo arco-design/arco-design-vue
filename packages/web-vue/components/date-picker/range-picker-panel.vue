@@ -111,6 +111,7 @@ import type {
   RangeDisabledTime,
   RangeDisabledDate,
   CalendarValue,
+  WeekStart,
 } from './interface';
 import PanelShortcuts from './panels/shortcuts.vue';
 import PanelFooter from './panels/footer.vue';
@@ -172,7 +173,7 @@ export default defineComponent({
       required: true,
     },
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     disabledDate: {

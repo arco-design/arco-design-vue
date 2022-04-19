@@ -1,8 +1,9 @@
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import Tooltip from '../index';
 
 describe('Tooltip', () => {
-  test('should render tooltip', () => {
+  test('should render tooltip', async () => {
     const wrapper = mount(
       {
         template: [
@@ -32,6 +33,7 @@ describe('Tooltip', () => {
       }
     );
 
+    await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
   });
 

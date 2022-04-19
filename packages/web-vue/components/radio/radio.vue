@@ -1,5 +1,5 @@
 <template>
-  <span :class="cls" @click="handleClick">
+  <label :class="cls">
     <input
       ref="inputRef"
       type="radio"
@@ -9,14 +9,18 @@
       :disabled="mergedDisabled"
       @click.stop
       @change="handleChange"
+      @focus="handleFocus"
+      @blur="handleBlur"
     />
     <template v-if="mergedType === 'radio'">
-      <icon-hover
-        :class="`${prefixCls}-icon-hover`"
-        :disabled="mergedDisabled || computedChecked"
-      >
-        <span :class="`${prefixCls}-icon`" />
-      </icon-hover>
+      <slot name="radio" :checked="computedChecked" :disabled="mergedDisabled">
+        <icon-hover
+          :class="`${prefixCls}-icon-hover`"
+          :disabled="mergedDisabled || computedChecked"
+        >
+          <span :class="`${prefixCls}-icon`" />
+        </icon-hover>
+      </slot>
       <span v-if="$slots.default" :class="`${prefixCls}-label`">
         <slot />
       </span>
@@ -24,18 +28,27 @@
     <span v-else :class="`${prefixCls}-button-content`">
       <slot />
     </span>
-  </span>
+  </label>
 </template>
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref, inject, watch, nextTick } from 'vue';
+import {
+  computed,
+  defineComponent,
+  ref,
+  inject,
+  watch,
+  nextTick,
+  toRef,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import type { RadioType } from './context';
 import { RADIO_TYPES, radioGroupKey } from './context';
 import { isUndefined } from '../_utils/is';
 import { EmitType } from '../_utils/types';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Radio',
@@ -107,11 +120,20 @@ export default defineComponent({
      */
     'change',
   ],
+  /**
+   * @zh 自定义单选框
+   * @en Custom radio
+   * @slot radio
+   * @version 2.18.0
+   */
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('radio');
     const radioGroupCtx = !props.uninjectGroupContext
       ? inject(radioGroupKey, undefined)
       : undefined;
+    const { mergedDisabled: _mergedDisabled, eventHandlers } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
 
     const inputRef = ref<HTMLInputElement | null>(null);
     const _checked = ref(props.defaultChecked);
@@ -119,7 +141,7 @@ export default defineComponent({
     const isGroup = computed(() => radioGroupCtx?.name === 'ArcoRadioGroup');
     const mergedType = computed(() => radioGroupCtx?.type ?? props.type);
     const mergedDisabled = computed(
-      () => radioGroupCtx?.disabled || props.disabled
+      () => radioGroupCtx?.disabled || _mergedDisabled.value
     );
 
     const computedChecked = computed(() => {
@@ -142,20 +164,30 @@ export default defineComponent({
       }
     });
 
-    const handleClick = (e: MouseEvent) => {
-      if (inputRef.value && e.target !== inputRef.value) {
-        e.preventDefault();
-        inputRef.value.click();
-      }
+    // const handleClick = (ev: MouseEvent) => {
+    //   if (!props.disabled && inputRef.value && ev.target !== inputRef.value) {
+    //     ev.preventDefault();
+    //     inputRef.value.click();
+    //   }
+    // };
+
+    const handleFocus = (ev: FocusEvent) => {
+      eventHandlers.value?.onFocus?.(ev);
+    };
+
+    const handleBlur = (ev: FocusEvent) => {
+      eventHandlers.value?.onBlur?.(ev);
     };
 
     const handleChange = (e: Event) => {
+      _checked.value = true;
       if (isGroup.value) {
         radioGroupCtx?.handleChange(props.value ?? true, e);
+      } else {
+        emit('update:modelValue', props.value ?? true);
+        emit('change', props.value ?? true, e);
+        eventHandlers.value?.onChange?.(e);
       }
-      _checked.value = true;
-      emit('update:modelValue', props.value ?? true);
-      emit('change', props.value ?? true, e);
 
       nextTick(() => {
         if (
@@ -183,7 +215,8 @@ export default defineComponent({
       mergedDisabled,
       computedChecked,
       handleChange,
-      handleClick,
+      handleFocus,
+      handleBlur,
     };
   },
 });

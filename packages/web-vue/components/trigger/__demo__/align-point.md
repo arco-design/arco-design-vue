@@ -16,17 +16,19 @@ title:
 
 ```vue
 <template>
-  <a-trigger class="demo-point" trigger="click" align-point>
+  <a-trigger trigger="click" align-point>
     <div class="demo-point-trigger">
       <div>Click Me</div>
     </div>
     <template #content>
-      <a-empty />
+      <div class="demo-point">
+        <a-empty />
+      </div>
     </template>
   </a-trigger>
 </template>
 
-<style lang="less">
+<style scoped>
 .demo-point-trigger {
   display: flex;
   align-items: center;
@@ -41,10 +43,10 @@ title:
   background-color: var(--color-bg-popup);
   border-radius: 4px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
 
-  &-wrapper {
-    display: block;
-  }
+.demo-point-wrapper {
+  display: block;
 }
 </style>
 ```

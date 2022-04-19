@@ -44,14 +44,4 @@ By setting `use12Hours`, you can customize the hours, minutes, and seconds.
     style="width: 300px; margin: 0 24px 24px 0;"
   />
 </template>
-<script>
-  import dayjs from 'dayjs';
-  export default {
-    data() {
-      return {
-        defaultValue: dayjs('09:24', 'HH:mm')
-      }
-    }
-  }
-</script>
 ```

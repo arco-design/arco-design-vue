@@ -1,5 +1,5 @@
 <template>
-  <ResizeOberver @resize="handleWrapperResize">
+  <ResizeOberver @resize="handleResize">
     <component
       :is="component"
       v-bind="$attrs"
@@ -14,6 +14,9 @@
       <Filler
         :height="totalHeight"
         :offset="isVirtual ? startOffset : undefined"
+        :type="type"
+        :outer-attrs="outerAttrs"
+        :inner-attrs="innerAttrs"
       >
         <RenderFunction :render-func="renderChildren" />
       </Filler>
@@ -35,7 +38,7 @@ import {
   onUnmounted,
 } from 'vue';
 import { ItemSlot, ScrollOptions, VirtualListProps } from './interface';
-import { isString, isUndefined } from '../../_utils/is';
+import { isFunction, isString, isUndefined } from '../../_utils/is';
 import { raf, caf } from '../../_utils/raf';
 import usePickSlots from '../../_hooks/use-pick-slots';
 import ResizeOberver from '../resize-observer';
@@ -108,8 +111,11 @@ export default defineComponent({
       type: String as PropType<VirtualListProps['component']>,
       default: 'div',
     },
+    type: String,
+    outerAttrs: Object,
+    innerAttrs: Object,
   },
-  emits: ['scroll'],
+  emits: ['scroll', 'resize'],
   setup(props: VirtualListProps, { slots, emit }) {
     const {
       height,
@@ -121,11 +127,15 @@ export default defineComponent({
     } = toRefs(props);
 
     function getItemKey(item: any, index: number) {
-      return itemKey && itemKey.value
-        ? isString(itemKey.value)
-          ? item[itemKey.value]
-          : itemKey.value(item)
-        : index;
+      let result: string | number;
+      if (itemKey && itemKey.value) {
+        if (isString(itemKey.value)) {
+          result = item[itemKey.value];
+        } else if (isFunction(itemKey.value)) {
+          result = itemKey.value(item);
+        }
+      }
+      return result ?? index;
     }
 
     // Convert data to internal format: {key, index, item}
@@ -148,6 +158,7 @@ export default defineComponent({
 
     const {
       itemHeight,
+      minItemHeight,
       estimatedItemHeight,
       totalHeight,
       setItemHeight,
@@ -163,7 +174,7 @@ export default defineComponent({
 
     const itemCount = computed(() => data.value.length);
     const visibleCount = computed(() =>
-      Math.ceil(viewportHeight.value / itemHeight.value)
+      Math.ceil(viewportHeight.value / minItemHeight.value)
     );
 
     const scrollTop = ref(0);
@@ -177,12 +188,11 @@ export default defineComponent({
       })
     );
 
-    const visibleData = computed(() =>
-      internalData.value.slice(
-        rangeState.startIndex,
-        Math.min(rangeState.endIndex + 1, itemCount.value)
-      )
-    );
+    const visibleData = computed(() => {
+      const start = rangeState.startIndex;
+      const end = Math.min(rangeState.endIndex + 1, itemCount.value);
+      return internalData.value.slice(start, end);
+    });
 
     const isVirtual = computed(
       () =>
@@ -216,7 +226,9 @@ export default defineComponent({
         internalData,
         visibleData,
         itemRender,
-        itemRef: (el: HTMLElement | null, key: string) => {
+      }),
+      {
+        onItemResize(el: HTMLElement | null, key: string) {
           const itemHeight = getItemHeight(key);
           if (el && isUndefined(itemHeight)) {
             if (
@@ -225,13 +237,14 @@ export default defineComponent({
             ) {
               setItemHeight(key, estimatedItemHeight.value);
             } else {
-              nextTick(() => {
-                setItemHeight(key, el.clientHeight);
-              });
+              const height = el.offsetHeight;
+              if (height) {
+                setItemHeight(key, height);
+              }
             }
           }
         },
-      })
+      }
     );
 
     const updateScrollOffset = () => {
@@ -288,7 +301,12 @@ export default defineComponent({
       })
     );
 
-    const handleWrapperResize = (entry: HTMLDivElement) => {
+    const handleResize = (entry: HTMLElement) => {
+      handleWrapperResize(entry);
+      emit('resize', entry);
+    };
+
+    const handleWrapperResize = (entry: HTMLElement) => {
       if (needMeasureViewportHeight.value) {
         setViewportHeight(entry.clientHeight);
       }
@@ -343,7 +361,7 @@ export default defineComponent({
     };
 
     // Element size changes, viewport changes size changes, scroll position changes need to recalculate the start and end elements
-    watch([itemHeight, visibleCount, scrollTop], () => {
+    watch([itemHeight, visibleCount, scrollTop, data], () => {
       if (lockScrollRef.value) return;
       updateRangeState();
     });
@@ -357,14 +375,12 @@ export default defineComponent({
 
     return {
       viewportRef,
-      visibleData,
       viewportHeight,
       totalHeight,
       startOffset,
-      itemHeight,
       isVirtual,
       renderChildren,
-      handleWrapperResize,
+      handleResize,
       handleScroll,
       scrollTo,
     };

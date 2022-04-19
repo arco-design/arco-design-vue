@@ -95,6 +95,7 @@ Use `justify` for horizontal layout
     </a-row>
   </div>
 </template>
+
 <style scoped>
 .grid-demo {
   background-color: var(--color-fill-2);

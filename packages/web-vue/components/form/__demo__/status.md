@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-$END$
+开启 `feedback` 可以让部分输入组件展示当前状态信息
 
 ---
 
 ## en-US
 
-$END$
+Enable `feedback` to allow some input components to display current state information
 
 ---
 
@@ -53,19 +53,25 @@ $END$
 </template>
 
 <script>
+import { reactive, ref } from 'vue';
+
 export default {
-  data(){
+  setup() {
+    const status = ref('success');
+    const size = ref('medium');
+    const form = reactive({
+      name: '',
+      post: undefined,
+      tags: ['tag1'],
+      section: '',
+    })
+
     return {
-      status:'success',
-      size:'medium',
-      form: {
-        name: '',
-        post: undefined,
-        tags:['tag1'],
-        section: '',
-      }
+      status,
+      size,
+      form,
     }
-  }
+  },
 }
 </script>
 ```

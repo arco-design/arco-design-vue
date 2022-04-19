@@ -2,6 +2,74 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🆎 类型修正
+
+- `FieldNames` 修改为 `TreeFieldNames` ([#977](https://github.com/arco-design/arco-design-vue/pull/977))
+
+
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 新增功能
+
+- 新增配置项 `onlyCheckLeaf` ([#876](https://github.com/arco-design/arco-design-vue/pull/876))
+- 支持关闭展开时的动效 ([#867](https://github.com/arco-design/arco-design-vue/pull/867))
+
+### 💅 样式更新
+
+- 修复连接线显示错乱的问题 ([#865](https://github.com/arco-design/arco-design-vue/pull/865))
+
+### 🆎 类型修正
+
+- 增加filednames的自定义icon功能 ([#848](https://github.com/arco-design/arco-design-vue/pull/848))
+
+
+## 2.20.1
+
+`2022-03-21`
+
+### 🐛 问题修复
+
+- 修复新版本中展开事件名称错误的问题 ([#853](https://github.com/arco-design/arco-design-vue/pull/853))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- 添加树的实例方法 ([#837](https://github.com/arco-design/arco-design-vue/pull/837))
+
+
+## 2.19.0
+
+`2022-03-11`
+
+### 🆕 新增功能
+
+- 支持设置半选节点 ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+- 实例上新增可调用的方法:  `getCheckedNodes` `getSelectedNodes` `getExpandedNodes` `getHalfCheckedNodes` ([#809](https://github.com/arco-design/arco-design-vue/pull/809))
+
+### 🐛 问题修复
+
+- 修复当节点找不到的时候组件渲染出错的问题 ([#800](https://github.com/arco-design/arco-design-vue/pull/800))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 新增功能
+
+- 新增插槽 `icon` 用于全局定制节点图标 ([#710](https://github.com/arco-design/arco-design-vue/pull/710))
+
+
 ## 2.9.0
 
 `2021-12-03`

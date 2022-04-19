@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- Add footer-class attribute ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+
+### 💅 Style
+
+- Fix the rounded corner style problem at the bottom of the footer area ([#953](https://github.com/arco-design/arco-design-vue/pull/953))
+
+
+## 2.17.0
+
+`2022-02-11`
+
+### 🆕 Feature
+
+- Add slot `actions` for custom preview action items ([#679](https://github.com/arco-design/arco-design-vue/pull/679))
+
+### 🐛 BugFix
+
+- Fix the problem of wrong rotation direction ([#678](https://github.com/arco-design/arco-design-vue/pull/678))
+- Fix the problem that the `Tooltip` of the action item is covered ([#677](https://github.com/arco-design/arco-design-vue/pull/677))
+
+
 ## 2.14.0
 
 `2022-01-07`

@@ -31,21 +31,22 @@ description: 展示和预览图片。
 
 ### `<image>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|src|图片获取地址|`string`|`-`|
-|width|图片显示宽度|`string \| number`|`-`|
-|height|图片显示高度|`string \| number`|`-`|
-|title|标题|`string`|`-`|
-|description|描述，将显示在底部，如果 alt 没有值，则会将其设置给 alt|`string`|`-`|
-|alt|图片的文字描述|`string`|`-`|
-|hide-footer|是否隐藏 footer|`boolean`|`false`|
-|footer-position|底部显示的位置|`'inner' \| 'outer'`|`'inner'`|
-|show-loader|是否显示加载中效果|`boolean`|`false`|
-|preview|是否开启预览|`boolean`|`true`|
-|preview-visible **(v-model)**|控制预览的打开状态，可与 previewVisibleChange 配合使用|`boolean`|`-`|
-|default-preview-visible|预览的默认打开状态|`boolean`|`false`|
-|preview-props|预览的配置项（所有选项都是可选的） [ImagePreviewProps](#imagepreview)|`ImagePreviewProps`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|src|图片获取地址|`string`|`-`||
+|width|图片显示宽度|`string \| number`|`-`||
+|height|图片显示高度|`string \| number`|`-`||
+|title|标题|`string`|`-`||
+|description|描述，将显示在底部，如果 alt 没有值，则会将其设置给 alt|`string`|`-`||
+|alt|图片的文字描述|`string`|`-`||
+|hide-footer|是否隐藏 footer|`boolean`|`false`||
+|footer-position|底部显示的位置|`'inner' \| 'outer'`|`'inner'`||
+|show-loader|是否显示加载中效果|`boolean`|`false`||
+|preview|是否开启预览|`boolean`|`true`||
+|preview-visible **(v-model)**|控制预览的打开状态，可与 previewVisibleChange 配合使用|`boolean`|`-`||
+|default-preview-visible|预览的默认打开状态|`boolean`|`false`||
+|preview-props|预览的配置项（所有选项都是可选的） [ImagePreviewProps](#imagepreview)|`ImagePreviewProps`|`-`||
+|footer-class|底部显示区域的类名|`string\|array\|object`|`-`|2.23.0|
 ### `<image>` Events
 
 |事件名|描述|参数|
@@ -71,13 +72,18 @@ description: 展示和预览图片。
 |default-visible|默认是否可见，非受控|`boolean`|`false`|
 |mask-closable|点击 mask 是否触发关闭|`boolean`|`true`|
 |closable|是否显示关闭按钮|`boolean`|`true`|
-|actions-layout|控制条的布局|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
+|actions-layout|操作项的布局|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
 |popup-container|设置弹出框的挂载点，同 `teleport` 的 `to`，缺省值是 document.body|`HTMLElement`|`-`|
 ### `<image-preview>` Events
 
 |事件名|描述|参数|
 |---|---|---|
 |close|关闭事件|-|
+### `<image-preview>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|actions|自定义额外的操作项|-|2.17.0|
 
 
 
@@ -102,5 +108,15 @@ description: 展示和预览图片。
 |---|---|---|
 |change|切换图片|-|
 |visible-change|预览的打开和关闭|-|
+
+
+
+
+### `<image-preview-action>` Props (2.17.0)
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|name|名称|`string`|`-`|
+|disabled|是否禁用|`boolean`|`false`|
 
 

@@ -17,36 +17,32 @@ title:
 ```vue
 <template>
   <a-space>
-    <a-trigger class="demo-arrow" trigger="click">
+    <a-trigger trigger="click">
       <a-button>Click Me</a-button>
       <template #content>
-        <a-empty />
+        <div class="demo-arrow">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
-    <a-trigger class="demo-arrow" trigger="click" show-arrow>
+    <a-trigger trigger="click" show-arrow>
       <a-button>Click Me (Arrow)</a-button>
       <template #content>
-        <a-empty />
+        <div class="demo-arrow">
+          <a-empty />
+        </div>
       </template>
     </a-trigger>
   </a-space>
 </template>
 
-<style lang="less">
+<style scoped>
 .demo-arrow {
-  border-radius: 4px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-
-  &-popup-content {
-    padding: 10px;
-    width: 200px;
-    background-color: var(--color-bg-popup);
-    border-radius: 4px;
-  }
-
-  &-popup-arrow {
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-  }
+  padding: 10px;
+  width: 200px;
+  background-color: var(--color-bg-popup);
+  border-radius: 4px;
 }
 </style>
 ```

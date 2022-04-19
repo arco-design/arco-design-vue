@@ -1,6 +1,6 @@
 <template>
   <ResizeObserver @resize="handleResize">
-    <label ref="labelRef" :class="prefixCls">
+    <component :is="component" ref="labelRef" :class="prefixCls" v-bind="attrs">
       <strong v-if="required" :class="`${prefixCls}-required-symbol`">
         <svg
           fill="currentColor"
@@ -15,7 +15,7 @@
       </strong>
       <slot />
       {{ showColon ? ':' : '' }}
-    </label>
+    </component>
   </ResizeObserver>
 </template>
 
@@ -29,8 +29,8 @@ import {
   ref,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import ResizeObserver from '../_components/resize-observer';
-import { formKey } from './context';
+import ResizeObserver from '../_components/resize-observer-v2.vue';
+import { formInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
 
 export default defineComponent({
@@ -47,10 +47,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    component: {
+      type: String,
+      default: 'label',
+    },
+    attrs: Object,
   },
   setup() {
     const prefixCls = getPrefixCls('form-item-label');
-    const formCtx = inject(formKey, undefined);
+    const formCtx = inject(formInjectionKey, undefined);
     const instance = getCurrentInstance();
     const labelRef = ref<HTMLElement>();
 

@@ -7,22 +7,31 @@ import {
   watch,
   onMounted,
   TransitionGroup,
-  inject,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
+import { INPUT_EVENTS, Size } from '../_utils/constant';
 import { Backspace, Enter } from '../_utils/keycode';
 import { getValueData } from './utils';
 import Tag from '../tag';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
-import { TagData } from './interface';
+import { InputTagFieldNames, TagData } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { EmitType } from '../_utils/types';
 import ResizeObserver from '../_components/resize-observer';
-import { configProviderInjectionKey } from '../config-provider/context';
 import FeedbackIcon from '../_components/feedback-icon.vue';
+import { useFormItem } from '../_hooks/use-form-item';
+import { useSize } from '../_hooks/use-size';
+import { isNull, isUndefined } from '../_utils/is';
+
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+  closable: 'closable',
+  tagProps: 'tagProps',
+};
 
 export default defineComponent({
   name: 'InputTag',
@@ -103,8 +112,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 最多展示的标签个数，`0` 表示不限制
@@ -138,13 +145,19 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    feedback: {
-      type: String,
+    /**
+     * @zh 自定义 `TagData` 中的字段
+     * @en Customize fields in `TagData`
+     * @version 2.22.0
+     */
+    fieldNames: {
+      type: Object as PropType<InputTagFieldNames>,
     },
     // private
     baseCls: String,
     focused: Boolean,
     disabledInput: Boolean,
+    uninjectFormItemContext: Boolean,
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -214,10 +227,28 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit, slots, attrs }) {
+    const { size, disabled, error, uninjectFormItemContext, modelValue } =
+      toRefs(props);
     const prefixCls = props.baseCls || getPrefixCls('input-tag');
-
     const inputRef = ref<HTMLInputElement>();
     const mirrorRef = ref<HTMLElement>();
+    const {
+      mergedSize: _mergedSize,
+      mergedDisabled,
+      mergedError,
+      feedback,
+      eventHandlers,
+    } = useFormItem({
+      size,
+      disabled,
+      error,
+      uninject: uninjectFormItemContext?.value,
+    });
+    const { mergedSize } = useSize(_mergedSize);
+    const mergedFieldNames = computed(() => ({
+      ...DEFAULT_FIELD_NAMES,
+      ...props.fieldNames,
+    }));
 
     const _focused = ref(false);
     const _value = ref(props.defaultValue);
@@ -255,6 +286,12 @@ export default defineComponent({
       () => props.inputValue ?? _inputValue.value
     );
 
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = [];
+      }
+    });
+
     const handleMousedown = (e: MouseEvent) => {
       if (inputRef.value && e.target !== inputRef.value) {
         e.preventDefault();
@@ -272,16 +309,23 @@ export default defineComponent({
     };
 
     const tags = computed(() => {
-      const valueData = getValueData(computedValue.value);
+      const valueData = getValueData(
+        computedValue.value,
+        mergedFieldNames.value
+      );
 
       if (props.maxTagCount > 0) {
         const invisibleTags = valueData.length - props.maxTagCount;
         if (invisibleTags > 0) {
           const result = valueData.slice(0, props.maxTagCount);
-          result.push({
-            value: 'more',
+          const raw = {
+            value: '__arco__more',
             label: `+${invisibleTags}...`,
             closable: false,
+          };
+          result.push({
+            raw,
+            ...raw,
           });
           return result;
         }
@@ -289,25 +333,28 @@ export default defineComponent({
       return valueData;
     });
 
+    const updateValue = (value: (string | number | TagData)[], ev: Event) => {
+      _value.value = value;
+      emit('update:modelValue', value);
+      emit('change', value, ev);
+      eventHandlers.value?.onChange?.(ev);
+    };
+
     const handleRemove = (value: string | number, index: number, e: Event) => {
       const newValue = computedValue.value?.filter((_, i) => i !== index);
-      _value.value = newValue;
+      updateValue(newValue, e);
       emit('remove', value, e);
-      emit('update:modelValue', newValue);
-      emit('change', newValue, e);
     };
 
     const handleClear = (e: MouseEvent) => {
       const newValue: any[] = [];
-      _value.value = newValue;
+      updateValue(newValue, e);
       emit('clear', e);
-      emit('update:modelValue', newValue);
-      emit('change', newValue, e);
     };
 
     const showClearBtn = computed(
       () =>
-        !props.disabled &&
+        !mergedDisabled.value &&
         !props.readonly &&
         props.allowClear &&
         Boolean(computedValue.value.length)
@@ -324,9 +371,7 @@ export default defineComponent({
           return;
         }
         const newValue = computedValue.value.concat(computedInputValue.value);
-        _value.value = newValue;
-        emit('update:modelValue', newValue);
-        emit('change', newValue, e);
+        updateValue(newValue, e);
 
         if (!props.retainInputValue) {
           _inputValue.value = '';
@@ -339,11 +384,13 @@ export default defineComponent({
     const handleFocus = (ev: FocusEvent) => {
       _focused.value = true;
       emit('focus', ev);
+      eventHandlers.value?.onFocus?.(ev);
     };
 
     const handleBlur = (ev: FocusEvent) => {
       _focused.value = false;
       emit('blur', ev);
+      eventHandlers.value?.onBlur?.(ev);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -398,17 +445,17 @@ export default defineComponent({
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-disabled-input`]: props.disabledInput,
-        [`${prefixCls}-error`]: props.error,
+        [`${prefixCls}-error`]: mergedError.value,
         [`${prefixCls}-focus`]: mergedFocused.value,
         [`${prefixCls}-readonly`]: props.readonly,
         [`${prefixCls}-has-tag`]: tags.value.length > 0,
         [`${prefixCls}-has-prefix`]: Boolean(slots.prefix),
         [`${prefixCls}-has-suffix`]:
-          Boolean(slots.suffix) || showClearBtn.value || props.feedback,
+          Boolean(slots.suffix) || showClearBtn.value || feedback.value,
         [`${prefixCls}-has-placeholder`]: !computedValue.value.length,
       },
     ]);
@@ -437,19 +484,22 @@ export default defineComponent({
         <TransitionGroup
           tag="span"
           name="input-tag-zoom"
+          // @ts-ignore
           class={`${prefixCls}-inner`}
         >
           {tags.value.map((item, index) => (
             <Tag
               key={`tag-${item.value}`}
               class={`${prefixCls}-tag`}
-              closable={!props.disabled && !props.readonly && item.closable}
+              closable={
+                !mergedDisabled.value && !props.readonly && item.closable
+              }
               visible
-              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
               {...item.tagProps}
+              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
             >
-              {slots.tag?.({ data: item }) ??
-                props.formatTag?.(item) ??
+              {slots.tag?.({ data: item.raw }) ??
+                props.formatTag?.(item.raw) ??
                 item.label}
             </Tag>
           ))}
@@ -462,7 +512,7 @@ export default defineComponent({
             placeholder={
               tags.value.length === 0 ? props.placeholder : undefined
             }
-            disabled={props.disabled}
+            disabled={mergedDisabled.value}
             readonly={props.readonly || props.disabledInput}
             onInput={handleInput}
             onKeydown={handleKeyDown}
@@ -476,16 +526,17 @@ export default defineComponent({
         {showClearBtn.value && (
           <IconHover
             class={`${prefixCls}-clear-btn`}
+            // @ts-ignore
             onClick={handleClear}
             onMousedown={(e: MouseEvent) => e.stopPropagation()}
           >
             <IconClose />
           </IconHover>
         )}
-        {(slots.suffix || Boolean(props.feedback)) && (
+        {(slots.suffix || Boolean(feedback.value)) && (
           <span class={`${prefixCls}-suffix`}>
             {slots.suffix?.()}
-            {Boolean(props.feedback) && <FeedbackIcon type={props.feedback} />}
+            {Boolean(feedback.value) && <FeedbackIcon type={feedback.value} />}
           </span>
         )}
       </span>

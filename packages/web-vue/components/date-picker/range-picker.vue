@@ -2,8 +2,10 @@
   <Trigger
     v-if="!hideTrigger"
     trigger="click"
+    animation-name="slide-dynamic-origin"
+    auto-fit-transform-origin
     :click-to-close="false"
-    :popup-translate="[0, 4]"
+    :popup-offset="4"
     v-bind="triggerProps"
     :unmount-on-close="unmountOnClose"
     :position="position"
@@ -55,13 +57,13 @@ import { Dayjs } from 'dayjs';
 import {
   computed,
   defineComponent,
-  inject,
   nextTick,
   PropType,
   reactive,
   ref,
   toRefs,
   watch,
+  watchEffect,
 } from 'vue';
 import { TimePickerProps } from '../time-picker/interface';
 import {
@@ -69,6 +71,7 @@ import {
   RangePickerProps,
   ShortcutType,
   CalendarValue,
+  WeekStart,
 } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { isArray, isBoolean } from '../_utils/is';
@@ -80,6 +83,7 @@ import {
   dayjs,
   getNow,
   getDateValue,
+  initializeDateLocale,
 } from '../_utils/date';
 import useState from '../_hooks/use-state';
 import {
@@ -100,8 +104,10 @@ import useMergeState from '../_hooks/use-merge-state';
 import IconCalendar from '../icon/icon-calendar';
 import useProvideDatePickerTransform from './hooks/use-provide-datepicker-transform';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { getReturnRangeValue } from './hooks/use-value-format';
+import { Size } from '../_utils/constant';
+import { useFormItem } from '../_hooks/use-form-item';
+import { useI18n } from '../locale';
 
 export default defineComponent({
   name: 'RangePicker',
@@ -158,12 +164,13 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0)
-     * @en The first day of the week starts on the day of the week, 0-Sunday, 1-Monday. (Default 0)
-     * @type number
+     * @zh 每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。
+     * @en The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.
+     * @type 0 | 1 | 2 | 3 | 4 | 5 | 6
+     * @version 2-6 from 2.21.0
      */
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     /**
@@ -249,9 +256,7 @@ export default defineComponent({
       type: Boolean,
     },
     size: {
-      type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
+      type: String as PropType<Size>,
     },
     shortcuts: {
       type: Array as PropType<ShortcutType[]>,
@@ -431,7 +436,25 @@ export default defineComponent({
       pickerValue,
       defaultPickerValue,
       valueFormat,
+      size,
+      error,
+      dayStartOfWeek,
     } = toRefs(props);
+
+    const { locale: globalLocal } = useI18n();
+    watchEffect(() => {
+      initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+    });
+
+    const {
+      mergedSize,
+      mergedDisabled: formDisabled,
+      mergedError,
+      eventHandlers,
+    } = useFormItem({
+      size,
+      error,
+    });
 
     const datePickerT = useProvideDatePickerTransform(
       reactive({
@@ -470,9 +493,11 @@ export default defineComponent({
     const disabledArray = computed(() => {
       const disabled0 =
         disabled.value === true ||
+        formDisabled.value ||
         (isArray(disabled.value) && disabled.value[0] === true);
       const disabled1 =
         disabled.value === true ||
+        formDisabled.value ||
         (isArray(disabled.value) && disabled.value[1] === true);
       return [disabled0, disabled1];
     });
@@ -637,6 +662,7 @@ export default defineComponent({
       if (isValueChange(value, selectedValue.value)) {
         emit('update:modelValue', returnValue);
         emit('change', returnValue, dateValue, formattedValue);
+        eventHandlers.value?.onChange?.();
       }
       if (emitOk) {
         emit('ok', returnValue, dateValue, formattedValue);
@@ -672,6 +698,13 @@ export default defineComponent({
       }
     }
 
+    function emitSelectEvent(value: Array<Dayjs | undefined>) {
+      const returnValue = getReturnRangeValue(value, returnValueFormat.value);
+      const formattedValue = getFormattedValue(value, parseValueFormat.value);
+      const dateValue = getDateValue(value);
+      emit('select', returnValue, dateValue, formattedValue);
+    }
+
     function select(
       value: Array<Dayjs | undefined>,
       options?: {
@@ -685,10 +718,7 @@ export default defineComponent({
       setInputValue(undefined);
 
       if (emitSelect) {
-        const returnValue = getReturnRangeValue(value, returnValueFormat.value);
-        const formattedValue = getFormattedValue(value, parseValueFormat.value);
-        const dateValue = getDateValue(value);
-        emit('select', returnValue, dateValue, formattedValue);
+        emitSelectEvent(value);
       }
 
       if (updateHeader) {
@@ -717,7 +747,7 @@ export default defineComponent({
     }
 
     function getMergedOpValue(date: Dayjs, time?: Dayjs) {
-      if (!isDateTime.value) return date;
+      if (!isDateTime.value && !timePickerProps.value) return date;
       return mergeValueWithTime(getNow(), date, time);
     }
 
@@ -760,10 +790,11 @@ export default defineComponent({
       );
       newValue[focusedIndex.value] = mergedOpValue;
 
+      emitSelectEvent(newValue);
       if (!needConfirm.value && isCompleteRangeValue(newValue)) {
         confirm(newValue, false);
       } else {
-        select(newValue, { emitSelect: true });
+        select(newValue);
         if (!isCompleteRangeValue(newValue)) {
           focusedIndex.value = nextFocusedIndex.value;
         }
@@ -937,6 +968,8 @@ export default defineComponent({
       inputValue,
       focusedIndex,
       triggerDisabled,
+      mergedSize,
+      mergedError,
       onPanelVisibleChange,
       onInputClear,
       onInputChange,

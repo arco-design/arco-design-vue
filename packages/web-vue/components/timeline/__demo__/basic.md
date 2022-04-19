@@ -39,16 +39,20 @@ Basic usage
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      isReverse: false,
+  setup() {
+    const isReverse = ref(false);
+
+    const onChange = (bool) => {
+      isReverse.value = bool;
     };
-  },
-  methods: {
-    onChange(bool) {
-      this.isReverse = bool;
-    },
+
+    return {
+      isReverse,
+      onChange
+    }
   },
 };
 </script>

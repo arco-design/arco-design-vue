@@ -30,6 +30,7 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/async.md
 
+@import ./__demo__/custom.md
 
 
 ### `<form>` Props
@@ -90,16 +91,18 @@ description: A form with data collection, verification and submission functions,
 |row-class|The class of the form item layout component|`string\|array\|object`|`-`|2.10.0|
 |content-class|The class of the form control wrapping layer|`string\|array\|object`|`-`|2.10.0|
 |content-flex|Whether to enable flex layout in the content layer|`boolean`|`true`|2.13.0|
-|merge-props|Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem|`boolean \| ((props: Record<string, any>) => Record<string, any>)`|`true`|2.13.0|
+|merge-props|(Repealed) Control the Props passed to the child element. The default includes disabled, error, size, events and additional attributes on FormItem. Version 2.18.0 deprecated|`boolean \| ((props: Record<string, any>) => Record<string, any>)`|`true`|2.13.0|
 |label-col-flex|Set the flex property of the label `Col` component. When set, the flex property of the form `Col` component will be set to `auto`.|`number\|string`|`-`|2.13.0|
 |feedback|Whether to show the feedback icon for the form control|`boolean`|`false`|2.16.0|
+|label-component|The element that the form item label renders|`string`|`'label'`|2.22.0|
+|label-attrs|Attributes of the form item element|`object`|`-`|2.22.0|
 ### `<form-item>` Slots
 
 |Slot Name|Description|Parameters|
 |---|---|---|
-|extra|Extra content|-|
-|help|Help message|-|
 |label|Label|-|
+|help|Help message|-|
+|extra|Extra content|-|
 
 
 
@@ -144,12 +147,40 @@ description: A form with data collection, verification and submission functions,
 
 ### ValidatedError
 
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|label|Label text|`string`|`-`|2.18.0|
+|field|Field name|`string`|`-`||
+|value|Field value|`any`|`-`||
+|type|Field Type|`string`|`-`||
+|isRequiredError|Is it a `required` error|`boolean`|`false`||
+|message|Error message|`string`|`-`||
+
+
+
+### FormItemEventHandler
+
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|field|Field name|`string`|`-`|
-|value|Field value|`any`|`-`|
-|type|Field Type|`string`|`-`|
-|isRequiredError|Is it a `required` error|`boolean`|`false`|
-|message|Error message|`string`|`-`|
+|onChange|onChange|`(ev?: Event) => void`|`-`|
+|onInput|onInput|`(ev?: Event) => void`|`-`|
+|onFocus|onFocus|`(ev?: Event) => void`|`-`|
+|onBlur|onBlur|`(ev?: Event) => void`|`-`|
 
 
+
+### useFormItem
+
+```ts
+const useFormItem = (data: {
+  size?: Ref<Size | undefined>;
+  disabled?: Ref<boolean>;
+  error?: Ref<boolean>;
+}) => {
+  mergedSize:Ref<Size>;
+  mergedDisabled:Ref<boolean>;
+  mergedError:Ref<boolean>;
+  feedback:Ref<string>;
+  eventHandlers:Ref<FormItemEventHandler>;
+}
+```

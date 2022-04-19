@@ -1,7 +1,7 @@
 import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Steps from './steps';
+import _Steps from './steps.vue';
 import _StepsStep from './step.vue';
 
 const Steps = Object.assign(_Steps, {

@@ -33,7 +33,7 @@ description: Used to add hover, click, focus and other events to the element, an
 |position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'bottom'`|
 |disabled|Whether the trigger is disabled|`boolean`|`false`|
 |popup-offset|The offset of the popup (the offset distance of the popup from the trigger)|`number`|`0`|
-|popup-translate|The moving distance of the popup|`PopupTranslate`|`-`|
+|popup-translate|The moving distance of the popup|`TriggerPopupTranslate`|`-`|
 |show-arrow|Whether the popup shows an arrow|`boolean`|`false`|
 |align-point|Whether the popup follows the mouse|`boolean`|`false`|
 |popup-hover-stay|Whether to keep the popup displayed when the trigger is moved out and moved into the popup|`boolean`|`true`|
@@ -41,13 +41,13 @@ description: Used to add hover, click, focus and other events to the element, an
 |click-to-close|Whether to close the popup when the trigger is clicked|`boolean`|`true`|
 |click-outside-to-close|Whether to close the popup when clicking on the outer area|`boolean`|`true`|
 |unmount-on-close|Whether to uninstall the popup node when closing|`boolean`|`true`|
-|content-class|The class name of the popup content|`ClassName`|`-`|
+|content-class|The class name of the popup content|`string\|array\|object`|`-`|
 |content-style|The style of the popup content|`CSSProperties`|`-`|
-|arrow-class|The class name of the popup arrow|`ClassName`|`-`|
+|arrow-class|The class name of the popup arrow|`string\|array\|object`|`-`|
 |arrow-style|The style of the popup arrow|`CSSProperties`|`-`|
 |popup-style|The style of the popup|`CSSProperties`|`-`|
 |animation-name|The name of the popup animation|`string`|`'fade-in'`|
-|duration|The duration of the popup animation|`AnimationDuration`|`-`|
+|duration|The duration of the popup animation|`number\| {    enter: number;    leave: number;  }`|`-`|
 |mouse-enter-delay|Delay trigger time of mouseenter event (ms)|`number`|`100`|
 |mouse-leave-delay|Delay trigger time of mouseleave event (ms)|`number`|`100`|
 |focus-delay|Delay trigger time of focus event (ms)|`number`|`0`|
@@ -60,9 +60,11 @@ description: Used to add hover, click, focus and other events to the element, an
 |prevent-focus|Whether to prevent elements in the pop-up layer from gaining focus when clicked|`boolean`|`false`|
 ### `<trigger>` Events
 
-|Event Name|Description|Parameters|
-|---|---|---|
-|popup-visible-change|Emitted when the status of the popup changes|popupVisible: `boolean`|
+|Event Name|Description|Parameters|version|
+|---|---|---|:---|
+|popup-visible-change|Emitted when the status of the popup changes|popupVisible: `boolean`||
+|show|Triggered after the trigger is shown (the animation ends)|-|2.18.0|
+|hide|Triggered after the popup is hidden (the animation ends)|-|2.18.0|
 ### `<trigger>` Slots
 
 |Slot Name|Description|Parameters|
@@ -70,3 +72,9 @@ description: Used to add hover, click, focus and other events to the element, an
 |content|Popup content|-|
 
 
+
+```ts
+type TriggerPopupTranslate =
+  | [number, number]
+  | { [key in TriggerPosition]?: [number, number] };
+```

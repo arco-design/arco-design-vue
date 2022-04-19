@@ -13,6 +13,7 @@ const Trigger = Object.assign(_Trigger, {
 });
 
 export type TriggerInstance = InstanceType<typeof _Trigger>;
-export type TriggerProps = TriggerInstance['$props'];
+export type { TriggerEvent, TriggerPosition } from '../_utils/constant';
+export type { TriggerProps, TriggerPopupTranslate } from './interface';
 
 export default Trigger;

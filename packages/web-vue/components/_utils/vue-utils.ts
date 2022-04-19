@@ -333,15 +333,24 @@ export const getRenderFunc = (content: RenderContent) => {
   return () => content;
 };
 
-export const getAllElements = (vns: VNode[] | undefined) => {
+export const getAllElements = (
+  children: VNode[] | undefined,
+  includeText = false
+) => {
   const results: VNode[] = [];
-  for (const vn of vns ?? []) {
-    if (isElement(vn) || isComponent(vn) || isTextChildren(vn, vn.children)) {
-      results.push(vn);
-    } else if (isArrayChildren(vn, vn.children)) {
-      results.push(...getAllElements(vn.children));
-    } else if (isSlotsChildren(vn, vn.children)) {
-      results.push(...getAllElements(vn.children.default?.()));
+  for (const item of children ?? []) {
+    if (
+      isElement(item) ||
+      isComponent(item) ||
+      (includeText && isTextChildren(item, item.children))
+    ) {
+      results.push(item);
+    } else if (isArrayChildren(item, item.children)) {
+      results.push(...getAllElements(item.children, includeText));
+    } else if (isSlotsChildren(item, item.children)) {
+      results.push(...getAllElements(item.children.default?.(), includeText));
+    } else if (isArray(item)) {
+      results.push(...getAllElements(item, includeText));
     }
   }
   return results;
@@ -397,4 +406,24 @@ export const resolveProps = (vn: VNode) => {
     props[camelKey] = resolveValue;
   }
   return props;
+};
+
+export const getFirstElement = (vn: VNode | VNode[]): HTMLElement | null => {
+  if (isArray(vn)) {
+    for (const child of vn) {
+      const result = getFirstElement(child);
+      if (result) return result;
+    }
+  } else if (
+    (isElement(vn) || isComponent(vn)) &&
+    (vn.el as Node)?.nodeType === 1
+  ) {
+    return vn.el as HTMLElement;
+  } else if (isArrayChildren(vn, vn.children)) {
+    for (const child of vn.children) {
+      const result = getFirstElement(child);
+      if (result) return result;
+    }
+  }
+  return null;
 };

@@ -1,19 +1,910 @@
-import { FunctionalComponent } from 'vue';
-import BaseSelect from './base-select';
-import { travelSelectChildren } from './utils';
-import { omit } from '../_utils/omit';
+import type { ComponentPublicInstance, PropType } from 'vue';
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  ref,
+  toRefs,
+  watch,
+  watchEffect,
+} from 'vue';
+import { getPrefixCls } from '../_utils/global-config';
+import {
+  isArray,
+  isFunction,
+  isNull,
+  isNumber,
+  isObject,
+  isUndefined,
+} from '../_utils/is';
+import { getKeyFromValue, isGroupOptionInfo, isValidOption } from './utils';
+import Trigger, { TriggerProps } from '../trigger';
+import SelectView from '../_components/select-view/select-view';
+import { Size } from '../_utils/constant';
+import { Data, EmitType } from '../_utils/types';
+import SelectDropdown from './select-dropdown.vue';
+import Option from './option.vue';
+import OptGroup from './optgroup.vue';
+import {
+  SelectOptionData,
+  SelectOptionInfo,
+  SelectOptionGroupInfo,
+  OptionValueWithKey,
+  SelectFieldNames,
+  SelectOptionGroup,
+} from './interface';
+import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import { VirtualListProps } from '../_components/virtual-list/interface';
+import { useSelect } from './hooks/use-select';
+import { TagData } from '../input-tag';
+import { useTrigger } from '../_hooks/use-trigger';
+import { useFormItem } from '../_hooks/use-form-item';
+import { debounce } from '../_utils/debounce';
+import { SelectViewValue } from '../_components/select-view/interface';
 
-export type SelectProps = InstanceType<typeof BaseSelect>['$props'];
+export default defineComponent({
+  name: 'Select',
+  components: {
+    Trigger,
+    SelectView,
+  },
+  inheritAttrs: false,
+  props: {
+    /**
+     * @zh 是否开启多选模式（多选模式默认开启搜索）
+     * @en Whether to open multi-select mode (The search is turned on by default in the multi-select mode)
+     */
+    multiple: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 绑定值
+     * @en Value
+     */
+    modelValue: {
+      type: [String, Number, Object, Array] as PropType<
+        | string
+        | number
+        | Record<string, unknown>
+        | (string | number | Record<string, unknown>)[]
+      >,
+    },
+    /**
+     * @zh 默认值（非受控模式）
+     * @en Default value (uncontrolled mode)
+     * @defaultValue '' \| []
+     */
+    defaultValue: {
+      type: [String, Number, Object, Array] as PropType<
+        | string
+        | number
+        | Record<string, unknown>
+        | (string | number | Record<string, unknown>)[]
+      >,
+      default: (props: Data) => (isUndefined(props.multiple) ? '' : []),
+    },
+    /**
+     * @zh 输入框的值
+     * @en The value of the input
+     * @vModel
+     */
+    inputValue: {
+      type: String,
+    },
+    /**
+     * @zh 输入框的默认值（非受控模式）
+     * @en The default value of the input (uncontrolled mode)
+     */
+    defaultInputValue: {
+      type: String,
+      default: '',
+    },
+    /**
+     * @zh 选择框的大小
+     * @en The size of the select
+     * @values 'mini','small','medium','large'
+     * @defaultValue 'medium'
+     */
+    size: {
+      type: String as PropType<Size>,
+    },
+    /**
+     * @zh 占位符
+     * @en Placeholder
+     */
+    placeholder: String,
+    /**
+     * @zh 是否为加载中状态
+     * @en Whether it is loading state
+     */
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否禁用
+     * @en Whether to disable
+     */
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否为错误状态
+     * @en Whether it is an error state
+     */
+    error: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否允许清空
+     * @en Whether to allow clear
+     */
+    allowClear: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否允许搜索
+     * @en Whether to allow searching
+     * @defaultValue false (single) \| true (multiple)
+     */
+    allowSearch: {
+      type: [Boolean, Object] as PropType<
+        boolean | { retainInputValue?: boolean }
+      >,
+      default: (props: Data) => Boolean(props.multiple),
+    },
+    /**
+     * @zh 是否允许创建
+     * @en Whether to allow creation
+     */
+    allowCreate: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 多选模式下，最多显示的标签数量。0 表示不限制
+     * @en In multi-select mode, the maximum number of labels displayed. 0 means unlimited
+     */
+    maxTagCount: {
+      type: Number,
+      default: 0,
+    },
+    /**
+     * @zh 弹出框的挂载容器
+     * @en Mount container for popup
+     */
+    popupContainer: {
+      type: [String, Object] as PropType<string | HTMLElement>,
+    },
+    /**
+     * @zh 是否显示输入框的边框
+     * @en Whether to display the border of the input box
+     */
+    bordered: {
+      type: Boolean,
+      default: true,
+    },
+    defaultActiveFirstOption: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否显示下拉菜单
+     * @en Whether to show the dropdown
+     * @vModel
+     */
+    popupVisible: {
+      type: Boolean,
+      default: undefined,
+    },
+    /**
+     * @zh 弹出框默认是否可见（非受控模式）
+     * @en Whether the popup is visible by default (uncontrolled mode)
+     */
+    defaultPopupVisible: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否在下拉菜单关闭时销毁元素
+     * @en Whether to destroy the element when the dropdown is closed
+     */
+    unmountOnClose: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否过滤选项
+     * @en Whether to filter options
+     */
+    filterOption: {
+      type: [Boolean, Function] as PropType<
+        boolean | ((inputValue: string, option: SelectOptionData) => boolean)
+      >,
+      default: true,
+    },
+    /**
+     * @zh 选项数据
+     * @en Option data
+     */
+    options: {
+      type: Array as PropType<
+        (string | number | SelectOptionData | SelectOptionGroup)[]
+      >,
+      default: () => [],
+    },
+    /**
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)
+     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)
+     * @type VirtualListProps
+     */
+    virtualListProps: {
+      type: Object as PropType<VirtualListProps>,
+    },
+    /**
+     * @zh 下拉菜单的触发器属性
+     * @en Trigger props of the drop-down menu
+     * @type TriggerProps
+     */
+    triggerProps: {
+      type: Object as PropType<TriggerProps>,
+    },
+    /**
+     * @zh 格式化显示内容
+     * @en Format display content
+     */
+    formatLabel: {
+      type: Function as PropType<(data: SelectOptionData) => string>,
+    },
+    /**
+     * @zh 自定义值中不存在的选项
+     * @en Options that do not exist in custom values
+     * @version 2.10.0
+     */
+    fallbackOption: {
+      type: [Boolean, Function] as PropType<
+        | boolean
+        | ((
+            value: string | number | Record<string, unknown>
+          ) => SelectOptionData)
+      >,
+      default: true,
+    },
+    /**
+     * @zh 是否在下拉菜单中显示额外选项
+     * @en Options that do not exist in custom values
+     * @version 2.10.0
+     */
+    showExtraOptions: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 用于确定选项键值得属性名
+     * @en Used to determine the option key value attribute name
+     * @version 2.18.0
+     */
+    valueKey: {
+      type: String,
+      default: 'value',
+    },
+    /**
+     * @zh 触发搜索事件的延迟时间
+     * @en Delay time to trigger search event
+     * @version 2.18.0
+     */
+    searchDelay: {
+      type: Number,
+      default: 500,
+    },
+    /**
+     * @zh 多选时最多的选择个数
+     * @en Maximum number of choices in multiple choice
+     * @version 2.18.0
+     */
+    limit: {
+      type: Number,
+      default: 0,
+    },
+    /**
+     * @zh 自定义 `SelectOptionData` 中的字段
+     * @en Customize fields in `SelectOptionData`
+     * @version 2.22.0
+     */
+    fieldNames: {
+      type: Object as PropType<SelectFieldNames>,
+    },
+    // for JSX
+    onChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(value: string | number | Array<string | number>) => void>
+      >,
+    },
+    onInputValueChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(inputValue: string) => void>
+      >,
+    },
+    onPopupVisibleChange: {
+      type: [Function, Array] as PropType<
+        EmitType<(popupVisible: boolean) => void>
+      >,
+    },
+    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onRemove: {
+      type: [Function, Array] as PropType<EmitType<(removed: string) => void>>,
+    },
+    onSearch: {
+      type: [Function, Array] as PropType<
+        EmitType<(inputValue: string) => void>
+      >,
+    },
+  },
+  emits: [
+    'update:modelValue',
+    'update:inputValue',
+    'update:popupVisible',
+    /**
+     * @zh 值发生改变时触发
+     * @en Triggered when the value changes
+     */
+    'change',
+    /**
+     * @zh 输入框的值发生改变时触发
+     * @en Triggered when the value of the input changes
+     */
+    'inputValueChange',
+    /**
+     * @zh 下拉框的显示状态改变时触发
+     * @en Triggered when the display state of the drop-down box changes
+     */
+    'popupVisibleChange',
+    /**
+     * @zh 点击清除按钮时触发
+     * @en Triggered when the clear button is clicked
+     */
+    'clear',
+    /**
+     * @zh 点击标签的删除按钮时触发
+     * @en Triggered when the delete button of the label is clicked
+     */
+    'remove',
+    /**
+     * @zh 用户搜索时触发
+     * @en Triggered when the user searches
+     */
+    'search',
+    /**
+     * @zh 下拉菜单发生滚动时触发
+     * @en Triggered when the drop-down scrolls
+     */
+    'dropdownScroll',
+    /**
+     * @zh 下拉菜单滚动到底部时触发
+     * @en Triggered when the drop-down menu is scrolled to the bottom
+     */
+    'dropdownReachBottom',
+    /**
+     * @zh 多选超出限制时触发
+     * @en Triggered when multiple selection exceeds the limit
+     * @param value
+     * @version 2.18.0
+     */
+    'exceedLimit',
+  ],
+  /**
+   * @zh 选项为空时的显示内容
+   * @en Display content when the option is empty
+   * @slot empty
+   */
+  /**
+   * @zh 选项内容
+   * @en Display content of options
+   * @slot option
+   * @binding {SelectOptionData} data
+   */
+  /**
+   * @zh 选择框的显示内容
+   * @en Display content of label
+   * @slot label
+   * @binding {SelectOptionData} data
+   */
+  /**
+   * @zh 下拉框的页脚
+   * @en The footer of the drop-down box
+   * @slot footer
+   */
+  /**
+   * @zh 选择框的箭头图标
+   * @en Arrow icon for select box
+   * @slot arrow-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 选择框的加载中图标
+   * @en Loading icon for select box
+   * @slot loading-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 选择框的搜索图标
+   * @en Search icon for select box
+   * @slot search-icon
+   * @version 2.16.0
+   */
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   * @version 2.22.0
+   */
+  /**
+   * @zh 自定义触发元素
+   * @en Custom trigger element
+   * @slot trigger
+   * @version 2.22.0
+   */
+  setup(props, { slots, emit, attrs }) {
+    // props
+    const {
+      size,
+      disabled,
+      error,
+      options,
+      filterOption,
+      valueKey,
+      multiple,
+      popupVisible,
+      showExtraOptions,
+      modelValue,
+      fieldNames,
+      loading,
+    } = toRefs(props);
+    const prefixCls = getPrefixCls('select');
+    const { mergedSize, mergedDisabled, mergedError, eventHandlers } =
+      useFormItem({
+        size,
+        disabled,
+        error,
+      });
+    const component = computed(() => (props.virtualListProps ? 'div' : 'li'));
+    const retainInputValue = computed(
+      () =>
+        isObject(props.allowSearch) &&
+        Boolean(props.allowSearch.retainInputValue)
+    );
+    const formatLabel = computed(() => {
+      if (isFunction(props.formatLabel)) {
+        return (data: TagData) => {
+          const optionInfo = optionInfoMap.get(data.value as string);
+          // @ts-ignore
+          return props.formatLabel(optionInfo);
+        };
+      }
+      return undefined;
+    });
 
-const Select: FunctionalComponent<SelectProps> = (props, { slots }) => {
-  if (slots.default) {
-    props.options = travelSelectChildren(slots.default());
-  }
-  const omitSlots = omit(slots, ['default']);
+    // refs
+    const dropdownRef = ref<ComponentPublicInstance>();
+    const optionRefs = ref<Record<string, HTMLElement>>({});
+    const virtualListRef = ref();
 
-  return <BaseSelect v-slots={omitSlots} {...props} />;
-};
+    // trigger
+    const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
+      popupVisible,
+      emit,
+    });
 
-Select.displayName = 'Select';
+    // value and key
+    const _value = ref(props.defaultValue);
+    const computedValueObjects = computed<OptionValueWithKey[]>(() => {
+      const mergedValue = props.modelValue ?? _value.value;
+      const valueArray = isArray(mergedValue)
+        ? mergedValue
+        : mergedValue || isNumber(mergedValue)
+        ? [mergedValue]
+        : [];
+      return valueArray.map((value) => ({
+        value,
+        key: getKeyFromValue(value, props.valueKey),
+      }));
+    });
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = multiple.value ? [] : '';
+      }
+    });
 
-export default Select;
+    const computedValueKeys = computed(() =>
+      computedValueObjects.value.map((obj) => obj.key)
+    );
+
+    // extra value and option
+    const getFallBackOption = (
+      value: string | number | Record<string, unknown>
+    ): SelectOptionData => {
+      if (isFunction(props.fallbackOption)) {
+        return props.fallbackOption(value);
+      }
+      return {
+        value,
+        label: String(isObject(value) ? value[valueKey?.value] : value),
+      };
+    };
+
+    const getExtraValueData = (): OptionValueWithKey[] => {
+      const valueArray: OptionValueWithKey[] = [];
+      const keyArray: string[] = [];
+
+      if (props.allowCreate || props.fallbackOption) {
+        for (const item of computedValueObjects.value) {
+          if (!keyArray.includes(item.key)) {
+            const optionInfo = optionInfoMap.get(item.key);
+            if (!optionInfo || optionInfo.origin === 'extraOptions') {
+              valueArray.push(item);
+              keyArray.push(item.key);
+            }
+          }
+        }
+      }
+
+      if (props.allowCreate && computedInputValue.value) {
+        const key = getKeyFromValue(computedInputValue.value);
+        if (!keyArray.includes(key)) {
+          const optionInfo = optionInfoMap.get(key);
+          if (!optionInfo || optionInfo.origin === 'extraOptions') {
+            valueArray.push({
+              value: computedInputValue.value,
+              key,
+            });
+          }
+        }
+      }
+      return valueArray;
+    };
+
+    const extraValueObjects = ref<OptionValueWithKey[]>([]);
+    const extraOptions = computed(() =>
+      extraValueObjects.value.map((obj) => getFallBackOption(obj.value))
+    );
+
+    nextTick(() => {
+      watchEffect(() => {
+        const valueData = getExtraValueData();
+        if (valueData.length !== extraValueObjects.value.length) {
+          extraValueObjects.value = valueData;
+        } else if (valueData.length > 0) {
+          for (let i = 0; i < valueData.length; i++) {
+            if (valueData[i].key !== extraValueObjects.value[i]?.key) {
+              extraValueObjects.value = valueData;
+              break;
+            }
+          }
+        }
+      });
+    });
+
+    // input value
+    const _inputValue = ref('');
+    const computedInputValue = computed(
+      () => props.inputValue ?? _inputValue.value
+    );
+
+    // clear input value when close dropdown
+    watch(computedPopupVisible, (visible) => {
+      if (!visible && !retainInputValue.value) {
+        updateInputValue('');
+      }
+    });
+
+    // update func
+    const getValueFromValueKeys = (valueKeys: string[]) => {
+      if (!props.multiple) {
+        return optionInfoMap.get(valueKeys[0])?.value ?? '';
+      }
+      return valueKeys.map((key) => optionInfoMap.get(key)?.value ?? '');
+    };
+
+    const updateValue = (valueKeys: string[]) => {
+      const value = getValueFromValueKeys(valueKeys);
+      _value.value = value;
+      emit('update:modelValue', value);
+      emit('change', value);
+      eventHandlers.value?.onChange?.();
+    };
+
+    const updateInputValue = (inputValue: string) => {
+      _inputValue.value = inputValue;
+      emit('update:inputValue', inputValue);
+      emit('inputValueChange', inputValue);
+    };
+
+    // events
+    const handleSelect = (key: string, ev: Event) => {
+      if (props.multiple) {
+        if (!computedValueKeys.value.includes(key)) {
+          if (enabledOptionKeys.value.includes(key)) {
+            if (
+              props.limit > 0 &&
+              computedValueKeys.value.length >= props.limit
+            ) {
+              const info = optionInfoMap.get(key);
+              emit('exceedLimit', info?.value, ev);
+            } else {
+              const valueKeys = computedValueKeys.value.concat(key);
+              updateValue(valueKeys);
+            }
+          }
+        } else {
+          const valueKeys = computedValueKeys.value.filter(
+            (_key) => _key !== key
+          );
+          updateValue(valueKeys);
+        }
+        if (!retainInputValue.value) {
+          // 点击一个选项时，清空输入框内容
+          updateInputValue('');
+        }
+      } else {
+        if (key !== computedValueKeys.value[0]) {
+          updateValue([key]);
+        }
+        if (retainInputValue.value) {
+          const optionInfo = optionInfoMap.get(key);
+          if (optionInfo) {
+            updateInputValue(optionInfo.label);
+          }
+        }
+
+        handlePopupVisibleChange(false);
+      }
+    };
+
+    const handleSearch = debounce((value: string) => {
+      emit('search', value);
+    }, props.searchDelay);
+
+    const handleInputValueChange = (inputValue: string) => {
+      if (inputValue !== computedInputValue.value) {
+        if (!computedPopupVisible.value) {
+          handlePopupVisibleChange(true);
+        }
+
+        updateInputValue(inputValue);
+
+        if (props.allowSearch) {
+          handleSearch(inputValue);
+        }
+      }
+    };
+
+    const handleRemove = (key: string) => {
+      const optionInfo = optionInfoMap.get(key);
+      const newKeys = computedValueKeys.value.filter((_key) => _key !== key);
+      updateValue(newKeys);
+      emit('remove', optionInfo?.value);
+    };
+
+    const handleClear = (e: Event) => {
+      e?.stopPropagation();
+      const newKeys = computedValueKeys.value.filter(
+        (key) => optionInfoMap.get(key)?.disabled
+      );
+      updateValue(newKeys);
+      updateInputValue('');
+      emit('clear');
+    };
+
+    const handleDropdownScroll = (e: Event) => {
+      emit('dropdownScroll', e);
+    };
+
+    const handleDropdownReachBottom = (e: Event) => {
+      emit('dropdownReachBottom', e);
+    };
+
+    const {
+      validOptions,
+      optionInfoMap,
+      validOptionInfos,
+      enabledOptionKeys,
+      handleKeyDown,
+    } = useSelect({
+      multiple,
+      options,
+      extraOptions,
+      inputValue: computedInputValue,
+      filterOption,
+      showExtraOptions,
+      component,
+      valueKey,
+      fieldNames,
+      loading,
+      popupVisible: computedPopupVisible,
+      valueKeys: computedValueKeys,
+      dropdownRef,
+      optionRefs,
+      virtualListRef,
+      onSelect: handleSelect,
+      onPopupVisibleChange: handlePopupVisibleChange,
+    });
+
+    const selectViewValue = computed(() => {
+      const result: SelectViewValue[] = [];
+      for (const item of computedValueObjects.value) {
+        const optionInfo = optionInfoMap.get(item.key);
+        if (optionInfo) {
+          result.push({
+            ...optionInfo,
+            value: item.key,
+            label:
+              optionInfo?.label ??
+              String(
+                isObject(item.value) ? item.value[valueKey?.value] : item.value
+              ),
+            closable: !optionInfo?.disabled,
+            tagProps: optionInfo?.tagProps,
+          });
+        }
+      }
+      return result;
+    });
+
+    const getOptionContentFunc = (optionInfo: SelectOptionInfo) => {
+      if (isFunction(slots.option)) {
+        const optionSlot = slots.option;
+        return () => optionSlot({ data: optionInfo });
+      }
+      if (isFunction(optionInfo.render)) {
+        return optionInfo.render;
+      }
+      return () => optionInfo.label;
+    };
+
+    const renderOption = (
+      optionInfo: SelectOptionInfo | SelectOptionGroupInfo
+    ) => {
+      if (isGroupOptionInfo(optionInfo)) {
+        return (
+          <OptGroup key={optionInfo.key} label={optionInfo.label}>
+            {optionInfo.options.map((child) => renderOption(child))}
+          </OptGroup>
+        );
+      }
+
+      if (
+        !isValidOption(optionInfo, {
+          inputValue: computedInputValue.value,
+          filterOption: filterOption?.value,
+        })
+      ) {
+        return null;
+      }
+
+      return (
+        <Option
+          v-slots={{
+            default: getOptionContentFunc(optionInfo),
+          }}
+          // @ts-ignore
+          ref={(ref: ComponentPublicInstance) => {
+            if (ref?.$el) {
+              optionRefs.value[optionInfo.key] = ref.$el;
+            }
+          }}
+          key={optionInfo.key}
+          value={optionInfo.value}
+          label={optionInfo.label}
+          disabled={optionInfo.disabled}
+          internal
+        />
+      );
+    };
+
+    const renderDropDown = () => {
+      return (
+        <SelectDropdown
+          ref={dropdownRef}
+          v-slots={{
+            'default': () => [
+              ...(slots.default?.() ?? []),
+              ...validOptions.value.map(renderOption),
+            ],
+            'virtual-list': () => (
+              <VirtualList
+                {...props.virtualListProps}
+                ref={virtualListRef}
+                data={validOptions.value}
+                v-slots={{
+                  item: ({
+                    item,
+                  }: {
+                    item: SelectOptionInfo | SelectOptionGroupInfo;
+                  }) => renderOption(item),
+                }}
+              />
+            ),
+            'empty': slots.empty,
+            'footer': slots.footer,
+          }}
+          loading={props.loading}
+          empty={validOptionInfos.value.length === 0}
+          virtualList={Boolean(props.virtualListProps)}
+          onScroll={handleDropdownScroll}
+          onReachBottom={handleDropdownReachBottom}
+        />
+      );
+    };
+
+    const renderLabel = ({ data }: { data: SelectViewValue }) => {
+      if (slots.label || isFunction(props.formatLabel)) {
+        const optionInfo = optionInfoMap.get(data.value as string);
+        if (optionInfo?.raw) {
+          return (
+            slots.label?.({ data: optionInfo.raw }) ??
+            props.formatLabel?.(optionInfo.raw)
+          );
+        }
+      }
+      return data.label;
+    };
+
+    return () => (
+      <Trigger
+        v-slots={{ content: renderDropDown }}
+        trigger="click"
+        position="bl"
+        popupOffset={4}
+        animationName="slide-dynamic-origin"
+        hideEmpty
+        preventFocus
+        autoFitPopupWidth
+        autoFitTransformOrigin
+        disabled={mergedDisabled.value}
+        popupVisible={computedPopupVisible.value}
+        unmountOnClose={props.unmountOnClose}
+        clickToClose={!(props.allowSearch || props.allowCreate)}
+        popupContainer={props.popupContainer}
+        onPopupVisibleChange={handlePopupVisibleChange}
+        {...props.triggerProps}
+      >
+        {slots.trigger?.() ?? (
+          <SelectView
+            v-slots={{
+              'label': renderLabel,
+              'prefix': slots.prefix,
+              'arrow-icon': slots['arrow-icon'],
+              'loading-icon': slots['loading-icon'],
+              'search-icon': slots['search-icon'],
+            }}
+            class={prefixCls}
+            modelValue={selectViewValue.value}
+            inputValue={computedInputValue.value}
+            multiple={props.multiple}
+            disabled={mergedDisabled.value}
+            error={mergedError.value}
+            loading={props.loading}
+            allowClear={props.allowClear}
+            allowCreate={props.allowCreate}
+            allowSearch={Boolean(props.allowSearch)}
+            opened={computedPopupVisible.value}
+            maxTagCount={props.maxTagCount}
+            placeholder={props.placeholder}
+            bordered={props.bordered}
+            size={mergedSize.value}
+            // @ts-ignore
+            onInputValueChange={handleInputValueChange}
+            onRemove={handleRemove}
+            onClear={handleClear}
+            onKeydown={handleKeyDown}
+            {...attrs}
+          />
+        )}
+      </Trigger>
+    );
+  },
+});

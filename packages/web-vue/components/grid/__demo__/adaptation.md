@@ -30,6 +30,7 @@ Six preset response sizes, namely `xs`, `sm`, `md`, `lg`, `xl`, `xxl`
     </a-col>
   </a-row>
 </template>
+
 <style scoped>
 .grid-demo .arco-col {
   height: 48px;

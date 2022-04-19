@@ -1,48 +1,56 @@
 import { toRefs, VNode, cloneVNode, watch } from 'vue';
-import { ItemSlot, InternalDataItem } from '../interface';
+import { ItemSlot, InternalDataItem, Key } from '../interface';
 
-export function useRenderChildren(props: {
-  internalData: InternalDataItem[];
-  visibleData: InternalDataItem[];
-  itemRef: (el: HTMLElement, key: string) => void;
-  itemRender: ItemSlot;
-}) {
-  const { internalData, visibleData, itemRender, itemRef } = toRefs(props);
-  let itemRenderCache: { [index: number]: VNode } = {};
+const findElement = (node: any) => {
+  let res = (node?.$el ?? node) as HTMLElement | undefined;
+  while (res && !res.tagName) {
+    res = res.nextSibling as HTMLElement;
+  }
+  return res;
+};
 
-  const internalItemRender = (item: unknown, index: number) => {
-    if (!Object.prototype.hasOwnProperty.call(itemRenderCache, index)) {
-      [itemRenderCache[index]] = itemRender.value({ item, index });
-    }
-    return itemRenderCache[index];
-  };
-
-  const findElement = (node: any) => {
-    let res = (node?.$el ?? node) as HTMLElement | undefined;
-    while (res && !res.tagName) {
-      res = res.nextSibling as HTMLElement;
-    }
-    return res;
-  };
+export function useRenderChildren(
+  props: {
+    internalData: InternalDataItem[];
+    visibleData: InternalDataItem[];
+    itemRender: ItemSlot;
+  },
+  events: { onItemResize?: (height: HTMLElement, key: Key) => void } = {}
+) {
+  const { internalData, visibleData, itemRender } = toRefs(props);
+  let itemRenderCache: { [key: Key]: VNode } = {};
 
   const renderChildren = () => {
-    const children = visibleData.value.map(({ item, index, key }) => {
-      const node = internalItemRender(item, index);
-      return cloneVNode(
-        node,
-        {
+    return visibleData.value.map(({ item, index, key }) => {
+      if (!Object.prototype.hasOwnProperty.call(itemRenderCache, key)) {
+        const [node] = itemRender.value({ item, index });
+        let dom: HTMLElement | undefined;
+        let hasMounted = false;
+        let hasUpdated = false;
+        const resizeHandler = () => {
+          if (dom) {
+            events.onItemResize?.(dom, key);
+          }
+        };
+        itemRenderCache[key] = cloneVNode(node, {
           key,
           ref: (el) => {
-            const dom = findElement(el);
-            if (dom) {
-              itemRef.value(dom, key);
+            if (!hasMounted) {
+              dom = findElement(el);
+              resizeHandler();
+              hasMounted = true;
             }
           },
-        },
-        true
-      );
+          onVnodeUpdated() {
+            if (!hasUpdated) {
+              resizeHandler();
+              hasUpdated = true;
+            }
+          },
+        });
+      }
+      return itemRenderCache[key];
     });
-    return children;
   };
 
   watch([internalData, itemRender], () => {

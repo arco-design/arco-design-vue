@@ -2,6 +2,37 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💅 Style
+
+- Add padding to pagination options ([#984](https://github.com/arco-design/arco-design-vue/pull/984))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 Optimization
+
+- Optimize the page number change logic when switching pageSize ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+
+### 🆕 Feature
+
+- Added `jumper-prepend` and `jumper-append` slots ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💅 Style
+
+- Fix the problem that the jumper text is not aligned under safari ([#736](https://github.com/arco-design/arco-design-vue/pull/736))
+
+
 ## 2.13.0
 
 `2021-12-31`

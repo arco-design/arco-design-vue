@@ -24,7 +24,7 @@ description: Generally used for the information display of the detail page.
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |data|Data for descriptions|`DescData[]`|`[]`|
-|column|The number of data placed in each row|`number`|`3`|
+|column|The number of data placed in each row. Version 2.20.0 supports reactive configuration, the configuration can refer to Grid|`number \| ResponsiveValue`|`3`|
 |title|Title of descriptions|`string`|`-`|
 |layout|Arrangement of descriptions|`'horizontal' \| 'vertical' \| 'inline-horizontal' \| 'inline-vertical'`|`'horizontal'`|
 |align|Alignment position of text|`TextAlign \| { label?: TextAlign; value?: TextAlign }`|`'left'`|
@@ -39,5 +39,22 @@ description: Generally used for the information display of the detail page.
 |value|Data value|value: `string`<br>index: `number`<br>data: `DescData`|
 |label|Data label|label: `string`<br>index: `number`<br>data: `DescData`|
 |title|Title|-|
+
+
+
+
+### `<descriptions-item>` Props
+
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|span|number of columns|`number`|`1`|2.18.0|
+|label|Label|`string`|`-`|2.18.0|
+### `<descriptions-item>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|label|Label|-|2.18.0|
+
+
 
 

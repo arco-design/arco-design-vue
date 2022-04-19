@@ -30,12 +30,16 @@ The input box is divided into four sizes: `mini`, `small`, `medium`, and `large`
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const size = ref('medium');
+
     return {
-      size: 'medium'
+      size
     }
-  }
+  },
 }
 </script>
 ```

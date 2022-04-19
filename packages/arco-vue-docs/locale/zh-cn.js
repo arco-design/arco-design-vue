@@ -123,7 +123,7 @@ export default {
     expand: '展开代码',
     collapse: '收起代码',
     copy: '复制代码',
-    codepen: '在CodePen打开',
+    codeSandbox: '在CodeSandbox打开',
   },
   icon: {
     strokeWidth: '线宽',
@@ -150,5 +150,6 @@ export default {
     i18n: '国际化',
     mock: '接口和数据模拟',
     build: '打包构建',
+    permission: '权限控制',
   },
 };

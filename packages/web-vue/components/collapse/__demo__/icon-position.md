@@ -17,7 +17,6 @@ Set the position of the expanded icon through the `expand-icon-position` propert
 ---
 
 ```vue
-
 <template>
   <a-space direction="vertical" :style="{width:'100%'}">
     <a-radio-group type="button" v-model="position">
@@ -45,12 +44,16 @@ Set the position of the expanded icon through the `expand-icon-position` propert
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const position = ref('left');
+
     return {
-      position: 'left'
+      position
     }
-  }
+  },
 }
 </script>
 ```

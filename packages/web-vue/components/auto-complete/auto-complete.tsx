@@ -5,21 +5,25 @@ import {
   PropType,
   toRefs,
   ComponentPublicInstance,
+  toRef,
+  watch,
 } from 'vue';
 import ArcoInput from '../input';
 import Trigger from '../trigger';
 import { getPrefixCls } from '../_utils/global-config';
-import { useOptions } from '../_hooks/use-options';
 import {
-  Option,
-  OptionInfo,
+  SelectOptionInfo,
   FilterOption,
-  OptionNode,
+  SelectOptionData,
+  SelectOptionGroup,
 } from '../select/interface';
-import { isFunction } from '../_utils/is';
-import { DropdownPanel, DropDownOption } from '../_components/dropdown';
-import { CODE, getKeyDownHandler } from '../_utils/keyboard';
+import { isFunction, isNull, isUndefined } from '../_utils/is';
+import SelectDropdown from '../select/select-dropdown.vue';
+import Option from '../select/option.vue';
 import { EmitType } from '../_utils/types';
+import { useSelect } from '../select/hooks/use-select';
+import { getKeyFromValue } from '../select/utils';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'AutoComplete',
@@ -55,7 +59,9 @@ export default defineComponent({
      * @en Data used for auto-complete
      */
     data: {
-      type: Array as PropType<Option[]>,
+      type: Array as PropType<
+        (string | number | SelectOptionData | SelectOptionGroup)[]
+      >,
       default: () => [],
     },
     /**
@@ -91,6 +97,15 @@ export default defineComponent({
     triggerProps: {
       type: Object,
     },
+    /**
+     * @zh 是否允许清空输入框
+     * @en Whether to allow the input to be cleared
+     * @version 2.23.0
+     */
+    allowClear: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
@@ -122,6 +137,12 @@ export default defineComponent({
      * @property {string} value
      */
     'select',
+    /**
+     * @zh 用户点击清除按钮时触发
+     * @en Triggered when the user clicks the clear button
+     * @version 2.23.0
+     */
+    'clear',
   ],
   /**
    * @zh 选项内容
@@ -131,19 +152,43 @@ export default defineComponent({
    * @version 2.13.0
    */
   setup(props, { emit, attrs, slots }) {
+    const { modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('auto-complete');
+    const { mergedDisabled, eventHandlers } = useFormItem({
+      disabled: toRef(props, 'disabled'),
+    });
+
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement>();
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = '';
+      }
+    });
+
+    const computedValueKeys = computed(() =>
+      computedValue.value ? [getKeyFromValue(computedValue.value)] : []
+    );
     const { data } = toRefs(props);
     const dropdownRef = ref();
     const optionRefs = ref<Record<string, HTMLElement>>({});
 
-    const strictFilterOption: FilterOption = (
+    const _popupVisible = ref(false);
+    const computedPopupVisible = computed(
+      () => _popupVisible.value && validOptionInfos.value.length > 0
+    );
+
+    const handlePopupVisibleChange = (popupVisible: boolean) => {
+      _popupVisible.value = popupVisible;
+    };
+
+    const strictFilterOption = (
       inputValue: string,
-      optionInfo: OptionInfo
+      option: SelectOptionData
     ) => {
-      return optionInfo.label.includes(inputValue);
+      return Boolean(option.label?.includes(inputValue));
     };
 
     const mergedFilterOption = computed(() => {
@@ -155,54 +200,28 @@ export default defineComponent({
       }
       return props.filterOption;
     });
-    const extraOptions = ref([]);
-
-    const {
-      nodes,
-      optionInfoMap,
-      activeOption,
-      getNextActiveOption,
-      scrollIntoView,
-    } = useOptions({
-      options: data,
-      extraOptions,
-      inputValue: computedValue,
-      filterOption: mergedFilterOption,
-      dropdownRef,
-      optionRefs,
-    });
 
     const handleChange = (value: string) => {
       _value.value = value;
       emit('update:modelValue', value);
       emit('change', value);
+      eventHandlers.value?.onChange?.();
     };
 
-    const _popupVisible = ref(false);
-    const computedPopupVisible = computed(
-      () => _popupVisible.value && nodes.value.length > 0
-    );
-
-    const handlePopupVisibleChange = (popupVisible: boolean) => {
-      _popupVisible.value = popupVisible;
+    const handleClear = (ev: Event) => {
+      _value.value = '';
+      emit('update:modelValue', '');
+      emit('change', '');
+      eventHandlers.value?.onChange?.();
+      emit('clear', ev);
     };
 
     // Dropdown事件
-    const handleSelect = (value: string, e: Event) => {
+    const handleSelect = (key: string, ev: Event) => {
+      const value = optionInfoMap.get(key)?.value as string;
       emit('select', value);
       handleChange(value);
       inputRef.value?.blur();
-    };
-
-    const handleMouseEnter = (value: string | number, e: Event) => {
-      const optionInfo = optionInfoMap.get(value);
-      if (optionInfo) {
-        activeOption.value = optionInfo;
-      }
-    };
-
-    const handleMouseLeave = (e: Event) => {
-      activeOption.value = undefined;
     };
 
     // Input事件
@@ -211,99 +230,55 @@ export default defineComponent({
       handleChange(value);
     };
 
-    const handleKeyDown = getKeyDownHandler(
-      new Map([
-        [
-          CODE.ENTER,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              if (activeOption.value) {
-                handleSelect(String(activeOption.value.value), e);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-        [
-          CODE.ESC,
-          (e: Event) => {
-            handlePopupVisibleChange(false);
-            e.preventDefault();
-          },
-        ],
-        [
-          CODE.ARROW_DOWN,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              const next = getNextActiveOption('down');
-              if (next) {
-                activeOption.value = next;
-                scrollIntoView(next.value);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-        [
-          CODE.ARROW_UP,
-          (e: Event) => {
-            if (computedPopupVisible.value) {
-              const next = getNextActiveOption('up');
-              if (next) {
-                activeOption.value = next;
-                scrollIntoView(next.value);
-              }
-              e.preventDefault();
-            }
-          },
-        ],
-      ])
-    );
+    const { validOptions, optionInfoMap, validOptionInfos, handleKeyDown } =
+      useSelect({
+        options: data,
+        inputValue: computedValue,
+        filterOption: mergedFilterOption,
+        popupVisible: computedPopupVisible,
+        valueKeys: computedValueKeys,
+        dropdownRef,
+        optionRefs,
+        onSelect: handleSelect,
+        onPopupVisibleChange: handlePopupVisibleChange,
+      });
 
-    const getOptionContentFunc = (item: OptionNode) => {
+    const getOptionContentFunc = (item: SelectOptionInfo) => {
       if (isFunction(slots.option) && item.value) {
-        const optionInfo = optionInfoMap.get(item.value);
+        const optionInfo = optionInfoMap.get(item.key);
         const optionSlot = slots.option;
         return () => optionSlot({ data: optionInfo });
       }
       return () => item.label;
     };
 
-    const renderOption = (item: OptionNode) => {
-      const { value = '' } = item;
-
+    const renderOption = (item: SelectOptionInfo) => {
       return (
-        <DropDownOption
+        <Option
+          // @ts-ignore
           ref={(ref: ComponentPublicInstance) => {
             if (ref?.$el) {
-              optionRefs.value[value] = ref.$el;
+              optionRefs.value[item.key] = ref.$el;
             }
           }}
           v-slots={{
             default: getOptionContentFunc(item),
           }}
           key={item.key}
-          value={value}
+          value={item.value}
           disabled={item.disabled}
-          isActive={activeOption.value && value === activeOption.value.value}
-          onClick={handleSelect}
-          onMouseenter={handleMouseEnter}
-          onMouseleave={handleMouseLeave}
+          internal
         />
       );
     };
 
     const renderDropdown = () => {
-      const _children = nodes.value.map((node) => renderOption(node));
-
-      if (_children.length === 0) {
-        return null;
-      }
-
       return (
-        <DropdownPanel ref={dropdownRef} class={`${prefixCls}-dropdown`}>
-          {_children}
-        </DropdownPanel>
+        <SelectDropdown ref={dropdownRef} class={`${prefixCls}-dropdown`}>
+          {validOptions.value.map((info) =>
+            renderOption(info as SelectOptionInfo)
+          )}
+        </SelectDropdown>
       );
     };
 
@@ -312,11 +287,13 @@ export default defineComponent({
         v-slots={{ content: renderDropdown }}
         trigger="focus"
         position="bl"
+        animationName="slide-dynamic-origin"
+        autoFitTransformOrigin
         popupVisible={computedPopupVisible.value}
         clickToClose={false}
         preventFocus={true}
         popupOffset={4}
-        disabled={props.disabled}
+        disabled={mergedDisabled.value}
         autoFitPopupWidth
         {...props.triggerProps}
         onPopupVisibleChange={handlePopupVisibleChange}
@@ -324,10 +301,13 @@ export default defineComponent({
         <ArcoInput
           v-slots={slots}
           ref={inputRef}
-          modelValue={computedValue.value}
-          onInput={handleInputValueChange}
-          disabled={props.disabled}
           {...attrs}
+          allowClear={props.allowClear}
+          modelValue={computedValue.value}
+          disabled={mergedDisabled.value}
+          onInput={handleInputValueChange}
+          onClear={handleClear}
+          // @ts-ignore
           onKeydown={handleKeyDown}
         />
       </Trigger>

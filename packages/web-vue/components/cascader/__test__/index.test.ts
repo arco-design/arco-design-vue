@@ -36,7 +36,7 @@ describe('Cascader', () => {
       },
     });
     await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'CascaderPanel' });
+    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
     expect(panel.html()).toMatchSnapshot();
     await panel.find('.arco-cascader-option').trigger('click');
     expect(panel.html()).toMatchSnapshot();
@@ -50,7 +50,7 @@ describe('Cascader', () => {
       },
     });
     await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'CascaderPanel' });
+    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
     expect(panel.html()).toMatchSnapshot();
     await panel.find('.arco-cascader-option').trigger('click');
     expect(panel.html()).toMatchSnapshot();
@@ -79,7 +79,7 @@ describe('Cascader', () => {
     });
 
     await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'CascaderPanel' });
+    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
     await panel.find('.arco-cascader-option').trigger('click');
     await panel.findAll('.arco-cascader-option')[2].trigger('click');
     expect(wrapper.emitted('change')?.[0]).toEqual(['chaoyang']);
@@ -94,7 +94,7 @@ describe('Cascader', () => {
     });
 
     await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'CascaderPanel' });
+    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
     await panel.find('.arco-cascader-option').trigger('click');
     await panel.findAll('.arco-cascader-option')[2].trigger('click');
     expect(wrapper.emitted('change')?.[0]).toEqual([['beijing', 'chaoyang']]);
@@ -109,7 +109,7 @@ describe('Cascader', () => {
     });
 
     await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'CascaderPanel' });
+    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
     await panel.find('.arco-cascader-option').trigger('click');
     await panel.findAllComponents({ name: 'Checkbox' })[2].trigger('click');
     expect(wrapper.emitted('change')?.[0]).toEqual([['chaoyang']]);
@@ -124,25 +124,25 @@ describe('Cascader', () => {
 
     const input = wrapper.find('input');
     await input.trigger('click');
-    const dropdown = wrapper.findComponent({ name: 'CascaderPanel' });
+    const dropdown = wrapper.findComponent({ name: 'BaseCascaderPanel' });
 
-    await input.trigger('keydown', { code: 'ArrowDown' });
+    await input.trigger('keydown', { key: 'ArrowDown' });
     expect(dropdown.find('.arco-cascader-option-active').text()).toBe(
       'Beijing'
     );
 
-    await input.trigger('keydown', { code: 'ArrowRight' });
+    await input.trigger('keydown', { key: 'ArrowRight' });
     expect(dropdown.findAll('.arco-cascader-panel-column')).toHaveLength(2);
     expect(dropdown.findAll('.arco-cascader-option-active')[1].text()).toBe(
       'ChaoYang'
     );
 
-    await input.trigger('keydown', { code: 'ArrowDown' });
+    await input.trigger('keydown', { key: 'ArrowDown' });
     expect(dropdown.findAll('.arco-cascader-option-active')[1].text()).toBe(
       'Haidian'
     );
 
-    await input.trigger('keydown', { code: 'Enter' });
+    await input.trigger('keydown', { key: 'Enter' });
     expect(wrapper.emitted('change')?.[0]).toEqual(['haidian']);
   });
 });

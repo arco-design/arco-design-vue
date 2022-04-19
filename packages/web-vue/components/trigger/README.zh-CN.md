@@ -31,7 +31,7 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'bottom'`|
 |disabled|触发器是否禁用|`boolean`|`false`|
 |popup-offset|弹出框的偏移量（弹出框距离触发器的偏移距离）|`number`|`0`|
-|popup-translate|弹出框的移动距离|`PopupTranslate`|`-`|
+|popup-translate|弹出框的移动距离|`TriggerPopupTranslate`|`-`|
 |show-arrow|弹出框是否显示箭头|`boolean`|`false`|
 |align-point|弹出框是否跟随鼠标|`boolean`|`false`|
 |popup-hover-stay|是否在移出触发器，并移入弹出框时保持弹出框显示|`boolean`|`true`|
@@ -39,13 +39,13 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |click-to-close|是否在点击触发器时关闭弹出框|`boolean`|`true`|
 |click-outside-to-close|是否在点击外部区域时关闭弹出框|`boolean`|`true`|
 |unmount-on-close|是否在关闭时卸载弹出框节点|`boolean`|`true`|
-|content-class|弹出框内容的类名|`ClassName`|`-`|
+|content-class|弹出框内容的类名|`string\|array\|object`|`-`|
 |content-style|弹出框内容的样式|`CSSProperties`|`-`|
-|arrow-class|弹出框箭头的类名|`ClassName`|`-`|
+|arrow-class|弹出框箭头的类名|`string\|array\|object`|`-`|
 |arrow-style|弹出框箭头的样式|`CSSProperties`|`-`|
 |popup-style|弹出框的样式|`CSSProperties`|`-`|
 |animation-name|弹出动画的name|`string`|`'fade-in'`|
-|duration|弹出动画的持续时间|`AnimationDuration`|`-`|
+|duration|弹出动画的持续时间|`number\| {    enter: number;    leave: number;  }`|`-`|
 |mouse-enter-delay|mouseenter事件延时触发的时间（毫秒）|`number`|`100`|
 |mouse-leave-delay|mouseleave事件延时触发的时间（毫秒）|`number`|`100`|
 |focus-delay|focus事件延时触发的时间（毫秒）|`number`|`0`|
@@ -59,9 +59,11 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |prevent-focus|是否阻止弹出层中的元素点击时获取焦点|`boolean`|`false`|
 ### `<trigger>` Events
 
-|事件名|描述|参数|
-|---|---|---|
-|popup-visible-change|弹出框显示状态改变时触发|popupVisible: `boolean`|
+|事件名|描述|参数|版本|
+|---|---|---|:---|
+|popup-visible-change|弹出框显示状态改变时触发|popupVisible: `boolean`||
+|show|弹出框显示后（动画结束）触发|-|2.18.0|
+|hide|弹出框隐藏后（动画结束）触发|-|2.18.0|
 ### `<trigger>` Slots
 
 |插槽名|描述|参数|
@@ -69,3 +71,9 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |content|弹出框内容|-|
 
 
+
+```ts
+type TriggerPopupTranslate =
+  | [number, number]
+  | { [key in TriggerPosition]?: [number, number] };
+```

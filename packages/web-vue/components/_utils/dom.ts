@@ -57,7 +57,10 @@ export const findDomNode = (vnode: VNode) => {
   return node as HTMLElement;
 };
 
-export const contains = (root: Node, ele: Node) => {
+export const contains = (root: Node | null | undefined, ele: Node | null) => {
+  if (!root || !ele) {
+    return false;
+  }
   let node: Node | null = ele;
   while (node) {
     if (node === root) {
@@ -89,7 +92,7 @@ export const querySelector = (
 };
 
 export const getElement = (
-  target: string | HTMLElement,
+  target: string | HTMLElement | undefined,
   container?: Document | HTMLElement
 ): HTMLElement | undefined => {
   if (isString(target)) {
@@ -116,6 +119,12 @@ export const getRelativeRect = (target: HTMLElement, relative: HTMLElement) => {
     width: targetRect.width,
     height: targetRect.height,
   };
+};
+
+export const isScroll = (element: HTMLElement) => {
+  return element.tagName === 'BODY'
+    ? document.documentElement.scrollHeight > window.innerHeight
+    : element.scrollHeight > element.offsetHeight;
 };
 
 export const getScrollBarWidth = (element: HTMLElement) => {

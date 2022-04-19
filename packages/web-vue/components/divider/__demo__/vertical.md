@@ -26,6 +26,7 @@ Specify the `direction` as `vertical` to use the vertical Divider which cannot c
     <span>Item 3</span>
   </div>
 </template>
+
 <style scoped>
 .divider-demo {
   box-sizing: border-box;

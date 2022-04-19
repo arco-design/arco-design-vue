@@ -17,10 +17,11 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
 ---
 
 ```vue
+
 <template>
   <div style="margin-bottom: 20px;">
     <a-typography-text>折叠：</a-typography-text>
-    <a-switch :checked="collapsed" @click="collapsed = !collapsed"  />
+    <a-switch :checked="collapsed" @click="collapsed = !collapsed" />
   </div>
   <a-grid :cols="3" :colGap="12" :rowGap="16" class="grid-demo-grid" :collapsed="collapsed">
     <a-grid-item class="demo-item">item</a-grid-item>
@@ -31,20 +32,25 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
     <a-grid-item class="demo-item" :span="3">item | span - 3</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
-    <a-grid-item class="demo-item" suffix>
-      suffix | overflow
+    <a-grid-item class="demo-item" suffix #="{ overflow }">
+      suffix | overflow: {{ overflow }}
     </a-grid-item>
   </a-grid>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const hide = ref(false);
+    const collapsed = ref(false);
+
     return {
-      hide: false,
-      collapsed: false
+      hide,
+      collapsed
     }
-  }
+  },
 }
 </script>
 
@@ -56,9 +62,11 @@ export default {
   color: var(--color-white);
   text-align: center;
 }
+
 .grid-demo-grid .demo-item:nth-child(2n) {
   background-color: rgba(var(--arcoblue-6), 0.9);
 }
+
 .grid-demo-grid .demo-item:nth-child(2n + 1) {
   background-color: var(--color-primary-light-4);
 }

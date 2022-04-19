@@ -12,7 +12,7 @@ description: 请跟随以下步骤创建 Arco Design Pro
 其中 `arco cli` 是安装项目模版的工具，请运行以下命令安装：
 
 ```bash
-npm i -g @arco-design/arco-cli
+npm i -g arco-cli
 ```
 
 ## 技术栈

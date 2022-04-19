@@ -71,6 +71,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .action {
   display: inline-block;

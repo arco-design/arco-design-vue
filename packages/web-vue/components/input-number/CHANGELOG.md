@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 BugFix
+
+- Fixed display error when switching `mode` ([#909](https://github.com/arco-design/arco-design-vue/pull/909))
+
+
 ## 2.14.3
 
 `2022-01-12`

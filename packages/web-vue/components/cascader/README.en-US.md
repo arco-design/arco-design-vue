@@ -28,6 +28,10 @@ description: Refers to the use of multi-level classification to separate the opt
 
 @import ./__demo__/path.md
 
+@import ./__demo__/field-names.md
+
+@import ./__demo__/panel.md
+
 
 ### `<cascader>` Props
 
@@ -56,6 +60,9 @@ description: Refers to the use of multi-level classification to separate the opt
 |check-strictly|Whether to enable strict selection mode|`boolean`|`false`||
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
 |loading|Whether it is loading state|`boolean`|`false`|2.15.0|
+|search-option-only-label|Whether the options in the search dropdown show only label|`boolean`|`false`|2.18.0|
+|search-delay|Delay time to trigger search event|`number`|`500`|2.18.0|
+|field-names|Customize fields in `CascaderOption`|`CascaderFieldNames`|`-`|2.22.0|
 ### `<cascader>` Events
 
 |Event Name|Description|Parameters|
@@ -71,9 +78,40 @@ description: Refers to the use of multi-level classification to separate the opt
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|label|Display content of label|data: `CascaderOption`|2.18.0|
+|prefix|Prefix|-|2.23.0|
 |arrow-icon|Arrow icon for select box|-|2.16.0|
 |loading-icon|Loading icon for select box|-|2.16.0|
 |search-icon|Search icon for select box|-|2.16.0|
+|empty|Display content when the option is empty|-|2.23.0|
+|option|Display content of options|data: `CascaderOption`|2.18.0|
+
+
+
+
+### `<cascader-panel>` Props
+
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|path-mode|Whether the value is a path|`boolean`|`false`||
+|multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
+|model-value **(v-model)**|Value|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
+|default-value|Default value (uncontrolled state)|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|options|Options for cascader|`CascaderOption[]`|`[]`||
+|expand-trigger|Expand the trigger method of the next level|`string`|`'click'`||
+|check-strictly|Whether to enable strict selection mode|`boolean`|`false`||
+|load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|field-names|Customize fields in `CascaderOption`|`CascaderFieldNames`|`-`|2.22.0|
+### `<cascader-panel>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|change|Triggered when the selected value changes|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+### `<cascader-panel>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|empty|Display content when the option is empty|-|2.23.0|
 
 
 

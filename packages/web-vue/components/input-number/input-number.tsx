@@ -1,4 +1,4 @@
-import { computed, defineComponent, inject, PropType, ref, watch } from 'vue';
+import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber, isUndefined } from '../_utils/is';
@@ -10,7 +10,8 @@ import ArcoButton from '../button';
 import ArcoInput from '../input';
 import { EmitType } from '../_utils/types';
 import { Size } from '../_utils/constant';
-import { configProviderInjectionKey } from '../config-provider/context';
+import { useFormItem } from '../_hooks/use-form-item';
+import { useSize } from '../_hooks/use-size';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -38,9 +39,8 @@ export default defineComponent({
      * @values 'embed', 'button'
      */
     mode: {
-      type: String as PropType<typeof MODES[number]>,
+      type: String as PropType<'embed' | 'button'>,
       default: 'embed',
-      validator: (value: any) => MODES.includes(value),
     },
     /**
      * @zh 数字精度
@@ -60,6 +60,14 @@ export default defineComponent({
      * @en Whether to disable
      */
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否为错误状态
+     * @en Whether it is an error state
+     */
+    error: {
       type: Boolean,
       default: false,
     },
@@ -114,8 +122,14 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
+    },
+    /**
+     * @zh 是否允许清空输入框
+     * @en Whether to allow the input to be cleared
+     */
+    allowClear: {
+      type: Boolean,
+      default: false,
     },
     // for JSX
     onChange: {
@@ -148,15 +162,28 @@ export default defineComponent({
      * @en Triggered when the input box loses focus
      */
     'blur',
+    /**
+     * @zh 用户点击清除按钮时触发
+     * @en Triggered when the user clicks the clear button
+     * @version 2.23.0
+     */
+    'clear',
   ],
   setup(props, { emit, slots }) {
+    const { size, disabled, error } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
+    const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
+      size,
+      disabled,
+      error,
+    });
+    const { mergedSize } = useSize(_mergedSize);
 
     const getStringValue = (number: number | undefined) => {
-      return isUndefined(number)
-        ? ''
-        : props.formatter?.(String(number)) ?? String(number);
+      return isNumber(number)
+        ? props.formatter?.(String(number)) ?? String(number)
+        : '';
     };
 
     // inner input value to display
@@ -242,7 +269,7 @@ export default defineComponent({
       inputRef.value?.focus();
 
       if (
-        props.disabled ||
+        mergedDisabled.value ||
         (method === 'plus' && isMax.value) ||
         (method === 'minus' && isMin.value)
       ) {
@@ -300,10 +327,11 @@ export default defineComponent({
       emit('blur', ev);
     };
 
-    const handleClear = () => {
+    const handleClear = (ev: Event) => {
       _value.value = '';
       emit('update:modelValue', undefined);
       emit('change', undefined);
+      emit('clear', ev);
     };
 
     watch(
@@ -326,11 +354,11 @@ export default defineComponent({
               `${prefixCls}-step-button`,
               {
                 [`${prefixCls}-step-button-disabled`]:
-                  props.disabled || isMax.value,
+                  mergedDisabled.value || isMax.value,
               },
             ]}
             type="button"
-            disabled={props.disabled || isMax.value}
+            disabled={mergedDisabled.value || isMax.value}
             onMousedown={(e) => handleStepButton(e, 'plus', true)}
             onMouseup={clearRepeatTimer}
             onMouseleave={clearRepeatTimer}
@@ -342,11 +370,11 @@ export default defineComponent({
               `${prefixCls}-step-button`,
               {
                 [`${prefixCls}-step-button-disabled`]:
-                  props.disabled || isMin.value,
+                  mergedDisabled.value || isMin.value,
               },
             ]}
             type="button"
-            disabled={props.disabled || isMin.value}
+            disabled={mergedDisabled.value || isMin.value}
             onMousedown={(e) => handleStepButton(e, 'minus', true)}
             onMouseup={clearRepeatTimer}
             onMouseleave={clearRepeatTimer}
@@ -359,17 +387,17 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-mode-${props.mode}`,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
     ]);
 
     const renderPrependButton = () => {
       return (
         <ArcoButton
-          size={props.size}
+          size={mergedSize.value}
           v-slots={{ icon: () => <IconMinus /> }}
           class={`${prefixCls}-step-button`}
-          disabled={props.disabled || isMin.value}
-          onMousedown={(e: MouseEvent) => handleStepButton(e, 'minus', true)}
+          disabled={mergedDisabled.value || isMin.value}
+          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'minus', true)}
           onMouseup={clearRepeatTimer}
           onMouseleave={clearRepeatTimer}
         />
@@ -379,43 +407,53 @@ export default defineComponent({
     const renderAppendButton = () => {
       return (
         <ArcoButton
-          size={props.size}
+          size={mergedSize.value}
           v-slots={{ icon: () => <IconPlus /> }}
           class={`${prefixCls}-step-button`}
-          disabled={props.disabled || isMax.value}
-          onMousedown={(e: MouseEvent) => handleStepButton(e, 'plus', true)}
+          disabled={mergedDisabled.value || isMax.value}
+          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'plus', true)}
           onMouseup={clearRepeatTimer}
           onMouseleave={clearRepeatTimer}
         />
       );
     };
 
-    const render = () => (
-      <ArcoInput
-        v-slots={{
-          prepend:
-            props.mode === 'button' ? renderPrependButton : slots.prepend,
-          prefix: slots.prefix,
-          suffix:
-            props.mode === 'embed' && !props.hideButton
-              ? renderSuffix
-              : slots.suffix,
-          append: props.mode === 'button' ? renderAppendButton : slots.append,
-        }}
-        ref={inputRef}
-        class={cls.value}
-        type="text"
-        size={props.size}
-        modelValue={_value.value}
-        placeholder={props.placeholder}
-        disabled={props.disabled}
-        onInput={handleInput}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onClear={handleClear}
-        onChange={handleChange}
-      />
-    );
+    const render = () => {
+      const _slots =
+        props.mode === 'embed'
+          ? {
+              prepend: slots.prepend,
+              prefix: slots.prefix,
+              suffix: props.hideButton ? slots.suffix : renderSuffix,
+              append: slots.append,
+            }
+          : {
+              prepend: renderPrependButton,
+              prefix: slots.prefix,
+              suffix: slots.suffix,
+              append: renderAppendButton,
+            };
+
+      return (
+        <ArcoInput
+          key={`__arco__${props.mode}`}
+          v-slots={_slots}
+          ref={inputRef}
+          class={cls.value}
+          type="text"
+          allowClear={props.allowClear}
+          size={mergedSize.value}
+          modelValue={_value.value}
+          placeholder={props.placeholder}
+          disabled={mergedDisabled.value}
+          onInput={handleInput}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onClear={handleClear}
+          onChange={handleChange}
+        />
+      );
+    };
 
     return {
       inputRef,

@@ -23,11 +23,15 @@ You can customize the prompt text by setting `format-tooltip`.
 
 <script>
 export default {
-  methods: {
-    formatter(value) {
+  setup() {
+    const formatter = (value) => {
       return `${Math.round((value / 50) * 100)}%`
+    };
+
+    return {
+      formatter
     }
-  }
+  },
 }
 </script>
 ```

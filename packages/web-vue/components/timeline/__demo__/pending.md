@@ -17,6 +17,7 @@ When the task state is happening and the recording is still in progress, ghost n
 ---
 
 ```vue
+
 <template>
   <a-row align="center" :style="{ marginBottom: '24px' }">
     <a-checkbox
@@ -62,24 +63,27 @@ When the task state is happening and the recording is still in progress, ghost n
 </template>
 
 <script>
+import { ref } from 'vue';
 import { IconFire } from '@arco-design/web-vue/es/icon';
 
 export default {
   components: {
     IconFire,
   },
-  data() {
-    return {
-      pendingProps: {},
-    };
-  },
-  methods: {
-    onChange(newProps) {
-      this.pendingProps = {
-        ...this.pendingProps,
+  setup() {
+    const pendingProps = ref({});
+
+    const onChange = (newProps) => {
+      pendingProps.value = {
+        ...pendingProps.value,
         ...newProps,
       };
-    },
+    };
+
+    return {
+      pendingProps,
+      onChange
+    }
   },
 };
 </script>

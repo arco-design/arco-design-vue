@@ -2,6 +2,84 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🐛 BugFix
+
+- Fix the problem that the half-selected state of the checkbox is displayed incorrectly ([#963](https://github.com/arco-design/arco-design-vue/pull/963))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- add empty slot ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+### 🐛 BugFix
+
+- Fix the problem that lazy loaded isLeaf is invalid in version 2.22.0 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- Fixed an issue where the options property could not trigger an update in some cases ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 Feature
+
+- Added `field-names` attribute to allow custom fields ([#912](https://github.com/arco-design/arco-design-vue/pull/912))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- Add `cascader-panel` component ([#842](https://github.com/arco-design/arco-design-vue/pull/842))
+
+### 🐛 BugFix
+
+- Fix the problem that the selected path of the drop-down menu may not match the current value ([#843](https://github.com/arco-design/arco-design-vue/pull/843))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 Feature
+
+- Added `#option`, `#label` slots ([#781](https://github.com/arco-design/arco-design-vue/pull/781))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 Feature
+
+- Added `search-delay` property and defaulted to `500ms` ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+- Add the `search-option-only-label` attribute and modify the default display path label of the options in the search drop-down menu ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+
+### 🐛 BugFix
+
+- Fix the problem that the selection box display is not updated after the option is updated ([#727](https://github.com/arco-design/arco-design-vue/pull/727))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 🐛 BugFix
+
+- Fixed an issue where disabled items could still be selected via radio selectors in strict mode ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+- Fixed an issue where search results in strict mode did not include path options ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+
+
 ## 2.16.0
 
 `2022-01-21`

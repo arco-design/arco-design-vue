@@ -78,16 +78,20 @@ You can set the display horizontal timeline through `direction`
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      mode: 'top',
+  setup() {
+    const mode = ref('top');
+
+    const onChange = (_mode) => {
+      mode.value = _mode;
     };
-  },
-  methods: {
-    onChange(mode) {
-      this.mode = mode;
-    },
+
+    return {
+      mode,
+      onChange
+    }
   },
 };
 </script>

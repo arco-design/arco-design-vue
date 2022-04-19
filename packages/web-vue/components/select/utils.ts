@@ -1,115 +1,204 @@
-import { Slot, Slots, VNode } from 'vue';
-import { isArray, isUndefined } from '../_utils/is';
-import { Option, OptionInfo } from './interface';
-import { TagData } from '../input-tag/interface';
-import {
-  getChildrenString,
-  isArrayChildren,
-  isNamedComponent,
-  isSlotsChildren,
-  resolveProps,
-} from '../_utils/vue-utils';
-import { omit } from '../_utils/omit';
+import { isFunction, isNumber, isObject } from '../_utils/is';
+import type {
+  FilterOption,
+  SelectOptionGroup,
+  SelectOptionGroupInfo,
+  SelectOption,
+  SelectOptionData,
+  SelectOptionInfo,
+  SelectOptionValue,
+  SelectFieldNames,
+} from './interface';
 
-export const travelSelectChildren = (children: VNode[]): Option[] => {
-  const options: Option[] = [];
-
-  for (const child of children) {
-    if (!child) continue;
-    if (isNamedComponent(child, 'Optgroup')) {
-      const props = resolveProps(child);
-      let slots: Slots | undefined;
-      let groupOptions: Option[] = [];
-
-      if (isSlotsChildren(child, child.children)) {
-        slots = child.children;
-        if (child.children.default) {
-          groupOptions = travelSelectChildren(child.children.default());
-        }
-      } else if (isArrayChildren(child, child.children)) {
-        groupOptions = travelSelectChildren(child.children);
-      }
-
-      options.push({
-        isGroup: true,
-        label: props.label,
-        options: groupOptions,
-        _props: props,
-        _slots: slots,
-      });
-    } else if (isNamedComponent(child, 'Option')) {
-      const props = resolveProps(child);
-      let slots: Slots | undefined;
-      let childrenString = '';
-      let render: Slot | undefined;
-
-      if (isSlotsChildren(child, child.children)) {
-        slots = child.children;
-        if (child.children.default) {
-          render = child.children.default;
-          childrenString = getChildrenString(child.children.default());
-        }
-      }
-
-      options.push({
-        ...props.extra,
-        value: props.value ?? childrenString,
-        label: props.label ?? childrenString,
-        render,
-        disabled: props.disabled,
-        tagProps: props.tagProps,
-        _props: omit(props, ['tagProps', 'extra']),
-        _slots: slots,
-      });
-    } else if (isArrayChildren(child, child.children)) {
-      options.push(...travelSelectChildren(child.children));
-    } else if (isSlotsChildren(child, child.children)) {
-      const _children = child.children.default?.();
-      if (_children) {
-        options.push(...travelSelectChildren(_children));
-      }
-    } else if (isArray(child)) {
-      options.push(...travelSelectChildren(child));
-    }
-  }
-
-  return options;
+export const isGroupOption = (
+  option: SelectOption
+): option is SelectOptionGroup => {
+  return isObject(option) && 'isGroup' in option;
 };
 
-const getTagData = (
-  value: string | number | undefined,
-  optionInfoMap: Map<string | number, OptionInfo>
-): TagData | undefined => {
-  if (isUndefined(value)) {
-    return undefined;
-  }
+export const isGroupOptionInfo = (
+  option: SelectOptionInfo | SelectOptionGroupInfo
+): option is SelectOptionGroupInfo => {
+  return isObject(option) && 'isGroup' in option;
+};
 
-  const optionInfo = optionInfoMap.get(value);
+export const getValueString = (value: SelectOptionValue, valueKey = 'value') =>
+  String(isObject(value) ? value[valueKey] : value);
 
-  if (!optionInfo) {
-    return undefined;
+export const getKeyFromValue = (
+  value?: SelectOptionValue,
+  valueKey = 'value'
+) => {
+  if (isObject(value)) {
+    return `__arco__option__object__${value[valueKey]}`;
   }
+  if (value || isNumber(value)) {
+    return `__arco__option__${typeof value}-${value}`;
+  }
+  return '';
+};
+
+export const createOptionInfo = (
+  option: string | number | SelectOptionData,
+  {
+    valueKey,
+    fieldNames,
+    origin,
+    index = -1,
+  }: {
+    valueKey: string;
+    fieldNames: Required<SelectFieldNames>;
+    origin: 'slot' | 'options' | 'extraOptions';
+    index?: number;
+  }
+): SelectOptionInfo => {
+  if (isObject(option)) {
+    const value = option[fieldNames.value];
+
+    return {
+      raw: option,
+      index,
+      key: getKeyFromValue(value, valueKey),
+      origin,
+      value,
+      label: option[fieldNames.label] ?? getValueString(value, valueKey),
+      disabled: Boolean(option[fieldNames.disabled]),
+    };
+  }
+  const raw = {
+    value: option,
+    label: String(option),
+    disabled: false,
+  };
 
   return {
-    ...optionInfo,
-    label: optionInfo.label,
-    closable: !optionInfo.disabled,
+    raw,
+    index,
+    key: getKeyFromValue(option, valueKey),
+    origin,
+    ...raw,
   };
 };
 
-export const getTagDataFromModelValue = (
-  modelValue: string | number | Array<string | number>,
-  optionInfoMap: Map<string | number, OptionInfo>
+export const getOptionInfos = (
+  options: SelectOption[],
+  {
+    valueKey,
+    fieldNames,
+    origin,
+    optionInfoMap,
+  }: {
+    valueKey: string;
+    fieldNames: Required<SelectFieldNames>;
+    origin: 'options' | 'extraOptions';
+    optionInfoMap: Map<string, SelectOptionInfo>;
+  }
 ) => {
-  if (isArray(modelValue)) {
-    const result = [];
-    for (const item of modelValue) {
-      const valueData = getTagData(item, optionInfoMap);
-      if (valueData) {
-        result.push(valueData);
+  const infos: (SelectOptionInfo | SelectOptionGroupInfo)[] = [];
+  optionInfoMap.clear();
+
+  for (const item of options) {
+    if (isGroupOption(item)) {
+      const options = getOptionInfos(item.options ?? [], {
+        valueKey,
+        fieldNames,
+        origin,
+        optionInfoMap,
+      });
+      if (options.length > 0) {
+        infos.push({
+          ...item,
+          key: `__arco__group__${item.label}`,
+          options,
+        });
+      }
+    } else {
+      const optionInfo = createOptionInfo(item, {
+        valueKey,
+        fieldNames,
+        origin,
+      });
+      infos.push(optionInfo);
+      if (!optionInfoMap.get(optionInfo.key)) {
+        optionInfoMap.set(optionInfo.key, optionInfo);
       }
     }
-    return result;
   }
-  return getTagData(modelValue, optionInfoMap);
+  return infos;
+};
+
+export const createOptionInfoMap = (
+  optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[]
+) => {
+  const optionInfoMap = new Map<string, SelectOptionInfo>();
+
+  const travel = (
+    optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[]
+  ) => {
+    for (const item of optionInfos) {
+      if (isGroupOptionInfo(item)) {
+        travel(item.options ?? []);
+      } else if (!optionInfoMap.get(item.key)) {
+        optionInfoMap.set(item.key, item);
+      }
+    }
+  };
+
+  travel(optionInfos);
+
+  return optionInfoMap;
+};
+
+export const getValidOptions = (
+  optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[],
+  {
+    inputValue,
+    filterOption,
+  }: {
+    inputValue?: string;
+    filterOption?: FilterOption;
+  }
+) => {
+  const travel = (
+    optionInfos: (SelectOptionInfo | SelectOptionGroupInfo)[]
+  ) => {
+    const options: (SelectOptionInfo | SelectOptionGroupInfo)[] = [];
+
+    for (const item of optionInfos) {
+      if (isGroupOptionInfo(item)) {
+        const _options = travel(item.options ?? []);
+        if (_options.length > 0) {
+          options.push({ ...item, options: _options });
+        }
+      } else if (isValidOption(item, { inputValue, filterOption })) {
+        options.push(item);
+      }
+    }
+    return options;
+  };
+
+  return travel(optionInfos);
+};
+
+export const isValidOption = (
+  optionInfo: SelectOptionInfo,
+  {
+    inputValue,
+    filterOption,
+  }: {
+    inputValue?: string;
+    filterOption?: FilterOption;
+  }
+) => {
+  if (isFunction(filterOption)) {
+    return !inputValue || filterOption(inputValue, optionInfo.raw);
+  }
+
+  if (filterOption) {
+    return optionInfo.label
+      .toLowerCase()
+      .includes((inputValue ?? '').toLowerCase());
+  }
+
+  return true;
 };

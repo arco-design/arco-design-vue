@@ -23,9 +23,9 @@ description: Users can transfer files or submit corresponding content.
 
 @import ./__demo__/submit.md
 
-@import ./__demo__/beforeUpload.md
+@import ./__demo__/before-upload.md
 
-@import ./__demo__/onRemove.md
+@import ./__demo__/before-remove.md
 
 @import ./__demo__/limit.md
 
@@ -52,8 +52,8 @@ description: Users can transfer files or submit corresponding content.
 |directory|Whether to support folder upload (requires browser support)|`boolean`|`false`||
 |draggable|Whether to support drag and drop upload|`boolean`|`false`||
 |tip|Prompt text|`string`|`-`||
-|headers|Additional header information for upload request|`object`|`-`||
-|data|Upload request additional data|`Record<string, unknown>\| ((fileItem: FileItem) => Record<string, unknown>)`|`-`||
+|headers|Additional header information for upload request|`Record<string, string>`|`-`||
+|data|Upload request additional data|`Record<string, string \| Blob>\| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`||
 |name|Uploaded file name|`string \| ((fileItem: FileItem) => string)`|`-`||
 |with-credentials|Whether the upload request carries cookies|`boolean`|`false`||
 |custom-request|Custom upload behavior|`(option: RequestOption) => UploadRequest`|`-`||
@@ -70,7 +70,7 @@ description: Users can transfer files or submit corresponding content.
 |list-type|Picture list type|`'text' \| 'picture' \| 'picture-card'`|`'text'`||
 |response-url-key|Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image|`string \| ((fileItem: FileItem) => string)`|`-`||
 |custom-icon|Custom icon|`CustomIcon`|`-`||
-|on-before-upload|Trigger before uploading a picture|`(file: File) => Promise<boolean>`|`-`||
+|on-before-upload|Trigger before uploading a picture|`(file: File) => Promise<boolean \| File>`|`-`||
 |on-before-remove|Triggered before removing the picture|`(fileItem: FileItem) => Promise<boolean>`|`-`||
 |on-button-click|Click the upload button to trigger (if the Promise is returned, the default input upload will be closed)|`(event: Event) => Promise<FileList> \| void`|`-`||
 ### `<upload>` Events
@@ -89,12 +89,23 @@ description: Users can transfer files or submit corresponding content.
 |---|---|---|:---:|
 |submit|Upload file (file that has been initialized)|fileItem: `FileItem`|-|
 |abort|Abort upload|fileItem: `FileItem`|-|
+|updateFile|Update file|id: `string`<br>file: `File`|-|
 ### `<upload>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|upload-button|Upload button|-|
-|upload-item|Upload list item|fileItem: `FileItem`<br>index: `number`|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|image|Image|fileItem: `FileItem`|2.23.0|
+|file-name|File name|-|2.23.0|
+|file-icon|File icon|-|2.23.0|
+|remove-icon|Remove icon|-|2.23.0|
+|preview-icon|Preview icon|-|2.23.0|
+|cancel-icon|Cancel icon|-|2.23.0|
+|start-icon|Start icon|-|2.23.0|
+|error-icon|Error icon|-|2.23.0|
+|success-icon|Success icon|-|2.23.0|
+|retry-icon|Retry icon|-|2.23.0|
+|upload-button|Upload button|-||
+|upload-item|Upload list item|fileItem: `FileItem`<br>index: `number`||
 
 
 
@@ -134,10 +145,10 @@ description: Users can transfer files or submit corresponding content.
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |action|Uploaded URL|`string`|`-`|
-|headers|Header information of the request message|`Data`|`-`|
+|headers|Header information of the request message|`Record<string, string>`|`-`|
 |name|File name of the uploaded file|`string \| ((fileItem: FileItem) => string)`|`-`|
 |fileItem|upload files|`FileItem`|`-`|
-|data|Additional requested information|`Data \| ((fileItem: FileItem) => Data)`|`-`|
+|data|Additional requested information|`Record<string, string \| Blob>    \| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`|
 |withCredentials|Whether to carry cookie information|`boolean`|`false`|
 |onProgress|Update the upload progress of the current file. percent: current upload progress percentage|`(percent: number, event?: ProgressEvent) => void`|`-`|
 |onSuccess|After the upload is successful, call the onSuccess method, the incoming response parameter will be appended to the response field of the currently uploaded file|`(response?: any) => void`|`-`|

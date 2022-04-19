@@ -1,11 +1,8 @@
 import type { RenderFunction, VNode } from 'vue';
-import { Data } from '../_utils/types';
 
-export const LIST_TYPES = ['text', 'picture', 'picture-card'] as const;
-export type ListType = typeof LIST_TYPES[number];
+export type ListType = 'text' | 'picture' | 'picture-card';
 
-export const FILE_STATUS = ['init', 'uploading', 'done', 'error'] as const;
-export type FileStatus = typeof FILE_STATUS[number];
+export type FileStatus = 'init' | 'uploading' | 'done' | 'error';
 
 export interface FileItem {
   /**
@@ -106,7 +103,7 @@ export interface RequestOption {
    * @zh 请求报文的头信息
    * @en Header information of the request message
    * */
-  headers?: Data;
+  headers?: Record<string, string>;
   /**
    * @zh 上传文件的文件名
    * @en File name of the uploaded file
@@ -121,7 +118,9 @@ export interface RequestOption {
    * @zh 附加的请求信息
    * @en Additional requested information
    * */
-  data?: Data | ((fileItem: FileItem) => Data);
+  data?:
+    | Record<string, string | Blob>
+    | ((fileItem: FileItem) => Record<string, string | Blob>);
   /**
    * @zh 是否携带cookie信息
    * @en Whether to carry cookie information
@@ -144,7 +143,7 @@ export interface RequestOption {
   onError: (response?: any) => void;
 }
 
-export interface UploadRequest extends Data {
+export interface UploadRequest extends Record<string, unknown> {
   /**
    * @zh 终止上传
    * @en Terminate upload

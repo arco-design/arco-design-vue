@@ -44,3 +44,5 @@ description: Used to show and preview pictures.
 %%API(preview.vue)%%
 
 %%API(preview-group.vue)%%
+
+%%API(preview-action.tsx)%%

@@ -33,21 +33,22 @@ description: Used to show and preview pictures.
 
 ### `<image>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|src|Image src|`string`|`-`|
-|width|Image width|`string \| number`|`-`|
-|height|Image height|`string \| number`|`-`|
-|title|Title|`string`|`-`|
-|description|Description, will be displayed at the bottom. if alt has no value, it will be set to alt|`string`|`-`|
-|alt|Text description of the image|`string`|`-`|
-|hide-footer|Whether to hide footer|`boolean`|`false`|
-|footer-position|The position shown at the bottom|`'inner' \| 'outer'`|`'inner'`|
-|show-loader|Whether to show the loading effect|`boolean`|`false`|
-|preview|Whether to enable preview|`boolean`|`true`|
-|preview-visible **(v-model)**|Control the open state of the preview, can be used in conjunction with previewVisibleChange|`boolean`|`-`|
-|default-preview-visible|The default open state of the preview|`boolean`|`false`|
-|preview-props|Preview configuration items (all options are optional) [ImagePreviewProps](#imagepreview)|`ImagePreviewProps`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|src|Image src|`string`|`-`||
+|width|Image width|`string \| number`|`-`||
+|height|Image height|`string \| number`|`-`||
+|title|Title|`string`|`-`||
+|description|Description, will be displayed at the bottom. if alt has no value, it will be set to alt|`string`|`-`||
+|alt|Text description of the image|`string`|`-`||
+|hide-footer|Whether to hide footer|`boolean`|`false`||
+|footer-position|The position shown at the bottom|`'inner' \| 'outer'`|`'inner'`||
+|show-loader|Whether to show the loading effect|`boolean`|`false`||
+|preview|Whether to enable preview|`boolean`|`true`||
+|preview-visible **(v-model)**|Control the open state of the preview, can be used in conjunction with previewVisibleChange|`boolean`|`-`||
+|default-preview-visible|The default open state of the preview|`boolean`|`false`||
+|preview-props|Preview configuration items (all options are optional) [ImagePreviewProps](#imagepreview)|`ImagePreviewProps`|`-`||
+|footer-class|The class name of the bottom display area|`string\|array\|object`|`-`|2.23.0|
 ### `<image>` Events
 
 |Event Name|Description|Parameters|
@@ -80,6 +81,11 @@ description: Used to show and preview pictures.
 |Event Name|Description|Parameters|
 |---|---|---|
 |close|Close event|-|
+### `<image-preview>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|actions|Customize additional action items|-|2.17.0|
 
 
 
@@ -104,5 +110,15 @@ description: Used to show and preview pictures.
 |---|---|---|
 |change|Image switch|-|
 |visible-change|Preview visibility change|-|
+
+
+
+
+### `<image-preview-action>` Props (2.17.0)
+
+|Attribute|Description|Type|Default|
+|---|---|---|:---:|
+|name|the name of the action|`string`|`-`|
+|disabled|Whether to disable the action|`boolean`|`false`|
 
 

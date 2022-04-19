@@ -2,7 +2,7 @@ import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _Form from './form.vue';
-import _FormItem from './form-item';
+import _FormItem from './form-item.vue';
 
 const Form = Object.assign(_Form, {
   Item: _FormItem,
@@ -17,6 +17,13 @@ const Form = Object.assign(_Form, {
 
 export type FormInstance = InstanceType<typeof _Form>;
 export type FormItemInstance = InstanceType<typeof _FormItem>;
+export type {
+  ValidateStatus,
+  ValidateTrigger,
+  ValidatedError,
+  FieldRule,
+  FormItemEventHandler,
+} from './interface';
 
 export { _FormItem as FormItem };
 

@@ -47,8 +47,9 @@ export default defineComponent({
     };
 
     return () => (
+      // @ts-ignore
       <TransitionGroup tag="div" class={cls.value}>
-        {props.fileList.map((item, index) => renderItem(item, index))}
+        {...props.fileList.map((item, index) => renderItem(item, index))}
         {props.listType === 'picture-card' && slots['upload-button']?.()}
       </TransitionGroup>
     );

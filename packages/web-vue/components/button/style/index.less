@@ -94,7 +94,9 @@
     border: @btn-size-default-border-width ~'@{btn-@{type}-border-style}' ~'@{btn-@{type}-color-border}';
   }
 
-  .@{btn-prefix-cls}-@{type} {
+  .@{btn-prefix-cls}-@{type},
+  .@{btn-prefix-cls}-@{type}[type='button'],
+  .@{btn-prefix-cls}-@{type}[type='submit'] {
     .normal();
 
     &:hover {

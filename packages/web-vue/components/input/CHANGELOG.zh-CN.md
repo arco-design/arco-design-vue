@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 功能优化
+
+- 输入类组件的 `clear` 事件会同时触发 `change` 事件 ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
+
+
+## 2.18.0-beta.3
+
+`2022-02-26`
+
+### 💎 功能优化
+
+- modelValue 支持 null ([#743](https://github.com/arco-design/arco-design-vue/pull/743))
+
+
+## 2.17.0
+
+`2022-02-11`
+
+### 💎 功能优化
+
+- 增加 input 元素部分原始属性的透传 ([#664](https://github.com/arco-design/arco-design-vue/pull/664))
+
+
 ## 2.16.2
 
 `2022-01-24`

@@ -12,7 +12,7 @@ import Breadcrumb, { BreadcrumbItem } from './breadcrumb';
 import Button, { ButtonGroup } from './button';
 import Card, { CardMeta, CardGrid } from './card';
 import Carousel, { CarouselItem } from './carousel';
-import Cascader from './cascader';
+import Cascader, { CascaderPanel } from './cascader';
 import Checkbox, { CheckboxGroup } from './checkbox';
 import Collapse, { CollapseItem } from './collapse';
 import Comment from './comment';
@@ -24,7 +24,7 @@ import DatePicker, {
   QuarterPicker,
   RangePicker,
 } from './date-picker';
-import Descriptions from './descriptions';
+import Descriptions, { DescriptionsItem } from './descriptions';
 import Divider from './divider';
 import Drawer from './drawer';
 import Dropdown, {
@@ -89,6 +89,8 @@ import Typography, {
   TypographyText,
 } from './typography';
 import Upload from './upload';
+
+import { useFormItem } from './_hooks/use-form-item';
 
 const components: Record<string, Plugin> = {
   Button,
@@ -176,8 +178,10 @@ const ArcoVue = {
   CardMeta,
   CardGrid,
   CarouselItem,
+  CascaderPanel,
   CheckboxGroup,
   CollapseItem,
+  DescriptionsItem,
   WeekPicker,
   MonthPicker,
   YearPicker,
@@ -227,6 +231,7 @@ const ArcoVue = {
   addI18nMessages,
   useLocale,
   getLocale,
+  useFormItem,
 };
 
 export default ArcoVue;

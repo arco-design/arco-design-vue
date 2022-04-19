@@ -17,15 +17,17 @@ title:
 
 ```vue
 <template>
-  <a-trigger class="demo-trigger" :trigger="['click','hover','focus']">
+  <a-trigger :trigger="['click','hover','focus']">
     <a-input placeholder="Click/Hover/Focus on me" />
     <template #content>
-      <a-empty />
+      <div class="demo-trigger">
+        <a-empty />
+      </div>
     </template>
   </a-trigger>
 </template>
 
-<style lang="less">
+<style scoped>
 .demo-trigger {
   padding: 10px;
   width: 200px;

@@ -33,9 +33,15 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/sort.md
 
+@import ./__demo__/filter.md
+
+@import ./__demo__/scroll.md
+
 @import ./__demo__/fixed.md
 
 @import ./__demo__/span.md
+
+@import ./__demo__/summary.md
 
 @import ./__demo__/column-resize.md
 
@@ -44,6 +50,8 @@ description: It is used for data collection, display, analysis and processing, a
 @import ./__demo__/drag-handle.md
 
 @import ./__demo__/group.md
+
+@import ./__demo__/editable.md
 
 @import ./__demo__/custom.md
 
@@ -56,3 +64,9 @@ description: It is used for data collection, display, analysis and processing, a
 %%API(table-column.tsx)%%
 
 %%INTERFACE(interface.ts)%%
+
+```ts
+type Filters = Record<string, string[]>;
+
+type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string, never>;
+```

@@ -8,6 +8,9 @@
         }"
         :prefix-cls="pickerPrefixCls"
         :title="headerTitle"
+        mode="quarter"
+        :value="headerValue"
+        :on-label-click="onHeaderLabelClick"
       />
       <PanelBody
         mode="quarter"
@@ -38,7 +41,7 @@ import type {
   HeaderOperations,
   IsSameTime,
 } from '../../interface';
-import PanelHeader from '../header.vue';
+import PanelHeader, { HeaderLabelClickFunc } from '../header.vue';
 import PanelBody from '../body.vue';
 import { RenderFunc } from '../../../_components/render-function';
 
@@ -72,6 +75,9 @@ export default defineComponent({
     },
     dateRender: {
       type: Function as PropType<RenderFunc>,
+    },
+    onHeaderLabelClick: {
+      type: Function as PropType<HeaderLabelClickFunc>,
     },
   },
   emits: ['select', 'cell-mouse-enter'],

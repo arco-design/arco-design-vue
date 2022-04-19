@@ -84,7 +84,7 @@ Intercept ajax and return simulated data
 
 Parallel development of the front and back ends means that the front end needs to be developed without interface data. In this case, if the function of simulating data requests can be provided, our data request code can be written normally. Pro uses Mock.js to achieve This feature.
 
-Mock.js will intercept the ajax request. If there is a matching mock rule, the ajax will not be sent out, but the mock data will be returned. Mock.js has a wealth of simulation data generation methods, it is recommended to read the document first, the document is very clear and easy to understand [MockJs document](<http://mockjs.com/).>
+Mock.js will intercept the ajax request. If there is a matching mock rule, the ajax will not be sent out, but the mock data will be returned. Mock.js has a wealth of simulation data generation methods, it is recommended to read the document first, the document is very clear and easy to understand [MockJs document](http://mockjs.com/)
 
  ```ts
 import Mock from'mockjs';

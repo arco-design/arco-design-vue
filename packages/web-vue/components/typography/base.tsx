@@ -5,14 +5,15 @@ import {
   toRefs,
   computed,
   ref,
-  Text,
   onUnmounted,
   VNodeTypes,
   watch,
   reactive,
+  onMounted,
+  onUpdated,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { isObject, isString, isUndefined } from '../_utils/is';
+import { isObject } from '../_utils/is';
 import { BaseProps, EllipsisConfig, EllipsisInternalConfig } from './interface';
 import EditContent from './edit-content.vue';
 import Operations from './operations.vue';
@@ -28,20 +29,6 @@ import Popover from '../popover';
 
 interface BaseInternalProps extends BaseProps {
   component: keyof HTMLElementTagNameMap;
-}
-
-function getClassNames(prefixCls: string, props: BaseInternalProps) {
-  const { type, disabled } = props;
-  const classNames = [];
-
-  if (type) {
-    classNames.push(`${prefixCls}-${type}`);
-  }
-  if (disabled) {
-    classNames.push(`${prefixCls}-disabled`);
-  }
-
-  return classNames;
 }
 
 function getComponentTags<K extends keyof HTMLElementTagNameMap>(
@@ -69,36 +56,16 @@ function getComponentTags<K extends keyof HTMLElementTagNameMap>(
   return componentTags as K[];
 }
 
-// 目前只能处理纯文字内容的编辑
-function getEditText(children: VNode[]) {
-  if (!children) return '';
-
-  const res: string[] = [];
-  children.some((child) => {
-    if (child.type === Text && isString(child.children)) {
-      res.push(String(child.children));
-      return true;
-    }
-    return false;
-  });
-
-  return res.join('');
-}
-
 function Wrap(props: BaseInternalProps, children: VNodeTypes) {
   const { mark } = props;
   const componentTags = getComponentTags(props);
+  const markStyle =
+    isObject(mark) && mark.color ? { backgroundColor: mark.color } : {};
 
-  let content: VNodeTypes = children;
-  componentTags.forEach((Tag) => {
-    const attrs =
-      isObject(mark) && mark.color
-        ? { style: { backgroundColor: mark.color } }
-        : {};
-    content = <Tag {...attrs}>{content}</Tag>;
-  });
-
-  return content;
+  return componentTags.reduce((content, Tag) => {
+    const attrs = Tag === 'mark' ? { style: markStyle } : {};
+    return <Tag {...attrs}>{content}</Tag>;
+  }, children);
 }
 
 function normalizeEllipsisConfig(
@@ -130,6 +97,7 @@ function normalizeEllipsisConfig(
  */
 export default defineComponent({
   name: 'TypographyBase',
+  inheritAttrs: false,
   props: {
     component: {
       type: String as PropType<BaseInternalProps['component']>,
@@ -306,7 +274,7 @@ export default defineComponent({
    * @slot expand-node
    * @binding {boolean} expanded
    */
-  setup(props: BaseInternalProps, { slots, emit }) {
+  setup(props: BaseInternalProps, { slots, emit, attrs }) {
     const {
       editing: propEditing,
       defaultEditing,
@@ -322,11 +290,14 @@ export default defineComponent({
     const prefixCls = getPrefixCls('typography');
     const classNames = computed(() => [
       prefixCls,
-      ...getClassNames(prefixCls, props),
+      {
+        [`${prefixCls}-${props.type}`]: props.type,
+        [`${prefixCls}-disabled`]: props.disabled,
+      },
     ]);
 
     const wrapperRef = ref();
-    let fullText = '';
+    const fullText = ref('');
 
     // for edit
     const [editing, setEditing] = useMergeState(
@@ -359,7 +330,7 @@ export default defineComponent({
     let copyTimer: NodeJS.Timeout | null = null;
 
     function onCopyClick() {
-      const text = !isUndefined(copyText?.value) ? copyText?.value : fullText;
+      const text = copyText.value ?? fullText.value;
 
       clipboard(text || '');
 
@@ -383,7 +354,7 @@ export default defineComponent({
     const ellipsisText = ref('');
     const ellipsisConfig = computed<EllipsisInternalConfig>(() =>
       normalizeEllipsisConfig(
-        (isObject(ellipsis?.value) && ellipsis?.value) || {}
+        (isObject(ellipsis.value) && ellipsis.value) || {}
       )
     );
     let rafId: number = null as any;
@@ -423,7 +394,7 @@ export default defineComponent({
         wrapperRef.value,
         ellipsisConfig.value,
         renderOperations(!!ellipsisConfig.value.expandable),
-        fullText
+        fullText.value
       );
 
       if (isEllipsis.value !== ellipsis) {
@@ -437,7 +408,7 @@ export default defineComponent({
     }
 
     function resizeOnNextFrame() {
-      const needCalEllipsis = !!ellipsis?.value && !expanded.value;
+      const needCalEllipsis = ellipsis.value && !expanded.value;
       if (!needCalEllipsis) return;
 
       caf(rafId);
@@ -464,13 +435,27 @@ export default defineComponent({
       }
     });
 
+    let children: VNode[] = [];
+    const updateFullText = () => {
+      if (ellipsis.value || copyable.value || editable.value) {
+        const _fullText = getInnerText(children);
+
+        if (_fullText !== fullText.value) {
+          fullText.value = _fullText;
+          resizeOnNextFrame();
+        }
+      }
+    };
+
+    onMounted(updateFullText);
+    onUpdated(updateFullText);
+
     return () => {
-      const children = slots.default?.() || [];
-      fullText = getInnerText(children);
+      children = slots.default?.() || [];
 
       // 编辑中
       if (mergeEditing.value) {
-        const _editText = editText.value ?? getEditText(children);
+        const _editText = editText.value ?? fullText.value;
 
         return (
           <EditContent
@@ -495,24 +480,26 @@ export default defineComponent({
       const showEllipsis = isEllipsis.value && !expanded.value;
       const Content = Wrap(props, showEllipsis ? ellipsisText.value : children);
       const titleAttrs =
-        showEllipsis && !showTooltip ? { title: fullText } : {};
+        showEllipsis && !showTooltip ? { title: fullText.value } : {};
       const Component = component.value;
 
       return (
-        <ResizeObserver
-          onResize={() => {
-            resizeOnNextFrame();
-          }}
-        >
-          <Component class={classNames.value} ref={wrapperRef} {...titleAttrs}>
+        <ResizeObserver onResize={() => resizeOnNextFrame()}>
+          <Component
+            class={classNames.value}
+            ref={wrapperRef}
+            {...titleAttrs}
+            {...attrs}
+          >
             {showEllipsis && showTooltip ? (
               <TooltipComponent
                 {...tooltipProps}
                 v-slots={{
-                  content: () => fullText,
-                  default: () => [<span>{Content}</span>],
+                  content: () => fullText.value,
                 }}
-              />
+              >
+                <span>{Content}</span>
+              </TooltipComponent>
             ) : (
               Content
             )}

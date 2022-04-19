@@ -2,6 +2,84 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🐛 问题修复
+
+- 修复复选框的半选状态显示错误的问题 ([#963](https://github.com/arco-design/arco-design-vue/pull/963))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 新增功能
+
+- 增加 empty 插槽 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+### 🐛 问题修复
+
+- 修复 2.22.0 版本中懒加载的 isLeaf 失效的问题 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+- 修复 options 属性在某些情况下不能触发更新的问题 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 新增功能
+
+- 增加 `field-names` 属性，允许自定义字段 ([#912](https://github.com/arco-design/arco-design-vue/pull/912))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 新增功能
+
+- 增加 `cascader-panel` 组件 ([#842](https://github.com/arco-design/arco-design-vue/pull/842))
+
+### 🐛 问题修复
+
+- 修复下拉菜单选中路径可能与当前值不符的问题 ([#843](https://github.com/arco-design/arco-design-vue/pull/843))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 新增功能
+
+- 增加 `#option`, `#label` 插槽 ([#781](https://github.com/arco-design/arco-design-vue/pull/781))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 新增功能
+
+- 增加 `search-delay` 属性，并默认为 `500ms` ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+- 增加 `search-option-only-label` 属性，并修改搜索下拉菜单中的选项默认展示路径标签 ([#729](https://github.com/arco-design/arco-design-vue/pull/729))
+
+### 🐛 问题修复
+
+- 修复选项更新后选择框展示没有更新的问题 ([#727](https://github.com/arco-design/arco-design-vue/pull/727))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 🐛 问题修复
+
+- 修复严格模式下禁用项仍可通过单选选择器选择的问题 ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+- 修复严格模式下搜索结果没有包含路径选项的问题 ([#701](https://github.com/arco-design/arco-design-vue/pull/701))
+
+
 ## 2.16.0
 
 `2022-01-21`

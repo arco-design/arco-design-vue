@@ -3,8 +3,10 @@
     type="button"
     :class="cls"
     :style="buttonStyle"
-    :disabled="disabled"
+    :disabled="mergedDisabled"
     @click="handleClick"
+    @focus="handleFocus"
+    @blur="handleBlur"
   >
     <span :class="`${prefixCls}-handle`">
       <span :class="`${prefixCls}-handle-icon`">
@@ -31,11 +33,12 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, inject, ref } from 'vue';
+import { computed, defineComponent, inject, ref, toRef, toRefs } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
+import { useFormItem } from '../_hooks/use-form-item';
 
 const SWITCH_SIZES = ['small', 'medium'] as const;
 type SwitchSize = typeof SWITCH_SIZES[number];
@@ -158,6 +161,8 @@ export default defineComponent({
      * @property {boolean|string|number} value
      */
     'change',
+    'focus',
+    'blur',
   ],
   /**
    * @zh 打开状态时的文案（`type='line'`和`size='small'`时不生效）
@@ -180,7 +185,12 @@ export default defineComponent({
    * @slot unchecked-icon
    */
   setup(props, { emit }) {
+    const { disabled, size } = toRefs(props);
     const prefixCls = getPrefixCls('switch');
+    const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
+      disabled,
+      size,
+    });
 
     const _checked = ref(
       props.defaultChecked ? props.checkedValue : props.uncheckedValue
@@ -190,13 +200,24 @@ export default defineComponent({
     );
 
     const handleClick = (ev: Event) => {
-      if (props.loading || props.disabled) {
+      if (props.loading || mergedDisabled.value) {
         return;
       }
       const checked = !computedCheck.value;
       _checked.value = checked ? props.checkedValue : props.uncheckedValue;
       emit('update:modelValue', _checked.value);
       emit('change', _checked.value, ev);
+      eventHandlers.value?.onChange?.(ev);
+    };
+
+    const handleFocus = (ev: FocusEvent) => {
+      emit('focus', ev);
+      eventHandlers.value?.onFocus?.(ev);
+    };
+
+    const handleBlur = (ev: FocusEvent) => {
+      emit('blur', ev);
+      eventHandlers.value?.onBlur?.(ev);
     };
 
     const cls = computed(() => [
@@ -204,9 +225,9 @@ export default defineComponent({
       `${prefixCls}-type-${props.type}`,
       {
         [`${prefixCls}-small`]:
-          props.size === 'small' || (props.size as string) === 'mini',
+          mergedSize.value === 'small' || mergedSize.value === 'mini',
         [`${prefixCls}-checked`]: computedCheck.value,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-loading`]: props.loading,
       },
     ]);
@@ -228,9 +249,12 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
+      mergedDisabled,
       buttonStyle,
       computedCheck,
       handleClick,
+      handleFocus,
+      handleBlur,
     };
   },
 });

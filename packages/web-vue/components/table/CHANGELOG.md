@@ -2,6 +2,132 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 Optimization
+
+- When titleSlotName exists in the columns attribute, it will be used first ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
+
+### 🆎 TypeScript
+
+- `TableColumn` interface name is changed to `TableColumnData` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 Optimization
+
+- In horizontal scrolling mode, if the data is empty, the header will display a scroll bar ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+### 🆕 Feature
+
+- Add titleSlotName to the columns attribute and slotName to the filterable attribute ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- table-column adds filter-content, filter-content slot ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+- Added summary-cell slot ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
+
+
+## 2.22.1
+
+`2022-04-02`
+
+### 🐛 BugFix
+
+- Fix virtual list and scrolling used together ([#926](https://github.com/arco-design/arco-design-vue/pull/926))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 Feature
+
+- Added `selectAll` method ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+### 🐛 BugFix
+
+- Fix the problem of wrong virtual list width in some cases ([#920](https://github.com/arco-design/arco-design-vue/pull/920))
+
+
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 Feature
+
+- Add summary prop ([#877](https://github.com/arco-design/arco-design-vue/pull/877))
+
+
+## 2.20.2
+
+`2022-03-24`
+
+### 🐛 BugFix
+
+- Fixed the problem that the `table-column` component caused continuous updating when writing object parameters directly in the template ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- Fix the problem that there is no column data when there is only one `table-column` ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+- Fix the sorting problem of `table-column`, which can be solved by the `index` parameter ([#861](https://github.com/arco-design/arco-design-vue/pull/861))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🆕 Feature
+
+- Use Context to refactor components, `table-colum` supports secondary encapsulation ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+- scroll property adds `maxHeight`, `minWidth` properties ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+### 💅 Style
+
+- Fixed the problem that the header text could not be centered after sorting was enabled ([#845](https://github.com/arco-design/arco-design-vue/pull/845))
+
+
+## 2.19.0
+
+`2022-03-11`
+
+### ⚠️ Important Attention
+
+- Modify the outgoing data of the sorting function sorter to enhance the usage ([#810](https://github.com/arco-design/arco-design-vue/pull/810))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 Feature
+
+- Scroll mode supports setting height percentage ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- The column data adds the slotName property to allow specifying a rendering slot ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+- Added `pagination-left` and `pagination-right` slots ([#780](https://github.com/arco-design/arco-design-vue/pull/780))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 Feature
+
+- Added `span-all` attribute ([#735](https://github.com/arco-design/arco-design-vue/pull/735))
+
+### 🐛 BugFix
+
+- Fix the problem that v-for cannot render when table-column is nested ([#734](https://github.com/arco-design/arco-design-vue/pull/734))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 💎 Optimization
+
+- Does not show pagination when the data is empty ([#684](https://github.com/arco-design/arco-design-vue/pull/684))
+
+
 ## 2.16.2
 
 `2022-01-24`

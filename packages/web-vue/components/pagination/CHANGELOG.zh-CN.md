@@ -2,6 +2,37 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💅 样式更新
+
+- 分页选择项增加 padding ([#984](https://github.com/arco-design/arco-design-vue/pull/984))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 💎 功能优化
+
+- 优化切换 pageSize 时的页码改变逻辑 ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+
+### 🆕 新增功能
+
+- 增加 `jumper-prepend` 和  `jumper-append` 插槽 ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💅 样式更新
+
+- 修复在safari下跳转器文字没有对齐的问题 ([#736](https://github.com/arco-design/arco-design-vue/pull/736))
+
+
 ## 2.13.0
 
 `2021-12-31`

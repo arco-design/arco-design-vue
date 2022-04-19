@@ -8,7 +8,7 @@
     animation-name="slide-dynamic-origin"
     :prevent-focus="true"
     v-bind="triggerProps"
-    :disabled="disabled"
+    :disabled="mergedDisabled"
     :popup-visible="panelVisible"
     :popup-container="popupContainer"
     auto-fit-transform-origin
@@ -17,14 +17,14 @@
     <slot name="trigger">
       <SelectView
         ref="refSelectView"
-        :model-value="selectedValue"
+        :model-value="selectViewValue"
         :input-value="searchValue"
         :allow-search="allowSearch"
         :allow-clear="allowClear"
         :loading="loading"
         :size="size"
-        :max-tags="maxTags"
-        :disabled="disabled"
+        :max-tag-count="maxTagCount"
+        :disabled="mergedDisabled"
         :opened="panelVisible"
         :error="error"
         :border="border"
@@ -34,8 +34,12 @@
         @inputValueChange="onSearchValueChange"
         @clear="onInnerClear"
       >
-        <slot v-if="$slots.prefix" name="prefix" />
-        <slot v-if="$slots.tag" name="tag" />
+        <template v-if="$slots.prefix" #prefix>
+          <slot name="prefix" />
+        </template>
+        <template v-if="$slots.label" #label="selectedData">
+          <slot name="label" v-bind="selectedData" />
+        </template>
       </SelectView>
     </slot>
     <template #content>
@@ -86,27 +90,21 @@ import {
   inject,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
-import { LabelValue } from './interface';
+import { LabelValue, TreeSelectProps } from './interface';
 import Trigger from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
 import useSelectedState from './hooks/use-selected-state';
 import useTreeData from '../tree/hooks/use-tree-data';
-import {
-  FieldNames,
-  TreeNodeData,
-  TreeProps,
-  TreeNodeKey,
-} from '../tree/interface';
-import { isArray, isEmptyObject } from '../_utils/is';
+import { TreeFieldNames, TreeNodeData, TreeProps } from '../tree/interface';
+import { isArray, isEmptyObject, isUndefined } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
 import pickSubCompSlots from '../_utils/pick-sub-comp-slots';
-import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
+import { useFormItem } from '../_hooks/use-form-item';
 
 const isEmpty = (val: any) => {
   return !val || (isArray(val) && val.length === 0) || isEmptyObject(val);
@@ -152,8 +150,6 @@ export default defineComponent({
      * */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 是否显示边框
@@ -195,7 +191,7 @@ export default defineComponent({
      * @zh 最多显示的标签数量，仅在多选模式有效
      * @en The maximum number of labels displayed, only valid in multi-select mode
      * */
-    maxTags: {
+    maxTagCount: {
       type: Number,
     },
     /**
@@ -229,7 +225,7 @@ export default defineComponent({
      * @en Specify the field name in the node data
      * */
     fieldNames: {
-      type: Object as PropType<FieldNames>,
+      type: Object as PropType<TreeFieldNames>,
     },
     /**
      * @zh 数据
@@ -276,11 +272,11 @@ export default defineComponent({
       type: Object as PropType<Partial<TreeProps>>,
     },
     /**
-     * @zh 可以接受所有 [Tigger](/vue/component/trigger) 组件的Props
-     * @en Can accept Props of all [Tigger](/vue/component/trigger) components
+     * @zh 可以接受所有 [Trigger](/vue/component/trigger) 组件的Props
+     * @en Can accept Props of all [Trigger](/vue/component/trigger) components
      * */
     triggerProps: {
-      type: Object as PropType<Record<string, any>>,
+      type: Object as PropType<Record<string, unknown>>,
     },
     /**
      * @zh 弹出框是否可见
@@ -344,33 +340,32 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
+    /**
+     * @zh 为 value 中找不到匹配项的 key 定义节点数据
+     * @en Customize node data for keys that do not match options
+     * @version 2.22.0
+     */
+    fallbackOption: {
+      type: [Boolean, Function] as PropType<
+        boolean | ((key: number | string) => TreeNodeData | boolean)
+      >,
+      default: true,
+    },
     // for JSX
     onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (
-            selectedValue:
-              | string
-              | number
-              | LabelValue
-              | Array<string | number>
-              | LabelValue[]
-              | undefined
-          ) => void
-        >
-      >,
+      type: [Function, Array] as PropType<TreeSelectProps['onChange']>,
     },
     onPopupVisibleChange: {
       type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
+        TreeSelectProps['onPopupVisibleChange']
       >,
     },
     onSearch: {
-      type: [Function, Array] as PropType<
-        EmitType<(searchValue: string) => void>
-      >,
+      type: [Function, Array] as PropType<TreeSelectProps['onSearch']>,
     },
-    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
+    onClear: {
+      type: [Function, Array] as PropType<TreeSelectProps['onClear']>,
+    },
   },
   emits: [
     /**
@@ -383,7 +378,7 @@ export default defineComponent({
     /**
      * @zh 下拉框显示状态改变时触发
      * @en Triggered when the status of the drop-down box changes
-     * @param {boolean} visible
+     * @param {boolean} popupVisible
      */
     'popup-visible-change',
     'update:popupVisible',
@@ -410,9 +405,10 @@ export default defineComponent({
    * @slot prefix
    */
   /**
-   * @zh 标签
-   * @en Tag
-   * @slot tag
+   * @zh 自定义选择框显示
+   * @en Custom Label
+   * @slot label
+   * @binding data
    */
   /**
    * @zh 定制加载中显示的内容
@@ -424,7 +420,7 @@ export default defineComponent({
    * @en Custom empty data display
    * @slot empty
    */
-  setup(props, { emit }) {
+  setup(props: TreeSelectProps, { emit }) {
     const {
       defaultValue,
       modelValue,
@@ -435,12 +431,17 @@ export default defineComponent({
       treeCheckStrictly,
       data,
       fieldNames,
+      disabled,
       labelInValue,
       filterTreeNode,
       disableFilter,
       dropdownStyle,
       treeProps,
+      fallbackOption,
     } = toRefs(props);
+    const { mergedDisabled, eventHandlers } = useFormItem({
+      disabled,
+    });
 
     const prefixCls = getPrefixCls('tree-select');
 
@@ -455,29 +456,46 @@ export default defineComponent({
       })
     );
 
-    const { selectedKeys, selectedValue, setLocalSelectedKeys } =
-      useSelectedState(
-        reactive({
-          defaultValue,
-          modelValue,
-          key2TreeNode,
-          multiple,
-          treeCheckable,
-          treeCheckStrictly,
-        })
-      );
+    const {
+      selectedKeys,
+      selectedValue,
+      setLocalSelectedKeys,
+      localSelectedKeys,
+      localSelectedValue,
+    } = useSelectedState(
+      reactive({
+        defaultValue,
+        modelValue,
+        key2TreeNode,
+        multiple,
+        treeCheckable,
+        treeCheckStrictly,
+        fallbackOption,
+        fieldNames,
+      })
+    );
+
+    const selectViewValue = computed(() => {
+      if (isUndefined(selectedValue.value)) {
+        return [];
+      }
+      return selectedValue.value;
+    });
 
     const setSelectedKeys = (newVal: string[]) => {
       setLocalSelectedKeys(newVal);
 
       nextTick(() => {
-        let emitValue: TreeNodeKey | TreeNodeKey[] | LabelValue | LabelValue[] =
-          (labelInValue.value ? selectedValue.value : newVal) || [];
+        const forEmitValue =
+          (labelInValue.value
+            ? localSelectedValue.value
+            : localSelectedKeys.value) || [];
 
-        emitValue = isMultiple.value ? emitValue : emitValue[0];
+        const emitValue = isMultiple.value ? forEmitValue : forEmitValue[0];
 
         emit('update:modelValue', emitValue);
         emit('change', emitValue);
+        eventHandlers.value?.onChange?.();
       });
     };
 
@@ -528,12 +546,14 @@ export default defineComponent({
       prefixCls,
       selectedValue,
       selectedKeys,
+      mergedDisabled,
       searchValue,
       panelVisible,
       isEmptyTreeData,
       isEmptyFilterResult,
       computedFilterTreeNode,
       isMultiple,
+      selectViewValue,
       computedDropdownStyle,
       onSearchValueChange(newVal: string) {
         setPanelVisible(true);

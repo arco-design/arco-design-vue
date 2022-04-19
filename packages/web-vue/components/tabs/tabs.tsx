@@ -1,14 +1,20 @@
-import { computed, defineComponent, PropType, ref } from 'vue';
-import { Direction, Size } from '../_utils/constant';
-import { Positions, Types } from './interface';
 import {
-  getBooleanProp,
-  getChildrenComponents,
-  getValueFromSlotsOrProps,
-} from '../_utils/vue-utils';
+  computed,
+  defineComponent,
+  nextTick,
+  PropType,
+  provide,
+  reactive,
+  ref,
+  toRefs,
+  // watch,
+} from 'vue';
+import type { Direction, Size } from '../_utils/constant';
+import type { TabsPosition, TabsType, TabData } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import TabsNav from './tabs-nav';
-import usePickSlots from '../_hooks/use-pick-slots';
+import { tabsInjectionKey } from './context';
+import { isUndefined } from '../_utils/is';
 
 export default defineComponent({
   name: 'Tabs',
@@ -19,7 +25,7 @@ export default defineComponent({
      * @vModel
      */
     activeKey: {
-      type: String,
+      type: [String, Number],
       default: undefined,
     },
     /**
@@ -27,8 +33,8 @@ export default defineComponent({
      * @en The `key` of the tab selected by default (uncontrolled state, select the first tab page when it is empty)
      */
     defaultActiveKey: {
-      type: String,
-      default: '',
+      type: [String, Number],
+      default: undefined,
     },
     /**
      * @zh 选项卡的位置
@@ -36,7 +42,7 @@ export default defineComponent({
      * @values 'left', 'right', 'top', 'bottom'
      */
     position: {
-      type: String as PropType<Positions>,
+      type: String as PropType<TabsPosition>,
       default: 'top',
     },
     /**
@@ -54,7 +60,7 @@ export default defineComponent({
      * @values 'line', 'card', 'card-gutter', 'text', 'rounded', 'capsule'
      */
     type: {
-      type: String as PropType<Types>,
+      type: String as PropType<TabsType>,
       default: 'line',
     },
     /**
@@ -123,19 +129,28 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 创建标签后是否切换到新标签（最后一个）
+     * @en Whether to switch to a new tab after creating a tab (the last one)
+     * @version 2.18.0
+     */
+    autoSwitch: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: [
     'update:activeKey',
     /**
      * @zh 当前标签值改变时触发
      * @en Triggered when the current tag value changes
-     * @property {string} key
+     * @property {string|number} key
      */
     'change',
     /**
      * @zh 用户点击标签时触发
      * @en Triggered when the user clicks on the tab
-     * @property {string} key
+     * @property {string|number} key
      */
     'tabClick',
     /**
@@ -146,7 +161,7 @@ export default defineComponent({
     /**
      * @zh 用户点击删除按钮时触发
      * @en Triggered when the user clicks the delete button
-     * @property {string} key
+     * @property {string|number} key
      */
     'delete',
   ],
@@ -156,6 +171,7 @@ export default defineComponent({
    * @slot extra
    */
   setup(props, { emit, slots }) {
+    const { lazyLoad } = toRefs(props);
     const prefixCls = getPrefixCls('tabs');
     const mergedPosition = computed(() =>
       props.direction === 'vertical' ? 'left' : props.position
@@ -166,87 +182,84 @@ export default defineComponent({
         : 'horizontal'
     );
 
-    const defaultSlot = usePickSlots(slots, 'default');
-
-    const children = computed(() =>
-      getChildrenComponents(defaultSlot.value?.() ?? [], 'TabPane')
+    const tabMap = reactive(new Map<number, TabData>());
+    const sortedTabs = computed(() =>
+      Array.from(tabMap.values()).sort((a, b) => a.index - b.index)
     );
+    const tabKeys = computed(() => sortedTabs.value.map((item) => item.key));
 
-    // Get tab from TabPane
-    const tabs = computed(() =>
-      children.value.map((vn) => ({
-        // @ts-ignore
-        title: getValueFromSlotsOrProps('title', vn.props, vn.children),
-        key: String(vn.key),
-        disabled: getBooleanProp(vn.props?.disabled),
-        closable: vn.props?.closable !== false,
-      }))
-    );
+    const addItem = (id: number, data: any) => {
+      tabMap.set(id, data);
+    };
 
-    const tabKeys = computed(() => tabs.value.map((item) => item.key));
+    const removeItem = (id: number) => {
+      tabMap.delete(id);
+    };
 
-    const _activeTab = ref(props.defaultActiveKey);
-    const computedActiveTab = computed(() => {
-      const activeKey = props.activeKey ?? _activeTab.value;
-      if (tabKeys.value.includes(activeKey)) {
-        return activeKey;
+    const _activeKey = ref(props.defaultActiveKey);
+
+    const computedActiveKey = computed(() => {
+      const activeKey = props.activeKey ?? _activeKey.value;
+      if (isUndefined(activeKey)) {
+        return tabKeys.value[0];
       }
-      return tabKeys.value[0];
+      return activeKey;
     });
 
-    const activeIndex = computed(() =>
-      tabKeys.value.indexOf(computedActiveTab.value)
+    const activeIndex = computed(() => {
+      const index = tabKeys.value.indexOf(computedActiveKey.value);
+      if (index === -1) {
+        return 0;
+      }
+      return index;
+    });
+
+    provide(
+      tabsInjectionKey,
+      reactive({
+        lazyLoad,
+        activeKey: computedActiveKey,
+        addItem,
+        removeItem,
+      })
     );
 
-    const loadedTabs = new Set<string>([computedActiveTab.value]);
-
-    const handleClick = (key: string, e: Event) => {
-      if (key !== computedActiveTab.value) {
-        _activeTab.value = key;
-        loadedTabs.add(key);
+    const handleChange = (key: string | number) => {
+      if (key !== computedActiveKey.value) {
+        _activeKey.value = key;
         emit('update:activeKey', key);
         emit('change', key);
       }
+    };
+
+    const handleClick = (key: string | number, e: Event) => {
+      handleChange(key);
       emit('tabClick', key, e);
     };
 
-    const getIsRender = (isActive: boolean, key: string) => {
-      if (isActive) {
-        return true;
+    const handleAdd = (ev: Event) => {
+      emit('add', ev);
+      if (props.autoSwitch) {
+        nextTick(() => {
+          const lastKey = tabKeys.value[tabKeys.value.length - 1];
+          handleChange(lastKey);
+        });
       }
-      if (props.lazyLoad) {
-        return loadedTabs.has(key);
-      }
-      return !props.destroyOnHide;
     };
 
-    const handleAdd = () => {
-      emit('add');
-      // nextTick(() => {
-      //   _activeTab.value = tabKeys.value[tabKeys.value.length - 1];
-      // });
+    const handleDelete = (key: string | number, ev: Event) => {
+      emit('delete', key, ev);
     };
+
+    // watch(tabKeys, (cur, pre) => {
+    //   if (computedActiveKey.value && !cur.includes(computedActiveKey.value)) {
+    //     const preIndex = pre.indexOf(computedActiveKey.value);
+    //     const newKey = cur[preIndex > 1 ? preIndex - 1 : 0];
+    //     handleChange(newKey);
+    //   }
+    // });
 
     const renderContent = () => {
-      const list = children.value.map((vn, index) => {
-        const key = String(vn.key);
-        const isActive = index === activeIndex.value;
-
-        return (
-          <div
-            key={key}
-            class={[
-              `${prefixCls}-content-item`,
-              {
-                [`${prefixCls}-content-item-active`]: isActive,
-              },
-            ]}
-          >
-            {getIsRender(isActive, key) && vn}
-          </div>
-        );
-      });
-
       return (
         <div class={`${prefixCls}-content`}>
           <div
@@ -258,7 +271,7 @@ export default defineComponent({
             ]}
             style={{ marginLeft: `-${activeIndex.value * 100}%` }}
           >
-            {list}
+            {slots.default?.()}
           </div>
         </div>
       );
@@ -280,9 +293,8 @@ export default defineComponent({
         {mergedPosition.value === 'bottom' && renderContent()}
         <TabsNav
           v-slots={{ extra: slots.extra }}
-          tabs={tabs.value}
-          tabKeys={tabKeys.value}
-          activeTab={computedActiveTab.value}
+          tabs={sortedTabs.value}
+          activeKey={computedActiveKey.value}
           activeIndex={activeIndex.value}
           direction={mergedDirection.value}
           position={mergedPosition.value}
@@ -294,7 +306,7 @@ export default defineComponent({
           type={props.type}
           onClick={handleClick}
           onAdd={handleAdd}
-          onDelete={(key: string) => emit('delete', key)}
+          onDelete={handleDelete}
         />
         {mergedPosition.value !== 'bottom' && renderContent()}
       </div>

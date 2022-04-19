@@ -13,13 +13,16 @@ import IconLoading from '../../icon/icon-loading';
 import IconClose from '../../icon/icon-close';
 import IconExpand from '../../icon/icon-expand';
 import IconSearch from '../../icon/icon-search';
-import { TagData } from '../../input-tag/interface';
+import { useFormItem } from '../../_hooks/use-form-item';
+import { useSize } from '../../_hooks/use-size';
+import { SelectViewValue } from './interface';
 
 export default defineComponent({
   name: 'SelectView',
   props: {
     modelValue: {
-      type: [Object, Array] as PropType<TagData | TagData[]>,
+      type: Array as PropType<SelectViewValue[]>,
+      required: true,
     },
     inputValue: String,
     placeholder: String,
@@ -41,7 +44,6 @@ export default defineComponent({
     },
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
     },
     bordered: {
       type: Boolean,
@@ -67,18 +69,27 @@ export default defineComponent({
       type: Number,
       default: 0,
     },
-    formatLabel: {
-      type: Function,
-    },
     retainInputValue: {
       type: Boolean,
       default: false,
     },
-    feedback: String,
   },
-  emits: ['remove', 'clear'],
-  setup(props, { emit, slots, attrs }) {
+  emits: ['remove', 'clear', 'focus', 'blur'],
+  setup(props, { emit, slots }) {
+    const { size, disabled, error } = toRefs(props);
     const prefixCls = getPrefixCls('select-view');
+    const {
+      feedback,
+      eventHandlers,
+      mergedDisabled,
+      mergedSize: _mergedSize,
+      mergedError,
+    } = useFormItem({
+      size,
+      disabled,
+      error,
+    });
+    const { mergedSize } = useSize(_mergedSize);
 
     const { opened } = toRefs(props);
 
@@ -88,27 +99,21 @@ export default defineComponent({
       () => componentRef.value?.inputRef
     );
 
-    const validValue = computed(() => {
-      // transform to array
-      if (props.multiple && !isArray(props.modelValue)) {
-        return props.modelValue ? [props.modelValue] : [];
-      }
-      // transform to object
-      if (!props.multiple && isArray(props.modelValue)) {
-        return props.modelValue[0];
-      }
-      return props.modelValue;
-    });
-
-    const isEmptyValue = computed(() =>
-      isArray(validValue.value)
-        ? validValue.value.length === 0
-        : !validValue.value
-    );
+    const isEmptyValue = computed(() => props.modelValue.length === 0);
     const enabledInput = computed(() => props.allowSearch || props.allowCreate);
     const showClearBtn = computed(
       () => props.allowClear && !props.disabled && !isEmptyValue.value
     );
+
+    const handleFocus = (ev: FocusEvent) => {
+      emit('focus', ev);
+      eventHandlers.value?.onFocus?.(ev);
+    };
+
+    const handleBlur = (ev: FocusEvent) => {
+      emit('blur', ev);
+      eventHandlers.value?.onBlur?.(ev);
+    };
 
     const handleRemove = (tag: string) => {
       emit('remove', tag);
@@ -140,13 +145,13 @@ export default defineComponent({
           <IconHover
             class={`${prefixCls}-clear-btn`}
             onClick={handleClear}
-            onMousedown={(e) => e.stopPropagation()}
+            onMousedown={(ev: MouseEvent) => ev.stopPropagation()}
           >
             <IconClose />
           </IconHover>
         )}
         <span class={`${prefixCls}-icon`}>{renderIcon()}</span>
-        {Boolean(props.feedback) && <FeedbackIcon type={props.feedback} />}
+        {Boolean(feedback.value) && <FeedbackIcon type={feedback.value} />}
       </>
     );
 
@@ -169,7 +174,7 @@ export default defineComponent({
     ]);
 
     const render = () => {
-      if (isArray(validValue.value)) {
+      if (props.multiple) {
         return (
           <InputTag
             ref={componentRef}
@@ -180,18 +185,20 @@ export default defineComponent({
             }}
             baseCls={prefixCls}
             class={cls.value}
-            modelValue={validValue.value}
+            modelValue={props.modelValue}
             inputValue={props.inputValue}
-            formatTag={props.formatLabel}
             focused={props.opened}
             placeholder={props.placeholder}
-            disabled={props.disabled}
-            size={props.size}
-            error={props.error}
+            disabled={mergedDisabled.value}
+            size={mergedSize.value}
+            error={mergedError.value}
             maxTagCount={props.maxTagCount}
             disabledInput={!props.allowSearch && !props.allowCreate}
             retainInputValue
+            uninjectFormItemContext
             onRemove={handleRemove}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         );
       }
@@ -205,21 +212,25 @@ export default defineComponent({
           }}
           baseCls={prefixCls}
           class={cls.value}
-          modelValue={validValue.value}
+          modelValue={props.modelValue[0]}
           inputValue={props.inputValue}
           focused={props.opened}
           placeholder={props.placeholder}
-          disabled={props.disabled}
-          size={props.size}
-          error={props.error}
-          formatLabel={props.formatLabel}
+          disabled={mergedDisabled.value}
+          size={mergedSize.value}
+          error={mergedError.value}
           enabledInput={enabledInput.value}
+          uninjectFormItemContext
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       );
     };
 
     return {
       inputRef,
+      handleFocus,
+      handleBlur,
       render,
     };
   },

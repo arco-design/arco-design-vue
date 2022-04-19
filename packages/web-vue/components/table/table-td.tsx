@@ -1,10 +1,18 @@
-import { computed, createVNode, defineComponent, PropType, ref } from 'vue';
+import {
+  computed,
+  createVNode,
+  defineComponent,
+  inject,
+  PropType,
+  ref,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { TableColumn, TableData, TableOperationColumn } from './interface';
+import { TableColumnData, TableData, TableOperationColumn } from './interface';
 import { getFixedCls, getStyle } from './utils';
 import { getValueByPath } from '../_utils/get-value-by-path';
 import IconLoading from '../icon/icon-loading';
 import { isFunction } from '../_utils/is';
+import { TableContext, tableInjectionKey } from './context';
 
 const TD_TYPES = [
   'normal',
@@ -18,16 +26,13 @@ type TdTypes = typeof TD_TYPES[number];
 export default defineComponent({
   name: 'Td',
   props: {
-    isSorted: {
-      type: Boolean,
-    },
     rowIndex: Number,
     record: {
       type: Object as PropType<TableData>,
       default: () => ({}),
     },
     column: {
-      type: Object as PropType<TableColumn>,
+      type: Object as PropType<TableColumnData>,
       default: () => ({}),
     },
     type: {
@@ -39,7 +44,7 @@ export default defineComponent({
       default: () => [],
     },
     dataColumns: {
-      type: Array as PropType<TableColumn[]>,
+      type: Array as PropType<TableColumnData[]>,
       default: () => [],
     },
     colSpan: {
@@ -65,13 +70,6 @@ export default defineComponent({
       type: Number,
       default: 0,
     },
-    resizing: Boolean,
-    loadMore: Function as PropType<
-      (record: TableData, done: (children: TableData[]) => void) => void
-    >,
-    addLazyLoadData: Function as PropType<
-      (children: TableData[] | undefined, record: TableData) => void
-    >,
     renderExpandBtn: {
       type: Function,
     },
@@ -86,12 +84,24 @@ export default defineComponent({
       })
     );
 
+    const isSorted = computed(
+      () =>
+        props.column?.dataIndex &&
+        tableCtx.sorter?.field === props.column.dataIndex
+    );
+
+    const resizing = computed(
+      () =>
+        props.column?.dataIndex &&
+        tableCtx.resizingColumn === props.column.dataIndex
+    );
+
     const cls = computed(() => [
       `${prefixCls}-td`,
       `${prefixCls}-td-align-${props.column?.align ?? 'left'}`,
       {
-        [`${prefixCls}-col-sorted`]: props.isSorted,
-        [`${prefixCls}-td-resizing`]: props.resizing,
+        [`${prefixCls}-col-sorted`]: isSorted.value,
+        [`${prefixCls}-td-resizing`]: resizing.value,
       },
       ...getFixedCls(prefixCls, props.column),
     ]);
@@ -106,12 +116,28 @@ export default defineComponent({
       return props.column?.cellStyle;
     });
 
+    const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
+
     const renderContent = () => {
       if (slots.default) {
         return slots.default();
       }
+      if (props.column.slots?.cell) {
+        return props.column.slots.cell({
+          record: props.record,
+          column: props.column,
+          rowIndex: props.rowIndex ?? -1,
+        });
+      }
       if (props.column.render) {
         return props.column.render({
+          record: props.record,
+          column: props.column,
+          rowIndex: props.rowIndex ?? -1,
+        });
+      }
+      if (props.column.slotName && tableCtx.slots?.[props.column.slotName]) {
+        return tableCtx.slots[props.column.slotName]?.({
           record: props.record,
           column: props.column,
           rowIndex: props.rowIndex ?? -1,
@@ -124,15 +150,15 @@ export default defineComponent({
 
     const handleClick = (ev: Event) => {
       if (
-        isFunction(props.loadMore) &&
+        isFunction(tableCtx.loadMore) &&
         !props.record?.isLeaf &&
         !props.record?.children
       ) {
         isLoading.value = true;
         new Promise<TableData[] | undefined>((resolve) => {
-          props.loadMore?.(props.record, resolve);
+          tableCtx.loadMore?.(props.record, resolve);
         }).then((children?: TableData[]) => {
-          props.addLazyLoadData?.(children, props.record);
+          tableCtx.addLazyLoadData?.(children, props.record);
           isLoading.value = false;
         });
       }

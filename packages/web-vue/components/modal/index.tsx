@@ -1,4 +1,4 @@
-import type { App } from 'vue';
+import type { App, AppContext } from 'vue';
 import { createVNode, render } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
@@ -9,8 +9,8 @@ import _Modal from './modal.vue';
 import { ModalConfig, ModalMethod } from './interface';
 import { omit } from '../_utils/omit';
 
-const open = (config: ModalConfig) => {
-  const container = getOverlay('modal');
+const open = (config: ModalConfig, appContext?: AppContext) => {
+  let container: HTMLElement | null = getOverlay('modal');
 
   const handleOk = () => {
     if (vm.component) {
@@ -33,8 +33,11 @@ const open = (config: ModalConfig) => {
   };
 
   const handleClose = () => {
-    render(null, container);
-    document.body.removeChild(container);
+    if (container) {
+      render(null, container);
+      document.body.removeChild(container);
+    }
+    container = null;
 
     if (isFunction(config.onClose)) {
       config.onClose();
@@ -62,31 +65,34 @@ const open = (config: ModalConfig) => {
     }
   );
 
+  if (appContext ?? Modal._context) {
+    vm.appContext = appContext ?? Modal._context;
+  }
+
   render(vm, container);
   document.body.appendChild(container);
 
   return {
-    // eslint-disable-next-line no-restricted-globals
-    close,
+    close: handleClose,
   };
 };
 
 const modal: ModalMethod = {
   open,
-  confirm: (config: ModalConfig) => {
+  confirm: (config: ModalConfig, appContext?: AppContext) => {
     const _config = { simple: true, ...config };
 
-    return open(_config);
+    return open(_config, appContext);
   },
   ...MESSAGE_TYPES.reduce((pre, value) => {
-    pre[value] = (config: ModalConfig) => {
+    pre[value] = (config: ModalConfig, appContext?: AppContext) => {
       const _config = {
         simple: true,
         hideCancel: true,
         messageType: value,
         ...config,
       };
-      return open(_config);
+      return open(_config, appContext);
     };
 
     return pre;
@@ -100,8 +106,19 @@ const Modal = Object.assign(_Modal, {
     const componentPrefix = getComponentPrefix(options);
 
     app.component(componentPrefix + _Modal.name, _Modal);
-    app.config.globalProperties.$modal = modal;
+
+    const modalWithContext = {} as ModalMethod;
+
+    for (const key of Object.keys(modal) as (keyof ModalMethod)[]) {
+      modalWithContext[key] = (config, appContext = app._context) =>
+        modal[key](config, appContext);
+    }
+
+    app.config.globalProperties.$modal = modalWithContext;
   },
+  _context: null as AppContext | null,
 });
+
+export type { ModalMethod, ModalConfig, ModalReturn } from './interface';
 
 export default Modal;

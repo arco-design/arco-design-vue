@@ -1,8 +1,9 @@
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import Drawer from '../drawer.vue';
 
 describe('Drawer', () => {
-  test('should render Drawer', () => {
+  test('should render Drawer', async () => {
     const wrapper = mount(Drawer, {
       props: {
         title: 'Title',
@@ -14,6 +15,7 @@ describe('Drawer', () => {
       },
     });
 
+    await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
   });
 
@@ -29,6 +31,7 @@ describe('Drawer', () => {
       },
     });
 
+    await nextTick();
     const buttons = wrapper.findAll('button');
     await buttons[0].trigger('click');
     expect(wrapper.emitted('cancel')).toHaveLength(1);

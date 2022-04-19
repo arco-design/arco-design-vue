@@ -20,6 +20,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { SIZES, DIRECTIONS, Size, Direction } from '../_utils/constant';
 import { radioGroupKey, RADIO_TYPES, RadioType } from './context';
 import { EmitType } from '../_utils/types';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'RadioGroup',
@@ -49,7 +50,6 @@ export default defineComponent({
     type: {
       type: String as PropType<RadioType>,
       default: 'radio',
-      validator: (value: any) => RADIO_TYPES.includes(value),
     },
     /**
      * @zh 单选框组的尺寸
@@ -58,8 +58,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
-      validator: (value: any) => SIZES.includes(value),
     },
     /**
      * @zh 单选框组的方向
@@ -69,7 +67,6 @@ export default defineComponent({
     direction: {
       type: String as PropType<Direction>,
       default: 'horizontal',
-      validator: (value: any) => DIRECTIONS.includes(value),
     },
     /**
      * @zh 是否禁用
@@ -98,6 +95,10 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('radio-group');
     const { size, type, disabled, modelValue } = toRefs(props);
+    const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
+      size,
+      disabled,
+    });
 
     const _value = ref(props.defaultValue);
 
@@ -108,9 +109,8 @@ export default defineComponent({
     const handleChange = (value: string | number | boolean, e: Event) => {
       _value.value = value;
       emit('update:modelValue', value);
-      nextTick(() => {
-        emit('change', value, e);
-      });
+      emit('change', value, e);
+      eventHandlers.value?.onChange?.(e);
     };
 
     provide(
@@ -118,9 +118,9 @@ export default defineComponent({
       reactive({
         name: 'ArcoRadioGroup',
         value: computedValue,
-        size,
+        size: mergedSize,
         type,
-        disabled,
+        disabled: mergedDisabled,
         handleChange,
       })
     );
@@ -133,10 +133,10 @@ export default defineComponent({
 
     const cls = computed(() => [
       `${prefixCls}${props.type === 'button' ? '-button' : ''}`,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       `${prefixCls}-direction-${props.direction}`,
       {
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
       },
     ]);
 

@@ -1,25 +1,35 @@
+import type { Ref } from 'vue';
 import { computed, ref, watch } from 'vue';
 import { isArray } from '../../_utils/is';
-import { TableColumn } from '../interface';
+import type { TableColumnData } from '../interface';
+import type { TableContext } from '../context';
 
-export const useColumnFilter = (props, emit) => {
-  const { dataIndex, filterable } = props.column as TableColumn;
+export const useColumnFilter = ({
+  column,
+  tableCtx,
+}: {
+  column: Ref<TableColumnData>;
+  tableCtx: Partial<TableContext>;
+}) => {
+  const filterValue = computed(() => {
+    if (column.value.dataIndex && tableCtx.filters?.[column.value.dataIndex]) {
+      return tableCtx.filters[column.value.dataIndex];
+    }
+    return [];
+  });
 
   const filterPopupVisible = ref(false);
-  const isFilterActive = computed(
-    () => isArray(props.filterValue) && props.filterValue.length > 0
+  const isFilterActive = computed(() => filterValue.value.length > 0);
+  const isMultipleFilter = computed(() =>
+    Boolean(column.value.filterable?.multiple)
   );
-  const isMultipleFilter = computed(() => Boolean(filterable?.multiple));
-  const columnFilterValue = ref<string[]>(props.filterValue ?? []);
+  const columnFilterValue = ref<string[]>(filterValue.value);
 
-  watch(
-    () => props.filterValue,
-    (value) => {
-      if (isArray(value) && String(value) !== String(columnFilterValue.value)) {
-        columnFilterValue.value = value;
-      }
+  watch(filterValue, (value) => {
+    if (isArray(value) && String(value) !== String(columnFilterValue.value)) {
+      columnFilterValue.value = value;
     }
-  );
+  });
 
   const handleFilterPopupVisibleChange = (value: boolean) => {
     filterPopupVisible.value = value;
@@ -37,14 +47,26 @@ export const useColumnFilter = (props, emit) => {
     setFilterValue([value]);
   };
 
-  const handleFilterConfirm = (e: Event) => {
-    emit('filterChange', dataIndex, columnFilterValue.value, e);
+  const handleFilterConfirm = (ev: Event) => {
+    if (column.value.dataIndex) {
+      tableCtx.onFilterChange?.(
+        column.value.dataIndex,
+        columnFilterValue.value,
+        ev
+      );
+    }
     handleFilterPopupVisibleChange(false);
   };
 
-  const handleFilterReset = (e: Event) => {
+  const handleFilterReset = (ev: Event) => {
     setFilterValue([]);
-    emit('filterChange', dataIndex, columnFilterValue.value, e);
+    if (column.value.dataIndex) {
+      tableCtx.onFilterChange?.(
+        column.value.dataIndex,
+        columnFilterValue.value,
+        ev
+      );
+    }
     handleFilterPopupVisibleChange(false);
   };
 

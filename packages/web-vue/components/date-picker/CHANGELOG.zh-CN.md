@@ -2,6 +2,51 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 💎 功能优化
+
+- 传递了 timePickerProps 就会在最终值上拼接时间 ([#981](https://github.com/arco-design/arco-design-vue/pull/981))
+
+
+## 2.21.0
+
+`2022-03-25`
+
+### 🆕 新增功能
+
+- `dayStartOfWeek` 支持设置为 0-6 ([#874](https://github.com/arco-design/arco-design-vue/pull/874))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 问题修复
+
+- 选择结束时间的时候没有触发 select 事件 ([#844](https://github.com/arco-design/arco-design-vue/pull/844))
+
+
+## 2.19.0
+
+`2022-03-11`
+
+### 🐛 问题修复
+
+- 修复范围选择器弹出层的偏移量错误的问题 ([#796](https://github.com/arco-design/arco-design-vue/pull/796))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🆕 新增功能
+
+- 支持在头部快捷切换年月 ([#754](https://github.com/arco-design/arco-design-vue/pull/754))
+
+
 ## 2.16.2
 
 `2022-01-24`

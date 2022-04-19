@@ -5,7 +5,7 @@
         cls,
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
       ]"
-      :href="disabled || loading ? undefined : href"
+      :href="mergedDisabled || loading ? undefined : href"
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
@@ -22,7 +22,7 @@
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
       ]"
       :type="htmlType"
-      :disabled="disabled"
+      :disabled="mergedDisabled"
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
@@ -40,28 +40,15 @@
  * @todo 添加twoChineseChars
  */
 import type { PropType } from 'vue';
-import { defineComponent, computed, inject } from 'vue';
-import {
-  SIZES,
-  BORDER_SHAPES,
-  BorderShape,
-  Status,
-  Size,
-} from '../_utils/constant';
+import { defineComponent, computed, toRefs, inject } from 'vue';
+import { Status, Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
-
-const BUTTON_TYPES = [
-  'primary',
-  'secondary',
-  'outline',
-  'dashed',
-  'text',
-] as const;
-type ButtonTypes = typeof BUTTON_TYPES[number];
+import { useSize } from '../_hooks/use-size';
+import { useFormItem } from '../_hooks/use-form-item';
+import { buttonGroupInjectionKey } from './context';
 
 export default defineComponent({
   name: 'Button',
@@ -72,38 +59,28 @@ export default defineComponent({
     /**
      * @zh 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。
      * @en Button types are divided into five types: secondary, primary, dashed, outline and text.
-     * @values 'secondary','primary','dashed','outline','text'
+     * @defaultValue 'secondary'
      */
     type: {
-      type: String as PropType<ButtonTypes>,
-      default: 'secondary',
-      validator: (value: any) => {
-        return BUTTON_TYPES.includes(value);
-      },
+      type: String as PropType<
+        'primary' | 'secondary' | 'outline' | 'dashed' | 'text'
+      >,
     },
     /**
      * @zh 按钮的形状
      * @en Button shape
-     * @values 'square','round','circle'
      */
     shape: {
-      type: String as PropType<BorderShape>,
-      default: 'square',
-      validator: (value: any) => {
-        return BORDER_SHAPES.includes(value);
-      },
+      type: String as PropType<'square' | 'round' | 'circle'>,
     },
     /**
      * @zh 按钮的状态
      * @en Button state
      * @values 'normal','warning','success','danger'
+     * @defaultValue 'normal'
      */
     status: {
       type: String as PropType<Status>,
-      default: 'normal',
-      // validator: (value: any) => {
-      //   return STATUSES.includes(value);
-      // },
     },
     /**
      * @zh 按钮的尺寸
@@ -113,8 +90,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 按钮的宽度是否随容器自适应。
@@ -135,10 +110,10 @@ export default defineComponent({
     /**
      * @zh 按钮是否禁用
      * @en Whether the button is disabled
+     * @defaultValue false
      */
     disabled: {
       type: Boolean,
-      default: false,
     },
     /**
      * @zh 设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
@@ -172,18 +147,29 @@ export default defineComponent({
    * @slot icon
    */
   setup(props, { emit }) {
+    const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('btn');
+    const groupContext = inject(buttonGroupInjectionKey, undefined);
+    const _size = computed(() => size.value ?? groupContext?.size);
+    const _disabled = computed(() =>
+      Boolean(disabled.value || groupContext?.disabled)
+    );
+    const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
+      size: _size,
+      disabled: _disabled,
+    });
+    const { mergedSize } = useSize(_mergedSize);
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-${props.type}`,
-      `${prefixCls}-shape-${props.shape}`,
-      `${prefixCls}-size-${props.size}`,
-      `${prefixCls}-status-${props.status}`,
+      `${prefixCls}-${props.type ?? groupContext?.type ?? 'secondary'}`,
+      `${prefixCls}-shape-${props.shape ?? groupContext?.shape ?? 'square'}`,
+      `${prefixCls}-size-${mergedSize.value}`,
+      `${prefixCls}-status-${props.status ?? groupContext?.status ?? 'normal'}`,
       {
         [`${prefixCls}-long`]: props.long,
         [`${prefixCls}-loading`]: props.loading,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-link`]: isString(props.href),
       },
     ]);
@@ -198,6 +184,7 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
+      mergedDisabled,
       handleClick,
     };
   },

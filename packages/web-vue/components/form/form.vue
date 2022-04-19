@@ -8,19 +8,18 @@
 import {
   computed,
   defineComponent,
-  inject,
   PropType,
   provide,
   reactive,
   toRefs,
 } from 'vue';
-import { FormItemInfo, formKey } from './context';
+import { FormItemInfo, formInjectionKey } from './context';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
 import { isArray, isFunction } from '../_utils/is';
 import { FieldData, FieldRule, ValidatedError } from './interface';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
+import { useSize } from '../_hooks/use-size';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
 type FormLayout = typeof FORM_LAYOUTS[number];
@@ -55,8 +54,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 标签元素布局选项。参数同 `<col>` 组件一致
@@ -155,6 +152,7 @@ export default defineComponent({
       size,
       rules,
     } = toRefs(props);
+    const { mergedSize } = useSize(size);
 
     const autoLabelWidth = computed(
       () => props.layout === 'horizontal' && props.autoLabelWidth
@@ -301,7 +299,7 @@ export default defineComponent({
     };
 
     provide(
-      formKey,
+      formInjectionKey,
       reactive({
         layout,
         disabled,
@@ -311,7 +309,7 @@ export default defineComponent({
         labelColStyle,
         wrapperColStyle,
         model,
-        size,
+        size: mergedSize,
         rules,
         fields,
         touchedFields,
@@ -329,6 +327,9 @@ export default defineComponent({
       prefixCls,
       `${prefixCls}-layout-${props.layout}`,
       `${prefixCls}-size-${size.value}`,
+      {
+        [`${prefixCls}-auto-label-width`]: props.autoLabelWidth,
+      },
     ]);
 
     return {

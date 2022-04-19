@@ -23,15 +23,25 @@ Notification提供的全局方法，可以通过以下三种方法使用：
 2. 在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$notification调用
 3. 导入Notification，通过Notification本身调用
 
+当通过 import 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext
+
+```ts
+import { createApp } from 'vue'
+import { Notification } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Notification._context = app._context;
+```
+
 
 ### NotificationMethod
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|info|显示信息提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|success|显示成功提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|warning|显示警告提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
-|error|显示错误提醒框|`(config: string \| NotificationConfig) => NotificationReturn`|`-`|
+|info|显示信息提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|success|显示成功提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|warning|显示警告提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
+|error|显示错误提醒框|`(    config: string \| NotificationConfig,    appContext?: AppContext  ) => NotificationReturn`|`-`|
 |clear|清除全部提醒框|`(position?: NotificationPosition) => void`|`-`|
 
 

@@ -1,16 +1,17 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref, nextTick, inject } from 'vue';
+import { computed, defineComponent, ref, nextTick, toRefs, watch } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { INPUT_EVENTS, Size, SIZES } from '../_utils/constant';
+import { INPUT_EVENTS, Size } from '../_utils/constant';
 import FeedbackIcon from '../_components/feedback-icon.vue';
 import { Enter } from '../_utils/keycode';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
-import { isFunction, isObject } from '../_utils/is';
+import { isFunction, isNull, isObject, isUndefined } from '../_utils/is';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
+import { useFormItem } from '../_hooks/use-form-item';
+import { useSize } from '../_hooks/use-size';
 
 const INPUT_TYPES = ['text', 'password'] as const;
 type InputType = typeof INPUT_TYPES[number];
@@ -40,8 +41,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 是否允许清空输入框
@@ -112,9 +111,6 @@ export default defineComponent({
      */
     wordSlice: {
       type: Function as PropType<(value: string, maxLength: number) => string>,
-    },
-    feedback: {
-      type: String,
     },
     // private
     type: {
@@ -203,18 +199,37 @@ export default defineComponent({
    * @slot append
    */
   setup(props, { emit, slots, attrs }) {
+    const { size, disabled, error, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('input');
     const inputRef = ref<HTMLInputElement>();
+    const {
+      mergedSize: _mergedSize,
+      mergedDisabled,
+      mergedError: _mergedError,
+      feedback,
+      eventHandlers,
+    } = useFormItem({ size, disabled, error });
+    const { mergedSize } = useSize(_mergedSize);
 
     // 值相关
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = '';
+      }
+    });
+
     let preValue = computedValue.value;
 
     // 状态相关
     const focused = ref(false);
     const showClearBtn = computed(
-      () => props.allowClear && !props.disabled && Boolean(computedValue.value)
+      () =>
+        props.allowClear &&
+        !mergedDisabled.value &&
+        Boolean(computedValue.value)
     );
 
     // 输入法相关
@@ -230,16 +245,15 @@ export default defineComponent({
 
     const valueLength = computed(() => getValueLength(computedValue.value));
 
-    const mergedError = computed(() => {
-      if (props.error) {
-        return props.error;
-      }
-      return Boolean(
-        isObject(props.maxLength) &&
-          props.maxLength.errorOnly &&
-          valueLength.value > maxLength.value
-      );
-    });
+    const mergedError = computed(
+      () =>
+        _mergedError.value ||
+        Boolean(
+          isObject(props.maxLength) &&
+            props.maxLength.errorOnly &&
+            valueLength.value > maxLength.value
+        )
+    );
 
     const maxLengthErrorOnly = computed(
       () => isObject(props.maxLength) && Boolean(props.maxLength.errorOnly)
@@ -280,19 +294,22 @@ export default defineComponent({
       if (value !== preValue) {
         preValue = value;
         emit('change', value, ev);
+        eventHandlers.value?.onChange?.(ev);
       }
     };
 
-    const handleFocus = (e: FocusEvent) => {
+    const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
       preValue = computedValue.value;
-      emit('focus', e);
+      emit('focus', ev);
+      eventHandlers.value?.onFocus?.(ev);
     };
 
-    const handleBlur = (e: FocusEvent) => {
+    const handleBlur = (ev: FocusEvent) => {
       focused.value = false;
-      emitChange(computedValue.value, e);
-      emit('blur', e);
+      emit('blur', ev);
+      eventHandlers.value?.onBlur?.(ev);
+      emitChange(computedValue.value, ev);
     };
 
     const handleComposition = (e: CompositionEvent) => {
@@ -321,6 +338,7 @@ export default defineComponent({
       if (!isComposition.value) {
         updateValue(value);
         emit('input', value, e);
+        eventHandlers.value?.onInput?.(e);
 
         nextTick(() => {
           if (inputRef.value && computedValue.value !== inputRef.value.value) {
@@ -332,24 +350,24 @@ export default defineComponent({
 
     const handleClear = (ev: MouseEvent) => {
       updateValue('');
+      emitChange('', ev);
       emit('clear', ev);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyCode = e.key || e.code;
       if (!isComposition.value && keyCode === Enter.key) {
-        preValue = computedValue.value;
-        emit('change', computedValue.value, e);
+        emitChange(computedValue.value, e);
         emit('pressEnter', e);
       }
     };
 
     const outerCls = computed(() => [
       `${prefixCls}-outer`,
-      `${prefixCls}-outer-size-${props.size}`,
+      `${prefixCls}-outer-size-${mergedSize.value}`,
       {
         [`${prefixCls}-outer-has-suffix`]: Boolean(slots.suffix),
-        [`${prefixCls}-outer-disabled`]: props.disabled,
+        [`${prefixCls}-outer-disabled`]: mergedDisabled.value,
       },
     ]);
 
@@ -357,12 +375,15 @@ export default defineComponent({
       `${prefixCls}-wrapper`,
       {
         [`${prefixCls}-error`]: mergedError.value,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-focus`]: focused.value,
       },
     ]);
 
-    const cls = computed(() => [prefixCls, `${prefixCls}-size-${props.size}`]);
+    const cls = computed(() => [
+      prefixCls,
+      `${prefixCls}-size-${mergedSize.value}`,
+    ]);
 
     const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
     const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
@@ -384,7 +405,7 @@ export default defineComponent({
           type={props.type}
           placeholder={props.placeholder}
           readonly={props.readonly}
-          disabled={props.disabled}
+          disabled={mergedDisabled.value}
           onInput={handleInput}
           onKeydown={handleKeyDown}
           onFocus={handleFocus}
@@ -404,11 +425,11 @@ export default defineComponent({
         )}
         {(slots.suffix ||
           (Boolean(props.maxLength) && props.showWordLimit) ||
-          Boolean(props.feedback)) && (
+          Boolean(feedback.value)) && (
           <span
             class={[
               `${prefixCls}-suffix`,
-              { [`${prefixCls}-suffix-has-feedback`]: props.feedback },
+              { [`${prefixCls}-suffix-has-feedback`]: feedback.value },
             ]}
           >
             {Boolean(props.maxLength) && props.showWordLimit && (
@@ -417,7 +438,7 @@ export default defineComponent({
               </span>
             )}
             {slots.suffix?.()}
-            {Boolean(props.feedback) && <FeedbackIcon type={props.feedback} />}
+            {Boolean(feedback.value) && <FeedbackIcon type={feedback.value} />}
           </span>
         )}
       </span>

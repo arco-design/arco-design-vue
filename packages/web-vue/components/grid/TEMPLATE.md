@@ -38,10 +38,15 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 @import ./__demo__/grid.md
 
+@import ./__demo__/grid-responsive.md
+
 %%API(grid-row.vue)%%
 
 %%API(grid-col.vue)%%
 
-%%API(base-grid.tsx)%%
+%%API(grid.vue)%%
 
-%%API(base-grid-item.tsx)%%
+%%API(grid-item.vue)%%
+
+%%INTERFACE(interface.ts)%%
+

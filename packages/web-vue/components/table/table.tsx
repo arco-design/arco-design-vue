@@ -9,6 +9,7 @@ import {
   defineComponent,
   inject,
   onMounted,
+  provide,
   reactive,
   ref,
   toRefs,
@@ -21,24 +22,25 @@ import type { Size } from '../_utils/constant';
 import {
   isArray,
   isFunction,
+  isNull,
   isNumber,
   isObject,
   isString,
+  isUndefined,
 } from '../_utils/is';
 import type {
-  Filters,
-  Sorter,
-  TableColumn,
-  TableExpandable,
-  TableOperationColumn,
-  TableRowSelection,
   TableBorder,
+  TableChangeExtra,
+  TableColumnData,
   TableComponents,
   TableData,
-  TablePagePosition,
   TableDraggable,
+  TableExpandable,
+  TableOperationColumn,
+  TablePagePosition,
+  TableRowSelection,
 } from './interface';
-import { getColumnsFromSlot, getGroupColumns, spliceFromPath } from './utils';
+import { getGroupColumns, spliceFromPath } from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useExpand } from './hooks/use-expand';
 import { usePagination } from './hooks/use-pagination';
@@ -58,13 +60,16 @@ import OperationTd from './table-operation-td';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import ResizeObserver from '../_components/resize-observer';
 import { VirtualListProps } from '../_components/virtual-list/interface';
-import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
-import { getChildrenComponents } from '../_utils/vue-utils';
 import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useDrag } from './hooks/use-drag';
 import { useColumnResize } from './hooks/use-column-resize';
+import { tableInjectionKey } from './context';
+import { useFilter } from './hooks/use-filter';
+import { useSorter } from './hooks/use-sorter';
+import ClientOnly from '../_components/client-only';
+import { getValueByPath } from '../_utils/get-value-by-path';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -81,7 +86,7 @@ export default defineComponent({
      * @en Column info of the table
      */
     columns: {
-      type: Array as PropType<TableColumn[]>,
+      type: Array as PropType<TableColumnData[]>,
       default: () => [],
     },
     /**
@@ -166,11 +171,16 @@ export default defineComponent({
       type: Object as PropType<TableExpandable>,
     },
     /**
-     * @zh 表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。
-     * @en Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values.
+     * @zh 表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。`2.20.0` 版本增加 `minWidth`,`maxHeight` 的支持。
+     * @en Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values. `2.20.0` version adds support for `minWidth`, `maxHeight`.
      */
     scroll: {
-      type: Object as PropType<{ x?: number | string; y?: number | string }>,
+      type: Object as PropType<{
+        x?: number | string;
+        y?: number | string;
+        minWidth?: number | string;
+        maxHeight?: number | string;
+      }>,
     },
     /**
      * @zh 分页的属性配置
@@ -230,11 +240,20 @@ export default defineComponent({
       type: Function as PropType<
         (data: {
           record: TableData;
-          column: TableColumn;
+          column: TableColumnData | TableOperationColumn;
           rowIndex: number;
           columnIndex: number;
         }) => { rowspan?: number; colspan?: number } | void
       >,
+    },
+    /**
+     * @zh 是否让合并方法的索引包含所有
+     * @en Whether to make the index of the span method contain all
+     * @version 2.18.0
+     */
+    spanAll: {
+      type: Boolean,
+      default: false,
     },
     components: {
       type: Object as PropType<TableComponents>,
@@ -294,7 +313,44 @@ export default defineComponent({
     columnResizable: {
       type: Boolean,
     },
-
+    /**
+     * @zh 显示表尾总结行
+     * @en Show footer summary row
+     * @version 2.21.0
+     */
+    summary: {
+      type: [Boolean, Function] as PropType<
+        | boolean
+        | ((params: {
+            columns: TableColumnData[];
+            data: TableData[];
+          }) => TableData[])
+      >,
+    },
+    /**
+     * @zh 总结行的首列文字
+     * @en The first column of text in the summary line
+     * @version 2.21.0
+     */
+    summaryText: {
+      type: String,
+      default: 'Summary',
+    },
+    /**
+     * @zh 总结行的单元格合并方法
+     * @en Cell Merge Method for Summarizing Rows
+     * @version 2.21.0
+     */
+    summarySpanMethod: {
+      type: Function as PropType<
+        (data: {
+          record: TableData;
+          column: TableColumnData | TableOperationColumn;
+          rowIndex: number;
+          columnIndex: number;
+        }) => { rowspan?: number; colspan?: number } | void
+      >,
+    },
     // for JSX
     onExpand: {
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
@@ -331,14 +387,14 @@ export default defineComponent({
     },
     onCellClick: {
       type: [Function, Array] as PropType<
-        (record: TableData, column: TableColumn) => void
+        (record: TableData, column: TableColumnData) => void
       >,
     },
     onRowClick: {
       type: [Function, Array] as PropType<(record: TableData) => void>,
     },
     onHeaderClick: {
-      type: [Function, Array] as PropType<(column: TableColumn) => void>,
+      type: [Function, Array] as PropType<(column: TableColumnData) => void>,
     },
   },
   emits: [
@@ -401,14 +457,14 @@ export default defineComponent({
     /**
      * @zh 表格数据发生变化时触发
      * @param {TableData[]} data
-     * @param {any} extra
+     * @param {TableChangeExtra} extra
      */
     'change',
     /**
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
      * @param {TableData} record
-     * @param {TableColumn} column
+     * @param {TableColumnData} column
      */
     'cellClick',
     /**
@@ -420,7 +476,7 @@ export default defineComponent({
     /**
      * @zh 点击表头数据时触发
      * @en Triggered when the header data is clicked
-     * @param {TableColumn} column
+     * @param {TableColumnData} column
      */
     'headerClick',
   ],
@@ -471,8 +527,35 @@ export default defineComponent({
    * @slot td
    * @version 2.16.0
    */
+  /**
+   * @zh 分页器左侧内容
+   * @en Content on the left side of the pagination
+   * @slot pagination-left
+   * @version 2.18.0
+   */
+  /**
+   * @zh 分页器右侧内容
+   * @en Content on the right side of the pagination
+   * @slot pagination-right
+   * @version 2.18.0
+   */
+  /**
+   * @zh 总结行
+   * @en Content on the right side of the pagination
+   * @slot summary-cell
+   * @binding {TableColumnData} column
+   * @binding {TableData} record
+   * @binding {number} rowIndex
+   * @version 2.23.0
+   */
+  /**
+   * @zh 空白展示
+   * @en Empty
+   * @slot empty
+   */
   setup(props, { emit, slots }) {
-    const { rowKey } = toRefs(props);
+    const { columns, rowKey, rowSelection, loadMore, filterIconAlignLeft } =
+      toRefs(props);
     const prefixCls = getPrefixCls('table');
     const bordered = computed(() => {
       if (isObject(props.bordered)) {
@@ -483,20 +566,15 @@ export default defineComponent({
 
     // whether to scroll
     const isScroll = computed(() => {
-      const x = Boolean(props.scroll?.x);
-      const y = Boolean(props.scroll?.y);
+      const x = Boolean(props.scroll?.x || props.scroll?.minWidth);
+      const y = Boolean(props.scroll?.y || props.scroll?.maxHeight);
       return { x, y };
     });
 
     const theadRef = ref<HTMLElement>();
     const tbodyRef = ref<HTMLElement>();
-    const thRefs = ref<{
-      operation: HTMLElement[];
-      data: Record<string, HTMLElement>;
-    }>({
-      operation: [],
-      data: {},
-    });
+    const summaryRef = ref<HTMLElement>();
+    const thRefs = ref<Record<string, HTMLElement>>({});
 
     const handleBodyScroll = () => {
       if (theadRef.value && tbodyRef.value) {
@@ -517,26 +595,34 @@ export default defineComponent({
       });
     });
 
-    const columnsSlot = usePickSlots(slots, 'columns');
+    const slotColumnMap = reactive(new Map<number, TableColumnData>());
+    const slotColumns = ref<TableColumnData[]>();
 
-    const slotColumns = computed(() => {
-      if (columnsSlot.value) {
-        return getColumnsFromSlot(
-          getChildrenComponents(columnsSlot.value(), 'TableColumn')
-        );
+    watch(slotColumnMap, (slotColumnMap) => {
+      if (slotColumnMap.size > 0) {
+        slotColumns.value = Array.from(slotColumnMap.values()).sort((a, b) => {
+          if (isNumber(a.index) && isNumber(b.index)) {
+            return a.index - b.index;
+          }
+          return 0;
+        });
+      } else {
+        slotColumns.value = undefined;
       }
-      return undefined;
     });
 
     // 拆解分组后的数据表头信息
-    const dataColumns = ref<TableColumn[]>([]);
-    const groupColumns = ref<TableColumn[][]>([]);
+    const dataColumnMap = new Map<string, TableColumnData>();
+    const dataColumns = ref<TableColumnData[]>([]);
+    const groupColumns = ref<TableColumnData[][]>([]);
 
     watch(
-      () => [props.columns, slotColumns.value],
-      ([columns, slotColumns]) => {
-        const result = getGroupColumns(slotColumns ?? columns ?? []);
-        // @ts-ignore
+      [columns, slotColumnMap],
+      ([columns, _]) => {
+        const result = getGroupColumns(
+          slotColumns.value ?? columns ?? [],
+          dataColumnMap
+        );
         dataColumns.value = result.dataColumns;
         groupColumns.value = result.groupColumns;
       },
@@ -553,7 +639,11 @@ export default defineComponent({
     watchEffect(() => {
       let _hasLeftFixedColumn = false;
       let _hasRightFixedColumn = false;
-      if (props.rowSelection?.fixed || props.expandable?.fixed) {
+      if (
+        props.rowSelection?.fixed ||
+        props.expandable?.fixed ||
+        props.draggable?.fixed
+      ) {
         _hasLeftFixedColumn = true;
       }
       for (const column of dataColumns.value) {
@@ -580,77 +670,31 @@ export default defineComponent({
       return false;
     });
 
-    // 外部筛选项，优先使用
-    const outerFilters = computed(() => {
-      const filters: Filters = {};
-      for (const item of dataColumns.value) {
-        if (item.dataIndex && item.filterable?.filteredValue) {
-          filters[item.dataIndex] = item.filterable.filteredValue;
-        }
-      }
-      return filters;
-    });
+    const { _filters, computedFilters } = useFilter({ columns: dataColumns });
+    const { _sorter, computedSorter } = useSorter({ columns: dataColumns });
 
-    const getDefaultFilters = () => {
-      const filters: Filters = {};
-      for (const item of dataColumns.value) {
-        if (item.dataIndex && item.filterable?.defaultFilteredValue) {
-          filters[item.dataIndex] = item.filterable.defaultFilteredValue;
-        }
-      }
-      return filters;
+    const handleChange = (
+      type: 'pagination' | 'sorter' | 'filter' | 'drag'
+    ) => {
+      const extra: TableChangeExtra = {
+        type,
+        page: page.value,
+        pageSize: pageSize.value,
+        sorter: computedSorter.value,
+        filters: computedFilters.value,
+        dragTarget: type === 'drag' ? dragState.data : undefined,
+      };
+      emit('change', flattenData.value, extra);
     };
-
-    const getDefaultSorter = (): Sorter => {
-      for (const item of dataColumns.value) {
-        // get first enabled sorter
-        if (item.dataIndex && item.sortable?.defaultSortOrder) {
-          return {
-            filed: item.dataIndex,
-            direction: item.sortable.defaultSortOrder,
-          };
-        }
-      }
-      return {};
-    };
-
-    const _filters = ref(getDefaultFilters());
-    const _sorter = ref(getDefaultSorter());
-
-    const computedFilters = computed<Filters>(() => ({
-      ..._filters.value,
-      ...outerFilters.value,
-    }));
-
-    const computedSorter = computed<Sorter>(() => {
-      for (const item of dataColumns.value) {
-        if (item.dataIndex && item.sortable) {
-          // Take the first existing collation
-          const direction = isString(item.sortable.sortOrder)
-            ? item.sortable.sortOrder
-            : _sorter.value.filed === item.dataIndex
-            ? _sorter.value.direction
-            : '';
-          if (direction) {
-            return {
-              filed: item.dataIndex,
-              direction,
-            };
-          }
-        }
-      }
-      return {} as Sorter;
-    });
 
     const handleFilterChange = (
       dataIndex: string,
       filteredValues: string[]
     ) => {
-      const newFilters = {
+      _filters.value = {
         ...computedFilters.value,
         [dataIndex]: filteredValues,
       };
-      _filters.value = newFilters;
 
       emit('filterChange', dataIndex, filteredValues);
       handleChange('filter');
@@ -660,26 +704,15 @@ export default defineComponent({
       dataIndex: string,
       direction: 'ascend' | 'descend' | ''
     ) => {
-      const newSorter: Sorter = direction
+      _sorter.value = direction
         ? {
-            filed: dataIndex,
+            field: dataIndex,
             direction,
           }
-        : {};
-
-      _sorter.value = newSorter;
+        : undefined;
 
       emit('sorterChange', dataIndex, direction);
       handleChange('sorter');
-    };
-
-    const getColumnByDataIndex = (dataIndex: string) => {
-      for (const item of dataColumns.value) {
-        if (item.dataIndex === dataIndex) {
-          return item;
-        }
-      }
-      return undefined;
     };
 
     const disabledKeys = new Set();
@@ -745,15 +778,12 @@ export default defineComponent({
       currentSelectedRowKeys,
       handleSelect,
       handleSelectAll,
-    } = useRowSelection(
-      props,
-      {
-        allRowKeys,
-        currentAllRowKeys,
-        currentAllEnabledRowKeys,
-      },
-      emit
-    );
+    } = useRowSelection({
+      rowSelection,
+      currentAllRowKeys,
+      currentAllEnabledRowKeys,
+      emit,
+    });
 
     const { expandedRowKeys, handleExpand } = useExpand(
       props,
@@ -775,7 +805,7 @@ export default defineComponent({
     const isValidRecord = (record: TableData) => {
       for (const field of Object.keys(computedFilters.value)) {
         const filteredValues = computedFilters.value[field];
-        const column = getColumnByDataIndex(field);
+        const column = dataColumnMap.get(field);
         if (column && column.filterable?.filter && filteredValues.length > 0) {
           const result = column.filterable?.filter(filteredValues, record);
           if (!result) {
@@ -785,8 +815,6 @@ export default defineComponent({
       }
       return true;
     };
-
-    const dataMap = new Map<string, TableData>();
 
     const {
       dragState,
@@ -801,58 +829,85 @@ export default defineComponent({
     const { resizingColumn, columnWidth, handleThMouseDown } =
       useColumnResize(thRefs);
 
-    const processData = (origin: TableData[]) => {
+    const processedData = computed(() => {
       const travel = (data: TableData[], prefix?: string) => {
         const result: TableData[] = [];
 
         for (const _record of data) {
-          const record = { ..._record };
-          const key = `${prefix ? `${prefix}_` : ''}record_${props.rowKey}_${
-            record[props.rowKey]
-          }`;
-          dataMap.set(key, record);
-          record._key = key;
-
-          if (isValidRecord(record)) {
-            // add lazy load children
-            if (
-              props.loadMore &&
-              !record.isLeaf &&
-              !record.children &&
-              lazyLoadData[record[props.rowKey]]
-            ) {
-              record.children = lazyLoadData[record[props.rowKey]];
-            }
-
-            if (record.children) {
-              record.children = travel(record.children, key);
-            }
-            result.push(record);
+          const record: TableData = {
+            ..._record,
+            _key: `${prefix ? `${prefix}_` : ''}record_${props.rowKey}_${
+              _record[props.rowKey]
+            }`,
+          };
+          if (
+            props.loadMore &&
+            !record.isLeaf &&
+            !record.children &&
+            lazyLoadData[record[props.rowKey]]
+          ) {
+            record.children = lazyLoadData[record[props.rowKey]];
           }
+          if (record.children) {
+            record.children = travel(record.children, record._key);
+          }
+          record._subtree = Boolean(
+            record.children
+              ? props.hideExpandButtonOnEmpty
+                ? record.children.length > 0
+                : true
+              : props.loadMore && !record.isLeaf
+          );
+
+          result.push(record);
         }
         return result;
       };
-      dataMap.clear();
 
-      const data = travel(isArray(origin) ? origin : []);
+      return travel(props.data ?? []);
+    });
 
+    const validData = computed(() => {
+      const travel = (data: TableData[]) =>
+        data.filter((record) => {
+          if (isValidRecord(record)) {
+            if (record.children) {
+              record.children = travel(record.children);
+            }
+
+            return true;
+          }
+          return false;
+        });
+
+      return Object.keys(computedFilters.value).length > 0
+        ? travel(processedData.value)
+        : processedData.value;
+    });
+
+    const sortedData = computed(() => {
+      const data = [...validData.value];
       if (data.length > 0) {
-        if (computedSorter.value.filed) {
-          const column = getColumnByDataIndex(computedSorter.value.filed);
+        if (computedSorter.value?.field) {
+          const column = dataColumnMap.get(computedSorter.value.field);
           if (column && column.sortable?.sorter !== true) {
+            const { field, direction } = computedSorter.value;
             data.sort((a, b) => {
-              const valueA = a[computedSorter.value.filed];
-              const valueB = b[computedSorter.value.filed];
-              const result = (
-                isFunction(column.sortable?.sorter)
-                  ? column.sortable?.sorter?.(valueA, valueB)
-                  : valueA > valueB
-              )
-                ? 1
-                : -1;
-              return computedSorter.value.direction === 'descend'
-                ? -result
-                : result;
+              const valueA = a[field];
+              const valueB = b[field];
+
+              if (
+                column.sortable?.sorter &&
+                isFunction(column.sortable.sorter)
+              ) {
+                return column.sortable.sorter(a, b, {
+                  dataIndex: field,
+                  direction,
+                });
+              }
+
+              const result = valueA > valueB ? 1 : -1;
+              return direction === 'descend' ? -result : result;
             });
           }
         }
@@ -862,39 +917,61 @@ export default defineComponent({
           spliceFromPath(data, dragState.targetPath, target);
         }
       }
-
       return data;
-    };
-
-    // 数据处理（筛选和排序）
-    const processedData = computed(() => processData(props.data));
+    });
 
     const { page, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, emit);
 
-    const handleChange = (
-      type: 'pagination' | 'sorter' | 'filter' | 'drag'
-    ) => {
-      const extra = {
-        type,
-        page: page.value,
-        pageSize: pageSize.value,
-        sorter: computedSorter.value,
-        filters: computedFilters.value,
-        dragTarget:
-          type === 'drag' ? dataMap.get(dragState.sourceKey) : undefined,
-      };
-      emit('change', flattenData.value, extra);
-    };
-
     const flattenData = computed(() => {
-      if (props.pagination && processedData.value.length > pageSize.value) {
-        return processedData.value.slice(
+      if (props.pagination && sortedData.value.length > pageSize.value) {
+        return sortedData.value.slice(
           (page.value - 1) * pageSize.value,
           page.value * pageSize.value
         );
       }
-      return processedData.value;
+      return sortedData.value;
+    });
+
+    const getSummaryData = () => {
+      return dataColumns.value.reduce((per, column, index) => {
+        if (column.dataIndex) {
+          if (index === 0) {
+            per[column.dataIndex] = props.summaryText;
+          } else {
+            let count = 0;
+            let isNotNumber = false;
+            flattenData.value.forEach((data) => {
+              if (column.dataIndex) {
+                if (isNumber(data[column.dataIndex])) {
+                  count += data[column.dataIndex];
+                } else if (
+                  !isUndefined(data[column.dataIndex]) &&
+                  !isNull(data[column.dataIndex])
+                ) {
+                  isNotNumber = true;
+                }
+              }
+            });
+            per[column.dataIndex] = isNotNumber ? '' : count;
+          }
+        }
+
+        return per;
+      }, {} as Record<string, any>);
+    };
+
+    const summaryData = computed(() => {
+      if (props.summary) {
+        if (isFunction(props.summary)) {
+          return props.summary({
+            columns: dataColumns.value,
+            data: flattenData.value,
+          });
+        }
+        return [getSummaryData()];
+      }
+      return undefined;
     });
 
     const containerRef = ref<HTMLDivElement>();
@@ -955,38 +1032,49 @@ export default defineComponent({
       if (target.scrollLeft !== containerScrollLeft.value) {
         containerScrollLeft.value = target.scrollLeft;
       }
-      if (isScroll.value.y && theadRef.value) {
-        theadRef.value.scrollLeft = target.scrollLeft;
+      if (isScroll.value.y || props.virtualListProps) {
+        if (theadRef.value) {
+          theadRef.value.scrollLeft = target.scrollLeft;
+        }
+        if (summaryRef.value) {
+          summaryRef.value.scrollLeft = target.scrollLeft;
+        }
       }
       setAlignPosition();
     };
 
-    const handleRowClick = (record: TableData) => {
-      emit('rowClick', record);
+    const handleRowClick = (record: TableData, ev: Event) => {
+      emit('rowClick', record, ev);
     };
 
-    const handleCellClick = (record: TableData, column: TableColumn) => {
-      emit('cellClick', record, column);
+    const handleCellClick = (
+      record: TableData,
+      column: TableColumnData,
+      ev: Event
+    ) => {
+      emit('cellClick', record, column, ev);
     };
 
-    const handleHeaderClick = (column: TableColumn) => {
-      emit('headerClick', column);
+    const handleHeaderClick = (column: TableColumnData, ev: Event) => {
+      emit('headerClick', column, ev);
     };
 
-    const getOperations = () => {
+    const operations = computed(() => {
       const operations: TableOperationColumn[] = [];
       const hasFixedColumn =
         hasLeftFixedColumn.value || hasRightFixedColumn.value;
+      let dragHandle: TableOperationColumn | undefined;
       let expand: TableOperationColumn | undefined;
       let selection: TableOperationColumn | undefined;
 
       if (props.draggable?.type === 'handle') {
-        operations.push({
-          name: 'dragHandle',
+        dragHandle = {
+          name: 'drag-handle',
           title: props.draggable.title,
           width: props.draggable.width,
           fixed: props.draggable.fixed || hasFixedColumn,
-        });
+        };
+        operations.push(dragHandle);
       }
 
       if (props.expandable) {
@@ -1001,7 +1089,10 @@ export default defineComponent({
 
       if (props.rowSelection) {
         selection = {
-          name: 'selection',
+          name:
+            props.rowSelection.type === 'radio'
+              ? 'selection-radio'
+              : 'selection-checkbox',
           title: props.rowSelection.title,
           width: props.rowSelection.width,
           fixed: props.rowSelection.fixed || hasFixedColumn,
@@ -1009,31 +1100,72 @@ export default defineComponent({
         operations.push(selection);
       }
 
-      if (props.rowNumber) {
-        operations.push({
-          name: 'rowNumber',
-        });
-      }
-
       const operationsFn = props.components?.operations;
 
       return isFunction(operationsFn)
-        ? operationsFn({ expand, selection })
+        ? operationsFn({ dragHandle, expand, selection })
         : operations;
-    };
+    });
 
-    const operations = computed(() => getOperations());
-
-    const contentStyle = computed(() => {
-      if (isScroll.value.x && flattenData.value.length > 0) {
-        return {
+    const headerStyle = computed(() => {
+      if (isScroll.value.x) {
+        const style: CSSProperties = {
           width: isNumber(props.scroll?.x)
             ? `${props.scroll?.x}px`
             : props.scroll?.x,
         };
+        if (props.scroll?.minWidth) {
+          style.minWidth = isNumber(props.scroll.minWidth)
+            ? `${props.scroll.minWidth}px`
+            : props.scroll.minWidth;
+        }
+        return style;
       }
       return undefined;
     });
+
+    const contentStyle = computed(() => {
+      if (isScroll.value.x && flattenData.value.length > 0) {
+        const style: CSSProperties = {
+          width: isNumber(props.scroll?.x)
+            ? `${props.scroll?.x}px`
+            : props.scroll?.x,
+        };
+        if (props.scroll?.minWidth) {
+          style.minWidth = isNumber(props.scroll.minWidth)
+            ? `${props.scroll.minWidth}px`
+            : props.scroll.minWidth;
+        }
+        return style;
+      }
+      return undefined;
+    });
+
+    const addColumn = (id: number, column: TableColumnData) => {
+      slotColumnMap.set(id, column);
+    };
+
+    const removeColumn = (id: number) => {
+      slotColumnMap.delete(id);
+    };
+
+    provide(
+      tableInjectionKey,
+      reactive({
+        loadMore,
+        addLazyLoadData,
+        slots,
+        sorter: computedSorter,
+        filters: computedFilters,
+        filterIconAlignLeft,
+        resizingColumn,
+        addColumn,
+        removeColumn,
+        onSorterChange: handleSorterChange,
+        onFilterChange: handleFilterChange,
+        onThMouseDown: handleThMouseDown,
+      })
+    );
 
     const cls = computed(() => [
       prefixCls,
@@ -1049,6 +1181,7 @@ export default defineComponent({
         [`${prefixCls}-hover`]: props.hoverable,
         [`${prefixCls}-dragging`]: dragState.dragging,
         [`${prefixCls}-type-selection`]: props.rowSelection,
+        [`${prefixCls}-empty`]: flattenData.value.length === 0,
         [`${prefixCls}-layout-fixed`]:
           props.tableLayoutFixed ||
           isScroll.value.x ||
@@ -1064,6 +1197,8 @@ export default defineComponent({
           props.pagePosition === 'tl' || props.pagePosition === 'bl',
         [`${prefixCls}-pagination-center`]:
           props.pagePosition === 'top' || props.pagePosition === 'bottom',
+        [`${prefixCls}-pagination-right`]:
+          props.pagePosition === 'tr' || props.pagePosition === 'br',
         [`${prefixCls}-pagination-top`]: isPaginationTop.value,
       },
     ]);
@@ -1084,6 +1219,16 @@ export default defineComponent({
 
     const isVirtualList = computed(() => Boolean(props.virtualListProps));
 
+    const thWidth = ref<Record<string, number>>({});
+
+    const getThWidth = () => {
+      const width: Record<string, number> = {};
+      for (const key of Object.keys(thRefs.value)) {
+        width[key] = thRefs.value[key].offsetWidth;
+      }
+      thWidth.value = width;
+    };
+
     const hasScrollBar = ref(false);
 
     const isTbodyHasScrollBar = () => {
@@ -1099,10 +1244,12 @@ export default defineComponent({
         hasScrollBar.value = _hasScrollBar;
       }
       setAlignPosition();
+      getThWidth();
     };
 
     onMounted(() => {
       hasScrollBar.value = isTbodyHasScrollBar();
+      getThWidth();
     });
 
     const spinProps = computed(() =>
@@ -1120,11 +1267,8 @@ export default defineComponent({
     };
 
     const renderExpandContent = (record: TableData) => {
-      if (isFunction(record.expand)) {
-        return record.expand();
-      }
       if (record.expand) {
-        return record.expand;
+        return isFunction(record.expand) ? record.expand() : record.expand;
       }
       if (slots['expand-row']) {
         return slots['expand-row']({ record });
@@ -1139,20 +1283,29 @@ export default defineComponent({
     // [row, column]
     const tableSpan = computed(() => {
       const data: Record<string, [number, number]> = {};
-      flattenData.value.forEach((record, rowIndex) => {
-        dataColumns.value.forEach((column, columnIndex) => {
-          const { rowspan = 1, colspan = 1 } =
-            props.spanMethod?.({
-              record,
-              column,
-              rowIndex,
-              columnIndex,
-            }) ?? {};
-          if (rowspan > 1 || colspan > 1) {
-            data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
-          }
+      if (props.spanMethod) {
+        const columns = props.spanAll
+          ? ([] as (TableColumnData | TableOperationColumn)[]).concat(
+              operations.value,
+              dataColumns.value
+            )
+          : dataColumns.value;
+
+        flattenData.value.forEach((record, rowIndex) => {
+          columns.forEach((column, columnIndex) => {
+            const { rowspan = 1, colspan = 1 } =
+              props.spanMethod?.({
+                record,
+                column,
+                rowIndex,
+                columnIndex,
+              }) ?? {};
+            if (rowspan > 1 || colspan > 1) {
+              data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
+            }
+          });
         });
-      });
+      }
 
       return data;
     });
@@ -1175,20 +1328,166 @@ export default defineComponent({
       return data;
     });
 
+    // copy
+    // [row, column]
+    const tableSummarySpan = computed(() => {
+      const data: Record<string, [number, number]> = {};
+      if (props.summarySpanMethod) {
+        const columns = (
+          [] as (TableColumnData | TableOperationColumn)[]
+        ).concat(operations.value, dataColumns.value);
+        flattenData.value.forEach((record, rowIndex) => {
+          columns.forEach((column, columnIndex) => {
+            const { rowspan = 1, colspan = 1 } =
+              props.summarySpanMethod?.({
+                record,
+                column,
+                rowIndex,
+                columnIndex,
+              }) ?? {};
+            if (rowspan > 1 || colspan > 1) {
+              data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
+            }
+          });
+        });
+      }
+      return data;
+    });
+
+    const removedSummaryCells = computed(() => {
+      const data: string[] = [];
+      for (const indexKey of Object.keys(tableSummarySpan.value)) {
+        const indexArray = indexKey.split('-').map((item) => Number(item));
+        const span = tableSummarySpan.value[indexKey];
+        for (let i = 1; i < span[0]; i++) {
+          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
+          for (let j = 1; j < span[1]; j++) {
+            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
+          }
+        }
+        for (let i = 1; i < span[1]; i++) {
+          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
+        }
+      }
+      return data;
+    });
+
+    const renderSummaryRow = (record: TableData, rowIndex: number) => {
+      return (
+        <Tr
+          class={[props.rowClass, `${prefixCls}-tr-summary`]}
+          key={`table-summary-${rowIndex}`}
+          v-slots={{
+            tr: slots.tr,
+          }}
+          onClick={(ev: Event) => handleRowClick(record, ev)}
+        >
+          {operations.value.map((operation, index) => {
+            const cellId = `${rowIndex}-${index}`;
+            const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
+
+            if (removedSummaryCells.value.includes(cellId)) {
+              return null;
+            }
+
+            const style =
+              isVirtualList.value &&
+              operation.name &&
+              thWidth.value[operation.name]
+                ? { width: `${thWidth.value[operation.name]}px` }
+                : undefined;
+
+            return (
+              <OperationTd
+                style={style}
+                operationColumn={operation}
+                operations={operations.value}
+                record={record}
+                rowSpan={rowspan}
+                colSpan={colspan}
+                summary
+              />
+            );
+          })}
+          {dataColumns.value.map((column, index) => {
+            const cellId = `${rowIndex}-${operations.value.length + index}`;
+            const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
+
+            if (removedSummaryCells.value.includes(cellId)) {
+              return null;
+            }
+
+            const style =
+              isVirtualList.value &&
+              column.dataIndex &&
+              thWidth.value[column.dataIndex]
+                ? { width: `${thWidth.value[column.dataIndex]}px` }
+                : undefined;
+
+            return (
+              <Td
+                key={`td-${cellId}`}
+                v-slots={{
+                  td: slots.td,
+                }}
+                style={style}
+                rowIndex={rowIndex}
+                record={record}
+                column={column}
+                operations={operations.value}
+                dataColumns={dataColumns.value}
+                rowSpan={rowspan}
+                colSpan={colspan}
+                onClick={(ev: Event) => handleCellClick(record, column, ev)}
+              >
+                {slots['summary-cell']?.({
+                  record,
+                  column,
+                  rowIndex,
+                }) ?? String(getValueByPath(record, column.dataIndex) ?? '')}
+              </Td>
+            );
+          })}
+        </Tr>
+      );
+    };
+
+    const renderSummary = () => {
+      if (summaryData.value) {
+        return summaryData.value.map((data, index) =>
+          renderSummaryRow(data, index)
+        );
+      }
+      return null;
+    };
+
     const virtualListRef = ref();
+
+    watch(virtualListRef, (instance) => {
+      tbodyRef.value = instance.$el;
+    });
 
     const renderVirtualListBody = () => {
       return (
-        <VirtualList
-          ref={virtualListRef}
-          class={`${prefixCls}-body`}
-          {...props.virtualListProps}
-          data={flattenData.value}
-          v-slots={{
-            item: ({ item, index }: { item: TableData; index: number }) =>
-              renderRecord(item, index),
-          }}
-        />
+        <ClientOnly>
+          <VirtualList
+            ref={virtualListRef}
+            class={`${prefixCls}-body`}
+            itemKey="_key"
+            type="table"
+            {...props.virtualListProps}
+            data={flattenData.value}
+            v-slots={{
+              item: ({ item, index }: { item: TableData; index: number }) =>
+                renderRecord(item, index),
+            }}
+            onResize={() => {
+              handleTbodyResize();
+            }}
+            onScroll={handleScroll}
+            outerAttrs={{ style: contentStyle.value }}
+          />
+        </ClientOnly>
       );
     };
 
@@ -1237,16 +1536,6 @@ export default defineComponent({
       const currentPath = (indexPath ?? []).concat(rowIndex);
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
-      const hasSubTree = Boolean(
-        record.children
-          ? props.hideExpandButtonOnEmpty
-            ? record.children.length > 0
-            : true
-          : props.loadMore && !record.isLeaf
-      );
-
-      const subTreeHasSubData =
-        record.children?.some((record) => Boolean(record.children)) ?? false;
 
       const scrollContainer = isScroll.value.y
         ? tbodyRef.value
@@ -1259,7 +1548,7 @@ export default defineComponent({
           ? {
               draggable: true,
               onDragstart: (ev: DragEvent) =>
-                handleDragStart(ev, record._key, currentPath),
+                handleDragStart(ev, record._key, currentPath, record),
               onDragend: (ev: DragEvent) => handleDragEnd(ev),
             }
           : {};
@@ -1293,16 +1582,24 @@ export default defineComponent({
             v-slots={{
               tr: slots.tr,
             }}
-            checked={selectedRowKeys.value?.indexOf(currentKey) > -1}
-            onClick={(e: Event) => handleRowClick(record)}
+            checked={selectedRowKeys.value?.includes(currentKey)}
+            onClick={(ev: Event) => handleRowClick(record, ev)}
           >
             {operations.value.map((operation, index) => {
+              const cellId = `${rowIndex}-${index}`;
+              const [rowspan, colspan] = props.spanAll
+                ? tableSpan.value[cellId] ?? [1, 1]
+                : [1, 1];
+
+              if (props.spanAll && removedCells.value.includes(cellId)) {
+                return null;
+              }
+
               const style =
                 isVirtualList.value &&
-                thRefs.value.operation[index]?.offsetWidth
-                  ? {
-                      width: `${thRefs.value.operation[index]?.offsetWidth}px`,
-                    }
+                operation.name &&
+                thWidth.value[operation.name]
+                  ? { width: `${thWidth.value[operation.name]}px` }
                   : undefined;
 
               return (
@@ -1312,15 +1609,14 @@ export default defineComponent({
                     'drag-handle-icon': slots['drag-handle-icon'],
                   }}
                   style={style}
-                  record={record}
-                  rowKey={rowKey.value}
-                  isRadio={isRadio.value}
-                  hasExpand={Boolean(expandContent)}
                   operationColumn={operation}
                   operations={operations.value}
+                  record={record}
+                  rowKey={rowKey.value}
+                  hasExpand={Boolean(expandContent)}
                   selectedRowKeys={selectedRowKeys.value}
-                  expandedIcon={props.expandable?.icon}
-                  expandedRowKeys={expandedRowKeys.value}
+                  rowSpan={rowspan}
+                  colSpan={colspan}
                   renderExpandBtn={renderExpandBtn}
                   onSelect={handleSelect}
                   onExpand={handleExpand}
@@ -1329,32 +1625,31 @@ export default defineComponent({
               );
             })}
             {dataColumns.value.map((column, index) => {
+              const cellId = `${rowIndex}-${
+                props.spanAll ? operations.value.length + index : index
+              }`;
+              const [rowspan, colspan] = tableSpan.value[cellId] ?? [1, 1];
+
+              if (removedCells.value.includes(cellId)) {
+                return null;
+              }
+
               const extraProps =
                 index === 0
                   ? {
-                      showExpandBtn: hasSubTree,
-                      indentSize: hasSubTree ? indentSize - 20 : indentSize,
+                      showExpandBtn: record._subtree,
+                      indentSize: record._subtree
+                        ? indentSize - 20
+                        : indentSize,
                     }
                   : {};
 
               const style =
                 isVirtualList.value &&
-                thRefs.value.data[column.dataIndex]?.offsetWidth
-                  ? {
-                      width: `${
-                        thRefs.value.data[column.dataIndex]?.offsetWidth
-                      }px`,
-                    }
+                column.dataIndex &&
+                thWidth.value[column.dataIndex]
+                  ? { width: `${thWidth.value[column.dataIndex]}px` }
                   : undefined;
-
-              const cellId = `${rowIndex}-${index}`;
-              const [rowspan, colspan] = tableSpan.value[
-                `${rowIndex}-${index}`
-              ] ?? [1, 1];
-
-              if (removedCells.value.includes(cellId)) {
-                return null;
-              }
 
               return (
                 <Td
@@ -1365,32 +1660,23 @@ export default defineComponent({
                   style={style}
                   rowIndex={rowIndex}
                   record={record}
-                  isSorted={
-                    Boolean(computedSorter.value.filed) &&
-                    column.dataIndex === computedSorter.value.filed
-                  }
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
-                  loadMore={props.loadMore}
-                  addLazyLoadData={addLazyLoadData}
                   rowSpan={rowspan}
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
-                  resizing={resizingColumn.value === column.dataIndex}
                   {...extraProps}
-                  onClick={(e: Event) => handleCellClick(record, column)}
+                  onClick={(ev: Event) => handleCellClick(record, column, ev)}
                 />
               );
             })}
           </Tr>
           {showExpand &&
-            (hasSubTree
+            (record._subtree
               ? record.children?.map((item, index) =>
                   renderRecord(item, index, {
-                    indentSize: subTreeHasSubData
-                      ? indentSize + props.indentSize + 20
-                      : indentSize + props.indentSize,
+                    indentSize: indentSize + props.indentSize,
                     indexPath: currentPath,
                     allowDrag: allowDrag && !isDragTarget,
                   })
@@ -1412,6 +1698,10 @@ export default defineComponent({
                 ))}
         </>
       );
+    };
+
+    const renderFooter = () => {
+      return <tfoot>{renderSummary()}</tfoot>;
     };
 
     const renderBody = () => {
@@ -1442,17 +1732,19 @@ export default defineComponent({
               operations.value.map((operation, index) => (
                 <OperationTh
                   // @ts-ignore
-                  ref={(ins: ComponentPublicInstance): void => {
-                    if (ins?.$el) {
-                      thRefs.value.operation[index] = ins.$el;
+                  ref={(ins: ComponentPublicInstance) => {
+                    if (ins?.$el && operation.name) {
+                      thRefs.value[operation.name] = ins.$el;
                     }
                   }}
                   key={`operation-th-${index}`}
                   operationColumn={operation}
                   operations={operations.value}
-                  rowSelection={props.rowSelection}
+                  selectAll={Boolean(
+                    operation.name === 'selection-checkbox' &&
+                      props.rowSelection?.showCheckedAll
+                  )}
                   rowSpan={groupColumns.value.length}
-                  expandable={props.expandable}
                   selectedNumber={currentSelectedRowKeys.value.length}
                   totalNumber={currentAllRowKeys.value.length}
                   totalEnabledNumber={currentAllEnabledRowKeys.value.length}
@@ -1460,11 +1752,6 @@ export default defineComponent({
                 />
               ))}
             {row.map((column, index) => {
-              const sortOrder =
-                column.dataIndex === computedSorter.value.filed
-                  ? computedSorter.value.direction
-                  : '';
-
               const resizable =
                 props.columnResizable &&
                 Boolean(column.dataIndex) &&
@@ -1475,22 +1762,15 @@ export default defineComponent({
                   key={`th-${index}`}
                   // @ts-ignore
                   ref={(ins: ComponentPublicInstance) => {
-                    if (ins?.$el) {
-                      thRefs.value.data[column.dataIndex] = ins.$el;
+                    if (ins?.$el && column.dataIndex) {
+                      thRefs.value[column.dataIndex] = ins.$el;
                     }
                   }}
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
-                  sortOrder={sortOrder}
-                  filterIconAlignLeft={props.filterIconAlignLeft}
-                  filterValue={computedFilters.value[column.dataIndex] ?? []}
                   resizable={resizable}
-                  resizing={resizingColumn.value === column.dataIndex}
-                  onSorterChange={handleSorterChange}
-                  onFilterChange={handleFilterChange}
-                  onClick={(e: Event) => handleHeaderClick(column)}
-                  onThMouseDown={handleThMouseDown}
+                  onClick={(ev: Event) => handleHeaderClick(column, ev)}
                 />
               );
             })}
@@ -1516,7 +1796,7 @@ export default defineComponent({
                 <table
                   cellpadding={0}
                   cellspacing={0}
-                  style={contentStyle.value}
+                  style={headerStyle.value}
                 >
                   <ColGroup
                     dataColumns={dataColumns.value}
@@ -1527,17 +1807,17 @@ export default defineComponent({
                 </table>
               </div>
             )}
-            <ResizeObserver onResize={handleTbodyResize}>
-              {isVirtualList.value ? (
-                renderVirtualListBody()
-              ) : (
+            {isVirtualList.value ? (
+              renderVirtualListBody()
+            ) : (
+              <ResizeObserver onResize={handleTbodyResize}>
                 <div
                   ref={tbodyRef}
                   class={`${prefixCls}-body`}
                   style={{
                     maxHeight: isNumber(props.scroll?.y)
                       ? `${props.scroll?.y}px`
-                      : props.scroll?.y,
+                      : '100%',
                   }}
                   onScroll={handleScroll}
                 >
@@ -1556,8 +1836,24 @@ export default defineComponent({
                     {renderBody()}
                   </table>
                 </div>
-              )}
-            </ResizeObserver>
+              </ResizeObserver>
+            )}
+            {summaryData.value && summaryData.value.length && (
+              <div ref={summaryRef} class={`${prefixCls}-tfoot`} style={style}>
+                <table
+                  cellpadding={0}
+                  cellspacing={0}
+                  style={contentStyle.value}
+                >
+                  <ColGroup
+                    dataColumns={dataColumns.value}
+                    operations={operations.value}
+                    columnWidth={columnWidth}
+                  />
+                  {renderFooter()}
+                </table>
+              </div>
+            )}
           </>
         );
       }
@@ -1572,33 +1868,40 @@ export default defineComponent({
             />
             {props.showHeader && renderHeader()}
             {renderBody()}
+            {summaryData.value && summaryData.value.length && renderFooter()}
           </table>
         </ResizeObserver>
       );
     };
 
-    const renderTable = (content?: Slot) => (
-      <>
-        <div
-          ref={containerRef}
-          class={[`${prefixCls}-container`, tableCls.value]}
-          onScroll={handleScroll}
-        >
-          <div class={`${prefixCls}-content`}>
-            {content ? (
-              <table cellpadding={0} cellspacing={0}>
-                {content()}
-              </table>
-            ) : (
-              renderContent()
-            )}
+    const renderTable = (content?: Slot) => {
+      const style = props.scroll?.maxHeight
+        ? { maxHeight: props.scroll.maxHeight }
+        : undefined;
+      return (
+        <>
+          <div
+            ref={containerRef}
+            class={[`${prefixCls}-container`, tableCls.value]}
+            style={style}
+            onScroll={handleScroll}
+          >
+            <div class={`${prefixCls}-content`}>
+              {content ? (
+                <table cellpadding={0} cellspacing={0}>
+                  {content()}
+                </table>
+              ) : (
+                renderContent()
+              )}
+            </div>
           </div>
-        </div>
-        {slots.footer && (
-          <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
-        )}
-      </>
-    );
+          {slots.footer && (
+            <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
+          )}
+        </>
+      );
+    };
 
     const renderPagination = () => {
       const paginationProps = isObject(props.pagination)
@@ -1612,8 +1915,9 @@ export default defineComponent({
 
       return (
         <div class={paginationCls.value}>
+          {slots['pagination-left']?.()}
           <Pagination
-            total={processedData.value.length}
+            total={validData.value.length}
             current={page.value}
             pageSize={pageSize.value}
             onChange={(page: number) => {
@@ -1626,28 +1930,59 @@ export default defineComponent({
             }}
             {...paginationProps}
           />
+          {slots['pagination-right']?.()}
         </div>
       );
     };
 
-    return () => {
+    const style = computed<CSSProperties | undefined>(() => {
+      if (isString(props.scroll?.y)) {
+        return { height: props.scroll?.y };
+      }
+      return undefined;
+    });
+
+    const render = () => {
       if (slots.default) {
         return <div class={cls.value}>{renderTable(slots.default)}</div>;
       }
 
       return (
-        <div class={cls.value}>
+        <div class={cls.value} style={style.value}>
+          {slots.columns?.()}
           <Spin {...spinProps.value}>
             {props.pagination !== false &&
+              flattenData.value.length > 0 &&
               isPaginationTop.value &&
               renderPagination()}
             {renderTable()}
             {props.pagination !== false &&
+              flattenData.value.length > 0 &&
               !isPaginationTop.value &&
               renderPagination()}
           </Spin>
         </div>
       );
     };
+
+    return {
+      render,
+      handleSelectAll,
+    };
+  },
+  methods: {
+    /**
+     * @zh 设置全选状态
+     * @en Set select all state
+     * @param { boolean } checked
+     * @public
+     * @version 2.22.0
+     */
+    selectAll(checked: boolean) {
+      return this.handleSelectAll(checked);
+    },
+  },
+  render() {
+    return this.render();
   },
 });

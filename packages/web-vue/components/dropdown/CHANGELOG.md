@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.20.2
+
+`2022-03-24`
+
+### 💅 Style
+
+- Fixed vertical centering of icons in options ([#862](https://github.com/arco-design/arco-design-vue/pull/862))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ Important Attention
+
+- The <doption> component modifies the vertical centering layout using flex ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+
+
 ## 2.16.1
 
 `2022-01-21`

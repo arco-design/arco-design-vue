@@ -2,6 +2,69 @@
 changelog: true
 ```
 
+## 2.22.0
+
+`2022-04-01`
+
+### 🆕 Feature
+
+- Rendering elements that support modifying form item labels ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+### 💅 Style
+
+- Form item content style increases maximum width to prevent overflow ([#919](https://github.com/arco-design/arco-design-vue/pull/919))
+
+
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 Style
+
+- Fix `form-item` asterisk compatibility with windicss ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
+## 2.19.0
+
+`2022-03-11`
+
+### 🐛 BugFix
+
+- Fix the problem that the `field` property of `form-item` is invalid when there is an array in it ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+- Fixed the issue that some component functions are still available after `disabled` is enabled ([#807](https://github.com/arco-design/arco-design-vue/pull/807))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 🐛 BugFix
+
+- Fix the problem of reset method invalid in nested data ([#768](https://github.com/arco-design/arco-design-vue/pull/768))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 💎 Optimization
+
+- When `auto-label-width` is enabled, label wrapping is not allowed to prevent calculation errors after wrapping ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
+
+### 🆕 Feature
+
+- Validated error info add label property ([#724](https://github.com/arco-design/arco-design-vue/pull/724))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ Important Attention
+
+- <form-item> component refactoring to use context to manage input components. If the user has a custom input component, you can refer to the `custom input component` example to change. ([#697](https://github.com/arco-design/arco-design-vue/pull/697))
+
+
 ## 2.16.0
 
 `2022-01-21`

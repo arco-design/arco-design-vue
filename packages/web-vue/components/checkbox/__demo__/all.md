@@ -19,7 +19,8 @@ When implementing the function of selecting all, you can display the half-select
 ```vue
 <template>
   <a-space direction="vertical">
-    <a-checkbox :model-value="checkedAll" :indeterminate="indeterminate" @change="handleChangeAll">Check All</a-checkbox>
+    <a-checkbox :model-value="checkedAll" :indeterminate="indeterminate" @change="handleChangeAll">Check All
+    </a-checkbox>
     <a-checkbox-group v-model="data" @change="handleChange">
       <a-checkbox value="1">Option 1</a-checkbox>
       <a-checkbox value="2">Option 2</a-checkbox>
@@ -29,39 +30,46 @@ When implementing the function of selecting all, you can display the half-select
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const indeterminate = ref(false)
+    const checkedAll = ref(false)
+    const data = ref([])
+
+    const handleChangeAll = (value) => {
+      indeterminate.value = false;
+      if (value) {
+        checkedAll.value = true;
+        data.value = ['1', '2', '3']
+      } else {
+        checkedAll.value = false;
+        data.value = []
+      }
+    }
+
+    const handleChange = (values) => {
+      if (values.length === 3) {
+        checkedAll.value = true
+        indeterminate.value = false;
+      } else if (values.length === 0) {
+        checkedAll.value = false
+        indeterminate.value = false;
+      } else {
+        checkedAll.value = false
+        indeterminate.value = true;
+      }
+    }
+
     return {
-      indeterminate: false,
-      checkedAll: false,
-      data: [],
+      indeterminate,
+      checkedAll,
+      data,
+      handleChangeAll,
+      handleChange
     }
   },
-  methods: {
-    handleChangeAll(value) {
-      this.$data.indeterminate = false;
-      if (value) {
-        this.$data.checkedAll = true;
-
-        this.$data.data = ['1', '2', '3']
-      } else {
-        this.$data.checkedAll = false;
-        this.$data.data = []
-      }
-    },
-    handleChange(values) {
-      if (values.length === 3) {
-        this.$data.checkedAll = true
-        this.$data.indeterminate = false;
-      } else if (values.length === 0) {
-        this.$data.checkedAll = false
-        this.$data.indeterminate = false;
-      } else {
-        this.$data.checkedAll = false
-        this.$data.indeterminate = true;
-      }
-    }
-  }
 }
 </script>
 ```

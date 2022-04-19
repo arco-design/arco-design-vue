@@ -21,26 +21,22 @@ describe('Select', () => {
       },
     });
 
-    const baseSelect = wrapper.findComponent({ name: 'BaseSelect' });
-
     const input = wrapper.find('input');
     await input.trigger('click');
-    const dropdown = wrapper.findComponent({ name: 'DropdownPanel' });
-    await input.trigger('keydown', { code: 'ArrowUp' });
+    const dropdown = wrapper.findComponent({ name: 'SelectDropdown' });
+    await input.trigger('keydown', { key: 'ArrowUp' });
 
-    expect(dropdown.find('.arco-dropdown-option-active').text()).toBe(
+    expect(dropdown.find('.arco-select-option-active').text()).toBe(
       'Guangzhou'
     );
 
-    await input.trigger('keydown', { code: 'ArrowDown' });
+    await input.trigger('keydown', { key: 'ArrowDown' });
 
-    expect(dropdown.find('.arco-dropdown-option-active').text()).toBe(
-      'Beijing'
-    );
+    expect(dropdown.find('.arco-select-option-active').text()).toBe('Beijing');
 
-    await input.trigger('keydown', { code: 'Enter' });
+    await input.trigger('keydown', { key: 'Enter' });
 
-    expect(baseSelect.emitted('change')?.[0]).toEqual(['Beijing']);
+    expect(wrapper.emitted('change')?.[0]).toEqual(['Beijing']);
   });
 
   test('should support mouse', async () => {
@@ -50,18 +46,16 @@ describe('Select', () => {
       },
     });
 
-    const baseSelect = wrapper.findComponent({ name: 'BaseSelect' });
-
     const input = wrapper.find('input');
     await input.trigger('click');
-    const dropdown = wrapper.findComponent({ name: 'DropdownPanel' });
-    const options = dropdown.findAll('.arco-dropdown-option');
+    const dropdown = wrapper.findComponent({ name: 'SelectDropdown' });
+    const options = dropdown.findAll('.arco-select-option');
     await options[0].trigger('mouseenter');
     await options[0].trigger('mouseleave');
     await options[1].trigger('mouseenter');
     await options[1].trigger('click');
 
-    expect(baseSelect.emitted('change')?.[0]).toEqual(['Shanghai']);
+    expect(wrapper.emitted('change')?.[0]).toEqual(['Shanghai']);
   });
 
   test('should show search option', async () => {
@@ -75,8 +69,8 @@ describe('Select', () => {
     const input = wrapper.find('input');
     await input.trigger('click');
     await input.setValue('sh');
-    const dropdown = wrapper.findComponent({ name: 'DropdownPanel' });
-    const option = dropdown.find('.arco-dropdown-option');
+    const dropdown = wrapper.findComponent({ name: 'SelectDropdown' });
+    const option = dropdown.find('.arco-select-option');
     expect(option.text()).toBe('Shanghai');
   });
 
@@ -88,13 +82,11 @@ describe('Select', () => {
       },
     });
 
-    const baseSelect = wrapper.findComponent({ name: 'BaseSelect' });
-
     const input = wrapper.find('input');
     await input.trigger('click');
     await input.setValue('Xian');
-    await input.trigger('keydown', { code: 'Enter' });
+    await input.trigger('keydown', { key: 'Enter' });
 
-    expect(baseSelect.emitted('change')?.[0]).toEqual(['Xian']);
+    expect(wrapper.emitted('change')?.[0]).toEqual(['Xian']);
   });
 });

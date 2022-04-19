@@ -25,16 +25,26 @@ Message提供的全局方法，可以通过以下三种方法使用：
 2. 在Composition API中，通过getCurrentInstance().appContext.config.globalProperties.$message调用
 3. 导入Message，通过Message本身调用
 
+当通过 import 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext
+
+```ts
+import { createApp } from 'vue'
+import { Message } from '@arco-design/web-vue';
+
+const app = createApp(App);
+Message._context = app._context;
+```
+
 
 ### MessageMethod
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|info|显示信息提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|success|显示成功提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|warning|显示警告提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|error|显示错误提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
-|loading|显示加载中提示|`(config: string \| MessageConfig) => MessageReturn`|`-`|
+|info|显示信息提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|success|显示成功提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|warning|显示警告提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|error|显示错误提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
+|loading|显示加载中提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
 |clear|清空全部提示|`(position?: MessagePosition) => void`|`-`|
 
 

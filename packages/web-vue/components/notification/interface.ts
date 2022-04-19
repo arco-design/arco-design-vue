@@ -1,4 +1,4 @@
-import { RenderFunction } from 'vue';
+import { AppContext, RenderFunction } from 'vue';
 import { RenderContent } from '../_utils/types';
 import { MessageType } from '../_utils/constant';
 
@@ -16,22 +16,34 @@ export interface NotificationMethod {
    * @zh 显示信息提醒框
    * @en Show info notification
    */
-  info: (config: string | NotificationConfig) => NotificationReturn;
+  info: (
+    config: string | NotificationConfig,
+    appContext?: AppContext
+  ) => NotificationReturn;
   /**
    * @zh 显示成功提醒框
    * @en Show success notification
    */
-  success: (config: string | NotificationConfig) => NotificationReturn;
+  success: (
+    config: string | NotificationConfig,
+    appContext?: AppContext
+  ) => NotificationReturn;
   /**
    * @zh 显示警告提醒框
    * @en Show warning notification
    */
-  warning: (config: string | NotificationConfig) => NotificationReturn;
+  warning: (
+    config: string | NotificationConfig,
+    appContext?: AppContext
+  ) => NotificationReturn;
   /**
    * @zh 显示错误提醒框
    * @en Show error notification
    */
-  error: (config: string | NotificationConfig) => NotificationReturn;
+  error: (
+    config: string | NotificationConfig,
+    appContext?: AppContext
+  ) => NotificationReturn;
   /**
    * @zh 清除全部提醒框
    * @en Clear all notifications

@@ -2,6 +2,69 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🐛 问题修复
+
+- 修复 `auto-scroll-into-view` 无效的问题 ([#966](https://github.com/arco-design/arco-design-vue/pull/966))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 新增功能
+
+- 支持通过 `popup-max-height` 设置弹出框的最大高度 ([#949](https://github.com/arco-design/arco-design-vue/pull/949))
+
+
+## 2.22.1
+
+`2022-04-02`
+
+### 🐛 问题修复
+
+- 修复菜单图标的高度不对的问题 ([#928](https://github.com/arco-design/arco-design-vue/pull/928))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 问题修复
+
+- 弹出框中的图标与文字没有对齐 ([#889](https://github.com/arco-design/arco-design-vue/pull/889))
+
+
+## 2.21.0
+
+`2022-03-25`
+
+### 💅 样式更新
+
+- 解决菜单项的缩进换行的问题 ([#866](https://github.com/arco-design/arco-design-vue/pull/866))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 💅 样式更新
+
+- 菜单项的图标没有垂直居中 ([#767](https://github.com/arco-design/arco-design-vue/pull/767))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### 🆕 新增功能
+
+- 支持响应式收缩 ([#700](https://github.com/arco-design/arco-design-vue/pull/700))
+
+
 ## 2.11.0
 
 `2021-12-17`

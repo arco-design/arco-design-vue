@@ -23,26 +23,28 @@ A single-column description list style.
 
 <script>
 export default {
-  data() {
+  setup() {
+    const data = [{
+      label: 'Name',
+      value: 'Socrates',
+    }, {
+      label: 'Mobile',
+      value: '123-1234-1234',
+    }, {
+      label: 'Residence',
+      value: 'Beijing'
+    }, {
+      label: 'Hometown',
+      value: 'Beijing',
+    }, {
+      label: 'Address',
+      value: 'Yingdu Building, Zhichun Road, Beijing'
+    }];
+
     return {
-      data: [{
-        label: 'Name',
-        value: 'Socrates',
-      }, {
-        label: 'Mobile',
-        value: '123-1234-1234',
-      }, {
-        label: 'Residence',
-        value: 'Beijing'
-      }, {
-        label: 'Hometown',
-        value: 'Beijing',
-      }, {
-        label: 'Address',
-        value: 'Yingdu Building, Zhichun Road, Beijing'
-      }]
+      data
     }
-  }
+  },
 }
 </script>
 ```

@@ -2,11 +2,13 @@
   <Trigger
     v-if="!hideTrigger"
     trigger="click"
+    animation-name="slide-dynamic-origin"
+    auto-fit-transform-origin
     :click-to-close="false"
     :popup-offset="4"
     v-bind="triggerProps"
     :position="position"
-    :disabled="disabled"
+    :disabled="mergedDisabled"
     :prevent-focus="true"
     :popup-visible="panelVisible"
     :unmount-on-close="unmountOnClose"
@@ -21,7 +23,7 @@
         :focused="panelVisible"
         :visible="panelVisible"
         :error="error"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :readonly="!inputEditable"
         :allow-clear="allowClear"
         :placeholder="computedPlaceholder"
@@ -43,14 +45,7 @@
       <PickerPanel v-bind="panelProps" @click="onPanelClick" />
     </template>
   </Trigger>
-  <PickerPanel v-else v-bind="{ ...$attrs, ...panelProps }">
-    <slot name="extra"></slot>
-    <slot name="cell"></slot>
-    <slot name="icon-prev-double"></slot>
-    <slot name="icon-prev"></slot>
-    <slot name="icon-next"></slot>
-    <slot name="icon-next-double"></slot>
-  </PickerPanel>
+  <PickerPanel v-else v-bind="{ ...$attrs, ...panelProps }" />
 </template>
 
 <script lang="ts">
@@ -58,14 +53,20 @@ import { Dayjs } from 'dayjs';
 import {
   computed,
   defineComponent,
-  inject,
   PropType,
   reactive,
   ref,
   toRefs,
   watch,
+  watchEffect,
 } from 'vue';
-import { dayjs, getNow, isValueChange, getDateValue } from '../_utils/date';
+import {
+  dayjs,
+  getNow,
+  isValueChange,
+  getDateValue,
+  initializeDateLocale,
+} from '../_utils/date';
 import { getPrefixCls } from '../_utils/global-config';
 import useState from '../_hooks/use-state';
 import {
@@ -74,6 +75,7 @@ import {
   ShortcutType,
   FormatFunc,
   CalendarValue,
+  WeekStart,
 } from './interface';
 import usePickerState from './hooks/use-picker-state';
 import DateInput from '../_components/picker/input.vue';
@@ -93,9 +95,10 @@ import { omit } from '../_utils/omit';
 import useTimePickerValue from './hooks/use-time-picker-value';
 import { mergeValueWithTime } from './utils';
 import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
+import { useFormItem } from '../_hooks/use-form-item';
+import { useI18n } from '../locale';
 
 /**
  * @displayName Common
@@ -155,8 +158,6 @@ export default defineComponent({
      * */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 预设时间范围快捷选择
@@ -287,10 +288,10 @@ export default defineComponent({
     },
     showNowBtn: {
       type: Boolean,
-      defaut: true,
+      default: true,
     },
     dayStartOfWeek: {
-      type: Number as PropType<0 | 1>,
+      type: Number as PropType<WeekStart>,
       default: 0,
     },
     modelValue: {
@@ -475,7 +476,15 @@ export default defineComponent({
       locale,
       pickerValue,
       defaultPickerValue,
+      dayStartOfWeek,
     } = toRefs(props);
+
+    const { locale: globalLocal } = useI18n();
+    watchEffect(() => {
+      initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+    });
+
+    const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
 
     const datePickerT = useProvideDatePickerTransform(
       reactive({
@@ -570,25 +579,26 @@ export default defineComponent({
     };
 
     // 生成当前面板内容
-    const [headerValue, , headerOperations, resetHeaderValue] = useHeaderValue(
-      reactive({
-        mode,
-        value: pickerValue,
-        defaultValue: defaultPickerValue,
-        selectedValue: panelValue,
-        format: parseValueFormat,
-        onChange: (newVal: Dayjs) => {
-          const returnValue = getReturnValue(newVal);
-          const formattedValue = getFormattedValue(
-            newVal,
-            parseValueFormat.value
-          );
-          const dateValue = getDateValue(newVal);
-          emit('picker-value-change', returnValue, dateValue, formattedValue);
-          emit('update:pickerValue', returnValue);
-        },
-      })
-    );
+    const [headerValue, setHeaderValue, headerOperations, resetHeaderValue] =
+      useHeaderValue(
+        reactive({
+          mode,
+          value: pickerValue,
+          defaultValue: defaultPickerValue,
+          selectedValue: panelValue,
+          format: parseValueFormat,
+          onChange: (newVal: Dayjs) => {
+            const returnValue = getReturnValue(newVal);
+            const formattedValue = getFormattedValue(
+              newVal,
+              parseValueFormat.value
+            );
+            const dateValue = getDateValue(newVal);
+            emit('picker-value-change', returnValue, dateValue, formattedValue);
+            emit('update:pickerValue', returnValue);
+          },
+        })
+      );
 
     const [timePickerValue, , resetTimePickerValue] = useTimePickerValue(
       reactive({
@@ -601,8 +611,11 @@ export default defineComponent({
       () => !readonly.value && !isFunction(inputFormat.value)
     );
 
+    const headerMode = ref<'year' | 'month' | undefined>();
+
     watch(panelVisible, (newVisible) => {
       setProcessValue(undefined);
+      headerMode.value = undefined;
 
       // open
       if (newVisible) {
@@ -623,6 +636,7 @@ export default defineComponent({
       if (isValueChange(value, selectedValue.value)) {
         emit('update:modelValue', returnValue);
         emit('change', returnValue, dateValue, formattedValue);
+        eventHandlers.value?.onChange?.();
       }
 
       if (emitOk) {
@@ -643,6 +657,7 @@ export default defineComponent({
       setSelectedValue(value);
       setProcessValue(undefined);
       setInputValue(undefined);
+      headerMode.value = undefined;
       if (isBoolean(showPanel)) {
         setPanelVisible(showPanel);
       }
@@ -651,6 +666,7 @@ export default defineComponent({
     function select(value: Dayjs | undefined, emitSelect?: boolean) {
       setProcessValue(value);
       setInputValue(undefined);
+      headerMode.value = undefined;
 
       if (emitSelect) {
         const returnValue = value ? getReturnValue(value) : undefined;
@@ -665,12 +681,12 @@ export default defineComponent({
     }
 
     function getMergedOpValue(date: Dayjs, time?: Dayjs) {
-      if (!isDateTime.value) return date;
+      if (!isDateTime.value && !timePickerProps.value) return date;
       return mergeValueWithTime(getNow(), date, time);
     }
 
     function onPanelVisibleChange(visible: boolean) {
-      if (disabled.value) return;
+      if (mergedDisabled.value) return;
       setPanelVisible(visible);
     }
 
@@ -742,6 +758,20 @@ export default defineComponent({
       confirm(value, false);
     }
 
+    function onPanelHeaderLabelClick(type: 'year' | 'month') {
+      headerMode.value = type;
+    }
+
+    function onPanelHeaderSelect(date: Dayjs) {
+      let newValue = headerValue.value;
+      newValue = newValue.set('year', date.year());
+      if (headerMode.value === 'month') {
+        newValue = newValue.set('month', date.month());
+      }
+      setHeaderValue(newValue);
+      headerMode.value = undefined;
+    }
+
     const computedTimePickerProps = computed(() => ({
       format: computedFormat.value,
       ...omit(timePickerProps?.value || {}, ['defaultValue']),
@@ -778,6 +808,7 @@ export default defineComponent({
       },
       headerOperations: headerOperations.value,
       timePickerValue: timePickerValue.value,
+      headerMode: headerMode.value,
       onCellClick: onPanelCellClick,
       onTimePickerSelect,
       onConfirm: onPanelConfirm,
@@ -785,6 +816,8 @@ export default defineComponent({
       onShortcutMouseEnter: onPanelShortcutMouseEnter,
       onShortcutMouseLeave: onPanelShortcutMouseLeave,
       onTodayBtnClick: onPanelSelect,
+      onHeaderLabelClick: onPanelHeaderLabelClick,
+      onHeaderSelect: onPanelHeaderSelect,
     }));
 
     return {
@@ -799,6 +832,7 @@ export default defineComponent({
       panelVisible,
       inputEditable,
       needConfirm,
+      mergedDisabled,
       onPanelVisibleChange,
       onInputClear,
       onInputChange,

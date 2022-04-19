@@ -18,20 +18,23 @@ Turn on the simple mode by setting `simple`, and click the option to move.
 
 ```vue
 <template>
-  <a-transfer :data="data" :default-value="value" simple/>
+  <a-transfer :data="data" :default-value="value" simple />
 </template>
 
 <script>
 export default {
-  data() {
+  setup() {
+    const data = Array(8).fill(undefined).map((_, index) => ({
+      value: `option${index + 1}`,
+      label: `Option ${index + 1}`
+    }));
+    const value = ['option1', 'option3', 'option5'];
+
     return {
-      data: Array(8).fill(undefined).map((_, index) => ({
-        value: `option${index + 1}`,
-        label: `Option ${index + 1}`
-      })),
-      value: ['option1', 'option3', 'option5']
+      data,
+      value
     }
-  }
+  },
 }
 </script>
 ```

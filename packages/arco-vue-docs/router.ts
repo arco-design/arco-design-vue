@@ -230,6 +230,11 @@ const proDocs = [
     componentEn: () => import('./docs/pro/routes-and-menu.en-US.md'),
   },
   {
+    name: 'permission',
+    component: () => import('./docs/pro/permission.zh-CN.md'),
+    componentEn: () => import('./docs/pro/permission.en-US.md'),
+  },
+  {
     name: 'stateManagementPinia',
     component: () => import('./docs/pro/state-management-pinia.zh-CN.md'),
     componentEn: () => import('./docs/pro/state-management-pinia.en-US.md'),
@@ -728,8 +733,10 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(() => {
-  nProgress.start();
+router.beforeEach((to, from) => {
+  if (to.path !== from.path) {
+    nProgress.start();
+  }
 });
 
 router.afterEach(() => {

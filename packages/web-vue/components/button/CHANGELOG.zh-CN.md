@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.24.1
+
+`2022-04-16`
+
+### 🐛 问题修复
+
+- 修复 `config-provide` 注入失效的问题 ([#986](https://github.com/arco-design/arco-design-vue/pull/986))
+
+
+## 2.24.0
+
+`2022-04-15`
+
+### 🆕 Feature
+
+- `button-group` 支持为子组件 `button` 设置属性 ([#967](https://github.com/arco-design/arco-design-vue/pull/967))
+
+
 ## 2.16.0
 
 `2022-01-21`

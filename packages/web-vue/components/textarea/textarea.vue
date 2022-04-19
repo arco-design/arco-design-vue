@@ -16,7 +16,7 @@
       <textarea
         ref="textareaRef"
         v-bind="getTextareaAttrs($attrs)"
-        :disabled="disabled"
+        :disabled="mergedDisabled"
         :class="prefixCls"
         :style="textareaStyle"
         :value="computedValue"
@@ -57,6 +57,7 @@ import {
   onMounted,
   PropType,
   ref,
+  toRefs,
   watch,
 } from 'vue';
 import ResizeObserver from '../_components/resize-observer';
@@ -64,11 +65,12 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from './utils';
-import { isFunction, isObject } from '../_utils/is';
+import { isFunction, isNull, isObject, isUndefined } from '../_utils/is';
 import { EmitType } from '../_utils/types';
 import { omit } from '../_utils/omit';
 import { INPUT_EVENTS } from '../_utils/constant';
 import pick from '../_utils/pick';
+import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Textarea',
@@ -213,7 +215,13 @@ export default defineComponent({
     'blur',
   ],
   setup(props, { emit, attrs }) {
+    const { disabled, error, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('textarea');
+    const {
+      mergedDisabled,
+      mergedError: _mergedError,
+      eventHandlers,
+    } = useFormItem({ disabled, error });
 
     const textareaRef = ref<HTMLInputElement>();
     const textareaStyle = ref<CSSProperties>();
@@ -222,6 +230,12 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _value.value = '';
+      }
+    });
 
     const maxLengthErrorOnly = computed(
       () => isObject(props.maxLength) && Boolean(props.maxLength.errorOnly)
@@ -243,23 +257,22 @@ export default defineComponent({
 
     const valueLength = computed(() => getValueLength(computedValue.value));
 
-    const mergedError = computed(() => {
-      if (props.error) {
-        return props.error;
-      }
-      return Boolean(
-        computedMaxLength.value &&
-          maxLengthErrorOnly.value &&
-          valueLength.value > computedMaxLength.value
-      );
-    });
+    const mergedError = computed(
+      () =>
+        _mergedError.value ||
+        Boolean(
+          computedMaxLength.value &&
+            maxLengthErrorOnly.value &&
+            valueLength.value > computedMaxLength.value
+        )
+    );
 
     const isScroll = ref(false);
 
     // 状态相关
     const focused = ref(false);
     const showClearBtn = computed(
-      () => props.allowClear && !props.disabled && computedValue.value
+      () => props.allowClear && !mergedDisabled.value && computedValue.value
     );
 
     // 输入法相关
@@ -292,15 +305,27 @@ export default defineComponent({
       });
     };
 
+    let preValue = computedValue.value;
+    const emitChange = (value: string, ev: Event) => {
+      if (value !== preValue) {
+        preValue = value;
+        emit('change', value, ev);
+        eventHandlers.value?.onChange?.(ev);
+      }
+    };
+
     const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
+      preValue = computedValue.value;
       emit('focus', ev);
+      eventHandlers.value?.onFocus?.(ev);
     };
 
     const handleBlur = (ev: FocusEvent) => {
       focused.value = false;
-      emit('change', computedValue.value, ev);
       emit('blur', ev);
+      eventHandlers.value?.onBlur?.(ev);
+      emitChange(computedValue.value, ev);
     };
 
     const handleComposition = (e: CompositionEvent) => {
@@ -311,6 +336,7 @@ export default defineComponent({
         compositionValue.value = '';
         updateValue(value);
         emit('input', value, e);
+        eventHandlers.value?.onInput?.(e);
       } else {
         isComposition.value = true;
       }
@@ -322,6 +348,7 @@ export default defineComponent({
       if (!isComposition.value) {
         updateValue(value);
         emit('input', value, e);
+        eventHandlers.value?.onInput?.(e);
       } else {
         compositionValue.value = value;
       }
@@ -329,6 +356,7 @@ export default defineComponent({
 
     const handleClear = (ev: MouseEvent) => {
       updateValue('');
+      emitChange('', ev);
       emit('clear', ev);
     };
 
@@ -351,7 +379,7 @@ export default defineComponent({
       `${prefixCls}-wrapper`,
       {
         [`${prefixCls}-focus`]: focused.value,
-        [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-error`]: mergedError.value,
         [`${prefixCls}-scroll`]: isScroll.value,
       },
@@ -459,6 +487,7 @@ export default defineComponent({
       showClearBtn,
       valueLength,
       computedMaxLength,
+      mergedDisabled,
       getWrapperAttrs,
       getTextareaAttrs,
       handleInput,
@@ -469,6 +498,26 @@ export default defineComponent({
       handleResize,
       handleMousedown,
     };
+  },
+  methods: {
+    /**
+     * @zh 使输入框获取焦点
+     * @en Make the input box focus
+     * @public
+     * @version 2.24.0
+     */
+    focus() {
+      (this.$refs.textareaRef as HTMLInputElement)?.focus();
+    },
+    /**
+     * @zh 使输入框失去焦点
+     * @en Make the input box lose focus
+     * @public
+     * @version 2.24.0
+     */
+    blur() {
+      (this.$refs.textareaRef as HTMLInputElement)?.blur();
+    },
   },
 });
 </script>

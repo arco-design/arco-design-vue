@@ -2,6 +2,37 @@
 changelog: true
 ```
 
+## 2.21.0
+
+`2022-03-25`
+
+### 🐛 问题修复
+
+- 修复在未卸载的情况下，最外层 `div` 没有隐藏的问题 ([#871](https://github.com/arco-design/arco-design-vue/pull/871))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### ⚠️ 重点注意
+
+- 弹出层增加一层 `wrapper div` 用来提供对tranform动画的支持 ([#732](https://github.com/arco-design/arco-design-vue/pull/732))
+
+### 🆕 新增功能
+
+- 增加 `show` 和 `hide` 事件 ([#731](https://github.com/arco-design/arco-design-vue/pull/731))
+
+
+## 2.17.0
+
+`2022-02-11`
+
+### 💎 功能优化
+
+- 优化自动调整位置后箭头的位置 ([#655](https://github.com/arco-design/arco-design-vue/pull/655))
+
+
 ## 2.14.0
 
 `2022-01-07`

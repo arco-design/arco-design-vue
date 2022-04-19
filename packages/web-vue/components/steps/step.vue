@@ -1,13 +1,13 @@
 <template>
-  <div :class="cls" @click="handleClick">
+  <div ref="itemRef" :class="cls" @click="handleClick">
     <div v-if="showTail" :class="`${prefixCls}-tail`" />
     <div v-if="type !== 'arrow'" :class="`${prefixCls}-node`">
-      <slot name="node" :step="step" :status="status">
+      <slot name="node" :step="stepNumber" :status="computedStatus">
         <div v-if="type !== 'dot'" :class="iconCls">
-          <slot name="icon" :step="step" :status="status">
-            <icon-check v-if="status === 'finish'" />
-            <icon-close v-else-if="status === 'error'" />
-            <template v-else>{{ step }}</template>
+          <slot name="icon" :step="stepNumber" :status="computedStatus">
+            <icon-check v-if="computedStatus === 'finish'" />
+            <icon-close v-else-if="computedStatus === 'error'" />
+            <template v-else>{{ stepNumber }}</template>
           </slot>
         </div>
       </slot>
@@ -29,13 +29,24 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  inject,
+  onBeforeUnmount,
+  PropType,
+  reactive,
+  ref,
+  watch,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconCheck from '../icon/icon-check';
 import IconClose from '../icon/icon-close';
 import { StepStatus, StepsType } from './interface';
 import { Direction } from '../_utils/constant';
-import { EmitType } from '../_utils/types';
+import { stepsInjectionKey } from './context';
+import { useIndex } from '../_hooks/use-index';
 
 export default defineComponent({
   name: 'Step',
@@ -70,43 +81,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // private
-    step: {
-      type: Number,
-      default: 1,
-    },
-    current: {
-      type: Number,
-      default: 1,
-    },
-    type: {
-      type: String as PropType<StepsType>,
-      default: 'default',
-    },
-    direction: {
-      type: String as PropType<Direction>,
-      default: 'horizontal',
-    },
-    labelPlacement: {
-      type: String as PropType<Direction>,
-      default: 'horizontal',
-    },
-    lineLess: {
-      type: Boolean,
-      default: false,
-    },
-    nextStepError: {
-      type: Boolean,
-      default: false,
-    },
-    // for JSX
-    onClick: {
-      type: [Function, Array] as PropType<
-        EmitType<(step: number, ev: Event) => void>
-      >,
-    },
   },
-  emits: ['click'],
   /**
    * @zh 节点
    * @en Node
@@ -126,28 +101,66 @@ export default defineComponent({
    * @en Description
    * @slot description
    */
-  setup(props, { emit }) {
+  setup(props) {
     const prefixCls = getPrefixCls('steps-item');
+    const instance = getCurrentInstance();
     const iconCls = getPrefixCls('steps-icon');
+
+    const stepsCtx = inject(stepsInjectionKey, undefined);
+
+    const type = computed(() => stepsCtx?.type ?? 'default');
+
+    const itemRef = ref<HTMLElement>();
+    const { computedIndex } = useIndex({
+      itemRef,
+      selector: `.${prefixCls}`,
+      parentClassName: stepsCtx?.parentCls,
+    });
+    const stepNumber = computed(() => computedIndex.value + 1);
+
+    const computedStatus = computed(
+      () => props.status ?? stepsCtx?.getStatus(stepNumber.value) ?? 'process'
+    );
+
+    const nextStepError = computed(
+      () => stepsCtx?.errorSteps.includes(stepNumber.value + 1) ?? false
+    );
+
+    if (instance) {
+      stepsCtx?.addItem(
+        instance.uid,
+        reactive({
+          step: stepNumber,
+          status: computedStatus,
+        })
+      );
+    }
+
+    onBeforeUnmount(() => {
+      if (instance) {
+        stepsCtx?.removeItem(instance.uid);
+      }
+    });
 
     const showTail = computed(
       () =>
-        !props.lineLess &&
-        (props.labelPlacement === 'vertical' || props.direction === 'vertical')
+        !stepsCtx?.lineLess &&
+        (stepsCtx?.labelPlacement === 'vertical' ||
+          stepsCtx?.direction === 'vertical')
     );
 
     const handleClick = (ev: Event) => {
       if (!props.disabled) {
-        emit('click', props.step, ev);
+        stepsCtx?.onClick(stepNumber.value, ev);
       }
     };
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-${props.status}`,
+      `${prefixCls}-${computedStatus.value}`,
       {
-        [`${prefixCls}-active`]: props.step === props.current,
-        [`${prefixCls}-next-error`]: props.nextStepError,
+        [`${prefixCls}-active`]: stepNumber.value === stepsCtx?.current,
+        [`${prefixCls}-next-error`]: nextStepError.value,
         [`${prefixCls}-disabled`]: props.disabled,
         // [`${prefixCls}-custom`]: !!icon,
       },
@@ -157,7 +170,11 @@ export default defineComponent({
       prefixCls,
       iconCls,
       cls,
+      itemRef,
       showTail,
+      stepNumber,
+      computedStatus,
+      type,
       handleClick,
     };
   },

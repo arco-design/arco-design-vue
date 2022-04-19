@@ -27,6 +27,7 @@ Use `orientation` to add descriptive text to Divider.
     <a-divider orientation="right">Text</a-divider>
   </div>
 </template>
+
 <style scoped>
 .divider-demo {
   box-sizing: border-box;

@@ -54,6 +54,8 @@ export default {
       meta: {
         locale:'menu.dashboard.workplace', // secondary menu name (language pack key name)
         requiresAuth: true, // Whether authentication is required
+        roles: ['admin'], // role
+        hideInMenu: false, // Hide menu items
       },
     },
   ],
@@ -68,40 +70,106 @@ The menu generation process can be found in the menu component:
 
  ```ts
 // components/menu/index.vue
-import {defineComponent} from'vue';
-import {
-  useRouter
-} from'vue-router';
+import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 export default defineComponent({
   setup() {
     const router = useRouter();
-    const appRoute = router.getRoutes().find((el) => el.path ==='/app');
-    return {
-      appRoute,
-    };
+    const appRoute = computed(() => {
+      return router
+        .getRoutes()
+        .find((el) => el.name === 'root') as RouteRecordNormalized;
+    });
+    ......
   },
 });
 ```
 
-- Generate a menu through the obtained routing tree.
+- The route tree obtained in the previous step is used for permission filtering to generate the menu tree for rendering.
 
-PS: If you need to automatically generate a deep menu, you can use the jsx or render function to generate it through the configured routing tree.
+```tsx
+const menuTree = computed(() => {
+  const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children));
+  function travel(_routes: RouteRecordRaw[], layer: number) {
+    if (!_routes) return null;
+    const collector: any = _routes.map((element) => {
+      // no access
+      if (!permission.accessRouter(element)) {
+        return null;
+      }
 
-```vue
-  <a-menu>
-    <a-sub-menu v-for="route in appRoute.children" :key="route.name">
-      <template #title>
-        <component :is="route.meta.icon" />
-        {{ $t(route.meta.locale) }}
-      </template>
-      <a-menu-item
-        v-for="_route in route.children"
-        :key="_route.name"
-      >
-        {{ $t(_route.meta.locale) }}
-      </a-menu-item>
-    </a-sub-menu>
+      // leaf node
+      if (!element.children) {
+        return element;
+      }
+
+      // Associated child node
+      const subItem = travel(element.children, layer);
+      if (subItem.length) {
+        element.children = subItem;
+        return element;
+      }
+      // the else logic
+      if (layer > 1) {
+        element.children = subItem;
+        return element;
+      }
+      return null;
+    });
+    return collector.filter(Boolean);
+  }
+  return travel(copyRouter, 0);
+});
+```
+
+- Recursively generate menus by rendering the menu tree. (This example uses jsx syntax)
+
+```tsx
+const renderSubMenu = () => {
+  function travel(_route: RouteRecordRaw[], nodes = []) {
+    if (_route) {
+      _route.forEach((element) => {
+        // This is demo, modify nodes as needed
+        const icon = element?.meta?.icon ? `<${element?.meta?.icon}/>` : ``;
+        const subMenuItem = (
+          <a-sub-menu
+            key={element?.name}
+            v-slots={{
+              icon: () => h(compile(icon)),
+              title: () => h(compile(t(element?.meta?.locale || ''))),
+            }}
+          >
+            {element?.children?.map((elem) => {
+              return (
+                <a-menu-item key={elem.name} onClick={() => goto(elem)}>
+                  {t(elem?.meta?.locale || '')}
+                  {travel(elem.children ?? [])}
+                </a-menu-item>
+              );
+            })}
+          </a-sub-menu>
+        );
+        nodes.push(subMenuItem as never);
+      });
+    }
+    return nodes;
+  }
+  return travel(menuTree.value); // recursion menuTree
+};
+return () => (
+  <a-menu
+    v-model:collapsed={collapsed.value}
+    show-collapse-button
+    auto-open={false}
+    selected-keys={selectedKey.value}
+    auto-open-selected={true}
+    level-indent={34}
+    style="height: 100%"
+    onCollapse={setCollapse}
+  >
+    {renderSubMenu()}
   </a-menu>
+);
 ```
 
 ## Steps to add a new menu item
@@ -111,10 +179,6 @@ After understanding the routing and menu generation, you can configure a new men
 - Add a monitor folder in views/dashboard and add index.vue to it
 
  ```ts
-// template template
-// <template>
-// <div>Monitoring page</div>
-// </template>
 
 import {defineComponent} from'vue';
 export default defineComponent({})
@@ -149,6 +213,7 @@ export default {
 +     meta: {
 +       locale:'menu.dashboard.monitor',
 +       requiresAuth: true,
++       roles: ['admin'],
 +     },
 +   },
   ],

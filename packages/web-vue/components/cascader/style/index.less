@@ -7,9 +7,8 @@
 
 .@{cascader-prefix-cls} {
   &-panel {
-    top: 4px;
+    display: inline-block;
     box-sizing: border-box;
-    width: 100%;
     height: @select-popup-max-height;
     overflow: hidden;
     white-space: nowrap;
@@ -18,6 +17,11 @@
     border: 1px solid @select-popup-color-border;
     border-radius: @select-popup-border-radius;
     box-shadow: @select-popup-box-shadow;
+  }
+
+  &-dropdown-panel {
+    display: block;
+    width: 100%;
   }
 
   &-search-panel {
@@ -183,7 +187,7 @@
     &-disabled,
     &-disabled:hover {
       color: @cascader-color-item-text_disabled;
-      background-color: @color-transparent;
+      background-color: @cascader-color-item-bg_disabled;
       cursor: not-allowed;
 
       .@{prefix}-icon-right {
@@ -201,16 +205,19 @@
       color: @cascader-color-item-text_active;
       background-color: @cascader-color-item-bg_active;
       transition: all @transition-duration-2 @transition-timing-function-linear;
+      font-weight: @cascader-font-item-weight_active;
 
       &:hover {
         color: @cascader-color-item-text_active;
         background-color: @cascader-color-item-bg_active;
+        font-weight: @cascader-font-item-weight_active;
       }
     }
 
     &-active&-disabled,
     &-active&-disabled:hover {
       color: @cascader-color-item-text_disabled_active;
+      font-weight: @cascader-font-item-weight_active;
       background-color: @cascader-color-item-bg_disabled_active;
     }
   }

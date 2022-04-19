@@ -1,7 +1,7 @@
 <template>
   <Trigger
     trigger="hover"
-    :class="tirggerClassNames"
+    :class="triggerClassNames"
     :position="needPopOnBottom ? 'bl' : 'rt'"
     show-arrow
     animation-class="fade-in"
@@ -56,6 +56,7 @@
         :selected-keys="selectedKeys"
         :theme="menuContext.theme"
         :trigger-props="menuContext.triggerProps"
+        :style="popupMenuStyles"
         @menuItemClick="onMenuItemClick"
       >
         <slot />
@@ -82,6 +83,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import MenuIndent from './indent.vue';
 import useMenuContext from './hooks/use-menu-context';
 import RenderFunction from '../_components/render-function';
+import { isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'SubMenuPop',
@@ -102,11 +104,15 @@ export default defineComponent({
     isChildrenSelected: {
       type: Boolean,
     },
+    popupMaxHeight: {
+      type: [Boolean, Number],
+      default: undefined,
+    },
   },
   setup(props: SubMenuPopProps) {
     const { key } = useMenu();
     const { level } = useLevel();
-    const { selectable, isChildrenSelected } = toRefs(props);
+    const { selectable, isChildrenSelected, popupMaxHeight } = toRefs(props);
     const menuContext = useMenuContext();
     const { onSubMenuClick, onMenuItemClick } = menuContext;
 
@@ -135,7 +141,7 @@ export default defineComponent({
       popVisible.value = val;
     };
     const triggerPrefixCls = getPrefixCls('trigger');
-    const tirggerClassNames = computed(() => [
+    const triggerClassNames = computed(() => [
       `${prefixCls.value}-trigger`,
       {
         [`${prefixCls.value}-trigger-dark`]: menuContext.theme === 'dark',
@@ -156,9 +162,14 @@ export default defineComponent({
       needPopOnBottom,
       popVisible,
       triggerPrefixCls,
-      tirggerClassNames,
+      triggerClassNames,
       triggerProps,
       menuContext,
+      popupMenuStyles: computed(() => {
+        const maxHeight = popupMaxHeight.value ?? menuContext.popupMaxHeight;
+        if (isNumber(maxHeight)) return { maxHeight: `${maxHeight}px` };
+        return maxHeight ? {} : { maxHeight: 'unset' };
+      }),
       onClick: () => {
         onSubMenuClick && onSubMenuClick(key.value, level.value);
         selectable.value && onMenuItemClick && onMenuItemClick(key.value);

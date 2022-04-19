@@ -13,7 +13,14 @@
 
 <script lang="ts">
 import type { CSSProperties, PropType, Ref } from 'vue';
-import { defineComponent, toRefs, ref, watchEffect, computed } from 'vue';
+import {
+  defineComponent,
+  toRefs,
+  ref,
+  watchEffect,
+  computed,
+  onMounted,
+} from 'vue';
 import ResizeObserver from '../_components/resize-observer';
 import { getPrefixCls } from '../_utils/global-config';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
@@ -141,46 +148,48 @@ export default defineComponent({
       };
     });
 
-    // Binding of scroll events inside the scroll container
-    watchEffect((onInvalidate) => {
-      const element =
-        (target &&
-          target.value !== window &&
-          getElement(target.value as string | HTMLElement)) ||
-        window;
+    onMounted(() => {
+      // Binding of scroll events inside the scroll container
+      watchEffect((onInvalidate) => {
+        const element =
+          (target &&
+            target.value !== window &&
+            getElement(target.value as string | HTMLElement)) ||
+          window;
 
-      targetRef.value = element;
+        targetRef.value = element;
 
-      if (element) {
-        on(element, 'scroll', updatePositionThrottle);
-        on(element, 'resize', updatePositionThrottle);
+        if (element) {
+          on(element, 'scroll', updatePositionThrottle);
+          on(element, 'resize', updatePositionThrottle);
 
-        onInvalidate(() => {
-          off(element, 'scroll', updatePositionThrottle);
-          off(element, 'resize', updatePositionThrottle);
-        });
-      }
-    });
+          onInvalidate(() => {
+            off(element, 'scroll', updatePositionThrottle);
+            off(element, 'resize', updatePositionThrottle);
+          });
+        }
+      });
 
-    // When the scroll container is not a window, you need to bind the outer scroll event of the scroll container to update the position
-    watchEffect((onInvalidate) => {
-      if (!targetRef.value) return;
+      // When the scroll container is not a window, you need to bind the outer scroll event of the scroll container to update the position
+      watchEffect((onInvalidate) => {
+        if (!targetRef.value) return;
 
-      const container =
-        (targetContainer &&
-          targetContainer.value !== window &&
-          getElement(targetContainer.value as string | HTMLElement)) ||
-        window;
+        const container =
+          (targetContainer &&
+            targetContainer.value !== window &&
+            getElement(targetContainer.value as string | HTMLElement)) ||
+          window;
 
-      if (container) {
-        on(container, 'scroll', updatePositionThrottle);
-        on(container, 'resize', updatePositionThrottle);
+        if (container) {
+          on(container, 'scroll', updatePositionThrottle);
+          on(container, 'resize', updatePositionThrottle);
 
-        onInvalidate(() => {
-          off(container, 'scroll', updatePositionThrottle);
-          off(container, 'resize', updatePositionThrottle);
-        });
-      }
+          onInvalidate(() => {
+            off(container, 'scroll', updatePositionThrottle);
+            off(container, 'resize', updatePositionThrottle);
+          });
+        }
+      });
     });
 
     return {

@@ -11,6 +11,8 @@
     :arrow-style="arrowStyle"
     show-arrow
     :popup-container="popupContainer"
+    animation-name="zoom-in-fade-out"
+    auto-fit-transform-origin
     @popup-visible-change="handlePopupVisibleChange"
   >
     <slot />

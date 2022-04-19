@@ -89,6 +89,13 @@ description: When there are too many commands on the page, the alternative comma
 |disabled|Whether to disable|`boolean`|`false`|2.10.0|
 |trigger|Trigger method|`'hover' \| 'click'`|`'click'`|2.10.0|
 |position|Popup position|`'rt' \| 'lt'`|`'rt'`|2.10.0|
+|popup-visible **(v-model)**|Whether the popup is visible|`boolean`|`-`||
+|default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`||
+### `<dsubmenu>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|popup-visible-change|Triggered when the display status of the drop-down box changes|-|
 ### `<dsubmenu>` Slots
 
 |Slot Name|Description|Parameters|version|

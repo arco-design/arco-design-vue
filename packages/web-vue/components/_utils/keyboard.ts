@@ -1,11 +1,11 @@
 import { isString } from './is';
 
-export const CODE = {
+export const KEYBOARD_KEY = {
   ENTER: 'Enter',
   ESC: 'Escape',
   BACKSPACE: 'Backspace',
   TAB: 'Tab',
-  SPACE: 'Space',
+  SPACE: ' ',
   ARROW_UP: 'ArrowUp',
   ARROW_DOWN: 'ArrowDown',
   ARROW_LEFT: 'ArrowLeft',
@@ -13,8 +13,8 @@ export const CODE = {
 };
 
 export interface CodeKey {
-  /** Keyboard code or key */
-  code: string;
+  /** Keyboard key */
+  key: string;
   /** Ctrl / ⌃ */
   ctrl?: boolean;
   /** Shift key */
@@ -27,7 +27,7 @@ export interface CodeKey {
 
 const stringifyCodeKey = (k: CodeKey) => {
   return JSON.stringify({
-    code: k.code,
+    key: k.key,
     ctrl: Boolean(k.ctrl),
     shift: Boolean(k.shift),
     alt: Boolean(k.alt),
@@ -41,13 +41,13 @@ export const getKeyDownHandler = (
   const map: Record<string, (e: Event) => void> = {};
 
   codeKeyMap.forEach((callback, codeKey) => {
-    const _codeKey = isString(codeKey) ? { code: codeKey } : codeKey;
+    const _codeKey = isString(codeKey) ? { key: codeKey } : codeKey;
     map[stringifyCodeKey(_codeKey)] = callback;
   });
 
   return (event: KeyboardEvent): void => {
     const key = stringifyCodeKey({
-      code: event.code || event.key,
+      key: event.key,
       ctrl: event.ctrlKey,
       shift: event.shiftKey,
       alt: event.altKey,

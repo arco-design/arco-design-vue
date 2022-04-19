@@ -31,7 +31,7 @@
     </div>
     <div :class="`${prefixCls}-suffix`">
       <IconHover
-        v-if="allowClear && !disabled && value.length === 2"
+        v-if="allowClear && !mergedDisabled && value.length === 2"
         :prefix="prefixCls"
         :class="`${prefixCls}-clear-icon`"
         @click="onClear"
@@ -57,6 +57,8 @@ import {
 } from '../../_utils/is';
 import IconClose from '../../icon/icon-close';
 import IconHover from '../icon-hover.vue';
+import { useFormItem } from '../../_hooks/use-form-item';
+import { useSize } from '../../_hooks/use-size';
 
 export default defineComponent({
   name: 'DateInputRange',
@@ -67,7 +69,6 @@ export default defineComponent({
   props: {
     size: {
       type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      required: true,
     },
     focused: {
       type: Boolean,
@@ -122,11 +123,20 @@ export default defineComponent({
       focusedIndex,
       inputValue,
     } = toRefs(props);
+    const {
+      mergedSize: _mergedSize,
+      mergedDisabled,
+      mergedError,
+    } = useFormItem({ size, error });
+    const { mergedSize } = useSize(_mergedSize);
 
     const refInput0 = ref<HTMLInputElement>();
     const refInput1 = ref<HTMLInputElement>();
 
     const getDisabled = (index: number): boolean => {
+      if (mergedDisabled.value) {
+        return mergedDisabled.value;
+      }
       return isArray(disabled.value) ? disabled.value[index] : disabled.value;
     };
     const disabled0 = computed(() => getDisabled(0));
@@ -137,11 +147,11 @@ export default defineComponent({
     const classNames = computed(() => [
       prefixCls,
       `${prefixCls}-range`,
-      `${prefixCls}-size-${size.value}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-focused`]: focused.value,
         [`${prefixCls}-disabled`]: disabled0.value && disabled1.value,
-        [`${prefixCls}-error`]: error.value,
+        [`${prefixCls}-error`]: mergedError.value,
       },
     ]);
 
@@ -199,6 +209,7 @@ export default defineComponent({
       refInput1,
       disabled0,
       disabled1,
+      mergedDisabled,
       getDisabled,
       getInputWrapClassName,
       displayValue0,

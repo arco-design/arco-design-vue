@@ -1,3 +1,4 @@
+import NP from 'number-precision';
 import {
   FileItem,
   FileStatus,
@@ -80,7 +81,7 @@ export const uploadRequest = ({
   }
 
   xhr.upload.onprogress = (e: ProgressEvent) => {
-    const percent = e.total > 0 ? Math.round(e.loaded / e.total) : 0;
+    const percent = e.total > 0 ? NP.round(e.loaded / e.total, 2) : 0;
     onProgress(percent, e);
   };
   xhr.onerror = function error(e) {
@@ -215,14 +216,8 @@ export const loopDirectory = (
     );
 };
 
-export const getDataURLFromFile = async (file: File): Promise<string> => {
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      resolve(e.target?.result as string);
-    };
-    reader.readAsDataURL(file);
-  });
+export const isImage = (file: File) => {
+  return file.type?.includes('image');
 };
 
 export const getFiles = (fileList?: FileList, accept?: string): File[] => {

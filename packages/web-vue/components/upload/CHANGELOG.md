@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 Feature
+
+- Added icon related slots ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- Added updateFile method, onBeforeUpload supports returning File ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+- Optimize initial image display logic ([#944](https://github.com/arco-design/arco-design-vue/pull/944))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 🐛 BugFix
+
+- Fix onButtonClick property not available ([#907](https://github.com/arco-design/arco-design-vue/pull/907))
+
+
+## 2.18.1
+
+`2022-03-07`
+
+### 🐛 BugFix
+
+- Fix the problem of incorrect upload progress calculation ([#786](https://github.com/arco-design/arco-design-vue/pull/786))
+- Fix the problem that the cancel button does not work during uploading ([#786](https://github.com/arco-design/arco-design-vue/pull/786))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🐛 BugFix
+
+- fix error when using slot `upload-item` ([#715](https://github.com/arco-design/arco-design-vue/pull/715))
+- Generate initial preview image only if file type is image ([#706](https://github.com/arco-design/arco-design-vue/pull/706))
+
+
 ## 2.14.0
 
 `2022-01-07`

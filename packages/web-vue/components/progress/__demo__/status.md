@@ -29,12 +29,16 @@ Specify the status of the progress bar through `status`
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const percent = ref(0.2);
+
     return {
-      percent: 0.2
+      percent
     }
-  }
+  },
 }
 </script>
 ```

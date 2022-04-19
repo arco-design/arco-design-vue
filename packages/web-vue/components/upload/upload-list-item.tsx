@@ -68,19 +68,22 @@ export default defineComponent({
         <div class={`${itemCls}-content`}>
           {uploadCtx?.listType === 'picture' && (
             <span class={`${itemCls}-thumbnail`}>
-              <img
-                src={props.file.url}
-                alt={props.file.name}
-                {...(uploadCtx?.imageLoading
-                  ? { loading: uploadCtx.imageLoading }
-                  : undefined)}
-              />
+              {uploadCtx?.slots.image?.({ fileItem: props.file }) ?? (
+                <img
+                  src={props.file.url}
+                  alt={props.file.name}
+                  {...(uploadCtx?.imageLoading
+                    ? { loading: uploadCtx.imageLoading }
+                    : undefined)}
+                />
+              )}
             </span>
           )}
           <div class={`${itemCls}-name`}>
             {uploadCtx?.listType === 'text' && (
               <span class={`${itemCls}-file-icon`}>
-                {uploadCtx?.customIcon?.fileIcon?.(props.file) ||
+                {uploadCtx?.slots['file-icon']?.({ fileItem: props.file }) ??
+                  uploadCtx?.customIcon?.fileIcon?.(props.file) ??
                   renderFileIcon()}
               </span>
             )}
@@ -93,7 +96,8 @@ export default defineComponent({
                   ? { download: props.file.name }
                   : undefined)}
               >
-                {uploadCtx?.customIcon?.fileName?.(props.file) ??
+                {uploadCtx?.slots['file-name']?.({ fileItem: props.file }) ??
+                  uploadCtx?.customIcon?.fileName?.(props.file) ??
                   props.file.name}
               </a>
             ) : (
@@ -101,7 +105,8 @@ export default defineComponent({
                 class={`${itemCls}-name-text`}
                 onClick={() => uploadCtx?.onPreview(props.file)}
               >
-                {uploadCtx?.customIcon?.fileName?.(props.file) ??
+                {uploadCtx?.slots['file-name']?.({ fileItem: props.file }) ??
+                  uploadCtx?.customIcon?.fileName?.(props.file) ??
                   props.file.name}
               </span>
             )}
@@ -110,9 +115,10 @@ export default defineComponent({
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-error`]}
                 >
-                  {uploadCtx?.customIcon?.errorIcon?.() || (
-                    <IconExclamationCircleFill />
-                  )}
+                  {uploadCtx?.slots['error-icon']?.() ??
+                    uploadCtx?.customIcon?.errorIcon?.() ?? (
+                      <IconExclamationCircleFill />
+                    )}
                 </span>
               </Tooltip>
             )}
@@ -121,11 +127,15 @@ export default defineComponent({
         </div>
         <span class={`${itemCls}-operation`}>
           {uploadCtx?.showRemoveButton && (
-            <IconHover onClick={() => uploadCtx?.onRemove?.(props.file)}>
+            <IconHover
+              // @ts-ignore
+              onClick={() => uploadCtx?.onRemove?.(props.file)}
+            >
               <span
                 class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
               >
-                {uploadCtx?.customIcon?.removeIcon?.() || <IconDelete />}
+                {uploadCtx?.slots['remove-icon']?.() ??
+                  uploadCtx?.customIcon?.removeIcon?.() ?? <IconDelete />}
               </span>
             </IconHover>
           )}

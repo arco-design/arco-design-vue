@@ -27,15 +27,18 @@ Customize the rendering content of the options through the `item` slot.
 
 <script>
 export default {
-  data() {
+  setup() {
+    const data = Array(8).fill(undefined).map((_, index) => ({
+      value: `option${index + 1}`,
+      label: `Option ${index + 1}`
+    }));
+    const value = ['option1', 'option3', 'option5'];
+
     return {
-      data: Array(8).fill(undefined).map((_, index) => ({
-        value: `option${index + 1}`,
-        label: `Option ${index + 1}`
-      })),
-      value: ['option1', 'option3', 'option5']
+      data,
+      value
     }
-  }
+  },
 }
 </script>
 ```

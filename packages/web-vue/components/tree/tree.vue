@@ -34,16 +34,23 @@ import { getPrefixCls } from '../_utils/global-config';
 import { TreeInjectionKey } from './context';
 import usePickSlots from '../_hooks/use-pick-slots';
 import {
-  FieldNames,
+  TreeFieldNames,
   TreeNodeData,
   TreeProps,
   FilterTreeNode,
   DropPosition,
   TreeNodeKey,
+  CheckedStrategy,
 } from './interface';
-import { getCheckedStateByCheck, isNodeCheckable } from './utils';
+import {
+  getCheckedStateByCheck,
+  isLeafNode,
+  isNodeCheckable,
+  isNodeExpandable,
+  isNodeSelectable,
+} from './utils';
 import TreeNode from './node';
-import { isFunction, isUndefined } from '../_utils/is';
+import { isArray, isFunction, isUndefined } from '../_utils/is';
 import useMergeState from '../_hooks/use-merge-state';
 import useCheckedState from './hooks/use-checked-state';
 import useTreeData from './hooks/use-tree-data';
@@ -178,7 +185,7 @@ export default defineComponent({
      * @en Specify the field name in the node data
      * */
     fieldNames: {
-      type: Object as PropType<FieldNames>,
+      type: Object as PropType<TreeFieldNames>,
     },
     /**
      * @zh 是否展示连接线
@@ -248,29 +255,57 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 半选状态的节点.仅在 checkable 且 checkStrictly 时生效
+     * @en The keys of half checked. Only valid when checkable and checkStrictly
+     * @version 2.19.0
+     * @vModel
+     */
+    halfCheckedKeys: {
+      type: Array as PropType<Array<string | number>>,
+    },
+    /**
+     * @zh 开启后 checkedKeys 只处理叶子节点，父节点状态由子节点决定（仅在 checkable 且 checkStrictly 为 false 时生效）
+     * @en When enabled, checkedKeys is only for checked leaf nodes, and the status of the parent node is determined by the child node.(Only valid when checkable and checkStrictly is false)
+     * @version 2.21.0
+     */
+    onlyCheckLeaf: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否开启展开时的过渡动效
+     * @en Whether to enable expand transition animation
+     * @version 2.21.0
+     */
+    animation: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     /**
      * @zh 点击树节点时触发
      * @en Triggered when the tree node is clicked
      * @param {Array<string | number>} selectedKeys
-     * @param {{ selected: boolean; selectedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
+     * @param {{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }} event
      */
     'select',
     'update:selectedKeys',
     /**
-     * @zh 点击树节点复选框时触发
-     * @en Triggered when the tree node checkbox is clicked
+     * @zh 点击树节点复选框时触发。`halfCheckedKeys` 和 `halfCheckedNodes` 从 `2.19.0` 开始支持。
+     * @en Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.
      * @param {Array<string | number>} checkedKeys
-     * @param {{ checked: boolean; checkedNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
+     * @param {{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: <string | number>[]; halfCheckedNodes: TreeNodeData[]; }} event
      */
     'check',
     'update:checkedKeys',
+    'update:halfCheckedKeys',
     /**
      * @zh 展开/关闭
      * @en Expand/close
      * @param {Array<string | number>} expandKeys
-     * @param {{ expanded: boolean; expandNodes: TreeNodeData[]; node: TreeNodeData; e: Event; }} event
+     * @param {{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }} event
      */
     'expand',
     'update:expandedKeys',
@@ -308,19 +343,16 @@ export default defineComponent({
     'drop',
   ],
   /**
-   * @zh 标题
-   * @en Title
-   * @slot title
+   * @zh 定制节点图标
+   * @en Custom node icon
+   * @slot icon
+   * @binding {TreeNodeData} node
+   * @version 2.18.0
    */
   /**
-   * @zh 渲染额外的节点内容
-   * @en Render additional node content
-   * @slot extra
-   */
-  /**
-   * @zh 定制 drag 图标
-   * @en Custom drag icon
-   * @slot drag-icon
+   * @zh 定制 switcher 图标
+   * @en Custom switcher icon
+   * @slot switcher-icon
    */
   /**
    * @zh 定制 loading 图标
@@ -328,9 +360,20 @@ export default defineComponent({
    * @slot loading-icon
    */
   /**
-   * @zh 定制 switcher 图标
-   * @en Custom switcher icon
-   * @slot switcher-icon
+   * @zh 定制 drag 图标
+   * @en Custom drag icon
+   * @slot drag-icon
+   * @binding {TreeNodeData} node
+   */
+  /**
+   * @zh 渲染额外的节点内容
+   * @en Render additional node content
+   * @slot extra
+   */
+  /**
+   * @zh 标题
+   * @en Title
+   * @slot title
    */
   setup(props: TreeProps, { emit, slots }) {
     const {
@@ -358,6 +401,9 @@ export default defineComponent({
       defaultExpandSelected,
       defaultExpandChecked,
       autoExpandParent,
+      halfCheckedKeys,
+      onlyCheckLeaf,
+      animation,
     } = toRefs(props);
 
     const prefixCls = getPrefixCls('tree');
@@ -373,6 +419,7 @@ export default defineComponent({
     const switcherIcon = usePickSlots(slots, 'switcher-icon');
     const loadingIcon = usePickSlots(slots, 'loading-icon');
     const dragIcon = usePickSlots(slots, 'drag-icon');
+    const nodeIcon = usePickSlots(slots, 'icon');
     const nodeTitle = usePickSlots(slots, 'title');
     const nodeExtra = usePickSlots(slots, 'extra');
 
@@ -395,9 +442,11 @@ export default defineComponent({
         checkedKeys: propCheckedKeys,
         checkStrictly,
         key2TreeNode,
+        halfCheckedKeys,
+        onlyCheckLeaf,
       })
     );
-    const [selectedKeys, setSelectedKeys] = useMergeState<TreeNodeKey[]>(
+    const [selectedKeys, setSelectedState] = useMergeState<TreeNodeKey[]>(
       defaultSelectedKeys?.value || [],
       reactive({
         value: propSelectedKeys,
@@ -449,7 +498,7 @@ export default defineComponent({
       return [];
     }
 
-    const [expandedKeys, setExpandKeys] = useMergeState<TreeNodeKey[]>(
+    const [expandedKeys, setExpandState] = useMergeState<TreeNodeKey[]>(
       getDefaultExpandedKeys(),
       reactive({
         value: propExpandedKeys,
@@ -480,6 +529,176 @@ export default defineComponent({
       });
     });
 
+    function getPublicCheckedKeys(
+      rawCheckedKeys: TreeNodeKey[],
+      rawCheckedStrategy = checkedStrategy.value
+    ) {
+      let publicCheckedKeys = [...rawCheckedKeys];
+      if (rawCheckedStrategy === 'parent') {
+        publicCheckedKeys = rawCheckedKeys.filter((_key) => {
+          const item = key2TreeNode.value[_key];
+          return (
+            item &&
+            !(
+              !isUndefined(item.parentKey) &&
+              rawCheckedKeys.includes(item.parentKey)
+            )
+          );
+        });
+      } else if (rawCheckedStrategy === 'child') {
+        publicCheckedKeys = rawCheckedKeys.filter((_key) => {
+          return !key2TreeNode.value[_key]?.children?.length;
+        });
+      }
+      return publicCheckedKeys;
+    }
+
+    function getNodes(keys: TreeNodeKey[]) {
+      return keys
+        .map((key) => key2TreeNode.value[key]?.treeNodeData || undefined)
+        .filter(Boolean);
+    }
+
+    function emitCheckEvent(options: {
+      targetKey?: TreeNodeKey;
+      targetChecked?: boolean;
+      newCheckedKeys: TreeNodeKey[];
+      newIndeterminateKeys: TreeNodeKey[];
+      event?: Event;
+    }) {
+      const {
+        targetKey,
+        targetChecked,
+        newCheckedKeys,
+        newIndeterminateKeys,
+        event,
+      } = options;
+      const targetNode = targetKey ? key2TreeNode.value[targetKey] : undefined;
+      const publicCheckedKeys = getPublicCheckedKeys(newCheckedKeys);
+      emit('check', publicCheckedKeys, {
+        checked: targetChecked,
+        node: targetNode?.treeNodeData,
+        checkedNodes: getNodes(publicCheckedKeys),
+        halfCheckedKeys: newIndeterminateKeys,
+        halfCheckedNodes: getNodes(newIndeterminateKeys),
+        e: event,
+      });
+      emit('update:checkedKeys', publicCheckedKeys);
+      emit('update:halfCheckedKeys', newIndeterminateKeys);
+    }
+
+    function emitSelectEvent(options: {
+      targetKey?: TreeNodeKey;
+      targetSelected?: boolean;
+      newSelectedKeys: TreeNodeKey[];
+      event?: Event;
+    }) {
+      const { targetKey, targetSelected, newSelectedKeys, event } = options;
+      const targetNode = targetKey ? key2TreeNode.value[targetKey] : undefined;
+      emit('select', newSelectedKeys, {
+        selected: targetSelected,
+        node: targetNode?.treeNodeData,
+        selectedNodes: getNodes(newSelectedKeys),
+        e: event,
+      });
+      emit('update:selectedKeys', newSelectedKeys);
+    }
+
+    function emitExpandEvent(options: {
+      targetKey?: TreeNodeKey;
+      targetExpanded?: boolean;
+      newExpandedKeys: TreeNodeKey[];
+      event?: Event;
+    }) {
+      const { targetKey, targetExpanded, newExpandedKeys, event } = options;
+      const targetNode = targetKey ? key2TreeNode.value[targetKey] : undefined;
+      emit('expand', newExpandedKeys, {
+        expanded: targetExpanded,
+        node: targetNode?.treeNodeData,
+        expandedNodes: getNodes(newExpandedKeys),
+        e: event,
+      });
+      emit('update:expandedKeys', newExpandedKeys);
+    }
+
+    function setCheckedKeys(keys: TreeNodeKey[]) {
+      const [newCheckedKeys, newIndeterminateKeys] = setCheckedState(
+        keys,
+        [],
+        true
+      );
+      emitCheckEvent({ newCheckedKeys, newIndeterminateKeys });
+    }
+
+    function setSelectedKeys(keys: TreeNodeKey[]) {
+      let newSelectedKeys = keys;
+      if (!multiple.value && keys.length > 1) {
+        newSelectedKeys = [keys[0]];
+      }
+      setSelectedState(newSelectedKeys);
+      emitSelectEvent({
+        newSelectedKeys,
+      });
+    }
+
+    function setExpandedKeys(keys: TreeNodeKey[]) {
+      currentExpandKeys.value = [];
+      setExpandState(keys);
+      emitExpandEvent({ newExpandedKeys: keys });
+    }
+
+    function checkNodes(keys: TreeNodeKey[], checked: boolean) {
+      if (!keys.length) return;
+      let newCheckedKeys = [...checkedKeys.value];
+      let newIndeterminateKeys = [...indeterminateKeys.value];
+      keys.forEach((key) => {
+        const node = key2TreeNode.value[key];
+        if (node) {
+          [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck({
+            node,
+            checked,
+            checkedKeys: [...newCheckedKeys],
+            indeterminateKeys: [...newIndeterminateKeys],
+            checkStrictly: checkStrictly.value,
+          });
+        }
+      });
+      setCheckedState(newCheckedKeys, newIndeterminateKeys);
+      emitCheckEvent({ newCheckedKeys, newIndeterminateKeys });
+    }
+
+    function selectNodes(keys: TreeNodeKey[], selected: boolean) {
+      if (!keys.length) return;
+
+      let newSelectedKeys: TreeNodeKey[];
+
+      if (multiple.value) {
+        const selectedKeysSet = new Set(selectedKeys.value);
+        keys.forEach((key) => {
+          selected ? selectedKeysSet.add(key) : selectedKeysSet.delete(key);
+        });
+        newSelectedKeys = [...selectedKeysSet];
+      } else {
+        newSelectedKeys = selected ? [keys[0]] : [];
+      }
+
+      setSelectedState(newSelectedKeys);
+      emitSelectEvent({ newSelectedKeys });
+    }
+
+    function expandNodes(keys: TreeNodeKey[], expanded: boolean) {
+      const expandedKeysSet = new Set(expandedKeys.value);
+
+      keys.forEach((key) => {
+        expanded ? expandedKeysSet.add(key) : expandedKeysSet.delete(key);
+        onExpandEnd(key);
+      });
+      const newExpandedKeys = [...expandedKeysSet];
+
+      setExpandState(newExpandedKeys);
+      emitExpandEvent({ newExpandedKeys });
+    }
+
     function onCheck(checked: boolean, key: TreeNodeKey, e?: Event) {
       const node = key2TreeNode.value[key];
       if (!node) return;
@@ -493,32 +712,13 @@ export default defineComponent({
       });
 
       setCheckedState(newCheckedKeys, newIndeterminateKeys);
-
-      let publicCheckedKeys = [...newCheckedKeys];
-      if (checkedStrategy.value === 'parent') {
-        publicCheckedKeys = newCheckedKeys.filter((_key) => {
-          const item = key2TreeNode.value[_key];
-          return !(
-            !isUndefined(item.parentKey) &&
-            newCheckedKeys.includes(item.parentKey)
-          );
-        });
-      } else if (checkedStrategy.value === 'child') {
-        publicCheckedKeys = newCheckedKeys.filter((_key) => {
-          const item = key2TreeNode.value[_key];
-          return !item.children?.length;
-        });
-      }
-
-      emit('check', publicCheckedKeys, {
-        checked,
-        node: node.treeNodeData,
-        checkedNodes: publicCheckedKeys.map(
-          (v) => key2TreeNode.value[v]?.treeNodeData
-        ),
-        e,
+      emitCheckEvent({
+        targetKey: key,
+        targetChecked: checked,
+        newCheckedKeys,
+        newIndeterminateKeys,
+        event: e,
       });
-      emit('update:checkedKeys', publicCheckedKeys);
     }
 
     function onSelect(key: TreeNodeKey, e: Event) {
@@ -538,16 +738,14 @@ export default defineComponent({
         selected = true;
         newSelectedKeys = [key];
       }
-      setSelectedKeys(newSelectedKeys);
-      emit('select', newSelectedKeys, {
-        selected,
-        node: node.treeNodeData,
-        selectedNodes: newSelectedKeys.map(
-          (v) => key2TreeNode.value[v]?.treeNodeData
-        ),
-        e,
+
+      setSelectedState(newSelectedKeys);
+      emitSelectEvent({
+        targetKey: key,
+        targetSelected: selected,
+        newSelectedKeys,
+        event: e,
       });
-      emit('update:selectedKeys', newSelectedKeys);
     }
 
     function onExpand(expanded: boolean, key: TreeNodeKey, e?: Event) {
@@ -562,18 +760,17 @@ export default defineComponent({
       expanded ? expandedKeysSet.add(key) : expandedKeysSet.delete(key);
       const newExpandedKeys = [...expandedKeysSet];
 
-      setExpandKeys(newExpandedKeys);
-      currentExpandKeys.value.push(key);
+      setExpandState(newExpandedKeys);
+      if (animation.value) {
+        currentExpandKeys.value.push(key);
+      }
 
-      emit('expand', newExpandedKeys, {
-        expanded,
-        node: node.treeNodeData,
-        expandedNodes: newExpandedKeys.map(
-          (v) => key2TreeNode.value[v]?.treeNodeData
-        ),
-        e,
+      emitExpandEvent({
+        targetKey: key,
+        targetExpanded: expanded,
+        newExpandedKeys,
+        event: e,
       });
-      emit('update:expandedKeys', newExpandedKeys);
     }
 
     function onExpandEnd(key: TreeNodeKey) {
@@ -613,6 +810,7 @@ export default defineComponent({
       switcherIcon,
       loadingIcon,
       dragIcon,
+      nodeIcon,
       nodeTitle,
       nodeExtra,
       treeData,
@@ -692,6 +890,18 @@ export default defineComponent({
       visibleTreeNodeList,
       treeContext,
       virtualListRef: ref(),
+      computedSelectedKeys: selectedKeys,
+      computedExpandedKeys: expandedKeys,
+      computedCheckedKeys: checkedKeys,
+      computedIndeterminateKeys: indeterminateKeys,
+      getPublicCheckedKeys,
+      getNodes,
+      internalCheckNodes: checkNodes,
+      internalSetCheckedKeys: setCheckedKeys,
+      internalSelectNodes: selectNodes,
+      internalSetSelectedKeys: setSelectedKeys,
+      internalExpandNodes: expandNodes,
+      internalSetExpandedKeys: setExpandedKeys,
     };
   },
 
@@ -712,6 +922,167 @@ export default defineComponent({
      */
     scrollIntoView(options: ScrollIntoViewOptions) {
       this.virtualListRef && this.virtualListRef.scrollTo(options);
+    },
+    /**
+     * @zh 获取选中的节点
+     * @en Get selected nodes
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getSelectedNodes() {
+      return this.getNodes(this.computedSelectedKeys);
+    },
+    /**
+     * @zh 获取选中复选框的节点。支持传入 `checkedStrategy`，没有传则取组件的配置。
+     * @en Get checked nodes. Supports passing in `checkedStrategy`, if not passed, the configuration of the component is taken.
+     * @param { checkedStrategy?: 'all' | 'parent' | 'child'; includeHalfChecked?: boolean; } options
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getCheckedNodes(
+      options: {
+        checkedStrategy?: CheckedStrategy;
+        includeHalfChecked?: boolean;
+      } = {}
+    ) {
+      const { checkedStrategy, includeHalfChecked } = options;
+      const checkedKeys = this.getPublicCheckedKeys(
+        this.computedCheckedKeys,
+        checkedStrategy
+      );
+      const checkedNodes = this.getNodes(checkedKeys);
+      return [
+        ...checkedNodes,
+        ...(includeHalfChecked ? this.getHalfCheckedNodes() : []),
+      ];
+    },
+    /**
+     * @zh 获取复选框半选的节点
+     * @en Get half checked nodes
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getHalfCheckedNodes() {
+      return this.getNodes(this.computedIndeterminateKeys);
+    },
+    /**
+     * @zh 获取展开的节点
+     * @en Get expanded nodes
+     * @returns {TreeNodeData[]}
+     * @public
+     * @version 2.19.0
+     */
+    getExpandedNodes() {
+      return this.getNodes(this.computedExpandedKeys);
+    },
+    /**
+     * @zh 设置全部节点的复选框状态
+     * @en Set the checkbox state of all nodes
+     * @param { boolean } checked
+     * @public
+     * @version 2.20.0
+     */
+    checkAll(checked = true) {
+      const { key2TreeNode } = this.treeContext;
+      const newKeys = checked
+        ? Object.keys(key2TreeNode).filter((key) =>
+            isNodeCheckable(key2TreeNode[key])
+          )
+        : [];
+      this.internalSetCheckedKeys(newKeys);
+    },
+    /**
+     * @zh 设置指定节点的复选框状态
+     * @en Sets the checkbox state of the specified node
+     * @param { TreeNodeKey | TreeNodeKey[] } key
+     * @param { boolean } checked
+     * @param { boolean } onlyCheckLeaf
+     * @public
+     * @version 2.20.0，onlyCheckLeaf from 2.21.0
+     */
+    checkNode(
+      key: TreeNodeKey | TreeNodeKey[],
+      checked = true,
+      onlyCheckLeaf = false
+    ) {
+      const { checkStrictly, treeContext } = this;
+      const { key2TreeNode } = treeContext;
+      const keys = (isArray(key) ? key : [key]).filter((key) => {
+        const node = key2TreeNode[key];
+        return (
+          node &&
+          isNodeCheckable(node) &&
+          (checkStrictly || !onlyCheckLeaf || isLeafNode(node)) // onlyCheckLeaf 仅在 checkStrictly 为 false 的时候有效
+        );
+      });
+      this.internalCheckNodes(keys, checked);
+    },
+    /**
+     * @zh 设置全部节点的选中状态
+     * @en Set the selected state of all nodes
+     * @param { boolean } selected
+     * @public
+     * @version 2.20.0
+     */
+    selectAll(selected = true) {
+      const { key2TreeNode } = this.treeContext;
+      const newKeys = selected
+        ? Object.keys(key2TreeNode).filter((key) =>
+            isNodeSelectable(key2TreeNode[key])
+          )
+        : [];
+
+      this.internalSetSelectedKeys(newKeys);
+    },
+    /**
+     * @zh 设置指定节点的选中状态
+     * @en Sets the selected state of the specified node
+     * @param { TreeNodeKey | TreeNodeKey[] } key
+     * @param { boolean } selected
+     * @public
+     * @version 2.20.0
+     */
+    selectNode(key: TreeNodeKey | TreeNodeKey[], selected = true) {
+      const { key2TreeNode } = this.treeContext;
+      const keys = (isArray(key) ? key : [key]).filter(
+        (key) => key2TreeNode[key] && isNodeSelectable(key2TreeNode[key])
+      );
+      this.internalSelectNodes(keys, selected);
+    },
+    /**
+     * @zh 设置全部节点的展开状态
+     * @en Set the expanded state of all nodes
+     * @param { boolean } expanded
+     * @public
+     * @version 2.20.0
+     */
+    expandAll(expanded = true) {
+      const { key2TreeNode } = this.treeContext;
+      const newKeys = expanded
+        ? Object.keys(key2TreeNode).filter((key) =>
+            isNodeExpandable(key2TreeNode[key])
+          )
+        : [];
+
+      this.internalSetExpandedKeys(newKeys);
+    },
+    /**
+     * @zh 设置指定节点的展开状态
+     * @en Sets the expanded state of the specified node
+     * @param { TreeNodeKey | TreeNodeKey[] } key
+     * @param { boolean } expanded
+     * @public
+     * @version 2.20.0
+     */
+    expandNode(key: TreeNodeKey | TreeNodeKey[], expanded = true) {
+      const { key2TreeNode } = this.treeContext;
+      const keys = (isArray(key) ? key : [key]).filter(
+        (key) => key2TreeNode[key] && isNodeExpandable(key2TreeNode[key])
+      );
+      this.internalExpandNodes(keys, expanded);
     },
   },
 });

@@ -38,6 +38,7 @@
   &-item {
     display: inline-block;
     box-sizing: border-box;
+    padding: 0 @pagination-padding-horizontal;
     color: @pagination-color-item-text;
     text-align: center;
     vertical-align: middle;
@@ -113,19 +114,30 @@
 
   /*** 快速跳转 ***/
   &-jumper {
+    display: flex;
+    align-items: center;
     margin-left: @pagination-margin-jumper-left;
 
     > span {
       font-size: @pagination-size-default-font-size;
     }
 
-    &-text-goto {
+    &-text-goto,
+    &-prepend,
+    &-append {
       color: @pagination-color-jumper-goto;
+    }
+
+    &-prepend {
+      margin-right: @pagination-item-spacing;
+    }
+
+    &-append {
+      margin-left: @pagination-item-spacing;
     }
 
     &-input {
       width: @patination-jumper-input-width;
-      margin-left: @pagination-item-spacing;
       padding-right: 2px;
       padding-left: 2px;
 

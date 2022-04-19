@@ -24,11 +24,13 @@ How to use the virtual list.
 
 <script>
 export default {
-  data() {
+  setup() {
+    const options = Array(1000).fill(null).map((_, index) => `Option ${index}`);
+
     return {
-      options: Array(1000).fill(null).map((_, index) => `Option ${index}`)
+      options
     }
-  }
+  },
 }
 </script>
 ```

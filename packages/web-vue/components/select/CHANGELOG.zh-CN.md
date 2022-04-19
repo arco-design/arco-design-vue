@@ -2,6 +2,106 @@
 changelog: true
 ```
 
+## 2.24.0
+
+`2022-04-15`
+
+### 🆎 类型修正
+
+- `Option、OptionData、GroupOption`  接口名修改为 `SelectOption、SelectOptionData、SelectOptionGroup` ([#983](https://github.com/arco-design/arco-design-vue/pull/983))
+
+
+## 2.23.0
+
+`2022-04-08`
+
+### 🆕 新增功能
+
+- 增加 trigger 插槽 ([#952](https://github.com/arco-design/arco-design-vue/pull/952))
+
+
+## 2.22.0
+
+`2022-04-01`
+
+### 💎 功能优化
+
+- 加载状态下不再可以触发回车事件 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🆕 新增功能
+
+- 增加 `field-names` 属性，允许自定义字段 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+### 🐛 问题修复
+
+- 修复 `allow-create` 模式下会出现重复选项的问题 ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
+
+
+## 2.21.2
+
+`2022-03-29`
+
+### 🐛 问题修复
+
+- 修复 `fallback-option` 属性设置 false 失效的问题 ([#893](https://github.com/arco-design/arco-design-vue/pull/893))
+- 修复多选模式下选择的标签默认不显示删除的问题 ([#886](https://github.com/arco-design/arco-design-vue/pull/886))
+
+
+## 2.20.1
+
+`2022-03-21`
+
+### 💅 样式更新
+
+- 修复选项 #icon 插槽的垂直居中问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+- 修复选项超出宽度后没有显示省略的问题 ([#854](https://github.com/arco-design/arco-design-vue/pull/854))
+
+
+## 2.20.0
+
+`2022-03-18`
+
+### 🐛 问题修复
+
+- 修复开启虚拟列表时，搜索功能失败的问题 ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+- 修复小键盘 `Enter` 键不能选中的问题 ([#841](https://github.com/arco-design/arco-design-vue/pull/841))
+
+
+## 2.18.0
+
+`2022-03-04`
+
+### 💎 功能优化
+
+- 选择框展示使用 flex 布局方式 ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+- trigger-props 属性可以覆盖默认属性 ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
+
+### 🐛 问题修复
+
+- 修复 label 属性失效的问题 ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+- 修复 option 的属性没有同步更新的问题 ([#777](https://github.com/arco-design/arco-design-vue/pull/777))
+
+
+## 2.18.0-beta.2
+
+`2022-02-25`
+
+### 🆕 新增功能
+
+- 增加 `search-delay` 属性，并默认为 `500ms` ([#728](https://github.com/arco-design/arco-design-vue/pull/728))
+
+
+## 2.18.0-beta.1
+
+`2022-02-18`
+
+### ⚠️ 重点注意
+
+- 组件使用 context 重构，允许对 Option 组件的封装使用 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- 增加 `valueKey` 属性，选项 value 支持 object 形式 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+- <option> 组件的类名由 arco-dropdown-option 改为 arco-select-option，并使用 flex 垂直居中布局 ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
+
+
 ## 2.16.0
 
 `2022-01-21`

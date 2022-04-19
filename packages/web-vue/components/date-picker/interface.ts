@@ -2,16 +2,27 @@ import { Slot, VNode } from 'vue';
 import { Dayjs } from 'dayjs';
 import { TimePickerProps } from '../time-picker/interface';
 
-// 支持：Date ｜ 字符串 ｜ 时间戳
 export type CalendarValue = Date | string | number;
 export type ValueFormat = 'timestamp' | 'Date' | string;
 
 export interface ShortcutType {
+  /**
+   * @zh 选项的内容
+   * @en the content of shortcut
+   */
   label: string | number | (() => VNode);
+  /**
+   * @zh 选项值
+   * @en the value of shortcut
+   */
   value:
-    | CalendarValue
-    | CalendarValue[]
-    | (() => CalendarValue | CalendarValue[]);
+    | (Date | string | number)
+    | (Date | string | number)[]
+    | (() => (Date | string | number) | (Date | string | number)[]);
+  /**
+   * @zh 解析值所使用的格式，参考[字符串解析格式](#字符串解析格式)
+   * @en the format use to parse value, refer to [String Parsing Format](#string-parsing-format)
+   */
   format?: string;
 }
 
@@ -36,8 +47,10 @@ export type RangeDisabledTime = (
 
 export type Mode = 'date' | 'year' | 'quarter' | 'month' | 'week';
 
+export type WeekStart = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
 export interface DatePickerProps {
-  dayStartOfWeek: 0 | 1;
+  dayStartOfWeek: WeekStart;
   format?: string | FormatFunc;
   modelValue?: CalendarValue;
   defaultValue?: CalendarValue;
@@ -48,7 +61,7 @@ export interface DatePickerProps {
 }
 
 export interface WeekPickerProps {
-  dayStartOfWeek: 0 | 1;
+  dayStartOfWeek: WeekStart;
   format?: string;
   modelValue?: CalendarValue;
   defaultValue?: CalendarValue;
@@ -124,49 +137,32 @@ export interface PickerSlots {
 }
 
 export interface RangePickerProps extends BasePickerProps {
-  /** 范围选择器的类型 */
   mode: Mode;
-  /** 日历组件的值 */
   modelValue?: CalendarValue[];
-  /** 默认日期 */
   defaultValue?: CalendarValue[];
-  /** 默认面板显示的日期 */
   defaultPickerValue?: CalendarValue[];
-  /** 面板显示的日期 */
   pickerValue?: CalendarValue[];
-  /** 是否禁用 */
   disabled: boolean | boolean[];
-  /** 每周的第一天开始于周几，0 - 周日，1 - 周一。(默认0) */
-  dayStartOfWeek: 0 | 1;
-  /** 展示日期的格式，参考[字符串解析格式](#字符串解析格式) */
+  dayStartOfWeek: WeekStart;
   format?: string;
-  /** 是否增加时间选择 */
   showTime: boolean;
-  /** 提示文案 */
   placeholder?: string[];
-  /** 时间显示的参数，参考 [TimePickerProps](/vue/component/time-picker)。 */
   timePickerProps?: Partial<TimePickerProps>;
-  /** 不可选的日期 */
   disabledDate?: RangeDisabledDate;
-  /** 不可选取的时间 */
   disabledTime?: RangeDisabledTime;
   separator?: string;
 }
 
 export interface RangePickerEvents {
-  /** 日历组件值发生改变时的回调 */
   onChange?: (
     dateString: string[] | undefined,
     date: Date[] | undefined
   ) => void;
-  /** 选中日期发生改变但组件值未改变时的回调 */
   onSelect?: (
     dateString: (string | undefined)[],
     value: (Date | undefined)[]
   ) => void;
-  /** 点击确认按钮的回调 */
   onOk?: (dateString: string[], date: Date[]) => void;
-  /** 面板日期改变的回调 */
   onPickerValueChange?: (dateString: string[], value: Date[]) => void;
 }
 
