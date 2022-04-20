@@ -96,7 +96,7 @@ export default defineComponent({
             modelValue={props.selectedRowKeys ?? []}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(values: string[]) => emit('select', values)}
+            onChange={(values: string[]) => emit('select', values, value)}
             onClick={(ev: Event) => ev.stopPropagation()}
           />
         );
@@ -109,7 +109,7 @@ export default defineComponent({
             modelValue={props.selectedRowKeys?.[0] ?? ''}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(value: string) => emit('select', [value])}
+            onChange={(value: string) => emit('select', [value], value)}
             onClick={(ev: Event) => ev.stopPropagation()}
           />
         );

@@ -41,9 +41,9 @@ export const useRowSelection = ({
     emit('selectionChange', _selectedRowKeys.value);
   };
 
-  const handleSelect = (values: string[]) => {
+  const handleSelect = (values: string[], value: string) => {
     _selectedRowKeys.value = values;
-    emit('select', values);
+    emit('select', values, value);
     emit('selectionChange', values);
   };
 

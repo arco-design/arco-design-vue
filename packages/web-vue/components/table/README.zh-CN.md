@@ -88,7 +88,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |---|---|---|
 |expand|点击展开行时触发|rowKey: `string`|
 |expanded-change|已展开的数据行发生改变时触发|rowKeys: `string[]`|
-|select|点击行选择器时触发|rowKeys: `string[]`|
+|select|点击行选择器时触发|rowKeys: `string[]`<br>rowKey: `string`|
 |select-all|点击全选选择器时触发|checked: `boolean`|
 |selection-change|已选择的数据行发生改变时触发|rowKeys: `string[]`|
 |sorter-change|排序规则发生改变时触发|dataIndex: `string`<br>direction: `string`|

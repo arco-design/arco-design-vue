@@ -361,7 +361,9 @@ export default defineComponent({
       >,
     },
     onSelect: {
-      type: [Function, Array] as PropType<(rowKeys: string[]) => void>,
+      type: [Function, Array] as PropType<
+        (rowKeys: string[], rowKey: string) => void
+      >,
     },
     onSelectAll: {
       type: [Function, Array] as PropType<(checked: boolean) => void>,
@@ -414,6 +416,7 @@ export default defineComponent({
      * @zh 点击行选择器时触发
      * @en Triggered when the row selector is clicked
      * @param {string[]} rowKeys
+     * @param {string} rowKey
      */
     'select',
     /**
