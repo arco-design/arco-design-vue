@@ -21,3 +21,9 @@ export const setLocalStorage = (name: string, value: any): void => {
     localStorage.setItem(name, value);
   } catch {}
 };
+
+export const removeLocalStorage = (name: string) => {
+  try {
+    localStorage.removeItem(name);
+  } catch {}
+};

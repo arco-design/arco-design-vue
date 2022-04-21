@@ -19,6 +19,7 @@
         <div v-if="description" class="article-description">
           {{ description }}
         </div>
+        <ChangelogBox v-if="changelog" :changelog="changelog" />
       </div>
       <div class="article-content">
         <slot />
@@ -43,16 +44,19 @@ import ArcoFooter from '../footer/index.vue';
 import { CollapseContext, collapseInjectionKey } from '../../context';
 import { articleInjectionKey } from './context';
 import { AnchorData } from '../aside-anchor/interface';
+import ChangelogBox from '../changelog-box/index.vue';
 
 export default defineComponent({
   name: 'ArcoArticle',
   components: {
+    ChangelogBox,
     AsideAnchor,
     ArcoFooter,
   },
   props: {
     title: String,
     description: String,
+    changelog: Array,
     meta: Object as PropType<{ category: string; type: string }>,
   },
   setup(props) {

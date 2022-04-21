@@ -15,7 +15,7 @@ export const getMainVue = ({
   components: string[];
   data: Record<string, any>;
 }) => `<template>
-  <arco-article v-bind="data">
+  <arco-article v-bind="data" :changelog="changelog">
     ${html}
   </arco-article>
 </template>
@@ -34,10 +34,12 @@ export default defineComponent({
     const getMessage = (zh, en) => {
       return locale.value === 'zh-CN' ? zh : en;
     };
+    const changelog = typeof _changelog === 'undefined' ? undefined : _changelog;
 
     return {
       locale,
       data,
+      changelog,
       getMessage
     };
   }

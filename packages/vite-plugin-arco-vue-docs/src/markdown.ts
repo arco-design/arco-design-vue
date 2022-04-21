@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs-extra';
 import { isCode, isFileImport, isI18nDescription, toPascalCase } from './utils';
 import marked from './marked';
 import { getDemoVue, getMainVue } from './vue-template';
@@ -6,7 +7,11 @@ import { createDescriptor } from './descriptor';
 import { I18nData } from './interface';
 import { parseChangelog } from './parse-changelog';
 
-export const transformMain = (tokens: any[], frontMatter: any) => {
+export const transformMain = (
+  tokens: any[],
+  filename: string,
+  frontMatter: any
+) => {
   const imports: string[] = [];
   const components: string[] = [];
 
@@ -18,6 +23,13 @@ export const transformMain = (tokens: any[], frontMatter: any) => {
       components.push(componentName);
     }
   }
+  const changelog = /en-US/.test(filename)
+    ? './CHANGELOG.md'
+    : './CHANGELOG.zh-CN.md';
+  try {
+    fs.accessSync(path.resolve(path.dirname(filename), changelog));
+    imports.push(`import _changelog from '${changelog}';`);
+  } catch {}
 
   // @ts-ignore
   const html = marked.parser(tokens);
