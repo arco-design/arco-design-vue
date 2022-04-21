@@ -14,6 +14,8 @@ description: 用来输入标签。
 
 @import ./__demo__/size.md
 
+## API
+
 
 ### `<input-tag>` Props
 

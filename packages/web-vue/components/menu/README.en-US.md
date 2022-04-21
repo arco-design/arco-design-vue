@@ -24,6 +24,8 @@ description: Organize, arrange, and display a list of options.
 
 @import ./__demo__/pop-button.md
 
+## API
+
 
 ### `<menu>` Props
 

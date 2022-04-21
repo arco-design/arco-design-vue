@@ -25,6 +25,8 @@ description: The content area that can be collapsed/expanded.
 
 @import ./__demo__/icon-position.md
 
+## API
+
 %%API(collapse.vue)%%
 
 %%API(collapse-item.vue)%%

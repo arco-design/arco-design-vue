@@ -24,6 +24,8 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 
 `<dropdown>` 组件继承 `<trigger>` 组件的全部属性
 
+## API
+
 
 ### `<dropdown>` Props
 

@@ -16,6 +16,8 @@ description: 一般用于详情页的信息展示。
 
 @import ./__demo__/layout.md
 
+## API
+
 
 ### `<descriptions>` Props
 

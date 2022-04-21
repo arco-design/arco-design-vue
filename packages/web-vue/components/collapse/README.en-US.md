@@ -16,6 +16,8 @@ description: The content area that can be collapsed/expanded.
 
 @import ./__demo__/icon-position.md
 
+## API
+
 
 ### `<collapse>` Props
 

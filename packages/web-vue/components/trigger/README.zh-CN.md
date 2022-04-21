@@ -20,6 +20,8 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 
 @import ./__demo__/translate.md
 
+## API
+
 
 ### `<trigger>` Props
 

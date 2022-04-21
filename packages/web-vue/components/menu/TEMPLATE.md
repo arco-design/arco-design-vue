@@ -33,6 +33,8 @@ description: Organize, arrange, and display a list of options.
 
 @import ./__demo__/pop-button.md
 
+## API
+
 %%API(base-menu.vue)%%
 
 %%API(sub-menu.tsx)%%

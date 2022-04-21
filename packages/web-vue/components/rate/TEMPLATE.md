@@ -33,4 +33,6 @@ description: The component used for scoring or starring.
 
 @import ./__demo__/grading.md
 
+## API
+
 %%API(rate.tsx)%%

@@ -30,7 +30,9 @@ description: Clearly indicate the task flow and the current degree of completion
 
 @import ./__demo__/changeable.md
 
-teps
+## API
+
+
 ### `<steps>` Props
 
 |Attribute|Description|Type|Default|

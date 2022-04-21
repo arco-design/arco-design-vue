@@ -24,6 +24,8 @@ description: Give users feedback on the running status of tasks in the current s
 
 @import ./__demo__/trackColor.md
 
+## API
+
 
 ### `<progress>` Props
 

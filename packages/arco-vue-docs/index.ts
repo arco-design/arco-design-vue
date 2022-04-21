@@ -9,6 +9,7 @@ import router from './router';
 import locale from './locale';
 import App from './app.vue';
 import ArcoArticle from './components/article/index.vue';
+import AnchorHead from './components/anchor-head/index.vue';
 import CodeBlock from './components/code-block/index.vue';
 import CellDemo from './components/cell-demo/index.vue';
 import CellCode from './components/cell-code/index.vue';
@@ -76,6 +77,7 @@ checkLogin().then(() => {
   app.component(CodeBlock.name, CodeBlock);
   app.component(CellDemo.name, CellDemo);
   app.component(CellCode.name, CellCode);
+  app.component(AnchorHead.name, AnchorHead);
   app.component(ArcoArticle.name, ArcoArticle);
   app.mount('#root');
 });

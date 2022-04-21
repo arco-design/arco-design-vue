@@ -35,4 +35,6 @@ description: Mutually exclusive operation controls, users can turn on or turn of
 
 @import ./__demo__/icon.md
 
+## API
+
 %%API(switch.vue)%%

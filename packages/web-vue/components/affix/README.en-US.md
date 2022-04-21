@@ -18,6 +18,8 @@ description: Pin the page elements to the visible range. When the content area i
 
 @import ./__demo__/container.md
 
+## API
+
 
 ### `<affix>` Props
 

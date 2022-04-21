@@ -22,6 +22,8 @@ description: Organize content in the same view. You can view the content of one 
 
 @import ./__demo__/editable.md
 
+## API
+
 
 ### `<tabs>` Props
 

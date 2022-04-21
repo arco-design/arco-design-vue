@@ -29,6 +29,8 @@ description: Used to display titles, paragraphs, and text content.
 
 @import ./__demo__/ellipsis.md
 
+## API
+
 %%API(typography.vue)%%
 
 %%API(base.tsx)%%

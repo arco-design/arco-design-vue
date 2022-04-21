@@ -16,6 +16,8 @@ description: 用作头像显示，可以为图片、图标或字符形式展示�
 
 @import ./__demo__/fit.md
 
+## API
+
 
 ### `<avatar>` Props
 

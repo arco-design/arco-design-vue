@@ -12,6 +12,8 @@ description: 将加载中的数据用灰色占位。
 
 @import ./__demo__/animation.md
 
+## API
+
 
 ### `<skeleton>` Props
 

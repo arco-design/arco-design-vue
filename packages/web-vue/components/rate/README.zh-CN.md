@@ -22,6 +22,8 @@ description: 用于评分或打星的组件。
 
 @import ./__demo__/grading.md
 
+## API
+
 
 ### `<rate>` Props
 

@@ -24,6 +24,8 @@ description: Sliding input device, showing current value and selectable range.
 
 @import ./__demo__/tooltip.md
 
+## API
+
 
 ### `<slider>` Props
 

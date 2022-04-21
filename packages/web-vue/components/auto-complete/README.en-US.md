@@ -12,6 +12,8 @@ description: The auto-complete function of the input.
 
 @import ./__demo__/strict.md
 
+## API
+
 
 ### `<auto-complete>` Props
 

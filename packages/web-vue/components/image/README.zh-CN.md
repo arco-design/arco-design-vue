@@ -28,6 +28,8 @@ description: 展示和预览图片。
 
 @import ./__demo__/preview-popup-container.md
 
+## API
+
 
 ### `<image>` Props
 

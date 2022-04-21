@@ -12,6 +12,8 @@ description: Divide the panel into two parts.
 
 @import ./__demo__/nested.md
 
+## API
+
 
 ### `<split>` Props
 

@@ -26,6 +26,8 @@ description: When there are too many commands on the page, the alternative comma
 
 `<dropdown>` 组件继承 `<trigger>` 组件的全部属性
 
+## API
+
 
 ### `<dropdown>` Props
 

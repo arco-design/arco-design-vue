@@ -10,6 +10,8 @@ description: 用于在输入中提及某人或某事，常用于发布、聊天�
 
 @import ./__demo__/prefix.md
 
+## API
+
 
 ### `<mention>` Props
 

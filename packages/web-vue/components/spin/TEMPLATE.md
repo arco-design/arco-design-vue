@@ -29,4 +29,6 @@ description: Used for the loading state of pages and blocks-when a part of the p
 
 @import ./__demo__/icon.md
 
+## API
+
 %%API(spin.tsx)%%

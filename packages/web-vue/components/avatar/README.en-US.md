@@ -18,6 +18,8 @@ description: Used as an avatar, it can be displayed in the form of pictures, ico
 
 @import ./__demo__/fit.md
 
+## API
+
 
 ### `<avatar>` Props
 

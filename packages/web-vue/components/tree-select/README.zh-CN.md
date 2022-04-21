@@ -36,6 +36,8 @@ description: 可以对树形结构数据进行选择。
 
 @import ./__demo__/fallback.md
 
+## API
+
 
 ### `<tree-select>` Props
 

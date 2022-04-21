@@ -16,6 +16,8 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 
 @import ./__demo__/size.md
 
+## API
+
 
 ### `<radio>` Props
 

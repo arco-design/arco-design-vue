@@ -25,4 +25,6 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 
 @import ./__demo__/auto-size.md
 
+## API
+
 %%API(textarea.vue)%%

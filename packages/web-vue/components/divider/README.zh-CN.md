@@ -13,6 +13,8 @@ description: 划分内容区域，对模块做分隔。
 
 @import ./__demo__/vertical.md
 
+## API
+
 
 ### `<divider>` Props
 

@@ -16,6 +16,8 @@ description: 设置组件之间的间距
 
 @import ./__demo__/wrap.md
 
+## API
+
 
 ### `<space>` Props
 

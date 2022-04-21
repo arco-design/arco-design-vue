@@ -31,6 +31,8 @@ description: Used to add hover, click, focus and other events to the element, an
 
 @import ./__demo__/translate.md
 
+## API
+
 %%API(trigger.tsx)%%
 
 ```ts

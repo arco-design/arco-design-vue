@@ -14,6 +14,8 @@ description: 展示评论信息
 
 @import ./__demo__/editor.md
 
+## API
+
 
 ### `<comment>` Props
 

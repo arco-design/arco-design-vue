@@ -25,4 +25,6 @@ description: Telescopic frame components.
 
 @import ./__demo__/custom-triggers.md
 
+## API
+
 %%API(resize-box.vue)%%

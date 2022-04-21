@@ -24,6 +24,8 @@ description: 互斥性的操作控件，用户可打开或关闭某个功能。
 
 @import ./__demo__/icon.md
 
+## API
+
 
 ### `<switch>` Props
 

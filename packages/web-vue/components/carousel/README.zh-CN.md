@@ -18,6 +18,8 @@ description: 用于展示多张图片、视频或内嵌框架等内容的循环�
 
 @import ./__demo__/fade.md
 
+## API
+
 
 ### `<carousel>` Props
 

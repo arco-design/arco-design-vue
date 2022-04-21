@@ -14,6 +14,8 @@ description: 多行纯文本编辑控件，适用于评论或反馈表单中的�
 
 @import ./__demo__/auto-size.md
 
+## API
+
 
 ### `<textarea>` Props
 

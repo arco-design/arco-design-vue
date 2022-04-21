@@ -24,6 +24,8 @@ description: 按照时间顺序或倒序规则的展示信息内容。
 
 @import ./__demo__/label.md
 
+## API
+
 
 ### `<timeline>` Props
 

@@ -39,6 +39,8 @@ description: Clearly indicate the task flow and the current degree of completion
 
 @import ./__demo__/changeable.md
 
-teps%%API(steps.vue)%%
+## API
+
+%%API(steps.vue)%%
 
 %%API(step.vue)%%

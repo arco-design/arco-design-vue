@@ -19,6 +19,9 @@
       >
         {{ item.title }}
       </a-anchor-link>
+      <a-anchor-link v-if="hasAPIAnchor" key="article-api" href="#API">
+        API
+      </a-anchor-link>
     </a-anchor>
   </aside>
 </template>
@@ -42,6 +45,7 @@ export default defineComponent({
   emits: ['buttonClick'],
   setup(props) {
     const { locale } = useI18n();
+    const hasAPIAnchor = ref(false);
 
     const getMessage = (zh: string, en: string) => {
       return locale.value === 'zh-CN' ? zh : en;
@@ -61,9 +65,14 @@ export default defineComponent({
       },
     ]);
 
+    onMounted(() => {
+      hasAPIAnchor.value = !!document.querySelector('.article-content #API');
+    });
+
     return {
       cls,
       buttonCls,
+      hasAPIAnchor,
       getMessage,
     };
   },

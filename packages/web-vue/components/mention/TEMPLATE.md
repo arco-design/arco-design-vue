@@ -21,4 +21,6 @@ description: Used to mention someone or something in the input, often used for p
 
 @import ./__demo__/prefix.md
 
+## API
+
 %%API(mention.tsx)%%

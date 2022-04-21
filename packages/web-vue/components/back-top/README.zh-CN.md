@@ -10,6 +10,8 @@ description: 可一键返回顶部的按钮。
 
 @import ./__demo__/custom.md
 
+## API
+
 
 ### `<back-top>` Props
 

@@ -148,6 +148,13 @@ marked.use({
   breaks: true,
   xhtml: true,
   renderer: {
+    heading(text: string, level: number, raw: string) {
+      if ([2, 3].includes(level)) {
+        const anchor = raw.replace(/\s+/g, '-');
+        return `<anchor-head level="${level}" href="${anchor}">${text}</anchor-head>`;
+      }
+      return `<h${level} id="${raw}">${text}</h${level}>`;
+    },
     link(this: any, href, title, text) {
       href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);
       if (href === null) {

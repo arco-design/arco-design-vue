@@ -27,6 +27,8 @@ description: In a set of data, the user can select one or more data through the 
 
 @import ./__demo__/custom.md
 
+## API
+
 %%API(checkbox.vue)%%
 
 %%API(checkbox-group.vue)%%

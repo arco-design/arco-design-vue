@@ -24,6 +24,8 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 
 @import ./__demo__/custom.md
 
+## API
+
 
 ### `<pagination>` Props
 

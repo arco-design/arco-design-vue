@@ -29,4 +29,6 @@ description: Carousel is used to display multiple pictures, videos, or embedded 
 
 @import ./__demo__/fade.md
 
+## API
+
 %%API(carousel.vue)%%

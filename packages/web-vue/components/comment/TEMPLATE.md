@@ -25,4 +25,6 @@ description: Display a comment.
 
 @import ./__demo__/editor.md
 
+## API
+
 %%API(comment.vue)%%

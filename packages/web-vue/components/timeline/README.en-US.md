@@ -26,6 +26,8 @@ description: Display information content in chronological or reverse order.
 
 @import ./__demo__/label.md
 
+## API
+
 
 ### `<timeline>` Props
 

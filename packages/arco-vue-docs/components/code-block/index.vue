@@ -1,6 +1,6 @@
 <template>
   <section class="code-block">
-    <h2>{{ title }}</h2>
+    <anchor-head :level="2" :href="$attrs.id">{{ title }}</anchor-head>
     <slot name="description" />
     <slot />
   </section>
@@ -8,10 +8,14 @@
 
 <script lang="ts">
 import { defineComponent, inject } from 'vue';
+import AnchorHead from '../anchor-head/index.vue';
 import { articleInjectionKey } from '../article/context';
 
 export default defineComponent({
   name: 'CodeBlock',
+  components: {
+    AnchorHead,
+  },
   props: {
     title: String,
   },
