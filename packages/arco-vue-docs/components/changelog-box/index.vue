@@ -26,7 +26,7 @@
           </Select>
         </GridItem>
         <GridItem :span="2">
-          <Space v-if="filterType === 'version'">
+          <Space v-if="filterType === 'version'" fill>
             <Select v-model="start" :options="[...versions].reverse()" />
             {{ t('changelogBox.to') }}
             <Select v-model="end" :options="versions" />
@@ -113,6 +113,22 @@ import {
   GridItem,
 } from '@arco-design/web-vue';
 
+const compareVersion = (v1: string, v2: string) => {
+  const mainArray1 = v1.split('-');
+  const mainArray2 = v2.split('-');
+
+  const array1 = mainArray1[0].split('.');
+  const array2 = mainArray2[0].split('.');
+  for (let i = 0; i < 3; i++) {
+    if (array1[i] !== array2[i]) {
+      return parseInt(array1[i] ?? '0', 10) > parseInt(array2[i] ?? '0', 10)
+        ? 1
+        : -1;
+    }
+  }
+  return 0;
+};
+
 export default defineComponent({
   name: 'ChangelogBox',
   components: {
@@ -130,7 +146,7 @@ export default defineComponent({
   },
   props: {
     changelog: {
-      type: Array,
+      type: Array as PropType<any[]>,
       required: true,
     },
   },
@@ -150,8 +166,23 @@ export default defineComponent({
     ]);
 
     const filterChangelog = computed(() => {
-      return props.changelog.map((item) => {
-        return item;
+      return props.changelog.filter((item) => {
+        if (filterType.value === 'version') {
+          if (start.value && compareVersion(start.value, item.version) === 1) {
+            return false;
+          }
+          if (end.value && compareVersion(item.version, end.value) === 1) {
+            return false;
+          }
+        } else {
+          if (start.value && item.date < start.value) {
+            return false;
+          }
+          if (end.value && item.date > end.value) {
+            return false;
+          }
+        }
+        return true;
       });
     });
 
@@ -194,12 +225,17 @@ export default defineComponent({
   }
 
   &-filter {
+    margin-bottom: 20px;
+
     &-title {
       margin-bottom: 10px;
       font-weight: 500;
     }
 
-    margin-bottom: 20px;
+    :deep(.arco-space-item):first-of-type,
+    :deep(.arco-space-item):last-of-type {
+      flex: 1;
+    }
   }
 
   &-content {

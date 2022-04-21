@@ -60,10 +60,10 @@ description: Button is a command component that can initiate an instant operatio
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|type|Children button types are divided into five types: secondary, primary, dashed, outline and text.|`'primary' \| 'secondary' \| 'outline' \| 'dashed' \| 'text'`|`'secondary'`|
-|status|Children button state|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`|
-|shape|Button shape|`'square' \| 'round' \| 'circle'`|`'square'`|
-|size|Children button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|type|Children button types are divided into five types: secondary, primary, dashed, outline and text.|`'primary' \| 'secondary' \| 'outline' \| 'dashed' \| 'text'`|`-`|
+|status|Children button state|`'normal' \| 'warning' \| 'success' \| 'danger'`|`-`|
+|shape|Button shape|`'square' \| 'round' \| 'circle'`|`-`|
+|size|Children button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |disabled|All children whether the button is disabled|`boolean`|`false`|
 
 
