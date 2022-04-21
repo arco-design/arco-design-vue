@@ -149,7 +149,7 @@ marked.use({
   xhtml: true,
   renderer: {
     heading(text: string, level: number, raw: string) {
-      if ([2, 3].includes(level)) {
+      if (level === 2) {
         const anchor = raw.replace(/\s+/g, '-');
         return `<anchor-head level="${level}" href="${anchor}">${text}</anchor-head>`;
       }
