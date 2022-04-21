@@ -53,7 +53,7 @@ export default function vueMdPlugin(): Plugin {
 
       const vueCode = isDemoMarkdown(id)
         ? transformDemo(tokens, id, frontMatter)
-        : transformMain(tokens, frontMatter);
+        : transformMain(tokens, id, frontMatter);
 
       return vuePlugin.transform?.call(this, vueCode, getVueId(id));
     },
@@ -81,7 +81,7 @@ export default function vueMdPlugin(): Plugin {
 
       const component = isDemo
         ? transformDemo(tokens, file, frontMatter)
-        : transformMain(tokens, frontMatter);
+        : transformMain(tokens, file, frontMatter);
 
       if (isDemo) {
         const virtualPath = `/@virtual${file}`;
