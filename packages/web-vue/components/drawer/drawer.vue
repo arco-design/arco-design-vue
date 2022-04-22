@@ -337,7 +337,7 @@ export default defineComponent({
     let globalKeyDownListener = false;
 
     const handleGlobalKeyDown = (ev: KeyboardEvent) => {
-      if (props.escToClose && ev.key === KEYBOARD_KEY.ESC) {
+      if (props.escToClose && ev.key === KEYBOARD_KEY.ESC && isLastDialog()) {
         handleCancel();
       }
     };
@@ -356,7 +356,9 @@ export default defineComponent({
       }
     };
 
-    const { zIndex } = usePopupManager({ visible: computedVisible });
+    const { zIndex, isLastDialog } = usePopupManager('dialog', {
+      visible: computedVisible,
+    });
     const isFixed = computed(() => {
       return containerRef?.value === document.body;
     });

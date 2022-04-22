@@ -1,115 +1,101 @@
+import type { Ref } from 'vue';
 import {
-  ComponentInternalInstance,
   getCurrentInstance,
   onMounted,
   onBeforeUnmount,
   ref,
-  computed,
-  Ref,
-  watchEffect,
+  watch,
 } from 'vue';
 
-const BASE_Z_INDEX = 1000;
+export type PopupType = 'popup' | 'dialog' | 'message';
+
+const POPUP_BASE_Z_INDEX = 1000;
+const MESSAGE_BASE_Z_INDEX = 5000;
 const Z_INDEX_STEP = 1;
 
 class PopupManager {
-  zIndex = 0;
+  private popupStack = {
+    popup: new Set<number>(),
+    dialog: new Set<number>(),
+    message: new Set<number>(),
+  };
 
-  popupStack: Set<string> = new Set();
-
-  instanceMap: Map<string, ComponentInternalInstance> = new Map();
-
-  getInstance(id: string) {
-    return this.instanceMap.get(id);
-  }
-
-  registerInstance(id: string, instance: ComponentInternalInstance | null) {
-    if (!instance) return;
-    this.instanceMap.set(id, instance);
-  }
-
-  deregisterInstance(id: string) {
-    this.instanceMap.delete(id);
-  }
-
-  nextZIndex() {
-    if (!this.zIndex) {
-      this.zIndex = BASE_Z_INDEX;
-    } else {
-      this.zIndex += Z_INDEX_STEP;
+  private getNextZIndex = (type: PopupType) => {
+    if (type === 'message') {
+      return MESSAGE_BASE_Z_INDEX + this.popupStack.message.size * Z_INDEX_STEP;
     }
-    return this.zIndex;
-  }
+    return POPUP_BASE_Z_INDEX + this.popupStack.popup.size * Z_INDEX_STEP;
+  };
 
-  open(id: string) {
-    this.popupStack.add(id);
-  }
+  public add = (id: number, type: PopupType) => {
+    this.popupStack[type].add(id);
+    if (type === 'dialog') {
+      this.popupStack.popup.add(id);
+    }
+    return this.getNextZIndex(type);
+  };
 
-  close(id: string) {
-    this.popupStack.delete(id);
-  }
+  public delete = (id: number, type: PopupType) => {
+    this.popupStack[type].delete(id);
+    if (type === 'dialog') {
+      this.popupStack.popup.delete(id);
+    }
+  };
+
+  public isLastDialog = (id: number) => {
+    if (this.popupStack.dialog.size > 1) {
+      const array = Array.from(this.popupStack.dialog);
+      return id === array[array.length - 1];
+    }
+    return true;
+  };
 }
 
-let popupManager: PopupManager;
+const popupManager = new PopupManager();
 
-const generateId = (() => {
-  let i = 0;
-  return (prefix = '') => {
-    i += 1;
-    return `${prefix}${i}`;
-  };
-})();
-
-export default function usePopupManager({
-  visible,
-  runOnMounted,
-}: {
-  visible?: Ref<boolean>;
-  runOnMounted?: boolean;
-} = {}) {
-  const id = generateId();
-  const _zIndex = ref<number>();
-
-  if (!popupManager) {
-    popupManager = new PopupManager();
-  }
-
-  const zIndex = computed(() => {
-    return _zIndex.value || 0;
-  });
-
-  const nextZIndex = () => {
-    _zIndex.value = popupManager.nextZIndex();
-    return _zIndex.value;
-  };
-
-  onMounted(() => {
-    const instance = getCurrentInstance();
-    popupManager.registerInstance(id, instance);
-  });
-
-  onBeforeUnmount(() => {
-    popupManager.deregisterInstance(id);
-  });
+export default function usePopupManager(
+  type: PopupType,
+  {
+    visible,
+    runOnMounted,
+  }: {
+    visible?: Ref<boolean>;
+    runOnMounted?: boolean;
+  } = {}
+) {
+  const id = getCurrentInstance()?.uid ?? Date.now();
+  const zIndex = ref(0);
 
   const open = () => {
-    popupManager.open(id);
-    _zIndex.value = nextZIndex();
+    zIndex.value = popupManager.add(id, type);
   };
 
   const close = () => {
-    popupManager.close(id);
+    popupManager.delete(id, type);
   };
 
-  if (visible) {
-    watchEffect(() => {
-      if (visible.value) {
+  const isLastDialog = () => {
+    if (type === 'dialog') {
+      return popupManager.isLastDialog(id);
+    }
+    return false;
+  };
+
+  watch(
+    () => visible?.value,
+    (visible) => {
+      if (visible) {
         open();
       } else {
         close();
       }
-    });
-  } else if (runOnMounted) {
+    },
+    {
+      immediate: true,
+    }
+  );
+
+  if (runOnMounted) {
     onMounted(() => {
       open();
     });
@@ -122,8 +108,8 @@ export default function usePopupManager({
   return {
     id,
     zIndex,
-    nextZIndex,
-    close,
     open,
+    close,
+    isLastDialog,
   };
 }
