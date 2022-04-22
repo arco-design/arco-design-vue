@@ -92,7 +92,7 @@ description: It is used for data collection, display, analysis and processing, a
 |---|---|---|
 |expand|Triggered when a row is clicked to expand|rowKey: `string`|
 |expanded-change|Triggered when the expanded data row changes|rowKeys: `string[]`|
-|select|Triggered when the row selector is clicked|rowKeys: `string[]`|
+|select|Triggered when the row selector is clicked|rowKeys: `string[]`<br>rowKey: `string`|
 |select-all|Triggered when the select all selector is clicked|checked: `boolean`|
 |selection-change|Triggered when the selected data row changes|rowKeys: `string[]`|
 |sorter-change|Triggered when the collation changes|dataIndex: `string`<br>direction: `string`|
