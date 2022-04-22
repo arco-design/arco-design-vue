@@ -7,7 +7,12 @@ import {
   ref,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { TableColumnData, TableData, TableOperationColumn } from './interface';
+import {
+  TableColumnData,
+  TableData,
+  TableDataWithRaw,
+  TableOperationColumn,
+} from './interface';
 import { getFixedCls, getStyle } from './utils';
 import { getValueByPath } from '../_utils/get-value-by-path';
 import IconLoading from '../icon/icon-loading';
@@ -28,7 +33,7 @@ export default defineComponent({
   props: {
     rowIndex: Number,
     record: {
-      type: Object as PropType<TableData>,
+      type: Object as PropType<TableDataWithRaw>,
       default: () => ({}),
     },
     column: {
@@ -124,26 +129,28 @@ export default defineComponent({
       }
       if (props.column.slots?.cell) {
         return props.column.slots.cell({
-          record: props.record,
+          record: props.record?.raw,
           column: props.column,
           rowIndex: props.rowIndex ?? -1,
         });
       }
       if (props.column.render) {
         return props.column.render({
-          record: props.record,
+          record: props.record?.raw,
           column: props.column,
           rowIndex: props.rowIndex ?? -1,
         });
       }
       if (props.column.slotName && tableCtx.slots?.[props.column.slotName]) {
         return tableCtx.slots[props.column.slotName]?.({
-          record: props.record,
+          record: props.record?.raw,
           column: props.column,
           rowIndex: props.rowIndex ?? -1,
         });
       }
-      return String(getValueByPath(props.record, props.column.dataIndex) ?? '');
+      return String(
+        getValueByPath(props.record?.raw, props.column.dataIndex) ?? ''
+      );
     };
 
     const isLoading = ref(false);
@@ -156,7 +163,7 @@ export default defineComponent({
       ) {
         isLoading.value = true;
         new Promise<TableData[] | undefined>((resolve) => {
-          tableCtx.loadMore?.(props.record, resolve);
+          tableCtx.loadMore?.(props.record.raw, resolve);
         }).then((children?: TableData[]) => {
           tableCtx.addLazyLoadData?.(children, props.record);
           isLoading.value = false;

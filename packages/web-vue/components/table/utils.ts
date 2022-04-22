@@ -1,5 +1,9 @@
 import type { CSSProperties, VNode } from 'vue';
-import { TableColumnData, TableData, TableOperationColumn } from './interface';
+import {
+  TableColumnData,
+  TableDataWithRaw,
+  TableOperationColumn,
+} from './interface';
 import { isArray, isNull, isUndefined } from '../_utils/is';
 import {
   resolveProps,
@@ -293,10 +297,10 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
 };
 
 export const spliceFromPath = (
-  data: TableData[],
+  data: TableDataWithRaw[],
   path: number[],
-  item?: TableData
-): TableData | undefined => {
+  item?: TableDataWithRaw
+): TableDataWithRaw | undefined => {
   let parent = data;
   for (let i = 0; i < path.length; i++) {
     const index = path[i];

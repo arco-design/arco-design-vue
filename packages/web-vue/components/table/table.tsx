@@ -34,6 +34,7 @@ import type {
   TableColumnData,
   TableComponents,
   TableData,
+  TableDataWithRaw,
   TableDraggable,
   TableExpandable,
   TableOperationColumn,
@@ -351,6 +352,47 @@ export default defineComponent({
         }) => { rowspan?: number; colspan?: number } | void
       >,
     },
+    /**
+     * @zh 已选择的行（受控模式）优先于 `rowSelection`
+     * @en Selected row (controlled mode) takes precedence over `rowSelection`
+     * @version 2.25.0
+     */
+    selectedKeys: {
+      type: Array as PropType<string[]>,
+    },
+    /**
+     * @zh 默认已选择的行（非受控模式）优先于 `rowSelection`
+     * @en The selected row by default (uncontrolled mode) takes precedence over `rowSelection`
+     * @version 2.25.0
+     */
+    defaultSelectedKeys: {
+      type: Array as PropType<string[]>,
+    },
+    /**
+     * @zh 显示的展开行、子树（受控模式）优先于 `expandable`
+     * @en Displayed Expanded Row, Subtree (Controlled Mode) takes precedence over `expandable`
+     * @version 2.25.0
+     */
+    expandedKeys: {
+      type: Array as PropType<string[]>,
+    },
+    /**
+     * @zh 默认显示的展开行、子树（非受控模式）优先于 `expandable`
+     * @en Expand row, Subtree displayed by default (Uncontrolled mode) takes precedence over `expandable`
+     * @version 2.25.0
+     */
+    defaultExpandedKeys: {
+      type: Array as PropType<string[]>,
+    },
+    /**
+     * @zh 是否默认展开所有的行
+     * @en Whether to expand all rows by default
+     * @version 2.25.0
+     */
+    defaultExpandAllRows: {
+      type: Boolean,
+      default: false,
+    },
     // for JSX
     onExpand: {
       type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
@@ -400,6 +442,8 @@ export default defineComponent({
     },
   },
   emits: [
+    'update:selectedKeys',
+    'update:expandedKeys',
     /**
      * @zh 点击展开行时触发
      * @en Triggered when a row is clicked to expand
@@ -557,8 +601,19 @@ export default defineComponent({
    * @slot empty
    */
   setup(props, { emit, slots }) {
-    const { columns, rowKey, rowSelection, loadMore, filterIconAlignLeft } =
-      toRefs(props);
+    const {
+      columns,
+      rowKey,
+      rowSelection,
+      expandable,
+      loadMore,
+      filterIconAlignLeft,
+      selectedKeys,
+      defaultSelectedKeys,
+      expandedKeys,
+      defaultExpandedKeys,
+      defaultExpandAllRows,
+    } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const bordered = computed(() => {
       if (isObject(props.bordered)) {
@@ -687,7 +742,7 @@ export default defineComponent({
         filters: computedFilters.value,
         dragTarget: type === 'drag' ? dragState.data : undefined,
       };
-      emit('change', flattenData.value, extra);
+      emit('change', flattenRawData.value, extra);
     };
 
     const handleFilterChange = (
@@ -744,9 +799,9 @@ export default defineComponent({
 
     const currentAllRowKeys = computed(() => {
       const keys: string[] = [];
-      const travel = (data: TableData[]) => {
+      const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
-          keys.push(record[rowKey.value]);
+          keys.push(record.key);
           if (record.children) {
             travel(record.children);
           }
@@ -760,10 +815,10 @@ export default defineComponent({
     const currentAllEnabledRowKeys = computed(() => {
       const keys: string[] = [];
 
-      const travel = (data: TableData[]) => {
+      const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
           if (!record.disabled) {
-            keys.push(record[rowKey.value]);
+            keys.push(record.key);
           }
           if (record.children) {
             travel(record.children);
@@ -782,26 +837,31 @@ export default defineComponent({
       handleSelect,
       handleSelectAll,
     } = useRowSelection({
+      selectedKeys,
+      defaultSelectedKeys,
       rowSelection,
       currentAllRowKeys,
       currentAllEnabledRowKeys,
       emit,
     });
 
-    const { expandedRowKeys, handleExpand } = useExpand(
-      props,
-      allRowKeys.value,
-      emit
-    );
+    const { expandedRowKeys, handleExpand } = useExpand({
+      expandedKeys,
+      defaultExpandedKeys,
+      defaultExpandAllRows,
+      expandable,
+      allRowKeys,
+      emit,
+    });
 
     const lazyLoadData = reactive<Record<string, TableData[]>>({});
 
     const addLazyLoadData = (
       children: TableData[] | undefined,
-      record: TableData
+      record: TableDataWithRaw
     ) => {
       if (children) {
-        lazyLoadData[record[props.rowKey]] = children;
+        lazyLoadData[record.key] = children;
       }
     };
 
@@ -833,28 +893,28 @@ export default defineComponent({
       useColumnResize(thRefs);
 
     const processedData = computed(() => {
-      const travel = (data: TableData[], prefix?: string) => {
-        const result: TableData[] = [];
+      const travel = (data: TableData[]) => {
+        const result: TableDataWithRaw[] = [];
 
         for (const _record of data) {
-          const record: TableData = {
-            ..._record,
-            _key: `${prefix ? `${prefix}_` : ''}record_${props.rowKey}_${
-              _record[props.rowKey]
-            }`,
+          const record: TableDataWithRaw = {
+            raw: _record,
+            key: _record[props.rowKey],
+            disabled: _record.disabled,
+            expand: _record.expand,
+            isLeaf: _record.isLeaf,
           };
           if (
             props.loadMore &&
-            !record.isLeaf &&
-            !record.children &&
-            lazyLoadData[record[props.rowKey]]
+            !_record.isLeaf &&
+            !_record.children &&
+            lazyLoadData[record.key]
           ) {
-            record.children = lazyLoadData[record[props.rowKey]];
+            record.children = travel(lazyLoadData[record.key]);
+          } else if (_record.children) {
+            record.children = travel(_record.children);
           }
-          if (record.children) {
-            record.children = travel(record.children, record._key);
-          }
-          record._subtree = Boolean(
+          record.hasSubtree = Boolean(
             record.children
               ? props.hideExpandButtonOnEmpty
                 ? record.children.length > 0
@@ -871,13 +931,12 @@ export default defineComponent({
     });
 
     const validData = computed(() => {
-      const travel = (data: TableData[]) =>
+      const travel = (data: TableDataWithRaw[]) =>
         data.filter((record) => {
-          if (isValidRecord(record)) {
+          if (isValidRecord(record.raw)) {
             if (record.children) {
               record.children = travel(record.children);
             }
-
             return true;
           }
           return false;
@@ -896,14 +955,14 @@ export default defineComponent({
           if (column && column.sortable?.sorter !== true) {
             const { field, direction } = computedSorter.value;
             data.sort((a, b) => {
-              const valueA = a[field];
-              const valueB = b[field];
+              const valueA = a.raw[field];
+              const valueB = b.raw[field];
 
               if (
                 column.sortable?.sorter &&
                 isFunction(column.sortable.sorter)
               ) {
-                return column.sortable.sorter(a, b, {
+                return column.sortable.sorter(a.raw, b.raw, {
                   dataIndex: field,
                   direction,
                 });
@@ -936,6 +995,10 @@ export default defineComponent({
       return sortedData.value;
     });
 
+    const flattenRawData = computed(() =>
+      flattenData.value.map((item) => item.raw)
+    );
+
     const getSummaryData = () => {
       return dataColumns.value.reduce((per, column, index) => {
         if (column.dataIndex) {
@@ -946,11 +1009,11 @@ export default defineComponent({
             let isNotNumber = false;
             flattenData.value.forEach((data) => {
               if (column.dataIndex) {
-                if (isNumber(data[column.dataIndex])) {
-                  count += data[column.dataIndex];
+                if (isNumber(data.raw[column.dataIndex])) {
+                  count += data.raw[column.dataIndex];
                 } else if (
-                  !isUndefined(data[column.dataIndex]) &&
-                  !isNull(data[column.dataIndex])
+                  !isUndefined(data.raw[column.dataIndex]) &&
+                  !isNull(data.raw[column.dataIndex])
                 ) {
                   isNotNumber = true;
                 }
@@ -969,7 +1032,7 @@ export default defineComponent({
         if (isFunction(props.summary)) {
           return props.summary({
             columns: dataColumns.value,
-            data: flattenData.value,
+            data: flattenRawData.value,
           });
         }
         return [getSummaryData()];
@@ -1184,7 +1247,7 @@ export default defineComponent({
         [`${prefixCls}-hover`]: props.hoverable,
         [`${prefixCls}-dragging`]: dragState.dragging,
         [`${prefixCls}-type-selection`]: props.rowSelection,
-        [`${prefixCls}-empty`]: flattenData.value.length === 0,
+        [`${prefixCls}-empty`]: props.data && flattenData.value.length === 0,
         [`${prefixCls}-layout-fixed`]:
           props.tableLayoutFixed ||
           isScroll.value.x ||
@@ -1269,7 +1332,7 @@ export default defineComponent({
       );
     };
 
-    const renderExpandContent = (record: TableData) => {
+    const renderExpandContent = (record: TableDataWithRaw) => {
       if (record.expand) {
         return isFunction(record.expand) ? record.expand() : record.expand;
       }
@@ -1298,7 +1361,7 @@ export default defineComponent({
           columns.forEach((column, columnIndex) => {
             const { rowspan = 1, colspan = 1 } =
               props.spanMethod?.({
-                record,
+                record: record.raw,
                 column,
                 rowIndex,
                 columnIndex,
@@ -1343,7 +1406,7 @@ export default defineComponent({
           columns.forEach((column, columnIndex) => {
             const { rowspan = 1, colspan = 1 } =
               props.summarySpanMethod?.({
-                record,
+                record: record.raw,
                 column,
                 rowIndex,
                 columnIndex,
@@ -1481,8 +1544,13 @@ export default defineComponent({
             {...props.virtualListProps}
             data={flattenData.value}
             v-slots={{
-              item: ({ item, index }: { item: TableData; index: number }) =>
-                renderRecord(item, index),
+              item: ({
+                item,
+                index,
+              }: {
+                item: TableDataWithRaw;
+                index: number;
+              }) => renderRecord(item, index),
             }}
             onResize={() => {
               handleTbodyResize();
@@ -1494,8 +1562,11 @@ export default defineComponent({
       );
     };
 
-    const renderExpandBtn = (record: TableData, stopPropagation = true) => {
-      const currentKey = record[rowKey.value];
+    const renderExpandBtn = (
+      record: TableDataWithRaw,
+      stopPropagation = true
+    ) => {
+      const currentKey = record.key;
       const expanded = expandedRowKeys.value.includes(currentKey);
 
       return (
@@ -1509,8 +1580,8 @@ export default defineComponent({
             }
           }}
         >
-          {slots['expand-icon']?.({ expanded, record }) ??
-            props.expandable?.icon?.(expanded, record) ??
+          {slots['expand-icon']?.({ expanded, record: record.raw }) ??
+            props.expandable?.icon?.(expanded, record.raw) ??
             (expanded ? <IconMinus /> : <IconPlus />)}
         </button>
       );
@@ -1527,7 +1598,7 @@ export default defineComponent({
     });
 
     const renderRecord = (
-      record: TableData,
+      record: TableDataWithRaw,
       rowIndex: number,
       {
         indentSize = 0,
@@ -1535,7 +1606,7 @@ export default defineComponent({
         allowDrag = true,
       }: { indentSize?: number; indexPath?: number[]; allowDrag?: boolean } = {}
     ): JSX.Element => {
-      const currentKey = record[rowKey.value];
+      const currentKey = record.key;
       const currentPath = (indexPath ?? []).concat(rowIndex);
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
@@ -1544,14 +1615,14 @@ export default defineComponent({
         ? tbodyRef.value
         : containerRef.value;
 
-      const isDragTarget = dragState.sourceKey === record._key;
+      const isDragTarget = dragState.sourceKey === record.key;
 
       const dragSourceEvent =
         dragType.value !== 'none' && allowDrag
           ? {
               draggable: true,
               onDragstart: (ev: DragEvent) =>
-                handleDragStart(ev, record._key, currentPath, record),
+                handleDragStart(ev, record.key, currentPath, record.raw),
               onDragend: (ev: DragEvent) => handleDragEnd(ev),
             }
           : {};
@@ -1586,7 +1657,7 @@ export default defineComponent({
               tr: slots.tr,
             }}
             checked={selectedRowKeys.value?.includes(currentKey)}
-            onClick={(ev: Event) => handleRowClick(record, ev)}
+            onClick={(ev: Event) => handleRowClick(record.raw, ev)}
           >
             {operations.value.map((operation, index) => {
               const cellId = `${rowIndex}-${index}`;
@@ -1640,8 +1711,8 @@ export default defineComponent({
               const extraProps =
                 index === 0
                   ? {
-                      showExpandBtn: record._subtree,
-                      indentSize: record._subtree
+                      showExpandBtn: record.hasSubtree,
+                      indentSize: record.hasSubtree
                         ? indentSize - 20
                         : indentSize,
                     }
@@ -1670,13 +1741,15 @@ export default defineComponent({
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
                   {...extraProps}
-                  onClick={(ev: Event) => handleCellClick(record, column, ev)}
+                  onClick={(ev: Event) =>
+                    handleCellClick(record.raw, column, ev)
+                  }
                 />
               );
             })}
           </Tr>
           {showExpand &&
-            (record._subtree
+            (record.hasSubtree
               ? record.children?.map((item, index) =>
                   renderRecord(item, index, {
                     indentSize: indentSize + props.indentSize,

@@ -26,6 +26,11 @@ import { reactive } from 'vue';
 
 export default {
   setup() {
+    const expandable = reactive({
+      title: 'Expand',
+      width: 80,
+    });
+
     const columns = [
       {
         title: 'Name',
@@ -44,11 +49,6 @@ export default {
         dataIndex: 'email',
       },
     ];
-
-    const expandable = {
-      title: 'Expand',
-      width: 80,
-    }
 
     const data = reactive([
       {

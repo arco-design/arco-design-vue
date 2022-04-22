@@ -43,6 +43,16 @@ export interface TableData {
   [name: string]: any;
 }
 
+export interface TableDataWithRaw {
+  raw: TableData;
+  key: string;
+  disabled?: boolean;
+  expand?: string | RenderFunction;
+  children?: TableDataWithRaw[];
+  isLeaf?: boolean;
+  hasSubtree?: boolean;
+}
+
 export interface TableSortable {
   /**
    * @zh 支持的排序方向

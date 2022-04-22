@@ -1,5 +1,5 @@
 import { computed, defineComponent, PropType, VNode } from 'vue';
-import { TableData, TableOperationColumn } from './interface';
+import { TableDataWithRaw, TableOperationColumn } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { getOperationFixedCls, getOperationStyle } from './utils';
 import Checkbox from '../checkbox';
@@ -26,7 +26,7 @@ export default defineComponent({
       required: true,
     },
     record: {
-      type: Object as PropType<TableData>,
+      type: Object as PropType<TableDataWithRaw>,
       required: true,
     },
     rowKey: {
@@ -42,7 +42,7 @@ export default defineComponent({
     },
     renderExpandBtn: {
       type: Function as PropType<
-        (record: TableData, stopPropagation?: boolean) => VNode
+        (record: TableDataWithRaw, stopPropagation?: boolean) => VNode
       >,
     },
     colSpan: {
@@ -89,7 +89,7 @@ export default defineComponent({
         return props.operationColumn.render(props.record);
       }
       if (props.operationColumn.name === 'selection-checkbox') {
-        const value = props.record[props.rowKey];
+        const value = props.record.key;
         return (
           <Checkbox
             value={value}
@@ -102,7 +102,7 @@ export default defineComponent({
         );
       }
       if (props.operationColumn.name === 'selection-radio') {
-        const value = props.record[props.rowKey];
+        const value = props.record.key;
         return (
           <Radio
             value={value}

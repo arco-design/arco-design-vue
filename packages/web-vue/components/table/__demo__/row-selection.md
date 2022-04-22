@@ -18,14 +18,16 @@ Turn on the row selector by setting `row-selection`.
 
 ```vue
 <template>
-  <a-table row-key="name" :columns="columns" :data="data" :row-selection="rowSelection" />
+  <a-table row-key="name" :columns="columns" :data="data" :row-selection="rowSelection" v-model:selectedKeys="selectedKeys" />
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 export default {
   setup() {
+    const selectedKeys = ref([]);
+
     const rowSelection = {
       type: 'checkbox',
       showCheckedAll: true
@@ -84,7 +86,8 @@ export default {
     return {
       rowSelection,
       columns,
-      data
+      data,
+      selectedKeys
     }
   },
 }

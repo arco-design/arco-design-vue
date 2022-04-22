@@ -17,13 +17,18 @@ An example of tree data display, when there is a `children` field in `data`, it 
 ---
 
 ```vue
+
 <template>
-  <a-table :columns="columns" :data="data" />
+  <a-table :columns="columns" :data="data" v-model:expandedKeys="expandedKeys" />
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
   setup() {
+    const expandedKeys = ref([]);
+
     const columns = [
       {
         title: 'Name',
@@ -107,7 +112,8 @@ export default {
 
     return {
       columns,
-      data
+      data,
+      expandedKeys
     }
   },
 }
