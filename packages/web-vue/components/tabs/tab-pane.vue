@@ -26,7 +26,7 @@ import {
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { useIndex } from '../_hooks/use-index';
-import { tabsInjectionKey } from './context';
+import { TabsContext, tabsInjectionKey } from './context';
 
 export default defineComponent({
   name: 'TabPane',
@@ -57,12 +57,12 @@ export default defineComponent({
     const { title, disabled, closable } = toRefs(props);
     const instance = getCurrentInstance();
     const prefixCls = getPrefixCls('tabs');
-    const tabsCtx = inject(tabsInjectionKey, undefined);
+    const tabsCtx = inject<Partial<TabsContext>>(tabsInjectionKey, {});
 
     const itemRef = ref<HTMLElement>();
     const key = computed(() => instance?.vnode.key as string | number);
-    const active = computed(() => key.value === tabsCtx?.activeKey);
-    const mounted = ref(!tabsCtx?.lazyLoad);
+    const active = computed(() => key.value === tabsCtx.activeKey);
+    const mounted = ref(!tabsCtx.lazyLoad);
 
     const { computedIndex } = useIndex({
       itemRef,
@@ -78,12 +78,12 @@ export default defineComponent({
     });
 
     if (instance?.uid) {
-      tabsCtx?.addItem(instance.uid, data);
+      tabsCtx.addItem?.(instance.uid, data);
     }
 
     onBeforeUnmount(() => {
       if (instance?.uid) {
-        tabsCtx?.removeItem(instance.uid);
+        tabsCtx.removeItem?.(instance.uid);
       }
     });
 

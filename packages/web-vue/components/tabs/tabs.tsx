@@ -138,6 +138,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否隐藏内容
+     * @en Whether to hide content
+     * @version 2.25.0
+     */
+    hideContent: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: [
     'update:activeKey',
@@ -261,7 +270,14 @@ export default defineComponent({
 
     const renderContent = () => {
       return (
-        <div class={`${prefixCls}-content`}>
+        <div
+          class={[
+            `${prefixCls}-content`,
+            {
+              [`${prefixCls}-content-hide`]: props.hideContent,
+            },
+          ]}
+        >
           <div
             class={[
               `${prefixCls}-content-list`,
