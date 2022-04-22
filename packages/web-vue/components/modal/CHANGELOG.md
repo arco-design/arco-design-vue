@@ -23,7 +23,7 @@ changelog: true
 
 `2022-04-08`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Fix the problem that the body is not locked when the scroll bar is floating ([#945](https://github.com/arco-design/arco-design-vue/pull/945))
 
@@ -73,7 +73,7 @@ changelog: true
 
 `2022-02-25`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Optimize click mask layer off ([#737](https://github.com/arco-design/arco-design-vue/pull/737))
 
@@ -178,7 +178,7 @@ changelog: true
 
 `2021-11-17`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Manage the zIndex of the popup ([#167](https://github.com/arco-design/arco-design-vue/pull/167))
 

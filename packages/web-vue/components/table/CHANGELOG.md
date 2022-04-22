@@ -6,7 +6,7 @@ changelog: true
 
 `2022-04-15`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - When titleSlotName exists in the columns attribute, it will be used first ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
 
@@ -19,7 +19,7 @@ changelog: true
 
 `2022-04-08`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - In horizontal scrolling mode, if the data is empty, the header will display a scroll bar ([#948](https://github.com/arco-design/arco-design-vue/pull/948))
 
@@ -123,7 +123,7 @@ changelog: true
 
 `2022-02-18`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Does not show pagination when the data is empty ([#684](https://github.com/arco-design/arco-design-vue/pull/684))
 
@@ -142,7 +142,7 @@ changelog: true
 
 `2022-01-21`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Internal buttons no longer fire `row-click` events ([#630](https://github.com/arco-design/arco-design-vue/pull/630))
 
@@ -257,7 +257,7 @@ changelog: true
 
 `2021-11-24`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Do not scroll when data is empty ([#245](https://github.com/arco-design/arco-design-vue/pull/245))
 

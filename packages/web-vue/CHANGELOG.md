@@ -15,7 +15,7 @@ changelog: true
 
 `2022-04-15`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **date-picker:** the selected value will merge with time when timePickerProps has value ([#981](https://github.com/arco-design/arco-design-vue/pull/981))
 - **table:** When titleSlotName exists in the columns attribute, it will be used first ([#969](https://github.com/arco-design/arco-design-vue/pull/969))
@@ -50,7 +50,7 @@ changelog: true
 
 `2022-04-08`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **pagination:** Optimize the page number change logic when switching pageSize ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
 - **input:** The `clear` event of the input class component will also trigger the `change` event ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
@@ -100,7 +100,7 @@ changelog: true
 
 `2022-04-01`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **select:** Enter event can no longer be triggered in loading state ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
 
@@ -154,7 +154,7 @@ changelog: true
 
 `2022-03-25`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Support SSR usage ([#872](https://github.com/arco-design/arco-design-vue/pull/872))
 
@@ -251,7 +251,7 @@ changelog: true
 
 - **table:** Modify the outgoing data of the sorting function sorter to enhance the usage ([#810](https://github.com/arco-design/arco-design-vue/pull/810))
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - `modal`, `message`, `notifaction` component function calls add support for appContext, see documentation for details ([#804](https://github.com/arco-design/arco-design-vue/pull/804))
 
@@ -288,7 +288,7 @@ changelog: true
 
 `2022-03-04`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **select:** Select box display using flex layout ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
 - **select:** trigger-props properties can override default properties ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
@@ -328,7 +328,7 @@ changelog: true
 
 `2022-02-26`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **input:** modelValue support null ([#743](https://github.com/arco-design/arco-design-vue/pull/743))
 
@@ -347,7 +347,7 @@ changelog: true
 - **list:** The spin component is rendered by default to prevent the component from remounting when switching states ([#730](https://github.com/arco-design/arco-design-vue/pull/730))
 - **list:** Supports rendering of any child element ([#730](https://github.com/arco-design/arco-design-vue/pull/730))
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **form:** When `auto-label-width` is enabled, label wrapping is not allowed to prevent calculation errors after wrapping ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
 - **modal:** Optimize click mask layer off ([#737](https://github.com/arco-design/arco-design-vue/pull/737))
@@ -397,7 +397,7 @@ changelog: true
 - **select:** The class name of the <option> component is changed from arco-dropdown-option to arco-select-option, and flex is used to center the layout vertically ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
 - **dropdown:** The <doption> component modifies the vertical centering layout using flex ([#688](https://github.com/arco-design/arco-design-vue/pull/688))
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **table:** Does not show pagination when the data is empty ([#684](https://github.com/arco-design/arco-design-vue/pull/684))
 
@@ -417,7 +417,7 @@ changelog: true
 
 `2022-02-11`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **input:** Increase the transparent transmission of some original attributes of the input element ([#664](https://github.com/arco-design/arco-design-vue/pull/664))
 - **trigger:** Optimize the position of the arrow after auto-adjusting the position ([#655](https://github.com/arco-design/arco-design-vue/pull/655))
@@ -469,7 +469,7 @@ changelog: true
 
 `2022-01-21`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **table:** Internal buttons no longer fire `row-click` events ([#630](https://github.com/arco-design/arco-design-vue/pull/630))
 
@@ -519,7 +519,7 @@ changelog: true
 
 `2022-01-14`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - The select box built into the optimization component will not be controlled by the external select box group ([#569](https://github.com/arco-design/arco-design-vue/pull/569))
 - **select:** Optimize loading status display ([#557](https://github.com/arco-design/arco-design-vue/pull/557))
@@ -685,7 +685,7 @@ changelog: true
 - **input:** The change event is only triggered when the value changes ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
 - **input-number:** Modify the change event to be triggered only when out of focus and press Enter to solve the problem that the control cannot be input ([#452](https://github.com/arco-design/arco-design-vue/pull/452))
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **badge:** No longer render the logo when count is 0 ([#445](https://github.com/arco-design/arco-design-vue/pull/445))
 
@@ -790,7 +790,7 @@ changelog: true
 
 `2021-12-10`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **select:** When the input box is editable, clicking will not close the drop-down menu ([#348](https://github.com/arco-design/arco-design-vue/pull/348))
 - **cascader:** When the input box is editable, clicking will not close the drop-down menu ([#348](https://github.com/arco-design/arco-design-vue/pull/348))
@@ -918,7 +918,7 @@ changelog: true
 
 `2021-11-24`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **table:** Do not scroll when data is empty ([#245](https://github.com/arco-design/arco-design-vue/pull/245))
 
@@ -985,7 +985,7 @@ changelog: true
 
 `2021-11-17`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **modal:** Manage the zIndex of the popup ([#167](https://github.com/arco-design/arco-design-vue/pull/167))
 
@@ -1060,7 +1060,7 @@ changelog: true
 
 `2021-11-08`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **menu:** Change the default expansion method of pop-up `menu` to hover ([#111](https://github.com/arco-design/arco-design-vue/pull/111))
 
@@ -1077,7 +1077,7 @@ changelog: true
 
 `2021-11-05`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - **tree-select:** The clickable range of options occupies the entire row by default ([#90](https://github.com/arco-design/arco-design-vue/pull/90))
 - **tabs:** Optimize the scrolling method of the tab bar ([#87](https://github.com/arco-design/arco-design-vue/pull/87))

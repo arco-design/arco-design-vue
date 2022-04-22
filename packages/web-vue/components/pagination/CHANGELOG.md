@@ -15,7 +15,7 @@ changelog: true
 
 `2022-04-08`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Optimize the page number change logic when switching pageSize ([#954](https://github.com/arco-design/arco-design-vue/pull/954))
 

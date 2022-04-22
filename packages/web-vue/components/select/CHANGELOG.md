@@ -24,7 +24,7 @@ changelog: true
 
 `2022-04-01`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Enter event can no longer be triggered in loading state ([#911](https://github.com/arco-design/arco-design-vue/pull/911))
 
@@ -71,7 +71,7 @@ changelog: true
 
 `2022-03-04`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Select box display using flex layout ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
 - trigger-props properties can override default properties ([#778](https://github.com/arco-design/arco-design-vue/pull/778))
@@ -115,7 +115,7 @@ changelog: true
 
 `2022-01-14`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Optimize loading status display ([#557](https://github.com/arco-design/arco-design-vue/pull/557))
 
@@ -171,7 +171,7 @@ changelog: true
 
 `2021-12-10`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - When the input box is editable, clicking will not close the drop-down menu ([#348](https://github.com/arco-design/arco-design-vue/pull/348))
 

@@ -2,23 +2,23 @@ import { Token } from 'marked';
 import marked from './marked';
 
 const getType = (text: string) => {
-  if (/attention|注意/i.test(text)) {
+  if (/attention|重点注意/i.test(text)) {
     return 'attention';
   }
-  if (/feature|功能/i.test(text)) {
+  if (/feature|新增功能/i.test(text)) {
     return 'feature';
   }
-  if (/bugfix/i.test(text)) {
+  if (/bugfix|问题修复/i.test(text)) {
     return 'bugfix';
   }
-  if (/optimization/i.test(text)) {
-    return 'optimization';
+  if (/enhancement|功能优化/i.test(text)) {
+    return 'enhancement';
   }
-  if (/typescript/i.test(text)) {
-    return 'typescript';
-  }
-  if (/style/i.test(text)) {
+  if (/style|样式更新/i.test(text)) {
     return 'style';
+  }
+  if (/typescript|类型修正/i.test(text)) {
+    return 'typescript';
   }
 
   return 'feature';

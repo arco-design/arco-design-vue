@@ -9,17 +9,18 @@
 ## Types of changes
 
 <!-- What types of changes does this PR introduce -->
+<!-- Only support choose one type, if there are multiple types, you can add the `Type` column in the Changelog. -->
 
 - [ ] New feature
 - [ ] Bug fix
+- [ ] Enhancement
+- [ ] Component style change
+- [ ] Typescript definition change
 - [ ] Documentation change
 - [ ] Coding style change
-- [ ] Component style change
 - [ ] Refactoring
-- [ ] Performance improvement
 - [ ] Test cases
 - [ ] Continuous integration
-- [ ] Typescript definition change
 - [ ] Breaking change
 - [ ] Others
 
@@ -42,6 +43,8 @@
 | Component | Changelog(CN) | Changelog(EN) | Related issues |
 | --------- | ------------- | ------------- | -------------- |
 |           |               |               |                |
+
+<!-- If there are multiple types, you can add the `Type` column in the Changelog, the value of the column is the same as `Types of changes` -->
 
 ## Checklist:
 

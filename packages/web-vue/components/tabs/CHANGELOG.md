@@ -15,7 +15,7 @@ changelog: true
 
 `2022-03-04`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Use Context to optimize components and support secondary encapsulation of TabPane ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
 - key supports number type ([#771](https://github.com/arco-design/arco-design-vue/pull/771))
@@ -49,7 +49,7 @@ changelog: true
 
 `2021-11-05`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Optimize the scrolling method of the tab bar ([#87](https://github.com/arco-design/arco-design-vue/pull/87))
 

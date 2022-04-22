@@ -6,7 +6,7 @@ changelog: true
 
 `2022-04-08`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - The `clear` event of the input class component will also trigger the `change` event ([#951](https://github.com/arco-design/arco-design-vue/pull/951))
 
@@ -15,7 +15,7 @@ changelog: true
 
 `2022-02-26`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - modelValue support null ([#743](https://github.com/arco-design/arco-design-vue/pull/743))
 
@@ -24,7 +24,7 @@ changelog: true
 
 `2022-02-11`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Increase the transparent transmission of some original attributes of the input element ([#664](https://github.com/arco-design/arco-design-vue/pull/664))
 

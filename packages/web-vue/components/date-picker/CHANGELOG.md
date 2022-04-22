@@ -6,7 +6,7 @@ changelog: true
 
 `2022-04-15`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - the selected value will merge with time when timePickerProps has value ([#981](https://github.com/arco-design/arco-design-vue/pull/981))
 
