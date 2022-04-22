@@ -170,13 +170,12 @@ export default defineComponent({
     'clear',
   ],
   setup(props, { emit, slots }) {
-    const { size, disabled, error } = toRefs(props);
+    const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
     const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
       size,
       disabled,
-      error,
     });
     const { mergedSize } = useSize(_mergedSize);
 
@@ -446,6 +445,7 @@ export default defineComponent({
           modelValue={_value.value}
           placeholder={props.placeholder}
           disabled={mergedDisabled.value}
+          error={props.error}
           onInput={handleInput}
           onFocus={handleFocus}
           onBlur={handleBlur}
