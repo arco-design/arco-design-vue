@@ -10,14 +10,6 @@
   {% endfor %}
 
 {% endif %}
-{% if optimization -%}
-  ### 💎 Optimization
-
-  {% for content in optimization -%}
-    - {{ content }}
-  {% endfor %}
-
-{% endif %}
 {% if feature -%}
   ### 🆕 Feature
 
@@ -30,6 +22,14 @@
   ### 🐛 BugFix
 
   {% for content in bugfix -%}
+    - {{ content }}
+  {% endfor %}
+
+{% endif %}
+{% if enhancement -%}
+  ### 💎 Enhancement
+
+  {% for content in enhancement -%}
     - {{ content }}
   {% endfor %}
 

@@ -15,7 +15,7 @@ changelog: true
 
 `2022-03-04`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Use Context to optimize components ([#772](https://github.com/arco-design/arco-design-vue/pull/772))
 

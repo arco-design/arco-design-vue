@@ -28,7 +28,7 @@ changelog: true
 
 `2022-02-11`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Optimize the position of the arrow after auto-adjusting the position ([#655](https://github.com/arco-design/arco-design-vue/pull/655))
 
@@ -102,7 +102,7 @@ changelog: true
 
 `2021-11-05`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Move the `outsideClickHandler` to the `document` ([#76](https://github.com/arco-design/arco-design-vue/pull/76))
 

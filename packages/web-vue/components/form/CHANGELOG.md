@@ -47,7 +47,7 @@ changelog: true
 
 `2022-02-25`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - When `auto-label-width` is enabled, label wrapping is not allowed to prevent calculation errors after wrapping ([#738](https://github.com/arco-design/arco-design-vue/pull/738))
 

@@ -128,7 +128,7 @@ changelog: true
 
 `2021-11-08`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - Change the default expansion method of pop-up `menu` to hover ([#111](https://github.com/arco-design/arco-design-vue/pull/111))
 

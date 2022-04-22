@@ -129,7 +129,7 @@ changelog: true
 
 `2021-12-10`
 
-### 💎 Optimization
+### 💎 Enhancement
 
 - When the input box is editable, clicking will not close the drop-down menu ([#348](https://github.com/arco-design/arco-design-vue/pull/348))
 
