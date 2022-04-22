@@ -8,7 +8,7 @@ changelog: true
 
 ### 🆕 Feature
 
-- Add button prop ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+- Add footer prop ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
 
 
 ## 2.3.0

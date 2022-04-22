@@ -8,7 +8,7 @@ changelog: true
 
 ### 🆕 新增功能
 
-- **notification:** 增加 button 属性 ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+- **notification:** 增加 footer 属性 ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
 - **tabs:** 增加 hideContent 属性 ([#1025](https://github.com/arco-design/arco-design-vue/pull/1025))
 - **table:** 增加行选择器和展开行双向绑定属性 ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
 - **date-picker:** 增加参数 `exchangeTime` ([#1020](https://github.com/arco-design/arco-design-vue/pull/1020))

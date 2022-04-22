@@ -8,7 +8,7 @@ changelog: true
 
 ### 🆕 新增功能
 
-- 增加 button 属性 ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+- 增加 footer 属性 ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
 
 
 ## 2.3.0

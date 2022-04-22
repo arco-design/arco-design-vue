@@ -8,7 +8,7 @@ changelog: true
 
 ### 🆕 Feature
 
-- **notification:** Add button prop ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+- **notification:** Add footer prop ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
 - **tabs:** Add hideContent property ([#1025](https://github.com/arco-design/arco-design-vue/pull/1025))
 - **table:** Add row selector and expand row two-way binding properties ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
 - **date-picker:** add property exchangeTime ([#1020](https://github.com/arco-design/arco-design-vue/pull/1020))
