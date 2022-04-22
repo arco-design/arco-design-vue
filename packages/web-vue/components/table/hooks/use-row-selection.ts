@@ -4,22 +4,33 @@ import type { EmitFn } from '../../_utils/types';
 import type { TableRowSelection } from '../interface';
 
 export const useRowSelection = ({
+  selectedKeys,
+  defaultSelectedKeys,
   rowSelection,
   currentAllRowKeys,
   currentAllEnabledRowKeys,
   emit,
 }: {
+  selectedKeys: Ref<string[] | undefined>;
+  defaultSelectedKeys: Ref<string[] | undefined>;
   rowSelection: Ref<TableRowSelection | undefined>;
   currentAllRowKeys: Ref<string[]>;
   currentAllEnabledRowKeys: Ref<string[]>;
-  emit: EmitFn<'select' | 'selectAll' | 'selectionChange'>;
+  emit: EmitFn<
+    'select' | 'selectAll' | 'selectionChange' | 'update:selectedKeys'
+  >;
 }) => {
   const isRadio = computed(() => rowSelection.value?.type === 'radio');
   const _selectedRowKeys = ref(
-    rowSelection.value?.defaultSelectedRowKeys ?? []
+    defaultSelectedKeys.value ??
+      rowSelection.value?.defaultSelectedRowKeys ??
+      []
   );
   const selectedRowKeys = computed(
-    () => rowSelection.value?.selectedRowKeys ?? _selectedRowKeys.value
+    () =>
+      selectedKeys.value ??
+      rowSelection.value?.selectedRowKeys ??
+      _selectedRowKeys.value
   );
   const currentSelectedRowKeys = computed(() =>
     selectedRowKeys.value.filter((key) => currentAllRowKeys.value.includes(key))
@@ -27,6 +38,9 @@ export const useRowSelection = ({
 
   const handleSelectAll = (checked: boolean) => {
     const newSelectedRowKeys = new Set(selectedRowKeys.value);
+
+    // eslint-disable-next-line no-console
+    console.log(checked, newSelectedRowKeys, currentAllEnabledRowKeys.value);
 
     for (const key of currentAllEnabledRowKeys.value) {
       if (checked) {
@@ -36,15 +50,21 @@ export const useRowSelection = ({
       }
     }
 
+    // eslint-disable-next-line no-console
+    console.log(newSelectedRowKeys);
+
     _selectedRowKeys.value = [...newSelectedRowKeys];
+
     emit('selectAll', checked);
     emit('selectionChange', _selectedRowKeys.value);
+    emit('update:selectedKeys', _selectedRowKeys.value);
   };
 
   const handleSelect = (values: string[], value: string) => {
     _selectedRowKeys.value = values;
     emit('select', values, value);
     emit('selectionChange', values);
+    emit('update:selectedKeys', values);
   };
 
   return {

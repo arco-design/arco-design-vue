@@ -7,12 +7,14 @@ title:
 ## zh-CN
 
 可以在使用插槽获得的数据，修改 `data` 中的数据，达到可编辑表格的功能。
+`2.25.0` 版本后可以直接修改插槽传出的 `record` 变量。这个 `record` 变量是传入的 `data` 中对应数据的引用，请保证 `data` 为 Reactive 类型。
 
 ---
 
 ## en-US
 
 You can use the data obtained from the slot to modify the data in `data` to achieve the function of editing the table.
+After the `2.25.0` version, you can directly modify the `record` variable from the slot. This `record` variable is a reference to the corresponding data in the incoming `data`, please make sure that `data` is of Reactive type.
 
 ---
 
@@ -29,6 +31,20 @@ You can use the data obtained from the slot to modify the data in `data` to achi
     </template>
     <template #city="{ rowIndex }">
       <a-select :options="options[data[rowIndex].province] || []" v-model="data[rowIndex].city" />
+    </template>
+  </a-table>
+  <!-- support from v2.25.0  -->
+  <a-table :columns="columns" :data="data" style="margin-top: 20px">
+    <template #name="{ record, rowIndex }">
+      <a-input v-model="record.name" />
+    </template>
+    <template #province="{ record,rowIndex }">
+      <a-select v-model="record.province" @change="()=>{record.city=''}">
+        <a-option v-for="value of Object.keys(options)">{{value}}</a-option>
+      </a-select>
+    </template>
+    <template #city="{ record,rowIndex }">
+      <a-select :options="options[record.province] || []" v-model="record.city" />
     </template>
   </a-table>
 </template>

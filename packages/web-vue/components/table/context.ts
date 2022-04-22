@@ -1,5 +1,11 @@
 import type { InjectionKey, Slots } from 'vue';
-import { Filters, Sorter, TableColumnData, TableData } from './interface';
+import {
+  Filters,
+  Sorter,
+  TableColumnData,
+  TableData,
+  TableDataWithRaw,
+} from './interface';
 
 export interface TableContext {
   loadMore?: (
@@ -8,7 +14,7 @@ export interface TableContext {
   ) => void;
   addLazyLoadData: (
     children: TableData[] | undefined,
-    record: TableData
+    record: TableDataWithRaw
   ) => void;
   slots: Slots;
   sorter: Sorter | undefined;

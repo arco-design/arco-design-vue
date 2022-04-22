@@ -1,17 +1,31 @@
-import { computed, ref } from 'vue';
-import { TableProps } from '../interface';
+import { computed, Ref, ref } from 'vue';
+import type { TableExpandable } from '../interface';
+import type { EmitFn } from '../../_utils/types';
 
-export const useExpand = (
-  props: TableProps,
-  allRowKeys: string[],
-  emit: any
-) => {
+export const useExpand = ({
+  expandedKeys,
+  defaultExpandedKeys,
+  defaultExpandAllRows,
+  expandable,
+  allRowKeys,
+  emit,
+}: {
+  expandedKeys: Ref<string[] | undefined>;
+  defaultExpandedKeys: Ref<string[] | undefined>;
+  defaultExpandAllRows: Ref<boolean>;
+  expandable: Ref<TableExpandable | undefined>;
+  allRowKeys: Ref<string[]>;
+  emit: EmitFn<'expand' | 'expandedChange' | 'update:expandedKeys'>;
+}) => {
   const getDefaultExpandedRowKeys = (): string[] => {
-    if (props.expandable?.defaultExpandedRowKeys) {
-      return props.expandable?.defaultExpandedRowKeys;
+    if (defaultExpandedKeys.value) {
+      return defaultExpandedKeys.value;
     }
-    if (props.expandable?.defaultExpandAllRows) {
-      return [...allRowKeys];
+    if (expandable.value?.defaultExpandedRowKeys) {
+      return expandable.value.defaultExpandedRowKeys;
+    }
+    if (defaultExpandAllRows.value || expandable.value?.defaultExpandAllRows) {
+      return [...allRowKeys.value];
     }
     return [];
   };
@@ -19,7 +33,10 @@ export const useExpand = (
   const _expandedRowKeys = ref(getDefaultExpandedRowKeys());
 
   const expandedRowKeys = computed(
-    () => props.expandable?.expandedRowKeys ?? _expandedRowKeys.value
+    () =>
+      expandedKeys.value ??
+      expandable.value?.expandedRowKeys ??
+      _expandedRowKeys.value
   );
 
   const handleExpand = (rowKey: string) => {
@@ -30,6 +47,7 @@ export const useExpand = (
     _expandedRowKeys.value = newExpandedRowKeys;
     emit('expand', rowKey);
     emit('expandedChange', newExpandedRowKeys);
+    emit('update:expandedKeys', newExpandedRowKeys);
   };
 
   return {
