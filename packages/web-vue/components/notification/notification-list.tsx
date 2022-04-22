@@ -30,7 +30,7 @@ export default defineComponent({
   setup(props, context) {
     const prefixCls = getPrefixCls('notification-list');
     const kebabPosition = toKebabCase(props.position);
-    const { zIndex } = usePopupManager({ runOnMounted: true });
+    const { zIndex } = usePopupManager('message', { runOnMounted: true });
 
     const isRight = props.position.includes('Right');
 

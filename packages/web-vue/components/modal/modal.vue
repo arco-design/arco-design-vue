@@ -471,12 +471,14 @@ export default defineComponent({
       () => props.cancelText || t('modal.cancelText')
     );
 
-    const { zIndex } = usePopupManager({ visible: computedVisible });
+    const { zIndex, isLastDialog } = usePopupManager('dialog', {
+      visible: computedVisible,
+    });
 
     let globalKeyDownListener = false;
 
     const handleGlobalKeyDown = (ev: KeyboardEvent) => {
-      if (props.escToClose && ev.key === KEYBOARD_KEY.ESC) {
+      if (props.escToClose && ev.key === KEYBOARD_KEY.ESC && isLastDialog()) {
         handleCancel();
       }
     };

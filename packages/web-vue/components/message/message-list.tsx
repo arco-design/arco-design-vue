@@ -21,7 +21,7 @@ export default defineComponent({
   emits: ['close', 'afterClose'],
   setup(props, context) {
     const prefixCls = getPrefixCls('message-list');
-    const { zIndex } = usePopupManager({ runOnMounted: true });
+    const { zIndex } = usePopupManager('message', { runOnMounted: true });
 
     return () => (
       <TransitionGroup

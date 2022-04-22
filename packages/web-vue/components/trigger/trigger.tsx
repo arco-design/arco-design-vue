@@ -395,7 +395,7 @@ export default defineComponent({
       documentContainer: true,
     });
 
-    const { zIndex } = usePopupManager({ visible: computedVisible });
+    const { zIndex } = usePopupManager('popup', { visible: computedVisible });
 
     let delayTimer = 0;
     let outsideListener = false;
