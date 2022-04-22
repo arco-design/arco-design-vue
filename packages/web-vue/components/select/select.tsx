@@ -366,6 +366,7 @@ export default defineComponent({
     /**
      * @zh 点击清除按钮时触发
      * @en Triggered when the clear button is clicked
+     * @property {boolean} popupVisible
      */
     'clear',
     /**
