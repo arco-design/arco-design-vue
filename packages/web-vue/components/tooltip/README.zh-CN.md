@@ -28,6 +28,7 @@ description: 鼠标悬停、聚焦或点击在某个组件时，弹出的文字�
 |content|文字气泡内容|`string`|`-`|
 |position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'top'`|
 |mini|是否展示为迷你尺寸|`boolean`|`false`|
+|background-color|弹出框的背景颜色|`string`|`-`|
 |content-class|弹出框内容的类名|`ClassName`|`-`|
 |content-style|弹出框内容的样式|`CSSProperties`|`-`|
 |arrow-class|弹出框箭头的类名|`ClassName`|`-`|

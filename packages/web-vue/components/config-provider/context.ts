@@ -3,10 +3,11 @@ import { ArcoLang } from '../locale/interface';
 import { Size } from '../_utils/constant';
 
 export interface ConfigProvider {
+  slots: Slots;
   prefixCls?: string;
   locale?: ArcoLang;
   size?: Size;
-  slots: Slots;
+  updateAtScroll?: boolean;
 }
 
 export const configProviderInjectionKey: InjectionKey<ConfigProvider> =

@@ -30,6 +30,7 @@ description: A tooltip that popup when the mouse hovers, focus, or click on a co
 |content|Tooltip content|`string`|`-`|
 |position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'top'`|
 |mini|Whether to display as a mini size|`boolean`|`false`|
+|background-color|Background color of the popover|`string`|`-`|
 |content-class|The class name of the popup content|`ClassName`|`-`|
 |content-style|The style of the popup content|`CSSProperties`|`-`|
 |arrow-class|The class name of the popup arrow|`ClassName`|`-`|
