@@ -647,7 +647,11 @@ export default defineComponent({
       emitExpandEvent({ newExpandedKeys: keys });
     }
 
-    function checkNodes(keys: TreeNodeKey[], checked: boolean) {
+    function checkNodes(
+      keys: TreeNodeKey[],
+      checked: boolean,
+      targetKey?: TreeNodeKey
+    ) {
       if (!keys.length) return;
       let newCheckedKeys = [...checkedKeys.value];
       let newIndeterminateKeys = [...indeterminateKeys.value];
@@ -664,10 +668,19 @@ export default defineComponent({
         }
       });
       setCheckedState(newCheckedKeys, newIndeterminateKeys);
-      emitCheckEvent({ newCheckedKeys, newIndeterminateKeys });
+      emitCheckEvent({
+        targetKey,
+        targetChecked: isUndefined(targetKey) ? undefined : checked,
+        newCheckedKeys,
+        newIndeterminateKeys,
+      });
     }
 
-    function selectNodes(keys: TreeNodeKey[], selected: boolean) {
+    function selectNodes(
+      keys: TreeNodeKey[],
+      selected: boolean,
+      targetKey?: TreeNodeKey
+    ) {
       if (!keys.length) return;
 
       let newSelectedKeys: TreeNodeKey[];
@@ -683,10 +696,18 @@ export default defineComponent({
       }
 
       setSelectedState(newSelectedKeys);
-      emitSelectEvent({ newSelectedKeys });
+      emitSelectEvent({
+        targetKey,
+        targetSelected: isUndefined(targetKey) ? undefined : selected,
+        newSelectedKeys,
+      });
     }
 
-    function expandNodes(keys: TreeNodeKey[], expanded: boolean) {
+    function expandNodes(
+      keys: TreeNodeKey[],
+      expanded: boolean,
+      targetKey?: TreeNodeKey
+    ) {
       const expandedKeysSet = new Set(expandedKeys.value);
 
       keys.forEach((key) => {
@@ -696,7 +717,11 @@ export default defineComponent({
       const newExpandedKeys = [...expandedKeysSet];
 
       setExpandState(newExpandedKeys);
-      emitExpandEvent({ newExpandedKeys });
+      emitExpandEvent({
+        targetKey,
+        targetExpanded: isUndefined(targetKey) ? undefined : expanded,
+        newExpandedKeys,
+      });
     }
 
     function onCheck(checked: boolean, key: TreeNodeKey, e?: Event) {
@@ -1010,7 +1035,8 @@ export default defineComponent({
     ) {
       const { checkStrictly, treeContext } = this;
       const { key2TreeNode } = treeContext;
-      const keys = (isArray(key) ? key : [key]).filter((key) => {
+      const isBatch = isArray(key);
+      const keys = (isBatch ? key : [key]).filter((key) => {
         const node = key2TreeNode[key];
         return (
           node &&
@@ -1018,7 +1044,7 @@ export default defineComponent({
           (checkStrictly || !onlyCheckLeaf || isLeafNode(node)) // onlyCheckLeaf 仅在 checkStrictly 为 false 的时候有效
         );
       });
-      this.internalCheckNodes(keys, checked);
+      this.internalCheckNodes(keys, checked, isBatch ? undefined : key);
     },
     /**
      * @zh 设置全部节点的选中状态
@@ -1047,10 +1073,11 @@ export default defineComponent({
      */
     selectNode(key: TreeNodeKey | TreeNodeKey[], selected = true) {
       const { key2TreeNode } = this.treeContext;
-      const keys = (isArray(key) ? key : [key]).filter(
+      const isBatch = isArray(key);
+      const keys = (isBatch ? key : [key]).filter(
         (key) => key2TreeNode[key] && isNodeSelectable(key2TreeNode[key])
       );
-      this.internalSelectNodes(keys, selected);
+      this.internalSelectNodes(keys, selected, isBatch ? undefined : key);
     },
     /**
      * @zh 设置全部节点的展开状态
@@ -1079,10 +1106,11 @@ export default defineComponent({
      */
     expandNode(key: TreeNodeKey | TreeNodeKey[], expanded = true) {
       const { key2TreeNode } = this.treeContext;
-      const keys = (isArray(key) ? key : [key]).filter(
+      const isBatch = isArray(key);
+      const keys = (isBatch ? key : [key]).filter(
         (key) => key2TreeNode[key] && isNodeExpandable(key2TreeNode[key])
       );
-      this.internalExpandNodes(keys, expanded);
+      this.internalExpandNodes(keys, expanded, isBatch ? undefined : key);
     },
   },
 });
