@@ -2,7 +2,7 @@
 
 exports[`Modal should render modal and emit ok/cancel event 1`] = `
 "<!--teleport start-->
-<div class=\\"arco-modal-container\\" style=\\"z-index: 1000;\\">
+<div class=\\"arco-modal-container\\" style=\\"z-index: 1001;\\">
   <transition-stub>
     <div class=\\"arco-modal-mask\\"></div>
   </transition-stub>
@@ -32,7 +32,7 @@ exports[`Modal should render modal and emit ok/cancel event 1`] = `
 
 exports[`Modal should render simple modal 1`] = `
 "<!--teleport start-->
-<div class=\\"arco-modal-container\\" style=\\"z-index: 1002;\\">
+<div class=\\"arco-modal-container\\" style=\\"z-index: 1001;\\">
   <transition-stub>
     <div class=\\"arco-modal-mask\\"></div>
   </transition-stub>

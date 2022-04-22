@@ -84,6 +84,11 @@ description: 用于数据收集展示、分析整理、操作处理。
 |summary|显示表尾总结行|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|总结行的首列文字|`string`|`'Summary'`|2.21.0|
 |summary-span-method|总结行的单元格合并方法|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
+|selected-keys|已选择的行（受控模式）优先于 `rowSelection`|`string[]`|`-`|2.25.0|
+|default-selected-keys|默认已选择的行（非受控模式）优先于 `rowSelection`|`string[]`|`-`|2.25.0|
+|expanded-keys|显示的展开行、子树（受控模式）优先于 `expandable`|`string[]`|`-`|2.25.0|
+|default-expanded-keys|默认显示的展开行、子树（非受控模式）优先于 `expandable`|`string[]`|`-`|2.25.0|
+|default-expand-all-rows|是否默认展开所有的行|`boolean`|`false`|2.25.0|
 ### `<table>` Events
 
 |事件名|描述|参数|

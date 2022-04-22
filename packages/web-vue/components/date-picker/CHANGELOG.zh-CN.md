@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🆕 新增功能
+
+- 增加参数 `exchangeTime` ([#1020](https://github.com/arco-design/arco-design-vue/pull/1020))
+
+
 ## 2.24.0
 
 `2022-04-15`

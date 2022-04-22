@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<form> demo: render [async] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -60,7 +60,7 @@ exports[`<form> demo: render [async] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [auto-width] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined arco-form-auto-label-width\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium arco-form-auto-label-width\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -119,7 +119,7 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [basic] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -184,7 +184,7 @@ exports[`<form> demo: render [custom] correctly 1`] = `
     </button></div>
   <div class=\\"arco-space-item\\"> Disabled: false</div>
 </div>
-<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\"><strong class=\\"arco-form-item-label-required-symbol\\"><svg fill=\\"currentColor\\" viewBox=\\"0 0 1024 1024\\" width=\\"1em\\" height=\\"1em\\"><path d=\\"M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z\\"></path></svg></strong>Username </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
@@ -199,7 +199,7 @@ exports[`<form> demo: render [custom] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [disabled] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -258,7 +258,7 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [dynamic] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username
@@ -299,7 +299,7 @@ exports[`<form> demo: render [dynamic] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [extra] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\"><strong class=\\"arco-form-item-label-required-symbol\\"><svg fill=\\"currentColor\\" viewBox=\\"0 0 1024 1024\\" width=\\"1em\\" height=\\"1em\\"><path d=\\"M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z\\"></path></svg></strong>Username </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
@@ -348,7 +348,7 @@ exports[`<form> demo: render [extra] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [grid] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start\\" style=\\"margin-left: -8px; margin-right: -8px;\\">
     <div class=\\"arco-col arco-col-8\\" style=\\"padding-left: 8px; padding-right: 8px;\\">
       <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
@@ -436,7 +436,7 @@ exports[`<form> demo: render [layout] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 600px;\\">
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"horizontal\\"><span class=\\"arco-radio-button-content\\">horizontal</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vertical\\"><span class=\\"arco-radio-button-content\\">vertical</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline\\"><span class=\\"arco-radio-button-content\\">inline</span></label></span></div>
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
-    <form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\">
+    <form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
         <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
             <!--v-if-->Username
@@ -500,7 +500,7 @@ exports[`<form> demo: render [layout] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [nest] correctly 1`] = `
-"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-undefined\\" style=\\"width: 600px;\\">
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 600px;\\">
   <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Username

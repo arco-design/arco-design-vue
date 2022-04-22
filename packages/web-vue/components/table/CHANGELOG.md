@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🆕 Feature
+
+- Add row selector and expand row two-way binding properties ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+- Add a second param `rowKey` to the `select` event ([#999](https://github.com/arco-design/arco-design-vue/pull/999))
+
+### 💎 Enhancement
+
+- The `record` parameter of custom cell rendering supports modification ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+
+
 ## 2.24.0
 
 `2022-04-15`

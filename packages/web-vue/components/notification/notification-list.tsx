@@ -3,13 +3,13 @@ import { defineComponent, TransitionGroup } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { toKebabCase } from '../_utils/convert-case';
 import Notification from './notification.vue';
-import { isFunction } from '../_utils/is';
 import {
   NOTIFICATION_POSITION,
   NotificationItem,
   NotificationPosition,
 } from './interface';
 import usePopupManager from '../_hooks/use-popup-manager';
+import { getSlotFunction } from '../_utils/vue-utils';
 
 export default defineComponent({
   name: 'NotificationList',
@@ -44,12 +44,10 @@ export default defineComponent({
       >
         {props.notifications.map((item) => {
           const slots = {
-            default: () => (isFunction(item.title) ? item.title() : item.title),
-            content: () =>
-              isFunction(item.content) ? item.content() : item.content,
-            icon: () => (isFunction(item.icon) ? item.icon() : item.icon),
-            button: () =>
-              isFunction(item.button) ? item.button() : item.button,
+            default: getSlotFunction(item.title),
+            content: getSlotFunction(item.content),
+            icon: getSlotFunction(item.icon),
+            footer: getSlotFunction(item.footer),
           };
           return (
             <Notification

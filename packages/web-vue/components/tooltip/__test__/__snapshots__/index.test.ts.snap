@@ -3,7 +3,7 @@
 exports[`Tooltip should render tooltip 1`] = `
 "<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-top arco-tooltip\\" style=\\"z-index: 1000;\\" trigger-placement=\\"top\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-top arco-tooltip\\" style=\\"z-index: 1001;\\" trigger-placement=\\"top\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -13,7 +13,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-tl arco-tooltip\\" style=\\"z-index: 1001;\\" trigger-placement=\\"tl\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-tl arco-tooltip\\" style=\\"z-index: 1002;\\" trigger-placement=\\"tl\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -23,7 +23,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-tr arco-tooltip\\" style=\\"z-index: 1002;\\" trigger-placement=\\"tr\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-tr arco-tooltip\\" style=\\"z-index: 1003;\\" trigger-placement=\\"tr\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -33,7 +33,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-bottom arco-tooltip\\" style=\\"z-index: 1003;\\" trigger-placement=\\"bottom\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-bottom arco-tooltip\\" style=\\"z-index: 1004;\\" trigger-placement=\\"bottom\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -43,7 +43,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-bl arco-tooltip\\" style=\\"z-index: 1004;\\" trigger-placement=\\"bl\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-bl arco-tooltip\\" style=\\"z-index: 1005;\\" trigger-placement=\\"bl\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -53,7 +53,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-br arco-tooltip\\" style=\\"z-index: 1005;\\" trigger-placement=\\"br\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-br arco-tooltip\\" style=\\"z-index: 1006;\\" trigger-placement=\\"br\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -63,7 +63,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-left arco-tooltip\\" style=\\"z-index: 1006;\\" trigger-placement=\\"left\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-left arco-tooltip\\" style=\\"z-index: 1007;\\" trigger-placement=\\"left\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -73,7 +73,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-lt arco-tooltip\\" style=\\"z-index: 1007;\\" trigger-placement=\\"lt\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-lt arco-tooltip\\" style=\\"z-index: 1008;\\" trigger-placement=\\"lt\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -83,7 +83,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-lb arco-tooltip\\" style=\\"z-index: 1008;\\" trigger-placement=\\"lb\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-lb arco-tooltip\\" style=\\"z-index: 1009;\\" trigger-placement=\\"lb\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -93,7 +93,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-right arco-tooltip\\" style=\\"z-index: 1009;\\" trigger-placement=\\"right\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-right arco-tooltip\\" style=\\"z-index: 1010;\\" trigger-placement=\\"right\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -103,7 +103,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-rt arco-tooltip\\" style=\\"z-index: 1010;\\" trigger-placement=\\"rt\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-rt arco-tooltip\\" style=\\"z-index: 1011;\\" trigger-placement=\\"rt\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>
@@ -113,7 +113,7 @@ exports[`Tooltip should render tooltip 1`] = `
 </div>
 <!--teleport end-->/n<button>Button</button>
 <!--teleport start-->
-<div class=\\"arco-trigger-popup arco-trigger-position-rb arco-tooltip\\" style=\\"z-index: 1011;\\" trigger-placement=\\"rb\\">
+<div class=\\"arco-trigger-popup arco-trigger-position-rb arco-tooltip\\" style=\\"z-index: 1012;\\" trigger-placement=\\"rb\\">
   <transition-stub>
     <div class=\\"arco-trigger-popup-wrapper\\">
       <div class=\\"arco-trigger-content arco-tooltip-content\\">content</div>

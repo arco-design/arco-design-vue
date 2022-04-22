@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🆕 Feature
+
+- Add hideContent property ([#1025](https://github.com/arco-design/arco-design-vue/pull/1025))
+
+
 ## 2.18.1
 
 `2022-03-07`

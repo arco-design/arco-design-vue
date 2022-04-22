@@ -86,6 +86,11 @@ description: It is used for data collection, display, analysis and processing, a
 |summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|The first column of text in the summary line|`string`|`'Summary'`|2.21.0|
 |summary-span-method|Cell Merge Method for Summarizing Rows|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
+|selected-keys|Selected row (controlled mode) takes precedence over `rowSelection`|`string[]`|`-`|2.25.0|
+|default-selected-keys|The selected row by default (uncontrolled mode) takes precedence over `rowSelection`|`string[]`|`-`|2.25.0|
+|expanded-keys|Displayed Expanded Row, Subtree (Controlled Mode) takes precedence over `expandable`|`string[]`|`-`|2.25.0|
+|default-expanded-keys|Expand row, Subtree displayed by default (Uncontrolled mode) takes precedence over `expandable`|`string[]`|`-`|2.25.0|
+|default-expand-all-rows|Whether to expand all rows by default|`boolean`|`false`|2.25.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|

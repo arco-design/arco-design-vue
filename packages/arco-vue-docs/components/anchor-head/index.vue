@@ -15,7 +15,7 @@ import copy from '../../utils/clipboard';
 export default defineComponent({
   name: 'AnchorHead',
   props: {
-    level: Number,
+    level: [Number, String],
     href: String,
   },
   setup() {

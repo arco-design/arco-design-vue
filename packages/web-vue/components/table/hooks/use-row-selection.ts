@@ -39,9 +39,6 @@ export const useRowSelection = ({
   const handleSelectAll = (checked: boolean) => {
     const newSelectedRowKeys = new Set(selectedRowKeys.value);
 
-    // eslint-disable-next-line no-console
-    console.log(checked, newSelectedRowKeys, currentAllEnabledRowKeys.value);
-
     for (const key of currentAllEnabledRowKeys.value) {
       if (checked) {
         newSelectedRowKeys.add(key);
@@ -49,9 +46,6 @@ export const useRowSelection = ({
         newSelectedRowKeys.delete(key);
       }
     }
-
-    // eslint-disable-next-line no-console
-    console.log(newSelectedRowKeys);
 
     _selectedRowKeys.value = [...newSelectedRowKeys];
 

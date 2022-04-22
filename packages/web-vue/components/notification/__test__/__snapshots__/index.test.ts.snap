@@ -11,6 +11,7 @@ exports[`Notification should render notification 1`] = `
     <div class=\\"arco-notification-right\\">
       <div class=\\"arco-notification-title\\"></div>
       <div class=\\"arco-notification-content\\">Info Message</div>
+      <!--v-if-->
     </div>
     <!--v-if-->
   </li>
@@ -23,6 +24,7 @@ exports[`Notification should render notification 1`] = `
     <div class=\\"arco-notification-right\\">
       <div class=\\"arco-notification-title\\"></div>
       <div class=\\"arco-notification-content\\">Success Message</div>
+      <!--v-if-->
     </div>
     <!--v-if-->
   </li>
@@ -35,6 +37,7 @@ exports[`Notification should render notification 1`] = `
     <div class=\\"arco-notification-right\\">
       <div class=\\"arco-notification-title\\"></div>
       <div class=\\"arco-notification-content\\">Warning Message</div>
+      <!--v-if-->
     </div>
     <!--v-if-->
   </li>
@@ -47,6 +50,7 @@ exports[`Notification should render notification 1`] = `
     <div class=\\"arco-notification-right\\">
       <div class=\\"arco-notification-title\\"></div>
       <div class=\\"arco-notification-content\\">Error Message</div>
+      <!--v-if-->
     </div>
     <!--v-if-->
   </li>

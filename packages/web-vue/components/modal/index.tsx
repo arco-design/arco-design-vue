@@ -8,6 +8,7 @@ import { isFunction } from '../_utils/is';
 import _Modal from './modal.vue';
 import { ModalConfig, ModalMethod } from './interface';
 import { omit } from '../_utils/omit';
+import { getSlotFunction } from '../_utils/vue-utils';
 
 const open = (config: ModalConfig, appContext?: AppContext) => {
   let container: HTMLElement | null = getOverlay('modal');
@@ -57,11 +58,9 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
     _Modal,
     { ...omit(config, ['content', 'title', 'footer']), ...defaultConfig },
     {
-      default: isFunction(config.content)
-        ? config.content
-        : () => config.content,
-      title: isFunction(config.title) ? config.title : () => config.title,
-      footer: isFunction(config.footer) ? config.footer : () => config.footer,
+      default: getSlotFunction(config.content),
+      title: getSlotFunction(config.title),
+      footer: getSlotFunction(config.footer),
     }
   );
 

@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🆕 新增功能
+
+- **notification:** 增加 button 属性 ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+- **tabs:** 增加 hideContent 属性 ([#1025](https://github.com/arco-design/arco-design-vue/pull/1025))
+- **table:** 增加行选择器和展开行双向绑定属性 ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+- **date-picker:** 增加参数 `exchangeTime` ([#1020](https://github.com/arco-design/arco-design-vue/pull/1020))
+- **icon:** 增加 `attachment`, `archive`, `calendar-clock`, `palette`, `launch` 图标 ([#1017](https://github.com/arco-design/arco-design-vue/pull/1017))
+- **config-provider:** 增加 updateAtScroll 属性 ([#1015](https://github.com/arco-design/arco-design-vue/pull/1015))
+- **table:** `select` 事件新增第二个参数 `rowKey` ([#999](https://github.com/arco-design/arco-design-vue/pull/999))
+- **config-provider:** 添加 `global` 属性 ([#933](https://github.com/arco-design/arco-design-vue/pull/933))
+
+### 🐛 问题修复
+
+- **input-number:** 修复 error 属性失效的问题 ([#1026](https://github.com/arco-design/arco-design-vue/pull/1026))
+- 修复 Volar 智能提示失效的问题 ([#1022](https://github.com/arco-design/arco-design-vue/pull/1022))
+- **icon:** 修正 `link`, `image-close`,`lock`, `unlock`,`sync` 图标 ([#1017](https://github.com/arco-design/arco-design-vue/pull/1017))
+
+### 💎 功能优化
+
+- **table:** 自定义单元格渲染的 `record` 参数支持修改 ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+- **tree:** 调用方法操作单个节点的时候在回调参数重增加目标节点信息 ([#1021](https://github.com/arco-design/arco-design-vue/pull/1021))
+- **modal:** 使用 `esc` 关闭时只会关闭最上层弹窗 ([#1018](https://github.com/arco-design/arco-design-vue/pull/1018))
+
+### 💅 样式更新
+
+- **menu:** 弹出菜单的 icon 增加 margin-right ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+
+### 🆎 类型修正
+
+- **tag:** 修复 TagProps 的问题 ([#1024](https://github.com/arco-design/arco-design-vue/pull/1024))
+
+
 ## 2.24.1
 
 `2022-04-16`

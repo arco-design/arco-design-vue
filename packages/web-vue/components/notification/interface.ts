@@ -96,11 +96,11 @@ export interface NotificationConfig {
    */
   duration?: number;
   /**
-   * @zh 按钮
-   * @en Button
+   * @zh 底部内容
+   * @en Footer Content
    * @version 2.25.0
    */
-  button?: RenderFunction;
+  footer?: RenderFunction;
   /**
    * @zh 关闭时的回调函数
    * @en Callback function when closing
@@ -123,7 +123,7 @@ export interface NotificationItem {
   content: RenderContent;
   title?: RenderContent;
   icon?: RenderFunction;
-  button?: RenderFunction;
+  footer?: RenderFunction;
   showIcon?: boolean;
   closable?: boolean;
   duration?: number;

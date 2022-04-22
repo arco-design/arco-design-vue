@@ -50,8 +50,7 @@ exports[`<spin> demo: render [dot] correctly 1`] = `
 exports[`<spin> demo: render [icon] correctly 1`] = `
 "<div class=\\"arco-spin\\">
   <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-sync arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"m33.193 11.98 1.414-1.414 1.414-1.415h-2.828v2.829ZM14.812 36.018l-1.415 1.414-1.414 1.414h2.829v-2.828Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
-      <path d=\\"m34.607 10.566 1.414-1.415h-2.828v2.829l1.414-1.414Zm0 0 1.414 1.414c6.64 6.639 6.64 17.403 0 24.042a16.922 16.922 0 0 1-8.942 4.7m-13.682-3.29-1.414 1.414h2.829v-2.828l-1.415 1.414Zm0 0-1.414-1.414c-6.639-6.639-6.639-17.403 0-24.042a16.922 16.922 0 0 1 8.942-4.7\\"></path>
+      <path d=\\"M11.98 11.703c-6.64 6.64-6.64 17.403 0 24.042a16.922 16.922 0 0 0 8.942 4.7M34.603 37.156l1.414-1.415c6.64-6.639 6.64-17.402 0-24.041A16.922 16.922 0 0 0 27.075 7M14.81 11.982l-1.414-1.414-1.414-1.414h2.829v2.828ZM33.192 36.02l1.414 1.414 1.414 1.415h-2.828V36.02Z\\"></path>
     </svg></div>
   <!---->
 </div>"

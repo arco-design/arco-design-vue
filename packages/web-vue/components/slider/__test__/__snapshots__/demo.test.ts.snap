@@ -120,7 +120,7 @@ exports[`<slider> demo: render [range] correctly 1`] = `
 exports[`<slider> demo: render [step] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
-    <form class=\\"arco-form arco-form-layout-inline arco-form-size-undefined\\">
+    <form class=\\"arco-form arco-form-layout-inline arco-form-size-medium\\">
       <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
         <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
             <!--v-if-->Step

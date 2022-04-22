@@ -23,13 +23,14 @@
       <div :class="`${prefixCls}-content`">
         <slot name="content" />
       </div>
+      <div v-if="$slots.footer" :class="`${prefixCls}-footer`">
+        <slot name="footer" />
+      </div>
     </div>
     <div v-if="closable" :class="`${prefixCls}-close-btn`" @click="handleClose">
-      <slot name="button">
-        <a-icon-hover>
-          <icon-close />
-        </a-icon-hover>
-      </slot>
+      <a-icon-hover>
+        <icon-close />
+      </a-icon-hover>
     </div>
   </li>
 </template>

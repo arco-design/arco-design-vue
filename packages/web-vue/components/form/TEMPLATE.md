@@ -68,8 +68,8 @@ const useFormItem = (data: {
 ## zh-CN
 ## FAQ
 
-### 关于 <form-item> 的 `field` 属性
-`field` 属性的值为获取当前 <form-item> 对应值的路径字符串。
+### 关于 `form-item` 的 `field` 属性
+`field` 属性的值为获取当前 `form-item` 对应值的路径字符串。
 
 例如传入 model 属性的数据结构为：
 ```ts
@@ -86,14 +86,14 @@ const data = reactive({
   ]
 })
 ```
-此时，如果想要指定当前 <form-item> 对应的值为 `id: '2'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`
+此时，如果想要指定当前 `form-item` 对应的值为 `id: '2'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`
 
 ---
 ## en-US
 ## FAQ
 
-### About the `field` attribute of <form-item>
-The value of the `field` attribute is the path string to get the corresponding value of the current <form-item>.
+### About the `field` attribute of `form-item`
+The value of the `field` attribute is the path string to get the corresponding value of the current `form-item`.
 
 For example, the data structure passed into the model property is:
 ```ts
@@ -110,6 +110,6 @@ const data = reactive({
    ]
 })
 ````
-At this point, if you want to specify the value corresponding to the current <form-item> as `id: '2'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
+At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
 
 ---

@@ -9,9 +9,9 @@
       @mouseleave="hover = false"
     >
       <IconSkin />
-      <template v-if="hover">
+      <span v-if="hover" style="margin-left: 8px">
         {{ t('themeBox.installTheme') }}
-      </template>
+      </span>
     </Button>
   </Badge>
   <Modal

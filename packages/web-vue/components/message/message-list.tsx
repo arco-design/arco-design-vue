@@ -1,10 +1,10 @@
 import type { PropType } from 'vue';
 import { defineComponent, TransitionGroup } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { isFunction } from '../_utils/is';
 import Message from './message.vue';
 import { MessageItem, MessagePosition } from './interface';
 import usePopupManager from '../_hooks/use-popup-manager';
+import { getSlotFunction } from '../_utils/vue-utils';
 
 export default defineComponent({
   name: 'MessageList',
@@ -33,9 +33,8 @@ export default defineComponent({
       >
         {props.messages.map((item) => {
           const slots = {
-            default: () =>
-              isFunction(item.content) ? item.content() : item.content,
-            icon: () => (isFunction(item.icon) ? item.icon() : item.icon),
+            default: getSlotFunction(item.content),
+            icon: getSlotFunction(item.icon),
           };
           return (
             <Message

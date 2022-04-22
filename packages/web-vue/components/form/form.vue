@@ -326,7 +326,7 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-layout-${props.layout}`,
-      `${prefixCls}-size-${size.value}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-auto-label-width`]: props.autoLabelWidth,
       },

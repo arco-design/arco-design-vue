@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 💎 Enhancement
+
+- When calling a method to operate a single node, add the target node information in the callback parameter ([#1021](https://github.com/arco-design/arco-design-vue/pull/1021))
+
+
 ## 2.24.0
 
 `2022-04-15`

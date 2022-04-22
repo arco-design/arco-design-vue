@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🆕 新增功能
+
+- 增加行选择器和展开行双向绑定属性 ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+- `select` 事件新增第二个参数 `rowKey` ([#999](https://github.com/arco-design/arco-design-vue/pull/999))
+
+### 💎 功能优化
+
+- 自定义单元格渲染的 `record` 参数支持修改 ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+
+
 ## 2.24.0
 
 `2022-04-15`

@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🆕 Feature
+
+- **notification:** Add button prop ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+- **tabs:** Add hideContent property ([#1025](https://github.com/arco-design/arco-design-vue/pull/1025))
+- **table:** Add row selector and expand row two-way binding properties ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+- **date-picker:** add property exchangeTime ([#1020](https://github.com/arco-design/arco-design-vue/pull/1020))
+- **icon:** Added `attachment`, `archive`, `calendar-clock`, `palette`, `launch` icons ([#1017](https://github.com/arco-design/arco-design-vue/pull/1017))
+- **config-provider:** Add updateAtScroll property ([#1015](https://github.com/arco-design/arco-design-vue/pull/1015))
+- **table:** Add a second param `rowKey` to the `select` event ([#999](https://github.com/arco-design/arco-design-vue/pull/999))
+- **config-provider:** add property `global` ([#933](https://github.com/arco-design/arco-design-vue/pull/933))
+
+### 🐛 BugFix
+
+- **input-number:** Fix the problem that the error attribute is invalid ([#1026](https://github.com/arco-design/arco-design-vue/pull/1026))
+- Fixed an issue where Volar's intellisense didn't work ([#1022](https://github.com/arco-design/arco-design-vue/pull/1022))
+- **icon:** Fixed `link`, `image-close`, `lock`, `unlock`, `sync` icons ([#1017](https://github.com/arco-design/arco-design-vue/pull/1017))
+
+### 💎 Enhancement
+
+- **table:** The `record` parameter of custom cell rendering supports modification ([#1023](https://github.com/arco-design/arco-design-vue/pull/1023))
+- **tree:** When calling a method to operate a single node, add the target node information in the callback parameter ([#1021](https://github.com/arco-design/arco-design-vue/pull/1021))
+- **modal:** When closing with `esc`, only the topmost popup will be closed ([#1018](https://github.com/arco-design/arco-design-vue/pull/1018))
+
+### 💅 Style
+
+- **menu:** Popup menu icon increased margin-right ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+
+### 🆎 TypeScript
+
+- **tag:** Fix TagProps issues ([#1024](https://github.com/arco-design/arco-design-vue/pull/1024))
+
+
 ## 2.24.1
 
 `2022-04-16`

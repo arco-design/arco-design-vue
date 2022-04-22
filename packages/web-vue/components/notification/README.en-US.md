@@ -52,17 +52,18 @@ Notification._context = app._context;
 
 ### NotificationConfig
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|content|Content|`RenderContent`|`-`|
-|title|Title|`RenderContent`|`-`|
-|icon|Icon|`RenderFunction`|`-`|
-|id|Unique id|`string`|`-`|
-|position|Position|`'topLeft'\|'topRight'\|'bottomLeft'\|'bottomRight'`|`-`|
-|showIcon|Whether to show icon|`boolean`|`false`|
-|closable|Whether it can be closed|`boolean`|`false`|
-|duration|Display duration|`number`|`-`|
-|onClose|Callback function when closing|`(id: number \| string) => void`|`-`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|content|Content|`RenderContent`|`-`||
+|title|Title|`RenderContent`|`-`||
+|icon|Icon|`RenderFunction`|`-`||
+|id|Unique id|`string`|`-`||
+|position|Position|`'topLeft'\|'topRight'\|'bottomLeft'\|'bottomRight'`|`-`||
+|showIcon|Whether to show icon|`boolean`|`false`||
+|closable|Whether it can be closed|`boolean`|`false`||
+|duration|Display duration|`number`|`-`||
+|footer|Footer Content|`RenderFunction`|`-`|2.25.0|
+|onClose|Callback function when closing|`(id: number \| string) => void`|`-`||
 
 
 

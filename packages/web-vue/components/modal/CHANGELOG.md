@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 💎 Enhancement
+
+- When closing with `esc`, only the topmost popup will be closed ([#1018](https://github.com/arco-design/arco-design-vue/pull/1018))
+
+
 ## 2.24.0
 
 `2022-04-15`

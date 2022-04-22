@@ -181,6 +181,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |disabled-date|Non-selectable date|`(current: Date, type: 'start' \| 'end') => boolean`|`-`||
 |disabled-time|Unselectable time|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
 |separator|The segmentation symbol in the input box of the range selector|`string`|`-`||
+|exchange-time|Whether the time will be exchanged, by default time will affect and participate in the ordering of start and end values, if you want to fix the time order, you can turn it off.|`boolean`|`true`|2.25.0|
 ### `<range-picker>` Events
 
 |Event Name|Description|Parameters|

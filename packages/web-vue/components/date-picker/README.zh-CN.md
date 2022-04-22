@@ -179,6 +179,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |disabled-date|不可选的日期|`(current: Date, type: 'start' \| 'end') => boolean`|`-`||
 |disabled-time|不可选取的时间|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
 |separator|范围选择器输入框内的分割符号|`string`|`-`||
+|exchange-time|时间是否会交换，默认情况下时间会影响和参与开始和结束值的排序，如果要固定时间顺序，可将其关闭。|`boolean`|`true`|2.25.0|
 ### `<range-picker>` Events
 
 |事件名|描述|参数|

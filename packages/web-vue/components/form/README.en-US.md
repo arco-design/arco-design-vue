@@ -189,8 +189,8 @@ const useFormItem = (data: {
 
 ## FAQ
 
-### About the `field` attribute of <form-item>
-The value of the `field` attribute is the path string to get the corresponding value of the current <form-item>.
+### About the `field` attribute of `form-item`
+The value of the `field` attribute is the path string to get the corresponding value of the current `form-item`.
 
 For example, the data structure passed into the model property is:
 ```ts
@@ -207,4 +207,4 @@ const data = reactive({
    ]
 })
 ````
-At this point, if you want to specify the value corresponding to the current <form-item> as `id: '2'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
+At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`

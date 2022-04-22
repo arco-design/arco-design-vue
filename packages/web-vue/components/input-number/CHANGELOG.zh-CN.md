@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🐛 问题修复
+
+- 修复 error 属性失效的问题 ([#1026](https://github.com/arco-design/arco-design-vue/pull/1026))
+
+
 ## 2.22.0
 
 `2022-04-01`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 💅 样式更新
+
+- 弹出菜单的 icon 增加 margin-right ([#1029](https://github.com/arco-design/arco-design-vue/pull/1029))
+
+
 ## 2.24.0
 
 `2022-04-15`

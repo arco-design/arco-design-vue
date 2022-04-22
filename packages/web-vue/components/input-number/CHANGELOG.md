@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.0
+
+`2022-04-22`
+
+### 🐛 BugFix
+
+- Fix the problem that the error attribute is invalid ([#1026](https://github.com/arco-design/arco-design-vue/pull/1026))
+
+
 ## 2.22.0
 
 `2022-04-01`
