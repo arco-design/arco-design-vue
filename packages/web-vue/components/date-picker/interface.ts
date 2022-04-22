@@ -151,6 +151,7 @@ export interface RangePickerProps extends BasePickerProps {
   disabledDate?: RangeDisabledDate;
   disabledTime?: RangeDisabledTime;
   separator?: string;
+  exchangeTime: boolean;
 }
 
 export interface RangePickerEvents {
