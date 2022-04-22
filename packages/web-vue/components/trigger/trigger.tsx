@@ -45,6 +45,7 @@ import { useResizeObserver } from '../_hooks/use-resize-observer';
 import ClientOnly from '../_components/client-only';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
 import { TriggerPopupTranslate } from './interface';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Trigger',
@@ -354,6 +355,9 @@ export default defineComponent({
   setup(props, { emit, slots, attrs }) {
     const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('trigger');
+
+    const configCtx = inject(configProviderInjectionKey, undefined);
+
     const triggerMethods = computed(() =>
       ([] as Array<TriggerEvent>).concat(props.trigger)
     );
@@ -647,7 +651,7 @@ export default defineComponent({
         }
       }
 
-      if (props.updateAtScroll) {
+      if (props.updateAtScroll || configCtx?.updateAtScroll) {
         if (value) {
           scrollElements = getScrollElements(triggerEle.value);
           for (const item of scrollElements) {

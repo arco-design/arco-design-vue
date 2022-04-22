@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts">
+import type { PropType } from 'vue';
 import {
   defineComponent,
-  PropType,
   provide,
   reactive,
   toRefs,
-  inject,
+  getCurrentInstance,
 } from 'vue';
 import { configProviderInjectionKey } from './context';
 import { ArcoLang } from '../locale/interface';
@@ -18,14 +18,6 @@ import { Size } from '../_utils/constant';
 export default defineComponent({
   name: 'ConfigProvider',
   props: {
-    /**
-     * @zh 是否全局生效
-     * @en Is global effect
-     */
-    isGlobal: {
-      type: Boolean,
-      default: false,
-    },
     /**
      * @zh 组件类名前缀
      * @en Component classname prefix
@@ -49,25 +41,43 @@ export default defineComponent({
     size: {
       type: String as PropType<Size>,
     },
+    /**
+     * @zh 是否全局生效
+     * @en Is global effect
+     * @version 2.25.0
+     */
+    global: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 是否在容器滚动时更新弹出框的位置
+     * @us Whether to update the position of the popup when the container is scrolled
+     * @version 2.25.0
+     */
+    updateAtScroll: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { slots }) {
-    const { isGlobal, prefixCls, locale, size } = toRefs(props);
+    const { prefixCls, locale, size, updateAtScroll } = toRefs(props);
 
-    provide(
-      configProviderInjectionKey,
-      reactive({
-        slots,
-        prefixCls,
-        locale,
-        size,
-      })
-    );
+    const config = reactive({
+      slots,
+      prefixCls,
+      locale,
+      size,
+      updateAtScroll,
+    });
 
-    if (isGlobal.value) {
-      const configProvider = inject(configProviderInjectionKey, undefined);
-      // 修正全局注入
-      configProvider &&
-        Object.assign(configProvider, { slots, prefixCls, locale, size });
+    if (props.global) {
+      const instance = getCurrentInstance();
+      if (instance) {
+        instance.appContext.app.provide(configProviderInjectionKey, config);
+      }
+    } else {
+      provide(configProviderInjectionKey, config);
     }
   },
 });

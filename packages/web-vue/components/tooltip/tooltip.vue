@@ -26,7 +26,7 @@
 import type { PropType } from 'vue';
 import { computed, CSSProperties, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { TRIGGER_POSITIONS, TriggerPosition } from '../_utils/constant';
+import { TriggerPosition } from '../_utils/constant';
 import Trigger from '../trigger';
 import { ClassName } from '../_utils/types';
 
@@ -66,9 +66,6 @@ export default defineComponent({
     position: {
       type: String as PropType<TriggerPosition>,
       default: 'top',
-      validator: (value: any) => {
-        return TRIGGER_POSITIONS.includes(value);
-      },
     },
     /**
      * @zh 是否展示为迷你尺寸
@@ -78,6 +75,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 弹出框的背景颜色
+     * @en Background color of the popover
+     */
     backgroundColor: {
       type: String,
     },
