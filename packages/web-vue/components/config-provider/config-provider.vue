@@ -3,7 +3,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, provide, reactive, toRefs } from 'vue';
+import {
+  defineComponent,
+  PropType,
+  provide,
+  reactive,
+  toRefs,
+  inject,
+} from 'vue';
 import { configProviderInjectionKey } from './context';
 import { ArcoLang } from '../locale/interface';
 import { Size } from '../_utils/constant';
@@ -11,6 +18,14 @@ import { Size } from '../_utils/constant';
 export default defineComponent({
   name: 'ConfigProvider',
   props: {
+    /**
+     * @zh 是否全局生效
+     * @en Is global effect
+     */
+    isGlobal: {
+      type: Boolean,
+      default: false,
+    },
     /**
      * @zh 组件类名前缀
      * @en Component classname prefix
@@ -36,7 +51,7 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
-    const { prefixCls, locale, size } = toRefs(props);
+    const { isGlobal, prefixCls, locale, size } = toRefs(props);
 
     provide(
       configProviderInjectionKey,
@@ -47,6 +62,13 @@ export default defineComponent({
         size,
       })
     );
+
+    if (isGlobal.value) {
+      const configProvider = inject(configProviderInjectionKey, undefined);
+      // 修正全局注入
+      configProvider &&
+        Object.assign(configProvider, { slots, prefixCls, locale, size });
+    }
   },
 });
 </script>
