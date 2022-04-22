@@ -75,37 +75,40 @@ const getRecords = (mr: any) => {
         .split('|')
         .map((value: string) => value.trim())
         .filter((value: string) => Boolean(value.trim()));
-      const data = titles.reduce(
-        (data: Record<string, any>, title: string, index: number) => {
-          switch (title) {
-            case 'type': {
-              if (items[index] && typeMap[items[index]]) {
-                data[title] = typeMap[items[index]];
+
+      if (items.length > 0) {
+        const data = titles.reduce(
+          (data: Record<string, any>, title: string, index: number) => {
+            switch (title) {
+              case 'type': {
+                if (items[index] && typeMap[items[index]]) {
+                  data[title] = typeMap[items[index]];
+                }
+                break;
               }
-              break;
-            }
-            case 'component':
-              data[title] = toKebabCase(items[index]);
-              break;
-            case 'related issues': {
-              const match = (items[index] ?? '').match(/#\d+/g);
-              if (match) {
-                data.issue = match.map((item: string) => item.slice(1));
+              case 'component':
+                data[title] = toKebabCase(items[index] ?? '');
+                break;
+              case 'related issues': {
+                const match = (items[index] ?? '').match(/#\d+/g);
+                if (match) {
+                  data.issue = match.map((item: string) => item.slice(1));
+                }
+                break;
               }
-              break;
+              default:
+                data[title] = items[index];
             }
-            default:
-              data[title] = items[index];
-          }
-          return data;
-        },
-        {
-          mrId: mr.number,
-          mrURL: mr.html_url,
-          type,
-        } as Record<string, any>
-      );
-      records.push(data);
+            return data;
+          },
+          {
+            mrId: mr.number,
+            mrURL: mr.html_url,
+            type,
+          } as Record<string, any>
+        );
+        records.push(data);
+      }
     }
   }
 
@@ -156,6 +159,23 @@ const getEmitsFromChangelog = async (
         },
       });
       item.component = answer.component;
+    }
+    if (!item.type) {
+      // eslint-disable-next-line no-await-in-loop
+      const answer = await inquirer.prompt({
+        type: 'list',
+        name: 'type',
+        choices: [
+          'feature',
+          'bugfix',
+          'enhancement',
+          'style',
+          'typescript',
+          'attention',
+        ],
+        message: `Please select the type for '${item.component}'.[${item.mrId}]`,
+      });
+      item.type = answer.type;
     }
 
     const contentCN = `${item['changelog(cn)']} ([#${item.mrId}](${item.mrURL}))`;
