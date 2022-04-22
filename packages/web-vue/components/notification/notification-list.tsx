@@ -48,6 +48,8 @@ export default defineComponent({
             content: () =>
               isFunction(item.content) ? item.content() : item.content,
             icon: () => (isFunction(item.icon) ? item.icon() : item.icon),
+            button: () =>
+              isFunction(item.button) ? item.button() : item.button,
           };
           return (
             <Notification

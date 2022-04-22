@@ -25,9 +25,11 @@
       </div>
     </div>
     <div v-if="closable" :class="`${prefixCls}-close-btn`" @click="handleClose">
-      <a-icon-hover>
-        <icon-close />
-      </a-icon-hover>
+      <slot name="button">
+        <a-icon-hover>
+          <icon-close />
+        </a-icon-hover>
+      </slot>
     </div>
   </li>
 </template>
