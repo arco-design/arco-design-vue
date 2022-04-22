@@ -234,6 +234,15 @@ export default defineComponent({
     separator: {
       type: String,
     },
+    /**
+     * @zh 时间是否会交换，默认情况下时间会影响和参与开始和结束值的排序，如果要固定时间顺序，可将其关闭。
+     * @en Whether the time will be exchanged, by default time will affect and participate in the ordering of start and end values, if you want to fix the time order, you can turn it off.
+     * @version 2.25.0
+     * */
+    exchangeTime: {
+      type: Boolean,
+      default: true,
+    },
     popupContainer: {
       type: [String, Object] as PropType<
         string | HTMLElement | null | undefined
@@ -439,6 +448,7 @@ export default defineComponent({
       size,
       error,
       dayStartOfWeek,
+      exchangeTime,
     } = toRefs(props);
 
     const { locale: globalLocal } = useI18n();
@@ -608,6 +618,7 @@ export default defineComponent({
       );
 
     const isDateTime = computed(() => mode.value === 'date' && showTime.value);
+    const hasTime = computed(() => isDateTime.value || timePickerProps.value);
 
     const isDisabledDate = useIsDisabledDate(
       reactive({
@@ -684,7 +695,14 @@ export default defineComponent({
       let newValue = value ? [...value] : undefined;
 
       if (isCompleteRangeValue(newValue)) {
-        newValue = getSortedDayjsArray(newValue);
+        let sortedValue = getSortedDayjsArray(newValue);
+        if (hasTime.value && !exchangeTime.value) {
+          sortedValue = [
+            getMergedOpValue(sortedValue[0], newValue[0]),
+            getMergedOpValue(sortedValue[1], newValue[1]),
+          ];
+        }
+        newValue = sortedValue;
       }
 
       emitChange(newValue, emitOk);
@@ -747,7 +765,7 @@ export default defineComponent({
     }
 
     function getMergedOpValue(date: Dayjs, time?: Dayjs) {
-      if (!isDateTime.value && !timePickerProps.value) return date;
+      if (!hasTime.value) return date;
       return mergeValueWithTime(getNow(), date, time);
     }
 
