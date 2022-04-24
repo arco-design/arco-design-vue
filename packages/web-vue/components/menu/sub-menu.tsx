@@ -90,6 +90,7 @@ export default defineComponent({
 
     const { subMenuKeys, menuItemKeys } = useMenuDataCollector({
       key: key.value,
+      type: 'subMenu',
     });
 
     const isChildrenSelected = computed(() => {

@@ -24,6 +24,7 @@ import {
   provide,
   reactive,
   toRefs,
+  StyleValue,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconMenuFold from '../icon/icon-menu-fold';
@@ -51,7 +52,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     style: {
-      type: Object as PropType<CSSProperties>,
+      type: Object as PropType<StyleValue>,
     },
     /**
      * @zh 菜单的主题
@@ -291,7 +292,7 @@ export default defineComponent({
     } = toRefs(props);
 
     const { subMenuKeys, menuData } = useMenuDataCollector({
-      isRoot: isRoot.value,
+      type: isRoot.value ? 'menu' : 'popupMenu',
     });
 
     const [selectedKeys, setSelectedKeys] = useMergeState(

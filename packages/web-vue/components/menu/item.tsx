@@ -52,14 +52,14 @@ export default defineComponent({
       () => (menuContext.selectedKeys || []).indexOf(key.value) > -1
     );
 
-    const { collectMenuItem, removeMenuItem } = useMenuDataCollectorContext();
+    const menuDataCollector = useMenuDataCollectorContext();
 
     onMounted(() => {
-      collectMenuItem && collectMenuItem(key.value);
+      menuDataCollector?.collectMenuItem(key.value);
     });
 
     onUnmounted(() => {
-      removeMenuItem && removeMenuItem(key.value);
+      menuDataCollector?.removeMenuItem(key.value);
     });
 
     function scrollTo() {
