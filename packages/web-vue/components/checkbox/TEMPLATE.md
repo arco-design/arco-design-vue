@@ -19,11 +19,15 @@ description: In a set of data, the user can select one or more data through the 
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/control.md
+
 @import ./__demo__/disabled.md
 
 @import ./__demo__/group.md
 
 @import ./__demo__/all.md
+
+@import ./__demo__/layout.md
 
 @import ./__demo__/custom.md
 

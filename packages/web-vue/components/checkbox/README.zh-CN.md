@@ -8,11 +8,15 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/control.md
+
 @import ./__demo__/disabled.md
 
 @import ./__demo__/group.md
 
 @import ./__demo__/all.md
+
+@import ./__demo__/layout.md
 
 @import ./__demo__/custom.md
 
