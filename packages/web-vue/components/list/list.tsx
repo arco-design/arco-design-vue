@@ -145,6 +145,11 @@ export default defineComponent({
    * @slot footer
    */
   /**
+   * @zh 空白展示
+   * @en Empty
+   * @slot empty
+   */
+  /**
    * @zh 列表项
    * @en List Item
    * @slot item
@@ -339,7 +344,7 @@ export default defineComponent({
         return null;
       }
 
-      return <Empty />;
+      return slots.empty?.() ?? <Empty />;
     };
 
     const render = () => {
