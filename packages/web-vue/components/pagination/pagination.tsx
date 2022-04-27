@@ -1,13 +1,5 @@
 import type { PropType, CSSProperties } from 'vue';
-import {
-  computed,
-  defineComponent,
-  inject,
-  reactive,
-  ref,
-  toRefs,
-  watch,
-} from 'vue';
+import { computed, defineComponent, reactive, ref, toRefs, watch } from 'vue';
 import type { Data, EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
@@ -20,7 +12,7 @@ import { useI18n } from '../locale';
 import { isNumber } from '../_utils/is';
 import type { PageItemType } from './interface';
 import { SelectProps } from '../select';
-import { configProviderInjectionKey } from '../config-provider/context';
+import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
   name: 'Pagination',
@@ -140,8 +132,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 分页按钮的样式
@@ -227,7 +217,9 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('pagination');
     const { t } = useI18n();
-    const { disabled, pageItemStyle, activePageItemStyle } = toRefs(props);
+    const { disabled, pageItemStyle, activePageItemStyle, size } =
+      toRefs(props);
+    const { mergedSize } = useSize(size);
 
     const _current = ref(props.defaultCurrent);
     const _pageSize = ref(props.defaultPageSize);
@@ -409,7 +401,7 @@ export default defineComponent({
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-simple`]: props.simple,
         [`${prefixCls}-disabled`]: props.disabled,
@@ -435,7 +427,7 @@ export default defineComponent({
               disabled={props.disabled}
               sizeOptions={props.pageSizeOptions}
               pageSize={computedPageSize.value}
-              size={props.size}
+              size={mergedSize.value}
               onChange={handlePageSizeChange}
               selectProps={props.pageSizeProps}
             />
@@ -449,7 +441,7 @@ export default defineComponent({
               disabled={props.disabled}
               current={computedCurrent.value}
               pages={pages.value}
-              size={props.size}
+              size={mergedSize.value}
               onChange={handleClick}
             />
           )}

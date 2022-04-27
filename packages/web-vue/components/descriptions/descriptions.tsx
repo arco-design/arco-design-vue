@@ -15,6 +15,7 @@ import { DescData, DescItemData, RenderData } from './interface';
 import { getAllElements, isSlotsChildren } from '../_utils/vue-utils';
 import { useResponsiveState } from '../grid/hook/use-responsive-state';
 import { ResponsiveValue } from '../grid';
+import { useSize } from '../_hooks/use-size';
 
 const getTotalSpan = (renderData?: RenderData[]) => {
   return renderData
@@ -73,7 +74,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
     },
     /**
      * @zh 是否显示边框
@@ -120,8 +120,9 @@ export default defineComponent({
    * @binding {DescData} data
    */
   setup(props, { slots }) {
-    const { column } = toRefs(props);
+    const { column, size } = toRefs(props);
     const prefixCls = getPrefixCls('descriptions');
+    const { mergedSize } = useSize(size);
 
     const computedColumn = useResponsiveState(column, 3, true);
 
@@ -339,7 +340,7 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-layout-${props.layout}`,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-border`]: props.bordered,
       },

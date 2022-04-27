@@ -5,14 +5,13 @@ import {
   reactive,
   provide,
   VNode,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
-import { CardContext, cardInjectionKey } from './context';
+import { cardInjectionKey } from './context';
 import { getAllElements } from '../_utils/vue-utils';
-
-export const SIZES = ['medium', 'small'] as const;
-export type SizeType = typeof SIZES[number];
+import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
   name: 'Card',
@@ -48,13 +47,10 @@ export default defineComponent({
      * @zh 卡片尺寸
      * @en Size of card
      * @values 'medium', 'small'
+     * @defaultValue 'medium'
      */
     size: {
-      type: String as PropType<SizeType>,
-      default: 'medium',
-      validator: (value: SizeType) => {
-        return SIZES.includes(value);
-      },
+      type: String as PropType<'medium' | 'small'>,
     },
     /**
      * @zh 自定义标题区域样式
@@ -109,6 +105,14 @@ export default defineComponent({
    */
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('card');
+    const { size } = toRefs(props);
+    const { mergedSize: _mergedSize } = useSize(size);
+    const mergedSize = computed(() => {
+      if (_mergedSize.value === 'small' || _mergedSize.value === 'mini') {
+        return 'small';
+      }
+      return 'medium';
+    });
 
     const renderActions = (vns: VNode[]) => {
       const actions = getAllElements(vns);
@@ -136,7 +140,7 @@ export default defineComponent({
 
     const cls = computed(() => [
       prefixCls,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-loading`]: props.loading,
         [`${prefixCls}-bordered`]: props.bordered,
