@@ -38,7 +38,7 @@ description: 鼠标悬停、聚焦或点击在某个组件时，弹出的文字�
 
 |事件名|描述|参数|
 |---|---|---|
-|popup-visible-change|文字气泡显示状态改变时触发|-|
+|popup-visible-change|文字气泡显示状态改变时触发|visible: `boolean`|
 ### `<tooltip>` Slots
 
 |插槽名|描述|参数|

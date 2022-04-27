@@ -125,6 +125,7 @@ export default defineComponent({
     /**
      * @zh 文字气泡显示状态改变时触发
      * @en Emitted when the tooltip display status changes
+     * @property {boolean} visible
      */
     'popupVisibleChange',
   ],

@@ -30,7 +30,7 @@ description: 将内容组织同一视图中，一次可查看一个视图内容�
 |active-key **(v-model)**|当前选中的标签的 `key`|`string\|number`|`-`||
 |default-active-key|默认选中的标签的`key`（非受控状态，为空时选中第一个标签页）|`string\|number`|`-`||
 |position|选项卡的位置|`'left' \| 'right' \| 'top' \| 'bottom'`|`'top'`||
-|size|选项卡的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|size|选项卡的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`||
 |type|选项卡的类型|`'line' \| 'card' \| 'card-gutter' \| 'text' \| 'rounded' \| 'capsule'`|`'line'`||
 |direction|选项卡的方向|`'horizontal' \| 'vertical'`|`'horizontal'`||
 |editable|是否开启可编辑模式|`boolean`|`false`||

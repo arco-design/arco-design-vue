@@ -65,10 +65,12 @@ description: It is used for data collection, display, analysis and processing, a
 
 %%API(table-column.tsx)%%
 
-%%INTERFACE(interface.ts)%%
+## Type
 
 ```ts
 type Filters = Record<string, string[]>;
 
 type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string, never>;
 ```
+
+%%INTERFACE(interface.ts)%%

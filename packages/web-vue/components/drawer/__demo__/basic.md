@@ -18,7 +18,7 @@ Click the trigger button to slide out the drawer from the right, click the mask 
 
 ```vue
 <template>
-  <a-button @click="handleClick">Open Modal</a-button>
+  <a-button @click="handleClick">Open Drawer</a-button>
   <a-drawer :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose>
     <template #title>
       Title

@@ -37,7 +37,7 @@ description: Grid can effectively ensure the consistency and logic of the page, 
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|gutter|Grid interval in `px`. Pass in the responsive object like {xs: 4, sm: 6, md: 12}. Pass in the array [horizontal spacing, vertical spacing] to set two directions.|`number \| ResponsiveValue \| ResponsiveValue[]`|`0`||
+|gutter|Grid interval in `px`. Pass in the responsive object like {xs: 4, sm: 6, md: 12}. Pass in the array [horizontal spacing, vertical spacing] to set two directions.|`number \| ResponsiveValue \| [ResponsiveValue, ResponsiveValue]`|`0`||
 |justify|Horizontal alignment (`justify-content`)|`'start' \| 'center' \| 'end' \| 'space-around' \| 'space-between'`|`'start'`||
 |align|Vertical alignment (`align-items`)|`'start' \| 'center' \| 'end' \| 'stretch'`|`'start'`||
 |div|Enabling this option `Row` and `Col` will be treated as divs without any Grid-related classes and styles|`boolean`|`false`||

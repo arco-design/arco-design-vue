@@ -28,7 +28,7 @@ description: 一般用于详情页的信息展示。
 |title|描述列表的标题|`string`|`-`|
 |layout|描述列表的排列方式|`'horizontal' \| 'vertical' \| 'inline-horizontal' \| 'inline-vertical'`|`'horizontal'`|
 |align|文字的对齐位置|`TextAlign \| { label?: TextAlign; value?: TextAlign }`|`'left'`|
-|size|描述列表的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|描述列表的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |bordered|是否显示边框|`boolean`|`false`|
 |label-style|数据标签的样式|`CSSProperties`|`-`|
 |value-style|数据内容的样式|`CSSProperties`|`-`|

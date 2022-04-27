@@ -139,7 +139,7 @@ export default defineComponent({
       type: String,
     },
     /**
-     * @zh 选中时的开关颜色
+     * @zh 未选中时的开关颜色
      * @en The color of the switch when unchecked
      * @version 2.12.0
      */

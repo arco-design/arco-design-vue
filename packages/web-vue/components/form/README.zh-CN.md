@@ -106,6 +106,8 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 
 
+## Type
+
 
 ### FieldRule
 
@@ -205,4 +207,4 @@ const data = reactive({
   ]
 })
 ```
-此时，如果想要指定当前 `form-item` 对应的值为 `id: '2'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`
+此时，如果想要指定当前 `form-item` 对应的值为 `id: '2222'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`

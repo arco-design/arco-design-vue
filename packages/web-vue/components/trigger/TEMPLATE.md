@@ -35,6 +35,8 @@ description: Used to add hover, click, focus and other events to the element, an
 
 %%API(trigger.tsx)%%
 
+## Type
+
 ```ts
 type TriggerPopupTranslate =
   | [number, number]

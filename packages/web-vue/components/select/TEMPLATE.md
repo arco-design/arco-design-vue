@@ -64,6 +64,8 @@ description: When users need to select one or more from a group of similar data,
 
 %%API(optgroup.vue)%%
 
+### Type
+
 ```ts
 /**
  * @zh 选项

@@ -86,8 +86,8 @@ description: When users need to select one or more from a group of similar data,
 |---|---|---|:---|
 |change|Triggered when the value changes|-||
 |input-value-change|Triggered when the value of the input changes|-||
-|popup-visible-change|Triggered when the display state of the drop-down box changes|-||
-|clear|Triggered when the clear button is clicked|popupVisible: `boolean`||
+|popup-visible-change|Triggered when the display state of the drop-down box changes|visible: `boolean`||
+|clear|Triggered when the clear button is clicked|-||
 |remove|Triggered when the delete button of the label is clicked|-||
 |search|Triggered when the user searches|-||
 |dropdown-scroll|Triggered when the drop-down scrolls|-||
@@ -136,6 +136,8 @@ description: When users need to select one or more from a group of similar data,
 |label|Title of option group|-|2.10.0|
 
 
+
+### Type
 
 ```ts
 /**

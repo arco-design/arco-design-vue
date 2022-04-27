@@ -84,8 +84,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |---|---|---|:---|
 |change|值发生改变时触发|-||
 |input-value-change|输入框的值发生改变时触发|-||
-|popup-visible-change|下拉框的显示状态改变时触发|-||
-|clear|点击清除按钮时触发|popupVisible: `boolean`||
+|popup-visible-change|下拉框的显示状态改变时触发|visible: `boolean`||
+|clear|点击清除按钮时触发|-||
 |remove|点击标签的删除按钮时触发|-||
 |search|用户搜索时触发|-||
 |dropdown-scroll|下拉菜单发生滚动时触发|-||
@@ -134,6 +134,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |label|选项组的标题|-|2.10.0|
 
 
+
+### Type
 
 ```ts
 /**

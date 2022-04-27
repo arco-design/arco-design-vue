@@ -7,7 +7,7 @@ exports[`<table> demo: render [basic] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -109,7 +109,7 @@ exports[`<table> demo: render [column-resize] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -208,7 +208,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -323,7 +323,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -437,7 +437,7 @@ exports[`<table> demo: render [custom-dom] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -539,7 +539,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col class=\\"arco-table-drag-handle-col\\" style=\\"width: 40px; min-width: 40px; max-width: 40px;\\">
             <col>
@@ -648,7 +648,7 @@ exports[`<table> demo: render [drag-row] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -750,7 +750,7 @@ exports[`<table> demo: render [editable] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -903,7 +903,7 @@ exports[`<table> demo: render [editable] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -1059,7 +1059,7 @@ exports[`<table> demo: render [expand] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
             <col>
@@ -1114,7 +1114,7 @@ exports[`<table> demo: render [expand] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><!----></span></td>
+              <td class=\\"arco-table-td arco-table-operation arco-table-expand\\"><span class=\\"arco-table-cell\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
@@ -1168,7 +1168,7 @@ exports[`<table> demo: render [filter] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -1270,7 +1270,7 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-table-content\\">
         <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 2000px;\\">
             <colgroup>
               <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
@@ -1310,7 +1310,7 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
           </table>
         </div>
         <div class=\\"arco-table-body\\" style=\\"max-height: 200px;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 2000px;\\">
             <colgroup>
               <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
@@ -1391,7 +1391,7 @@ exports[`<table> demo: render [group] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
             <col>
@@ -1565,7 +1565,7 @@ exports[`<table> demo: render [lazy-load] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -1787,7 +1787,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col class=\\"arco-table-selection-checkbox-col\\">
             <col>
@@ -1908,7 +1908,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col class=\\"arco-table-selection-radio-col\\">
             <col>
@@ -2027,7 +2027,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col class=\\"arco-table-selection-checkbox-col\\">
             <col>
@@ -2149,7 +2149,7 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-table-content\\">
         <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 2000px;\\">
             <colgroup>
               <col>
               <col>
@@ -2187,7 +2187,7 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
           </table>
         </div>
         <div class=\\"arco-table-body\\" style=\\"max-height: 200px;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 2000px;\\">
             <colgroup>
               <col>
               <col>
@@ -2262,7 +2262,7 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
         <div class=\\"arco-table-container arco-table-scroll-position-both arco-table-scroll-y\\">
           <div class=\\"arco-table-content\\">
             <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-              <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 120%;\\">
+              <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 120%;\\">
                 <colgroup>
                   <col>
                   <col>
@@ -2300,7 +2300,7 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
               </table>
             </div>
             <div class=\\"arco-table-body\\" style=\\"max-height: 100%;\\">
-              <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 120%;\\">
+              <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 120%;\\">
                 <colgroup>
                   <col>
                   <col>
@@ -2397,7 +2397,7 @@ exports[`<table> demo: render [sort] correctly 1`] = `
         <!---->
         <div class=\\"arco-table-container\\">
           <div class=\\"arco-table-content\\">
-            <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+            <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
               <colgroup>
                 <col>
                 <col>
@@ -2501,7 +2501,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
         <!---->
         <div class=\\"arco-table-container\\">
           <div class=\\"arco-table-content\\">
-            <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+            <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
               <colgroup>
                 <col>
                 <col>
@@ -2602,7 +2602,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
         <!---->
         <div class=\\"arco-table-container\\">
           <div class=\\"arco-table-content\\">
-            <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+            <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
               <colgroup>
                 <col>
                 <col>
@@ -2703,7 +2703,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
         <!---->
         <div class=\\"arco-table-container\\">
           <div class=\\"arco-table-content\\">
-            <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+            <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
               <colgroup>
                 <col class=\\"arco-table-selection-checkbox-col\\">
                 <col>
@@ -2822,7 +2822,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col>
             <col>
@@ -2932,7 +2932,7 @@ exports[`<table> demo: render [summary] correctly 1`] = `
     <!---->
     <div class=\\"arco-table-container arco-table-has-fixed-col-left\\">
       <div class=\\"arco-table-content\\">
-        <table cellpadding=\\"0\\" cellspacing=\\"0\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
             <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
             <col>
@@ -3039,7 +3039,7 @@ exports[`<table> demo: render [summary] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-table-content\\">
         <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 2000px;\\">
             <colgroup>
               <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
@@ -3079,7 +3079,7 @@ exports[`<table> demo: render [summary] correctly 1`] = `
           </table>
         </div>
         <div class=\\"arco-table-body\\" style=\\"max-height: 200px;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 2000px;\\">
             <colgroup>
               <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
@@ -3132,7 +3132,7 @@ exports[`<table> demo: render [summary] correctly 1`] = `
           </table>
         </div>
         <div class=\\"arco-table-tfoot\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 2000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 2000px;\\">
             <colgroup>
               <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
               <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
@@ -3187,7 +3187,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-table-content\\">
         <div class=\\"arco-table-header\\" style=\\"overflow-y: hidden;\\">
-          <table cellpadding=\\"0\\" cellspacing=\\"0\\" style=\\"width: 1000px;\\">
+          <table cellpadding=\\"0\\" cellspacing=\\"0\\" class=\\"arco-table-element\\" style=\\"width: 1000px;\\">
             <colgroup>
               <col class=\\"arco-table-selection-checkbox-col\\">
               <col>

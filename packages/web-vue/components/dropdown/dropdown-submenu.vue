@@ -103,6 +103,7 @@ export default defineComponent({
     /**
      * @zh 下拉框显示状态发生改变时触发
      * @en Triggered when the display status of the drop-down box changes
+     * @property {boolean} visible
      */
     'popupVisibleChange',
   ],

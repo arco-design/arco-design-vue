@@ -40,7 +40,7 @@ description: 互斥性的操作控件，用户可打开或关闭某个功能。
 |checked-value|选中时的值|`string\|number\|boolean`|`true`|2.12.0|
 |unchecked-value|未选中时的值|`string\|number\|boolean`|`false`|2.12.0|
 |checked-color|选中时的开关颜色|`string`|`-`|2.12.0|
-|unchecked-color|选中时的开关颜色|`string`|`-`|2.12.0|
+|unchecked-color|未选中时的开关颜色|`string`|`-`|2.12.0|
 ### `<switch>` Events
 
 |事件名|描述|参数|

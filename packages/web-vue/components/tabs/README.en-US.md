@@ -32,7 +32,7 @@ description: Organize content in the same view. You can view the content of one 
 |active-key **(v-model)**|The `key` of the currently selected label|`string\|number`|`-`||
 |default-active-key|The `key` of the tab selected by default (uncontrolled state, select the first tab page when it is empty)|`string\|number`|`-`||
 |position|Position of the tab|`'left' \| 'right' \| 'top' \| 'bottom'`|`'top'`||
-|size|The size of the tab|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
+|size|The size of the tab|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`||
 |type|The type of tab|`'line' \| 'card' \| 'card-gutter' \| 'text' \| 'rounded' \| 'capsule'`|`'line'`||
 |direction|The direction of tab|`'horizontal' \| 'vertical'`|`'horizontal'`||
 |editable|Whether to enable editable mode|`boolean`|`false`||
