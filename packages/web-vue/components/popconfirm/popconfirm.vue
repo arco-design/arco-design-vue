@@ -56,12 +56,7 @@
 import type { PropType } from 'vue';
 import { computed, CSSProperties, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import {
-  MESSAGE_TYPES,
-  MessageType,
-  TRIGGER_POSITIONS,
-  TriggerPosition,
-} from '../_utils/constant';
+import type { MessageType, TriggerPosition } from '../_utils/constant';
 import IconInfoCircleFill from '../icon/icon-info-circle-fill';
 import IconCheckCircleFill from '../icon/icon-check-circle-fill';
 import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
@@ -96,9 +91,6 @@ export default defineComponent({
     position: {
       type: String as PropType<TriggerPosition>,
       default: 'top',
-      validator: (value: any) => {
-        return TRIGGER_POSITIONS.includes(value);
-      },
     },
     /**
      * @zh 气泡确认框是否可见
@@ -125,9 +117,6 @@ export default defineComponent({
     type: {
       type: String as PropType<MessageType>,
       default: 'info',
-      validator: (value: any) => {
-        return MESSAGE_TYPES.includes(value);
-      },
     },
     /**
      * @zh 确认按钮的内容
