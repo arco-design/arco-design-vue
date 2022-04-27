@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.2
+
+`2022-04-27`
+
+### 💅 Style
+
+- **cascader:** Fixed the width of the search drop-down menu when it was blank ([#1056](https://github.com/arco-design/arco-design-vue/pull/1056))
+
+
 ## 2.25.1
 
 `2022-04-27`
