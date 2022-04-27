@@ -8,7 +8,7 @@
       :track-color="trackColor"
       :width="width"
       :steps="steps"
-      :size="size"
+      :size="mergedSize"
       :show-text="showText"
     >
       <template v-if="$slots.text" #text="scope">
@@ -16,13 +16,13 @@
       </template>
     </progress-steps>
     <progress-line
-      v-else-if="type === 'line' && size !== 'mini'"
+      v-else-if="type === 'line' && mergedSize !== 'mini'"
       :stroke-width="strokeWidth"
       :animation="animation"
       :percent="percent"
       :color="color"
       :track-color="trackColor"
-      :size="size"
+      :size="mergedSize"
       :buffer-color="bufferColor"
       :width="width"
       :show-text="showText"
@@ -41,7 +41,7 @@
       :percent="percent"
       :color="color"
       :track-color="trackColor"
-      :size="size"
+      :size="mergedSize"
       :show-text="showText"
       :status="computedStatus"
     >
@@ -53,13 +53,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, PropType } from 'vue';
+import { computed, defineComponent, PropType, toRefs } from 'vue';
 import ProgressLine from './line.vue';
 import ProgressCircle from './circle.vue';
 import ProgressSteps from './steps.vue';
 import { Size, Status } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
-import { configProviderInjectionKey } from '../config-provider/context';
+import { useSize } from '../_hooks/use-size';
 
 const PROGRESS_TYPES = ['line', 'circle'] as const;
 type ProgressType = typeof PROGRESS_TYPES[number];
@@ -89,8 +89,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 进度条当前的百分比
@@ -170,21 +168,24 @@ export default defineComponent({
   },
   setup(props) {
     const prefixCls = getPrefixCls('progress');
+    const { size } = toRefs(props);
     const type = computed(() => (props.steps > 0 ? 'steps' : props.type));
     const computedStatus = computed(() => {
       return props.status || (props.percent >= 1 ? 'success' : 'normal');
     });
+    const { mergedSize } = useSize(size);
 
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-type-${type.value}`,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       `${prefixCls}-status-${computedStatus.value}`,
     ]);
 
     return {
       cls,
       computedStatus,
+      mergedSize,
     };
   },
 });
