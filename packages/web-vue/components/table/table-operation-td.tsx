@@ -86,7 +86,7 @@ export default defineComponent({
         return null;
       }
       if (props.operationColumn.render) {
-        return props.operationColumn.render(props.record);
+        return props.operationColumn.render(props.record.raw);
       }
       if (props.operationColumn.name === 'selection-checkbox') {
         const value = props.record.key;

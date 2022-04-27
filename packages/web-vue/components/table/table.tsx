@@ -70,7 +70,7 @@ import { tableInjectionKey } from './context';
 import { useFilter } from './hooks/use-filter';
 import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
-import { getValueByPath } from '../_utils/get-value-by-path';
+import { useSpan } from './hooks/use-span';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -613,6 +613,8 @@ export default defineComponent({
       expandedKeys,
       defaultExpandedKeys,
       defaultExpandAllRows,
+      spanMethod,
+      summarySpanMethod,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const bordered = computed(() => {
@@ -865,12 +867,12 @@ export default defineComponent({
       }
     };
 
-    const isValidRecord = (record: TableData) => {
+    const isValidRecord = (record: TableDataWithRaw) => {
       for (const field of Object.keys(computedFilters.value)) {
         const filteredValues = computedFilters.value[field];
         const column = dataColumnMap.get(field);
         if (column && column.filterable?.filter && filteredValues.length > 0) {
-          const result = column.filterable?.filter(filteredValues, record);
+          const result = column.filterable?.filter(filteredValues, record.raw);
           if (!result) {
             return result;
           }
@@ -933,7 +935,7 @@ export default defineComponent({
     const validData = computed(() => {
       const travel = (data: TableDataWithRaw[]) =>
         data.filter((record) => {
-          if (isValidRecord(record.raw)) {
+          if (isValidRecord(record)) {
             if (record.children) {
               record.children = travel(record.children);
             }
@@ -1027,15 +1029,31 @@ export default defineComponent({
       }, {} as Record<string, any>);
     };
 
+    const getTableDataWithRaw = (
+      data?: TableData[]
+    ): TableDataWithRaw[] | undefined => {
+      if (data && data.length > 0) {
+        return data.map((raw) => {
+          return {
+            raw,
+            key: raw[props.rowKey],
+          };
+        });
+      }
+      return undefined;
+    };
+
     const summaryData = computed(() => {
       if (props.summary) {
         if (isFunction(props.summary)) {
-          return props.summary({
-            columns: dataColumns.value,
-            data: flattenRawData.value,
-          });
+          return getTableDataWithRaw(
+            props.summary({
+              columns: dataColumns.value,
+              data: flattenRawData.value,
+            })
+          );
         }
-        return [getSummaryData()];
+        return getTableDataWithRaw([getSummaryData()]);
       }
       return undefined;
     });
@@ -1109,16 +1127,16 @@ export default defineComponent({
       setAlignPosition();
     };
 
-    const handleRowClick = (record: TableData, ev: Event) => {
-      emit('rowClick', record, ev);
+    const handleRowClick = (record: TableDataWithRaw, ev: Event) => {
+      emit('rowClick', record.raw, ev);
     };
 
     const handleCellClick = (
-      record: TableData,
+      record: TableDataWithRaw,
       column: TableColumnData,
       ev: Event
     ) => {
-      emit('cellClick', record, column, ev);
+      emit('cellClick', record.raw, column, ev);
     };
 
     const handleHeaderClick = (column: TableColumnData, ev: Event) => {
@@ -1337,108 +1355,40 @@ export default defineComponent({
         return isFunction(record.expand) ? record.expand() : record.expand;
       }
       if (slots['expand-row']) {
-        return slots['expand-row']({ record });
+        return slots['expand-row']({ record: record.raw });
       }
       if (props.expandable?.expandedRowRender) {
-        return props.expandable.expandedRowRender(record);
+        return props.expandable.expandedRowRender(record.raw);
       }
 
       return undefined;
     };
 
-    // [row, column]
-    const tableSpan = computed(() => {
-      const data: Record<string, [number, number]> = {};
-      if (props.spanMethod) {
-        const columns = props.spanAll
-          ? ([] as (TableColumnData | TableOperationColumn)[]).concat(
-              operations.value,
-              dataColumns.value
-            )
-          : dataColumns.value;
+    const allColumns = computed(() =>
+      ([] as (TableColumnData | TableOperationColumn)[]).concat(
+        operations.value,
+        dataColumns.value
+      )
+    );
 
-        flattenData.value.forEach((record, rowIndex) => {
-          columns.forEach((column, columnIndex) => {
-            const { rowspan = 1, colspan = 1 } =
-              props.spanMethod?.({
-                record: record.raw,
-                column,
-                rowIndex,
-                columnIndex,
-              }) ?? {};
-            if (rowspan > 1 || colspan > 1) {
-              data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
-            }
-          });
-        });
-      }
+    const spanColumns = computed(() =>
+      props.spanAll ? allColumns.value : dataColumns.value
+    );
 
-      return data;
+    const { tableSpan, removedCells } = useSpan({
+      spanMethod,
+      data: flattenData,
+      columns: spanColumns,
     });
 
-    const removedCells = computed(() => {
-      const data: string[] = [];
-      for (const indexKey of Object.keys(tableSpan.value)) {
-        const indexArray = indexKey.split('-').map((item) => Number(item));
-        const span = tableSpan.value[indexKey];
-        for (let i = 1; i < span[0]; i++) {
-          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
-          for (let j = 1; j < span[1]; j++) {
-            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
-          }
-        }
-        for (let i = 1; i < span[1]; i++) {
-          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
-        }
-      }
-      return data;
-    });
+    const { tableSpan: tableSummarySpan, removedCells: removedSummaryCells } =
+      useSpan({
+        spanMethod: summarySpanMethod,
+        data: flattenData,
+        columns: allColumns,
+      });
 
-    // copy
-    // [row, column]
-    const tableSummarySpan = computed(() => {
-      const data: Record<string, [number, number]> = {};
-      if (props.summarySpanMethod) {
-        const columns = (
-          [] as (TableColumnData | TableOperationColumn)[]
-        ).concat(operations.value, dataColumns.value);
-        flattenData.value.forEach((record, rowIndex) => {
-          columns.forEach((column, columnIndex) => {
-            const { rowspan = 1, colspan = 1 } =
-              props.summarySpanMethod?.({
-                record: record.raw,
-                column,
-                rowIndex,
-                columnIndex,
-              }) ?? {};
-            if (rowspan > 1 || colspan > 1) {
-              data[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
-            }
-          });
-        });
-      }
-      return data;
-    });
-
-    const removedSummaryCells = computed(() => {
-      const data: string[] = [];
-      for (const indexKey of Object.keys(tableSummarySpan.value)) {
-        const indexArray = indexKey.split('-').map((item) => Number(item));
-        const span = tableSummarySpan.value[indexKey];
-        for (let i = 1; i < span[0]; i++) {
-          data.push(`${indexArray[0] + i}-${indexArray[1]}`);
-          for (let j = 1; j < span[1]; j++) {
-            data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
-          }
-        }
-        for (let i = 1; i < span[1]; i++) {
-          data.push(`${indexArray[0]}-${indexArray[1] + i}`);
-        }
-      }
-      return data;
-    });
-
-    const renderSummaryRow = (record: TableData, rowIndex: number) => {
+    const renderSummaryRow = (record: TableDataWithRaw, rowIndex: number) => {
       return (
         <Tr
           class={[props.rowClass, `${prefixCls}-tr-summary`]}
@@ -1495,6 +1445,7 @@ export default defineComponent({
                 key={`td-${cellId}`}
                 v-slots={{
                   td: slots.td,
+                  cell: slots['summary-cell'],
                 }}
                 style={style}
                 rowIndex={rowIndex}
@@ -1505,13 +1456,7 @@ export default defineComponent({
                 rowSpan={rowspan}
                 colSpan={colspan}
                 onClick={(ev: Event) => handleCellClick(record, column, ev)}
-              >
-                {slots['summary-cell']?.({
-                  record,
-                  column,
-                  rowIndex,
-                }) ?? String(getValueByPath(record, column.dataIndex) ?? '')}
-              </Td>
+              />
             );
           })}
         </Tr>
@@ -1657,7 +1602,7 @@ export default defineComponent({
               tr: slots.tr,
             }}
             checked={selectedRowKeys.value?.includes(currentKey)}
-            onClick={(ev: Event) => handleRowClick(record.raw, ev)}
+            onClick={(ev: Event) => handleRowClick(record, ev)}
           >
             {operations.value.map((operation, index) => {
               const cellId = `${rowIndex}-${index}`;
@@ -1741,9 +1686,7 @@ export default defineComponent({
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
                   {...extraProps}
-                  onClick={(ev: Event) =>
-                    handleCellClick(record.raw, column, ev)
-                  }
+                  onClick={(ev: Event) => handleCellClick(record, column, ev)}
                 />
               );
             })}
