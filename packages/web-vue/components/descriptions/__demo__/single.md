@@ -18,12 +18,22 @@ A single-column description list style.
 
 ```vue
 <template>
-  <a-descriptions :data="data" title="User Info" :column="1"/>
+  <a-radio-group type="button" v-model="size">
+    <a-radio value="mini">mini</a-radio>
+    <a-radio value="small">small</a-radio>
+    <a-radio value="medium">medium</a-radio>
+    <a-radio value="large">large</a-radio>
+  </a-radio-group>
+  <a-descriptions style="margin-top: 20px" :data="data" :size="size" title="User Info" :column="1"/>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
   setup() {
+    const size = ref('medium');
+
     const data = [{
       label: 'Name',
       value: 'Socrates',
@@ -42,7 +52,8 @@ export default {
     }];
 
     return {
-      data
+      data,
+      size
     }
   },
 }

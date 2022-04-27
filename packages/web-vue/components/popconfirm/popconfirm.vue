@@ -211,6 +211,7 @@ export default defineComponent({
     /**
      * @zh 气泡确认框的显隐状态改变时触发
      * @en Triggered when the visible or hidden state of the bubble confirmation box changes
+     * @property {boolean} visible
      */
     'popupVisibleChange',
     /**

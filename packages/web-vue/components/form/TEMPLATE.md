@@ -47,6 +47,8 @@ description: A form with data collection, verification and submission functions,
 
 %%API(form-item.vue)%%
 
+## Type
+
 %%INTERFACE(interface.ts)%%
 
 ### useFormItem
@@ -86,7 +88,7 @@ const data = reactive({
   ]
 })
 ```
-此时，如果想要指定当前 `form-item` 对应的值为 `id: '2'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`
+此时，如果想要指定当前 `form-item` 对应的值为 `id: '2222'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`
 
 ---
 ## en-US
@@ -110,6 +112,6 @@ const data = reactive({
    ]
 })
 ````
-At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
+At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2222'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
 
 ---

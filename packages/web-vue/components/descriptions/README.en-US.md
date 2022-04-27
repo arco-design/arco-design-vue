@@ -30,7 +30,7 @@ description: Generally used for the information display of the detail page.
 |title|Title of descriptions|`string`|`-`|
 |layout|Arrangement of descriptions|`'horizontal' \| 'vertical' \| 'inline-horizontal' \| 'inline-vertical'`|`'horizontal'`|
 |align|Alignment position of text|`TextAlign \| { label?: TextAlign; value?: TextAlign }`|`'left'`|
-|size|The size of the descriptions|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|size|The size of the descriptions|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |bordered|Whether to show the border|`boolean`|`false`|
 |label-style|Data label style|`CSSProperties`|`-`|
 |value-style|Data content style|`CSSProperties`|`-`|

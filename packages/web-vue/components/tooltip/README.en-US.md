@@ -40,7 +40,7 @@ description: A tooltip that popup when the mouse hovers, focus, or click on a co
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|popup-visible-change|Emitted when the tooltip display status changes|-|
+|popup-visible-change|Emitted when the tooltip display status changes|visible: `boolean`|
 ### `<tooltip>` Slots
 
 |Slot Name|Description|Parameters|

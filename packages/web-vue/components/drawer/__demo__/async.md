@@ -18,7 +18,7 @@ $END$
 
 ```vue
 <template>
-  <a-button @click="handleClick">Open Modal</a-button>
+  <a-button @click="handleClick">Open Drawer</a-button>
   <a-drawer v-model:visible="visible" @before-ok="handleBeforeOk" @cancel="handleCancel" unmountOnClose>
     <template #title>
       Title

@@ -44,7 +44,7 @@ description: Click on the element and a popconfirm will pop up.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|popup-visible-change|Triggered when the visible or hidden state of the bubble confirmation box changes|-|
+|popup-visible-change|Triggered when the visible or hidden state of the bubble confirmation box changes|visible: `boolean`|
 |ok|Triggered when the confirm button is clicked|-|
 |cancel|Triggered when the cancel button is clicked|-|
 ### `<popconfirm>` Slots

@@ -30,3 +30,7 @@ description: 设置组件之间的间距
 |fill|充满整行|`boolean`|`false`|2.11.0|
 
 
+
+```ts
+type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
+```

@@ -361,12 +361,12 @@ export default defineComponent({
     /**
      * @zh 下拉框的显示状态改变时触发
      * @en Triggered when the display state of the drop-down box changes
+     * @property {boolean} visible
      */
     'popupVisibleChange',
     /**
      * @zh 点击清除按钮时触发
      * @en Triggered when the clear button is clicked
-     * @property {boolean} popupVisible
      */
     'clear',
     /**

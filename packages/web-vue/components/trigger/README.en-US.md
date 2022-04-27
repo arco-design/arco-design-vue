@@ -75,6 +75,8 @@ description: Used to add hover, click, focus and other events to the element, an
 
 
 
+## Type
+
 ```ts
 type TriggerPopupTranslate =
   | [number, number]

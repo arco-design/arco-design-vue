@@ -42,7 +42,7 @@ description: 点击元素，弹出气泡式的确认框。
 
 |事件名|描述|参数|
 |---|---|---|
-|popup-visible-change|气泡确认框的显隐状态改变时触发|-|
+|popup-visible-change|气泡确认框的显隐状态改变时触发|visible: `boolean`|
 |ok|点击确认按钮时触发|-|
 |cancel|点击取消按钮时触发|-|
 ### `<popconfirm>` Slots

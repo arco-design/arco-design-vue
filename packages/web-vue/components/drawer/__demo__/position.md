@@ -24,7 +24,7 @@ Customize the position and click the trigger button to slide out the drawer from
     <a-radio value="bottom">Bottom</a-radio>
     <a-radio value="left">Left</a-radio>
   </a-radio-group>
-  <a-button @click="handleClick">Open Modal</a-button>
+  <a-button @click="handleClick">Open Drawer</a-button>
   <a-drawer :visible="visible" :placement="position" @ok="handleOk" @cancel="handleCancel" unmountOnClose>
     <template #title>
       Title

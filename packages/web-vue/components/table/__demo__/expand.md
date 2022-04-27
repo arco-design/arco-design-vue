@@ -29,6 +29,11 @@ export default {
     const expandable = reactive({
       title: 'Expand',
       width: 80,
+      expandedRowRender: (record) => {
+        if(record.key==='3'){
+          return `My Name is ${record.name}`
+        }
+      }
     });
 
     const columns = [

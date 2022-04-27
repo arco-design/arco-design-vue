@@ -23,7 +23,7 @@ You can use 'popup-container' to set the mount position of the pop-up layer node
       id="parentNode"
       style="width: 100%; height: 300px; background-color: var(--color-fill-2); position: relative; overflow: hidden; line-height: 300px; text-align: center;"
     >
-      <a-button type="primary" @click="handleClick">Open Modal</a-button>
+      <a-button type="primary" @click="handleClick">Open Drawer</a-button>
     </div>
   </div>
   <a-drawer

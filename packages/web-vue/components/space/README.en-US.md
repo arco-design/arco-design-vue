@@ -32,3 +32,7 @@ description: Set the spacing between components.
 |fill|fill the block|`boolean`|`false`|2.11.0|
 
 
+
+```ts
+type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
+```
