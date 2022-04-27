@@ -1,4 +1,5 @@
 import { ref, provide, inject, computed, onMounted, onUnmounted } from 'vue';
+import { isUndefined } from '../../_utils/is';
 import { DataCollectorContext, DataCollectorInjectionKey } from '../context';
 import { MenuData, MenuDataItem } from '../interface';
 
@@ -21,24 +22,44 @@ function getKeys(data: MenuData, condition: (item: MenuDataItem) => boolean) {
   return keys;
 }
 
-export function useMenuDataCollectorProvider() {
-  const data = ref<MenuData>([]);
-  const subMenuKeys = computed(() =>
-    getKeys(data.value, (item) => !!item.children)
-  );
-  const menuItemKeys = computed(() =>
-    getKeys(data.value, (item) => !item.children)
-  );
+export function useMenuDataCollectorContext(isRoot = false) {
+  const menuContext = isRoot ? undefined : inject(DataCollectorInjectionKey);
+  return menuContext;
+}
 
-  provide(DataCollectorInjectionKey, {
-    collectSubMenu(key, children) {
-      data.value = [
-        ...data.value,
-        {
-          key,
-          children,
-        },
-      ];
+export default function useMenuDataCollector(props: {
+  key?: string | undefined;
+  type: 'menu' | 'popupMenu' | 'subMenu';
+}) {
+  const { key, type } = props;
+  const data = ref<MenuData>([]);
+  const menuContext = useMenuDataCollectorContext(type === 'menu');
+
+  const provideContext: DataCollectorContext = {
+    collectSubMenu(key, children, isReport = false) {
+      const item = {
+        key,
+        children,
+      };
+      if (isReport) {
+        const oldOne = data.value.find((i) => i.key === key);
+        if (oldOne) {
+          oldOne.children = children;
+        } else {
+          data.value.push(item);
+        }
+      } else {
+        data.value = [...data.value, item];
+      }
+
+      // 当接收到了更新数据，除了 menu，继续向上更新
+      if (isReport) {
+        if (type === 'popupMenu') {
+          menuContext?.reportMenuData(data.value);
+        } else if (type === 'subMenu' && !isUndefined(key)) {
+          menuContext?.collectSubMenu(key, data.value, true);
+        }
+      }
     },
     removeSubMenu(key) {
       data.value = data.value.filter((item) => item.key !== key);
@@ -51,50 +72,31 @@ export function useMenuDataCollectorProvider() {
     },
     reportMenuData(reportData) {
       data.value = reportData;
+      // 继续向上更新，注意：只有 popup submenu 会接收到 report
+      if (type === 'subMenu' && !isUndefined(key)) {
+        menuContext?.collectSubMenu(key, data.value, true);
+      }
     },
-  });
-
-  return {
-    data,
-    subMenuKeys,
-    menuItemKeys,
   };
-}
 
-export function useMenuDataCollectorContext(
-  isRoot = false
-): Partial<DataCollectorContext> {
-  const menuContext = isRoot ? {} : inject(DataCollectorInjectionKey);
-  return menuContext || {};
-}
+  provide(DataCollectorInjectionKey, provideContext);
 
-export default function useMenuDataCollector(
-  props: { isRoot?: boolean; key?: string } = { isRoot: false }
-) {
-  const { isRoot, key } = props;
-  const { data, subMenuKeys, menuItemKeys } = useMenuDataCollectorProvider();
-  const { collectSubMenu, removeSubMenu, reportMenuData } =
-    useMenuDataCollectorContext(isRoot);
-
-  if (key !== undefined) {
+  if (type === 'subMenu' && !isUndefined(key)) {
     onMounted(() => {
-      collectSubMenu && collectSubMenu(key, data.value);
+      menuContext?.collectSubMenu(key, data.value);
     });
-
     onUnmounted(() => {
-      removeSubMenu && removeSubMenu(key);
+      menuContext?.removeSubMenu(key);
     });
-  }
-
-  if (!isRoot && key === undefined) {
+  } else if (type === 'popupMenu') {
     onMounted(() => {
-      reportMenuData && reportMenuData(data.value);
+      menuContext?.reportMenuData(data.value);
     });
   }
 
   return {
     menuData: data,
-    subMenuKeys,
-    menuItemKeys,
+    subMenuKeys: computed(() => getKeys(data.value, (item) => !!item.children)),
+    menuItemKeys: computed(() => getKeys(data.value, (item) => !item.children)),
   };
 }

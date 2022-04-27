@@ -41,7 +41,7 @@ export const DataCollectorInjectionKey: InjectionKey<DataCollectorContext> =
   Symbol('DataCollectorInjectionKey');
 
 export type DataCollectorContext = Readonly<{
-  collectSubMenu: (key: string, children: MenuData) => void;
+  collectSubMenu: (key: string, children: MenuData, isReport?: boolean) => void;
   removeSubMenu: (key: string) => void;
   collectMenuItem: (key: string) => void;
   removeMenuItem: (keys: string) => void;
