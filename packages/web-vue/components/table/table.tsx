@@ -1501,7 +1501,10 @@ export default defineComponent({
               handleTbodyResize();
             }}
             onScroll={handleScroll}
-            outerAttrs={{ style: contentStyle.value }}
+            outerAttrs={{
+              class: `${prefixCls}-element`,
+              style: contentStyle.value,
+            }}
           />
         </ClientOnly>
       );
@@ -1815,6 +1818,7 @@ export default defineComponent({
                 <table
                   cellpadding={0}
                   cellspacing={0}
+                  class={`${prefixCls}-element`}
                   style={headerStyle.value}
                 >
                   <ColGroup
@@ -1843,6 +1847,7 @@ export default defineComponent({
                   <table
                     cellpadding={0}
                     cellspacing={0}
+                    class={`${prefixCls}-element`}
                     style={contentStyle.value}
                   >
                     {flattenData.value.length !== 0 && (
@@ -1862,6 +1867,7 @@ export default defineComponent({
                 <table
                   cellpadding={0}
                   cellspacing={0}
+                  class={`${prefixCls}-element`}
                   style={contentStyle.value}
                 >
                   <ColGroup
@@ -1879,7 +1885,12 @@ export default defineComponent({
 
       return (
         <ResizeObserver onResize={() => setAlignPosition()}>
-          <table cellpadding={0} cellspacing={0} style={contentStyle.value}>
+          <table
+            class={`${prefixCls}-element`}
+            cellpadding={0}
+            cellspacing={0}
+            style={contentStyle.value}
+          >
             <ColGroup
               dataColumns={dataColumns.value}
               operations={operations.value}
@@ -1907,7 +1918,11 @@ export default defineComponent({
           >
             <div class={`${prefixCls}-content`}>
               {content ? (
-                <table cellpadding={0} cellspacing={0}>
+                <table
+                  class={`${prefixCls}-element`}
+                  cellpadding={0}
+                  cellspacing={0}
+                >
                   {content()}
                 </table>
               ) : (
