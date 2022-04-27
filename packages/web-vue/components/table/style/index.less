@@ -4,6 +4,7 @@
 
 @table-prefix-cls: ~'@{prefix}-table';
 
+@table-cls-table: ~'@{table-prefix-cls}-element';
 @table-cls-tr: ~'@{table-prefix-cls}-tr';
 @table-cls-th: ~'@{table-prefix-cls}-th';
 @table-cls-td: ~'@{table-prefix-cls}-td';
@@ -147,12 +148,12 @@
       overflow-y: hidden;
     }
 
-    table {
+    .@{table-cls-table} {
       table-layout: fixed;
     }
   }
 
-  table {
+  .@{table-cls-table} {
     width: 100%;
     min-width: 100%;
     margin: 0;
@@ -763,7 +764,7 @@
   }
 
   // virtualized
-  &-virtualized table {
+  &-virtualized .@{table-cls-table} {
     table-layout: fixed;
   }
 
