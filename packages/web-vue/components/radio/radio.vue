@@ -45,7 +45,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import type { RadioType } from './context';
-import { RADIO_TYPES, radioGroupKey } from './context';
+import { radioGroupKey } from './context';
 import { isUndefined } from '../_utils/is';
 import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
@@ -89,7 +89,6 @@ export default defineComponent({
     type: {
       type: String as PropType<RadioType>,
       default: 'radio',
-      validator: (value: any) => RADIO_TYPES.includes(value),
     },
     /**
      * @zh 是否禁用

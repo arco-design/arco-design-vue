@@ -31,7 +31,7 @@
 import type { PropType } from 'vue';
 import { computed, CSSProperties, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { TRIGGER_POSITIONS, TRIGGER_EVENTS } from '../_utils/constant';
+import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
 import Trigger from '../trigger';
 import { ClassName, EmitType } from '../_utils/types';
 
@@ -74,19 +74,8 @@ export default defineComponent({
      * @values 'hover','click','focus','contextMenu'
      */
     trigger: {
-      type: [String, Array] as PropType<
-        typeof TRIGGER_EVENTS[number] | Array<typeof TRIGGER_EVENTS[number]>
-      >,
+      type: [String, Array] as PropType<TriggerEvent | TriggerEvent[]>,
       default: 'hover',
-      validator: (value: any) => {
-        const values: any[] = [].concat(value);
-        for (const value of values) {
-          if (!TRIGGER_EVENTS.includes(value)) {
-            return false;
-          }
-        }
-        return true;
-      },
     },
     /**
      * @zh 弹出位置
@@ -94,11 +83,8 @@ export default defineComponent({
      * @values 'top','tl','tr','bottom','bl','br','left','lt','lb','right','rt','rb'
      */
     position: {
-      type: String as PropType<typeof TRIGGER_POSITIONS[number]>,
+      type: String as PropType<TriggerPosition>,
       default: 'top',
-      validator: (value: any) => {
-        return TRIGGER_POSITIONS.includes(value);
-      },
     },
     /**
      * @zh 弹出框内容的类名

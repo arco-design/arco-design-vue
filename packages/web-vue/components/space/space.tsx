@@ -35,7 +35,7 @@ export default defineComponent({
      * @en Spacing size, support for setting horizontal and vertical spacing separately
      */
     size: {
-      type: [Number, String] as PropType<
+      type: [Number, String, Array] as PropType<
         number | 'mini' | 'small' | 'medium' | 'large' | [SpaceSize, SpaceSize]
       >,
       default: 'small',

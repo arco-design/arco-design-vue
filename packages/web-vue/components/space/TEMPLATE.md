@@ -30,3 +30,7 @@ description: Set the spacing between components.
 ## API
 
 %%API(space.tsx)%%
+
+```ts
+type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
+```
