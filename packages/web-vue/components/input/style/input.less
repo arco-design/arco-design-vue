@@ -3,7 +3,6 @@
 
 .input-wrapper-style(@cls) {
   display: inline-flex;
-  align-items: center;
   box-sizing: border-box;
   width: 100%;
   padding-right: @input-padding-horizontal;
@@ -72,6 +71,7 @@
   .@{cls}-prefix,
   .@{cls}-suffix {
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     white-space: nowrap;
     user-select: none;
@@ -113,6 +113,7 @@
 
   // 清除按钮样式
   .@{cls}-clear-btn {
+    align-self: center;
     color: @input-color-icon-clear;
     font-size: @input-size-icon-clear;
     visibility: hidden;
