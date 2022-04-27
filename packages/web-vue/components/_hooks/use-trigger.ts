@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import type { EmitFn } from '../_utils/types';
 
 export const useTrigger = ({
@@ -17,15 +17,20 @@ export const useTrigger = ({
   );
 
   const handlePopupVisibleChange = (visible: boolean) => {
-    if (visible !== _popupVisible.value) {
+    if (visible !== computedPopupVisible.value) {
       _popupVisible.value = visible;
       emit('update:popupVisible', visible);
       emit('popupVisibleChange', visible);
     }
   };
 
+  watch(computedPopupVisible, (visible) => {
+    if (_popupVisible.value !== visible) {
+      _popupVisible.value = visible;
+    }
+  });
+
   return {
-    _popupVisible,
     computedPopupVisible,
     handlePopupVisibleChange,
   };
