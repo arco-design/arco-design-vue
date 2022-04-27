@@ -7,7 +7,6 @@ import {
   reactive,
   ref,
   toRefs,
-  // watch,
 } from 'vue';
 import type { Direction, Size } from '../_utils/constant';
 import type { TabsPosition, TabsType, TabData } from './interface';
@@ -15,6 +14,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import TabsNav from './tabs-nav';
 import { tabsInjectionKey } from './context';
 import { isUndefined } from '../_utils/is';
+import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
   name: 'Tabs',
@@ -52,7 +52,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: 'medium',
     },
     /**
      * @zh 选项卡的类型
@@ -180,8 +179,9 @@ export default defineComponent({
    * @slot extra
    */
   setup(props, { emit, slots }) {
-    const { lazyLoad } = toRefs(props);
+    const { size, lazyLoad } = toRefs(props);
     const prefixCls = getPrefixCls('tabs');
+    const { mergedSize } = useSize(size);
     const mergedPosition = computed(() =>
       props.direction === 'vertical' ? 'left' : props.position
     );
@@ -260,14 +260,6 @@ export default defineComponent({
       emit('delete', key, ev);
     };
 
-    // watch(tabKeys, (cur, pre) => {
-    //   if (computedActiveKey.value && !cur.includes(computedActiveKey.value)) {
-    //     const preIndex = pre.indexOf(computedActiveKey.value);
-    //     const newKey = cur[preIndex > 1 ? preIndex - 1 : 0];
-    //     handleChange(newKey);
-    //   }
-    // });
-
     const renderContent = () => {
       return (
         <div
@@ -298,7 +290,7 @@ export default defineComponent({
       `${prefixCls}-${mergedDirection.value}`,
       `${prefixCls}-${mergedPosition.value}`,
       `${prefixCls}-type-${props.type}`,
-      `${prefixCls}-size-${props.size}`,
+      `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-justify`]: props.justify,
       },
@@ -318,7 +310,7 @@ export default defineComponent({
           animation={props.animation}
           showAddButton={props.showAddButton}
           headerPadding={props.headerPadding}
-          size={props.size}
+          size={mergedSize.value}
           type={props.type}
           onClick={handleClick}
           onAdd={handleAdd}

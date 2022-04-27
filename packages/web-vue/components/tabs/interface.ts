@@ -1,4 +1,4 @@
-import type { RenderFunction } from 'vue';
+import type { Slots } from 'vue';
 
 export type TabsPosition = 'left' | 'right' | 'top' | 'bottom';
 
@@ -13,7 +13,8 @@ export type TabsType =
 export interface TabData {
   index: number;
   key: string | number;
-  title: RenderFunction;
+  title?: string;
   disabled?: boolean;
   closable?: boolean;
+  slots: Slots;
 }

@@ -297,7 +297,7 @@ export default defineComponent({
                     onClick={handleClick}
                     onDelete={handleDelete}
                   >
-                    {tab.title()}
+                    {tab.slots.title?.() ?? tab.title}
                   </TabsTab>
                 ))}
                 {props.type === 'line' && (

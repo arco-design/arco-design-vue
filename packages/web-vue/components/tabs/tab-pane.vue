@@ -72,9 +72,10 @@ export default defineComponent({
     const data = reactive({
       index: computedIndex,
       key,
-      title: slots.title ?? (() => title?.value),
+      title,
       disabled,
       closable,
+      slots,
     });
 
     if (instance?.uid) {
