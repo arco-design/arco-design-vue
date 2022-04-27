@@ -7,7 +7,6 @@
 .@{input-number-prefix-cls} {
   position: relative;
   box-sizing: border-box;
-  //display: inline-block;
   width: 100%;
   border-radius: @input-number-border-radius;
 
@@ -77,15 +76,20 @@
       }
     }
 
+    .@{input-prefix-cls}-suffix {
+      justify-content: flex-end;
+      min-width: 6px;
+    }
+
     .@{input-prefix-cls}-suffix-has-feedback {
-      min-width: 10px;
+      min-width: 32px;
 
       .@{input-number-prefix-cls}-step {
         right: 30px;
       }
     }
 
-    &:not(.@{input-prefix-cls}-outer-disabled):hover
+    &:not(.@{input-prefix-cls}-disabled):hover
       .@{input-number-prefix-cls}-step {
       opacity: 1;
 
