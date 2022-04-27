@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- the button today cannot be hidden by setting showNowBtn to false ([#1046](https://github.com/arco-design/arco-design-vue/pull/1046))
+
+
 ## 2.25.0
 
 `2022-04-22`

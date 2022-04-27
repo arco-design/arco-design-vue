@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- Fix the problem that the setting of the size attribute is invalid in some components ([#1051](https://github.com/arco-design/arco-design-vue/pull/1051))
+
+
 ## 2.25.0
 
 `2022-04-22`

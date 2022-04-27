@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- Fix the problem that the collected menu data is incomplete ([#1034](https://github.com/arco-design/arco-design-vue/pull/1034))
+
+
 ## 2.25.0
 
 `2022-04-22`

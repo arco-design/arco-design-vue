@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- Fix gutter attribute type detection problem ([#1052](https://github.com/arco-design/arco-design-vue/pull/1052))
+
+
 ## 2.19.0
 
 `2022-03-11`

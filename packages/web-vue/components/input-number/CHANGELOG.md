@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 💅 Style
+
+- Fix the display position of the clear button ([#1048](https://github.com/arco-design/arco-design-vue/pull/1048))
+
+
 ## 2.25.0
 
 `2022-04-22`

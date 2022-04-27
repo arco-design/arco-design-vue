@@ -2,6 +2,28 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 问题修复
+
+- **space:** 修复 size 属性类型检测问题 ([#1052](https://github.com/arco-design/arco-design-vue/pull/1052))
+- **grid:** 修复 gutter 属性类型检测问题 ([#1052](https://github.com/arco-design/arco-design-vue/pull/1052))
+- **config-provider:** 修复 size 属性的设置在某些组件中失效的问题 ([#1051](https://github.com/arco-design/arco-design-vue/pull/1051))
+- **tabs:** 修复 #title 插槽在某些情况下不能更新的问题 ([#1050](https://github.com/arco-design/arco-design-vue/pull/1050))
+- 修复部分组件 `popup-visible` 双向绑定状态异常的问题 ([#1049](https://github.com/arco-design/arco-design-vue/pull/1049))
+- **table:** 修复 `2.25.0` 版本中扩展行传出 record 参数格式错误问题 ([#1047](https://github.com/arco-design/arco-design-vue/pull/1047))
+- **date-picker:** 按钮 `今天` 无法通过将 `show-now-btn` 设置为 false 来隐藏 ([#1046](https://github.com/arco-design/arco-design-vue/pull/1046))
+- **menu:** 菜单数据收集器收集到的数据有缺失 ([#1034](https://github.com/arco-design/arco-design-vue/pull/1034))
+
+### 💅 样式更新
+
+- **table:** 增加内部 table 类名，修复与 `descriptions` 组件一起使用的样式问题 ([#1053](https://github.com/arco-design/arco-design-vue/pull/1053))
+- **input-number:** 修复清除按钮显示位置问题 ([#1048](https://github.com/arco-design/arco-design-vue/pull/1048))
+- **checkbox:** 修复禁用状态下 hover 样式还会改变的问题 ([#1040](https://github.com/arco-design/arco-design-vue/pull/1040))
+
+
 ## 2.25.0
 
 `2022-04-22`

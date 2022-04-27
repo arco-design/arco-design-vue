@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- Fix the problem of wrong format of outgoing record parameter in extended line in `2.25.0` version ([#1047](https://github.com/arco-design/arco-design-vue/pull/1047))
+
+### 💅 Style
+
+- Added internal table class names, fixed styling issues used with `descriptions` component ([#1053](https://github.com/arco-design/arco-design-vue/pull/1053))
+
+
 ## 2.25.0
 
 `2022-04-22`

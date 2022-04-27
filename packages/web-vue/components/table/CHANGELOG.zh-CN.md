@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 问题修复
+
+- 修复 `2.25.0` 版本中扩展行传出 record 参数格式错误问题 ([#1047](https://github.com/arco-design/arco-design-vue/pull/1047))
+
+### 💅 样式更新
+
+- 增加内部 table 类名，修复与 `descriptions` 组件一起使用的样式问题 ([#1053](https://github.com/arco-design/arco-design-vue/pull/1053))
+
+
 ## 2.25.0
 
 `2022-04-22`

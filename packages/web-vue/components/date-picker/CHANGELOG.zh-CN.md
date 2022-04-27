@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 问题修复
+
+- 按钮 `今天` 无法通过将 `show-now-btn` 设置为 false 来隐藏 ([#1046](https://github.com/arco-design/arco-design-vue/pull/1046))
+
+
 ## 2.25.0
 
 `2022-04-22`

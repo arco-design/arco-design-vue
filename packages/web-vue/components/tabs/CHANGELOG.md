@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- Fixed #title slot not updating in some cases ([#1050](https://github.com/arco-design/arco-design-vue/pull/1050))
+
+
 ## 2.25.0
 
 `2022-04-22`

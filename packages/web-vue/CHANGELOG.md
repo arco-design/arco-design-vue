@@ -2,6 +2,28 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- **space:** Fix size attribute type detection problem ([#1052](https://github.com/arco-design/arco-design-vue/pull/1052))
+- **grid:** Fix gutter attribute type detection problem ([#1052](https://github.com/arco-design/arco-design-vue/pull/1052))
+- **config-provider:** Fix the problem that the setting of the size attribute is invalid in some components ([#1051](https://github.com/arco-design/arco-design-vue/pull/1051))
+- **tabs:** Fixed #title slot not updating in some cases ([#1050](https://github.com/arco-design/arco-design-vue/pull/1050))
+- Fixed the problem of abnormal two-way binding status of some components `popup-visible` ([#1049](https://github.com/arco-design/arco-design-vue/pull/1049))
+- **table:** Fix the problem of wrong format of outgoing record parameter in extended line in `2.25.0` version ([#1047](https://github.com/arco-design/arco-design-vue/pull/1047))
+- **date-picker:** the button today cannot be hidden by setting showNowBtn to false ([#1046](https://github.com/arco-design/arco-design-vue/pull/1046))
+- **menu:** Fix the problem that the collected menu data is incomplete ([#1034](https://github.com/arco-design/arco-design-vue/pull/1034))
+
+### 💅 Style
+
+- **table:** Added internal table class names, fixed styling issues used with `descriptions` component ([#1053](https://github.com/arco-design/arco-design-vue/pull/1053))
+- **input-number:** Fix the display position of the clear button ([#1048](https://github.com/arco-design/arco-design-vue/pull/1048))
+- **checkbox:** Fixed the issue that the hover style would still change in the disabled state ([#1040](https://github.com/arco-design/arco-design-vue/pull/1040))
+
+
 ## 2.25.0
 
 `2022-04-22`

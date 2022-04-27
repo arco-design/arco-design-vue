@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 💅 Style
+
+- Fixed the issue that the hover style would still change in the disabled state ([#1040](https://github.com/arco-design/arco-design-vue/pull/1040))
+
+
 ## 2.18.0
 
 `2022-03-04`

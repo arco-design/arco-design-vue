@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.25.1
+
+`2022-04-27`
+
+### 🐛 BugFix
+
+- Fix size attribute type detection problem ([#1052](https://github.com/arco-design/arco-design-vue/pull/1052))
+
+
 ## 2.11.0
 
 `2021-12-17`
