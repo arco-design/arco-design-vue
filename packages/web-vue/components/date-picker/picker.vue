@@ -457,7 +457,7 @@ export default defineComponent({
    * @en Double arrow page backward icon
    * @slot icon-next-double
    */
-  setup(props: PickerProps, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const {
       mode,
       modelValue,
@@ -733,7 +733,7 @@ export default defineComponent({
     }
 
     function onTimePickerSelect(time: Dayjs) {
-      const newValue = getMergedOpValue(panelValue.value, time);
+      const newValue = getMergedOpValue(panelValue.value || getNow(), time);
       onPanelSelect(newValue);
     }
 
@@ -788,8 +788,8 @@ export default defineComponent({
         'disabledTime',
         'showTime',
         'hideTrigger',
-        'showNowBtn',
       ]),
+      showNowBtn: props.showNowBtn && mode.value === 'date',
       prefixCls,
       format: parseValueFormat.value,
       value: panelValue.value,

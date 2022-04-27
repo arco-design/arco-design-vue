@@ -1,6 +1,6 @@
 <template>
   <div :class="`${prefixCls}-shortcuts`">
-    <Button v-if="showNowBtn" size="mini" @click="() => onNowClick(item)">
+    <Button v-if="showNowBtn" size="mini" @click="() => onNowClick()">
       {{ datePickerT('datePicker.now') }}
     </Button>
     <Button

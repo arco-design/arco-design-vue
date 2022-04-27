@@ -1,9 +1,6 @@
 <template>
   <div :class="classNames">
-    <PanelShortcuts
-      v-if="showShortcuts && shortcutsPosition === 'left'"
-      v-bind="shortcutsProps"
-    />
+    <PanelShortcuts v-if="showShortcutsInLeft" v-bind="shortcutsProps" />
     <div :class="`${prefixCls}-panel-wrapper`">
       <template v-if="headerMode">
         <YearPanel
@@ -47,25 +44,24 @@
         />
         <PanelFooter
           :prefix-cls="prefixCls"
-          :show-today-btn="!showTime && mode === 'date'"
+          :show-today-btn="
+            showNowBtn && !(showConfirmBtn || showShortcutsInBottom)
+          "
           :show-confirm-btn="showConfirmBtn"
           :confirm-btn-disabled="confirmBtnDisabled"
           @todayBtnClick="onTodayBtnClick"
           @confirmBtnClick="onConfirmBtnClick"
         >
           <template v-if="extra" #extra>
-            <RenderFunction :render-func="extra" />
+            <RenderFunction v-if="extra" :render-func="extra" />
           </template>
-          <template v-if="showShortcuts && shortcutsPosition === 'bottom'" #btn>
+          <template v-if="showShortcutsInBottom" #btn>
             <PanelShortcuts v-bind="shortcutsProps" />
           </template>
         </PanelFooter>
       </template>
     </div>
-    <PanelShortcuts
-      v-if="showShortcuts && shortcutsPosition === 'right'"
-      v-bind="shortcutsProps"
-    />
+    <PanelShortcuts v-if="showShortcutsInRight" v-bind="shortcutsProps" />
   </div>
 </template>
 <script lang="ts">
@@ -216,16 +212,28 @@ export default defineComponent({
       headerMode,
     } = toRefs(props);
 
-    const hasShortcuts = computed(
-      () => shortcuts.value && shortcuts.value.length
+    const hasShortcuts = computed(() =>
+      Boolean(shortcuts.value && shortcuts.value.length)
     );
 
     const showShortcutsNowBtn = computed(
-      () => showConfirmBtn.value && showNowBtn.value && !hasShortcuts.value
+      () => showNowBtn.value && showConfirmBtn.value && !hasShortcuts.value
     );
 
     const showShortcuts = computed(
       () => showShortcutsNowBtn.value || hasShortcuts.value
+    );
+
+    const showShortcutsInLeft = computed(
+      () => showShortcuts.value && shortcutsPosition.value === 'left'
+    );
+
+    const showShortcutsInRight = computed(
+      () => showShortcuts.value && shortcutsPosition.value === 'right'
+    );
+
+    const showShortcutsInBottom = computed(
+      () => showShortcuts.value && shortcutsPosition.value === 'bottom'
     );
 
     const classNames = computed(() => [
@@ -233,9 +241,9 @@ export default defineComponent({
       {
         [`${prefixCls.value}-container-panel-only`]: hideTrigger.value,
         [`${prefixCls.value}-container-shortcuts-placement-left`]:
-          showShortcuts.value && shortcutsPosition.value === 'left',
+          showShortcutsInLeft.value,
         [`${prefixCls.value}-container-shortcuts-placement-right`]:
-          showShortcuts.value && shortcutsPosition.value === 'right',
+          showShortcutsInRight.value,
       },
     ]);
 
@@ -320,7 +328,9 @@ export default defineComponent({
 
     return {
       classNames,
-      showShortcuts,
+      showShortcutsInLeft,
+      showShortcutsInRight,
+      showShortcutsInBottom,
       shortcutsProps,
       commonPanelProps,
       footerValue,
