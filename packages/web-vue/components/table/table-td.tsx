@@ -5,6 +5,7 @@ import {
   inject,
   PropType,
   ref,
+  VNode,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import {
@@ -76,7 +77,9 @@ export default defineComponent({
       default: 0,
     },
     renderExpandBtn: {
-      type: Function,
+      type: Function as PropType<
+        (record: TableDataWithRaw, stopPropagation?: boolean) => VNode
+      >,
     },
   },
   setup(props, { slots }) {
@@ -127,26 +130,22 @@ export default defineComponent({
       if (slots.default) {
         return slots.default();
       }
+      const data = {
+        record: props.record?.raw,
+        column: props.column,
+        rowIndex: props.rowIndex ?? -1,
+      };
+      if (slots.cell) {
+        return slots.cell(data);
+      }
       if (props.column.slots?.cell) {
-        return props.column.slots.cell({
-          record: props.record?.raw,
-          column: props.column,
-          rowIndex: props.rowIndex ?? -1,
-        });
+        return props.column.slots.cell(data);
       }
       if (props.column.render) {
-        return props.column.render({
-          record: props.record?.raw,
-          column: props.column,
-          rowIndex: props.rowIndex ?? -1,
-        });
+        return props.column.render(data);
       }
       if (props.column.slotName && tableCtx.slots?.[props.column.slotName]) {
-        return tableCtx.slots[props.column.slotName]?.({
-          record: props.record?.raw,
-          column: props.column,
-          rowIndex: props.rowIndex ?? -1,
-        });
+        return tableCtx.slots[props.column.slotName]?.(data);
       }
       return String(
         getValueByPath(props.record?.raw, props.column.dataIndex) ?? ''
