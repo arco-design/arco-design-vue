@@ -6,10 +6,9 @@ import _ListItem from './list-item';
 import _ListItemMeta from './list-item-meta.vue';
 
 const List = Object.assign(_List, {
-  Item: {
-    ..._ListItem,
+  Item: Object.assign(_ListItem, {
     Meta: _ListItemMeta,
-  },
+  }),
   install: (app: App, options?: ArcoOptions) => {
     setGlobalConfig(app, options);
     const componentPrefix = getComponentPrefix(options);
