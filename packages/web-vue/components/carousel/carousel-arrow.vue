@@ -2,7 +2,7 @@
   <div :class="cls">
     <div
       :class="`${prefixCls}-arrow-${direction === 'vertical' ? 'top' : 'left'}`"
-      @click="prev"
+      @click="onPreviousClick"
     >
       <IconLeft v-if="direction === 'horizontal'" />
       <IconUp v-else />
@@ -11,7 +11,7 @@
       :class="`${prefixCls}-arrow-${
         direction === 'vertical' ? 'bottom' : 'right'
       }`"
-      @click="next"
+      @click="onNextClick"
     >
       <IconRight v-if="direction === 'horizontal'" />
       <IconDown v-else />
@@ -44,15 +44,18 @@ export default defineComponent({
       type: String,
       default: 'always',
     },
-    prev: {
-      type: Function,
-    },
-    next: {
-      type: Function,
-    },
   },
-  setup(props) {
+  emits: ['previousClick', 'nextClick'],
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('carousel');
+
+    const onPreviousClick = (ev: MouseEvent) => {
+      emit('previousClick', ev);
+    };
+
+    const onNextClick = (ev: MouseEvent) => {
+      emit('nextClick', ev);
+    };
 
     const cls = computed(() => [
       `${prefixCls}-arrow`,
@@ -64,6 +67,8 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
+      onPreviousClick,
+      onNextClick,
     };
   },
 });

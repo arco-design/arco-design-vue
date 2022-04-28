@@ -1,12 +1,9 @@
 <template>
-  <div
-    :class="`${prefixCls} ${prefixCls}-${type} ${prefixCls}-${position}`"
-    v-on="listeners"
-  >
+  <div :class="cls" v-bind="eventHandlers">
     <span
       v-if="type === 'slider'"
-      :style="{ width: `${step}%`, left: `${activeIndex * step}%` }"
-      :class="`${prefixCls}-item ${prefixCls}-item-active`"
+      :style="sliderStyle"
+      :class="[`${prefixCls}-item`, `${prefixCls}-item-active`]"
     />
     <template v-else>
       <span
@@ -23,16 +20,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType } from 'vue';
+import type { PropType } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import {
-  TRIGGERS,
-  TriggerType,
-  INDICATORS,
-  IndicatorType,
-  INDICATORS_POSITION,
-  IndicatorPositionType,
-} from './constants';
+import type {
+  CarouselIndicatorPosition,
+  CarouselIndicatorType,
+  CarouselTriggerEvent,
+} from './interface';
 
 export default defineComponent({
   name: 'Indicator',
@@ -46,66 +41,62 @@ export default defineComponent({
       default: 0,
     },
     type: {
-      type: String as PropType<IndicatorType>,
-      validator: (value: IndicatorType) => {
-        return INDICATORS.includes(value);
-      },
+      type: String as PropType<CarouselIndicatorType>,
       default: 'line',
     },
     position: {
-      type: String as PropType<IndicatorPositionType>,
-      validator: (value: IndicatorPositionType) => {
-        return INDICATORS_POSITION.includes(value);
-      },
+      type: String as PropType<CarouselIndicatorPosition>,
       default: 'bottom',
     },
     trigger: {
-      type: String as PropType<TriggerType>,
-      validator: (value: TriggerType) => {
-        return TRIGGERS.includes(value);
-      },
+      type: String as PropType<CarouselTriggerEvent>,
       default: 'click',
     },
-    onSelectIndex: {
-      type: Function,
-    },
   },
-  setup(props) {
+  emits: ['select'],
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('carousel-indicator');
 
-    const listeners = computed(() => {
-      const { trigger, type, count, onSelectIndex, activeIndex } = props;
-      return {
-        [trigger === 'click' ? 'click' : 'mouseEnter']: (event: any) => {
-          event.preventDefault();
-          if (type === 'slider') {
-            const x = event.offsetX;
-            const width = event.currentTarget.clientWidth;
-            if (event.target === event.currentTarget) {
-              const index = ~~((x / width) * count);
-              index !== activeIndex && onSelectIndex!(index);
-            }
-          } else {
-            const index = +event.target.getAttribute('data-index');
-            !Number.isNaN(index) &&
-              index !== activeIndex &&
-              onSelectIndex!(index);
-          }
-        },
-      };
+    const onClick = (event: MouseEvent) => {
+      event.preventDefault();
+      if (props.type === 'slider') {
+        const x = event.offsetX;
+        const width = (event.currentTarget as HTMLElement).clientWidth;
+        if (event.target === event.currentTarget) {
+          const index = Math.floor((x / width) * props.count);
+          index !== props.activeIndex && emit('select', index);
+        }
+      } else {
+        const index = Number.parseInt(
+          (event.target as HTMLElement).getAttribute('data-index') ?? '',
+          10
+        );
+        if (!Number.isNaN(index) && index !== props.activeIndex) {
+          emit('select', index);
+        }
+      }
+    };
+
+    const eventHandlers = computed(() => {
+      return props.trigger === 'click' ? { onClick } : { onMouseover: onClick };
     });
 
-    const step = computed(() => {
-      if (props.type === 'slider') {
-        return 100 / props.count;
-      }
-      return null;
+    const cls = computed(() => [
+      `${prefixCls}`,
+      `${prefixCls}-${props.type}`,
+      `${prefixCls}-${props.position}`,
+    ]);
+
+    const sliderStyle = computed(() => {
+      const step = 100 / props.count;
+      return { width: `${step}%`, left: `${props.activeIndex * step}%` };
     });
 
     return {
       prefixCls,
-      listeners,
-      step,
+      eventHandlers,
+      cls,
+      sliderStyle,
     };
   },
 });
