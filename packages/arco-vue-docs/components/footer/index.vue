@@ -47,7 +47,7 @@
           </a>
           <div class="arco-site-footer-copyright">
             <span>GIP UED & 架构前端 </span>
-            <span>ⓒ Copyright ByteDance 2021</span>
+            <span>ⓒ Copyright ByteDance 2019-{{ latestYear }}</span>
           </div>
         </div>
         <div class="arco-site-footer-bottom-right">
@@ -155,11 +155,14 @@ export default defineComponent({
       Message.info('Opening soon');
     };
 
+    const latestYear = new Date().getFullYear();
+
     return {
       t,
       relevant,
       toBeOpen,
       joinChat,
+      latestYear,
     };
   },
 });
