@@ -22,22 +22,26 @@ title:
     <template #content>
       <div class="trigger-demo-nest">
         <a-empty />
-        <a-trigger class="trigger-demo-nest" position="right">
+        <a-trigger position="right">
           <a-button>Hover Me</a-button>
           <template #content>
-            <a-empty />
-            <a-trigger trigger="click" class="trigger-demo-nest" position="right">
-              <a-button>Click Me</a-button>
-              <template #content>
-                <a-empty />
-                <a-trigger class="trigger-demo-nest" position="right">
-                  <a-button>Hover Me</a-button>
-                  <template #content>
+            <div class="trigger-demo-nest">
+              <a-empty />
+              <a-trigger trigger="click" position="right">
+                <a-button>Click Me</a-button>
+                <template #content>
+                  <div class="trigger-demo-nest">
                     <a-empty />
-                  </template>
-                </a-trigger>
-              </template>
-            </a-trigger>
+                    <a-trigger position="right">
+                      <a-button>Hover Me</a-button>
+                      <template #content>
+                        <a-empty class="trigger-demo-nest" />
+                      </template>
+                    </a-trigger>
+                  </div>
+                </template>
+              </a-trigger>
+            </div>
           </template>
         </a-trigger>
       </div>

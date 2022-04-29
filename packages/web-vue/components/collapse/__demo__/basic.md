@@ -29,7 +29,7 @@ Used to group and hide complex content areas, and can be collapsed or expanded. 
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
     </a-collapse-item>
-    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3" :show-expand-icon="false">
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>

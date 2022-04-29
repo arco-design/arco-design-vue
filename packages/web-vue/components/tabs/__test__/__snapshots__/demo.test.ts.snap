@@ -52,7 +52,7 @@ exports[`<tabs> demo: render [editable] correctly 1`] = `
   </div>
   <div class=\\"arco-tabs-content\\">
     <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
-      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+      <div class=\\"arco-tabs-content-item\\">
         <div class=\\"arco-tabs-pane\\">Content of Tab Panel 1</div>
       </div>
       <div class=\\"arco-tabs-content-item\\">
@@ -89,7 +89,7 @@ exports[`<tabs> demo: render [extra] correctly 1`] = `
   </div>
   <div class=\\"arco-tabs-content\\">
     <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
-      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+      <div class=\\"arco-tabs-content-item\\">
         <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1 </div>
       </div>
       <div class=\\"arco-tabs-content-item\\">
@@ -122,7 +122,7 @@ exports[`<tabs> demo: render [icon] correctly 1`] = `
   </div>
   <div class=\\"arco-tabs-content\\">
     <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
-      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+      <div class=\\"arco-tabs-content-item\\">
         <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1 </div>
       </div>
       <div class=\\"arco-tabs-content-item\\">
@@ -191,7 +191,7 @@ exports[`<tabs> demo: render [position] correctly 1`] = `
       </div>
       <div class=\\"arco-tabs-content\\">
         <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
-          <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+          <div class=\\"arco-tabs-content-item\\">
             <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1 </div>
           </div>
           <div class=\\"arco-tabs-content-item\\">
@@ -229,7 +229,7 @@ exports[`<tabs> demo: render [type] correctly 1`] = `
       </div>
       <div class=\\"arco-tabs-content\\">
         <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
-          <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+          <div class=\\"arco-tabs-content-item\\">
             <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1 </div>
           </div>
           <div class=\\"arco-tabs-content-item\\">

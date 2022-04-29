@@ -35,21 +35,13 @@ import {
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { timelineInjectionKey } from './context';
-import {
-  DOTS,
-  DotType,
-  LineType,
-  LINES,
-  PositionType,
-  POSITIONS,
-  ModeType,
-} from './constants';
-import { DirectionType } from '../carousel/constants';
+import { DotType, LineType, PositionType, ModeType } from './constants';
+import { Direction } from '../_utils/constant';
 
 const getDefaultPosition = (
   index: number,
   mode: ModeType,
-  direction: DirectionType,
+  direction: Direction,
   position?: string
 ) => {
   let map = ['left', 'right'];
@@ -78,9 +70,6 @@ export default defineComponent({
      */
     dotType: {
       type: String as PropType<DotType>,
-      validator: (value: DotType) => {
-        return DOTS.includes(value);
-      },
       default: 'solid',
     },
     /**
@@ -90,9 +79,6 @@ export default defineComponent({
      */
     lineType: {
       type: String as PropType<LineType>,
-      validator: (value: LineType) => {
-        return LINES.includes(value);
-      },
       default: 'solid',
     },
     /**
@@ -115,9 +101,6 @@ export default defineComponent({
      */
     position: {
       type: String as PropType<PositionType>,
-      validator: (value: PositionType) => {
-        return POSITIONS.includes(value);
-      },
     },
   },
   /**
