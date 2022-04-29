@@ -11,7 +11,6 @@ export type TabsType =
   | 'capsule';
 
 export interface TabData {
-  index: number;
   key: string | number;
   title?: string;
   disabled?: boolean;

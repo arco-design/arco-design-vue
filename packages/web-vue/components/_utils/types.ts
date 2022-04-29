@@ -1,4 +1,5 @@
 import type { App, RenderFunction } from 'vue';
+import { VNode } from 'vue';
 
 export interface ArcoOptions {
   classPrefix?: string;
@@ -31,6 +32,10 @@ export type ClassName = string | Array<ClassName> | Record<string, boolean>;
 export type FieldString<T> = {
   [K in keyof T]?: string;
 };
+
+export interface SlotChildren {
+  value?: VNode[];
+}
 
 export interface ValueData {
   value: string | number;

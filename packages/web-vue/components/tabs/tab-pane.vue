@@ -25,7 +25,6 @@ import {
   watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { useIndex } from '../_hooks/use-index';
 import { TabsContext, tabsInjectionKey } from './context';
 
 export default defineComponent({
@@ -64,13 +63,7 @@ export default defineComponent({
     const active = computed(() => key.value === tabsCtx.activeKey);
     const mounted = ref(!tabsCtx.lazyLoad);
 
-    const { computedIndex } = useIndex({
-      itemRef,
-      selector: `.${prefixCls}-content-item`,
-    });
-
     const data = reactive({
-      index: computedIndex,
       key,
       title,
       disabled,
