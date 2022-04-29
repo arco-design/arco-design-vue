@@ -1,9 +1,4 @@
-import type {
-  PropType,
-  CSSProperties,
-  ComponentPublicInstance,
-  Ref,
-} from 'vue';
+import type { PropType, CSSProperties, Ref } from 'vue';
 import {
   defineComponent,
   ref,
@@ -30,13 +25,9 @@ import {
   getScrollElements,
   getTransformOrigin,
 } from './utils';
-import ResizeObserver from '../_components/resize-observer-v2.vue';
+import ResizeObserver from '../_components/resize-observer-v2';
 import { off, on } from '../_utils/dom';
-import {
-  isEmptyChildren,
-  isComponentInstance,
-  mergeFirstChild,
-} from '../_utils/vue-utils';
+import { isEmptyChildren, mergeFirstChild } from '../_utils/vue-utils';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { triggerInjectionKey } from './context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
@@ -46,6 +37,7 @@ import ClientOnly from '../_components/client-only';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
 import { TriggerPopupTranslate } from './interface';
 import { configProviderInjectionKey } from '../config-provider/context';
+import { useFirstElement } from '../_hooks/use-first-element';
 
 export default defineComponent({
   name: 'Trigger',
@@ -346,6 +338,8 @@ export default defineComponent({
      * @version 2.18.0
      */
     'hide',
+    // for internal
+    'resize',
   ],
   /**
    * @zh 弹出框内容
@@ -365,12 +359,7 @@ export default defineComponent({
     const childrenRefs = new Set<Ref<HTMLElement>>();
     const triggerCtx = inject(triggerInjectionKey, undefined);
     // trigger相关变量
-    const triggerRef = ref<HTMLElement | ComponentPublicInstance>();
-    const triggerEle = computed<HTMLElement>(() =>
-      isComponentInstance(triggerRef.value)
-        ? triggerRef.value.$el
-        : triggerRef.value
-    );
+    const { children, firstElement } = useFirstElement();
     // popup相关变量
     const popupRef = ref<HTMLElement>();
     const popupVisible = ref(props.defaultPopupVisible);
@@ -418,7 +407,7 @@ export default defineComponent({
     };
 
     const updatePopupStyle = () => {
-      if (!triggerEle.value || !popupRef.value || !containerRef.value) {
+      if (!firstElement.value || !popupRef.value || !containerRef.value) {
         return;
       }
       const containerRect = containerRef.value.getBoundingClientRect();
@@ -435,7 +424,7 @@ export default defineComponent({
             width: 0,
             height: 0,
           }
-        : getElementScrollRect(triggerEle.value, containerRect);
+        : getElementScrollRect(firstElement.value, containerRect);
       const popupRect = getElementScrollRect(popupRef.value, containerRect);
       const { style, position } = getPopupStyle(
         props.position,
@@ -598,7 +587,7 @@ export default defineComponent({
 
     const handleOutsideClick = (e: MouseEvent) => {
       if (
-        triggerEle.value?.contains(e.target as HTMLElement) ||
+        firstElement.value?.contains(e.target as HTMLElement) ||
         popupRef.value?.contains(e.target as HTMLElement)
       ) {
         return;
@@ -624,6 +613,11 @@ export default defineComponent({
       if (computedVisible.value) {
         updatePopupStyle();
       }
+    };
+
+    const onTargetResize = () => {
+      handleResize();
+      emit('resize');
     };
 
     const handlePopupMouseDown = (e: Event) => {
@@ -653,7 +647,7 @@ export default defineComponent({
 
       if (props.updateAtScroll || configCtx?.updateAtScroll) {
         if (value) {
-          scrollElements = getScrollElements(triggerEle.value);
+          scrollElements = getScrollElements(firstElement.value);
           for (const item of scrollElements) {
             item.addEventListener('scroll', handleScroll);
           }
@@ -691,6 +685,16 @@ export default defineComponent({
       // 默认显示时，更新popup位置
       if (computedVisible.value) {
         updatePopupStyle();
+        if (props.clickOutsideToClose && !outsideListener) {
+          on(document.documentElement, 'mousedown', handleOutsideClick);
+          outsideListener = true;
+        }
+        if (props.updateAtScroll || configCtx?.updateAtScroll) {
+          scrollElements = getScrollElements(firstElement.value);
+          for (const item of scrollElements) {
+            item.addEventListener('scroll', handleScroll);
+          }
+        }
       }
     });
 
@@ -730,10 +734,9 @@ export default defineComponent({
     };
 
     return () => {
-      const children = slots.default?.() ?? [];
+      children.value = slots.default?.() ?? [];
 
-      mergeFirstChild(children, {
-        ref: triggerRef,
+      mergeFirstChild(children.value, {
         class: triggerCls.value,
         onClick: handleClick,
         onMouseenter: handleMouseEnter,
@@ -746,9 +749,11 @@ export default defineComponent({
       return (
         <>
           {props.autoFixPosition ? (
-            <ResizeObserver onResize={handleResize}>{children}</ResizeObserver>
+            <ResizeObserver onResize={onTargetResize}>
+              {children.value}
+            </ResizeObserver>
           ) : (
-            children
+            children.value
           )}
           <ClientOnly>
             <Teleport

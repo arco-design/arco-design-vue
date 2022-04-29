@@ -491,14 +491,14 @@ export const isScrollElement = (element: HTMLElement) => {
   );
 };
 
-export const getScrollElements = (container: HTMLElement) => {
+export const getScrollElements = (container: HTMLElement | undefined) => {
   const scrollElements: HTMLElement[] = [];
-  let element: HTMLElement | null = container;
+  let element: HTMLElement | undefined = container;
   while (element && element !== document.documentElement) {
     if (isScrollElement(element)) {
       scrollElements.push(element);
     }
-    element = element.parentElement;
+    element = element.parentElement ?? undefined;
   }
   return scrollElements;
 };

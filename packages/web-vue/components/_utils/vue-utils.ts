@@ -8,7 +8,7 @@ import type {
   ComponentPublicInstance,
   RenderFunction,
 } from 'vue';
-import { createVNode, cloneVNode, Fragment, isVNode } from 'vue';
+import { cloneVNode, Fragment, isVNode } from 'vue';
 import { Data, RenderContent } from './types';
 import { isArray, isFunction, isNumber, isObject, isString } from './is';
 import { toCamelCase, toKebabCase } from './convert-case';
@@ -292,30 +292,77 @@ export const getChildrenComponents = (
 };
 
 export const mergeFirstChild = (
-  vns: VNode[],
+  children: VNode[] | undefined,
   extraProps: Data | ((vn: VNode) => Data)
 ): boolean => {
-  for (let i = 0; i < vns.length; i++) {
-    const child = vns[i];
-    if (isElement(child) || isComponent(child)) {
-      const props = isFunction(extraProps) ? extraProps(child) : extraProps;
-
-      vns[i] = cloneVNode(child, props, true);
-      return true;
-    }
-    if (isArrayChildren(child, child.children)) {
-      const result = mergeFirstChild(child.children, extraProps);
-      if (result) return true;
-    } else if (isSlotsChildren(child, child.children)) {
-      const children = child.children.default?.() ?? [];
-      const result = mergeFirstChild(children, extraProps);
-      if (result) {
-        vns[i] = createVNode(child, null, { default: () => children });
+  if (children && children.length > 0) {
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      if (isElement(child) || isComponent(child)) {
+        const props = isFunction(extraProps) ? extraProps(child) : extraProps;
+        children[i] = cloneVNode(child, props, true);
         return true;
+      }
+      const _children = getChildrenArray(child);
+      if (_children && _children.length > 0) {
+        const result = mergeFirstChild(_children, extraProps);
+        if (result) return true;
       }
     }
   }
   return false;
+};
+
+export const getChildrenArray = (vn: VNode): VNode[] | undefined => {
+  if (isArrayChildren(vn, vn.children)) {
+    return vn.children;
+  }
+  if (isArray(vn)) {
+    return vn;
+  }
+  return undefined;
+};
+
+export const getFirstElementFromVNode = (
+  vn: VNode
+): HTMLElement | undefined => {
+  if (isElement(vn)) {
+    return vn.el as HTMLElement;
+  }
+  if (isComponent(vn)) {
+    if ((vn.el as Node)?.nodeType === 1) {
+      return vn.el as HTMLElement;
+    }
+    if (vn.component?.subTree) {
+      const ele = getFirstElementFromVNode(vn.component.subTree);
+      if (ele) return ele;
+    }
+  } else {
+    const children = getChildrenArray(vn);
+    return getFirstElementFromChildren(children);
+  }
+  return undefined;
+};
+
+export const getFirstElementFromTemplateRef = (
+  target: HTMLElement | ComponentPublicInstance | undefined
+) => {
+  if (isComponentInstance(target)) {
+    return getFirstElementFromVNode(target.$.subTree);
+  }
+  return target;
+};
+
+export const getFirstElementFromChildren = (
+  children: VNode[] | undefined
+): HTMLElement | undefined => {
+  if (children && children.length > 0) {
+    for (const child of children) {
+      const element = getFirstElementFromVNode(child);
+      if (element) return element;
+    }
+  }
+  return undefined;
 };
 
 /**
@@ -414,11 +461,16 @@ export const getFirstElement = (vn: VNode | VNode[]): HTMLElement | null => {
       const result = getFirstElement(child);
       if (result) return result;
     }
-  } else if (
-    (isElement(vn) || isComponent(vn)) &&
-    (vn.el as Node)?.nodeType === 1
-  ) {
+  } else if (isElement(vn)) {
     return vn.el as HTMLElement;
+  } else if (isComponent(vn)) {
+    if ((vn.el as Node).nodeType === 1) {
+      return vn.el as HTMLElement;
+    }
+    if (vn.component) {
+      const result = getFirstElement(vn.component.subTree);
+      if (result) return result;
+    }
   } else if (isArrayChildren(vn, vn.children)) {
     for (const child of vn.children) {
       const result = getFirstElement(child);
@@ -434,4 +486,40 @@ export const getSlotFunction = (param: RenderContent | undefined) => {
     return () => param;
   }
   return undefined;
+};
+
+export const getComponentsFromVNode = (vn: VNode, name: string) => {
+  const components: number[] = [];
+
+  if (isComponent(vn, vn.type)) {
+    if (vn.type.name === name) {
+      if (vn.component) {
+        components.push(vn.component.uid);
+      }
+    } else if (vn.component?.subTree) {
+      components.push(...getComponentsFromVNode(vn.component.subTree, name));
+    }
+  } else {
+    const children = getChildrenArray(vn);
+    if (children) {
+      components.push(...getComponentsFromChildren(children, name));
+    }
+  }
+
+  return components;
+};
+
+export const getComponentsFromChildren = (
+  children: VNode[] | undefined,
+  name: string
+) => {
+  const components: number[] = [];
+
+  if (children && children.length > 0) {
+    for (const child of children) {
+      components.push(...getComponentsFromVNode(child, name));
+    }
+  }
+
+  return components;
 };

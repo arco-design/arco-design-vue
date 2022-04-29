@@ -1,8 +1,8 @@
+import type { PropType } from 'vue';
 import {
   computed,
   defineComponent,
   nextTick,
-  PropType,
   provide,
   reactive,
   ref,
@@ -15,6 +15,7 @@ import TabsNav from './tabs-nav';
 import { tabsInjectionKey } from './context';
 import { isUndefined } from '../_utils/is';
 import { useSize } from '../_hooks/use-size';
+import { useChildrenComponents } from '../_hooks/use-children-components';
 
 export default defineComponent({
   name: 'Tabs',
@@ -190,11 +191,17 @@ export default defineComponent({
         ? 'vertical'
         : 'horizontal'
     );
+    const { children, components } = useChildrenComponents('TabPane');
 
     const tabMap = reactive(new Map<number, TabData>());
-    const sortedTabs = computed(() =>
-      Array.from(tabMap.values()).sort((a, b) => a.index - b.index)
-    );
+    const sortedTabs = computed(() => {
+      const tabData: TabData[] = [];
+      components.value.forEach((id) => {
+        const tab = tabMap.get(id);
+        if (tab) tabData.push(tab);
+      });
+      return tabData;
+    });
     const tabKeys = computed(() => sortedTabs.value.map((item) => item.key));
 
     const addItem = (id: number, data: any) => {
@@ -279,7 +286,7 @@ export default defineComponent({
             ]}
             style={{ marginLeft: `-${activeIndex.value * 100}%` }}
           >
-            {slots.default?.()}
+            {children.value}
           </div>
         </div>
       );
@@ -296,28 +303,32 @@ export default defineComponent({
       },
     ]);
 
-    return () => (
-      <div class={cls.value}>
-        {mergedPosition.value === 'bottom' && renderContent()}
-        <TabsNav
-          v-slots={{ extra: slots.extra }}
-          tabs={sortedTabs.value}
-          activeKey={computedActiveKey.value}
-          activeIndex={activeIndex.value}
-          direction={mergedDirection.value}
-          position={mergedPosition.value}
-          editable={props.editable}
-          animation={props.animation}
-          showAddButton={props.showAddButton}
-          headerPadding={props.headerPadding}
-          size={mergedSize.value}
-          type={props.type}
-          onClick={handleClick}
-          onAdd={handleAdd}
-          onDelete={handleDelete}
-        />
-        {mergedPosition.value !== 'bottom' && renderContent()}
-      </div>
-    );
+    return () => {
+      children.value = slots.default?.();
+
+      return (
+        <div class={cls.value}>
+          {mergedPosition.value === 'bottom' && renderContent()}
+          <TabsNav
+            v-slots={{ extra: slots.extra }}
+            tabs={sortedTabs.value}
+            activeKey={computedActiveKey.value}
+            activeIndex={activeIndex.value}
+            direction={mergedDirection.value}
+            position={mergedPosition.value}
+            editable={props.editable}
+            animation={props.animation}
+            showAddButton={props.showAddButton}
+            headerPadding={props.headerPadding}
+            size={mergedSize.value}
+            type={props.type}
+            onClick={handleClick}
+            onAdd={handleAdd}
+            onDelete={handleDelete}
+          />
+          {mergedPosition.value !== 'bottom' && renderContent()}
+        </div>
+      );
+    };
   },
 });
