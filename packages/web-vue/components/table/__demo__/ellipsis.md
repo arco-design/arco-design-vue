@@ -6,14 +6,13 @@ title:
 
 ## zh-CN
 
-开启 `ellipsis` 属性可以显示省略号和文本提示。如果不需要提示可以关闭 `tooltip`。 注意：开启 `ellipsis` 后会修改 `table-cell` 中的 DOM 结构。
+开启 `ellipsis` 属性可以显示省略号，如果同时开启 `tooltip` 会在显示省略号时使用文本提示。注意：开启 `tooltip` 后会修改 `table-cell` 中的 DOM 结构。
 
 ---
 
 ## en-US
 
-Turn on the `ellipsis` property to display ellipses and text hints. You can turn off `tooltip` if you don't need a tip.
-Note: Enabling `ellipsis` will modify the DOM structure in `table-cell`.
+Enable `ellipsis` property to display ellipsis, and also enable `tooltip` to use a text tip when displaying ellipses. Note: Enabling `tooltip` will modify the DOM structure in `table-cell`.
 
 ---
 
