@@ -14,6 +14,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/expand.md
 
+@import ./__demo__/ellipsis.md
+
 @import ./__demo__/subtree.md
 
 @import ./__demo__/lazy-load.md
@@ -223,6 +225,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |align|对齐方向|`'left' \| 'center' \| 'right'`|`-`||
 |fixed|固定位置|`'left' \| 'right'`|`-`||
 |ellipsis|是否显示省略号|`boolean`|`false`||
+|tooltip|是否在显示省略号时显示文本提示（default: true）|`boolean`|`false`|2.25.0|
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |children|表头子数据，用于表头分组|`TableColumnData[]`|`-`||

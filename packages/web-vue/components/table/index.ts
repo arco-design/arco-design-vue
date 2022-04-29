@@ -2,7 +2,7 @@ import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { getComponentPrefix, setGlobalConfig } from '../_utils/global-config';
 import _Table from './table';
-import _Thead from './table-thead.vue';
+import _Thead from './table-thead';
 import _Tbody from './table-tbody';
 import _Tr from './table-tr';
 import _Th from './table-th';

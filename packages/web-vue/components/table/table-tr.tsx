@@ -1,5 +1,6 @@
-import { computed, defineComponent, createVNode } from 'vue';
+import { computed, defineComponent, createVNode, PropType } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
+import { TableDataWithRaw } from './interface';
 
 export default defineComponent({
   name: 'Tr',
@@ -12,6 +13,11 @@ export default defineComponent({
     },
     checked: {
       type: Boolean,
+    },
+    rowIndex: Number,
+    record: {
+      type: Object as PropType<TableDataWithRaw>,
+      default: () => ({}),
     },
   },
   setup(props, { slots }) {
@@ -28,7 +34,10 @@ export default defineComponent({
 
     return () => {
       return createVNode(
-        slots.tr?.()[0] ?? 'tr',
+        slots.tr?.({
+          rowIndex: props.rowIndex,
+          record: props.record?.raw,
+        })[0] ?? 'tr',
         { class: cls.value },
         slots.default?.()
       );

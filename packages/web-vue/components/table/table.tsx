@@ -51,7 +51,7 @@ import Spin from '../spin';
 import Pagination, { PaginationProps } from '../pagination';
 import Empty from '../empty';
 import ColGroup from './table-col-group.vue';
-import Thead from './table-thead.vue';
+import Thead from './table-thead';
 import Tbody from './table-tbody';
 import Tr from './table-tr';
 import Th from './table-th';
@@ -71,6 +71,7 @@ import { useFilter } from './hooks/use-filter';
 import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
 import { useSpan } from './hooks/use-span';
+import { useChildrenComponents } from '../_hooks/use-children-components';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -566,12 +567,17 @@ export default defineComponent({
    * @zh 自定义 tr 元素
    * @en Custom tr element
    * @slot tr
+   * @binding {TableData} record
+   * @binding {number} rowIndex
    * @version 2.16.0
    */
   /**
    * @zh 自定义 td 元素
    * @en Custom td element
    * @slot td
+   * @binding {TableColumnData} column
+   * @binding {TableData} record
+   * @binding {number} rowIndex
    * @version 2.16.0
    */
   /**
@@ -600,6 +606,19 @@ export default defineComponent({
    * @en Empty
    * @slot empty
    */
+  /**
+   * @zh 自定义 thead 元素
+   * @en Custom thead element
+   * @slot thead
+   * @version 2.26.0
+   */
+  /**
+   * @zh 自定义 th 元素
+   * @en Custom th element
+   * @slot th
+   * @binding {TableColumnData} column
+   * @version 2.26.0
+   */
   setup(props, { emit, slots }) {
     const {
       columns,
@@ -623,6 +642,7 @@ export default defineComponent({
       }
       return { ...DEFAULT_BORDERED, wrapper: props.bordered };
     });
+    const { children, components } = useChildrenComponents('TableColumn');
 
     // whether to scroll
     const isScroll = computed(() => {
@@ -658,14 +678,14 @@ export default defineComponent({
     const slotColumnMap = reactive(new Map<number, TableColumnData>());
     const slotColumns = ref<TableColumnData[]>();
 
-    watch(slotColumnMap, (slotColumnMap) => {
-      if (slotColumnMap.size > 0) {
-        slotColumns.value = Array.from(slotColumnMap.values()).sort((a, b) => {
-          if (isNumber(a.index) && isNumber(b.index)) {
-            return a.index - b.index;
-          }
-          return 0;
+    watch([components, slotColumnMap], ([components, slotColumnMap]) => {
+      if (components.length > 0) {
+        const columns: TableColumnData[] = [];
+        components.forEach((id) => {
+          const column = slotColumnMap.get(id);
+          if (column) columns.push(column);
         });
+        slotColumns.value = columns;
       } else {
         slotColumns.value = undefined;
       }
@@ -677,10 +697,10 @@ export default defineComponent({
     const groupColumns = ref<TableColumnData[][]>([]);
 
     watch(
-      [columns, slotColumnMap],
-      ([columns, _]) => {
+      [columns, slotColumns],
+      ([columns, slotColumns]) => {
         const result = getGroupColumns(
-          slotColumns.value ?? columns ?? [],
+          slotColumns ?? columns ?? [],
           dataColumnMap
         );
         dataColumns.value = result.dataColumns;
@@ -1600,6 +1620,8 @@ export default defineComponent({
               },
               props.rowClass,
             ]}
+            rowIndex={rowIndex}
+            record={record}
             key={currentKey}
             v-slots={{
               tr: slots.tr,
@@ -1747,7 +1769,7 @@ export default defineComponent({
     };
 
     const renderHeader = () => (
-      <Thead>
+      <Thead v-slots={{ thead: slots.thead }}>
         {groupColumns.value.map((row, index) => (
           <Tr key={`header-row-${index}`}>
             {index === 0 &&
@@ -1788,6 +1810,7 @@ export default defineComponent({
                       thRefs.value[column.dataIndex] = ins.$el;
                     }
                   }}
+                  v-slots={{ th: slots.th }}
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
@@ -1980,10 +2003,10 @@ export default defineComponent({
       if (slots.default) {
         return <div class={cls.value}>{renderTable(slots.default)}</div>;
       }
-
+      children.value = slots.columns?.();
       return (
         <div class={cls.value} style={style.value}>
-          {slots.columns?.()}
+          {children.value}
           <Spin {...spinProps.value}>
             {props.pagination !== false &&
               flattenData.value.length > 0 &&

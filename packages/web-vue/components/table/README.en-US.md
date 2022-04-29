@@ -16,6 +16,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/expand.md
 
+@import ./__demo__/ellipsis.md
+
 @import ./__demo__/subtree.md
 
 @import ./__demo__/lazy-load.md
@@ -225,6 +227,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |align|Alignment direction|`'left' \| 'center' \| 'right'`|`-`||
 |fixed|Fixed position|`'left' \| 'right'`|`-`||
 |ellipsis|Whether to show ellipsis|`boolean`|`false`||
+|tooltip|Whether to show a text hint when an ellipsis is displayed (default: true)|`boolean`|`false`|2.25.0|
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
 |children|Header sub-data, used for header grouping|`TableColumnData[]`|`-`||

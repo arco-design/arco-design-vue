@@ -17,8 +17,9 @@ import {
 import { getFixedCls, getStyle } from './utils';
 import { getValueByPath } from '../_utils/get-value-by-path';
 import IconLoading from '../icon/icon-loading';
-import { isFunction } from '../_utils/is';
+import { isFunction, isObject } from '../_utils/is';
 import { TableContext, tableInjectionKey } from './context';
+import AutoTooltip from '../_components/auto-tooltip/auto-tooltip';
 
 const TD_TYPES = [
   'normal',
@@ -91,6 +92,13 @@ export default defineComponent({
         operations: props.operations,
       })
     );
+
+    const tooltipProps = computed(() => {
+      if (isObject(props.column?.tooltip)) {
+        return props.column.tooltip;
+      }
+      return undefined;
+    });
 
     const isSorted = computed(
       () =>
@@ -179,7 +187,8 @@ export default defineComponent({
             {
               [`${prefixCls}-cell-fixed-expand`]: props.isFixedExpand,
               [`${prefixCls}-cell-expand-icon`]: props.showExpandBtn,
-              [`${prefixCls}-cell-text-ellipsis`]: props.column?.ellipsis,
+              [`${prefixCls}-cell-text-ellipsis`]:
+                props.column?.ellipsis && !props.column?.tooltip,
             },
           ]}
           style={cellStyle.value}
@@ -200,14 +209,24 @@ export default defineComponent({
               )}
             </span>
           )}
-          {renderContent()}
+          {props.column?.ellipsis && props.column?.tooltip ? (
+            <AutoTooltip tooltipProps={tooltipProps.value}>
+              {renderContent()}
+            </AutoTooltip>
+          ) : (
+            renderContent()
+          )}
         </span>
       );
     };
 
     return () => {
       return createVNode(
-        slots.td?.()[0] ?? 'td',
+        slots.td?.({
+          record: props.record?.raw,
+          column: props.column,
+          rowIndex: props.rowIndex ?? -1,
+        })[0] ?? 'td',
         {
           class: cls.value,
           style: style.value,
