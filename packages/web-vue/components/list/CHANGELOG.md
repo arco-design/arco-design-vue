@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.26.0
+
+`2022-04-29`
+
+### 🆕 Feature
+
+- support `empty` slot ([#1045](https://github.com/arco-design/arco-design-vue/pull/1045))
+
+
 ## 2.20.0
 
 `2022-03-18`

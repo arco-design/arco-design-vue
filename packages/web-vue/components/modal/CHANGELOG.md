@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.26.0
+
+`2022-04-29`
+
+### 💅 Style
+
+- Add `overflow: auto` to the body layer ([#1030](https://github.com/arco-design/arco-design-vue/pull/1030))
+
+
 ## 2.25.0
 
 `2022-04-22`

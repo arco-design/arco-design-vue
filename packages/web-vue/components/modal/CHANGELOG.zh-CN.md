@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.26.0
+
+`2022-04-29`
+
+### 💅 样式更新
+
+- body 层增加 `overflow: auto` ([#1030](https://github.com/arco-design/arco-design-vue/pull/1030))
+
+
 ## 2.25.0
 
 `2022-04-22`

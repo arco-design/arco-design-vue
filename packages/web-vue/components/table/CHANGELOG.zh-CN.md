@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.26.0
+
+`2022-04-29`
+
+### 🆕 新增功能
+
+- column 配置增加 tooltip 属性 ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+- 增加 thead、th 插槽，tr、td 插槽增加传出数据 ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+
+### 💎 功能优化
+
+- table-column 动态修改顺序不需要再手动指定 index ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+
+
 ## 2.25.1
 
 `2022-04-27`

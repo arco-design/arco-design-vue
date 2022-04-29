@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.26.0
+
+`2022-04-29`
+
+### 🆕 Feature
+
+- Column configuration adds tooltip attribute ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+- Add thead, th slots, tr, td slots add outgoing data ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+
+### 💎 Enhancement
+
+- The table-column dynamic modification order does not need to manually specify the index ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+
+
 ## 2.25.1
 
 `2022-04-27`

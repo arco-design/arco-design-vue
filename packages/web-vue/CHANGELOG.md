@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.26.0
+
+`2022-04-29`
+
+### 🆕 Feature
+
+- **table:** Column configuration adds tooltip attribute ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+- **table:** Add thead, th slots, tr, td slots add outgoing data ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+- **list:** support `empty` slot ([#1045](https://github.com/arco-design/arco-design-vue/pull/1045))
+
+### 🐛 BugFix
+
+- **collapse:** Fix `showExpandIcon` property invalid ([#1060](https://github.com/arco-design/arco-design-vue/pull/1060))
+- **carousel:** Fixed `trigger` and `autoPlay` property settings not working ([#1059](https://github.com/arco-design/arco-design-vue/pull/1059))
+
+### 💎 Enhancement
+
+- **table:** The table-column dynamic modification order does not need to manually specify the index ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+
+### 💅 Style
+
+- **modal:** Add `overflow: auto` to the body layer ([#1030](https://github.com/arco-design/arco-design-vue/pull/1030))
+
+
 ## 2.25.2
 
 `2022-04-27`

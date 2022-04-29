@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.26.0
+
+`2022-04-29`
+
+### 🆕 新增功能
+
+- **table:** column 配置增加 tooltip 属性 ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+- **table:** 增加 thead、th 插槽，tr、td 插槽增加传出数据 ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+- **list:** 支持 `empty` 插槽 ([#1045](https://github.com/arco-design/arco-design-vue/pull/1045))
+
+### 🐛 问题修复
+
+- **collapse:** 修复 `showExpandIcon` 属性失效的问题 ([#1060](https://github.com/arco-design/arco-design-vue/pull/1060))
+- **carousel:** 修复 `trigger` 和 `autoPlay` 属性设置失效的问题 ([#1059](https://github.com/arco-design/arco-design-vue/pull/1059))
+
+### 💎 功能优化
+
+- **table:** table-column 动态修改顺序不需要再手动指定 index ([#1065](https://github.com/arco-design/arco-design-vue/pull/1065))
+
+### 💅 样式更新
+
+- **modal:** body 层增加 `overflow: auto` ([#1030](https://github.com/arco-design/arco-design-vue/pull/1030))
+
+
 ## 2.25.2
 
 `2022-04-27`
