@@ -183,6 +183,12 @@ export interface TableColumnData {
    */
   ellipsis?: boolean;
   /**
+   * @zh 是否在显示省略号时显示文本提示。可填入 tooltip 组件属性
+   * @en Whether to show a text hint when an ellipsis is displayed. Can be filled in tooltip component properties
+   * @version 2.26.0
+   */
+  tooltip?: boolean | Record<string, any>;
+  /**
    * @zh 排序相关选项
    * @en Sorting related options
    */

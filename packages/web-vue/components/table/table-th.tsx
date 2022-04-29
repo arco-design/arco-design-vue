@@ -1,4 +1,11 @@
-import { computed, defineComponent, inject, PropType, toRefs } from 'vue';
+import {
+  computed,
+  createVNode,
+  defineComponent,
+  inject,
+  PropType,
+  toRefs,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Checkbox from '../checkbox';
 import Radio from '../radio';
@@ -12,9 +19,10 @@ import { useColumnSorter } from './hooks/use-column-sorter';
 import { useColumnFilter } from './hooks/use-column-filter';
 import { useI18n } from '../locale';
 import { getFixedCls, getStyle } from './utils';
-import { isBoolean, isFunction } from '../_utils/is';
+import { isBoolean, isFunction, isObject } from '../_utils/is';
 import IconHover from '../_components/icon-hover.vue';
 import { TableContext, tableInjectionKey } from './context';
+import AutoTooltip from '../_components/auto-tooltip/auto-tooltip';
 
 export default defineComponent({
   name: 'Th',
@@ -45,6 +53,13 @@ export default defineComponent({
         props.column?.dataIndex &&
         tableCtx.resizingColumn === props.column.dataIndex
     );
+
+    const tooltipProps = computed(() => {
+      if (isObject(props.column?.tooltip)) {
+        return props.column.tooltip;
+      }
+      return undefined;
+    });
 
     const filterIconAlignLeft = computed(() => {
       if (
@@ -197,7 +212,8 @@ export default defineComponent({
       const cls: any[] = [
         `${prefixCls}-cell`,
         {
-          [`${prefixCls}-cell-text-ellipsis`]: props.column?.ellipsis,
+          [`${prefixCls}-cell-text-ellipsis`]:
+            props.column?.ellipsis && !props.column?.tooltip,
         },
       ];
 
@@ -240,7 +256,16 @@ export default defineComponent({
         style={props.column?.cellStyle}
         onClick={hasSorter.value ? handleClickSorter : undefined}
       >
-        <span class={`${prefixCls}-th-item-title`}>{renderTitle()}</span>
+        {props.column?.ellipsis && props.column?.tooltip ? (
+          <AutoTooltip
+            class={`${prefixCls}-th-title`}
+            tooltipProps={tooltipProps.value}
+          >
+            {renderTitle()}
+          </AutoTooltip>
+        ) : (
+          <span class={`${prefixCls}-th-title`}>{renderTitle()}</span>
+        )}
         {hasSorter.value && (
           <span class={`${prefixCls}-sorter`}>
             {hasAscendBtn.value && (
@@ -301,22 +326,27 @@ export default defineComponent({
     return () => {
       const colSpan = props.column.colSpan ?? 1;
       const rowSpan = props.column.rowSpan ?? 1;
-      return (
-        <th
-          class={cls.value}
-          style={style.value}
-          colspan={colSpan > 1 ? colSpan : undefined}
-          rowspan={rowSpan > 1 ? rowSpan : undefined}
-        >
-          {renderCell()}
-          {!filterIconAlignLeft.value && renderFilter()}
-          {props.resizable && (
+
+      return createVNode(
+        slots.th?.({
+          column: props.column,
+        })[0] ?? 'th',
+        {
+          class: cls.value,
+          style: style.value,
+          colspan: colSpan > 1 ? colSpan : undefined,
+          rowspan: rowSpan > 1 ? rowSpan : undefined,
+        },
+        [
+          renderCell(),
+          !filterIconAlignLeft.value && renderFilter(),
+          props.resizable && (
             <span
               class={`${prefixCls}-column-handle`}
               onMousedown={handleMouseDown}
             />
-          )}
-        </th>
+          ),
+        ]
       );
     };
   },

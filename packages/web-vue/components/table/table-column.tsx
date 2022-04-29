@@ -17,8 +17,9 @@ import {
   TableContext,
   tableInjectionKey,
 } from './context';
-import { isNumber } from '../_utils/is';
 import { isEqual } from '../_utils/is-equal';
+import { useChildrenComponents } from '../_hooks/use-children-components';
+import { isObject } from '../_utils/is';
 
 export default defineComponent({
   name: 'TableColumn',
@@ -85,12 +86,21 @@ export default defineComponent({
       type: Object as PropType<CSSProperties>,
     },
     /**
-     * @zh 用于手动指定选项的 index
-     * @en index for manually specifying option
+     * @zh 用于手动指定选项的 index。2.26.0 版本后不再需要手动指定
+     * @en index for manually specifying option. Manual specification is no longer required after version 2.26.0
      * @version 2.20.2
      */
     index: {
       type: Number,
+    },
+    /**
+     * @zh 在省略时是否显示文字提示
+     * @en Whether to show text hints when omitted
+     * @version 2.26.0
+     */
+    tooltip: {
+      type: [Boolean, Object],
+      default: false,
     },
   },
   /**
@@ -133,6 +143,7 @@ export default defineComponent({
       sortable: _sortable,
       filterable: _filterable,
       cellStyle: _cellStyle,
+      tooltip: _tooltip,
       index,
     } = toRefs(props);
     const sortable = ref(_sortable.value);
@@ -154,10 +165,21 @@ export default defineComponent({
         cellStyle.value = cur;
       }
     });
+    const tooltip = ref(_tooltip.value);
+    watch(_tooltip, (cur, pre) => {
+      if (isObject(cur) && isObject(pre)) {
+        if (!isEqual(cur, pre)) {
+          tooltip.value = cur;
+        }
+      } else {
+        tooltip.value = cur;
+      }
+    });
 
     const instance = getCurrentInstance();
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
     const tableColumnCtx = inject(tableColumnInjectionKey, undefined);
+    const { children, components } = useChildrenComponents('TableColumn');
 
     const childrenColumnMap = reactive(new Map<number, TableColumnData>());
 
@@ -174,19 +196,22 @@ export default defineComponent({
       removeChild,
     });
 
-    const children = ref<TableColumnData[]>();
-    watch(childrenColumnMap, (childrenColumnMap) => {
-      if (childrenColumnMap.size > 0) {
-        children.value = Array.from(childrenColumnMap.values()).sort((a, b) => {
-          if (isNumber(a.index) && isNumber(b.index)) {
-            return a.index - b.index;
-          }
-          return 0;
-        });
-      } else {
-        children.value = undefined;
+    const childrenColumns = ref<TableColumnData[]>();
+    watch(
+      [components, childrenColumnMap],
+      ([components, childrenColumnMap]) => {
+        if (components.length > 0) {
+          const columns: TableColumnData[] = [];
+          components.forEach((id) => {
+            const column = childrenColumnMap.get(id);
+            if (column) columns.push(column);
+          });
+          childrenColumns.value = columns;
+        } else {
+          childrenColumns.value = undefined;
+        }
       }
-    });
+    );
 
     const column = reactive({
       dataIndex,
@@ -199,7 +224,8 @@ export default defineComponent({
       filterable,
       cellStyle,
       index,
-      children,
+      tooltip,
+      children: childrenColumns,
       slots,
     });
 
@@ -222,6 +248,9 @@ export default defineComponent({
       }
     });
 
-    return () => slots.default?.();
+    return () => {
+      children.value = slots.default?.();
+      return children.value;
+    };
   },
 });

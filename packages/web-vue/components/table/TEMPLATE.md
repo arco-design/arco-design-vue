@@ -25,6 +25,8 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/expand.md
 
+@import ./__demo__/ellipsis.md
+
 @import ./__demo__/subtree.md
 
 @import ./__demo__/lazy-load.md
