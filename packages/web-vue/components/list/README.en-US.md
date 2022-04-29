@@ -57,6 +57,7 @@ description: The most basic list display, which can carry text, lists, pictures,
 |---|---|---|:---|
 |scroll-loading|When scrolling loading state, scroll to the bottom tip|-|2.20.0|
 |item|List Item|index: `number`<br>item: `any`||
+|empty|Empty|-||
 |footer|Footer|-||
 |header|Header|-||
 

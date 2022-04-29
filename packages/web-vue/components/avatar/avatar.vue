@@ -41,7 +41,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { AvatarShape, AvatarTriggerType } from './interface';
 import { useIndex } from '../_hooks/use-index';
-import ResizeObserver from '../_components/resize-observer-v2.vue';
+import ResizeObserver from '../_components/resize-observer-v2';
 import { avatarGroupInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
 

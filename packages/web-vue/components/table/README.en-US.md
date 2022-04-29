@@ -119,12 +119,14 @@ description: It is used for data collection, display, analysis and processing, a
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|th|Custom th element|column: `TableColumnData`|2.26.0|
+|thead|Custom thead element|-|2.26.0|
 |empty|Empty|-||
 |summary-cell|Content on the right side of the pagination|column: `TableColumnData`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
 |pagination-right|Content on the right side of the pagination|-|2.18.0|
 |pagination-left|Content on the left side of the pagination|-|2.18.0|
-|td|Custom td element|-|2.16.0|
-|tr|Custom tr element|-|2.16.0|
+|td|Custom td element|column: `TableColumnData`<br>record: `TableData`<br>rowIndex: `number`|2.16.0|
+|tr|Custom tr element|record: `TableData`<br>rowIndex: `number`|2.16.0|
 |tbody|Custom tbody element|-|2.16.0|
 |drag-handle-icon|Drag handle icon|-|2.16.0|
 |footer|Table Footer|-||
@@ -148,7 +150,8 @@ description: It is used for data collection, display, analysis and processing, a
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
 |cell-style|Custom cell style|`CSSProperties`|`-`|2.11.0|
-|index|index for manually specifying option|`number`|`-`|2.20.2|
+|index|index for manually specifying option. Manual specification is no longer required after version 2.26.0|`number`|`-`|2.20.2|
+|tooltip|Whether to show text hints when omitted|`boolean\|object`|`false`|2.26.0|
 ### `<table-column>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -227,7 +230,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |align|Alignment direction|`'left' \| 'center' \| 'right'`|`-`||
 |fixed|Fixed position|`'left' \| 'right'`|`-`||
 |ellipsis|Whether to show ellipsis|`boolean`|`false`||
-|tooltip|Whether to show a text hint when an ellipsis is displayed (default: true)|`boolean`|`false`|2.25.0|
+|tooltip|Whether to show a text hint when an ellipsis is displayed. Can be filled in tooltip component properties|`boolean \| Record<string, any>`|`-`|2.26.0|
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
 |children|Header sub-data, used for header grouping|`TableColumnData[]`|`-`||

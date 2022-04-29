@@ -117,12 +117,14 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
+|th|自定义 th 元素|column: `TableColumnData`|2.26.0|
+|thead|自定义 thead 元素|-|2.26.0|
 |empty|空白展示|-||
 |summary-cell|总结行|column: `TableColumnData`<br>record: `TableData`<br>rowIndex: `number`|2.23.0|
 |pagination-right|分页器右侧内容|-|2.18.0|
 |pagination-left|分页器左侧内容|-|2.18.0|
-|td|自定义 td 元素|-|2.16.0|
-|tr|自定义 tr 元素|-|2.16.0|
+|td|自定义 td 元素|column: `TableColumnData`<br>record: `TableData`<br>rowIndex: `number`|2.16.0|
+|tr|自定义 tr 元素|record: `TableData`<br>rowIndex: `number`|2.16.0|
 |tbody|自定义 tbody 元素|-|2.16.0|
 |drag-handle-icon|拖拽锚点图标|-|2.16.0|
 |footer|表格底部|-||
@@ -146,7 +148,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |cell-style|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
-|index|用于手动指定选项的 index|`number`|`-`|2.20.2|
+|index|用于手动指定选项的 index。2.26.0 版本后不再需要手动指定|`number`|`-`|2.20.2|
+|tooltip|在省略时是否显示文字提示|`boolean\|object`|`false`|2.26.0|
 ### `<table-column>` Slots
 
 |插槽名|描述|参数|版本|
@@ -225,7 +228,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |align|对齐方向|`'left' \| 'center' \| 'right'`|`-`||
 |fixed|固定位置|`'left' \| 'right'`|`-`||
 |ellipsis|是否显示省略号|`boolean`|`false`||
-|tooltip|是否在显示省略号时显示文本提示（default: true）|`boolean`|`false`|2.25.0|
+|tooltip|是否在显示省略号时显示文本提示。可填入 tooltip 组件属性|`boolean \| Record<string, any>`|`-`|2.26.0|
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |children|表头子数据，用于表头分组|`TableColumnData[]`|`-`||

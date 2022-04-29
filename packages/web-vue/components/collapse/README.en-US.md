@@ -50,5 +50,6 @@ description: The content area that can be collapsed/expanded.
 |Slot Name|Description|Parameters|
 |---|---|---|
 |header|The title of the panel|-|
+|extra|Extra Content|-|
 
 

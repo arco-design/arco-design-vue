@@ -29,7 +29,7 @@ import {
   ref,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import ResizeObserver from '../_components/resize-observer-v2.vue';
+import ResizeObserver from '../_components/resize-observer-v2';
 import { formInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
 

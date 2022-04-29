@@ -16,25 +16,25 @@ exports[`<table> demo: render [basic] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -118,22 +118,22 @@ exports[`<table> demo: render [column-resize] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!----><span class=\\"arco-table-column-handle\\"></span>
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!----><span class=\\"arco-table-column-handle\\"></span>
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!----><span class=\\"arco-table-column-handle\\"></span>
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -218,31 +218,31 @@ exports[`<table> demo: render [custom] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Optional</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Optional</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -319,92 +319,24 @@ exports[`<table> demo: render [custom] correctly 1`] = `
   <!---->
   <!---->
   <!---->
+  <!---->
   <div class=\\"arco-spin\\">
     <!---->
     <div class=\\"arco-table-container\\">
       <div class=\\"arco-table-content\\">
         <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Optional</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-            </tr>
-          </thead>
+          <colgroup></colgroup>
+          <thead></thead>
           <tbody>
-            <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->jane.doe@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
+            <tr class=\\"arco-table-tr\\"></tr>
             <!---->
-            <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->35 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->alisa.ross@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
+            <tr class=\\"arco-table-tr\\"></tr>
             <!---->
-            <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->31 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->kevin.sandra@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
+            <tr class=\\"arco-table-tr\\"></tr>
             <!---->
-            <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->42 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->ed.hellen@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
+            <tr class=\\"arco-table-tr\\"></tr>
             <!---->
-            <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->62 Park Road, London</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->william.smith@example.com</span></td>
-              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->view</button></span></td>
-            </tr>
+            <tr class=\\"arco-table-tr\\"></tr>
             <!---->
           </tbody>
           <!---->
@@ -446,25 +378,25 @@ exports[`<table> demo: render [custom-dom] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -550,25 +482,25 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
           <thead>
             <tr class=\\"arco-table-tr\\">
               <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -657,25 +589,25 @@ exports[`<table> demo: render [drag-row] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -761,37 +693,37 @@ exports[`<table> demo: render [editable] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Province</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Province</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">City</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">City</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -914,37 +846,37 @@ exports[`<table> demo: render [editable] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Province</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Province</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">City</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">City</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -1052,6 +984,108 @@ exports[`<table> demo: render [editable] correctly 1`] = `
 </div>"
 `;
 
+exports[`<table> demo: render [ellipsis] correctly 1`] = `
+"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
+  <!---->
+  <div class=\\"arco-spin\\">
+    <!---->
+    <div class=\\"arco-table-container\\">
+      <div class=\\"arco-table-content\\">
+        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+          <colgroup>
+            <col style=\\"width: 100px; min-width: 100px; max-width: 100px;\\">
+            <col>
+            <col style=\\"width: 150px; min-width: 150px; max-width: 150px;\\">
+            <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
+          </colgroup>
+          <thead>
+            <tr class=\\"arco-table-tr\\">
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-auto-tooltip arco-table-th-title\\"><span class=\\"arco-auto-tooltip-content\\">Name</span></span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-text-ellipsis\\"><span class=\\"arco-table-th-title\\">Address</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-auto-tooltip arco-table-th-title\\"><span class=\\"arco-auto-tooltip-content\\">Email</span></span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">Jane Doe</span></span></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell arco-table-cell-text-ellipsis\\"><!----><!---->32 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">jane.doe@example.com</span></span></span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">Alisa Ross</span></span></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell arco-table-cell-text-ellipsis\\"><!----><!---->35 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">alisa.ross@example.com</span></span></span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">Kevin Sandra</span></span></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell arco-table-cell-text-ellipsis\\"><!----><!---->31 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">kevin.sandra@example.com</span></span></span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">Ed Hellen</span></span></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell arco-table-cell-text-ellipsis\\"><!----><!---->42 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">ed.hellen@example.com</span></span></span></td>
+            </tr>
+            <!---->
+            <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">William Smith</span></span></span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell arco-table-cell-text-ellipsis\\"><!----><!---->62 Park Road, London</span></td>
+              <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!----><span class=\\"arco-auto-tooltip\\"><span class=\\"arco-auto-tooltip-content\\">william.smith@example.com</span></span></span></td>
+            </tr>
+            <!---->
+          </tbody>
+          <!---->
+        </table>
+      </div>
+    </div>
+    <!---->
+    <div class=\\"arco-table-pagination arco-table-pagination-right\\">
+      <!---->
+      <div class=\\"arco-pagination arco-pagination-size-medium\\">
+        <!---->
+        <ul class=\\"arco-pagination-list\\"><span class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span>
+          <li class=\\"arco-pagination-item arco-pagination-item-active\\" pages=\\"1\\">1</li>
+          <!----><span class=\\"arco-pagination-item arco-pagination-item-next arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path></svg></span>
+        </ul>
+        <!---->
+        <!---->
+      </div>
+      <!---->
+    </div>
+    <!---->
+  </div>
+</div>"
+`;
+
 exports[`<table> demo: render [expand] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
@@ -1070,25 +1104,25 @@ exports[`<table> demo: render [expand] correctly 1`] = `
           <thead>
             <tr class=\\"arco-table-tr\\">
               <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -1177,24 +1211,24 @@ exports[`<table> demo: render [filter] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-search\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0-6.248 6.248-6.248 16.379 0 22.627 6.248 6.248 16.38 6.248 22.628 0Zm0 0 8.485 8.485\\"></path></svg></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Salary</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><!----></span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-title\\">Salary</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><!----></span>
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -1281,25 +1315,25 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
             <thead>
               <tr class=\\"arco-table-tr\\">
                 <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                   <!---->
                   <!----></span>
                   <!---->
@@ -1404,52 +1438,25 @@ exports[`<table> demo: render [group] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"4\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">User Info</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"4\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">User Info</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Information</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Information</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-            </tr>
-            <tr class=\\"arco-table-tr\\">
-              <!---->
-              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Birthday</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Phone</span>
+              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\" rowspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -1458,19 +1465,46 @@ exports[`<table> demo: render [group] correctly 1`] = `
             </tr>
             <tr class=\\"arco-table-tr\\">
               <!---->
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">City</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Birthday</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Road</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\" colspan=\\"3\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">No.</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Phone</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+            </tr>
+            <tr class=\\"arco-table-tr\\">
+              <!---->
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">City</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Road</span>
+                <!---->
+                <!----></span>
+                <!---->
+                <!---->
+              </th>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">No.</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -1574,25 +1608,25 @@ exports[`<table> demo: render [lazy-load] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -1800,25 +1834,25 @@ exports[`<table> demo: render [props] correctly 1`] = `
               <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></label></span>
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -1919,25 +1953,25 @@ exports[`<table> demo: render [radio] correctly 1`] = `
           <thead>
             <tr class=\\"arco-table-tr\\">
               <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -2040,25 +2074,25 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
               <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                 <!--v-if--></label></span>
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -2158,25 +2192,25 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                   <!---->
                   <!----></span>
                   <!---->
@@ -2271,25 +2305,25 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
                 </colgroup>
                 <thead>
                   <tr class=\\"arco-table-tr\\">
-                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                       <!---->
                       <!----></span>
                       <!---->
                       <!---->
                     </th>
-                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                       <!---->
                       <!----></span>
                       <!---->
                       <!---->
                     </th>
-                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                       <!---->
                       <!----></span>
                       <!---->
                       <!---->
                     </th>
-                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                    <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                       <!---->
                       <!----></span>
                       <!---->
@@ -2406,23 +2440,23 @@ exports[`<table> demo: render [sort] correctly 1`] = `
               </colgroup>
               <thead>
                 <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Name</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div></span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-title\\">Name</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div></span>
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-item-title\\">Salary</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><!----></span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell arco-table-cell-with-sorter arco-table-cell-next-ascend\\"><span class=\\"arco-table-th-title\\">Salary</span><span class=\\"arco-table-sorter\\"><div class=\\"arco-table-sorter-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.063 13.171a1.2 1.2 0 0 1 1.875 0l13.503 16.88c.628.785.069 1.949-.937 1.949H10.497c-1.006 0-1.565-1.164-.937-1.95l13.503-16.879Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></div><!----></span>
                     <!----></span><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                     <!---->
                     <!----></span><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-table-filters\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-filter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M30 42V22.549a1 1 0 0 1 .463-.844l10.074-6.41A1 1 0 0 0 41 14.45V8a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6.451a1 1 0 0 0 .463.844l10.074 6.41a1 1 0 0 1 .463.844V37\\"></path></svg></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                     <!---->
                     <!----></span>
                     <!---->
@@ -2510,25 +2544,25 @@ exports[`<table> demo: render [span] correctly 1`] = `
               </colgroup>
               <thead>
                 <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                     <!---->
                     <!----></span>
                     <!---->
@@ -2611,25 +2645,25 @@ exports[`<table> demo: render [span] correctly 1`] = `
               </colgroup>
               <thead>
                 <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                     <!---->
                     <!----></span>
                     <!---->
@@ -2714,25 +2748,25 @@ exports[`<table> demo: render [span] correctly 1`] = `
               <thead>
                 <tr class=\\"arco-table-tr\\">
                   <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                     <!---->
                     <!----></span>
                     <!---->
                     <!---->
                   </th>
-                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                  <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                     <!---->
                     <!----></span>
                     <!---->
@@ -2831,25 +2865,25 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -2941,25 +2975,25 @@ exports[`<table> demo: render [summary] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+              <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data1</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Data1</span>
                 <!---->
                 <!----></span>
                 <!---->
                 <!---->
               </th>
-              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data2</span>
+              <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Data2</span>
                 <!---->
                 <!----></span>
                 <!---->
@@ -3050,25 +3084,25 @@ exports[`<table> demo: render [summary] correctly 1`] = `
             <thead>
               <tr class=\\"arco-table-tr\\">
                 <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Salary</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Salary</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data1</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Data1</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Data2</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Data2</span>
                   <!---->
                   <!----></span>
                   <!---->
@@ -3199,19 +3233,19 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                 <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"1000\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span>
                   <!--v-if--></label></span>
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Name</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Address</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Address</span>
                   <!---->
                   <!----></span>
                   <!---->
                   <!---->
                 </th>
-                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-item-title\\">Email</span>
+                <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Email</span>
                   <!---->
                   <!----></span>
                   <!---->
