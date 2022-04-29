@@ -1,7 +1,12 @@
 <template>
   <div :class="cls">
     <div :class="headerCls" @click="handleClick">
-      <icon-hover :prefix="prefixCls" :class="iconCls" :disabled="disabled">
+      <icon-hover
+        v-if="showExpandIcon"
+        :prefix="prefixCls"
+        :class="iconCls"
+        :disabled="disabled"
+      >
         <icon-caret-left
           v-if="expandIconPosition === 'right'"
           :class="`${prefixCls}-expand-icon`"
@@ -28,13 +33,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  getCurrentInstance,
-  inject,
-  toRefs,
-} from 'vue';
+import { computed, defineComponent, getCurrentInstance, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { collapseKey } from './context';
 import IconHover from '../_components/icon-hover.vue';
@@ -77,6 +76,11 @@ export default defineComponent({
    * @zh 面板的标题
    * @en The title of the panel
    * @slot header
+   */
+  /**
+   * @zh 额外内容
+   * @en Extra Content
+   * @slot extra
    */
   setup(props) {
     const prefixCls = getPrefixCls('collapse-item');
@@ -164,16 +168,5 @@ export default defineComponent({
       handleClick,
     };
   },
-  /**
-   * @zh 标题内容
-   * @en Header Content
-   * @slot header
-   */
-  /**
-   * @zh 额外内容
-   * @en Extra Content
-   * @slot extra
-   */
-  render: undefined,
 });
 </script>
