@@ -27,7 +27,9 @@ export default defineComponent({
      */
     gutter: {
       type: [Number, Object, Array] as PropType<
-        number | ResponsiveValue | [ResponsiveValue, ResponsiveValue]
+        | number
+        | ResponsiveValue
+        | [number | ResponsiveValue, number | ResponsiveValue]
       >,
       default: 0,
     },
