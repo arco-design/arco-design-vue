@@ -458,6 +458,7 @@ export default defineComponent({
     const mergedDraggable = computed(
       () => props.draggable && !props.fullscreen
     );
+    const _fullscreen = computed(() => props.fullscreen);
 
     const { teleportContainer, containerRef } = useTeleportContainer({
       popupContainer,
@@ -619,6 +620,10 @@ export default defineComponent({
         emit('beforeClose');
         removeGlobalKeyDownListener();
       }
+    });
+
+    watch(_fullscreen, (value: boolean) => {
+      position.value = undefined;
     });
 
     const wrapperCls = computed(() => [
