@@ -2,7 +2,7 @@ import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _Checkbox from './checkbox.vue';
-import _CheckboxGroup from './checkbox-group.vue';
+import _CheckboxGroup from './checkbox-group';
 
 const Checkbox = Object.assign(_Checkbox, {
   Group: _CheckboxGroup,

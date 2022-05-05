@@ -1,10 +1,3 @@
-<template>
-  <span :class="cls">
-    <slot />
-  </span>
-</template>
-
-<script lang="ts">
 import type { PropType } from 'vue';
 import {
   computed,
@@ -21,6 +14,9 @@ import { DIRECTIONS, Direction } from '../_utils/constant';
 import { checkboxGroupKey } from './context';
 import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
+import { CheckboxOption } from './interface';
+import Checkbox from './checkbox.vue';
+import { isFunction, isNumber, isString } from '../_utils/is';
 
 export default defineComponent({
   name: 'CheckboxGroup',
@@ -40,6 +36,14 @@ export default defineComponent({
      */
     defaultValue: {
       type: Array as PropType<Array<string | number | boolean>>,
+      default: () => [],
+    },
+    /**
+     * @zh 以配置形式设置子元素
+     * @en Default value (uncontrolled state)
+     */
+    options: {
+      type: Array as PropType<Array<string | number | CheckboxOption>>,
       default: () => [],
     },
     /**
@@ -75,7 +79,12 @@ export default defineComponent({
      */
     'change',
   ],
-  setup(props, { emit }) {
+  /**
+   * @zh checkbox 文案内容
+   * @en checkbox label content
+   * @slot label
+   */
+  setup(props, { emit, slots }) {
     const { disabled } = toRefs(props);
     const prefixCls = getPrefixCls('checkbox-group');
     const { mergedDisabled, eventHandlers } = useFormItem({
@@ -84,6 +93,18 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    const options = computed(() => {
+      return props.options.map((option) => {
+        if (isString(option) || isNumber(option)) {
+          return {
+            label: option,
+            value: option,
+          } as CheckboxOption;
+        }
+        return option;
+      });
+    });
 
     const handleChange = (value: Array<string | number>, e: Event) => {
       _value.value = value;
@@ -116,10 +137,27 @@ export default defineComponent({
       }
     );
 
-    return {
-      prefixCls,
-      cls,
+    return () => {
+      let children = null;
+      if (options.value && options.value.length > 0) {
+        children = options.value.map((option, index) => (
+          <Checkbox
+            key={option.value.toString() ?? index}
+            disabled={option.disabled}
+            indeterminate={option.indeterminate}
+            value={option.value}
+            modelValue={computedValue.value.indexOf(option.value) !== -1}
+            onChange={option?.onChange}
+          >
+            {slots.label
+              ? slots.label(option)
+              : isFunction(option.label)
+              ? option.label()
+              : option.label}
+          </Checkbox>
+        ));
+      }
+      return <span class={cls.value}>{children || slots.default?.()}</span>;
     };
   },
 });
-</script>
