@@ -34,35 +34,36 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|value: `boolean \| Array<string \| number \| boolean>`|
+|change|值改变时触发|value: `union`<br>event: `Event`|
 ### `<checkbox>` Slots
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
-|checkbox|自定义复选框|-|2.18.0|
+|checkbox|自定义复选框|checked: `boolean`<br>disabled: `boolean`|2.18.0|
 
 
 
 
 ### `<checkbox-group>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|model-value **(v-model)**|绑定值|`Array<string \| number \| boolean>`|`-`|
-|default-value|默认值（非受控状态）|`Array<string \| number \| boolean>`|`[]`|
-|options|以配置形式设置子元素|`Array<string \| number \| CheckboxOption>`|`[]`|
-|direction|复选框的排列方向|`Direction`|`'horizontal'`|
-|disabled|是否禁用|`boolean`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|绑定值|`Array<string \| number \| boolean>`|`-`||
+|default-value|默认值（非受控状态）|`Array<string \| number \| boolean>`|`[]`||
+|options|选项|`Array<string \| number \| CheckboxOption>`|`-`|2.27.0|
+|direction|复选框的排列方向|`Direction`|`'horizontal'`||
+|disabled|是否禁用|`boolean`|`false`||
 ### `<checkbox-group>` Events
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|value: `Array<string \| number \| boolean>`|
+|change|值改变时触发|value: `union`<br>event: `Event`|
 ### `<checkbox-group>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|label|checkbox 文案内容|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|checkbox|自定义复选框|checked: `boolean`<br>disabled: `boolean`|2.27.0|
+|label|checkbox 文案内容|data: `CheckboxOption`|2.27.0|
 
 
 
@@ -71,10 +72,9 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|label|文案|`string \| VNode`|`-`|
+|label|文案|`RenderContent`|`-`|
 |value|选项的 `value`|`string \| number`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
-|indeterminate|是否为半选状态|`true`|`-`|
-|onChange|值改变时触发|`(    value: boolean \| Array<string \| number \| boolean>,    ev: Event  ) => void`|`-`|
+|indeterminate|是否为半选状态|`boolean`|`false`|
 
 

@@ -36,35 +36,36 @@ description: In a set of data, the user can select one or more data through the 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `boolean \| Array<string \| number \| boolean>`|
+|change|Trigger when the value changes|value: `union`<br>event: `Event`|
 ### `<checkbox>` Slots
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|checkbox|Custom checkbox|-|2.18.0|
+|checkbox|Custom checkbox|checked: `boolean`<br>disabled: `boolean`|2.18.0|
 
 
 
 
 ### `<checkbox-group>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`Array<string \| number \| boolean>`|`-`|
-|default-value|Default value (uncontrolled state)|`Array<string \| number \| boolean>`|`[]`|
-|options|Default value (uncontrolled state)|`Array<string \| number \| CheckboxOption>`|`[]`|
-|direction|Arrangement direction of checkboxes|`Direction`|`'horizontal'`|
-|disabled|Whether to disable|`boolean`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`Array<string \| number \| boolean>`|`-`||
+|default-value|Default value (uncontrolled state)|`Array<string \| number \| boolean>`|`[]`||
+|options|Options|`Array<string \| number \| CheckboxOption>`|`-`|2.27.0|
+|direction|Arrangement direction of checkboxes|`Direction`|`'horizontal'`||
+|disabled|Whether to disable|`boolean`|`false`||
 ### `<checkbox-group>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `Array<string \| number \| boolean>`|
+|change|Trigger when the value changes|value: `union`<br>event: `Event`|
 ### `<checkbox-group>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|label|checkbox label content|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|checkbox|Custom checkbox|checked: `boolean`<br>disabled: `boolean`|2.27.0|
+|label|checkbox label content|data: `CheckboxOption`|2.27.0|
 
 
 
@@ -73,10 +74,9 @@ description: In a set of data, the user can select one or more data through the 
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|label|label content|`string \| VNode`|`-`|
+|label|label content|`RenderContent`|`-`|
 |value|The `value` of the option|`string \| number`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
-|indeterminate|Whether it is half-selected|`true`|`-`|
-|onChange|Trigger when the value changes|`(    value: boolean \| Array<string \| number \| boolean>,    ev: Event  ) => void`|`-`|
+|indeterminate|Whether it is half-selected|`boolean`|`false`|
 
 

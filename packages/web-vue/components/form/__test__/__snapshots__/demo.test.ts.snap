@@ -32,7 +32,7 @@ exports[`<form> demo: render [async] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -91,7 +91,7 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -150,7 +150,7 @@ exports[`<form> demo: render [basic] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -230,7 +230,7 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -334,7 +334,7 @@ exports[`<form> demo: render [extra] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -467,7 +467,7 @@ exports[`<form> demo: render [layout] correctly 1`] = `
           </label></div>
         <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
           <div class=\\"arco-form-item-content-wrapper\\">
-            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -606,7 +606,7 @@ exports[`<form> demo: render [nest] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -768,7 +768,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox-group arco-checkbox-group-direction-horizontal\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option one\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Section One</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option two\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Two</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option three\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Three</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option four\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!--v-if--></div></span><span class=\\"arco-checkbox-label\\">Option Four</span></label></span></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-checkbox-group arco-checkbox-group-direction-horizontal\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option one\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Section One</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option two\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option Two</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option three\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option Three</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option four\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option Four</span></label></span></div>
       </div>
       <!--v-if-->
       <!--v-if-->
