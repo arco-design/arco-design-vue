@@ -108,8 +108,14 @@ description: It is used for data collection, display, analysis and processing, a
 |page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`|
 |change||data: `TableData[]`<br>extra: `TableChangeExtra`|
 |cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumnData`|
+|cell-dbl-click|Triggered when a cell is double-clicked|record: `TableData`<br>column: `TableColumnData`|
+|cell-contextmenu|Triggered when a cell is right-clicked|record: `TableData`<br>column: `TableColumnData`|
 |row-click|Triggered when row data is clicked|record: `TableData`|
+|row-dbl-click|Triggered when row data is double-clicked|record: `TableData`|
+|row-contextmenu|Triggered when row data is right-clicked|record: `TableData`|
 |header-click|Triggered when the header data is clicked|column: `TableColumnData`|
+|header-dbl-click|Triggered when the header data is double-clicked|column: `TableColumnData`|
+|header-contextmenu|Triggered when the header data is right-clicked|column: `TableColumnData`|
 ### `<table>` Methods
 
 |Method|Description|Parameters|Return|version|

@@ -105,9 +105,15 @@ description: 用于数据收集展示、分析整理、操作处理。
 |page-change|表格分页发生改变时触发|page: `number`|
 |page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`|
 |change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`|
-|cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumnData`|
-|row-click|点击行数据时触发|record: `TableData`|
-|header-click|点击表头数据时触发|column: `TableColumnData`|
+|cell-click|单击单元格时触发|record: `TableData`<br>column: `TableColumnData`|
+|cell-dbl-click|双击单元格时触发|record: `TableData`<br>column: `TableColumnData`|
+|cell-contextmenu|右击单元格时触发|record: `TableData`<br>column: `TableColumnData`|
+|row-click|单击行数据时触发|record: `TableData`|
+|row-dbl-click|双击行数据时触发|record: `TableData`|
+|row-contextmenu|右击行数据时触发|record: `TableData`|
+|header-click|单击表头数据时触发|column: `TableColumnData`|
+|header-dbl-click|双击表头数据时触发|column: `TableColumnData`|
+|header-contextmenu|右击表头数据时触发|column: `TableColumnData`|
 ### `<table>` Methods
 
 |方法名|描述|参数|返回值|版本|

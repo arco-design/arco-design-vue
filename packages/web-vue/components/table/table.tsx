@@ -435,10 +435,32 @@ export default defineComponent({
         (record: TableData, column: TableColumnData) => void
       >,
     },
+    onCellDblClick: {
+      type: [Function, Array] as PropType<
+        (record: TableData, column: TableColumnData) => void
+      >,
+    },
+    onCellContextMenu: {
+      type: [Function, Array] as PropType<
+        (record: TableData, column: TableColumnData) => void
+      >,
+    },
     onRowClick: {
       type: [Function, Array] as PropType<(record: TableData) => void>,
     },
+    onRowDblClick: {
+      type: [Function, Array] as PropType<(record: TableData) => void>,
+    },
+    onRowContextMenu: {
+      type: [Function, Array] as PropType<(record: TableData) => void>,
+    },
     onHeaderClick: {
+      type: [Function, Array] as PropType<(column: TableColumnData) => void>,
+    },
+    onHeaderDblClick: {
+      type: [Function, Array] as PropType<(column: TableColumnData) => void>,
+    },
+    onHeaderContextMenu: {
       type: [Function, Array] as PropType<(column: TableColumnData) => void>,
     },
   },
@@ -509,24 +531,62 @@ export default defineComponent({
      */
     'change',
     /**
-     * @zh 点击单元格时触发
+     * @zh 单击单元格时触发
      * @en Triggered when a cell is clicked
      * @param {TableData} record
      * @param {TableColumnData} column
      */
     'cellClick',
     /**
-     * @zh 点击行数据时触发
+     * @zh 双击单元格时触发
+     * @en Triggered when a cell is double-clicked
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     */
+    'cellDblClick',
+    /**
+     * @zh 右击单元格时触发
+     * @en Triggered when a cell is right-clicked
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     */
+    'cellContextmenu',
+    /**
+     * @zh 单击行数据时触发
      * @en Triggered when row data is clicked
      * @param {TableData} record
      */
     'rowClick',
     /**
-     * @zh 点击表头数据时触发
+     * @zh 双击行数据时触发
+     * @en Triggered when row data is double-clicked
+     * @param {TableData} record
+     */
+    'rowDblClick',
+    /**
+     * @zh 右击行数据时触发
+     * @en Triggered when row data is right-clicked
+     * @param {TableData} record
+     */
+    'rowContextmenu',
+    /**
+     * @zh 单击表头数据时触发
      * @en Triggered when the header data is clicked
      * @param {TableColumnData} column
      */
     'headerClick',
+    /**
+     * @zh 双击表头数据时触发
+     * @en Triggered when the header data is double-clicked
+     * @param {TableColumnData} column
+     */
+    'headerDblClick',
+    /**
+     * @zh 右击表头数据时触发
+     * @en Triggered when the header data is right-clicked
+     * @param {TableColumnData} column
+     */
+    'headerContextmenu',
   ],
   /**
    * @zh 表格列定义。启用时会屏蔽 columns 属性
@@ -1151,6 +1211,14 @@ export default defineComponent({
       emit('rowClick', record.raw, ev);
     };
 
+    const handleRowDoubleClick = (record: TableDataWithRaw, ev: Event) => {
+      emit('rowDblClick', record.raw, ev);
+    };
+
+    const handleRowContextMenu = (record: TableDataWithRaw, ev: Event) => {
+      emit('rowContextmenu', record.raw, ev);
+    };
+
     const handleCellClick = (
       record: TableDataWithRaw,
       column: TableColumnData,
@@ -1159,8 +1227,32 @@ export default defineComponent({
       emit('cellClick', record.raw, column, ev);
     };
 
+    const handleCellDoubleClick = (
+      record: TableDataWithRaw,
+      column: TableColumnData,
+      ev: Event
+    ) => {
+      emit('cellDblClick', record.raw, column, ev);
+    };
+
+    const handleCellContextMenu = (
+      record: TableDataWithRaw,
+      column: TableColumnData,
+      ev: Event
+    ) => {
+      emit('cellContextmenu', record.raw, column, ev);
+    };
+
     const handleHeaderClick = (column: TableColumnData, ev: Event) => {
       emit('headerClick', column, ev);
+    };
+
+    const handleHeaderDoubleClick = (column: TableColumnData, ev: Event) => {
+      emit('headerDblClick', column, ev);
+    };
+
+    const handleHeaderContextMenu = (column: TableColumnData, ev: Event) => {
+      emit('headerContextmenu', column, ev);
     };
 
     const operations = computed(() => {
@@ -1417,6 +1509,8 @@ export default defineComponent({
             tr: slots.tr,
           }}
           onClick={(ev: Event) => handleRowClick(record, ev)}
+          onDblclick={(ev: Event) => handleRowDoubleClick(record, ev)}
+          onContextmenu={(ev: Event) => handleRowContextMenu(record, ev)}
         >
           {operations.value.map((operation, index) => {
             const cellId = `${rowIndex}-${index}`;
@@ -1476,6 +1570,12 @@ export default defineComponent({
                 rowSpan={rowspan}
                 colSpan={colspan}
                 onClick={(ev: Event) => handleCellClick(record, column, ev)}
+                onDblclick={(ev: Event) =>
+                  handleCellDoubleClick(record, column, ev)
+                }
+                onContextmenu={(ev: Event) =>
+                  handleCellContextMenu(record, column, ev)
+                }
               />
             );
           })}
@@ -1628,6 +1728,8 @@ export default defineComponent({
             }}
             checked={selectedRowKeys.value?.includes(currentKey)}
             onClick={(ev: Event) => handleRowClick(record, ev)}
+            onDblclick={(ev: Event) => handleRowDoubleClick(record, ev)}
+            onContextmenu={(ev: Event) => handleRowContextMenu(record, ev)}
           >
             {operations.value.map((operation, index) => {
               const cellId = `${rowIndex}-${index}`;
@@ -1712,6 +1814,12 @@ export default defineComponent({
                   colSpan={colspan}
                   {...extraProps}
                   onClick={(ev: Event) => handleCellClick(record, column, ev)}
+                  onDblclick={(ev: Event) =>
+                    handleCellDoubleClick(record, column, ev)
+                  }
+                  onContextmenu={(ev: Event) =>
+                    handleCellContextMenu(record, column, ev)
+                  }
                 />
               );
             })}
@@ -1816,6 +1924,12 @@ export default defineComponent({
                   dataColumns={dataColumns.value}
                   resizable={resizable}
                   onClick={(ev: Event) => handleHeaderClick(column, ev)}
+                  onDblclick={(ev: Event) =>
+                    handleHeaderDoubleClick(column, ev)
+                  }
+                  onContextmenu={(ev: Event) =>
+                    handleHeaderContextMenu(column, ev)
+                  }
                 />
               );
             })}
