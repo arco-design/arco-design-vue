@@ -139,7 +139,7 @@ notification.clear = (position?: NotificationPosition) => {
   if (position) {
     notificationInstance[position]?.clear();
   } else {
-    Object.values(notificationInstance).forEach((item) => item.clear());
+    Object.values(notificationInstance).forEach((item) => item?.clear());
   }
 };
 
