@@ -21,6 +21,8 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 @import ./__demo__/group.md
 
+@import ./__demo__/options.md
+
 @import ./__demo__/direction.md
 
 @import ./__demo__/button.md
@@ -29,6 +31,8 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 ## API
 
-%%API(radio.vue)%%
+%%API(radio.tsx)%%
 
-%%API(radio-group.vue)%%
+%%API(radio-group.tsx)%%
+
+%%INTERFACE(interface.ts)%%

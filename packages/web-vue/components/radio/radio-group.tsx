@@ -1,26 +1,21 @@
-<template>
-  <span :class="cls">
-    <slot />
-  </span>
-</template>
-
-<script lang="ts">
 import type { PropType } from 'vue';
 import {
   defineComponent,
   provide,
   reactive,
   toRefs,
-  nextTick,
   ref,
   computed,
   watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { SIZES, DIRECTIONS, Size, Direction } from '../_utils/constant';
-import { radioGroupKey, RADIO_TYPES, RadioType } from './context';
+import { Size, Direction } from '../_utils/constant';
+import { radioGroupKey, RadioType } from './context';
 import { EmitType } from '../_utils/types';
+import { isFunction, isNumber, isString } from '../_utils/is';
 import { useFormItem } from '../_hooks/use-form-item';
+import { RadioOption } from './interface';
+import Radio from './radio';
 
 export default defineComponent({
   name: 'RadioGroup',
@@ -60,6 +55,14 @@ export default defineComponent({
       type: String as PropType<Size>,
     },
     /**
+     * @zh 选项
+     * @en Options
+     * @version 2.27.0
+     */
+    options: {
+      type: Array as PropType<Array<string | number | RadioOption>>,
+    },
+    /**
      * @zh 单选框组的方向
      * @en The direction of the radio group
      * @values 'horizontal', 'vertical'
@@ -92,9 +95,24 @@ export default defineComponent({
      */
     'change',
   ],
-  setup(props, { emit }) {
+  /**
+   * @zh radio 文案内容
+   * @en radio label content
+   * @slot label
+   * @binding {RadioOption} data
+   * @version 2.27.0
+   */
+  /**
+   * @zh 自定义单选框
+   * @en Custom radio
+   * @slot radio
+   * @binding {boolean} checked
+   * @binding {boolean} disabled
+   * @version 2.27.0
+   */
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('radio-group');
-    const { size, type, disabled, modelValue } = toRefs(props);
+    const { size, type, disabled } = toRefs(props);
     const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
       size,
       disabled,
@@ -104,6 +122,18 @@ export default defineComponent({
 
     const computedValue = computed(() => {
       return props.modelValue ?? _value.value;
+    });
+
+    const options = computed(() => {
+      return (props.options ?? []).map((option) => {
+        if (isString(option) || isNumber(option)) {
+          return {
+            label: option,
+            value: option,
+          } as RadioOption;
+        }
+        return option;
+      });
     });
 
     const handleChange = (value: string | number | boolean, e: Event) => {
@@ -121,6 +151,7 @@ export default defineComponent({
         size: mergedSize,
         type,
         disabled: mergedDisabled,
+        slots,
         handleChange,
       })
     );
@@ -140,10 +171,27 @@ export default defineComponent({
       },
     ]);
 
-    return {
-      prefixCls,
-      cls,
+    const renderOptions = () => {
+      return options.value.map((option) => (
+        <Radio
+          key={option.value}
+          value={option.value}
+          disabled={option.disabled}
+          modelValue={computedValue.value === option.value}
+        >
+          {slots.label
+            ? slots.label({ data: option })
+            : isFunction(option.label)
+            ? option.label()
+            : option.label}
+        </Radio>
+      ));
     };
+
+    return () => (
+      <span class={cls.value}>
+        {options.value.length > 0 ? renderOptions() : slots.default?.()}
+      </span>
+    );
   },
 });
-</script>
