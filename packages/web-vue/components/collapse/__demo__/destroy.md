@@ -1,35 +1,35 @@
 ```yaml
 title:
-  zh-CN: 基本用法
-  en-US: Basic Usage
+  zh-CN: 隐藏时销毁
+  en-US: Destroy On Hide
 ```
 
 ## zh-CN
 
-用于将复杂的内容区域分组和隐藏，可折叠或展开。默认可以展开多个面板。
+通过设置 `destroy-on-hide` 可以让面板内容在隐藏时销毁。
 
 ---
 
 ## en-US
 
-Used to group and hide complex content areas, and can be collapsed or expanded. Multiple panels can be expanded by default.
+By setting `destroy-on-hide` the panel contents can be destroyed when hidden.
 
 ---
 
 ```vue
 <template>
-  <a-collapse :default-active-key="['1', 2]">
+  <a-collapse :default-active-key="['1', 2]" destroy-on-hide>
     <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="1">
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
     </a-collapse-item>
-    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." :key="2" disabled>
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." :key="2">
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
     </a-collapse-item>
-    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3">
+    <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." key="3" :show-expand-icon="false">
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>

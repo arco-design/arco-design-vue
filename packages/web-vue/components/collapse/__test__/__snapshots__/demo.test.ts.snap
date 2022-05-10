@@ -3,30 +3,42 @@
 exports[`<collapse> demo: render [accordion] correctly 1`] = `
 "<div class=\\"arco-collapse\\">
   <div class=\\"arco-collapse-item\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <!--v-if-->
+      <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
     </transition-stub>
   </div>
   <div class=\\"arco-collapse-item\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <!--v-if-->
+      <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
     </transition-stub>
   </div>
   <div class=\\"arco-collapse-item\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <!--v-if-->
+      <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
     </transition-stub>
   </div>
 </div>"
@@ -35,12 +47,12 @@ exports[`<collapse> demo: render [accordion] correctly 1`] = `
 exports[`<collapse> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-collapse\\">
   <div class=\\"arco-collapse-item arco-collapse-item-active\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"true\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <div class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
+      <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -50,12 +62,12 @@ exports[`<collapse> demo: render [basic] correctly 1`] = `
     </transition-stub>
   </div>
   <div class=\\"arco-collapse-item arco-collapse-item-active\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left arco-collapse-item-header-disabled\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover arco-icon-hover-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"true\\" aria-expanded=\\"true\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left arco-collapse-item-header-disabled\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover arco-icon-hover-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <div class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
+      <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -65,13 +77,18 @@ exports[`<collapse> demo: render [basic] correctly 1`] = `
     </transition-stub>
   </div>
   <div class=\\"arco-collapse-item\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\">
-      <!--v-if-->
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <!--v-if-->
+      <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
     </transition-stub>
   </div>
 </div>"
@@ -80,12 +97,12 @@ exports[`<collapse> demo: render [basic] correctly 1`] = `
 exports[`<collapse> demo: render [border-less] correctly 1`] = `
 "<div class=\\"arco-collapse arco-collapse-borderless\\">
   <div class=\\"arco-collapse-item arco-collapse-item-active\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"true\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <div class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
+      <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -95,21 +112,80 @@ exports[`<collapse> demo: render [border-less] correctly 1`] = `
     </transition-stub>
   </div>
   <div class=\\"arco-collapse-item\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left arco-collapse-item-header-disabled\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover arco-icon-hover-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"true\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left arco-collapse-item-header-disabled\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover arco-icon-hover-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
-      <!--v-if-->
+      <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
     </transition-stub>
   </div>
   <div class=\\"arco-collapse-item\\">
-    <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
     </div>
     <transition-stub>
+      <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`<collapse> demo: render [destroy] correctly 1`] = `
+"<div class=\\"arco-collapse\\">
+  <div class=\\"arco-collapse-item arco-collapse-item-active\\">
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"true\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+      <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!--v-if-->
+    </div>
+    <transition-stub>
+      <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"arco-collapse-item arco-collapse-item-active\\">
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"true\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+      <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
+      <!--v-if-->
+    </div>
+    <transition-stub>
+      <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
+        <div class=\\"arco-collapse-item-content-box\\">
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+          <div>Beijing Toutiao Technology Co., Ltd.</div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class=\\"arco-collapse-item\\">
+    <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\">
+      <!--v-if-->
+      <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
+      <!--v-if-->
+    </div>
+    <transition-stub>
+      <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+        <!--v-if-->
+      </div>
     </transition-stub>
   </div>
 </div>"
@@ -121,12 +197,12 @@ exports[`<collapse> demo: render [icon-position] correctly 1`] = `
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-collapse\\">
       <div class=\\"arco-collapse-item arco-collapse-item-active\\">
-        <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+        <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"true\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
           <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
           <!--v-if-->
         </div>
         <transition-stub>
-          <div class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
+          <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
             <div class=\\"arco-collapse-item-content-box\\">
               <div>Beijing Toutiao Technology Co., Ltd.</div>
               <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -136,21 +212,33 @@ exports[`<collapse> demo: render [icon-position] correctly 1`] = `
         </transition-stub>
       </div>
       <div class=\\"arco-collapse-item\\">
-        <div class=\\"arco-collapse-item-header arco-collapse-item-header-left arco-collapse-item-header-disabled\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover arco-icon-hover-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+        <div role=\\"button\\" aria-disabled=\\"true\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left arco-collapse-item-header-disabled\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover arco-icon-hover-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
           <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
           <!--v-if-->
         </div>
         <transition-stub>
-          <!--v-if-->
+          <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+            <div class=\\"arco-collapse-item-content-box\\">
+              <div>Beijing Toutiao Technology Co., Ltd.</div>
+              <div>Beijing Toutiao Technology Co., Ltd.</div>
+              <div>Beijing Toutiao Technology Co., Ltd.</div>
+            </div>
+          </div>
         </transition-stub>
       </div>
       <div class=\\"arco-collapse-item\\">
-        <div class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
+        <div role=\\"button\\" aria-disabled=\\"false\\" aria-expanded=\\"false\\" tabindex=\\"0\\" class=\\"arco-collapse-item-header arco-collapse-item-header-left\\"><span class=\\"arco-icon-hover arco-collapse-item-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-right arco-collapse-item-expand-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937l16.879 13.503Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span>
           <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
           <!--v-if-->
         </div>
         <transition-stub>
-          <!--v-if-->
+          <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
+            <div class=\\"arco-collapse-item-content-box\\">
+              <div>Beijing Toutiao Technology Co., Ltd.</div>
+              <div>Beijing Toutiao Technology Co., Ltd.</div>
+              <div>Beijing Toutiao Technology Co., Ltd.</div>
+            </div>
+          </div>
         </transition-stub>
       </div>
     </div>
