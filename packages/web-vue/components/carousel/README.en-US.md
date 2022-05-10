@@ -44,6 +44,6 @@ description: Carousel is used to display multiple pictures, videos, or embedded 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Callback when slide changes|index: `number`Index of current slide<br>prevIndex: `number`Index of previous slide<br>isManual: `boolean`Whether the slide change is triggered manually|
+|change|Callback when slide changes|index: `number`<br>prevIndex: `number`<br>isManual: `boolean`|
 
 

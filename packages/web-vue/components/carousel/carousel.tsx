@@ -1,36 +1,8 @@
-<template>
-  <div :class="cls" v-bind="eventHandlers">
-    <div :class="contentCls">
-      <slot />
-    </div>
-    <div v-if="hasIndicator" :class="indicatorCls">
-      <CarouselIndicator
-        :class="indicatorClass"
-        :type="indicatorType"
-        :count="length"
-        :active-index="mergedIndexes.mergedIndex"
-        :position="indicatorPosition"
-        :trigger="trigger"
-        @select="onSelect"
-      />
-    </div>
-    <CarouselArrow
-      v-if="hasArrow"
-      :class="arrowClass"
-      :direction="direction"
-      :show-arrow="showArrow"
-      @previous-click="onPreviousClick"
-      @next-click="onNextClick"
-    />
-  </div>
-</template>
-
-<script lang="ts">
+import type { PropType } from 'vue';
 import {
   defineComponent,
   computed,
   toRefs,
-  PropType,
   ref,
   watchEffect,
   onBeforeUnmount,
@@ -40,8 +12,8 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import CarouselIndicator from './carousel-indicator.vue';
 import CarouselArrow from './carousel-arrow.vue';
-import { carouselInjectionKey, VItem } from './context';
-import { isObject } from '../_utils/is';
+import { carouselInjectionKey } from './context';
+import { isNumber, isObject } from '../_utils/is';
 import type {
   CarouselArrowType,
   CarouselAutoPlayConfig,
@@ -50,6 +22,7 @@ import type {
   CarouselTriggerEvent,
 } from './interface';
 import { Direction } from '../_utils/constant';
+import { useChildrenComponents } from '../_hooks/use-children-components';
 
 const DEFAULT_AUTO_PLAY = {
   interval: 3000,
@@ -65,10 +38,6 @@ function getValidIndex(i: number, length: number): number {
 
 export default defineComponent({
   name: 'Carousel',
-  components: {
-    CarouselIndicator,
-    CarouselArrow,
-  },
   props: {
     /**
      * @zh 当前展示索引
@@ -182,36 +151,26 @@ export default defineComponent({
       default: 'cubic-bezier(0.34, 0.69, 0.1, 1)',
     },
   },
-  emits: [
-    'update:current',
+  emits: {
+    'update:current': (index: number) => true,
     /**
      * @zh 幻灯片发生切换时的回调函数
      * @en Callback when slide changes
-     * @param {number} index Index of current slide
-     * @param {number} prevIndex Index of previous slide
-     * @param {boolean} isManual Whether the slide change is triggered manually
+     * @param {number} index
+     * @param {number} prevIndex
+     * @param {boolean} isManual
      */
-    'change',
-  ],
-  setup(props, { emit }) {
-    const {
-      current: currentRef,
-      indicatorType: indicatorTypeRef,
-      animationName,
-      moveSpeed,
-      transitionTimingFunction,
-      showArrow: showArrowRef,
-    } = toRefs(props);
-
+    'change': (index: number, prevIndex: number, isManual: boolean) => true,
+  },
+  setup(props, { emit, slots }) {
+    const { current, animationName, moveSpeed, transitionTimingFunction } =
+      toRefs(props);
     const prefixCls = getPrefixCls('carousel');
-    const animationTimerRef = ref<null | number>(null);
-    const intervalRef = ref<null | number>(null);
-    const isPauseRef = ref<boolean>(false);
-    const previousIndexRef = ref<number | null>(null);
-    const slideDirectionRef = ref<'positive' | 'negative' | null>(null);
-    const itemsRef = ref<VItem[]>([]);
-    const itemsLengthRef = computed(() => itemsRef.value.length);
-    const computedAutoPlayRef = computed<CarouselAutoPlayConfig>(() => {
+
+    const isPause = ref(false);
+    const previousIndex = ref<number>();
+    const slideDirection = ref<'positive' | 'negative'>();
+    const computedAutoPlay = computed<CarouselAutoPlayConfig>(() => {
       if (isObject(props.autoPlay)) {
         return {
           ...DEFAULT_AUTO_PLAY,
@@ -220,16 +179,16 @@ export default defineComponent({
       }
       return props.autoPlay ? DEFAULT_AUTO_PLAY : {};
     });
-    const indexRef = ref<number>(props.defaultCurrent - 1);
+    let intervalTimer = 0;
+    let animationTimer = 0;
+    const { children, components } = useChildrenComponents('CarouselItem');
+    const _index = ref(props.defaultCurrent - 1);
 
-    const mergedIndexesRef = computed(() => {
-      const childrenLength = itemsRef.value.length;
-      const current = currentRef?.value;
-      const index = indexRef.value;
-      const mergedIndex =
-        typeof current === 'number'
-          ? getValidIndex(current - 1, itemsLengthRef.value)
-          : index;
+    const mergedIndexes = computed(() => {
+      const childrenLength = components.value.length;
+      const mergedIndex = isNumber(current.value)
+        ? getValidIndex(current.value - 1, childrenLength)
+        : _index.value;
       const prevIndex = getValidIndex(mergedIndex - 1, childrenLength);
       const nextIndex = getValidIndex(mergedIndex + 1, childrenLength);
       return {
@@ -239,44 +198,32 @@ export default defineComponent({
       };
     });
 
-    function addItem(item: VItem) {
-      itemsRef.value.push(item);
-    }
-
-    function removeItem(uid: number) {
-      const index = itemsRef.value.findIndex((item) => item.uid === uid);
-      if (index !== -1) {
-        itemsRef.value.splice(index, 1);
-      }
-    }
-
     const carouselContext = reactive({
-      addItem,
-      removeItem,
+      items: components,
       slideTo,
-      mergedIndexes: mergedIndexesRef,
-      previousIndex: previousIndexRef,
+      mergedIndexes,
+      previousIndex,
       animationName,
-      slideDirection: slideDirectionRef,
-      items: itemsRef,
+      slideDirection,
       transitionTimingFunction,
       moveSpeed,
     });
     provide(carouselInjectionKey, carouselContext);
 
     const clearTimer = () => {
-      if (intervalRef.value) {
-        window.clearInterval(intervalRef.value);
+      if (intervalTimer) {
+        window.clearInterval(intervalTimer);
       }
     };
+
     watchEffect(() => {
-      const { interval } = computedAutoPlayRef.value || {};
-      const { mergedNextIndex } = mergedIndexesRef.value;
-      const _interval =
-        itemsRef.value?.length > 1 && !isPauseRef.value && interval;
+      const { interval } = computedAutoPlay.value || {};
+      const { mergedNextIndex } = mergedIndexes.value;
+      const shouldInterval =
+        components.value?.length > 1 && !isPause.value && Boolean(interval);
       clearTimer();
-      if (_interval) {
-        intervalRef.value = window.setInterval(() => {
+      if (shouldInterval) {
+        intervalTimer = window.setInterval(() => {
           slideTo({
             targetIndex: mergedNextIndex,
           });
@@ -297,60 +244,57 @@ export default defineComponent({
       isNegative?: boolean;
       isManual?: boolean;
     }) {
-      if (
-        !animationTimerRef.value &&
-        targetIndex !== mergedIndexesRef.value.mergedIndex
-      ) {
-        emit('update:current', targetIndex + 1);
-        emit('change', targetIndex + 1, indexRef.value + 1, isManual);
-        previousIndexRef.value = indexRef.value;
-        indexRef.value = targetIndex;
-        slideDirectionRef.value = isNegative ? 'negative' : 'positive';
-        animationTimerRef.value = window.setTimeout(() => {
-          animationTimerRef.value = null;
+      if (!animationTimer && targetIndex !== mergedIndexes.value.mergedIndex) {
+        previousIndex.value = _index.value;
+        _index.value = targetIndex;
+        slideDirection.value = isNegative ? 'negative' : 'positive';
+        animationTimer = window.setTimeout(() => {
+          animationTimer = 0;
         }, moveSpeed.value);
+        emit('update:current', _index.value + 1);
+        emit('change', _index.value + 1, previousIndex.value + 1, isManual);
       }
     }
 
     const onPreviousClick = () =>
       slideTo({
-        targetIndex: mergedIndexesRef.value.mergedPrevIndex,
+        targetIndex: mergedIndexes.value.mergedPrevIndex,
         isNegative: true,
         isManual: true,
       });
 
     const onNextClick = () =>
       slideTo({
-        targetIndex: mergedIndexesRef.value.mergedNextIndex,
+        targetIndex: mergedIndexes.value.mergedNextIndex,
         isManual: true,
       });
 
     const onSelect = (index: number) =>
       slideTo({
         targetIndex: index,
-        isNegative: index < mergedIndexesRef.value.mergedIndex,
+        isNegative: index < mergedIndexes.value.mergedIndex,
         isManual: true,
       });
 
     const eventHandlers = computed(() => {
-      return computedAutoPlayRef.value.hoverToPause
+      return computedAutoPlay.value.hoverToPause
         ? {
             onMouseenter: () => {
-              isPauseRef.value = true;
+              isPause.value = true;
             },
             onMouseleave: () => {
-              isPauseRef.value = false;
+              isPause.value = false;
             },
           }
         : {};
     });
 
     const hasIndicator = computed(() => {
-      return indicatorTypeRef.value !== 'never' && itemsLengthRef.value > 1;
+      return props.indicatorType !== 'never' && components.value.length > 1;
     });
 
     const hasArrow = computed(() => {
-      return showArrowRef.value !== 'never' && itemsLengthRef.value > 1;
+      return props.showArrow !== 'never' && components.value.length > 1;
     });
 
     const cls = computed(() => {
@@ -364,7 +308,7 @@ export default defineComponent({
       return [
         `${prefixCls}-${props.animationName}`,
         `${prefixCls}-${props.direction}`,
-        { [`${prefixCls}-negative`]: slideDirectionRef.value === 'negative' },
+        { [`${prefixCls}-negative`]: slideDirection.value === 'negative' },
       ];
     });
 
@@ -375,22 +319,36 @@ export default defineComponent({
       ];
     });
 
-    return {
-      prefixCls,
-      eventHandlers,
-      length: itemsLengthRef,
-      mergedIndexes: mergedIndexesRef,
-      slideTo,
-      hasIndicator,
-      hasArrow,
-      slideDirection: slideDirectionRef,
-      cls,
-      contentCls,
-      indicatorCls,
-      onPreviousClick,
-      onNextClick,
-      onSelect,
+    return () => {
+      children.value = slots.default?.();
+
+      return (
+        <div class={cls.value} {...eventHandlers.value}>
+          <div class={contentCls.value}>{children.value}</div>
+          {hasIndicator.value && (
+            <div class={indicatorCls.value}>
+              <CarouselIndicator
+                class={props.indicatorClass}
+                type={props.indicatorType}
+                count={components.value.length}
+                activeIndex={mergedIndexes.value.mergedIndex}
+                position={props.indicatorPosition}
+                trigger={props.trigger}
+                onSelect={onSelect}
+              />
+            </div>
+          )}
+          {hasArrow.value && (
+            <CarouselArrow
+              class={props.arrowClass}
+              direction={props.direction}
+              showArrow={props.showArrow}
+              onPreviousClick={onPreviousClick}
+              onNextClick={onNextClick}
+            />
+          )}
+        </div>
+      );
     };
   },
 });
-</script>
