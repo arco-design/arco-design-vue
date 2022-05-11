@@ -37,7 +37,7 @@ description: Organize content in the same view. You can view the content of one 
 |direction|The direction of tab|`'horizontal' \| 'vertical'`|`'horizontal'`||
 |editable|Whether to enable editable mode|`boolean`|`false`||
 |show-add-button|Whether to display the add button (only available in editable mode)|`boolean`|`false`||
-|destroy-on-hide|Whether to destroy the content when the label is not displayed|`boolean`|`false`||
+|destroy-on-hide|Whether to destroy the content when the label is not displayed|`boolean`|`false`|2.27.0|
 |lazy-load|Whether to mount the content when the label is first displayed|`boolean`|`false`||
 |justify|The height of the container is fully supported, and it only takes effect in horizontal mode.|`boolean`|`false`||
 |animation|Whether to enable option content transition animation|`boolean`|`false`||
@@ -63,10 +63,11 @@ description: Organize content in the same view. You can view the content of one 
 
 ### `<tab-pane>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|title|Title of the tab|`string`|`-`|
-|disabled|Whether to disable|`boolean`|`false`|
-|closable|Whether to allow this tab to be closed (only effective in editable mode)|`boolean`|`true`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|title|Title of the tab|`string`|`-`||
+|disabled|Whether to disable|`boolean`|`false`||
+|closable|Whether to allow this tab to be closed (only effective in editable mode)|`boolean`|`true`||
+|destroy-on-hide|Whether to destroy the content when the label is not displayed|`boolean`|`false`|2.27.0|
 
 
