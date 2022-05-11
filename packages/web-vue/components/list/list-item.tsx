@@ -1,5 +1,6 @@
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
+import type { Direction } from '../_utils/constant';
 
 export default defineComponent({
   name: 'ListItem',
@@ -9,7 +10,7 @@ export default defineComponent({
      * @en Operation group arrangement direction
      */
     actionLayout: {
-      type: String,
+      type: String as PropType<Direction>,
       default: 'horizontal',
     },
   },
@@ -47,7 +48,7 @@ export default defineComponent({
     };
 
     return () => (
-      <div class={prefixCls}>
+      <div role="listitem" class={prefixCls}>
         <div class={`${prefixCls}-main`}>
           {slots.meta?.()}
           <div class={`${prefixCls}-content`}>{slots.default?.()}</div>

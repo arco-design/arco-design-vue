@@ -5,8 +5,8 @@ exports[`<list> demo: render [basic] correctly 1`] = `
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <div class=\\"arco-list-header\\"> List title </div>
-      <div class=\\"arco-list-content\\">
-        <div class=\\"arco-list-item\\">
+      <div role=\\"list\\" class=\\"arco-list-content\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Bytedance Technology Co., Ltd.</div>
@@ -15,7 +15,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           <!---->
           <!---->
         </div>
-        <div class=\\"arco-list-item\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Bytedance Technology Co., Ltd.</div>
@@ -24,7 +24,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           <!---->
           <!---->
         </div>
-        <div class=\\"arco-list-item\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Toutiao Technology Co., Ltd.</div>
@@ -33,7 +33,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           <!---->
           <!---->
         </div>
-        <div class=\\"arco-list-item\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">Beijing Volcengine Technology Co., Ltd.</div>
@@ -42,7 +42,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
           <!---->
           <!---->
         </div>
-        <div class=\\"arco-list-item\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">China Beijing Bytedance Technology Co., Ltd.</div>
@@ -66,10 +66,10 @@ exports[`<list> demo: render [grid] correctly 1`] = `
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-split\\">
       <!---->
-      <div class=\\"arco-list-content\\">
+      <div role=\\"list\\" class=\\"arco-list-content\\">
         <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-list-row\\">
           <div class=\\"arco-col arco-col-6 arco-list-col\\">
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -77,8 +77,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                     <div class=\\"arco-spin arco-list-spin\\">
                       <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
                         <div class=\\"arco-list-header\\">Platform</div>
-                        <div class=\\"arco-list-content\\">
-                          <div class=\\"arco-list-item\\">
+                        <div role=\\"list\\" class=\\"arco-list-content\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">iOS</div>
@@ -87,7 +87,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">iOS</div>
@@ -96,7 +96,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">iOS</div>
@@ -121,7 +121,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
             </div>
           </div>
           <div class=\\"arco-col arco-col-6 arco-list-col\\">
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -129,8 +129,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                     <div class=\\"arco-spin arco-list-spin\\">
                       <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
                         <div class=\\"arco-list-header\\">Framework</div>
-                        <div class=\\"arco-list-content\\">
-                          <div class=\\"arco-list-item\\">
+                        <div role=\\"list\\" class=\\"arco-list-content\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">Angular</div>
@@ -139,7 +139,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">Vue</div>
@@ -148,7 +148,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">React</div>
@@ -173,7 +173,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
             </div>
           </div>
           <div class=\\"arco-col arco-col-6 arco-list-col\\">
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -181,8 +181,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                     <div class=\\"arco-spin arco-list-spin\\">
                       <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
                         <div class=\\"arco-list-header\\">Language</div>
-                        <div class=\\"arco-list-content\\">
-                          <div class=\\"arco-list-item\\">
+                        <div role=\\"list\\" class=\\"arco-list-content\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">C++</div>
@@ -191,7 +191,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">JavaScript</div>
@@ -200,7 +200,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">Python</div>
@@ -225,7 +225,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
             </div>
           </div>
           <div class=\\"arco-col arco-col-6 arco-list-col\\">
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -233,8 +233,8 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                     <div class=\\"arco-spin arco-list-spin\\">
                       <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
                         <div class=\\"arco-list-header\\">Component</div>
-                        <div class=\\"arco-list-content\\">
-                          <div class=\\"arco-list-item\\">
+                        <div role=\\"list\\" class=\\"arco-list-content\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">Button</div>
@@ -243,7 +243,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">Breadcrumb</div>
@@ -252,7 +252,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
                             <!---->
                             <!---->
                           </div>
-                          <div class=\\"arco-list-item\\">
+                          <div role=\\"listitem\\" class=\\"arco-list-item\\">
                             <div class=\\"arco-list-item-main\\">
                               <!---->
                               <div class=\\"arco-list-item-content\\">Transfer</div>
@@ -292,8 +292,8 @@ exports[`<list> demo: render [meta] correctly 1`] = `
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <!---->
-      <div class=\\"arco-list-content\\">
-        <div class=\\"arco-list-item\\">
+      <div role=\\"list\\" class=\\"arco-list-content\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
@@ -314,7 +314,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <!---->
           <!---->
         </div>
-        <div class=\\"arco-list-item\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
@@ -335,7 +335,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <!---->
           <!---->
         </div>
-        <div class=\\"arco-list-item\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
@@ -356,7 +356,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
           <!---->
           <!---->
         </div>
-        <div class=\\"arco-list-item\\">
+        <div role=\\"listitem\\" class=\\"arco-list-item\\">
           <div class=\\"arco-list-item-main\\">
             <!---->
             <div class=\\"arco-list-item-content\\">
@@ -392,7 +392,7 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\" style=\\"max-height: 200px;\\">
       <div class=\\"arco-list-header\\"> List title </div>
-      <div class=\\"arco-list-content\\">
+      <div role=\\"list\\" class=\\"arco-list-content\\">
         <!---->
         <div class=\\"arco-list-item arco-list-scroll-loading\\">
           <div class=\\"arco-spin\\">
@@ -419,8 +419,8 @@ exports[`<list> demo: render [size] correctly 1`] = `
       <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
           <div class=\\"arco-list-header\\"> List title </div>
-          <div class=\\"arco-list-content\\">
-            <div class=\\"arco-list-item\\">
+          <div role=\\"list\\" class=\\"arco-list-content\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Beijing Bytedance Technology Co., Ltd.</div>
@@ -429,7 +429,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Bytedance Technology Co., Ltd.</div>
@@ -438,7 +438,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Beijing Toutiao Technology Co., Ltd.</div>
@@ -447,7 +447,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">Beijing Volcengine Technology Co., Ltd.</div>
@@ -456,7 +456,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">China Beijing Bytedance Technology Co., Ltd.</div>
@@ -486,7 +486,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
       <div class=\\"arco-list-content arco-list-virtual\\" style=\\"overflow-y: auto; max-height: 560px;\\">
         <div style=\\"height: 320000px; position: relative; overflow: hidden; z-index: 0;\\">
           <div style=\\"display: flex; flex-direction: column; transform: translateY(0px); position: absolute; left: 0px; right: 0px; top: 0px;\\">
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -507,7 +507,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -528,7 +528,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -549,7 +549,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -570,7 +570,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -591,7 +591,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -612,7 +612,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -633,7 +633,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -654,7 +654,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -675,7 +675,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -696,7 +696,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -717,7 +717,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -738,7 +738,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -759,7 +759,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -780,7 +780,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -801,7 +801,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -822,7 +822,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -843,7 +843,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
@@ -864,7 +864,7 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
               <!---->
               <!---->
             </div>
-            <div class=\\"arco-list-item\\">
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
