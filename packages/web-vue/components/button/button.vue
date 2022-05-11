@@ -45,7 +45,6 @@ import { Status, Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
-import { EmitType } from '../_utils/types';
 import { useSize } from '../_hooks/use-size';
 import { useFormItem } from '../_hooks/use-form-item';
 import { buttonGroupInjectionKey } from './context';
@@ -128,19 +127,15 @@ export default defineComponent({
      * @en Set up a jump link. When this property is set, the button is rendered as `<a>`
      */
     href: String,
-    // for JSX
-    onClick: {
-      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
-    },
   },
-  emits: [
+  emits: {
     /**
      * @zh 点击按钮时触发
      * @en Emitted when the button is clicked
-     * @property {Event} event
+     * @property {MouseEvent} event
      */
-    'click',
-  ],
+    click: (ev: MouseEvent) => true,
+  },
   /**
    * @zh 图标
    * @en Icon
@@ -174,7 +169,7 @@ export default defineComponent({
       },
     ]);
 
-    const handleClick = (ev: Event) => {
+    const handleClick = (ev: MouseEvent) => {
       if (props.disabled || props.loading) {
         return;
       }
