@@ -375,7 +375,7 @@ export default defineComponent({
    * @en Title
    * @slot title
    */
-  setup(props: TreeProps, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const {
       data: propTreeData,
       showLine,
@@ -462,7 +462,7 @@ export default defineComponent({
         defaultExpandedKeys.value.forEach((_key) => {
           if (expandedKeysSet.has(_key)) return;
 
-          const node = key2TreeNode.value[_key];
+          const node = key2TreeNode.value.get(_key);
           if (!node) return;
 
           [
@@ -481,7 +481,7 @@ export default defineComponent({
         const expandedKeysSet = new Set<TreeNodeKey>([]);
         const addToExpandKeysSet = (keys: TreeNodeKey[]) => {
           keys.forEach((key) => {
-            const node = key2TreeNode.value[key];
+            const node = key2TreeNode.value.get(key);
             if (!node) return;
 
             (node.pathParentKeys || []).forEach((k) => expandedKeysSet.add(k));
@@ -536,7 +536,7 @@ export default defineComponent({
       let publicCheckedKeys = [...rawCheckedKeys];
       if (rawCheckedStrategy === 'parent') {
         publicCheckedKeys = rawCheckedKeys.filter((_key) => {
-          const item = key2TreeNode.value[_key];
+          const item = key2TreeNode.value.get(_key);
           return (
             item &&
             !(
@@ -547,7 +547,7 @@ export default defineComponent({
         });
       } else if (rawCheckedStrategy === 'child') {
         publicCheckedKeys = rawCheckedKeys.filter((_key) => {
-          return !key2TreeNode.value[_key]?.children?.length;
+          return !key2TreeNode.value.get(_key)?.children?.length;
         });
       }
       return publicCheckedKeys;
@@ -555,7 +555,7 @@ export default defineComponent({
 
     function getNodes(keys: TreeNodeKey[]) {
       return keys
-        .map((key) => key2TreeNode.value[key]?.treeNodeData || undefined)
+        .map((key) => key2TreeNode.value.get(key)?.treeNodeData || undefined)
         .filter(Boolean);
     }
 
@@ -573,7 +573,9 @@ export default defineComponent({
         newIndeterminateKeys,
         event,
       } = options;
-      const targetNode = targetKey ? key2TreeNode.value[targetKey] : undefined;
+      const targetNode = targetKey
+        ? key2TreeNode.value.get(targetKey)
+        : undefined;
       const publicCheckedKeys = getPublicCheckedKeys(newCheckedKeys);
       emit('check', publicCheckedKeys, {
         checked: targetChecked,
@@ -594,7 +596,9 @@ export default defineComponent({
       event?: Event;
     }) {
       const { targetKey, targetSelected, newSelectedKeys, event } = options;
-      const targetNode = targetKey ? key2TreeNode.value[targetKey] : undefined;
+      const targetNode = targetKey
+        ? key2TreeNode.value.get(targetKey)
+        : undefined;
       emit('select', newSelectedKeys, {
         selected: targetSelected,
         node: targetNode?.treeNodeData,
@@ -611,7 +615,9 @@ export default defineComponent({
       event?: Event;
     }) {
       const { targetKey, targetExpanded, newExpandedKeys, event } = options;
-      const targetNode = targetKey ? key2TreeNode.value[targetKey] : undefined;
+      const targetNode = targetKey
+        ? key2TreeNode.value.get(targetKey)
+        : undefined;
       emit('expand', newExpandedKeys, {
         expanded: targetExpanded,
         node: targetNode?.treeNodeData,
@@ -656,7 +662,7 @@ export default defineComponent({
       let newCheckedKeys = [...checkedKeys.value];
       let newIndeterminateKeys = [...indeterminateKeys.value];
       keys.forEach((key) => {
-        const node = key2TreeNode.value[key];
+        const node = key2TreeNode.value.get(key);
         if (node) {
           [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck({
             node,
@@ -725,7 +731,7 @@ export default defineComponent({
     }
 
     function onCheck(checked: boolean, key: TreeNodeKey, e?: Event) {
-      const node = key2TreeNode.value[key];
+      const node = key2TreeNode.value.get(key);
       if (!node) return;
 
       const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck({
@@ -747,7 +753,7 @@ export default defineComponent({
     }
 
     function onSelect(key: TreeNodeKey, e: Event) {
-      const node = key2TreeNode.value[key];
+      const node = key2TreeNode.value.get(key);
       if (!node) return;
 
       let newSelectedKeys: TreeNodeKey[];
@@ -777,7 +783,7 @@ export default defineComponent({
       // 如果当前 key 节点正在展开/收起，不执行操作。
       if (currentExpandKeys.value.includes(key)) return;
 
-      const node = key2TreeNode.value[key];
+      const node = key2TreeNode.value.get(key);
       if (!node) return;
 
       const expandedKeysSet = new Set(expandedKeys.value);
@@ -808,7 +814,7 @@ export default defineComponent({
         ? async (key: TreeNodeKey) => {
             if (!isFunction(loadMore.value)) return;
 
-            const node = key2TreeNode.value[key];
+            const node = key2TreeNode.value.get(key);
             if (!node) return;
 
             const { treeNodeData } = node;
@@ -853,7 +859,7 @@ export default defineComponent({
       onExpand,
       onExpandEnd,
       allowDrop(key: TreeNodeKey, dropPosition: DropPosition) {
-        const nodeData = key2TreeNode.value[key];
+        const nodeData = key2TreeNode.value.get(key);
         if (nodeData && isFunction(allowDrop?.value)) {
           return !!allowDrop?.value({
             dropNode: nodeData,
@@ -863,33 +869,33 @@ export default defineComponent({
         return true;
       },
       onDragStart(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value[key];
+        const nodeData = key2TreeNode.value.get(key);
         dragNode.value = nodeData;
         if (nodeData) {
           emit('dragStart', e, nodeData);
         }
       },
       onDragEnd(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value[key];
+        const nodeData = key2TreeNode.value.get(key);
         dragNode.value = undefined;
         if (nodeData) {
           emit('dragEnd', e, nodeData);
         }
       },
       onDragOver(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value[key];
+        const nodeData = key2TreeNode.value.get(key);
         if (nodeData) {
           emit('dragOver', e, nodeData);
         }
       },
       onDragLeave(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value[key];
+        const nodeData = key2TreeNode.value.get(key);
         if (nodeData) {
           emit('dragLeave', e, nodeData);
         }
       },
       onDrop(key: TreeNodeKey, dropPosition: number, e: DragEvent) {
-        const nodeData = key2TreeNode.value[key];
+        const nodeData = key2TreeNode.value.get(key);
         if (
           dragNode.value &&
           nodeData &&
@@ -934,7 +940,7 @@ export default defineComponent({
     toggleCheck(key: TreeNodeKey, e: Event) {
       const { key2TreeNode, onCheck, checkedKeys } = this.treeContext;
       const checked = !checkedKeys.includes(key);
-      const node = key2TreeNode[key];
+      const node = key2TreeNode.get(key);
       if (node && isNodeCheckable(node)) {
         onCheck(checked, key, e);
       }
@@ -1013,9 +1019,10 @@ export default defineComponent({
     checkAll(checked = true) {
       const { key2TreeNode } = this.treeContext;
       const newKeys = checked
-        ? Object.keys(key2TreeNode).filter((key) =>
-            isNodeCheckable(key2TreeNode[key])
-          )
+        ? [...key2TreeNode.keys()].filter((key) => {
+            const node = key2TreeNode.get(key);
+            return node && isNodeCheckable(node);
+          })
         : [];
       this.internalSetCheckedKeys(newKeys);
     },
@@ -1037,7 +1044,7 @@ export default defineComponent({
       const { key2TreeNode } = treeContext;
       const isBatch = isArray(key);
       const keys = (isBatch ? key : [key]).filter((key) => {
-        const node = key2TreeNode[key];
+        const node = key2TreeNode.get(key);
         return (
           node &&
           isNodeCheckable(node) &&
@@ -1056,9 +1063,10 @@ export default defineComponent({
     selectAll(selected = true) {
       const { key2TreeNode } = this.treeContext;
       const newKeys = selected
-        ? Object.keys(key2TreeNode).filter((key) =>
-            isNodeSelectable(key2TreeNode[key])
-          )
+        ? [...key2TreeNode.keys()].filter((key) => {
+            const node = key2TreeNode.get(key);
+            return node && isNodeSelectable(node);
+          })
         : [];
 
       this.internalSetSelectedKeys(newKeys);
@@ -1074,9 +1082,10 @@ export default defineComponent({
     selectNode(key: TreeNodeKey | TreeNodeKey[], selected = true) {
       const { key2TreeNode } = this.treeContext;
       const isBatch = isArray(key);
-      const keys = (isBatch ? key : [key]).filter(
-        (key) => key2TreeNode[key] && isNodeSelectable(key2TreeNode[key])
-      );
+      const keys = (isBatch ? key : [key]).filter((key) => {
+        const node = key2TreeNode.get(key);
+        return node && isNodeSelectable(node);
+      });
       this.internalSelectNodes(keys, selected, isBatch ? undefined : key);
     },
     /**
@@ -1089,9 +1098,10 @@ export default defineComponent({
     expandAll(expanded = true) {
       const { key2TreeNode } = this.treeContext;
       const newKeys = expanded
-        ? Object.keys(key2TreeNode).filter((key) =>
-            isNodeExpandable(key2TreeNode[key])
-          )
+        ? [...key2TreeNode.keys()].filter((key) => {
+            const node = key2TreeNode.get(key);
+            return node && isNodeExpandable(node);
+          })
         : [];
 
       this.internalSetExpandedKeys(newKeys);
@@ -1107,9 +1117,10 @@ export default defineComponent({
     expandNode(key: TreeNodeKey | TreeNodeKey[], expanded = true) {
       const { key2TreeNode } = this.treeContext;
       const isBatch = isArray(key);
-      const keys = (isBatch ? key : [key]).filter(
-        (key) => key2TreeNode[key] && isNodeExpandable(key2TreeNode[key])
-      );
+      const keys = (isBatch ? key : [key]).filter((key) => {
+        const node = key2TreeNode.get(key);
+        return node && isNodeExpandable(node);
+      });
       this.internalExpandNodes(keys, expanded, isBatch ? undefined : key);
     },
   },

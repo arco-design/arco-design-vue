@@ -17,11 +17,11 @@ export function getFlattenTreeData(tree: Node[]) {
   return flattenTreeData;
 }
 
-export type Key2TreeNode = Record<TreeNodeKey, Node>;
+export type Key2TreeNode = Map<TreeNodeKey, Node>;
 export function getKey2TreeNode(flattenTreeData: Node[]) {
-  const key2TreeNode: Key2TreeNode = {};
+  const key2TreeNode: Key2TreeNode = new Map();
   flattenTreeData.forEach((node) => {
-    key2TreeNode[node.key] = node;
+    key2TreeNode.set(node.key, node);
   });
   return key2TreeNode;
 }
@@ -124,7 +124,7 @@ export function getCheckedStateByInitKeys(options: {
   if (!checkStrictly) {
     initCheckedKeys.forEach((key) => {
       if (!checkedKeysSet.has(key)) {
-        const node = key2TreeNode[key];
+        const node = key2TreeNode.get(key);
         if (node && (!onlyCheckLeaf || isLeafNode(node))) {
           const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck(
             {

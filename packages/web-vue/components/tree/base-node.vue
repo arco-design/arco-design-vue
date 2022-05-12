@@ -198,11 +198,13 @@ export default defineComponent({
       default: () => [],
     },
   },
-  setup(props: TreeNodeProps) {
+  setup(props) {
     const key = useNodeKey();
     const prefixCls = getPrefixCls('tree-node');
     const treeContext = useTreeContext();
-    const node = computed(() => treeContext.key2TreeNode?.[key.value] as Node);
+    const node = computed(
+      () => treeContext.key2TreeNode?.get(key.value) as Node
+    );
     const treeNodeData = computed(() => node.value.treeNodeData);
     const children = computed(() => node.value.children);
 

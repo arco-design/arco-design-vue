@@ -1,4 +1,4 @@
-import { toRefs, ref, watchEffect, computed, watch } from 'vue';
+import { toRefs, ref, watchEffect, computed } from 'vue';
 import { TreeNodeKey } from '../interface';
 import { getCheckedStateByInitKeys, Key2TreeNode } from '../utils';
 
