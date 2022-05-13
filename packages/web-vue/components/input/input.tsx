@@ -9,12 +9,8 @@ import IconClose from '../icon/icon-close';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import { isFunction, isNull, isObject, isUndefined } from '../_utils/is';
-import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
-
-const INPUT_TYPES = ['text', 'password'] as const;
-type InputType = typeof INPUT_TYPES[number];
 
 export default defineComponent({
   name: 'Input',
@@ -112,72 +108,57 @@ export default defineComponent({
     wordSlice: {
       type: Function as PropType<(value: string, maxLength: number) => string>,
     },
+    /**
+     * @zh 内部 input 元素的属性
+     * @en Attributes of inner input elements
+     * @version 2.27.0
+     */
+    inputAttrs: {
+      type: Object,
+    },
     // private
     type: {
-      type: String as PropType<InputType>,
+      type: String as PropType<'text' | 'password'>,
       default: 'text',
     },
-    // for JSX
-    onInput: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string, ev: Event) => void>
-      >,
-    },
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string, ev: Event) => void>
-      >,
-    },
-    onPressEnter: {
-      type: [Function, Array] as PropType<
-        EmitType<(ev: KeyboardEvent) => void>
-      >,
-    },
-    onClear: {
-      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
-    },
-    onFocus: {
-      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-    },
-    onBlur: {
-      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: string) => true,
     /**
      * @zh 用户输入时触发
      * @en Triggered when the user enters
      * @param {string} value
+     * @param {Event} event
      */
-    'input',
+    'input': (value: string, event: Event) => true,
     /**
      * @zh 仅在输入框失焦或按下回车时触发
      * @en Only triggered when the input box is out of focus or when you press Enter
      * @param {string} value
+     * @param {Event} event
      */
-    'change',
+    'change': (value: string, event: Event) => true,
     /**
      * @zh 用户按下回车时触发
      * @en Triggered when the user presses enter
      */
-    'pressEnter',
+    'pressEnter': (event: KeyboardEvent) => true,
     /**
      * @zh 用户点击清除按钮时触发
      * @en Triggered when the user clicks the clear button
      */
-    'clear',
+    'clear': (event: MouseEvent) => true,
     /**
      * @zh 输入框获取焦点时触发
      * @en Triggered when the input box gets focus
      */
-    'focus',
+    'focus': (event: FocusEvent) => true,
     /**
      * @zh 输入框失去焦点时触发
      * @en Triggered when the input box loses focus
      */
-    'blur',
-  ],
+    'blur': (event: FocusEvent) => true,
+  },
   /**
    * @zh 前缀元素
    * @en Prefix
@@ -307,9 +288,9 @@ export default defineComponent({
 
     const handleBlur = (ev: FocusEvent) => {
       focused.value = false;
+      emitChange(computedValue.value, ev);
       emit('blur', ev);
       eventHandlers.value?.onBlur?.(ev);
-      emitChange(computedValue.value, ev);
     };
 
     const handleComposition = (e: CompositionEvent) => {
@@ -400,12 +381,14 @@ export default defineComponent({
         <input
           {...inputAttrs.value}
           ref={inputRef}
+          aria-invalid={mergedError.value}
           class={cls.value}
           value={computedValue.value}
           type={props.type}
           placeholder={props.placeholder}
           readonly={props.readonly}
           disabled={mergedDisabled.value}
+          {...props.inputAttrs}
           onInput={handleInput}
           onKeydown={handleKeyDown}
           onFocus={handleFocus}
@@ -418,6 +401,7 @@ export default defineComponent({
           <IconHover
             prefix={prefixCls}
             class={`${prefixCls}-clear-btn`}
+            // @ts-ignore
             onClick={handleClear}
           >
             <IconClose />

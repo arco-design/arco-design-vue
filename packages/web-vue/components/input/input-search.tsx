@@ -1,13 +1,12 @@
-import { defineComponent, inject, PropType, ref } from 'vue';
+import { defineComponent, PropType, ref, toRefs } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconSearch from '../icon/icon-search';
 import IconLoading from '../icon/icon-loading';
 import Button from '../button';
 import Input from './input';
-import { EmitType } from '../_utils/types';
-import { Size } from '../_utils/constant';
-import { configProviderInjectionKey } from '../config-provider/context';
+import type { Size } from '../_utils/constant';
+import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
   name: 'InputSearch',
@@ -44,8 +43,6 @@ export default defineComponent({
      */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 搜索按钮的文字，使用后会替换原本的图标
@@ -62,23 +59,20 @@ export default defineComponent({
     buttonProps: {
       type: Object,
     },
-    // for JSX
-    onSearch: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string, ev: MouseEvent) => void>
-      >,
-    },
   },
-  emits: [
+  emits: {
     /**
      * @zh 单击搜索按钮时触发
      * @en Triggered when the search button is clicked
-     * @property {string} value
+     * @param {string} value
+     * @param {MouseEvent} event
      */
-    'search',
-  ],
+    search: (value: string, event: MouseEvent) => true,
+  },
   setup(props, { emit, slots }) {
+    const { size } = toRefs(props);
     const prefixCls = getPrefixCls('input-search');
+    const { mergedSize } = useSize(size);
 
     const inputRef = ref();
 
@@ -94,7 +88,10 @@ export default defineComponent({
           {props.loading ? (
             <IconLoading />
           ) : (
-            <IconHover onClick={handleClick}>
+            <IconHover
+              // @ts-ignore
+              onClick={handleClick}
+            >
               <IconSearch />
             </IconHover>
           )}
@@ -124,7 +121,7 @@ export default defineComponent({
           type="primary"
           class={`${prefixCls}-btn`}
           disabled={props.disabled}
-          size={props.size}
+          size={mergedSize.value}
           loading={props.loading}
           {...props.buttonProps}
           onClick={handleClick}
@@ -142,7 +139,7 @@ export default defineComponent({
           suffix: props.searchButton ? slots.suffix : renderSuffix,
           append: props.searchButton ? renderButton : slots.append,
         }}
-        size={props.size}
+        size={mergedSize.value}
         disabled={props.disabled}
       />
     );
