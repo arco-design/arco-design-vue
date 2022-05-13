@@ -1982,7 +1982,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
           <tbody>
             <tr class=\\"arco-table-tr\\">
               <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></label></span>
+                <!----></label></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Jane Doe</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
@@ -1992,7 +1992,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
             <!---->
             <tr class=\\"arco-table-tr\\">
               <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></label></span>
+                <!----></label></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Alisa Ross</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->25000</span></td>
@@ -2002,7 +2002,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
             <!---->
             <tr class=\\"arco-table-tr\\">
               <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></label></span>
+                <!----></label></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->22000</span></td>
@@ -2012,7 +2012,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
             <!---->
             <tr class=\\"arco-table-tr\\">
               <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"4\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></label></span>
+                <!----></label></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Ed Hellen</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->17000</span></td>
@@ -2022,7 +2022,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
             <!---->
             <tr class=\\"arco-table-tr\\">
               <td class=\\"arco-table-td arco-table-operation arco-table-radio\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"5\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span>
-                <!--v-if--></label></span>
+                <!----></label></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->William Smith</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->27000</span></td>
