@@ -68,7 +68,7 @@ description: The most basic list display, which can carry text, lists, pictures,
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|action-layout|Operation group arrangement direction|`string`|`'horizontal'`|
+|action-layout|Operation group arrangement direction|`Direction`|`'horizontal'`|
 ### `<list-item>` Slots
 
 |Slot Name|Description|Parameters|

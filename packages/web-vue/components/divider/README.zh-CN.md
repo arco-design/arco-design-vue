@@ -21,6 +21,6 @@ description: 划分内容区域，对模块做分隔。
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |direction|分割线的方向，是水平还是竖直|`'horizontal' \| 'vertical'`|`'horizontal'`|
-|orientation|分割线文字的位置|`'left' \| 'right' \| 'center'`|`'center'`|
+|orientation|分割线文字的位置|`'left' \| 'center' \| 'right'`|`'center'`|
 
 

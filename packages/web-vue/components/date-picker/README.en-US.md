@@ -141,11 +141,12 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 ### `<quarter-picker>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
-|default-value|Default value|`Date \| string \| number`|`-`|
-|format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'YYYY-[Q]Q'`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`Date \| string \| number`|`-`||
+|default-value|Default value|`Date \| string \| number`|`-`||
+|format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'YYYY-[Q]Q'`||
+|value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ).|`string`|`'YYYY-MM'`|2.16.0|
 
 
 
@@ -157,6 +158,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |model-value **(v-model)**|Value|`Date \| string \| number`|`-`||
 |default-value|Default value|`Date \| string \| number`|`-`||
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'gggg-wo'`||
+|value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ).|`string`|`'YYYY-MM-DD'`|2.16.0|
 |day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.|`0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`|`0`|2-6 from 2.21.0|
 
 

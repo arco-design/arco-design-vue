@@ -23,6 +23,6 @@ description: Divide the content area and separate the modules.
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |direction|The direction of the dividing line. Can be horizontal or vertical|`'horizontal' \| 'vertical'`|`'horizontal'`|
-|orientation|The position of the dividing line text|`'left' \| 'right' \| 'center'`|`'center'`|
+|orientation|The position of the dividing line text|`'left' \| 'center' \| 'right'`|`'center'`|
 
 

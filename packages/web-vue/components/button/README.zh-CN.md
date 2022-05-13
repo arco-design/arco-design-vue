@@ -44,7 +44,7 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 |事件名|描述|参数|
 |---|---|---|
-|click|点击按钮时触发|event: `Event`|
+|click|点击按钮时触发|event: `MouseEvent`|
 ### `<button>` Slots
 
 |插槽名|描述|参数|

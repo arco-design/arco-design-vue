@@ -66,7 +66,7 @@ description: 最基础的列表展示，可承载文字、列表、图片、段�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|action-layout|操作组排列方向|`string`|`'horizontal'`|
+|action-layout|操作组排列方向|`Direction`|`'horizontal'`|
 ### `<list-item>` Slots
 
 |插槽名|描述|参数|
