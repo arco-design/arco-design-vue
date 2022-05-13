@@ -9,7 +9,7 @@ exports[`<resize-box> demo: render [basic] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"arco-divider arco-divider-horizontal\\">
+    <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal\\">
       <!---->
     </div>
     <div class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
@@ -18,7 +18,7 @@ exports[`<resize-box> demo: render [basic] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
+    <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
     <div class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
       <!---->
       <!--v-if-->
@@ -56,7 +56,7 @@ exports[`<resize-box> demo: render [controlled] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"arco-divider arco-divider-horizontal\\">
+    <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal\\">
       <!---->
     </div>
     <div class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
@@ -65,7 +65,7 @@ exports[`<resize-box> demo: render [controlled] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
     </div>
-    <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
+    <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
     <div class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
       <!---->
       <!--v-if-->
@@ -102,7 +102,7 @@ exports[`<resize-box> demo: render [custom-triggers] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
   </div>
-  <div class=\\"arco-divider arco-divider-horizontal\\">
+  <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal\\">
     <!---->
   </div>
   <div class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
@@ -111,7 +111,7 @@ exports[`<resize-box> demo: render [custom-triggers] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
   </div>
-  <div class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
+  <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
   <div class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
     <!---->
     <!--v-if-->

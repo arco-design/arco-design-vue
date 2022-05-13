@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- Add input-attrs attribute ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+- Modify the blur event trigger sequence to after change ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+
+
 ## 2.23.0
 
 `2022-04-08`

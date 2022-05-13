@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- Add destroyOnHide attribute ([#1107](https://github.com/arco-design/arco-design-vue/pull/1107))
+
+
 ## 2.25.1
 
 `2022-04-27`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 BugFix
+
+- Fix the problem that size is invalid in simple mode ([#1123](https://github.com/arco-design/arco-design-vue/pull/1123))
+
+
 ## 2.24.0
 
 `2022-04-15`

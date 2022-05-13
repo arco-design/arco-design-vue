@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 问题修复
+
+- 修复 options 属性中 `render`、`tagProps` 不生效的问题 ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+
+### 💅 样式更新
+
+- 修复开启搜索时，禁用状态下鼠标指针错误的问题 ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+
+
 ## 2.24.0
 
 `2022-04-15`

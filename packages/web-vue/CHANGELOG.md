@@ -2,6 +2,52 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- **tree:** `checkable` supports configuration via function ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **tree:** `selectable` supports configuration via function ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **tree:** Added property `actionOnNodeClick`, which can be used to enable the function: click on a node to trigger expansion ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **tree-select:** Added property `seletable` to support custom selectable nodes ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **input-number:** Added modelEvent property and input event ([#1115](https://github.com/arco-design/arco-design-vue/pull/1115))
+- **tabs:** Add destroyOnHide attribute ([#1107](https://github.com/arco-design/arco-design-vue/pull/1107))
+- **input:** Add input-attrs attribute ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+- **input:** Modify the blur event trigger sequence to after change ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+- **collapse:** Add destroyOnHide property, the default will not destroy the content when hidden ([#1100](https://github.com/arco-design/arco-design-vue/pull/1100))
+- **radio:** `radio-group` support  `options` prop ([#1090](https://github.com/arco-design/arco-design-vue/pull/1090))
+- **checkbox:** `checkbox-group` adds `checkbox` slot ([#1087](https://github.com/arco-design/arco-design-vue/pull/1087))
+- **checkbox:** `checkbox-group` supports `options` attribute to configure child elements ([#1058](https://github.com/arco-design/arco-design-vue/pull/1058))
+
+### 🐛 BugFix
+
+- **list:** Fix the problem that the pagination property is invalid ([#1125](https://github.com/arco-design/arco-design-vue/pull/1125))
+- **pagination:** Fix the problem that size is invalid in simple mode ([#1123](https://github.com/arco-design/arco-design-vue/pull/1123))
+- **typography:** fix the problem that event `edit-end` triggered twice when press enter ([#1122](https://github.com/arco-design/arco-design-vue/pull/1122))
+- **select:** Fix the problem that `render` and `tagProps` in options property do not take effect ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+- **tree:** expandAll failed when the type of key is number ([#1113](https://github.com/arco-design/arco-design-vue/pull/1113))
+- **date-picker:** the value of `week-picker ` and `quarter-picker` is wrong when using `v-model` ([#1112](https://github.com/arco-design/arco-design-vue/pull/1112))
+- **message:** Fix the problem that the clear method has an error when called multiple times ([#1095](https://github.com/arco-design/arco-design-vue/pull/1095))
+- **modal:** Fix the problem of position offset when opening full screen after dragging ([#1070](https://github.com/arco-design/arco-design-vue/pull/1070))
+
+### 💎 Enhancement
+
+- **trigger:** When the right button is triggered, click the trigger element to close the drop-down box ([#1111](https://github.com/arco-design/arco-design-vue/pull/1111))
+- **trigger:** Support pop-up component nesting ([#1111](https://github.com/arco-design/arco-design-vue/pull/1111))
+
+### 💅 Style
+
+- **table:** Fixed the problem of vertical scroll bar when there are fixed columns ([#1124](https://github.com/arco-design/arco-design-vue/pull/1124))
+- **select:** Fix the problem that the mouse pointer is wrong in the disabled state when the search is turned on ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+
+### 🆎 TypeScript
+
+- **modal:** Complete missing properties in ModalConfig ([#1120](https://github.com/arco-design/arco-design-vue/pull/1120))
+- **table:** Use VNodeChild instead of VNode in the interface to support a wider range of types ([#1118](https://github.com/arco-design/arco-design-vue/pull/1118))
+
+
 ## 2.26.0
 
 `2022-04-29`

@@ -368,6 +368,16 @@ export default defineComponent({
 
     const wrapperAttrs = computed(() => omit(attrs, INPUT_EVENTS));
     const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
+    const mergeInputAttrs = computed(() => {
+      const attrs = {
+        ...inputAttrs.value,
+        ...props.inputAttrs,
+      };
+      if (mergedError.value) {
+        attrs['aria-invalid'] = true;
+      }
+      return attrs;
+    });
 
     const renderInput = (hasOuter?: boolean) => (
       <span
@@ -379,16 +389,14 @@ export default defineComponent({
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
         <input
-          {...inputAttrs.value}
+          {...mergeInputAttrs.value}
           ref={inputRef}
-          aria-invalid={mergedError.value}
           class={cls.value}
           value={computedValue.value}
           type={props.type}
           placeholder={props.placeholder}
           readonly={props.readonly}
           disabled={mergedDisabled.value}
-          {...props.inputAttrs}
           onInput={handleInput}
           onKeydown={handleKeyDown}
           onFocus={handleFocus}

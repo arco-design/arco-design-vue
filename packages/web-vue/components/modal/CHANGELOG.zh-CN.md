@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 问题修复
+
+- 修复拖拽后开启全屏产生位置偏移的问题 ([#1070](https://github.com/arco-design/arco-design-vue/pull/1070))
+
+### 🆎 类型修正
+
+- 补全 ModalConfig 缺失的属性 ([#1120](https://github.com/arco-design/arco-design-vue/pull/1120))
+
+
 ## 2.26.0
 
 `2022-04-29`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- Added property `seletable` to support custom selectable nodes ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+
+
 ## 2.23.0
 
 `2022-04-08`

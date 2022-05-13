@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 BugFix
+
+- Fix the problem of position offset when opening full screen after dragging ([#1070](https://github.com/arco-design/arco-design-vue/pull/1070))
+
+### 🆎 TypeScript
+
+- Complete missing properties in ModalConfig ([#1120](https://github.com/arco-design/arco-design-vue/pull/1120))
+
+
 ## 2.26.0
 
 `2022-04-29`

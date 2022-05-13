@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- `checkable` supports configuration via function ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- `selectable` supports configuration via function ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- Added property `actionOnNodeClick`, which can be used to enable the function: click on a node to trigger expansion ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+
+### 🐛 BugFix
+
+- expandAll failed when the type of key is number ([#1113](https://github.com/arco-design/arco-design-vue/pull/1113))
+
+
 ## 2.25.0
 
 `2022-04-22`

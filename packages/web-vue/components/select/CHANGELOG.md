@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 BugFix
+
+- Fix the problem that `render` and `tagProps` in options property do not take effect ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+
+### 💅 Style
+
+- Fix the problem that the mouse pointer is wrong in the disabled state when the search is turned on ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+
+
 ## 2.24.0
 
 `2022-04-15`

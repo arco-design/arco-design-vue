@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 新增功能
+
+- `checkbox-group` 增加 `checkbox` 插槽 ([#1087](https://github.com/arco-design/arco-design-vue/pull/1087))
+- `checkbox-group` 支持 `options` 属性配置子元素 ([#1058](https://github.com/arco-design/arco-design-vue/pull/1058))
+
+
 ## 2.25.1
 
 `2022-04-27`

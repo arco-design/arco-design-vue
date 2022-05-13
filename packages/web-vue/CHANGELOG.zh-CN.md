@@ -2,6 +2,52 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 新增功能
+
+- **tree:** `checkable` 支持函数格式 ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **tree:** `seleable` 支持函数格式 ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **tree:** 新增属性 `actionOnNodeClick`，可用于开启点击节点触发展开 ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **tree-select:** 新增属性 `seletable`，支持自定义可选节点 ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- **input-number:** 增加 modelEvent 属性和 input 事件 ([#1115](https://github.com/arco-design/arco-design-vue/pull/1115))
+- **tabs:** 增加 destroyOnHide 属性 ([#1107](https://github.com/arco-design/arco-design-vue/pull/1107))
+- **input:** 增加 input-attrs 属性 ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+- **input:** 修改 blur 事件触发顺序到 change 之后 ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+- **collapse:** 增加 destroyOnHide 属性，默认不会在隐藏时销毁内容 ([#1100](https://github.com/arco-design/arco-design-vue/pull/1100))
+- **radio:** `radio-group` 支持 `options` 属性 ([#1090](https://github.com/arco-design/arco-design-vue/pull/1090))
+- **checkbox:** `checkbox-group` 增加 `checkbox` 插槽 ([#1087](https://github.com/arco-design/arco-design-vue/pull/1087))
+- **checkbox:** `checkbox-group` 支持 `options` 属性配置子元素 ([#1058](https://github.com/arco-design/arco-design-vue/pull/1058))
+
+### 🐛 问题修复
+
+- **list:** 修复分页属性失效的问题 ([#1125](https://github.com/arco-design/arco-design-vue/pull/1125))
+- **pagination:** 修复 simple 模式下，size 失效的问题 ([#1123](https://github.com/arco-design/arco-design-vue/pull/1123))
+- **typography:** 修复按下回车的时候触发两次 `editEnd` 的问题 ([#1122](https://github.com/arco-design/arco-design-vue/pull/1122))
+- **select:** 修复 options 属性中 `render`、`tagProps` 不生效的问题 ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+- **tree:** 修复当 key 为 number 的时候，expandAll 失败的问题 ([#1113](https://github.com/arco-design/arco-design-vue/pull/1113))
+- **date-picker:** 修复使用 `v-model` 绑定 `week-picker ` 和 `quarter-picker` 的时候值错误的问题 ([#1112](https://github.com/arco-design/arco-design-vue/pull/1112))
+- **message:** 修复 clear 方法在多次调用时出现错误的问题 ([#1095](https://github.com/arco-design/arco-design-vue/pull/1095))
+- **modal:** 修复拖拽后开启全屏产生位置偏移的问题 ([#1070](https://github.com/arco-design/arco-design-vue/pull/1070))
+
+### 💎 功能优化
+
+- **trigger:** 在右键触发时，点击触发元素可以关闭下拉框 ([#1111](https://github.com/arco-design/arco-design-vue/pull/1111))
+- **trigger:** 支持弹出组件嵌套使用 ([#1111](https://github.com/arco-design/arco-design-vue/pull/1111))
+
+### 💅 样式更新
+
+- **table:** 修复存在固定列时，出现竖向滚动条的问题 ([#1124](https://github.com/arco-design/arco-design-vue/pull/1124))
+- **select:** 修复开启搜索时，禁用状态下鼠标指针错误的问题 ([#1114](https://github.com/arco-design/arco-design-vue/pull/1114))
+
+### 🆎 类型修正
+
+- **modal:** 补全 ModalConfig 缺失的属性 ([#1120](https://github.com/arco-design/arco-design-vue/pull/1120))
+- **table:** 使用 VNodeChild 替代接口中的 VNode，支持更广泛类型 ([#1118](https://github.com/arco-design/arco-design-vue/pull/1118))
+
+
 ## 2.26.0
 
 `2022-04-29`

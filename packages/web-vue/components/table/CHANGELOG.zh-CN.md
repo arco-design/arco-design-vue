@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 💅 样式更新
+
+- 修复存在固定列时，出现竖向滚动条的问题 ([#1124](https://github.com/arco-design/arco-design-vue/pull/1124))
+
+### 🆎 类型修正
+
+- 使用 VNodeChild 替代接口中的 VNode，支持更广泛类型 ([#1118](https://github.com/arco-design/arco-design-vue/pull/1118))
+
+
 ## 2.26.0
 
 `2022-04-29`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 新增功能
+
+- 增加 input-attrs 属性 ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+- 修改 blur 事件触发顺序到 change 之后 ([#1106](https://github.com/arco-design/arco-design-vue/pull/1106))
+
+
 ## 2.23.0
 
 `2022-04-08`

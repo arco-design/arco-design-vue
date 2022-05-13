@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- `checkbox-group` adds `checkbox` slot ([#1087](https://github.com/arco-design/arco-design-vue/pull/1087))
+- `checkbox-group` supports `options` attribute to configure child elements ([#1058](https://github.com/arco-design/arco-design-vue/pull/1058))
+
+
 ## 2.25.1
 
 `2022-04-27`

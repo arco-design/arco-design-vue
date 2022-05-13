@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 新增功能
+
+- 增加 destroyOnHide 属性，默认不会在隐藏时销毁内容 ([#1100](https://github.com/arco-design/arco-design-vue/pull/1100))
+
+
 ## 2.26.0
 
 `2022-04-29`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- `radio-group` support  `options` prop ([#1090](https://github.com/arco-design/arco-design-vue/pull/1090))
+
+
 ## 2.18.0
 
 `2022-03-04`

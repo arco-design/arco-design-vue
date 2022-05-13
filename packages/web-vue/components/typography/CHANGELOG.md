@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 BugFix
+
+- fix the problem that event `edit-end` triggered twice when press enter ([#1122](https://github.com/arco-design/arco-design-vue/pull/1122))
+
+
 ## 2.24.0
 
 `2022-04-15`

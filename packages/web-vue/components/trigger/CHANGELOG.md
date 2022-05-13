@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 💎 Enhancement
+
+- When the right button is triggered, click the trigger element to close the drop-down box ([#1111](https://github.com/arco-design/arco-design-vue/pull/1111))
+- Support pop-up component nesting ([#1111](https://github.com/arco-design/arco-design-vue/pull/1111))
+
+
 ## 2.21.0
 
 `2022-03-25`

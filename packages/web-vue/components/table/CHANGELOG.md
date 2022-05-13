@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 💅 Style
+
+- Fixed the problem of vertical scroll bar when there are fixed columns ([#1124](https://github.com/arco-design/arco-design-vue/pull/1124))
+
+### 🆎 TypeScript
+
+- Use VNodeChild instead of VNode in the interface to support a wider range of types ([#1118](https://github.com/arco-design/arco-design-vue/pull/1118))
+
+
 ## 2.26.0
 
 `2022-04-29`

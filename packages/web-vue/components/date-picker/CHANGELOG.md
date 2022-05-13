@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 BugFix
+
+- the value of `week-picker ` and `quarter-picker` is wrong when using `v-model` ([#1112](https://github.com/arco-design/arco-design-vue/pull/1112))
+
+
 ## 2.25.1
 
 `2022-04-27`

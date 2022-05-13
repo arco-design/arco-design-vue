@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🐛 BugFix
+
+- Fix the problem that the clear method has an error when called multiple times ([#1095](https://github.com/arco-design/arco-design-vue/pull/1095))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

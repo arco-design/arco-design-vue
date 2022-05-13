@@ -75,6 +75,7 @@
 
   &-header {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     box-sizing: border-box;
     width: 100%;
@@ -113,6 +114,7 @@
 
   &-footer {
     box-sizing: border-box;
+    flex-shrink: 0;
     width: 100%;
     padding: @modal-default-padding-footer-vertical
       @modal-default-padding-horizontal;
@@ -136,24 +138,24 @@
     font-weight: @font-weight-500;
     font-size: @modal-font-header-size;
 
-    .@{prefix}-icon {
+    &-icon {
       margin-right: @modal-margin-tip-icon-right;
       font-size: @modal-size-tip-icon;
       vertical-align: -0.15em;
 
-      &-info-circle-fill {
+      .@{prefix}-icon-info-circle-fill {
         color: @color-primary-6;
       }
 
-      &-check-circle-fill {
+      .@{prefix}-icon-check-circle-fill {
         color: @color-success-6;
       }
 
-      &-exclamation-circle-fill {
+      .@{prefix}-icon-exclamation-circle-fill {
         color: @color-warning-6;
       }
 
-      &-close-circle-fill {
+      .@{prefix}-icon-close-circle-fill {
         color: @color-danger-6;
       }
     }

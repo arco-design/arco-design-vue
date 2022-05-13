@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 新增功能
+
+- `checkable` 支持函数格式 ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- `seleable` 支持函数格式 ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+- 新增属性 `actionOnNodeClick`，可用于开启点击节点触发展开 ([#1119](https://github.com/arco-design/arco-design-vue/pull/1119))
+
+### 🐛 问题修复
+
+- 修复当 key 为 number 的时候，expandAll 失败的问题 ([#1113](https://github.com/arco-design/arco-design-vue/pull/1113))
+
+
 ## 2.25.0
 
 `2022-04-22`

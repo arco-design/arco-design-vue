@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.0
+
+`2022-05-13`
+
+### 🆕 Feature
+
+- Added modelEvent property and input event ([#1115](https://github.com/arco-design/arco-design-vue/pull/1115))
+
+
 ## 2.25.1
 
 `2022-04-27`
