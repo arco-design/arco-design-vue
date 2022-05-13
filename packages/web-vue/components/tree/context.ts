@@ -1,11 +1,12 @@
 import { InjectionKey, Slot } from 'vue';
 import { Key2TreeNode } from './utils';
-import { Node, DropPosition, TreeNodeKey } from './interface';
+import type { Node, DropPosition, TreeNodeKey, TreeProps } from './interface';
 
 export const TreeInjectionKey: InjectionKey<TreeContext> =
   Symbol('TreeInjectionKey');
 
 export type TreeContext = Readonly<{
+  treeProps: TreeProps;
   switcherIcon?: Slot;
   loadingIcon?: Slot;
   nodeIcon?: Slot;

@@ -126,6 +126,7 @@ import { isFunction } from '../_utils/is';
 import { TreeNodeProps, Node } from './interface';
 import useDraggable from './hooks/use-draggable';
 import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
+import { toArray } from '../_utils/to-array';
 
 export default defineComponent({
   name: 'BaseTreeNode',
@@ -207,9 +208,20 @@ export default defineComponent({
     );
     const treeNodeData = computed(() => node.value.treeNodeData);
     const children = computed(() => node.value.children);
+    const actionOnNodeClick = computed(() => {
+      const action = treeContext.treeProps?.actionOnNodeClick;
+      return action ? toArray(action) : [];
+    });
 
-    const { isLeaf, isTail, selectable, disabled, disableCheckbox, draggable } =
-      toRefs(props);
+    const {
+      isLeaf,
+      isTail,
+      selectable,
+      disabled,
+      disableCheckbox,
+      draggable,
+      checkable,
+    } = toRefs(props);
 
     const classNames = computed(() => [
       `${prefixCls}`,
@@ -218,7 +230,8 @@ export default defineComponent({
         [`${prefixCls}-is-leaf`]: isLeaf.value,
         [`${prefixCls}-is-tail`]: isTail.value,
         [`${prefixCls}-expanded`]: expanded.value,
-        [`${prefixCls}-disabled-selectable`]: !selectable.value,
+        [`${prefixCls}-disabled-selectable`]:
+          !selectable.value && !treeContext.treeProps?.disableSelectActionOnly,
         [`${prefixCls}-disabled`]: disabled.value,
       },
     ]);
@@ -280,6 +293,15 @@ export default defineComponent({
 
     const treeNodeIcon = computed(() => treeContext.nodeIcon);
 
+    function onSwitcherClick(e: Event) {
+      if (isLeaf.value) return;
+      if (!children.value?.length && isFunction(treeContext.onLoadMore)) {
+        treeContext.onLoadMore(key.value);
+      } else {
+        treeContext?.onExpand?.(!expanded.value, key.value, e);
+      }
+    }
+
     return {
       refTitle,
       prefixCls,
@@ -306,17 +328,13 @@ export default defineComponent({
         treeContext.onCheck?.(checked, key.value, e);
       },
       onTitleClick(e: Event) {
+        if (actionOnNodeClick.value.includes('expand')) {
+          onSwitcherClick(e);
+        }
         if (!selectable.value || disabled.value) return;
         treeContext.onSelect?.(key.value, e);
       },
-      onSwitcherClick(e: Event) {
-        if (isLeaf.value) return;
-        if (!children.value?.length && isFunction(treeContext.onLoadMore)) {
-          treeContext.onLoadMore(key.value);
-        } else {
-          treeContext?.onExpand?.(!expanded.value, key.value, e);
-        }
-      },
+      onSwitcherClick,
       onDragStart(e: DragEvent) {
         if (!draggable.value) return;
 
