@@ -20,6 +20,8 @@ description: Only input boxes in numeric format are allowed.
 
 @import ./__demo__/format.md
 
+@import ./__demo__/model.md
+
 ## API
 
 
@@ -42,14 +44,16 @@ description: Only input boxes in numeric format are allowed.
 |hide-button|Whether to hide the button (only available in `embed` mode)|`boolean`|`false`|
 |size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |allow-clear|Whether to allow the input to be cleared|`boolean`|`false`|
+|model-event|Trigger event for `v-model`|`'change' \| 'input'`|`'change'`|
 ### `<input-number>` Events
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|change|Triggered when the value changes|value: `union`||
-|focus|Triggered when the input gets focus|-||
-|blur|Triggered when the input box loses focus|-||
-|clear|Triggered when the user clicks the clear button|-|2.23.0|
+|change|Triggered when the value changes|value: `union`<br>event: `Event`||
+|focus|Triggered when the input gets focus|event: `FocusEvent`||
+|blur|Triggered when the input box loses focus|event: `FocusEvent`||
+|clear|Triggered when the user clicks the clear button|event: `Event`|2.23.0|
+|input|Triggered on input|value: `union`<br>inputValue: `string`<br>event: `Event`|2.27.0|
 ### `<input-number>` Methods
 
 |Method|Description|Parameters|Return|

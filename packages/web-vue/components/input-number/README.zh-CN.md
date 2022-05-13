@@ -18,6 +18,8 @@ description: 仅允许输入数字格式的输入框。
 
 @import ./__demo__/format.md
 
+@import ./__demo__/model.md
+
 ## API
 
 
@@ -40,14 +42,16 @@ description: 仅允许输入数字格式的输入框。
 |hide-button|是否隐藏按钮（仅在`embed`模式可用）|`boolean`|`false`|
 |size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |allow-clear|是否允许清空输入框|`boolean`|`false`|
+|model-event|触发 `v-model` 的事件|`'change' \| 'input'`|`'change'`|
 ### `<input-number>` Events
 
 |事件名|描述|参数|版本|
 |---|---|---|:---|
-|change|值发生改变时触发|value: `union`||
-|focus|输入框获取焦点时触发|-||
-|blur|输入框失去焦点时触发|-||
-|clear|用户点击清除按钮时触发|-|2.23.0|
+|change|值发生改变时触发|value: `union`<br>event: `Event`||
+|focus|输入框获取焦点时触发|event: `FocusEvent`||
+|blur|输入框失去焦点时触发|event: `FocusEvent`||
+|clear|用户点击清除按钮时触发|event: `Event`|2.23.0|
+|input|输入时触发|value: `union`<br>inputValue: `string`<br>event: `Event`|2.27.0|
 ### `<input-number>` Methods
 
 |方法名|描述|参数|返回值|
