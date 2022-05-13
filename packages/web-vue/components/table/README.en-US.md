@@ -213,8 +213,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |multiple|Whether to support multiple selection|`boolean`|`false`||
 |filteredValue|Filter value|`string[]`|`-`||
 |defaultFilteredValue|Default filter value|`string[]`|`-`||
-|renderContent|The content of filter box|`(data: {    filterValue: string[];    setFilterValue: (filterValue: string[]) => void;    handleFilterConfirm: (event: Event) => void;    handleFilterReset: (event: Event) => void;  }) => VNode`|`-`||
-|icon|Filter icon for button|`() => VNode`|`-`||
+|renderContent|The content of filter box|`(data: {    filterValue: string[];    setFilterValue: (filterValue: string[]) => void;    handleFilterConfirm: (event: Event) => void;    handleFilterReset: (event: Event) => void;  }) => VNodeChild`|`-`||
+|icon|Filter icon for button|`RenderFunction`|`-`||
 |triggerProps|Pop-up box configuration of filter box|`TriggerProps`|`-`||
 |alignLeft|Whether the filter icon is aligned to the left|`boolean`|`false`|2.13.0|
 
@@ -235,7 +235,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |filterable|Filter related options|`TableFilterable`|`-`||
 |children|Header sub-data, used for header grouping|`TableColumnData[]`|`-`||
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
-|render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNode`|`-`||
+|render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
 |titleSlotName|Set the name of the render slot for the header of the current column|`string`|`-`|2.23.0|
 
@@ -273,8 +273,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |expandedRowKeys|Displayed Expanded Row (Controlled Mode)|`string[]`|`-`|
 |defaultExpandedRowKeys|Expand row displayed by default (Uncontrolled mode)|`string[]`|`-`|
 |defaultExpandAllRows|Whether to expand all rows by default|`boolean`|`false`|
-|expandedRowRender|Customize expanded row content|`(record: TableData) => VNode`|`-`|
-|icon|Expand icon|`(expanded: boolean, record: TableData) => VNode`|`-`|
+|expandedRowRender|Customize expanded row content|`(record: TableData) => VNodeChild`|`-`|
+|icon|Expand icon|`(expanded: boolean, record: TableData) => VNodeChild`|`-`|
 |title|Column title|`string`|`-`|
 |width|Column width|`number`|`-`|
 |fixed|Is it fixed|`boolean`|`false`|

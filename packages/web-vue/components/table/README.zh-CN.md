@@ -211,8 +211,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |multiple|是否支持多选|`boolean`|`false`||
 |filteredValue|筛选项|`string[]`|`-`||
 |defaultFilteredValue|默认筛选项|`string[]`|`-`||
-|renderContent|筛选框的内容|`(data: {    filterValue: string[];    setFilterValue: (filterValue: string[]) => void;    handleFilterConfirm: (event: Event) => void;    handleFilterReset: (event: Event) => void;  }) => VNode`|`-`||
-|icon|筛选按钮的图标|`() => VNode`|`-`||
+|renderContent|筛选框的内容|`(data: {    filterValue: string[];    setFilterValue: (filterValue: string[]) => void;    handleFilterConfirm: (event: Event) => void;    handleFilterReset: (event: Event) => void;  }) => VNodeChild`|`-`||
+|icon|筛选按钮的图标|`RenderFunction`|`-`||
 |triggerProps|筛选框的弹出框配置|`TriggerProps`|`-`||
 |alignLeft|筛选图标是否左对齐|`boolean`|`false`|2.13.0|
 
@@ -233,7 +233,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |children|表头子数据，用于表头分组|`TableColumnData[]`|`-`||
 |cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
-|render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNode`|`-`||
+|render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
 |titleSlotName|设置当前列的标题的渲染插槽的名字|`string`|`-`|2.23.0|
 
@@ -271,8 +271,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |expandedRowKeys|显示的展开行（受控模式）|`string[]`|`-`|
 |defaultExpandedRowKeys|默认显示的展开行（非受控模式）|`string[]`|`-`|
 |defaultExpandAllRows|是否默认展开所有的行|`boolean`|`false`|
-|expandedRowRender|自定义展开行内容|`(record: TableData) => VNode`|`-`|
-|icon|展开图标|`(expanded: boolean, record: TableData) => VNode`|`-`|
+|expandedRowRender|自定义展开行内容|`(record: TableData) => VNodeChild`|`-`|
+|icon|展开图标|`(expanded: boolean, record: TableData) => VNodeChild`|`-`|
 |title|列标题|`string`|`-`|
 |width|列宽度|`number`|`-`|
 |fixed|是否固定|`boolean`|`false`|
