@@ -28,6 +28,15 @@ export default defineComponent({
       default: 'gggg-wo',
     },
     /**
+     * @zh 值的格式，对 `value` `defaultValue` `pickerValue` `defaultPickerValue` 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考[字符串解析格式](#字符串解析格式)）。
+     * @en The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ).
+     * @version 2.16.0
+     */
+    valueFormat: {
+      type: String,
+      default: 'YYYY-MM-DD',
+    },
+    /**
      * @zh 每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。
      * @en The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.
      * @type 0 | 1 | 2 | 3 | 4 | 5 | 6
