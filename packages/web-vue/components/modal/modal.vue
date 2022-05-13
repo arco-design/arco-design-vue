@@ -445,7 +445,7 @@ export default defineComponent({
    * @slot footer
    */
   setup(props, { emit }) {
-    const { popupContainer } = toRefs(props);
+    const { fullscreen, popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('modal');
     const { t } = useI18n();
     const wrapperRef = ref<HTMLElement>();
@@ -458,7 +458,6 @@ export default defineComponent({
     const mergedDraggable = computed(
       () => props.draggable && !props.fullscreen
     );
-    const _fullscreen = computed(() => props.fullscreen);
 
     const { teleportContainer, containerRef } = useTeleportContainer({
       popupContainer,
@@ -622,8 +621,10 @@ export default defineComponent({
       }
     });
 
-    watch(_fullscreen, (value: boolean) => {
-      position.value = undefined;
+    watch(fullscreen, () => {
+      if (position.value) {
+        position.value = undefined;
+      }
     });
 
     const wrapperCls = computed(() => [
