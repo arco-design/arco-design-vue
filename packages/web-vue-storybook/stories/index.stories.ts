@@ -7,6 +7,7 @@ import StoryVirtual from './components/virtual-list.vue';
 import StorySpace from './components/space.vue';
 import StoryMenu from './components/menu.vue';
 import StorySelect from './components/select';
+import StoryNumberInput from './components/number-input.vue';
 
 export default {
   title: 'Components',
@@ -21,3 +22,4 @@ export const Virtual = () => StoryVirtual;
 export const Space = () => StorySpace;
 export const Menu = () => StoryMenu;
 export const Select = () => StorySelect;
+export const NumberInput = () => StoryNumberInput;

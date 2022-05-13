@@ -303,6 +303,7 @@ export default defineComponent({
       if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
         _value.value = props.formatter?.(value) ?? value;
         updateNumberStatus(valueNumber.value);
+        emit('update:modelValue', valueNumber.value);
       }
     };
 
