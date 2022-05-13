@@ -603,6 +603,11 @@
       .@{table-prefix-cls}-body .@{table-cls-tr}:last-of-type .@{table-cls-td},
       tfoot .@{table-cls-tr}:last-of-type .@{table-cls-td} {
         border-bottom: none;
+
+        &.@{table-prefix-cls}-col-fixed-left-last::after,
+        &.@{table-prefix-cls}-col-fixed-right-first::after {
+          bottom: 0;
+        }
       }
     }
 
