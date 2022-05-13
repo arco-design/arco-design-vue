@@ -10,6 +10,7 @@ export default defineComponent({
   components: {
     Tooltip,
   },
+  inheritAttrs: false,
   props: {
     /**
      * @zh 名称

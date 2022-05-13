@@ -38,6 +38,16 @@ import { useTeleportContainer } from '../_hooks/use-teleport-container';
 import { TriggerPopupTranslate } from './interface';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useFirstElement } from '../_hooks/use-first-element';
+import { omit } from '../_utils/omit';
+
+const TRIGGER_EVENTS = [
+  'onClick',
+  'onMouseenter',
+  'onMouseleave',
+  'onFocusin',
+  'onFocusout',
+  'onContextmenu',
+];
 
 export default defineComponent({
   name: 'Trigger',
@@ -349,7 +359,7 @@ export default defineComponent({
   setup(props, { emit, slots, attrs }) {
     const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('trigger');
-
+    const popupAttrs = computed(() => omit(attrs, TRIGGER_EVENTS));
     const configCtx = inject(configProviderInjectionKey, undefined);
 
     const triggerMethods = computed(() =>
@@ -487,18 +497,23 @@ export default defineComponent({
     };
 
     const handleClick = (e: MouseEvent) => {
-      if (
-        props.disabled ||
-        !triggerMethods.value.includes('click') ||
-        (computedVisible.value && !props.clickToClose)
-      ) {
+      (attrs as any).onClick?.(e);
+      if (props.disabled || (computedVisible.value && !props.clickToClose)) {
         return;
       }
-      updateMousePosition(e);
-      changeVisible(!computedVisible.value);
+      if (triggerMethods.value.includes('click')) {
+        updateMousePosition(e);
+        changeVisible(!computedVisible.value);
+      } else if (
+        triggerMethods.value.includes('contextMenu') &&
+        computedVisible.value
+      ) {
+        changeVisible(false);
+      }
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
+      (attrs as any).onMouseenter?.(e);
       if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
@@ -512,6 +527,7 @@ export default defineComponent({
     };
 
     const handleMouseLeave = (e: MouseEvent) => {
+      (attrs as any).onMouseleave?.(e);
       if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
@@ -524,6 +540,7 @@ export default defineComponent({
     };
 
     const handleFocusin = (e: FocusEvent) => {
+      (attrs as any).onFocusin?.(e);
       if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
@@ -531,6 +548,7 @@ export default defineComponent({
     };
 
     const handleFocusout = (e: FocusEvent) => {
+      (attrs as any).onFocusout?.(e);
       if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
@@ -541,6 +559,7 @@ export default defineComponent({
     };
 
     const handleContextmenu = (e: MouseEvent) => {
+      (attrs as any).onContextmenu?.(e);
       e.preventDefault();
       if (
         props.disabled ||
@@ -776,7 +795,7 @@ export default defineComponent({
                       onMouseenter={handleMouseEnterWithContext}
                       onMouseleave={handleMouseLeaveWithContext}
                       onMousedown={handlePopupMouseDown}
-                      {...attrs}
+                      {...popupAttrs.value}
                     >
                       <Transition
                         name={props.animationName}
