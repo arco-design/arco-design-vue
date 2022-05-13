@@ -1,12 +1,18 @@
-/* eslint-disable no-use-before-define */
 import { omit } from '../../_utils/omit';
-import { isUndefined } from '../../_utils/is';
-import { TreeNodeData, Node, TreeFieldNames, TreeNodeKey } from '../interface';
+import { isFunction, isUndefined } from '../../_utils/is';
+import {
+  TreeNodeData,
+  Node,
+  TreeFieldNames,
+  TreeNodeKey,
+  SelectableType,
+  CheckableType,
+} from '../interface';
 
 interface TreeProps {
   fieldNames?: TreeFieldNames;
-  selectable: boolean;
-  checkable: boolean;
+  selectable: SelectableType;
+  checkable: CheckableType;
   blockNode: boolean;
   showLine: boolean;
   loadMore: boolean;
@@ -54,26 +60,60 @@ function mapObject<K, T = any>(
   return _obj as K;
 }
 
+function getEnableResult({
+  subEnable,
+  superEnable,
+  isLeaf,
+  treeNodeData,
+  level,
+}: {
+  subEnable: boolean | undefined;
+  superEnable: CheckableType | undefined;
+  isLeaf: boolean;
+  level: number;
+  treeNodeData: TreeNodeData;
+}) {
+  if (!isUndefined(subEnable)) return subEnable;
+  if (isFunction(superEnable)) {
+    return superEnable(treeNodeData, { isLeaf, level });
+  }
+  return superEnable ?? false;
+}
+
 function generateNode(options: NodeOptions): Node {
   const { treeNodeData, parentNode, isTail = true, treeProps } = options;
   const { fieldNames } = treeProps || {};
 
   const mapTreeNodeData = mapObject<TreeNodeData>(treeNodeData, fieldNames);
+  const isLeaf = treeProps.loadMore
+    ? !!mapTreeNodeData.isLeaf
+    : !mapTreeNodeData.children?.length;
+  const level = parentNode ? parentNode.level + 1 : 0;
 
   const treeNodeProps = {
     ...omit(mapTreeNodeData, ['children']),
     key: mapTreeNodeData.key ?? generateKey(),
-    selectable: getBoolean(mapTreeNodeData.selectable, treeProps?.selectable),
+    selectable: getEnableResult({
+      subEnable: mapTreeNodeData.selectable,
+      superEnable: treeProps?.selectable,
+      isLeaf,
+      level,
+      treeNodeData,
+    }),
     disabled: !!mapTreeNodeData.disabled,
     disableCheckbox: !!mapTreeNodeData.disableCheckbox,
-    checkable: getBoolean(mapTreeNodeData.checkable, treeProps?.checkable),
-    isLeaf: treeProps.loadMore
-      ? !!mapTreeNodeData.isLeaf
-      : !mapTreeNodeData.children?.length,
+    checkable: getEnableResult({
+      subEnable: mapTreeNodeData.checkable,
+      superEnable: treeProps?.checkable,
+      isLeaf,
+      level,
+      treeNodeData,
+    }),
+    isLeaf,
     isTail,
     blockNode: !!treeProps?.blockNode,
     showLine: !!treeProps?.showLine,
-    level: parentNode ? parentNode.level + 1 : 0,
+    level,
     // showLine 模式下是否显示缩进线。
     // 如果父节点是其所在层级的最后一个节点，那么所有的子节点（包括孙子节点等）在父节点所在层级的缩进格都不显示缩进线。
     lineless: parentNode ? [...parentNode.lineless, parentNode.isTail] : [],

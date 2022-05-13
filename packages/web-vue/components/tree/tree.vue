@@ -33,10 +33,9 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { TreeInjectionKey } from './context';
 import usePickSlots from '../_hooks/use-pick-slots';
-import {
+import type {
   TreeFieldNames,
   TreeNodeData,
-  TreeProps,
   FilterTreeNode,
   DropPosition,
   TreeNodeKey,
@@ -55,7 +54,7 @@ import useMergeState from '../_hooks/use-merge-state';
 import useCheckedState from './hooks/use-checked-state';
 import useTreeData from './hooks/use-tree-data';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
-import {
+import type {
   VirtualListProps,
   ScrollIntoViewOptions,
 } from '../_components/virtual-list/interface';
@@ -98,18 +97,37 @@ export default defineComponent({
       type: Boolean,
     },
     /**
-     * @zh 是否在节点前添加复选框
-     * @en Whether to add a checkbox before the node
+     * @zh 是否在节点前添加复选框，从 `2.27.0` 开始支持函数格式
+     * @en Whether to add a checkbox before the node, function format is supported since `2.27.0`
      */
     checkable: {
-      type: Boolean,
+      type: [Boolean, String, Function] as PropType<
+        | boolean
+        | ((
+            node: TreeNodeData,
+            info: {
+              level: number;
+              isLeaf: boolean;
+            }
+          ) => boolean)
+      >,
+      default: false,
     },
     /**
-     * @zh 是否支持选择
-     * @en Whether to support selection
+     * @zh 是否支持选择，从 `2.27.0` 开始支持函数格式
+     * @en Whether to support selection, function format is supported since `2.27.0`
      * */
     selectable: {
-      type: Boolean,
+      type: [Boolean, Function] as PropType<
+        | boolean
+        | ((
+            node: TreeNodeData,
+            info: {
+              level: number;
+              isLeaf: boolean;
+            }
+          ) => boolean)
+      >,
       default: true,
     },
     /**
@@ -282,6 +300,19 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 点击节点的时候触发的动作
+     * @en The action triggered when the node is clicked
+     * @version 2.27.0
+     */
+    actionOnNodeClick: {
+      type: String as PropType<'expand'>,
+    },
+    // internal
+    disableSelectActionOnly: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: [
     /**
@@ -375,7 +406,7 @@ export default defineComponent({
    * @en Title
    * @slot title
    */
-  setup(props: TreeProps, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const {
       data: propTreeData,
       showLine,
@@ -832,6 +863,7 @@ export default defineComponent({
     );
 
     const treeContext = reactive({
+      treeProps: props,
       switcherIcon,
       loadingIcon,
       dragIcon,

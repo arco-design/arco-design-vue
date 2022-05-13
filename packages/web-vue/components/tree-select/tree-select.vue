@@ -57,6 +57,7 @@
           v-else
           :selected-keys="selectedKeys"
           :checkable="treeCheckable"
+          :selectable="selectable"
           :tree-props="{
             blockNode: true,
             ...treeProps,
@@ -87,7 +88,6 @@ import {
   ref,
   toRefs,
   StyleValue,
-  inject,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue, TreeSelectProps } from './interface';
@@ -351,6 +351,22 @@ export default defineComponent({
       >,
       default: true,
     },
+    /**
+     * @zh 设置可选择的节点，默认全部可选
+     * @en Set the nodes that can be selected, all can be selected by default
+     * @version 2.27.0
+     */
+    selectable: {
+      type: [Boolean, String, Function] as PropType<
+        | boolean
+        | 'leaf'
+        | ((
+            node: TreeNodeData,
+            info: { isLeaf: boolean; level: number }
+          ) => boolean)
+      >,
+      default: true,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<TreeSelectProps['onChange']>,
@@ -420,7 +436,7 @@ export default defineComponent({
    * @en Custom empty data display
    * @slot empty
    */
-  setup(props: TreeSelectProps, { emit }) {
+  setup(props, { emit }) {
     const {
       defaultValue,
       modelValue,

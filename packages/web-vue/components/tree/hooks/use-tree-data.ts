@@ -1,15 +1,22 @@
 import { computed, ref, toRefs, watchEffect } from 'vue';
-import { TreeFieldNames, TreeNodeData, Node, LoadMore } from '../interface';
+import {
+  TreeFieldNames,
+  TreeNodeData,
+  Node,
+  LoadMore,
+  CheckableType,
+  SelectableType,
+} from '../interface';
 import { getFlattenTreeData, getKey2TreeNode } from '../utils';
 import { generateTreeData } from '../utils/tree-data';
 
 export default function useTreeData(props: {
   treeData: TreeNodeData[];
   fieldNames?: TreeFieldNames;
-  selectable?: boolean;
+  selectable?: SelectableType;
   showLine?: boolean;
   blockNode?: boolean;
-  checkable?: boolean;
+  checkable?: CheckableType;
   loadMore?: LoadMore;
   draggable?: boolean;
 }) {
@@ -28,10 +35,10 @@ export default function useTreeData(props: {
 
   watchEffect(() => {
     treeData.value = generateTreeData(propTreeData.value || [], {
-      selectable: !!selectable?.value,
+      selectable: selectable?.value ?? false,
       showLine: !!showLine?.value,
       blockNode: !!blockNode?.value,
-      checkable: !!checkable?.value,
+      checkable: checkable?.value ?? false,
       fieldNames: fieldNames?.value,
       loadMore: !!loadMore?.value,
       draggable: !!draggable?.value,

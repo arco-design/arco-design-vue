@@ -51,8 +51,8 @@ description: For content with many levels, such as folders, catalogs, and organi
 |block-node|Whether the node occupies a row|`boolean`|`false`||
 |default-expand-all|Whether to expand the parent node by default|`boolean`|`true`||
 |multiple|Whether to support multiple selection|`boolean`|`false`||
-|checkable|Whether to add a checkbox before the node|`boolean`|`false`||
-|selectable|Whether to support selection|`boolean`|`true`||
+|checkable|Whether to add a checkbox before the node, function format is supported since `2.27.0`|`boolean\| ((    node: TreeNodeData,    info: {      level: number;      isLeaf: boolean;    }  ) => boolean)`|`false`||
+|selectable|Whether to support selection, function format is supported since `2.27.0`|`boolean\| ((    node: TreeNodeData,    info: {      level: number;      isLeaf: boolean;    }  ) => boolean)`|`true`||
 |check-strictly|Whether to cancel the parent-child node association|`boolean`|`false`||
 |checked-strategy|Customized backfill method <br/> all: return all selected nodes <br/> parent: return only parent node when both parent and child nodes are selected <br/> child: return only child nodes|`'all' \| 'parent' \| 'child'`|`'all'`||
 |default-selected-keys|Tree node selected by default|`Array<string \| number>`|`-`||
@@ -74,6 +74,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |half-checked-keys **(v-model)**|The keys of half checked. Only valid when checkable and checkStrictly|`Array<string \| number>`|`-`|2.19.0|
 |only-check-leaf|When enabled, checkedKeys is only for checked leaf nodes, and the status of the parent node is determined by the child node.(Only valid when checkable and checkStrictly is false)|`boolean`|`false`|2.21.0|
 |animation|Whether to enable expand transition animation|`boolean`|`true`|2.21.0|
+|action-on-node-click|The action triggered when the node is clicked|`'expand'`|`-`|2.27.0|
 ### `<tree>` Events
 
 |Event Name|Description|Parameters|

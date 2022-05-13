@@ -153,19 +153,29 @@ export interface TreeFieldNames {
 export type LoadMore = (node: TreeNodeData) => Promise<void>;
 export type DropPosition = -1 | 0 | 1;
 export type CheckedStrategy = 'all' | 'parent' | 'child';
+export type CheckableType =
+  | boolean
+  | ((
+      node: TreeNodeData,
+      info: {
+        level: number;
+        isLeaf: boolean;
+      }
+    ) => boolean);
+export type SelectableType = CheckableType;
 
 export interface TreeProps {
   size: Size;
   blockNode: boolean;
   defaultExpandAll: boolean;
   multiple: boolean;
-  checkable: boolean;
+  checkable: CheckableType;
   draggable: boolean;
   allowDrop?: (options: {
     dropNode: TreeNodeData;
     dropPosition: DropPosition;
   }) => boolean;
-  selectable: boolean;
+  selectable: SelectableType;
   checkStrictly: boolean;
   checkedStrategy: CheckedStrategy;
   defaultSelectedKeys?: TreeNodeKey[];
@@ -185,6 +195,8 @@ export interface TreeProps {
   autoExpandParent?: boolean;
   onlyCheckLeaf: boolean;
   animation: boolean;
+  actionOnNodeClick?: 'expand';
+  disableSelectActionOnly: boolean;
   dragIcon?: Slot;
   switcherIcon?: Slot;
   loadingIcon?: Slot;

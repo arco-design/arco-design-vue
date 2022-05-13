@@ -49,8 +49,8 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |block-node|节点是否占据一行|`boolean`|`false`||
 |default-expand-all|是否默认展开父节点|`boolean`|`true`||
 |multiple|是否支持多选|`boolean`|`false`||
-|checkable|是否在节点前添加复选框|`boolean`|`false`||
-|selectable|是否支持选择|`boolean`|`true`||
+|checkable|是否在节点前添加复选框，从 `2.27.0` 开始支持函数格式|`boolean\| ((    node: TreeNodeData,    info: {      level: number;      isLeaf: boolean;    }  ) => boolean)`|`false`||
+|selectable|是否支持选择，从 `2.27.0` 开始支持函数格式|`boolean\| ((    node: TreeNodeData,    info: {      level: number;      isLeaf: boolean;    }  ) => boolean)`|`true`||
 |check-strictly|是否取消父子节点关联|`boolean`|`false`||
 |checked-strategy|定制回填方式 <br/> all: 返回所有选中的节点  <br/> parent: 父子节点都选中时只返回父节点 <br/> child: 只返回子节点|`'all' \| 'parent' \| 'child'`|`'all'`||
 |default-selected-keys|默认选中的树节点|`Array<string \| number>`|`-`||
@@ -72,6 +72,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |half-checked-keys **(v-model)**|半选状态的节点.仅在 checkable 且 checkStrictly 时生效|`Array<string \| number>`|`-`|2.19.0|
 |only-check-leaf|开启后 checkedKeys 只处理叶子节点，父节点状态由子节点决定（仅在 checkable 且 checkStrictly 为 false 时生效）|`boolean`|`false`|2.21.0|
 |animation|是否开启展开时的过渡动效|`boolean`|`true`|2.21.0|
+|action-on-node-click|点击节点的时候触发的动作|`'expand'`|`-`|2.27.0|
 ### `<tree>` Events
 
 |事件名|描述|参数|
