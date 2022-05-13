@@ -8,14 +8,12 @@ import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
 import ArcoButton from '../button';
 import ArcoInput from '../input';
-import { EmitType } from '../_utils/types';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
 
 type StepMethods = 'minus' | 'plus';
 
-const MODES = ['embed', 'button'] as const;
 const SPEED = 150;
 
 NP.enableBoundaryChecking(false);
@@ -131,44 +129,54 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: number | undefined) => void>
-      >,
-    },
-    onFocus: {
-      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-    },
-    onBlur: {
-      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
+    /**
+     * @zh 触发 `v-model` 的事件
+     * @en Trigger event for `v-model`
+     */
+    modelEvent: {
+      type: String as PropType<'change' | 'input'>,
+      default: 'change',
     },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: number | undefined) => true,
     /**
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
-     * @property {number|undefined} value
+     * @param {number|undefined} value
+     * @param {Event} event
      */
-    'change',
+    'change': (value: number | undefined, event: Event) => true,
     /**
      * @zh 输入框获取焦点时触发
      * @en Triggered when the input gets focus
+     * @param {FocusEvent} event
      */
-    'focus',
+    'focus': (event: FocusEvent) => true,
     /**
      * @zh 输入框失去焦点时触发
      * @en Triggered when the input box loses focus
+     * @param {FocusEvent} event
      */
-    'blur',
+    'blur': (event: FocusEvent) => true,
     /**
      * @zh 用户点击清除按钮时触发
      * @en Triggered when the user clicks the clear button
+     * @param {Event} event
      * @version 2.23.0
      */
-    'clear',
-  ],
+    'clear': (event: Event) => true,
+    /**
+     * @zh 输入时触发
+     * @en Triggered on input
+     * @param {number|undefined} value
+     * @param {string} inputValue
+     * @param {Event} event
+     * @version 2.27.0
+     */
+    'input': (value: number | undefined, inputValue: string, event: Event) =>
+      true,
+  },
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
@@ -303,7 +311,10 @@ export default defineComponent({
       if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
         _value.value = props.formatter?.(value) ?? value;
         updateNumberStatus(valueNumber.value);
-        emit('update:modelValue', valueNumber.value);
+        if (props.modelEvent === 'input') {
+          emit('update:modelValue', valueNumber.value);
+        }
+        emit('input', valueNumber.value, _value.value, ev);
       }
     };
 
@@ -330,7 +341,7 @@ export default defineComponent({
     const handleClear = (ev: Event) => {
       _value.value = '';
       emit('update:modelValue', undefined);
-      emit('change', undefined);
+      emit('change', undefined, ev);
       emit('clear', ev);
     };
 
@@ -397,6 +408,7 @@ export default defineComponent({
           v-slots={{ icon: () => <IconMinus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMin.value}
+          // @ts-ignore
           onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'minus', true)}
           onMouseup={clearRepeatTimer}
           onMouseleave={clearRepeatTimer}
@@ -411,6 +423,7 @@ export default defineComponent({
           v-slots={{ icon: () => <IconPlus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMax.value}
+          // @ts-ignore
           onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'plus', true)}
           onMouseup={clearRepeatTimer}
           onMouseleave={clearRepeatTimer}
