@@ -139,6 +139,56 @@ export interface ModalConfig {
    * @version 2.16.0
    */
   onBeforeClose?: () => void;
+  /**
+   * @zh 对话框的宽度，不设置的情况下会使用样式中的宽度值
+   * @en The width of the dialog box, if not set, the width value in the style will be used
+   * @version 2.12.0
+   */
+  width?: number | string;
+  /**
+   * @zh 对话框的距离顶部的高度，居中显示开启的情况下不生效
+   * @en The height from the top of the dialog box. It does not take effect when the center display is turned on.
+   * @version 2.12.0
+   */
+  top?: number | string;
+  /**
+   * @zh 标题的水平对齐方向
+   * @en horizontal alignment of the title
+   * @version 2.17.0
+   */
+  titleAlign?: 'start' | 'center';
+  /**
+   * @zh 对话框是否挂载在 `body` 元素下
+   * @en Whether the modal is mounted under the `body` element
+   */
+  renderToBody?: boolean;
+  /**
+   * @zh 弹出框的挂载容器
+   * @en Mount container for modal
+   */
+  popupContainer?: string | HTMLElement;
+  /**
+   * @zh 对话框的类名
+   * @en The classname of the modal
+   */
+  modalClass?: string | any[];
+  /**
+   * @zh 对话框的样式
+   * @en Modal style
+   */
+  modalStyle?: CSSProperties;
+  /**
+   * @zh 遮罩层动画名字
+   * @en Mask layer animation name
+   * @version 2.24.0
+   */
+  maskAnimationName?: string;
+  /**
+   * @zh 对话框动画名字
+   * @en Modal animation name
+   * @version 2.24.0
+   */
+  modalAnimationName?: string;
 }
 
 export interface ModalReturn {

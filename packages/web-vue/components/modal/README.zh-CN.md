@@ -130,6 +130,15 @@ Modal._context = app._context;
 |onClose|对话框关闭后（动画结束）触发|`() => void`|`-`||
 |onBeforeOpen|对话框打开前触发|`() => void`|`-`|2.16.0|
 |onBeforeClose|对话框关闭前触发|`() => void`|`-`|2.16.0|
+|width|对话框的宽度，不设置的情况下会使用样式中的宽度值|`number \| string`|`-`|2.12.0|
+|top|对话框的距离顶部的高度，居中显示开启的情况下不生效|`number \| string`|`-`|2.12.0|
+|titleAlign|标题的水平对齐方向|`'start' \| 'center'`|`-`|2.17.0|
+|renderToBody|对话框是否挂载在 `body` 元素下|`boolean`|`false`||
+|popupContainer|弹出框的挂载容器|`string \| HTMLElement`|`-`||
+|modalClass|对话框的类名|`string \| any[]`|`-`||
+|modalStyle|对话框的样式|`CSSProperties`|`-`||
+|maskAnimationName|遮罩层动画名字|`string`|`-`|2.24.0|
+|modalAnimationName|对话框动画名字|`string`|`-`|2.24.0|
 
 
 

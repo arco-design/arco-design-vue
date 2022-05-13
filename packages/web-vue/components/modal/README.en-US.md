@@ -35,6 +35,8 @@ description: Open a floating layer on the current page to carry related operatio
 |---|---|---|:---:|:---|
 |visible **(v-model)**|Whether the modal is visible|`boolean`|`-`||
 |default-visible|Whether the modal is visible by default (uncontrolled state)|`boolean`|`false`||
+|width|The width of the dialog box, if not set, the width value in the style will be used|`number\|string`|`-`|2.12.0|
+|top|The height from the top of the dialog box. It does not take effect when the center display is turned on.|`number\|string`|`-`|2.12.0|
 |mask|Whether to show the mask|`boolean`|`true`||
 |title|Title|`string`|`-`||
 |title-align|horizontal alignment of the title|`'start' \| 'center'`|`-`|2.17.0|
@@ -130,6 +132,15 @@ Modal._context = app._context;
 |onClose|Triggered after the modal is closed (the animation ends)|`() => void`|`-`||
 |onBeforeOpen|Triggered before dialog is opened|`() => void`|`-`|2.16.0|
 |onBeforeClose|Triggered before dialog is closed|`() => void`|`-`|2.16.0|
+|width|The width of the dialog box, if not set, the width value in the style will be used|`number \| string`|`-`|2.12.0|
+|top|The height from the top of the dialog box. It does not take effect when the center display is turned on.|`number \| string`|`-`|2.12.0|
+|titleAlign|horizontal alignment of the title|`'start' \| 'center'`|`-`|2.17.0|
+|renderToBody|Whether the modal is mounted under the `body` element|`boolean`|`false`||
+|popupContainer|Mount container for modal|`string \| HTMLElement`|`-`||
+|modalClass|The classname of the modal|`string \| any[]`|`-`||
+|modalStyle|Modal style|`CSSProperties`|`-`||
+|maskAnimationName|Mask layer animation name|`string`|`-`|2.24.0|
+|modalAnimationName|Modal animation name|`string`|`-`|2.24.0|
 
 
 
