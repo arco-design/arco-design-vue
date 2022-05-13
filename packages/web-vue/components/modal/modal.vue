@@ -160,6 +160,7 @@ export default defineComponent({
     },
     /**
      * @zh 对话框的宽度，不设置的情况下会使用样式中的宽度值
+     * @en The width of the dialog box, if not set, the width value in the style will be used
      * @version 2.12.0
      */
     width: {
@@ -167,6 +168,7 @@ export default defineComponent({
     },
     /**
      * @zh 对话框的距离顶部的高度，居中显示开启的情况下不生效
+     * @en The height from the top of the dialog box. It does not take effect when the center display is turned on.
      * @version 2.12.0
      */
     top: {
