@@ -16,7 +16,7 @@ import type {
   ScrollIntoViewOptions,
   VirtualListProps,
 } from '../_components/virtual-list/interface';
-import { usePagination } from '../_hooks/use-pagination';
+import { usePagination } from './use-pagination';
 import { omit } from '../_utils/omit';
 import { getAllElements } from '../_utils/vue-utils';
 
