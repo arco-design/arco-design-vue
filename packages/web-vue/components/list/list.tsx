@@ -12,13 +12,13 @@ import Grid from '../grid';
 import Pagination, { PaginationProps } from '../pagination';
 import Empty from '../empty';
 import VirtualList from '../_components/virtual-list/virtual-list.vue';
-import { ScrollIntoViewOptions } from '../_components/virtual-list/interface';
+import type {
+  ScrollIntoViewOptions,
+  VirtualListProps,
+} from '../_components/virtual-list/interface';
 import { usePagination } from '../_hooks/use-pagination';
 import { omit } from '../_utils/omit';
 import { getAllElements } from '../_utils/vue-utils';
-
-const LIST_SIZES = ['small', 'medium', 'large'] as const;
-type ListSize = typeof LIST_SIZES[number];
 
 export default defineComponent({
   name: 'List',
@@ -33,10 +33,9 @@ export default defineComponent({
     /**
      * @zh 列表大小
      * @en List size
-     * @values 'small', 'medium', 'large'
      */
     size: {
-      type: String as PropType<ListSize>,
+      type: String as PropType<'small' | 'medium' | 'large'>,
       default: 'medium',
     },
     /**
@@ -104,36 +103,35 @@ export default defineComponent({
     /**
      * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)
      * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)
-     * @type VirtualListProps
      */
     virtualListProps: {
-      type: Object,
+      type: Object as PropType<VirtualListProps>,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 列表滚动时触发
      * @en Triggered when the list scrolls
      */
-    'scroll',
+    scroll: () => true,
     /**
      * @zh 当列表到达底部时触发
      * @en Triggered when the list reaches the bottom
      */
-    'reachBottom',
+    reachBottom: () => true,
     /**
      * @zh 表格分页发生改变时触发
      * @en Triggered when the table pagination changes
      * @param {number} page
      */
-    'pageChange',
+    pageChange: (page: number) => true,
     /**
      * @zh 表格每页数据数量发生改变时触发
      * @en Triggered when the number of data per page of the table changes
      * @param {number} pageSize
      */
-    'pageSizeChange',
-  ],
+    pageSizeChange: (pageSize: number) => true,
+  },
   /**
    * @zh 头部信息
    * @en Header
@@ -273,8 +271,8 @@ export default defineComponent({
 
       return (
         <Pagination
-          {...paginationProps}
           class={`${prefixCls}-pagination`}
+          {...paginationProps}
           current={current.value}
           pageSize={pageSize.value}
           onChange={handlePageChange}
@@ -314,13 +312,13 @@ export default defineComponent({
       return currentPageItems.length ? (
         <VirtualList
           ref={virtualListRef}
-          {...props.virtualListProps}
-          class={contentCls.value}
-          data={currentPageItems}
           v-slots={{
             item: ({ item, index }: { item: unknown; index: number }) =>
               slots.item?.({ item, index }),
           }}
+          class={contentCls.value}
+          data={currentPageItems}
+          {...props.virtualListProps}
           onScroll={handleScroll}
         />
       ) : (
@@ -366,7 +364,7 @@ export default defineComponent({
                   {renderScrollLoading()}
                 </>
               ) : (
-                <div class={contentCls.value}>
+                <div role="list" class={contentCls.value}>
                   {renderItems()}
                   {renderScrollLoading()}
                 </div>
