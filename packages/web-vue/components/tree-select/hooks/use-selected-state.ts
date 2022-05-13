@@ -73,7 +73,7 @@ export default function useSelectedState(props: {
       validValue.forEach((item) => {
         const key = getKey(item);
         const originValueItem = originValueMap.get(key);
-        const node = key2TreeNode.value[key];
+        const node = key2TreeNode.value.get(key);
         let fallbackNodeData: TreeNodeData | null = null;
         const nodeDataTitle = (fieldNames?.value?.title || 'title') as 'title';
 
