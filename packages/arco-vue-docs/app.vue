@@ -15,12 +15,12 @@
         @close="handleCloseGlobalNotice"
       >
         <a
-          href="https://mp.weixin.qq.com/s/06ALEmhxJcUqBGIVL4IQvA"
-          rel="Arco Global Notice noreferrer"
+          href="https://bytedance.feishu.cn/docx/doxcnHMY3EFM4N7GK8H2no1mZve"
+          rel="Arco Global Notice"
           target="_blank"
         >
           <span class="content">
-            Vue3 将成为默认版本，Arco 助力开发者轻装启航
+            Arco Toolbox Figma 插件工具全新发布，有奖公测中~
           </span>
           <b>
             查看更多
@@ -74,12 +74,12 @@ export default defineComponent({
     const showNav = ref(true);
     const showAnchor = ref(true);
     const showGlobalNotice = ref(
-      getLocalStorage('arco-global-notice') !== '3-vue'
+      getLocalStorage('arco-global-notice') !== '23-hide'
     );
 
     const handleCloseGlobalNotice = () => {
       showGlobalNotice.value = false;
-      setLocalStorage('arco-global-notice', '3-vue');
+      setLocalStorage('arco-global-notice', '23-hide');
     };
 
     const toggleNav = () => {
