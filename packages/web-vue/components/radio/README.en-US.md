@@ -14,6 +14,8 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 @import ./__demo__/group.md
 
+@import ./__demo__/options.md
+
 @import ./__demo__/direction.md
 
 @import ./__demo__/button.md
@@ -40,7 +42,7 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `string, number, boolean`|
+|change|Trigger when the value changes|value: `union`<br>event: `Event`|
 ### `<radio>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -52,18 +54,36 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 ### `<radio-group>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|model-value **(v-model)**|Value|`string \| number \| boolean`|`-`|
-|default-value|Default value (uncontrolled state)|`string \| number \| boolean`|`''`|
-|type|Types of radio group|`'radio' \| 'button'`|`'radio'`|
-|size|The size of the radio group|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
-|direction|The direction of the radio group|`'horizontal' \| 'vertical'`|`'horizontal'`|
-|disabled|Whether to disable|`boolean`|`false`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|model-value **(v-model)**|Value|`string \| number \| boolean`|`-`||
+|default-value|Default value (uncontrolled state)|`string \| number \| boolean`|`''`||
+|type|Types of radio group|`'radio' \| 'button'`|`'radio'`||
+|size|The size of the radio group|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`||
+|options|Options|`Array<string \| number \| RadioOption>`|`-`|2.27.0|
+|direction|The direction of the radio group|`'horizontal' \| 'vertical'`|`'horizontal'`||
+|disabled|Whether to disable|`boolean`|`false`||
 ### `<radio-group>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
 |change|Trigger when the value changes|value: `(string \| number)`|
+### `<radio-group>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|radio|Custom radio|checked: `boolean`<br>disabled: `boolean`|2.27.0|
+|label|radio label content|data: `RadioOption`|2.27.0|
+
+
+
+
+### RadioOption
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|label|label content|`RenderContent`|`-`|
+|value|The `value` of the option|`string \| number`|`-`|
+|disabled|Whether to disable|`boolean`|`false`|
 
 

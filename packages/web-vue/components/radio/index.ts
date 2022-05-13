@@ -1,8 +1,8 @@
 import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Radio from './radio.vue';
-import _RadioGroup from './radio-group.vue';
+import _Radio from './radio';
+import _RadioGroup from './radio-group';
 
 const Radio = Object.assign(_Radio, {
   Group: _RadioGroup,
