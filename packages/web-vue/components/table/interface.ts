@@ -1,4 +1,4 @@
-import { CSSProperties, RenderFunction, Slots, VNode } from 'vue';
+import { CSSProperties, RenderFunction, Slots, VNodeChild } from 'vue';
 import { Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
@@ -130,12 +130,12 @@ export interface TableFilterable {
     setFilterValue: (filterValue: string[]) => void;
     handleFilterConfirm: (event: Event) => void;
     handleFilterReset: (event: Event) => void;
-  }) => VNode;
+  }) => VNodeChild;
   /**
    * @zh 筛选按钮的图标
    * @en Filter icon for button
    */
-  icon?: () => VNode;
+  icon?: RenderFunction;
   /**
    * @zh 筛选框的弹出框配置
    * @en Pop-up box configuration of filter box
@@ -217,7 +217,7 @@ export interface TableColumnData {
     record: TableData;
     column: TableColumnData;
     rowIndex: number;
-  }) => VNode;
+  }) => VNodeChild;
   /**
    * @zh 设置当前列的渲染插槽的名字。插槽参数同 #cell
    * @en Sets the name of the render slot for the current column. Slot parameters are the same as #cell
@@ -322,12 +322,12 @@ export interface TableExpandable {
    * @zh 自定义展开行内容
    * @en Customize expanded row content
    */
-  expandedRowRender?: (record: TableData) => VNode;
+  expandedRowRender?: (record: TableData) => VNodeChild;
   /**
    * @zh 展开图标
    * @en Expand icon
    */
-  icon?: (expanded: boolean, record: TableData) => VNode;
+  icon?: (expanded: boolean, record: TableData) => VNodeChild;
   /**
    * @zh 列标题
    * @en Column title
@@ -379,7 +379,7 @@ export interface TableOperationColumn {
   title?: string | RenderFunction;
   width?: number;
   fixed?: boolean;
-  render?: (record: TableData) => VNode;
+  render?: (record: TableData) => VNodeChild;
   isLastLeftFixed?: boolean;
 }
 
