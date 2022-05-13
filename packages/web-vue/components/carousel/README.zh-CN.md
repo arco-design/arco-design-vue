@@ -42,6 +42,6 @@ description: 用于展示多张图片、视频或内嵌框架等内容的循环�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|幻灯片发生切换时的回调函数|index: `number`Index of current slide<br>prevIndex: `number`Index of previous slide<br>isManual: `boolean`Whether the slide change is triggered manually|
+|change|幻灯片发生切换时的回调函数|index: `number`<br>prevIndex: `number`<br>isManual: `boolean`|
 
 

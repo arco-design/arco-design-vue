@@ -1,18 +1,11 @@
 <template>
-  <div :class="cls" :style="animationStyle">
+  <div :aria-hidden="!isCurrent" :class="cls" :style="animationStyle">
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  getCurrentInstance,
-  onMounted,
-  onUnmounted,
-  inject,
-  computed,
-} from 'vue';
+import { defineComponent, getCurrentInstance, inject, computed } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { carouselInjectionKey, CarouselContext } from './context';
 
@@ -21,44 +14,30 @@ export default defineComponent({
   setup() {
     const prefixCls = getPrefixCls('carousel-item');
     const instance = getCurrentInstance();
-    const instanceId = instance!.uid;
-    const context = inject<CarouselContext>(carouselInjectionKey);
-    onMounted(() => {
-      if (context?.addItem) {
-        context.addItem({
-          uid: instanceId,
-        });
-      }
-    });
-    onUnmounted(() => {
-      if (context?.removeItem) {
-        context.removeItem(instanceId);
-      }
-    });
-    const myIndexRef = computed(() => {
-      const items = context?.items || [];
-      const index = items.findIndex((it) => it.uid === instanceId);
-      return index;
-    });
+    const context = inject<Partial<CarouselContext>>(carouselInjectionKey, {});
+    const index = computed(
+      () => context.items?.indexOf(instance?.uid ?? -1) ?? -1
+    );
+    const isCurrent = computed(
+      () => context.mergedIndexes?.mergedIndex === index.value
+    );
     const cls = computed(() => {
       const { previousIndex, animationName, slideDirection, mergedIndexes } =
-        context!;
-      const index = myIndexRef.value;
-      const { mergedPrevIndex, mergedNextIndex, mergedIndex } = mergedIndexes;
+        context;
       return {
-        [`${prefixCls}-prev`]: index === mergedPrevIndex,
-        [`${prefixCls}-next`]: index === mergedNextIndex,
-        [`${prefixCls}-current`]: index === mergedIndex,
+        [`${prefixCls}-prev`]: index.value === mergedIndexes?.mergedPrevIndex,
+        [`${prefixCls}-next`]: index.value === mergedIndexes?.mergedNextIndex,
+        [`${prefixCls}-current`]: isCurrent.value,
         [`${prefixCls}-slide-in`]:
-          animationName === 'slide' && slideDirection && index === mergedIndex,
+          animationName === 'slide' && slideDirection && isCurrent.value,
         [`${prefixCls}-slide-out`]:
           animationName === 'slide' &&
           slideDirection &&
-          index === previousIndex,
+          index.value === previousIndex,
       };
     });
     const animationStyle = computed(() => {
-      const { transitionTimingFunction, moveSpeed } = context!;
+      const { transitionTimingFunction, moveSpeed } = context;
       return {
         transitionTimingFunction,
         transitionDuration: `${moveSpeed}ms`,
@@ -69,6 +48,7 @@ export default defineComponent({
     return {
       cls,
       animationStyle,
+      isCurrent,
     };
   },
 });

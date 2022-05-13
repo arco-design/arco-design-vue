@@ -31,4 +31,4 @@ description: Carousel is used to display multiple pictures, videos, or embedded 
 
 ## API
 
-%%API(carousel.vue)%%
+%%API(carousel.tsx)%%
