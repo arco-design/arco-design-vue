@@ -2,6 +2,10 @@
 @import '../../../input/style/input.less';
 
 .input-label-style(@cls) {
+  &.@{cls}-search {
+    cursor: text;
+  }
+
   .input-wrapper-style(@cls);
 
   cursor: pointer;
@@ -40,10 +44,6 @@
     &-hidden {
       display: none;
     }
-  }
-
-  &.@{cls}-search {
-    cursor: text;
   }
 
   .size(@size) {
