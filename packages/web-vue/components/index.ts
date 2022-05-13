@@ -16,6 +16,7 @@ export { default as Carousel, CarouselItem } from './carousel';
 export { default as Cascader, CascaderPanel } from './cascader';
 export type { CascaderOption, CascaderFieldNames } from './cascader';
 export { default as Checkbox, CheckboxGroup } from './checkbox';
+export type { CheckboxOption } from './checkbox';
 export { default as Collapse, CollapseItem } from './collapse';
 export { default as Comment } from './comment';
 export { default as ConfigProvider } from './config-provider';

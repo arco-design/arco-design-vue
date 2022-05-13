@@ -1,37 +1,3 @@
-<template>
-  <label :class="cls">
-    <input
-      ref="checkboxRef"
-      type="checkbox"
-      :checked="computedChecked"
-      :value="value"
-      :class="`${prefixCls}-target`"
-      :disabled="mergedDisabled"
-      @click.stop
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
-    <slot name="checkbox" :checked="computedChecked" :disabled="mergedDisabled">
-      <icon-hover
-        :class="`${prefixCls}-icon-hover`"
-        :disabled="mergedDisabled || computedChecked"
-      >
-        <div :class="`${prefixCls}-icon`">
-          <icon-check
-            v-if="computedChecked"
-            :class="`${prefixCls}-icon-check`"
-          />
-        </div>
-      </icon-hover>
-    </slot>
-    <span v-if="$slots.default" :class="`${prefixCls}-label`">
-      <slot />
-    </span>
-  </label>
-</template>
-
-<script lang="ts">
 import type { PropType } from 'vue';
 import {
   computed,
@@ -47,7 +13,6 @@ import IconHover from '../_components/icon-hover.vue';
 import IconCheck from './icon-check';
 import { isArray } from '../_utils/is';
 import { checkboxGroupKey } from './context';
-import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
@@ -104,31 +69,28 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (value: boolean | Array<string | number | boolean>, ev: Event) => void
-        >
-      >,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: boolean | (string | number | boolean)[]) =>
+      true,
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {boolean | Array<string | number | boolean>} value
+     * @param {boolean|(string|number|boolean)[]} value
+     * @param {Event} event
      */
-    'change',
-  ],
+    'change': (value: boolean | (string | number | boolean)[], event: Event) =>
+      true,
+  },
   /**
    * @zh 自定义复选框
    * @en Custom checkbox
    * @slot checkbox
+   * @binding {boolean} checked
+   * @binding {boolean} disabled
    * @version 2.18.0
    */
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const { disabled } = toRefs(props);
     const prefixCls = getPrefixCls('checkbox');
     const checkboxRef = ref<HTMLInputElement>();
@@ -155,6 +117,10 @@ export default defineComponent({
         ? computedValue.value.includes(props.value ?? true)
         : computedValue.value;
     });
+
+    const handleClick = (ev: Event) => {
+      ev.stopPropagation();
+    };
 
     const handleChange = (e: Event) => {
       const { checked } = e.target as HTMLInputElement;
@@ -232,17 +198,43 @@ export default defineComponent({
       }
     });
 
-    return {
-      prefixCls,
-      cls,
-      checkboxRef,
-      mergedDisabled,
-      computedValue,
-      computedChecked,
-      handleChange,
-      handleFocus,
-      handleBlur,
-    };
+    return () => (
+      <label class={cls.value}>
+        <input
+          ref={checkboxRef}
+          type="checkbox"
+          checked={computedChecked.value}
+          value={props.value}
+          class={`${prefixCls}-target`}
+          disabled={mergedDisabled.value}
+          onClick={handleClick}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+        {slots.checkbox?.({
+          checked: computedChecked.value,
+          disabled: mergedDisabled.value,
+        }) ??
+          checkboxGroupCtx?.slots.checkbox?.({
+            checked: computedChecked.value,
+            disabled: mergedDisabled.value,
+          }) ?? (
+            <IconHover
+              class={`${prefixCls}-icon-hover`}
+              disabled={mergedDisabled.value || computedChecked.value}
+            >
+              <div class={`${prefixCls}-icon`}>
+                {computedChecked.value && (
+                  <IconCheck class={`${prefixCls}-icon-check`} />
+                )}
+              </div>
+            </IconHover>
+          )}
+        {slots.default && (
+          <span class={`${prefixCls}-label`}>{slots.default()}</span>
+        )}
+      </label>
+    );
   },
 });
-</script>
