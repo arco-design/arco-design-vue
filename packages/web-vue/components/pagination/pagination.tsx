@@ -363,6 +363,7 @@ export default defineComponent({
             <PageJumper
               disabled={props.disabled}
               current={computedCurrent.value}
+              size={mergedSize.value}
               pages={pages.value}
               simple
               onChange={handleClick}
