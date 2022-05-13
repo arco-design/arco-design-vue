@@ -19,6 +19,8 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/control.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/direction.md
@@ -26,6 +28,10 @@ description: In a set of related and mutually exclusive data, the user can only 
 @import ./__demo__/button.md
 
 @import ./__demo__/size.md
+
+@import ./__demo__/layout.md
+
+@import ./__demo__/custom.md
 
 ## API
 

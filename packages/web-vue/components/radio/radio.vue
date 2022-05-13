@@ -123,6 +123,8 @@ export default defineComponent({
    * @zh 自定义单选框
    * @en Custom radio
    * @slot radio
+   * @binding {boolean} checked
+   * @binding {boolean} disabled
    * @version 2.18.0
    */
   setup(props, { emit }) {

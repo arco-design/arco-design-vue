@@ -8,6 +8,8 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/control.md
+
 @import ./__demo__/group.md
 
 @import ./__demo__/direction.md
@@ -15,6 +17,10 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 @import ./__demo__/button.md
 
 @import ./__demo__/size.md
+
+@import ./__demo__/layout.md
+
+@import ./__demo__/custom.md
 
 ## API
 
@@ -37,7 +43,7 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
-|radio|自定义单选框|-|2.18.0|
+|radio|自定义单选框|checked: `boolean`<br>disabled: `boolean`|2.18.0|
 
 
 
