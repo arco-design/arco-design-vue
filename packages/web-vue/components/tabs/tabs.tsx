@@ -91,6 +91,7 @@ export default defineComponent({
     /**
      * @zh 是否在不显示标签时销毁内容
      * @en Whether to destroy the content when the label is not displayed
+     * @version 2.27.0
      */
     destroyOnHide: {
       type: Boolean,
@@ -180,7 +181,7 @@ export default defineComponent({
    * @slot extra
    */
   setup(props, { emit, slots }) {
-    const { size, lazyLoad } = toRefs(props);
+    const { size, lazyLoad, destroyOnHide } = toRefs(props);
     const prefixCls = getPrefixCls('tabs');
     const { mergedSize } = useSize(size);
     const mergedPosition = computed(() =>
@@ -234,6 +235,7 @@ export default defineComponent({
       tabsInjectionKey,
       reactive({
         lazyLoad,
+        destroyOnHide,
         activeKey: computedActiveKey,
         addItem,
         removeItem,

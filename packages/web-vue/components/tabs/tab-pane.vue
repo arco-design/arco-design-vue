@@ -51,6 +51,15 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 是否在不显示标签时销毁内容
+     * @en Whether to destroy the content when the label is not displayed
+     * @version 2.27.0
+     */
+    destroyOnHide: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { slots }) {
     const { title, disabled, closable } = toRefs(props);
@@ -61,7 +70,7 @@ export default defineComponent({
     const itemRef = ref<HTMLElement>();
     const key = computed(() => instance?.vnode.key as string | number);
     const active = computed(() => key.value === tabsCtx.activeKey);
-    const mounted = ref(!tabsCtx.lazyLoad);
+    const mounted = ref(tabsCtx.lazyLoad ? active.value : true);
 
     const data = reactive({
       key,
@@ -81,15 +90,15 @@ export default defineComponent({
       }
     });
 
-    watch(
-      active,
-      (active) => {
-        if (active && !mounted.value) {
+    watch(active, (active) => {
+      if (active) {
+        if (!mounted.value) {
           mounted.value = true;
         }
-      },
-      { immediate: true }
-    );
+      } else if (props.destroyOnHide || tabsCtx.destroyOnHide) {
+        mounted.value = false;
+      }
+    });
 
     return {
       prefixCls,
