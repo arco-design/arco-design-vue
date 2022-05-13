@@ -1,6 +1,13 @@
 <template>
   <div :class="cls">
-    <div :class="headerCls" @click="handleClick">
+    <div
+      role="button"
+      :aria-disabled="disabled"
+      :aria-expanded="isActive"
+      tabindex="0"
+      :class="headerCls"
+      @click="handleClick"
+    >
       <icon-hover
         v-if="showExpandIcon"
         :prefix="prefixCls"
@@ -22,9 +29,13 @@
         <slot name="extra" />
       </div>
     </div>
-    <transition name="collapse-slider" v-bind="transitionEvents" appear>
-      <div v-if="isActive" :class="contentCls">
-        <div ref="contentBoxRef" :class="`${prefixCls}-content-box`">
+    <transition name="collapse-slider" v-bind="transitionEvents">
+      <div v-show="isActive" role="region" :class="contentCls">
+        <div
+          v-if="mounted"
+          ref="contentBoxRef"
+          :class="`${prefixCls}-content-box`"
+        >
           <slot />
         </div>
       </div>
@@ -33,9 +44,16 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, getCurrentInstance, inject } from 'vue';
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  inject,
+  ref,
+  watch,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { collapseKey } from './context';
+import { CollapseContext, collapseKey } from './context';
 import IconHover from '../_components/icon-hover.vue';
 import IconCaretRight from '../icon/icon-caret-right';
 import IconCaretLeft from '../icon/icon-caret-left';
@@ -71,6 +89,15 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 是否在隐藏时销毁内容
+     * @en Whether to destroy content when hidden
+     * @version 2.27.0
+     */
+    destroyOnHide: {
+      type: Boolean,
+      default: false,
+    },
   },
   /**
    * @zh 面板的标题
@@ -83,32 +110,36 @@ export default defineComponent({
    * @slot extra
    */
   setup(props) {
+    const instance = getCurrentInstance();
     const prefixCls = getPrefixCls('collapse-item');
-    const component = getCurrentInstance();
-    const collapseCtx = inject(collapseKey, undefined);
+    const collapseCtx = inject<Partial<CollapseContext>>(collapseKey, {});
+
     const key =
-      component && isNumber(component?.vnode.key)
-        ? component.vnode.key
-        : String(component?.vnode.key ?? '');
-    const isActive = computed(() => collapseCtx?.activeKeys.includes(key));
+      instance && isNumber(instance?.vnode.key)
+        ? instance.vnode.key
+        : String(instance?.vnode.key ?? '');
+    const isActive = computed(() => collapseCtx.activeKeys?.includes(key));
+    const mergedDestroyOnHide = computed(
+      () => collapseCtx.destroyOnHide || props.destroyOnHide
+    );
+    const mounted = ref(mergedDestroyOnHide.value ? isActive.value : true);
     const expandIconPosition = computed(
       () => collapseCtx?.expandIconPosition ?? 'left'
     );
 
     const handleClick = (e: MouseEvent) => {
       if (!props.disabled) {
-        collapseCtx?.handleClick(key, e);
+        collapseCtx.handleClick?.(key, e);
       }
     };
 
+    watch(isActive, (isActive) => {
+      if (isActive && !mounted.value) {
+        mounted.value = true;
+      }
+    });
+
     const transitionEvents = {
-      // appear单独处理
-      onAppear: (el: HTMLDivElement) => {
-        el.style.height = 'auto';
-      },
-      onBeforeEnter: (el: HTMLDivElement) => {
-        el.style.display = 'block';
-      },
       onEnter: (el: HTMLDivElement) => {
         el.style.height = `${el.scrollHeight}px`;
       },
@@ -116,14 +147,15 @@ export default defineComponent({
         el.style.height = 'auto';
       },
       onBeforeLeave: (el: HTMLDivElement) => {
-        el.style.display = 'block';
         el.style.height = `${el.scrollHeight}px`;
       },
       onLeave: (el: HTMLDivElement) => {
         el.style.height = '0';
       },
-      onAfterLeave: (el: HTMLDivElement) => {
-        el.style.display = 'none';
+      onAfterLeave: () => {
+        if (mergedDestroyOnHide.value) {
+          mounted.value = false;
+        }
       },
     };
 
@@ -163,6 +195,7 @@ export default defineComponent({
       iconCls,
       contentCls,
       isActive,
+      mounted,
       expandIconPosition,
       transitionEvents,
       handleClick,

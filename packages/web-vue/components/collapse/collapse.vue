@@ -66,24 +66,29 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-    // for JSX
-    onChange: {
-      type: Function as PropType<
-        (activeKey: string | number | (string | number)[]) => void
-      >,
+    /**
+     * @zh 是否在隐藏时销毁内容
+     * @en Whether to destroy content when hidden
+     * @version 2.27.0
+     */
+    destroyOnHide: {
+      type: Boolean,
+      default: false,
     },
   },
-  emits: [
-    'update:activeKey',
+  emits: {
+    'update:activeKey': (activeKey: (string | number)[]) => true,
     /**
      * @zh 展开的面板发生改变时触发
      * @en Emitted when the expanded panel changes
+     * @param {(string | number)[]} activeKey
+     * @param {Event} event
      */
-    'change',
-  ],
+    'change': (activeKey: (string | number)[], event: Event) => true,
+  },
   setup(props, { emit }) {
+    const { expandIconPosition, destroyOnHide } = toRefs(props);
     const prefixCls = getPrefixCls('collapse');
-    const { expandIconPosition } = toRefs(props);
 
     const _activeKey = ref(props.defaultActiveKey);
     const computedActiveKeys = computed(() => {
@@ -122,6 +127,7 @@ export default defineComponent({
       reactive({
         activeKeys: computedActiveKeys,
         expandIconPosition,
+        destroyOnHide,
         handleClick,
       })
     );

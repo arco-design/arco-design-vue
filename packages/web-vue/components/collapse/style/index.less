@@ -50,14 +50,14 @@
       justify-content: space-between;
       box-sizing: border-box;
       padding-top: @collapse-title-padding-vertical;
-      line-height: @collapse-title-line-height;
       padding-bottom: $padding-top;
       overflow: hidden;
       color: @collapse-title-color-text;
+      font-size: @collapse-title-font-size;
+      line-height: @collapse-title-line-height;
       background-color: @collapse-title-color-bg;
       border-bottom: 1px solid @color-transparent;
       cursor: pointer;
-      font-size: @collapse-title-font-size;
       // Ensure that the border is hidden when the collapse animation is complete
       transition: border-color 0s ease 0.19s;
 
@@ -122,7 +122,6 @@
 
     &-content {
       position: relative;
-      display: none;
       padding-right: @collapse-title-padding-horizontal;
       padding-left: @collapse-title-padding-horizontal +
         @collapse-expand-icon-size-bg + @collapse-expand-icon-spacing-text;
