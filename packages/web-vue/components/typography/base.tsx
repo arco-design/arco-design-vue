@@ -227,13 +227,13 @@ export default defineComponent({
     /**
      * @zh 编辑内容变化
      * @en Edit content change
+     * @param text {string} Changed text
      */
     'change',
     'update:editText',
     /**
      * @zh 编辑结束
      * @en Edit end
-     * @param text {string} Edited text
      */
     'editEnd',
     'update:editing',

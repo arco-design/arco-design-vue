@@ -32,6 +32,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('typography');
     const classNames = [`${prefixCls}-edit-content`];
     const inputRef = ref<typeof Input>();
+    let isEnd = false;
 
     function onChange(value: string) {
       emit('update:text', value);
@@ -39,7 +40,10 @@ export default defineComponent({
     }
 
     function onEnd() {
-      emit('end');
+      if (!isEnd) {
+        emit('end');
+        isEnd = true;
+      }
     }
 
     onMounted(() => {
