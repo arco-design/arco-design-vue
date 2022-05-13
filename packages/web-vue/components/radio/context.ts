@@ -1,4 +1,4 @@
-import type { InjectionKey } from 'vue';
+import type { InjectionKey, Slots } from 'vue';
 import type { Size } from '../_utils/constant';
 
 export const RADIO_TYPES = ['radio', 'button'] as const;
@@ -10,6 +10,7 @@ export interface RadioGroupContext {
   size: Size;
   type: RadioType;
   disabled: boolean;
+  slots: Slots;
   handleChange: (value: string | number | boolean, e: Event) => void;
 }
 

@@ -1,37 +1,3 @@
-<template>
-  <label :class="cls">
-    <input
-      ref="inputRef"
-      type="radio"
-      :checked="computedChecked"
-      :value="value"
-      :class="`${prefixCls}-target`"
-      :disabled="mergedDisabled"
-      @click.stop
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
-    <template v-if="mergedType === 'radio'">
-      <slot name="radio" :checked="computedChecked" :disabled="mergedDisabled">
-        <icon-hover
-          :class="`${prefixCls}-icon-hover`"
-          :disabled="mergedDisabled || computedChecked"
-        >
-          <span :class="`${prefixCls}-icon`" />
-        </icon-hover>
-      </slot>
-      <span v-if="$slots.default" :class="`${prefixCls}-label`">
-        <slot />
-      </span>
-    </template>
-    <span v-else :class="`${prefixCls}-button-content`">
-      <slot />
-    </span>
-  </label>
-</template>
-
-<script lang="ts">
 import type { PropType } from 'vue';
 import {
   computed,
@@ -47,7 +13,6 @@ import IconHover from '../_components/icon-hover.vue';
 import type { RadioType } from './context';
 import { radioGroupKey } from './context';
 import { isUndefined } from '../_utils/is';
-import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
@@ -103,22 +68,17 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string | number | boolean, e: Event) => void>
-      >,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: string | number | boolean) => true,
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {string, number, boolean} value
+     * @param {string|number|boolean} value
+     * @param {Event} event
      */
-    'change',
-  ],
+    'change': (value: string | number | boolean, event: Event) => true,
+  },
   /**
    * @zh 自定义单选框
    * @en Custom radio
@@ -127,7 +87,7 @@ export default defineComponent({
    * @binding {boolean} disabled
    * @version 2.18.0
    */
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('radio');
     const radioGroupCtx = !props.uninjectGroupContext
       ? inject(radioGroupKey, undefined)
@@ -180,6 +140,10 @@ export default defineComponent({
       eventHandlers.value?.onBlur?.(ev);
     };
 
+    const handleClick = (ev: Event) => {
+      ev.stopPropagation();
+    };
+
     const handleChange = (e: Event) => {
       _checked.value = true;
       if (isGroup.value) {
@@ -208,17 +172,45 @@ export default defineComponent({
       },
     ]);
 
-    return {
-      prefixCls,
-      cls,
-      inputRef,
-      mergedType,
-      mergedDisabled,
-      computedChecked,
-      handleChange,
-      handleFocus,
-      handleBlur,
-    };
+    const defaultRadio = () => (
+      <>
+        <icon-hover
+          class={`${prefixCls}-icon-hover`}
+          disabled={mergedDisabled.value || computedChecked.value}
+        >
+          <span class={`${prefixCls}-icon`} />
+        </icon-hover>
+        {slots.default && (
+          <span class={`${prefixCls}-label`}>{slots.default()}</span>
+        )}
+      </>
+    );
+
+    return () => (
+      <label class={cls.value}>
+        <input
+          ref={inputRef}
+          type="radio"
+          checked={computedChecked.value}
+          value={props.value}
+          class={`${prefixCls}-target`}
+          disabled={mergedDisabled.value}
+          onClick={handleClick}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+        {mergedType.value === 'radio' ? (
+          (slots.radio ?? radioGroupCtx?.slots?.radio)?.({
+            checked: computedChecked.value,
+            disabled: mergedDisabled.value,
+          }) ?? defaultRadio()
+        ) : (
+          <span class={`${prefixCls}-button-content`}>
+            {slots.default && slots.default()}
+          </span>
+        )}
+      </label>
+    );
   },
 });
-</script>
