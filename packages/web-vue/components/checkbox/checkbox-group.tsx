@@ -2,7 +2,6 @@ import type { PropType } from 'vue';
 import {
   computed,
   defineComponent,
-  nextTick,
   provide,
   reactive,
   ref,
@@ -10,12 +9,12 @@ import {
   watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { DIRECTIONS, Direction } from '../_utils/constant';
+import { Direction } from '../_utils/constant';
 import { checkboxGroupKey } from './context';
 import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 import { CheckboxOption } from './interface';
-import Checkbox from './checkbox.vue';
+import Checkbox from './checkbox';
 import { isFunction, isNumber, isString } from '../_utils/is';
 
 export default defineComponent({
@@ -39,12 +38,12 @@ export default defineComponent({
       default: () => [],
     },
     /**
-     * @zh 以配置形式设置子元素
-     * @en Default value (uncontrolled state)
+     * @zh 选项
+     * @en Options
+     * @version 2.27.0
      */
     options: {
       type: Array as PropType<Array<string | number | CheckboxOption>>,
-      default: () => [],
     },
     /**
      * @zh 复选框的排列方向
@@ -53,7 +52,6 @@ export default defineComponent({
     direction: {
       type: String as PropType<Direction>,
       default: 'horizontal',
-      validator: (value: any) => DIRECTIONS.includes(value),
     },
     /**
      * @zh 是否禁用
@@ -70,19 +68,30 @@ export default defineComponent({
       >,
     },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: (string | number | boolean)[]) => true,
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {Array<string | number | boolean>} value
+     * @param {(string|number|boolean)[]} value
+     * @param {Event} event
      */
-    'change',
-  ],
+    'change': (value: (string | number | boolean)[], event: Event) => true,
+  },
   /**
    * @zh checkbox 文案内容
    * @en checkbox label content
    * @slot label
+   * @binding {CheckboxOption} data
+   * @version 2.27.0
+   */
+  /**
+   * @zh 自定义复选框
+   * @en Custom checkbox
+   * @slot checkbox
+   * @binding {boolean} checked
+   * @binding {boolean} disabled
+   * @version 2.27.0
    */
   setup(props, { emit, slots }) {
     const { disabled } = toRefs(props);
@@ -95,7 +104,7 @@ export default defineComponent({
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
     const options = computed(() => {
-      return props.options.map((option) => {
+      return (props.options ?? []).map((option) => {
         if (isString(option) || isNumber(option)) {
           return {
             label: option,
@@ -119,6 +128,7 @@ export default defineComponent({
         name: 'ArcoCheckboxGroup',
         computedValue,
         disabled: mergedDisabled,
+        slots,
         handleChange,
       })
     );
@@ -137,27 +147,28 @@ export default defineComponent({
       }
     );
 
-    return () => {
-      let children = null;
-      if (options.value && options.value.length > 0) {
-        children = options.value.map((option, index) => (
-          <Checkbox
-            key={option.value.toString() ?? index}
-            disabled={option.disabled}
-            indeterminate={option.indeterminate}
-            value={option.value}
-            modelValue={computedValue.value.indexOf(option.value) !== -1}
-            onChange={option?.onChange}
-          >
-            {slots.label
-              ? slots.label(option)
-              : isFunction(option.label)
-              ? option.label()
-              : option.label}
-          </Checkbox>
-        ));
-      }
-      return <span class={cls.value}>{children || slots.default?.()}</span>;
+    const renderOptions = () => {
+      return options.value.map((option, index) => (
+        <Checkbox
+          key={option.value}
+          value={option.value}
+          disabled={option.disabled}
+          indeterminate={option.indeterminate}
+          modelValue={computedValue.value.includes(option.value)}
+        >
+          {slots.label
+            ? slots.label({ data: option })
+            : isFunction(option.label)
+            ? option.label()
+            : option.label}
+        </Checkbox>
+      ));
     };
+
+    return () => (
+      <span class={cls.value}>
+        {options.value.length > 0 ? renderOptions() : slots.default?.()}
+      </span>
+    );
   },
 });

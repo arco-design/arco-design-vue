@@ -1,7 +1,7 @@
 ```yaml
 title:
-  zh-CN: 配置列表
-  en-US: Group options
+  zh-CN: 复选框组选项
+  en-US: Checkbox Group options
 ```
 
 ## zh-CN
@@ -22,8 +22,8 @@ title:
     <a-checkbox-group v-model="value1" :options="plainOptions" />
     <a-checkbox-group v-model="value2" :options="options" />
     <a-checkbox-group v-model="value2" :options="options">
-      <template #label="{ label }">
-        <a-tag>{{ label }}</a-tag>
+      <template #label="{ data }">
+        <a-tag>{{ data.label }}</a-tag>
       </template>
     </a-checkbox-group>
   </a-space>
@@ -41,14 +41,14 @@ export default {
     const options = [
       { label: 'option 1', value: '1' },
       { label: 'option 2', value: '2' },
-      { label: 'option 3', value: '3', disabled: false },
+      { label: 'option 3', value: '3', disabled: true },
     ];
 
     return {
-      value1,
       plainOptions,
-      value2,
       options,
+      value1,
+      value2,
     };
   },
 };

@@ -21,12 +21,4 @@ export interface CheckboxOption {
    * @en Whether it is half-selected
    */
   indeterminate?: boolean;
-  /**
-   * @zh 值改变时触发
-   * @en Trigger when the value changes
-   */
-  onChange?: (
-    value: boolean | Array<string | number | boolean>,
-    ev: Event
-  ) => void;
 }

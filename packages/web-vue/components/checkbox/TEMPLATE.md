@@ -31,7 +31,7 @@ description: In a set of data, the user can select one or more data through the 
 
 ## API
 
-%%API(checkbox.vue)%%
+%%API(checkbox.tsx)%%
 
 %%API(checkbox-group.tsx)%%
 
