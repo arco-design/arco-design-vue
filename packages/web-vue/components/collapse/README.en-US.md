@@ -35,7 +35,7 @@ description: The content area that can be collapsed/expanded.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Emitted when the expanded panel changes|activeKey: `(string \| number)[]`<br>event: `Event`|
+|change|Emitted when the expanded panel changes|activeKey: `(string \| number)[]`<br>ev: `Event`|
 
 
 

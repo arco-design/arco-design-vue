@@ -34,7 +34,7 @@ description: Used as an avatar, it can be displayed in the form of pictures, ico
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|click|Callback when clicked|event: `Event`event|
+|click|Callback when clicked|ev: `MouseEvent`|
 ### `<avatar>` Slots
 
 |Slot Name|Description|Parameters|

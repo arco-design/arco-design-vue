@@ -38,7 +38,7 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|value: `union`<br>event: `Event`|
+|change|值改变时触发|value: `union`<br>ev: `Event`|
 ### `<checkbox>` Slots
 
 |插槽名|描述|参数|版本|
@@ -61,7 +61,7 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|value: `union`<br>event: `Event`|
+|change|值改变时触发|value: `union`<br>ev: `Event`|
 ### `<checkbox-group>` Slots
 
 |插槽名|描述|参数|版本|

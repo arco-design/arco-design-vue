@@ -54,12 +54,12 @@ description: Basic form components have been expanded on the basis of native con
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|input|Triggered when the user enters|value: `string`<br>event: `Event`|
-|change|Only triggered when the input box is out of focus or when you press Enter|value: `string`<br>event: `Event`|
-|press-enter|Triggered when the user presses enter|-|
-|clear|Triggered when the user clicks the clear button|-|
-|focus|Triggered when the input box gets focus|-|
-|blur|Triggered when the input box loses focus|-|
+|input|Triggered when the user enters|value: `string`<br>ev: `Event`|
+|change|Only triggered when the input box is out of focus or when you press Enter|value: `string`<br>ev: `Event`|
+|press-enter|Triggered when the user presses enter|ev: `KeyboardEvent`|
+|clear|Triggered when the user clicks the clear button|ev: `MouseEvent`|
+|focus|Triggered when the input box gets focus|ev: `FocusEvent`|
+|blur|Triggered when the input box loses focus|ev: `FocusEvent`|
 ### `<input>` Methods
 
 |Method|Description|Parameters|Return|
@@ -105,6 +105,6 @@ description: Basic form components have been expanded on the basis of native con
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|search|Triggered when the search button is clicked|value: `string`<br>event: `MouseEvent`|
+|search|Triggered when the search button is clicked|value: `string`<br>ev: `MouseEvent`|
 
 

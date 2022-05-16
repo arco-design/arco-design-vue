@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { MessageMethod } from './message';
 import { NotificationMethod } from './notification';
 import { ModalMethod } from './modal';

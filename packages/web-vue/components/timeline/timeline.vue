@@ -55,9 +55,6 @@ export default defineComponent({
      */
     direction: {
       type: String as PropType<DirectionType>,
-      validator: (value: DirectionType) => {
-        return DIRECTIONS.includes(value);
-      },
       default: 'vertical',
     },
     /**
@@ -67,9 +64,6 @@ export default defineComponent({
      */
     mode: {
       type: String as PropType<ModeType>,
-      validator: (value: ModeType) => {
-        return MODES.includes(value);
-      },
       default: 'left',
     },
     /**
@@ -86,9 +80,6 @@ export default defineComponent({
      */
     labelPosition: {
       type: String as PropType<LabelPositionType>,
-      validator: (value: LabelPositionType) => {
-        return LABEL_POSITIONS.includes(value);
-      },
       default: 'same',
     },
   },

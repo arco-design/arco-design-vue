@@ -33,7 +33,7 @@ description: 可以折叠 / 展开的内容区域。
 
 |事件名|描述|参数|
 |---|---|---|
-|change|展开的面板发生改变时触发|activeKey: `(string \| number)[]`<br>event: `Event`|
+|change|展开的面板发生改变时触发|activeKey: `(string \| number)[]`<br>ev: `Event`|
 
 
 

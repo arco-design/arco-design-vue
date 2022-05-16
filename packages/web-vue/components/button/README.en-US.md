@@ -46,7 +46,7 @@ description: Button is a command component that can initiate an instant operatio
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|click|Emitted when the button is clicked|event: `MouseEvent`|
+|click|Emitted when the button is clicked|ev: `MouseEvent`|
 ### `<button>` Slots
 
 |Slot Name|Description|Parameters|

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.27.1
+
+`2022-05-16`
+
+### 🐛 问题修复
+
+- **select:** 修复使用 options 属性时，分组选项不能选择的问题 ([#1141](https://github.com/arco-design/arco-design-vue/pull/1141))
+
+### 🆎 类型修正
+
+- 修复部分组件 ts 错误问题 ([#1139](https://github.com/arco-design/arco-design-vue/pull/1139))
+
+
 ## 2.27.0
 
 `2022-05-13`

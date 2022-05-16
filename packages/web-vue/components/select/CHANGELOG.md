@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.27.1
+
+`2022-05-16`
+
+### 🐛 BugFix
+
+- Fixed an issue where grouping options could not be selected when using the options property ([#1141](https://github.com/arco-design/arco-design-vue/pull/1141))
+
+
 ## 2.27.0
 
 `2022-05-13`

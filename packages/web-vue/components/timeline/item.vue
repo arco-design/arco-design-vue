@@ -131,11 +131,11 @@ export default defineComponent({
     });
 
     const contextDirection = computed(() => {
-      return context?.direction;
+      return context?.direction ?? 'vertical';
     });
 
     const contextLabelPosition = computed(() => {
-      return context?.labelPosition;
+      return context?.labelPosition ?? 'same';
     });
 
     const cls = computed(() => {

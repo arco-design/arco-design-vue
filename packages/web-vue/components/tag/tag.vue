@@ -154,10 +154,10 @@ export default defineComponent({
     const { size } = toRefs(props);
     const prefixCls = getPrefixCls('tag');
     const isBuiltInColor = computed(
-      () => props.color && TAG_COLORS.includes(props.color)
+      () => props.color && TAG_COLORS.includes(props.color as any)
     );
     const isCustomColor = computed(
-      () => props.color && !TAG_COLORS.includes(props.color)
+      () => props.color && !TAG_COLORS.includes(props.color as any)
     );
     const _visible = ref(props.defaultVisible);
     const _checked = ref(props.defaultChecked);

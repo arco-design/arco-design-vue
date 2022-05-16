@@ -40,7 +40,7 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|value: `union`<br>event: `Event`|
+|change|值改变时触发|value: `union`<br>ev: `Event`|
 ### `<radio>` Slots
 
 |插槽名|描述|参数|版本|
@@ -65,7 +65,7 @@ description: 在一组相关且互斥数据中，用户仅能选择一个选项�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|value: `(string \| number)`|
+|change|值改变时触发|value: `union`|
 ### `<radio-group>` Slots
 
 |插槽名|描述|参数|版本|
