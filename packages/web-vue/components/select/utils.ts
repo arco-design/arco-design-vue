@@ -97,7 +97,6 @@ export const getOptionInfos = (
   }
 ) => {
   const infos: (SelectOptionInfo | SelectOptionGroupInfo)[] = [];
-  optionInfoMap.clear();
 
   for (const item of options) {
     if (isGroupOption(item)) {
