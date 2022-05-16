@@ -90,14 +90,14 @@ export default defineComponent({
       type: Object as PropType<CSSProperties>,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 点击回调
      * @en Callback when clicked
-     * @param {Event} event event
+     * @param {MouseEvent} ev
      */
-    'click',
-  ],
+    click: (ev: MouseEvent) => true,
+  },
   /**
    * @zh 可点击的头像交互图标
    * @en Clickable avatar interaction icon
@@ -194,7 +194,7 @@ export default defineComponent({
       isImage.value ? `${prefixCls}-image` : `${prefixCls}-text`
     );
 
-    const onClick = (e: Event) => {
+    const onClick = (e: MouseEvent) => {
       emit('click', e);
     };
 

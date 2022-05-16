@@ -31,11 +31,11 @@ export interface VirtualListProps {
    * @zh 元素高度是否是固定的
    * @en Is the element height fixed
    */
-  isStaticItemHeight: boolean;
+  isStaticItemHeight?: boolean;
   estimatedItemHeight?: number;
-  data: unknown[];
-  itemKey: string | ((item: unknown) => Key);
-  component: keyof HTMLElementTagNameMap;
+  data?: unknown[];
+  itemKey?: string | ((item: unknown) => Key);
+  component?: keyof HTMLElementTagNameMap;
 }
 
 export type ScrollOptions =

@@ -144,38 +144,37 @@ export default defineComponent({
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
      * @param {number|undefined} value
-     * @param {Event} event
+     * @param {Event} ev
      */
-    'change': (value: number | undefined, event: Event) => true,
+    'change': (value: number | undefined, ev: Event) => true,
     /**
      * @zh 输入框获取焦点时触发
      * @en Triggered when the input gets focus
-     * @param {FocusEvent} event
+     * @param {FocusEvent} ev
      */
-    'focus': (event: FocusEvent) => true,
+    'focus': (ev: FocusEvent) => true,
     /**
      * @zh 输入框失去焦点时触发
      * @en Triggered when the input box loses focus
-     * @param {FocusEvent} event
+     * @param {FocusEvent} ev
      */
-    'blur': (event: FocusEvent) => true,
+    'blur': (ev: FocusEvent) => true,
     /**
      * @zh 用户点击清除按钮时触发
      * @en Triggered when the user clicks the clear button
-     * @param {Event} event
+     * @param {Event} ev
      * @version 2.23.0
      */
-    'clear': (event: Event) => true,
+    'clear': (ev: Event) => true,
     /**
      * @zh 输入时触发
      * @en Triggered on input
      * @param {number|undefined} value
      * @param {string} inputValue
-     * @param {Event} event
+     * @param {Event} ev
      * @version 2.27.0
      */
-    'input': (value: number | undefined, inputValue: string, event: Event) =>
-      true,
+    'input': (value: number | undefined, inputValue: string, ev: Event) => true,
   },
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
