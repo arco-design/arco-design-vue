@@ -82,9 +82,9 @@ export default defineComponent({
      * @zh 展开的面板发生改变时触发
      * @en Emitted when the expanded panel changes
      * @param {(string | number)[]} activeKey
-     * @param {Event} event
+     * @param {Event} ev
      */
-    'change': (activeKey: (string | number)[], event: Event) => true,
+    'change': (activeKey: (string | number)[], ev: Event) => true,
   },
   setup(props, { emit }) {
     const { expandIconPosition, destroyOnHide } = toRefs(props);

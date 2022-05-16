@@ -11,7 +11,6 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { Size, Direction } from '../_utils/constant';
 import { radioGroupKey, RadioType } from './context';
-import { EmitType } from '../_utils/types';
 import { isFunction, isNumber, isString } from '../_utils/is';
 import { useFormItem } from '../_hooks/use-form-item';
 import { RadioOption } from './interface';
@@ -79,22 +78,16 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string | number | boolean, e: Event) => void>
-      >,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: string | number | boolean) => true,
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {(string | number)} value
+     * @property {string|number|boolean} value
      */
-    'change',
-  ],
+    'change': (value: string | number | boolean, ev: Event) => true,
+  },
   /**
    * @zh radio 文案内容
    * @en radio label content

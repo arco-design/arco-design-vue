@@ -65,9 +65,9 @@ export default defineComponent({
      * @zh 单击搜索按钮时触发
      * @en Triggered when the search button is clicked
      * @param {string} value
-     * @param {MouseEvent} event
+     * @param {MouseEvent} ev
      */
-    search: (value: string, event: MouseEvent) => true,
+    search: (value: string, ev: MouseEvent) => true,
   },
   setup(props, { emit, slots }) {
     const { size } = toRefs(props);

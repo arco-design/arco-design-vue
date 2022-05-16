@@ -132,7 +132,7 @@ export default defineComponent({
     /**
      * @zh 点击按钮时触发
      * @en Emitted when the button is clicked
-     * @property {MouseEvent} event
+     * @property {MouseEvent} ev
      */
     click: (ev: MouseEvent) => true,
   },

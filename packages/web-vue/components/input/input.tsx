@@ -128,36 +128,40 @@ export default defineComponent({
      * @zh 用户输入时触发
      * @en Triggered when the user enters
      * @param {string} value
-     * @param {Event} event
+     * @param {Event} ev
      */
-    'input': (value: string, event: Event) => true,
+    'input': (value: string, ev: Event) => true,
     /**
      * @zh 仅在输入框失焦或按下回车时触发
      * @en Only triggered when the input box is out of focus or when you press Enter
      * @param {string} value
-     * @param {Event} event
+     * @param {Event} ev
      */
-    'change': (value: string, event: Event) => true,
+    'change': (value: string, ev: Event) => true,
     /**
      * @zh 用户按下回车时触发
      * @en Triggered when the user presses enter
+     * @param {KeyboardEvent} ev
      */
-    'pressEnter': (event: KeyboardEvent) => true,
+    'pressEnter': (ev: KeyboardEvent) => true,
     /**
      * @zh 用户点击清除按钮时触发
      * @en Triggered when the user clicks the clear button
+     * @param {MouseEvent} ev
      */
-    'clear': (event: MouseEvent) => true,
+    'clear': (ev: MouseEvent) => true,
     /**
      * @zh 输入框获取焦点时触发
      * @en Triggered when the input box gets focus
+     * @param {FocusEvent} ev
      */
-    'focus': (event: FocusEvent) => true,
+    'focus': (ev: FocusEvent) => true,
     /**
      * @zh 输入框失去焦点时触发
      * @en Triggered when the input box loses focus
+     * @param {FocusEvent} ev
      */
-    'blur': (event: FocusEvent) => true,
+    'blur': (ev: FocusEvent) => true,
   },
   /**
    * @zh 前缀元素
