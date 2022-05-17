@@ -9,40 +9,18 @@ description: 路由和菜单的生成
 
 ## 路由
 
-首先，需要先了解一下路由表的配置
+首先，需要先了解一下路由表的配置。基本的路由配置请参阅 [Vue-Router](https://router.vuejs.org/) 官方文档
 
  ```ts
-import { createRouter, createWebHistory } from 'vue-router';
-
-import Login from './modules/login';
-import PageLayout from '@/layout/page-layout.vue';
-import appRoutes from './modules';
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    Login,
-    {
-      path: '/app',
-      component: PageLayout,
-      children: appRoutes,
-    },
-  ],
-});
-```
-
-示例
-
- ```ts
-// 在本例子中，页面最终路径为 app/dashboard/workplace
+// 在本例子中，页面最终路径为 /dashboard/workplace
 export default {
   path: 'dashboard',
   name: 'dashboard', // 路由名称
   component: () => import('@/views/dashboard/index.vue'),
   meta: {
-    locale: 'menu.dashboard', // 一级菜单名（语言包键名）
-    requiresAuth: true, // 是否需要鉴权
-    icon: 'icon-dashboard', // 菜单配置icon
+    locale: 'menu.dashboard',
+    requiresAuth: true,
+    icon: 'icon-dashboard',
   },
   children: [
     {
@@ -50,125 +28,56 @@ export default {
       name: 'workplace',
       component: () => import('@/views/dashboard/workplace/index.vue'),
       meta: {
-        locale: 'menu.dashboard.workplace', // 二级菜单名（语言包键名）
-        requiresAuth: true, // 是否需要鉴权
-        roles: ['admin'], // 权限角色
-        hideInMenu: false, // 是否隐藏菜单项
+        locale: 'menu.dashboard.workplace',
+        requiresAuth: true,
+        roles: ['admin'],
+        hideInMenu: false,
       },
     },
   ],
 };
 ```
 
+路由 `Meta` 元信息
+
+
+| 参数名	 | 说明 | 类型 | 默认值|
+| ------------- | ------------- | -------------- | -------------- |
+roles | 配置能访问该页面的角色，如果不匹配，则会被禁止访问该路由页面	 | string[]| - |
+requiresAuth | 是否需要登录鉴权 | boolean| false |
+icon | 菜单配置icon | string| - |
+locale | 一级菜单名（语言包键名） | string| - |
+hideInMenu | 是否在左侧菜单中隐藏该项 | boolean| - |
+hideChildrenInMenu | 强制在左侧菜单中显示单项 | boolean| - |
+activeMenu | 是否在左侧菜单中隐藏该项的子级。 | string| - |
+order | 排序路由菜单项。如果设置该值，值越高，越靠前。 | number| - |
+noAffix | 如果设置为true，标签将不会添加到tab-bar中。 | boolean| - |
+ignoreCache | 如果设置为true页面将不会被缓存 | boolean| - |
+
 ## 菜单
 
-菜单组件中可以找到菜单生成过程：
+前端菜单生成过程：
 
-- 通过 router.getRoutes()，得到带有路由信息的路由树。
+- 通过 [appRoute](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L10) 计算属性，得到带有路由信息的路由树。
 
- ```ts
-// components/menu/index.vue
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
-export default defineComponent({
-  setup() {
-    const router = useRouter();
-    const appRoute = computed(() => {
-      return router
-        .getRoutes()
-        .find((el) => el.name === 'root') as RouteRecordNormalized;
-    });
-    ......
-  },
-});
-```
+- 使用上一步获取的路由信息进行权限过滤，生成用于渲染的 [菜单树](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L23)。
 
-- 使用上一步获取的业务路由树进行权限过滤，生成用于渲染的菜单树。
+- 通过 [渲染](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/index.vue#L48) 菜单树，递归生成菜单。
 
-```tsx
-const menuTree = computed(() => {
-  const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children));
-  function travel(_routes: RouteRecordRaw[], layer: number) {
-    if (!_routes) return null;
-    const collector: any = _routes.map((element) => {
-      // no access
-      if (!permission.accessRouter(element)) {
-        return null;
-      }
+服务端菜单生成过程：
 
-      // leaf node
-      if (!element.children) {
-        return element;
-      }
+- 在Store中增加api请求的 [action](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/store/modules/app/index.ts#L47)，用于获取服务端的路由配置。
 
-      // Associated child node
-      const subItem = travel(element.children, layer);
-      if (subItem.length) {
-        element.children = subItem;
-        return element;
-      }
-      // the else logic
-      if (layer > 1) {
-        element.children = subItem;
-        return element;
-      }
-      return null;
-    });
-    return collector.filter(Boolean);
-  }
-  return travel(copyRouter, 0);
-});
-```
+- 发起请求，将服务端的路由配置结果存储在Store中。
+  
+- 通过 [appRoute](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L10) 计算属性，得到带有路由信息的路由树。
 
-- 通过渲染菜单树，递归生成菜单。(本例子使用jsx语法)
+- 使用上一步获取的路由信息进行权限过滤，生成用于渲染的 [菜单树](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L23)。
 
-```tsx
-const renderSubMenu = () => {
-  function travel(_route: RouteRecordRaw[], nodes = []) {
-    if (_route) {
-      _route.forEach((element) => {
-        // This is demo, modify nodes as needed
-        const icon = element?.meta?.icon ? `<${element?.meta?.icon}/>` : ``;
-        const subMenuItem = (
-          <a-sub-menu
-            key={element?.name}
-            v-slots={{
-              icon: () => h(compile(icon)),
-              title: () => h(compile(t(element?.meta?.locale || ''))),
-            }}
-          >
-            {element?.children?.map((elem) => {
-              return (
-                <a-menu-item key={elem.name} onClick={() => goto(elem)}>
-                  {t(elem?.meta?.locale || '')}
-                  {travel(elem.children ?? [])}
-                </a-menu-item>
-              );
-            })}
-          </a-sub-menu>
-        );
-        nodes.push(subMenuItem as never);
-      });
-    }
-    return nodes;
-  }
-  return travel(menuTree.value); // 递归menuTree
-};
-return () => (
-  <a-menu
-    v-model:collapsed={collapsed.value}
-    show-collapse-button
-    auto-open={false}
-    selected-keys={selectedKey.value}
-    auto-open-selected={true}
-    level-indent={34}
-    style="height: 100%"
-    onCollapse={setCollapse}
-  >
-    {renderSubMenu()}
-  </a-menu>
-);
-```
+- 通过 [渲染](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/index.vue#L48) 菜单树，递归生成菜单。
+
+**说明：服务端菜单相对于本地菜单生成过程，仅仅是多了接口请求以及服务端路由配置信息存储的步骤。**
+**个别公司可能会有相应的权限管理系统，以生成相应的服务端路由配置信息，并进行储存，以供前端进行接口调取。但总体大同小异，只要后端接口返回的路由配置信息，符合上述路由配置规范，并能被前端正确解析即可**
 
 ## 新增一个菜单项的步骤
 
@@ -177,8 +86,7 @@ return () => (
 - 在 views/dashboard 中新增一个 monitor 文件夹，并在其中新增 index.vue
 
  ```ts
-import { defineComponent } from 'vue';
-export default defineComponent({})
+<script lang="ts" setup><script>
 ```
 
 - 在路由表中新增监控页的路由配置

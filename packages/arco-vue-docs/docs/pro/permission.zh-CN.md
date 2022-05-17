@@ -67,7 +67,7 @@ Arco Design Pro 封装了 `v-permission` 指令。可在组件或者原生元素
 如下，将有权限的角色类型放置在数组中即可。
 
 ```vue
-<Button v-permission="['admin']">删除</Button>
+<button v-permission="['admin']">删除</button>
 
 <a-button v-permission="['user']">删除</a-button>
 ```

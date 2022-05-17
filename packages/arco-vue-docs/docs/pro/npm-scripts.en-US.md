@@ -12,6 +12,8 @@ description: package.json script presets convenient and practical commands
 ```
 ├── README.md
 ├── config
+│ ├── plugin  # vite plugin
+│ ├── vite.config.base.ts  # Basic Environment Configuration
 │ ├── vite.config.dev.ts # Development environment configuration
 │ ├── vite.config.prod.ts # Production environment configuration
 └── package.json
@@ -44,7 +46,7 @@ The commands to be called are as follows. According to actual needs, please refe
 ```json
 {
    "scripts": {
-     "dev": "vite --config ./config/vite.config.dev.ts",
+     "build": "vue-tsc --noEmit && vite build --config ./config/vite.config.prod.ts",
    }
 }
 ```
