@@ -66,7 +66,6 @@ import IconClose from '../icon/icon-close';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from './utils';
 import { isFunction, isNull, isObject, isUndefined } from '../_utils/is';
-import { EmitType } from '../_utils/types';
 import { omit } from '../_utils/omit';
 import { INPUT_EVENTS } from '../_utils/constant';
 import pick from '../_utils/pick';
@@ -163,57 +162,42 @@ export default defineComponent({
     wordSlice: {
       type: Function as PropType<(value: string, maxLength: number) => string>,
     },
-    // for JSX
-    onInput: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string, ev: Event) => void>
-      >,
-    },
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string, ev: Event) => void>
-      >,
-    },
-    onClear: {
-      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
-    },
-    onFocus: {
-      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-    },
-    onBlur: {
-      type: [Function, Array] as PropType<EmitType<(ev: FocusEvent) => void>>,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: string) => true,
     /**
      * @zh 用户输入时触发
      * @en Emitted when the user enters
      * @param {string} value
+     * @param {Event} ev
      */
-    'input',
+    'input': (value: string, ev: Event) => true,
     /**
      * @zh 仅在文本框失焦时触发
      * @en Only emitted when the textarea is out of focus
      * @param {string} value
+     * @param {Event} ev
      */
-    'change',
+    'change': (value: string, ev: Event) => true,
     /**
      * @zh 点击清除按钮时触发
      * @en Emitted when the clear button is clicked
+     * @param {MouseEvent} ev
      */
-    'clear',
+    'clear': (ev: MouseEvent) => true,
     /**
      * @zh 文本框获取焦点时触发
      * @en Emitted when the textarea gets focus
+     * @param {FocusEvent} ev
      */
-    'focus',
+    'focus': (ev: FocusEvent) => true,
     /**
      * @zh 文本框失去焦点时触发
      * @en Emitted when the textarea loses focus
+     * @param {FocusEvent} ev
      */
-    'blur',
-  ],
+    'blur': (ev: FocusEvent) => true,
+  },
   setup(props, { emit, attrs }) {
     const { disabled, error, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('textarea');

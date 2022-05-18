@@ -18,7 +18,6 @@ import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
 import { isArray, isFunction } from '../_utils/is';
 import { FieldData, FieldRule, ValidatedError } from './interface';
-import { EmitType } from '../_utils/types';
 import { useSize } from '../_hooks/use-size';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
@@ -106,38 +105,42 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onSubmit: {
-      type: [Function, Array] as PropType<EmitType<(data: any) => void>>,
-    },
-    onSubmitSuccess: {
-      type: [Function, Array] as PropType<EmitType<(values: any) => void>>,
-    },
-    onSubmitFailed: {
-      type: [Function, Array] as PropType<EmitType<(data: any) => void>>,
-    },
   },
-  emits: [
+  emits: {
     /**
      * @zh 表单提交时触发
      * @en Triggered when the form is submitted
-     * @param {{values: any; errors: undefined | Record<string, ValidatedError>}} data
-     * @param {Event} e
+     * @param {{values: Record<string, any>; errors: Record<string, ValidatedError> | undefined}} data
+     * @param {Event} ev
      */
-    'submit',
+    submit: (
+      data: {
+        values: Record<string, any>;
+        errors: Record<string, ValidatedError> | undefined;
+      },
+      ev: Event
+    ) => true,
     /**
      * @zh 验证成功时触发
      * @en Triggered when verification is successful
-     * @param {any} values
+     * @param {Record<string, any>} values
+     * @param {Event} ev
      */
-    'submitSuccess',
+    submitSuccess: (values: Record<string, any>, ev: Event) => true,
     /**
      * @zh 验证失败时触发
      * @en Triggered when verification failed
-     * @param {{values: any; errors: undefined | Record<string, ValidatedError>}} data
+     * @param {{values: Record<string, any>; errors: Record<string, ValidatedError>}} data
+     * @param {Event} ev
      */
-    'submitFailed',
-  ],
+    submitFailed: (
+      data: {
+        values: Record<string, any>;
+        errors: Record<string, ValidatedError>;
+      },
+      ev: Event
+    ) => true,
+  },
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('form');
     const {

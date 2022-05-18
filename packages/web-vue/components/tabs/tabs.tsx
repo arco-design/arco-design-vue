@@ -149,32 +149,32 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: [
-    'update:activeKey',
+  emits: {
+    'update:activeKey': (key: string | number) => true,
     /**
      * @zh 当前标签值改变时触发
      * @en Triggered when the current tag value changes
      * @property {string|number} key
      */
-    'change',
+    'change': (key: string | number) => true,
     /**
      * @zh 用户点击标签时触发
      * @en Triggered when the user clicks on the tab
      * @property {string|number} key
      */
-    'tabClick',
+    'tabClick': (key: string | number, ev: Event) => true,
     /**
      * @zh 用户点击增加按钮时触发
      * @en Triggered when the user clicks the add button
      */
-    'add',
+    'add': (ev: Event) => true,
     /**
      * @zh 用户点击删除按钮时触发
      * @en Triggered when the user clicks the delete button
      * @property {string|number} key
      */
-    'delete',
-  ],
+    'delete': (key: string | number, ev: Event) => true,
+  },
   /**
    * @zh 选项卡额外内容
    * @en Additional tab content

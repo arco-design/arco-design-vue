@@ -99,26 +99,20 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onClose: {
-      type: Function as PropType<() => void>,
-    },
-    onAfterClose: {
-      type: Function as PropType<() => void>,
-    },
   },
-  emits: [
+  emits: {
     /**
      * @zh 点击关闭按钮时触发
      * @en Triggered when the close button is clicked
+     * @param {MouseEvent} ev
      */
-    'close',
+    close: (ev: MouseEvent) => true,
     /**
      * @zh 关闭动画结束后触发
      * @en Triggered after the close animation ends
      */
-    'afterClose',
-  ],
+    afterClose: () => true,
+  },
   /**
    * @zh 标题
    * @en Title
@@ -133,9 +127,9 @@ export default defineComponent({
     const prefixCls = getPrefixCls('alert');
     const visible = ref(true);
 
-    const handleClose = () => {
+    const handleClose = (ev: MouseEvent) => {
       visible.value = false;
-      emit('close');
+      emit('close', ev);
     };
 
     const handleAfterLeave = () => {

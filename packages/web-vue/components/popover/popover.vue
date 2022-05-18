@@ -123,22 +123,16 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
-    // for JSX
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
-      >,
-    },
   },
-  emits: [
-    'update:popupVisible',
+  emits: {
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 文字气泡显示状态改变时触发
      * @en Triggered when the text bubble display status changes
-     * @property {boolean} visible
+     * @param {boolean} visible
      */
-    'popupVisibleChange',
-  ],
+    'popupVisibleChange': (visible: boolean) => true,
+  },
   /**
    * @zh 标题
    * @en Title

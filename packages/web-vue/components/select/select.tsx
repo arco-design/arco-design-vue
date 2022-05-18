@@ -66,8 +66,8 @@ export default defineComponent({
       type: [String, Number, Object, Array] as PropType<
         | string
         | number
-        | Record<string, unknown>
-        | (string | number | Record<string, unknown>)[]
+        | Record<string, any>
+        | (string | number | Record<string, any>)[]
       >,
     },
     /**
@@ -318,85 +318,76 @@ export default defineComponent({
     fieldNames: {
       type: Object as PropType<SelectFieldNames>,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string | number | Array<string | number>) => void>
-      >,
-    },
-    onInputValueChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(inputValue: string) => void>
-      >,
-    },
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
-      >,
-    },
-    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
-    onRemove: {
-      type: [Function, Array] as PropType<EmitType<(removed: string) => void>>,
-    },
-    onSearch: {
-      type: [Function, Array] as PropType<
-        EmitType<(inputValue: string) => void>
-      >,
-    },
   },
-  emits: [
-    'update:modelValue',
-    'update:inputValue',
-    'update:popupVisible',
+  emits: {
+    'update:modelValue': (
+      value:
+        | string
+        | number
+        | Record<string, any>
+        | (string | number | Record<string, any>)[]
+    ) => true,
+    'update:inputValue': (inputValue: string) => true,
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
      */
-    'change',
+    'change': (
+      value:
+        | string
+        | number
+        | Record<string, any>
+        | (string | number | Record<string, any>)[]
+    ) => true,
     /**
      * @zh 输入框的值发生改变时触发
      * @en Triggered when the value of the input changes
      */
-    'inputValueChange',
+    'inputValueChange': (inputValue: string) => true,
     /**
      * @zh 下拉框的显示状态改变时触发
      * @en Triggered when the display state of the drop-down box changes
      * @property {boolean} visible
      */
-    'popupVisibleChange',
+    'popupVisibleChange': (visible: boolean) => true,
     /**
      * @zh 点击清除按钮时触发
      * @en Triggered when the clear button is clicked
      */
-    'clear',
+    'clear': (ev: Event) => true,
     /**
      * @zh 点击标签的删除按钮时触发
      * @en Triggered when the delete button of the label is clicked
      */
-    'remove',
+    'remove': (removed: string | number | Record<string, any> | undefined) =>
+      true,
     /**
      * @zh 用户搜索时触发
      * @en Triggered when the user searches
      */
-    'search',
+    'search': (inputValue: string) => true,
     /**
      * @zh 下拉菜单发生滚动时触发
      * @en Triggered when the drop-down scrolls
      */
-    'dropdownScroll',
+    'dropdownScroll': (ev: Event) => true,
     /**
      * @zh 下拉菜单滚动到底部时触发
      * @en Triggered when the drop-down menu is scrolled to the bottom
      */
-    'dropdownReachBottom',
+    'dropdownReachBottom': (ev: Event) => true,
     /**
      * @zh 多选超出限制时触发
      * @en Triggered when multiple selection exceeds the limit
      * @param value
      * @version 2.18.0
      */
-    'exceedLimit',
-  ],
+    'exceedLimit': (
+      value: string | number | Record<string, any> | undefined,
+      ev: Event
+    ) => true,
+  },
   /**
    * @zh 选项为空时的显示内容
    * @en Display content when the option is empty
@@ -697,7 +688,7 @@ export default defineComponent({
       );
       updateValue(newKeys);
       updateInputValue('');
-      emit('clear');
+      emit('clear', e);
     };
 
     const handleDropdownScroll = (e: Event) => {

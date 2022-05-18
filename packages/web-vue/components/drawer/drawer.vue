@@ -284,29 +284,29 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: [
-    'update:visible',
+  emits: {
+    'update:visible': (visible: boolean) => true,
     /**
      * @zh 点击确定按钮时触发
      * @en Triggered when the OK button is clicked
      */
-    'ok',
+    'ok': () => true,
     /**
      * @zh 点击取消、关闭按钮时触发
      * @en Triggered when the cancel or close button is clicked
      */
-    'cancel',
+    'cancel': () => true,
     /**
      * @zh 抽屉打开后（动画结束）触发
      * @en Triggered after the drawer is opened (the animation ends)
      */
-    'open',
+    'open': () => true,
     /**
      * @zh 抽屉关闭后（动画结束）触发
      * @en Triggered when the drawer is closed (the animation ends)
      */
-    'close',
-  ],
+    'close': () => true,
+  },
   /**
    * @zh 标题
    * @en Title

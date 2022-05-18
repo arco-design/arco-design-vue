@@ -82,21 +82,21 @@ export default defineComponent({
       default: true,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 用户点击链接时触发
      * @en Triggered when the user clicks on the link
-     * @property {string} hash
+     * @property {string|undefined} hash
      * @property {string} preHash
      */
-    'select',
+    select: (hash: string | undefined, preHash: string) => true,
     /**
      * @zh 链接发生改变时触发
      * @en Triggered when the link changes
      * @property {string} hash
      */
-    'change',
-  ],
+    change: (hash: string) => true,
+  },
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('anchor');
     const anchorRef = ref<HTMLElement>();

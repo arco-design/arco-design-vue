@@ -154,11 +154,7 @@ export default defineComponent({
      */
     modelValue: {
       type: [String, Number, Array] as PropType<
-        | string
-        | number
-        | Array<string | number>
-        | undefined
-        | (string | number | Array<string | number>)[]
+        string | number | (string | number | (string | number)[])[] | undefined
       >,
     },
     /**
@@ -168,11 +164,7 @@ export default defineComponent({
      */
     defaultValue: {
       type: [String, Number, Array] as PropType<
-        | string
-        | number
-        | Array<string | number>
-        | undefined
-        | (string | number | Array<string | number>)[]
+        string | number | (string | number | (string | number)[])[] | undefined
       >,
       default: (props: Data) =>
         props.multiple ? [] : props.pathMode ? undefined : '',
@@ -367,80 +359,64 @@ export default defineComponent({
     fieldNames: {
       type: Object as PropType<CascaderFieldNames>,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (
-            value:
-              | string
-              | number
-              | Array<string | number>
-              | undefined
-              | (string | number | Array<string | number>)[]
-          ) => void
-        >
-      >,
-    },
-    onInputValueChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(inputValue: string) => void>
-      >,
-    },
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
-      >,
-    },
-    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
-    onSearch: {
-      type: [Function, Array] as PropType<
-        EmitType<(inputValue: string) => void>
-      >,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (
+      value:
+        | string
+        | number
+        | (string | number | (string | number)[])[]
+        | undefined
+    ) => true,
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 选中值改变时触发
      * @en Triggered when the selected value changes
-     * @property {string | string[] | undefined | (string | string[])[]} value
+     * @property {string | number | (string | number | (string | number)[])[] | undefined} value
      */
-    'change',
+    'change': (
+      value:
+        | string
+        | number
+        | (string | number | (string | number)[])[]
+        | undefined
+    ) => true,
     /**
      * @zh 输入值改变时触发
      * @en Triggered when the input value changes
      * @property {string} value
      */
-    'inputValueChange',
+    'inputValueChange': (value: string) => true,
     /**
      * @zh 点击清除按钮时触发
      * @en Triggered when the clear button is clicked
      */
-    'clear',
+    'clear': () => true,
     /**
      * @zh 用户搜索时触发
      * @en Triggered when the user searches
      * @property {string} value
      */
-    'search',
+    'search': (value: string) => true,
     /**
      * @zh 下拉框的显示状态改变时触发
      * @en Triggered when the display state of the dropdown changes
      * @property {boolean} visible
      */
-    'popupVisibleChange',
+    'popupVisibleChange': (visible: boolean) => true,
     /**
      * @zh 获得焦点时触发
      * @en Triggered when focus
+     * @param {FocusEvent} ev
      */
-    'focus',
+    'focus': (ev: FocusEvent) => true,
     /**
      * @zh 失去焦点时触发
      * @en Triggered when blur
+     * @param {FocusEvent} ev
      */
-    'blur',
-  ],
+    'blur': (ev: FocusEvent) => true,
+  },
   /**
    * @zh 选择框的箭头图标
    * @en Arrow icon for select box
@@ -737,10 +713,10 @@ export default defineComponent({
       () => props.allowSearch && computedInputValue.value.length > 0
     );
 
-    const handleFocus = (e: Event) => {
+    const handleFocus = (e: FocusEvent) => {
       emit('focus', e);
     };
-    const handleBlur = (e: Event) => {
+    const handleBlur = (e: FocusEvent) => {
       emit('blur', e);
     };
 

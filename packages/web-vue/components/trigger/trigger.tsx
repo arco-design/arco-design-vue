@@ -321,36 +321,30 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
-      >,
-    },
   },
-  emits: [
-    'update:popupVisible',
+  emits: {
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 弹出框显示状态改变时触发
      * @en Emitted when the status of the popup changes
-     * @property {boolean} popupVisible
+     * @param {boolean} visible
      */
-    'popupVisibleChange',
+    'popupVisibleChange': (visible: boolean) => true,
     /**
      * @zh 弹出框显示后（动画结束）触发
      * @en Triggered after the trigger is shown (the animation ends)
      * @version 2.18.0
      */
-    'show',
+    'show': () => true,
     /**
      * @zh 弹出框隐藏后（动画结束）触发
      * @en Triggered after the popup is hidden (the animation ends)
      * @version 2.18.0
      */
-    'hide',
+    'hide': () => true,
     // for internal
-    'resize',
-  ],
+    'resize': () => true,
+  },
   /**
    * @zh 弹出框内容
    * @en Popup content

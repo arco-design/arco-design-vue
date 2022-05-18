@@ -85,21 +85,25 @@ export default defineComponent({
       >,
     },
   },
-  emits: [
-    'update:popupVisible',
+  emits: {
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 下拉框显示状态发生改变时触发
      * @en Triggered when the display status of the drop-down box changes
-     * @property {boolean} visible
+     * @param {boolean} visible
      */
-    'popupVisibleChange',
+    'popupVisibleChange': (visible: boolean) => true,
     /**
      * @zh 用户选择时触发
      * @en Triggered when the user selects
-     * @property {string | number | Record<string, unknown>} value
+     * @param {string|number|Record<string, any>|undefined} value
+     * @param {Event} ev
      */
-    'select',
-  ],
+    'select': (
+      value: string | number | Record<string, any> | undefined,
+      ev: Event
+    ) => true,
+  },
   /**
    * @zh 内容
    * @en Content
@@ -122,7 +126,7 @@ export default defineComponent({
     });
 
     const handleOptionClick = (
-      value: string | number | Record<string, unknown> | undefined,
+      value: string | number | Record<string, any> | undefined,
       ev: Event
     ) => {
       emit('select', value, ev);

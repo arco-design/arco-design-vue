@@ -67,11 +67,7 @@ export default defineComponent({
      */
     modelValue: {
       type: [String, Number, Array] as PropType<
-        | string
-        | number
-        | Array<string | number>
-        | undefined
-        | (string | number | Array<string | number>)[]
+        string | number | (string | number | (string | number)[])[] | undefined
       >,
     },
     /**
@@ -81,11 +77,7 @@ export default defineComponent({
      */
     defaultValue: {
       type: [String, Number, Array] as PropType<
-        | string
-        | number
-        | Array<string | number>
-        | undefined
-        | (string | number | Array<string | number>)[]
+        string | number | (string | number | (string | number)[])[] | undefined
       >,
       default: (props: Data) =>
         props.multiple ? [] : props.pathMode ? undefined : '',
@@ -136,15 +128,27 @@ export default defineComponent({
       type: Object as PropType<CascaderFieldNames>,
     },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (
+      value:
+        | string
+        | number
+        | (string | number | (string | number)[])[]
+        | undefined
+    ) => true,
     /**
      * @zh 选中值改变时触发
      * @en Triggered when the selected value changes
-     * @property {string | string[] | undefined | (string | string[])[]} value
+     * @property {string | number | (string | number | (string | number)[])[] | undefined} value
      */
-    'change',
-  ],
+    'change': (
+      value:
+        | string
+        | number
+        | (string | number | (string | number)[])[]
+        | undefined
+    ) => true,
+  },
   /**
    * @zh 选项为空时的显示内容
    * @en Display content when the option is empty
