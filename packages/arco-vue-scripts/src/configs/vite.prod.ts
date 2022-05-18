@@ -3,7 +3,7 @@ import glob from 'glob';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import external from '../plugins/vite-plugin-external';
-import buildVirtual from '../plugins/vite-plugin-build-virtual';
+import vueExportHelper from '../plugins/vite-plugin-vue-export-helper';
 
 const langFiles = glob.sync('components/locale/lang/*.ts');
 
@@ -41,7 +41,7 @@ const config: InlineConfig = {
     },
   },
   // @ts-ignore vite内部类型错误
-  plugins: [external(), vue(), vueJsx(), buildVirtual()],
+  plugins: [external(), vue(), vueJsx(), vueExportHelper()],
 };
 
 export default config;
