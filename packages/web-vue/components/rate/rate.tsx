@@ -13,7 +13,6 @@ import IconFaceMehFill from '../icon/icon-face-meh-fill';
 import IconFaceSmileFill from '../icon/icon-face-smile-fill';
 import IconFaceFrownFill from '../icon/icon-face-frown-fill';
 import { getPrefixCls } from '../_utils/global-config';
-import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 import { isNull, isObject, isString, isUndefined } from '../_utils/is';
 
@@ -93,29 +92,22 @@ export default defineComponent({
     color: {
       type: [String, Object] as PropType<string | Record<string, string>>,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<EmitType<(index: number) => void>>,
-    },
-    onHoverChange: {
-      type: [Function, Array] as PropType<EmitType<(index: number) => void>>,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: number) => true,
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
      * @property {number} value
      */
-    'change',
+    'change': (value: number) => true,
     /**
      * @zh 鼠标移动到数值上时触发
      * @en Triggered when the mouse moves over the value
      * @property {number} value
      */
-    'hoverChange',
-  ],
+    'hoverChange': (value: number) => true,
+  },
   /**
    * @zh 符号
    * @en Character

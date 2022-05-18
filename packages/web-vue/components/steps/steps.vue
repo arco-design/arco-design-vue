@@ -14,7 +14,7 @@ import {
   ref,
   toRefs,
 } from 'vue';
-import { Direction, DIRECTIONS } from '../_utils/constant';
+import { Direction } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { StepData, StepStatus, StepsType } from './interface';
 import { stepsInjectionKey } from './context';
@@ -100,15 +100,16 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: [
-    'update:current',
+  emits: {
+    'update:current': (step: number) => true,
     /**
      * @zh 步骤数发生改变时触发
      * @en Triggered when the number of steps changes
-     * @property {number} step
+     * @param {number} step
+     * @param {Event} ev
      */
-    'change',
-  ],
+    'change': (step: number, ev: Event) => true,
+  },
   setup(props, { emit, slots }) {
     const { type, lineLess } = toRefs(props);
     const prefixCls = getPrefixCls('steps');

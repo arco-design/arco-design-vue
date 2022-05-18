@@ -121,29 +121,29 @@ export default defineComponent({
       default: () => ['right'],
     },
   },
-  emits: [
+  emits: {
+    'update:width': (width: number) => true,
+    'update:height': (height: number) => true,
     /**
      * @zh 拖拽开始时触发
      * @en Triggered when dragging starts
-     * @param {MouseEvent} event
+     * @param {MouseEvent} ev
      */
-    'movingStart',
+    'movingStart': (ev: MouseEvent) => true,
     /**
      * @zh 拖拽时触发
      * @en Triggered when dragging
      * @param {{ width: number; height: number; }} size
-     * @param {MouseEvent} event
+     * @param {MouseEvent} ev
      */
-    'moving',
+    'moving': (size: { width: number; height: number }, ev: MouseEvent) => true,
     /**
      * @zh 拖拽结束时触发
      * @en Triggered when the drag ends
-     * @param {MouseEvent} event
+     * @param {MouseEvent} ev
      */
-    'movingEnd',
-    'update:width',
-    'update:height',
-  ],
+    'movingEnd': (ev: MouseEvent) => true,
+  },
   /**
    * @zh 伸缩杆的内容
    * @en The contents of the resize pole

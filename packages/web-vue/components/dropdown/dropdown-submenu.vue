@@ -98,15 +98,15 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: [
-    'update:popupVisible',
+  emits: {
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 下拉框显示状态发生改变时触发
      * @en Triggered when the display status of the drop-down box changes
      * @property {boolean} visible
      */
-    'popupVisibleChange',
-  ],
+    'popupVisibleChange': (visible: boolean) => true,
+  },
   /**
    * @zh 子菜单内容
    * @en Submenu content

@@ -159,34 +159,30 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       default: () => ['Source', 'Target'],
     },
-    // for JSX
-    onChange: [Function, Array],
-    onSelect: [Function, Array],
-    onSearch: [Function, Array],
   },
-  emits: [
-    'update:modelValue',
-    'update:selected',
+  emits: {
+    'update:modelValue': (value: string[]) => true,
+    'update:selected': (selected: string[]) => true,
     /**
      * @zh 目标选择框的值改变时触发
      * @en Triggered when the value of the target selection box changes
      * @property {string[]} value
      */
-    'change',
+    'change': (value: string[]) => true,
     /**
      * @zh 选中的值改变时触发
      * @en Triggered when the selected value changes
      * @property {string[]} selected
      */
-    'select',
+    'select': (selected: string[]) => true,
     /**
      * @zh 用户搜索时触发
      * @en Triggered when the user searches
      * @property {string} value
      * @property {'target'|'source'} type
      */
-    'search',
-  ],
+    'search': (value: string, type: 'target' | 'source') => true,
+  },
   /**
    * @zh 选项
    * @en Option

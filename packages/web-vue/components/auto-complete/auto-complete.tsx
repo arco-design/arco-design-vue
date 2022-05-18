@@ -20,7 +20,6 @@ import {
 import { isFunction, isNull, isUndefined } from '../_utils/is';
 import SelectDropdown from '../select/select-dropdown.vue';
 import Option from '../select/option.vue';
-import { EmitType } from '../_utils/types';
 import { useSelect } from '../select/hooks/use-select';
 import { getKeyFromValue } from '../select/utils';
 import { useFormItem } from '../_hooks/use-form-item';
@@ -106,44 +105,35 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
-    },
-    onSearch: {
-      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
-    },
-    onSelect: {
-      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: string) => true,
     /**
      * @zh 绑定值发生改变时触发
      * @en Emitted when the value changes
      * @property {string} value
      */
-    'change',
+    'change': (value: string) => true,
     /**
      * @zh 用户搜索时触发
      * @en Emitted when the user searches
      * @property {string} value
      */
-    'search',
+    'search': (value: string) => true,
     /**
      * @zh 选择选项时触发
      * @en Emitted when an option is selected
      * @property {string} value
      */
-    'select',
+    'select': (value: string) => true,
     /**
      * @zh 用户点击清除按钮时触发
      * @en Triggered when the user clicks the clear button
+     * @param {Event} ev
      * @version 2.23.0
      */
-    'clear',
-  ],
+    'clear': (ev: Event) => true,
+  },
   /**
    * @zh 选项内容
    * @en Display content of options

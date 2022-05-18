@@ -203,28 +203,26 @@ export default defineComponent({
     onBeforeCancel: {
       type: [Function, Array] as PropType<() => boolean>,
     },
-
-    // for JSX
   },
-  emits: [
-    'update:popupVisible',
+  emits: {
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 气泡确认框的显隐状态改变时触发
      * @en Triggered when the visible or hidden state of the bubble confirmation box changes
-     * @property {boolean} visible
+     * @param {boolean} visible
      */
-    'popupVisibleChange',
+    'popupVisibleChange': (visible: boolean) => true,
     /**
      * @zh 点击确认按钮时触发
      * @en Triggered when the confirm button is clicked
      */
-    'ok',
+    'ok': () => true,
     /**
      * @zh 点击取消按钮时触发
      * @en Triggered when the cancel button is clicked
      */
-    'cancel',
-  ],
+    'cancel': () => true,
+  },
   /**
    * @zh 内容
    * @en Content

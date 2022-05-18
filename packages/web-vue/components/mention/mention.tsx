@@ -26,7 +26,6 @@ import {
   SelectOptionGroup,
   SelectOptionInfo,
 } from '../select/interface';
-import { EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { getSizeStyles } from '../textarea/utils';
 import ResizeObserver from '../_components/resize-observer';
@@ -104,41 +103,35 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
-    },
-    onSelect: {
-      type: [Function, Array] as PropType<EmitType<(value: string) => void>>,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: string) => true,
     /**
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
      * @property {string} value
      */
-    'change',
+    'change': (value: string) => true,
     /**
      * @zh 动态搜索时触发
      * @en Trigger on dynamic search prefix
      * @property {string} value
      */
-    'search',
+    'search': (value: string) => true,
     /**
      * @zh 选择下拉选项时触发
      * @en Triggered when the drop-down option is selected
-     * @property {string} value
+     * @property {string | number | Record<string, any> | undefined} value
      */
-    'select',
+    'select': (value: string | number | Record<string, any> | undefined) =>
+      true,
     /**
      * @zh 用户点击清除按钮时触发
      * @en Triggered when the user clicks the clear button
      * @version 2.23.0
      */
-    'clear',
-  ],
+    'clear': (ev: Event) => true,
+  },
   /**
    * @zh 选项内容
    * @en Display content of options

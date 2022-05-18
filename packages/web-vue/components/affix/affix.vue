@@ -26,7 +26,6 @@ import { getPrefixCls } from '../_utils/global-config';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import { isWindow, isUndefined } from '../_utils/is';
 import { on, off, getElement } from '../_utils/dom';
-import { EmitType } from '../_utils/types';
 
 function getTargetRect(target: HTMLElement | Window) {
   return isWindow(target)
@@ -76,19 +75,15 @@ export default defineComponent({
         string | HTMLElement | Window
       >,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<EmitType<(fixed: boolean) => void>>,
-    },
   },
-  emits: [
+  emits: {
     /**
      * @zh 固定状态发生改变时触发
      * @en Triggered when the fixed state changes
      * @param {boolean} fixed
      */
-    'change',
-  ],
+    change: (fixed: boolean) => true,
+  },
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('affix');
     const { target, targetContainer } = toRefs(props);

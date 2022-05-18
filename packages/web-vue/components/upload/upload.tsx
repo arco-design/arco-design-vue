@@ -21,16 +21,11 @@ import { isImage, uploadRequest } from './utils';
 import UploadButton from './upload-button';
 import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
-import { Data, EmitType } from '../_utils/types';
 import { ImagePreviewGroup } from '../image';
 import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
   name: 'Upload',
-  components: {
-    UploadButton,
-    UploadList,
-  },
   props: {
     /**
      * @zh 文件列表
@@ -279,80 +274,49 @@ export default defineComponent({
     onButtonClick: {
       type: Function as PropType<(event: Event) => Promise<FileList> | void>,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(fileList: FileItem[], fileItem: FileItem) => void>
-      >,
-    },
-    onProgress: {
-      type: [Function, Array] as PropType<
-        EmitType<(fileItem: FileItem, event: ProgressEvent) => void>
-      >,
-    },
-    onExceedLimit: {
-      type: [Function, Array] as PropType<
-        EmitType<(fileList: FileItem[], files: File[]) => void>
-      >,
-    },
-    onPreview: {
-      type: [Function, Array] as PropType<
-        EmitType<(fileItem: FileItem) => void>
-      >,
-    },
-    onSuccess: {
-      type: [Function, Array] as PropType<
-        EmitType<(fileItem: FileItem) => void>
-      >,
-    },
-    onError: {
-      type: [Function, Array] as PropType<
-        EmitType<(fileItem: FileItem) => void>
-      >,
-    },
   },
-  emits: [
-    'update:fileList',
+  emits: {
+    'update:fileList': (fileList: FileItem[]) => true,
     /**
      * @zh 上传的图片超出限制后触发
      * @en Triggered when the uploaded image exceeds the limit
      * @param {FileItem[]} fileList
      * @param {File[]} files
      */
-    'exceedLimit',
+    'exceedLimit': (fileList: FileItem[], files: File[]) => true,
     /**
      * @zh 上传的图片状态发生改变时触发
      * @en Triggered when the status of the uploaded image changes
      * @param {FileItem[]} fileList
      * @param {fileItem} fileItem
      */
-    'change',
+    'change': (fileList: FileItem[], fileItem: FileItem) => true,
     /**
      * @zh 上传中的图片进度改变时触发
      * @en Triggered when the uploading image progress changes
      * @param {fileItem} fileItem
-     * @param {ProgressEvent} event
+     * @param {ProgressEvent} ev
      */
-    'progress',
+    'progress': (fileItem: FileItem, ev?: ProgressEvent) => true,
     /**
      * @zh 点击图片预览时的触发
      * @en Trigger when the image preview is clicked
      * @param {FileItem} fileItem
      */
-    'preview',
+    'preview': (fileItem: FileItem) => true,
     /**
      * @zh 上传成功时触发
      * @en Triggered when upload is successful
      * @param {FileItem} fileItem
      */
-    'success',
+    'success': (fileItem: FileItem) => true,
     /**
      * @zh 上传失败时触发
      * @en Triggered when upload fails
      * @param {FileItem} fileItem
      */
-    'error',
-  ],
+    'error': (fileItem: FileItem) => true,
+  },
   /**
    * @zh 上传列表的项目
    * @en Upload list item

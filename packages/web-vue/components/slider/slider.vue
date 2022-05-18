@@ -73,7 +73,6 @@ import SliderInput from './slider-input.vue';
 import { isArray, isUndefined } from '../_utils/is';
 import { Direction, DIRECTIONS } from '../_utils/constant';
 import { getOffsetPercent, getPositionStyle } from './utils';
-import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
@@ -177,22 +176,16 @@ export default defineComponent({
     formatTooltip: {
       type: Function,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: number | [number, number]) => void>
-      >,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: number | [number, number]) => true,
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {number | [number, number]} value
+     * @param {number | [number, number]} value
      */
-    'change',
-  ],
+    'change': (value: number | [number, number]) => true,
+  },
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('slider');
     const { mergedDisabled, eventHandlers } = useFormItem({
