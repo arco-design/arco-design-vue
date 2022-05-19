@@ -1,5 +1,11 @@
 <template>
-  <div :class="`${prefixCls}-wrapper`">
+  <div
+    role="progressbar"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    :aria-valuenow="percent"
+    :class="`${prefixCls}-wrapper`"
+  >
     <div :class="prefixCls" :style="style">
       <div :class="`${prefixCls}-bar-buffer`" />
       <div :class="[`${prefixCls}-bar`]" :style="barStyle" />
