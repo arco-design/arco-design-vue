@@ -459,6 +459,12 @@ export default defineComponent({
           placeholder={props.placeholder}
           disabled={mergedDisabled.value}
           error={props.error}
+          inputAttrs={{
+            'role': 'spinbutton',
+            'aria-valuemax': props.max,
+            'aria-valuemin': props.min,
+            'aria-valuenow': _value.value,
+          }}
           onInput={handleInput}
           onFocus={handleFocus}
           onBlur={handleBlur}
