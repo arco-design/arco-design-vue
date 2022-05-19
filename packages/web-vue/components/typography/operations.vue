@@ -63,23 +63,23 @@ export default defineComponent({
     expanded: Boolean,
     forceRenderExpand: Boolean,
   },
-  emits: [
+  emits: {
     /**
      * @zh 点击编辑时触发
      * @en Triggered when editing is clicked
      */
-    'edit',
+    edit: () => true,
     /**
      * @zh 点击复制时触发
      * @en Triggered when copy is clicked
      */
-    'copy',
+    copy: () => true,
     /**
      * @zh 点击展开时触发
      * @en Triggered when click to expand
      */
-    'expand',
-  ],
+    expand: () => true,
+  },
   /**
    * @zh 自定义复制按钮的 tooltip 内容
    * @en Customize the tooltip content of the copy button

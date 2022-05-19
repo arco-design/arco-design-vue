@@ -105,7 +105,6 @@ import RangePanel from './range-panel';
 import useIsDisabledTime from './hooks/use-is-disabled-time';
 import useMergeState from '../_hooks/use-merge-state';
 import { useI18n } from '../locale';
-import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
@@ -304,63 +303,44 @@ export default defineComponent({
     unmountOnClose: {
       type: Boolean,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (
-            timeString: string | Array<string | undefined> | undefined,
-            time: Date | Array<Date | undefined> | undefined
-          ) => void
-        >
-      >,
-    },
-    onSelect: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (
-            timeString: string | Array<string | undefined>,
-            time: Date | Array<Date | undefined>
-          ) => void
-        >
-      >,
-    },
-    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
-      >,
-    },
   },
-  emits: [
+  emits: {
     /**
      * @zh 组件值发生改变
      * @en The component value changes
      * @param {string | Array<string | undefined> | undefined} timeString
      * @param {date | Array<date | undefined> | undefined} time
      */
-    'change',
-    'update:modelValue',
+    'change': (
+      timeString: string | Array<string | undefined> | undefined,
+      time: Date | Array<Date | undefined> | undefined
+    ) => true,
+    'update:modelValue': (
+      timeString: string | Array<string | undefined> | undefined
+    ) => true,
     /**
      * @zh 选择时间但未触发组件值变化
      * @en Select time but do not trigger component value change
      * @param {string | Array<string | undefined>} timeString
      * @param {Date | Array<Date | undefined>} time
      */
-    'select',
+    'select': (
+      timeString: string | Array<string | undefined>,
+      time: Date | Array<Date | undefined>
+    ) => true,
     /**
      * @zh 点击清除按钮
      * @en Click the clear button
      * */
-    'clear',
+    'clear': () => true,
     /**
      * @zh 弹出框展开和收起
      * @en Pop-up box expand and collapse
      * @param {boolean} visible
      */
-    'popup-visible-change',
-    'update:popupVisible',
-  ],
+    'popup-visible-change': (visible: boolean) => true,
+    'update:popupVisible': (visible: boolean) => true,
+  },
   /**
    * @zh 额外的页脚
    * @en Extra footer
