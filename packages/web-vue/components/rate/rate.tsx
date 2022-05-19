@@ -220,6 +220,15 @@ export default defineComponent({
       return <IconFaceSmileFill />;
     };
 
+    const getAriaProps = (index: number, isHalf = false) => {
+      return {
+        'role': 'radio',
+        'aria-checked': index + (isHalf ? 0.5 : 1) <= computedValue.value,
+        'aria-setsize': indexArray.value.length,
+        'aria-posinset': index + (isHalf ? 0.5 : 1),
+      };
+    };
+
     // TODO: need to perf
     const renderCharacter = (index: number) => {
       const displayCharacter = props.grading
@@ -271,12 +280,14 @@ export default defineComponent({
         <div
           class={cls}
           style={style}
+          {...(!props.allowHalf ? getAriaProps(index) : undefined)}
           onAnimationend={() => handleAnimationEnd(index)}
         >
           <div
             class={`${prefixCls}-character-left`}
             style={leftStyle}
             {...leftProps}
+            {...(props.allowHalf ? getAriaProps(index, true) : undefined)}
           >
             {displayCharacter}
           </div>
@@ -284,6 +295,7 @@ export default defineComponent({
             class={`${prefixCls}-character-right`}
             style={rightStyle}
             {...rightProps}
+            {...(props.allowHalf ? getAriaProps(index) : undefined)}
           >
             {displayCharacter}
           </div>
