@@ -1,6 +1,8 @@
 <template>
   <button
     type="button"
+    role="switch"
+    :aria-checked="computedCheck"
     :class="cls"
     :style="buttonStyle"
     :disabled="mergedDisabled"
