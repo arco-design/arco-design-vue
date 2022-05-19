@@ -1,5 +1,5 @@
 <template>
-  <div :class="cls">
+  <div role="list" :class="cls">
     <slot />
     <Item v-if="hasPending" line-type="dashed">
       <template #dot>
@@ -22,17 +22,11 @@ import {
   toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import {
-  DIRECTIONS,
-  DirectionType,
-  ModeType,
-  MODES,
-  LabelPositionType,
-  LABEL_POSITIONS,
-} from './constants';
+import type { ModeType, LabelPositionType } from './interface';
 import { timelineInjectionKey, VItem } from './context';
 import Item from './item.vue';
 import Spin from '../spin';
+import { Direction } from '../_utils/constant';
 
 export default defineComponent({
   name: 'Timeline',
@@ -54,7 +48,7 @@ export default defineComponent({
      * @values 'horizontal', 'vertical'
      */
     direction: {
-      type: String as PropType<DirectionType>,
+      type: String as PropType<Direction>,
       default: 'vertical',
     },
     /**

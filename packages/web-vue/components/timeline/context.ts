@@ -1,12 +1,13 @@
 import { InjectionKey } from 'vue';
-import { ModeType, DirectionType, LabelPositionType } from './constants';
+import { Direction } from '../_utils/constant';
+import type { ModeType, LabelPositionType } from './interface';
 
 export type VItem = { uid: number };
 
 export interface TimelineContext {
   addItem: (item: VItem) => void;
   removeItem: (uid: number) => void;
-  direction: DirectionType;
+  direction: Direction;
   items: VItem[];
   reverse: boolean;
   labelPosition: LabelPositionType;
