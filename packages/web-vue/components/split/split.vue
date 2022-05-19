@@ -142,24 +142,24 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 开始拖拽之前触发
      * @en Triggered before dragging
      * */
-    'moveStart',
+    'moveStart': (ev: MouseEvent) => true,
     /**
      * @zh 拖拽时触发
      * @en Triggered when dragging
      */
-    'moving',
+    'moving': (ev: MouseEvent) => true,
     /**
      * @zh 拖拽结束之后触发
      * @en Triggered after dragging ends
      */
-    'moveEnd',
-    'update:size',
-  ],
+    'moveEnd': (ev: MouseEvent) => true,
+    'update:size': (size: number | string) => true,
+  },
   /**
    * @zh 第一个面板的内容
    * @en The contents of the first panel

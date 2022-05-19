@@ -8,7 +8,6 @@ import {
   CheckedStrategy,
 } from '../tree/interface';
 import { Size } from '../_utils/constant';
-import { EmitType } from '../_utils/types';
 
 export interface LabelValue {
   value: TreeNodeKey;
@@ -71,8 +70,4 @@ export interface TreeSelectProps {
   disableFilter: boolean;
   popupContainer: string | HTMLElement | null | undefined;
   fallbackOption: FallbackOption;
-  onChange: EmitType<ChangeHandler> | undefined;
-  onPopupVisibleChange: EmitType<PopupVisibleChangeHandler> | undefined;
-  onSearch: EmitType<SearchHandler> | undefined;
-  onClear: EmitType<ClearHandler> | undefined;
 }
