@@ -45,11 +45,18 @@ export default defineComponent({
       if (show.value) {
         return (
           <>
-            <div class={prefixCls} {...attrs}>
+            <div
+              role="listitem"
+              class={prefixCls}
+              {...(displayMore.value
+                ? { 'aria-label': 'ellipses of breadcrumb items' }
+                : undefined)}
+              {...attrs}
+            >
               {displayMore.value ? <IconMore /> : slots.default?.()}
             </div>
             {showSeparator.value && (
-              <div class={`${prefixCls}-separator`}>
+              <div aria-hidden="true" class={`${prefixCls}-separator`}>
                 {breadcrumbCtx?.slots.separator?.() ?? <IconObliqueLine />}
               </div>
             )}

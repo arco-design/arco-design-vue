@@ -59,7 +59,7 @@ export default defineComponent({
       }
 
       return (
-        <div class={prefixCls}>
+        <div role="list" class={prefixCls}>
           {children.map((child, index) => {
             child.props = mergeProps(child.props ?? {}, { index });
             return child;
