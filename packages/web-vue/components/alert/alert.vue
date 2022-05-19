@@ -1,6 +1,6 @@
 <template>
   <transition name="zoom-in-top" @after-leave="handleAfterLeave">
-    <div v-if="visible" :class="cls">
+    <div v-if="visible" role="alert" :class="cls">
       <div v-if="showIcon" :class="`${prefixCls}-icon`">
         <slot name="icon">
           <icon-info-circle-fill v-if="type === 'info'" />

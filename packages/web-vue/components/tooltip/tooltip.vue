@@ -13,6 +13,7 @@
     :popup-container="popupContainer"
     animation-name="zoom-in-fade-out"
     auto-fit-transform-origin
+    role="tooltip"
     @popup-visible-change="handlePopupVisibleChange"
   >
     <slot />
