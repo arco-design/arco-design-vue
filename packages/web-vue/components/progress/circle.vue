@@ -1,5 +1,9 @@
 <template>
   <div
+    role="progressbar"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    :aria-valuenow="percent"
     :class="`${prefixCls}-wrapper`"
     :style="{ width: `${mergedWidth}px`, height: `${mergedWidth}px` }"
   >
