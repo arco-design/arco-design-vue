@@ -218,44 +218,44 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 开始编辑
      * @en Edit start
      */
-    'editStart',
+    'editStart': () => true,
     /**
      * @zh 编辑内容变化
      * @en Edit content change
-     * @param text {string} Edited text
+     * @param {string} text
      */
-    'change',
-    'update:editText',
+    'change': (text: string) => true,
+    'update:editText': (text: string) => true,
     /**
      * @zh 编辑结束
      * @en Edit end
      */
-    'editEnd',
-    'update:editing',
+    'editEnd': () => true,
+    'update:editing': (editing: boolean) => true,
     /**
      * @zh 复制
      * @en Copy
-     * @param text {string} Copied text
+     * @param {string} text
      */
-    'copy',
+    'copy': (text: string) => true,
     /**
      * @zh 省略变化事件
      * @en Ellipsis change
-     * @param isEllipsis {boolean} Ellipsis state
+     * @param {boolean} isEllipsis
      */
-    'ellipsis',
+    'ellipsis': (isEllipsis: boolean) => true,
     /**
      * @zh 展开收起事件
      * @en Expand collapse event
-     * @param expanded {boolean} Expand state
+     * @param {boolean} expanded
      */
-    'expand',
-  ],
+    'expand': (expanded: boolean) => true,
+  },
   /**
    * @zh 自定义复制按钮的 tooltip 内容
    * @en Customize the tooltip content of the copy button

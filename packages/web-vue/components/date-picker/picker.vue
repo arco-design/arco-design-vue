@@ -300,44 +300,6 @@ export default defineComponent({
     defaultValue: {
       type: [Object, String, Number] as PropType<Date | string | number>,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (
-            value: CalendarValue | undefined,
-            date: Date | undefined,
-            dateString: string | undefined
-          ) => void
-        >
-      >,
-    },
-    onSelect: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: CalendarValue, date: Date, dateString: string) => void>
-      >,
-    },
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
-      >,
-    },
-    onOk: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: CalendarValue, date: Date, dateString: string) => void>
-      >,
-    },
-    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
-    onSelectShortcut: {
-      type: [Function, Array] as PropType<
-        EmitType<(shortcut: ShortcutType) => void>
-      >,
-    },
-    onPickerValueChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: CalendarValue, date: Date, dateString: string) => void>
-      >,
-    },
   },
   emits: {
     /**
@@ -351,12 +313,8 @@ export default defineComponent({
       value: CalendarValue | undefined,
       date: Date | undefined,
       dateString: string | undefined
-    ) => {
-      return true;
-    },
-    'update:modelValue': (value: CalendarValue | undefined) => {
-      return true;
-    },
+    ) => true,
+    'update:modelValue': (value: CalendarValue | undefined) => true,
     /**
      * @zh 选中日期发生改变但组件值未改变
      * @en The selected date has changed but the component value has not changed
@@ -364,20 +322,18 @@ export default defineComponent({
      * @param {Date} date
      * @param {string} dateString
      */
-    'select': (value: CalendarValue, date: Date, dateString: string) => {
-      return true;
-    },
+    'select': (
+      value: CalendarValue | undefined,
+      date: Date | undefined,
+      dateString: string | undefined
+    ) => true,
     /**
      * @zh 打开或关闭弹出框
      * @en Open or close the pop-up box
      * @param {boolean} visible
      */
-    'popup-visible-change': (popupVisible: boolean) => {
-      return true;
-    },
-    'update:popupVisible': (popupVisible: boolean) => {
-      return true;
-    },
+    'popup-visible-change': (visible: boolean) => true,
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 点击确认按钮
      * @en Click the confirm button
@@ -385,24 +341,22 @@ export default defineComponent({
      * @param {Date} date
      * @param {string} dateString
      */
-    'ok': (value: CalendarValue, date: Date, dateString: string) => {
-      return true;
-    },
+    'ok': (
+      value: CalendarValue | undefined,
+      date: Date | undefined,
+      dateString: string | undefined
+    ) => true,
     /**
      * @zh 点击清除按钮
      * @en Click the clear button
      */
-    'clear': () => {
-      return true;
-    },
+    'clear': () => true,
     /**
      * @zh 点击快捷选项
      * @en Click on the shortcut option
      * @param {ShortcutType} shortcut
      */
-    'select-shortcut': (shortcut: ShortcutType) => {
-      return true;
-    },
+    'select-shortcut': (shortcut: ShortcutType) => true,
     /**
      * @zh 面板日期改变
      * @en Panel date change
@@ -414,12 +368,8 @@ export default defineComponent({
       value: CalendarValue,
       date: Date,
       dateString: string
-    ) => {
-      return true;
-    },
-    'update:pickerValue': (value: CalendarValue) => {
-      return true;
-    },
+    ) => true,
+    'update:pickerValue': (value: CalendarValue) => true,
   },
   /**
    * @zh 输入框后缀图标

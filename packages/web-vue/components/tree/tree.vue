@@ -314,65 +314,96 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 点击树节点时触发
      * @en Triggered when the tree node is clicked
      * @param {Array<string | number>} selectedKeys
-     * @param {{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }} event
+     * @param {{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }} data
      */
-    'select',
-    'update:selectedKeys',
+    'select': (
+      selectedKeys: (string | number)[],
+      data: {
+        selected?: boolean;
+        selectedNodes: TreeNodeData[];
+        node?: TreeNodeData;
+        e?: Event;
+      }
+    ) => true,
+    'update:selectedKeys': (selectedKeys: (string | number)[]) => true,
     /**
      * @zh 点击树节点复选框时触发。`halfCheckedKeys` 和 `halfCheckedNodes` 从 `2.19.0` 开始支持。
      * @en Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.
      * @param {Array<string | number>} checkedKeys
-     * @param {{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: <string | number>[]; halfCheckedNodes: TreeNodeData[]; }} event
+     * @param {{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: (string | number)[]; halfCheckedNodes: TreeNodeData[]; }} data
      */
-    'check',
-    'update:checkedKeys',
-    'update:halfCheckedKeys',
+    'check': (
+      checkedKeys: (string | number)[],
+      data: {
+        checked?: boolean;
+        checkedNodes: TreeNodeData[];
+        node?: TreeNodeData;
+        halfCheckedKeys: (string | number)[];
+        halfCheckedNodes: TreeNodeData[];
+        e?: Event;
+      }
+    ) => true,
+    'update:checkedKeys': (checkedKeys: (string | number)[]) => true,
+    'update:halfCheckedKeys': (halfCheckedKeys: (string | number)[]) => true,
     /**
      * @zh 展开/关闭
      * @en Expand/close
      * @param {Array<string | number>} expandKeys
-     * @param {{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }} event
+     * @param {{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }} data
      */
-    'expand',
-    'update:expandedKeys',
+    'expand': (
+      expandKeys: (string | number)[],
+      data: {
+        expanded?: boolean;
+        expandedNodes: TreeNodeData[];
+        node?: TreeNodeData;
+        e?: Event;
+      }
+    ) => true,
+    'update:expandedKeys': (expandKeys: (string | number)[]) => true,
     /**
      * @zh 节点开始拖拽
      * @en Node starts dragging
      */
-    'dragStart',
+    'dragStart': (ev: DragEvent, node: TreeNodeData) => true,
     /**
      * @zh 节点结束拖拽
      * @en Node end drag
-     * @param {DragEvent} event
+     * @param {DragEvent} ev
      * @param {TreeNodeData} node
      */
-    'dragEnd',
+    'dragEnd': (ev: DragEvent, node: TreeNodeData) => true,
     /**
      * @zh 节点被拖拽至可释放目标
      * @en The node is dragged to the releasable target
-     * @param {DragEvent} event
+     * @param {DragEvent} ev
      * @param {TreeNodeData} node
      */
-    'dragOver',
+    'dragOver': (ev: DragEvent, node: TreeNodeData) => true,
     /**
      * @zh 节点离开可释放目标
      * @en Node leaves to release the target
-     * @param {DragEvent} event
+     * @param {DragEvent} ev
      * @param {TreeNodeData} node
      */
-    'dragLeave',
+    'dragLeave': (ev: DragEvent, node: TreeNodeData) => true,
     /**
      * @zh 节点在可释放目标上释放
      * @en The node is released on a releasable target
-     * @param {{ e: DragEvent; dragNode: TreeNodeData; dropNode: TreeNodeData; dropPosition: -1 ｜ 0 ｜ 1; }} info
+     * @param {{ e: DragEvent; dragNode: TreeNodeData; dropNode: TreeNodeData; dropPosition: number; }} data
      */
-    'drop',
-  ],
+    'drop': (data: {
+      e: DragEvent;
+      dragNode: TreeNodeData;
+      dropNode: TreeNodeData;
+      dropPosition: number;
+    }) => true,
+  },
   /**
    * @zh 定制节点图标
    * @en Custom node icon
@@ -611,9 +642,9 @@ export default defineComponent({
       emit('check', publicCheckedKeys, {
         checked: targetChecked,
         node: targetNode?.treeNodeData,
-        checkedNodes: getNodes(publicCheckedKeys),
+        checkedNodes: getNodes(publicCheckedKeys) as TreeNodeData[],
         halfCheckedKeys: newIndeterminateKeys,
-        halfCheckedNodes: getNodes(newIndeterminateKeys),
+        halfCheckedNodes: getNodes(newIndeterminateKeys) as TreeNodeData[],
         e: event,
       });
       emit('update:checkedKeys', publicCheckedKeys);
@@ -633,7 +664,7 @@ export default defineComponent({
       emit('select', newSelectedKeys, {
         selected: targetSelected,
         node: targetNode?.treeNodeData,
-        selectedNodes: getNodes(newSelectedKeys),
+        selectedNodes: getNodes(newSelectedKeys) as TreeNodeData[],
         e: event,
       });
       emit('update:selectedKeys', newSelectedKeys);
@@ -652,7 +683,7 @@ export default defineComponent({
       emit('expand', newExpandedKeys, {
         expanded: targetExpanded,
         node: targetNode?.treeNodeData,
-        expandedNodes: getNodes(newExpandedKeys),
+        expandedNodes: getNodes(newExpandedKeys) as TreeNodeData[],
         e: event,
       });
       emit('update:expandedKeys', newExpandedKeys);

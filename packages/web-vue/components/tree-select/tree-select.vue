@@ -367,49 +367,50 @@ export default defineComponent({
       >,
       default: true,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<TreeSelectProps['onChange']>,
-    },
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        TreeSelectProps['onPopupVisibleChange']
-      >,
-    },
-    onSearch: {
-      type: [Function, Array] as PropType<TreeSelectProps['onSearch']>,
-    },
-    onClear: {
-      type: [Function, Array] as PropType<TreeSelectProps['onClear']>,
-    },
   },
-  emits: [
+  emits: {
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @param {string | number | LabelValue | Array<string | number> | LabelValue[] | undefined} selectedValue
+     * @param {string | number | LabelValue | Array<string | number> | LabelValue[] | undefined} value
      */
-    'change',
-    'update:modelValue',
+    'change': (
+      value:
+        | string
+        | number
+        | LabelValue
+        | Array<string | number>
+        | LabelValue[]
+        | undefined
+    ) => true,
+    'update:modelValue': (
+      value:
+        | string
+        | number
+        | LabelValue
+        | Array<string | number>
+        | LabelValue[]
+        | undefined
+    ) => true,
     /**
      * @zh 下拉框显示状态改变时触发
      * @en Triggered when the status of the drop-down box changes
-     * @param {boolean} popupVisible
+     * @param {boolean} visible
      */
-    'popup-visible-change',
-    'update:popupVisible',
+    'popup-visible-change': (visible: boolean) => true,
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 搜索值变化时触发
      * @en Triggered when the search value changes
      * @param {string} searchKey
      */
-    'search',
+    'search': (searchKey: string) => true,
     /**
      * @zh 点击清除时触发
      * @en Triggered when clear is clicked
      * */
-    'clear',
-  ],
+    'clear': () => true,
+  },
   /**
    * @zh 自定义触发元素
    * @en Custom trigger element
