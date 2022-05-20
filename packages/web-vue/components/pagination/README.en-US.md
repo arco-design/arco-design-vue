@@ -56,7 +56,7 @@ description: Use paging to control the amount of information in a single page, a
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Triggered when page number changes|page: `number`|
+|change|Triggered when page number changes|current: `number`|
 |page-size-change|Triggered when the number of data items changes|pageSize: `number`|
 ### `<pagination>` Slots
 

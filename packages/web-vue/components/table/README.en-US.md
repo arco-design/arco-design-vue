@@ -95,21 +95,22 @@ description: It is used for data collection, display, analysis and processing, a
 |default-expand-all-rows|Whether to expand all rows by default|`boolean`|`false`|2.25.0|
 ### `<table>` Events
 
-|Event Name|Description|Parameters|
-|---|---|---|
-|expand|Triggered when a row is clicked to expand|rowKey: `string`|
-|expanded-change|Triggered when the expanded data row changes|rowKeys: `string[]`|
-|select|Triggered when the row selector is clicked|rowKeys: `string[]`<br>rowKey: `string`|
-|select-all|Triggered when the select all selector is clicked|checked: `boolean`|
-|selection-change|Triggered when the selected data row changes|rowKeys: `string[]`|
-|sorter-change|Triggered when the collation changes|dataIndex: `string`<br>direction: `string`|
-|filter-change|Triggered when the filter options are changed|dataIndex: `string`<br>filteredValues: `string[]`|
-|page-change|Triggered when the table pagination changes|page: `number`|
-|page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`|
-|change||data: `TableData[]`<br>extra: `TableChangeExtra`|
-|cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumnData`|
-|row-click|Triggered when row data is clicked|record: `TableData`|
-|header-click|Triggered when the header data is clicked|column: `TableColumnData`|
+|Event Name|Description|Parameters|version|
+|---|---|---|:---|
+|expand|Triggered when a row is clicked to expand|rowKey: `string`<br>record: `TableData`||
+|expanded-change|Triggered when the expanded data row changes|rowKeys: `string[]`||
+|select|Triggered when the row selector is clicked|rowKeys: `string[]`<br>rowKey: `string`<br>record: `TableData`||
+|select-all|Triggered when the select all selector is clicked|checked: `boolean`||
+|selection-change|Triggered when the selected data row changes|rowKeys: `string[]`||
+|sorter-change|Triggered when the collation changes|dataIndex: `string`<br>direction: `string`||
+|filter-change|Triggered when the filter options are changed|dataIndex: `string`<br>filteredValues: `string[]`||
+|page-change|Triggered when the table pagination changes|page: `number`||
+|page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`||
+|change||data: `TableData[]`<br>extra: `TableChangeExtra`||
+|cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
+|row-click|Triggered when row data is clicked|record: `TableData`<br>ev: `Event`||
+|header-click|Triggered when the header data is clicked|column: `TableColumnData`<br>ev: `Event`||
+|column-resize|Triggered when column width is adjusted|dataIndex: `string`<br>width: `number`|2.28.0|
 ### `<table>` Methods
 
 |Method|Description|Parameters|Return|version|

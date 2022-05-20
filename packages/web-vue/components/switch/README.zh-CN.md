@@ -45,7 +45,9 @@ description: 互斥性的操作控件，用户可打开或关闭某个功能。
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|value: `union`|
+|change|值改变时触发|value: `union`<br>ev: `Event`|
+|focus|组件获得焦点时触发|ev: `FocusEvent`|
+|blur|组件失去焦点时触发|ev: `FocusEvent`|
 ### `<switch>` Slots
 
 |插槽名|描述|参数|

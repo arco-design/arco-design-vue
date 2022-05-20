@@ -1,6 +1,6 @@
 import { RenderFunction, VNode } from 'vue';
 
-export type DescData = {
+export interface DescData {
   /**
    * @zh 标签
    * @en Label
@@ -16,7 +16,7 @@ export type DescData = {
    * @en number of columns
    */
   span?: number;
-};
+}
 
 export type DescLayout =
   | 'horizontal'

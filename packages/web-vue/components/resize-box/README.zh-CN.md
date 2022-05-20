@@ -29,9 +29,9 @@ description: 伸缩框组件。
 
 |事件名|描述|参数|
 |---|---|---|
-|moving-start|拖拽开始时触发|event: `MouseEvent`|
-|moving|拖拽时触发|size: `{ width: number; height: number; }`<br>event: `MouseEvent`|
-|moving-end|拖拽结束时触发|event: `MouseEvent`|
+|moving-start|拖拽开始时触发|ev: `MouseEvent`|
+|moving|拖拽时触发|size: `{ width: number; height: number; }`<br>ev: `MouseEvent`|
+|moving-end|拖拽结束时触发|ev: `MouseEvent`|
 ### `<resize-box>` Slots
 
 |插槽名|描述|参数|

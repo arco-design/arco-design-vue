@@ -52,9 +52,9 @@ description: A form with data collection, verification and submission functions,
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|submit|Triggered when the form is submitted|data: `{values: any; errors: undefined \| Record<string, ValidatedError>}`<br>e: `Event`|
-|submit-success|Triggered when verification is successful|values: `any`|
-|submit-failed|Triggered when verification failed|data: `{values: any; errors: undefined \| Record<string, ValidatedError>}`|
+|submit|Triggered when the form is submitted|data: `{values: Record<string, any>; errors: Record<string, ValidatedError> \| undefined}`<br>ev: `Event`|
+|submit-success|Triggered when verification is successful|values: `Record<string, any>`<br>ev: `Event`|
+|submit-failed|Triggered when verification failed|data: `{values: Record<string, any>; errors: Record<string, ValidatedError>}`<br>ev: `Event`|
 ### `<form>` Methods
 
 |Method|Description|Parameters|Return|

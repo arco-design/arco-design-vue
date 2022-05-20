@@ -79,14 +79,14 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>event: `{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
-|check|Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.|checkedKeys: `Array<string \| number>`<br>event: `{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: <string \| number>[]; halfCheckedNodes: TreeNodeData[]; }`|
-|expand|Expand/close|expandKeys: `Array<string \| number>`<br>event: `{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
+|select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>data: `{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
+|check|Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.|checkedKeys: `Array<string \| number>`<br>data: `{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: (string \| number)[]; halfCheckedNodes: TreeNodeData[]; }`|
+|expand|Expand/close|expandKeys: `Array<string \| number>`<br>data: `{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
 |drag-start|Node starts dragging|-|
-|drag-end|Node end drag|event: `DragEvent`<br>node: `TreeNodeData`|
-|drag-over|The node is dragged to the releasable target|event: `DragEvent`<br>node: `TreeNodeData`|
-|drag-leave|Node leaves to release the target|event: `DragEvent`<br>node: `TreeNodeData`|
-|drop|The node is released on a releasable target|info: `{ e: DragEvent; dragNode: TreeNodeData; dropNode: TreeNodeData; dropPosition: -1 ｜ 0 ｜ 1; }`|
+|drag-end|Node end drag|ev: `DragEvent`<br>node: `TreeNodeData`|
+|drag-over|The node is dragged to the releasable target|ev: `DragEvent`<br>node: `TreeNodeData`|
+|drag-leave|Node leaves to release the target|ev: `DragEvent`<br>node: `TreeNodeData`|
+|drop|The node is released on a releasable target|data: `{ e: DragEvent; dragNode: TreeNodeData; dropNode: TreeNodeData; dropPosition: number; }`|
 ### `<tree>` Methods
 
 |Method|Description|Parameters|Return|version|

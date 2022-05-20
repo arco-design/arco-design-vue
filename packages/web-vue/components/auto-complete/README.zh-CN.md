@@ -33,7 +33,7 @@ description: 输入框的自动补全功能。
 |change|绑定值发生改变时触发|value: `string`||
 |search|用户搜索时触发|value: `string`||
 |select|选择选项时触发|value: `string`||
-|clear|用户点击清除按钮时触发|-|2.23.0|
+|clear|用户点击清除按钮时触发|ev: `Event`|2.23.0|
 ### `<auto-complete>` Slots
 
 |插槽名|描述|参数|版本|

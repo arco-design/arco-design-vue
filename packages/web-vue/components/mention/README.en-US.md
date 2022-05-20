@@ -33,7 +33,7 @@ description: Used to mention someone or something in the input, often used for p
 |---|---|---|:---|
 |change|Triggered when the value changes|value: `string`||
 |search|Trigger on dynamic search prefix|value: `string`||
-|select|Triggered when the drop-down option is selected|value: `string`||
+|select|Triggered when the drop-down option is selected|value: `string \| number \| Record<string, any> \| undefined`||
 |clear|Triggered when the user clicks the clear button|-|2.23.0|
 ### `<mention>` Slots
 

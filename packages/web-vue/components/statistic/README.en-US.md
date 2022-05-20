@@ -21,19 +21,20 @@ description: Highlight a certain number or group of numbers and statistical data
 
 ### `<statistic>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|title|Title of the numerical display|`string`|`-`|
-|value|Numerical display value|`number\|object`|`-`|
-|format|Format of numerical display (used in date mode)|`string`|`'HH:mm:ss'`|
-|extra|Additional display content|`string`|`-`|
-|start|Whether to start animation|`boolean`|`true`|
-|precision|Decimal reserved digits (used in digital mode)|`number`|`0`|
-|separator|Carry separator (used in number mode)|`string`|`-`|
-|show-group-separator|Whether to display the carry separator (used in number mode)|`boolean`|`false`|
-|animation|Whether to turn on animation|`boolean`|`false`|
-|animation-duration|Animation's duration time|`number`|`2000`|
-|value-from|The starting value of the animation|`number`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|title|Title of the numerical display|`string`|`-`||
+|value|Numerical display value|`number \| Date`|`-`||
+|format|Format of numerical display (used in date mode)|`string`|`'HH:mm:ss'`||
+|extra|Additional display content|`string`|`-`||
+|start|Whether to start animation|`boolean`|`true`||
+|precision|Decimal reserved digits (used in digital mode)|`number`|`0`||
+|separator|Carry separator (used in number mode)|`string`|`-`||
+|show-group-separator|Whether to display the carry separator (used in number mode)|`boolean`|`false`||
+|animation|Whether to turn on animation|`boolean`|`false`||
+|animation-duration|Animation's duration time|`number`|`2000`||
+|value-from|The starting value of the animation|`number`|`-`||
+|placeholder|Prompt text (displayed when value is undefined )|`string`|`-`|2.28.0|
 ### `<statistic>` Slots
 
 |Slot Name|Description|Parameters|

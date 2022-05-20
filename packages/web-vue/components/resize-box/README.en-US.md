@@ -31,9 +31,9 @@ description: Telescopic frame components.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|moving-start|Triggered when dragging starts|event: `MouseEvent`|
-|moving|Triggered when dragging|size: `{ width: number; height: number; }`<br>event: `MouseEvent`|
-|moving-end|Triggered when the drag ends|event: `MouseEvent`|
+|moving-start|Triggered when dragging starts|ev: `MouseEvent`|
+|moving|Triggered when dragging|size: `{ width: number; height: number; }`<br>ev: `MouseEvent`|
+|moving-end|Triggered when the drag ends|ev: `MouseEvent`|
 ### `<resize-box>` Slots
 
 |Slot Name|Description|Parameters|

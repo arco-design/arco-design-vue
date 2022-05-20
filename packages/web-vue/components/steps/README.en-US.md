@@ -50,7 +50,7 @@ description: Clearly indicate the task flow and the current degree of completion
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Triggered when the number of steps changes|step: `number`|
+|change|Triggered when the number of steps changes|step: `number`<br>ev: `Event`|
 
 
 

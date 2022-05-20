@@ -47,7 +47,9 @@ description: Mutually exclusive operation controls, users can turn on or turn of
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `union`|
+|change|Trigger when the value changes|value: `union`<br>ev: `Event`|
+|focus|Triggered when the component gets focus|ev: `FocusEvent`|
+|blur|Fired when the component loses focus|ev: `FocusEvent`|
 ### `<switch>` Slots
 
 |Slot Name|Description|Parameters|

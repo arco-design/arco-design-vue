@@ -93,21 +93,22 @@ description: 用于数据收集展示、分析整理、操作处理。
 |default-expand-all-rows|是否默认展开所有的行|`boolean`|`false`|2.25.0|
 ### `<table>` Events
 
-|事件名|描述|参数|
-|---|---|---|
-|expand|点击展开行时触发|rowKey: `string`|
-|expanded-change|已展开的数据行发生改变时触发|rowKeys: `string[]`|
-|select|点击行选择器时触发|rowKeys: `string[]`<br>rowKey: `string`|
-|select-all|点击全选选择器时触发|checked: `boolean`|
-|selection-change|已选择的数据行发生改变时触发|rowKeys: `string[]`|
-|sorter-change|排序规则发生改变时触发|dataIndex: `string`<br>direction: `string`|
-|filter-change|过滤选项发生改变时触发|dataIndex: `string`<br>filteredValues: `string[]`|
-|page-change|表格分页发生改变时触发|page: `number`|
-|page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`|
-|change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`|
-|cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumnData`|
-|row-click|点击行数据时触发|record: `TableData`|
-|header-click|点击表头数据时触发|column: `TableColumnData`|
+|事件名|描述|参数|版本|
+|---|---|---|:---|
+|expand|点击展开行时触发|rowKey: `string`<br>record: `TableData`||
+|expanded-change|已展开的数据行发生改变时触发|rowKeys: `string[]`||
+|select|点击行选择器时触发|rowKeys: `string[]`<br>rowKey: `string`<br>record: `TableData`||
+|select-all|点击全选选择器时触发|checked: `boolean`||
+|selection-change|已选择的数据行发生改变时触发|rowKeys: `string[]`||
+|sorter-change|排序规则发生改变时触发|dataIndex: `string`<br>direction: `string`||
+|filter-change|过滤选项发生改变时触发|dataIndex: `string`<br>filteredValues: `string[]`||
+|page-change|表格分页发生改变时触发|page: `number`||
+|page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`||
+|change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`||
+|cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
+|row-click|点击行数据时触发|record: `TableData`<br>ev: `Event`||
+|header-click|点击表头数据时触发|column: `TableColumnData`<br>ev: `Event`||
+|column-resize|调整列宽时触发|dataIndex: `string`<br>width: `number`|2.28.0|
 ### `<table>` Methods
 
 |方法名|描述|参数|返回值|版本|

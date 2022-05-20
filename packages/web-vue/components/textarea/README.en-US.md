@@ -38,11 +38,11 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|input|Emitted when the user enters|value: `string`|
-|change|Only emitted when the textarea is out of focus|value: `string`|
-|clear|Emitted when the clear button is clicked|-|
-|focus|Emitted when the textarea gets focus|-|
-|blur|Emitted when the textarea loses focus|-|
+|input|Emitted when the user enters|value: `string`<br>ev: `Event`|
+|change|Only emitted when the textarea is out of focus|value: `string`<br>ev: `Event`|
+|clear|Emitted when the clear button is clicked|ev: `MouseEvent`|
+|focus|Emitted when the textarea gets focus|ev: `FocusEvent`|
+|blur|Emitted when the textarea loses focus|ev: `FocusEvent`|
 ### `<textarea>` Methods
 
 |Method|Description|Parameters|Return|version|

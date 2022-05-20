@@ -41,8 +41,8 @@ description: Refers to the use of multi-level classification to separate the opt
 |---|---|---|:---:|:---|
 |path-mode|Whether the value is a path|`boolean`|`false`||
 |multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
-|model-value **(v-model)**|Value|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
-|default-value|Default value (uncontrolled state)|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|model-value **(v-model)**|Value|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`-`||
+|default-value|Default value (uncontrolled state)|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`'' \| undefined \| []`||
 |options|Options for cascader|`CascaderOption[]`|`[]`||
 |disabled|Whether to disable|`boolean`|`false`||
 |error|Whether it is an error state|`boolean`|`false`||
@@ -69,13 +69,13 @@ description: Refers to the use of multi-level classification to separate the opt
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Triggered when the selected value changes|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+|change|Triggered when the selected value changes|value: `string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|
 |input-value-change|Triggered when the input value changes|value: `string`|
 |clear|Triggered when the clear button is clicked|-|
 |search|Triggered when the user searches|value: `string`|
 |popup-visible-change|Triggered when the display state of the dropdown changes|visible: `boolean`|
-|focus|Triggered when focus|-|
-|blur|Triggered when blur|-|
+|focus|Triggered when focus|ev: `FocusEvent`|
+|blur|Triggered when blur|ev: `FocusEvent`|
 ### `<cascader>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -97,8 +97,8 @@ description: Refers to the use of multi-level classification to separate the opt
 |---|---|---|:---:|:---|
 |path-mode|Whether the value is a path|`boolean`|`false`||
 |multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
-|model-value **(v-model)**|Value|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
-|default-value|Default value (uncontrolled state)|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|model-value **(v-model)**|Value|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`-`||
+|default-value|Default value (uncontrolled state)|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`'' \| undefined \| []`||
 |options|Options for cascader|`CascaderOption[]`|`[]`||
 |expand-trigger|Expand the trigger method of the next level|`string`|`'click'`||
 |check-strictly|Whether to enable strict selection mode|`boolean`|`false`||
@@ -108,7 +108,7 @@ description: Refers to the use of multi-level classification to separate the opt
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Triggered when the selected value changes|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+|change|Triggered when the selected value changes|value: `string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|
 ### `<cascader-panel>` Slots
 
 |Slot Name|Description|Parameters|version|

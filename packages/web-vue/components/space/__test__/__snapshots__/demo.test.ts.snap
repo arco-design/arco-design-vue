@@ -33,7 +33,7 @@ exports[`<space> demo: render [basic] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item2
     </button></div>
-  <div class=\\"arco-space-item\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+  <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
       <!--v-if-->
     </button></div>
 </div>"

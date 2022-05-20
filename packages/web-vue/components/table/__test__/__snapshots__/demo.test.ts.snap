@@ -1708,7 +1708,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -1722,7 +1722,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -1736,7 +1736,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -1750,7 +1750,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -1764,7 +1764,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -1778,7 +1778,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -1792,7 +1792,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -1806,7 +1806,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
           </button></div>
       </div>
@@ -2122,7 +2122,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
-              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"Kevin Sandra\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"true\\" class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"Kevin Sandra\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                 <!----></label></span>
               </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->Kevin Sandra</span></td>
@@ -2418,7 +2418,7 @@ exports[`<table> demo: render [sort] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
           <!--v-if-->
         </button></div>
       <div class=\\"arco-space-item\\"><span>Filter icon align left: false</span></div>

@@ -79,7 +79,7 @@ description: 用户可传输文件或提交相应的内容。
 |---|---|---|
 |exceed-limit|上传的图片超出限制后触发|fileList: `FileItem[]`<br>files: `File[]`|
 |change|上传的图片状态发生改变时触发|fileList: `FileItem[]`<br>fileItem: `fileItem`|
-|progress|上传中的图片进度改变时触发|fileItem: `fileItem`<br>event: `ProgressEvent`|
+|progress|上传中的图片进度改变时触发|fileItem: `fileItem`<br>ev: `ProgressEvent`|
 |preview|点击图片预览时的触发|fileItem: `FileItem`|
 |success|上传成功时触发|fileItem: `FileItem`|
 |error|上传失败时触发|fileItem: `FileItem`|
