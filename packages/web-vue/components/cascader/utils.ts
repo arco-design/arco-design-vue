@@ -52,11 +52,10 @@ export const getOptionInfos = (
     fieldNames: Required<CascaderFieldNames>;
   }
 ) => {
-  const _options = getOptionsWithTotalLeaves(options);
   let totalLevel = 0;
 
   const travelOptions = (
-    options: CascaderOptionWithTotal[],
+    options: CascaderOption[],
     parent?: CascaderOptionInfo,
     level?: number
   ) => {
@@ -73,16 +72,19 @@ export const getOptionInfos = (
         disabled: Boolean(item[fieldNames.disabled]),
         isLeaf: item[fieldNames.isLeaf],
         parent,
-        totalLeafOptions: item.totalLeafOptions,
       } as CascaderOptionInfo;
       const path = parentPath.concat(data);
       const key = path.map((item) => item.value).join('-');
       data.path = path;
       data.key = key;
 
-      if (item.children) {
+      if (item[fieldNames.children]) {
         data.isLeaf = false;
-        data.children = travelOptions(item.children, data, (level ?? 1) + 1);
+        data.children = travelOptions(
+          item[fieldNames.children],
+          data,
+          (level ?? 1) + 1
+        );
       } else if (enabledLazyLoad && !data.isLeaf) {
         data.isLeaf = false;
         if (lazyLoadOptions[key]) {
@@ -94,6 +96,16 @@ export const getOptionInfos = (
         }
       } else {
         data.isLeaf = true;
+      }
+
+      if (data.children) {
+        data.totalLeafOptions = data.children.reduce((pre, item) => {
+          if (isNumber(item.totalLeafOptions)) {
+            return pre + item.totalLeafOptions;
+          }
+
+          return pre + (item.isLeaf || !item.children ? 1 : 0);
+        }, 0);
       }
 
       optionMap.set(data.key, data);
@@ -110,7 +122,7 @@ export const getOptionInfos = (
     });
   };
 
-  const result = travelOptions(_options);
+  const result = travelOptions(options);
   innerLevel.value = totalLevel;
   return result;
 };

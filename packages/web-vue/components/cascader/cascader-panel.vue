@@ -206,7 +206,7 @@ export default defineComponent({
 
         optionInfos.value = getOptionInfos(_options ?? [], {
           enabledLazyLoad: Boolean(props.loadMore),
-          lazyLoadOptions,
+          lazyLoadOptions: _lazyLoadOptions,
           optionMap,
           leafOptionSet,
           leafOptionMap,
