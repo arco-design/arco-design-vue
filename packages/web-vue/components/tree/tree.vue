@@ -42,12 +42,12 @@ import type {
   CheckedStrategy,
 } from './interface';
 import {
-  getCheckedStateByCheck,
   isLeafNode,
   isNodeCheckable,
   isNodeExpandable,
   isNodeSelectable,
 } from './utils';
+import { getCheckedStateByCheck } from './utils/check-utils';
 import TreeNode from './node';
 import { isArray, isFunction, isUndefined } from '../_utils/is';
 import useMergeState from '../_hooks/use-merge-state';

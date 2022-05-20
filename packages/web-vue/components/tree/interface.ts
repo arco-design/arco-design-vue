@@ -243,3 +243,5 @@ export interface TreeProps {
   }) => void;
   filterTreeNode?: (node: TreeNodeData) => boolean;
 }
+
+export type Key2TreeNode = Map<TreeNodeKey, Node>;
