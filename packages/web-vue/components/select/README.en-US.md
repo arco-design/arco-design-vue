@@ -51,7 +51,7 @@ description: When users need to select one or more from a group of similar data,
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |multiple|Whether to open multi-select mode (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
-|model-value **(v-model)**|Value|`string\| number\| Record<string, unknown>\| (string \| number \| Record<string, unknown>)[]`|`-`||
+|model-value **(v-model)**|Value|`string\| number\| Record<string, any>\| (string \| number \| Record<string, any>)[]`|`-`||
 |default-value|Default value (uncontrolled mode)|`string\| number\| Record<string, unknown>\| (string \| number \| Record<string, unknown>)[]`|`'' \| []`||
 |input-value **(v-model)**|The value of the input|`string`|`-`||
 |default-input-value|The default value of the input (uncontrolled mode)|`string`|`''`||

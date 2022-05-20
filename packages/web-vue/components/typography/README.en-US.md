@@ -51,11 +51,11 @@ description: Used to display titles, paragraphs, and text content.
 |Event Name|Description|Parameters|
 |---|---|---|
 |edit-start|Edit start|-|
-|change|Edit content change|text: `string`Edited text|
+|change|Edit content change|text: `string`|
 |edit-end|Edit end|-|
-|copy|Copy|text: `string`Copied text|
-|ellipsis|Ellipsis change|isEllipsis: `boolean`Ellipsis state|
-|expand|Expand collapse event|expanded: `boolean`Expand state|
+|copy|Copy|text: `string`|
+|ellipsis|Ellipsis change|isEllipsis: `boolean`|
+|expand|Expand collapse event|expanded: `boolean`|
 ### `Common` Slots
 
 |Slot Name|Description|Parameters|

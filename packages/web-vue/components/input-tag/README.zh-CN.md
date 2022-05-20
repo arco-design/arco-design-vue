@@ -21,8 +21,8 @@ description: 用来输入标签。
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
-|model-value **(v-model)**|绑定值|`Array<string \| number \| TagData>`|`-`||
-|default-value|默认值（非受控状态）|`Array<string \| number \| TagData>`|`[]`||
+|model-value **(v-model)**|绑定值|`(string \| number \| TagData)[]`|`-`||
+|default-value|默认值（非受控状态）|`(string \| number \| TagData)[]`|`[]`||
 |input-value **(v-model)**|输入框的值|`string`|`-`||
 |default-input-value|输入框的默认值（非受控状态）|`string`|`''`||
 |placeholder|占位符|`string`|`-`||
@@ -40,13 +40,13 @@ description: 用来输入标签。
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值发生改变时触发|value: `Array<string \| number \| TagData>`|
-|input-value-change|输入值发生改变时触发|value: `string`|
-|press-enter|按下回车键时触发|inputValue: `string`|
-|remove|点击标签的删除按钮时触发|value: `string \| number`|
-|clear|点击清除按钮时触发|-|
-|focus|输入框获取焦点时触发|-|
-|blur|输入框失去焦点时触发|-|
+|change|值发生改变时触发|value: `(string \| number \| TagData)[]`<br>ev: `Event`|
+|input-value-change|输入值发生改变时触发|inputValue: `string`<br>ev: `Event`|
+|press-enter|按下回车键时触发|inputValue: `string`<br>ev: `KeyboardEvent`|
+|remove|点击标签的删除按钮时触发|removed: `string \| number`<br>ev: `Event`|
+|clear|点击清除按钮时触发|ev: `MouseEvent`|
+|focus|输入框获取焦点时触发|ev: `FocusEvent`|
+|blur|输入框失去焦点时触发|ev: `FocusEvent`|
 ### `<input-tag>` Methods
 
 |方法名|描述|参数|返回值|

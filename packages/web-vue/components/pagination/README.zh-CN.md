@@ -54,7 +54,7 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|页码改变时触发|page: `number`|
+|change|页码改变时触发|current: `number`|
 |page-size-change|数据条数改变时触发|pageSize: `number`|
 ### `<pagination>` Slots
 

@@ -41,7 +41,7 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 |事件名|描述|参数|
 |---|---|---|
 |popup-visible-change|下拉框显示状态发生改变时触发|visible: `boolean`|
-|select|用户选择时触发|value: `string \| number \| Record<string, unknown>`|
+|select|用户选择时触发|value: `union`<br>ev: `Event`|
 ### `<dropdown>` Slots
 
 |插槽名|描述|参数|版本|
@@ -124,8 +124,8 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 |事件名|描述|参数|
 |---|---|---|
 |popup-visible-change|下拉框显示状态发生改变时触发|visible: `boolean`|
-|click|点击按钮时触发|event: `Event`|
-|select|用户选择时触发|value: `string \| number \| Record<string, unknown>`|
+|click|点击按钮时触发|ev: `MouseEvent`|
+|select|用户选择时触发|value: `string \| number \| Record<string, any> \| undefined`<br>ev: `Event`|
 ### `<dropdown-button>` Slots
 
 |插槽名|描述|参数|

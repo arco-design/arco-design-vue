@@ -63,7 +63,7 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 
 |事件名|描述|参数|版本|
 |---|---|---|:---|
-|popup-visible-change|弹出框显示状态改变时触发|popupVisible: `boolean`||
+|popup-visible-change|弹出框显示状态改变时触发|visible: `boolean`||
 |show|弹出框显示后（动画结束）触发|-|2.18.0|
 |hide|弹出框隐藏后（动画结束）触发|-|2.18.0|
 ### `<trigger>` Slots

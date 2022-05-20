@@ -23,8 +23,8 @@ description: Used to enter the label.
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|model-value **(v-model)**|Value|`Array<string \| number \| TagData>`|`-`||
-|default-value|Default value (uncontrolled state)|`Array<string \| number \| TagData>`|`[]`||
+|model-value **(v-model)**|Value|`(string \| number \| TagData)[]`|`-`||
+|default-value|Default value (uncontrolled state)|`(string \| number \| TagData)[]`|`[]`||
 |input-value **(v-model)**|The value of the input|`string`|`-`||
 |default-input-value|The default value of the input (uncontrolled state)|`string`|`''`||
 |placeholder|Placeholder|`string`|`-`||
@@ -42,13 +42,13 @@ description: Used to enter the label.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Triggered when the value changes|value: `Array<string \| number \| TagData>`|
-|input-value-change|Trigger when the input value changes|value: `string`|
-|press-enter|Triggered when the enter key is pressed|inputValue: `string`|
-|remove|Triggered when the delete button of the label is clicked|value: `string \| number`|
-|clear|Triggered when the clear button is clicked|-|
-|focus|Triggered when the input box gets focus|-|
-|blur|Triggered when the input box loses focus|-|
+|change|Triggered when the value changes|value: `(string \| number \| TagData)[]`<br>ev: `Event`|
+|input-value-change|Trigger when the input value changes|inputValue: `string`<br>ev: `Event`|
+|press-enter|Triggered when the enter key is pressed|inputValue: `string`<br>ev: `KeyboardEvent`|
+|remove|Triggered when the delete button of the label is clicked|removed: `string \| number`<br>ev: `Event`|
+|clear|Triggered when the clear button is clicked|ev: `MouseEvent`|
+|focus|Triggered when the input box gets focus|ev: `FocusEvent`|
+|blur|Triggered when the input box loses focus|ev: `FocusEvent`|
 ### `<input-tag>` Methods
 
 |Method|Description|Parameters|Return|

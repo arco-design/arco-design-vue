@@ -78,8 +78,8 @@ description: 可以对树形结构数据进行选择。
 
 |事件名|描述|参数|
 |---|---|---|
-|change|值改变时触发|selectedValue: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
-|popup-visible-change|下拉框显示状态改变时触发|popupVisible: `boolean`|
+|change|值改变时触发|value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
+|popup-visible-change|下拉框显示状态改变时触发|visible: `boolean`|
 |search|搜索值变化时触发|searchKey: `string`|
 |clear|点击清除时触发|-|
 ### `<tree-select>` Slots

@@ -36,7 +36,7 @@ description: 向用户显示警告的信息时，通过警告提示，展现需�
 
 |事件名|描述|参数|
 |---|---|---|
-|close|点击关闭按钮时触发|-|
+|close|点击关闭按钮时触发|ev: `MouseEvent`|
 |after-close|关闭动画结束后触发|-|
 ### `<alert>` Slots
 

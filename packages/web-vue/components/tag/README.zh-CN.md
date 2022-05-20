@@ -40,8 +40,8 @@ description: 用于信息的选择、筛选、分类。用户通过标签进行�
 
 |事件名|描述|参数|
 |---|---|---|
-|close|点击关闭按钮时触发|-|
-|check|用户选中时触发（仅在可选中模式下触发）|-|
+|close|点击关闭按钮时触发|ev: `MouseEvent`|
+|check|用户选中时触发（仅在可选中模式下触发）|checked: `boolean`<br>ev: `MouseEvent`|
 ### `<tag>` Slots
 
 |插槽名|描述|参数|

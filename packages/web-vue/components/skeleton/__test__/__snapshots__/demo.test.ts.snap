@@ -5,7 +5,7 @@ exports[`<skeleton> demo: render [animation] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
       <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>Animation</span></div>
-      <div class=\\"arco-space-item\\"><button type=\\"button\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
           <!--v-if-->
         </button></div>
     </div>

@@ -49,7 +49,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
 |multiple|是否开启多选模式（多选模式默认开启搜索）|`boolean`|`false`||
-|model-value **(v-model)**|绑定值|`string\| number\| Record<string, unknown>\| (string \| number \| Record<string, unknown>)[]`|`-`||
+|model-value **(v-model)**|绑定值|`string\| number\| Record<string, any>\| (string \| number \| Record<string, any>)[]`|`-`||
 |default-value|默认值（非受控模式）|`string\| number\| Record<string, unknown>\| (string \| number \| Record<string, unknown>)[]`|`'' \| []`||
 |input-value **(v-model)**|输入框的值|`string`|`-`||
 |default-input-value|输入框的默认值（非受控模式）|`string`|`''`||

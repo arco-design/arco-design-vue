@@ -64,3 +64,12 @@ description: 一般用于详情页的信息展示。
 |span|所占列数|`number`|1||
 
 
+### DescData
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|label|标签|`string \| RenderFunction`|`-`|
+|value|数据|`string \| RenderFunction`|`-`|
+|span|所占列数|`number`|`-`|
+
+

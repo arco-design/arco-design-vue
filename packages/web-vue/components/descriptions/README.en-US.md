@@ -67,3 +67,12 @@ description: Generally used for the information display of the detail page.
 
 
 
+### DescData
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|label|Label|`string \| RenderFunction`|`-`|
+|value|Data|`string \| RenderFunction`|`-`|
+|span|number of columns|`number`|`-`|
+
+

@@ -31,7 +31,7 @@ description: 用于在输入中提及某人或某事，常用于发布、聊天�
 |---|---|---|:---|
 |change|值发生改变时触发|value: `string`||
 |search|动态搜索时触发|value: `string`||
-|select|选择下拉选项时触发|value: `string`||
+|select|选择下拉选项时触发|value: `string \| number \| Record<string, any> \| undefined`||
 |clear|用户点击清除按钮时触发|-|2.23.0|
 ### `<mention>` Slots
 

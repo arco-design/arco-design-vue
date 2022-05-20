@@ -39,8 +39,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |---|---|---|:---:|:---|
 |path-mode|绑定值是否为路径|`boolean`|`false`||
 |multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
-|model-value **(v-model)**|绑定值|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
-|default-value|默认值（非受控状态）|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|model-value **(v-model)**|绑定值|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`-`||
+|default-value|默认值（非受控状态）|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`'' \| undefined \| []`||
 |options|级联选择器的选项|`CascaderOption[]`|`[]`||
 |disabled|是否禁用|`boolean`|`false`||
 |error|是否为错误状态|`boolean`|`false`||
@@ -67,13 +67,13 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|选中值改变时触发|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+|change|选中值改变时触发|value: `string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|
 |input-value-change|输入值改变时触发|value: `string`|
 |clear|点击清除按钮时触发|-|
 |search|用户搜索时触发|value: `string`|
 |popup-visible-change|下拉框的显示状态改变时触发|visible: `boolean`|
-|focus|获得焦点时触发|-|
-|blur|失去焦点时触发|-|
+|focus|获得焦点时触发|ev: `FocusEvent`|
+|blur|失去焦点时触发|ev: `FocusEvent`|
 ### `<cascader>` Slots
 
 |插槽名|描述|参数|版本|
@@ -95,8 +95,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |---|---|---|:---:|:---|
 |path-mode|绑定值是否为路径|`boolean`|`false`||
 |multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
-|model-value **(v-model)**|绑定值|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`-`||
-|default-value|默认值（非受控状态）|`string\| number\| Array<string \| number>\| undefined\| (string \| number \| Array<string \| number>)[]`|`'' \| undefined \| []`||
+|model-value **(v-model)**|绑定值|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`-`||
+|default-value|默认值（非受控状态）|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`'' \| undefined \| []`||
 |options|级联选择器的选项|`CascaderOption[]`|`[]`||
 |expand-trigger|展开下一级的触发方式|`string`|`'click'`||
 |check-strictly|是否开启严格选择模式|`boolean`|`false`||
@@ -106,7 +106,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 |事件名|描述|参数|
 |---|---|---|
-|change|选中值改变时触发|value: `string \| string[] \| undefined \| (string \| string[])[]`|
+|change|选中值改变时触发|value: `string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|
 ### `<cascader-panel>` Slots
 
 |插槽名|描述|参数|版本|

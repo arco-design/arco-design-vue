@@ -64,7 +64,7 @@ description: Used to add hover, click, focus and other events to the element, an
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|popup-visible-change|Emitted when the status of the popup changes|popupVisible: `boolean`||
+|popup-visible-change|Emitted when the status of the popup changes|visible: `boolean`||
 |show|Triggered after the trigger is shown (the animation ends)|-|2.18.0|
 |hide|Triggered after the popup is hidden (the animation ends)|-|2.18.0|
 ### `<trigger>` Slots

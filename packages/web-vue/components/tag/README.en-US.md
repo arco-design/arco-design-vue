@@ -42,8 +42,8 @@ description: Used for the selection, screening and classification of information
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|close|Emitted when the close button is clicked|-|
-|check|Emitted when the user check (emit only in the checkable mode)|-|
+|close|Emitted when the close button is clicked|ev: `MouseEvent`|
+|check|Emitted when the user check (emit only in the checkable mode)|checked: `boolean`<br>ev: `MouseEvent`|
 ### `<tag>` Slots
 
 |Slot Name|Description|Parameters|

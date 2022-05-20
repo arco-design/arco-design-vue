@@ -49,11 +49,11 @@ description: 用于展示标题、段落、文本内容。
 |事件名|描述|参数|
 |---|---|---|
 |edit-start|开始编辑|-|
-|change|编辑内容变化|text: `string`Edited text|
+|change|编辑内容变化|text: `string`|
 |edit-end|编辑结束|-|
-|copy|复制|text: `string`Copied text|
-|ellipsis|省略变化事件|isEllipsis: `boolean`Ellipsis state|
-|expand|展开收起事件|expanded: `boolean`Expand state|
+|copy|复制|text: `string`|
+|ellipsis|省略变化事件|isEllipsis: `boolean`|
+|expand|展开收起事件|expanded: `boolean`|
 ### `Common` Slots
 
 |插槽名|描述|参数|

@@ -80,8 +80,8 @@ description: The tree structure data can be selected.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|selectedValue: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
-|popup-visible-change|Triggered when the status of the drop-down box changes|popupVisible: `boolean`|
+|change|Trigger when the value changes|value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
+|popup-visible-change|Triggered when the status of the drop-down box changes|visible: `boolean`|
 |search|Triggered when the search value changes|searchKey: `string`|
 |clear|Triggered when clear is clicked|-|
 ### `<tree-select>` Slots

@@ -50,9 +50,9 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 |事件名|描述|参数|
 |---|---|---|
-|submit|表单提交时触发|data: `{values: any; errors: undefined \| Record<string, ValidatedError>}`<br>e: `Event`|
-|submit-success|验证成功时触发|values: `any`|
-|submit-failed|验证失败时触发|data: `{values: any; errors: undefined \| Record<string, ValidatedError>}`|
+|submit|表单提交时触发|data: `{values: Record<string, any>; errors: Record<string, ValidatedError> \| undefined}`<br>ev: `Event`|
+|submit-success|验证成功时触发|values: `Record<string, any>`<br>ev: `Event`|
+|submit-failed|验证失败时触发|data: `{values: Record<string, any>; errors: Record<string, ValidatedError>}`<br>ev: `Event`|
 ### `<form>` Methods
 
 |方法名|描述|参数|返回值|

@@ -80,7 +80,7 @@ description: Users can transfer files or submit corresponding content.
 |---|---|---|
 |exceed-limit|Triggered when the uploaded image exceeds the limit|fileList: `FileItem[]`<br>files: `File[]`|
 |change|Triggered when the status of the uploaded image changes|fileList: `FileItem[]`<br>fileItem: `fileItem`|
-|progress|Triggered when the uploading image progress changes|fileItem: `fileItem`<br>event: `ProgressEvent`|
+|progress|Triggered when the uploading image progress changes|fileItem: `fileItem`<br>ev: `ProgressEvent`|
 |preview|Trigger when the image preview is clicked|fileItem: `FileItem`|
 |success|Triggered when upload is successful|fileItem: `FileItem`|
 |error|Triggered when upload fails|fileItem: `FileItem`|

@@ -38,7 +38,7 @@ description: When warning information is displayed to the user, the warning prom
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|close|Triggered when the close button is clicked|-|
+|close|Triggered when the close button is clicked|ev: `MouseEvent`|
 |after-close|Triggered after the close animation ends|-|
 ### `<alert>` Slots
 

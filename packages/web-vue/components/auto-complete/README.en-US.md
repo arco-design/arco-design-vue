@@ -35,7 +35,7 @@ description: The auto-complete function of the input.
 |change|Emitted when the value changes|value: `string`||
 |search|Emitted when the user searches|value: `string`||
 |select|Emitted when an option is selected|value: `string`||
-|clear|Triggered when the user clicks the clear button|-|2.23.0|
+|clear|Triggered when the user clicks the clear button|ev: `Event`|2.23.0|
 ### `<auto-complete>` Slots
 
 |Slot Name|Description|Parameters|version|
