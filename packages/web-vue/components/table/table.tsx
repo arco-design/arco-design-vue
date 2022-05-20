@@ -62,7 +62,6 @@ import VirtualList from '../_components/virtual-list/virtual-list.vue';
 import ResizeObserver from '../_components/resize-observer';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { omit } from '../_utils/omit';
-import { EmitType } from '../_utils/types';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useDrag } from './hooks/use-drag';
 import { useColumnResize } from './hooks/use-column-resize';
@@ -394,140 +393,107 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onExpand: {
-      type: [Function, Array] as PropType<EmitType<(rowKey: string) => void>>,
-    },
-    onExpandedChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(rowKeys: string[]) => void>
-      >,
-    },
-    onSelect: {
-      type: [Function, Array] as PropType<
-        (rowKeys: string[], rowKey: string) => void
-      >,
-    },
-    onSelectAll: {
-      type: [Function, Array] as PropType<(checked: boolean) => void>,
-    },
-    onSelectionChange: {
-      type: [Function, Array] as PropType<(rowKeys: string[]) => void>,
-    },
-    onSorterChange: {
-      type: [Function, Array] as PropType<
-        (dataIndex: string, direction: string) => void
-      >,
-    },
-    onFilterChange: {
-      type: [Function, Array] as PropType<
-        (dataIndex: string, filteredValues: string[]) => void
-      >,
-    },
-    onPageChange: {
-      type: [Function, Array] as PropType<(page: number) => void>,
-    },
-    onPageSizeChange: {
-      type: [Function, Array] as PropType<(pageSize: number) => void>,
-    },
-    onCellClick: {
-      type: [Function, Array] as PropType<
-        (record: TableData, column: TableColumnData) => void
-      >,
-    },
-    onRowClick: {
-      type: [Function, Array] as PropType<(record: TableData) => void>,
-    },
-    onHeaderClick: {
-      type: [Function, Array] as PropType<(column: TableColumnData) => void>,
-    },
   },
-  emits: [
-    'update:selectedKeys',
-    'update:expandedKeys',
+  emits: {
+    'update:selectedKeys': (rowKeys: string[]) => true,
+    'update:expandedKeys': (rowKeys: string[]) => true,
     /**
      * @zh 点击展开行时触发
      * @en Triggered when a row is clicked to expand
      * @param {string} rowKey
+     * @param {TableData} record
      */
-    'expand',
+    'expand': (rowKey: string, record: TableData) => true,
     /**
      * @zh 已展开的数据行发生改变时触发
      * @en Triggered when the expanded data row changes
      * @param {string[]} rowKeys
      */
-    'expandedChange',
+    'expandedChange': (rowKeys: string[]) => true,
     /**
      * @zh 点击行选择器时触发
      * @en Triggered when the row selector is clicked
      * @param {string[]} rowKeys
      * @param {string} rowKey
+     * @param {TableData} record
      */
-    'select',
+    'select': (rowKeys: string[], rowKey: string, record: TableData) => true,
     /**
      * @zh 点击全选选择器时触发
      * @en Triggered when the select all selector is clicked
      * @param {boolean} checked
      */
-    'selectAll',
+    'selectAll': (checked: boolean) => true,
     /**
      * @zh 已选择的数据行发生改变时触发
      * @en Triggered when the selected data row changes
      * @param {string[]} rowKeys
      */
-    'selectionChange',
+    'selectionChange': (rowKeys: string[]) => true,
     /**
      * @zh 排序规则发生改变时触发
      * @en Triggered when the collation changes
      * @param {string} dataIndex
      * @param {string} direction
      */
-    'sorterChange',
+    'sorterChange': (dataIndex: string, direction: string) => true,
     /**
      * @zh 过滤选项发生改变时触发
      * @en Triggered when the filter options are changed
      * @param {string} dataIndex
      * @param {string[]} filteredValues
      */
-    'filterChange',
+    'filterChange': (dataIndex: string, filteredValues: string[]) => true,
     /**
      * @zh 表格分页发生改变时触发
      * @en Triggered when the table pagination changes
      * @param {number} page
      */
-    'pageChange',
+    'pageChange': (page: number) => true,
     /**
      * @zh 表格每页数据数量发生改变时触发
      * @en Triggered when the number of data per page of the table changes
      * @param {number} pageSize
      */
-    'pageSizeChange',
+    'pageSizeChange': (pageSize: number) => true,
     /**
      * @zh 表格数据发生变化时触发
      * @param {TableData[]} data
      * @param {TableChangeExtra} extra
      */
-    'change',
+    'change': (data: TableData[], extra: TableChangeExtra) => true,
     /**
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
      * @param {TableData} record
      * @param {TableColumnData} column
+     * @param {Event} ev
      */
-    'cellClick',
+    'cellClick': (record: TableData, column: TableColumnData, ev: Event) =>
+      true,
     /**
      * @zh 点击行数据时触发
      * @en Triggered when row data is clicked
      * @param {TableData} record
+     * @param {Event} ev
      */
-    'rowClick',
+    'rowClick': (record: TableData, ev: Event) => true,
     /**
      * @zh 点击表头数据时触发
      * @en Triggered when the header data is clicked
      * @param {TableColumnData} column
+     * @param {Event} ev
      */
-    'headerClick',
-  ],
+    'headerClick': (column: TableColumnData, ev: Event) => true,
+    /**
+     * @zh 调整列宽时触发
+     * @en Triggered when column width is adjusted
+     * @param {string} dataIndex
+     * @param {number} width
+     * @version 2.28.0
+     */
+    'columnResize': (dataIndex: string, width: number) => true,
+  },
   /**
    * @zh 表格列定义。启用时会屏蔽 columns 属性
    * @en Table column definitions. When enabled, the columns attribute is masked
@@ -911,8 +877,10 @@ export default defineComponent({
       handleDrop,
     } = useDrag();
 
-    const { resizingColumn, columnWidth, handleThMouseDown } =
-      useColumnResize(thRefs);
+    const { resizingColumn, columnWidth, handleThMouseDown } = useColumnResize(
+      thRefs,
+      emit
+    );
 
     const processedData = computed(() => {
       const travel = (data: TableData[]) => {
@@ -1542,7 +1510,7 @@ export default defineComponent({
           type="button"
           class={`${prefixCls}-expand-btn`}
           onClick={(ev: Event) => {
-            handleExpand(currentKey);
+            handleExpand(currentKey, record.raw);
             if (stopPropagation) {
               ev.stopPropagation();
             }
@@ -1663,7 +1631,6 @@ export default defineComponent({
                   colSpan={colspan}
                   renderExpandBtn={renderExpandBtn}
                   onSelect={handleSelect}
-                  onExpand={handleExpand}
                   {...(dragType.value === 'handle' ? dragSourceEvent : {})}
                 />
               );

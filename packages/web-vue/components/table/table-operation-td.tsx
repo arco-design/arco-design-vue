@@ -58,7 +58,7 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: ['select', 'expand'],
+  emits: ['select'],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('table');
 
@@ -96,7 +96,10 @@ export default defineComponent({
             modelValue={props.selectedRowKeys ?? []}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(values: string[]) => emit('select', values, value)}
+            onChange={(values) =>
+              emit('select', values, value, props.record.raw)
+            }
+            // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}
           />
         );
@@ -109,7 +112,10 @@ export default defineComponent({
             modelValue={props.selectedRowKeys?.[0] ?? ''}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(value: string) => emit('select', [value], value)}
+            onChange={(value) =>
+              emit('select', [value], value, props.record.raw)
+            }
+            // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}
           />
         );

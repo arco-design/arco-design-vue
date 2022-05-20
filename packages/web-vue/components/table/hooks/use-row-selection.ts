@@ -1,7 +1,8 @@
 import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
-import type { EmitFn } from '../../_utils/types';
+import type { EmitFn2 } from '../../_utils/types';
 import type { TableRowSelection } from '../interface';
+import { TableData } from '../interface';
 
 export const useRowSelection = ({
   selectedKeys,
@@ -16,9 +17,12 @@ export const useRowSelection = ({
   rowSelection: Ref<TableRowSelection | undefined>;
   currentAllRowKeys: Ref<string[]>;
   currentAllEnabledRowKeys: Ref<string[]>;
-  emit: EmitFn<
-    'select' | 'selectAll' | 'selectionChange' | 'update:selectedKeys'
-  >;
+  emit: EmitFn2<{
+    'update:selectedKeys': (rowKeys: string[]) => true;
+    'select': (rowKeys: string[], rowKey: string, record: TableData) => true;
+    'selectAll': (checked: boolean) => true;
+    'selectionChange': (rowKeys: string[]) => true;
+  }>;
 }) => {
   const isRadio = computed(() => rowSelection.value?.type === 'radio');
   const _selectedRowKeys = ref(
@@ -54,9 +58,9 @@ export const useRowSelection = ({
     emit('update:selectedKeys', _selectedRowKeys.value);
   };
 
-  const handleSelect = (values: string[], value: string) => {
+  const handleSelect = (values: string[], value: string, record: TableData) => {
     _selectedRowKeys.value = values;
-    emit('select', values, value);
+    emit('select', values, value, record);
     emit('selectionChange', values);
     emit('update:selectedKeys', values);
   };
