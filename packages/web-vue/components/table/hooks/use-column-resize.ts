@@ -1,7 +1,11 @@
 import { reactive, ref, Ref } from 'vue';
 import { off, on } from '../../_utils/dom';
+import { EmitFn2 } from '../../_utils/types';
 
-export const useColumnResize = (thRefs: Ref<Record<string, HTMLElement>>) => {
+export const useColumnResize = (
+  thRefs: Ref<Record<string, HTMLElement>>,
+  emit: EmitFn2<{ columnResize: (dataIndex: string, width: number) => true }>
+) => {
   const resizingColumn = ref('');
   const columnWidth = reactive<Record<string, number>>({});
 
@@ -31,6 +35,7 @@ export const useColumnResize = (thRefs: Ref<Record<string, HTMLElement>>) => {
         width = 40;
       }
       columnWidth[resizingColumn.value] = width;
+      emit('columnResize', resizingColumn.value, width);
     }
   };
 
