@@ -28,6 +28,16 @@
           <icon-copy />
         </a-button>
       </a-tooltip>
+      <a-tooltip :content="t('tooltip.stackblitz')">
+        <a-button
+          class="cell-code-operation-btn"
+          shape="circle"
+          size="small"
+          @click="handleClickStackblitz"
+        >
+          <icon-thunderbolt />
+        </a-button>
+      </a-tooltip>
       <a-tooltip :content="t('tooltip.codeSandbox')">
         <a-button
           class="cell-code-operation-btn"
@@ -50,6 +60,7 @@ import { computed, CSSProperties, defineComponent, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { Message } from '@web-vue/components/index';
 import copy from '../../utils/clipboard';
+import { openStackblitz } from '../../utils/code-stackblitz';
 import { openCodeSandbox } from '../../utils/code-sandbox';
 
 export default defineComponent({
@@ -91,6 +102,12 @@ export default defineComponent({
       }
     };
 
+    const handleClickStackblitz = () => {
+      if (contentRef.value?.textContent) {
+        openStackblitz(contentRef.value.textContent);
+      }
+    };
+
     const handleClickCodeSandbox = () => {
       if (contentRef.value?.textContent) {
         openCodeSandbox(contentRef.value.textContent);
@@ -104,6 +121,7 @@ export default defineComponent({
       t,
       handleClick,
       handleClickCopy,
+      handleClickStackblitz,
       handleClickCodeSandbox,
       contentRef,
       style,

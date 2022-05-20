@@ -440,6 +440,7 @@ __metadata:
     "@arco-design/arco-vue-docs-navbar": ^0.1.0
     "@arco-design/arco-vue-scripts": ^0.2.1
     "@arco-design/web-vue": ^2.18.0
+    "@stackblitz/sdk": ^1.6.0
     "@types/nprogress": ^0.2.0
     "@typescript-eslint/eslint-plugin": ^4.18.0
     "@typescript-eslint/parser": ^4.12.0
@@ -536,7 +537,7 @@ __metadata:
   resolution: "@arco-design/color@npm:0.4.0"
   dependencies:
     color: ^3.1.3
-  checksum: b728a8d3e50f6074988b92b7f4f1c57e1ef285674411c2303995b502ecb5f67fb99de5714a9364765810de1f9c2a75272b3f34895c931c58e137d62302b362b1
+  checksum: 2e9e8a6c0992f12006011e11c42fee0acb3b7cc6ece69ce0b902f2b6071668cb71df09f95610df4606468168f00380d47c276ccbcbe82647bd293bd44b22eddd
   languageName: node
   linkType: hard
 
@@ -4105,6 +4106,13 @@ __metadata:
   dependencies:
     "@sinonjs/commons": ^1.7.0
   checksum: 8e331aa1412d905ecc8efd63550f58a6f77dcb510f878172004e53be63eb82650623618763001a918fc5e21257b86c45041e4e97c454ed6a2d187de084abbd11
+  languageName: node
+  linkType: hard
+
+"@stackblitz/sdk@npm:^1.6.0":
+  version: 1.7.0
+  resolution: "@stackblitz/sdk@npm:1.7.0"
+  checksum: 14879ea7423281b2193a800e95de0a48a229e4c6c7be340465b6ff4b5a8be3989339f07499631602ecf7f27376a874bf1c1f9b3a2e327dbf0022134ab13bec95
   languageName: node
   linkType: hard
 
