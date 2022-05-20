@@ -58,6 +58,7 @@ import {
   computed,
   defineComponent,
   nextTick,
+  onUnmounted,
   PropType,
   reactive,
   ref,
@@ -292,6 +293,10 @@ export default defineComponent({
     unmountOnClose: {
       type: Boolean,
     },
+    previewShortcut: {
+      type: Boolean,
+      default: true,
+    },
     // for JSX
     onChange: {
       type: [Function, Array] as PropType<
@@ -427,7 +432,7 @@ export default defineComponent({
       return true;
     },
   },
-  setup(props: RangePickerProps, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const {
       mode,
       showTime,
@@ -449,6 +454,7 @@ export default defineComponent({
       error,
       dayStartOfWeek,
       exchangeTime,
+      previewShortcut,
     } = toRefs(props);
 
     const { locale: globalLocal } = useI18n();
@@ -530,7 +536,7 @@ export default defineComponent({
     const isNextDisabled = computed(
       () => disabledArray.value[focusedIndex.value ^ 1]
     );
-
+    // 选中值
     const { value: selectedValue, setValue: setSelectedValue } =
       useRangePickerState(
         reactive({
@@ -539,17 +545,21 @@ export default defineComponent({
           format: parseValueFormat,
         })
       );
-
+    // 操作值
     const [processValue, setProcessValue] = useState<
       Array<Dayjs | undefined> | undefined
     >();
-
+    // 预览值
     const [previewValue, setPreviewValue] = useState<
       Array<Dayjs | undefined> | undefined
     >();
-
+    // 待确认的选中值
+    const forSelectedValue = computed(
+      () => processValue.value ?? selectedValue.value
+    );
+    // 面板显示的值
     const panelValue = computed(
-      () => previewValue.value || processValue.value || selectedValue.value
+      () => previewValue.value ?? processValue.value ?? selectedValue.value
     );
 
     // input 操作的值
@@ -635,9 +645,9 @@ export default defineComponent({
     const confirmBtnDisabled = computed(
       () =>
         needConfirm.value &&
-        (!isCompleteRangeValue(panelValue.value) ||
-          isDisabledDate(panelValue.value[0], 'start') ||
-          isDisabledDate(panelValue.value[1], 'end'))
+        (!isCompleteRangeValue(forSelectedValue.value) ||
+          isDisabledDate(forSelectedValue.value[0], 'start') ||
+          isDisabledDate(forSelectedValue.value[1], 'end'))
     );
 
     watch(panelVisible, (newVisible) => {
@@ -836,16 +846,23 @@ export default defineComponent({
       }
     }
 
+    let clearShortcutPreviewTimer: any;
+    onUnmounted(() => {
+      clearTimeout(clearShortcutPreviewTimer);
+    });
+
     function onPanelShortcutMouseEnter(value: Array<Dayjs | undefined>) {
+      clearTimeout(clearShortcutPreviewTimer);
       preview(value, { updateHeader: true });
-      resetHeaderValue();
     }
 
     function onPanelShortcutMouseLeave() {
-      setProcessValue(undefined);
-      setPreviewValue(undefined);
-      setInputValue(undefined);
-      resetHeaderValue();
+      clearTimeout(clearShortcutPreviewTimer);
+      clearShortcutPreviewTimer = setTimeout(() => {
+        setPreviewValue(undefined);
+        setInputValue(undefined);
+        resetHeaderValue();
+      }, 100);
     }
 
     function onPanelShortcutClick(
@@ -906,7 +923,6 @@ export default defineComponent({
       newValue[focusedIndex.value] = targetValueDayjs;
 
       select(newValue, { updateHeader: true });
-      resetHeaderValue();
     }
 
     function onInputPressEnter() {
@@ -970,8 +986,12 @@ export default defineComponent({
       onCellClick: onPanelCellClick,
       onCellMouseEnter: onPanelCellMouseEnter,
       onShortcutClick: onPanelShortcutClick,
-      onShortcutMouseEnter: onPanelShortcutMouseEnter,
-      onShortcutMouseLeave: onPanelShortcutMouseLeave,
+      onShortcutMouseEnter: previewShortcut.value
+        ? onPanelShortcutMouseEnter
+        : undefined,
+      onShortcutMouseLeave: previewShortcut.value
+        ? onPanelShortcutMouseLeave
+        : undefined,
       onConfirm: onPanelConfirm,
       onTimePickerSelect,
     }));

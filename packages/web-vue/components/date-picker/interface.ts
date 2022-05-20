@@ -100,6 +100,7 @@ export interface BasePickerProps {
   triggerProps?: Record<string, unknown>;
   unmountOnClose: boolean;
   valueFormat?: ValueFormat;
+  previewShortcut: boolean;
 }
 
 export type PickerProps = BasePickerProps &

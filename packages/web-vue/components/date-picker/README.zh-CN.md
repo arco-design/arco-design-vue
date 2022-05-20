@@ -73,6 +73,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |default-picker-value|面板默认显示的日期|`Date \| string \| number`|`-`||
 |popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`||
 |value-format|值的格式，对 `value` `defaultValue` `pickerValue` `defaultPickerValue` 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考[字符串解析格式](#字符串解析格式)）。如果没有指定，将格式化为字符串，格式同 `format`。|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
+|preview-shortcut|是否要预览快捷选择的结果|`boolean`|`true`|2.28.0|
 ### `Common` Events
 
 |事件名|描述|参数|
