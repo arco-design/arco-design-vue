@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🆕 新增功能
+
+- 增加 `placeholder` 属性，用于无值时显示 ([#1179](https://github.com/arco-design/arco-design-vue/pull/1179))
+
+
 ## 2.14.2
 
 `2022-01-10`

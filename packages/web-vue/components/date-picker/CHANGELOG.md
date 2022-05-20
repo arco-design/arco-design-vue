@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🆕 Feature
+
+- Added property `preview-shortcur` to customize whether to preview the result of shortcut options ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+
+### 🐛 BugFix
+
+- `select time` is not internationalized ([#1173](https://github.com/arco-design/arco-design-vue/pull/1173))
+
+### 💎 Enhancement
+
+- Reset back to selected value when moving out of `shortcut` ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+
+
 ## 2.27.0
 
 `2022-05-13`

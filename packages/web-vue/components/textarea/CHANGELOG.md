@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 💅 Style
+
+- Fix the display problem of the text box after setting the height style ([#1176](https://github.com/arco-design/arco-design-vue/pull/1176))
+
+
 ## 2.14.2
 
 `2022-01-10`

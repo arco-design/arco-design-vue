@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🆕 Feature
+
+- Add the `placeholder` attribute to display when there is no value ([#1179](https://github.com/arco-design/arco-design-vue/pull/1179))
+
+
 ## 2.14.2
 
 `2022-01-10`

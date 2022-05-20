@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### ⚠️ Important Attention
+
+- This version has corrected the component event type, TS warning may appear, and the type can be corrected according to the prompt information
+
+### 🆕 Feature
+
+- **config-provider:** Added `empty` and `loading` slots ([#1180](https://github.com/arco-design/arco-design-vue/pull/1180))
+- **statistic:** Add the `placeholder` attribute to display when there is no value ([#1179](https://github.com/arco-design/arco-design-vue/pull/1179))
+- **table:** `expand` and `select` events add record parameter ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+- **table:** Added `columnResize` event ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+- **date-picker:** Added property `preview-shortcur` to customize whether to preview the result of shortcut options ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+
+### 🐛 BugFix
+
+- **cascader:** Fix the problem that the multi-selection state is displayed incorrectly in the case of lazy loading ([#1177](https://github.com/arco-design/arco-design-vue/pull/1177))
+- **cascader:** Fix the problem that the lazy loading function is called multiple times when the selection box is clicked ([#1177](https://github.com/arco-design/arco-design-vue/pull/1177))
+- **date-picker:** `select time` is not internationalized ([#1173](https://github.com/arco-design/arco-design-vue/pull/1173))
+
+### 💎 Enhancement
+
+- **date-picker:** Reset back to selected value when moving out of `shortcut` ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+- demo code support open in Stackblitz ([#1101](https://github.com/arco-design/arco-design-vue/pull/1101))
+
+### 💅 Style
+
+- **textarea:** Fix the display problem of the text box after setting the height style ([#1176](https://github.com/arco-design/arco-design-vue/pull/1176))
+
+### 🆎 TypeScript
+
+- Fixed all component event related TS types ([#1160](https://github.com/arco-design/arco-design-vue/pull/1160))
+
+
 ## 2.27.1
 
 `2022-05-16`

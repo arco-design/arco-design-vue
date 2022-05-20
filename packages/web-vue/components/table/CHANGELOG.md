@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🆕 Feature
+
+- `expand` and `select` events add record parameter ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+- Added `columnResize` event ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+
+
 ## 2.27.0
 
 `2022-05-13`

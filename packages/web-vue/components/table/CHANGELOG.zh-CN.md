@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🆕 新增功能
+
+- `expand ` 和 `select ` 事件增加 record 参数 ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+- 新增 `columnResize`  事件 ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+
+
 ## 2.27.0
 
 `2022-05-13`

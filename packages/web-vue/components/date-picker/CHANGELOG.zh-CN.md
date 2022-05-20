@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🆕 新增功能
+
+- 新增属性 `preview-shortcut` 用于自定义是否要预览快捷选项的结果 ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+
+### 🐛 问题修复
+
+- `选择时间`没有国际化 ([#1173](https://github.com/arco-design/arco-design-vue/pull/1173))
+
+### 💎 功能优化
+
+- 移出 `shortcut` 的时候重置回已选值 ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+
+
 ## 2.27.0
 
 `2022-05-13`

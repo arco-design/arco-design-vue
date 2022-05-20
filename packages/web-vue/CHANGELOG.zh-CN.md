@@ -2,6 +2,41 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### ⚠️ 重点注意
+
+- 本版本对组件事件类型进行了修正，可能会出现 TS 警告，可根据提示信息修正类型
+
+### 🆕 新增功能
+
+- **config-provider:** 增加 `empty` 和 `loading` 插槽 ([#1180](https://github.com/arco-design/arco-design-vue/pull/1180))
+- **statistic:** 增加 `placeholder` 属性，用于无值时显示 ([#1179](https://github.com/arco-design/arco-design-vue/pull/1179))
+- **table:** `expand ` 和 `select ` 事件增加 record 参数 ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+- **table:** 新增 `columnResize`  事件 ([#1178](https://github.com/arco-design/arco-design-vue/pull/1178))
+- **date-picker:** 新增属性 `preview-shortcut` 用于自定义是否要预览快捷选项的结果 ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+
+### 🐛 问题修复
+
+- **cascader:** 修复懒加载情况下，多选状态显示错误的问题 ([#1177](https://github.com/arco-design/arco-design-vue/pull/1177))
+- **cascader:** 修复点击选择框时，多次调用懒加载函数的问题 ([#1177](https://github.com/arco-design/arco-design-vue/pull/1177))
+- **date-picker:** `选择时间`没有国际化 ([#1173](https://github.com/arco-design/arco-design-vue/pull/1173))
+
+### 💎 功能优化
+
+- **date-picker:** 移出 `shortcut` 的时候重置回已选值 ([#1175](https://github.com/arco-design/arco-design-vue/pull/1175))
+
+### 💅 样式更新
+
+- **textarea:** 修复设置高度样式后，文本框的显示问题 ([#1176](https://github.com/arco-design/arco-design-vue/pull/1176))
+
+### 🆎 类型修正
+
+- 修正全部组件事件相关 TS 类型 ([#1160](https://github.com/arco-design/arco-design-vue/pull/1160))
+
+
 ## 2.27.1
 
 `2022-05-16`

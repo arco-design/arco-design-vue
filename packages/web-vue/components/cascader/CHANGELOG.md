@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🐛 BugFix
+
+- Fix the problem that the multi-selection state is displayed incorrectly in the case of lazy loading ([#1177](https://github.com/arco-design/arco-design-vue/pull/1177))
+- Fix the problem that the lazy loading function is called multiple times when the selection box is clicked ([#1177](https://github.com/arco-design/arco-design-vue/pull/1177))
+
+
 ## 2.25.2
 
 `2022-04-27`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.28.0
+
+`2022-05-20`
+
+### 🆕 Feature
+
+- Added `empty` and `loading` slots ([#1180](https://github.com/arco-design/arco-design-vue/pull/1180))
+
+
 ## 2.25.1
 
 `2022-04-27`

@@ -36,11 +36,12 @@ export default defineComponent({
       return (
         <div class={prefixCls}>
           <div class={`${prefixCls}-image`}>
-            {slots.image?.() ?? props.imgSrc ? (
-              <img src={props.imgSrc} alt={props.description || 'empty'} />
-            ) : (
-              <IconEmpty />
-            )}
+            {slots.image?.() ??
+              (props.imgSrc ? (
+                <img src={props.imgSrc} alt={props.description || 'empty'} />
+              ) : (
+                <IconEmpty />
+              ))}
           </div>
           <div class={`${prefixCls}-description`}>
             {slots.default?.() ?? (props.description || t('empty.description'))}
