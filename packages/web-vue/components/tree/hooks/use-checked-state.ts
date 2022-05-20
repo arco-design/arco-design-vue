@@ -1,6 +1,6 @@
 import { toRefs, ref, watchEffect, computed } from 'vue';
-import { TreeNodeKey } from '../interface';
-import { getCheckedStateByInitKeys, Key2TreeNode } from '../utils';
+import { TreeNodeKey, Key2TreeNode } from '../interface';
+import { getCheckedStateByInitKeys } from '../utils/check-utils';
 
 export default function useCheckedState(props: {
   defaultCheckedKeys: TreeNodeKey[] | undefined;
