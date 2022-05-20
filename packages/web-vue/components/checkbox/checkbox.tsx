@@ -199,7 +199,7 @@ export default defineComponent({
     });
 
     return () => (
-      <label class={cls.value}>
+      <label aria-disabled={mergedDisabled.value} class={cls.value}>
         <input
           ref={checkboxRef}
           type="checkbox"
