@@ -5,11 +5,12 @@
 
 .@{textarea-prefix-cls}-wrapper {
   .input-wrapper-style(@textarea-prefix-cls);
-  padding-left: 0;
-  padding-right: 0;
+
   position: relative;
   display: inline-block;
   width: 100%;
+  padding-right: 0;
+  padding-left: 0;
   overflow: hidden;
 
   .@{textarea-prefix-cls}-word-limit {
@@ -50,12 +51,14 @@
 
 .@{textarea-prefix-cls} {
   .input-style();
+
   display: block;
   box-sizing: border-box;
-  resize: vertical;
+  height: 100%;
+  min-height: @textarea-size-min-height;
   padding: @textarea-padding-vertical @textarea-padding-horizontal;
   font-size: @textarea-font-size;
   line-height: @line-height-base;
   vertical-align: top;
-  min-height: @textarea-size-min-height;
+  resize: vertical;
 }
