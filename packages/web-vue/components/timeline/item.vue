@@ -1,5 +1,5 @@
 <template>
-  <div :class="cls">
+  <div role="listitem" :class="cls">
     <div :class="`${prefixCls}-dot-wrapper`">
       <div :class="dotLineCls" :style="computedDotLineStyle" />
       <div :class="`${prefixCls}-dot-content`">
@@ -35,7 +35,7 @@ import {
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { timelineInjectionKey } from './context';
-import { DotType, LineType, PositionType, ModeType } from './constants';
+import { DotType, LineType, PositionType, ModeType } from './interface';
 import { Direction } from '../_utils/constant';
 
 const getDefaultPosition = (
