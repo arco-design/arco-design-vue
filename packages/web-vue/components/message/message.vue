@@ -1,5 +1,6 @@
 <template>
   <li
+    role="alert"
     :class="[
       prefixCls,
       `${prefixCls}-${type}`,
