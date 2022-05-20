@@ -1,8 +1,9 @@
-import { cloneVNode, computed, defineComponent } from 'vue';
+import { cloneVNode, computed, defineComponent, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
 import DotLoading from './dot-loading';
 import { getFirstComponent } from '../_utils/vue-utils';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Spin',
@@ -40,8 +41,9 @@ export default defineComponent({
    * @en Custom element
    * @slot element
    */
-  setup(props, { slots, attrs }) {
+  setup(props, { slots }) {
     const prefixCls = getPrefixCls('spin');
+    const configCtx = inject(configProviderInjectionKey, undefined);
 
     const cls = computed(() => [
       prefixCls,
@@ -63,6 +65,9 @@ export default defineComponent({
       }
       if (props.dot) {
         return <DotLoading size={props.size} />;
+      }
+      if (configCtx?.slots.loading) {
+        return configCtx.slots.loading();
       }
       return <IconLoading spin={true} />;
     };
