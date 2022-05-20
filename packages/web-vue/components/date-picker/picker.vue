@@ -59,6 +59,7 @@ import {
   toRefs,
   watch,
   watchEffect,
+  onUnmounted,
 } from 'vue';
 import {
   dayjs,
@@ -280,6 +281,15 @@ export default defineComponent({
     valueFormat: {
       type: String as PropType<'timestamp' | 'Date' | string>,
     },
+    /**
+     * @zh 是否要预览快捷选择的结果
+     * @en Whether to preview the result of the shortcut
+     * @version 2.28.0
+     */
+    previewShortcut: {
+      type: Boolean,
+      default: true,
+    },
     showTime: {
       type: Boolean,
     },
@@ -477,6 +487,7 @@ export default defineComponent({
       pickerValue,
       defaultPickerValue,
       dayStartOfWeek,
+      previewShortcut,
     } = toRefs(props);
 
     const { locale: globalLocal } = useI18n();
@@ -540,7 +551,7 @@ export default defineComponent({
     const confirmBtnDisabled = computed(
       () =>
         needConfirm.value &&
-        (!panelValue.value || isDisabledDate(panelValue.value))
+        (!forSelectedValue.value || isDisabledDate(forSelectedValue.value))
     );
 
     const isDateTime = computed(() => mode.value === 'date' && showTime.value);
@@ -553,13 +564,17 @@ export default defineComponent({
         format: parseValueFormat,
       })
     );
-
     // 操作过程中的选中值
     const [processValue, setProcessValue] = useState<Dayjs | undefined>();
-
+    // 预览用的值
+    const [previewValue, setPreviewValue] = useState<Dayjs | undefined>();
+    // 待确认的值
+    const forSelectedValue = computed(
+      () => processValue.value ?? selectedValue.value
+    );
     // panel 展示用的值
     const panelValue = computed(
-      () => processValue.value || selectedValue.value
+      () => previewValue.value ?? processValue.value ?? selectedValue.value
     );
 
     // input 操作使用的值
@@ -615,6 +630,7 @@ export default defineComponent({
 
     watch(panelVisible, (newVisible) => {
       setProcessValue(undefined);
+      setPreviewValue(undefined);
       headerMode.value = undefined;
 
       // open
@@ -656,6 +672,7 @@ export default defineComponent({
       emitChange(value, emitOk);
       setSelectedValue(value);
       setProcessValue(undefined);
+      setPreviewValue(undefined);
       setInputValue(undefined);
       headerMode.value = undefined;
       if (isBoolean(showPanel)) {
@@ -665,6 +682,7 @@ export default defineComponent({
 
     function select(value: Dayjs | undefined, emitSelect?: boolean) {
       setProcessValue(value);
+      setPreviewValue(undefined);
       setInputValue(undefined);
       headerMode.value = undefined;
 
@@ -745,12 +763,22 @@ export default defineComponent({
       focusInput();
     }
 
+    let clearPreviewTimer: any;
+    onUnmounted(() => {
+      clearTimeout(clearPreviewTimer);
+    });
+
     function onPanelShortcutMouseEnter(value: Dayjs) {
-      select(value);
+      clearTimeout(clearPreviewTimer);
+      setPreviewValue(value);
+      setInputValue(undefined);
     }
 
     function onPanelShortcutMouseLeave() {
-      select(selectedValue.value);
+      clearTimeout(clearPreviewTimer);
+      clearPreviewTimer = setTimeout(() => {
+        setPreviewValue(undefined);
+      }, 100);
     }
 
     function onPanelShortcutClick(value: Dayjs, shortcut: ShortcutType) {
@@ -813,8 +841,12 @@ export default defineComponent({
       onTimePickerSelect,
       onConfirm: onPanelConfirm,
       onShortcutClick: onPanelShortcutClick,
-      onShortcutMouseEnter: onPanelShortcutMouseEnter,
-      onShortcutMouseLeave: onPanelShortcutMouseLeave,
+      onShortcutMouseEnter: previewShortcut.value
+        ? onPanelShortcutMouseEnter
+        : undefined,
+      onShortcutMouseLeave: previewShortcut.value
+        ? onPanelShortcutMouseLeave
+        : undefined,
       onTodayBtnClick: onPanelSelect,
       onHeaderLabelClick: onPanelHeaderLabelClick,
       onHeaderSelect: onPanelHeaderSelect,
