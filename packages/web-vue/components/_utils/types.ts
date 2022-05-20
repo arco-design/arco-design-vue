@@ -14,11 +14,28 @@ export interface ArcoGlobalConfig {
   classPrefix?: string;
 }
 
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+  k: infer I
+) => void
+  ? I
+  : never;
+
 export type BaseType = string | number;
 export type Data = Record<string, any>;
 export type RenderContent = string | RenderFunction;
 
 export type EmitFn<T> = (event: T, ...args: any[]) => void;
+
+export type EmitFn2<
+  Options = Record<string, any>,
+  Event extends keyof Options = keyof Options
+> = UnionToIntersection<
+  {
+    [key in Event]: Options[key] extends (...args: infer Args) => any
+      ? (event: key, ...args: Args) => void
+      : (event: key, ...args: any[]) => void;
+  }[Event]
+>;
 
 export type EmitType<T> = T | T[];
 

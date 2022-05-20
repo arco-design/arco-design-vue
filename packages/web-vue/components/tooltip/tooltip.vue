@@ -120,15 +120,15 @@ export default defineComponent({
       >,
     },
   },
-  emits: [
-    'update:popupVisible',
+  emits: {
+    'update:popupVisible': (visible: boolean) => true,
     /**
      * @zh 文字气泡显示状态改变时触发
      * @en Emitted when the tooltip display status changes
-     * @property {boolean} visible
+     * @param {boolean} visible
      */
-    'popupVisibleChange',
-  ],
+    'popupVisibleChange': (visible: boolean) => true,
+  },
   /**
    * @zh 内容
    * @en Content

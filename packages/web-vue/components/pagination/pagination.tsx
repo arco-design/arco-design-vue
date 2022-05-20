@@ -1,6 +1,6 @@
 import type { PropType, CSSProperties } from 'vue';
 import { computed, defineComponent, reactive, ref, toRefs, watch } from 'vue';
-import type { Data, EmitType } from '../_utils/types';
+import type { Data } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
 import Pager from './page-item.vue';
@@ -163,30 +163,23 @@ export default defineComponent({
       type: Number,
       default: 2,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<EmitType<(value: number) => void>>,
-    },
-    onPageSizeChange: {
-      type: [Function, Array] as PropType<EmitType<(value: number) => void>>,
-    },
   },
-  emits: [
-    'update:current',
-    'update:pageSize',
+  emits: {
+    'update:current': (current: number) => true,
+    'update:pageSize': (pageSize: number) => true,
     /**
      * @zh 页码改变时触发
      * @en Triggered when page number changes
-     * @property {number} page
+     * @param {number} current
      */
-    'change',
+    'change': (current: number) => true,
     /**
      * @zh 数据条数改变时触发
      * @en Triggered when the number of data items changes
-     * @property {number} pageSize
+     * @param {number} pageSize
      */
-    'pageSizeChange',
-  ],
+    'pageSizeChange': (pageSize: number) => true,
+  },
   /**
    * @zh 分页按钮
    * @en Page item

@@ -75,7 +75,7 @@ export default defineComponent({
 
     const getContainer = (container: string | HTMLElement) => {
       if (isString(container)) {
-        return document.querySelector(container);
+        return document.querySelector(container) as HTMLElement;
       }
       return container;
     };

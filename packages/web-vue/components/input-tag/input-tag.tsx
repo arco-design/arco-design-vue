@@ -19,7 +19,6 @@ import IconClose from '../icon/icon-close';
 import { InputTagFieldNames, TagData } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
-import { EmitType } from '../_utils/types';
 import ResizeObserver from '../_components/resize-observer';
 import FeedbackIcon from '../_components/feedback-icon.vue';
 import { useFormItem } from '../_hooks/use-form-item';
@@ -43,14 +42,14 @@ export default defineComponent({
      * @vModel
      */
     modelValue: {
-      type: Array as PropType<Array<string | number | TagData>>,
+      type: Array as PropType<(string | number | TagData)[]>,
     },
     /**
      * @zh 默认值（非受控状态）
      * @en Default value (uncontrolled state)
      */
     defaultValue: {
-      type: Array as PropType<Array<string | number | TagData>>,
+      type: Array as PropType<(string | number | TagData)[]>,
       default: () => [],
     },
     /**
@@ -158,74 +157,57 @@ export default defineComponent({
     focused: Boolean,
     disabledInput: Boolean,
     uninjectFormItemContext: Boolean,
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: string | number | TagData) => void>
-      >,
-    },
-    onInputValueChange: {
-      type: [Function, Array] as PropType<(inputValue: string) => void>,
-    },
-    onPressEnter: {
-      type: [Function, Array] as PropType<() => void>,
-    },
-    onRemove: {
-      type: [Function, Array] as PropType<(removed: string | number) => void>,
-    },
-    onClear: {
-      type: [Function, Array] as PropType<() => void>,
-    },
-    onFocus: {
-      type: [Function, Array] as PropType<() => void>,
-    },
-    onBlur: {
-      type: [Function, Array] as PropType<() => void>,
-    },
   },
-  emits: [
-    'update:modelValue',
-    'update:inputValue',
+  emits: {
+    'update:modelValue': (value: (string | number | TagData)[]) => true,
+    'update:inputValue': (inputValue: string) => true,
     /**
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
-     * @property {Array<string | number | TagData>} value
+     * @param {(string | number | TagData)[]} value
+     * @param {Event} ev
      */
-    'change',
+    'change': (value: (string | number | TagData)[], ev: Event) => true,
     /**
      * @zh 输入值发生改变时触发
      * @en Trigger when the input value changes
-     * @property {string} value
+     * @param {string} inputValue
+     * @param {Event} ev
      */
-    'inputValueChange',
+    'inputValueChange': (inputValue: string, ev: Event) => true,
     /**
      * @zh 按下回车键时触发
      * @en Triggered when the enter key is pressed
-     * @property {string} inputValue
+     * @param {string} inputValue
+     * @param {KeyboardEvent} ev
      */
-    'pressEnter',
+    'pressEnter': (inputValue: string, ev: KeyboardEvent) => true,
     /**
      * @zh 点击标签的删除按钮时触发
      * @en Triggered when the delete button of the label is clicked
-     * @property {string | number} value
+     * @param {string | number} removed
+     * @param {Event} ev
      */
-    'remove',
+    'remove': (removed: string | number, ev: Event) => true,
     /**
      * @zh 点击清除按钮时触发
      * @en Triggered when the clear button is clicked
+     * @param {MouseEvent} ev
      */
-    'clear',
+    'clear': (ev: MouseEvent) => true,
     /**
      * @zh 输入框获取焦点时触发
      * @en Triggered when the input box gets focus
+     * @param {FocusEvent} ev
      */
-    'focus',
+    'focus': (ev: FocusEvent) => true,
     /**
      * @zh 输入框失去焦点时触发
      * @en Triggered when the input box loses focus
+     * @param {FocusEvent} ev
      */
-    'blur',
-  ],
+    'blur': (ev: FocusEvent) => true,
+  },
   setup(props, { emit, slots, attrs }) {
     const { size, disabled, error, uninjectFormItemContext, modelValue } =
       toRefs(props);

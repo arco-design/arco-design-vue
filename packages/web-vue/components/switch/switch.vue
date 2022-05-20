@@ -33,17 +33,11 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, inject, ref, toRef, toRefs } from 'vue';
+import { computed, defineComponent, ref, toRefs } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
-import { EmitType } from '../_utils/types';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { useFormItem } from '../_hooks/use-form-item';
-
-const SWITCH_SIZES = ['small', 'medium'] as const;
-type SwitchSize = typeof SWITCH_SIZES[number];
-const SWITCH_TYPES = ['circle', 'round', 'line'] as const;
-type SwitchType = typeof SWITCH_TYPES[number];
+import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
   name: 'Switch',
@@ -89,28 +83,16 @@ export default defineComponent({
      * @values 'circle', 'round', 'line'
      */
     type: {
-      type: String as PropType<SwitchType>,
+      type: String as PropType<'circle' | 'round' | 'line'>,
       default: 'circle',
     },
     /**
      * @zh 开关的大小
      * @en Size of switch
-     * @values 'small', 'medium'
      * @defaultValue 'medium'
      */
     size: {
-      type: String as PropType<SwitchSize>,
-      default: () => {
-        const _size =
-          inject(configProviderInjectionKey, undefined)?.size ?? 'medium';
-        if (_size === 'mini') {
-          return 'small';
-        }
-        if (_size === 'large') {
-          return 'medium';
-        }
-        return _size;
-      },
+      type: String as PropType<'small' | 'medium'>,
     },
     /**
      * @zh 选中时的值
@@ -146,24 +128,29 @@ export default defineComponent({
     uncheckedColor: {
       type: String,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: boolean | string | number) => void>
-      >,
-    },
   },
-  emits: [
-    'update:modelValue',
+  emits: {
+    'update:modelValue': (value: boolean | string | number) => true,
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {boolean|string|number} value
+     * @param {boolean|string|number} value
+     * @param {Event} ev
      */
-    'change',
-    'focus',
-    'blur',
-  ],
+    'change': (value: boolean | string | number, ev: Event) => true,
+    /**
+     * @zh 组件获得焦点时触发
+     * @en Triggered when the component gets focus
+     * @property {FocusEvent} ev
+     */
+    'focus': (ev: FocusEvent) => true,
+    /**
+     * @zh 组件失去焦点时触发
+     * @en Fired when the component loses focus
+     * @property {FocusEvent} ev
+     */
+    'blur': (ev: FocusEvent) => true,
+  },
   /**
    * @zh 打开状态时的文案（`type='line'`和`size='small'`时不生效）
    * @en Copywriting when opened (not effective when `type='line'` and `size='small'`)
@@ -187,9 +174,10 @@ export default defineComponent({
   setup(props, { emit }) {
     const { disabled, size } = toRefs(props);
     const prefixCls = getPrefixCls('switch');
+    const { mergedSize: configSize } = useSize(size);
     const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
       disabled,
-      size,
+      size: configSize,
     });
 
     const _checked = ref(

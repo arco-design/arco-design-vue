@@ -28,7 +28,6 @@ import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import IconLoading from '../icon/icon-loading';
 import { TAG_COLORS, TagColor } from './interface';
-import { EmitType } from '../_utils/types';
 import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
@@ -114,32 +113,24 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-    // for JSX
-    onClose: {
-      type: [Function, Array] as PropType<
-        EmitType<(event: MouseEvent) => void>
-      >,
-    },
-    onCheck: {
-      type: [Function, Array] as PropType<
-        EmitType<(checked: boolean, event: MouseEvent) => void>
-      >,
-    },
   },
-  emits: [
-    'update:visible',
-    'update:checked',
+  emits: {
+    'update:visible': (visible: boolean) => true,
+    'update:checked': (checked: boolean) => true,
     /**
      * @zh 点击关闭按钮时触发
      * @en Emitted when the close button is clicked
+     * @param {MouseEvent} ev
      */
-    'close',
+    'close': (ev: MouseEvent) => true,
     /**
      * @zh 用户选中时触发（仅在可选中模式下触发）
      * @en Emitted when the user check (emit only in the checkable mode)
+     * @param {boolean} checked
+     * @param {MouseEvent} ev
      */
-    'check',
-  ],
+    'check': (checked: boolean, ev: MouseEvent) => true,
+  },
   /**
    * @zh 图标
    * @en Icon
