@@ -60,6 +60,18 @@ export default defineComponent({
       default: false,
     },
   },
+  /**
+   * @zh 自定义空状态元素
+   * @en Custom empty element
+   * @slot empty
+   * @version 2.28.0
+   */
+  /**
+   * @zh 自定义加载中元素
+   * @en Custom loading element
+   * @slot loading
+   * @version 2.28.0
+   */
   setup(props, { slots }) {
     const { prefixCls, locale, size, updateAtScroll } = toRefs(props);
 

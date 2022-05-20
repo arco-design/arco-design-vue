@@ -23,4 +23,4 @@ description: Refers to a state in which the current scene has no corresponding d
 
 ## API
 
-%%API(empty.vue)%%
+%%API(empty.tsx)%%

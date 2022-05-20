@@ -1,7 +1,7 @@
 import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Empty from './empty.vue';
+import _Empty from './empty';
 
 const Empty = Object.assign(_Empty, {
   install: (app: App, options?: ArcoOptions) => {

@@ -10,6 +10,8 @@ description: Configure in the outermost layer of the application, set once, and 
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/empty.md
+
 ## API
 
 
@@ -21,6 +23,12 @@ description: Configure in the outermost layer of the application, set once, and 
 |locale|Configure language pack|`ArcoLang`|`-`||
 |size|Size|`Size`|`-`|2.14.0|
 |global|Is global effect|`boolean`|`false`|2.25.0|
+### `<config-provider>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|loading|Custom loading element|-|2.28.0|
+|empty|Custom empty element|-|2.28.0|
 
 
 
