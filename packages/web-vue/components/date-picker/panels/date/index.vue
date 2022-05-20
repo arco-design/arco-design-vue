@@ -27,7 +27,9 @@
       />
     </div>
     <div v-if="showTimeView" :class="`${prefixCls}-timepicker`">
-      <header :class="`${prefixCls}-timepicker-title`">选择时间</header>
+      <header :class="`${prefixCls}-timepicker-title`">{{
+        datePickerT('datePicker.selectTime')
+      }}</header>
       <TimePanel
         v-bind="{
           ...timePickerProps,
@@ -95,6 +97,7 @@ import TimePanel from '../../../time-picker/panel.vue';
 import IconCalendar from '../../../icon/icon-calendar';
 import IconClockCircle from '../../../icon/icon-clock-circle';
 import useMergeState from '../../../_hooks/use-merge-state';
+import useDatePickerTransform from '../../hooks/use-inject-datepicker-transform';
 
 const ROW_COUNT = 6;
 const COL_COUNT = 7;
@@ -200,6 +203,8 @@ export default defineComponent({
       currentView,
       disabledTime,
     } = toRefs(props);
+
+    const datePickerT = useDatePickerTransform();
 
     const isWeek = computed(() => mode?.value === 'week');
 
@@ -326,6 +331,7 @@ export default defineComponent({
         emit('update:currentView', newView);
         setLocalCurrentView(newView);
       },
+      datePickerT,
     };
   },
 });
