@@ -52,7 +52,9 @@ export default defineConfig({
   plugins: [vue(),
     Components({
       resolvers: [
-        ArcoResolver()
+        ArcoResolver({
+          sideEffect: true
+        })
       ]
     })
   ]
