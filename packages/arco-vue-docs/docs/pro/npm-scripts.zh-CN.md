@@ -10,6 +10,8 @@ description: package.json script 预置方便实用的命令
 ```
 ├── README.md
 ├── config
+│   ├── plugin  # vite插件
+│   ├── vite.config.base.ts  # 基础环境配置
 │   ├── vite.config.dev.ts  # 开发环境配置
 │   ├── vite.config.prod.ts  # 生产环境配置
 └── package.json
@@ -42,7 +44,7 @@ npm run build
 ```json
 {
   "scripts": {
-    "dev": "vite --config ./config/vite.config.dev.ts",
+    "build": "vue-tsc --noEmit && vite build --config ./config/vite.config.prod.ts",
   }
 }
 ```

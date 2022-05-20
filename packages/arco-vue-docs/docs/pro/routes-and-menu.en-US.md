@@ -9,168 +9,76 @@ description: Route and menu generation
 
 The routing is usually tied to the menu. In order to reduce the amount of maintenance, we directly generate the menu through the routing table.
 
-## Routing
+## Router
 
-First of all, you need to understand the routing table configuration
-
- ```ts
-import {createRouter, createWebHistory} from'vue-router';
-
-import Login from'./modules/login';
-import PageLayout from'@/layout/page-layout.vue';
-import appRoutes from'./modules';
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    Login,
-    {
-      path:'/app',
-      component: PageLayout,
-      children: appRoutes,
-    },
-  ],
-});
-```
-
-example
+First, you need to understand the configuration of the routing table. For basic routing configuration, please refer to the official documentation of [Vue-Router](https://router.vuejs.org/)
 
  ```ts
-// In this example, the final path of the page is app/dashboard/workplace
+// In this example, the final path to the page is /dashboard/workplace
 export default {
-  path:'dashboard',
-  name:'dashboard', // route name
+  path: 'dashboard',
+  name: 'dashboard',
   component: () => import('@/views/dashboard/index.vue'),
   meta: {
-    locale:'menu.dashboard', // First level menu name (language pack key name)
-    requiresAuth: true, // Whether authentication is required
-    icon:'icon-dashboard', // menu configuration icon
+    locale: 'menu.dashboard',
+    requiresAuth: true,
+    icon: 'icon-dashboard',
   },
   children: [
     {
-      path:'workplace',
-      name:'workplace',
+      path: 'workplace',
+      name: 'workplace',
       component: () => import('@/views/dashboard/workplace/index.vue'),
       meta: {
-        locale:'menu.dashboard.workplace', // secondary menu name (language pack key name)
-        requiresAuth: true, // Whether authentication is required
-        roles: ['admin'], // role
-        hideInMenu: false, // Hide menu items
+        locale: 'menu.dashboard.workplace',
+        requiresAuth: true,
+        roles: ['admin'],
+        hideInMenu: false,
       },
     },
   ],
 };
 ```
 
-## menu
+Route `Meta` meta information
 
-The menu generation process can be found in the menu component:
+| Key	 | Description | Type | default|
+| ------------- | ------------- | -------------- | -------------- |
+roles | Configure the role that can access the page. If it does not match, it will be forbidden to access the routing page	 | string[]| - |
+requiresAuth | Whether login authentication is required | boolean| false |
+icon | Menu configuration icon | string| - |
+locale | First-level menu name (language pack key name) | string| - |
+hideInMenu | Whether to hide this item in the left menu | boolean| - |
+hideChildrenInMenu | Force single item to be displayed in left menu | boolean| - |
+activeMenu | Whether to hide the item's children in the left menu | string| - |
+order | Sort routing menu items. If this value is set, the higher the value, the higher the front. | number| - |
+noAffix | If set to true, the tabs will not be added to the tab-bar. | boolean| - |
+ignoreCache | If set to true the page will not be cached | boolean| - |
 
-- Get the routing tree with routing information through router.getRoutes().
+## Menu
 
- ```ts
-// components/menu/index.vue
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
-export default defineComponent({
-  setup() {
-    const router = useRouter();
-    const appRoute = computed(() => {
-      return router
-        .getRoutes()
-        .find((el) => el.name === 'root') as RouteRecordNormalized;
-    });
-    ......
-  },
-});
-```
+Front-end menu generation process:
 
-- The route tree obtained in the previous step is used for permission filtering to generate the menu tree for rendering.
+- Through the computed property of [appRoute](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L10), a routing tree with routing information is obtained.
 
-```tsx
-const menuTree = computed(() => {
-  const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children));
-  function travel(_routes: RouteRecordRaw[], layer: number) {
-    if (!_routes) return null;
-    const collector: any = _routes.map((element) => {
-      // no access
-      if (!permission.accessRouter(element)) {
-        return null;
-      }
+- Use the routing information obtained in the previous step to filter permissions to generate a menu [tree for rendering](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L23).
 
-      // leaf node
-      if (!element.children) {
-        return element;
-      }
+- Recursively generate menus by [rendering]((https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/index.vue#L48)) the menu tree.
 
-      // Associated child node
-      const subItem = travel(element.children, layer);
-      if (subItem.length) {
-        element.children = subItem;
-        return element;
-      }
-      // the else logic
-      if (layer > 1) {
-        element.children = subItem;
-        return element;
-      }
-      return null;
-    });
-    return collector.filter(Boolean);
-  }
-  return travel(copyRouter, 0);
-});
-```
+Server menu generation process:
 
-- Recursively generate menus by rendering the menu tree. (This example uses jsx syntax)
+- Add the [action](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/store/modules/app/index.ts#L47) of the api request to the Store to obtain the routing configuration of the server.
+  
+- Add the action of the api request to the Store to obtain the routing configuration of the server.
 
-```tsx
-const renderSubMenu = () => {
-  function travel(_route: RouteRecordRaw[], nodes = []) {
-    if (_route) {
-      _route.forEach((element) => {
-        // This is demo, modify nodes as needed
-        const icon = element?.meta?.icon ? `<${element?.meta?.icon}/>` : ``;
-        const subMenuItem = (
-          <a-sub-menu
-            key={element?.name}
-            v-slots={{
-              icon: () => h(compile(icon)),
-              title: () => h(compile(t(element?.meta?.locale || ''))),
-            }}
-          >
-            {element?.children?.map((elem) => {
-              return (
-                <a-menu-item key={elem.name} onClick={() => goto(elem)}>
-                  {t(elem?.meta?.locale || '')}
-                  {travel(elem.children ?? [])}
-                </a-menu-item>
-              );
-            })}
-          </a-sub-menu>
-        );
-        nodes.push(subMenuItem as never);
-      });
-    }
-    return nodes;
-  }
-  return travel(menuTree.value); // recursion menuTree
-};
-return () => (
-  <a-menu
-    v-model:collapsed={collapsed.value}
-    show-collapse-button
-    auto-open={false}
-    selected-keys={selectedKey.value}
-    auto-open-selected={true}
-    level-indent={34}
-    style="height: 100%"
-    onCollapse={setCollapse}
-  >
-    {renderSubMenu()}
-  </a-menu>
-);
-```
+- Through the computed property of [appRoute](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L10), a routing tree with routing information is obtained.
+
+- Use the routing information obtained in the previous step to filter permissions to generate a menu [tree for rendering](https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/useMenuTree.ts#L23).
+
+- Recursively generate menus by [rendering]((https://github.com/arco-design/arco-design-pro-vue/blob/23a21ceb939e1e2334e8c3b0f1f8a8049503ad9d/arco-design-pro-vite/src/components/menu/index.vue#L48)) the menu tree.
+
+**Note: Compared with the local menu generation process, the server menu only has more interface requests and server routing configuration information storage steps.**
+**Individual companies may have corresponding authority management systems to generate corresponding server-side routing configuration information and store them for front-end interface retrieval. However, the overall situation is similar, as long as the routing configuration information returned by the back-end interface conforms to the above routing configuration specifications and can be correctly parsed by the front-end**
 
 ## Steps to add a new menu item
 
@@ -179,9 +87,7 @@ After understanding the routing and menu generation, you can configure a new men
 - Add a monitor folder in views/dashboard and add index.vue to it
 
  ```ts
-
-import {defineComponent} from'vue';
-export default defineComponent({})
+<script lang="ts" setup><script>
 ```
 
 - Add the routing configuration of the monitoring page in the routing table

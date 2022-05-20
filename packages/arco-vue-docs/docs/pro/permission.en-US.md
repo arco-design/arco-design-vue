@@ -70,7 +70,7 @@ Arco Design Pro encapsulates the `v-permission` directives . Can be used on comp
 As follows, place the authorized role types in the array.
 
 ```vue
-<Button v-permission="['admin']">Delete</Button>
+<button v-permission="['admin']">Delete</button>
 
 <a-button v-permission="['user']">Delete</a-button>
 ```
