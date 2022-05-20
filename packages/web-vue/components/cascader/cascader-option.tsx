@@ -129,6 +129,7 @@ export default defineComponent({
                 !checkedStatus.value.checked
               );
             }}
+            onClick={(ev: Event) => ev.stopPropagation()}
           />
         )}
         {props.checkStrictly && !props.multiple && (
@@ -141,6 +142,7 @@ export default defineComponent({
               handlePathChange(ev);
               cascaderCtx?.onClickOption(props.option, true);
             }}
+            onClick={(ev: Event) => ev.stopPropagation()}
           />
         )}
         <div class={`${prefixCls}-label`}>
