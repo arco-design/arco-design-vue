@@ -59,6 +59,9 @@
                 </div>
                 <div
                   v-if="!simple && closable"
+                  tabindex="-1"
+                  role="button"
+                  aria-label="Close"
                   :class="`${prefixCls}-close-btn`"
                   @click="handleCancel"
                 >

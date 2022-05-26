@@ -3,6 +3,7 @@
     <div
       v-for="(item, index) of data"
       :key="index"
+      aria-hidden="true"
       :class="`${prefixCls}-mark`"
       :style="getStyle(item.key)"
     >
