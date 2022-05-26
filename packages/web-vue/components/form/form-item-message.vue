@@ -7,7 +7,7 @@
     </div>
   </transition>
   <transition v-for="item of error" v-else :key="item" name="form-blink" appear>
-    <div :class="[prefixCls]">
+    <div role="alert" :class="[prefixCls]">
       {{ item }}
     </div>
   </transition>

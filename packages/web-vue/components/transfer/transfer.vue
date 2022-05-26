@@ -13,6 +13,8 @@
     />
     <div v-if="!simple" :class="[`${prefixCls}-operations`]">
       <arco-button
+        tabindex="-1"
+        aria-label="Move selected right"
         size="small"
         shape="round"
         :disabled="dataInfo.sourceInfo.validSelected.length === 0"
@@ -24,6 +26,8 @@
       </arco-button>
       <arco-button
         v-if="!oneWay"
+        tabindex="-1"
+        aria-label="Move selected left"
         size="small"
         shape="round"
         :disabled="dataInfo.targetInfo.validSelected.length === 0"

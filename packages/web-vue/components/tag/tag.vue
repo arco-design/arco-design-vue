@@ -6,6 +6,8 @@
     <slot />
     <icon-hover
       v-if="closable"
+      role="button"
+      aria-label="Close"
       :prefix="prefixCls"
       :class="`${prefixCls}-close-btn`"
       @click.stop="handleClose"

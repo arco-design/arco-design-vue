@@ -38,6 +38,7 @@ export default defineComponent({
       }
       return (
         <ul
+          role="menu"
           class={[
             `${prefixCls}-list`,
             `${prefixCls}-search-list`,

@@ -32,7 +32,7 @@ exports[`<alert> demo: render [action] correctly 1`] = `
         <div class=\\"arco-alert-action\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
             <!--v-if-->Detail
           </button></div>
-        <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+        <div tabindex=\\"-1\\" role=\\"button\\" aria-label=\\"Close\\" class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
   </div>
@@ -84,7 +84,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <div class=\\"arco-alert-content\\">This is an info alert.</div>
         </div>
         <!--v-if-->
-        <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+        <div tabindex=\\"-1\\" role=\\"button\\" aria-label=\\"Close\\" class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
   </div>
@@ -99,7 +99,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <div class=\\"arco-alert-content\\">This is an success alert.</div>
         </div>
         <!--v-if-->
-        <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+        <div tabindex=\\"-1\\" role=\\"button\\" aria-label=\\"Close\\" class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
   </div>
@@ -114,7 +114,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <div class=\\"arco-alert-content\\"> This is an warning alert. </div>
         </div>
         <!--v-if-->
-        <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+        <div tabindex=\\"-1\\" role=\\"button\\" aria-label=\\"Close\\" class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
   </div>
@@ -129,7 +129,7 @@ exports[`<alert> demo: render [closable] correctly 1`] = `
           <div class=\\"arco-alert-content\\"> This is an error alert. </div>
         </div>
         <!--v-if-->
-        <div class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
+        <div tabindex=\\"-1\\" role=\\"button\\" aria-label=\\"Close\\" class=\\"arco-alert-close-btn\\"><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></div>
       </div>
     </transition-stub>
   </div>

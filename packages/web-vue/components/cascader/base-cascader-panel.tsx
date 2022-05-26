@@ -49,6 +49,7 @@ export default defineComponent({
             <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
           ) : (
             <ul
+              role="menu"
               class={[
                 `${prefixCls}-list`,
                 {
