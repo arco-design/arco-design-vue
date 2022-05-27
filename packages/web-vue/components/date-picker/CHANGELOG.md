@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 Feature
+
+- Added property `show-confirm-btn` to customize whether to show the confirmation button ([#1198](https://github.com/arco-design/arco-design-vue/pull/1198))
+
+### 💎 Enhancement
+
+- only update the date when splicing the time ([#1199](https://github.com/arco-design/arco-design-vue/pull/1199))
+
+
 ## 2.28.0
 
 `2022-05-20`

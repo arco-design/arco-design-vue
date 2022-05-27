@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🐛 问题修复
+
+- 修复 clear 没有触发 form 校验的问题 ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+
+
 ## 2.27.0
 
 `2022-05-13`

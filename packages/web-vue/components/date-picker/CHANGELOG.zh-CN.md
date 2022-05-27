@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 新增功能
+
+- 新增属性 `show-confirm-btn` 用于自定义是否显示确认按钮 ([#1198](https://github.com/arco-design/arco-design-vue/pull/1198))
+
+### 💎 功能优化
+
+- 拼接时间的时候只更新日期 ([#1199](https://github.com/arco-design/arco-design-vue/pull/1199))
+
+
 ## 2.28.0
 
 `2022-05-20`

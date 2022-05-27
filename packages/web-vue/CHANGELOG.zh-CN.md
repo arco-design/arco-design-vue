@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### ⚠️ 重点注意
+
+- **cascader:** 外露参数从 CascaderOptionInfo 改为 CascaderOption。不再包含内部数据，用户数据不受影响 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+
+### 🆕 新增功能
+
+- **tree-select:** 默认支持通过标签删除已选项 ([#1206](https://github.com/arco-design/arco-design-vue/pull/1206))
+- **dropdown:** 增加 `popup-max-height` 属性 ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+- **dropdown:** 子菜单增加 `option-props` 和 icon 插槽 ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+- **table:** 行选择器增加非严格模式支持（级联控制） ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+- **table:** 列属性增加 headerCellStyle 和 bodyCellStyle ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+- **cascader:** 选项 value 支持对象格式，增加 `value-key` 属性 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **cascader:** 增加 `fallback` 属性，可以自定义不存在选项的展示 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **cascader:** 增加 `expand-child` 属性，可以展开子菜单 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **date-picker:** 新增属性 `show-confirm-btn` 用于自定义是否显示确认按钮 ([#1198](https://github.com/arco-design/arco-design-vue/pull/1198))
+
+### 🐛 问题修复
+
+- **tree-select:** 修复设置了 field-names 后拖拽失效的问题 ([#1207](https://github.com/arco-design/arco-design-vue/pull/1207))
+- **mention:** 修复 textarea 模式下输入后光标移动的问题 ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+- **input-number:** 修复 clear 没有触发 form 校验的问题 ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+- **select:** 修复 inputValue 受控失效的问题 ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+
+### 💎 功能优化
+
+- **cascader:** 优化子菜单展开逻辑和键盘事件 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **date-picker:** 拼接时间的时候只更新日期 ([#1199](https://github.com/arco-design/arco-design-vue/pull/1199))
+- 组件增加无障碍化 ARIA 属性 ([#1196](https://github.com/arco-design/arco-design-vue/pull/1196))
+
+
 ## 2.28.0
 
 `2022-05-20`

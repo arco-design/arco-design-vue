@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 新增功能
+
+- 行选择器增加非严格模式支持（级联控制） ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+- 列属性增加 headerCellStyle 和 bodyCellStyle ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+
+
 ## 2.28.0
 
 `2022-05-20`

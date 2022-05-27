@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🐛 问题修复
+
+- 修复 inputValue 受控失效的问题 ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+
+
 ## 2.27.1
 
 `2022-05-16`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 Feature
+
+- Added `popup-max-height` property ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+- Added icon slot to submenu ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+
+
 ## 2.20.2
 
 `2022-03-24`
