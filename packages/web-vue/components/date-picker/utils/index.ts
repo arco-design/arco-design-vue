@@ -35,9 +35,10 @@ export function mergeValueWithTime(
   dateValue?: Dayjs,
   timeValue?: Dayjs
 ) {
-  return dayjs(
-    `${(dateValue || defaultValue).format('YYYY-MM-DD')} ${(
-      timeValue || defaultValue
-    ).format('HH:mm:ss')}`
-  );
+  const dateVal = dateValue || defaultValue;
+  const timeVal = timeValue || defaultValue;
+  return timeVal
+    .set('year', dateVal.year())
+    .set('month', dateVal.month())
+    .set('date', dateVal.date());
 }
