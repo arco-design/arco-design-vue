@@ -8,6 +8,7 @@
     <div
       ref="wrapperRef"
       :class="`${prefixCls}-list-wrapper`"
+      :style="style"
       @scroll="handleScroll"
     >
       <ul :class="`${prefixCls}-list`">
@@ -21,10 +22,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, ref } from 'vue';
+import {
+  computed,
+  CSSProperties,
+  defineComponent,
+  inject,
+  PropType,
+  ref,
+} from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import { EmitType } from '../_utils/types';
+import { DropdownContext, dropdownInjectionKey } from './context';
+import { isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'DropdownPanel',
@@ -54,6 +64,10 @@ export default defineComponent({
   emits: ['scroll', 'reachBottom'],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('dropdown');
+    const dropdownCtx = inject<Partial<DropdownContext>>(
+      dropdownInjectionKey,
+      {}
+    );
     const wrapperRef = ref<HTMLElement>();
 
     const handleScroll = (e: Event) => {
@@ -65,6 +79,21 @@ export default defineComponent({
       emit('scroll', e);
     };
 
+    const style = computed<CSSProperties | undefined>(() => {
+      if (isNumber(dropdownCtx.popupMaxHeight)) {
+        return {
+          maxHeight: `${dropdownCtx.popupMaxHeight}px`,
+        };
+      }
+      if (!dropdownCtx.popupMaxHeight) {
+        return {
+          maxHeight: 'none',
+          overflowY: 'hidden',
+        };
+      }
+      return undefined;
+    });
+
     const cls = computed(() => [
       prefixCls,
       {
@@ -75,6 +104,7 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
+      style,
       wrapperRef,
       handleScroll,
     };

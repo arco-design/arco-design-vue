@@ -125,7 +125,6 @@ export default defineComponent({
       type: Object,
     },
   },
-
   emits: {
     'update:popupVisible': (visible: boolean) => true,
     /**
