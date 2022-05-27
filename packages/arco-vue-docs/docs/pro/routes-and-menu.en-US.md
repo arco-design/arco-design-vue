@@ -50,7 +50,7 @@ icon | Menu configuration icon | string| - |
 locale | First-level menu name (language pack key name) | string| - |
 hideInMenu | Whether to hide this item in the left menu | boolean| - |
 hideChildrenInMenu | Force single item to be displayed in left menu | boolean| - |
-activeMenu | Whether to hide the item's children in the left menu | string| - |
+activeMenu | If set name, the menu will be highlighted according to the name you set | string| - |
 order | Sort routing menu items. If this value is set, the higher the value, the higher the front. | number| - |
 noAffix | If set to true, the tabs will not be added to the tab-bar. | boolean| - |
 ignoreCache | If set to true the page will not be cached | boolean| - |

@@ -152,6 +152,7 @@ export default {
     mock: '接口和数据模拟',
     build: '打包构建',
     permission: '权限控制',
+    faq: '常见问题',
   },
   themeBox: {
     currentTheme: '当前主题',
