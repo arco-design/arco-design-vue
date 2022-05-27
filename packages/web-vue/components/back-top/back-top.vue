@@ -43,8 +43,8 @@ export default defineComponent({
       type: [String, Object] as PropType<string | HTMLElement>,
     },
     /**
-     * @zh 滚动动画的缓动方式
-     * @en Easing mode of scrolling animation
+     * @zh 滚动动画的缓动方式，可选值参考 [BTween](https://github.com/PengJiyuan/b-tween)
+     * @en Easing mode of scrolling animation, refer to [BTween](https://github.com/PengJiyuan/b-tween) for optional values
      */
     easing: {
       type: String,

@@ -180,7 +180,11 @@ export default defineComponent({
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
-    const { mergedSize: _mergedSize, mergedDisabled } = useFormItem({
+    const {
+      mergedSize: _mergedSize,
+      mergedDisabled,
+      eventHandlers,
+    } = useFormItem({
       size,
       disabled,
     });
@@ -341,6 +345,7 @@ export default defineComponent({
       _value.value = '';
       emit('update:modelValue', undefined);
       emit('change', undefined, ev);
+      eventHandlers.value.onChange?.(ev);
       emit('clear', ev);
     };
 

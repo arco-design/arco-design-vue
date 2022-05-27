@@ -8,6 +8,7 @@ import {
   onMounted,
   TransitionGroup,
   toRefs,
+  nextTick,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { INPUT_EVENTS, Size } from '../_utils/constant';
@@ -257,6 +258,15 @@ export default defineComponent({
         compositionValue.value = '';
         emit('inputValueChange', value, e);
         updateInputValue(value);
+
+        nextTick(() => {
+          if (
+            inputRef.value &&
+            computedInputValue.value !== inputRef.value.value
+          ) {
+            inputRef.value.value = computedInputValue.value;
+          }
+        });
       } else {
         isComposition.value = true;
         compositionValue.value = computedInputValue.value + (e.data ?? '');
@@ -287,6 +297,15 @@ export default defineComponent({
       if (!isComposition.value) {
         emit('inputValueChange', value, e);
         updateInputValue(value);
+
+        nextTick(() => {
+          if (
+            inputRef.value &&
+            computedInputValue.value !== inputRef.value.value
+          ) {
+            inputRef.value.value = computedInputValue.value;
+          }
+        });
       }
     };
 
