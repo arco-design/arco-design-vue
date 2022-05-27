@@ -210,6 +210,18 @@ export interface TableColumnData {
    */
   cellStyle?: CSSProperties;
   /**
+   * @zh 自定义表头单元格样式
+   * @en Custom cell style
+   * @version 2.29.0
+   */
+  headerCellStyle?: CSSProperties;
+  /**
+   * @zh 自定义内容单元格样式
+   * @en Custom cell style
+   * @version 2.29.0
+   */
+  bodyCellStyle?: CSSProperties | ((record: TableData) => CSSProperties);
+  /**
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
    */
@@ -300,6 +312,12 @@ export interface TableRowSelection {
    * @en Is it fixed
    */
   fixed?: boolean;
+  /**
+   * @zh 是否开启严格选择模式 (default: true)
+   * @en Whether to enable strict selection mode (default: true)
+   * @version 2.29.0
+   */
+  checkStrictly?: boolean;
 }
 
 export interface TableExpandable {

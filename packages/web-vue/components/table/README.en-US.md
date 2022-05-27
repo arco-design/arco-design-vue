@@ -236,6 +236,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |filterable|Filter related options|`TableFilterable`|`-`||
 |children|Header sub-data, used for header grouping|`TableColumnData[]`|`-`||
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
+|headerCellStyle|Custom cell style|`CSSProperties`|`-`|2.29.0|
+|bodyCellStyle|Custom cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
 |render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
 |titleSlotName|Set the name of the render slot for the header of the current column|`string`|`-`|2.23.0|
@@ -255,15 +257,16 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 
 ### TableRowSelection
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|type|The type of row selector|`'checkbox' \| 'radio'`|`-`|
-|selectedRowKeys|Selected row (controlled mode)|`string[]`|`-`|
-|defaultSelectedRowKeys|The selected row by default (uncontrolled mode)|`string[]`|`-`|
-|showCheckedAll|Whether to show the select all selector|`boolean`|`false`|
-|title|Column title|`string`|`-`|
-|width|Column width|`number`|`-`|
-|fixed|Is it fixed|`boolean`|`false`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|type|The type of row selector|`'checkbox' \| 'radio'`|`-`||
+|selectedRowKeys|Selected row (controlled mode)|`string[]`|`-`||
+|defaultSelectedRowKeys|The selected row by default (uncontrolled mode)|`string[]`|`-`||
+|showCheckedAll|Whether to show the select all selector|`boolean`|`false`||
+|title|Column title|`string`|`-`||
+|width|Column width|`number`|`-`||
+|fixed|Is it fixed|`boolean`|`false`||
+|checkStrictly|Whether to enable strict selection mode (default: true)|`boolean`|`false`|2.29.0|
 
 
 

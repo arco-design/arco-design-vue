@@ -1,12 +1,18 @@
-import { computed, defineComponent, PropType, VNode } from 'vue';
+import { computed, defineComponent, inject, PropType, VNode } from 'vue';
 import { TableDataWithRaw, TableOperationColumn } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
-import { getOperationFixedCls, getOperationStyle } from './utils';
+import {
+  getLeafKeys,
+  getOperationFixedCls,
+  getOperationStyle,
+  getSelectionStatus,
+} from './utils';
 import Checkbox from '../checkbox';
 import Radio from '../radio';
 import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
 import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
+import { TableContext, tableInjectionKey } from './context';
 
 export default defineComponent({
   name: 'OperationTd',
@@ -28,10 +34,6 @@ export default defineComponent({
     record: {
       type: Object as PropType<TableDataWithRaw>,
       required: true,
-    },
-    rowKey: {
-      type: String,
-      default: 'key',
     },
     hasExpand: {
       type: Boolean,
@@ -61,7 +63,7 @@ export default defineComponent({
   emits: ['select'],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('table');
-
+    const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
     const style = computed(() =>
       getOperationStyle(props.operationColumn, props.operations)
     );
@@ -81,6 +83,12 @@ export default defineComponent({
       ...getOperationFixedCls(prefixCls, props.operationColumn),
     ]);
 
+    const leafKeys = computed(() => getLeafKeys(props.record));
+
+    const selectionStatus = computed(() =>
+      getSelectionStatus(tableCtx.currentSelectedRowKeys ?? [], leafKeys.value)
+    );
+
     const renderContent = () => {
       if (props.summary) {
         return null;
@@ -90,6 +98,23 @@ export default defineComponent({
       }
       if (props.operationColumn.name === 'selection-checkbox') {
         const value = props.record.key;
+
+        if (!tableCtx.checkStrictly && !props.record.isLeaf) {
+          return (
+            <Checkbox
+              modelValue={selectionStatus.value.checked}
+              indeterminate={selectionStatus.value.indeterminate}
+              disabled={Boolean(props.record.disabled)}
+              uninjectGroupContext
+              onChange={(checked) =>
+                tableCtx.onSelectAllLeafs?.(props.record, checked as boolean)
+              }
+              // @ts-ignore
+              onClick={(ev: Event) => ev.stopPropagation()}
+            />
+          );
+        }
+
         return (
           <Checkbox
             value={value}
@@ -97,7 +122,7 @@ export default defineComponent({
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
             onChange={(values) =>
-              emit('select', values, value, props.record.raw)
+              tableCtx.onSelect?.(values as string[], props.record)
             }
             // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}
@@ -113,7 +138,7 @@ export default defineComponent({
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
             onChange={(value) =>
-              emit('select', [value], value, props.record.raw)
+              tableCtx.onSelect?.([value] as string[], props.record)
             }
             // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}

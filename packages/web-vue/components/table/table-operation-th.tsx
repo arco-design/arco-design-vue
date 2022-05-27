@@ -1,9 +1,10 @@
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, inject, PropType } from 'vue';
 import { getOperationFixedCls, getOperationStyle } from './utils';
 import { getPrefixCls } from '../_utils/global-config';
 import Checkbox from '../checkbox';
 import { TableOperationColumn } from './interface';
 import { isFunction } from '../_utils/is';
+import { TableContext, tableInjectionKey } from './context';
 
 export default defineComponent({
   name: 'OperationTh',
@@ -25,44 +26,44 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    selectedNumber: {
-      type: Number,
-      default: 0,
-    },
-    totalEnabledNumber: {
-      type: Number,
-      default: 0,
-    },
   },
-  emits: ['selectAll'],
-  setup(props, { emit }) {
+  setup(props) {
     const prefixCls = getPrefixCls('table');
+    const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
 
-    const checked = computed(
-      () =>
-        props.totalEnabledNumber > 0 &&
-        props.selectedNumber >= props.totalEnabledNumber
-    );
-    const indeterminate = computed(
-      () =>
-        props.selectedNumber > 0 &&
-        props.selectedNumber < props.totalEnabledNumber
-    );
+    const checkboxStatus = computed(() => {
+      let checked = false;
+      let indeterminate = false;
+      const selectedNumber = tableCtx.currentSelectedRowKeys?.length ?? 0;
+      const totalEnabledNumber = tableCtx.currentAllEnabledRowKeys?.length ?? 0;
+      if (selectedNumber > 0) {
+        if (selectedNumber >= totalEnabledNumber) {
+          checked = true;
+        } else {
+          indeterminate = true;
+        }
+      }
+      return {
+        checked,
+        indeterminate,
+      };
+    });
 
     const renderContent = () => {
       if (props.selectAll) {
         return (
           <Checkbox
-            v-slots={{
-              default: isFunction(props.operationColumn.title)
-                ? props.operationColumn.title()
-                : props.operationColumn.title,
-            }}
-            modelValue={checked.value}
-            indeterminate={indeterminate.value}
+            modelValue={checkboxStatus.value.checked}
+            indeterminate={checkboxStatus.value.indeterminate}
             uninjectGroupContext
-            onChange={(value: boolean) => emit('selectAll', value)}
-          />
+            onChange={(checked) => {
+              tableCtx.onSelectAll?.(checked as boolean);
+            }}
+          >
+            {isFunction(props.operationColumn.title)
+              ? props.operationColumn.title()
+              : props.operationColumn.title}
+          </Checkbox>
         );
       }
       if (props.operationColumn.title) {
