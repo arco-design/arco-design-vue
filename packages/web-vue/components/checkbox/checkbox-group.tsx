@@ -61,12 +61,6 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(value: Array<string | number | boolean>, e: Event) => void>
-      >,
-    },
   },
   emits: {
     'update:modelValue': (value: (string | number | boolean)[]) => true,

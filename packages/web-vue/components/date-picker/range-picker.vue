@@ -69,7 +69,6 @@ import {
 import { TimePickerProps } from '../time-picker/interface';
 import {
   DisabledTimeProps,
-  RangePickerProps,
   ShortcutType,
   CalendarValue,
   WeekStart,
@@ -297,53 +296,8 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-    // for JSX
-    onChange: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (
-            value: (CalendarValue | undefined)[] | undefined,
-            date: (Date | undefined)[] | undefined,
-            dateString: (string | undefined)[] | undefined
-          ) => void
-        >
-      >,
-    },
-    onSelect: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (
-            value: (CalendarValue | undefined)[],
-            date: (Date | undefined)[],
-            dateString: (string | undefined)[]
-          ) => void
-        >
-      >,
-    },
-    onPopupVisibleChange: {
-      type: [Function, Array] as PropType<
-        EmitType<(popupVisible: boolean) => void>
-      >,
-    },
-    onOk: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (value: CalendarValue[], date: Date[], dateString: string[]) => void
-        >
-      >,
-    },
-    onClear: { type: [Function, Array] as PropType<EmitType<() => void>> },
-    onSelectShortcut: {
-      type: [Function, Array] as PropType<
-        EmitType<(shortcut: ShortcutType) => void>
-      >,
-    },
-    onPickerValueChange: {
-      type: [Function, Array] as PropType<
-        EmitType<
-          (value: CalendarValue[], date: Date[], dateString: string[]) => void
-        >
-      >,
+    showConfirmBtn: {
+      type: Boolean,
     },
   },
   emits: {
@@ -455,6 +409,7 @@ export default defineComponent({
       dayStartOfWeek,
       exchangeTime,
       previewShortcut,
+      showConfirmBtn,
     } = toRefs(props);
 
     const { locale: globalLocal } = useI18n();
@@ -641,7 +596,9 @@ export default defineComponent({
     );
 
     // needConfirm logic
-    const needConfirm = computed(() => isDateTime.value);
+    const needConfirm = computed(
+      () => isDateTime.value || showConfirmBtn.value
+    );
     const confirmBtnDisabled = computed(
       () =>
         needConfirm.value &&
@@ -959,7 +916,7 @@ export default defineComponent({
     });
 
     const rangePanelProps = computed(() => ({
-      ...pick(props as Record<keyof RangePickerProps, any>, [
+      ...pick(props, [
         'mode',
         'showTime',
         'shortcuts',
