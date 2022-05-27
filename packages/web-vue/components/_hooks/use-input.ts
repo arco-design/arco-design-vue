@@ -1,4 +1,4 @@
-import { computed, Ref, ref, watch } from 'vue';
+import { computed, nextTick, Ref, ref, watch } from 'vue';
 import { Enter } from '../_utils/keycode';
 import { EmitFn } from '../_utils/types';
 import { FormItemEventHandler } from '../form/interface';
@@ -41,6 +41,12 @@ export const useInput = ({
 
     if (!isComposition.value) {
       updateValue(value, ev);
+
+      nextTick(() => {
+        if (inputRef.value && computedValue.value !== inputRef.value.value) {
+          inputRef.value.value = computedValue.value;
+        }
+      });
     }
   };
 
@@ -58,6 +64,12 @@ export const useInput = ({
       isComposition.value = false;
       compositionValue.value = '';
       updateValue(value, ev);
+
+      nextTick(() => {
+        if (inputRef.value && computedValue.value !== inputRef.value.value) {
+          inputRef.value.value = computedValue.value;
+        }
+      });
     } else {
       isComposition.value = true;
       compositionValue.value = computedValue.value + (ev.data ?? '');
