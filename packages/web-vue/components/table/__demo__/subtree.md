@@ -19,15 +19,26 @@ An example of tree data display, when there is a `children` field in `data`, it 
 ```vue
 
 <template>
-  <a-table :columns="columns" :data="data" v-model:expandedKeys="expandedKeys" />
+  <a-space>
+    <span>checkStrictly:</span>
+    <a-switch v-model="rowSelection.checkStrictly" />
+  </a-space>
+  <a-table :columns="columns" :data="data" v-model:expandedKeys="expandedKeys" :row-selection="rowSelection"/>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref,reactive } from 'vue';
 
 export default {
   setup() {
     const expandedKeys = ref([]);
+
+
+    const rowSelection = reactive({
+      type: 'checkbox',
+      showCheckedAll: true,
+      checkStrictly: true
+    });
 
     const columns = [
       {
@@ -113,7 +124,8 @@ export default {
     return {
       columns,
       data,
-      expandedKeys
+      expandedKeys,
+      rowSelection
     }
   },
 }

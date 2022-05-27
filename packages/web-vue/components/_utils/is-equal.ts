@@ -1,4 +1,4 @@
-export const isEqual = (
+export const isEqualObject = (
   obj: Record<string, unknown> | undefined,
   other: Record<string, unknown> | undefined
 ) => {
@@ -8,9 +8,8 @@ export const isEqual = (
   if (obj.length !== other.length) {
     return false;
   }
-  // eslint-disable-next-line guard-for-in
-  for (const key in obj) {
-    const result = isEqualVariable(obj[key], other[key]);
+  for (const key of Object.keys(obj)) {
+    const result = isEqual(obj[key], other[key]);
     if (!result) return false;
   }
   return true;
@@ -29,19 +28,22 @@ export const isEqualArray = (
   }
 
   for (let i = 0; i < length; i++) {
-    const result = isEqualVariable(arr[i], other[i]);
+    const result = isEqual(arr[i], other[i]);
     if (!result) return false;
   }
   return true;
 };
 
-const isEqualVariable = (a: unknown, b: unknown) => {
+export const isEqual = (a: unknown, b: unknown) => {
   const type = Object.prototype.toString.call(a);
   if (type !== Object.prototype.toString.call(b)) {
     return false;
   }
   if (type === '[object Object]') {
-    return isEqual(a as Record<string, unknown>, b as Record<string, unknown>);
+    return isEqualObject(
+      a as Record<string, unknown>,
+      b as Record<string, unknown>
+    );
   }
   if (type === '[object Array]') {
     return isEqualArray(a as unknown[], b as unknown[]);

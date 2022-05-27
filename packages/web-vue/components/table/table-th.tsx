@@ -141,6 +141,7 @@ export default defineComponent({
                       value={item.value}
                       modelValue={columnFilterValue.value}
                       uninjectGroupContext
+                      // @ts-ignore
                       onChange={handleCheckboxFilterChange}
                     >
                       {item.text}
@@ -150,6 +151,7 @@ export default defineComponent({
                       value={item.value}
                       modelValue={columnFilterValue.value[0] ?? ''}
                       uninjectGroupContext
+                      // @ts-ignore
                       onChange={handleRadioFilterChange}
                     >
                       {item.text}
@@ -198,6 +200,7 @@ export default defineComponent({
               },
             ]}
             disabled={!filterIconAlignLeft.value}
+            // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}
           >
             {props.column.slots?.['filter-icon']?.() ?? filterable.icon?.() ?? (
@@ -253,7 +256,7 @@ export default defineComponent({
     const renderCell = () => (
       <span
         class={cellCls.value}
-        style={props.column?.cellStyle}
+        style={{ ...props.column?.cellStyle, ...props.column?.headerCellStyle }}
         onClick={hasSorter.value ? handleClickSorter : undefined}
       >
         {props.column?.ellipsis && props.column?.tooltip ? (

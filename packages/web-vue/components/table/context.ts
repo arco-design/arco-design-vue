@@ -18,11 +18,18 @@ export interface TableContext {
   ) => void;
   slots: Slots;
   sorter: Sorter | undefined;
+  currentAllEnabledRowKeys: string[];
+  currentSelectedRowKeys: string[];
+  checkStrictly: boolean;
   filters: Filters;
   filterIconAlignLeft: boolean;
   resizingColumn: string;
   addColumn: (id: number, column: TableColumnData) => void;
   removeColumn: (id: number) => void;
+  onSelectAll: (checked: boolean) => void;
+  onSelect: (values: string[], record: TableDataWithRaw) => void;
+  onSelectAllLeafs: (record: TableDataWithRaw, checked: boolean) => void;
+
   onSorterChange: (
     dataIndex: string,
     direction: 'ascend' | 'descend' | '',
