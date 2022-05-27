@@ -609,6 +609,9 @@ export default defineComponent({
       return { ...DEFAULT_BORDERED, wrapper: props.bordered };
     });
     const { children, components } = useChildrenComponents('TableColumn');
+    const checkStrictly = computed(
+      () => rowSelection.value?.checkStrictly ?? true
+    );
 
     // whether to scroll
     const isScroll = computed(() => {
@@ -823,6 +826,7 @@ export default defineComponent({
       selectedRowKeys,
       currentSelectedRowKeys,
       handleSelect,
+      handleSelectAllLeafs,
       handleSelectAll,
     } = useRowSelection({
       selectedKeys,
@@ -894,15 +898,16 @@ export default defineComponent({
             expand: _record.expand,
             isLeaf: _record.isLeaf,
           };
-          if (
-            props.loadMore &&
-            !_record.isLeaf &&
-            !_record.children &&
-            lazyLoadData[record.key]
-          ) {
-            record.children = travel(lazyLoadData[record.key]);
-          } else if (_record.children) {
+          if (_record.children) {
+            record.isLeaf = false;
             record.children = travel(_record.children);
+          } else if (props.loadMore && !_record.isLeaf) {
+            record.isLeaf = false;
+            if (lazyLoadData[record.key]) {
+              record.children = travel(lazyLoadData[record.key]);
+            }
+          } else {
+            record.isLeaf = true;
           }
           record.hasSubtree = Boolean(
             record.children
@@ -1231,8 +1236,14 @@ export default defineComponent({
         filters: computedFilters,
         filterIconAlignLeft,
         resizingColumn,
+        checkStrictly,
+        currentAllEnabledRowKeys,
+        currentSelectedRowKeys,
         addColumn,
         removeColumn,
+        onSelectAll: handleSelectAll,
+        onSelect: handleSelect,
+        onSelectAllLeafs: handleSelectAllLeafs,
         onSorterChange: handleSorterChange,
         onFilterChange: handleFilterChange,
         onThMouseDown: handleThMouseDown,
@@ -1624,13 +1635,11 @@ export default defineComponent({
                   operationColumn={operation}
                   operations={operations.value}
                   record={record}
-                  rowKey={rowKey.value}
                   hasExpand={Boolean(expandContent)}
-                  selectedRowKeys={selectedRowKeys.value}
+                  selectedRowKeys={currentSelectedRowKeys.value}
                   rowSpan={rowspan}
                   colSpan={colspan}
                   renderExpandBtn={renderExpandBtn}
-                  onSelect={handleSelect}
                   {...(dragType.value === 'handle' ? dragSourceEvent : {})}
                 />
               );
@@ -1756,10 +1765,6 @@ export default defineComponent({
                       props.rowSelection?.showCheckedAll
                   )}
                   rowSpan={groupColumns.value.length}
-                  selectedNumber={currentSelectedRowKeys.value.length}
-                  totalNumber={currentAllRowKeys.value.length}
-                  totalEnabledNumber={currentAllEnabledRowKeys.value.length}
-                  onSelectAll={handleSelectAll}
                 />
               ))}
             {row.map((column, index) => {

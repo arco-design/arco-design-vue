@@ -40,6 +40,7 @@ import type {
   DropPosition,
   TreeNodeKey,
   CheckedStrategy,
+  Node,
 } from './interface';
 import { isLeafNode, isNodeExpandable, isNodeSelectable } from './utils';
 import { getCheckedStateByCheck, isNodeCheckable } from './utils/check-utils';
@@ -511,7 +512,7 @@ export default defineComponent({
     );
     const loadingKeys = ref<TreeNodeKey[]>([]);
 
-    const dragNode = ref<TreeNodeData>();
+    const dragNode = ref<Node>();
 
     function getDefaultExpandedKeys() {
       if (defaultExpandedKeys?.value) {
@@ -917,55 +918,55 @@ export default defineComponent({
       onExpand,
       onExpandEnd,
       allowDrop(key: TreeNodeKey, dropPosition: DropPosition) {
-        const nodeData = key2TreeNode.value.get(key);
-        if (nodeData && isFunction(allowDrop?.value)) {
-          return !!allowDrop?.value({
-            dropNode: nodeData,
+        const node = key2TreeNode.value.get(key);
+        if (node && isFunction(allowDrop.value)) {
+          return !!allowDrop.value({
+            dropNode: node.treeNodeData,
             dropPosition,
           });
         }
         return true;
       },
       onDragStart(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value.get(key);
-        dragNode.value = nodeData;
-        if (nodeData) {
-          emit('dragStart', e, nodeData);
+        const node = key2TreeNode.value.get(key);
+        dragNode.value = node;
+        if (node) {
+          emit('dragStart', e, node.treeNodeData);
         }
       },
       onDragEnd(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value.get(key);
+        const node = key2TreeNode.value.get(key);
         dragNode.value = undefined;
-        if (nodeData) {
-          emit('dragEnd', e, nodeData);
+        if (node) {
+          emit('dragEnd', e, node.treeNodeData);
         }
       },
       onDragOver(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value.get(key);
-        if (nodeData) {
-          emit('dragOver', e, nodeData);
+        const node = key2TreeNode.value.get(key);
+        if (node) {
+          emit('dragOver', e, node.treeNodeData);
         }
       },
       onDragLeave(key: TreeNodeKey, e: DragEvent) {
-        const nodeData = key2TreeNode.value.get(key);
-        if (nodeData) {
-          emit('dragLeave', e, nodeData);
+        const node = key2TreeNode.value.get(key);
+        if (node) {
+          emit('dragLeave', e, node.treeNodeData);
         }
       },
       onDrop(key: TreeNodeKey, dropPosition: number, e: DragEvent) {
-        const nodeData = key2TreeNode.value.get(key);
+        const node = key2TreeNode.value.get(key);
         if (
           dragNode.value &&
-          nodeData &&
+          node &&
           !(
-            nodeData.key === dragNode.value.key ||
-            nodeData.pathParentKeys.includes(dragNode.value.key || '')
+            node.key === dragNode.value.key ||
+            node.pathParentKeys.includes(dragNode.value.key || '')
           )
         ) {
           emit('drop', {
             e,
-            dragNode: dragNode.value,
-            dropNode: nodeData,
+            dragNode: dragNode.value.treeNodeData,
+            dropNode: node.treeNodeData,
             dropPosition,
           });
         }

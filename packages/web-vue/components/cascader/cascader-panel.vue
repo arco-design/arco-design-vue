@@ -3,9 +3,7 @@
     :display-columns="displayColumns"
     :selected-path="selectedPath"
     :active-key="activeKey"
-    :computed-keys="computedKeys"
     :multiple="multiple"
-    :expand-trigger="expandTrigger"
     :total-level="totalLevel"
     :check-strictly="checkStrictly"
   >
@@ -26,15 +24,21 @@ import {
   toRefs,
   watch,
 } from 'vue';
-import { Data } from '../_utils/types';
+import { BaseType, Data, UnionType } from '../_utils/types';
 import {
   CascaderFieldNames,
   CascaderOption,
   CascaderOptionInfo,
 } from './interface';
-import { isArray, isNull, isUndefined } from '../_utils/is';
+import { isNull, isUndefined } from '../_utils/is';
 import BaseCascaderPanel from './base-cascader-panel';
-import { getKeysFromValue, getLeafOptionKeys, getOptionInfos } from './utils';
+import {
+  getLeafOptionInfos,
+  getLeafOptionKeys,
+  getOptionInfos,
+  getValidValues,
+  getValueKey,
+} from './utils';
 import { useSelectedPath } from './hooks/use-selected-path';
 import { cascaderInjectionKey } from './context';
 import { KEYBOARD_KEY, getKeyDownHandler } from '../_utils/keyboard';
@@ -67,7 +71,16 @@ export default defineComponent({
      */
     modelValue: {
       type: [String, Number, Array] as PropType<
-        string | number | (string | number | (string | number)[])[] | undefined
+        | string
+        | number
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
+        | undefined
       >,
     },
     /**
@@ -77,7 +90,16 @@ export default defineComponent({
      */
     defaultValue: {
       type: [String, Number, Array] as PropType<
-        string | number | (string | number | (string | number)[])[] | undefined
+        | string
+        | number
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
+        | undefined
       >,
       default: (props: Data) =>
         props.multiple ? [] : props.pathMode ? undefined : '',
@@ -114,7 +136,7 @@ export default defineComponent({
     loadMore: {
       type: Function as PropType<
         (
-          option: CascaderOptionInfo,
+          option: CascaderOption,
           done: (children?: CascaderOption[]) => void
         ) => void
       >,
@@ -127,13 +149,37 @@ export default defineComponent({
     fieldNames: {
       type: Object as PropType<CascaderFieldNames>,
     },
+    /**
+     * @zh 用于确定选项键值得属性名
+     * @en Used to determine the option key value attribute name
+     * @version 2.29.0
+     */
+    valueKey: {
+      type: String,
+      default: 'value',
+    },
+    /**
+     * @zh 是否展开子菜单
+     * @en whether to expand the submenu
+     * @version 2.29.0
+     */
+    expandChild: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:modelValue': (
       value:
         | string
         | number
-        | (string | number | (string | number)[])[]
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
         | undefined
     ) => true,
     /**
@@ -145,7 +191,13 @@ export default defineComponent({
       value:
         | string
         | number
-        | (string | number | (string | number)[])[]
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
         | undefined
     ) => true,
   },
@@ -156,7 +208,15 @@ export default defineComponent({
    * @version 2.23.0
    */
   setup(props, { emit, slots }) {
-    const { options, checkStrictly, loadMore, modelValue } = toRefs(props);
+    const {
+      options,
+      checkStrictly,
+      loadMore,
+      modelValue,
+      valueKey,
+      expandChild,
+      expandTrigger,
+    } = toRefs(props);
     const _value = ref(props.defaultValue);
 
     watch(modelValue, (value) => {
@@ -170,9 +230,7 @@ export default defineComponent({
 
     const optionMap = reactive(new Map<string, CascaderOptionInfo>());
     const leafOptionMap = reactive(new Map<string, CascaderOptionInfo>());
-    const leafOptionValueMap = reactive(
-      new Map<string | number, CascaderOptionInfo>()
-    );
+    const leafOptionValueMap = reactive(new Map<BaseType, string>());
     const leafOptionSet = reactive(new Set<CascaderOptionInfo>());
 
     const lazyLoadOptions = reactive<Record<string, CascaderOption[]>>({});
@@ -214,6 +272,7 @@ export default defineComponent({
           totalLevel,
           checkStrictly,
           fieldNames: _fieldNames,
+          valueKey,
         });
       },
       {
@@ -221,13 +280,21 @@ export default defineComponent({
       }
     );
 
-    const computedKeys = computed(() =>
-      getKeysFromValue(props.modelValue ?? _value.value, {
+    const computedValueMap = computed(() => {
+      const values = getValidValues(props.modelValue ?? _value.value, {
+        multiple: props.multiple,
         pathMode: props.pathMode,
-        leafOptionMap,
-        leafOptionValueMap,
-      })
-    );
+      });
+      return new Map(
+        values.map((value) => [
+          getValueKey(value, {
+            valueKey: props.valueKey,
+            leafOptionValueMap,
+          }),
+          value,
+        ])
+      );
+    });
 
     const filteredLeafOptions = computed(() =>
       props.checkStrictly
@@ -235,32 +302,11 @@ export default defineComponent({
         : Array.from(leafOptionSet)
     );
 
-    const updateValue = (
-      options?: CascaderOptionInfo | CascaderOptionInfo[]
-    ) => {
-      let value:
-        | string
-        | number
-        | Array<string | number>
-        | undefined
-        | (string | number | Array<string | number>)[];
-      if (!options) {
-        if (!props.pathMode) {
-          value = '';
-        }
+    const updateValue = (values: UnionType[] | UnionType[][]) => {
+      const value = props.multiple ? values : values[0] ?? '';
+      if (values.length === 0) {
         setSelectedPath();
         setActiveKey();
-      } else if (isArray(options)) {
-        value = options.map((item) => {
-          if (!props.pathMode) {
-            return item.value;
-          }
-          return item.path.map((item) => item.value);
-        });
-      } else if (!props.pathMode) {
-        value = options.value;
-      } else {
-        value = options.path.map((item) => item.value);
       }
 
       _value.value = value;
@@ -269,23 +315,35 @@ export default defineComponent({
     };
 
     const selectSingle = (option: CascaderOptionInfo) => {
-      updateValue(option);
+      updateValue([props.pathMode ? option.pathValue : option.value]);
     };
 
     const selectMultiple = (option: CascaderOptionInfo, checked: boolean) => {
-      const leafOptionKeys = props.checkStrictly
-        ? [option.key]
-        : getLeafOptionKeys(option);
+      if (checked) {
+        const leafOptionInfos = props.checkStrictly
+          ? [option]
+          : getLeafOptionInfos(option);
 
-      const newKeys = checked
-        ? computedKeys.value.concat(
-            leafOptionKeys.filter((item) => !computedKeys.value.includes(item))
-          )
-        : computedKeys.value.filter((item) => !leafOptionKeys.includes(item));
-
-      updateValue(
-        newKeys.map((key) => leafOptionMap.get(key) as CascaderOptionInfo)
-      );
+        updateValue([
+          ...computedValueMap.value.values(),
+          ...leafOptionInfos
+            .filter((item) => !computedValueMap.value.has(item.key))
+            .map((item) => {
+              return props.pathMode ? item.pathValue : item.value;
+            }),
+        ]);
+      } else {
+        const leafOptionKeys = props.checkStrictly
+          ? [option.key]
+          : getLeafOptionKeys(option);
+        const values: any[] = [];
+        computedValueMap.value.forEach((value, key) => {
+          if (!leafOptionKeys.includes(key)) {
+            values.push(value);
+          }
+        });
+        updateValue(values);
+      }
     };
 
     const handleClickOption = (
@@ -310,6 +368,7 @@ export default defineComponent({
     } = useSelectedPath(optionInfos, {
       optionMap,
       filteredLeafOptions,
+      expandChild,
     });
 
     provide(
@@ -321,6 +380,8 @@ export default defineComponent({
         loadMore,
         addLazyLoadOptions,
         slots,
+        valueMap: computedValueMap,
+        expandTrigger,
       })
     );
 
@@ -378,7 +439,6 @@ export default defineComponent({
 
     return {
       optionInfos,
-      computedKeys,
       filteredLeafOptions,
       selectedPath,
       activeKey,

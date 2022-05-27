@@ -671,7 +671,7 @@ exports[`<form> demo: render [status] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-has-tag arco-input-tag-has-suffix\\"><span class=\\"arco-input-tag-mirror\\"></span>
           <!---->
-          <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->tag1<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
+          <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->tag1<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
             <!--v-if--></span><input class=\\"arco-input-tag-input\\" style=\\"width: 12px;\\">
           </transition-group-stub>
           <!----><span class=\\"arco-input-tag-suffix\\"><!----><span class=\\"arco-feedback-icon arco-feedback-icon-status-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span>
@@ -820,7 +820,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
               <!--v-if-->
               <!--v-if-->
               <!--v-if-->
-              <div style=\\"left: 50%;\\" class=\\"arco-slider-btn\\"></div>
+              <div style=\\"left: 50%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"5\\" aria-valuetext=\\"5\\" class=\\"arco-slider-btn\\"></div>
               <!---->
             </div>
             <!--v-if-->

@@ -9,6 +9,7 @@ import StoryMenu from './components/menu.vue';
 import StorySelect from './components/select';
 import StoryNumberInput from './components/number-input.vue';
 import StorTreeSelect from './components/tree-select.vue';
+import StoryDatePicker from './components/date-picker.vue';
 
 export default {
   title: 'Components',
@@ -25,3 +26,4 @@ export const Menu = () => StoryMenu;
 export const Select = () => StorySelect;
 export const NumberInput = () => StoryNumberInput;
 export const TreeSelect = () => StorTreeSelect;
+export const DatePicker = () => StoryDatePicker;

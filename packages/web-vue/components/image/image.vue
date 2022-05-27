@@ -6,6 +6,7 @@
       v-bind="imgProps"
       :style="imgStyle"
       :title="title"
+      :alt="alt"
       @load="onImgLoaded"
       @error="onImgLoadError"
       @click="onImgClick"

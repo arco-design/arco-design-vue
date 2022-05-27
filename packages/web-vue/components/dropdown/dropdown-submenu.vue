@@ -7,10 +7,19 @@
     :popup-offset="4"
     @popup-visible-change="handlePopupVisibleChange"
   >
-    <dropdown-option :active="computedPopupVisible" uninject-context>
+    <dropdown-option
+      v-bind="optionProps"
+      :active="computedPopupVisible"
+      uninject-context
+    >
       <slot />
+      <template v-if="$slots.icon" #icon>
+        <slot name="icon" />
+      </template>
       <template #suffix>
-        <IconRight />
+        <slot name="suffix">
+          <IconRight />
+        </slot>
       </template>
     </dropdown-option>
     <template #content>
@@ -97,6 +106,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 自定义选项属性
+     * @en Custom option properties
+     * @version 2.29.0
+     */
+    optionProps: {
+      type: Object,
+    },
   },
   emits: {
     'update:popupVisible': (visible: boolean) => true,
@@ -117,6 +134,12 @@ export default defineComponent({
    * @en Footer
    * @slot footer
    * @version 2.10.0
+   */
+  /**
+   * @zh 图标
+   * @en Icon
+   * @slot icon
+   * @version 2.29.0
    */
   setup(props, { emit }) {
     const { defaultPopupVisible, popupVisible } = toRefs(props);

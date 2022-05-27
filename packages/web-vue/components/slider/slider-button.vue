@@ -6,6 +6,13 @@
   >
     <div
       v-bind="$attrs"
+      tabindex="0"
+      role="slider"
+      :aria-disabled="disabled"
+      :aria-valuemax="max"
+      :aria-valuemin="min"
+      :aria-valuenow="value"
+      :aria-valuetext="tooltipContent"
       :class="cls"
       @mousedown="handleMouseDown"
       @click.stop
@@ -34,6 +41,14 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false,
+    },
+    min: {
+      type: Number,
+      required: true,
+    },
+    max: {
+      type: Number,
+      required: true,
     },
     formatTooltip: {
       type: Function,

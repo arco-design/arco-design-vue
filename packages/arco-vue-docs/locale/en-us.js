@@ -152,6 +152,7 @@ export default {
     mock: 'Interface and Mock',
     build: 'Build',
     permission: 'Permission Control',
+    faq: 'FAQ',
   },
   themeBox: {
     currentTheme: 'Current theme',

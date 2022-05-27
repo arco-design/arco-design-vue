@@ -234,6 +234,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |children|表头子数据，用于表头分组|`TableColumnData[]`|`-`||
 |cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
+|headerCellStyle|自定义表头单元格样式|`CSSProperties`|`-`|2.29.0|
+|bodyCellStyle|自定义内容单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
 |render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
 |titleSlotName|设置当前列的标题的渲染插槽的名字|`string`|`-`|2.23.0|
@@ -253,15 +255,16 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 
 ### TableRowSelection
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|type|行选择器的类型|`'checkbox' \| 'radio'`|`-`|
-|selectedRowKeys|已选择的行（受控模式）|`string[]`|`-`|
-|defaultSelectedRowKeys|默认已选择的行（非受控模式）|`string[]`|`-`|
-|showCheckedAll|是否显示全选选择器|`boolean`|`false`|
-|title|列标题|`string`|`-`|
-|width|列宽度|`number`|`-`|
-|fixed|是否固定|`boolean`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|type|行选择器的类型|`'checkbox' \| 'radio'`|`-`||
+|selectedRowKeys|已选择的行（受控模式）|`string[]`|`-`||
+|defaultSelectedRowKeys|默认已选择的行（非受控模式）|`string[]`|`-`||
+|showCheckedAll|是否显示全选选择器|`boolean`|`false`||
+|title|列标题|`string`|`-`||
+|width|列宽度|`number`|`-`||
+|fixed|是否固定|`boolean`|`false`||
+|checkStrictly|是否开启严格选择模式 (default: true)|`boolean`|`false`|2.29.0|
 
 
 

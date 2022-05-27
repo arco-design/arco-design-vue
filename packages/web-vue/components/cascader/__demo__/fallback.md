@@ -1,25 +1,28 @@
 ```yaml
 title:
-  zh-CN: 允许清除
-  en-US: Allow Clear
+  zh-CN: 回退选项
+  en-US: Fallback
 ```
 
 ## zh-CN
 
-允许清除。
+组件默认会展示在选项中不存在的值，可通过 `fallback` 自定义展示或者关闭
 
 ---
 
 ## en-US
 
-Allow clear.
+The component will display the value that does not exist in the options by default, which can be displayed or turned off through `fallback`
 
 ---
 
 ```vue
 <template>
-  <a-cascader :options="options" v-model="value" :style="{width:'320px'}" placeholder="Please select ..."
-              allow-clear />
+  <a-space direction="vertical" size="large">
+    <a-cascader :options="options" v-model="value" :style="{width:'320px'}" placeholder="Please select ..." multiple />
+    <a-cascader :options="options" v-model="value2" :style="{width:'320px'}"
+                placeholder="Please select ..." path-mode multiple :fallback="fallback" />
+  </a-space>
 </template>
 
 <script>
@@ -27,7 +30,11 @@ import { ref } from 'vue';
 
 export default {
   setup() {
-    const value = ref('datunli');
+    const value = ref(['datunli', 'wuhou']);
+    const value2 = ref([['beijing', 'chaoyang', 'datunli'], ['sichuan', 'chengdu', 'wuhou']]);
+    const fallback = (value) => {
+      return value.map(item => item.toUpperCase()).join('-')
+    }
 
     const options = [
       {
@@ -80,8 +87,10 @@ export default {
       },
     ];
     return {
+      options,
       value,
-      options
+      value2,
+      fallback
     }
   },
 }

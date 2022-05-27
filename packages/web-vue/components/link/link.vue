@@ -57,10 +57,6 @@ export default defineComponent({
      * @en Whether the link is disabled
      */
     disabled: Boolean,
-    // for JSX
-    onClick: {
-      type: [Function, Array] as PropType<EmitType<(ev: MouseEvent) => void>>,
-    },
   },
   emits: ['click'],
   setup(props, { slots, emit }) {

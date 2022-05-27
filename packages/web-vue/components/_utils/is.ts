@@ -16,7 +16,7 @@ export function isBoolean(obj: unknown): obj is boolean {
   return opt.call(obj) === '[object Boolean]';
 }
 
-export function isObject(obj: any): obj is { [key: string]: any } {
+export function isObject(obj: any): obj is Record<string, unknown> {
   return opt.call(obj) === '[object Object]';
 }
 

@@ -26,7 +26,11 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 @import ./__demo__/path.md
 
+@import ./__demo__/fallback.md
+
 @import ./__demo__/field-names.md
+
+@import ./__demo__/expand.md
 
 @import ./__demo__/panel.md
 
@@ -39,8 +43,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |---|---|---|:---:|:---|
 |path-mode|绑定值是否为路径|`boolean`|`false`||
 |multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
-|model-value **(v-model)**|绑定值|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`-`||
-|default-value|默认值（非受控状态）|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`'' \| undefined \| []`||
+|model-value **(v-model)**|绑定值|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`-`||
+|default-value|默认值（非受控状态）|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`'' \| undefined \| []`||
 |options|级联选择器的选项|`CascaderOption[]`|`[]`||
 |disabled|是否禁用|`boolean`|`false`||
 |error|是否为错误状态|`boolean`|`false`||
@@ -50,19 +54,22 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |input-value **(v-model)**|输入框的值|`string`|`-`||
 |default-input-value|输入框的默认值（非受控状态）|`string`|`''`||
 |popup-visible **(v-model)**|是否显示下拉框|`boolean`|`-`||
-|expand-trigger|展开下一级的触发方式|`string`|`'click'`||
+|expand-trigger|展开下一级的触发方式|`'click' \| 'hover'`|`'click'`||
 |default-popup-visible|是否默认显示下拉框（非受控状态）|`boolean`|`false`||
 |placeholder|占位符|`string`|`-`||
 |popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`||
 |max-tag-count|多选模式下，最多显示的标签数量。0 表示不限制|`number`|`0`||
-|format-label|格式化展示内容|`(options: CascaderOptionInfo[]) => string`|`-`||
+|format-label|格式化展示内容|`(options: CascaderOption[]) => string`|`-`||
 |trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`||
 |check-strictly|是否开启严格选择模式|`boolean`|`false`||
-|load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOption,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
 |loading|是否为加载中状态|`boolean`|`false`|2.15.0|
 |search-option-only-label|搜索下拉菜单中的选项是否仅展示标签|`boolean`|`false`|2.18.0|
 |search-delay|触发搜索事件的延迟时间|`number`|`500`|2.18.0|
 |field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
+|value-key|用于确定选项键值得属性名|`string`|`'value'`|2.29.0|
+|fallback|自定义不存在选项的值的展示|`boolean\| ((    value:      \| string      \| number      \| Record<string, unknown>      \| (string \| number \| Record<string, unknown>)[]  ) => string)`|`true`|2.29.0|
+|expand-child|是否展开子菜单|`boolean`|`false`|2.29.0|
 ### `<cascader>` Events
 
 |事件名|描述|参数|
@@ -95,13 +102,15 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |---|---|---|:---:|:---|
 |path-mode|绑定值是否为路径|`boolean`|`false`||
 |multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
-|model-value **(v-model)**|绑定值|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`-`||
-|default-value|默认值（非受控状态）|`string \| number \| (string \| number \| (string \| number)[])[] \| undefined`|`'' \| undefined \| []`||
+|model-value **(v-model)**|绑定值|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`-`||
+|default-value|默认值（非受控状态）|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`'' \| undefined \| []`||
 |options|级联选择器的选项|`CascaderOption[]`|`[]`||
 |expand-trigger|展开下一级的触发方式|`string`|`'click'`||
 |check-strictly|是否开启严格选择模式|`boolean`|`false`||
-|load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOptionInfo,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
+|load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOption,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
 |field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
+|value-key|用于确定选项键值得属性名|`string`|`'value'`|2.29.0|
+|expand-child|是否展开子菜单|`boolean`|`false`|2.29.0|
 ### `<cascader-panel>` Events
 
 |事件名|描述|参数|

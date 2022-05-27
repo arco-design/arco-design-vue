@@ -72,7 +72,6 @@ import { getPrefixCls } from '../_utils/global-config';
 import useState from '../_hooks/use-state';
 import {
   DisabledTimeProps,
-  PickerProps,
   ShortcutType,
   FormatFunc,
   CalendarValue,
@@ -95,7 +94,6 @@ import useHeaderValue from './hooks/use-header-value';
 import { omit } from '../_utils/omit';
 import useTimePickerValue from './hooks/use-time-picker-value';
 import { mergeValueWithTime } from './utils';
-import { EmitType } from '../_utils/types';
 import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
 import { useFormItem } from '../_hooks/use-form-item';
@@ -290,6 +288,14 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 是否显示确认按钮，`showTime = true` 的时候始终显示。
+     * @en Whether to show the confirm button, always show when `showTime = true`.
+     * @version 2.29.0
+     */
+    showConfirmBtn: {
+      type: Boolean,
+    },
     showTime: {
       type: Boolean,
     },
@@ -438,6 +444,7 @@ export default defineComponent({
       defaultPickerValue,
       dayStartOfWeek,
       previewShortcut,
+      showConfirmBtn,
     } = toRefs(props);
 
     const { locale: globalLocal } = useI18n();
@@ -497,7 +504,7 @@ export default defineComponent({
       })
     );
 
-    const needConfirm = computed(() => showTime.value);
+    const needConfirm = computed(() => showTime.value || showConfirmBtn.value);
     const confirmBtnDisabled = computed(
       () =>
         needConfirm.value &&
@@ -757,7 +764,7 @@ export default defineComponent({
     }));
 
     const panelProps = computed(() => ({
-      ...pick(props as Record<keyof PickerProps, any>, [
+      ...pick(props, [
         'mode',
         'shortcuts',
         'shortcutsPosition',
