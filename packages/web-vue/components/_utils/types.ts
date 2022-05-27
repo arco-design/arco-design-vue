@@ -21,6 +21,7 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   : never;
 
 export type BaseType = string | number;
+export type UnionType = BaseType | Record<string, any>;
 export type Data = Record<string, any>;
 export type RenderContent = string | RenderFunction;
 

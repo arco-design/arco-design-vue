@@ -12,10 +12,6 @@ export default defineComponent({
       type: Array as PropType<CascaderOptionInfo[]>,
       required: true,
     },
-    computedKeys: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
     loading: Boolean,
     activeKey: String,
     multiple: Boolean,
@@ -51,7 +47,6 @@ export default defineComponent({
               key={item.key}
               class={`${prefixCls}-search-option`}
               option={item}
-              computedKeys={props.computedKeys}
               active={item.key === props.activeKey}
               multiple={props.multiple}
               checkStrictly={props.checkStrictly}

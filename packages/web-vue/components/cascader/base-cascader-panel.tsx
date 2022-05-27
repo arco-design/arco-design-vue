@@ -17,15 +17,10 @@ export default defineComponent({
       required: true,
     },
     activeKey: String,
-    computedKeys: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
     totalLevel: {
       type: Number,
       required: true,
     },
-    expandTrigger: String,
     multiple: Boolean,
     checkStrictly: Boolean,
     loading: Boolean,
@@ -62,14 +57,12 @@ export default defineComponent({
                   <CascaderOption
                     key={item.key}
                     option={item}
-                    computedKeys={props.computedKeys}
                     active={
                       props.selectedPath.includes(item.key) ||
                       item.key === props.activeKey
                     }
                     multiple={props.multiple}
                     checkStrictly={props.checkStrictly}
-                    expandTrigger={props.expandTrigger}
                   />
                 );
               })}
@@ -109,6 +102,7 @@ export default defineComponent({
       <TransitionGroup
         tag="div"
         name="cascader-slide"
+        // @ts-ignore
         class={[
           `${prefixCls}-panel`,
           {
