@@ -94,7 +94,6 @@ import useHeaderValue from './hooks/use-header-value';
 import { omit } from '../_utils/omit';
 import useTimePickerValue from './hooks/use-time-picker-value';
 import { mergeValueWithTime } from './utils';
-import { EmitType } from '../_utils/types';
 import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
 import { useFormItem } from '../_hooks/use-form-item';
