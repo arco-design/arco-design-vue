@@ -84,6 +84,10 @@ export default defineComponent({
         string | HTMLElement | null | undefined
       >,
     },
+    popupMaxHeight: {
+      type: [Boolean, Number],
+      default: true,
+    },
   },
   emits: {
     'update:popupVisible': (visible: boolean) => true,
@@ -116,7 +120,7 @@ export default defineComponent({
    * @version 2.10.0
    */
   setup(props, { emit }) {
-    const { defaultPopupVisible, popupVisible } = toRefs(props);
+    const { defaultPopupVisible, popupVisible, popupMaxHeight } = toRefs(props);
     const prefixCls = getPrefixCls('dropdown');
 
     const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
@@ -136,6 +140,7 @@ export default defineComponent({
     provide(
       dropdownInjectionKey,
       reactive({
+        popupMaxHeight,
         onOptionClick: handleOptionClick,
       })
     );

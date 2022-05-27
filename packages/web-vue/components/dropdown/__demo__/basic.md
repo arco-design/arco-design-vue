@@ -35,12 +35,18 @@ Basic usage of the drop-down menu.
         <a-doption>Option 3</a-doption>
       </template>
     </a-dropdown>
-    <a-dropdown @select="handleSelect">
-      <a-button>With Icon <icon-down/></a-button>
+    <a-dropdown @select="handleSelect" :popup-max-height="false">
+      <a-button>No Max Height <icon-down/></a-button>
       <template #content>
         <a-doption>Option 1</a-doption>
         <a-doption disabled>Option 2</a-doption>
         <a-doption>Option 3</a-doption>
+        <a-doption>Option 4</a-doption>
+        <a-doption>Option 5</a-doption>
+        <a-doption>Option 6</a-doption>
+        <a-doption>Option 7</a-doption>
+        <a-doption>Option 8</a-doption>
+        <a-doption>Option 9</a-doption>
       </template>
     </a-dropdown>
   </a-space>
