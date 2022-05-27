@@ -18,7 +18,7 @@ Cascading menu can be used alone, in this case it is the `data display` componen
 
 ```vue
 <template>
-  <a-cascader-panel :options="options" v-model="value" />
+  <a-cascader-panel :options="options" v-model="value" expand-child/>
 </template>
 
 <script>
