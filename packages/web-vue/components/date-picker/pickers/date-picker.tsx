@@ -1,6 +1,6 @@
 import { defineComponent, PropType } from 'vue';
 import { TimePickerProps } from '../../time-picker/interface';
-import { DisabledTimeProps, DatePickerProps, WeekStart } from '../interface';
+import { DisabledTimeProps, WeekStart } from '../interface';
 import Picker from '../picker.vue';
 
 export default defineComponent({
@@ -69,7 +69,7 @@ export default defineComponent({
       default: true,
     },
   },
-  setup(props: DatePickerProps, { attrs, slots }) {
+  setup(props, { attrs, slots }) {
     return () => <Picker {...props} {...attrs} mode="date" v-slots={slots} />;
   },
 });
