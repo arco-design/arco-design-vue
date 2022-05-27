@@ -316,3 +316,40 @@ export const spliceFromPath = (
   }
   return undefined;
 };
+
+export const getLeafKeys = (record: TableDataWithRaw) => {
+  const keys: string[] = [];
+  if (record.children) {
+    for (const item of record.children) {
+      if (item.isLeaf) {
+        keys.push(item.key);
+      } else {
+        keys.push(...getLeafKeys(item));
+      }
+    }
+  }
+  return keys;
+};
+
+export const getSelectionStatus = (
+  selectedRowKeys: string[],
+  leafKeys: string[]
+) => {
+  let checked = false;
+  let indeterminate = false;
+  const selectedLeafKeys = leafKeys.filter((key) =>
+    selectedRowKeys.includes(key)
+  );
+  if (selectedLeafKeys.length > 0) {
+    if (selectedLeafKeys.length >= leafKeys.length) {
+      checked = true;
+    } else {
+      indeterminate = true;
+    }
+  }
+
+  return {
+    checked,
+    indeterminate,
+  };
+};

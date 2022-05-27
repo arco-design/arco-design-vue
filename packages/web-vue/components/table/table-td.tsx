@@ -123,13 +123,20 @@ export default defineComponent({
     ]);
 
     const cellStyle = computed(() => {
+      const bodyStyle = isFunction(props.column?.bodyCellStyle)
+        ? props.column.bodyCellStyle(props.record?.raw)
+        : props.column?.bodyCellStyle;
       if (props.isFixedExpand && props.containerWidth) {
         return {
           width: `${props.containerWidth}px`,
           ...props.column?.cellStyle,
+          ...bodyStyle,
         };
       }
-      return props.column?.cellStyle;
+      return {
+        ...props.column?.cellStyle,
+        ...bodyStyle,
+      };
     });
 
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});

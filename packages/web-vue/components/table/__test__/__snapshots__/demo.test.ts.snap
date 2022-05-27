@@ -481,7 +481,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
+              <th class=\\"arco-table-th arco-table-operation\\"><span class=\\"arco-table-cell\\"><!----></span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -1103,7 +1103,7 @@ exports[`<table> demo: render [expand] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+              <th class=\\"arco-table-th arco-table-operation\\"><span class=\\"arco-table-cell\\">Expand</span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -1314,7 +1314,7 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+                <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
                 <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                   <!---->
                   <!----></span>
@@ -1831,9 +1831,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
-                <!----></label></span>
-              </th>
+              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"><!----></span></label></span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -1952,7 +1950,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
+              <th class=\\"arco-table-th arco-table-operation\\"><span class=\\"arco-table-cell\\"><!----></span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -2071,9 +2069,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
-                <!----></label></span>
-              </th>
+              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"><!----></span></label></span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -2747,7 +2743,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
               </colgroup>
               <thead>
                 <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-operation\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\"><!----></span></th>
+                  <th class=\\"arco-table-th arco-table-operation\\"><span class=\\"arco-table-cell\\"><!----></span></th>
                   <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                     <!---->
                     <!----></span>
@@ -2850,7 +2846,13 @@ exports[`<table> demo: render [span] correctly 1`] = `
 `;
 
 exports[`<table> demo: render [subtree] correctly 1`] = `
-"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>checkStrictly:</span></div>
+  <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+</div>
+<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-type-selection\\">
   <!---->
   <div class=\\"arco-spin\\">
     <!---->
@@ -2858,6 +2860,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
       <div class=\\"arco-table-content\\">
         <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
           <colgroup>
+            <col class=\\"arco-table-selection-checkbox-col\\">
             <col>
             <col>
             <col>
@@ -2865,6 +2868,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
           </colgroup>
           <thead>
             <tr class=\\"arco-table-tr\\">
+              <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"><!----></span></label></span></th>
               <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                 <!---->
                 <!----></span>
@@ -2893,6 +2897,9 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
           </thead>
           <tbody>
             <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <!----></label></span>
+              </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell arco-table-cell-expand-icon\\"><!----><span class=\\"arco-table-cell-inline-icon\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span>Jane Doe</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->23000</span></td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><!----><!---->32 Park Road, London</span></td>
@@ -2900,6 +2907,9 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"6\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <!----></label></span>
+              </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
                 <!---->Alisa Ross</span>
               </td>
@@ -2909,6 +2919,9 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"7\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <!----></label></span>
+              </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
                 <!---->Kevin Sandra</span>
               </td>
@@ -2918,6 +2931,9 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"8\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <!----></label></span>
+              </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
                 <!---->Ed Hellen</span>
               </td>
@@ -2927,6 +2943,9 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
             </tr>
             <!---->
             <tr class=\\"arco-table-tr\\">
+              <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"9\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <!----></label></span>
+              </td>
               <td class=\\"arco-table-td arco-table-td-align-left\\"><span class=\\"arco-table-cell\\"><span style=\\"padding-left: 20px;\\"></span>
                 <!---->William Smith</span>
               </td>
@@ -3083,7 +3102,7 @@ exports[`<table> demo: render [summary] correctly 1`] = `
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\" totalnumber=\\"5\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+                <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
                 <th class=\\"arco-table-th arco-table-th-align-left arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                   <!---->
                   <!----></span>
@@ -3230,9 +3249,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\" totalnumber=\\"1000\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
-                  <!----></label></span>
-                </th>
+                <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"><!----></span></label></span></th>
                 <th class=\\"arco-table-th arco-table-th-align-left\\"><span class=\\"arco-table-cell\\"><span class=\\"arco-table-th-title\\">Name</span>
                   <!---->
                   <!----></span>

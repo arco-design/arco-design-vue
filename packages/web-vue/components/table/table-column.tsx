@@ -11,15 +11,19 @@ import {
   toRefs,
   watch,
 } from 'vue';
-import { TableColumnData, TableFilterable, TableSortable } from './interface';
+import {
+  TableColumnData,
+  TableData,
+  TableFilterable,
+  TableSortable,
+} from './interface';
 import {
   tableColumnInjectionKey,
   TableContext,
   tableInjectionKey,
 } from './context';
-import { isEqual } from '../_utils/is-equal';
 import { useChildrenComponents } from '../_hooks/use-children-components';
-import { isObject } from '../_utils/is';
+import { usePureProp } from '../_hooks/use-pure-prop';
 
 export default defineComponent({
   name: 'TableColumn',
@@ -86,6 +90,24 @@ export default defineComponent({
       type: Object as PropType<CSSProperties>,
     },
     /**
+     * @zh 自定义表头单元格样式
+     * @en Custom cell style
+     * @version 2.29.0
+     */
+    headerCellStyle: {
+      type: Object as PropType<CSSProperties>,
+    },
+    /**
+     * @zh 自定义内容单元格样式
+     * @en Custom cell style
+     * @version 2.29.0
+     */
+    bodyCellStyle: {
+      type: [Object, Function] as PropType<
+        CSSProperties | ((record: TableData) => CSSProperties)
+      >,
+    },
+    /**
      * @zh 用于手动指定选项的 index。2.26.0 版本后不再需要手动指定
      * @en index for manually specifying option. Manual specification is no longer required after version 2.26.0
      * @version 2.20.2
@@ -133,48 +155,14 @@ export default defineComponent({
    * @version 2.23.0
    */
   setup(props, { slots }) {
-    const {
-      dataIndex,
-      title,
-      width,
-      align,
-      fixed,
-      ellipsis,
-      sortable: _sortable,
-      filterable: _filterable,
-      cellStyle: _cellStyle,
-      tooltip: _tooltip,
-      index,
-    } = toRefs(props);
-    const sortable = ref(_sortable.value);
-    watch(_sortable, (cur, pre) => {
-      if (!isEqual(cur, pre)) {
-        sortable.value = cur;
-      }
-    });
-    const filterable = ref(_filterable.value);
-    watch(_filterable, (cur, pre) => {
-      if (!isEqual(cur, pre)) {
-        // @ts-ignore
-        filterable.value = cur;
-      }
-    });
-    const cellStyle = ref(_cellStyle.value);
-    watch(_cellStyle, (cur, pre) => {
-      if (!isEqual(cur, pre)) {
-        cellStyle.value = cur;
-      }
-    });
-    const tooltip = ref(_tooltip.value);
-    watch(_tooltip, (cur, pre) => {
-      if (isObject(cur) && isObject(pre)) {
-        if (!isEqual(cur, pre)) {
-          tooltip.value = cur;
-        }
-      } else {
-        tooltip.value = cur;
-      }
-    });
+    const { dataIndex, title, width, align, fixed, ellipsis, index } =
+      toRefs(props);
+    const sortable = usePureProp(props, 'sortable');
+    const filterable = usePureProp(props, 'filterable');
+    const cellStyle = usePureProp(props, 'cellStyle');
+    const headerCellStyle = usePureProp(props, 'headerCellStyle');
+    const bodyCellStyle = usePureProp(props, 'bodyCellStyle');
+    const tooltip = usePureProp(props, 'tooltip');
 
     const instance = getCurrentInstance();
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
@@ -223,6 +211,8 @@ export default defineComponent({
       sortable,
       filterable,
       cellStyle,
+      headerCellStyle,
+      bodyCellStyle,
       index,
       tooltip,
       children: childrenColumns,
