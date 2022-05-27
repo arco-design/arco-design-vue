@@ -101,6 +101,7 @@ export interface BasePickerProps {
   unmountOnClose: boolean;
   valueFormat?: ValueFormat;
   previewShortcut: boolean;
+  showConfirm?: boolean;
 }
 
 export type PickerProps = BasePickerProps &
@@ -112,30 +113,6 @@ export type PickerProps = BasePickerProps &
     defaultPickerValue?: CalendarValue;
     mode: Mode;
   };
-
-export interface PickerEvents {
-  onVisibleChange?: (visible: boolean) => void;
-  onSelectShortcut?: (shortcut: ShortcutType) => void;
-  onOk?: (dateString: string, date: Date) => void;
-  onClear?: () => void;
-  onSelect?: (dateString: string, date: Date) => void;
-  onChange?: (dateString: string | undefined, date: Date | undefined) => void;
-  onPickerValueChange?: (
-    dateString: string | undefined,
-    date: Date | undefined
-  ) => void;
-}
-
-export interface PickerSlots {
-  date?: (currentDate: Date) => VNode;
-  iconPrev?: () => VNode;
-  iconPrevDouble?: () => VNode;
-  iconNext?: () => VNode;
-  iconNextDouble?: () => VNode;
-  iconInputSuffix?: () => VNode;
-  extra?: () => VNode;
-  default?: () => VNode;
-}
 
 export interface RangePickerProps extends BasePickerProps {
   mode: Mode;
@@ -153,24 +130,6 @@ export interface RangePickerProps extends BasePickerProps {
   disabledTime?: RangeDisabledTime;
   separator?: string;
   exchangeTime: boolean;
-}
-
-export interface RangePickerEvents {
-  onChange?: (
-    dateString: string[] | undefined,
-    date: Date[] | undefined
-  ) => void;
-  onSelect?: (
-    dateString: (string | undefined)[],
-    value: (Date | undefined)[]
-  ) => void;
-  onOk?: (dateString: string[], date: Date[]) => void;
-  onPickerValueChange?: (dateString: string[], value: Date[]) => void;
-}
-
-export interface RangePickerSlots {
-  separator?: () => VNode;
-  default?: () => VNode;
 }
 
 export interface Cell {

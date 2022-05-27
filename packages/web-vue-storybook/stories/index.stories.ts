@@ -8,6 +8,7 @@ import StorySpace from './components/space.vue';
 import StoryMenu from './components/menu.vue';
 import StorySelect from './components/select';
 import StoryNumberInput from './components/number-input.vue';
+import StoryDatePicker from './components/date-picker.vue';
 
 export default {
   title: 'Components',
@@ -23,3 +24,4 @@ export const Space = () => StorySpace;
 export const Menu = () => StoryMenu;
 export const Select = () => StorySelect;
 export const NumberInput = () => StoryNumberInput;
+export const DatePicker = () => StoryDatePicker;

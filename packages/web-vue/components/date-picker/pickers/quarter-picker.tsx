@@ -1,5 +1,4 @@
 import { defineComponent, PropType } from 'vue';
-import { QuarterPickerProps } from '../interface';
 import Picker from '../picker.vue';
 
 export default defineComponent({
@@ -37,7 +36,7 @@ export default defineComponent({
       default: 'YYYY-MM',
     },
   },
-  setup(props: QuarterPickerProps, { attrs, slots }) {
+  setup(props, { attrs, slots }) {
     return () => (
       <Picker {...props} {...attrs} mode="quarter" v-slots={slots} />
     );

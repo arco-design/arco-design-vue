@@ -1,5 +1,4 @@
 import { defineComponent, PropType } from 'vue';
-import { MonthPickerProps } from '../interface';
 import Picker from '../picker.vue';
 
 export default defineComponent({
@@ -28,7 +27,7 @@ export default defineComponent({
       default: 'YYYY-MM',
     },
   },
-  setup(props: MonthPickerProps, { attrs, slots }) {
+  setup(props, { attrs, slots }) {
     return () => <Picker {...props} {...attrs} mode="month" v-slots={slots} />;
   },
 });

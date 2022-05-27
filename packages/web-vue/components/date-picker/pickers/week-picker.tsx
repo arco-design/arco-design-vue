@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from 'vue';
-import { WeekPickerProps, WeekStart } from '../interface';
+import { WeekStart } from '../interface';
 import Picker from '../picker.vue';
 
 export default defineComponent({
@@ -47,7 +47,7 @@ export default defineComponent({
       default: 0,
     },
   },
-  setup(props: WeekPickerProps, { attrs, slots }) {
+  setup(props, { attrs, slots }) {
     return () => <Picker {...props} {...attrs} mode="week" v-slots={slots} />;
   },
 });
