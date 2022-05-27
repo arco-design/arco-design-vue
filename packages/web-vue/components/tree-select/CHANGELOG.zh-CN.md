@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 新增功能
+
+- 默认支持通过标签删除已选项 ([#1206](https://github.com/arco-design/arco-design-vue/pull/1206))
+
+### 🐛 问题修复
+
+- 修复设置了 field-names 后拖拽失效的问题 ([#1207](https://github.com/arco-design/arco-design-vue/pull/1207))
+
+
 ## 2.27.0
 
 `2022-05-13`

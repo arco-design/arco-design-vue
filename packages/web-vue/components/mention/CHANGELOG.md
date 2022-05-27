@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🐛 BugFix
+
+- Fixed the cursor movement problem after typing in textarea mode ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+
+
 ## 2.23.0
 
 `2022-04-08`

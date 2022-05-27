@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 Feature
+
+- Line selectors add non-strict mode support (cascading control) ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+- Column properties add headerCellStyle and bodyCellStyle ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+
+
 ## 2.28.0
 
 `2022-05-20`

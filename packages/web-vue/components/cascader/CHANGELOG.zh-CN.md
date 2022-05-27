@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### ⚠️ 重点注意
+
+- 外露参数从 CascaderOptionInfo 改为 CascaderOption。不再包含内部数据，用户数据不受影响 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+
+### 🆕 新增功能
+
+- 选项 value 支持对象格式，增加 `value-key` 属性 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- 增加 `fallback` 属性，可以自定义不存在选项的展示 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- 增加 `expand-child` 属性，可以展开子菜单 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+
+### 💎 功能优化
+
+- 优化子菜单展开逻辑和键盘事件 ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+
+
 ## 2.28.0
 
 `2022-05-20`

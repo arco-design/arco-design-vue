@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🐛 BugFix
+
+- Fixed the issue that clear did not trigger form validation ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+
+
 ## 2.27.0
 
 `2022-05-13`

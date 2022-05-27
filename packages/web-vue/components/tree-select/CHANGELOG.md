@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 Feature
+
+- Default support to delete selected options by tag ([#1206](https://github.com/arco-design/arco-design-vue/pull/1206))
+
+### 🐛 BugFix
+
+- fixed the problem that drag and drop fails after setting fieldNames ([#1207](https://github.com/arco-design/arco-design-vue/pull/1207))
+
+
 ## 2.27.0
 
 `2022-05-13`

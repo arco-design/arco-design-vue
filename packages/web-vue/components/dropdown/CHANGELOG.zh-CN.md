@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### 🆕 新增功能
+
+- 增加 `popup-max-height` 属性 ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+- 子菜单增加 `option-props` 和 icon 插槽 ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+
+
 ## 2.20.2
 
 `2022-03-24`

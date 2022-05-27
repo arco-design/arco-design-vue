@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.29.0
+
+`2022-05-27`
+
+### ⚠️ Important Attention
+
+- **cascader:** Exposed parameter changed from CascaderOptionInfo to CascaderOption. Internal data is no longer included, user data is not affected ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+
+### 🆕 Feature
+
+- **tree-select:** Default support to delete selected options by tag ([#1206](https://github.com/arco-design/arco-design-vue/pull/1206))
+- **dropdown:** Added `popup-max-height` property ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+- **dropdown:** Added icon slot to submenu ([#1203](https://github.com/arco-design/arco-design-vue/pull/1203))
+- **table:** Line selectors add non-strict mode support (cascading control) ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+- **table:** Column properties add headerCellStyle and bodyCellStyle ([#1202](https://github.com/arco-design/arco-design-vue/pull/1202))
+- **cascader:** Option value supports object format, add `value-key` attribute ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **cascader:** Add the `fallback` attribute to customize the display of options that do not exist ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **cascader:** Add the `expand-child` property to expand the submenu ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **date-picker:** Added property `show-confirm-btn` to customize whether to show the confirmation button ([#1198](https://github.com/arco-design/arco-design-vue/pull/1198))
+
+### 🐛 BugFix
+
+- **tree-select:** fixed the problem that drag and drop fails after setting fieldNames ([#1207](https://github.com/arco-design/arco-design-vue/pull/1207))
+- **mention:** Fixed the cursor movement problem after typing in textarea mode ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+- **input-number:** Fixed the issue that clear did not trigger form validation ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+- **select:** Fix the problem of controlled invalidation of inputValue ([#1204](https://github.com/arco-design/arco-design-vue/pull/1204))
+
+### 💎 Enhancement
+
+- **cascader:** Optimize submenu expansion logic and keyboard events ([#1201](https://github.com/arco-design/arco-design-vue/pull/1201))
+- **date-picker:** only update the date when splicing the time ([#1199](https://github.com/arco-design/arco-design-vue/pull/1199))
+- Component adds accessibility ARIA attributes ([#1196](https://github.com/arco-design/arco-design-vue/pull/1196))
+
+
 ## 2.28.0
 
 `2022-05-20`
