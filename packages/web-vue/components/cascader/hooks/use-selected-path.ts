@@ -7,10 +7,12 @@ export const useSelectedPath = (
     optionMap,
     filteredLeafOptions,
     showSearchPanel,
+    expandChild,
   }: {
     optionMap: Map<string, CascaderOptionInfo>;
     filteredLeafOptions: ComputedRef<CascaderOptionInfo[]>;
     showSearchPanel?: ComputedRef<boolean>;
+    expandChild: Ref<boolean>;
   }
 ) => {
   // active node key
@@ -35,7 +37,7 @@ export const useSelectedPath = (
   });
 
   const setSelectedPath = (key?: string) => {
-    const option = key ? optionMap.get(key) : undefined;
+    const option = getTargetOption(key);
     selectedPath.value = option?.path.map((item) => item.key) ?? [];
   };
 
@@ -54,6 +56,17 @@ export const useSelectedPath = (
     }
     return options.value.filter((item) => !item.disabled);
   });
+
+  const getTargetOption = (key?: string) => {
+    let target = key ? optionMap.get(key) : undefined;
+    if (expandChild.value) {
+      while (target && target.children && target.children.length > 0) {
+        // eslint-disable-next-line prefer-destructuring
+        target = target.children[0];
+      }
+    }
+    return target;
+  };
 
   const getNextActiveNode = (direction: 'next' | 'preview') => {
     const _length = enabledOptions.value?.length ?? 0;

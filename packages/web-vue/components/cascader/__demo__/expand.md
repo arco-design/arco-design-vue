@@ -1,34 +1,29 @@
 ```yaml
 title:
-  zh-CN: 允许清除
-  en-US: Allow Clear
+  zh-CN: 展开子菜单
+  en-US: Expand child menu
 ```
 
 ## zh-CN
 
-允许清除。
+通过设置 `expand-child` 可以在选择时展开第一个子菜单
 
 ---
 
 ## en-US
 
-Allow clear.
+The first submenu can be expanded on selection by setting `expand-child`
 
 ---
 
 ```vue
 <template>
-  <a-cascader :options="options" v-model="value" :style="{width:'320px'}" placeholder="Please select ..."
-              allow-clear />
+  <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." expand-child/>
 </template>
 
 <script>
-import { ref } from 'vue';
-
 export default {
   setup() {
-    const value = ref('datunli');
-
     const options = [
       {
         value: 'beijing',
@@ -80,7 +75,6 @@ export default {
       },
     ];
     return {
-      value,
       options
     }
   },

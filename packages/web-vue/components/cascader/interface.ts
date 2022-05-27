@@ -1,6 +1,11 @@
 import { RenderFunction } from 'vue';
 import { TagProps } from '../tag';
-import { FieldString } from '../_utils/types';
+import { BaseType, FieldString } from '../_utils/types';
+
+export type CascaderBaseValue =
+  | BaseType
+  | Record<string, any>
+  | (BaseType | Record<string, any>)[];
 
 export interface CascaderOption {
   /**
@@ -67,6 +72,7 @@ export interface CascaderNode extends CascaderOption {
 export interface CascaderOptionInfo extends CascaderOptionWithTotal {
   raw: Record<string, unknown>;
   key: string;
+  valueKey: string;
   level: number;
   index: number;
   value: string | number;
@@ -76,4 +82,5 @@ export interface CascaderOptionInfo extends CascaderOptionWithTotal {
   parent?: CascaderOptionInfo;
   children?: CascaderOptionInfo[];
   path: CascaderOptionInfo[];
+  pathValue: any[];
 }

@@ -56,7 +56,6 @@
         v-if="showSearchPanel"
         :options="filteredLeafOptions"
         :active-key="activeKey"
-        :computed-keys="computedKeys"
         :multiple="multiple"
         :check-strictly="checkStrictly"
         :loading="loading"
@@ -71,9 +70,7 @@
         :display-columns="displayColumns"
         :selected-path="selectedPath"
         :active-key="activeKey"
-        :computed-keys="computedKeys"
         :multiple="multiple"
-        :expand-trigger="expandTrigger"
         :total-level="totalLevel"
         :check-strictly="checkStrictly"
         :loading="loading"
@@ -99,10 +96,13 @@ import {
   watch,
 } from 'vue';
 import {
-  getKeysFromValue,
+  getCheckedStatus,
+  getLeafOptionInfos,
   getLeafOptionKeys,
   getOptionInfos,
   getOptionLabel,
+  getValidValues,
+  getValueKey,
 } from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
@@ -113,8 +113,8 @@ import {
   CascaderOption,
   CascaderOptionInfo,
 } from './interface';
-import { isArray, isNull, isUndefined } from '../_utils/is';
-import { Data, EmitType } from '../_utils/types';
+import { isArray, isFunction, isNull, isUndefined } from '../_utils/is';
+import { BaseType, Data, UnionType } from '../_utils/types';
 import { useSelectedPath } from './hooks/use-selected-path';
 import { KEYBOARD_KEY, getKeyDownHandler } from '../_utils/keyboard';
 import { cascaderInjectionKey } from './context';
@@ -153,8 +153,17 @@ export default defineComponent({
      * @en Value
      */
     modelValue: {
-      type: [String, Number, Array] as PropType<
-        string | number | (string | number | (string | number)[])[] | undefined
+      type: [String, Number, Object, Array] as PropType<
+        | string
+        | number
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
+        | undefined
       >,
     },
     /**
@@ -163,8 +172,17 @@ export default defineComponent({
      * @defaultValue '' \| undefined \| []
      */
     defaultValue: {
-      type: [String, Number, Array] as PropType<
-        string | number | (string | number | (string | number)[])[] | undefined
+      type: [String, Number, Object, Array] as PropType<
+        | string
+        | number
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
+        | undefined
       >,
       default: (props: Data) =>
         props.multiple ? [] : props.pathMode ? undefined : '',
@@ -250,7 +268,7 @@ export default defineComponent({
      * @en Expand the trigger method of the next level
      */
     expandTrigger: {
-      type: String,
+      type: String as PropType<'click' | 'hover'>,
       default: 'click',
     },
     /**
@@ -268,7 +286,7 @@ export default defineComponent({
     placeholder: String,
     filterOption: {
       type: Function as PropType<
-        (inputValue: string, optionInfo: CascaderOptionInfo) => boolean
+        (inputValue: string, option: CascaderOption) => boolean
       >,
     },
     /**
@@ -293,7 +311,7 @@ export default defineComponent({
      * @en Format display content
      */
     formatLabel: {
-      type: Function as PropType<(options: CascaderOptionInfo[]) => string>,
+      type: Function as PropType<(options: CascaderOption[]) => string>,
     },
     /**
      * @zh 下拉菜单的触发器属性
@@ -319,7 +337,7 @@ export default defineComponent({
     loadMore: {
       type: Function as PropType<
         (
-          option: CascaderOptionInfo,
+          option: CascaderOption,
           done: (children?: CascaderOption[]) => void
         ) => void
       >,
@@ -359,13 +377,55 @@ export default defineComponent({
     fieldNames: {
       type: Object as PropType<CascaderFieldNames>,
     },
+    /**
+     * @zh 用于确定选项键值得属性名
+     * @en Used to determine the option key value attribute name
+     * @version 2.29.0
+     */
+    valueKey: {
+      type: String,
+      default: 'value',
+    },
+    /**
+     * @zh 自定义不存在选项的值的展示
+     * @en Options that do not exist in custom values
+     * @version 2.29.0
+     */
+    fallback: {
+      type: [Boolean, Function] as PropType<
+        | boolean
+        | ((
+            value:
+              | string
+              | number
+              | Record<string, unknown>
+              | (string | number | Record<string, unknown>)[]
+          ) => string)
+      >,
+      default: true,
+    },
+    /**
+     * @zh 是否展开子菜单
+     * @en whether to expand the submenu
+     * @version 2.29.0
+     */
+    expandChild: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:modelValue': (
       value:
         | string
         | number
-        | (string | number | (string | number)[])[]
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
         | undefined
     ) => true,
     'update:popupVisible': (visible: boolean) => true,
@@ -378,7 +438,13 @@ export default defineComponent({
       value:
         | string
         | number
-        | (string | number | (string | number)[])[]
+        | Record<string, any>
+        | (
+            | string
+            | number
+            | Record<string, any>
+            | (string | number | Record<string, any>)[]
+          )[]
         | undefined
     ) => true,
     /**
@@ -469,6 +535,9 @@ export default defineComponent({
       formatLabel,
       modelValue,
       disabled,
+      valueKey,
+      expandTrigger,
+      expandChild,
     } = toRefs(props);
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
@@ -487,9 +556,7 @@ export default defineComponent({
 
     const optionMap = reactive(new Map<string, CascaderOptionInfo>());
     const leafOptionMap = reactive(new Map<string, CascaderOptionInfo>());
-    const leafOptionValueMap = reactive(
-      new Map<string | number, CascaderOptionInfo>()
-    );
+    const leafOptionValueMap = reactive(new Map<BaseType, string>());
     const leafOptionSet = reactive(new Set<CascaderOptionInfo>());
 
     const lazyLoadOptions = reactive<Record<string, CascaderOption[]>>({});
@@ -530,6 +597,7 @@ export default defineComponent({
           leafOptionValueMap,
           totalLevel,
           checkStrictly,
+          valueKey,
           fieldNames: _fieldNames,
         });
       },
@@ -539,13 +607,21 @@ export default defineComponent({
       }
     );
 
-    const computedKeys = computed(() =>
-      getKeysFromValue(props.modelValue ?? _value.value, {
+    const computedValueMap = computed(() => {
+      const values = getValidValues(props.modelValue ?? _value.value, {
+        multiple: props.multiple,
         pathMode: props.pathMode,
-        leafOptionMap,
-        leafOptionValueMap,
-      })
-    );
+      });
+      return new Map(
+        values.map((value) => [
+          getValueKey(value, {
+            valueKey: props.valueKey,
+            leafOptionValueMap,
+          }),
+          value,
+        ])
+      );
+    });
 
     const computedInputValue = computed(
       () => props.inputValue ?? _inputValue.value
@@ -561,39 +637,18 @@ export default defineComponent({
 
       return options.filter(
         (item) =>
-          props.filterOption?.(computedInputValue.value, item) ??
+          props.filterOption?.(computedInputValue.value, item.raw) ??
           item.label
             ?.toLocaleLowerCase()
             .includes(computedInputValue.value?.toLocaleLowerCase())
       );
     });
 
-    const updateValue = (
-      options?: CascaderOptionInfo | CascaderOptionInfo[]
-    ) => {
-      let value:
-        | string
-        | number
-        | Array<string | number>
-        | undefined
-        | (string | number | Array<string | number>)[];
-      if (!options) {
-        if (!props.pathMode) {
-          value = '';
-        }
+    const updateValue = (values: UnionType[] | UnionType[][]) => {
+      const value = props.multiple ? values : values[0] ?? '';
+      if (values.length === 0) {
         setSelectedPath();
         setActiveKey();
-      } else if (isArray(options)) {
-        value = options.map((item) => {
-          if (!props.pathMode) {
-            return item.value;
-          }
-          return item.path.map((item) => item.value);
-        });
-      } else if (!props.pathMode) {
-        value = options.value;
-      } else {
-        value = options.path.map((item) => item.value);
       }
 
       _value.value = value;
@@ -619,24 +674,37 @@ export default defineComponent({
     };
 
     const selectSingle = (option: CascaderOptionInfo) => {
-      updateValue(option);
+      updateValue([props.pathMode ? option.pathValue : option.value]);
       handlePopupVisibleChange(false);
     };
 
     const selectMultiple = (option: CascaderOptionInfo, checked: boolean) => {
-      const leafOptionKeys = props.checkStrictly
-        ? [option.key]
-        : getLeafOptionKeys(option);
+      if (checked) {
+        const leafOptionInfos = props.checkStrictly
+          ? [option]
+          : getLeafOptionInfos(option);
 
-      const newKeys = checked
-        ? computedKeys.value.concat(
-            leafOptionKeys.filter((item) => !computedKeys.value.includes(item))
-          )
-        : computedKeys.value.filter((item) => !leafOptionKeys.includes(item));
+        updateValue([
+          ...computedValueMap.value.values(),
+          ...leafOptionInfos
+            .filter((item) => !computedValueMap.value.has(item.key))
+            .map((item) => {
+              return props.pathMode ? item.pathValue : item.value;
+            }),
+        ]);
+      } else {
+        const leafOptionKeys = props.checkStrictly
+          ? [option.key]
+          : getLeafOptionKeys(option);
+        const values: any[] = [];
+        computedValueMap.value.forEach((value, key) => {
+          if (!leafOptionKeys.includes(key)) {
+            values.push(value);
+          }
+        });
+        updateValue(values);
+      }
 
-      updateValue(
-        newKeys.map((key) => leafOptionMap.get(key) as CascaderOptionInfo)
-      );
       handleInputValueChange('', 'optionChecked');
     };
 
@@ -673,8 +741,9 @@ export default defineComponent({
 
     watch(computedPopupVisible, (value) => {
       if (value) {
-        if (computedKeys.value.length > 0) {
-          const lastKey = computedKeys.value[computedKeys.value.length - 1];
+        if (computedValueMap.value.size > 0) {
+          const keys = Array.from(computedValueMap.value.keys());
+          const lastKey = keys[keys.length - 1];
           const option = leafOptionMap.get(lastKey);
           if (option && option.key !== activeKey.value) {
             setSelectedPath(option.key);
@@ -682,7 +751,7 @@ export default defineComponent({
           }
         }
       } else {
-        if (computedKeys.value.length === 0) {
+        if (computedValueMap.value.size === 0) {
           setSelectedPath();
           setActiveKey();
         }
@@ -694,16 +763,16 @@ export default defineComponent({
       e.stopPropagation();
       if (props.multiple) {
         // 保留已经被选中但被disabled的选项值
-        const newValue = computedKeys.value.reduce((pre, key) => {
+        const newValues: any[] = [];
+        computedValueMap.value.forEach((value, key) => {
           const option = leafOptionMap.get(key);
           if (option?.disabled) {
-            pre.push(option);
+            newValues.push(props.pathMode ? option.pathValue : option.value);
           }
-          return pre;
-        }, [] as CascaderOptionInfo[]);
-        updateValue(newValue);
+        });
+        updateValue(newValues);
       } else {
-        updateValue();
+        updateValue([]);
       }
       handleInputValueChange('', 'manual');
       emit('clear');
@@ -732,6 +801,7 @@ export default defineComponent({
       optionMap,
       filteredLeafOptions,
       showSearchPanel,
+      expandChild,
     });
 
     provide(
@@ -741,9 +811,11 @@ export default defineComponent({
         setActiveKey,
         setSelectedPath,
         loadMore,
+        expandTrigger,
         addLazyLoadOptions,
         formatLabel,
         slots,
+        valueMap: computedValueMap,
       })
     );
 
@@ -753,11 +825,18 @@ export default defineComponent({
           KEYBOARD_KEY.ENTER,
           (ev: Event) => {
             if (computedPopupVisible.value) {
-              if (
-                activeOption.value &&
-                (activeOption.value.isLeaf || props.checkStrictly)
-              ) {
-                handleClickOption(activeOption.value);
+              if (activeOption.value) {
+                let checked: boolean;
+                if (props.checkStrictly || activeOption.value.isLeaf) {
+                  checked = !computedValueMap.value.has(activeOption.value.key);
+                } else {
+                  checked = !getCheckedStatus(
+                    activeOption.value,
+                    computedValueMap.value
+                  ).checked;
+                }
+                setSelectedPath(activeOption.value.key);
+                handleClickOption(activeOption.value, checked);
               }
             } else {
               handlePopupVisibleChange(true);
@@ -810,25 +889,36 @@ export default defineComponent({
     );
 
     const selectViewValue = computed(() => {
-      const result = [];
-      for (const key of computedKeys.value) {
+      const result: any[] = [];
+      computedValueMap.value.forEach((value, key) => {
         const option = leafOptionMap.get(key);
         if (option) {
-          const value = {
+          result.push({
             value: key,
-            label: props.formatLabel?.(option.path) ?? getOptionLabel(option),
+            label:
+              props.formatLabel?.(option.path.map((item) => item.raw)) ??
+              getOptionLabel(option),
             closable: !option.disabled,
             tagProps: option.tagProps,
-          };
-          result.push(value);
+          });
+        } else if (props.fallback) {
+          const label = isFunction(props.fallback)
+            ? props.fallback(value)
+            : isArray(value)
+            ? value.join(' / ')
+            : String(value);
+          result.push({
+            value: key,
+            label,
+            closable: true,
+          });
         }
-      }
+      });
       return result;
     });
 
     return {
       optionInfos,
-      computedKeys,
       filteredLeafOptions,
       selectedPath,
       activeKey,
