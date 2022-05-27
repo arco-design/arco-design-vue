@@ -1,8 +1,8 @@
 import { computed, ref, toRefs, watchEffect, watch } from 'vue';
 import { isArray, isFunction, isObject } from '../../_utils/is';
 import { FallbackOption, LabelValue, TreeSelectValue } from '../interface';
-import { Key2TreeNode } from '../../tree/utils';
 import {
+  Key2TreeNode,
   TreeFieldNames,
   TreeNodeData,
   TreeNodeKey,
