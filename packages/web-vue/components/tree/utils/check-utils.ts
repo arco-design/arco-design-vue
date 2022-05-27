@@ -8,7 +8,7 @@ function SetDelete<T>(set: Set<T>): (value: T) => boolean {
   return Set.prototype.delete.bind(set);
 }
 
-function isNodeCheckable(node: Node) {
+export function isNodeCheckable(node: Node) {
   if (node.disabled || node.disableCheckbox) return false;
   return !!node.checkable;
 }

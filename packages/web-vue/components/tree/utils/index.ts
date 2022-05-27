@@ -25,10 +25,6 @@ export function getKey2TreeNode(flattenTreeData: Node[]) {
   return key2TreeNode;
 }
 
-export function isNodeCheckable(node: Node) {
-  return node.checkable && !node.disabled && !node.disableCheckbox;
-}
-
 export function isNodeSelectable(node: Node) {
   return node.selectable && !node.disabled;
 }
