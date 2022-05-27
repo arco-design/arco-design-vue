@@ -30,6 +30,8 @@
         :value="computedValue[0]"
         :direction="direction"
         :disabled="mergedDisabled"
+        :min="min"
+        :max="max"
         :format-tooltip="formatTooltip"
         @movestart="handleMoveStart"
         @moving="handleStartMoving"

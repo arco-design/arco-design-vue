@@ -116,7 +116,16 @@ export default defineComponent({
     };
 
     return () => (
-      <li class={cls.value} {...events}>
+      <li
+        tabindex="0"
+        role="menuitem"
+        aria-disabled={props.option.disabled}
+        aria-haspopup={!props.option.isLeaf}
+        aria-expanded={!props.option.isLeaf && props.active}
+        title={props.option.label}
+        class={cls.value}
+        {...events}
+      >
         {props.multiple && (
           <Checkbox
             modelValue={checkedStatus.value.checked}

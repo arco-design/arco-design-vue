@@ -283,7 +283,7 @@ exports[`<menu> demo: render [size] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
-      <div style=\\"left: 33.33%;\\" class=\\"arco-slider-btn\\"></div>
+      <div style=\\"left: 33.33%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"240\\" aria-valuetext=\\"240\\" class=\\"arco-slider-btn\\"></div>
       <!---->
     </div>
     <!--v-if-->
