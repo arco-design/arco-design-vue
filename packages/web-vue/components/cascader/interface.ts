@@ -9,10 +9,10 @@ export type CascaderBaseValue =
 
 export interface CascaderOption {
   /**
-   * @zh 选项值
-   * @en Option value
+   * @zh 选项值，2.29.0 版本支持对象
+   * @en Option value, version 2.29.0 supports objects
    */
-  value?: string | number;
+  value?: string | number | Record<string, any>;
   /**
    * @zh 选项文本
    * @en Option text

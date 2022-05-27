@@ -21,7 +21,7 @@ description: A button to return to the top with one click.
 |---|---|---|:---:|
 |visible-height|Display the trigger scroll height of the back to top button|`number`|`200`|
 |target-container|Scroll event listener container|`string \| HTMLElement`|`-`|
-|easing|Easing mode of scrolling animation|`string`|`'quartOut'`|
+|easing|Easing mode of scrolling animation, refer to [BTween](https://github.com/PengJiyuan/b-tween) for optional values|`string`|`'quartOut'`|
 |duration|Duration of scroll animation|`number`|`200`|
 
 

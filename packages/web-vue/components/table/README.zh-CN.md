@@ -149,6 +149,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 |sortable|排序相关选项|`TableSortable`|`-`||
 |filterable|过滤相关选项|`TableFilterable`|`-`||
 |cell-style|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
+|header-cell-style|自定义表头单元格样式|`CSSProperties`|`-`|2.29.0|
+|body-cell-style|自定义内容单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
 |index|用于手动指定选项的 index。2.26.0 版本后不再需要手动指定|`number`|`-`|2.20.2|
 |tooltip|在省略时是否显示文字提示|`boolean\|object`|`false`|2.26.0|
 ### `<table-column>` Slots

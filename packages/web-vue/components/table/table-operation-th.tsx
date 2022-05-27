@@ -53,17 +53,18 @@ export default defineComponent({
       if (props.selectAll) {
         return (
           <Checkbox
+            v-slots={{
+              default: isFunction(props.operationColumn.title)
+                ? props.operationColumn.title()
+                : props.operationColumn.title,
+            }}
             modelValue={checkboxStatus.value.checked}
             indeterminate={checkboxStatus.value.indeterminate}
             uninjectGroupContext
             onChange={(checked) => {
               tableCtx.onSelectAll?.(checked as boolean);
             }}
-          >
-            {isFunction(props.operationColumn.title)
-              ? props.operationColumn.title()
-              : props.operationColumn.title}
-          </Checkbox>
+          />
         );
       }
       if (props.operationColumn.title) {

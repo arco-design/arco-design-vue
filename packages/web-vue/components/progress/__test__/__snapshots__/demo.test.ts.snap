@@ -85,7 +85,7 @@ exports[`<progress> demo: render [circle] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
-      <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"0.2\\" aria-valuetext=\\"0.2\\" class=\\"arco-slider-btn\\"></div>
+      <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"1\\" aria-valuemin=\\"0\\" aria-valuenow=\\"0.2\\" aria-valuetext=\\"0.2\\" class=\\"arco-slider-btn\\"></div>
       <!---->
     </div>
     <!--v-if-->
@@ -255,7 +255,7 @@ exports[`<progress> demo: render [mini] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
-      <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"0.2\\" aria-valuetext=\\"0.2\\" class=\\"arco-slider-btn\\"></div>
+      <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"1\\" aria-valuemin=\\"0\\" aria-valuenow=\\"0.2\\" aria-valuetext=\\"0.2\\" class=\\"arco-slider-btn\\"></div>
       <!---->
     </div>
     <!--v-if-->
@@ -400,7 +400,7 @@ exports[`<progress> demo: render [status] correctly 1`] = `
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
-      <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"0.2\\" aria-valuetext=\\"0.2\\" class=\\"arco-slider-btn\\"></div>
+      <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"1\\" aria-valuemin=\\"0\\" aria-valuenow=\\"0.2\\" aria-valuetext=\\"0.2\\" class=\\"arco-slider-btn\\"></div>
       <!---->
     </div>
     <!--v-if-->

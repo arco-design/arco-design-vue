@@ -49,19 +49,13 @@ description: 一般用于详情页的信息展示。
 |---|---|---|:---:|:---|
 |span|所占列数|`number`|`1`|2.18.0|
 |label|标签|`string`|`-`|2.18.0|
-
 ### `<descriptions-item>` Slots
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
 |label|标签|-|2.18.0|
 
-### DescData
-|参数名|描述|类型|默认值|版本|
-|---|---|---|:---:|:---|
-|label|数据标签|`string \| RenderFunction`|-||
-|value|数据内容|`string \| RenderFunction`|-||
-|span|所占列数|`number`|1||
+
 
 
 ### DescData
