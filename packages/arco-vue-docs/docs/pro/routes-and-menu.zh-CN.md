@@ -49,9 +49,9 @@ icon | 菜单配置icon | string| - |
 locale | 一级菜单名（语言包键名） | string| - |
 hideInMenu | 是否在左侧菜单中隐藏该项 | boolean| - |
 hideChildrenInMenu | 强制在左侧菜单中显示单项 | boolean| - |
-activeMenu | 是否在左侧菜单中隐藏该项的子级。 | string| - |
-order | 排序路由菜单项。如果设置该值，值越高，越靠前。 | number| - |
-noAffix | 如果设置为true，标签将不会添加到tab-bar中。 | boolean| - |
+activeMenu | 高亮设置的菜单项 | string| - |
+order | 排序路由菜单项。如果设置该值，值越高，越靠前 | number| - |
+noAffix | 如果设置为true，标签将不会添加到tab-bar中 | boolean| - |
 ignoreCache | 如果设置为true页面将不会被缓存 | boolean| - |
 
 ## 菜单

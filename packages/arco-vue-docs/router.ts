@@ -259,6 +259,11 @@ const proDocs = [
     component: () => import('./docs/pro/build.zh-CN.md'),
     componentEn: () => import('./docs/pro/build.en-US.md'),
   },
+  {
+    name: 'faq',
+    component: () => import('./docs/pro/faq.zh-CN.md'),
+    componentEn: () => import('./docs/pro/faq.en-US.md'),
+  },
 ];
 
 const components = [
