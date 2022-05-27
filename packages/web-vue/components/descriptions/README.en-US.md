@@ -51,19 +51,12 @@ description: Generally used for the information display of the detail page.
 |---|---|---|:---:|:---|
 |span|number of columns|`number`|`1`|2.18.0|
 |label|Label|`string`|`-`|2.18.0|
-
 ### `<descriptions-item>` Slots
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
 |label|Label|-|2.18.0|
 
-### DescData
-|Name|Description|Type|Default|version|
-|---|---|---|:---:|:---|
-|label|Data label|`string \| RenderFunction`|-||
-|value|Data value|`string \| RenderFunction`|-||
-|span|number of columns|`number`|1||
 
 
 

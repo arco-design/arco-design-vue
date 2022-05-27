@@ -93,6 +93,7 @@ description: When there are too many commands on the page, the alternative comma
 |position|Popup position|`'rt' \| 'lt'`|`'rt'`|2.10.0|
 |popup-visible **(v-model)**|Whether the popup is visible|`boolean`|`-`||
 |default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`||
+|option-props|Custom option properties|`object`|`-`|2.29.0|
 ### `<dsubmenu>` Events
 
 |Event Name|Description|Parameters|
@@ -102,6 +103,7 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|icon|Icon|-|2.29.0|
 |content|Submenu content|-||
 |footer|Footer|-|2.10.0|
 

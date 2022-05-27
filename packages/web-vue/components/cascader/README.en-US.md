@@ -131,7 +131,7 @@ description: Refers to the use of multi-level classification to separate the opt
 
 |Name|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|value|Option value|`string \| number`|`-`||
+|value|Option value, version 2.29.0 supports objects|`string \| number \| Record<string, any>`|`-`||
 |label|Option text|`string`|`-`||
 |render|Custom render|`RenderFunction`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||

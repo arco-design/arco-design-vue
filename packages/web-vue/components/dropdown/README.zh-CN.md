@@ -91,6 +91,7 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 |position|弹出位置|`'rt' \| 'lt'`|`'rt'`|2.10.0|
 |popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`||
 |default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`||
+|option-props|自定义选项属性|`object`|`-`|2.29.0|
 ### `<dsubmenu>` Events
 
 |事件名|描述|参数|
@@ -100,6 +101,7 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
+|icon|图标|-|2.29.0|
 |content|子菜单内容|-||
 |footer|页脚|-|2.10.0|
 

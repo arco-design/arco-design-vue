@@ -13,10 +13,9 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { Status, STATUSES } from '../_utils/constant';
+import { Status } from '../_utils/constant';
 import IconLink from '../icon/icon-link';
 import { hasPropOrSlot } from '../_utils/use-prop-or-slot';
-import { EmitType } from '../_utils/types';
 
 export default defineComponent({
   name: 'Link',
@@ -58,7 +57,14 @@ export default defineComponent({
      */
     disabled: Boolean,
   },
-  emits: ['click'],
+  emits: {
+    /**
+     * @zh 点击时触发
+     * @en Emitted when the link is clicked
+     * @property {MouseEvent} ev
+     */
+    click: (ev: MouseEvent) => true,
+  },
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('link');
     const showIcon = hasPropOrSlot(props, slots, 'icon');

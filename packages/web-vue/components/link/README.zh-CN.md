@@ -27,5 +27,10 @@ description: 链接的基本样式。
 |hoverable|鼠标悬浮时存在底色|`boolean`|`true`|2.7.0|
 |icon|图标|`boolean`|`false`|2.7.0|
 |disabled|链接是否禁用|`boolean`|`false`||
+### `<link>` Events
+
+|事件名|描述|参数|
+|---|---|---|
+|click|点击时触发|ev: `MouseEvent`|
 
 

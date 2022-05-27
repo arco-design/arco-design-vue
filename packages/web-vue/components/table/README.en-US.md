@@ -151,6 +151,8 @@ description: It is used for data collection, display, analysis and processing, a
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
 |cell-style|Custom cell style|`CSSProperties`|`-`|2.11.0|
+|header-cell-style|Custom cell style|`CSSProperties`|`-`|2.29.0|
+|body-cell-style|Custom cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
 |index|index for manually specifying option. Manual specification is no longer required after version 2.26.0|`number`|`-`|2.20.2|
 |tooltip|Whether to show text hints when omitted|`boolean\|object`|`false`|2.26.0|
 ### `<table-column>` Slots

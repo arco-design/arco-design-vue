@@ -8,7 +8,7 @@ exports[`<slider> demo: render [basic] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-    <div style=\\"left: 50%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"50\\" aria-valuetext=\\"50\\" class=\\"arco-slider-btn\\"></div>
+    <div style=\\"left: 50%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"50\\" aria-valuetext=\\"50\\" class=\\"arco-slider-btn\\"></div>
     <!---->
   </div>
   <!--v-if-->
@@ -23,7 +23,7 @@ exports[`<slider> demo: render [disabled] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-    <div style=\\"left: 50%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"true\\" aria-valuenow=\\"50\\" aria-valuetext=\\"50\\" class=\\"arco-slider-btn\\"></div>
+    <div style=\\"left: 50%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"true\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"50\\" aria-valuetext=\\"50\\" class=\\"arco-slider-btn\\"></div>
     <!---->
   </div>
   <!--v-if-->
@@ -40,7 +40,7 @@ exports[`<slider> demo: render [input] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
-        <div style=\\"left: 10%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"10\\" aria-valuetext=\\"10\\" class=\\"arco-slider-btn\\"></div>
+        <div style=\\"left: 10%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"10\\" aria-valuetext=\\"10\\" class=\\"arco-slider-btn\\"></div>
         <!---->
       </div>
       <div class=\\"arco-slider-input\\">
@@ -57,7 +57,7 @@ exports[`<slider> demo: render [input] correctly 1`] = `
         <!--v-if-->
         <div style=\\"left: 10%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"10\\" aria-valuetext=\\"10\\" class=\\"arco-slider-btn\\"></div>
         <!---->
-        <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20\\" class=\\"arco-slider-btn\\"></div>
+        <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20\\" class=\\"arco-slider-btn\\"></div>
         <!---->
       </div>
       <div class=\\"arco-slider-input\\"><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input role=\\"spinbutton\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"10\\" class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
@@ -94,7 +94,7 @@ exports[`<slider> demo: render [marks] correctly 1`] = `
       <div aria-hidden=\\"true\\" class=\\"arco-slider-mark\\" style=\\"left: 100%;\\">15km</div>
     </div>
     <!--v-if-->
-    <div style=\\"left: 33.33%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"5\\" aria-valuetext=\\"5\\" class=\\"arco-slider-btn\\"></div>
+    <div style=\\"left: 33.33%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"15\\" aria-valuemin=\\"0\\" aria-valuenow=\\"5\\" aria-valuetext=\\"5\\" class=\\"arco-slider-btn\\"></div>
     <!---->
   </div>
   <!--v-if-->
@@ -110,7 +110,7 @@ exports[`<slider> demo: render [range] correctly 1`] = `
     <!--v-if-->
     <div style=\\"left: 0%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"0\\" aria-valuetext=\\"0\\" class=\\"arco-slider-btn\\"></div>
     <!---->
-    <div style=\\"left: 10%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"10\\" aria-valuetext=\\"10\\" class=\\"arco-slider-btn\\"></div>
+    <div style=\\"left: 10%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"10\\" aria-valuetext=\\"10\\" class=\\"arco-slider-btn\\"></div>
     <!---->
   </div>
   <!--v-if-->
@@ -177,7 +177,7 @@ exports[`<slider> demo: render [step] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
-        <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20\\" class=\\"arco-slider-btn\\"></div>
+        <div style=\\"left: 20%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"20\\" aria-valuetext=\\"20\\" class=\\"arco-slider-btn\\"></div>
         <!---->
       </div>
       <!--v-if-->
@@ -194,7 +194,7 @@ exports[`<slider> demo: render [tooltip] correctly 1`] = `
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-    <div style=\\"left: 0%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"0\\" aria-valuetext=\\"0%\\" class=\\"arco-slider-btn\\"></div>
+    <div style=\\"left: 0%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"50\\" aria-valuemin=\\"0\\" aria-valuenow=\\"0\\" aria-valuetext=\\"0%\\" class=\\"arco-slider-btn\\"></div>
     <!---->
   </div>
   <!--v-if-->
@@ -211,7 +211,7 @@ exports[`<slider> demo: render [vertical] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
         <!--v-if-->
-        <div style=\\"bottom: 50%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"50\\" aria-valuetext=\\"50\\" class=\\"arco-slider-btn\\"></div>
+        <div style=\\"bottom: 50%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"50\\" aria-valuetext=\\"50\\" class=\\"arco-slider-btn\\"></div>
         <!---->
       </div>
       <!--v-if-->
@@ -235,7 +235,7 @@ exports[`<slider> demo: render [vertical] correctly 1`] = `
           <div aria-hidden=\\"true\\" class=\\"arco-slider-mark\\" style=\\"bottom: 66.67%;\\">10km</div>
         </div>
         <!--v-if-->
-        <div style=\\"bottom: 33.33%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuenow=\\"5\\" aria-valuetext=\\"5\\" class=\\"arco-slider-btn\\"></div>
+        <div style=\\"bottom: 33.33%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"15\\" aria-valuemin=\\"0\\" aria-valuenow=\\"5\\" aria-valuetext=\\"5\\" class=\\"arco-slider-btn\\"></div>
         <!---->
       </div>
       <!--v-if-->

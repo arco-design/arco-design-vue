@@ -29,5 +29,10 @@ description: The basic style of the link.
 |hoverable|Whether to hide background when hover|`boolean`|`true`|2.7.0|
 |icon|icon|`boolean`|`false`|2.7.0|
 |disabled|Whether the link is disabled|`boolean`|`false`||
+### `<link>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|click|Emitted when the link is clicked|ev: `MouseEvent`|
 
 

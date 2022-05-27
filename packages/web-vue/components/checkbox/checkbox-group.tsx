@@ -11,7 +11,6 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { Direction } from '../_utils/constant';
 import { checkboxGroupKey } from './context';
-import { EmitType } from '../_utils/types';
 import { useFormItem } from '../_hooks/use-form-item';
 import { CheckboxOption } from './interface';
 import Checkbox from './checkbox';

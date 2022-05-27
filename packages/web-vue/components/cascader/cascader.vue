@@ -669,6 +669,14 @@ export default defineComponent({
         const option = leafOptionMap.get(key);
         if (option) {
           selectMultiple(option, false);
+        } else {
+          const values: any[] = [];
+          computedValueMap.value.forEach((value, _key) => {
+            if (_key !== key) {
+              values.push(value);
+            }
+          });
+          updateValue(values);
         }
       }
     };
