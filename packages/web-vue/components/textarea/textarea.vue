@@ -213,7 +213,7 @@ export default defineComponent({
     const mirrorStyle = ref<CSSProperties>();
 
     const _value = ref(props.defaultValue);
-    const computedValue = computed(() => props.modelValue ?? _value.value);
+    const computedValue = computed(() => modelValue.value ?? _value.value);
 
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
@@ -318,8 +318,8 @@ export default defineComponent({
       if (e.type === 'compositionend') {
         isComposition.value = false;
         compositionValue.value = '';
-        updateValue(value);
         emit('input', value, e);
+        updateValue(value);
         eventHandlers.value?.onInput?.(e);
       } else {
         isComposition.value = true;
@@ -330,8 +330,8 @@ export default defineComponent({
       const { value } = e.target as HTMLInputElement;
 
       if (!isComposition.value) {
-        updateValue(value);
         emit('input', value, e);
+        updateValue(value);
         eventHandlers.value?.onInput?.(e);
       } else {
         compositionValue.value = value;
@@ -345,14 +345,11 @@ export default defineComponent({
     };
 
     // modelValue发生改变时，更新内部值
-    watch(
-      () => props.modelValue,
-      (value: string | undefined) => {
-        if (value !== computedValue.value) {
-          updateValue(value ?? '', false);
-        }
+    watch(modelValue, (value: string | undefined) => {
+      if (value !== computedValue.value) {
+        updateValue(value ?? '', false);
       }
-    );
+    });
 
     const getWrapperAttrs = (attr: Record<string, any>) =>
       omit(attrs, INPUT_EVENTS);
