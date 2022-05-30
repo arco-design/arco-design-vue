@@ -89,6 +89,7 @@ import Typography, {
   TypographyText,
 } from './typography';
 import Upload from './upload';
+import OverflowList from './overflow-list';
 
 import { useFormItem } from './_hooks/use-form-item';
 
@@ -161,6 +162,7 @@ const components: Record<string, Plugin> = {
   Trigger,
   Split,
   Icon,
+  OverflowList,
 };
 
 const install = (app: App, options?: ArcoOptions) => {

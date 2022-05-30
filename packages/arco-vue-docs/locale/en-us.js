@@ -87,6 +87,7 @@ export default {
     transfer: 'Transfer',
     tree: 'Tree',
     treeSelect: 'TreeSelect',
+    overflow: 'OverflowList',
   },
   footer: {
     design: 'Design',

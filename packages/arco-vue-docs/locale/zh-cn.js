@@ -87,6 +87,7 @@ export default {
     transfer: '数据穿梭框 Transfer',
     tree: '树 Tree',
     treeSelect: '树选择 TreeSelect',
+    overflow: '折叠列表 OverflowList',
   },
   footer: {
     design: '设计',

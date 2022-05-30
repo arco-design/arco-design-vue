@@ -175,6 +175,10 @@ const Trigger = () => import('@web-vue/components/trigger/README.zh-CN.md');
 const TriggerEn = () => import('@web-vue/components/trigger/README.en-US.md');
 const Split = () => import('@web-vue/components/split/README.zh-CN.md');
 const SplitEn = () => import('@web-vue/components/split/README.en-US.md');
+const OverflowList = () =>
+  import('@web-vue/components/overflow-list/README.zh-CN.md');
+const OverflowListEn = () =>
+  import('@web-vue/components/overflow-list/README.en-US.md');
 
 const docs = [
   {
@@ -638,6 +642,11 @@ const components = [
         name: 'split',
         component: Split,
         componentEn: SplitEn,
+      },
+      {
+        name: 'overflow',
+        component: OverflowList,
+        componentEn: OverflowListEn,
       },
     ],
   },
