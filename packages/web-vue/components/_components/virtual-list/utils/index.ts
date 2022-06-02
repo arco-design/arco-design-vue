@@ -1,4 +1,4 @@
-import { Key } from '../interface';
+import { VirtualItemKey } from '../interface';
 
 /**
  * 获取有效的scrollTop值
@@ -97,10 +97,10 @@ interface CompareItemConfig {
   locatedItemRelativeTop: number;
   locatedItemIndex: number;
   compareItemIndex: number;
-  getItemKeyByIndex: (index: number) => Key;
+  getItemKeyByIndex: (index: number) => VirtualItemKey;
   startIndex: number;
   endIndex: number;
-  getItemHeightOrDefault: (key: Key) => number;
+  getItemHeightOrDefault: (key: VirtualItemKey) => number;
 }
 
 /**
