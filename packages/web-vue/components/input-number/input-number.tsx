@@ -11,6 +11,7 @@ import ArcoInput from '../input';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
+import { getKeyDownHandler, KEYBOARD_KEY } from '../_utils/keyboard';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -270,14 +271,7 @@ export default defineComponent({
       }
     };
 
-    const handleStepButton = (
-      event: Event,
-      method: StepMethods,
-      needRepeat = false
-    ) => {
-      event.preventDefault();
-      inputRef.value?.focus();
-
+    const nextStep = (method: StepMethods, event: Event) => {
       if (
         mergedDisabled.value ||
         (method === 'plus' && isMax.value) ||
@@ -297,6 +291,17 @@ export default defineComponent({
       updateNumberStatus(nextValue);
       emit('update:modelValue', nextValue);
       emit('change', nextValue, event);
+    };
+
+    const handleStepButton = (
+      event: Event,
+      method: StepMethods,
+      needRepeat = false
+    ) => {
+      event.preventDefault();
+      inputRef.value?.focus();
+
+      nextStep(method, event);
 
       // 长按时持续触发
       if (needRepeat) {
@@ -349,6 +354,25 @@ export default defineComponent({
       emit('clear', ev);
     };
 
+    const onKeyDown = getKeyDownHandler(
+      new Map([
+        [
+          KEYBOARD_KEY.ARROW_UP,
+          (ev: Event) => {
+            ev.preventDefault();
+            nextStep('plus', ev);
+          },
+        ],
+        [
+          KEYBOARD_KEY.ARROW_DOWN,
+          (ev: Event) => {
+            ev.preventDefault();
+            nextStep('minus', ev);
+          },
+        ],
+      ])
+    );
+
     watch(
       () => props.modelValue,
       (value: number | undefined) => {
@@ -373,6 +397,7 @@ export default defineComponent({
               },
             ]}
             type="button"
+            tabindex="-1"
             disabled={mergedDisabled.value || isMax.value}
             onMousedown={(e) => handleStepButton(e, 'plus', true)}
             onMouseup={clearRepeatTimer}
@@ -389,6 +414,7 @@ export default defineComponent({
               },
             ]}
             type="button"
+            tabindex="-1"
             disabled={mergedDisabled.value || isMin.value}
             onMousedown={(e) => handleStepButton(e, 'minus', true)}
             onMouseup={clearRepeatTimer}
@@ -409,6 +435,7 @@ export default defineComponent({
       return (
         <ArcoButton
           size={mergedSize.value}
+          tabindex="-1"
           v-slots={{ icon: () => <IconMinus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMin.value}
@@ -424,6 +451,7 @@ export default defineComponent({
       return (
         <ArcoButton
           size={mergedSize.value}
+          tabindex="-1"
           v-slots={{ icon: () => <IconPlus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMax.value}
@@ -475,6 +503,8 @@ export default defineComponent({
           onBlur={handleBlur}
           onClear={handleClear}
           onChange={handleChange}
+          // @ts-ignore
+          onKeydown={onKeyDown}
         />
       );
     };
