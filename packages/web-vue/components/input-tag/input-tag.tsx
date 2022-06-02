@@ -390,6 +390,10 @@ export default defineComponent({
 
     const handleBlur = (ev: FocusEvent) => {
       _focused.value = false;
+      if (computedInputValue.value) {
+        emit('inputValueChange', '', ev);
+        updateInputValue('');
+      }
       emit('blur', ev);
       eventHandlers.value?.onBlur?.(ev);
     };

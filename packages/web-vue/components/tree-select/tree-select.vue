@@ -11,6 +11,7 @@
     :disabled="mergedDisabled"
     :popup-visible="panelVisible"
     :popup-container="popupContainer"
+    :click-to-close="!allowSearch"
     auto-fit-transform-origin
     @popupVisibleChange="onVisibleChange"
   >
@@ -19,7 +20,7 @@
         ref="refSelectView"
         :model-value="selectViewValue"
         :input-value="searchValue"
-        :allow-search="allowSearch"
+        :allow-search="Boolean(allowSearch)"
         :allow-clear="allowClear"
         :loading="loading"
         :size="size"
@@ -91,6 +92,7 @@ import {
   ref,
   toRefs,
   StyleValue,
+  watch,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue } from './interface';
@@ -107,7 +109,7 @@ import {
   TreeNodeKey,
   Node,
 } from '../tree/interface';
-import { isUndefined, isFunction } from '../_utils/is';
+import { isUndefined, isFunction, isObject } from '../_utils/is';
 import Empty from '../empty';
 import useFilterTreeNode from './hooks/use-filter-tree-node';
 import Spin from '../spin';
@@ -119,6 +121,7 @@ import {
   isNodeCheckable,
 } from '../tree/utils/check-utils';
 import { isNodeSelectable } from '../tree/utils';
+import { Data } from '../_utils/types';
 
 export default defineComponent({
   name: 'TreeSelect',
@@ -171,9 +174,13 @@ export default defineComponent({
     /**
      * @zh 是否允许搜索
      * @en Whether to allow searching
+     * @defaultValue false (single) \| true (multiple)
      * */
     allowSearch: {
-      type: Boolean,
+      type: [Boolean, Object] as PropType<
+        boolean | { retainInputValue?: boolean }
+      >,
+      default: (props: Data) => Boolean(props.multiple),
     },
     /**
      * @zh 是否允许清除
@@ -188,14 +195,6 @@ export default defineComponent({
      * */
     placeholder: {
       type: String,
-    },
-    /**
-     * @zh 是否在搜索框聚焦时保留现有内容
-     * @en Whether to keep existing content when the search box is focused
-     * */
-    retainInputValue: {
-      type: Boolean,
-      default: true,
     },
     /**
      * @zh 最多显示的标签数量，仅在多选模式有效
@@ -483,6 +482,11 @@ export default defineComponent({
     const isCheckable = computed(() =>
       treeCheckable.value ? isSelectable : false
     );
+    const retainInputValue = computed(
+      () =>
+        isObject(props.allowSearch) &&
+        Boolean(props.allowSearch.retainInputValue)
+    );
     const { flattenTreeData, key2TreeNode } = useTreeData(
       reactive({
         treeData: data,
@@ -592,6 +596,13 @@ export default defineComponent({
       treeProps?.value?.virtualListProps ? { 'max-height': 'unset' } : {},
     ]);
 
+    // clear input value when close dropdown
+    watch(panelVisible, (visible) => {
+      if (!visible && !retainInputValue.value && searchValue.value) {
+        searchValue.value = '';
+      }
+    });
+
     return {
       refSelectView,
       prefixCls,
@@ -607,9 +618,11 @@ export default defineComponent({
       selectViewValue,
       computedDropdownStyle,
       onSearchValueChange(newVal: string) {
-        setPanelVisible(true);
-        searchValue.value = newVal;
-        emit('search', newVal);
+        if (newVal && newVal !== searchValue.value) {
+          setPanelVisible(true);
+          searchValue.value = newVal;
+          emit('search', newVal);
+        }
       },
       onSelectChange(newVal: string[]) {
         setSelectedKeys(newVal);
