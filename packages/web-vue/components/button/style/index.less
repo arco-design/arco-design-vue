@@ -105,6 +105,10 @@
       border-color: ~'@{btn-@{type}-color-border_hover}';
     }
 
+    &:focus {
+      box-shadow: 0 0 0 @btn-box-shadow-radius ~'@{btn-@{type}-color-box-shadow}';
+    }
+
     &:active {
       color: ~'@{btn-@{type}-color-text_active}';
       background-color: ~'@{btn-@{type}-color-bg_active}';
@@ -138,6 +142,10 @@
       color: ~'@{btn-@{type}-color-text_@{status}_hover}';
       background-color: ~'@{btn-@{type}-color-bg_@{status}_hover}';
       border-color: ~'@{btn-@{type}-color-border_@{status}_hover}';
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 @btn-box-shadow-radius ~'@{btn-color-box-shadow_@{status}}';
     }
 
     &:active {
