@@ -167,7 +167,8 @@ export default defineComponent({
 
     const handleScroll = (e: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
-      const bottom = scrollHeight - (scrollTop + offsetHeight);
+      const bottom = Math.floor(scrollHeight - (scrollTop + offsetHeight));
+
       if (bottom <= props.bottomOffset) {
         emit('reachBottom');
       }
