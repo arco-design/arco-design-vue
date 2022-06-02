@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 BugFix
+
+- Fixed an issue where reachBottom would not trigger in some cases ([#1228](https://github.com/arco-design/arco-design-vue/pull/1228))
+
+
 ## 2.27.0
 
 `2022-05-13`

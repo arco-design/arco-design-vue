@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 BugFix
+
+- Fix the problem that the child component uses the key to fail ([#1223](https://github.com/arco-design/arco-design-vue/pull/1223))
+
+
 ## 2.25.1
 
 `2022-04-27`

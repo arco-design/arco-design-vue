@@ -61,6 +61,11 @@ export default defineComponent({
       default: false,
     },
   },
+  /**
+   * @zh 选项卡标题
+   * @en Tab title
+   * @slot title
+   */
   setup(props, { slots }) {
     const { title, disabled, closable } = toRefs(props);
     const instance = getCurrentInstance();

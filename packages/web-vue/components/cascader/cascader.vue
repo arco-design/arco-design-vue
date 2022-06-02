@@ -284,6 +284,10 @@ export default defineComponent({
      * @en Placeholder
      */
     placeholder: String,
+    /**
+     * @zh 自定义选项过滤方法
+     * @en Custom options filter method
+     */
     filterOption: {
       type: Function as PropType<
         (inputValue: string, option: CascaderOption) => boolean

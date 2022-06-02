@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 Enhancement
+
+- No longer blocks right-click default events by default ([#1231](https://github.com/arco-design/arco-design-vue/pull/1231))
+
+
 ## 2.27.0
 
 `2022-05-13`

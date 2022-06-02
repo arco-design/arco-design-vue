@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 Enhancement
+
+- When the component is out of focus in search mode, the input value will be cleared by default ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+
+
 ## 2.29.0
 
 `2022-05-27`

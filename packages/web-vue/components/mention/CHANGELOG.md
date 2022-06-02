@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 BugFix
+
+- Fix missing textarea styles when loading on demand ([#1227](https://github.com/arco-design/arco-design-vue/pull/1227))
+
+
 ## 2.29.0
 
 `2022-05-27`

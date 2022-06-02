@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 Enhancement
+
+- When out of focus, the input value will be cleared by default ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+
+
 ## 2.22.0
 
 `2022-04-01`

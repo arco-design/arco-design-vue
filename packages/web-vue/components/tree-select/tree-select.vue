@@ -35,6 +35,7 @@
         @inputValueChange="onSearchValueChange"
         @clear="onInnerClear"
         @remove="onItemRemove"
+        @blur="onBlur"
       >
         <template v-if="$slots.prefix" #prefix>
           <slot name="prefix" />
@@ -596,12 +597,11 @@ export default defineComponent({
       treeProps?.value?.virtualListProps ? { 'max-height': 'unset' } : {},
     ]);
 
-    // clear input value when close dropdown
-    watch(panelVisible, (visible) => {
-      if (!visible && !retainInputValue.value && searchValue.value) {
+    const onBlur = () => {
+      if (!retainInputValue.value && searchValue.value) {
         searchValue.value = '';
       }
-    });
+    };
 
     return {
       refSelectView,
@@ -618,7 +618,7 @@ export default defineComponent({
       selectViewValue,
       computedDropdownStyle,
       onSearchValueChange(newVal: string) {
-        if (newVal && newVal !== searchValue.value) {
+        if (newVal !== searchValue.value) {
           setPanelVisible(true);
           searchValue.value = newVal;
           emit('search', newVal);
@@ -640,6 +640,7 @@ export default defineComponent({
       pickSubCompSlots,
       isSelectable,
       isCheckable,
+      onBlur,
       onItemRemove(id: string) {
         if (mergedDisabled.value) return;
         const node = key2TreeNode.value.get(id);

@@ -69,5 +69,10 @@ description: Organize content in the same view. You can view the content of one 
 |disabled|Whether to disable|`boolean`|`false`||
 |closable|Whether to allow this tab to be closed (only effective in editable mode)|`boolean`|`true`||
 |destroy-on-hide|Whether to destroy the content when the label is not displayed|`boolean`|`false`|2.27.0|
+### `<tab-pane>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|title|Tab title|-|
 
 

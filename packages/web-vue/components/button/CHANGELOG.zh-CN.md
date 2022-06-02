@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 功能优化
+
+- 增加 focus 样式 ([#1229](https://github.com/arco-design/arco-design-vue/pull/1229))
+
+
 ## 2.24.1
 
 `2022-04-16`

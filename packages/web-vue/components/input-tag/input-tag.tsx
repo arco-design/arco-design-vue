@@ -24,7 +24,7 @@ import ResizeObserver from '../_components/resize-observer';
 import FeedbackIcon from '../_components/feedback-icon.vue';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
-import { isNull, isUndefined } from '../_utils/is';
+import { isNull, isObject, isUndefined } from '../_utils/is';
 
 const DEFAULT_FIELD_NAMES = {
   value: 'value',
@@ -122,11 +122,13 @@ export default defineComponent({
       default: 0,
     },
     /**
-     * @zh 创建标签后是否保留输入框的内容
-     * @en Whether to keep the content of the input box after creating the label
+     * @zh 是否保留输入框的内容
+     * @en Whether to keep the content of the input box
      */
     retainInputValue: {
-      type: Boolean,
+      type: [Boolean, Object] as PropType<
+        boolean | { create?: boolean; blur?: boolean }
+      >,
       default: false,
     },
     /**
@@ -238,6 +240,20 @@ export default defineComponent({
     const _inputValue = ref(props.defaultInputValue);
     const isComposition = ref(false);
     const compositionValue = ref('');
+
+    const retainInputValue = computed(() => {
+      if (isObject(props.retainInputValue)) {
+        return {
+          create: false,
+          blur: false,
+          ...props.retainInputValue,
+        };
+      }
+      return {
+        create: props.retainInputValue,
+        blur: props.retainInputValue,
+      };
+    });
 
     const inputStyle = reactive({
       width: '12px',
@@ -374,7 +390,7 @@ export default defineComponent({
         const newValue = computedValue.value.concat(computedInputValue.value);
         updateValue(newValue, e);
 
-        if (!props.retainInputValue) {
+        if (!retainInputValue.value.create) {
           _inputValue.value = '';
           emit('update:inputValue', '');
           emit('inputValueChange', '', e);
@@ -390,7 +406,7 @@ export default defineComponent({
 
     const handleBlur = (ev: FocusEvent) => {
       _focused.value = false;
-      if (computedInputValue.value) {
+      if (!retainInputValue.value.blur && computedInputValue.value) {
         emit('inputValueChange', '', ev);
         updateInputValue('');
       }

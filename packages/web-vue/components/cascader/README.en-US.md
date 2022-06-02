@@ -59,6 +59,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |expand-trigger|Expand the trigger method of the next level|`'click' \| 'hover'`|`'click'`||
 |default-popup-visible|Whether to display the dropdown by default (uncontrolled state)|`boolean`|`false`||
 |placeholder|Placeholder|`string`|`-`||
+|filter-option|Custom options filter method|`(inputValue: string, option: CascaderOption) => boolean`|`-`||
 |popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`||
 |max-tag-count|In multi-select mode, the maximum number of labels displayed. 0 means unlimited|`number`|`0`||
 |format-label|Format display content|`(options: CascaderOption[]) => string`|`-`||

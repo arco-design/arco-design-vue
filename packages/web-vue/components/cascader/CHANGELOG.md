@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 BugFix
+
+- Fix the problem that the value of the number type fails to match ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+
+### 💎 Enhancement
+
+- cascader-panel adds keyboard events ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+
+
 ## 2.29.0
 
 `2022-05-27`

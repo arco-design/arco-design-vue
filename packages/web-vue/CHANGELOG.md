@@ -2,6 +2,28 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 BugFix
+
+- **list:** Fixed an issue where reachBottom would not trigger in some cases ([#1228](https://github.com/arco-design/arco-design-vue/pull/1228))
+- **mention:** Fix missing textarea styles when loading on demand ([#1227](https://github.com/arco-design/arco-design-vue/pull/1227))
+- **space:** Fix the problem that the child component uses the key to fail ([#1223](https://github.com/arco-design/arco-design-vue/pull/1223))
+
+### 💎 Enhancement
+
+- Virtual lists reduce unnecessary height calculations and prevent jitter ([#1233](https://github.com/arco-design/arco-design-vue/pull/1233))
+- **tree-select:** When the component is out of focus in search mode, the input value will be cleared by default ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+- **input-tag:** When out of focus, the input value will be cleared by default ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+- **trigger:** No longer blocks right-click default events by default ([#1231](https://github.com/arco-design/arco-design-vue/pull/1231))
+- **cascader:** cascader-panel adds keyboard events ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+- **cascader:** Fix the problem that the value of the number type fails to match ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+- **button:** Add focus style ([#1229](https://github.com/arco-design/arco-design-vue/pull/1229))
+- **input-number:** Add keyboard event, show step button when focused ([#1224](https://github.com/arco-design/arco-design-vue/pull/1224))
+
+
 ## 2.29.0
 
 `2022-05-27`

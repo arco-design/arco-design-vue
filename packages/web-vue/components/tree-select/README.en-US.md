@@ -50,10 +50,9 @@ description: The tree structure data can be selected.
 |error|Whether it is an error state|`boolean`|`false`||
 |size|The size of the selection box.|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |border|Whether to show the border|`boolean`|`false`||
-|allow-search|Whether to allow searching|`boolean`|`false`||
+|allow-search|Whether to allow searching|`boolean \| { retainInputValue?: boolean }`|`false (single) \| true (multiple)`||
 |allow-clear|Whether to allow clear|`boolean`|`false`||
 |placeholder|Prompt copy|`string`|`-`||
-|retain-input-value|Whether to keep existing content when the search box is focused|`boolean`|`true`||
 |max-tag-count|The maximum number of labels displayed, only valid in multi-select mode|`number`|`-`||
 |multiple|Whether to support multiple selection|`boolean`|`false`||
 |default-value|Default value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`||
