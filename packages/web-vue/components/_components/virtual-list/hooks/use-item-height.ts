@@ -1,5 +1,5 @@
 import { computed, ref, watch, toRefs } from 'vue';
-import { InternalDataItem, Key } from '../interface';
+import { InternalDataItem, VirtualItemKey } from '../interface';
 
 // 默认的元素高度
 const DEFAULT_ITEM_HEIGHT = 32;
@@ -9,19 +9,15 @@ export function useItemHeight(props: {
   data: InternalDataItem[];
 }) {
   const { estimatedItemHeight: propEstimatedItemHeight, data } = toRefs(props);
-  const itemHeightCacheMap = ref<{
-    [key: string]: number;
-  }>({});
+  const itemHeightCacheMap = ref<Map<VirtualItemKey, number>>(new Map());
   const estimatedItemHeight = ref(propEstimatedItemHeight?.value);
 
   // 利用第一批显示的元素计算预估高度：取平均值
-  const itemLength = computed(
-    () => Object.keys(itemHeightCacheMap.value).length
-  );
+  const itemLength = computed(() => itemHeightCacheMap.value.size);
   watch(itemLength, () => {
     if (itemLength.value && !estimatedItemHeight.value) {
       estimatedItemHeight.value =
-        Object.entries(itemHeightCacheMap.value).reduce(
+        [...itemHeightCacheMap.value.entries()].reduce(
           (sum, [, height]) => sum + height,
           0
         ) / itemLength.value;
@@ -32,29 +28,29 @@ export function useItemHeight(props: {
     () => estimatedItemHeight.value || DEFAULT_ITEM_HEIGHT
   );
 
+  // 只计算一次最小高度，避免抖动
   const minItemHeight = computed(() =>
-    Math.min(...Object.values(itemHeightCacheMap.value), itemHeight.value)
+    Math.min(itemHeight.value, DEFAULT_ITEM_HEIGHT)
   );
 
-  const totalHeight = computed(() =>
-    data.value.reduce((sum, { key }) => sum + getItemHeightOrDefault(key), 0)
-  );
+  // 总高度只需要一个范围，无需准确值
+  const totalHeight = computed(() => itemHeight.value * data.value.length);
 
-  function setItemHeight(key: Key, height: number) {
-    itemHeightCacheMap.value[key] = height;
+  function setItemHeight(key: VirtualItemKey, height: number) {
+    itemHeightCacheMap.value.set(key, height);
   }
 
-  function getItemHeight(key: Key) {
-    return itemHeightCacheMap.value[key];
+  function getItemHeight(key: VirtualItemKey) {
+    return itemHeightCacheMap.value.get(key);
   }
 
-  function getItemHeightOrDefault(key: Key) {
-    return itemHeightCacheMap.value[key] || itemHeight.value;
+  function getItemHeightOrDefault(key: VirtualItemKey) {
+    return itemHeightCacheMap.value.get(key) || itemHeight.value;
   }
 
   function getItemHeightByIndex(index: number) {
     const { key } = data.value[index];
-    return itemHeightCacheMap.value[key];
+    return itemHeightCacheMap.value.get(key);
   }
 
   function getItemHeightOrDefaultByIndex(index: number) {

@@ -1,6 +1,6 @@
 // https://github.com/react-component/virtual-list/blob/master/src/utils/algorithmUtil.ts
 
-import { Key } from '../interface';
+import { VirtualItemKey } from '../interface';
 
 /**
  * Get index with specific start index one by one. e.g.
@@ -48,7 +48,7 @@ export function getIndexByStartLoc(
 export function findListDiffIndex<T>(
   originList: T[],
   targetList: T[],
-  getKey: (item: T, index: number) => Key
+  getKey: (item: T, index: number) => VirtualItemKey
 ): { index: number; multiple: boolean } | null {
   const originLen = originList.length;
   const targetLen = targetList.length;
