@@ -588,7 +588,7 @@ export default defineComponent({
 
     // clear input value when close dropdown
     watch(computedPopupVisible, (visible) => {
-      if (!visible && !retainInputValue.value) {
+      if (!visible && !retainInputValue.value && computedInputValue.value) {
         updateInputValue('');
       }
     });
