@@ -554,7 +554,6 @@ export default defineComponent({
 
     const handleContextmenu = (e: MouseEvent) => {
       (attrs as any).onContextmenu?.(e);
-      e.preventDefault();
       if (
         props.disabled ||
         !triggerMethods.value.includes('contextMenu') ||
@@ -564,6 +563,7 @@ export default defineComponent({
       }
       updateMousePosition(e);
       changeVisible(!computedVisible.value);
+      e.preventDefault();
     };
 
     const addChildRef = (ref: any) => {
