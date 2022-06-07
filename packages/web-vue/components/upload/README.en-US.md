@@ -54,7 +54,7 @@ description: Users can transfer files or submit corresponding content.
 |draggable|Whether to support drag and drop upload|`boolean`|`false`||
 |tip|Prompt text|`string`|`-`||
 |headers|Additional header information for upload request|`Record<string, string>`|`-`||
-|data|Upload request additional data|`Record<string, string \| Blob>\| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`||
+|data|Upload request additional data|`Record<string, string \| Blob>\| ((fileItem: FileItem \| FileItem[]) => Record<string, string \| Blob>)`|`-`||
 |name|Uploaded file name|`string \| ((fileItem: FileItem) => string)`|`-`||
 |with-credentials|Whether the upload request carries cookies|`boolean`|`false`||
 |custom-request|Custom upload behavior|`(option: RequestOption) => UploadRequest`|`-`||
@@ -74,16 +74,17 @@ description: Users can transfer files or submit corresponding content.
 |on-before-upload|Trigger before uploading a picture|`(file: File) => Promise<boolean \| File>`|`-`||
 |on-before-remove|Triggered before removing the picture|`(fileItem: FileItem) => Promise<boolean>`|`-`||
 |on-button-click|Click the upload button to trigger (if the Promise is returned, the default input upload will be closed)|`(event: Event) => Promise<FileList> \| void`|`-`||
+|bundle-upload|Whether to enable bundled upload|`boolean`|`false`||
 ### `<upload>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
 |exceed-limit|Triggered when the uploaded image exceeds the limit|fileList: `FileItem[]`<br>files: `File[]`|
-|change|Triggered when the status of the uploaded image changes|fileList: `FileItem[]`<br>fileItem: `fileItem`|
+|change|Triggered when the status of the uploaded image changes|fileList: `FileItem[]`<br>fileItem: `union`|
 |progress|Triggered when the uploading image progress changes|fileItem: `fileItem`<br>ev: `ProgressEvent`|
 |preview|Trigger when the image preview is clicked|fileItem: `FileItem`|
-|success|Triggered when upload is successful|fileItem: `FileItem`|
-|error|Triggered when upload fails|fileItem: `FileItem`|
+|success|Triggered when upload is successful|fileItem: `union`|
+|error|Triggered when upload fails|fileItem: `union`|
 ### `<upload>` Methods
 
 |Method|Description|Parameters|Return|
@@ -148,8 +149,8 @@ description: Users can transfer files or submit corresponding content.
 |action|Uploaded URL|`string`|`-`|
 |headers|Header information of the request message|`Record<string, string>`|`-`|
 |name|File name of the uploaded file|`string \| ((fileItem: FileItem) => string)`|`-`|
-|fileItem|upload files|`FileItem`|`-`|
-|data|Additional requested information|`Record<string, string \| Blob>    \| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`|
+|fileItem|upload files|`FileItem \| FileItem[]`|`-`|
+|data|Additional requested information|`Record<string, string \| Blob>    \| ((fileItem: FileItem \| FileItem[]) => Record<string, string \| Blob>)`|`-`|
 |withCredentials|Whether to carry cookie information|`boolean`|`false`|
 |onProgress|Update the upload progress of the current file. percent: current upload progress percentage|`(percent: number, event?: ProgressEvent) => void`|`-`|
 |onSuccess|After the upload is successful, call the onSuccess method, the incoming response parameter will be appended to the response field of the currently uploaded file|`(response?: any) => void`|`-`|

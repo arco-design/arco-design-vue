@@ -73,8 +73,7 @@ export const uploadRequest = ({
   onSuccess = NOOP,
   onError = NOOP,
 }: RequestOption): UploadRequest => {
-  const name = getValue(originName, fileItem) || 'file';
-  const data = getValue(originData, fileItem);
+  const data = isFunction(originData) ? originData(fileItem) : originData;
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
     xhr.withCredentials = true;
@@ -97,7 +96,15 @@ export const uploadRequest = ({
   };
 
   const formData = new FormData();
-  if (fileItem.file) {
+  if (isArray(fileItem)) {
+    for (const item of fileItem) {
+      if (item.file) {
+        const name = getValue(originName, item) || 'file';
+        formData.append(name, item.file);
+      }
+    }
+  } else if (fileItem.file) {
+    const name = getValue(originName, fileItem) || 'file';
     formData.append(name, fileItem.file);
   }
   if (data) {
