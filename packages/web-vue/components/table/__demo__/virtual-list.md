@@ -32,6 +32,8 @@ export default {
       {
         title: 'Name',
         dataIndex: 'name',
+        fixed: 'left',
+        width: 140
       },
       {
         title: 'Address',

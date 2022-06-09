@@ -32,15 +32,19 @@ description: 用于数据收集展示、分析整理、操作处理。
 
 @import ./__demo__/span.md
 
+@import ./__demo__/sticky.md
+
 @import ./__demo__/summary.md
 
-@import ./__demo__/column-resize.md
+@import ./__demo__/resize.md
 
 @import ./__demo__/drag-row.md
 
 @import ./__demo__/drag-handle.md
 
 @import ./__demo__/group.md
+
+@import ./__demo__/fixed-group.md
 
 @import ./__demo__/editable.md
 
@@ -238,6 +242,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
 |headerCellStyle|自定义表头单元格样式|`CSSProperties`|`-`|2.29.0|
 |bodyCellStyle|自定义内容单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
+|footerCellStyle|自定义总结栏单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
 |titleSlotName|设置当前列的标题的渲染插槽的名字|`string`|`-`|2.23.0|

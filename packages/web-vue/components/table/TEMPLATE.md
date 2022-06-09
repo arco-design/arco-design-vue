@@ -43,15 +43,19 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/span.md
 
+@import ./__demo__/sticky.md
+
 @import ./__demo__/summary.md
 
-@import ./__demo__/column-resize.md
+@import ./__demo__/resize.md
 
 @import ./__demo__/drag-row.md
 
 @import ./__demo__/drag-handle.md
 
 @import ./__demo__/group.md
+
+@import ./__demo__/fixed-group.md
 
 @import ./__demo__/editable.md
 

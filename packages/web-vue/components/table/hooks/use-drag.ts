@@ -1,6 +1,17 @@
-import { reactive } from 'vue';
+import { computed, reactive, Ref } from 'vue';
+import { TableDraggable } from '../interface';
 
-export const useDrag = () => {
+export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {
+  const dragType = computed(() => {
+    if (draggable.value) {
+      if (draggable.value.type === 'handle') {
+        return 'handle';
+      }
+      return 'row';
+    }
+    return undefined;
+  });
+
   const dragState = reactive({
     dragging: false,
     sourceKey: '',
@@ -67,6 +78,7 @@ export const useDrag = () => {
   };
 
   return {
+    dragType,
     dragState,
     handleDragStart,
     handleDragEnter,

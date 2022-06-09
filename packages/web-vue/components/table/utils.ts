@@ -48,6 +48,20 @@ const getTotalHeaderRows = (columns: TableColumnData[]): number => {
   return count;
 };
 
+const setParentFixed = (column: TableColumnData, fixed: 'left' | 'right') => {
+  let { parent } = column;
+  while (parent) {
+    if (parent.fixed === fixed) {
+      if (fixed === 'left') {
+        parent.isLastLeftFixed = true;
+      } else {
+        parent.isFirstRightFixed = true;
+      }
+    }
+    parent = parent.parent;
+  }
+};
+
 // Get the grouped header row data
 export const getGroupColumns = (
   columns: TableColumnData[],
@@ -67,18 +81,29 @@ export const getGroupColumns = (
 
   const travelColumns = (
     columns: TableColumnData[],
-    level = 0,
-    fixed?: 'left' | 'right'
+    {
+      level = 0,
+      parent,
+      fixed,
+    }: {
+      level?: number;
+      parent?: TableColumnData;
+      fixed?: 'left' | 'right';
+    } = {}
   ) => {
     for (const item of columns) {
-      const cell: TableColumnData = { ...item };
+      const cell: TableColumnData = { ...item, parent };
       if (isArray(cell.children)) {
         const colSpan = getDataColumnsNumber(cell.children);
         if (colSpan > 1) {
           cell.colSpan = colSpan;
         }
         groupColumns[level].push(cell);
-        travelColumns(cell.children, level + 1, cell.fixed);
+        travelColumns(cell.children, {
+          level: level + 1,
+          parent: cell,
+          fixed: cell.fixed,
+        });
       } else {
         // Minimum header
         const rowSpan = totalHeaderRows - level;
@@ -110,9 +135,11 @@ export const getGroupColumns = (
 
   if (!isUndefined(lastLeftFixedIndex)) {
     dataColumns[lastLeftFixedIndex].isLastLeftFixed = true;
+    setParentFixed(dataColumns[lastLeftFixedIndex], 'left');
   }
   if (!isUndefined(firstRightFixedIndex)) {
     dataColumns[firstRightFixedIndex].isFirstRightFixed = true;
+    setParentFixed(dataColumns[firstRightFixedIndex], 'right');
   }
 
   return { dataColumns, groupColumns };
@@ -147,6 +174,18 @@ export const getOperationFixedNumber = (
   return count;
 };
 
+const getFirstDataColumn = (column: TableColumnData): TableColumnData => {
+  if (column.children && column.children.length > 0)
+    return getFirstDataColumn(column.children[0]);
+  return column;
+};
+
+const getLastDataColumn = (column: TableColumnData): TableColumnData => {
+  if (column.children && column.children.length > 0)
+    return getFirstDataColumn(column.children[column.children.length - 1]);
+  return column;
+};
+
 // Get the location data of a fixed column
 export const getFixedNumber = (
   column: TableColumnData,
@@ -164,19 +203,20 @@ export const getFixedNumber = (
     for (const item of operations) {
       count += item.width ?? 40;
     }
-
+    const first = getFirstDataColumn(column);
     for (const item of dataColumns) {
-      if (column.dataIndex === item.dataIndex) {
+      if (first.dataIndex === item.dataIndex) {
         break;
       }
-      count += item.width as number;
+      count += item.width ?? 0;
     }
     return count;
   }
 
+  const last = getLastDataColumn(column);
   for (let i = dataColumns.length - 1; i > 0; i--) {
     const item = dataColumns[i];
-    if (column.dataIndex === item.dataIndex) {
+    if (last.dataIndex === item.dataIndex) {
       break;
     }
 

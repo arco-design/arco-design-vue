@@ -851,7 +851,7 @@ exports[`<tree> demo: render [virtual] correctly 1`] = `
 </button>
 <div class=\\"arco-tree arco-tree-checkable arco-tree-size-medium\\">
   <div style=\\"overflow-y: auto; max-height: 200px;\\">
-    <div style=\\"height: 35520px; position: relative; overflow: hidden; z-index: 0;\\">
+    <div style=\\"height: 35520px; position: relative; z-index: 0;\\">
       <div style=\\"display: flex; flex-direction: column; transform: translateY(0px); position: absolute; left: 0px; right: 0px; top: 0px;\\">
         <div class=\\"arco-tree-node arco-tree-node-expanded\\">
           <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"></span><!-- switcher --><span class=\\"arco-tree-node-switcher arco-tree-node-switcher-expanded\\"><span class=\\"arco-icon-hover arco-tree-node-icon-hover\\"><span class=\\"arco-tree-node-switcher-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
