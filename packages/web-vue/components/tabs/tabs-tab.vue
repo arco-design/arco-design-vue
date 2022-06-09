@@ -1,5 +1,5 @@
 <template>
-  <div :class="cls" @click="handleClick">
+  <div tabindex="0" :class="cls" @click="handleClick" @keydown="onKeyDown">
     <span :class="`${prefixCls}-title`">
       <slot />
     </span>
@@ -45,6 +45,12 @@ export default defineComponent({
       }
     };
 
+    const onKeyDown = (ev: KeyboardEvent) => {
+      if (ev.key === 'Enter') {
+        handleClick(ev);
+      }
+    };
+
     const handleDelete = (e: Event) => {
       if (!props.tab.disabled) {
         emit('delete', props.tab.key, e);
@@ -64,6 +70,7 @@ export default defineComponent({
       prefixCls,
       cls,
       handleClick,
+      onKeyDown,
       handleDelete,
     };
   },
