@@ -5,10 +5,10 @@ import { TableDataWithRaw } from './interface';
 export default defineComponent({
   name: 'Tr',
   props: {
-    isExpandRow: {
+    expand: {
       type: Boolean,
     },
-    isEmptyRow: {
+    empty: {
       type: Boolean,
     },
     checked: {
@@ -26,8 +26,8 @@ export default defineComponent({
     const cls = computed(() => [
       `${prefixCls}-tr`,
       {
-        [`${prefixCls}-tr-expand`]: props.isExpandRow,
-        [`${prefixCls}-tr-empty`]: props.isEmptyRow,
+        [`${prefixCls}-tr-expand`]: props.expand,
+        [`${prefixCls}-tr-empty`]: props.empty,
         [`${prefixCls}-tr-checked`]: props.checked,
       },
     ]);

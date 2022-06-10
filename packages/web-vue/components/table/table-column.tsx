@@ -108,6 +108,16 @@ export default defineComponent({
       >,
     },
     /**
+     * @zh 自定义总结栏单元格样式
+     * @en Customize summary column cell styles
+     * @version 2.30.0
+     */
+    summaryCellStyle: {
+      type: [Object, Function] as PropType<
+        CSSProperties | ((record: TableData) => CSSProperties)
+      >,
+    },
+    /**
      * @zh 用于手动指定选项的 index。2.26.0 版本后不再需要手动指定
      * @en index for manually specifying option. Manual specification is no longer required after version 2.26.0
      * @version 2.20.2
@@ -162,6 +172,7 @@ export default defineComponent({
     const cellStyle = usePureProp(props, 'cellStyle');
     const headerCellStyle = usePureProp(props, 'headerCellStyle');
     const bodyCellStyle = usePureProp(props, 'bodyCellStyle');
+    const summaryCellStyle = usePureProp(props, 'summaryCellStyle');
     const tooltip = usePureProp(props, 'tooltip');
 
     const instance = getCurrentInstance();
@@ -213,6 +224,7 @@ export default defineComponent({
       cellStyle,
       headerCellStyle,
       bodyCellStyle,
+      summaryCellStyle,
       index,
       tooltip,
       children: childrenColumns,

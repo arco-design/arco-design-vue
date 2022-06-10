@@ -214,10 +214,9 @@ export default defineComponent({
     const cellCls = computed(() => {
       const cls: any[] = [
         `${prefixCls}-cell`,
-        {
-          [`${prefixCls}-cell-text-ellipsis`]:
-            props.column?.ellipsis && !props.column?.tooltip,
-        },
+        `${prefixCls}-cell-align-${
+          props.column?.align ?? props.column.children ? 'center' : 'left'
+        }`,
       ];
 
       if (hasSorter.value) {
@@ -267,7 +266,14 @@ export default defineComponent({
             {renderTitle()}
           </AutoTooltip>
         ) : (
-          <span class={`${prefixCls}-th-title`}>{renderTitle()}</span>
+          <span
+            class={[
+              `${prefixCls}-th-title`,
+              { [`${prefixCls}-text-ellipsis`]: props.column?.ellipsis },
+            ]}
+          >
+            {renderTitle()}
+          </span>
         )}
         {hasSorter.value && (
           <span class={`${prefixCls}-sorter`}>
@@ -312,7 +318,6 @@ export default defineComponent({
 
     const cls = computed(() => [
       `${prefixCls}-th`,
-      `${prefixCls}-th-align-${props.column?.align ?? 'left'}`,
       {
         [`${prefixCls}-col-sorted`]: Boolean(sortOrder.value),
         [`${prefixCls}-th-resizing`]: resizing.value,

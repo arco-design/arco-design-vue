@@ -82,6 +82,10 @@ export default defineComponent({
         (record: TableDataWithRaw, stopPropagation?: boolean) => VNode
       >,
     },
+    summary: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('table');
@@ -114,7 +118,6 @@ export default defineComponent({
 
     const cls = computed(() => [
       `${prefixCls}-td`,
-      `${prefixCls}-td-align-${props.column?.align ?? 'left'}`,
       {
         [`${prefixCls}-col-sorted`]: isSorted.value,
         [`${prefixCls}-td-resizing`]: resizing.value,
@@ -122,20 +125,29 @@ export default defineComponent({
       ...getFixedCls(prefixCls, props.column),
     ]);
 
-    const cellStyle = computed(() => {
-      const bodyStyle = isFunction(props.column?.bodyCellStyle)
+    const getCustomStyle = () => {
+      if (props.summary) {
+        return isFunction(props.column?.summaryCellStyle)
+          ? props.column.summaryCellStyle(props.record?.raw)
+          : props.column?.summaryCellStyle;
+      }
+      return isFunction(props.column?.bodyCellStyle)
         ? props.column.bodyCellStyle(props.record?.raw)
         : props.column?.bodyCellStyle;
+    };
+
+    const cellStyle = computed(() => {
+      const customStyle = getCustomStyle();
       if (props.isFixedExpand && props.containerWidth) {
         return {
           width: `${props.containerWidth}px`,
           ...props.column?.cellStyle,
-          ...bodyStyle,
+          ...customStyle,
         };
       }
       return {
         ...props.column?.cellStyle,
-        ...bodyStyle,
+        ...customStyle,
       };
     });
 
@@ -191,11 +203,10 @@ export default defineComponent({
         <span
           class={[
             `${prefixCls}-cell`,
+            `${prefixCls}-cell-align-${props.column?.align ?? 'left'}`,
             {
               [`${prefixCls}-cell-fixed-expand`]: props.isFixedExpand,
               [`${prefixCls}-cell-expand-icon`]: props.showExpandBtn,
-              [`${prefixCls}-cell-text-ellipsis`]:
-                props.column?.ellipsis && !props.column?.tooltip,
             },
           ]}
           style={cellStyle.value}
@@ -217,11 +228,23 @@ export default defineComponent({
             </span>
           )}
           {props.column?.ellipsis && props.column?.tooltip ? (
-            <AutoTooltip tooltipProps={tooltipProps.value}>
+            <AutoTooltip
+              class={`${prefixCls}-td-content`}
+              tooltipProps={tooltipProps.value}
+            >
               {renderContent()}
             </AutoTooltip>
           ) : (
-            renderContent()
+            <span
+              class={[
+                `${prefixCls}-td-content`,
+                {
+                  [`${prefixCls}-text-ellipsis`]: props.column?.ellipsis,
+                },
+              ]}
+            >
+              {renderContent()}
+            </span>
           )}
         </span>
       );

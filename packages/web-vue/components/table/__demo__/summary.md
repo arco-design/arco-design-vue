@@ -6,24 +6,25 @@ title:
 
 ## zh-CN
 
-设置 `summary` 可以开启表尾总结行，并可以通过 `summary-text` 指定首列文字。
-如果想要自定义总结行展示，可以传入函数。函数的返回值为需要展示的数据，结构同 `data` 一样即可，支持多行数据。
+设置 `summary` 可以开启表尾总结行，并可以通过 `summary-text` 指定首列文字。 如果想要自定义总结行展示，可以传入函数。函数的返回值为需要展示的数据，结构同 `data` 一样即可，支持多行数据。
 注意：控制列暂不可以自定义内容
 
 ---
 
 ## en-US
 
-Set `summary` to turn on the summary line at the end of the table, and specify the first column of text with `summary-text`.
-If you want to customize the summary line display, you can pass in a function. The return value of the function is the data to be displayed, the structure is the same as `data`, and it supports multiple rows of data.
+Set `summary` to turn on the summary line at the end of the table, and specify the first column of text
+with `summary-text`. If you want to customize the summary line display, you can pass in a function. The return value of
+the function is the data to be displayed, the structure is the same as `data`, and it supports multiple rows of data.
 Note: The control column cannot be customized for the time being
 
 ---
 
 ```vue
+
 <template>
   <a-table :columns="columns" :data="data" :summary="true" />
-  <a-table :columns="columns" :data="data" :scroll="scroll" :expandable="expandable" :summary="summary" >
+  <a-table :columns="columns" :data="data" :scroll="scroll" :expandable="expandable" :summary="summary">
     <template #summary-cell="{ column,record,rowIndex }">
       <div :style="getColorStyle(column,record)">{{record[column.dataIndex]}}</div>
     </template>
@@ -53,6 +54,14 @@ export default {
       {
         title: 'Salary',
         dataIndex: 'salary',
+        summaryCellStyle: (record) => {
+          if (record.salary > 100000) {
+            return {
+              backgroundColor: 'rgb(var(--arcoblue-6))',
+              color: '#fff'
+            }
+          }
+        }
       },
       {
         title: 'Data1',
