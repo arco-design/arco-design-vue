@@ -650,6 +650,8 @@ const components = [
         name: 'overflow',
         component: OverflowList,
         componentEn: OverflowListEn,
+      },
+      {
         name: 'scrollbar',
         component: Scrollbar,
         componentEn: ScrollbarEn,
