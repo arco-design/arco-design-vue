@@ -261,19 +261,19 @@ export default defineComponent({
 
     const mergedFocused = computed(() => props.focused || _focused.value);
 
-    const updateInputValue = (value: string) => {
+    const updateInputValue = (value: string, ev: Event) => {
       _inputValue.value = value;
       emit('update:inputValue', value);
+      emit('inputValueChange', value, ev);
     };
 
-    const handleComposition = (e: CompositionEvent) => {
-      const { value } = e.target as HTMLInputElement;
+    const handleComposition = (ev: CompositionEvent) => {
+      const { value } = ev.target as HTMLInputElement;
 
-      if (e.type === 'compositionend') {
+      if (ev.type === 'compositionend') {
         isComposition.value = false;
         compositionValue.value = '';
-        emit('inputValueChange', value, e);
-        updateInputValue(value);
+        updateInputValue(value, ev);
 
         nextTick(() => {
           if (
@@ -307,12 +307,11 @@ export default defineComponent({
       }
     };
 
-    const handleInput = (e: Event) => {
-      const { value } = e.target as HTMLInputElement;
+    const handleInput = (ev: Event) => {
+      const { value } = ev.target as HTMLInputElement;
 
       if (!isComposition.value) {
-        emit('inputValueChange', value, e);
-        updateInputValue(value);
+        updateInputValue(value, ev);
 
         nextTick(() => {
           if (
@@ -380,20 +379,18 @@ export default defineComponent({
     const handlePressEnter = (e: KeyboardEvent) => {
       if (computedInputValue.value) {
         e.preventDefault();
-        emit('pressEnter', computedInputValue.value, e);
         if (
           props.uniqueValue &&
           computedValue.value?.includes(computedInputValue.value)
         ) {
+          emit('pressEnter', computedInputValue.value, e);
           return;
         }
         const newValue = computedValue.value.concat(computedInputValue.value);
         updateValue(newValue, e);
-
+        emit('pressEnter', computedInputValue.value, e);
         if (!retainInputValue.value.create) {
-          _inputValue.value = '';
-          emit('update:inputValue', '');
-          emit('inputValueChange', '', e);
+          updateInputValue('', e);
         }
       }
     };
@@ -407,8 +404,7 @@ export default defineComponent({
     const handleBlur = (ev: FocusEvent) => {
       _focused.value = false;
       if (!retainInputValue.value.blur && computedInputValue.value) {
-        emit('inputValueChange', '', ev);
-        updateInputValue('');
+        updateInputValue('', ev);
       }
       emit('blur', ev);
       eventHandlers.value?.onBlur?.(ev);

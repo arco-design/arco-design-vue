@@ -251,7 +251,7 @@ export default defineComponent({
       return props.maxLength;
     });
 
-    const updateValue = (value: string, inner = true) => {
+    const updateValue = (value: string) => {
       if (
         maxLength.value &&
         !maxLengthErrorOnly.value &&
@@ -263,9 +263,7 @@ export default defineComponent({
       }
 
       _value.value = value;
-      if (inner) {
-        emit('update:modelValue', value);
-      }
+      emit('update:modelValue', value);
     };
 
     const handleMousedown = (e: MouseEvent) => {
@@ -305,6 +303,7 @@ export default defineComponent({
         compositionValue.value = '';
         updateValue(value);
         emit('input', value, e);
+        eventHandlers.value?.onInput?.(e);
 
         nextTick(() => {
           if (inputRef.value && computedValue.value !== inputRef.value.value) {
