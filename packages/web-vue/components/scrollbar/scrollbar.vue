@@ -57,14 +57,32 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props: {
+    /**
+     * @zh 类型
+     * @en Type
+     */
     type: {
       type: String as PropType<'track' | 'embed'>,
       default: 'track',
     },
+    /**
+     * @zh 外层的类名
+     * @en Outer class
+     */
     outerClass: [String, Object, Array],
-    outerStyle: [String, Object, Array] as PropType<StyleValue>,
+    /**
+     * @zh 外层的样式
+     * @en Outer style
+     */
+    outerStyle: {
+      type: [String, Object, Array] as PropType<StyleValue>,
+    },
   },
   emits: {
+    /**
+     * @zh 滚动时触发
+     * @en Triggered when scroll
+     */
     scroll: (event: Event) => true,
   },
   setup(props, { emit }) {
