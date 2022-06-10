@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### 🐛 问题修复
+
+- 修复在输入法后不会触发 form 校验的问题 ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- 修复在 Drawer 中使用带前后置标签产生的高度问题 ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+
+
 ## 2.27.0
 
 `2022-05-13`

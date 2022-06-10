@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### 💅 Style
+
+- space-item is modified to flex layout to solve the problem of vertical centering of inline elements ([#1273](https://github.com/arco-design/arco-design-vue/pull/1273))
+
+
 ## 2.29.1
 
 `2022-06-02`
