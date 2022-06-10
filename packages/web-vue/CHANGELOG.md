@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.30.1-beta.1
+
+`2022-06-10`
+
+### 🆕 Feature
+
+- **overflow-list:** Added `OverflowList` component ([#1221](https://github.com/arco-design/arco-design-vue/pull/1221))
+- **scrollbar:** Add virtual scrollbar component ([#1098](https://github.com/arco-design/arco-design-vue/pull/1098))
+- **scrollbar:** Table, select, list components replace virtual scroll bars ([#1098](https://github.com/arco-design/arco-design-vue/pull/1098))
+
+
 ## 2.30.1
 
 `2022-06-10`
