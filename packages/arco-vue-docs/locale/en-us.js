@@ -89,6 +89,7 @@ export default {
     transfer: 'Transfer',
     tree: 'Tree',
     treeSelect: 'TreeSelect',
+    overflow: 'OverflowList',
     scrollbar: 'Scrollbar',
   },
   footer: {

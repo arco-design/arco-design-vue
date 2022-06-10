@@ -179,6 +179,7 @@ export {
 } from './typography';
 export type { EllipsisConfig } from './typography';
 export { default as Upload } from './upload';
+export { default as OverflowList } from './overflow-list';
 export type {
   FileStatus,
   FileItem,
