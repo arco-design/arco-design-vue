@@ -211,16 +211,22 @@ export interface TableColumnData {
   cellStyle?: CSSProperties;
   /**
    * @zh 自定义表头单元格样式
-   * @en Custom cell style
+   * @en Custom header cell style
    * @version 2.29.0
    */
   headerCellStyle?: CSSProperties;
   /**
    * @zh 自定义内容单元格样式
-   * @en Custom cell style
+   * @en Custom body cell style
    * @version 2.29.0
    */
   bodyCellStyle?: CSSProperties | ((record: TableData) => CSSProperties);
+  /**
+   * @zh 自定义总结栏单元格样式
+   * @en Custom summary cell style
+   * @version 2.30.0
+   */
+  summaryCellStyle?: CSSProperties | ((record: TableData) => CSSProperties);
   /**
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
@@ -250,6 +256,7 @@ export interface TableColumnData {
   colSpan?: number;
   rowSpan?: number;
   index?: number;
+  parent?: TableColumnData;
 }
 
 export interface TableBorder {

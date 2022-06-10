@@ -45,7 +45,6 @@ export default defineComponent({
         ? {
             height: `${height.value}px`,
             position: 'relative',
-            overflow: 'hidden',
             zIndex: 0,
           }
         : {}

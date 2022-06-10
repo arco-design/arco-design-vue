@@ -34,15 +34,19 @@ description: It is used for data collection, display, analysis and processing, a
 
 @import ./__demo__/span.md
 
+@import ./__demo__/sticky.md
+
 @import ./__demo__/summary.md
 
-@import ./__demo__/column-resize.md
+@import ./__demo__/resize.md
 
 @import ./__demo__/drag-row.md
 
 @import ./__demo__/drag-handle.md
 
 @import ./__demo__/group.md
+
+@import ./__demo__/fixed-group.md
 
 @import ./__demo__/editable.md
 
@@ -238,8 +242,9 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |filterable|Filter related options|`TableFilterable`|`-`||
 |children|Header sub-data, used for header grouping|`TableColumnData[]`|`-`||
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
-|headerCellStyle|Custom cell style|`CSSProperties`|`-`|2.29.0|
-|bodyCellStyle|Custom cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
+|headerCellStyle|Custom header cell style|`CSSProperties`|`-`|2.29.0|
+|bodyCellStyle|Custom body cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
+|footerCellStyle|Custom summary cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
 |titleSlotName|Set the name of the render slot for the header of the current column|`string`|`-`|2.23.0|

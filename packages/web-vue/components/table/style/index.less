@@ -122,32 +122,7 @@
     box-shadow: @table-shadow-right;
   }
 
-  // ？？？ box-shadow on the left side of the scroll table
-  &:not(&-has-fixed-col-left) {
-    &-scroll-position-right,
-    &-scroll-position-middle {
-      .@{table-prefix-cls}-content-scroll::before {
-        box-shadow: @table-shadow-left;
-      }
-    }
-  }
-
-  // ？？？ box-shadow on the right side of the scroll table
-  &:not(&-has-fixed-col-right) {
-    &-scroll-position-left,
-    &-scroll-position-middle {
-      .@{table-prefix-cls}-content-scroll::after {
-        box-shadow: @table-shadow-right;
-      }
-    }
-  }
-
   &-layout-fixed {
-    .@{table-prefix-cls}-container {
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
     .@{table-cls-table} {
       table-layout: fixed;
     }
@@ -214,7 +189,29 @@
   }
 
   &-cell {
+    display: flex;
+    align-items: center;
+
+    &-align-right {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    &-align-center {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &-text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &-td-content {
     display: block;
+    width: 100%;
   }
 
   .@{table-cls-th}&-col-sorted {
@@ -518,8 +515,8 @@
   &-container {
     box-sizing: border-box;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    min-height: 0;
+
     // chrome not fluent: https://codepen.io/quanqqq/pen/BaLpEQd?editors=0010
     // border-radius: @table-border-radius @table-border-radius 0 0 0;
 
@@ -528,6 +525,11 @@
       flex-direction: column;
       width: auto;
       height: 100%;
+
+      &-scroll-x {
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
     }
 
     &::before,
@@ -546,13 +548,31 @@
     }
 
     &::before {
+      top: 0;
       left: 0;
       border-top-left-radius: @table-border-radius;
     }
 
     &::after {
+      top: 0;
       right: 0;
       border-top-right-radius: @table-border-radius;
+    }
+
+    // box-shadow on the left side of the scroll table
+    &:not(.@{table-prefix-cls}-has-fixed-col-left) {
+      &.@{table-prefix-cls}-scroll-position-right::before,
+      &.@{table-prefix-cls}-scroll-position-middle::before {
+        box-shadow: @table-shadow-left;
+      }
+    }
+
+    // box-shadow on the right side of the scroll table
+    &:not(.@{table-prefix-cls}-has-fixed-col-right) {
+      &.@{table-prefix-cls}-scroll-position-left::after,
+      &.@{table-prefix-cls}-scroll-position-middle::after {
+        box-shadow: @table-shadow-right;
+      }
     }
   }
 
@@ -560,6 +580,12 @@
     overflow-x: hidden;
     background-color: @table-color-bg-header-cell;
     scrollbar-color: transparent transparent;
+
+    &-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
   }
 
   &:not(&-empty) &-header::-webkit-scrollbar {
