@@ -175,6 +175,10 @@ const Trigger = () => import('@web-vue/components/trigger/README.zh-CN.md');
 const TriggerEn = () => import('@web-vue/components/trigger/README.en-US.md');
 const Split = () => import('@web-vue/components/split/README.zh-CN.md');
 const SplitEn = () => import('@web-vue/components/split/README.en-US.md');
+const OverflowList = () =>
+  import('@web-vue/components/overflow-list/README.zh-CN.md');
+const OverflowListEn = () =>
+  import('@web-vue/components/overflow-list/README.en-US.md');
 const Scrollbar = () => import('@web-vue/components/scrollbar/README.zh-CN.md');
 const ScrollbarEn = () =>
   import('@web-vue/components/scrollbar/README.en-US.md');
@@ -643,6 +647,9 @@ const components = [
         componentEn: SplitEn,
       },
       {
+        name: 'overflow',
+        component: OverflowList,
+        componentEn: OverflowListEn,
         name: 'scrollbar',
         component: Scrollbar,
         componentEn: ScrollbarEn,
