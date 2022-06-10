@@ -175,6 +175,9 @@ const Trigger = () => import('@web-vue/components/trigger/README.zh-CN.md');
 const TriggerEn = () => import('@web-vue/components/trigger/README.en-US.md');
 const Split = () => import('@web-vue/components/split/README.zh-CN.md');
 const SplitEn = () => import('@web-vue/components/split/README.en-US.md');
+const Scrollbar = () => import('@web-vue/components/scrollbar/README.zh-CN.md');
+const ScrollbarEn = () =>
+  import('@web-vue/components/scrollbar/README.en-US.md');
 
 const docs = [
   {
@@ -647,6 +650,11 @@ const components = [
         name: 'split',
         component: Split,
         componentEn: SplitEn,
+      },
+      {
+        name: 'scrollbar',
+        component: Scrollbar,
+        componentEn: ScrollbarEn,
       },
     ],
   },

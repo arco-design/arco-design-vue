@@ -70,6 +70,8 @@ import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
 import { useSpan } from './hooks/use-span';
 import { useChildrenComponents } from '../_hooks/use-children-components';
+import Scrollbar from '../scrollbar';
+import { useComponentRef } from '../_hooks/use-component-ref';
 import type { BaseType } from '../_utils/types';
 
 const DEFAULT_BORDERED = {
@@ -629,9 +631,24 @@ export default defineComponent({
     });
 
     const theadRef = ref<HTMLElement>();
-    const tbodyRef = ref<HTMLElement>();
     const summaryRef = ref<HTMLElement>();
     const thRefs = ref<Record<string, HTMLElement>>({});
+
+    const { componentRef: contentComRef, elementRef: contentRef } =
+      useComponentRef('containerRef');
+    const { componentRef: tbodyComRef, elementRef: tbodyRef } =
+      useComponentRef('containerRef');
+    const { componentRef: virtualComRef, elementRef: virtualRef } =
+      useComponentRef('viewportRef');
+    const containerElement = computed(() => {
+      if (splitTable.value) {
+        if (isVirtualList.value) {
+          return virtualRef.value;
+        }
+        return tbodyRef.value;
+      }
+      return contentRef.value;
+    });
 
     const splitTable = computed(
       () =>
@@ -1070,7 +1087,6 @@ export default defineComponent({
       return undefined;
     });
 
-    const containerRef = ref<HTMLDivElement>();
     const containerScrollLeft = ref(0);
 
     const alignLeft = ref(true);
@@ -1080,9 +1096,7 @@ export default defineComponent({
       let _alignLeft = true;
       let _alignRight = true;
 
-      const scrollContainer = splitTable.value
-        ? tbodyRef.value
-        : containerRef.value;
+      const scrollContainer = containerElement.value;
 
       if (scrollContainer) {
         _alignLeft = containerScrollLeft.value === 0;
@@ -1338,8 +1352,8 @@ export default defineComponent({
     const hasScrollBar = ref(false);
 
     const isTbodyHasScrollBar = () => {
-      if (tbodyRef.value) {
-        return tbodyRef.value.offsetWidth > tbodyRef.value.clientWidth;
+      if (tbodyComRef.value) {
+        return tbodyComRef.value.hasVerticalScrollbar;
       }
       return false;
     };
@@ -1504,6 +1518,36 @@ export default defineComponent({
       return null;
     };
 
+    const renderVirtualListBody = () => {
+      return (
+        <ClientOnly>
+          <VirtualList
+            v-slots={{
+              item: ({
+                item,
+                index,
+              }: {
+                item: TableDataWithRaw;
+                index: number;
+              }) => renderRecord(item, index),
+            }}
+            ref={virtualComRef}
+            class={`${prefixCls}-body`}
+            data={flattenData.value}
+            itemKey="_key"
+            type="table"
+            outerAttrs={{
+              class: `${prefixCls}-element`,
+              style: contentStyle.value,
+            }}
+            {...props.virtualListProps}
+            onResize={handleTbodyResize}
+            onScroll={handleScroll}
+          />
+        </ClientOnly>
+      );
+    };
+
     const renderExpandBtn = (
       record: TableDataWithRaw,
       stopPropagation = true
@@ -1554,9 +1598,7 @@ export default defineComponent({
       }
 
       if (expandContent) {
-        const scrollContainer = splitTable.value
-          ? tbodyRef.value
-          : containerRef.value;
+        const scrollContainer = containerElement.value;
 
         return (
           <Tr key={`${record.key}-expand`} expand>
@@ -1808,9 +1850,10 @@ export default defineComponent({
 
     const renderContent = () => {
       if (splitTable.value) {
-        const style: CSSProperties = {
-          overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
-        };
+        const style: CSSProperties = {};
+        if (hasScrollBar.value) {
+          style.overflowY = 'scroll';
+        }
         if (isNumber(props.stickyHeader)) {
           style.top = `${props.stickyHeader}px`;
         }
@@ -1872,14 +1915,15 @@ export default defineComponent({
                   onScroll={onTbodyScroll}
                 />
               ) : (
-                <div
-                  ref={tbodyRef}
+                <Scrollbar
+                  ref={tbodyComRef}
                   class={`${prefixCls}-body`}
                   style={{
                     maxHeight: isNumber(props.scroll?.y)
                       ? `${props.scroll?.y}px`
                       : '100%',
                   }}
+                  outerStyle={{ minHeight: '0' }}
                   onScroll={onTbodyScroll}
                 >
                   <table
@@ -1897,7 +1941,7 @@ export default defineComponent({
                     )}
                     {renderBody()}
                   </table>
-                </div>
+                </Scrollbar>
               )}
             </ResizeObserver>
             {summaryData.value && summaryData.value.length && (
@@ -1956,8 +2000,8 @@ export default defineComponent({
       return (
         <>
           <div class={[`${prefixCls}-container`, tableCls.value]}>
-            <div
-              ref={containerRef}
+            <Scrollbar
+              ref={contentComRef}
               class={[
                 `${prefixCls}-content`,
                 {
@@ -1965,6 +2009,7 @@ export default defineComponent({
                 },
               ]}
               style={style}
+              outerStyle={{ height: '100%' }}
               onScroll={handleScroll}
             >
               {content ? (
@@ -1978,7 +2023,7 @@ export default defineComponent({
               ) : (
                 renderContent()
               )}
-            </div>
+            </Scrollbar>
           </div>
           {slots.footer && (
             <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
