@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### 🐛 问题修复
+
+- 在组件卸载时重置 overflow 设置 ([#1262](https://github.com/arco-design/arco-design-vue/pull/1262))
+
+
 ## 2.27.0
 
 `2022-05-13`

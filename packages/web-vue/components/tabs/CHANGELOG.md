@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### 💎 Enhancement
+
+- Add focus styles and keyboard events ([#1264](https://github.com/arco-design/arco-design-vue/pull/1264))
+
+
 ## 2.27.0
 
 `2022-05-13`

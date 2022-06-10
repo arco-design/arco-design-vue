@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### ⚠️ Important Attention
+
+- **table:** Due to functional requirements, `arco-table-cell` has been changed to flex layout, and the `arco-table-td-content` wrapper layer has been added outside the table content. If you have custom styles, please pay attention to the changes in the DOM structure ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🆕 Feature
+
+- **table:** Added `sticky-header` header ceiling function ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** Added `summaryCellStyle` property to table column configuration ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🐛 BugFix
+
+- **select:** Fixed remote search and fieldNames used at the same time, no options displayed ([#1271](https://github.com/arco-design/arco-design-vue/pull/1271))
+- **input:** Fix the problem that form validation will not be triggered after input method ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **input:** Fixed height issue when using front and back labels in Drawer ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **modal:** Reset overflow setting on component unmount ([#1262](https://github.com/arco-design/arco-design-vue/pull/1262))
+- **table:** Fixed the problem of incorrect text omission in tree data ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** Fix the problem of using grouped headers and fixed columns at the same time ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💎 Enhancement
+
+- **tabs:** Add focus styles and keyboard events ([#1264](https://github.com/arco-design/arco-design-vue/pull/1264))
+- **table:** Supports the simultaneous use of virtual lists and fixed columns ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💅 Style
+
+- **select:** Fixed the issue that the selection box collapsed when the option label was empty ([#1274](https://github.com/arco-design/arco-design-vue/pull/1274))
+- **space:** space-item is modified to flex layout to solve the problem of vertical centering of inline elements ([#1273](https://github.com/arco-design/arco-design-vue/pull/1273))
+- **table:** Fix horizontal scroll shadow issue ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+
 ## 2.29.1
 
 `2022-06-02`

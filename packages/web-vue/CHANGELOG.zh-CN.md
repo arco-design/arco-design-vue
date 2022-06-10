@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### ⚠️ 重点注意
+
+- **table:** 由于功能需要，`arco-table-cell` 改为 flex 布局，且在表格内容外新增 `arco-table-td-content`  包裹层，如有自定义样式请留意 DOM 结构的改变 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🆕 新增功能
+
+- **table:** 增加 `sticky-header` 表头吸顶功能 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** 表格列配置增加 `summaryCellStyle` 属性 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🐛 问题修复
+
+- **select:** 修复远程搜索与 fieldNames 同时使用，没有显示选项的问题 ([#1271](https://github.com/arco-design/arco-design-vue/pull/1271))
+- **input:** 修复在输入法后不会触发 form 校验的问题 ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **input:** 修复在 Drawer 中使用带前后置标签产生的高度问题 ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **modal:** 在组件卸载时重置 overflow 设置 ([#1262](https://github.com/arco-design/arco-design-vue/pull/1262))
+- **table:** 修复树型数据时文字省略错误的问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** 修复分组表头与固定列同时使用出现的问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💎 功能优化
+
+- **tabs:** 增加 focus 样式和键盘事件 ([#1264](https://github.com/arco-design/arco-design-vue/pull/1264))
+- **table:** 支持虚拟列表和固定列同时使用 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💅 样式更新
+
+- **select:** 修复在选项 label 为空时，选择框塌陷的问题 ([#1274](https://github.com/arco-design/arco-design-vue/pull/1274))
+- **space:** space-item 修改为 flex 布局，解决行内元素垂直居中问题 ([#1273](https://github.com/arco-design/arco-design-vue/pull/1273))
+- **table:** 修复横向滚动阴影问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+
 ## 2.29.1
 
 `2022-06-02`
