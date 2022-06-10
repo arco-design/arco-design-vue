@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.30.1
+
+`2022-06-10`
+
+### 💅 样式更新
+
+- 仅在横向模式使用 flex 布局的 item ([#1277](https://github.com/arco-design/arco-design-vue/pull/1277))
+
+
 ## 2.30.0
 
 `2022-06-10`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.30.1
+
+`2022-06-10`
+
+### 💅 Style
+
+- **space:** Items that use flex layout only in landscape mode ([#1277](https://github.com/arco-design/arco-design-vue/pull/1277))
+
+
 ## 2.30.0
 
 `2022-06-10`
