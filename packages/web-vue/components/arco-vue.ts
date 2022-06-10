@@ -63,6 +63,7 @@ import Radio, { RadioGroup } from './radio';
 import Rate from './rate';
 import ResizeBox from './resize-box';
 import Result from './result';
+import Scrollbar from './scrollbar';
 import Select, { Option, Optgroup } from './select';
 import Skeleton, { SkeletonLine, SkeletonShape } from './skeleton';
 import Slider from './slider';
@@ -109,6 +110,7 @@ const components: Record<string, Plugin> = {
   Descriptions,
   Empty,
   Image,
+  Scrollbar,
   List,
   Popover,
   Statistic,

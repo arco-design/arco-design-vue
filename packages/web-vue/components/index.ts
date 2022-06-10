@@ -99,6 +99,7 @@ export { default as Radio, RadioGroup } from './radio';
 export { default as Rate } from './rate';
 export { default as ResizeBox } from './resize-box';
 export { default as Result } from './result';
+export { default as Scrollbar } from './scrollbar';
 export { default as Select, Option, Optgroup } from './select';
 export type {
   SelectProps,
