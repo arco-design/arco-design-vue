@@ -1,20 +1,18 @@
 ```yaml
 title:
   zh-CN: 调整列宽
-  en-US: Column width resize
+  en-US: Column Width Resize
 ```
 
 ## zh-CN
 
-（实验性）
-使用 `column-resizable` 属性开启列宽调整
+使用 `column-resizable` 属性开启列宽调整。建议初始设置除最后一列外其他列的默认列宽。
 
 ---
 
 ## en-US
 
-(experimental)
-Enable column resizing using the `column-resizable` attribute
+Enable column resizing using the `column-resizable` property. It is recommended to initially set default column widths for all but the last column.
 
 ---
 
@@ -32,14 +30,17 @@ export default {
       {
         title: 'Name',
         dataIndex: 'name',
+        width: 150,
       },
       {
         title: 'Salary',
         dataIndex: 'salary',
+        width: 120,
       },
       {
         title: 'Address',
         dataIndex: 'address',
+        width: 300,
       },
       {
         title: 'Email',

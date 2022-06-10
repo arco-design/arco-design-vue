@@ -6,6 +6,7 @@
     :multiple="multiple"
     :total-level="totalLevel"
     :check-strictly="checkStrictly"
+    @keydown="handleKeyDown"
   >
     <template v-if="$slots.empty" #empty>
       <slot name="empty" />
@@ -33,6 +34,7 @@ import {
 import { isNull, isUndefined } from '../_utils/is';
 import BaseCascaderPanel from './base-cascader-panel';
 import {
+  getCheckedStatus,
   getLeafOptionInfos,
   getLeafOptionKeys,
   getOptionInfos,
@@ -390,11 +392,18 @@ export default defineComponent({
         [
           KEYBOARD_KEY.ENTER,
           (ev: Event) => {
-            if (
-              activeOption.value &&
-              (activeOption.value.isLeaf || props.checkStrictly)
-            ) {
-              handleClickOption(activeOption.value);
+            if (activeOption.value) {
+              let checked: boolean;
+              if (props.checkStrictly || activeOption.value.isLeaf) {
+                checked = !computedValueMap.value.has(activeOption.value.key);
+              } else {
+                checked = !getCheckedStatus(
+                  activeOption.value,
+                  computedValueMap.value
+                ).checked;
+              }
+              setSelectedPath(activeOption.value.key);
+              handleClickOption(activeOption.value, checked);
             }
           },
         ],

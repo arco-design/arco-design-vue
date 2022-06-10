@@ -2,6 +2,62 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### ⚠️ Important Attention
+
+- **table:** Due to functional requirements, `arco-table-cell` has been changed to flex layout, and the `arco-table-td-content` wrapper layer has been added outside the table content. If you have custom styles, please pay attention to the changes in the DOM structure ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🆕 Feature
+
+- **table:** Added `sticky-header` header ceiling function ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** Added `summaryCellStyle` property to table column configuration ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🐛 BugFix
+
+- **select:** Fixed remote search and fieldNames used at the same time, no options displayed ([#1271](https://github.com/arco-design/arco-design-vue/pull/1271))
+- **input:** Fix the problem that form validation will not be triggered after input method ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **input:** Fixed height issue when using front and back labels in Drawer ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **modal:** Reset overflow setting on component unmount ([#1262](https://github.com/arco-design/arco-design-vue/pull/1262))
+- **table:** Fixed the problem of incorrect text omission in tree data ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** Fix the problem of using grouped headers and fixed columns at the same time ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💎 Enhancement
+
+- **tabs:** Add focus styles and keyboard events ([#1264](https://github.com/arco-design/arco-design-vue/pull/1264))
+- **table:** Supports the simultaneous use of virtual lists and fixed columns ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💅 Style
+
+- **select:** Fixed the issue that the selection box collapsed when the option label was empty ([#1274](https://github.com/arco-design/arco-design-vue/pull/1274))
+- **space:** space-item is modified to flex layout to solve the problem of vertical centering of inline elements ([#1273](https://github.com/arco-design/arco-design-vue/pull/1273))
+- **table:** Fix horizontal scroll shadow issue ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 BugFix
+
+- **list:** Fixed an issue where reachBottom would not trigger in some cases ([#1228](https://github.com/arco-design/arco-design-vue/pull/1228))
+- **mention:** Fix missing textarea styles when loading on demand ([#1227](https://github.com/arco-design/arco-design-vue/pull/1227))
+- **space:** Fix the problem that the child component uses the key to fail ([#1223](https://github.com/arco-design/arco-design-vue/pull/1223))
+
+### 💎 Enhancement
+
+- Virtual lists reduce unnecessary height calculations and prevent jitter ([#1233](https://github.com/arco-design/arco-design-vue/pull/1233))
+- **tree-select:** When the component is out of focus in search mode, the input value will be cleared by default ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+- **input-tag:** When out of focus, the input value will be cleared by default ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+- **trigger:** No longer blocks right-click default events by default ([#1231](https://github.com/arco-design/arco-design-vue/pull/1231))
+- **cascader:** cascader-panel adds keyboard events ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+- **cascader:** Fix the problem that the value of the number type fails to match ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+- **button:** Add focus style ([#1229](https://github.com/arco-design/arco-design-vue/pull/1229))
+- **input-number:** Add keyboard event, show step button when focused ([#1224](https://github.com/arco-design/arco-design-vue/pull/1224))
+
+
 ## 2.29.0
 
 `2022-05-27`

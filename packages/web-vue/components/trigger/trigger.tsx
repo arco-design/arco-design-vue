@@ -16,7 +16,6 @@ import {
   toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import type { EmitType } from '../_utils/types';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
 import {
   getArrowStyle,
@@ -554,7 +553,6 @@ export default defineComponent({
 
     const handleContextmenu = (e: MouseEvent) => {
       (attrs as any).onContextmenu?.(e);
-      e.preventDefault();
       if (
         props.disabled ||
         !triggerMethods.value.includes('contextMenu') ||
@@ -564,6 +562,7 @@ export default defineComponent({
       }
       updateMousePosition(e);
       changeVisible(!computedVisible.value);
+      e.preventDefault();
     };
 
     const addChildRef = (ref: any) => {

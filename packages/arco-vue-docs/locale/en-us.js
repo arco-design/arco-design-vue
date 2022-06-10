@@ -88,6 +88,7 @@ export default {
     tree: 'Tree',
     treeSelect: 'TreeSelect',
     overflow: 'OverflowList',
+    scrollbar: 'Scrollbar',
   },
   footer: {
     design: 'Design',

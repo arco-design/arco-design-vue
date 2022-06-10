@@ -607,6 +607,7 @@ export default defineComponent({
     });
 
     onBeforeUnmount(() => {
+      resetOverflow();
       removeGlobalKeyDownListener();
     });
 

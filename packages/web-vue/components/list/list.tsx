@@ -19,6 +19,8 @@ import type {
 import { usePagination } from './use-pagination';
 import { omit } from '../_utils/omit';
 import { getAllElements } from '../_utils/vue-utils';
+import Scrollbar from '../scrollbar';
+import { useComponentRef } from '../_hooks/use-component-ref';
 
 export default defineComponent({
   name: 'List',
@@ -162,12 +164,14 @@ export default defineComponent({
    */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('list');
-    const listRef = ref<HTMLElement>();
+    const { componentRef, elementRef: listRef } =
+      useComponentRef('containerRef');
     const isVirtualList = computed(() => props.virtualListProps);
 
     const handleScroll = (e: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
-      const bottom = scrollHeight - (scrollTop + offsetHeight);
+      const bottom = Math.floor(scrollHeight - (scrollTop + offsetHeight));
+
       if (bottom <= props.bottomOffset) {
         emit('reachBottom');
       }
@@ -293,7 +297,7 @@ export default defineComponent({
 
     const contentStyle = computed(() => {
       if (props.maxHeight > 0) {
-        return { maxHeight: `${props.maxHeight}px` };
+        return { maxHeight: `${props.maxHeight}px`, overflowY: 'auto' };
       }
       return undefined;
     });
@@ -349,30 +353,31 @@ export default defineComponent({
       return (
         <div class={`${prefixCls}-wrapper`}>
           <Spin class={`${prefixCls}-spin`} loading={props.loading}>
-            <div
-              ref={listRef}
-              class={cls.value}
+            <Scrollbar
+              ref={componentRef}
               style={contentStyle.value}
               onScroll={handleScroll}
             >
-              {slots.header && (
-                <div class={`${prefixCls}-header`}>{slots.header()}</div>
-              )}
-              {isVirtualList.value && !props.gridProps ? (
-                <>
-                  {renderVirtualList()}
-                  {renderScrollLoading()}
-                </>
-              ) : (
-                <div role="list" class={contentCls.value}>
-                  {renderItems()}
-                  {renderScrollLoading()}
-                </div>
-              )}
-              {slots.footer && (
-                <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
-              )}
-            </div>
+              <div class={cls.value}>
+                {slots.header && (
+                  <div class={`${prefixCls}-header`}>{slots.header()}</div>
+                )}
+                {isVirtualList.value && !props.gridProps ? (
+                  <>
+                    {renderVirtualList()}
+                    {renderScrollLoading()}
+                  </>
+                ) : (
+                  <div role="list" class={contentCls.value}>
+                    {renderItems()}
+                    {renderScrollLoading()}
+                  </div>
+                )}
+                {slots.footer && (
+                  <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
+                )}
+              </div>
+            </Scrollbar>
             {renderPagination()}
           </Spin>
         </div>

@@ -89,13 +89,17 @@
       }
     }
 
-    &:not(.@{input-prefix-cls}-disabled):hover
-      .@{input-number-prefix-cls}-step {
-      opacity: 1;
+    &:not(.@{input-prefix-cls}-disabled) {
+      &:hover,
+      &:focus-within {
+        & .@{input-number-prefix-cls}-step {
+          opacity: 1;
 
-      & ~ .@{input-prefix-cls}-suffix {
-        opacity: 0;
-        pointer-events: none;
+          & ~ .@{input-prefix-cls}-suffix {
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
       }
     }
 

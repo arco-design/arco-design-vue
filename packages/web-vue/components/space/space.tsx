@@ -125,7 +125,7 @@ export default defineComponent({
           {children.map((child, index) => {
             return (
               <div
-                key={index}
+                key={child.key ?? `item-${index}`}
                 class={`${prefixCls}-item`}
                 style={getMarginStyle(index, index === children.length - 1)}
               >

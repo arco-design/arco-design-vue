@@ -179,6 +179,9 @@ const OverflowList = () =>
   import('@web-vue/components/overflow-list/README.zh-CN.md');
 const OverflowListEn = () =>
   import('@web-vue/components/overflow-list/README.en-US.md');
+const Scrollbar = () => import('@web-vue/components/scrollbar/README.zh-CN.md');
+const ScrollbarEn = () =>
+  import('@web-vue/components/scrollbar/README.en-US.md');
 
 const docs = [
   {
@@ -647,6 +650,9 @@ const components = [
         name: 'overflow',
         component: OverflowList,
         componentEn: OverflowListEn,
+        name: 'scrollbar',
+        component: Scrollbar,
+        componentEn: ScrollbarEn,
       },
     ],
   },

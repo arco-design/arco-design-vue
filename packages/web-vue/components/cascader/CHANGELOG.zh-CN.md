@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 问题修复
+
+- 修复使用 number 类型的 value 匹配失败的问题 ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+
+### 💎 功能优化
+
+- cascader-panel 增加键盘事件 ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+
+
 ## 2.29.0
 
 `2022-05-27`

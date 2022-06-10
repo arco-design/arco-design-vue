@@ -71,6 +71,8 @@ import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
 import { useSpan } from './hooks/use-span';
 import { useChildrenComponents } from '../_hooks/use-children-components';
+import Scrollbar from '../scrollbar';
+import { useComponentRef } from '../_hooks/use-component-ref';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -146,15 +148,7 @@ export default defineComponent({
      * @en Whether it is loading state
      */
     loading: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * @zh 是否隐藏表头
-     * @en Whether to hide the header
-     */
-    hideHeader: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false,
     },
     /**
@@ -393,6 +387,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否开启表头吸顶
+     * @en Whether to open the sticky header
+     * @version 2.30.0
+     */
+    stickyHeader: {
+      type: [Boolean, Number],
+      default: false,
+    },
   },
   emits: {
     'update:selectedKeys': (rowKeys: string[]) => true,
@@ -599,6 +602,7 @@ export default defineComponent({
       defaultExpandedKeys,
       defaultExpandAllRows,
       spanMethod,
+      draggable,
       summarySpanMethod,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
@@ -621,28 +625,32 @@ export default defineComponent({
     });
 
     const theadRef = ref<HTMLElement>();
-    const tbodyRef = ref<HTMLElement>();
     const summaryRef = ref<HTMLElement>();
     const thRefs = ref<Record<string, HTMLElement>>({});
 
-    const handleBodyScroll = () => {
-      if (theadRef.value && tbodyRef.value) {
-        theadRef.value.scrollLeft = tbodyRef.value.scrollLeft;
-      }
-    };
-
-    onMounted(() => {
-      watch(isScroll, ({ y }, _, onInvalidate) => {
-        onInvalidate(() => {
-          if (tbodyRef.value) {
-            off(tbodyRef.value, 'scroll', handleBodyScroll);
-          }
-        });
-        if (y && tbodyRef.value && theadRef.value) {
-          on(tbodyRef.value, 'scroll', handleBodyScroll);
+    const { componentRef: contentComRef, elementRef: contentRef } =
+      useComponentRef('containerRef');
+    const { componentRef: tbodyComRef, elementRef: tbodyRef } =
+      useComponentRef('containerRef');
+    const { componentRef: virtualComRef, elementRef: virtualRef } =
+      useComponentRef('viewportRef');
+    const containerElement = computed(() => {
+      if (splitTable.value) {
+        if (isVirtualList.value) {
+          return virtualRef.value;
         }
-      });
+        return tbodyRef.value;
+      }
+      return contentRef.value;
     });
+
+    const splitTable = computed(
+      () =>
+        isScroll.value.y ||
+        props.stickyHeader ||
+        isVirtualList.value ||
+        (isScroll.value.x && flattenData.value.length === 0)
+    );
 
     const slotColumnMap = reactive(new Map<number, TableColumnData>());
     const slotColumns = ref<TableColumnData[]>();
@@ -872,6 +880,7 @@ export default defineComponent({
     };
 
     const {
+      dragType,
       dragState,
       handleDragStart,
       handleDragEnter,
@@ -879,7 +888,7 @@ export default defineComponent({
       handleDragover,
       handleDragEnd,
       handleDrop,
-    } = useDrag();
+    } = useDrag(draggable);
 
     const { resizingColumn, columnWidth, handleThMouseDown } = useColumnResize(
       thRefs,
@@ -1051,7 +1060,6 @@ export default defineComponent({
       return undefined;
     });
 
-    const containerRef = ref<HTMLDivElement>();
     const containerScrollLeft = ref(0);
 
     const alignLeft = ref(true);
@@ -1061,14 +1069,12 @@ export default defineComponent({
       let _alignLeft = true;
       let _alignRight = true;
 
-      const scrollContainer = isScroll.value.y
-        ? tbodyRef.value
-        : containerRef.value;
+      const scrollContainer = containerElement.value;
 
       if (scrollContainer) {
         _alignLeft = containerScrollLeft.value === 0;
         _alignRight =
-          containerScrollLeft.value + scrollContainer.offsetWidth >=
+          Math.ceil(containerScrollLeft.value + scrollContainer.offsetWidth) >=
           scrollContainer.scrollWidth;
       }
 
@@ -1109,7 +1115,7 @@ export default defineComponent({
       if (target.scrollLeft !== containerScrollLeft.value) {
         containerScrollLeft.value = target.scrollLeft;
       }
-      if (isScroll.value.y || props.virtualListProps) {
+      if (splitTable.value) {
         if (theadRef.value) {
           theadRef.value.scrollLeft = target.scrollLeft;
         }
@@ -1263,12 +1269,12 @@ export default defineComponent({
         [`${prefixCls}-stripe`]: props.stripe,
         [`${prefixCls}-hover`]: props.hoverable,
         [`${prefixCls}-dragging`]: dragState.dragging,
-        [`${prefixCls}-type-selection`]: props.rowSelection,
+        [`${prefixCls}-type-selection`]: Boolean(props.rowSelection),
         [`${prefixCls}-empty`]: props.data && flattenData.value.length === 0,
         [`${prefixCls}-layout-fixed`]:
           props.tableLayoutFixed ||
           isScroll.value.x ||
-          isScroll.value.y ||
+          splitTable.value ||
           hasEllipsis.value,
       },
     ]);
@@ -1293,7 +1299,7 @@ export default defineComponent({
         cls.push(getTableScrollCls());
       }
 
-      if (isScroll.value.y || isVirtualList.value) {
+      if (splitTable.value) {
         cls.push(`${prefixCls}-scroll-y`);
       }
 
@@ -1315,8 +1321,8 @@ export default defineComponent({
     const hasScrollBar = ref(false);
 
     const isTbodyHasScrollBar = () => {
-      if (tbodyRef.value) {
-        return tbodyRef.value.offsetWidth > tbodyRef.value.clientWidth;
+      if (tbodyComRef.value) {
+        return tbodyComRef.value.hasVerticalScrollbar;
       }
       return false;
     };
@@ -1341,7 +1347,7 @@ export default defineComponent({
 
     const renderEmpty = () => {
       return (
-        <Tr isEmptyRow>
+        <Tr empty>
           <Td colSpan={dataColumns.value.length + operations.value.length}>
             {slots.empty?.() ?? <Empty />}
           </Td>
@@ -1387,14 +1393,23 @@ export default defineComponent({
         columns: allColumns,
       });
 
+    const getVirtualColumnStyle = (name: string | undefined) => {
+      if (!isVirtualList.value || !name || !thWidth.value[name]) {
+        return undefined;
+      }
+
+      return { width: `${thWidth.value[name]}px` };
+    };
+
     const renderSummaryRow = (record: TableDataWithRaw, rowIndex: number) => {
       return (
         <Tr
-          class={[props.rowClass, `${prefixCls}-tr-summary`]}
-          key={`table-summary-${rowIndex}`}
           v-slots={{
             tr: slots.tr,
           }}
+          key={`table-summary-${rowIndex}`}
+          class={[`${prefixCls}-tr-summary`, props.rowClass]}
+          // @ts-ignore
           onClick={(ev: Event) => handleRowClick(record, ev)}
         >
           {operations.value.map((operation, index) => {
@@ -1405,12 +1420,7 @@ export default defineComponent({
               return null;
             }
 
-            const style =
-              isVirtualList.value &&
-              operation.name &&
-              thWidth.value[operation.name]
-                ? { width: `${thWidth.value[operation.name]}px` }
-                : undefined;
+            const style = getVirtualColumnStyle(operation.name);
 
             return (
               <OperationTd
@@ -1432,20 +1442,15 @@ export default defineComponent({
               return null;
             }
 
-            const style =
-              isVirtualList.value &&
-              column.dataIndex &&
-              thWidth.value[column.dataIndex]
-                ? { width: `${thWidth.value[column.dataIndex]}px` }
-                : undefined;
+            const style = getVirtualColumnStyle(column.dataIndex);
 
             return (
               <Td
-                key={`td-${cellId}`}
                 v-slots={{
                   td: slots.td,
                   cell: slots['summary-cell'],
                 }}
+                key={`td-${cellId}`}
                 style={style}
                 rowIndex={rowIndex}
                 record={record}
@@ -1454,6 +1459,8 @@ export default defineComponent({
                 dataColumns={dataColumns.value}
                 rowSpan={rowspan}
                 colSpan={colspan}
+                summary
+                // @ts-ignore
                 onClick={(ev: Event) => handleCellClick(record, column, ev)}
               />
             );
@@ -1464,29 +1471,21 @@ export default defineComponent({
 
     const renderSummary = () => {
       if (summaryData.value) {
-        return summaryData.value.map((data, index) =>
-          renderSummaryRow(data, index)
+        return (
+          <tfoot>
+            {summaryData.value.map((data, index) =>
+              renderSummaryRow(data, index)
+            )}
+          </tfoot>
         );
       }
       return null;
     };
 
-    const virtualListRef = ref();
-
-    watch(virtualListRef, (instance) => {
-      tbodyRef.value = instance.$el;
-    });
-
     const renderVirtualListBody = () => {
       return (
         <ClientOnly>
           <VirtualList
-            ref={virtualListRef}
-            class={`${prefixCls}-body`}
-            itemKey="_key"
-            type="table"
-            {...props.virtualListProps}
-            data={flattenData.value}
             v-slots={{
               item: ({
                 item,
@@ -1496,14 +1495,18 @@ export default defineComponent({
                 index: number;
               }) => renderRecord(item, index),
             }}
-            onResize={() => {
-              handleTbodyResize();
-            }}
-            onScroll={handleScroll}
+            ref={virtualComRef}
+            class={`${prefixCls}-body`}
+            data={flattenData.value}
+            itemKey="_key"
+            type="table"
             outerAttrs={{
               class: `${prefixCls}-element`,
               style: contentStyle.value,
             }}
+            {...props.virtualListProps}
+            onResize={handleTbodyResize}
+            onScroll={handleScroll}
           />
         </ClientOnly>
       );
@@ -1534,15 +1537,50 @@ export default defineComponent({
       );
     };
 
-    const dragType = computed(() => {
-      if (props.draggable) {
-        if (props.draggable?.type === 'handle') {
-          return 'handle';
-        }
-        return 'row';
+    const renderExpand = (
+      record: TableDataWithRaw,
+      {
+        indentSize,
+        indexPath,
+        allowDrag,
+        expandContent,
+      }: {
+        indentSize: number;
+        indexPath: number[];
+        allowDrag: boolean;
+        expandContent: any;
       }
-      return 'none';
-    });
+    ) => {
+      if (record.hasSubtree) {
+        return record.children?.map((item, index) =>
+          renderRecord(item, index, {
+            indentSize,
+            indexPath,
+            allowDrag,
+          })
+        );
+      }
+
+      if (expandContent) {
+        const scrollContainer = containerElement.value;
+
+        return (
+          <Tr key={`${record.key}-expand`} expand>
+            <Td
+              isFixedExpand={
+                hasLeftFixedColumn.value || hasRightFixedColumn.value
+              }
+              containerWidth={scrollContainer?.clientWidth}
+              colSpan={dataColumns.value.length + operations.value.length}
+            >
+              {expandContent}
+            </Td>
+          </Tr>
+        );
+      }
+
+      return null;
+    };
 
     const renderRecord = (
       record: TableDataWithRaw,
@@ -1558,40 +1596,47 @@ export default defineComponent({
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
 
-      const scrollContainer = isScroll.value.y
-        ? tbodyRef.value
-        : containerRef.value;
-
       const isDragTarget = dragState.sourceKey === record.key;
 
-      const dragSourceEvent =
-        dragType.value !== 'none' && allowDrag
-          ? {
-              draggable: true,
-              onDragstart: (ev: DragEvent) =>
-                handleDragStart(ev, record.key, currentPath, record.raw),
-              onDragend: (ev: DragEvent) => handleDragEnd(ev),
-            }
-          : {};
+      const dragSourceEvent = dragType.value
+        ? {
+            draggable: allowDrag,
+            onDragstart: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragStart(ev, record.key, currentPath, record.raw);
+            },
+            onDragend: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragEnd(ev);
+            },
+          }
+        : {};
 
-      const dragTargetEvent =
-        dragType.value !== 'none' && allowDrag
-          ? {
-              onDragenter: (ev: DragEvent) => handleDragEnter(ev, currentPath),
-              onDragleave: (ev: DragEvent) => handleDragLeave(ev),
-              onDragover: (ev: DragEvent) => handleDragover(ev),
-              onDrop: (ev: DragEvent) => {
-                handleChange('drag');
-                handleDrop(ev);
-              },
-            }
-          : {};
+      const dragTargetEvent = dragType.value
+        ? {
+            onDragenter: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragEnter(ev, currentPath);
+            },
+            onDragover: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragover(ev);
+            },
+            onDrop: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleChange('drag');
+              handleDrop(ev);
+            },
+          }
+        : {};
 
       return (
         <>
           <Tr
-            {...(dragType.value === 'row' ? dragSourceEvent : {})}
-            {...dragTargetEvent}
+            v-slots={{
+              tr: slots.tr,
+            }}
+            key={currentKey}
             class={[
               {
                 [`${prefixCls}-tr-draggable`]: dragType.value === 'row',
@@ -1601,12 +1646,11 @@ export default defineComponent({
             ]}
             rowIndex={rowIndex}
             record={record}
-            key={currentKey}
-            v-slots={{
-              tr: slots.tr,
-            }}
             checked={selectedRowKeys.value?.includes(currentKey)}
+            // @ts-ignore
             onClick={(ev: Event) => handleRowClick(record, ev)}
+            {...(dragType.value === 'row' ? dragSourceEvent : {})}
+            {...dragTargetEvent}
           >
             {operations.value.map((operation, index) => {
               const cellId = `${rowIndex}-${index}`;
@@ -1618,19 +1662,14 @@ export default defineComponent({
                 return null;
               }
 
-              const style =
-                isVirtualList.value &&
-                operation.name &&
-                thWidth.value[operation.name]
-                  ? { width: `${thWidth.value[operation.name]}px` }
-                  : undefined;
+              const style = getVirtualColumnStyle(operation.name);
 
               return (
                 <OperationTd
-                  key={`operation-td-${index}`}
                   v-slots={{
                     'drag-handle-icon': slots['drag-handle-icon'],
                   }}
+                  key={`operation-td-${index}`}
                   style={style}
                   operationColumn={operation}
                   operations={operations.value}
@@ -1664,19 +1703,14 @@ export default defineComponent({
                     }
                   : {};
 
-              const style =
-                isVirtualList.value &&
-                column.dataIndex &&
-                thWidth.value[column.dataIndex]
-                  ? { width: `${thWidth.value[column.dataIndex]}px` }
-                  : undefined;
+              const style = getVirtualColumnStyle(column.dataIndex);
 
               return (
                 <Td
-                  key={`td-${index}`}
                   v-slots={{
                     td: slots.td,
                   }}
+                  key={`td-${index}`}
                   style={style}
                   rowIndex={rowIndex}
                   record={record}
@@ -1687,41 +1721,21 @@ export default defineComponent({
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
                   {...extraProps}
+                  // @ts-ignore
                   onClick={(ev: Event) => handleCellClick(record, column, ev)}
                 />
               );
             })}
           </Tr>
           {showExpand &&
-            (record.hasSubtree
-              ? record.children?.map((item, index) =>
-                  renderRecord(item, index, {
-                    indentSize: indentSize + props.indentSize,
-                    indexPath: currentPath,
-                    allowDrag: allowDrag && !isDragTarget,
-                  })
-                )
-              : Boolean(expandContent) && (
-                  <Tr isExpandRow key={`${currentKey}-expand`}>
-                    <Td
-                      isFixedExpand={
-                        hasLeftFixedColumn.value || hasRightFixedColumn.value
-                      }
-                      containerWidth={scrollContainer?.clientWidth}
-                      colSpan={
-                        dataColumns.value.length + operations.value.length
-                      }
-                    >
-                      {expandContent}
-                    </Td>
-                  </Tr>
-                ))}
+            renderExpand(record, {
+              indentSize: indentSize + props.indentSize,
+              indexPath: currentPath,
+              allowDrag: allowDrag && !isDragTarget,
+              expandContent,
+            })}
         </>
       );
-    };
-
-    const renderFooter = () => {
-      return <tfoot>{renderSummary()}</tfoot>;
     };
 
     const renderBody = () => {
@@ -1751,13 +1765,13 @@ export default defineComponent({
             {index === 0 &&
               operations.value.map((operation, index) => (
                 <OperationTh
+                  key={`operation-th-${index}`}
                   // @ts-ignore
                   ref={(ins: ComponentPublicInstance) => {
                     if (ins?.$el && operation.name) {
                       thRefs.value[operation.name] = ins.$el;
                     }
                   }}
-                  key={`operation-th-${index}`}
                   operationColumn={operation}
                   operations={operations.value}
                   selectAll={Boolean(
@@ -1797,24 +1811,31 @@ export default defineComponent({
     );
 
     const renderContent = () => {
-      if (
-        isScroll.value.y ||
-        isVirtualList.value ||
-        (isScroll.value.x && flattenData.value.length === 0)
-      ) {
-        const style: CSSProperties = {
-          overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
-        };
+      if (splitTable.value) {
+        const style: CSSProperties = {};
+        if (hasScrollBar.value) {
+          style.overflowY = 'scroll';
+        }
+        if (isNumber(props.stickyHeader)) {
+          style.top = `${props.stickyHeader}px`;
+        }
 
         return (
           <>
             {props.showHeader && (
-              <div ref={theadRef} class={`${prefixCls}-header`} style={style}>
+              <div
+                ref={theadRef}
+                class={[
+                  `${prefixCls}-header`,
+                  { [`${prefixCls}-header-sticky`]: props.stickyHeader },
+                ]}
+                style={style}
+              >
                 <table
-                  cellpadding={0}
-                  cellspacing={0}
                   class={`${prefixCls}-element`}
                   style={headerStyle.value}
+                  cellpadding={0}
+                  cellspacing={0}
                 >
                   <ColGroup
                     dataColumns={dataColumns.value}
@@ -1829,21 +1850,22 @@ export default defineComponent({
               renderVirtualListBody()
             ) : (
               <ResizeObserver onResize={handleTbodyResize}>
-                <div
-                  ref={tbodyRef}
+                <Scrollbar
+                  ref={tbodyComRef}
                   class={`${prefixCls}-body`}
                   style={{
                     maxHeight: isNumber(props.scroll?.y)
                       ? `${props.scroll?.y}px`
                       : '100%',
                   }}
+                  outerStyle={{ minHeight: '0' }}
                   onScroll={handleScroll}
                 >
                   <table
-                    cellpadding={0}
-                    cellspacing={0}
                     class={`${prefixCls}-element`}
                     style={contentStyle.value}
+                    cellpadding={0}
+                    cellspacing={0}
                   >
                     {flattenData.value.length !== 0 && (
                       <ColGroup
@@ -1854,23 +1876,23 @@ export default defineComponent({
                     )}
                     {renderBody()}
                   </table>
-                </div>
+                </Scrollbar>
               </ResizeObserver>
             )}
             {summaryData.value && summaryData.value.length && (
               <div ref={summaryRef} class={`${prefixCls}-tfoot`} style={style}>
                 <table
-                  cellpadding={0}
-                  cellspacing={0}
                   class={`${prefixCls}-element`}
                   style={contentStyle.value}
+                  cellpadding={0}
+                  cellspacing={0}
                 >
                   <ColGroup
                     dataColumns={dataColumns.value}
                     operations={operations.value}
                     columnWidth={columnWidth}
                   />
-                  {renderFooter()}
+                  {renderSummary()}
                 </table>
               </div>
             )}
@@ -1893,7 +1915,7 @@ export default defineComponent({
             />
             {props.showHeader && renderHeader()}
             {renderBody()}
-            {summaryData.value && summaryData.value.length && renderFooter()}
+            {summaryData.value && summaryData.value.length && renderSummary()}
           </table>
         </ResizeObserver>
       );
@@ -1903,15 +1925,22 @@ export default defineComponent({
       const style = props.scroll?.maxHeight
         ? { maxHeight: props.scroll.maxHeight }
         : undefined;
+
       return (
         <>
-          <div
-            ref={containerRef}
-            class={[`${prefixCls}-container`, tableCls.value]}
-            style={style}
-            onScroll={handleScroll}
-          >
-            <div class={`${prefixCls}-content`}>
+          <div class={[`${prefixCls}-container`, tableCls.value]}>
+            <Scrollbar
+              ref={contentComRef}
+              class={[
+                `${prefixCls}-content`,
+                {
+                  [`${prefixCls}-content-scroll-x`]: !splitTable.value,
+                },
+              ]}
+              style={style}
+              outerStyle={{ height: '100%' }}
+              onScroll={handleScroll}
+            >
               {content ? (
                 <table
                   class={`${prefixCls}-element`}
@@ -1923,7 +1952,7 @@ export default defineComponent({
               ) : (
                 renderContent()
               )}
-            </div>
+            </Scrollbar>
           </div>
           {slots.footer && (
             <div class={`${prefixCls}-footer`}>{slots.footer()}</div>

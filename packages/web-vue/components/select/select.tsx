@@ -42,6 +42,14 @@ import { useFormItem } from '../_hooks/use-form-item';
 import { debounce } from '../_utils/debounce';
 import { SelectViewValue } from '../_components/select-view/interface';
 
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+  disabled: 'disabled',
+  tagProps: 'tagProps',
+  render: 'render',
+};
+
 export default defineComponent({
   name: 'Select',
   components: {
@@ -515,6 +523,11 @@ export default defineComponent({
       computedValueObjects.value.map((obj) => obj.key)
     );
 
+    const mergedFieldNames = computed(() => ({
+      ...DEFAULT_FIELD_NAMES,
+      ...fieldNames?.value,
+    }));
+
     // extra value and option
     const getFallBackOption = (
       value: string | number | Record<string, unknown>
@@ -523,8 +536,10 @@ export default defineComponent({
         return props.fallbackOption(value);
       }
       return {
-        value,
-        label: String(isObject(value) ? value[valueKey?.value] : value),
+        [mergedFieldNames.value.value]: value,
+        [mergedFieldNames.value.label]: String(
+          isObject(value) ? value[valueKey?.value] : value
+        ),
       };
     };
 
@@ -588,7 +603,7 @@ export default defineComponent({
 
     // clear input value when close dropdown
     watch(computedPopupVisible, (visible) => {
-      if (!visible && !retainInputValue.value) {
+      if (!visible && !retainInputValue.value && computedInputValue.value) {
         updateInputValue('');
       }
     });

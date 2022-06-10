@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### ⚠️ Important Attention
+
+- Due to functional requirements, `arco-table-cell` has been changed to flex layout, and the `arco-table-td-content` wrapper layer has been added outside the table content. If you have custom styles, please pay attention to the changes in the DOM structure ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🆕 Feature
+
+- Added `sticky-header` header ceiling function ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- Added `summaryCellStyle` property to table column configuration ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🐛 BugFix
+
+- Fixed the problem of incorrect text omission in tree data ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- Fix the problem of using grouped headers and fixed columns at the same time ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💎 Enhancement
+
+- Supports the simultaneous use of virtual lists and fixed columns ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💅 Style
+
+- Fix horizontal scroll shadow issue ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+
 ## 2.29.0
 
 `2022-05-27`

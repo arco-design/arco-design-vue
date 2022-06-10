@@ -208,7 +208,7 @@ export const getValueKey = (
       .join('-');
   }
   const _value = isObject(value) ? value[valueKey] : value;
-  return leafOptionValueMap.get(_value) ?? String(_value);
+  return leafOptionValueMap.get(String(_value)) ?? String(_value);
 };
 
 export const getValidValues = (

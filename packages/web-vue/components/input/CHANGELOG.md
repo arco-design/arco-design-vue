@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.30.0
+
+`2022-06-10`
+
+### 🐛 BugFix
+
+- Fix the problem that form validation will not be triggered after input method ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- Fixed height issue when using front and back labels in Drawer ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+
+
 ## 2.27.0
 
 `2022-05-13`

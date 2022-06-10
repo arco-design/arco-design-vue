@@ -67,5 +67,10 @@ description: 将内容组织同一视图中，一次可查看一个视图内容�
 |disabled|是否禁用|`boolean`|`false`||
 |closable|是否允许关闭此选项卡（仅在可编辑模式生效）|`boolean`|`true`||
 |destroy-on-hide|是否在不显示标签时销毁内容|`boolean`|`false`|2.27.0|
+### `<tab-pane>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|title|选项卡标题|-|
 
 
