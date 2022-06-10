@@ -68,8 +68,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |stripe|是否开启斑马纹效果|`boolean`|`false`||
 |size|表格的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`||
 |table-layout-fixed|表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。|`boolean`|`false`||
-|loading|是否为加载中状态|`boolean`|`false`||
-|hide-header|是否隐藏表头|`boolean`|`false`||
+|loading|是否为加载中状态|`boolean\|object`|`false`||
 |row-selection|表格的行选择器配置|`TableRowSelection`|`-`||
 |expandable|表格的展开行配置|`TableExpandable`|`-`||
 |scroll|表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。`2.20.0` 版本增加 `minWidth`,`maxHeight` 的支持。|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
@@ -95,6 +94,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |expanded-keys|显示的展开行、子树（受控模式）优先于 `expandable`|`string[]`|`-`|2.25.0|
 |default-expanded-keys|默认显示的展开行、子树（非受控模式）优先于 `expandable`|`string[]`|`-`|2.25.0|
 |default-expand-all-rows|是否默认展开所有的行|`boolean`|`false`|2.25.0|
+|sticky-header|是否开启表头吸顶|`boolean\|number`|`false`|2.30.0|
 ### `<table>` Events
 
 |事件名|描述|参数|版本|
@@ -155,6 +155,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |cell-style|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
 |header-cell-style|自定义表头单元格样式|`CSSProperties`|`-`|2.29.0|
 |body-cell-style|自定义内容单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
+|summary-cell-style|自定义总结栏单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |index|用于手动指定选项的 index。2.26.0 版本后不再需要手动指定|`number`|`-`|2.20.2|
 |tooltip|在省略时是否显示文字提示|`boolean\|object`|`false`|2.26.0|
 ### `<table-column>` Slots
@@ -242,7 +243,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |cellStyle|自定义单元格样式|`CSSProperties`|`-`|2.11.0|
 |headerCellStyle|自定义表头单元格样式|`CSSProperties`|`-`|2.29.0|
 |bodyCellStyle|自定义内容单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
-|footerCellStyle|自定义总结栏单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
+|summaryCellStyle|自定义总结栏单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
 |titleSlotName|设置当前列的标题的渲染插槽的名字|`string`|`-`|2.23.0|
