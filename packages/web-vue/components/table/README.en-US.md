@@ -70,8 +70,7 @@ description: It is used for data collection, display, analysis and processing, a
 |stripe|Whether to enable the stripe effect|`boolean`|`false`||
 |size|The size of the table|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`||
 |table-layout-fixed|The table-layout property of the table is set to fixed. After it is set to fixed, the width of the table will not be stretched beyond 100% by the content.|`boolean`|`false`||
-|loading|Whether it is loading state|`boolean`|`false`||
-|hide-header|Whether to hide the header|`boolean`|`false`||
+|loading|Whether it is loading state|`boolean\|object`|`false`||
 |row-selection|Table row selector configuration|`TableRowSelection`|`-`||
 |expandable|Expand row configuration of the table|`TableExpandable`|`-`||
 |scroll|Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values. `2.20.0` version adds support for `minWidth`, `maxHeight`.|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
@@ -97,6 +96,7 @@ description: It is used for data collection, display, analysis and processing, a
 |expanded-keys|Displayed Expanded Row, Subtree (Controlled Mode) takes precedence over `expandable`|`string[]`|`-`|2.25.0|
 |default-expanded-keys|Expand row, Subtree displayed by default (Uncontrolled mode) takes precedence over `expandable`|`string[]`|`-`|2.25.0|
 |default-expand-all-rows|Whether to expand all rows by default|`boolean`|`false`|2.25.0|
+|sticky-header|Whether to open the sticky header|`boolean\|number`|`false`|2.30.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|version|
@@ -157,6 +157,7 @@ description: It is used for data collection, display, analysis and processing, a
 |cell-style|Custom cell style|`CSSProperties`|`-`|2.11.0|
 |header-cell-style|Custom cell style|`CSSProperties`|`-`|2.29.0|
 |body-cell-style|Custom cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
+|summary-cell-style|Customize summary column cell styles|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |index|index for manually specifying option. Manual specification is no longer required after version 2.26.0|`number`|`-`|2.20.2|
 |tooltip|Whether to show text hints when omitted|`boolean\|object`|`false`|2.26.0|
 ### `<table-column>` Slots
@@ -244,7 +245,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
 |headerCellStyle|Custom header cell style|`CSSProperties`|`-`|2.29.0|
 |bodyCellStyle|Custom body cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
-|footerCellStyle|Custom summary cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
+|summaryCellStyle|Custom summary cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
 |titleSlotName|Set the name of the render slot for the header of the current column|`string`|`-`|2.23.0|
