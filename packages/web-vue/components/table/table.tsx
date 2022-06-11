@@ -17,7 +17,6 @@ import {
   watchEffect,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
 import {
   isArray,
@@ -1103,19 +1102,22 @@ export default defineComponent({
     };
 
     const handleScroll = (e: Event) => {
-      const target = e.target as HTMLDivElement;
-      if (target.scrollLeft !== containerScrollLeft.value) {
-        containerScrollLeft.value = target.scrollLeft;
-      }
-      if (splitTable.value) {
-        if (theadRef.value) {
-          theadRef.value.scrollLeft = target.scrollLeft;
-        }
-        if (summaryRef.value) {
-          summaryRef.value.scrollLeft = target.scrollLeft;
-        }
+      if (
+        (e.target as HTMLDivElement).scrollLeft !== containerScrollLeft.value
+      ) {
+        containerScrollLeft.value = (e.target as HTMLDivElement).scrollLeft;
       }
       setAlignPosition();
+    };
+
+    const onTbodyScroll = (e: Event) => {
+      if (theadRef.value) {
+        theadRef.value.scrollLeft = (e.target as HTMLDivElement).scrollLeft;
+      }
+      if (summaryRef.value) {
+        summaryRef.value.scrollLeft = (e.target as HTMLDivElement).scrollLeft;
+      }
+      handleScroll(e);
     };
 
     const handleRowClick = (record: TableDataWithRaw, ev: Event) => {
@@ -1734,7 +1736,7 @@ export default defineComponent({
 
     const renderBody = () => {
       const hasSubData = flattenData.value.some((record) =>
-        Boolean(record.children)
+        Boolean(record.hasSubtree)
       );
 
       return (
@@ -1851,7 +1853,7 @@ export default defineComponent({
                       ? `${props.scroll?.y}px`
                       : '100%',
                   }}
-                  onScroll={handleScroll}
+                  onScroll={onTbodyScroll}
                 >
                   <table
                     class={`${prefixCls}-element`}
