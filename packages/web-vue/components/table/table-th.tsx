@@ -215,7 +215,7 @@ export default defineComponent({
       const cls: any[] = [
         `${prefixCls}-cell`,
         `${prefixCls}-cell-align-${
-          props.column?.align ?? props.column.children ? 'center' : 'left'
+          props.column?.align ?? (props.column.children ? 'center' : 'left')
         }`,
       ];
 
