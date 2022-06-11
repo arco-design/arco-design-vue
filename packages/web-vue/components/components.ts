@@ -125,6 +125,7 @@ declare module 'vue' {
     ATypographyTitle: typeof import('@arco-design/web-vue')['TypographyTitle'];
     ATypographyText: typeof import('@arco-design/web-vue')['TypographyText'];
     AUpload: typeof import('@arco-design/web-vue')['Upload'];
+    AWaterMark: typeof import('@arco-design/web-vue')['WaterMark'];
   }
 
   export interface ComponentCustomProperties {

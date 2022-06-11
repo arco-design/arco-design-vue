@@ -23,6 +23,7 @@ export default {
     button: '按钮 Button',
     link: '链接 Link',
     typography: '排版 Typography',
+    waterMark: '水印 WaterMark',
     empty: '空状态 Empty',
     badge: '徽标 Badge',
     table: '表格 Table',

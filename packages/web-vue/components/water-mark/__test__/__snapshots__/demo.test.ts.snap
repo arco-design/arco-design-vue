@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<water-mark> demo: render [basic] correctly 1`] = `
+"<a-water-mark content=\\"Arco Design\\">
+  <article class=\\"arco-typography\\" style=\\"margin-top: -40px;\\">
+    <h1 class=\\"arco-typography\\">ArcoDesign
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </h1>
+    <div class=\\"arco-typography\\"> The ArcoDesign component library defines a set of default particle variables, and a custom theme is to <span class=\\"arco-typography\\"><mark>customize</mark><!----><!--v-if--><!--v-if--><!--v-if--></span> and <span class=\\"arco-typography\\"><u>overwrite</u><!----><!--v-if--><!--v-if--><!--v-if--></span> this variable list.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <blockquote class=\\"arco-typography\\"> A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a <span class=\\"arco-typography\\"><code>prototype</code><!----><!--v-if--><!--v-if--><!--v-if--></span>, <span class=\\"arco-typography\\"><code>product</code><!----><!--v-if--><!--v-if--><!--v-if--></span> or <span class=\\"arco-typography\\"><code>process</code><!----><!--v-if--><!--v-if--><!--v-if--></span>. The verb to design expresses the process of developing a design.
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </blockquote>
+    <div class=\\"arco-typography\\"><mark><del><u>A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process.</u></del></mark>
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-typography\\">
+      <ul>
+        <li> Architectural blueprints <ul>
+            <li>Architectural blueprints</li>
+          </ul>
+        </li>
+        <li>Engineering drawings</li>
+        <li>Business processes</li>
+      </ul>
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div class=\\"arco-typography\\">
+      <ol>
+        <li>Architectural blueprints</li>
+        <li>Engineering drawings</li>
+        <li>Business processes</li>
+      </ol>
+      <!---->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </article>
+</a-water-mark>"
+`;

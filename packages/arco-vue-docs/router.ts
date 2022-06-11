@@ -19,6 +19,10 @@ const Typography = () =>
   import('@web-vue/components/typography/README.zh-CN.md');
 const TypographyEn = () =>
   import('@web-vue/components/typography/README.en-US.md');
+const WaterMark = () =>
+  import('@web-vue/components/water-mark/README.zh-CN.md');
+const WaterMarkEn = () =>
+  import('@web-vue/components/water-mark/README.en-US.md');
 const Divider = () => import('@web-vue/components/divider/README.zh-CN.md');
 const DividerEn = () => import('@web-vue/components/divider/README.en-US.md');
 const Grid = () => import('@web-vue/components/grid/README.zh-CN.md');
@@ -288,6 +292,11 @@ const components = [
         name: 'typography',
         component: Typography,
         componentEn: TypographyEn,
+      },
+      {
+        name: 'waterMark',
+        component: WaterMark,
+        componentEn: WaterMarkEn,
       },
     ],
   },
