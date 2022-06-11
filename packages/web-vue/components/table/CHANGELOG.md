@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.30.2
+
+`2022-06-11`
+
+### 🐛 BugFix
+
+- Fix the problem that the header is centered when align='left' ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+### 💎 Enhancement
+
+- Indent no longer shows when there is no expand button ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+
 ## 2.30.0
 
 `2022-06-10`

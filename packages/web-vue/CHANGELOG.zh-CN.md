@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.30.2
+
+`2022-06-11`
+
+### 🐛 问题修复
+
+- **table:** 修复 align='left' 时表头居中的问题 ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+### 💎 功能优化
+
+- **table:** 无展开按钮时不再显示缩进 ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+
 ## 2.30.1
 
 `2022-06-10`
