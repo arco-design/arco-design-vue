@@ -284,7 +284,7 @@ export default defineComponent({
      * @version 2.16.0
      */
     rowClass: {
-      type: [String, Array, Object],
+      type:[String, Function] as PropType<string | ((record: TableData,rowIndex:number) => string)>
     },
     /**
      * @zh 表格拖拽排序的配置
@@ -600,6 +600,7 @@ export default defineComponent({
       defaultExpandAllRows,
       spanMethod,
       draggable,
+      rowClass,
       summarySpanMethod,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
@@ -1230,6 +1231,7 @@ export default defineComponent({
       tableInjectionKey,
       reactive({
         loadMore,
+        rowClass,
         addLazyLoadData,
         slots,
         sorter: computedSorter,
@@ -1402,7 +1404,10 @@ export default defineComponent({
             tr: slots.tr,
           }}
           key={`table-summary-${rowIndex}`}
-          class={[`${prefixCls}-tr-summary`, props.rowClass]}
+          class={[
+            `${prefixCls}-tr-summary`,
+            isFunction(props.rowClass)?props.rowClass(record,rowIndex):props.rowClass]
+        }
           // @ts-ignore
           onClick={(ev: Event) => handleRowClick(record, ev)}
         >
@@ -1638,7 +1643,7 @@ export default defineComponent({
                 [`${prefixCls}-tr-draggable`]: dragType.value === 'row',
                 [`${prefixCls}-tr-drag`]: isDragTarget,
               },
-              props.rowClass,
+              isFunction(props.rowClass)?props.rowClass(record,rowIndex):props.rowClass,
             ]}
             rowIndex={rowIndex}
             record={record}
