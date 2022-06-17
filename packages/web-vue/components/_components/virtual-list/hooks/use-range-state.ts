@@ -1,5 +1,6 @@
 import { toRefs, reactive } from 'vue';
 import { getRangeIndex, getScrollPercentage } from '../utils';
+import { throttleByRaf } from '../../../_utils/throttle-by-raf';
 
 export function useRangeState(props: {
   viewportRef: HTMLElement | undefined;
@@ -44,6 +45,6 @@ export function useRangeState(props: {
 
   return {
     rangeState,
-    updateRangeState,
+    updateRangeState: throttleByRaf(updateRangeState),
   };
 }
