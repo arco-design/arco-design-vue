@@ -54,8 +54,27 @@ export const useExpand = ({
     emit('update:expandedKeys', newExpandedRowKeys);
   };
 
+  const expand = (rowKey: string | string[], expanded = true) => {
+    const _rowKeys = ([] as string[]).concat(rowKey);
+    const newExpandedRowKeys = expanded
+      ? expandedRowKeys.value.concat(_rowKeys)
+      : expandedRowKeys.value.filter((key) => !_rowKeys.includes(key));
+    _expandedRowKeys.value = newExpandedRowKeys;
+    emit('expandedChange', newExpandedRowKeys);
+    emit('update:expandedKeys', newExpandedRowKeys);
+  };
+
+  const expandAll = (expanded = true) => {
+    const newExpandedRowKeys = expanded ? [...allRowKeys.value] : [];
+    _expandedRowKeys.value = newExpandedRowKeys;
+    emit('expandedChange', newExpandedRowKeys);
+    emit('update:expandedKeys', newExpandedRowKeys);
+  };
+
   return {
     expandedRowKeys,
     handleExpand,
+    expand,
+    expandAll,
   };
 };

@@ -66,6 +66,27 @@ export const useRowSelection = ({
     handleSelect(newKeys, record);
   };
 
+  const select = (rowKey: string | string[], checked = true) => {
+    const _rowKeys = ([] as string[]).concat(rowKey);
+    const newSelectedRowKeys = checked
+      ? selectedRowKeys.value.concat(_rowKeys)
+      : selectedRowKeys.value.filter((key) => !_rowKeys.includes(key));
+    _selectedRowKeys.value = newSelectedRowKeys;
+    emit('selectionChange', newSelectedRowKeys);
+    emit('update:selectedKeys', newSelectedRowKeys);
+  };
+
+  const selectAll = (checked = true) => {
+    const newSelectedRowKeys = union(
+      selectedRowKeys.value,
+      currentAllEnabledRowKeys.value,
+      !checked
+    );
+    _selectedRowKeys.value = newSelectedRowKeys;
+    emit('selectionChange', newSelectedRowKeys);
+    emit('update:selectedKeys', newSelectedRowKeys);
+  };
+
   return {
     isRadio,
     selectedRowKeys,
@@ -73,5 +94,7 @@ export const useRowSelection = ({
     handleSelectAll,
     handleSelect,
     handleSelectAllLeafs,
+    select,
+    selectAll,
   };
 };
