@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 Feature
+
+- Add bodyClass and bodyStyle ([#1303](https://github.com/arco-design/arco-design-vue/pull/1303))
+
+
 ## 2.30.0
 
 `2022-06-10`

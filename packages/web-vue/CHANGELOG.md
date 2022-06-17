@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 Feature
+
+- **form:** Added parameter support for resetFields and clearValidate methods ([#1305](https://github.com/arco-design/arco-design-vue/pull/1305))
+- **table:** Add new component methods, see the documentation for details ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- **table:** The slot defined by titleSlotName adds the column parameter ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- **modal:** Add bodyClass and bodyStyle ([#1303](https://github.com/arco-design/arco-design-vue/pull/1303))
+
+### 🐛 BugFix
+
+- fixed the problem that Virtual list `ScrollIntoView` has an wrong result ([#1301](https://github.com/arco-design/arco-design-vue/pull/1301))
+- **menu:** the horizontal menu cannot be expanded after being collapsed ([#1297](https://github.com/arco-design/arco-design-vue/pull/1297))
+
+
 ## 2.30.2
 
 `2022-06-11`

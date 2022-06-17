@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.31.0
+
+`2022-06-17`
+
+### 🐛 BugFix
+
+- the horizontal menu cannot be expanded after being collapsed ([#1297](https://github.com/arco-design/arco-design-vue/pull/1297))
+
+
 ## 2.25.1
 
 `2022-04-27`

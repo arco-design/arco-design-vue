@@ -64,6 +64,8 @@ description: Open a floating layer on the current page to carry related operatio
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 |mask-animation-name|Mask layer animation name|`string`|`-`|2.24.0|
 |modal-animation-name|Modal animation name|`string`|`-`|2.24.0|
+|body-class|The classname of the modal|`string \| any[]`|`-`|2.31.0|
+|body-style|Modal style|`StyleValue`|`-`|2.31.0|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|version|

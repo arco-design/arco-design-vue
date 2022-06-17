@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 新增功能
+
+- resetFields 和  clearValidate 方法增加参数支持 ([#1305](https://github.com/arco-design/arco-design-vue/pull/1305))
+
+
 ## 2.22.0
 
 `2022-04-01`

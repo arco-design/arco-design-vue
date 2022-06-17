@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 Feature
+
+- Add new component methods, see the documentation for details ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- The slot defined by titleSlotName adds the column parameter ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+
+
 ## 2.30.2
 
 `2022-06-11`

@@ -118,6 +118,13 @@ description: 用于数据收集展示、分析整理、操作处理。
 |方法名|描述|参数|返回值|版本|
 |---|---|---|---|:---|
 |selectAll|设置全选状态|checked: ` boolean `|-|2.22.0|
+|select|设置行选择器状态|rowKey: ` string \| string[] `<br>checked: ` boolean `|-|2.31.0|
+|expandAll|设置全部展开状态|checked: ` boolean `|-|2.31.0|
+|expand|设置展开状态|rowKey: ` string \| string[] `<br>checked: ` boolean `|-|2.31.0|
+|resetFilters|重置列的筛选器|dataIndex: ` string \| string[] `|-|2.31.0|
+|clearFilters|清空列的筛选器|dataIndex: ` string \| string[] `|-|2.31.0|
+|resetSorters|重置列的排序|-|-|2.31.0|
+|clearSorters|清空列的排序|-|-|2.31.0|
 ### `<table>` Slots
 
 |插槽名|描述|参数|版本|

@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 新增功能
+
+- **form:** resetFields 和  clearValidate 方法增加参数支持 ([#1305](https://github.com/arco-design/arco-design-vue/pull/1305))
+- **table:** 增加新的组件方法，详情可见文档 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- **table:** titleSlotName 定义的插槽增加 column 参数 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- **modal:** 增加 bodyClass 和 bodyStyle ([#1303](https://github.com/arco-design/arco-design-vue/pull/1303))
+
+### 🐛 问题修复
+
+- 修复虚拟滚动条 `scrollIntoView` 定位错误的问题 ([#1301](https://github.com/arco-design/arco-design-vue/pull/1301))
+- **menu:** 修复横向菜单收起后无法展开的问题 ([#1297](https://github.com/arco-design/arco-design-vue/pull/1297))
+
+
 ## 2.30.2
 
 `2022-06-11`
