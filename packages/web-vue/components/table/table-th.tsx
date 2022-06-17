@@ -241,7 +241,9 @@ export default defineComponent({
         props.column?.titleSlotName &&
         tableCtx.slots?.[props.column.titleSlotName]
       ) {
-        return tableCtx.slots[props.column.titleSlotName]?.();
+        return tableCtx.slots[props.column.titleSlotName]?.({
+          column: props.column,
+        });
       }
       if (props.column?.slots?.title) {
         return props.column.slots.title();
