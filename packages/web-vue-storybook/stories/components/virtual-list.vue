@@ -3,12 +3,15 @@
   <Space style="margin-bottom: 20px">
     <Button @click="toggleHeight">change height</Button>
     <Button @click="scrollTo">scrollTo index 20</Button>
+    <Button @click="toggleRawData">toggle {{ data.length > 20 ? 'raw' : 'big' }} data</Button>
+    <InputNumber v-model="scrollToIndex" />
   </Space>
   <VirtualList
     ref="basicVirtualList"
     :data="data"
     style="background: #c4c4c4"
     :height="height"
+    :threshold="20"
   >
     <template #item="{ item }">
       <div
@@ -31,7 +34,7 @@
   </Space>
   <List
     ref="listVirtualList"
-    :data="data"
+    :data="listData"
     :virtual-list-props="{ height: 256 }"
   >
     <template #item="{ item }">
@@ -55,7 +58,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import {
   Button,
   Tree,
@@ -65,8 +68,10 @@ import {
   List,
   Select,
   Space,
+  InputNumber,
 } from '@web-vue/components';
 import VirtualList from '@web-vue/components/_components/virtual-list/virtual-list.vue';
+import { bigData } from './json';
 
 export default {
   components: {
@@ -80,12 +85,22 @@ export default {
     ListItem: List.Item,
     Select,
     Space,
+    InputNumber,
   },
   setup() {
     const basicVirtualList = ref();
     const listVirtualList = ref();
     const treeVirtualList = ref();
-    const data = ref(
+    const data = ref(bigData);
+    const rawData = new Array(10).fill(null).map((_, index) => ({
+      key: index,
+      label: `label-${index}`,
+      height: Math.random() * 200 + 16,
+      background: ['red', 'blue', 'yellow', 'green'][
+        Math.floor(Math.random() * 4)
+      ],
+    }));
+    const listData = ref(
       new Array(10000).fill(null).map((_, index) => ({
         key: index,
         label: `label-${index}`,
@@ -95,6 +110,7 @@ export default {
         ],
       }))
     );
+
     const selectData = new Array(10000).fill(null).map((_, index) => ({
       key: index,
       value: index,
@@ -106,14 +122,24 @@ export default {
     }));
     const treeData = defaultTreeData;
     const height = ref(200);
+    const scrollToIndex = ref(1);
+
+    watch(scrollToIndex, () => {
+      basicVirtualList.value.scrollTo({
+        index: scrollToIndex.value,
+        align: 'top',
+      });
+    });
 
     return {
+      scrollToIndex,
       basicVirtualList,
       listVirtualList,
       treeVirtualList,
       treeData,
       data,
       selectData,
+      listData,
       height,
       toggleHeight() {
         height.value = height.value === 200 ? 400 : 200;
@@ -141,6 +167,13 @@ export default {
             align: 'bottom',
           });
       },
+      toggleRawData() {
+        if (data.value.length > 20) {
+          data.value = rawData;
+        } else {
+          data.value = bigData;
+        }
+      }
     };
   },
 };
@@ -191,6 +224,31 @@ const defaultTreeData = [
       {
         title: 'Leaf 0-1-2',
         key: '0-1-2',
+      },
+    ],
+  },
+  {
+    title: 'Trunk 1-1',
+    key: '1-1',
+    children: [
+      {
+        title: 'Branch 1-1-1',
+        key: '1-1-1',
+        checkable: false,
+        children: [
+          {
+            title: 'Leaf 1-1-1-1',
+            key: '1-1-1-1',
+          },
+          {
+            title: 'Leaf 1-1-1-2',
+            key: '1-1-1-2',
+          },
+        ],
+      },
+      {
+        title: 'Leaf 1-1-2',
+        key: '1-1-2',
       },
     ],
   },

@@ -12,7 +12,7 @@
       @scroll="handleScroll"
     >
       <Filler
-        :height="totalHeight"
+        :height="isVirtual ? totalHeight : viewportHeight"
         :offset="isVirtual ? startOffset : undefined"
         :type="type"
         :outer-attrs="outerAttrs"
@@ -162,7 +162,6 @@ export default defineComponent({
     const {
       itemHeight,
       minItemHeight,
-      estimatedItemHeight,
       totalHeight,
       setItemHeight,
       getItemHeight,
@@ -232,13 +231,9 @@ export default defineComponent({
       }),
       {
         onItemResize(el, key) {
-          const itemHeight = getItemHeight(key);
-          if (el && isUndefined(itemHeight)) {
-            if (
-              isStaticItemHeight.value &&
-              !isUndefined(estimatedItemHeight.value)
-            ) {
-              setItemHeight(key, estimatedItemHeight.value);
+          if (el && isUndefined(getItemHeight(key))) {
+            if (isStaticItemHeight.value) {
+              setItemHeight(key, itemHeight.value);
             } else {
               const height = el.offsetHeight;
               if (height) {
@@ -371,9 +366,7 @@ export default defineComponent({
 
     // 开始和结束元素变化后需要更新偏移
     watch(rangeState, () => {
-      nextTick(() => {
-        updateScrollOffset();
-      });
+      updateScrollOffset();
     });
 
     return {

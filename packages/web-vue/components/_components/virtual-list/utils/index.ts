@@ -83,7 +83,7 @@ export function getItemRelativeTop({
   clientHeight,
 }: Omit<ItemTopConfig, 'scrollTop'>) {
   if (scrollPtg === 1) return clientHeight - itemHeight;
-  return Math.floor(clientHeight * scrollPtg - itemHeight * itemOffsetPtg);
+  return clientHeight * scrollPtg - itemHeight * itemOffsetPtg;
 }
 
 /**
