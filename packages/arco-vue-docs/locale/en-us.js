@@ -4,6 +4,7 @@ export default {
     start: 'Quick Start',
     dark: 'Dark Mode',
     theme: 'Custom Theme',
+    token: 'Design Token',
     i18n: 'Internationalization',
     changelog: 'Changelog',
   },

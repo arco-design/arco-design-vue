@@ -193,6 +193,10 @@ const docs = [
     componentEn: ThemeEn,
   },
   {
+    name: 'token',
+    component: () => import('./pages/token/token.vue'),
+  },
+  {
     name: 'i18n',
     component: I18n,
     componentEn: I18nEn,
