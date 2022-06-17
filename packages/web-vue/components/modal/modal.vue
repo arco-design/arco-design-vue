@@ -70,7 +70,7 @@
                   </icon-hover>
                 </div>
               </div>
-              <div :class="`${prefixCls}-body`">
+              <div :class="[`${prefixCls}-body`, bodyClass]" :style="bodyStyle">
                 <slot />
               </div>
               <div v-if="footer" :class="`${prefixCls}-footer`">
@@ -101,7 +101,7 @@
 </template>
 
 <script lang="tsx">
-import type { CSSProperties, PropType } from 'vue';
+import type { CSSProperties, PropType, StyleValue } from 'vue';
 import {
   defineComponent,
   computed,
@@ -398,6 +398,22 @@ export default defineComponent({
         }
         return 'zoom-modal';
       },
+    },
+    /**
+     * @zh 对话框内容部分的类名
+     * @en The classname of the modal
+     * @version 2.31.0
+     */
+    bodyClass: {
+      type: [String, Array] as PropType<string | any[]>,
+    },
+    /**
+     * @zh 对话框内容部分的样式
+     * @en Modal style
+     * @version 2.31.0
+     */
+    bodyStyle: {
+      type: [String, Object, Array] as PropType<StyleValue>,
     },
     // private
     messageType: {
