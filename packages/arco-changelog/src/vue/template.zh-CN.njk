@@ -1,0 +1,52 @@
+## {{ version }}
+
+`{{ date }}`
+
+{% if attention -%}
+  ### ⚠️ 重点注意
+
+  {% for content in attention -%}
+    - {{ content }}
+  {% endfor %}
+
+{% endif %}
+{% if feature -%}
+  ### 🆕 新增功能
+
+  {% for content in feature -%}
+    - {{ content }}
+  {% endfor %}
+
+{% endif %}
+{% if bugfix -%}
+  ### 🐛 问题修复
+
+  {% for content in bugfix -%}
+    - {{ content }}
+  {% endfor %}
+
+{% endif %}
+{% if enhancement -%}
+  ### 💎 功能优化
+
+  {% for content in enhancement -%}
+    - {{ content }}
+  {% endfor %}
+
+{% endif %}
+{% if style -%}
+  ### 💅 样式更新
+
+  {% for content in style -%}
+    - {{ content }}
+  {% endfor %}
+
+{% endif %}
+{% if typescript -%}
+  ### 🆎 类型修正
+
+  {% for content in typescript -%}
+    - {{ content }}
+  {% endfor %}
+
+{% endif %}
