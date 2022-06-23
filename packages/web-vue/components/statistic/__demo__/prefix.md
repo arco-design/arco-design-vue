@@ -24,7 +24,7 @@ The prefix and suffix can be added through the `prefix` and `suffix` slots.
         <icon-arrow-rise />
       </template>
     </a-statistic>
-    <a-statistic title="User Growth Rate" :value="50.52" :precision="2">
+    <a-statistic title="User Growth Rate" :value="50.52" :precision="2" :value-style="{ color: '#0fbf60' }">
       <template #prefix>
         <icon-arrow-rise />
       </template>
