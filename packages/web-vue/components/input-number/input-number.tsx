@@ -350,7 +350,7 @@ export default defineComponent({
       _value.value = '';
       emit('update:modelValue', undefined);
       emit('change', undefined, ev);
-      eventHandlers.value.onChange?.(ev);
+      eventHandlers.value?.onChange?.(ev);
       emit('clear', ev);
     };
 
