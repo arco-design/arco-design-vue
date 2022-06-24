@@ -33,8 +33,10 @@ export function useItemHeight(props: {
     Math.min(itemHeight.value, DEFAULT_ITEM_HEIGHT)
   );
 
-  // 总高度只需要一个范围，无需准确值
-  const totalHeight = computed(() => itemHeight.value * data.value.length);
+  const totalHeight = data.value.reduce(
+    (sum, { key }) => sum + getItemHeightOrDefault(key),
+    0
+  );
 
   function setItemHeight(key: VirtualItemKey, height: number) {
     itemHeightCacheMap.value.set(key, height);
@@ -48,13 +50,19 @@ export function useItemHeight(props: {
     return itemHeightCacheMap.value.get(key) || itemHeight.value;
   }
 
-  function getItemHeightByIndex(index: number) {
-    const { key } = data.value[index];
-    return itemHeightCacheMap.value.get(key);
+  function getItemHeightByIndex(
+    index: number,
+    customData?: InternalDataItem[]
+  ) {
+    const item = (data.value || customData)[index];
+    return item ? itemHeightCacheMap.value.get(item.key) : undefined;
   }
 
-  function getItemHeightOrDefaultByIndex(index: number) {
-    return getItemHeightByIndex(index) || itemHeight.value;
+  function getItemHeightOrDefaultByIndex(
+    index: number,
+    customData?: InternalDataItem[]
+  ) {
+    return getItemHeightByIndex(index, customData) || itemHeight.value;
   }
 
   return {
@@ -67,5 +75,11 @@ export function useItemHeight(props: {
     getItemHeightOrDefault,
     getItemHeightByIndex,
     getItemHeightOrDefaultByIndex,
+    getTotalHeight: (customData: InternalDataItem[]) => {
+      return customData.reduce(
+        (sum, item) => sum + getItemHeightOrDefault(item.key),
+        0
+      );
+    },
   };
 }
