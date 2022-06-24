@@ -93,6 +93,7 @@ export function getCheckedStateByCheck(options: {
     } else {
       childKeys.forEach(SetDelete(checkedKeySet));
     }
+    childKeys.forEach(SetDelete(indeterminateKeySet));
 
     // 逐级更新父节点的选中状态
     updateParent({ node, checkedKeySet, indeterminateKeySet });
@@ -127,8 +128,10 @@ export function getCheckedStateByInitKeys(options: {
       // 处理子节点
       const childKeys = getChildrenKeys(node);
       childKeys.forEach(SetAdd(childCheckedKeySet));
+      childKeys.forEach(SetDelete(indeterminateKeySet));
       // 处理自身
       checkedKeySet.add(key);
+      indeterminateKeySet.delete(key);
       // 处理父节点
       updateParent({ node, checkedKeySet, indeterminateKeySet });
     });
