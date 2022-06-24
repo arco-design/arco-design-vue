@@ -82,15 +82,15 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 |事件名|描述|参数|版本|
 |---|---|---|:---|
-|change|值发生改变时触发|-||
-|input-value-change|输入框的值发生改变时触发|-||
+|change|值发生改变时触发|value: ` string \| number \| Record<string, any> \| (string \| number \| Record<string, any>)[] `||
+|input-value-change|输入框的值发生改变时触发|inputValue: `string`||
 |popup-visible-change|下拉框的显示状态改变时触发|visible: `boolean`||
 |clear|点击清除按钮时触发|-||
-|remove|点击标签的删除按钮时触发|-||
-|search|用户搜索时触发|-||
+|remove|点击标签的删除按钮时触发|removed: `string \| number \| Record<string, any> \| undefined`||
+|search|用户搜索时触发|inputValue: `string`||
 |dropdown-scroll|下拉菜单发生滚动时触发|-||
 |dropdown-reach-bottom|下拉菜单滚动到底部时触发|-||
-|exceed-limit|多选超出限制时触发|value: `mixed`|2.18.0|
+|exceed-limit|多选超出限制时触发|value: `string \| number \| Record<string, any> \| undefined`<br>ev: `Event`|2.18.0|
 ### `<select>` Slots
 
 |插槽名|描述|参数|版本|
