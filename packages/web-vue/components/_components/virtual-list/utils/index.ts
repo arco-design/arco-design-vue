@@ -71,7 +71,6 @@ interface ItemTopConfig {
   scrollTop: number;
   scrollPtg: number;
   clientHeight: number;
-  floor?: boolean;
 }
 
 /**
@@ -82,13 +81,9 @@ export function getItemRelativeTop({
   itemOffsetPtg,
   scrollPtg,
   clientHeight,
-  floor,
 }: Omit<ItemTopConfig, 'scrollTop'>) {
   if (scrollPtg === 1) return clientHeight - itemHeight;
-  const relativeTop = Math.floor(
-    clientHeight * scrollPtg - itemHeight * itemOffsetPtg
-  );
-  return floor !== false ? Math.floor(relativeTop) : relativeTop;
+  return clientHeight * scrollPtg - itemHeight * itemOffsetPtg;
 }
 
 /**

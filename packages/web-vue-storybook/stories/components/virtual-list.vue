@@ -3,24 +3,20 @@
   <Space style="margin-bottom: 20px">
     <Button @click="toggleHeight">change height</Button>
     <Button @click="scrollTo">scrollTo index 20</Button>
-    <Button @click="toggleVirtual"
-      >Switch to {{ isVirtual ? 'Raw' : 'Virtual' }}</Button
-    >
-    <Button @click="addData">Add Data</Button>
+    <Button @click="toggleRawData">toggle {{ data.length > 20 ? 'raw' : 'big' }} data</Button>
     <InputNumber v-model="scrollToIndex" />
-    <Input v-model="keyword" />
-    <span>{{ filterData.length }}</span>
   </Space>
   <VirtualList
     ref="basicVirtualList"
-    :data="filterData"
+    :data="data"
     style="background: #c4c4c4"
     :height="height"
     :threshold="20"
   >
-    <template #item="{ item, index }">
-      <div :style="{ height: `${item.height}px`, background: item.background }"
-        >[[ {{ index }} ]]-{{ item.label }}</div
+    <template #item="{ item }">
+      <div
+        :style="{ height: `${item.height}px`, background: item.background }"
+        >{{ item.label }}</div
       >
     </template>
   </VirtualList>
@@ -62,7 +58,7 @@
 </template>
 
 <script>
-import { ref, watch, computed } from 'vue';
+import { ref, watch } from 'vue';
 import {
   Button,
   Tree,
@@ -73,33 +69,9 @@ import {
   Select,
   Space,
   InputNumber,
-  Input,
 } from '@web-vue/components';
 import VirtualList from '@web-vue/components/_components/virtual-list/virtual-list.vue';
 import { bigData } from './json';
-
-function randomString(length = 10) {
-  const t = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const tLen = t.length;
-  return new Array(length)
-    .fill(null)
-    .map(() => t[Math.floor(Math.random() * tLen)])
-    .join('');
-}
-
-function generateData(length, startIndex, rangeHeight, baseHeight) {
-  return new Array(length).fill(null).map((_, index) => {
-    const itemIndex = (startIndex || 0) + index;
-    return {
-      key: itemIndex,
-      label: `[${itemIndex}]-${randomString()}`,
-      height: Math.random() * (rangeHeight || 200) + (baseHeight || 16),
-      background: ['red', 'blue', 'yellow', 'green'][
-        Math.floor(Math.random() * 4)
-      ],
-    };
-  });
-}
 
 export default {
   components: {
@@ -114,32 +86,43 @@ export default {
     Select,
     Space,
     InputNumber,
-    Input,
   },
   setup() {
     const basicVirtualList = ref();
     const listVirtualList = ref();
     const treeVirtualList = ref();
-    const data = ref(generateData(100));
-    const listData = ref(generateData(10000));
-    const selectData = generateData(10000, 0, 50);
+    const data = ref(bigData);
+    const rawData = new Array(10).fill(null).map((_, index) => ({
+      key: index,
+      label: `label-${index}`,
+      height: Math.random() * 200 + 16,
+      background: ['red', 'blue', 'yellow', 'green'][
+        Math.floor(Math.random() * 4)
+      ],
+    }));
+    const listData = ref(
+      new Array(10000).fill(null).map((_, index) => ({
+        key: index,
+        label: `label-${index}`,
+        height: Math.random() * 200 + 16,
+        background: ['red', 'blue', 'yellow', 'green'][
+          Math.floor(Math.random() * 4)
+        ],
+      }))
+    );
+
+    const selectData = new Array(10000).fill(null).map((_, index) => ({
+      key: index,
+      value: index,
+      label: `label-${index}`,
+      height: Math.random() * 50 + 16,
+      background: ['red', 'blue', 'yellow', 'green'][
+        Math.floor(Math.random() * 4)
+      ],
+    }));
     const treeData = defaultTreeData;
     const height = ref(200);
     const scrollToIndex = ref(1);
-    const isVirtual = ref(true);
-    const keyword = ref('');
-    const filterData = computed(() =>
-      keyword.value
-        ? data.value.filter((i) => i.label.includes(keyword.value))
-        : data.value
-    );
-
-    const addData = () => {
-      const { length } = data.value;
-      data.value = [...data.value, ...generateData(10, length - 1)];
-    };
-
-    // setInterval(() => addData(), 1000);
 
     watch(scrollToIndex, () => {
       basicVirtualList.value.scrollTo({
@@ -158,7 +141,6 @@ export default {
       selectData,
       listData,
       height,
-      isVirtual,
       toggleHeight() {
         height.value = height.value === 200 ? 400 : 200;
       },
@@ -172,7 +154,7 @@ export default {
       },
       listScrollToKey() {
         listVirtualList.value &&
-          listVirtualList.value.scrollIntoView({ key: 100 });
+          listVirtualList.value.scrollIntoView({ key: 100, align: 'bottom' });
       },
       treeScrollTo() {
         treeVirtualList.value &&
@@ -185,12 +167,13 @@ export default {
             align: 'bottom',
           });
       },
-      toggleVirtual() {
-        isVirtual.value = !isVirtual.value;
-      },
-      addData,
-      keyword,
-      filterData,
+      toggleRawData() {
+        if (data.value.length > 20) {
+          data.value = rawData;
+        } else {
+          data.value = bigData;
+        }
+      }
     };
   },
 };
