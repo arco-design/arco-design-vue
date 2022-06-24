@@ -72,7 +72,10 @@ export function useRangeState(props: {
       visibleCount.value
     );
 
-    rangeState.itemIndex = Math.min(itemCount.value - 1, itemIndex);
+    rangeState.itemIndex = Math.min(
+      Math.max(itemCount.value - 1, 0),
+      itemIndex
+    );
     rangeState.itemOffsetPtg = itemOffsetPtg;
     rangeState.startIndex = startIndex;
     rangeState.endIndex = endIndex;

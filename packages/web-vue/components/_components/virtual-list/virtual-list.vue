@@ -59,6 +59,7 @@ import {
   getValidScrollTop,
   getItemRelativeTop,
 } from './utils';
+import { findListDiffIndex } from './utils/algorithm';
 
 export default defineComponent({
   name: 'VirtualList',
@@ -167,6 +168,7 @@ export default defineComponent({
       getItemHeight,
       getItemHeightOrDefault,
       getItemHeightOrDefaultByIndex,
+      getTotalHeight,
     } = useItemHeight(
       reactive({
         estimatedItemHeight: propEstimatedItemHeight,
@@ -328,7 +330,7 @@ export default defineComponent({
             const indexItemHeight = getItemHeightOrDefaultByIndex(itemIndex);
             const itemRelativeTop =
               align === 'top' ? 0 : clientHeight - indexItemHeight;
-            innerScrollTo({
+            internalScrollTo({
               itemIndex,
               relativeTop: itemRelativeTop,
             });
@@ -337,7 +339,7 @@ export default defineComponent({
       });
     };
 
-    const innerScrollTo = (options: RelativeScroll) => {
+    const internalScrollTo = (options: RelativeScroll) => {
       if (!viewportRef.value) return;
 
       const fixScrollResult = fixScrollTo(options);
@@ -357,40 +359,63 @@ export default defineComponent({
       });
     };
 
-    watch([visibleCount], () => {
-      virtualScrollHandler(null, true);
-    });
+    function getLocationItemRelativeTop(locationData = internalData.value) {
+      if (!viewportRef.value) return 0;
+      const { clientHeight } = viewportRef.value;
+      return getItemRelativeTop({
+        itemHeight: getItemHeightOrDefaultByIndex(
+          rangeState.itemIndex,
+          locationData
+        ),
+        itemOffsetPtg: rangeState.itemOffsetPtg,
+        scrollPtg: getScrollPercentage({
+          scrollTop: scrollTop.value,
+          scrollHeight: getTotalHeight(locationData),
+          clientHeight,
+        }),
+        clientHeight,
+      });
+    }
 
-    watch([isVirtual], (_, [oldIsVirtual]) => {
-      if (isVirtual.value !== oldIsVirtual) {
-        nextTick(() => {
-          if (!viewportRef.value) return;
-          const { clientHeight } = viewportRef.value;
-          const locatedItemRelativeTop = getItemRelativeTop({
-            itemHeight: getItemHeightOrDefaultByIndex(rangeState.itemIndex),
-            itemOffsetPtg: rangeState.itemOffsetPtg,
-            scrollPtg: getScrollPercentage({
-              scrollTop: scrollTop.value,
-              scrollHeight: totalHeight.value,
-              clientHeight,
-            }),
-            clientHeight,
-          });
-          if (!isVirtual.value) {
-            let rawScrollTop = locatedItemRelativeTop;
-            for (let i = 0; i < rangeState.itemIndex; i++) {
-              rawScrollTop -= getItemHeightOrDefaultByIndex(i);
+    watch(
+      [internalData, isVirtual],
+      ([currentData, curVirtual], [prevData, prevVirtual]) => {
+        if (!viewportRef.value) return;
+        const switchTo =
+          curVirtual !== prevVirtual
+            ? curVirtual
+              ? 'virtual'
+              : 'raw'
+            : undefined;
+        let changedItemIndex: number | null = null;
+        if (curVirtual && currentData.length !== prevData.length) {
+          const diff = findListDiffIndex(
+            prevData,
+            currentData,
+            (item) => item.key
+          );
+          changedItemIndex = diff ? diff.index : null;
+        }
+        if (switchTo || changedItemIndex) {
+          nextTick(() => {
+            if (!viewportRef.value) return;
+            const locatedItemRelativeTop = getLocationItemRelativeTop(prevData);
+            if (switchTo === 'raw') {
+              let rawScrollTop = locatedItemRelativeTop;
+              for (let i = 0; i < rangeState.itemIndex; i++) {
+                rawScrollTop -= getItemHeightOrDefaultByIndex(i);
+              }
+              viewportRef.value.scrollTop = -rawScrollTop;
+            } else {
+              internalScrollTo({
+                itemIndex: rangeState.itemIndex,
+                relativeTop: locatedItemRelativeTop,
+              });
             }
-            viewportRef.value.scrollTop = -rawScrollTop;
-          } else {
-            innerScrollTo({
-              itemIndex: rangeState.itemIndex,
-              relativeTop: locatedItemRelativeTop,
-            });
-          }
-        });
+          });
+        }
       }
-    });
+    );
 
     return {
       viewportRef,
