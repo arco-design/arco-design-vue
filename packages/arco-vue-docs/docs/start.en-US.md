@@ -37,19 +37,24 @@ app.mount('#app');
 
 ## On-demand Import (template)
 
-If you use the template method for development, you can use the [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) plug-in to enable on-demand import support.
+If you use the template method for development, you can use the [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) and [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) plugin to enable on-demand import and automatic import support.
 The plug-in will automatically parse the components used in the template, and import the components and corresponding style files.
 Requires component library `version >= 2.11.0`.
 
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite';
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [ArcoResolver()],
+    }),
     Components({
       resolvers: [
         ArcoResolver({
