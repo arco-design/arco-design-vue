@@ -285,7 +285,7 @@ export default defineComponent({
         });
       } else {
         isComposition.value = true;
-        compositionValue.value = computedInputValue.value + (e.data ?? '');
+        compositionValue.value = computedInputValue.value + (ev.data ?? '');
       }
     };
 
