@@ -1,13 +1,13 @@
 <template>
   <template v-if="editable">
-    <Tooltip :content="t('typography.edit')">
+    <Tooltip :content="t('typography.edit')" v-bind="editTooltipProps">
       <span :class="`${prefixCls}-operation-edit`" @click="onEditClick">
         <IconEdit />
       </span>
     </Tooltip>
   </template>
   <template v-if="copyable">
-    <Tooltip>
+    <Tooltip v-bind="copyTooltipProps">
       <template #content>
         <slot name="copy-tooltip" :copied="isCopied">
           {{ isCopied ? t('typography.copied') : t('typography.copy') }}
@@ -62,6 +62,8 @@ export default defineComponent({
     isEllipsis: Boolean,
     expanded: Boolean,
     forceRenderExpand: Boolean,
+    editTooltipProps: Object,
+    copyTooltipProps: Object,
   },
   emits: {
     /**

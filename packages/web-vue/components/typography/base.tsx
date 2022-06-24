@@ -217,6 +217,22 @@ export default defineComponent({
       type: [Boolean, Object] as PropType<boolean | EllipsisConfig>,
       default: false,
     },
+    /**
+     * @zh 编辑按钮问题提示配置
+     * @en Edit button question prompt configuration
+     * @version 2.32.0
+     */
+    editTooltipProps: {
+      type: Object,
+    },
+    /**
+     * @zh 拷贝按钮问题提示配置
+     * @en Copy button question prompt configuration
+     * @version 2.32.0
+     */
+    copyTooltipProps: {
+      type: Object,
+    },
   },
   emits: {
     /**
@@ -274,7 +290,7 @@ export default defineComponent({
    * @slot expand-node
    * @binding {boolean} expanded
    */
-  setup(props: BaseInternalProps, { slots, emit, attrs }) {
+  setup(props, { slots, emit, attrs }) {
     const {
       editing: propEditing,
       defaultEditing,
@@ -376,6 +392,8 @@ export default defineComponent({
           isEllipsis={isEllipsis.value}
           expanded={expanded.value}
           forceRenderExpand={forceRenderExpand}
+          editTooltipProps={props.editTooltipProps}
+          copyTooltipProps={props.copyTooltipProps}
           onEdit={onEditStart}
           onCopy={onCopyClick}
           onExpand={onExpandClick}
