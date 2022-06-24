@@ -117,12 +117,11 @@ export default defineComponent({
 
         return (
           <Checkbox
-            value={value}
-            modelValue={props.selectedRowKeys ?? []}
+            modelValue={props.selectedRowKeys?.includes(value) ?? false}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(values) =>
-              tableCtx.onSelect?.(values as string[], props.record)
+            onChange={(checked) =>
+              tableCtx.onSelect?.(checked as boolean, props.record)
             }
             // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}
@@ -133,12 +132,11 @@ export default defineComponent({
         const value = props.record.key;
         return (
           <Radio
-            value={value}
-            modelValue={props.selectedRowKeys?.[0] ?? ''}
+            modelValue={props.selectedRowKeys?.includes(value) ?? false}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(value) =>
-              tableCtx.onSelect?.([value] as string[], props.record)
+            onChange={(checked) =>
+              tableCtx.onSelect?.(checked as boolean, props.record)
             }
             // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}
