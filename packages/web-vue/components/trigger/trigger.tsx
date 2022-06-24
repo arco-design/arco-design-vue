@@ -731,14 +731,21 @@ export default defineComponent({
     });
 
     const mounted = ref(computedVisible.value);
+    const isAnimation = ref(false);
+
+    const onAnimationStart = () => {
+      isAnimation.value = true;
+    };
 
     const handleShow = () => {
+      isAnimation.value = false;
       if (computedVisible.value) {
         emit('show');
       }
     };
 
     const handleHide = () => {
+      isAnimation.value = false;
       if (!computedVisible.value) {
         mounted.value = false;
         emit('hide');
@@ -783,7 +790,11 @@ export default defineComponent({
                         `${prefixCls}-popup`,
                         `${prefixCls}-position-${popupPosition.value}`,
                       ]}
-                      style={{ ...popupStyle.value, zIndex: zIndex.value }}
+                      style={{
+                        ...popupStyle.value,
+                        zIndex: zIndex.value,
+                        pointerEvents: isAnimation.value ? 'none' : 'auto',
+                      }}
                       trigger-placement={popupPosition.value}
                       onMouseenter={handleMouseEnterWithContext}
                       onMouseleave={handleMouseLeaveWithContext}
@@ -794,7 +805,9 @@ export default defineComponent({
                         name={props.animationName}
                         duration={props.duration}
                         appear
+                        onBeforeEnter={onAnimationStart}
                         onAfterEnter={handleShow}
+                        onBeforeLeave={onAnimationStart}
                         onAfterLeave={handleHide}
                       >
                         <div
