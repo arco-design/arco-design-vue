@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 新增功能
+
+- 新增 `tooltip-props` 类属性 ([#1338](https://github.com/arco-design/arco-design-vue/pull/1338))
+
+
 ## 2.27.0
 
 `2022-05-13`

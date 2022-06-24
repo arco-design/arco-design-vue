@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 💅 Style
+
+- Firefox overflow style compatibility ([#1317](https://github.com/arco-design/arco-design-vue/pull/1317))
+
+
 ## 2.25.0
 
 `2022-04-22`

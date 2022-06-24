@@ -280,6 +280,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |width|列宽度|`number`|`-`||
 |fixed|是否固定|`boolean`|`false`||
 |checkStrictly|是否开启严格选择模式 (default: true)|`boolean`|`false`|2.29.0|
+|onlyCurrent|是否仅展示当前页的 keys（切换分页时清空 keys）|`boolean`|`false`|2.32.0|
 
 
 

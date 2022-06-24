@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 Feature
+
+- **typography:** Added `tooltip-props` class property ([#1338](https://github.com/arco-design/arco-design-vue/pull/1338))
+- **table:** TableRowSelection adds the onlyCurrent property to change the default state of the table to maintain the selection state of all paging ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+- **statistic:** support custom value style prop ([#1320](https://github.com/arco-design/arco-design-vue/pull/1320))
+
+### 🐛 BugFix
+
+- **modal:** Fixed the problem that when the modal box exceeds the size of the screen, the position of the modal will be misaligned ([#1336](https://github.com/arco-design/arco-design-vue/pull/1336))
+- **input-tag:** Fix the problem of Chinese input method reporting an error ([#1335](https://github.com/arco-design/arco-design-vue/pull/1335))
+- **tree:** check on the node in the half-selected state have a wrong result ([#1331](https://github.com/arco-design/arco-design-vue/pull/1331))
+- **input-number:** fix clear error outside of form ([#1329](https://github.com/arco-design/arco-design-vue/pull/1329))
+
+### 💎 Enhancement
+
+- **trigger:** Events can no longer be fired during popover animations ([#1337](https://github.com/arco-design/arco-design-vue/pull/1337))
+- **table:** The style added by the cellStyle class attribute is moved to the td element to solve the background color problem in some scenes ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💅 Style
+
+- **tag:** Firefox overflow style compatibility ([#1317](https://github.com/arco-design/arco-design-vue/pull/1317))
+
+
 ## 2.31.0
 
 `2022-06-17`

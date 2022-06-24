@@ -41,9 +41,7 @@ export default defineComponent({
      * @en Countdown value
      */
     value: {
-      type: [Number, String, Object] as PropType<
-        number | string | Date | Dayjs
-      >,
+      type: Number,
       default: () => Date.now() + 300000,
     },
     /**
@@ -51,9 +49,7 @@ export default defineComponent({
      * @en Used to correct the incorrect display of the initialization time
      */
     now: {
-      type: [Number, String, Object] as PropType<
-        number | string | Date | Dayjs
-      >,
+      type: Number,
       default: () => Date.now(),
     },
     /**

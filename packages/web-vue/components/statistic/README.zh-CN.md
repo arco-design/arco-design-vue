@@ -51,8 +51,8 @@ description: 突出展示某个或某组数字、带描述的统计类数据。
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
 |title|倒计时的标题|`string`|`-`||
-|value|倒计时的值|`number \| string \| Date \| Dayjs`|`() => Date.now() + 300000`||
-|now|用于修正初始化时间显示不正确|`number \| string \| Date \| Dayjs`|`() => Date.now()`||
+|value|倒计时的值|`number`|`() => Date.now() + 300000`||
+|now|用于修正初始化时间显示不正确|`number`|`() => Date.now()`||
 |format|倒计时的展示格式 [dayjs](https://day.js.org/docs/en/display/format)|`string`|`'HH:mm:ss'`||
 |start|是否开始倒计时|`boolean`|`true`||
 |value-style|自定义显示值的样式|`CSSProperties`|`-`|2.32.0|

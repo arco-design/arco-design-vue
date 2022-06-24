@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 新增功能
+
+- TableRowSelection 增加 onlyCurrent 属性，更改表格默认维护所有分页的选择状态 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💎 功能优化
+
+- cellStyle 类属性添加的样式移动到 td 元素上，解决部分场景下背景色问题 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+
 ## 2.31.0
 
 `2022-06-17`

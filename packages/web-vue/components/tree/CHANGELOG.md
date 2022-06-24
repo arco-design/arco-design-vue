@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 BugFix
+
+- check on the node in the half-selected state have a wrong result ([#1331](https://github.com/arco-design/arco-design-vue/pull/1331))
+
+
 ## 2.27.0
 
 `2022-05-13`

@@ -53,8 +53,8 @@ description: Highlight a certain number or group of numbers and statistical data
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |title|Countdown title|`string`|`-`||
-|value|Countdown value|`number \| string \| Date \| Dayjs`|`() => Date.now() + 300000`||
-|now|Used to correct the incorrect display of the initialization time|`number \| string \| Date \| Dayjs`|`() => Date.now()`||
+|value|Countdown value|`number`|`() => Date.now() + 300000`||
+|now|Used to correct the incorrect display of the initialization time|`number`|`() => Date.now()`||
 |format|Countdown display format [dayjs](https://day.js.org/docs/en/display/format)|`string`|`'HH:mm:ss'`||
 |start|Whether to start the countdown|`boolean`|`true`||
 |value-style|Custom value style|`CSSProperties`|`-`|2.32.0|

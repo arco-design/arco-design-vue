@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 Feature
+
+- TableRowSelection adds the onlyCurrent property to change the default state of the table to maintain the selection state of all paging ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💎 Enhancement
+
+- The style added by the cellStyle class attribute is moved to the td element to solve the background color problem in some scenes ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+
 ## 2.31.0
 
 `2022-06-17`

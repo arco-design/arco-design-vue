@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 新增功能
+
+- **typography:** 新增 `tooltip-props` 类属性 ([#1338](https://github.com/arco-design/arco-design-vue/pull/1338))
+- **table:** TableRowSelection 增加 onlyCurrent 属性，更改表格默认维护所有分页的选择状态 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+- **statistic:** 支持自定义显示值样式 ([#1320](https://github.com/arco-design/arco-design-vue/pull/1320))
+
+### 🐛 问题修复
+
+- **modal:** 修复当模态框超出屏幕大小后，移动位置导致错位的问题 ([#1336](https://github.com/arco-design/arco-design-vue/pull/1336))
+- **input-tag:** 修复中文输入法时报错问题 ([#1335](https://github.com/arco-design/arco-design-vue/pull/1335))
+- **tree:** 修复点击半选状态的节点显示错误的问题 ([#1331](https://github.com/arco-design/arco-design-vue/pull/1331))
+- **input-number:** 修复在表单以外清除时的错误 ([#1329](https://github.com/arco-design/arco-design-vue/pull/1329))
+
+### 💎 功能优化
+
+- **trigger:** 弹出层动画期间不再可以触发事件 ([#1337](https://github.com/arco-design/arco-design-vue/pull/1337))
+- **table:** cellStyle 类属性添加的样式移动到 td 元素上，解决部分场景下背景色问题 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💅 样式更新
+
+- **tag:** 火狐浏览器溢出样式兼容 ([#1317](https://github.com/arco-design/arco-design-vue/pull/1317))
+
+
 ## 2.31.0
 
 `2022-06-17`
