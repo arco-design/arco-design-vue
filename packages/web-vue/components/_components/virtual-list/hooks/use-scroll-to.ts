@@ -82,6 +82,7 @@ export function useScrollTo(props: {
           itemOffsetPtg,
           clientHeight,
           scrollPtg,
+          floor: false,
         });
 
         const compareItemTop = getCompareItemRelativeTop({

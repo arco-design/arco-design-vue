@@ -53,12 +53,14 @@ import { useViewportHeight } from './hooks/use-viewport-height';
 import { useItemHeight } from './hooks/use-item-height';
 import { useRenderChildren } from './hooks/use-render-children';
 import { useRangeState } from './hooks/use-range-state';
-import { useScrollTo } from './hooks/use-scroll-to';
+import { useScrollTo, RelativeScroll } from './hooks/use-scroll-to';
 import {
   getScrollPercentage,
   getValidScrollTop,
   getItemAbsoluteTop,
+  getItemRelativeTop,
 } from './utils';
+import { findListDiffIndex } from './utils/algorithm';
 
 export default defineComponent({
   name: 'VirtualList',
@@ -167,6 +169,7 @@ export default defineComponent({
       getItemHeight,
       getItemHeightOrDefault,
       getItemHeightOrDefaultByIndex,
+      getTotalHeight,
     } = useItemHeight(
       reactive({
         estimatedItemHeight: propEstimatedItemHeight,
@@ -191,6 +194,7 @@ export default defineComponent({
     );
 
     const visibleData = computed(() => {
+      if (!isVirtual.value) return internalData.value;
       const start = rangeState.startIndex;
       const end = Math.min(rangeState.endIndex + 1, itemCount.value);
       return internalData.value.slice(start, end);
@@ -326,6 +330,25 @@ export default defineComponent({
       emit('scroll', e);
     };
 
+    const internalScrollTo = (options: RelativeScroll) => {
+      if (!viewportRef.value) return;
+
+      const fixScrollResult = fixScrollTo(options);
+
+      if (fixScrollResult) {
+        lockScrollRef.value = true;
+        viewportRef.value.scrollTop = fixScrollResult.scrollTop;
+        rangeState.itemIndex = fixScrollResult.itemIndex;
+        rangeState.itemOffsetPtg = fixScrollResult.itemOffsetPtg;
+        rangeState.startIndex = fixScrollResult.startIndex;
+        rangeState.endIndex = fixScrollResult.endIndex;
+      }
+
+      rafIdRef.value = raf(() => {
+        lockScrollRef.value = false;
+      });
+    };
+
     const scrollTo = (options: ScrollOptions) => {
       rafIdRef.value && caf(rafIdRef.value);
       rafIdRef.value = raf(() => {
@@ -334,24 +357,9 @@ export default defineComponent({
           rangeState.startIndex = prepareScrollResult.startIndex;
           rangeState.endIndex = prepareScrollResult.endIndex;
           nextTick(() => {
-            if (!viewportRef.value) return;
-
-            const fixScrollResult = fixScrollTo({
+            internalScrollTo({
               itemIndex: prepareScrollResult.itemIndex,
               relativeTop: prepareScrollResult.relativeTop,
-            });
-
-            if (fixScrollResult) {
-              lockScrollRef.value = true;
-              viewportRef.value.scrollTop = fixScrollResult.scrollTop;
-              rangeState.itemIndex = fixScrollResult.itemIndex;
-              rangeState.itemOffsetPtg = fixScrollResult.itemOffsetPtg;
-              rangeState.startIndex = fixScrollResult.startIndex;
-              rangeState.endIndex = fixScrollResult.endIndex;
-            }
-
-            rafIdRef.value = raf(() => {
-              lockScrollRef.value = false;
             });
           });
         }
@@ -359,17 +367,77 @@ export default defineComponent({
     };
 
     // Element size changes, viewport changes size changes, scroll position changes need to recalculate the start and end elements
-    watch([itemHeight, visibleCount, scrollTop, data], () => {
+    watch([itemHeight, visibleCount, scrollTop], () => {
       if (lockScrollRef.value) return;
       updateRangeState();
     });
 
+    function getLocationItemRelativeTop(locationData = internalData.value) {
+      if (!viewportRef.value) return 0;
+      const { clientHeight } = viewportRef.value;
+      return getItemRelativeTop({
+        itemHeight: getItemHeightOrDefaultByIndex(
+          rangeState.itemIndex,
+          locationData
+        ),
+        itemOffsetPtg: rangeState.itemOffsetPtg,
+        scrollPtg: getScrollPercentage({
+          scrollTop: scrollTop.value,
+          scrollHeight: getTotalHeight(locationData),
+          clientHeight,
+        }),
+        clientHeight,
+      });
+    }
+
+    watch(
+      [internalData, isVirtual],
+      ([currentData, curVirtual], [prevData, prevVirtual]) => {
+        if (!viewportRef.value) return;
+        const switchTo =
+          curVirtual !== prevVirtual
+            ? curVirtual
+              ? 'virtual'
+              : 'raw'
+            : undefined;
+        let changedItemIndex: number | null = null;
+        if (curVirtual && currentData.length !== prevData.length) {
+          const diff = findListDiffIndex(
+            prevData,
+            currentData,
+            (item) => item.key
+          );
+          changedItemIndex = diff ? diff.index : null;
+        }
+        if (switchTo || changedItemIndex) {
+          nextTick(() => {
+            if (!viewportRef.value) return;
+            const locatedItemRelativeTop = getLocationItemRelativeTop(prevData);
+            if (switchTo === 'raw') {
+              let rawScrollTop = locatedItemRelativeTop;
+              for (let i = 0; i < rangeState.itemIndex; i++) {
+                rawScrollTop -= getItemHeightOrDefaultByIndex(i);
+              }
+              viewportRef.value.scrollTop = -rawScrollTop;
+            } else {
+              internalScrollTo({
+                itemIndex: rangeState.itemIndex,
+                relativeTop: locatedItemRelativeTop,
+              });
+            }
+          });
+        }
+      }
+    );
+
     // 开始和结束元素变化后需要更新偏移
     watch(rangeState, () => {
+      if (!isVirtual.value) return;
       updateScrollOffset();
     });
 
     return {
+      rangeState,
       viewportRef,
       viewportHeight,
       totalHeight,
