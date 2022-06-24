@@ -435,6 +435,7 @@ export default defineComponent({
       return (
         <ArcoButton
           size={mergedSize.value}
+          // @ts-ignore
           tabindex="-1"
           v-slots={{ icon: () => <IconMinus /> }}
           class={`${prefixCls}-step-button`}
@@ -451,6 +452,7 @@ export default defineComponent({
       return (
         <ArcoButton
           size={mergedSize.value}
+          // @ts-ignore
           tabindex="-1"
           v-slots={{ icon: () => <IconPlus /> }}
           class={`${prefixCls}-step-button`}
