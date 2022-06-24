@@ -834,6 +834,7 @@ export default defineComponent({
       handleSelectAll,
       select,
       selectAll,
+      clearSelected,
     } = useRowSelection({
       selectedKeys,
       defaultSelectedKeys,
@@ -986,6 +987,16 @@ export default defineComponent({
 
     const { page, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, emit);
+
+    const onlyCurrent = computed(
+      () => rowSelection.value?.onlyCurrent ?? false
+    );
+
+    watch(page, (cur, pre) => {
+      if (cur !== pre && onlyCurrent.value) {
+        clearSelected();
+      }
+    });
 
     const flattenData = computed(() => {
       if (props.pagination && sortedData.value.length > pageSize.value) {

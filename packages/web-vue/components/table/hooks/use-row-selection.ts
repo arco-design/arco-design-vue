@@ -43,48 +43,63 @@ export const useRowSelection = ({
   );
 
   const handleSelectAll = (checked: boolean) => {
-    _selectedRowKeys.value = union(
+    const newKeys = union(
       selectedRowKeys.value,
       currentAllEnabledRowKeys.value,
       !checked
     );
+    _selectedRowKeys.value = newKeys;
 
     emit('selectAll', checked);
-    emit('selectionChange', _selectedRowKeys.value);
-    emit('update:selectedKeys', _selectedRowKeys.value);
+    emit('selectionChange', newKeys);
+    emit('update:selectedKeys', newKeys);
   };
 
-  const handleSelect = (values: string[], record: TableDataWithRaw) => {
-    _selectedRowKeys.value = values;
-    emit('select', values, record.key, record.raw);
-    emit('selectionChange', values);
-    emit('update:selectedKeys', values);
+  const handleSelect = (checked: boolean, record: TableDataWithRaw) => {
+    const selectedAllRowKeys = isRadio.value
+      ? [record.key]
+      : union(selectedRowKeys.value, [record.key], !checked);
+    _selectedRowKeys.value = selectedAllRowKeys;
+    emit('select', selectedAllRowKeys, record.key, record.raw);
+    emit('selectionChange', selectedAllRowKeys);
+    emit('update:selectedKeys', selectedAllRowKeys);
   };
 
   const handleSelectAllLeafs = (record: TableDataWithRaw, checked: boolean) => {
     const newKeys = union(selectedRowKeys.value, getLeafKeys(record), !checked);
-    handleSelect(newKeys, record);
+    _selectedRowKeys.value = newKeys;
+    emit('select', newKeys, record.key, record.raw);
+    emit('selectionChange', newKeys);
+    emit('update:selectedKeys', newKeys);
   };
 
   const select = (rowKey: string | string[], checked = true) => {
     const _rowKeys = ([] as string[]).concat(rowKey);
-    const newSelectedRowKeys = checked
-      ? selectedRowKeys.value.concat(_rowKeys)
-      : selectedRowKeys.value.filter((key) => !_rowKeys.includes(key));
+    const newSelectedRowKeys = isRadio.value
+      ? _rowKeys
+      : union(selectedRowKeys.value, _rowKeys, !checked);
     _selectedRowKeys.value = newSelectedRowKeys;
     emit('selectionChange', newSelectedRowKeys);
     emit('update:selectedKeys', newSelectedRowKeys);
   };
 
   const selectAll = (checked = true) => {
-    const newSelectedRowKeys = union(
+    const newKeys = union(
       selectedRowKeys.value,
       currentAllEnabledRowKeys.value,
       !checked
     );
-    _selectedRowKeys.value = newSelectedRowKeys;
-    emit('selectionChange', newSelectedRowKeys);
-    emit('update:selectedKeys', newSelectedRowKeys);
+    _selectedRowKeys.value = newKeys;
+
+    emit('selectionChange', newKeys);
+    emit('update:selectedKeys', newKeys);
+  };
+
+  const clearSelected = () => {
+    _selectedRowKeys.value = [];
+
+    emit('selectionChange', []);
+    emit('update:selectedKeys', []);
   };
 
   return {
@@ -96,5 +111,6 @@ export const useRowSelection = ({
     handleSelectAllLeafs,
     select,
     selectAll,
+    clearSelected,
   };
 };

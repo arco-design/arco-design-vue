@@ -325,6 +325,12 @@ export interface TableRowSelection {
    * @version 2.29.0
    */
   checkStrictly?: boolean;
+  /**
+   * @zh 是否仅展示当前页的 keys（切换分页时清空 keys）
+   * @en Whether to display only the keys of the current page (clear keys when switching paging)
+   * @version 2.32.0
+   */
+  onlyCurrent?: boolean;
 }
 
 export interface TableExpandable {

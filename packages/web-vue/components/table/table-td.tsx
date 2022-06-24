@@ -90,13 +90,6 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('table');
 
-    const style = computed(() =>
-      getStyle(props.column, {
-        dataColumns: props.dataColumns,
-        operations: props.operations,
-      })
-    );
-
     const tooltipProps = computed(() => {
       if (isObject(props.column?.tooltip)) {
         return props.column.tooltip;
@@ -136,19 +129,26 @@ export default defineComponent({
         : props.column?.bodyCellStyle;
     };
 
-    const cellStyle = computed(() => {
+    const style = computed(() => {
+      const style = getStyle(props.column, {
+        dataColumns: props.dataColumns,
+        operations: props.operations,
+      });
       const customStyle = getCustomStyle();
-      if (props.isFixedExpand && props.containerWidth) {
-        return {
-          width: `${props.containerWidth}px`,
-          ...props.column?.cellStyle,
-          ...customStyle,
-        };
-      }
       return {
+        ...style,
         ...props.column?.cellStyle,
         ...customStyle,
       };
+    });
+
+    const cellStyle = computed(() => {
+      if (props.isFixedExpand && props.containerWidth) {
+        return {
+          width: `${props.containerWidth}px`,
+        };
+      }
+      return undefined;
     });
 
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
