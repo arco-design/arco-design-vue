@@ -6,7 +6,7 @@
       </slot>
     </div>
     <div :class="`${prefixCls}-content`">
-      <div :class="`${prefixCls}-value`">
+      <div :class="`${prefixCls}-value`" :style="valueStyle">
         <span v-if="showPlaceholder">{{ placeholder }}</span>
         <template v-else>
           <span v-if="$slots.prefix" :class="`${prefixCls}-prefix`">
@@ -43,6 +43,7 @@
 <script lang="ts">
 import {
   computed,
+  CSSProperties,
   defineComponent,
   onMounted,
   PropType,
@@ -74,8 +75,8 @@ export default defineComponent({
       type: [Number, Object] as PropType<number | Date>,
     },
     /**
-     * @zh 数值显示的格式（日期模式使用）
-     * @en Format of numerical display (used in date mode)
+     * @zh 数值显示的格式 [dayjs](https://day.js.org/docs/en/display/format)（日期模式使用）
+     * @en Format of numerical display [dayjs](https://day.js.org/docs/en/display/format) (used in date mode)
      */
     format: {
       type: String,
@@ -146,6 +147,14 @@ export default defineComponent({
      */
     placeholder: {
       type: String,
+    },
+    /**
+     * @zh 自定义显示值的样式
+     * @en Custom value style
+     * @version 2.32.0
+     */
+    valueStyle: {
+      type: Object as PropType<CSSProperties>,
     },
   },
   /**
