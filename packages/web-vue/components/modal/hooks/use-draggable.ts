@@ -22,12 +22,10 @@ export const useDraggable = ({
 
   const getInitialPosition = () => {
     if (wrapperRef.value && modalRef.value) {
-      const {
-        top: wrapperTop,
-        left: wrapperLeft,
-        width: wrapperWidth,
-        height: wrapperHeight,
-      } = wrapperRef.value.getBoundingClientRect();
+      const { top: wrapperTop, left: wrapperLeft } =
+        wrapperRef.value.getBoundingClientRect();
+      const { clientWidth: wrapperWidth, clientHeight: wrapperHeight } =
+        wrapperRef.value;
       const { top, left, width, height } =
         modalRef.value.getBoundingClientRect();
 
@@ -39,8 +37,8 @@ export const useDraggable = ({
       ) {
         initialPosition.value = [initialX, initialY];
       }
-      const maxX = wrapperWidth - width;
-      const maxY = wrapperHeight - height;
+      const maxX = wrapperWidth > width ? wrapperWidth - width : 0;
+      const maxY = wrapperHeight > height ? wrapperHeight - height : 0;
       if (maxX !== maxPosition.value[0] || maxY !== maxPosition.value[1]) {
         maxPosition.value = [maxX, maxY];
       }
