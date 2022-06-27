@@ -23,14 +23,18 @@ See [Routes and menu](/vue/docs/pro/routes-and-menu) for details
 ### 2.Menu hides children
 See [Routes and menu](/vue/docs/pro/routes-and-menu) for details
 
-### 3.Using jsx in Vue3
+### 3.Configure first-level menu items
+
+Due to the architecture, configuring a single first-level menu item requires the cooperation of multiple menu configuration items. See [#85]([/vue/docs/pro/routes-and-menu](https://github.com/arco-design/arco-design-pro-vue/issues/85#issuecomment-1142289501)) for details 
+
+### 4.Using jsx in Vue3
 
 详见 [babel-plugin-jsx](https://github.com/vuejs/babel-plugin-jsx)
 
-### 4.Cross-domain proxy
+### 5.Cross-domain proxy
 See [vite configuration](https://cn.vitejs.dev/config/#server-open) for details
 
-### 5.Code cannot be pushed
+### 6.Code cannot be pushed
 
 Because of the use of [husky](https://github.com/typicode/husky), the hook [normalizes](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.greljkmo14y0) the uploaded commit information check.
 
