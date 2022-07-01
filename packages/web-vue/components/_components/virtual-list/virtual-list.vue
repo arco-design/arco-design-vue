@@ -53,11 +53,11 @@ import { useViewportHeight } from './hooks/use-viewport-height';
 import { useItemHeight } from './hooks/use-item-height';
 import { useRenderChildren } from './hooks/use-render-children';
 import { useRangeState } from './hooks/use-range-state';
-import { useScrollTo } from './hooks/use-scroll-to';
+import { useScrollTo, RelativeScroll } from './hooks/use-scroll-to';
 import {
   getScrollPercentage,
   getValidScrollTop,
-  getItemAbsoluteTop,
+  getItemRelativeTop,
 } from './utils';
 
 export default defineComponent({
@@ -180,21 +180,14 @@ export default defineComponent({
     );
 
     const scrollTop = ref(0);
-    const startOffset = ref(0);
-
-    const { rangeState, updateRangeState } = useRangeState(
-      reactive({
+    const { rangeState, updateRangeState, updateLocationState } = useRangeState(
+      {
         viewportRef,
         itemCount,
         visibleCount,
-      })
+        getItemHeightOrDefaultByIndex,
+      }
     );
-
-    const visibleData = computed(() => {
-      const start = rangeState.startIndex;
-      const end = Math.min(rangeState.endIndex + 1, itemCount.value);
-      return internalData.value.slice(start, end);
-    });
 
     const isVirtual = computed(
       () =>
@@ -204,22 +197,13 @@ export default defineComponent({
         totalHeight.value > viewportHeight.value
     );
 
-    // 记录滚动列表的 paddingTop 用于校正滚动距离
-    const scrollListPadding = computed(() => {
-      if (!isUndefined(viewportRef.value)) {
-        const viewport = viewportRef.value;
-        const getPadding = (property: keyof CSSStyleDeclaration) =>
-          +(window.getComputedStyle(viewport)[property] as string).replace(
-            /\D/g,
-            ''
-          );
-        return {
-          top: getPadding('paddingTop'),
-          bottom: getPadding('paddingBottom'),
-        };
+    const visibleData = computed(() => {
+      if (!isVirtual.value) {
+        return internalData.value;
       }
-
-      return { top: 0, bottom: 0 };
+      const start = rangeState.startIndex;
+      const end = Math.min(rangeState.endIndex + 1, itemCount.value);
+      return internalData.value.slice(start, end);
     });
 
     const itemRender = usePickSlots(slots, 'item') as Ref<ItemSlot>;
@@ -231,7 +215,11 @@ export default defineComponent({
       }),
       {
         onItemResize(el, key) {
-          if (el && isUndefined(getItemHeight(key))) {
+          if (
+            el &&
+            rangeState.status === 'MEASURE_START' &&
+            isUndefined(getItemHeight(key))
+          ) {
             if (isStaticItemHeight.value) {
               setItemHeight(key, itemHeight.value);
             } else {
@@ -244,39 +232,6 @@ export default defineComponent({
         },
       }
     );
-
-    const updateScrollOffset = () => {
-      if (!viewportRef.value || !isVirtual.value) return;
-
-      const { scrollTop, clientHeight, scrollHeight } = viewportRef.value;
-
-      const scrollPtg = getScrollPercentage({
-        scrollTop,
-        clientHeight,
-        scrollHeight,
-      });
-
-      let newStartOffset = getItemAbsoluteTop({
-        scrollPtg,
-        clientHeight,
-        scrollTop:
-          scrollTop -
-          (scrollListPadding.value.top + scrollListPadding.value.bottom) *
-            scrollPtg,
-        itemHeight: getItemHeightOrDefaultByIndex(rangeState.itemIndex),
-        itemOffsetPtg: rangeState.itemOffsetPtg,
-      });
-
-      for (
-        let index = rangeState.itemIndex - 1;
-        index >= rangeState.startIndex;
-        index--
-      ) {
-        newStartOffset -= getItemHeightOrDefaultByIndex(index);
-      }
-
-      startOffset.value = newStartOffset;
-    };
 
     // scrollTo
     const rafIdRef = ref();
@@ -310,7 +265,7 @@ export default defineComponent({
       }
     };
 
-    const handleScroll = (e: UIEvent) => {
+    const virtualScrollHandler = (e: UIEvent | null, force = false) => {
       if (!viewportRef.value) return;
 
       const {
@@ -319,11 +274,46 @@ export default defineComponent({
         scrollHeight,
       } = viewportRef.value;
 
-      scrollTop.value = getValidScrollTop(
+      const newScrollTop = getValidScrollTop(
         rawScrollTop,
         scrollHeight - clientHeight
       );
+
+      if (!force && (newScrollTop === scrollTop.value || lockScrollRef.value)) {
+        return;
+      }
+
+      scrollTop.value = newScrollTop;
+      updateRangeState();
       emit('scroll', e);
+    };
+
+    const rawScrollHandler = (e: UIEvent) => {
+      if (!viewportRef.value) return;
+
+      const {
+        scrollTop: rawScrollTop,
+        clientHeight,
+        scrollHeight,
+      } = viewportRef.value;
+
+      const newScrollTop = getValidScrollTop(
+        rawScrollTop,
+        scrollHeight - clientHeight
+      );
+
+      scrollTop.value = newScrollTop;
+      updateLocationState();
+      emit('scroll', e);
+    };
+
+    const handleScroll = (e: any) => {
+      // console.log('scroll', e.target.scrollTop, e.target.scrollHeight);
+      if (isVirtual.value) {
+        virtualScrollHandler(e);
+      } else {
+        rawScrollHandler(e);
+      }
     };
 
     const scrollTo = (options: ScrollOptions) => {
@@ -331,49 +321,84 @@ export default defineComponent({
       rafIdRef.value = raf(() => {
         const prepareScrollResult = prepareScrollTo(options);
         if (prepareScrollResult) {
+          const { itemIndex, align, clientHeight } = prepareScrollResult;
           rangeState.startIndex = prepareScrollResult.startIndex;
           rangeState.endIndex = prepareScrollResult.endIndex;
           nextTick(() => {
-            if (!viewportRef.value) return;
-
-            const fixScrollResult = fixScrollTo({
-              itemIndex: prepareScrollResult.itemIndex,
-              relativeTop: prepareScrollResult.relativeTop,
-            });
-
-            if (fixScrollResult) {
-              lockScrollRef.value = true;
-              viewportRef.value.scrollTop = fixScrollResult.scrollTop;
-              rangeState.itemIndex = fixScrollResult.itemIndex;
-              rangeState.itemOffsetPtg = fixScrollResult.itemOffsetPtg;
-              rangeState.startIndex = fixScrollResult.startIndex;
-              rangeState.endIndex = fixScrollResult.endIndex;
-            }
-
-            rafIdRef.value = raf(() => {
-              lockScrollRef.value = false;
+            const indexItemHeight = getItemHeightOrDefaultByIndex(itemIndex);
+            const itemRelativeTop =
+              align === 'top' ? 0 : clientHeight - indexItemHeight;
+            innerScrollTo({
+              itemIndex,
+              relativeTop: itemRelativeTop,
             });
           });
         }
       });
     };
 
-    // Element size changes, viewport changes size changes, scroll position changes need to recalculate the start and end elements
-    watch([itemHeight, visibleCount, scrollTop, data], () => {
-      if (lockScrollRef.value) return;
-      updateRangeState();
+    const innerScrollTo = (options: RelativeScroll) => {
+      if (!viewportRef.value) return;
+
+      const fixScrollResult = fixScrollTo(options);
+
+      if (fixScrollResult) {
+        lockScrollRef.value = true;
+        viewportRef.value.scrollTop = fixScrollResult.scrollTop;
+        rangeState.itemIndex = fixScrollResult.itemIndex;
+        rangeState.itemOffsetPtg = fixScrollResult.itemOffsetPtg;
+        rangeState.startIndex = fixScrollResult.startIndex;
+        rangeState.endIndex = fixScrollResult.endIndex;
+        rangeState.status = 'MEASURE_START';
+      }
+
+      rafIdRef.value = raf(() => {
+        lockScrollRef.value = false;
+      });
+    };
+
+    watch([visibleCount], () => {
+      virtualScrollHandler(null, true);
     });
 
-    // 开始和结束元素变化后需要更新偏移
-    watch(rangeState, () => {
-      updateScrollOffset();
+    watch([isVirtual], (_, [oldIsVirtual]) => {
+      if (isVirtual.value !== oldIsVirtual) {
+        nextTick(() => {
+          if (!viewportRef.value) return;
+          const { clientHeight } = viewportRef.value;
+          const locatedItemRelativeTop = getItemRelativeTop({
+            itemHeight: getItemHeightOrDefaultByIndex(rangeState.itemIndex),
+            itemOffsetPtg: rangeState.itemOffsetPtg,
+            scrollPtg: getScrollPercentage({
+              scrollTop: scrollTop.value,
+              scrollHeight: totalHeight.value,
+              clientHeight,
+            }),
+            clientHeight,
+          });
+          if (!isVirtual.value) {
+            let rawScrollTop = locatedItemRelativeTop;
+            for (let i = 0; i < rangeState.itemIndex; i++) {
+              rawScrollTop -= getItemHeightOrDefaultByIndex(i);
+            }
+            viewportRef.value.scrollTop = -rawScrollTop;
+          } else {
+            innerScrollTo({
+              itemIndex: rangeState.itemIndex,
+              relativeTop: locatedItemRelativeTop,
+            });
+          }
+        });
+      }
     });
 
     return {
       viewportRef,
       viewportHeight,
       totalHeight,
-      startOffset,
+      startOffset: computed(() =>
+        rangeState.status === 'MEASURE_DONE' ? rangeState.startItemTop : 0
+      ),
       isVirtual,
       renderChildren,
       handleResize,

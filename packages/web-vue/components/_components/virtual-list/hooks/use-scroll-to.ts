@@ -82,6 +82,7 @@ export function useScrollTo(props: {
           itemOffsetPtg,
           clientHeight,
           scrollPtg,
+          floor: false,
         });
 
         const compareItemTop = getCompareItemRelativeTop({
@@ -182,12 +183,10 @@ export function useScrollTo(props: {
 
       return {
         itemIndex: index,
-        relativeTop:
-          align === 'top'
-            ? 0
-            : clientHeight - getItemHeightOrDefaultByIndex.value(index),
         startIndex: Math.max(0, index - visibleCount.value),
         endIndex: Math.min(itemCount.value - 1, index + visibleCount.value),
+        align,
+        clientHeight,
       };
     }
 

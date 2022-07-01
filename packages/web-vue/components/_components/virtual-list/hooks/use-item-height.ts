@@ -33,8 +33,9 @@ export function useItemHeight(props: {
     Math.min(itemHeight.value, DEFAULT_ITEM_HEIGHT)
   );
 
-  // 总高度只需要一个范围，无需准确值
-  const totalHeight = computed(() => itemHeight.value * data.value.length);
+  const totalHeight = computed(() =>
+    data.value.reduce((sum, { key }) => sum + getItemHeightOrDefault(key), 0)
+  );
 
   function setItemHeight(key: VirtualItemKey, height: number) {
     itemHeightCacheMap.value.set(key, height);

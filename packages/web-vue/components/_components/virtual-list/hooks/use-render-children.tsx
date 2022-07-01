@@ -39,6 +39,7 @@ export function useRenderChildren(
             ref: (el) => {
               if (!dom) {
                 dom = findElement(el);
+                resizeHandler();
               }
             },
             onVnodeMounted() {
