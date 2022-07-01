@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- Fixed the problem that the text prompt did not follow the content update ([#1373](https://github.com/arco-design/arco-design-vue/pull/1373))
+
+
 ## 2.32.0
 
 `2022-06-24`

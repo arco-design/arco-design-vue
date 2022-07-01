@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.1
+
+`2022-07-01`
+
+### 💅 Style
+
+- Fix the problem that the icons under different types are black by default ([#1366](https://github.com/arco-design/arco-design-vue/pull/1366))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

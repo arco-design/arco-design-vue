@@ -2,7 +2,7 @@
 meta:
   type: Developer Guide
 title: FAQ
-description: Common Problem
+description: Frequently Asked Questions in the Use of the Component Library
 ```
 
 ## Controlled and Uncontrolled

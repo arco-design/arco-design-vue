@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- **table:** Fixed the problem that the text prompt did not follow the content update ([#1373](https://github.com/arco-design/arco-design-vue/pull/1373))
+- **select:** Fixed click-to-expand issue in search mode in Firefox ([#1371](https://github.com/arco-design/arco-design-vue/pull/1371))
+- **tree-select:** Fix the problem of selected value in case of modelValue is 0 ([#1370](https://github.com/arco-design/arco-design-vue/pull/1370))
+- **input-number:** Fix the problem that '0' will be omitted after setting precision ([#1368](https://github.com/arco-design/arco-design-vue/pull/1368))
+
+### 💅 Style
+
+- **popconfirm:** Fix the problem that the icons under different types are black by default ([#1366](https://github.com/arco-design/arco-design-vue/pull/1366))
+
+
 ## 2.32.0
 
 `2022-06-24`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- Fix the problem that '0' will be omitted after setting precision ([#1368](https://github.com/arco-design/arco-design-vue/pull/1368))
+
+
 ## 2.32.0
 
 `2022-06-24`

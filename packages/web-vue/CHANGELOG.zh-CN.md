@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 问题修复
+
+- **table:** 修复文本提示没有跟随内容更新的问题 ([#1373](https://github.com/arco-design/arco-design-vue/pull/1373))
+- **select:** 修复在火狐浏览器下搜索模式的点击展开问题 ([#1371](https://github.com/arco-design/arco-design-vue/pull/1371))
+- **tree-select:** 修复 `modelValue` 为 0 时, 导致状态不被选中 ([#1370](https://github.com/arco-design/arco-design-vue/pull/1370))
+- **input-number:** 修复设定精度后会省略 '0' 的问题 ([#1368](https://github.com/arco-design/arco-design-vue/pull/1368))
+
+### 💅 样式更新
+
+- **popconfirm:** 修复不同类型下图标默认黑色的问题 ([#1366](https://github.com/arco-design/arco-design-vue/pull/1366))
+
+
 ## 2.32.0
 
 `2022-06-24`

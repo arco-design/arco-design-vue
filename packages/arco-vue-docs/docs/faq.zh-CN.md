@@ -1,8 +1,8 @@
 ```yaml
 meta:
   type: 开发指南
-title: FAQ
-description: 常见问题
+title: 常见问题
+description: 组件库使用中的常见问题解答
 ```
 
 ## 受控与非受控
