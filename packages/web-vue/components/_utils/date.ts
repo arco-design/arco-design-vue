@@ -1,4 +1,4 @@
-import originDayjs, { Dayjs, OpUnitType, UnitType } from 'dayjs';
+import originDayjs, { Dayjs, OpUnitType, PluginFunc, UnitType } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import isBetween from 'dayjs/plugin/isBetween';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
@@ -7,6 +7,7 @@ import weekYear from 'dayjs/plugin/weekYear';
 import QuarterOfYear from 'dayjs/plugin/quarterOfYear';
 import { isDayjs, isArray } from './is';
 import 'dayjs/locale/zh-cn';
+import { padStart } from './pad';
 
 const overwriteIsDayjs = (_: any, Dayjs: any, dayjs: any) => {
   // eslint-disable-next-line func-names
@@ -31,6 +32,26 @@ const overwriteIsDayjs = (_: any, Dayjs: any, dayjs: any) => {
   dayjs.isDayjs = isDayjs;
 };
 
+const fill3DigitYear: PluginFunc = (_, dayjsClass: any) => {
+  const proto = dayjsClass.prototype;
+  const oldFormat = proto.format;
+  proto.format = function fill2DigitYearFormat(formatStr?: string) {
+    let result: string = oldFormat.call(this, formatStr);
+    const yearLen = `${this.$y}`.length;
+    if (result && yearLen < 4) {
+      const YStart = (formatStr || 'YYYY').match(/(Y+)/)?.index;
+      if (YStart !== undefined) {
+        const YEnd = YStart + yearLen;
+        const fourDigitYear = padStart(result.substring(YStart, YEnd), 4, '0');
+        result = `${result.slice(0, YStart)}${fourDigitYear}${result.slice(
+          YEnd
+        )}`;
+      }
+    }
+    return result;
+  };
+};
+
 originDayjs.extend(overwriteIsDayjs);
 originDayjs.extend(customParseFormat);
 originDayjs.extend(isBetween);
@@ -38,6 +59,7 @@ originDayjs.extend(weekOfYear);
 originDayjs.extend(AdvancedFormat);
 originDayjs.extend(weekYear);
 originDayjs.extend(QuarterOfYear);
+originDayjs.extend(fill3DigitYear);
 
 export const dayjs = originDayjs;
 
