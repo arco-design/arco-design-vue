@@ -6,6 +6,7 @@ export default {
     theme: '定制主题',
     token: '设计变量',
     i18n: '国际化',
+    faq: '常见问题',
     changelog: '更新日志',
   },
   group: {

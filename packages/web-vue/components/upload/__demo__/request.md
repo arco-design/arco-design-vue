@@ -31,9 +31,10 @@ export default {
         xhr.upload.onprogress = function (event) {
           let percent;
           if (event.total > 0) {
-            percent = (event.loaded / event.total) * 100;
+            // 0 ~ 1
+            percent = event.loaded / event.total;
           }
-          onProgress(parseInt(percent, 10), event);
+          onProgress(percent, event);
         };
       }
       xhr.onerror = function error(e) {
