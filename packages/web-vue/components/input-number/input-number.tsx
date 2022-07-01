@@ -190,11 +190,24 @@ export default defineComponent({
       disabled,
     });
     const { mergedSize } = useSize(_mergedSize);
+    const mergedPrecision = computed(() => {
+      if (isNumber(props.precision)) {
+        const decimal = `${props.step}`.split('.')[1];
+        const stepPrecision = (decimal && decimal.length) || 0;
+        return Math.max(stepPrecision, props.precision);
+      }
+      return undefined;
+    });
 
     const getStringValue = (number: number | undefined) => {
-      return isNumber(number)
-        ? props.formatter?.(String(number)) ?? String(number)
-        : '';
+      if (!isNumber(number)) {
+        return '';
+      }
+
+      const numString = mergedPrecision.value
+        ? number.toFixed(mergedPrecision.value)
+        : String(number);
+      return props.formatter?.(numString) ?? numString;
     };
 
     // inner input value to display
@@ -206,15 +219,6 @@ export default defineComponent({
       }
       const number = Number(props.parser?.(_value.value) ?? _value.value);
       return Number.isNaN(number) ? undefined : number;
-    });
-
-    const mergedPrecision = computed(() => {
-      if (isNumber(props.precision)) {
-        const decimal = `${props.step}`.split('.')[1];
-        const stepPrecision = (decimal && decimal.length) || 0;
-        return Math.max(stepPrecision, props.precision);
-      }
-      return undefined;
     });
 
     const isMin = ref(
