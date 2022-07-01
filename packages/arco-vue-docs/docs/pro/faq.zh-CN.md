@@ -21,14 +21,18 @@ description: Arco Design Pro Vue 常见问题合集
 ### 二、菜单隐藏子项
 详见 [路由和菜单](/vue/docs/pro/routes-and-menu)
 
-### 三、Vue3 中使用 jsx 写法
+### 三、配置一级菜单项
+
+因为架构缘故，配置单独的一级菜单项，需要多个菜单配置项进行配合。详见 [#85]([/vue/docs/pro/routes-and-menu](https://github.com/arco-design/arco-design-pro-vue/issues/85#issuecomment-1142289501))
+
+### 四、Vue3 中使用 jsx 写法
 
 详见 [babel-plugin-jsx](https://github.com/vuejs/babel-plugin-jsx)
 
-### 四、跨域代理
+### 五、跨域代理
 详见 [vite配置](https://cn.vitejs.dev/config/#server-open)
 
-### 五、代码无法提交
+### 六、代码无法提交
 
 因为使用了 [husky](https://github.com/typicode/husky) 的缘故，钩子对上传的commit信息进行[规范化](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.greljkmo14y0)校验。
 
