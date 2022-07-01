@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, onUpdated, ref } from 'vue';
 import Tooltip from '../../tooltip';
 import ResizeObserver from '../resize-observer-v2';
 import { getPrefixCls } from '../../_utils/global-config';
@@ -46,6 +46,10 @@ export default defineComponent({
     onMounted(() => {
       getText();
       calTooltip();
+    });
+
+    onUpdated(() => {
+      getText();
     });
 
     const renderContent = () => {
