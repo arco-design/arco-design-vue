@@ -113,14 +113,14 @@ export interface RequestOption {
    * @zh 上传文件
    * @en upload files
    * */
-  fileItem: FileItem;
+  fileItem: FileItem | FileItem[];
   /**
    * @zh 附加的请求信息
    * @en Additional requested information
    * */
   data?:
     | Record<string, string | Blob>
-    | ((fileItem: FileItem) => Record<string, string | Blob>);
+    | ((fileItem: FileItem | FileItem[]) => Record<string, string | Blob>);
   /**
    * @zh 是否携带cookie信息
    * @en Whether to carry cookie information
