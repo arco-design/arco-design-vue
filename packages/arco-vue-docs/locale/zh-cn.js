@@ -7,6 +7,7 @@ export default {
     token: '设计变量',
     i18n: '国际化',
     changelog: '更新日志',
+    overview: '组件索引',
   },
   group: {
     common: '通用',

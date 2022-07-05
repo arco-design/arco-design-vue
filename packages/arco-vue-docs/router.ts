@@ -205,6 +205,10 @@ const docs = [
     name: 'changelog',
     component: Changelog,
   },
+  {
+    name: 'overview',
+    component: () => import('./pages/overview/overview.vue'),
+  },
 ];
 
 const proDocs = [

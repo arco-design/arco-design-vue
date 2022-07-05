@@ -7,6 +7,7 @@ export default {
     token: 'Design Token',
     i18n: 'Internationalization',
     changelog: 'Changelog',
+    overview: 'Overview',
   },
   group: {
     common: 'Common',
