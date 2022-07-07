@@ -27,7 +27,7 @@ description: When the mouse hovers, focus, or click on a component, a bubble-lik
 |default-popup-visible|Whether the popover is visible by default (uncontrolled mode)|`boolean`|`false`|
 |title|Title|`string`|`-`|
 |content|Content|`string`|`-`|
-|trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'hover'`|
+|trigger|Trigger method|`'hover' \| 'click' \| 'dblclick' \| 'focus' \| 'contextMenu'`|`'hover'`|
 |position|Pop-up position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'top'`|
 |content-class|The class name of the popup content|`ClassName`|`-`|
 |content-style|The style of the popup content|`CSSProperties`|`-`|
