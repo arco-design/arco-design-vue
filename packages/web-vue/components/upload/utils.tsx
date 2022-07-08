@@ -97,13 +97,13 @@ export const uploadRequest = ({
   };
 
   const formData = new FormData();
-  if (fileItem.file) {
-    formData.append(name, fileItem.file);
-  }
   if (data) {
     for (const key of Object.keys(data)) {
       formData.append(key, data[key]);
     }
+  }
+  if (fileItem.file) {
+    formData.append(name, fileItem.file);
   }
   xhr.open('post', action ?? '', true);
 
