@@ -58,6 +58,15 @@ export default defineComponent({
       type: String as PropType<'small' | 'medium' | 'large'>,
     },
     /**
+     * @zh 是否显示边框
+     * @en Whether the tag is bordered
+     * @version 2.33.0
+     */
+    bordered: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * @zh 标签是否可见
      * @en Whether the tag is visible
      * @vModel
@@ -188,6 +197,7 @@ export default defineComponent({
         [`${prefixCls}-loading`]: props.loading,
         [`${prefixCls}-hide`]: !computedVisible.value,
         [`${prefixCls}-${props.color}`]: isBuiltInColor.value,
+        [`${prefixCls}-bordered`]: props.bordered,
         [`${prefixCls}-checkable`]: props.checkable,
         [`${prefixCls}-checked`]: computedChecked.value,
         [`${prefixCls}-custom-color`]: isCustomColor.value,
