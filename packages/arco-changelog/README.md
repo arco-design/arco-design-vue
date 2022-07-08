@@ -77,6 +77,13 @@ module.exports = {
 
 changelog 工具使用 [nunjucks](https://mozilla.github.io/nunjucks/) 作为模板引擎。返回数据中的 `template` 字段指定模板文件的位置，`data` 字段指定模板数据
 
+### filename
+
++ Type: Object `{ zh: string; en: string }`
++ Default: undefined
+
+指定默认配置生成日志文件的文件名，分为中英文文件。例如：`{ zh: 'changelog/CHANGELOG.zh.md'; en: 'changelog/CHANGELOG.en.md' }`
+
 ```ts
 export interface EmitFile {
   file: string;
