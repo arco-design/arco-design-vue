@@ -1132,13 +1132,14 @@ export default defineComponent({
     };
 
     const onTbodyScroll = (e: Event) => {
+      handleScroll(e);
+      const { scrollLeft } = e.target as HTMLDivElement;
       if (theadRef.value) {
-        theadRef.value.scrollLeft = (e.target as HTMLDivElement).scrollLeft;
+        theadRef.value.scrollLeft = scrollLeft;
       }
       if (summaryRef.value) {
-        summaryRef.value.scrollLeft = (e.target as HTMLDivElement).scrollLeft;
+        summaryRef.value.scrollLeft = scrollLeft;
       }
-      handleScroll(e);
     };
 
     const handleRowClick = (record: TableDataWithRaw, ev: Event) => {
