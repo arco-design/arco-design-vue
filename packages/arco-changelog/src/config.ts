@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { ChangelogConfig } from './interface';
-import { emitFiles } from './default/emit-files';
+import { getEmitFiles } from './default/emit-files';
 import vueConfig from './vue/vue.config';
 
 export const typeDict = {
@@ -29,7 +29,7 @@ const defaultConfig: ChangelogConfig = {
   repo: '',
   merged: true,
   type: 'github',
-  emitFiles,
+  emitFiles: getEmitFiles(),
   typeDict,
   keyDict,
 };
@@ -39,11 +39,14 @@ export const getConfig = async (): Promise<Required<ChangelogConfig>> => {
   const filename = path.resolve(process.cwd(), 'changelog.config.js');
   try {
     await fs.access(filename);
-    const data = (await import(filename)).default;
+    const data = (await import(filename)).default as ChangelogConfig;
     if (data.arcoComponent === 'vue') {
       Object.assign(config, vueConfig);
     }
     Object.assign(config, data);
+    if (data.filename) {
+      config.emitFiles = getEmitFiles({ filename: data.filename });
+    }
   } catch (err) {
     console.log(err);
   }

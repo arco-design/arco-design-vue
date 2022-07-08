@@ -13,6 +13,7 @@ export interface ChangelogConfig {
   type?: 'github' | 'gitlab';
   arcoComponent?: 'react' | 'vue';
   keyDict?: Record<string, string>;
+  filename?: { zh: string; en: string };
 }
 
 export interface PullRequest {
