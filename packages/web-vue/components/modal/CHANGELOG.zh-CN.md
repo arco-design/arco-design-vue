@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 💅 样式更新
+
+- 修复 footer 按钮不居中的问题 ([#1391](https://github.com/arco-design/arco-design-vue/pull/1391))
+
+
 ## 2.32.0
 
 `2022-06-24`

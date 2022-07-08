@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 Feature
+
+- **drawer:** add header prop and slot ([#1399](https://github.com/arco-design/arco-design-vue/pull/1399))
+- **collapse:** Supports custom expand icon ([#1344](https://github.com/arco-design/arco-design-vue/pull/1344))
+- **tag:** support `bordered`  show border ([#1342](https://github.com/arco-design/arco-design-vue/pull/1342))
+
+### 🐛 BugFix
+
+- **date-picker:** Fixed an issue where dropdown menus and clear options could still be opened in readonly mode ([#1400](https://github.com/arco-design/arco-design-vue/pull/1400))
+- **upload:** Fixed usage issues in Alibaba Cloud OSS ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- **tree:** Fix the problem of filtering data for processing in the subtree expansion animation ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- **tree:** Fix the problem of setting defaultExpandSelected invalid ([#1362](https://github.com/arco-design/arco-design-vue/pull/1362))
+
+### 💅 Style
+
+- **tabs:** Fix the problem of wrong style when focusing ([#1398](https://github.com/arco-design/arco-design-vue/pull/1398))
+- **modal:** Fix the problem that the footer button is not centered ([#1391](https://github.com/arco-design/arco-design-vue/pull/1391))
+- **upload:** Remove trailing space of upload-list-item ([#1379](https://github.com/arco-design/arco-design-vue/pull/1379))
+
+
 ## 2.32.1
 
 `2022-07-01`

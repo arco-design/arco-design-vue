@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 新增功能
+
+- 添加 header 属性和插槽 ([#1399](https://github.com/arco-design/arco-design-vue/pull/1399))
+
+
 ## 2.19.0
 
 `2022-03-11`

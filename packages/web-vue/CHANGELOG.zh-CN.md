@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 新增功能
+
+- **drawer:** 添加 header 属性和插槽 ([#1399](https://github.com/arco-design/arco-design-vue/pull/1399))
+- **collapse:** 支持自定义展开图标 ([#1344](https://github.com/arco-design/arco-design-vue/pull/1344))
+- **tag:** 支持 `bordered` 显示边框 ([#1342](https://github.com/arco-design/arco-design-vue/pull/1342))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复 readonly 模式下仍可打开下拉菜单和清除选项的问题 ([#1400](https://github.com/arco-design/arco-design-vue/pull/1400))
+- **upload:** 修复在阿里云OSS中的使用问题 ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- **tree:** 修复子树展开动画中为处理过滤数据的问题 ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- **tree:** 修复设置 defaultExpandSelected 失效的问题 ([#1362](https://github.com/arco-design/arco-design-vue/pull/1362))
+
+### 💅 样式更新
+
+- **tabs:** 修复聚焦时样式错误的问题 ([#1398](https://github.com/arco-design/arco-design-vue/pull/1398))
+- **modal:** 修复 footer 按钮不居中的问题 ([#1391](https://github.com/arco-design/arco-design-vue/pull/1391))
+- **upload:** 移除了 upload-list-item 末尾的多余空白 ([#1379](https://github.com/arco-design/arco-design-vue/pull/1379))
+
+
 ## 2.32.1
 
 `2022-07-01`

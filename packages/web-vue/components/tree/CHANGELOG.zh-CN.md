@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🐛 问题修复
+
+- 修复子树展开动画中为处理过滤数据的问题 ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- 修复设置 defaultExpandSelected 失效的问题 ([#1362](https://github.com/arco-design/arco-design-vue/pull/1362))
+
+
 ## 2.32.0
 
 `2022-06-24`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🐛 BugFix
+
+- Fix the problem of filtering data for processing in the subtree expansion animation ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- Fix the problem of setting defaultExpandSelected invalid ([#1362](https://github.com/arco-design/arco-design-vue/pull/1362))
+
+
 ## 2.32.0
 
 `2022-06-24`

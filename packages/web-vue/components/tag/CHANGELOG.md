@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 Feature
+
+- support `bordered`  show border ([#1342](https://github.com/arco-design/arco-design-vue/pull/1342))
+
+
 ## 2.32.0
 
 `2022-06-24`

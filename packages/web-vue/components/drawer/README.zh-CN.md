@@ -43,6 +43,7 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |footer|是否展示底部内容|`boolean`|`true`|2.11.0|
 |esc-to-close|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 |hide-cancel|是否隐藏取消按钮|`boolean`|`false`|2.19.0|
+|header|是否隐藏取消按钮|`boolean`|`true`|2.33.0|
 ### `<drawer>` Events
 
 |事件名|描述|参数|
@@ -53,9 +54,10 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |close|抽屉关闭后（动画结束）触发|-|
 ### `<drawer>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|title|标题|-|
-|footer|页脚|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|header|页眉|-|2.33.0|
+|title|标题|-||
+|footer|页脚|-||
 
 
