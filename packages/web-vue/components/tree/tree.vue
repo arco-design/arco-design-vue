@@ -913,6 +913,7 @@ export default defineComponent({
       loadingKeys,
       currentExpandKeys,
       onLoadMore,
+      filterTreeNode,
       onCheck,
       onSelect,
       onExpand,

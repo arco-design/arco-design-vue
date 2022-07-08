@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import { Slot, VNode } from 'vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
