@@ -2,6 +2,7 @@
 import { MessageMethod } from './message';
 import { NotificationMethod } from './notification';
 import { ModalMethod } from './modal';
+import { DrawerMethod } from './drawer';
 
 declare module 'vue' {
   export interface GlobalComponents {
@@ -131,6 +132,7 @@ declare module 'vue' {
     $message: MessageMethod;
     $notification: NotificationMethod;
     $modal: ModalMethod;
+    $drawer: DrawerMethod;
   }
 }
 
