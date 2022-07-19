@@ -551,7 +551,7 @@ export default defineComponent({
     };
 
     // 生成当前面板内容
-    const [headerValue, setHeaderValue, headerOperations, resetHeaderValue] =
+    const { headerValue, setHeaderValue, headerOperations, resetHeaderValue } =
       useHeaderValue(
         reactive({
           mode,
@@ -747,6 +747,10 @@ export default defineComponent({
       headerMode.value = type;
     }
 
+    function onMonthHeaderClick() {
+      headerMode.value = 'year';
+    }
+
     function onPanelHeaderSelect(date: Dayjs) {
       let newValue = headerValue.value;
       newValue = newValue.set('year', date.year());
@@ -754,7 +758,7 @@ export default defineComponent({
         newValue = newValue.set('month', date.month());
       }
       setHeaderValue(newValue);
-      headerMode.value = undefined;
+      headerMode.value = headerMode.value === 'year' ? 'month' : undefined; // 年选择完后选择月
     }
 
     const computedTimePickerProps = computed(() => ({
@@ -807,6 +811,7 @@ export default defineComponent({
       onTodayBtnClick: onPanelSelect,
       onHeaderLabelClick: onPanelHeaderLabelClick,
       onHeaderSelect: onPanelHeaderSelect,
+      onMonthHeaderClick,
     }));
 
     return {
