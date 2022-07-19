@@ -11,7 +11,7 @@ import Spin from '../spin';
 import Grid from '../grid';
 import Pagination, { PaginationProps } from '../pagination';
 import Empty from '../empty';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import type {
   ScrollIntoViewOptions,
   VirtualListProps,

@@ -57,7 +57,7 @@ import Th from './table-th';
 import Td from './table-td';
 import OperationTh from './table-operation-th';
 import OperationTd from './table-operation-td';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import ResizeObserver from '../_components/resize-observer';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { omit } from '../_utils/omit';
@@ -625,12 +625,6 @@ export default defineComponent({
     const tbodyRef = ref<HTMLElement>();
     const summaryRef = ref<HTMLElement>();
     const thRefs = ref<Record<string, HTMLElement>>({});
-
-    const virtualListRef = ref();
-
-    watch(virtualListRef, (instance) => {
-      tbodyRef.value = instance.$el;
-    });
 
     const splitTable = computed(
       () =>
@@ -1498,36 +1492,6 @@ export default defineComponent({
       return null;
     };
 
-    const renderVirtualListBody = () => {
-      return (
-        <ClientOnly>
-          <VirtualList
-            v-slots={{
-              item: ({
-                item,
-                index,
-              }: {
-                item: TableDataWithRaw;
-                index: number;
-              }) => renderRecord(item, index),
-            }}
-            ref={virtualListRef}
-            class={`${prefixCls}-body`}
-            data={flattenData.value}
-            itemKey="_key"
-            type="table"
-            outerAttrs={{
-              class: `${prefixCls}-element`,
-              style: contentStyle.value,
-            }}
-            {...props.virtualListProps}
-            onResize={handleTbodyResize}
-            onScroll={handleScroll}
-          />
-        </ClientOnly>
-      );
-    };
-
     const renderExpandBtn = (
       record: TableDataWithRaw,
       stopPropagation = true
@@ -1863,10 +1827,35 @@ export default defineComponent({
                 </table>
               </div>
             )}
-            {isVirtualList.value ? (
-              renderVirtualListBody()
-            ) : (
-              <ResizeObserver onResize={handleTbodyResize}>
+            <ResizeObserver onResize={handleTbodyResize}>
+              {isVirtualList.value ? (
+                <VirtualList
+                  v-slots={{
+                    item: ({
+                      item,
+                      index,
+                    }: {
+                      item: TableDataWithRaw;
+                      index: number;
+                    }) => renderRecord(item, index),
+                  }}
+                  ref={(ins: any) => (tbodyRef.value = ins.$el)}
+                  class={`${prefixCls}-body`}
+                  data={flattenData.value}
+                  itemKey="_key"
+                  component={{
+                    list: 'table',
+                    content: 'tbody',
+                  }}
+                  listAttrs={{
+                    class: `${prefixCls}-element`,
+                    style: contentStyle.value,
+                  }}
+                  paddingPosition="list"
+                  {...props.virtualListProps}
+                  onScroll={onTbodyScroll}
+                />
+              ) : (
                 <div
                   ref={tbodyRef}
                   class={`${prefixCls}-body`}
@@ -1893,8 +1882,8 @@ export default defineComponent({
                     {renderBody()}
                   </table>
                 </div>
-              </ResizeObserver>
-            )}
+              )}
+            </ResizeObserver>
             {summaryData.value && summaryData.value.length && (
               <div
                 ref={summaryRef}
