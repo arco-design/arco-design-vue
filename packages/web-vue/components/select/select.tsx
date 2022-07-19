@@ -21,7 +21,7 @@ import { getKeyFromValue, isGroupOptionInfo, isValidOption } from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
-import { Data, EmitType } from '../_utils/types';
+import { Data } from '../_utils/types';
 import SelectDropdown from './select-dropdown.vue';
 import Option from './option.vue';
 import OptGroup from './optgroup.vue';
@@ -695,9 +695,14 @@ export default defineComponent({
     };
 
     const handleRemove = (key: string) => {
-      const optionInfo = optionInfoMap.get(key);
-      const newKeys = computedValueKeys.value.filter((_key) => _key !== key);
-      updateValue(newKeys);
+      let optionInfo = optionInfoMap.get(key);
+      if (key === '__arco__more') {
+        optionInfo = optionInfoMap.get(computedValueKeys.value.pop()!);
+        updateValue(computedValueKeys.value);
+      } else {
+        const newKeys = computedValueKeys.value.filter((_key) => _key !== key);
+        updateValue(newKeys);
+      }
       emit('remove', optionInfo?.value);
     };
 

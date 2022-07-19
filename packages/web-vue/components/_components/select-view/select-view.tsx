@@ -115,7 +115,7 @@ export default defineComponent({
       eventHandlers.value?.onBlur?.(ev);
     };
 
-    const handleRemove = (tag: string) => {
+    const handleRemove = (tag: string | number) => {
       emit('remove', tag);
     };
 
