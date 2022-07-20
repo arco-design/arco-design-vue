@@ -24,6 +24,7 @@ export type TriggerPosition = typeof TRIGGER_POSITIONS[number];
 export const TRIGGER_EVENTS = [
   'hover',
   'click',
+  'dblclick',
   'focus',
   'contextMenu',
 ] as const;

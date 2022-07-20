@@ -41,6 +41,7 @@ import { omit } from '../_utils/omit';
 
 const TRIGGER_EVENTS = [
   'onClick',
+  'onDblclick',
   'onMouseenter',
   'onMouseleave',
   'onFocusin',
@@ -498,10 +499,22 @@ export default defineComponent({
         updateMousePosition(e);
         changeVisible(!computedVisible.value);
       } else if (
-        triggerMethods.value.includes('contextMenu') &&
+        (triggerMethods.value.includes('contextMenu') ||
+          triggerMethods.value.includes('dblclick')) &&
         computedVisible.value
       ) {
         changeVisible(false);
+      }
+    };
+
+    const handleDblClick = (e: MouseEvent) => {
+      (attrs as any).onDdlclick?.(e);
+      if (props.disabled || (computedVisible.value && !props.clickToClose)) {
+        return;
+      }
+      if (triggerMethods.value.includes('dblclick')) {
+        updateMousePosition(e);
+        changeVisible(!computedVisible.value);
       }
     };
 
@@ -758,6 +771,7 @@ export default defineComponent({
       mergeFirstChild(children.value, {
         class: triggerCls.value,
         onClick: handleClick,
+        onDblclick: handleDblClick,
         onMouseenter: handleMouseEnter,
         onMouseleave: handleMouseLeave,
         onFocusin: handleFocusin,
