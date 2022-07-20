@@ -93,7 +93,6 @@ Shows how to use form validation.
       </a-space>
     </a-form-item>
   </a-form>
-  {{ form }}
 </template>
 
 <script>

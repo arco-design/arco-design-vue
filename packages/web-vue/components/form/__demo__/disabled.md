@@ -34,7 +34,6 @@ The entire form can be disabled through the `disabled` attribute.
       <a-button>Submit</a-button>
     </a-form-item>
   </a-form>
-  {{ form }}
 </template>
 
 <script>

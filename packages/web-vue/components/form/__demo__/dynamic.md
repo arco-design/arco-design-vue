@@ -30,7 +30,6 @@ Dynamically control form content through data.
   <div>
     <a-button @click="handleAdd">Add Post</a-button>
   </div>
-  {{ form }}
 </template>
 
 <script>
