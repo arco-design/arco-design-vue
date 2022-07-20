@@ -159,6 +159,7 @@ export default defineComponent({
    * @zh 按钮图标
    * @en Button icon
    * @slot icon
+   * @binding {boolean} popupVisible
    */
   setup(props, { emit }) {
     const { defaultPopupVisible, popupVisible } = toRefs(props);
