@@ -73,7 +73,7 @@ export default defineComponent({
     /**
      * @zh 触发方式
      * @en Trigger method
-     * @values 'hover','click','focus','contextMenu'
+     * @values 'hover','click','dblclick','focus','contextMenu'
      */
     trigger: {
       type: [String, Array] as PropType<TriggerEvent | TriggerEvent[]>,
