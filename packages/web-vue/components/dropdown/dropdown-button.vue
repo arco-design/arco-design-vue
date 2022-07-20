@@ -19,7 +19,7 @@
     >
       <Button :size="size" :type="type" :disabled="disabled">
         <template #icon>
-          <slot name="icon">
+          <slot name="icon" :popup-visible="computedPopupVisible">
             <IconMore />
           </slot>
         </template>
