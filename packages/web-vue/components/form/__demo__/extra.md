@@ -42,7 +42,6 @@ You can use the `help` attribute or slot. The verification information will be b
       </a-checkbox>
     </a-form-item>
   </a-form>
-  {{ form }}
 </template>
 
 <script>

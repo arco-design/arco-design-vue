@@ -34,7 +34,6 @@ Basic usage of the form.
       <a-button html-type="submit">Submit</a-button>
     </a-form-item>
   </a-form>
-  {{ form }}
 </template>
 
 <script>

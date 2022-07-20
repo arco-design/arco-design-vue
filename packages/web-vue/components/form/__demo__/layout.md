@@ -40,9 +40,6 @@ The form supports three layout methods: `horizontal`, `vertical` and `inline`.
         <a-button>Submit</a-button>
       </a-form-item>
     </a-form>
-    <div>
-      {{ form }}
-    </div>
   </a-space>
 </template>
 

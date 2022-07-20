@@ -36,7 +36,6 @@ _* Currently it only takes effect after the first load._
       <a-button html-type="submit">Submit</a-button>
     </a-form-item>
   </a-form>
-  {{ form }}
 </template>
 
 <script>

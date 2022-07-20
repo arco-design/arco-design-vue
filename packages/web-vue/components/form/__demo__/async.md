@@ -35,7 +35,6 @@ Verify the form function through an asynchronous method.
       <a-button @click="handleClick">Set Status</a-button>
     </a-form-item>
   </a-form>
-  {{ form }}
 </template>
 
 <script>

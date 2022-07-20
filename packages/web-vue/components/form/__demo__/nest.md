@@ -72,7 +72,6 @@ If you use the grid component for layout, please set `:content-flex="false"` to 
       </a-checkbox>
     </a-form-item>
   </a-form>
-  {{ form }}
 </template>
 
 <script>

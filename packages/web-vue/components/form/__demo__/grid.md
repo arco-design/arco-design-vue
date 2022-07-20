@@ -49,7 +49,6 @@ Shows how to use grid layout. You can use the `label-col-flex` property to speci
       </a-col>
     </a-row>
   </a-form>
-  {{ form }}
 </template>
 
 <script>
