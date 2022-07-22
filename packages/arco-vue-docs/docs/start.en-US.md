@@ -11,7 +11,7 @@ description: Follow the steps below to quickly get started using the component l
 
 vue >= 3.2.0
 
-**Note**: `Vue3` does not support IE browser environment, you can add `polyfill` if necessary.
+**Note**: `Vue3` does not support IE browser environment, so ArcoVue does not support IE browser environment.
 
 ## Install
 
