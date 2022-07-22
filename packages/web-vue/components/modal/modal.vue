@@ -199,6 +199,7 @@ export default defineComponent({
      */
     titleAlign: {
       type: String as PropType<'start' | 'center'>,
+      default: 'center',
     },
     /**
      * @zh 对话框是否居中显示
