@@ -49,7 +49,7 @@ import { isArray, isFunction, isUndefined } from '../_utils/is';
 import useMergeState from '../_hooks/use-merge-state';
 import useCheckedState from './hooks/use-checked-state';
 import useTreeData from './hooks/use-tree-data';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import type {
   VirtualListProps,
   ScrollIntoViewOptions,

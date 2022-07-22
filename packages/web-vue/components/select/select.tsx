@@ -33,7 +33,7 @@ import {
   SelectFieldNames,
   SelectOptionGroup,
 } from './interface';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { useSelect } from './hooks/use-select';
 import { TagData } from '../input-tag';
