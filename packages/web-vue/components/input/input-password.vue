@@ -13,11 +13,12 @@
         @mousedown.prevent
         @mouseup.prevent
       >
-        <icon-eye v-if="invisible" />
+        <icon-eye v-if="!invisible" />
         <icon-eye-invisible v-else />
       </a-icon-hover>
       <slot name="suffix" />
     </template>
+
     <template v-if="$slots.append" #append>
       <slot name="append" />
     </template>
