@@ -880,20 +880,24 @@ export default defineComponent({
         [
           KEYBOARD_KEY.ARROW_RIGHT,
           (ev: Event) => {
-            ev.preventDefault();
-            if (activeOption.value?.children) {
-              setSelectedPath(activeOption.value.key);
-              setActiveKey(activeOption.value.children[0]?.key);
+            if (!showSearchPanel.value) {
+              ev.preventDefault();
+              if (activeOption.value?.children) {
+                setSelectedPath(activeOption.value.key);
+                setActiveKey(activeOption.value.children[0]?.key);
+              }
             }
           },
         ],
         [
           KEYBOARD_KEY.ARROW_LEFT,
           (ev: Event) => {
-            ev.preventDefault();
-            if (activeOption.value?.parent) {
-              setSelectedPath(activeOption.value.parent.key);
-              setActiveKey(activeOption.value.parent.key);
+            if (!showSearchPanel.value) {
+              ev.preventDefault();
+              if (activeOption.value?.parent) {
+                setSelectedPath(activeOption.value.parent.key);
+                setActiveKey(activeOption.value.parent.key);
+              }
             }
           },
         ],
