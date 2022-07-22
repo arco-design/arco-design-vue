@@ -18,6 +18,7 @@
       </a-icon-hover>
       <slot name="suffix" />
     </template>
+
     <template v-if="$slots.append" #append>
       <slot name="append" />
     </template>
