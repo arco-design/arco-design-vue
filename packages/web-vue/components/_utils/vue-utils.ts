@@ -187,9 +187,7 @@ export const getChildrenTextOrSlot = (vn: VNode): string | Slot | undefined => {
   return undefined;
 };
 
-export const getFirstComponent = (
-  children: VNode[] | undefined
-): VNode | undefined => {
+export const getFirstComponent = (children: VNode[]): VNode | undefined => {
   if (!children) {
     return undefined;
   }

@@ -70,7 +70,7 @@ import {
   Space,
   InputNumber,
 } from '@web-vue/components';
-import VirtualList from '@web-vue/components/_components/virtual';
+import VirtualList from '@web-vue/components/_components/virtual-list/virtual-list.vue';
 import { bigData } from './json';
 
 export default {
