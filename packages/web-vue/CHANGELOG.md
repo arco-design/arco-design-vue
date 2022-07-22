@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- **input-tag:** Fix the problem that the value parameter in the remove event is wrong after setting max-tag-count ([#1442](https://github.com/arco-design/arco-design-vue/pull/1442))
+- **cascader:** Fixed the wrong position of the horizontal scroll bar of the search drop-down menu ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+- **cascader:** Fix the problem that the cursor cannot be used after inputting content in search mode ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+- **form:** Fix form-item content may exceed limit width ([#1437](https://github.com/arco-design/arco-design-vue/pull/1437))
+- **modal:** Fix the problem that the default title class name is wrong ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+- **typography:** cancel click propagation of suffix icon ([#1411](https://github.com/arco-design/arco-design-vue/pull/1411))
+
+### 💎 Enhancement
+
+- **table:** Selected rows can be displayed when selected-keys are set individually ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
 ## 2.33.0
 
 `2022-07-08`

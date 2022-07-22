@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 💎 Enhancement
+
+- Selected rows can be displayed when selected-keys are set individually ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
 ## 2.32.1
 
 `2022-07-01`

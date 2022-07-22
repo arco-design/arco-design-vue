@@ -39,7 +39,7 @@ description: Open a floating layer on the current page to carry related operatio
 |top|The height from the top of the dialog box. It does not take effect when the center display is turned on.|`number\|string`|`-`|2.12.0|
 |mask|Whether to show the mask|`boolean`|`true`||
 |title|Title|`string`|`-`||
-|title-align|horizontal alignment of the title|`'start' \| 'center'`|`-`|2.17.0|
+|title-align|horizontal alignment of the title|`'start' \| 'center'`|`'center'`|2.17.0|
 |align-center|Whether the dialog box is displayed in the center|`boolean`|`true`||
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`||
 |mask-closable|Whether to close the modal when click the mask|`boolean`|`true`||

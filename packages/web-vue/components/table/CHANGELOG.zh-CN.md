@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 💎 功能优化
+
+- 单独设置 selected-keys 时可以显示选中行 ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
 ## 2.32.1
 
 `2022-07-01`

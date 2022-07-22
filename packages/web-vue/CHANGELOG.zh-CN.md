@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 问题修复
+
+- **input-tag:** 修复设置 max-tag-count 后，remove 事件中 value 参数错误的问题 ([#1442](https://github.com/arco-design/arco-design-vue/pull/1442))
+- **cascader:** 修复搜索下拉菜单的横向滚动条位置错误问题 ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+- **cascader:** 修复搜索模式下，输入内容后不能使用光标的问题 ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+- **form:** 修复 form-item 内容可能超出限制宽度的问题 ([#1437](https://github.com/arco-design/arco-design-vue/pull/1437))
+- **modal:** 修复默认标题类名错误的问题 ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+- **typography:** 后缀 icon 点击事件取消冒泡 ([#1411](https://github.com/arco-design/arco-design-vue/pull/1411))
+
+### 💎 功能优化
+
+- **table:** 单独设置 selected-keys 时可以显示选中行 ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
 ## 2.33.0
 
 `2022-07-08`
