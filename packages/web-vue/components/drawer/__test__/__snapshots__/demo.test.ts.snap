@@ -14,6 +14,12 @@ exports[`<drawer> demo: render [basic] correctly 1`] = `
 <!---->"
 `;
 
+exports[`<drawer> demo: render [function] correctly 1`] = `
+"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <!--v-if-->Open Drawer
+</button>"
+`;
+
 exports[`<drawer> demo: render [nested] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Open Drawer

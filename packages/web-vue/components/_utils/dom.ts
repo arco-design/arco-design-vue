@@ -71,7 +71,12 @@ export const contains = (root: Node | null | undefined, ele: Node | null) => {
   return false;
 };
 
-export const OVERLAY_TYPES = ['modal', 'message', 'notification'] as const;
+export const OVERLAY_TYPES = [
+  'modal',
+  'message',
+  'notification',
+  'drawer',
+] as const;
 
 export const getOverlay = (type: typeof OVERLAY_TYPES[number]) => {
   const popper = document.createElement('div');

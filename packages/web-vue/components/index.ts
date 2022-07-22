@@ -33,6 +33,12 @@ export { default as Descriptions, DescriptionsItem } from './descriptions';
 export type { DescData } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Drawer } from './drawer';
+export type {
+  DrawerInstance,
+  DrawerMethod,
+  DrawerConfig,
+  DrawerReturn,
+} from './drawer';
 export {
   default as Dropdown,
   Doption,
