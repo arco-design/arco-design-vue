@@ -134,7 +134,7 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|
 |---|---|---|
-|icon|Button icon|-|
+|icon|Button icon|popup-visible: `boolean`|
 |content|Content|-|
 
 

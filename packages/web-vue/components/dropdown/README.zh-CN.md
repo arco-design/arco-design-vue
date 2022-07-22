@@ -132,7 +132,7 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 
 |插槽名|描述|参数|
 |---|:---:|---|
-|icon|按钮图标|-|
+|icon|按钮图标|popup-visible: `boolean`|
 |content|内容|-|
 
 
