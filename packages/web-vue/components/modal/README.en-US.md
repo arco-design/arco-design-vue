@@ -110,7 +110,7 @@ Modal._context = app._context;
 |---|---|---|:---:|:---|
 |title|Title|`RenderContent`|`-`||
 |content|Content|`RenderContent`|`-`||
-|footer|Footer|`RenderContent`|`-`||
+|footer|Footer|`boolean \| RenderContent`|`true`||
 |closable|Whether to show the close button|`boolean`|`false`||
 |okText|The content of the confirm button|`string`|`-`||
 |cancelText|The content of the cancel button|`string`|`-`||

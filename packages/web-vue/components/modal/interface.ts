@@ -15,8 +15,9 @@ export interface ModalConfig {
   /**
    * @zh 页脚
    * @en Footer
+   * @defaultValue true
    */
-  footer?: RenderContent;
+  footer?: boolean | RenderContent;
   /**
    * @zh 是否显示关闭按钮
    * @en Whether to show the close button
