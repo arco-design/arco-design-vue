@@ -34,7 +34,7 @@ export interface VirtualListProps {
   isStaticItemHeight?: boolean;
   estimatedItemHeight?: number;
   data?: unknown[];
-  itemKey?: string;
+  itemKey?: string | ((item: unknown) => VirtualItemKey);
   component?: keyof HTMLElementTagNameMap;
 }
 
