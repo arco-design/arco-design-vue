@@ -31,7 +31,7 @@ description: Used to add hover, click, focus and other events to the element, an
 |---|---|---|:---:|
 |popup-visible **(v-model)**|Whether the popup is visible|`boolean`|`-`|
 |default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`|
-|trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'hover'`|
+|trigger|Trigger method|`'hover' \| 'click' \| 'dblclick' \| 'focus' \| 'contextMenu'`|`'hover'`|
 |position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'bottom'`|
 |disabled|Whether the trigger is disabled|`boolean`|`false`|
 |popup-offset|The offset of the popup (the offset distance of the popup from the trigger)|`number`|`0`|

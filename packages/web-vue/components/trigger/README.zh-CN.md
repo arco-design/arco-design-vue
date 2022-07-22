@@ -29,7 +29,7 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |---|---|---|:---:|
 |popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`|
 |default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`|
-|trigger|触发方式|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'hover'`|
+|trigger|触发方式|`'hover' \| 'click' \| 'dblclick' \| 'focus' \| 'contextMenu'`|`'hover'`|
 |position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'bottom'`|
 |disabled|触发器是否禁用|`boolean`|`false`|
 |popup-offset|弹出框的偏移量（弹出框距离触发器的偏移距离）|`number`|`0`|
