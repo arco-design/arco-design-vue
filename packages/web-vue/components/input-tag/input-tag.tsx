@@ -324,16 +324,15 @@ export default defineComponent({
       }
     };
 
-    const tags = computed(() => {
-      const valueData = getValueData(
-        computedValue.value,
-        mergedFieldNames.value
-      );
+    const valueData = computed(() =>
+      getValueData(computedValue.value, mergedFieldNames.value)
+    );
 
+    const tags = computed(() => {
       if (props.maxTagCount > 0) {
-        const invisibleTags = valueData.length - props.maxTagCount;
+        const invisibleTags = valueData.value.length - props.maxTagCount;
         if (invisibleTags > 0) {
-          const result = valueData.slice(0, props.maxTagCount);
+          const result = valueData.value.slice(0, props.maxTagCount);
           const raw = {
             value: '__arco__more',
             label: `+${invisibleTags}...`,
@@ -346,7 +345,7 @@ export default defineComponent({
           return result;
         }
       }
-      return valueData;
+      return valueData.value;
     });
 
     const updateValue = (value: (string | number | TagData)[], ev: Event) => {
@@ -425,8 +424,8 @@ export default defineComponent({
         !computedInputValue.value &&
         keyCode === Backspace.key
       ) {
-        const lastIndex = tags.value.length - 1;
-        handleRemove(tags.value[lastIndex].value, lastIndex, e);
+        const lastIndex = valueData.value.length - 1;
+        handleRemove(valueData.value[lastIndex].value, lastIndex, e);
       }
     };
 
