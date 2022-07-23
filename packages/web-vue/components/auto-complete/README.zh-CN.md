@@ -10,6 +10,8 @@ description: 输入框的自动补全功能。
 
 @import ./__demo__/strict.md
 
+@import ./__demo__/footer.md
+
 ## API
 
 
@@ -39,5 +41,6 @@ description: 输入框的自动补全功能。
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
 |option|选项内容|data: `OptionInfo`|2.13.0|
+|footer|弹出框的页脚|-||
 
 

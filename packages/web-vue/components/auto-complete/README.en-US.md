@@ -12,6 +12,8 @@ description: The auto-complete function of the input.
 
 @import ./__demo__/strict.md
 
+@import ./__demo__/footer.md
+
 ## API
 
 
@@ -41,5 +43,6 @@ description: The auto-complete function of the input.
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
 |option|Display content of options|data: `OptionInfo`|2.13.0|
+|footer|The footer of the popup menu box|-||
 
 
