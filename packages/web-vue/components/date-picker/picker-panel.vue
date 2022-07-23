@@ -16,6 +16,7 @@
           :header-icons="headerIcons"
           :header-operations="headerPanelHeaderOperations"
           @select="onHeaderPanelSelect"
+          @header-label-click="onMonthHeaderLabelClick"
         />
       </template>
       <template v-else>
@@ -193,6 +194,7 @@ export default defineComponent({
     'today-btn-click',
     'header-label-click',
     'header-select',
+    'month-header-click',
   ],
   setup(props, { emit }) {
     const {
@@ -249,11 +251,11 @@ export default defineComponent({
 
     const footerValue = computed(() => value?.value || getNow());
 
-    const [
-      headerPanelHeaderValue,
-      setHeaderPanelHeaderValue,
-      headerPanelHeaderOperations,
-    ] = useHeaderValue(
+    const {
+      headerValue: headerPanelHeaderValue,
+      setHeaderValue: setHeaderPanelHeaderValue,
+      headerOperations: headerPanelHeaderOperations,
+    } = useHeaderValue(
       reactive({
         mode: headerMode,
         format,
@@ -305,6 +307,10 @@ export default defineComponent({
       emit('header-select', date);
     }
 
+    function onMonthHeaderLabelClick() {
+      emit('month-header-click');
+    }
+
     const shortcutsProps = reactive({
       prefixCls,
       shortcuts,
@@ -340,6 +346,7 @@ export default defineComponent({
       onHeaderPanelSelect,
       headerPanelHeaderValue,
       headerPanelHeaderOperations,
+      onMonthHeaderLabelClick,
     };
   },
 });

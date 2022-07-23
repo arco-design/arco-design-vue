@@ -1,4 +1,4 @@
-import { computed, toRefs } from 'vue';
+import { computed, toRefs, watch } from 'vue';
 import { Mode } from '../interface';
 
 interface PanelSpanProps {

@@ -8,62 +8,79 @@
       <!-- panel -->
       <div :class="`${prefixCls}-range`">
         <div :class="`${prefixCls}-range-wrapper`">
-          <!-- week -->
-          <template v-if="mode === 'week'">
-            <WeekPanel
+          <template v-if="startHeaderMode || endHeaderMode">
+            <YearPanel
+              v-if="startHeaderMode === 'year'"
               v-bind="startPanelProps"
-              :day-start-of-week="dayStartOfWeek"
             />
-            <WeekPanel
+            <YearPanel v-if="endHeaderMode === 'year'" v-bind="endPanelProps" />
+            <MonthPanel
+              v-else-if="startHeaderMode === 'month'"
+              v-bind="startPanelProps"
+            />
+            <MonthPanel
+              v-else-if="endHeaderMode === 'month'"
               v-bind="endPanelProps"
-              :day-start-of-week="dayStartOfWeek"
             />
           </template>
-          <!-- month -->
-          <template v-else-if="mode === 'month'">
-            <MonthPanel v-bind="startPanelProps" />
-            <MonthPanel v-bind="endPanelProps" />
-          </template>
-          <!-- year -->
-          <template v-else-if="mode === 'year'">
-            <YearPanel v-bind="startPanelProps" />
-            <YearPanel v-bind="endPanelProps" />
-          </template>
-          <!-- quarter -->
-          <template v-else-if="mode === 'quarter'">
-            <QuarterPanel v-bind="startPanelProps" />
-            <QuarterPanel v-bind="endPanelProps" />
-          </template>
-          <!-- date -->
           <template v-else>
-            <DatePanel
-              v-model:currentView="currentDateView"
-              v-bind="startPanelProps"
-              is-range
-              :value="value && value[0]"
-              :footer-value="footerValue && footerValue[0]"
-              :time-picker-value="timePickerValue && timePickerValue[0]"
-              :day-start-of-week="dayStartOfWeek"
-              :show-time="showTime"
-              :time-picker-props="timePickerProps"
-              :disabled-time="getDisabledTimeFunc(0)"
-              :disabled="disabled[0]"
-              @timePickerSelect="onStartTimePickerSelect"
-            />
-            <DatePanel
-              v-model:currentView="currentDateView"
-              v-bind="endPanelProps"
-              is-range
-              :value="value && value[1]"
-              :footer-value="footerValue && footerValue[1]"
-              :time-picker-value="timePickerValue && timePickerValue[1]"
-              :day-start-of-week="dayStartOfWeek"
-              :show-time="showTime"
-              :time-picker-props="timePickerProps"
-              :disabled-time="getDisabledTimeFunc(1)"
-              :disabled="disabled[1]"
-              @timePickerSelect="onEndTimePickerSelect"
-            />
+            <!-- week -->
+            <template v-if="mode === 'week'">
+              <WeekPanel
+                v-bind="startPanelProps"
+                :day-start-of-week="dayStartOfWeek"
+              />
+              <WeekPanel
+                v-bind="endPanelProps"
+                :day-start-of-week="dayStartOfWeek"
+              />
+            </template>
+            <!-- month -->
+            <template v-else-if="mode === 'month'">
+              <MonthPanel v-bind="startPanelProps" />
+              <MonthPanel v-bind="endPanelProps" />
+            </template>
+            <!-- year -->
+            <template v-else-if="mode === 'year'">
+              <YearPanel v-bind="startPanelProps" />
+              <YearPanel v-bind="endPanelProps" />
+            </template>
+            <!-- quarter -->
+            <template v-else-if="mode === 'quarter'">
+              <QuarterPanel v-bind="startPanelProps" />
+              <QuarterPanel v-bind="endPanelProps" />
+            </template>
+            <!-- date -->
+            <template v-else>
+              <DatePanel
+                v-model:currentView="currentDateView"
+                v-bind="startPanelProps"
+                is-range
+                :value="value && value[0]"
+                :footer-value="footerValue && footerValue[0]"
+                :time-picker-value="timePickerValue && timePickerValue[0]"
+                :day-start-of-week="dayStartOfWeek"
+                :show-time="showTime"
+                :time-picker-props="timePickerProps"
+                :disabled-time="getDisabledTimeFunc(0)"
+                :disabled="disabled[0]"
+                @timePickerSelect="onStartTimePickerSelect"
+              />
+              <DatePanel
+                v-model:currentView="currentDateView"
+                v-bind="endPanelProps"
+                is-range
+                :value="value && value[1]"
+                :footer-value="footerValue && footerValue[1]"
+                :time-picker-value="timePickerValue && timePickerValue[1]"
+                :day-start-of-week="dayStartOfWeek"
+                :show-time="showTime"
+                :time-picker-props="timePickerProps"
+                :disabled-time="getDisabledTimeFunc(1)"
+                :disabled="disabled[1]"
+                @timePickerSelect="onEndTimePickerSelect"
+              />
+            </template>
           </template>
         </div>
       </div>
@@ -112,6 +129,7 @@ import type {
   RangeDisabledDate,
   CalendarValue,
   WeekStart,
+  StartHeaderProps,
 } from './interface';
 import PanelShortcuts from './panels/shortcuts.vue';
 import PanelFooter from './panels/footer.vue';
@@ -195,7 +213,7 @@ export default defineComponent({
       type: Boolean,
     },
     startHeaderProps: {
-      type: Object as PropType<Record<string, any>>,
+      type: Object as PropType<StartHeaderProps>,
       default: () => ({}),
     },
     endHeaderProps: {
@@ -212,6 +230,12 @@ export default defineComponent({
     visible: {
       type: Boolean,
     },
+    startHeaderMode: {
+      type: String as PropType<'year' | 'month'>,
+    },
+    endHeaderMode: {
+      type: String as PropType<'year' | 'month'>,
+    },
   },
   emits: [
     'cell-click',
@@ -221,6 +245,10 @@ export default defineComponent({
     'shortcut-mouse-enter',
     'shortcut-mouse-leave',
     'confirm',
+    'start-header-label-click',
+    'end-header-label-click',
+    'start-header-select',
+    'end-header-select',
   ],
   setup(props, { emit }) {
     const {
@@ -236,6 +264,8 @@ export default defineComponent({
       endHeaderProps,
       dateRender,
       visible,
+      startHeaderMode,
+      endHeaderMode,
     } = toRefs(props);
 
     const showShortcuts = computed(
@@ -300,6 +330,22 @@ export default defineComponent({
       emit('time-picker-select', time, 'end');
     }
 
+    function onStartPanelHeaderLabelClick(type: 'year' | 'month') {
+      emit('start-header-label-click', type);
+    }
+
+    function onEndPanelHeaderLabelClick(type: 'year' | 'month') {
+      emit('end-header-label-click', type);
+    }
+
+    function onStartHeaderPanelSelect(date: Dayjs) {
+      emit('start-header-select', date);
+    }
+
+    function onEndHeaderPanelSelect(date: Dayjs) {
+      emit('end-header-select', date);
+    }
+
     function getDisabledDateFunc(index: 0 | 1) {
       return isFunction(disabledDate?.value)
         ? (current: Date) =>
@@ -341,8 +387,11 @@ export default defineComponent({
       rangeValues: value.value,
       disabledDate: getDisabledDateFunc(0),
       dateRender: getDateRenderFunc(0),
-      onSelect: onPanelCellClick,
+      onSelect: startHeaderMode.value
+        ? onStartHeaderPanelSelect
+        : onPanelCellClick,
       onCellMouseEnter: onPanelCellMouseEnter,
+      onHeaderLabelClick: onStartPanelHeaderLabelClick,
     }));
 
     const endPanelProps = computed(() => ({
@@ -350,8 +399,9 @@ export default defineComponent({
       rangeValues: value.value,
       disabledDate: getDisabledDateFunc(1),
       dateRender: getDateRenderFunc(1),
-      onSelect: onPanelCellClick,
+      onSelect: endHeaderMode.value ? onEndHeaderPanelSelect : onPanelCellClick,
       onCellMouseEnter: onPanelCellMouseEnter,
+      onHeaderLabelClick: onEndPanelHeaderLabelClick,
     }));
 
     return {
@@ -366,6 +416,8 @@ export default defineComponent({
       currentDateView,
       onStartTimePickerSelect,
       onEndTimePickerSelect,
+      onStartHeaderPanelSelect,
+      onEndHeaderPanelSelect,
     };
   },
 });

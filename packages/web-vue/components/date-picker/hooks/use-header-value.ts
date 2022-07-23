@@ -13,15 +13,13 @@ interface HeaderValueProps {
   onChange?: (newVal: Dayjs) => void;
 }
 
-export default function useHeaderValue(
-  props: HeaderValueProps
-): [
-  ComputedRef<Dayjs>,
-  (val: Dayjs | undefined, emitChange?: boolean) => void,
-  ComputedRef<HeaderOperations>,
-  (emitChange?: boolean) => void,
-  () => Dayjs
-] {
+export default function useHeaderValue(props: HeaderValueProps): {
+  headerValue: ComputedRef<Dayjs>;
+  setHeaderValue: (val: Dayjs | undefined, emitChange?: boolean) => void;
+  headerOperations: ComputedRef<HeaderOperations>;
+  resetHeaderValue: (emitChange?: boolean) => void;
+  getDefaultLocalValue: () => Dayjs;
+} {
   const { mode, value, defaultValue, selectedValue, format, onChange } =
     toRefs(props);
 
@@ -109,11 +107,11 @@ export default function useHeaderValue(
     },
   }));
 
-  return [
+  return {
     headerValue,
     setHeaderValue,
     headerOperations,
     resetHeaderValue,
     getDefaultLocalValue,
-  ];
+  };
 }

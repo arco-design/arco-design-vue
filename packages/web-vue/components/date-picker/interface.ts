@@ -157,3 +157,14 @@ export interface HeaderIcons {
   next?: Slot;
   nextDouble?: Slot;
 }
+
+export interface StartHeaderProps {
+  headerValue: Dayjs;
+  headerOperations: Pick<any, string>;
+  headerIcons: {
+    prev: Slot | undefined;
+    prevDouble: Slot | undefined;
+    next: Slot | undefined;
+    nextDouble: Slot | undefined;
+  };
+}

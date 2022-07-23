@@ -23,14 +23,14 @@
         <span
           v-if="year"
           :class="`${prefixCls}-header-label`"
-          @click="() => onLabelClick('year')"
+          @click="() => onLabelClick && onLabelClick('year')"
           >{{ year }}</span
         >
         <span v-if="year && month">-</span>
         <span
           v-if="month"
           :class="`${prefixCls}-header-label`"
-          @click="() => onLabelClick('month')"
+          @click="() => onLabelClick && onLabelClick('month')"
           >{{ month }}</span
         >
       </template>
@@ -92,6 +92,7 @@ export default defineComponent({
     },
     mode: {
       type: String as PropType<Mode>,
+      default: 'date',
     },
     value: {
       type: Object as PropType<Dayjs>,
