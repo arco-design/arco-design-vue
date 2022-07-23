@@ -135,6 +135,11 @@ export default defineComponent({
     'clear': (ev: Event) => true,
   },
   /**
+   * @zh 弹出框的页脚
+   * @en The footer of the popup menu box
+   * @slot footer
+   */
+  /**
    * @zh 选项内容
    * @en Display content of options
    * @slot option
@@ -264,7 +269,13 @@ export default defineComponent({
 
     const renderDropdown = () => {
       return (
-        <SelectDropdown ref={dropdownRef} class={`${prefixCls}-dropdown`}>
+        <SelectDropdown
+          ref={dropdownRef}
+          class={`${prefixCls}-dropdown`}
+          v-slots={{
+            footer: slots.footer,
+          }}
+        >
           {validOptions.value.map((info) =>
             renderOption(info as SelectOptionInfo)
           )}
