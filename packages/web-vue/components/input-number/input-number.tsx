@@ -138,6 +138,15 @@ export default defineComponent({
       type: String as PropType<'change' | 'input'>,
       default: 'change',
     },
+    /**
+     * @zh 只读
+     * @en Readonly
+     * @version 3.33.1
+     */
+    readOnly: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:modelValue': (value: number | undefined) => true,
@@ -364,14 +373,14 @@ export default defineComponent({
           KEYBOARD_KEY.ARROW_UP,
           (ev: Event) => {
             ev.preventDefault();
-            nextStep('plus', ev);
+            !props.readOnly && nextStep('plus', ev);
           },
         ],
         [
           KEYBOARD_KEY.ARROW_DOWN,
           (ev: Event) => {
             ev.preventDefault();
-            nextStep('minus', ev);
+            !props.readOnly && nextStep('minus', ev);
           },
         ],
       ])
@@ -388,51 +397,55 @@ export default defineComponent({
       }
     );
 
-    const renderSuffix = () => (
-      <>
-        {slots.suffix?.()}
-        <div class={`${prefixCls}-step`}>
-          <button
-            class={[
-              `${prefixCls}-step-button`,
-              {
-                [`${prefixCls}-step-button-disabled`]:
-                  mergedDisabled.value || isMax.value,
-              },
-            ]}
-            type="button"
-            tabindex="-1"
-            disabled={mergedDisabled.value || isMax.value}
-            onMousedown={(e) => handleStepButton(e, 'plus', true)}
-            onMouseup={clearRepeatTimer}
-            onMouseleave={clearRepeatTimer}
-          >
-            <IconUp />
-          </button>
-          <button
-            class={[
-              `${prefixCls}-step-button`,
-              {
-                [`${prefixCls}-step-button-disabled`]:
-                  mergedDisabled.value || isMin.value,
-              },
-            ]}
-            type="button"
-            tabindex="-1"
-            disabled={mergedDisabled.value || isMin.value}
-            onMousedown={(e) => handleStepButton(e, 'minus', true)}
-            onMouseup={clearRepeatTimer}
-            onMouseleave={clearRepeatTimer}
-          >
-            <IconDown />
-          </button>
-        </div>
-      </>
-    );
+    const renderSuffix = () =>
+      !props.readOnly && (
+        <>
+          {slots.suffix?.()}
+          <div class={`${prefixCls}-step`}>
+            <button
+              class={[
+                `${prefixCls}-step-button`,
+                {
+                  [`${prefixCls}-step-button-disabled`]:
+                    mergedDisabled.value || isMax.value,
+                },
+              ]}
+              type="button"
+              tabindex="-1"
+              disabled={mergedDisabled.value || isMax.value}
+              onMousedown={(e) => handleStepButton(e, 'plus', true)}
+              onMouseup={clearRepeatTimer}
+              onMouseleave={clearRepeatTimer}
+            >
+              <IconUp />
+            </button>
+            <button
+              class={[
+                `${prefixCls}-step-button`,
+                {
+                  [`${prefixCls}-step-button-disabled`]:
+                    mergedDisabled.value || isMin.value,
+                },
+              ]}
+              type="button"
+              tabindex="-1"
+              disabled={mergedDisabled.value || isMin.value}
+              onMousedown={(e) => handleStepButton(e, 'minus', true)}
+              onMouseup={clearRepeatTimer}
+              onMouseleave={clearRepeatTimer}
+            >
+              <IconDown />
+            </button>
+          </div>
+        </>
+      );
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-mode-${props.mode}`,
       `${prefixCls}-size-${mergedSize.value}`,
+      {
+        [`${prefixCls}-readonly`]: props.readOnly,
+      },
     ]);
 
     const renderPrependButton = () => {
@@ -497,6 +510,7 @@ export default defineComponent({
           modelValue={_value.value}
           placeholder={props.placeholder}
           disabled={mergedDisabled.value}
+          readonly={props.readOnly}
           error={props.error}
           inputAttrs={{
             'role': 'spinbutton',
