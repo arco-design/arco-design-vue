@@ -10,6 +10,7 @@ export interface UploadContext {
   showRetryButton?: boolean;
   showCancelButton?: boolean;
   showLink?: boolean;
+  showCopy?: boolean;
   imageLoading?: 'eager' | 'lazy';
   download?: boolean;
   slots: Slots;
