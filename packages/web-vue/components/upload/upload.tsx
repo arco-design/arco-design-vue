@@ -23,6 +23,8 @@ import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
 import { ImagePreviewGroup } from '../image';
 import { useFormItem } from '../_hooks/use-form-item';
+import { clipboard } from '../_utils/clipboard';
+import Message from '../message';
 
 export default defineComponent({
   name: 'Upload',
@@ -209,6 +211,15 @@ export default defineComponent({
      * @version 2.13.0
      */
     showLink: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 在列表模式下，如果上传的文件存在 URL 则展示复制图标，点击可以复制URL。
+     * @en In the list mode, if the uploaded file has a URL, show copy icon, click icon can copy URL.
+     *
+     */
+    showCopy: {
       type: Boolean,
       default: true,
     },
@@ -402,6 +413,7 @@ export default defineComponent({
       imageLoading,
       download,
       showLink,
+      showCopy,
     } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
     const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
@@ -631,6 +643,11 @@ export default defineComponent({
       }
     };
 
+    const handleCopy = (url: string) => {
+      clipboard(url);
+      Message.success('复制成功');
+    };
+
     const handlePreview = (fileItem: FileItem) => {
       if (props.imagePreview && fileItem.url) {
         const current = imageList.value.indexOf(fileItem.url);
@@ -653,6 +670,7 @@ export default defineComponent({
         showRetryButton,
         showCancelButton,
         showLink,
+        showCopy,
         imageLoading,
         download,
         customIcon,
@@ -661,6 +679,7 @@ export default defineComponent({
         onAbort: abort,
         onRemove: handleRemove,
         onPreview: handlePreview,
+        onCopy: handleCopy,
       })
     );
 

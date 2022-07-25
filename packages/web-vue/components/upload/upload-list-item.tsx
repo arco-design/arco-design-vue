@@ -4,6 +4,7 @@ import IconHover from '../_components/icon-hover.vue';
 import UploadProgress from './upload-progress';
 import { FileItem, ListType } from './interfaces';
 import Tooltip from '../tooltip';
+import IconCopy from '../icon/icon-copy';
 import IconDelete from '../icon/icon-delete';
 import IconFile from '../icon/icon-file';
 import IconFilePdf from '../icon/icon-file-pdf';
@@ -110,6 +111,8 @@ export default defineComponent({
                   props.file.name}
               </span>
             )}
+            {/* {uploadCtx?.slots['copy-icon']?.() ??
+              uploadCtx?.customIcon?.copyIcon?.() ?? <IconCopy />} */}
             {props.file.status === 'error' && (
               <Tooltip content={t('upload.error')}>
                 <span
@@ -125,6 +128,21 @@ export default defineComponent({
           </div>
           <UploadProgress file={props.file} listType={props.listType} />
         </div>
+        {uploadCtx?.showCopy && props.file.url && (
+          <span class={`${itemCls}-operation`}>
+            <IconHover
+              // @ts-ignore
+              onClick={() => uploadCtx?.onCopy?.(props.file.url)}
+            >
+              <span
+                class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}
+              >
+                {uploadCtx?.slots['copy-icon']?.() ??
+                  uploadCtx?.customIcon?.copyIcon?.() ?? <IconCopy />}
+              </span>
+            </IconHover>
+          </span>
+        )}
         {uploadCtx?.showRemoveButton && (
           <span class={`${itemCls}-operation`}>
             <IconHover

@@ -70,6 +70,11 @@ export interface CustomIcon {
    */
   errorIcon?: RenderFunction;
   /**
+   * @zh 复制图标
+   * @en Copy icon
+   */
+  copyIcon?: RenderFunction;
+  /**
    * @zh 移除图标
    * @en Remove icon
    */
