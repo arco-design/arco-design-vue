@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 问题修复
+
+- 修复设置 max-tag-count 后，remove 事件中 value 参数错误的问题 ([#1442](https://github.com/arco-design/arco-design-vue/pull/1442))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 问题修复
+
+- 修复中文输入法时报错问题 ([#1335](https://github.com/arco-design/arco-design-vue/pull/1335))
+
+
 ## 2.29.1
 
 `2022-06-02`

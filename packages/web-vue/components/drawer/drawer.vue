@@ -25,25 +25,24 @@
           @after-leave="handleClose"
         >
           <div v-show="computedVisible" :class="prefixCls" :style="style">
-            <div
-              v-if="$slots.title || title || closable"
-              :class="`${prefixCls}-header`"
-            >
-              <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
-                <slot name="title">{{ title }}</slot>
-              </div>
-              <div
-                v-if="closable"
-                tabindex="-1"
-                role="button"
-                aria-label="Close"
-                :class="`${prefixCls}-close-btn`"
-                @click="handleCancel"
-              >
-                <icon-hover>
-                  <icon-close />
-                </icon-hover>
-              </div>
+            <div v-if="header" :class="`${prefixCls}-header`">
+              <slot name="header">
+                <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
+                  <slot name="title">{{ title }}</slot>
+                </div>
+                <div
+                  v-if="closable"
+                  tabindex="-1"
+                  role="button"
+                  aria-label="Close"
+                  :class="`${prefixCls}-close-btn`"
+                  @click="handleCancel"
+                >
+                  <icon-hover>
+                    <icon-close />
+                  </icon-hover>
+                </div>
+              </slot>
             </div>
             <div :class="`${prefixCls}-body`">
               <slot />
@@ -286,6 +285,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否隐藏取消按钮
+     * @en Whether to hide the cancel button
+     * @version 2.33.0
+     */
+    header: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: {
     'update:visible': (visible: boolean) => true,
@@ -319,6 +327,12 @@ export default defineComponent({
    * @zh 页脚
    * @en Footer
    * @slot footer
+   */
+  /**
+   * @zh 页眉
+   * @en Header
+   * @slot header
+   * @version 2.33.0
    */
   setup(props, { emit }) {
     const { popupContainer } = toRefs(props);

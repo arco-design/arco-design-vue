@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 问题修复
+
+- 后缀 icon 点击事件取消冒泡 ([#1411](https://github.com/arco-design/arco-design-vue/pull/1411))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 新增功能
+
+- 新增 `tooltip-props` 类属性 ([#1338](https://github.com/arco-design/arco-design-vue/pull/1338))
+
+
 ## 2.27.0
 
 `2022-05-13`

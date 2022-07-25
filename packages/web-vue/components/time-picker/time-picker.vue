@@ -5,7 +5,7 @@
     auto-fit-transform-origin
     :click-to-close="false"
     :position="position"
-    :disabled="mergedDisabled"
+    :disabled="mergedDisabled || readonly"
     :popup-offset="4"
     :popup-visible="panelVisible"
     :prevent-focus="true"
@@ -29,7 +29,7 @@
       :disabled="mergedDisabled"
       :error="error"
       :editable="!readonly"
-      :allow-clear="allowClear"
+      :allow-clear="allowClear && !readonly"
       :placeholder="computedPlaceholder"
       @clear="onInputClear"
     >

@@ -27,8 +27,6 @@ export function useRenderChildren(
       if (!itemRenderCache.has(key)) {
         const [node] = itemRender.value({ item, index });
         let dom: HTMLElement | undefined;
-        let hasMounted = false;
-        let hasUpdated = false;
         const resizeHandler = () => {
           if (dom) {
             events.onItemResize?.(dom, key);
@@ -39,17 +37,15 @@ export function useRenderChildren(
           cloneVNode(node, {
             key,
             ref: (el) => {
-              if (!hasMounted) {
+              if (!dom) {
                 dom = findElement(el);
-                resizeHandler();
-                hasMounted = true;
               }
             },
+            onVnodeMounted() {
+              resizeHandler();
+            },
             onVnodeUpdated() {
-              if (!hasUpdated) {
-                resizeHandler();
-                hasUpdated = true;
-              }
+              resizeHandler();
             },
           })
         );

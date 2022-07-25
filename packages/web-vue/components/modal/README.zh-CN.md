@@ -37,7 +37,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |top|对话框的距离顶部的高度，居中显示开启的情况下不生效|`number\|string`|`-`|2.12.0|
 |mask|是否显示遮罩层|`boolean`|`true`||
 |title|标题|`string`|`-`||
-|title-align|标题的水平对齐方向|`'start' \| 'center'`|`-`|2.17.0|
+|title-align|标题的水平对齐方向|`'start' \| 'center'`|`'center'`|2.17.0|
 |align-center|对话框是否居中显示|`boolean`|`true`||
 |unmount-on-close|关闭时是否卸载节点|`boolean`|`false`||
 |mask-closable|是否点击遮罩层可以关闭对话框|`boolean`|`true`||
@@ -62,6 +62,8 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |fullscreen|是否开启全屏|`boolean`|`false`|2.19.0|
 |mask-animation-name|遮罩层动画名字|`string`|`-`|2.24.0|
 |modal-animation-name|对话框动画名字|`string`|`-`|2.24.0|
+|body-class|对话框内容部分的类名|`string \| any[]`|`-`|2.31.0|
+|body-style|对话框内容部分的样式|`StyleValue`|`-`|2.31.0|
 ### `<modal>` Events
 
 |事件名|描述|参数|版本|

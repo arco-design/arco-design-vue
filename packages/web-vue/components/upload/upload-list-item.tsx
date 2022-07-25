@@ -125,8 +125,8 @@ export default defineComponent({
           </div>
           <UploadProgress file={props.file} listType={props.listType} />
         </div>
-        <span class={`${itemCls}-operation`}>
-          {uploadCtx?.showRemoveButton && (
+        {uploadCtx?.showRemoveButton && (
+          <span class={`${itemCls}-operation`}>
             <IconHover
               // @ts-ignore
               onClick={() => uploadCtx?.onRemove?.(props.file)}
@@ -138,8 +138,8 @@ export default defineComponent({
                   uploadCtx?.customIcon?.removeIcon?.() ?? <IconDelete />}
               </span>
             </IconHover>
-          )}
-        </span>
+          </span>
+        )}
       </div>
     );
   },

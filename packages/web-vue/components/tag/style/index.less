@@ -7,7 +7,8 @@
   pinkpurple, magenta, gray;
 
 .@{tag-prefix-cls} {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   box-sizing: border-box;
   height: @tag-size-default;
   padding: @tag-padding-vertical @tag-padding-horizontal;
@@ -41,6 +42,11 @@
   &-checkable&-checked:hover {
     background-color: @tag-default-color-bg_hover;
     border-color: @tag-default-color-border_hover;
+  }
+
+  &-bordered,
+  &-checkable&-checked&-bordered:hover {
+    border-color: @tag-default-bordered-color-border;
   }
 
   // Size
@@ -88,6 +94,11 @@
     &&-checkable&-checked&-@{value}&:hover {
       background-color: ~'@{tag-@{value}-color-bg_hover}';
       border-color: ~'@{tag-@{value}-color-border_hover}';
+    }
+
+    &-checked&-@{value}&-bordered,
+    &-checked&-@{value}&-bordered:hover {
+      border-color: ~'@{tag-@{value}-bordered-color-border}';
     }
 
     &&-checked&-@{value} &-icon,

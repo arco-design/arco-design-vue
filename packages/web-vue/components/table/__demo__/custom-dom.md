@@ -12,7 +12,8 @@ title:
 
 ## en-US
 
-The rendering of table elements can be customized through specific slots. Only need to pass in the table element, the internal attributes will be automatically attached
+The rendering of table elements can be customized through specific slots. Only need to pass in the table element, the
+internal attributes will be automatically attached
 
 ---
 
@@ -20,7 +21,7 @@ The rendering of table elements can be customized through specific slots. Only n
 <template>
   <a-table :columns="columns" :data="data" row-class="common-row">
     <template #tr>
-      <tr class="my-tr" />
+      <tr class="my-tr" @contextmenu="onContextMenu" />
     </template>
     <template #td>
       <td class="my-td" />
@@ -31,6 +32,10 @@ The rendering of table elements can be customized through specific slots. Only n
 <script>
 export default {
   setup() {
+    const onContextMenu = () => {
+      console.log('right click')
+    }
+
     const columns = [{
       title: 'Name',
       dataIndex: 'name',
@@ -78,7 +83,8 @@ export default {
 
     return {
       columns,
-      data
+      data,
+      onContextMenu,
     }
   },
 }

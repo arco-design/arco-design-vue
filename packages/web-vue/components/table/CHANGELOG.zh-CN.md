@@ -2,6 +2,47 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 💎 功能优化
+
+- 单独设置 selected-keys 时可以显示选中行 ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 问题修复
+
+- 修复文本提示没有跟随内容更新的问题 ([#1373](https://github.com/arco-design/arco-design-vue/pull/1373))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 新增功能
+
+- TableRowSelection 增加 onlyCurrent 属性，更改表格默认维护所有分页的选择状态 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💎 功能优化
+
+- cellStyle 类属性添加的样式移动到 td 元素上，解决部分场景下背景色问题 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 新增功能
+
+- 增加新的组件方法，详情可见文档 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- titleSlotName 定义的插槽增加 column 参数 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+
+
 ## 2.30.2
 
 `2022-06-11`

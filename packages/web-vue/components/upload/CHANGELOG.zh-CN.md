@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🐛 问题修复
+
+- 修复在阿里云OSS中的使用问题 ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+
+### 💅 样式更新
+
+- 移除了 upload-list-item 末尾的多余空白 ([#1379](https://github.com/arco-design/arco-design-vue/pull/1379))
+
+
 ## 2.23.0
 
 `2022-04-08`

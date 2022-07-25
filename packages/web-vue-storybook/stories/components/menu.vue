@@ -51,12 +51,29 @@
       </MenuItem>
     </Menu>
   </div>
+  <TypographyTitle :heading="4">带有自己封装的 SubMenu</TypographyTitle>
+  <Menu
+    :default-open-keys="['0']"
+    :default-selected-keys="['0_1']"
+    :show-collapse-button="false"
+    :mode="'horizontal'"
+  >
+    <template v-for="item in menuList" :key="item.key">
+      <MenuItem v-if="!item.children" :key="item.key">{{
+        item.title
+      }}</MenuItem>
+      <template v-else
+        ><CustomSubMenu :key="`${item.key}-sub`" :parent="item"
+      /></template>
+    </template>
+  </Menu>
 </template>
 <script>
 import { defineComponent } from 'vue';
-import { Menu, Checkbox, Switch } from '@web-vue/components';
+import { Menu, Checkbox, Switch, Typography } from '@web-vue/components';
 import { IconApps, IconBug, IconBulb } from '@web-vue/components/icon';
 import CustomMenu from './custom-menu.vue';
+import CustomSubMenu from './custom-sub-menu.vue';
 
 export default defineComponent({
   components: {
@@ -70,6 +87,8 @@ export default defineComponent({
     IconBulb,
     CustomMenu,
     Switch,
+    CustomSubMenu,
+    TypographyTitle: Typography.Title,
   },
   setup() {},
   data() {
@@ -79,6 +98,124 @@ export default defineComponent({
       isVertical: true,
       collapsed: true,
       hide: false,
+      menuList: [
+        {
+          key: 1,
+          title: '菜单1',
+        },
+        {
+          key: 2,
+          title: '菜单2',
+        },
+        {
+          key: 3,
+          title: '菜单3',
+          children: [
+            {
+              key: 11,
+              title: '菜单3-1',
+            },
+            {
+              key: 12,
+              title: '菜单3-2',
+            },
+            {
+              key: 12,
+              title: '菜单3-2',
+            },
+          ],
+        },
+        {
+          key: 4,
+          title: '菜单4',
+          children: [
+            {
+              key: 41,
+              title: '菜单4-1',
+            },
+            {
+              key: 42,
+              title: '菜单4-2',
+            },
+            {
+              key: 43,
+              title: '菜单4-3',
+            },
+          ],
+        },
+        {
+          key: 5,
+          title: '菜单5',
+          children: [
+            {
+              key: 51,
+              title: '菜单5-1',
+            },
+            {
+              key: 52,
+              title: '菜单5-2',
+            },
+            {
+              key: 53,
+              title: '菜单5-3',
+            },
+          ],
+        },
+        {
+          key: 6,
+          title: '菜单6',
+          children: [
+            {
+              key: 61,
+              title: '菜单6-1',
+            },
+            {
+              key: 62,
+              title: '菜单6-2',
+            },
+            {
+              key: 63,
+              title: '菜单6-3',
+            },
+          ],
+        },
+        {
+          key: 7,
+          title: '菜单7',
+          children: [
+            {
+              key: 71,
+              title: '菜单7-1',
+            },
+            {
+              key: 72,
+              title: '菜单7-2',
+            },
+            {
+              key: 73,
+              title: '菜单7-3',
+            },
+          ],
+        },
+        {
+          key: 8,
+          title: '菜单8',
+          children: [
+            {
+              key: 81,
+              title: '菜单8-1',
+            },
+            {
+              key: 82,
+              title: '菜单8-2',
+            },
+            {
+              key: 83,
+              title: '菜单8-3',
+            },
+          ],
+        },
+      ],
     };
   },
   methods: {

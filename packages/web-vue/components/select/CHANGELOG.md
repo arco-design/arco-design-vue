@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- Fixed click-to-expand issue in search mode in Firefox ([#1371](https://github.com/arco-design/arco-design-vue/pull/1371))
+
+
 ## 2.30.0
 
 `2022-06-10`

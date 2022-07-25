@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 💎 Enhancement
+
+- Events can no longer be fired during popover animations ([#1337](https://github.com/arco-design/arco-design-vue/pull/1337))
+
+
 ## 2.29.1
 
 `2022-06-02`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 Feature
+
+- Supports custom expand icon ([#1344](https://github.com/arco-design/arco-design-vue/pull/1344))
+
+
 ## 2.27.0
 
 `2022-05-13`

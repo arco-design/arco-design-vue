@@ -10,25 +10,16 @@ export default defineComponent({
   props: {
     ...BaseTreeNode.props,
   },
-  setup(props: TreeNodeProps) {
+  setup(props, { slots, attrs }) {
     const key = useNodeKey();
-    return {
-      key,
-      props,
+
+    return () => {
+      return (
+        <>
+          <BaseTreeNode {...props} {...attrs} key={key.value} v-slots={slots} />
+          <TransitionNodeList key={key.value} nodeKey={key.value} />
+        </>
+      );
     };
-  },
-  render() {
-    const { key, props } = this;
-    return (
-      <>
-        <BaseTreeNode
-          {...props}
-          {...this.$attrs}
-          key={key}
-          v-slots={this.$slots}
-        />
-        <TransitionNodeList key={key} nodeKey={key} />
-      </>
-    );
   },
 });

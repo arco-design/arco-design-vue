@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 新增功能
+
+- 支持 `bordered` 显示边框 ([#1342](https://github.com/arco-design/arco-design-vue/pull/1342))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 💅 样式更新
+
+- 火狐浏览器溢出样式兼容 ([#1317](https://github.com/arco-design/arco-design-vue/pull/1317))
+
+
 ## 2.25.0
 
 `2022-04-22`

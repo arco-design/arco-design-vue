@@ -716,9 +716,6 @@ export default defineComponent({
       return false;
     });
 
-    const { _filters, computedFilters } = useFilter({ columns: dataColumns });
-    const { _sorter, computedSorter } = useSorter({ columns: dataColumns });
-
     const handleChange = (
       type: 'pagination' | 'sorter' | 'filter' | 'drag'
     ) => {
@@ -760,6 +757,17 @@ export default defineComponent({
       emit('sorterChange', dataIndex, direction);
       handleChange('sorter');
     };
+
+    const { _filters, computedFilters, resetFilters, clearFilters } = useFilter(
+      {
+        columns: dataColumns,
+        onFilterChange: handleFilterChange,
+      }
+    );
+    const { _sorter, computedSorter, resetSorters, clearSorters } = useSorter({
+      columns: dataColumns,
+      onSorterChange: handleSorterChange,
+    });
 
     const disabledKeys = new Set();
 
@@ -825,6 +833,9 @@ export default defineComponent({
       handleSelect,
       handleSelectAllLeafs,
       handleSelectAll,
+      select,
+      selectAll,
+      clearSelected,
     } = useRowSelection({
       selectedKeys,
       defaultSelectedKeys,
@@ -834,7 +845,7 @@ export default defineComponent({
       emit,
     });
 
-    const { expandedRowKeys, handleExpand } = useExpand({
+    const { expandedRowKeys, handleExpand, expand, expandAll } = useExpand({
       expandedKeys,
       defaultExpandedKeys,
       defaultExpandAllRows,
@@ -978,6 +989,16 @@ export default defineComponent({
     const { page, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, emit);
 
+    const onlyCurrent = computed(
+      () => rowSelection.value?.onlyCurrent ?? false
+    );
+
+    watch(page, (cur, pre) => {
+      if (cur !== pre && onlyCurrent.value) {
+        clearSelected();
+      }
+    });
+
     const flattenData = computed(() => {
       if (props.pagination && sortedData.value.length > pageSize.value) {
         return sortedData.value.slice(
@@ -1092,7 +1113,7 @@ export default defineComponent({
     };
 
     const getTableFixedCls = () => {
-      const cls = [];
+      const cls: string[] = [];
       if (hasLeftFixedColumn.value) {
         cls.push(`${prefixCls}-has-fixed-col-left`);
       }
@@ -1112,13 +1133,14 @@ export default defineComponent({
     };
 
     const onTbodyScroll = (e: Event) => {
+      handleScroll(e);
+      const { scrollLeft } = e.target as HTMLDivElement;
       if (theadRef.value) {
-        theadRef.value.scrollLeft = (e.target as HTMLDivElement).scrollLeft;
+        theadRef.value.scrollLeft = scrollLeft;
       }
       if (summaryRef.value) {
-        summaryRef.value.scrollLeft = (e.target as HTMLDivElement).scrollLeft;
+        summaryRef.value.scrollLeft = scrollLeft;
       }
-      handleScroll(e);
     };
 
     const handleRowClick = (record: TableDataWithRaw, ev: Event) => {
@@ -1879,7 +1901,13 @@ export default defineComponent({
               </ResizeObserver>
             )}
             {summaryData.value && summaryData.value.length && (
-              <div ref={summaryRef} class={`${prefixCls}-tfoot`} style={style}>
+              <div
+                ref={summaryRef}
+                class={`${prefixCls}-tfoot`}
+                style={{
+                  overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
+                }}
+              >
                 <table
                   class={`${prefixCls}-element`}
                   style={contentStyle.value}
@@ -2023,7 +2051,14 @@ export default defineComponent({
 
     return {
       render,
-      handleSelectAll,
+      selfExpand: expand,
+      selfExpandAll: expandAll,
+      selfSelect: select,
+      selfSelectAll: selectAll,
+      selfResetFilters: resetFilters,
+      selfClearFilters: clearFilters,
+      selfResetSorters: resetSorters,
+      selfClearSorters: clearSorters,
     };
   },
   methods: {
@@ -2034,8 +2069,78 @@ export default defineComponent({
      * @public
      * @version 2.22.0
      */
-    selectAll(checked: boolean) {
-      return this.handleSelectAll(checked);
+    selectAll(checked?: boolean) {
+      return this.selfSelectAll(checked);
+    },
+    /**
+     * @zh 设置行选择器状态
+     * @en Set row selector state
+     * @param { string | string[] } rowKey
+     * @param { boolean } checked
+     * @public
+     * @version 2.31.0
+     */
+    select(rowKey: string | string[], checked?: boolean) {
+      return this.selfSelect(rowKey, checked);
+    },
+    /**
+     * @zh 设置全部展开状态
+     * @en Set all expanded state
+     * @param { boolean } checked
+     * @public
+     * @version 2.31.0
+     */
+    expandAll(checked?: boolean) {
+      return this.selfExpandAll(checked);
+    },
+    /**
+     * @zh 设置展开状态
+     * @en Set select all state
+     * @param { string | string[] } rowKey
+     * @param { boolean } checked
+     * @public
+     * @version 2.31.0
+     */
+    expand(rowKey: string | string[], checked?: boolean) {
+      return this.selfExpand(rowKey, checked);
+    },
+    /**
+     * @zh 重置列的筛选器
+     * @en Reset the filter for columns
+     * @param { string | string[] } dataIndex
+     * @public
+     * @version 2.31.0
+     */
+    resetFilters(dataIndex?: string | string[]) {
+      return this.selfResetFilters(dataIndex);
+    },
+    /**
+     * @zh 清空列的筛选器
+     * @en Clear the filter for columns
+     * @param { string | string[] } dataIndex
+     * @public
+     * @version 2.31.0
+     */
+    clearFilters(dataIndex?: string | string[]) {
+      return this.selfClearFilters(dataIndex);
+    },
+    /**
+     * @zh 重置列的排序
+     * @en Reset the order of columns
+     * @public
+     * @version 2.31.0
+     */
+    resetSorters() {
+      return this.selfResetSorters();
+    },
+    /**
+     * @zh 清空列的排序
+     * @en Clear the order of columns
+     * @public
+     * @version 2.31.0
+     */
+    clearSorters() {
+      return this.selfClearSorters();
     },
   },
   render() {

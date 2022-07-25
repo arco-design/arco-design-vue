@@ -193,9 +193,18 @@ const docs = [
     componentEn: ThemeEn,
   },
   {
+    name: 'token',
+    component: () => import('./pages/token/token.vue'),
+  },
+  {
     name: 'i18n',
     component: I18n,
     componentEn: I18nEn,
+  },
+  {
+    name: 'faq',
+    component: () => import('./docs/faq.zh-CN.md'),
+    componentEn: () => import('./docs/faq.en-US.md'),
   },
   {
     name: 'changelog',

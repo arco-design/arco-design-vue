@@ -1,6 +1,12 @@
 import { InjectionKey, Slot } from 'vue';
-import { Key2TreeNode } from './utils';
-import type { Node, DropPosition, TreeNodeKey, TreeProps } from './interface';
+import type {
+  Node,
+  DropPosition,
+  TreeNodeKey,
+  TreeProps,
+  Key2TreeNode,
+  FilterTreeNode,
+} from './interface';
 
 export const TreeInjectionKey: InjectionKey<TreeContext> =
   Symbol('TreeInjectionKey');
@@ -17,6 +23,7 @@ export type TreeContext = Readonly<{
   flattenTreeData: Node[];
   key2TreeNode: Key2TreeNode;
   checkedKeys: TreeNodeKey[];
+  filterTreeNode?: FilterTreeNode;
   indeterminateKeys: TreeNodeKey[];
   selectedKeys: TreeNodeKey[];
   expandedKeys: TreeNodeKey[];

@@ -535,7 +535,7 @@ export default defineComponent({
           .filter((node) => node.children && node.children.length)
           .map((node) => node.key);
       }
-      if (defaultSelectedKeys.value || defaultExpandChecked.value) {
+      if (defaultExpandSelected.value || defaultExpandChecked.value) {
         const expandedKeysSet = new Set<TreeNodeKey>([]);
         const addToExpandKeysSet = (keys: TreeNodeKey[]) => {
           keys.forEach((key) => {
@@ -913,6 +913,7 @@ export default defineComponent({
       loadingKeys,
       currentExpandKeys,
       onLoadMore,
+      filterTreeNode,
       onCheck,
       onSelect,
       onExpand,

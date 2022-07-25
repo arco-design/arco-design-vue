@@ -4,6 +4,11 @@
 .input-label-style(@cls) {
   &.@{cls}-search {
     cursor: text;
+
+    & .@{cls}-input,
+    & .@{cls}-value {
+      pointer-events: none;
+    }
   }
 
   .input-wrapper-style(@cls);

@@ -112,7 +112,7 @@ export default function useSelectedState(props: {
   const computedModelValue = ref<LabelValue[]>();
   watchEffect(() => {
     const isControlled = modelValue?.value !== undefined;
-    const normalizeModelValue = normalizeValue(modelValue?.value || []);
+    const normalizeModelValue = normalizeValue(modelValue?.value ?? []);
     const modelValueKeys = getKeys(normalizeModelValue);
     computedModelValue.value = isControlled
       ? getLabelValues(modelValueKeys, getLabelValues(normalizeModelValue))
@@ -120,7 +120,7 @@ export default function useSelectedState(props: {
     computedModelValueKeys.value = isControlled ? modelValueKeys : undefined;
   });
 
-  const normalizeDefaultValue = normalizeValue(defaultValue?.value || []);
+  const normalizeDefaultValue = normalizeValue(defaultValue?.value ?? []);
   const defaultKeys = getKeys(normalizeDefaultValue);
   const defaultLabelValues = getLabelValues(
     defaultKeys,

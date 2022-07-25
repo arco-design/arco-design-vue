@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 Feature
+
+- add header prop and slot ([#1399](https://github.com/arco-design/arco-design-vue/pull/1399))
+
+
 ## 2.19.0
 
 `2022-03-11`

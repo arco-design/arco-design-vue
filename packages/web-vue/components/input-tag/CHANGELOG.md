@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- Fix the problem that the value parameter in the remove event is wrong after setting max-tag-count ([#1442](https://github.com/arco-design/arco-design-vue/pull/1442))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 BugFix
+
+- Fix the problem of Chinese input method reporting an error ([#1335](https://github.com/arco-design/arco-design-vue/pull/1335))
+
+
 ## 2.29.1
 
 `2022-06-02`

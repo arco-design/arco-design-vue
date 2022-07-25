@@ -340,6 +340,7 @@ export default defineComponent({
     /**
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
+     * @param { string | number | Record<string, any> | (string | number | Record<string, any>)[] } value
      */
     'change': (
       value:
@@ -351,12 +352,13 @@ export default defineComponent({
     /**
      * @zh 输入框的值发生改变时触发
      * @en Triggered when the value of the input changes
+     * @param {string} inputValue
      */
     'inputValueChange': (inputValue: string) => true,
     /**
      * @zh 下拉框的显示状态改变时触发
      * @en Triggered when the display state of the drop-down box changes
-     * @property {boolean} visible
+     * @param {boolean} visible
      */
     'popupVisibleChange': (visible: boolean) => true,
     /**
@@ -367,12 +369,14 @@ export default defineComponent({
     /**
      * @zh 点击标签的删除按钮时触发
      * @en Triggered when the delete button of the label is clicked
+     * @param {string | number | Record<string, any> | undefined} removed
      */
     'remove': (removed: string | number | Record<string, any> | undefined) =>
       true,
     /**
      * @zh 用户搜索时触发
      * @en Triggered when the user searches
+     * @param {string} inputValue
      */
     'search': (inputValue: string) => true,
     /**
@@ -388,7 +392,8 @@ export default defineComponent({
     /**
      * @zh 多选超出限制时触发
      * @en Triggered when multiple selection exceeds the limit
-     * @param value
+     * @param {string | number | Record<string, any> | undefined} value
+     * @param {Event} ev
      * @version 2.18.0
      */
     'exceedLimit': (

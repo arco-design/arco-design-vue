@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 问题修复
+
+- 修复 form-item 内容可能超出限制宽度的问题 ([#1437](https://github.com/arco-design/arco-design-vue/pull/1437))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 新增功能
+
+- resetFields 和  clearValidate 方法增加参数支持 ([#1305](https://github.com/arco-design/arco-design-vue/pull/1305))
+
+
 ## 2.22.0
 
 `2022-04-01`

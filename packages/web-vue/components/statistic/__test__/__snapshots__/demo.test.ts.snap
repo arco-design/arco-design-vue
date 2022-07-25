@@ -43,11 +43,8 @@ exports[`<statistic> demo: render [basic] correctly 1`] = `
 `;
 
 exports[`<statistic> demo: render [countdown] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
-      <!--v-if-->Start
-    </button></div>
-  <div class=\\"arco-space-item\\">
+"<div class=\\"arco-row arco-row-align-start arco-row-justify-start\\">
+  <div class=\\"arco-col\\" style=\\"flex: 1;\\">
     <div class=\\"arco-statistic arco-statistic-countdown\\">
       <div class=\\"arco-statistic-title\\">Countdown</div>
       <div class=\\"arco-statistic-content\\">
@@ -55,6 +52,35 @@ exports[`<statistic> demo: render [countdown] correctly 1`] = `
       </div>
     </div>
   </div>
+  <div class=\\"arco-col\\" style=\\"flex: 1;\\">
+    <div class=\\"arco-statistic arco-statistic-countdown\\">
+      <div class=\\"arco-statistic-title\\">Milliseconds</div>
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\">02:00:00.000</div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-col\\" style=\\"flex: 1;\\">
+    <div class=\\"arco-statistic arco-statistic-countdown\\">
+      <div class=\\"arco-statistic-title\\">Days</div>
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\">4 天 0 时 0 分 0 秒</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=\\"arco-space arco-space-vertical\\" style=\\"margin-top: 10px;\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-statistic arco-statistic-countdown\\">
+      <div class=\\"arco-statistic-title\\">Trigger on finish</div>
+      <div class=\\"arco-statistic-content\\">
+        <div class=\\"arco-statistic-value\\">00:05.000</div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Start
+    </button></div>
 </div>"
 `;
 
@@ -76,7 +102,7 @@ exports[`<statistic> demo: render [prefix] correctly 1`] = `
     <div class=\\"arco-statistic\\">
       <div class=\\"arco-statistic-title\\">User Growth Rate</div>
       <div class=\\"arco-statistic-content\\">
-        <div class=\\"arco-statistic-value\\"><span class=\\"arco-statistic-prefix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-arrow-rise\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.992 6.01a.01.01 0 0 1 .016 0l9.978 11.974a.01.01 0 0 1-.007.016H14.02a.01.01 0 0 1-.007-.016l9.978-11.975Z\\"></path><path d=\\"m24 6 10 12H14L24 6Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M26 42h-4V16h4z\\"></path><path fill=\\"currentColor\\" stroke=\\"none\\" d=\\"M26 42h-4V16h4z\\"></path></svg></span><span class=\\"arco-statistic-value-integer\\">50</span><span class=\\"arco-statistic-value-decimal\\"> .52</span><span class=\\"arco-statistic-suffix\\">%</span></div>
+        <div class=\\"arco-statistic-value\\" style=\\"color: rgb(15, 191, 96);\\"><span class=\\"arco-statistic-prefix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-arrow-rise\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.992 6.01a.01.01 0 0 1 .016 0l9.978 11.974a.01.01 0 0 1-.007.016H14.02a.01.01 0 0 1-.007-.016l9.978-11.975Z\\"></path><path d=\\"m24 6 10 12H14L24 6Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M26 42h-4V16h4z\\"></path><path fill=\\"currentColor\\" stroke=\\"none\\" d=\\"M26 42h-4V16h4z\\"></path></svg></span><span class=\\"arco-statistic-value-integer\\">50</span><span class=\\"arco-statistic-value-decimal\\"> .52</span><span class=\\"arco-statistic-suffix\\">%</span></div>
         <!--v-if-->
       </div>
     </div>

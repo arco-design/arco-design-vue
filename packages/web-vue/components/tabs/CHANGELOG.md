@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.33.0
+
+`2022-07-08`
+
+### 💅 Style
+
+- Fix the problem of wrong style when focusing ([#1398](https://github.com/arco-design/arco-design-vue/pull/1398))
+
+
 ## 2.30.0
 
 `2022-06-10`

@@ -120,6 +120,13 @@ description: It is used for data collection, display, analysis and processing, a
 |Method|Description|Parameters|Return|version|
 |---|---|---|:---:|:---|
 |selectAll|Set select all state|checked: ` boolean `|-|2.22.0|
+|select|Set row selector state|rowKey: ` string \| string[] `<br>checked: ` boolean `|-|2.31.0|
+|expandAll|Set all expanded state|checked: ` boolean `|-|2.31.0|
+|expand|Set select all state|rowKey: ` string \| string[] `<br>checked: ` boolean `|-|2.31.0|
+|resetFilters|Reset the filter for columns|dataIndex: ` string \| string[] `|-|2.31.0|
+|clearFilters|Clear the filter for columns|dataIndex: ` string \| string[] `|-|2.31.0|
+|resetSorters|Reset the order of columns|-|-|2.31.0|
+|clearSorters|Clear the order of columns|-|-|2.31.0|
 ### `<table>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -275,6 +282,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |width|Column width|`number`|`-`||
 |fixed|Is it fixed|`boolean`|`false`||
 |checkStrictly|Whether to enable strict selection mode (default: true)|`boolean`|`false`|2.29.0|
+|onlyCurrent|Whether to display only the keys of the current page (clear keys when switching paging)|`boolean`|`false`|2.32.0|
 
 
 

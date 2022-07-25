@@ -27,7 +27,7 @@ export interface TableContext {
   addColumn: (id: number, column: TableColumnData) => void;
   removeColumn: (id: number) => void;
   onSelectAll: (checked: boolean) => void;
-  onSelect: (values: string[], record: TableDataWithRaw) => void;
+  onSelect: (checked: boolean, record: TableDataWithRaw) => void;
   onSelectAllLeafs: (record: TableDataWithRaw, checked: boolean) => void;
 
   onSorterChange: (

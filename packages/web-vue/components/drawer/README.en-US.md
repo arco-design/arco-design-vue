@@ -45,6 +45,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |footer|Whether to display the bottom content|`boolean`|`true`|2.11.0|
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
 |hide-cancel|Whether to hide the cancel button|`boolean`|`false`|2.19.0|
+|header|Whether to hide the cancel button|`boolean`|`true`|2.33.0|
 ### `<drawer>` Events
 
 |Event Name|Description|Parameters|
@@ -55,9 +56,10 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |close|Triggered when the drawer is closed (the animation ends)|-|
 ### `<drawer>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|title|Title|-|
-|footer|Footer|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|header|Header|-|2.33.0|
+|title|Title|-||
+|footer|Footer|-||
 
 

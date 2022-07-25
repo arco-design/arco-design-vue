@@ -84,15 +84,15 @@ description: When users need to select one or more from a group of similar data,
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|change|Triggered when the value changes|-||
-|input-value-change|Triggered when the value of the input changes|-||
+|change|Triggered when the value changes|value: ` string \| number \| Record<string, any> \| (string \| number \| Record<string, any>)[] `||
+|input-value-change|Triggered when the value of the input changes|inputValue: `string`||
 |popup-visible-change|Triggered when the display state of the drop-down box changes|visible: `boolean`||
 |clear|Triggered when the clear button is clicked|-||
-|remove|Triggered when the delete button of the label is clicked|-||
-|search|Triggered when the user searches|-||
+|remove|Triggered when the delete button of the label is clicked|removed: `string \| number \| Record<string, any> \| undefined`||
+|search|Triggered when the user searches|inputValue: `string`||
 |dropdown-scroll|Triggered when the drop-down scrolls|-||
 |dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|-||
-|exceed-limit|Triggered when multiple selection exceeds the limit|value: `mixed`|2.18.0|
+|exceed-limit|Triggered when multiple selection exceeds the limit|value: `string \| number \| Record<string, any> \| undefined`<br>ev: `Event`|2.18.0|
 ### `<select>` Slots
 
 |Slot Name|Description|Parameters|version|

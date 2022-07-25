@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- Fix the problem that the default title class name is wrong ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 💅 Style
+
+- Fix the problem that the footer button is not centered ([#1391](https://github.com/arco-design/arco-design-vue/pull/1391))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 BugFix
+
+- Fixed the problem that when the modal box exceeds the size of the screen, the position of the modal will be misaligned ([#1336](https://github.com/arco-design/arco-design-vue/pull/1336))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 Feature
+
+- Add bodyClass and bodyStyle ([#1303](https://github.com/arco-design/arco-design-vue/pull/1303))
+
+
 ## 2.30.0
 
 `2022-06-10`

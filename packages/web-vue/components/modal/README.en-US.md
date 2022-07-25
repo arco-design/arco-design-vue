@@ -39,7 +39,7 @@ description: Open a floating layer on the current page to carry related operatio
 |top|The height from the top of the dialog box. It does not take effect when the center display is turned on.|`number\|string`|`-`|2.12.0|
 |mask|Whether to show the mask|`boolean`|`true`||
 |title|Title|`string`|`-`||
-|title-align|horizontal alignment of the title|`'start' \| 'center'`|`-`|2.17.0|
+|title-align|horizontal alignment of the title|`'start' \| 'center'`|`'center'`|2.17.0|
 |align-center|Whether the dialog box is displayed in the center|`boolean`|`true`||
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`||
 |mask-closable|Whether to close the modal when click the mask|`boolean`|`true`||
@@ -64,6 +64,8 @@ description: Open a floating layer on the current page to carry related operatio
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 |mask-animation-name|Mask layer animation name|`string`|`-`|2.24.0|
 |modal-animation-name|Modal animation name|`string`|`-`|2.24.0|
+|body-class|The classname of the modal|`string \| any[]`|`-`|2.31.0|
+|body-style|Modal style|`StyleValue`|`-`|2.31.0|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|version|

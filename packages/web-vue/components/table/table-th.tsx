@@ -241,7 +241,9 @@ export default defineComponent({
         props.column?.titleSlotName &&
         tableCtx.slots?.[props.column.titleSlotName]
       ) {
-        return tableCtx.slots[props.column.titleSlotName]?.();
+        return tableCtx.slots[props.column.titleSlotName]?.({
+          column: props.column,
+        });
       }
       if (props.column?.slots?.title) {
         return props.column.slots.title();
@@ -255,7 +257,6 @@ export default defineComponent({
     const renderCell = () => (
       <span
         class={cellCls.value}
-        style={{ ...props.column?.cellStyle, ...props.column?.headerCellStyle }}
         onClick={hasSorter.value ? handleClickSorter : undefined}
       >
         {props.column?.ellipsis && props.column?.tooltip ? (
@@ -309,12 +310,16 @@ export default defineComponent({
       </span>
     );
 
-    const style = computed(() =>
-      getStyle(props.column, {
-        dataColumns: props.dataColumns,
-        operations: props.operations,
-      })
-    );
+    const style = computed(() => {
+      return {
+        ...getStyle(props.column, {
+          dataColumns: props.dataColumns,
+          operations: props.operations,
+        }),
+        ...props.column?.cellStyle,
+        ...props.column?.headerCellStyle,
+      };
+    });
 
     const cls = computed(() => [
       `${prefixCls}-th`,

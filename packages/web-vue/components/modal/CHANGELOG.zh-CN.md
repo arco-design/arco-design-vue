@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 问题修复
+
+- 修复默认标题类名错误的问题 ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 💅 样式更新
+
+- 修复 footer 按钮不居中的问题 ([#1391](https://github.com/arco-design/arco-design-vue/pull/1391))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 问题修复
+
+- 修复当模态框超出屏幕大小后，移动位置导致错位的问题 ([#1336](https://github.com/arco-design/arco-design-vue/pull/1336))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 新增功能
+
+- 增加 bodyClass 和 bodyStyle ([#1303](https://github.com/arco-design/arco-design-vue/pull/1303))
+
+
 ## 2.30.0
 
 `2022-06-10`

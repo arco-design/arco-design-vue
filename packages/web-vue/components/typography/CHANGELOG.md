@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- cancel click propagation of suffix icon ([#1411](https://github.com/arco-design/arco-design-vue/pull/1411))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 Feature
+
+- Added `tooltip-props` class property ([#1338](https://github.com/arco-design/arco-design-vue/pull/1338))
+
+
 ## 2.27.0
 
 `2022-05-13`
