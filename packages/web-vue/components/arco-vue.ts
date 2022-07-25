@@ -89,6 +89,7 @@ import Typography, {
   TypographyText,
 } from './typography';
 import Upload from './upload';
+import WaterMark from './water-mark';
 
 import { useFormItem } from './_hooks/use-form-item';
 
@@ -96,6 +97,7 @@ const components: Record<string, Plugin> = {
   Button,
   Link,
   Typography,
+  WaterMark,
   Divider,
   Grid,
   Layout,

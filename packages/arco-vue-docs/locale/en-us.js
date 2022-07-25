@@ -25,6 +25,7 @@ export default {
     button: 'Button',
     link: 'Link',
     typography: 'Typography',
+    waterMark: 'WaterMark',
     radio: 'Radio',
     checkbox: 'Checkbox',
     switch: 'Switch',

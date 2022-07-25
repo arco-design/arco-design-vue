@@ -170,6 +170,7 @@ export type {
   RequestOption,
   UploadRequest,
 } from './upload';
+export { default as WaterMark } from './water-mark';
 // hooks
 export { useFormItem } from './_hooks/use-form-item';
 // components.d.ts
