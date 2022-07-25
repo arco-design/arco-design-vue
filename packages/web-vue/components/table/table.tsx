@@ -284,7 +284,7 @@ export default defineComponent({
      * @version 2.16.0
      */
     rowClass: {
-      type: [String, Array, Object],
+      type: [String, Array, Function] as PropType<string|Array<string>|((record: TableData,rowIndex:number) => string)>,
     },
     /**
      * @zh 表格拖拽排序的配置
@@ -590,6 +590,7 @@ export default defineComponent({
       columns,
       rowKey,
       rowSelection,
+      rowClass,
       expandable,
       loadMore,
       filterIconAlignLeft,
@@ -1424,7 +1425,9 @@ export default defineComponent({
             tr: slots.tr,
           }}
           key={`table-summary-${rowIndex}`}
-          class={[`${prefixCls}-tr-summary`, props.rowClass]}
+          class={[`${prefixCls}-tr-summary`,
+            isFunction(props.rowClass)?props.rowClass(record,rowIndex):props.rowClass
+          ]}
           // @ts-ignore
           onClick={(ev: Event) => handleRowClick(record, ev)}
         >
@@ -1660,7 +1663,7 @@ export default defineComponent({
                 [`${prefixCls}-tr-draggable`]: dragType.value === 'row',
                 [`${prefixCls}-tr-drag`]: isDragTarget,
               },
-              props.rowClass,
+              isFunction(props.rowClass)?props.rowClass(record,rowIndex):props.rowClass,
             ]}
             rowIndex={rowIndex}
             record={record}
