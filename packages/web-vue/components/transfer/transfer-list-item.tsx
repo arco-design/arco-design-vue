@@ -58,8 +58,10 @@ export default defineComponent({
       <div class={cls.value} onClick={handleClick}>
         {props.allowClear || props.simple ? (
           <span class={`${prefixCls}-content`}>
-            {transferCtx?.slots.item?.({ label: props.data.label }) ??
-              props.data.label}
+            {transferCtx?.slots.item?.({
+              label: props.data.label,
+              value: props.data.value,
+            }) ?? props.data.label}
           </span>
         ) : (
           <Checkbox
@@ -71,8 +73,10 @@ export default defineComponent({
             }
             uninjectGroupContext
           >
-            {transferCtx?.slots.item?.({ label: props.data.label }) ??
-              props.data.label}
+            {transferCtx?.slots.item?.({
+              label: props.data.label,
+              value: props.data.value,
+            }) ?? props.data.label}
           </Checkbox>
         )}
         {props.allowClear && !props.disabled && (
