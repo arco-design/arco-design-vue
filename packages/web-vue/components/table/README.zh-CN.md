@@ -192,7 +192,6 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |key|数据行的key|`string`|`-`||
 |expand|扩展行内容|`string \| RenderFunction`|`-`||
 |children|子数据|`TableData[]`|`-`||
-|disabled|是否禁用行选择器|`boolean`|`false`||
 |isLeaf|是否是叶子节点|`boolean`|`false`|2.13.0|
 
 
@@ -281,6 +280,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |fixed|是否固定|`boolean`|`false`||
 |checkStrictly|是否开启严格选择模式 (default: true)|`boolean`|`false`|2.29.0|
 |onlyCurrent|是否仅展示当前页的 keys（切换分页时清空 keys）|`boolean`|`false`|2.32.0|
+|disabled|是否禁用选择器|`(record: TableData) => boolean`|`-`|2.32.0|
 
 
 

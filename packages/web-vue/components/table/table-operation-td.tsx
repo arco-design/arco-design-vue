@@ -1,5 +1,5 @@
 import { computed, defineComponent, inject, PropType, VNode } from 'vue';
-import { TableDataWithRaw, TableOperationColumn } from './interface';
+import { TableDataWithRaw, TableOperationColumn, TableData } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import {
   getLeafKeys,
@@ -34,6 +34,9 @@ export default defineComponent({
     record: {
       type: Object as PropType<TableDataWithRaw>,
       required: true,
+    },
+    disabled: {
+      type: Function as PropType<(record: TableData) => boolean>,
     },
     hasExpand: {
       type: Boolean,
@@ -104,7 +107,7 @@ export default defineComponent({
             <Checkbox
               modelValue={selectionStatus.value.checked}
               indeterminate={selectionStatus.value.indeterminate}
-              disabled={Boolean(props.record.disabled)}
+              disabled={props.disabled?.(props.record.raw)}
               uninjectGroupContext
               onChange={(checked) =>
                 tableCtx.onSelectAllLeafs?.(props.record, checked as boolean)
@@ -118,7 +121,7 @@ export default defineComponent({
         return (
           <Checkbox
             modelValue={props.selectedRowKeys?.includes(value) ?? false}
-            disabled={Boolean(props.record.disabled)}
+            disabled={props.disabled?.(props.record.raw)}
             uninjectGroupContext
             onChange={(checked) =>
               tableCtx.onSelect?.(checked as boolean, props.record)
@@ -133,7 +136,7 @@ export default defineComponent({
         return (
           <Radio
             modelValue={props.selectedRowKeys?.includes(value) ?? false}
-            disabled={Boolean(props.record.disabled)}
+            disabled={props.disabled?.(props.record.raw)}
             uninjectGroupContext
             onChange={(checked) =>
               tableCtx.onSelect?.(checked as boolean, props.record)

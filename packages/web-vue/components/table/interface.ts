@@ -331,6 +331,12 @@ export interface TableRowSelection {
    * @version 2.32.0
    */
   onlyCurrent?: boolean;
+  /**
+   * @zh 是否禁用行选择器
+   * @en Whether to disable the row selector
+   * @version 2.32.0
+   */
+  disabled?: (record: TableData) => boolean;
 }
 
 export interface TableExpandable {

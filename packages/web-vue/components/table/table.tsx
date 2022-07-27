@@ -777,7 +777,7 @@ export default defineComponent({
         if (isArray(data) && data.length > 0) {
           for (const record of data) {
             allRowKeys.push(record[rowKey.value]);
-            if (record.disabled) {
+            if (rowSelection.value?.disabled?.(record)) {
               disabledKeys.add(record[rowKey.value]);
             }
             if (record.children) {
@@ -812,7 +812,7 @@ export default defineComponent({
 
       const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
-          if (!record.disabled) {
+          if (!rowSelection.value?.disabled?.(record.raw)) {
             keys.push(record.key);
           }
           if (record.children) {
@@ -902,7 +902,6 @@ export default defineComponent({
           const record: TableDataWithRaw = {
             raw: _record,
             key: _record[props.rowKey],
-            disabled: _record.disabled,
             expand: _record.expand,
             isLeaf: _record.isLeaf,
           };
@@ -1694,6 +1693,7 @@ export default defineComponent({
                   record={record}
                   hasExpand={Boolean(expandContent)}
                   selectedRowKeys={currentSelectedRowKeys.value}
+                  disabled={rowSelection.value?.disabled}
                   rowSpan={rowspan}
                   colSpan={colspan}
                   renderExpandBtn={renderExpandBtn}

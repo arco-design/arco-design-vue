@@ -39,6 +39,7 @@ export default {
       type: 'checkbox',
       showCheckedAll: true,
       onlyCurrent: false,
+      disabled: (data)=> data.name === 'Kevin Sandra'
     });
     const pagination = {pageSize: 5}
 
@@ -78,7 +79,6 @@ export default {
       salary: 22000,
       address: '31 Park Road, London',
       email: 'kevin.sandra@example.com',
-      disabled: true
     }, {
       key: '4',
       name: 'Ed Hellen',
