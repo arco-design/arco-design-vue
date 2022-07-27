@@ -20,6 +20,8 @@ description: 将内容组织同一视图中，一次可查看一个视图内容�
 
 @import ./__demo__/editable.md
 
+@import ./__demo__/trigger.md
+
 ## API
 
 
