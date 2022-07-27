@@ -26,6 +26,7 @@
           <transition
             :name="modalAnimationName"
             appear
+            @enter="modalTransitionEnter"
             @after-enter="handleOpen"
             @after-leave="handleClose"
           >
@@ -110,6 +111,7 @@ import {
   onMounted,
   onBeforeUnmount,
   toRefs,
+  nextTick,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { MessageType } from '../_utils/constant';
@@ -129,6 +131,24 @@ import { isBoolean, isFunction, isNumber } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useDraggable } from './hooks/use-draggable';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
+
+type CursorPositionType = { left: number; top: number } | null;
+let cursorPosition: CursorPositionType | null = null;
+
+document.documentElement.addEventListener(
+  'click',
+  (e: MouseEvent) => {
+    cursorPosition = {
+      left: e.clientX,
+      top: e.clientY,
+    };
+    // 受控模式下，用户不一定马上打开弹窗，这期间可能出现其他 UI 操作，那这个位置就不可用了。
+    setTimeout(() => {
+      cursorPosition = null;
+    }, 100);
+  },
+  true
+);
 
 export default defineComponent({
   name: 'Modal',
@@ -587,7 +607,31 @@ export default defineComponent({
       }
     };
 
-    const handleOpen = () => {
+    let currentCursorPosition: CursorPositionType | null = null;
+    let haveOriginTransformOrigin = false;
+
+    const setTransformOrigin = (e: HTMLDivElement) => {
+      if (haveOriginTransformOrigin) return;
+      let transformOrigin = '';
+      if (currentCursorPosition) {
+        const eRect = e.getBoundingClientRect();
+        const { left, top } = currentCursorPosition;
+        transformOrigin = `${left - eRect.left}px ${top - eRect.top}px`;
+      }
+      e.style.transformOrigin = transformOrigin;
+    };
+
+    const modalTransitionEnter = (e: HTMLDivElement) => {
+      if (computedVisible.value) {
+        currentCursorPosition = cursorPosition;
+        haveOriginTransformOrigin = !!e.style.transformOrigin;
+        nextTick(() => {
+          setTransformOrigin(e);
+        });
+      }
+    };
+
+    const handleOpen = (e: HTMLDivElement) => {
       if (computedVisible.value) {
         if (
           !contains(wrapperRef.value, document.activeElement) &&
@@ -596,10 +640,14 @@ export default defineComponent({
           document.activeElement.blur();
         }
         emit('open');
+        nextTick(() => {
+          setTransformOrigin(e);
+          currentCursorPosition = null;
+        });
       }
     };
 
-    const handleClose = () => {
+    const handleClose = (e: HTMLDivElement) => {
       if (!computedVisible.value) {
         if (mergedDraggable.value) {
           position.value = undefined;
@@ -608,6 +656,7 @@ export default defineComponent({
         mounted.value = false;
         resetOverflow();
         emit('close');
+        setTransformOrigin(e);
       }
     };
 
@@ -708,6 +757,7 @@ export default defineComponent({
       modalCls,
       teleportContainer,
       handleMoveDown,
+      modalTransitionEnter,
     };
   },
 });
