@@ -2,6 +2,32 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- **tree:** 给 slot 添加节点状态信息 ([#1469](https://github.com/arco-design/arco-design-vue/pull/1469))
+- **pagination:** 增加 autoAdjust 属性 ([#1466](https://github.com/arco-design/arco-design-vue/pull/1466))
+- **tabs:** 增加 trigger 属性，支持更改切换方式 ([#1456](https://github.com/arco-design/arco-design-vue/pull/1456))
+- **auto-complete:** 增加`footer`插槽 ([#1445](https://github.com/arco-design/arco-design-vue/pull/1445))
+- **dropdown:** 为icon插槽加入新的prop:  `popup-visible` ([#1430](https://github.com/arco-design/arco-design-vue/pull/1430))
+- **drawer:** 添加函数调用 ([#1409](https://github.com/arco-design/arco-design-vue/pull/1409))
+
+### 🐛 问题修复
+
+- **timeline:** 修复时间线使用 v-if 时计算错误的问题 ([#1467](https://github.com/arco-design/arco-design-vue/pull/1467))
+
+### 💎 功能优化
+
+- **table:** columns 支持 reactive 类型的更新 ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- **table:** rowClass 支持函数类型的值 ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+- **transfer:** item 插槽增加 value 属性 ([#1447](https://github.com/arco-design/arco-design-vue/pull/1447))
+- **modal:** 支持在函数调用中隐藏页脚 ([#1410](https://github.com/arco-design/arco-design-vue/pull/1410))
+- **input-number:** 支持`read-only`属性 ([#1408](https://github.com/arco-design/arco-design-vue/pull/1408))
+
+
 ## 2.33.1
 
 `2022-07-22`

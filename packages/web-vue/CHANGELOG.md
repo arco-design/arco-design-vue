@@ -2,6 +2,32 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- **tree:** Add node status to slot ([#1469](https://github.com/arco-design/arco-design-vue/pull/1469))
+- **pagination:** Add autoAdjust property ([#1466](https://github.com/arco-design/arco-design-vue/pull/1466))
+- **tabs:** Add trigger property to support changing switching mode ([#1456](https://github.com/arco-design/arco-design-vue/pull/1456))
+- **auto-complete:** add `footer` slot ([#1445](https://github.com/arco-design/arco-design-vue/pull/1445))
+- **dropdown:** add new prop for icon slot: `popup-visible` ([#1430](https://github.com/arco-design/arco-design-vue/pull/1430))
+- **drawer:** add function call ([#1409](https://github.com/arco-design/arco-design-vue/pull/1409))
+
+### 🐛 BugFix
+
+- **timeline:** Fixed an issue where the timeline was incorrectly calculated when using v-if ([#1467](https://github.com/arco-design/arco-design-vue/pull/1467))
+
+### 💎 Enhancement
+
+- **table:** columns support reactive type updates ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- **table:** rowClass supports values of function types ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+- **transfer:** item slot adds value attribute ([#1447](https://github.com/arco-design/arco-design-vue/pull/1447))
+- **modal:** support hide footer in function call ([#1410](https://github.com/arco-design/arco-design-vue/pull/1410))
+- **input-number:** Support `read-only` prop ([#1408](https://github.com/arco-design/arco-design-vue/pull/1408))
+
+
 ## 2.33.1
 
 `2022-07-22`

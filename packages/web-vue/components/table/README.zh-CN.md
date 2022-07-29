@@ -83,7 +83,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|筛选图标是否左对齐|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|是否在子树为空时隐藏展开按钮|`boolean`|`false`|2.14.0|
-|row-class|表格行元素的类名|`string\|array\|object`|`-`|2.16.0|
+|row-class|表格行元素的类名|`string\| any[]\| Record<string, any>\| ((record: TableData, rowIndex: number) => any)`|`-`|2.16.0|
 |draggable|表格拖拽排序的配置|`TableDraggable`|`-`|2.16.0|
 |column-resizable|是否允许调整列宽|`boolean`|`false`|2.16.0|
 |summary|显示表尾总结行|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|

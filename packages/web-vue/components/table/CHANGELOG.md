@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- columns support reactive type updates ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- rowClass supports values of function types ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+
+
 ## 2.33.1
 
 `2022-07-22`

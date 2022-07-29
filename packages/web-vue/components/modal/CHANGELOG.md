@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- support hide footer in function call ([#1410](https://github.com/arco-design/arco-design-vue/pull/1410))
+
+
 ## 2.33.1
 
 `2022-07-22`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- Add trigger property to support changing switching mode ([#1456](https://github.com/arco-design/arco-design-vue/pull/1456))
+
+
 ## 2.33.0
 
 `2022-07-08`

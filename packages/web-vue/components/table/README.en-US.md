@@ -85,7 +85,7 @@ description: It is used for data collection, display, analysis and processing, a
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|Whether the filter icon is aligned to the left|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|Whether to hide expand button when subtree is empty|`boolean`|`false`|2.14.0|
-|row-class|The class name of the table row element|`string\|array\|object`|`-`|2.16.0|
+|row-class|The class name of the table row element|`string\| any[]\| Record<string, any>\| ((record: TableData, rowIndex: number) => any)`|`-`|2.16.0|
 |draggable|Table drag and drop sorting configuration|`TableDraggable`|`-`|2.16.0|
 |column-resizable|Whether to allow the column width to be adjusted|`boolean`|`false`|2.16.0|
 |summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|

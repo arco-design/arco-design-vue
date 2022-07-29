@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- 为icon插槽加入新的porp:  `popup-visible` ([#1430](https://github.com/arco-design/arco-design-vue/pull/1430))
+
+
 ## 2.29.0
 
 `2022-05-27`

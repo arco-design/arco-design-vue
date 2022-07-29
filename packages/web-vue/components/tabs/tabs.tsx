@@ -157,6 +157,7 @@ export default defineComponent({
      * @zh 触发方式
      * @en Trigger method
      * @values 'hover','click'
+     * @version 2.34.0
      */
     trigger: {
       type: String as PropType<TabTriggerEvent>,

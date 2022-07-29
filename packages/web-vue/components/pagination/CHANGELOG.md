@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- Add autoAdjust property ([#1466](https://github.com/arco-design/arco-design-vue/pull/1466))
+
+
 ## 2.27.0
 
 `2022-05-13`

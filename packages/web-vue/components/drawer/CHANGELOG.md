@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- add function call ([#1409](https://github.com/arco-design/arco-design-vue/pull/1409))
+
+
 ## 2.33.0
 
 `2022-07-08`

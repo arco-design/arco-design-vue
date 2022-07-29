@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 功能优化
+
+- columns 支持 reactive 类型的更新 ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- rowClass 支持函数类型的值 ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+
+
 ## 2.33.1
 
 `2022-07-22`
