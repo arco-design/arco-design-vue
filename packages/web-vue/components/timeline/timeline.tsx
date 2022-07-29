@@ -1,32 +1,18 @@
-<template>
-  <div role="list" :class="cls">
-    <slot />
-    <Item v-if="hasPending" line-type="dashed">
-      <template #dot>
-        <slot v-if="$slots.dot" name="dot" />
-        <spin v-else :size="12" />
-      </template>
-      <div v-if="pending !== true"> {{ pending }}</div>
-    </Item>
-  </div>
-</template>
-
-<script lang="ts">
 import {
   defineComponent,
   PropType,
   provide,
   reactive,
-  ref,
   computed,
   toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import type { ModeType, LabelPositionType } from './interface';
-import { timelineInjectionKey, VItem } from './context';
+import { timelineInjectionKey } from './context';
 import Item from './item.vue';
 import Spin from '../spin';
 import { Direction } from '../_utils/constant';
+import { useChildrenComponents } from '../_hooks/use-children-components';
 
 export default defineComponent({
   name: 'Timeline',
@@ -65,7 +51,7 @@ export default defineComponent({
      * @en Whether to display ghost nodes. When set to true, only ghost nodes are displayed. When passed to ReactNode, it will be displayed as node content
      */
     pending: {
-      type: Boolean,
+      type: [Boolean, String],
     },
     /**
      * @zh 设置标签文本的位置
@@ -87,29 +73,16 @@ export default defineComponent({
     const hasPending = computed(() => {
       return props.pending || slots.pending;
     });
+    const { children, components } = useChildrenComponents('TimelineItem');
     const {
       reverse: reverseRef,
       direction: directionRef,
       labelPosition: labelPositionRef,
       mode: modeRef,
     } = toRefs(props);
-    const itemsRef = ref<VItem[]>([]);
-
-    function addItem(item: VItem) {
-      itemsRef.value.push(item);
-    }
-
-    function removeItem(uid: number) {
-      const index = itemsRef.value.findIndex((item) => item.uid === uid);
-      if (index !== -1) {
-        itemsRef.value.splice(index, 1);
-      }
-    }
 
     const timelineContext = reactive({
-      addItem,
-      removeItem,
-      items: itemsRef.value,
+      items: components,
       direction: directionRef,
       reverse: reverseRef,
       labelPosition: labelPositionRef,
@@ -128,11 +101,27 @@ export default defineComponent({
       ];
     });
 
-    return {
-      prefixCls,
-      hasPending,
-      cls,
+    return () => {
+      if (hasPending.value) {
+        children.value = slots.default?.().concat(
+          <Item
+            v-slots={{
+              dot: () => slots.dot?.() ?? <Spin size={12} />,
+            }}
+            lineType="dashed"
+          >
+            {props.pending !== true && <div>{props.pending}</div>}
+          </Item>
+        );
+      } else {
+        children.value = slots.default?.();
+      }
+
+      return (
+        <div role="list" class={cls.value}>
+          {children.value}
+        </div>
+      );
     };
   },
 });
-</script>
