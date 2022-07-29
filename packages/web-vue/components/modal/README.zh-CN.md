@@ -108,7 +108,7 @@ Modal._context = app._context;
 |---|---|---|:---:|:---|
 |title|标题|`RenderContent`|`-`||
 |content|内容|`RenderContent`|`-`||
-|footer|页脚|`RenderContent`|`-`||
+|footer|页脚|`boolean \| RenderContent`|`true`||
 |closable|是否显示关闭按钮|`boolean`|`false`||
 |okText|确认按钮的内容|`string`|`-`||
 |cancelText|取消按钮的内容|`string`|`-`||
