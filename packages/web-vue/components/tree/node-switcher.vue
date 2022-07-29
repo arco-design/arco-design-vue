@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { computed, defineComponent, h, PropType, toRefs, VNode } from 'vue';
+import { defineComponent, h, PropType, toRefs, VNode } from 'vue';
 import RenderFunction from '../_components/render-function';
 import IconLoading from '../icon/icon-loading';
 import IconHover from '../_components/icon-hover.vue';
@@ -17,38 +17,46 @@ export default defineComponent({
   },
   props: {
     prefixCls: String,
-    expanded: Boolean,
     loading: Boolean,
     showLine: Boolean,
-    isLeaf: Boolean,
     treeNodeData: {
       type: Object as PropType<TreeNodeData>,
     },
     icons: {
       type: Object as PropType<Record<string, () => VNode[]>>,
     },
+    nodeStatus: {
+      type: Object as PropType<{
+        loading?: boolean;
+        checked?: boolean;
+        selected?: boolean;
+        expanded?: boolean;
+        indeterminate?: boolean;
+        isLeaf?: boolean;
+      }>,
+    },
   },
   emits: ['click'],
   setup(props, { slots, emit }) {
-    const { icons } = toRefs(props);
+    const { icons, nodeStatus, treeNodeData } = toRefs(props);
     const treeContext = useTreeContext();
 
     const nodeSwitcherIcon = usePickSlots(slots, 'switcher-icon');
     const nodeLoadingIcon = usePickSlots(slots, 'loading-icon');
 
     return {
-      switcherIcon: computed(
-        () =>
-          icons?.value?.switcherIcon ||
-          nodeSwitcherIcon.value ||
-          treeContext.switcherIcon
-      ),
-      loadingIcon: computed(
-        () =>
-          icons?.value?.loadingIcon ||
-          nodeLoadingIcon.value ||
-          treeContext.loadingIcon
-      ),
+      getSwitcherIcon: () => {
+        const icon = icons?.value?.switcherIcon ?? nodeSwitcherIcon.value;
+        return icon
+          ? icon(nodeStatus.value)
+          : treeContext.switcherIcon?.(treeNodeData.value, nodeStatus.value);
+      },
+      getLoadingIcon: () => {
+        const icon = icons?.value?.loadingIcon ?? nodeLoadingIcon.value;
+        return icon
+          ? icon(nodeStatus.value)
+          : treeContext.loadingIcon?.(treeNodeData.value, nodeStatus.value);
+      },
       onClick(e: Event) {
         emit('click', e);
       },
@@ -57,18 +65,18 @@ export default defineComponent({
   render() {
     const {
       prefixCls,
-      switcherIcon,
-      loadingIcon,
+      getSwitcherIcon,
+      getLoadingIcon,
       onClick,
-      expanded,
+      nodeStatus = {},
       loading,
-      isLeaf,
       showLine,
-      treeNodeData,
     } = this;
 
+    const { expanded, isLeaf } = nodeStatus;
+
     if (loading) {
-      return loadingIcon ? loadingIcon(treeNodeData) : h(IconLoading);
+      return getLoadingIcon() ?? h(IconLoading);
     }
 
     let icon = null;
@@ -80,10 +88,10 @@ export default defineComponent({
             class: `${prefixCls}-${expanded ? 'minus' : 'plus'}-icon`,
           })
         : h(IconCaretDown);
-      icon = switcherIcon ? switcherIcon(treeNodeData) : defaultIcon;
+      icon = getSwitcherIcon() ?? defaultIcon;
       needIconHover = !showLine;
     } else if (showLine) {
-      icon = switcherIcon ? switcherIcon(treeNodeData) : h(IconFile);
+      icon = getSwitcherIcon() ?? h(IconFile);
     }
 
     if (!icon) return null;

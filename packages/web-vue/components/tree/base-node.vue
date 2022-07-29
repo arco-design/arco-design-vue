@@ -24,15 +24,14 @@
     >
       <NodeSwitcher
         :prefix-cls="prefixCls"
-        :expanded="expanded"
         :loading="loading"
         :show-line="showLine"
-        :is-leaf="isLeaf"
         :tree-node-data="treeNodeData"
         :icons="{
           switcherIcon,
           loadingIcon,
         }"
+        :node-status="nodeStatus"
         @click="onSwitcherClick"
       >
         <template v-if="$slots['switcher-icon']" #switcher-icon>
@@ -72,12 +71,17 @@
         :class="[`${prefixCls}-icon`, `${prefixCls}-custom-icon`]"
       >
         <!-- 节点图标 -->
-        <slot v-if="$slots.icon" name="icon" />
-        <RenderFunction v-else-if="icon" :render-func="icon" />
+        <slot v-if="$slots.icon" name="icon" v-bind="nodeStatus" />
+        <RenderFunction
+          v-else-if="icon"
+          :render-func="icon"
+          v-bind="nodeStatus"
+        />
         <RenderFunction
           v-else-if="treeNodeIcon"
           :render-func="treeNodeIcon"
           :node="treeNodeData"
+          v-bind="nodeStatus"
         />
       </span>
       <span :class="`${prefixCls}-title-text`">
@@ -90,12 +94,21 @@
           :class="[`${prefixCls}-icon`, `${prefixCls}-drag-icon`]"
         >
           <!-- 拖拽图标 -->
-          <slot v-if="$slots['drag-icon']" name="drag-icon" />
-          <RenderFunction v-else-if="dragIcon" :render-func="dragIcon" />
+          <slot
+            v-if="$slots['drag-icon']"
+            name="drag-icon"
+            v-bind="nodeStatus"
+          />
+          <RenderFunction
+            v-else-if="dragIcon"
+            :render-func="dragIcon"
+            v-bind="nodeStatus"
+          />
           <RenderFunction
             v-else-if="treeDragIcon"
             :render-func="treeDragIcon"
             :node="treeNodeData"
+            v-bind="nodeStatus"
           />
           <IconDragDotVertical v-else />
         </span>
@@ -123,7 +136,7 @@ import useNodeKey from './hooks/use-node-key';
 import Checkbox from '../checkbox';
 import RenderFunction from '../_components/render-function';
 import { isFunction } from '../_utils/is';
-import { TreeNodeProps, Node } from './interface';
+import { Node } from './interface';
 import useDraggable from './hooks/use-draggable';
 import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
 import { toArray } from '../_utils/to-array';
@@ -213,15 +226,8 @@ export default defineComponent({
       return action ? toArray(action) : [];
     });
 
-    const {
-      isLeaf,
-      isTail,
-      selectable,
-      disabled,
-      disableCheckbox,
-      draggable,
-      checkable,
-    } = toRefs(props);
+    const { isLeaf, isTail, selectable, disabled, disableCheckbox, draggable } =
+      toRefs(props);
 
     const classNames = computed(() => [
       `${prefixCls}`,
@@ -263,12 +269,6 @@ export default defineComponent({
       },
     ]);
 
-    const treeTitle = computed(() =>
-      treeContext.nodeTitle
-        ? () => treeContext.nodeTitle?.(treeNodeData.value)
-        : undefined
-    );
-
     const checked = computed(() =>
       treeContext.checkedKeys?.includes?.(key.value)
     );
@@ -302,6 +302,26 @@ export default defineComponent({
       }
     }
 
+    const nodeStatus = reactive({
+      loading,
+      checked,
+      selected,
+      indeterminate,
+      expanded,
+      isLeaf,
+    });
+
+    const treeTitle = computed(() =>
+      treeContext.nodeTitle
+        ? () => treeContext.nodeTitle?.(treeNodeData.value, nodeStatus)
+        : undefined
+    );
+    const extra = computed(() =>
+      treeContext.nodeExtra
+        ? () => treeContext.nodeExtra?.(treeNodeData.value, nodeStatus)
+        : undefined
+    );
+
     return {
       refTitle,
       prefixCls,
@@ -316,11 +336,8 @@ export default defineComponent({
       loading,
       treeDragIcon,
       treeNodeIcon,
-      extra: computed(() =>
-        treeContext.nodeExtra
-          ? () => treeContext.nodeExtra?.(treeNodeData.value)
-          : undefined
-      ),
+      extra,
+      nodeStatus,
       onCheckboxChange(checked: boolean, e: Event) {
         if (disableCheckbox.value || disabled.value) {
           return;
