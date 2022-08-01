@@ -186,6 +186,16 @@ export default defineComponent({
      */
     'input': (value: number | undefined, inputValue: string, ev: Event) => true,
   },
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   */
+  /**
+   * @zh 后缀元素
+   * @en Suffix
+   * @slot suffix
+   */
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
@@ -403,7 +413,7 @@ export default defineComponent({
       }
       return (
         <>
-          {slots.suffix?.()}
+          <div class={`${prefixCls}-suffix`}>{slots.suffix?.()}</div>
           <div class={`${prefixCls}-step`}>
             <button
               class={[
