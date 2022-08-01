@@ -22,5 +22,8 @@ description: 划分内容区域，对模块做分隔。
 |---|---|---|:---:|
 |direction|分割线的方向，是水平还是竖直|`'horizontal' \| 'vertical'`|`'horizontal'`|
 |orientation|分割线文字的位置|`'left' \| 'center' \| 'right'`|`'center'`|
+|type|分割线样式类型|`'solid' \| 'dashed' \| 'dotted' \| 'double'`|`-`|
+|size|分割线宽度/高度|`number`|`-`|
+|margin|分割线上下 margin (垂直方向时为左右 margin)|`number \| string`|`-`|
 
 
