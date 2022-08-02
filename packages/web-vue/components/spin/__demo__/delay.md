@@ -1,25 +1,25 @@
 ```yaml
 title:
-  zh-CN: 容器中
-  en-US: Container
+  zh-CN: 延迟
+  en-US: Delay
 ```
 
 ## zh-CN
 
-可以给任意内容添加加载中指示符。容器默认是 `inline-block` 布局，当你需要撑满父级容器时可设置 `block` 属性为 `true`。
+通过 `delay` 延迟显示 loading，对状态切换进行防抖处理，有效避免状态快速切换时的屏幕闪烁。
 
 ---
 
 ## en-US
 
-You can add an in-load indicator to any content. The container defaults to the layout of `block`. When you need to fill the parent container, you can set the attribute `block` to `true`.
+Use `delay` to delay the switch of loading status, which effectively avoids screen flicker during rapid state switching.
 
 ---
 
 ```vue
 <template>
   <a-button style="margin-bottom: 20px" @click="(loading = !loading)">loading: {{loading}}</a-button>
-  <a-spin :loading="loading" tip="This may take a while...">
+  <a-spin :loading="loading" tip="This may take a while..." :delay="500">
     <a-card title="Arco Card">
       ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around
       the world. Toutiao started out as a news recommendation engine and gradually evolved into
