@@ -1851,7 +1851,9 @@ export default defineComponent({
                       index: number;
                     }) => renderRecord(item, index),
                   }}
-                  ref={(ins: any) => (tbodyRef.value = ins.$el)}
+                  ref={(ins: any) => {
+                    if (ins?.$el) tbodyRef.value = ins.$el;
+                  }}
                   class={`${prefixCls}-body`}
                   data={flattenData.value}
                   itemKey="_key"
