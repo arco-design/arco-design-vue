@@ -129,7 +129,7 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
           .map((x) => x.trim())
           .filter((x) => x);
     const fileExtension =
-      file.name.indexOf('.') > -1 ? file.name.split('.').pop() : '';
+      file.name.indexOf('.') > -1 ? `.${file.name.split('.').pop()}` : '';
     return accepts.some((type) => {
       const typeText = type && type.toLowerCase();
       const fileType = (file.type || '').toLowerCase();
@@ -149,14 +149,13 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
         return fileType.replace(/\/.*$/, '') === typeText.replace(/\/.*$/, '');
       }
       if (/\..*/.test(typeText)) {
-        // .jpg and other suffixes
-        const lowerFileName = file.name.toLowerCase() || '';
-        let affixList = [typeText];
+        // .jpg 等后缀名
+        let suffixList = [typeText];
         // accept=".jpg", jpeg后缀类型同样可以上传，反之亦然
         if (typeText === '.jpg' || typeText === '.jpeg') {
-          affixList = ['.jpg', '.jpeg'];
+          suffixList = ['.jpg', '.jpeg'];
         }
-        return affixList.some((affix) => lowerFileName.endsWith(affix));
+        return suffixList.indexOf(fileExtension) > -1;
       }
       return false;
     });
