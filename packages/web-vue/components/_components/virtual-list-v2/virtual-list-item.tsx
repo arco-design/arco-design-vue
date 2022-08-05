@@ -1,5 +1,6 @@
 import {
   cloneVNode,
+  ComponentPublicInstance,
   defineComponent,
   getCurrentInstance,
   onMounted,
@@ -21,11 +22,13 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const key = getCurrentInstance()?.vnode.key as string | number;
-    const itemRef = ref<HTMLElement>();
+    const itemRef = ref<HTMLElement | ComponentPublicInstance>();
 
     const setItemSize = () => {
-      if (!props.hasItemSize(key) && itemRef.value?.offsetHeight) {
-        props.setItemSize(key, itemRef.value.offsetHeight);
+      // @ts-ignore
+      const ele = itemRef.value?.$el ?? (itemRef.value as HTMLElement);
+      if (!props.hasItemSize(key) && ele?.offsetHeight) {
+        props.setItemSize(key, ele.offsetHeight);
       }
     };
 

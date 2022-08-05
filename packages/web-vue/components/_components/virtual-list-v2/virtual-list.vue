@@ -33,7 +33,7 @@
       >
         <VirtualListItem
           v-for="(item, index) of currentList"
-          :key="item[itemKey]"
+          :key="item[itemKey] ?? index"
           :has-item-size="hasItemSize"
           :set-item-size="setItemSize"
         >
@@ -130,8 +130,8 @@ export default defineComponent({
     });
 
     const dataKeys = computed(() =>
-      data.value.map((item: any) => {
-        return item[itemKey.value] as string | number;
+      data.value.map((item: any, index) => {
+        return (item[itemKey.value] ?? index) as string | number;
       })
     );
 

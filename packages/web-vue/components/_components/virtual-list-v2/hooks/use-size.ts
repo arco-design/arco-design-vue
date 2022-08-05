@@ -13,7 +13,6 @@ export const useSize = ({
   estimatedSize: Ref<number | undefined>;
   buffer: Ref<number>;
 }) => {
-  const firstRangeTotalSize = ref(0);
   const firstRangeAverageSize = ref(0);
   const sizeMap = new Map<string | number, number>();
 
@@ -31,15 +30,22 @@ export const useSize = ({
   });
 
   const setStart = (index: number) => {
-    if (index < 0) start.value = 0;
-    else if (index > maxStart.value) start.value = maxStart.value;
-    else start.value = index;
+    if (index < 0) {
+      start.value = 0;
+    } else if (index > maxStart.value) {
+      start.value = maxStart.value;
+    } else {
+      start.value = index;
+    }
   };
 
   const isFixed = ref(fixedSize.value);
-  const _estimatedSize = computed(
-    () => firstRangeAverageSize.value || estimatedSize.value
-  );
+  const _estimatedSize = computed(() => {
+    if (estimatedSize.value !== 30) {
+      return estimatedSize.value;
+    }
+    return firstRangeAverageSize.value || estimatedSize.value;
+  });
 
   const setItemSize = (key: string | number, size: number) => {
     sizeMap.set(key, size);
@@ -59,10 +65,12 @@ export const useSize = ({
   };
 
   onMounted(() => {
-    if (contentRef.value && contentRef.value.offsetHeight > 0) {
-      firstRangeTotalSize.value = contentRef.value.offsetHeight;
-      firstRangeAverageSize.value =
-        firstRangeTotalSize.value / (buffer.value * 3);
+    const firstRangeTotalSize = Array.from(sizeMap.values()).reduce(
+      (pre, value) => pre + value,
+      0
+    );
+    if (firstRangeTotalSize > 0) {
+      firstRangeAverageSize.value = firstRangeTotalSize / sizeMap.size;
     }
   });
 
