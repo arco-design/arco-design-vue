@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.1
+
+`2022-08-05`
+
+### 💅 Style
+
+- Fix style issue when dropdown panel is empty ([#1483](https://github.com/arco-design/arco-design-vue/pull/1483))
+
+
 ## 2.33.1
 
 `2022-07-22`

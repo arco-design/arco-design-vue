@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.34.1
+
+`2022-08-05`
+
+### 🐛 问题修复
+
+- **upload:** 修复设置 `accept=*` 时失效的问题 ([#1488](https://github.com/arco-design/arco-design-vue/pull/1488))
+- **menu:** 修复新版本 Chrome 中 popup 属性导致警告的问题 ([#1487](https://github.com/arco-design/arco-design-vue/pull/1487))
+
+### 💎 功能优化
+
+- 重构虚拟列表组件，修复功能问题 ([#1444](https://github.com/arco-design/arco-design-vue/pull/1444))
+
+### 💅 样式更新
+
+- **cascader:** 修复下拉面板为空时的样式问题 ([#1483](https://github.com/arco-design/arco-design-vue/pull/1483))
+
+
 ## 2.34.0
 
 `2022-07-29`

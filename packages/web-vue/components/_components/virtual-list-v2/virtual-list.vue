@@ -46,7 +46,6 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, toRefs } from 'vue';
-import './style/index.less';
 import { useSize } from './hooks/use-size';
 import VirtualListItem from './virtual-list-item';
 import { getPrefixCls } from '../../_utils/global-config';
@@ -126,6 +125,7 @@ export default defineComponent({
     const style = computed(() => {
       return {
         height: isNumber(height.value) ? `${height.value}px` : height.value,
+        overflow: 'auto',
       };
     });
 

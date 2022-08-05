@@ -850,9 +850,9 @@ exports[`<tree> demo: render [virtual] correctly 1`] = `
   <!--v-if--> Scroll to 0-0-2-2, i.e. the 26th.
 </button>
 <div class=\\"arco-tree arco-tree-checkable arco-tree-size-medium\\">
-  <div style=\\"overflow-y: auto; max-height: 200px;\\">
-    <div style=\\"height: 35520px; position: relative; z-index: 0;\\">
-      <div style=\\"display: flex; flex-direction: column; transform: translateY(0px); position: absolute; left: 0px; right: 0px; top: 0px;\\">
+  <div class=\\"arco-virtual-list\\" style=\\"height: 200px; overflow: auto;\\">
+    <div>
+      <div style=\\"padding-top: 0px; padding-bottom: 32400px;\\">
         <div class=\\"arco-tree-node arco-tree-node-expanded\\">
           <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"></span><!-- switcher --><span class=\\"arco-tree-node-switcher arco-tree-node-switcher-expanded\\"><span class=\\"arco-icon-hover arco-tree-node-icon-hover\\"><span class=\\"arco-tree-node-switcher-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
             <!---->
@@ -906,6 +906,160 @@ exports[`<tree> demo: render [virtual] correctly 1`] = `
           <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
             <!---->
           </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-0-5<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-0-6<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-0-7<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-0-8<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf arco-tree-node-is-tail\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-0-9<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-expanded\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher arco-tree-node-switcher-expanded\\"><span class=\\"arco-icon-hover arco-tree-node-icon-hover\\"><span class=\\"arco-tree-node-switcher-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-0<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-1<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-2<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-3<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-4<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-5<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-6<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-7<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-8<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf arco-tree-node-is-tail\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-1-9<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-expanded\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher arco-tree-node-switcher-expanded\\"><span class=\\"arco-icon-hover arco-tree-node-icon-hover\\"><span class=\\"arco-tree-node-switcher-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-caret-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95L24.937 34.829Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-2<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-2-0<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-2-1<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-2-2<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-2-3<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-2-4<!--v-if--></span></span><!-- 额外 -->
+          <!--v-if-->
+        </div>
+        <transition-stub></transition-stub>
+        <div class=\\"arco-tree-node arco-tree-node-is-leaf\\">
+          <!-- 缩进 --><span class=\\"arco-tree-node-indent\\"><span class=\\"arco-tree-node-indent-block\\"></span><span class=\\"arco-tree-node-indent-block\\"></span></span><!-- switcher --><span class=\\"arco-tree-node-switcher\\"><!----></span><!-- checkbox --><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+            <!---->
+          </label><!-- 内容 --><span class=\\"arco-tree-node-title arco-tree-node-title-block\\" draggable=\\"false\\"><!--v-if--><span class=\\"arco-tree-node-title-text\\"><!-- 标题，treeTitle 优先级高于节点的 title -->0-0-2-5<!--v-if--></span></span><!-- 额外 -->
           <!--v-if-->
         </div>
         <transition-stub></transition-stub>

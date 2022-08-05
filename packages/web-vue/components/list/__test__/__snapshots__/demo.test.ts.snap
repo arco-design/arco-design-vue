@@ -483,9 +483,9 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-list arco-list-medium arco-list-bordered arco-list-split\\">
       <!---->
-      <div class=\\"arco-list-content arco-list-virtual\\" style=\\"overflow-y: auto; max-height: 560px;\\">
-        <div style=\\"height: 320000px; position: relative; z-index: 0;\\">
-          <div style=\\"display: flex; flex-direction: column; transform: translateY(0px); position: absolute; left: 0px; right: 0px; top: 0px;\\">
+      <div class=\\"arco-virtual-list arco-list-content arco-list-virtual\\" style=\\"height: 560px; overflow: auto;\\">
+        <div>
+          <div style=\\"padding-top: 0px; padding-bottom: 299100px;\\">
             <div role=\\"listitem\\" class=\\"arco-list-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
@@ -877,6 +877,237 @@ exports[`<list> demo: render [virtual-list] correctly 1`] = `
                     <div class=\\"arco-list-item-meta-content\\">
                       <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
                       <div class=\\"arco-list-item-meta-description\\">(00018) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00019) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00020) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00021) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00022) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00023) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00024) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00025) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00026) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00027) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00028) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+              <!---->
+            </div>
+            <div role=\\"listitem\\" class=\\"arco-list-item\\">
+              <div class=\\"arco-list-item-main\\">
+                <!---->
+                <div class=\\"arco-list-item-content\\">
+                  <div class=\\"arco-list-item-meta\\">
+                    <div class=\\"arco-list-item-meta-avatar\\">
+                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"> A </span>
+                        <!--v-if-->
+                      </div>
+                    </div>
+                    <div class=\\"arco-list-item-meta-content\\">
+                      <div class=\\"arco-list-item-meta-title\\">Beijing Bytedance Technology Co., Ltd.</div>
+                      <div class=\\"arco-list-item-meta-description\\">(00029) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.</div>
                     </div>
                   </div>
                 </div>

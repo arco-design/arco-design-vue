@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.34.1
+
+`2022-08-05`
+
+### 🐛 BugFix
+
+- **upload:** fix the problem of `accept=*` does not work ([#1488](https://github.com/arco-design/arco-design-vue/pull/1488))
+- **menu:** Fixed an issue where the popup attribute caused warnings in newer versions of Chrome ([#1487](https://github.com/arco-design/arco-design-vue/pull/1487))
+
+### 💎 Enhancement
+
+- Refactor the virtual list component to fix functional issues ([#1444](https://github.com/arco-design/arco-design-vue/pull/1444))
+
+### 💅 Style
+
+- **cascader:** Fix style issue when dropdown panel is empty ([#1483](https://github.com/arco-design/arco-design-vue/pull/1483))
+
+
 ## 2.34.0
 
 `2022-07-29`
