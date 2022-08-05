@@ -42,23 +42,26 @@ export default defineComponent({
         return ['arcs', 'bevel', 'miter', 'miter-clip', 'round'].includes(value);
       }
     },
+    rotate: Number,
     spin: Boolean
   },
   setup(props) {
     const prefixCls = getPrefixCls('icon');
     const cls = computed(() => [prefixCls, \`\${prefixCls}-${name.replace('icon-', '')}\`, { [\`\${prefixCls}-spin\`]: props.spin }]);
-    const sizeStyle = computed(() => {
+    const innerStyle = computed(() => {
+      const styles: CSSProperties = {};
       if (props.size) {
-        return {
-          fontSize: isNumber(props.size) ? \`\${props.size}px\` : props.size,
-        };
+        styles.fontSize = isNumber(props.size) ? \`\${props.size}px\` : props.size;
       }
-      return undefined;
+      if (props.rotate) {
+        styles.transform = \`rotate(\${props.rotate}deg)\`;
+      }
+      return styles;
     });
 
     return {
       cls,
-      sizeStyle
+      innerStyle
     };
   }
 });
