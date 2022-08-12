@@ -25,6 +25,7 @@ export const addFromIconFontCn = (options: IconFontOptions) => {
     props: {
       type: String,
       size: [Number, String],
+      rotate: Number,
       spin: Boolean,
     },
     setup(props, { slots }) {
