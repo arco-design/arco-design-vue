@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.35.0
+
+`2022-08-12`
+
+### 🆕 Feature
+
+- `DatePicker` add range picker header label click and normal picker month header label click ([#1421](https://github.com/arco-design/arco-design-vue/pull/1421))
+
+
 ## 2.33.0
 
 `2022-07-08`

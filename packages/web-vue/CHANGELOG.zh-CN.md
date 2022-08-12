@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.35.0
+
+`2022-08-12`
+
+### 🆕 新增功能
+
+- **icon:** 支持旋转属性 ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+- **icon:** 图标列表支持类型筛选和名称搜索 ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+- **divider:** 分割线宽度及样式设置 ([#1473](https://github.com/arco-design/arco-design-vue/pull/1473))
+- **divider:** 分割线边距设置 ([#1473](https://github.com/arco-design/arco-design-vue/pull/1473))
+- **date-picker:** 增加范围选择器头部点击与基础选择器月份点击至年份功能 ([#1421](https://github.com/arco-design/arco-design-vue/pull/1421))
+
+### 💅 样式更新
+
+- **table:** 调整固定列的 zIndex ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
 ## 2.34.1
 
 `2022-08-05`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.35.0
+
+`2022-08-12`
+
+### 💅 样式更新
+
+- 调整固定列的 zIndex ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
 ## 2.34.0
 
 `2022-07-29`

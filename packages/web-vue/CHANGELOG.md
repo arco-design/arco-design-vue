@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.35.0
+
+`2022-08-12`
+
+### 🆕 Feature
+
+- **icon:** support rotate prop ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+- **icon:** Icon list supports type filtering and name search ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+- **divider:** support split line width and style ([#1473](https://github.com/arco-design/arco-design-vue/pull/1473))
+- **divider:** support split line margin ([#1473](https://github.com/arco-design/arco-design-vue/pull/1473))
+- **date-picker:** `DatePicker` add range picker header label click and normal picker month header label click ([#1421](https://github.com/arco-design/arco-design-vue/pull/1421))
+
+### 💅 Style
+
+- **table:** adjust zIndex of a fixed col ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
 ## 2.34.1
 
 `2022-08-05`

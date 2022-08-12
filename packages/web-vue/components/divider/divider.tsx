@@ -26,6 +26,7 @@ export default defineComponent({
     /**
      * @zh 分割线样式类型
      * @en Dividing line style type
+     * @version 2.35.0
      */
     type: {
       type: String as PropType<'solid' | 'dashed' | 'dotted' | 'double'>,
@@ -33,6 +34,7 @@ export default defineComponent({
     /**
      * @zh 分割线宽度/高度
      * @en The wide/height of the dividing line
+     * @version 2.35.0
      */
     size: {
       type: Number,
@@ -40,6 +42,7 @@ export default defineComponent({
     /**
      * @zh 分割线上下 margin (垂直方向时为左右 margin)
      * @en Margin up and down the split line (left and right margin in vertical direction)
+     * @version 2.35.0
      */
     margin: {
       type: [Number, String] as PropType<number | string>,
