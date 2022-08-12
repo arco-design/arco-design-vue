@@ -483,7 +483,7 @@ exports[`<date-picker> demo: render [panel-only] correctly 1`] = `
                 <div class=\\"arco-picker-header-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                     <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
                   </svg></div>
-                <div class=\\"arco-picker-header-title\\">2019-08</div>
+                <div class=\\"arco-picker-header-title\\"><span class=\\"arco-picker-header-label\\">2019</span><span>-</span><span class=\\"arco-picker-header-label\\">08</span></div>
                 <div class=\\"arco-picker-header-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                     <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
                   </svg></div>
@@ -743,7 +743,7 @@ exports[`<date-picker> demo: render [panel-only] correctly 1`] = `
                 <div class=\\"arco-picker-header-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                     <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
                   </svg></div>
-                <div class=\\"arco-picker-header-title\\">2020-06</div>
+                <div class=\\"arco-picker-header-title\\"><span class=\\"arco-picker-header-label\\">2020</span><span>-</span><span class=\\"arco-picker-header-label\\">06</span></div>
                 <div class=\\"arco-picker-header-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
                     <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
                   </svg></div>

@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs';
-import { computed, nextTick, reactive, toRefs } from 'vue';
+import { computed, nextTick, reactive, toRefs, watch } from 'vue';
 import pick from '../../_utils/pick';
 import { getSortedDayjsArray, methods } from '../../_utils/date';
 import { CalendarValue, Mode } from '../interface';
@@ -8,6 +8,8 @@ import useHeaderValue from './use-header-value';
 
 interface RangeHeaderValueProps {
   mode: Mode;
+  startHeaderMode?: Mode;
+  endHeaderMode?: Mode;
   value: CalendarValue[] | undefined;
   defaultValue: CalendarValue[] | undefined;
   selectedValue: (Dayjs | undefined)[];
@@ -16,8 +18,16 @@ interface RangeHeaderValueProps {
 }
 
 export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
-  const { mode, value, defaultValue, selectedValue, format, onChange } =
-    toRefs(props);
+  const {
+    startHeaderMode,
+    endHeaderMode,
+    mode,
+    value,
+    defaultValue,
+    selectedValue,
+    format,
+    onChange,
+  } = toRefs(props);
 
   const unit = computed(() =>
     ['date', 'week'].includes(mode.value) ? 'M' : 'y'
@@ -41,16 +51,14 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
   const emitChange = (newVal: Dayjs[]) => {
     onChange?.value && onChange.value(newVal);
   };
-
-  const [
-    startHeaderValue,
-    setStartHeaderValue,
-    startHeaderOperations,
-    ,
-    getDefaultStartHeaderValue,
-  ] = useHeaderValue(
+  const {
+    headerValue: startHeaderValue,
+    setHeaderValue: setStartHeaderValue,
+    headerOperations: startHeaderOperations,
+    getDefaultLocalValue: getDefaultStartHeaderValue,
+  } = useHeaderValue(
     reactive({
-      mode,
+      mode: startHeaderMode,
       value: startValue,
       defaultValue: startDefaultValue,
       selectedValue: undefined,
@@ -61,15 +69,14 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
     })
   );
 
-  const [
-    endHeaderValue,
-    setEndHeaderValue,
-    endHeaderOperations,
-    ,
-    getDefaultEndHeaderValue,
-  ] = useHeaderValue(
+  const {
+    headerValue: endHeaderValue,
+    setHeaderValue: setEndHeaderValue,
+    headerOperations: endHeaderOperations,
+    getDefaultLocalValue: getDefaultEndHeaderValue,
+  } = useHeaderValue(
     reactive({
-      mode,
+      mode: endHeaderMode,
       value: endValue,
       defaultValue: endDefaultValue,
       selectedValue: undefined,
