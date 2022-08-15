@@ -10,6 +10,8 @@ description: Button is a command component that can initiate an instant operatio
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/chinese-space.md
+
 @import ./__demo__/icon.md
 
 @import ./__demo__/shape.md
@@ -37,8 +39,10 @@ description: Button is a command component that can initiate an instant operatio
 |shape|Button shape|`'square' \| 'round' \| 'circle'`|`-`|
 |status|Button state|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`|
 |size|Button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|icon-position|Icon location|`'left' \| 'right'`|`'left'`|
 |long|Whether the width of the button adapts to the container.|`boolean`|`false`|
 |loading|Whether the button is in the loading state|`boolean`|`false`|
+|loading-fixed-width|The width of the button remains unchanged on loading|`boolean`|`false`|
 |disabled|Whether the button is disabled|`boolean`|`false`|
 |html-type|Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`string`|`'button'`|
 |href|Set up a jump link. When this property is set, the button is rendered as `<a>`|`string`|`-`|
@@ -51,6 +55,7 @@ description: Button is a command component that can initiate an instant operatio
 
 |Slot Name|Description|Parameters|
 |---|---|---|
+|loading-icon|Loading icon|-|
 |icon|Icon|-|
 
 

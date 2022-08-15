@@ -19,6 +19,14 @@ export default defineComponent({
   name: 'ConfigProvider',
   props: {
     /**
+     * @zh 当按钮中是两个汉字时，自动在两个汉字中添加一个空格。
+     * @en When there are two Chinese characters in the button, a space is automatically added between two Chinese characters.
+     */
+    autoInsertSpaceInButton: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * @zh 组件类名前缀
      * @en Component classname prefix
      */
@@ -73,7 +81,8 @@ export default defineComponent({
    * @version 2.28.0
    */
   setup(props, { slots }) {
-    const { prefixCls, locale, size, updateAtScroll } = toRefs(props);
+    const { prefixCls, locale, size, updateAtScroll, autoInsertSpaceInButton } =
+      toRefs(props);
 
     const config = reactive({
       slots,
@@ -81,6 +90,7 @@ export default defineComponent({
       locale,
       size,
       updateAtScroll,
+      autoInsertSpaceInButton,
     });
 
     if (props.global) {

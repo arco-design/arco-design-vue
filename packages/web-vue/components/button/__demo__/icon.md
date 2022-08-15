@@ -24,12 +24,29 @@ Buttons can be embedded with icons. When only icons are set, the width and heigh
         <icon-plus />
       </template>
     </a-button>
+    <a-button>
+      <template #icon>
+        <icon-thumb-up />
+      </template>
+    </a-button>
     <a-button type="primary">
       <template #icon>
         <icon-delete />
       </template>
       <!-- Use the default slot to avoid extra spaces -->
-      <template #default>Delete</template>
+      <template #default>  Delete</template>
+    </a-button>
+    <a-button type="primary">
+      <template #icon>
+        <icon-menu-unfold />
+      </template>
+      Collapse
+    </a-button>
+    <a-button type="primary" icon-position="right">
+      <template #icon>
+        <icon-down />
+      </template>
+      Expand
     </a-button>
   </a-space>
 </template>

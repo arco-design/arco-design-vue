@@ -8,6 +8,8 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/chinese-space.md
+
 @import ./__demo__/icon.md
 
 @import ./__demo__/shape.md
@@ -35,8 +37,10 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 |shape|按钮的形状|`'square' \| 'round' \| 'circle'`|`-`|
 |status|按钮的状态|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`|
 |size|按钮的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
+|icon-position|图标位置|`'left' \| 'right'`|`'left'`|
 |long|按钮的宽度是否随容器自适应。|`boolean`|`false`|
 |loading|按钮是否为加载中状态|`boolean`|`false`|
+|loading-fixed-width|当 loading 的时候，不改变按钮的宽度。|`boolean`|`false`|
 |disabled|按钮是否禁用|`boolean`|`false`|
 |html-type|设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`string`|`'button'`|
 |href|设置跳转链接。设置此属性时，按钮渲染为a标签。|`string`|`-`|
@@ -49,6 +53,7 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 |插槽名|描述|参数|
 |---|:---:|---|
+|loading-icon|加载图标|-|
 |icon|图标|-|
 
 

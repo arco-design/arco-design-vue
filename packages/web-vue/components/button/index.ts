@@ -1,7 +1,7 @@
 import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Button from './button.vue';
+import _Button from './button';
 import _ButtonGroup from './button-group.vue';
 
 const Button = Object.assign(_Button, {

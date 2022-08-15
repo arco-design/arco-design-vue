@@ -180,7 +180,13 @@
     border-radius: ~'@{btn-@{size-type}-radius}';
 
     &:not(.@{btn-prefix-cls}-only-icon) .@{btn-prefix-cls}-icon {
-      margin-right: ~'@{btn-@{size-type}-icon-spacing}';
+      &.@{btn-prefix-cls}-icon-left {
+        margin-right: ~'@{btn-@{size-type}-icon-spacing}';
+      }
+
+      &.@{btn-prefix-cls}-icon-right {
+        margin-left: ~'@{btn-@{size-type}-icon-spacing}';
+      }
     }
 
     svg {
