@@ -18,6 +18,8 @@ description: Only input boxes in numeric format are allowed.
 
 @import ./__demo__/prefix.md
 
+@import ./__demo__/custom-icons.md
+
 @import ./__demo__/format.md
 
 @import ./__demo__/model.md
@@ -34,10 +36,13 @@ description: Only input boxes in numeric format are allowed.
 |mode|Mode (`embed`: button embedded mode, `button`: left and right button mode)|`'embed' \| 'button'`|`'embed'`||
 |precision|Precision|`number`|`-`||
 |step|Number change step|`number`|`1`||
+|shift-step|Shift Number change step|`number`|`10`||
 |disabled|Whether to disable|`boolean`|`false`||
 |error|Whether it is an error state|`boolean`|`false`||
 |max|Max|`number`|`Infinity`||
 |min|Min|`number`|`-Infinity`||
+|press-interval|How often will the click event be triggered when the button is long pressed, in milliseconds|`number`|`150`||
+|press-delay|When the button is long pressed, how long will the click event be triggered after the delay, in milliseconds|`number`|`1000`||
 |formatter|Define the display value of the input|`func`|`-`||
 |parser|Convert from `formatter` to number, and use with `formatter`|`func`|`-`||
 |placeholder|Input prompt text|`string`|`-`||
@@ -65,6 +70,8 @@ description: Only input boxes in numeric format are allowed.
 
 |Slot Name|Description|Parameters|
 |---|---|---|
+|icon-minus|Reduces button icon|-|
+|icon-plus|Adds button icon|-|
 |suffix|Suffix|-|
 |prefix|Prefix|-|
 

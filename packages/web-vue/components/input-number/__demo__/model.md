@@ -21,7 +21,7 @@ Note: In this mode, the input value will exceed the set min/max, and the compone
 ```vue
 <template>
   <a-input-number v-model="value" :style="{width:'320px'}" placeholder="Please Enter" class="input-demo" :min="10" :max="100" model-event="input"/>
-  <div>value: {{value}}</div>
+  <div style="margin-top: 10px">value: {{value}}</div>
 </template>
 
 <script>

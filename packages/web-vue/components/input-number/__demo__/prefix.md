@@ -30,7 +30,7 @@ Add prefix and suffix in the input box by specifying the `prefix` and `suffix` s
       </template>
     </a-input-number>
     <a-input-number :style="{width:'320px'}" placeholder="Please enter something" allow-clear>
-    <template #prefix>
+      <template #prefix>
         ¥
       </template>
       <template #suffix>

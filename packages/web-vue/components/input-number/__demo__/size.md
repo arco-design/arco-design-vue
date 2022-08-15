@@ -17,9 +17,27 @@ Setting `size` can use four sizes (`mini`, `small`, `medium`, `large`) number in
 ---
 ```vue
 <template>
+  <div style="marginBottom: 20px">
+    <a-radio-group v-model="size" type='button'>
+      <a-radio value="mini">mini</a-radio>
+      <a-radio value="small">small</a-radio>
+      <a-radio value="medium">medium</a-radio>
+      <a-radio value="large">large</a-radio>
+    </a-radio-group>
+  </div>
   <a-space direction="vertical" size="large">
-    <a-input-number :style="{width:'320px'}" placeholder="Please Enter" size="large" class="input-demo" />
-    <a-input-number :style="{width:'320px'}" placeholder="Please Enter" mode="button" size="large" class="input-demo" />
+    <a-input-number :style="{width:'320px'}" placeholder="Please Enter" :size="size" class="input-demo" />
+    <a-input-number :style="{width:'320px'}" placeholder="Please Enter" mode="button" :size="size" class="input-demo" />
   </a-space>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        size: 'medium'
+      }
+    }
+  }
+</script>
 ```
