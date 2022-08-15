@@ -19,6 +19,8 @@ description: Button is a command component that can initiate an instant operatio
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/chinese-space.md
+
 @import ./__demo__/icon.md
 
 @import ./__demo__/shape.md
@@ -37,6 +39,6 @@ description: Button is a command component that can initiate an instant operatio
 
 ## API
 
-%%API(button.vue)%%
+%%API(button.tsx)%%
 
 %%API(button-group.vue)%%

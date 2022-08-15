@@ -1,46 +1,13 @@
-<template>
-  <template v-if="href">
-    <a
-      :class="[
-        cls,
-        { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
-      ]"
-      :href="mergedDisabled || loading ? undefined : href"
-      @click="handleClick"
-    >
-      <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
-        <icon-loading v-if="loading" spin="true" />
-        <slot v-else name="icon" />
-      </span>
-      <slot />
-    </a>
-  </template>
-  <template v-else>
-    <button
-      :class="[
-        cls,
-        { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
-      ]"
-      :type="htmlType"
-      :disabled="mergedDisabled"
-      @click="handleClick"
-    >
-      <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
-        <icon-loading v-if="loading" :spin="true" />
-        <slot v-else name="icon" />
-      </span>
-      <slot />
-    </button>
-  </template>
-</template>
-
-<script lang="ts">
-/**
- * @todo 添加loadingFixedWidth
- * @todo 添加twoChineseChars
- */
-import type { PropType } from 'vue';
-import { defineComponent, computed, toRefs, inject } from 'vue';
+import {
+  defineComponent,
+  computed,
+  toRefs,
+  inject,
+  PropType,
+  ref,
+  watchEffect,
+  VNode,
+} from 'vue';
 import { Status, Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
@@ -48,6 +15,35 @@ import IconLoading from '../icon/icon-loading';
 import { useSize } from '../_hooks/use-size';
 import { useFormItem } from '../_hooks/use-form-item';
 import { buttonGroupInjectionKey } from './context';
+import { configProviderInjectionKey } from '../config-provider/context';
+import useState from '../_hooks/use-state';
+import { isText } from '../_utils/vue-utils';
+
+const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
+
+function processChildren(children?: VNode[]) {
+  if (!children) {
+    return null;
+  }
+  const childrenList: Array<VNode | string> = [];
+  let isPrevChildPure = false;
+  children.forEach((child) => {
+    const isCurrentChildPure = isText(child, child.children);
+    if (isCurrentChildPure && isPrevChildPure) {
+      const lastIndex = childrenList.length - 1;
+      const lastChild = childrenList[lastIndex];
+      childrenList[lastIndex] = `${lastChild}${child.children}`;
+    } else if (isCurrentChildPure && child.children) {
+      childrenList.push(child.children as string);
+    } else {
+      childrenList.push(child);
+    }
+    isPrevChildPure = isCurrentChildPure;
+  });
+  return childrenList.map((child) =>
+    typeof child === 'string' ? <span>{child}</span> : child
+  );
+}
 
 export default defineComponent({
   name: 'Button',
@@ -91,6 +87,14 @@ export default defineComponent({
       type: String as PropType<Size>,
     },
     /**
+     * @zh 图标位置
+     * @en Icon location
+     */
+    iconPosition: {
+      type: String as PropType<'left' | 'right'>,
+      default: 'left',
+    },
+    /**
      * @zh 按钮的宽度是否随容器自适应。
      * @en Whether the width of the button adapts to the container.
      */
@@ -103,6 +107,14 @@ export default defineComponent({
      * @en Whether the button is in the loading state
      */
     loading: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 当 loading 的时候，不改变按钮的宽度。
+     * @en The width of the button remains unchanged on loading
+     */
+    loadingFixedWidth: {
       type: Boolean,
       default: false,
     },
@@ -141,10 +153,18 @@ export default defineComponent({
    * @en Icon
    * @slot icon
    */
-  setup(props, { emit }) {
-    const { size, disabled } = toRefs(props);
+  /**
+   * @zh 加载图标
+   * @en Loading icon
+   * @slot loading-icon
+   */
+  setup(props, { emit, slots }) {
+    const { size, disabled, href } = toRefs(props);
     const prefixCls = getPrefixCls('btn');
+    const configCtx = inject(configProviderInjectionKey, undefined);
     const groupContext = inject(buttonGroupInjectionKey, undefined);
+    const buttonRef = ref<HTMLElement | null>(null);
+    const [isTwoCNChar, setIsTwoCNChar] = useState(false);
     const _size = computed(() => size.value ?? groupContext?.size);
     const _disabled = computed(() =>
       Boolean(disabled.value || groupContext?.disabled)
@@ -155,6 +175,19 @@ export default defineComponent({
     });
     const { mergedSize } = useSize(_mergedSize);
 
+    watchEffect(() => {
+      if (configCtx?.autoInsertSpaceInButton && buttonRef.value) {
+        const { textContent } = buttonRef.value;
+        if (textContent && regexTwoCNChar.test(textContent)) {
+          if (!isTwoCNChar.value) {
+            setIsTwoCNChar(true);
+          }
+        } else if (isTwoCNChar.value) {
+          setIsTwoCNChar(false);
+        }
+      }
+    });
+
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-${props.type ?? groupContext?.type ?? 'secondary'}`,
@@ -164,8 +197,11 @@ export default defineComponent({
       {
         [`${prefixCls}-long`]: props.long,
         [`${prefixCls}-loading`]: props.loading,
+        [`${prefixCls}-loading-fixed-width`]: props.loadingFixedWidth,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-link`]: isString(props.href),
+        [`${prefixCls}-two-chinese-chars`]: isTwoCNChar.value,
+        [`${prefixCls}-only-icon`]: slots.icon && !slots.default,
       },
     ]);
 
@@ -176,12 +212,46 @@ export default defineComponent({
       emit('click', ev);
     };
 
-    return {
-      prefixCls,
-      cls,
-      mergedDisabled,
-      handleClick,
+    const renderIcon = () => {
+      return (
+        (props.loading || slots.icon) && (
+          <span
+            class={[
+              `${prefixCls}-icon`,
+              `${prefixCls}-icon-${props.iconPosition}`,
+            ]}
+          >
+            {props.loading
+              ? slots['loading-icon']?.() ?? <icon-loading spin />
+              : slots.icon?.()}
+          </span>
+        )
+      );
+    };
+
+    return () => {
+      const TagName = href.value ? 'a' : 'button';
+      const tagAttrs: Record<string, any> = {};
+      if (href.value) {
+        tagAttrs.href =
+          mergedDisabled.value || props.loading ? undefined : href.value;
+      } else {
+        tagAttrs.type = props.htmlType;
+        tagAttrs.disabled = mergedDisabled.value;
+      }
+
+      return (
+        <TagName
+          ref={buttonRef}
+          class={cls.value}
+          {...tagAttrs}
+          onClick={handleClick}
+        >
+          {props.iconPosition === 'left' && renderIcon()}
+          {processChildren(slots.default?.())}
+          {props.iconPosition === 'right' && renderIcon()}
+        </TagName>
+      );
     };
   },
 });
-</script>

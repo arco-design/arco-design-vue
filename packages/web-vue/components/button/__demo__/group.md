@@ -36,11 +36,11 @@ Use the `<a-button-group>` component to make the buttons appear as a group. Can 
       </a-button>
     </a-button-group>
     <a-button-group>
-      <a-button type="primary">
+      <a-button type="primary" shape="round">
         <icon-left />
         Prev
       </a-button>
-      <a-button type="primary">
+      <a-button type="primary" shape="round">
         Next
         <icon-right />
       </a-button>

@@ -19,6 +19,7 @@ description: Configure in the outermost layer of the application, set once, and 
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
+|auto-insert-space-in-button|When there are two Chinese characters in the button, a space is automatically added between two Chinese characters.|`boolean`|`false`||
 |prefix-cls|Component classname prefix|`string`|`'arco'`||
 |locale|Configure language pack|`ArcoLang`|`-`||
 |size|Size|`Size`|`-`|2.14.0|

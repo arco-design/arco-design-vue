@@ -17,6 +17,7 @@ description: 在应用的最外层进行配置，一次设置，全局生效。�
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
+|auto-insert-space-in-button|当按钮中是两个汉字时，自动在两个汉字中添加一个空格。|`boolean`|`false`||
 |prefix-cls|组件类名前缀|`string`|`'arco'`||
 |locale|配置语言包|`ArcoLang`|`-`||
 |size|大小|`Size`|`-`|2.14.0|
