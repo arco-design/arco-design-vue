@@ -105,7 +105,7 @@ export default defineComponent({
     data: {
       type: [Object, Function] as PropType<
         | Record<string, string | Blob>
-        | ((fileItem: FileItem) => Record<string, string | Blob>)
+        | ((fileItem: FileItem | FileItem[]) => Record<string, string | Blob>)
       >,
     },
     /**
@@ -274,6 +274,14 @@ export default defineComponent({
     onButtonClick: {
       type: Function as PropType<(event: Event) => Promise<FileList> | void>,
     },
+    /**
+     * @zh 是否开启捆绑上传
+     * @en Whether to enable bundled upload
+     */
+    bundleUpload: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:fileList': (fileList: FileItem[]) => true,
@@ -288,16 +296,16 @@ export default defineComponent({
      * @zh 上传的图片状态发生改变时触发
      * @en Triggered when the status of the uploaded image changes
      * @param {FileItem[]} fileList
-     * @param {fileItem} fileItem
+     * @param {fileItem|FileItem[]} fileItem
      */
-    'change': (fileList: FileItem[], fileItem: FileItem) => true,
+    'change': (fileList: FileItem[], fileItem: FileItem | FileItem[]) => true,
     /**
      * @zh 上传中的图片进度改变时触发
      * @en Triggered when the uploading image progress changes
      * @param {fileItem} fileItem
      * @param {ProgressEvent} ev
      */
-    'progress': (fileItem: FileItem, ev?: ProgressEvent) => true,
+    'progress': (fileItem: FileItem | FileItem[], ev?: ProgressEvent) => true,
     /**
      * @zh 点击图片预览时的触发
      * @en Trigger when the image preview is clicked
@@ -307,15 +315,15 @@ export default defineComponent({
     /**
      * @zh 上传成功时触发
      * @en Triggered when upload is successful
-     * @param {FileItem} fileItem
+     * @param {FileItem|FileItem[]} fileItem
      */
-    'success': (fileItem: FileItem) => true,
+    'success': (fileItem: FileItem | FileItem[]) => true,
     /**
      * @zh 上传失败时触发
      * @en Triggered when upload fails
-     * @param {FileItem} fileItem
+     * @param {FileItem|FileItem[]} fileItem
      */
-    'error': (fileItem: FileItem) => true,
+    'error': (fileItem: FileItem | FileItem[]) => true,
   },
   /**
    * @zh 上传列表的项目
@@ -406,6 +414,8 @@ export default defineComponent({
     const prefixCls = getPrefixCls('upload');
     const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
 
+    const requestId = 0;
+
     // Internally maintained picture list
     const _fileList = ref<FileItem[]>([]);
     const fileMap = new Map<string, FileItem>();
@@ -443,7 +453,7 @@ export default defineComponent({
       { immediate: true, deep: true }
     );
 
-    const updateFileList = (file: FileItem) => {
+    const updateFileList = (file: FileItem | FileItem[]) => {
       emit('update:fileList', _fileList.value);
       emit('change', _fileList.value, file);
       eventHandlers.value?.onChange?.();
@@ -457,6 +467,88 @@ export default defineComponent({
           break;
         }
       }
+    };
+
+    const uploadFileItems = (files: FileItem[]) => {
+      const requestId = `${Date.now()}`;
+
+      const handleProgress = (percent: number, event?: ProgressEvent) => {
+        const _files: FileItem[] = [];
+        for (const item of files) {
+          const file = fileMap.get(item.uid);
+          if (file) {
+            file.status = 'uploading';
+            file.percent = percent;
+            _files.push(file);
+          }
+        }
+        emit('progress', _files, event);
+        updateFileList(_files);
+      };
+
+      const handleSuccess = (response: any) => {
+        const _files: FileItem[] = [];
+        for (const item of files) {
+          const file = fileMap.get(item.uid);
+          if (file) {
+            file.status = 'done';
+            file.percent = 1;
+            file.response = response;
+            if (props.responseUrlKey) {
+              if (isFunction(props.responseUrlKey)) {
+                file.url = props.responseUrlKey(file);
+              } else if (response[props.responseUrlKey]) {
+                file.url = response[props.responseUrlKey];
+              }
+            }
+            _files.push(file);
+          }
+
+          requestMap.delete(requestId);
+          emit('success', _files);
+          updateFileList(_files);
+        }
+      };
+
+      const handleError = (response: any) => {
+        const _files: FileItem[] = [];
+        for (const item of files) {
+          const file = fileMap.get(item.uid);
+          if (file) {
+            file.status = 'error';
+            file.percent = 0;
+            file.response = response;
+          }
+        }
+        requestMap.delete(requestId);
+        emit('error', _files);
+        updateFileList(_files);
+      };
+
+      const option: RequestOption = {
+        fileItem: files,
+        action: props.action,
+        name: props.name,
+        data: props.data,
+        headers: props.headers,
+        withCredentials: props.withCredentials,
+        onProgress: handleProgress,
+        onSuccess: handleSuccess,
+        onError: handleError,
+      };
+
+      for (const item of files) {
+        item.status = 'uploading';
+        item.percent = 0;
+      }
+
+      // 保存请求
+      const request = isFunction(props.customRequest)
+        ? props.customRequest(option)
+        : uploadRequest(option);
+
+      requestMap.set(requestId, request);
+      updateFileList(files);
     };
 
     const uploadFile = (fileItem: FileItem) => {
@@ -558,7 +650,7 @@ export default defineComponent({
       }
     };
 
-    const initUpload = async (file: File, index: number) => {
+    const initUpload = (file: File, index: number) => {
       const uid = `${Date.now()}${index}`;
 
       const dataURL = isImage(file) ? URL.createObjectURL(file) : undefined;
@@ -576,9 +668,10 @@ export default defineComponent({
       _fileList.value.push(fileItem);
       updateFileList(fileItem);
 
-      if (props.autoUpload) {
+      if (props.autoUpload && !props.bundleUpload) {
         uploadFile(fileItem);
       }
+      return fileItem;
     };
 
     const uploadFiles = (files: File[]) => {
@@ -590,22 +683,36 @@ export default defineComponent({
         return;
       }
 
+      const list: Promise<FileItem | undefined>[] = [];
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         if (isFunction(props.onBeforeUpload)) {
-          Promise.resolve(props.onBeforeUpload(file))
-            .then((result: boolean | File) => {
-              if (result) {
-                initUpload(isBoolean(result) ? file : result, i);
-              }
-            })
-            .catch((err) => {
-              // eslint-disable-next-line no-console
-              console.error(err);
-            });
+          list.push(
+            Promise.resolve(props.onBeforeUpload(file))
+              .then((result: boolean | File) => {
+                if (result) {
+                  return initUpload(isBoolean(result) ? file : result, i);
+                }
+                return undefined;
+              })
+              .catch((err) => {
+                // eslint-disable-next-line no-console
+                console.error(err);
+                return undefined;
+              })
+          );
         } else {
-          initUpload(file, i);
+          list.push(Promise.resolve(initUpload(file, i)));
         }
+      }
+
+      if (props.autoUpload && props.bundleUpload) {
+        Promise.all(list).then((result) => {
+          const fileItems = result.filter((item) =>
+            Boolean(item)
+          ) as FileItem[];
+          uploadFileItems(fileItems);
+        });
       }
     };
 

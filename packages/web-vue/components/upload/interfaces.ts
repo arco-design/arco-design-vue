@@ -113,7 +113,7 @@ export interface RequestOption {
    * @zh 上传文件
    * @en upload files
    * */
-  fileItem: FileItem;
+  fileItem: FileItem | FileItem[];
   /**
    * @zh 附加的请求信息
    * @en Additional requested information

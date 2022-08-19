@@ -35,6 +35,8 @@ description: 用户可传输文件或提交相应的内容。
 
 @import ./__demo__/directory.md
 
+@import ./__demo__/bundle.md
+
 ## API
 
 
@@ -52,7 +54,7 @@ description: 用户可传输文件或提交相应的内容。
 |draggable|是否支持拖拽上传|`boolean`|`false`||
 |tip|提示文字|`string`|`-`||
 |headers|上传请求附加的头信息|`Record<string, string>`|`-`||
-|data|上传请求附加的数据|`Record<string, string \| Blob>\| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`||
+|data|上传请求附加的数据|`Record<string, string \| Blob>\| ((fileItem: FileItem \| FileItem[]) => Record<string, string \| Blob>)`|`-`||
 |name|上传的文件名|`string \| ((fileItem: FileItem) => string)`|`-`||
 |with-credentials|上传请求是否携带 cookie|`boolean`|`false`||
 |custom-request|自定义上传行为|`(option: RequestOption) => UploadRequest`|`-`||
@@ -73,16 +75,17 @@ description: 用户可传输文件或提交相应的内容。
 |on-before-upload|上传图片前触发|`(file: File) => Promise<boolean \| File>`|`-`||
 |on-before-remove|移除图片前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`||
 |on-button-click|点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）|`(event: Event) => Promise<FileList> \| void`|`-`||
+|bundle-upload|是否开启捆绑上传|`boolean`|`false`||
 ### `<upload>` Events
 
 |事件名|描述|参数|
 |---|---|---|
 |exceed-limit|上传的图片超出限制后触发|fileList: `FileItem[]`<br>files: `File[]`|
-|change|上传的图片状态发生改变时触发|fileList: `FileItem[]`<br>fileItem: `fileItem`|
+|change|上传的图片状态发生改变时触发|fileList: `FileItem[]`<br>fileItem: `union`|
 |progress|上传中的图片进度改变时触发|fileItem: `fileItem`<br>ev: `ProgressEvent`|
 |preview|点击图片预览时的触发|fileItem: `FileItem`|
-|success|上传成功时触发|fileItem: `FileItem`|
-|error|上传失败时触发|fileItem: `FileItem`|
+|success|上传成功时触发|fileItem: `union`|
+|error|上传失败时触发|fileItem: `union`|
 ### `<upload>` Methods
 
 |方法名|描述|参数|返回值|
@@ -147,8 +150,8 @@ description: 用户可传输文件或提交相应的内容。
 |action|上传的URL|`string`|`-`|
 |headers|请求报文的头信息|`Record<string, string>`|`-`|
 |name|上传文件的文件名|`string \| ((fileItem: FileItem) => string)`|`-`|
-|fileItem|上传文件|`FileItem`|`-`|
-|data|附加的请求信息|`Record<string, string \| Blob>    \| ((fileItem: FileItem) => Record<string, string \| Blob>)`|`-`|
+|fileItem|上传文件|`FileItem \| FileItem[]`|`-`|
+|data|附加的请求信息|`Record<string, string \| Blob>    \| ((fileItem: FileItem \| FileItem[]) => Record<string, string \| Blob>)`|`-`|
 |withCredentials|是否携带cookie信息|`boolean`|`false`|
 |onProgress|更新当前文件的上传进度。percent: 当前上传进度百分比|`(percent: number, event?: ProgressEvent) => void`|`-`|
 |onSuccess|上传成功后，调用onSuccess方法，传入的response参数将会附加到当前上传文件的response字段上|`(response?: any) => void`|`-`|

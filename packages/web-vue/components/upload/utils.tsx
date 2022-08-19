@@ -62,19 +62,43 @@ const getValue = (obj: any, fileItem: FileItem) => {
   return obj;
 };
 
+const getFileName = (
+  name: RequestOption['name'],
+  fileItem: FileItem,
+  index: number
+) => {
+  if (isFunction(name)) return name(fileItem);
+  return name ?? index > 0 ? `file-${index + 1}` : 'file';
+};
+
+const getDataFromFileItems = (
+  data: RequestOption['data'],
+  fileItems: FileItem[]
+) => {
+  if (!data) return undefined;
+  if (isFunction(data)) {
+    const result: Record<string, any> = {};
+    fileItems.forEach((item) => {
+      const _data = data(item);
+      if (_data) Object.assign(_data, data(item));
+    });
+    return result;
+  }
+  return data;
+};
+
 export const uploadRequest = ({
   fileItem,
   action,
-  name: originName,
-  data: originData,
+  name,
+  data,
   headers = {},
   withCredentials = false,
   onProgress = NOOP,
   onSuccess = NOOP,
   onError = NOOP,
 }: RequestOption): UploadRequest => {
-  const name = getValue(originName, fileItem) || 'file';
-  const data = getValue(originData, fileItem);
+  const fileItems = isArray(fileItem) ? fileItem : [fileItem];
   const xhr = new XMLHttpRequest();
   if (withCredentials) {
     xhr.withCredentials = true;
@@ -97,14 +121,18 @@ export const uploadRequest = ({
   };
 
   const formData = new FormData();
-  if (data) {
-    for (const key of Object.keys(data)) {
-      formData.append(key, data[key]);
+  const _data = getDataFromFileItems(data, fileItems);
+  if (_data) {
+    for (const key of Object.keys(_data)) {
+      formData.append(key, _data[key]);
     }
   }
-  if (fileItem.file) {
-    formData.append(name, fileItem.file);
-  }
+
+  fileItems.forEach((item, index) => {
+    if (item.file) {
+      formData.append(getFileName(name, item, index), item.file);
+    }
+  });
   xhr.open('post', action ?? '', true);
 
   for (const key of Object.keys(headers)) {
