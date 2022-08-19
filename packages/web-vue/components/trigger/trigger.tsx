@@ -14,6 +14,7 @@ import {
   onMounted,
   onBeforeUnmount,
   toRefs,
+  onDeactivated,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
@@ -714,6 +715,10 @@ export default defineComponent({
       if (computedVisible.value) {
         updatePopupStyle();
       }
+    });
+
+    onDeactivated(() => {
+      changeVisible(false);
     });
 
     onBeforeUnmount(() => {
