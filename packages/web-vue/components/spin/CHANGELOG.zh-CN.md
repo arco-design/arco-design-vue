@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.35.1
+
+`2022-08-19`
+
+### 🐛 问题修复
+
+- 修复 fixed-column 的 z-index 提高导致的 spin 问题 ([#1533](https://github.com/arco-design/arco-design-vue/pull/1533))
+
+
 ## 2.9.0
 
 `2021-12-03`

@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.35.1
+
+`2022-08-19`
+
+### 🐛 BugFix
+
+- **spin:** Fix the spin problem caused by the increase of the z-index of fixed-column ([#1533](https://github.com/arco-design/arco-design-vue/pull/1533))
+- **time-picker:** Fix default value of size property in time-picker ([#1513](https://github.com/arco-design/arco-design-vue/pull/1513))
+
+### 💎 Enhancement
+
+- **trigger:** Optimize the use of KeepAlive, close the pop-up layer when caching ([#1529](https://github.com/arco-design/arco-design-vue/pull/1529))
+- **button:** Default event is not triggered on click when state is loading or disabled ([#1516](https://github.com/arco-design/arco-design-vue/pull/1516))
+
+
 ## 2.35.0
 
 `2022-08-12`

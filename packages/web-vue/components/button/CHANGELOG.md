@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.35.1
+
+`2022-08-19`
+
+### 💎 Enhancement
+
+- Default event is not triggered on click when state is loading or disabled ([#1516](https://github.com/arco-design/arco-design-vue/pull/1516))
+
+
 ## 2.29.1
 
 `2022-06-02`

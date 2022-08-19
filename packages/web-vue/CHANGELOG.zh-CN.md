@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.35.1
+
+`2022-08-19`
+
+### 🐛 问题修复
+
+- **spin:** 修复 fixed-column 的 z-index 提高导致的 spin 问题 ([#1533](https://github.com/arco-design/arco-design-vue/pull/1533))
+- **time-picker:** 修复 time-picker 中 size 属性的默认值问题 ([#1513](https://github.com/arco-design/arco-design-vue/pull/1513))
+
+### 💎 功能优化
+
+- **trigger:** 优化在 KeepAlive 下使用的问题，缓存时关闭弹出层 ([#1529](https://github.com/arco-design/arco-design-vue/pull/1529))
+- **button:** 当状态为 loading 或 disabled 时点击不会触发默认事件 ([#1516](https://github.com/arco-design/arco-design-vue/pull/1516))
+
+
 ## 2.35.0
 
 `2022-08-12`
