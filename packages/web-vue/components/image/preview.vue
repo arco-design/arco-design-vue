@@ -93,6 +93,8 @@ import {
   ref,
   h,
   CSSProperties,
+  onMounted,
+  onBeforeUnmount,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { getPrefixCls } from '../_utils/global-config';
@@ -114,6 +116,8 @@ import usePopupContainer from '../_hooks/use-popup-container';
 import getScale, { minScale, maxScale } from './utils/get-scale';
 import { useI18n } from '../locale';
 import usePopupManager from '../_hooks/use-popup-manager';
+import { KEYBOARD_KEY } from '../_utils/keyboard';
+import { off, on } from '../_utils/dom';
 
 const ROTATE_STEP = 90;
 
@@ -273,6 +277,26 @@ export default defineComponent({
       }, 1000);
     };
 
+    let globalKeyDownListener = false;
+
+    const handleGlobalKeyDown = (ev: KeyboardEvent) => {
+      if (ev.key === KEYBOARD_KEY.ESC) {
+        close();
+      }
+    };
+
+    const addGlobalKeyDownListener = () => {
+      if (!globalKeyDownListener) {
+        globalKeyDownListener = true;
+        on(document.documentElement, 'keydown', handleGlobalKeyDown);
+      }
+    };
+
+    const removeGlobalKeyDownListener = () => {
+      globalKeyDownListener = false;
+      off(document.documentElement, 'keydown', handleGlobalKeyDown);
+    };
+
     usePopupOverHidden(reactive({ container, hidden: mergedVisible }));
 
     function reset() {
@@ -284,8 +308,19 @@ export default defineComponent({
     watch([src, mergedVisible], () => {
       if (mergedVisible.value) {
         reset();
+        addGlobalKeyDownListener();
         setLoadStatus('loading');
       }
+    });
+
+    onMounted(() => {
+      if (mergedVisible.value) {
+        addGlobalKeyDownListener();
+      }
+    });
+
+    onBeforeUnmount(() => {
+      removeGlobalKeyDownListener();
     });
 
     function close() {

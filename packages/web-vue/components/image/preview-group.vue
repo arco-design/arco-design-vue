@@ -23,12 +23,16 @@ import {
   computed,
   ref,
   watch,
+  onMounted,
+  onBeforeUnmount,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { ImagePreviewGroupProps } from './interface';
 import ImagePreview from './preview.vue';
 import { PreviewGroupContext, PreviewGroupInjectionKey } from './context';
 import { isArray, isUndefined } from '../_utils/is';
+import { KEYBOARD_KEY } from '../_utils/keyboard';
+import { off, on } from '../_utils/dom';
 
 export default defineComponent({
   name: 'ImagePreviewGroup',
@@ -180,6 +184,8 @@ export default defineComponent({
 
     const imageCount = computed(() => imageIdList.value.length);
 
+    let globalKeyDownListener = false;
+
     function registerImageUrl(id: number, url: string, canPreview: boolean) {
       if (!propImageUrlMap.value) {
         imageUrlMap.value.set(id, {
@@ -284,6 +290,42 @@ export default defineComponent({
           }
         : undefined
     );
+
+    const handleGlobalKeyDown = (ev: KeyboardEvent) => {
+      if (onPrev.value && ev.key === KEYBOARD_KEY.ARROW_LEFT) {
+        onPrev.value();
+      } else if (onNext.value && ev.key === KEYBOARD_KEY.ARROW_RIGHT) {
+        onNext.value();
+      }
+    };
+
+    const addGlobalKeyDownListener = () => {
+      if (!globalKeyDownListener) {
+        globalKeyDownListener = true;
+        on(document.documentElement, 'keydown', handleGlobalKeyDown);
+      }
+    };
+
+    const removeGlobalKeyDownListener = () => {
+      globalKeyDownListener = false;
+      off(document.documentElement, 'keydown', handleGlobalKeyDown);
+    };
+
+    onMounted(() => {
+      if (mergedVisible.value) {
+        addGlobalKeyDownListener();
+      }
+    });
+
+    onBeforeUnmount(() => {
+      removeGlobalKeyDownListener();
+    });
+
+    watch([mergedVisible], () => {
+      if (mergedVisible.value) {
+        addGlobalKeyDownListener();
+      }
+    });
 
     return {
       mergedVisible,
