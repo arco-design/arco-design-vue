@@ -37,7 +37,7 @@ Use the #checkbox slot to customize the display of checkboxes
   </a-checkbox-group>
 
   <div :style="{ marginTop: '20px' }">
-    <a-checkbox-group>
+    <a-checkbox-group :default-value="[1]">
       <template v-for="item in 2" :key="item">
         <a-checkbox :value="item">
           <template #checkbox="{ checked }">

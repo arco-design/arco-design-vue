@@ -27,6 +27,8 @@ description: In a set of data, the user can select one or more data through the 
 
 @import ./__demo__/options.md
 
+@import ./__demo__/limit.md
+
 @import ./__demo__/all.md
 
 @import ./__demo__/layout.md
