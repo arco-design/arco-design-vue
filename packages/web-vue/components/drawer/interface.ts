@@ -120,13 +120,6 @@ export interface DrawerConfig {
    */
   onClose?: () => void;
   /**
-   * @zh 是否展示底部内容
-   * @en Whether to display the bottom content
-   * @version 2.11.0
-   * @defaultValue true
-   */
-  footer?: boolean | RenderContent;
-  /**
    * @zh 是否支持 ESC 键关闭对话框
    * @en Whether to support the ESC key to close the dialog
    * @version 2.15.0
@@ -134,19 +127,26 @@ export interface DrawerConfig {
    */
   escToClose?: boolean;
   /**
+   * @zh 是否展示头部内容
+   * @en Whether to display high-quality content
+   * @version 2.33.0
+   * @defaultValue true
+   */
+  header?: boolean | RenderContent;
+  /**
+   * @zh 是否展示底部内容
+   * @en Whether to display the bottom content
+   * @version 2.11.0
+   * @defaultValue true
+   */
+  footer?: boolean | RenderContent;
+  /**
    * @zh 是否隐藏取消按钮
    * @en Whether to hide the cancel button
    * @version 2.19.0
    * @defaultValue false
    */
   hideCancel?: boolean;
-  /**
-   * @zh 是否隐藏取消按钮
-   * @en Whether to hide the cancel button
-   * @version 2.33.0
-   * @defaultValue true
-   */
-  header?: boolean | RenderContent;
 }
 
 export interface DrawerReturn {
