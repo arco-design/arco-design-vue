@@ -31,11 +31,12 @@ description: 页头位于页容器顶部，起到了内容概览和引导页级�
 |back|点击返回按钮时触发|event: `Event`|
 ### `<page-header>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|breadcrumb|面包屑|-|
-|title|主标题|-|
-|subtitle|次标题|-|
-|extra|额外的展示内容|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|breadcrumb|面包屑|-||
+|back-icon|返回按钮|-|2.36.0|
+|title|主标题|-||
+|subtitle|次标题|-||
+|extra|额外的展示内容|-||
 
 
