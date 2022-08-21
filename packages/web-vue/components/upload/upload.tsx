@@ -24,7 +24,6 @@ import { uploadInjectionKey } from './context';
 import { ImagePreviewGroup } from '../image';
 import { useFormItem } from '../_hooks/use-form-item';
 import { clipboard } from '../_utils/clipboard';
-import Message from '../message';
 
 export default defineComponent({
   name: 'Upload',
@@ -327,6 +326,12 @@ export default defineComponent({
      * @param {FileItem} fileItem
      */
     'error': (fileItem: FileItem) => true,
+    /**
+     * @zh 点击复制按钮时触发
+     * @en Triggered when click copy icon
+     * @param {FileItem} fileItem
+     */
+    'copied': (url: string) => true,
   },
   /**
    * @zh 上传列表的项目
@@ -645,7 +650,7 @@ export default defineComponent({
 
     const handleCopy = (url: string) => {
       clipboard(url);
-      Message.success('复制成功');
+      emit('copied', url);
     };
 
     const handlePreview = (fileItem: FileItem) => {

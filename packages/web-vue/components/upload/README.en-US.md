@@ -84,6 +84,7 @@ _Auto translate by google._
 | preview      | Trigger when the image preview is clicked               | fileItem: `FileItem`                           |
 | success      | Triggered when upload is successful                     | fileItem: `FileItem`                           |
 | error        | Triggered when upload fails                             | fileItem: `FileItem`                           |
+| copied        | Triggered when click copy icon                             | url: `string`                           |
 
 ### `<upload>` Methods
 

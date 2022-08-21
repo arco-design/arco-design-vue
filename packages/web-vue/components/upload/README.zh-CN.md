@@ -83,6 +83,7 @@ description: 用户可传输文件或提交相应的内容。
 | preview      | 点击图片预览时的触发         | fileItem: `FileItem`                           |
 | success      | 上传成功时触发               | fileItem: `FileItem`                           |
 | error        | 上传失败时触发               | fileItem: `FileItem`                           |
+| copied        | 点击复制按钮时触发               | url: `string`                           |
 
 ### `<upload>` Methods
 
