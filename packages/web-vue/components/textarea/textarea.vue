@@ -32,9 +32,15 @@
     <slot name="suffix" />
     <div
       v-if="computedMaxLength && showWordLimit"
-      :class="`${prefixCls}-word-limit`"
+      :class="[`${prefixCls}-word-limit`, wordLimitClass]"
     >
-      {{ valueLength }}/{{ computedMaxLength }}
+      <slot
+        name="word-limit"
+        :length="valueLength"
+        :max-length="computedMaxLength"
+      >
+        {{ valueLength }}/{{ computedMaxLength }}
+      </slot>
     </div>
     <div
       v-if="showClearBtn"
@@ -70,6 +76,7 @@ import { omit } from '../_utils/omit';
 import { INPUT_EVENTS } from '../_utils/constant';
 import pick from '../_utils/pick';
 import { useFormItem } from '../_hooks/use-form-item';
+import { ClassName } from '../_utils/types';
 
 export default defineComponent({
   name: 'Textarea',
@@ -128,6 +135,13 @@ export default defineComponent({
     showWordLimit: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 弹出框内容的类名
+     * @en The class name of the popup content
+     */
+    wordLimitClass: {
+      type: [String, Array, Object] as PropType<ClassName>,
     },
     /**
      * @zh 是否允许清空文本域
@@ -198,6 +212,11 @@ export default defineComponent({
      */
     'blur': (ev: FocusEvent) => true,
   },
+  /**
+   * @zh 字符限制元素
+   * @en Word limit element
+   * @slot word-limit
+   */
   setup(props, { emit, attrs }) {
     const { disabled, error, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('textarea');
