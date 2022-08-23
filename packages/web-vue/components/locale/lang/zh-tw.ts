@@ -67,7 +67,7 @@ const calendarLang: ArcoCalendarLang = {
 const lang: ArcoLang = {
   locale: 'zh-TW',
   empty: {
-    description: '暫無數據',
+    description: '無資料',
   },
   drawer: {
     okText: '確認',
@@ -84,8 +84,8 @@ const lang: ArcoLang = {
   pagination: {
     goto: '前往',
     page: '頁',
-    countPerPage: '個/頁',
-    total: '共 {0} 個',
+    countPerPage: '項/頁',
+    total: '共 {0} 項',
   },
   table: {
     okText: '確認',
@@ -128,7 +128,7 @@ const lang: ArcoLang = {
     ok: '確認',
   },
   image: {
-    loading: '加載中',
+    loading: '載入中',
   },
   imagePreview: {
     fullScreen: '全屏',
@@ -139,8 +139,8 @@ const lang: ArcoLang = {
     originalSize: '原始尺寸',
   },
   typography: {
-    copied: '複製',
-    copy: '已復制',
+    copied: '已複製',
+    copy: '複製',
     expand: '展開',
     collapse: '折疊',
     edit: '編輯',
