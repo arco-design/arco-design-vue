@@ -126,6 +126,11 @@ export default defineComponent({
    * @en Icon
    * @slot icon
    */
+  /**
+   * @zh 操作项
+   * @en Action
+   * @slot action
+   */
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('alert');
     const visible = ref(true);
