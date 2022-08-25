@@ -758,6 +758,11 @@ export default defineComponent({
         newValue = newValue.set('month', date.month());
       }
       setHeaderValue(newValue);
+      if (mode.value === 'quarter') {
+        // 季度选择器特殊处理
+        headerMode.value = undefined;
+        return;
+      }
       headerMode.value = headerMode.value === 'year' ? 'month' : undefined; // 年选择完后选择月
     }
 
