@@ -81,6 +81,7 @@ export {
   LayoutFooter,
   LayoutSider,
 } from './layout';
+export type { LayoutProps, SiderProps } from './layout';
 export { default as Link } from './link';
 export { default as List, ListItem, ListItemMeta } from './list';
 export { default as Mention } from './mention';
