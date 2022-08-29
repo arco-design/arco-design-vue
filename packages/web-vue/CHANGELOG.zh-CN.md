@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.35.2
+
+`2022-08-29`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复部分模式下选择面板年月选择时单击选择事件异常 ([#1562](https://github.com/arco-design/arco-design-vue/pull/1562))
+
+### 💎 功能优化
+
+- **date-picker:** 优化范围选择器在选择时也会修正顺序 ([#1578](https://github.com/arco-design/arco-design-vue/pull/1578))
+- 组件库内部 matchMedia 方法调整兼容 Safari 13 ([#1576](https://github.com/arco-design/arco-design-vue/pull/1576))
+
+### 💅 样式更新
+
+- **pagination:** 修复显示内容被压缩的问题 ([#1579](https://github.com/arco-design/arco-design-vue/pull/1579))
+- **image:** 修复预览模式下关闭按钮图标位置错误的问题 ([#1577](https://github.com/arco-design/arco-design-vue/pull/1577))
+
+
 ## 2.35.1
 
 `2022-08-19`

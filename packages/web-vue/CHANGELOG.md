@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.35.2
+
+`2022-08-29`
+
+### 🐛 BugFix
+
+- **date-picker:** Fixed the click selection event exception when selecting the year and month of the selection panel in some modes ([#1562](https://github.com/arco-design/arco-design-vue/pull/1562))
+
+### 💎 Enhancement
+
+- **date-picker:** Optimized range selector also corrects order when selecting ([#1578](https://github.com/arco-design/arco-design-vue/pull/1578))
+- Adjust the matchMedia method inside the component library to be compatible with Safari 13 ([#1576](https://github.com/arco-design/arco-design-vue/pull/1576))
+
+### 💅 Style
+
+- **pagination:** Fix the problem that the display content is compressed ([#1579](https://github.com/arco-design/arco-design-vue/pull/1579))
+- **image:** Fix the problem that the close button icon is in the wrong position in preview mode ([#1577](https://github.com/arco-design/arco-design-vue/pull/1577))
+
+
 ## 2.35.1
 
 `2022-08-19`

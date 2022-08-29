@@ -479,14 +479,14 @@ export default defineComponent({
     );
 
     function getFocusedIndex(cur = 0) {
-      return disabledArray.value[cur] ? cur % 2 : cur;
+      return disabledArray.value[cur] ? cur ^ 1 : cur;
     }
 
     const refInput = ref();
     const focusedIndex = ref(getFocusedIndex());
     const nextFocusedIndex = computed(() => {
       const cur = focusedIndex.value;
-      const next = cur % 2;
+      const next = cur ^ 1;
       return disabledArray.value[next] ? cur : next;
     });
     const isNextDisabled = computed(

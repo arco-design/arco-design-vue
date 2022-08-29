@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.35.2
+
+`2022-08-29`
+
+### 🐛 BugFix
+
+- Fixed the click selection event exception when selecting the year and month of the selection panel in some modes ([#1562](https://github.com/arco-design/arco-design-vue/pull/1562))
+
+### 💎 Enhancement
+
+- Optimized range selector also corrects order when selecting ([#1578](https://github.com/arco-design/arco-design-vue/pull/1578))
+
+
 ## 2.35.0
 
 `2022-08-12`

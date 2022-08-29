@@ -8,20 +8,28 @@ exports[`<drawer> demo: render [async] correctly 1`] = `
 `;
 
 exports[`<drawer> demo: render [basic] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+"<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Open Drawer
 </button>
 <!---->"
 `;
 
+exports[`<drawer> demo: render [custom] correctly 1`] = `
+"<span class=\\"arco-checkbox-group arco-checkbox-group-direction-horizontal\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"hide header\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">hide header</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"hide footer\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">hide footer</span></label><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"hide cancel\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">hide cancel</span></label></span>
+<div style=\\"margin-top: 20px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <!--v-if-->Open Drawer
+  </button></div>
+<!---->"
+`;
+
 exports[`<drawer> demo: render [function] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+"<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Open Drawer
 </button>"
 `;
 
 exports[`<drawer> demo: render [nested] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+"<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Open Drawer
 </button>
 <!---->
@@ -38,8 +46,9 @@ exports[`<drawer> demo: render [popup-container] correctly 1`] = `
 `;
 
 exports[`<drawer> demo: render [position] correctly 1`] = `
-"<span class=\\"arco-radio-group arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"top\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Top</span></label><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Right</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"bottom\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Bottom</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Left</span></label></span><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
-  <!--v-if-->Open Drawer
-</button>
+"<span class=\\"arco-radio-group arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"top\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Top</span></label><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Right</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"bottom\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Bottom</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Left</span></label></span>
+<div style=\\"margin-top: 20px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <!--v-if-->Open Drawer
+  </button></div>
 <!---->"
 `;

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.35.2
+
+`2022-08-29`
+
+### 💅 Style
+
+- Fix the problem that the close button icon is in the wrong position in preview mode ([#1577](https://github.com/arco-design/arco-design-vue/pull/1577))
+
+
 ## 2.23.0
 
 `2022-04-08`

@@ -322,3 +322,47 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |dragTarget|拖拽信息|`TableData`|`-`|
 
 
+
+
+## FAQ
+
+### 1. 关于元素插槽的使用
+
+table 组件提供了内部元素的自定义插槽，这些插槽不同于普通插槽，对用户传入的内容有一定限制。
+因为 vue 的插槽没有提供传出 children 并在 slot 中渲染的方式，我们针对 table 中的元素插槽，做了一些特殊处理，会在用户传入的内容中，附加上原有的 children，保证子元素的正常渲染。
+此时需要用户注意，在元素插槽中自定义渲染时，需要传入单一空元素使用，不能在传入的元素中添加内容（参考例 1）。
+如果用户需要传入复合元素，可以自定义组件，并指定 default 插槽，然后传入 table 的元素插槽中（参考例 2）。
+
+例 1：
+```vue
+<!-- Only one element -->
+<template>
+  <a-table>
+    <template #td>
+      <td @click="onClick"></td>
+    </template>
+  </a-table>
+</template>
+```
+例 2：
+```vue
+<!-- Only one component -->
+<template>
+  <a-table>
+    <template #td>
+      <MyTd></MyTd>
+    </template>
+  </a-table>
+</template>
+```
+```vue
+<!-- MyTd.vue -->
+<template>
+  <td>
+    <div>my td content</div>
+    <div>
+      <slot/>
+    </div>
+  </td>
+</template>
+```

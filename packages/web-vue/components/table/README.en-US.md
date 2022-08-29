@@ -324,3 +324,45 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |dragTarget|Drag and drop information|`TableData`|`-`|
 
 
+
+
+## FAQ
+
+The table component provides custom slots for internal elements, which are different from normal slots and have certain restrictions on what the user can pass in.
+Because the slot of vue does not provide a way to send out children and render them in the slot, we have done some special processing for the element slot in the table, and will append the original children to the content passed in by the user to ensure that children Normal rendering of the element.
+At this point, the user needs to pay attention that when custom rendering in the element slot, a single empty element needs to be passed in, and content cannot be added to the passed in element (refer to Example 1).
+If the user needs to pass in a composite element, he can customize the component, specify the default slot, and then pass it into the element slot of the table (refer to Example 2).
+
+example 1:
+```vue
+<!-- Only one element -->
+<template>
+  <a-table>
+    <template #td>
+      <td @click="onClick"></td>
+    </template>
+  </a-table>
+</template>
+```
+example 2：
+```vue
+<!-- Only one component -->
+<template>
+  <a-table>
+    <template #td>
+      <MyTd></MyTd>
+    </template>
+  </a-table>
+</template>
+```
+```vue
+<!-- MyTd.vue -->
+<template>
+  <td>
+    <div>my td content</div>
+    <div>
+      <slot/>
+    </div>
+  </td>
+</template>
+```
