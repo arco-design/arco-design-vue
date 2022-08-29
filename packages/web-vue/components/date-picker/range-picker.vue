@@ -479,14 +479,14 @@ export default defineComponent({
     );
 
     function getFocusedIndex(cur = 0) {
-      return disabledArray.value[cur] ? cur ^ 1 : cur;
+      return disabledArray.value[cur] ? cur % 2 : cur;
     }
 
     const refInput = ref();
     const focusedIndex = ref(getFocusedIndex());
     const nextFocusedIndex = computed(() => {
       const cur = focusedIndex.value;
-      const next = cur ^ 1;
+      const next = cur % 2;
       return disabledArray.value[next] ? cur : next;
     });
     const isNextDisabled = computed(
@@ -738,14 +738,20 @@ export default defineComponent({
       }
     ) {
       const { emitSelect = false, updateHeader = false } = options || {};
-      setProcessValue(value);
+
+      let newValue = [...value];
+      if (isCompleteRangeValue(newValue)) {
+        newValue = getSortedDayjsArray(newValue);
+      }
+
+      setProcessValue(newValue);
       setPreviewValue(undefined);
       setInputValue(undefined);
       startHeaderMode.value = undefined;
       endHeaderMode.value = undefined;
 
       if (emitSelect) {
-        emitSelectEvent(value);
+        emitSelectEvent(newValue);
       }
 
       if (updateHeader) {
