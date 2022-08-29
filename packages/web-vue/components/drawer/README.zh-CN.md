@@ -10,6 +10,8 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 
 @import ./__demo__/position.md
 
+@import ./__demo__/custom.md
+
 @import ./__demo__/nested.md
 
 @import ./__demo__/popup-container.md
@@ -42,10 +44,10 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |drawer-style|抽屉的样式|`CSSProperties`|`-`||
 |on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
-|footer|是否展示底部内容|`boolean`|`true`|2.11.0|
 |esc-to-close|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
+|header|是否展示头部内容|`boolean`|`true`|2.33.0|
+|footer|是否展示底部内容|`boolean`|`true`|2.11.0|
 |hide-cancel|是否隐藏取消按钮|`boolean`|`false`|2.19.0|
-|header|是否隐藏取消按钮|`boolean`|`true`|2.33.0|
 ### `<drawer>` Events
 
 |事件名|描述|参数|
@@ -68,8 +70,8 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 
 Drawer 提供的全局方法，可以通过以下三种方法使用：
 
-1. 通过 this.$drawer 调用
-2. 在 Composition API 中，通过 getCurrentInstance().appContext.config.globalProperties.$drawer 调用
+1. 通过 `this.$drawer` 调用
+2. 在 Composition API 中，通过 `getCurrentInstance().appContext.config.globalProperties.$drawer` 调用
 3. 导入 Drawer，通过 Drawer 本身调用
 
 当通过 import 方式使用时，组件没有办法获取当前的 Vue Context，如 i18n 或 route 等注入在 AppContext 上的内容无法在内部使用，需要在调用时手动传入 AppContext，或者为组件全局指定 AppContext
@@ -108,10 +110,10 @@ Drawer._context = app._context;
 |onBeforeCancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
 |onOpen|抽屉打开后（动画结束）触发|`() => void`|`-`||
 |onClose|抽屉关闭后（动画结束）触发|`() => void`|`-`||
-|footer|是否展示底部内容|`boolean \| RenderContent`|`true`|2.11.0|
 |escToClose|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
+|header|是否展示头部内容|`boolean \| RenderContent`|`true`|2.33.0|
+|footer|是否展示底部内容|`boolean \| RenderContent`|`true`|2.11.0|
 |hideCancel|是否隐藏取消按钮|`boolean`|`false`|2.19.0|
-|header|是否隐藏取消按钮|`boolean \| RenderContent`|`true`|2.33.0|
 
 
 

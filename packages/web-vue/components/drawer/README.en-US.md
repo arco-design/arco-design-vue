@@ -12,6 +12,8 @@ description: A drawer-like panel that slides out from the side of the screen aft
 
 @import ./__demo__/position.md
 
+@import ./__demo__/custom.md
+
 @import ./__demo__/nested.md
 
 @import ./__demo__/popup-container.md
@@ -44,10 +46,10 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |drawer-style|Drawer style|`CSSProperties`|`-`||
 |on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
-|footer|Whether to display the bottom content|`boolean`|`true`|2.11.0|
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
+|header|Whether to display high-quality content|`boolean`|`true`|2.33.0|
+|footer|Whether to display the bottom content|`boolean`|`true`|2.11.0|
 |hide-cancel|Whether to hide the cancel button|`boolean`|`false`|2.19.0|
-|header|Whether to hide the cancel button|`boolean`|`true`|2.33.0|
 ### `<drawer>` Events
 
 |Event Name|Description|Parameters|
@@ -70,8 +72,8 @@ description: A drawer-like panel that slides out from the side of the screen aft
 
 The global methods provided by Drawer can be used in the following three ways:
 
-1. Called by this.$drawer
-2. In the Composition API, call through getCurrentInstance().appContext.config.globalProperties.$drawer
+1. Called by `this.$drawer`
+2. In the Composition API, call through `getCurrentInstance().appContext.config.globalProperties.$drawer`
 3. Import Drawer, call through Drawer itself
 
 When used by import, the component has no way to obtain the current Vue Context. Content injected into the AppContext such as i18n or route cannot be used internally. You need to manually pass in the AppContext when calling, or specify the AppContext globally for the component.
@@ -110,10 +112,10 @@ Drawer._context = app._context;
 |onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |onOpen|Triggered after the drawer is opened (the animation ends)|`() => void`|`-`||
 |onClose|Triggered when the drawer is closed (the animation ends)|`() => void`|`-`||
-|footer|Whether to display the bottom content|`boolean \| RenderContent`|`true`|2.11.0|
 |escToClose|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
+|header|Whether to display high-quality content|`boolean \| RenderContent`|`true`|2.33.0|
+|footer|Whether to display the bottom content|`boolean \| RenderContent`|`true`|2.11.0|
 |hideCancel|Whether to hide the cancel button|`boolean`|`false`|2.19.0|
-|header|Whether to hide the cancel button|`boolean \| RenderContent`|`true`|2.33.0|
 
 
 

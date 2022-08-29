@@ -18,7 +18,7 @@ Use the drawer by function.
 
 ```vue
 <template>
-  <a-button @click="handleClick">Open Drawer</a-button>
+  <a-button type="primary" @click="handleClick">Open Drawer</a-button>
 </template>
 
 <script>
@@ -30,6 +30,7 @@ export default {
       Drawer.open({
         title: 'Info Title',
         content: 'This is an info message',
+        width: 340
       });
     };
 

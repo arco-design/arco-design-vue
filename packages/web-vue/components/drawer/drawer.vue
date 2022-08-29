@@ -253,8 +253,26 @@ export default defineComponent({
     onBeforeCancel: {
       type: [Function, Array] as PropType<() => boolean>,
     },
+    /**
+     * @zh 是否支持 ESC 键关闭对话框
+     * @en Whether to support the ESC key to close the dialog
+     * @version 2.15.0
+     */
+    escToClose: {
+      type: Boolean,
+      default: true,
+    },
 
     renderToBody: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否展示头部内容
+     * @en Whether to display high-quality content
+     * @version 2.33.0
+     */
+    header: {
       type: Boolean,
       default: true,
     },
@@ -268,15 +286,6 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 是否支持 ESC 键关闭对话框
-     * @en Whether to support the ESC key to close the dialog
-     * @version 2.15.0
-     */
-    escToClose: {
-      type: Boolean,
-      default: true,
-    },
-    /**
      * @zh 是否隐藏取消按钮
      * @en Whether to hide the cancel button
      * @version 2.19.0
@@ -284,15 +293,6 @@ export default defineComponent({
     hideCancel: {
       type: Boolean,
       default: false,
-    },
-    /**
-     * @zh 是否隐藏取消按钮
-     * @en Whether to hide the cancel button
-     * @version 2.33.0
-     */
-    header: {
-      type: Boolean,
-      default: true,
     },
   },
   emits: {
