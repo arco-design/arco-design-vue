@@ -32,6 +32,7 @@
     display: inline-block;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
     list-style: none;
   }
 
@@ -126,6 +127,7 @@
     &-prepend,
     &-append {
       color: @pagination-color-jumper-goto;
+      white-space: nowrap;
     }
 
     &-prepend {
@@ -150,6 +152,7 @@
   &-options {
     position: relative;
     display: inline-block;
+    flex: 0 0 auto;
     min-width: 0;
     margin-left: @pagination-margin-option-left;
     text-align: center;
@@ -172,10 +175,14 @@
     color: @pagination-color-text-total;
     font-size: @pagination-size-default-font-size;
     .total(default);
+
+    white-space: nowrap;
   }
 
   // simple
   &-jumper {
+    flex: 0 0 auto;
+
     &-separator {
       padding: 0 @pagination-simple-margin-separator-right 0
         @pagination-simple-margin-separator-left;
