@@ -125,7 +125,7 @@ import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
 import { getElement, off, on, contains } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
-import { isBoolean, isFunction, isNumber } from '../_utils/is';
+import { isBoolean, isFunction, isNumber, isPromise } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useDraggable } from './hooks/use-draggable';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
@@ -332,7 +332,7 @@ export default defineComponent({
      */
     onBeforeOk: {
       type: [Function, Array] as PropType<
-        (done: (closed: boolean) => void) => void | boolean
+        (done: (closed: boolean) => void) => void | boolean | Promise<any>
       >,
     },
     /**
@@ -543,6 +543,15 @@ export default defineComponent({
 
           if (isBoolean(result)) {
             resolve(result);
+          } else if (isPromise(result)) {
+            _okLoading.value = true;
+            result
+              .then(() => {
+                resolve();
+              })
+              .finally(() => {
+                _okLoading.value = false;
+              });
           } else {
             _okLoading.value = true;
           }
