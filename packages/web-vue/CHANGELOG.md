@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.35.3
+
+`2022-08-31`
+
+### 🐛 BugFix
+
+- Fixed the problem that the new properties of the icon class component did not take effect
+
+
 ## 2.35.2
 
 `2022-08-29`
