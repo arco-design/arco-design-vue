@@ -91,21 +91,21 @@ description: It is used for data collection, display, analysis and processing, a
 |summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|The first column of text in the summary line|`string`|`'Summary'`|2.21.0|
 |summary-span-method|Cell Merge Method for Summarizing Rows|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
-|selected-keys|Selected row (controlled mode) takes precedence over `rowSelection`|`string[]`|`-`|2.25.0|
-|default-selected-keys|The selected row by default (uncontrolled mode) takes precedence over `rowSelection`|`string[]`|`-`|2.25.0|
-|expanded-keys|Displayed Expanded Row, Subtree (Controlled Mode) takes precedence over `expandable`|`string[]`|`-`|2.25.0|
-|default-expanded-keys|Expand row, Subtree displayed by default (Uncontrolled mode) takes precedence over `expandable`|`string[]`|`-`|2.25.0|
+|selected-keys|Selected row (controlled mode) takes precedence over `rowSelection`|`BaseType[]`|`-`|2.25.0|
+|default-selected-keys|The selected row by default (uncontrolled mode) takes precedence over `rowSelection`|`BaseType[]`|`-`|2.25.0|
+|expanded-keys|Displayed Expanded Row, Subtree (Controlled Mode) takes precedence over `expandable`|`BaseType[]`|`-`|2.25.0|
+|default-expanded-keys|Expand row, Subtree displayed by default (Uncontrolled mode) takes precedence over `expandable`|`BaseType[]`|`-`|2.25.0|
 |default-expand-all-rows|Whether to expand all rows by default|`boolean`|`false`|2.25.0|
 |sticky-header|Whether to open the sticky header|`boolean\|number`|`false`|2.30.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|expand|Triggered when a row is clicked to expand|rowKey: `string`<br>record: `TableData`||
-|expanded-change|Triggered when the expanded data row changes|rowKeys: `string[]`||
-|select|Triggered when the row selector is clicked|rowKeys: `string[]`<br>rowKey: `string`<br>record: `TableData`||
+|expand|Triggered when a row is clicked to expand|rowKey: `BaseType`<br>record: `TableData`||
+|expanded-change|Triggered when the expanded data row changes|rowKeys: `BaseType[]`||
+|select|Triggered when the row selector is clicked|rowKeys: `BaseType[]`<br>rowKey: `BaseType`<br>record: `TableData`||
 |select-all|Triggered when the select all selector is clicked|checked: `boolean`||
-|selection-change|Triggered when the selected data row changes|rowKeys: `string[]`||
+|selection-change|Triggered when the selected data row changes|rowKeys: `BaseType[]`||
 |sorter-change|Triggered when the collation changes|dataIndex: `string`<br>direction: `string`||
 |filter-change|Triggered when the filter options are changed|dataIndex: `string`<br>filteredValues: `string[]`||
 |page-change|Triggered when the table pagination changes|page: `number`||
@@ -120,9 +120,9 @@ description: It is used for data collection, display, analysis and processing, a
 |Method|Description|Parameters|Return|version|
 |---|---|---|:---:|:---|
 |selectAll|Set select all state|checked: ` boolean `|-|2.22.0|
-|select|Set row selector state|rowKey: ` string \| string[] `<br>checked: ` boolean `|-|2.31.0|
+|select|Set row selector state|rowKey: ` BaseType \| BaseType[] `<br>checked: ` boolean `|-|2.31.0|
 |expandAll|Set all expanded state|checked: ` boolean `|-|2.31.0|
-|expand|Set select all state|rowKey: ` string \| string[] `<br>checked: ` boolean `|-|2.31.0|
+|expand|Set select all state|rowKey: ` BaseType \| BaseType[] `<br>checked: ` boolean `|-|2.31.0|
 |resetFilters|Reset the filter for columns|dataIndex: ` string \| string[] `|-|2.31.0|
 |clearFilters|Clear the filter for columns|dataIndex: ` string \| string[] `|-|2.31.0|
 |resetSorters|Reset the order of columns|-|-|2.31.0|
@@ -161,10 +161,14 @@ description: It is used for data collection, display, analysis and processing, a
 |ellipsis|Whether to display as omitted|`boolean`|`false`||
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
+|cell-class|Custom cell class|`ClassName`|`-`|2.36.0|
+|header-cell-class|Custom cell class|`ClassName`|`-`|2.36.0|
+|body-cell-class|Custom cell class|`ClassName \| ((record: TableData) => ClassName)`|`-`|2.36.0|
+|summary-cell-class|Customize summary column cell class|`ClassName \| ((record: TableData) => ClassName)`|`-`|2.36.0|
 |cell-style|Custom cell style|`CSSProperties`|`-`|2.11.0|
 |header-cell-style|Custom cell style|`CSSProperties`|`-`|2.29.0|
 |body-cell-style|Custom cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
-|summary-cell-style|Customize summary column cell styles|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
+|summary-cell-style|Customize summary column cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |index|index for manually specifying option. Manual specification is no longer required after version 2.26.0|`number`|`-`|2.20.2|
 |tooltip|Whether to show text hints when omitted|`boolean\|object`|`false`|2.26.0|
 ### `<table-column>` Slots
@@ -249,6 +253,10 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |sortable|Sorting related options|`TableSortable`|`-`||
 |filterable|Filter related options|`TableFilterable`|`-`||
 |children|Header sub-data, used for header grouping|`TableColumnData[]`|`-`||
+|cellClass|Custom cell class|`ClassName`|`-`|2.36.0|
+|headerCellClass|Custom header cell class|`ClassName`|`-`|2.36.0|
+|bodyCellClass|Custom body cell class|`ClassName \| ((record: TableData) => ClassName)`|`-`|2.36.0|
+|summaryCellClass|Custom body cell class|`ClassName \| ((record: TableData) => ClassName)`|`-`|2.36.0|
 |cellStyle|Custom cell style|`CSSProperties`|`-`|2.11.0|
 |headerCellStyle|Custom header cell style|`CSSProperties`|`-`|2.29.0|
 |bodyCellStyle|Custom body cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|

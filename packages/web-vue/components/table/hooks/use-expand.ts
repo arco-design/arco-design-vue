@@ -1,6 +1,6 @@
 import { computed, Ref, ref } from 'vue';
 import type { TableData, TableExpandable } from '../interface';
-import type { EmitFn2 } from '../../_utils/types';
+import type { BaseType, EmitFn2 } from '../../_utils/types';
 
 export const useExpand = ({
   expandedKeys,
@@ -10,18 +10,18 @@ export const useExpand = ({
   allRowKeys,
   emit,
 }: {
-  expandedKeys: Ref<string[] | undefined>;
-  defaultExpandedKeys: Ref<string[] | undefined>;
+  expandedKeys: Ref<BaseType[] | undefined>;
+  defaultExpandedKeys: Ref<BaseType[] | undefined>;
   defaultExpandAllRows: Ref<boolean>;
   expandable: Ref<TableExpandable | undefined>;
-  allRowKeys: Ref<string[]>;
+  allRowKeys: Ref<BaseType[]>;
   emit: EmitFn2<{
-    'update:expandedKeys': (rowKeys: string[]) => true;
-    'expand': (rowKey: string, record: TableData) => true;
-    'expandedChange': (rowKeys: string[]) => true;
+    'update:expandedKeys': (rowKeys: BaseType[]) => true;
+    'expand': (rowKey: BaseType, record: TableData) => true;
+    'expandedChange': (rowKeys: BaseType[]) => true;
   }>;
 }) => {
-  const getDefaultExpandedRowKeys = (): string[] => {
+  const getDefaultExpandedRowKeys = (): BaseType[] => {
     if (defaultExpandedKeys.value) {
       return defaultExpandedKeys.value;
     }
@@ -43,7 +43,7 @@ export const useExpand = ({
       _expandedRowKeys.value
   );
 
-  const handleExpand = (rowKey: string, record: TableData) => {
+  const handleExpand = (rowKey: BaseType, record: TableData) => {
     const isExpanded = expandedRowKeys.value.includes(rowKey);
     const newExpandedRowKeys = isExpanded
       ? expandedRowKeys.value.filter((key) => rowKey !== key)
@@ -54,8 +54,8 @@ export const useExpand = ({
     emit('update:expandedKeys', newExpandedRowKeys);
   };
 
-  const expand = (rowKey: string | string[], expanded = true) => {
-    const _rowKeys = ([] as string[]).concat(rowKey);
+  const expand = (rowKey: BaseType | BaseType[], expanded = true) => {
+    const _rowKeys = ([] as BaseType[]).concat(rowKey);
     const newExpandedRowKeys = expanded
       ? expandedRowKeys.value.concat(_rowKeys)
       : expandedRowKeys.value.filter((key) => !_rowKeys.includes(key));

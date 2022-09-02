@@ -70,6 +70,7 @@ import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
 import { useSpan } from './hooks/use-span';
 import { useChildrenComponents } from '../_hooks/use-children-components';
+import type { BaseType } from '../_utils/types';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -354,7 +355,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     selectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 默认已选择的行（非受控模式）优先于 `rowSelection`
@@ -362,7 +363,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     defaultSelectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 显示的展开行、子树（受控模式）优先于 `expandable`
@@ -370,7 +371,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     expandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 默认显示的展开行、子树（非受控模式）优先于 `expandable`
@@ -378,7 +379,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     defaultExpandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 是否默认展开所有的行
@@ -400,29 +401,30 @@ export default defineComponent({
     },
   },
   emits: {
-    'update:selectedKeys': (rowKeys: string[]) => true,
-    'update:expandedKeys': (rowKeys: string[]) => true,
+    'update:selectedKeys': (rowKeys: BaseType[]) => true,
+    'update:expandedKeys': (rowKeys: BaseType[]) => true,
     /**
      * @zh 点击展开行时触发
      * @en Triggered when a row is clicked to expand
-     * @param {string} rowKey
+     * @param {BaseType} rowKey
      * @param {TableData} record
      */
-    'expand': (rowKey: string, record: TableData) => true,
+    'expand': (rowKey: BaseType, record: TableData) => true,
     /**
      * @zh 已展开的数据行发生改变时触发
      * @en Triggered when the expanded data row changes
-     * @param {string[]} rowKeys
+     * @param {BaseType[]} rowKeys
      */
-    'expandedChange': (rowKeys: string[]) => true,
+    'expandedChange': (rowKeys: BaseType[]) => true,
     /**
      * @zh 点击行选择器时触发
      * @en Triggered when the row selector is clicked
-     * @param {string[]} rowKeys
-     * @param {string} rowKey
+     * @param {BaseType[]} rowKeys
+     * @param {BaseType} rowKey
      * @param {TableData} record
      */
-    'select': (rowKeys: string[], rowKey: string, record: TableData) => true,
+    'select': (rowKeys: BaseType[], rowKey: BaseType, record: TableData) =>
+      true,
     /**
      * @zh 点击全选选择器时触发
      * @en Triggered when the select all selector is clicked
@@ -432,9 +434,9 @@ export default defineComponent({
     /**
      * @zh 已选择的数据行发生改变时触发
      * @en Triggered when the selected data row changes
-     * @param {string[]} rowKeys
+     * @param {BaseType[]} rowKeys
      */
-    'selectionChange': (rowKeys: string[]) => true,
+    'selectionChange': (rowKeys: BaseType[]) => true,
     /**
      * @zh 排序规则发生改变时触发
      * @en Triggered when the collation changes
@@ -770,7 +772,7 @@ export default defineComponent({
     const disabledKeys = new Set();
 
     const allRowKeys = computed(() => {
-      const allRowKeys: string[] = [];
+      const allRowKeys: BaseType[] = [];
       disabledKeys.clear();
       const travelData = (data: TableData[]) => {
         if (isArray(data) && data.length > 0) {
@@ -792,7 +794,7 @@ export default defineComponent({
     });
 
     const currentAllRowKeys = computed(() => {
-      const keys: string[] = [];
+      const keys: BaseType[] = [];
       const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
           keys.push(record.key);
@@ -807,7 +809,7 @@ export default defineComponent({
     });
 
     const currentAllEnabledRowKeys = computed(() => {
-      const keys: string[] = [];
+      const keys: BaseType[] = [];
 
       const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
@@ -2073,12 +2075,12 @@ export default defineComponent({
     /**
      * @zh 设置行选择器状态
      * @en Set row selector state
-     * @param { string | string[] } rowKey
+     * @param { BaseType | BaseType[] } rowKey
      * @param { boolean } checked
      * @public
      * @version 2.31.0
      */
-    select(rowKey: string | string[], checked?: boolean) {
+    select(rowKey: BaseType | BaseType[], checked?: boolean) {
       return this.selfSelect(rowKey, checked);
     },
     /**
@@ -2094,12 +2096,12 @@ export default defineComponent({
     /**
      * @zh 设置展开状态
      * @en Set select all state
-     * @param { string | string[] } rowKey
+     * @param { BaseType | BaseType[] } rowKey
      * @param { boolean } checked
      * @public
      * @version 2.31.0
      */
-    expand(rowKey: string | string[], checked?: boolean) {
+    expand(rowKey: BaseType | BaseType[], checked?: boolean) {
       return this.selfExpand(rowKey, checked);
     },
     /**
