@@ -4,7 +4,7 @@
       ref="refImg"
       :class="`${prefixCls}-img`"
       v-bind="imgProps"
-      :style="imgStyle"
+      :style="{ ...imgStyle, ...fitStyle }"
       :title="title"
       :alt="alt"
       @load="onImgLoaded"
@@ -69,7 +69,11 @@ import {
   reactive,
   inject,
   StyleValue,
+  type CSSProperties,
 } from 'vue';
+import { title } from 'process';
+import src from 'resize-observer-polyfill';
+import { isError } from 'util';
 import type { ImageProps, ImagePreviewProps } from './interface';
 import IconImageClose from '../icon/icon-image-close';
 import IconLoading from '../icon/icon-loading';
@@ -134,6 +138,16 @@ export default defineComponent({
      */
     description: {
       type: String,
+    },
+    /**
+     * @zh 确定图片如何适应容器框
+     * @en indicate how the image should be resized to fit its container
+     */
+    fit: {
+      type: String as PropType<
+        '' | 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+      >,
+      default: '',
     },
     /**
      * @zh 图片的文字描述
@@ -259,6 +273,14 @@ export default defineComponent({
       height: normalizeImageSizeProp(height?.value),
     }));
 
+    const fitStyle = computed<CSSProperties>(() => {
+      const { fit } = props;
+      if (fit) {
+        return { objectFit: fit };
+      }
+      return {};
+    });
+
     const wrapperClassNames = computed(() => [
       `${prefixCls}`,
       {
@@ -355,6 +377,7 @@ export default defineComponent({
       onImgLoadError,
       onImgClick,
       onPreviewClose,
+      fitStyle,
     };
   },
 });
