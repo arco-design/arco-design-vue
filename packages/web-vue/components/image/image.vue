@@ -71,7 +71,7 @@ import {
   StyleValue,
   CSSProperties,
 } from 'vue';
-import type { ImageProps, ImagePreviewProps } from './interface';
+import type { ImagePreviewProps } from './interface';
 import IconImageClose from '../icon/icon-image-close';
 import IconLoading from '../icon/icon-loading';
 import ImageFooter from './image-footer.vue';
@@ -84,7 +84,7 @@ import { omit } from '../_utils/omit';
 import useMergeState from '../_hooks/use-merge-state';
 import { PreviewGroupInjectionKey } from './context';
 import { useI18n } from '../locale';
-import { isBoolean, isString } from '../_utils/is';
+import { isBoolean } from '../_utils/is';
 
 let uuid = 0;
 
@@ -241,6 +241,11 @@ export default defineComponent({
    * @zh 自定义加载状态效果
    * @en Customize loading effect.
    * @slot loader
+   */
+  /**
+   * @zh 底部额外内容
+   * @en Extra content at the bottom
+   * @slot extra
    */
   setup(props, { attrs, slots, emit }) {
     const { t } = useI18n();
