@@ -27,6 +27,7 @@ description: A two-column multi-select component that moves elements from one co
 
 @import ./__demo__/simple.md
 
+@import ./__demo__/exchange-data.md
 ## API
 
 %%API(transfer.vue)%%
