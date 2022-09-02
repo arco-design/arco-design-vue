@@ -37,6 +37,14 @@ export default defineComponent({
       default: () => [],
     },
     /**
+     * @zh 支持最多选中的数量
+     * @en Support the maximum number of selections
+     * @version 2.36.0
+     */
+    max: {
+      type: Number,
+    },
+    /**
      * @zh 选项
      * @en Options
      * @version 2.27.0
@@ -95,6 +103,9 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+    const isMaxed = computed(() =>
+      props.max === undefined ? false : computedValue.value.length >= props.max
+    );
 
     const options = computed(() => {
       return (props.options ?? []).map((option) => {
@@ -121,6 +132,7 @@ export default defineComponent({
         name: 'ArcoCheckboxGroup',
         computedValue,
         disabled: mergedDisabled,
+        isMaxed,
         slots,
         handleChange,
       })
@@ -141,21 +153,24 @@ export default defineComponent({
     );
 
     const renderOptions = () => {
-      return options.value.map((option, index) => (
-        <Checkbox
-          key={option.value}
-          value={option.value}
-          disabled={option.disabled}
-          indeterminate={option.indeterminate}
-          modelValue={computedValue.value.includes(option.value)}
-        >
-          {slots.label
-            ? slots.label({ data: option })
-            : isFunction(option.label)
-            ? option.label()
-            : option.label}
-        </Checkbox>
-      ));
+      return options.value.map((option) => {
+        const checked = computedValue.value.includes(option.value);
+        return (
+          <Checkbox
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled || (!checked && isMaxed.value)}
+            indeterminate={option.indeterminate}
+            modelValue={checked}
+          >
+            {slots.label
+              ? slots.label({ data: option })
+              : isFunction(option.label)
+              ? option.label()
+              : option.label}
+          </Checkbox>
+        );
+      });
     };
 
     return () => (

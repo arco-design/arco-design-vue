@@ -19,7 +19,7 @@ Display the checkbox group through the `<a-checkbox-group>` component. Set `dire
 ```vue
 <template>
   <a-space direction="vertical" size="large">
-    <a-checkbox-group>
+    <a-checkbox-group :default-value="['1']">
       <a-checkbox value="1">Option 1</a-checkbox>
       <a-checkbox value="2">Option 2</a-checkbox>
       <a-checkbox value="3">Option 3</a-checkbox>
