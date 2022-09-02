@@ -34,7 +34,7 @@
       </slot>
     </div>
     <ImageFooter
-      v-if="isLoaded && showFooter"
+      v-if="showFooter"
       :class="footerClass"
       :prefix-cls="prefixCls"
       :title="title"
@@ -69,11 +69,8 @@ import {
   reactive,
   inject,
   StyleValue,
-  type CSSProperties,
+  CSSProperties,
 } from 'vue';
-import { title } from 'process';
-import src from 'resize-observer-polyfill';
-import { isError } from 'util';
 import type { ImageProps, ImagePreviewProps } from './interface';
 import IconImageClose from '../icon/icon-image-close';
 import IconLoading from '../icon/icon-loading';
@@ -87,6 +84,7 @@ import { omit } from '../_utils/omit';
 import useMergeState from '../_hooks/use-merge-state';
 import { PreviewGroupInjectionKey } from './context';
 import { useI18n } from '../locale';
+import { isBoolean, isString } from '../_utils/is';
 
 let uuid = 0;
 
@@ -145,9 +143,8 @@ export default defineComponent({
      */
     fit: {
       type: String as PropType<
-        '' | 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+        'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
       >,
-      default: '',
     },
     /**
      * @zh 图片的文字描述
@@ -157,11 +154,12 @@ export default defineComponent({
       type: String,
     },
     /**
-     * @zh 是否隐藏 footer
-     * @en Whether to hide footer
+     * @zh 是否隐藏 footer（2.36.0 版本支持 'never' 参数，支持在加载错误时显示底部内容）
+     * @en Whether to hide footer (Version 2.36.0 supports the 'never' parameter, which supports displaying bottom content when loading errors)
      */
     hideFooter: {
-      type: Boolean,
+      type: [Boolean, String] as PropType<boolean | 'never'>,
+      default: false,
     },
     /**
      * @zh 底部显示的位置
@@ -244,7 +242,7 @@ export default defineComponent({
    * @en Customize loading effect.
    * @slot loader
    */
-  setup(props: ImageProps, { attrs, slots, emit }) {
+  setup(props, { attrs, slots, emit }) {
     const { t } = useI18n();
     const {
       height,
@@ -274,9 +272,8 @@ export default defineComponent({
     }));
 
     const fitStyle = computed<CSSProperties>(() => {
-      const { fit } = props;
-      if (fit) {
-        return { objectFit: fit };
+      if (props.fit) {
+        return { objectFit: props.fit };
       }
       return {};
     });
@@ -299,11 +296,14 @@ export default defineComponent({
       attrs.style as StyleValue,
     ]);
 
-    const showFooter = computed(
-      () =>
-        !hideFooter.value &&
-        !!(title?.value || description?.value || slots.extra)
-    );
+    const showFooter = computed(() => {
+      if (!(title?.value || description?.value || slots.extra)) {
+        return false;
+      }
+      if (isBoolean(hideFooter.value))
+        return !hideFooter.value && isLoaded.value;
+      return hideFooter.value === 'never';
+    });
 
     const imgProps = computed(() => omit(attrs, ['class', 'style']));
 
