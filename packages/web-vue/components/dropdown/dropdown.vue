@@ -30,8 +30,7 @@ import Trigger from '../trigger';
 import DropdownPanel from './dropdown-panel.vue';
 import { useTrigger } from '../_hooks/use-trigger';
 import { dropdownInjectionKey } from './context';
-
-type DropdownPosition = 'top' | 'tl' | 'tr' | 'bottom' | 'bl' | 'br';
+import { DropdownPosition } from './interface';
 
 export default defineComponent({
   name: 'Dropdown',
@@ -80,9 +79,7 @@ export default defineComponent({
      * @en Mount container for popup
      */
     popupContainer: {
-      type: [String, Object] as PropType<
-        string | HTMLElement | null | undefined
-      >,
+      type: [String, Object] as PropType<string | HTMLElement>,
     },
     popupMaxHeight: {
       type: [Boolean, Number],
