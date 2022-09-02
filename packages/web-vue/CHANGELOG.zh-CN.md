@@ -2,6 +2,37 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 新增功能
+
+- **image:** hideFooter 增加新参数，支持错误状态下展示 footer ([#1595](https://github.com/arco-design/arco-design-vue/pull/1595))
+- **breadcrumb:** 增加 customUrl 属性 ([#1594](https://github.com/arco-design/arco-design-vue/pull/1594))
+- **table:** 新增自定义类名相关属性 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+- 增加`繁体中文（台湾）`支持 ([#1551](https://github.com/arco-design/arco-design-vue/pull/1551))
+- 增加`葡萄牙语（葡萄牙）`支持 ([#1551](https://github.com/arco-design/arco-design-vue/pull/1551))
+- **alert:** 支持自定义关闭元素 ([#1544](https://github.com/arco-design/arco-design-vue/pull/1544))
+- **checkbox:** 新增 max 属性，支持设置最多可被勾选的项目数 ([#1540](https://github.com/arco-design/arco-design-vue/pull/1540))
+- **image:** 增加 fit 属性 ([#1534](https://github.com/arco-design/arco-design-vue/pull/1534))
+- **breadcrumb:** 支持 separator  属性 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** 支持 routes  属性 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** 支持 more-icon  插槽 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** `breadcrumb-item` 支持 droplist  属性和插槽 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **page-header:** 支持自定义返回按钮 ([#1499](https://github.com/arco-design/arco-design-vue/pull/1499))
+
+### 💎 功能优化
+
+- **table:** 扩展 key 的类型 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+- **input:** 修改密码输入框图标 ([#1436](https://github.com/arco-design/arco-design-vue/pull/1436))
+
+### 🆎 类型修正
+
+- 增加 dropdown 和 breadcrumb 组件中类型的导出 ([#1594](https://github.com/arco-design/arco-design-vue/pull/1594))
+- **layout:** 增加 ts 类型导出 ([#1571](https://github.com/arco-design/arco-design-vue/pull/1571))
+
+
 ## 2.35.3
 
 `2022-08-31`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- hideFooter adds a new parameter to support the display of footer in an error state ([#1595](https://github.com/arco-design/arco-design-vue/pull/1595))
+- Add fit prop ([#1534](https://github.com/arco-design/arco-design-vue/pull/1534))
+
+
 ## 2.35.2
 
 `2022-08-29`

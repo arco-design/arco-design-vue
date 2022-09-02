@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 新增功能
+
+- hideFooter 增加新参数，支持错误状态下展示 footer ([#1595](https://github.com/arco-design/arco-design-vue/pull/1595))
+- 增加 fit 属性 ([#1534](https://github.com/arco-design/arco-design-vue/pull/1534))
+
+
 ## 2.35.2
 
 `2022-08-29`

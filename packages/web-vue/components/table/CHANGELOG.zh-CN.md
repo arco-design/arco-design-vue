@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 新增功能
+
+- 新增自定义类名相关属性 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+### 💎 功能优化
+
+- 扩展 key 的类型 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+
 ## 2.35.0
 
 `2022-08-12`

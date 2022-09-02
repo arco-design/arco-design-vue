@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- Add custom class name related prop ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+### 💎 Enhancement
+
+- type of extension key ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+
 ## 2.35.0
 
 `2022-08-12`

@@ -2,6 +2,37 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- **image:** hideFooter adds a new parameter to support the display of footer in an error state ([#1595](https://github.com/arco-design/arco-design-vue/pull/1595))
+- **breadcrumb:** Add customUrl property ([#1594](https://github.com/arco-design/arco-design-vue/pull/1594))
+- **table:** Add custom class name related prop ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+- Add `zh-TW` support ([#1551](https://github.com/arco-design/arco-design-vue/pull/1551))
+- Add `pt-PT` support ([#1551](https://github.com/arco-design/arco-design-vue/pull/1551))
+- **alert:** suport custom close element ([#1544](https://github.com/arco-design/arco-design-vue/pull/1544))
+- **checkbox:** Add max prop, support setting the maximum number of items that can be checked ([#1540](https://github.com/arco-design/arco-design-vue/pull/1540))
+- **image:** Add fit prop ([#1534](https://github.com/arco-design/arco-design-vue/pull/1534))
+- **breadcrumb:** suport separator prop ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** suport routes prop ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** suport more-icon slot ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** suport droplist prop  and slot ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **page-header:** support custom back icon ([#1499](https://github.com/arco-design/arco-design-vue/pull/1499))
+
+### 💎 Enhancement
+
+- **table:** type of extension key ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+- **input:** Modify password input box icon ([#1436](https://github.com/arco-design/arco-design-vue/pull/1436))
+
+### 🆎 TypeScript
+
+- Added export of types in dropdown and breadcrumb components ([#1594](https://github.com/arco-design/arco-design-vue/pull/1594))
+- **layout:** Add ts type export ([#1571](https://github.com/arco-design/arco-design-vue/pull/1571))
+
+
 ## 2.35.3
 
 `2022-08-31`
