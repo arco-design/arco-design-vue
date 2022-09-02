@@ -14,21 +14,6 @@ import { getAllElements } from '../_utils/vue-utils';
 import { BreadcrumbRoute } from './interface';
 import BreadcrumbItem from './breadcrumb-item';
 
-const defaultItemRender = (
-  route: BreadcrumbRoute,
-  routes: BreadcrumbRoute[],
-  paths: string[]
-) => {
-  if (routes.indexOf(route) === routes.length - 1) {
-    return <span>{route.breadcrumbName}</span>;
-  }
-  return (
-    <a href={`#/${paths.join('/').replace(/^\//, '')}`}>
-      {route.breadcrumbName}
-    </a>
-  );
-};
-
 export default defineComponent({
   name: 'Breadcrumb',
   props: {
@@ -41,8 +26,9 @@ export default defineComponent({
       default: 0,
     },
     /**
-     * @zh 直接路径
+     * @zh 设置路径
      * @en Set routes
+     * @version 2.36.0
      */
     routes: {
       type: Array as PropType<BreadcrumbRoute[]>,
@@ -50,9 +36,18 @@ export default defineComponent({
     /**
      * @zh 分隔符文字
      * @en Delimiter text
+     * @version 2.36.0
      */
     separator: {
       type: [String, Number],
+    },
+    /**
+     * @zh 自定义链接地址
+     * @en Custom link address
+     * @version 2.36.0
+     */
+    customUrl: {
+      type: Function as PropType<(paths: string[]) => string>,
     },
   },
   /**
@@ -67,11 +62,13 @@ export default defineComponent({
    * @binding {BreadcrumbRoute[]} routes
    * @binding {string[]} paths
    * @slot item-render
+   * @version 2.36.0
    */
   /**
    * @zh 自定义更多图标
    * @en Custom more icon
    * @slot more-icon
+   * @version 2.36.0
    */
   setup(props, { slots }) {
     const { maxCount, separator, routes } = toRefs(props);
@@ -94,6 +91,20 @@ export default defineComponent({
       })
     );
 
+    const defaultItemRender = (
+      route: BreadcrumbRoute,
+      routes: BreadcrumbRoute[],
+      paths: string[]
+    ) => {
+      if (routes.indexOf(route) === routes.length - 1) {
+        return <span>{route.label}</span>;
+      }
+      const href =
+        props.customUrl?.(paths) ?? `#/${paths.join('/').replace(/^\//, '')}`;
+
+      return <a href={href}>{route.label}</a>;
+    };
+
     const renderByRoutes = () => {
       if (!routes.value?.length) return null;
 
@@ -109,7 +120,7 @@ export default defineComponent({
         const currentPaths = [...paths];
         return (
           <BreadcrumbItem
-            key={route.path || route.breadcrumbName}
+            key={route.path || route.label}
             index={idx}
             droplist={route.children}
           >

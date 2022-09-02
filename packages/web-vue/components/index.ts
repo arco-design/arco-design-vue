@@ -9,6 +9,7 @@ export { default as Avatar, AvatarGroup } from './avatar';
 export { default as BackTop } from './back-top';
 export { default as Badge } from './badge';
 export { default as Breadcrumb, BreadcrumbItem } from './breadcrumb';
+export type { BreadcrumbRoute } from './breadcrumb';
 export { default as Button, ButtonGroup } from './button';
 export type { ButtonProps } from './button';
 export { default as Card, CardMeta, CardGrid } from './card';
@@ -45,6 +46,13 @@ export {
   Dgroup,
   Dsubmenu,
   DropdownButton,
+} from './dropdown';
+export type {
+  DropDownProps,
+  DropdownOption,
+  DOption,
+  DGroup,
+  DSubmenu,
 } from './dropdown';
 export { default as Empty } from './empty';
 export { default as Form, FormItem } from './form';

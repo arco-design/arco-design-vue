@@ -61,35 +61,35 @@ export default {
       routes: [
         {
           path: '/',
-          breadcrumbName: 'Home'
+          label: 'Home'
         },
         {
           path: '/channel',
-          breadcrumbName: 'Channel',
+          label: 'Channel',
           children: [
             {
               path: '/users',
-              breadcrumbName: 'Users',
+              label: 'Users',
             },
             {
               path: '/permission',
-              breadcrumbName: 'Permission',
+              label: 'Permission',
             }
           ]
         },
         {
           path: '/news',
-          breadcrumbName: 'News'
+          label: 'News'
         },
       ],
       droplist: [
         {
           path: '/goods',
-          breadcrumbName: 'Goods',
+          label: 'Goods',
         },
         {
           path: '/wallet',
-          breadcrumbName: 'Wallet',
+          label: 'Wallet',
         }
       ]
     }

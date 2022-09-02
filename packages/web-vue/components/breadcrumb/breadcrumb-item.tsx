@@ -5,27 +5,24 @@ import IconDown from '../icon/icon-down';
 import IconObliqueLine from '../icon/icon-oblique-line';
 import { breadcrumbInjectKey } from './context';
 import { BreadcrumbRoute } from './interface';
-import Dropdown, { Doption } from '../dropdown';
+import Dropdown, { Doption, DropDownProps } from '../dropdown';
 
 export default defineComponent({
   name: 'BreadcrumbItem',
   inheritAttrs: false,
   props: {
-    // private
-    index: {
-      type: Number,
-      default: 0,
-    },
     /**
      * @zh 分隔符文字
      * @en Delimiter text
+     * @version 2.36.0
      */
     separator: {
       type: [String, Number],
     },
     /**
-     * @zh 分隔符文字
-     * @en Delimiter text
+     * @zh 下拉菜单内容
+     * @en Dropdown content
+     * @version 2.36.0
      */
     droplist: {
       type: Array as PropType<BreadcrumbRoute['children']>,
@@ -33,20 +30,28 @@ export default defineComponent({
     /**
      * @zh 下拉菜单属性
      * @en Dropdown props
+     * @version 2.36.0
      */
     dropdownProps: {
-      type: Object,
+      type: Object as PropType<DropDownProps>,
+    },
+    // private
+    index: {
+      type: Number,
+      default: 0,
     },
   },
   /**
    * @zh 自定义分隔符
    * @en Custom separator
    * @slot separator
+   * @version 2.36.0
    */
   /**
    * @zh 自定义下拉菜单
    * @en Custom droplist
    * @slot droplist
+   * @version 2.36.0
    */
   setup(props, { slots, attrs }) {
     const prefixCls = getPrefixCls('breadcrumb-item');
@@ -93,7 +98,7 @@ export default defineComponent({
       );
     };
 
-    const dom = () => {
+    const renderItem = () => {
       return (
         <div
           role="listitem"
@@ -128,20 +133,24 @@ export default defineComponent({
       );
     };
 
-    const dropdown = () => {
-      const content =
+    const renderDropdownContent = () => {
+      return (
         slots.droplist?.() ??
         props.droplist?.map((item) => (
-          <Doption value={item.path}>{item.breadcrumbName}</Doption>
-        ));
+          <Doption value={item.path}>{item.label}</Doption>
+        ))
+      );
+    };
+
+    const renderDropdown = () => {
       return (
         <Dropdown
-          {...props.dropdownProps}
-          popup-visible={dropdownVisible.value}
+          v-slots={{ content: renderDropdownContent }}
+          popupVisible={dropdownVisible.value}
           onPopupVisibleChange={handleVisibleChange}
-          v-slots={{ content: () => content }}
+          {...props.dropdownProps}
         >
-          {dom()}
+          {renderItem()}
         </Dropdown>
       );
     };
@@ -150,7 +159,7 @@ export default defineComponent({
       if (show.value) {
         return (
           <>
-            {slots.droplist || props.droplist ? dropdown() : dom()}
+            {slots.droplist || props.droplist ? renderDropdown() : renderItem()}
             {separatorRender()}
           </>
         );

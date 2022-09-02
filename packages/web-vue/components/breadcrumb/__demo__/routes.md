@@ -23,7 +23,7 @@ Transfer breadcrumb data through `routes`. If you want to customize bread crumbs
     <a-breadcrumb :routes="routes">
       <template #item-render="{route, paths}">
         <a-link :href="paths.join('/')">
-          {{route.breadcrumbName}}
+          {{route.label}}
         </a-link>
       </template>
     </a-breadcrumb>
@@ -37,15 +37,15 @@ export default {
       routes: [
         {
           path: '/',
-          breadcrumbName: 'Home'
+          label: 'Home'
         },
         {
           path: '/channel',
-          breadcrumbName: 'Channel',
+          label: 'Channel',
         },
         {
           path: '/news',
-          breadcrumbName: 'News'
+          label: 'News'
         },
       ],
     }
