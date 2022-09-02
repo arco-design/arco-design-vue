@@ -33,11 +33,12 @@ description: The page header is located at the top of the page container and ser
 |back|Emitted when the back button is clicked|event: `Event`|
 ### `<page-header>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|breadcrumb|Breadcrumb|-|
-|title|Main title|-|
-|subtitle|Subtitle|-|
-|extra|Extra content|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|breadcrumb|Breadcrumb|-||
+|back-icon|Back icon|-|2.36.0|
+|title|Main title|-||
+|subtitle|Subtitle|-||
+|extra|Extra content|-||
 
 
