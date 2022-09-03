@@ -3,7 +3,7 @@
 meta:
   type: 组件
   category: 其他
-title: 分割分割 Split
+title: 面板分割 Split
 description: 将面板分割成两部分。
 ```
 ---
