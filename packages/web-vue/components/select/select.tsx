@@ -769,7 +769,7 @@ export default defineComponent({
     const getOptionContentFunc = (optionInfo: SelectOptionInfo) => {
       if (isFunction(slots.option)) {
         const optionSlot = slots.option;
-        return () => optionSlot({ data: optionInfo });
+        return () => optionSlot({ data: optionInfo.raw });
       }
       if (isFunction(optionInfo.render)) {
         return optionInfo.render;
