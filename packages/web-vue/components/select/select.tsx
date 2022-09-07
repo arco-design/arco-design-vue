@@ -34,7 +34,7 @@ import {
   SelectOptionGroup,
 } from './interface';
 import VirtualList from '../_components/virtual-list-v2';
-import { VirtualListProps } from '../_components/virtual-list/interface';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { useSelect } from './hooks/use-select';
 import { TagData } from '../input-tag';
 import { useTrigger } from '../_hooks/use-trigger';
@@ -246,8 +246,8 @@ export default defineComponent({
       default: () => [],
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)
-     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
      * @type VirtualListProps
      */
     virtualListProps: {

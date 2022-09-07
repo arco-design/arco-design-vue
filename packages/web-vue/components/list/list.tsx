@@ -15,7 +15,7 @@ import VirtualList from '../_components/virtual-list-v2';
 import type {
   ScrollIntoViewOptions,
   VirtualListProps,
-} from '../_components/virtual-list/interface';
+} from '../_components/virtual-list-v2/interface';
 import { usePagination } from './use-pagination';
 import { omit } from '../_utils/omit';
 import { getAllElements } from '../_utils/vue-utils';
@@ -101,8 +101,8 @@ export default defineComponent({
       default: 0,
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)
-     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
      */
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,

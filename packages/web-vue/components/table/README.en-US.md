@@ -79,7 +79,7 @@ description: It is used for data collection, display, analysis and processing, a
 |indent-size|The indentation distance of the tree table|`number`|`16`||
 |row-key|Value field of table row `key`|`string`|`'key'`||
 |show-header|Whether to show the header|`boolean`|`true`||
-|virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling|`VirtualListProps`|`-`||
+|virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |span-method|Cell merge method (The index starts counting from the data item)|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 |span-all|Whether to make the index of the span method contain all|`boolean`|`false`|2.18.0|
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
@@ -331,6 +331,19 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |filters|Filter information|`Filters`|`-`|
 |dragTarget|Drag and drop information|`TableData`|`-`|
 
+
+
+
+### VirtualListProps
+
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|height|Viewable area height|`number \| string`|`-`||
+|threshold|(Repealed) Threshold for the number of elements that automatically turn on virtual scrolling, passing in null means that virtual scrolling is prohibited. Version 2.18.0 deprecated|`number \| null`|`-`||
+|isStaticItemHeight|(Repealed) Is the element height fixed. Version 2.18.0 deprecated, please use `fixedSize`|`boolean`|`false`||
+|fixedSize|Is the element height fixed.|`boolean`|`false`|2.34.1|
+|estimatedSize|Is the element height fixed.|`number`|`-`|2.34.1|
+|buffer|The number of elements mounted in advance outside the boundary of the viewport.|`number`|`10`|2.34.1|
 
 
 

@@ -59,7 +59,7 @@ import OperationTh from './table-operation-th';
 import OperationTd from './table-operation-td';
 import VirtualList from '../_components/virtual-list-v2';
 import ResizeObserver from '../_components/resize-observer';
-import { VirtualListProps } from '../_components/virtual-list/interface';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { omit } from '../_utils/omit';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useDrag } from './hooks/use-drag';
@@ -217,8 +217,8 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动
-     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
      * @type VirtualListProps
      */
     virtualListProps: {

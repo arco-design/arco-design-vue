@@ -53,7 +53,7 @@ import VirtualList from '../_components/virtual-list-v2';
 import type {
   VirtualListProps,
   ScrollIntoViewOptions,
-} from '../_components/virtual-list/interface';
+} from '../_components/virtual-list-v2/interface';
 
 export default defineComponent({
   name: 'Tree',
@@ -238,8 +238,8 @@ export default defineComponent({
       type: Function as PropType<FilterTreeNode>,
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#virtuallistprops)
-     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#virtuallistprops)
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#VirtualListProps)
+     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#VirtualListProps)
      */
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
