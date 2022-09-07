@@ -280,8 +280,8 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 表格行元素的类名
-     * @en The class name of the table row element
+     * @zh 表格行元素的类名。`2.34.0` 版本增加函数值支持
+     * @en The class name of the table row element. The `2.34.0` version adds support for function values.
      * @version 2.16.0
      */
     rowClass: {
