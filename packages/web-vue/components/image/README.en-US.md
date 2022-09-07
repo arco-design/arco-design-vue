@@ -42,8 +42,9 @@ description: Used to show and preview pictures.
 |height|Image height|`string \| number`|`-`||
 |title|Title|`string`|`-`||
 |description|Description, will be displayed at the bottom. if alt has no value, it will be set to alt|`string`|`-`||
+|fit|indicate how the image should be resized to fit its container|`'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'`|`-`||
 |alt|Text description of the image|`string`|`-`||
-|hide-footer|Whether to hide footer|`boolean`|`false`||
+|hide-footer|Whether to hide footer (Version 2.36.0 supports the 'never' parameter, which supports displaying bottom content when loading errors)|`boolean \| 'never'`|`false`||
 |footer-position|The position shown at the bottom|`'inner' \| 'outer'`|`'inner'`||
 |show-loader|Whether to show the loading effect|`boolean`|`false`||
 |preview|Whether to enable preview|`boolean`|`true`||
@@ -63,6 +64,7 @@ description: Used to show and preview pictures.
 |error|Customize error content.|-|
 |error-icon|Customize the icon of error content.|-|
 |loader|Customize loading effect.|-|
+|extra|Extra content at the bottom|-|
 
 
 

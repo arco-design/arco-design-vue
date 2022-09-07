@@ -35,7 +35,7 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 |default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`|
 |trigger|触发方式|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`|
 |position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`|
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`|
+|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`|
 ### `<dropdown>` Events
 
 |事件名|描述|参数|

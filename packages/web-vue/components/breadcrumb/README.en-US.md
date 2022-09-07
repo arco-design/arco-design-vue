@@ -27,35 +27,36 @@ description: Breadcrumb is an auxiliary navigation mode used to identify the pos
 
 ### `<breadcrumb>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|max-count|Maximum number of breadcrumbs displayed (0 means no limit)|`number`|`0`|
-|routes|Set routes|`BreadcrumbRoute[]`|`-`|
-|separator|Delimiter text|`string\|number`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|max-count|Maximum number of breadcrumbs displayed (0 means no limit)|`number`|`0`||
+|routes|Set routes|`BreadcrumbRoute[]`|`-`|2.36.0|
+|separator|Delimiter text|`string\|number`|`-`|2.36.0|
+|custom-url|Custom link address|`(paths: string[]) => string`|`-`|2.36.0|
 ### `<breadcrumb>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|more-icon|Custom more icon|-|
-|item-render|Effective when setting routes, custom render breadcrumbs|route: `BreadcrumbRoute`<br>routes: `BreadcrumbRoute[]`<br>paths: `string[]`|
-|separator|Custom separator|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|more-icon|Custom more icon|-|2.36.0|
+|item-render|Effective when setting routes, custom render breadcrumbs|route: `BreadcrumbRoute`<br>routes: `BreadcrumbRoute[]`<br>paths: `string[]`|2.36.0|
+|separator|Custom separator|-||
 
 
 
 
 ### `<breadcrumb-item>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|separator|Delimiter text|`string\|number`|`-`|
-|droplist|Delimiter text|`BreadcrumbRoute['children']`|`-`|
-|dropdown-props|Dropdown props|`object`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|separator|Delimiter text|`string\|number`|`-`|2.36.0|
+|droplist|Dropdown content|`BreadcrumbRoute['children']`|`-`|2.36.0|
+|dropdown-props|Dropdown props|`DropDownProps`|`-`|2.36.0|
 ### `<breadcrumb-item>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|droplist|Custom droplist|-|
-|separator|Custom separator|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|droplist|Custom droplist|-|2.36.0|
+|separator|Custom separator|-|2.36.0|
 
 
 
@@ -64,9 +65,9 @@ description: Breadcrumb is an auxiliary navigation mode used to identify the pos
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
+|label|Breadcrumb name|`string`|`-`|
 |path|Jump path (`a` tag `href` value)|`string`|`-`|
-|breadcrumbName|Breadcrumb name|`string`|`-`|
-|children|Dropdown menu items|`{    path: string;    breadcrumbName: string;  }[]`|`-`|
+|children|Dropdown menu items|`{    label: string;    path: string;  }[]`|`-`|
 
 
 
