@@ -128,3 +128,13 @@ export const getIndex = ({ exports }: { exports: string[] }) =>
   `export { default } from './arco-vue-icon';
 ${exports.join('\n')}
 `;
+
+export const getType = ({ exports }: { exports: string[] }) =>
+  `declare module 'vue' {
+  export interface GlobalComponents {
+${exports.map((item) => `${' '.repeat(4)}${item}`).join('\n')}
+  }
+}
+
+export {};
+`;
