@@ -44,7 +44,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |height|The height of the drawer (only available when placement is top, bottom)|`number\|string`|`250`||
 |popup-container|Mount container for popup|`string \| HTMLElement`|`'body'`||
 |drawer-style|Drawer style|`CSSProperties`|`-`||
-|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
+|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
 |header|Whether to display high-quality content|`boolean`|`true`|2.33.0|
@@ -108,7 +108,7 @@ Drawer._context = app._context;
 |drawerStyle|Drawer style|`CSSProperties`|`-`||
 |onOk|Triggered when the OK button is clicked|`() => void`|`-`||
 |onCancel|Triggered when the cancel or close button is clicked|`() => void`|`-`||
-|onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
+|onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |onOpen|Triggered after the drawer is opened (the animation ends)|`() => void`|`-`||
 |onClose|Triggered when the drawer is closed (the animation ends)|`() => void`|`-`||

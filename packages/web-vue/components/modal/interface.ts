@@ -111,7 +111,9 @@ export interface ModalConfig {
    * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.
    * @version 2.7.0
    */
-  onBeforeOk?: (done: (closed: boolean) => void) => void | boolean;
+  onBeforeOk?: (
+    done: (closed: boolean) => void
+  ) => void | boolean | Promise<void | boolean>;
   /**
    * @zh 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。
    * @en The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.
