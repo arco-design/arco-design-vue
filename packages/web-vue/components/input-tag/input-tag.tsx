@@ -211,6 +211,22 @@ export default defineComponent({
      */
     'blur': (ev: FocusEvent) => true,
   },
+  /**
+   * @zh 后缀元素
+   * @en Suffix
+   * @slot suffix
+   */
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   */
+  /**
+   * @zh 输入框标签的显示内容
+   * @en Display content of tag
+   * @slot tag
+   * @binding {TagData} data
+   */
   setup(props, { emit, slots, attrs }) {
     const { size, disabled, error, uninjectFormItemContext, modelValue } =
       toRefs(props);

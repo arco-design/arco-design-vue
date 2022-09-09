@@ -55,5 +55,12 @@ description: Used to enter the label.
 |---|---|---|:---:|
 |focus|Make the input box focus|-|-|
 |blur|Make the input box lose focus|-|-|
+### `<input-tag>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|tag|Display content of tag|data: `TagData`|
+|prefix|Prefix|-|
+|suffix|Suffix|-|
 
 
