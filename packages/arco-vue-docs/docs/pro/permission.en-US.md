@@ -12,12 +12,12 @@ The common front-end permission control in the middle and background can be roug
 
 1. Menu permission control, manage permissions for a certain menu/page , you can see this page, otherwise it will show no permission.
 
-![](http://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/116622141d7b228ad2259c81cd32d095.gif~tplv-uwbnlip3yd-3.awebp)
+[//]: # (![]&#40;http://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/116622141d7b228ad2259c81cd32d095.gif~tplv-uwbnlip3yd-3.awebp&#41;)
 
 2. Menu permission control, manage permissions for a certain menu/page , you can see this page, otherwise it will show no permission.
 
 
-![](http://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/7b410fa5dad6e47665c264fae910c0c8.gif~tplv-uwbnlip3yd-3.awebp)
+[//]: # (![]&#40;http://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/7b410fa5dad6e47665c264fae910c0c8.gif~tplv-uwbnlip3yd-3.awebp&#41;)
 
 
 ## Usage

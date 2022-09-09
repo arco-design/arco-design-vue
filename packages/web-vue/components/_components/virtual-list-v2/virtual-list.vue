@@ -64,6 +64,10 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    threshold: {
+      type: Number,
+      default: 0,
+    },
     itemKey: {
       type: String,
       default: 'key',
@@ -154,6 +158,10 @@ export default defineComponent({
     });
 
     const currentList = computed(() => {
+      if (props.threshold && data.value.length <= props.threshold) {
+        return data.value;
+      }
+
       return data.value.slice(start.value, end.value);
     });
 

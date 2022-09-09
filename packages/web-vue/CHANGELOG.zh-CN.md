@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 🐛 问题修复
+
+- **select:** 修复 option 插槽参数错误的问题 ([#1607](https://github.com/arco-design/arco-design-vue/pull/1607))
+
+### 💎 功能优化
+
+- **modal:** on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **drawer:** on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **popconfirm:** on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **dropdown:** 选项禁用时不触发单击事件 ([#1611](https://github.com/arco-design/arco-design-vue/pull/1611))
+
+### 🆎 类型修正
+
+- 增加 `virtual-list` 接口和使用说明 ([#1614](https://github.com/arco-design/arco-design-vue/pull/1614))
+
+
 ## 2.36.0
 
 `2022-09-02`

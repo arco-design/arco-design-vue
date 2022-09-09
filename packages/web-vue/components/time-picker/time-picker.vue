@@ -342,7 +342,7 @@ export default defineComponent({
    * @en Extra footer
    * @slot extra
    */
-  setup(props: TimePickerProps, { emit }) {
+  setup(props, { emit }) {
     const {
       type,
       format,

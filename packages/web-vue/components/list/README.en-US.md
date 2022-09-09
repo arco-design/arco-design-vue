@@ -102,7 +102,7 @@ description: The most basic list display, which can carry text, lists, pictures,
 |Name|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |height|Viewable area height|`number \| string`|`-`||
-|threshold|(Repealed) Threshold for the number of elements that automatically turn on virtual scrolling, passing in null means that virtual scrolling is prohibited. Version 2.18.0 deprecated|`number \| null`|`-`||
+|threshold|The threshold of the number of elements to enable virtual scrolling. When the number of data is less than the threshold, virtual scrolling will not be enabled.|`number`|`-`||
 |isStaticItemHeight|(Repealed) Is the element height fixed. Version 2.18.0 deprecated, please use `fixedSize`|`boolean`|`false`||
 |fixedSize|Is the element height fixed.|`boolean`|`false`|2.34.1|
 |estimatedSize|Is the element height fixed.|`number`|`-`|2.34.1|

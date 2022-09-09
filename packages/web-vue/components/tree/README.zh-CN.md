@@ -155,7 +155,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
 |height|可视区域高度|`number \| string`|`-`||
-|threshold|（已废除）自动开启虚拟滚动的元素数量阈值，传入 null 表示禁止虚拟滚动。2.34.1 版本废除|`number \| null`|`-`||
+|threshold|开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。|`number`|`-`||
 |isStaticItemHeight|（已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize`|`boolean`|`false`||
 |fixedSize|元素高度是否是固定的。|`boolean`|`false`|2.34.1|
 |estimatedSize|元素高度不固定时的预估高度。|`number`|`-`|2.34.1|

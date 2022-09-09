@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 🐛 BugFix
+
+- **select:** Fix option slot parameter problem ([#1607](https://github.com/arco-design/arco-design-vue/pull/1607))
+
+### 💎 Enhancement
+
+- **modal:** The on-before-ok property supports function returning a Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **drawer:** The on-before-ok property supports function returning a Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **popconfirm:** The on-before-ok property supports function returning a Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **dropdown:** Don't fire click event when option is disabled ([#1611](https://github.com/arco-design/arco-design-vue/pull/1611))
+
+### 🆎 TypeScript
+
+- Added `virtual-list` interface and usage instructions ([#1614](https://github.com/arco-design/arco-design-vue/pull/1614))
+
+
 ## 2.36.0
 
 `2022-09-02`

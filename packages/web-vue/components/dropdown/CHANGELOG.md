@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 Enhancement
+
+- Don't fire click event when option is disabled ([#1611](https://github.com/arco-design/arco-design-vue/pull/1611))
+
+
 ## 2.34.0
 
 `2022-07-29`

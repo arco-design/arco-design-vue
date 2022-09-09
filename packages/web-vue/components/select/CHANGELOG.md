@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 🐛 BugFix
+
+- Fix option slot parameter problem ([#1607](https://github.com/arco-design/arco-design-vue/pull/1607))
+
+
 ## 2.32.1
 
 `2022-07-01`
