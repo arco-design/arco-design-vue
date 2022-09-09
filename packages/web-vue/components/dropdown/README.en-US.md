@@ -60,6 +60,11 @@ description: When there are too many commands on the page, the alternative comma
 |---|---|---|:---:|
 |value|Value|`string\|number\|object`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
+### `<doption>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|click|Emitted when the button is clicked|ev: `MouseEvent`|
 ### `<doption>` Slots
 
 |Slot Name|Description|Parameters|
