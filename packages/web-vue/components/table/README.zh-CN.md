@@ -77,7 +77,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |indent-size|树形表格的缩进距离|`number`|`16`||
 |row-key|表格行 `key` 的取值字段|`string`|`'key'`||
 |show-header|是否显示表头|`boolean`|`true`||
-|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动|`VirtualListProps`|`-`||
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |span-method|单元格合并方法（索引从数据项开始计数）|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.10.0|
 |span-all|是否让合并方法的索引包含所有|`boolean`|`false`|2.18.0|
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
@@ -329,6 +329,19 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |filters|筛选信息|`Filters`|`-`|
 |dragTarget|拖拽信息|`TableData`|`-`|
 
+
+
+
+### VirtualListProps
+
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|height|可视区域高度|`number \| string`|`-`||
+|threshold|（已废除）自动开启虚拟滚动的元素数量阈值，传入 null 表示禁止虚拟滚动。2.34.1 版本废除|`number \| null`|`-`||
+|isStaticItemHeight|（已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize`|`boolean`|`false`||
+|fixedSize|元素高度是否是固定的。|`boolean`|`false`|2.34.1|
+|estimatedSize|元素高度不固定时的预估高度。|`number`|`-`|2.34.1|
+|buffer|视口边界外提前挂载的元素数量。|`number`|`10`|2.34.1|
 
 
 

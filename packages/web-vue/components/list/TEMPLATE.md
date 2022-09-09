@@ -37,4 +37,4 @@ description: The most basic list display, which can carry text, lists, pictures,
 
 %%API(list-item-meta.vue)%%
 
-%%INTERFACE(../_components/virtual-list/interface.ts)%%
+%%INTERFACE(../_components/virtual-list-v2/interface.ts)%%

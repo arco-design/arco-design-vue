@@ -81,6 +81,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 
 %%INTERFACE(interface.ts)%%
 
+%%INTERFACE(../_components/virtual-list-v2/interface.ts)%%
 
 ## FAQ
 
