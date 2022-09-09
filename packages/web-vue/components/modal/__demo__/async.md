@@ -40,12 +40,11 @@ export default {
     const handleClick = () => {
       visible.value = true;
     };
-    const handleBeforeOk = (done) => {
-      window.setTimeout(() => {
-        done()
-        // prevent close
-        // done(false)
-      }, 3000)
+    const handleBeforeOk = async () => {
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      return true;
+      // prevent close
+      // return false;
     };
     const handleCancel = () => {
       visible.value = false;

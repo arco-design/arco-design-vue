@@ -42,7 +42,7 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |height|抽屉的高度（仅在placement为top,bottom时可用）|`number\|string`|`250`||
 |popup-container|弹出框的挂载容器|`string \| HTMLElement`|`'body'`||
 |drawer-style|抽屉的样式|`CSSProperties`|`-`||
-|on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
+|on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
 |esc-to-close|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 |header|是否展示头部内容|`boolean`|`true`|2.33.0|
@@ -106,7 +106,7 @@ Drawer._context = app._context;
 |drawerStyle|抽屉的样式|`CSSProperties`|`-`||
 |onOk|点击确定按钮时触发|`() => void`|`-`||
 |onCancel|点击取消、关闭按钮时触发|`() => void`|`-`||
-|onBeforeOk|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`||
+|onBeforeOk|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |onBeforeCancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
 |onOpen|抽屉打开后（动画结束）触发|`() => void`|`-`||
 |onClose|抽屉关闭后（动画结束）触发|`() => void`|`-`||
