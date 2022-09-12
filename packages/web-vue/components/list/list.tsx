@@ -232,7 +232,11 @@ export default defineComponent({
       return (
         <Grid.Row class={`${prefixCls}-row`} gutter={props.gridProps.gutter}>
           {currentPageItems.map((item, index) => (
-            <Grid.Col key={index} class={`${prefixCls}-col`}>
+            <Grid.Col
+              key={index}
+              class={`${prefixCls}-col`}
+              {...omit(props.gridProps!, ['gutter'])}
+            >
               {isVNode(item) ? item : slots.item?.({ item, index })}
             </Grid.Col>
           ))}

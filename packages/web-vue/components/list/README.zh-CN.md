@@ -12,7 +12,13 @@ description: 最基础的列表展示，可承载文字、列表、图片、段�
 
 @import ./__demo__/meta.md
 
+@import ./__demo__/actions.md
+
+@import ./__demo__/actions-layout.md
+
 @import ./__demo__/grid.md
+
+@import ./__demo__/responsive-grid.md
 
 @import ./__demo__/scroll.md
 

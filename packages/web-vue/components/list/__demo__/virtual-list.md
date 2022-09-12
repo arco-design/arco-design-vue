@@ -7,12 +7,16 @@ title:
 ## zh-CN
 
 通过指定 `virtualListProps` 来开启虚拟列表，在大量数据时获得高性能表现。
+在使用虚拟列表时，如果列表元素之间高度变化较大可能导致滚动时视口出现空白区域，可通过调整 `virtualListProps.buffer` 属性解决，[使用方式](/vue/docs/faq#%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8)。
 
 ---
 
 ## en-US
 
 By specifying `virtualListProps` to turn on the virtual list, high performance can be obtained when a large amount of data is used.
+When using a virtual list, if the height of the list items varies greatly, it may cause blank space in the viewport when scrolling, which can be solved by setting `virtualListProps.buffer`, [usage](/vue/en-US/docs/faq#The-use-of-virtual-lists).
+
+---
 
 ```vue
 
