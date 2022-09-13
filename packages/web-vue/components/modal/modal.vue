@@ -549,7 +549,8 @@ export default defineComponent({
             }
             if (isPromise(result)) {
               try {
-                result = await result;
+                // if onBeforeOk is Promise<void> ,set Defaults true
+                result = (await result) ?? true;
               } catch (error) {
                 result = false;
               }
