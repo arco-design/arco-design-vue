@@ -9,7 +9,7 @@
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
-        <icon-loading v-if="loading" spin="true" />
+        <icon-loading v-if="loading" :spin="true" />
         <slot v-else name="icon" />
       </span>
       <slot />
@@ -119,7 +119,7 @@ export default defineComponent({
      * @en Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
      */
     htmlType: {
-      type: String,
+      type: String as PropType<'button' | 'submit' | 'reset'>,
       default: 'button',
     },
     /**
