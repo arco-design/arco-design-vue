@@ -14,6 +14,8 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 
 @import ./__demo__/word-limit.md
 
+@import ./__demo__/custom-word-limit.md
+
 @import ./__demo__/auto-size.md
 
 ## API
@@ -30,6 +32,7 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 |error|Whether it is an error state|`boolean`|`false`||
 |max-length|Maximum length of input value, the errorOnly attribute was added in version 2.12.0|`number \| { length: number; errorOnly?: boolean }`|`0`||
 |show-word-limit|Whether to display word count|`boolean`|`false`||
+|word-limit-class|The class name of the popup content|`ClassName`|`-`||
 |allow-clear|Whether to allow clearing the text|`boolean`|`false`||
 |auto-size|Whether to make the textarea adapt to the height of the content|`boolean \| { minRows?: number; maxRows?: number }`|`false`||
 |word-length|Calculation method of word length|`(value: string) => number`|`-`||
@@ -49,5 +52,10 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 |---|---|---|:---:|:---|
 |focus|Make the input box focus|-|-|2.24.0|
 |blur|Make the input box lose focus|-|-|2.24.0|
+### `<textarea>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|word-limit|Word limit element|-|
 
 
