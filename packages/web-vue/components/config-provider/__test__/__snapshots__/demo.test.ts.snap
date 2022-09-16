@@ -23,49 +23,53 @@ exports[`<config-provider> demo: render [empty] correctly 1`] = `
   <div class=\\"arco-spin\\">
     <!---->
     <div class=\\"arco-table-container\\">
-      <div class=\\"arco-table-content arco-table-content-scroll-x\\">
-        <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr class=\\"arco-table-tr\\">
-              <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-              <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
-                <!---->
-                <!----></span>
-                <!---->
-                <!---->
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"arco-table-tr arco-table-tr-empty\\">
-              <td class=\\"arco-table-td\\" colspan=\\"4\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><div class=\\"my-empty\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-trophy\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 33c-6.075 0-11-4.925-11-11m11 11c6.075 0 11-4.925 11-11M24 33v8M13 22V7h22v15m-22 0V9H7v7a6 6 0 0 0 6 6Zm22 0V9h6v7a6 6 0 0 1-6 6ZM12 41h24\\"></path></svg></div></span></span></td>
-            </tr>
-          </tbody>
-          <!---->
-        </table>
+      <div class=\\"arco-scrollbar arco-scrollbar-type-track\\" style=\\"height: 100%;\\">
+        <div class=\\"arco-scrollbar-container arco-table-content arco-table-content-scroll-x\\">
+          <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+            <colgroup>
+              <col>
+              <col>
+              <col>
+              <col>
+            </colgroup>
+            <thead>
+              <tr class=\\"arco-table-tr\\">
+                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </th>
+                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </th>
+                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </th>
+                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class=\\"arco-table-tr arco-table-tr-empty\\">
+                <td class=\\"arco-table-td\\" colspan=\\"4\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><div class=\\"my-empty\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-trophy\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 33c-6.075 0-11-4.925-11-11m11 11c6.075 0 11-4.925 11-11M24 33v8M13 22V7h22v15m-22 0V9H7v7a6 6 0 0 0 6 6Zm22 0V9h6v7a6 6 0 0 1-6 6ZM12 41h24\\"></path></svg></div></span></span></td>
+              </tr>
+            </tbody>
+            <!---->
+          </table>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
       </div>
     </div>
     <!---->

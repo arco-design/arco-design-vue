@@ -114,6 +114,7 @@ export { default as Radio, RadioGroup } from './radio';
 export { default as Rate } from './rate';
 export { default as ResizeBox } from './resize-box';
 export { default as Result } from './result';
+export { default as Scrollbar } from './scrollbar';
 export { default as Select, Option, Optgroup } from './select';
 export type {
   SelectProps,
@@ -178,6 +179,7 @@ export {
 } from './typography';
 export type { EllipsisConfig } from './typography';
 export { default as Upload } from './upload';
+export { default as OverflowList } from './overflow-list';
 export type {
   FileStatus,
   FileItem,
