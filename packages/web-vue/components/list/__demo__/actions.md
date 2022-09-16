@@ -1,18 +1,18 @@
 ```yaml
 title:
-  zh-CN: 列表元素
-  en-US: List Item Meta
+  zh-CN: 增加操作项
+  en-US: With Actions
 ```
 
 ## zh-CN
 
-使用 `list-item-meta` 组件可快速指定头像、标题、文字。
+通过 `actions` 来为列表添加操作项。
 
 ---
 
 ## en-US
 
-Use the `list-item-meta` component to quickly specify the avatar, title, and text.
+Use `actions` to add operation items to the list.
 
 ---
 
@@ -33,6 +33,10 @@ Use the `list-item-meta` component to quickly specify the avatar, title, and tex
           </a-avatar>
         </template>
       </a-list-item-meta>
+      <template #actions>
+        <icon-edit />
+        <icon-delete />
+      </template>
     </a-list-item>
   </a-list>
 </template>
