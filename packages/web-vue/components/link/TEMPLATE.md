@@ -25,6 +25,8 @@ description: The basic style of the link.
 
 @import ./__demo__/icon.md
 
+@import ./__demo__/loading.md
+
 ## API
 
 
