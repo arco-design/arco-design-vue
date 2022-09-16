@@ -63,7 +63,7 @@ export default defineComponent({
      */
     type: {
       type: String as PropType<'track' | 'embed'>,
-      default: 'track',
+      default: 'embed',
     },
     /**
      * @zh 外层的类名

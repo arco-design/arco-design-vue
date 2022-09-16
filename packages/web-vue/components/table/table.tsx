@@ -1352,8 +1352,8 @@ export default defineComponent({
     const hasScrollBar = ref(false);
 
     const isTbodyHasScrollBar = () => {
-      if (tbodyComRef.value) {
-        return tbodyComRef.value.hasVerticalScrollbar;
+      if (tbodyRef.value) {
+        return tbodyRef.value.offsetWidth > tbodyRef.value.clientWidth;
       }
       return false;
     };

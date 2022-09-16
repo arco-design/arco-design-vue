@@ -18,7 +18,7 @@ Set the `type` property to change the scrollbar type, the `track` type will disp
 
 ```vue
 <template>
-  <a-scrollbar type="embed" style="height:200px;overflow: auto;">
+  <a-scrollbar type="track" style="height:200px;overflow: auto;">
     <div style="height: 2000px;width: 2000px; background-color: var(--color-primary-light-4);">Content</div>
   </a-scrollbar>
 </template>
