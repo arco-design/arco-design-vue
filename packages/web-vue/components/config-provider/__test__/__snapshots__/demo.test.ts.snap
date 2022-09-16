@@ -23,7 +23,7 @@ exports[`<config-provider> demo: render [empty] correctly 1`] = `
   <div class=\\"arco-spin\\">
     <!---->
     <div class=\\"arco-table-container\\">
-      <div class=\\"arco-scrollbar arco-scrollbar-type-track\\" style=\\"height: 100%;\\">
+      <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
         <div class=\\"arco-scrollbar-container arco-table-content arco-table-content-scroll-x\\">
           <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
             <colgroup>

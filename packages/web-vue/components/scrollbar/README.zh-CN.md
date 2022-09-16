@@ -15,7 +15,7 @@ description: 用于替换浏览器默认滚动条样式。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|type|类型|`'track' \| 'embed'`|`'track'`|
+|type|类型|`'track' \| 'embed'`|`'embed'`|
 |outer-class|外层的类名|`string\|object\|array`|`-`|
 |outer-style|外层的样式|`StyleValue`|`-`|
 ### `<scrollbar>` Events

@@ -9,7 +9,6 @@ changelog: true
 ### 💎 功能优化
 
 - 新增使用案例 ([#1625](https://github.com/arco-design/arco-design-vue/pull/1625))
-- 支持响应式网格布局参数 ([#1625](https://github.com/arco-design/arco-design-vue/pull/1625))
 
 
 ## 2.29.1

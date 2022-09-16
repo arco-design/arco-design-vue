@@ -17,7 +17,7 @@ description: Used to replace the browser default scroll bar style.
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|type|Type|`'track' \| 'embed'`|`'track'`|
+|type|Type|`'track' \| 'embed'`|`'embed'`|
 |outer-class|Outer class|`string\|object\|array`|`-`|
 |outer-style|Outer style|`StyleValue`|`-`|
 ### `<scrollbar>` Events
