@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 新增功能
+
+- **typography:** 省略模式增加支持 CSS 方式（实验性） ([#1635](https://github.com/arco-design/arco-design-vue/pull/1635))
+- **switch:** 支持 `beforeChange` 切换事件拦截 ([#1626](https://github.com/arco-design/arco-design-vue/pull/1626))
+- **link:** 添加加载中状态属性 ([#1616](https://github.com/arco-design/arco-design-vue/pull/1616))
+
+### 💎 功能优化
+
+- **list:** 支持响应式网格布局参数 ([#1625](https://github.com/arco-design/arco-design-vue/pull/1625))
+
+
 ## 2.36.1
 
 `2022-09-09`

@@ -92,12 +92,13 @@ description: 用于展示标题、段落、文本内容。
 
 ### EllipsisConfig
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|rows|显示省略的行数|`number`|`1`|
-|expandable|是否支持展开/折叠|`boolean`|`false`|
-|ellipsisStr|省略号|`string`|`'...'`|
-|suffix|后缀|`string`|`-`|
-|showTooltip|配置省略时的弹出框|`boolean    \| { type: 'tooltip' \| 'popover'; props: Record<string, any> }`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|rows|显示省略的行数|`number`|`1`||
+|expandable|是否支持展开/折叠|`boolean`|`false`||
+|ellipsisStr|省略号|`string`|`'...'`||
+|suffix|后缀|`string`|`-`||
+|showTooltip|配置省略时的弹出框|`boolean    \| { type: 'tooltip' \| 'popover'; props: Record<string, any> }`|`false`||
+|css|是否使用 CSS 省略（此模式暂不支持展开、自定义省略号和后缀）|`boolean`|`false`|2.37.0|
 
 

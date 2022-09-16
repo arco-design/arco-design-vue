@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.37.0
+
+`2022-09-16`
+
+### 💎 Enhancement
+
+- add usage demo ([#1625](https://github.com/arco-design/arco-design-vue/pull/1625))
+- support responsive grid props ([#1625](https://github.com/arco-design/arco-design-vue/pull/1625))
+
+
 ## 2.29.1
 
 `2022-06-02`

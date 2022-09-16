@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 Feature
+
+- support `beforeChange` intercept change event ([#1626](https://github.com/arco-design/arco-design-vue/pull/1626))
+- switch intercept demo ([#1626](https://github.com/arco-design/arco-design-vue/pull/1626))
+
+
 ## 2.17.0
 
 `2022-02-11`
