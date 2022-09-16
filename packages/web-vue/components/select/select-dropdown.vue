@@ -7,7 +7,7 @@
       </slot>
     </div>
     <slot v-if="virtualList && !loading && !empty" name="virtual-list" />
-    <div
+    <scrollbar
       v-if="!virtualList"
       v-show="!loading && !empty"
       ref="wrapperRef"
@@ -17,7 +17,7 @@
       <ul :class="`${prefixCls}-list`">
         <slot />
       </ul>
-    </div>
+    </scrollbar>
     <div v-if="$slots.footer && !empty" :class="`${prefixCls}-footer`">
       <slot name="footer" />
     </div>
@@ -31,10 +31,12 @@ import type { EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
+import Scrollbar from '../scrollbar';
 
 export default defineComponent({
   name: 'SelectDropdown',
   components: {
+    Scrollbar,
     Empty,
     Spin,
   },

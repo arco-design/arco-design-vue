@@ -14,6 +14,8 @@ description: 链接的基本样式。
 
 @import ./__demo__/icon.md
 
+@import ./__demo__/loading.md
+
 ## API
 
 
@@ -26,6 +28,7 @@ description: 链接的基本样式。
 |status|链接的状态|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`||
 |hoverable|鼠标悬浮时存在底色|`boolean`|`true`|2.7.0|
 |icon|图标|`boolean`|`false`|2.7.0|
+|loading|链接是否为加载中状态|`boolean`|`false`|2.37.0|
 |disabled|链接是否禁用|`boolean`|`false`||
 ### `<link>` Events
 

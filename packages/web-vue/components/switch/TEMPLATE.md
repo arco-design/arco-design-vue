@@ -29,6 +29,8 @@ description: Mutually exclusive operation controls, users can turn on or turn of
 
 @import ./__demo__/value.md
 
+@import ./__demo__/change-intercept.md
+
 @import ./__demo__/loading.md
 
 @import ./__demo__/text.md

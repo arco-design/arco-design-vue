@@ -6,6 +6,20 @@ exports[`<switch> demo: render [basic] correctly 1`] = `
 </button>"
 `;
 
+exports[`<switch> demo: render [change-intercept] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-round\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+  <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-line\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+</div>"
+`;
+
 exports[`<switch> demo: render [color] correctly 1`] = `
 "<button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\" style=\\"background-color: rgb(20, 201, 201);\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
   <!--v-if-->

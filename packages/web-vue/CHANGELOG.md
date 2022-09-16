@@ -2,6 +2,32 @@
 changelog: true
 ```
 
+## 2.37.1
+
+`2022-09-16`
+
+### 🆕 Feature
+
+- **overflow-list:** Added `OverflowList` component ([#1634](https://github.com/arco-design/arco-design-vue/pull/1634))
+- **scrollbar:** Add virtual scrollbar component ([#1634](https://github.com/arco-design/arco-design-vue/pull/1634))
+- **scrollbar:** Table, select, list components replace virtual scroll bars ([#1634](https://github.com/arco-design/arco-design-vue/pull/1634))
+
+
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 Feature
+
+- **typography:** Omit mode adds support for CSS mode (experimental) ([#1635](https://github.com/arco-design/arco-design-vue/pull/1635))
+- **switch:** support `beforeChange` intercept change event ([#1626](https://github.com/arco-design/arco-design-vue/pull/1626))
+- **link:** add loading prop ([#1616](https://github.com/arco-design/arco-design-vue/pull/1616))
+
+### 💎 Enhancement
+
+- **list:** support responsive grid props ([#1625](https://github.com/arco-design/arco-design-vue/pull/1625))
+
+
 ## 2.36.1
 
 `2022-09-09`

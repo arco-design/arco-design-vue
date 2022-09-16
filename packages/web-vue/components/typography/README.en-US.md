@@ -94,12 +94,13 @@ description: Used to display titles, paragraphs, and text content.
 
 ### EllipsisConfig
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|rows|The number of omitted lines|`number`|`1`|
-|expandable|Whether expandable|`boolean`|`false`|
-|ellipsisStr|Ellipsis string|`string`|`'...'`|
-|suffix|Suffix|`string`|`-`|
-|showTooltip|Pop-up box when configuration is omitted|`boolean    \| { type: 'tooltip' \| 'popover'; props: Record<string, any> }`|`false`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|rows|The number of omitted lines|`number`|`1`||
+|expandable|Whether expandable|`boolean`|`false`||
+|ellipsisStr|Ellipsis string|`string`|`'...'`||
+|suffix|Suffix|`string`|`-`||
+|showTooltip|Pop-up box when configuration is omitted|`boolean    \| { type: 'tooltip' \| 'popover'; props: Record<string, any> }`|`false`||
+|css|Whether to use CSS ellipsis (expansion, custom ellipsis and suffix are not supported in this mode)|`boolean`|`false`|2.37.0|
 
 

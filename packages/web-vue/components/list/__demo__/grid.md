@@ -23,8 +23,8 @@ Configure the grid list through the `grid` property.
       <a-list>
         <template #header>Platform</template>
         <a-list-item>iOS</a-list-item>
-        <a-list-item>iOS</a-list-item>
-        <a-list-item>iOS</a-list-item>
+        <a-list-item>Android</a-list-item>
+        <a-list-item>Web</a-list-item>
       </a-list>
     </a-list-item>
     <a-list-item>

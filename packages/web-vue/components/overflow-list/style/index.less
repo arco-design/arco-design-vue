@@ -1,0 +1,19 @@
+@import '../../style/theme/index.less';
+
+@overflow-prefix-cls: ~'@{prefix}-overflow-list';
+
+.@{overflow-prefix-cls} {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  > *:not(:last-child) {
+    flex-shrink: 0;
+  }
+
+  &-spacer {
+    flex: 1;
+    min-width: 0;
+    height: 1px;
+  }
+}
