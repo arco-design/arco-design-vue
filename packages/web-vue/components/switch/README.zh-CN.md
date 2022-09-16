@@ -18,6 +18,8 @@ description: 互斥性的操作控件，用户可打开或关闭某个功能。
 
 @import ./__demo__/value.md
 
+@import ./__demo__/change-intercept.md
+
 @import ./__demo__/loading.md
 
 @import ./__demo__/text.md
@@ -41,6 +43,7 @@ description: 互斥性的操作控件，用户可打开或关闭某个功能。
 |unchecked-value|未选中时的值|`string\|number\|boolean`|`false`|2.12.0|
 |checked-color|选中时的开关颜色|`string`|`-`|2.12.0|
 |unchecked-color|未选中时的开关颜色|`string`|`-`|2.12.0|
+|before-change|选中时的开关颜色|`(value: boolean) => boolean \| Promise<boolean>`|`-`|2.12.0|
 ### `<switch>` Events
 
 |事件名|描述|参数|
