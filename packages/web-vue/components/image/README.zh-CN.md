@@ -48,7 +48,7 @@ description: 展示和预览图片。
 |preview|是否开启预览|`boolean`|`true`||
 |preview-visible **(v-model)**|控制预览的打开状态，可与 previewVisibleChange 配合使用|`boolean`|`-`||
 |default-preview-visible|预览的默认打开状态|`boolean`|`false`||
-|preview-props|预览的配置项（所有选项都是可选的） [ImagePreviewProps](#imagepreview)|`ImagePreviewProps`|`-`||
+|preview-props|预览的配置项（所有选项都是可选的） [ImagePreviewProps](#image-preview%20Props)|`ImagePreviewProps`|`-`||
 |footer-class|底部显示区域的类名|`string\|array\|object`|`-`|2.23.0|
 ### `<image>` Events
 
