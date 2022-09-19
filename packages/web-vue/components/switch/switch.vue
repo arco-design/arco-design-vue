@@ -12,7 +12,7 @@
   >
     <span :class="`${prefixCls}-handle`">
       <span :class="`${prefixCls}-handle-icon`">
-        <icon-loading v-if="loading" />
+        <icon-loading v-if="computedLoading" />
         <template v-else>
           <slot v-if="computedCheck" name="checked-icon" />
           <slot v-else name="unchecked-icon" />
@@ -40,6 +40,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
+import { isFunction, isPromise } from '../_utils/is';
 
 export default defineComponent({
   name: 'Switch',
@@ -130,6 +131,16 @@ export default defineComponent({
     uncheckedColor: {
       type: String,
     },
+    /**
+     * @zh switch 状态改变前的钩子， 返回 false 或者返回 Promise 且被 reject 则停止切换。
+     * @en before-change hook before the switch state changes. If false is returned or a Promise is returned and then is rejected, will stop switching
+     * @version 2.37.0
+     */
+    beforeChange: {
+      type: Function as PropType<
+        (newValue: boolean) => Promise<boolean | void> | boolean | void
+      >,
+    },
   },
   emits: {
     'update:modelValue': (value: boolean | string | number) => true,
@@ -185,19 +196,42 @@ export default defineComponent({
     const _checked = ref(
       props.defaultChecked ? props.checkedValue : props.uncheckedValue
     );
-    const computedCheck = computed(
+    const computedCheck = computed<boolean>(
       () => (props.modelValue ?? _checked.value) === props.checkedValue
     );
+    const _loading = ref(props.loading);
+    const computedLoading = computed(() => _loading.value || props.loading);
 
-    const handleClick = (ev: Event) => {
-      if (props.loading || mergedDisabled.value) {
-        return;
-      }
-      const checked = !computedCheck.value;
+    const handleChange = (checked: boolean, ev: Event) => {
       _checked.value = checked ? props.checkedValue : props.uncheckedValue;
       emit('update:modelValue', _checked.value);
       emit('change', _checked.value, ev);
       eventHandlers.value?.onChange?.(ev);
+    };
+
+    const handleClick = async (ev: Event) => {
+      if (computedLoading.value || mergedDisabled.value) {
+        return;
+      }
+      const checked = !computedCheck.value;
+      const shouldChange = props.beforeChange;
+
+      if (
+        (shouldChange && isPromise(shouldChange)) ||
+        isFunction(shouldChange)
+      ) {
+        _loading.value = true;
+        try {
+          const result = await shouldChange(checked);
+          if (result) {
+            handleChange(checked, ev);
+          }
+        } finally {
+          _loading.value = false;
+        }
+      } else {
+        handleChange(checked, ev);
+      }
     };
 
     const handleFocus = (ev: FocusEvent) => {
@@ -218,7 +252,7 @@ export default defineComponent({
           mergedSize.value === 'small' || mergedSize.value === 'mini',
         [`${prefixCls}-checked`]: computedCheck.value,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
-        [`${prefixCls}-loading`]: props.loading,
+        [`${prefixCls}-loading`]: computedLoading.value,
       },
     ]);
 
@@ -242,6 +276,7 @@ export default defineComponent({
       mergedDisabled,
       buttonStyle,
       computedCheck,
+      computedLoading,
       handleClick,
       handleFocus,
       handleBlur,

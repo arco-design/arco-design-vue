@@ -1,7 +1,8 @@
 <template>
   <a :href="disabled ? undefined : href" :class="cls" @click="handleClick">
-    <span v-if="showIcon" :class="`${prefixCls}-icon`">
-      <slot name="icon">
+    <span v-if="loading || showIcon" :class="`${prefixCls}-icon`">
+      <icon-loading v-if="loading" />
+      <slot v-else name="icon">
         <icon-link />
       </slot>
     </span>
@@ -15,11 +16,12 @@ import { computed, defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { Status } from '../_utils/constant';
 import IconLink from '../icon/icon-link';
+import IconLoading from '../icon/icon-loading';
 import { hasPropOrSlot } from '../_utils/use-prop-or-slot';
 
 export default defineComponent({
   name: 'Link',
-  components: { IconLink },
+  components: { IconLink, IconLoading },
   props: {
     /**
      * @zh 链接地址
@@ -52,6 +54,12 @@ export default defineComponent({
      */
     icon: Boolean,
     /**
+     * @zh 链接是否为加载中状态
+     * @en Whether the link is in the loading state
+     * @version 2.37.0
+     */
+    loading: Boolean,
+    /**
      * @zh 链接是否禁用
      * @en Whether the link is disabled
      */
@@ -70,9 +78,11 @@ export default defineComponent({
     const showIcon = hasPropOrSlot(props, slots, 'icon');
 
     const handleClick = (ev: MouseEvent) => {
-      if (!props.disabled) {
-        emit('click', ev);
+      if (props.disabled || props.loading) {
+        ev.preventDefault();
+        return;
       }
+      emit('click', ev);
     };
 
     const cls = computed(() => [
@@ -80,8 +90,9 @@ export default defineComponent({
       `${prefixCls}-status-${props.status}`,
       {
         [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-loading`]: props.loading,
         [`${prefixCls}-hoverless`]: !props.hoverable,
-        [`${prefixCls}-with-icon`]: showIcon.value,
+        [`${prefixCls}-with-icon`]: props.loading || showIcon.value,
       },
     ]);
 

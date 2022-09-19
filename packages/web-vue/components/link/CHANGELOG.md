@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 Feature
+
+- add loading prop ([#1616](https://github.com/arco-design/arco-design-vue/pull/1616))
+
+
 ## 2.12.0
 
 `2021-12-24`
