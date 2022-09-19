@@ -211,8 +211,8 @@ export default defineComponent({
       default: 3000,
     },
     /**
-     * @zh 自动溢出省略，具体参数配置看 [EllipsisConfig](#ellipsisconfig)
-     * @en Automatic overflow omission, refer to [EllipsisConfig](#ellipsisconfig) for more information.
+     * @zh 自动溢出省略，具体参数配置看 [EllipsisConfig](#EllipsisConfig)
+     * @en Automatic overflow omission, refer to [EllipsisConfig](#EllipsisConfig) for more information.
      */
     ellipsis: {
       type: [Boolean, Object] as PropType<boolean | EllipsisConfig>,

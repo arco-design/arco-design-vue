@@ -43,7 +43,7 @@ description: 用于展示标题、段落、文本内容。
 |copyable|开启复制功能|`boolean`|`false`||
 |copy-text|复制的文字|`string`|`-`||
 |copy-delay|复制成功后，复制按钮恢复到可点击状态的延迟时间，单位是毫秒|`number`|`3000`|2.16.0|
-|ellipsis|自动溢出省略，具体参数配置看 [EllipsisConfig](#ellipsisconfig)|`boolean \| EllipsisConfig`|`false`||
+|ellipsis|自动溢出省略，具体参数配置看 [EllipsisConfig](#EllipsisConfig)|`boolean \| EllipsisConfig`|`false`||
 |edit-tooltip-props|编辑按钮问题提示配置|`object`|`-`|2.32.0|
 |copy-tooltip-props|拷贝按钮问题提示配置|`object`|`-`|2.32.0|
 ### `Common` Events
