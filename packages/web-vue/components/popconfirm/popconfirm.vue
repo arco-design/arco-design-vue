@@ -273,13 +273,14 @@ export default defineComponent({
         // eslint-disable-next-line no-async-promise-executor
         async (resolve) => {
           if (isFunction(props.onBeforeOk)) {
-            let result = props.onBeforeOk(resolve);
+            let result = props.onBeforeOk((closed = true) => resolve(closed));
             if (isPromise(result) || !isBoolean(result)) {
               _okLoading.value = true;
             }
             if (isPromise(result)) {
               try {
-                result = await result;
+                // if onBeforeOk is Promise<void> ,set Defaults true
+                result = (await result) ?? true;
               } catch (error) {
                 result = false;
               }
