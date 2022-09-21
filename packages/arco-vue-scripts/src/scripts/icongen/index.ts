@@ -11,7 +11,6 @@ import {
   getComponentIndex,
   getIconVue,
   getIndex,
-  getType,
 } from './vue-template';
 
 interface IconData {
@@ -170,36 +169,10 @@ function buildIndex(data: IconData[]) {
   );
 }
 
-function buildType(data: IconData[]) {
-  const exports = [];
-  for (const iconData of data) {
-    for (const item of iconData.list) {
-      exports.push(
-        `${item.componentName}: typeof import('@arco-design/web-vue/es/icon')['${item.componentName}'];`
-      );
-    }
-  }
-
-  const typeContent = getType({ exports });
-
-  fs.outputFile(
-    path.resolve(paths.components, 'icon-components.ts'),
-    typeContent,
-    (err) => {
-      if (err) {
-        console.log(`Build Type Failed: ${err}`);
-      } else {
-        console.log('Build Type Success!');
-      }
-    }
-  );
-}
-
 const icongen = async () => {
   const data = getSVGData();
   await buildIconComponent(data);
   buildIndex(data);
-  buildType(data);
 };
 
 export default icongen;
