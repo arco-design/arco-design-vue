@@ -363,23 +363,25 @@ export default defineComponent({
               style={contentStyle.value}
               onScroll={handleScroll}
             >
-              {slots.header && (
-                <div class={`${prefixCls}-header`}>{slots.header()}</div>
-              )}
-              {isVirtualList.value && !props.gridProps ? (
-                <>
-                  {renderVirtualList()}
-                  {renderScrollLoading()}
-                </>
-              ) : (
-                <div role="list" class={contentCls.value}>
-                  {renderItems()}
-                  {renderScrollLoading()}
-                </div>
-              )}
-              {slots.footer && (
-                <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
-              )}
+              <div class={`${prefixCls}-content-wrapper`}>
+                {slots.header && (
+                  <div class={`${prefixCls}-header`}>{slots.header()}</div>
+                )}
+                {isVirtualList.value && !props.gridProps ? (
+                  <>
+                    {renderVirtualList()}
+                    {renderScrollLoading()}
+                  </>
+                ) : (
+                  <div role="list" class={contentCls.value}>
+                    {renderItems()}
+                    {renderScrollLoading()}
+                  </div>
+                )}
+                {slots.footer && (
+                  <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
+                )}
+              </div>
             </Scrollbar>
             {renderPagination()}
           </Spin>

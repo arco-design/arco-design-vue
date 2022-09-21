@@ -186,13 +186,13 @@ export default defineComponent({
           const horizontalOffset = Math.round(
             containerRef.value.scrollLeft / (horizontalData.value?.ratio ?? 1)
           );
-          horizontalThumbRef.value.setOffset(horizontalOffset);
+          horizontalThumbRef.value?.setOffset(horizontalOffset);
         }
         if (hasVerticalScrollbar.value) {
           const verticalOffset = Math.round(
             containerRef.value.scrollTop / (verticalData.value?.ratio ?? 1)
           );
-          verticalThumbRef.value.setOffset(verticalOffset);
+          verticalThumbRef.value?.setOffset(verticalOffset);
         }
       }
       emit('scroll', ev);

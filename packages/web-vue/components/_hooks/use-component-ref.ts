@@ -1,4 +1,4 @@
-import { ComponentPublicInstance, ref, watch } from 'vue';
+import { ComponentPublicInstance, onMounted, ref, watch } from 'vue';
 import { isComponentInstance } from '../_utils/is';
 
 export const useComponentRef = (name: string) => {
@@ -11,7 +11,11 @@ export const useComponentRef = (name: string) => {
     return componentRef.value;
   };
 
-  const elementRef = ref(getElement());
+  const elementRef = ref();
+
+  onMounted(() => {
+    elementRef.value = getElement();
+  });
 
   watch([componentRef], () => {
     elementRef.value = getElement();
