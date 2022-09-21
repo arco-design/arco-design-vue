@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- **list:** Fix loading more scrollbar heights in use ([#1658](https://github.com/arco-design/arco-design-vue/pull/1658))
+- Fix the problem that the component with built-in virtual scrollbar loses its style when it is loaded on demand ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **scrollbar:** Fix styling issues in Firefox ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **table:** Fixed the virtual scroll bar style error caused by maxHeight in the scroll property ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **select:** Fixed the problem that the drop-down menu did not follow the scrolling in keyboard interaction ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **select:** Fix the problem of error reporting in some cases of built-in virtual scroll bar ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+### 💎 Enhancement
+
+- The return value of the component's onBeforeOk property `Promise<void>` and the `done()` method default behavior adjusted to success ([#1650](https://github.com/arco-design/arco-design-vue/pull/1650))
+
+
 ## 2.37.1
 
 `2022-09-16`

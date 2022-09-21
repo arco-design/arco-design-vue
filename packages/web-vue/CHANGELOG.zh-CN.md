@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 问题修复
+
+- **list:** 修复加载更多使用中滚动条高度的问题 ([#1658](https://github.com/arco-design/arco-design-vue/pull/1658))
+- 修复内置虚拟滚动条的组件按需加载时丢失样式的问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **scrollbar:** 修复在 Firefox 下的样式问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **table:** 修复 scroll 属性中 maxHeight 导致虚拟滚动条样式错误问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **select:** 修复键盘交互中下拉菜单没有跟随滚动的问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **select:** 修复内置虚拟滚动条部分情况下报错的问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+### 💎 功能优化
+
+- 组件 onBeforeOk 属性的返回值 `Promise<void>` 与 `done()`方法默认行为调整为成功 ([#1650](https://github.com/arco-design/arco-design-vue/pull/1650))
+
+
 ## 2.37.1
 
 `2022-09-16`

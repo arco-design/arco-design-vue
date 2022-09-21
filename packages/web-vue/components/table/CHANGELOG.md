@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- Fixed the virtual scroll bar style error caused by maxHeight in the scroll property ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
 ## 2.36.0
 
 `2022-09-02`

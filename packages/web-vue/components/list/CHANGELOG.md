@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- Fix loading more scrollbar heights in use ([#1658](https://github.com/arco-design/arco-design-vue/pull/1658))
+
+
 ## 2.37.0
 
 `2022-09-16`

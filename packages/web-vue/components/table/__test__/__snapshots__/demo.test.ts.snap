@@ -1249,47 +1249,51 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-has-fixed-col-right arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
         <div class=\\"arco-scrollbar-container arco-table-content\\">
-          <div class=\\"arco-table-header\\">
-            <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-              <colgroup>
-                <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
-                <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-                <col>
-                <col>
-                <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
-              </colgroup>
-              <thead>
-                <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-                  <th class=\\"arco-table-th arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                </tr>
-              </thead>
-            </table>
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+            <div class=\\"arco-scrollbar-container arco-table-header\\">
+              <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+                <colgroup>
+                  <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
+                  <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
+                  <col>
+                  <col>
+                  <col style=\\"width: 200px; min-width: 200px; max-width: 200px;\\">
+                </colgroup>
+                <thead>
+                  <tr class=\\"arco-table-tr\\">
+                    <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+                    <th class=\\"arco-table-th arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th arco-table-col-fixed-right arco-table-col-fixed-right-first\\" style=\\"right: 0px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!--v-if-->
+            <!--v-if-->
           </div>
-          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"min-height: 0;\\">
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"display: flex; min-height: 0;\\">
             <div class=\\"arco-scrollbar-container arco-table-body\\" style=\\"max-height: 200px;\\">
               <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
                 <colgroup>
@@ -2447,45 +2451,49 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
         <div class=\\"arco-scrollbar-container arco-table-content\\">
-          <div class=\\"arco-table-header\\">
-            <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-              <colgroup>
-                <col>
-                <col>
-                <col>
-                <col>
-              </colgroup>
-              <thead>
-                <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                </tr>
-              </thead>
-            </table>
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+            <div class=\\"arco-scrollbar-container arco-table-header\\">
+              <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr class=\\"arco-table-tr\\">
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!--v-if-->
+            <!--v-if-->
           </div>
-          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"min-height: 0;\\">
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"display: flex; min-height: 0;\\">
             <div class=\\"arco-scrollbar-container arco-table-body\\" style=\\"max-height: 200px;\\">
               <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
                 <colgroup>
@@ -2568,45 +2576,49 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
         <div class=\\"arco-table-container arco-table-scroll-position-both arco-table-scroll-y\\">
           <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
             <div class=\\"arco-scrollbar-container arco-table-content\\">
-              <div class=\\"arco-table-header\\">
-                <table class=\\"arco-table-element\\" style=\\"width: 120%;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-                  <colgroup>
-                    <col>
-                    <col>
-                    <col>
-                    <col>
-                  </colgroup>
-                  <thead>
-                    <tr class=\\"arco-table-tr\\">
-                      <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                        <!---->
-                        <!----></span>
-                        <!---->
-                        <!---->
-                      </th>
-                      <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
-                        <!---->
-                        <!----></span>
-                        <!---->
-                        <!---->
-                      </th>
-                      <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
-                        <!---->
-                        <!----></span>
-                        <!---->
-                        <!---->
-                      </th>
-                      <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
-                        <!---->
-                        <!----></span>
-                        <!---->
-                        <!---->
-                      </th>
-                    </tr>
-                  </thead>
-                </table>
+              <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+                <div class=\\"arco-scrollbar-container arco-table-header\\">
+                  <table class=\\"arco-table-element\\" style=\\"width: 120%;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+                    <colgroup>
+                      <col>
+                      <col>
+                      <col>
+                      <col>
+                    </colgroup>
+                    <thead>
+                      <tr class=\\"arco-table-tr\\">
+                        <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                          <!---->
+                          <!----></span>
+                          <!---->
+                          <!---->
+                        </th>
+                        <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                          <!---->
+                          <!----></span>
+                          <!---->
+                          <!---->
+                        </th>
+                        <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
+                          <!---->
+                          <!----></span>
+                          <!---->
+                          <!---->
+                        </th>
+                        <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
+                          <!---->
+                          <!----></span>
+                          <!---->
+                          <!---->
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <!--v-if-->
+                <!--v-if-->
               </div>
-              <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"min-height: 0;\\">
+              <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"display: flex; min-height: 0;\\">
                 <div class=\\"arco-scrollbar-container arco-table-body\\" style=\\"max-height: 100%;\\">
                   <table class=\\"arco-table-element\\" style=\\"width: 120%;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
                     <colgroup>
@@ -3153,45 +3165,49 @@ exports[`<table> demo: render [sticky] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-scroll-y\\">
       <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
         <div class=\\"arco-scrollbar-container arco-table-content\\">
-          <div class=\\"arco-table-header arco-table-header-sticky\\" style=\\"top: 100px;\\">
-            <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-              <colgroup>
-                <col>
-                <col>
-                <col>
-                <col>
-              </colgroup>
-              <thead>
-                <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                </tr>
-              </thead>
-            </table>
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+            <div class=\\"arco-scrollbar-container arco-table-header arco-table-header-sticky\\" style=\\"top: 100px;\\">
+              <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr class=\\"arco-table-tr\\">
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!--v-if-->
+            <!--v-if-->
           </div>
-          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"min-height: 0;\\">
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"display: flex; min-height: 0;\\">
             <div class=\\"arco-scrollbar-container arco-table-body\\" style=\\"max-height: 100%;\\">
               <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
                 <colgroup>
@@ -3524,47 +3540,51 @@ exports[`<table> demo: render [summary] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
         <div class=\\"arco-scrollbar-container arco-table-content\\">
-          <div class=\\"arco-table-header\\">
-            <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-              <colgroup>
-                <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
-                <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-                <col>
-                <col>
-                <col>
-              </colgroup>
-              <thead>
-                <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
-                  <th class=\\"arco-table-th arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Data1</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Data2</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                </tr>
-              </thead>
-            </table>
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+            <div class=\\"arco-scrollbar-container arco-table-header\\">
+              <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+                <colgroup>
+                  <col class=\\"arco-table-expand-col\\" style=\\"width: 80px; min-width: 80px; max-width: 80px;\\">
+                  <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr class=\\"arco-table-tr\\">
+                    <th class=\\"arco-table-th arco-table-operation arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\">Expand</span></th>
+                    <th class=\\"arco-table-th arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 80px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Data1</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Data2</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!--v-if-->
+            <!--v-if-->
           </div>
-          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"min-height: 0;\\">
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"display: flex; min-height: 0;\\">
             <div class=\\"arco-scrollbar-container arco-table-body\\" style=\\"max-height: 200px;\\">
               <table class=\\"arco-table-element\\" style=\\"width: 2000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
                 <colgroup>
@@ -3680,40 +3700,44 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-has-fixed-col-left arco-table-scroll-position-both arco-table-scroll-y\\">
       <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
         <div class=\\"arco-scrollbar-container arco-table-content\\">
-          <div class=\\"arco-table-header\\">
-            <table class=\\"arco-table-element\\" style=\\"width: 1000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-              <colgroup>
-                <col class=\\"arco-table-selection-checkbox-col\\">
-                <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
-                <col>
-                <col>
-              </colgroup>
-              <thead>
-                <tr class=\\"arco-table-tr\\">
-                  <th class=\\"arco-table-th arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
-                    <!----></label></span>
-                  </th>
-                  <th class=\\"arco-table-th arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                  <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
-                    <!---->
-                    <!----></span>
-                    <!---->
-                    <!---->
-                  </th>
-                </tr>
-              </thead>
-            </table>
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+            <div class=\\"arco-scrollbar-container arco-table-header\\">
+              <table class=\\"arco-table-element\\" style=\\"width: 1000px;\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+                <colgroup>
+                  <col class=\\"arco-table-selection-checkbox-col\\">
+                  <col style=\\"width: 140px; min-width: 140px; max-width: 140px;\\">
+                  <col>
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr class=\\"arco-table-tr\\">
+                    <th class=\\"arco-table-th arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                      <!----></label></span>
+                    </th>
+                    <th class=\\"arco-table-th arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!--v-if-->
+            <!--v-if-->
           </div>
           <div class=\\"arco-virtual-list arco-table-body\\" style=\\"height: 400px; overflow: auto;\\">
             <table class=\\"arco-table-element\\" style=\\"width: 1000px; padding-top: 0px; padding-bottom: 29100px;\\">

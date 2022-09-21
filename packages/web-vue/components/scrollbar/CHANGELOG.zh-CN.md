@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 问题修复
+
+- 修复在 Firefox 下的样式问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
 ## 2.37.1
 
 `2022-09-16`
