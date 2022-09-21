@@ -50,7 +50,7 @@ description: Used to show and preview pictures.
 |preview|Whether to enable preview|`boolean`|`true`||
 |preview-visible **(v-model)**|Control the open state of the preview, can be used in conjunction with previewVisibleChange|`boolean`|`-`||
 |default-preview-visible|The default open state of the preview|`boolean`|`false`||
-|preview-props|Preview configuration items (all options are optional) [ImagePreviewProps](#imagepreview)|`ImagePreviewProps`|`-`||
+|preview-props|Preview configuration items (all options are optional) [ImagePreviewProps](#image-preview%20Props)|`ImagePreviewProps`|`-`||
 |footer-class|The class name of the bottom display area|`string\|array\|object`|`-`|2.23.0|
 ### `<image>` Events
 

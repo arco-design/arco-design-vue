@@ -203,8 +203,8 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 预览的配置项（所有选项都是可选的） [ImagePreviewProps](#imagepreview)
-     * @en Preview configuration items (all options are optional) [ImagePreviewProps](#imagepreview)
+     * @zh 预览的配置项（所有选项都是可选的） [ImagePreviewProps](#image-preview%20Props)
+     * @en Preview configuration items (all options are optional) [ImagePreviewProps](#image-preview%20Props)
      */
     previewProps: {
       type: Object as PropType<ImagePreviewProps>,

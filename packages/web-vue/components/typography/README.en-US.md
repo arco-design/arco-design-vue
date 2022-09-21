@@ -45,7 +45,7 @@ description: Used to display titles, paragraphs, and text content.
 |copyable|Whether turn on copy functionality|`boolean`|`false`||
 |copy-text|Copied text|`string`|`-`||
 |copy-delay|After the copy is successful, the delay time for the copy button to return to the clickable state, in milliseconds|`number`|`3000`|2.16.0|
-|ellipsis|Automatic overflow omission, refer to [EllipsisConfig](#ellipsisconfig) for more information.|`boolean \| EllipsisConfig`|`false`||
+|ellipsis|Automatic overflow omission, refer to [EllipsisConfig](#EllipsisConfig) for more information.|`boolean \| EllipsisConfig`|`false`||
 |edit-tooltip-props|Edit button question prompt configuration|`object`|`-`|2.32.0|
 |copy-tooltip-props|Copy button question prompt configuration|`object`|`-`|2.32.0|
 ### `Common` Events
