@@ -100,3 +100,8 @@ export function isDayjs(time: any): time is Dayjs {
     '$s' in time
   );
 }
+
+export const isClient = typeof window !== 'undefined';
+
+export const isFirefox = (): boolean =>
+  isClient && /firefox/i.test(window.navigator.userAgent);

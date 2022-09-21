@@ -29,6 +29,7 @@ export interface ImagePreviewProps {
   closable: boolean;
   actionsLayout: string[];
   popupContainer?: HTMLElement | string;
+  wheelZoom?: boolean;
   onClose?: () => void;
 }
 

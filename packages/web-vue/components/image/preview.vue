@@ -93,6 +93,7 @@ import {
   ref,
   h,
   CSSProperties,
+  nextTick,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { getPrefixCls } from '../_utils/global-config';
@@ -114,6 +115,7 @@ import usePopupContainer from '../_hooks/use-popup-container';
 import getScale, { minScale, maxScale } from './utils/get-scale';
 import { useI18n } from '../locale';
 import usePopupManager from '../_hooks/use-popup-manager';
+import { isFirefox } from '../_utils/is';
 
 const ROTATE_STEP = 90;
 
@@ -200,6 +202,14 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
+    /**
+     * @zh 是否开启滚轮缩放
+     * @en Whether to enable wheel zoom
+     */
+    wheelZoom: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: [
     /**
@@ -217,8 +227,14 @@ export default defineComponent({
    */
   setup(props: ImagePreviewProps, { emit }) {
     const { t } = useI18n();
-    const { src, popupContainer, visible, defaultVisible, maskClosable } =
-      toRefs(props);
+    const {
+      src,
+      popupContainer,
+      visible,
+      defaultVisible,
+      maskClosable,
+      wheelZoom,
+    } = toRefs(props);
     const refWrapper = ref();
     const refImage = ref();
     const prefixCls = getPrefixCls('image-preview');
@@ -281,18 +297,29 @@ export default defineComponent({
       resetTranslate();
     }
 
-    watch([src, mergedVisible], () => {
-      if (mergedVisible.value) {
-        reset();
-        setLoadStatus('loading');
+    watch(
+      [src, mergedVisible],
+      () => {
+        if (mergedVisible.value) {
+          reset();
+          setLoadStatus('loading');
+          if (wheelZoom?.value)
+            nextTick(() => {
+              registerEventListener();
+            });
+        }
+      },
+      {
+        immediate: true,
       }
-    });
+    );
 
     function close() {
       if (mergedVisible.value) {
         emit('close');
         emit('update:visible', false);
         setVisible(false);
+        if (wheelZoom?.value) unregisterEventListener();
       }
     }
 
@@ -307,6 +334,34 @@ export default defineComponent({
         scale.value = newScale;
         showScaleValue();
       }
+    }
+
+    const mousewheelEventName = isFirefox() ? 'DOMMouseScroll' : 'mousewheel';
+    const mousewheelHandler = (e: WheelEvent | any) => {
+      e?.preventDefault();
+      const delta = e.wheelDelta ? e.wheelDelta : -e.detail;
+      if (delta > 0) {
+        if (scale.value <= maxScale) {
+          const newScale = getScale(scale.value, 'zoomIn');
+          changeScale(newScale);
+        }
+      } else if (scale.value >= minScale) {
+        const newScale = getScale(scale.value, 'zoomOut');
+        changeScale(newScale);
+      }
+    };
+    function registerEventListener() {
+      refWrapper.value?.addEventListener(
+        mousewheelEventName,
+        mousewheelHandler
+      );
+      refWrapper.value?.focus?.();
+    }
+    function unregisterEventListener() {
+      refWrapper.value?.removeEventListener(
+        mousewheelEventName,
+        mousewheelHandler
+      );
     }
 
     return {
