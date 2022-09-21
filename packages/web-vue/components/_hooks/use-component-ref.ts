@@ -1,13 +1,20 @@
-import { ComponentPublicInstance, computed, ref } from 'vue';
+import { ComponentPublicInstance, ref, watch } from 'vue';
 import { isComponentInstance } from '../_utils/is';
 
 export const useComponentRef = (name: string) => {
   const componentRef = ref<HTMLElement | ComponentPublicInstance>();
-  const elementRef = computed(() => {
+
+  const getElement = () => {
     if (isComponentInstance(componentRef.value)) {
       return componentRef.value.$refs[name] as HTMLElement;
     }
     return componentRef.value;
+  };
+
+  const elementRef = ref(getElement());
+
+  watch([componentRef], () => {
+    elementRef.value = getElement();
   });
 
   return {
