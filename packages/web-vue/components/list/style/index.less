@@ -30,17 +30,21 @@
       @ref-padding-vertical-item: ~'list-size-@{size}-padding-vertical-item';
       @ref-padding-horizontal-item: ~'list-size-@{size}-padding-horizontal-item';
 
-      > .@{list-prefix-cls}-header {
+      .@{list-prefix-cls}-content-wrapper .@{list-prefix-cls}-header {
         padding: @@ref-padding-vertical-header @@ref-padding-horizontal-header;
       }
 
       // 在存在列表嵌套的时候，通过 > 限定 size 仅对其直接子元素生效，避免影响被嵌套的列表的样式
-      > .@{list-prefix-cls}-footer,
-      > .@{list-prefix-cls}-content > .@{list-prefix-cls}-item,
-      > .@{list-prefix-cls}-content
+      .@{list-prefix-cls}-content-wrapper .@{list-prefix-cls}-footer,
+      .@{list-prefix-cls}-content-wrapper
+        .@{list-prefix-cls}-content
+        > .@{list-prefix-cls}-item,
+      .@{list-prefix-cls}-content-wrapper
+        .@{list-prefix-cls}-content
         .@{list-prefix-cls}-col
         > .@{list-prefix-cls}-item,
-      > .@{list-prefix-cls}-content.@{list-prefix-cls}-virtual
+      .@{list-prefix-cls}-content-wrapper
+        .@{list-prefix-cls}-content.@{list-prefix-cls}-virtual
         .@{list-prefix-cls}-item {
         padding: @@ref-padding-vertical-item @@ref-padding-horizontal-item;
       }
