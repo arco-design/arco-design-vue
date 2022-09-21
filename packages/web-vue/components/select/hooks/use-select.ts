@@ -99,7 +99,8 @@ export const useSelect = ({
       virtualListRef.value.scrollTo({ key });
     }
     const optionInfo = optionInfoMap.get(key);
-    const wrapperEle = dropdownRef?.value?.$refs?.wrapperRef as HTMLElement;
+    // @ts-ignore
+    const wrapperEle = dropdownRef?.value?.wrapperRef as HTMLElement;
     const optionEle = optionRefs?.value[key] ?? optionInfo?.ref;
 
     if (!wrapperEle || !optionEle) {

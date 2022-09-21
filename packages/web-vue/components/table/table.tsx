@@ -630,7 +630,7 @@ export default defineComponent({
       return { x, y };
     });
 
-    const theadRef = ref<HTMLElement>();
+    // const theadRef = ref<HTMLElement>();
     const summaryRef = ref<HTMLElement>();
     const thRefs = ref<Record<string, HTMLElement>>({});
 
@@ -640,6 +640,8 @@ export default defineComponent({
       useComponentRef('containerRef');
     const { componentRef: virtualComRef, elementRef: virtualRef } =
       useComponentRef('viewportRef');
+    const { componentRef: theadComRef, elementRef: theadRef } =
+      useComponentRef('containerRef');
     const containerElement = computed(() => {
       if (splitTable.value) {
         if (isVirtualList.value) {
@@ -1861,13 +1863,14 @@ export default defineComponent({
         return (
           <>
             {props.showHeader && (
-              <div
-                ref={theadRef}
+              <Scrollbar
+                ref={theadComRef}
                 class={[
                   `${prefixCls}-header`,
                   { [`${prefixCls}-header-sticky`]: props.stickyHeader },
                 ]}
                 style={style}
+                hide={flattenData.value.length !== 0}
               >
                 <table
                   class={`${prefixCls}-element`}
@@ -1882,7 +1885,7 @@ export default defineComponent({
                   />
                   {renderHeader()}
                 </table>
-              </div>
+              </Scrollbar>
             )}
             <ResizeObserver onResize={handleTbodyResize}>
               {isVirtualList.value ? (
@@ -1923,7 +1926,7 @@ export default defineComponent({
                       ? `${props.scroll?.y}px`
                       : '100%',
                   }}
-                  outerStyle={{ minHeight: '0' }}
+                  outerStyle={{ display: 'flex', minHeight: '0' }}
                   onScroll={onTbodyScroll}
                 >
                   <table

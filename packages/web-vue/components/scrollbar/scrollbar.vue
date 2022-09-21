@@ -13,7 +13,7 @@
       </div>
     </ResizeObserver>
     <thumb
-      v-if="hasHorizontalScrollbar"
+      v-if="!hide && hasHorizontalScrollbar"
       ref="horizontalThumbRef"
       :data="horizontalData"
       direction="horizontal"
@@ -21,7 +21,7 @@
       @scroll="handleHorizontalScroll"
     />
     <thumb
-      v-if="hasVerticalScrollbar"
+      v-if="!hide && hasVerticalScrollbar"
       ref="verticalThumbRef"
       :data="verticalData"
       direction="vertical"
@@ -76,6 +76,11 @@ export default defineComponent({
      */
     outerStyle: {
       type: [String, Object, Array] as PropType<StyleValue>,
+    },
+    // private
+    hide: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: {
@@ -156,13 +161,13 @@ export default defineComponent({
           const verticalOffset = Math.round(
             scrollTop / (verticalData.value?.ratio ?? 1)
           );
-          verticalThumbRef.value.setOffset(verticalOffset);
+          verticalThumbRef.value?.setOffset(verticalOffset);
         }
         if (scrollLeft > 0) {
           const horizontalOffset = Math.round(
             scrollLeft / (verticalData.value?.ratio ?? 1)
           );
-          horizontalThumbRef.value.setOffset(horizontalOffset);
+          horizontalThumbRef.value?.setOffset(horizontalOffset);
         }
       }
     };

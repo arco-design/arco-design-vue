@@ -7,17 +7,17 @@
       </slot>
     </div>
     <slot v-if="virtualList && !loading && !empty" name="virtual-list" />
-    <scrollbar
+    <Scrollbar
       v-if="!virtualList"
       v-show="!loading && !empty"
-      ref="wrapperRef"
+      ref="wrapperComRef"
       :class="`${prefixCls}-list-wrapper`"
       @scroll="handleScroll"
     >
       <ul :class="`${prefixCls}-list`">
         <slot />
       </ul>
-    </scrollbar>
+    </Scrollbar>
     <div v-if="$slots.footer && !empty" :class="`${prefixCls}-footer`">
       <slot name="footer" />
     </div>
@@ -26,12 +26,13 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import type { EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
 import Scrollbar from '../scrollbar';
+import { useComponentRef } from '../_hooks/use-component-ref';
 
 export default defineComponent({
   name: 'SelectDropdown',
@@ -58,7 +59,8 @@ export default defineComponent({
   emits: ['scroll', 'reachBottom'],
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('select-dropdown');
-    const wrapperRef = ref<HTMLElement>();
+    const { componentRef: wrapperComRef, elementRef: wrapperRef } =
+      useComponentRef('containerRef');
 
     const handleScroll = (e: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
@@ -80,6 +82,7 @@ export default defineComponent({
       prefixCls,
       cls,
       wrapperRef,
+      wrapperComRef,
       handleScroll,
     };
   },
