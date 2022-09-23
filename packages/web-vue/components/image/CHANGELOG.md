@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 Enhancement
+
+- do not display toolbar when actions layout is empty ([#1668](https://github.com/arco-design/arco-design-vue/pull/1668))
+
+
 ## 2.36.0
 
 `2022-09-02`

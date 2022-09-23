@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 问题修复
+
+- 修复内容变化后tooltip不显示的问题 ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 🆎 类型修正
+
+- 修复 TableRowSelection 类型声明 ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+
+
 ## 2.37.2
 
 `2022-09-21`

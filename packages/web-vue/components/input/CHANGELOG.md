@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 Enhancement
+
+- It is no longer possible to input content from the middle when optimizing the max limit ([#1672](https://github.com/arco-design/arco-design-vue/pull/1672))
+
+
 ## 2.36.0
 
 `2022-09-02`

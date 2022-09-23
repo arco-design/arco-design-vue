@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 Enhancement
+
+- overflow quantity changes event ([#1287](https://github.com/arco-design/arco-design-vue/pull/1287))
+
+
 ## 2.37.1
 
 `2022-09-16`

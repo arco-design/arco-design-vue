@@ -183,7 +183,7 @@ function buildType(data: IconData[]) {
   const typeContent = getType({ exports });
 
   fs.outputFile(
-    path.resolve(paths.components, 'icon-components.ts'),
+    path.resolve(paths.iconComponents, 'icon-components.ts'),
     typeContent,
     (err) => {
       if (err) {

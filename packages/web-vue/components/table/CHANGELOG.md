@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 BugFix
+
+- Fix the problem that the tooltip does not display after the content changes ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 🆎 TypeScript
+
+- fix TableRowSelection type definition ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+
+
 ## 2.37.2
 
 `2022-09-21`

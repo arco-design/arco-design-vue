@@ -2,6 +2,27 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that the tooltip does not display after the content changes ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 💎 Enhancement
+
+- **empty:** Optimize the custom display priority, the image slot is higher than the global empty slot ([#1673](https://github.com/arco-design/arco-design-vue/pull/1673))
+- **input:** It is no longer possible to input content from the middle when optimizing the max limit ([#1672](https://github.com/arco-design/arco-design-vue/pull/1672))
+- **image:** do not display toolbar when actions layout is empty ([#1668](https://github.com/arco-design/arco-design-vue/pull/1668))
+- **overflow-list:** overflow quantity changes event ([#1287](https://github.com/arco-design/arco-design-vue/pull/1287))
+
+### 🆎 TypeScript
+
+- **table:** fix TableRowSelection type definition ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+- **icon:** Add Icon related type declaration ([#1619](https://github.com/arco-design/arco-design-vue/pull/1619))
+
+
 ## 2.37.2
 
 `2022-09-21`

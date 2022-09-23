@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 功能优化
+
+- actionsLayout为空时不显示操作栏 ([#1668](https://github.com/arco-design/arco-design-vue/pull/1668))
+
+
 ## 2.36.0
 
 `2022-09-02`

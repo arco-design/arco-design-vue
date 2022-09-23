@@ -127,6 +127,7 @@ export const getIndex = ({ exports }: { exports: string[] }) =>
   // prettier-ignore
   `export { default } from './arco-vue-icon';
 ${exports.join('\n')}
+export type {} from './icon-components';
 `;
 
 export const getType = ({ exports }: { exports: string[] }) =>

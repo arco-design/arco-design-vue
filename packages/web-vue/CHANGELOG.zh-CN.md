@@ -2,6 +2,27 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 问题修复
+
+- **table:** 修复内容变化后tooltip不显示的问题 ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 💎 功能优化
+
+- **empty:** 优化自定义显示优先级，image 插槽高于全局 empty 插槽 ([#1673](https://github.com/arco-design/arco-design-vue/pull/1673))
+- **input:** 优化最大限制时不再可以从中间输入内容 ([#1672](https://github.com/arco-design/arco-design-vue/pull/1672))
+- **image:** actionsLayout为空时不显示操作栏 ([#1668](https://github.com/arco-design/arco-design-vue/pull/1668))
+- **overflow-list:** 溢出数量改变事件 ([#1287](https://github.com/arco-design/arco-design-vue/pull/1287))
+
+### 🆎 类型修正
+
+- **table:** 修复 TableRowSelection 类型声明 ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+- **icon:** 增加 Icon 相关类型声明 ([#1619](https://github.com/arco-design/arco-design-vue/pull/1619))
+
+
 ## 2.37.2
 
 `2022-09-21`
