@@ -11,6 +11,7 @@ import pick from '../_utils/pick';
 import { isFunction, isNull, isObject, isUndefined } from '../_utils/is';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
+import { useCursor } from '../_hooks/use-cursor';
 
 export default defineComponent({
   name: 'Input',
@@ -195,6 +196,7 @@ export default defineComponent({
       eventHandlers,
     } = useFormItem({ size, disabled, error });
     const { mergedSize } = useSize(_mergedSize);
+    const [recordCursor, setCursor] = useCursor(inputRef);
 
     // 值相关
     const _value = ref(props.defaultValue);
@@ -296,39 +298,65 @@ export default defineComponent({
     };
 
     const handleComposition = (e: CompositionEvent) => {
-      const { value } = e.target as HTMLInputElement;
+      const { value, selectionStart, selectionEnd } =
+        e.target as HTMLInputElement;
 
       if (e.type === 'compositionend') {
         isComposition.value = false;
         compositionValue.value = '';
+
+        if (
+          maxLength.value &&
+          !maxLengthErrorOnly.value &&
+          computedValue.value.length >= maxLength.value &&
+          getValueLength(value) > maxLength.value &&
+          selectionStart === selectionEnd
+        ) {
+          keepControl();
+          return;
+        }
+
         updateValue(value);
         emit('input', value, e);
         eventHandlers.value?.onInput?.(e);
 
-        nextTick(() => {
-          if (inputRef.value && computedValue.value !== inputRef.value.value) {
-            inputRef.value.value = computedValue.value;
-          }
-        });
+        keepControl();
       } else {
         isComposition.value = true;
         compositionValue.value = computedValue.value + (e.data ?? '');
       }
     };
 
+    const keepControl = () => {
+      recordCursor();
+      nextTick(() => {
+        if (inputRef.value && computedValue.value !== inputRef.value.value) {
+          inputRef.value.value = computedValue.value;
+          setCursor();
+        }
+      });
+    };
+
     const handleInput = (e: Event) => {
       const { value } = e.target as HTMLInputElement;
 
       if (!isComposition.value) {
+        if (
+          maxLength.value &&
+          !maxLengthErrorOnly.value &&
+          computedValue.value.length >= maxLength.value &&
+          getValueLength(value) > maxLength.value &&
+          (e as InputEvent).inputType === 'insertText'
+        ) {
+          keepControl();
+          return;
+        }
+
         updateValue(value);
         emit('input', value, e);
         eventHandlers.value?.onInput?.(e);
 
-        nextTick(() => {
-          if (inputRef.value && computedValue.value !== inputRef.value.value) {
-            inputRef.value.value = computedValue.value;
-          }
-        });
+        keepControl();
       }
     };
 
