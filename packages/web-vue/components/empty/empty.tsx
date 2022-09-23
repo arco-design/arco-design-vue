@@ -29,7 +29,7 @@ export default defineComponent({
     const configCtx = inject(configProviderInjectionKey, undefined);
 
     return () => {
-      if (configCtx?.slots.empty) {
+      if (configCtx?.slots.empty && !(slots.image || props.imgSrc)) {
         return configCtx.slots.empty();
       }
 
