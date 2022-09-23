@@ -281,8 +281,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
 |type|行选择器的类型|`'checkbox' \| 'radio'`|`-`||
-|selectedRowKeys|已选择的行（受控模式）|`string[]`|`-`||
-|defaultSelectedRowKeys|默认已选择的行（非受控模式）|`string[]`|`-`||
+|selectedRowKeys|已选择的行（受控模式）|`BaseType[]`|`-`||
+|defaultSelectedRowKeys|默认已选择的行（非受控模式）|`BaseType[]`|`-`||
 |showCheckedAll|是否显示全选选择器|`boolean`|`false`||
 |title|列标题|`string`|`-`||
 |width|列宽度|`number`|`-`||
@@ -296,8 +296,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|expandedRowKeys|显示的展开行（受控模式）|`string[]`|`-`|
-|defaultExpandedRowKeys|默认显示的展开行（非受控模式）|`string[]`|`-`|
+|expandedRowKeys|显示的展开行（受控模式）|`BaseType[]`|`-`|
+|defaultExpandedRowKeys|默认显示的展开行（非受控模式）|`BaseType[]`|`-`|
 |defaultExpandAllRows|是否默认展开所有的行|`boolean`|`false`|
 |expandedRowRender|自定义展开行内容|`(record: TableData) => VNodeChild`|`-`|
 |icon|展开图标|`(expanded: boolean, record: TableData) => VNodeChild`|`-`|

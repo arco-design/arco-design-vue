@@ -1,5 +1,5 @@
 import { CSSProperties, RenderFunction, Slots, VNodeChild } from 'vue';
-import { ClassName, Data } from '../_utils/types';
+import { BaseType, ClassName, Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
 export const TABLE_PAGE_POSITION = [
@@ -316,12 +316,12 @@ export interface TableRowSelection {
    * @zh 已选择的行（受控模式）
    * @en Selected row (controlled mode)
    */
-  selectedRowKeys?: string[];
+  selectedRowKeys?: BaseType[];
   /**
    * @zh 默认已选择的行（非受控模式）
    * @en The selected row by default (uncontrolled mode)
    */
-  defaultSelectedRowKeys?: string[];
+  defaultSelectedRowKeys?: BaseType[];
   /**
    * @zh 是否显示全选选择器
    * @en Whether to show the select all selector
@@ -362,12 +362,12 @@ export interface TableExpandable {
    * @zh 显示的展开行（受控模式）
    * @en Displayed Expanded Row (Controlled Mode)
    */
-  expandedRowKeys?: string[];
+  expandedRowKeys?: BaseType[];
   /**
    * @zh 默认显示的展开行（非受控模式）
    * @en Expand row displayed by default (Uncontrolled mode)
    */
-  defaultExpandedRowKeys?: string[];
+  defaultExpandedRowKeys?: BaseType[];
   /**
    * @zh 是否默认展开所有的行
    * @en Whether to expand all rows by default
