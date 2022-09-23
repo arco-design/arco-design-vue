@@ -36,7 +36,7 @@ description: Display information content in chronological or reverse order.
 |reverse|Whether reverse order|`boolean`|`false`|
 |direction|Timeline direction|`'horizontal' \| 'vertical'`|`'vertical'`|
 |mode|The display mode of Timeline|`'left' \| 'right' \| 'top' \| 'bottom' \| 'alternate'`|`'left'`|
-|pending|Whether to display ghost nodes. When set to true, only ghost nodes are displayed. When passed to ReactNode, it will be displayed as node content|`boolean`|`false`|
+|pending|Whether to display ghost nodes. When set to true, only ghost nodes are displayed. When passed to ReactNode, it will be displayed as node content|`boolean\|string`|`-`|
 |label-position|Position of label text|`'relative' \| 'same'`|`'same'`|
 ### `<timeline>` Slots
 

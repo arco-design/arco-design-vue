@@ -29,10 +29,10 @@ Divide a panel into two parts with adjustable width or height. Use `direction` t
       min="80px"
     >
       <template #first>
-        <a-typography-paragraph>Right</a-typography-paragraph>
+        <a-typography-paragraph>Left</a-typography-paragraph>
       </template>
       <template #second>
-        <a-typography-paragraph>Left</a-typography-paragraph>
+        <a-typography-paragraph>Right</a-typography-paragraph>
       </template>
     </a-split>
   </div>

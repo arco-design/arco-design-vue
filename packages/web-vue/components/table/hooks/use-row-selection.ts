@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
-import type { EmitFn2 } from '../../_utils/types';
+import type { BaseType, EmitFn2 } from '../../_utils/types';
 import type { TableDataWithRaw, TableRowSelection } from '../interface';
 import { TableData } from '../interface';
 import { getLeafKeys } from '../utils';
@@ -14,16 +14,20 @@ export const useRowSelection = ({
   currentAllEnabledRowKeys,
   emit,
 }: {
-  selectedKeys: Ref<string[] | undefined>;
-  defaultSelectedKeys: Ref<string[] | undefined>;
+  selectedKeys: Ref<BaseType[] | undefined>;
+  defaultSelectedKeys: Ref<BaseType[] | undefined>;
   rowSelection: Ref<TableRowSelection | undefined>;
-  currentAllRowKeys: Ref<string[]>;
-  currentAllEnabledRowKeys: Ref<string[]>;
+  currentAllRowKeys: Ref<BaseType[]>;
+  currentAllEnabledRowKeys: Ref<BaseType[]>;
   emit: EmitFn2<{
-    'update:selectedKeys': (rowKeys: string[]) => true;
-    'select': (rowKeys: string[], rowKey: string, record: TableData) => true;
+    'update:selectedKeys': (rowKeys: BaseType[]) => true;
+    'select': (
+      rowKeys: BaseType[],
+      rowKey: BaseType,
+      record: TableData
+    ) => true;
     'selectAll': (checked: boolean) => true;
-    'selectionChange': (rowKeys: string[]) => true;
+    'selectionChange': (rowKeys: BaseType[]) => true;
   }>;
 }) => {
   const isRadio = computed(() => rowSelection.value?.type === 'radio');
@@ -73,8 +77,8 @@ export const useRowSelection = ({
     emit('update:selectedKeys', newKeys);
   };
 
-  const select = (rowKey: string | string[], checked = true) => {
-    const _rowKeys = ([] as string[]).concat(rowKey);
+  const select = (rowKey: BaseType | BaseType[], checked = true) => {
+    const _rowKeys = ([] as BaseType[]).concat(rowKey);
     const newSelectedRowKeys = isRadio.value
       ? _rowKeys
       : union(selectedRowKeys.value, _rowKeys, !checked);

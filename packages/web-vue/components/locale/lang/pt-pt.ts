@@ -1,0 +1,150 @@
+import { ArcoCalendarLang, ArcoLang } from '../interface';
+
+const calendarLang: ArcoCalendarLang = {
+  formatYear: 'YYYY',
+  formatMonth: 'MM/YYYY',
+  today: 'Hoje',
+  view: {
+    month: 'Mês',
+    year: 'Ano',
+    week: 'Semana',
+    day: 'Dia',
+  },
+  month: {
+    long: {
+      January: 'Janeiro',
+      February: 'Fevereiro',
+      March: 'Março',
+      April: 'Abril',
+      May: 'Maio',
+      June: 'Junho',
+      July: 'Julho',
+      August: 'Agosto',
+      September: 'Setembro',
+      October: 'Outubro',
+      November: 'Novembro',
+      December: 'Dezembro',
+    },
+    short: {
+      January: 'Jan',
+      February: 'Fev',
+      March: 'Mar',
+      April: 'Abr',
+      May: 'Mai',
+      June: 'Jun',
+      July: 'Jul',
+      August: 'Ago',
+      September: 'Set',
+      October: 'Out',
+      November: 'Nov',
+      December: 'Dez',
+    },
+  },
+  week: {
+    long: {
+      self: 'Semana',
+      monday: 'Segunda-feira',
+      tuesday: 'Terça-feira',
+      wednesday: 'Quarta-feira',
+      thursday: 'Quinta-feira',
+      friday: 'Sexta-feira',
+      saturday: 'Sábado',
+      sunday: 'Domingo',
+    },
+    short: {
+      self: 'Semana',
+      monday: 'Seg',
+      tuesday: 'Ter',
+      wednesday: 'Qua',
+      thursday: 'Qui',
+      friday: 'Sex',
+      saturday: 'Sáb',
+      sunday: 'Dom',
+    },
+  },
+};
+
+const lang: ArcoLang = {
+  locale: 'pt-PT',
+  empty: {
+    description: 'Sem dados',
+  },
+  drawer: {
+    okText: 'Ok',
+    cancelText: 'Cancelar',
+  },
+  popconfirm: {
+    okText: 'Ok',
+    cancelText: 'Cancelar',
+  },
+  modal: {
+    okText: 'Ok',
+    cancelText: 'Cancelar',
+  },
+  pagination: {
+    goto: 'Vamos para',
+    page: 'Página',
+    countPerPage: ' / Página',
+    total: 'Total: {0}',
+  },
+  table: {
+    okText: 'Ok',
+    resetText: 'Redefinir',
+  },
+  upload: {
+    start: 'Iniciar',
+    cancel: 'Cancelar',
+    delete: 'Excluir',
+    retry: 'Clique para tentar novamente',
+    buttonText: 'Carregar',
+    preview: 'Visualizar',
+    drag: 'Clique ou arraste o arquivo para esta área para fazer upload',
+    dragHover: 'Liberar para fazer upload',
+    error: 'Erro ao carregar',
+  },
+  datePicker: {
+    view: calendarLang.view,
+    month: calendarLang.month,
+    week: calendarLang.week,
+    placeholder: {
+      date: 'Por favor, selecione a data',
+      week: 'Por favor, selecione a semana',
+      month: 'Por favor, selecione o mês',
+      year: 'Por favor, selecione o ano',
+      quarter: 'Por favor, selecione trimestre',
+      time: 'Por favor, selecione horário',
+    },
+    rangePlaceholder: {
+      date: ['Data de início', 'Data de término'],
+      week: ['Início da semana', 'Fim da semana'],
+      month: ['Mês inicial', 'Mês final'],
+      year: ['Ano inicial', 'Ano final'],
+      quarter: ['Início do trimestre', 'Fim do trimestre'],
+      time: ['Hora de inicio', 'Hora de fim'],
+    },
+    selectTime: 'Selecione a hora',
+    today: 'Hoje',
+    now: 'Agora',
+    ok: 'Ok',
+  },
+  image: {
+    loading: 'A carregar',
+  },
+  imagePreview: {
+    fullScreen: 'Tela Cheia',
+    rotateRight: 'Girar para a direita',
+    rotateLeft: 'Girar para a esquerda',
+    zoomIn: 'Ampliar',
+    zoomOut: 'Afastar',
+    originalSize: 'Tamanho original',
+  },
+  typography: {
+    copied: 'Copiado',
+    copy: 'Copiar',
+    expand: 'Desdobrar',
+    collapse: 'dobrar',
+    edit: 'Editar',
+  },
+};
+
+export default lang;

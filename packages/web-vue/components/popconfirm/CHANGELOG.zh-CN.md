@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 功能优化
+
+- on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+
+
 ## 2.32.1
 
 `2022-07-01`

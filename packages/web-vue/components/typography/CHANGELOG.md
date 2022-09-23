@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 Feature
+
+- Omit mode adds support for CSS mode (experimental) ([#1635](https://github.com/arco-design/arco-design-vue/pull/1635))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- cancel click propagation of suffix icon ([#1411](https://github.com/arco-design/arco-design-vue/pull/1411))
+
+
 ## 2.32.0
 
 `2022-06-24`

@@ -14,6 +14,8 @@ description: 向用户显示警告的信息时，通过警告提示，展现需�
 
 @import ./__demo__/closable.md
 
+@import ./__demo__/close-element.md
+
 @import ./__demo__/icon.md
 
 @import ./__demo__/action.md
@@ -40,9 +42,11 @@ description: 向用户显示警告的信息时，通过警告提示，展现需�
 |after-close|关闭动画结束后触发|-|
 ### `<alert>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|icon|图标|-|
-|title|标题|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|icon|图标|-||
+|title|标题|-||
+|action|操作项|-||
+|close-element|关闭元素|-|2.36.0|
 
 

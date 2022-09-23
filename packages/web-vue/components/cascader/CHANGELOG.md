@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.34.1
+
+`2022-08-05`
+
+### 💅 Style
+
+- Fix style issue when dropdown panel is empty ([#1483](https://github.com/arco-design/arco-design-vue/pull/1483))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- Fixed the wrong position of the horizontal scroll bar of the search drop-down menu ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+- Fix the problem that the cursor cannot be used after inputting content in search mode ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+
+
 ## 2.29.1
 
 `2022-06-02`

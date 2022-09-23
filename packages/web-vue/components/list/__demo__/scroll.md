@@ -19,7 +19,7 @@ Limit the maximum height of the list by setting the `max-height` property. Throu
 ```vue
 
 <template>
-  <a-list :max-height="200" @reach-bottom="fetchData">
+  <a-list :max-height="240" @reach-bottom="fetchData">
     <template #header>
       List title
     </template>

@@ -55,4 +55,4 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 %%INTERFACE(interface.ts)%%
 
-%%INTERFACE(../_components/virtual-list/interface.ts)%%
+%%INTERFACE(../_components/virtual-list-v2/interface.ts)%%

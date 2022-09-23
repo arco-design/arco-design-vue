@@ -36,4 +36,4 @@ description: The organizational structure of the project file.
 └── tsconfig.json
 ```
 
-ps: Filter description<https://v3.cn.vuejs.org/guide/migration/filters.html#%E8%BF%81%E7%A7%BB%E7%AD%96%E7%95%A5 >
+ps: [Filter description](https://v3-migration.vuejs.org/breaking-changes/filters.html)

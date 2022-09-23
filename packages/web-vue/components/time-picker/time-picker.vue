@@ -70,7 +70,6 @@
 import {
   computed,
   defineComponent,
-  inject,
   nextTick,
   PropType,
   reactive,
@@ -105,7 +104,6 @@ import RangePanel from './range-panel';
 import useIsDisabledTime from './hooks/use-is-disabled-time';
 import useMergeState from '../_hooks/use-merge-state';
 import { useI18n } from '../locale';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 
@@ -199,8 +197,6 @@ export default defineComponent({
      * */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 弹出框的挂载容器
@@ -346,7 +342,7 @@ export default defineComponent({
    * @en Extra footer
    * @slot extra
    */
-  setup(props: TimePickerProps, { emit }) {
+  setup(props, { emit }) {
     const {
       type,
       format,

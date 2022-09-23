@@ -132,12 +132,6 @@ export default defineComponent({
       expandIconRight,
       isChildrenSelected,
     } = this;
-    const _props = {
-      ...props,
-      ...attrs,
-      key: computedKey,
-      isChildrenSelected,
-    };
     const _slots = {
       ...this.$slots,
       'expand-icon-down':
@@ -150,9 +144,23 @@ export default defineComponent({
         (() => <IconRight />),
     };
     return computedPopup ? (
-      <SubMenuPop {..._props} v-slots={_slots} />
+      <SubMenuPop
+        key={computedKey}
+        title={props.title}
+        selectable={props.selectable}
+        isChildrenSelected={isChildrenSelected}
+        popupMaxHeight={props.popupMaxHeight}
+        v-slots={_slots}
+        {...attrs}
+      />
     ) : (
-      <SubMenuInline {..._props} v-slots={_slots} />
+      <SubMenuInline
+        key={computedKey}
+        title={props.title}
+        isChildrenSelected={isChildrenSelected}
+        v-slots={_slots}
+        {...attrs}
+      />
     );
   },
 });

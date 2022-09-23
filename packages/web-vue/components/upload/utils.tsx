@@ -129,24 +129,33 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
           .map((x) => x.trim())
           .filter((x) => x);
     const fileExtension =
-      file.name.indexOf('.') > -1 ? file.name.split('.').pop() : '';
+      file.name.indexOf('.') > -1 ? `.${file.name.split('.').pop()}` : '';
     return accepts.some((type) => {
-      const text = type && type.toLowerCase();
+      const typeText = type && type.toLowerCase();
       const fileType = (file.type || '').toLowerCase();
-      if (text === fileType) {
+      if (typeText === fileType) {
         // similar to excel files
         // Such as application/vnd.ms-excel and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
         // Those with.
         // So prioritize the comparison between the accept type of input and the type value of the file object
         return true;
       }
-      if (/\/\*/.test(text)) {
-        // image/* This kind of wildcard processing
-        return fileType.replace(/\/.*$/, '') === text.replace(/\/.*$/, '');
+      // */*,*  之类的所有类型
+      if (/^\*(\/\*)?$/.test(typeText)) {
+        return true;
       }
-      if (/\..*/.test(text)) {
-        // .jpg and other suffixes
-        return text === `.${fileExtension && fileExtension.toLowerCase()}`;
+      if (/\/\*/.test(typeText)) {
+        // image/* This kind of wildcard processing
+        return fileType.replace(/\/.*$/, '') === typeText.replace(/\/.*$/, '');
+      }
+      if (/\..*/.test(typeText)) {
+        // .jpg 等后缀名
+        let suffixList = [typeText];
+        // accept=".jpg", jpeg后缀类型同样可以上传，反之亦然
+        if (typeText === '.jpg' || typeText === '.jpeg') {
+          suffixList = ['.jpg', '.jpeg'];
+        }
+        return suffixList.indexOf(fileExtension) > -1;
       }
       return false;
     });

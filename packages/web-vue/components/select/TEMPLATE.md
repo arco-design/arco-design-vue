@@ -81,3 +81,5 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 ```
 
 %%INTERFACE(interface.ts)%%
+
+%%INTERFACE(../_components/virtual-list-v2/interface.ts)%%

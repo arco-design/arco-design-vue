@@ -4,7 +4,7 @@ exports[`<split> demo: render [basic] correctly 1`] = `
 "<div>
   <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 100%; min-width: 500px;\\">
     <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex: 0 0 calc(50% - 0px);\\">
-      <div class=\\"arco-typography\\">Right
+      <div class=\\"arco-typography\\">Left
         <!---->
         <!--v-if-->
         <!--v-if-->
@@ -21,7 +21,7 @@ exports[`<split> demo: render [basic] correctly 1`] = `
       </div>
     </div>
     <div class=\\"arco-split-pane arco-split-pane-second\\">
-      <div class=\\"arco-typography\\">Left
+      <div class=\\"arco-typography\\">Right
         <!---->
         <!--v-if-->
         <!--v-if-->
@@ -36,7 +36,7 @@ exports[`<split> demo: render [nested] correctly 1`] = `
 "<div>
   <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 100%; min-width: 500px;\\">
     <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex: 0 0 calc(50% - 0px);\\">
-      <div class=\\"arco-typography\\">Right
+      <div class=\\"arco-typography\\">Left
         <!---->
         <!--v-if-->
         <!--v-if-->

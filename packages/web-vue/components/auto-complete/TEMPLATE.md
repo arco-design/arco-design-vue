@@ -21,6 +21,8 @@ description: The auto-complete function of the input.
 
 @import ./__demo__/strict.md
 
+@import ./__demo__/footer.md
+
 ## API
 
 %%API(auto-complete.tsx)%%

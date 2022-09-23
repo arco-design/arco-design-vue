@@ -12,6 +12,6 @@ const Mention = Object.assign(_Mention, {
   },
 });
 
-export type AutoCompleteInstance = InstanceType<typeof _Mention>;
+export type MentionInstance = InstanceType<typeof _Mention>;
 
 export default Mention;

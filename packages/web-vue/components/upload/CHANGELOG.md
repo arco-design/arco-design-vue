@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.1
+
+`2022-08-05`
+
+### 🐛 BugFix
+
+- fix the problem of `accept=*` does not work ([#1488](https://github.com/arco-design/arco-design-vue/pull/1488))
+
+
 ## 2.33.0
 
 `2022-07-08`

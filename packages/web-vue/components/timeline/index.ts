@@ -1,7 +1,7 @@
 import type { App } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Timeline from './timeline.vue';
+import _Timeline from './timeline';
 import _TimelineItem from './item.vue';
 
 const Timeline = Object.assign(_Timeline, {

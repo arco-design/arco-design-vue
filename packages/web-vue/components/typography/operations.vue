@@ -1,7 +1,7 @@
 <template>
   <template v-if="editable">
     <Tooltip :content="t('typography.edit')" v-bind="editTooltipProps">
-      <span :class="`${prefixCls}-operation-edit`" @click="onEditClick">
+      <span :class="`${prefixCls}-operation-edit`" @click.stop="onEditClick">
         <IconEdit />
       </span>
     </Tooltip>
@@ -18,7 +18,7 @@
           [`${prefixCls}-operation-copied`]: isCopied,
           [`${prefixCls}-operation-copy`]: !isCopied,
         }"
-        @click="onCopyClick"
+        @click.stop="onCopyClick"
       >
         <slot name="copy-icon" :copied="isCopied">
           <IconCheckCircleFill v-if="isCopied" />
@@ -30,7 +30,7 @@
   <a
     v-if="showExpand"
     :class="`${prefixCls}-operation-expand`"
-    @click="onExpandClick"
+    @click.stop="onExpandClick"
   >
     <slot name="expand-node" :expanded="expanded">
       {{ expanded ? t('typography.collapse') : t('typography.expand') }}

@@ -63,6 +63,7 @@ import Radio, { RadioGroup } from './radio';
 import Rate from './rate';
 import ResizeBox from './resize-box';
 import Result from './result';
+import Scrollbar from './scrollbar';
 import Select, { Option, Optgroup } from './select';
 import Skeleton, { SkeletonLine, SkeletonShape } from './skeleton';
 import Slider from './slider';
@@ -89,6 +90,7 @@ import Typography, {
   TypographyText,
 } from './typography';
 import Upload from './upload';
+import OverflowList from './overflow-list';
 
 import { useFormItem } from './_hooks/use-form-item';
 
@@ -109,6 +111,7 @@ const components: Record<string, Plugin> = {
   Descriptions,
   Empty,
   Image,
+  Scrollbar,
   List,
   Popover,
   Statistic,
@@ -161,6 +164,7 @@ const components: Record<string, Plugin> = {
   Trigger,
   Split,
   Icon,
+  OverflowList,
 };
 
 const install = (app: App, options?: ArcoOptions) => {

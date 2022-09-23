@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- 增加`footer`插槽 ([#1445](https://github.com/arco-design/arco-design-vue/pull/1445))
+
+
 ## 2.23.0
 
 `2022-04-08`

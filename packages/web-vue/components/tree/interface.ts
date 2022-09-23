@@ -1,5 +1,5 @@
 import { Slot, VNode } from 'vue';
-import { VirtualListProps } from '../_components/virtual-list/interface';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { Size } from '../_utils/constant';
 
 export type TreeNodeKey = number | string;
