@@ -71,12 +71,14 @@
         :class="[`${prefixCls}-icon`, `${prefixCls}-custom-icon`]"
       >
         <!-- 节点图标 -->
-        <slot v-if="$slots.icon" name="icon" v-bind="nodeStatus" />
-        <RenderFunction
-          v-else-if="icon"
-          :render-func="icon"
-          v-bind="nodeStatus"
+        <slot
+          v-if="$slots.icon"
+          name="icon"
+          :checked="checked"
+          :selected="selected"
+          :expanded="expanded"
         />
+        <RenderFunction v-else-if="icon" :render-func="icon" />
         <RenderFunction
           v-else-if="treeNodeIcon"
           :render-func="treeNodeIcon"
@@ -219,7 +221,12 @@ export default defineComponent({
     const node = computed(
       () => treeContext.key2TreeNode?.get(key.value) as Node
     );
-    const treeNodeData = computed(() => node.value.treeNodeData);
+    const treeNodeData = computed(() => ({
+      ...node.value.treeNodeData,
+      selected: selected.value,
+      checked: checked.value,
+      expanded: expanded.value,
+    }));
     const children = computed(() => node.value.children);
     const actionOnNodeClick = computed(() => {
       const action = treeContext.treeProps?.actionOnNodeClick;
