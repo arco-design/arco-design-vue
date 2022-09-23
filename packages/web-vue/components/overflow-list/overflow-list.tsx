@@ -41,13 +41,21 @@ export default defineComponent({
       default: 'end',
     },
   },
+  emits: {
+    /**
+     * @zh 溢出数量改变时触发
+     * @en Triggered when the overflow quantity changes
+     * @param {number} value
+     */
+    change: (value: number) => true,
+  },
   /**
    * @zh 折叠元素
    * @en Overflow
    * @slot overflow
    * @binding {number} number
    */
-  setup(props, { slots }) {
+  setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('overflow-list');
 
     const listRef = ref<HTMLElement>();
@@ -70,6 +78,10 @@ export default defineComponent({
           overflowNumber.value = 0;
         }
       }
+    });
+
+    watch(overflowNumber, (val) => {
+      emit('change', val);
     });
 
     const onResize = () => {
