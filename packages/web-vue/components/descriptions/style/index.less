@@ -32,6 +32,10 @@
     border-collapse: collapse;
   }
 
+  &-table-layout-fixed table {
+    table-layout: fixed;
+  }
+
   &-title {
     margin-bottom: @descriptions-size-default-title-margin-bottom;
     color: @descriptions-color-title;
@@ -47,6 +51,10 @@
     font-size: @descriptions-size-default-font-size-text;
     line-height: @line-height-base;
     text-align: left;
+  }
+
+  &-table-layout-fixed &-item-label {
+    width: auto;
   }
 
   &-item-label-block {
