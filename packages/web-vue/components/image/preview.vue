@@ -205,6 +205,7 @@ export default defineComponent({
     /**
      * @zh 是否开启滚轮缩放
      * @en Whether to enable wheel zoom
+     * @version 2.38.0
      */
     wheelZoom: {
       type: Boolean,

@@ -71,16 +71,16 @@ description: Used to show and preview pictures.
 
 ### `<image-preview>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|src|Image src|`string`|`-`|
-|visible **(v-model)**|Whether is visible|`boolean`|`-`|
-|default-visible|Default visiblity|`boolean`|`false`|
-|mask-closable|Whether to close the modal when mask is clicked|`boolean`|`true`|
-|closable|Whether to show close button|`boolean`|`true`|
-|actions-layout|Layout of action list|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
-|popup-container|Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body|`HTMLElement`|`-`|
-|wheel-zoom|Whether to enable wheel zoom|`boolean`|`true`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|src|Image src|`string`|`-`||
+|visible **(v-model)**|Whether is visible|`boolean`|`-`||
+|default-visible|Default visiblity|`boolean`|`false`||
+|mask-closable|Whether to close the modal when mask is clicked|`boolean`|`true`||
+|closable|Whether to show close button|`boolean`|`true`||
+|actions-layout|Layout of action list|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`||
+|popup-container|Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body|`HTMLElement`|`-`||
+|wheel-zoom|Whether to enable wheel zoom|`boolean`|`true`|2.38.0|
 ### `<image-preview>` Events
 
 |Event Name|Description|Parameters|
