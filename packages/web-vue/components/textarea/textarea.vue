@@ -70,6 +70,7 @@ import { omit } from '../_utils/omit';
 import { INPUT_EVENTS } from '../_utils/constant';
 import pick from '../_utils/pick';
 import { useFormItem } from '../_hooks/use-form-item';
+import { useCursor } from '../_hooks/use-cursor';
 
 export default defineComponent({
   name: 'Textarea',
@@ -214,6 +215,7 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => modelValue.value ?? _value.value);
+    const [recordCursor, setCursor] = useCursor(textareaRef);
 
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
@@ -263,6 +265,19 @@ export default defineComponent({
     const isComposition = ref(false);
     const compositionValue = ref('');
 
+    const keepControl = () => {
+      recordCursor();
+      nextTick(() => {
+        if (
+          textareaRef.value &&
+          computedValue.value !== textareaRef.value.value
+        ) {
+          textareaRef.value.value = computedValue.value;
+          setCursor();
+        }
+      });
+    };
+
     const updateValue = (value: string, inner = true) => {
       if (
         computedMaxLength.value &&
@@ -279,14 +294,7 @@ export default defineComponent({
         emit('update:modelValue', value);
       }
 
-      nextTick(() => {
-        if (
-          textareaRef.value &&
-          computedValue.value !== textareaRef.value.value
-        ) {
-          textareaRef.value.value = computedValue.value;
-        }
-      });
+      keepControl();
     };
 
     let preValue = computedValue.value;
@@ -318,6 +326,17 @@ export default defineComponent({
       if (e.type === 'compositionend') {
         isComposition.value = false;
         compositionValue.value = '';
+
+        if (
+          computedMaxLength.value &&
+          !maxLengthErrorOnly.value &&
+          computedValue.value.length >= computedMaxLength.value &&
+          getValueLength(value) > computedMaxLength.value
+        ) {
+          keepControl();
+          return;
+        }
+
         emit('input', value, e);
         updateValue(value);
         eventHandlers.value?.onInput?.(e);
@@ -326,10 +345,21 @@ export default defineComponent({
       }
     };
 
-    const handleInput = (e: Event) => {
+    const handleInput = (e: InputEvent) => {
       const { value } = e.target as HTMLInputElement;
 
       if (!isComposition.value) {
+        if (
+          computedMaxLength.value &&
+          !maxLengthErrorOnly.value &&
+          computedValue.value.length >= computedMaxLength.value &&
+          getValueLength(value) > computedMaxLength.value &&
+          e.inputType === 'insertText'
+        ) {
+          keepControl();
+          return;
+        }
+
         emit('input', value, e);
         updateValue(value);
         eventHandlers.value?.onInput?.(e);
