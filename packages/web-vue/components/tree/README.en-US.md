@@ -127,6 +127,9 @@ description: For content with many levels, such as folders, catalogs, and organi
 |disableCheckbox|Whether to disable the checkbox|`boolean`|`false`|
 |checkable|Whether to show checkbox|`boolean`|`false`|
 |draggable|Whether it can be dragged|`boolean`|`false`|
+|checked|Whether the node check box is selected|`boolean`|`false`|
+|selected|Whether the node is selected|`boolean`|`false`|
+|expanded|Whether the node is expanded|`boolean`|`false`|
 |isLeaf|Whether it is a leaf node. Effective when loading dynamically|`boolean`|`false`|
 |icon|Node icon|`() => VNode[]`|`-`|
 |switcherIcon|Custom switcher icon, priority is greater than tree|`() => VNode[]`|`-`|

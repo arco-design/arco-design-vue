@@ -125,6 +125,9 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |disableCheckbox|是否禁用复选框|`boolean`|`false`|
 |checkable|是否显示多选框|`boolean`|`false`|
 |draggable|是否可以拖拽|`boolean`|`false`|
+|checked|节点复选框是否选中|`boolean`|`false`|
+|selected|节点是否选中|`boolean`|`false`|
+|expanded|节点是否展开|`boolean`|`false`|
 |isLeaf|是否是叶子节点。动态加载时有效|`boolean`|`false`|
 |icon|节点的图标|`() => VNode[]`|`-`|
 |switcherIcon|定制 switcher 图标，优先级大于 tree|`() => VNode[]`|`-`|
