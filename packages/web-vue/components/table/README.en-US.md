@@ -283,8 +283,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |Name|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |type|The type of row selector|`'checkbox' \| 'radio'`|`-`||
-|selectedRowKeys|Selected row (controlled mode)|`string[]`|`-`||
-|defaultSelectedRowKeys|The selected row by default (uncontrolled mode)|`string[]`|`-`||
+|selectedRowKeys|Selected row (controlled mode)|`BaseType[]`|`-`||
+|defaultSelectedRowKeys|The selected row by default (uncontrolled mode)|`BaseType[]`|`-`||
 |showCheckedAll|Whether to show the select all selector|`boolean`|`false`||
 |title|Column title|`string`|`-`||
 |width|Column width|`number`|`-`||
@@ -298,8 +298,8 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|expandedRowKeys|Displayed Expanded Row (Controlled Mode)|`string[]`|`-`|
-|defaultExpandedRowKeys|Expand row displayed by default (Uncontrolled mode)|`string[]`|`-`|
+|expandedRowKeys|Displayed Expanded Row (Controlled Mode)|`BaseType[]`|`-`|
+|defaultExpandedRowKeys|Expand row displayed by default (Uncontrolled mode)|`BaseType[]`|`-`|
 |defaultExpandAllRows|Whether to expand all rows by default|`boolean`|`false`|
 |expandedRowRender|Customize expanded row content|`(record: TableData) => VNodeChild`|`-`|
 |icon|Expand icon|`(expanded: boolean, record: TableData) => VNodeChild`|`-`|
