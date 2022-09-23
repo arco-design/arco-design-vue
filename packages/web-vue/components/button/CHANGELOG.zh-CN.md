@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.35.1
+
+`2022-08-19`
+
+### 💎 功能优化
+
+- 当状态为 loading 或 disabled 时点击不会触发默认事件 ([#1516](https://github.com/arco-design/arco-design-vue/pull/1516))
+
+
 ## 2.29.1
 
 `2022-06-02`

@@ -69,7 +69,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |unmount-on-close|是否在下拉菜单关闭时销毁元素|`boolean`|`false`||
 |filter-option|是否过滤选项|`boolean \| ((inputValue: string, option: SelectOptionData) => boolean)`|`true`||
 |options|选项数据|`(string \| number \| SelectOptionData \| SelectOptionGroup)[]`|`[]`||
-|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`||
 |format-label|格式化显示内容|`(data: SelectOptionData) => string`|`-`||
 |fallback-option|自定义值中不存在的选项|`boolean\| ((    value: string \| number \| Record<string, unknown>  ) => SelectOptionData)`|`true`|2.10.0|
@@ -171,5 +171,19 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 |isGroup|是否为选项组|`true`|`-`|
 |label|选项组标题|`string`|`-`|
 |options|选项组中的选项|`SelectOption[]`|`-`|
+
+
+
+
+### VirtualListProps
+
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|height|可视区域高度|`number \| string`|`-`||
+|threshold|开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。|`number`|`-`||
+|isStaticItemHeight|（已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize`|`boolean`|`false`||
+|fixedSize|元素高度是否是固定的。|`boolean`|`false`|2.34.1|
+|estimatedSize|元素高度不固定时的预估高度。|`number`|`-`|2.34.1|
+|buffer|视口边界外提前挂载的元素数量。|`number`|`10`|2.34.1|
 
 

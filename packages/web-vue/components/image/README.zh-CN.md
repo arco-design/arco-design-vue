@@ -40,14 +40,15 @@ description: 展示和预览图片。
 |height|图片显示高度|`string \| number`|`-`||
 |title|标题|`string`|`-`||
 |description|描述，将显示在底部，如果 alt 没有值，则会将其设置给 alt|`string`|`-`||
+|fit|确定图片如何适应容器框|`'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'`|`-`||
 |alt|图片的文字描述|`string`|`-`||
-|hide-footer|是否隐藏 footer|`boolean`|`false`||
+|hide-footer|是否隐藏 footer（2.36.0 版本支持 'never' 参数，支持在加载错误时显示底部内容）|`boolean \| 'never'`|`false`||
 |footer-position|底部显示的位置|`'inner' \| 'outer'`|`'inner'`||
 |show-loader|是否显示加载中效果|`boolean`|`false`||
 |preview|是否开启预览|`boolean`|`true`||
 |preview-visible **(v-model)**|控制预览的打开状态，可与 previewVisibleChange 配合使用|`boolean`|`-`||
 |default-preview-visible|预览的默认打开状态|`boolean`|`false`||
-|preview-props|预览的配置项（所有选项都是可选的） [ImagePreviewProps](#imagepreview)|`ImagePreviewProps`|`-`||
+|preview-props|预览的配置项（所有选项都是可选的） [ImagePreviewProps](#image-preview%20Props)|`ImagePreviewProps`|`-`||
 |footer-class|底部显示区域的类名|`string\|array\|object`|`-`|2.23.0|
 ### `<image>` Events
 
@@ -61,6 +62,7 @@ description: 展示和预览图片。
 |error|自定义错误状态内容|-|
 |error-icon|自定义错误状态的图标|-|
 |loader|自定义加载状态效果|-|
+|extra|底部额外内容|-|
 
 
 

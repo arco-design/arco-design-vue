@@ -27,7 +27,7 @@ Panel split can be nested.
     }"
   >
     <template #first>
-      <a-typography-paragraph>Right</a-typography-paragraph>
+      <a-typography-paragraph>Left</a-typography-paragraph>
     </template>
     <template #second>
       <div>

@@ -2,6 +2,35 @@
 
 .arco-vue-icon-header {
   margin-top: 48px;
+
+  .icon-list-bar {
+    display: flex;
+    margin-top: 48px;
+    margin-bottom: 20px;
+
+    .arco-input-search {
+      flex: 1;
+      margin-left: 20px;
+    }
+  }
+
+  .icon-list-operations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    height: 56px;
+    padding: 10px;
+    color: var(--color-text-1);
+    background-color: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+
+    .arco-form-item {
+      align-items: center;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .arco-vue-icon-section {
@@ -30,12 +59,23 @@
       height: 140px;
       border-right: 1px solid var(--color-border);
       border-bottom: 1px solid var(--color-border);
+      cursor: pointer;
+      transition: all 200ms ease;
 
       &-name {
         position: absolute;
-        top: 10px;
-        left: 10px;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding: 12px;
+        overflow: hidden;
         color: var(--color-text-1);
+        font-size: 12px;
+        white-space: nowrap;
+        text-align: center;
+        text-overflow: ellipsis;
       }
 
       &-component {
@@ -43,11 +83,18 @@
         font-size: 32px;
         line-height: 140px;
         text-align: center;
-        cursor: pointer;
-        transition: all 200ms ease;
 
-        &:hover {
-          font-size: 48px;
+        svg {
+          transition: all 200ms ease;
+        }
+      }
+
+      &:hover {
+        background-color: var(--color-fill-2);
+
+        svg {
+          font-size: 32px;
+          transform: scale(1.4, 1.4);
         }
       }
     }

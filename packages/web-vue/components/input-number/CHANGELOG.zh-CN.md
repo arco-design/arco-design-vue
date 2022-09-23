@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 功能优化
+
+- 支持`read-only`属性 ([#1408](https://github.com/arco-design/arco-design-vue/pull/1408))
+
+
 ## 2.32.1
 
 `2022-07-01`

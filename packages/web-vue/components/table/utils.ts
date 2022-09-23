@@ -11,6 +11,7 @@ import {
   isSlotsChildren,
   isArrayChildren,
 } from '../_utils/vue-utils';
+import { BaseType } from '../_utils/types';
 
 const getDataColumnsNumber = (columns: TableColumnData[]): number => {
   let count = 0;
@@ -358,7 +359,7 @@ export const spliceFromPath = (
 };
 
 export const getLeafKeys = (record: TableDataWithRaw) => {
-  const keys: string[] = [];
+  const keys: BaseType[] = [];
   if (record.children) {
     for (const item of record.children) {
       if (item.isLeaf) {
@@ -372,8 +373,8 @@ export const getLeafKeys = (record: TableDataWithRaw) => {
 };
 
 export const getSelectionStatus = (
-  selectedRowKeys: string[],
-  leafKeys: string[]
+  selectedRowKeys: BaseType[],
+  leafKeys: BaseType[]
 ) => {
   let checked = false;
   let indeterminate = false;

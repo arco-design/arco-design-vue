@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- suport custom close element ([#1544](https://github.com/arco-design/arco-design-vue/pull/1544))
+
+
 ## 2.3.0
 
 `2021-11-12`

@@ -2,6 +2,56 @@
 changelog: true
 ```
 
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- Fixed the virtual scroll bar style error caused by maxHeight in the scroll property ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- Add custom class name related prop ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+### 💎 Enhancement
+
+- type of extension key ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 💅 Style
+
+- adjust zIndex of a fixed col ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- columns support reactive type updates ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- rowClass supports values of function types ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 💎 Enhancement
+
+- Selected rows can be displayed when selected-keys are set individually ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
 ## 2.32.1
 
 `2022-07-01`

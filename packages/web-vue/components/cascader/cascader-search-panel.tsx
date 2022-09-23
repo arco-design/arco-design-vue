@@ -4,6 +4,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
 import CascaderOption from './cascader-option';
+import Scrollbar from '../scrollbar';
 
 export default defineComponent({
   name: 'CascaderSearchPanel',
@@ -60,9 +61,9 @@ export default defineComponent({
     };
 
     return () => (
-      <div class={[`${prefixCls}-panel`, `${prefixCls}-search-panel`]}>
+      <Scrollbar class={[`${prefixCls}-panel`, `${prefixCls}-search-panel`]}>
         {renderContent()}
-      </div>
+      </Scrollbar>
     );
   },
 });

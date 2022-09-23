@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- item slot adds value attribute ([#1447](https://github.com/arco-design/arco-design-vue/pull/1447))
+
+
 ## 2.20.1
 
 `2022-03-21`

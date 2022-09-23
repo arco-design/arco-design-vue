@@ -16,6 +16,8 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 
 @import ./__demo__/options.md
 
+@import ./__demo__/limit.md
+
 @import ./__demo__/all.md
 
 @import ./__demo__/layout.md
@@ -54,6 +56,7 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 |---|---|---|:---:|:---|
 |model-value **(v-model)**|绑定值|`Array<string \| number \| boolean>`|`-`||
 |default-value|默认值（非受控状态）|`Array<string \| number \| boolean>`|`[]`||
+|max|支持最多选中的数量|`number`|`-`|2.36.0|
 |options|选项|`Array<string \| number \| CheckboxOption>`|`-`|2.27.0|
 |direction|复选框的排列方向|`Direction`|`'horizontal'`||
 |disabled|是否禁用|`boolean`|`false`||

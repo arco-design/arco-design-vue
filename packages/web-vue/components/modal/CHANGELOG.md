@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 Enhancement
+
+- The on-before-ok property supports function returning a Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- support hide footer in function call ([#1410](https://github.com/arco-design/arco-design-vue/pull/1410))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- Fix the problem that the default title class name is wrong ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+
+
 ## 2.33.0
 
 `2022-07-08`

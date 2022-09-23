@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 功能优化
+
+- on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 功能优化
+
+- 支持在函数调用中隐藏页脚 ([#1410](https://github.com/arco-design/arco-design-vue/pull/1410))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 问题修复
+
+- 修复默认标题类名错误的问题 ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+
+
 ## 2.33.0
 
 `2022-07-08`

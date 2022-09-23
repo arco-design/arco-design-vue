@@ -67,7 +67,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |load-more|A callback for loading data asynchronously, returning a `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`||
 |draggable|Whether it can be dragged|`boolean`|`false`||
 |allow-drop|Whether to allow release on a node when dragging|`(options: {  dropNode: TreeNodeData;  dropPosition: -1 \| 0 \| 1;}) => boolean`|`-`||
-|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
+|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |default-expand-selected|Whether to expand the parent node of the selected node by default|`boolean`|`false`|2.9.0|
 |default-expand-checked|Whether to expand the parent node of the checked node by default|`boolean`|`false`|2.9.0|
 |auto-expand-parent|Whether to automatically expand the parent node of the expanded node|`boolean`|`true`|2.9.0|
@@ -157,10 +157,13 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 ### VirtualListProps
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|height|Viewable area height|`number \| string`|`-`|
-|threshold|Threshold for the number of elements that automatically turn on virtual scrolling, passing in null means that virtual scrolling is prohibited|`number \| null`|`-`|
-|isStaticItemHeight|Is the element height fixed|`boolean`|`false`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|height|Viewable area height|`number \| string`|`-`||
+|threshold|The threshold of the number of elements to enable virtual scrolling. When the number of data is less than the threshold, virtual scrolling will not be enabled.|`number`|`-`||
+|isStaticItemHeight|(Repealed) Is the element height fixed. Version 2.18.0 deprecated, please use `fixedSize`|`boolean`|`false`||
+|fixedSize|Is the element height fixed.|`boolean`|`false`|2.34.1|
+|estimatedSize|Is the element height fixed.|`number`|`-`|2.34.1|
+|buffer|The number of elements mounted in advance outside the boundary of the viewport.|`number`|`10`|2.34.1|
 
 

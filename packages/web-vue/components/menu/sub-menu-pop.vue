@@ -22,6 +22,7 @@
           [`${menuPrefixCls}-has-icon`]: $slots.icon,
         },
       ]"
+      aria-haspopup="true"
       v-bind="$attrs"
       @click="onClick"
     >

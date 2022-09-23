@@ -163,6 +163,15 @@ export default defineComponent({
       type: Number,
       default: 2,
     },
+    /**
+     * @zh 是否在改变数据条数时调整页码
+     * @en Whether to adjust the page number when changing the number of data
+     * @version 2.34.0
+     */
+    autoAdjust: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: {
     'update:current': (current: number) => true,
@@ -382,7 +391,11 @@ export default defineComponent({
 
     // When the number of data items changes, recalculate the page number
     watch(computedPageSize, (curPageSize, prePageSize) => {
-      if (curPageSize !== prePageSize && computedCurrent.value > 1) {
+      if (
+        props.autoAdjust &&
+        curPageSize !== prePageSize &&
+        computedCurrent.value > 1
+      ) {
         const index = prePageSize * (computedCurrent.value - 1) + 1;
         const newPage = Math.ceil(index / curPageSize);
         if (newPage !== computedCurrent.value) {

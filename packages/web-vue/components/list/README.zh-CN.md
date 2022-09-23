@@ -12,7 +12,13 @@ description: 最基础的列表展示，可承载文字、列表、图片、段�
 
 @import ./__demo__/meta.md
 
+@import ./__demo__/actions.md
+
+@import ./__demo__/actions-layout.md
+
 @import ./__demo__/grid.md
+
+@import ./__demo__/responsive-grid.md
 
 @import ./__demo__/scroll.md
 
@@ -35,7 +41,7 @@ description: 最基础的列表展示，可承载文字、列表、图片、段�
 |grid-props|列表栅格配置|`object`|`-`|
 |max-height|列表的最大高度|`number`|`0`|
 |bottom-offset|触发到达底部的距离阈值|`number`|`0`|
-|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`|
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`|
 ### `<list>` Events
 
 |事件名|描述|参数|
@@ -97,10 +103,13 @@ description: 最基础的列表展示，可承载文字、列表、图片、段�
 
 ### VirtualListProps
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|height|可视区域高度|`number \| string`|`-`|
-|threshold|自动开启虚拟滚动的元素数量阈值，传入 null 表示禁止虚拟滚动|`number \| null`|`-`|
-|isStaticItemHeight|元素高度是否是固定的|`boolean`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|height|可视区域高度|`number \| string`|`-`||
+|threshold|开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。|`number`|`-`||
+|isStaticItemHeight|（已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize`|`boolean`|`false`||
+|fixedSize|元素高度是否是固定的。|`boolean`|`false`|2.34.1|
+|estimatedSize|元素高度不固定时的预估高度。|`number`|`-`|2.34.1|
+|buffer|视口边界外提前挂载的元素数量。|`number`|`10`|2.34.1|
 
 

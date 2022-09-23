@@ -14,7 +14,13 @@ description: The most basic list display, which can carry text, lists, pictures,
 
 @import ./__demo__/meta.md
 
+@import ./__demo__/actions.md
+
+@import ./__demo__/actions-layout.md
+
 @import ./__demo__/grid.md
+
+@import ./__demo__/responsive-grid.md
 
 @import ./__demo__/scroll.md
 
@@ -37,7 +43,7 @@ description: The most basic list display, which can carry text, lists, pictures,
 |grid-props|List grid configuration|`object`|`-`|
 |max-height|Maximum height of the list|`number`|`0`|
 |bottom-offset|Trigger the distance threshold to reach the bottom|`number`|`0`|
-|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`|
+|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`|
 ### `<list>` Events
 
 |Event Name|Description|Parameters|
@@ -99,10 +105,13 @@ description: The most basic list display, which can carry text, lists, pictures,
 
 ### VirtualListProps
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|height|Viewable area height|`number \| string`|`-`|
-|threshold|Threshold for the number of elements that automatically turn on virtual scrolling, passing in null means that virtual scrolling is prohibited|`number \| null`|`-`|
-|isStaticItemHeight|Is the element height fixed|`boolean`|`false`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|height|Viewable area height|`number \| string`|`-`||
+|threshold|The threshold of the number of elements to enable virtual scrolling. When the number of data is less than the threshold, virtual scrolling will not be enabled.|`number`|`-`||
+|isStaticItemHeight|(Repealed) Is the element height fixed. Version 2.18.0 deprecated, please use `fixedSize`|`boolean`|`false`||
+|fixedSize|Is the element height fixed.|`boolean`|`false`|2.34.1|
+|estimatedSize|Is the element height fixed.|`number`|`-`|2.34.1|
+|buffer|The number of elements mounted in advance outside the boundary of the viewport.|`number`|`10`|2.34.1|
 
 

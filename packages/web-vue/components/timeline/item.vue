@@ -27,14 +27,12 @@
 import {
   defineComponent,
   getCurrentInstance,
-  onMounted,
-  onUnmounted,
   inject,
   computed,
   PropType,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { timelineInjectionKey } from './context';
+import { TimelineContext, timelineInjectionKey } from './context';
 import { DotType, LineType, PositionType, ModeType } from './interface';
 import { Direction } from '../_utils/constant';
 
@@ -111,24 +109,11 @@ export default defineComponent({
   setup(props) {
     const prefixCls = getPrefixCls('timeline-item');
     const instance = getCurrentInstance();
-    const context = inject(timelineInjectionKey, undefined);
-    onMounted(() => {
-      if (context?.addItem) {
-        context.addItem({
-          uid: instance!.uid,
-        });
-      }
-    });
-    onUnmounted(() => {
-      if (context?.removeItem) {
-        context.removeItem(instance!.uid);
-      }
-    });
-    const myIndexRef = computed(() => {
-      const items = context?.items || [];
-      const index = items.findIndex((it) => it.uid === instance?.uid);
-      return index;
-    });
+    const context = inject<Partial<TimelineContext>>(timelineInjectionKey, {});
+
+    const index = computed(
+      () => context.items?.indexOf(instance?.uid ?? -1) ?? -1
+    );
 
     const contextDirection = computed(() => {
       return context?.direction ?? 'vertical';
@@ -139,11 +124,10 @@ export default defineComponent({
     });
 
     const cls = computed(() => {
-      const index = myIndexRef.value;
-      const { items = [], reverse, labelPosition, mode } = context! || {};
+      const { items = [], reverse, labelPosition, mode = 'left' } = context;
       const direction = contextDirection.value;
       const computedPosition = getDefaultPosition(
-        index,
+        index.value,
         mode,
         direction,
         props.position
@@ -154,7 +138,7 @@ export default defineComponent({
           [`${prefixCls}-${direction}-${computedPosition}`]: direction,
           [`${prefixCls}-label-${labelPosition}`]: labelPosition,
           [`${prefixCls}-last`]:
-            index === (reverse === true ? 0 : items.length - 1),
+            index.value === (reverse === true ? 0 : items.length - 1),
         },
       ];
     });

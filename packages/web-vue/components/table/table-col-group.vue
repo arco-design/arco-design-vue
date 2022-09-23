@@ -9,7 +9,12 @@
     <col
       v-for="item of dataColumns"
       :key="`arco-col-${item.dataIndex}`"
-      :style="fixedWidth(columnWidth[item.dataIndex] || item.width)"
+      :style="
+        fixedWidth(
+          (columnWidth && item.dataIndex && columnWidth[item.dataIndex]) ||
+            item.width
+        )
+      "
     />
   </colgroup>
 </template>
@@ -34,7 +39,7 @@ export default defineComponent({
     },
   },
   setup() {
-    const fixedWidth = (width: number) => {
+    const fixedWidth = (width?: number) => {
       if (width) {
         return {
           width: `${width}px`,

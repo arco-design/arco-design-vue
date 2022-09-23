@@ -13,6 +13,7 @@ import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
 import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
 import { TableContext, tableInjectionKey } from './context';
+import { BaseType } from '../_utils/types';
 
 export default defineComponent({
   name: 'OperationTd',
@@ -40,7 +41,7 @@ export default defineComponent({
       default: false,
     },
     selectedRowKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     renderExpandBtn: {
       type: Function as PropType<

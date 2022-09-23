@@ -9,6 +9,7 @@ export { default as Avatar, AvatarGroup } from './avatar';
 export { default as BackTop } from './back-top';
 export { default as Badge } from './badge';
 export { default as Breadcrumb, BreadcrumbItem } from './breadcrumb';
+export type { BreadcrumbRoute } from './breadcrumb';
 export { default as Button, ButtonGroup } from './button';
 export type { ButtonProps } from './button';
 export { default as Card, CardMeta, CardGrid } from './card';
@@ -33,12 +34,25 @@ export { default as Descriptions, DescriptionsItem } from './descriptions';
 export type { DescData } from './descriptions';
 export { default as Divider } from './divider';
 export { default as Drawer } from './drawer';
+export type {
+  DrawerInstance,
+  DrawerMethod,
+  DrawerConfig,
+  DrawerReturn,
+} from './drawer';
 export {
   default as Dropdown,
   Doption,
   Dgroup,
   Dsubmenu,
   DropdownButton,
+} from './dropdown';
+export type {
+  DropDownProps,
+  DropdownOption,
+  DOption,
+  DGroup,
+  DSubmenu,
 } from './dropdown';
 export { default as Empty } from './empty';
 export { default as Form, FormItem } from './form';
@@ -75,6 +89,7 @@ export {
   LayoutFooter,
   LayoutSider,
 } from './layout';
+export type { LayoutProps, SiderProps } from './layout';
 export { default as Link } from './link';
 export { default as List, ListItem, ListItemMeta } from './list';
 export { default as Mention } from './mention';
@@ -99,6 +114,7 @@ export { default as Radio, RadioGroup } from './radio';
 export { default as Rate } from './rate';
 export { default as ResizeBox } from './resize-box';
 export { default as Result } from './result';
+export { default as Scrollbar } from './scrollbar';
 export { default as Select, Option, Optgroup } from './select';
 export type {
   SelectProps,
@@ -163,6 +179,7 @@ export {
 } from './typography';
 export type { EllipsisConfig } from './typography';
 export { default as Upload } from './upload';
+export { default as OverflowList } from './overflow-list';
 export type {
   FileStatus,
   FileItem,

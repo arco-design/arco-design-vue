@@ -37,6 +37,6 @@ description: Display information content in chronological or reverse order.
 
 ## API
 
-%%API(timeline.vue)%%
+%%API(timeline.tsx)%%
 
 %%API(item.vue)%%

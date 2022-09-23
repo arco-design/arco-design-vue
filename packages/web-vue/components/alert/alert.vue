@@ -30,18 +30,17 @@
         :class="`${prefixCls}-close-btn`"
         @click="handleClose"
       >
-        <icon-hover>
-          <icon-close />
-        </icon-hover>
+        <slot name="close-element">
+          <icon-hover>
+            <icon-close />
+          </icon-hover>
+        </slot>
       </div>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-/**
- * @todo 增加自定义关闭按钮图标功能
- */
 import type { PropType } from 'vue';
 import { computed, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
@@ -125,6 +124,17 @@ export default defineComponent({
    * @zh 图标
    * @en Icon
    * @slot icon
+   */
+  /**
+   * @zh 操作项
+   * @en Actions
+   * @slot action
+   */
+  /**
+   * @zh 关闭元素
+   * @en Close element
+   * @slot close-element
+   * @version 2.36.0
    */
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('alert');

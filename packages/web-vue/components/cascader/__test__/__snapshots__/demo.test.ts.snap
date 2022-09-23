@@ -119,22 +119,28 @@ exports[`<cascader> demo: render [multiple] correctly 1`] = `
 exports[`<cascader> demo: render [panel] correctly 1`] = `
 "<transition-group-stub>
   <div class=\\"arco-cascader-panel-column\\" style=\\"z-index: 3;\\">
-    <ul role=\\"menu\\" class=\\"arco-cascader-list\\">
-      <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Beijing\\" class=\\"arco-cascader-option\\">
-        <!---->
-        <!---->
-        <div class=\\"arco-cascader-option-label\\">Beijing<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-          </svg></div>
-      </li>
-      <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Shanghai\\" class=\\"arco-cascader-option\\">
-        <!---->
-        <!---->
-        <div class=\\"arco-cascader-option-label\\">Shanghai<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-          </svg></div>
-      </li>
-    </ul>
+    <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+      <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">
+        <ul role=\\"menu\\" class=\\"arco-cascader-list\\">
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Beijing\\" class=\\"arco-cascader-option\\">
+            <!---->
+            <!---->
+            <div class=\\"arco-cascader-option-label\\">Beijing<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+                <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+              </svg></div>
+          </li>
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Shanghai\\" class=\\"arco-cascader-option\\">
+            <!---->
+            <!---->
+            <div class=\\"arco-cascader-option-label\\">Shanghai<svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+                <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+              </svg></div>
+          </li>
+        </ul>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
   </div>
 </transition-group-stub>"
 `;

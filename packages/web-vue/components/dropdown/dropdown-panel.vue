@@ -5,7 +5,7 @@
         <empty />
       </slot>
     </div>
-    <div
+    <Scrollbar
       ref="wrapperRef"
       :class="`${prefixCls}-list-wrapper`"
       :style="style"
@@ -14,7 +14,7 @@
       <ul :class="`${prefixCls}-list`">
         <slot />
       </ul>
-    </div>
+    </Scrollbar>
     <div v-if="$slots.footer && !isEmpty" :class="`${prefixCls}-footer`">
       <slot name="footer" />
     </div>
@@ -35,10 +35,12 @@ import Empty from '../empty';
 import { EmitType } from '../_utils/types';
 import { DropdownContext, dropdownInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
+import Scrollbar from '../scrollbar';
 
 export default defineComponent({
   name: 'DropdownPanel',
   components: {
+    Scrollbar,
     Empty,
   },
   props: {

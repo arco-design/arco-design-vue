@@ -2,6 +2,29 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 Enhancement
+
+- The on-before-ok property supports function returning a Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- add function call ([#1409](https://github.com/arco-design/arco-design-vue/pull/1409))
+
+
 ## 2.33.0
 
 `2022-07-08`

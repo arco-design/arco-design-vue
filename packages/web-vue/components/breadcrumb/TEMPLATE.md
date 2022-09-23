@@ -25,6 +25,10 @@ description: Breadcrumb is an auxiliary navigation mode used to identify the pos
 
 @import ./__demo__/icon.md
 
+@import ./__demo__/routes.md
+
+@import ./__demo__/dropdown.md
+
 @import ./__demo__/ellipsis.md
 
 ## API
@@ -32,3 +36,16 @@ description: Breadcrumb is an auxiliary navigation mode used to identify the pos
 %%API(breadcrumb.tsx)%%
 
 %%API(breadcrumb-item.tsx)%%
+
+%%INTERFACE(interface.ts)%%
+
+## Tips
+
+## zh-CN
+
+同名的自定义插槽优先级是高于属性的
+---
+
+## en-US
+The custom slot with the same name takes precedence over the attribute.
+---

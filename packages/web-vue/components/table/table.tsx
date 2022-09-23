@@ -57,9 +57,9 @@ import Th from './table-th';
 import Td from './table-td';
 import OperationTh from './table-operation-th';
 import OperationTd from './table-operation-td';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import ResizeObserver from '../_components/resize-observer';
-import { VirtualListProps } from '../_components/virtual-list/interface';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { omit } from '../_utils/omit';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useDrag } from './hooks/use-drag';
@@ -70,6 +70,9 @@ import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
 import { useSpan } from './hooks/use-span';
 import { useChildrenComponents } from '../_hooks/use-children-components';
+import Scrollbar from '../scrollbar';
+import { useComponentRef } from '../_hooks/use-component-ref';
+import type { BaseType } from '../_utils/types';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -216,8 +219,8 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动
-     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
      * @type VirtualListProps
      */
     virtualListProps: {
@@ -279,12 +282,17 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 表格行元素的类名
-     * @en The class name of the table row element
+     * @zh 表格行元素的类名。`2.34.0` 版本增加函数值支持
+     * @en The class name of the table row element. The `2.34.0` version adds support for function values.
      * @version 2.16.0
      */
     rowClass: {
-      type: [String, Array, Object],
+      type: [String, Array, Object, Function] as PropType<
+        | string
+        | any[]
+        | Record<string, any>
+        | ((record: TableData, rowIndex: number) => any)
+      >,
     },
     /**
      * @zh 表格拖拽排序的配置
@@ -349,7 +357,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     selectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 默认已选择的行（非受控模式）优先于 `rowSelection`
@@ -357,7 +365,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     defaultSelectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 显示的展开行、子树（受控模式）优先于 `expandable`
@@ -365,7 +373,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     expandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 默认显示的展开行、子树（非受控模式）优先于 `expandable`
@@ -373,7 +381,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     defaultExpandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     /**
      * @zh 是否默认展开所有的行
@@ -395,29 +403,30 @@ export default defineComponent({
     },
   },
   emits: {
-    'update:selectedKeys': (rowKeys: string[]) => true,
-    'update:expandedKeys': (rowKeys: string[]) => true,
+    'update:selectedKeys': (rowKeys: BaseType[]) => true,
+    'update:expandedKeys': (rowKeys: BaseType[]) => true,
     /**
      * @zh 点击展开行时触发
      * @en Triggered when a row is clicked to expand
-     * @param {string} rowKey
+     * @param {BaseType} rowKey
      * @param {TableData} record
      */
-    'expand': (rowKey: string, record: TableData) => true,
+    'expand': (rowKey: BaseType, record: TableData) => true,
     /**
      * @zh 已展开的数据行发生改变时触发
      * @en Triggered when the expanded data row changes
-     * @param {string[]} rowKeys
+     * @param {BaseType[]} rowKeys
      */
-    'expandedChange': (rowKeys: string[]) => true,
+    'expandedChange': (rowKeys: BaseType[]) => true,
     /**
      * @zh 点击行选择器时触发
      * @en Triggered when the row selector is clicked
-     * @param {string[]} rowKeys
-     * @param {string} rowKey
+     * @param {BaseType[]} rowKeys
+     * @param {BaseType} rowKey
      * @param {TableData} record
      */
-    'select': (rowKeys: string[], rowKey: string, record: TableData) => true,
+    'select': (rowKeys: BaseType[], rowKey: BaseType, record: TableData) =>
+      true,
     /**
      * @zh 点击全选选择器时触发
      * @en Triggered when the select all selector is clicked
@@ -427,9 +436,9 @@ export default defineComponent({
     /**
      * @zh 已选择的数据行发生改变时触发
      * @en Triggered when the selected data row changes
-     * @param {string[]} rowKeys
+     * @param {BaseType[]} rowKeys
      */
-    'selectionChange': (rowKeys: string[]) => true,
+    'selectionChange': (rowKeys: BaseType[]) => true,
     /**
      * @zh 排序规则发生改变时触发
      * @en Triggered when the collation changes
@@ -621,15 +630,26 @@ export default defineComponent({
       return { x, y };
     });
 
-    const theadRef = ref<HTMLElement>();
-    const tbodyRef = ref<HTMLElement>();
+    // const theadRef = ref<HTMLElement>();
     const summaryRef = ref<HTMLElement>();
     const thRefs = ref<Record<string, HTMLElement>>({});
 
-    const virtualListRef = ref();
-
-    watch(virtualListRef, (instance) => {
-      tbodyRef.value = instance.$el;
+    const { componentRef: contentComRef, elementRef: contentRef } =
+      useComponentRef('containerRef');
+    const { componentRef: tbodyComRef, elementRef: tbodyRef } =
+      useComponentRef('containerRef');
+    const { componentRef: virtualComRef, elementRef: virtualRef } =
+      useComponentRef('viewportRef');
+    const { componentRef: theadComRef, elementRef: theadRef } =
+      useComponentRef('containerRef');
+    const containerElement = computed(() => {
+      if (splitTable.value) {
+        if (isVirtualList.value) {
+          return virtualRef.value;
+        }
+        return tbodyRef.value;
+      }
+      return contentRef.value;
     });
 
     const splitTable = computed(
@@ -671,7 +691,7 @@ export default defineComponent({
         dataColumns.value = result.dataColumns;
         groupColumns.value = result.groupColumns;
       },
-      { immediate: true }
+      { immediate: true, deep: true }
     );
 
     const isPaginationTop = computed(() =>
@@ -771,7 +791,7 @@ export default defineComponent({
     const disabledKeys = new Set();
 
     const allRowKeys = computed(() => {
-      const allRowKeys: string[] = [];
+      const allRowKeys: BaseType[] = [];
       disabledKeys.clear();
       const travelData = (data: TableData[]) => {
         if (isArray(data) && data.length > 0) {
@@ -793,7 +813,7 @@ export default defineComponent({
     });
 
     const currentAllRowKeys = computed(() => {
-      const keys: string[] = [];
+      const keys: BaseType[] = [];
       const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
           keys.push(record.key);
@@ -808,7 +828,7 @@ export default defineComponent({
     });
 
     const currentAllEnabledRowKeys = computed(() => {
-      const keys: string[] = [];
+      const keys: BaseType[] = [];
 
       const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
@@ -1069,7 +1089,6 @@ export default defineComponent({
       return undefined;
     });
 
-    const containerRef = ref<HTMLDivElement>();
     const containerScrollLeft = ref(0);
 
     const alignLeft = ref(true);
@@ -1079,9 +1098,7 @@ export default defineComponent({
       let _alignLeft = true;
       let _alignRight = true;
 
-      const scrollContainer = splitTable.value
-        ? tbodyRef.value
-        : containerRef.value;
+      const scrollContainer = containerElement.value;
 
       if (scrollContainer) {
         _alignLeft = containerScrollLeft.value === 0;
@@ -1424,7 +1441,12 @@ export default defineComponent({
             tr: slots.tr,
           }}
           key={`table-summary-${rowIndex}`}
-          class={[`${prefixCls}-tr-summary`, props.rowClass]}
+          class={[
+            `${prefixCls}-tr-summary`,
+            isFunction(props.rowClass)
+              ? props.rowClass(record, rowIndex)
+              : props.rowClass,
+          ]}
           // @ts-ignore
           onClick={(ev: Event) => handleRowClick(record, ev)}
         >
@@ -1511,7 +1533,7 @@ export default defineComponent({
                 index: number;
               }) => renderRecord(item, index),
             }}
-            ref={virtualListRef}
+            ref={virtualComRef}
             class={`${prefixCls}-body`}
             data={flattenData.value}
             itemKey="_key"
@@ -1578,9 +1600,7 @@ export default defineComponent({
       }
 
       if (expandContent) {
-        const scrollContainer = splitTable.value
-          ? tbodyRef.value
-          : containerRef.value;
+        const scrollContainer = containerElement.value;
 
         return (
           <Tr key={`${record.key}-expand`} expand>
@@ -1660,7 +1680,9 @@ export default defineComponent({
                 [`${prefixCls}-tr-draggable`]: dragType.value === 'row',
                 [`${prefixCls}-tr-drag`]: isDragTarget,
               },
-              props.rowClass,
+              isFunction(props.rowClass)
+                ? props.rowClass(record, rowIndex)
+                : props.rowClass,
             ]}
             rowIndex={rowIndex}
             record={record}
@@ -1830,9 +1852,10 @@ export default defineComponent({
 
     const renderContent = () => {
       if (splitTable.value) {
-        const style: CSSProperties = {
-          overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
-        };
+        const style: CSSProperties = {};
+        if (hasScrollBar.value) {
+          style.overflowY = 'scroll';
+        }
         if (isNumber(props.stickyHeader)) {
           style.top = `${props.stickyHeader}px`;
         }
@@ -1840,13 +1863,14 @@ export default defineComponent({
         return (
           <>
             {props.showHeader && (
-              <div
-                ref={theadRef}
+              <Scrollbar
+                ref={theadComRef}
                 class={[
                   `${prefixCls}-header`,
                   { [`${prefixCls}-header-sticky`]: props.stickyHeader },
                 ]}
                 style={style}
+                hide={flattenData.value.length !== 0}
               >
                 <table
                   class={`${prefixCls}-element`}
@@ -1861,20 +1885,48 @@ export default defineComponent({
                   />
                   {renderHeader()}
                 </table>
-              </div>
+              </Scrollbar>
             )}
-            {isVirtualList.value ? (
-              renderVirtualListBody()
-            ) : (
-              <ResizeObserver onResize={handleTbodyResize}>
-                <div
-                  ref={tbodyRef}
+            <ResizeObserver onResize={handleTbodyResize}>
+              {isVirtualList.value ? (
+                <VirtualList
+                  v-slots={{
+                    item: ({
+                      item,
+                      index,
+                    }: {
+                      item: TableDataWithRaw;
+                      index: number;
+                    }) => renderRecord(item, index),
+                  }}
+                  ref={(ins: any) => {
+                    if (ins?.$el) tbodyRef.value = ins.$el;
+                  }}
+                  class={`${prefixCls}-body`}
+                  data={flattenData.value}
+                  itemKey="_key"
+                  component={{
+                    list: 'table',
+                    content: 'tbody',
+                  }}
+                  listAttrs={{
+                    class: `${prefixCls}-element`,
+                    style: contentStyle.value,
+                  }}
+                  paddingPosition="list"
+                  {...props.virtualListProps}
+                  onScroll={onTbodyScroll}
+                />
+              ) : (
+                <Scrollbar
+                  ref={tbodyComRef}
                   class={`${prefixCls}-body`}
                   style={{
                     maxHeight: isNumber(props.scroll?.y)
                       ? `${props.scroll?.y}px`
                       : '100%',
                   }}
+                  outerStyle={{ display: 'flex', minHeight: '0' }}
                   onScroll={onTbodyScroll}
                 >
                   <table
@@ -1892,9 +1944,9 @@ export default defineComponent({
                     )}
                     {renderBody()}
                   </table>
-                </div>
-              </ResizeObserver>
-            )}
+                </Scrollbar>
+              )}
+            </ResizeObserver>
             {summaryData.value && summaryData.value.length && (
               <div
                 ref={summaryRef}
@@ -1951,8 +2003,8 @@ export default defineComponent({
       return (
         <>
           <div class={[`${prefixCls}-container`, tableCls.value]}>
-            <div
-              ref={containerRef}
+            <Scrollbar
+              ref={contentComRef}
               class={[
                 `${prefixCls}-content`,
                 {
@@ -1960,6 +2012,7 @@ export default defineComponent({
                 },
               ]}
               style={style}
+              outerStyle={{ height: '100%' }}
               onScroll={handleScroll}
             >
               {content ? (
@@ -1973,7 +2026,7 @@ export default defineComponent({
               ) : (
                 renderContent()
               )}
-            </div>
+            </Scrollbar>
           </div>
           {slots.footer && (
             <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
@@ -2070,12 +2123,12 @@ export default defineComponent({
     /**
      * @zh 设置行选择器状态
      * @en Set row selector state
-     * @param { string | string[] } rowKey
+     * @param { BaseType | BaseType[] } rowKey
      * @param { boolean } checked
      * @public
      * @version 2.31.0
      */
-    select(rowKey: string | string[], checked?: boolean) {
+    select(rowKey: BaseType | BaseType[], checked?: boolean) {
       return this.selfSelect(rowKey, checked);
     },
     /**
@@ -2091,12 +2144,12 @@ export default defineComponent({
     /**
      * @zh 设置展开状态
      * @en Set select all state
-     * @param { string | string[] } rowKey
+     * @param { BaseType | BaseType[] } rowKey
      * @param { boolean } checked
      * @public
      * @version 2.31.0
      */
-    expand(rowKey: string | string[], checked?: boolean) {
+    expand(rowKey: BaseType | BaseType[], checked?: boolean) {
       return this.selfExpand(rowKey, checked);
     },
     /**

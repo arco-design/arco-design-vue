@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.35.0
+
+`2022-08-12`
+
+### 🆕 新增功能
+
+- 支持旋转属性 ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+- 图标列表支持类型筛选和名称搜索 ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+
+
 ## 2.25.0
 
 `2022-04-22`

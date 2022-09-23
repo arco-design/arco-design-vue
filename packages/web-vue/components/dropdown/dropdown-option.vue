@@ -3,8 +3,6 @@
     ref="liRef"
     :class="[cls, { [`${prefixCls}-has-suffix`]: Boolean($slots.suffix) }]"
     @click="handleClick"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
   >
     <span v-if="$slots.icon" :class="`${prefixCls}-icon`">
       <slot name="icon" />
@@ -45,12 +43,20 @@ export default defineComponent({
     active: Boolean,
     uninjectContext: Boolean,
   },
+  emits: {
+    /**
+     * @zh 点击按钮时触发
+     * @en Emitted when the button is clicked
+     * @param {MouseEvent} ev
+     */
+    click: (ev: MouseEvent) => true,
+  },
   /**
    * @zh 图标
    * @en Icon
    * @slot icon
    */
-  setup(props) {
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('dropdown-option');
     const liRef = ref<HTMLElement>();
 
@@ -62,21 +68,10 @@ export default defineComponent({
       ? inject(dropdownInjectionKey, undefined)
       : undefined;
 
-    const handleClick = (ev: Event) => {
+    const handleClick = (ev: MouseEvent) => {
       if (!props.disabled) {
+        emit('click', ev);
         dropdownCtx?.onOptionClick(computedValue.value, ev);
-      }
-    };
-
-    const handleMouseEnter = (e: Event) => {
-      if (!props.disabled) {
-        // emit('mouseenter', props.value, e);
-      }
-    };
-
-    const handleMouseLeave = (e: Event) => {
-      if (!props.disabled) {
-        // emit('mouseleave', props.value, e);
       }
     };
 
@@ -93,8 +88,6 @@ export default defineComponent({
       cls,
       liRef,
       handleClick,
-      handleMouseEnter,
-      handleMouseLeave,
     };
   },
 });

@@ -1,5 +1,5 @@
 import { CSSProperties, RenderFunction, Slots, VNodeChild } from 'vue';
-import { Data } from '../_utils/types';
+import { ClassName, Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
 export const TABLE_PAGE_POSITION = [
@@ -203,6 +203,30 @@ export interface TableColumnData {
    * @en Header sub-data, used for header grouping
    */
   children?: TableColumnData[];
+  /**
+   * @zh 自定义单元格类名
+   * @en Custom cell class
+   * @version 2.36.0
+   */
+  cellClass?: ClassName;
+  /**
+   * @zh 自定义表头单元格类名
+   * @en Custom header cell class
+   * @version 2.36.0
+   */
+  headerCellClass?: ClassName;
+  /**
+   * @zh 自定义内容单元格类名
+   * @en Custom body cell class
+   * @version 2.36.0
+   */
+  bodyCellClass?: ClassName | ((record: TableData) => ClassName);
+  /**
+   * @zh 自定义总结栏单元格类名
+   * @en Custom body cell class
+   * @version 2.36.0
+   */
+  summaryCellClass?: ClassName | ((record: TableData) => ClassName);
   /**
    * @zh 自定义单元格样式
    * @en Custom cell style

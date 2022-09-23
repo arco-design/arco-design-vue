@@ -328,6 +328,8 @@ export default defineComponent({
         [`${prefixCls}-th-resizing`]: resizing.value,
       },
       ...getFixedCls(prefixCls, props.column),
+      props.column?.cellClass,
+      props.column?.headerCellClass,
     ]);
 
     const handleMouseDown = (ev: MouseEvent) => {

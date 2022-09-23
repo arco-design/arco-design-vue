@@ -34,4 +34,4 @@ description: 项目文件的组织结构
 └── tsconfig.json
 ```
 
-ps： 过滤器说明<https://v3.cn.vuejs.org/guide/migration/filters.html#%E8%BF%81%E7%A7%BB%E7%AD%96%E7%95%A5>
+ps：[过滤器说明](https://v3-migration.vuejs.org/breaking-changes/filters.html)

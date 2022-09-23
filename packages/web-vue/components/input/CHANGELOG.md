@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 💎 Enhancement
+
+- Modify password input box icon ([#1436](https://github.com/arco-design/arco-design-vue/pull/1436))
+
+
 ## 2.30.0
 
 `2022-06-10`

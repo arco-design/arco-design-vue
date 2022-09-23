@@ -8,16 +8,20 @@ import {
   TreeNodeKey,
 } from '../../tree/interface';
 
+function isLabelValue(value: TreeNodeKey | LabelValue): value is LabelValue {
+  return isObject(value);
+}
+
 function isValidKey(key: TreeNodeKey) {
   return key !== undefined && key !== null && key !== '';
 }
 
 function getKey(value: TreeNodeKey | LabelValue) {
-  return isObject(value) ? value.value : value;
+  return isLabelValue(value) ? value.value : value;
 }
 
 function getLabel(value: TreeNodeKey | LabelValue) {
-  return isObject(value) ? value.label : undefined;
+  return isLabelValue(value) ? value.label : undefined;
 }
 
 function isValidValue(value: TreeNodeKey | LabelValue) {
@@ -92,7 +96,7 @@ export default function useSelectedState(props: {
         }
 
         res.push({
-          ...(isObject(item) ? item : {}),
+          ...(isLabelValue(item) ? item : {}),
           ...(originValueItem || {}),
           value: key,
           label:

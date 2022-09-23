@@ -12,6 +12,6 @@ const Textarea = Object.assign(_Textarea, {
   },
 });
 
-export type LinkInstance = InstanceType<typeof _Textarea>;
+export type TextareaInstance = InstanceType<typeof _Textarea>;
 
 export default Textarea;

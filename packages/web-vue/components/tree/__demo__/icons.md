@@ -19,19 +19,21 @@ The node icons `loadingIcon`, `switcherIcon`, support customization at the two l
 ```vue
 <template>
   <a-tree :data="treeData" show-line>
-    <template #switcher-icon>
-      <IconDown />
+     <template #switcher-icon="node, { isLeaf }">
+      <IconDown v-if="!isLeaf" />
+      <IconStar v-if="isLeaf" />
     </template>
   </a-tree>
 </template>
 
 <script>
   import { h } from 'vue';
-  import { IconDriveFile, IconDown } from '@arco-design/web-vue/es/icon';
+  import { IconDriveFile, IconDown, IconStar } from '@arco-design/web-vue/es/icon';
 
   export default {
     components: {
-      IconDown
+      IconDown,
+      IconStar
     },
     setup() {
       return {

@@ -25,6 +25,8 @@ description: When warning information is displayed to the user, the warning prom
 
 @import ./__demo__/closable.md
 
+@import ./__demo__/close-element.md
+
 @import ./__demo__/icon.md
 
 @import ./__demo__/action.md

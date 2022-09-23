@@ -31,7 +31,7 @@ const options: OptimizeOptions = {
       params: {
         attributes: [
           { ':class': 'cls' },
-          { ':style': 'sizeStyle' },
+          { ':style': 'innerStyle' },
           { ':stroke-width': 'strokeWidth' },
           { ':stroke-linecap': 'strokeLinecap' },
           { ':stroke-linejoin': 'strokeLinejoin' },
