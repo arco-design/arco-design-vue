@@ -60,7 +60,7 @@
 
         <!-- toolbar -->
         <PreviewToolbar
-          v-if="isLoaded"
+          v-if="isLoaded && actionsLayout.length"
           :actions="actions"
           :actions-layout="actionsLayout"
         >
