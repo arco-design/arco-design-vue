@@ -55,6 +55,7 @@ export default defineComponent({
               type={item.type}
               duration={item.duration}
               closable={item.closable}
+              showIcon={item.showIcon}
               v-slots={slots}
               onClose={() => context.emit('close', item.id)}
             />

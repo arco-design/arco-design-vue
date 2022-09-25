@@ -7,8 +7,8 @@
       { [`${prefixCls}-closable`]: closable },
     ]"
   >
-    <div :class="`${prefixCls}-left`">
-      <div v-if="showIcon" :class="`${prefixCls}-icon`">
+    <div v-if="showIcon" :class="`${prefixCls}-left`">
+      <div :class="`${prefixCls}-icon`">
         <slot name="icon">
           <icon-info-circle-fill v-if="type === 'info'" />
           <icon-check-circle-fill v-else-if="type === 'success'" />
