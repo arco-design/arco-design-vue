@@ -1,7 +1,7 @@
 ```yaml
 title:
   zh-CN: 可关闭标签
-  en-US: Closeable
+  en-US: Closable
 ```
 
 ## zh-CN
