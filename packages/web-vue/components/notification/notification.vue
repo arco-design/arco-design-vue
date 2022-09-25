@@ -18,10 +18,10 @@
       </div>
     </div>
     <div :class="`${prefixCls}-right`">
-      <div :class="`${prefixCls}-title`">
+      <div v-if="$slots.default" :class="`${prefixCls}-title`">
         <slot />
       </div>
-      <div :class="`${prefixCls}-content`">
+      <div v-if="$slots.content" :class="`${prefixCls}-content`">
         <slot name="content" />
       </div>
       <div v-if="$slots.footer" :class="`${prefixCls}-footer`">
