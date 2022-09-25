@@ -48,11 +48,15 @@ export default defineComponent({
             content: getSlotFunction(item.content),
             icon: getSlotFunction(item.icon),
             footer: getSlotFunction(item.footer),
+            closeIcon: getSlotFunction(item.closeIcon),
+            closeIconElement: getSlotFunction(item.closeIconElement),
           };
           return (
             <Notification
               key={item.id}
               type={item.type}
+              style={item.style}
+              class={item.class}
               duration={item.duration}
               closable={item.closable}
               showIcon={item.showIcon}
