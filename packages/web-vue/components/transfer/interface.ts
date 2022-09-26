@@ -22,3 +22,8 @@ export interface DataInfo {
   selected: string[];
   validSelected: string[];
 }
+
+export interface Data {
+  sourceInfo: DataInfo;
+  targetInfo: DataInfo;
+}

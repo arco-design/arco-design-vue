@@ -23,6 +23,7 @@ import UploadList from './upload-list';
 import { uploadInjectionKey } from './context';
 import { ImagePreviewGroup } from '../image';
 import { useFormItem } from '../_hooks/use-form-item';
+import { clipboard } from '../_utils/clipboard';
 
 export default defineComponent({
   name: 'Upload',
@@ -213,6 +214,15 @@ export default defineComponent({
       default: true,
     },
     /**
+     * @zh 在列表模式下，如果上传的文件存在 URL 则展示复制图标，点击可以复制URL。
+     * @en In the list mode, if the uploaded file has a URL, show copy icon, click icon can copy URL.
+     *
+     */
+    showCopy: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * @zh `<img>` 的原生 HTML 属性，需要浏览器支持
      * @en Native HTML attributes of `<img>`, browser support is required
      * @version 2.11.0
@@ -316,6 +326,12 @@ export default defineComponent({
      * @param {FileItem} fileItem
      */
     'error': (fileItem: FileItem) => true,
+    /**
+     * @zh 点击复制按钮时触发
+     * @en Triggered when click copy icon
+     * @param {FileItem} fileItem
+     */
+    'copied': (url: string) => true,
   },
   /**
    * @zh 上传列表的项目
@@ -402,6 +418,7 @@ export default defineComponent({
       imageLoading,
       download,
       showLink,
+      showCopy,
     } = toRefs(props);
     const prefixCls = getPrefixCls('upload');
     const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
@@ -631,6 +648,11 @@ export default defineComponent({
       }
     };
 
+    const handleCopy = (url: string) => {
+      clipboard(url);
+      emit('copied', url);
+    };
+
     const handlePreview = (fileItem: FileItem) => {
       if (props.imagePreview && fileItem.url) {
         const current = imageList.value.indexOf(fileItem.url);
@@ -653,6 +675,7 @@ export default defineComponent({
         showRetryButton,
         showCancelButton,
         showLink,
+        showCopy,
         imageLoading,
         download,
         customIcon,
@@ -661,6 +684,7 @@ export default defineComponent({
         onAbort: abort,
         onRemove: handleRemove,
         onPreview: handlePreview,
+        onCopy: handleCopy,
       })
     );
 

@@ -16,6 +16,8 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 
 @import ./__demo__/simple.md
 
+@import ./__demo__/exchange-data.md
+
 ## API
 
 
@@ -46,9 +48,10 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 |---|:---:|---|
 |item|选项|-|
 
-
-
-
+### `<transfer>` Methods
+|方法名|描述|参数|
+|---|---|---|
+|exchangeData|交换左右列表的数据|-|
 ### TransferItem
 
 |参数名|描述|类型|默认值|

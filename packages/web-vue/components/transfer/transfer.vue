@@ -62,13 +62,14 @@ import {
   reactive,
   ref,
   toRef,
+  watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import ArcoButton from '../button';
 import TransferView from './transfer-view.vue';
 import IconLeft from '../icon/icon-left';
 import IconRight from '../icon/icon-right';
-import { DataInfo, TransferItem } from './interface';
+import { DataInfo, TransferItem, Data } from './interface';
 import { transferInjectionKey } from './context';
 import { useFormItem } from '../_hooks/use-form-item';
 
@@ -192,7 +193,7 @@ export default defineComponent({
    * @en Option
    * @slot item
    */
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, expose }) {
     const { mergedDisabled, eventHandlers } = useFormItem({
       disabled: toRef(props, 'disabled'),
     });
@@ -206,51 +207,19 @@ export default defineComponent({
     const sourceTitle = computed(() => props.title?.[0]);
     const targetTitle = computed(() => props.title?.[1]);
 
-    const dataInfo = computed(() => {
-      const sourceInfo: DataInfo = {
+    const dataInfo = ref<Data>({
+      sourceInfo: {
         data: [],
         allValidValues: [],
         selected: [],
         validSelected: [],
-      };
-
-      const targetInfo: DataInfo = {
+      },
+      targetInfo: {
         data: [],
         allValidValues: [],
         selected: [],
         validSelected: [],
-      };
-
-      for (const item of props.data) {
-        if (computedTarget.value.includes(item.value)) {
-          targetInfo.data.push(item);
-          if (!item.disabled) {
-            targetInfo.allValidValues.push(item.value);
-          }
-          if (computedSelected.value.includes(item.value)) {
-            targetInfo.selected.push(item.value);
-            if (!item.disabled) {
-              targetInfo.validSelected.push(item.value);
-            }
-          }
-        } else {
-          sourceInfo.data.push(item);
-          if (!item.disabled) {
-            sourceInfo.allValidValues.push(item.value);
-          }
-          if (computedSelected.value.includes(item.value)) {
-            sourceInfo.selected.push(item.value);
-            if (!item.disabled) {
-              sourceInfo.validSelected.push(item.value);
-            }
-          }
-        }
-      }
-
-      return {
-        sourceInfo,
-        targetInfo,
-      };
+      },
     });
 
     const handleSearch = (value: string, type: 'target' | 'source') => {
@@ -286,6 +255,16 @@ export default defineComponent({
       emit('select', values);
     };
 
+    const exchangeData = () => {
+      const cloneData = { ...dataInfo.value };
+      dataInfo.value.sourceInfo = cloneData.targetInfo;
+      dataInfo.value.targetInfo = cloneData.sourceInfo;
+    };
+
+    expose({
+      exchangeData,
+    });
+
     provide(
       transferInjectionKey,
       reactive({
@@ -304,6 +283,52 @@ export default defineComponent({
       },
     ]);
 
+    watch(
+      () => [props.data, computedTarget.value, computedSelected.value],
+      (val) => {
+        const sourceInfo: DataInfo = {
+          data: [],
+          allValidValues: [],
+          selected: [],
+          validSelected: [],
+        };
+
+        const targetInfo: DataInfo = {
+          data: [],
+          allValidValues: [],
+          selected: [],
+          validSelected: [],
+        };
+
+        for (const item of val[0] as TransferItem[]) {
+          if ((val[1] as string[]).includes(item.value)) {
+            targetInfo.data.push(item);
+            if (!item.disabled) {
+              targetInfo.allValidValues.push(item.value);
+            }
+            if ((val[2] as string[]).includes(item.value)) {
+              targetInfo.selected.push(item.value);
+              if (!item.disabled) {
+                targetInfo.validSelected.push(item.value);
+              }
+            }
+          } else {
+            sourceInfo.data.push(item);
+            if (!item.disabled) {
+              sourceInfo.allValidValues.push(item.value);
+            }
+            if (computedSelected.value.includes(item.value)) {
+              sourceInfo.selected.push(item.value);
+              if (!item.disabled) {
+                sourceInfo.validSelected.push(item.value);
+              }
+            }
+          }
+        }
+        dataInfo.value = { sourceInfo, targetInfo };
+      },
+      { deep: true, immediate: true }
+    );
     return {
       prefixCls,
       cls,
@@ -313,6 +338,7 @@ export default defineComponent({
       targetTitle,
       handleClick,
       handleSearch,
+      exchangeData,
     };
   },
 });
