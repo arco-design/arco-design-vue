@@ -1,31 +1,26 @@
 ```yaml
 title:
-  zh-CN: 基本使用
-  en-US: Basic Usage
+  zh-CN: 最少元素
+  en-US: Least element
 ```
 
 ## zh-CN
 
-折叠列表的基本使用方法。
+当可见元素小于 `min` 时，将不再隐藏元素。
 
 ---
 
 ## en-US
 
-Basic usage of the overflow-list.
+When the visible element is less than `min`, the element is no longer hidden.
 
 ---
 
 ```vue
 <template>
-  <a-form auto-label-width>
-    <a-form-item label="Elements Number">
-      <a-input-number v-model="number" :min="0" :max="30" style="width: 200px"/>
-    </a-form-item>
-  </a-form>
   <a-slider v-model="width" :min="0" :max="800" />
   <div :style="{ maxWidth:`${width}px`, width: '100%', marginTop: '20px'}">
-    <a-overflow-list>
+    <a-overflow-list :min="4">
       <a-tag color="arcoblue" v-for="item of tags" :key="item">Tag{{item}}</a-tag>
     </a-overflow-list>
   </div>
@@ -37,12 +32,10 @@ import { computed, ref } from 'vue';
 export default {
   setup() {
     const width = ref(500);
-    const number = ref(10);
-    const tags = computed(() => Array.from({ length: number.value }, (_, idx) => idx + 1));
+    const tags = computed(() => Array.from({ length: 20 }, (_, idx) => idx + 1));
 
     return {
       width,
-      number,
       tags
     }
   }
