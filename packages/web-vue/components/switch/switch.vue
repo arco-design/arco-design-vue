@@ -222,7 +222,10 @@ export default defineComponent({
       ) {
         _loading.value = true;
         try {
-          const result = await shouldChange(checked);
+          // 当props.beforeChange类型为Promise<void>时 设置默认值为true
+          const result = isPromise(shouldChange)
+            ? (await shouldChange(checked)) ?? true
+            : await shouldChange(checked);
           if (result) {
             handleChange(checked, ev);
           }
