@@ -44,6 +44,12 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
     }
   };
 
+  const handleReturnClose = () => {
+    if (vm.component) {
+      vm.component.props.visible = false;
+    }
+  };
+
   const defaultConfig = {
     visible: true,
     renderToBody: false,
@@ -85,7 +91,7 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
   document.body.appendChild(container);
 
   return {
-    close: handleClose,
+    close: handleReturnClose,
   };
 };
 
