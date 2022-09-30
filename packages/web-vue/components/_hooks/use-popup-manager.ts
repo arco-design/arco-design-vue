@@ -1,11 +1,4 @@
-import type { Ref } from 'vue';
-import {
-  getCurrentInstance,
-  onMounted,
-  onBeforeUnmount,
-  ref,
-  watch,
-} from 'vue';
+import { onMounted, onBeforeUnmount, readonly, Ref, ref, watch } from 'vue';
 
 export type PopupType = 'popup' | 'dialog' | 'message';
 
@@ -21,31 +14,32 @@ class PopupManager {
   };
 
   private getNextZIndex = (type: PopupType) => {
-    if (type === 'message') {
-      return MESSAGE_BASE_Z_INDEX + this.popupStack.message.size * Z_INDEX_STEP;
-    }
-    return POPUP_BASE_Z_INDEX + this.popupStack.popup.size * Z_INDEX_STEP;
+    const current =
+      type === 'message'
+        ? Array.from(this.popupStack.message).pop() || MESSAGE_BASE_Z_INDEX
+        : Array.from(this.popupStack.popup).pop() || POPUP_BASE_Z_INDEX;
+    return current + Z_INDEX_STEP;
   };
 
-  public add = (id: number, type: PopupType) => {
-    this.popupStack[type].add(id);
+  public add = (type: PopupType) => {
+    const zIndex = this.getNextZIndex(type);
+    this.popupStack[type].add(zIndex);
     if (type === 'dialog') {
-      this.popupStack.popup.add(id);
+      this.popupStack.popup.add(zIndex);
     }
-    return this.getNextZIndex(type);
+    return zIndex;
   };
 
-  public delete = (id: number, type: PopupType) => {
-    this.popupStack[type].delete(id);
+  public delete = (zIndex: number, type: PopupType) => {
+    this.popupStack[type].delete(zIndex);
     if (type === 'dialog') {
-      this.popupStack.popup.delete(id);
+      this.popupStack.popup.delete(zIndex);
     }
   };
 
-  public isLastDialog = (id: number) => {
+  public isLastDialog = (zIndex: number) => {
     if (this.popupStack.dialog.size > 1) {
-      const array = Array.from(this.popupStack.dialog);
-      return id === array[array.length - 1];
+      return zIndex === Array.from(this.popupStack.dialog).pop();
     }
     return true;
   };
@@ -63,20 +57,19 @@ export default function usePopupManager(
     runOnMounted?: boolean;
   } = {}
 ) {
-  const id = getCurrentInstance()?.uid ?? Date.now();
   const zIndex = ref(0);
 
   const open = () => {
-    zIndex.value = popupManager.add(id, type);
+    zIndex.value = popupManager.add(type);
   };
 
   const close = () => {
-    popupManager.delete(id, type);
+    popupManager.delete(zIndex.value, type);
   };
 
   const isLastDialog = () => {
     if (type === 'dialog') {
-      return popupManager.isLastDialog(id);
+      return popupManager.isLastDialog(zIndex.value);
     }
     return false;
   };
@@ -106,8 +99,7 @@ export default function usePopupManager(
   }
 
   return {
-    id,
-    zIndex,
+    zIndex: readonly(zIndex),
     open,
     close,
     isLastDialog,
