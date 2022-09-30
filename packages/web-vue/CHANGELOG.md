@@ -2,6 +2,29 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 BugFix
+
+- **table:** Fix default sorter&filters not working under template usage ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+- fix popup stack ([#1659](https://github.com/arco-design/arco-design-vue/pull/1659))
+
+### 💎 Enhancement
+
+- **button:** Use the flex layout method to solve the centering problem when the icon size is inconsistent ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+- **link:** Use the flex layout method to solve the centering problem when the icon size is inconsistent ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+- **modal:** fix modal close problem ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+- **drawer:** fix drawer close problem ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+
+### 💅 Style
+
+- **tabs:** Fix the problem that the content of the label under the `card` type is not centered ([#1704](https://github.com/arco-design/arco-design-vue/pull/1704))
+- **select:** Fix the problem that the custom label color is displayed incorrectly ([#1703](https://github.com/arco-design/arco-design-vue/pull/1703))
+- **collapse:** adjust the padding of collapse-item-content when expand-icon is on the right ([#1680](https://github.com/arco-design/arco-design-vue/pull/1680))
+
+
 ## 2.37.3
 
 `2022-09-23`

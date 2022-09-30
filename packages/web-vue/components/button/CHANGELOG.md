@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 💎 Enhancement
+
+- Use the flex layout method to solve the centering problem when the icon size is inconsistent ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+
+
 ## 2.35.1
 
 `2022-08-19`

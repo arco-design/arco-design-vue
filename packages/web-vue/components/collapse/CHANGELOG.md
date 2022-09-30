@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 Style
+
+- adjust the padding of collapse-item-content when expand-icon is on the right ([#1680](https://github.com/arco-design/arco-design-vue/pull/1680))
+
+
 ## 2.33.0
 
 `2022-07-08`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 样式更新
+
+- 当expand-icon在右侧时,调整collapse-item-content的padding ([#1680](https://github.com/arco-design/arco-design-vue/pull/1680))
+
+
 ## 2.33.0
 
 `2022-07-08`

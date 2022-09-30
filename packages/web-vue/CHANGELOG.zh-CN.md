@@ -2,6 +2,29 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 问题修复
+
+- **table:** 修复 default sorter&filters 在模板用法下失效的问题 ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+- 修复弹出层叠顺序 ([#1659](https://github.com/arco-design/arco-design-vue/pull/1659))
+
+### 💎 功能优化
+
+- **button:** 使用 flex 布局方式，解决 icon 大小不一致时的居中问题 ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+- **link:** 使用 flex 布局方式，解决 icon 大小不一致时的居中问题 ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+- **modal:** 修复对话框关闭的问题 ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+- **drawer:** 修复抽屉关闭的问题 ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+
+### 💅 样式更新
+
+- **tabs:** 修复 `card` 类型下标签内容没有居中的问题 ([#1704](https://github.com/arco-design/arco-design-vue/pull/1704))
+- **select:** 修复自定义标签颜色显示错误的问题 ([#1703](https://github.com/arco-design/arco-design-vue/pull/1703))
+- **collapse:** 当expand-icon在右侧时,调整collapse-item-content的padding ([#1680](https://github.com/arco-design/arco-design-vue/pull/1680))
+
+
 ## 2.37.3
 
 `2022-09-23`

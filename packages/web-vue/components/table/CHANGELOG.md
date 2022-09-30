@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 BugFix
+
+- Fix default sorter&filters not working under template usage ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+
+
 ## 2.37.3
 
 `2022-09-23`

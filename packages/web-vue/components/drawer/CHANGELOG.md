@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 💎 Enhancement
+
+- fix drawer close problem ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+
+
 ## 2.36.1
 
 `2022-09-09`
