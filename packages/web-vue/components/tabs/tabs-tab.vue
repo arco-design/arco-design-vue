@@ -71,7 +71,7 @@ export default defineComponent({
       prefixCls,
       {
         [`${prefixCls}-active`]: props.active,
-        [`${prefixCls}-closable`]: props.tab.closable,
+        [`${prefixCls}-closable`]: props.editable && props.tab.closable,
         [`${prefixCls}-disabled`]: props.tab.disabled,
       },
     ]);
