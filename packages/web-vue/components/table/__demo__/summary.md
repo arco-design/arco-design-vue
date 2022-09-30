@@ -6,7 +6,8 @@ title:
 
 ## zh-CN
 
-设置 `summary` 可以开启表尾总结行，并可以通过 `summary-text` 指定首列文字。 如果想要自定义总结行展示，可以传入函数。函数的返回值为需要展示的数据，结构同 `data` 一样即可，支持多行数据。
+设置 `summary` 可以开启表尾总结行，并可以通过 `summary-text` 指定首列文字。
+如果想要自定义总结行展示，可以传入函数。函数的返回值为需要展示的数据，结构同 `data` 一样即可，支持多行数据。
 注意：控制列暂不可以自定义内容
 
 ---
@@ -23,7 +24,7 @@ Note: The control column cannot be customized for the time being
 ```vue
 
 <template>
-  <a-table :columns="columns" :data="data" :summary="true" />
+  <a-table :columns="columns" :data="data" :summary="true" :summary-span-method="spanMethod" />
   <a-table :columns="columns" :data="data" :scroll="scroll" :expandable="expandable" :summary="summary">
     <template #summary-cell="{ column,record,rowIndex }">
       <div :style="getColorStyle(column,record)">{{record[column.dataIndex]}}</div>
@@ -140,13 +141,22 @@ export default {
       return undefined
     }
 
+    const spanMethod = ({rowIndex, columnIndex}) => {
+      if (rowIndex === 0 && columnIndex === 1) {
+        return {
+          colspan: 2
+        }
+      }
+    };
+
     return {
       expandable,
       scroll,
       columns,
       data,
       summary,
-      getColorStyle
+      getColorStyle,
+      spanMethod
     }
   },
 }
