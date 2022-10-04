@@ -200,6 +200,10 @@ const docs = [
     componentEn: ThemeEn,
   },
   {
+    name: 'palette',
+    component: () => import('./pages/palette/palette.vue'),
+  },
+  {
     name: 'token',
     component: () => import('./pages/token/token.vue'),
   },

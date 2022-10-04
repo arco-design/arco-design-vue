@@ -52,6 +52,8 @@
     "vue-router": "^4.0.10"
   },
   "dependencies": {
-    "@arco-design/arco-site-utils": "^1.0.2"
+    "@arco-design/arco-site-utils": "^1.0.2",
+    "@arco-design/color": "^0.4.0",
+    "colord": "^2.9.3"
   }
 }
