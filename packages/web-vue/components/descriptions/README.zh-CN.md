@@ -18,7 +18,6 @@ description: 一般用于详情页的信息展示。
 
 ## API
 
-
 ### `<descriptions>` Props
 
 |参数名|描述|类型|默认值|
@@ -27,11 +26,13 @@ description: 一般用于详情页的信息展示。
 |column|每行放置的数据个数。2.20.0 版本支持响应式配置，配置可参考 Grid|`number \| ResponsiveValue`|`3`|
 |title|描述列表的标题|`string`|`-`|
 |layout|描述列表的排列方式|`'horizontal' \| 'vertical' \| 'inline-horizontal' \| 'inline-vertical'`|`'horizontal'`|
+| table-layout |描述中表格样式的 `layout-fixed`，当设置成 `fixed` 时，宽度会均分|`'auto'\|'fixed'`|`'auto'`|
 |align|文字的对齐位置|`TextAlign \| { label?: TextAlign; value?: TextAlign }`|`'left'`|
 |size|描述列表的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |bordered|是否显示边框|`boolean`|`false`|
 |label-style|数据标签的样式|`CSSProperties`|`-`|
 |value-style|数据内容的样式|`CSSProperties`|`-`|
+|table-layout|描述中表格样式的 `layout-fixed`，当设置成 `fixed` 时，宽度会均分。|`'auto' \| 'fixed'`|`'auto'`|
 ### `<descriptions>` Slots
 
 |插槽名|描述|参数|
