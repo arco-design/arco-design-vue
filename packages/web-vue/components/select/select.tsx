@@ -41,6 +41,7 @@ import { useTrigger } from '../_hooks/use-trigger';
 import { useFormItem } from '../_hooks/use-form-item';
 import { debounce } from '../_utils/debounce';
 import { SelectViewValue } from '../_components/select-view/interface';
+import { ScrollbarProps } from '../scrollbar';
 
 const DEFAULT_FIELD_NAMES = {
   value: 'value',
@@ -325,6 +326,10 @@ export default defineComponent({
      */
     fieldNames: {
       type: Object as PropType<SelectFieldNames>,
+    },
+    scrollbar: {
+      type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
+      default: true,
     },
   },
   emits: {
@@ -846,6 +851,7 @@ export default defineComponent({
           loading={props.loading}
           empty={validOptionInfos.value.length === 0}
           virtualList={Boolean(props.virtualListProps)}
+          scrollbar={props.scrollbar}
           onScroll={handleDropdownScroll}
           onReachBottom={handleDropdownReachBottom}
         />

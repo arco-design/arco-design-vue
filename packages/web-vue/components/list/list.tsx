@@ -5,6 +5,7 @@ import {
   onMounted,
   PropType,
   ref,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
@@ -19,8 +20,9 @@ import type {
 import { usePagination } from './use-pagination';
 import { omit } from '../_utils/omit';
 import { getAllElements } from '../_utils/vue-utils';
-import Scrollbar from '../scrollbar';
+import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import { useComponentRef } from '../_hooks/use-component-ref';
+import { useScrollbar } from '../_hooks/use-scrollbar';
 
 export default defineComponent({
   name: 'List',
@@ -109,6 +111,15 @@ export default defineComponent({
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
     },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.38.0
+     */
+    scrollbar: {
+      type: [Object, Boolean] as PropType<boolean | ScrollbarProps>,
+      default: true,
+    },
   },
   emits: {
     /**
@@ -163,10 +174,12 @@ export default defineComponent({
    * @version 2.20.0
    */
   setup(props, { emit, slots }) {
+    const { scrollbar } = toRefs(props);
     const prefixCls = getPrefixCls('list');
     const { componentRef, elementRef: listRef } =
       useComponentRef('containerRef');
     const isVirtualList = computed(() => props.virtualListProps);
+    const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
 
     const handleScroll = (e: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
@@ -354,10 +367,12 @@ export default defineComponent({
     };
 
     const render = () => {
+      const Component = displayScrollbar.value ? Scrollbar : 'div';
+
       return (
         <div class={`${prefixCls}-wrapper`}>
           <Spin class={`${prefixCls}-spin`} loading={props.loading}>
-            <Scrollbar
+            <Component
               ref={componentRef}
               class={cls.value}
               style={contentStyle.value}
@@ -382,7 +397,7 @@ export default defineComponent({
                   <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
                 )}
               </div>
-            </Scrollbar>
+            </Component>
             {renderPagination()}
           </Spin>
         </div>
