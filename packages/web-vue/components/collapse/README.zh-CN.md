@@ -51,7 +51,7 @@ description: 可以折叠 / 展开的内容区域。
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
-|key|面板的 id，对应 `activeKey` 中的值|`string`|`-`||
+|key|面板的 id，对应 `activeKey` 中的值|`string\|number`|`-`||
 |header|面板的标题|`string`|`-`||
 |disabled|是否禁用|`boolean`|`false`||
 |show-expand-icon|是否显示展开图标|`boolean`|`true`||
