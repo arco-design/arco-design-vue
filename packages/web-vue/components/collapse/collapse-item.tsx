@@ -23,7 +23,7 @@ export default defineComponent({
      * @zh 面板的 id，对应 `activeKey` 中的值
      * @en The id of the panel, corresponding to the value in `activeKey`
      */
-    key: String,
+    key: [String, Number],
     /**
      * @zh 面板的标题
      * @en The title of the panel
