@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🆕 新增功能
+
+- table、select、list 组件增加 scrollbar 属性，支持开关虚拟滚动条 ([#1747](https://github.com/arco-design/arco-design-vue/pull/1747))
+- **notification:** 提示框和提示框列表间隔样式调整 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** `showIcon` 属性无效 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 支持自定义关闭按钮和元素 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 支持自定义样式 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 删除对应 `id` 的提示框 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 使用案例 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **descriptions:** 描述中表格样式的 `layout-fixed`，当设置成 `fixed` 时，宽度会均分 ([#1670](https://github.com/arco-design/arco-design-vue/pull/1670))
+
+### 🐛 问题修复
+
+- **transfer:** 修复无法滚动问题 ([#1723](https://github.com/arco-design/arco-design-vue/pull/1723))
+- **spin:** 修复 size 在失效的问题 ([#1717](https://github.com/arco-design/arco-design-vue/pull/1717))
+
+### 💎 功能优化
+
+- **select:** 增加已选择项的缓存，优化在远程搜索时的 label 显示问题 ([#1731](https://github.com/arco-design/arco-design-vue/pull/1731))
+- **modal:** 函数式调用可以设置 renderToBody 参数 ([#1682](https://github.com/arco-design/arco-design-vue/pull/1682))
+
+### 💅 样式更新
+
+- **table:** 修复表格同时开启总结行和滚动时，总结行高度被压缩的问题 ([#1733](https://github.com/arco-design/arco-design-vue/pull/1733))
+
+### 🆎 类型修正
+
+- **collapse:** 修复 `collapse-item` 的 key 属性定义，允许 number ([#1743](https://github.com/arco-design/arco-design-vue/pull/1743))
+
+
 ## 2.37.4
 
 `2022-09-30`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💎 功能优化
+
+- 函数式调用可以设置 renderToBody 参数 ([#1682](https://github.com/arco-design/arco-design-vue/pull/1682))
+
+
 ## 2.37.4
 
 `2022-09-30`

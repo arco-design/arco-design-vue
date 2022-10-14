@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🆎 类型修正
+
+- 修复 `collapse-item` 的 key 属性定义，允许 number ([#1743](https://github.com/arco-design/arco-design-vue/pull/1743))
+
+
 ## 2.37.4
 
 `2022-09-30`

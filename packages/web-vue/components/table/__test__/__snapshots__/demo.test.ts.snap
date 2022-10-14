@@ -2444,7 +2444,10 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
 `;
 
 exports[`<table> demo: render [scroll] correctly 1`] = `
-"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
+"<div style=\\"margin-bottom: 20px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+    <!--v-if-->
+  </button> Virtual Scrollbar </div>
+<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
   <!---->
   <div class=\\"arco-spin\\">
     <!---->

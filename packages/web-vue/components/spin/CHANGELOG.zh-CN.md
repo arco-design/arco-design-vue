@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🐛 问题修复
+
+- 修复 size 在失效的问题 ([#1717](https://github.com/arco-design/arco-design-vue/pull/1717))
+
+
 ## 2.35.1
 
 `2022-08-19`

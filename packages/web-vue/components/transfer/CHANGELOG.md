@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🐛 BugFix
+
+- Fix can't scroll problem ([#1723](https://github.com/arco-design/arco-design-vue/pull/1723))
+
+
 ## 2.34.0
 
 `2022-07-29`
