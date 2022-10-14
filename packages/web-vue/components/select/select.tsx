@@ -11,6 +11,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import {
   isArray,
+  isEmptyObject,
   isFunction,
   isNull,
   isNumber,
@@ -21,17 +22,17 @@ import { getKeyFromValue, isGroupOptionInfo, isValidOption } from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
-import { Data, EmitType } from '../_utils/types';
+import { Data } from '../_utils/types';
 import SelectDropdown from './select-dropdown.vue';
 import Option from './option.vue';
 import OptGroup from './optgroup.vue';
 import {
-  SelectOptionData,
-  SelectOptionInfo,
-  SelectOptionGroupInfo,
   OptionValueWithKey,
   SelectFieldNames,
+  SelectOptionData,
   SelectOptionGroup,
+  SelectOptionGroupInfo,
+  SelectOptionInfo,
 } from './interface';
 import VirtualList from '../_components/virtual-list-v2';
 import { VirtualListProps } from '../_components/virtual-list-v2/interface';
@@ -538,6 +539,22 @@ export default defineComponent({
       ...fieldNames?.value,
     }));
 
+    // selected option
+    const _selectedOption = ref();
+    const getRawOptionFromValueKeys = (valueKeys: string[]) => {
+      const optionMap: Record<string, unknown> = {};
+
+      valueKeys.forEach((key) => {
+        optionMap[key] = optionInfoMap.get(key);
+      });
+
+      return optionMap;
+    };
+
+    const updateSelectedOption = (valueKeys: string[]) => {
+      _selectedOption.value = getRawOptionFromValueKeys(valueKeys);
+    };
+
     // extra value and option
     const getFallBackOption = (
       value: string | number | Record<string, unknown>
@@ -586,7 +603,17 @@ export default defineComponent({
 
     const extraValueObjects = ref<OptionValueWithKey[]>([]);
     const extraOptions = computed(() =>
-      extraValueObjects.value.map((obj) => getFallBackOption(obj.value))
+      extraValueObjects.value.map((obj) => {
+        let optionInfo = getFallBackOption(obj.value);
+        const extraOptionRawInfo = _selectedOption.value?.[obj.key];
+        if (
+          !isUndefined(extraOptionRawInfo) &&
+          !isEmptyObject(extraOptionRawInfo)
+        ) {
+          optionInfo = { ...optionInfo, ...extraOptionRawInfo };
+        }
+        return optionInfo;
+      })
     );
 
     nextTick(() => {
@@ -632,6 +659,7 @@ export default defineComponent({
       emit('update:modelValue', value);
       emit('change', value);
       eventHandlers.value?.onChange?.();
+      updateSelectedOption(valueKeys);
     };
 
     const updateInputValue = (inputValue: string) => {
