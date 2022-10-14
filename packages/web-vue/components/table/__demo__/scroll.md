@@ -20,20 +20,24 @@ After version 2.18.0, both x, y can set percentage. Setting y to 100% can make t
 
 ```vue
 <template>
-  <a-table :columns="columns" :data="data" :scroll="scroll" />
+  <div style="margin-bottom: 20px">
+    <a-switch v-model="scrollbar" />
+    Virtual Scrollbar
+  </div>
+  <a-table :columns="columns" :data="data" :scroll="scroll" :scrollbar="scrollbar" />
   <a-split direction="vertical" :default-size="0.9" :style="{height: '500px', marginTop: '30px'}">
     <template #first>
-      <a-table :columns="columns" :data="data" :scroll="scrollPercent" />
+      <a-table :columns="columns" :data="data" :scroll="scrollPercent" :scrollbar="scrollbar" />
     </template>
   </a-split>
-
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 export default {
   setup() {
+    const scrollbar = ref(true);
     const scroll = {
       x: 2000,
       y: 200
@@ -96,7 +100,8 @@ export default {
       scroll,
       scrollPercent,
       columns,
-      data
+      data,
+      scrollbar
     }
   },
 }

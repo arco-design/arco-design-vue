@@ -7,17 +7,19 @@
       </slot>
     </div>
     <slot v-if="virtualList && !loading && !empty" name="virtual-list" />
-    <Scrollbar
+    <component
+      :is="displayScrollbar ? 'ScrollbarComponent' : 'div'"
       v-if="!virtualList"
       v-show="!loading && !empty"
       ref="wrapperComRef"
       :class="`${prefixCls}-list-wrapper`"
+      v-bind="scrollbarProps"
       @scroll="handleScroll"
     >
       <ul :class="`${prefixCls}-list`">
         <slot />
       </ul>
-    </Scrollbar>
+    </component>
     <div v-if="$slots.footer && !empty" :class="`${prefixCls}-footer`">
       <slot name="footer" />
     </div>
@@ -26,18 +28,19 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, toRefs } from 'vue';
 import type { EmitType } from '../_utils/types';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
-import Scrollbar from '../scrollbar';
+import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import { useComponentRef } from '../_hooks/use-component-ref';
+import { useScrollbar } from '../_hooks/use-scrollbar';
 
 export default defineComponent({
   name: 'SelectDropdown',
   components: {
-    Scrollbar,
+    ScrollbarComponent: Scrollbar,
     Empty,
     Spin,
   },
@@ -49,6 +52,10 @@ export default defineComponent({
       type: Number,
       default: 0,
     },
+    scrollbar: {
+      type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
+      default: true,
+    },
     onScroll: {
       type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
     },
@@ -58,9 +65,11 @@ export default defineComponent({
   },
   emits: ['scroll', 'reachBottom'],
   setup(props, { emit, slots }) {
+    const { scrollbar } = toRefs(props);
     const prefixCls = getPrefixCls('select-dropdown');
     const { componentRef: wrapperComRef, elementRef: wrapperRef } =
       useComponentRef('containerRef');
+    const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
 
     const handleScroll = (e: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
@@ -84,6 +93,8 @@ export default defineComponent({
       wrapperRef,
       wrapperComRef,
       handleScroll,
+      displayScrollbar,
+      scrollbarProps,
     };
   },
 });
