@@ -4,6 +4,7 @@ export default {
     start: '快速上手',
     dark: '暗黑模式',
     theme: '定制主题',
+    palette: '颜色',
     token: '设计变量',
     i18n: '国际化',
     faq: '常见问题',
