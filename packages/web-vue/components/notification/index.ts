@@ -135,6 +135,12 @@ const notification = MESSAGE_TYPES.reduce((pre, value) => {
   return pre;
 }, {} as NotificationMethod);
 
+notification.remove = (id: string) => {
+  if (id) {
+    Object.values(notificationInstance).forEach((item) => item?.remove(id));
+  }
+};
+
 notification.clear = (position?: NotificationPosition) => {
   if (position) {
     notificationInstance[position]?.clear();

@@ -13,5 +13,6 @@ const Scrollbar = Object.assign(_Scrollbar, {
 });
 
 export type ScrollbarInstance = InstanceType<typeof _Scrollbar>;
+export type { ScrollbarProps } from './interface';
 
 export default Scrollbar;

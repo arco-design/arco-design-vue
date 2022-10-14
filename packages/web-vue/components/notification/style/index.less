@@ -6,6 +6,8 @@
 .@{notification-prefix-cls}-list {
   position: fixed;
   z-index: @z-index-notification;
+  margin: 0;
+  padding-left: 0;
 
   &-top-left {
     top: @notification-wrapper-margin-top;
@@ -42,7 +44,6 @@
   box-sizing: border-box;
   width: @notification-width + @notification-padding-right +
     @notification-padding-left;
-  margin-bottom: @notification-margin-bottom;
   padding: @notification-padding-top @notification-padding-right
     @notification-padding-bottom @notification-padding-left;
   overflow: hidden;
@@ -54,8 +55,12 @@
   opacity: 1;
   transition: opacity @transition-duration-2 @transition-timing-function-linear;
 
+  &:not(:last-child) {
+    margin-bottom: @notification-margin-bottom;
+  }
+
   &-icon {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     font-size: @notification-font-size-icon;
   }
@@ -106,10 +111,13 @@
   }
 
   &-title {
-    margin-bottom: @notification-title-margin-bottom;
     color: @notification-normal-color-text-title;
     font-weight: @font-weight-500;
     font-size: @notification-font-size-title;
+  }
+
+  &-title + &-content {
+    margin-top: @notification-title-margin-bottom;
   }
 
   &-content {
