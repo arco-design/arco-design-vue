@@ -8,6 +8,7 @@
     </span>
     <input-number
       v-model="inputValue"
+      :precision="0"
       :class="`${prefixCls}-input`"
       :min="1"
       :max="pages"
