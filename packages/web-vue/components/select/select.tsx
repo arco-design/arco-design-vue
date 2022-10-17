@@ -602,9 +602,12 @@ export default defineComponent({
 
     // input value
     const _inputValue = ref('');
-    const computedInputValue = computed(
-      () => props.inputValue ?? _inputValue.value
-    );
+    const computedInputValue = computed(() => {
+      // if (!renderOption()) {
+      //   return ''
+      // }
+      return props.inputValue ?? _inputValue.value;
+    });
 
     // clear input value when close dropdown
     watch(computedPopupVisible, (visible) => {
@@ -864,6 +867,20 @@ export default defineComponent({
       }
       return data.label;
     };
+
+    watch(
+      () => validOptionInfos.value,
+      (val) => {
+        if (!val.length) {
+          const newKeys = computedValueKeys.value.filter(
+            (key) => optionInfoMap.get(key)?.disabled
+          );
+          updateValue(newKeys);
+          updateInputValue('');
+        }
+      },
+      { deep: true }
+    );
 
     return () => (
       <Trigger
