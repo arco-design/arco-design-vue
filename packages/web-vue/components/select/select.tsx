@@ -871,7 +871,7 @@ export default defineComponent({
     watch(
       () => validOptionInfos.value,
       (val) => {
-        if (!val.length) {
+        if (val.length === 0 && !computedPopupVisible.value) {
           const newKeys = computedValueKeys.value.filter(
             (key) => optionInfoMap.get(key)?.disabled
           );
