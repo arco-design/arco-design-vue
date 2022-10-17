@@ -13,6 +13,6 @@ const Pagination = Object.assign(_Pagination, {
 });
 
 export type PaginationInstance = InstanceType<typeof _Pagination>;
-export type { PaginationProps } from './interface';
+export type { PaginationProps, OnChange, OnPageSizeChange } from './interface';
 
 export default Pagination;
