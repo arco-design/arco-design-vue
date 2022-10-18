@@ -18,6 +18,8 @@ description: 在当前页面打开一个浮层，承载相关操作。
 
 @import ./__demo__/custom.md
 
+@import ./__demo__/footer.md
+
 @import ./__demo__/form.md
 
 @import ./__demo__/draggable.md
@@ -42,6 +44,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |unmount-on-close|关闭时是否卸载节点|`boolean`|`false`||
 |mask-closable|是否点击遮罩层可以关闭对话框|`boolean`|`true`||
 |hide-cancel|是否隐藏取消按钮|`boolean`|`false`||
+|hide-ok|是否隐藏确定按钮|`boolean`|`false`||
 |simple|是否开启简单模式|`boolean`|`(props: any) => {  return props.notice;}`||
 |closable|是否显示关闭按钮|`boolean`|`true`||
 |ok-text|确认按钮的内容|`string`|`-`||
@@ -116,6 +119,7 @@ Modal._context = app._context;
 |cancelButtonProps|取消按钮的Props|`any`|`-`||
 |okLoading|确认按钮是否为加载中状态|`boolean`|`false`||
 |hideCancel|是否隐藏取消按钮|`boolean`|`false`||
+|hideOk|是否隐藏确定按钮|`boolean`|`false`||
 |mask|是否显示遮罩层|`boolean`|`false`||
 |simple|是否开启简单模式|`boolean`|`false`||
 |maskClosable|是否点击遮罩层可以关闭对话框|`boolean`|`false`||

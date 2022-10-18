@@ -20,6 +20,8 @@ description: Open a floating layer on the current page to carry related operatio
 
 @import ./__demo__/custom.md
 
+@import ./__demo__/footer.md
+
 @import ./__demo__/form.md
 
 @import ./__demo__/draggable.md
@@ -44,6 +46,7 @@ description: Open a floating layer on the current page to carry related operatio
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`||
 |mask-closable|Whether to close the modal when click the mask|`boolean`|`true`||
 |hide-cancel|Whether to hide the cancel button|`boolean`|`false`||
+|hide-ok|Whether to hide the ok button|`boolean`|`false`||
 |simple|Whether to enable simple mode|`boolean`|`(props: any) => {  return props.notice;}`||
 |closable|Whether to show the close button|`boolean`|`true`||
 |ok-text|The content of the confirm button|`string`|`-`||
@@ -118,6 +121,7 @@ Modal._context = app._context;
 |cancelButtonProps|Props of cancel button|`any`|`-`||
 |okLoading|Whether the confirm button is in the loading state|`boolean`|`false`||
 |hideCancel|Whether to hide the cancel button|`boolean`|`false`||
+|hideOk|Whether to hide the ok button|`boolean`|`false`||
 |mask|Whether to show the mask|`boolean`|`false`||
 |simple|Whether to enable simple mode|`boolean`|`false`||
 |maskClosable|Whether to close the modal when click the mask|`boolean`|`false`||
