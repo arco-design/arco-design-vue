@@ -11,11 +11,9 @@ import ArcoInput from '../input';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
-import { getKeyDownHandler, KEYBOARD_KEY } from '../_utils/keyboard';
+import { CodeKey, getKeyDownHandler, KEYBOARD_KEY } from '../_utils/keyboard';
 
 type StepMethods = 'minus' | 'plus';
-
-const SPEED = 150;
 
 NP.enableBoundaryChecking(false);
 
@@ -55,6 +53,14 @@ export default defineComponent({
       default: 1,
     },
     /**
+     * @zh shift 数字变化步长
+     * @en Shift Number change step
+     */
+    shiftStep: {
+      type: Number,
+      default: 10,
+    },
+    /**
      * @zh 是否禁用
      * @en Whether to disable
      */
@@ -85,6 +91,22 @@ export default defineComponent({
     min: {
       type: Number,
       default: -Infinity,
+    },
+    /**
+     * @zh 长按按钮时，多久触发一次点击事件，单位毫秒
+     * @en How often will the click event be triggered when the button is long pressed, in milliseconds
+     */
+    pressInterval: {
+      type: Number,
+      default: 150,
+    },
+    /**
+     * @zh 长按按钮时，延迟多久后触发点击事件，单位毫秒
+     * @en When the button is long pressed, how long will the click event be triggered after the delay, in milliseconds
+     */
+    pressDelay: {
+      type: Number,
+      default: 1000,
     },
     /**
      * @zh 定义输入框展示值
@@ -186,6 +208,26 @@ export default defineComponent({
      */
     'input': (value: number | undefined, inputValue: string, ev: Event) => true,
   },
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   */
+  /**
+   * @zh 后缀元素
+   * @en Suffix
+   * @slot suffix
+   */
+  /**
+   * @zh 增加按钮图标
+   * @en Adds button icon
+   * @slot icon-plus
+   */
+  /**
+   * @zh 减少按钮图标
+   * @en Reduces button icon
+   * @slot icon-minus
+   */
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
@@ -284,7 +326,7 @@ export default defineComponent({
       }
     };
 
-    const nextStep = (method: StepMethods, event: Event) => {
+    const nextStep = (method: StepMethods, step: number, event: Event) => {
       if (
         mergedDisabled.value ||
         (method === 'plus' && isMax.value) ||
@@ -295,7 +337,7 @@ export default defineComponent({
 
       let nextValue: number | undefined;
       if (isNumber(valueNumber.value)) {
-        nextValue = getLegalValue(NP[method](valueNumber.value, props.step));
+        nextValue = getLegalValue(NP[method](valueNumber.value, step));
       } else {
         nextValue = props.min === -Infinity ? 0 : props.min;
       }
@@ -314,13 +356,14 @@ export default defineComponent({
       event.preventDefault();
       inputRef.value?.focus();
 
-      nextStep(method, event);
+      nextStep(method, props.step, event);
 
       // 长按时持续触发
       if (needRepeat) {
+        const isFirstRepeat = repeatTimer === null;
         repeatTimer = window.setTimeout(
           () => (event.target as HTMLElement).dispatchEvent(event),
-          SPEED
+          isFirstRepeat ? props.pressDelay : props.pressInterval
         );
       }
     };
@@ -367,21 +410,23 @@ export default defineComponent({
       emit('clear', ev);
     };
 
+    const handleKeyDownStep =
+      (method: StepMethods, step: number) => (ev: Event) => {
+        ev.preventDefault();
+        !props.readOnly && nextStep(method, step, ev);
+      };
+
     const onKeyDown = getKeyDownHandler(
-      new Map([
+      new Map<CodeKey | string, (e: Event) => void>([
+        [KEYBOARD_KEY.ARROW_UP, handleKeyDownStep('plus', props.step)],
+        [KEYBOARD_KEY.ARROW_DOWN, handleKeyDownStep('minus', props.step)],
         [
-          KEYBOARD_KEY.ARROW_UP,
-          (ev: Event) => {
-            ev.preventDefault();
-            !props.readOnly && nextStep('plus', ev);
-          },
+          { key: KEYBOARD_KEY.ARROW_UP, shift: true },
+          handleKeyDownStep('plus', props.shiftStep),
         ],
         [
-          KEYBOARD_KEY.ARROW_DOWN,
-          (ev: Event) => {
-            ev.preventDefault();
-            !props.readOnly && nextStep('minus', ev);
-          },
+          { key: KEYBOARD_KEY.ARROW_DOWN, shift: true },
+          handleKeyDownStep('minus', props.shiftStep),
         ],
       ])
     );
@@ -397,52 +442,49 @@ export default defineComponent({
       }
     );
 
+    const renderEmbedButton = (method: StepMethods) => {
+      return (
+        <button
+          class={[
+            `${prefixCls}-step-button`,
+            {
+              [`${prefixCls}-step-button-disabled`]:
+                mergedDisabled.value ||
+                (method === 'plus' ? isMax.value : isMin.value),
+            },
+          ]}
+          type="button"
+          tabindex="-1"
+          disabled={
+            mergedDisabled.value ||
+            (method === 'plus' ? isMax.value : isMin.value)
+          }
+          onMousedown={(e) => handleStepButton(e, method, true)}
+          onMouseup={clearRepeatTimer}
+          onMouseleave={clearRepeatTimer}
+        >
+          {method === 'plus'
+            ? slots.iconPlus?.() ?? <IconUp />
+            : slots.iconMinus?.() ?? <IconDown />}
+        </button>
+      );
+    };
+
     const renderSuffix = () => {
       if (props.readOnly) {
         return null;
       }
       return (
         <>
-          {slots.suffix?.()}
+          <div class={`${prefixCls}-suffix`}>{slots.suffix?.()}</div>
           <div class={`${prefixCls}-step`}>
-            <button
-              class={[
-                `${prefixCls}-step-button`,
-                {
-                  [`${prefixCls}-step-button-disabled`]:
-                    mergedDisabled.value || isMax.value,
-                },
-              ]}
-              type="button"
-              tabindex="-1"
-              disabled={mergedDisabled.value || isMax.value}
-              onMousedown={(e) => handleStepButton(e, 'plus', true)}
-              onMouseup={clearRepeatTimer}
-              onMouseleave={clearRepeatTimer}
-            >
-              <IconUp />
-            </button>
-            <button
-              class={[
-                `${prefixCls}-step-button`,
-                {
-                  [`${prefixCls}-step-button-disabled`]:
-                    mergedDisabled.value || isMin.value,
-                },
-              ]}
-              type="button"
-              tabindex="-1"
-              disabled={mergedDisabled.value || isMin.value}
-              onMousedown={(e) => handleStepButton(e, 'minus', true)}
-              onMouseup={clearRepeatTimer}
-              onMouseleave={clearRepeatTimer}
-            >
-              <IconDown />
-            </button>
+            {renderEmbedButton('plus')}
+            {renderEmbedButton('minus')}
           </div>
         </>
       );
     };
+
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-mode-${props.mode}`,
@@ -452,34 +494,25 @@ export default defineComponent({
       },
     ]);
 
-    const renderPrependButton = () => {
+    const renderExternalButton = (method: StepMethods) => {
       return (
         <ArcoButton
           size={mergedSize.value}
           // @ts-ignore
           tabindex="-1"
-          v-slots={{ icon: () => <IconMinus /> }}
+          v-slots={{
+            icon: () =>
+              method === 'plus'
+                ? slots.iconPlus?.() ?? <IconPlus />
+                : slots.iconMinus?.() ?? <IconMinus />,
+          }}
           class={`${prefixCls}-step-button`}
-          disabled={mergedDisabled.value || isMin.value}
+          disabled={
+            mergedDisabled.value ||
+            (method === 'plus' ? isMax.value : isMin.value)
+          }
           // @ts-ignore
-          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'minus', true)}
-          onMouseup={clearRepeatTimer}
-          onMouseleave={clearRepeatTimer}
-        />
-      );
-    };
-
-    const renderAppendButton = () => {
-      return (
-        <ArcoButton
-          size={mergedSize.value}
-          // @ts-ignore
-          tabindex="-1"
-          v-slots={{ icon: () => <IconPlus /> }}
-          class={`${prefixCls}-step-button`}
-          disabled={mergedDisabled.value || isMax.value}
-          // @ts-ignore
-          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'plus', true)}
+          onMousedown={(ev: MouseEvent) => handleStepButton(ev, method, true)}
           onMouseup={clearRepeatTimer}
           onMouseleave={clearRepeatTimer}
         />
@@ -496,10 +529,10 @@ export default defineComponent({
               append: slots.append,
             }
           : {
-              prepend: renderPrependButton,
+              prepend: renderExternalButton('minus'),
               prefix: slots.prefix,
               suffix: slots.suffix,
-              append: renderAppendButton,
+              append: renderExternalButton('plus'),
             };
 
       return (

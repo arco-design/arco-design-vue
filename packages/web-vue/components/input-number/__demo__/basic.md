@@ -29,9 +29,8 @@ Use the mouse or keyboard to enter the standard value within the range.
 export default {
   data(){
     return {
-      value:15
+      value: 15
     }
-
   }
 }
 </script>

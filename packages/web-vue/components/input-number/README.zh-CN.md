@@ -16,6 +16,8 @@ description: 仅允许输入数字格式的输入框。
 
 @import ./__demo__/prefix.md
 
+@import ./__demo__/custom-icons.md
+
 @import ./__demo__/format.md
 
 @import ./__demo__/model.md
@@ -32,10 +34,13 @@ description: 仅允许输入数字格式的输入框。
 |mode|模式（`embed`：按钮内嵌模式，`button`：左右按钮模式）|`'embed' \| 'button'`|`'embed'`||
 |precision|数字精度|`number`|`-`||
 |step|数字变化步长|`number`|`1`||
+|shift-step|shift 数字变化步长|`number`|`10`||
 |disabled|是否禁用|`boolean`|`false`||
 |error|是否为错误状态|`boolean`|`false`||
 |max|最大值|`number`|`Infinity`||
 |min|最小值|`number`|`-Infinity`||
+|press-interval|长按按钮时，多久触发一次点击事件，单位毫秒|`number`|`150`||
+|press-delay|长按按钮时，延迟多久后触发点击事件，单位毫秒|`number`|`1000`||
 |formatter|定义输入框展示值|`func`|`-`||
 |parser|从 `formatter` 转换为数字，和 `formatter` 搭配使用|`func`|`-`||
 |placeholder|输入框提示文字|`string`|`-`||
@@ -59,5 +64,13 @@ description: 仅允许输入数字格式的输入框。
 |---|---|---|---|
 |focus|使输入框获取焦点|-|-|
 |blur|使输入框失去焦点|-|-|
+### `<input-number>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|icon-minus|减少按钮图标|-|
+|icon-plus|增加按钮图标|-|
+|suffix|后缀元素|-|
+|prefix|前缀元素|-|
 
 

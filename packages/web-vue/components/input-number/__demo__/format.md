@@ -18,26 +18,51 @@ Use `formatter` and `parser` together to define the display value of the input b
 
 ```vue
 <template>
-  <a-input-number :style="{width:'320px'}" placeholder="Please Enter" class="input-demo" :default-value="12000" :min="0" :formatter="formatter" :parser="parser"/>
+  <a-space direction="vertical" size="large">
+    <a-input-number
+      :style="{width:'320px'}"
+      placeholder="Please Enter"
+      :default-value="12000"
+      :min="0"
+      :formatter="formatter1"
+      :parser="parser1"
+    />
+    <a-input-number
+      :style="{width:'320px'}"
+      placeholder="Please Enter"
+      :default-value="2022"
+      :min="0"
+      :formatter="formatter2"
+      :parser="parser2"
+    />
+  </a-space>
 </template>
 
 <script>
 export default {
   setup(){
-    const formatter = (value) => {
+    const formatter1 = (value) => {
       const values = value.split('.');
       values[0]=values[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
       return values.join('.')
     };
 
-    const parser = (value) => {
-      return value.replace(/,/g, '')
+    const parser1 = (value) => value.replace(/,/g, '')
+
+    const formatter2 = (value) => {
+      const values = value.split('.');
+
+      return values[0].split('').join('-')
     };
 
+    const parser2 = (value) => value.replace(/\-/g, '')
+
     return {
-      formatter,
-      parser
+      formatter1,
+      parser1,
+      formatter2,
+      parser2
     }
   },
 }

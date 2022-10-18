@@ -29,6 +29,14 @@ Add prefix and suffix in the input box by specifying the `prefix` and `suffix` s
         <icon-info-circle />
       </template>
     </a-input-number>
+    <a-input-number :style="{width:'320px'}" placeholder="Please enter something" allow-clear>
+      <template #prefix>
+        ¥
+      </template>
+      <template #suffix>
+        RMB
+      </template>
+    </a-input-number>
   </a-space>
 </template>
 ```

@@ -94,11 +94,10 @@
       &:focus-within {
         & .@{input-number-prefix-cls}-step {
           opacity: 1;
+        }
 
-          & ~ .@{input-prefix-cls}-suffix {
-            opacity: 0;
-            pointer-events: none;
-          }
+        & .@{input-number-prefix-cls}-suffix {
+          display: none;
         }
       }
     }
