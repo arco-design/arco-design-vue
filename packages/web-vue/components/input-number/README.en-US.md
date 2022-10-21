@@ -61,5 +61,11 @@ description: Only input boxes in numeric format are allowed.
 |---|---|---|:---:|
 |focus|Make the input box focus|-|-|
 |blur|Make the input box lose focus|-|-|
+### `<input-number>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|suffix|Suffix|-|
+|prefix|Prefix|-|
 
 
