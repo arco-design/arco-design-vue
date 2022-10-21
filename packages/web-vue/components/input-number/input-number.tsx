@@ -186,6 +186,16 @@ export default defineComponent({
      */
     'input': (value: number | undefined, inputValue: string, ev: Event) => true,
   },
+  /**
+   * @zh 前缀
+   * @en Prefix
+   * @slot prefix
+   */
+  /**
+   * @zh 后缀
+   * @en Suffix
+   * @slot suffix
+   */
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
