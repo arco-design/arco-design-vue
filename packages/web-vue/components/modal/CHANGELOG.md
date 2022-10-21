@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 问题修复
+
+- **modal:** Fixed the problem that the unloading of incoming subcomponents would not be triggered under the function call
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

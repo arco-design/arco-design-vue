@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 💎 Enhancement
+
+- Optimize number processing when entering page numbers ([#1750](https://github.com/arco-design/arco-design-vue/pull/1750))
+
+
 ## 2.35.2
 
 `2022-08-29`

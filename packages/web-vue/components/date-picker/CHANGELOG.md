@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 BugFix
+
+- Fix the problem of disabled style error under safari ([#1770](https://github.com/arco-design/arco-design-vue/pull/1770))
+
+
 ## 2.35.2
 
 `2022-08-29`

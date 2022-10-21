@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 问题修复
+
+- 修复在 safari 下 disabled 样式错误的问题 ([#1770](https://github.com/arco-design/arco-design-vue/pull/1770))
+
+
 ## 2.35.2
 
 `2022-08-29`

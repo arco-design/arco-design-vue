@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复在 safari 下 disabled 样式错误的问题 ([#1770](https://github.com/arco-design/arco-design-vue/pull/1770))
+- **trigger:** 修复在 windows 中 arrow 定位错误的问题 ([#1480](https://github.com/arco-design/arco-design-vue/pull/1480))
+- **modal:** 修复函数式调用下，传入子组件不会触发卸载的问题
+
+### 💎 功能优化
+
+- **cascader:** 优化多选时的子菜单全部禁用时，父级禁止选择 ([#1771](https://github.com/arco-design/arco-design-vue/pull/1771))
+- **progress:** 优化分割点的展示逻辑 ([#1755](https://github.com/arco-design/arco-design-vue/pull/1755))
+- **pagination:** 优化输入页码时的数字处理 ([#1750](https://github.com/arco-design/arco-design-vue/pull/1750))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

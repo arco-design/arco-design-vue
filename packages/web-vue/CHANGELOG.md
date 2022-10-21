@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 BugFix
+
+- **date-picker:** Fix the problem of disabled style error under safari ([#1770](https://github.com/arco-design/arco-design-vue/pull/1770))
+- **trigger:** Fix the problem of wrong arrow positioning in windows ([#1480](https://github.com/arco-design/arco-design-vue/pull/1480))
+- **modal:** Fixed the problem that the unloading of incoming subcomponents would not be triggered under the function call
+
+### 💎 Enhancement
+
+- **cascader:** When the submenus are all disabled when optimizing multi-selection, the parent prohibits the selection ([#1771](https://github.com/arco-design/arco-design-vue/pull/1771))
+- **progress:** Optimize the display logic of split points ([#1755](https://github.com/arco-design/arco-design-vue/pull/1755))
+- **pagination:** Optimize number processing when entering page numbers ([#1750](https://github.com/arco-design/arco-design-vue/pull/1750))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

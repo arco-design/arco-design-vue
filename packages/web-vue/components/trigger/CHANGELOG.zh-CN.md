@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 问题修复
+
+- 修复在 windows 中 arrow 定位错误的问题 ([#1480](https://github.com/arco-design/arco-design-vue/pull/1480))
+
+
 ## 2.35.1
 
 `2022-08-19`
