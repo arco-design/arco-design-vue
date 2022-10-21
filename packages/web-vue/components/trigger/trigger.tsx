@@ -429,7 +429,10 @@ export default defineComponent({
             height: 0,
           }
         : getElementScrollRect(firstElement.value, containerRect);
-      const popupRect = getElementScrollRect(popupRef.value, containerRect);
+      const getPopupRect = () =>
+        // @ts-ignore
+        getElementScrollRect(popupRef.value, containerRect);
+      const popupRect = getPopupRect();
       const { style, position } = getPopupStyle(
         props.position,
         containerRect,
@@ -458,8 +461,15 @@ export default defineComponent({
       }
       popupStyle.value = style;
       if (props.showArrow) {
-        arrowStyle.value = getArrowStyle(position, triggerRect, popupRect, {
-          customStyle: props.arrowStyle,
+        nextTick(() => {
+          arrowStyle.value = getArrowStyle(
+            position,
+            triggerRect,
+            getPopupRect(),
+            {
+              customStyle: props.arrowStyle,
+            }
+          );
         });
       }
     };
