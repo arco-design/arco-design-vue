@@ -58,6 +58,7 @@ export const getOptionInfos = (
         value,
         label: item[fieldNames.label] ?? String(value),
         disabled: Boolean(item[fieldNames.disabled]),
+        selectionDisabled: false,
         render: item[fieldNames.render],
         tagProps: item[fieldNames.tagProps],
         isLeaf: item[fieldNames.isLeaf],
@@ -102,14 +103,22 @@ export const getOptionInfos = (
         data.isLeaf = true;
       }
 
-      if (data.children) {
+      if (data.children && !data.disabled) {
         data.totalLeafOptions = data.children.reduce((pre, item) => {
           if (isNumber(item.totalLeafOptions)) {
             return pre + item.totalLeafOptions;
           }
 
+          if (item.disabled || item.selectionDisabled) {
+            return pre;
+          }
+
           return pre + (item.isLeaf ? 1 : 0);
         }, 0);
+
+        if (data.totalLeafOptions === 0 && !checkStrictly.value) {
+          data.selectionDisabled = true;
+        }
       }
 
       optionMap.set(data.key, data);
@@ -182,6 +191,10 @@ export const getLeafOptionKeys = (option: CascaderOptionInfo) => {
 
 export const getLeafOptionInfos = (option: CascaderOptionInfo) => {
   const infos: CascaderOptionInfo[] = [];
+  if (option.disabled || option.selectionDisabled) {
+    return infos;
+  }
+
   if (option.isLeaf) {
     infos.push(option);
   } else if (option.children) {
