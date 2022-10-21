@@ -71,7 +71,7 @@
                 </div>
               </div>
               <div :class="[`${prefixCls}-body`, bodyClass]" :style="bodyStyle">
-                <slot />
+                <slot v-if="mounted" />
               </div>
               <div v-if="footer" :class="`${prefixCls}-footer`">
                 <slot name="footer">
