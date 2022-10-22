@@ -27,10 +27,13 @@ description: Set the spacing between components.
 
 @import ./__demo__/wrap.md
 
+@import ./__demo__/split.md
+
 ## API
 
 %%API(space.tsx)%%
 
+## Type
 ```ts
 type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
 ```
