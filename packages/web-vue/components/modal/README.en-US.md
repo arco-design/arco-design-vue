@@ -39,7 +39,7 @@ description: Open a floating layer on the current page to carry related operatio
 |top|The height from the top of the dialog box. It does not take effect when the center display is turned on.|`number\|string`|`-`|2.12.0|
 |mask|Whether to show the mask|`boolean`|`true`||
 |title|Title|`string`|`-`||
-|title-align|horizontal alignment of the title|`'start' \| 'center'`|`-`|2.17.0|
+|title-align|horizontal alignment of the title|`'start' \| 'center'`|`'center'`|2.17.0|
 |align-center|Whether the dialog box is displayed in the center|`boolean`|`true`||
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`||
 |mask-closable|Whether to close the modal when click the mask|`boolean`|`true`||
@@ -57,13 +57,15 @@ description: Open a floating layer on the current page to carry related operatio
 |mask-style|Mask style|`CSSProperties`|`-`||
 |modal-class|The classname of the modal|`string \| any[]`|`-`||
 |modal-style|Modal style|`CSSProperties`|`-`||
-|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`|2.7.0|
+|on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`|2.7.0|
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|2.7.0|
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
 |draggable|Whether to support drag|`boolean`|`false`|2.19.0|
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 |mask-animation-name|Mask layer animation name|`string`|`-`|2.24.0|
 |modal-animation-name|Modal animation name|`string`|`-`|2.24.0|
+|body-class|The classname of the modal|`string \| any[]`|`-`|2.31.0|
+|body-style|Modal style|`StyleValue`|`-`|2.31.0|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|version|
@@ -108,7 +110,7 @@ Modal._context = app._context;
 |---|---|---|:---:|:---|
 |title|Title|`RenderContent`|`-`||
 |content|Content|`RenderContent`|`-`||
-|footer|Footer|`RenderContent`|`-`||
+|footer|Footer|`boolean \| RenderContent`|`true`||
 |closable|Whether to show the close button|`boolean`|`false`||
 |okText|The content of the confirm button|`string`|`-`||
 |cancelText|The content of the cancel button|`string`|`-`||
@@ -126,7 +128,7 @@ Modal._context = app._context;
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 |onOk|Callback function for clicking the OK button|`() => void`|`-`||
 |onCancel|Callback function for clicking the Cancel button|`() => void`|`-`||
-|onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(done: (closed: boolean) => void) => void \| boolean`|`-`|2.7.0|
+|onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`|2.7.0|
 |onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|2.7.0|
 |onOpen|Triggered after the modal is opened (the animation ends)|`() => void`|`-`||
 |onClose|Triggered after the modal is closed (the animation ends)|`() => void`|`-`||

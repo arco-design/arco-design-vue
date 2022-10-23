@@ -7,7 +7,8 @@
   pinkpurple, magenta, gray;
 
 .@{tag-prefix-cls} {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   box-sizing: border-box;
   height: @tag-size-default;
   padding: @tag-padding-vertical @tag-padding-horizontal;
@@ -41,6 +42,11 @@
   &-checkable&-checked:hover {
     background-color: @tag-default-color-bg_hover;
     border-color: @tag-default-color-border_hover;
+  }
+
+  &-bordered,
+  &-checkable&-checked&-bordered:hover {
+    border-color: @tag-default-bordered-color-border;
   }
 
   // Size
@@ -90,6 +96,11 @@
       border-color: ~'@{tag-@{value}-color-border_hover}';
     }
 
+    &-checked&-@{value}&-bordered,
+    &-checked&-@{value}&-bordered:hover {
+      border-color: ~'@{tag-@{value}-bordered-color-border}';
+    }
+
     &&-checked&-@{value} &-icon,
     &&-checked&-@{value} &-close-btn,
     &&-checked&-@{value} &-loading-icon {
@@ -97,7 +108,7 @@
     }
   });
 
-  &-custom-color {
+  &&-custom-color {
     color: @tag-custom-color-text;
 
     .icon-hover-bg(@tag-prefix-cls, @tag-custom-color-icon-bg_hover);
@@ -112,7 +123,7 @@
     }
   }
 
-  &-loading-icon {
+  & &-loading-icon {
     margin-left: 4px;
     font-size: 12px;
   }

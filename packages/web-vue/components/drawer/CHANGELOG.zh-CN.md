@@ -2,6 +2,47 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 💎 功能优化
+
+- 修复抽屉关闭的问题 ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+
+
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 功能优化
+
+- on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- 添加函数调用 ([#1409](https://github.com/arco-design/arco-design-vue/pull/1409))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 新增功能
+
+- 添加 header 属性和插槽 ([#1399](https://github.com/arco-design/arco-design-vue/pull/1399))
+
+
 ## 2.19.0
 
 `2022-03-11`

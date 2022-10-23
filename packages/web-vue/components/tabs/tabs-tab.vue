@@ -1,5 +1,5 @@
 <template>
-  <div :class="cls" @click="handleClick">
+  <div tabindex="0" :class="cls" v-bind="eventHandlers">
     <span :class="`${prefixCls}-title`">
       <slot />
     </span>
@@ -15,11 +15,12 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import type { TabData } from './interface';
+import { TabsContext, tabsInjectionKey } from './context';
 
 export default defineComponent({
   name: 'TabsTab',
@@ -38,12 +39,27 @@ export default defineComponent({
   emits: ['click', 'delete'],
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('tabs-tab');
-
+    const tabsCtx = inject<Partial<TabsContext>>(tabsInjectionKey, {});
     const handleClick = (e: Event) => {
       if (!props.tab.disabled) {
         emit('click', props.tab.key, e);
       }
     };
+
+    const onKeyDown = (ev: KeyboardEvent) => {
+      if (ev.key === 'Enter') {
+        handleClick(ev);
+      }
+    };
+
+    const eventHandlers = computed(() => {
+      return Object.assign(
+        tabsCtx.trigger === 'click'
+          ? { onClick: handleClick }
+          : { onMouseover: handleClick },
+        { onKeydown: onKeyDown }
+      );
+    });
 
     const handleDelete = (e: Event) => {
       if (!props.tab.disabled) {
@@ -55,7 +71,7 @@ export default defineComponent({
       prefixCls,
       {
         [`${prefixCls}-active`]: props.active,
-        [`${prefixCls}-closable`]: props.tab.closable,
+        [`${prefixCls}-closable`]: props.editable && props.tab.closable,
         [`${prefixCls}-disabled`]: props.tab.disabled,
       },
     ]);
@@ -63,7 +79,7 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
-      handleClick,
+      eventHandlers,
       handleDelete,
     };
   },

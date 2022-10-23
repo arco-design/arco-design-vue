@@ -140,7 +140,10 @@ exports[`<select> demo: render [loading] correctly 1`] = `
 `;
 
 exports[`<select> demo: render [multiple] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div style=\\"margin-bottom: 10px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+    <!--v-if-->
+  </button> Virtual Scrollbar </div>
+<div class=\\"arco-space arco-space-vertical\\">
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view arco-select-view-size-medium arco-select-view-has-suffix arco-select-view-has-placeholder arco-select-view-multiple arco-select\\" style=\\"width: 360px;\\"><span class=\\"arco-select-view-mirror\\">Please select ...</span>
     <!---->
     <transition-group-stub><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\" placeholder=\\"Please select ...\\"></transition-group-stub>

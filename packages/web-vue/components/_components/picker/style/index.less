@@ -32,6 +32,11 @@
     &::placeholder {
       color: @picker-color-placeholder;
     }
+
+    // fix color error under disabled status in safari
+    &[disabled] {
+      -webkit-text-fill-color: @input-color-text_disabled;
+    }
   }
 
   &-suffix {

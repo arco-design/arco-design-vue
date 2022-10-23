@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 功能优化
+
+- on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+
+
+## 2.32.1
+
+`2022-07-01`
+
+### 💅 样式更新
+
+- 修复不同类型下图标默认黑色的问题 ([#1366](https://github.com/arco-design/arco-design-vue/pull/1366))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

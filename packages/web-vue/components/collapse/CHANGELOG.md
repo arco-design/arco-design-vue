@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🆎 TypeScript
+
+- Fix key attribute definition of `collapse-item` to allow number ([#1743](https://github.com/arco-design/arco-design-vue/pull/1743))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 Style
+
+- adjust the padding of collapse-item-content when expand-icon is on the right ([#1680](https://github.com/arco-design/arco-design-vue/pull/1680))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 Feature
+
+- Supports custom expand icon ([#1344](https://github.com/arco-design/arco-design-vue/pull/1344))
+
+
 ## 2.27.0
 
 `2022-05-13`

@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 💎 Enhancement
+
+- Use the flex layout method to solve the centering problem when the icon size is inconsistent ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+
+
+## 2.35.1
+
+`2022-08-19`
+
+### 💎 Enhancement
+
+- Default event is not triggered on click when state is loading or disabled ([#1516](https://github.com/arco-design/arco-design-vue/pull/1516))
+
+
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 Enhancement
+
+- Add focus style ([#1229](https://github.com/arco-design/arco-design-vue/pull/1229))
+
+
 ## 2.24.1
 
 `2022-04-16`

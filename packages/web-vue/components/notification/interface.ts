@@ -1,5 +1,5 @@
-import { AppContext, RenderFunction } from 'vue';
-import { RenderContent } from '../_utils/types';
+import { AppContext, CSSProperties, RenderFunction } from 'vue';
+import { ClassName, RenderContent } from '../_utils/types';
 import { MessageType } from '../_utils/constant';
 
 export const NOTIFICATION_POSITION = [
@@ -45,6 +45,11 @@ export interface NotificationMethod {
     appContext?: AppContext
   ) => NotificationReturn;
   /**
+   * @zh 清除对应 `id` 的提醒框
+   * @en remove the notification for the corresponding `id`
+   */
+  remove: (id: string) => void;
+  /**
    * @zh 清除全部提醒框
    * @en Clear all notifications
    */
@@ -73,6 +78,16 @@ export interface NotificationConfig {
    */
   id?: string;
   /**
+   * @zh 样式
+   * @en Style
+   */
+  style?: CSSProperties;
+  /**
+   * @zh 样式类名
+   * @en Style class name
+   */
+  class?: ClassName;
+  /**
    * @zh 位置
    * @en Position
    * @type 'topLeft'|'topRight'|'bottomLeft'|'bottomRight'
@@ -81,18 +96,19 @@ export interface NotificationConfig {
   /**
    * @zh 是否显示图标
    * @en Whether to show icon
-   * @default true
+   * @defaultValue true
    */
   showIcon?: boolean;
   /**
    * @zh 是否可关闭
    * @en Whether it can be closed
+   * @defaultValue false
    */
   closable?: boolean;
   /**
-   * @zh 显示的持续时间
-   * @en Display duration
-   * @default 3000
+   * @zh 显示的持续时间，单位为 `ms`
+   * @en Display duration, the unit is `ms`
+   * @defaultValue 3000
    */
   duration?: number;
   /**
@@ -101,6 +117,16 @@ export interface NotificationConfig {
    * @version 2.25.0
    */
   footer?: RenderFunction;
+  /**
+   * @zh 关闭按钮图标
+   * @en Close button icon
+   */
+  closeIcon?: RenderFunction;
+  /**
+   * @zh 关闭按钮元素
+   * @en Close button element
+   */
+  closeIconElement?: RenderFunction;
   /**
    * @zh 关闭时的回调函数
    * @en Callback function when closing
@@ -121,9 +147,13 @@ export interface NotificationItem {
   id: number | string;
   type: MessageType;
   content: RenderContent;
+  style?: CSSProperties;
+  class?: ClassName;
   title?: RenderContent;
   icon?: RenderFunction;
   footer?: RenderFunction;
+  closeIcon?: RenderFunction;
+  closeIconElement?: RenderFunction;
   showIcon?: boolean;
   closable?: boolean;
   duration?: number;

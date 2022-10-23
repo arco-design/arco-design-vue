@@ -14,16 +14,18 @@ title:
 
 ## en-US
 
-Set `summary` to turn on the summary line at the end of the table, and specify the first column of text with `summary-text`.
-If you want to customize the summary line display, you can pass in a function. The return value of the function is the data to be displayed, the structure is the same as `data`, and it supports multiple rows of data.
+Set `summary` to turn on the summary line at the end of the table, and specify the first column of text
+with `summary-text`. If you want to customize the summary line display, you can pass in a function. The return value of
+the function is the data to be displayed, the structure is the same as `data`, and it supports multiple rows of data.
 Note: The control column cannot be customized for the time being
 
 ---
 
 ```vue
+
 <template>
-  <a-table :columns="columns" :data="data" :summary="true" />
-  <a-table :columns="columns" :data="data" :scroll="scroll" :expandable="expandable" :summary="summary" >
+  <a-table :columns="columns" :data="data" :summary="true" :summary-span-method="spanMethod" />
+  <a-table :columns="columns" :data="data" :scroll="scroll" :expandable="expandable" :summary="summary">
     <template #summary-cell="{ column,record,rowIndex }">
       <div :style="getColorStyle(column,record)">{{record[column.dataIndex]}}</div>
     </template>
@@ -53,6 +55,14 @@ export default {
       {
         title: 'Salary',
         dataIndex: 'salary',
+        summaryCellStyle: (record) => {
+          if (record.salary > 100000) {
+            return {
+              backgroundColor: 'rgb(var(--arcoblue-6))',
+              color: '#fff'
+            }
+          }
+        }
       },
       {
         title: 'Data1',
@@ -131,13 +141,22 @@ export default {
       return undefined
     }
 
+    const spanMethod = ({rowIndex, columnIndex}) => {
+      if (rowIndex === 0 && columnIndex === 1) {
+        return {
+          colspan: 2
+        }
+      }
+    };
+
     return {
       expandable,
       scroll,
       columns,
       data,
       summary,
-      getColorStyle
+      getColorStyle,
+      spanMethod
     }
   },
 }

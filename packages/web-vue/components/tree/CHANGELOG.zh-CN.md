@@ -2,6 +2,34 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- 给 slot 添加节点状态信息 ([#1469](https://github.com/arco-design/arco-design-vue/pull/1469))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 🐛 问题修复
+
+- 修复子树展开动画中为处理过滤数据的问题 ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- 修复设置 defaultExpandSelected 失效的问题 ([#1362](https://github.com/arco-design/arco-design-vue/pull/1362))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 问题修复
+
+- 修复点击半选状态的节点显示错误的问题 ([#1331](https://github.com/arco-design/arco-design-vue/pull/1331))
+
+
 ## 2.27.0
 
 `2022-05-13`

@@ -11,6 +11,7 @@ import ArcoInput from '../input';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
+import { getKeyDownHandler, KEYBOARD_KEY } from '../_utils/keyboard';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -137,6 +138,15 @@ export default defineComponent({
       type: String as PropType<'change' | 'input'>,
       default: 'change',
     },
+    /**
+     * @zh 只读
+     * @en Readonly
+     * @version 3.33.1
+     */
+    readOnly: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:modelValue': (value: number | undefined) => true,
@@ -176,6 +186,16 @@ export default defineComponent({
      */
     'input': (value: number | undefined, inputValue: string, ev: Event) => true,
   },
+  /**
+   * @zh 前缀
+   * @en Prefix
+   * @slot prefix
+   */
+  /**
+   * @zh 后缀
+   * @en Suffix
+   * @slot suffix
+   */
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
@@ -189,11 +209,24 @@ export default defineComponent({
       disabled,
     });
     const { mergedSize } = useSize(_mergedSize);
+    const mergedPrecision = computed(() => {
+      if (isNumber(props.precision)) {
+        const decimal = `${props.step}`.split('.')[1];
+        const stepPrecision = (decimal && decimal.length) || 0;
+        return Math.max(stepPrecision, props.precision);
+      }
+      return undefined;
+    });
 
     const getStringValue = (number: number | undefined) => {
-      return isNumber(number)
-        ? props.formatter?.(String(number)) ?? String(number)
-        : '';
+      if (!isNumber(number)) {
+        return '';
+      }
+
+      const numString = mergedPrecision.value
+        ? number.toFixed(mergedPrecision.value)
+        : String(number);
+      return props.formatter?.(numString) ?? numString;
     };
 
     // inner input value to display
@@ -205,15 +238,6 @@ export default defineComponent({
       }
       const number = Number(props.parser?.(_value.value) ?? _value.value);
       return Number.isNaN(number) ? undefined : number;
-    });
-
-    const mergedPrecision = computed(() => {
-      if (isNumber(props.precision)) {
-        const decimal = `${props.step}`.split('.')[1];
-        const stepPrecision = (decimal && decimal.length) || 0;
-        return Math.max(stepPrecision, props.precision);
-      }
-      return undefined;
     });
 
     const isMin = ref(
@@ -270,14 +294,7 @@ export default defineComponent({
       }
     };
 
-    const handleStepButton = (
-      event: Event,
-      method: StepMethods,
-      needRepeat = false
-    ) => {
-      event.preventDefault();
-      inputRef.value?.focus();
-
+    const nextStep = (method: StepMethods, event: Event) => {
       if (
         mergedDisabled.value ||
         (method === 'plus' && isMax.value) ||
@@ -297,6 +314,17 @@ export default defineComponent({
       updateNumberStatus(nextValue);
       emit('update:modelValue', nextValue);
       emit('change', nextValue, event);
+    };
+
+    const handleStepButton = (
+      event: Event,
+      method: StepMethods,
+      needRepeat = false
+    ) => {
+      event.preventDefault();
+      inputRef.value?.focus();
+
+      nextStep(method, event);
 
       // 长按时持续触发
       if (needRepeat) {
@@ -345,9 +373,28 @@ export default defineComponent({
       _value.value = '';
       emit('update:modelValue', undefined);
       emit('change', undefined, ev);
-      eventHandlers.value.onChange?.(ev);
+      eventHandlers.value?.onChange?.(ev);
       emit('clear', ev);
     };
+
+    const onKeyDown = getKeyDownHandler(
+      new Map([
+        [
+          KEYBOARD_KEY.ARROW_UP,
+          (ev: Event) => {
+            ev.preventDefault();
+            !props.readOnly && nextStep('plus', ev);
+          },
+        ],
+        [
+          KEYBOARD_KEY.ARROW_DOWN,
+          (ev: Event) => {
+            ev.preventDefault();
+            !props.readOnly && nextStep('minus', ev);
+          },
+        ],
+      ])
+    );
 
     watch(
       () => props.modelValue,
@@ -360,55 +407,67 @@ export default defineComponent({
       }
     );
 
-    const renderSuffix = () => (
-      <>
-        {slots.suffix?.()}
-        <div class={`${prefixCls}-step`}>
-          <button
-            class={[
-              `${prefixCls}-step-button`,
-              {
-                [`${prefixCls}-step-button-disabled`]:
-                  mergedDisabled.value || isMax.value,
-              },
-            ]}
-            type="button"
-            disabled={mergedDisabled.value || isMax.value}
-            onMousedown={(e) => handleStepButton(e, 'plus', true)}
-            onMouseup={clearRepeatTimer}
-            onMouseleave={clearRepeatTimer}
-          >
-            <IconUp />
-          </button>
-          <button
-            class={[
-              `${prefixCls}-step-button`,
-              {
-                [`${prefixCls}-step-button-disabled`]:
-                  mergedDisabled.value || isMin.value,
-              },
-            ]}
-            type="button"
-            disabled={mergedDisabled.value || isMin.value}
-            onMousedown={(e) => handleStepButton(e, 'minus', true)}
-            onMouseup={clearRepeatTimer}
-            onMouseleave={clearRepeatTimer}
-          >
-            <IconDown />
-          </button>
-        </div>
-      </>
-    );
+    const renderSuffix = () => {
+      if (props.readOnly) {
+        return null;
+      }
+      return (
+        <>
+          {slots.suffix?.()}
+          <div class={`${prefixCls}-step`}>
+            <button
+              class={[
+                `${prefixCls}-step-button`,
+                {
+                  [`${prefixCls}-step-button-disabled`]:
+                    mergedDisabled.value || isMax.value,
+                },
+              ]}
+              type="button"
+              tabindex="-1"
+              disabled={mergedDisabled.value || isMax.value}
+              onMousedown={(e) => handleStepButton(e, 'plus', true)}
+              onMouseup={clearRepeatTimer}
+              onMouseleave={clearRepeatTimer}
+            >
+              <IconUp />
+            </button>
+            <button
+              class={[
+                `${prefixCls}-step-button`,
+                {
+                  [`${prefixCls}-step-button-disabled`]:
+                    mergedDisabled.value || isMin.value,
+                },
+              ]}
+              type="button"
+              tabindex="-1"
+              disabled={mergedDisabled.value || isMin.value}
+              onMousedown={(e) => handleStepButton(e, 'minus', true)}
+              onMouseup={clearRepeatTimer}
+              onMouseleave={clearRepeatTimer}
+            >
+              <IconDown />
+            </button>
+          </div>
+        </>
+      );
+    };
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-mode-${props.mode}`,
       `${prefixCls}-size-${mergedSize.value}`,
+      {
+        [`${prefixCls}-readonly`]: props.readOnly,
+      },
     ]);
 
     const renderPrependButton = () => {
       return (
         <ArcoButton
           size={mergedSize.value}
+          // @ts-ignore
+          tabindex="-1"
           v-slots={{ icon: () => <IconMinus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMin.value}
@@ -424,6 +483,8 @@ export default defineComponent({
       return (
         <ArcoButton
           size={mergedSize.value}
+          // @ts-ignore
+          tabindex="-1"
           v-slots={{ icon: () => <IconPlus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMax.value}
@@ -463,6 +524,7 @@ export default defineComponent({
           modelValue={_value.value}
           placeholder={props.placeholder}
           disabled={mergedDisabled.value}
+          readonly={props.readOnly}
           error={props.error}
           inputAttrs={{
             'role': 'spinbutton',
@@ -475,6 +537,8 @@ export default defineComponent({
           onBlur={handleBlur}
           onClear={handleClear}
           onChange={handleChange}
+          // @ts-ignore
+          onKeydown={onKeyDown}
         />
       );
     };

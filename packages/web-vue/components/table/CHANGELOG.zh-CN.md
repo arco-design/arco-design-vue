@@ -2,6 +2,159 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💅 样式更新
+
+- 修复表格同时开启总结行和滚动时，总结行高度被压缩的问题 ([#1733](https://github.com/arco-design/arco-design-vue/pull/1733))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 问题修复
+
+- 修复 default sorter&filters 在模板用法下失效的问题 ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+
+
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 问题修复
+
+- 修复内容变化后tooltip不显示的问题 ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 🆎 类型修正
+
+- 修复 TableRowSelection 类型声明 ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+
+
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 问题修复
+
+- 修复 scroll 属性中 maxHeight 导致虚拟滚动条样式错误问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 新增功能
+
+- 新增自定义类名相关属性 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+### 💎 功能优化
+
+- 扩展 key 的类型 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 💅 样式更新
+
+- 调整固定列的 zIndex ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 功能优化
+
+- columns 支持 reactive 类型的更新 ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- rowClass 支持函数类型的值 ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 💎 功能优化
+
+- 单独设置 selected-keys 时可以显示选中行 ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 问题修复
+
+- 修复文本提示没有跟随内容更新的问题 ([#1373](https://github.com/arco-design/arco-design-vue/pull/1373))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 新增功能
+
+- TableRowSelection 增加 onlyCurrent 属性，更改表格默认维护所有分页的选择状态 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💎 功能优化
+
+- cellStyle 类属性添加的样式移动到 td 元素上，解决部分场景下背景色问题 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 新增功能
+
+- 增加新的组件方法，详情可见文档 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- titleSlotName 定义的插槽增加 column 参数 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+
+
+## 2.30.2
+
+`2022-06-11`
+
+### 🐛 问题修复
+
+- 修复 align='left' 时表头居中的问题 ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+### 💎 功能优化
+
+- 无展开按钮时不再显示缩进 ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+
+## 2.30.0
+
+`2022-06-10`
+
+### ⚠️ 重点注意
+
+- 由于功能需要，`arco-table-cell` 改为 flex 布局，且在表格内容外新增 `arco-table-td-content`  包裹层，如有自定义样式请留意 DOM 结构的改变 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🆕 新增功能
+
+- 增加 `sticky-header` 表头吸顶功能 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- 表格列配置增加 `summaryCellStyle` 属性 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🐛 问题修复
+
+- 修复树型数据时文字省略错误的问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- 修复分组表头与固定列同时使用出现的问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💎 功能优化
+
+- 支持虚拟列表和固定列同时使用 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💅 样式更新
+
+- 修复横向滚动阴影问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+
 ## 2.29.0
 
 `2022-05-27`

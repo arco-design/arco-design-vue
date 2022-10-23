@@ -175,6 +175,13 @@ const Trigger = () => import('@web-vue/components/trigger/README.zh-CN.md');
 const TriggerEn = () => import('@web-vue/components/trigger/README.en-US.md');
 const Split = () => import('@web-vue/components/split/README.zh-CN.md');
 const SplitEn = () => import('@web-vue/components/split/README.en-US.md');
+const OverflowList = () =>
+  import('@web-vue/components/overflow-list/README.zh-CN.md');
+const OverflowListEn = () =>
+  import('@web-vue/components/overflow-list/README.en-US.md');
+const Scrollbar = () => import('@web-vue/components/scrollbar/README.zh-CN.md');
+const ScrollbarEn = () =>
+  import('@web-vue/components/scrollbar/README.en-US.md');
 
 const docs = [
   {
@@ -193,9 +200,18 @@ const docs = [
     componentEn: ThemeEn,
   },
   {
+    name: 'token',
+    component: () => import('./pages/token/token.vue'),
+  },
+  {
     name: 'i18n',
     component: I18n,
     componentEn: I18nEn,
+  },
+  {
+    name: 'faq',
+    component: () => import('./docs/faq.zh-CN.md'),
+    componentEn: () => import('./docs/faq.en-US.md'),
   },
   {
     name: 'changelog',
@@ -638,6 +654,16 @@ const components = [
         name: 'split',
         component: Split,
         componentEn: SplitEn,
+      },
+      {
+        name: 'overflow',
+        component: OverflowList,
+        componentEn: OverflowListEn,
+      },
+      {
+        name: 'scrollbar',
+        component: Scrollbar,
+        componentEn: ScrollbarEn,
       },
     ],
   },

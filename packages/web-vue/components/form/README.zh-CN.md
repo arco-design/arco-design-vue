@@ -59,8 +59,8 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |---|---|---|---|
 |validate|校验全部表单数据|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
 |validateField|校验部分表单数据|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
-|resetFields|重置表单数据|-|-|
-|clearValidate|清除校验状态|-|-|
+|resetFields|重置表单数据|field: `string \| string[]`|-|
+|clearValidate|清除校验状态|field: `string \| string[]`|-|
 |setFields|设置表单项的值和状态|data: `Record<string, FieldData>`|-|
 
 

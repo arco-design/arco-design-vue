@@ -50,10 +50,9 @@ description: The tree structure data can be selected.
 |error|Whether it is an error state|`boolean`|`false`||
 |size|The size of the selection box.|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |border|Whether to show the border|`boolean`|`false`||
-|allow-search|Whether to allow searching|`boolean`|`false`||
+|allow-search|Whether to allow searching|`boolean \| { retainInputValue?: boolean }`|`false (single) \| true (multiple)`||
 |allow-clear|Whether to allow clear|`boolean`|`false`||
 |placeholder|Prompt copy|`string`|`-`||
-|retain-input-value|Whether to keep existing content when the search box is focused|`boolean`|`true`||
 |max-tag-count|The maximum number of labels displayed, only valid in multi-select mode|`number`|`-`||
 |multiple|Whether to support multiple selection|`boolean`|`false`||
 |default-value|Default value|`string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`|`-`||
@@ -73,7 +72,7 @@ description: The tree structure data can be selected.
 |filter-tree-node|Custom node filter function|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`||
 |load-more|Load data dynamically|`(nodeData: TreeNodeData) => Promise<void>`|`-`||
 |disable-filter|Disable internal filtering logic|`boolean`|`false`||
-|popup-container|Mount container for pop-up box|`string \| HTMLElement \| null \| undefined`|`-`||
+|popup-container|Mount container for pop-up box|`string \| HTMLElement \| undefined`|`-`||
 |fallback-option|Customize node data for keys that do not match options|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|Set the nodes that can be selected, all can be selected by default|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
 ### `<tree-select>` Events

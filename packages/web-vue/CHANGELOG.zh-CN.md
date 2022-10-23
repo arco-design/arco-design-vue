@@ -2,6 +2,480 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复在 safari 下 disabled 样式错误的问题 ([#1770](https://github.com/arco-design/arco-design-vue/pull/1770))
+- **trigger:** 修复在 windows 中 arrow 定位错误的问题 ([#1480](https://github.com/arco-design/arco-design-vue/pull/1480))
+- **modal:** 修复函数式调用下，传入子组件不会触发卸载的问题
+
+### 💎 功能优化
+
+- **cascader:** 优化多选时的子菜单全部禁用时，父级禁止选择 ([#1771](https://github.com/arco-design/arco-design-vue/pull/1771))
+- **progress:** 优化分割点的展示逻辑 ([#1755](https://github.com/arco-design/arco-design-vue/pull/1755))
+- **pagination:** 优化输入页码时的数字处理 ([#1750](https://github.com/arco-design/arco-design-vue/pull/1750))
+
+
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🆕 新增功能
+
+- table、select、list 组件增加 scrollbar 属性，支持开关虚拟滚动条 ([#1747](https://github.com/arco-design/arco-design-vue/pull/1747))
+- **notification:** 提示框和提示框列表间隔样式调整 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** `showIcon` 属性无效 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 支持自定义关闭按钮和元素 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 支持自定义样式 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 删除对应 `id` 的提示框 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **notification:** 使用案例 ([#1676](https://github.com/arco-design/arco-design-vue/pull/1676))
+- **descriptions:** 描述中表格样式的 `layout-fixed`，当设置成 `fixed` 时，宽度会均分 ([#1670](https://github.com/arco-design/arco-design-vue/pull/1670))
+
+### 🐛 问题修复
+
+- **transfer:** 修复无法滚动问题 ([#1723](https://github.com/arco-design/arco-design-vue/pull/1723))
+- **spin:** 修复 size 在失效的问题 ([#1717](https://github.com/arco-design/arco-design-vue/pull/1717))
+
+### 💎 功能优化
+
+- **select:** 增加已选择项的缓存，优化在远程搜索时的 label 显示问题 ([#1731](https://github.com/arco-design/arco-design-vue/pull/1731))
+- **modal:** 函数式调用可以设置 renderToBody 参数 ([#1682](https://github.com/arco-design/arco-design-vue/pull/1682))
+
+### 💅 样式更新
+
+- **table:** 修复表格同时开启总结行和滚动时，总结行高度被压缩的问题 ([#1733](https://github.com/arco-design/arco-design-vue/pull/1733))
+
+### 🆎 类型修正
+
+- **collapse:** 修复 `collapse-item` 的 key 属性定义，允许 number ([#1743](https://github.com/arco-design/arco-design-vue/pull/1743))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 问题修复
+
+- **table:** 修复 default sorter&filters 在模板用法下失效的问题 ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+- 修复弹出层叠顺序 ([#1659](https://github.com/arco-design/arco-design-vue/pull/1659))
+
+### 💎 功能优化
+
+- **button:** 使用 flex 布局方式，解决 icon 大小不一致时的居中问题 ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+- **link:** 使用 flex 布局方式，解决 icon 大小不一致时的居中问题 ([#1702](https://github.com/arco-design/arco-design-vue/pull/1702))
+- **modal:** 修复对话框关闭的问题 ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+- **drawer:** 修复抽屉关闭的问题 ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+
+### 💅 样式更新
+
+- **tabs:** 修复 `card` 类型下标签内容没有居中的问题 ([#1704](https://github.com/arco-design/arco-design-vue/pull/1704))
+- **select:** 修复自定义标签颜色显示错误的问题 ([#1703](https://github.com/arco-design/arco-design-vue/pull/1703))
+- **collapse:** 当expand-icon在右侧时,调整collapse-item-content的padding ([#1680](https://github.com/arco-design/arco-design-vue/pull/1680))
+
+
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 问题修复
+
+- **table:** 修复内容变化后tooltip不显示的问题 ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 💎 功能优化
+
+- **empty:** 优化自定义显示优先级，image 插槽高于全局 empty 插槽 ([#1673](https://github.com/arco-design/arco-design-vue/pull/1673))
+- **input:** 优化最大限制时不再可以从中间输入内容 ([#1672](https://github.com/arco-design/arco-design-vue/pull/1672))
+- **image:** actionsLayout为空时不显示操作栏 ([#1668](https://github.com/arco-design/arco-design-vue/pull/1668))
+- **overflow-list:** 溢出数量改变事件 ([#1287](https://github.com/arco-design/arco-design-vue/pull/1287))
+
+### 🆎 类型修正
+
+- **table:** 修复 TableRowSelection 类型声明 ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+- **icon:** 增加 Icon 相关类型声明 ([#1619](https://github.com/arco-design/arco-design-vue/pull/1619))
+
+
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 问题修复
+
+- **list:** 修复加载更多使用中滚动条高度的问题 ([#1658](https://github.com/arco-design/arco-design-vue/pull/1658))
+- 修复内置虚拟滚动条的组件按需加载时丢失样式的问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **scrollbar:** 修复在 Firefox 下的样式问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **table:** 修复 scroll 属性中 maxHeight 导致虚拟滚动条样式错误问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **select:** 修复键盘交互中下拉菜单没有跟随滚动的问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- **select:** 修复内置虚拟滚动条部分情况下报错的问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+### 💎 功能优化
+
+- 组件 onBeforeOk 属性的返回值 `Promise<void>` 与 `done()`方法默认行为调整为成功 ([#1650](https://github.com/arco-design/arco-design-vue/pull/1650))
+
+
+## 2.37.1
+
+`2022-09-16`
+
+### 🆕 新增功能
+
+- **overflow-list:** 新增 `OverflowList` 组件 ([#1634](https://github.com/arco-design/arco-design-vue/pull/1634))
+- **scrollbar:** 增加虚拟滚动条组件 ([#1634](https://github.com/arco-design/arco-design-vue/pull/1634))
+- **scrollbar:** table、select、list、cascader、dropdown 组件替换虚拟滚动条 ([#1634](https://github.com/arco-design/arco-design-vue/pull/1634))
+
+
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 新增功能
+
+- **typography:** 省略模式增加支持 CSS 方式（实验性） ([#1635](https://github.com/arco-design/arco-design-vue/pull/1635))
+- **switch:** 支持 `beforeChange` 切换事件拦截 ([#1626](https://github.com/arco-design/arco-design-vue/pull/1626))
+- **link:** 添加加载中状态属性 ([#1616](https://github.com/arco-design/arco-design-vue/pull/1616))
+
+### 💎 功能优化
+
+- **list:** 支持响应式网格布局参数 ([#1625](https://github.com/arco-design/arco-design-vue/pull/1625))
+
+
+## 2.36.1
+
+`2022-09-09`
+
+### 🐛 问题修复
+
+- **select:** 修复 option 插槽参数错误的问题 ([#1607](https://github.com/arco-design/arco-design-vue/pull/1607))
+
+### 💎 功能优化
+
+- **modal:** on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **drawer:** on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **popconfirm:** on-before-ok 属性支持函数返回 Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+- **dropdown:** 选项禁用时不触发单击事件 ([#1611](https://github.com/arco-design/arco-design-vue/pull/1611))
+
+### 🆎 类型修正
+
+- 增加 `virtual-list` 接口和使用说明 ([#1614](https://github.com/arco-design/arco-design-vue/pull/1614))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 新增功能
+
+- **image:** hideFooter 增加新参数，支持错误状态下展示 footer ([#1595](https://github.com/arco-design/arco-design-vue/pull/1595))
+- **breadcrumb:** 增加 customUrl 属性 ([#1594](https://github.com/arco-design/arco-design-vue/pull/1594))
+- **table:** 新增自定义类名相关属性 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+- 增加`繁体中文（中国台湾）`支持 ([#1551](https://github.com/arco-design/arco-design-vue/pull/1551))
+- 增加`葡萄牙语（葡萄牙）`支持 ([#1551](https://github.com/arco-design/arco-design-vue/pull/1551))
+- **alert:** 支持自定义关闭元素 ([#1544](https://github.com/arco-design/arco-design-vue/pull/1544))
+- **checkbox:** 新增 max 属性，支持设置最多可被勾选的项目数 ([#1540](https://github.com/arco-design/arco-design-vue/pull/1540))
+- **image:** 增加 fit 属性 ([#1534](https://github.com/arco-design/arco-design-vue/pull/1534))
+- **breadcrumb:** 支持 separator  属性 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** 支持 routes  属性 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** 支持 more-icon  插槽 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **breadcrumb:** `breadcrumb-item` 支持 droplist  属性和插槽 ([#1500](https://github.com/arco-design/arco-design-vue/pull/1500))
+- **page-header:** 支持自定义返回按钮 ([#1499](https://github.com/arco-design/arco-design-vue/pull/1499))
+
+### 💎 功能优化
+
+- **table:** 扩展 key 的类型 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+- **input:** 修改密码输入框图标 ([#1436](https://github.com/arco-design/arco-design-vue/pull/1436))
+
+### 🆎 类型修正
+
+- 增加 dropdown 和 breadcrumb 组件中类型的导出 ([#1594](https://github.com/arco-design/arco-design-vue/pull/1594))
+- **layout:** 增加 ts 类型导出 ([#1571](https://github.com/arco-design/arco-design-vue/pull/1571))
+
+
+## 2.35.3
+
+`2022-08-31`
+
+### 🐛 问题修复
+
+- 修复 icon 类组件新属性未生效的问题
+
+
+## 2.35.2
+
+`2022-08-29`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复部分模式下选择面板年月选择时单击选择事件异常 ([#1562](https://github.com/arco-design/arco-design-vue/pull/1562))
+
+### 💎 功能优化
+
+- **date-picker:** 优化范围选择器在选择时也会修正顺序 ([#1578](https://github.com/arco-design/arco-design-vue/pull/1578))
+- 组件库内部 matchMedia 方法调整兼容 Safari 13 ([#1576](https://github.com/arco-design/arco-design-vue/pull/1576))
+
+### 💅 样式更新
+
+- **pagination:** 修复显示内容被压缩的问题 ([#1579](https://github.com/arco-design/arco-design-vue/pull/1579))
+- **image:** 修复预览模式下关闭按钮图标位置错误的问题 ([#1577](https://github.com/arco-design/arco-design-vue/pull/1577))
+
+
+## 2.35.1
+
+`2022-08-19`
+
+### 🐛 问题修复
+
+- **spin:** 修复 fixed-column 的 z-index 提高导致的 spin 问题 ([#1533](https://github.com/arco-design/arco-design-vue/pull/1533))
+- **time-picker:** 修复 time-picker 中 size 属性的默认值问题 ([#1513](https://github.com/arco-design/arco-design-vue/pull/1513))
+
+### 💎 功能优化
+
+- **trigger:** 优化在 KeepAlive 下使用的问题，缓存时关闭弹出层 ([#1529](https://github.com/arco-design/arco-design-vue/pull/1529))
+- **button:** 当状态为 loading 或 disabled 时点击不会触发默认事件 ([#1516](https://github.com/arco-design/arco-design-vue/pull/1516))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 🆕 新增功能
+
+- **icon:** 支持旋转属性 ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+- **icon:** 图标列表支持类型筛选和名称搜索 ([#1490](https://github.com/arco-design/arco-design-vue/pull/1490))
+- **divider:** 分割线宽度及样式设置 ([#1473](https://github.com/arco-design/arco-design-vue/pull/1473))
+- **divider:** 分割线边距设置 ([#1473](https://github.com/arco-design/arco-design-vue/pull/1473))
+- **date-picker:** 增加范围选择器头部点击与基础选择器月份点击至年份功能 ([#1421](https://github.com/arco-design/arco-design-vue/pull/1421))
+
+### 💅 样式更新
+
+- **table:** 调整固定列的 zIndex ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
+## 2.34.1
+
+`2022-08-05`
+
+### 🐛 问题修复
+
+- **upload:** 修复设置 `accept=*` 时失效的问题 ([#1488](https://github.com/arco-design/arco-design-vue/pull/1488))
+- **menu:** 修复新版本 Chrome 中 popup 属性导致警告的问题 ([#1487](https://github.com/arco-design/arco-design-vue/pull/1487))
+
+### 💎 功能优化
+
+- 重构虚拟列表组件，修复功能问题 ([#1444](https://github.com/arco-design/arco-design-vue/pull/1444))
+
+### 💅 样式更新
+
+- **cascader:** 修复下拉面板为空时的样式问题 ([#1483](https://github.com/arco-design/arco-design-vue/pull/1483))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- **tree:** 给 slot 添加节点状态信息 ([#1469](https://github.com/arco-design/arco-design-vue/pull/1469))
+- **pagination:** 增加 autoAdjust 属性 ([#1466](https://github.com/arco-design/arco-design-vue/pull/1466))
+- **tabs:** 增加 trigger 属性，支持更改切换方式 ([#1456](https://github.com/arco-design/arco-design-vue/pull/1456))
+- **auto-complete:** 增加`footer`插槽 ([#1445](https://github.com/arco-design/arco-design-vue/pull/1445))
+- **dropdown:** 为icon插槽加入新的prop:  `popup-visible` ([#1430](https://github.com/arco-design/arco-design-vue/pull/1430))
+- **drawer:** 添加函数调用 ([#1409](https://github.com/arco-design/arco-design-vue/pull/1409))
+
+### 🐛 问题修复
+
+- **timeline:** 修复时间线使用 v-if 时计算错误的问题 ([#1467](https://github.com/arco-design/arco-design-vue/pull/1467))
+
+### 💎 功能优化
+
+- **table:** columns 支持 reactive 类型的更新 ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- **table:** rowClass 支持函数类型的值 ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+- **transfer:** item 插槽增加 value 属性 ([#1447](https://github.com/arco-design/arco-design-vue/pull/1447))
+- **modal:** 支持在函数调用中隐藏页脚 ([#1410](https://github.com/arco-design/arco-design-vue/pull/1410))
+- **input-number:** 支持`read-only`属性 ([#1408](https://github.com/arco-design/arco-design-vue/pull/1408))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 问题修复
+
+- **input-tag:** 修复设置 max-tag-count 后，remove 事件中 value 参数错误的问题 ([#1442](https://github.com/arco-design/arco-design-vue/pull/1442))
+- **cascader:** 修复搜索下拉菜单的横向滚动条位置错误问题 ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+- **cascader:** 修复搜索模式下，输入内容后不能使用光标的问题 ([#1438](https://github.com/arco-design/arco-design-vue/pull/1438))
+- **form:** 修复 form-item 内容可能超出限制宽度的问题 ([#1437](https://github.com/arco-design/arco-design-vue/pull/1437))
+- **modal:** 修复默认标题类名错误的问题 ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+- **typography:** 后缀 icon 点击事件取消冒泡 ([#1411](https://github.com/arco-design/arco-design-vue/pull/1411))
+
+### 💎 功能优化
+
+- **table:** 单独设置 selected-keys 时可以显示选中行 ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 🆕 新增功能
+
+- **drawer:** 添加 header 属性和插槽 ([#1399](https://github.com/arco-design/arco-design-vue/pull/1399))
+- **collapse:** 支持自定义展开图标 ([#1344](https://github.com/arco-design/arco-design-vue/pull/1344))
+- **tag:** 支持 `bordered` 显示边框 ([#1342](https://github.com/arco-design/arco-design-vue/pull/1342))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复 readonly 模式下仍可打开下拉菜单和清除选项的问题 ([#1400](https://github.com/arco-design/arco-design-vue/pull/1400))
+- **upload:** 修复在阿里云OSS中的使用问题 ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- **tree:** 修复子树展开动画中为处理过滤数据的问题 ([#1397](https://github.com/arco-design/arco-design-vue/pull/1397))
+- **tree:** 修复设置 defaultExpandSelected 失效的问题 ([#1362](https://github.com/arco-design/arco-design-vue/pull/1362))
+
+### 💅 样式更新
+
+- **tabs:** 修复聚焦时样式错误的问题 ([#1398](https://github.com/arco-design/arco-design-vue/pull/1398))
+- **modal:** 修复 footer 按钮不居中的问题 ([#1391](https://github.com/arco-design/arco-design-vue/pull/1391))
+- **upload:** 移除了 upload-list-item 末尾的多余空白 ([#1379](https://github.com/arco-design/arco-design-vue/pull/1379))
+
+
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 问题修复
+
+- **table:** 修复文本提示没有跟随内容更新的问题 ([#1373](https://github.com/arco-design/arco-design-vue/pull/1373))
+- **select:** 修复在火狐浏览器下搜索模式的点击展开问题 ([#1371](https://github.com/arco-design/arco-design-vue/pull/1371))
+- **tree-select:** 修复 `modelValue` 为 0 时, 导致状态不被选中 ([#1370](https://github.com/arco-design/arco-design-vue/pull/1370))
+- **input-number:** 修复设定精度后会省略 '0' 的问题 ([#1368](https://github.com/arco-design/arco-design-vue/pull/1368))
+
+### 💅 样式更新
+
+- **popconfirm:** 修复不同类型下图标默认黑色的问题 ([#1366](https://github.com/arco-design/arco-design-vue/pull/1366))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 新增功能
+
+- **typography:** 新增 `tooltip-props` 类属性 ([#1338](https://github.com/arco-design/arco-design-vue/pull/1338))
+- **table:** TableRowSelection 增加 onlyCurrent 属性，更改表格默认维护所有分页的选择状态 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+- **statistic:** 支持自定义显示值样式 ([#1320](https://github.com/arco-design/arco-design-vue/pull/1320))
+
+### 🐛 问题修复
+
+- **modal:** 修复当模态框超出屏幕大小后，移动位置导致错位的问题 ([#1336](https://github.com/arco-design/arco-design-vue/pull/1336))
+- **input-tag:** 修复中文输入法时报错问题 ([#1335](https://github.com/arco-design/arco-design-vue/pull/1335))
+- **tree:** 修复点击半选状态的节点显示错误的问题 ([#1331](https://github.com/arco-design/arco-design-vue/pull/1331))
+- **input-number:** 修复在表单以外清除时的错误 ([#1329](https://github.com/arco-design/arco-design-vue/pull/1329))
+
+### 💎 功能优化
+
+- **trigger:** 弹出层动画期间不再可以触发事件 ([#1337](https://github.com/arco-design/arco-design-vue/pull/1337))
+- **table:** cellStyle 类属性添加的样式移动到 td 元素上，解决部分场景下背景色问题 ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💅 样式更新
+
+- **tag:** 火狐浏览器溢出样式兼容 ([#1317](https://github.com/arco-design/arco-design-vue/pull/1317))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 新增功能
+
+- **form:** resetFields 和  clearValidate 方法增加参数支持 ([#1305](https://github.com/arco-design/arco-design-vue/pull/1305))
+- **table:** 增加新的组件方法，详情可见文档 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- **table:** titleSlotName 定义的插槽增加 column 参数 ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- **modal:** 增加 bodyClass 和 bodyStyle ([#1303](https://github.com/arco-design/arco-design-vue/pull/1303))
+
+### 🐛 问题修复
+
+- 修复虚拟滚动条 `scrollIntoView` 定位错误的问题 ([#1301](https://github.com/arco-design/arco-design-vue/pull/1301))
+- **menu:** 修复横向菜单收起后无法展开的问题 ([#1297](https://github.com/arco-design/arco-design-vue/pull/1297))
+
+
+## 2.30.2
+
+`2022-06-11`
+
+### 🐛 问题修复
+
+- **table:** 修复 align='left' 时表头居中的问题 ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+### 💎 功能优化
+
+- **table:** 无展开按钮时不再显示缩进 ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+
+## 2.30.1
+
+`2022-06-10`
+
+### 💅 样式更新
+
+- **space:** 仅在横向模式使用 flex 布局的 item ([#1277](https://github.com/arco-design/arco-design-vue/pull/1277))
+
+
+## 2.30.0
+
+`2022-06-10`
+
+### ⚠️ 重点注意
+
+- **table:** 由于功能需要，`arco-table-cell` 改为 flex 布局，且在表格内容外新增 `arco-table-td-content`  包裹层，如有自定义样式请留意 DOM 结构的改变 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🆕 新增功能
+
+- **table:** 增加 `sticky-header` 表头吸顶功能 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** 表格列配置增加 `summaryCellStyle` 属性 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🐛 问题修复
+
+- **select:** 修复远程搜索与 fieldNames 同时使用，没有显示选项的问题 ([#1271](https://github.com/arco-design/arco-design-vue/pull/1271))
+- **input:** 修复在输入法后不会触发 form 校验的问题 ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **input:** 修复在 Drawer 中使用带前后置标签产生的高度问题 ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- **modal:** 在组件卸载时重置 overflow 设置 ([#1262](https://github.com/arco-design/arco-design-vue/pull/1262))
+- **table:** 修复树型数据时文字省略错误的问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- **table:** 修复分组表头与固定列同时使用出现的问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💎 功能优化
+
+- **tabs:** 增加 focus 样式和键盘事件 ([#1264](https://github.com/arco-design/arco-design-vue/pull/1264))
+- **table:** 支持虚拟列表和固定列同时使用 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💅 样式更新
+
+- **select:** 修复在选项 label 为空时，选择框塌陷的问题 ([#1274](https://github.com/arco-design/arco-design-vue/pull/1274))
+- **space:** space-item 修改为 flex 布局，解决行内元素垂直居中问题 ([#1273](https://github.com/arco-design/arco-design-vue/pull/1273))
+- **table:** 修复横向滚动阴影问题 ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+
+## 2.29.1
+
+`2022-06-02`
+
+### 🐛 问题修复
+
+- **list:** 修复在某些情况下 reachBottom 不会触发的问题 ([#1228](https://github.com/arco-design/arco-design-vue/pull/1228))
+- **mention:** 修复按需加载时丢失 textarea 样式的问题 ([#1227](https://github.com/arco-design/arco-design-vue/pull/1227))
+- **space:** 修复子组件使用 key 失效的问题 ([#1223](https://github.com/arco-design/arco-design-vue/pull/1223))
+- **cascader:** 修复使用 number 类型的 value 匹配失败的问题 ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+
+### 💎 功能优化
+
+- 虚拟列表减少没必要的高度计算，防止抖动 ([#1233](https://github.com/arco-design/arco-design-vue/pull/1233))
+- **tree-select:** 搜索模式下组件失焦后会默认清空输入值 ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+- **input-tag:** 失焦时会默认清空输入值 ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+- **trigger:** 不再默认阻止右键默认事件 ([#1231](https://github.com/arco-design/arco-design-vue/pull/1231))
+- **cascader:** cascader-panel 增加键盘事件 ([#1230](https://github.com/arco-design/arco-design-vue/pull/1230))
+- **button:** 增加 focus 样式 ([#1229](https://github.com/arco-design/arco-design-vue/pull/1229))
+- **input-number:** 增加键盘事件，聚焦时显示步进按钮 ([#1224](https://github.com/arco-design/arco-design-vue/pull/1224))
+
+
 ## 2.29.0
 
 `2022-05-27`

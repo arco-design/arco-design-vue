@@ -141,7 +141,7 @@ export default defineComponent({
             child,
             lastVisibleIndex.value !== null && index > lastVisibleIndex.value
               ? { class: overflowMenuItemClass }
-              : {}
+              : { class: '' }
           );
 
           if (

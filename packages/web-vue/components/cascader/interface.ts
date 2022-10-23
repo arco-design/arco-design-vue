@@ -78,6 +78,7 @@ export interface CascaderOptionInfo extends CascaderOptionWithTotal {
   value: string | number;
   label: string;
   disabled: boolean;
+  selectionDisabled: boolean;
   isLeaf: boolean;
   parent?: CascaderOptionInfo;
   children?: CascaderOptionInfo[];

@@ -284,6 +284,10 @@ export default defineComponent({
      * @en Placeholder
      */
     placeholder: String,
+    /**
+     * @zh 自定义选项过滤方法
+     * @en Custom options filter method
+     */
     filterOption: {
       type: Function as PropType<
         (inputValue: string, option: CascaderOption) => boolean
@@ -876,20 +880,24 @@ export default defineComponent({
         [
           KEYBOARD_KEY.ARROW_RIGHT,
           (ev: Event) => {
-            ev.preventDefault();
-            if (activeOption.value?.children) {
-              setSelectedPath(activeOption.value.key);
-              setActiveKey(activeOption.value.children[0]?.key);
+            if (!showSearchPanel.value) {
+              ev.preventDefault();
+              if (activeOption.value?.children) {
+                setSelectedPath(activeOption.value.key);
+                setActiveKey(activeOption.value.children[0]?.key);
+              }
             }
           },
         ],
         [
           KEYBOARD_KEY.ARROW_LEFT,
           (ev: Event) => {
-            ev.preventDefault();
-            if (activeOption.value?.parent) {
-              setSelectedPath(activeOption.value.parent.key);
-              setActiveKey(activeOption.value.parent.key);
+            if (!showSearchPanel.value) {
+              ev.preventDefault();
+              if (activeOption.value?.parent) {
+                setSelectedPath(activeOption.value.parent.key);
+                setActiveKey(activeOption.value.parent.key);
+              }
             }
           },
         ],

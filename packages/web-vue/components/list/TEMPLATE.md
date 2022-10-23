@@ -23,7 +23,13 @@ description: The most basic list display, which can carry text, lists, pictures,
 
 @import ./__demo__/meta.md
 
+@import ./__demo__/actions.md
+
+@import ./__demo__/actions-layout.md
+
 @import ./__demo__/grid.md
+
+@import ./__demo__/responsive-grid.md
 
 @import ./__demo__/scroll.md
 
@@ -37,4 +43,4 @@ description: The most basic list display, which can carry text, lists, pictures,
 
 %%API(list-item-meta.vue)%%
 
-%%INTERFACE(../_components/virtual-list/interface.ts)%%
+%%INTERFACE(../_components/virtual-list-v2/interface.ts)%%

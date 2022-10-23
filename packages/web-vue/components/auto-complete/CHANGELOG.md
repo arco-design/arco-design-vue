@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- add `footer` slot ([#1445](https://github.com/arco-design/arco-design-vue/pull/1445))
+
+
 ## 2.23.0
 
 `2022-04-08`

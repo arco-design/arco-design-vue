@@ -102,10 +102,6 @@ export default defineComponent({
       disabled,
     });
 
-    const mergedDisabled = computed(
-      () => checkboxGroupCtx?.disabled || _mergedDisabled?.value
-    );
-
     const _checked = ref(props.defaultChecked);
     const computedValue = computed(() =>
       isGroup
@@ -117,6 +113,12 @@ export default defineComponent({
         ? computedValue.value.includes(props.value ?? true)
         : computedValue.value;
     });
+    const mergedDisabled = computed(
+      () =>
+        checkboxGroupCtx?.disabled ||
+        _mergedDisabled?.value ||
+        (!computedChecked.value && checkboxGroupCtx?.isMaxed)
+    );
 
     const handleClick = (ev: Event) => {
       ev.stopPropagation();
@@ -212,25 +214,21 @@ export default defineComponent({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        {slots.checkbox?.({
+        {(slots.checkbox ?? checkboxGroupCtx?.slots?.checkbox)?.({
           checked: computedChecked.value,
           disabled: mergedDisabled.value,
-        }) ??
-          checkboxGroupCtx?.slots.checkbox?.({
-            checked: computedChecked.value,
-            disabled: mergedDisabled.value,
-          }) ?? (
-            <IconHover
-              class={`${prefixCls}-icon-hover`}
-              disabled={mergedDisabled.value || computedChecked.value}
-            >
-              <div class={`${prefixCls}-icon`}>
-                {computedChecked.value && (
-                  <IconCheck class={`${prefixCls}-icon-check`} />
-                )}
-              </div>
-            </IconHover>
-          )}
+        }) ?? (
+          <IconHover
+            class={`${prefixCls}-icon-hover`}
+            disabled={mergedDisabled.value || computedChecked.value}
+          >
+            <div class={`${prefixCls}-icon`}>
+              {computedChecked.value && (
+                <IconCheck class={`${prefixCls}-icon-check`} />
+              )}
+            </div>
+          </IconHover>
+        )}
         {slots.default && (
           <span class={`${prefixCls}-label`}>{slots.default()}</span>
         )}

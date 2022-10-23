@@ -2,6 +2,14 @@
 changelog: true
 ```
 
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 Feature
+
+- support custom value style prop ([#1320](https://github.com/arco-design/arco-design-vue/pull/1320))
+
 ## 2.28.0
 
 `2022-05-20`

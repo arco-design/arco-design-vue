@@ -2,6 +2,65 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💎 Enhancement
+
+- Increase the cache of selected items, and optimize the label display problem during remote search ([#1731](https://github.com/arco-design/arco-design-vue/pull/1731))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 Style
+
+- Fix the problem that the custom label color is displayed incorrectly ([#1703](https://github.com/arco-design/arco-design-vue/pull/1703))
+
+
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- Fixed the problem that the drop-down menu did not follow the scrolling in keyboard interaction ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- Fix the problem of error reporting in some cases of built-in virtual scroll bar ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
+## 2.36.1
+
+`2022-09-09`
+
+### 🐛 BugFix
+
+- Fix option slot parameter problem ([#1607](https://github.com/arco-design/arco-design-vue/pull/1607))
+
+
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- Fixed click-to-expand issue in search mode in Firefox ([#1371](https://github.com/arco-design/arco-design-vue/pull/1371))
+
+
+## 2.30.0
+
+`2022-06-10`
+
+### 🐛 BugFix
+
+- Fixed remote search and fieldNames used at the same time, no options displayed ([#1271](https://github.com/arco-design/arco-design-vue/pull/1271))
+
+### 💅 Style
+
+- Fixed the issue that the selection box collapsed when the option label was empty ([#1274](https://github.com/arco-design/arco-design-vue/pull/1274))
+
+
 ## 2.29.0
 
 `2022-05-27`

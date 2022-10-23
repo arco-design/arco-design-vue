@@ -1,11 +1,11 @@
 <template>
-  <svg :class="cls" :style="sizeStyle" fill="currentColor">
+  <svg :class="cls" :style="innerStyle" fill="currentColor">
     <slot />
   </svg>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, CSSProperties } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber } from '../_utils/is';
 
@@ -14,18 +14,21 @@ export default defineComponent({
   props: {
     type: String,
     size: [Number, String],
+    rotate: Number,
     spin: Boolean,
   },
   setup(props) {
     const prefixCls = getPrefixCls('icon');
 
-    const sizeStyle = computed(() => {
+    const innerStyle = computed(() => {
+      const styles: CSSProperties = {};
       if (props.size) {
-        return {
-          fontSize: isNumber(props.size) ? `${props.size}px` : props.size,
-        };
+        styles.fontSize = isNumber(props.size) ? `${props.size}px` : props.size;
       }
-      return undefined;
+      if (props.rotate) {
+        styles.transform = `rotate(${props.rotate}deg)`;
+      }
+      return styles;
     });
 
     const cls = computed(() => [
@@ -38,7 +41,7 @@ export default defineComponent({
 
     return {
       cls,
-      sizeStyle,
+      innerStyle,
     };
   },
 });

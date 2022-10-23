@@ -32,7 +32,7 @@ description: 用来输入标签。
 |allow-clear|是否允许清空|`boolean`|`false`||
 |size|输入框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |max-tag-count|最多展示的标签个数，`0` 表示不限制|`number`|`0`||
-|retain-input-value|创建标签后是否保留输入框的内容|`boolean`|`false`||
+|retain-input-value|是否保留输入框的内容|`boolean \| { create?: boolean; blur?: boolean }`|`false`||
 |format-tag|格式化标签内容|`(data: TagData) => string`|`-`||
 |unique-value|是否仅创建唯一的值|`boolean`|`false`|2.15.0|
 |field-names|自定义 `TagData` 中的字段|`InputTagFieldNames`|`-`|2.22.0|
@@ -53,5 +53,12 @@ description: 用来输入标签。
 |---|---|---|---|
 |focus|使输入框获取焦点|-|-|
 |blur|使输入框失去焦点|-|-|
+### `<input-tag>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|tag|输入框标签的显示内容|data: `TagData`|
+|prefix|前缀元素|-|
+|suffix|后缀元素|-|
 
 

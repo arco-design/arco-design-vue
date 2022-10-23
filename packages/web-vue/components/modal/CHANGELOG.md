@@ -2,6 +2,96 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 问题修复
+
+- **modal:** Fixed the problem that the unloading of incoming subcomponents would not be triggered under the function call
+
+
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💎 Enhancement
+
+- Functional calls can set the renderToBody parameter ([#1682](https://github.com/arco-design/arco-design-vue/pull/1682))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 💎 Enhancement
+
+- fix modal close problem ([#1696](https://github.com/arco-design/arco-design-vue/pull/1696))
+
+
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 Enhancement
+
+- The on-before-ok property supports function returning a Promise ([#1623](https://github.com/arco-design/arco-design-vue/pull/1623))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- support hide footer in function call ([#1410](https://github.com/arco-design/arco-design-vue/pull/1410))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 🐛 BugFix
+
+- Fix the problem that the default title class name is wrong ([#1413](https://github.com/arco-design/arco-design-vue/pull/1413))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 💅 Style
+
+- Fix the problem that the footer button is not centered ([#1391](https://github.com/arco-design/arco-design-vue/pull/1391))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 BugFix
+
+- Fixed the problem that when the modal box exceeds the size of the screen, the position of the modal will be misaligned ([#1336](https://github.com/arco-design/arco-design-vue/pull/1336))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 Feature
+
+- Add bodyClass and bodyStyle ([#1303](https://github.com/arco-design/arco-design-vue/pull/1303))
+
+
+## 2.30.0
+
+`2022-06-10`
+
+### 🐛 BugFix
+
+- Reset overflow setting on component unmount ([#1262](https://github.com/arco-design/arco-design-vue/pull/1262))
+
+
 ## 2.27.0
 
 `2022-05-13`

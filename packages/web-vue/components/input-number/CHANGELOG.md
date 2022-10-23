@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- Support `read-only` prop ([#1408](https://github.com/arco-design/arco-design-vue/pull/1408))
+
+
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- Fix the problem that '0' will be omitted after setting precision ([#1368](https://github.com/arco-design/arco-design-vue/pull/1368))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🐛 BugFix
+
+- fix clear error outside of form ([#1329](https://github.com/arco-design/arco-design-vue/pull/1329))
+
+
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 Enhancement
+
+- Add keyboard event, show step button when focused ([#1224](https://github.com/arco-design/arco-design-vue/pull/1224))
+
+
 ## 2.29.0
 
 `2022-05-27`

@@ -1,5 +1,5 @@
 import { CSSProperties, RenderFunction, Slots, VNodeChild } from 'vue';
-import { Data } from '../_utils/types';
+import { BaseType, ClassName, Data } from '../_utils/types';
 import { TriggerProps } from '../trigger';
 
 export const TABLE_PAGE_POSITION = [
@@ -204,6 +204,30 @@ export interface TableColumnData {
    */
   children?: TableColumnData[];
   /**
+   * @zh 自定义单元格类名
+   * @en Custom cell class
+   * @version 2.36.0
+   */
+  cellClass?: ClassName;
+  /**
+   * @zh 自定义表头单元格类名
+   * @en Custom header cell class
+   * @version 2.36.0
+   */
+  headerCellClass?: ClassName;
+  /**
+   * @zh 自定义内容单元格类名
+   * @en Custom body cell class
+   * @version 2.36.0
+   */
+  bodyCellClass?: ClassName | ((record: TableData) => ClassName);
+  /**
+   * @zh 自定义总结栏单元格类名
+   * @en Custom body cell class
+   * @version 2.36.0
+   */
+  summaryCellClass?: ClassName | ((record: TableData) => ClassName);
+  /**
    * @zh 自定义单元格样式
    * @en Custom cell style
    * @version 2.11.0
@@ -211,16 +235,22 @@ export interface TableColumnData {
   cellStyle?: CSSProperties;
   /**
    * @zh 自定义表头单元格样式
-   * @en Custom cell style
+   * @en Custom header cell style
    * @version 2.29.0
    */
   headerCellStyle?: CSSProperties;
   /**
    * @zh 自定义内容单元格样式
-   * @en Custom cell style
+   * @en Custom body cell style
    * @version 2.29.0
    */
   bodyCellStyle?: CSSProperties | ((record: TableData) => CSSProperties);
+  /**
+   * @zh 自定义总结栏单元格样式
+   * @en Custom summary cell style
+   * @version 2.30.0
+   */
+  summaryCellStyle?: CSSProperties | ((record: TableData) => CSSProperties);
   /**
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
@@ -250,6 +280,7 @@ export interface TableColumnData {
   colSpan?: number;
   rowSpan?: number;
   index?: number;
+  parent?: TableColumnData;
 }
 
 export interface TableBorder {
@@ -285,12 +316,12 @@ export interface TableRowSelection {
    * @zh 已选择的行（受控模式）
    * @en Selected row (controlled mode)
    */
-  selectedRowKeys?: string[];
+  selectedRowKeys?: BaseType[];
   /**
    * @zh 默认已选择的行（非受控模式）
    * @en The selected row by default (uncontrolled mode)
    */
-  defaultSelectedRowKeys?: string[];
+  defaultSelectedRowKeys?: BaseType[];
   /**
    * @zh 是否显示全选选择器
    * @en Whether to show the select all selector
@@ -318,6 +349,12 @@ export interface TableRowSelection {
    * @version 2.29.0
    */
   checkStrictly?: boolean;
+  /**
+   * @zh 是否仅展示当前页的 keys（切换分页时清空 keys）
+   * @en Whether to display only the keys of the current page (clear keys when switching paging)
+   * @version 2.32.0
+   */
+  onlyCurrent?: boolean;
 }
 
 export interface TableExpandable {
@@ -325,12 +362,12 @@ export interface TableExpandable {
    * @zh 显示的展开行（受控模式）
    * @en Displayed Expanded Row (Controlled Mode)
    */
-  expandedRowKeys?: string[];
+  expandedRowKeys?: BaseType[];
   /**
    * @zh 默认显示的展开行（非受控模式）
    * @en Expand row displayed by default (Uncontrolled mode)
    */
-  defaultExpandedRowKeys?: string[];
+  defaultExpandedRowKeys?: BaseType[];
   /**
    * @zh 是否默认展开所有的行
    * @en Whether to expand all rows by default

@@ -31,13 +31,13 @@ export interface FileItem {
    */
   response?: any;
   /**
-   * @zh 图片地址
-   * @en The image address
+   * @zh 文件地址
+   * @en The file address
    */
   url?: string;
   /**
-   * @zh 图片文件名
-   * @en Picture file name
+   * @zh 文件名
+   * @en The file name
    */
   name?: string;
 }

@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 BugFix
+
+- Fix the problem of wrong arrow positioning in windows ([#1480](https://github.com/arco-design/arco-design-vue/pull/1480))
+
+
+## 2.35.1
+
+`2022-08-19`
+
+### 💎 Enhancement
+
+- Optimize the use of KeepAlive, close the pop-up layer when caching ([#1529](https://github.com/arco-design/arco-design-vue/pull/1529))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 💎 Enhancement
+
+- Events can no longer be fired during popover animations ([#1337](https://github.com/arco-design/arco-design-vue/pull/1337))
+
+
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 Enhancement
+
+- No longer blocks right-click default events by default ([#1231](https://github.com/arco-design/arco-design-vue/pull/1231))
+
+
 ## 2.27.0
 
 `2022-05-13`

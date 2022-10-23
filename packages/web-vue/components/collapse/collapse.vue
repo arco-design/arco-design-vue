@@ -50,6 +50,15 @@ export default defineComponent({
       default: false,
     },
     /**
+     * @zh 是否显示展开图标
+     * @en Whether to show the expand icon
+     * @version 2.33.0
+     */
+    showExpandIcon: {
+      type: Boolean,
+      default: undefined,
+    },
+    /**
      * @zh 展开图标显示的位置
      * @en The location where the expand icon is displayed
      * @values 'left', 'right'
@@ -76,6 +85,15 @@ export default defineComponent({
       default: false,
     },
   },
+  /**
+   * @zh 展开图标
+   * @en Expand icon
+   * @slot expand-icon
+   * @binding {boolean} active
+   * @binding {boolean} disabled
+   * @binding {'left' | 'right'} position
+   * @version 2.33.0
+   */
   emits: {
     'update:activeKey': (activeKey: (string | number)[]) => true,
     /**
@@ -86,8 +104,8 @@ export default defineComponent({
      */
     'change': (activeKey: (string | number)[], ev: Event) => true,
   },
-  setup(props, { emit }) {
-    const { expandIconPosition, destroyOnHide } = toRefs(props);
+  setup(props, { emit, slots }) {
+    const { expandIconPosition, destroyOnHide, showExpandIcon } = toRefs(props);
     const prefixCls = getPrefixCls('collapse');
 
     const _activeKey = ref(props.defaultActiveKey);
@@ -126,6 +144,8 @@ export default defineComponent({
       collapseKey,
       reactive({
         activeKeys: computedActiveKeys,
+        slots,
+        showExpandIcon,
         expandIconPosition,
         destroyOnHide,
         handleClick,

@@ -4,6 +4,11 @@
 .input-label-style(@cls) {
   &.@{cls}-search {
     cursor: text;
+
+    & .@{cls}-input,
+    & .@{cls}-value {
+      pointer-events: none;
+    }
   }
 
   .input-wrapper-style(@cls);
@@ -47,9 +52,15 @@
   }
 
   .size(@size) {
+    @height: ~'input-size-@{size}-height';
+
     &.@{cls}-size-@{size} .@{cls}-input,
     &.@{cls}-size-@{size} .@{cls}-value {
       .input-size(@size);
+    }
+
+    &.@{cls}-size-@{size} .@{cls}-value {
+      min-height: round(@@height - @input-border-width * 2);
     }
   }
 

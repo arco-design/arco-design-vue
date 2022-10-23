@@ -71,7 +71,7 @@ description: When users need to select one or more from a group of similar data,
 |unmount-on-close|Whether to destroy the element when the dropdown is closed|`boolean`|`false`||
 |filter-option|Whether to filter options|`boolean \| ((inputValue: string, option: SelectOptionData) => boolean)`|`true`||
 |options|Option data|`(string \| number \| SelectOptionData \| SelectOptionGroup)[]`|`[]`||
-|virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
+|virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`||
 |format-label|Format display content|`(data: SelectOptionData) => string`|`-`||
 |fallback-option|Options that do not exist in custom values|`boolean\| ((    value: string \| number \| Record<string, unknown>  ) => SelectOptionData)`|`true`|2.10.0|
@@ -84,15 +84,15 @@ description: When users need to select one or more from a group of similar data,
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|change|Triggered when the value changes|-||
-|input-value-change|Triggered when the value of the input changes|-||
+|change|Triggered when the value changes|value: ` string \| number \| Record<string, any> \| (string \| number \| Record<string, any>)[] `||
+|input-value-change|Triggered when the value of the input changes|inputValue: `string`||
 |popup-visible-change|Triggered when the display state of the drop-down box changes|visible: `boolean`||
 |clear|Triggered when the clear button is clicked|-||
-|remove|Triggered when the delete button of the label is clicked|-||
-|search|Triggered when the user searches|-||
+|remove|Triggered when the delete button of the label is clicked|removed: `string \| number \| Record<string, any> \| undefined`||
+|search|Triggered when the user searches|inputValue: `string`||
 |dropdown-scroll|Triggered when the drop-down scrolls|-||
 |dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|-||
-|exceed-limit|Triggered when multiple selection exceeds the limit|value: `mixed`|2.18.0|
+|exceed-limit|Triggered when multiple selection exceeds the limit|value: `string \| number \| Record<string, any> \| undefined`<br>ev: `Event`|2.18.0|
 ### `<select>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -173,5 +173,19 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 |isGroup|Whether it is an option group|`true`|`-`|
 |label|Option group title|`string`|`-`|
 |options|Options in the option group|`SelectOption[]`|`-`|
+
+
+
+
+### VirtualListProps
+
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|height|Viewable area height|`number \| string`|`-`||
+|threshold|The threshold of the number of elements to enable virtual scrolling. When the number of data is less than the threshold, virtual scrolling will not be enabled.|`number`|`-`||
+|isStaticItemHeight|(Repealed) Is the element height fixed. Version 2.18.0 deprecated, please use `fixedSize`|`boolean`|`false`||
+|fixedSize|Is the element height fixed.|`boolean`|`false`|2.34.1|
+|estimatedSize|Is the element height fixed.|`number`|`-`|2.34.1|
+|buffer|The number of elements mounted in advance outside the boundary of the viewport.|`number`|`10`|2.34.1|
 
 

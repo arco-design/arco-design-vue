@@ -21,7 +21,15 @@ description: The content area that can be collapsed/expanded.
 
 @import ./__demo__/accordion.md
 
+@import ./__demo__/nested.md
+
 @import ./__demo__/border-less.md
+
+@import ./__demo__/extra.md
+
+@import ./__demo__/expand-icon.md
+
+@import ./__demo__/custom.md
 
 @import ./__demo__/icon-position.md
 
@@ -31,4 +39,4 @@ description: The content area that can be collapsed/expanded.
 
 %%API(collapse.vue)%%
 
-%%API(collapse-item.vue)%%
+%%API(collapse-item.tsx)%%

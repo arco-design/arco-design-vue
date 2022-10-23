@@ -17,6 +17,7 @@ const Breadcrumb = Object.assign(_Breadcrumb, {
 
 export type BreadcrumbInstance = InstanceType<typeof _Breadcrumb>;
 export type BreadcrumbItemInstance = InstanceType<typeof _BreadcrumbItem>;
+export type { BreadcrumbRoute } from './interface';
 
 export { _BreadcrumbItem as BreadcrumbItem };
 

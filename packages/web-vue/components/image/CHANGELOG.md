@@ -2,6 +2,34 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 Enhancement
+
+- do not display toolbar when actions layout is empty ([#1668](https://github.com/arco-design/arco-design-vue/pull/1668))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- hideFooter adds a new parameter to support the display of footer in an error state ([#1595](https://github.com/arco-design/arco-design-vue/pull/1595))
+- Add fit prop ([#1534](https://github.com/arco-design/arco-design-vue/pull/1534))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+### 💅 Style
+
+- Fix the problem that the close button icon is in the wrong position in preview mode ([#1577](https://github.com/arco-design/arco-design-vue/pull/1577))
+
+
 ## 2.23.0
 
 `2022-04-08`

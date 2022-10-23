@@ -1,55 +1,11 @@
-<template>
-  <div :class="cls">
-    <div
-      role="button"
-      :aria-disabled="disabled"
-      :aria-expanded="isActive"
-      tabindex="0"
-      :class="headerCls"
-      @click="handleClick"
-    >
-      <icon-hover
-        v-if="showExpandIcon"
-        :prefix="prefixCls"
-        :class="iconCls"
-        :disabled="disabled"
-      >
-        <icon-caret-left
-          v-if="expandIconPosition === 'right'"
-          :class="`${prefixCls}-expand-icon`"
-        />
-        <icon-caret-right v-else :class="`${prefixCls}-expand-icon`" />
-      </icon-hover>
-      <div :class="`${prefixCls}-header-title`">
-        <slot name="header">
-          {{ header }}
-        </slot>
-      </div>
-      <div v-if="$slots.extra" :class="`${prefixCls}-header-extra`">
-        <slot name="extra" />
-      </div>
-    </div>
-    <transition name="collapse-slider" v-bind="transitionEvents">
-      <div v-show="isActive" role="region" :class="contentCls">
-        <div
-          v-if="mounted"
-          ref="contentBoxRef"
-          :class="`${prefixCls}-content-box`"
-        >
-          <slot />
-        </div>
-      </div>
-    </transition>
-  </div>
-</template>
-
-<script lang="ts">
 import {
   computed,
   defineComponent,
   getCurrentInstance,
   inject,
   ref,
+  Transition,
+  TransitionProps,
   watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
@@ -67,7 +23,7 @@ export default defineComponent({
      * @zh 面板的 id，对应 `activeKey` 中的值
      * @en The id of the panel, corresponding to the value in `activeKey`
      */
-    key: String,
+    key: [String, Number],
     /**
      * @zh 面板的标题
      * @en The title of the panel
@@ -105,11 +61,20 @@ export default defineComponent({
    * @slot header
    */
   /**
+   * @zh 展开图标
+   * @en Expand icon
+   * @slot expand-icon
+   * @binding {boolean} active
+   * @binding {boolean} disabled
+   * @binding {'left' | 'right'} position
+   * @version 2.33.0
+   */
+  /**
    * @zh 额外内容
    * @en Extra Content
    * @slot extra
    */
-  setup(props) {
+  setup(props, { slots }) {
     const instance = getCurrentInstance();
     const prefixCls = getPrefixCls('collapse-item');
     const collapseCtx = inject<Partial<CollapseContext>>(collapseKey, {});
@@ -121,6 +86,9 @@ export default defineComponent({
     const isActive = computed(() => collapseCtx.activeKeys?.includes(key));
     const mergedDestroyOnHide = computed(
       () => collapseCtx.destroyOnHide || props.destroyOnHide
+    );
+    const mergedShowExpandIcon = computed(
+      () => collapseCtx?.showExpandIcon ?? props.showExpandIcon
     );
     const mounted = ref(mergedDestroyOnHide.value ? isActive.value : true);
     const expandIconPosition = computed(
@@ -139,18 +107,18 @@ export default defineComponent({
       }
     });
 
-    const transitionEvents = {
-      onEnter: (el: HTMLDivElement) => {
-        el.style.height = `${el.scrollHeight}px`;
+    const transitionEvents: TransitionProps = {
+      onEnter: (el: Element) => {
+        (el as HTMLDivElement).style.height = `${el.scrollHeight}px`;
       },
-      onAfterEnter: (el: HTMLDivElement) => {
-        el.style.height = 'auto';
+      onAfterEnter: (el: Element) => {
+        (el as HTMLDivElement).style.height = 'auto';
       },
-      onBeforeLeave: (el: HTMLDivElement) => {
-        el.style.height = `${el.scrollHeight}px`;
+      onBeforeLeave: (el: Element) => {
+        (el as HTMLDivElement).style.height = `${el.scrollHeight}px`;
       },
-      onLeave: (el: HTMLDivElement) => {
-        el.style.height = '0';
+      onLeave: (el: Element) => {
+        (el as HTMLDivElement).style.height = '0';
       },
       onAfterLeave: () => {
         if (mergedDestroyOnHide.value) {
@@ -188,18 +156,58 @@ export default defineComponent({
       },
     ]);
 
-    return {
-      prefixCls,
-      cls,
-      headerCls,
-      iconCls,
-      contentCls,
-      isActive,
-      mounted,
-      expandIconPosition,
-      transitionEvents,
-      handleClick,
+    const defaultExpandIcon = () =>
+      expandIconPosition.value === 'right' ? (
+        <icon-caret-left class={`${prefixCls}-expand-icon`} />
+      ) : (
+        <icon-caret-right class={`${prefixCls}-expand-icon`} />
+      );
+
+    const expandIconRender = () =>
+      mergedShowExpandIcon.value && (
+        <icon-hover
+          prefix={prefixCls}
+          class={iconCls.value}
+          disabled={props.disabled}
+        >
+          {(slots['expand-icon'] ?? collapseCtx?.slots?.['expand-icon'])?.({
+            active: isActive.value,
+            disabled: props.disabled,
+            position: expandIconPosition.value,
+          }) ?? defaultExpandIcon()}
+        </icon-hover>
+      );
+
+    return () => {
+      return (
+        <div class={cls.value}>
+          <div
+            role="button"
+            aria-disabled={props.disabled}
+            aria-expanded={isActive.value}
+            tabindex="0"
+            class={headerCls.value}
+            onClick={handleClick}
+          >
+            {expandIconRender()}
+            <div class={`${prefixCls}-header-title`}>
+              {slots.header?.() ?? props.header}
+            </div>
+            {slots.extra && (
+              <div class={`${prefixCls}-header-extra`}>{slots.extra?.()}</div>
+            )}
+          </div>
+          <Transition name="collapse-slider" {...transitionEvents}>
+            <div v-show={isActive.value} role="region" class={contentCls.value}>
+              {mounted.value && (
+                <div ref="contentBoxRef" class={`${prefixCls}-content-box`}>
+                  {slots.default?.()}
+                </div>
+              )}
+            </div>
+          </Transition>
+        </div>
+      );
     };
   },
 });
-</script>

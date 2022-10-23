@@ -1,7 +1,7 @@
 import type { ComponentPublicInstance, Ref } from 'vue';
 import { nextTick, provide, reactive, ref, watch } from 'vue';
 import { FilterOption, SelectOption, SelectFieldNames } from '../interface';
-import { VirtualListRef } from '../../_components/virtual-list/interface';
+import { VirtualListRef } from '../../_components/virtual-list-v2/interface';
 import { getRelativeRect } from '../../_utils/dom';
 import { useOptions } from './use-options';
 import { KEYBOARD_KEY, getKeyDownHandler } from '../../_utils/keyboard';
@@ -99,7 +99,8 @@ export const useSelect = ({
       virtualListRef.value.scrollTo({ key });
     }
     const optionInfo = optionInfoMap.get(key);
-    const wrapperEle = dropdownRef?.value?.$refs?.wrapperRef as HTMLElement;
+    // @ts-ignore
+    const wrapperEle = dropdownRef?.value?.wrapperRef as HTMLElement;
     const optionEle = optionRefs?.value[key] ?? optionInfo?.ref;
 
     if (!wrapperEle || !optionEle) {

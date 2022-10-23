@@ -74,8 +74,8 @@
   overflow: hidden;
 
   &-nav {
-    flex-shrink: 0;
     position: relative;
+    flex-shrink: 0;
 
     &::before {
       position: absolute;
@@ -128,6 +128,7 @@
     color: @tabs-color-title-text;
     font-size: @tabs-size-default-font-size;
     line-height: 1.5715;
+    outline: none;
     cursor: pointer;
     transition: color @transition-duration-2 @transition-timing-function-linear;
 
@@ -210,8 +211,8 @@
         background-color: @tabs-line-color-title-bg;
         border-radius: @tabs-line-border-radius;
         opacity: 1;
-        transition: all @transition-duration-2
-          @transition-timing-function-linear;
+        transition: background-color,
+          opacity @transition-duration-2 @transition-timing-function-linear;
         content: '';
       }
     }
@@ -235,6 +236,12 @@
         opacity: 0;
       }
     }
+
+    &:focus-visible {
+      .@{tabs-prefix-cls}-tab-title::before {
+        border: 2px solid @color-primary-6;
+      }
+    }
   }
 
   &-nav-type-line&-nav-horizontal > &-tab:first-of-type {
@@ -253,6 +260,7 @@
   &-nav-type-card,
   &-nav-type-card-gutter {
     .@{tabs-prefix-cls}-tab {
+      position: relative;
       padding: .get-title-padding(
           (@tabs-size-default-header-height - @tabs-card-border-width * 2),
           @tabs-size-default-font-size_card,
@@ -272,6 +280,20 @@
       &-closable:not(.@{tabs-prefix-cls}-tab-active):hover
         .@{prefix}-icon-hover:hover::before {
         background-color: @tabs-card-color-close-icon-bg_hover;
+      }
+
+      &:focus-visible::before {
+        position: absolute;
+        top: -1px;
+        right: 0;
+        bottom: -1px;
+        left: -1px;
+        border: 2px solid @color-primary-6;
+        content: '';
+      }
+
+      &:last-child:focus-visible::before {
+        right: -1px;
       }
     }
   }
@@ -403,6 +425,13 @@
           background-color: @tabs-text-color-title-bg_disabled_active;
         }
       }
+
+      &:focus-visible {
+        .@{tabs-prefix-cls}-tab-title {
+          margin: -2px;
+          border: 2px solid @color-primary-6;
+        }
+      }
     }
   }
 
@@ -418,11 +447,10 @@
           @tabs-size-default-font-size_rounded,
           0
         )
-        [] 0;
-      padding-right: @tabs-rounded-padding-title-horizontal;
-      padding-left: @tabs-rounded-padding-title-horizontal;
+        [] - 2 @tabs-rounded-padding-title-horizontal - 2;
       font-size: @tabs-size-default-font-size_rounded;
       background-color: @tabs-rounded-color-title-bg;
+      border: 2px solid transparent;
       border-radius: @tabs-size-default-header-height_rounded;
 
       &:hover {
@@ -436,6 +464,10 @@
       &-active,
       &-active:hover {
         background-color: @tabs-rounded-color-title-bg_active;
+      }
+
+      &:focus-visible {
+        border-color: @color-primary-6;
       }
     }
   }
@@ -459,11 +491,14 @@
 
     .@{tabs-prefix-cls}-tab {
       position: relative;
-      padding: 0 @tabs-capsule-padding-title-horizontal;
+      padding: 0 @tabs-capsule-padding-title-horizontal - 2;
       font-size: @tabs-size-default-font-size_capsule;
-      line-height: @tabs-size-default-header-height_capsule -
-        @tabs-capsule-padding-header-vertical * 2;
+      line-height: (
+          @tabs-size-default-header-height_capsule -
+            @tabs-capsule-padding-header-vertical * 2
+        ) - 4;
       background-color: @tabs-capsule-color-title-bg;
+      border: 2px solid transparent;
 
       &:hover {
         background-color: @tabs-capsule-color-title-bg_hover;
@@ -482,6 +517,10 @@
           opacity: 0;
         }
       }
+
+      &:focus-visible {
+        border-color: @color-primary-6;
+      }
     }
 
     &.@{tabs-prefix-cls}-nav-horizontal
@@ -491,8 +530,9 @@
       &::before {
         position: absolute;
         top: 50%;
-        left: -(@tabs-capsule-margin-title-horizontal / 2) - (@tabs-capsule-size-separator-width /
-              2);
+        left: -(@tabs-capsule-margin-title-horizontal / 2) - (
+            @tabs-capsule-size-separator-width / 2
+          ) - 2;
         display: block;
         width: @tabs-capsule-size-separator-width;
         height: @tabs-capsule-size-separator-height;

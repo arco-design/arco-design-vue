@@ -1,4 +1,5 @@
 import type { InjectionKey, Slots } from 'vue';
+import { BaseType } from '../_utils/types';
 import {
   Filters,
   Sorter,
@@ -18,8 +19,8 @@ export interface TableContext {
   ) => void;
   slots: Slots;
   sorter: Sorter | undefined;
-  currentAllEnabledRowKeys: string[];
-  currentSelectedRowKeys: string[];
+  currentAllEnabledRowKeys: BaseType[];
+  currentSelectedRowKeys: BaseType[];
   checkStrictly: boolean;
   filters: Filters;
   filterIconAlignLeft: boolean;
@@ -27,7 +28,7 @@ export interface TableContext {
   addColumn: (id: number, column: TableColumnData) => void;
   removeColumn: (id: number) => void;
   onSelectAll: (checked: boolean) => void;
-  onSelect: (values: string[], record: TableDataWithRaw) => void;
+  onSelect: (checked: boolean, record: TableDataWithRaw) => void;
   onSelectAllLeafs: (record: TableDataWithRaw, checked: boolean) => void;
 
   onSorterChange: (

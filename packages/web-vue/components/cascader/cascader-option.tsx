@@ -130,7 +130,7 @@ export default defineComponent({
           <Checkbox
             modelValue={checkedStatus.value.checked}
             indeterminate={checkedStatus.value.indeterminate}
-            disabled={props.option.disabled}
+            disabled={props.option.disabled || props.option.selectionDisabled}
             uninjectGroupContext
             onChange={(value: any, ev: Event) => {
               ev.stopPropagation();

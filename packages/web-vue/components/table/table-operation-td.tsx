@@ -13,6 +13,7 @@ import IconPlus from '../icon/icon-plus';
 import IconMinus from '../icon/icon-minus';
 import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
 import { TableContext, tableInjectionKey } from './context';
+import { BaseType } from '../_utils/types';
 
 export default defineComponent({
   name: 'OperationTd',
@@ -40,7 +41,7 @@ export default defineComponent({
       default: false,
     },
     selectedRowKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<BaseType[]>,
     },
     renderExpandBtn: {
       type: Function as PropType<
@@ -117,12 +118,11 @@ export default defineComponent({
 
         return (
           <Checkbox
-            value={value}
-            modelValue={props.selectedRowKeys ?? []}
+            modelValue={props.selectedRowKeys?.includes(value) ?? false}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(values) =>
-              tableCtx.onSelect?.(values as string[], props.record)
+            onChange={(checked) =>
+              tableCtx.onSelect?.(checked as boolean, props.record)
             }
             // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}
@@ -133,12 +133,11 @@ export default defineComponent({
         const value = props.record.key;
         return (
           <Radio
-            value={value}
-            modelValue={props.selectedRowKeys?.[0] ?? ''}
+            modelValue={props.selectedRowKeys?.includes(value) ?? false}
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
-            onChange={(value) =>
-              tableCtx.onSelect?.([value] as string[], props.record)
+            onChange={(checked) =>
+              tableCtx.onSelect?.(checked as boolean, props.record)
             }
             // @ts-ignore
             onClick={(ev: Event) => ev.stopPropagation()}

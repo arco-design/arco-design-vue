@@ -2,6 +2,34 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 功能优化
+
+- actionsLayout为空时不显示操作栏 ([#1668](https://github.com/arco-design/arco-design-vue/pull/1668))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 新增功能
+
+- hideFooter 增加新参数，支持错误状态下展示 footer ([#1595](https://github.com/arco-design/arco-design-vue/pull/1595))
+- 增加 fit 属性 ([#1534](https://github.com/arco-design/arco-design-vue/pull/1534))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+### 💅 样式更新
+
+- 修复预览模式下关闭按钮图标位置错误的问题 ([#1577](https://github.com/arco-design/arco-design-vue/pull/1577))
+
+
 ## 2.23.0
 
 `2022-04-08`

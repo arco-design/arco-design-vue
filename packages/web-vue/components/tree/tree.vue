@@ -49,11 +49,11 @@ import { isArray, isFunction, isUndefined } from '../_utils/is';
 import useMergeState from '../_hooks/use-merge-state';
 import useCheckedState from './hooks/use-checked-state';
 import useTreeData from './hooks/use-tree-data';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import type {
   VirtualListProps,
   ScrollIntoViewOptions,
-} from '../_components/virtual-list/interface';
+} from '../_components/virtual-list-v2/interface';
 
 export default defineComponent({
   name: 'Tree',
@@ -238,8 +238,8 @@ export default defineComponent({
       type: Function as PropType<FilterTreeNode>,
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#virtuallistprops)
-     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#virtuallistprops)
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#VirtualListProps)
+     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling, [VirtualListProps](#VirtualListProps)
      */
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
@@ -535,7 +535,7 @@ export default defineComponent({
           .filter((node) => node.children && node.children.length)
           .map((node) => node.key);
       }
-      if (defaultSelectedKeys.value || defaultExpandChecked.value) {
+      if (defaultExpandSelected.value || defaultExpandChecked.value) {
         const expandedKeysSet = new Set<TreeNodeKey>([]);
         const addToExpandKeysSet = (keys: TreeNodeKey[]) => {
           keys.forEach((key) => {
@@ -913,6 +913,7 @@ export default defineComponent({
       loadingKeys,
       currentExpandKeys,
       onLoadMore,
+      filterTreeNode,
       onCheck,
       onSelect,
       onExpand,

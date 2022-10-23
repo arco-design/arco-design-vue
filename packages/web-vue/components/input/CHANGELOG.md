@@ -2,6 +2,34 @@
 changelog: true
 ```
 
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 Enhancement
+
+- It is no longer possible to input content from the middle when optimizing the max limit ([#1672](https://github.com/arco-design/arco-design-vue/pull/1672))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 💎 Enhancement
+
+- Modify password input box icon ([#1436](https://github.com/arco-design/arco-design-vue/pull/1436))
+
+
+## 2.30.0
+
+`2022-06-10`
+
+### 🐛 BugFix
+
+- Fix the problem that form validation will not be triggered after input method ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+- Fixed height issue when using front and back labels in Drawer ([#1263](https://github.com/arco-design/arco-design-vue/pull/1263))
+
+
 ## 2.27.0
 
 `2022-05-13`

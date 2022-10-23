@@ -14,9 +14,9 @@ import {
   onMounted,
   onBeforeUnmount,
   toRefs,
+  onDeactivated,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import type { EmitType } from '../_utils/types';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
 import {
   getArrowStyle,
@@ -429,7 +429,10 @@ export default defineComponent({
             height: 0,
           }
         : getElementScrollRect(firstElement.value, containerRect);
-      const popupRect = getElementScrollRect(popupRef.value, containerRect);
+      const getPopupRect = () =>
+        // @ts-ignore
+        getElementScrollRect(popupRef.value, containerRect);
+      const popupRect = getPopupRect();
       const { style, position } = getPopupStyle(
         props.position,
         containerRect,
@@ -458,8 +461,15 @@ export default defineComponent({
       }
       popupStyle.value = style;
       if (props.showArrow) {
-        arrowStyle.value = getArrowStyle(position, triggerRect, popupRect, {
-          customStyle: props.arrowStyle,
+        nextTick(() => {
+          arrowStyle.value = getArrowStyle(
+            position,
+            triggerRect,
+            getPopupRect(),
+            {
+              customStyle: props.arrowStyle,
+            }
+          );
         });
       }
     };
@@ -554,7 +564,6 @@ export default defineComponent({
 
     const handleContextmenu = (e: MouseEvent) => {
       (attrs as any).onContextmenu?.(e);
-      e.preventDefault();
       if (
         props.disabled ||
         !triggerMethods.value.includes('contextMenu') ||
@@ -564,6 +573,7 @@ export default defineComponent({
       }
       updateMousePosition(e);
       changeVisible(!computedVisible.value);
+      e.preventDefault();
     };
 
     const addChildRef = (ref: any) => {
@@ -717,6 +727,10 @@ export default defineComponent({
       }
     });
 
+    onDeactivated(() => {
+      changeVisible(false);
+    });
+
     onBeforeUnmount(() => {
       triggerCtx?.removeChildRef(popupRef);
       destroyResizeObserver();
@@ -732,14 +746,21 @@ export default defineComponent({
     });
 
     const mounted = ref(computedVisible.value);
+    const isAnimation = ref(false);
+
+    const onAnimationStart = () => {
+      isAnimation.value = true;
+    };
 
     const handleShow = () => {
+      isAnimation.value = false;
       if (computedVisible.value) {
         emit('show');
       }
     };
 
     const handleHide = () => {
+      isAnimation.value = false;
       if (!computedVisible.value) {
         mounted.value = false;
         emit('hide');
@@ -784,7 +805,11 @@ export default defineComponent({
                         `${prefixCls}-popup`,
                         `${prefixCls}-position-${popupPosition.value}`,
                       ]}
-                      style={{ ...popupStyle.value, zIndex: zIndex.value }}
+                      style={{
+                        ...popupStyle.value,
+                        zIndex: zIndex.value,
+                        pointerEvents: isAnimation.value ? 'none' : 'auto',
+                      }}
                       trigger-placement={popupPosition.value}
                       onMouseenter={handleMouseEnterWithContext}
                       onMouseleave={handleMouseLeaveWithContext}
@@ -795,7 +820,9 @@ export default defineComponent({
                         name={props.animationName}
                         duration={props.duration}
                         appear
+                        onBeforeEnter={onAnimationStart}
                         onAfterEnter={handleShow}
+                        onBeforeLeave={onAnimationStart}
                         onAfterLeave={handleHide}
                       >
                         <div

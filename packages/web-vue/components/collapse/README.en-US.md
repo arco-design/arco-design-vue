@@ -12,7 +12,15 @@ description: The content area that can be collapsed/expanded.
 
 @import ./__demo__/accordion.md
 
+@import ./__demo__/nested.md
+
 @import ./__demo__/border-less.md
+
+@import ./__demo__/extra.md
+
+@import ./__demo__/expand-icon.md
+
+@import ./__demo__/custom.md
 
 @import ./__demo__/icon-position.md
 
@@ -28,6 +36,7 @@ description: The content area that can be collapsed/expanded.
 |active-key **(v-model)**|The `key` of the currently expanded panel|`(string \| number)[]`|`-`||
 |default-active-key|The `key` of the panel expanded by default (uncontrolled mode)|`(string \| number)[]`|`[]`||
 |accordion|Whether to enable accordion mode|`boolean`|`false`||
+|show-expand-icon|Whether to show the expand icon|`boolean`|`-`|2.33.0|
 |expand-icon-position|The location where the expand icon is displayed|`'left' \| 'right'`|`'left'`||
 |bordered|Whether to show the border|`boolean`|`true`||
 |destroy-on-hide|Whether to destroy content when hidden|`boolean`|`false`|2.27.0|
@@ -44,16 +53,17 @@ description: The content area that can be collapsed/expanded.
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|key|The id of the panel, corresponding to the value in `activeKey`|`string`|`-`||
+|key|The id of the panel, corresponding to the value in `activeKey`|`string\|number`|`-`||
 |header|The title of the panel|`string`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
 |show-expand-icon|Whether to show the expand icon|`boolean`|`true`||
 |destroy-on-hide|Whether to destroy content when hidden|`boolean`|`false`|2.27.0|
 ### `<collapse-item>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|header|The title of the panel|-|
-|extra|Extra Content|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|extra|Extra Content|-||
+|expand-icon|Expand icon|active: `boolean`<br>disabled: `boolean`<br>position: `'left' \| 'right'`|2.33.0|
+|header|The title of the panel|-||
 
 

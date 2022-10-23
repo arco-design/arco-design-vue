@@ -254,15 +254,15 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 上传图片前触发
-     * @en Trigger before uploading a picture
+     * @zh 上传文件前触发
+     * @en Trigger before uploading a file
      */
     onBeforeUpload: {
       type: Function as PropType<(file: File) => Promise<boolean | File>>,
     },
     /**
-     * @zh 移除图片前触发
-     * @en Triggered before removing the picture
+     * @zh 移除文件前触发
+     * @en Triggered before removing the file
      */
     onBeforeRemove: {
       type: Function as PropType<(fileItem: FileItem) => Promise<boolean>>,
@@ -278,22 +278,22 @@ export default defineComponent({
   emits: {
     'update:fileList': (fileList: FileItem[]) => true,
     /**
-     * @zh 上传的图片超出限制后触发
-     * @en Triggered when the uploaded image exceeds the limit
+     * @zh 上传的文件超出限制后触发
+     * @en Triggered when the uploaded file exceeds the limit
      * @param {FileItem[]} fileList
      * @param {File[]} files
      */
     'exceedLimit': (fileList: FileItem[], files: File[]) => true,
     /**
-     * @zh 上传的图片状态发生改变时触发
-     * @en Triggered when the status of the uploaded image changes
+     * @zh 上传的文件状态发生改变时触发
+     * @en Triggered when the status of the uploaded file changes
      * @param {FileItem[]} fileList
      * @param {fileItem} fileItem
      */
     'change': (fileList: FileItem[], fileItem: FileItem) => true,
     /**
-     * @zh 上传中的图片进度改变时触发
-     * @en Triggered when the uploading image progress changes
+     * @zh 上传中的文件进度改变时触发
+     * @en Triggered when the uploading file progress changes
      * @param {fileItem} fileItem
      * @param {ProgressEvent} ev
      */

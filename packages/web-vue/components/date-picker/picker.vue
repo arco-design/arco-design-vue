@@ -8,7 +8,7 @@
     :popup-offset="4"
     v-bind="triggerProps"
     :position="position"
-    :disabled="mergedDisabled"
+    :disabled="mergedDisabled || readonly"
     :prevent-focus="true"
     :popup-visible="panelVisible"
     :unmount-on-close="unmountOnClose"
@@ -25,7 +25,7 @@
         :error="error"
         :disabled="mergedDisabled"
         :readonly="!inputEditable"
-        :allow-clear="allowClear"
+        :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-value="inputValue"
         :value="needConfirm ? panelValue : selectedValue"
@@ -551,7 +551,7 @@ export default defineComponent({
     };
 
     // 生成当前面板内容
-    const [headerValue, setHeaderValue, headerOperations, resetHeaderValue] =
+    const { headerValue, setHeaderValue, headerOperations, resetHeaderValue } =
       useHeaderValue(
         reactive({
           mode,
@@ -747,6 +747,10 @@ export default defineComponent({
       headerMode.value = type;
     }
 
+    function onMonthHeaderClick() {
+      headerMode.value = 'year';
+    }
+
     function onPanelHeaderSelect(date: Dayjs) {
       let newValue = headerValue.value;
       newValue = newValue.set('year', date.year());
@@ -754,7 +758,12 @@ export default defineComponent({
         newValue = newValue.set('month', date.month());
       }
       setHeaderValue(newValue);
-      headerMode.value = undefined;
+      if (mode.value === 'quarter' || mode.value === 'month') {
+        // 季度选择器特殊处理，月份选完后关闭headerMode
+        headerMode.value = undefined;
+        return;
+      }
+      headerMode.value = headerMode.value === 'year' ? 'month' : undefined; // 年选择完后选择月
     }
 
     const computedTimePickerProps = computed(() => ({
@@ -807,6 +816,7 @@ export default defineComponent({
       onTodayBtnClick: onPanelSelect,
       onHeaderLabelClick: onPanelHeaderLabelClick,
       onHeaderSelect: onPanelHeaderSelect,
+      onMonthHeaderClick,
     }));
 
     return {

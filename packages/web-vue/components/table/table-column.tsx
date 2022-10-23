@@ -7,6 +7,7 @@ import {
   PropType,
   provide,
   reactive,
+  Ref,
   ref,
   toRefs,
   watch,
@@ -24,6 +25,7 @@ import {
 } from './context';
 import { useChildrenComponents } from '../_hooks/use-children-components';
 import { usePureProp } from '../_hooks/use-pure-prop';
+import { ClassName } from '../_utils/types';
 
 export default defineComponent({
   name: 'TableColumn',
@@ -82,6 +84,42 @@ export default defineComponent({
       default: undefined,
     },
     /**
+     * @zh 自定义单元格类名
+     * @en Custom cell class
+     * @version 2.36.0
+     */
+    cellClass: {
+      type: [String, Array, Object] as PropType<ClassName>,
+    },
+    /**
+     * @zh 自定义表头单元格类名
+     * @en Custom cell class
+     * @version 2.36.0
+     */
+    headerCellClass: {
+      type: [String, Array, Object] as PropType<ClassName>,
+    },
+    /**
+     * @zh 自定义内容单元格类名
+     * @en Custom cell class
+     * @version 2.36.0
+     */
+    bodyCellClass: {
+      type: [String, Array, Object, Function] as PropType<
+        ClassName | ((record: TableData) => ClassName)
+      >,
+    },
+    /**
+     * @zh 自定义总结栏单元格类名
+     * @en Customize summary column cell class
+     * @version 2.36.0
+     */
+    summaryCellClass: {
+      type: [String, Array, Object, Function] as PropType<
+        ClassName | ((record: TableData) => ClassName)
+      >,
+    },
+    /**
      * @zh 自定义单元格样式
      * @en Custom cell style
      * @version 2.11.0
@@ -103,6 +141,16 @@ export default defineComponent({
      * @version 2.29.0
      */
     bodyCellStyle: {
+      type: [Object, Function] as PropType<
+        CSSProperties | ((record: TableData) => CSSProperties)
+      >,
+    },
+    /**
+     * @zh 自定义总结栏单元格样式
+     * @en Customize summary column cell style
+     * @version 2.30.0
+     */
+    summaryCellStyle: {
       type: [Object, Function] as PropType<
         CSSProperties | ((record: TableData) => CSSProperties)
       >,
@@ -159,9 +207,22 @@ export default defineComponent({
       toRefs(props);
     const sortable = usePureProp(props, 'sortable');
     const filterable = usePureProp(props, 'filterable');
+    const cellClass = usePureProp(props, 'cellClass') as Ref<
+      typeof props.cellClass
+    >;
+    const headerCellClass = usePureProp(props, 'headerCellClass') as Ref<
+      typeof props.headerCellClass
+    >;
+    const bodyCellClass = usePureProp(props, 'bodyCellClass') as Ref<
+      typeof props.bodyCellClass
+    >;
+    const summaryCellClass = usePureProp(props, 'summaryCellClass') as Ref<
+      typeof props.summaryCellClass
+    >;
     const cellStyle = usePureProp(props, 'cellStyle');
     const headerCellStyle = usePureProp(props, 'headerCellStyle');
     const bodyCellStyle = usePureProp(props, 'bodyCellStyle');
+    const summaryCellStyle = usePureProp(props, 'summaryCellStyle');
     const tooltip = usePureProp(props, 'tooltip');
 
     const instance = getCurrentInstance();
@@ -210,9 +271,14 @@ export default defineComponent({
       ellipsis,
       sortable,
       filterable,
+      cellClass,
+      headerCellClass,
+      bodyCellClass,
+      summaryCellClass,
       cellStyle,
       headerCellStyle,
       bodyCellStyle,
+      summaryCellStyle,
       index,
       tooltip,
       children: childrenColumns,

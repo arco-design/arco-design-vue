@@ -45,7 +45,9 @@ description: Used to display titles, paragraphs, and text content.
 |copyable|Whether turn on copy functionality|`boolean`|`false`||
 |copy-text|Copied text|`string`|`-`||
 |copy-delay|After the copy is successful, the delay time for the copy button to return to the clickable state, in milliseconds|`number`|`3000`|2.16.0|
-|ellipsis|Automatic overflow omission, refer to [EllipsisConfig](#ellipsisconfig) for more information.|`boolean \| EllipsisConfig`|`false`||
+|ellipsis|Automatic overflow omission, refer to [EllipsisConfig](#EllipsisConfig) for more information.|`boolean \| EllipsisConfig`|`false`||
+|edit-tooltip-props|Edit button question prompt configuration|`object`|`-`|2.32.0|
+|copy-tooltip-props|Copy button question prompt configuration|`object`|`-`|2.32.0|
 ### `Common` Events
 
 |Event Name|Description|Parameters|
@@ -92,12 +94,13 @@ description: Used to display titles, paragraphs, and text content.
 
 ### EllipsisConfig
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|rows|The number of omitted lines|`number`|`1`|
-|expandable|Whether expandable|`boolean`|`false`|
-|ellipsisStr|Ellipsis string|`string`|`'...'`|
-|suffix|Suffix|`string`|`-`|
-|showTooltip|Pop-up box when configuration is omitted|`boolean    \| { type: 'tooltip' \| 'popover'; props: Record<string, any> }`|`false`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|rows|The number of omitted lines|`number`|`1`||
+|expandable|Whether expandable|`boolean`|`false`||
+|ellipsisStr|Ellipsis string|`string`|`'...'`||
+|suffix|Suffix|`string`|`-`||
+|showTooltip|Pop-up box when configuration is omitted|`boolean    \| { type: 'tooltip' \| 'popover'; props: Record<string, any> }`|`false`||
+|css|Whether to use CSS ellipsis (expansion, custom ellipsis and suffix are not supported in this mode)|`boolean`|`false`|2.37.0|
 
 

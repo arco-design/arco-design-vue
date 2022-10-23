@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 Style
+
+- Fix the problem that the content of the label under the `card` type is not centered ([#1704](https://github.com/arco-design/arco-design-vue/pull/1704))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- Add trigger property to support changing switching mode ([#1456](https://github.com/arco-design/arco-design-vue/pull/1456))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 💅 Style
+
+- Fix the problem of wrong style when focusing ([#1398](https://github.com/arco-design/arco-design-vue/pull/1398))
+
+
+## 2.30.0
+
+`2022-06-10`
+
+### 💎 Enhancement
+
+- Add focus styles and keyboard events ([#1264](https://github.com/arco-design/arco-design-vue/pull/1264))
+
+
 ## 2.27.0
 
 `2022-05-13`

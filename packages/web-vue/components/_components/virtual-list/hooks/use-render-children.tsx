@@ -1,5 +1,5 @@
 import { toRefs, VNode, cloneVNode, watch } from 'vue';
-import { ItemSlot, InternalDataItem, Key } from '../interface';
+import { ItemSlot, InternalDataItem, VirtualItemKey } from '../interface';
 
 const findElement = (node: any) => {
   let res = (node?.$el ?? node) as HTMLElement | undefined;
@@ -15,46 +15,47 @@ export function useRenderChildren(
     visibleData: InternalDataItem[];
     itemRender: ItemSlot;
   },
-  events: { onItemResize?: (height: HTMLElement, key: Key) => void } = {}
+  events: {
+    onItemResize?: (height: HTMLElement, key: VirtualItemKey) => void;
+  } = {}
 ) {
   const { internalData, visibleData, itemRender } = toRefs(props);
-  let itemRenderCache: { [key: Key]: VNode } = {};
+  const itemRenderCache: Map<VirtualItemKey, VNode> = new Map();
 
   const renderChildren = () => {
     return visibleData.value.map(({ item, index, key }) => {
-      if (!Object.prototype.hasOwnProperty.call(itemRenderCache, key)) {
+      if (!itemRenderCache.has(key)) {
         const [node] = itemRender.value({ item, index });
         let dom: HTMLElement | undefined;
-        let hasMounted = false;
-        let hasUpdated = false;
         const resizeHandler = () => {
           if (dom) {
             events.onItemResize?.(dom, key);
           }
         };
-        itemRenderCache[key] = cloneVNode(node, {
+        itemRenderCache.set(
           key,
-          ref: (el) => {
-            if (!hasMounted) {
-              dom = findElement(el);
+          cloneVNode(node, {
+            key,
+            ref: (el) => {
+              if (!dom) {
+                dom = findElement(el);
+              }
+            },
+            onVnodeMounted() {
               resizeHandler();
-              hasMounted = true;
-            }
-          },
-          onVnodeUpdated() {
-            if (!hasUpdated) {
+            },
+            onVnodeUpdated() {
               resizeHandler();
-              hasUpdated = true;
-            }
-          },
-        });
+            },
+          })
+        );
       }
-      return itemRenderCache[key];
+      return itemRenderCache.get(key);
     });
   };
 
   watch([internalData, itemRender], () => {
-    itemRenderCache = {};
+    itemRenderCache.clear();
   });
 
   return renderChildren;

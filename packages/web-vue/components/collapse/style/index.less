@@ -71,6 +71,10 @@
         padding-right: @collapse-title-padding-horizontal +
           @collapse-expand-icon-size-bg + @collapse-expand-icon-spacing-text;
         padding-left: @collapse-title-padding-horizontal;
+
+        + .@{collapse-prefix-cls}-item-content {
+          padding-left: @collapse-title-padding-horizontal;
+        }
       }
 
       &-disabled {

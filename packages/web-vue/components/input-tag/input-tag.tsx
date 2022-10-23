@@ -24,7 +24,7 @@ import ResizeObserver from '../_components/resize-observer';
 import FeedbackIcon from '../_components/feedback-icon.vue';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
-import { isNull, isUndefined } from '../_utils/is';
+import { isNull, isObject, isUndefined } from '../_utils/is';
 
 const DEFAULT_FIELD_NAMES = {
   value: 'value',
@@ -122,11 +122,13 @@ export default defineComponent({
       default: 0,
     },
     /**
-     * @zh 创建标签后是否保留输入框的内容
-     * @en Whether to keep the content of the input box after creating the label
+     * @zh 是否保留输入框的内容
+     * @en Whether to keep the content of the input box
      */
     retainInputValue: {
-      type: Boolean,
+      type: [Boolean, Object] as PropType<
+        boolean | { create?: boolean; blur?: boolean }
+      >,
       default: false,
     },
     /**
@@ -209,6 +211,22 @@ export default defineComponent({
      */
     'blur': (ev: FocusEvent) => true,
   },
+  /**
+   * @zh 后缀元素
+   * @en Suffix
+   * @slot suffix
+   */
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   */
+  /**
+   * @zh 输入框标签的显示内容
+   * @en Display content of tag
+   * @slot tag
+   * @binding {TagData} data
+   */
   setup(props, { emit, slots, attrs }) {
     const { size, disabled, error, uninjectFormItemContext, modelValue } =
       toRefs(props);
@@ -239,25 +257,39 @@ export default defineComponent({
     const isComposition = ref(false);
     const compositionValue = ref('');
 
+    const retainInputValue = computed(() => {
+      if (isObject(props.retainInputValue)) {
+        return {
+          create: false,
+          blur: false,
+          ...props.retainInputValue,
+        };
+      }
+      return {
+        create: props.retainInputValue,
+        blur: props.retainInputValue,
+      };
+    });
+
     const inputStyle = reactive({
       width: '12px',
     });
 
     const mergedFocused = computed(() => props.focused || _focused.value);
 
-    const updateInputValue = (value: string) => {
+    const updateInputValue = (value: string, ev: Event) => {
       _inputValue.value = value;
       emit('update:inputValue', value);
+      emit('inputValueChange', value, ev);
     };
 
-    const handleComposition = (e: CompositionEvent) => {
-      const { value } = e.target as HTMLInputElement;
+    const handleComposition = (ev: CompositionEvent) => {
+      const { value } = ev.target as HTMLInputElement;
 
-      if (e.type === 'compositionend') {
+      if (ev.type === 'compositionend') {
         isComposition.value = false;
         compositionValue.value = '';
-        emit('inputValueChange', value, e);
-        updateInputValue(value);
+        updateInputValue(value, ev);
 
         nextTick(() => {
           if (
@@ -269,7 +301,7 @@ export default defineComponent({
         });
       } else {
         isComposition.value = true;
-        compositionValue.value = computedInputValue.value + (e.data ?? '');
+        compositionValue.value = computedInputValue.value + (ev.data ?? '');
       }
     };
 
@@ -291,12 +323,11 @@ export default defineComponent({
       }
     };
 
-    const handleInput = (e: Event) => {
-      const { value } = e.target as HTMLInputElement;
+    const handleInput = (ev: Event) => {
+      const { value } = ev.target as HTMLInputElement;
 
       if (!isComposition.value) {
-        emit('inputValueChange', value, e);
-        updateInputValue(value);
+        updateInputValue(value, ev);
 
         nextTick(() => {
           if (
@@ -309,16 +340,15 @@ export default defineComponent({
       }
     };
 
-    const tags = computed(() => {
-      const valueData = getValueData(
-        computedValue.value,
-        mergedFieldNames.value
-      );
+    const valueData = computed(() =>
+      getValueData(computedValue.value, mergedFieldNames.value)
+    );
 
+    const tags = computed(() => {
       if (props.maxTagCount > 0) {
-        const invisibleTags = valueData.length - props.maxTagCount;
+        const invisibleTags = valueData.value.length - props.maxTagCount;
         if (invisibleTags > 0) {
-          const result = valueData.slice(0, props.maxTagCount);
+          const result = valueData.value.slice(0, props.maxTagCount);
           const raw = {
             value: '__arco__more',
             label: `+${invisibleTags}...`,
@@ -331,7 +361,7 @@ export default defineComponent({
           return result;
         }
       }
-      return valueData;
+      return valueData.value;
     });
 
     const updateValue = (value: (string | number | TagData)[], ev: Event) => {
@@ -364,20 +394,18 @@ export default defineComponent({
     const handlePressEnter = (e: KeyboardEvent) => {
       if (computedInputValue.value) {
         e.preventDefault();
-        emit('pressEnter', computedInputValue.value, e);
         if (
           props.uniqueValue &&
           computedValue.value?.includes(computedInputValue.value)
         ) {
+          emit('pressEnter', computedInputValue.value, e);
           return;
         }
         const newValue = computedValue.value.concat(computedInputValue.value);
         updateValue(newValue, e);
-
-        if (!props.retainInputValue) {
-          _inputValue.value = '';
-          emit('update:inputValue', '');
-          emit('inputValueChange', '', e);
+        emit('pressEnter', computedInputValue.value, e);
+        if (!retainInputValue.value.create) {
+          updateInputValue('', e);
         }
       }
     };
@@ -390,6 +418,9 @@ export default defineComponent({
 
     const handleBlur = (ev: FocusEvent) => {
       _focused.value = false;
+      if (!retainInputValue.value.blur && computedInputValue.value) {
+        updateInputValue('', ev);
+      }
       emit('blur', ev);
       eventHandlers.value?.onBlur?.(ev);
     };
@@ -409,8 +440,8 @@ export default defineComponent({
         !computedInputValue.value &&
         keyCode === Backspace.key
       ) {
-        const lastIndex = tags.value.length - 1;
-        handleRemove(tags.value[lastIndex].value, lastIndex, e);
+        const lastIndex = valueData.value.length - 1;
+        handleRemove(valueData.value[lastIndex].value, lastIndex, e);
       }
     };
 

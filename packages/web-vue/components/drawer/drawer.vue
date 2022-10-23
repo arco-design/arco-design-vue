@@ -25,28 +25,27 @@
           @after-leave="handleClose"
         >
           <div v-show="computedVisible" :class="prefixCls" :style="style">
-            <div
-              v-if="$slots.title || title || closable"
-              :class="`${prefixCls}-header`"
-            >
-              <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
-                <slot name="title">{{ title }}</slot>
-              </div>
-              <div
-                v-if="closable"
-                tabindex="-1"
-                role="button"
-                aria-label="Close"
-                :class="`${prefixCls}-close-btn`"
-                @click="handleCancel"
-              >
-                <icon-hover>
-                  <icon-close />
-                </icon-hover>
-              </div>
+            <div v-if="header" :class="`${prefixCls}-header`">
+              <slot name="header">
+                <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
+                  <slot name="title">{{ title }}</slot>
+                </div>
+                <div
+                  v-if="closable"
+                  tabindex="-1"
+                  role="button"
+                  aria-label="Close"
+                  :class="`${prefixCls}-close-btn`"
+                  @click="handleCancel"
+                >
+                  <icon-hover>
+                    <icon-close />
+                  </icon-hover>
+                </div>
+              </slot>
             </div>
             <div :class="`${prefixCls}-body`">
-              <slot />
+              <slot v-if="mounted" />
             </div>
             <div v-if="footer" :class="`${prefixCls}-footer`">
               <slot name="footer">
@@ -94,7 +93,7 @@ import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
 import { off, on } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
-import { isBoolean, isFunction, isNumber } from '../_utils/is';
+import { isBoolean, isFunction, isNumber, isPromise } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
 
@@ -243,8 +242,10 @@ export default defineComponent({
      * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.
      */
     onBeforeOk: {
-      type: [Function, Array] as PropType<
-        (done: (closed: boolean) => void) => void | boolean
+      type: Function as PropType<
+        (
+          done: (closed: boolean) => void
+        ) => void | boolean | Promise<void | boolean>
       >,
     },
     /**
@@ -252,10 +253,28 @@ export default defineComponent({
      * @en The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.
      */
     onBeforeCancel: {
-      type: [Function, Array] as PropType<() => boolean>,
+      type: Function as PropType<() => boolean>,
+    },
+    /**
+     * @zh 是否支持 ESC 键关闭对话框
+     * @en Whether to support the ESC key to close the dialog
+     * @version 2.15.0
+     */
+    escToClose: {
+      type: Boolean,
+      default: true,
     },
 
     renderToBody: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否展示头部内容
+     * @en Whether to display high-quality content
+     * @version 2.33.0
+     */
+    header: {
       type: Boolean,
       default: true,
     },
@@ -265,15 +284,6 @@ export default defineComponent({
      * @version 2.11.0
      */
     footer: {
-      type: Boolean,
-      default: true,
-    },
-    /**
-     * @zh 是否支持 ESC 键关闭对话框
-     * @en Whether to support the ESC key to close the dialog
-     * @version 2.15.0
-     */
-    escToClose: {
       type: Boolean,
       default: true,
     },
@@ -319,6 +329,12 @@ export default defineComponent({
    * @zh 页脚
    * @en Footer
    * @slot footer
+   */
+  /**
+   * @zh 页眉
+   * @en Header
+   * @slot header
+   * @version 2.33.0
    */
   setup(props, { emit }) {
     const { popupContainer } = toRefs(props);
@@ -378,31 +394,41 @@ export default defineComponent({
       emit('update:visible', false);
     };
 
-    const handleOk = () => {
+    const handleOk = async () => {
       const currentPromiseNumber = promiseNumber;
-      const promise = new Promise((resolve: (closed?: boolean) => void) => {
-        if (isFunction(props.onBeforeOk)) {
-          const result = props.onBeforeOk(resolve);
-
-          if (isBoolean(result)) {
-            resolve(result);
+      const closed = await new Promise<boolean>(
+        // eslint-disable-next-line no-async-promise-executor
+        async (resolve) => {
+          if (isFunction(props.onBeforeOk)) {
+            let result = props.onBeforeOk((closed = true) => resolve(closed));
+            if (isPromise(result) || !isBoolean(result)) {
+              _okLoading.value = true;
+            }
+            if (isPromise(result)) {
+              try {
+                // if onBeforeOk is Promise<void> ,set Defaults true
+                result = (await result) ?? true;
+              } catch (error) {
+                result = false;
+              }
+            }
+            if (isBoolean(result)) {
+              resolve(result);
+            }
           } else {
-            _okLoading.value = true;
+            resolve(true);
           }
-        } else {
-          resolve();
         }
-      });
+      );
 
-      promise.then((closed = true) => {
-        if (currentPromiseNumber === promiseNumber) {
+      if (currentPromiseNumber === promiseNumber) {
+        if (closed) {
+          emit('ok');
+          close();
+        } else if (_okLoading.value) {
           _okLoading.value = false;
-          if (closed) {
-            emit('ok');
-            close();
-          }
         }
-      });
+      }
     };
 
     const handleCancel = () => {

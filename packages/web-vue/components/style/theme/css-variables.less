@@ -1,91 +1,6 @@
 @import './global.less';
 @import '../color/css-variables.less';
 
-@color-border: rgb(var(~'@{arco-cssvars-prefix}-gray-3'));
-@color-bg-popup: var(~'@{arco-cssvars-prefix}-color-bg-5');
-@color-bg-1: #fff;
-@color-bg-2: #fff;
-@color-bg-3: #fff;
-@color-bg-4: #fff;
-@color-bg-5: #fff;
-@color-bg-white: #fff;
-@color-text-1: var(~'@{arco-cssvars-prefix}-color-neutral-10'); // Title, body
-@color-text-2: var(~'@{arco-cssvars-prefix}-color-neutral-8'); // Statement
-@color-text-3: var(~'@{arco-cssvars-prefix}-color-neutral-6'); // Secondary information
-@color-text-4: var(~'@{arco-cssvars-prefix}-color-neutral-4'); // Secondary information
-@color-fill-1: var(~'@{arco-cssvars-prefix}-color-neutral-1');
-@color-fill-2: var(~'@{arco-cssvars-prefix}-color-neutral-2');
-@color-fill-3: var(~'@{arco-cssvars-prefix}-color-neutral-3');
-@color-fill-4: var(~'@{arco-cssvars-prefix}-color-neutral-4');
-@color-border-1: var(~'@{arco-cssvars-prefix}-color-neutral-2');
-@color-border-2: var(~'@{arco-cssvars-prefix}-color-neutral-3');
-@color-border-3: var(~'@{arco-cssvars-prefix}-color-neutral-4');
-@color-border-4: var(~'@{arco-cssvars-prefix}-color-neutral-6');
-@color-primary-light-1: rgb(var(~'@{arco-cssvars-prefix}-primary-1'));
-@color-primary-light-2: rgb(var(~'@{arco-cssvars-prefix}-primary-2'));
-@color-primary-light-3: rgb(var(~'@{arco-cssvars-prefix}-primary-3'));
-@color-primary-light-4: rgb(var(~'@{arco-cssvars-prefix}-primary-4'));
-@color-secondary: var(~'@{arco-cssvars-prefix}-color-neutral-2');
-@color-secondary-hover: var(~'@{arco-cssvars-prefix}-color-neutral-3');
-@color-secondary-active: var(~'@{arco-cssvars-prefix}-color-neutral-4');
-@color-secondary-disabled: var(~'@{arco-cssvars-prefix}-color-neutral-1');
-@color-danger-light-1: rgb(var(~'@{arco-cssvars-prefix}-danger-1'));
-@color-danger-light-2: rgb(var(~'@{arco-cssvars-prefix}-danger-2'));
-@color-danger-light-3: rgb(var(~'@{arco-cssvars-prefix}-danger-3'));
-@color-danger-light-4: rgb(var(~'@{arco-cssvars-prefix}-danger-4'));
-@color-success-light-1: rgb(var(~'@{arco-cssvars-prefix}-success-1'));
-@color-success-light-2: rgb(var(~'@{arco-cssvars-prefix}-success-2'));
-@color-success-light-3: rgb(var(~'@{arco-cssvars-prefix}-success-3'));
-@color-success-light-4: rgb(var(~'@{arco-cssvars-prefix}-success-4'));
-@color-warning-light-1: rgb(var(~'@{arco-cssvars-prefix}-warning-1'));
-@color-warning-light-2: rgb(var(~'@{arco-cssvars-prefix}-warning-2'));
-@color-warning-light-3: rgb(var(~'@{arco-cssvars-prefix}-warning-3'));
-@color-warning-light-4: rgb(var(~'@{arco-cssvars-prefix}-warning-4'));
-@color-link-light-1: rgb(var(~'@{arco-cssvars-prefix}-link-1'));
-@color-link-light-2: rgb(var(~'@{arco-cssvars-prefix}-link-2'));
-@color-link-light-3: rgb(var(~'@{arco-cssvars-prefix}-link-3'));
-@color-link-light-4: rgb(var(~'@{arco-cssvars-prefix}-link-4'));
-
-@dark-color-border: #333335;
-@dark-color-bg-1: #17171a; // The overall background is @dark-gray-1
-@dark-color-bg-2: #232324; // Primary container background ("white")
-@dark-color-bg-3: #2a2a2b; // Secondary container background
-@dark-color-bg-4: #313132; // Three-level container background
-@dark-color-bg-5: #373739; // Drop-down box, Tooltips background
-@dark-color-bg-white: #f6f6f6; // In bright color mode radio, switch white background
-@dark-color-text-1: fade(#fff, 90%);
-@dark-color-text-2: fade(#fff, 70%);
-@dark-color-text-3: fade(#fff, 50%);
-@dark-color-text-4: fade(#fff, 30%);
-@dark-color-fill-1: fade(#fff, 4%);
-@dark-color-fill-2: fade(#fff, 8%);
-@dark-color-fill-3: fade(#fff, 12%);
-@dark-color-fill-4: fade(#fff, 16%);
-@dark-color-primary-light-1: rgba(var(~'@{arco-cssvars-prefix}-primary-6'), 0.2);
-@dark-color-primary-light-2: rgba(var(~'@{arco-cssvars-prefix}-primary-6'), 0.35);
-@dark-color-primary-light-3: rgba(var(~'@{arco-cssvars-prefix}-primary-6'), 0.5);
-@dark-color-primary-light-4: rgba(var(~'@{arco-cssvars-prefix}-primary-6'), 0.65);
-@dark-color-secondary: rgba(var(~'@{arco-cssvars-prefix}-gray-9'), 0.08);
-@dark-color-secondary-hover: rgba(var(~'@{arco-cssvars-prefix}-gray-8'), 0.16);
-@dark-color-secondary-active: rgba(var(~'@{arco-cssvars-prefix}-gray-7'), 0.24);
-@dark-color-secondary-disabled: rgba(var(~'@{arco-cssvars-prefix}-gray-9'), 0.08);
-@dark-color-danger-light-1: rgba(var(~'@{arco-cssvars-prefix}-danger-6'), 0.2);
-@dark-color-danger-light-2: rgba(var(~'@{arco-cssvars-prefix}-danger-6'), 0.35);
-@dark-color-danger-light-3: rgba(var(~'@{arco-cssvars-prefix}-danger-6'), 0.5);
-@dark-color-danger-light-4: rgba(var(~'@{arco-cssvars-prefix}-danger-6'), 0.65);
-@dark-color-success-light-1: rgb(var(~'@{arco-cssvars-prefix}-success-6'), 0.2);
-@dark-color-success-light-2: rgb(var(~'@{arco-cssvars-prefix}-success-6'), 0.35);
-@dark-color-success-light-3: rgb(var(~'@{arco-cssvars-prefix}-success-6'), 0.5);
-@dark-color-success-light-4: rgb(var(~'@{arco-cssvars-prefix}-success-6'), 0.65);
-@dark-color-warning-light-1: rgb(var(~'@{arco-cssvars-prefix}-warning-6'), 0.2);
-@dark-color-warning-light-2: rgb(var(~'@{arco-cssvars-prefix}-warning-6'), 0.35);
-@dark-color-warning-light-3: rgb(var(~'@{arco-cssvars-prefix}-warning-6'), 0.5);
-@dark-color-warning-light-4: rgb(var(~'@{arco-cssvars-prefix}-warning-6'), 0.65);
-@dark-color-link-light-1: rgb(var(~'@{arco-cssvars-prefix}-link-6'), 0.2);
-@dark-color-link-light-2: rgb(var(~'@{arco-cssvars-prefix}-link-6'), 0.35);
-@dark-color-link-light-3: rgb(var(~'@{arco-cssvars-prefix}-link-6'), 0.5);
-@dark-color-link-light-4: rgb(var(~'@{arco-cssvars-prefix}-link-6'), 0.65);
-
 @{arco-theme-tag} {
   @{arco-cssvars-prefix}-color-white: @color-white;
   @{arco-cssvars-prefix}-color-black: @color-black;
@@ -97,16 +12,36 @@
   @{arco-cssvars-prefix}-color-bg-4: @color-bg-4;
   @{arco-cssvars-prefix}-color-bg-5: @color-bg-5;
   @{arco-cssvars-prefix}-color-bg-white: @color-bg-white;
-  @{arco-cssvars-prefix}-color-neutral-1: rgb(var(~'@{arco-cssvars-prefix}-gray-1'));
-  @{arco-cssvars-prefix}-color-neutral-2: rgb(var(~'@{arco-cssvars-prefix}-gray-2'));
-  @{arco-cssvars-prefix}-color-neutral-3: rgb(var(~'@{arco-cssvars-prefix}-gray-3'));
-  @{arco-cssvars-prefix}-color-neutral-4: rgb(var(~'@{arco-cssvars-prefix}-gray-4'));
-  @{arco-cssvars-prefix}-color-neutral-5: rgb(var(~'@{arco-cssvars-prefix}-gray-5'));
-  @{arco-cssvars-prefix}-color-neutral-6: rgb(var(~'@{arco-cssvars-prefix}-gray-6'));
-  @{arco-cssvars-prefix}-color-neutral-7: rgb(var(~'@{arco-cssvars-prefix}-gray-7'));
-  @{arco-cssvars-prefix}-color-neutral-8: rgb(var(~'@{arco-cssvars-prefix}-gray-8'));
-  @{arco-cssvars-prefix}-color-neutral-9: rgb(var(~'@{arco-cssvars-prefix}-gray-9'));
-  @{arco-cssvars-prefix}-color-neutral-10: rgb(var(~'@{arco-cssvars-prefix}-gray-10'));
+  @{arco-cssvars-prefix}-color-neutral-1: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-1')
+  );
+  @{arco-cssvars-prefix}-color-neutral-2: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-2')
+  );
+  @{arco-cssvars-prefix}-color-neutral-3: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-3')
+  );
+  @{arco-cssvars-prefix}-color-neutral-4: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-4')
+  );
+  @{arco-cssvars-prefix}-color-neutral-5: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-5')
+  );
+  @{arco-cssvars-prefix}-color-neutral-6: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-6')
+  );
+  @{arco-cssvars-prefix}-color-neutral-7: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-7')
+  );
+  @{arco-cssvars-prefix}-color-neutral-8: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-8')
+  );
+  @{arco-cssvars-prefix}-color-neutral-9: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-9')
+  );
+  @{arco-cssvars-prefix}-color-neutral-10: rgb(
+    var(~'@{arco-cssvars-prefix}-gray-10')
+  );
   @{arco-cssvars-prefix}-color-text-1: @color-text-1;
   @{arco-cssvars-prefix}-color-text-2: @color-text-2;
   @{arco-cssvars-prefix}-color-text-3: @color-text-3;
@@ -123,7 +58,6 @@
   @{arco-cssvars-prefix}-color-primary-light-2: @color-primary-light-2;
   @{arco-cssvars-prefix}-color-primary-light-3: @color-primary-light-3;
   @{arco-cssvars-prefix}-color-primary-light-4: @color-primary-light-4;
-
   @{arco-cssvars-prefix}-color-link-light-1: @color-link-light-1;
   @{arco-cssvars-prefix}-color-link-light-2: @color-link-light-2;
   @{arco-cssvars-prefix}-color-link-light-3: @color-link-light-3;
@@ -160,8 +94,7 @@
   @{arco-cssvars-prefix}-color-mask-bg: @mask-color-bg;
 }
 
-@{arco-theme-tag}{
-  &[arco-theme='dark'] {
+@{arco-theme-tag}[arco-theme='dark'] {
   @{arco-cssvars-prefix}-color-white: @dark-color-white;
   @{arco-cssvars-prefix}-color-black: @dark-color-black;
   @{arco-cssvars-prefix}-color-border: @dark-color-border;
@@ -210,5 +143,4 @@
   @{arco-cssvars-prefix}-color-menu-light-bg: @color-menu-dark-bg;
   @{arco-cssvars-prefix}-color-menu-dark-hover: @dark-color-menu-dark-hover;
   @{arco-cssvars-prefix}-color-mask-bg: @dark-mask-color-bg;
-}
 }

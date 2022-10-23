@@ -6,7 +6,7 @@
       </slot>
     </div>
     <div :class="`${prefixCls}-content`">
-      <div :class="`${prefixCls}-value`">
+      <div :class="`${prefixCls}-value`" :style="valueStyle">
         {{ displayValue }}
       </div>
     </div>
@@ -15,14 +15,16 @@
 
 <script lang="ts">
 import {
+  CSSProperties,
   defineComponent,
   onBeforeUnmount,
   onMounted,
+  PropType,
   ref,
   toRefs,
   watch,
 } from 'vue';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { getPrefixCls } from '../_utils/global-config';
 import { getDateString } from './utils';
 
@@ -51,8 +53,8 @@ export default defineComponent({
       default: () => Date.now(),
     },
     /**
-     * @zh 倒计时的展示格式
-     * @en Countdown display format
+     * @zh 倒计时的展示格式 [dayjs](https://day.js.org/docs/en/display/format)
+     * @en Countdown display format [dayjs](https://day.js.org/docs/en/display/format)
      */
     format: {
       type: String,
@@ -66,8 +68,22 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 自定义显示值的样式
+     * @en Custom value style
+     * @version 2.32.0
+     */
+    valueStyle: {
+      type: Object as PropType<CSSProperties>,
+    },
   },
-  emits: ['finish'],
+  emits: {
+    /**
+     * @zh 倒计时完成后触发的回调
+     * @en Callback at the end of the countdown
+     */
+    finish: () => true,
+  },
   /**
    * @zh 标题
    * @en Title

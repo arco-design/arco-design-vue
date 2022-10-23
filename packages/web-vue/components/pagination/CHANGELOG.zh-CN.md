@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 💎 功能优化
+
+- 优化输入页码时的数字处理 ([#1750](https://github.com/arco-design/arco-design-vue/pull/1750))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+### 💅 样式更新
+
+- 修复显示内容被压缩的问题 ([#1579](https://github.com/arco-design/arco-design-vue/pull/1579))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- 增加 autoAdjust 属性 ([#1466](https://github.com/arco-design/arco-design-vue/pull/1466))
+
+
 ## 2.27.0
 
 `2022-05-13`

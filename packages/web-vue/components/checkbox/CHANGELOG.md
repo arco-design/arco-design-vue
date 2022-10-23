@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- Add max prop, support setting the maximum number of items that can be checked ([#1540](https://github.com/arco-design/arco-design-vue/pull/1540))
+
+
 ## 2.27.0
 
 `2022-05-13`

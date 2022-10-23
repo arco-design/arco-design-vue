@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 BugFix
+
+- Fix the problem of disabled style error under safari ([#1770](https://github.com/arco-design/arco-design-vue/pull/1770))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+### 🐛 BugFix
+
+- Fixed the click selection event exception when selecting the year and month of the selection panel in some modes ([#1562](https://github.com/arco-design/arco-design-vue/pull/1562))
+
+### 💎 Enhancement
+
+- Optimized range selector also corrects order when selecting ([#1578](https://github.com/arco-design/arco-design-vue/pull/1578))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 🆕 Feature
+
+- `DatePicker` add range picker header label click and normal picker month header label click ([#1421](https://github.com/arco-design/arco-design-vue/pull/1421))
+
+
+## 2.33.0
+
+`2022-07-08`
+
+### 🐛 BugFix
+
+- Fixed an issue where dropdown menus and clear options could still be opened in readonly mode ([#1400](https://github.com/arco-design/arco-design-vue/pull/1400))
+
+
 ## 2.29.0
 
 `2022-05-27`

@@ -17,7 +17,6 @@ import {
   watchEffect,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { off, on } from '../_utils/dom';
 import type { Size } from '../_utils/constant';
 import {
   isArray,
@@ -58,9 +57,9 @@ import Th from './table-th';
 import Td from './table-td';
 import OperationTh from './table-operation-th';
 import OperationTd from './table-operation-td';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import ResizeObserver from '../_components/resize-observer';
-import { VirtualListProps } from '../_components/virtual-list/interface';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { omit } from '../_utils/omit';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { useDrag } from './hooks/use-drag';
@@ -71,6 +70,10 @@ import { useSorter } from './hooks/use-sorter';
 import ClientOnly from '../_components/client-only';
 import { useSpan } from './hooks/use-span';
 import { useChildrenComponents } from '../_hooks/use-children-components';
+import Scrollbar, { ScrollbarProps } from '../scrollbar';
+import { useComponentRef } from '../_hooks/use-component-ref';
+import type { BaseType } from '../_utils/types';
+import { useScrollbar } from '../_hooks/use-scrollbar';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -146,15 +149,7 @@ export default defineComponent({
      * @en Whether it is loading state
      */
     loading: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * @zh 是否隐藏表头
-     * @en Whether to hide the header
-     */
-    hideHeader: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false,
     },
     /**
@@ -225,8 +220,8 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动
-     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
      * @type VirtualListProps
      */
     virtualListProps: {
@@ -288,12 +283,17 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 表格行元素的类名
-     * @en The class name of the table row element
+     * @zh 表格行元素的类名。`2.34.0` 版本增加函数值支持
+     * @en The class name of the table row element. The `2.34.0` version adds support for function values.
      * @version 2.16.0
      */
     rowClass: {
-      type: [String, Array, Object],
+      type: [String, Array, Object, Function] as PropType<
+        | string
+        | any[]
+        | Record<string, any>
+        | ((record: TableData, rowIndex: number) => any)
+      >,
     },
     /**
      * @zh 表格拖拽排序的配置
@@ -358,7 +358,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     selectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<(string | number)[]>,
     },
     /**
      * @zh 默认已选择的行（非受控模式）优先于 `rowSelection`
@@ -366,7 +366,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     defaultSelectedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<(string | number)[]>,
     },
     /**
      * @zh 显示的展开行、子树（受控模式）优先于 `expandable`
@@ -374,7 +374,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     expandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<(string | number)[]>,
     },
     /**
      * @zh 默认显示的展开行、子树（非受控模式）优先于 `expandable`
@@ -382,7 +382,7 @@ export default defineComponent({
      * @version 2.25.0
      */
     defaultExpandedKeys: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<(string | number)[]>,
     },
     /**
      * @zh 是否默认展开所有的行
@@ -393,31 +393,53 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否开启表头吸顶
+     * @en Whether to open the sticky header
+     * @version 2.30.0
+     */
+    stickyHeader: {
+      type: [Boolean, Number],
+      default: false,
+    },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.38.0
+     */
+    scrollbar: {
+      type: [Object, Boolean] as PropType<boolean | ScrollbarProps>,
+      default: true,
+    },
   },
   emits: {
-    'update:selectedKeys': (rowKeys: string[]) => true,
-    'update:expandedKeys': (rowKeys: string[]) => true,
+    'update:selectedKeys': (rowKeys: (string | number)[]) => true,
+    'update:expandedKeys': (rowKeys: (string | number)[]) => true,
     /**
      * @zh 点击展开行时触发
      * @en Triggered when a row is clicked to expand
-     * @param {string} rowKey
+     * @param {string | number} rowKey
      * @param {TableData} record
      */
-    'expand': (rowKey: string, record: TableData) => true,
+    'expand': (rowKey: string | number, record: TableData) => true,
     /**
      * @zh 已展开的数据行发生改变时触发
      * @en Triggered when the expanded data row changes
-     * @param {string[]} rowKeys
+     * @param {(string | number)[]} rowKeys
      */
-    'expandedChange': (rowKeys: string[]) => true,
+    'expandedChange': (rowKeys: (string | number)[]) => true,
     /**
      * @zh 点击行选择器时触发
      * @en Triggered when the row selector is clicked
-     * @param {string[]} rowKeys
-     * @param {string} rowKey
+     * @param {string | number[]} rowKeys
+     * @param {string | number} rowKey
      * @param {TableData} record
      */
-    'select': (rowKeys: string[], rowKey: string, record: TableData) => true,
+    'select': (
+      rowKeys: (string | number)[],
+      rowKey: string | number,
+      record: TableData
+    ) => true,
     /**
      * @zh 点击全选选择器时触发
      * @en Triggered when the select all selector is clicked
@@ -427,9 +449,9 @@ export default defineComponent({
     /**
      * @zh 已选择的数据行发生改变时触发
      * @en Triggered when the selected data row changes
-     * @param {string[]} rowKeys
+     * @param {(string | number)[]} rowKeys
      */
-    'selectionChange': (rowKeys: string[]) => true,
+    'selectionChange': (rowKeys: (string | number)[]) => true,
     /**
      * @zh 排序规则发生改变时触发
      * @en Triggered when the collation changes
@@ -599,7 +621,9 @@ export default defineComponent({
       defaultExpandedKeys,
       defaultExpandAllRows,
       spanMethod,
+      draggable,
       summarySpanMethod,
+      scrollbar,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const bordered = computed(() => {
@@ -613,6 +637,8 @@ export default defineComponent({
       () => rowSelection.value?.checkStrictly ?? true
     );
 
+    const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
+
     // whether to scroll
     const isScroll = computed(() => {
       const x = Boolean(props.scroll?.x || props.scroll?.minWidth);
@@ -620,29 +646,35 @@ export default defineComponent({
       return { x, y };
     });
 
-    const theadRef = ref<HTMLElement>();
-    const tbodyRef = ref<HTMLElement>();
+    // const theadRef = ref<HTMLElement>();
     const summaryRef = ref<HTMLElement>();
     const thRefs = ref<Record<string, HTMLElement>>({});
 
-    const handleBodyScroll = () => {
-      if (theadRef.value && tbodyRef.value) {
-        theadRef.value.scrollLeft = tbodyRef.value.scrollLeft;
-      }
-    };
-
-    onMounted(() => {
-      watch(isScroll, ({ y }, _, onInvalidate) => {
-        onInvalidate(() => {
-          if (tbodyRef.value) {
-            off(tbodyRef.value, 'scroll', handleBodyScroll);
-          }
-        });
-        if (y && tbodyRef.value && theadRef.value) {
-          on(tbodyRef.value, 'scroll', handleBodyScroll);
+    const { componentRef: contentComRef, elementRef: contentRef } =
+      useComponentRef('containerRef');
+    const { componentRef: tbodyComRef, elementRef: tbodyRef } =
+      useComponentRef('containerRef');
+    const { componentRef: virtualComRef, elementRef: virtualRef } =
+      useComponentRef('viewportRef');
+    const { componentRef: theadComRef, elementRef: theadRef } =
+      useComponentRef('containerRef');
+    const containerElement = computed(() => {
+      if (splitTable.value) {
+        if (isVirtualList.value) {
+          return virtualRef.value;
         }
-      });
+        return tbodyRef.value;
+      }
+      return contentRef.value;
     });
+
+    const splitTable = computed(
+      () =>
+        isScroll.value.y ||
+        props.stickyHeader ||
+        isVirtualList.value ||
+        (isScroll.value.x && flattenData.value.length === 0)
+    );
 
     const slotColumnMap = reactive(new Map<number, TableColumnData>());
     const slotColumns = ref<TableColumnData[]>();
@@ -675,7 +707,7 @@ export default defineComponent({
         dataColumns.value = result.dataColumns;
         groupColumns.value = result.groupColumns;
       },
-      { immediate: true }
+      { immediate: true, deep: true }
     );
 
     const isPaginationTop = computed(() =>
@@ -719,9 +751,6 @@ export default defineComponent({
       return false;
     });
 
-    const { _filters, computedFilters } = useFilter({ columns: dataColumns });
-    const { _sorter, computedSorter } = useSorter({ columns: dataColumns });
-
     const handleChange = (
       type: 'pagination' | 'sorter' | 'filter' | 'drag'
     ) => {
@@ -764,10 +793,21 @@ export default defineComponent({
       handleChange('sorter');
     };
 
+    const { _filters, computedFilters, resetFilters, clearFilters } = useFilter(
+      {
+        columns: dataColumns,
+        onFilterChange: handleFilterChange,
+      }
+    );
+    const { _sorter, computedSorter, resetSorters, clearSorters } = useSorter({
+      columns: dataColumns,
+      onSorterChange: handleSorterChange,
+    });
+
     const disabledKeys = new Set();
 
     const allRowKeys = computed(() => {
-      const allRowKeys: string[] = [];
+      const allRowKeys: BaseType[] = [];
       disabledKeys.clear();
       const travelData = (data: TableData[]) => {
         if (isArray(data) && data.length > 0) {
@@ -789,7 +829,7 @@ export default defineComponent({
     });
 
     const currentAllRowKeys = computed(() => {
-      const keys: string[] = [];
+      const keys: BaseType[] = [];
       const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
           keys.push(record.key);
@@ -804,7 +844,7 @@ export default defineComponent({
     });
 
     const currentAllEnabledRowKeys = computed(() => {
-      const keys: string[] = [];
+      const keys: BaseType[] = [];
 
       const travel = (data: TableDataWithRaw[]) => {
         for (const record of data) {
@@ -828,6 +868,9 @@ export default defineComponent({
       handleSelect,
       handleSelectAllLeafs,
       handleSelectAll,
+      select,
+      selectAll,
+      clearSelected,
     } = useRowSelection({
       selectedKeys,
       defaultSelectedKeys,
@@ -837,7 +880,7 @@ export default defineComponent({
       emit,
     });
 
-    const { expandedRowKeys, handleExpand } = useExpand({
+    const { expandedRowKeys, handleExpand, expand, expandAll } = useExpand({
       expandedKeys,
       defaultExpandedKeys,
       defaultExpandAllRows,
@@ -872,6 +915,7 @@ export default defineComponent({
     };
 
     const {
+      dragType,
       dragState,
       handleDragStart,
       handleDragEnter,
@@ -879,7 +923,7 @@ export default defineComponent({
       handleDragover,
       handleDragEnd,
       handleDrop,
-    } = useDrag();
+    } = useDrag(draggable);
 
     const { resizingColumn, columnWidth, handleThMouseDown } = useColumnResize(
       thRefs,
@@ -980,6 +1024,16 @@ export default defineComponent({
     const { page, pageSize, handlePageChange, handlePageSizeChange } =
       usePagination(props, emit);
 
+    const onlyCurrent = computed(
+      () => rowSelection.value?.onlyCurrent ?? false
+    );
+
+    watch(page, (cur, pre) => {
+      if (cur !== pre && onlyCurrent.value) {
+        clearSelected();
+      }
+    });
+
     const flattenData = computed(() => {
       if (props.pagination && sortedData.value.length > pageSize.value) {
         return sortedData.value.slice(
@@ -1051,7 +1105,6 @@ export default defineComponent({
       return undefined;
     });
 
-    const containerRef = ref<HTMLDivElement>();
     const containerScrollLeft = ref(0);
 
     const alignLeft = ref(true);
@@ -1061,14 +1114,12 @@ export default defineComponent({
       let _alignLeft = true;
       let _alignRight = true;
 
-      const scrollContainer = isScroll.value.y
-        ? tbodyRef.value
-        : containerRef.value;
+      const scrollContainer = containerElement.value;
 
       if (scrollContainer) {
         _alignLeft = containerScrollLeft.value === 0;
         _alignRight =
-          containerScrollLeft.value + scrollContainer.offsetWidth >=
+          Math.ceil(containerScrollLeft.value + scrollContainer.offsetWidth) >=
           scrollContainer.scrollWidth;
       }
 
@@ -1094,7 +1145,7 @@ export default defineComponent({
     };
 
     const getTableFixedCls = () => {
-      const cls = [];
+      const cls: string[] = [];
       if (hasLeftFixedColumn.value) {
         cls.push(`${prefixCls}-has-fixed-col-left`);
       }
@@ -1105,19 +1156,23 @@ export default defineComponent({
     };
 
     const handleScroll = (e: Event) => {
-      const target = e.target as HTMLDivElement;
-      if (target.scrollLeft !== containerScrollLeft.value) {
-        containerScrollLeft.value = target.scrollLeft;
-      }
-      if (isScroll.value.y || props.virtualListProps) {
-        if (theadRef.value) {
-          theadRef.value.scrollLeft = target.scrollLeft;
-        }
-        if (summaryRef.value) {
-          summaryRef.value.scrollLeft = target.scrollLeft;
-        }
+      if (
+        (e.target as HTMLDivElement).scrollLeft !== containerScrollLeft.value
+      ) {
+        containerScrollLeft.value = (e.target as HTMLDivElement).scrollLeft;
       }
       setAlignPosition();
+    };
+
+    const onTbodyScroll = (e: Event) => {
+      handleScroll(e);
+      const { scrollLeft } = e.target as HTMLDivElement;
+      if (theadRef.value) {
+        theadRef.value.scrollLeft = scrollLeft;
+      }
+      if (summaryRef.value) {
+        summaryRef.value.scrollLeft = scrollLeft;
+      }
     };
 
     const handleRowClick = (record: TableDataWithRaw, ev: Event) => {
@@ -1263,12 +1318,12 @@ export default defineComponent({
         [`${prefixCls}-stripe`]: props.stripe,
         [`${prefixCls}-hover`]: props.hoverable,
         [`${prefixCls}-dragging`]: dragState.dragging,
-        [`${prefixCls}-type-selection`]: props.rowSelection,
+        [`${prefixCls}-type-selection`]: Boolean(props.rowSelection),
         [`${prefixCls}-empty`]: props.data && flattenData.value.length === 0,
         [`${prefixCls}-layout-fixed`]:
           props.tableLayoutFixed ||
           isScroll.value.x ||
-          isScroll.value.y ||
+          splitTable.value ||
           hasEllipsis.value,
       },
     ]);
@@ -1293,7 +1348,7 @@ export default defineComponent({
         cls.push(getTableScrollCls());
       }
 
-      if (isScroll.value.y || isVirtualList.value) {
+      if (splitTable.value) {
         cls.push(`${prefixCls}-scroll-y`);
       }
 
@@ -1341,7 +1396,7 @@ export default defineComponent({
 
     const renderEmpty = () => {
       return (
-        <Tr isEmptyRow>
+        <Tr empty>
           <Td colSpan={dataColumns.value.length + operations.value.length}>
             {slots.empty?.() ?? <Empty />}
           </Td>
@@ -1387,14 +1442,28 @@ export default defineComponent({
         columns: allColumns,
       });
 
+    const getVirtualColumnStyle = (name: string | undefined) => {
+      if (!isVirtualList.value || !name || !thWidth.value[name]) {
+        return undefined;
+      }
+
+      return { width: `${thWidth.value[name]}px` };
+    };
+
     const renderSummaryRow = (record: TableDataWithRaw, rowIndex: number) => {
       return (
         <Tr
-          class={[props.rowClass, `${prefixCls}-tr-summary`]}
-          key={`table-summary-${rowIndex}`}
           v-slots={{
             tr: slots.tr,
           }}
+          key={`table-summary-${rowIndex}`}
+          class={[
+            `${prefixCls}-tr-summary`,
+            isFunction(props.rowClass)
+              ? props.rowClass(record, rowIndex)
+              : props.rowClass,
+          ]}
+          // @ts-ignore
           onClick={(ev: Event) => handleRowClick(record, ev)}
         >
           {operations.value.map((operation, index) => {
@@ -1405,12 +1474,7 @@ export default defineComponent({
               return null;
             }
 
-            const style =
-              isVirtualList.value &&
-              operation.name &&
-              thWidth.value[operation.name]
-                ? { width: `${thWidth.value[operation.name]}px` }
-                : undefined;
+            const style = getVirtualColumnStyle(operation.name);
 
             return (
               <OperationTd
@@ -1432,20 +1496,15 @@ export default defineComponent({
               return null;
             }
 
-            const style =
-              isVirtualList.value &&
-              column.dataIndex &&
-              thWidth.value[column.dataIndex]
-                ? { width: `${thWidth.value[column.dataIndex]}px` }
-                : undefined;
+            const style = getVirtualColumnStyle(column.dataIndex);
 
             return (
               <Td
-                key={`td-${cellId}`}
                 v-slots={{
                   td: slots.td,
                   cell: slots['summary-cell'],
                 }}
+                key={`td-${cellId}`}
                 style={style}
                 rowIndex={rowIndex}
                 record={record}
@@ -1454,6 +1513,8 @@ export default defineComponent({
                 dataColumns={dataColumns.value}
                 rowSpan={rowspan}
                 colSpan={colspan}
+                summary
+                // @ts-ignore
                 onClick={(ev: Event) => handleCellClick(record, column, ev)}
               />
             );
@@ -1464,29 +1525,21 @@ export default defineComponent({
 
     const renderSummary = () => {
       if (summaryData.value) {
-        return summaryData.value.map((data, index) =>
-          renderSummaryRow(data, index)
+        return (
+          <tfoot>
+            {summaryData.value.map((data, index) =>
+              renderSummaryRow(data, index)
+            )}
+          </tfoot>
         );
       }
       return null;
     };
 
-    const virtualListRef = ref();
-
-    watch(virtualListRef, (instance) => {
-      tbodyRef.value = instance.$el;
-    });
-
     const renderVirtualListBody = () => {
       return (
         <ClientOnly>
           <VirtualList
-            ref={virtualListRef}
-            class={`${prefixCls}-body`}
-            itemKey="_key"
-            type="table"
-            {...props.virtualListProps}
-            data={flattenData.value}
             v-slots={{
               item: ({
                 item,
@@ -1496,14 +1549,18 @@ export default defineComponent({
                 index: number;
               }) => renderRecord(item, index),
             }}
-            onResize={() => {
-              handleTbodyResize();
-            }}
-            onScroll={handleScroll}
+            ref={virtualComRef}
+            class={`${prefixCls}-body`}
+            data={flattenData.value}
+            itemKey="_key"
+            type="table"
             outerAttrs={{
               class: `${prefixCls}-element`,
               style: contentStyle.value,
             }}
+            {...props.virtualListProps}
+            onResize={handleTbodyResize}
+            onScroll={handleScroll}
           />
         </ClientOnly>
       );
@@ -1534,15 +1591,50 @@ export default defineComponent({
       );
     };
 
-    const dragType = computed(() => {
-      if (props.draggable) {
-        if (props.draggable?.type === 'handle') {
-          return 'handle';
-        }
-        return 'row';
+    const renderExpand = (
+      record: TableDataWithRaw,
+      {
+        indentSize,
+        indexPath,
+        allowDrag,
+        expandContent,
+      }: {
+        indentSize: number;
+        indexPath: number[];
+        allowDrag: boolean;
+        expandContent: any;
       }
-      return 'none';
-    });
+    ) => {
+      if (record.hasSubtree) {
+        return record.children?.map((item, index) =>
+          renderRecord(item, index, {
+            indentSize,
+            indexPath,
+            allowDrag,
+          })
+        );
+      }
+
+      if (expandContent) {
+        const scrollContainer = containerElement.value;
+
+        return (
+          <Tr key={`${record.key}-expand`} expand>
+            <Td
+              isFixedExpand={
+                hasLeftFixedColumn.value || hasRightFixedColumn.value
+              }
+              containerWidth={scrollContainer?.clientWidth}
+              colSpan={dataColumns.value.length + operations.value.length}
+            >
+              {expandContent}
+            </Td>
+          </Tr>
+        );
+      }
+
+      return null;
+    };
 
     const renderRecord = (
       record: TableDataWithRaw,
@@ -1558,55 +1650,63 @@ export default defineComponent({
       const expandContent = renderExpandContent(record);
       const showExpand = expandedRowKeys.value.includes(currentKey);
 
-      const scrollContainer = isScroll.value.y
-        ? tbodyRef.value
-        : containerRef.value;
-
       const isDragTarget = dragState.sourceKey === record.key;
 
-      const dragSourceEvent =
-        dragType.value !== 'none' && allowDrag
-          ? {
-              draggable: true,
-              onDragstart: (ev: DragEvent) =>
-                handleDragStart(ev, record.key, currentPath, record.raw),
-              onDragend: (ev: DragEvent) => handleDragEnd(ev),
-            }
-          : {};
+      const dragSourceEvent = dragType.value
+        ? {
+            draggable: allowDrag,
+            onDragstart: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragStart(ev, record.key, currentPath, record.raw);
+            },
+            onDragend: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragEnd(ev);
+            },
+          }
+        : {};
 
-      const dragTargetEvent =
-        dragType.value !== 'none' && allowDrag
-          ? {
-              onDragenter: (ev: DragEvent) => handleDragEnter(ev, currentPath),
-              onDragleave: (ev: DragEvent) => handleDragLeave(ev),
-              onDragover: (ev: DragEvent) => handleDragover(ev),
-              onDrop: (ev: DragEvent) => {
-                handleChange('drag');
-                handleDrop(ev);
-              },
-            }
-          : {};
+      const dragTargetEvent = dragType.value
+        ? {
+            onDragenter: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragEnter(ev, currentPath);
+            },
+            onDragover: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleDragover(ev);
+            },
+            onDrop: (ev: DragEvent) => {
+              if (!allowDrag) return;
+              handleChange('drag');
+              handleDrop(ev);
+            },
+          }
+        : {};
 
       return (
         <>
           <Tr
-            {...(dragType.value === 'row' ? dragSourceEvent : {})}
-            {...dragTargetEvent}
+            v-slots={{
+              tr: slots.tr,
+            }}
+            key={currentKey}
             class={[
               {
                 [`${prefixCls}-tr-draggable`]: dragType.value === 'row',
                 [`${prefixCls}-tr-drag`]: isDragTarget,
               },
-              props.rowClass,
+              isFunction(props.rowClass)
+                ? props.rowClass(record, rowIndex)
+                : props.rowClass,
             ]}
             rowIndex={rowIndex}
             record={record}
-            key={currentKey}
-            v-slots={{
-              tr: slots.tr,
-            }}
             checked={selectedRowKeys.value?.includes(currentKey)}
+            // @ts-ignore
             onClick={(ev: Event) => handleRowClick(record, ev)}
+            {...(dragType.value === 'row' ? dragSourceEvent : {})}
+            {...dragTargetEvent}
           >
             {operations.value.map((operation, index) => {
               const cellId = `${rowIndex}-${index}`;
@@ -1618,19 +1718,14 @@ export default defineComponent({
                 return null;
               }
 
-              const style =
-                isVirtualList.value &&
-                operation.name &&
-                thWidth.value[operation.name]
-                  ? { width: `${thWidth.value[operation.name]}px` }
-                  : undefined;
+              const style = getVirtualColumnStyle(operation.name);
 
               return (
                 <OperationTd
-                  key={`operation-td-${index}`}
                   v-slots={{
                     'drag-handle-icon': slots['drag-handle-icon'],
                   }}
+                  key={`operation-td-${index}`}
                   style={style}
                   operationColumn={operation}
                   operations={operations.value}
@@ -1664,19 +1759,14 @@ export default defineComponent({
                     }
                   : {};
 
-              const style =
-                isVirtualList.value &&
-                column.dataIndex &&
-                thWidth.value[column.dataIndex]
-                  ? { width: `${thWidth.value[column.dataIndex]}px` }
-                  : undefined;
+              const style = getVirtualColumnStyle(column.dataIndex);
 
               return (
                 <Td
-                  key={`td-${index}`}
                   v-slots={{
                     td: slots.td,
                   }}
+                  key={`td-${index}`}
                   style={style}
                   rowIndex={rowIndex}
                   record={record}
@@ -1687,46 +1777,26 @@ export default defineComponent({
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
                   {...extraProps}
+                  // @ts-ignore
                   onClick={(ev: Event) => handleCellClick(record, column, ev)}
                 />
               );
             })}
           </Tr>
           {showExpand &&
-            (record.hasSubtree
-              ? record.children?.map((item, index) =>
-                  renderRecord(item, index, {
-                    indentSize: indentSize + props.indentSize,
-                    indexPath: currentPath,
-                    allowDrag: allowDrag && !isDragTarget,
-                  })
-                )
-              : Boolean(expandContent) && (
-                  <Tr isExpandRow key={`${currentKey}-expand`}>
-                    <Td
-                      isFixedExpand={
-                        hasLeftFixedColumn.value || hasRightFixedColumn.value
-                      }
-                      containerWidth={scrollContainer?.clientWidth}
-                      colSpan={
-                        dataColumns.value.length + operations.value.length
-                      }
-                    >
-                      {expandContent}
-                    </Td>
-                  </Tr>
-                ))}
+            renderExpand(record, {
+              indentSize: indentSize + props.indentSize,
+              indexPath: currentPath,
+              allowDrag: allowDrag && !isDragTarget,
+              expandContent,
+            })}
         </>
       );
     };
 
-    const renderFooter = () => {
-      return <tfoot>{renderSummary()}</tfoot>;
-    };
-
     const renderBody = () => {
       const hasSubData = flattenData.value.some((record) =>
-        Boolean(record.children)
+        Boolean(record.hasSubtree)
       );
 
       return (
@@ -1751,13 +1821,13 @@ export default defineComponent({
             {index === 0 &&
               operations.value.map((operation, index) => (
                 <OperationTh
+                  key={`operation-th-${index}`}
                   // @ts-ignore
                   ref={(ins: ComponentPublicInstance) => {
                     if (ins?.$el && operation.name) {
                       thRefs.value[operation.name] = ins.$el;
                     }
                   }}
-                  key={`operation-th-${index}`}
                   operationColumn={operation}
                   operations={operations.value}
                   selectAll={Boolean(
@@ -1797,24 +1867,39 @@ export default defineComponent({
     );
 
     const renderContent = () => {
-      if (
-        isScroll.value.y ||
-        isVirtualList.value ||
-        (isScroll.value.x && flattenData.value.length === 0)
-      ) {
-        const style: CSSProperties = {
-          overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
-        };
+      if (splitTable.value) {
+        const style: CSSProperties = {};
+        if (hasScrollBar.value) {
+          style.overflowY = 'scroll';
+        }
+        if (isNumber(props.stickyHeader)) {
+          style.top = `${props.stickyHeader}px`;
+        }
+
+        const Component = displayScrollbar.value ? Scrollbar : 'div';
 
         return (
           <>
             {props.showHeader && (
-              <div ref={theadRef} class={`${prefixCls}-header`} style={style}>
+              <Component
+                ref={theadComRef}
+                class={[
+                  `${prefixCls}-header`,
+                  { [`${prefixCls}-header-sticky`]: props.stickyHeader },
+                ]}
+                style={style}
+                {...(scrollbar.value
+                  ? {
+                      hide: flattenData.value.length !== 0,
+                      ...scrollbarProps.value,
+                    }
+                  : undefined)}
+              >
                 <table
-                  cellpadding={0}
-                  cellspacing={0}
                   class={`${prefixCls}-element`}
                   style={headerStyle.value}
+                  cellpadding={0}
+                  cellspacing={0}
                 >
                   <ColGroup
                     dataColumns={dataColumns.value}
@@ -1823,27 +1908,60 @@ export default defineComponent({
                   />
                   {renderHeader()}
                 </table>
-              </div>
+              </Component>
             )}
-            {isVirtualList.value ? (
-              renderVirtualListBody()
-            ) : (
-              <ResizeObserver onResize={handleTbodyResize}>
-                <div
-                  ref={tbodyRef}
+            <ResizeObserver onResize={handleTbodyResize}>
+              {isVirtualList.value ? (
+                <VirtualList
+                  v-slots={{
+                    item: ({
+                      item,
+                      index,
+                    }: {
+                      item: TableDataWithRaw;
+                      index: number;
+                    }) => renderRecord(item, index),
+                  }}
+                  ref={(ins: any) => {
+                    if (ins?.$el) tbodyRef.value = ins.$el;
+                  }}
+                  class={`${prefixCls}-body`}
+                  data={flattenData.value}
+                  itemKey="_key"
+                  component={{
+                    list: 'table',
+                    content: 'tbody',
+                  }}
+                  listAttrs={{
+                    class: `${prefixCls}-element`,
+                    style: contentStyle.value,
+                  }}
+                  paddingPosition="list"
+                  {...props.virtualListProps}
+                  onScroll={onTbodyScroll}
+                />
+              ) : (
+                <Component
+                  ref={tbodyComRef}
                   class={`${prefixCls}-body`}
                   style={{
                     maxHeight: isNumber(props.scroll?.y)
                       ? `${props.scroll?.y}px`
                       : '100%',
                   }}
-                  onScroll={handleScroll}
+                  {...(scrollbar.value
+                    ? {
+                        outerStyle: { display: 'flex', minHeight: '0' },
+                        ...scrollbarProps.value,
+                      }
+                    : undefined)}
+                  onScroll={onTbodyScroll}
                 >
                   <table
-                    cellpadding={0}
-                    cellspacing={0}
                     class={`${prefixCls}-element`}
                     style={contentStyle.value}
+                    cellpadding={0}
+                    cellspacing={0}
                   >
                     {flattenData.value.length !== 0 && (
                       <ColGroup
@@ -1854,23 +1972,29 @@ export default defineComponent({
                     )}
                     {renderBody()}
                   </table>
-                </div>
-              </ResizeObserver>
-            )}
+                </Component>
+              )}
+            </ResizeObserver>
             {summaryData.value && summaryData.value.length && (
-              <div ref={summaryRef} class={`${prefixCls}-tfoot`} style={style}>
+              <div
+                ref={summaryRef}
+                class={`${prefixCls}-tfoot`}
+                style={{
+                  overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
+                }}
+              >
                 <table
-                  cellpadding={0}
-                  cellspacing={0}
                   class={`${prefixCls}-element`}
                   style={contentStyle.value}
+                  cellpadding={0}
+                  cellspacing={0}
                 >
                   <ColGroup
                     dataColumns={dataColumns.value}
                     operations={operations.value}
                     columnWidth={columnWidth}
                   />
-                  {renderFooter()}
+                  {renderSummary()}
                 </table>
               </div>
             )}
@@ -1893,7 +2017,7 @@ export default defineComponent({
             />
             {props.showHeader && renderHeader()}
             {renderBody()}
-            {summaryData.value && summaryData.value.length && renderFooter()}
+            {summaryData.value && summaryData.value.length && renderSummary()}
           </table>
         </ResizeObserver>
       );
@@ -1903,15 +2027,26 @@ export default defineComponent({
       const style = props.scroll?.maxHeight
         ? { maxHeight: props.scroll.maxHeight }
         : undefined;
+
+      const Component = displayScrollbar.value ? Scrollbar : 'div';
+
       return (
         <>
-          <div
-            ref={containerRef}
-            class={[`${prefixCls}-container`, tableCls.value]}
-            style={style}
-            onScroll={handleScroll}
-          >
-            <div class={`${prefixCls}-content`}>
+          <div class={[`${prefixCls}-container`, tableCls.value]}>
+            <Component
+              ref={contentComRef}
+              class={[
+                `${prefixCls}-content`,
+                {
+                  [`${prefixCls}-content-scroll-x`]: !splitTable.value,
+                },
+              ]}
+              style={style}
+              {...(scrollbar.value
+                ? { outerStyle: { height: '100%' }, ...scrollbarProps.value }
+                : undefined)}
+              onScroll={handleScroll}
+            >
               {content ? (
                 <table
                   class={`${prefixCls}-element`}
@@ -1923,7 +2058,7 @@ export default defineComponent({
               ) : (
                 renderContent()
               )}
-            </div>
+            </Component>
           </div>
           {slots.footer && (
             <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
@@ -1996,7 +2131,14 @@ export default defineComponent({
 
     return {
       render,
-      handleSelectAll,
+      selfExpand: expand,
+      selfExpandAll: expandAll,
+      selfSelect: select,
+      selfSelectAll: selectAll,
+      selfResetFilters: resetFilters,
+      selfClearFilters: clearFilters,
+      selfResetSorters: resetSorters,
+      selfClearSorters: clearSorters,
     };
   },
   methods: {
@@ -2007,8 +2149,78 @@ export default defineComponent({
      * @public
      * @version 2.22.0
      */
-    selectAll(checked: boolean) {
-      return this.handleSelectAll(checked);
+    selectAll(checked?: boolean) {
+      return this.selfSelectAll(checked);
+    },
+    /**
+     * @zh 设置行选择器状态
+     * @en Set row selector state
+     * @param { string | number | (string | number)[] } rowKey
+     * @param { boolean } checked
+     * @public
+     * @version 2.31.0
+     */
+    select(rowKey: string | number | (string | number)[], checked?: boolean) {
+      return this.selfSelect(rowKey, checked);
+    },
+    /**
+     * @zh 设置全部展开状态
+     * @en Set all expanded state
+     * @param { boolean } checked
+     * @public
+     * @version 2.31.0
+     */
+    expandAll(checked?: boolean) {
+      return this.selfExpandAll(checked);
+    },
+    /**
+     * @zh 设置展开状态
+     * @en Set select all state
+     * @param { string | number | (string | number)[] } rowKey
+     * @param { boolean } checked
+     * @public
+     * @version 2.31.0
+     */
+    expand(rowKey: string | number | (string | number)[], checked?: boolean) {
+      return this.selfExpand(rowKey, checked);
+    },
+    /**
+     * @zh 重置列的筛选器
+     * @en Reset the filter for columns
+     * @param { string | string[] } dataIndex
+     * @public
+     * @version 2.31.0
+     */
+    resetFilters(dataIndex?: string | string[]) {
+      return this.selfResetFilters(dataIndex);
+    },
+    /**
+     * @zh 清空列的筛选器
+     * @en Clear the filter for columns
+     * @param { string | string[] } dataIndex
+     * @public
+     * @version 2.31.0
+     */
+    clearFilters(dataIndex?: string | string[]) {
+      return this.selfClearFilters(dataIndex);
+    },
+    /**
+     * @zh 重置列的排序
+     * @en Reset the order of columns
+     * @public
+     * @version 2.31.0
+     */
+    resetSorters() {
+      return this.selfResetSorters();
+    },
+    /**
+     * @zh 清空列的排序
+     * @en Clear the order of columns
+     * @public
+     * @version 2.31.0
+     */
+    clearSorters() {
+      return this.selfClearSorters();
     },
   },
   render() {

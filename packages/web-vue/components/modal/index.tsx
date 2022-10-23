@@ -45,6 +45,12 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
     }
   };
 
+  const handleReturnClose = () => {
+    if (vm.component) {
+      vm.component.props.visible = false;
+    }
+  };
+
   const defaultConfig = {
     visible: true,
     renderToBody: false,
@@ -56,11 +62,28 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   // @ts-ignore
   const vm = createVNode(
     _Modal,
-    { ...omit(config, ['content', 'title', 'footer']), ...defaultConfig },
+    {
+      ...defaultConfig,
+      ...omit(config, [
+        'content',
+        'title',
+        'footer',
+        'visible',
+        'onOk',
+        'onCancel',
+        'onClose',
+      ]),
+      ...{
+        footer: typeof config.footer === 'boolean' ? config.footer : undefined,
+      },
+    },
     {
       default: getSlotFunction(config.content),
       title: getSlotFunction(config.title),
-      footer: getSlotFunction(config.footer),
+      footer:
+        typeof config.footer !== 'boolean'
+          ? getSlotFunction(config.footer)
+          : undefined,
     }
   );
 
@@ -72,7 +95,7 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   document.body.appendChild(container);
 
   return {
-    close: handleClose,
+    close: handleReturnClose,
   };
 };
 

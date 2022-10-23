@@ -84,6 +84,7 @@ function normalizeEllipsisConfig(
     suffix: '',
     ellipsisStr: '...',
     expandable: false,
+    css: false,
     ...omit(config, ['showTooltip']),
     showTooltip,
     TooltipComponent,
@@ -210,12 +211,28 @@ export default defineComponent({
       default: 3000,
     },
     /**
-     * @zh 自动溢出省略，具体参数配置看 [EllipsisConfig](#ellipsisconfig)
-     * @en Automatic overflow omission, refer to [EllipsisConfig](#ellipsisconfig) for more information.
+     * @zh 自动溢出省略，具体参数配置看 [EllipsisConfig](#EllipsisConfig)
+     * @en Automatic overflow omission, refer to [EllipsisConfig](#EllipsisConfig) for more information.
      */
     ellipsis: {
       type: [Boolean, Object] as PropType<boolean | EllipsisConfig>,
       default: false,
+    },
+    /**
+     * @zh 编辑按钮问题提示配置
+     * @en Edit button question prompt configuration
+     * @version 2.32.0
+     */
+    editTooltipProps: {
+      type: Object,
+    },
+    /**
+     * @zh 拷贝按钮问题提示配置
+     * @en Copy button question prompt configuration
+     * @version 2.32.0
+     */
+    copyTooltipProps: {
+      type: Object,
     },
   },
   emits: {
@@ -274,7 +291,7 @@ export default defineComponent({
    * @slot expand-node
    * @binding {boolean} expanded
    */
-  setup(props: BaseInternalProps, { slots, emit, attrs }) {
+  setup(props, { slots, emit, attrs }) {
     const {
       editing: propEditing,
       defaultEditing,
@@ -367,6 +384,30 @@ export default defineComponent({
     }
 
     function renderOperations(forceRenderExpand = false) {
+      if (ellipsisConfig.value.css) {
+        return (
+          <Operations
+            editable={editable.value}
+            copyable={copyable.value}
+            expandable={ellipsisConfig.value.expandable}
+            isCopied={isCopied.value}
+            isEllipsis={showCSSTooltip.value}
+            expanded={expanded.value}
+            forceRenderExpand={forceRenderExpand || expanded.value}
+            editTooltipProps={props.editTooltipProps}
+            copyTooltipProps={props.copyTooltipProps}
+            onEdit={onEditStart}
+            onCopy={onCopyClick}
+            onExpand={onExpandClick}
+            v-slots={{
+              'copy-tooltip': slots['copy-tooltip'],
+              'copy-icon': slots['copy-icon'],
+              'expand-node': slots['expand-node'],
+            }}
+          />
+        );
+      }
+
       return (
         <Operations
           editable={editable.value}
@@ -376,6 +417,8 @@ export default defineComponent({
           isEllipsis={isEllipsis.value}
           expanded={expanded.value}
           forceRenderExpand={forceRenderExpand}
+          editTooltipProps={props.editTooltipProps}
+          copyTooltipProps={props.copyTooltipProps}
           onEdit={onEditStart}
           onCopy={onCopyClick}
           onExpand={onExpandClick}
@@ -400,7 +443,9 @@ export default defineComponent({
 
       if (isEllipsis.value !== ellipsis) {
         isEllipsis.value = ellipsis;
-        emit('ellipsis', ellipsis);
+        if (!ellipsisConfig.value.css) {
+          emit('ellipsis', ellipsis);
+        }
       }
 
       if (ellipsisText.value !== text) {
@@ -428,6 +473,7 @@ export default defineComponent({
         resizeOnNextFrame();
       }
     );
+
     watch(ellipsis, (newVal) => {
       if (newVal) {
         resizeOnNextFrame();
@@ -437,6 +483,7 @@ export default defineComponent({
     });
 
     let children: VNode[] = [];
+
     const updateFullText = () => {
       if (ellipsis.value || copyable.value || editable.value) {
         const _fullText = getInnerText(children);
@@ -450,6 +497,34 @@ export default defineComponent({
 
     onMounted(updateFullText);
     onUpdated(updateFullText);
+
+    const contentRef = ref<HTMLElement>();
+    const showCSSTooltip = ref(false);
+
+    const calTooltip = () => {
+      if (wrapperRef.value && contentRef.value) {
+        const _show =
+          contentRef.value.offsetHeight > wrapperRef.value.offsetHeight;
+        if (_show !== showCSSTooltip.value) {
+          showCSSTooltip.value = _show;
+          emit('ellipsis', _show);
+        }
+      }
+    };
+
+    const ellipsisStyle = computed(() => {
+      if (expanded.value) {
+        return {};
+      }
+
+      return {
+        'overflow': 'hidden',
+        'text-overflow': 'ellipsis',
+        'display': '-webkit-box',
+        '-webkit-line-clamp': ellipsisConfig.value.rows,
+        '-webkit-box-orient': 'vertical',
+      };
+    });
 
     return () => {
       children = slots.default?.() || [];
@@ -479,10 +554,51 @@ export default defineComponent({
         TooltipComponent,
       } = ellipsisConfig.value;
       const showEllipsis = isEllipsis.value && !expanded.value;
-      const Content = Wrap(props, showEllipsis ? ellipsisText.value : children);
+
       const titleAttrs =
         showEllipsis && !showTooltip ? { title: fullText.value } : {};
       const Component = component.value;
+
+      if (ellipsisConfig.value.css) {
+        const Content = Wrap(props, children);
+        const Outer = (
+          <Component
+            class={classNames.value}
+            ref={wrapperRef}
+            style={ellipsisStyle.value}
+            {...titleAttrs}
+            {...attrs}
+          >
+            <span ref={contentRef}>{Content}</span>
+          </Component>
+        );
+
+        if (showCSSTooltip.value) {
+          return (
+            <TooltipComponent
+              {...tooltipProps}
+              onResize={() => calTooltip()}
+              v-slots={{
+                content: () => fullText.value,
+              }}
+            >
+              {Outer}
+            </TooltipComponent>
+          );
+        }
+
+        return (
+          <ResizeObserver
+            onResize={() => {
+              calTooltip();
+            }}
+          >
+            {Outer}
+          </ResizeObserver>
+        );
+      }
+
+      const Content = Wrap(props, showEllipsis ? ellipsisText.value : children);
 
       return (
         <ResizeObserver onResize={() => resizeOnNextFrame()}>

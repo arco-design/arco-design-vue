@@ -6,7 +6,7 @@ import {
   getItemRelativeTop,
   getCompareItemRelativeTop,
 } from '../utils';
-import { InternalDataItem, Key, ScrollOptions } from '../interface';
+import { InternalDataItem, VirtualItemKey, ScrollOptions } from '../interface';
 
 export interface RelativeScroll {
   itemIndex: number;
@@ -26,7 +26,7 @@ export function useScrollTo(props: {
   };
   scrollTop: number;
   visibleCount: number;
-  getItemHeightOrDefault: (key: Key) => number;
+  getItemHeightOrDefault: (key: VirtualItemKey) => number;
   getItemHeightOrDefaultByIndex: (index: number) => number;
 }) {
   const {

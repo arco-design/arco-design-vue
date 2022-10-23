@@ -2,6 +2,159 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💅 Style
+
+- Fixed the problem that summary row height was compressed when both summary row and scroll were enabled in the table ([#1733](https://github.com/arco-design/arco-design-vue/pull/1733))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 BugFix
+
+- Fix default sorter&filters not working under template usage ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+
+
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 BugFix
+
+- Fix the problem that the tooltip does not display after the content changes ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 🆎 TypeScript
+
+- fix TableRowSelection type definition ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+
+
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- Fixed the virtual scroll bar style error caused by maxHeight in the scroll property ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- Add custom class name related prop ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+### 💎 Enhancement
+
+- type of extension key ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 💅 Style
+
+- adjust zIndex of a fixed col ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- columns support reactive type updates ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- rowClass supports values of function types ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+
+
+## 2.33.1
+
+`2022-07-22`
+
+### 💎 Enhancement
+
+- Selected rows can be displayed when selected-keys are set individually ([#1440](https://github.com/arco-design/arco-design-vue/pull/1440))
+
+
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- Fixed the problem that the text prompt did not follow the content update ([#1373](https://github.com/arco-design/arco-design-vue/pull/1373))
+
+
+## 2.32.0
+
+`2022-06-24`
+
+### 🆕 Feature
+
+- TableRowSelection adds the onlyCurrent property to change the default state of the table to maintain the selection state of all paging ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+### 💎 Enhancement
+
+- The style added by the cellStyle class attribute is moved to the td element to solve the background color problem in some scenes ([#1334](https://github.com/arco-design/arco-design-vue/pull/1334))
+
+
+## 2.31.0
+
+`2022-06-17`
+
+### 🆕 Feature
+
+- Add new component methods, see the documentation for details ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+- The slot defined by titleSlotName adds the column parameter ([#1304](https://github.com/arco-design/arco-design-vue/pull/1304))
+
+
+## 2.30.2
+
+`2022-06-11`
+
+### 🐛 BugFix
+
+- Fix the problem that the header is centered when align='left' ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+### 💎 Enhancement
+
+- Indent no longer shows when there is no expand button ([#1278](https://github.com/arco-design/arco-design-vue/pull/1278))
+
+
+## 2.30.0
+
+`2022-06-10`
+
+### ⚠️ Important Attention
+
+- Due to functional requirements, `arco-table-cell` has been changed to flex layout, and the `arco-table-td-content` wrapper layer has been added outside the table content. If you have custom styles, please pay attention to the changes in the DOM structure ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🆕 Feature
+
+- Added `sticky-header` header ceiling function ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- Added `summaryCellStyle` property to table column configuration ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 🐛 BugFix
+
+- Fixed the problem of incorrect text omission in tree data ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+- Fix the problem of using grouped headers and fixed columns at the same time ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💎 Enhancement
+
+- Supports the simultaneous use of virtual lists and fixed columns ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+### 💅 Style
+
+- Fix horizontal scroll shadow issue ([#1248](https://github.com/arco-design/arco-design-vue/pull/1248))
+
+
 ## 2.29.0
 
 `2022-05-27`

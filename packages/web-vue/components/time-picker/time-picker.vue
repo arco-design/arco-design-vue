@@ -5,7 +5,7 @@
     auto-fit-transform-origin
     :click-to-close="false"
     :position="position"
-    :disabled="mergedDisabled"
+    :disabled="mergedDisabled || readonly"
     :popup-offset="4"
     :popup-visible="panelVisible"
     :prevent-focus="true"
@@ -29,7 +29,7 @@
       :disabled="mergedDisabled"
       :error="error"
       :editable="!readonly"
-      :allow-clear="allowClear"
+      :allow-clear="allowClear && !readonly"
       :placeholder="computedPlaceholder"
       @clear="onInputClear"
     >
@@ -70,7 +70,6 @@
 import {
   computed,
   defineComponent,
-  inject,
   nextTick,
   PropType,
   reactive,
@@ -105,7 +104,6 @@ import RangePanel from './range-panel';
 import useIsDisabledTime from './hooks/use-is-disabled-time';
 import useMergeState from '../_hooks/use-merge-state';
 import { useI18n } from '../locale';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 
@@ -199,8 +197,6 @@ export default defineComponent({
      * */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 弹出框的挂载容器
@@ -346,7 +342,7 @@ export default defineComponent({
    * @en Extra footer
    * @slot extra
    */
-  setup(props: TimePickerProps, { emit }) {
+  setup(props, { emit }) {
     const {
       type,
       format,

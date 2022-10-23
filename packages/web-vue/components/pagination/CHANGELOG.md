@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 💎 Enhancement
+
+- Optimize number processing when entering page numbers ([#1750](https://github.com/arco-design/arco-design-vue/pull/1750))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+### 💅 Style
+
+- Fix the problem that the display content is compressed ([#1579](https://github.com/arco-design/arco-design-vue/pull/1579))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- Add autoAdjust property ([#1466](https://github.com/arco-design/arco-design-vue/pull/1466))
+
+
 ## 2.27.0
 
 `2022-05-13`

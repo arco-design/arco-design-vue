@@ -9,7 +9,12 @@ import {
   toRefs,
 } from 'vue';
 import type { Direction, Size } from '../_utils/constant';
-import type { TabsPosition, TabsType, TabData } from './interface';
+import type {
+  TabsPosition,
+  TabsType,
+  TabData,
+  TabTriggerEvent,
+} from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import TabsNav from './tabs-nav';
 import { tabsInjectionKey } from './context';
@@ -148,6 +153,16 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 触发方式
+     * @en Trigger method
+     * @values 'hover','click'
+     * @version 2.34.0
+     */
+    trigger: {
+      type: String as PropType<TabTriggerEvent>,
+      default: 'click',
+    },
   },
   emits: {
     'update:activeKey': (key: string | number) => true,
@@ -181,7 +196,7 @@ export default defineComponent({
    * @slot extra
    */
   setup(props, { emit, slots }) {
-    const { size, lazyLoad, destroyOnHide } = toRefs(props);
+    const { size, lazyLoad, destroyOnHide, trigger } = toRefs(props);
     const prefixCls = getPrefixCls('tabs');
     const { mergedSize } = useSize(size);
     const mergedPosition = computed(() =>
@@ -239,6 +254,7 @@ export default defineComponent({
         activeKey: computedActiveKey,
         addItem,
         removeItem,
+        trigger,
       })
     );
 

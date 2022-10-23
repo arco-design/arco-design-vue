@@ -61,6 +61,9 @@ Shows how to use form validation.
     <a-form-item field="date" label="Date">
       <a-date-picker v-model="form.date" placeholder="Please select ..."/>
     </a-form-item>
+    <a-form-item field="time" label="Time">
+      <a-time-picker v-model="form.time" placeholder="Please select ..."/>
+    </a-form-item>
     <a-form-item field="radio" label="Radio" :rules="[{match:/one/,message:'must select one'}]">
       <a-radio-group v-model="form.radio">
         <a-radio value="radio one">Radio One</a-radio>
@@ -113,6 +116,7 @@ export default {
       province: 'haidian',
       options: [],
       date: '',
+      time: '',
       radio: 'radio one',
       slider: 5,
       score: 5,

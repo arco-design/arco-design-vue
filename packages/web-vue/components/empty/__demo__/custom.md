@@ -25,4 +25,14 @@ Customize icons and pictures through the `image` slot, or modify the text throug
     No data, please reload!
   </a-empty>
 </template>
+
+<script>
+import { IconExclamationCircleFill } from '@arco-design/web-vue/es/icon';
+
+export default {
+  components: {
+    IconExclamationCircleFill
+  },
+}
+</script>
 ```

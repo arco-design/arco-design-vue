@@ -61,8 +61,8 @@ description: A form with data collection, verification and submission functions,
 |---|---|---|:---:|
 |validate|Verify all form data|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
 |validateField|Validate part of the form data|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
-|resetFields|Reset form data|-|-|
-|clearValidate|Clear verification status|-|-|
+|resetFields|Reset form data|field: `string \| string[]`|-|
+|clearValidate|Clear verification status|field: `string \| string[]`|-|
 |setFields|Set the value and status of the form item|data: `Record<string, FieldData>`|-|
 
 

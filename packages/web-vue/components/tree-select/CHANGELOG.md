@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.32.1
+
+`2022-07-01`
+
+### 🐛 BugFix
+
+- Fix the problem of selected value in case of modelValue is 0 ([#1370](https://github.com/arco-design/arco-design-vue/pull/1370))
+
+
+## 2.29.1
+
+`2022-06-02`
+
+### 💎 Enhancement
+
+- When the component is out of focus in search mode, the input value will be cleared by default ([#1232](https://github.com/arco-design/arco-design-vue/pull/1232))
+
+
 ## 2.29.0
 
 `2022-05-27`
