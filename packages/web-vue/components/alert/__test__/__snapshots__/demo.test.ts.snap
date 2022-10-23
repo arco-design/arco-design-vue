@@ -2,6 +2,7 @@
 
 exports[`<alert> demo: render [action] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <transition-stub>
       <div role=\\"alert\\" class=\\"arco-alert arco-alert-info\\">
@@ -19,6 +20,7 @@ exports[`<alert> demo: render [action] correctly 1`] = `
       </div>
     </transition-stub>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <transition-stub>
       <div role=\\"alert\\" class=\\"arco-alert arco-alert-info arco-alert-with-title\\">

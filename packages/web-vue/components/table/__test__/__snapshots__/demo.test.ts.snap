@@ -2310,11 +2310,13 @@ exports[`<table> demo: render [resize] correctly 1`] = `
 
 exports[`<table> demo: render [row-selection] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div><span>OnlyCurrent: </span><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
         <!--v-if-->
       </button></div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-type-selection\\">
       <!---->
@@ -2711,14 +2713,18 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
 
 exports[`<table> demo: render [sort] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
           <!--v-if-->
         </button></div>
+      <!---->
       <div class=\\"arco-space-item\\"><span>Filter icon align left: false</span></div>
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
       <!---->
@@ -2827,6 +2833,7 @@ exports[`<table> demo: render [sort] correctly 1`] = `
 
 exports[`<table> demo: render [span] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
       <!---->
@@ -2932,6 +2939,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
       </div>
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-border-cell arco-table-hover\\">
       <!---->
@@ -3037,6 +3045,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
       </div>
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-border-cell arco-table-hover arco-table-type-selection\\">
       <!---->
@@ -3288,7 +3297,9 @@ exports[`<table> demo: render [sticky] correctly 1`] = `
 
 exports[`<table> demo: render [subtree] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>checkStrictly:</span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
       <!--v-if-->
     </button></div>

@@ -2,9 +2,11 @@
 
 exports[`<mention> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"enter something\\"><!----><!----></span>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-mention\\">
       <div class=\\"arco-textarea-wrapper\\">
@@ -20,12 +22,15 @@ exports[`<mention> demo: render [basic] correctly 1`] = `
 
 exports[`<mention> demo: render [prefix] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"input @\\"><!----><!----></span>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"input #\\"><!----><!----></span>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"input $\\"><!----><!----></span>
     <!---->
   </div>

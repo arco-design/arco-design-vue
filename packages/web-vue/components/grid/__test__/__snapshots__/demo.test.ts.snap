@@ -21,6 +21,7 @@ exports[`<grid> demo: render [adaptation-object] correctly 1`] = `
 exports[`<grid> demo: render [basic] correctly 1`] = `
 "<div class=\\"grid-demo-background\\">
   <div class=\\"arco-space arco-space-vertical\\" style=\\"display: block;\\">
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
         <div class=\\"arco-col arco-col-24\\">
@@ -28,6 +29,7 @@ exports[`<grid> demo: render [basic] correctly 1`] = `
         </div>
       </div>
     </div>
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
         <div class=\\"arco-col arco-col-12\\">
@@ -38,6 +40,7 @@ exports[`<grid> demo: render [basic] correctly 1`] = `
         </div>
       </div>
     </div>
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
         <div class=\\"arco-col arco-col-8\\">
@@ -51,6 +54,7 @@ exports[`<grid> demo: render [basic] correctly 1`] = `
         </div>
       </div>
     </div>
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-bottom: 16px;\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
         <div class=\\"arco-col arco-col-6\\">
@@ -67,6 +71,7 @@ exports[`<grid> demo: render [basic] correctly 1`] = `
         </div>
       </div>
     </div>
+    <!---->
     <div class=\\"arco-space-item\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start grid-demo\\">
         <div class=\\"arco-col arco-col-4\\">

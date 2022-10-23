@@ -174,17 +174,29 @@ exports[`<typography> demo: render [paragraph] correctly 1`] = `
 
 exports[`<typography> demo: render [text] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography\\"> Arco Design <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography arco-typography-secondary\\"> Secondary <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography arco-typography-primary\\"> Primary <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography arco-typography-success\\"> Success <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography arco-typography-warning\\"> Warning <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography arco-typography-danger\\"> Danger <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography\\"><b> Bold </b><!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography arco-typography-disabled\\"> Disabled <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography\\"><mark> Mark </mark><!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography\\"><u> Underline </u><!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 10px;\\"><span class=\\"arco-typography\\"><del> Line through </del><!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-typography\\"><code> Code snippet </code><!----><!--v-if--><!--v-if--><!--v-if--></span></div>
 </div>"
 `;
