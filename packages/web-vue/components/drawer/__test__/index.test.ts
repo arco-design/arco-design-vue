@@ -11,7 +11,7 @@ describe('Drawer', () => {
         renderToBody: false,
       },
       slots: {
-        default: '<div>Modal Body</div>',
+        default: '<div>Drawer Body</div>',
       },
     });
 
@@ -27,7 +27,7 @@ describe('Drawer', () => {
         renderToBody: false,
       },
       slots: {
-        default: '<div>Modal Body</div>',
+        default: '<div>Drawer Body</div>',
       },
     });
 

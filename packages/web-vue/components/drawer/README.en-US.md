@@ -47,6 +47,7 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
+|render-to-body|Whether the drawer is mounted under the `body` element|`boolean`|`true`||
 |header|Whether to display high-quality content|`boolean`|`true`|2.33.0|
 |footer|Whether to display the bottom content|`boolean`|`true`|2.11.0|
 |hide-cancel|Whether to hide the cancel button|`boolean`|`false`|2.19.0|
