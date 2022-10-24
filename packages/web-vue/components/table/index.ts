@@ -31,6 +31,13 @@ const Table = Object.assign(_Table, {
 });
 
 export type TableInstance = InstanceType<typeof _Table>;
+export type TheadInstance = InstanceType<typeof _Thead>;
+export type TbodyInstance = InstanceType<typeof _Tbody>;
+export type TrInstance = InstanceType<typeof _Tr>;
+export type ThInstance = InstanceType<typeof _Th>;
+export type TdInstance = InstanceType<typeof _Td>;
+export type TableColumnInstance = InstanceType<typeof _Column>;
+
 export type {
   TableData,
   TableSortable,

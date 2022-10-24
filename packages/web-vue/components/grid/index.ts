@@ -21,6 +21,11 @@ const Grid = Object.assign(_Grid, {
   },
 });
 
+export type GridRowInstance = InstanceType<typeof _GridRow>;
+export type GridColInstance = InstanceType<typeof _GridCol>;
+export type GridInstance = InstanceType<typeof _Grid>;
+export type GridItemInstance = InstanceType<typeof _GridItem>;
+
 export type {
   ResponsiveValue,
   RowProps,

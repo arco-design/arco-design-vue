@@ -16,6 +16,7 @@ const Descriptions = Object.assign(_Descriptions, {
 });
 
 export type DescriptionsInstance = InstanceType<typeof _Descriptions>;
+export type DescriptionsItemInstance = InstanceType<typeof _DescriptionsItem>;
 
 export type { DescData } from './interface';
 
