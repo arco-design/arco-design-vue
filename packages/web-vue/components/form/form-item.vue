@@ -427,7 +427,7 @@ export default defineComponent({
 
       const schema = new Schema(
         {
-          [_field]: rules.map((rule) => {
+          [_field]: rules.map(({ ...rule }) => {
             if (!rule.type && !rule.validator) {
               rule.type = 'string';
             }
