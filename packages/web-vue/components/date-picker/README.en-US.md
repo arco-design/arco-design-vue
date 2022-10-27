@@ -57,6 +57,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |locale|Internationalization configuration, used to cover the locale file in the `datePicker` field|`Record<string, any>`|`-`||
 |hide-trigger|There is no trigger element, only the selection panel is displayed|`boolean`|`false`||
 |allow-clear|Whether to allow clear|`boolean`|`true`||
+|allow-input|Whether to allow input|`boolean`|`true`||
 |readonly|Whether it is read-only|`boolean`|`false`||
 |error|Whether it is an error state|`boolean`|`false`||
 |size|The size of the date picker|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||

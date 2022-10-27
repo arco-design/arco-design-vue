@@ -24,7 +24,7 @@
         :visible="panelVisible"
         :error="error"
         :disabled="mergedDisabled"
-        :readonly="!inputEditable"
+        :readonly="!inputEditable || !allowInput"
         :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-value="inputValue"
@@ -132,6 +132,14 @@ export default defineComponent({
      * @en Whether to allow clear
      * */
     allowClear: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否允许输入
+     * @en Whether to allow input
+     * */
+    allowInput: {
       type: Boolean,
       default: true,
     },

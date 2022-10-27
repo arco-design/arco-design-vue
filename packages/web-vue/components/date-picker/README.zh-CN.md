@@ -55,6 +55,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |locale|国际化配置，用于覆盖locale中的 `datePicker` 字段|`Record<string, any>`|`-`||
 |hide-trigger|没有触发元素，只显示选择面板|`boolean`|`false`||
 |allow-clear|是否允许清除|`boolean`|`true`||
+|allow-input|是否允许输入|`boolean`|`true`||
 |readonly|是否为只读|`boolean`|`false`||
 |error|是否为错误状态|`boolean`|`false`||
 |size|日期选择器的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
