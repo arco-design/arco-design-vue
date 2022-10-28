@@ -4,9 +4,9 @@
       <div
         v-if="!unmountOnClose || computedVisible || mounted"
         v-show="computedVisible || mounted"
-        v-bind="$attrs"
         :class="`${prefixCls}-container`"
         :style="{ zIndex }"
+        v-bind="$attrs"
       >
         <transition :name="maskAnimationName" appear>
           <div
