@@ -887,7 +887,7 @@ export default defineComponent({
     };
 
     const renderLabel = ({ data }: { data: SelectViewValue }) => {
-      if (slots.label || isFunction(props.formatLabel)) {
+      if ((slots.label || isFunction(props.formatLabel)) && data) {
         const optionInfo = optionInfoMap.get(data.value as string);
         if (optionInfo?.raw) {
           return (
@@ -896,7 +896,7 @@ export default defineComponent({
           );
         }
       }
-      return data.label;
+      return data?.label ?? '';
     };
 
     return () => (
