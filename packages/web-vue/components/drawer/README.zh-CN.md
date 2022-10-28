@@ -44,7 +44,8 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |drawer-style|抽屉的样式|`CSSProperties`|`-`||
 |on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
-|esc-to-close|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
+|esc-to-close|是否支持 ESC 键关闭抽屉|`boolean`|`true`|2.15.0|
+|render-to-body|抽屉是否挂载在 `body` 元素下|`boolean`|`true`||
 |header|是否展示头部内容|`boolean`|`true`|2.33.0|
 |footer|是否展示底部内容|`boolean`|`true`|2.11.0|
 |hide-cancel|是否隐藏取消按钮|`boolean`|`false`|2.19.0|

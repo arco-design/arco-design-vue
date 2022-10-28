@@ -45,7 +45,7 @@
               </slot>
             </div>
             <div :class="`${prefixCls}-body`">
-              <slot v-if="mounted" />
+              <slot />
             </div>
             <div v-if="footer" :class="`${prefixCls}-footer`">
               <slot name="footer">
@@ -256,7 +256,7 @@ export default defineComponent({
       type: Function as PropType<() => boolean>,
     },
     /**
-     * @zh 是否支持 ESC 键关闭对话框
+     * @zh 是否支持 ESC 键关闭抽屉
      * @en Whether to support the ESC key to close the dialog
      * @version 2.15.0
      */
@@ -264,7 +264,10 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-
+    /**
+     * @zh 抽屉是否挂载在 `body` 元素下
+     * @en Whether the drawer is mounted under the `body` element
+     */
     renderToBody: {
       type: Boolean,
       default: true,
