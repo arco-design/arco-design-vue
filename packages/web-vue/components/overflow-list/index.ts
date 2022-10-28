@@ -12,6 +12,6 @@ const OverflowList = Object.assign(_OverflowList, {
   },
 });
 
-export type LinkInstance = InstanceType<typeof _OverflowList>;
+export type OverflowListInstance = InstanceType<typeof _OverflowList>;
 
 export default OverflowList;
