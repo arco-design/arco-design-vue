@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0
+
+`2022-10-28`
+
+### 🆕 新增功能
+
+- 增加`split`插槽 ([#1774](https://github.com/arco-design/arco-design-vue/pull/1774))
+
+
 ## 2.30.1
 
 `2022-06-10`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0
+
+`2022-10-28`
+
+### 🐛 问题修复
+
+- 修复清除 model-value 时状态未清除的问题 ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+
+
 ## 2.27.0
 
 `2022-05-13`

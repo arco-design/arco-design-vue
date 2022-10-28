@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0
+
+`2022-10-28`
+
+### 💅 样式更新
+
+- 修复暗黑模式下 stripe 样式问题 ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

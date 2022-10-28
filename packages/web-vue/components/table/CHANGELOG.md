@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0
+
+`2022-10-28`
+
+### 💅 Style
+
+- Fix stripe style issue in dark mode ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

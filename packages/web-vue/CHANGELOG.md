@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.38.0
+
+`2022-10-28`
+
+### 🆕 Feature
+
+- **space:** add `split` slot ([#1774](https://github.com/arco-design/arco-design-vue/pull/1774))
+
+### 🐛 BugFix
+
+- **select:** Fix formatLabel error when there is no data ([#1797](https://github.com/arco-design/arco-design-vue/pull/1797))
+- **modal:** Fix the problem that z-index does not take effect when custom style ([#1796](https://github.com/arco-design/arco-design-vue/pull/1796))
+- **radio:** Fix the problem that the state is not cleared when clearing model-value ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+- **checkbox:** Fix the problem that the state is not cleared when clearing model-value ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+- **form:** Do not modify the original object data of the rule ([#1779](https://github.com/arco-design/arco-design-vue/pull/1779))
+- **modal:** Fix the problem that closing does not unload internal components in function calls ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+- **drawer:** Fix the problem that closing does not unload internal components in function calls ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+
+### 💅 Style
+
+- **table:** Fix stripe style issue in dark mode ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+### 🆎 TypeScript
+
+- Add instance type export ([#1782](https://github.com/arco-design/arco-design-vue/pull/1782))
+
+
 ## 2.38.0-beta.2
 
 `2022-10-21`
