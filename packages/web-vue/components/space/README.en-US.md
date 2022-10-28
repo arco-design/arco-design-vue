@@ -1,3 +1,13 @@
+## zh-CN
+```yaml
+meta:
+  type: 组件
+  category: 布局
+title: 间距 Space
+description: 设置组件之间的间距
+```
+---
+## en-US
 ```yaml
 meta:
   type: Component
@@ -5,8 +15,7 @@ meta:
 title: Space
 description: Set the spacing between components.
 ```
-
-*Auto translate by google.*
+---
 
 @import ./__demo__/basic.md
 
@@ -17,6 +26,8 @@ description: Set the spacing between components.
 @import ./__demo__/align.md
 
 @import ./__demo__/wrap.md
+
+@import ./__demo__/split.md
 
 ## API
 
@@ -30,9 +41,15 @@ description: Set the spacing between components.
 |size|Spacing size, support for setting horizontal and vertical spacing separately|`number \| 'mini' \| 'small' \| 'medium' \| 'large' \| [SpaceSize, SpaceSize]`|`'small'`||
 |wrap|The spacing of the wrapping type, used in the scene of wrapping.|`boolean`|`false`||
 |fill|fill the block|`boolean`|`false`|2.11.0|
+### `<space>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|split|Set separator|-|
 
 
 
+## Type
 ```ts
 type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
 ```

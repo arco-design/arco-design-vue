@@ -2,7 +2,9 @@
 
 exports[`<input> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><span class=\\"arco-icon-hover arco-input-icon-hover arco-input-clear-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!----></span>
   </div>
@@ -11,9 +13,11 @@ exports[`<input> demo: render [basic] correctly 1`] = `
 
 exports[`<input> demo: render [group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-input-group\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 160px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"first\\"><!----><!----></span><span class=\\"arco-input-wrapper\\" style=\\"width: 160px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"second\\"><!----><!----></span></div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-input-group\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 160px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"first\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
       <!----></span></span>
@@ -30,68 +34,85 @@ exports[`<input> demo: render [password] correctly 1`] = `
 
 exports[`<input> demo: render [prefix] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><span class=\\"arco-input-prefix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\">
     <!---->
     <!----></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><!----><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-info-circle\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 20v14m0-16v-4m18 10c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z\\"></path></svg><!----></span></span></div>
 </div>"
 `;
 
 exports[`<input> demo: render [prepend] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-outer arco-input-outer-size-medium\\" style=\\"width: 320px;\\"><span class=\\"arco-input-prepend\\"> +86 </span><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span>
     <!----></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-outer arco-input-outer-size-medium\\" style=\\"width: 320px;\\"><!----><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span><span class=\\"arco-input-append\\"> RMB </span></span></div>
 </div>"
 `;
 
 exports[`<input> demo: render [search] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper arco-input-search\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><!----><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-search\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0-6.248 6.248-6.248 16.379 0 22.627 6.248 6.248 16.38 6.248 22.628 0Zm0 0 8.485 8.485\\"></path></svg></span>
     <!---->
     <!----></span></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-outer arco-input-outer-size-medium arco-input-search\\" style=\\"width: 320px;\\"><!----><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span><span class=\\"arco-input-append\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-only-icon arco-input-search-btn\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-search\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0-6.248 6.248-6.248 16.379 0 22.627 6.248 6.248 16.38 6.248 22.628 0Zm0 0 8.485 8.485\\"></path></svg></span></button></span></span></div>
 </div>"
 `;
 
 exports[`<input> demo: render [search-button] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-outer arco-input-outer-size-medium arco-input-search\\" style=\\"width: 320px;\\"><!----><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span><span class=\\"arco-input-append\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-input-search-btn\\" type=\\"button\\"><!--v-if-->Search</button></span></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-outer arco-input-outer-size-medium arco-input-search\\" style=\\"width: 320px;\\"><!----><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span><span class=\\"arco-input-append\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-input-search-btn\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-search\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0-6.248 6.248-6.248 16.379 0 22.627 6.248 6.248 16.38 6.248 22.628 0Zm0 0 8.485 8.485\\"></path></svg></span> Search </button></span></span></div>
 </div>"
 `;
 
 exports[`<input> demo: render [search-loading] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper arco-input-search\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><!----><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg><!----><!----></span></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-outer arco-input-outer-size-medium arco-input-search\\" style=\\"width: 320px;\\"><!----><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span><span class=\\"arco-input-append\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-loading arco-btn-only-icon arco-input-search-btn\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg></span></button></span></span></div>
 </div>"
 `;
 
 exports[`<input> demo: render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><!----></span></div>
 </div>"
 `;
 
 exports[`<input> demo: render [status] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper arco-input-disabled\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Disabled status\\" disabled=\\"\\"><!----><!----></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper arco-input-disabled\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Disabled status\\" disabled=\\"\\"><!----><!----></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper arco-input-error\\" style=\\"width: 320px;\\"><!----><input aria-invalid=\\"true\\" class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Error status\\"><!----><!----></span></div>
 </div>"
 `;
 
 exports[`<input> demo: render [word-limit] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><span class=\\"arco-input-word-limit\\">0/10</span>
     <!---->
     <!----></span></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\"><!----><span class=\\"arco-input-suffix\\"><span class=\\"arco-input-word-limit\\">0/10</span>
     <!---->
     <!----></span></span>

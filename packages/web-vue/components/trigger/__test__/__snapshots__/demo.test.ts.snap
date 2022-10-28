@@ -9,11 +9,13 @@ exports[`<trigger> demo: render [align-point] correctly 1`] = `
 
 exports[`<trigger> demo: render [arrow] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Click Me
     </button>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Click Me (Arrow)
     </button>
@@ -24,14 +26,17 @@ exports[`<trigger> demo: render [arrow] correctly 1`] = `
 
 exports[`<trigger> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>Hover Me</span>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Click Me
     </button>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Focus on me\\"><!----><!----></span>
     <!---->
   </div>
@@ -57,16 +62,19 @@ exports[`<trigger> demo: render [scroll] correctly 1`] = `
 
 exports[`<trigger> demo: render [translate] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->BOTTOM
     </button>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->BOTTOM OFFSET[100, 20]
     </button>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->BOTTOM OFFSET[-100, 20]
     </button>

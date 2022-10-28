@@ -245,6 +245,7 @@ exports[`<result> demo: render [403] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\">Access to this resource on the server is denied.</div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
@@ -435,6 +436,7 @@ exports[`<result> demo: render [404] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\">Whoops, that page is gone.</div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
@@ -668,6 +670,7 @@ exports[`<result> demo: render [500] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\">This page isn’t working.</div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
@@ -720,9 +723,11 @@ exports[`<result> demo: render [basic] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\">This is subtitle content</div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Again
         </button></div>
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
@@ -743,9 +748,11 @@ exports[`<result> demo: render [custom] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\">This is subtitle content</div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Again
         </button></div>
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
@@ -766,6 +773,7 @@ exports[`<result> demo: render [error] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\"> This is subtitle content </div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
@@ -786,6 +794,7 @@ exports[`<result> demo: render [success] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\"> This is subtitle content </div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
@@ -809,6 +818,7 @@ exports[`<result> demo: render [warning] correctly 1`] = `
   <div class=\\"arco-result-subtitle\\"> This is subtitle content </div>
   <div class=\\"arco-result-extra\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if-->Back
         </button></div>
