@@ -34,8 +34,11 @@ export default defineComponent({
     const checkboxStatus = computed(() => {
       let checked = false;
       let indeterminate = false;
-      const selectedNumber = tableCtx.currentSelectedRowKeys?.length ?? 0;
+      const totalRowNumber = tableCtx.currentAllRowKeys?.length ?? 0;
       const totalEnabledNumber = tableCtx.currentAllEnabledRowKeys?.length ?? 0;
+      const disabledNumber = totalRowNumber - totalEnabledNumber;
+      const selectedNumber =
+        (tableCtx.currentSelectedRowKeys?.length ?? 0) - disabledNumber;
       if (selectedNumber > 0) {
         if (selectedNumber >= totalEnabledNumber) {
           checked = true;
