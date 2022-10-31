@@ -1,4 +1,5 @@
 ## zh-CN
+
 ```yaml
 meta:
   type: 组件
@@ -6,8 +7,11 @@ meta:
 title: 头像 Avatar
 description: 用作头像显示，可以为图片、图标或字符形式展示。
 ```
+
 ---
+
 ## en-US
+
 ```yaml
 meta:
   type: Component
@@ -15,17 +19,20 @@ meta:
 title: Avatar
 description: Used as an avatar, it can be displayed in the form of pictures, icons or characters.
 ```
+
 ---
 
-@import ./__demo__/basic.md
+@import ./\_\_demo\_\_/basic.md
 
-@import ./__demo__/size.md
+@import ./\_\_demo\_\_/size.md
 
-@import ./__demo__/group.md
+@import ./\_\_demo\_\_/group.md
 
-@import ./__demo__/icon.md
+@import ./\_\_demo\_\_/icon.md
 
-@import ./__demo__/fit.md
+@import ./\_\_demo\_\_/fit.md
+
+@import ./\_\_demo\_\_/image-url.md
 
 ## API
 
