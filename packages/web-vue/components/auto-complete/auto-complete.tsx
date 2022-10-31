@@ -146,7 +146,7 @@ export default defineComponent({
    * @binding {OptionInfo} data
    * @version 2.13.0
    */
-  setup(props, { emit, attrs, slots }) {
+  setup(props, { emit, attrs, slots, expose }) {
     const { modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('auto-complete');
     const { mergedDisabled, eventHandlers } = useFormItem({
@@ -282,6 +282,17 @@ export default defineComponent({
         </SelectDropdown>
       );
     };
+
+    const inputBlur = () => {
+      inputRef.value?.blur();
+    };
+    const inputFocus = () => {
+      inputRef.value?.focus();
+    };
+    expose({
+      blur: inputBlur,
+      focus: inputFocus,
+    });
 
     return () => (
       <Trigger
