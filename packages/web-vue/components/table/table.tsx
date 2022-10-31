@@ -1460,7 +1460,7 @@ export default defineComponent({
           class={[
             `${prefixCls}-tr-summary`,
             isFunction(props.rowClass)
-              ? props.rowClass(record, rowIndex)
+              ? props.rowClass(record.raw, rowIndex)
               : props.rowClass,
           ]}
           // @ts-ignore
