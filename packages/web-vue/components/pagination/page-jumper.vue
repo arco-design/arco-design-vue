@@ -70,7 +70,7 @@ export default defineComponent({
 
     const handleFormatter = (value: number) => {
       const parseIntVal = parseInt(value.toString(), 10);
-      return Number.isNaN(parseIntVal) ? undefined : parseIntVal;
+      return Number.isNaN(parseIntVal) ? undefined : String(parseIntVal);
     };
 
     const handleChange = (value: number) => {
