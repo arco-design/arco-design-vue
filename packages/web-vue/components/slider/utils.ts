@@ -6,7 +6,7 @@ export const getOffsetPercent = (
   value: number,
   [min, max]: [number, number]
 ): string => {
-  const percent = (value - min) / (max - min);
+  const percent = Math.max((value - min) / (max - min), 0);
   return `${NP.round(percent * 100, 2)}%`;
 };
 
