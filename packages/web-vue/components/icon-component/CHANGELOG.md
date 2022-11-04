@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.1
+
+`2022-11-04`
+
+### 💎 Enhancement
+
+- Replace the flying book icon ([#1835](https://github.com/arco-design/arco-design-vue/pull/1835))
+
+
 ## 2.35.0
 
 `2022-08-12`

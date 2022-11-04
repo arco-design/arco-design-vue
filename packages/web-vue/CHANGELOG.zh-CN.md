@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 问题修复
+
+- **input-tag:** 修复删除键会删除不可用选项的问题 ([#1836](https://github.com/arco-design/arco-design-vue/pull/1836))
+- 修复虚拟列表的一些问题 ([#1834](https://github.com/arco-design/arco-design-vue/pull/1834))
+- **slider:** 修复滑动输入条设置最小值起始位置错误 ([#1826](https://github.com/arco-design/arco-design-vue/pull/1826))
+- **pagination:** 修复 jumper 提示警告的问题 ([#1822](https://github.com/arco-design/arco-design-vue/pull/1822))
+- **input:** 修复某些场景下组件光标报错的问题 ([#1820](https://github.com/arco-design/arco-design-vue/pull/1820))
+- **date-picker:** 修复内部属性错误问题 ([#1818](https://github.com/arco-design/arco-design-vue/pull/1818))
+- **radio:** 修复 `radio-group` 重置值时状态没有重置的问题 ([#1813](https://github.com/arco-design/arco-design-vue/pull/1813))
+- **table:** 修复rowClass为函数时的参数 ([#1812](https://github.com/arco-design/arco-design-vue/pull/1812))
+
+### 💎 功能优化
+
+- **icon:** 替换飞书图标 ([#1835](https://github.com/arco-design/arco-design-vue/pull/1835))
+
+
 ## 2.38.0
 
 `2022-10-28`
