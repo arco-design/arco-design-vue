@@ -113,9 +113,7 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
 
-    const computedValue = computed(() => {
-      return props.modelValue ?? _value.value;
-    });
+    const computedValue = ref(props.modelValue ?? _value.value);
 
     const options = computed(() => {
       return (props.options ?? []).map((option) => {
@@ -154,6 +152,19 @@ export default defineComponent({
         _value.value = cur;
       }
     });
+
+    watch(
+      () => props.modelValue,
+      (val) => {
+        computedValue.value = val as string | number | boolean;
+      }
+    );
+    watch(
+      () => _value.value,
+      (val) => {
+        computedValue.value = val as string | number | boolean;
+      }
+    );
 
     const cls = computed(() => [
       `${prefixCls}${props.type === 'button' ? '-button' : ''}`,
