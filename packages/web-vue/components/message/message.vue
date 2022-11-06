@@ -1,6 +1,8 @@
 <template>
   <li
     role="alert"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
     :class="[
       prefixCls,
       `${prefixCls}-${type}`,
@@ -86,31 +88,44 @@ export default defineComponent({
       emit('close');
     };
 
-    onMounted(() => {
+    const startTimer = () =>{
       if (props.duration > 0) {
         timer = window.setTimeout(handleClose, props.duration);
       }
+    }
+
+    const clearTimer = () =>{
+      if (timer) {
+        window.clearTimeout(timer);
+        timer = 0;
+      }
+    }
+
+    onMounted(() => {
+      startTimer()
     });
 
     onUpdated(() => {
       if (props.resetOnUpdate) {
-        if (timer) {
-          window.clearTimeout(timer);
-          timer = 0;
-        }
-        if (props.duration > 0) {
-          timer = window.setTimeout(handleClose, props.duration);
-        }
+        clearTimer()
+        startTimer()
       }
     });
 
     onUnmounted(() => {
-      if (timer) {
-        window.clearTimeout(timer);
-      }
+      clearTimer()
     });
 
+    const handleMouseEnter = () =>{
+      clearTimer()
+    }
+
+    const handleMouseLeave = () =>{
+      startTimer()
+    }
     return {
+      handleMouseEnter,
+      handleMouseLeave,
       prefixCls,
       handleClose,
     };
