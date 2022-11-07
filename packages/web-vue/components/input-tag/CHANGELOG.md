@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- Fixed delete key deleting unavailable options ([#1836](https://github.com/arco-design/arco-design-vue/pull/1836))
+
+
 ## 2.36.1
 
 `2022-09-09`

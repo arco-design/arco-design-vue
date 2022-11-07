@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- Fix internal property error issue ([#1818](https://github.com/arco-design/arco-design-vue/pull/1818))
+
+
 ## 2.38.0-beta.2
 
 `2022-10-21`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- Fix the problem of component cursor reporting error in some scenarios ([#1820](https://github.com/arco-design/arco-design-vue/pull/1820))
+
+
 ## 2.37.3
 
 `2022-09-23`

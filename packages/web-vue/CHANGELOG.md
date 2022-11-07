@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- **input-tag:** Fixed delete key deleting unavailable options ([#1836](https://github.com/arco-design/arco-design-vue/pull/1836))
+- Fixed some issues with virtual lists ([#1834](https://github.com/arco-design/arco-design-vue/pull/1834))
+- **slider:** fix the slider show wrong position when set min value ([#1826](https://github.com/arco-design/arco-design-vue/pull/1826))
+- **pagination:** Fix jumper prompt warning problem ([#1822](https://github.com/arco-design/arco-design-vue/pull/1822))
+- **input:** Fix the problem of component cursor reporting error in some scenarios ([#1820](https://github.com/arco-design/arco-design-vue/pull/1820))
+- **date-picker:** Fix internal property error issue ([#1818](https://github.com/arco-design/arco-design-vue/pull/1818))
+- **radio:** Fix `radio-group` state not reset when resetting value ([#1813](https://github.com/arco-design/arco-design-vue/pull/1813))
+- **table:** fix param when rowClass as function ([#1812](https://github.com/arco-design/arco-design-vue/pull/1812))
+
+### 💎 Enhancement
+
+- **icon:** Replace the flying book icon ([#1835](https://github.com/arco-design/arco-design-vue/pull/1835))
+
+
 ## 2.38.0
 
 `2022-10-28`

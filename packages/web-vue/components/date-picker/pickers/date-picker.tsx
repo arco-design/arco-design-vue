@@ -50,7 +50,7 @@ export default defineComponent({
      * @zh 时间显示的参数，参考 [TimePickerProps](/vue/component/time-picker)
      * @en Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)
      * */
-    timepickerProps: {
+    timePickerProps: {
       type: Object as PropType<Partial<TimePickerProps>>,
     },
     /**
