@@ -3,6 +3,7 @@ import {
   ComponentPublicInstance,
   defineComponent,
   getCurrentInstance,
+  onBeforeUnmount,
   onMounted,
   ref,
 } from 'vue';
@@ -26,13 +27,15 @@ export default defineComponent({
 
     const setItemSize = () => {
       // @ts-ignore
-      const ele = itemRef.value?.$el ?? (itemRef.value as HTMLElement);
-      if (!props.hasItemSize(key) && ele?.offsetHeight) {
-        props.setItemSize(key, ele.offsetHeight);
+      const ele = (itemRef.value?.$el ?? itemRef.value) as HTMLElement;
+      const height = ele?.getBoundingClientRect?.().height ?? ele?.offsetHeight;
+      if (height) {
+        props.setItemSize(key, height);
       }
     };
 
     onMounted(() => setItemSize());
+    onBeforeUnmount(() => setItemSize());
 
     return () => {
       const child = getFirstComponent(slots.default?.());

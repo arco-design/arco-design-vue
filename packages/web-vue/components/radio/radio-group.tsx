@@ -11,7 +11,13 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { Size, Direction } from '../_utils/constant';
 import { radioGroupKey, RadioType } from './context';
-import { isFunction, isNumber, isString } from '../_utils/is';
+import {
+  isFunction,
+  isNull,
+  isNumber,
+  isString,
+  isUndefined,
+} from '../_utils/is';
 import { useFormItem } from '../_hooks/use-form-item';
 import { RadioOption } from './interface';
 import Radio from './radio';
@@ -105,7 +111,7 @@ export default defineComponent({
    */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('radio-group');
-    const { size, type, disabled } = toRefs(props);
+    const { size, type, disabled, modelValue } = toRefs(props);
     const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
       size,
       disabled,
@@ -113,7 +119,7 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
 
-    const computedValue = ref(props.modelValue ?? _value.value);
+    const computedValue = computed(() => props.modelValue ?? _value.value);
 
     const options = computed(() => {
       return (props.options ?? []).map((option) => {
@@ -153,18 +159,11 @@ export default defineComponent({
       }
     });
 
-    watch(
-      () => props.modelValue,
-      (val) => {
-        computedValue.value = val as string | number | boolean;
+    watch(modelValue, (val) => {
+      if (isUndefined(val) || isNull(val)) {
+        _value.value = '';
       }
-    );
-    watch(
-      () => _value.value,
-      (val) => {
-        computedValue.value = val as string | number | boolean;
-      }
-    );
+    });
 
     const cls = computed(() => [
       `${prefixCls}${props.type === 'button' ? '-button' : ''}`,
