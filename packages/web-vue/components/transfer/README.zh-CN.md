@@ -1,3 +1,4 @@
+## zh-CN
 ```yaml
 meta:
   type: 组件
@@ -5,6 +6,16 @@ meta:
 title: 数据穿梭框 Transfer
 description: 两栏布局的多选组件，将元素从一栏即时移到另一栏。
 ```
+---
+## en-US
+```yaml
+meta:
+  type: Component
+  category: Data Entry
+title: Transfer
+description: A two-column multi-select component that moves elements from one column to another in real time.
+```
+---
 
 @import ./__demo__/basic.md
 
@@ -32,6 +43,7 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 |simple|是否开启简单模式（点击选项即移动）|`boolean`|`false`|
 |one-way|是否开启单向模式（仅可移动到目标选择框）|`boolean`|`false`|
 |show-search|是否显示搜索框|`boolean`|`false`|
+|show-select-all|是否展示全选勾选框|`boolean`|`true`|
 |title|源选择框和目标选择框的标题|`string[]`|`['Source', 'Target']`|
 ### `<transfer>` Events
 

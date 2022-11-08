@@ -8,6 +8,7 @@
       :data="dataInfo.sourceInfo.data"
       :selected="computedSelected"
       :show-search="showSearch"
+      :show-select-all="showSelectAll"
       :simple="simple"
       @search="handleSearch"
     />
@@ -47,6 +48,7 @@
       :selected="computedSelected"
       :allow-clear="oneWay"
       :show-search="showSearch"
+      :show-select-all="showSelectAll"
       :simple="simple"
       @search="handleSearch"
     />
@@ -154,6 +156,14 @@ export default defineComponent({
     showSearch: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 是否展示全选勾选框
+     * @en Whether show select all checkbox on the header
+     */
+    showSelectAll: {
+      type: Boolean,
+      default: true,
     },
     /**
      * @zh 源选择框和目标选择框的标题
