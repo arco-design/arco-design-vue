@@ -19,7 +19,6 @@ export interface TableContext {
   ) => void;
   slots: Slots;
   sorter: Sorter | undefined;
-  currentAllRowKeys: BaseType[];
   currentAllEnabledRowKeys: BaseType[];
   currentSelectedRowKeys: BaseType[];
   checkStrictly: boolean;
