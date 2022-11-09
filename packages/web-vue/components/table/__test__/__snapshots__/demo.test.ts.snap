@@ -2335,7 +2335,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                 </colgroup>
                 <thead>
                   <tr class=\\"arco-table-tr\\">
-                    <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox arco-checkbox-indeterminate\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </th>
                     <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
@@ -2365,8 +2365,8 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <tr class=\\"arco-table-tr arco-table-tr-checked\\">
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"false\\" class=\\"arco-checkbox arco-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><svg aria-hidden=\\"true\\" focusable=\\"false\\" viewBox=\\"0 0 1024 1024\\" width=\\"200\\" height=\\"200\\" fill=\\"currentColor\\" class=\\"arco-checkbox-icon-check\\"><path d=\\"M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z\\" p-id=\\"840\\"></path></svg></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Jane Doe</span></span></td>
@@ -2375,8 +2375,8 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">jane.doe@example.com</span></span></td>
                   </tr>
                   <!---->
-                  <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <tr class=\\"arco-table-tr arco-table-tr-checked\\">
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"false\\" class=\\"arco-checkbox arco-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><svg aria-hidden=\\"true\\" focusable=\\"false\\" viewBox=\\"0 0 1024 1024\\" width=\\"200\\" height=\\"200\\" fill=\\"currentColor\\" class=\\"arco-checkbox-icon-check\\"><path d=\\"M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z\\" p-id=\\"840\\"></path></svg></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Alisa Ross</span></span></td>
