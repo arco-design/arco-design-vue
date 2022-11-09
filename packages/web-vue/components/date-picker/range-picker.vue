@@ -644,8 +644,14 @@ export default defineComponent({
     );
 
     watch(panelVisible, (newVisible) => {
-      startHeaderMode.value = undefined;
-      endHeaderMode.value = undefined;
+      if (mode.value === 'year') {
+        startHeaderMode.value = 'year';
+        endHeaderMode.value = 'year';
+      } else {
+        startHeaderMode.value = undefined;
+        endHeaderMode.value = undefined;
+      }
+
       setProcessValue(undefined);
       setPreviewValue(undefined);
       // open
