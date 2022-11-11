@@ -352,16 +352,18 @@ export default defineComponent({
           colspan: colSpan > 1 ? colSpan : undefined,
           rowspan: rowSpan > 1 ? rowSpan : undefined,
         },
-        [
-          renderCell(),
-          !filterIconAlignLeft.value && renderFilter(),
-          props.resizable && (
-            <span
-              class={`${prefixCls}-column-handle`}
-              onMousedown={handleMouseDown}
-            />
-          ),
-        ]
+        {
+          default: () => [
+            renderCell(),
+            !filterIconAlignLeft.value && renderFilter(),
+            props.resizable && (
+              <span
+                class={`${prefixCls}-column-handle`}
+                onMousedown={handleMouseDown}
+              />
+            ),
+          ],
+        }
       );
     };
   },
