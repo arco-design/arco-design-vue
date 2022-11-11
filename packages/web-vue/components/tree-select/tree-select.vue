@@ -444,6 +444,29 @@ export default defineComponent({
    * @en Custom empty data display
    * @slot empty
    */
+  /**
+   * @zh 定制 tree 组件的 switcher 图标
+   * @en Custom switcher icon for the tree component
+   * @slot tree-slot-switcher-icon
+   */
+  /**
+   * @zh 定制 tree 组件的节点图标
+   * @en Custom node icon for the tree component
+   * @slot tree-slot-icon
+   * @binding {TreeNodeData} node
+   * @version 2.18.0
+   */
+
+  /**
+   * @zh 定制 tree 组件的节点标题
+   * @en Custom the node title of the tree component
+   * @slot tree-slot-title
+   */
+  /**
+   * @zh 定制 tree 组件的渲染额外节点内容
+   * @en Render additional node content of the tree component
+   * @slot tree-slot-extra
+   */
   setup(props, { emit }) {
     const {
       defaultValue,

@@ -83,12 +83,16 @@ description: 可以对树形结构数据进行选择。
 |clear|点击清除时触发|-|
 ### `<tree-select>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|trigger|自定义触发元素|-|
-|prefix|前缀|-|
-|label|自定义选择框显示|data: `mixed`|
-|loader|定制加载中显示的内容|-|
-|empty|定制空数据展示|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|trigger|自定义触发元素|-||
+|prefix|前缀|-||
+|label|自定义选择框显示|data: `mixed`||
+|loader|定制加载中显示的内容|-||
+|empty|定制空数据展示|-||
+|tree-slot-extra|定制 tree 组件的渲染额外节点内容|-||
+|tree-slot-title|定制 tree 组件的节点标题|-||
+|tree-slot-icon|定制 tree 组件的节点图标|node: `TreeNodeData`|2.18.0|
+|tree-slot-switcher-icon|定制 tree 组件的 switcher 图标|-||
 
 

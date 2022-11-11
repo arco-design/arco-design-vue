@@ -85,12 +85,16 @@ description: The tree structure data can be selected.
 |clear|Triggered when clear is clicked|-|
 ### `<tree-select>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|trigger|Custom trigger element|-|
-|prefix|Prefix|-|
-|label|Custom Label|data: `mixed`|
-|loader|Customizing the content displayed during loading|-|
-|empty|Custom empty data display|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|trigger|Custom trigger element|-||
+|prefix|Prefix|-||
+|label|Custom Label|data: `mixed`||
+|loader|Customizing the content displayed during loading|-||
+|empty|Custom empty data display|-||
+|tree-slot-extra|Render additional node content of the tree component|-||
+|tree-slot-title|Custom the node title of the tree component|-||
+|tree-slot-icon|Custom node icon for the tree component|node: `TreeNodeData`|2.18.0|
+|tree-slot-switcher-icon|Custom switcher icon for the tree component|-||
 
 
