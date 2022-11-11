@@ -89,21 +89,22 @@ description: 用于数据收集展示、分析整理、操作处理。
 |summary|显示表尾总结行|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|总结行的首列文字|`string`|`'Summary'`|2.21.0|
 |summary-span-method|总结行的单元格合并方法|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
-|selected-keys|已选择的行（受控模式）优先于 `rowSelection`|`BaseType[]`|`-`|2.25.0|
-|default-selected-keys|默认已选择的行（非受控模式）优先于 `rowSelection`|`BaseType[]`|`-`|2.25.0|
-|expanded-keys|显示的展开行、子树（受控模式）优先于 `expandable`|`BaseType[]`|`-`|2.25.0|
-|default-expanded-keys|默认显示的展开行、子树（非受控模式）优先于 `expandable`|`BaseType[]`|`-`|2.25.0|
+|selected-keys|已选择的行（受控模式）优先于 `rowSelection`|`(string \| number)[]`|`-`|2.25.0|
+|default-selected-keys|默认已选择的行（非受控模式）优先于 `rowSelection`|`(string \| number)[]`|`-`|2.25.0|
+|expanded-keys|显示的展开行、子树（受控模式）优先于 `expandable`|`(string \| number)[]`|`-`|2.25.0|
+|default-expanded-keys|默认显示的展开行、子树（非受控模式）优先于 `expandable`|`(string \| number)[]`|`-`|2.25.0|
 |default-expand-all-rows|是否默认展开所有的行|`boolean`|`false`|2.25.0|
 |sticky-header|是否开启表头吸顶|`boolean\|number`|`false`|2.30.0|
+|scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.38.0|
 ### `<table>` Events
 
 |事件名|描述|参数|版本|
 |---|---|---|:---|
-|expand|点击展开行时触发|rowKey: `BaseType`<br>record: `TableData`||
-|expanded-change|已展开的数据行发生改变时触发|rowKeys: `BaseType[]`||
-|select|点击行选择器时触发|rowKeys: `BaseType[]`<br>rowKey: `BaseType`<br>record: `TableData`||
+|expand|点击展开行时触发|rowKey: `string \| number`<br>record: `TableData`||
+|expanded-change|已展开的数据行发生改变时触发|rowKeys: `(string \| number)[]`||
+|select|点击行选择器时触发|rowKeys: `string \| number[]`<br>rowKey: `string \| number`<br>record: `TableData`||
 |select-all|点击全选选择器时触发|checked: `boolean`||
-|selection-change|已选择的数据行发生改变时触发|rowKeys: `BaseType[]`||
+|selection-change|已选择的数据行发生改变时触发|rowKeys: `(string \| number)[]`||
 |sorter-change|排序规则发生改变时触发|dataIndex: `string`<br>direction: `string`||
 |filter-change|过滤选项发生改变时触发|dataIndex: `string`<br>filteredValues: `string[]`||
 |page-change|表格分页发生改变时触发|page: `number`||
@@ -118,9 +119,9 @@ description: 用于数据收集展示、分析整理、操作处理。
 |方法名|描述|参数|返回值|版本|
 |---|---|---|---|:---|
 |selectAll|设置全选状态|checked: ` boolean `|-|2.22.0|
-|select|设置行选择器状态|rowKey: ` BaseType \| BaseType[] `<br>checked: ` boolean `|-|2.31.0|
+|select|设置行选择器状态|rowKey: ` string \| number \| (string \| number)[] `<br>checked: ` boolean `|-|2.31.0|
 |expandAll|设置全部展开状态|checked: ` boolean `|-|2.31.0|
-|expand|设置展开状态|rowKey: ` BaseType \| BaseType[] `<br>checked: ` boolean `|-|2.31.0|
+|expand|设置展开状态|rowKey: ` string \| number \| (string \| number)[] `<br>checked: ` boolean `|-|2.31.0|
 |resetFilters|重置列的筛选器|dataIndex: ` string \| string[] `|-|2.31.0|
 |clearFilters|清空列的筛选器|dataIndex: ` string \| string[] `|-|2.31.0|
 |resetSorters|重置列的排序|-|-|2.31.0|

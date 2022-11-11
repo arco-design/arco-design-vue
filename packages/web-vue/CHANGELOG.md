@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.3
+
+`2022-11-11`
+
+### 🐛 BugFix
+
+- **table:** Fixed an issue where a warning would appear when customizing table elements in some scenarios
+
+
 ## 2.38.2
 
 `2022-11-09`

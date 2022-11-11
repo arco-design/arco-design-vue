@@ -31,19 +31,20 @@ description: The most basic list display, which can carry text, lists, pictures,
 
 ### `<list>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|data|List data, need to be used with `item` slot at the same time|`any[]`|`-`|
-|size|List size|`'small' \| 'medium' \| 'large'`|`'medium'`|
-|bordered|Whether to show the border|`boolean`|`true`|
-|split|Whether to show the dividing line|`boolean`|`true`|
-|loading|Whether it is loading state|`boolean`|`false`|
-|hoverable|Whether to display the selected style|`boolean`|`false`|
-|pagination-props|List pagination configuration|`PaginationProps`|`-`|
-|grid-props|List grid configuration|`object`|`-`|
-|max-height|Maximum height of the list|`number`|`0`|
-|bottom-offset|Trigger the distance threshold to reach the bottom|`number`|`0`|
-|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|data|List data, need to be used with `item` slot at the same time|`any[]`|`-`||
+|size|List size|`'small' \| 'medium' \| 'large'`|`'medium'`||
+|bordered|Whether to show the border|`boolean`|`true`||
+|split|Whether to show the dividing line|`boolean`|`true`||
+|loading|Whether it is loading state|`boolean`|`false`||
+|hoverable|Whether to display the selected style|`boolean`|`false`||
+|pagination-props|List pagination configuration|`PaginationProps`|`-`||
+|grid-props|List grid configuration|`object`|`-`||
+|max-height|Maximum height of the list|`number`|`0`||
+|bottom-offset|Trigger the distance threshold to reach the bottom|`number`|`0`||
+|virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
+|scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|
 ### `<list>` Events
 
 |Event Name|Description|Parameters|
