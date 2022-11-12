@@ -1,13 +1,13 @@
 <template>
   <li
     role="alert"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
     :class="[
       prefixCls,
       `${prefixCls}-${type}`,
       { [`${prefixCls}-closable`]: closable },
     ]"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <span v-if="showIcon" :class="`${prefixCls}-icon`">
       <slot name="icon">
@@ -78,6 +78,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    resetOnHover: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['close'],
   setup(props, { emit }) {
@@ -88,41 +92,45 @@ export default defineComponent({
       emit('close');
     };
 
-    const startTimer = () =>{
+    const startTimer = () => {
       if (props.duration > 0) {
         timer = window.setTimeout(handleClose, props.duration);
       }
-    }
+    };
 
-    const clearTimer = () =>{
+    const clearTimer = () => {
       if (timer) {
         window.clearTimeout(timer);
         timer = 0;
       }
-    }
+    };
 
     onMounted(() => {
-      startTimer()
+      startTimer();
     });
 
     onUpdated(() => {
       if (props.resetOnUpdate) {
-        clearTimer()
-        startTimer()
+        clearTimer();
+        startTimer();
       }
     });
 
     onUnmounted(() => {
-      clearTimer()
+      clearTimer();
     });
 
-    const handleMouseEnter = () =>{
-      clearTimer()
-    }
+    const handleMouseEnter = () => {
+      if (props.resetOnHover) {
+        clearTimer();
+      }
+    };
 
-    const handleMouseLeave = () =>{
-      startTimer()
-    }
+    const handleMouseLeave = () => {
+      if (props.resetOnHover) {
+        startTimer();
+      }
+    };
     return {
       handleMouseEnter,
       handleMouseLeave,

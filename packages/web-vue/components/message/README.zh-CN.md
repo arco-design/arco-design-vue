@@ -61,6 +61,7 @@ Message._context = app._context;
 |closable|是否显示关闭按钮|`boolean`|`false`|
 |duration|消息显示的持续时间|`number`|`-`|
 |onClose|关闭时的回调函数|`(id: number \| string) => void`|`-`|
+|resetOnHover|设置鼠标移入后不会自动关闭|`boolean`|`false`|
 
 
 
