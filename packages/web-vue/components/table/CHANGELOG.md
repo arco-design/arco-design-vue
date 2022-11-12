@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.38.3
+
+`2022-11-11`
+
+### 🐛 BugFix
+
+- Fixed an issue where a warning would appear when customizing table elements in some scenarios
+
+
+## 2.38.2
+
+`2022-11-09`
+
+### 🐛 BugFix
+
+- Fix row selector state error ([#1849](https://github.com/arco-design/arco-design-vue/pull/1849))
+
+
 ## 2.38.1
 
 `2022-11-04`

@@ -276,7 +276,9 @@ export default defineComponent({
           rowspan: props.rowSpan > 1 ? props.rowSpan : undefined,
           colspan: props.colSpan > 1 ? props.colSpan : undefined,
         },
-        [renderCell()]
+        {
+          default: () => [renderCell()],
+        }
       );
     };
   },

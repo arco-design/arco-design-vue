@@ -1,4 +1,3 @@
-## zh-CN
 ```yaml
 meta:
   type: 组件
@@ -6,16 +5,6 @@ meta:
 title: 间距 Space
 description: 设置组件之间的间距
 ```
----
-## en-US
-```yaml
-meta:
-  type: Component
-  category: Layout
-title: Space
-description: Set the spacing between components.
-```
----
 
 @import ./__demo__/basic.md
 

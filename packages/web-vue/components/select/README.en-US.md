@@ -80,6 +80,7 @@ description: When users need to select one or more from a group of similar data,
 |search-delay|Delay time to trigger search event|`number`|`500`|2.18.0|
 |limit|Maximum number of choices in multiple choice|`number`|`0`|2.18.0|
 |field-names|Customize fields in `SelectOptionData`|`SelectFieldNames`|`-`|2.22.0|
+|scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|
 ### `<select>` Events
 
 |Event Name|Description|Parameters|version|

@@ -328,6 +328,11 @@ export default defineComponent({
     fieldNames: {
       type: Object as PropType<SelectFieldNames>,
     },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.38.0
+     */
     scrollbar: {
       type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
       default: true,

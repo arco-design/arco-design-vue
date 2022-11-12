@@ -1292,7 +1292,6 @@ export default defineComponent({
         filterIconAlignLeft,
         resizingColumn,
         checkStrictly,
-        currentAllRowKeys,
         currentAllEnabledRowKeys,
         currentSelectedRowKeys,
         addColumn,
