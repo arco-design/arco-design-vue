@@ -39,11 +39,13 @@ export default defineComponent({
         type = props.file.file.type;
       } else {
         const extension = props.file.name?.split('.')[1] ?? '';
-        if (['png', 'jpg', 'jpeg', 'bmp', 'gif'].includes(extension)) {
+        if (['png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp'].includes(extension)) {
           type = 'image';
-        } else if (['mp4', 'm2v', 'mkv'].includes(extension)) {
+        } else if (['mp4', 'm2v', 'mkv', 'm4v', 'mov'].includes(extension)) {
           type = 'video';
-        } else if (['mp3', 'wav', 'wmv'].includes(extension)) {
+        } else if (
+          ['mp3', 'wav', 'wmv', 'm4a', 'acc', 'flac'].includes(extension)
+        ) {
           type = 'audio';
         }
       }
