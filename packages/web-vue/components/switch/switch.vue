@@ -138,7 +138,9 @@ export default defineComponent({
      */
     beforeChange: {
       type: Function as PropType<
-        (newValue: boolean) => Promise<boolean | void> | boolean | void
+        (
+          newValue: string | number | boolean
+        ) => Promise<boolean | void> | boolean | void
       >,
     },
   },
@@ -214,18 +216,17 @@ export default defineComponent({
         return;
       }
       const checked = !computedCheck.value;
+      const checkedValue = checked ? props.checkedValue : props.uncheckedValue;
       const shouldChange = props.beforeChange;
 
-      if (
-        (shouldChange && isPromise(shouldChange)) ||
-        isFunction(shouldChange)
-      ) {
+      if (isFunction(shouldChange)) {
         _loading.value = true;
         try {
-          const result = await shouldChange(checked);
-          if (result) {
+          const result = await shouldChange(checkedValue);
+          if (result ?? true) {
             handleChange(checked, ev);
           }
+        } catch (error) {
         } finally {
           _loading.value = false;
         }
