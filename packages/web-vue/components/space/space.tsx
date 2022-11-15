@@ -97,7 +97,7 @@ export default defineComponent({
       }
     }
 
-    const getMarginStyle = (index: number, isLast: boolean): CSSProperties => {
+    const getMarginStyle = (isLast: boolean): CSSProperties => {
       const style: CSSProperties = {};
 
       const marginRight = `${getMargin(
@@ -133,11 +133,16 @@ export default defineComponent({
             return (
               <Fragment key={child.key ?? `item-${index}`}>
                 {shouldRenderSplit && (
-                  <div class={`${prefixCls}-item-split`}>{slots.split?.()}</div>
+                  <div
+                    class={`${prefixCls}-item-split`}
+                    style={getMarginStyle(false)}
+                  >
+                    {slots.split?.()}
+                  </div>
                 )}
                 <div
                   class={`${prefixCls}-item`}
-                  style={getMarginStyle(index, index === children.length - 1)}
+                  style={getMarginStyle(index === children.length - 1)}
                 >
                   {child}
                 </div>

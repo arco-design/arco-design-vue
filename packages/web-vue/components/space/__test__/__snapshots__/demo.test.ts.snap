@@ -72,7 +72,7 @@ exports[`<space> demo: render [split] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item1
     </button></div>
-  <div class=\\"arco-space-item-split\\">
+  <div class=\\"arco-space-item-split\\" style=\\"margin-right: 8px;\\">
     <div role=\\"separator\\" class=\\"arco-divider arco-divider-vertical\\">
       <!---->
     </div>
@@ -80,7 +80,7 @@ exports[`<space> demo: render [split] correctly 1`] = `
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item2
     </button></div>
-  <div class=\\"arco-space-item-split\\">
+  <div class=\\"arco-space-item-split\\" style=\\"margin-right: 8px;\\">
     <div role=\\"separator\\" class=\\"arco-divider arco-divider-vertical\\">
       <!---->
     </div>
