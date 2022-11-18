@@ -16,6 +16,8 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 
 @import ./__demo__/simple.md
 
+@import ./__demo__/tree.md
+
 ## API
 
 
@@ -42,9 +44,11 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 |search|用户搜索时触发|value: `string`<br>type: `'target'\|'source'`|
 ### `<transfer>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|item|选项|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|source|源面板|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
+|target|目标面板|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
+|item|选项|value: `string`<br>label: `string`||
 
 
 
