@@ -60,6 +60,7 @@
           v-else
           :selected-keys="selectedKeys"
           :show-checkable="treeCheckable"
+          :scrollbar="scrollbar"
           :tree-props="{
             actionOnNodeClick: selectable === 'leaf' ? 'expand' : undefined,
             blockNode: true,
@@ -122,6 +123,7 @@ import {
 } from '../tree/utils/check-utils';
 import { isNodeSelectable } from '../tree/utils';
 import { Data } from '../_utils/types';
+import { ScrollbarProps } from '../scrollbar';
 
 export default defineComponent({
   name: 'TreeSelect',
@@ -372,6 +374,15 @@ export default defineComponent({
             info: { isLeaf: boolean; level: number }
           ) => boolean)
       >,
+      default: true,
+    },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.39.0
+     */
+    scrollbar: {
+      type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
       default: true,
     },
   },
