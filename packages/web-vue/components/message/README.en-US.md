@@ -63,6 +63,7 @@ Message._context = app._context;
 |closable|Whether to show the close button|`boolean`|`false`|
 |duration|The duration of the message display|`number`|`-`|
 |onClose|Callback function when closing|`(id: number \| string) => void`|`-`|
+|resetOnHover|The mouse to move into the component will not automatically close|`boolean`|`false`|
 
 
 
