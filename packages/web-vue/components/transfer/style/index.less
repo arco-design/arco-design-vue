@@ -86,20 +86,30 @@
       }
     }
 
+    &-body {
+      flex: 1 1 auto;
+      overflow: hidden;
+
+      .@{transfer-prefix-cls}-view-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+    }
+
     .@{prefix}-scrollbar {
       height: 100%;
+
+      &-container {
+        height: 100%;
+        overflow: auto;
+      }
     }
 
     .@{prefix}-list {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
       border-radius: 0;
-
-      &-content {
-        flex: 1;
-        overflow-y: auto;
-      }
 
       &-footer {
         position: relative;

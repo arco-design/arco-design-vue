@@ -18,6 +18,8 @@ description: A two-column multi-select component that moves elements from one co
 
 @import ./__demo__/simple.md
 
+@import ./__demo__/tree.md
+
 ## API
 
 
@@ -44,9 +46,11 @@ description: A two-column multi-select component that moves elements from one co
 |search|Triggered when the user searches|value: `string`<br>type: `'target'\|'source'`|
 ### `<transfer>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|item|Option|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|source|Source content|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
+|target|Target content|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
+|item|Option|value: `string`<br>label: `string`||
 
 
 
