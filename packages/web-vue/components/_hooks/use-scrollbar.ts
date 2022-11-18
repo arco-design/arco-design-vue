@@ -10,7 +10,7 @@ export const useScrollbar = (scrollbar: Ref<ScrollbarProps | boolean>) => {
     return {
       type: 'embed',
       ...(isBoolean(scrollbar.value) ? undefined : scrollbar.value),
-    };
+    } as ScrollbarProps;
   });
 
   return {
