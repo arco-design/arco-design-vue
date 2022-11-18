@@ -101,6 +101,7 @@ export default defineComponent({
      * @zh 描述中表格样式的 `layout-fixed`，当设置成 `fixed` 时，宽度会均分。
      * @en The `layout-fixed` of the table style in the description. The width will be evenly distributed when it's set to `fixed`.
      * @defaultValue 'auto'
+     * @version 2.38.0
      */
     tableLayout: {
       type: String as PropType<'auto' | 'fixed'>,
