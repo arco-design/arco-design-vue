@@ -168,6 +168,7 @@ export default defineComponent({
     /**
      * @zh 是否展示全选勾选框
      * @en Whether show select all checkbox on the header
+     * @version 2.39.0
      */
     showSelectAll: {
       type: Boolean,

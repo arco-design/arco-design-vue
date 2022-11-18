@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🐛 BugFix
+
+- fix split margin ([#1864](https://github.com/arco-design/arco-design-vue/pull/1864))
+
+
 ## 2.38.0
 
 `2022-10-28`

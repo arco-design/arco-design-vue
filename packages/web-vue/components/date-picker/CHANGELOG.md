@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🐛 BugFix
+
+- year range can't skip by 10 year ([#1847](https://github.com/arco-design/arco-design-vue/pull/1847))
+
+
 ## 2.38.1
 
 `2022-11-04`

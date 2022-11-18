@@ -75,6 +75,7 @@ description: The tree structure data can be selected.
 |popup-container|Mount container for pop-up box|`string \| HTMLElement \| undefined`|`-`||
 |fallback-option|Customize node data for keys that do not match options|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|Set the nodes that can be selected, all can be selected by default|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
+|scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.39.0|
 ### `<tree-select>` Events
 
 |Event Name|Description|Parameters|

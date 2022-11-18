@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 Feature
+
+- **transfer:** Added panel slot to allow custom content ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **transfer:** internally replaced with a virtual scrollbar ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **tree-select:** Replace the virtual scrollbar component and add the scrollbar property ([#1872](https://github.com/arco-design/arco-design-vue/pull/1872))
+- **transfer:** can hide select all checkbox ([#1845](https://github.com/arco-design/arco-design-vue/pull/1845))
+- **message:** Add `resetOnHover` property to pause and restart timing when the mouse moves in ([#1841](https://github.com/arco-design/arco-design-vue/pull/1841))
+
+### 🐛 BugFix
+
+- **space:** fix split margin ([#1864](https://github.com/arco-design/arco-design-vue/pull/1864))
+- **switch:** Fix value of hook before state change ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **switch:** Fix style token issue ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **date-picker:** year range can't skip by 10 year ([#1847](https://github.com/arco-design/arco-design-vue/pull/1847))
+
+### 💎 Enhancement
+
+- **upload:** add some common file type ([#1857](https://github.com/arco-design/arco-design-vue/pull/1857))
+
+
 ## 2.38.3
 
 `2022-11-11`

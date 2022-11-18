@@ -100,6 +100,7 @@ export interface MessageConfig {
   /**
    * @zh 设置鼠标移入后不会自动关闭
    * @en The mouse to move into the component will not automatically close
+   * @version 2.39.0
    */
   resetOnHover?: boolean;
 }

@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 新增功能
+
+- **transfer:** 新增面板插槽，允许自定义内容 ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **transfer:** 内部替换为虚拟滚动条 ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **tree-select:** 替换虚拟滚动条组件，增加 scrollbar 属性 ([#1872](https://github.com/arco-design/arco-design-vue/pull/1872))
+- **transfer:** 可以隐藏全选勾选框 ([#1845](https://github.com/arco-design/arco-design-vue/pull/1845))
+- **message:** 增加 `resetOnHover` 属性，在鼠标移入时暂停并重新计时 ([#1841](https://github.com/arco-design/arco-design-vue/pull/1841))
+
+### 🐛 问题修复
+
+- **space:** 修复分隔符间距 ([#1864](https://github.com/arco-design/arco-design-vue/pull/1864))
+- **switch:** 修复状态改变前钩子的值 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **switch:** 修复样式 token 问题 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **date-picker:** 修复选择年范围时无法跳转10年 ([#1847](https://github.com/arco-design/arco-design-vue/pull/1847))
+
+### 💎 功能优化
+
+- **upload:** 添加一些常见的文件类型 ([#1857](https://github.com/arco-design/arco-design-vue/pull/1857))
+
+
 ## 2.38.3
 
 `2022-11-11`
