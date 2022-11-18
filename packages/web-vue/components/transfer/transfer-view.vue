@@ -2,7 +2,9 @@
   <div :class="prefixCls">
     <div :class="`${prefixCls}-header`">
       <span :class="`${prefixCls}-header-title`">
-        <template v-if="allowClear || simple">{{ title }}</template>
+        <template v-if="allowClear || simple || !showSelectAll">{{
+          title
+        }}</template>
         <checkbox
           v-else
           :model-value="checked"
@@ -100,6 +102,7 @@ export default defineComponent({
       required: true,
     },
     showSearch: Boolean,
+    showSelectAll: Boolean,
     simple: Boolean,
   },
   emits: ['search'],
