@@ -405,6 +405,17 @@ export default defineComponent({
         }
       }
     });
+    watch(pages, (curPages, prePages) => {
+      if (
+        props.autoAdjust &&
+        curPages !== prePages &&
+        computedCurrent.value > 1
+      ) {
+        _current.value = curPages;
+        emit('update:current', curPages);
+        emit('change', curPages);
+      }
+    });
 
     const cls = computed(() => [
       prefixCls,
