@@ -965,8 +965,8 @@ export default defineComponent({
         }
         return result;
       };
-      const res = travel(props.data ?? []);
-      return res
+
+      return travel(props.data ?? []);
     });
 
     const validData = computed(() => {
@@ -981,10 +981,9 @@ export default defineComponent({
           return false;
         });
 
-      const res = Object.keys(computedFilters.value).length > 0
+      return Object.keys(computedFilters.value).length > 0
         ? travel(processedData.value)
         : processedData.value;
-      return res
     });
 
     const sortedData = computed(() => {
@@ -1036,18 +1035,13 @@ export default defineComponent({
     });
 
     const flattenData = computed(() => {
-        let res = sortedData.value;
-       if (props.pagination && sortedData.value.length > pageSize.value) {
-         // eslint-disable-next-line no-debugger
-         // debugger
-         res =  sortedData.value.slice(
-           (page.value - 1) * pageSize.value,
-           page.value * pageSize.value
-         );
-       }
-      // eslint-disable-next-line no-console
-       console.log(res)
-      return res
+      if (props.pagination && sortedData.value.length > pageSize.value) {
+        return sortedData.value.slice(
+          (page.value - 1) * pageSize.value,
+          page.value * pageSize.value
+        );
+      }
+      return sortedData.value;
     });
 
     const flattenRawData = computed(() =>
@@ -2117,20 +2111,20 @@ export default defineComponent({
         return <div class={cls.value}>{renderTable(slots.default)}</div>;
       }
       children.value = slots.columns?.();
+      // fix #1724 sortedData.value.length > 0
       return (
         <div class={cls.value} style={style.value}>
           {children.value}
           <Spin {...spinProps.value}>
             {props.pagination !== false &&
-              flattenData.value.length > 0 &&
+              (flattenData.value.length > 0 || sortedData.value.length > 0) &&
               isPaginationTop.value &&
               renderPagination()}
             {renderTable()}
             {props.pagination !== false &&
-              flattenData.value.length > 0 &&
+              (flattenData.value.length > 0 || sortedData.value.length > 0) &&
               !isPaginationTop.value &&
               renderPagination()}
-            {renderPagination()}
           </Spin>
         </div>
       );

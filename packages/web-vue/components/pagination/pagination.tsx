@@ -405,11 +405,13 @@ export default defineComponent({
         }
       }
     });
+
     watch(pages, (curPages, prePages) => {
       if (
         props.autoAdjust &&
         curPages !== prePages &&
-        computedCurrent.value > 1
+        computedCurrent.value > 1 &&
+        computedCurrent.value > curPages
       ) {
         _current.value = curPages;
         emit('update:current', curPages);
