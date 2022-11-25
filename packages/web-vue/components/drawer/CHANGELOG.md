@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.38.0
+
+`2022-10-28`
+
+### 🐛 BugFix
+
+- Fix the problem that closing does not unload internal components in function calls ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+
+
 ## 2.37.4
 
 `2022-09-30`

@@ -33,7 +33,7 @@
       >
         <VirtualListItem
           v-for="(item, index) of currentList"
-          :key="item[itemKey] ?? index"
+          :key="item[itemKey] ?? start + index"
           :has-item-size="hasItemSize"
           :set-item-size="setItemSize"
         >

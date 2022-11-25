@@ -425,6 +425,15 @@ export default defineComponent({
       eventHandlers.value?.onBlur?.(ev);
     };
 
+    const getLastClosableIndex = () => {
+      for (let i = valueData.value.length - 1; i >= 0; i--) {
+        if (valueData.value[i].closable) {
+          return i;
+        }
+      }
+      return -1;
+    };
+
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyCode = e.key || e.code;
       if (
@@ -440,8 +449,10 @@ export default defineComponent({
         !computedInputValue.value &&
         keyCode === Backspace.key
       ) {
-        const lastIndex = valueData.value.length - 1;
-        handleRemove(valueData.value[lastIndex].value, lastIndex, e);
+        const lastIndex = getLastClosableIndex();
+        if (lastIndex >= 0) {
+          handleRemove(valueData.value[lastIndex].value, lastIndex, e);
+        }
       }
     };
 

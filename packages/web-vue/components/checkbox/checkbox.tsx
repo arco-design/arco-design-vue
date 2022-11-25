@@ -11,7 +11,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconCheck from './icon-check';
-import { isArray } from '../_utils/is';
+import { isArray, isNull, isUndefined } from '../_utils/is';
 import { checkboxGroupKey } from './context';
 import { useFormItem } from '../_hooks/use-form-item';
 
@@ -91,7 +91,7 @@ export default defineComponent({
    * @version 2.18.0
    */
   setup(props, { emit, slots }) {
-    const { disabled } = toRefs(props);
+    const { disabled, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('checkbox');
     const checkboxRef = ref<HTMLInputElement>();
     const checkboxGroupCtx = !props.uninjectGroupContext
@@ -184,6 +184,12 @@ export default defineComponent({
     const handleBlur = (ev: FocusEvent) => {
       eventHandlers.value?.onBlur?.(ev);
     };
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _checked.value = false;
+      }
+    });
 
     watch(computedValue, (value) => {
       let checked;

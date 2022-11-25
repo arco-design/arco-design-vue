@@ -328,6 +328,11 @@ export default defineComponent({
     fieldNames: {
       type: Object as PropType<SelectFieldNames>,
     },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.38.0
+     */
     scrollbar: {
       type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
       default: true,
@@ -887,7 +892,7 @@ export default defineComponent({
     };
 
     const renderLabel = ({ data }: { data: SelectViewValue }) => {
-      if (slots.label || isFunction(props.formatLabel)) {
+      if ((slots.label || isFunction(props.formatLabel)) && data) {
         const optionInfo = optionInfoMap.get(data.value as string);
         if (optionInfo?.raw) {
           return (
@@ -896,7 +901,7 @@ export default defineComponent({
           );
         }
       }
-      return data.label;
+      return data?.label ?? '';
     };
 
     return () => (

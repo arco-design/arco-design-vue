@@ -25,6 +25,7 @@ exports[`<textarea> demo: render [basic] correctly 1`] = `
 
 exports[`<textarea> demo: render [status] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-textarea-wrapper arco-textarea-disabled\\">
       <!--v-if--><textarea disabled=\\"\\" class=\\"arco-textarea\\" placeholder=\\"Disabled status\\"></textarea>
@@ -32,6 +33,7 @@ exports[`<textarea> demo: render [status] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-textarea-wrapper arco-textarea-error\\">
       <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Error status\\"></textarea>
@@ -44,6 +46,7 @@ exports[`<textarea> demo: render [status] correctly 1`] = `
 
 exports[`<textarea> demo: render [word-limit] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-textarea-wrapper\\">
       <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
@@ -51,6 +54,7 @@ exports[`<textarea> demo: render [word-limit] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-textarea-wrapper\\">
       <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>

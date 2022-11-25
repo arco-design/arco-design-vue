@@ -27,7 +27,7 @@
 
 1. Fork [此仓库](https://github.com/arco-design/arco-design-vue)，从 `main` 创建分支。新功能实现请发 pull request 到 `feature` 分支。其他更改发到 `main` 分支。
 2. 使用 `npm install -g` 安装 `lerna` 和 `yarn` 等基础包。
-3. 执行 `yarn install` 安装 `workspaces` 中各个包的依赖（如果遇到 `YN0018` 错误，可以使用 `YARN_CHECKSUM_BEHAVIOR=update yarn` 进行安装）。
+3. 执行 `yarn install` 安装 `workspaces` 中各个包的依赖(如果遇到 `YN0018` 错误，可以使用 `YARN_CHECKSUM_BEHAVIOR=update yarn` 进行安装)。
 4. 执行 `npm run init` 初始化项目。
 5. 执行 `npm run start` 启动和预览站点.
 6. 对代码库进行更改。如果适用的话，请确保写了相应的测试。
@@ -68,7 +68,7 @@ Commit messages 请遵循[conventional-changelog 标准](https://www.conventiona
 2. `vue-site`: Vue组件库文档站
 3. `arco-vue-scripts`: Vue组件库脚本
 4. `arco-vue-md-loader`: Vue组件库中markdown文档的webpack loader
-5. `arco-vue-site-nav`: Vue组件库文档站的顶部导航栏（使用React物料）
+5. `arco-vue-site-nav`: Vue组件库文档站的顶部导航栏(使用React物料)
 
 ### Web-Vue 组件目录
 
@@ -77,22 +77,22 @@ Commit messages 请遵循[conventional-changelog 标准](https://www.conventiona
 ```
 ├── README.zh-CN.md (注意：不要编辑这个文件，它是由脚本自动生成的)
 ├── README.en-US.md (注意：不要编辑这个文件，它是由脚本自动生成的)
-├── TEMPLATE.md （用于生成 README 文件的模板）
+├── TEMPLATE.md (用于生成 README 文件的模板)
 ├── __test__
 │   ├── __snapshots__
 │   │   └── demo.test.js.snap
 │   ├── demo.test.ts (快照测试)
-│   └── index.test.ts （单元测试）
-├── __demo__ （组件演示）
+│   └── index.test.ts (单元测试)
+├── __demo__ (组件演示)
 │   ├── basic.md
 │   └── advanced.md
-├── index.tsx（组件导出）
+├── index.tsx(组件导出)
 └── style
-    └── index.less（组件样式）
+    └── index.less(组件样式)
     └── index.ts (组件样式导出)
 ```
 
-请注意: 如果进行了会影响 README 的变更（例如 API 变更），请确保运行 `npm run docgen` 来更新组件的 README。
+请注意: 如果进行了会影响 README 的变更(例如 API 变更)，请确保运行 `npm run docgen` 来更新组件的 README。
 
 组件库的相关操作在`web-vue`目录下操作.
 

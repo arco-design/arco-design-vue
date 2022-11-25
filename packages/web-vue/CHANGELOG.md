@@ -2,6 +2,95 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 Feature
+
+- **transfer:** Added panel slot to allow custom content ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **transfer:** internally replaced with a virtual scrollbar ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **tree-select:** Replace the virtual scrollbar component and add the scrollbar property ([#1872](https://github.com/arco-design/arco-design-vue/pull/1872))
+- **transfer:** can hide select all checkbox ([#1845](https://github.com/arco-design/arco-design-vue/pull/1845))
+- **message:** Add `resetOnHover` property to pause and restart timing when the mouse moves in ([#1841](https://github.com/arco-design/arco-design-vue/pull/1841))
+
+### 🐛 BugFix
+
+- **space:** fix split margin ([#1864](https://github.com/arco-design/arco-design-vue/pull/1864))
+- **switch:** Fix value of hook before state change ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **switch:** Fix style token issue ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **date-picker:** year range can't skip by 10 year ([#1847](https://github.com/arco-design/arco-design-vue/pull/1847))
+
+### 💎 Enhancement
+
+- **upload:** add some common file type ([#1857](https://github.com/arco-design/arco-design-vue/pull/1857))
+
+
+## 2.38.3
+
+`2022-11-11`
+
+### 🐛 BugFix
+
+- **table:** Fixed an issue where a warning would appear when customizing table elements in some scenarios
+
+
+## 2.38.2
+
+`2022-11-09`
+
+### 🐛 BugFix
+
+- **table:** Fix row selector state error ([#1849](https://github.com/arco-design/arco-design-vue/pull/1849))
+
+
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- **input-tag:** Fixed delete key deleting unavailable options ([#1836](https://github.com/arco-design/arco-design-vue/pull/1836))
+- Fixed some issues with virtual lists ([#1834](https://github.com/arco-design/arco-design-vue/pull/1834))
+- **slider:** fix the slider show wrong position when set min value ([#1826](https://github.com/arco-design/arco-design-vue/pull/1826))
+- **pagination:** Fix jumper prompt warning problem ([#1822](https://github.com/arco-design/arco-design-vue/pull/1822))
+- **input:** Fix the problem of component cursor reporting error in some scenarios ([#1820](https://github.com/arco-design/arco-design-vue/pull/1820))
+- **date-picker:** Fix internal property error issue ([#1818](https://github.com/arco-design/arco-design-vue/pull/1818))
+- **radio:** Fix `radio-group` state not reset when resetting value ([#1813](https://github.com/arco-design/arco-design-vue/pull/1813))
+- **table:** fix param when rowClass as function ([#1812](https://github.com/arco-design/arco-design-vue/pull/1812))
+
+### 💎 Enhancement
+
+- **icon:** Replace the flying book icon ([#1835](https://github.com/arco-design/arco-design-vue/pull/1835))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 🆕 Feature
+
+- **space:** add `split` slot ([#1774](https://github.com/arco-design/arco-design-vue/pull/1774))
+
+### 🐛 BugFix
+
+- **select:** Fix formatLabel error when there is no data ([#1797](https://github.com/arco-design/arco-design-vue/pull/1797))
+- **modal:** Fix the problem that z-index does not take effect when custom style ([#1796](https://github.com/arco-design/arco-design-vue/pull/1796))
+- **radio:** Fix the problem that the state is not cleared when clearing model-value ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+- **checkbox:** Fix the problem that the state is not cleared when clearing model-value ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+- **form:** Do not modify the original object data of the rule ([#1779](https://github.com/arco-design/arco-design-vue/pull/1779))
+- **modal:** Fix the problem that closing does not unload internal components in function calls ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+- **drawer:** Fix the problem that closing does not unload internal components in function calls ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+
+### 💅 Style
+
+- **table:** Fix stripe style issue in dark mode ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+### 🆎 TypeScript
+
+- Add instance type export ([#1782](https://github.com/arco-design/arco-design-vue/pull/1782))
+
+
 ## 2.38.0-beta.2
 
 `2022-10-21`

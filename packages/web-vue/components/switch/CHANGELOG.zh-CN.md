@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🐛 问题修复
+
+- 修复状态改变前钩子的值 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- 修复样式 token 问题 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+
+
 ## 2.37.0
 
 `2022-09-16`

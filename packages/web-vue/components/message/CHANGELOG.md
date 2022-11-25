@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 Feature
+
+- Add `resetOnHover` property to pause and restart timing when the mouse moves in ([#1841](https://github.com/arco-design/arco-design-vue/pull/1841))
+
+
 ## 2.27.0
 
 `2022-05-13`

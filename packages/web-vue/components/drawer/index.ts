@@ -1,5 +1,5 @@
 import type { App, AppContext } from 'vue';
-import { createVNode, render } from 'vue';
+import { createVNode, nextTick, render } from 'vue';
 import { getOverlay } from '../_utils/dom';
 import { getComponentPrefix, setGlobalConfig } from '../_utils/global-config';
 import { isFunction } from '../_utils/is';
@@ -32,7 +32,8 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
     }
   };
 
-  const handleClose = () => {
+  const handleClose = async () => {
+    await nextTick();
     if (container) {
       render(null, container);
       document.body.removeChild(container);
@@ -53,6 +54,7 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
   const defaultConfig = {
     visible: true,
     renderToBody: false,
+    unmountOnClose: true,
     onOk: handleOk,
     onCancel: handleCancel,
     onClose: handleClose,
@@ -62,12 +64,21 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
   const vm = createVNode(
     _Drawer,
     {
-      ...omit(config, ['content', 'title', 'footer']),
+      ...defaultConfig,
+      ...omit(config, [
+        'content',
+        'title',
+        'footer',
+        'visible',
+        'unmountOnClose',
+        'onOk',
+        'onCancel',
+        'onClose',
+      ]),
       ...{
         header: typeof config.header === 'boolean' ? config.header : undefined,
         footer: typeof config.footer === 'boolean' ? config.footer : undefined,
       },
-      ...defaultConfig,
     },
     {
       default: getSlotFunction(config.content),

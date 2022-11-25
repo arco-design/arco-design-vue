@@ -2,6 +2,95 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 新增功能
+
+- **transfer:** 新增面板插槽，允许自定义内容 ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **transfer:** 内部替换为虚拟滚动条 ([#1873](https://github.com/arco-design/arco-design-vue/pull/1873))
+- **tree-select:** 替换虚拟滚动条组件，增加 scrollbar 属性 ([#1872](https://github.com/arco-design/arco-design-vue/pull/1872))
+- **transfer:** 可以隐藏全选勾选框 ([#1845](https://github.com/arco-design/arco-design-vue/pull/1845))
+- **message:** 增加 `resetOnHover` 属性，在鼠标移入时暂停并重新计时 ([#1841](https://github.com/arco-design/arco-design-vue/pull/1841))
+
+### 🐛 问题修复
+
+- **space:** 修复分隔符间距 ([#1864](https://github.com/arco-design/arco-design-vue/pull/1864))
+- **switch:** 修复状态改变前钩子的值 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **switch:** 修复样式 token 问题 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- **date-picker:** 修复选择年范围时无法跳转10年 ([#1847](https://github.com/arco-design/arco-design-vue/pull/1847))
+
+### 💎 功能优化
+
+- **upload:** 添加一些常见的文件类型 ([#1857](https://github.com/arco-design/arco-design-vue/pull/1857))
+
+
+## 2.38.3
+
+`2022-11-11`
+
+### 🐛 问题修复
+
+- **table:** 修复某些场景下自定义表格元素时会出现警告的问题
+
+
+## 2.38.2
+
+`2022-11-09`
+
+### 🐛 问题修复
+
+- **table:** 修复行选择器状态错误的问题 ([#1849](https://github.com/arco-design/arco-design-vue/pull/1849))
+
+
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 问题修复
+
+- **input-tag:** 修复删除键会删除不可用选项的问题 ([#1836](https://github.com/arco-design/arco-design-vue/pull/1836))
+- 修复虚拟列表的一些问题 ([#1834](https://github.com/arco-design/arco-design-vue/pull/1834))
+- **slider:** 修复滑动输入条设置最小值起始位置错误 ([#1826](https://github.com/arco-design/arco-design-vue/pull/1826))
+- **pagination:** 修复 jumper 提示警告的问题 ([#1822](https://github.com/arco-design/arco-design-vue/pull/1822))
+- **input:** 修复某些场景下组件光标报错的问题 ([#1820](https://github.com/arco-design/arco-design-vue/pull/1820))
+- **date-picker:** 修复内部属性错误问题 ([#1818](https://github.com/arco-design/arco-design-vue/pull/1818))
+- **radio:** 修复 `radio-group` 重置值时状态没有重置的问题 ([#1813](https://github.com/arco-design/arco-design-vue/pull/1813))
+- **table:** 修复rowClass为函数时的参数 ([#1812](https://github.com/arco-design/arco-design-vue/pull/1812))
+
+### 💎 功能优化
+
+- **icon:** 替换飞书图标 ([#1835](https://github.com/arco-design/arco-design-vue/pull/1835))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 🆕 新增功能
+
+- **space:** 增加`split`插槽 ([#1774](https://github.com/arco-design/arco-design-vue/pull/1774))
+
+### 🐛 问题修复
+
+- **select:** 修复 formatLabel 在无数据时报错的问题 ([#1797](https://github.com/arco-design/arco-design-vue/pull/1797))
+- **modal:** 修复自定义 style 时 z-index 不能生效的问题 ([#1796](https://github.com/arco-design/arco-design-vue/pull/1796))
+- **radio:** 修复清除 model-value 时状态未清除的问题 ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+- **checkbox:** 修复清除 model-value 时状态未清除的问题 ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+- **form:** 不修改规则原始对象数据 ([#1779](https://github.com/arco-design/arco-design-vue/pull/1779))
+- **modal:** 修复函数式调用中关闭未卸载内部组件的问题 ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+- **drawer:** 修复函数式调用中关闭未卸载内部组件的问题 ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+
+### 💅 样式更新
+
+- **table:** 修复暗黑模式下 stripe 样式问题 ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+### 🆎 类型修正
+
+- 添加实例类型导出 ([#1782](https://github.com/arco-design/arco-design-vue/pull/1782))
+
+
 ## 2.38.0-beta.2
 
 `2022-10-21`

@@ -1,5 +1,5 @@
 import type { App, AppContext } from 'vue';
-import { createVNode, render } from 'vue';
+import { nextTick, createVNode, render } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import { MESSAGE_TYPES } from '../_utils/constant';
@@ -33,7 +33,8 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
     }
   };
 
-  const handleClose = () => {
+  const handleClose = async () => {
+    await nextTick();
     if (container) {
       render(null, container);
       document.body.removeChild(container);
@@ -54,6 +55,7 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   const defaultConfig = {
     visible: true,
     renderToBody: false,
+    unmountOnClose: true,
     onOk: handleOk,
     onCancel: handleCancel,
     onClose: handleClose,
@@ -69,6 +71,7 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
         'title',
         'footer',
         'visible',
+        'unmountOnClose',
         'onOk',
         'onCancel',
         'onClose',

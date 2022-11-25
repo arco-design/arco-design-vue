@@ -2,9 +2,13 @@
 
 exports[`<tag> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Default<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag 1<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag 2<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> Complete
     <!--v-if-->
     <!--v-if--></span>
@@ -14,35 +18,53 @@ exports[`<tag> demo: render [basic] correctly 1`] = `
 
 exports[`<tag> demo: render [bordered] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-bordered arco-tag-checked\\"><!--v-if-->default<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-orangered arco-tag-bordered arco-tag-checked\\"><!--v-if-->orangered<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-orange arco-tag-bordered arco-tag-checked\\"><!--v-if-->orange<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-gold arco-tag-bordered arco-tag-checked\\"><!--v-if-->gold<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-lime arco-tag-bordered arco-tag-checked\\"><!--v-if-->lime<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-green arco-tag-bordered arco-tag-checked\\"><!--v-if-->green<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-cyan arco-tag-bordered arco-tag-checked\\"><!--v-if-->cyan<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-blue arco-tag-bordered arco-tag-checked\\"><!--v-if-->blue<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-arcoblue arco-tag-bordered arco-tag-checked\\"><!--v-if-->arcoblue<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-purple arco-tag-bordered arco-tag-checked\\"><!--v-if-->purple<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-pinkpurple arco-tag-bordered arco-tag-checked\\"><!--v-if-->pinkpurple<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-magenta arco-tag-bordered arco-tag-checked\\"><!--v-if-->magenta<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-gray arco-tag-bordered arco-tag-checked\\"><!--v-if-->gray<!--v-if--><!--v-if--></span></div>
 </div>"
 `;
 
 exports[`<tag> demo: render [checkable] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable arco-tag-checked\\"><!--v-if-->Awesome<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-red arco-tag-checkable arco-tag-checked\\"><!--v-if-->Toutiao<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-arcoblue arco-tag-checkable arco-tag-checked\\"><!--v-if-->Lark<!--v-if--><!--v-if--></span></div>
 </div>"
 `;
 
 exports[`<tag> demo: render [closeable] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg></span> Tag <span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
@@ -51,84 +73,110 @@ exports[`<tag> demo: render [closeable] correctly 1`] = `
 
 exports[`<tag> demo: render [color] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-red arco-tag-checked\\"><!--v-if-->red<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-orangered arco-tag-checked\\"><!--v-if-->orangered<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-orange arco-tag-checked\\"><!--v-if-->orange<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-gold arco-tag-checked\\"><!--v-if-->gold<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-lime arco-tag-checked\\"><!--v-if-->lime<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-green arco-tag-checked\\"><!--v-if-->green<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-cyan arco-tag-checked\\"><!--v-if-->cyan<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-blue arco-tag-checked\\"><!--v-if-->blue<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-arcoblue arco-tag-checked\\"><!--v-if-->arcoblue<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-purple arco-tag-checked\\"><!--v-if-->purple<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-pinkpurple arco-tag-checked\\"><!--v-if-->pinkpurple<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-magenta arco-tag-checked\\"><!--v-if-->magenta<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-gray arco-tag-checked\\"><!--v-if-->gray<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
 </div>
 <h3>Custom Color:</h3>
 <div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(245, 63, 63);\\"><!--v-if-->#f53f3f<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(120, 22, 255);\\"><!--v-if-->#7816ff<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(0, 180, 42);\\"><!--v-if-->#00b42a<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(22, 93, 255);\\"><!--v-if-->#165dff<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(255, 125, 0);\\"><!--v-if-->#ff7d00<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(235, 10, 164);\\"><!--v-if-->#eb0aa4<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(123, 198, 22);\\"><!--v-if-->#7bc616<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(134, 144, 156);\\"><!--v-if-->#86909c<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(183, 29, 232);\\"><!--v-if-->#b71de8<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(15, 198, 194);\\"><!--v-if-->#0fc6c2<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(255, 180, 0);\\"><!--v-if-->#ffb400<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(22, 140, 255);\\"><!--v-if-->#168cff<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(255, 87, 34);\\"><!--v-if-->#ff5722<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
@@ -137,13 +185,17 @@ exports[`<tag> demo: render [color] correctly 1`] = `
 
 exports[`<tag> demo: render [dynamically] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag 1<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag 2<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag 3<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\" style=\\"width: 90px; cursor: pointer;\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></span> Add Tag
     <!--v-if-->
     <!--v-if--></span>
@@ -153,18 +205,22 @@ exports[`<tag> demo: render [dynamically] correctly 1`] = `
 
 exports[`<tag> demo: render [icon] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-gray arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-github\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M.056 24.618c0 10.454 6.7 19.344 16.038 22.608 1.259.32 1.067-.582 1.067-1.19v-4.148c-7.265.853-7.553-3.957-8.043-4.758-.987-1.686-3.312-2.112-2.62-2.912 1.654-.853 3.34.213 5.291 3.1 1.413 2.09 4.166 1.738 5.562 1.385a6.777 6.777 0 0 1 1.856-3.253C11.687 34.112 8.55 29.519 8.55 24.057c0-2.646.874-5.082 2.586-7.045-1.088-3.243.102-6.01.26-6.422 3.11-.282 6.337 2.225 6.587 2.421 1.766-.474 3.782-.73 6.038-.73 2.266 0 4.293.26 6.069.74.603-.458 3.6-2.608 6.49-2.345.155.41 1.317 3.12.294 6.315 1.734 1.968 2.62 4.422 2.62 7.077 0 5.472-3.158 10.07-10.699 11.397a6.82 6.82 0 0 1 2.037 4.875v6.02c.042.48 0 .96.806.96 9.477-3.194 16.299-12.15 16.299-22.697C47.938 11.396 37.218.68 23.996.68 10.77.675.055 11.391.055 24.617l.001.001Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> Github
     <!--v-if-->
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-orangered arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-gitlab\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M45.53 26.154 39.694 6.289v-.005c-.407-1.227-1.377-1.955-2.587-1.955-1.254 0-2.277.723-2.663 1.885L30.62 17.625H17.4l-3.825-11.41c-.386-1.163-1.41-1.886-2.663-1.886-1.237 0-2.276.792-2.592 1.96l-5.83 19.865a2.047 2.047 0 0 0 .724 2.18l19.741 14.807c.14.193.332.338.557.418l.461.343.455-.343c.263-.091.483-.252.638-.477L44.8 28.33a2.03 2.03 0 0 0 .728-2.175ZM36.84 6.932c.053-.096.155-.102.187-.102.06 0 .134.016.182.161l3.183 10.704H33.24l3.6-10.763Zm-26.11.054c.047-.14.122-.156.181-.156.145 0 .156.006.183.091L14.699 17.7H7.633l3.096-10.714ZM5.076 26.502l1.511-5.213 10.843 14.475-12.354-9.262Zm3.96-6.236h6.54l4.865 15.23-11.406-15.23Zm15.01 17.877-5.743-17.877h11.48l-5.737 17.877Zm8.459-17.877h6.402L27.642 35.31l4.864-15.043Zm-2.18 15.745L41.43 21.187l1.58 5.315-12.685 9.509Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> Gitlab
     <!--v-if-->
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-blue arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-twitter\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M43.277 13.575c0 16.613-10.912 28.575-26.962 29.1-6.788.525-11.438-1.537-15.6-4.65 4.65.525 10.912-1.012 13.987-4.163-4.65 0-7.275-2.625-8.812-6.187h4.162C5.89 26.1 2.74 22.987 2.74 17.812c1.012.525 2.062 1.013 4.162 1.013-3.637-2.063-5.7-8.813-3.112-12.975 4.65 5.175 10.35 9.863 19.762 10.35C20.927 5.85 34.465.6 40.165 7.388c2.625-.525 4.162-1.538 6.187-2.625-.525 2.625-2.062 4.162-4.162 5.175 2.062 0 3.637-.525 5.175-1.538-.488 2.063-2.55 4.162-4.088 5.175Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> Twitter
     <!--v-if-->
     <!--v-if--></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-arcoblue arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-facebook\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M35.184 15.727 34.312 24h-6.613v24h-9.933V24h-4.95v-8.273h4.95v-4.98C17.766 4.016 20.564 0 28.518 0h6.61v8.273H30.99c-3.086 0-3.292 1.166-3.292 3.32v4.134h7.485Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> Facebook
     <!--v-if-->
     <!--v-if--></span>
@@ -176,8 +232,11 @@ exports[`<tag> demo: render [loading] correctly 1`] = `"<span class=\\"arco-tag 
 
 exports[`<tag> demo: render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-large arco-tag-checked\\"><!--v-if-->Large<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Medium<!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-small arco-tag-checked\\"><!--v-if-->Small<!--v-if--><!--v-if--></span></div>
 </div>"
 `;

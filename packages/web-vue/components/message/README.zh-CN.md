@@ -51,16 +51,17 @@ Message._context = app._context;
 
 ### MessageConfig
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|content|内容|`RenderContent`|`-`|
-|id|唯一id|`string`|`-`|
-|icon|消息的图标|`RenderFunction`|`-`|
-|position|消息的位置|`'top'\|'bottom'`|`-`|
-|showIcon|是否显示图标|`boolean`|`false`|
-|closable|是否显示关闭按钮|`boolean`|`false`|
-|duration|消息显示的持续时间|`number`|`-`|
-|onClose|关闭时的回调函数|`(id: number \| string) => void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|content|内容|`RenderContent`|`-`||
+|id|唯一id|`string`|`-`||
+|icon|消息的图标|`RenderFunction`|`-`||
+|position|消息的位置|`'top'\|'bottom'`|`-`||
+|showIcon|是否显示图标|`boolean`|`false`||
+|closable|是否显示关闭按钮|`boolean`|`false`||
+|duration|消息显示的持续时间|`number`|`-`||
+|onClose|关闭时的回调函数|`(id: number \| string) => void`|`-`||
+|resetOnHover|设置鼠标移入后不会自动关闭|`boolean`|`false`|2.39.0|
 
 
 

@@ -12,6 +12,7 @@ exports[`<date-picker> demo: render [basic] correctly 1`] = `
 
 exports[`<date-picker> demo: render [control] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
     <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px;\\" visible=\\"false\\">
       <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
@@ -19,6 +20,7 @@ exports[`<date-picker> demo: render [control] correctly 1`] = `
     </div>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px;\\" visible=\\"false\\">
       <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
@@ -1172,11 +1174,13 @@ exports[`<date-picker> demo: render [size] correctly 1`] = `
 
 exports[`<date-picker> demo: render [trigger-element] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->请选择日期
     </button>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->请选择日期范围
     </button>

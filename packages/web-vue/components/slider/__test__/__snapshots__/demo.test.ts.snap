@@ -32,6 +32,7 @@ exports[`<slider> demo: render [disabled] correctly 1`] = `
 
 exports[`<slider> demo: render [input] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-slider\\" style=\\"width: 300px;\\">
       <div class=\\"arco-slider-track\\">
@@ -48,6 +49,7 @@ exports[`<slider> demo: render [input] correctly 1`] = `
       </div>
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-slider\\" style=\\"width: 380px;\\">
       <div class=\\"arco-slider-track\\">
@@ -119,6 +121,7 @@ exports[`<slider> demo: render [range] correctly 1`] = `
 
 exports[`<slider> demo: render [step] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <form class=\\"arco-form arco-form-layout-inline arco-form-size-medium\\">
       <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
@@ -149,6 +152,7 @@ exports[`<slider> demo: render [step] correctly 1`] = `
       </div>
     </form>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-slider\\" style=\\"width: 300px;\\">
       <div class=\\"arco-slider-track\\">
@@ -203,6 +207,7 @@ exports[`<slider> demo: render [tooltip] correctly 1`] = `
 
 exports[`<slider> demo: render [vertical] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-start\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
     <div class=\\"arco-slider arco-slider-vertical\\">
       <div class=\\"arco-slider-track arco-slider-track-vertical\\">
@@ -217,6 +222,7 @@ exports[`<slider> demo: render [vertical] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-slider arco-slider-vertical arco-slider-with-marks\\" style=\\"width: 300px;\\">
       <div class=\\"arco-slider-track arco-slider-track-vertical\\">

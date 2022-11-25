@@ -4,10 +4,13 @@ exports[`<space> demo: render [align] correctly 1`] = `
 "<div>
   <div style=\\"margin-bottom: 20px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"start\\"><span class=\\"arco-radio-button-content\\">start</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"center\\"><span class=\\"arco-radio-button-content\\">center</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"end\\"><span class=\\"arco-radio-button-content\\">end</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"baseline\\"><span class=\\"arco-radio-button-content\\">baseline</span></label></span></div>
   <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"padding: 10px;\\">
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\">Space:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if-->Item2
       </button></div>
+    <!---->
     <div class=\\"arco-space-item\\">
       <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\">
         <div class=\\"arco-card-header\\">
@@ -26,13 +29,17 @@ exports[`<space> demo: render [align] correctly 1`] = `
 
 exports[`<space> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\">Space:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item1
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item2
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
       <!--v-if-->
     </button></div>
@@ -43,12 +50,15 @@ exports[`<space> demo: render [size] correctly 1`] = `
 "<div>
   <div style=\\"margin-bottom: 20px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
   <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-right: 16px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if-->Item1
       </button></div>
+    <!---->
     <div class=\\"arco-space-item\\" style=\\"margin-right: 16px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if-->Item2
       </button></div>
+    <!---->
     <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if-->Item3
       </button></div>
@@ -56,14 +66,42 @@ exports[`<space> demo: render [size] correctly 1`] = `
 </div>"
 `;
 
+exports[`<space> demo: render [split] correctly 1`] = `
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Item1
+    </button></div>
+  <div class=\\"arco-space-item-split\\" style=\\"margin-right: 8px;\\">
+    <div role=\\"separator\\" class=\\"arco-divider arco-divider-vertical\\">
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if-->Item2
+    </button></div>
+  <div class=\\"arco-space-item-split\\" style=\\"margin-right: 8px;\\">
+    <div role=\\"separator\\" class=\\"arco-divider arco-divider-vertical\\">
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+</div>"
+`;
+
 exports[`<space> demo: render [vertical] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-long\\" type=\\"button\\">
       <!--v-if-->Item1
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-long\\" type=\\"button\\">
       <!--v-if-->Item2
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-long\\" type=\\"button\\">
       <!--v-if-->Item3
     </button></div>
@@ -72,63 +110,83 @@ exports[`<space> demo: render [vertical] correctly 1`] = `
 
 exports[`<space> demo: render [wrap] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item1
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item2
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item3
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item4
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item5
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item6
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item7
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item8
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item9
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item10
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item11
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item12
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item13
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item14
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item15
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item16
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item17
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item18
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px; margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item19
     </button></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Item20
     </button></div>

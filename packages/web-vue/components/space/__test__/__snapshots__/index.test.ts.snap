@@ -2,9 +2,11 @@
 
 exports[`Space Size should work 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 4px;\\">
     <div>aaa</div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div>bbb</div>
   </div>
@@ -13,9 +15,11 @@ exports[`Space Size should work 1`] = `
 
 exports[`Space Size should work 2`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
     <div>aaa</div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div>bbb</div>
   </div>
@@ -24,9 +28,11 @@ exports[`Space Size should work 2`] = `
 
 exports[`Space Size should work 3`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 16px;\\">
     <div>aaa</div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div>bbb</div>
   </div>
@@ -35,9 +41,11 @@ exports[`Space Size should work 3`] = `
 
 exports[`Space Size should work 4`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
     <div>aaa</div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div>bbb</div>
   </div>

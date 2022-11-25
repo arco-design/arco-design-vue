@@ -97,6 +97,12 @@ export interface MessageConfig {
    * @param id
    */
   onClose?: (id: number | string) => void;
+  /**
+   * @zh 设置鼠标移入后不会自动关闭
+   * @en The mouse to move into the component will not automatically close
+   * @version 2.39.0
+   */
+  resetOnHover?: boolean;
 }
 
 export interface MessageReturn {
@@ -117,4 +123,5 @@ export interface MessageItem {
   duration?: number;
   resetOnUpdate?: boolean;
   onClose?: (id: number | string) => void;
+  resetOnHover?: boolean;
 }

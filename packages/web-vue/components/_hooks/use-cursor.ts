@@ -13,7 +13,7 @@ export function useCursor(
   }>();
 
   function recordCursor() {
-    if (input.value === undefined) return;
+    if (!input.value) return;
 
     const { selectionStart, selectionEnd, value } = input.value;
 

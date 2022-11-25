@@ -4,9 +4,9 @@
       <div
         v-if="!unmountOnClose || computedVisible || mounted"
         v-show="computedVisible || mounted"
-        v-bind="$attrs"
         :class="`${prefixCls}-container`"
         :style="{ zIndex }"
+        v-bind="$attrs"
       >
         <transition :name="maskAnimationName" appear>
           <div
@@ -71,7 +71,7 @@
                 </div>
               </div>
               <div :class="[`${prefixCls}-body`, bodyClass]" :style="bodyStyle">
-                <slot v-if="mounted" />
+                <slot />
               </div>
               <div v-if="footer" :class="`${prefixCls}-footer`">
                 <slot name="footer">

@@ -62,3 +62,15 @@ description: 用来输入标签。
 |suffix|后缀元素|-|
 
 
+
+
+### TagData
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|value|标签值|`string \| number`|`-`|
+|label|标签内容|`string`|`-`|
+|closable|是否可关闭|`boolean`|`false`|
+|tagProps|标签属性|`TagProps`|`-`|
+
+

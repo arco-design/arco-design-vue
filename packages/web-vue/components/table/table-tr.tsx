@@ -39,7 +39,9 @@ export default defineComponent({
           record: props.record?.raw,
         })[0] ?? 'tr',
         { class: cls.value },
-        slots.default?.()
+        {
+          default: slots.default,
+        }
       );
     };
   },

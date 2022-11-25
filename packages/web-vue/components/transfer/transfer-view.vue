@@ -2,7 +2,9 @@
   <div :class="prefixCls">
     <div :class="`${prefixCls}-header`">
       <span :class="`${prefixCls}-header-title`">
-        <template v-if="allowClear || simple">{{ title }}</template>
+        <template v-if="allowClear || simple || !showSelectAll">{{
+          title
+        }}</template>
         <checkbox
           v-else
           :model-value="checked"
@@ -27,16 +29,31 @@
     <div v-if="showSearch" :class="`${prefixCls}-search`">
       <input-search v-model="filter" @change="handleSearch" />
     </div>
-    <list :class="`${prefixCls}-list`" :bordered="false">
-      <transfer-list-item
-        v-for="item of filteredData"
-        :key="item.value"
-        :type="type"
-        :data="item"
-        :simple="simple"
-        :allow-clear="allowClear"
-      />
-    </list>
+    <div :class="`${prefixCls}-body`">
+      <Scrollbar v-if="filteredData.length > 0">
+        <slot
+          :data="filteredData"
+          :selected-keys="transferCtx.selected"
+          :on-select="transferCtx.onSelect"
+        >
+          <list
+            :class="`${prefixCls}-list`"
+            :bordered="false"
+            :scrollbar="false"
+          >
+            <transfer-list-item
+              v-for="item of filteredData"
+              :key="item.value"
+              :type="type"
+              :data="item"
+              :simple="simple"
+              :allow-clear="allowClear"
+            />
+          </list>
+        </slot>
+      </Scrollbar>
+      <Empty v-else :class="`${prefixCls}-empty`" />
+    </div>
   </div>
 </template>
 
@@ -51,16 +68,20 @@ import List from '../list';
 import TransferListItem from './transfer-list-item';
 import { DataInfo, TransferItem } from './interface';
 import { transferInjectionKey } from './context';
+import Scrollbar from '../scrollbar';
+import Empty from '../empty/empty';
 
 export default defineComponent({
   name: 'TransferView',
   components: {
+    Empty,
     Checkbox,
     IconHover,
     IconDelete,
     InputSearch: Input.Search,
     List,
     TransferListItem,
+    Scrollbar,
   },
   props: {
     type: {
@@ -81,6 +102,7 @@ export default defineComponent({
       required: true,
     },
     showSearch: Boolean,
+    showSelectAll: Boolean,
     simple: Boolean,
   },
   emits: ['search'],
@@ -141,6 +163,7 @@ export default defineComponent({
       handleSelectAllChange,
       handleSearch,
       handleClear,
+      transferCtx,
     };
   },
 });

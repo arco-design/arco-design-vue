@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🐛 BugFix
+
+- Fix value of hook before state change ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- Fix style token issue ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+
+
 ## 2.37.0
 
 `2022-09-16`

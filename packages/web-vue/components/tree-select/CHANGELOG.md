@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 Feature
+
+- Replace the virtual scrollbar component and add the scrollbar property ([#1872](https://github.com/arco-design/arco-design-vue/pull/1872))
+
+
 ## 2.32.1
 
 `2022-07-01`

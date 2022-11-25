@@ -4,6 +4,7 @@ import {
   defineComponent,
   PropType,
   Comment,
+  Fragment,
 } from 'vue';
 import { isArray, isNumber } from '../_utils/is';
 import { getAllElements } from '../_utils/vue-utils';
@@ -56,6 +57,11 @@ export default defineComponent({
       type: Boolean,
     },
   },
+  /**
+   * @zh 设置分隔符
+   * @en Set separator
+   * @slot split
+   */
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('space');
 
@@ -91,7 +97,7 @@ export default defineComponent({
       }
     }
 
-    const getMarginStyle = (index: number, isLast: boolean): CSSProperties => {
+    const getMarginStyle = (isLast: boolean): CSSProperties => {
       const style: CSSProperties = {};
 
       const marginRight = `${getMargin(
@@ -123,14 +129,24 @@ export default defineComponent({
       return (
         <div class={cls.value}>
           {children.map((child, index) => {
+            const shouldRenderSplit = slots.split && index > 0;
             return (
-              <div
-                key={child.key ?? `item-${index}`}
-                class={`${prefixCls}-item`}
-                style={getMarginStyle(index, index === children.length - 1)}
-              >
-                {child}
-              </div>
+              <Fragment key={child.key ?? `item-${index}`}>
+                {shouldRenderSplit && (
+                  <div
+                    class={`${prefixCls}-item-split`}
+                    style={getMarginStyle(false)}
+                  >
+                    {slots.split?.()}
+                  </div>
+                )}
+                <div
+                  class={`${prefixCls}-item`}
+                  style={getMarginStyle(index === children.length - 1)}
+                >
+                  {child}
+                </div>
+              </Fragment>
             );
           })}
         </div>

@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.38.3
+
+`2022-11-11`
+
+### 🐛 BugFix
+
+- Fixed an issue where a warning would appear when customizing table elements in some scenarios
+
+
+## 2.38.2
+
+`2022-11-09`
+
+### 🐛 BugFix
+
+- Fix row selector state error ([#1849](https://github.com/arco-design/arco-design-vue/pull/1849))
+
+
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- fix param when rowClass as function ([#1812](https://github.com/arco-design/arco-design-vue/pull/1812))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 💅 Style
+
+- Fix stripe style issue in dark mode ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

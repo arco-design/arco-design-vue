@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+### 💎 Enhancement
+
+- add some common file type ([#1857](https://github.com/arco-design/arco-design-vue/pull/1857))
+
+
 ## 2.34.1
 
 `2022-08-05`

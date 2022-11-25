@@ -53,16 +53,17 @@ Message._context = app._context;
 
 ### MessageConfig
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|content|Content|`RenderContent`|`-`|
-|id|Unique id|`string`|`-`|
-|icon|Message icon|`RenderFunction`|`-`|
-|position|Location of the message|`'top'\|'bottom'`|`-`|
-|showIcon|Whether to show icon|`boolean`|`false`|
-|closable|Whether to show the close button|`boolean`|`false`|
-|duration|The duration of the message display|`number`|`-`|
-|onClose|Callback function when closing|`(id: number \| string) => void`|`-`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|content|Content|`RenderContent`|`-`||
+|id|Unique id|`string`|`-`||
+|icon|Message icon|`RenderFunction`|`-`||
+|position|Location of the message|`'top'\|'bottom'`|`-`||
+|showIcon|Whether to show icon|`boolean`|`false`||
+|closable|Whether to show the close button|`boolean`|`false`||
+|duration|The duration of the message display|`number`|`-`||
+|onClose|Callback function when closing|`(id: number \| string) => void`|`-`||
+|resetOnHover|The mouse to move into the component will not automatically close|`boolean`|`false`|2.39.0|
 
 
 

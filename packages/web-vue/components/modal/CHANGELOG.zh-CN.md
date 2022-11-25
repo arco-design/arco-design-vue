@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.38.0
+
+`2022-10-28`
+
+### 🐛 问题修复
+
+- 修复自定义 style 时 z-index 不能生效的问题 ([#1796](https://github.com/arco-design/arco-design-vue/pull/1796))
+- 修复函数式调用中关闭未卸载内部组件的问题 ([#1778](https://github.com/arco-design/arco-design-vue/pull/1778))
+
+
 ## 2.38.0-beta.2
 
 `2022-10-21`
