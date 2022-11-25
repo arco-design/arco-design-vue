@@ -64,7 +64,7 @@ description: The tree structure data can be selected.
 |tree-check-strictly|Whether the parent and child nodes are related|`boolean`|`false`||
 |tree-checked-strategy|Customized echo method|`'all' \| 'parent' \| 'child'`|`'all'`||
 |tree-props|Can accept Props of all [Tree](/vue/component/tree) components|`Partial<TreeProps>`|`-`||
-|trigger-props|Can accept Props of all [Trigger](/vue/component/trigger) components|`Record<string, unknown>`|`-`||
+|trigger-props|Can accept Props of all [Trigger](/vue/component/trigger) components|`Partial<TriggerProps>`|`-`||
 |popup-visible **(v-model)**|Whether the pop-up box is visible|`boolean`|`-`||
 |default-popup-visible|Whether the default pop-up box is visible|`boolean`|`false`||
 |dropdown-style|Drop-down box style|`CSSProperties`|`-`||

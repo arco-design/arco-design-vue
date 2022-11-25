@@ -62,7 +62,7 @@ description: 可以对树形结构数据进行选择。
 |tree-check-strictly|父子节点是否关联|`boolean`|`false`||
 |tree-checked-strategy|定制回显方式|`'all' \| 'parent' \| 'child'`|`'all'`||
 |tree-props|可以接受所有 [Tree](/vue/component/tree) 组件的Props|`Partial<TreeProps>`|`-`||
-|trigger-props|可以接受所有 [Trigger](/vue/component/trigger) 组件的Props|`Record<string, unknown>`|`-`||
+|trigger-props|可以接受所有 [Trigger](/vue/component/trigger) 组件的Props|`Partial<TriggerProps>`|`-`||
 |popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`||
 |default-popup-visible|默认弹出框是否可见|`boolean`|`false`||
 |dropdown-style|下拉框样式|`CSSProperties`|`-`||

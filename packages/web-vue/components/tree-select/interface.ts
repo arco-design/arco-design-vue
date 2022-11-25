@@ -7,6 +7,7 @@ import {
   LoadMore,
   CheckedStrategy,
 } from '../tree/interface';
+import { TriggerProps } from '../trigger';
 import { Size } from '../_utils/constant';
 
 export interface LabelValue {
@@ -60,7 +61,7 @@ export interface TreeSelectProps {
   treeCheckStrictly: boolean;
   treeCheckedStrategy: CheckedStrategy;
   treeProps: Partial<TreeProps> | undefined;
-  triggerProps: Partial<Record<string, unknown>> | undefined;
+  triggerProps: Partial<TriggerProps> | undefined;
   popupVisible: boolean | undefined;
   defaultPopupVisible: boolean;
   dropdownStyle: CSSProperties | undefined;
