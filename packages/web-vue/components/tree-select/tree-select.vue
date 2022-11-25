@@ -96,7 +96,7 @@ import {
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue } from './interface';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
@@ -285,7 +285,7 @@ export default defineComponent({
      * @en Can accept Props of all [Trigger](/vue/component/trigger) components
      * */
     triggerProps: {
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<Partial<TriggerProps>>,
     },
     /**
      * @zh 弹出框是否可见
