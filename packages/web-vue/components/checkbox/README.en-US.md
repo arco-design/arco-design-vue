@@ -42,7 +42,7 @@ description: In a set of data, the user can select one or more data through the 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `union`<br>ev: `Event`|
+|change|Trigger when the value changes|value: ` boolean \| (string \| number \| boolean)[] `<br>ev: `Event`|
 ### `<checkbox>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -66,7 +66,7 @@ description: In a set of data, the user can select one or more data through the 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `union`<br>ev: `Event`|
+|change|Trigger when the value changes|value: `(string \| number \| boolean)[]`<br>ev: `Event`|
 ### `<checkbox-group>` Slots
 
 |Slot Name|Description|Parameters|version|

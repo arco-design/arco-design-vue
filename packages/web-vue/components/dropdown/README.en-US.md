@@ -43,7 +43,7 @@ description: When there are too many commands on the page, the alternative comma
 |Event Name|Description|Parameters|
 |---|---|---|
 |popup-visible-change|Triggered when the display status of the drop-down box changes|visible: `boolean`|
-|select|Triggered when the user selects|value: `union`<br>ev: `Event`|
+|select|Triggered when the user selects|value: `string \| number \| Record<string, any> \| undefined `<br>ev: `Event`|
 ### `<dropdown>` Slots
 
 |Slot Name|Description|Parameters|version|

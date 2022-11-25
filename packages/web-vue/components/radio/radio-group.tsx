@@ -90,7 +90,7 @@ export default defineComponent({
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {string|number|boolean} value
+     * @property { string | number | boolean } value
      */
     'change': (value: string | number | boolean, ev: Event) => true,
   },

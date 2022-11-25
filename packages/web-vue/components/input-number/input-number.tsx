@@ -153,7 +153,7 @@ export default defineComponent({
     /**
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
-     * @param {number|undefined} value
+     * @param { number | undefined } value
      * @param {Event} ev
      */
     'change': (value: number | undefined, ev: Event) => true,
@@ -179,7 +179,7 @@ export default defineComponent({
     /**
      * @zh 输入时触发
      * @en Triggered on input
-     * @param {number|undefined} value
+     * @param { number | undefined } value
      * @param {string} inputValue
      * @param {Event} ev
      * @version 2.27.0
