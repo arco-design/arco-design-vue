@@ -1,0 +1,132 @@
+@ho-prefixCls: ~'@{prefix}-search-hot';
+
+.@{ho-prefixCls} {
+  display: flex;
+
+  &-half {
+    width: 50%;
+  }
+
+  &-title {
+    margin-bottom: 12px;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    margin: 2px 0;
+    color: var(--color-text-2);
+    padding: 0 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &-icon,
+    &-icon-active {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &-icon {
+      opacity: 1;
+    }
+
+    &-icon-active {
+      opacity: 0;
+    }
+
+    &:hover {
+      color: rgb(var(--primary-6));
+      background-color: var(--color-fill-2);
+
+      .@{prefixCls}-svg-wrapper {
+        background: var(--color-bg-2);
+      }
+
+      .@{prefixCls}-enter-icon {
+        opacity: 1;
+      }
+
+      .@{prefixCls}-item-icon {
+        opacity: 0;
+      }
+
+      .@{prefixCls}-item-icon-active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-svg-wrapper {
+    position: relative;
+    background: var(--color-fill-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  &-enter-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 24px;
+    background: var(--color-fill-3);
+    border-radius: 4px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+
+  &-svg-wrapper-rect {
+    border-radius: 8px;
+  }
+}
+
+body[arco-theme='dark'] .@{prefixCls}-item-icon {
+  filter: invert(1) grayscale(1) brightness(1.1);
+}
+
+html.rtl {
+  .@{prefixCls} {
+    &-half:first-child {
+      margin-left: 20px;
+      margin-right: 0;
+    }
+
+    &-svg-wrapper {
+      margin-left: 20px;
+      margin-right: 0;
+    }
+
+    &-title {
+      text-align: right;
+    }
+
+    &-enter-icon {
+      right: initial;
+      left: 10px;
+      transform: scaleX(-1) translateY(-50%);
+    }
+  }
+}

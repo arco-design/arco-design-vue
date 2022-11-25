@@ -2,9 +2,10 @@
 import React from 'react';
 // @ts-ignore
 import ReactDOM from 'react-dom';
-import Navbar from '@arco-materials/site-navbar';
+import Navbar from '@arco-materials/site-navbar-new';
 import { ConfigProvider } from '@arco-design/web-react';
 import './index.less';
+import './navbar.css';
 
 interface NavBarOptions {
   version?: string;
