@@ -82,7 +82,7 @@ const lang: ArcoLang = {
     cancelText: 'キャンセル',
   },
   pagination: {
-    goto: '',
+    goto: '移動',
     page: 'ページ',
     countPerPage: '件/ページ',
     total: '総計 {0} 件',
