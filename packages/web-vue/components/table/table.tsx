@@ -2111,17 +2111,18 @@ export default defineComponent({
         return <div class={cls.value}>{renderTable(slots.default)}</div>;
       }
       children.value = slots.columns?.();
+      // fix #1724 sortedData.value.length > 0
       return (
         <div class={cls.value} style={style.value}>
           {children.value}
           <Spin {...spinProps.value}>
             {props.pagination !== false &&
-              flattenData.value.length > 0 &&
+              (flattenData.value.length > 0 || sortedData.value.length > 0) &&
               isPaginationTop.value &&
               renderPagination()}
             {renderTable()}
             {props.pagination !== false &&
-              flattenData.value.length > 0 &&
+              (flattenData.value.length > 0 || sortedData.value.length > 0) &&
               !isPaginationTop.value &&
               renderPagination()}
           </Spin>
