@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.39.1
+
+`2022-11-25`
+
+### 🐛 问题修复
+
+- 修复日文语言包确实某些属性的问题 ([#1890](https://github.com/arco-design/arco-design-vue/pull/1890))
+- **pagination:** 修复 pages 变小时，可能会出现页码超出页数的问题 ([#1879](https://github.com/arco-design/arco-design-vue/pull/1879))
+
+### 🆎 类型修正
+
+- **tree-select:** 更新trigger-props的类型 ([#1885](https://github.com/arco-design/arco-design-vue/pull/1885))
+
+
 ## 2.39.0
 
 `2022-11-18`

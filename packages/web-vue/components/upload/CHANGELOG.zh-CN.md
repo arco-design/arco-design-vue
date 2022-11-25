@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.1
+
+`2022-11-25`
+
+### 🆕 新增功能
+
+- 更改utils文件的类型 ([#1887](https://github.com/arco-design/arco-design-vue/pull/1887))
+
+
 ## 2.39.0
 
 `2022-11-18`

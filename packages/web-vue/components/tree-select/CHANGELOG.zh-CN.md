@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.1
+
+`2022-11-25`
+
+### 🆎 类型修正
+
+- 更新trigger-props的类型 ([#1885](https://github.com/arco-design/arco-design-vue/pull/1885))
+
+
 ## 2.39.0
 
 `2022-11-18`
