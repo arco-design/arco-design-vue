@@ -42,7 +42,7 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `union`<br>ev: `Event`|
+|change|Trigger when the value changes|value: ` string \| number \| boolean `<br>ev: `Event`|
 ### `<radio>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -67,7 +67,7 @@ description: In a set of related and mutually exclusive data, the user can only 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `union`|
+|change|Trigger when the value changes|value: ` string \| number \| boolean `|
 ### `<radio-group>` Slots
 
 |Slot Name|Description|Parameters|version|

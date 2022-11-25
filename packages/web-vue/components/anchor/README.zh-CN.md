@@ -32,7 +32,7 @@ description: 通过锚点可快速找到信息内容在当前页面的位置。
 
 |事件名|描述|参数|
 |---|---|---|
-|select|用户点击链接时触发|hash: `union`<br>preHash: `string`|
+|select|用户点击链接时触发|hash: ` string \| undefined `<br>preHash: `string`|
 |change|链接发生改变时触发|hash: `string`|
 
 

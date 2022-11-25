@@ -50,7 +50,7 @@ description: Mutually exclusive operation controls, users can turn on or turn of
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Trigger when the value changes|value: `union`<br>ev: `Event`|
+|change|Trigger when the value changes|value: ` boolean \| string \| number `<br>ev: `Event`|
 |focus|Triggered when the component gets focus|ev: `FocusEvent`|
 |blur|Fired when the component loses focus|ev: `FocusEvent`|
 ### `<switch>` Slots

@@ -86,7 +86,7 @@ export default defineComponent({
     /**
      * @zh 用户点击链接时触发
      * @en Triggered when the user clicks on the link
-     * @property {string|undefined} hash
+     * @property { string | undefined } hash
      * @property {string} preHash
      */
     select: (hash: string | undefined, preHash: string) => true,

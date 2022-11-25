@@ -97,7 +97,7 @@ export default defineComponent({
     /**
      * @zh 用户选择时触发
      * @en Triggered when the user selects
-     * @param {string|number|Record<string, any>|undefined} value
+     * @param {string | number | Record<string, any> | undefined } value
      * @param {Event} ev
      */
     'select': (
