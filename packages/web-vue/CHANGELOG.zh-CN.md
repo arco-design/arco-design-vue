@@ -8,7 +8,7 @@ changelog: true
 
 ### 🐛 问题修复
 
-- 修复日文语言包确实某些属性的问题 ([#1890](https://github.com/arco-design/arco-design-vue/pull/1890))
+- 修复日文语言包缺失某些属性的问题 ([#1890](https://github.com/arco-design/arco-design-vue/pull/1890))
 - **pagination:** 修复 pages 变小时，可能会出现页码超出页数的问题 ([#1879](https://github.com/arco-design/arco-design-vue/pull/1879))
 
 ### 🆎 类型修正
