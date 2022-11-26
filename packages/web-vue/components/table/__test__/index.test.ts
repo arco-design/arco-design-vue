@@ -40,9 +40,11 @@ const demoColumns: TableColumnData[] = [
     dataIndex: 'age',
   },
 ];
+const JSONCopy = (val: unknown) => JSON.parse(JSON.stringify(val));
 describe('Table', () => {
   test('Correct rendering after deleting data on the last page', async () => {
-    const data = reactive(demoData);
+    const data = reactive(JSONCopy(demoData));
+    const columns = JSONCopy(demoColumns);
     const current = ref(5);
     const handleChange = (data: number) => {
       current.value = data;
@@ -50,7 +52,7 @@ describe('Table', () => {
 
     const wrapper = mount(Table as any, {
       props: {
-        demoColumns,
+        columns,
         data,
         pagination: {
           current,
@@ -69,8 +71,8 @@ describe('Table', () => {
   });
 
   test('table sort', async () => {
-    const data = reactive(demoData);
-    const columns = [...demoColumns];
+    const data = reactive(JSONCopy(demoData));
+    const columns = JSONCopy(demoColumns);
     columns[1].sortable = {
       sortDirections: ['ascend', 'descend'],
     };
