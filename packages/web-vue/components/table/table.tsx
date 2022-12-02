@@ -1891,6 +1891,7 @@ export default defineComponent({
                 {...(scrollbar.value
                   ? {
                       hide: flattenData.value.length !== 0,
+                      disableVertical: true,
                       ...scrollbarProps.value,
                     }
                   : undefined)}
