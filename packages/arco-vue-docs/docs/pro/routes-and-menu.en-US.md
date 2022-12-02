@@ -131,7 +131,7 @@ export default {
 The following is the Chinese language pack, other language packs will not be repeated.
 
 ```diff
-// src/local/zh-CN.ts
+// src/locale/zh-CN.ts
 export default {
   'menu.dashboard':'Dashboard',
   'menu.dashboard.workplace':'Workbench',
