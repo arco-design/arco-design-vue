@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that thead will have a vertical scroll bar in some cases ([#1913](https://github.com/arco-design/arco-design-vue/pull/1913))
+- **input:** Fix change event triggering issue and clear clearing issue ([#1912](https://github.com/arco-design/arco-design-vue/pull/1912))
+- **divider:** Fix the problem that the style is wrong when setting size ([#1905](https://github.com/arco-design/arco-design-vue/pull/1905))
+- **carousel:** Fix the problem that the transparent background image of `Carousel` cannot cover the previous image ([#1901](https://github.com/arco-design/arco-design-vue/pull/1901))
+
+
 ## 2.39.1
 
 `2022-11-25`

@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 问题修复
+
+- **table:** 修复 thead 在某些情况下会出现纵向滚动条的问题 ([#1913](https://github.com/arco-design/arco-design-vue/pull/1913))
+- **input:** 修复 change 事件触发问题，以及 clear 清除问题 ([#1912](https://github.com/arco-design/arco-design-vue/pull/1912))
+- **divider:** 修复设置 size 时，样式错误的问题 ([#1905](https://github.com/arco-design/arco-design-vue/pull/1905))
+- **carousel:** 修复 `Carousel` 透明背景图片无法遮罩上一张图片的问题 ([#1901](https://github.com/arco-design/arco-design-vue/pull/1901))
+
+
 ## 2.39.1
 
 `2022-11-25`

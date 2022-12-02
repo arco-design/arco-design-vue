@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 BugFix
+
+- Fix change event triggering issue and clear clearing issue ([#1912](https://github.com/arco-design/arco-design-vue/pull/1912))
+
+
 ## 2.38.1
 
 `2022-11-04`
