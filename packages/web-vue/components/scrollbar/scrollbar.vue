@@ -82,6 +82,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    disableHorizontal: {
+      type: Boolean,
+      default: false,
+    },
+    disableVertical: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     /**
@@ -98,8 +106,14 @@ export default defineComponent({
     const verticalData = ref<ThumbData>();
     const horizontalThumbRef = ref();
     const verticalThumbRef = ref();
-    const hasHorizontalScrollbar = ref(false);
-    const hasVerticalScrollbar = ref(false);
+    const _hasHorizontalScrollbar = ref(false);
+    const _hasVerticalScrollbar = ref(false);
+    const hasHorizontalScrollbar = computed(
+      () => _hasHorizontalScrollbar.value && !props.disableHorizontal
+    );
+    const hasVerticalScrollbar = computed(
+      () => _hasVerticalScrollbar.value && !props.disableVertical
+    );
     const isBoth = ref(false);
 
     const getContainerSize = () => {
@@ -114,8 +128,8 @@ export default defineComponent({
           scrollTop,
           scrollLeft,
         } = containerRef.value;
-        hasHorizontalScrollbar.value = scrollWidth > clientWidth;
-        hasVerticalScrollbar.value = scrollHeight > clientHeight;
+        _hasHorizontalScrollbar.value = scrollWidth > clientWidth;
+        _hasVerticalScrollbar.value = scrollHeight > clientHeight;
         isBoth.value =
           hasHorizontalScrollbar.value && hasVerticalScrollbar.value;
         const horizontalTrackWidth =
@@ -182,13 +196,13 @@ export default defineComponent({
 
     const handleScroll = (ev: Event) => {
       if (containerRef.value) {
-        if (hasHorizontalScrollbar.value) {
+        if (hasHorizontalScrollbar.value && !props.disableHorizontal) {
           const horizontalOffset = Math.round(
             containerRef.value.scrollLeft / (horizontalData.value?.ratio ?? 1)
           );
           horizontalThumbRef.value?.setOffset(horizontalOffset);
         }
-        if (hasVerticalScrollbar.value) {
+        if (hasVerticalScrollbar.value && !props.disableVertical) {
           const verticalOffset = Math.round(
             containerRef.value.scrollTop / (verticalData.value?.ratio ?? 1)
           );
