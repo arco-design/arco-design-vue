@@ -68,7 +68,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |search-option-only-label|搜索下拉菜单中的选项是否仅展示标签|`boolean`|`false`|2.18.0|
 |search-delay|触发搜索事件的延迟时间|`number`|`500`|2.18.0|
 |field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
-|value-key|用于确定选项键值得属性名|`string`|`'value'`|2.29.0|
+|value-key|用于确定选项键值的属性名|`string`|`'value'`|2.29.0|
 |fallback|自定义不存在选项的值的展示|`boolean\| ((    value:      \| string      \| number      \| Record<string, unknown>      \| (string \| number \| Record<string, unknown>)[]  ) => string)`|`true`|2.29.0|
 |expand-child|是否展开子菜单|`boolean`|`false`|2.29.0|
 ### `<cascader>` Events
@@ -110,7 +110,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |check-strictly|是否开启严格选择模式|`boolean`|`false`||
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(  option: CascaderOption,  done: (children?: CascaderOption[]) => void) => void`|`-`|2.13.0|
 |field-names|自定义 `CascaderOption` 中的字段|`CascaderFieldNames`|`-`|2.22.0|
-|value-key|用于确定选项键值得属性名|`string`|`'value'`|2.29.0|
+|value-key|用于确定选项键值的属性名|`string`|`'value'`|2.29.0|
 |expand-child|是否展开子菜单|`boolean`|`false`|2.29.0|
 ### `<cascader-panel>` Events
 

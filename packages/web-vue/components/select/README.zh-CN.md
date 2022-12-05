@@ -74,7 +74,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |format-label|格式化显示内容|`(data: SelectOptionData) => string`|`-`||
 |fallback-option|自定义值中不存在的选项|`boolean\| ((    value: string \| number \| Record<string, unknown>  ) => SelectOptionData)`|`true`|2.10.0|
 |show-extra-options|是否在下拉菜单中显示额外选项|`boolean`|`true`|2.10.0|
-|value-key|用于确定选项键值得属性名|`string`|`'value'`|2.18.0|
+|value-key|用于确定选项键值的属性名|`string`|`'value'`|2.18.0|
 |search-delay|触发搜索事件的延迟时间|`number`|`500`|2.18.0|
 |limit|多选时最多的选择个数|`number`|`0`|2.18.0|
 |field-names|自定义 `SelectOptionData` 中的字段|`SelectFieldNames`|`-`|2.22.0|

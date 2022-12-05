@@ -294,7 +294,7 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 用于确定选项键值得属性名
+     * @zh 用于确定选项键值的属性名
      * @en Used to determine the option key value attribute name
      * @version 2.18.0
      */
