@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🐛 BugFix
+
+- Fix the bug that `validate-status` attribute of `Form` component does not take effect in `date-picker` component. ([#1928](https://github.com/arco-design/arco-design-vue/pull/1928))
+
+
 ## 2.38.0
 
 `2022-10-28`

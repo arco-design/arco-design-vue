@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🐛 问题修复
+
+- 修复 `Form` 组件的 `validate-status` 属性在 `date-picker` 组件不生效的 bug。 ([#1928](https://github.com/arco-design/arco-design-vue/pull/1928))
+
+
 ## 2.38.0
 
 `2022-10-28`

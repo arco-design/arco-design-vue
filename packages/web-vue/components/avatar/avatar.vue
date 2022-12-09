@@ -23,6 +23,7 @@
             v-if="!(hasError || !shouldLoad)"
             :src="imageUrl"
             :style="{ width: size + 'px', height: size + 'px' }"
+            alt="avatar"
             @load="handleImgLoad"
             @error="handleImgError"
           />
@@ -82,6 +83,7 @@ export default defineComponent({
     /**
      * @zh 自定义头像图片地址，如果传入该属性，会默认渲染img标签
      * @en Custom avatar image address. If this attribute is passed in, the img tag will be rendered by default
+     * @version 2.40.0
      */
     imageUrl: String,
     /**

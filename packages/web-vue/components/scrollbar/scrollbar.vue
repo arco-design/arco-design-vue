@@ -45,6 +45,7 @@ import { ThumbData } from './interface';
 import ResizeObserver from '../_components/resize-observer-v2';
 import Thumb from './thumb.vue';
 import { getPrefixCls } from '../_utils/global-config';
+import { isNumber, isObject } from '../_utils/is';
 
 const THUMB_MIN_SIZE = 20;
 const TRACK_SIZE = 15;
@@ -269,30 +270,51 @@ export default defineComponent({
     };
   },
   methods: {
-    // eslint-disable-next-line no-undef
-    scrollTo(options: ScrollToOptions | number, y?: number) {
-      if (typeof options === 'object' && options !== null) {
+    /**
+     * @zh 滚动
+     * @en scrollTo
+     * @public
+     * @param {number | {left?: number;top?: number}} options
+     * @param {number} y
+     */
+    scrollTo(
+      options?:
+        | number
+        | {
+            left?: number;
+            top?: number;
+          },
+      y?: number
+    ) {
+      if (isObject(options)) {
         (this.$refs.containerRef as HTMLElement)?.scrollTo(options);
-      } else if (typeof options === 'number' && typeof y === 'number') {
-        (this.$refs.containerRef as HTMLElement)?.scrollTo(options, y);
+      } else if (options || y) {
+        (this.$refs.containerRef as HTMLElement)?.scrollTo(
+          options as number,
+          y as number
+        );
       }
     },
+    /**
+     * @zh 纵向滚动
+     * @en scroll vertically
+     * @public
+     * @param {number} top
+     * @version 2.40.0
+     */
     scrollTop(top: number) {
-      if (typeof top !== 'number') {
-        // eslint-disable-next-line no-console
-        console.warn('value must be a number');
-        return;
-      }
       (this.$refs.containerRef as HTMLElement)?.scrollTo({
         top,
       });
     },
+    /**
+     * @zh 横向滚动
+     * @en scroll horizontal
+     * @public
+     * @param {number} left
+     * @version 2.40.0
+     */
     scrollLeft(left: number) {
-      if (typeof left !== 'number') {
-        // eslint-disable-next-line no-console
-        console.warn('value must be a number');
-        return;
-      }
       (this.$refs.containerRef as HTMLElement)?.scrollTo({
         left,
       });

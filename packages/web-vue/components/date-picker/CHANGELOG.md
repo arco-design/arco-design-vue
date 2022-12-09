@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🐛 BugFix
+
+- Fix the bug that the `feedback` attribute of the `Form` component does not take effect in the `date-picker` component. ([#1932](https://github.com/arco-design/arco-design-vue/pull/1932))
+
+
 ## 2.39.0
 
 `2022-11-18`

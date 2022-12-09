@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 Feature
+
+- The change event increases the current data parameter ([#1893](https://github.com/arco-design/arco-design-vue/pull/1893))
+
+
 ## 2.39.2
 
 `2022-12-02`

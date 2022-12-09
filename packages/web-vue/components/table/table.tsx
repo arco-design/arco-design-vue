@@ -483,12 +483,13 @@ export default defineComponent({
      * @en Triggered when table data changes
      * @param {TableData[]} data
      * @param {TableChangeExtra} extra
-     * @param {TableData[]} currentDataSource
+     * @param {TableData[]} currentData
+     * @version 2.40.0 增加 currentData
      */
     'change': (
       data: TableData[],
       extra: TableChangeExtra,
-      currentDataSource: TableData[]
+      currentData: TableData[]
     ) => true,
     /**
      * @zh 点击单元格时触发

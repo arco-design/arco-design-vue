@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 新增功能
+
+- **scrollbar:** 增加 scrollLeft 和 scrollTop 方法 ([#1909](https://github.com/arco-design/arco-design-vue/pull/1909))
+- **table:** change 事件增加当前数据参数 ([#1893](https://github.com/arco-design/arco-design-vue/pull/1893))
+- **avatar:** 增加 image-url 属性，支持使用图片地址 ([#1810](https://github.com/arco-design/arco-design-vue/pull/1810))
+- **auto-complete:** 增加 focus 和 blur 方法 ([#1809](https://github.com/arco-design/arco-design-vue/pull/1809))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复 `Form` 组件的 `feedback` 属性在  `date-picker` 组件不生效的 bug。 ([#1932](https://github.com/arco-design/arco-design-vue/pull/1932))
+- **list:** 修复 scrollbar 属性传递虚拟滚动条属性时失效的问题 ([#1929](https://github.com/arco-design/arco-design-vue/pull/1929))
+- **form:** 修复 `Form` 组件的 `validate-status` 属性在 `date-picker` 组件不生效的 bug。 ([#1928](https://github.com/arco-design/arco-design-vue/pull/1928))
+
+
 ## 2.39.2
 
 `2022-12-02`

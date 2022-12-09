@@ -38,6 +38,12 @@ description: The auto-complete function of the input.
 |search|Emitted when the user searches|value: `string`||
 |select|Emitted when an option is selected|value: `string`||
 |clear|Triggered when the user clicks the clear button|ev: `Event`|2.23.0|
+### `<auto-complete>` Methods
+
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|focus|Make the input box focus|-|-|2.40.0|
+|blur|Make the input box lose focus|-|-|2.40.0|
 ### `<auto-complete>` Slots
 
 |Slot Name|Description|Parameters|version|

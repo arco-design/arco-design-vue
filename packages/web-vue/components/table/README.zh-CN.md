@@ -109,7 +109,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |filter-change|过滤选项发生改变时触发|dataIndex: `string`<br>filteredValues: `string[]`||
 |page-change|表格分页发生改变时触发|page: `number`||
 |page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`||
-|change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`<br>currentDataSource: `TableData[]`||
+|change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`<br>currentData: `TableData[]`|2.40.0 增加 currentData|
 |cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
 |row-click|点击行数据时触发|record: `TableData`<br>ev: `Event`||
 |header-click|点击表头数据时触发|column: `TableColumnData`<br>ev: `Event`||

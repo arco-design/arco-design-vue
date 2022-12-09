@@ -324,6 +324,7 @@ export default defineComponent({
      * @zh 使输入框获取焦点
      * @en Make the input box focus
      * @public
+     * @version 2.40.0
      */
     focus() {
       (this.inputRef as HTMLInputElement)?.focus();
@@ -332,6 +333,7 @@ export default defineComponent({
      * @zh 使输入框失去焦点
      * @en Make the input box lose focus
      * @public
+     * @version 2.40.0
      */
     blur() {
       (this.inputRef as HTMLInputElement)?.blur();

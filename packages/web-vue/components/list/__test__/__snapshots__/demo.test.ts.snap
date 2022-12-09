@@ -1137,7 +1137,7 @@ exports[`<list> demo: render [responsive-grid] correctly 1`] = `
 exports[`<list> demo: render [scroll] correctly 1`] = `
 "<div style=\\"margin-bottom: 10px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
     <!--v-if-->
-  </button> Virtual List </div>
+  </button> Virtual Scrollbar </div>
 <div class=\\"arco-list-wrapper\\">
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
