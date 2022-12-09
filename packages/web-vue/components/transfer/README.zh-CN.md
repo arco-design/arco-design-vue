@@ -16,6 +16,8 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 
 @import ./__demo__/simple.md
 
+@import ./__demo__/virtual.md
+
 @import ./__demo__/tree.md
 
 ## API

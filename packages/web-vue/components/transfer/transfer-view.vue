@@ -70,6 +70,7 @@ import { DataInfo, TransferItem } from './interface';
 import { transferInjectionKey } from './context';
 import Scrollbar from '../scrollbar';
 import Empty from '../empty/empty';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 
 export default defineComponent({
   name: 'TransferView',
@@ -104,6 +105,9 @@ export default defineComponent({
     showSearch: Boolean,
     showSelectAll: Boolean,
     simple: Boolean,
+    virtualListProps: {
+      type: Object as PropType<VirtualListProps>,
+    },
   },
   emits: ['search'],
   setup(props, { emit }) {
