@@ -21,7 +21,7 @@ listen to the event of the bottom of the list.
 <template>
   <div style="margin-bottom: 10px">
     <a-switch v-model="scrollbar" />
-    Virtual List
+    Virtual Scrollbar
   </div>
   <a-list :max-height="240" @reach-bottom="fetchData" :scrollbar="scrollbar">
     <template #header>
