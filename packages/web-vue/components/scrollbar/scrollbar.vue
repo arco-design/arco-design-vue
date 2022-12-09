@@ -269,8 +269,33 @@ export default defineComponent({
     };
   },
   methods: {
-    scrollTo(options: any) {
-      (this.$refs.containerRef as HTMLElement)?.scrollTo(options);
+    // eslint-disable-next-line no-undef
+    scrollTo(options: ScrollToOptions | number, y?: number) {
+      if (typeof options === 'object' && options !== null) {
+        (this.$refs.containerRef as HTMLElement)?.scrollTo(options);
+      } else if (typeof options === 'number' && typeof y === 'number') {
+        (this.$refs.containerRef as HTMLElement)?.scrollTo(options, y);
+      }
+    },
+    scrollTop(top: number) {
+      if (typeof top !== 'number') {
+        // eslint-disable-next-line no-console
+        console.warn('value must be a number');
+        return;
+      }
+      (this.$refs.containerRef as HTMLElement)?.scrollTo({
+        top,
+      });
+    },
+    scrollLeft(left: number) {
+      if (typeof left !== 'number') {
+        // eslint-disable-next-line no-console
+        console.warn('value must be a number');
+        return;
+      }
+      (this.$refs.containerRef as HTMLElement)?.scrollTo({
+        left,
+      });
     },
   },
 });
