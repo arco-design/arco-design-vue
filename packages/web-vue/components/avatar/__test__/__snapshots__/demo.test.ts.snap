@@ -147,12 +147,15 @@ exports[`<avatar> demo: render [icon] correctly 1`] = `
 
 exports[`<avatar> demo: render [image-url] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
     <div class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-image\\"><!--v-if--><div class=\\"arco-avatar-image-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg></div><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <!--v-if-->
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"> 加载失败: </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-image\\"><!--v-if--><div class=\\"arco-avatar-image-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg></div><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9123.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <!--v-if-->
