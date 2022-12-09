@@ -47,10 +47,33 @@
   }
 }
 
+// datepicker
+.picker(@status) {
+  .@{prefix}-picker:not(.@{prefix}-picker-disabled) {
+    border-color: ~'@{form-color-border_@{status}}';
+    background-color: ~'@{form-color-bg_@{status}}';
+
+    &:hover {
+      border-color: ~'@{form-color-border_@{status}_hover}';
+      background-color: ~'@{form-color-bg_@{status}_hover}';
+    }
+  }
+
+  .@{prefix}-picker-focused:not(.@{prefix}-picker-disabled) {
+    &,
+    &:hover {
+      border-color: ~'@{form-color-border_@{status}_focus}';
+      background-color: ~'@{form-color-bg_@{status}_focus}';
+      box-shadow: 0 0 0 ~'@{form-size-shadow_@{status}_focus}' ~'@{form-color-shadow_@{status}_focus}';
+    }
+  }
+}
+
 .validate-status (@status) {
   .@{prefix}-form-item-status-@{status} {
     .input-status(@status);
     .select-view-status(@status);
+    .picker(@status);
   }
 
   .@{prefix}-form-item-status-@{status} {
