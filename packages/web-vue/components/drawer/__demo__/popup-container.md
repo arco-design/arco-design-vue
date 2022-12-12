@@ -34,7 +34,7 @@ You can use 'popup-container' to set the mount position of the pop-up layer node
   >
     <template #title> Title </template>
     <div
-      >You can cusstomize modal body text by the current situation. This modal
+      >You can customize modal body text by the current situation. This modal
       will be closed immediately once you press the OK button.</div
     >
   </a-drawer>

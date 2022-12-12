@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 Feature
+
+- Add scrollLeft and scrollTop methods ([#1909](https://github.com/arco-design/arco-design-vue/pull/1909))
+
+
 ## 2.37.2
 
 `2022-09-21`

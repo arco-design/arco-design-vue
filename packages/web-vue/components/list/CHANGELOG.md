@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🐛 BugFix
+
+- Fix the problem that the scrollbar attribute fails when passing the virtual scrollbar attribute ([#1929](https://github.com/arco-design/arco-design-vue/pull/1929))
+
+
 ## 2.37.2
 
 `2022-09-21`

@@ -41,6 +41,7 @@
       <span :class="`${prefixCls}-suffix-icon`">
         <slot name="suffix-icon" />
       </span>
+      <FeedbackIcon v-if="feedback" :type="feedback" />
     </div>
   </div>
 </template>
@@ -48,6 +49,7 @@
 import { Dayjs } from 'dayjs';
 import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
+import FeedbackIcon from '../feedback-icon.vue';
 import {
   isArray,
   isDayjs,
@@ -65,6 +67,7 @@ export default defineComponent({
   components: {
     IconHover,
     IconClose,
+    FeedbackIcon,
   },
   props: {
     size: {
@@ -127,6 +130,7 @@ export default defineComponent({
       mergedSize: _mergedSize,
       mergedDisabled,
       mergedError,
+      feedback,
     } = useFormItem({ size, error });
     const { mergedSize } = useSize(_mergedSize);
 
@@ -219,6 +223,7 @@ export default defineComponent({
       onPressEnter,
       onPressTab,
       onClear,
+      feedback,
     };
   },
   methods: {

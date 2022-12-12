@@ -36,7 +36,7 @@ Customize the content by slot, or set the appropriate properties to control whet
       <span>Header and title</span>
     </template>
     <div>
-      You can cusstomize modal body text by the current situation. This modal will be closed immediately once you
+      You can customize modal body text by the current situation. This modal will be closed immediately once you
       press the OK button.
     </div>
   </a-drawer>

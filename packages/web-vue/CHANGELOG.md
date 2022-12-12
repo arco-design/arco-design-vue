@@ -2,6 +2,36 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 Feature
+
+- **scrollbar:** Add scrollLeft and scrollTop methods ([#1909](https://github.com/arco-design/arco-design-vue/pull/1909))
+- **table:** The change event increases the current data parameter ([#1893](https://github.com/arco-design/arco-design-vue/pull/1893))
+- **avatar:** Add image-url attribute to support the use of image URLs ([#1810](https://github.com/arco-design/arco-design-vue/pull/1810))
+- **auto-complete:** Add focus and blur methods ([#1809](https://github.com/arco-design/arco-design-vue/pull/1809))
+
+### 🐛 BugFix
+
+- **date-picker:** Fix the bug that the `feedback` attribute of the `Form` component does not take effect in the `date-picker` component. ([#1932](https://github.com/arco-design/arco-design-vue/pull/1932))
+- **list:** Fix the problem that the scrollbar attribute fails when passing the virtual scrollbar attribute ([#1929](https://github.com/arco-design/arco-design-vue/pull/1929))
+- **form:** Fix the bug that `validate-status` attribute of `Form` component does not take effect in `date-picker` component. ([#1928](https://github.com/arco-design/arco-design-vue/pull/1928))
+
+
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that thead will have a vertical scroll bar in some cases ([#1913](https://github.com/arco-design/arco-design-vue/pull/1913))
+- **input:** Fix change event triggering issue and clear clearing issue ([#1912](https://github.com/arco-design/arco-design-vue/pull/1912))
+- **divider:** Fix the problem that the style is wrong when setting size ([#1905](https://github.com/arco-design/arco-design-vue/pull/1905))
+- **carousel:** Fix the problem that the transparent background image of `Carousel` cannot cover the previous image ([#1901](https://github.com/arco-design/arco-design-vue/pull/1901))
+
+
 ## 2.39.1
 
 `2022-11-25`

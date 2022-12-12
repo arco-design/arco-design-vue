@@ -45,6 +45,7 @@ import { ThumbData } from './interface';
 import ResizeObserver from '../_components/resize-observer-v2';
 import Thumb from './thumb.vue';
 import { getPrefixCls } from '../_utils/global-config';
+import { isNumber, isObject } from '../_utils/is';
 
 const THUMB_MIN_SIZE = 20;
 const TRACK_SIZE = 15;
@@ -82,6 +83,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    disableHorizontal: {
+      type: Boolean,
+      default: false,
+    },
+    disableVertical: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     /**
@@ -98,8 +107,14 @@ export default defineComponent({
     const verticalData = ref<ThumbData>();
     const horizontalThumbRef = ref();
     const verticalThumbRef = ref();
-    const hasHorizontalScrollbar = ref(false);
-    const hasVerticalScrollbar = ref(false);
+    const _hasHorizontalScrollbar = ref(false);
+    const _hasVerticalScrollbar = ref(false);
+    const hasHorizontalScrollbar = computed(
+      () => _hasHorizontalScrollbar.value && !props.disableHorizontal
+    );
+    const hasVerticalScrollbar = computed(
+      () => _hasVerticalScrollbar.value && !props.disableVertical
+    );
     const isBoth = ref(false);
 
     const getContainerSize = () => {
@@ -114,8 +129,8 @@ export default defineComponent({
           scrollTop,
           scrollLeft,
         } = containerRef.value;
-        hasHorizontalScrollbar.value = scrollWidth > clientWidth;
-        hasVerticalScrollbar.value = scrollHeight > clientHeight;
+        _hasHorizontalScrollbar.value = scrollWidth > clientWidth;
+        _hasVerticalScrollbar.value = scrollHeight > clientHeight;
         isBoth.value =
           hasHorizontalScrollbar.value && hasVerticalScrollbar.value;
         const horizontalTrackWidth =
@@ -182,13 +197,13 @@ export default defineComponent({
 
     const handleScroll = (ev: Event) => {
       if (containerRef.value) {
-        if (hasHorizontalScrollbar.value) {
+        if (hasHorizontalScrollbar.value && !props.disableHorizontal) {
           const horizontalOffset = Math.round(
             containerRef.value.scrollLeft / (horizontalData.value?.ratio ?? 1)
           );
           horizontalThumbRef.value?.setOffset(horizontalOffset);
         }
-        if (hasVerticalScrollbar.value) {
+        if (hasVerticalScrollbar.value && !props.disableVertical) {
           const verticalOffset = Math.round(
             containerRef.value.scrollTop / (verticalData.value?.ratio ?? 1)
           );
@@ -255,8 +270,54 @@ export default defineComponent({
     };
   },
   methods: {
-    scrollTo(options: any) {
-      (this.$refs.containerRef as HTMLElement)?.scrollTo(options);
+    /**
+     * @zh 滚动
+     * @en scrollTo
+     * @public
+     * @param {number | {left?: number;top?: number}} options
+     * @param {number} y
+     */
+    scrollTo(
+      options?:
+        | number
+        | {
+            left?: number;
+            top?: number;
+          },
+      y?: number
+    ) {
+      if (isObject(options)) {
+        (this.$refs.containerRef as HTMLElement)?.scrollTo(options);
+      } else if (options || y) {
+        (this.$refs.containerRef as HTMLElement)?.scrollTo(
+          options as number,
+          y as number
+        );
+      }
+    },
+    /**
+     * @zh 纵向滚动
+     * @en scroll vertically
+     * @public
+     * @param {number} top
+     * @version 2.40.0
+     */
+    scrollTop(top: number) {
+      (this.$refs.containerRef as HTMLElement)?.scrollTo({
+        top,
+      });
+    },
+    /**
+     * @zh 横向滚动
+     * @en scroll horizontal
+     * @public
+     * @param {number} left
+     * @version 2.40.0
+     */
+    scrollLeft(left: number) {
+      (this.$refs.containerRef as HTMLElement)?.scrollTo({
+        left,
+      });
     },
   },
 });

@@ -480,10 +480,17 @@ export default defineComponent({
     'pageSizeChange': (pageSize: number) => true,
     /**
      * @zh 表格数据发生变化时触发
+     * @en Triggered when table data changes
      * @param {TableData[]} data
      * @param {TableChangeExtra} extra
+     * @param {TableData[]} currentData
+     * @version 2.40.0 增加 currentData
      */
-    'change': (data: TableData[], extra: TableChangeExtra) => true,
+    'change': (
+      data: TableData[],
+      extra: TableChangeExtra,
+      currentData: TableData[]
+    ) => true,
     /**
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
@@ -762,7 +769,7 @@ export default defineComponent({
         filters: computedFilters.value,
         dragTarget: type === 'drag' ? dragState.data : undefined,
       };
-      emit('change', flattenRawData.value, extra);
+      emit('change', flattenRawData.value, extra, sortedData.value);
     };
 
     const handleFilterChange = (
@@ -1891,6 +1898,7 @@ export default defineComponent({
                 {...(scrollbar.value
                   ? {
                       hide: flattenData.value.length !== 0,
+                      disableVertical: true,
                       ...scrollbarProps.value,
                     }
                   : undefined)}

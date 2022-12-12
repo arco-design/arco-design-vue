@@ -56,12 +56,12 @@ export default defineComponent({
       const styles: CSSProperties = {};
       if (props.size) {
         styles[
-          isHorizontal.value ? 'border-bottom-width' : 'border-left-width'
+          isHorizontal.value ? 'border-left-width' : 'border-bottom-width'
         ] = isNumber(props.size) ? `${props.size}px` : props.size;
       }
       if (props.type) {
         styles[
-          isHorizontal.value ? 'border-bottom-style' : 'border-left-style'
+          isHorizontal.value ? 'border-left-style' : 'border-bottom-style'
         ] = props.type;
       }
       if (props.margin) {

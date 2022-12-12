@@ -264,6 +264,7 @@ export default defineComponent({
           value.slice(0, maxLength.value);
       }
 
+      preValue = _value.value;
       _value.value = value;
       emit('update:modelValue', value);
     };
@@ -277,7 +278,6 @@ export default defineComponent({
 
     const emitChange = (value: string, ev: Event) => {
       if (value !== preValue) {
-        preValue = value;
         emit('change', value, ev);
         eventHandlers.value?.onChange?.(ev);
       }
@@ -285,7 +285,6 @@ export default defineComponent({
 
     const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
-      preValue = computedValue.value;
       emit('focus', ev);
       eventHandlers.value?.onFocus?.(ev);
     };
