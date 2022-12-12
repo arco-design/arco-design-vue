@@ -1,5 +1,6 @@
 import { defineComponent, PropType } from 'vue';
 import Picker from '../picker.vue';
+import {DisabledMonth, DisabledTimeProps} from "../interface";
 
 export default defineComponent({
   name: 'MonthPicker',
@@ -25,6 +26,13 @@ export default defineComponent({
     format: {
       type: String,
       default: 'YYYY-MM',
+    },
+    /**
+     * @zh 不可选取的月份
+     * @en Unselectable month
+     * */
+    disabledMonth: {
+      type: Function as PropType<(current: Date) => DisabledMonth>,
     },
   },
   setup(props, { attrs, slots }) {
