@@ -27,3 +27,7 @@ export interface PaginationProps {
   baseSize?: number;
   bufferSize?: number;
 }
+
+export type OnChange = (current: number) => void;
+
+export type OnPageSizeChange = (pageSize: number) => void;
