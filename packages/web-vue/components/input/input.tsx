@@ -307,8 +307,8 @@ export default defineComponent({
         if (
           maxLength.value &&
           !maxLengthErrorOnly.value &&
-          computedValue.value.length >= maxLength.value &&
-          getValueLength(value) > maxLength.value &&
+          (valueLength.value >= maxLength.value ||
+            getValueLength(value) > maxLength.value) &&
           selectionStart === selectionEnd
         ) {
           keepControl();
@@ -343,8 +343,8 @@ export default defineComponent({
         if (
           maxLength.value &&
           !maxLengthErrorOnly.value &&
-          computedValue.value.length >= maxLength.value &&
-          getValueLength(value) > maxLength.value &&
+          (valueLength.value >= maxLength.value ||
+            getValueLength(value) > maxLength.value) &&
           (e as InputEvent).inputType === 'insertText'
         ) {
           keepControl();
