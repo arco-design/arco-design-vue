@@ -14,7 +14,7 @@ import { checkboxGroupKey } from './context';
 import { useFormItem } from '../_hooks/use-form-item';
 import { CheckboxOption } from './interface';
 import Checkbox from './checkbox';
-import { isFunction, isNumber, isString, isArray, isNull } from '../_utils/is';
+import { isFunction, isNumber, isString, isArray } from '../_utils/is';
 
 export default defineComponent({
   name: 'CheckboxGroup',
