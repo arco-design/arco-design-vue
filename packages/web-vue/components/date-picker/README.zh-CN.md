@@ -1,3 +1,4 @@
+## zh-CN
 ```yaml
 meta:
   type: 组件
@@ -5,6 +6,16 @@ meta:
 title: 日期选择器 DatePicker
 description: 选择日期。支持年、月、周、日类型，支持范围选择等。
 ```
+---
+## en-US
+```yaml
+meta:
+  type: Component
+  category: Data Entry
+title: DatePicker
+description: Choose a date. Support year, month, week, day type, support range selection, etc.
+```
+---
 
 
 @import ./__demo__/basic.md
@@ -124,6 +135,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |model-value **(v-model)**|绑定值|`Date \| string \| number`|`-`|
 |default-value|默认值|`Date \| string \| number`|`-`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`'YYYY-MM'`|
+|disabled-date|不可选取的月份(可以根据传递给回调方法的参数禁用月份)|`(current?: Date) => boolean`|`-`|
 
 
 
@@ -209,6 +221,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 
 
 
+## zh-CN
 ### 字符串解析格式
 
 格式|输出|描述
@@ -243,3 +256,40 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 `Do`|1st... 3st|带序号的月份中的某天
 `X`|1410715640.579|Unix 时间戳
 `x`|1410715640579|Unix 毫秒时间戳
+---
+## en-US
+### String parsing format
+
+Format|Output|Description
+---|---|---:
+`YY`|21|Two-digit year
+`YYYY`|2021|Four-digit year
+`M`|1-12|Month, starting from 1
+`MM`|01-12|Month, two digits
+`MMM`|Jan-Dec|Abbreviated month name
+`MMMM`|January-December|Full month name
+`D`|1-31|Day of the month
+`DD`|01-31|Day of the month, two digits
+`d`|0-6|Day of the week, Sunday is 0
+`dd`|Su-Sa|The shortest name of the day of the week
+`ddd`|Sun-Sat|Abbreviated name of the day of the week
+`dddd`|Sunday-Saturday|The name of the day of the week
+`H`|0-23|Hour
+`HH`|00-23|Hour, two digits
+`h`|1-12|Hour, 12-hour clock
+`hh`|01-12|Hour, 12-hour clock, two digits
+`m`|0-59|Minute
+`mm`|00-59|Minute, two digits
+`s`|0-59|Second
+`ss`|00-59|Second, two digits
+`S`|0-9|Hundreds of milliseconds, one digits
+`SS`|00-99|Tens of milliseconds, two digits
+`SSS`|000-999|Millisecond, three digits
+`Z`|-5:00|UTC offset
+`ZZ`|-0500|UTC offset, add 0 in front of the number
+`A`|AM PM|-
+`a`|am pm|-
+`Do`|1st... 3st|Day of month with serial number
+`X`|1410715640.579|Unix timestamp
+`x`|1410715640579|Unix millisecond timestamp
+---

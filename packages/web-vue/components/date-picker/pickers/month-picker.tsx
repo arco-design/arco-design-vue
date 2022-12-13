@@ -26,6 +26,13 @@ export default defineComponent({
       type: String,
       default: 'YYYY-MM',
     },
+    /**
+     * @zh 不可选取的月份(可以根据传递给回调方法的参数禁用月份)
+     * @en Unselectable month(The month can be disabled based on the parameters passed to the callback method)
+     */
+    disabledDate: {
+      type: Function as PropType<(current?: Date) => boolean>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => <Picker {...props} {...attrs} mode="month" v-slots={slots} />;
