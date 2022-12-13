@@ -25,6 +25,17 @@ describe('InputNumber', () => {
     expect(input.element.value).toBe('-2');
     await input.trigger('blur');
     expect(input.element.value).toBe('0');
+    // #1706
+    await input.setValue('-2');
+    expect(input.element.value).toBe('-2');
+    await input.trigger('blur');
+    expect(input.element.value).toBe('0');
+
+    await input.setValue('20');
+    expect(input.element.value).toBe('20');
+    await input.trigger('blur');
+    expect(input.element.value).toBe('10');
+    // #1706
     await input.setValue('20');
     expect(input.element.value).toBe('20');
     await input.trigger('blur');

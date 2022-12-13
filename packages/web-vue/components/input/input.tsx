@@ -264,7 +264,7 @@ export default defineComponent({
           value.slice(0, maxLength.value);
       }
 
-      preValue = _value.value;
+      preValue = computedValue.value;
       _value.value = value;
       emit('update:modelValue', value);
     };
