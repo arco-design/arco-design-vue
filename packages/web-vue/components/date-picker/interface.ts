@@ -35,7 +35,6 @@ export interface DisabledTimeProps {
 export type FormatFunc = (current: Date) => string;
 export type IsSameTime = (current: Dayjs, target: Dayjs) => boolean;
 export type DisabledDate = (current: Date) => boolean;
-export type DisabledMonth  = (current: Date) => boolean;
 export type DisabledTime = (current: Date) => DisabledTimeProps;
 export type RangeDisabledDate = (
   current: Date,

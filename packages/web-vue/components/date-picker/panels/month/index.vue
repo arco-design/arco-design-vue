@@ -18,7 +18,7 @@
         :rows="rows"
         :value="value"
         :range-values="rangeValues"
-        :disabled-date="disabledDate || disabledMonth"
+        :disabled-date="disabledDate"
         :is-same-time="isSameTime"
         :date-render="dateRender"
         @cellClick="onCellClick"
@@ -45,7 +45,6 @@ import { newArray } from '../../utils';
 import PanelHeader, { HeaderLabelClickFunc } from '../header.vue';
 import PanelBody from '../body.vue';
 import useInjectDatePickerTransform from '../../hooks/use-inject-datepicker-transform';
-import {DisabledMonth} from "../../interface";
 
 const MONTH_LIST = [
   'January',
@@ -89,9 +88,6 @@ export default defineComponent({
     },
     disabledDate: {
       type: Function as PropType<DisabledDate>,
-    },
-    disabledMonth: {
-      type: Function as PropType<DisabledMonth>,
     },
     rangeValues: {
       type: Array as PropType<Array<Dayjs | undefined>>,

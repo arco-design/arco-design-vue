@@ -80,7 +80,6 @@ import { getDayjsValue, getNow } from '../_utils/date';
 import {
   CalendarValue,
   DisabledDate,
-  DisabledMonth,
   DisabledTime,
   HeaderIcons,
   HeaderOperations,
@@ -159,9 +158,6 @@ export default defineComponent({
     disabledTime: {
       type: Function as PropType<DisabledTime>,
     },
-    disabledMonth: {
-      type: Function as PropType<DisabledMonth>,
-    },
     timePickerProps: {
       type: Object as PropType<Partial<TimePickerProps>>,
     },
@@ -208,7 +204,6 @@ export default defineComponent({
       format,
       value,
       disabledDate,
-      disabledMonth,
       hideTrigger,
       showNowBtn,
       dateRender,
@@ -332,7 +327,6 @@ export default defineComponent({
       headerIcons,
       headerOperations,
       disabledDate,
-      disabledMonth,
       dateRender,
       onSelect: onPanelSelect,
       onHeaderLabelClick: onPanelHeaderLabelClick,

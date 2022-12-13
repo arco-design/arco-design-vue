@@ -98,7 +98,6 @@ import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useI18n } from '../locale';
-import useIsDisabledMonth from './hooks/use-is-disabled-month';
 
 /**
  * @displayName Common
@@ -317,13 +316,6 @@ export default defineComponent({
     defaultValue: {
       type: [Object, String, Number] as PropType<Date | string | number>,
     },
-    /**
-     * @zh 不可选取的月份
-     * @en Unselectable month
-     * */
-    disabledMonth: {
-      type: Function as PropType<(current: Date) => boolean>,
-    },
   },
   emits: {
     /**
@@ -446,7 +438,6 @@ export default defineComponent({
       timePickerProps,
       disabledDate,
       disabledTime,
-      disabledMonth,
       readonly,
       locale,
       pickerValue,
@@ -513,15 +504,11 @@ export default defineComponent({
       })
     );
 
-    const isDisabledMonth = useIsDisabledMonth(
-      reactive({mode,disabledMonth})
-    );
-
     const needConfirm = computed(() => showTime.value || showConfirmBtn.value);
     const confirmBtnDisabled = computed(
       () =>
         needConfirm.value &&
-        (!forSelectedValue.value || isDisabledDate(forSelectedValue.value) || isDisabledMonth(forSelectedValue.value))
+        (!forSelectedValue.value || isDisabledDate(forSelectedValue.value))
     );
 
     const isDateTime = computed(() => mode.value === 'date' && showTime.value);
@@ -635,7 +622,7 @@ export default defineComponent({
       showPanel?: boolean,
       emitOk?: boolean
     ) {
-      if (isDisabledDate(value) || isDisabledMonth(value)) {
+      if (isDisabledDate(value)) {
         return;
       }
 
@@ -694,7 +681,7 @@ export default defineComponent({
 
       const newValue = dayjs(targetValue, computedFormat.value);
 
-      if (isDisabledDate(newValue) || isDisabledMonth(newValue)) return;
+      if (isDisabledDate(newValue)) return;
 
       if (needConfirm.value) {
         select(newValue);
@@ -792,7 +779,6 @@ export default defineComponent({
         'shortcutsPosition',
         'dayStartOfWeek',
         'disabledDate',
-        'disabledMonth',
         'disabledTime',
         'showTime',
         'hideTrigger',
