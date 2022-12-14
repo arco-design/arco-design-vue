@@ -208,6 +208,15 @@ export default defineComponent({
       }
     });
 
+    watch(
+      () => computedValue.value,
+      (val) => {
+        if (val === '') {
+          preValue = '';
+        }
+      }
+    );
+
     let preValue = computedValue.value;
 
     // 状态相关
