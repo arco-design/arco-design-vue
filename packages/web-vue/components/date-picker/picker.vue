@@ -33,6 +33,7 @@
         @clear="onInputClear"
         @change="onInputChange"
         @pressEnter="onInputPressEnter"
+        @blur="onInputBlur"
       >
         <template #suffix-icon>
           <slot name="suffix-icon">
@@ -671,7 +672,13 @@ export default defineComponent({
       emit('clear');
     }
 
+    function onInputBlur() {
+      eventHandlers.value?.onBlur?.();
+    }
+
     function onInputChange(e: any) {
+      // eslint-disable-next-line no-console
+      console.log('onInputChange');
       setPanelVisible(true);
 
       const targetValue = e.target.value;
@@ -836,6 +843,7 @@ export default defineComponent({
       onInputClear,
       onInputChange,
       onInputPressEnter,
+      onInputBlur,
       onPanelClick,
     };
   },
