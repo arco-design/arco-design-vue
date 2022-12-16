@@ -77,7 +77,7 @@ export default defineComponent({
      */
     placeholder: String,
     /**
-     * @zh 输入值得最大长度，errorOnly 属性在 2.12.0 版本添加
+     * @zh 输入值的最大长度，errorOnly 属性在 2.12.0 版本添加
      * @en Enter the maximum length of the value, the errorOnly attribute was added in version 2.12.0
      */
     maxLength: {
