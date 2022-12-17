@@ -19,25 +19,46 @@ Omit multiple lines of text when there is insufficient space.
 ```vue
 <template>
   <div>
-    <a-typography-title :heading="4" ellipsis>
-      A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process.
-    </a-typography-title>
+    <div style="white-space: nowrap; width: 100%; overflow: hidden">
+      <a-typography-title :heading="4" ellipsis>
+        A design is a plan or specification for the construction of an object or
+        system or for the implementation of an activity or process.
+      </a-typography-title>
+    </div>
     <a-typography-paragraph
       :ellipsis="{
         rows: 2,
         showTooltip: true,
       }"
     >
-      A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.
+      A design is a plan or specification for the construction of an object or
+      system or for the implementation of an activity or process, or the result
+      of that plan or specification in the form of a prototype, product or
+      process. The verb to design expresses the process of developing a design.
+      The verb to design expresses the process of developing a design.A design
+      is a plan or specification for the construction of an object or system or
+      for the implementation of an activity or process, or the result of that
+      plan or specification in the form of a prototype, product or process. The
+      verb to design expresses the process of developing a design. The verb to
+      design expresses the process of developing a design.
     </a-typography-paragraph>
     <a-typography-paragraph
       :ellipsis="{
         rows: 2,
         showTooltip: true,
-        css: true
+        css: true,
       }"
     >
-      A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.
+      A design is a plan or specification for the construction of an object or
+      system or for the implementation of an activity or process, or the result
+      of that plan or specification in the form of a prototype, product or
+      process. The verb to design expresses the process of developing a design.
+      The verb to design expresses the process of developing a design.A design
+      is a plan or specification for the construction of an object or system or
+      for the implementation of an activity or process, or the result of that
+      plan or specification in the form of a prototype, product or process. The
+      verb to design expresses the process of developing a design. The verb to
+      design expresses the process of developing a design.
     </a-typography-paragraph>
     <a-typography-paragraph
       :ellipsis="{
@@ -47,15 +68,24 @@ Omit multiple lines of text when there is insufficient space.
         showTooltip: {
           type: 'popover',
           props: {
-            style: { maxWidth: `500px` }
-          }
+            style: { maxWidth: `500px` },
+          },
         },
       }"
     >
-      <template #expand-node="{expanded}">
+      <template #expand-node="{ expanded }">
         {{ expanded ? '' : 'More' }}
       </template>
-      A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.
+      A design is a plan or specification for the construction of an object or
+      system or for the implementation of an activity or process, or the result
+      of that plan or specification in the form of a prototype, product or
+      process. The verb to design expresses the process of developing a design.
+      The verb to design expresses the process of developing a design.A design
+      is a plan or specification for the construction of an object or system or
+      for the implementation of an activity or process, or the result of that
+      plan or specification in the form of a prototype, product or process. The
+      verb to design expresses the process of developing a design. The verb to
+      design expresses the process of developing a design.
     </a-typography-paragraph>
     <a-typography-paragraph
       :ellipsis="{
@@ -64,8 +94,16 @@ Omit multiple lines of text when there is insufficient space.
         expandable: true,
       }"
     >
-      A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.
-      A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. The verb to design expresses the process of developing a design.
+      A design is a plan or specification for the construction of an object or
+      system or for the implementation of an activity or process, or the result
+      of that plan or specification in the form of a prototype, product or
+      process. The verb to design expresses the process of developing a design.
+      The verb to design expresses the process of developing a design. A design
+      is a plan or specification for the construction of an object or system or
+      for the implementation of an activity or process, or the result of that
+      plan or specification in the form of a prototype, product or process. The
+      verb to design expresses the process of developing a design. The verb to
+      design expresses the process of developing a design.
     </a-typography-paragraph>
   </div>
 </template>
