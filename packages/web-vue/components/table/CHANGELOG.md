@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 Feature
+
+- The change event increases the current data parameter ([#1893](https://github.com/arco-design/arco-design-vue/pull/1893))
+
+
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 BugFix
+
+- Fix the problem that thead will have a vertical scroll bar in some cases ([#1913](https://github.com/arco-design/arco-design-vue/pull/1913))
+
+
 ## 2.38.3
 
 `2022-11-11`

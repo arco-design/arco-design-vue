@@ -130,7 +130,7 @@ export default {
 以下是中文语言包，其他语言包不赘述。
 
 ```diff
-// src/local/zh-CN.ts
+// src/locale/zh-CN.ts
 export default {
   'menu.dashboard': '仪表盘',
   'menu.dashboard.workplace': '工作台',

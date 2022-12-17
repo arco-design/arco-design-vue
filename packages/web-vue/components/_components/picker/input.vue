@@ -24,6 +24,7 @@
       <span :class="`${prefixCls}-suffix-icon`">
         <slot name="suffix-icon" />
       </span>
+      <FeedbackIcon v-if="feedback" :type="feedback" />
     </div>
   </div>
 </template>
@@ -37,12 +38,14 @@ import IconClose from '../../icon/icon-close';
 import IconHover from '../icon-hover.vue';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
+import FeedbackIcon from '../feedback-icon.vue';
 
 export default defineComponent({
   name: 'DateInput',
   components: {
     IconHover,
     IconClose,
+    FeedbackIcon,
   },
   props: {
     size: {
@@ -85,6 +88,7 @@ export default defineComponent({
       mergedSize: _mergedSize,
       mergedDisabled,
       mergedError,
+      feedback,
     } = useFormItem({ size, disabled, error });
     const { mergedSize } = useSize(_mergedSize);
 
@@ -112,6 +116,7 @@ export default defineComponent({
     const refInput = ref<HTMLInputElement>();
 
     return {
+      feedback,
       prefixCls,
       classNames,
       displayValue,

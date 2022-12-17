@@ -115,8 +115,8 @@ export default {
       email: 'william.smith@example.com'
     }]);
 
-    const handleChange = (data, extra) => {
-      console.log('change', data, extra)
+    const handleChange = (data, extra, currentDataSource) => {
+      console.log('change', data, extra, currentDataSource)
     }
 
     return {

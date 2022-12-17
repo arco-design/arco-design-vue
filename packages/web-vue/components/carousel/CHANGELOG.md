@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 BugFix
+
+- Fix the problem that the transparent background image of `Carousel` cannot cover the previous image ([#1901](https://github.com/arco-design/arco-design-vue/pull/1901))
+
+
 ## 2.26.0
 
 `2022-04-29`

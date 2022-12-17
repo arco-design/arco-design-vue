@@ -111,7 +111,7 @@ description: It is used for data collection, display, analysis and processing, a
 |filter-change|Triggered when the filter options are changed|dataIndex: `string`<br>filteredValues: `string[]`||
 |page-change|Triggered when the table pagination changes|page: `number`||
 |page-size-change|Triggered when the number of data per page of the table changes|pageSize: `number`||
-|change||data: `TableData[]`<br>extra: `TableChangeExtra`||
+|change|Triggered when table data changes|data: `TableData[]`<br>extra: `TableChangeExtra`<br>currentData: `TableData[]`|2.40.0 增加 currentData|
 |cell-click|Triggered when a cell is clicked|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
 |row-click|Triggered when row data is clicked|record: `TableData`<br>ev: `Event`||
 |header-click|Triggered when the header data is clicked|column: `TableColumnData`<br>ev: `Event`||

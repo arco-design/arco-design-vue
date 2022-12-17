@@ -2,13 +2,43 @@
 changelog: true
 ```
 
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 新增功能
+
+- **scrollbar:** 增加 scrollLeft 和 scrollTop 方法 ([#1909](https://github.com/arco-design/arco-design-vue/pull/1909))
+- **table:** change 事件增加当前数据参数 ([#1893](https://github.com/arco-design/arco-design-vue/pull/1893))
+- **avatar:** 增加 image-url 属性，支持使用图片地址 ([#1810](https://github.com/arco-design/arco-design-vue/pull/1810))
+- **auto-complete:** 增加 focus 和 blur 方法 ([#1809](https://github.com/arco-design/arco-design-vue/pull/1809))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复 `Form` 组件的 `feedback` 属性在  `date-picker` 组件不生效的 bug。 ([#1932](https://github.com/arco-design/arco-design-vue/pull/1932))
+- **list:** 修复 scrollbar 属性传递虚拟滚动条属性时失效的问题 ([#1929](https://github.com/arco-design/arco-design-vue/pull/1929))
+- **form:** 修复 `Form` 组件的 `validate-status` 属性在 `date-picker` 组件不生效的 bug。 ([#1928](https://github.com/arco-design/arco-design-vue/pull/1928))
+
+
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 问题修复
+
+- **table:** 修复 thead 在某些情况下会出现纵向滚动条的问题 ([#1913](https://github.com/arco-design/arco-design-vue/pull/1913))
+- **input:** 修复 change 事件触发问题，以及 clear 清除问题 ([#1912](https://github.com/arco-design/arco-design-vue/pull/1912))
+- **divider:** 修复设置 size 时，样式错误的问题 ([#1905](https://github.com/arco-design/arco-design-vue/pull/1905))
+- **carousel:** 修复 `Carousel` 透明背景图片无法遮罩上一张图片的问题 ([#1901](https://github.com/arco-design/arco-design-vue/pull/1901))
+
+
 ## 2.39.1
 
 `2022-11-25`
 
 ### 🐛 问题修复
 
-- 修复日文语言包确实某些属性的问题 ([#1890](https://github.com/arco-design/arco-design-vue/pull/1890))
+- 修复日文语言包缺失某些属性的问题 ([#1890](https://github.com/arco-design/arco-design-vue/pull/1890))
 - **pagination:** 修复 pages 变小时，可能会出现页码超出页数的问题 ([#1879](https://github.com/arco-design/arco-design-vue/pull/1879))
 
 ### 🆎 类型修正

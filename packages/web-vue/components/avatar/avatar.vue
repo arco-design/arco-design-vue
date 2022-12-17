@@ -12,7 +12,23 @@
   >
     <resize-observer @resize="handleResize">
       <span ref="wrapperRef" :class="wrapperCls">
-        <slot />
+        <template v-if="imageUrl">
+          <slot v-if="hasError" name="error">
+            <div :class="`${prefixCls}-image-icon`"><IconImageClose /></div>
+          </slot>
+          <slot v-if="!(hasError || !shouldLoad) && !isLoaded">
+            <div :class="`${prefixCls}-image-icon`"><IconLoading /></div>
+          </slot>
+          <img
+            v-if="!(hasError || !shouldLoad)"
+            :src="imageUrl"
+            :style="{ width: size + 'px', height: size + 'px' }"
+            alt="avatar"
+            @load="handleImgLoad"
+            @error="handleImgError"
+          />
+        </template>
+        <slot v-else />
       </span>
     </resize-observer>
     <div
@@ -44,11 +60,15 @@ import { useIndex } from '../_hooks/use-index';
 import ResizeObserver from '../_components/resize-observer-v2';
 import { avatarGroupInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
+import IconImageClose from '../icon/icon-image-close';
+import IconLoading from '../icon/icon-loading';
 
 export default defineComponent({
   name: 'Avatar',
   components: {
     ResizeObserver,
+    IconImageClose,
+    IconLoading,
   },
   props: {
     /**
@@ -60,6 +80,12 @@ export default defineComponent({
       type: String as PropType<AvatarShape>,
       default: 'circle',
     },
+    /**
+     * @zh 自定义头像图片地址，如果传入该属性，会默认渲染img标签
+     * @en Custom avatar image address. If this attribute is passed in, the img tag will be rendered by default
+     * @version 2.40.0
+     */
+    imageUrl: String,
     /**
      * @zh 头像的尺寸大小，单位是 `px`。未填写时使用样式中的大小 `40px`
      * @en The size of the avatar, the unit is `px`. Use size `40px` in styles when not filled
@@ -97,6 +123,16 @@ export default defineComponent({
      * @param {MouseEvent} ev
      */
     click: (ev: MouseEvent) => true,
+    /**
+     * @zh 图片加载错误
+     * @en image load error
+     */
+    error: () => true,
+    /**
+     * @zh 图片加载成功
+     * @en image load success
+     */
+    load: () => true,
   },
   /**
    * @zh 可点击的头像交互图标
@@ -118,6 +154,10 @@ export default defineComponent({
       () => groupCtx?.autoFixFontSize ?? autoFixFontSize.value
     );
     const isImage = ref(false);
+
+    const hasError = ref(false);
+    const shouldLoad = ref(true);
+    const isLoaded = ref(false);
 
     const index = groupCtx
       ? useIndex({
@@ -152,7 +192,7 @@ export default defineComponent({
     });
 
     const autoFixFontSizeHandler = () => {
-      if (!isImage.value) {
+      if (!isImage.value && !props.imageUrl) {
         nextTick(() => {
           if (!wrapperRef.value || !itemRef.value) {
             return;
@@ -164,6 +204,7 @@ export default defineComponent({
           if (avatarWidth && scale < 1) {
             wrapperRef.value.style.transform = `scale(${scale}) translateX(-50%)`;
           }
+          shouldLoad.value = true;
         });
       }
     };
@@ -191,7 +232,9 @@ export default defineComponent({
       `${prefixCls}-${mergedShape.value}`,
     ]);
     const wrapperCls = computed(() =>
-      isImage.value ? `${prefixCls}-image` : `${prefixCls}-text`
+      isImage.value || props.imageUrl
+        ? `${prefixCls}-image`
+        : `${prefixCls}-text`
     );
 
     const onClick = (e: MouseEvent) => {
@@ -204,6 +247,15 @@ export default defineComponent({
       }
     };
 
+    const handleImgLoad = () => {
+      isLoaded.value = true;
+      emit('load');
+    };
+    const handleImgError = () => {
+      hasError.value = true;
+      emit('error');
+    };
+
     return {
       prefixCls,
       itemRef,
@@ -213,8 +265,13 @@ export default defineComponent({
       wrapperCls,
       computedTriggerIconStyle,
       isImage,
+      shouldLoad,
+      isLoaded,
+      hasError,
       onClick,
       handleResize,
+      handleImgLoad,
+      handleImgError,
     };
   },
 });

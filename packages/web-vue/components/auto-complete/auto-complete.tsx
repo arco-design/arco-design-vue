@@ -283,7 +283,7 @@ export default defineComponent({
       );
     };
 
-    return () => (
+    const render = () => (
       <Trigger
         v-slots={{ content: renderDropdown }}
         trigger="focus"
@@ -313,5 +313,33 @@ export default defineComponent({
         />
       </Trigger>
     );
+
+    return {
+      inputRef,
+      render,
+    };
+  },
+  methods: {
+    /**
+     * @zh 使输入框获取焦点
+     * @en Make the input box focus
+     * @public
+     * @version 2.40.0
+     */
+    focus() {
+      (this.inputRef as HTMLInputElement)?.focus();
+    },
+    /**
+     * @zh 使输入框失去焦点
+     * @en Make the input box lose focus
+     * @public
+     * @version 2.40.0
+     */
+    blur() {
+      (this.inputRef as HTMLInputElement)?.blur();
+    },
+  },
+  render() {
+    return this.render();
   },
 });

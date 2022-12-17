@@ -25,5 +25,12 @@ description: Used to replace the browser default scroll bar style.
 |Event Name|Description|Parameters|
 |---|---|---|
 |scroll|Triggered when scroll|-|
+### `<scrollbar>` Methods
+
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|scrollTo|scrollTo|options: `number \| {left?: number;top?: number}`<br>y: `number`|-||
+|scrollTop|scroll vertically|top: `number`|-|2.40.0|
+|scrollLeft|scroll horizontal|left: `number`|-|2.40.0|
 
 

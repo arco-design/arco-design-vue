@@ -376,6 +376,7 @@ export default defineComponent({
               ref={componentRef}
               class={cls.value}
               style={contentStyle.value}
+              {...scrollbarProps.value}
               onScroll={handleScroll}
             >
               <div class={`${prefixCls}-content-wrapper`}>

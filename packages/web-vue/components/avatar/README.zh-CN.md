@@ -6,33 +6,39 @@ title: 头像 Avatar
 description: 用作头像显示，可以为图片、图标或字符形式展示。
 ```
 
-@import ./__demo__/basic.md
 
-@import ./__demo__/size.md
+@import ./\_\_demo\_\_/basic.md
 
-@import ./__demo__/group.md
+@import ./\_\_demo\_\_/size.md
 
-@import ./__demo__/icon.md
+@import ./\_\_demo\_\_/group.md
 
-@import ./__demo__/fit.md
+@import ./\_\_demo\_\_/icon.md
+
+@import ./\_\_demo\_\_/fit.md
+
+@import ./\_\_demo\_\_/image-url.md
 
 ## API
 
 
 ### `<avatar>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|shape|头像的形状，有圆形(circle)和正方形(square)两种|`'circle' \| 'square'`|`'circle'`|
-|size|头像的尺寸大小，单位是 `px`。未填写时使用样式中的大小 `40px`|`number`|`-`|
-|auto-fix-font-size|是否自动根据头像尺寸调整字体大小|`boolean`|`true`|
-|trigger-type|可点击的头像交互类型|`'mask' \| 'button'`|`'button'`|
-|trigger-icon-style|交互图标的样式|`CSSProperties`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|shape|头像的形状，有圆形(circle)和正方形(square)两种|`'circle' \| 'square'`|`'circle'`||
+|image-url|自定义头像图片地址，如果传入该属性，会默认渲染img标签|`string`|`-`|2.40.0|
+|size|头像的尺寸大小，单位是 `px`。未填写时使用样式中的大小 `40px`|`number`|`-`||
+|auto-fix-font-size|是否自动根据头像尺寸调整字体大小|`boolean`|`true`||
+|trigger-type|可点击的头像交互类型|`'mask' \| 'button'`|`'button'`||
+|trigger-icon-style|交互图标的样式|`CSSProperties`|`-`||
 ### `<avatar>` Events
 
 |事件名|描述|参数|
 |---|---|---|
 |click|点击回调|ev: `MouseEvent`|
+|error|图片加载错误|-|
+|load|图片加载成功|-|
 ### `<avatar>` Slots
 
 |插槽名|描述|参数|
