@@ -19,12 +19,10 @@ Omit multiple lines of text when there is insufficient space.
 ```vue
 <template>
   <div>
-    <div style="white-space: nowrap; width: 100%; overflow: hidden">
-      <a-typography-title :heading="4" ellipsis>
-        A design is a plan or specification for the construction of an object or
-        system or for the implementation of an activity or process.
-      </a-typography-title>
-    </div>
+    <a-typography-title :heading="4" ellipsis>
+      A design is a plan or specification for the construction of an object or
+      system or for the implementation of an activity or process.
+    </a-typography-title>
     <a-typography-paragraph
       :ellipsis="{
         rows: 2,
