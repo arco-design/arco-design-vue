@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 问题修复
+
+- **input:** 修复 `change` 事件触发逻辑问题 ([#1990](https://github.com/arco-design/arco-design-vue/pull/1990))
+- **switch:** 修复switch组件type为line,size为small,checked状态圆点偏移不正确 ([#1975](https://github.com/arco-design/arco-design-vue/pull/1975))
+- **list:** 修复栅格列表模式出现滚动条的问题 ([#1970](https://github.com/arco-design/arco-design-vue/pull/1970))
+- **date-picker:** 修复在国际化下面板文案显示错误的问题 ([#1965](https://github.com/arco-design/arco-design-vue/pull/1965))
+
+### 💅 样式更新
+
+- **tabs:** 修复 `rounded` 和 `capsule` 类型下 `size` 不生效的问题 ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
 ## 2.40.0
 
 `2022-12-09`

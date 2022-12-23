@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 💅 样式更新
+
+- 修复 `rounded` 和 `capsule` 类型下 `size` 不生效的问题 ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
 ## 2.37.4
 
 `2022-09-30`

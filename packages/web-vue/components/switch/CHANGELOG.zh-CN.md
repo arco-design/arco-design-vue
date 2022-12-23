@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 问题修复
+
+- 修复switch组件type为line,size为small,checked状态圆点偏移不正确 ([#1975](https://github.com/arco-design/arco-design-vue/pull/1975))
+
+
 ## 2.39.0
 
 `2022-11-18`
