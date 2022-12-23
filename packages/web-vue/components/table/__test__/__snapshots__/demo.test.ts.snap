@@ -1848,6 +1848,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Border
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
@@ -1862,6 +1864,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->Hover
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
@@ -1876,6 +1880,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->stripe
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
@@ -1890,6 +1896,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->checkbox
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
@@ -1904,6 +1912,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->checkAll
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
@@ -1918,6 +1928,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->loading
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
@@ -1932,6 +1944,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->tableHeader
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
@@ -1946,6 +1960,8 @@ exports[`<table> demo: render [props] correctly 1`] = `
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
         <!--v-if-->noData
+        <!--v-if-->
+        <!--v-if-->
       </label></div>
     <div class=\\"arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">

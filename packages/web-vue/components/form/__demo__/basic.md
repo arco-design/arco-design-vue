@@ -18,17 +18,18 @@ Basic usage of the form.
 
 ```vue
 <template>
-  <a-form :model="form" :style="{width:'600px'}" @submit="handleSubmit">
-    <a-form-item field="name" label="Username">
-      <a-input v-model="form.name" placeholder="please enter your username..." />
+  <a-form :model="form" :style="{ width: '600px' }" @submit="handleSubmit">
+    <a-form-item field="name" tooltip="Please enter username" label="Username">
+      <a-input
+        v-model="form.name"
+        placeholder="please enter your username..."
+      />
     </a-form-item>
     <a-form-item field="post" label="Post">
       <a-input v-model="form.post" placeholder="please enter your post..." />
     </a-form-item>
     <a-form-item field="isRead">
-      <a-checkbox v-model="form.isRead">
-        I have read the manual
-      </a-checkbox>
+      <a-checkbox v-model="form.isRead"> I have read the manual </a-checkbox>
     </a-form-item>
     <a-form-item>
       <a-button html-type="submit">Submit</a-button>
@@ -46,16 +47,16 @@ export default {
       name: '',
       post: '',
       isRead: false,
-    })
+    });
     const handleSubmit = (data) => {
-      console.log(data)
-    }
+      console.log(data);
+    };
 
     return {
       form,
-      handleSubmit
-    }
+      handleSubmit,
+    };
   },
-}
+};
 </script>
 ```
