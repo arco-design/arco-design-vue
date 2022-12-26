@@ -35,7 +35,7 @@ description: Badge normally appears in the upper right corner of the icon or tex
 |max-count|Max count to show. If count is larger than this value, it will be displayed as `${maxCount}+`|`number`|`99`|
 |offset|Set offset of the badge dot|`number[]`|`[]`|
 |color|Customize dot color|`ColorType \| string`|`-`|
-|status|Badge status|`'default' \| 'processing' \| 'success' \| 'warning' \| 'error'`|`-`|
+|status|Badge status|`'normal' \| 'processing' \| 'success' \| 'warning' \| 'danger'`|`-`|
 |count|Number to show in badge|`number`|`-`|
 
 

@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, computed, PropType } from 'vue';
 import useInjectDatePickerTransform from '../hooks/use-inject-datepicker-transform';
 
 export default defineComponent({
@@ -28,8 +28,9 @@ export default defineComponent({
   },
   setup() {
     const datePickerT = useInjectDatePickerTransform();
-    return {
-      labelList: [
+
+    const labelList = computed<string[]>(() => {
+      return [
         'sunday',
         'monday',
         'tuesday',
@@ -37,7 +38,11 @@ export default defineComponent({
         'thursday',
         'friday',
         'saturday',
-      ].map((i) => datePickerT(`datePicker.week.short.${i}`)),
+      ].map((i) => datePickerT(`datePicker.week.short.${i}`));
+    });
+
+    return {
+      labelList,
     };
   },
 });

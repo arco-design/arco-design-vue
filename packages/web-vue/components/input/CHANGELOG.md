@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- Fix `change` event trigger logic problem ([#1990](https://github.com/arco-design/arco-design-vue/pull/1990))
+
+
 ## 2.39.2
 
 `2022-12-02`
