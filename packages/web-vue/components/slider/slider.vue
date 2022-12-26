@@ -66,7 +66,7 @@
 
 <script lang="ts">
 import type { PropType, CSSProperties } from 'vue';
-import { computed, defineComponent, ref, toRef } from 'vue';
+import { computed, defineComponent, nextTick, ref, toRef } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import SliderButton from './slider-button.vue';
@@ -219,15 +219,22 @@ export default defineComponent({
     };
 
     const handleStartChange = (value?: number) => {
-      value = value ?? props.min;
-      startValue.value = value;
-      handleChange();
+      // Trigger computed property(computedValue) changes
+      startValue.value = -Infinity;
+      nextTick(() => {
+        value = value ?? props.min;
+        startValue.value = value;
+        handleChange();
+      });
     };
 
     const handleEndChange = (value?: number) => {
-      value = value ?? props.min;
-      endValue.value = value;
-      handleChange();
+      endValue.value = -Infinity;
+      nextTick(() => {
+        value = value ?? props.min;
+        endValue.value = value;
+        handleChange();
+      });
     };
 
     const computedValue = computed<[number, number]>(() => {

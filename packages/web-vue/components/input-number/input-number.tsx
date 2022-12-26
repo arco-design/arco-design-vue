@@ -259,7 +259,7 @@ export default defineComponent({
 
     const getLegalValue = (value: number | undefined): number | undefined => {
       if (isUndefined(value)) {
-        value = props.min;
+        return undefined;
       }
 
       if (isNumber(props.min) && value < props.min) {
