@@ -70,9 +70,11 @@ description: 在弹出面板上选择时间，以便捷完成时间输入的控�
 |popup-visible-change|弹出框展开和收起|visible: `boolean`|
 ### `<time-picker>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|extra|额外的页脚|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|prefix|输入框前缀|-|2.41.0|
+|suffix-icon|输入框后缀图标|-||
+|extra|额外的页脚|-||
 
 
 

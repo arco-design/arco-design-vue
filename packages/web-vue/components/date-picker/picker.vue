@@ -34,6 +34,9 @@
         @change="onInputChange"
         @pressEnter="onInputPressEnter"
       >
+        <template v-if="$slots.prefix" #prefix>
+          <slot name="prefix" />
+        </template>
         <template #suffix-icon>
           <slot name="suffix-icon">
             <IconCalendar />
@@ -387,6 +390,12 @@ export default defineComponent({
     ) => true,
     'update:pickerValue': (value: CalendarValue) => true,
   },
+  /**
+   * @zh 输入框前缀
+   * @en Input box prefix
+   * @slot prefix
+   * @version 2.41.0
+   */
   /**
    * @zh 输入框后缀图标
    * @en Input box suffix icon
