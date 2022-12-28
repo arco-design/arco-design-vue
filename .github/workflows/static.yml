@@ -30,6 +30,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      
       - name: setup node
         uses: actions/setup-node@v3
         with:
@@ -37,8 +38,10 @@ jobs:
           cache: 'yarn'
       - name: Setup Pages
         uses: actions/configure-pages@v2
+     
       - name: yarn
         run: yarn
+      
       - name: lerna
         run: npm i -g lerna
         
@@ -46,13 +49,16 @@ jobs:
         run: npm run init
 
       - name: build site
-        run: npm run build:site
+        run: NODE_OPTIONS=--max-old-space-size=8192 yarn build:site
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
           path: './packages/arco-vue-docs/dist'
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        with:
+          preview: true
