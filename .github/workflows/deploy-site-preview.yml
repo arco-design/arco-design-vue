@@ -1,6 +1,6 @@
 name: deploy-site-preview
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
 
       - name: setup node
         uses: actions/setup-node@v3
