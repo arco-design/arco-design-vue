@@ -10,7 +10,7 @@ const root = process.cwd();
 
 export default defineConfig({
   mode: 'production',
-  base: 'https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/vue/',
+  base: process.env.PublicPath || 'https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/vue/',
   css: {
     preprocessorOptions: {
       less: {

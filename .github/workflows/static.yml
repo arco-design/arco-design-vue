@@ -49,7 +49,7 @@ jobs:
         run: npm run init
 
       - name: build site
-        run: NODE_OPTIONS=--max-old-space-size=8192 yarn build:site
+        run: NODE_OPTIONS=--max-old-space-size=8192 PublicPath=/  yarn build:site
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
