@@ -774,6 +774,7 @@ export default defineComponent({
       innerSubmit: submit,
       innerAbort: abort,
       innerUpdateFile: updateFile,
+      innerUpload: uploadFiles,
     };
   },
   methods: {
@@ -804,6 +805,15 @@ export default defineComponent({
      */
     updateFile(id: string, file: File) {
       return this.innerUpdateFile(id, file);
+    },
+    /**
+     * @zh 上传文件
+     * @en Upload file
+     * @public
+     * @param {File[]} files
+     */
+    upload(files: File[]) {
+      return this.innerUpload(files);
     },
   },
   render() {
