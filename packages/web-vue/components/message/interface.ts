@@ -48,6 +48,15 @@ export interface MessageMethod {
     appContext?: AppContext
   ) => MessageReturn;
   /**
+   * @zh 显示提示
+   * @en Show message
+   * @version 2.41.0
+   */
+  normal: (
+    config: string | MessageConfig,
+    appContext?: AppContext
+  ) => MessageReturn;
+  /**
    * @zh 清空全部提示
    * @en Clear all messages
    */
@@ -116,7 +125,7 @@ export interface MessageReturn {
 export interface MessageItem {
   id: number | string;
   content: RenderContent;
-  type?: MessageType | 'loading';
+  type?: MessageType | 'loading' | 'normal';
   icon?: RenderFunction;
   showIcon?: boolean;
   closable?: boolean;
