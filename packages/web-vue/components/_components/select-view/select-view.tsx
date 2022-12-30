@@ -11,7 +11,6 @@ import IconHover from '../icon-hover.vue';
 import IconDown from '../../icon/icon-down';
 import IconLoading from '../../icon/icon-loading';
 import IconClose from '../../icon/icon-close';
-import IconExpand from '../../icon/icon-expand';
 import IconSearch from '../../icon/icon-search';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
@@ -132,9 +131,6 @@ export default defineComponent({
       }
       if (slots['arrow-icon']) {
         return slots['arrow-icon']();
-      }
-      if (props.multiple || enabledInput.value) {
-        return <IconExpand style={{ transform: 'rotate(-45deg)' }} />;
       }
       return <IconDown class={`${prefixCls}-arrow-icon`} />;
     };
