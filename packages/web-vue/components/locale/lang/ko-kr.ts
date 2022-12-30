@@ -128,7 +128,7 @@ const lang: ArcoLang = {
     ok: '결정',
   },
   image: {
-    loading: 'loading',
+    loading: '로딩',
   },
   imagePreview: {
     fullScreen: '전체 화면',

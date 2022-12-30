@@ -45,7 +45,7 @@ Set the basic usage of internationalized languages.
 
 <script>
 import { ref, computed } from 'vue';
-import zhCN from '@arco-design/web-vue/es/locale/lang/zh-CN';
+import zhCN from '@arco-design/web-vue/es/locale/lang/zh-cn';
 import enUS from '@arco-design/web-vue/es/locale/lang/en-us';
 import esES from '@arco-design/web-vue/es/locale/lang/es-es';
 import jaJP from '@arco-design/web-vue/es/locale/lang/ja-jp';
@@ -55,6 +55,7 @@ import ptPT from '@arco-design/web-vue/es/locale/lang/pt-pt';
 import deDE from '@arco-design/web-vue/es/locale/lang/de-de';
 import koKR from '@arco-design/web-vue/es/locale/lang/ko-kr';
 import itIT from '@arco-design/web-vue/es/locale/lang/it-it';
+import thTH from '@arco-design/web-vue/es/locale/lang/th-th';
 
 const locales = {
   'zh-CN': zhCN,
@@ -67,6 +68,7 @@ const locales = {
   'de-DE': deDE,
   'ko-KR': koKR,
   'it-IT': itIT,
+  'th-TH': thTH,
 };
 
 export default {

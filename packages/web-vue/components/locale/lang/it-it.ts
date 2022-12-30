@@ -129,7 +129,7 @@ const lang: ArcoLang = {
     ok: 'OK',
   },
   image: {
-    loading: 'loading',
+    loading: 'Caricamento in corso',
   },
   imagePreview: {
     fullScreen: 'A schermo intero',
