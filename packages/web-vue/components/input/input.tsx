@@ -344,8 +344,8 @@ export default defineComponent({
         if (
           maxLength.value &&
           !maxLengthErrorOnly.value &&
-          computedValue.value.length >= maxLength.value &&
-          getValueLength(value) > maxLength.value &&
+          (computedValue.value.length >= maxLength.value ||
+            getValueLength(value) > maxLength.value) &&
           (e as InputEvent).inputType === 'insertText'
         ) {
           keepControl();
