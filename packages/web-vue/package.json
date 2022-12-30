@@ -44,6 +44,7 @@
     "dtsgen:icon": "arco-vue-scripts dtsgen 'components/icon/**/*.{ts,tsx,vue}' -o 'components/icon/@types'",
     "test": "arco-vue-scripts test --coverage",
     "test:update": "arco-vue-scripts test --coverage -u",
+    "test:screenshot": "arco-vue-scripts test:screenshot -o ./__screenshots__/",
     "changelog": "arco-vue-scripts changelog",
     "lint-staged": "npx lint-staged"
   },
