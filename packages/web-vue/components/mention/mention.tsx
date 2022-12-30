@@ -274,6 +274,7 @@ export default defineComponent({
         optionRefs,
         onSelect: handleSelect,
         onPopupVisibleChange: handlePopupVisibleChange,
+        enterToOpen: false,
       });
 
     const mirrorStyle = ref();
