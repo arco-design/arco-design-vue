@@ -11,12 +11,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": [
-      "DOM",
-      "ES2020"
-    ]
+    "lib": ["DOM", "ES2020"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src", "../web-vue/scripts/screentshot.ts"]
 }

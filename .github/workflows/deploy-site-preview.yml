@@ -77,17 +77,17 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: install
-        run: yarn
-
       - name: setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'yarn'
 
-      - name: build:cjs
-        run: yarn icon && yarn build:cjs
+      - name: Install deps
+        run: npm i lerna -g && yarn
+
+      - name: build components
+        run: npm run init
 
       - name: get PreviewID
         run: |
@@ -98,7 +98,7 @@ jobs:
           fi
 
       - name: gen screenshots
-        run: yarn run test:screenshots --domain=https://pr-preview-${{ env.PreviewID }}--arco-design-vue.netlify.app
+        run: yarn test:screenshot --domain=https://pr-preview-${{ env.PreviewID }}--arco-design-vue.netlify.app
 
       - name: upload screenshots to argos-cli
-        run: npx @argos-ci/cli upload ./tests/__screenshots__
+        run: npx @argos-ci/cli upload ./packages/web-vue/__screenshots__

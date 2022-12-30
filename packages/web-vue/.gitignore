@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 .coverage/
+__screenshots__
 
 node_modules/
 **/.DS_Store
