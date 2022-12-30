@@ -128,16 +128,24 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
           .split(',')
           .map((x) => x.trim())
           .filter((x) => x);
-    const fileExtension =
-      file.name.indexOf('.') > -1 ? `.${file.name.split('.').pop()}` : '';
+    const fileExtension = (
+      file.name.indexOf('.') > -1 ? `.${file.name.split('.').pop()}` : ''
+    ).toLowerCase();
     return accepts.some((type) => {
       const typeText = type && type.toLowerCase();
       const fileType = (file.type || '').toLowerCase();
-      if (typeText === fileType) {
-        // similar to excel files
-        // Such as application/vnd.ms-excel and application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-        // Those with.
-        // So prioritize the comparison between the accept type of input and the type value of the file object
+      const baseFileType = fileType.split('/')[0]; // audio/mpeg => audio;
+
+      // `${baseFileType}/${fileExtension}` === typeText
+      // filetype is audio/mpeg, but accept is audio/mp3, should return true
+      if (
+        typeText === fileType ||
+        `${baseFileType}${fileExtension.replace('.', '/')}` === typeText
+      ) {
+        // 类似excel文件这种
+        // 比如application/vnd.ms-excel和application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        // 本身就带有.字符的，不能走下面的.jpg等文件扩展名判断处理
+        // 所以优先对比input的accept类型和文件对象的type值
         return true;
       }
       // */*,*  之类的所有类型
@@ -145,7 +153,7 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
         return true;
       }
       if (/\/\*/.test(typeText)) {
-        // image/* This kind of wildcard processing
+        // image/* 这种通配的形式处理
         return fileType.replace(/\/.*$/, '') === typeText.replace(/\/.*$/, '');
       }
       if (/\..*/.test(typeText)) {
@@ -160,7 +168,7 @@ const isAcceptFile = (file: File, accept?: string | string[]): boolean => {
       return false;
     });
   }
-  return Boolean(file);
+  return !!file;
 };
 
 export const loopDirectory = (
