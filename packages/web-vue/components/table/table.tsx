@@ -723,6 +723,7 @@ export default defineComponent({
 
     const hasLeftFixedColumn = ref(false);
     const hasRightFixedColumn = ref(false);
+    const hasLeftFixedDataColumns = ref(false);
 
     watchEffect(() => {
       let _hasLeftFixedColumn = false;
@@ -737,6 +738,7 @@ export default defineComponent({
       for (const column of dataColumns.value) {
         if (column.fixed === 'left') {
           _hasLeftFixedColumn = true;
+          hasLeftFixedDataColumns.value = true;
         } else if (column.fixed === 'right') {
           _hasRightFixedColumn = true;
         }
@@ -1238,7 +1240,13 @@ export default defineComponent({
         };
         operations.push(selection);
       }
-
+      if (
+        !hasLeftFixedDataColumns.value &&
+        operations.length > 0 &&
+        operations[operations.length - 1].fixed
+      ) {
+        operations[operations.length - 1].isLastLeftFixed = true;
+      }
       const operationsFn = props.components?.operations;
 
       return isFunction(operationsFn)
