@@ -38,14 +38,15 @@ Message._context = app._context;
 
 ### MessageMethod
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|info|显示信息提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|success|显示成功提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|warning|显示警告提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|error|显示错误提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|loading|显示加载中提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|clear|清空全部提示|`(position?: MessagePosition) => void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|info|显示信息提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|success|显示成功提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|warning|显示警告提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|error|显示错误提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|loading|显示加载中提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|normal|显示提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|2.41.0|
+|clear|清空全部提示|`(position?: MessagePosition) => void`|`-`||
 
 
 

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 新增功能
+
+- 增加 `upload` 方法 ([#2010](https://github.com/arco-design/arco-design-vue/pull/2010))
+
+### 🐛 问题修复
+
+- 修复 `upload` 组件在部分场景下验证上传文件符合 `accept` 格式时，判断错误的 bug。 ([#2007](https://github.com/arco-design/arco-design-vue/pull/2007))
+
+
 ## 2.39.1
 
 `2022-11-25`

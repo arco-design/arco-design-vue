@@ -811,6 +811,7 @@ export default defineComponent({
      * @en Upload file
      * @public
      * @param {File[]} files
+     * @version 2.41.0
      */
     upload(files: File[]) {
       return this.innerUpload(files);

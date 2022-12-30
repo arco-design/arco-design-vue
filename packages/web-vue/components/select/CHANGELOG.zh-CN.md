@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 💅 样式更新
+
+- 统一 `select` 组件单选和多选时后缀图标为 `arrow-icon`。 ([#2005](https://github.com/arco-design/arco-design-vue/pull/2005))
+
+
 ## 2.38.0
 
 `2022-10-28`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Set to empty array if `modevalue` is not an array ([#1940](https://github.com/arco-design/arco-design-vue/pull/1940))
+
+
 ## 2.38.0
 
 `2022-10-28`

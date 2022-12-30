@@ -728,6 +728,7 @@ export default defineComponent({
     watchEffect(() => {
       let _hasLeftFixedColumn = false;
       let _hasRightFixedColumn = false;
+      let _hasLeftFixedDataColumns = false;
       if (
         props.rowSelection?.fixed ||
         props.expandable?.fixed ||
@@ -738,7 +739,7 @@ export default defineComponent({
       for (const column of dataColumns.value) {
         if (column.fixed === 'left') {
           _hasLeftFixedColumn = true;
-          hasLeftFixedDataColumns.value = true;
+          _hasLeftFixedDataColumns = true;
         } else if (column.fixed === 'right') {
           _hasRightFixedColumn = true;
         }
@@ -748,6 +749,9 @@ export default defineComponent({
       }
       if (_hasRightFixedColumn !== hasRightFixedColumn.value) {
         hasRightFixedColumn.value = _hasRightFixedColumn;
+      }
+      if (_hasLeftFixedDataColumns !== hasLeftFixedDataColumns.value) {
+        hasLeftFixedDataColumns.value = _hasLeftFixedDataColumns;
       }
     });
 

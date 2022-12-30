@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 Feature
+
+- `form-item` supports tooltip property ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+- `form-item` supports asteriskPosition property ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+
+
 ## 2.40.0
 
 `2022-12-09`

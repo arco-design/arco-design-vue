@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 💅 Style
+
+- Unify the suffix icon of `select` component for single selection and multi-selection as `arrow-icon`. ([#2005](https://github.com/arco-design/arco-design-vue/pull/2005))
+
+
 ## 2.38.0
 
 `2022-10-28`

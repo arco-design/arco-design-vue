@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 Feature
+
+- Add `upload` method ([#2010](https://github.com/arco-design/arco-design-vue/pull/2010))
+
+### 🐛 BugFix
+
+- Fix the bug that the `upload` component judged wrongly when verifying that the uploaded file conforms to the `accept` format in some scenarios. ([#2007](https://github.com/arco-design/arco-design-vue/pull/2007))
+
+
 ## 2.39.1
 
 `2022-11-25`
