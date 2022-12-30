@@ -1,7 +1,10 @@
 <template>
   <transition name="zoom-in-top" @after-leave="handleAfterLeave">
     <div v-if="visible" role="alert" :class="cls">
-      <div v-if="showIcon" :class="`${prefixCls}-icon`">
+      <div
+        v-if="showIcon && !(type === 'normal' && !$slots.icon)"
+        :class="`${prefixCls}-icon`"
+      >
         <slot name="icon">
           <icon-info-circle-fill v-if="type === 'info'" />
           <icon-check-circle-fill v-else-if="type === 'success'" />
@@ -64,12 +67,12 @@ export default defineComponent({
   },
   props: {
     /**
-     * @zh 警告提示的类型
-     * @en Type of the alert
-     * @values info, success, warning, error
+     * @zh 警告提示的类型。2.41.0 新增 `normal` 类型
+     * @en Type of the alert. 2.41.0 Added `normal` type
+     * @values info, success, warning, error, normal
      */
     type: {
-      type: String as PropType<MessageType>,
+      type: String as PropType<MessageType | 'normal'>,
       default: 'info',
     },
     /**
