@@ -677,8 +677,6 @@ export default defineComponent({
     }
 
     function onInputChange(e: any) {
-      // eslint-disable-next-line no-console
-      console.log('onInputChange');
       setPanelVisible(true);
 
       const targetValue = e.target.value;
