@@ -204,14 +204,18 @@ export default defineComponent({
     });
 
     watch(activeIndex, (current, pre) => {
-      nextTick(() => {
+      setTimeout(() => {
         if (isScroll.value) {
           if (current >= pre) {
             const offsetIndex =
               current < tabEndOffsets.value.length - 1 ? current + 1 : current;
             if (!isInView(offsetIndex)) {
-              offset.value =
-                tabEndOffsets.value[offsetIndex] - wrapperLength.value;
+              if (current === tabEndOffsets.value.length - 1) {
+                offset.value = maxOffset.value;
+              } else {
+                offset.value =
+                  tabEndOffsets.value[offsetIndex] - wrapperLength.value;
+              }
             }
           } else {
             const offsetIndex = current > 0 ? current - 1 : current;
