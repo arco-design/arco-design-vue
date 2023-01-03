@@ -14,6 +14,7 @@
       :size="size"
       :disabled="disabled"
       hide-button
+      :formatter="handleFormatter"
       @change="handleChange"
     />
     <span v-if="$slots['jumper-append']" :class="`${prefixCls}-append`"
@@ -67,6 +68,11 @@ export default defineComponent({
     const { t } = useI18n();
     const inputValue = ref(props.simple ? props.current : undefined);
 
+    const handleFormatter = (value: number) => {
+      const parseIntVal = parseInt(value.toString(), 10);
+      return Number.isNaN(parseIntVal) ? undefined : String(parseIntVal);
+    };
+
     const handleChange = (value: number) => {
       emit('change', inputValue.value);
       nextTick(() => {
@@ -98,6 +104,7 @@ export default defineComponent({
       t,
       inputValue,
       handleChange,
+      handleFormatter,
     };
   },
 });

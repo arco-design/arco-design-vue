@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.39.1
+
+`2022-11-25`
+
+### 🆎 TypeScript
+
+- update the type of trigger-props ([#1885](https://github.com/arco-design/arco-design-vue/pull/1885))
+
+
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 Feature
+
+- Replace the virtual scrollbar component and add the scrollbar property ([#1872](https://github.com/arco-design/arco-design-vue/pull/1872))
+
+
 ## 2.32.1
 
 `2022-07-01`

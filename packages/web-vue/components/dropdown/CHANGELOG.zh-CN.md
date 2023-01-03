@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.36.1
+
+`2022-09-09`
+
+### 💎 功能优化
+
+- 选项禁用时不触发单击事件 ([#1611](https://github.com/arco-design/arco-design-vue/pull/1611))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- 为icon插槽加入新的porp:  `popup-visible` ([#1430](https://github.com/arco-design/arco-design-vue/pull/1430))
+
+
 ## 2.29.0
 
 `2022-05-27`

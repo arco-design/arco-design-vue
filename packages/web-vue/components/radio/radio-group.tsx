@@ -11,7 +11,13 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { Size, Direction } from '../_utils/constant';
 import { radioGroupKey, RadioType } from './context';
-import { isFunction, isNumber, isString } from '../_utils/is';
+import {
+  isFunction,
+  isNull,
+  isNumber,
+  isString,
+  isUndefined,
+} from '../_utils/is';
 import { useFormItem } from '../_hooks/use-form-item';
 import { RadioOption } from './interface';
 import Radio from './radio';
@@ -84,7 +90,7 @@ export default defineComponent({
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @property {string|number|boolean} value
+     * @property { string | number | boolean } value
      */
     'change': (value: string | number | boolean, ev: Event) => true,
   },
@@ -105,7 +111,7 @@ export default defineComponent({
    */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('radio-group');
-    const { size, type, disabled } = toRefs(props);
+    const { size, type, disabled, modelValue } = toRefs(props);
     const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
       size,
       disabled,
@@ -113,9 +119,7 @@ export default defineComponent({
 
     const _value = ref(props.defaultValue);
 
-    const computedValue = computed(() => {
-      return props.modelValue ?? _value.value;
-    });
+    const computedValue = computed(() => props.modelValue ?? _value.value);
 
     const options = computed(() => {
       return (props.options ?? []).map((option) => {
@@ -152,6 +156,12 @@ export default defineComponent({
     watch(computedValue, (cur) => {
       if (_value.value !== cur) {
         _value.value = cur;
+      }
+    });
+
+    watch(modelValue, (val) => {
+      if (isUndefined(val) || isNull(val)) {
+        _value.value = '';
       }
     });
 

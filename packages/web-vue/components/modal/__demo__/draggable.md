@@ -23,7 +23,7 @@ Enables the `draggable` property, which allows the user to drag the dialog.
     <template #title>
       Title
     </template>
-    <div>You can cusstomize modal body text by the current situation. This modal will be closed immediately once you press the OK button.</div>
+    <div>You can customize modal body text by the current situation. This modal will be closed immediately once you press the OK button.</div>
   </a-modal>
 </template>
 

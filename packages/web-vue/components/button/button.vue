@@ -171,6 +171,7 @@ export default defineComponent({
 
     const handleClick = (ev: MouseEvent) => {
       if (props.disabled || props.loading) {
+        ev.preventDefault();
         return;
       }
       emit('click', ev);

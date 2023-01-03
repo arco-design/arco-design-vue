@@ -65,7 +65,7 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |load-more|异步加载数据的回调，返回一个 `Promise`|`(node: TreeNodeData) => Promise<void>`|`-`||
 |draggable|是否可以拖拽|`boolean`|`false`||
 |allow-drop|拖拽时是否允许在某节点上释放|`(options: {  dropNode: TreeNodeData;  dropPosition: -1 \| 0 \| 1;}) => boolean`|`-`||
-|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#virtuallistprops)|`VirtualListProps`|`-`||
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |default-expand-selected|是否默认展开已选中节点的父节点|`boolean`|`false`|2.9.0|
 |default-expand-checked|是否默认展开已选中复选框节点的父节点|`boolean`|`false`|2.9.0|
 |auto-expand-parent|是否自动展开已展开节点的父节点|`boolean`|`true`|2.9.0|
@@ -152,10 +152,13 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 
 ### VirtualListProps
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|height|可视区域高度|`number \| string`|`-`|
-|threshold|自动开启虚拟滚动的元素数量阈值，传入 null 表示禁止虚拟滚动|`number \| null`|`-`|
-|isStaticItemHeight|元素高度是否是固定的|`boolean`|`false`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|height|可视区域高度|`number \| string`|`-`||
+|threshold|开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。|`number`|`-`||
+|isStaticItemHeight|（已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize`|`boolean`|`false`||
+|fixedSize|元素高度是否是固定的。|`boolean`|`false`|2.34.1|
+|estimatedSize|元素高度不固定时的预估高度。|`number`|`-`|2.34.1|
+|buffer|视口边界外提前挂载的元素数量。|`number`|`10`|2.34.1|
 
 

@@ -4,6 +4,7 @@ export interface CheckboxGroupContext {
   name: 'ArcoCheckboxGroup';
   computedValue: Array<string | number>;
   disabled: boolean;
+  isMaxed: boolean;
   slots: Slots;
   handleChange: (value: Array<string | number | boolean>, e: Event) => void;
 }

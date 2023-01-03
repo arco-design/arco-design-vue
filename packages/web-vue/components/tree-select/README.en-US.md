@@ -64,7 +64,7 @@ description: The tree structure data can be selected.
 |tree-check-strictly|Whether the parent and child nodes are related|`boolean`|`false`||
 |tree-checked-strategy|Customized echo method|`'all' \| 'parent' \| 'child'`|`'all'`||
 |tree-props|Can accept Props of all [Tree](/vue/component/tree) components|`Partial<TreeProps>`|`-`||
-|trigger-props|Can accept Props of all [Trigger](/vue/component/trigger) components|`Record<string, unknown>`|`-`||
+|trigger-props|Can accept Props of all [Trigger](/vue/component/trigger) components|`Partial<TriggerProps>`|`-`||
 |popup-visible **(v-model)**|Whether the pop-up box is visible|`boolean`|`-`||
 |default-popup-visible|Whether the default pop-up box is visible|`boolean`|`false`||
 |dropdown-style|Drop-down box style|`CSSProperties`|`-`||
@@ -72,9 +72,10 @@ description: The tree structure data can be selected.
 |filter-tree-node|Custom node filter function|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`||
 |load-more|Load data dynamically|`(nodeData: TreeNodeData) => Promise<void>`|`-`||
 |disable-filter|Disable internal filtering logic|`boolean`|`false`||
-|popup-container|Mount container for pop-up box|`string \| HTMLElement \| null \| undefined`|`-`||
+|popup-container|Mount container for pop-up box|`string \| HTMLElement \| undefined`|`-`||
 |fallback-option|Customize node data for keys that do not match options|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|Set the nodes that can be selected, all can be selected by default|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
+|scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.39.0|
 ### `<tree-select>` Events
 
 |Event Name|Description|Parameters|
@@ -85,12 +86,16 @@ description: The tree structure data can be selected.
 |clear|Triggered when clear is clicked|-|
 ### `<tree-select>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|trigger|Custom trigger element|-|
-|prefix|Prefix|-|
-|label|Custom Label|data: `mixed`|
-|loader|Customizing the content displayed during loading|-|
-|empty|Custom empty data display|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|trigger|Custom trigger element|-||
+|prefix|Prefix|-||
+|label|Custom Label|data: `mixed`||
+|loader|Customizing the content displayed during loading|-||
+|empty|Custom empty data display|-||
+|tree-slot-extra|Render additional node content of the tree component|-||
+|tree-slot-title|Custom the node title of the tree component|-||
+|tree-slot-icon|Custom node icon for the tree component|node: `TreeNodeData`|2.18.0|
+|tree-slot-switcher-icon|Custom switcher icon for the tree component|-||
 
 

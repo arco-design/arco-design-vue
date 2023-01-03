@@ -89,7 +89,11 @@ const responsiveObserve: {
         if (!matchMediaQuery) return;
         const handler = this.matchHandlers[matchMediaQuery];
         if (handler && handler.mql && handler.listener) {
-          handler.mql.removeEventListener('change', handler.listener);
+          if (handler.mql.removeEventListener) {
+            handler.mql.removeEventListener('change', handler.listener);
+          } else {
+            handler.mql.removeListener(handler.listener);
+          }
         }
       }
     );
@@ -109,7 +113,12 @@ const responsiveObserve: {
           );
         };
         const mql = window.matchMedia(matchMediaQuery);
-        mql.addEventListener('change', listener);
+        if (mql.addEventListener) {
+          mql.addEventListener('change', listener);
+        } else {
+          mql.addListener(listener);
+        }
+
         this.matchHandlers[matchMediaQuery] = {
           mql,
           listener,

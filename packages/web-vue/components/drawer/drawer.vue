@@ -93,7 +93,7 @@ import { useI18n } from '../locale';
 import { useOverflow } from '../_hooks/use-overflow';
 import { off, on } from '../_utils/dom';
 import usePopupManager from '../_hooks/use-popup-manager';
-import { isBoolean, isFunction, isNumber } from '../_utils/is';
+import { isBoolean, isFunction, isNumber, isPromise } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
 
@@ -242,8 +242,10 @@ export default defineComponent({
      * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.
      */
     onBeforeOk: {
-      type: [Function, Array] as PropType<
-        (done: (closed: boolean) => void) => void | boolean
+      type: Function as PropType<
+        (
+          done: (closed: boolean) => void
+        ) => void | boolean | Promise<void | boolean>
       >,
     },
     /**
@@ -251,10 +253,31 @@ export default defineComponent({
      * @en The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.
      */
     onBeforeCancel: {
-      type: [Function, Array] as PropType<() => boolean>,
+      type: Function as PropType<() => boolean>,
     },
-
+    /**
+     * @zh 是否支持 ESC 键关闭抽屉
+     * @en Whether to support the ESC key to close the dialog
+     * @version 2.15.0
+     */
+    escToClose: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 抽屉是否挂载在 `body` 元素下
+     * @en Whether the drawer is mounted under the `body` element
+     */
     renderToBody: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否展示头部内容
+     * @en Whether to display high-quality content
+     * @version 2.33.0
+     */
+    header: {
       type: Boolean,
       default: true,
     },
@@ -268,15 +291,6 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 是否支持 ESC 键关闭对话框
-     * @en Whether to support the ESC key to close the dialog
-     * @version 2.15.0
-     */
-    escToClose: {
-      type: Boolean,
-      default: true,
-    },
-    /**
      * @zh 是否隐藏取消按钮
      * @en Whether to hide the cancel button
      * @version 2.19.0
@@ -284,15 +298,6 @@ export default defineComponent({
     hideCancel: {
       type: Boolean,
       default: false,
-    },
-    /**
-     * @zh 是否隐藏取消按钮
-     * @en Whether to hide the cancel button
-     * @version 2.33.0
-     */
-    header: {
-      type: Boolean,
-      default: true,
     },
   },
   emits: {
@@ -392,31 +397,41 @@ export default defineComponent({
       emit('update:visible', false);
     };
 
-    const handleOk = () => {
+    const handleOk = async () => {
       const currentPromiseNumber = promiseNumber;
-      const promise = new Promise((resolve: (closed?: boolean) => void) => {
-        if (isFunction(props.onBeforeOk)) {
-          const result = props.onBeforeOk(resolve);
-
-          if (isBoolean(result)) {
-            resolve(result);
+      const closed = await new Promise<boolean>(
+        // eslint-disable-next-line no-async-promise-executor
+        async (resolve) => {
+          if (isFunction(props.onBeforeOk)) {
+            let result = props.onBeforeOk((closed = true) => resolve(closed));
+            if (isPromise(result) || !isBoolean(result)) {
+              _okLoading.value = true;
+            }
+            if (isPromise(result)) {
+              try {
+                // if onBeforeOk is Promise<void> ,set Defaults true
+                result = (await result) ?? true;
+              } catch (error) {
+                result = false;
+              }
+            }
+            if (isBoolean(result)) {
+              resolve(result);
+            }
           } else {
-            _okLoading.value = true;
+            resolve(true);
           }
-        } else {
-          resolve();
         }
-      });
+      );
 
-      promise.then((closed = true) => {
-        if (currentPromiseNumber === promiseNumber) {
+      if (currentPromiseNumber === promiseNumber) {
+        if (closed) {
+          emit('ok');
+          close();
+        } else if (_okLoading.value) {
           _okLoading.value = false;
-          if (closed) {
-            emit('ok');
-            close();
-          }
         }
-      });
+      }
     };
 
     const handleCancel = () => {

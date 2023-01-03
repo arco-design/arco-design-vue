@@ -7,7 +7,7 @@
 
 .@{cascader-prefix-cls} {
   &-panel {
-    display: inline-block;
+    display: inline-flex;
     box-sizing: border-box;
     height: @select-popup-max-height;
     overflow: hidden;
@@ -20,6 +20,7 @@
   }
 
   &-search-panel {
+    justify-content: center;
     width: 100%;
     overflow: auto;
   }
@@ -56,6 +57,7 @@
 
   &-column-content {
     flex: 1;
+    max-height: 200px;
     overflow-y: auto;
   }
 

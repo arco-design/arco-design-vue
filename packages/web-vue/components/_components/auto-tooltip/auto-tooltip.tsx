@@ -50,6 +50,7 @@ export default defineComponent({
 
     onUpdated(() => {
       getText();
+      calTooltip();
     });
 
     const renderContent = () => {

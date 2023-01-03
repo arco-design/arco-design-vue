@@ -1,4 +1,5 @@
 @import '../../../style/theme/index.less';
+@import '../../../input/style/token.less';
 
 @picker-size-mini: @size-mini;
 @picker-size-small: @size-small;
@@ -12,9 +13,13 @@
 
 @picker-input-border-radius: @radius-small;
 
-@picker-color-shadow_focus: var(~'@{arco-cssvars-prefix}-color-primary-light-2');
+@picker-color-shadow_focus: var(
+  ~'@{arco-cssvars-prefix}-color-primary-light-2'
+);
 @picker-size-shadow_focus: @shadow-distance-none;
-@picker-color-shadow_error_focus: var(~'@{arco-cssvars-prefix}-color-danger-light-2');
+@picker-color-shadow_error_focus: var(
+  ~'@{arco-cssvars-prefix}-color-danger-light-2'
+);
 @picker-size-shadow_error_focus: @shadow-distance-none;
 
 @picker-color-bg: var(~'@{arco-cssvars-prefix}-color-fill-2');
@@ -22,7 +27,9 @@
 @picker-color-bg_focus: var(~'@{arco-cssvars-prefix}-color-bg-2');
 @picker-color-bg_disabled: var(~'@{arco-cssvars-prefix}-color-fill-2');
 @picker-color-bg_error: var(~'@{arco-cssvars-prefix}-color-danger-light-1');
-@picker-color-bg_error_hover: var(~'@{arco-cssvars-prefix}-color-danger-light-2');
+@picker-color-bg_error_hover: var(
+  ~'@{arco-cssvars-prefix}-color-danger-light-2'
+);
 @picker-color-bg_error_focus: var(~'@{arco-cssvars-prefix}-color-bg-2');
 
 @picker-color-border: @color-transparent;
@@ -43,3 +50,9 @@
 @picker-color-separator_disabled: var(~'@{arco-cssvars-prefix}-color-text-4');
 
 @picker-range-color-bg-input_focus: var(~'@{arco-cssvars-prefix}-color-fill-2');
+@input-color-text_disabled: var(~'@{arco-cssvars-prefix}-color-text-4');
+
+// not in design lab
+@picker-padding-horizontal: @spacing-2; // 4px
+@picker-input-padding-horizontal: @input-padding-horizontal -
+  @picker-padding-horizontal; // 8px

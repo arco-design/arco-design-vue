@@ -22,9 +22,9 @@
     ]
   },
   "devDependencies": {
-    "@arco-design/arco-vue-docs-navbar": "^0.1.0",
+    "@arco-design/arco-vue-docs-navbar": "^0.2.0",
     "@arco-design/arco-vue-scripts": "^0.2.1",
-    "@arco-design/web-vue": "^2.18.0",
+    "@arco-design/web-vue": "^2.38.0",
     "@stackblitz/sdk": "^1.6.0",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",

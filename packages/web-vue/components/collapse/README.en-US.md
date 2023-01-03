@@ -53,7 +53,7 @@ description: The content area that can be collapsed/expanded.
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|key|The id of the panel, corresponding to the value in `activeKey`|`string`|`-`||
+|key|The id of the panel, corresponding to the value in `activeKey`|`string\|number`|`-`||
 |header|The title of the panel|`string`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
 |show-expand-icon|Whether to show the expand icon|`boolean`|`true`||

@@ -70,26 +70,27 @@ description: 用户可传输文件或提交相应的内容。
 |response-url-key|Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片|`string \| ((fileItem: FileItem) => string)`|`-`||
 |custom-icon|自定义图标|`CustomIcon`|`-`||
 |image-preview|是否使用 ImagePreview 组件进行预览|`boolean`|`false`|2.14.0|
-|on-before-upload|上传图片前触发|`(file: File) => Promise<boolean \| File>`|`-`||
-|on-before-remove|移除图片前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`||
+|on-before-upload|上传文件前触发|`(file: File) => Promise<boolean \| File>`|`-`||
+|on-before-remove|移除文件前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`||
 |on-button-click|点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）|`(event: Event) => Promise<FileList> \| void`|`-`||
 ### `<upload>` Events
 
 |事件名|描述|参数|
 |---|---|---|
-|exceed-limit|上传的图片超出限制后触发|fileList: `FileItem[]`<br>files: `File[]`|
-|change|上传的图片状态发生改变时触发|fileList: `FileItem[]`<br>fileItem: `fileItem`|
-|progress|上传中的图片进度改变时触发|fileItem: `fileItem`<br>ev: `ProgressEvent`|
+|exceed-limit|上传的文件超出限制后触发|fileList: `FileItem[]`<br>files: `File[]`|
+|change|上传的文件状态发生改变时触发|fileList: `FileItem[]`<br>fileItem: `fileItem`|
+|progress|上传中的文件进度改变时触发|fileItem: `fileItem`<br>ev: `ProgressEvent`|
 |preview|点击图片预览时的触发|fileItem: `FileItem`|
 |success|上传成功时触发|fileItem: `FileItem`|
 |error|上传失败时触发|fileItem: `FileItem`|
 ### `<upload>` Methods
 
-|方法名|描述|参数|返回值|
-|---|---|---|---|
-|submit|上传文件（已经初始化完成的文件）|fileItem: `FileItem`|-|
-|abort|中止上传|fileItem: `FileItem`|-|
-|updateFile|更新文件|id: `string`<br>file: `File`|-|
+|方法名|描述|参数|返回值|版本|
+|---|---|---|---|:---|
+|submit|上传文件（已经初始化完成的文件）|fileItem: `FileItem`|-||
+|abort|中止上传|fileItem: `FileItem`|-||
+|updateFile|更新文件|id: `string`<br>file: `File`|-||
+|upload|上传文件|files: `File[]`|-|2.41.0|
 ### `<upload>` Slots
 
 |插槽名|描述|参数|版本|
@@ -119,8 +120,8 @@ description: 用户可传输文件或提交相应的内容。
 |file|文件对象|`File`|`-`|
 |percent|上传进度百分比|`number`|`-`|
 |response|当前文件上传请求返回的响应|`any`|`-`|
-|url|图片地址|`string`|`-`|
-|name|图片文件名|`string`|`-`|
+|url|文件地址|`string`|`-`|
+|name|文件名|`string`|`-`|
 
 
 

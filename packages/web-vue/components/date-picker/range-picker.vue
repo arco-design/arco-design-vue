@@ -34,6 +34,9 @@
         @change="onInputChange"
         @pressEnter="onInputPressEnter"
       >
+        <template v-if="$slots.prefix" #prefix>
+          <slot name="prefix" />
+        </template>
         <template #suffix-icon>
           <slot name="suffix-icon">
             <IconCalendar />
@@ -72,6 +75,7 @@ import {
   ShortcutType,
   CalendarValue,
   WeekStart,
+  Mode,
 } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { isArray, isBoolean } from '../_utils/is';
@@ -522,6 +526,10 @@ export default defineComponent({
       Array<string | undefined> | undefined
     >();
 
+    const startHeaderMode = ref<'year' | 'month' | undefined>();
+
+    const endHeaderMode = ref<'year' | 'month' | undefined>();
+
     const [panelVisible, setLocalPanelVisible] = useMergeState(
       defaultPopupVisible.value,
       reactive({ value: popupVisible })
@@ -541,9 +549,12 @@ export default defineComponent({
       startHeaderOperations,
       endHeaderOperations,
       resetHeaderValue,
+      setHeaderValue,
     } = useRangeHeaderValue(
       reactive({
         mode,
+        startHeaderMode,
+        endHeaderMode,
         value: pickerValue,
         defaultValue: defaultPickerValue,
         selectedValue: panelValue,
@@ -563,6 +574,34 @@ export default defineComponent({
         },
       })
     );
+
+    function onStartPanelHeaderLabelClick(type: 'year' | 'month') {
+      startHeaderMode.value = type;
+    }
+
+    function onEndPanelHeaderLabelClick(type: 'year' | 'month') {
+      endHeaderMode.value = type;
+    }
+
+    function onStartPanelHeaderSelect(date: Dayjs) {
+      let newStartValue = startHeaderValue.value;
+      newStartValue = newStartValue.set('year', date.year());
+      if (startHeaderMode.value === 'month') {
+        newStartValue = newStartValue.set('month', date.month());
+      }
+      setHeaderValue([newStartValue, endHeaderValue.value]);
+      startHeaderMode.value = undefined;
+    }
+
+    function onEndPanelHeaderSelect(date: Dayjs) {
+      let newEndValue = endHeaderValue.value;
+      newEndValue = newEndValue.set('year', date.year());
+      if (endHeaderMode.value === 'month') {
+        newEndValue = newEndValue.set('month', date.month());
+      }
+      setHeaderValue([startHeaderValue.value, newEndValue]);
+      endHeaderMode.value = undefined;
+    }
 
     const footerValue = ref([
       panelValue.value[0] || getNow(),
@@ -608,6 +647,14 @@ export default defineComponent({
     );
 
     watch(panelVisible, (newVisible) => {
+      if (mode.value === 'year') {
+        startHeaderMode.value = 'year';
+        endHeaderMode.value = 'year';
+      } else {
+        startHeaderMode.value = undefined;
+        endHeaderMode.value = undefined;
+      }
+
       setProcessValue(undefined);
       setPreviewValue(undefined);
       // open
@@ -677,6 +724,8 @@ export default defineComponent({
       setProcessValue(undefined);
       setPreviewValue(undefined);
       setInputValue(undefined);
+      startHeaderMode.value = undefined;
+      endHeaderMode.value = undefined;
 
       if (isBoolean(showPanel)) {
         setPanelVisible(showPanel);
@@ -698,12 +747,20 @@ export default defineComponent({
       }
     ) {
       const { emitSelect = false, updateHeader = false } = options || {};
-      setProcessValue(value);
+
+      let newValue = [...value];
+      if (isCompleteRangeValue(newValue)) {
+        newValue = getSortedDayjsArray(newValue);
+      }
+
+      setProcessValue(newValue);
       setPreviewValue(undefined);
       setInputValue(undefined);
+      startHeaderMode.value = undefined;
+      endHeaderMode.value = undefined;
 
       if (emitSelect) {
-        emitSelectEvent(value);
+        emitSelectEvent(newValue);
       }
 
       if (updateHeader) {
@@ -951,6 +1008,12 @@ export default defineComponent({
         : undefined,
       onConfirm: onPanelConfirm,
       onTimePickerSelect,
+      startHeaderMode: startHeaderMode.value,
+      endHeaderMode: endHeaderMode.value,
+      onStartHeaderLabelClick: onStartPanelHeaderLabelClick,
+      onEndHeaderLabelClick: onEndPanelHeaderLabelClick,
+      onStartHeaderSelect: onStartPanelHeaderSelect,
+      onEndHeaderSelect: onEndPanelHeaderSelect,
     }));
 
     return {

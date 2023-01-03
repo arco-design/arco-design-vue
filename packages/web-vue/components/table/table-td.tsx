@@ -109,6 +109,17 @@ export default defineComponent({
         tableCtx.resizingColumn === props.column.dataIndex
     );
 
+    const getCustomClass = () => {
+      if (props.summary) {
+        return isFunction(props.column?.summaryCellClass)
+          ? props.column.summaryCellClass(props.record?.raw)
+          : props.column?.summaryCellClass;
+      }
+      return isFunction(props.column?.bodyCellClass)
+        ? props.column.bodyCellClass(props.record?.raw)
+        : props.column?.bodyCellClass;
+    };
+
     const cls = computed(() => [
       `${prefixCls}-td`,
       {
@@ -116,6 +127,8 @@ export default defineComponent({
         [`${prefixCls}-td-resizing`]: resizing.value,
       },
       ...getFixedCls(prefixCls, props.column),
+      props.column?.cellClass,
+      getCustomClass(),
     ]);
 
     const getCustomStyle = () => {
@@ -263,7 +276,9 @@ export default defineComponent({
           rowspan: props.rowSpan > 1 ? props.rowSpan : undefined,
           colspan: props.colSpan > 1 ? props.colSpan : undefined,
         },
-        [renderCell()]
+        {
+          default: () => [renderCell()],
+        }
       );
     };
   },

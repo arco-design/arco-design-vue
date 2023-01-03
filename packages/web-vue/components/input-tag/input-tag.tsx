@@ -211,6 +211,22 @@ export default defineComponent({
      */
     'blur': (ev: FocusEvent) => true,
   },
+  /**
+   * @zh 后缀元素
+   * @en Suffix
+   * @slot suffix
+   */
+  /**
+   * @zh 前缀元素
+   * @en Prefix
+   * @slot prefix
+   */
+  /**
+   * @zh 输入框标签的显示内容
+   * @en Display content of tag
+   * @slot tag
+   * @binding {TagData} data
+   */
   setup(props, { emit, slots, attrs }) {
     const { size, disabled, error, uninjectFormItemContext, modelValue } =
       toRefs(props);
@@ -409,6 +425,15 @@ export default defineComponent({
       eventHandlers.value?.onBlur?.(ev);
     };
 
+    const getLastClosableIndex = () => {
+      for (let i = valueData.value.length - 1; i >= 0; i--) {
+        if (valueData.value[i].closable) {
+          return i;
+        }
+      }
+      return -1;
+    };
+
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyCode = e.key || e.code;
       if (
@@ -424,8 +449,10 @@ export default defineComponent({
         !computedInputValue.value &&
         keyCode === Backspace.key
       ) {
-        const lastIndex = valueData.value.length - 1;
-        handleRemove(valueData.value[lastIndex].value, lastIndex, e);
+        const lastIndex = getLastClosableIndex();
+        if (lastIndex >= 0) {
+          handleRemove(valueData.value[lastIndex].value, lastIndex, e);
+        }
       }
     };
 

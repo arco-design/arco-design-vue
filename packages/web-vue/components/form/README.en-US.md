@@ -59,8 +59,8 @@ description: A form with data collection, verification and submission functions,
 
 |Method|Description|Parameters|Return|
 |---|---|---|:---:|
-|validate|Verify all form data|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
-|validateField|Validate part of the form data|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
+|validate|Verify all form data|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>|
+|validateField|Validate part of the form data|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>|
 |resetFields|Reset form data|field: `string \| string[]`|-|
 |clearValidate|Clear verification status|field: `string \| string[]`|-|
 |setFields|Set the value and status of the form item|data: `Record<string, FieldData>`|-|
@@ -74,12 +74,14 @@ description: A form with data collection, verification and submission functions,
 |---|---|---|:---:|:---|
 |field|The path of the form element in the data object (required for the data item)|`string`|`''`||
 |label|Label text|`string`|`-`||
+|tooltip|Tooltip text|`string`|`-`|2.41.0|
 |show-colon|Whether to show a colon|`boolean`|`false`||
 |no-style|Whether to remove the style|`boolean`|`false`||
 |disabled|Whether to disable|`boolean`|`-`||
 |help|Help copywriting|`string`|`-`||
 |extra|Additional display copy|`string`|`-`||
 |required|Is it required|`boolean`|`false`||
+|asterisk-position|Optionally place an asterisk before/after the label|`'start' \| 'end'`|`'start'`|2.41.0|
 |rules|Form item validation rules (The priority is higher than the rules of form)|`FieldRule \| FieldRule[]`|`-`||
 |validate-status|Validate status|`'success' \| 'warning' \| 'error' \| 'validating'`|`-`||
 |validate-trigger|The event that triggers the verification|`'change' \| 'input' \| 'focus' \| 'blur'`|`'change'`||

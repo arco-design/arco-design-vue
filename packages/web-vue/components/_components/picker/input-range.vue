@@ -1,5 +1,8 @@
 <template>
   <div :class="classNames">
+    <div v-if="$slots.prefix" :class="`${prefixCls}-prefix`">
+      <slot name="prefix" />
+    </div>
     <div :class="getInputWrapClassName(0)">
       <input
         ref="refInput0"
@@ -41,6 +44,7 @@
       <span :class="`${prefixCls}-suffix-icon`">
         <slot name="suffix-icon" />
       </span>
+      <FeedbackIcon v-if="feedback" :type="feedback" />
     </div>
   </div>
 </template>
@@ -48,6 +52,7 @@
 import { Dayjs } from 'dayjs';
 import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
+import FeedbackIcon from '../feedback-icon.vue';
 import {
   isArray,
   isDayjs,
@@ -65,6 +70,7 @@ export default defineComponent({
   components: {
     IconHover,
     IconClose,
+    FeedbackIcon,
   },
   props: {
     size: {
@@ -112,7 +118,7 @@ export default defineComponent({
     'clear',
     'press-enter',
   ],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const {
       error,
       focused,
@@ -127,6 +133,7 @@ export default defineComponent({
       mergedSize: _mergedSize,
       mergedDisabled,
       mergedError,
+      feedback,
     } = useFormItem({ size, error });
     const { mergedSize } = useSize(_mergedSize);
 
@@ -152,6 +159,7 @@ export default defineComponent({
         [`${prefixCls}-focused`]: focused.value,
         [`${prefixCls}-disabled`]: disabled0.value && disabled1.value,
         [`${prefixCls}-error`]: mergedError.value,
+        [`${prefixCls}-has-prefix`]: slots.prefix,
       },
     ]);
 
@@ -219,6 +227,7 @@ export default defineComponent({
       onPressEnter,
       onPressTab,
       onClear,
+      feedback,
     };
   },
   methods: {

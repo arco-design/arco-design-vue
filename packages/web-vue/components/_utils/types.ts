@@ -45,7 +45,10 @@ export type SFCWithInstall<T, D = Record<string, never>> = T &
     install: (app: App, opt?: ArcoOptions) => void;
   };
 
-export type ClassName = string | Array<ClassName> | Record<string, boolean>;
+export type ClassName =
+  | string
+  | Record<string, boolean>
+  | (string | Record<string, boolean>)[];
 
 export type FieldString<T> = {
   [K in keyof T]?: string;

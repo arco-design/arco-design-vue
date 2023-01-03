@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 Feature
+
+- Add `upload` method ([#2010](https://github.com/arco-design/arco-design-vue/pull/2010))
+
+### 🐛 BugFix
+
+- Fix the bug that the `upload` component judged wrongly when verifying that the uploaded file conforms to the `accept` format in some scenarios. ([#2007](https://github.com/arco-design/arco-design-vue/pull/2007))
+
+
+## 2.39.1
+
+`2022-11-25`
+
+### 🆕 Feature
+
+- chang the type of utils file ([#1887](https://github.com/arco-design/arco-design-vue/pull/1887))
+
+
+## 2.39.0
+
+`2022-11-18`
+
+### 💎 Enhancement
+
+- add some common file type ([#1857](https://github.com/arco-design/arco-design-vue/pull/1857))
+
+
+## 2.34.1
+
+`2022-08-05`
+
+### 🐛 BugFix
+
+- fix the problem of `accept=*` does not work ([#1488](https://github.com/arco-design/arco-design-vue/pull/1488))
+
+
 ## 2.33.0
 
 `2022-07-08`

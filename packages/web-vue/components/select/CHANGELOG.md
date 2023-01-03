@@ -2,6 +2,61 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 💅 Style
+
+- Unify the suffix icon of `select` component for single selection and multi-selection as `arrow-icon`. ([#2005](https://github.com/arco-design/arco-design-vue/pull/2005))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 🐛 BugFix
+
+- Fix formatLabel error when there is no data ([#1797](https://github.com/arco-design/arco-design-vue/pull/1797))
+
+
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💎 Enhancement
+
+- Increase the cache of selected items, and optimize the label display problem during remote search ([#1731](https://github.com/arco-design/arco-design-vue/pull/1731))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 Style
+
+- Fix the problem that the custom label color is displayed incorrectly ([#1703](https://github.com/arco-design/arco-design-vue/pull/1703))
+
+
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- Fixed the problem that the drop-down menu did not follow the scrolling in keyboard interaction ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+- Fix the problem of error reporting in some cases of built-in virtual scroll bar ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
+## 2.36.1
+
+`2022-09-09`
+
+### 🐛 BugFix
+
+- Fix option slot parameter problem ([#1607](https://github.com/arco-design/arco-design-vue/pull/1607))
+
+
 ## 2.32.1
 
 `2022-07-01`

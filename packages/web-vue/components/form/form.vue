@@ -357,6 +357,7 @@ export default defineComponent({
      * @en Verify all form data
      * @public
      * @param {(errors: undefined | Record<string, ValidatedError>) => void} callback
+     * @returns {Promise<undefined | Record<string, ValidatedError>>}
      */
     validate(
       callback?: (errors: undefined | Record<string, ValidatedError>) => void
@@ -369,6 +370,7 @@ export default defineComponent({
      * @public
      * @param {string | string[]} field
      * @param {(errors: undefined | Record<string, ValidatedError>) => void} callback
+     * @returns {Promise<undefined | Record<string, ValidatedError>>}
      */
     validateField(
       field: string | string[],

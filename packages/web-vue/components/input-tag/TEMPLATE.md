@@ -28,3 +28,5 @@ description: Used to enter the label.
 ## API
 
 %%API(input-tag.tsx)%%
+
+%%INTERFACE(interface.ts)%%

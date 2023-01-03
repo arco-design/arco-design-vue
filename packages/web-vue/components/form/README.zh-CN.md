@@ -57,8 +57,8 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 
 |方法名|描述|参数|返回值|
 |---|---|---|---|
-|validate|校验全部表单数据|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
-|validateField|校验部分表单数据|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise\<union\<undefined,Record\<string,ValidatedError\>\>\>|
+|validate|校验全部表单数据|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>|
+|validateField|校验部分表单数据|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>|
 |resetFields|重置表单数据|field: `string \| string[]`|-|
 |clearValidate|清除校验状态|field: `string \| string[]`|-|
 |setFields|设置表单项的值和状态|data: `Record<string, FieldData>`|-|
@@ -72,12 +72,14 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |---|---|---|:---:|:---|
 |field|表单元素在数据对象中的path（数据项必填）|`string`|`''`||
 |label|标签的文本|`string`|`-`||
+|tooltip|提示内容|`string`|`-`|2.41.0|
 |show-colon|是否显示冒号|`boolean`|`false`||
 |no-style|是否去除样式|`boolean`|`false`||
 |disabled|是否禁用|`boolean`|`-`||
 |help|帮助文案|`string`|`-`||
 |extra|额外显示的文案|`string`|`-`||
 |required|是否必须填写|`boolean`|`false`||
+|asterisk-position|可选择将星号置于 label 前/后|`'start' \| 'end'`|`'start'`|2.41.0|
 |rules|表单项校验规则（优先级高于 form 的 rules）|`FieldRule \| FieldRule[]`|`-`||
 |validate-status|校验状态|`'success' \| 'warning' \| 'error' \| 'validating'`|`-`||
 |validate-trigger|触发校验的事件|`'change' \| 'input' \| 'focus' \| 'blur'`|`'change'`||

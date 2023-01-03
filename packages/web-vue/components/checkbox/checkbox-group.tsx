@@ -14,7 +14,7 @@ import { checkboxGroupKey } from './context';
 import { useFormItem } from '../_hooks/use-form-item';
 import { CheckboxOption } from './interface';
 import Checkbox from './checkbox';
-import { isFunction, isNumber, isString } from '../_utils/is';
+import { isFunction, isNumber, isString, isArray } from '../_utils/is';
 
 export default defineComponent({
   name: 'CheckboxGroup',
@@ -35,6 +35,14 @@ export default defineComponent({
     defaultValue: {
       type: Array as PropType<Array<string | number | boolean>>,
       default: () => [],
+    },
+    /**
+     * @zh 支持最多选中的数量
+     * @en Support the maximum number of selections
+     * @version 2.36.0
+     */
+    max: {
+      type: Number,
     },
     /**
      * @zh 选项
@@ -66,7 +74,7 @@ export default defineComponent({
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @param {(string|number|boolean)[]} value
+     * @param {(string | number | boolean)[]} value
      * @param {Event} ev
      */
     'change': (value: (string | number | boolean)[], ev: Event) => true,
@@ -94,7 +102,12 @@ export default defineComponent({
     });
 
     const _value = ref(props.defaultValue);
-    const computedValue = computed(() => props.modelValue ?? _value.value);
+    const computedValue = computed(() =>
+      isArray(props.modelValue) ? props.modelValue : _value.value
+    );
+    const isMaxed = computed(() =>
+      props.max === undefined ? false : computedValue.value.length >= props.max
+    );
 
     const options = computed(() => {
       return (props.options ?? []).map((option) => {
@@ -121,6 +134,7 @@ export default defineComponent({
         name: 'ArcoCheckboxGroup',
         computedValue,
         disabled: mergedDisabled,
+        isMaxed,
         slots,
         handleChange,
       })
@@ -134,28 +148,33 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       (curValue) => {
-        if (curValue) {
+        if (isArray(curValue)) {
           _value.value = [...curValue];
+        } else {
+          _value.value = [];
         }
       }
     );
 
     const renderOptions = () => {
-      return options.value.map((option, index) => (
-        <Checkbox
-          key={option.value}
-          value={option.value}
-          disabled={option.disabled}
-          indeterminate={option.indeterminate}
-          modelValue={computedValue.value.includes(option.value)}
-        >
-          {slots.label
-            ? slots.label({ data: option })
-            : isFunction(option.label)
-            ? option.label()
-            : option.label}
-        </Checkbox>
-      ));
+      return options.value.map((option) => {
+        const checked = computedValue.value.includes(option.value);
+        return (
+          <Checkbox
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled || (!checked && isMaxed.value)}
+            indeterminate={option.indeterminate}
+            modelValue={checked}
+          >
+            {slots.label
+              ? slots.label({ data: option })
+              : isFunction(option.label)
+              ? option.label()
+              : option.label}
+          </Checkbox>
+        );
+      });
     };
 
     return () => (

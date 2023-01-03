@@ -2,6 +2,141 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 问题修复
+
+- 修复仅 `operations` 列固定的情况下没有阴影的问题 ([#1938](https://github.com/arco-design/arco-design-vue/pull/1938))
+
+
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 新增功能
+
+- change 事件增加当前数据参数 ([#1893](https://github.com/arco-design/arco-design-vue/pull/1893))
+
+
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 问题修复
+
+- 修复 thead 在某些情况下会出现纵向滚动条的问题 ([#1913](https://github.com/arco-design/arco-design-vue/pull/1913))
+
+
+## 2.38.3
+
+`2022-11-11`
+
+### 🐛 问题修复
+
+- 修复某些场景下自定义表格元素时会出现警告的问题
+
+
+## 2.38.2
+
+`2022-11-09`
+
+### 🐛 问题修复
+
+- 修复行选择器状态错误的问题 ([#1849](https://github.com/arco-design/arco-design-vue/pull/1849))
+
+
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 问题修复
+
+- 修复rowClass为函数时的参数 ([#1812](https://github.com/arco-design/arco-design-vue/pull/1812))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 💅 样式更新
+
+- 修复暗黑模式下 stripe 样式问题 ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💅 样式更新
+
+- 修复表格同时开启总结行和滚动时，总结行高度被压缩的问题 ([#1733](https://github.com/arco-design/arco-design-vue/pull/1733))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 问题修复
+
+- 修复 default sorter&filters 在模板用法下失效的问题 ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+
+
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 问题修复
+
+- 修复内容变化后tooltip不显示的问题 ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 🆎 类型修正
+
+- 修复 TableRowSelection 类型声明 ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+
+
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 问题修复
+
+- 修复 scroll 属性中 maxHeight 导致虚拟滚动条样式错误问题 ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 新增功能
+
+- 新增自定义类名相关属性 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+### 💎 功能优化
+
+- 扩展 key 的类型 ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 💅 样式更新
+
+- 调整固定列的 zIndex ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 功能优化
+
+- columns 支持 reactive 类型的更新 ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- rowClass 支持函数类型的值 ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+
+
 ## 2.33.1
 
 `2022-07-22`

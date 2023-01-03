@@ -1,6 +1,28 @@
 @import '../../style/mixins/index.less';
 @import './token.less';
 
+.input-suffix-feedback-icon-color() {
+  .@{prefix}-feedback-icon {
+    display: inline-flex;
+
+    &-status-validating {
+      color: @input-feedback-icon-color_validating;
+    }
+
+    &-status-success {
+      color: @input-feedback-icon-color_success;
+    }
+
+    &-status-warning {
+      color: @input-feedback-icon-color_warning;
+    }
+
+    &-status-error {
+      color: @input-feedback-icon-color_error;
+    }
+  }
+}
+
 .input-wrapper-style(@cls) {
   display: inline-flex;
   box-sizing: border-box;
@@ -90,25 +112,7 @@
     padding-left: @input-padding-horizontal;
     color: @input-color-suffix-text;
 
-    .@{prefix}-feedback-icon {
-      display: inline-flex;
-
-      &-status-validating {
-        color: @input-feedback-icon-color_validating;
-      }
-
-      &-status-success {
-        color: @input-feedback-icon-color_success;
-      }
-
-      &-status-warning {
-        color: @input-feedback-icon-color_warning;
-      }
-
-      &-status-error {
-        color: @input-feedback-icon-color_error;
-      }
-    }
+    .input-suffix-feedback-icon-color();
   }
 
   // 清除按钮样式

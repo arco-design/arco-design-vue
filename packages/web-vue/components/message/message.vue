@@ -6,8 +6,13 @@
       `${prefixCls}-${type}`,
       { [`${prefixCls}-closable`]: closable },
     ]"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
-    <span v-if="showIcon" :class="`${prefixCls}-icon`">
+    <span
+      v-if="showIcon && !(type === 'normal' && !$slots.icon)"
+      :class="`${prefixCls}-icon`"
+    >
       <slot name="icon">
         <icon-info-circle-fill v-if="type === 'info'" />
         <icon-check-circle-fill v-else-if="type === 'success'" />
@@ -57,7 +62,7 @@ export default defineComponent({
   },
   props: {
     type: {
-      type: String as PropType<MessageType | 'loading'>,
+      type: String as PropType<MessageType | 'loading' | 'normal'>,
       default: 'info',
     },
     closable: {
@@ -76,6 +81,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    resetOnHover: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['close'],
   setup(props, { emit }) {
@@ -86,31 +95,48 @@ export default defineComponent({
       emit('close');
     };
 
-    onMounted(() => {
+    const startTimer = () => {
       if (props.duration > 0) {
         timer = window.setTimeout(handleClose, props.duration);
       }
+    };
+
+    const clearTimer = () => {
+      if (timer) {
+        window.clearTimeout(timer);
+        timer = 0;
+      }
+    };
+
+    onMounted(() => {
+      startTimer();
     });
 
     onUpdated(() => {
       if (props.resetOnUpdate) {
-        if (timer) {
-          window.clearTimeout(timer);
-          timer = 0;
-        }
-        if (props.duration > 0) {
-          timer = window.setTimeout(handleClose, props.duration);
-        }
+        clearTimer();
+        startTimer();
       }
     });
 
     onUnmounted(() => {
-      if (timer) {
-        window.clearTimeout(timer);
-      }
+      clearTimer();
     });
 
+    const handleMouseEnter = () => {
+      if (props.resetOnHover) {
+        clearTimer();
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (props.resetOnHover) {
+        startTimer();
+      }
+    };
     return {
+      handleMouseEnter,
+      handleMouseLeave,
       prefixCls,
       handleClose,
     };

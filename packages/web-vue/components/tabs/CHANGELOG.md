@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 💅 Style
+
+- Fix the problem that `size` does not take effect under `rounded` and `capsule` types ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 Style
+
+- Fix the problem that the content of the label under the `card` type is not centered ([#1704](https://github.com/arco-design/arco-design-vue/pull/1704))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 Feature
+
+- Add trigger property to support changing switching mode ([#1456](https://github.com/arco-design/arco-design-vue/pull/1456))
+
+
 ## 2.33.0
 
 `2022-07-08`

@@ -34,7 +34,7 @@ description: Through the anchor point, you can quickly find the position of the 
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|select|Triggered when the user clicks on the link|hash: `union`<br>preHash: `string`|
+|select|Triggered when the user clicks on the link|hash: ` string \| undefined `<br>preHash: `string`|
 |change|Triggered when the link changes|hash: `string`|
 
 

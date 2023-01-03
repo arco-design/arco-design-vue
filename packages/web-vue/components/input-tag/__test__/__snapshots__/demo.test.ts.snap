@@ -22,7 +22,9 @@ exports[`<input-tag> demo: render [max] correctly 1`] = `
 
 exports[`<input-tag> demo: render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-has-tag arco-input-tag-has-suffix\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
     <!---->
     <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->one<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
@@ -35,18 +37,21 @@ exports[`<input-tag> demo: render [size] correctly 1`] = `
 
 exports[`<input-tag> demo: render [status] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-disabled arco-input-tag-has-tag\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
     <!---->
     <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->test<!--v-if--><!--v-if--></span><input class=\\"arco-input-tag-input\\" style=\\"width: 12px;\\" disabled=\\"\\"></transition-group-stub>
     <!---->
     <!----></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-readonly arco-input-tag-has-tag\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
     <!---->
     <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->test<!--v-if--><!--v-if--></span><input class=\\"arco-input-tag-input\\" style=\\"width: 12px;\\" readonly=\\"\\"></transition-group-stub>
     <!---->
     <!----></span>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-error arco-input-tag-has-tag\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
     <!---->
     <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->test<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>

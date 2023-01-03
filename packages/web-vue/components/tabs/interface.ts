@@ -17,3 +17,5 @@ export interface TabData {
   closable?: boolean;
   slots: Slots;
 }
+
+export type TabTriggerEvent = 'click' | 'hover';

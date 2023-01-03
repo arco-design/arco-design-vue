@@ -225,7 +225,7 @@
   &-col-fixed-left,
   &-col-fixed-right {
     position: sticky;
-    z-index: 1;
+    z-index: 10;
   }
 
   &-col-fixed-left-last::after,
@@ -578,6 +578,7 @@
 
   &-header {
     overflow-x: hidden;
+    overflow-y: hidden;
     background-color: @table-color-bg-header-cell;
     scrollbar-color: transparent transparent;
 
@@ -700,8 +701,26 @@
 
   // stripe: true
   &-stripe {
-    .@{table-cls-tr}:nth-child(even) .@{table-cls-td} {
-      background-color: @table-color-bg-body-stripe-row;
+    &:not(.@{table-prefix-cls}-dragging)
+      .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty):not(.@{table-prefix-cls}-tr-summary):nth-child(even),
+    .@{table-cls-tr}-drag {
+      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(.@{table-prefix-cls}-col-fixed-right) {
+        background-color: @table-color-bg-body-stripe-row;
+      }
+
+      .@{table-cls-td}.@{table-prefix-cls}-col-fixed-left,
+      .@{table-cls-td}.@{table-prefix-cls}-col-fixed-right {
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          background-color: @table-color-bg-body-stripe-row;
+          content: '';
+        }
+      }
     }
   }
 
@@ -758,6 +777,7 @@
   &-tfoot {
     position: relative;
     z-index: 1;
+    flex-shrink: 0;
     width: 100%;
     overflow-x: auto;
     background-color: @table-color-bg-tfoot;

@@ -21,8 +21,10 @@
       <FormItemLabel
         :required="hideAsterisk ? false : isRequired"
         :show-colon="showColon"
+        :asterisk-position="asteriskPosition"
         :component="labelComponent"
         :attrs="labelAttrs"
+        :tooltip="tooltip"
       >
         <slot v-if="$slots.label || label" name="label">{{ label }}</slot>
       </FormItemLabel>
@@ -122,6 +124,14 @@ export default defineComponent({
      */
     label: String,
     /**
+     * @zh 提示内容
+     * @en Tooltip text
+     * @version 2.41.0
+     */
+    tooltip: {
+      type: String,
+    },
+    /**
      * @zh 是否显示冒号
      * @en Whether to show a colon
      */
@@ -162,6 +172,16 @@ export default defineComponent({
     required: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 可选择将星号置于 label 前/后
+     * @en Optionally place an asterisk before/after the label
+     * @values 'start', 'end'
+     * @version 2.41.0
+     */
+    asteriskPosition: {
+      type: String,
+      default: 'start',
     },
     /**
      * @zh 表单项校验规则（优先级高于 form 的 rules）
@@ -427,7 +447,7 @@ export default defineComponent({
 
       const schema = new Schema(
         {
-          [_field]: rules.map((rule) => {
+          [_field]: rules.map(({ ...rule }) => {
             if (!rule.type && !rule.validator) {
               rule.type = 'string';
             }

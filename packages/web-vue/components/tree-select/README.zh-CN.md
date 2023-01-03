@@ -62,7 +62,7 @@ description: 可以对树形结构数据进行选择。
 |tree-check-strictly|父子节点是否关联|`boolean`|`false`||
 |tree-checked-strategy|定制回显方式|`'all' \| 'parent' \| 'child'`|`'all'`||
 |tree-props|可以接受所有 [Tree](/vue/component/tree) 组件的Props|`Partial<TreeProps>`|`-`||
-|trigger-props|可以接受所有 [Trigger](/vue/component/trigger) 组件的Props|`Record<string, unknown>`|`-`||
+|trigger-props|可以接受所有 [Trigger](/vue/component/trigger) 组件的Props|`Partial<TriggerProps>`|`-`||
 |popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`||
 |default-popup-visible|默认弹出框是否可见|`boolean`|`false`||
 |dropdown-style|下拉框样式|`CSSProperties`|`-`||
@@ -70,9 +70,10 @@ description: 可以对树形结构数据进行选择。
 |filter-tree-node|自定义节点过滤函数|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`||
 |load-more|动态加载数据|`(nodeData: TreeNodeData) => Promise<void>`|`-`||
 |disable-filter|禁用内部过滤逻辑|`boolean`|`false`||
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`||
+|popup-container|弹出框的挂载容器|`string \| HTMLElement \| undefined`|`-`||
 |fallback-option|为 value 中找不到匹配项的 key 定义节点数据|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|设置可选择的节点，默认全部可选|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
+|scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.39.0|
 ### `<tree-select>` Events
 
 |事件名|描述|参数|
@@ -83,12 +84,16 @@ description: 可以对树形结构数据进行选择。
 |clear|点击清除时触发|-|
 ### `<tree-select>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|trigger|自定义触发元素|-|
-|prefix|前缀|-|
-|label|自定义选择框显示|data: `mixed`|
-|loader|定制加载中显示的内容|-|
-|empty|定制空数据展示|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|trigger|自定义触发元素|-||
+|prefix|前缀|-||
+|label|自定义选择框显示|data: `mixed`||
+|loader|定制加载中显示的内容|-||
+|empty|定制空数据展示|-||
+|tree-slot-extra|定制 tree 组件的渲染额外节点内容|-||
+|tree-slot-title|定制 tree 组件的节点标题|-||
+|tree-slot-icon|定制 tree 组件的节点图标|node: `TreeNodeData`|2.18.0|
+|tree-slot-switcher-icon|定制 tree 组件的 switcher 图标|-||
 
 

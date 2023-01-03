@@ -23,6 +23,7 @@ app.mount('#app');
 ```
 
 注册后可以通过 `<icon-xx />` 的形式即可使用Icon。
+图标使用 `<svg/>` 方式渲染，可以直接设置 `style`, `class` 以及 `<svg/>` 属性。
 
 ### `<icon-xx>` Props
 
@@ -31,6 +32,7 @@ app.mount('#app');
 |strokeWidth|线宽|`number`|`4`|
 |strokeLinecap|端点类型|`'butt' \| 'round' \| 'square'`|`'butt'`|
 |strokeLinejoin|拐角类型|`'arcs' \| 'bevel' \| 'miter' \| 'miter-clip' \| 'round'`|`'miter'`|
+|rotate|旋转角度|`number`|`-`|
 |spin|是否旋转|`boolean`|`false`|
 |size|尺寸|`number` \| `string`|`-`|
 
@@ -55,12 +57,14 @@ app.mount('#app');
 ```
 
 After registration, you can use the Icon in the form of `<icon-xx />`.
+Icon use `<svg/>` render，can settings `style`, `class` and `<svg/>` attributes.
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |strokeWidth|Stroke width|`number`|`4`|
 |strokeLinecap|Stroke linecap|`'butt' \| 'round' \| 'square'`|`'butt'`|
 |strokeLinejoin|Stroke linejoin|`'arcs' \| 'bevel' \| 'miter' \| 'miter-clip' \| 'round'`|`'miter'`|
+|rotate|Rotate angle|`number`|`-`|
 |spin|Whether to spin|`boolean`|`false`|
 |size|Size|`number` \| `string`|`-`|
 

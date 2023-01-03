@@ -2,6 +2,34 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 Feature
+
+- `form-item` supports tooltip property ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+- `form-item` supports asteriskPosition property ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+
+
+## 2.40.0
+
+`2022-12-09`
+
+### 🐛 BugFix
+
+- Fix the bug that `validate-status` attribute of `Form` component does not take effect in `date-picker` component. ([#1928](https://github.com/arco-design/arco-design-vue/pull/1928))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 🐛 BugFix
+
+- Do not modify the original object data of the rule ([#1779](https://github.com/arco-design/arco-design-vue/pull/1779))
+
+
 ## 2.33.1
 
 `2022-07-22`

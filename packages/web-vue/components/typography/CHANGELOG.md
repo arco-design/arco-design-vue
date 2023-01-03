@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Fixed ellipsis invalidation with parent container setting `white-space: nowrap` ([#1995](https://github.com/arco-design/arco-design-vue/pull/1995))
+
+
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 Feature
+
+- Omit mode adds support for CSS mode (experimental) ([#1635](https://github.com/arco-design/arco-design-vue/pull/1635))
+
+
 ## 2.33.1
 
 `2022-07-22`

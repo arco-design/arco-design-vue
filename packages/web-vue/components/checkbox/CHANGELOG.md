@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Set to empty array if `modevalue` is not an array ([#1940](https://github.com/arco-design/arco-design-vue/pull/1940))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 🐛 BugFix
+
+- Fix the problem that the state is not cleared when clearing model-value ([#1794](https://github.com/arco-design/arco-design-vue/pull/1794))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- Add max prop, support setting the maximum number of items that can be checked ([#1540](https://github.com/arco-design/arco-design-vue/pull/1540))
+
+
 ## 2.27.0
 
 `2022-05-13`

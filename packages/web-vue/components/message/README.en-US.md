@@ -40,29 +40,31 @@ Message._context = app._context;
 
 ### MessageMethod
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|info|Show info message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|success|Show success message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|warning|Show warning message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|error|Show error message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|loading|Show loading message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|clear|Clear all messages|`(position?: MessagePosition) => void`|`-`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|info|Show info message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|success|Show success message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|warning|Show warning message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|error|Show error message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|loading|Show loading message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|normal|Show message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|2.41.0|
+|clear|Clear all messages|`(position?: MessagePosition) => void`|`-`||
 
 
 
 ### MessageConfig
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|content|Content|`RenderContent`|`-`|
-|id|Unique id|`string`|`-`|
-|icon|Message icon|`RenderFunction`|`-`|
-|position|Location of the message|`'top'\|'bottom'`|`-`|
-|showIcon|Whether to show icon|`boolean`|`false`|
-|closable|Whether to show the close button|`boolean`|`false`|
-|duration|The duration of the message display|`number`|`-`|
-|onClose|Callback function when closing|`(id: number \| string) => void`|`-`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|content|Content|`RenderContent`|`-`||
+|id|Unique id|`string`|`-`||
+|icon|Message icon|`RenderFunction`|`-`||
+|position|Location of the message|`'top'\|'bottom'`|`-`||
+|showIcon|Whether to show icon|`boolean`|`false`||
+|closable|Whether to show the close button|`boolean`|`false`||
+|duration|The duration of the message display|`number`|`-`||
+|onClose|Callback function when closing|`(id: number \| string) => void`|`-`||
+|resetOnHover|The mouse to move into the component will not automatically close|`boolean`|`false`|2.39.0|
 
 
 

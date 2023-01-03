@@ -1,7 +1,8 @@
 import type { Ref } from 'vue';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { isString } from '../../_utils/is';
 import type { Sorter, TableColumnData } from '../interface';
+import { isEqual } from '../../_utils/is-equal';
 
 export const useSorter = ({
   columns,
@@ -14,6 +15,13 @@ export const useSorter = ({
   ) => void;
 }) => {
   const _sorter = ref<Sorter | undefined>(getDefaultSorter(columns.value));
+
+  watch(columns, (columns) => {
+    const newSorter = getDefaultSorter(columns);
+    if (!isEqual(newSorter, _sorter.value)) {
+      _sorter.value = newSorter;
+    }
+  });
 
   const computedSorter = computed<Sorter | undefined>(() => {
     for (const item of columns.value) {

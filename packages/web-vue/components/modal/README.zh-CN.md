@@ -55,7 +55,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |mask-style|蒙层的样式|`CSSProperties`|`-`||
 |modal-class|对话框的类名|`string \| any[]`|`-`||
 |modal-style|对话框的样式|`CSSProperties`|`-`||
-|on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`|2.7.0|
+|on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`|2.7.0|
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`|2.7.0|
 |esc-to-close|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 |draggable|是否支持拖动|`boolean`|`false`|2.19.0|
@@ -108,7 +108,7 @@ Modal._context = app._context;
 |---|---|---|:---:|:---|
 |title|标题|`RenderContent`|`-`||
 |content|内容|`RenderContent`|`-`||
-|footer|页脚|`RenderContent`|`-`||
+|footer|页脚|`boolean \| RenderContent`|`true`||
 |closable|是否显示关闭按钮|`boolean`|`false`||
 |okText|确认按钮的内容|`string`|`-`||
 |cancelText|取消按钮的内容|`string`|`-`||
@@ -126,7 +126,7 @@ Modal._context = app._context;
 |fullscreen|是否开启全屏|`boolean`|`false`|2.19.0|
 |onOk|点击确定按钮的回调函数|`() => void`|`-`||
 |onCancel|点击取消按钮的回调函数|`() => void`|`-`||
-|onBeforeOk|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(done: (closed: boolean) => void) => void \| boolean`|`-`|2.7.0|
+|onBeforeOk|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`|2.7.0|
 |onBeforeCancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`|2.7.0|
 |onOpen|对话框打开后（动画结束）触发|`() => void`|`-`||
 |onClose|对话框关闭后（动画结束）触发|`() => void`|`-`||

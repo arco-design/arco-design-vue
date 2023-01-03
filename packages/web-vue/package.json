@@ -1,6 +1,6 @@
 {
   "name": "@arco-design/web-vue",
-  "version": "2.33.1",
+  "version": "2.41.0",
   "description": "Arco Design Vue 2.0: A Vue.js 3 UI Library",
   "keywords": [
     "arco",
@@ -44,6 +44,7 @@
     "dtsgen:icon": "arco-vue-scripts dtsgen 'components/icon/**/*.{ts,tsx,vue}' -o 'components/icon/@types'",
     "test": "arco-vue-scripts test --coverage",
     "test:update": "arco-vue-scripts test --coverage -u",
+    "test:screenshot": "arco-vue-scripts test:screenshot -o ./__screenshots__/",
     "changelog": "arco-vue-scripts changelog",
     "lint-staged": "npx lint-staged"
   },

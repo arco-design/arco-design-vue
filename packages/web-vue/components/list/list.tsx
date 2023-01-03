@@ -5,20 +5,24 @@ import {
   onMounted,
   PropType,
   ref,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
 import Grid from '../grid';
 import Pagination, { PaginationProps } from '../pagination';
 import Empty from '../empty';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
+import VirtualList from '../_components/virtual-list-v2';
 import type {
   ScrollIntoViewOptions,
   VirtualListProps,
-} from '../_components/virtual-list/interface';
+} from '../_components/virtual-list-v2/interface';
 import { usePagination } from './use-pagination';
 import { omit } from '../_utils/omit';
 import { getAllElements } from '../_utils/vue-utils';
+import Scrollbar, { ScrollbarProps } from '../scrollbar';
+import { useComponentRef } from '../_hooks/use-component-ref';
+import { useScrollbar } from '../_hooks/use-scrollbar';
 
 export default defineComponent({
   name: 'List',
@@ -101,11 +105,20 @@ export default defineComponent({
       default: 0,
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)
-     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
      */
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
+    },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.38.0
+     */
+    scrollbar: {
+      type: [Object, Boolean] as PropType<boolean | ScrollbarProps>,
+      default: true,
     },
   },
   emits: {
@@ -161,9 +174,12 @@ export default defineComponent({
    * @version 2.20.0
    */
   setup(props, { emit, slots }) {
+    const { scrollbar } = toRefs(props);
     const prefixCls = getPrefixCls('list');
-    const listRef = ref<HTMLElement>();
+    const { componentRef, elementRef: listRef } =
+      useComponentRef('containerRef');
     const isVirtualList = computed(() => props.virtualListProps);
+    const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
 
     const handleScroll = (e: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
@@ -232,7 +248,11 @@ export default defineComponent({
       return (
         <Grid.Row class={`${prefixCls}-row`} gutter={props.gridProps.gutter}>
           {currentPageItems.map((item, index) => (
-            <Grid.Col key={index} class={`${prefixCls}-col`}>
+            <Grid.Col
+              key={index}
+              class={`${prefixCls}-col`}
+              {...omit(props.gridProps!, ['gutter'])}
+            >
               {isVNode(item) ? item : slots.item?.({ item, index })}
             </Grid.Col>
           ))}
@@ -294,7 +314,7 @@ export default defineComponent({
 
     const contentStyle = computed(() => {
       if (props.maxHeight > 0) {
-        return { maxHeight: `${props.maxHeight}px` };
+        return { maxHeight: `${props.maxHeight}px`, overflowY: 'auto' };
       }
       return undefined;
     });
@@ -347,33 +367,38 @@ export default defineComponent({
     };
 
     const render = () => {
+      const Component = displayScrollbar.value ? Scrollbar : 'div';
+
       return (
         <div class={`${prefixCls}-wrapper`}>
           <Spin class={`${prefixCls}-spin`} loading={props.loading}>
-            <div
-              ref={listRef}
+            <Component
+              ref={componentRef}
               class={cls.value}
               style={contentStyle.value}
+              {...scrollbarProps.value}
               onScroll={handleScroll}
             >
-              {slots.header && (
-                <div class={`${prefixCls}-header`}>{slots.header()}</div>
-              )}
-              {isVirtualList.value && !props.gridProps ? (
-                <>
-                  {renderVirtualList()}
-                  {renderScrollLoading()}
-                </>
-              ) : (
-                <div role="list" class={contentCls.value}>
-                  {renderItems()}
-                  {renderScrollLoading()}
-                </div>
-              )}
-              {slots.footer && (
-                <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
-              )}
-            </div>
+              <div class={`${prefixCls}-content-wrapper`}>
+                {slots.header && (
+                  <div class={`${prefixCls}-header`}>{slots.header()}</div>
+                )}
+                {isVirtualList.value && !props.gridProps ? (
+                  <>
+                    {renderVirtualList()}
+                    {renderScrollLoading()}
+                  </>
+                ) : (
+                  <div role="list" class={contentCls.value}>
+                    {renderItems()}
+                    {renderScrollLoading()}
+                  </div>
+                )}
+                {slots.footer && (
+                  <div class={`${prefixCls}-footer`}>{slots.footer()}</div>
+                )}
+              </div>
+            </Component>
             {renderPagination()}
           </Spin>
         </div>

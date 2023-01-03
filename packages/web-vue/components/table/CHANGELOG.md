@@ -2,6 +2,141 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Fix the problem that there is no shadow when only the `operations` column is fixed ([#1938](https://github.com/arco-design/arco-design-vue/pull/1938))
+
+
+## 2.40.0
+
+`2022-12-09`
+
+### 🆕 Feature
+
+- The change event increases the current data parameter ([#1893](https://github.com/arco-design/arco-design-vue/pull/1893))
+
+
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 BugFix
+
+- Fix the problem that thead will have a vertical scroll bar in some cases ([#1913](https://github.com/arco-design/arco-design-vue/pull/1913))
+
+
+## 2.38.3
+
+`2022-11-11`
+
+### 🐛 BugFix
+
+- Fixed an issue where a warning would appear when customizing table elements in some scenarios
+
+
+## 2.38.2
+
+`2022-11-09`
+
+### 🐛 BugFix
+
+- Fix row selector state error ([#1849](https://github.com/arco-design/arco-design-vue/pull/1849))
+
+
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- fix param when rowClass as function ([#1812](https://github.com/arco-design/arco-design-vue/pull/1812))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 💅 Style
+
+- Fix stripe style issue in dark mode ([#1795](https://github.com/arco-design/arco-design-vue/pull/1795))
+
+
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 💅 Style
+
+- Fixed the problem that summary row height was compressed when both summary row and scroll were enabled in the table ([#1733](https://github.com/arco-design/arco-design-vue/pull/1733))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 🐛 BugFix
+
+- Fix default sorter&filters not working under template usage ([#1707](https://github.com/arco-design/arco-design-vue/pull/1707))
+
+
+## 2.37.3
+
+`2022-09-23`
+
+### 🐛 BugFix
+
+- Fix the problem that the tooltip does not display after the content changes ([#1662](https://github.com/arco-design/arco-design-vue/pull/1662))
+
+### 🆎 TypeScript
+
+- fix TableRowSelection type definition ([#1667](https://github.com/arco-design/arco-design-vue/pull/1667))
+
+
+## 2.37.2
+
+`2022-09-21`
+
+### 🐛 BugFix
+
+- Fixed the virtual scroll bar style error caused by maxHeight in the scroll property ([#1655](https://github.com/arco-design/arco-design-vue/pull/1655))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 🆕 Feature
+
+- Add custom class name related prop ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+### 💎 Enhancement
+
+- type of extension key ([#1580](https://github.com/arco-design/arco-design-vue/pull/1580))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 💅 Style
+
+- adjust zIndex of a fixed col ([#1479](https://github.com/arco-design/arco-design-vue/pull/1479))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 💎 Enhancement
+
+- columns support reactive type updates ([#1470](https://github.com/arco-design/arco-design-vue/pull/1470))
+- rowClass supports values of function types ([#1453](https://github.com/arco-design/arco-design-vue/pull/1453))
+
+
 ## 2.33.1
 
 `2022-07-22`

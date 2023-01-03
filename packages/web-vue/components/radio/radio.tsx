@@ -7,12 +7,13 @@ import {
   watch,
   nextTick,
   toRef,
+  toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import type { RadioType } from './context';
 import { radioGroupKey } from './context';
-import { isUndefined } from '../_utils/is';
+import { isNull, isUndefined } from '../_utils/is';
 import { useFormItem } from '../_hooks/use-form-item';
 
 export default defineComponent({
@@ -74,7 +75,7 @@ export default defineComponent({
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @param {string|number|boolean} value
+     * @param { string | number | boolean } value
      * @param {Event} ev
      */
     'change': (value: string | number | boolean, ev: Event) => true,
@@ -89,6 +90,7 @@ export default defineComponent({
    */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('radio');
+    const { modelValue } = toRefs(props);
     const radioGroupCtx = !props.uninjectGroupContext
       ? inject(radioGroupKey, undefined)
       : undefined;
@@ -114,6 +116,12 @@ export default defineComponent({
         return props.modelValue === (props.value ?? true);
       }
       return _checked.value;
+    });
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _checked.value = false;
+      }
     });
 
     watch(computedChecked, (curValue, preValue) => {

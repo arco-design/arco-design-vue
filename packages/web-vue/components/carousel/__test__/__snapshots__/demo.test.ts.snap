@@ -63,8 +63,11 @@ exports[`<carousel> demo: render [fade] correctly 1`] = `
 
 exports[`<carousel> demo: render [indicator] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"dot\\"><span class=\\"arco-radio-button-content\\">dot</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"line\\"><span class=\\"arco-radio-button-content\\">line</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"slider\\"><span class=\\"arco-radio-button-content\\">slider</span></label></span></div>
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\" style=\\"margin-bottom: 20px;\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-radio-button-content\\">left</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-radio-button-content\\">right</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"top\\"><span class=\\"arco-radio-button-content\\">top</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"bottom\\"><span class=\\"arco-radio-button-content\\">bottom</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"outer\\"><span class=\\"arco-radio-button-content\\">outer</span></label></span></div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-carousel arco-carousel-indicator-position-bottom\\" style=\\"width: 600px; height: 240px;\\">
       <div class=\\"arco-carousel-slide arco-carousel-horizontal\\">

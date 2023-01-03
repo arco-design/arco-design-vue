@@ -1,0 +1,225 @@
+
+@li-prefixCls: ~'@{prefix}-search-modal-container';
+@doc-item-content-height: 48px;
+
+.@{li-prefixCls} {
+  height: 460px;
+  padding: 24px;
+  padding-top: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  &-exact {
+    padding: 12px 0 16px;
+    box-sizing: border-box;
+
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      height: 56px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      margin: 2px 0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    &-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-right: 24px;
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-fill-1);
+    }
+  }
+
+  &-item {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &-type {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 22px;
+      padding: 1px 8px;
+      background-color: #4e5969;
+      border-radius: 2px;
+      color: #fff;
+      margin-left: 12px;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+
+    &-vue {
+      font-weight: bold;
+    }
+
+    &-design {
+      background: var(--color-fill-2);
+      color: var(--color-text-1);
+    }
+
+    &-title {
+      line-height: 24px;
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: var(--color-text-2);
+    }
+
+    &-desc {
+      color: var(--color-text-2);
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  &-item-active {
+    background-color: var(--color-fill-1);
+
+    .@{prefixCls}-item-type {
+      background-color: rgb(var(--primary-6));
+    }
+
+    .@{prefixCls}-item-vue {
+      background-color: rgb(var(--cyan-6));
+    }
+
+    .@{prefixCls}-item-design {
+      color: #ffff;
+      border: none;
+    }
+
+    .@{prefixCls}-exact-icon {
+      opacity: 1;
+    }
+
+    .@{prefixCls}-enter-icon {
+      opacity: 1;
+    }
+  }
+
+  &-enter-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 24px;
+    background: var(--color-fill-3);
+    border-radius: 4px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.2s;
+  }
+
+  &-doc {
+    margin-bottom: 8px;
+
+    &-title {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    &-item {
+      display: flex;
+      box-sizing: border-box;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+
+      &-icon {
+        transform: scale(0.8);
+        display: flex;
+
+        svg {
+          color: var(--color-text-3);
+          opacity: 0.6;
+          stroke-width: 1.8;
+        }
+
+        &-line {
+          height: @doc-item-content-height;
+        }
+
+        &-anchor,
+        &-doc {
+          height: 20px;
+          padding: 14px 0;
+          margin-right: 6px;
+        }
+      }
+
+      &-icon-line {
+        height: @doc-item-content-height;
+      }
+
+      &-result {
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &-desc {
+          vertical-align: middle;
+          padding-right: 36px;
+        }
+      }
+    }
+  }
+}
+
+html.rtl {
+  .@{prefixCls}-exact-icon {
+    margin-left: 24px;
+    margin-right: 0;
+  }
+
+  .@{prefixCls}-list-item-type {
+    margin-right: 12px;
+    margin-left: 0;
+  }
+
+  .@{prefixCls}-enter-icon {
+    right: initial;
+    left: 10px;
+    transform: scaleX(-1) translateY(-50%);
+  }
+
+  .@{prefixCls}-doc {
+    &-title {
+      text-align: right;
+    }
+
+    &-item {
+      &-result {
+        &-desc {
+          padding-right: 0;
+          padding-left: 36px;
+        }
+
+        &-label {
+          text-align: right;
+        }
+      }
+
+      &-icon {
+        svg {
+          transform: scaleX(-1);
+        }
+      }
+    }
+  }
+}

@@ -14,6 +14,7 @@ import {
   onMounted,
   onBeforeUnmount,
   toRefs,
+  onDeactivated,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
@@ -428,7 +429,10 @@ export default defineComponent({
             height: 0,
           }
         : getElementScrollRect(firstElement.value, containerRect);
-      const popupRect = getElementScrollRect(popupRef.value, containerRect);
+      const getPopupRect = () =>
+        // @ts-ignore
+        getElementScrollRect(popupRef.value, containerRect);
+      const popupRect = getPopupRect();
       const { style, position } = getPopupStyle(
         props.position,
         containerRect,
@@ -457,8 +461,15 @@ export default defineComponent({
       }
       popupStyle.value = style;
       if (props.showArrow) {
-        arrowStyle.value = getArrowStyle(position, triggerRect, popupRect, {
-          customStyle: props.arrowStyle,
+        nextTick(() => {
+          arrowStyle.value = getArrowStyle(
+            position,
+            triggerRect,
+            getPopupRect(),
+            {
+              customStyle: props.arrowStyle,
+            }
+          );
         });
       }
     };
@@ -714,6 +725,10 @@ export default defineComponent({
       if (computedVisible.value) {
         updatePopupStyle();
       }
+    });
+
+    onDeactivated(() => {
+      changeVisible(false);
     });
 
     onBeforeUnmount(() => {

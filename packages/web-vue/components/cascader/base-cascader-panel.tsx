@@ -4,6 +4,7 @@ import CascaderOption from './cascader-option';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
+import Scrollbar from '../scrollbar';
 
 export default defineComponent({
   name: 'BaseCascaderPanel',
@@ -40,7 +41,7 @@ export default defineComponent({
           key={`column-${level}`}
           style={{ zIndex: props.totalLevel - level }}
         >
-          <div class={`${prefixCls}-column-content`}>
+          <Scrollbar class={`${prefixCls}-column-content`}>
             {column.length === 0 ? (
               <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
             ) : (
@@ -72,7 +73,7 @@ export default defineComponent({
                 })}
               </ul>
             )}
-          </div>
+          </Scrollbar>
         </div>
       );
     };

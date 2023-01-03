@@ -1,7 +1,10 @@
 <template>
   <transition name="zoom-in-top" @after-leave="handleAfterLeave">
     <div v-if="visible" role="alert" :class="cls">
-      <div v-if="showIcon" :class="`${prefixCls}-icon`">
+      <div
+        v-if="showIcon && !(type === 'normal' && !$slots.icon)"
+        :class="`${prefixCls}-icon`"
+      >
         <slot name="icon">
           <icon-info-circle-fill v-if="type === 'info'" />
           <icon-check-circle-fill v-else-if="type === 'success'" />
@@ -30,18 +33,17 @@
         :class="`${prefixCls}-close-btn`"
         @click="handleClose"
       >
-        <icon-hover>
-          <icon-close />
-        </icon-hover>
+        <slot name="close-element">
+          <icon-hover>
+            <icon-close />
+          </icon-hover>
+        </slot>
       </div>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-/**
- * @todo 增加自定义关闭按钮图标功能
- */
 import type { PropType } from 'vue';
 import { computed, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
@@ -65,12 +67,12 @@ export default defineComponent({
   },
   props: {
     /**
-     * @zh 警告提示的类型
-     * @en Type of the alert
-     * @values info, success, warning, error
+     * @zh 警告提示的类型。2.41.0 新增 `normal` 类型
+     * @en Type of the alert. 2.41.0 Added `normal` type
+     * @values info, success, warning, error, normal
      */
     type: {
-      type: String as PropType<MessageType>,
+      type: String as PropType<MessageType | 'normal'>,
       default: 'info',
     },
     /**
@@ -125,6 +127,17 @@ export default defineComponent({
    * @zh 图标
    * @en Icon
    * @slot icon
+   */
+  /**
+   * @zh 操作项
+   * @en Actions
+   * @slot action
+   */
+  /**
+   * @zh 关闭元素
+   * @en Close element
+   * @slot close-element
+   * @version 2.36.0
    */
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('alert');

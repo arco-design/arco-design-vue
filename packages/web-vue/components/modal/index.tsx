@@ -1,5 +1,5 @@
 import type { App, AppContext } from 'vue';
-import { createVNode, render } from 'vue';
+import { nextTick, createVNode, render } from 'vue';
 import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import { MESSAGE_TYPES } from '../_utils/constant';
@@ -33,7 +33,8 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
     }
   };
 
-  const handleClose = () => {
+  const handleClose = async () => {
+    await nextTick();
     if (container) {
       render(null, container);
       document.body.removeChild(container);
@@ -45,9 +46,16 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
     }
   };
 
+  const handleReturnClose = () => {
+    if (vm.component) {
+      vm.component.props.visible = false;
+    }
+  };
+
   const defaultConfig = {
     visible: true,
     renderToBody: false,
+    unmountOnClose: true,
     onOk: handleOk,
     onCancel: handleCancel,
     onClose: handleClose,
@@ -56,11 +64,29 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   // @ts-ignore
   const vm = createVNode(
     _Modal,
-    { ...omit(config, ['content', 'title', 'footer']), ...defaultConfig },
+    {
+      ...defaultConfig,
+      ...omit(config, [
+        'content',
+        'title',
+        'footer',
+        'visible',
+        'unmountOnClose',
+        'onOk',
+        'onCancel',
+        'onClose',
+      ]),
+      ...{
+        footer: typeof config.footer === 'boolean' ? config.footer : undefined,
+      },
+    },
     {
       default: getSlotFunction(config.content),
       title: getSlotFunction(config.title),
-      footer: getSlotFunction(config.footer),
+      footer:
+        typeof config.footer !== 'boolean'
+          ? getSlotFunction(config.footer)
+          : undefined,
     }
   );
 
@@ -72,7 +98,7 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   document.body.appendChild(container);
 
   return {
-    close: handleClose,
+    close: handleReturnClose,
   };
 };
 

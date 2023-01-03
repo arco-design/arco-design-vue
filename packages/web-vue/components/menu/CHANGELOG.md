@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.34.1
+
+`2022-08-05`
+
+### 🐛 BugFix
+
+- Fixed an issue where the popup attribute caused warnings in newer versions of Chrome ([#1487](https://github.com/arco-design/arco-design-vue/pull/1487))
+
+
 ## 2.31.0
 
 `2022-06-17`

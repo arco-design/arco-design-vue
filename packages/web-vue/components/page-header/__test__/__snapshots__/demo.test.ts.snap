@@ -1,83 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<page-header> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-page-header\\">
-  <div class=\\"arco-page-header-wrapper\\">
+"<div style=\\"padding: 28px;\\">
+  <div class=\\"arco-page-header\\">
+    <div class=\\"arco-page-header-wrapper\\">
+      <!--v-if-->
+      <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><span class=\\"arco-icon-hover arco-page-header-icon-hover arco-page-header-back-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\">ArcoDesign Vue 2.0</span></span><span class=\\"arco-page-header-extra\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></span></div>
+    </div>
     <!--v-if-->
-    <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><span class=\\"arco-icon-hover arco-page-header-icon-hover arco-page-header-back-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\">ArcoDesign Vue 2.0</span></span><span class=\\"arco-page-header-extra\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></span></div>
   </div>
-  <!--v-if-->
 </div>"
 `;
 
 exports[`<page-header> demo: render [breadcrumb] correctly 1`] = `
-"<div class=\\"arco-page-header arco-page-header-with-breadcrumb\\">
-  <div class=\\"arco-page-header-wrapper\\">
-    <div class=\\"arco-page-header-breadcrumb\\">
-      <div role=\\"list\\" class=\\"arco-breadcrumb\\">
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home</div>
-        <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-          </svg></div>
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel</div>
-        <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-          </svg></div>
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
-        <!---->
+"<div style=\\"padding: 28px;\\">
+  <div class=\\"arco-page-header arco-page-header-with-breadcrumb\\">
+    <div class=\\"arco-page-header-wrapper\\">
+      <div class=\\"arco-page-header-breadcrumb\\">
+        <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+            <!---->
+          </div>
+          <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+            </svg></div>
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+            <!---->
+          </div>
+          <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+            </svg></div>
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+            <!---->
+          </div>
+          <!---->
+        </div>
       </div>
+      <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><!--v-if--><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\">ArcoDesign Vue 2.0</span></span><span class=\\"arco-page-header-extra\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></span></div>
     </div>
-    <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><!--v-if--><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\">ArcoDesign Vue 2.0</span></span><span class=\\"arco-page-header-extra\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></span></div>
+    <!--v-if-->
   </div>
-  <!--v-if-->
 </div>"
 `;
 
 exports[`<page-header> demo: render [content] correctly 1`] = `
-"<div class=\\"arco-page-header arco-page-header-with-breadcrumb arco-page-header-with-content\\">
-  <div class=\\"arco-page-header-wrapper\\">
-    <div class=\\"arco-page-header-breadcrumb\\">
-      <div role=\\"list\\" class=\\"arco-breadcrumb\\">
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home</div>
-        <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-          </svg></div>
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel</div>
-        <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-          </svg></div>
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
-        <!---->
+"<div style=\\"padding: 28px;\\">
+  <div class=\\"arco-page-header arco-page-header-with-breadcrumb arco-page-header-with-content\\">
+    <div class=\\"arco-page-header-wrapper\\">
+      <div class=\\"arco-page-header-breadcrumb\\">
+        <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+            <!---->
+          </div>
+          <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+            </svg></div>
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+            <!---->
+          </div>
+          <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+            </svg></div>
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+            <!---->
+          </div>
+          <!---->
+        </div>
       </div>
-    </div>
-    <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><span class=\\"arco-icon-hover arco-page-header-icon-hover arco-page-header-back-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\">ArcoDesign Vue 2.0</span></span><span class=\\"arco-page-header-extra\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></span></div>
+      <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><span class=\\"arco-icon-hover arco-page-header-icon-hover arco-page-header-back-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\"><div class=\\"arco-space arco-space-horizontal arco-space-align-center\\"><!----><div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>ArcoDesign Vue 2.0</span></div>
+      <!---->
+      <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-small arco-tag-red arco-tag-checked\\"><!--v-if-->Default<!--v-if--><!--v-if--></span></div>
+    </div></span></span><span class=\\"arco-page-header-extra\\"><div class=\\"arco-space arco-space-horizontal arco-space-align-center\\"><!----><div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->Cancel</button></div><!----><div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if-->Save</button></div></div></span>
   </div>
-  <div class=\\"arco-page-header-content\\">
-    <p> For other uses, see Design </p>
-    <p> A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. In some cases, the direct construction of an object without an explicit prior plan (such as in craftwork, some engineering, coding, and graphic design) may also be considered to be a design activity. The design usually has to satisfy certain goals and constraints, may take into account aesthetic, functional, economic, or socio-political considerations, and is expected to interact with a certain environment. Major examples of designs include architectural blueprints,engineering drawings, business processes, circuit diagrams, and sewing patterns.Major examples of designs include architectural blueprints,engineering drawings, business processes, circuit diagrams, and sewing patterns. </p>
-  </div>
+</div>
+<div class=\\"arco-page-header-content\\">
+  <p> For other uses, see Design </p>
+  <p> A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The verb to design expresses the process of developing a design. In some cases, the direct construction of an object without an explicit prior plan (such as in craftwork, some engineering, coding, and graphic design) may also be considered to be a design activity. The design usually has to satisfy certain goals and constraints, may take into account aesthetic, functional, economic, or socio-political considerations, and is expected to interact with a certain environment. Major examples of designs include architectural blueprints,engineering drawings, business processes, circuit diagrams, and sewing patterns.Major examples of designs include architectural blueprints,engineering drawings, business processes, circuit diagrams, and sewing patterns. </p>
+</div>
+</div>
 </div>"
 `;
 
 exports[`<page-header> demo: render [transparent] correctly 1`] = `
-"<div class=\\"arco-page-header arco-page-header-with-breadcrumb\\">
-  <div class=\\"arco-page-header-wrapper\\">
-    <div class=\\"arco-page-header-breadcrumb\\">
-      <div role=\\"list\\" class=\\"arco-breadcrumb\\">
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home</div>
-        <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-          </svg></div>
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel</div>
-        <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-            <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-          </svg></div>
-        <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
-        <!---->
+"<div style=\\"background-size: 16px 16px; padding: 28px;\\">
+  <div class=\\"arco-page-header arco-page-header-with-breadcrumb\\">
+    <div class=\\"arco-page-header-wrapper\\">
+      <div class=\\"arco-page-header-breadcrumb\\">
+        <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+            <!---->
+          </div>
+          <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+            </svg></div>
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+            <!---->
+          </div>
+          <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+            </svg></div>
+          <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+            <!---->
+          </div>
+          <!---->
+        </div>
       </div>
+      <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><span class=\\"arco-icon-hover arco-page-header-icon-hover arco-page-header-back-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\">ArcoDesign Vue 2.0</span></span><span class=\\"arco-page-header-extra\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></span></div>
     </div>
-    <div class=\\"arco-page-header-header\\"><span class=\\"arco-page-header-main\\"><span class=\\"arco-icon-hover arco-page-header-icon-hover arco-page-header-back-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span><span class=\\"arco-page-header-title\\">ArcoDesign</span><span class=\\"arco-page-header-divider\\"></span><span class=\\"arco-page-header-subtitle\\">ArcoDesign Vue 2.0</span></span><span class=\\"arco-page-header-extra\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></span></div>
+    <!--v-if-->
   </div>
-  <!--v-if-->
 </div>"
 `;

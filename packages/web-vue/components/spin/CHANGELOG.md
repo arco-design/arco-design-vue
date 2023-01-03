@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🐛 BugFix
+
+- Fix the problem that size is invalid ([#1717](https://github.com/arco-design/arco-design-vue/pull/1717))
+
+
+## 2.35.1
+
+`2022-08-19`
+
+### 🐛 BugFix
+
+- Fix the spin problem caused by the increase of the z-index of fixed-column ([#1533](https://github.com/arco-design/arco-design-vue/pull/1533))
+
+
 ## 2.9.0
 
 `2021-12-03`

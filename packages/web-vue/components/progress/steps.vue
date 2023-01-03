@@ -79,7 +79,7 @@ export default defineComponent({
 
     const stepList = computed(() =>
       [...Array(props.steps)].map((_, index) => {
-        return props.percent > 0 && props.percent >= (1 / props.steps) * index;
+        return props.percent > 0 && props.percent > (1 / props.steps) * index;
       })
     );
 

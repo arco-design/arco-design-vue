@@ -1,6 +1,7 @@
 import type { Ref } from 'vue';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import type { Filters, TableColumnData } from '../interface';
+import { isEqual } from '../../_utils/is-equal';
 
 export const useFilter = ({
   columns,
@@ -10,6 +11,13 @@ export const useFilter = ({
   onFilterChange: (dataIndex: string, filteredValues: string[]) => void;
 }) => {
   const _filters = ref<Filters>(getDefaultFilters(columns.value));
+
+  watch(columns, (columns) => {
+    const newFilters = getDefaultFilters(columns);
+    if (!isEqual(newFilters, _filters.value)) {
+      _filters.value = newFilters;
+    }
+  });
 
   const computedFilters = computed<Filters>(() => {
     const filters: Filters = {};

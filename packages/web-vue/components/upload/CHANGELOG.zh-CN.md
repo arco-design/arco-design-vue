@@ -2,6 +2,46 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 新增功能
+
+- 增加 `upload` 方法 ([#2010](https://github.com/arco-design/arco-design-vue/pull/2010))
+
+### 🐛 问题修复
+
+- 修复 `upload` 组件在部分场景下验证上传文件符合 `accept` 格式时，判断错误的 bug。 ([#2007](https://github.com/arco-design/arco-design-vue/pull/2007))
+
+
+## 2.39.1
+
+`2022-11-25`
+
+### 🆕 新增功能
+
+- 更改utils文件的类型 ([#1887](https://github.com/arco-design/arco-design-vue/pull/1887))
+
+
+## 2.39.0
+
+`2022-11-18`
+
+### 💎 功能优化
+
+- 添加一些常见的文件类型 ([#1857](https://github.com/arco-design/arco-design-vue/pull/1857))
+
+
+## 2.34.1
+
+`2022-08-05`
+
+### 🐛 问题修复
+
+- 修复设置 `accept=*` 时失效的问题 ([#1488](https://github.com/arco-design/arco-design-vue/pull/1488))
+
+
 ## 2.33.0
 
 `2022-07-08`

@@ -12,7 +12,9 @@
             :prefix="prefixCls"
             @click="handleBack"
           >
-            <icon-left />
+            <slot name="back-icon">
+              <icon-left />
+            </slot>
           </a-icon-hover>
           <span :class="`${prefixCls}-title`">
             <slot name="title">{{ title }}</slot>
@@ -76,6 +78,12 @@ export default defineComponent({
      */
     'back',
   ],
+  /**
+   * @zh 返回按钮
+   * @en Back icon
+   * @slot back-icon
+   * @version 2.36.0
+   */
   /**
    * @zh 主标题
    * @en Main title

@@ -53,5 +53,24 @@ description: 用来输入标签。
 |---|---|---|---|
 |focus|使输入框获取焦点|-|-|
 |blur|使输入框失去焦点|-|-|
+### `<input-tag>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|tag|输入框标签的显示内容|data: `TagData`|
+|prefix|前缀元素|-|
+|suffix|后缀元素|-|
+
+
+
+
+### TagData
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|value|标签值|`string \| number`|`-`|
+|label|标签内容|`string`|`-`|
+|closable|是否可关闭|`boolean`|`false`|
+|tagProps|标签属性|`TagProps`|`-`|
 
 

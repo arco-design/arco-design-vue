@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 问题修复
+
+- 修复在 windows 中 arrow 定位错误的问题 ([#1480](https://github.com/arco-design/arco-design-vue/pull/1480))
+
+
+## 2.35.1
+
+`2022-08-19`
+
+### 💎 功能优化
+
+- 优化在 KeepAlive 下使用的问题，缓存时关闭弹出层 ([#1529](https://github.com/arco-design/arco-design-vue/pull/1529))
+
+
 ## 2.32.0
 
 `2022-06-24`

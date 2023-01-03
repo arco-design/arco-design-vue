@@ -2,12 +2,14 @@
 
 exports[`<upload> demo: render [avatar] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\"><span><div class=\\"arco-upload-list-item\\"><div class=\\"arco-upload-picture-card\\"><div class=\\"arco-upload-picture-card-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg><div style=\\"margin-top: 10px; font-weight: 600;\\">Upload</div></div></div></div></span></span></div>
 </div>"
 `;
 
 exports[`<upload> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
     <div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\">
       <!----><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-upload\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6\\"></path></svg></span>点击上传</button></span>
@@ -16,6 +18,7 @@ exports[`<upload> demo: render [basic] correctly 1`] = `
       </transition-group-stub>
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\" style=\\"margin-top: 40px;\\">
       <!----><span class=\\"arco-upload arco-upload-disabled\\"><input type=\\"file\\" style=\\"display: none;\\" disabled=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-upload\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6\\"></path></svg></span>点击上传</button></span>
@@ -29,6 +32,7 @@ exports[`<upload> demo: render [basic] correctly 1`] = `
 
 exports[`<upload> demo: render [before-remove] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\">
       <!----><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-upload\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6\\"></path></svg></span>点击上传</button></span>
@@ -58,6 +62,7 @@ exports[`<upload> demo: render [before-remove] correctly 1`] = `
 
 exports[`<upload> demo: render [before-upload] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\">
       <!----><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-upload\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6\\"></path></svg></span>点击上传</button></span>
@@ -84,7 +89,9 @@ exports[`<upload> demo: render [custom-icon] correctly 1`] = `
 "<div>
   <div style=\\"margin-bottom: 20px;\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span>Type: </span></div>
+      <!---->
       <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"text\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">text</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"picture\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">picture</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"picture-card\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">picture-card</span></label></span></div>
     </div>
   </div>
@@ -115,6 +122,7 @@ exports[`<upload> demo: render [custom-icon] correctly 1`] = `
 
 exports[`<upload> demo: render [directory] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\">
       <!----><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\" webkitdirectory=\\"webkitdirectory\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-upload\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6\\"></path></svg></span>点击上传</button></span>
@@ -195,7 +203,7 @@ exports[`<upload> demo: render [request] correctly 1`] = `
 exports[`<upload> demo: render [submit] correctly 1`] = `
 "<div>
   <div class=\\"arco-upload-wrapper arco-upload-wrapper-type-text\\">
-    <!----><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\" multiple=\\"\\"><span><div class=\\"arco-space arco-space-horizontal arco-space-align-center\\"><div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if--> select file</button></div><div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if--> start upload</button></div><div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if--> only upload one </button></div></div></span></span>
+    <!----><span class=\\"arco-upload\\"><input type=\\"file\\" style=\\"display: none;\\" multiple=\\"\\"><span><div class=\\"arco-space arco-space-horizontal arco-space-align-center\\"><!----><div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if--> select file</button></div><!----><div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if--> start upload</button></div><!----><div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\"><!--v-if--> only upload one </button></div></div></span></span>
     <transition-group-stub>
       <!---->
     </transition-group-stub>

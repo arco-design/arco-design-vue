@@ -2,6 +2,60 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Fix the problem that the custom calculation character length will not be limited by `max-length` ([#1942](https://github.com/arco-design/arco-design-vue/pull/1942))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- Fix `change` event trigger logic problem ([#1990](https://github.com/arco-design/arco-design-vue/pull/1990))
+
+
+## 2.39.2
+
+`2022-12-02`
+
+### 🐛 BugFix
+
+- Fix change event triggering issue and clear clearing issue ([#1912](https://github.com/arco-design/arco-design-vue/pull/1912))
+
+
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- Fix the problem of component cursor reporting error in some scenarios ([#1820](https://github.com/arco-design/arco-design-vue/pull/1820))
+
+
+## 2.37.3
+
+`2022-09-23`
+
+### 💎 Enhancement
+
+- It is no longer possible to input content from the middle when optimizing the max limit ([#1672](https://github.com/arco-design/arco-design-vue/pull/1672))
+
+
+## 2.36.0
+
+`2022-09-02`
+
+### 💎 Enhancement
+
+- Modify password input box icon ([#1436](https://github.com/arco-design/arco-design-vue/pull/1436))
+
+
 ## 2.30.0
 
 `2022-06-10`

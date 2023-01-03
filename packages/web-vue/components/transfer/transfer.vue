@@ -8,9 +8,14 @@
       :data="dataInfo.sourceInfo.data"
       :selected="computedSelected"
       :show-search="showSearch"
+      :show-select-all="showSelectAll"
       :simple="simple"
       @search="handleSearch"
-    />
+    >
+      <template v-if="$slots.source" #default="slotData">
+        <slot name="source" v-bind="slotData" />
+      </template>
+    </transfer-view>
     <div v-if="!simple" :class="[`${prefixCls}-operations`]">
       <arco-button
         tabindex="-1"
@@ -47,9 +52,14 @@
       :selected="computedSelected"
       :allow-clear="oneWay"
       :show-search="showSearch"
+      :show-select-all="showSelectAll"
       :simple="simple"
       @search="handleSearch"
-    />
+    >
+      <template v-if="$slots.target" #default="slotData">
+        <slot name="target" v-bind="slotData" />
+      </template>
+    </transfer-view>
   </div>
 </template>
 
@@ -156,6 +166,15 @@ export default defineComponent({
       default: false,
     },
     /**
+     * @zh 是否展示全选勾选框
+     * @en Whether show select all checkbox on the header
+     * @version 2.39.0
+     */
+    showSelectAll: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * @zh 源选择框和目标选择框的标题
      * @en The title of the source and target selection boxes
      */
@@ -191,6 +210,26 @@ export default defineComponent({
    * @zh 选项
    * @en Option
    * @slot item
+   * @binding {string} value
+   * @binding {string} label
+   */
+  /**
+   * @zh 源面板
+   * @en Source content
+   * @slot source
+   * @binding {TransferItem[]} data
+   * @binding {string[]} selectedKeys
+   * @binding {(value: string[]) => void} onSelect
+   * @version 2.39.0
+   */
+  /**
+   * @zh 目标面板
+   * @en Target content
+   * @slot target
+   * @binding {TransferItem[]} data
+   * @binding {string[]} selectedKeys
+   * @binding {(value: string[]) => void} onSelect
+   * @version 2.39.0
    */
   setup(props, { emit, slots }) {
     const { mergedDisabled, eventHandlers } = useFormItem({

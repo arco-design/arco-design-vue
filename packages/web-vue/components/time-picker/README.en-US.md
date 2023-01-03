@@ -72,9 +72,11 @@ description: Select the time on the pop-up panel to conveniently complete the ti
 |popup-visible-change|Pop-up box expand and collapse|visible: `boolean`|
 ### `<time-picker>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|extra|Extra footer|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|prefix|Input box prefix|-|2.41.0|
+|suffix-icon|Input box suffix icon|-||
+|extra|Extra footer|-||
 
 
 

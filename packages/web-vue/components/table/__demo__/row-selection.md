@@ -33,7 +33,7 @@ import { reactive, ref } from 'vue';
 
 export default {
   setup() {
-    const selectedKeys = ref(['1', '2']);
+    const selectedKeys = ref(['Jane Doe', 'Alisa Ross']);
 
     const rowSelection = reactive({
       type: 'checkbox',

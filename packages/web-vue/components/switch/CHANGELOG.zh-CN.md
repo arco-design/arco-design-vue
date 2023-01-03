@@ -2,6 +2,34 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 问题修复
+
+- 修复switch组件type为line,size为small,checked状态圆点偏移不正确 ([#1975](https://github.com/arco-design/arco-design-vue/pull/1975))
+
+
+## 2.39.0
+
+`2022-11-18`
+
+### 🐛 问题修复
+
+- 修复状态改变前钩子的值 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+- 修复样式 token 问题 ([#1859](https://github.com/arco-design/arco-design-vue/pull/1859))
+
+
+## 2.37.0
+
+`2022-09-16`
+
+### 🆕 新增功能
+
+- 支持 `beforeChange` 切换事件拦截 ([#1626](https://github.com/arco-design/arco-design-vue/pull/1626))
+
+
 ## 2.17.0
 
 `2022-02-11`

@@ -11,6 +11,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import {
   isArray,
+  isEmptyObject,
   isFunction,
   isNull,
   isNumber,
@@ -21,26 +22,27 @@ import { getKeyFromValue, isGroupOptionInfo, isValidOption } from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
-import { Data, EmitType } from '../_utils/types';
+import { Data } from '../_utils/types';
 import SelectDropdown from './select-dropdown.vue';
 import Option from './option.vue';
 import OptGroup from './optgroup.vue';
 import {
-  SelectOptionData,
-  SelectOptionInfo,
-  SelectOptionGroupInfo,
   OptionValueWithKey,
   SelectFieldNames,
+  SelectOptionData,
   SelectOptionGroup,
+  SelectOptionGroupInfo,
+  SelectOptionInfo,
 } from './interface';
-import VirtualList from '../_components/virtual-list/virtual-list.vue';
-import { VirtualListProps } from '../_components/virtual-list/interface';
+import VirtualList from '../_components/virtual-list-v2';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { useSelect } from './hooks/use-select';
 import { TagData } from '../input-tag';
 import { useTrigger } from '../_hooks/use-trigger';
 import { useFormItem } from '../_hooks/use-form-item';
 import { debounce } from '../_utils/debounce';
 import { SelectViewValue } from '../_components/select-view/interface';
+import { ScrollbarProps } from '../scrollbar';
 
 const DEFAULT_FIELD_NAMES = {
   value: 'value',
@@ -246,8 +248,8 @@ export default defineComponent({
       default: () => [],
     },
     /**
-     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#virtuallistprops)
-     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#virtuallistprops)
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
      * @type VirtualListProps
      */
     virtualListProps: {
@@ -292,7 +294,7 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 用于确定选项键值得属性名
+     * @zh 用于确定选项键值的属性名
      * @en Used to determine the option key value attribute name
      * @version 2.18.0
      */
@@ -325,6 +327,15 @@ export default defineComponent({
      */
     fieldNames: {
       type: Object as PropType<SelectFieldNames>,
+    },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.38.0
+     */
+    scrollbar: {
+      type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
+      default: true,
     },
   },
   emits: {
@@ -533,6 +544,22 @@ export default defineComponent({
       ...fieldNames?.value,
     }));
 
+    // selected option
+    const _selectedOption = ref();
+    const getRawOptionFromValueKeys = (valueKeys: string[]) => {
+      const optionMap: Record<string, unknown> = {};
+
+      valueKeys.forEach((key) => {
+        optionMap[key] = optionInfoMap.get(key);
+      });
+
+      return optionMap;
+    };
+
+    const updateSelectedOption = (valueKeys: string[]) => {
+      _selectedOption.value = getRawOptionFromValueKeys(valueKeys);
+    };
+
     // extra value and option
     const getFallBackOption = (
       value: string | number | Record<string, unknown>
@@ -581,7 +608,17 @@ export default defineComponent({
 
     const extraValueObjects = ref<OptionValueWithKey[]>([]);
     const extraOptions = computed(() =>
-      extraValueObjects.value.map((obj) => getFallBackOption(obj.value))
+      extraValueObjects.value.map((obj) => {
+        let optionInfo = getFallBackOption(obj.value);
+        const extraOptionRawInfo = _selectedOption.value?.[obj.key];
+        if (
+          !isUndefined(extraOptionRawInfo) &&
+          !isEmptyObject(extraOptionRawInfo)
+        ) {
+          optionInfo = { ...optionInfo, ...extraOptionRawInfo };
+        }
+        return optionInfo;
+      })
     );
 
     nextTick(() => {
@@ -627,6 +664,7 @@ export default defineComponent({
       emit('update:modelValue', value);
       emit('change', value);
       eventHandlers.value?.onChange?.();
+      updateSelectedOption(valueKeys);
     };
 
     const updateInputValue = (inputValue: string) => {
@@ -769,7 +807,7 @@ export default defineComponent({
     const getOptionContentFunc = (optionInfo: SelectOptionInfo) => {
       if (isFunction(slots.option)) {
         const optionSlot = slots.option;
-        return () => optionSlot({ data: optionInfo });
+        return () => optionSlot({ data: optionInfo.raw });
       }
       if (isFunction(optionInfo.render)) {
         return optionInfo.render;
@@ -846,6 +884,7 @@ export default defineComponent({
           loading={props.loading}
           empty={validOptionInfos.value.length === 0}
           virtualList={Boolean(props.virtualListProps)}
+          scrollbar={props.scrollbar}
           onScroll={handleDropdownScroll}
           onReachBottom={handleDropdownReachBottom}
         />
@@ -853,7 +892,7 @@ export default defineComponent({
     };
 
     const renderLabel = ({ data }: { data: SelectViewValue }) => {
-      if (slots.label || isFunction(props.formatLabel)) {
+      if ((slots.label || isFunction(props.formatLabel)) && data) {
         const optionInfo = optionInfoMap.get(data.value as string);
         if (optionInfo?.raw) {
           return (
@@ -862,7 +901,7 @@ export default defineComponent({
           );
         }
       }
-      return data.label;
+      return data?.label ?? '';
     };
 
     return () => (

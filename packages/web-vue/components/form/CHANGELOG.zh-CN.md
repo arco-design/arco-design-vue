@@ -2,6 +2,34 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 新增功能
+
+- `form-item` 支持 tooltip 属性 ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+- `form-item` 支持 asteriskPosition 属性 ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+
+
+## 2.40.0
+
+`2022-12-09`
+
+### 🐛 问题修复
+
+- 修复 `Form` 组件的 `validate-status` 属性在 `date-picker` 组件不生效的 bug。 ([#1928](https://github.com/arco-design/arco-design-vue/pull/1928))
+
+
+## 2.38.0
+
+`2022-10-28`
+
+### 🐛 问题修复
+
+- 不修改规则原始对象数据 ([#1779](https://github.com/arco-design/arco-design-vue/pull/1779))
+
+
 ## 2.33.1
 
 `2022-07-22`

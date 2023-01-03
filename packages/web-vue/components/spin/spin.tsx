@@ -69,7 +69,7 @@ export default defineComponent({
       if (configCtx?.slots.loading) {
         return configCtx.slots.loading();
       }
-      return <IconLoading spin={true} />;
+      return <IconLoading spin={true} size={props.size} />;
     };
 
     const renderSpinIcon = () => {

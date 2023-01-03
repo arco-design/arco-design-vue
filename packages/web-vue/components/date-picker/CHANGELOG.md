@@ -2,6 +2,82 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 Feature
+
+- `date-picker` supports prefix slots ([#1997](https://github.com/arco-design/arco-design-vue/pull/1997))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- Fix the problem that the panel text display error under internationalization ([#1965](https://github.com/arco-design/arco-design-vue/pull/1965))
+
+
+## 2.40.0
+
+`2022-12-09`
+
+### 🐛 BugFix
+
+- Fix the bug that the `feedback` attribute of the `Form` component does not take effect in the `date-picker` component. ([#1932](https://github.com/arco-design/arco-design-vue/pull/1932))
+
+
+## 2.39.0
+
+`2022-11-18`
+
+### 🐛 BugFix
+
+- year range can't skip by 10 year ([#1847](https://github.com/arco-design/arco-design-vue/pull/1847))
+
+
+## 2.38.1
+
+`2022-11-04`
+
+### 🐛 BugFix
+
+- Fix internal property error issue ([#1818](https://github.com/arco-design/arco-design-vue/pull/1818))
+
+
+## 2.38.0-beta.2
+
+`2022-10-21`
+
+### 🐛 BugFix
+
+- Fix the problem of disabled style error under safari ([#1770](https://github.com/arco-design/arco-design-vue/pull/1770))
+
+
+## 2.35.2
+
+`2022-08-29`
+
+### 🐛 BugFix
+
+- Fixed the click selection event exception when selecting the year and month of the selection panel in some modes ([#1562](https://github.com/arco-design/arco-design-vue/pull/1562))
+
+### 💎 Enhancement
+
+- Optimized range selector also corrects order when selecting ([#1578](https://github.com/arco-design/arco-design-vue/pull/1578))
+
+
+## 2.35.0
+
+`2022-08-12`
+
+### 🆕 Feature
+
+- `DatePicker` add range picker header label click and normal picker month header label click ([#1421](https://github.com/arco-design/arco-design-vue/pull/1421))
+
+
 ## 2.33.0
 
 `2022-07-08`

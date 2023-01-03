@@ -1,5 +1,8 @@
 <template>
   <div :class="classNames">
+    <div v-if="$slots.prefix" :class="`${prefixCls}-prefix`">
+      <slot name="prefix" />
+    </div>
     <div :class="`${prefixCls}-input`">
       <input
         ref="refInput"
@@ -24,6 +27,7 @@
       <span :class="`${prefixCls}-suffix-icon`">
         <slot name="suffix-icon" />
       </span>
+      <FeedbackIcon v-if="feedback" :type="feedback" />
     </div>
   </div>
 </template>
@@ -37,12 +41,14 @@ import IconClose from '../../icon/icon-close';
 import IconHover from '../icon-hover.vue';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
+import FeedbackIcon from '../feedback-icon.vue';
 
 export default defineComponent({
   name: 'DateInput',
   components: {
     IconHover,
     IconClose,
+    FeedbackIcon,
   },
   props: {
     size: {
@@ -78,13 +84,14 @@ export default defineComponent({
     },
   },
   emits: ['clear', 'press-enter', 'change'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const { error, focused, disabled, size, value, format, inputValue } =
       toRefs(props);
     const {
       mergedSize: _mergedSize,
       mergedDisabled,
       mergedError,
+      feedback,
     } = useFormItem({ size, disabled, error });
     const { mergedSize } = useSize(_mergedSize);
 
@@ -97,6 +104,7 @@ export default defineComponent({
         [`${prefixCls}-focused`]: focused.value,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-error`]: mergedError.value,
+        [`${prefixCls}-has-prefix`]: slots.prefix,
       },
     ]);
     const displayValue = computed(() => {
@@ -112,6 +120,7 @@ export default defineComponent({
     const refInput = ref<HTMLInputElement>();
 
     return {
+      feedback,
       prefixCls,
       classNames,
       displayValue,

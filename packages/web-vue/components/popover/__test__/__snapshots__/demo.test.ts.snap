@@ -50,11 +50,13 @@ exports[`<popover> demo: render [position] correctly 1`] = `
 
 exports[`<popover> demo: render [trigger] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Hover Me
     </button>
     <!---->
   </div>
+  <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Click Me
     </button>

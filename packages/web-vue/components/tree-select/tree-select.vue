@@ -60,6 +60,7 @@
           v-else
           :selected-keys="selectedKeys"
           :show-checkable="treeCheckable"
+          :scrollbar="scrollbar"
           :tree-props="{
             actionOnNodeClick: selectable === 'leaf' ? 'expand' : undefined,
             blockNode: true,
@@ -93,11 +94,10 @@ import {
   ref,
   toRefs,
   StyleValue,
-  watch,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue } from './interface';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
@@ -123,6 +123,7 @@ import {
 } from '../tree/utils/check-utils';
 import { isNodeSelectable } from '../tree/utils';
 import { Data } from '../_utils/types';
+import { ScrollbarProps } from '../scrollbar';
 
 export default defineComponent({
   name: 'TreeSelect',
@@ -286,7 +287,7 @@ export default defineComponent({
      * @en Can accept Props of all [Trigger](/vue/component/trigger) components
      * */
     triggerProps: {
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<Partial<TriggerProps>>,
     },
     /**
      * @zh 弹出框是否可见
@@ -346,9 +347,7 @@ export default defineComponent({
      * @en Mount container for pop-up box
      */
     popupContainer: {
-      type: [String, Object] as PropType<
-        string | HTMLElement | null | undefined
-      >,
+      type: [String, Object] as PropType<string | HTMLElement | undefined>,
     },
     /**
      * @zh 为 value 中找不到匹配项的 key 定义节点数据
@@ -375,6 +374,15 @@ export default defineComponent({
             info: { isLeaf: boolean; level: number }
           ) => boolean)
       >,
+      default: true,
+    },
+    /**
+     * @zh 是否开启虚拟滚动条
+     * @en Whether to enable virtual scroll bar
+     * @version 2.39.0
+     */
+    scrollbar: {
+      type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
       default: true,
     },
   },
@@ -446,6 +454,29 @@ export default defineComponent({
    * @zh 定制空数据展示
    * @en Custom empty data display
    * @slot empty
+   */
+  /**
+   * @zh 定制 tree 组件的 switcher 图标
+   * @en Custom switcher icon for the tree component
+   * @slot tree-slot-switcher-icon
+   */
+  /**
+   * @zh 定制 tree 组件的节点图标
+   * @en Custom node icon for the tree component
+   * @slot tree-slot-icon
+   * @binding {TreeNodeData} node
+   * @version 2.18.0
+   */
+
+  /**
+   * @zh 定制 tree 组件的节点标题
+   * @en Custom the node title of the tree component
+   * @slot tree-slot-title
+   */
+  /**
+   * @zh 定制 tree 组件的渲染额外节点内容
+   * @en Render additional node content of the tree component
+   * @slot tree-slot-extra
    */
   setup(props, { emit }) {
     const {

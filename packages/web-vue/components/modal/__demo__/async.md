@@ -24,7 +24,7 @@ Asynchronous shutdown can be implemented more concisely through on-before-ok
     <template #title>
       Title
     </template>
-    <div>You can cusstomize modal body text by the current situation. This modal will be closed immediately once you
+    <div>You can customize modal body text by the current situation. This modal will be closed immediately once you
       press the OK button.
     </div>
   </a-modal>
@@ -40,12 +40,11 @@ export default {
     const handleClick = () => {
       visible.value = true;
     };
-    const handleBeforeOk = (done) => {
-      window.setTimeout(() => {
-        done()
-        // prevent close
-        // done(false)
-      }, 3000)
+    const handleBeforeOk = async () => {
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      return true;
+      // prevent close
+      // return false;
     };
     const handleCancel = () => {
       visible.value = false;

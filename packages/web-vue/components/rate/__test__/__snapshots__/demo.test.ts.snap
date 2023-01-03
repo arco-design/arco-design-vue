@@ -137,6 +137,7 @@ exports[`<rate> demo: render [clear] correctly 1`] = `
 
 exports[`<rate> demo: render [color] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
     <div class=\\"arco-rate\\">
       <div class=\\"arco-rate-character\\" role=\\"radio\\" aria-checked=\\"false\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">
@@ -181,6 +182,7 @@ exports[`<rate> demo: render [color] correctly 1`] = `
       </div>
     </div>
   </div>
+  <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-rate\\">
       <div class=\\"arco-rate-character\\" role=\\"radio\\" aria-checked=\\"false\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">

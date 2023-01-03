@@ -1,3 +1,4 @@
+@import '../../../input/style/input.less';
 @import './token.less';
 
 .@{prefix}-picker {
@@ -5,7 +6,7 @@
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
-  padding: 4px 11px 4px 4px;
+  padding: @picker-padding-horizontal 11px 4px 4px;
   line-height: @line-height-base;
   background-color: @picker-color-bg;
   border: 1px solid @picker-color-border;
@@ -32,13 +33,33 @@
     &::placeholder {
       color: @picker-color-placeholder;
     }
+
+    // fix color error under disabled status in safari
+    &[disabled] {
+      -webkit-text-fill-color: @input-color-text_disabled;
+    }
+  }
+
+  &-has-prefix {
+    padding-left: @input-padding-horizontal;
+  }
+
+  &-prefix {
+    padding-right: @picker-padding-horizontal;
+    color: @input-color-prefix-text;
+    font-size: @input-size-default-icon-suffix-size;
   }
 
   &-suffix {
-    width: 14px;
+    display: inline-flex;
+    align-items: center;
     margin-left: 4px;
-    text-align: right;
-    text-align: center;
+
+    .input-suffix-feedback-icon-color();
+
+    .@{prefix}-feedback-icon {
+      margin-left: 4px;
+    }
   }
 
   &-suffix-icon {

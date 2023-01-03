@@ -1,0 +1,66 @@
+@hi-prefixCls: ~'@{prefix}-search-history';
+
+.@{hi-prefixCls} {
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-list {
+    padding: 0;
+    margin: 12px 0 32px 0;
+    max-height: 170px;
+    overflow-y: auto;
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    margin-bottom: 2px;
+    color: var(--color-text-1);
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-fill-1);
+
+      .@{prefixCls}-title {
+        color: rgb(var(--primary-6));
+      }
+    }
+
+    .arco-icon-history,
+    .arco-react-icon-history {
+      font-size: 16px;
+      margin-right: 8px;
+    }
+  }
+
+  &-close {
+    position: absolute !important;
+    right: 10px;
+    top: 14px;
+  }
+}
+
+html.rtl {
+  .@{prefixCls}-close {
+    position: absolute !important;
+    right: initial;
+    left: 10px;
+    top: 14px;
+  }
+
+  .@{prefixCls}-item {
+    .arco-icon-history,
+    .arco-react-icon-history {
+      font-size: 16px;
+      margin-right: 0;
+      margin-left: 8px;
+    }
+  }
+}

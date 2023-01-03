@@ -38,29 +38,31 @@ Message._context = app._context;
 
 ### MessageMethod
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|info|显示信息提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|success|显示成功提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|warning|显示警告提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|error|显示错误提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|loading|显示加载中提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|clear|清空全部提示|`(position?: MessagePosition) => void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|info|显示信息提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|success|显示成功提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|warning|显示警告提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|error|显示错误提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|loading|显示加载中提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|normal|显示提示|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|2.41.0|
+|clear|清空全部提示|`(position?: MessagePosition) => void`|`-`||
 
 
 
 ### MessageConfig
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|content|内容|`RenderContent`|`-`|
-|id|唯一id|`string`|`-`|
-|icon|消息的图标|`RenderFunction`|`-`|
-|position|消息的位置|`'top'\|'bottom'`|`-`|
-|showIcon|是否显示图标|`boolean`|`false`|
-|closable|是否显示关闭按钮|`boolean`|`false`|
-|duration|消息显示的持续时间|`number`|`-`|
-|onClose|关闭时的回调函数|`(id: number \| string) => void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|content|内容|`RenderContent`|`-`||
+|id|唯一id|`string`|`-`||
+|icon|消息的图标|`RenderFunction`|`-`||
+|position|消息的位置|`'top'\|'bottom'`|`-`||
+|showIcon|是否显示图标|`boolean`|`false`||
+|closable|是否显示关闭按钮|`boolean`|`false`||
+|duration|消息显示的持续时间|`number`|`-`||
+|onClose|关闭时的回调函数|`(id: number \| string) => void`|`-`||
+|resetOnHover|设置鼠标移入后不会自动关闭|`boolean`|`false`|2.39.0|
 
 
 

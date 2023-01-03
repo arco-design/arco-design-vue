@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.39.0
+
+`2022-11-18`
+
+
+## 2.38.0-beta.1
+
+`2022-10-14`
+
+### 🆕 Feature
+
+- The `layout-fixed` of the table style in the description. The width will be evenly distributed when it's set to `fixed`. ([#1670](https://github.com/arco-design/arco-design-vue/pull/1670))
+
+
 ## 2.20.0
 
 `2022-03-18`

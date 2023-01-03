@@ -22,6 +22,8 @@ description: Organize content in the same view. You can view the content of one 
 
 @import ./__demo__/editable.md
 
+@import ./__demo__/trigger.md
+
 ## API
 
 
@@ -44,14 +46,15 @@ description: Organize content in the same view. You can view the content of one 
 |header-padding|Whether there is a horizontal margin on the header of the tab. Only valid for tabs with `type` equal to `line` and `text` type|`boolean`|`true`|2.10.0|
 |auto-switch|Whether to switch to a new tab after creating a tab (the last one)|`boolean`|`false`|2.18.0|
 |hide-content|Whether to hide content|`boolean`|`false`|2.25.0|
+|trigger|Trigger method|`'hover' \| 'click'`|`'click'`|2.34.0|
 ### `<tabs>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Triggered when the current tag value changes|key: `union`|
-|tab-click|Triggered when the user clicks on the tab|key: `union`|
+|change|Triggered when the current tag value changes|key: ` string \| number `|
+|tab-click|Triggered when the user clicks on the tab|key: ` string \| number `|
 |add|Triggered when the user clicks the add button|-|
-|delete|Triggered when the user clicks the delete button|key: `union`|
+|delete|Triggered when the user clicks the delete button|key: ` string \| number `|
 ### `<tabs>` Slots
 
 |Slot Name|Description|Parameters|

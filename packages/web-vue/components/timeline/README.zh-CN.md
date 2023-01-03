@@ -34,7 +34,7 @@ description: 按照时间顺序或倒序规则的展示信息内容。
 |reverse|是否倒序|`boolean`|`false`|
 |direction|时间轴方向|`'horizontal' \| 'vertical'`|`'vertical'`|
 |mode|时间轴的展示类型：时间轴在左侧，时间轴在右侧, 交替出现。|`'left' \| 'right' \| 'top' \| 'bottom' \| 'alternate'`|`'left'`|
-|pending|是否展示幽灵节点，设置为 true 时候只展示幽灵节点。传入ReactNode时，会作为节点内容展示。|`boolean`|`false`|
+|pending|是否展示幽灵节点，设置为 true 时候只展示幽灵节点。传入ReactNode时，会作为节点内容展示。|`boolean\|string`|`-`|
 |label-position|设置标签文本的位置|`'relative' \| 'same'`|`'same'`|
 ### `<timeline>` Slots
 

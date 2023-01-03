@@ -2,87 +2,373 @@
 
 exports[`<breadcrumb> demo: render [basic] correctly 1`] = `
 "<div role=\\"list\\" class=\\"arco-breadcrumb\\">
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home</div>
+  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+    <!---->
+  </div>
   <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
       <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
     </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel</div>
+  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+    <!---->
+  </div>
   <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
       <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
     </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
+  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+    <!---->
+  </div>
   <!---->
+</div>"
+`;
+
+exports[`<breadcrumb> demo: render [dropdown] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><a href=\\"#/\\">Home</a>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item arco-breadcrumb-item-with-dropdown\\"><a href=\\"#/channel\\">Channel</a><span aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-dropdown-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+      <!---->
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><span>News</span>
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item arco-breadcrumb-item-with-dropdown\\"> Channel <span aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-dropdown-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+      <!---->
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item arco-breadcrumb-item-with-dropdown\\"> Channel <span aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-dropdown-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span></div>
+      <!---->
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
 </div>"
 `;
 
 exports[`<breadcrumb> demo: render [ellipsis] correctly 1`] = `
-"<div role=\\"list\\" class=\\"arco-breadcrumb\\">
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home</div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\" aria-label=\\"ellipses of breadcrumb items\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-more\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
-      <path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\"></path>
-    </svg></div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-    </svg></div>
+"<div class=\\"arco-space arco-space-vertical\\">
   <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\" aria-label=\\"ellipses of breadcrumb items\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-more\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          <path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\"></path>
+        </svg>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <!---->
+      <!---->
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Post
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
   <!---->
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Post</div>
-  <!---->
+  <div class=\\"arco-space-item\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\" aria-label=\\"ellipses of breadcrumb items\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-more\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path>
+          <path d=\\"M38 25v-2h2v2h-2ZM23 25v-2h2v2h-2ZM8 25v-2h2v2H8Z\\"></path>
+        </svg>
+        <!---->
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <!---->
+      <!---->
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Post
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
 </div>"
 `;
 
 exports[`<breadcrumb> demo: render [icon] correctly 1`] = `
-"<div role=\\"list\\" class=\\"arco-breadcrumb\\">
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-home\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M7 17 24 7l17 10v24H7V17Z\\"></path>
-      <path d=\\"M20 28h8v13h-8V28Z\\"></path>
-    </svg></div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel</div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
+"<div class=\\"arco-space arco-space-vertical\\">
   <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-home\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M7 17 24 7l17 10v24H7V17Z\\"></path>
+          <path d=\\"M20 28h8v13h-8V28Z\\"></path>
+        </svg>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-home\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M7 17 24 7l17 10v24H7V17Z\\"></path>
+          <path d=\\"M20 28h8v13h-8V28Z\\"></path>
+        </svg>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-at\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M31 23a7 7 0 1 1-14 0 7 7 0 0 1 14 0Zm0 0c0 3.038 2.462 6.5 5.5 6.5A5.5 5.5 0 0 0 42 24c0-9.941-8.059-18-18-18S6 14.059 6 24s8.059 18 18 18c4.244 0 8.145-1.469 11.222-3.925\\"></path>
+        </svg> Channel
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<breadcrumb> demo: render [routes] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><a href=\\"#/\\">Home</a>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><a href=\\"#/channel\\">Channel</a>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><span>News</span>
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><a href=\\"\\" class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->Home
+        </a>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><a href=\\"/channel\\" class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->Channel
+        </a>
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\"><a href=\\"/channel/news\\" class=\\"arco-link arco-link-status-normal\\">
+          <!--v-if-->News
+        </a>
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
 </div>"
 `;
 
 exports[`<breadcrumb> demo: render [separator] correctly 1`] = `
-"<div role=\\"list\\" class=\\"arco-breadcrumb\\">
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home</div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel</div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
+"<div class=\\"arco-space arco-space-vertical\\">
   <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\">~</div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\">~</div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\">-&gt;</div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
 </div>"
 `;
 
 exports[`<breadcrumb> demo: render [size] correctly 1`] = `
-"<div role=\\"list\\" class=\\"arco-breadcrumb\\" style=\\"font-size: 12px;\\">
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home</div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel</div>
-  <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
-    </svg></div>
-  <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News</div>
+"<div class=\\"arco-space arco-space-vertical\\">
   <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div role=\\"list\\" class=\\"arco-breadcrumb\\" style=\\"font-size: 12px;\\">
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Home
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">Channel
+        <!---->
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"arco-breadcrumb-item-separator\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-oblique-line\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+          <path d=\\"M29.506 6.502 18.493 41.498\\"></path>
+        </svg></div>
+      <div role=\\"listitem\\" class=\\"arco-breadcrumb-item\\">News
+        <!---->
+      </div>
+      <!---->
+    </div>
+  </div>
 </div>"
 `;

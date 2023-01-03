@@ -16,6 +16,8 @@ description: When warning information is displayed to the user, the warning prom
 
 @import ./__demo__/closable.md
 
+@import ./__demo__/close-element.md
+
 @import ./__demo__/icon.md
 
 @import ./__demo__/action.md
@@ -29,7 +31,7 @@ description: When warning information is displayed to the user, the warning prom
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|type|Type of the alert|`info \| success \| warning \| error`|`'info'`|
+|type|Type of the alert. 2.41.0 Added `normal` type|`info \| success \| warning \| error \| normal`|`'info'`|
 |show-icon|Whether to show the icon|`boolean`|`true`|
 |closable|Whether to show the close button|`boolean`|`false`|
 |title|The title of the alert|`string`|`-`|
@@ -42,9 +44,11 @@ description: When warning information is displayed to the user, the warning prom
 |after-close|Triggered after the close animation ends|-|
 ### `<alert>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|icon|Icon|-|
-|title|Title|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|icon|Icon|-||
+|title|Title|-||
+|action|Actions|-||
+|close-element|Close element|-|2.36.0|
 
 

@@ -168,9 +168,13 @@ export default defineComponent({
 
     const propImageUrlMap = computed(
       () =>
-        isArray(srcList?.value) &&
         new Map(
-          srcList?.value.map((url, index) => [index, { url, canPreview: true }])
+          isArray(srcList?.value)
+            ? srcList?.value.map((url, index) => [
+                index,
+                { url, canPreview: true },
+              ])
+            : []
         )
     );
 
@@ -181,14 +185,14 @@ export default defineComponent({
     const imageCount = computed(() => imageIdList.value.length);
 
     function registerImageUrl(id: number, url: string, canPreview: boolean) {
-      if (!propImageUrlMap.value) {
+      if (!propImageUrlMap.value.has(id))
         imageUrlMap.value.set(id, {
           url,
           canPreview,
         });
-      }
+
       return function unRegisterPreviewUrl() {
-        if (!propImageUrlMap.value) {
+        if (!propImageUrlMap.value.has(id)) {
           imageUrlMap.value.delete(id);
         }
       };

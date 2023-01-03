@@ -34,6 +34,9 @@
         @change="onInputChange"
         @pressEnter="onInputPressEnter"
       >
+        <template v-if="$slots.prefix" #prefix>
+          <slot name="prefix" />
+        </template>
         <template #suffix-icon>
           <slot name="suffix-icon">
             <IconCalendar />
@@ -388,6 +391,12 @@ export default defineComponent({
     'update:pickerValue': (value: CalendarValue) => true,
   },
   /**
+   * @zh 输入框前缀
+   * @en Input box prefix
+   * @slot prefix
+   * @version 2.41.0
+   */
+  /**
    * @zh 输入框后缀图标
    * @en Input box suffix icon
    * @slot suffix-icon
@@ -551,7 +560,7 @@ export default defineComponent({
     };
 
     // 生成当前面板内容
-    const [headerValue, setHeaderValue, headerOperations, resetHeaderValue] =
+    const { headerValue, setHeaderValue, headerOperations, resetHeaderValue } =
       useHeaderValue(
         reactive({
           mode,
@@ -747,6 +756,10 @@ export default defineComponent({
       headerMode.value = type;
     }
 
+    function onMonthHeaderClick() {
+      headerMode.value = 'year';
+    }
+
     function onPanelHeaderSelect(date: Dayjs) {
       let newValue = headerValue.value;
       newValue = newValue.set('year', date.year());
@@ -754,7 +767,12 @@ export default defineComponent({
         newValue = newValue.set('month', date.month());
       }
       setHeaderValue(newValue);
-      headerMode.value = undefined;
+      if (mode.value === 'quarter' || mode.value === 'month') {
+        // 季度选择器特殊处理，月份选完后关闭headerMode
+        headerMode.value = undefined;
+        return;
+      }
+      headerMode.value = headerMode.value === 'year' ? 'month' : undefined; // 年选择完后选择月
     }
 
     const computedTimePickerProps = computed(() => ({
@@ -807,6 +825,7 @@ export default defineComponent({
       onTodayBtnClick: onPanelSelect,
       onHeaderLabelClick: onPanelHeaderLabelClick,
       onHeaderSelect: onPanelHeaderSelect,
+      onMonthHeaderClick,
     }));
 
     return {

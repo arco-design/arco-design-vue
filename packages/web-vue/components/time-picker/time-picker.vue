@@ -33,6 +33,9 @@
       :placeholder="computedPlaceholder"
       @clear="onInputClear"
     >
+      <template v-if="$slots.prefix" #prefix>
+        <slot name="prefix"> </slot>
+      </template>
       <template #suffix-icon>
         <slot name="suffix-icon">
           <IconClockCircle />
@@ -70,7 +73,6 @@
 import {
   computed,
   defineComponent,
-  inject,
   nextTick,
   PropType,
   reactive,
@@ -105,7 +107,6 @@ import RangePanel from './range-panel';
 import useIsDisabledTime from './hooks/use-is-disabled-time';
 import useMergeState from '../_hooks/use-merge-state';
 import { useI18n } from '../locale';
-import { configProviderInjectionKey } from '../config-provider/context';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 
@@ -199,8 +200,6 @@ export default defineComponent({
      * */
     size: {
       type: String as PropType<Size>,
-      default: () =>
-        inject(configProviderInjectionKey, undefined)?.size ?? 'medium',
     },
     /**
      * @zh 弹出框的挂载容器
@@ -342,11 +341,22 @@ export default defineComponent({
     'update:popupVisible': (visible: boolean) => true,
   },
   /**
+   * @zh 输入框前缀
+   * @en Input box prefix
+   * @slot prefix
+   * @version 2.41.0
+   */
+  /**
+   * @zh 输入框后缀图标
+   * @en Input box suffix icon
+   * @slot suffix-icon
+   */
+  /**
    * @zh 额外的页脚
    * @en Extra footer
    * @slot extra
    */
-  setup(props: TimePickerProps, { emit }) {
+  setup(props, { emit }) {
     const {
       type,
       format,

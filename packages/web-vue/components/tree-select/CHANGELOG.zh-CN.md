@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.39.1
+
+`2022-11-25`
+
+### 🆎 类型修正
+
+- 更新trigger-props的类型 ([#1885](https://github.com/arco-design/arco-design-vue/pull/1885))
+
+
+## 2.39.0
+
+`2022-11-18`
+
+### 🆕 新增功能
+
+- 替换虚拟滚动条组件，增加 scrollbar 属性 ([#1872](https://github.com/arco-design/arco-design-vue/pull/1872))
+
+
 ## 2.32.1
 
 `2022-07-01`

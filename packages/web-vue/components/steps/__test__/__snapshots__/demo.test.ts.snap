@@ -119,11 +119,13 @@ exports[`<steps> demo: render [changeable] correctly 1`] = `
   <div style=\\"width: 100%; height: 200px; text-align: center; color: rgb(194, 199, 204);\\">
     <div style=\\"line-height: 160px;\\">Step1 Content</div>
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
           <!--v-if--><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
           </svg> Back
         </button></div>
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if--> Next <svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
@@ -170,11 +172,13 @@ exports[`<steps> demo: render [custom-node] correctly 1`] = `
   </div>
   <div style=\\"margin-top: 20px; text-align: center;\\">
     <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
       <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
           <!--v-if--><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
           </svg> Back
         </button></div>
+      <!---->
       <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
           <!--v-if--> Next <svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>

@@ -135,6 +135,11 @@ export default defineComponent({
     'clear': (ev: Event) => true,
   },
   /**
+   * @zh 弹出框的页脚
+   * @en The footer of the popup menu box
+   * @slot footer
+   */
+  /**
    * @zh 选项内容
    * @en Display content of options
    * @slot option
@@ -264,7 +269,13 @@ export default defineComponent({
 
     const renderDropdown = () => {
       return (
-        <SelectDropdown ref={dropdownRef} class={`${prefixCls}-dropdown`}>
+        <SelectDropdown
+          ref={dropdownRef}
+          class={`${prefixCls}-dropdown`}
+          v-slots={{
+            footer: slots.footer,
+          }}
+        >
           {validOptions.value.map((info) =>
             renderOption(info as SelectOptionInfo)
           )}
@@ -272,7 +283,7 @@ export default defineComponent({
       );
     };
 
-    return () => (
+    const render = () => (
       <Trigger
         v-slots={{ content: renderDropdown }}
         trigger="focus"
@@ -302,5 +313,33 @@ export default defineComponent({
         />
       </Trigger>
     );
+
+    return {
+      inputRef,
+      render,
+    };
+  },
+  methods: {
+    /**
+     * @zh 使输入框获取焦点
+     * @en Make the input box focus
+     * @public
+     * @version 2.40.0
+     */
+    focus() {
+      (this.inputRef as HTMLInputElement)?.focus();
+    },
+    /**
+     * @zh 使输入框失去焦点
+     * @en Make the input box lose focus
+     * @public
+     * @version 2.40.0
+     */
+    blur() {
+      (this.inputRef as HTMLInputElement)?.blur();
+    },
+  },
+  render() {
+    return this.render();
   },
 });

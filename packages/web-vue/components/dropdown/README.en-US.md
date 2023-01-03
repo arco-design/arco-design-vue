@@ -37,13 +37,13 @@ description: When there are too many commands on the page, the alternative comma
 |default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`|
 |trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`|
 |position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`|
-|popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
+|popup-container|Mount container for popup|`string \| HTMLElement`|`-`|
 ### `<dropdown>` Events
 
 |Event Name|Description|Parameters|
 |---|---|---|
 |popup-visible-change|Triggered when the display status of the drop-down box changes|visible: `boolean`|
-|select|Triggered when the user selects|value: `union`<br>ev: `Event`|
+|select|Triggered when the user selects|value: `string \| number \| Record<string, any> \| undefined `<br>ev: `Event`|
 ### `<dropdown>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -60,6 +60,11 @@ description: When there are too many commands on the page, the alternative comma
 |---|---|---|:---:|
 |value|Value|`string\|number\|object`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
+### `<doption>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|click|Emitted when the button is clicked|ev: `MouseEvent`|
 ### `<doption>` Slots
 
 |Slot Name|Description|Parameters|
@@ -134,7 +139,7 @@ description: When there are too many commands on the page, the alternative comma
 
 |Slot Name|Description|Parameters|
 |---|---|---|
-|icon|Button icon|-|
+|icon|Button icon|popupVisible: `boolean`|
 |content|Content|-|
 
 

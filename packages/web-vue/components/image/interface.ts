@@ -6,6 +6,7 @@ export interface ImageProps {
   height?: string | number;
   title?: string;
   description?: string;
+  fit?: '' | 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
   alt?: string;
   hideFooter: boolean;
   footerPosition: 'inner' | 'outer';

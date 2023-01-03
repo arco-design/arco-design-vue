@@ -1,6 +1,7 @@
 @import '../../style/mixins/index.less';
 @import '../../input/style/token.less';
 @import '../../input/style/input.less';
+@import '../../tag/style/index.less';
 @import './token.less';
 
 .input-tag-style(@cls) {
@@ -37,6 +38,12 @@
 
       .@{prefix}-icon-hover:hover::before {
         background-color: @input-tag-tag-remove-icon-color-bg;
+      }
+
+      &.@{prefix}-tag-custom-color {
+        color: @tag-custom-color-text;
+
+        .icon-hover-bg(@tag-prefix-cls, @tag-custom-color-icon-bg_hover);
       }
     }
 

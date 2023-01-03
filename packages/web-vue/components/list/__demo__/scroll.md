@@ -12,14 +12,18 @@ title:
 
 ## en-US
 
-Limit the maximum height of the list by setting the `max-height` property. Through the `reach-bottom` event, you can listen to the event of the bottom of the list.
+Limit the maximum height of the list by setting the `max-height` property. Through the `reach-bottom` event, you can
+listen to the event of the bottom of the list.
 
 ---
 
 ```vue
-
 <template>
-  <a-list :max-height="200" @reach-bottom="fetchData">
+  <div style="margin-bottom: 10px">
+    <a-switch v-model="scrollbar" />
+    Virtual Scrollbar
+  </div>
+  <a-list :max-height="240" @reach-bottom="fetchData" :scrollbar="scrollbar">
     <template #header>
       List title
     </template>
@@ -39,6 +43,7 @@ export default {
     const current = ref(1);
     const bottom = ref(false);
     const data = reactive([]);
+    const scrollbar = ref(true);
 
     const fetchData = () => {
       console.log('reach bottom!');
@@ -63,7 +68,8 @@ export default {
       current,
       bottom,
       data,
-      fetchData
+      fetchData,
+      scrollbar
     }
   },
 }

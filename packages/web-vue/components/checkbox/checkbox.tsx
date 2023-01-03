@@ -11,7 +11,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconCheck from './icon-check';
-import { isArray } from '../_utils/is';
+import { isArray, isNull, isUndefined } from '../_utils/is';
 import { checkboxGroupKey } from './context';
 import { useFormItem } from '../_hooks/use-form-item';
 
@@ -76,7 +76,7 @@ export default defineComponent({
     /**
      * @zh 值改变时触发
      * @en Trigger when the value changes
-     * @param {boolean|(string|number|boolean)[]} value
+     * @param { boolean | (string | number | boolean)[] } value
      * @param {Event} ev
      */
     'change': (value: boolean | (string | number | boolean)[], ev: Event) =>
@@ -91,7 +91,7 @@ export default defineComponent({
    * @version 2.18.0
    */
   setup(props, { emit, slots }) {
-    const { disabled } = toRefs(props);
+    const { disabled, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('checkbox');
     const checkboxRef = ref<HTMLInputElement>();
     const checkboxGroupCtx = !props.uninjectGroupContext
@@ -101,10 +101,6 @@ export default defineComponent({
     const { mergedDisabled: _mergedDisabled, eventHandlers } = useFormItem({
       disabled,
     });
-
-    const mergedDisabled = computed(
-      () => checkboxGroupCtx?.disabled || _mergedDisabled?.value
-    );
 
     const _checked = ref(props.defaultChecked);
     const computedValue = computed(() =>
@@ -117,6 +113,12 @@ export default defineComponent({
         ? computedValue.value.includes(props.value ?? true)
         : computedValue.value;
     });
+    const mergedDisabled = computed(
+      () =>
+        checkboxGroupCtx?.disabled ||
+        _mergedDisabled?.value ||
+        (!computedChecked.value && checkboxGroupCtx?.isMaxed)
+    );
 
     const handleClick = (ev: Event) => {
       ev.stopPropagation();
@@ -183,6 +185,12 @@ export default defineComponent({
       eventHandlers.value?.onBlur?.(ev);
     };
 
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _checked.value = false;
+      }
+    });
+
     watch(computedValue, (value) => {
       let checked;
       if (isArray(value)) {
@@ -212,25 +220,21 @@ export default defineComponent({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        {slots.checkbox?.({
+        {(slots.checkbox ?? checkboxGroupCtx?.slots?.checkbox)?.({
           checked: computedChecked.value,
           disabled: mergedDisabled.value,
-        }) ??
-          checkboxGroupCtx?.slots.checkbox?.({
-            checked: computedChecked.value,
-            disabled: mergedDisabled.value,
-          }) ?? (
-            <IconHover
-              class={`${prefixCls}-icon-hover`}
-              disabled={mergedDisabled.value || computedChecked.value}
-            >
-              <div class={`${prefixCls}-icon`}>
-                {computedChecked.value && (
-                  <IconCheck class={`${prefixCls}-icon-check`} />
-                )}
-              </div>
-            </IconHover>
-          )}
+        }) ?? (
+          <IconHover
+            class={`${prefixCls}-icon-hover`}
+            disabled={mergedDisabled.value || computedChecked.value}
+          >
+            <div class={`${prefixCls}-icon`}>
+              {computedChecked.value && (
+                <IconCheck class={`${prefixCls}-icon-check`} />
+              )}
+            </div>
+          </IconHover>
+        )}
         {slots.default && (
           <span class={`${prefixCls}-label`}>{slots.default()}</span>
         )}

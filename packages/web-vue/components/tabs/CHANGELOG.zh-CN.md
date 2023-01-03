@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 💅 样式更新
+
+- 修复 `rounded` 和 `capsule` 类型下 `size` 不生效的问题 ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
+## 2.37.4
+
+`2022-09-30`
+
+### 💅 样式更新
+
+- 修复 `card` 类型下标签内容没有居中的问题 ([#1704](https://github.com/arco-design/arco-design-vue/pull/1704))
+
+
+## 2.34.0
+
+`2022-07-29`
+
+### 🆕 新增功能
+
+- 增加 trigger 属性，支持更改切换方式 ([#1456](https://github.com/arco-design/arco-design-vue/pull/1456))
+
+
 ## 2.33.0
 
 `2022-07-08`
