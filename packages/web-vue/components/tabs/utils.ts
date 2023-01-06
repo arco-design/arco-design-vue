@@ -24,9 +24,6 @@ export const getTabListStyle = ({
   if (direction === 'vertical') {
     return { transform: `translateY(${-offset}px)` };
   }
-  if (type === 'capsule') {
-    return { transform: `translateX(${offset}px)` };
-  }
 
   return { transform: `translateX(${-offset}px)` };
 };
