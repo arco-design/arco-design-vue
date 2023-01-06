@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🐛 BugFix
+
+- **tabs:** Fix the problem of scrolling exception under `capsule` type ([#2031](https://github.com/arco-design/arco-design-vue/pull/2031))
+- **table:** Fix the problem that the width error may appear after the browser is zoomed when `scroll` is turned on ([#2028](https://github.com/arco-design/arco-design-vue/pull/2028))
+- Fix the problem that ts cannot recognize custom properties ([#2027](https://github.com/arco-design/arco-design-vue/pull/2027))
+
+### 💎 Enhancement
+
+- **icon:** Optimize the `click` event of the component, and perform encapsulation and transparent transmission in the component ([#2030](https://github.com/arco-design/arco-design-vue/pull/2030))
+
+### 🆎 TypeScript
+
+- **checkbox:** Fix missing type for `value` values ([#2029](https://github.com/arco-design/arco-design-vue/pull/2029))
+
+
 ## 2.41.0
 
 `2022-12-30`

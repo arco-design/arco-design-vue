@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🐛 问题修复
+
+- **tabs:** 修复在 `capsule` 类型下滚动异常的问题 ([#2031](https://github.com/arco-design/arco-design-vue/pull/2031))
+- **table:** 修复开启 `scroll` 时浏览器缩放后可能出现宽度错误的问题 ([#2028](https://github.com/arco-design/arco-design-vue/pull/2028))
+- 修复 ts 不能识别自定义属性的问题 ([#2027](https://github.com/arco-design/arco-design-vue/pull/2027))
+
+### 💎 功能优化
+
+- **icon:** 优化组件 `click` 事件，在组件中进行封装透传 ([#2030](https://github.com/arco-design/arco-design-vue/pull/2030))
+
+### 🆎 类型修正
+
+- **checkbox:** 修复 `value` 值缺少类型的问题 ([#2029](https://github.com/arco-design/arco-design-vue/pull/2029))
+
+
 ## 2.41.0
 
 `2022-12-30`

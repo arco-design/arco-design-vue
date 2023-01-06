@@ -14,7 +14,7 @@ export const getIconVue = ({
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, CSSProperties } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 import { isNumber } from '../../_utils/is';
 
@@ -48,7 +48,7 @@ export default defineComponent({
   emits: {
     click: (ev: MouseEvent) => true,
   },
-  setup(props) {
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('icon');
     const cls = computed(() => [prefixCls, \`\${prefixCls}-${name.replace('icon-', '')}\`, { [\`\${prefixCls}-spin\`]: props.spin }]);
     const innerStyle = computed(() => {

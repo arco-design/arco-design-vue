@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 💎 Enhancement
+
+- Optimize the `click` event of the component, and perform encapsulation and transparent transmission in the component ([#2030](https://github.com/arco-design/arco-design-vue/pull/2030))
+
+
 ## 2.38.1
 
 `2022-11-04`

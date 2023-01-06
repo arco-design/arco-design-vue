@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🆎 TypeScript
+
+- Fix missing type for `value` values ([#2029](https://github.com/arco-design/arco-design-vue/pull/2029))
+
+
 ## 2.41.0
 
 `2022-12-30`

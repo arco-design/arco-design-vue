@@ -53,25 +53,6 @@ export default {
         key: '4',
         title: 'Tab 4',
         content: 'Content of Tab Panel 4'
-      },{
-        key: '5',
-        title: 'Tab 4',
-        content: 'Content of Tab Panel 4'
-      },
-      {
-        key: '6',
-        title: 'Tab 4',
-        content: 'Content of Tab Panel 4'
-      },
-      {
-        key: '7',
-        title: 'Tab 4',
-        content: 'Content of Tab Panel 4'
-      },
-      {
-        key: '8',
-        title: 'Tab 4',
-        content: 'Content of Tab Panel 4'
       }
     ]);
 
