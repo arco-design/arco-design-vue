@@ -60,7 +60,7 @@ export default defineComponent({
               </div>
             )}
             <div class={`${itemCls}-operation`}>
-              {props.file.status !== 'error' && (
+              {props.file.status !== 'error' && uploadCtx?.imagePreview && (
                 <span
                   class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-preview`]}
                   onClick={() => uploadCtx?.onPreview(props.file)}

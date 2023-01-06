@@ -11,6 +11,7 @@ export interface UploadContext {
   showCancelButton?: boolean;
   showLink?: boolean;
   imageLoading?: 'eager' | 'lazy';
+  imagePreview?: boolean;
   download?: boolean;
   slots: Slots;
   onRemove: (fileItem: FileItem) => void;

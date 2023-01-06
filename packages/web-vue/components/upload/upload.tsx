@@ -400,6 +400,7 @@ export default defineComponent({
       showCancelButton,
       showRemoveButton,
       imageLoading,
+      imagePreview,
       download,
       showLink,
     } = toRefs(props);
@@ -654,6 +655,7 @@ export default defineComponent({
         showCancelButton,
         showLink,
         imageLoading,
+        imagePreview,
         download,
         customIcon,
         slots,
