@@ -4,7 +4,7 @@ import { NotificationMethod } from './notification';
 import { ModalMethod } from './modal';
 import { DrawerMethod } from './drawer';
 
-declare module 'vue' {
+declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AAffix: typeof import('@arco-design/web-vue')['Affix'];
     AAlert: typeof import('@arco-design/web-vue')['Alert'];
