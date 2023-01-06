@@ -158,11 +158,6 @@ export default defineComponent({
         return 0;
       }
 
-      if (props.type === 'capsule') {
-        return type === 'previous'
-          ? offset.value + wrapperLength.value
-          : offset.value - wrapperLength.value;
-      }
       return type === 'previous'
         ? offset.value - wrapperLength.value
         : offset.value + wrapperLength.value;
@@ -269,6 +264,13 @@ export default defineComponent({
       })
     );
 
+    const tabCls = computed(() => [
+      `${prefixCls}-tab`,
+      {
+        [`${prefixCls}-tab-scroll`]: isScroll.value,
+      },
+    ]);
+
     return () => (
       <div class={cls.value}>
         {isScroll.value && (
@@ -280,7 +282,7 @@ export default defineComponent({
           />
         )}
         <ResizeObserver onResize={() => getSize()}>
-          <div class={`${prefixCls}-tab`} ref={wrapperRef}>
+          <div class={tabCls.value} ref={wrapperRef}>
             <ResizeObserver onResize={handleResize}>
               <div ref={listRef} class={listCls.value} style={listStyle.value}>
                 {props.tabs.map((tab, index) => (
