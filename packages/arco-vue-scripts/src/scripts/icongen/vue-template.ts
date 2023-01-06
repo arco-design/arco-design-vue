@@ -45,6 +45,9 @@ export default defineComponent({
     rotate: Number,
     spin: Boolean
   },
+  emits: {
+    click: (ev: MouseEvent) => true,
+  },
   setup(props) {
     const prefixCls = getPrefixCls('icon');
     const cls = computed(() => [prefixCls, \`\${prefixCls}-${name.replace('icon-', '')}\`, { [\`\${prefixCls}-spin\`]: props.spin }]);
@@ -58,10 +61,14 @@ export default defineComponent({
       }
       return styles;
     });
+    const onClick = (ev: MouseEvent) => {
+      emit('click', ev);
+    };
 
     return {
       cls,
-      innerStyle
+      innerStyle,
+      onClick,
     };
   }
 });
