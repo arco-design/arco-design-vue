@@ -41,6 +41,7 @@ description: Sliding input device, showing current value and selectable range.
 |disabled|Whether to disable|`boolean`|`false`|
 |show-ticks|Whether to show ticks|`boolean`|`false`|
 |show-input|Whether to show the input|`boolean`|`false`|
+|show-tooltip|Whether to show tooltip|`boolean`|`true`|
 |range|Whether to use range selection|`boolean`|`false`|
 ### `<slider>` Events
 

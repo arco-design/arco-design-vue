@@ -1,6 +1,6 @@
 <template>
   <tooltip
-    :popup-visible="isDragging ? true : undefined"
+    :popup-visible="popupVisible"
     :position="mergedTooltipPosition"
     :content="tooltipContent"
   >
@@ -57,6 +57,10 @@ export default defineComponent({
     tooltipPosition: {
       type: String,
     },
+    showTooltip: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: ['movestart', 'moving', 'moveend'],
   setup(props, { emit }) {
@@ -98,12 +102,16 @@ export default defineComponent({
       () => props.formatTooltip?.(props.value) ?? `${props.value}`
     );
 
+    const popupVisible = computed(() =>
+      !props.showTooltip ? false : isDragging.value ? true : undefined
+    );
+
     return {
       prefixCls,
       cls,
       tooltipContent,
       mergedTooltipPosition,
-      isDragging,
+      popupVisible,
       handleMouseDown,
     };
   },

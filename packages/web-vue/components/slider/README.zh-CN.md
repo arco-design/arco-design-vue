@@ -39,6 +39,7 @@ description: 滑动型输入器，展示当前值和可选范围。
 |disabled|是否禁用|`boolean`|`false`|
 |show-ticks|是否显示刻度线|`boolean`|`false`|
 |show-input|是否显示输入框|`boolean`|`false`|
+|show-tooltip|是否显示tooltip|`boolean`|`true`|
 |range|是否开启范围选择|`boolean`|`false`|
 ### `<slider>` Events
 
