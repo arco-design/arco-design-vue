@@ -41,4 +41,4 @@ export default defineConfig({
 });
 ```
 
-更多具体配置详见[vite](https://www.vitejs.net/)[官网](https://www.vitejs.net/)。
+更多具体配置详见[vite](https://vitejs.dev/)[官网](https://vitejs.dev/)。
