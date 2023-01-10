@@ -1,6 +1,6 @@
 <template>
   <tooltip
-    :popup-visible="isDragging ? true : undefined"
+    :popup-visible="showTooltip ? (isDragging ? true : undefined) : false"
     :position="mergedTooltipPosition"
     :content="tooltipContent"
   >
@@ -52,6 +52,10 @@ export default defineComponent({
     },
     formatTooltip: {
       type: Function,
+    },
+    showTooltip: {
+      type: Boolean,
+      default: true,
     },
     value: [String, Number],
     tooltipPosition: {

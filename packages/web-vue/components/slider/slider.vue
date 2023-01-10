@@ -33,6 +33,7 @@
         :min="min"
         :max="max"
         :format-tooltip="formatTooltip"
+        :show-tooltip="showTooltip"
         @movestart="handleMoveStart"
         @moving="handleStartMoving"
         @moveend="handleMoveEnd"
@@ -45,6 +46,7 @@
         :min="min"
         :max="max"
         :format-tooltip="formatTooltip"
+        :show-tooltip="showTooltip"
         @movestart="handleMoveStart"
         @moving="handleEndMoving"
         @moveend="handleMoveEnd"
@@ -179,6 +181,14 @@ export default defineComponent({
     },
     formatTooltip: {
       type: Function,
+    },
+    /**
+     * @zh 是否显示tooltip
+     * @en Whether to display tooltip
+     */
+    showTooltip: {
+      type: Boolean,
+      default: true,
     },
   },
   emits: {

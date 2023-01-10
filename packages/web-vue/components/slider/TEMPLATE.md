@@ -1,4 +1,5 @@
 ## zh-CN
+
 ```yaml
 meta:
   type: 组件
@@ -6,8 +7,11 @@ meta:
 title: 滑动输入条 Slider
 description: 滑动型输入器，展示当前值和可选范围。
 ```
+
 ---
+
 ## en-US
+
 ```yaml
 meta:
   type: Component
@@ -15,23 +19,26 @@ meta:
 title: Slider
 description: Sliding input device, showing current value and selectable range.
 ```
+
 ---
 
-@import ./__demo__/basic.md
+@import ./\_\_demo\_\_/basic.md
 
-@import ./__demo__/disabled.md
+@import ./\_\_demo\_\_/disabled.md
 
-@import ./__demo__/step.md
+@import ./\_\_demo\_\_/step.md
 
-@import ./__demo__/marks.md
+@import ./\_\_demo\_\_/marks.md
 
-@import ./__demo__/range.md
+@import ./\_\_demo\_\_/range.md
 
-@import ./__demo__/input.md
+@import ./\_\_demo\_\_/input.md
 
-@import ./__demo__/vertical.md
+@import ./\_\_demo\_\_/vertical.md
 
-@import ./__demo__/tooltip.md
+@import ./\_\_demo\_\_/tooltip.md
+
+@import ./\_\_demo\_\_/show-tooltip.md
 
 ## API
 
