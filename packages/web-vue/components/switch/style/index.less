@@ -253,9 +253,15 @@
   }
 
   &-type-line&-type-line__custom-color {
+    --custom-color: @switch-color-bg_off;
+
     &::after {
       background-color: var(--custom-color);
     }
+  }
+
+  &-type-line&-type-line__custom-color&-checked {
+    --custom-color: @switch-color-bg_on;
   }
 
   &-type-line&-checked &-handle {
