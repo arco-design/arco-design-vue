@@ -40,7 +40,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
-import { isFunction, isPromise } from '../_utils/is';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'Switch',
@@ -254,19 +254,21 @@ export default defineComponent({
         [`${prefixCls}-checked`]: computedCheck.value,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-loading`]: computedLoading.value,
+        [`${prefixCls}-type-line__custom-color`]:
+          props.type === 'line' && (props.checkedColor || props.uncheckedColor),
       },
     ]);
 
     const buttonStyle = computed(() => {
       if (computedCheck.value && props.checkedColor) {
-        return {
-          backgroundColor: props.checkedColor,
-        };
+        return props.type === 'line'
+          ? { '--custom-color': props.checkedColor }
+          : { backgroundColor: props.checkedColor };
       }
       if (!computedCheck.value && props.uncheckedColor) {
-        return {
-          backgroundColor: props.uncheckedColor,
-        };
+        return props.type === 'line'
+          ? { '--custom-color': props.uncheckedColor }
+          : { backgroundColor: props.uncheckedColor };
       }
       return undefined;
     });
