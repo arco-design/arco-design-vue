@@ -252,6 +252,18 @@
     }
   }
 
+  &-type-line&-type-line__custom-color {
+    --custom-color: @switch-color-bg_off;
+
+    &::after {
+      background-color: var(--custom-color);
+    }
+  }
+
+  &-type-line&-type-line__custom-color&-checked {
+    --custom-color: @switch-color-bg_on;
+  }
+
   &-type-line&-checked &-handle {
     left: calc(100% - @switch-line-size-dot-default);
   }
@@ -311,7 +323,10 @@
       transform: translate(-50%, -50%) scale(1);
     }
   }
+
   &-type-line&-small&-checked &-handle {
-    left: calc(100% - @switch-line-size-dot-small - @switch-size-small-line-gap);
+    left: calc(
+      100% - @switch-line-size-dot-small - @switch-size-small-line-gap
+    );
   }
 }
