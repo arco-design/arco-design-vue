@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🐛 BugFix
+
+- Fix the problem that the custom color style is wrong when the type is `line` ([#2044](https://github.com/arco-design/arco-design-vue/pull/2044))
+
+
 ## 2.40.1
 
 `2022-12-23`

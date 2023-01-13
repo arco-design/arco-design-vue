@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 Feature
+
+- add show-tooltip props ([#2037](https://github.com/arco-design/arco-design-vue/pull/2037))
+
+
 ## 2.38.1
 
 `2022-11-04`

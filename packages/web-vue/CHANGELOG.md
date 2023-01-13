@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 Feature
+
+- **upload:** Add `showPreviewButton` property ([#2049](https://github.com/arco-design/arco-design-vue/pull/2049))
+- **slider:** add show-tooltip props ([#2037](https://github.com/arco-design/arco-design-vue/pull/2037))
+- **mention:** add focus and blur methods ([#2022](https://github.com/arco-design/arco-design-vue/pull/2022))
+- **date-picker:** Add blur event to support corresponding inspection in the form ([#1958](https://github.com/arco-design/arco-design-vue/pull/1958))
+
+### 🐛 BugFix
+
+- **upload:** Fixed an issue that could cause file deletion errors when uploading ([#2048](https://github.com/arco-design/arco-design-vue/pull/2048))
+- **switch:** Fix the problem that the custom color style is wrong when the type is `line` ([#2044](https://github.com/arco-design/arco-design-vue/pull/2044))
+
+
 ## 2.41.1
 
 `2023-01-06`

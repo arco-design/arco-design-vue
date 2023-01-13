@@ -33,16 +33,18 @@ description: 用于在输入中提及某人或某事，常用于发布、聊天�
 |search|动态搜索时触发|value: `string`||
 |select|选择下拉选项时触发|value: `string \| number \| Record<string, any> \| undefined`||
 |clear|用户点击清除按钮时触发|-|2.23.0|
+|focus|文本框获取焦点时触发|ev: `FocusEvent`|2.42.0|
+|blur|文本框失去焦点时触发|ev: `FocusEvent`|2.42.0|
+### `<mention>` Methods
+
+|方法名|描述|参数|返回值|版本|
+|---|---|---|---|:---|
+|focus|使输入框获取焦点|-|-|2.24.0|
+|blur|使输入框失去焦点|-|-|2.24.0|
 ### `<mention>` Slots
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
 |option|选项内容|data: `OptionInfo`|2.13.0|
 
-### `<mention>` Methods
-
-|方法名|描述|参数|返回值|版本|
-|---|---|---|---|:---|
-|focus|使输入框获取焦点|-|-|-|
-|blur|使输入框失去焦点|-|-|-|
 

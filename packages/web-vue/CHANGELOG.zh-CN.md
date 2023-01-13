@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 新增功能
+
+- **upload:** 增加 `showPreviewButton` 属性 ([#2049](https://github.com/arco-design/arco-design-vue/pull/2049))
+- **slider:** 添加show-tooltip属性 ([#2037](https://github.com/arco-design/arco-design-vue/pull/2037))
+- **mention:** 增加focus与blur方法 ([#2022](https://github.com/arco-design/arco-design-vue/pull/2022))
+- **date-picker:** 增加 blur 事件，可以在表单中支持相应检验 ([#1958](https://github.com/arco-design/arco-design-vue/pull/1958))
+
+### 🐛 问题修复
+
+- **upload:** 修复上传时可能导致删除文件错误的问题 ([#2048](https://github.com/arco-design/arco-design-vue/pull/2048))
+- **switch:** 修复类型为`line`时自定义颜色样式错误的问题 ([#2044](https://github.com/arco-design/arco-design-vue/pull/2044))
+
+
 ## 2.41.1
 
 `2023-01-06`

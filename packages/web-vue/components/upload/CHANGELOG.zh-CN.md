@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 新增功能
+
+- 增加 `showPreviewButton` 属性 ([#2049](https://github.com/arco-design/arco-design-vue/pull/2049))
+
+### 🐛 问题修复
+
+- 修复上传时可能导致删除文件错误的问题 ([#2048](https://github.com/arco-design/arco-design-vue/pull/2048))
+
+
 ## 2.41.0
 
 `2022-12-30`

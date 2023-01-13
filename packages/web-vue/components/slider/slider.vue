@@ -185,10 +185,11 @@ export default defineComponent({
     /**
      * @zh 是否显示tooltip
      * @en Whether to show tooltip
+     * @version 2.42.0
      */
     showTooltip: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   emits: {

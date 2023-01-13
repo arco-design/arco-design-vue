@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 Feature
+
+- Add `showPreviewButton` property ([#2049](https://github.com/arco-design/arco-design-vue/pull/2049))
+
+### 🐛 BugFix
+
+- Fixed an issue that could cause file deletion errors when uploading ([#2048](https://github.com/arco-design/arco-design-vue/pull/2048))
+
+
 ## 2.41.0
 
 `2022-12-30`

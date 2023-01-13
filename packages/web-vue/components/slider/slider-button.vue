@@ -103,7 +103,7 @@ export default defineComponent({
     );
 
     const popupVisible = computed(() =>
-      !props.showTooltip ? false : isDragging.value ? true : undefined
+      props.showTooltip ? (isDragging.value ? true : undefined) : false
     );
 
     return {

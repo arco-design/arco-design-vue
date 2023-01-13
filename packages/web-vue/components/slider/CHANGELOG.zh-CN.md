@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 新增功能
+
+- 添加show-tooltip属性 ([#2037](https://github.com/arco-design/arco-design-vue/pull/2037))
+
+
 ## 2.38.1
 
 `2022-11-04`

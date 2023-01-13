@@ -254,7 +254,7 @@ export default defineComponent({
         [`${prefixCls}-checked`]: computedCheck.value,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-loading`]: computedLoading.value,
-        [`${prefixCls}-type-line__custom-color`]:
+        [`${prefixCls}-custom-color`]:
           props.type === 'line' && (props.checkedColor || props.uncheckedColor),
       },
     ]);

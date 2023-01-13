@@ -35,15 +35,18 @@ description: Used to mention someone or something in the input, often used for p
 |search|Trigger on dynamic search prefix|value: `string`||
 |select|Triggered when the drop-down option is selected|value: `string \| number \| Record<string, any> \| undefined`||
 |clear|Triggered when the user clicks the clear button|-|2.23.0|
+|focus|Emitted when the text box gets focus|ev: `FocusEvent`|2.42.0|
+|blur|Emitted when the text box loses focus|ev: `FocusEvent`|2.42.0|
+### `<mention>` Methods
+
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|focus|Make the input box focus|-|-|2.24.0|
+|blur|Make the input box lose focus|-|-|2.24.0|
 ### `<mention>` Slots
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
 |option|Display content of options|data: `OptionInfo`|2.13.0|
 
-### `<mention>` Methods
 
-|Method|Description|Parameters|Return|version|
-|---|---|---|:---:|:---|
-|focus|Make the input box focus|-|-|-|
-|blur|Make the input box lose focus|-|-|-|

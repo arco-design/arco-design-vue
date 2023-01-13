@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 新增功能
+
+- 增加focus与blur方法 ([#2022](https://github.com/arco-design/arco-design-vue/pull/2022))
+
+
 ## 2.41.0
 
 `2022-12-30`

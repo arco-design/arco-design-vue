@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.0
+
+`2023-01-13`
+
+### 🆕 Feature
+
+- Add blur event to support corresponding inspection in the form ([#1958](https://github.com/arco-design/arco-design-vue/pull/1958))
+
+
 ## 2.41.0
 
 `2022-12-30`
