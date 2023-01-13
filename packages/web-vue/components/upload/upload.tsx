@@ -559,7 +559,7 @@ export default defineComponent({
     };
 
     const initUpload = async (file: File, index: number) => {
-      const uid = `${Date.now()}${index}`;
+      const uid = `${Date.now()}-${index}`;
 
       const dataURL = isImage(file) ? URL.createObjectURL(file) : undefined;
 
@@ -573,7 +573,7 @@ export default defineComponent({
       });
 
       fileMap.set(uid, fileItem);
-      _fileList.value.push(fileItem);
+      _fileList.value = [..._fileList.value, fileItem];
       updateFileList(fileItem);
 
       if (props.autoUpload) {
@@ -610,7 +610,9 @@ export default defineComponent({
     };
 
     const removeFile = (fileItem: FileItem) => {
-      _fileList.value.splice(_fileList.value.indexOf(fileItem), 1);
+      _fileList.value = _fileList.value.filter((item) => {
+        return item.uid !== fileItem.uid;
+      });
       updateFileList(fileItem);
     };
 
