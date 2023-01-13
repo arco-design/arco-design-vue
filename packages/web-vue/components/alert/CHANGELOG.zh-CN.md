@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 新增功能
+
+- 增加 `normal` 类型 ([#2009](https://github.com/arco-design/arco-design-vue/pull/2009))
+
+
 ## 2.36.0
 
 `2022-09-02`

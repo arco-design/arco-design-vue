@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🐛 BugFix
+
+- Fix the problem of scrolling exception under `capsule` type ([#2031](https://github.com/arco-design/arco-design-vue/pull/2031))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 💅 Style
+
+- Fix the problem that `size` does not take effect under `rounded` and `capsule` types ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
 ## 2.37.4
 
 `2022-09-30`

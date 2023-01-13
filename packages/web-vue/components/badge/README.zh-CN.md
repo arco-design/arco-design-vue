@@ -33,7 +33,7 @@ description: 一般出现在图标或文字的右上角。提供及时、重要�
 |max-count|徽标最大显示数值，如果count超过这个数值会显示为maxCount|`number`|`99`|
 |offset|设置徽标位置的偏移|`number[]`|`[]`|
 |color|内置的一些颜色|`ColorType \| string`|`-`|
-|status|徽标的状态类型|`'default' \| 'processing' \| 'success' \| 'warning' \| 'error'`|`-`|
+|status|徽标的状态类型|`'normal' \| 'processing' \| 'success' \| 'warning' \| 'danger'`|`-`|
 |count|徽标显示的数字|`number`|`-`|
 
 

@@ -41,4 +41,9 @@ description: Used to mention someone or something in the input, often used for p
 |---|---|---|:---|
 |option|Display content of options|data: `OptionInfo`|2.13.0|
 
+### `<mention>` Methods
 
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|focus|Make the input box focus|-|-|-|
+|blur|Make the input box lose focus|-|-|-|

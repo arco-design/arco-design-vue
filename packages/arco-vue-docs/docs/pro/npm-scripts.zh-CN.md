@@ -39,7 +39,7 @@ npm run dev
 npm run build
 ```
 
-调用的命令如下，可以根据实际需要，查阅[vite](https://www.vitejs.net/)[官网](https://www.vitejs.net/)，进行输出配置。
+调用的命令如下，可以根据实际需要，查阅[vite](https://vitejs.dev/)[官网](https://vitejs.dev/)，进行输出配置。
 
 ```json
 {

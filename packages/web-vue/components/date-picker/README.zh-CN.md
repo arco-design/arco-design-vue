@@ -88,15 +88,16 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |picker-value-change|面板日期改变|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 ### `Common` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|suffix-icon|输入框后缀图标|-|
-|icon-next-double|双箭头往后翻页图标|-|
-|icon-prev-double|双箭头往前翻页图标|-|
-|icon-next|单箭头往后翻页图标|-|
-|icon-prev|单箭头往前翻页图标|-|
-|cell|自定义日期单元格的内容|date: `Date`|
-|extra|额外的页脚|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|prefix|输入框前缀|-|2.41.0|
+|suffix-icon|输入框后缀图标|-||
+|icon-next-double|双箭头往后翻页图标|-||
+|icon-prev-double|双箭头往前翻页图标|-||
+|icon-next|单箭头往后翻页图标|-||
+|icon-prev|单箭头往前翻页图标|-||
+|cell|自定义日期单元格的内容|date: `Date`||
+|extra|额外的页脚|-||
 
 
 

@@ -90,15 +90,16 @@ description: Choose a date. Support year, month, week, day type, support range s
 |picker-value-change|Panel date change|value: `Date \| string \| number`<br>date: `Date`<br>dateString: `string`|
 ### `Common` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|suffix-icon|Input box suffix icon|-|
-|icon-next-double|Double arrow page backward icon|-|
-|icon-prev-double|Double arrow page forward icon|-|
-|icon-next|Single arrow page backward icon|-|
-|icon-prev|Single arrow page forward icon|-|
-|cell|Customize the contents of the date cell|date: `Date`|
-|extra|Extra footer|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|prefix|Input box prefix|-|2.41.0|
+|suffix-icon|Input box suffix icon|-||
+|icon-next-double|Double arrow page backward icon|-||
+|icon-prev-double|Double arrow page forward icon|-||
+|icon-next|Single arrow page backward icon|-||
+|icon-prev|Single arrow page forward icon|-||
+|cell|Customize the contents of the date cell|date: `Date`||
+|extra|Extra footer|-||
 
 
 

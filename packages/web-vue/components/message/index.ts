@@ -11,7 +11,9 @@ import {
   MessagePosition,
 } from './interface';
 
-type _MessageConfig = MessageConfig & { type: MessageType | 'loading' };
+type _MessageConfig = MessageConfig & {
+  type: MessageType | 'loading' | 'normal';
+};
 
 class MessageManger {
   private readonly messageIds: Set<number | string>;
@@ -106,7 +108,7 @@ const messageInstance: {
   bottom?: MessageManger;
 } = {};
 
-const types = [...MESSAGE_TYPES, 'loading'] as const;
+const types = [...MESSAGE_TYPES, 'loading', 'normal'] as const;
 
 const message = types.reduce((pre, value) => {
   pre[value] = (config, appContext?: AppContext) => {

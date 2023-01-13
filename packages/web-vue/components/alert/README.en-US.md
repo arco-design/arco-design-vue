@@ -31,7 +31,7 @@ description: When warning information is displayed to the user, the warning prom
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|type|Type of the alert|`info \| success \| warning \| error`|`'info'`|
+|type|Type of the alert. 2.41.0 Added `normal` type|`info \| success \| warning \| error \| normal`|`'info'`|
 |show-icon|Whether to show the icon|`boolean`|`true`|
 |closable|Whether to show the close button|`boolean`|`false`|
 |title|The title of the alert|`string`|`-`|

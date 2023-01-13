@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- Fix the problem that the scroll bar appears in the grid list mode ([#1970](https://github.com/arco-design/arco-design-vue/pull/1970))
+
+
 ## 2.40.0
 
 `2022-12-09`

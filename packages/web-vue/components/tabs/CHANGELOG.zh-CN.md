@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🐛 问题修复
+
+- 修复在 `capsule` 类型下滚动异常的问题 ([#2031](https://github.com/arco-design/arco-design-vue/pull/2031))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 💅 样式更新
+
+- 修复 `rounded` 和 `capsule` 类型下 `size` 不生效的问题 ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
 ## 2.37.4
 
 `2022-09-30`

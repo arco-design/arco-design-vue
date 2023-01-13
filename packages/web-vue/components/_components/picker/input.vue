@@ -1,5 +1,8 @@
 <template>
   <div :class="classNames">
+    <div v-if="$slots.prefix" :class="`${prefixCls}-prefix`">
+      <slot name="prefix" />
+    </div>
     <div :class="`${prefixCls}-input`">
       <input
         ref="refInput"
@@ -82,7 +85,7 @@ export default defineComponent({
     },
   },
   emits: ['clear', 'press-enter', 'change', 'blur'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const { error, focused, disabled, size, value, format, inputValue } =
       toRefs(props);
     const {
@@ -102,6 +105,7 @@ export default defineComponent({
         [`${prefixCls}-focused`]: focused.value,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-error`]: mergedError.value,
+        [`${prefixCls}-has-prefix`]: slots.prefix,
       },
     ]);
     const displayValue = computed(() => {

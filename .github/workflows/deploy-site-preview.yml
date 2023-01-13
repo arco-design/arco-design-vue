@@ -1,0 +1,104 @@
+name: deploy-site-preview
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  deploy-preview:
+    permissions:
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: Install deps
+        run: npm i lerna -g && yarn
+
+      - name: build components
+        run: npm run init
+
+      - name: build site
+        run: NODE_OPTIONS=--max-old-space-size=8192 AssetsPublicPath=/ yarn build:site
+
+      - name: netlify install
+        run: yarn add netlify-cli -D
+
+      - name: get PreviewID
+        run: |
+          if ${{ github.event_name == 'pull_request' }}; then
+            echo "PreviewID=${{ github.event.number }}" >> $GITHUB_ENV
+          else
+            echo "PreviewID=main" >> $GITHUB_ENV
+          fi
+
+      - name: netlify deploy
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: netlify deploy --auth $NETLIFY_AUTH_TOKEN --site $NETLIFY_SITE_ID  --dir=packages/arco-vue-docs/dist --alias=pr-preview-${{ env.PreviewID }}
+
+  add-pr-comment:
+    runs-on: ubuntu-latest
+    needs: deploy-preview
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: PR Comment
+        uses: mshick/add-pr-comment@v2
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+        with:
+          # Message to comment
+          message: |
+            [📚 📚 Site Preview: https://pr-preview-${{ env.PR_NUMBER }}--arco-design-vue.netlify.app](https://pr-preview-${{ env.PR_NUMBER }}--arco-design-vue.netlify.app)
+
+  image-test:
+    runs-on: ubuntu-latest
+    needs: deploy-preview
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: Install deps
+        run: npm i lerna -g && yarn
+
+      - name: build components
+        run: npm run init
+
+      - name: get PreviewID
+        run: |
+          if ${{ github.event_name == 'pull_request' }}; then
+            echo "PreviewID=${{ github.event.number }}" >> $GITHUB_ENV
+          else
+            echo "PreviewID=main" >> $GITHUB_ENV
+          fi
+
+      - name: gen screenshots
+        run: yarn test:screenshot --domain=https://pr-preview-${{ env.PreviewID }}--arco-design-vue.netlify.app
+
+      - name: upload screenshots to argos-cli
+        run: npx @argos-ci/cli upload ./packages/web-vue/__screenshots__

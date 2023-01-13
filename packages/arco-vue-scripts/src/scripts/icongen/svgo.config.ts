@@ -35,6 +35,7 @@ const options: OptimizeOptions = {
           { ':stroke-width': 'strokeWidth' },
           { ':stroke-linecap': 'strokeLinecap' },
           { ':stroke-linejoin': 'strokeLinejoin' },
+          { '@click': 'onClick' },
         ],
       },
     },

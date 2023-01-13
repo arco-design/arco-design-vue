@@ -34,6 +34,9 @@
         @change="onInputChange"
         @pressEnter="onInputPressEnter"
       >
+        <template v-if="$slots.prefix" #prefix>
+          <slot name="prefix" />
+        </template>
         <template #suffix-icon>
           <slot name="suffix-icon">
             <IconCalendar />

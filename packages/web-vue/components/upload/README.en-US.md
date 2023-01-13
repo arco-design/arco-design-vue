@@ -86,11 +86,12 @@ description: Users can transfer files or submit corresponding content.
 |error|Triggered when upload fails|fileItem: `FileItem`|
 ### `<upload>` Methods
 
-|Method|Description|Parameters|Return|
-|---|---|---|:---:|
-|submit|Upload file (file that has been initialized)|fileItem: `FileItem`|-|
-|abort|Abort upload|fileItem: `FileItem`|-|
-|updateFile|Update file|id: `string`<br>file: `File`|-|
+|Method|Description|Parameters|Return|version|
+|---|---|---|:---:|:---|
+|submit|Upload file (file that has been initialized)|fileItem: `FileItem`|-||
+|abort|Abort upload|fileItem: `FileItem`|-||
+|updateFile|Update file|id: `string`<br>file: `File`|-||
+|upload|Upload file|files: `File[]`|-|2.41.0|
 ### `<upload>` Slots
 
 |Slot Name|Description|Parameters|version|

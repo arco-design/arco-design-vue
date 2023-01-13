@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- Fixed the switch component whose type is line, size is small, and the checked state dot offset is incorrect ([#1975](https://github.com/arco-design/arco-design-vue/pull/1975))
+
+
 ## 2.39.0
 
 `2022-11-18`

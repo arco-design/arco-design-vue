@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Fix the bug that the image id may not be collected and cause preview errors ([#1992](https://github.com/arco-design/arco-design-vue/pull/1992))
+
+
 ## 2.37.3
 
 `2022-09-23`

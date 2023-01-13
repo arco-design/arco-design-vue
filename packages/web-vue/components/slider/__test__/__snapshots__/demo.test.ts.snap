@@ -127,6 +127,8 @@ exports[`<slider> demo: render [step] correctly 1`] = `
       <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
         <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
             <!--v-if-->Step
+            <!--v-if-->
+            <!--v-if-->
           </label></div>
         <div class=\\"arco-form-item-wrapper-col\\">
           <div class=\\"arco-form-item-content-wrapper\\">
@@ -139,6 +141,8 @@ exports[`<slider> demo: render [step] correctly 1`] = `
       <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
         <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
             <!--v-if-->Show steps
+            <!--v-if-->
+            <!--v-if-->
           </label></div>
         <div class=\\"arco-form-item-wrapper-col\\">
           <div class=\\"arco-form-item-content-wrapper\\">

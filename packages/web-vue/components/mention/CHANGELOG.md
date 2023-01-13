@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Fix the problem that the Enter key is invalid in textarea mode ([#2013](https://github.com/arco-design/arco-design-vue/pull/2013))
+
+
 ## 2.29.1
 
 `2022-06-02`

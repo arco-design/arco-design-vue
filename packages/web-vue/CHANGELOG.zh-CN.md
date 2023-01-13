@@ -2,6 +2,72 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🐛 问题修复
+
+- **tabs:** 修复在 `capsule` 类型下滚动异常的问题 ([#2031](https://github.com/arco-design/arco-design-vue/pull/2031))
+- **table:** 修复开启 `scroll` 时浏览器缩放后可能出现宽度错误的问题 ([#2028](https://github.com/arco-design/arco-design-vue/pull/2028))
+- 修复 ts 不能识别自定义属性的问题 ([#2027](https://github.com/arco-design/arco-design-vue/pull/2027))
+
+### 💎 功能优化
+
+- **icon:** 优化组件 `click` 事件，在组件中进行封装透传 ([#2030](https://github.com/arco-design/arco-design-vue/pull/2030))
+
+### 🆎 类型修正
+
+- **checkbox:** 修复 `value` 值缺少类型的问题 ([#2029](https://github.com/arco-design/arco-design-vue/pull/2029))
+
+
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 新增功能
+
+- **upload:** 增加 `upload` 方法 ([#2010](https://github.com/arco-design/arco-design-vue/pull/2010))
+- **alert:** 增加 `normal` 类型 ([#2009](https://github.com/arco-design/arco-design-vue/pull/2009))
+- **message:** 增加 `normal` 类型 ([#2009](https://github.com/arco-design/arco-design-vue/pull/2009))
+- **date-picker:** `date-picker` 支持 `prefix` 插槽。 ([#1997](https://github.com/arco-design/arco-design-vue/pull/1997))
+- **time-picker:** `time-picker` 支持 `prefix` 插槽。 ([#1997](https://github.com/arco-design/arco-design-vue/pull/1997))
+- **form:** `form-item` 支持 tooltip 属性 ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+- **form:** `form-item` 支持 asteriskPosition 属性 ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+- 增加西班牙语 ([#2008](https://github.com/arco-design/arco-design-vue/pull/2008))
+- 增加 印度尼西亚语， 法语（法国）， 德语（德国）， 韩语， 意大利语(意大利)，马来语（马来西亚），泰语语言文件。 ([#2011](https://github.com/arco-design/arco-design-vue/pull/2011))
+
+### 🐛 问题修复
+
+- **mention:** 修复 textarea 模式下回车键失效的问题 ([#2013](https://github.com/arco-design/arco-design-vue/pull/2013))
+- **upload:** 修复 `upload` 组件在部分场景下验证上传文件符合 `accept` 格式时，判断错误的 bug。 ([#2007](https://github.com/arco-design/arco-design-vue/pull/2007))
+- **typography:** 修复父容器设置`white-space: nowrap`时 ellipsis 失效 ([#1995](https://github.com/arco-design/arco-design-vue/pull/1995))
+- **image:** 修复 `imageId` 可能未收集导致预览出错的 bug ([#1992](https://github.com/arco-design/arco-design-vue/pull/1992))
+- **input:** 修复自定义计算字符长度不会被 `max-length` 限制的问题 ([#1942](https://github.com/arco-design/arco-design-vue/pull/1942))
+- **checkbox:** `modevalue` 不是数组时设置为空数组 ([#1940](https://github.com/arco-design/arco-design-vue/pull/1940))
+- **table:** 修复仅 `operations` 列固定的情况下没有阴影的问题 ([#1938](https://github.com/arco-design/arco-design-vue/pull/1938))
+
+### 💅 样式更新
+
+- **select:** 统一 `select` 组件单选和多选时后缀图标为 `arrow-icon`。 ([#2005](https://github.com/arco-design/arco-design-vue/pull/2005))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 问题修复
+
+- **input:** 修复 `change` 事件触发逻辑问题 ([#1990](https://github.com/arco-design/arco-design-vue/pull/1990))
+- **switch:** 修复switch组件type为line,size为small,checked状态圆点偏移不正确 ([#1975](https://github.com/arco-design/arco-design-vue/pull/1975))
+- **list:** 修复栅格列表模式出现滚动条的问题 ([#1970](https://github.com/arco-design/arco-design-vue/pull/1970))
+- **date-picker:** 修复在国际化下面板文案显示错误的问题 ([#1965](https://github.com/arco-design/arco-design-vue/pull/1965))
+
+### 💅 样式更新
+
+- **tabs:** 修复 `rounded` 和 `capsule` 类型下 `size` 不生效的问题 ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
 ## 2.40.0
 
 `2022-12-09`

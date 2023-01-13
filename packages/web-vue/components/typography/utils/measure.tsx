@@ -50,6 +50,8 @@ export default (
   ellipsisContainer.style.left = '0';
   ellipsisContainer.style.top = '-99999999px';
   ellipsisContainer.style.zIndex = '-200';
+  // fix issue#1961
+  ellipsisContainer.style.whiteSpace = 'normal';
 
   const vm = createApp({
     render() {

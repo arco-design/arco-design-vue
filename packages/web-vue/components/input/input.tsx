@@ -77,7 +77,7 @@ export default defineComponent({
      */
     placeholder: String,
     /**
-     * @zh 输入值得最大长度，errorOnly 属性在 2.12.0 版本添加
+     * @zh 输入值的最大长度，errorOnly 属性在 2.12.0 版本添加
      * @en Enter the maximum length of the value, the errorOnly attribute was added in version 2.12.0
      */
     maxLength: {
@@ -264,7 +264,6 @@ export default defineComponent({
           value.slice(0, maxLength.value);
       }
 
-      preValue = _value.value;
       _value.value = value;
       emit('update:modelValue', value);
     };
@@ -278,6 +277,7 @@ export default defineComponent({
 
     const emitChange = (value: string, ev: Event) => {
       if (value !== preValue) {
+        preValue = value;
         emit('change', value, ev);
         eventHandlers.value?.onChange?.(ev);
       }
@@ -285,6 +285,7 @@ export default defineComponent({
 
     const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
+      preValue = computedValue.value;
       emit('focus', ev);
       eventHandlers.value?.onFocus?.(ev);
     };
@@ -343,8 +344,8 @@ export default defineComponent({
         if (
           maxLength.value &&
           !maxLengthErrorOnly.value &&
-          computedValue.value.length >= maxLength.value &&
-          getValueLength(value) > maxLength.value &&
+          (computedValue.value.length >= maxLength.value ||
+            getValueLength(value) > maxLength.value) &&
           (e as InputEvent).inputType === 'insertText'
         ) {
           keepControl();

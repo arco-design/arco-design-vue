@@ -9,7 +9,10 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    <span v-if="showIcon" :class="`${prefixCls}-icon`">
+    <span
+      v-if="showIcon && !(type === 'normal' && !$slots.icon)"
+      :class="`${prefixCls}-icon`"
+    >
       <slot name="icon">
         <icon-info-circle-fill v-if="type === 'info'" />
         <icon-check-circle-fill v-else-if="type === 'success'" />
@@ -59,7 +62,7 @@ export default defineComponent({
   },
   props: {
     type: {
-      type: String as PropType<MessageType | 'loading'>,
+      type: String as PropType<MessageType | 'loading' | 'normal'>,
       default: 'info',
     },
     closable: {

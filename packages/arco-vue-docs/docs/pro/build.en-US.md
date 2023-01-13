@@ -43,4 +43,4 @@ export default defineConfig({
 });
 ```
 
-For more specific configuration details, please refer to [vite](https://www.vitejs.net/)[Official Website](https://www.vitejs.net/).
+For more specific configuration details, please refer to [vite](https://vitejs.dev/)[Official Website](https://vitejs.dev/).

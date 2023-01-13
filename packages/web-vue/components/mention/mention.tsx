@@ -131,6 +131,54 @@ export default defineComponent({
      * @version 2.23.0
      */
     'clear': (ev: Event) => true,
+    /**
+     * @zh 文本框获取焦点时触发
+     * @en Emitted when the text box gets focus
+     * @param {FocusEvent} ev
+     */
+    'focus': (ev: FocusEvent) => true,
+    /**
+     * @zh 文本框失去焦点时触发
+     * @en Emitted when the text box loses focus
+     * @param {FocusEvent} ev
+     */
+    'blur': (ev: FocusEvent) => true,
+  },
+  methods: {
+    /**
+     * @zh 使输入框获取焦点
+     * @en Make the input box focus
+     * @public
+     * @version 2.24.0
+     */
+    focus() {
+      if (this.type === 'textarea') {
+        (
+          this.$el.firstElementChild.firstElementChild as HTMLInputElement
+        ).focus();
+      } else {
+        (
+          this.$el.nextElementSibling.firstElementChild as HTMLInputElement
+        ).focus();
+      }
+    },
+    /**
+     * @zh 使输入框失去焦点
+     * @en Make the input box lose focus
+     * @public
+     * @version 2.24.0
+     */
+    blur() {
+      if (this.type === 'textarea') {
+        (
+          this.$el.firstElementChild.firstElementChild as HTMLInputElement
+        ).blur();
+      } else {
+        (
+          this.$el.nextElementSibling.firstElementChild as HTMLInputElement
+        ).blur();
+      }
+    },
   },
   /**
    * @zh 选项内容
@@ -274,6 +322,7 @@ export default defineComponent({
         optionRefs,
         onSelect: handleSelect,
         onPopupVisibleChange: handlePopupVisibleChange,
+        enterToOpen: false,
       });
 
     const mirrorStyle = ref();

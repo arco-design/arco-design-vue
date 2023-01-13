@@ -2,6 +2,72 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🐛 BugFix
+
+- **tabs:** Fix the problem of scrolling exception under `capsule` type ([#2031](https://github.com/arco-design/arco-design-vue/pull/2031))
+- **table:** Fix the problem that the width error may appear after the browser is zoomed when `scroll` is turned on ([#2028](https://github.com/arco-design/arco-design-vue/pull/2028))
+- Fix the problem that ts cannot recognize custom properties ([#2027](https://github.com/arco-design/arco-design-vue/pull/2027))
+
+### 💎 Enhancement
+
+- **icon:** Optimize the `click` event of the component, and perform encapsulation and transparent transmission in the component ([#2030](https://github.com/arco-design/arco-design-vue/pull/2030))
+
+### 🆎 TypeScript
+
+- **checkbox:** Fix missing type for `value` values ([#2029](https://github.com/arco-design/arco-design-vue/pull/2029))
+
+
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 Feature
+
+- **upload:** Add `upload` method ([#2010](https://github.com/arco-design/arco-design-vue/pull/2010))
+- **alert:** Add `normal` type ([#2009](https://github.com/arco-design/arco-design-vue/pull/2009))
+- **message:** Add `normal` type ([#2009](https://github.com/arco-design/arco-design-vue/pull/2009))
+- **date-picker:** `date-picker` supports prefix slots ([#1997](https://github.com/arco-design/arco-design-vue/pull/1997))
+- **time-picker:** `time-picker` supports prefix slots ([#1997](https://github.com/arco-design/arco-design-vue/pull/1997))
+- **form:** `form-item` supports tooltip property ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+- **form:** `form-item` supports asteriskPosition property ([#1991](https://github.com/arco-design/arco-design-vue/pull/1991))
+- Add spanish ([#2008](https://github.com/arco-design/arco-design-vue/pull/2008))
+- Added Indonesian, French (France), German (Germany), Korean, Italian (Italy),Malay (Malaysia), Thai language files. ([#2011](https://github.com/arco-design/arco-design-vue/pull/2011))
+
+### 🐛 BugFix
+
+- **mention:** Fix the problem that the Enter key is invalid in textarea mode ([#2013](https://github.com/arco-design/arco-design-vue/pull/2013))
+- **upload:** Fix the bug that the `upload` component judged wrongly when verifying that the uploaded file conforms to the `accept` format in some scenarios. ([#2007](https://github.com/arco-design/arco-design-vue/pull/2007))
+- **typography:** Fixed ellipsis invalidation with parent container setting `white-space: nowrap` ([#1995](https://github.com/arco-design/arco-design-vue/pull/1995))
+- **image:** Fix the bug that the image id may not be collected and cause preview errors ([#1992](https://github.com/arco-design/arco-design-vue/pull/1992))
+- **input:** Fix the problem that the custom calculation character length will not be limited by `max-length` ([#1942](https://github.com/arco-design/arco-design-vue/pull/1942))
+- **checkbox:** Set to empty array if `modevalue` is not an array ([#1940](https://github.com/arco-design/arco-design-vue/pull/1940))
+- **table:** Fix the problem that there is no shadow when only the `operations` column is fixed ([#1938](https://github.com/arco-design/arco-design-vue/pull/1938))
+
+### 💅 Style
+
+- **select:** Unify the suffix icon of `select` component for single selection and multi-selection as `arrow-icon`. ([#2005](https://github.com/arco-design/arco-design-vue/pull/2005))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- **input:** Fix `change` event trigger logic problem ([#1990](https://github.com/arco-design/arco-design-vue/pull/1990))
+- **switch:** Fixed the switch component whose type is line, size is small, and the checked state dot offset is incorrect ([#1975](https://github.com/arco-design/arco-design-vue/pull/1975))
+- **list:** Fix the problem that the scroll bar appears in the grid list mode ([#1970](https://github.com/arco-design/arco-design-vue/pull/1970))
+- **date-picker:** Fix the problem that the panel text display error under internationalization ([#1965](https://github.com/arco-design/arco-design-vue/pull/1965))
+
+### 💅 Style
+
+- **tabs:** Fix the problem that `size` does not take effect under `rounded` and `capsule` types ([#1988](https://github.com/arco-design/arco-design-vue/pull/1988))
+
+
 ## 2.40.0
 
 `2022-12-09`

@@ -29,7 +29,7 @@ description: 向用户显示警告的信息时，通过警告提示，展现需�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|type|警告提示的类型|`info \| success \| warning \| error`|`'info'`|
+|type|警告提示的类型。2.41.0 新增 `normal` 类型|`info \| success \| warning \| error \| normal`|`'info'`|
 |show-icon|是否展示图标|`boolean`|`true`|
 |closable|是否展示关闭按钮|`boolean`|`false`|
 |title|警告提示的标题|`string`|`-`|

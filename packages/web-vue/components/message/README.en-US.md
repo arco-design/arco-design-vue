@@ -40,14 +40,15 @@ Message._context = app._context;
 
 ### MessageMethod
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|info|Show info message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|success|Show success message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|warning|Show warning message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|error|Show error message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|loading|Show loading message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|
-|clear|Clear all messages|`(position?: MessagePosition) => void`|`-`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|info|Show info message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|success|Show success message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|warning|Show warning message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|error|Show error message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|loading|Show loading message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`||
+|normal|Show message|`(    config: string \| MessageConfig,    appContext?: AppContext  ) => MessageReturn`|`-`|2.41.0|
+|clear|Clear all messages|`(position?: MessagePosition) => void`|`-`||
 
 
 

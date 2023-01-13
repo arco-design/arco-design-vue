@@ -8,9 +8,13 @@ import paths from '../utils/paths';
 
 const root = process.cwd();
 
+const base =
+  process.env.AssetsPublicPath ||
+  'https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/vue/';
+
 export default defineConfig({
   mode: 'production',
-  base: 'https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/vue/',
+  base,
   css: {
     preprocessorOptions: {
       less: {

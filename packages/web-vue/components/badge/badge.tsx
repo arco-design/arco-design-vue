@@ -84,7 +84,7 @@ export default defineComponent({
     /**
      * @zh 徽标的状态类型
      * @en Badge status
-     * @values 'default', 'processing', 'success', 'warning', 'error'
+     * @values 'normal', 'processing', 'success', 'warning', 'danger'
      */
     status: {
       type: String as PropType<BadgeStatus>,

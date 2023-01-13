@@ -33,6 +33,9 @@
       :placeholder="computedPlaceholder"
       @clear="onInputClear"
     >
+      <template v-if="$slots.prefix" #prefix>
+        <slot name="prefix"> </slot>
+      </template>
       <template #suffix-icon>
         <slot name="suffix-icon">
           <IconClockCircle />
@@ -337,6 +340,17 @@ export default defineComponent({
     'popup-visible-change': (visible: boolean) => true,
     'update:popupVisible': (visible: boolean) => true,
   },
+  /**
+   * @zh 输入框前缀
+   * @en Input box prefix
+   * @slot prefix
+   * @version 2.41.0
+   */
+  /**
+   * @zh 输入框后缀图标
+   * @en Input box suffix icon
+   * @slot suffix-icon
+   */
   /**
    * @zh 额外的页脚
    * @en Extra footer

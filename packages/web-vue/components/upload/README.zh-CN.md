@@ -85,11 +85,12 @@ description: 用户可传输文件或提交相应的内容。
 |error|上传失败时触发|fileItem: `FileItem`|
 ### `<upload>` Methods
 
-|方法名|描述|参数|返回值|
-|---|---|---|---|
-|submit|上传文件（已经初始化完成的文件）|fileItem: `FileItem`|-|
-|abort|中止上传|fileItem: `FileItem`|-|
-|updateFile|更新文件|id: `string`<br>file: `File`|-|
+|方法名|描述|参数|返回值|版本|
+|---|---|---|---|:---|
+|submit|上传文件（已经初始化完成的文件）|fileItem: `FileItem`|-||
+|abort|中止上传|fileItem: `FileItem`|-||
+|updateFile|更新文件|id: `string`<br>file: `File`|-||
+|upload|上传文件|files: `File[]`|-|2.41.0|
 ### `<upload>` Slots
 
 |插槽名|描述|参数|版本|

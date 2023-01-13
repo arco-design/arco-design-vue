@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-通过设置 `:editable="true"` 可以开启动态增减标签页。
+通过设置 `:editable="true"` 可以开启动态增减标签页。仅在 `line` | `card` | `card-gutter` 生效
 
 ---
 
 ## en-US
 
-By setting `:editable="true"`, you can turn on the dynamic increase and decrease tabs.
+By setting `:editable="true"`, you can turn on the dynamic increase and decrease tabs. Only works with `line` | `card` | `card-gutter`
 
 ---
 

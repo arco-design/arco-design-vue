@@ -446,7 +446,7 @@ __metadata:
   resolution: "@arco-design/arco-vue-docs-navbar@workspace:packages/arco-vue-docs-navbar"
   dependencies:
     "@arco-design/web-react": ^2.28.2
-    "@arco-materials/site-navbar-new": ^1.1.2
+    "@arco-materials/site-navbar-new": ^1.1.3
     "@svgr/core": ^5.5.0
     "@typescript-eslint/eslint-plugin": ^4.18.0
     "@typescript-eslint/parser": ^4.12.0
@@ -549,6 +549,7 @@ __metadata:
     moment: ^2.29.1
     nunjucks: ^3.2.3
     ora: ^5.2.0
+    playwright: ^1.29.1
     prettier: ^2.2.1
     rollup-plugin-terser: ^7.0.2
     svgo: ^2.3.0
@@ -685,9 +686,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@arco-materials/site-navbar-new@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "@arco-materials/site-navbar-new@npm:1.1.2"
+"@arco-materials/site-navbar-new@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@arco-materials/site-navbar-new@npm:1.1.3"
   dependencies:
     "@antv/g2": ^4.1.12
     "@arco-materials/site-utils": ^1.2.0
@@ -702,7 +703,7 @@ __metadata:
     "@arco-design/web-react": ">=2.0.0"
     react: ">=16"
     react-dom: ^16.0.1
-  checksum: 3398e220575138682a72e6de4947b8cf252a235cbc798fff9015ff570e544fe377b8101737e079075efa8ca114631a1556abd9a430824df5521406fbcbc7a4e1
+  checksum: a80f344e531b2b1a22a475304f907c3743206ce7f0b12d936d6faf2273e1c42017d47f99eab29342ec35d09c628d4d40fbbdb0c9fe866062f02ebf604799b4b5
   languageName: node
   linkType: hard
 
@@ -18089,6 +18090,26 @@ fsevents@^1.2.7:
   dependencies:
     find-up: ^3.0.0
   checksum: 5bac346b7c7c903613c057ae3ab722f320716199d753f4a7d053d38f2b5955460f3e6ab73b4762c62fd3e947f58e04f1343e92089e7bb6091c90877406fcd8c8
+  languageName: node
+  linkType: hard
+
+"playwright-core@npm:1.29.1":
+  version: 1.29.1
+  resolution: "playwright-core@npm:1.29.1"
+  bin:
+    playwright: cli.js
+  checksum: e1c8423db4d28f44e5365a353f321b04a07709c8bf26d0c908f06d2c2669f715315170f84ca98a532951c2ac6324f5f48f651dca1abe43092c7637bdb4703303
+  languageName: node
+  linkType: hard
+
+"playwright@npm:^1.29.1":
+  version: 1.29.1
+  resolution: "playwright@npm:1.29.1"
+  dependencies:
+    playwright-core: 1.29.1
+  bin:
+    playwright: cli.js
+  checksum: ef20f71b20420d9e0eaf45ac5f936422dc6961a863eb71192abe911d3f951722b3c464a36ea04cac8484368c876b5513db04171375f970831fb2bccb9fbb1b7b
   languageName: node
   linkType: hard
 

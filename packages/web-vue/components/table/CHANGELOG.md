@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.41.1
+
+`2023-01-06`
+
+### 🐛 BugFix
+
+- Fix the problem that the width error may appear after the browser is zoomed when `scroll` is turned on ([#2028](https://github.com/arco-design/arco-design-vue/pull/2028))
+
+
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Fix the problem that there is no shadow when only the `operations` column is fixed ([#1938](https://github.com/arco-design/arco-design-vue/pull/1938))
+
+
 ## 2.40.0
 
 `2022-12-09`

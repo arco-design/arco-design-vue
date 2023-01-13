@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🐛 BugFix
+
+- Fix the problem that the custom calculation character length will not be limited by `max-length` ([#1942](https://github.com/arco-design/arco-design-vue/pull/1942))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- Fix `change` event trigger logic problem ([#1990](https://github.com/arco-design/arco-design-vue/pull/1990))
+
+
 ## 2.39.2
 
 `2022-12-02`

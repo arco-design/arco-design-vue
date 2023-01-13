@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.41.0
+
+`2022-12-30`
+
+### 🆕 Feature
+
+- `date-picker` supports prefix slots ([#1997](https://github.com/arco-design/arco-design-vue/pull/1997))
+
+
+## 2.40.1
+
+`2022-12-23`
+
+### 🐛 BugFix
+
+- Fix the problem that the panel text display error under internationalization ([#1965](https://github.com/arco-design/arco-design-vue/pull/1965))
+
+
 ## 2.40.0
 
 `2022-12-09`
