@@ -41,7 +41,7 @@ The command invoked is as follows
 npm run build
 ```
 
-The commands to be called are as follows. According to actual needs, please refer to [vite](https://www.vitejs.net/)[Official Website](https://www.vitejs.net/) for output configuration.
+The commands to be called are as follows. According to actual needs, please refer to [vite](https://vitejs.dev/)[Official Website](https://vitejs.dev/) for output configuration.
 
 ```json
 {
