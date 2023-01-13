@@ -195,6 +195,15 @@ export default defineComponent({
       default: true,
     },
     /**
+     * @zh 是否显示取消按钮
+     * @en Whether to display the cancel button
+     * @version 2.42.0
+     */
+    showPreviewButton: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * @zh 是否在 `<a>` 链接上添加 download 属性
      * @en Whether to add download attribute to `<a>` link
      * @version 2.11.0
@@ -399,6 +408,7 @@ export default defineComponent({
       showRetryButton,
       showCancelButton,
       showRemoveButton,
+      showPreviewButton,
       imageLoading,
       download,
       showLink,
@@ -654,6 +664,7 @@ export default defineComponent({
         showRemoveButton,
         showRetryButton,
         showCancelButton,
+        showPreviewButton,
         showLink,
         imageLoading,
         download,
