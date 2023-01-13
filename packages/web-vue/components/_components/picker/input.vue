@@ -13,6 +13,7 @@
         v-bind="readonly ? { readonly: true } : {}"
         @keydown.enter="onPressEnter"
         @input="onChange"
+        @blur="onBlur"
       />
     </div>
     <div :class="`${prefixCls}-suffix`">
@@ -83,7 +84,7 @@ export default defineComponent({
       required: true,
     },
   },
-  emits: ['clear', 'press-enter', 'change'],
+  emits: ['clear', 'press-enter', 'change', 'blur'],
   setup(props, { emit, slots }) {
     const { error, focused, disabled, size, value, format, inputValue } =
       toRefs(props);
@@ -134,6 +135,9 @@ export default defineComponent({
       },
       onClear(e: Event) {
         emit('clear', e);
+      },
+      onBlur(e: Event) {
+        emit('blur', e);
       },
     };
   },

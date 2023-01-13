@@ -33,6 +33,7 @@
         @clear="onInputClear"
         @change="onInputChange"
         @pressEnter="onInputPressEnter"
+        @blur="onInputBlur"
       >
         <template v-if="$slots.prefix" #prefix>
           <slot name="prefix" />
@@ -680,6 +681,10 @@ export default defineComponent({
       emit('clear');
     }
 
+    function onInputBlur() {
+      eventHandlers.value?.onBlur?.();
+    }
+
     function onInputChange(e: any) {
       setPanelVisible(true);
 
@@ -845,6 +850,7 @@ export default defineComponent({
       onInputClear,
       onInputChange,
       onInputPressEnter,
+      onInputBlur,
       onPanelClick,
     };
   },
