@@ -399,6 +399,13 @@ export default defineComponent({
    * @binding {FileItem} fileItem
    * @version 2.23.0
    */
+  /**
+   * @zh 上传列表额外按钮
+   * @en Extra button
+   * @slot extra-button
+   * @binding {FileItem} fileItem
+   * @version //todo
+   */
   setup(props, { emit, slots }) {
     const {
       fileList,
