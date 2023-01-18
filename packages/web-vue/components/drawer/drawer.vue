@@ -322,6 +322,18 @@ export default defineComponent({
      * @en Triggered when the drawer is closed (the animation ends)
      */
     'close': () => true,
+    /**
+     * @zh 对话框打开前触发
+     * @en Triggered before drawer is opened
+     * @version 2.43.0
+     */
+    'beforeOpen': () => true,
+    /**
+     * @zh 对话框关闭前触发
+     * @en Triggered before drawer is closed
+     * @version 2.43.0
+     */
+    'beforeClose': () => true,
   },
   /**
    * @zh 标题
@@ -485,10 +497,12 @@ export default defineComponent({
         _visible.value = visible;
       }
       if (visible) {
+        emit('beforeOpen');
         mounted.value = true;
         setOverflowHidden();
         addGlobalKeyDownListener();
       } else {
+        emit('beforeClose');
         removeGlobalKeyDownListener();
       }
     });
