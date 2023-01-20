@@ -61,6 +61,9 @@ export default defineComponent({
           position.value = _position;
           size.value = _size;
         }
+      } else {
+        position.value = 0;
+        size.value = 0;
       }
     };
 
