@@ -21,6 +21,8 @@ export function getValueByPath(
 
     if (key in tempObj) {
       tempObj = tempObj[key];
+    } else if (!Number.isNaN(Number(key))) {
+      tempObj = tempObj[Number(key)];
     } else {
       if (strict) {
         throw new Error('please transfer a valid prop path to form item!');

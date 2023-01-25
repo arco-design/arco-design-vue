@@ -188,25 +188,3 @@ const useFormItem = (data: {
   eventHandlers:Ref<FormItemEventHandler>;
 }
 ```
-
-## FAQ
-
-### 关于 `form-item` 的 `field` 属性
-`field` 属性的值为获取当前 `form-item` 对应值的路径字符串。
-
-例如传入 model 属性的数据结构为：
-```ts
-const data = reactive({
-  name:'xiaoming',
-  people:[
-    {
-      id:'1111'
-    },
-    {
-      // bind this value
-      id:'2222'
-    }
-  ]
-})
-```
-此时，如果想要指定当前 `form-item` 对应的值为 `id: '2222'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`
