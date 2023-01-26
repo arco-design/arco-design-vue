@@ -2,7 +2,7 @@
   <div>
     <TypographyTitle>默认</TypographyTitle>
     <Space>
-      <DatePicker />
+      <DatePicker :focus-input='false' />
       <RangePicker />
     </Space>
     <TypographyTitle>显示确认按钮</TypographyTitle>

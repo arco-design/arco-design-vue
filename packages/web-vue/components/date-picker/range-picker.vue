@@ -24,7 +24,7 @@
         :visible="panelVisible"
         :error="error"
         :disabled="disabled"
-        :readonly="readonly"
+        :readonly="readonly || disabledInput"
         :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-value="inputValue"
@@ -302,6 +302,14 @@ export default defineComponent({
     },
     showConfirmBtn: {
       type: Boolean,
+    },
+    /**
+     * @zh 是否禁止键盘输入日期
+     * @en Whether input is disabled with the keyboard.
+     */
+    disabledInput: {
+      type: Boolean,
+      default: true,
     },
   },
   emits: {
@@ -671,8 +679,10 @@ export default defineComponent({
     });
 
     watch(focusedIndex, () => {
-      focusInput(focusedIndex.value);
-      setInputValue(undefined);
+      if (props.disabledInput) {
+        focusInput(focusedIndex.value);
+        setInputValue(undefined);
+      }
     });
 
     function emitChange(

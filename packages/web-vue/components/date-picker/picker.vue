@@ -24,7 +24,7 @@
         :visible="panelVisible"
         :error="error"
         :disabled="mergedDisabled"
-        :readonly="!inputEditable"
+        :readonly="!inputEditable || disabledInput"
         :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-value="inputValue"
@@ -319,6 +319,14 @@ export default defineComponent({
     },
     defaultValue: {
       type: [Object, String, Number] as PropType<Date | string | number>,
+    },
+    /**
+     * @zh 是否禁止键盘输入日期
+     * @en Whether input is disabled with the keyboard.
+     */
+    disabledInput: {
+      type: Boolean,
+      default: true,
     },
   },
   emits: {
@@ -731,7 +739,9 @@ export default defineComponent({
     }
 
     function onPanelClick() {
-      focusInput();
+      if (props.disabledInput) {
+        focusInput();
+      }
     }
 
     let clearPreviewTimer: any;
