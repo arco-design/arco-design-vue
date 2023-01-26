@@ -2,7 +2,7 @@
   <div>
     <TypographyTitle>默认</TypographyTitle>
     <Space>
-      <DatePicker :focus-input='false' />
+      <DatePicker />
       <RangePicker />
     </Space>
     <TypographyTitle>显示确认按钮</TypographyTitle>
@@ -19,6 +19,13 @@
     <Space>
       <DatePicker show-time :show-confirm-btn="false" />
       <RangePicker show-time :show-confirm-btn="false" />
+    </Space>
+    <p>
+      <TypographyText>disabled-time = false</TypographyText>
+    </p>
+    <Space>
+      <DatePicker :disabled-time='false' />
+      <RangePicker :disabled-time='false' />
     </Space>
   </div>
 </template>
