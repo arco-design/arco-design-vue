@@ -97,7 +97,7 @@ export default defineComponent({
      * @zh 滚动时触发
      * @en Triggered when scroll
      */
-    scroll: (event: Event) => true,
+    scroll: (ev: Event) => true,
   },
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('scrollbar');
