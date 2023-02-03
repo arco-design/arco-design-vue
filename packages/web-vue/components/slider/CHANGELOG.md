@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.1
+
+`2023-02-03`
+
+### 🐛 BugFix
+
+- Optimize the automatic repair of invalid input in the digital input box ([#1952](https://github.com/arco-design/arco-design-vue/pull/1952))
+
+
 ## 2.42.0
 
 `2023-01-13`

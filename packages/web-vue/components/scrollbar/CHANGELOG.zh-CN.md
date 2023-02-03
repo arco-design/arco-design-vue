@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.1
+
+`2023-02-03`
+
+### 🐛 问题修复
+
+- 修复emits 的 ts 声明错误 ([#2077](https://github.com/arco-design/arco-design-vue/pull/2077))
+
+
 ## 2.40.0
 
 `2022-12-09`

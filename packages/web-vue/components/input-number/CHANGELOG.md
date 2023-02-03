@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.42.1
+
+`2023-02-03`
+
+### 🐛 BugFix
+
+- fix step-button is not properly disabled or enabled when min or max is changed ([#1777](https://github.com/arco-design/arco-design-vue/pull/1777))
+
+
 ## 2.34.0
 
 `2022-07-29`

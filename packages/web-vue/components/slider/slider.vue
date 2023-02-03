@@ -230,22 +230,15 @@ export default defineComponent({
     };
 
     const handleStartChange = (value?: number) => {
-      // Trigger computed property(computedValue) changes
-      startValue.value = -Infinity;
-      nextTick(() => {
-        value = value ?? props.min;
-        startValue.value = value;
-        handleChange();
-      });
+      value = value ?? props.min;
+      startValue.value = value;
+      handleChange();
     };
 
     const handleEndChange = (value?: number) => {
-      endValue.value = -Infinity;
-      nextTick(() => {
-        value = value ?? props.min;
-        endValue.value = value;
-        handleChange();
-      });
+      value = value ?? props.min;
+      endValue.value = value;
+      handleChange();
     };
 
     const computedValue = computed<[number, number]>(() => {

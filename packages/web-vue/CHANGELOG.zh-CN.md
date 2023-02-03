@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.42.1
+
+`2023-02-03`
+
+### 🐛 问题修复
+
+- **scrollbar:** 修复emits 的 ts 声明错误 ([#2077](https://github.com/arco-design/arco-design-vue/pull/2077))
+- **slider:** 优化数字输入框无效输入时能够自动修复 ([#1952](https://github.com/arco-design/arco-design-vue/pull/1952))
+- **input-number:** 修复当最小/最大值改变时进步按钮不能正确禁用或启用的问题 ([#1777](https://github.com/arco-design/arco-design-vue/pull/1777))
+
+
 ## 2.42.0
 
 `2023-01-13`

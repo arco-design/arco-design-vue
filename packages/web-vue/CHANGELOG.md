@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.42.1
+
+`2023-02-03`
+
+### 🐛 BugFix
+
+- **scrollbar:** fix ts declaration error for emits ([#2077](https://github.com/arco-design/arco-design-vue/pull/2077))
+- **slider:** Optimize the automatic repair of invalid input in the digital input box ([#1952](https://github.com/arco-design/arco-design-vue/pull/1952))
+- **input-number:** fix step-button is not properly disabled or enabled when min or max is changed ([#1777](https://github.com/arco-design/arco-design-vue/pull/1777))
+
+
 ## 2.42.0
 
 `2023-01-13`

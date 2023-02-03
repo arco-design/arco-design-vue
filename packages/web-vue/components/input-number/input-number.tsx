@@ -1,4 +1,12 @@
-import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  PropType,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber, isUndefined } from '../_utils/is';
@@ -402,6 +410,14 @@ export default defineComponent({
         _value.value = stringValue;
         updateNumberStatus(finalValue);
       }
+
+      nextTick(() => {
+        if (isNumber(props.modelValue) && props.modelValue !== finalValue) {
+          // TODO: verify number
+          _value.value = getStringValue(props.modelValue);
+          updateNumberStatus(props.modelValue);
+        }
+      });
 
       emit('update:modelValue', finalValue);
       emit('change', finalValue, ev);
