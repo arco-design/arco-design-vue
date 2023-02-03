@@ -294,6 +294,48 @@ export default defineComponent({
       }
     };
 
+    const handleExceedRange = () => {
+      const finalValue = getLegalValue(valueNumber.value);
+      const stringValue = getStringValue(finalValue);
+      if (finalValue !== valueNumber.value || _value.value !== stringValue) {
+        _value.value = stringValue;
+      }
+
+      emit('update:modelValue', finalValue);
+    };
+    watch(
+      () => props.min,
+      (newVal) => {
+        const _isMin =
+          isNumber(valueNumber.value) && valueNumber.value <= newVal;
+        if (isMin.value !== _isMin) {
+          isMin.value = _isMin;
+        }
+
+        const isExceedMinValue =
+          isNumber(valueNumber.value) && valueNumber.value < newVal;
+        if (isExceedMinValue) {
+          handleExceedRange();
+        }
+      }
+    );
+    watch(
+      () => props.max,
+      (newVal) => {
+        const _isMax =
+          isNumber(valueNumber.value) && valueNumber.value >= newVal;
+        if (isMax.value !== _isMax) {
+          isMax.value = _isMax;
+        }
+
+        const isExceedMaxValue =
+          isNumber(valueNumber.value) && valueNumber.value > newVal;
+        if (isExceedMaxValue) {
+          handleExceedRange();
+        }
+      }
+    );
+
     const nextStep = (method: StepMethods, event: Event) => {
       if (
         mergedDisabled.value ||
