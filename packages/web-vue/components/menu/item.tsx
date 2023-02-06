@@ -162,7 +162,6 @@ export default defineComponent({
       ];
       return (
         <Tooltip
-          trigger="hover"
           position="right"
           class={tooltipClassNames}
           {...omit(tooltipProps || {}, ['class'])}
