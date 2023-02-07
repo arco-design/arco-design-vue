@@ -137,11 +137,11 @@ export default defineComponent({
       'expand-icon-down':
         this.$slots['expand-icon-down'] ||
         expandIconDown ||
-        (() => <IconDown />),
+        (() => [<IconDown />]),
       'expand-icon-right':
         this.$slots['expand-icon-right'] ||
         expandIconRight ||
-        (() => <IconRight />),
+        (() => [<IconRight />]),
     };
     return computedPopup ? (
       <SubMenuPop
