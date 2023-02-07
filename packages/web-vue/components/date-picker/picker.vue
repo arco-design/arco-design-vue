@@ -83,7 +83,7 @@ import {
 } from './interface';
 import usePickerState from './hooks/use-picker-state';
 import DateInput from '../_components/picker/input.vue';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import { getFormattedValue, isValidInputValue } from '../time-picker/utils';
 import PickerPanel from './picker-panel.vue';
 import pick from '../_utils/pick';
@@ -207,7 +207,7 @@ export default defineComponent({
      * @en You can pass in the parameters of the `Trigger` component
      */
     triggerProps: {
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<TriggerProps>,
     },
     /**
      * @zh 是否在隐藏的时候销毁DOM结构
