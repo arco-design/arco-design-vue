@@ -68,7 +68,7 @@
 
 <script lang="ts">
 import type { PropType, CSSProperties } from 'vue';
-import { computed, defineComponent, ref, toRef } from 'vue';
+import { computed, defineComponent, nextTick, ref, toRef } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import SliderButton from './slider-button.vue';

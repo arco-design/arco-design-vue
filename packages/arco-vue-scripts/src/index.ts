@@ -15,7 +15,7 @@ import buildSite from './scripts/build-site';
 import buildMaterial from './scripts/build-material';
 import buildMaterialLibrary from './scripts/build-material-library';
 import test from './scripts/test';
-import screentshotTest from './scripts/test/screentshot';
+// import screentshotTest from './scripts/test/screentshot';
 import changelog from './scripts/changelog';
 import jsongen from './scripts/jsongen';
 
@@ -130,14 +130,14 @@ program
     await test(components, program.args.slice(1));
   });
 
-program
-  .command('test:screenshot')
-  .description('run test:screenshot for components.')
-  .option('-d, --domain <domain>', 'gen screentshots')
-  .option('-o, --outDir <outDir>', 'gen screentshots')
-  .action(async ({ domain, outDir }) => {
-    await screentshotTest(domain, outDir);
-  });
+// program
+//   .command('test:screenshot')
+//   .description('run test:screenshot for components.')
+//   .option('-d, --domain <domain>', 'gen screentshots')
+//   .option('-o, --outDir <outDir>', 'gen screentshots')
+//   .action(async ({ domain, outDir }) => {
+//     await screentshotTest(domain, outDir);
+//   });
 
 program
   .command('changelog')

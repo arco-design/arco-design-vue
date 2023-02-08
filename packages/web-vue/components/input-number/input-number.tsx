@@ -1,4 +1,12 @@
-import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  PropType,
+  ref,
+  toRefs,
+  watch,
+} from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber, isUndefined } from '../_utils/is';
@@ -294,6 +302,48 @@ export default defineComponent({
       }
     };
 
+    const handleExceedRange = () => {
+      const finalValue = getLegalValue(valueNumber.value);
+      const stringValue = getStringValue(finalValue);
+      if (finalValue !== valueNumber.value || _value.value !== stringValue) {
+        _value.value = stringValue;
+      }
+
+      emit('update:modelValue', finalValue);
+    };
+    watch(
+      () => props.min,
+      (newVal) => {
+        const _isMin =
+          isNumber(valueNumber.value) && valueNumber.value <= newVal;
+        if (isMin.value !== _isMin) {
+          isMin.value = _isMin;
+        }
+
+        const isExceedMinValue =
+          isNumber(valueNumber.value) && valueNumber.value < newVal;
+        if (isExceedMinValue) {
+          handleExceedRange();
+        }
+      }
+    );
+    watch(
+      () => props.max,
+      (newVal) => {
+        const _isMax =
+          isNumber(valueNumber.value) && valueNumber.value >= newVal;
+        if (isMax.value !== _isMax) {
+          isMax.value = _isMax;
+        }
+
+        const isExceedMaxValue =
+          isNumber(valueNumber.value) && valueNumber.value > newVal;
+        if (isExceedMaxValue) {
+          handleExceedRange();
+        }
+      }
+    );
+
     const nextStep = (method: StepMethods, event: Event) => {
       if (
         mergedDisabled.value ||
@@ -360,6 +410,14 @@ export default defineComponent({
         _value.value = stringValue;
         updateNumberStatus(finalValue);
       }
+
+      nextTick(() => {
+        if (isNumber(props.modelValue) && props.modelValue !== finalValue) {
+          // TODO: verify number
+          _value.value = getStringValue(props.modelValue);
+          updateNumberStatus(props.modelValue);
+        }
+      });
 
       emit('update:modelValue', finalValue);
       emit('change', finalValue, ev);
