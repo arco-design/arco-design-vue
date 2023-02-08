@@ -6,6 +6,9 @@
         <empty />
       </slot>
     </div>
+    <div v-if="$slots.header && !empty" :class="`${prefixCls}-header`">
+      <slot name="header" />
+    </div>
     <slot v-if="virtualList && !loading && !empty" name="virtual-list" />
     <component
       :is="displayScrollbar ? 'ScrollbarComponent' : 'div'"
@@ -83,6 +86,7 @@ export default defineComponent({
     const cls = computed(() => [
       prefixCls,
       {
+        [`${prefixCls}-has-header`]: Boolean(slots.header),
         [`${prefixCls}-has-footer`]: Boolean(slots.footer),
       },
     ]);

@@ -32,6 +32,8 @@ description: When users need to select one or more from a group of similar data,
 
 @import ./__demo__/loading.md
 
+@import ./__demo__/header.md
+
 @import ./__demo__/footer.md
 
 @import ./__demo__/border.md

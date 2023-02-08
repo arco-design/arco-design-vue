@@ -19,6 +19,8 @@ description: When users need to select one or more from a group of similar data,
 
 @import ./__demo__/loading.md
 
+@import ./__demo__/header.md
+
 @import ./__demo__/footer.md
 
 @import ./__demo__/border.md
@@ -104,6 +106,7 @@ description: When users need to select one or more from a group of similar data,
 |loading-icon|Loading icon for select box|-|2.16.0|
 |arrow-icon|Arrow icon for select box|-|2.16.0|
 |footer|The footer of the drop-down box|-||
+|header|The header of the drop-down box|-||
 |label|Display content of label|data: `SelectOptionData`||
 |option|Display content of options|data: `SelectOptionData`||
 |empty|Display content when the option is empty|-||
