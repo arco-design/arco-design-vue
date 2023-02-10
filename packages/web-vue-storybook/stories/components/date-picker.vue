@@ -20,6 +20,13 @@
       <DatePicker show-time :show-confirm-btn="false" />
       <RangePicker show-time :show-confirm-btn="false" />
     </Space>
+    <p>
+      <TypographyText>disabled-time = false</TypographyText>
+    </p>
+    <Space>
+      <DatePicker :disabled-time='false' />
+      <RangePicker :disabled-time='false' />
+    </Space>
   </div>
 </template>
 
