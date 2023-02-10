@@ -23,7 +23,7 @@ Specifying `id` to update the existing notification.
   </a-button>
 </template>
 
-<script lang="jsx">
+<script>
 import { Notification } from '@arco-design/web-vue';
 
 export default {
@@ -33,7 +33,7 @@ export default {
         id: 'your_id',
         title: 'Ready to update',
         content: 'Will update after 2 seconds...',
-        duration: 3000,
+        duration: 0,
       })
 
       setTimeout(() => {
