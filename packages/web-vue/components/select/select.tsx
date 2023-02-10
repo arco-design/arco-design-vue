@@ -198,6 +198,11 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 是否在无值时默认选择第一个选项
+     * @en Whether to select the first option by default when there is no value
+     * @version 2.43.0
+     */
     defaultActiveFirstOption: {
       type: Boolean,
       default: true,
@@ -484,6 +489,7 @@ export default defineComponent({
       modelValue,
       fieldNames,
       loading,
+      defaultActiveFirstOption,
     } = toRefs(props);
     const prefixCls = getPrefixCls('select');
     const { mergedSize, mergedDisabled, mergedError, eventHandlers } =
@@ -784,6 +790,7 @@ export default defineComponent({
       dropdownRef,
       optionRefs,
       virtualListRef,
+      defaultActiveFirstOption,
       onSelect: handleSelect,
       onPopupVisibleChange: handlePopupVisibleChange,
     });

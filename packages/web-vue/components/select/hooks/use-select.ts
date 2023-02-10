@@ -26,6 +26,7 @@ export const useSelect = ({
   onSelect,
   onPopupVisibleChange,
   enterToOpen = true,
+  defaultActiveFirstOption,
 }: {
   multiple?: Ref<boolean>;
   options?: Ref<SelectOption[]>;
@@ -45,6 +46,7 @@ export const useSelect = ({
   onSelect: (key: string, ev: Event) => void;
   onPopupVisibleChange: (visible: boolean) => void;
   enterToOpen?: boolean;
+  defaultActiveFirstOption?: Ref<boolean>;
 }) => {
   const {
     validOptions,
@@ -126,9 +128,13 @@ export const useSelect = ({
     if (visible) {
       // get last value key
       const current = valueKeys.value[valueKeys.value.length - 1];
-      const _activeKey = enabledOptionKeys.value.includes(current)
-        ? current
-        : enabledOptionKeys.value[0];
+      let _activeKey =
+        defaultActiveFirstOption?.value ?? true
+          ? enabledOptionKeys.value[0]
+          : undefined;
+      if (enabledOptionKeys.value.includes(current)) {
+        _activeKey = current;
+      }
       if (_activeKey !== activeKey.value) {
         activeKey.value = _activeKey;
       }
