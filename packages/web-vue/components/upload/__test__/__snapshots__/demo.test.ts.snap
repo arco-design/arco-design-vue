@@ -44,6 +44,7 @@ exports[`<upload> demo: render [before-remove] correctly 1`] = `
               <!---->
             </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
           </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></span></span>
+          <!---->
         </div>
         <div class=\\"arco-upload-list-item arco-upload-list-item-done\\">
           <div class=\\"arco-upload-list-item-content\\">
@@ -52,6 +53,7 @@ exports[`<upload> demo: render [before-remove] correctly 1`] = `
               <!---->
             </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
           </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></span></span>
+          <!---->
         </div>
         <!---->
       </transition-group-stub>
@@ -105,6 +107,7 @@ exports[`<upload> demo: render [custom-icon] correctly 1`] = `
             <!---->
           </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
         </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></span></span>
+        <!---->
       </div>
       <div class=\\"arco-upload-list-item arco-upload-list-item-done\\">
         <div class=\\"arco-upload-list-item-content\\">
@@ -113,6 +116,7 @@ exports[`<upload> demo: render [custom-icon] correctly 1`] = `
             <!---->
           </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
         </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span></span></span>
+        <!---->
       </div>
       <!---->
     </transition-group-stub>
@@ -159,9 +163,12 @@ exports[`<upload> demo: render [picture-card] correctly 1`] = `
   <!---->
   <transition-group-stub><span class=\\"arco-upload-list-picture\\"><img src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"20200717-103937.png\\"><div class=\\"arco-upload-list-picture-mask\\"><!----><div class=\\"arco-upload-list-picture-operation\\"><span class=\\"arco-upload-icon arco-upload-icon-preview\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-eye\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path clip-rule=\\"evenodd\\" d=\\"M24 37c6.627 0 12.627-4.333 18-13-5.373-8.667-11.373-13-18-13-6.627 0-12.627 4.333-18 13 5.373 8.667 11.373 13 18 13Z\\"></path><path d=\\"M29 24a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z\\"></path></svg></span>
     <!----><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span>
+    <!---->
 </div>
 </div></span><span class=\\"arco-upload-list-picture\\"><img src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"hahhahahahaha.png\\"><div class=\\"arco-upload-list-picture-mask\\"><!----><div class=\\"arco-upload-list-picture-operation\\"><span class=\\"arco-upload-icon arco-upload-icon-preview\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-eye\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path clip-rule=\\"evenodd\\" d=\\"M24 37c6.627 0 12.627-4.333 18-13-5.373-8.667-11.373-13-18-13-6.627 0-12.627 4.333-18 13 5.373 8.667 11.373 13 18 13Z\\"></path><path d=\\"M29 24a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z\\"></path></svg></span>
-<!----><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></div>
+<!----><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span>
+<!---->
+</div>
 </div></span><span class=\\"arco-upload arco-upload-type-picture-card\\"><input type=\\"file\\" style=\\"display: none;\\" accept=\\"image/*\\"><div class=\\"arco-upload-picture-card\\"><div class=\\"arco-upload-picture-card-text\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></div><!----></div></span></transition-group-stub>
 </div>"
 `;
@@ -177,6 +184,7 @@ exports[`<upload> demo: render [picture-list] correctly 1`] = `
           <!---->
         </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
       </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></span></span>
+      <!---->
     </div>
     <div class=\\"arco-upload-list-item arco-upload-list-item-done\\">
       <div class=\\"arco-upload-list-item-content\\"><span class=\\"arco-upload-list-item-thumbnail\\"><img src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"hahhahahahaha.png\\"></span>
@@ -185,6 +193,7 @@ exports[`<upload> demo: render [picture-list] correctly 1`] = `
           <!---->
         </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
       </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></span></span>
+      <!---->
     </div>
     <!---->
   </transition-group-stub>
@@ -222,6 +231,7 @@ exports[`<upload> demo: render [upload-list] correctly 1`] = `
           <!---->
         </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
       </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></span></span>
+      <!---->
     </div>
     <div class=\\"arco-upload-list-item arco-upload-list-item-error\\">
       <div class=\\"arco-upload-list-item-content\\">
@@ -230,6 +240,7 @@ exports[`<upload> demo: render [upload-list] correctly 1`] = `
           <!---->
         </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-upload\\">点击重试</span></span>
       </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></span></span>
+      <!---->
     </div>
     <div class=\\"arco-upload-list-item arco-upload-list-item-done\\">
       <div class=\\"arco-upload-list-item-content\\">
@@ -238,6 +249,7 @@ exports[`<upload> demo: render [upload-list] correctly 1`] = `
           <!---->
         </div><span class=\\"arco-upload-progress\\"><!----><span class=\\"arco-upload-icon arco-upload-icon-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M41.678 11.05 19.05 33.678 6.322 20.95\\"></path></svg></span></span>
       </div><span class=\\"arco-upload-list-item-operation\\"><span class=\\"arco-icon-hover\\"><span class=\\"arco-upload-icon arco-upload-icon-remove\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></span></span>
+      <!---->
     </div>
     <!---->
   </transition-group-stub>

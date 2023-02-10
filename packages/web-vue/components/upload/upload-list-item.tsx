@@ -142,6 +142,7 @@ export default defineComponent({
             </IconHover>
           </span>
         )}
+        {uploadCtx?.slots['extra-button']?.(props.file)}
       </div>
     );
   },

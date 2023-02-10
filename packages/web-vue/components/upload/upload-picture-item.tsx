@@ -88,6 +88,7 @@ export default defineComponent({
                     uploadCtx?.customIcon?.removeIcon?.() ?? <IconDelete />}
                 </span>
               )}
+              {uploadCtx?.slots['extra-button']?.(props.file)}
             </div>
           </div>
         </>
