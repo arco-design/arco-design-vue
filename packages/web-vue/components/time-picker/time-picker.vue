@@ -89,7 +89,7 @@ import {
 } from '../_utils/date';
 import { isArray, isUndefined } from '../_utils/is';
 import { getPrefixCls } from '../_utils/global-config';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import DateInput from '../_components/picker/input.vue';
 import DateRangeInput from '../_components/picker/input-range.vue';
 import IconClockCircle from '../icon/icon-clock-circle';
@@ -293,7 +293,7 @@ export default defineComponent({
      * @en You can pass in the parameters of the `Trigger` component
      * */
     triggerProps: {
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<TriggerProps>,
     },
     /**
      * @zh 是否在关闭后销毁 dom 结构

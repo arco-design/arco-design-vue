@@ -98,7 +98,7 @@ import {
 import useFormat from './hooks/use-format';
 import useRangePickerState from './hooks/use-range-picker-state';
 import useRangeHeaderValue from './hooks/use-range-header-value';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import DateRangeInput from '../_components/picker/input-range.vue';
 import RangePickerPanel from './range-picker-panel.vue';
 import useRangeTimePickerValue from './hooks/use-range-time-picker-value';
@@ -291,7 +291,7 @@ export default defineComponent({
       type: Boolean,
     },
     triggerProps: {
-      type: Object as PropType<Record<string, unknown>>,
+      type: Object as PropType<TriggerProps>,
     },
     unmountOnClose: {
       type: Boolean,

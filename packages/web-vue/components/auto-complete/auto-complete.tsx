@@ -9,7 +9,7 @@ import {
   watch,
 } from 'vue';
 import ArcoInput from '../input';
-import Trigger from '../trigger';
+import Trigger, { TriggerProps } from '../trigger';
 import { getPrefixCls } from '../_utils/global-config';
 import {
   SelectOptionInfo,
@@ -94,7 +94,7 @@ export default defineComponent({
      * @version 2.14.0
      */
     triggerProps: {
-      type: Object,
+      type: Object as PropType<TriggerProps>,
     },
     /**
      * @zh 是否允许清空输入框

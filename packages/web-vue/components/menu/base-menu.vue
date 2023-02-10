@@ -39,6 +39,7 @@ import useMenuDataCollector from './hooks/use-menu-data-collector';
 import useMenuOpenState from './hooks/use-menu-open-state';
 import { useResponsive } from '../_hooks/use-responsive';
 import { isNumber, isObject } from '../_utils/is';
+import { TriggerProps } from '../trigger';
 
 /**
  * @displayName Menu
@@ -172,7 +173,7 @@ export default defineComponent({
      * @en Accept all `Props` of `Trigger` in pop-up mode
      */
     triggerProps: {
-      type: Object,
+      type: Object as PropType<TriggerProps>,
     },
     /**
      * @zh 弹出模式下可接受所有 `ToolTip` 的 `Props`
