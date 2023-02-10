@@ -60,6 +60,7 @@ export default defineComponent({
               duration={item.duration}
               closable={item.closable}
               showIcon={item.showIcon}
+              resetOnUpdate={item.resetOnUpdate}
               v-slots={slots}
               onClose={() => context.emit('close', item.id)}
             />

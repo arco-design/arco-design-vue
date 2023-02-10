@@ -23,7 +23,7 @@ Specifying `id` to update the existing notification.
   </a-button>
 </template>
 
-<script lang="jsx">
+<script>
 import { Notification } from '@arco-design/web-vue';
 
 export default {
