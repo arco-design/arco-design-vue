@@ -195,8 +195,8 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 是否显示取消按钮
-     * @en Whether to display the cancel button
+     * @zh 照片墙是否显示预览按钮
+     * @en Whether to display the preview button in picture-card
      * @version 2.42.0
      */
     showPreviewButton: {
