@@ -14,6 +14,7 @@
       :trigger="trigger"
       :position="position"
       :popup-container="popupContainer"
+      :hide-on-select="hideOnSelect"
       @select="handleSelect"
       @popup-visible-change="handlePopupVisibleChange"
     >
@@ -123,6 +124,14 @@ export default defineComponent({
      */
     buttonProps: {
       type: Object,
+    },
+    /**
+     * @zh 是否在用户选择后隐藏弹出框
+     * @en Whether to hide popup when the user selects
+     */
+    hideOnSelect: {
+      type: Boolean,
+      default: true,
     },
   },
   emits: {

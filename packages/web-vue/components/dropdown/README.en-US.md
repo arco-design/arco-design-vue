@@ -38,6 +38,7 @@ description: When there are too many commands on the page, the alternative comma
 |trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`|
 |position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`|
 |popup-container|Mount container for popup|`string \| HTMLElement`|`-`|
+|hide-on-select|Whether to hide popup when the user selects|`boolean`|`true`|
 ### `<dropdown>` Events
 
 |Event Name|Description|Parameters|
@@ -128,6 +129,7 @@ description: When there are too many commands on the page, the alternative comma
 |type|Button type|`string`|`-`|
 |size|Button size|`string`|`-`|
 |button-props|Button props|`object`|`-`|
+|hide-on-select|Whether to hide popup when the user selects|`boolean`|`true`|
 ### `<dropdown-button>` Events
 
 |Event Name|Description|Parameters|
