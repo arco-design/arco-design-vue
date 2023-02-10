@@ -302,7 +302,7 @@ export default defineComponent({
                     {tab.slots.title?.() ?? tab.title}
                   </TabsTab>
                 ))}
-                {props.type === 'line' && (
+                {props.type === 'line' && activeTabRef.value && (
                   <TabsNavInk
                     ref={inkRef}
                     activeTabRef={activeTabRef.value}
