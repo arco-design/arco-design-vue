@@ -17,6 +17,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 @import ./__demo__/loading.md
 
+@import ./__demo__/header.md
+
 @import ./__demo__/footer.md
 
 @import ./__demo__/border.md
@@ -102,6 +104,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |loading-icon|选择框的加载中图标|-|2.16.0|
 |arrow-icon|选择框的箭头图标|-|2.16.0|
 |footer|下拉框的页脚|-||
+|header|下拉框的页头|-||
 |label|选择框的显示内容|data: `SelectOptionData`||
 |option|选项内容|data: `SelectOptionData`||
 |empty|选项为空时的显示内容|-||

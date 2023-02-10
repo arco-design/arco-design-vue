@@ -430,6 +430,11 @@ export default defineComponent({
    * @binding {SelectOptionData} data
    */
   /**
+   * @zh 下拉框的页头
+   * @en The header of the drop-down box
+   * @slot header
+   */
+  /**
    * @zh 下拉框的页脚
    * @en The footer of the drop-down box
    * @slot footer
@@ -879,6 +884,7 @@ export default defineComponent({
               />
             ),
             'empty': slots.empty,
+            'header': slots.header,
             'footer': slots.footer,
           }}
           loading={props.loading}
