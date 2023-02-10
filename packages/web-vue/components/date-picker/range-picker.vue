@@ -306,10 +306,11 @@ export default defineComponent({
     /**
      * @zh 是否禁止键盘输入日期
      * @en Whether input is disabled with the keyboard.
+     * @version 2.43.0
      */
     disabledInput: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   emits: {

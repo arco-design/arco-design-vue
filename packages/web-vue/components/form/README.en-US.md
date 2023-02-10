@@ -194,7 +194,7 @@ const useFormItem = (data: {
 ## FAQ
 
 ### About the `field` attribute of `form-item`
-The value of the `field` attribute is the path string to get the corresponding value of the current `form-item`.
+The value of the `field` attribute is the path string to get the corresponding value of the current `form-item`. Array division can also use `[]`, for example `field="people[2].id"`
 
 For example, the data structure passed into the model property is:
 ```ts

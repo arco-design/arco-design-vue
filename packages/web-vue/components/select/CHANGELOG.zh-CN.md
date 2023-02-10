@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 新增功能
+
+- 新增 `defaultActiveFirstOption` 属性 ([#2107](https://github.com/arco-design/arco-design-vue/pull/2107))
+- 增加 header 插槽 ([#2099](https://github.com/arco-design/arco-design-vue/pull/2099))
+
+
 ## 2.41.0
 
 `2022-12-30`

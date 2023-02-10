@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 Feature
+
+- **select:** Added `defaultActiveFirstOption` property ([#2107](https://github.com/arco-design/arco-design-vue/pull/2107))
+- **select:** add header slot ([#2099](https://github.com/arco-design/arco-design-vue/pull/2099))
+- **dropdown:** add hide-on-select props ([#2078](https://github.com/arco-design/arco-design-vue/pull/2078))
+- **date-picker:** Add the `disabled-input` property to disable keyboard input ([#2072](https://github.com/arco-design/arco-design-vue/pull/2072))
+- **drawer:** add `before-open` and `before-close` events ([#2064](https://github.com/arco-design/arco-design-vue/pull/2064))
+- **upload:** Added file list extra button slot `#extra-button` ([#2060](https://github.com/arco-design/arco-design-vue/pull/2060))
+
+### 🐛 BugFix
+
+- **notification:** Fix the problem that the update duration fails ([#2106](https://github.com/arco-design/arco-design-vue/pull/2106))
+- **tabs:** Hide the tab indicator when there are no matching tabs ([#2105](https://github.com/arco-design/arco-design-vue/pull/2105))
+- **menu:** fix the hotreload problem ([#2091](https://github.com/arco-design/arco-design-vue/pull/2091))
+
+### 🆎 TypeScript
+
+- Update the type of `triggerProps` for some components ([#2090](https://github.com/arco-design/arco-design-vue/pull/2090))
+
+
 ## 2.42.1
 
 `2023-02-03`

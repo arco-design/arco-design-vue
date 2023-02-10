@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🐛 BugFix
+
+- Fix the problem that the update duration fails ([#2106](https://github.com/arco-design/arco-design-vue/pull/2106))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

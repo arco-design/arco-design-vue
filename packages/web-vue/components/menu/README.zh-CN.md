@@ -44,7 +44,7 @@ description: 收纳、排列并展示一系列选项的列表。
 |open-keys **(v-model)**|展开的子菜单 key 数组|`string[]`|`-`||
 |default-open-keys|默认展开的子菜单 key 数组|`string[]`|`[]`||
 |scroll-config|滚动到可见区域的配置项，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数|`{ [key: string]: any }`|`-`||
-|trigger-props|弹出模式下可接受所有 `Trigger` 的 `Props`|`object`|`-`||
+|trigger-props|弹出模式下可接受所有 `Trigger` 的 `Props`|`TriggerProps`|`-`||
 |tooltip-props|弹出模式下可接受所有 `ToolTip` 的 `Props`|`object`|`-`||
 |auto-open-selected|默认展开选中的菜单|`boolean`|`false`|2.8.0|
 |breakpoint|响应式的断点, 详见[响应式栅格](/vue/component/grid)|`'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs'`|`-`|2.18.0|

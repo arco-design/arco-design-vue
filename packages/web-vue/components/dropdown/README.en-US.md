@@ -31,14 +31,14 @@ description: When there are too many commands on the page, the alternative comma
 
 ### `<dropdown>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|popup-visible **(v-model)**|Whether the popup is visible|`boolean`|`-`|
-|default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`|
-|trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`|
-|position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`|
-|popup-container|Mount container for popup|`string \| HTMLElement`|`-`|
-|hide-on-select|Whether to hide popup when the user selects|`boolean`|`true`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|popup-visible **(v-model)**|Whether the popup is visible|`boolean`|`-`||
+|default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`||
+|trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`||
+|position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`||
+|popup-container|Mount container for popup|`string \| HTMLElement`|`-`||
+|hide-on-select|Whether to hide popup when the user selects|`boolean`|`true`|2.43.0|
 ### `<dropdown>` Events
 
 |Event Name|Description|Parameters|

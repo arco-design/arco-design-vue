@@ -88,6 +88,7 @@ export default defineComponent({
     /**
      * @zh 是否在用户选择后隐藏弹出框
      * @en Whether to hide popup when the user selects
+     * @version 2.43.0
      */
     hideOnSelect: {
       type: Boolean,

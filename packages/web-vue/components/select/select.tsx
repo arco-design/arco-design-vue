@@ -438,6 +438,7 @@ export default defineComponent({
    * @zh 下拉框的页头
    * @en The header of the drop-down box
    * @slot header
+   * @version 2.43.0
    */
   /**
    * @zh 下拉框的页脚

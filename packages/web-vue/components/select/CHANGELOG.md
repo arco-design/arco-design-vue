@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 Feature
+
+- Added `defaultActiveFirstOption` property ([#2107](https://github.com/arco-design/arco-design-vue/pull/2107))
+- add header slot ([#2099](https://github.com/arco-design/arco-design-vue/pull/2099))
+
+
 ## 2.41.0
 
 `2022-12-30`

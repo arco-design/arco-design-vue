@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 Feature
+
+- add `before-open` and `before-close` events ([#2064](https://github.com/arco-design/arco-design-vue/pull/2064))
+
+
 ## 2.38.0
 
 `2022-10-28`

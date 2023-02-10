@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 Feature
+
+- Add the `disabled-input` property to disable keyboard input ([#2072](https://github.com/arco-design/arco-design-vue/pull/2072))
+
+
 ## 2.42.0
 
 `2023-01-13`

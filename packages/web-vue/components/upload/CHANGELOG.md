@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 Feature
+
+- Added file list extra button slot `#extra-button` ([#2060](https://github.com/arco-design/arco-design-vue/pull/2060))
+
+
 ## 2.42.0
 
 `2023-01-13`

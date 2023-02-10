@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🐛 BugFix
+
+- fix the hotreload problem ([#2091](https://github.com/arco-design/arco-design-vue/pull/2091))
+
+
 ## 2.34.1
 
 `2022-08-05`

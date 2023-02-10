@@ -404,7 +404,7 @@ export default defineComponent({
    * @en Extra button
    * @slot extra-button
    * @binding {FileItem} fileItem
-   * @version //todo
+   * @version 2.43.0
    */
   setup(props, { emit, slots }) {
     const {

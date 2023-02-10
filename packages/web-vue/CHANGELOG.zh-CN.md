@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 新增功能
+
+- **select:** 新增 `defaultActiveFirstOption` 属性 ([#2107](https://github.com/arco-design/arco-design-vue/pull/2107))
+- **select:** 增加 header 插槽 ([#2099](https://github.com/arco-design/arco-design-vue/pull/2099))
+- **dropdown:** 添加hide-on-select属性 ([#2078](https://github.com/arco-design/arco-design-vue/pull/2078))
+- **date-picker:** 增加 `disabled-input` 属性，可以禁用键盘输入 ([#2072](https://github.com/arco-design/arco-design-vue/pull/2072))
+- **drawer:** 添加 `before-open` 和 `before-close` 事件 ([#2064](https://github.com/arco-design/arco-design-vue/pull/2064))
+- **upload:** 新增文件列表额外按钮插槽 `#extra-button` ([#2060](https://github.com/arco-design/arco-design-vue/pull/2060))
+
+### 🐛 问题修复
+
+- **notification:** 修复更新 duration 失效的问题 ([#2106](https://github.com/arco-design/arco-design-vue/pull/2106))
+- **tabs:** 无匹配选项卡时，隐藏选项卡指示器 ([#2105](https://github.com/arco-design/arco-design-vue/pull/2105))
+- **menu:** 修复热更新问题 ([#2091](https://github.com/arco-design/arco-design-vue/pull/2091))
+
+### 🆎 类型修正
+
+- 更新部分组件 `triggerProps` 的类型 ([#2090](https://github.com/arco-design/arco-design-vue/pull/2090))
+
+
 ## 2.42.1
 
 `2023-02-03`

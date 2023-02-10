@@ -46,7 +46,7 @@ description: Organize, arrange, and display a list of options.
 |open-keys **(v-model)**|Expanded submenu key array|`string[]`|`-`||
 |default-open-keys|The default expanded submenu key array|`string[]`|`[]`||
 |scroll-config|Scroll to the configuration items in the visible area and receive all the parameters of [scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)|`{ [key: string]: any }`|`-`||
-|trigger-props|Accept all `Props` of `Trigger` in pop-up mode|`object`|`-`||
+|trigger-props|Accept all `Props` of `Trigger` in pop-up mode|`TriggerProps`|`-`||
 |tooltip-props|Accept all `Props` of `ToolTip` in pop-up mode|`object`|`-`||
 |auto-open-selected|Expand the selected menus by default|`boolean`|`false`|2.8.0|
 |breakpoint|Responsive breakpoints, see [Responsive Grid](/vue/component/grid) for details|`'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs'`|`-`|2.18.0|

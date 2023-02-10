@@ -88,14 +88,14 @@ const data = reactive({
   ]
 })
 ```
-此时，如果想要指定当前 `form-item` 对应的值为 `id: '2222'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`
+此时，如果想要指定当前 `form-item` 对应的值为 `id: '2222'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`。数组分割也可以使用 `[]`，例如 `field="people[2].id"`
 
 ---
 ## en-US
 ## FAQ
 
 ### About the `field` attribute of `form-item`
-The value of the `field` attribute is the path string to get the corresponding value of the current `form-item`.
+The value of the `field` attribute is the path string to get the corresponding value of the current `form-item`. Array division can also use `[]`, for example `field="people[2].id"`
 
 For example, the data structure passed into the model property is:
 ```ts

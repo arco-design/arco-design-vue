@@ -60,7 +60,7 @@ description: Select the time on the pop-up panel to conveniently complete the ti
 |position|Pop-up position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`|
 |popup-visible **(v-model)**|Control the pop-up box to open or close|`boolean`|`-`|
 |default-popup-visible|The pop-up box is opened or closed by default|`boolean`|`false`|
-|trigger-props|You can pass in the parameters of the `Trigger` component|`Record<string, unknown>`|`-`|
+|trigger-props|You can pass in the parameters of the `Trigger` component|`TriggerProps`|`-`|
 |unmount-on-close|Whether to destroy the dom structure after closing|`boolean`|`false`|
 ### `<time-picker>` Events
 

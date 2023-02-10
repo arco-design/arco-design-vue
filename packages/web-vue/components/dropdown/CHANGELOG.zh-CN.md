@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 新增功能
+
+- 添加hide-on-select属性 ([#2078](https://github.com/arco-design/arco-design-vue/pull/2078))
+
+
 ## 2.36.1
 
 `2022-09-09`

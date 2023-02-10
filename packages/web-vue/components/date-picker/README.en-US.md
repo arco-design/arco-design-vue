@@ -65,7 +65,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |position|The position of the pop-up box|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`||
 |popup-visible|Control the open or closed state of the pop-up box|`boolean`|`-`||
 |default-popup-visible|The default pop-up box is open or closed|`boolean`|`false`||
-|trigger-props|You can pass in the parameters of the `Trigger` component|`Record<string, unknown>`|`-`||
+|trigger-props|You can pass in the parameters of the `Trigger` component|`TriggerProps`|`-`||
 |unmount-on-close|Whether to destroy the DOM structure when hiding|`boolean`|`false`||
 |placeholder|Prompt copy|`string`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
@@ -77,7 +77,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
 |preview-shortcut|Whether to preview the result of the shortcut|`boolean`|`true`|2.28.0|
 |show-confirm-btn|Whether to show the confirm button, always show when `showTime = true`.|`boolean`|`false`|2.29.0|
-|disabled-input|Whether input is disabled with the keyboard.|`boolean`|`true`||
+|disabled-input|Whether input is disabled with the keyboard.|`boolean`|`false`|2.43.0|
 ### `Common` Events
 
 |Event Name|Description|Parameters|
@@ -188,7 +188,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |disabled-time|Unselectable time|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
 |separator|The segmentation symbol in the input box of the range selector|`string`|`-`||
 |exchange-time|Whether the time will be exchanged, by default time will affect and participate in the ordering of start and end values, if you want to fix the time order, you can turn it off.|`boolean`|`true`|2.25.0|
-|disabled-input|Whether input is disabled with the keyboard.|`boolean`|`true`||
+|disabled-input|Whether input is disabled with the keyboard.|`boolean`|`false`|2.43.0|
 ### `<range-picker>` Events
 
 |Event Name|Description|Parameters|

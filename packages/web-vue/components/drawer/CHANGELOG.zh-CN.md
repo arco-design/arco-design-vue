@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🆕 新增功能
+
+- 添加 `before-open` 和 `before-close` 事件 ([#2064](https://github.com/arco-design/arco-design-vue/pull/2064))
+
+
 ## 2.38.0
 
 `2022-10-28`

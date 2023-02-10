@@ -53,12 +53,14 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |hide-cancel|Whether to hide the cancel button|`boolean`|`false`|2.19.0|
 ### `<drawer>` Events
 
-|Event Name|Description|Parameters|
-|---|---|---|
-|ok|Triggered when the OK button is clicked|-|
-|cancel|Triggered when the cancel or close button is clicked|-|
-|open|Triggered after the drawer is opened (the animation ends)|-|
-|close|Triggered when the drawer is closed (the animation ends)|-|
+|Event Name|Description|Parameters|version|
+|---|---|---|:---|
+|ok|Triggered when the OK button is clicked|-||
+|cancel|Triggered when the cancel or close button is clicked|-||
+|open|Triggered after the drawer is opened (the animation ends)|-||
+|close|Triggered when the drawer is closed (the animation ends)|-||
+|before-open|Triggered before drawer is opened|-|2.43.0|
+|before-close|Triggered before drawer is closed|-|2.43.0|
 ### `<drawer>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -113,7 +115,9 @@ Drawer._context = app._context;
 |onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |onOpen|Triggered after the drawer is opened (the animation ends)|`() => void`|`-`||
 |onClose|Triggered when the drawer is closed (the animation ends)|`() => void`|`-`||
-|escToClose|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
+|onBeforeOpen|Triggered before drawer is opened|`() => void`|`-`|2.43.0|
+|onBeforeClose|Triggered before drawer is closed|`() => void`|`-`|2.43.0|
+|escToClose|Whether to support the ESC key to close the drawer|`boolean`|`true`|2.15.0|
 |header|Whether to display high-quality content|`boolean \| RenderContent`|`true`|2.33.0|
 |footer|Whether to display the bottom content|`boolean \| RenderContent`|`true`|2.11.0|
 |hideCancel|Whether to hide the cancel button|`boolean`|`false`|2.19.0|

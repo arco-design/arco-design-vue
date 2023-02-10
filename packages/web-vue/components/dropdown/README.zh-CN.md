@@ -29,14 +29,14 @@ description: 页面上的命令过多时，可将备选命令收纳到向下展�
 
 ### `<dropdown>` Props
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`|
-|default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`|
-|trigger|触发方式|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`|
-|position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`|
-|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`|
-|hide-on-select|是否在用户选择后隐藏弹出框|`boolean`|`true`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|popup-visible **(v-model)**|弹出框是否可见|`boolean`|`-`||
+|default-popup-visible|弹出框默认是否可见（非受控模式）|`boolean`|`false`||
+|trigger|触发方式|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`||
+|position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`||
+|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`||
+|hide-on-select|是否在用户选择后隐藏弹出框|`boolean`|`true`|2.43.0|
 ### `<dropdown>` Events
 
 |事件名|描述|参数|

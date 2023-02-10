@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.0
+
+`2023-02-10`
+
+### 🐛 BugFix
+
+- Hide the tab indicator when there are no matching tabs ([#2105](https://github.com/arco-design/arco-design-vue/pull/2105))
+
+
 ## 2.41.1
 
 `2023-01-06`

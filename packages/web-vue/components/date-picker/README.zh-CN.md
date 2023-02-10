@@ -63,7 +63,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |position|弹出的框的位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`||
 |popup-visible|控制弹出框的打开或者关闭状态|`boolean`|`-`||
 |default-popup-visible|默认弹出框是打开或者关闭|`boolean`|`false`||
-|trigger-props|可以传入 `Trigger` 组件的参数|`Record<string, unknown>`|`-`||
+|trigger-props|可以传入 `Trigger` 组件的参数|`TriggerProps`|`-`||
 |unmount-on-close|是否在隐藏的时候销毁DOM结构|`boolean`|`false`||
 |placeholder|提示文案|`string`|`-`||
 |disabled|是否禁用|`boolean`|`false`||
@@ -75,7 +75,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |value-format|值的格式，对 `value` `defaultValue` `pickerValue` `defaultPickerValue` 以及事件中的返回值生效，支持设置为时间戳，Date 和字符串（参考[字符串解析格式](#字符串解析格式)）。如果没有指定，将格式化为字符串，格式同 `format`。|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
 |preview-shortcut|是否要预览快捷选择的结果|`boolean`|`true`|2.28.0|
 |show-confirm-btn|是否显示确认按钮，`showTime = true` 的时候始终显示。|`boolean`|`false`|2.29.0|
-|disabled-input|是否禁止键盘输入日期|`boolean`|`true`||
+|disabled-input|是否禁止键盘输入日期|`boolean`|`false`|2.43.0|
 ### `Common` Events
 
 |事件名|描述|参数|
@@ -186,7 +186,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |disabled-time|不可选取的时间|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
 |separator|范围选择器输入框内的分割符号|`string`|`-`||
 |exchange-time|时间是否会交换，默认情况下时间会影响和参与开始和结束值的排序，如果要固定时间顺序，可将其关闭。|`boolean`|`true`|2.25.0|
-|disabled-input|是否禁止键盘输入日期|`boolean`|`true`||
+|disabled-input|是否禁止键盘输入日期|`boolean`|`false`|2.43.0|
 ### `<range-picker>` Events
 
 |事件名|描述|参数|

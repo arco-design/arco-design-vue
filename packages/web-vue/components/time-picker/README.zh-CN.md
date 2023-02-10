@@ -58,7 +58,7 @@ description: 在弹出面板上选择时间，以便捷完成时间输入的控�
 |position|弹出的位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bl'`|
 |popup-visible **(v-model)**|控制弹出框打开或者关闭|`boolean`|`-`|
 |default-popup-visible|弹出框默认打开或者关闭|`boolean`|`false`|
-|trigger-props|可以传入 `Trigger` 组件的参数|`Record<string, unknown>`|`-`|
+|trigger-props|可以传入 `Trigger` 组件的参数|`TriggerProps`|`-`|
 |unmount-on-close|是否在关闭后销毁 dom 结构|`boolean`|`false`|
 ### `<time-picker>` Events
 

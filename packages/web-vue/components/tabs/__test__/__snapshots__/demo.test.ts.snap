@@ -7,7 +7,7 @@ exports[`<tabs> demo: render [basic] correctly 1`] = `
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
       <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
-        <div class=\\"arco-tabs-nav-ink\\" style=\\"left: 0px; width: 0px;\\"></div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -76,7 +76,7 @@ exports[`<tabs> demo: render [extra] correctly 1`] = `
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
       <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
-        <div class=\\"arco-tabs-nav-ink\\" style=\\"left: 0px; width: 0px;\\"></div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -110,7 +110,7 @@ exports[`<tabs> demo: render [icon] correctly 1`] = `
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
       <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
-        <div class=\\"arco-tabs-nav-ink\\" style=\\"left: 0px; width: 0px;\\"></div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -143,7 +143,7 @@ exports[`<tabs> demo: render [lazy] correctly 1`] = `
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
       <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
-        <div class=\\"arco-tabs-nav-ink\\" style=\\"left: 0px; width: 0px;\\"></div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -181,7 +181,7 @@ exports[`<tabs> demo: render [position] correctly 1`] = `
         <!---->
         <div class=\\"arco-tabs-nav-tab\\">
           <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
-            <div class=\\"arco-tabs-nav-ink\\" style=\\"left: 0px; width: 0px;\\"></div>
+            <!---->
           </div>
           <!---->
         </div>
@@ -217,7 +217,7 @@ exports[`<tabs> demo: render [trigger] correctly 1`] = `
     <!---->
     <div class=\\"arco-tabs-nav-tab\\">
       <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
-        <div class=\\"arco-tabs-nav-ink\\" style=\\"left: 0px; width: 0px;\\"></div>
+        <!---->
       </div>
       <!---->
     </div>
@@ -257,7 +257,7 @@ exports[`<tabs> demo: render [type] correctly 1`] = `
         <!---->
         <div class=\\"arco-tabs-nav-tab\\">
           <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
-            <div class=\\"arco-tabs-nav-ink\\" style=\\"left: 0px; width: 0px;\\"></div>
+            <!---->
           </div>
           <!---->
         </div>
