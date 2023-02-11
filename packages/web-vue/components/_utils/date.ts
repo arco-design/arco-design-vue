@@ -5,7 +5,7 @@ import weekOfYear from 'dayjs/plugin/weekOfYear';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat';
 import weekYear from 'dayjs/plugin/weekYear';
 import QuarterOfYear from 'dayjs/plugin/quarterOfYear';
-import { isDayjs, isArray } from './is';
+import { isDayjs, isArray, isQuarter } from './is';
 import 'dayjs/locale/zh-cn';
 
 const overwriteIsDayjs = (_: any, Dayjs: any, dayjs: any) => {
@@ -142,10 +142,25 @@ export function getDayjsValue(
   time: DateValue | DateValue[] | (DateValue | undefined)[] | undefined,
   format: string
 ) {
+  const parseQuarterToMonth = (value: string) => {
+    const reg = /(Q1)|(Q2)|(Q3)|(Q4)/;
+    const quarter = {
+      Q1: '01',
+      Q2: '04',
+      Q3: '07',
+      Q4: '10',
+    };
+    const [q] = reg.exec(value) as ('Q1' | 'Q2' | 'Q3' | 'Q4')[];
+    return value.replace(reg, quarter[q]);
+  };
+
   const formatValue = (value: Date | string | number | undefined) => {
     if (!value) return undefined;
 
     if (typeof value === 'string') {
+      if (isQuarter(format)) {
+        return dayjs(parseQuarterToMonth(value), format.replace(/\[Q]Q/, 'MM'));
+      }
       return dayjs(value, format);
     }
 
@@ -155,7 +170,6 @@ export function getDayjsValue(
   if (isArray(time)) {
     return time.map(formatValue);
   }
-
   return formatValue(time);
 }
 
