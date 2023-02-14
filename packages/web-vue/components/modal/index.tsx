@@ -97,8 +97,18 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   render(vm, container);
   document.body.appendChild(container);
 
+  const update = (cfg: ModalConfig) => {
+    Object.assign(config, cfg);
+
+    if (vm.component) {
+      // @ts-ignore
+      Object.assign(vm.component.props, config);
+    }
+  };
+
   return {
     close: handleReturnClose,
+    update,
   };
 };
 

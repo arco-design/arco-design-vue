@@ -44,9 +44,17 @@ const ModalContent = {
 export default {
   setup() {
     const handleClick = () => {
-      Modal.info({
+      const modal = Modal.info({
         title: 'Info Title',
-        content: () => h(ModalContent)
+        footer: false,
+        content: () => [
+          h(ModalContent),
+          h('div', {class: 'info-modal-content'}, h(Button, {
+            onClick: () => {
+              modal.update({footer: true})
+            }
+          }, 'show footer'))
+        ]
       });
     };
 
