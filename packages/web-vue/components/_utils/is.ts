@@ -88,6 +88,10 @@ export const isArrayChildren = (
   return isArray(children);
 };
 
+export const isQuarter = (fromat: string) => {
+  return /\[Q]Q/.test(fromat);
+};
+
 export function isDayjs(time: any): time is Dayjs {
   return (
     isObject(time) &&
