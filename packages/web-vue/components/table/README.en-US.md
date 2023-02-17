@@ -290,7 +290,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |title|Column title|`string`|`-`||
 |width|Column width|`number`|`-`||
 |fixed|Is it fixed|`boolean`|`false`||
-|checkStrictly|Whether to enable strict selection mode (default: true)|`boolean`|`false`|2.29.0|
+|checkStrictly|Whether to enable strict selection mode|`boolean`|`true`|2.29.0|
 |onlyCurrent|Whether to display only the keys of the current page (clear keys when switching paging)|`boolean`|`false`|2.32.0|
 
 
