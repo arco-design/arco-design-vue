@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.1
+
+`2023-02-17`
+
+### 🐛 BugFix
+
+- Fix the problem that an error is returned because dayjs does not support quarter parsing ([#2110](https://github.com/arco-design/arco-design-vue/pull/2110))
+
+
 ## 2.43.0
 
 `2023-02-10`

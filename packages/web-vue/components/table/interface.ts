@@ -344,8 +344,9 @@ export interface TableRowSelection {
    */
   fixed?: boolean;
   /**
-   * @zh 是否开启严格选择模式 (default: true)
-   * @en Whether to enable strict selection mode (default: true)
+   * @zh 是否开启严格选择模式
+   * @en Whether to enable strict selection mode
+   * @defaultValue true
    * @version 2.29.0
    */
   checkStrictly?: boolean;
