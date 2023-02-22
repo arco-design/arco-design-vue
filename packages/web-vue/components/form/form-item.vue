@@ -385,7 +385,7 @@ export default defineComponent({
     const computedValidateStatus = computed(
       () => props.validateStatus ?? finalStatus.value
     );
-    const isError = computed(() => finalStatus.value === 'error');
+    const isError = computed(() => computedValidateStatus.value === 'error');
 
     const mergedRules = computed(() => {
       const baseRules = ([] as FieldRule[]).concat(
