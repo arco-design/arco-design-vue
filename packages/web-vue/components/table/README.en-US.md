@@ -128,6 +128,7 @@ description: It is used for data collection, display, analysis and processing, a
 |clearFilters|Clear the filter for columns|dataIndex: ` string \| string[] `|-|2.31.0|
 |resetSorters|Reset the order of columns|-|-|2.31.0|
 |clearSorters|Clear the order of columns|-|-|2.31.0|
+|updateLazyLoadData|Update lazy-loaded data|children?: `TableData[]`<br>record: `TableData`|-|-|
 ### `<table>` Slots
 
 |Slot Name|Description|Parameters|version|

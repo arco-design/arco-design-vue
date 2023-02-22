@@ -904,7 +904,7 @@ export default defineComponent({
 
     const lazyLoadData = reactive<Record<string, TableData[]>>({});
 
-    const addLazyLoadData = (
+    const updateLazyLoadData = (
       children: TableData[] | undefined,
       record: TableDataWithRaw
     ) => {
@@ -1304,7 +1304,7 @@ export default defineComponent({
       tableInjectionKey,
       reactive({
         loadMore,
-        addLazyLoadData,
+        updateLazyLoadData,
         slots,
         sorter: computedSorter,
         filters: computedFilters,
@@ -2160,6 +2160,7 @@ export default defineComponent({
       selfClearFilters: clearFilters,
       selfResetSorters: resetSorters,
       selfClearSorters: clearSorters,
+      selfUpdateLazyLoadData: updateLazyLoadData,
     };
   },
   methods: {
@@ -2242,6 +2243,17 @@ export default defineComponent({
      */
     clearSorters() {
       return this.selfClearSorters();
+    },
+    /**
+     * @zh 更新懒加载数据
+     * @en Update lazy-loaded data
+     * @public
+     */
+    updateLazyLoadData(
+      children: TableData[] | undefined,
+      record: TableDataWithRaw
+    ) {
+      return this.selfUpdateLazyLoadData(children, record);
     },
   },
   render() {

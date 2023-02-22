@@ -126,6 +126,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |clearFilters|清空列的筛选器|dataIndex: ` string \| string[] `|-|2.31.0|
 |resetSorters|重置列的排序|-|-|2.31.0|
 |clearSorters|清空列的排序|-|-|2.31.0|
+|updateLazyLoadData|更新懒加载数据|children?: `TableData[]`<br>record: `TableData`|-|-|
 ### `<table>` Slots
 
 |插槽名|描述|参数|版本|

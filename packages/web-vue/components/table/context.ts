@@ -13,7 +13,7 @@ export interface TableContext {
     record: TableData,
     done: (children?: TableData[]) => void
   ) => void;
-  addLazyLoadData: (
+  updateLazyLoadData: (
     children: TableData[] | undefined,
     record: TableDataWithRaw
   ) => void;

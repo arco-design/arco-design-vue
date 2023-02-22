@@ -204,7 +204,7 @@ export default defineComponent({
         new Promise<TableData[] | undefined>((resolve) => {
           tableCtx.loadMore?.(props.record.raw, resolve);
         }).then((children?: TableData[]) => {
-          tableCtx.addLazyLoadData?.(children, props.record);
+          tableCtx.updateLazyLoadData?.(children, props.record);
           isLoading.value = false;
         });
       }
