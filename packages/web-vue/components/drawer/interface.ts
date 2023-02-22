@@ -163,12 +163,33 @@ export interface DrawerConfig {
   hideCancel?: boolean;
 }
 
+export type DrawerUpdateConfig = Omit<
+  DrawerConfig,
+  | 'title'
+  | 'content'
+  | 'onOk'
+  | 'onCancel'
+  | 'onBeforeOk'
+  | 'onBeforeCancel'
+  | 'onOpen'
+  | 'onClose'
+  | 'onBeforeOpen'
+  | 'onBeforeClose'
+  | 'header'
+  | 'footer'
+>;
+
 export interface DrawerReturn {
   /**
    * @zh 关闭抽屉
    * @en Close Drawer
    */
   close: () => void;
+  /**
+   * @zh 更新抽屉
+   * @en Update Drawer
+   */
+  update: (config: DrawerUpdateConfig) => void;
 }
 
 export interface DrawerMethod {

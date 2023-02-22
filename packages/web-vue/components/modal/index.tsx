@@ -6,7 +6,7 @@ import { MESSAGE_TYPES } from '../_utils/constant';
 import { getOverlay } from '../_utils/dom';
 import { isFunction } from '../_utils/is';
 import _Modal from './modal.vue';
-import { ModalConfig, ModalMethod } from './interface';
+import type { ModalConfig, ModalMethod, ModalUpdateConfig } from './interface';
 import { omit } from '../_utils/omit';
 import { getSlotFunction } from '../_utils/vue-utils';
 
@@ -49,6 +49,14 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   const handleReturnClose = () => {
     if (vm.component) {
       vm.component.props.visible = false;
+    }
+  };
+
+  const handleUpdateConfig = (config: ModalUpdateConfig) => {
+    if (vm.component) {
+      Object.entries(config).forEach(([key, value]) => {
+        vm.component!.props[key] = value;
+      });
     }
   };
 
@@ -99,6 +107,7 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
 
   return {
     close: handleReturnClose,
+    update: handleUpdateConfig,
   };
 };
 

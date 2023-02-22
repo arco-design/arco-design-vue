@@ -7,7 +7,11 @@ import { omit } from '../_utils/omit';
 import { ArcoOptions } from '../_utils/types';
 import { getSlotFunction } from '../_utils/vue-utils';
 import _Drawer from './drawer.vue';
-import { DrawerConfig, DrawerMethod } from './interface';
+import type {
+  DrawerConfig,
+  DrawerMethod,
+  DrawerUpdateConfig,
+} from './interface';
 
 const open = (config: DrawerConfig, appContext?: AppContext) => {
   let container: HTMLElement | null = getOverlay('drawer');
@@ -48,6 +52,14 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
   const handleReturnClose = () => {
     if (vm.component) {
       vm.component.props.visible = false;
+    }
+  };
+
+  const handleUpdateConfig = (config: DrawerUpdateConfig) => {
+    if (vm.component) {
+      Object.entries(config).forEach(([key, value]) => {
+        vm.component!.props[key] = value;
+      });
     }
   };
 
@@ -103,6 +115,7 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
 
   return {
     close: handleReturnClose,
+    update: handleUpdateConfig,
   };
 };
 

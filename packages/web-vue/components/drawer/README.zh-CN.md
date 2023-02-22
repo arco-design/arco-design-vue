@@ -127,6 +127,7 @@ Drawer._context = app._context;
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |close|关闭抽屉|`() => void`|`-`|
+|update|更新抽屉|`(config: DrawerUpdateConfig) => void`|`-`|
 
 
 
