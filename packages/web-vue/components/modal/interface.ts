@@ -194,12 +194,32 @@ export interface ModalConfig {
   modalAnimationName?: string;
 }
 
+export type ModalUpdateConfig = Omit<
+  ModalConfig,
+  | 'title'
+  | 'content'
+  | 'footer'
+  | 'onOk'
+  | 'onCancel'
+  | 'onBeforeOk'
+  | 'onBeforeCancel'
+  | 'onOpen'
+  | 'onClose'
+  | 'onBeforeOpen'
+  | 'onBeforeClose'
+>;
+
 export interface ModalReturn {
   /**
    * @zh 关闭对话框
    * @en Close Modal
    */
   close: () => void;
+  /**
+   * @zh 更新对话框
+   * @en Update Modal
+   */
+  update: (config: ModalUpdateConfig) => void;
 }
 
 export interface ModalMethod {

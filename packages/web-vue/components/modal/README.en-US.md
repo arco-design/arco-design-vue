@@ -151,6 +151,7 @@ Modal._context = app._context;
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |close|Close Modal|`() => void`|`-`|
+|update|Update Modal|`(config: ModalUpdateConfig) => void`|`-`|
 
 
 

@@ -129,6 +129,7 @@ Drawer._context = app._context;
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |close|Close Drawer|`() => void`|`-`|
+|update|Update Drawer|`(config: DrawerUpdateConfig) => void`|`-`|
 
 
 
