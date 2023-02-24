@@ -1,5 +1,5 @@
 import { AppContext, CSSProperties } from 'vue';
-import { ButtonProps } from '../button/interface';
+import { ButtonProps } from '../button';
 import { RenderContent } from '../_utils/types';
 
 export interface DrawerConfig {
@@ -188,6 +188,7 @@ export interface DrawerReturn {
   /**
    * @zh 更新抽屉
    * @en Update Drawer
+   * @version 2.43.2
    */
   update: (config: DrawerUpdateConfig) => void;
 }

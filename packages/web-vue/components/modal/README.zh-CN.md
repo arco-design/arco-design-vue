@@ -146,10 +146,10 @@ Modal._context = app._context;
 
 ### ModalReturn
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|close|关闭对话框|`() => void`|`-`|
-|update|更新对话框|`(config: ModalUpdateConfig) => void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|close|关闭对话框|`() => void`|`-`||
+|update|更新对话框|`(config: ModalUpdateConfig) => void`|`-`|2.43.2|
 
 
 

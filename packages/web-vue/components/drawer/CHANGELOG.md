@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.2
+
+`2023-02-24`
+
+### 💎 Enhancement
+
+- add update method of function call ([#2155](https://github.com/arco-design/arco-design-vue/pull/2155))
+
+
 ## 2.43.0
 
 `2023-02-10`

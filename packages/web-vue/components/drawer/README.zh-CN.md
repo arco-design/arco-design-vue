@@ -124,10 +124,10 @@ Drawer._context = app._context;
 
 ### DrawerReturn
 
-|参数名|描述|类型|默认值|
-|---|---|---|:---:|
-|close|关闭抽屉|`() => void`|`-`|
-|update|更新抽屉|`(config: DrawerUpdateConfig) => void`|`-`|
+|参数名|描述|类型|默认值|版本|
+|---|---|---|:---:|:---|
+|close|关闭抽屉|`() => void`|`-`||
+|update|更新抽屉|`(config: DrawerUpdateConfig) => void`|`-`|2.43.2|
 
 
 

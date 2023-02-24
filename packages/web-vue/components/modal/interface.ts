@@ -218,6 +218,7 @@ export interface ModalReturn {
   /**
    * @zh 更新对话框
    * @en Update Modal
+   * @version 2.43.2
    */
   update: (config: ModalUpdateConfig) => void;
 }

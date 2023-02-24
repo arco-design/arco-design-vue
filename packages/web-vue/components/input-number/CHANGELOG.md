@@ -2,6 +2,14 @@
 changelog: true
 ```
 
+## 2.43.2
+
+`2023-02-24`
+
+### 🐛 BugFix
+
+- fix display step button in disabled state ([#2169](https://github.com/arco-design/arco-design-vue/pull/2169))
+
 ## 2.42.1
 
 `2023-02-03`

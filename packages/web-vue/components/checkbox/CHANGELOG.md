@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.2
+
+`2023-02-24`
+
+### 🐛 BugFix
+
+- Fixed checkbox retaining hover style when deselected ([#2124](https://github.com/arco-design/arco-design-vue/pull/2124))
+
+
 ## 2.41.1
 
 `2023-01-06`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.2
+
+`2023-02-24`
+
+### 🐛 BugFix
+
+- Fix invalidation of validateStatus of FormItem ([#2158](https://github.com/arco-design/arco-design-vue/pull/2158))
+
+
 ## 2.41.0
 
 `2022-12-30`

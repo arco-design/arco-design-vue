@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.43.2
+
+`2023-02-24`
+
+### 🐛 问题修复
+
+- 修复 FormItem 的 validateStatus 失效问题 ([#2158](https://github.com/arco-design/arco-design-vue/pull/2158))
+
+
 ## 2.41.0
 
 `2022-12-30`

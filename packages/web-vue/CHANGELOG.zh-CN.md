@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.43.2
+
+`2023-02-24`
+
+### 🐛 问题修复
+
+- **input-number:** 修复禁用状态下显示步长按钮 ([#2169](https://github.com/arco-design/arco-design-vue/pull/2169))
+- **form:** 修复 FormItem 的 validateStatus 失效问题 ([#2158](https://github.com/arco-design/arco-design-vue/pull/2158))
+- **checkbox:** 修复复选框在取消选择时会保留悬停样式的问题 ([#2124](https://github.com/arco-design/arco-design-vue/pull/2124))
+
+### 💎 功能优化
+
+- **modal:** 添加函数调用的更新方法 ([#2155](https://github.com/arco-design/arco-design-vue/pull/2155))
+- **drawer:** 添加函数调用的更新方法 ([#2155](https://github.com/arco-design/arco-design-vue/pull/2155))
+
+
 ## 2.43.1
 
 `2023-02-17`

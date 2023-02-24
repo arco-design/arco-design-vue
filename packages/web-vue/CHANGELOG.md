@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.43.2
+
+`2023-02-24`
+
+### 🐛 BugFix
+
+- **input-number:** fix display step button in disabled state ([#2169](https://github.com/arco-design/arco-design-vue/pull/2169))
+- **form:** Fix invalidation of validateStatus of FormItem ([#2158](https://github.com/arco-design/arco-design-vue/pull/2158))
+- **checkbox:** Fixed checkbox retaining hover style when deselected ([#2124](https://github.com/arco-design/arco-design-vue/pull/2124))
+
+### 💎 Enhancement
+
+- **modal:** add update method of function call ([#2155](https://github.com/arco-design/arco-design-vue/pull/2155))
+- **drawer:** add update method of function call ([#2155](https://github.com/arco-design/arco-design-vue/pull/2155))
+
+
 ## 2.43.1
 
 `2023-02-17`

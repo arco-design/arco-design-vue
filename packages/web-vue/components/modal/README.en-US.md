@@ -148,10 +148,10 @@ Modal._context = app._context;
 
 ### ModalReturn
 
-|Name|Description|Type|Default|
-|---|---|---|:---:|
-|close|Close Modal|`() => void`|`-`|
-|update|Update Modal|`(config: ModalUpdateConfig) => void`|`-`|
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|close|Close Modal|`() => void`|`-`||
+|update|Update Modal|`(config: ModalUpdateConfig) => void`|`-`|2.43.2|
 
 
 
