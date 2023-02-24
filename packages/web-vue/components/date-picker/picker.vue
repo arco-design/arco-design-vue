@@ -73,7 +73,7 @@ import {
   initializeDateLocale,
 } from '../_utils/date';
 import { getPrefixCls } from '../_utils/global-config';
-import useState from '../_hooks/use-state';
+import useSetState from '../_hooks/use-set-state';
 import {
   DisabledTimeProps,
   ShortcutType,
@@ -541,9 +541,9 @@ export default defineComponent({
       })
     );
     // 操作过程中的选中值
-    const [processValue, setProcessValue] = useState<Dayjs | undefined>();
+    const [processValue, setProcessValue] = useSetState<Dayjs | undefined>();
     // 预览用的值
-    const [previewValue, setPreviewValue] = useState<Dayjs | undefined>();
+    const [previewValue, setPreviewValue] = useSetState<Dayjs | undefined>();
     // 待确认的值
     const forSelectedValue = computed(
       () => processValue.value ?? selectedValue.value
@@ -554,7 +554,7 @@ export default defineComponent({
     );
 
     // input 操作使用的值
-    const [inputValue, setInputValue] = useState<string | undefined>();
+    const [inputValue, setInputValue] = useSetState<string | undefined>();
 
     // 选择面板是否可见
     const [panelVisible, setLocalPanelVisible] = useMergeState(

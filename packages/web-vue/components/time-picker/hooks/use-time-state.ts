@@ -3,7 +3,7 @@ import { computed, toRefs, watch } from 'vue';
 import { getDayjsValue } from '../../_utils/date';
 import { isArray, isUndefined } from '../../_utils/is';
 import { TimeValue } from '../interface';
-import useState from '../../_hooks/use-state';
+import useSetState from '../../_hooks/use-set-state';
 
 export default function useTimeState(props: {
   modelValue: TimeValue | TimeValue[] | undefined;
@@ -41,7 +41,7 @@ export default function useTimeState(props: {
     return getDayjsValue(time, format.value);
   });
 
-  const [localValue, setLocalValue] = useState<
+  const [localValue, setLocalValue] = useSetState<
     Dayjs | Array<Dayjs | undefined> | undefined
   >(
     !isUndefined(computedModelValue.value)
@@ -66,7 +66,7 @@ export default function useTimeState(props: {
   // 1. 跟随最终值变化
   // 2. 面板选择后手动更新
   // 3. 输入框输入格式正确后手动更新
-  const [panelValue, setPanelValue] = useState<
+  const [panelValue, setPanelValue] = useSetState<
     Dayjs | Array<Dayjs | undefined> | undefined
   >(computedValue.value);
 
@@ -78,7 +78,7 @@ export default function useTimeState(props: {
   // 1. 最终值变化后置空
   // 2. 面板选择后置空
   // 3. 输入框变化后手动更新
-  const [inputValue, setInputValue] = useState<
+  const [inputValue, setInputValue] = useSetState<
     string | Array<string | undefined> | undefined
   >();
   watch([panelValue], () => {

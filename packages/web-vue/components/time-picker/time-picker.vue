@@ -94,7 +94,7 @@ import DateInput from '../_components/picker/input.vue';
 import DateRangeInput from '../_components/picker/input-range.vue';
 import IconClockCircle from '../icon/icon-clock-circle';
 import { TimePickerProps } from './interface';
-import useState from '../_hooks/use-state';
+import useSetState from '../_hooks/use-set-state';
 import useTimeFormat from './hooks/use-time-format';
 import useTimeState from './hooks/use-time-state';
 import {
@@ -418,7 +418,7 @@ export default defineComponent({
     const { t } = useI18n();
 
     // 当前焦点所在的 input
-    const [focusedInputIndex, setFocusedInputIndex] = useState(0);
+    const [focusedInputIndex, setFocusedInputIndex] = useSetState(0);
 
     // placeholder
     const computedPlaceholder = computed(() => {
