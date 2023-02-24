@@ -89,7 +89,7 @@
       }
     }
 
-    &:not(.@{input-prefix-cls}-disabled) {
+    &:not(.@{input-prefix-cls}-disabled):not(.@{input-prefix-cls}-outer-disabled) {
       &:hover,
       &:focus-within {
         & .@{input-number-prefix-cls}-step {

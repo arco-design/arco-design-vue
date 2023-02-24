@@ -204,6 +204,16 @@ export default defineComponent({
    * @en Suffix
    * @slot suffix
    */
+  /**
+   * @zh 前置标签
+   * @en Prepend
+   * @slot prepend
+   */
+  /**
+   * @zh 后置标签
+   * @en Append
+   * @slot append
+   */
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');

@@ -65,6 +65,8 @@ description: Only input boxes in numeric format are allowed.
 
 |Slot Name|Description|Parameters|
 |---|---|---|
+|append|Append|-|
+|prepend|Prepend|-|
 |suffix|Suffix|-|
 |prefix|Prefix|-|
 
