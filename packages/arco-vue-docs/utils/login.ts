@@ -16,7 +16,7 @@ export async function checkLogin() {
   } else {
     if (!window.isLogin) {
       try {
-        const { data } = await axios.get('/api/auth/userInfo', {
+        const { data } = await axios.get('/common/api/auth/userInfo', {
           withCredentials: true,
         });
         window.isLogin = true;

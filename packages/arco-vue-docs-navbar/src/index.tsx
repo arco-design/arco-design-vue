@@ -29,7 +29,7 @@ const ReactApp = ({
           onChangeTheme={(theme: string) => {
             document.querySelector('#react-root')?.setAttribute('arco-theme', theme)
           }}
-          loginHref={`/login?redirectUrl=${window.location.href}`}
+          loginHref={`/common/login?redirectUrl=${window.location.href}`}
           versions={[
             {
               version: '1.x',
