@@ -16,6 +16,7 @@ import {
   isNull,
   isNumber,
   isObject,
+  isString,
   isUndefined,
 } from '../_utils/is';
 import { getKeyFromValue, isGroupOptionInfo, isValidOption } from './utils';
@@ -521,7 +522,7 @@ export default defineComponent({
       const mergedValue = props.modelValue ?? _value.value;
       const valueArray = isArray(mergedValue)
         ? mergedValue
-        : mergedValue || isNumber(mergedValue)
+        : mergedValue || isNumber(mergedValue) || isString(mergedValue)
         ? [mergedValue]
         : [];
       return valueArray.map((value) => ({
