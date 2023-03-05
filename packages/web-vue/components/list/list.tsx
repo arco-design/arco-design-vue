@@ -207,9 +207,11 @@ export default defineComponent({
       if (!props.paginationProps) {
         return data;
       }
-
-      const startIndex = (current.value - 1) * pageSize.value;
-      return data.slice(startIndex, startIndex + pageSize.value);
+      if (props.paginationProps && data.length > pageSize.value) {
+        const startIndex = (current.value - 1) * pageSize.value;
+        return data.slice(startIndex, startIndex + pageSize.value);
+      }
+      return data;
     };
 
     const renderGridItems = (data: unknown[]) => {
