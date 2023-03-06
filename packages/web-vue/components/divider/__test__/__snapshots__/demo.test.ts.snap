@@ -11,7 +11,7 @@ exports[`<divider> demo: render [basic] correctly 1`] = `
     <!---->
   </div>
   <p>A design is a plan or specification for the construction of an object.</p>
-  <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal\\" style=\\"border-left-width: 2px; border-bottom-style: dotted;\\">
+  <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal\\" style=\\"border-bottom-width: 2px; border-bottom-style: dotted;\\">
     <!---->
   </div>
   <p>A design is a plan or specification for the construction of an object.</p>
