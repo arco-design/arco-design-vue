@@ -267,7 +267,9 @@ export default defineComponent({
      * @en Trigger before uploading a file
      */
     onBeforeUpload: {
-      type: Function as PropType<(file: File) => Promise<boolean | File>>,
+      type: Function as PropType<
+        (file: File) => boolean | Promise<boolean | File>
+      >,
     },
     /**
      * @zh 移除文件前触发
