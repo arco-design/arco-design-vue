@@ -163,6 +163,14 @@ export default defineComponent({
       type: String as PropType<TabTriggerEvent>,
       default: 'click',
     },
+    /**
+     * @zh 选项卡导航栏是否可以通过滚轮滚动，仅在垂直模式下生效
+     * @en Whether the tab navigation bar can be scrolled with the scroll wheel, only in vertical mode
+     */
+    wheelScroll: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:activeKey': (key: string | number) => true,
@@ -340,6 +348,7 @@ export default defineComponent({
             headerPadding={props.headerPadding}
             size={mergedSize.value}
             type={props.type}
+            wheelScroll={props.wheelScroll}
             onClick={handleClick}
             onAdd={handleAdd}
             onDelete={handleDelete}

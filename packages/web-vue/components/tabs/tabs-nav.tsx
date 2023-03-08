@@ -67,6 +67,10 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    wheelScroll: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['click', 'add', 'delete'],
   setup(props, { emit, slots }) {
@@ -181,8 +185,28 @@ export default defineComponent({
       emit('delete', key, ev);
     };
 
-    const handleButtonClick = (type: string) => {
+    const setOffset = (type: string) => {
       offset.value = getValidOffset(getNextOffset(type));
+    };
+    const handleButtonClick = (type: string) => {
+      setOffset(type);
+    };
+
+    const handleWheel = (ev: WheelEvent) => {
+      if (
+        props.wheelScroll &&
+        props.direction === 'vertical' &&
+        isScroll.value
+      ) {
+        const isScrollDown = ev.deltaY > 0;
+
+        if (isScrollDown && offset.value < maxOffset.value) {
+          setOffset('next');
+        } else if (!isScrollDown && offset.value > 0) {
+          setOffset('previous');
+        }
+        ev.preventDefault();
+      }
     };
 
     const handleResize = () => {
@@ -284,7 +308,12 @@ export default defineComponent({
         <ResizeObserver onResize={() => getSize()}>
           <div class={tabCls.value} ref={wrapperRef}>
             <ResizeObserver onResize={handleResize}>
-              <div ref={listRef} class={listCls.value} style={listStyle.value}>
+              <div
+                ref={listRef}
+                class={listCls.value}
+                style={listStyle.value}
+                onWheel={handleWheel}
+              >
                 {props.tabs.map((tab, index) => (
                   <TabsTab
                     key={tab.key}
