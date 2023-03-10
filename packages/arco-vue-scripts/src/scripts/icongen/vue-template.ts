@@ -138,7 +138,9 @@ export type {} from './icon-components';
 `;
 
 export const getType = ({ exports }: { exports: string[] }) =>
-  `declare module 'vue' {
+  `// @ts-nocheck
+
+declare module 'vue' {
   export interface GlobalComponents {
 ${exports.map((item) => `${' '.repeat(4)}${item}`).join('\n')}
   }
