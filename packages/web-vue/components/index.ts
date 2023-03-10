@@ -28,6 +28,7 @@ export type {
   ButtonProps,
 } from './button';
 export { default as Card, CardGrid, CardMeta } from './card';
+export { default as Calendar } from './calendar';
 export type { CardGridInstance, CardInstance, CardMetaInstance } from './card';
 export { default as Carousel, CarouselItem } from './carousel';
 export type { CarouselInstance, CarouselItemInstance } from './carousel';

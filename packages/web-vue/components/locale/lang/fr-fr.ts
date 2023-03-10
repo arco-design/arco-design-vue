@@ -102,6 +102,7 @@ const lang: ArcoLang = {
     dragHover: 'Libérez le fichier et commencez à télécharger',
     error: 'le téléchargement a échoué',
   },
+  calendar: calendarLang,
   datePicker: {
     view: calendarLang.view,
     month: calendarLang.month,

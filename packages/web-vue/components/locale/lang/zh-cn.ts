@@ -102,6 +102,7 @@ const lang: ArcoLang = {
     dragHover: '释放文件并开始上传',
     error: '上传失败',
   },
+  calendar: calendarLang,
   datePicker: {
     view: calendarLang.view,
     month: calendarLang.month,

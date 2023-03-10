@@ -37,6 +37,8 @@ const Carousel = () => import('@web-vue/components/carousel/README.zh-CN.md');
 const CarouselEn = () => import('@web-vue/components/carousel/README.en-US.md');
 const Collapse = () => import('@web-vue/components/collapse/README.zh-CN.md');
 const CollapseEn = () => import('@web-vue/components/collapse/README.en-US.md');
+const Calendar = () => import('@web-vue/components/calendar/README.zh-CN.md');
+const CalendarEn = () => import('@web-vue/components/calendar/README.en-US.md');
 const Comment = () => import('@web-vue/components/comment/README.zh-CN.md');
 const CommentEn = () => import('@web-vue/components/comment/README.en-US.md');
 const Descriptions = () =>
@@ -344,6 +346,11 @@ const components = [
         name: 'badge',
         component: Badge,
         componentEn: BadgeEn,
+      },
+      {
+        name: 'calendar',
+        component: Calendar,
+        componentEn: CalendarEn,
       },
       {
         name: 'card',

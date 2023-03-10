@@ -35,6 +35,7 @@ export default {
     tooltip: 'Tooltip',
     popover: 'Popover',
     input: 'Input',
+    calendar: 'Calendar',
     inputNumber: 'InputNumber',
     alert: 'Alert',
     result: 'Result',
