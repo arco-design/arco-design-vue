@@ -89,26 +89,28 @@ export async function build(input: string, options?: { outDir?: string }) {
     })
   );
 
-  await Promise.all(
-    sourceFiles.map(async (sourceFile) => {
-      // eslint-disable-next-line no-console
-      console.log(`Transform start: ${sourceFile.getFilePath()}`);
-      const diagnostics = sourceFile.getPreEmitDiagnostics();
-      // eslint-disable-next-line no-console
-      console.log(project.formatDiagnosticsWithColorAndContext(diagnostics));
-      const emitOutput = sourceFile.getEmitOutput();
-      const outputFiles = emitOutput.getOutputFiles();
-      await Promise.all(
-        outputFiles.map(async (outputFile) => {
-          const filepath = outputFile.getFilePath();
-          await fs.ensureDir(path.dirname(filepath));
-          await fs.writeFile(filepath, outputFile.getText(), 'utf8');
-          // eslint-disable-next-line no-console
-          console.log(`Emitted ${filepath}`);
-        })
-      );
-    })
-  );
+  try {
+    await Promise.all(
+      sourceFiles.map(async (sourceFile) => {
+        // eslint-disable-next-line no-console
+        console.log(`Transform start: ${sourceFile.getFilePath()}`);
+        const diagnostics = sourceFile.getPreEmitDiagnostics();
+        // eslint-disable-next-line no-console
+        console.log(project.formatDiagnosticsWithColorAndContext(diagnostics));
+        const emitOutput = sourceFile.getEmitOutput();
+        const outputFiles = emitOutput.getOutputFiles();
+        await Promise.all(
+          outputFiles.map(async (outputFile) => {
+            const filepath = outputFile.getFilePath();
+            await fs.ensureDir(path.dirname(filepath));
+            await fs.writeFile(filepath, outputFile.getText(), 'utf8');
+            // eslint-disable-next-line no-console
+            console.log(`Emitted ${filepath}`);
+          })
+        );
+      })
+    );
+  } catch {}
 }
 
 const removeVueSpecifier = (sourceFile: SourceFile) => {
