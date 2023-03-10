@@ -1,8 +1,8 @@
 import { defineComponent, computed, PropType } from 'vue';
 import { Dayjs } from 'dayjs';
-import Select from '../Select';
-import Button from '../Button';
-import Radio from '../Radio';
+import Select from '../select';
+import Button from '../button';
+import Radio from '../radio';
 import IconLeft from '../icon/icon-left';
 import IconRight from '../icon/icon-right';
 import { getNow } from '../_utils/date';
