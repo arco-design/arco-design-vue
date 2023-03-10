@@ -102,6 +102,7 @@ const lang: ArcoLang = {
     dragHover: 'Release to upload',
     error: 'Upload Error',
   },
+  calendar: calendarLang,
   datePicker: {
     view: calendarLang.view,
     month: calendarLang.month,

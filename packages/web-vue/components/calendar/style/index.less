@@ -1,0 +1,476 @@
+@import './token.less';
+
+@calendar-prefix-cls: ~'@{prefix}-calendar';
+
+.@{calendar-prefix-cls} {
+  box-sizing: border-box;
+  border: 1px solid @calendar-color-border;
+
+  &-header {
+    display: flex;
+    padding: @calendar-header-padding-vertical
+      @calendar-header-padding-horizontal;
+
+    &-left {
+      position: relative;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      height: 28px;
+      line-height: 28px;
+    }
+
+    &-right {
+      position: relative;
+      height: 28px;
+    }
+
+    &-value {
+      color: var(~'@{arco-cssvars-prefix}-color-text-1');
+      font-weight: @font-weight-500;
+      font-size: 20px;
+    }
+
+    &-icon {
+      width: 28px;
+      height: 28px;
+      margin-right: 12px;
+      color: @calendar-color-switch-icon;
+      font-size: 12px;
+      line-height: 28px;
+      text-align: center;
+      background-color: @calendar-color-bg-switch-icon;
+      border-radius: 50%;
+      transition: all @transition-duration-1 @transition-timing-function-linear;
+      user-select: none;
+
+      &:not(:first-child) {
+        margin: 0 12px;
+      }
+
+      &:focus-visible {
+        box-shadow: 0 0 0 2px @calendar-color-box-shadow;
+      }
+    }
+
+    &-icon:not(&-icon-hidden) {
+      cursor: pointer;
+
+      &:hover {
+        background-color: @calendar-color-bg-switch-icon_hover;
+      }
+    }
+  }
+
+  // 下拉类型的年选择框
+  & &-header-value-year {
+    width: 100px;
+    margin-right: 8px;
+  }
+
+  // 下拉类型的月选择框
+  & &-header-value-month {
+    width: 76px;
+    margin-right: 32px;
+  }
+
+  &-month {
+    width: 100%;
+
+    &-row {
+      display: flex;
+      height: 100px;
+
+      .@{calendar-prefix-cls}-cell {
+        flex: 1;
+        overflow: hidden;
+        border-bottom: 1px solid @calendar-color-border;
+      }
+
+      &:last-child .@{calendar-prefix-cls}-cell {
+        border-bottom: unset;
+      }
+    }
+
+    &-cell-body {
+      box-sizing: border-box;
+    }
+  }
+
+  &-mode-month:not(&-panel) &-cell:not(:last-child) {
+    border-right: 1px solid @calendar-color-border;
+  }
+
+  &-week-list {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid @calendar-color-border;
+
+    &-item {
+      flex: 1;
+      padding: 20px 16px;
+      color: #7d7d7f;
+      text-align: left;
+    }
+  }
+
+  &-cell &-date {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+
+    &-circle {
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+    }
+  }
+
+  &-date-content {
+    height: 70px;
+    overflow-y: auto;
+  }
+
+  &-cell-today &-date-circle {
+    box-sizing: border-box;
+    border: 1px solid @color-primary-6;
+  }
+
+  &-date-value {
+    color: @calendar-color-cell-text-not-in-view;
+    font-weight: @font-weight-500;
+    font-size: 16px;
+  }
+
+  &-cell-in-view &-date-value {
+    color: @calendar-color-cell-text-in-view;
+  }
+
+  &-mode-month &-cell-selected &-date-circle {
+    color: #fff;
+    background-color: @calendar-color-bg-circle_selected;
+    border: 1px solid @calendar-color-bg-circle_selected;
+  }
+
+  &-mode-year &-cell-selected &-cell-selected &-date-circle {
+    color: #fff;
+    background-color: @calendar-color-bg-circle_selected;
+    border: 1px solid @calendar-color-bg-circle_selected;
+  }
+
+  // Mode: year
+  &-mode-year:not(&-panel) {
+    min-width: 820px;
+  }
+
+  &-mode-year &-header {
+    border-bottom: 1px solid @calendar-color-border;
+  }
+
+  &-mode-year &-body {
+    padding: 12px;
+  }
+
+  &-mode-year &-year-row {
+    display: flex;
+  }
+
+  &-year-row > &-cell {
+    flex: 1;
+    padding: 20px 8px;
+
+    &:not(:last-child) {
+      border-right: 1px solid @calendar-color-border;
+    }
+  }
+
+  &-year-row:not(:last-child) > &-cell {
+    border-bottom: 1px solid @calendar-color-border;
+  }
+
+  &-month-with-days &-month-row {
+    height: 26px;
+  }
+
+  &-month-with-days &-cell {
+    border-bottom: 0;
+  }
+
+  &-month-with-days &-month-cell-body {
+    padding: 0;
+  }
+
+  &-month-with-days &-month-title {
+    padding: 10px 6px;
+    color: @calendar-color-text-title;
+    font-weight: @font-weight-500;
+    font-size: 16px;
+  }
+
+  &-month-cell {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  &-month-cell &-week-list {
+    padding: 0;
+    border-bottom: unset;
+  }
+
+  &-month-cell &-week-list-item {
+    padding: 6px;
+    color: #7d7d7f;
+    text-align: center;
+  }
+
+  &-month-cell &-cell {
+    text-align: center;
+  }
+
+  &-month-cell &-date {
+    padding: 2px;
+
+    &-value {
+      font-size: 14px;
+    }
+
+    &-circle {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      text-align: center;
+      border-radius: 50%;
+    }
+  }
+}
+
+// panel
+.@{calendar-prefix-cls} {
+  &-panel {
+    background-color: var(~'@{arco-cssvars-prefix}-color-bg-5');
+    border: 1px solid @calendar-color-border;
+  }
+
+  &-panel &-header {
+    padding: 8px 16px;
+    border-bottom: 1px solid @calendar-color-border;
+
+    &-value {
+      flex: 1;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 2px;
+      margin-left: 2px;
+      line-height: 24px;
+    }
+  }
+
+  &-panel &-body {
+    padding: 14px 16px;
+  }
+
+  &-panel &-month-cell-body {
+    padding: 0;
+  }
+
+  &-panel &-month-row {
+    height: unset;
+  }
+
+  &-panel &-week-list {
+    padding: 0;
+    border-bottom: unset;
+  }
+
+  &-panel &-week-list-item {
+    height: 32px;
+    padding: 0;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  &-panel &-cell,
+  &-panel &-year-row &-cell {
+    box-sizing: border-box;
+    padding: 2px 0;
+    text-align: center;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  &-panel &-cell &-date {
+    display: flex;
+    justify-content: center;
+    padding: @calendar-panel-date-cell-padding-vertical 0;
+
+    &-value {
+      min-width: @calendar-panel-date-cell-circle-height;
+      height: @calendar-panel-date-cell-circle-height;
+      font-size: 14px;
+      line-height: @calendar-panel-date-cell-circle-height;
+      cursor: pointer;
+    }
+  }
+
+  &-panel&-mode-year &-cell {
+    padding: 4px 0;
+  }
+
+  &-panel&-mode-year &-cell &-date {
+    padding: @calendar-panel-year-cell-padding-vertical;
+
+    &-value {
+      width: 100%;
+      border-radius: 12px;
+    }
+  }
+
+  &-panel &-cell-selected &-date-value {
+    color: @calendar-panel-color-text-cell_selected;
+    background-color: @calendar-panel-color-bg-cell_selected;
+    border-radius: 50%;
+  }
+
+  &-panel
+    &-cell:not(&-cell-selected):not(&-cell-range-start):not(&-cell-range-end):not(&-cell-hover-range-start):not(&-cell-hover-range-end):not(&-cell-disabled):not(&-cell-week)
+    &-date-value:hover {
+    color: @calendar-panel-color-text-cell_hover;
+    background-color: @calendar-panel-color-bg-cell_hover;
+    border-radius: 50%;
+  }
+
+  &-panel&-mode-year
+    &-cell:not(&-cell-selected):not(&-cell-range-start):not(&-cell-range-end):not(&-cell-hover-range-start):not(&-cell-hover-range-end):not(&-cell-disabled)
+    &-date-value:hover {
+    border-radius: (@calendar-panel-year-cell-circle-height / 2);
+  }
+
+  &-panel &-cell-today {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      display: block;
+      width: 4px;
+      height: 4px;
+      margin-left: -2px;
+      background-color: @calendar-panel-color-current-time-dot;
+      border-radius: 50%;
+      content: '';
+    }
+  }
+
+  &-cell-in-range &-date {
+    background-color: @calendar-color-bg-cell-in-range;
+  }
+
+  &-cell-range-start &-date {
+    border-radius: @calendar-panel-cell-boundary-border-radius 0 0
+      @calendar-panel-cell-boundary-border-radius;
+  }
+
+  &-cell-range-end &-date {
+    border-radius: 0 @calendar-panel-cell-boundary-border-radius
+      @calendar-panel-cell-boundary-border-radius 0;
+  }
+
+  &-cell-in-range-near-hover &-date {
+    border-radius: 0;
+  }
+
+  &-cell-range-start &-date-value,
+  &-cell-range-end &-date-value {
+    color: @calendar-color-text-cell-range-boundary;
+    background-color: @calendar-color-bg-cell-range-boundary;
+    border-radius: 50%;
+  }
+
+  &-cell-hover-in-range &-date {
+    background-color: @calendar-color-bg-cell-hover-in-range;
+  }
+
+  &-cell-hover-range-start &-date {
+    border-radius: @calendar-panel-cell-boundary-border-radius 0 0
+      @calendar-panel-cell-boundary-border-radius;
+  }
+
+  &-cell-hover-range-end &-date {
+    border-radius: 0 @calendar-panel-cell-boundary-border-radius
+      @calendar-panel-cell-boundary-border-radius 0;
+  }
+
+  &-cell-hover-range-start &-date-value,
+  &-cell-hover-range-end &-date-value {
+    color: @calendar-color-text-cell-hover-range-boundary;
+    background-color: @calendar-color-bg-cell-hover-range-boundary;
+    border-radius: 50%;
+  }
+
+  &-panel &-cell-disabled {
+    > .@{calendar-prefix-cls}-date {
+      background-color: @calendar-color-bg-cell-disabled;
+      cursor: not-allowed;
+
+      > .@{calendar-prefix-cls}-date-value {
+        color: @calendar-color-cell-text-not-in-view;
+        background-color: @calendar-color-bg-cell-disabled;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &-panel &-footer-btn-wrapper {
+    height: 38px;
+    color: var(~'@{arco-cssvars-prefix}-color-text-1');
+    line-height: 38px;
+    text-align: center;
+    border-top: 1px solid @calendar-color-border;
+    cursor: pointer;
+  }
+
+  &-rtl {
+    direction: rtl;
+  }
+
+  &-rtl &-header-icon {
+    margin-right: 0;
+    margin-left: 12px;
+    transform: scaleX(-1);
+  }
+
+  // rtl
+  &-rtl &-week-list-item {
+    text-align: right;
+  }
+
+  &-rtl&-mode-month:not(&-panel) &-cell:not(:last-child) {
+    border-right: 0;
+    border-left: 1px solid @calendar-color-border;
+  }
+
+  &-rtl &-header-value-year {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+
+  &-rtl &-header-value-month {
+    margin-right: 0;
+    margin-left: 32px;
+  }
+}

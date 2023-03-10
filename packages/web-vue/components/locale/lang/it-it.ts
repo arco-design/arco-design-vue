@@ -102,6 +102,7 @@ const lang: ArcoLang = {
     dragHover: 'Libera il file e inizia a caricare',
     error: 'Caricamento non riuscito',
   },
+  calendar: calendarLang,
   datePicker: {
     view: calendarLang.view,
     month: calendarLang.month,

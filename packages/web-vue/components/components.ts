@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     ABreadcrumbItem: typeof import('@arco-design/web-vue')['BreadcrumbItem'];
     AButton: typeof import('@arco-design/web-vue')['Button'];
     AButtonGroup: typeof import('@arco-design/web-vue')['ButtonGroup'];
+    ACalendar: typeof import('@arco-design/web-vue')['Calendar'];
     ACard: typeof import('@arco-design/web-vue')['Card'];
     ACardMeta: typeof import('@arco-design/web-vue')['CardMeta'];
     ACardGrid: typeof import('@arco-design/web-vue')['CardGrid'];

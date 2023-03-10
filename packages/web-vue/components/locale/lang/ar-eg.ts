@@ -102,6 +102,7 @@ const lang: ArcoLang = {
     dragHover: 'حرر الملف وابدأ في التحميل',
     error: 'التحميل فشل',
   },
+  calendar: calendarLang,
   datePicker: {
     view: calendarLang.view,
     month: calendarLang.month,

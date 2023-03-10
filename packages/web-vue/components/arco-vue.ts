@@ -10,6 +10,7 @@ import BackTop from './back-top';
 import Badge from './badge';
 import Breadcrumb, { BreadcrumbItem } from './breadcrumb';
 import Button, { ButtonGroup } from './button';
+import Calendar from './calendar';
 import Card, { CardMeta, CardGrid } from './card';
 import Carousel, { CarouselItem } from './carousel';
 import Cascader, { CascaderPanel } from './cascader';
@@ -104,6 +105,7 @@ const components: Record<string, Plugin> = {
   Space,
   Avatar,
   Badge,
+  Calendar,
   Card,
   Carousel,
   Collapse,
@@ -179,6 +181,7 @@ const ArcoVue = {
   AvatarGroup,
   BreadcrumbItem,
   ButtonGroup,
+  Calendar,
   CardMeta,
   CardGrid,
   CarouselItem,

@@ -102,6 +102,7 @@ const lang: ArcoLang = {
     dragHover: 'Kosongkan fail dan mula memuat naik',
     error: 'muatnaik gagal',
   },
+  calendar: calendarLang,
   datePicker: {
     view: calendarLang.view,
     month: calendarLang.month,

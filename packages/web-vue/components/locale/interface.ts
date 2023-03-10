@@ -67,6 +67,7 @@ export interface ArcoLang {
   empty: {
     description: string;
   };
+  calendar: ArcoCalendarLang;
   drawer: {
     okText: string;
     cancelText: string;
