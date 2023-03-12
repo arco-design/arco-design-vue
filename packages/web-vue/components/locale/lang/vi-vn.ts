@@ -1,0 +1,151 @@
+import { ArcoCalendarLang, ArcoLang } from '../interface';
+
+const calendarLang: ArcoCalendarLang = {
+  formatYear: 'YYYY',
+  formatMonth: 'MMMM YYYY',
+  today: 'Hôm nay',
+  view: {
+    month: 'Tháng',
+    year: 'Năm',
+    week: 'Tuần',
+    day: 'Ngày',
+  },
+  month: {
+    long: {
+      January: 'Tháng Một',
+      February: 'Tháng Hai',
+      March: 'Tháng Ba',
+      April: 'Tháng Tư',
+      May: 'Tháng Năm',
+      June: 'Tháng Sáu',
+      July: 'Tháng Bảy',
+      August: 'Tháng Tám',
+      September: 'Tháng Chín',
+      October: 'Tháng Mười',
+      November: 'Tháng Mười Một',
+      December: 'Tháng Mười Hai',
+    },
+    short: {
+      January: 'Thg1',
+      February: 'Thg2',
+      March: 'Thg3',
+      April: 'Thg4',
+      May: 'Thg5',
+      June: 'Thg6',
+      July: 'Thg7',
+      August: 'Thg8',
+      September: 'Thg9',
+      October: 'Thg10',
+      November: 'Thg11',
+      December: 'Thg12',
+    },
+  },
+  week: {
+    long: {
+      self: 'Tuần',
+      monday: 'Thứ Hai',
+      tuesday: 'Thứ Ba',
+      wednesday: 'Thứ Tư',
+      thursday: 'Thứ Năm',
+      friday: 'Thứ Sáu',
+      saturday: 'Thứ Bảy',
+      sunday: 'Chủ Nhật',
+    },
+    short: {
+      self: 'Tuần',
+      monday: 'T2',
+      tuesday: 'T3',
+      wednesday: 'Tư',
+      thursday: 'Năm',
+      friday: 'Sáu',
+      saturday: 'Bảy',
+      sunday: 'CN',
+    },
+  },
+};
+
+const lang: ArcoLang = {
+  locale: 'vi-VN',
+  empty: {
+    description: 'Không có dữ liệu',
+  },
+  drawer: {
+    okText: 'Đồng ý',
+    cancelText: 'Hủy bỏ',
+  },
+  popconfirm: {
+    okText: 'Đồng ý',
+    cancelText: 'Hủy bỏ',
+  },
+  modal: {
+    okText: 'Đồng ý',
+    cancelText: 'Hủy bỏ',
+  },
+  pagination: {
+    goto: 'Đi tới',
+    page: 'Trang',
+    countPerPage: 'sản phẩm/trang',
+    total: 'Tổng số {0}',
+  },
+  table: {
+    okText: 'Đồng ý',
+    resetText: 'Thiết lập lại',
+  },
+  upload: {
+    start: 'Bắt đầu',
+    cancel: 'Hủy bỏ',
+    delete: 'Xóa bỏ',
+    retry: 'Nhấp để thử lại',
+    buttonText: 'Nhấp để tải lên',
+    preview: 'Xem trước',
+    drag: 'Nhấp hoặc kéo thả tập tin vào đây để tải lên',
+    dragHover: 'Thả tập tin và bắt đầu tải lên',
+    error: 'Lỗi tải lên',
+  },
+  calendar: calendarLang,
+  datePicker: {
+    view: calendarLang.view,
+    month: calendarLang.month,
+    week: calendarLang.week,
+    placeholder: {
+      date: 'Vui lòng chọn một ngày',
+      week: 'Vui lòng chọn một tuần',
+      month: 'Vui lòng chọn một tháng',
+      year: 'Vui lòng chọn một năm',
+      quarter: 'Vui lòng chọn một phần tư',
+      time: 'Vui lòng chọn một',
+    },
+    rangePlaceholder: {
+      date: ['Ngày bắt đầu', 'Ngày kết thúc'],
+      week: ['Tuần bắt đầu', 'Tuần kết thúc'],
+      month: ['Tháng bắt đầu', 'Tháng kết thúc'],
+      year: ['Năm bắt đầu', 'Năm kết thúc'],
+      quarter: ['Quý bắt đầu', 'Quý kết thúc'],
+      time: ['Giờ bắt đầu', 'Giờ kết thúc'],
+    },
+    selectTime: 'Vui lòng chọn thời gian',
+    today: 'Hôm nay',
+    now: 'Bây giờ',
+    ok: 'Đồng ý',
+  },
+  image: {
+    loading: 'Đang tải',
+  },
+  imagePreview: {
+    fullScreen: 'Toàn màn hình',
+    rotateRight: 'Xoay sang phải',
+    rotateLeft: 'Xoay sang trái',
+    zoomIn: 'Phóng to',
+    zoomOut: 'Thu nhỏ',
+    originalSize: 'Kích thước gốc',
+  },
+  typography: {
+    copied: 'Đã sao chép',
+    copy: 'Sao chép',
+    expand: 'Mở rộng',
+    collapse: 'Thu gọn',
+    edit: 'Chỉnh sửa',
+  },
+};
+
+export default lang;
