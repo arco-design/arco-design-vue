@@ -1,0 +1,151 @@
+import { ArcoCalendarLang, ArcoLang } from '../interface';
+
+const calendarLang: ArcoCalendarLang = {
+  formatYear: 'YYYY ឆ្នាំ',
+  formatMonth: 'YYYY ឆ្នាំ MM ខែ',
+  today: 'ថ្ងៃនេះ',
+  view: {
+    month: 'ខែ',
+    year: 'ឆ្នាំ',
+    week: 'សប្តាហ៍',
+    day: 'ថ្ងៃ',
+  },
+  month: {
+    long: {
+      January: 'មករា',
+      February: 'កុម្ភៈ',
+      March: 'មិនា',
+      April: 'មេសា',
+      May: 'ឧសភា',
+      June: 'មិថុនា',
+      July: 'កក្កដា',
+      August: 'សីហា',
+      September: 'កញ្ញា',
+      October: 'តុលា',
+      November: 'វិច្ឆិកា',
+      December: 'ធ្នូ',
+    },
+    short: {
+      January: 'មករា',
+      February: 'កុម្ភៈ',
+      March: 'មិនា',
+      April: 'មេសា',
+      May: 'ឧសភា',
+      June: 'មិថុនា',
+      July: 'កក្កដា',
+      August: 'សីហា',
+      September: 'កញ្ញា',
+      October: 'តុលា',
+      November: 'វិច្ឆិកា',
+      December: 'ធ្នូ',
+    },
+  },
+  week: {
+    long: {
+      self: 'សប្តាហ៍',
+      monday: 'ច័ន្ទ',
+      tuesday: 'អង្គារ',
+      wednesday: 'ពុធសករាជ',
+      thursday: 'ព្រហស្បតិ៍',
+      friday: 'សុក្រ',
+      saturday: 'សៅរ៍',
+      sunday: 'អាទិត្យ',
+    },
+    short: {
+      self: 'សប្តាហ៍',
+      monday: 'ចន្ទ',
+      tuesday: 'អង្គារ',
+      wednesday: 'ពុធសករាជ',
+      thursday: 'ព្រហស្បតិ៍',
+      friday: 'សុក្រ',
+      saturday: 'សៅរ៍',
+      sunday: 'អាទិត្យ',
+    },
+  },
+};
+
+const lang: ArcoLang = {
+  locale: 'km-KH',
+  empty: {
+    description: 'គ្មាន​ទិន្នន័យ',
+  },
+  drawer: {
+    okText: 'យល់ព្រម',
+    cancelText: 'បោះបង់',
+  },
+  popconfirm: {
+    okText: 'យល់ព្រម',
+    cancelText: 'បោះបង់',
+  },
+  modal: {
+    okText: 'យល់ព្រម',
+    cancelText: 'បោះបង់',
+  },
+  pagination: {
+    goto: 'ទៅកាន់',
+    page: 'ទំព័រ',
+    countPerPage: 'ប្រវត្តិ/ទំព័រ',
+    total: 'សរុប {0} ប្រវត្តិ',
+  },
+  table: {
+    okText: 'យល់ព្រម',
+    resetText: 'កំណត់ឡើងវិញ',
+  },
+  upload: {
+    start: 'ចាប់ផ្ដើម',
+    cancel: 'បោះបង់',
+    delete: 'លុប',
+    retry: 'ចុចដើម្បីព្យាយាមម្តងទៀត',
+    buttonText: 'ចុចដើម្បីផ្ទុកឡើង',
+    preview: 'មើលជាមុន',
+    drag: 'ចុចឬទាញយកឯកសារទៅក្នុងទីតាំងនេះដើម្បីផ្ទុកឡើង',
+    dragHover: 'ដោះស្រាយឯកសារហើយចាប់ផ្ដើមផ្ទុកឡើង',
+    error: 'បរាជ័យក្នុងការផ្ទុកឡើង',
+  },
+  calendar: calendarLang,
+  datePicker: {
+    view: calendarLang.view,
+    month: calendarLang.month,
+    week: calendarLang.week,
+    placeholder: {
+      date: 'ជ្រើសរើសកាលបរិច្ឆេទ',
+      week: 'ជ្រើសរើសសប្តាហ៍',
+      month: 'ជ្រើសរើសខែ',
+      year: 'ជ្រើសរើសឆ្នាំ',
+      quarter: 'ជ្រើសរើសត្រីមាស',
+      time: 'ជ្រើសរើសពេលវេលាត្រឹមត្រូវ',
+    },
+    rangePlaceholder: {
+      date: ['ថ្ងៃចាប់ផ្តើម', 'ថ្ងៃបញ្ចប់'],
+      week: ['សប្តាហ៍ចាប់ផ្តើម', 'សប្តាហ៍បញ្ចប់'],
+      month: ['ខែចាប់ផ្តើម', 'ខែបញ្ចប់'],
+      year: ['ឆ្នាំចាប់ផ្តើម', 'ឆ្នាំបញ្ចប់'],
+      quarter: ['ត្រីមាសចាប់ផ្តើម', 'ត្រីមាសបញ្ចប់'],
+      time: ['ពេលវេលាចាប់ផ្តើម', 'ពេលវេលាបញ្ចប់'],
+    },
+    selectTime: 'ជ្រើសរើសពេលវេលា',
+    today: 'ថ្ងៃនេះ',
+    now: 'ឥឡូវនេះ',
+    ok: 'យល់ព្រម',
+  },
+  image: {
+    loading: 'កំពុងដំណើរការ',
+  },
+  imagePreview: {
+    fullScreen: 'ពេញ​អេក្រង់',
+    rotateRight: 'បង្វិល​ទៅ​ស្ដាំ',
+    rotateLeft: 'បង្វិល​ទៅឆ្វេង',
+    zoomIn: 'ពង្រីក',
+    zoomOut: 'បង្រួម',
+    originalSize: 'ទំហំដើម',
+  },
+  typography: {
+    copied: 'បាន​ចម្លង',
+    copy: 'ចម្លង',
+    expand: 'ពង្រីក',
+    collapse: 'បង្រួម',
+    edit: 'កែសម្រួល',
+  },
+};
+
+export default lang;
