@@ -19,6 +19,7 @@
         </template>
       </span>
     </span>
+    <!--  prettier-ignore  -->
     <template
       v-if="
         type !== 'line' &&
