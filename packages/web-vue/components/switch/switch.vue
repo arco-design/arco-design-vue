@@ -19,15 +19,20 @@
         </template>
       </span>
     </span>
-    <!--  prettier-ignore  -->
-    <template v-if="type !== 'line' && size !== 'small' && ($slots.checked || $slots.unchecked)">
+    <template
+      v-if="
+        type !== 'line' &&
+        size !== 'small' &&
+        ($slots.checked || checkedText || $slots.unchecked || uncheckedText)
+      "
+    >
       <span :class="`${prefixCls}-text-holder`">
-        <slot v-if="computedCheck" name="checked" />
-        <slot v-else name="unchecked" />
+        <slot v-if="computedCheck" name="checked">{{ checkedText }}</slot>
+        <slot v-else name="unchecked">{{ uncheckedText }}</slot>
       </span>
       <span :class="`${prefixCls}-text`">
-        <slot v-if="computedCheck" name="checked" />
-        <slot v-else name="unchecked" />
+        <slot v-if="computedCheck" name="checked">{{ checkedText }}</slot>
+        <slot v-else name="unchecked">{{ uncheckedText }}</slot>
       </span>
     </template>
   </button>
@@ -143,6 +148,20 @@ export default defineComponent({
         ) => Promise<boolean | void> | boolean | void
       >,
     },
+    /**
+     * @zh 打开状态时的文案（`type='line'`和`size='small'`时不生效）
+     * @en Copywriting when opened (not effective when `type='line'` and `size='small'`)
+     */
+    checkedText: {
+      type: [String],
+    },
+    /**
+     * @zh 关闭状态时的文案（`type='line'`和`size='small'`时不生效）
+     * @en Copywriting when closed (not effective when `type='line'` and `size='small'`)
+     */
+    uncheckedText: {
+      type: [String],
+    },
   },
   emits: {
     'update:modelValue': (value: boolean | string | number) => true,
@@ -226,7 +245,6 @@ export default defineComponent({
           if (result ?? true) {
             handleChange(checked, ev);
           }
-        } catch (error) {
         } finally {
           _loading.value = false;
         }
