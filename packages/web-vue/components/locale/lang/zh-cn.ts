@@ -146,6 +146,54 @@ const lang: ArcoLang = {
     collapse: '折叠',
     edit: '编辑',
   },
+  form: {
+    validateMessages: {
+      required: '#{field} 是必填项',
+      type: {
+        string: '#{field} 不是合法的文本类型',
+        number: '#{field} 不是合法的数字类型',
+        boolean: '#{field} 不是合法的布尔类型',
+        array: '#{field} 不是合法的数组类型',
+        object: '#{field} 不是合法的对象类型',
+        url: '#{field} 不是合法的 url 地址',
+        email: '#{field} 不是合法的邮箱地址',
+        ip: '#{field} 不是合法的 IP 地址',
+      },
+      number: {
+        min: '`#{value}` 小于最小值 `#{min}`',
+        max: '`#{value}` 大于最大值 `#{max}`',
+        equal: '`#{value}` 不等于 `#{equal}`',
+        range: '`#{value}` 不在 `#{min} ~ #{max}` 范围内',
+        positive: '`#{value}` 不是正数',
+        negative: '`#{value}` 不是负数',
+      },
+      array: {
+        length: '`#{field}` 个数不等于 #{length}',
+        minLength: '`#{field}` 个数最少为 #{minLength}',
+        maxLength: '`#{field}` 个数最多为 #{maxLength}',
+        includes: '#{field} 不包含 #{includes}',
+        deepEqual: '#{field} 不等于 #{deepEqual}',
+        empty: '`#{field}` 不是空数组',
+      },
+      string: {
+        minLength: '字符数最少为 #{minLength}',
+        maxLength: '字符数最多为 #{maxLength}',
+        length: '字符数必须是 #{length}',
+        match: '`#{value}` 不符合模式 #{pattern}',
+        uppercase: '`#{value}` 必须全大写',
+        lowercase: '`#{value}` 必须全小写',
+      },
+      object: {
+        deepEqual: '`#{field}` 不等于期望值',
+        hasKeys: '`#{field}` 不包含必须字段',
+        empty: '`#{field}` 不是对象',
+      },
+      boolean: {
+        true: '期望是 `true`',
+        false: '期望是 `false`',
+      },
+    },
+  },
 };
 
 export default lang;
