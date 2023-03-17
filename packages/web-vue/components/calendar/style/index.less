@@ -124,10 +124,11 @@
     cursor: pointer;
 
     &-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 28px;
       height: 28px;
-      line-height: 28px;
-      text-align: center;
       border-radius: 50%;
     }
   }
@@ -153,12 +154,14 @@
   }
 
   &-mode-month &-cell-selected &-date-circle {
+    box-sizing: border-box;
     color: #fff;
     background-color: @calendar-color-bg-circle_selected;
     border: 1px solid @calendar-color-bg-circle_selected;
   }
 
   &-mode-year &-cell-selected &-cell-selected &-date-circle {
+    box-sizing: border-box;
     color: #fff;
     background-color: @calendar-color-bg-circle_selected;
     border: 1px solid @calendar-color-bg-circle_selected;
@@ -241,11 +244,11 @@
     }
 
     &-circle {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 22px;
       height: 22px;
-      line-height: 22px;
-      text-align: center;
       border-radius: 50%;
     }
   }
