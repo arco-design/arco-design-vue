@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 问题修复
+
+- 修复在 range 模式下 model-value 绑定错误的问题 ([#2241](https://github.com/arco-design/arco-design-vue/pull/2241))
+
+
 ## 2.42.1
 
 `2023-02-03`

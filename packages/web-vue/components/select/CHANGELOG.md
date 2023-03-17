@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 BugFix
+
+- drop-down option value supports empty string ([#2190](https://github.com/arco-design/arco-design-vue/pull/2190))
+
+
 ## 2.43.0
 
 `2023-02-10`

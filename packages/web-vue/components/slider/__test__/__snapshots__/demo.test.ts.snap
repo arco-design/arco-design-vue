@@ -106,11 +106,11 @@ exports[`<slider> demo: render [marks] correctly 1`] = `
 exports[`<slider> demo: render [range] correctly 1`] = `
 "<div class=\\"arco-slider\\" style=\\"width: 300px;\\">
   <div class=\\"arco-slider-track\\">
-    <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 90%;\\"></div>
+    <div class=\\"arco-slider-bar\\" style=\\"left: 5%; right: 90%;\\"></div>
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-    <div style=\\"left: 0%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"0\\" aria-valuetext=\\"0\\" class=\\"arco-slider-btn\\"></div>
+    <div style=\\"left: 5%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"5\\" aria-valuetext=\\"5\\" class=\\"arco-slider-btn\\"></div>
     <!---->
     <div style=\\"left: 10%;\\" tabindex=\\"0\\" role=\\"slider\\" aria-disabled=\\"false\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"10\\" aria-valuetext=\\"10\\" class=\\"arco-slider-btn\\"></div>
     <!---->

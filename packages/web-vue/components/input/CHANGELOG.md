@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 BugFix
+
+- fix issue with content modification at maximum value using non-input method ([#2188](https://github.com/arco-design/arco-design-vue/pull/2188))
+
+
 ## 2.41.0
 
 `2022-12-30`

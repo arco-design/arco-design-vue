@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🆎 TypeScript
+
+- beforeUpload allows to return a boolean value ([#2204](https://github.com/arco-design/arco-design-vue/pull/2204))
+
+
 ## 2.43.0
 
 `2023-02-10`

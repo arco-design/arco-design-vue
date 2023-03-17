@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 问题修复
+
+- 修复 field 属性中对数组格式不支持的问题 ([#2242](https://github.com/arco-design/arco-design-vue/pull/2242))
+
+### 💎 功能优化
+
+- 增加中文检验信息 ([#2240](https://github.com/arco-design/arco-design-vue/pull/2240))
+
+
 ## 2.43.2
 
 `2023-02-24`

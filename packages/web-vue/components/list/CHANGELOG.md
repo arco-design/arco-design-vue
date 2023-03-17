@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 BugFix
+
+- list supports backend data pagination ([#2199](https://github.com/arco-design/arco-design-vue/pull/2199))
+
+
 ## 2.40.1
 
 `2022-12-23`

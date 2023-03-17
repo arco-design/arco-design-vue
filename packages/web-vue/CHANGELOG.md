@@ -2,6 +2,36 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 BugFix
+
+- **form:** Fix the problem that the array format is not supported in the field attribute ([#2242](https://github.com/arco-design/arco-design-vue/pull/2242))
+- **slider:** Fix the problem of model-value binding error in range mode ([#2241](https://github.com/arco-design/arco-design-vue/pull/2241))
+- **tree:** adjust the emit order of select and update:selectedKeys, check and update:checkedKeys ([#2228](https://github.com/arco-design/arco-design-vue/pull/2228))
+- **divider:** Fix the problem that the dividing line is displayed incorrectly ([#2205](https://github.com/arco-design/arco-design-vue/pull/2205))
+- **list:** list supports backend data pagination ([#2199](https://github.com/arco-design/arco-design-vue/pull/2199))
+- **select:** drop-down option value supports empty string ([#2190](https://github.com/arco-design/arco-design-vue/pull/2190))
+- **input:** fix issue with content modification at maximum value using non-input method ([#2188](https://github.com/arco-design/arco-design-vue/pull/2188))
+
+### 💎 Enhancement
+
+- **form:** Add Chinese inspection information ([#2240](https://github.com/arco-design/arco-design-vue/pull/2240))
+- Added Vietnamese (vi-VN)  languages ([#2219](https://github.com/arco-design/arco-design-vue/pull/2219))
+- Added Khmer(Cambodia) (km-KH) languages ([#2219](https://github.com/arco-design/arco-design-vue/pull/2219))
+
+### 💅 Style
+
+- **calendar:** fix some style problems ([#2239](https://github.com/arco-design/arco-design-vue/pull/2239))
+
+### 🆎 TypeScript
+
+- **upload:** beforeUpload allows to return a boolean value ([#2204](https://github.com/arco-design/arco-design-vue/pull/2204))
+- Fix virtual list ts definition problem ([#2168](https://github.com/arco-design/arco-design-vue/pull/2168))
+
+
 ## 2.44.1
 
 `2023-03-10`

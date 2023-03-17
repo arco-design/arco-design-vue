@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 BugFix
+
+- adjust the emit order of select and update:selectedKeys, check and update:checkedKeys ([#2228](https://github.com/arco-design/arco-design-vue/pull/2228))
+
+
 ## 2.34.0
 
 `2022-07-29`

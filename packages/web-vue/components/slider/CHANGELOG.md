@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 BugFix
+
+- Fix the problem of model-value binding error in range mode ([#2241](https://github.com/arco-design/arco-design-vue/pull/2241))
+
+
 ## 2.42.1
 
 `2023-02-03`

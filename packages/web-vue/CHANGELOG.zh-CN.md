@@ -2,6 +2,36 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 问题修复
+
+- **form:** 修复 field 属性中对数组格式不支持的问题 ([#2242](https://github.com/arco-design/arco-design-vue/pull/2242))
+- **slider:** 修复在 range 模式下 model-value 绑定错误的问题 ([#2241](https://github.com/arco-design/arco-design-vue/pull/2241))
+- **tree:** 调整 select 和 update:selectedKeys, check 和 update:checkedKeys 的触发顺序 ([#2228](https://github.com/arco-design/arco-design-vue/pull/2228))
+- **divider:** 修复分割线展示错误的问题 ([#2205](https://github.com/arco-design/arco-design-vue/pull/2205))
+- **list:** 列表支持后端数据分页 ([#2199](https://github.com/arco-design/arco-design-vue/pull/2199))
+- **select:** 下拉选项值支持空字符串 ([#2190](https://github.com/arco-design/arco-design-vue/pull/2190))
+- **input:** 修复达到最大值后非输入法状态下无法修改内容问题 ([#2188](https://github.com/arco-design/arco-design-vue/pull/2188))
+
+### 💎 功能优化
+
+- **form:** 增加中文检验信息 ([#2240](https://github.com/arco-design/arco-design-vue/pull/2240))
+- 新增越南语`vi-VN` ([#2219](https://github.com/arco-design/arco-design-vue/pull/2219))
+- 新增高棉语(柬埔寨) `km-KH` ([#2219](https://github.com/arco-design/arco-design-vue/pull/2219))
+
+### 💅 样式更新
+
+- **calendar:** 修复一些样式问题 ([#2239](https://github.com/arco-design/arco-design-vue/pull/2239))
+
+### 🆎 类型修正
+
+- **upload:** 允许beforeUpload返回布尔值 ([#2204](https://github.com/arco-design/arco-design-vue/pull/2204))
+- 修正虚拟列表 ts 定义问题 ([#2168](https://github.com/arco-design/arco-design-vue/pull/2168))
+
+
 ## 2.44.1
 
 `2023-03-10`

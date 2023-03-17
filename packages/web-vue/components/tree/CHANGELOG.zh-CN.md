@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 问题修复
+
+- 调整 select 和 update:selectedKeys, check 和 update:checkedKeys 的触发顺序 ([#2228](https://github.com/arco-design/arco-design-vue/pull/2228))
+
+
 ## 2.34.0
 
 `2022-07-29`

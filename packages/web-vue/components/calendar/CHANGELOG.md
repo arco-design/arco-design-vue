@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 💅 Style
+
+- fix some style problems ([#2239](https://github.com/arco-design/arco-design-vue/pull/2239))
+
+
 ## 2.44.1
 
 `2023-03-10`

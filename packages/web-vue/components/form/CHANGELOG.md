@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.44.2
+
+`2023-03-17`
+
+### 🐛 BugFix
+
+- Fix the problem that the array format is not supported in the field attribute ([#2242](https://github.com/arco-design/arco-design-vue/pull/2242))
+
+### 💎 Enhancement
+
+- Add Chinese inspection information ([#2240](https://github.com/arco-design/arco-design-vue/pull/2240))
+
+
 ## 2.43.2
 
 `2023-02-24`
