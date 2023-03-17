@@ -18,6 +18,21 @@ Range selection can be turned on by setting `range`, at this time `modelValue` i
 
 ```vue
 <template>
-  <a-slider :style="{ width: '300px' }" :default-value="[0,10]" range/>
+  <a-slider v-model="value" :style="{ width: '300px' }" range />
 </template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref([5, 10]);
+
+    return {
+      value
+    }
+
+  }
+}
+</script>
 ```

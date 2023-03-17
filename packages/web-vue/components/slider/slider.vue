@@ -68,7 +68,7 @@
 
 <script lang="ts">
 import type { PropType, CSSProperties } from 'vue';
-import { computed, defineComponent, nextTick, ref, toRef } from 'vue';
+import { computed, defineComponent, ref, toRef, toRefs, watch } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import SliderButton from './slider-button.vue';
@@ -202,6 +202,7 @@ export default defineComponent({
     'change': (value: number | [number, number]) => true,
   },
   setup(props, { emit }) {
+    const { modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('slider');
     const { mergedDisabled, eventHandlers } = useFormItem({
       disabled: toRef(props, 'disabled'),
@@ -209,14 +210,24 @@ export default defineComponent({
 
     const trackRef = ref<HTMLElement | null>(null);
     const trackRect = ref<DOMRect>();
+    const defaultValue = props.modelValue
+      ? props.modelValue
+      : props.defaultValue;
 
-    const startValue = ref(
-      isArray(props.defaultValue) ? props.defaultValue[0] : 0
-    );
+    const startValue = ref(isArray(defaultValue) ? defaultValue[0] : 0);
 
     const endValue = ref(
-      isArray(props.defaultValue) ? props.defaultValue[1] : props.defaultValue
+      isArray(defaultValue) ? defaultValue[1] : defaultValue
     );
+
+    watch(modelValue, (value) => {
+      if (isArray(value)) {
+        startValue.value = value[0] ?? props.min ?? 0;
+        endValue.value = value[1] ?? props.min ?? 0;
+      } else {
+        endValue.value = value ?? props.min ?? 0;
+      }
+    });
 
     const handleChange = () => {
       if (props.range) {
