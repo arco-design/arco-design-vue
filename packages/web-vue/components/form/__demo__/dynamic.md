@@ -22,7 +22,7 @@ Dynamically control form content through data.
     <a-form-item field="name" label="Username">
       <a-input v-model="form.name" placeholder="please enter your username..." />
     </a-form-item>
-    <a-form-item v-for="(post,index) of form.posts" :field="`posts.${index}.value`" :label="`Post-${index}`" :key="index">
+    <a-form-item v-for="(post,index) of form.posts" :field="`posts[${index}].value`" :label="`Post-${index}`" :key="index">
       <a-input v-model="post.value" placeholder="please enter your post..." />
       <a-button @click="handleDelete(index)" :style="{marginLeft:'10px'}">Delete</a-button>
     </a-form-item>
