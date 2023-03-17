@@ -100,6 +100,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { getValueByPath, setValueByPath } from '../_utils/get-value-by-path';
 import { Data } from '../_utils/types';
 import { getFinalValidateMessage, getFinalValidateStatus } from './utils';
+import { useI18n } from '../locale';
 
 export default defineComponent({
   name: 'FormItem',
@@ -336,6 +337,7 @@ export default defineComponent({
     const { field } = toRefs(props);
     const formCtx = inject<Partial<FormContext>>(formInjectionKey, {});
     const { autoLabelWidth, layout } = toRefs(formCtx);
+    const { i18nMessage } = useI18n();
 
     const mergedLabelCol = computed(() => {
       const colProps = { ...(props.labelColProps ?? formCtx.labelColProps) };
@@ -454,7 +456,10 @@ export default defineComponent({
             return rule;
           }),
         },
-        { ignoreEmptyString: true }
+        {
+          ignoreEmptyString: true,
+          validateMessages: i18nMessage.value.form?.validateMessages,
+        }
       );
 
       return new Promise((resolve) => {

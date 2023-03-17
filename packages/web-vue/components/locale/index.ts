@@ -76,6 +76,7 @@ export const useI18n = () => {
   };
 
   return {
+    i18nMessage,
     locale,
     t: transform,
   };
