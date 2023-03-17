@@ -21,7 +21,7 @@ export interface VirtualListProps {
    * @zh 可视区域高度
    * @en Viewable area height
    */
-  height: number | string;
+  height?: number | string;
   /**
    * @zh 开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。
    * @en The threshold of the number of elements to enable virtual scrolling. When the number of data is less than the threshold, virtual scrolling will not be enabled.
