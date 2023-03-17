@@ -8,7 +8,7 @@ export const getValueByPath = <T = any>(
   if (!obj || !path) {
     return undefined;
   }
-
+  path = path.replace(/\[(\w+)\]/g, '.$1');
   const keys = path.split('.');
   if (keys.length === 0) {
     return undefined;
@@ -21,7 +21,7 @@ export const getValueByPath = <T = any>(
       return undefined;
     }
     if (i !== keys.length - 1) {
-      temp = temp[keys[i]];
+      temp = temp[keys[i]] as any;
     } else {
       return temp[keys[i]] as T;
     }
@@ -38,7 +38,7 @@ export const setValueByPath = (
   if (!obj || !path) {
     return;
   }
-
+  path = path.replace(/\[(\w+)\]/g, '.$1');
   const keys = path.split('.');
   if (keys.length === 0) {
     return;
@@ -51,7 +51,7 @@ export const setValueByPath = (
       return;
     }
     if (i !== keys.length - 1) {
-      temp = temp[keys[i]];
+      temp = temp[keys[i]] as any;
     } else {
       temp[keys[i]] = value;
     }
