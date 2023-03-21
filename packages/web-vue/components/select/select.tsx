@@ -19,7 +19,12 @@ import {
   isString,
   isUndefined,
 } from '../_utils/is';
-import { getKeyFromValue, isGroupOptionInfo, isValidOption } from './utils';
+import {
+  getKeyFromValue,
+  isGroupOptionInfo,
+  isValidOption,
+  hasEmptyStringKey,
+} from './utils';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import { Size } from '../_utils/constant';
@@ -544,7 +549,7 @@ export default defineComponent({
     });
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
-        _value.value = multiple.value ? [] : '';
+        _value.value = multiple.value ? [] : _value.value;
       }
     });
 
@@ -594,7 +599,7 @@ export default defineComponent({
 
       if (props.allowCreate || props.fallbackOption) {
         for (const item of computedValueObjects.value) {
-          if (!keyArray.includes(item.key)) {
+          if (!keyArray.includes(item.key) && item.value !== '') {
             const optionInfo = optionInfoMap.get(item.key);
             if (!optionInfo || optionInfo.origin === 'extraOptions') {
               valueArray.push(item);
@@ -666,7 +671,12 @@ export default defineComponent({
     // update func
     const getValueFromValueKeys = (valueKeys: string[]) => {
       if (!props.multiple) {
-        return optionInfoMap.get(valueKeys[0])?.value ?? '';
+        return (
+          optionInfoMap.get(valueKeys[0])?.value ??
+          (hasEmptyStringKey(optionInfoMap)
+            ? (undefined as unknown as string)
+            : '')
+        );
       }
       return valueKeys.map((key) => optionInfoMap.get(key)?.value ?? '');
     };
