@@ -312,6 +312,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否启用缩写
+     * @en Whether to enable abbreviation
+     */
+    abbreviation: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: {
     /**
@@ -993,6 +1001,7 @@ export default defineComponent({
         'disabledDate',
         'disabledTime',
         'hideTrigger',
+        'abbreviation',
       ]),
       prefixCls,
       format: parseValueFormat.value,

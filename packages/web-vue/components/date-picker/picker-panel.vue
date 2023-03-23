@@ -15,6 +15,7 @@
           :header-value="headerPanelHeaderValue"
           :header-icons="headerIcons"
           :header-operations="headerPanelHeaderOperations"
+          :abbreviation="abbreviation"
           @select="onHeaderPanelSelect"
           @header-label-click="onMonthHeaderLabelClick"
         />
@@ -25,7 +26,11 @@
           v-bind="commonPanelProps"
           :day-start-of-week="dayStartOfWeek"
         />
-        <MonthPanel v-else-if="mode === 'month'" v-bind="commonPanelProps" />
+        <MonthPanel
+          v-else-if="mode === 'month'"
+          :abbreviation="abbreviation"
+          v-bind="commonPanelProps"
+        />
         <YearPanel v-else-if="mode === 'year'" v-bind="commonPanelProps" />
         <QuarterPanel
           v-else-if="mode === 'quarter'"
@@ -182,6 +187,9 @@ export default defineComponent({
     },
     headerOperations: {
       type: Object as PropType<HeaderOperations>,
+    },
+    abbreviation: {
+      type: Boolean,
     },
   },
   emits: [

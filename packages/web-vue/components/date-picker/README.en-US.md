@@ -128,6 +128,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
 |default-value|Default value|`Date \| string \| number`|`-`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'YYYY-MM'`|
+|abbreviation|Whether to enable abbreviation|`boolean`|`true`|
 
 
 

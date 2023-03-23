@@ -98,6 +98,10 @@ export default defineComponent({
     onHeaderLabelClick: {
       type: Function as PropType<HeaderLabelClickFunc>,
     },
+    abbreviation: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: ['select', 'cell-mouse-enter'],
   setup(props, { emit }) {
@@ -111,11 +115,11 @@ export default defineComponent({
 
     const rows = computed(() => {
       const year = headerValue.value.year();
+      const isAbbr = props.abbreviation ? 'short' : 'long';
       const flatData = newArray<Cell>(CELL_COUNT).map((_, index) => ({
-        label: datePickerT(`datePicker.month.long.${MONTH_LIST[index]}`),
+        label: datePickerT(`datePicker.month.${isAbbr}.${MONTH_LIST[index]}`),
         value: dayjs(`${year}-${index + 1}`, 'YYYY-M'),
       }));
-
       const rows = newArray(ROW_COUNT).map((_, index) =>
         flatData.slice(index * COL_COUNT, (index + 1) * COL_COUNT)
       );
