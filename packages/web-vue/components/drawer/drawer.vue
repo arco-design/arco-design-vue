@@ -86,7 +86,7 @@ import {
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import ClientOnly from '../_components/client-only';
-import ArcoButton from '../button';
+import ArcoButton, { ButtonProps } from '../button';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import { useI18n } from '../locale';
@@ -190,7 +190,7 @@ export default defineComponent({
      * @version 2.9.0
      */
     okButtonProps: {
-      type: Object,
+      type: Object as PropType<ButtonProps>,
     },
     /**
      * @zh 取消按钮的Props
@@ -198,7 +198,7 @@ export default defineComponent({
      * @version 2.9.0
      */
     cancelButtonProps: {
-      type: Object,
+      type: Object as PropType<ButtonProps>,
     },
     /**
      * @zh 关闭时是否卸载节点

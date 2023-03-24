@@ -3,7 +3,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconSearch from '../icon/icon-search';
 import IconLoading from '../icon/icon-loading';
-import Button from '../button';
+import Button, { ButtonProps } from '../button';
 import Input from './input';
 import type { Size } from '../_utils/constant';
 import { useSize } from '../_hooks/use-size';
@@ -57,7 +57,7 @@ export default defineComponent({
      * @en Button props
      */
     buttonProps: {
-      type: Object,
+      type: Object as PropType<ButtonProps>,
     },
   },
   emits: {
