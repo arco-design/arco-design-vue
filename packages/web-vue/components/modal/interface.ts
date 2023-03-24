@@ -1,4 +1,5 @@
 import { AppContext, CSSProperties } from 'vue';
+import { ButtonProps } from '../button';
 import { RenderContent } from '../_utils/types';
 
 export interface ModalConfig {
@@ -37,12 +38,12 @@ export interface ModalConfig {
    * @zh 确认按钮的Props
    * @en Props of confirm button
    */
-  okButtonProps?: any;
+  okButtonProps?: ButtonProps;
   /**
    * @zh 取消按钮的Props
    * @en Props of cancel button
    */
-  cancelButtonProps?: any;
+  cancelButtonProps?: ButtonProps;
   /**
    * @zh 确认按钮是否为加载中状态
    * @en Whether the confirm button is in the loading state
