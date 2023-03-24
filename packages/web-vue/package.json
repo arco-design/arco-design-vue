@@ -9,10 +9,23 @@
   "author": "ArcoDesign Team",
   "homepage": "https://arco.design/vue",
   "license": "MIT",
-  "type": "module",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.js",
+      "types": "./es/index.d.ts"
+    },
+    "./es": "./es/index.js",
+    "./lib": "./lib/index.js",
+    "./es/*.js": "./es/*.js",
+    "./es/*": "./es/*.js",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
+    "./*": "./*"
+  },
   "unpkg": "dist/arco-vue.min.js",
   "files": [
     "es",
