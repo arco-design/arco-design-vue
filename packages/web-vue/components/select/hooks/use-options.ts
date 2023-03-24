@@ -40,20 +40,13 @@ export const useOptions = ({
   }));
 
   const slotOptionInfoMap = reactive(new Map<number, SelectOptionInfo>());
-  const sortedSlotOptionInfos = ref<SelectOptionInfo[]>([]);
-  watch(
-    slotOptionInfoMap,
-    (slotOptionInfoMap) => {
-      sortedSlotOptionInfos.value = Array.from(slotOptionInfoMap.values()).sort(
-        (a, b) => {
-          if (isNumber(a.index) && isNumber(b.index)) {
-            return a.index - b.index;
-          }
-          return 0;
-        }
-      );
-    },
-    { deep: true }
+  const sortedSlotOptionInfos = computed<SelectOptionInfo[]>(() =>
+    Array.from(slotOptionInfoMap.values()).sort((a, b) => {
+      if (isNumber(a.index) && isNumber(b.index)) {
+        return a.index - b.index;
+      }
+      return 0;
+    })
   );
 
   const propOptionData = computed(() => {
@@ -90,7 +83,7 @@ export const useOptions = ({
 
   watch(
     [
-      slotOptionInfoMap,
+      sortedSlotOptionInfos,
       options ?? ref([]),
       extraOptions ?? ref([]),
       valueKey ?? ref('value'),
