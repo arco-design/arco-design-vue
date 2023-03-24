@@ -72,7 +72,7 @@ description: Users can transfer files or submit corresponding content.
 |list-type|Picture list type|`'text' \| 'picture' \| 'picture-card'`|`'text'`||
 |response-url-key|Get the key of the image URL in the Response. After opening, it will replace the pre-load image with the uploaded image|`string \| ((fileItem: FileItem) => string)`|`-`||
 |custom-icon|Custom icon|`CustomIcon`|`-`||
-|on-before-upload|Trigger before uploading a file|`(file: File) => Promise<boolean \| File>`|`-`||
+|on-before-upload|Trigger before uploading a file|`(file: File) => boolean \| Promise<boolean \| File>`|`-`||
 |on-before-remove|Triggered before removing the file|`(fileItem: FileItem) => Promise<boolean>`|`-`||
 |on-button-click|Click the upload button to trigger (if the Promise is returned, the default input upload will be closed)|`(event: Event) => Promise<FileList> \| void`|`-`||
 ### `<upload>` Events

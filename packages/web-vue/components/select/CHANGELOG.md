@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.44.3
+
+`2023-03-24`
+
+### 🐛 BugFix
+
+- fix blank dropdown caused by dynamic slot options ([#2265](https://github.com/arco-design/arco-design-vue/pull/2265))
+- Automatic creation of empty string entries is not allowed. Dropdown option with empty string, set value to `undefined` when empty ([#2257](https://github.com/arco-design/arco-design-vue/pull/2257))
+
+
 ## 2.44.2
 
 `2023-03-17`

@@ -31,8 +31,8 @@ description: 点击元素，弹出气泡式的确认框。
 |ok-text|确认按钮的内容|`string`|`-`|
 |cancel-text|取消按钮的内容|`string`|`-`|
 |ok-loading|确认按钮是否为加载中状态|`boolean`|`false`|
-|ok-button-props|确认按钮的Props|`object`|`-`|
-|cancel-button-props|取消按钮的Props|`object`|`-`|
+|ok-button-props|确认按钮的Props|`ButtonProps`|`-`|
+|cancel-button-props|取消按钮的Props|`ButtonProps`|`-`|
 |content-class|弹出框内容的类名|`ClassName`|`-`|
 |content-style|弹出框内容的样式|`CSSProperties`|`-`|
 |arrow-class|弹出框箭头的类名|`ClassName`|`-`|

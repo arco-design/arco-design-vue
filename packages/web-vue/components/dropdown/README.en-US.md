@@ -128,7 +128,7 @@ description: When there are too many commands on the page, the alternative comma
 |disabled|Whether to disable|`boolean`|`false`|
 |type|Button type|`string`|`-`|
 |size|Button size|`string`|`-`|
-|button-props|Button props|`object`|`-`|
+|button-props|Button props|`ButtonProps`|`-`|
 |hide-on-select|Whether to hide popup when the user selects|`boolean`|`true`|
 ### `<dropdown-button>` Events
 

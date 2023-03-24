@@ -98,7 +98,7 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 |disabled|是否禁用|`boolean`|`false`||
 |size|输入框大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |button-text|搜索按钮的文字，使用后会替换原本的图标|`string`|`-`|2.16.0|
-|button-props|搜索按钮的属性|`object`|`-`||
+|button-props|搜索按钮的属性|`ButtonProps`|`-`||
 ### `<input-search>` Events
 
 |事件名|描述|参数|

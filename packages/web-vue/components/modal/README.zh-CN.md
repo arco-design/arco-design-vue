@@ -47,8 +47,8 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |ok-text|确认按钮的内容|`string`|`-`||
 |cancel-text|取消按钮的内容|`string`|`-`||
 |ok-loading|确认按钮是否为加载中状态|`boolean`|`false`||
-|ok-button-props|确认按钮的Props|`object`|`-`||
-|cancel-button-props|取消按钮的Props|`object`|`-`||
+|ok-button-props|确认按钮的Props|`ButtonProps`|`-`||
+|cancel-button-props|取消按钮的Props|`ButtonProps`|`-`||
 |footer|是否展示页脚部分|`boolean`|`true`||
 |render-to-body|对话框是否挂载在 `body` 元素下|`boolean`|`true`||
 |popup-container|弹出框的挂载容器|`string \| HTMLElement`|`'body'`||
@@ -112,8 +112,8 @@ Modal._context = app._context;
 |closable|是否显示关闭按钮|`boolean`|`false`||
 |okText|确认按钮的内容|`string`|`-`||
 |cancelText|取消按钮的内容|`string`|`-`||
-|okButtonProps|确认按钮的Props|`any`|`-`||
-|cancelButtonProps|取消按钮的Props|`any`|`-`||
+|okButtonProps|确认按钮的Props|`ButtonProps`|`-`||
+|cancelButtonProps|取消按钮的Props|`ButtonProps`|`-`||
 |okLoading|确认按钮是否为加载中状态|`boolean`|`false`||
 |hideCancel|是否隐藏取消按钮|`boolean`|`false`||
 |mask|是否显示遮罩层|`boolean`|`false`||

@@ -71,7 +71,7 @@ description: 用户可传输文件或提交相应的内容。
 |response-url-key|Response中获取图片URL的key，开启后会用上传的图片替换预加载的图片|`string \| ((fileItem: FileItem) => string)`|`-`||
 |custom-icon|自定义图标|`CustomIcon`|`-`||
 |image-preview|是否使用 ImagePreview 组件进行预览|`boolean`|`false`|2.14.0|
-|on-before-upload|上传文件前触发|`(file: File) => Promise<boolean \| File>`|`-`||
+|on-before-upload|上传文件前触发|`(file: File) => boolean \| Promise<boolean \| File>`|`-`||
 |on-before-remove|移除文件前触发|`(fileItem: FileItem) => Promise<boolean>`|`-`||
 |on-button-click|点击上传按钮触发（如果返回 Promise 则会关闭默认 input 上传）|`(event: Event) => Promise<FileList> \| void`|`-`||
 ### `<upload>` Events

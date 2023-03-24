@@ -35,8 +35,8 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |ok-text|确认按钮的内容|`string`|`-`||
 |cancel-text|取消按钮的内容|`string`|`-`||
 |ok-loading|确认按钮是否为加载中状态|`boolean`|`false`||
-|ok-button-props|确认按钮的Props|`object`|`-`|2.9.0|
-|cancel-button-props|取消按钮的Props|`object`|`-`|2.9.0|
+|ok-button-props|确认按钮的Props|`ButtonProps`|`-`|2.9.0|
+|cancel-button-props|取消按钮的Props|`ButtonProps`|`-`|2.9.0|
 |unmount-on-close|关闭时是否卸载节点|`boolean`|`false`|2.12.0|
 |width|抽屉的宽度（仅在placement为right,left时可用）|`number\|string`|`250`||
 |height|抽屉的高度（仅在placement为top,bottom时可用）|`number\|string`|`250`||

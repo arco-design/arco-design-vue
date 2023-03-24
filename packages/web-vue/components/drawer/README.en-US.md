@@ -37,8 +37,8 @@ description: A drawer-like panel that slides out from the side of the screen aft
 |ok-text|The content of the ok button|`string`|`-`||
 |cancel-text|The content of the cancel button|`string`|`-`||
 |ok-loading|Whether the ok button is in the loading state|`boolean`|`false`||
-|ok-button-props|Props of confirm button|`object`|`-`|2.9.0|
-|cancel-button-props|Props of cancel button|`object`|`-`|2.9.0|
+|ok-button-props|Props of confirm button|`ButtonProps`|`-`|2.9.0|
+|cancel-button-props|Props of cancel button|`ButtonProps`|`-`|2.9.0|
 |unmount-on-close|Whether to uninstall the node when close|`boolean`|`false`|2.12.0|
 |width|The width of the drawer (only available when placement is right, left)|`number\|string`|`250`||
 |height|The height of the drawer (only available when placement is top, bottom)|`number\|string`|`250`||

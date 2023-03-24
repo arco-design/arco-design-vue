@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.44.3
+
+`2023-03-24`
+
+### 🐛 BugFix
+
+- **date-picker:** Fix bugs with year range selector ([#2270](https://github.com/arco-design/arco-design-vue/pull/2270))
+- The component package adds the `exports` flag to solve the problem of parsing to CommonJS under nuxt3 ([#2270](https://github.com/arco-design/arco-design-vue/pull/2270))
+- **select:** fix blank dropdown caused by dynamic slot options ([#2265](https://github.com/arco-design/arco-design-vue/pull/2265))
+- **select:** Automatic creation of empty string entries is not allowed. Dropdown option with empty string, set value to `undefined` when empty ([#2257](https://github.com/arco-design/arco-design-vue/pull/2257))
+
+### 🆎 TypeScript
+
+- update the buttonProps types of some components ([#2266](https://github.com/arco-design/arco-design-vue/pull/2266))
+
+
 ## 2.44.2
 
 `2023-03-17`

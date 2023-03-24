@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.44.3
+
+`2023-03-24`
+
+### 🐛 问题修复
+
+- 修复动态 slot options 导致 dropdown 为空的问题 ([#2265](https://github.com/arco-design/arco-design-vue/pull/2265))
+- 不允许自动创建空字符串条目。含有空字符串的下拉选项，清空时将值设置为 `undefined` ([#2257](https://github.com/arco-design/arco-design-vue/pull/2257))
+
+
 ## 2.44.2
 
 `2023-03-17`

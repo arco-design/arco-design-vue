@@ -1,6 +1,6 @@
 {
   "name": "@arco-design/web-vue",
-  "version": "2.44.2",
+  "version": "2.44.3",
   "description": "Arco Design Vue 2.0: A Vue.js 3 UI Library",
   "keywords": [
     "arco",
@@ -20,9 +20,9 @@
     },
     "./es": "./es/index.js",
     "./lib": "./lib/index.js",
-    "./es/*.js": "./es/*.js",
+    "./es/icon": "./es/icon/index.js",
+    "./lib/icon": "./lib/icon/index.js",
     "./es/*": "./es/*.js",
-    "./lib/*.js": "./lib/*.js",
     "./lib/*": "./lib/*.js",
     "./*": "./*"
   },

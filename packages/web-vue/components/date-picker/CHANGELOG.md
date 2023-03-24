@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.3
+
+`2023-03-24`
+
+### 🐛 BugFix
+
+- Fix bugs with year range selector ([#2270](https://github.com/arco-design/arco-design-vue/pull/2270))
+
+
 ## 2.43.1
 
 `2023-02-17`

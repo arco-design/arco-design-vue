@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.44.3
+
+`2023-03-24`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复年份范围选择器存在的问题 ([#2270](https://github.com/arco-design/arco-design-vue/pull/2270))
+- 组件包增加 `exports` 标识，解决 nuxt3 下解析为 CommonJS 的问题 ([#2270](https://github.com/arco-design/arco-design-vue/pull/2270))
+- **select:** 修复动态 slot options 导致 dropdown 为空的问题 ([#2265](https://github.com/arco-design/arco-design-vue/pull/2265))
+- **select:** 不允许自动创建空字符串条目。含有空字符串的下拉选项，清空时将值设置为 `undefined` ([#2257](https://github.com/arco-design/arco-design-vue/pull/2257))
+
+### 🆎 类型修正
+
+- 更新一些组件的的buttonProps类型 ([#2266](https://github.com/arco-design/arco-design-vue/pull/2266))
+
+
 ## 2.44.2
 
 `2023-03-17`

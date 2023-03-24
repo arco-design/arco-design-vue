@@ -33,8 +33,8 @@ description: Click on the element and a popconfirm will pop up.
 |ok-text|The content of the ok button|`string`|`-`|
 |cancel-text|The content of the cancel button|`string`|`-`|
 |ok-loading|Whether the ok button is in the loading state|`boolean`|`false`|
-|ok-button-props|Props of ok button|`object`|`-`|
-|cancel-button-props|Props of cancel button|`object`|`-`|
+|ok-button-props|Props of ok button|`ButtonProps`|`-`|
+|cancel-button-props|Props of cancel button|`ButtonProps`|`-`|
 |content-class|The class name of the popup content|`ClassName`|`-`|
 |content-style|The style of the popup content|`CSSProperties`|`-`|
 |arrow-class|The class name of the popup arrow|`ClassName`|`-`|

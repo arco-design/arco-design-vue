@@ -49,8 +49,8 @@ description: Open a floating layer on the current page to carry related operatio
 |ok-text|The content of the confirm button|`string`|`-`||
 |cancel-text|The content of the cancel button|`string`|`-`||
 |ok-loading|Whether the confirm button is in the loading state|`boolean`|`false`||
-|ok-button-props|Props of confirm button|`object`|`-`||
-|cancel-button-props|Props of cancel button|`object`|`-`||
+|ok-button-props|Props of confirm button|`ButtonProps`|`-`||
+|cancel-button-props|Props of cancel button|`ButtonProps`|`-`||
 |footer|Whether to show the footer|`boolean`|`true`||
 |render-to-body|Whether the modal is mounted under the `body` element|`boolean`|`true`||
 |popup-container|Mount container for modal|`string \| HTMLElement`|`'body'`||
@@ -114,8 +114,8 @@ Modal._context = app._context;
 |closable|Whether to show the close button|`boolean`|`false`||
 |okText|The content of the confirm button|`string`|`-`||
 |cancelText|The content of the cancel button|`string`|`-`||
-|okButtonProps|Props of confirm button|`any`|`-`||
-|cancelButtonProps|Props of cancel button|`any`|`-`||
+|okButtonProps|Props of confirm button|`ButtonProps`|`-`||
+|cancelButtonProps|Props of cancel button|`ButtonProps`|`-`||
 |okLoading|Whether the confirm button is in the loading state|`boolean`|`false`||
 |hideCancel|Whether to hide the cancel button|`boolean`|`false`||
 |mask|Whether to show the mask|`boolean`|`false`||
