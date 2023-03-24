@@ -115,6 +115,9 @@ app.use(ArcoVue, {
 app.mount('#app');
 ```
 
+## import component
+In order to be compatible with the nuxt3 environment in the `2.44.3` version of the component library, the `exports` configuration is added. This configuration will have a certain impact on the import of component libraries. It is recommended to import component libraries and icons from `@arco-design/web-vue` and `@arco-design/web-vue/es/icon`.
+
 
 ## Supported platforms
 

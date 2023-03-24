@@ -113,6 +113,9 @@ app.use(ArcoVue, {
 app.mount('#app');
 ```
 
+## 导入组件
+组件库在 `2.44.3` 版本为了兼容 nuxt3 环境，增加 `exports` 配置。这个配置会对组件库的导入产生一定影响，使用中建议从 `@arco-design/web-vue` 和 `@arco-design/web-vue/es/icon` 导入组件库和图标。
+
 
 ## 浏览器兼容性
 
