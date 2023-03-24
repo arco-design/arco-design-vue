@@ -38,6 +38,12 @@ export const getKeyFromValue = (
   return '';
 };
 
+export const hasEmptyStringKey = (
+  optionInfoMap: Map<string, SelectOptionInfo>
+) => {
+  return optionInfoMap.has(`__arco__option__string-`);
+};
+
 export const createOptionInfo = (
   option: string | number | SelectOptionData,
   {
