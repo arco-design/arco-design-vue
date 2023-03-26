@@ -3,38 +3,42 @@ import type { TriggerPosition } from '../_utils/constant';
 import { isArray } from '../_utils/is';
 import type { TriggerPopupTranslate } from './interface';
 
-let documentSize: { height: number; width: number } | null = null;
+interface Size {
+  height: number;
+  width: number;
+}
 
-const getDocumentSize = () => {
-  if (documentSize) {
-    return documentSize;
-  }
-
+const getDocumentSize = (): Size => {
   const { body } = document;
   const html = document.documentElement;
+  const topWindow = window.top || window.self || window;
+  const topBody = topWindow.document.body;
+
   const size = {
     height: Math.max(
       body.scrollHeight,
       body.offsetHeight,
       html.clientHeight,
       html.scrollHeight,
-      html.offsetHeight
+      html.offsetHeight,
+      topBody?.scrollHeight || 0,
+      topBody?.clientHeight || 0
     ),
     width: Math.max(
       body.scrollWidth,
       body.offsetWidth,
       html.clientWidth,
       html.scrollWidth,
-      html.offsetWidth
+      html.offsetWidth,
+      topBody?.scrollWidth || 0,
+      topBody?.clientWidth || 0
     ),
   };
-
-  documentSize = size;
 
   return size;
 };
 
-const getViewPortSize = () => {
+const getViewPortSize = (): Size => {
   const { height, width } = getDocumentSize();
 
   return {
