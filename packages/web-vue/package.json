@@ -1,6 +1,6 @@
 {
   "name": "@arco-design/web-vue",
-  "version": "2.44.4",
+  "version": "2.44.5",
   "description": "Arco Design Vue 2.0: A Vue.js 3 UI Library",
   "keywords": [
     "arco",
@@ -12,22 +12,6 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./lib/index.js",
-      "import": "./es/index.js",
-      "types": "./es/index.d.ts"
-    },
-    "./es": "./es/index.js",
-    "./lib": "./lib/index.js",
-    "./es/icon": "./es/icon/index.js",
-    "./lib/icon": "./lib/icon/index.js",
-    "./es/*": "./es/*.js",
-    "./es/*.js": "./es/*.js",
-    "./lib/*": "./lib/*.js",
-    "./lib/*.js": "./lib/*.js",
-    "./*": "./*"
-  },
   "unpkg": "dist/arco-vue.min.js",
   "files": [
     "es",
