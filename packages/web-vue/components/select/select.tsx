@@ -549,7 +549,7 @@ export default defineComponent({
     });
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
-        _value.value = multiple.value ? [] : _value.value;
+        _value.value = multiple.value ? [] : (value as any);
       }
     });
 
