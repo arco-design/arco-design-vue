@@ -602,9 +602,10 @@ export default defineComponent({
       }
     }
 
-    function onClear() {
+    function onClear(e: Event) {
+      e.stopPropagation();
       setPanelValue(undefined);
-      confirm(undefined, true);
+      confirm(undefined, isRange.value);
     }
 
     // 1. 每次打开关闭重新赋值 panelValue
