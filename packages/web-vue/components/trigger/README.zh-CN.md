@@ -81,3 +81,14 @@ type TriggerPopupTranslate =
   | [number, number]
   | { [key in TriggerPosition]?: [number, number] };
 ```
+
+# zh-CN
+## FAQ
+
+### 关于弹出框的挂载位置
+
+弹出框默认是挂载到 `body` 元素上的，如果想要修改挂载元素，可以使用 `popup-container` 属性进行指定，同时需要注意保证挂载元素的位置可以被准确定位到，一般可以为挂载元素增加 `position: relative` 样式。
+
+在微前端项目中，需要保证子应用的挂载位置准确，可以将子应用的 `body` 样式添加 `position: relative`
+
+---

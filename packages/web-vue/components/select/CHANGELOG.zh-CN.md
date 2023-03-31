@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 问题修复
+
+- 修复设置 modelValue 为 undefined 失效的问题 ([#2285](https://github.com/arco-design/arco-design-vue/pull/2285))
+
+
 ## 2.44.3
 
 `2023-03-24`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 问题修复
+
+- 修复 title 部分 ellipsis 失效 ([#2278](https://github.com/arco-design/arco-design-vue/pull/2278))
+
+
 ## 2.39.0
 
 `2022-11-18`

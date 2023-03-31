@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 BugFix
+
+- Fix an issue that may trigger reach-bottom when scrolling up ([#2295](https://github.com/arco-design/arco-design-vue/pull/2295))
+
+
 ## 2.44.2
 
 `2023-03-17`

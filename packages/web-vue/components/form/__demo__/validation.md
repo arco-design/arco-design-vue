@@ -39,7 +39,7 @@ Shows how to use form validation.
       <a-input-number v-model="form.age" placeholder="please enter your age..." />
     </a-form-item>
     <a-form-item field="section" label="Section" :rules="[{match:/section one/,message:'must select one'}]">
-      <a-select v-model="form.section" placeholder="Please select ...">
+      <a-select v-model="form.section" placeholder="Please select ..." allow-clear>
         <a-option value="section one">Section One</a-option>
         <a-option value="section two">Section Two</a-option>
         <a-option value="section three">Section Three</a-option>

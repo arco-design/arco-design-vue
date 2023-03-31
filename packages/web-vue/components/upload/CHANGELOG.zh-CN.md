@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 问题修复
+
+- 调整 extra-button 插槽参数 ([#2272](https://github.com/arco-design/arco-design-vue/pull/2272))
+
+
 ## 2.44.2
 
 `2023-03-17`

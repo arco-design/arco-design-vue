@@ -216,7 +216,7 @@ exports[`<transfer> demo: render [one-way] correctly 1`] = `
     <!--v-if-->
   </div>
   <div class=\\"arco-transfer-view arco-transfer-view-target\\">
-    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\">Target</span><span class=\\"arco-icon-hover arco-transfer-view-header-clear-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></div>
+    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><span class=\\"arco-transfer-view-header-title-simple\\">Target</span></span><span class=\\"arco-icon-hover arco-transfer-view-header-clear-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-delete\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15\\"></path></svg></span></div>
     <!--v-if-->
     <div class=\\"arco-transfer-view-body\\">
       <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
@@ -343,7 +343,7 @@ exports[`<transfer> demo: render [search] correctly 1`] = `
 exports[`<transfer> demo: render [simple] correctly 1`] = `
 "<div class=\\"arco-transfer arco-transfer-simple\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
-    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\">Source</span>
+    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><span class=\\"arco-transfer-view-header-title-simple\\">Source</span></span>
       <!--v-if-->
     </div>
     <!--v-if-->
@@ -388,7 +388,7 @@ exports[`<transfer> demo: render [simple] correctly 1`] = `
   </div>
   <!--v-if-->
   <div class=\\"arco-transfer-view arco-transfer-view-target\\">
-    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\">Target</span>
+    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><span class=\\"arco-transfer-view-header-title-simple\\">Target</span></span>
       <!--v-if-->
     </div>
     <!--v-if-->

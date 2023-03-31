@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 BugFix
+
+- **list:** Fix an issue that may trigger reach-bottom when scrolling up ([#2295](https://github.com/arco-design/arco-design-vue/pull/2295))
+- **select:** Fix the problem that setting modelValue to undefined is invalid ([#2285](https://github.com/arco-design/arco-design-vue/pull/2285))
+- **transfer:** Fix title ellipsis failure ([#2278](https://github.com/arco-design/arco-design-vue/pull/2278))
+- **upload:** modify parameter transferred in extra-button slot ([#2272](https://github.com/arco-design/arco-design-vue/pull/2272))
+- **time-picker:** Fix the bubbling behavior of the clear event. ([#2271](https://github.com/arco-design/arco-design-vue/pull/2271))
+
+### 💎 Enhancement
+
+- **trigger:** Optimize the problem that the popup position is not accurate in ShadowRoot ([#2273](https://github.com/arco-design/arco-design-vue/pull/2273))
+
+
 ## 2.44.3
 
 `2023-03-24`

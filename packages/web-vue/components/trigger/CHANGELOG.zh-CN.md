@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 💎 功能优化
+
+- 优化弹出位置在 ShadowRoot 中不准确问题 ([#2273](https://github.com/arco-design/arco-design-vue/pull/2273))
+
+
 ## 2.38.0-beta.2
 
 `2022-10-21`

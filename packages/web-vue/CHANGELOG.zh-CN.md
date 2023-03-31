@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 问题修复
+
+- **list:** 修复向上滚动时可能触发 reach-bottom 的问题 ([#2295](https://github.com/arco-design/arco-design-vue/pull/2295))
+- **select:** 修复设置 modelValue 为 undefined 失效的问题 ([#2285](https://github.com/arco-design/arco-design-vue/pull/2285))
+- **transfer:** 修复 title 部分 ellipsis 失效 ([#2278](https://github.com/arco-design/arco-design-vue/pull/2278))
+- **upload:** 调整 extra-button 插槽参数 ([#2272](https://github.com/arco-design/arco-design-vue/pull/2272))
+- **time-picker:** 修复清除事件冒泡行为 ([#2271](https://github.com/arco-design/arco-design-vue/pull/2271))
+
+### 💎 功能优化
+
+- **trigger:** 优化弹出位置在 ShadowRoot 中不准确问题 ([#2273](https://github.com/arco-design/arco-design-vue/pull/2273))
+
+
 ## 2.44.3
 
 `2023-03-24`

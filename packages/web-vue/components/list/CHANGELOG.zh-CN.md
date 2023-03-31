@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 问题修复
+
+- 修复向上滚动时可能触发 reach-bottom 的问题 ([#2295](https://github.com/arco-design/arco-design-vue/pull/2295))
+
+
 ## 2.44.2
 
 `2023-03-17`

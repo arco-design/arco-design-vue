@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.6
+
+`2023-03-31`
+
+### 🐛 BugFix
+
+- Fix the problem that setting modelValue to undefined is invalid ([#2285](https://github.com/arco-design/arco-design-vue/pull/2285))
+
+
 ## 2.44.3
 
 `2023-03-24`
