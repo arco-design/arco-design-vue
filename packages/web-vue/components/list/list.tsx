@@ -180,15 +180,16 @@ export default defineComponent({
       useComponentRef('containerRef');
     const isVirtualList = computed(() => props.virtualListProps);
     const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
+    let preScrollTop = 0;
 
     const handleScroll = (e: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
       const bottom = Math.floor(scrollHeight - (scrollTop + offsetHeight));
-
-      if (bottom <= props.bottomOffset) {
+      if (scrollTop > preScrollTop && bottom <= props.bottomOffset) {
         emit('reachBottom');
       }
       emit('scroll');
+      preScrollTop = scrollTop;
     };
 
     onMounted(() => {
