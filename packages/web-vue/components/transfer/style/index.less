@@ -65,6 +65,14 @@
           &-text {
             color: inherit;
           }
+          // fix the title in checkbox-label ellipsis not work
+          &-label {
+            .text-ellipsis();
+          }
+        }
+        // fix simple mode the title  ellipsis not work
+        &-simple {
+          .text-ellipsis();
         }
       }
 
