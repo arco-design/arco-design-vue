@@ -11,8 +11,11 @@ interface Size {
 const getDocumentSize = (): Size => {
   const { body } = document;
   const html = document.documentElement;
-  const topWindow = window.top || window.self || window;
-  const topBody = topWindow.document.body;
+  let topBody;
+  try {
+    const topWindow = window.top || window.self || window;
+    topBody = topWindow.document.body;
+  } catch {}
 
   const size = {
     height: Math.max(
