@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.44.7
+
+`2023-04-03`
+
+### 🐛 BugFix
+
+- Fix the problem of reporting errors in iframe ([#2300](https://github.com/arco-design/arco-design-vue/pull/2300))
+
+
 ## 2.44.6
 
 `2023-03-31`
