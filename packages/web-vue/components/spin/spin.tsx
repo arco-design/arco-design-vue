@@ -30,6 +30,14 @@ export default defineComponent({
      * @en Prompt content
      */
     tip: String,
+    /**
+     * @zh 是否隐藏图标
+     * @en Whether to hide the icon
+     */
+    hideIcon: {
+      type: Boolean,
+      default: false,
+    },
   },
   /**
    * @zh 自定义图标（自动旋转）
@@ -72,15 +80,35 @@ export default defineComponent({
       return <IconLoading spin={true} size={props.size} />;
     };
 
+    const renderTip = () => {
+      if (!props.hideIcon) {
+        return props.tip;
+      }
+      const chars = props.tip?.split('');
+      return chars?.map((char, index) => {
+        const delay = 0.1 * (index + 1);
+        return (
+          <span
+            key={index}
+            class={`${prefixCls}-tip-char`}
+            style={`animation-delay: ${delay}s;`}
+          >
+            {char}
+          </span>
+        );
+      });
+    };
+
     const renderSpinIcon = () => {
       const style = props.size ? { fontSize: `${props.size}px` } : undefined;
-
       return (
         <>
-          <div class={`${prefixCls}-icon`} style={style}>
-            {renderIcon()}
-          </div>
-          {props.tip && <div class={`${prefixCls}-tip`}>{props.tip}</div>}
+          {!props.hideIcon && (
+            <div class={`${prefixCls}-icon`} style={style}>
+              {renderIcon()}
+            </div>
+          )}
+          {props.tip && <div class={`${prefixCls}-tip`}>{renderTip()}</div>}
         </>
       );
     };
