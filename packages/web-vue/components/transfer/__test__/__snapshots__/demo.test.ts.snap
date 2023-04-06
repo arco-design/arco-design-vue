@@ -168,6 +168,90 @@ exports[`<transfer> demo: render [custom] correctly 1`] = `
 </div>"
 `;
 
+exports[`<transfer> demo: render [custom-header] correctly 1`] = `
+"<div class=\\"arco-transfer\\">
+  <div class=\\"arco-transfer-view arco-transfer-view-source\\">
+    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
+    <!--v-if-->
+    <div class=\\"arco-transfer-view-body\\">
+      <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+        <div class=\\"arco-scrollbar-container\\">
+          <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+            <div class=\\"arco-spin arco-list-spin\\">
+              <div class=\\"arco-list arco-list-medium arco-list-split\\">
+                <div class=\\"arco-list-content-wrapper\\">
+                  <!---->
+                  <div role=\\"list\\" class=\\"arco-list-content\\">
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option2\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 2</span></label>
+                      <!---->
+                    </div>
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option4\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 4</span></label>
+                      <!---->
+                    </div>
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option6\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 6</span></label>
+                      <!---->
+                    </div>
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option7\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 7</span></label>
+                      <!---->
+                    </div>
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option8\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 8</span></label>
+                      <!---->
+                    </div>
+                    <!---->
+                  </div>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-transfer-operations\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\" tabindex=\\"-1\\" aria-label=\\"Move selected right\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path></svg></span></button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-round arco-btn-size-small arco-btn-status-normal arco-btn-disabled arco-btn-only-icon\\" type=\\"button\\" disabled=\\"\\" tabindex=\\"-1\\" aria-label=\\"Move selected left\\"><span class=\\"arco-btn-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span></button></div>
+  <div class=\\"arco-transfer-view arco-transfer-view-target\\">
+    <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Target</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 3</span></div>
+    <!--v-if-->
+    <div class=\\"arco-transfer-view-body\\">
+      <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+        <div class=\\"arco-scrollbar-container\\">
+          <div class=\\"arco-list-wrapper arco-transfer-view-list\\">
+            <div class=\\"arco-spin arco-list-spin\\">
+              <div class=\\"arco-list arco-list-medium arco-list-split\\">
+                <div class=\\"arco-list-content-wrapper\\">
+                  <!---->
+                  <div role=\\"list\\" class=\\"arco-list-content\\">
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option1\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 1</span></label>
+                      <!---->
+                    </div>
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option3\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 3</span></label>
+                      <!---->
+                    </div>
+                    <div class=\\"arco-transfer-list-item\\"><label class=\\"arco-checkbox arco-transfer-list-item-content arco-transfer-list-item-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"option5\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Option 5</span></label>
+                      <!---->
+                    </div>
+                    <!---->
+                  </div>
+                  <!---->
+                </div>
+              </div>
+              <!---->
+              <!---->
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`<transfer> demo: render [one-way] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
