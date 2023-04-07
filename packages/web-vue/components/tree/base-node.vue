@@ -1,5 +1,5 @@
 <template>
-  <div :class="classNames">
+  <div :class="classNames" :data-level="level" :data-key="nodekey">
     <!-- 缩进 -->
     <span :class="`${prefixCls}-indent`">
       <span
@@ -323,6 +323,7 @@ export default defineComponent({
     );
 
     return {
+      nodekey: key,
       refTitle,
       prefixCls,
       classNames,
