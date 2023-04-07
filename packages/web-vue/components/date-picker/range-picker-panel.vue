@@ -17,10 +17,12 @@
             <MonthPanel
               v-else-if="startHeaderMode === 'month'"
               v-bind="startPanelProps"
+              :abbreviation="abbreviation"
             />
             <MonthPanel
               v-else-if="endHeaderMode === 'month'"
               v-bind="endPanelProps"
+              :abbreviation="abbreviation"
             />
           </template>
           <template v-else>
@@ -37,8 +39,11 @@
             </template>
             <!-- month -->
             <template v-else-if="mode === 'month'">
-              <MonthPanel v-bind="startPanelProps" />
-              <MonthPanel v-bind="endPanelProps" />
+              <MonthPanel
+                v-bind="startPanelProps"
+                :abbreviation="abbreviation"
+              />
+              <MonthPanel v-bind="endPanelProps" :abbreviation="abbreviation" />
             </template>
             <!-- year -->
             <template v-else-if="mode === 'year'">
@@ -235,6 +240,9 @@ export default defineComponent({
     },
     endHeaderMode: {
       type: String as PropType<'year' | 'month'>,
+    },
+    abbreviation: {
+      type: Boolean,
     },
   },
   emits: [

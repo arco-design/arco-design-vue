@@ -126,6 +126,7 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |model-value **(v-model)**|绑定值|`Date \| string \| number`|`-`|
 |default-value|默认值|`Date \| string \| number`|`-`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`'YYYY-MM'`|
+|abbreviation|是否简写月份|`boolean`|`true`|
 
 
 

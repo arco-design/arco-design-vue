@@ -71,6 +71,7 @@ export interface MonthPickerProps {
   format?: string;
   modelValue?: CalendarValue;
   defaultValue?: CalendarValue;
+  abbreviation?: boolean;
 }
 
 export interface YearPickerProps {
