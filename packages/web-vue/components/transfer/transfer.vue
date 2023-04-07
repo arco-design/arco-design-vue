@@ -15,7 +15,7 @@
       <template v-if="$slots.source" #default="slotData">
         <slot name="source" v-bind="slotData" />
       </template>
-      <template v-if="$slots.sourceTitle" #title="titleProps">
+      <template v-if="$slots['source-title']" #title="titleProps">
         <slot name="source-title" v-bind="titleProps" />
       </template>
     </transfer-view>
@@ -62,7 +62,7 @@
       <template v-if="$slots.target" #default="slotData">
         <slot name="target" v-bind="slotData" />
       </template>
-      <template v-if="$slots.targetTitle" #title="titleProps">
+      <template v-if="$slots['target-title']" #title="titleProps">
         <slot name="target-title" v-bind="titleProps" />
       </template>
     </transfer-view>
@@ -243,11 +243,12 @@ export default defineComponent({
    * @slot source-title
    * @binding {number} countTotal
    * @binding {number} countSelected
-   * @binding {string} searchInput
+   * @binding {string} searchValue
    * @binding {boolean} checked
    * @binding {boolean} indeterminate
-   * @binding {(checked:boolean) => void} toggleSelectAll
-   * @binding {() => void} clear
+   * @binding {(checked:boolean) => void} onSelectAllChange
+   * @binding {() => void} onClear
+   * @version 2.45.0
    */
   /**
    * @zh 目标标题插槽
@@ -255,11 +256,12 @@ export default defineComponent({
    * @slot target-title
    * @binding {number} countTotal
    * @binding {number} countSelected
-   * @binding {string} searchInput
+   * @binding {string} searchValue
    * @binding {boolean} checked
    * @binding {boolean} indeterminate
-   * @binding {(checked:boolean) => void} toggleSelectAll
-   * @binding {() => void} clear
+   * @binding {(checked:boolean) => void} onSelectAllChange
+   * @binding {() => void} onClear
+   * @version 2.45.0
    */
   setup(props, { emit, slots }) {
     const { mergedDisabled, eventHandlers } = useFormItem({

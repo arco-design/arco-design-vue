@@ -3,13 +3,13 @@
     <div :class="`${prefixCls}-header`">
       <slot
         name="title"
-        :countTotal="dataInfo.data.length"
-        :countSelected="dataInfo.selected.length"
-        :searchInput="filter"
+        :count-total="dataInfo.data.length"
+        :count-selected="dataInfo.selected.length"
+        :search-value="filter"
         :checked="checked"
         :indeterminate="indeterminate"
-        :toggleSelectAll="handleSelectAllChange"
-        :clear="handleClear"
+        :on-select-all-change="handleSelectAllChange"
+        :on-clear="handleClear"
       >
         <span :class="`${prefixCls}-header-title`">
           <span

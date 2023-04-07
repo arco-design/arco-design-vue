@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.45.0
+
+`2023-04-07`
+
+### 🆕 新增功能
+
+- **transfer:** 添加自定义标题栏插槽 ([#2314](https://github.com/arco-design/arco-design-vue/pull/2314))
+- **date-picker:** 增加 abbreviation 属性，控制月份是否显示简称 ([#2264](https://github.com/arco-design/arco-design-vue/pull/2264))
+- **switch:** 新增文案显示props ([#2223](https://github.com/arco-design/arco-design-vue/pull/2223))
+- **tree:** 树节点增加 data-level 和 data-key 数据属性 ([#2192](https://github.com/arco-design/arco-design-vue/pull/2192))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复 exchange-time 在选择时失效的问题 ([#2302](https://github.com/arco-design/arco-design-vue/pull/2302))
+
+
 ## 2.44.7
 
 `2023-04-03`

@@ -332,6 +332,7 @@ export default defineComponent({
     /**
      * @zh 是否启用缩写
      * @en Whether to enable abbreviation
+     * @version 2.45.0
      */
     abbreviation: {
       type: Boolean,

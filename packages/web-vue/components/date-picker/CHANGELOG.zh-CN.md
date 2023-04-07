@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.45.0
+
+`2023-04-07`
+
+### 🆕 新增功能
+
+- 增加 abbreviation 属性，控制月份是否显示简称 ([#2264](https://github.com/arco-design/arco-design-vue/pull/2264))
+
+### 🐛 问题修复
+
+- 修复 exchange-time 在选择时失效的问题 ([#2302](https://github.com/arco-design/arco-design-vue/pull/2302))
+
+
 ## 2.44.3
 
 `2023-03-24`

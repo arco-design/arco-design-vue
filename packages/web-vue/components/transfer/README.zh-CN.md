@@ -51,9 +51,9 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
 |source|源面板|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
-|source-title|源标题插槽|countTotal: `number`<br>countSelected: `number`<br>searchInput: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>toggleSelectAll: `(checked:boolean) => void`<br>clear: `() => void`|2.39.0|
+|source-title|源标题插槽|countTotal: `number`<br>countSelected: `number`<br>searchValue: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>onSelectAllChange: `(checked:boolean) => void`<br>onClear: `() => void`|2.45.0|
 |target|目标面板|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
-|target-title|目标标题插槽|countTotal: `number`<br>countSelected: `number`<br>searchInput: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>toggleSelectAll: `(checked:boolean) => void`<br>clear: `() => void`|2.39.0|
+|target-title|目标标题插槽|countTotal: `number`<br>countSelected: `number`<br>searchValue: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>onSelectAllChange: `(checked:boolean) => void`<br>onClear: `() => void`|2.45.0|
 |item|选项|value: `string`<br>label: `string`||
 
 

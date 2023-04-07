@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.0
+
+`2023-04-07`
+
+### 🆕 Feature
+
+- add custom header slots ([#2314](https://github.com/arco-design/arco-design-vue/pull/2314))
+
+
 ## 2.44.6
 
 `2023-03-31`

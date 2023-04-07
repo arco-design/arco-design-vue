@@ -152,16 +152,18 @@ export default defineComponent({
     /**
      * @zh 打开状态时的文案（`type='line'`和`size='small'`时不生效）
      * @en Copywriting when opened (not effective when `type='line'` and `size='small'`)
+     * @version 2.45.0
      */
     checkedText: {
-      type: [String],
+      type: String,
     },
     /**
      * @zh 关闭状态时的文案（`type='line'`和`size='small'`时不生效）
      * @en Copywriting when closed (not effective when `type='line'` and `size='small'`)
+     * @version 2.45.0
      */
     uncheckedText: {
-      type: [String],
+      type: String,
     },
   },
   emits: {

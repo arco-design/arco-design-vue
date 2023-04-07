@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.0
+
+`2023-04-07`
+
+### 🆕 新增功能
+
+- 新增文案显示props ([#2223](https://github.com/arco-design/arco-design-vue/pull/2223))
+
+
 ## 2.42.0
 
 `2023-01-13`

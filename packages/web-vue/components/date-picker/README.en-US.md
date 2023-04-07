@@ -78,6 +78,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |preview-shortcut|Whether to preview the result of the shortcut|`boolean`|`true`|2.28.0|
 |show-confirm-btn|Whether to show the confirm button, always show when `showTime = true`.|`boolean`|`false`|2.29.0|
 |disabled-input|Whether input is disabled with the keyboard.|`boolean`|`false`|2.43.0|
+|abbreviation|Whether to enable abbreviation|`boolean`|`true`|2.45.0|
 ### `Common` Events
 
 |Event Name|Description|Parameters|
@@ -128,7 +129,6 @@ description: Choose a date. Support year, month, week, day type, support range s
 |model-value **(v-model)**|Value|`Date \| string \| number`|`-`|
 |default-value|Default value|`Date \| string \| number`|`-`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'YYYY-MM'`|
-|abbreviation|Whether to enable abbreviation|`boolean`|`true`|
 
 
 
@@ -190,6 +190,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |separator|The segmentation symbol in the input box of the range selector|`string`|`-`||
 |exchange-time|Whether the time will be exchanged, by default time will affect and participate in the ordering of start and end values, if you want to fix the time order, you can turn it off.|`boolean`|`true`|2.25.0|
 |disabled-input|Whether input is disabled with the keyboard.|`boolean`|`false`|2.43.0|
+|abbreviation|Whether to enable abbreviation|`boolean`|`true`||
 ### `<range-picker>` Events
 
 |Event Name|Description|Parameters|

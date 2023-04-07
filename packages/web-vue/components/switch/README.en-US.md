@@ -46,6 +46,8 @@ description: Mutually exclusive operation controls, users can turn on or turn of
 |checked-color|The color of the switch when checked|`string`|`-`|2.12.0|
 |unchecked-color|The color of the switch when unchecked|`string`|`-`|2.12.0|
 |before-change|before-change hook before the switch state changes. If false is returned or a Promise is returned and then is rejected, will stop switching|`(  newValue: string \| number \| boolean) => Promise<boolean \| void> \| boolean \| void`|`-`|2.37.0|
+|checked-text|Copywriting when opened (not effective when `type='line'` and `size='small'`)|`string`|`-`|2.45.0|
+|unchecked-text|Copywriting when closed (not effective when `type='line'` and `size='small'`)|`string`|`-`|2.45.0|
 ### `<switch>` Events
 
 |Event Name|Description|Parameters|

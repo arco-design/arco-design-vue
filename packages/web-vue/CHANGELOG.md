@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.45.0
+
+`2023-04-07`
+
+### 🆕 Feature
+
+- **transfer:** add custom header slots ([#2314](https://github.com/arco-design/arco-design-vue/pull/2314))
+- **date-picker:** Add the abbreviation property to control whether the abbreviation of the month is displayed ([#2264](https://github.com/arco-design/arco-design-vue/pull/2264))
+- **switch:** add text props ([#2223](https://github.com/arco-design/arco-design-vue/pull/2223))
+- **tree:** add data-level and data-key attributes to tree nodes ([#2192](https://github.com/arco-design/arco-design-vue/pull/2192))
+
+### 🐛 BugFix
+
+- **date-picker:** Fix the problem that exchange-time fails when selecting ([#2302](https://github.com/arco-design/arco-design-vue/pull/2302))
+
+
 ## 2.44.7
 
 `2023-04-03`

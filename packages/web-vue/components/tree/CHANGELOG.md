@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.0
+
+`2023-04-07`
+
+### 🆕 Feature
+
+- add data-level and data-key attributes to tree nodes ([#2192](https://github.com/arco-design/arco-design-vue/pull/2192))
+
+
 ## 2.44.2
 
 `2023-03-17`

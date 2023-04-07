@@ -53,9 +53,9 @@ description: A two-column multi-select component that moves elements from one co
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
 |source|Source content|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
-|source-title|Source Header|countTotal: `number`<br>countSelected: `number`<br>searchInput: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>toggleSelectAll: `(checked:boolean) => void`<br>clear: `() => void`|2.39.0|
+|source-title|Source Header|countTotal: `number`<br>countSelected: `number`<br>searchValue: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>onSelectAllChange: `(checked:boolean) => void`<br>onClear: `() => void`|2.45.0|
 |target|Target content|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
-|target-title|Target Header|countTotal: `number`<br>countSelected: `number`<br>searchInput: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>toggleSelectAll: `(checked:boolean) => void`<br>clear: `() => void`|2.39.0|
+|target-title|Target Header|countTotal: `number`<br>countSelected: `number`<br>searchValue: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>onSelectAllChange: `(checked:boolean) => void`<br>onClear: `() => void`|2.45.0|
 |item|Option|value: `string`<br>label: `string`||
 
 

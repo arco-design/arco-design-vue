@@ -25,7 +25,7 @@ Customize the rendering content of the title bar through the `sourceTitle` and `
         countSelected,
         checked,
         indeterminate,
-        toggleSelectAll,
+        onSelectAllChange,
       }"
     >
       <div :style="styleHeader">
@@ -33,15 +33,15 @@ Customize the rendering content of the title bar through the `sourceTitle` and `
         <a-checkbox
           :model-value="checked"
           :indeterminate="indeterminate"
-          @change="toggleSelectAll"
+          @change="onSelectAllChange"
         />
       </div>
     </template>
 
-    <template #target-title="{ countTotal, countSelected, clear }">
+    <template #target-title="{ countTotal, countSelected, onClear }">
       <div :style="styleHeader">
         Target Title {{ countSelected }}-{{ countTotal }}
-        <IconDelete @click="clear" />
+        <IconDelete @click="onClear" />
       </div>
     </template>
   </a-transfer>
@@ -65,6 +65,7 @@ export default {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
+      paddingRight: '8px'
     };
 
     return {
