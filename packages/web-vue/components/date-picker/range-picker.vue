@@ -700,6 +700,17 @@ export default defineComponent({
       }
     }
 
+    function getSortedDayjsArrayByExchangeTimeOrNot(newValue: Dayjs[]) {
+      let sortedValue = getSortedDayjsArray(newValue);
+      if (hasTime.value && !exchangeTime.value) {
+        sortedValue = [
+          getMergedOpValue(sortedValue[0], newValue[0]),
+          getMergedOpValue(sortedValue[1], newValue[1]),
+        ];
+      }
+      return sortedValue;
+    }
+
     function confirm(
       value: Array<Dayjs | undefined> | undefined,
       showPanel?: boolean,
@@ -715,14 +726,7 @@ export default defineComponent({
       let newValue = value ? [...value] : undefined;
 
       if (isCompleteRangeValue(newValue)) {
-        let sortedValue = getSortedDayjsArray(newValue);
-        if (hasTime.value && !exchangeTime.value) {
-          sortedValue = [
-            getMergedOpValue(sortedValue[0], newValue[0]),
-            getMergedOpValue(sortedValue[1], newValue[1]),
-          ];
-        }
-        newValue = sortedValue;
+        newValue = getSortedDayjsArrayByExchangeTimeOrNot(newValue);
       }
 
       emitChange(newValue, emitOk);
@@ -756,7 +760,7 @@ export default defineComponent({
 
       let newValue = [...value];
       if (isCompleteRangeValue(newValue)) {
-        newValue = getSortedDayjsArray(newValue);
+        newValue = getSortedDayjsArrayByExchangeTimeOrNot(newValue);
       }
 
       setProcessValue(newValue);
@@ -845,6 +849,8 @@ export default defineComponent({
         select(newValue);
         if (!isCompleteRangeValue(newValue)) {
           focusedIndex.value = nextFocusedIndex.value;
+        } else {
+          focusedIndex.value = 0;
         }
       }
     }
