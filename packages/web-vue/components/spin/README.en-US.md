@@ -39,5 +39,6 @@ description: Used for the loading state of pages and blocks-when a part of the p
 |---|---|---|
 |element|Custom element|-|
 |icon|Custom icon (auto-rotation)|-|
+|tip|Custom tip|-|
 
 

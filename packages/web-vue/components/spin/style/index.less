@@ -22,26 +22,6 @@
     font-size: @spin-font-size-text;
   }
 
-  &-tip-char {
-    display: inline-block;
-    animation: tip-jumping @transition-duration-loading infinite
-      @transition-timing-function-linear;
-  }
-
-  @keyframes tip-jumping {
-    0% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-0.2em);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
-  }
-
   &-mask {
     position: absolute;
     top: 0;

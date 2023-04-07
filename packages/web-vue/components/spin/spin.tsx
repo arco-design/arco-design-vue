@@ -49,6 +49,11 @@ export default defineComponent({
    * @en Custom element
    * @slot element
    */
+  /**
+   * @zh 自定义提示内容
+   * @en Custom tip
+   * @slot tip
+   */
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('spin');
     const configCtx = inject(configProviderInjectionKey, undefined);
@@ -80,27 +85,10 @@ export default defineComponent({
       return <IconLoading spin={true} size={props.size} />;
     };
 
-    const renderTip = () => {
-      if (!props.hideIcon) {
-        return props.tip;
-      }
-      const chars = props.tip?.split('');
-      return chars?.map((char, index) => {
-        const delay = 0.1 * (index + 1);
-        return (
-          <span
-            key={index}
-            class={`${prefixCls}-tip-char`}
-            style={`animation-delay: ${delay}s;`}
-          >
-            {char}
-          </span>
-        );
-      });
-    };
-
     const renderSpinIcon = () => {
       const style = props.size ? { fontSize: `${props.size}px` } : undefined;
+      const hasTip = Boolean(slots.tip ?? props.tip);
+
       return (
         <>
           {!props.hideIcon && (
@@ -108,7 +96,9 @@ export default defineComponent({
               {renderIcon()}
             </div>
           )}
-          {props.tip && <div class={`${prefixCls}-tip`}>{renderTip()}</div>}
+          {hasTip && (
+            <div class={`${prefixCls}-tip`}>{slots.tip?.() ?? props.tip}</div>
+          )}
         </>
       );
     };
