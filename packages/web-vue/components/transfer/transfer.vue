@@ -15,6 +15,9 @@
       <template v-if="$slots.source" #default="slotData">
         <slot name="source" v-bind="slotData" />
       </template>
+      <template v-if="$slots.sourceTitle" #title="titleProps">
+        <slot name="source-title" v-bind="titleProps" />
+      </template>
     </transfer-view>
     <div v-if="!simple" :class="[`${prefixCls}-operations`]">
       <arco-button
@@ -58,6 +61,9 @@
     >
       <template v-if="$slots.target" #default="slotData">
         <slot name="target" v-bind="slotData" />
+      </template>
+      <template v-if="$slots.targetTitle" #title="titleProps">
+        <slot name="target-title" v-bind="titleProps" />
       </template>
     </transfer-view>
   </div>
@@ -230,6 +236,30 @@ export default defineComponent({
    * @binding {string[]} selectedKeys
    * @binding {(value: string[]) => void} onSelect
    * @version 2.39.0
+   */
+  /**
+   * @zh 源标题插槽
+   * @en Source Header
+   * @slot source-title
+   * @binding {number} countTotal
+   * @binding {number} countSelected
+   * @binding {string} searchInput
+   * @binding {boolean} checked
+   * @binding {boolean} indeterminate
+   * @binding {(checked:boolean) => void} toggleSelectAll
+   * @binding {() => void} clear
+   */
+  /**
+   * @zh 目标标题插槽
+   * @en Target Header
+   * @slot target-title
+   * @binding {number} countTotal
+   * @binding {number} countSelected
+   * @binding {string} searchInput
+   * @binding {boolean} checked
+   * @binding {boolean} indeterminate
+   * @binding {(checked:boolean) => void} toggleSelectAll
+   * @binding {() => void} clear
    */
   setup(props, { emit, slots }) {
     const { mergedDisabled, eventHandlers } = useFormItem({

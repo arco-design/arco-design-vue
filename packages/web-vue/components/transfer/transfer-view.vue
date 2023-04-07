@@ -1,32 +1,44 @@
 <template>
   <div :class="prefixCls">
     <div :class="`${prefixCls}-header`">
-      <span :class="`${prefixCls}-header-title`">
-        <span
-          v-if="allowClear || simple || !showSelectAll"
-          :class="`${prefixCls}-header-title-simple`"
-          >{{ title }}</span
-        >
-        <checkbox
-          v-else
-          :model-value="checked"
-          :indeterminate="indeterminate"
-          uninject-group-context
-          @change="handleSelectAllChange"
-        >
-          {{ title }}
-        </checkbox>
-      </span>
-      <icon-hover
-        v-if="allowClear"
-        :class="`${prefixCls}-header-clear-btn`"
-        @click="handleClear"
+      <slot
+        name="title"
+        :countTotal="dataInfo.data.length"
+        :countSelected="dataInfo.selected.length"
+        :searchInput="filter"
+        :checked="checked"
+        :indeterminate="indeterminate"
+        :toggleSelectAll="handleSelectAllChange"
+        :clear="handleClear"
       >
-        <icon-delete />
-      </icon-hover>
-      <span v-else-if="!simple" :class="`${prefixCls}-header-count`">
-        {{ dataInfo.selected.length }} / {{ dataInfo.data.length }}
-      </span>
+        <span :class="`${prefixCls}-header-title`">
+          <span
+            v-if="allowClear || simple || !showSelectAll"
+            :class="`${prefixCls}-header-title-simple`"
+          >
+            {{ title }}
+          </span>
+          <checkbox
+            v-else
+            :model-value="checked"
+            :indeterminate="indeterminate"
+            uninject-group-context
+            @change="handleSelectAllChange"
+          >
+            {{ title }}
+          </checkbox>
+        </span>
+        <icon-hover
+          v-if="allowClear"
+          :class="`${prefixCls}-header-clear-btn`"
+          @click="handleClear"
+        >
+          <icon-delete />
+        </icon-hover>
+        <span v-else-if="!simple" :class="`${prefixCls}-header-count`">
+          {{ dataInfo.selected.length }} / {{ dataInfo.data.length }}
+        </span>
+      </slot>
     </div>
     <div v-if="showSearch" :class="`${prefixCls}-search`">
       <input-search v-model="filter" @change="handleSearch" />
@@ -35,8 +47,8 @@
       <Scrollbar v-if="filteredData.length > 0">
         <slot
           :data="filteredData"
-          :selected-keys="transferCtx.selected"
-          :on-select="transferCtx.onSelect"
+          :selected-keys="transferCtx?.selected"
+          :on-select="transferCtx?.onSelect"
         >
           <list
             :class="`${prefixCls}-list`"
@@ -112,6 +124,8 @@ export default defineComponent({
     const prefixCls = getPrefixCls('transfer-view');
     const filter = ref('');
     const transferCtx = inject(transferInjectionKey, undefined);
+    const countSelected = computed(() => props.dataInfo.selected.length);
+    const countRendered = computed(() => props.dataInfo.data.length);
 
     const checked = computed(
       () =>
@@ -162,6 +176,8 @@ export default defineComponent({
       filter,
       checked,
       indeterminate,
+      countSelected,
+      countRendered,
       handleSelectAllChange,
       handleSearch,
       handleClear,
