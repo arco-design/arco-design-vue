@@ -372,7 +372,7 @@ export default defineComponent({
       wrapperStyles,
       showFooter,
       imgProps,
-      imgStyle: sizeStyle.value,
+      imgStyle: sizeStyle,
       isLoaded,
       isError,
       isLoading,
