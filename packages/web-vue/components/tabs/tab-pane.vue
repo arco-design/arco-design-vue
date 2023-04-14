@@ -19,6 +19,7 @@ import {
   getCurrentInstance,
   inject,
   onBeforeUnmount,
+  onUpdated,
   reactive,
   ref,
   toRefs,
@@ -103,6 +104,10 @@ export default defineComponent({
       } else if (props.destroyOnHide || tabsCtx.destroyOnHide) {
         mounted.value = false;
       }
+    });
+
+    onUpdated(() => {
+      data.slots = { ...slots };
     });
 
     return {
