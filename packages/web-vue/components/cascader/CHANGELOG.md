@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.1
+
+`2023-04-14`
+
+### 🐛 BugFix
+
+- Fix the abnormal display of search results when the width of the control is short ([#2326](https://github.com/arco-design/arco-design-vue/pull/2326))
+
+
 ## 2.40.0
 
 `2022-12-09`

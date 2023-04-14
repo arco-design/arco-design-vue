@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.1
+
+`2023-04-14`
+
+### 🐛 问题修复
+
+- 修复 `sizeStyle` 失效的问题 ([#2327](https://github.com/arco-design/arco-design-vue/pull/2327))
+
+
 ## 2.41.0
 
 `2022-12-30`

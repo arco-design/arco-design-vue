@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.1
+
+`2023-04-14`
+
+### 🐛 BugFix
+
+- fixed individual cases where tab slots are not updated ([#2325](https://github.com/arco-design/arco-design-vue/pull/2325))
+
+
 ## 2.43.0
 
 `2023-02-10`

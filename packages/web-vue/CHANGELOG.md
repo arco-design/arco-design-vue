@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.45.1
+
+`2023-04-14`
+
+### 🐛 BugFix
+
+- **image:** Fix `sizeStyle` failure issue ([#2327](https://github.com/arco-design/arco-design-vue/pull/2327))
+- **cascader:** Fix the abnormal display of search results when the width of the control is short ([#2326](https://github.com/arco-design/arco-design-vue/pull/2326))
+- **tabs:** fixed individual cases where tab slots are not updated ([#2325](https://github.com/arco-design/arco-design-vue/pull/2325))
+
+### 💅 Style
+
+- **table:** Fix the problem of displaying the horizontal scroll bar under the virtual list ([#2337](https://github.com/arco-design/arco-design-vue/pull/2337))
+
+
 ## 2.45.0
 
 `2023-04-07`

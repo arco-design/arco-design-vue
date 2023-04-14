@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.45.1
+
+`2023-04-14`
+
+### 🐛 问题修复
+
+- **image:** 修复 `sizeStyle` 失效的问题 ([#2327](https://github.com/arco-design/arco-design-vue/pull/2327))
+- **cascader:** 修复控件宽度较短时，搜索结果展示异常 ([#2326](https://github.com/arco-design/arco-design-vue/pull/2326))
+- **tabs:** 修复个别情况下tab-pane 的title 插槽不更新的问题 ([#2325](https://github.com/arco-design/arco-design-vue/pull/2325))
+
+### 💅 样式更新
+
+- **table:** 修复虚拟列表下显示横向滚动条的问题 ([#2337](https://github.com/arco-design/arco-design-vue/pull/2337))
+
+
 ## 2.45.0
 
 `2023-04-07`

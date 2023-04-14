@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.1
+
+`2023-04-14`
+
+### 💅 Style
+
+- Fix the problem of displaying the horizontal scroll bar under the virtual list ([#2337](https://github.com/arco-design/arco-design-vue/pull/2337))
+
+
 ## 2.41.1
 
 `2023-01-06`
