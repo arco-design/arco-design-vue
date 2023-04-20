@@ -163,6 +163,7 @@ export interface ModalConfig {
   /**
    * @zh 标题的水平对齐方向
    * @en horizontal alignment of the title
+   * @defaultValue 'center'
    * @version 2.17.0
    */
   titleAlign?: 'start' | 'center';
@@ -175,6 +176,7 @@ export interface ModalConfig {
   /**
    * @zh 弹出框的挂载容器
    * @en Mount container for modal
+   * @defaultValue 'body'
    */
   popupContainer?: string | HTMLElement;
   /**
