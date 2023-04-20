@@ -22,6 +22,7 @@ export interface ModalConfig {
   /**
    * @zh 是否显示关闭按钮
    * @en Whether to show the close button
+   * @defaultValue true
    */
   closable?: boolean;
   /**
@@ -57,6 +58,7 @@ export interface ModalConfig {
   /**
    * @zh 是否显示遮罩层
    * @en Whether to show the mask
+   * @defaultValue true
    */
   mask?: boolean;
   /**
@@ -67,6 +69,7 @@ export interface ModalConfig {
   /**
    * @zh 是否点击遮罩层可以关闭对话框
    * @en Whether to close the modal when click the mask
+   * @defaultValue true
    */
   maskClosable?: boolean;
   /**
@@ -77,11 +80,13 @@ export interface ModalConfig {
   /**
    * @zh 对话框是否居中显示
    * @en Whether the dialog box is displayed in the center
+   * @defaultValue true
    */
   alignCenter?: boolean;
   /**
    * @zh 是否支持 ESC 键关闭对话框
    * @en Whether to support the ESC key to close the dialog
+   * @defaultValue true
    * @version 2.15.0
    */
   escToClose?: boolean;
@@ -164,6 +169,7 @@ export interface ModalConfig {
   /**
    * @zh 对话框是否挂载在 `body` 元素下
    * @en Whether the modal is mounted under the `body` element
+   * @defaultValue true
    */
   renderToBody?: boolean;
   /**
