@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.2
+
+`2023-04-21`
+
+### 💅 样式更新
+
+- 修复 select-view-input 的 line-height 和 height 不一致 ([#2346](https://github.com/arco-design/arco-design-vue/pull/2346))
+
+
 ## 2.44.6
 
 `2023-03-31`

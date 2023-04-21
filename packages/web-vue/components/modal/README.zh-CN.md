@@ -109,19 +109,19 @@ Modal._context = app._context;
 |title|标题|`RenderContent`|`-`||
 |content|内容|`RenderContent`|`-`||
 |footer|页脚|`boolean \| RenderContent`|`true`||
-|closable|是否显示关闭按钮|`boolean`|`false`||
+|closable|是否显示关闭按钮|`boolean`|`true`||
 |okText|确认按钮的内容|`string`|`-`||
 |cancelText|取消按钮的内容|`string`|`-`||
 |okButtonProps|确认按钮的Props|`ButtonProps`|`-`||
 |cancelButtonProps|取消按钮的Props|`ButtonProps`|`-`||
 |okLoading|确认按钮是否为加载中状态|`boolean`|`false`||
 |hideCancel|是否隐藏取消按钮|`boolean`|`false`||
-|mask|是否显示遮罩层|`boolean`|`false`||
+|mask|是否显示遮罩层|`boolean`|`true`||
 |simple|是否开启简单模式|`boolean`|`false`||
-|maskClosable|是否点击遮罩层可以关闭对话框|`boolean`|`false`||
+|maskClosable|是否点击遮罩层可以关闭对话框|`boolean`|`true`||
 |maskStyle|蒙层的样式|`CSSProperties`|`-`||
-|alignCenter|对话框是否居中显示|`boolean`|`false`||
-|escToClose|是否支持 ESC 键关闭对话框|`boolean`|`false`|2.15.0|
+|alignCenter|对话框是否居中显示|`boolean`|`true`||
+|escToClose|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 |draggable|是否支持拖动|`boolean`|`false`|2.19.0|
 |fullscreen|是否开启全屏|`boolean`|`false`|2.19.0|
 |onOk|点击确定按钮的回调函数|`() => void`|`-`||
@@ -134,9 +134,9 @@ Modal._context = app._context;
 |onBeforeClose|对话框关闭前触发|`() => void`|`-`|2.16.0|
 |width|对话框的宽度，不设置的情况下会使用样式中的宽度值|`number \| string`|`-`|2.12.0|
 |top|对话框的距离顶部的高度，居中显示开启的情况下不生效|`number \| string`|`-`|2.12.0|
-|titleAlign|标题的水平对齐方向|`'start' \| 'center'`|`-`|2.17.0|
-|renderToBody|对话框是否挂载在 `body` 元素下|`boolean`|`false`||
-|popupContainer|弹出框的挂载容器|`string \| HTMLElement`|`-`||
+|titleAlign|标题的水平对齐方向|`'start' \| 'center'`|`'center'`|2.17.0|
+|renderToBody|对话框是否挂载在 `body` 元素下|`boolean`|`true`||
+|popupContainer|弹出框的挂载容器|`string \| HTMLElement`|`'body'`||
 |modalClass|对话框的类名|`string \| any[]`|`-`||
 |modalStyle|对话框的样式|`CSSProperties`|`-`||
 |maskAnimationName|遮罩层动画名字|`string`|`-`|2.24.0|

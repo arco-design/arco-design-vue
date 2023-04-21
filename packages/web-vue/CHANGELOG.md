@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.45.2
+
+`2023-04-21`
+
+### 🐛 BugFix
+
+- **date-picker:** fix styling problem with panel-only pickers ([#2349](https://github.com/arco-design/arco-design-vue/pull/2349))
+
+### 💅 Style
+
+- **select:** Fix the inconsistent line-height and height of select-view-input ([#2346](https://github.com/arco-design/arco-design-vue/pull/2346))
+
+
 ## 2.45.1
 
 `2023-04-14`

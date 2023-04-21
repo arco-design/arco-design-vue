@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.45.2
+
+`2023-04-21`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复只使用面板情况下的样式问题 ([#2349](https://github.com/arco-design/arco-design-vue/pull/2349))
+
+### 💅 样式更新
+
+- **select:** 修复 select-view-input 的 line-height 和 height 不一致 ([#2346](https://github.com/arco-design/arco-design-vue/pull/2346))
+
+
 ## 2.45.1
 
 `2023-04-14`

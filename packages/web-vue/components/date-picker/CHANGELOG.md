@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.2
+
+`2023-04-21`
+
+### 🐛 BugFix
+
+- fix styling problem with panel-only pickers ([#2349](https://github.com/arco-design/arco-design-vue/pull/2349))
+
+
 ## 2.45.0
 
 `2023-04-07`

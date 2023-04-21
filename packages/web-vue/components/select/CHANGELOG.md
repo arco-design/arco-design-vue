@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.2
+
+`2023-04-21`
+
+### 💅 Style
+
+- Fix the inconsistent line-height and height of select-view-input ([#2346](https://github.com/arco-design/arco-design-vue/pull/2346))
+
+
 ## 2.44.6
 
 `2023-03-31`
