@@ -116,8 +116,9 @@ export default defineComponent({
      * @zh 动态搜索时触发
      * @en Trigger on dynamic search prefix
      * @property {string} value
+     * @property {string} prefix
      */
-    'search': (value: string) => true,
+    'search': (value: string, prefix: string) => true,
     /**
      * @zh 选择下拉选项时触发
      * @en Triggered when the drop-down option is selected
@@ -212,7 +213,7 @@ export default defineComponent({
             text: measureText,
             ...lastMeasure,
           };
-          emit('search', measureText);
+          emit('search', measureText, lastMeasure.prefix);
         } else if (measureInfo.value.location > -1) {
           resetMeasureInfo();
         }
