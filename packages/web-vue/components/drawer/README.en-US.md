@@ -55,8 +55,8 @@ description: A drawer-like panel that slides out from the side of the screen aft
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|ok|Triggered when the OK button is clicked|-||
-|cancel|Triggered when the cancel or close button is clicked|-||
+|ok|Triggered when the OK button is clicked|`MouseEvent`||
+|cancel|Triggered when the cancel or close button is clicked|`MouseEvent \| KeyboardEvent`||
 |open|Triggered after the drawer is opened (the animation ends)|-||
 |close|Triggered when the drawer is closed (the animation ends)|-||
 |before-open|Triggered before drawer is opened|-|2.43.0|
