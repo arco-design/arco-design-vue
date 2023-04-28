@@ -423,41 +423,41 @@ export default defineComponent({
       type: String as PropType<MessageType>,
     },
   },
-  emits: [
-    'update:visible',
+  emits: {
+    'update:visible': (visible: boolean) => true,
     /**
      * @zh 点击确定按钮时触发
      * @en Triggered when the OK button is clicked
      */
-    'ok',
+    'ok': (e: Event) => true,
     /**
      * @zh 点击取消、关闭按钮时触发
      * @en Triggered when the cancel/close button is clicked
      */
-    'cancel',
+    'cancel': (e: Event) => true,
     /**
      * @zh 对话框打开后（动画结束）触发
      * @en Triggered after the modal is opened (the animation ends)
      */
-    'open',
+    'open': () => true,
     /**
      * @zh 对话框关闭后（动画结束）触发
      * @en Triggered after the modal is closed (the animation ends)
      */
-    'close',
+    'close': () => true,
     /**
      * @zh 对话框打开前触发
      * @en Triggered before dialog is opened
      * @version 2.16.0
      */
-    'beforeOpen',
+    'beforeOpen': () => true,
     /**
      * @zh 对话框关闭前触发
      * @en Triggered before dialog is closed
      * @version 2.16.0
      */
-    'beforeClose',
-  ],
+    'beforeClose': () => true,
+  },
   /**
    * @zh 标题
    * @en Title
@@ -503,7 +503,7 @@ export default defineComponent({
 
     const handleGlobalKeyDown = (ev: KeyboardEvent) => {
       if (props.escToClose && ev.key === KEYBOARD_KEY.ESC && isLastDialog()) {
-        handleCancel();
+        handleCancel(ev);
       }
     };
 
@@ -537,7 +537,7 @@ export default defineComponent({
       emit('update:visible', false);
     };
 
-    const handleOk = async () => {
+    const handleOk = async (e: Event) => {
       const currentPromiseNumber = promiseNumber;
       const closed = await new Promise<boolean>(
         // eslint-disable-next-line no-async-promise-executor
@@ -566,7 +566,7 @@ export default defineComponent({
 
       if (currentPromiseNumber === promiseNumber) {
         if (closed) {
-          emit('ok');
+          emit('ok', e);
           close();
         } else if (_okLoading.value) {
           _okLoading.value = false;
@@ -574,13 +574,13 @@ export default defineComponent({
       }
     };
 
-    const handleCancel = () => {
+    const handleCancel = (e: Event) => {
       let result = true;
       if (isFunction(props.onBeforeCancel)) {
         result = props.onBeforeCancel() ?? false;
       }
       if (result) {
-        emit('cancel');
+        emit('cancel', e);
         close();
       }
     };
@@ -593,9 +593,9 @@ export default defineComponent({
       }
     };
 
-    const handleMaskClick = () => {
+    const handleMaskClick = (e: Event) => {
       if (props.mask && props.maskClosable && currentIsMask.value) {
-        handleCancel();
+        handleCancel(e);
       }
     };
 
