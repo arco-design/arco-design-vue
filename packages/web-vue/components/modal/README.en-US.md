@@ -70,8 +70,8 @@ description: Open a floating layer on the current page to carry related operatio
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|ok|Triggered when the OK button is clicked|-||
-|cancel|Triggered when the cancel/close button is clicked|-||
+|ok|Triggered when the OK button is clicked|ev: `MouseEvent`||
+|cancel|Triggered when the cancel/close button is clicked|ev: `MouseEvent \| KeyboardEvent`||
 |open|Triggered after the modal is opened (the animation ends)|-||
 |close|Triggered after the modal is closed (the animation ends)|-||
 |before-open|Triggered before dialog is opened|-|2.16.0|

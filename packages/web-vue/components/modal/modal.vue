@@ -428,11 +428,13 @@ export default defineComponent({
     /**
      * @zh 点击确定按钮时触发
      * @en Triggered when the OK button is clicked
+     * @property {MouseEvent} ev
      */
     'ok': (e: Event) => true,
     /**
      * @zh 点击取消、关闭按钮时触发
      * @en Triggered when the cancel/close button is clicked
+     * @property {MouseEvent | KeyboardEvent} ev
      */
     'cancel': (e: Event) => true,
     /**
