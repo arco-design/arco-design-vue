@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.3
+
+`2023-04-28`
+
+### 🐛 BugFix
+
+- Fix the problem that the Enter key in the input method state will trigger the selection ([#2378](https://github.com/arco-design/arco-design-vue/pull/2378))
+
+
 ## 2.45.2
 
 `2023-04-21`

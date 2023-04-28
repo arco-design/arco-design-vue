@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.45.3
+
+`2023-04-28`
+
+### 🐛 问题修复
+
+- **select:** 修复输入法状态下 Enter 键会触发选择的问题 ([#2378](https://github.com/arco-design/arco-design-vue/pull/2378))
+
+### 💎 功能优化
+
+- **drawer:** 添加 onOk & onCancel 的事件参数 ([#2358](https://github.com/arco-design/arco-design-vue/pull/2358))
+
+### 🆎 类型修正
+
+- **checkbox:** 修复 `value` 属性使用 boolean 值出现 ts 错误的问题 ([#2373](https://github.com/arco-design/arco-design-vue/pull/2373))
+
+
 ## 2.45.2
 
 `2023-04-21`

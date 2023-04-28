@@ -35,7 +35,7 @@ description: In a set of data, the user can select one or more data through the 
 |---|---|---|:---:|
 |model-value **(v-model)**|Value|`boolean \| Array<string \| number \| boolean>`|`-`|
 |default-checked|Whether checked by default (uncontrolled state)|`boolean`|`false`|
-|value|The `value` of the option|`string \| number \| boolean`|`-`|
+|value|The `value` of the option|`string\|number\|boolean`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 |indeterminate|Whether it is half-selected|`boolean`|`false`|
 ### `<checkbox>` Events

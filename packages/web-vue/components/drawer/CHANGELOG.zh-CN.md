@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.3
+
+`2023-04-28`
+
+### 💎 功能优化
+
+- 添加 onOk & onCancel 的事件参数 ([#2358](https://github.com/arco-design/arco-design-vue/pull/2358))
+
+
 ## 2.43.2
 
 `2023-02-24`

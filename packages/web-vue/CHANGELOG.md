@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.45.3
+
+`2023-04-28`
+
+### 🐛 BugFix
+
+- **select:** Fix the problem that the Enter key in the input method state will trigger the selection ([#2378](https://github.com/arco-design/arco-design-vue/pull/2378))
+
+### 💎 Enhancement
+
+- **drawer:** Add onOk & onCancel event parameters ([#2358](https://github.com/arco-design/arco-design-vue/pull/2358))
+
+### 🆎 TypeScript
+
+- **checkbox:** Fix the ts error problem when the `value` attribute uses a boolean value ([#2373](https://github.com/arco-design/arco-design-vue/pull/2373))
+
+
 ## 2.45.2
 
 `2023-04-21`

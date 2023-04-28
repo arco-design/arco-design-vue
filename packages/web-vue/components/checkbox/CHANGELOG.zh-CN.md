@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.3
+
+`2023-04-28`
+
+### 🆎 类型修正
+
+- 修复 `value` 属性使用 boolean 值出现 ts 错误的问题 ([#2373](https://github.com/arco-design/arco-design-vue/pull/2373))
+
+
 ## 2.43.2
 
 `2023-02-24`

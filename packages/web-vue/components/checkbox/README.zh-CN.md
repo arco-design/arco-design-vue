@@ -33,7 +33,7 @@ description: 在一组数据中，用户可通过复选框选择一个或多个�
 |---|---|---|:---:|
 |model-value **(v-model)**|绑定值|`boolean \| Array<string \| number \| boolean>`|`-`|
 |default-checked|默认是否选中（非受控状态）|`boolean`|`false`|
-|value|选项的 `value`|`string \| number \| boolean`|`-`|
+|value|选项的 `value`|`string\|number\|boolean`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
 |indeterminate|是否为半选状态|`boolean`|`false`|
 ### `<checkbox>` Events
