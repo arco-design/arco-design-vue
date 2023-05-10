@@ -1,6 +1,7 @@
 import {
   computed,
   defineComponent,
+  inject,
   isVNode,
   onMounted,
   PropType,
@@ -23,6 +24,7 @@ import { getAllElements } from '../_utils/vue-utils';
 import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import { useComponentRef } from '../_hooks/use-component-ref';
 import { useScrollbar } from '../_hooks/use-scrollbar';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'List',
@@ -176,6 +178,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const { scrollbar } = toRefs(props);
     const prefixCls = getPrefixCls('list');
+    const configCtx = inject(configProviderInjectionKey, undefined);
     const { componentRef, elementRef: listRef } =
       useComponentRef('containerRef');
     const isVirtualList = computed(() => props.virtualListProps);
@@ -366,7 +369,7 @@ export default defineComponent({
         return null;
       }
 
-      return slots.empty?.() ?? <Empty />;
+      return slots.empty?.() ?? configCtx?.renderEmpty?.('list') ?? <Empty />;
     };
 
     const render = () => {

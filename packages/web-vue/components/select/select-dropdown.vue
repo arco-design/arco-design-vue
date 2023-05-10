@@ -3,7 +3,7 @@
     <spin v-if="loading" :class="`${prefixCls}-loading`" />
     <div v-else-if="empty" :class="`${prefixCls}-empty`">
       <slot name="empty">
-        <empty />
+        <component :is="SelectEmpty ? SelectEmpty : 'Empty'" />
       </slot>
     </div>
     <div v-if="$slots.header && !empty" :class="`${prefixCls}-header`">
@@ -31,8 +31,9 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, toRefs } from 'vue';
+import { computed, defineComponent, toRefs, inject } from 'vue';
 import type { EmitType } from '../_utils/types';
+import { configProviderInjectionKey } from '../config-provider/context';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
@@ -70,6 +71,8 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const { scrollbar } = toRefs(props);
     const prefixCls = getPrefixCls('select-dropdown');
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const SelectEmpty = configCtx?.renderEmpty?.('select');
     const { componentRef: wrapperComRef, elementRef: wrapperRef } =
       useComponentRef('containerRef');
     const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
@@ -93,6 +96,7 @@ export default defineComponent({
 
     return {
       prefixCls,
+      SelectEmpty,
       cls,
       wrapperRef,
       wrapperComRef,

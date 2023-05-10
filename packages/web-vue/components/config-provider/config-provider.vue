@@ -3,17 +3,19 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue';
+import type { PropType, VNodeChild } from 'vue';
 import {
   defineComponent,
   provide,
   reactive,
   toRefs,
   getCurrentInstance,
+  h,
 } from 'vue';
 import { configProviderInjectionKey } from './context';
 import { ArcoLang } from '../locale/interface';
 import { Size } from '../_utils/constant';
+import Empty from '../empty';
 
 export default defineComponent({
   name: 'ConfigProvider',
@@ -59,6 +61,20 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 全局配置组件内的空组件。
+     * @en Empty component in component.
+     * @version
+     */
+    renderEmpty: {
+      type: Function as PropType<(componentName?: string) => VNodeChild>,
+      default: (componentName?: string) => {
+        switch (componentName) {
+          default:
+            return h(Empty);
+        }
+      },
+    },
   },
   /**
    * @zh 自定义空状态元素
@@ -73,7 +89,8 @@ export default defineComponent({
    * @version 2.28.0
    */
   setup(props, { slots }) {
-    const { prefixCls, locale, size, updateAtScroll } = toRefs(props);
+    const { prefixCls, locale, size, updateAtScroll, renderEmpty } =
+      toRefs(props);
 
     const config = reactive({
       slots,
@@ -81,6 +98,7 @@ export default defineComponent({
       locale,
       size,
       updateAtScroll,
+      renderEmpty,
     });
 
     if (props.global) {

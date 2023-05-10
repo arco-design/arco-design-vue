@@ -1,4 +1,4 @@
-import { InjectionKey, Slots } from 'vue';
+import { InjectionKey, Slots, VNodeChild } from 'vue';
 import { ArcoLang } from '../locale/interface';
 import { Size } from '../_utils/constant';
 
@@ -8,6 +8,7 @@ export interface ConfigProvider {
   locale?: ArcoLang;
   size?: Size;
   updateAtScroll?: boolean;
+  renderEmpty?: (componentName?: string) => VNodeChild;
 }
 
 export const configProviderInjectionKey: InjectionKey<ConfigProvider> =

@@ -10,6 +10,8 @@ description: 在应用的最外层进行配置，一次设置，全局生效。�
 
 @import ./__demo__/empty.md
 
+@import ./__demo__/render-empty.md
+
 ## API
 
 

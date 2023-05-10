@@ -1,10 +1,11 @@
-import { defineComponent, PropType, TransitionGroup } from 'vue';
+import { defineComponent, inject, PropType, TransitionGroup } from 'vue';
 import { CascaderOptionInfo } from './interface';
 import CascaderOption from './cascader-option';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
 import Scrollbar from '../scrollbar';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'BaseCascaderPanel',
@@ -29,9 +30,12 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('cascader');
+    const configCtx = inject(configProviderInjectionKey, undefined);
 
     const renderEmpty = () => {
-      return slots.empty?.() ?? <Empty />;
+      return (
+        slots.empty?.() ?? configCtx?.renderEmpty?.('cascader') ?? <Empty />
+      );
     };
 
     const renderColumn = (column: CascaderOptionInfo[], level = 0) => {
