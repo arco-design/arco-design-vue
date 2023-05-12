@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 🆕 Feature
+
+- add actions slot ([#2389](https://github.com/arco-design/arco-design-vue/pull/2389))
+
+
 ## 2.45.1
 
 `2023-04-14`

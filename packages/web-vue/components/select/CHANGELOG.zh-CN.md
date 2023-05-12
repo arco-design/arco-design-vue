@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 💎 功能优化
+
+- 选择框增加 title 提示 ([#2412](https://github.com/arco-design/arco-design-vue/pull/2412))
+
+
 ## 2.45.3
 
 `2023-04-28`

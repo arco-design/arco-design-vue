@@ -23,6 +23,7 @@ description: Configure in the outermost layer of the application, set once, and 
 |locale|Configure language pack|`ArcoLang`|`-`||
 |size|Size|`Size`|`-`|2.14.0|
 |global|Is global effect|`boolean`|`false`|2.25.0|
+|scroll-to-close|Whether to close the popover when scrolling|`boolean`|`false`|2.46.0|
 ### `<config-provider>` Slots
 
 |Slot Name|Description|Parameters|version|

@@ -116,6 +116,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 |day-start-of-week|The first day of the week starts on the day of the week, 0-Sunday, 1-Monday, and so on.|`0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`|`0`|2-6 from 2.21.0|
 |show-time|Whether to increase time selection|`boolean`|`false`||
 |time-picker-props|Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`||
+|disabled|Whether to disable|`boolean`|`false`||
+|disabled-date|Unselectable date|`(current?: Date) => boolean`|`-`||
 |disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`||
 |show-now-btn|Whether to display `showTime`, select the button of the current time|`boolean`|`true`||
 

@@ -654,7 +654,7 @@ export default defineComponent({
           return getFilteredStatus(item.label);
         }
 
-        return item.path.find((leaf) => getFilteredStatus(leaf.label));
+        return item.path?.find((leaf) => getFilteredStatus(leaf.label));
       });
     });
 

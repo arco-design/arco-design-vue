@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 🐛 BugFix
+
+- Fix the problem that when the dataIndex is in the path format, the sorting and summary column functions do not take effect ([#2413](https://github.com/arco-design/arco-design-vue/pull/2413))
+
+
 ## 2.45.1
 
 `2023-04-14`

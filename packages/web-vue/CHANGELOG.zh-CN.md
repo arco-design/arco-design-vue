@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 🆕 新增功能
+
+- **trigger:** 增加 scrollToClose 属性 ([#2414](https://github.com/arco-design/arco-design-vue/pull/2414))
+- **image:** 添加 actions 插槽 ([#2389](https://github.com/arco-design/arco-design-vue/pull/2389))
+- **cascader:** 非严格模式下支持全路径搜索 ([#2363](https://github.com/arco-design/arco-design-vue/pull/2363))
+
+### 🐛 问题修复
+
+- **table:** 修复当 dataIndex 为路径格式时，排序和总结栏功能不生效的问题 ([#2413](https://github.com/arco-design/arco-design-vue/pull/2413))
+- **divider:** 修复 margin 无法设置为 0 的问题 ([#2390](https://github.com/arco-design/arco-design-vue/pull/2390))
+
+### 💎 功能优化
+
+- **select:** 选择框增加 title 提示 ([#2412](https://github.com/arco-design/arco-design-vue/pull/2412))
+
+### 🆎 类型修正
+
+- **date-picker:** 日期选择器 ([#2359](https://github.com/arco-design/arco-design-vue/pull/2359))
+
+
 ## 2.45.3
 
 `2023-04-28`

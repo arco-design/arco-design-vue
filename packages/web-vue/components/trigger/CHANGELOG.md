@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 🆕 Feature
+
+- add scrollToClose prop ([#2414](https://github.com/arco-design/arco-design-vue/pull/2414))
+
+
 ## 2.44.7
 
 `2023-04-03`

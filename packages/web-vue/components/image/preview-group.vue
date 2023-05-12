@@ -12,7 +12,7 @@
     :render-to-body="renderToBody"
     @close="onClose"
   >
-    <template #actions v-if="$slots.actions">
+    <template v-if="$slots.actions" #actions>
       <slot name="actions" :url="currentUrl" />
     </template>
   </ImagePreview>
@@ -146,6 +146,12 @@ export default defineComponent({
     'visible-change',
     'update:visible',
   ],
+  /**
+   * @zh 自定义额外的操作项
+   * @en Customize additional action items
+   * @slot actions
+   * @version 2.46.0
+   */
   setup(props: ImagePreviewGroupProps, { emit }) {
     const {
       srcList,

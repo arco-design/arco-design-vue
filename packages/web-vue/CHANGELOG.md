@@ -2,6 +2,30 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 🆕 Feature
+
+- **trigger:** add scrollToClose prop ([#2414](https://github.com/arco-design/arco-design-vue/pull/2414))
+- **image:** add actions slot ([#2389](https://github.com/arco-design/arco-design-vue/pull/2389))
+- **cascader:** support full path search ([#2363](https://github.com/arco-design/arco-design-vue/pull/2363))
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that when the dataIndex is in the path format, the sorting and summary column functions do not take effect ([#2413](https://github.com/arco-design/arco-design-vue/pull/2413))
+- **divider:** Fix the problem that margin cannot be set to 0 ([#2390](https://github.com/arco-design/arco-design-vue/pull/2390))
+
+### 💎 Enhancement
+
+- **select:** Add a title hint to the selection box ([#2412](https://github.com/arco-design/arco-design-vue/pull/2412))
+
+### 🆎 TypeScript
+
+- **date-picker:** DatePicker ([#2359](https://github.com/arco-design/arco-design-vue/pull/2359))
+
+
 ## 2.45.3
 
 `2023-04-28`

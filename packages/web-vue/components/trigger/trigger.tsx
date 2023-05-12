@@ -401,6 +401,7 @@ export default defineComponent({
 
     let delayTimer = 0;
     let outsideListener = false;
+    let windowListener = false;
 
     const cleanDelayTimer = () => {
       if (delayTimer) {
@@ -645,6 +646,16 @@ export default defineComponent({
       }
     });
 
+    const removeWindowScroll = () => {
+      off(window, 'scroll', onWindowScroll);
+      windowListener = false;
+    };
+
+    const onWindowScroll = throttleByRaf(() => {
+      changeVisible(false);
+      removeWindowScroll();
+    });
+
     const handleResize = () => {
       if (computedVisible.value) {
         updatePopupStyle();
@@ -679,6 +690,11 @@ export default defineComponent({
           on(document.documentElement, 'mousedown', handleOutsideClick);
           outsideListener = true;
         }
+      }
+
+      if (props.scrollToClose || configCtx?.scrollToClose) {
+        on(window, 'scroll', onWindowScroll);
+        windowListener = true;
       }
 
       if (props.updateAtScroll || configCtx?.updateAtScroll) {
@@ -749,6 +765,9 @@ export default defineComponent({
       destroyResizeObserver();
       if (outsideListener) {
         removeOutsideListener();
+      }
+      if (windowListener) {
+        removeWindowScroll();
       }
       if (scrollElements) {
         for (const item of scrollElements) {

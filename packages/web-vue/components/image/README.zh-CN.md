@@ -112,6 +112,11 @@ description: 展示和预览图片。
 |---|---|---|
 |change|切换图片|-|
 |visible-change|预览的打开和关闭|-|
+### `<image-preview-group>` Slots
+
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|actions|自定义额外的操作项|-|2.46.0|
 
 
 

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 🆕 Feature
+
+- support full path search ([#2363](https://github.com/arco-design/arco-design-vue/pull/2363))
+
+
 ## 2.45.1
 
 `2023-04-14`
