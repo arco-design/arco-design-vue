@@ -85,3 +85,101 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 %%INTERFACE(interface.ts)%%
 
 %%INTERFACE(../_components/virtual-list-v2/interface.ts)%%
+
+
+## zh-CN
+## FAQ
+
+### 使用 `Object` 格式作为选项的值
+当使用 `Object` 格式作为选项的值时，需要通过 `value-key` 属性为选择器指定获取唯一标识的字段名，默认值为 `value`.
+
+例如当我需要指定 `key` 为唯一标识时：
+```vue
+<template>
+  <a-select v-model="value" :style="{width:'320px'}" placeholder="Please select ..." value-key="key">
+    <a-option v-for="item of data" :value="item" :label="item.label" />
+  </a-select>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref();
+    const data = [{
+      value: 'beijing',
+      label: 'Beijing',
+      key: 'extra1'
+    }, {
+      value: 'shanghai',
+      label: 'Shanghai',
+      key: 'extra2'
+    }, {
+      value: 'guangzhou',
+      label: 'Guangzhou',
+      key: 'extra3'
+    }, {
+      value: 'chengdu',
+      label: 'Chengdu',
+      key: 'extra4'
+    }]
+
+    return {
+      value,
+      data
+    }
+  },
+}
+</script>
+```
+
+---
+## en-US
+## FAQ
+
+### Use `Object` format as option value
+When using the `Object` format as the value of the option, you need to specify the field name to obtain the unique identifier for the selector through the `value-key` attribute, and the default value is `value`.
+
+For example, when I need to specify `key` as a unique identifier:
+```vue
+<template>
+  <a-select v-model="value" :style="{width:'320px'}" placeholder="Please select ..." value-key="key">
+    <a-option v-for="item of data" :value="item" :label="item.label" />
+  </a-select>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref();
+    const data = [{
+      value: 'beijing',
+      label: 'Beijing',
+      key: 'extra1'
+    }, {
+      value: 'shanghai',
+      label: 'Shanghai',
+      key: 'extra2'
+    }, {
+      value: 'guangzhou',
+      label: 'Guangzhou',
+      key: 'extra3'
+    }, {
+      value: 'chengdu',
+      label: 'Chengdu',
+      key: 'extra4'
+    }]
+
+    return {
+      value,
+      data
+    }
+  },
+}
+</script>
+```
+
+---
