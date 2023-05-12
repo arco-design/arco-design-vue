@@ -47,13 +47,23 @@
     </slot>
     <template #content>
       <div
-        :class="[`${prefixCls}-popup`, dropdownClassName]"
+        :class="[
+          `${prefixCls}-popup`,
+          {
+            [`${prefixCls}-has-header`]: Boolean($slots.header),
+            [`${prefixCls}-has-footer`]: Boolean($slots.footer),
+          },
+          dropdownClassName,
+        ]"
         :style="computedDropdownStyle"
       >
+        <div v-if="$slots.header && !isEmpty" :class="`${prefixCls}-header`">
+          <slot name="header" />
+        </div>
         <slot v-if="loading" name="loader">
           <Spin />
         </slot>
-        <slot v-else-if="isEmptyTreeData || isEmptyFilterResult" name="empty">
+        <slot v-else-if="isEmpty" name="empty">
           <Empty />
         </slot>
         <Panel
@@ -79,6 +89,9 @@
           :tree-slots="pickSubCompSlots($slots, 'tree')"
           @change="onSelectChange"
         />
+        <div v-if="$slots.footer && !isEmpty" :class="`${prefixCls}-footer`">
+          <slot name="footer" />
+        </div>
       </div>
     </template>
   </Trigger>
@@ -124,6 +137,7 @@ import {
 import { isNodeSelectable } from '../tree/utils';
 import { Data } from '../_utils/types';
 import { ScrollbarProps } from '../scrollbar';
+import { SelectViewValue } from '../_components/select-view/interface';
 
 export default defineComponent({
   name: 'TreeSelect',
@@ -478,7 +492,17 @@ export default defineComponent({
    * @en Render additional node content of the tree component
    * @slot tree-slot-extra
    */
-  setup(props, { emit }) {
+  /**
+   * @zh 自定义下拉框页头
+   * @en The header of the drop-down box
+   * @slot header
+   */
+  /**
+   * @zh 自定义下拉框页脚
+   * @en The footer of the drop-down box
+   * @slot footer
+   */
+  setup(props, { emit, slots }) {
     const {
       defaultValue,
       modelValue,
@@ -497,6 +521,7 @@ export default defineComponent({
       treeProps,
       fallbackOption,
       selectable,
+      dropdownClassName,
     } = toRefs(props);
     const { mergedDisabled, eventHandlers } = useFormItem({
       disabled,
@@ -564,9 +589,9 @@ export default defineComponent({
             ...i,
             closable: !node || isNodeClosable(node),
           };
-        });
+        }) as SelectViewValue[];
       }
-      return selectedValue.value;
+      return selectedValue.value as SelectViewValue[];
     });
 
     const setSelectedKeys = (newVal: TreeNodeKey[]) => {
@@ -619,7 +644,9 @@ export default defineComponent({
         })
       );
 
-    const isEmptyTreeData = computed(() => !flattenTreeData.value.length);
+    const isEmpty = computed(
+      () => !flattenTreeData.value.length || isEmptyFilterResult.value
+    );
 
     const refSelectView = ref();
 
@@ -642,8 +669,7 @@ export default defineComponent({
       mergedDisabled,
       searchValue,
       panelVisible,
-      isEmptyTreeData,
-      isEmptyFilterResult,
+      isEmpty,
       computedFilterTreeNode,
       isMultiple,
       selectViewValue,
