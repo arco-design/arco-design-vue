@@ -54,6 +54,20 @@ export default defineComponent({
       type: Object as PropType<Partial<TimePickerProps>>,
     },
     /**
+     * @zh 是否禁用
+     * @en Whether to disable
+     */
+    disabled: {
+      type: Boolean,
+    },
+    /**
+     * @zh 不可选取的日期
+     * @en Unselectable date
+     */
+    disabledDate: {
+      type: Function as PropType<(current?: Date) => boolean>,
+    },
+    /**
      * @zh 不可选取的时间
      * @en Unselectable time
      * */
