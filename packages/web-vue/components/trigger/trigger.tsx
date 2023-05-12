@@ -321,6 +321,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否在滚动时关闭弹出框
+     * @en Whether to close the popover when scrolling
+     * @version 2.46.0
+     */
+    scrollToClose: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:popupVisible': (visible: boolean) => true,
@@ -628,7 +637,11 @@ export default defineComponent({
 
     const handleScroll = throttleByRaf(() => {
       if (computedVisible.value) {
-        updatePopupStyle();
+        if (props.scrollToClose || configCtx?.scrollToClose) {
+          changeVisible(false);
+        } else {
+          updatePopupStyle();
+        }
       }
     });
 
