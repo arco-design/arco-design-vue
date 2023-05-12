@@ -74,6 +74,7 @@ import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import { useComponentRef } from '../_hooks/use-component-ref';
 import type { BaseType } from '../_utils/types';
 import { useScrollbar } from '../_hooks/use-scrollbar';
+import { getValueByPath, setValueByPath } from '../_utils/get-value-by-path';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -1007,8 +1008,8 @@ export default defineComponent({
           if (column && column.sortable?.sorter !== true) {
             const { field, direction } = computedSorter.value;
             data.sort((a, b) => {
-              const valueA = a.raw[field];
-              const valueB = b.raw[field];
+              const valueA = getValueByPath(a.raw, field);
+              const valueB = getValueByPath(b.raw, field);
 
               if (
                 column.sortable?.sorter &&
@@ -1065,23 +1066,25 @@ export default defineComponent({
       return dataColumns.value.reduce((per, column, index) => {
         if (column.dataIndex) {
           if (index === 0) {
-            per[column.dataIndex] = props.summaryText;
+            setValueByPath(per, column.dataIndex, props.summaryText, {
+              addPath: true,
+            });
           } else {
             let count = 0;
             let isNotNumber = false;
             flattenData.value.forEach((data) => {
               if (column.dataIndex) {
-                if (isNumber(data.raw[column.dataIndex])) {
-                  count += data.raw[column.dataIndex];
-                } else if (
-                  !isUndefined(data.raw[column.dataIndex]) &&
-                  !isNull(data.raw[column.dataIndex])
-                ) {
+                const _number = getValueByPath(data.raw, column.dataIndex);
+                if (isNumber(_number)) {
+                  count += _number;
+                } else if (!isUndefined(_number) && !isNull(_number)) {
                   isNotNumber = true;
                 }
               }
             });
-            per[column.dataIndex] = isNotNumber ? '' : count;
+            setValueByPath(per, column.dataIndex, isNotNumber ? '' : count, {
+              addPath: true,
+            });
           }
         }
 
