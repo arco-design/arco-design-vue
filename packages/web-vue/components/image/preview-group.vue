@@ -11,7 +11,11 @@
     :popup-container="popupContainer"
     :render-to-body="renderToBody"
     @close="onClose"
-  />
+  >
+    <template #actions v-if="$slots.actions">
+      <slot name="actions" :url="currentUrl" />
+    </template>
+  </ImagePreview>
 </template>
 <script lang="tsx">
 import {
