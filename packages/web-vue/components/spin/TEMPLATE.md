@@ -25,6 +25,10 @@ description: Used for the loading state of pages and blocks-when a part of the p
 
 @import ./__demo__/container.md
 
+@import ./__demo__/custom.md
+
+@import ./__demo__/delay.md
+
 @import ./__demo__/tip.md
 
 @import ./__demo__/icon.md
