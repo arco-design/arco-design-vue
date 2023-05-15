@@ -1,7 +1,7 @@
 <template>
   <Trigger
     :class="prefixCls"
-    trigger="hover"
+    :trigger="trigger"
     :position="position"
     :popup-visible="computedPopupVisible"
     :popup-offset="10"
@@ -27,7 +27,7 @@
 import type { PropType } from 'vue';
 import { computed, CSSProperties, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { TriggerPosition } from '../_utils/constant';
+import { TriggerPosition, TriggerEvent } from '../_utils/constant';
 import Trigger from '../trigger';
 import { ClassName } from '../_utils/types';
 
@@ -53,6 +53,15 @@ export default defineComponent({
     defaultPopupVisible: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 触发方式
+     * @en Trigger method
+     * @values 'hover','click','focus','contextMenu'
+     */
+    trigger: {
+      type: [String, Array] as PropType<TriggerEvent | TriggerEvent[]>,
+      default: 'hover',
     },
     /**
      * @zh 文字气泡内容
