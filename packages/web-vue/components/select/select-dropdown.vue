@@ -1,13 +1,13 @@
 <template>
   <div :class="cls">
+    <div v-if="$slots.header" :class="`${prefixCls}-header`">
+      <slot name="header" />
+    </div>
     <spin v-if="loading" :class="`${prefixCls}-loading`" />
     <div v-else-if="empty" :class="`${prefixCls}-empty`">
       <slot name="empty">
         <empty />
       </slot>
-    </div>
-    <div v-if="$slots.header && !empty" :class="`${prefixCls}-header`">
-      <slot name="header" />
     </div>
     <slot v-if="virtualList && !loading && !empty" name="virtual-list" />
     <component
@@ -23,7 +23,7 @@
         <slot />
       </ul>
     </component>
-    <div v-if="$slots.footer && !empty" :class="`${prefixCls}-footer`">
+    <div v-if="$slots.footer" :class="`${prefixCls}-footer`">
       <slot name="footer" />
     </div>
   </div>
