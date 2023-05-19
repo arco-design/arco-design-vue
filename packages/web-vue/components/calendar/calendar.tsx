@@ -128,7 +128,7 @@ export default defineComponent({
     });
 
     // eslint-disable-next-line no-console
-    console.log(_value.value);
+    // console.log(_value.value);
 
     const pageShowDate = ref(computedValue.value || getNow());
 
