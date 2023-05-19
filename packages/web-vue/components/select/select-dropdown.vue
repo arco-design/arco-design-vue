@@ -1,6 +1,9 @@
 <template>
   <div :class="cls">
-    <div v-if="$slots.header" :class="`${prefixCls}-header`">
+    <div
+      v-if="$slots.header && (!empty || showHeaderOnEmpty)"
+      :class="`${prefixCls}-header`"
+    >
       <slot name="header" />
     </div>
     <spin v-if="loading" :class="`${prefixCls}-loading`" />
@@ -23,7 +26,10 @@
         <slot />
       </ul>
     </component>
-    <div v-if="$slots.footer" :class="`${prefixCls}-footer`">
+    <div
+      v-if="$slots.footer && (!empty || showFooterOnEmpty)"
+      :class="`${prefixCls}-footer`"
+    >
       <slot name="footer" />
     </div>
   </div>
@@ -64,6 +70,14 @@ export default defineComponent({
     },
     onReachBottom: {
       type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
+    },
+    showHeaderOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
+    },
+    showFooterOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
     },
   },
   emits: ['scroll', 'reachBottom'],

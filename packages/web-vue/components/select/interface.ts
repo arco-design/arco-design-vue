@@ -47,6 +47,8 @@ export interface SelectProps {
   searchDelay?: number;
   limit?: number;
   fieldNames?: SelectFieldNames;
+  showHeaderOnEmpty?: boolean;
+  showFooterOnEmpty?: boolean;
 }
 
 export type SelectOptionValue = string | number | Record<string, unknown>;
