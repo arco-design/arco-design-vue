@@ -62,6 +62,7 @@
               :data="item"
               :simple="simple"
               :allow-clear="allowClear"
+              :disabled="item.disabled"
             />
           </list>
         </slot>
@@ -129,13 +130,13 @@ export default defineComponent({
 
     const checked = computed(
       () =>
-        props.dataInfo.data.length > 0 &&
-        props.dataInfo.selected.length === props.dataInfo.data.length
+        props.dataInfo.selected.length > 0 &&
+        props.dataInfo.selected.length === props.dataInfo.allValidValues.length
     );
     const indeterminate = computed(
       () =>
         props.dataInfo.selected.length > 0 &&
-        props.dataInfo.selected.length < props.dataInfo.data.length
+        props.dataInfo.selected.length < props.dataInfo.allValidValues.length
     );
 
     const handleSelectAllChange = (checked: boolean) => {
