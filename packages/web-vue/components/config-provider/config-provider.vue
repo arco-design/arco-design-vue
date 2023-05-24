@@ -73,6 +73,7 @@ export default defineComponent({
    * @zh 自定义空状态元素
    * @en Custom empty element
    * @slot empty
+   * @binding {string} component
    * @version 2.28.0
    */
   /**
