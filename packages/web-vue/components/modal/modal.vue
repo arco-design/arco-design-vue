@@ -471,7 +471,7 @@ export default defineComponent({
    * @slot footer
    */
   setup(props, { emit }) {
-    const { fullscreen, popupContainer } = toRefs(props);
+    const { fullscreen, popupContainer, alignCenter } = toRefs(props);
     const prefixCls = getPrefixCls('modal');
     const { t } = useI18n();
     const wrapperRef = ref<HTMLElement>();
@@ -528,6 +528,7 @@ export default defineComponent({
       wrapperRef,
       modalRef,
       draggable: mergedDraggable,
+      alignCenter,
     });
 
     const close = () => {
