@@ -523,6 +523,41 @@ export default defineComponent({
      * @version 2.28.0
      */
     'columnResize': (dataIndex: string, width: number) => true,
+    /**
+     * @zh 双击行数据时触发
+     * @en Triggered when row data is double clicked
+     * @param {TableData} record
+     * @param {Event} ev
+     */
+    'rowDblclick': (record: TableData, ev: Event) => true,
+    /**
+     * @zh 双击单元格时触发
+     * @en Triggered when a cell is double clicked
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     * @param {Event} ev
+     */
+    'cellDblclick': (record: TableData, column: TableColumnData, ev: Event) =>
+      true,
+    /**
+     * @zh 右击行数据时触发
+     * @en Triggered when row data is right clicked
+     * @param {TableData} record
+     * @param {Event} ev
+     */
+    'rowContextmenu': (record: TableData, ev: Event) => true,
+    /**
+     * @zh 右击单元格时触发
+     * @en Triggered when a cell is right clicked
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     * @param {Event} ev
+     */
+    'cellContextmenu': (
+      record: TableData,
+      column: TableColumnData,
+      ev: Event
+    ) => true,
   },
   /**
    * @zh 表格列定义。启用时会屏蔽 columns 属性
@@ -1195,12 +1230,36 @@ export default defineComponent({
       emit('rowClick', record.raw, ev);
     };
 
+    const handleRowDblclick = (record: TableDataWithRaw, ev: Event) => {
+      emit('rowDblclick', record.raw, ev);
+    };
+
+    const handleRowContextMenu = (record: TableDataWithRaw, ev: Event) => {
+      emit('rowContextmenu', record.raw, ev);
+    };
+
     const handleCellClick = (
       record: TableDataWithRaw,
       column: TableColumnData,
       ev: Event
     ) => {
       emit('cellClick', record.raw, column, ev);
+    };
+
+    const handleCellDblclick = (
+      record: TableDataWithRaw,
+      column: TableColumnData,
+      ev: Event
+    ) => {
+      emit('cellDblclick', record.raw, column, ev);
+    };
+
+    const handleCellContextmenu = (
+      record: TableDataWithRaw,
+      column: TableColumnData,
+      ev: Event
+    ) => {
+      emit('cellContextmenu', record.raw, column, ev);
     };
 
     const handleHeaderClick = (column: TableColumnData, ev: Event) => {
@@ -1538,6 +1597,12 @@ export default defineComponent({
                 summary
                 // @ts-ignore
                 onClick={(ev: Event) => handleCellClick(record, column, ev)}
+                onDblclick={(ev: Event) =>
+                  handleCellDblclick(record, column, ev)
+                }
+                onContextmenu={(ev: Event) =>
+                  handleCellContextmenu(record, column, ev)
+                }
               />
             );
           })}
@@ -1727,6 +1792,8 @@ export default defineComponent({
             checked={selectedRowKeys.value?.includes(currentKey)}
             // @ts-ignore
             onClick={(ev: Event) => handleRowClick(record, ev)}
+            onDblclick={(ev: Event) => handleRowDblclick(record, ev)}
+            onContextmenu={(ev: Event) => handleRowContextMenu(record, ev)}
             {...(dragType.value === 'row' ? dragSourceEvent : {})}
             {...dragTargetEvent}
           >
@@ -1801,6 +1868,12 @@ export default defineComponent({
                   {...extraProps}
                   // @ts-ignore
                   onClick={(ev: Event) => handleCellClick(record, column, ev)}
+                  onDblclick={(ev: Event) =>
+                    handleCellDblclick(record, column, ev)
+                  }
+                  onContextmenu={(ev: Event) =>
+                    handleCellContextmenu(record, column, ev)
+                  }
                 />
               );
             })}
