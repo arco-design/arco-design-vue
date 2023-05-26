@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.1
+
+`2023-05-26`
+
+### 💎 Enhancement
+
+- Add table right-click and double-click events ([#2452](https://github.com/arco-design/arco-design-vue/pull/2452))
+
+
 ## 2.46.0
 
 `2023-05-12`

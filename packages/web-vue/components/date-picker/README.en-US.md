@@ -252,3 +252,9 @@ Format|Output|Description
 `Do`|1st... 3st|Day of month with serial number
 `X`|1410715640.579|Unix timestamp
 `x`|1410715640579|Unix millisecond timestamp
+
+
+## FAQ
+
+### About the `locale` field
+The `locale` field can be configured using the language pack provided by the component library.

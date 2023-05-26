@@ -107,8 +107,8 @@ Drawer._context = app._context;
 |height|抽屉的高度（仅在placement为top,bottom时可用）|`number \| string`|`250`||
 |popupContainer|弹出框的挂载容器|`string \| HTMLElement`|`'body'`||
 |drawerStyle|抽屉的样式|`CSSProperties`|`-`||
-|onOk|点击确定按钮时触发|`(e: Event) => void`|`-`||
-|onCancel|点击取消、关闭按钮时触发|`(e: Event) => void`|`-`||
+|onOk|点击确定按钮时触发|`(e?: Event) => void`|`-`||
+|onCancel|点击取消、关闭按钮时触发|`(e?: Event) => void`|`-`||
 |onBeforeOk|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |onBeforeCancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
 |onOpen|抽屉打开后（动画结束）触发|`() => void`|`-`||

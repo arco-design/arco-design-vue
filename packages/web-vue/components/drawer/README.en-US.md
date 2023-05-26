@@ -109,8 +109,8 @@ Drawer._context = app._context;
 |height|The height of the drawer (only available when placement is top, bottom)|`number \| string`|`250`||
 |popupContainer|Mount container for popup|`string \| HTMLElement`|`'body'`||
 |drawerStyle|Drawer style|`CSSProperties`|`-`||
-|onOk|Triggered when the OK button is clicked|`(e: Event) => void`|`-`||
-|onCancel|Triggered when the cancel or close button is clicked|`(e: Event) => void`|`-`||
+|onOk|Triggered when the OK button is clicked|`(e?: Event) => void`|`-`||
+|onCancel|Triggered when the cancel or close button is clicked|`(e?: Event) => void`|`-`||
 |onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |onOpen|Triggered after the drawer is opened (the animation ends)|`() => void`|`-`||
