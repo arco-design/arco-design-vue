@@ -12,6 +12,8 @@ description: 在当前页面打开一个浮层，承载相关操作。
 
 @import ./__demo__/function.md
 
+@import ./__demo__/confirm.md
+
 @import ./__demo__/notice.md
 
 @import ./__demo__/width.md
@@ -163,5 +165,4 @@ Modal._context = app._context;
 |success|打开成功对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |warning|打开警告对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |error|打开错误对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
-
 
