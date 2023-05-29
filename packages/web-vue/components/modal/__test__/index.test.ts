@@ -69,4 +69,21 @@ describe('Modal', () => {
     await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  test('should change modal width', async () => {
+    const width = '700px';
+    const wrapper = mount(ModalComponent, {
+      props: {
+        defaultVisible: true,
+        renderToBody: false,
+        width,
+      },
+    });
+
+    await nextTick();
+    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.find('.arco-modal').attributes('style')).toBe(
+      `width: ${width};`
+    );
+  });
 });
