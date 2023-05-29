@@ -36,6 +36,7 @@ description: When warning information is displayed to the user, the warning prom
 |closable|Whether to show the close button|`boolean`|`false`|
 |title|The title of the alert|`string`|`-`|
 |banner|Whether to use as the top announcement (remove the border and rounded corners)|`boolean`|`false`|
+|center|Whether the content is displayed in the center|`boolean`|`false`|
 ### `<alert>` Events
 
 |Event Name|Description|Parameters|
