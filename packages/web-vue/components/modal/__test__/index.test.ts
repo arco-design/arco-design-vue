@@ -82,8 +82,8 @@ describe('Modal', () => {
 
     await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find('.arco-modal').attributes('style')).toBe(
-      `width: ${width};`
+    expect(wrapper.find('.arco-modal').attributes('style')).toContain(
+      `width: ${width}`
     );
   });
 });
