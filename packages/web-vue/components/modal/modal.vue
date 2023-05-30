@@ -689,7 +689,7 @@ export default defineComponent({
         ...(props.modalStyle ?? {}),
       };
       // 修复设置width属性后，全屏无法生效的问题
-      if (props.width && !fullscreen) {
+      if (props.width && !props.fullscreen) {
         style.width = isNumber(props.width) ? `${props.width}px` : props.width;
       }
       if (!props.alignCenter && props.top) {
