@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 问题修复
+
+- 修复modal组件不能设置width属性的问题 ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
 ## 2.46.1
 
 `2023-05-26`
