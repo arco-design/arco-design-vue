@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- Add header and footer slots ([#2417](https://github.com/arco-design/arco-design-vue/pull/2417))
+
+
 ## 2.39.1
 
 `2022-11-25`

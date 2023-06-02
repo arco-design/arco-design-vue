@@ -31,14 +31,13 @@ description: Used for the loading state of pages and blocks-when a part of the p
 |loading|Whether it is loading state (Only effective in container mode)|`boolean`|`false`|
 |dot|Whether to use dot type animation|`boolean`|`false`|
 |tip|Prompt content|`string`|`-`|
-|hide-icon|Whether to hide the icon when displaying the spinning indicator|`boolean`|`false`|
-
+|hide-icon|Whether to hide the icon|`boolean`|`false`|
 ### `<spin>` Slots
 
 |Slot Name|Description|Parameters|
 |---|---|---|
+|tip|Custom tip|-|
 |element|Custom element|-|
 |icon|Custom icon (auto-rotation)|-|
-|tip|Custom tip|-|
 
 

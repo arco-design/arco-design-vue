@@ -84,6 +84,8 @@ description: When users need to select one or more from a group of similar data,
 |limit|Maximum number of choices in multiple choice|`number`|`0`|2.18.0|
 |field-names|Customize fields in `SelectOptionData`|`SelectFieldNames`|`-`|2.22.0|
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|
+|show-header-on-empty|Whether to display the header in the empty state|`boolean`|`false`||
+|show-footer-on-empty|Whether to display the footer in the empty state|`boolean`|`false`||
 ### `<select>` Events
 
 |Event Name|Description|Parameters|version|

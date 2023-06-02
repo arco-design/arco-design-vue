@@ -20,12 +20,12 @@ Empty state elements can be customized globally via the `empty` slot.
 <template>
   <a-config-provider>
     <template #empty="scope">
-      <a-empty v-if="scope?.component==='cascader'" description="cascader no data!">
+      <a-empty v-if="scope?.component==='cascader'" description="cascader no data!" in-config-provider>
       </a-empty>
-      <a-empty v-else-if="scope?.component==='select'" description="select no data!"></a-empty>
-      <a-empty v-else-if="scope?.component==='tree-select'" description="tree-select no data!"></a-empty>
-      <a-empty v-else-if="scope?.component==='list'" description="list no data!"></a-empty>
-      <a-empty v-else-if="scope?.component==='table'" description="table no data!"></a-empty>
+      <a-empty v-else-if="scope?.component==='select'" description="select no data!" in-config-provider></a-empty>
+      <a-empty v-else-if="scope?.component==='tree-select'" description="tree-select no data!" in-config-provider></a-empty>
+      <a-empty v-else-if="scope?.component==='list'" description="list no data!" in-config-provider></a-empty>
+      <a-empty v-else-if="scope?.component==='table'" description="table no data!" in-config-provider></a-empty>
       <div v-else class="my-empty">
         <icon-trophy />
       </div>

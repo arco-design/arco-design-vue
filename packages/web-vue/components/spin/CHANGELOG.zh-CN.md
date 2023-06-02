@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 新增功能
+
+- 新增隐藏图标属性 ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+- 新增提示内容插槽 ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

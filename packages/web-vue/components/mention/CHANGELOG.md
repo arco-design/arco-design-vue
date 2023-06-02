@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- Add `prefix` attribute to search event ([#2356](https://github.com/arco-design/arco-design-vue/pull/2356))
+
+
 ## 2.42.0
 
 `2023-01-13`

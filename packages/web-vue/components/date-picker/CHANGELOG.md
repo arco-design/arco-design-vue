@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🐛 BugFix
+
+- add getDefaultValueFormat to solve v-model for week selector and quarter selector ([#2437](https://github.com/arco-design/arco-design-vue/pull/2437))
+
+
 ## 2.46.1
 
 `2023-05-26`

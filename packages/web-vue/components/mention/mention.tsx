@@ -113,8 +113,8 @@ export default defineComponent({
      */
     'change': (value: string) => true,
     /**
-     * @zh 动态搜索时触发
-     * @en Trigger on dynamic search prefix
+     * @zh 动态搜索时触发，2.47.0 版本增加 prefix 参数
+     * @en Trigger on dynamic search prefix, version 2.47.0 adds prefix param
      * @property {string} value
      * @property {string} prefix
      */

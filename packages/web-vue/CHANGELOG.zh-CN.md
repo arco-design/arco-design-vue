@@ -2,6 +2,31 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### ⚠️ 重点注意
+
+- **modal:** 修复Modal.confirm标题缺少warning icon的问题 ([#2465](https://github.com/arco-design/arco-design-vue/pull/2465))
+- **input-number:** `hide-button` 在 `mode="button"` 时也会生效 ([#2461](https://github.com/arco-design/arco-design-vue/pull/2461))
+
+### 🆕 新增功能
+
+- **empty:** 增加 `in-config-provider` 属性 ([#2474](https://github.com/arco-design/arco-design-vue/pull/2474))
+- **alert:** 新增 `center` 属性 ([#2464](https://github.com/arco-design/arco-design-vue/pull/2464))
+- **config-provider:** empty slots 增加component 属性 ([#2448](https://github.com/arco-design/arco-design-vue/pull/2448))
+- **select:** 空状态下可以显示 header 和 footer ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+- **tree-select:** 增加树选择器页头和页脚插槽 ([#2417](https://github.com/arco-design/arco-design-vue/pull/2417))
+- **mention:** search 事件增加 `prefix` 属性 ([#2356](https://github.com/arco-design/arco-design-vue/pull/2356))
+- **spin:** 新增隐藏图标属性 ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+- **spin:** 新增提示内容插槽 ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+
+### 🐛 问题修复
+
+- **date-picker:** 添加 getDefaultValueFormat 解决周选择器和季度选择器的v-model 问题 ([#2437](https://github.com/arco-design/arco-design-vue/pull/2437))
+
+
 ## 2.46.2
 
 `2023-05-31`

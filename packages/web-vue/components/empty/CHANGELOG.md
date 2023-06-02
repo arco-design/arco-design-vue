@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- Add `in-config-provider` property ([#2474](https://github.com/arco-design/arco-design-vue/pull/2474))
+
+
 ## 2.37.3
 
 `2022-09-23`
