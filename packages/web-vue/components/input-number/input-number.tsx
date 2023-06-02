@@ -114,8 +114,8 @@ export default defineComponent({
      */
     placeholder: String,
     /**
-     * @zh 是否隐藏按钮（仅在`embed`模式可用）
-     * @en Whether to hide the button (only available in `embed` mode)
+     * @zh 是否隐藏按钮
+     * @en Whether to hide the button
      */
     hideButton: {
       type: Boolean,
@@ -574,10 +574,10 @@ export default defineComponent({
               append: slots.append,
             }
           : {
-              prepend: renderPrependButton,
+              prepend: props.hideButton ? slots.prepend : renderPrependButton,
               prefix: slots.prefix,
               suffix: slots.suffix,
-              append: renderAppendButton,
+              append: props.hideButton ? slots.append : renderAppendButton,
             };
 
       return (
