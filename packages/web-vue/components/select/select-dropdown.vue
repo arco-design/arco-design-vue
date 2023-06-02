@@ -1,13 +1,16 @@
 <template>
   <div :class="cls">
+    <div
+      v-if="$slots.header && (!empty || showHeaderOnEmpty)"
+      :class="`${prefixCls}-header`"
+    >
+      <slot name="header" />
+    </div>
     <spin v-if="loading" :class="`${prefixCls}-loading`" />
     <div v-else-if="empty" :class="`${prefixCls}-empty`">
       <slot name="empty">
         <component :is="SelectEmpty ? SelectEmpty : 'Empty'" />
       </slot>
-    </div>
-    <div v-if="$slots.header && !empty" :class="`${prefixCls}-header`">
-      <slot name="header" />
     </div>
     <slot v-if="virtualList && !loading && !empty" name="virtual-list" />
     <component
@@ -23,7 +26,10 @@
         <slot />
       </ul>
     </component>
-    <div v-if="$slots.footer && !empty" :class="`${prefixCls}-footer`">
+    <div
+      v-if="$slots.footer && (!empty || showFooterOnEmpty)"
+      :class="`${prefixCls}-footer`"
+    >
       <slot name="footer" />
     </div>
   </div>
@@ -65,6 +71,14 @@ export default defineComponent({
     },
     onReachBottom: {
       type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
+    },
+    showHeaderOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
+    },
+    showFooterOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
     },
   },
   emits: ['scroll', 'reachBottom'],
