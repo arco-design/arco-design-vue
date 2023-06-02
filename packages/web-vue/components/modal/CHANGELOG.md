@@ -2,6 +2,29 @@
 changelog: true
 ```
 
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 BugFix
+
+- fix can not set width attribute ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 BugFix
+
+- fix modal drag error when define top prop ([#2446](https://github.com/arco-design/arco-design-vue/pull/2446))
+- Fix the problem that there is no full screen when `width` and `fullscreen` are set at the same time ([#2441](https://github.com/arco-design/arco-design-vue/pull/2441))
+
+### 🆎 TypeScript
+
+- fix onOk & onCancel type error in function call ([#2426](https://github.com/arco-design/arco-design-vue/pull/2426))
+
+
 ## 2.45.2
 
 `2023-04-21`

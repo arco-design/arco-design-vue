@@ -146,3 +146,19 @@ Format|Output|Description
 `X`|1410715640.579|Unix timestamp
 `x`|1410715640579|Unix millisecond timestamp
 ---
+
+## zh-CN
+## FAQ
+
+### 关于 `locale` 字段
+可以使用组件库提供的语言包配置 `locale` 字段。
+
+---
+
+## en-US
+## FAQ
+
+### About the `locale` field
+The `locale` field can be configured using the language pack provided by the component library.
+
+---

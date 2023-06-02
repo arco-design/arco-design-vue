@@ -115,7 +115,7 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view arco-calendar-cell-today arco-calendar-cell-selected\\">
+          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
                 <div class=\\"arco-calendar-date-circle\\">12</div>
@@ -254,7 +254,7 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
+          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view arco-calendar-cell-today arco-calendar-cell-selected\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
                 <div class=\\"arco-calendar-date-circle\\">31</div>
@@ -339,5 +339,5 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
   </div>
   <!---->
   <!---->
-</div> select: Fri May 12 2023 20:17:56 GMT+0800 (China Standard Time)"
+</div> select: Wed May 31 2023 14:58:09 GMT+0800 (China Standard Time)"
 `;

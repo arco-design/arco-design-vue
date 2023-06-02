@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 BugFix
+
+- fix transfer item can be selected when disabled ([#2445](https://github.com/arco-design/arco-design-vue/pull/2445))
+
+
 ## 2.45.0
 
 `2023-04-07`

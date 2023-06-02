@@ -106,12 +106,12 @@ export interface ModalConfig {
    * @zh 点击确定按钮的回调函数
    * @en Callback function for clicking the OK button
    */
-  onOk?: (e: Event) => void;
+  onOk?: (e?: Event) => void;
   /**
    * @zh 点击取消按钮的回调函数
    * @en Callback function for clicking the Cancel button
    */
-  onCancel?: (e: Event) => void;
+  onCancel?: (e?: Event) => void;
   /**
    * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。
    * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.

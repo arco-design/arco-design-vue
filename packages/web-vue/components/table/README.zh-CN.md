@@ -114,6 +114,10 @@ description: 用于数据收集展示、分析整理、操作处理。
 |row-click|点击行数据时触发|record: `TableData`<br>ev: `Event`||
 |header-click|点击表头数据时触发|column: `TableColumnData`<br>ev: `Event`||
 |column-resize|调整列宽时触发|dataIndex: `string`<br>width: `number`|2.28.0|
+|row-dblclick|双击行数据时触发|record: `TableData`<br>ev: `Event`||
+|cell-dblclick|双击单元格时触发|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
+|row-contextmenu|右击行数据时触发|record: `TableData`<br>ev: `Event`||
+|cell-contextmenu|右击单元格时触发|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
 ### `<table>` Methods
 
 |方法名|描述|参数|返回值|版本|

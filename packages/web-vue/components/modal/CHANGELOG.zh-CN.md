@@ -2,6 +2,29 @@
 changelog: true
 ```
 
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 问题修复
+
+- 修复modal组件不能设置width属性的问题 ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 问题修复
+
+- 修复定义了top属性时拖拽错误 ([#2446](https://github.com/arco-design/arco-design-vue/pull/2446))
+- 修复同时设置 `width` 和 `fullscreen` 时，没有全屏的问题 ([#2441](https://github.com/arco-design/arco-design-vue/pull/2441))
+
+### 🆎 类型修正
+
+- 修复函数调用形式ts报错 ([#2426](https://github.com/arco-design/arco-design-vue/pull/2426))
+
+
 ## 2.45.2
 
 `2023-04-21`

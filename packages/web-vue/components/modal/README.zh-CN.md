@@ -12,6 +12,8 @@ description: 在当前页面打开一个浮层，承载相关操作。
 
 @import ./__demo__/function.md
 
+@import ./__demo__/confirm.md
+
 @import ./__demo__/notice.md
 
 @import ./__demo__/width.md
@@ -124,8 +126,8 @@ Modal._context = app._context;
 |escToClose|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 |draggable|是否支持拖动|`boolean`|`false`|2.19.0|
 |fullscreen|是否开启全屏|`boolean`|`false`|2.19.0|
-|onOk|点击确定按钮的回调函数|`(e: Event) => void`|`-`||
-|onCancel|点击取消按钮的回调函数|`(e: Event) => void`|`-`||
+|onOk|点击确定按钮的回调函数|`(e?: Event) => void`|`-`||
+|onCancel|点击取消按钮的回调函数|`(e?: Event) => void`|`-`||
 |onBeforeOk|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`|2.7.0|
 |onBeforeCancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`|2.7.0|
 |onOpen|对话框打开后（动画结束）触发|`() => void`|`-`||
@@ -163,5 +165,4 @@ Modal._context = app._context;
 |success|打开成功对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |warning|打开警告对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |error|打开错误对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
-
 

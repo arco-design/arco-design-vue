@@ -2,6 +2,35 @@
 changelog: true
 ```
 
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 BugFix
+
+- **modal:** fix can not set width attribute ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 BugFix
+
+- **date-picker:** fixed arrow display logic for year, month, and quarter modes in the date range picker ([#2451](https://github.com/arco-design/arco-design-vue/pull/2451))
+- **modal:** fix modal drag error when define top prop ([#2446](https://github.com/arco-design/arco-design-vue/pull/2446))
+- **transfer:** fix transfer item can be selected when disabled ([#2445](https://github.com/arco-design/arco-design-vue/pull/2445))
+- **modal:** Fix the problem that there is no full screen when `width` and `fullscreen` are set at the same time ([#2441](https://github.com/arco-design/arco-design-vue/pull/2441))
+
+### 💎 Enhancement
+
+- **table:** Add table right-click and double-click events ([#2452](https://github.com/arco-design/arco-design-vue/pull/2452))
+
+### 🆎 TypeScript
+
+- **modal:** fix onOk & onCancel type error in function call ([#2426](https://github.com/arco-design/arco-design-vue/pull/2426))
+
+
 ## 2.46.0
 
 `2023-05-12`

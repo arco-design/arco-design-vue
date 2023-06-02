@@ -471,7 +471,7 @@ export default defineComponent({
    * @slot footer
    */
   setup(props, { emit }) {
-    const { fullscreen, popupContainer } = toRefs(props);
+    const { fullscreen, popupContainer, alignCenter } = toRefs(props);
     const prefixCls = getPrefixCls('modal');
     const { t } = useI18n();
     const wrapperRef = ref<HTMLElement>();
@@ -528,6 +528,7 @@ export default defineComponent({
       wrapperRef,
       modalRef,
       draggable: mergedDraggable,
+      alignCenter,
     });
 
     const close = () => {
@@ -687,7 +688,8 @@ export default defineComponent({
       const style: CSSProperties = {
         ...(props.modalStyle ?? {}),
       };
-      if (props.width) {
+      // 修复设置width属性后，全屏无法生效的问题
+      if (props.width && !props.fullscreen) {
         style.width = isNumber(props.width) ? `${props.width}px` : props.width;
       }
       if (!props.alignCenter && props.top) {

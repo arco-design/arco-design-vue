@@ -41,7 +41,7 @@ description: Only input boxes in numeric format are allowed.
 |formatter|Define the display value of the input|`func`|`-`||
 |parser|Convert from `formatter` to number, and use with `formatter`|`func`|`-`||
 |placeholder|Input prompt text|`string`|`-`||
-|hide-button|Whether to hide the button (only available in `embed` mode)|`boolean`|`false`||
+|hide-button|Whether to hide the button|`boolean`|`false`||
 |size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |allow-clear|Whether to allow the input to be cleared|`boolean`|`false`||
 |model-event|Trigger event for `v-model`|`'change' \| 'input'`|`'change'`||

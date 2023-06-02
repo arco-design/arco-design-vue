@@ -72,6 +72,7 @@ export default defineComponent({
               transferCtx?.onSelect(value as string[])
             }
             uninjectGroupContext
+            disabled={props.disabled}
           >
             {transferCtx?.slots.item?.({
               label: props.data.label,

@@ -1,6 +1,7 @@
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, inject, PropType } from 'vue';
 import { CascaderOptionInfo } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../config-provider/context';
 import Empty from '../empty';
 import Spin from '../spin';
 import CascaderOption from './cascader-option';
@@ -21,6 +22,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('cascader');
+    const configCtx = inject(configProviderInjectionKey, undefined);
 
     const renderContent = () => {
       if (props.loading) {
@@ -29,7 +31,8 @@ export default defineComponent({
       if (props.options.length === 0) {
         return (
           <div class={`${prefixCls}-list-empty`}>
-            {slots.empty?.() ?? <Empty />}
+            {slots.empty?.() ??
+              configCtx?.slots.empty?.({ component: 'cascader' }) ?? <Empty />}
           </div>
         );
       }

@@ -2,6 +2,35 @@
 changelog: true
 ```
 
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 问题修复
+
+- **modal:** 修复modal组件不能设置width属性的问题 ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复日期范围选择器年、月、季度模式的箭头显示逻辑 ([#2451](https://github.com/arco-design/arco-design-vue/pull/2451))
+- **modal:** 修复定义了top属性时拖拽错误 ([#2446](https://github.com/arco-design/arco-design-vue/pull/2446))
+- **transfer:** 修复穿梭框选项被禁用时仍可以点击以及全选/半选在存在被禁用选项时错误 ([#2445](https://github.com/arco-design/arco-design-vue/pull/2445))
+- **modal:** 修复同时设置 `width` 和 `fullscreen` 时，没有全屏的问题 ([#2441](https://github.com/arco-design/arco-design-vue/pull/2441))
+
+### 💎 功能优化
+
+- **table:** 增加表格右击、双击的相关事件 ([#2452](https://github.com/arco-design/arco-design-vue/pull/2452))
+
+### 🆎 类型修正
+
+- **modal:** 修复函数调用形式ts报错 ([#2426](https://github.com/arco-design/arco-design-vue/pull/2426))
+
+
 ## 2.46.0
 
 `2023-05-12`
