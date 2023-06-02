@@ -20,6 +20,8 @@ description: 可以对树形结构数据进行选择。
 
 @import ./__demo__/size.md
 
+@import ./__demo__/dropdown-slots.md
+
 @import ./__demo__/trigger-element.md
 
 @import ./__demo__/multiple.md
@@ -89,8 +91,10 @@ description: 可以对树形结构数据进行选择。
 |trigger|自定义触发元素|-||
 |prefix|前缀|-||
 |label|自定义选择框显示|data: `mixed`||
+|header|自定义下拉框页头|-||
 |loader|定制加载中显示的内容|-||
 |empty|定制空数据展示|-||
+|footer|自定义下拉框页脚|-||
 |tree-slot-extra|定制 tree 组件的渲染额外节点内容|-||
 |tree-slot-title|定制 tree 组件的节点标题|-||
 |tree-slot-icon|定制 tree 组件的节点图标|node: `TreeNodeData`|2.18.0|

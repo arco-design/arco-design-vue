@@ -31,6 +31,8 @@ description: The tree structure data can be selected.
 
 @import ./__demo__/size.md
 
+@import ./__demo__/dropdown-slots.md
+
 @import ./__demo__/trigger-element.md
 
 @import ./__demo__/multiple.md
