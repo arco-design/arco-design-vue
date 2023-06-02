@@ -17,6 +17,15 @@ export default defineComponent({
      * @en The src of the Custom Image
      */
     imgSrc: String,
+    /**
+     * @zh 是否在 ConfigProvider 中使用
+     * @en Whether to use in ConfigProvider
+     * @version 2.47.0
+     */
+    inConfigProvider: {
+      type: Boolean,
+      default: false,
+    },
   },
   /**
    * @zh 图片/图标
@@ -30,6 +39,7 @@ export default defineComponent({
 
     return () => {
       if (
+        !props.inConfigProvider &&
         configCtx?.slots.empty &&
         !(slots.image || props.imgSrc || props.description)
       ) {
