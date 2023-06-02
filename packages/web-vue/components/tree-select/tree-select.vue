@@ -54,7 +54,7 @@
           <Spin />
         </slot>
         <slot v-else-if="isEmptyTreeData || isEmptyFilterResult" name="empty">
-          <Empty />
+          <component :is="TreeSelectEmpty ? TreeSelectEmpty : 'Empty'" />
         </slot>
         <Panel
           v-else
@@ -94,6 +94,7 @@ import {
   ref,
   toRefs,
   StyleValue,
+  inject,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue } from './interface';
@@ -101,6 +102,7 @@ import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
 import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../config-provider/context';
 import useSelectedState from './hooks/use-selected-state';
 import useTreeData from '../tree/hooks/use-tree-data';
 import {
@@ -502,6 +504,10 @@ export default defineComponent({
       disabled,
     });
     const prefixCls = getPrefixCls('tree-select');
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const TreeSelectEmpty = configCtx?.slots.empty?.({
+      component: 'tree-select',
+    })?.[0];
     const isMultiple = computed(() => multiple.value || treeCheckable.value);
     const isSelectable = (
       node: TreeNodeData,
@@ -637,6 +643,7 @@ export default defineComponent({
     return {
       refSelectView,
       prefixCls,
+      TreeSelectEmpty,
       selectedValue,
       selectedKeys,
       mergedDisabled,

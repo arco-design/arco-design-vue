@@ -669,6 +669,7 @@ export default defineComponent({
       scrollbar,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
+    const configCtx = inject(configProviderInjectionKey, undefined);
     const bordered = computed(() => {
       if (isObject(props.bordered)) {
         return { ...DEFAULT_BORDERED, ...props.bordered };
@@ -1479,7 +1480,8 @@ export default defineComponent({
       return (
         <Tr empty>
           <Td colSpan={dataColumns.value.length + operations.value.length}>
-            {slots.empty?.() ?? <Empty />}
+            {slots.empty?.() ??
+              configCtx?.slots.empty?.({ component: 'table' }) ?? <Empty />}
           </Td>
         </Tr>
       );
