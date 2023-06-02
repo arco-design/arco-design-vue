@@ -114,7 +114,7 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
 const modal: ModalMethod = {
   open,
   confirm: (config: ModalConfig, appContext?: AppContext) => {
-    const _config = { simple: true, ...config };
+    const _config = { simple: true, messageType: 'warning', ...config };
 
     return open(_config, appContext);
   },

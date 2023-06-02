@@ -14,6 +14,8 @@ description: Open a floating layer on the current page to carry related operatio
 
 @import ./__demo__/function.md
 
+@import ./__demo__/confirm.md
+
 @import ./__demo__/notice.md
 
 @import ./__demo__/width.md
@@ -165,5 +167,4 @@ Modal._context = app._context;
 |success|Open success modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |warning|Open warning modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |error|Open error modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
-
 
