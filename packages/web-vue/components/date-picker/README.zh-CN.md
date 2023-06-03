@@ -114,6 +114,8 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 |day-start-of-week|每周的第一天开始于周几，0 - 周日，1 - 周一，以此类推。|`0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`|`0`|2-6 from 2.21.0|
 |show-time|是否增加时间选择|`boolean`|`false`||
 |time-picker-props|时间显示的参数，参考 [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`||
+|disabled|是否禁用|`boolean`|`false`||
+|disabled-date|不可选取的日期|`(current?: Date) => boolean`|`-`||
 |disabled-time|不可选取的时间|`(current: Date) => DisabledTimeProps`|`-`||
 |show-now-btn|是否显示 `showTime` 时，选择当前时间的按钮|`boolean`|`true`||
 
@@ -248,3 +250,9 @@ description: 选择日期。支持年、月、周、日类型，支持范围选�
 `Do`|1st... 3st|带序号的月份中的某天
 `X`|1410715640.579|Unix 时间戳
 `x`|1410715640579|Unix 毫秒时间戳
+
+## FAQ
+
+### 关于 `locale` 字段
+可以使用组件库提供的语言包配置 `locale` 字段。
+

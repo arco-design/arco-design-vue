@@ -662,11 +662,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">23000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">32 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Haidian</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"Haidian\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Haidian</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -677,11 +677,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">25000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">35 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -692,11 +692,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">22000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">31 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Mianyang</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"Mianyang\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Mianyang</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -707,11 +707,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">17000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">42 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -722,11 +722,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">27000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">62 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -819,11 +819,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">23000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">32 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Haidian</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"Haidian\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Haidian</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -834,11 +834,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">25000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">35 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -849,11 +849,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">22000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">31 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Mianyang</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"Mianyang\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Mianyang</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -864,11 +864,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">17000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">42 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -879,11 +879,11 @@ exports[`<table> demo: render [editable] correctly 1`] = `
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span></span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">27000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">62 Park Road, London</span></span></td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
                   <!----></span></span>
                   <!----></span></span>
                 </td>
@@ -1991,7 +1991,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </th>
                 <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
@@ -2022,7 +2022,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
             </thead>
             <tbody>
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Jane Doe</span></span></td>
@@ -2032,7 +2032,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Alisa Ross</span></span></td>
@@ -2042,7 +2042,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Kevin Sandra</span></span></td>
@@ -2052,7 +2052,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Ed Hellen</span></span></td>
@@ -2062,7 +2062,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">William Smith</span></span></td>
@@ -2351,7 +2351,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                 </colgroup>
                 <thead>
                   <tr class=\\"arco-table-tr\\">
-                    <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox arco-checkbox-indeterminate\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox arco-checkbox-indeterminate\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </th>
                     <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
@@ -2382,7 +2382,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                 </thead>
                 <tbody>
                   <tr class=\\"arco-table-tr arco-table-tr-checked\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"false\\" class=\\"arco-checkbox arco-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><svg aria-hidden=\\"true\\" focusable=\\"false\\" viewBox=\\"0 0 1024 1024\\" width=\\"200\\" height=\\"200\\" fill=\\"currentColor\\" class=\\"arco-checkbox-icon-check\\"><path d=\\"M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z\\" p-id=\\"840\\"></path></svg></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"false\\" class=\\"arco-checkbox arco-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><svg aria-hidden=\\"true\\" focusable=\\"false\\" viewBox=\\"0 0 1024 1024\\" width=\\"200\\" height=\\"200\\" fill=\\"currentColor\\" class=\\"arco-checkbox-icon-check\\"><path d=\\"M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z\\" p-id=\\"840\\"></path></svg></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Jane Doe</span></span></td>
@@ -2392,7 +2392,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                   </tr>
                   <!---->
                   <tr class=\\"arco-table-tr arco-table-tr-checked\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"false\\" class=\\"arco-checkbox arco-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><svg aria-hidden=\\"true\\" focusable=\\"false\\" viewBox=\\"0 0 1024 1024\\" width=\\"200\\" height=\\"200\\" fill=\\"currentColor\\" class=\\"arco-checkbox-icon-check\\"><path d=\\"M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z\\" p-id=\\"840\\"></path></svg></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"false\\" class=\\"arco-checkbox arco-checkbox-checked\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><svg aria-hidden=\\"true\\" focusable=\\"false\\" viewBox=\\"0 0 1024 1024\\" width=\\"200\\" height=\\"200\\" fill=\\"currentColor\\" class=\\"arco-checkbox-icon-check\\"><path d=\\"M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z\\" p-id=\\"840\\"></path></svg></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Alisa Ross</span></span></td>
@@ -2402,7 +2402,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                   </tr>
                   <!---->
                   <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"true\\" class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label aria-disabled=\\"true\\" class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Kevin Sandra</span></span></td>
@@ -2412,7 +2412,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                   </tr>
                   <!---->
                   <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Ed Hellen</span></span></td>
@@ -2422,7 +2422,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
                   </tr>
                   <!---->
                   <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">William Smith</span></span></td>
@@ -3109,7 +3109,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
                 </thead>
                 <tbody>
                   <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Jane Doe</span></span></td>
@@ -3119,7 +3119,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
                   </tr>
                   <!---->
                   <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\" rowspan=\\"2\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Alisa Ross</span></span></td>
@@ -3137,7 +3137,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
                   </tr>
                   <!---->
                   <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">Ed Hellen</span></span></td>
@@ -3147,7 +3147,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
                   </tr>
                   <!---->
                   <tr class=\\"arco-table-tr\\">
-                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </td>
                     <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">William Smith</span></span></td>
@@ -3337,7 +3337,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
             </colgroup>
             <thead>
               <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <th class=\\"arco-table-th arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </th>
                 <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
@@ -3368,7 +3368,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
             </thead>
             <tbody>
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left arco-table-cell-expand-icon\\"><!----><span class=\\"arco-table-cell-inline-icon\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span><span class=\\"arco-table-td-content\\">Jane Doe</span></span></td>
@@ -3378,7 +3378,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span style=\\"padding-left: 20px;\\"></span>
@@ -3390,7 +3390,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span style=\\"padding-left: 20px;\\"></span>
@@ -3402,7 +3402,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span style=\\"padding-left: 20px;\\"></span>
@@ -3414,7 +3414,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
               </tr>
               <!---->
               <tr class=\\"arco-table-tr\\">
-                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span style=\\"padding-left: 20px;\\"></span>
@@ -3741,7 +3741,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                 </colgroup>
                 <thead>
                   <tr class=\\"arco-table-tr\\">
-                    <th class=\\"arco-table-th arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                    <th class=\\"arco-table-th arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                       <!----></label></span>
                     </th>
                     <th class=\\"arco-table-th arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
@@ -3773,7 +3773,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
             <table class=\\"arco-table-element\\" style=\\"width: 1000px; padding-top: 0px; padding-bottom: 29100px;\\">
               <tbody>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 1</span></span></td>
@@ -3781,7 +3781,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.1@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 2</span></span></td>
@@ -3789,7 +3789,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.2@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 3</span></span></td>
@@ -3797,7 +3797,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.3@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 4</span></span></td>
@@ -3805,7 +3805,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.4@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 5</span></span></td>
@@ -3813,7 +3813,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.5@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 6</span></span></td>
@@ -3821,7 +3821,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.6@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 7</span></span></td>
@@ -3829,7 +3829,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.7@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 8</span></span></td>
@@ -3837,7 +3837,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.8@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 9</span></span></td>
@@ -3845,7 +3845,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.9@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 10</span></span></td>
@@ -3853,7 +3853,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.10@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 11</span></span></td>
@@ -3861,7 +3861,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.11@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 12</span></span></td>
@@ -3869,7 +3869,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.12@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 13</span></span></td>
@@ -3877,7 +3877,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.13@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 14</span></span></td>
@@ -3885,7 +3885,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.14@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 15</span></span></td>
@@ -3893,7 +3893,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.15@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 16</span></span></td>
@@ -3901,7 +3901,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.16@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 17</span></span></td>
@@ -3909,7 +3909,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.17@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 18</span></span></td>
@@ -3917,7 +3917,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.18@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 19</span></span></td>
@@ -3925,7 +3925,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.19@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 20</span></span></td>
@@ -3933,7 +3933,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.20@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 21</span></span></td>
@@ -3941,7 +3941,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.21@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 22</span></span></td>
@@ -3949,7 +3949,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.22@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 23</span></span></td>
@@ -3957,7 +3957,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.23@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 24</span></span></td>
@@ -3965,7 +3965,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.24@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 25</span></span></td>
@@ -3973,7 +3973,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.25@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 26</span></span></td>
@@ -3981,7 +3981,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.26@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 27</span></span></td>
@@ -3989,7 +3989,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.27@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 28</span></span></td>
@@ -3997,7 +3997,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.28@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 29</span></span></td>
@@ -4005,7 +4005,7 @@ exports[`<table> demo: render [virtual-list] correctly 1`] = `
                   <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">user.29@example.com</span></span></td>
                 </tr>
                 <tr class=\\"arco-table-tr\\">
-                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+                  <td class=\\"arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left\\" style=\\"left: 0px;\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                     <!----></label></span>
                   </td>
                   <td class=\\"arco-table-td arco-table-col-fixed-left arco-table-col-fixed-left-last\\" style=\\"left: 40px;\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">User 30</span></span></td>

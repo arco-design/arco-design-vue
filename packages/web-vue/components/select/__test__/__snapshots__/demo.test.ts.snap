@@ -3,17 +3,17 @@
 exports[`<select> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-disabled\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\" disabled=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-disabled\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\" disabled=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -22,7 +22,7 @@ exports[`<select> demo: render [basic] correctly 1`] = `
     <div>Select Value: </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 160px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Select\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 160px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Select\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -32,7 +32,7 @@ exports[`<select> demo: render [basic] correctly 1`] = `
 exports[`<select> demo: render [border] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select-view-borderless arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 100%;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select-view-borderless arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 100%;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -49,7 +49,7 @@ exports[`<select> demo: render [border] correctly 1`] = `
 `;
 
 exports[`<select> demo: render [clear] correctly 1`] = `
-"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
 <!----></span></span>
 <!---->"
 `;
@@ -57,7 +57,7 @@ exports[`<select> demo: render [clear] correctly 1`] = `
 exports[`<select> demo: render [create] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -76,12 +76,12 @@ exports[`<select> demo: render [create] correctly 1`] = `
 exports[`<select> demo: render [fallback] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -98,21 +98,30 @@ exports[`<select> demo: render [fallback] correctly 1`] = `
 `;
 
 exports[`<select> demo: render [field-names] correctly 1`] = `
-"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value\\">Beijing</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"Beijing\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value\\">Beijing</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
 <!----></span></span>
 <!---->"
 `;
 
 exports[`<select> demo: render [footer] correctly 1`] = `
-"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
-<!----></span></span>
-<!---->"
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 360px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    <!----></span></span>
+    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 360px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    <!----></span></span>
+    <!---->
+  </div>
+</div>"
 `;
 
 exports[`<select> demo: render [group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -129,17 +138,30 @@ exports[`<select> demo: render [group] correctly 1`] = `
 `;
 
 exports[`<select> demo: render [header] correctly 1`] = `
-"<span class=\\"arco-select-view arco-select-view-size-medium arco-select-view-has-suffix arco-select-view-has-placeholder arco-select-view-multiple arco-select\\" style=\\"width: 360px;\\"><span class=\\"arco-select-view-mirror\\">Please select ...</span>
-<!---->
-<transition-group-stub><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\" placeholder=\\"Please select ...\\"></transition-group-stub>
-<!----><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
-<!---->
-<!----></span></span>
-<!---->"
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-select-view arco-select-view-size-medium arco-select-view-has-suffix arco-select-view-has-placeholder arco-select-view-multiple arco-select\\" style=\\"width: 360px;\\"><span class=\\"arco-select-view-mirror\\">Please select ...</span>
+    <!---->
+    <transition-group-stub><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\" placeholder=\\"Please select ...\\"></transition-group-stub>
+    <!----><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    <!---->
+    <!----></span></span>
+    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view arco-select-view-size-medium arco-select-view-has-suffix arco-select-view-has-placeholder arco-select-view-multiple arco-select\\" style=\\"width: 360px;\\"><span class=\\"arco-select-view-mirror\\">Please select ...</span>
+    <!---->
+    <transition-group-stub><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\" placeholder=\\"Please select ...\\"></transition-group-stub>
+    <!----><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    <!---->
+    <!----></span></span>
+    <!---->
+  </div>
+</div>"
 `;
 
 exports[`<select> demo: render [label] correctly 1`] = `
-"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
 <!----></span></span>
 <!---->"
 `;
@@ -147,12 +169,12 @@ exports[`<select> demo: render [label] correctly 1`] = `
 exports[`<select> demo: render [linkage] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 200px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 200px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 200px;\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Chengdu</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 200px;\\" title=\\"Chengdu\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Chengdu</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -160,7 +182,7 @@ exports[`<select> demo: render [linkage] correctly 1`] = `
 `;
 
 exports[`<select> demo: render [loading] correctly 1`] = `
-"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg></span>
+"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg></span>
 <!----></span></span>
 <!---->"
 `;
@@ -232,7 +254,7 @@ exports[`<select> demo: render [remote] correctly 1`] = `
 `;
 
 exports[`<select> demo: render [scroll] correctly 1`] = `
-"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
 <!----></span></span>
 <!---->"
 `;
@@ -240,12 +262,12 @@ exports[`<select> demo: render [scroll] correctly 1`] = `
 exports[`<select> demo: render [search] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -266,7 +288,7 @@ exports[`<select> demo: render [size] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">Mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -283,7 +305,7 @@ exports[`<select> demo: render [size] correctly 1`] = `
 `;
 
 exports[`<select> demo: render [virtual-list] correctly 1`] = `
-"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+"<span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" style=\\"width: 320px;\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
 <!----></span></span>
 <!---->"
 `;

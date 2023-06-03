@@ -1,6 +1,6 @@
 ```yaml
 title:
-  zh-CN: 复选框组选项
+  zh-CN: 单选框组选项
   en-US: Radio group options
 ```
 

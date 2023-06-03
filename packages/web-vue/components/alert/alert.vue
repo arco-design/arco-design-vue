@@ -104,6 +104,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 内容是否居中显示
+     * @en Whether the content is displayed in the center
+     */
+    center: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     /**
@@ -158,6 +166,7 @@ export default defineComponent({
       {
         [`${prefixCls}-with-title`]: Boolean(props.title || slots.title),
         [`${prefixCls}-banner`]: props.banner,
+        [`${prefixCls}-center`]: props.center,
       },
     ]);
 

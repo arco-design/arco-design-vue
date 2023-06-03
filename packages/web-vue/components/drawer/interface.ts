@@ -93,12 +93,12 @@ export interface DrawerConfig {
    * @zh 点击确定按钮时触发
    * @en Triggered when the OK button is clicked
    */
-  onOk?: () => void;
+  onOk?: (e?: Event) => void;
   /**
    * @zh 点击取消、关闭按钮时触发
    * @en Triggered when the cancel or close button is clicked
    */
-  onCancel?: () => void;
+  onCancel?: (e?: Event) => void;
   /**
    * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。
    * @en The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.

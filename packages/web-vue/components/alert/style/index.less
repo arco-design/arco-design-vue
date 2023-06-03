@@ -20,6 +20,14 @@
       @alert-padding-horizontal_with_title;
   }
 
+  &-center {
+    justify-content: center;
+
+    .@{alert-prefix-cls}-body {
+      flex: initial;
+    }
+  }
+
   &-normal {
     background-color: @alert-normal-color-bg;
     border: @alert-border-width solid @alert-normal-color-border;

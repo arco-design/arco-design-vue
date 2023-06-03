@@ -114,6 +114,11 @@ description: Used to show and preview pictures.
 |---|---|---|
 |change|Image switch|-|
 |visible-change|Preview visibility change|-|
+### `<image-preview-group>` Slots
+
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|actions|Customize additional action items|-|2.46.0|
 
 
 

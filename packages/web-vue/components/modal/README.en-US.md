@@ -70,8 +70,8 @@ description: Open a floating layer on the current page to carry related operatio
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|ok|Triggered when the OK button is clicked|-||
-|cancel|Triggered when the cancel/close button is clicked|-||
+|ok|Triggered when the OK button is clicked|ev: `MouseEvent`||
+|cancel|Triggered when the cancel/close button is clicked|ev: `MouseEvent \| KeyboardEvent`||
 |open|Triggered after the modal is opened (the animation ends)|-||
 |close|Triggered after the modal is closed (the animation ends)|-||
 |before-open|Triggered before dialog is opened|-|2.16.0|
@@ -126,8 +126,8 @@ Modal._context = app._context;
 |escToClose|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
 |draggable|Whether to support drag|`boolean`|`false`|2.19.0|
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
-|onOk|Callback function for clicking the OK button|`() => void`|`-`||
-|onCancel|Callback function for clicking the Cancel button|`() => void`|`-`||
+|onOk|Callback function for clicking the OK button|`(e?: Event) => void`|`-`||
+|onCancel|Callback function for clicking the Cancel button|`(e?: Event) => void`|`-`||
 |onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`|2.7.0|
 |onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|2.7.0|
 |onOpen|Triggered after the modal is opened (the animation ends)|`() => void`|`-`||

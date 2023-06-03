@@ -1,6 +1,7 @@
 import {
   computed,
   defineComponent,
+  inject,
   isVNode,
   onMounted,
   PropType,
@@ -8,6 +9,7 @@ import {
   toRefs,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../config-provider/context';
 import Spin from '../spin';
 import Grid from '../grid';
 import Pagination, { PaginationProps } from '../pagination';
@@ -176,6 +178,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const { scrollbar } = toRefs(props);
     const prefixCls = getPrefixCls('list');
+    const configCtx = inject(configProviderInjectionKey, undefined);
     const { componentRef, elementRef: listRef } =
       useComponentRef('containerRef');
     const isVirtualList = computed(() => props.virtualListProps);
@@ -366,7 +369,10 @@ export default defineComponent({
         return null;
       }
 
-      return slots.empty?.() ?? <Empty />;
+      return (
+        slots.empty?.() ??
+        configCtx?.slots.empty?.({ component: 'list' }) ?? <Empty />
+      );
     };
 
     const render = () => {

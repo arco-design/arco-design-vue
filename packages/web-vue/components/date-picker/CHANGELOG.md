@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🐛 BugFix
+
+- add getDefaultValueFormat to solve v-model for week selector and quarter selector ([#2437](https://github.com/arco-design/arco-design-vue/pull/2437))
+
+
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 BugFix
+
+- fixed arrow display logic for year, month, and quarter modes in the date range picker ([#2451](https://github.com/arco-design/arco-design-vue/pull/2451))
+
+
+## 2.46.0
+
+`2023-05-12`
+
+### 🆎 TypeScript
+
+- DatePicker ([#2359](https://github.com/arco-design/arco-design-vue/pull/2359))
+
+
 ## 2.45.2
 
 `2023-04-21`

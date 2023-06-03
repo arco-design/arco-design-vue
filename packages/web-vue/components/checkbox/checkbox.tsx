@@ -46,7 +46,7 @@ export default defineComponent({
      * @en The `value` of the option
      */
     value: {
-      type: [String, Number] as PropType<string | number | boolean>,
+      type: [String, Number, Boolean],
     },
     /**
      * @zh 是否禁用

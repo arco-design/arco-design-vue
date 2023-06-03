@@ -82,6 +82,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |limit|多选时最多的选择个数|`number`|`0`|2.18.0|
 |field-names|自定义 `SelectOptionData` 中的字段|`SelectFieldNames`|`-`|2.22.0|
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.38.0|
+|show-header-on-empty|空状态时是否显示header|`boolean`|`false`||
+|show-footer-on-empty|空状态时是否显示footer|`boolean`|`false`||
 ### `<select>` Events
 
 |事件名|描述|参数|版本|
@@ -192,3 +194,50 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 |buffer|视口边界外提前挂载的元素数量。|`number`|`10`|2.34.1|
 
 
+
+
+## FAQ
+
+### 使用 `Object` 格式作为选项的值
+当使用 `Object` 格式作为选项的值时，需要通过 `value-key` 属性为选择器指定获取唯一标识的字段名，默认值为 `value`.
+
+例如当我需要指定 `key` 为唯一标识时：
+```vue
+<template>
+  <a-select v-model="value" :style="{width:'320px'}" placeholder="Please select ..." value-key="key">
+    <a-option v-for="item of data" :value="item" :label="item.label" />
+  </a-select>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref();
+    const data = [{
+      value: 'beijing',
+      label: 'Beijing',
+      key: 'extra1'
+    }, {
+      value: 'shanghai',
+      label: 'Shanghai',
+      key: 'extra2'
+    }, {
+      value: 'guangzhou',
+      label: 'Guangzhou',
+      key: 'extra3'
+    }, {
+      value: 'chengdu',
+      label: 'Chengdu',
+      key: 'extra4'
+    }]
+
+    return {
+      value,
+      data
+    }
+  },
+}
+</script>
+```

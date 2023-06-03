@@ -56,7 +56,7 @@ export default function useFilterTreeNode(props: {
           if (!isFiltering.value) return true;
 
           const key = node[keyField.value] as TreeNodeKey;
-          return filteredKeysSet.value?.has(key || '');
+          return filteredKeysSet.value?.has(key || '') ?? false;
         }
   );
 

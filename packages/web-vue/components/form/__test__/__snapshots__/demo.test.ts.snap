@@ -38,7 +38,7 @@ exports[`<form> demo: render [async] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -105,7 +105,7 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -175,7 +175,7 @@ exports[`<form> demo: render [basic] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -268,7 +268,7 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label aria-disabled=\\"true\\" class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label aria-disabled=\\"true\\" class=\\"arco-checkbox arco-checkbox-disabled\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" disabled=\\"\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -386,7 +386,7 @@ exports[`<form> demo: render [extra] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -537,7 +537,7 @@ exports[`<form> demo: render [layout] correctly 1`] = `
           </label></div>
         <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
           <div class=\\"arco-form-item-content-wrapper\\">
-            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+            <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -693,7 +693,7 @@ exports[`<form> demo: render [nest] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> I have read the manual </span></label></div>
       </div>
       <!--v-if-->
       <!--v-if-->
@@ -786,7 +786,7 @@ exports[`<form> demo: render [status] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span><span class=\\"arco-feedback-icon arco-feedback-icon-status-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span><span class=\\"arco-feedback-icon arco-feedback-icon-status-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span>
           <!---->
         </div>
       </div>
@@ -917,7 +917,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
           <!----></span></span>
           <!---->
         </div>
@@ -933,7 +933,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value\\">Beijing / Haidian</span><span class=\\"arco-select-view-suffix\\"><span class=\\"arco-icon-hover arco-select-view-clear-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium\\" title=\\"Beijing / Haidian\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value\\">Beijing / Haidian</span><span class=\\"arco-select-view-suffix\\"><span class=\\"arco-icon-hover arco-select-view-clear-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
           <!----></span></span>
           <!---->
         </div>
@@ -1147,7 +1147,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       </label></div>
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
-        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium\\" border=\\"false\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium\\" border=\\"false\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"Please select ...\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
           <!----></span></span>
           <!---->
         </div>

@@ -1,7 +1,7 @@
 import { computed, CSSProperties, PropType, defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import type { Direction } from '../_utils/constant';
-import { isNumber } from '../_utils/is';
+import { isNumber, isUndefined } from '../_utils/is';
 
 export default defineComponent({
   name: 'Divider',
@@ -64,7 +64,7 @@ export default defineComponent({
           isHorizontal.value ? 'border-bottom-style' : 'border-left-style'
         ] = props.type;
       }
-      if (props.margin) {
+      if (!isUndefined(props.margin)) {
         const margin = isNumber(props.margin)
           ? `${props.margin}px`
           : props.margin;

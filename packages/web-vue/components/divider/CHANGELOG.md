@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.46.0
+
+`2023-05-12`
+
+### 🐛 BugFix
+
+- Fix the problem that margin cannot be set to 0 ([#2390](https://github.com/arco-design/arco-design-vue/pull/2390))
+
+
 ## 2.44.2
 
 `2023-03-17`

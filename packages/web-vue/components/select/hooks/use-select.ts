@@ -152,7 +152,8 @@ export const useSelect = ({
       [
         KEYBOARD_KEY.ENTER,
         (e: Event) => {
-          if (!loading?.value) {
+          // @ts-ignore
+          if (!loading?.value && !e.isComposing) {
             if (popupVisible.value) {
               if (activeKey.value) {
                 onSelect(activeKey.value, e);

@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 新增功能
+
+- 空状态下可以显示 header 和 footer ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+
+
+## 2.46.0
+
+`2023-05-12`
+
+### 💎 功能优化
+
+- 选择框增加 title 提示 ([#2412](https://github.com/arco-design/arco-design-vue/pull/2412))
+
+
+## 2.45.3
+
+`2023-04-28`
+
+### 🐛 问题修复
+
+- 修复输入法状态下 Enter 键会触发选择的问题 ([#2378](https://github.com/arco-design/arco-design-vue/pull/2378))
+
+
 ## 2.45.2
 
 `2023-04-21`

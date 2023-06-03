@@ -116,6 +116,10 @@ description: It is used for data collection, display, analysis and processing, a
 |row-click|Triggered when row data is clicked|record: `TableData`<br>ev: `Event`||
 |header-click|Triggered when the header data is clicked|column: `TableColumnData`<br>ev: `Event`||
 |column-resize|Triggered when column width is adjusted|dataIndex: `string`<br>width: `number`|2.28.0|
+|row-dblclick|Triggered when row data is double clicked|record: `TableData`<br>ev: `Event`||
+|cell-dblclick|Triggered when a cell is double clicked|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
+|row-contextmenu|Triggered when row data is right clicked|record: `TableData`<br>ev: `Event`||
+|cell-contextmenu|Triggered when a cell is right clicked|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
 ### `<table>` Methods
 
 |Method|Description|Parameters|Return|version|

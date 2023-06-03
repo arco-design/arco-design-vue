@@ -6,7 +6,7 @@ exports[`Cascader should render panel (multiple) 1`] = `
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">
         <ul role=\\"menu\\" class=\\"arco-cascader-list arco-cascader-list-multiple\\">
-          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Beijing\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Beijing\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
               <!---->
             </label>
             <!---->
@@ -14,7 +14,7 @@ exports[`Cascader should render panel (multiple) 1`] = `
                 <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
               </svg></div>
           </li>
-          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Shanghai\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Shanghai\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
               <!---->
             </label>
             <!---->
@@ -37,7 +37,7 @@ exports[`Cascader should render panel (multiple) 2`] = `
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">
         <ul role=\\"menu\\" class=\\"arco-cascader-list arco-cascader-list-multiple\\">
-          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" title=\\"Beijing\\" class=\\"arco-cascader-option arco-cascader-option-active\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" title=\\"Beijing\\" class=\\"arco-cascader-option arco-cascader-option-active\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
               <!---->
             </label>
             <!---->
@@ -45,7 +45,7 @@ exports[`Cascader should render panel (multiple) 2`] = `
                 <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
               </svg></div>
           </li>
-          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Shanghai\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" title=\\"Shanghai\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
               <!---->
             </label>
             <!---->
@@ -63,7 +63,7 @@ exports[`Cascader should render panel (multiple) 2`] = `
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">
         <ul role=\\"menu\\" class=\\"arco-cascader-list arco-cascader-list-multiple\\">
-          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"false\\" aria-expanded=\\"false\\" title=\\"ChaoYang\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"false\\" aria-expanded=\\"false\\" title=\\"ChaoYang\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
               <!---->
             </label>
             <!---->
@@ -71,7 +71,7 @@ exports[`Cascader should render panel (multiple) 2`] = `
               <!---->
             </div>
           </li>
-          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"false\\" aria-expanded=\\"false\\" title=\\"Haidian\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
+          <li tabindex=\\"0\\" role=\\"menuitem\\" aria-disabled=\\"false\\" aria-haspopup=\\"false\\" aria-expanded=\\"false\\" title=\\"Haidian\\" class=\\"arco-cascader-option\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
               <!---->
             </label>
             <!---->

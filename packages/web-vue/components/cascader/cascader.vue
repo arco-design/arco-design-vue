@@ -634,18 +634,28 @@ export default defineComponent({
       () => props.popupVisible ?? _popupVisible.value
     );
 
+    const getFilteredStatus = (label: string) => {
+      return label
+        ?.toLocaleLowerCase()
+        .includes(computedInputValue.value?.toLocaleLowerCase());
+    };
+
     const filteredLeafOptions = computed(() => {
       const options = props.checkStrictly
         ? Array.from(optionMap.values())
         : Array.from(leafOptionSet);
 
-      return options.filter(
-        (item) =>
-          props.filterOption?.(computedInputValue.value, item.raw) ??
-          item.label
-            ?.toLocaleLowerCase()
-            .includes(computedInputValue.value?.toLocaleLowerCase())
-      );
+      return options.filter((item) => {
+        if (isFunction(props.filterOption)) {
+          return props.filterOption(computedInputValue.value, item.raw);
+        }
+
+        if (props.checkStrictly) {
+          return getFilteredStatus(item.label);
+        }
+
+        return item.path?.find((leaf) => getFilteredStatus(leaf.label));
+      });
     });
 
     const updateValue = (values: UnionType[] | UnionType[][]) => {

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.3
+
+`2023-04-28`
+
+### 💎 Enhancement
+
+- Add onOk & onCancel event parameters ([#2358](https://github.com/arco-design/arco-design-vue/pull/2358))
+
+
 ## 2.43.2
 
 `2023-02-24`

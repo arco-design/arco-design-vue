@@ -55,8 +55,8 @@ description: A drawer-like panel that slides out from the side of the screen aft
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|ok|Triggered when the OK button is clicked|-||
-|cancel|Triggered when the cancel or close button is clicked|-||
+|ok|Triggered when the OK button is clicked|ev: `MouseEvent`||
+|cancel|Triggered when the cancel or close button is clicked|ev: `MouseEvent \| KeyboardEvent`||
 |open|Triggered after the drawer is opened (the animation ends)|-||
 |close|Triggered when the drawer is closed (the animation ends)|-||
 |before-open|Triggered before drawer is opened|-|2.43.0|
@@ -109,8 +109,8 @@ Drawer._context = app._context;
 |height|The height of the drawer (only available when placement is top, bottom)|`number \| string`|`250`||
 |popupContainer|Mount container for popup|`string \| HTMLElement`|`'body'`||
 |drawerStyle|Drawer style|`CSSProperties`|`-`||
-|onOk|Triggered when the OK button is clicked|`() => void`|`-`||
-|onCancel|Triggered when the cancel or close button is clicked|`() => void`|`-`||
+|onOk|Triggered when the OK button is clicked|`(e?: Event) => void`|`-`||
+|onCancel|Triggered when the cancel or close button is clicked|`(e?: Event) => void`|`-`||
 |onBeforeOk|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |onBeforeCancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`||
 |onOpen|Triggered after the drawer is opened (the animation ends)|`() => void`|`-`||

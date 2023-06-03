@@ -17,10 +17,11 @@ description: Refers to a state in which the current scene has no corresponding d
 
 ### `<empty>` Props
 
-|Attribute|Description|Type|Default|
-|---|---|---|:---:|
-|description|Description|`string`|`-`|
-|img-src|The src of the Custom Image|`string`|`-`|
+|Attribute|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|description|Description|`string`|`-`||
+|img-src|The src of the Custom Image|`string`|`-`||
+|in-config-provider|Whether to use in ConfigProvider|`boolean`|`false`|2.47.0|
 ### `<empty>` Slots
 
 |Slot Name|Description|Parameters|

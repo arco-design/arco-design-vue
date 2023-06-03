@@ -74,6 +74,7 @@ import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import { useComponentRef } from '../_hooks/use-component-ref';
 import type { BaseType } from '../_utils/types';
 import { useScrollbar } from '../_hooks/use-scrollbar';
+import { getValueByPath, setValueByPath } from '../_utils/get-value-by-path';
 
 const DEFAULT_BORDERED = {
   wrapper: true,
@@ -522,6 +523,41 @@ export default defineComponent({
      * @version 2.28.0
      */
     'columnResize': (dataIndex: string, width: number) => true,
+    /**
+     * @zh 双击行数据时触发
+     * @en Triggered when row data is double clicked
+     * @param {TableData} record
+     * @param {Event} ev
+     */
+    'rowDblclick': (record: TableData, ev: Event) => true,
+    /**
+     * @zh 双击单元格时触发
+     * @en Triggered when a cell is double clicked
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     * @param {Event} ev
+     */
+    'cellDblclick': (record: TableData, column: TableColumnData, ev: Event) =>
+      true,
+    /**
+     * @zh 右击行数据时触发
+     * @en Triggered when row data is right clicked
+     * @param {TableData} record
+     * @param {Event} ev
+     */
+    'rowContextmenu': (record: TableData, ev: Event) => true,
+    /**
+     * @zh 右击单元格时触发
+     * @en Triggered when a cell is right clicked
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     * @param {Event} ev
+     */
+    'cellContextmenu': (
+      record: TableData,
+      column: TableColumnData,
+      ev: Event
+    ) => true,
   },
   /**
    * @zh 表格列定义。启用时会屏蔽 columns 属性
@@ -633,6 +669,7 @@ export default defineComponent({
       scrollbar,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
+    const configCtx = inject(configProviderInjectionKey, undefined);
     const bordered = computed(() => {
       if (isObject(props.bordered)) {
         return { ...DEFAULT_BORDERED, ...props.bordered };
@@ -1007,8 +1044,8 @@ export default defineComponent({
           if (column && column.sortable?.sorter !== true) {
             const { field, direction } = computedSorter.value;
             data.sort((a, b) => {
-              const valueA = a.raw[field];
-              const valueB = b.raw[field];
+              const valueA = getValueByPath(a.raw, field);
+              const valueB = getValueByPath(b.raw, field);
 
               if (
                 column.sortable?.sorter &&
@@ -1065,23 +1102,25 @@ export default defineComponent({
       return dataColumns.value.reduce((per, column, index) => {
         if (column.dataIndex) {
           if (index === 0) {
-            per[column.dataIndex] = props.summaryText;
+            setValueByPath(per, column.dataIndex, props.summaryText, {
+              addPath: true,
+            });
           } else {
             let count = 0;
             let isNotNumber = false;
             flattenData.value.forEach((data) => {
               if (column.dataIndex) {
-                if (isNumber(data.raw[column.dataIndex])) {
-                  count += data.raw[column.dataIndex];
-                } else if (
-                  !isUndefined(data.raw[column.dataIndex]) &&
-                  !isNull(data.raw[column.dataIndex])
-                ) {
+                const _number = getValueByPath(data.raw, column.dataIndex);
+                if (isNumber(_number)) {
+                  count += _number;
+                } else if (!isUndefined(_number) && !isNull(_number)) {
                   isNotNumber = true;
                 }
               }
             });
-            per[column.dataIndex] = isNotNumber ? '' : count;
+            setValueByPath(per, column.dataIndex, isNotNumber ? '' : count, {
+              addPath: true,
+            });
           }
         }
 
@@ -1192,12 +1231,36 @@ export default defineComponent({
       emit('rowClick', record.raw, ev);
     };
 
+    const handleRowDblclick = (record: TableDataWithRaw, ev: Event) => {
+      emit('rowDblclick', record.raw, ev);
+    };
+
+    const handleRowContextMenu = (record: TableDataWithRaw, ev: Event) => {
+      emit('rowContextmenu', record.raw, ev);
+    };
+
     const handleCellClick = (
       record: TableDataWithRaw,
       column: TableColumnData,
       ev: Event
     ) => {
       emit('cellClick', record.raw, column, ev);
+    };
+
+    const handleCellDblclick = (
+      record: TableDataWithRaw,
+      column: TableColumnData,
+      ev: Event
+    ) => {
+      emit('cellDblclick', record.raw, column, ev);
+    };
+
+    const handleCellContextmenu = (
+      record: TableDataWithRaw,
+      column: TableColumnData,
+      ev: Event
+    ) => {
+      emit('cellContextmenu', record.raw, column, ev);
     };
 
     const handleHeaderClick = (column: TableColumnData, ev: Event) => {
@@ -1417,7 +1480,8 @@ export default defineComponent({
       return (
         <Tr empty>
           <Td colSpan={dataColumns.value.length + operations.value.length}>
-            {slots.empty?.() ?? <Empty />}
+            {slots.empty?.() ??
+              configCtx?.slots.empty?.({ component: 'table' }) ?? <Empty />}
           </Td>
         </Tr>
       );
@@ -1535,6 +1599,12 @@ export default defineComponent({
                 summary
                 // @ts-ignore
                 onClick={(ev: Event) => handleCellClick(record, column, ev)}
+                onDblclick={(ev: Event) =>
+                  handleCellDblclick(record, column, ev)
+                }
+                onContextmenu={(ev: Event) =>
+                  handleCellContextmenu(record, column, ev)
+                }
               />
             );
           })}
@@ -1724,6 +1794,8 @@ export default defineComponent({
             checked={selectedRowKeys.value?.includes(currentKey)}
             // @ts-ignore
             onClick={(ev: Event) => handleRowClick(record, ev)}
+            onDblclick={(ev: Event) => handleRowDblclick(record, ev)}
+            onContextmenu={(ev: Event) => handleRowContextMenu(record, ev)}
             {...(dragType.value === 'row' ? dragSourceEvent : {})}
             {...dragTargetEvent}
           >
@@ -1798,6 +1870,12 @@ export default defineComponent({
                   {...extraProps}
                   // @ts-ignore
                   onClick={(ev: Event) => handleCellClick(record, column, ev)}
+                  onDblclick={(ev: Event) =>
+                    handleCellDblclick(record, column, ev)
+                  }
+                  onContextmenu={(ev: Event) =>
+                    handleCellContextmenu(record, column, ev)
+                  }
                 />
               );
             })}

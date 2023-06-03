@@ -2,6 +2,101 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### ⚠️ 重点注意
+
+- **modal:** 修复Modal.confirm标题缺少warning icon的问题 ([#2465](https://github.com/arco-design/arco-design-vue/pull/2465))
+- **input-number:** `hide-button` 在 `mode="button"` 时也会生效 ([#2461](https://github.com/arco-design/arco-design-vue/pull/2461))
+
+### 🆕 新增功能
+
+- **empty:** 增加 `in-config-provider` 属性 ([#2474](https://github.com/arco-design/arco-design-vue/pull/2474))
+- **alert:** 新增 `center` 属性 ([#2464](https://github.com/arco-design/arco-design-vue/pull/2464))
+- **config-provider:** empty slots 增加component 属性 ([#2448](https://github.com/arco-design/arco-design-vue/pull/2448))
+- **select:** 空状态下可以显示 header 和 footer ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+- **tree-select:** 增加树选择器页头和页脚插槽 ([#2417](https://github.com/arco-design/arco-design-vue/pull/2417))
+- **mention:** search 事件增加 `prefix` 属性 ([#2356](https://github.com/arco-design/arco-design-vue/pull/2356))
+- **spin:** 新增隐藏图标属性 ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+- **spin:** 新增提示内容插槽 ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+
+### 🐛 问题修复
+
+- **date-picker:** 添加 getDefaultValueFormat 解决周选择器和季度选择器的v-model 问题 ([#2437](https://github.com/arco-design/arco-design-vue/pull/2437))
+
+
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 问题修复
+
+- **modal:** 修复modal组件不能设置width属性的问题 ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 问题修复
+
+- **date-picker:** 修复日期范围选择器年、月、季度模式的箭头显示逻辑 ([#2451](https://github.com/arco-design/arco-design-vue/pull/2451))
+- **modal:** 修复定义了top属性时拖拽错误 ([#2446](https://github.com/arco-design/arco-design-vue/pull/2446))
+- **transfer:** 修复穿梭框选项被禁用时仍可以点击以及全选/半选在存在被禁用选项时错误 ([#2445](https://github.com/arco-design/arco-design-vue/pull/2445))
+- **modal:** 修复同时设置 `width` 和 `fullscreen` 时，没有全屏的问题 ([#2441](https://github.com/arco-design/arco-design-vue/pull/2441))
+
+### 💎 功能优化
+
+- **table:** 增加表格右击、双击的相关事件 ([#2452](https://github.com/arco-design/arco-design-vue/pull/2452))
+
+### 🆎 类型修正
+
+- **modal:** 修复函数调用形式ts报错 ([#2426](https://github.com/arco-design/arco-design-vue/pull/2426))
+
+
+## 2.46.0
+
+`2023-05-12`
+
+### 🆕 新增功能
+
+- **trigger:** 增加 scrollToClose 属性 ([#2414](https://github.com/arco-design/arco-design-vue/pull/2414))
+- **image:** 添加 actions 插槽 ([#2389](https://github.com/arco-design/arco-design-vue/pull/2389))
+- **cascader:** 非严格模式下支持全路径搜索 ([#2363](https://github.com/arco-design/arco-design-vue/pull/2363))
+
+### 🐛 问题修复
+
+- **table:** 修复当 dataIndex 为路径格式时，排序和总结栏功能不生效的问题 ([#2413](https://github.com/arco-design/arco-design-vue/pull/2413))
+- **divider:** 修复 margin 无法设置为 0 的问题 ([#2390](https://github.com/arco-design/arco-design-vue/pull/2390))
+
+### 💎 功能优化
+
+- **select:** 选择框增加 title 提示 ([#2412](https://github.com/arco-design/arco-design-vue/pull/2412))
+
+### 🆎 类型修正
+
+- **date-picker:** 日期选择器 ([#2359](https://github.com/arco-design/arco-design-vue/pull/2359))
+
+
+## 2.45.3
+
+`2023-04-28`
+
+### 🐛 问题修复
+
+- **select:** 修复输入法状态下 Enter 键会触发选择的问题 ([#2378](https://github.com/arco-design/arco-design-vue/pull/2378))
+
+### 💎 功能优化
+
+- **drawer:** 添加 onOk & onCancel 的事件参数 ([#2358](https://github.com/arco-design/arco-design-vue/pull/2358))
+
+### 🆎 类型修正
+
+- **checkbox:** 修复 `value` 属性使用 boolean 值出现 ts 错误的问题 ([#2373](https://github.com/arco-design/arco-design-vue/pull/2373))
+
+
 ## 2.45.2
 
 `2023-04-21`

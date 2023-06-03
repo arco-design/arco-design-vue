@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 新增功能
+
+- search 事件增加 `prefix` 属性 ([#2356](https://github.com/arco-design/arco-design-vue/pull/2356))
+
+
 ## 2.42.0
 
 `2023-01-13`

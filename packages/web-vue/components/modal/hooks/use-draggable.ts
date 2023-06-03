@@ -5,18 +5,21 @@ export const useDraggable = ({
   modalRef,
   wrapperRef,
   draggable,
+  alignCenter,
 }: {
   modalRef: Ref<HTMLElement | undefined>;
   wrapperRef: Ref<HTMLElement | undefined>;
   draggable: Ref<boolean>;
+  alignCenter: Ref<boolean>;
 }) => {
   const isDragging = ref(false);
   const startMouse = ref([0, 0]);
-  const diffMouse = ref([0, 0]);
 
   const initialPosition = ref([0, 0]);
 
   const position = ref<[number, number]>();
+
+  const minPosition = ref<[number, number]>([0, 0]);
 
   const maxPosition = ref<[number, number]>([0, 0]);
 
@@ -29,8 +32,10 @@ export const useDraggable = ({
       const { top, left, width, height } =
         modalRef.value.getBoundingClientRect();
 
+      // subtract the top prop value when the alignCenter is false
+      const offsetTop = alignCenter.value ? 0 : modalRef.value?.offsetTop;
       const initialX = left - wrapperLeft;
-      const initialY = top - wrapperTop;
+      const initialY = top - wrapperTop - offsetTop;
       if (
         initialX !== initialPosition.value?.[0] ||
         initialY !== initialPosition.value?.[1]
@@ -38,9 +43,14 @@ export const useDraggable = ({
         initialPosition.value = [initialX, initialY];
       }
       const maxX = wrapperWidth > width ? wrapperWidth - width : 0;
-      const maxY = wrapperHeight > height ? wrapperHeight - height : 0;
+      const maxY =
+        wrapperHeight > height ? wrapperHeight - height - offsetTop : 0;
       if (maxX !== maxPosition.value[0] || maxY !== maxPosition.value[1]) {
         maxPosition.value = [maxX, maxY];
+      }
+
+      if (offsetTop) {
+        minPosition.value = [0, 0 - offsetTop];
       }
     }
   };
@@ -52,7 +62,6 @@ export const useDraggable = ({
       isDragging.value = true;
       getInitialPosition();
       startMouse.value = [ev.x, ev.y];
-      diffMouse.value = [0, 0];
       on(window, 'mousemove', handleMouseMove);
       on(window, 'mouseup', handleMouseUp);
       on(window, 'contextmenu', handleMouseUp);
@@ -66,10 +75,13 @@ export const useDraggable = ({
 
       let x = initialPosition.value[0] + diffX;
       let y = initialPosition.value[1] + diffY;
-      if (x < 0) x = 0;
+
+      // eslint-disable-next-line prefer-destructuring
+      if (x < minPosition.value[0]) x = minPosition.value[0];
       // eslint-disable-next-line prefer-destructuring
       if (x > maxPosition.value[0]) x = maxPosition.value[0];
-      if (y < 0) y = 0;
+      // eslint-disable-next-line prefer-destructuring
+      if (y < minPosition.value[1]) y = minPosition.value[1];
       // eslint-disable-next-line prefer-destructuring
       if (y > maxPosition.value[1]) y = maxPosition.value[1];
 

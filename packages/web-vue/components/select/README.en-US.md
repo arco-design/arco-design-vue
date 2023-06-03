@@ -84,6 +84,8 @@ description: When users need to select one or more from a group of similar data,
 |limit|Maximum number of choices in multiple choice|`number`|`0`|2.18.0|
 |field-names|Customize fields in `SelectOptionData`|`SelectFieldNames`|`-`|2.22.0|
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|
+|show-header-on-empty|Whether to display the header in the empty state|`boolean`|`false`||
+|show-footer-on-empty|Whether to display the footer in the empty state|`boolean`|`false`||
 ### `<select>` Events
 
 |Event Name|Description|Parameters|version|
@@ -194,3 +196,50 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 |buffer|The number of elements mounted in advance outside the boundary of the viewport.|`number`|`10`|2.34.1|
 
 
+
+
+## FAQ
+
+### Use `Object` format as option value
+When using the `Object` format as the value of the option, you need to specify the field name to obtain the unique identifier for the selector through the `value-key` attribute, and the default value is `value`.
+
+For example, when I need to specify `key` as a unique identifier:
+```vue
+<template>
+  <a-select v-model="value" :style="{width:'320px'}" placeholder="Please select ..." value-key="key">
+    <a-option v-for="item of data" :value="item" :label="item.label" />
+  </a-select>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const value = ref();
+    const data = [{
+      value: 'beijing',
+      label: 'Beijing',
+      key: 'extra1'
+    }, {
+      value: 'shanghai',
+      label: 'Shanghai',
+      key: 'extra2'
+    }, {
+      value: 'guangzhou',
+      label: 'Guangzhou',
+      key: 'extra3'
+    }, {
+      value: 'chengdu',
+      label: 'Chengdu',
+      key: 'extra4'
+    }]
+
+    return {
+      value,
+      data
+    }
+  },
+}
+</script>
+```

@@ -2,6 +2,102 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### ⚠️ Important Attention
+
+- **modal:** fix modal confirm missing warning icon in the title ([#2465](https://github.com/arco-design/arco-design-vue/pull/2465))
+- **input-number:** `hide-button` also takes effect when `mode="button"` ([#2461](https://github.com/arco-design/arco-design-vue/pull/2461))
+
+### 🆕 Feature
+
+- **empty:** Add `in-config-provider` property ([#2474](https://github.com/arco-design/arco-design-vue/pull/2474))
+- **alert:** add `center` prop ([#2464](https://github.com/arco-design/arco-design-vue/pull/2464))
+- **config-provider:** empty slots add component attribute ([#2448](https://github.com/arco-design/arco-design-vue/pull/2448))
+- **select:** the header and footer are displayed in the empty state of select ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+- **tree-select:** Add header and footer slots ([#2417](https://github.com/arco-design/arco-design-vue/pull/2417))
+- **mention:** Add `prefix` attribute to search event ([#2356](https://github.com/arco-design/arco-design-vue/pull/2356))
+- **spin:** add hideIcon property ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+- **spin:** add tip slot ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+
+### 🐛 BugFix
+
+- **date-picker:** add getDefaultValueFormat to solve v-model for week selector and quarter selector ([#2437](https://github.com/arco-design/arco-design-vue/pull/2437))
+
+
+
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 BugFix
+
+- **modal:** fix can not set width attribute ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
+## 2.46.1
+
+`2023-05-26`
+
+### 🐛 BugFix
+
+- **date-picker:** fixed arrow display logic for year, month, and quarter modes in the date range picker ([#2451](https://github.com/arco-design/arco-design-vue/pull/2451))
+- **modal:** fix modal drag error when define top prop ([#2446](https://github.com/arco-design/arco-design-vue/pull/2446))
+- **transfer:** fix transfer item can be selected when disabled ([#2445](https://github.com/arco-design/arco-design-vue/pull/2445))
+- **modal:** Fix the problem that there is no full screen when `width` and `fullscreen` are set at the same time ([#2441](https://github.com/arco-design/arco-design-vue/pull/2441))
+
+### 💎 Enhancement
+
+- **table:** Add table right-click and double-click events ([#2452](https://github.com/arco-design/arco-design-vue/pull/2452))
+
+### 🆎 TypeScript
+
+- **modal:** fix onOk & onCancel type error in function call ([#2426](https://github.com/arco-design/arco-design-vue/pull/2426))
+
+
+## 2.46.0
+
+`2023-05-12`
+
+### 🆕 Feature
+
+- **trigger:** add scrollToClose prop ([#2414](https://github.com/arco-design/arco-design-vue/pull/2414))
+- **image:** add actions slot ([#2389](https://github.com/arco-design/arco-design-vue/pull/2389))
+- **cascader:** support full path search ([#2363](https://github.com/arco-design/arco-design-vue/pull/2363))
+
+### 🐛 BugFix
+
+- **table:** Fix the problem that when the dataIndex is in the path format, the sorting and summary column functions do not take effect ([#2413](https://github.com/arco-design/arco-design-vue/pull/2413))
+- **divider:** Fix the problem that margin cannot be set to 0 ([#2390](https://github.com/arco-design/arco-design-vue/pull/2390))
+
+### 💎 Enhancement
+
+- **select:** Add a title hint to the selection box ([#2412](https://github.com/arco-design/arco-design-vue/pull/2412))
+
+### 🆎 TypeScript
+
+- **date-picker:** DatePicker ([#2359](https://github.com/arco-design/arco-design-vue/pull/2359))
+
+
+## 2.45.3
+
+`2023-04-28`
+
+### 🐛 BugFix
+
+- **select:** Fix the problem that the Enter key in the input method state will trigger the selection ([#2378](https://github.com/arco-design/arco-design-vue/pull/2378))
+
+### 💎 Enhancement
+
+- **drawer:** Add onOk & onCancel event parameters ([#2358](https://github.com/arco-design/arco-design-vue/pull/2358))
+
+### 🆎 TypeScript
+
+- **checkbox:** Fix the ts error problem when the `value` attribute uses a boolean value ([#2373](https://github.com/arco-design/arco-design-vue/pull/2373))
+
+
 ## 2.45.2
 
 `2023-04-21`

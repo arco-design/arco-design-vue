@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.45.3
+
+`2023-04-28`
+
+### 🆎 TypeScript
+
+- Fix the ts error problem when the `value` attribute uses a boolean value ([#2373](https://github.com/arco-design/arco-design-vue/pull/2373))
+
+
 ## 2.43.2
 
 `2023-02-24`

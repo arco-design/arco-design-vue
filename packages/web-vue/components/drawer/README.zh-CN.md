@@ -53,8 +53,8 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 
 |事件名|描述|参数|版本|
 |---|---|---|:---|
-|ok|点击确定按钮时触发|-||
-|cancel|点击取消、关闭按钮时触发|-||
+|ok|点击确定按钮时触发|ev: `MouseEvent`||
+|cancel|点击取消、关闭按钮时触发|ev: `MouseEvent \| KeyboardEvent`||
 |open|抽屉打开后（动画结束）触发|-||
 |close|抽屉关闭后（动画结束）触发|-||
 |before-open|对话框打开前触发|-|2.43.0|
@@ -107,8 +107,8 @@ Drawer._context = app._context;
 |height|抽屉的高度（仅在placement为top,bottom时可用）|`number \| string`|`250`||
 |popupContainer|弹出框的挂载容器|`string \| HTMLElement`|`'body'`||
 |drawerStyle|抽屉的样式|`CSSProperties`|`-`||
-|onOk|点击确定按钮时触发|`() => void`|`-`||
-|onCancel|点击取消、关闭按钮时触发|`() => void`|`-`||
+|onOk|点击确定按钮时触发|`(e?: Event) => void`|`-`||
+|onCancel|点击取消、关闭按钮时触发|`(e?: Event) => void`|`-`||
 |onBeforeOk|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |onBeforeCancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
 |onOpen|抽屉打开后（动画结束）触发|`() => void`|`-`||

@@ -11,7 +11,7 @@ exports[`<config-provider> demo: render [basic] correctly 1`] = `
       <li class=\\"arco-pagination-item\\" pages=\\"5\\">4</li>
       <li class=\\"arco-pagination-item\\" pages=\\"5\\">5</li>
       <!----><span class=\\"arco-pagination-item arco-pagination-item-next\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path></svg></span>
-    </ul><span class=\\"arco-pagination-options\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">10 / página</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    </ul><span class=\\"arco-pagination-options\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium\\" title=\\"10 / página\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">10 / página</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!----></span><span class=\\"arco-pagination-jumper\\"><span class=\\"arco-pagination-jumper-prepend arco-pagination-jumper-text-goto\\">Ir a</span><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium arco-pagination-jumper-input\\"><!----><input role=\\"spinbutton\\" aria-valuemax=\\"5\\" aria-valuemin=\\"1\\" aria-valuenow=\\"\\" class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
     <!--v-if-->
@@ -55,63 +55,117 @@ exports[`<config-provider> demo: render [basic] correctly 1`] = `
 `;
 
 exports[`<config-provider> demo: render [empty] correctly 1`] = `
-"<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-empty\\">
+"<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
   <!---->
-  <div class=\\"arco-spin\\">
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium arco-select-view-search\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"cascader\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    <!----></span></span>
     <!---->
-    <div class=\\"arco-table-container\\">
-      <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
-        <div class=\\"arco-scrollbar-container arco-table-content arco-table-content-scroll-x\\">
-          <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
-            <colgroup>
-              <col>
-              <col>
-              <col>
-              <col>
-            </colgroup>
-            <thead>
-              <tr class=\\"arco-table-tr\\">
-                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-                <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
-                  <!---->
-                  <!----></span>
-                  <!---->
-                  <!---->
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class=\\"arco-table-tr arco-table-tr-empty\\">
-                <td class=\\"arco-table-td\\" colspan=\\"4\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><div class=\\"my-empty\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-trophy\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 33c-6.075 0-11-4.925-11-11m11 11c6.075 0 11-4.925 11-11M24 33v8M13 22V7h22v15m-22 0V9H7v7a6 6 0 0 0 6 6Zm22 0V9h6v7a6 6 0 0 1-6 6ZM12 41h24\\"></path></svg></div></span></span></td>
-              </tr>
-            </tbody>
-            <!---->
-          </table>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"select\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    <!----></span></span>
+    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium\\" border=\\"false\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"tree-select\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+    <!----></span></span>
+    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-list-wrapper\\">
+      <div class=\\"arco-spin arco-list-spin\\">
+        <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
+          <div class=\\"arco-scrollbar-container arco-list arco-list-medium arco-list-bordered arco-list-split\\">
+            <div class=\\"arco-list-content-wrapper\\">
+              <div class=\\"arco-list-header\\"> Empty List </div>
+              <div role=\\"list\\" class=\\"arco-list-content\\">
+                <div class=\\"arco-empty\\">
+                  <div class=\\"arco-empty-image\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-empty\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+                      <path d=\\"M24 5v6m7 1 4-4m-18 4-4-4m28.5 22H28s-1 3-4 3-4-3-4-3H6.5M40 41H8a2 2 0 0 1-2-2v-8.46a2 2 0 0 1 .272-1.007l6.15-10.54A2 2 0 0 1 14.148 18H33.85a2 2 0 0 1 1.728.992l6.149 10.541A2 2 0 0 1 42 30.541V39a2 2 0 0 1-2 2Z\\"></path>
+                    </svg></div>
+                  <div class=\\"arco-empty-description\\">list no data!</div>
+                </div>
+                <!---->
+              </div>
+              <!---->
+            </div>
+          </div>
+          <!--v-if-->
+          <!--v-if-->
         </div>
-        <!--v-if-->
-        <!--v-if-->
+        <!---->
+        <!---->
       </div>
     </div>
-    <!---->
-    <!---->
-    <!---->
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-empty\\">
+      <!---->
+      <div class=\\"arco-spin\\">
+        <!---->
+        <div class=\\"arco-table-container\\">
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
+            <div class=\\"arco-scrollbar-container arco-table-content arco-table-content-scroll-x\\">
+              <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr class=\\"arco-table-tr\\">
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Name</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Salary</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Address</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                    <th class=\\"arco-table-th\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span class=\\"arco-table-th-title\\">Email</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class=\\"arco-table-tr arco-table-tr-empty\\">
+                    <td class=\\"arco-table-td\\" colspan=\\"4\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\"><div class=\\"arco-empty\\"><div class=\\"arco-empty-image\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-empty\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 5v6m7 1 4-4m-18 4-4-4m28.5 22H28s-1 3-4 3-4-3-4-3H6.5M40 41H8a2 2 0 0 1-2-2v-8.46a2 2 0 0 1 .272-1.007l6.15-10.54A2 2 0 0 1 14.148 18H33.85a2 2 0 0 1 1.728.992l6.149 10.541A2 2 0 0 1 42 30.541V39a2 2 0 0 1-2 2Z\\"></path></svg></div><div class=\\"arco-empty-description\\">table no data!</div></div></span></span></td>
+                  </tr>
+                </tbody>
+                <!---->
+              </table>
+            </div>
+            <!--v-if-->
+            <!--v-if-->
+          </div>
+        </div>
+        <!---->
+        <!---->
+        <!---->
+      </div>
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div class=\\"my-empty\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-trophy\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+        <path d=\\"M24 33c-6.075 0-11-4.925-11-11m11 11c6.075 0 11-4.925 11-11M24 33v8M13 22V7h22v15m-22 0V9H7v7a6 6 0 0 0 6 6Zm22 0V9h6v7a6 6 0 0 1-6 6ZM12 41h24\\"></path>
+      </svg></div>
   </div>
 </div>"
 `;

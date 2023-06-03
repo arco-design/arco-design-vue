@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- the header and footer are displayed in the empty state of select ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+
+
+## 2.46.0
+
+`2023-05-12`
+
+### 💎 Enhancement
+
+- Add a title hint to the selection box ([#2412](https://github.com/arco-design/arco-design-vue/pull/2412))
+
+
+## 2.45.3
+
+`2023-04-28`
+
+### 🐛 BugFix
+
+- Fix the problem that the Enter key in the input method state will trigger the selection ([#2378](https://github.com/arco-design/arco-design-vue/pull/2378))
+
+
 ## 2.45.2
 
 `2023-04-21`

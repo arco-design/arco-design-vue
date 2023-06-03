@@ -29,10 +29,12 @@ description: 用于页面和区块的加载中状态 - 页面局部处于等待�
 |loading|是否为加载中状态（仅在容器模式下生效）|`boolean`|`false`|
 |dot|是否使用点类型的动画|`boolean`|`false`|
 |tip|提示内容|`string`|`-`|
+|hide-icon|是否隐藏图标|`boolean`|`false`|
 ### `<spin>` Slots
 
 |插槽名|描述|参数|
 |---|:---:|---|
+|tip|自定义提示内容|-|
 |element|自定义元素|-|
 |icon|自定义图标（自动旋转）|-|
 

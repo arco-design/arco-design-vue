@@ -70,9 +70,16 @@ export default defineComponent({
       () => (props.enabledInput && _focused.value) || !props.modelValue
     );
 
+    const formatLabel = () => {
+      if (props.modelValue) {
+        return props.formatLabel?.(props.modelValue) ?? props.modelValue.label;
+      }
+      return '';
+    };
+
     const mergedPlaceholder = computed(() => {
       if (props.enabledInput && props.modelValue) {
-        return props.modelValue.label;
+        return formatLabel();
       }
 
       return props.placeholder;
@@ -80,11 +87,7 @@ export default defineComponent({
 
     const renderLabel = () => {
       if (props.modelValue) {
-        return (
-          slots.default?.({ data: props.modelValue }) ??
-          props.formatLabel?.(props.modelValue) ??
-          props.modelValue?.label
-        );
+        return slots.default?.({ data: props.modelValue }) ?? formatLabel();
       }
       return null;
     };
@@ -107,6 +110,7 @@ export default defineComponent({
       <span
         {...wrapperAttrs.value}
         class={cls.value}
+        title={formatLabel()}
         onMousedown={handleMousedown}
       >
         {slots.prefix && (

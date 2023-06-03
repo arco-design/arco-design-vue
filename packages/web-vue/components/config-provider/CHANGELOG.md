@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- empty slots add component attribute ([#2448](https://github.com/arco-design/arco-design-vue/pull/2448))
+
+
 ## 2.28.0
 
 `2022-05-20`

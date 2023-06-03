@@ -341,7 +341,7 @@ exports[`<collapse> demo: render [icon-position] correctly 1`] = `
       <!---->
       <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-radio-button-content\\">Left</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-radio-button-content\\">Right</span></label></span></div>
       <!---->
-      <div class=\\"arco-space-item\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Hide Expand Icon</span></label></div>
+      <div class=\\"arco-space-item\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Hide Expand Icon</span></label></div>
     </div>
   </div>
   <!---->

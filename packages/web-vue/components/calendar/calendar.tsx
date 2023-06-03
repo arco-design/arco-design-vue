@@ -127,9 +127,6 @@ export default defineComponent({
       return _value.value;
     });
 
-    // eslint-disable-next-line no-console
-    console.log(_value.value);
-
     const pageShowDate = ref(computedValue.value || getNow());
 
     // page data list
