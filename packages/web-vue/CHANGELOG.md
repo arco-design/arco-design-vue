@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.47.1
+
+`2023-06-09`
+
+### 🐛 BugFix
+
+- **tree-select:** Fix the problem that the search content under the virtual list cannot be selected ([#2488](https://github.com/arco-design/arco-design-vue/pull/2488))
+- **select:** Fix mouse cursor positioning issue in search mode ([#2487](https://github.com/arco-design/arco-design-vue/pull/2487))
+- **badge:** Fix the problem that components fail when customizing `prefix-cls` ([#2476](https://github.com/arco-design/arco-design-vue/pull/2476))
+
+
 ## 2.47.0
 
 `2023-06-02`

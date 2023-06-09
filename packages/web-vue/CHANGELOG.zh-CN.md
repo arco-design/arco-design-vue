@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.47.1
+
+`2023-06-09`
+
+### 🐛 问题修复
+
+- **tree-select:** 修复在虚拟列表下搜索内容不可选择的问题 ([#2488](https://github.com/arco-design/arco-design-vue/pull/2488))
+- **select:** 修复搜索模式下鼠标光标定位问题 ([#2487](https://github.com/arco-design/arco-design-vue/pull/2487))
+- **badge:** 修复组件在自定义 `prefix-cls` 时失效的问题 ([#2476](https://github.com/arco-design/arco-design-vue/pull/2476))
+
+
 ## 2.47.0
 
 `2023-06-02`
