@@ -27,6 +27,7 @@ import {
   isString,
   isUndefined,
 } from '../_utils/is';
+import { debounce } from '../_utils/debounce';
 import type {
   TableBorder,
   TableChangeExtra,
@@ -492,6 +493,24 @@ export default defineComponent({
       extra: TableChangeExtra,
       currentData: TableData[]
     ) => true,
+    /**
+     * @zh 单元格 hover 进入时触发
+     * @en Triggered when hovering into a cell
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     * @param {Event} ev
+     */
+    'cellMouseEnter': (record: TableData, column: TableColumnData, ev: Event) =>
+      true,
+    /**
+     * @zh 单元格 hover 退出时触发
+     * @en Triggered when hovering out of a cell
+     * @param {TableData} record
+     * @param {TableColumnData} column
+     * @param {Event} ev
+     */
+    'cellMouseLeave': (record: TableData, column: TableColumnData, ev: Event) =>
+      true,
     /**
      * @zh 点击单元格时触发
      * @en Triggered when a cell is clicked
@@ -1247,6 +1266,20 @@ export default defineComponent({
       emit('cellClick', record.raw, column, ev);
     };
 
+    const handleCellMouseEnter = debounce(
+      (record: TableDataWithRaw, column: TableColumnData, ev: Event) => {
+        emit('cellMouseEnter', record.raw, column, ev);
+      },
+      30
+    );
+
+    const handleCellMouseLeave = debounce(
+      (record: TableDataWithRaw, column: TableColumnData, ev: Event) => {
+        emit('cellMouseLeave', record.raw, column, ev);
+      },
+      30
+    );
+
     const handleCellDblclick = (
       record: TableDataWithRaw,
       column: TableColumnData,
@@ -1602,6 +1635,12 @@ export default defineComponent({
                 onDblclick={(ev: Event) =>
                   handleCellDblclick(record, column, ev)
                 }
+                onMouseenter={(ev: Event) =>
+                  handleCellMouseEnter(record, column, ev)
+                }
+                onMouseleave={(ev: Event) =>
+                  handleCellMouseLeave(record, column, ev)
+                }
                 onContextmenu={(ev: Event) =>
                   handleCellContextmenu(record, column, ev)
                 }
@@ -1872,6 +1911,12 @@ export default defineComponent({
                   onClick={(ev: Event) => handleCellClick(record, column, ev)}
                   onDblclick={(ev: Event) =>
                     handleCellDblclick(record, column, ev)
+                  }
+                  onMouseenter={(ev: Event) =>
+                    handleCellMouseEnter(record, column, ev)
+                  }
+                  onMouseleave={(ev: Event) =>
+                    handleCellMouseLeave(record, column, ev)
                   }
                   onContextmenu={(ev: Event) =>
                     handleCellContextmenu(record, column, ev)
