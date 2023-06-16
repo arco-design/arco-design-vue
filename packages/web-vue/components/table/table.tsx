@@ -40,7 +40,11 @@ import type {
   TablePagePosition,
   TableRowSelection,
 } from './interface';
-import { getGroupColumns, spliceFromPath } from './utils';
+import {
+  getGroupColumns,
+  mapArrayWithChildren,
+  mapRawTableData,
+} from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useExpand } from './hooks/use-expand';
 import { usePagination } from './hooks/use-pagination';
@@ -1037,7 +1041,7 @@ export default defineComponent({
     });
 
     const sortedData = computed(() => {
-      const data = [...validData.value];
+      const data = mapArrayWithChildren(validData.value);
       if (data.length > 0) {
         if (computedSorter.value?.field) {
           const column = dataColumnMap.get(computedSorter.value.field);
@@ -1063,9 +1067,40 @@ export default defineComponent({
           }
         }
 
-        if (dragState.dragging && dragState.targetPath.length > 0) {
-          const target = spliceFromPath(data, dragState.sourcePath);
-          spliceFromPath(data, dragState.targetPath, target);
+        const { sourcePath, targetPath } = dragState;
+        // drag row to another row
+        if (
+          dragState.dragging &&
+          targetPath.length &&
+          targetPath.toString() !== sourcePath.toString()
+        ) {
+          // same level drag
+          if (
+            sourcePath.length === targetPath.length &&
+            sourcePath.slice(0, -1).toString() ===
+              targetPath.slice(0, -1).toString()
+          ) {
+            let children = data;
+            for (let i = 0; i < sourcePath.length; i++) {
+              const sourceIndex = sourcePath[i];
+              const isLast = i >= sourcePath.length - 1;
+              if (isLast) {
+                const sourceChild = children[sourceIndex];
+                const targetIndex = targetPath[i];
+                if (targetIndex > sourceIndex) {
+                  // move down
+                  children.splice(targetIndex + 1, 0, sourceChild);
+                  children.splice(sourceIndex, 1);
+                } else {
+                  // move up
+                  children.splice(targetIndex, 0, sourceChild);
+                  children.splice(sourceIndex + 1, 1);
+                }
+              } else {
+                children = children[sourceIndex].children ?? [];
+              }
+            }
+          }
         }
       }
       return data;
@@ -1094,9 +1129,7 @@ export default defineComponent({
       return sortedData.value;
     });
 
-    const flattenRawData = computed(() =>
-      flattenData.value.map((item) => item.raw)
-    );
+    const flattenRawData = computed(() => mapRawTableData(flattenData.value));
 
     const getSummaryData = () => {
       return dataColumns.value.reduce((per, column, index) => {
