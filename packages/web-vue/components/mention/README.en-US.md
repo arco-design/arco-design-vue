@@ -32,7 +32,7 @@ description: Used to mention someone or something in the input, often used for p
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
 |change|Triggered when the value changes|value: `string`||
-|search|Trigger on dynamic search prefix|value: `string`||
+|search|Trigger on dynamic search prefix, version 2.47.0 adds prefix param|value: `string`<br>prefix: `string`||
 |select|Triggered when the drop-down option is selected|value: `string \| number \| Record<string, any> \| undefined`||
 |clear|Triggered when the user clicks the clear button|-|2.23.0|
 |focus|Emitted when the text box gets focus|ev: `FocusEvent`|2.42.0|

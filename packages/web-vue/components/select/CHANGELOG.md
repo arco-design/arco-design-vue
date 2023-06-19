@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.47.1
+
+`2023-06-09`
+
+### 🐛 BugFix
+
+- Fix mouse cursor positioning issue in search mode ([#2487](https://github.com/arco-design/arco-design-vue/pull/2487))
+
+
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- the header and footer are displayed in the empty state of select ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+
+
 ## 2.46.0
 
 `2023-05-12`

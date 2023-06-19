@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- add `center` prop ([#2464](https://github.com/arco-design/arco-design-vue/pull/2464))
+
+
 ## 2.41.0
 
 `2022-12-30`

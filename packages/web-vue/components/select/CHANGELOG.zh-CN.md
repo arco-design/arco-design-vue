@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.47.1
+
+`2023-06-09`
+
+### 🐛 问题修复
+
+- 修复搜索模式下鼠标光标定位问题 ([#2487](https://github.com/arco-design/arco-design-vue/pull/2487))
+
+
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 新增功能
+
+- 空状态下可以显示 header 和 footer ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+
+
 ## 2.46.0
 
 `2023-05-12`

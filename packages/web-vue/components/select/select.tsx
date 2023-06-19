@@ -348,6 +348,22 @@ export default defineComponent({
       type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
       default: true,
     },
+    /**
+     * @zh 空状态时是否显示header
+     * @en Whether to display the header in the empty state
+     */
+    showHeaderOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
+    },
+    /**
+     * @zh 空状态时是否显示footer
+     * @en Whether to display the footer in the empty state
+     */
+    showFooterOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
+    },
   },
   emits: {
     'update:modelValue': (
@@ -910,6 +926,8 @@ export default defineComponent({
           empty={validOptionInfos.value.length === 0}
           virtualList={Boolean(props.virtualListProps)}
           scrollbar={props.scrollbar}
+          showHeaderOnEmpty={props.showHeaderOnEmpty}
+          showFooterOnEmpty={props.showFooterOnEmpty}
           onScroll={handleDropdownScroll}
           onReachBottom={handleDropdownReachBottom}
         />

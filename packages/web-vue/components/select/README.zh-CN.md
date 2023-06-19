@@ -82,6 +82,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |limit|多选时最多的选择个数|`number`|`0`|2.18.0|
 |field-names|自定义 `SelectOptionData` 中的字段|`SelectFieldNames`|`-`|2.22.0|
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.38.0|
+|show-header-on-empty|空状态时是否显示header|`boolean`|`false`||
+|show-footer-on-empty|空状态时是否显示footer|`boolean`|`false`||
 ### `<select>` Events
 
 |事件名|描述|参数|版本|

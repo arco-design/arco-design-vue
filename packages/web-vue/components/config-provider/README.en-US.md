@@ -29,7 +29,7 @@ description: Configure in the outermost layer of the application, set once, and 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
 |loading|Custom loading element|-|2.28.0|
-|empty|Custom empty element|-|2.28.0|
+|empty|Custom empty element|component: `string`|2.28.0|
 
 
 
@@ -39,3 +39,7 @@ description: Configure in the outermost layer of the application, set once, and 
 ### Global Config
 
 When the `global` property is set to `true`, the configuration content will be injected into the Vue AppContext, which is generally used to solve the problem that the configuration content cannot take effect when the functional call method of the Modal and Message components is used.
+
+### Customize empty state display
+
+You can customize the display of the global empty state of the component library in `#empty`. If the `Empty` component is used in the slot, you need to enable the `inConfigProvider` property.

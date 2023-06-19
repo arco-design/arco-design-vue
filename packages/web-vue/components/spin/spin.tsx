@@ -30,6 +30,14 @@ export default defineComponent({
      * @en Prompt content
      */
     tip: String,
+    /**
+     * @zh 是否隐藏图标
+     * @en Whether to hide the icon
+     */
+    hideIcon: {
+      type: Boolean,
+      default: false,
+    },
   },
   /**
    * @zh 自定义图标（自动旋转）
@@ -40,6 +48,11 @@ export default defineComponent({
    * @zh 自定义元素
    * @en Custom element
    * @slot element
+   */
+  /**
+   * @zh 自定义提示内容
+   * @en Custom tip
+   * @slot tip
    */
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('spin');
@@ -74,13 +87,18 @@ export default defineComponent({
 
     const renderSpinIcon = () => {
       const style = props.size ? { fontSize: `${props.size}px` } : undefined;
+      const hasTip = Boolean(slots.tip ?? props.tip);
 
       return (
         <>
-          <div class={`${prefixCls}-icon`} style={style}>
-            {renderIcon()}
-          </div>
-          {props.tip && <div class={`${prefixCls}-tip`}>{props.tip}</div>}
+          {!props.hideIcon && (
+            <div class={`${prefixCls}-icon`} style={style}>
+              {renderIcon()}
+            </div>
+          )}
+          {hasTip && (
+            <div class={`${prefixCls}-tip`}>{slots.tip?.() ?? props.tip}</div>
+          )}
         </>
       );
     };

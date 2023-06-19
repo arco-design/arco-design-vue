@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.47.0
+
+`2023-06-02`
+
+### 🆕 Feature
+
+- add hideIcon property ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+- add tip slot ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

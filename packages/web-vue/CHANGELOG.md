@@ -2,6 +2,52 @@
 changelog: true
 ```
 
+## 2.47.1
+
+`2023-06-09`
+
+### 🐛 BugFix
+
+- **tree-select:** Fix the problem that the search content under the virtual list cannot be selected ([#2488](https://github.com/arco-design/arco-design-vue/pull/2488))
+- **select:** Fix mouse cursor positioning issue in search mode ([#2487](https://github.com/arco-design/arco-design-vue/pull/2487))
+- **badge:** Fix the problem that components fail when customizing `prefix-cls` ([#2476](https://github.com/arco-design/arco-design-vue/pull/2476))
+
+
+## 2.47.0
+
+`2023-06-02`
+
+### ⚠️ Important Attention
+
+- **modal:** fix modal confirm missing warning icon in the title ([#2465](https://github.com/arco-design/arco-design-vue/pull/2465))
+- **input-number:** `hide-button` also takes effect when `mode="button"` ([#2461](https://github.com/arco-design/arco-design-vue/pull/2461))
+
+### 🆕 Feature
+
+- **empty:** Add `in-config-provider` property ([#2474](https://github.com/arco-design/arco-design-vue/pull/2474))
+- **alert:** add `center` prop ([#2464](https://github.com/arco-design/arco-design-vue/pull/2464))
+- **config-provider:** empty slots add component attribute ([#2448](https://github.com/arco-design/arco-design-vue/pull/2448))
+- **select:** the header and footer are displayed in the empty state of select ([#2429](https://github.com/arco-design/arco-design-vue/pull/2429))
+- **tree-select:** Add header and footer slots ([#2417](https://github.com/arco-design/arco-design-vue/pull/2417))
+- **mention:** Add `prefix` attribute to search event ([#2356](https://github.com/arco-design/arco-design-vue/pull/2356))
+- **spin:** add hideIcon property ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+- **spin:** add tip slot ([#2303](https://github.com/arco-design/arco-design-vue/pull/2303))
+
+### 🐛 BugFix
+
+- **date-picker:** add getDefaultValueFormat to solve v-model for week selector and quarter selector ([#2437](https://github.com/arco-design/arco-design-vue/pull/2437))
+
+
+
+## 2.46.2
+
+`2023-05-31`
+
+### 🐛 BugFix
+
+- **modal:** fix can not set width attribute ([#2467](https://github.com/arco-design/arco-design-vue/pull/2467))
+
+
 ## 2.46.1
 
 `2023-05-26`

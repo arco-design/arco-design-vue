@@ -7,7 +7,10 @@
       :data="visibleTreeNodeList"
     >
       <template #item="{ item: node }">
-        <TreeNode :key="node.key" v-bind="node.treeNodeProps" />
+        <TreeNode
+          :key="`${searchValue}-${node.key}`"
+          v-bind="node.treeNodeProps"
+        />
       </template>
     </VirtualList>
     <template v-else>
@@ -236,6 +239,10 @@ export default defineComponent({
     },
     filterTreeNode: {
       type: Function as PropType<FilterTreeNode>,
+    },
+    searchValue: {
+      type: String,
+      default: '',
     },
     /**
      * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动，[VirtualListProps](#VirtualListProps)
