@@ -68,6 +68,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否交换时间
+     * @en Whether to exchange time
+     * @version 2.48.0
+     */
+    exchangeTime: {
+      type: Boolean,
+      default: true,
+    },
   },
   /**
    * @zh 自定义空状态元素
@@ -83,8 +92,14 @@ export default defineComponent({
    * @version 2.28.0
    */
   setup(props, { slots }) {
-    const { prefixCls, locale, size, updateAtScroll, scrollToClose } =
-      toRefs(props);
+    const {
+      prefixCls,
+      locale,
+      size,
+      updateAtScroll,
+      scrollToClose,
+      exchangeTime,
+    } = toRefs(props);
 
     const config = reactive({
       slots,
@@ -93,6 +108,7 @@ export default defineComponent({
       size,
       updateAtScroll,
       scrollToClose,
+      exchangeTime,
     });
 
     if (props.global) {
