@@ -183,16 +183,16 @@ export default defineComponent({
       type: Boolean,
     },
     icon: {
-      type: Function as PropType<() => VNode[]>,
+      type: Function as PropType<() => VNode>,
     },
     switcherIcon: {
-      type: Function as PropType<() => VNode[]>,
+      type: Function as PropType<() => VNode>,
     },
     loadingIcon: {
-      type: Function as PropType<() => VNode[]>,
+      type: Function as PropType<() => VNode>,
     },
     dragIcon: {
-      type: Function as PropType<() => VNode[]>,
+      type: Function as PropType<() => VNode>,
     },
     isTail: {
       type: Boolean,

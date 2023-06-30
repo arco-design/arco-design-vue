@@ -126,10 +126,10 @@ description: 对于文件夹、分类目录、组织架构等层级较多的内�
 |checkable|是否显示多选框|`boolean`|`false`|
 |draggable|是否可以拖拽|`boolean`|`false`|
 |isLeaf|是否是叶子节点。动态加载时有效|`boolean`|`false`|
-|icon|节点的图标|`() => VNode[]`|`-`|
-|switcherIcon|定制 switcher 图标，优先级大于 tree|`() => VNode[]`|`-`|
-|loadingIcon|定制 loading 图标，优先级大于 tree|`() => VNode[]`|`-`|
-|dragIcon|定制 drag 图标，优先级大于 tree|`() => VNode[]`|`-`|
+|icon|节点的图标|`() => VNode`|`-`|
+|switcherIcon|定制 switcher 图标，优先级大于 tree|`() => VNode`|`-`|
+|loadingIcon|定制 loading 图标，优先级大于 tree|`() => VNode`|`-`|
+|dragIcon|定制 drag 图标，优先级大于 tree|`() => VNode`|`-`|
 |children|子节点|`TreeNodeData[]`|`-`|
 
 

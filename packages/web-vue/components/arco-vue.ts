@@ -2,7 +2,7 @@ import type { App, Plugin } from 'vue';
 import type { ArcoOptions } from './_utils/types';
 import { addI18nMessages, useLocale, getLocale } from './locale';
 import Affix from './affix';
-import Alter from './alert';
+import Alert from './alert';
 import Anchor, { AnchorLink } from './anchor';
 import AutoComplete from './auto-complete';
 import Avatar, { AvatarGroup } from './avatar';
@@ -38,7 +38,11 @@ import Empty from './empty';
 import Form, { FormItem } from './form';
 import Grid, { Row, Col, GridItem } from './grid';
 import Icon from './icon-component';
-import Image, { ImagePreview, ImagePreviewGroup } from './image';
+import Image, {
+  ImagePreview,
+  ImagePreviewAction,
+  ImagePreviewGroup,
+} from './image';
 import Input, { InputGroup, InputSearch, InputPassword } from './input';
 import InputNumber from './input-number';
 import InputTag from './input-tag';
@@ -142,7 +146,9 @@ const components: Record<string, Plugin> = {
   Tree,
   Upload,
   TreeSelect,
-  Alter,
+  // Historical reason
+  Alter: Alert,
+  Alert,
   Drawer,
   Message,
   Modal,
@@ -203,6 +209,7 @@ const ArcoVue = {
   Col,
   GridItem,
   ImagePreview,
+  ImagePreviewAction,
   ImagePreviewGroup,
   InputGroup,
   InputSearch,

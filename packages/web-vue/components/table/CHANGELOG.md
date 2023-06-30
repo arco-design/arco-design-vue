@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.48.0
+
+`2023-06-30`
+
+### 🆕 Feature
+
+- Added mouse in and out events for cells ([#2489](https://github.com/arco-design/arco-design-vue/pull/2489))
+
+### 🐛 BugFix
+
+- add headerCell down to adjust column width highlight ([#2519](https://github.com/arco-design/arco-design-vue/pull/2519))
+
+
 ## 2.46.1
 
 `2023-05-26`

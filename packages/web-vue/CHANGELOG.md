@@ -2,6 +2,32 @@
 changelog: true
 ```
 
+## 2.48.0
+
+`2023-06-30`
+
+### 🆕 Feature
+
+- **config-provider:** Add `exchangeTime` property ([#2529](https://github.com/arco-design/arco-design-vue/pull/2529))
+- **table:** Added mouse in and out events for cells ([#2489](https://github.com/arco-design/arco-design-vue/pull/2489))
+
+### 🐛 BugFix
+
+- **table:** add headerCell down to adjust column width highlight ([#2519](https://github.com/arco-design/arco-design-vue/pull/2519))
+- **list:** fix virtual-list scrolling position is wrong when data is modified ([#2502](https://github.com/arco-design/arco-design-vue/pull/2502))
+
+
+## 2.47.1
+
+`2023-06-09`
+
+### 🐛 BugFix
+
+- **tree-select:** Fix the problem that the search content under the virtual list cannot be selected ([#2488](https://github.com/arco-design/arco-design-vue/pull/2488))
+- **select:** Fix mouse cursor positioning issue in search mode ([#2487](https://github.com/arco-design/arco-design-vue/pull/2487))
+- **badge:** Fix the problem that components fail when customizing `prefix-cls` ([#2476](https://github.com/arco-design/arco-design-vue/pull/2476))
+
+
 ## 2.47.0
 
 `2023-06-02`

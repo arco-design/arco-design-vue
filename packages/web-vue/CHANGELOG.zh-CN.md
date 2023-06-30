@@ -2,6 +2,32 @@
 changelog: true
 ```
 
+## 2.48.0
+
+`2023-06-30`
+
+### 🆕 新增功能
+
+- **config-provider:** 增加 `exchangeTime` 属性 ([#2529](https://github.com/arco-design/arco-design-vue/pull/2529))
+- **table:** 单元格新增鼠标移入移出事件 ([#2489](https://github.com/arco-design/arco-design-vue/pull/2489))
+
+### 🐛 问题修复
+
+- **table:** 增加headerCell下调整列宽高亮 ([#2519](https://github.com/arco-design/arco-design-vue/pull/2519))
+- **list:** 修复virtual-list在数据发生修改时候滚动位置不对 ([#2502](https://github.com/arco-design/arco-design-vue/pull/2502))
+
+
+## 2.47.1
+
+`2023-06-09`
+
+### 🐛 问题修复
+
+- **tree-select:** 修复在虚拟列表下搜索内容不可选择的问题 ([#2488](https://github.com/arco-design/arco-design-vue/pull/2488))
+- **select:** 修复搜索模式下鼠标光标定位问题 ([#2487](https://github.com/arco-design/arco-design-vue/pull/2487))
+- **badge:** 修复组件在自定义 `prefix-cls` 时失效的问题 ([#2476](https://github.com/arco-design/arco-design-vue/pull/2476))
+
+
 ## 2.47.0
 
 `2023-06-02`

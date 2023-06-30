@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.48.0
+
+`2023-06-30`
+
+### 🆕 新增功能
+
+- 单元格新增鼠标移入移出事件 ([#2489](https://github.com/arco-design/arco-design-vue/pull/2489))
+
+### 🐛 问题修复
+
+- 增加headerCell下调整列宽高亮 ([#2519](https://github.com/arco-design/arco-design-vue/pull/2519))
+
+
 ## 2.46.1
 
 `2023-05-26`

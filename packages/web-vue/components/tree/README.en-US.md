@@ -128,10 +128,10 @@ description: For content with many levels, such as folders, catalogs, and organi
 |checkable|Whether to show checkbox|`boolean`|`false`|
 |draggable|Whether it can be dragged|`boolean`|`false`|
 |isLeaf|Whether it is a leaf node. Effective when loading dynamically|`boolean`|`false`|
-|icon|Node icon|`() => VNode[]`|`-`|
-|switcherIcon|Custom switcher icon, priority is greater than tree|`() => VNode[]`|`-`|
-|loadingIcon|Customize loading icon, priority is greater than tree|`() => VNode[]`|`-`|
-|dragIcon|Custom drag icon, priority is greater than tree|`() => VNode[]`|`-`|
+|icon|Node icon|`() => VNode`|`-`|
+|switcherIcon|Custom switcher icon, priority is greater than tree|`() => VNode`|`-`|
+|loadingIcon|Customize loading icon, priority is greater than tree|`() => VNode`|`-`|
+|dragIcon|Custom drag icon, priority is greater than tree|`() => VNode`|`-`|
 |children|Child node|`TreeNodeData[]`|`-`|
 
 
