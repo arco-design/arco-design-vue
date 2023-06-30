@@ -54,6 +54,9 @@ The basic usage of RangePicker.
   <br />
   <a-range-picker
     showTime
+    :time-picker-props="{
+    defaultValue:['00:00:00','00:00:00']
+    }"
     @change="onChange"
     @select="onSelect"
     style=" width: 380px; "

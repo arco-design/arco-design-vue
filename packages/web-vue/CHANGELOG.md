@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.48.0
+
+`2023-06-30`
+
+### 🆕 Feature
+
+- **config-provider:** Add `exchangeTime` property ([#2529](https://github.com/arco-design/arco-design-vue/pull/2529))
+- **table:** Added mouse in and out events for cells ([#2489](https://github.com/arco-design/arco-design-vue/pull/2489))
+
+### 🐛 BugFix
+
+- **table:** add headerCell down to adjust column width highlight ([#2519](https://github.com/arco-design/arco-design-vue/pull/2519))
+- **list:** fix virtual-list scrolling position is wrong when data is modified ([#2502](https://github.com/arco-design/arco-design-vue/pull/2502))
+
+
 ## 2.47.1
 
 `2023-06-09`

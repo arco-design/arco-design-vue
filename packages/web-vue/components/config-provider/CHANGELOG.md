@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.48.0
+
+`2023-06-30`
+
+### 🆕 Feature
+
+- Add `exchangeTime` property ([#2529](https://github.com/arco-design/arco-design-vue/pull/2529))
+
+
 ## 2.47.0
 
 `2023-06-02`
