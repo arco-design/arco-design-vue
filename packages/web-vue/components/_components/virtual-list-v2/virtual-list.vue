@@ -45,7 +45,15 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, toRefs } from 'vue';
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  ref,
+  toRefs,
+  watch,
+  reactive,
+} from 'vue';
 import { useSize } from './hooks/use-size';
 import VirtualListItem from './virtual-list-item';
 import { getPrefixCls } from '../../_utils/global-config';
@@ -157,6 +165,15 @@ export default defineComponent({
       buffer,
     });
 
+    const shouldScroll = ref(true);
+    const scrollData = reactive({
+      scrollTop: 0,
+      scrollHeight: 0,
+    });
+    // 数据发生修改
+    watch(dataKeys, () => {
+      shouldScroll.value = false;
+    });
     const currentList = computed(() => {
       if (props.threshold && data.value.length <= props.threshold) {
         return data.value;
@@ -168,15 +185,27 @@ export default defineComponent({
     const onScroll = (ev: Event) => {
       const { scrollTop, scrollHeight, offsetHeight } =
         ev.target as HTMLElement;
-
-      const _start = getStartByScroll(scrollTop);
-      if (_start !== start.value) {
-        setStart(_start);
-      }
-      emit('scroll', ev);
-      const bottom = Math.floor(scrollHeight - (scrollTop + offsetHeight));
-      if (bottom <= 0) {
-        emit('reachBottom', ev);
+      if (shouldScroll.value) {
+        scrollData.scrollTop = scrollTop;
+        scrollData.scrollHeight = scrollHeight;
+        const _start = getStartByScroll(scrollTop);
+        if (_start !== start.value) {
+          setStart(_start);
+        }
+        emit('scroll', ev);
+        const bottom = Math.floor(scrollHeight - (scrollTop + offsetHeight));
+        if (bottom <= 0) {
+          emit('reachBottom', ev);
+        }
+      } else {
+        // 数据发生修改完成 (是否采用MutationObserver)
+        if (scrollHeight !== scrollData.scrollHeight) {
+          shouldScroll.value = true;
+          setTimeout(() => {
+            scrollTo(scrollData.scrollTop);
+          }, 10);
+        }
+        scrollTo(scrollData.scrollTop);
       }
     };
 
