@@ -60,6 +60,7 @@ import { Dayjs } from 'dayjs';
 import {
   computed,
   defineComponent,
+  inject,
   nextTick,
   onUnmounted,
   PropType,
@@ -112,6 +113,7 @@ import { getReturnRangeValue } from './hooks/use-value-format';
 import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useI18n } from '../locale';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'RangePicker',
@@ -434,8 +436,13 @@ export default defineComponent({
     } = toRefs(props);
 
     const { locale: globalLocal } = useI18n();
+    const configCtx = inject(configProviderInjectionKey, undefined);
     watchEffect(() => {
       initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+    });
+
+    const mergedExchangeTime = computed(() => {
+      return !(!exchangeTime.value || !(configCtx?.exchangeTime ?? true));
     });
 
     const {
@@ -710,7 +717,7 @@ export default defineComponent({
 
     function getSortedDayjsArrayByExchangeTimeOrNot(newValue: Dayjs[]) {
       let sortedValue = getSortedDayjsArray(newValue);
-      if (hasTime.value && !exchangeTime.value) {
+      if (hasTime.value && !mergedExchangeTime.value) {
         sortedValue = [
           getMergedOpValue(sortedValue[0], newValue[0]),
           getMergedOpValue(sortedValue[1], newValue[1]),
