@@ -49,22 +49,22 @@ export interface TreeNodeData {
    * @zh 节点的图标
    * @en Node icon
    * */
-  icon?: () => VNode[];
+  icon?: () => VNode;
   /**
    * @zh 定制 switcher 图标，优先级大于 tree
    * @en Custom switcher icon, priority is greater than tree
    * */
-  switcherIcon?: () => VNode[];
+  switcherIcon?: () => VNode;
   /**
    * @zh 定制 loading 图标，优先级大于 tree
    * @en Customize loading icon, priority is greater than tree
    * */
-  loadingIcon?: () => VNode[];
+  loadingIcon?: () => VNode;
   /**
    * @zh 定制 drag 图标，优先级大于 tree
    * @en Custom drag icon, priority is greater than tree
    * */
-  dragIcon?: () => VNode[];
+  dragIcon?: () => VNode;
   /**
    * @zh 子节点
    * @en Child node

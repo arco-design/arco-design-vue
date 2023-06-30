@@ -38,7 +38,11 @@ import Empty from './empty';
 import Form, { FormItem } from './form';
 import Grid, { Row, Col, GridItem } from './grid';
 import Icon from './icon-component';
-import Image, { ImagePreview, ImagePreviewAction, ImagePreviewGroup } from './image';
+import Image, {
+  ImagePreview,
+  ImagePreviewAction,
+  ImagePreviewGroup,
+} from './image';
 import Input, { InputGroup, InputSearch, InputPassword } from './input';
 import InputNumber from './input-number';
 import InputTag from './input-tag';
@@ -142,6 +146,8 @@ const components: Record<string, Plugin> = {
   Tree,
   Upload,
   TreeSelect,
+  // Historical reason
+  Alter: Alert,
   Alert,
   Drawer,
   Message,
