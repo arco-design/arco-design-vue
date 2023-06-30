@@ -23,7 +23,7 @@ export default defineComponent({
       type: Object as PropType<TreeNodeData>,
     },
     icons: {
-      type: Object as PropType<Record<string, () => VNode[]>>,
+      type: Object as PropType<Record<string, (() => VNode) | undefined>>,
     },
     nodeStatus: {
       type: Object as PropType<{
