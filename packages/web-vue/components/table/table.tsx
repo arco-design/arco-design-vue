@@ -1147,9 +1147,7 @@ export default defineComponent({
       }, {} as Record<string, any>);
     };
 
-    const getTableDataWithRaw = (
-      data?: TableData[]
-    ): TableDataWithRaw[] | undefined => {
+    const getTableDataWithRaw = (data?: TableData[]): TableDataWithRaw[] => {
       if (data && data.length > 0) {
         return data.map((raw) => {
           return {
@@ -1158,7 +1156,7 @@ export default defineComponent({
           };
         });
       }
-      return undefined;
+      return [];
     };
 
     const summaryData = computed(() => {
@@ -1173,7 +1171,7 @@ export default defineComponent({
         }
         return getTableDataWithRaw([getSummaryData()]);
       }
-      return undefined;
+      return [];
     });
 
     const containerScrollLeft = ref(0);
@@ -1554,7 +1552,7 @@ export default defineComponent({
     const { tableSpan: tableSummarySpan, removedCells: removedSummaryCells } =
       useSpan({
         spanMethod: summarySpanMethod,
-        data: flattenData,
+        data: summaryData,
         columns: allColumns,
       });
 
@@ -1583,7 +1581,7 @@ export default defineComponent({
           onClick={(ev: Event) => handleRowClick(record, ev)}
         >
           {operations.value.map((operation, index) => {
-            const cellId = `${rowIndex}-${index}`;
+            const cellId = `${rowIndex}-${index}-${record.key}`;
             const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
 
             if (removedSummaryCells.value.includes(cellId)) {
@@ -1605,7 +1603,9 @@ export default defineComponent({
             );
           })}
           {dataColumns.value.map((column, index) => {
-            const cellId = `${rowIndex}-${operations.value.length + index}`;
+            const cellId = `${rowIndex}-${operations.value.length + index}-${
+              record.key
+            }`;
             const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
 
             if (removedSummaryCells.value.includes(cellId)) {
@@ -1652,7 +1652,7 @@ export default defineComponent({
     };
 
     const renderSummary = () => {
-      if (summaryData.value) {
+      if (summaryData.value && summaryData.value.length > 0) {
         return (
           <tfoot>
             {summaryData.value.map((data, index) =>
@@ -1839,7 +1839,7 @@ export default defineComponent({
             {...dragTargetEvent}
           >
             {operations.value.map((operation, index) => {
-              const cellId = `${rowIndex}-${index}`;
+              const cellId = `${rowIndex}-${index}-${record.key}`;
               const [rowspan, colspan] = props.spanAll
                 ? tableSpan.value[cellId] ?? [1, 1]
                 : [1, 1];
@@ -1872,7 +1872,7 @@ export default defineComponent({
             {dataColumns.value.map((column, index) => {
               const cellId = `${rowIndex}-${
                 props.spanAll ? operations.value.length + index : index
-              }`;
+              }-${record.key}`;
               const [rowspan, colspan] = tableSpan.value[cellId] ?? [1, 1];
 
               if (removedCells.value.includes(cellId)) {
@@ -2118,7 +2118,7 @@ export default defineComponent({
                 </Component>
               )}
             </ResizeObserver>
-            {summaryData.value && summaryData.value.length && (
+            {summaryData.value && summaryData.value.length > 0 && (
               <div
                 ref={summaryRef}
                 class={`${prefixCls}-tfoot`}
@@ -2160,7 +2160,9 @@ export default defineComponent({
             />
             {props.showHeader && renderHeader()}
             {renderBody()}
-            {summaryData.value && summaryData.value.length && renderSummary()}
+            {summaryData.value &&
+              summaryData.value.length > 0 &&
+              renderSummary()}
           </table>
         </ResizeObserver>
       );
