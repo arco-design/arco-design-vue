@@ -95,7 +95,7 @@ export default defineComponent({
      * @en Maximum height of the list
      */
     maxHeight: {
-      type: Number,
+      type: [Number, String],
       default: 0,
     },
     /**
@@ -319,8 +319,12 @@ export default defineComponent({
     ]);
 
     const contentStyle = computed(() => {
-      if (props.maxHeight > 0) {
-        return { maxHeight: `${props.maxHeight}px`, overflowY: 'auto' };
+      if (props.maxHeight) {
+        const maxHeight =
+          typeof props.maxHeight === 'number'
+            ? `${props.maxHeight}px`
+            : props.maxHeight;
+        return { maxHeight, overflowY: 'auto' };
       }
       return undefined;
     });
