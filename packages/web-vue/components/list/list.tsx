@@ -25,6 +25,7 @@ import { getAllElements } from '../_utils/vue-utils';
 import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import { useComponentRef } from '../_hooks/use-component-ref';
 import { useScrollbar } from '../_hooks/use-scrollbar';
+import { isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'List',
@@ -95,7 +96,7 @@ export default defineComponent({
      * @en Maximum height of the list
      */
     maxHeight: {
-      type: [Number, String],
+      type: [String, Number] as PropType<string | number>,
       default: 0,
     },
     /**
@@ -320,10 +321,9 @@ export default defineComponent({
 
     const contentStyle = computed(() => {
       if (props.maxHeight) {
-        const maxHeight =
-          typeof props.maxHeight === 'number'
-            ? `${props.maxHeight}px`
-            : props.maxHeight;
+        const maxHeight = isNumber(props.maxHeight)
+          ? `${props.maxHeight}px`
+          : props.maxHeight;
         return { maxHeight, overflowY: 'auto' };
       }
       return undefined;
