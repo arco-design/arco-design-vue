@@ -1554,7 +1554,7 @@ export default defineComponent({
     const { tableSpan: tableSummarySpan, removedCells: removedSummaryCells } =
       useSpan({
         spanMethod: summarySpanMethod,
-        data: flattenData,
+        data: summaryData,
         columns: allColumns,
       });
 
