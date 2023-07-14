@@ -7,7 +7,7 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
       <div class=\\"arco-calendar-header-icon\\" role=\\"button\\" tabindex=\\"0\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
           <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
         </svg></div>
-      <div class=\\"arco-calendar-header-value\\">2023 年 06 月</div>
+      <div class=\\"arco-calendar-header-value\\">2023 年 07 月</div>
       <div role=\\"button\\" tabindex=\\"0\\" class=\\"arco-calendar-header-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
           <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
         </svg></div><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-small arco-btn-status-normal\\" type=\\"button\\">
@@ -32,6 +32,27 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
           <div class=\\"arco-calendar-cell\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
+                <div class=\\"arco-calendar-date-circle\\">25</div>
+              </div>
+            </div>
+          </div>
+          <div class=\\"arco-calendar-cell\\">
+            <div class=\\"arco-calendar-date\\">
+              <div class=\\"arco-calendar-date-value\\">
+                <div class=\\"arco-calendar-date-circle\\">26</div>
+              </div>
+            </div>
+          </div>
+          <div class=\\"arco-calendar-cell\\">
+            <div class=\\"arco-calendar-date\\">
+              <div class=\\"arco-calendar-date-value\\">
+                <div class=\\"arco-calendar-date-circle\\">27</div>
+              </div>
+            </div>
+          </div>
+          <div class=\\"arco-calendar-cell\\">
+            <div class=\\"arco-calendar-date\\">
+              <div class=\\"arco-calendar-date-value\\">
                 <div class=\\"arco-calendar-date-circle\\">28</div>
               </div>
             </div>
@@ -50,13 +71,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-          <div class=\\"arco-calendar-cell\\">
-            <div class=\\"arco-calendar-date\\">
-              <div class=\\"arco-calendar-date-value\\">
-                <div class=\\"arco-calendar-date-circle\\">31</div>
-              </div>
-            </div>
-          </div>
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -64,6 +78,8 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
+        </div>
+        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -78,8 +94,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-        </div>
-        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -115,6 +129,8 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
+        </div>
+        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -129,8 +145,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-        </div>
-        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -152,7 +166,7 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
+          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view arco-calendar-cell-today arco-calendar-cell-selected\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
                 <div class=\\"arco-calendar-date-circle\\">14</div>
@@ -166,6 +180,8 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
+        </div>
+        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -180,8 +196,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-        </div>
-        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -217,6 +231,8 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
+        </div>
+        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -231,8 +247,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-        </div>
-        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -268,10 +282,19 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view arco-calendar-cell-today arco-calendar-cell-selected\\">
+        </div>
+        <div class=\\"arco-calendar-month-row\\">
+          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
                 <div class=\\"arco-calendar-date-circle\\">30</div>
+              </div>
+            </div>
+          </div>
+          <div class=\\"arco-calendar-cell arco-calendar-cell-in-view\\">
+            <div class=\\"arco-calendar-date\\">
+              <div class=\\"arco-calendar-date-value\\">
+                <div class=\\"arco-calendar-date-circle\\">31</div>
               </div>
             </div>
           </div>
@@ -282,8 +305,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-        </div>
-        <div class=\\"arco-calendar-month-row\\">
           <div class=\\"arco-calendar-cell\\">
             <div class=\\"arco-calendar-date\\">
               <div class=\\"arco-calendar-date-value\\">
@@ -312,32 +333,11 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
               </div>
             </div>
           </div>
-          <div class=\\"arco-calendar-cell\\">
-            <div class=\\"arco-calendar-date\\">
-              <div class=\\"arco-calendar-date-value\\">
-                <div class=\\"arco-calendar-date-circle\\">6</div>
-              </div>
-            </div>
-          </div>
-          <div class=\\"arco-calendar-cell\\">
-            <div class=\\"arco-calendar-date\\">
-              <div class=\\"arco-calendar-date-value\\">
-                <div class=\\"arco-calendar-date-circle\\">7</div>
-              </div>
-            </div>
-          </div>
-          <div class=\\"arco-calendar-cell\\">
-            <div class=\\"arco-calendar-date\\">
-              <div class=\\"arco-calendar-date-value\\">
-                <div class=\\"arco-calendar-date-circle\\">8</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
   <!---->
   <!---->
-</div> select: Fri Jun 30 2023 18:50:40 GMT+0800 (China Standard Time)"
+</div> select: Fri Jul 14 2023 18:46:56 GMT+0800 (China Standard Time)"
 `;

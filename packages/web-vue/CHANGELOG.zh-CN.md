@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.48.1
+
+`2023-07-14`
+
+### 🐛 问题修复
+
+- **image:** 在错误状态下，没有 alt 或description情况图标不垂直居中 ([#2563](https://github.com/arco-design/arco-design-vue/pull/2563))
+- **divider:** 修复竖向自适应高度 ([#2561](https://github.com/arco-design/arco-design-vue/pull/2561))
+- **table:** 修复 `summary-span-method` 属性中传出参数错误的问题 ([#2552](https://github.com/arco-design/arco-design-vue/pull/2552))
+- **table:** 修复子树的合并单元格的bug ([#2540](https://github.com/arco-design/arco-design-vue/pull/2540))
+
+
 ## 2.48.0
 
 `2023-06-30`

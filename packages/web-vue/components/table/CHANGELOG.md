@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.48.1
+
+`2023-07-14`
+
+### 🐛 BugFix
+
+- Fix the wrong outgoing parameter in the `summary-span-method` attribute ([#2552](https://github.com/arco-design/arco-design-vue/pull/2552))
+- fix the bug of merging cells in subtrees ([#2540](https://github.com/arco-design/arco-design-vue/pull/2540))
+
+
 ## 2.48.0
 
 `2023-06-30`

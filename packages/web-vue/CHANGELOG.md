@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.48.1
+
+`2023-07-14`
+
+### 🐛 BugFix
+
+- **image:** icon not centered without alt or description in error state ([#2563](https://github.com/arco-design/arco-design-vue/pull/2563))
+- **divider:** fix  adaptive height issue with divider ([#2561](https://github.com/arco-design/arco-design-vue/pull/2561))
+- **table:** Fix the wrong outgoing parameter in the `summary-span-method` attribute ([#2552](https://github.com/arco-design/arco-design-vue/pull/2552))
+- **table:** fix the bug of merging cells in subtrees ([#2540](https://github.com/arco-design/arco-design-vue/pull/2540))
+
+
 ## 2.48.0
 
 `2023-06-30`

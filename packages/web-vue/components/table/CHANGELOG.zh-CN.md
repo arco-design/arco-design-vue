@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.48.1
+
+`2023-07-14`
+
+### 🐛 问题修复
+
+- 修复 `summary-span-method` 属性中传出参数错误的问题 ([#2552](https://github.com/arco-design/arco-design-vue/pull/2552))
+- 修复子树的合并单元格的bug ([#2540](https://github.com/arco-design/arco-design-vue/pull/2540))
+
+
 ## 2.48.0
 
 `2023-06-30`
