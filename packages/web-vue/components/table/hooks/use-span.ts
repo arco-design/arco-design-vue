@@ -1,4 +1,4 @@
-import { computed, Ref } from 'vue';
+import { computed, Ref, ref } from 'vue';
 import {
   TableColumnData,
   TableData,
@@ -23,42 +23,55 @@ export const useSpan = ({
   data: Ref<TableDataWithRaw[]>;
   columns: Ref<(TableColumnData | TableOperationColumn)[]>;
 }) => {
+  const flattenTableSpan = (
+    tableData: TableDataWithRaw[],
+    span: Record<string, [number, number]>
+  ) => {
+    tableData?.forEach((record, rowIndex) => {
+      if (record.hasSubtree && record.children?.length) {
+        flattenTableSpan(record.children || [], span);
+      }
+      columns.value.forEach((column, columnIndex) => {
+        const { rowspan = 1, colspan = 1 } =
+          spanMethod.value?.({
+            record: record.raw,
+            column,
+            rowIndex,
+            columnIndex,
+          }) ?? {};
+        if (rowspan > 1 || colspan > 1) {
+          span[`${rowIndex}-${columnIndex}-${record.key}`] = [rowspan, colspan];
+          Array.from({ length: rowspan }).forEach((_, r) => {
+            const key = tableData?.[rowIndex + r].key;
+            Array.from({ length: colspan }).forEach((_, c) => {
+              if (
+                `${rowIndex}-${columnIndex}-${record.key}` !==
+                `${rowIndex + r}-${columnIndex + c}-${key}`
+              ) {
+                spanzero.value[`${rowIndex + r}-${columnIndex + c}-${key}`] = [
+                  0, 0,
+                ];
+              }
+            });
+          });
+        }
+      });
+    });
+  };
+  let spanzero = ref<Record<string, [number, number]>>({});
   const tableSpan = computed(() => {
     const span: Record<string, [number, number]> = {};
+    spanzero.value = {};
     if (spanMethod.value) {
-      data.value.forEach((record, rowIndex) => {
-        columns.value.forEach((column, columnIndex) => {
-          const { rowspan = 1, colspan = 1 } =
-            spanMethod.value?.({
-              record: record.raw,
-              column,
-              rowIndex,
-              columnIndex,
-            }) ?? {};
-          if (rowspan > 1 || colspan > 1) {
-            span[`${rowIndex}-${columnIndex}`] = [rowspan, colspan];
-          }
-        });
-      });
+      flattenTableSpan(data.value, span);
     }
-
     return span;
   });
 
   const removedCells = computed(() => {
     const data: string[] = [];
-    for (const indexKey of Object.keys(tableSpan.value)) {
-      const indexArray = indexKey.split('-').map((item) => Number(item));
-      const span = tableSpan.value[indexKey];
-      for (let i = 1; i < span[0]; i++) {
-        data.push(`${indexArray[0] + i}-${indexArray[1]}`);
-        for (let j = 1; j < span[1]; j++) {
-          data.push(`${indexArray[0] + i}-${indexArray[1] + j}`);
-        }
-      }
-      for (let i = 1; i < span[1]; i++) {
-        data.push(`${indexArray[0]}-${indexArray[1] + i}`);
-      }
+    for (const indexKey of Object.keys(spanzero.value)) {
+      data.push(indexKey);
     }
     return data;
   });
