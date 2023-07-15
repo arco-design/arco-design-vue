@@ -28,7 +28,7 @@
         :disabled="mergedDisabled"
         :opened="panelVisible"
         :error="error"
-        :border="border"
+        :bordered="bordered"
         :placeholder="placeholder"
         :multiple="isMultiple"
         v-bind="$attrs"
@@ -187,7 +187,7 @@ export default defineComponent({
      * @zh 是否显示边框
      * @en Whether to show the border
      * */
-    border: {
+    bordered: {
       type: Boolean,
     },
     /**
