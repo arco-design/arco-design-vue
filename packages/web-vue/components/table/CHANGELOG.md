@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🐛 BugFix
+
+- Fix the wrong parameter of rowClass function record ([#2570](https://github.com/arco-design/arco-design-vue/pull/2570))
+
+
 ## 2.48.1
 
 `2023-07-14`

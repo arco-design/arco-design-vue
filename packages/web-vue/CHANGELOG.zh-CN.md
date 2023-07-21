@@ -2,6 +2,27 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 新增功能
+
+- **cascader:** 增加虚拟列表功能 ([#2577](https://github.com/arco-design/arco-design-vue/pull/2577))
+- **tree-select:** 增加空状态下 header 和 footer 的显示状态 ([#2573](https://github.com/arco-design/arco-design-vue/pull/2573))
+- **input-number:** 增加数值操作自定义图标插槽 ([#2560](https://github.com/arco-design/arco-design-vue/pull/2560))
+- **list:** 滚动最大高度支持字符串类型 ([#2544](https://github.com/arco-design/arco-design-vue/pull/2544))
+
+### 🐛 问题修复
+
+- **table:** 修复 rowClass 函数 record 参数错误的问题 ([#2570](https://github.com/arco-design/arco-design-vue/pull/2570))
+- **tree-select:** 修复 border 属性失效的问题 ([#2568](https://github.com/arco-design/arco-design-vue/pull/2568))
+
+### 💅 样式更新
+
+- **result:** 修复 500 图片错位问题 ([#2578](https://github.com/arco-design/arco-design-vue/pull/2578))
+
+
 ## 2.48.1
 
 `2023-07-14`

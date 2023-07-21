@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 新增功能
+
+- 增加空状态下 header 和 footer 的显示状态 ([#2573](https://github.com/arco-design/arco-design-vue/pull/2573))
+
+### 🐛 问题修复
+
+- 修复 border 属性失效的问题 ([#2568](https://github.com/arco-design/arco-design-vue/pull/2568))
+
+
 ## 2.47.1
 
 `2023-06-09`

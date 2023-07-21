@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 Feature
+
+- Add header and footer visibility in empty data state ([#2573](https://github.com/arco-design/arco-design-vue/pull/2573))
+
+### 🐛 BugFix
+
+- Fix the problem that the border attribute is invalid ([#2568](https://github.com/arco-design/arco-design-vue/pull/2568))
+
+
 ## 2.47.1
 
 `2023-06-09`

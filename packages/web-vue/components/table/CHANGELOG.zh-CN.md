@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🐛 问题修复
+
+- 修复 rowClass 函数 record 参数错误的问题 ([#2570](https://github.com/arco-design/arco-design-vue/pull/2570))
+
+
 ## 2.48.1
 
 `2023-07-14`

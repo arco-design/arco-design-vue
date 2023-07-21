@@ -76,6 +76,8 @@ description: 可以对树形结构数据进行选择。
 |fallback-option|为 value 中找不到匹配项的 key 定义节点数据|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|设置可选择的节点，默认全部可选|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.39.0|
+|show-header-on-empty|空状态时是否显示header|`boolean`|`false`||
+|show-footer-on-empty|空状态时是否显示footer|`boolean`|`false`||
 ### `<tree-select>` Events
 
 |事件名|描述|参数|

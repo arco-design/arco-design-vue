@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 Feature
+
+- add slots for input-number box value manipulation icons ([#2560](https://github.com/arco-design/arco-design-vue/pull/2560))
+
+
 ## 2.47.0
 
 `2023-06-02`

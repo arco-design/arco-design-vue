@@ -2,6 +2,27 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 Feature
+
+- **cascader:** Add virtual list support ([#2577](https://github.com/arco-design/arco-design-vue/pull/2577))
+- **tree-select:** Add header and footer visibility in empty data state ([#2573](https://github.com/arco-design/arco-design-vue/pull/2573))
+- **input-number:** add slots for input-number box value manipulation icons ([#2560](https://github.com/arco-design/arco-design-vue/pull/2560))
+- **list:** Scroll maxHeight supports string type ([#2544](https://github.com/arco-design/arco-design-vue/pull/2544))
+
+### 🐛 BugFix
+
+- **table:** Fix the wrong parameter of rowClass function record ([#2570](https://github.com/arco-design/arco-design-vue/pull/2570))
+- **tree-select:** Fix the problem that the border attribute is invalid ([#2568](https://github.com/arco-design/arco-design-vue/pull/2568))
+
+### 💅 Style
+
+- **result:** Fix 500 image misalignment issues ([#2578](https://github.com/arco-design/arco-design-vue/pull/2578))
+
+
 ## 2.48.1
 
 `2023-07-14`
