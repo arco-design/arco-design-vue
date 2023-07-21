@@ -214,6 +214,16 @@ export default defineComponent({
    * @en Append
    * @slot append
    */
+  /**
+   * @zh 数值增加图标
+   * @en Plus
+   * @slot plus
+   */
+  /**
+   * @zh 数值减少图标
+   * @en Minus
+   * @slot minus
+   */
   setup(props, { emit, slots }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
@@ -498,7 +508,7 @@ export default defineComponent({
               onMouseup={clearRepeatTimer}
               onMouseleave={clearRepeatTimer}
             >
-              <IconUp />
+              {slots.plus ? slots.plus?.() : <IconUp />}
             </button>
             <button
               class={[
@@ -515,7 +525,7 @@ export default defineComponent({
               onMouseup={clearRepeatTimer}
               onMouseleave={clearRepeatTimer}
             >
-              <IconDown />
+              {slots.minus ? slots.minus?.() : <IconDown />}
             </button>
           </div>
         </>
