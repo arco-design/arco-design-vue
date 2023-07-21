@@ -1825,7 +1825,7 @@ export default defineComponent({
                 [`${prefixCls}-tr-drag`]: isDragTarget,
               },
               isFunction(props.rowClass)
-                ? props.rowClass(record, rowIndex)
+                ? props.rowClass(record.raw, rowIndex)
                 : props.rowClass,
             ]}
             rowIndex={rowIndex}
