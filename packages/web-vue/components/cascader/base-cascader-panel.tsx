@@ -1,11 +1,11 @@
 import { defineComponent, inject, PropType, TransitionGroup } from 'vue';
 import { configProviderInjectionKey } from '../config-provider/context';
 import { CascaderOptionInfo } from './interface';
-import CascaderOption from './cascader-option';
 import { getPrefixCls } from '../_utils/global-config';
 import Empty from '../empty';
 import Spin from '../spin';
-import Scrollbar from '../scrollbar';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import CascaderColumn from './cascader-column';
 
 export default defineComponent({
   name: 'BaseCascaderPanel',
@@ -27,6 +27,9 @@ export default defineComponent({
     checkStrictly: Boolean,
     loading: Boolean,
     dropdown: Boolean,
+    virtualListProps: {
+      type: Object as PropType<VirtualListProps>,
+    },
   },
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('cascader');
@@ -36,50 +39,6 @@ export default defineComponent({
       return (
         slots.empty?.() ??
         configCtx?.slots.empty?.({ component: 'cascader' }) ?? <Empty />
-      );
-    };
-
-    const renderColumn = (column: CascaderOptionInfo[], level = 0) => {
-      return (
-        <div
-          class={`${prefixCls}-panel-column`}
-          key={`column-${level}`}
-          style={{ zIndex: props.totalLevel - level }}
-        >
-          <Scrollbar class={`${prefixCls}-column-content`}>
-            {column.length === 0 ? (
-              <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
-            ) : (
-              <ul
-                role="menu"
-                class={[
-                  `${prefixCls}-list`,
-                  {
-                    [`${prefixCls}-list-multiple`]: Boolean(props?.multiple),
-                    [`${prefixCls}-list-strictly`]: Boolean(
-                      props?.checkStrictly
-                    ),
-                  },
-                ]}
-              >
-                {column.map((item) => {
-                  return (
-                    <CascaderOption
-                      key={item.key}
-                      option={item}
-                      active={
-                        props.selectedPath.includes(item.key) ||
-                        item.key === props.activeKey
-                      }
-                      multiple={props.multiple}
-                      checkStrictly={props.checkStrictly}
-                    />
-                  );
-                })}
-              </ul>
-            )}
-          </Scrollbar>
-        </div>
       );
     };
 
@@ -104,9 +63,19 @@ export default defineComponent({
           </div>
         );
       }
-      return props.displayColumns.map((column, index) =>
-        renderColumn(column, index)
-      );
+      return props.displayColumns.map((column, index) => (
+        <CascaderColumn
+          key={`column-${index}`}
+          column={column}
+          level={index}
+          selectedPath={props.selectedPath}
+          activeKey={props.activeKey}
+          totalLevel={props.totalLevel}
+          multiple={props.multiple}
+          checkStrictly={props.checkStrictly}
+          virtualListProps={props.virtualListProps}
+        />
+      ));
     };
 
     return () => (
