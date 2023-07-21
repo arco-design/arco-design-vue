@@ -104,7 +104,7 @@ export default defineComponent({
         username: 'admin',
         password: 'admin',
       };
-      await userStore.login(values);
+      await userStore.login(userInfo);
     }
     return {
       login,
