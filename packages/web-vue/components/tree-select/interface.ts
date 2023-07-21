@@ -71,4 +71,6 @@ export interface TreeSelectProps {
   disableFilter: boolean;
   popupContainer: string | HTMLElement | null | undefined;
   fallbackOption: FallbackOption;
+  showHeaderOnEmpty?: boolean;
+  showFooterOnEmpty?: boolean;
 }
