@@ -195,6 +195,7 @@ export default defineComponent({
      * */
     border: {
       type: Boolean,
+      default: true,
     },
     /**
      * @zh 是否允许搜索
