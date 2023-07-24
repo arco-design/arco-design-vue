@@ -49,7 +49,7 @@ description: 可以对树形结构数据进行选择。
 |loading|是否为加载中状态|`boolean`|`false`||
 |error|是否为错误状态|`boolean`|`false`||
 |size|选择框的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
-|border|是否显示边框|`boolean`|`false`||
+|border|是否显示边框|`boolean`|`true`||
 |allow-search|是否允许搜索|`boolean \| { retainInputValue?: boolean }`|`false (single) \| true (multiple)`||
 |allow-clear|是否允许清除|`boolean`|`false`||
 |placeholder|提示文案|`string`|`-`||

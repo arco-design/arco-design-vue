@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.1
+
+`2023-07-24`
+
+### 🐛 BugFix
+
+- **tree-select:** Fix the problem that the default value of the `border` attribute is wrong ([#2580](https://github.com/arco-design/arco-design-vue/pull/2580))
+
+
 ## 2.49.0
 
 `2023-07-21`
