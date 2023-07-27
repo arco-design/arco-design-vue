@@ -48,6 +48,8 @@ description: Only input boxes in numeric format are allowed.
 |allow-clear|Whether to allow the input to be cleared|`boolean`|`false`||
 |model-event|Trigger event for `v-model`|`'change' \| 'input'`|`'change'`||
 |read-only|Readonly|`boolean`|`false`|3.33.1|
+|keyboard|If enable keyboard behavior|`boolean`|`true`||
+
 ### `<input-number>` Events
 
 |Event Name|Description|Parameters|version|
