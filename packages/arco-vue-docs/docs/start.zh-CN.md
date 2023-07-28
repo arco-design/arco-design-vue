@@ -66,31 +66,20 @@ export default defineConfig({
 
 注意：这种方法并不会处理用户在 script 中手动导入的组件，比如 Message 组件，用户仍需要手动导入组件对应的样式文件，例如 `@arco-design/web-vue/es/message/style/css.js`。
 
-## 按需加载
+## 按需加载与组件库主题（Arco 插件）
 
-也可以使用手动导入的方式按需加载组件，组件库已经默认支持 Tree Shaking。可以配合 [vite-plugin-style-import](https://github.com/vbenjs/vite-plugin-style-import) 插件自动加载组件样式。
+另外也可以使用 Arco 提供的 Vite 插件进行按需加载和组件库样式配置，[@arco-plugins/vite-vue](https://github.com/arco-design/arco-plugins/tree/main/packages/plugin-vite-vue) 插件会自动加载组件样式。
 
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { createStyleImportPlugin } from 'vite-plugin-style-import'
+import { vitePluginForArco } from '@arco-plugins/vite-vue'
 
 export default defineConfig({
   plugins: [
     vue(),
-    createStyleImportPlugin({
-      libs: [
-        {
-          libraryName: '@arco-design/web-vue',
-          esModule: true,
-          resolveStyle: (name) => {
-            // css
-            return `@arco-design/web-vue/es/${name}/style/css.js`
-            // less
-            return `@arco-design/web-vue/es/${name}/style/index.js`
-          },
-        }
-      ]
+    vitePluginForArco({
+      style: 'css'
     })
   ]
 })

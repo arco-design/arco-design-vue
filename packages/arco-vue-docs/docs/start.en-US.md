@@ -68,31 +68,20 @@ export default defineConfig({
 
 Note: This method does not process the components manually imported by the user in the script, such as the Message component. The user still needs to manually import the style file corresponding to the component, such as `@arco-design/web-vue/es/message/style/css.js` .
 
-## On-demand Import
+## On-demand loading and component library themes (Arco plugin)
 
-You can also use manual import to load components on demand. The component library already supports Tree Shaking by default. It can be used with [vite-plugin-style-import](https://github.com/vbenjs/vite-plugin-style-import) to automatically load component styles.
+In addition, you can also use the Vite plugin provided by Arco for on-demand loading and component library style configuration, [@arco-plugins/vite-vue](https://github.com/arco-design/arco-plugins/tree/main/ packages/plugin-vite-vue) plugin will automatically load component styles.
 
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { createStyleImportPlugin } from 'vite-plugin-style-import'
+import { vitePluginForArco } from '@arco-plugins/vite-vue'
 
 export default defineConfig({
   plugins: [
     vue(),
-    createStyleImportPlugin({
-      libs: [
-        {
-          libraryName: '@arco-design/web-vue',
-          esModule: true,
-          resolveStyle: (name) => {
-            // css
-            return `@arco-design/web-vue/es/${name}/style/css.js`
-            // less
-            return `@arco-design/web-vue/es/${name}/style/index.js`
-          },
-        }
-      ]
+    vitePluginForArco({
+      style: 'css'
     })
   ]
 })
