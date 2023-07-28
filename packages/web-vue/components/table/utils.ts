@@ -66,7 +66,8 @@ const setParentFixed = (column: TableColumnData, fixed: 'left' | 'right') => {
 // Get the grouped header row data
 export const getGroupColumns = (
   columns: TableColumnData[],
-  columnMap: Map<string, TableColumnData>
+  columnMap: Map<string, TableColumnData>,
+  columnWidth: Record<string, number>
 ) => {
   const totalHeaderRows = getTotalHeaderRows(columns);
 
@@ -122,6 +123,10 @@ export const getGroupColumns = (
 
         if (isUndefined(cell.dataIndex) || isNull(cell.dataIndex)) {
           cell.dataIndex = `__arco_data_index_${dataColumns.length}`;
+        }
+
+        if (columnWidth[cell.dataIndex]) {
+          cell._resizeWidth = columnWidth[cell.dataIndex];
         }
 
         // dataColumns和groupColumns公用一个cell的引用
@@ -209,7 +214,7 @@ export const getFixedNumber = (
       if (first.dataIndex === item.dataIndex) {
         break;
       }
-      count += item.width ?? 0;
+      count += item._resizeWidth ?? item.width ?? 0;
     }
     return count;
   }
