@@ -342,26 +342,29 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
   return columns;
 };
 
-export const spliceFromPath = (
-  data: TableDataWithRaw[],
-  path: number[],
-  item?: TableDataWithRaw
-): TableDataWithRaw | undefined => {
-  let parent = data;
-  for (let i = 0; i < path.length; i++) {
-    const index = path[i];
-    const isLast = i >= path.length - 1;
-    if (isLast) {
-      if (item) {
-        parent.splice(index, 0, item);
-      } else {
-        return parent.splice(index, 1)[0];
-      }
+export function mapArrayWithChildren<
+  T extends Array<{ [key: string]: any; children?: T }>
+>(arr: T): T {
+  return arr.map((item) => {
+    const newItem = { ...item };
+    if (newItem.children) {
+      newItem.children = mapArrayWithChildren(newItem.children);
     }
-    parent = parent[index].children ?? [];
-  }
-  return undefined;
-};
+    return newItem;
+  }) as T;
+}
+
+export function mapRawTableData<T extends TableDataWithRaw[]>(
+  arr: T
+): TableDataWithRaw['raw'][] {
+  return arr.map((item) => {
+    const rawItem = item.raw;
+    if (item.children && rawItem.children) {
+      rawItem.children = mapRawTableData(item.children);
+    }
+    return item.raw;
+  });
+}
 
 export const getLeafKeys = (record: TableDataWithRaw) => {
   const keys: BaseType[] = [];

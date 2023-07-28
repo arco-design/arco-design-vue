@@ -30,8 +30,8 @@ export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {
 
   const handleDragStart = (
     ev: DragEvent,
-    targetKey: string,
-    targetPath: number[],
+    sourceKey: string,
+    sourcePath: number[],
     data: Record<string, unknown>
   ) => {
     if (ev.dataTransfer) {
@@ -44,16 +44,21 @@ export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {
       }
     }
     dragState.dragging = true;
-    dragState.sourceKey = targetKey;
-    dragState.sourcePath = targetPath;
+    dragState.sourceKey = sourceKey;
+    dragState.sourcePath = sourcePath;
+    dragState.targetPath = [...sourcePath];
     dragState.data = data;
   };
 
-  const handleDragEnter = (ev: DragEvent, sourcePath: number[]) => {
+  const handleDragEnter = (ev: DragEvent, targetPath: number[]) => {
     if (ev.dataTransfer) {
       ev.dataTransfer.dropEffect = 'move';
     }
-    dragState.targetPath = sourcePath;
+    // prevent unnecessary data update, which will cause the table to re-render
+    if (dragState.targetPath.toString() !== targetPath.toString()) {
+      // drag row to another row
+      dragState.targetPath = targetPath;
+    }
     ev.preventDefault();
   };
 
