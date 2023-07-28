@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 BugFix
+
+- Fix the problem of turning on the adjustment of column width in the fixed column ([#2598](https://github.com/arco-design/arco-design-vue/pull/2598))
+- fix drag issue in tree table ([#2503](https://github.com/arco-design/arco-design-vue/pull/2503))
+
+
 ## 2.49.0
 
 `2023-07-21`

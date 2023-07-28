@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 问题修复
+
+- **statistic:** 修复 `value-style` 在数字内容时不能修改字体大小的问题 ([#2600](https://github.com/arco-design/arco-design-vue/pull/2600))
+- **table:** 修复在固定列中开启调整列宽出现的问题 ([#2598](https://github.com/arco-design/arco-design-vue/pull/2598))
+- **typography:** 增强对连续长单词的省略支持 ([#2583](https://github.com/arco-design/arco-design-vue/pull/2583))
+- **table:** 修复树形表格拖拽问题 ([#2503](https://github.com/arco-design/arco-design-vue/pull/2503))
+
+
 ## 2.49.1
 
 `2023-07-24`

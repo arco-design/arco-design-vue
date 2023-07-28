@@ -2,6 +2,18 @@
 changelog: true
 ```
 
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 BugFix
+
+- **statistic:** Fix the problem that `value-style` cannot modify the font size in digital content ([#2600](https://github.com/arco-design/arco-design-vue/pull/2600))
+- **table:** Fix the problem of turning on the adjustment of column width in the fixed column ([#2598](https://github.com/arco-design/arco-design-vue/pull/2598))
+- **typography:** enhanced typography styles for handling long words ([#2583](https://github.com/arco-design/arco-design-vue/pull/2583))
+- **table:** fix drag issue in tree table ([#2503](https://github.com/arco-design/arco-design-vue/pull/2503))
+
+
 ## 2.49.1
 
 `2023-07-24`

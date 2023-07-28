@@ -2032,7 +2032,6 @@ export default defineComponent({
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
-                  columnWidth={columnWidth}
                   resizable={resizable}
                   onClick={(ev: Event) => handleHeaderClick(column, ev)}
                 />

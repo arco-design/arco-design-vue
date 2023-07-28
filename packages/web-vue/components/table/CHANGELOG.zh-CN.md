@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 问题修复
+
+- 修复在固定列中开启调整列宽出现的问题 ([#2598](https://github.com/arco-design/arco-design-vue/pull/2598))
+- 修复树形表格拖拽问题 ([#2503](https://github.com/arco-design/arco-design-vue/pull/2503))
+
+
 ## 2.49.0
 
 `2023-07-21`
