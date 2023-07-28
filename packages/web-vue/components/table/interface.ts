@@ -281,6 +281,7 @@ export interface TableColumnData {
   rowSpan?: number;
   index?: number;
   parent?: TableColumnData;
+  _resizeWidth?: number;
 }
 
 export interface TableBorder {

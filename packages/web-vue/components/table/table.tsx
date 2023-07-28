@@ -760,12 +760,18 @@ export default defineComponent({
     const dataColumns = ref<TableColumnData[]>([]);
     const groupColumns = ref<TableColumnData[][]>([]);
 
+    const { resizingColumn, columnWidth, handleThMouseDown } = useColumnResize(
+      thRefs,
+      emit
+    );
+
     watch(
-      [columns, slotColumns],
+      [columns, slotColumns, columnWidth],
       ([columns, slotColumns]) => {
         const result = getGroupColumns(
           slotColumns ?? columns ?? [],
-          dataColumnMap
+          dataColumnMap,
+          columnWidth
         );
         dataColumns.value = result.dataColumns;
         groupColumns.value = result.groupColumns;
@@ -993,11 +999,6 @@ export default defineComponent({
       handleDragEnd,
       handleDrop,
     } = useDrag(draggable);
-
-    const { resizingColumn, columnWidth, handleThMouseDown } = useColumnResize(
-      thRefs,
-      emit
-    );
 
     const processedData = computed(() => {
       const travel = (data: TableData[]) => {
@@ -1998,6 +1999,7 @@ export default defineComponent({
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
+                  columnWidth={columnWidth}
                   resizable={resizable}
                   onClick={(ev: Event) => handleHeaderClick(column, ev)}
                 />
