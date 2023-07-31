@@ -2,6 +2,14 @@
 changelog: true
 ```
 
+## 2.49.3
+
+`2023-8-1`
+
+### 💎 Enhancement
+
+- add hide-title prop, support hide title
+
 ## 2.47.0
 
 `2023-06-02`

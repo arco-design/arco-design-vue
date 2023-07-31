@@ -201,6 +201,13 @@ export interface ModalConfig {
    * @version 2.24.0
    */
   modalAnimationName?: string;
+  /**
+   * @zh 是否隐藏标题
+   * @en Whether to hide the title
+   * @defaultValue false
+   * @version 2.49.3
+   */
+  hideTitle?: boolean;
 }
 
 export type ModalUpdateConfig = Omit<
