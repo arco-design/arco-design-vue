@@ -8,7 +8,7 @@ changelog: true
 
 ### 💎 Enhancement
 
-- add hide-title prop, support hide title
+- add hide-title prop, support hide title ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
 
 ## 2.47.0
 

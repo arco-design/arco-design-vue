@@ -8,7 +8,7 @@ changelog: true
 
 ### 💎 功能优化
 
-- 增加 `hide-title` 属性，支持隐藏标题
+- 增加 `hide-title` 属性，支持隐藏标题 ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
 
 ## 2.47.0
 
