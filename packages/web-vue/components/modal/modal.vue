@@ -36,7 +36,7 @@
               :style="mergedModalStyle"
             >
               <div
-                v-if="$slots.title && hideTitle == false || title && hideTitle == true || closable && hideTitle == true"
+                v-if="!hideTitle && ($slots.title || title || closable)"
                 :class="`${prefixCls}-header`"
                 @mousedown="handleMoveDown"
               >
@@ -426,7 +426,7 @@ export default defineComponent({
      * @zh 是否隐藏标题
      * @en Whether to hide the title
      * @defaultValue false
-     * @version 2.49.3
+     * @version 2.50.0
      */
     hideTitle: {
       type: Boolean,

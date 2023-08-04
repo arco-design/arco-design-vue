@@ -205,7 +205,7 @@ export interface ModalConfig {
    * @zh 是否隐藏标题
    * @en Whether to hide the title
    * @defaultValue false
-   * @version 2.49.3
+   * @version 2.50.0
    */
   hideTitle?: boolean;
 }

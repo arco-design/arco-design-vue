@@ -142,7 +142,7 @@ Modal._context = app._context;
 |modalStyle|对话框的样式|`CSSProperties`|`-`||
 |maskAnimationName|遮罩层动画名字|`string`|`-`|2.24.0|
 |modalAnimationName|对话框动画名字|`string`|`-`|2.24.0|
-|hideTitle|是否隐藏标题|`boolean`|`false`|2.49.3|
+|hideTitle|是否隐藏标题|`boolean`|`false`|2.50.0|
 
 
 
