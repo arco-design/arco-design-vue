@@ -266,27 +266,27 @@ exports[`<grid> demo: render [grid] correctly 1`] = `
     <!--v-if-->
   </button></div>
 <div class=\\"arco-grid grid-demo-grid\\" style=\\"gap: 16px 12px; grid-template-columns: repeat(3, minmax(0px, 1fr));\\">
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 2 / span 2; display: none;\\">item | offset - 1</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 3 / span 3; display: none;\\">item | span - 3</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: 3 / span 1; display: none;\\"> suffix | overflow: false</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item | offset - 1</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item | span - 3</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\"> suffix | overflow: false</div>
 </div>"
 `;
 
 exports[`<grid> demo: render [grid-responsive] correctly 1`] = `
 "<div class=\\"arco-grid grid-demo-grid\\" style=\\"gap: 16px 12px; grid-template-columns: repeat(6, minmax(0px, 1fr));\\">
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: span 1 / span 1; display: none;\\">item</div>
-  <div class=\\"arco-grid-item demo-item\\" style=\\"grid-column: 1 / span 6; display: none;\\"> suffix </div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\">item</div>
+  <div class=\\"arco-grid-item demo-item\\"> suffix </div>
 </div>"
 `;
 
