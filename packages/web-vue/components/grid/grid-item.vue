@@ -110,13 +110,16 @@ export default defineComponent({
     });
     const style = computed(() => {
       const { span } = itemData.value;
-      return [
-        {
-          'grid-column': `${columnStart.value} / span ${span}`,
-        },
-        offsetStyle.value,
-        !visible.value || span === 0 ? { display: 'none' } : {},
-      ];
+      if (domRef.value) {
+        return [
+          {
+            'grid-column': `${columnStart.value} / span ${span}`,
+          },
+          offsetStyle.value,
+          !visible.value || span === 0 ? { display: 'none' } : {},
+        ];
+      }
+      return [];
     });
 
     watchEffect(() => {
