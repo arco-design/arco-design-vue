@@ -90,7 +90,7 @@ import {
   getDateValue,
   initializeDateLocale,
 } from '../_utils/date';
-import useState from '../_hooks/use-state';
+import useSetState from '../_hooks/use-state';
 import {
   isCompleteRangeValue,
   isValidRangeValue,
@@ -529,11 +529,11 @@ export default defineComponent({
         })
       );
     // 操作值
-    const [processValue, setProcessValue] = useState<
+    const [processValue, setProcessValue] = useSetState<
       Array<Dayjs | undefined> | undefined
     >();
     // 预览值
-    const [previewValue, setPreviewValue] = useState<
+    const [previewValue, setPreviewValue] = useSetState<
       Array<Dayjs | undefined> | undefined
     >();
     // 待确认的选中值
@@ -546,7 +546,7 @@ export default defineComponent({
     );
 
     // input 操作的值
-    const [inputValue, setInputValue] = useState<
+    const [inputValue, setInputValue] = useSetState<
       Array<string | undefined> | undefined
     >();
 

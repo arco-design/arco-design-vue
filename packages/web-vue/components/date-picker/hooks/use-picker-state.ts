@@ -3,7 +3,7 @@ import { computed, toRefs, watch } from 'vue';
 import { getDayjsValue } from '../../_utils/date';
 import { isUndefined } from '../../_utils/is';
 import { CalendarValue } from '../interface';
-import useState from '../../_hooks/use-state';
+import useSetState from '../../_hooks/use-state';
 
 interface PickerStateProps {
   modelValue: CalendarValue | undefined;
@@ -23,7 +23,7 @@ export default function usePickerState(props: PickerStateProps) {
   });
 
   // Selected value maintained internally: dayjs
-  const [localValue, setLocalValue] = useState<Dayjs | undefined>(
+  const [localValue, setLocalValue] = useSetState<Dayjs | undefined>(
     !isUndefined(computedModelValue.value)
       ? computedModelValue.value
       : !isUndefined(computedDefaultValue.value)

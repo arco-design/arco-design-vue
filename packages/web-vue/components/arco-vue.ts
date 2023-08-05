@@ -147,7 +147,7 @@ const components: Record<string, Plugin> = {
   Upload,
   TreeSelect,
   // Historical reason
-  Alter: Alert,
+  // Alter: Alert,
   Alert,
   Drawer,
   Message,
