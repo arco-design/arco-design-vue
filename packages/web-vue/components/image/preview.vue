@@ -4,14 +4,10 @@
       <transition
         name="image-fade"
         @before-enter="
-          (el) => {
-            el.parentNode.style.display = 'block';
-          }
+          (el) => el.parentElement && (el.parentElement.style.display = 'block')
         "
         @after-leave="
-          (el) => {
-            el.parentNode.style.display = '';
-          }
+          (el) => el.parentElement && (el.parentElement.style.display = '')
         "
       >
         <div v-show="mergedVisible" :class="`${prefixCls}-mask`" />
@@ -21,6 +17,7 @@
         ref="refWrapper"
         :class="`${prefixCls}-wrapper`"
         @click="onMaskClick"
+        @wheel.passive="onWheel"
       >
         <!-- img -->
         <div
@@ -93,9 +90,13 @@ import {
   ref,
   h,
   CSSProperties,
+  onBeforeUnmount,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { getPrefixCls } from '../_utils/global-config';
+import { throttleByRaf } from '../_utils/throttle-by-raf';
+import { KEYBOARD_KEY } from '../_utils/keyboard';
+import { off, on } from '../_utils/dom';
 import { ImagePreviewProps } from './interface';
 import PreviewArrow from './preview-arrow.vue';
 import PreviewToolbar from './preview-toolbar.vue';
@@ -111,7 +112,11 @@ import IconRotateRight from '../icon/icon-rotate-right';
 import IconOriginalSize from '../icon/icon-original-size';
 import usePopupOverHidden from '../_hooks/use-popup-overflow-hidden';
 import usePopupContainer from '../_hooks/use-popup-container';
-import getScale, { minScale, maxScale } from './utils/get-scale';
+import getScale, {
+  getScaleByRate,
+  minScale,
+  maxScale,
+} from './utils/get-scale';
 import { useI18n } from '../locale';
 import usePopupManager from '../_hooks/use-popup-manager';
 
@@ -200,6 +205,46 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
+    /**
+     * @zh 是否支持 ESC 键关闭预览
+     * @en Whether to support the ESC key to close the preview
+     */
+    escToClose: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否开启滚轮缩放
+     * @en Whether to enable wheel zoom
+     */
+    wheelZoom: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 是否开启键盘控制
+     * @en Whether to enable keyboard shortcuts
+     */
+    keyboard: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 默认缩放比
+     * @en Default scale
+     */
+    defaultScale: {
+      type: Number,
+      default: 1,
+    },
+    /**
+     * @zh 缩放速率，仅对滚动缩放生效
+     * @en Zoom rate, only for scroll zoom
+     */
+    zoomRate: {
+      type: Number,
+      default: 1.1,
+    },
   },
   emits: [
     /**
@@ -217,8 +262,16 @@ export default defineComponent({
    */
   setup(props: ImagePreviewProps, { emit }) {
     const { t } = useI18n();
-    const { src, popupContainer, visible, defaultVisible, maskClosable } =
-      toRefs(props);
+    const {
+      src,
+      popupContainer,
+      visible,
+      defaultVisible,
+      maskClosable,
+      actionsLayout,
+      defaultScale,
+      zoomRate,
+    } = toRefs(props);
     const refWrapper = ref();
     const refImage = ref();
     const prefixCls = getPrefixCls('image-preview');
@@ -252,7 +305,7 @@ export default defineComponent({
     const { isLoading, isLoaded, setLoadStatus } = useImageLoadStatus();
 
     const rotate = ref(0);
-    const scale = ref(1);
+    const scale = ref(defaultScale.value);
 
     const { translate, moving, resetTranslate } = useImageDrag(
       reactive({
@@ -277,14 +330,71 @@ export default defineComponent({
 
     function reset() {
       rotate.value = 0;
-      scale.value = 1;
+      scale.value = defaultScale.value;
       resetTranslate();
     }
+
+    const isIncludes = (action: string) => actionsLayout.value.includes(action);
+
+    const handleKeyDown = (ev: KeyboardEvent) => {
+      ev.stopPropagation();
+      switch (ev.key) {
+        case KEYBOARD_KEY.ESC:
+          props.escToClose && close();
+          break;
+        case KEYBOARD_KEY.ARROW_LEFT:
+          props.groupArrowProps.onPrev && props.groupArrowProps.onPrev();
+          break;
+        case KEYBOARD_KEY.ARROW_RIGHT:
+          props.groupArrowProps.onNext && props.groupArrowProps.onNext();
+          break;
+        case KEYBOARD_KEY.ARROW_UP:
+          isIncludes('zoomIn') && handleScale('zoomIn');
+          break;
+        case KEYBOARD_KEY.ARROW_DOWN:
+          isIncludes('zoomOut') && handleScale('zoomOut');
+          break;
+        case KEYBOARD_KEY.SPACE:
+          isIncludes('originalSize') && changeScale(1);
+          break;
+        default:
+          break;
+      }
+    };
+
+    const onWheel = throttleByRaf((e: WheelEvent) => {
+      if (!props.wheelZoom) return;
+
+      e.stopPropagation();
+      const delta = e.deltaY || e.deltaX;
+      const action = delta > 0 ? 'zoomOut' : 'zoomIn';
+      const newScale = getScaleByRate(scale.value, zoomRate.value, action);
+      changeScale(newScale);
+    });
+
+    let globalKeyDownListener = false;
+
+    const addGlobalKeyDownListener = () => {
+      if (props.keyboard && !globalKeyDownListener) {
+        globalKeyDownListener = true;
+        on(container.value, 'keydown', handleKeyDown);
+      }
+    };
+
+    const removeGlobalKeyDownListener = () => {
+      if (globalKeyDownListener) {
+        globalKeyDownListener = false;
+        off(container.value, 'keydown', handleKeyDown);
+      }
+    };
 
     watch([src, mergedVisible], () => {
       if (mergedVisible.value) {
         reset();
         setLoadStatus('loading');
+        addGlobalKeyDownListener();
+      } else {
+        removeGlobalKeyDownListener();
       }
     });
 
@@ -309,6 +419,35 @@ export default defineComponent({
       }
     }
 
+    function fullScreen() {
+      const wrapperRect = refWrapper.value.getBoundingClientRect();
+      const imgRect = refImage.value.getBoundingClientRect();
+      const newHeightScale =
+        wrapperRect.height / (imgRect.height / scale.value);
+      const newWidthScale = wrapperRect.width / (imgRect.width / scale.value);
+      const newScale = Math.max(newHeightScale, newWidthScale);
+      changeScale(newScale);
+    }
+
+    function haneleRotate(direction: 'clockwise' | 'counterclockwise') {
+      const isClockwise = direction === 'clockwise';
+      const newRotate = isClockwise
+        ? (rotate.value + ROTATE_STEP) % 360
+        : rotate.value === 0
+        ? 360 - ROTATE_STEP
+        : rotate.value - ROTATE_STEP;
+      rotate.value = newRotate;
+    }
+
+    function handleScale(action: 'zoomIn' | 'zoomOut') {
+      const newScale = getScale(scale.value, action);
+      changeScale(newScale);
+    }
+
+    onBeforeUnmount(() => {
+      removeGlobalKeyDownListener();
+    });
+
     return {
       prefixCls,
       classNames,
@@ -324,6 +463,7 @@ export default defineComponent({
       scaleValueVisible,
       refWrapper,
       refImage,
+      onWheel,
       onMaskClick,
       onCloseClick: close,
       onImgLoad() {
@@ -338,47 +478,28 @@ export default defineComponent({
           key: 'fullScreen',
           name: t('imagePreview.fullScreen'),
           content: () => h(IconFullscreen),
-          onClick: () => {
-            const wrapperRect = refWrapper.value.getBoundingClientRect();
-            const imgRect = refImage.value.getBoundingClientRect();
-            const newHeightScale =
-              wrapperRect.height / (imgRect.height / scale.value);
-            const newWidthScale =
-              wrapperRect.width / (imgRect.width / scale.value);
-            const newScale = Math.max(newHeightScale, newWidthScale);
-            changeScale(newScale);
-          },
+          onClick: () => fullScreen(),
         },
         /** 顺时针旋转 */
         {
           key: 'rotateRight',
           name: t('imagePreview.rotateRight'),
           content: () => h(IconRotateRight),
-          onClick: () => {
-            rotate.value = (rotate.value + ROTATE_STEP) % 360;
-          },
+          onClick: () => haneleRotate('clockwise'),
         },
         /** 逆时针旋转 */
         {
           key: 'rotateLeft',
           name: t('imagePreview.rotateLeft'),
           content: () => h(IconRotateLeft),
-          onClick: () => {
-            rotate.value =
-              rotate.value === 0
-                ? 360 - ROTATE_STEP
-                : rotate.value - ROTATE_STEP;
-          },
+          onClick: () => haneleRotate('counterclockwise'),
         },
         /** 放大 */
         {
           key: 'zoomIn',
           name: t('imagePreview.zoomIn'),
           content: () => h(IconZoomIn),
-          onClick: () => {
-            const newScale = getScale(scale.value, 'zoomIn');
-            changeScale(newScale);
-          },
+          onClick: () => handleScale('zoomIn'),
           disabled: scale.value === maxScale,
         },
         /** 缩小 */
@@ -386,10 +507,7 @@ export default defineComponent({
           key: 'zoomOut',
           name: t('imagePreview.zoomOut'),
           content: () => h(IconZoomOut),
-          onClick: () => {
-            const newScale = getScale(scale.value, 'zoomOut');
-            changeScale(newScale);
-          },
+          onClick: () => handleScale('zoomOut'),
           disabled: scale.value === minScale,
         },
         /** 缩放到100% */
@@ -397,9 +515,7 @@ export default defineComponent({
           key: 'originalSize',
           name: t('imagePreview.originalSize'),
           content: () => h(IconOriginalSize),
-          onClick: () => {
-            changeScale(1);
-          },
+          onClick: () => changeScale(1),
         },
       ]),
     };

@@ -78,6 +78,11 @@ description: 展示和预览图片。
 |closable|是否显示关闭按钮|`boolean`|`true`|
 |actions-layout|操作项的布局|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
 |popup-container|设置弹出框的挂载点，同 `teleport` 的 `to`，缺省值是 document.body|`HTMLElement`|`-`|
+|esc-to-close|是否支持 ESC 键关闭预览|`boolean`|`true`|
+|wheel-zoom|是否开启滚轮缩放|`boolean`|`true`|
+|keyboard|是否开启键盘控制|`boolean`|`true`|
+|default-scale|默认缩放比|`number`|`1`|
+|zoom-rate|缩放速率，仅对滚动缩放生效|`number`|`1.1`|
 ### `<image-preview>` Events
 
 |事件名|描述|参数|
@@ -129,3 +134,19 @@ description: 展示和预览图片。
 |disabled|是否禁用|`boolean`|`false`|
 
 
+
+## FAQ
+
+### 关于 `image-preview` 的属性说明
+
+1. 键盘快捷键 `keyboard` 设置此属性为 `true` 后，将根据 `actions-layout` 操作项来启用相应的快捷键操作。
+- `esc`: 关闭预览
+- `left`: 切换至上一张图片
+- `right`: 切换至下一张图片
+- `up`: 放大图片
+- `down`: 缩小图片
+- `space`: 还原至原始大小
+
+2. 默认缩放比例 `defaultScale` 此属性定义了默认的图片缩放比例。例如，当设置为 1.5 时，图片将默认放大到原始大小的 1.5 倍。
+
+3. 滚动缩放速率 `zoomSate` 属性控制了在滚动操作时图片的缩放速率。以 1.3 为例，每次滚动操作都会使图片放大或缩小 1.3 倍。

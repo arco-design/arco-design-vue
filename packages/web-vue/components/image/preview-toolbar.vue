@@ -23,7 +23,7 @@ interface ActionType {
   name: string;
   content: RenderFunc;
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export default defineComponent({
