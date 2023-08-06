@@ -15,9 +15,10 @@
       <div
         v-if="mergedVisible"
         ref="refWrapper"
+        tabindex="0"
         :class="`${prefixCls}-wrapper`"
         @click="onMaskClick"
-        @wheel.passive="onWheel"
+        @wheel.prevent.stop="onWheel"
       >
         <!-- img -->
         <div
@@ -91,6 +92,7 @@ import {
   h,
   CSSProperties,
   onBeforeUnmount,
+  nextTick,
 } from 'vue';
 import useMergeState from '../_hooks/use-merge-state';
 import { getPrefixCls } from '../_utils/global-config';
@@ -338,6 +340,8 @@ export default defineComponent({
 
     const handleKeyDown = (ev: KeyboardEvent) => {
       ev.stopPropagation();
+      ev.preventDefault();
+
       switch (ev.key) {
         case KEYBOARD_KEY.ESC:
           props.escToClose && close();
@@ -363,9 +367,11 @@ export default defineComponent({
     };
 
     const onWheel = throttleByRaf((e: WheelEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+
       if (!props.wheelZoom) return;
 
-      e.stopPropagation();
       const delta = e.deltaY || e.deltaX;
       const action = delta > 0 ? 'zoomOut' : 'zoomIn';
       const newScale = getScaleByRate(scale.value, zoomRate.value, action);
@@ -375,6 +381,9 @@ export default defineComponent({
     let globalKeyDownListener = false;
 
     const addGlobalKeyDownListener = () => {
+      nextTick(() => {
+        refWrapper?.value?.focus();
+      });
       if (props.keyboard && !globalKeyDownListener) {
         globalKeyDownListener = true;
         on(container.value, 'keydown', handleKeyDown);
@@ -407,6 +416,7 @@ export default defineComponent({
     }
 
     function onMaskClick(e: MouseEvent) {
+      refWrapper?.value?.focus();
       if (maskClosable.value && e.target === e.currentTarget) {
         close();
       }
