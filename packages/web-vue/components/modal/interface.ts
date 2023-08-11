@@ -1,4 +1,4 @@
-import { AppContext, CSSProperties } from 'vue';
+import { AppContext, CSSProperties, StyleValue } from 'vue';
 import { ButtonProps } from '../button';
 import { RenderContent } from '../_utils/types';
 
@@ -208,6 +208,16 @@ export interface ModalConfig {
    * @version 2.50.0
    */
   hideTitle?: boolean;
+  /**
+   * @zh 对话框内容部分的类名
+   * @en The classname of the modal
+   */
+  bodyClass?: string | any[];
+  /**
+   * @zh 对话框内容部分的样式
+   * @en Modal style
+   */
+  bodyStyle?: StyleValue;
 }
 
 export type ModalUpdateConfig = Omit<

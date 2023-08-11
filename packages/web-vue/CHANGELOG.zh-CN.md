@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.3
+
+`2023-08-04`
+
+### 🐛 问题修复
+
+- **grid:** 修复a-grid-item中使用v-show，初始值为false，但仍展示出来的问题 ([#2604](https://github.com/arco-design/arco-design-vue/pull/2604))
+
+
 ## 2.49.2
 
 `2023-07-28`
