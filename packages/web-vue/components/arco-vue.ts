@@ -146,8 +146,6 @@ const components: Record<string, Plugin> = {
   Tree,
   Upload,
   TreeSelect,
-  // Historical reason
-  Alter: Alert,
   Alert,
   Drawer,
   Message,
@@ -183,6 +181,8 @@ const install = (app: App, options?: ArcoOptions) => {
 
 const ArcoVue = {
   ...components,
+  // Historical reason
+  Alter: Alert,
   AnchorLink,
   AvatarGroup,
   BreadcrumbItem,
