@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.50.0
+
+`2023-08-11`
+
+### 🆕 新增功能
+
+- 支持键盘快捷、鼠标滚轮操作等一系列功能 ([#2616](https://github.com/arco-design/arco-design-vue/pull/2616))
+
+### 🆎 类型修正
+
+- 添加 ImagePreviewAction 类型声明 ([#2625](https://github.com/arco-design/arco-design-vue/pull/2625))
+
+
 ## 2.48.1
 
 `2023-07-14`

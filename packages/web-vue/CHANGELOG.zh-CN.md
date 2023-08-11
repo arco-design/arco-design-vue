@@ -2,6 +2,35 @@
 changelog: true
 ```
 
+## 2.50.0
+
+`2023-08-11`
+
+### ⚠️ 重点注意
+
+- 修正 `Alter` 为 `Alert` ([#2633](https://github.com/arco-design/arco-design-vue/pull/2633))
+
+### 🆕 新增功能
+
+- **image:** 支持键盘快捷、鼠标滚轮操作等一系列功能 ([#2616](https://github.com/arco-design/arco-design-vue/pull/2616))
+- **auto-complete:** 添加虚拟列表支持 ([#2596](https://github.com/arco-design/arco-design-vue/pull/2596))
+- **timeline:** 添加自定义标签插槽 ([#2591](https://github.com/arco-design/arco-design-vue/pull/2591))
+
+### 🐛 问题修复
+
+- 修复全局引入时提示重复注册的问题 ([#2633](https://github.com/arco-design/arco-design-vue/pull/2633))
+- 修复了导致"␍"错误的格式问题 ([#2626](https://github.com/arco-design/arco-design-vue/pull/2626))
+
+### 💎 功能优化
+
+- **modal:** 增加 `hide-title` 属性，支持隐藏标题 ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
+
+### 🆎 类型修正
+
+- **modal:** 补全 ModalConfig 缺失的属性 ([#2628](https://github.com/arco-design/arco-design-vue/pull/2628))
+- **image:** 添加 ImagePreviewAction 类型声明 ([#2625](https://github.com/arco-design/arco-design-vue/pull/2625))
+
+
 ## 2.49.3
 
 `2023-08-04`

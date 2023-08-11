@@ -144,7 +144,9 @@ Modal._context = app._context;
 |modalStyle|Modal style|`CSSProperties`|`-`||
 |maskAnimationName|Mask layer animation name|`string`|`-`|2.24.0|
 |modalAnimationName|Modal animation name|`string`|`-`|2.24.0|
-|hideTitle|Whether to hide the title|`boolean`|`false`|2.49.3|
+|hideTitle|Whether to hide the title|`boolean`|`false`|2.50.0|
+|bodyClass|The classname of the modal|`string \| any[]`|`-`||
+|bodyStyle|Modal style|`StyleValue`|`-`||
 
 
 

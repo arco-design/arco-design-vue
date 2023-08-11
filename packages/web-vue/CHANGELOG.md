@@ -2,6 +2,35 @@
 changelog: true
 ```
 
+## 2.50.0
+
+`2023-08-11`
+
+### ⚠️ Important Attention
+
+- Fix `Alter` to `Alert` ([#2633](https://github.com/arco-design/arco-design-vue/pull/2633))
+
+### 🆕 Feature
+
+- **image:** Support keyboard shortcuts, mouse wheel operation and a series of functions ([#2616](https://github.com/arco-design/arco-design-vue/pull/2616))
+- **auto-complete:** add virtual list support ([#2596](https://github.com/arco-design/arco-design-vue/pull/2596))
+- **timeline:** add label slot ([#2591](https://github.com/arco-design/arco-design-vue/pull/2591))
+
+### 🐛 BugFix
+
+- Fix the problem of prompting for repeated registration when importing globally ([#2633](https://github.com/arco-design/arco-design-vue/pull/2633))
+- Fixed formatting issue causing `␍` error ([#2626](https://github.com/arco-design/arco-design-vue/pull/2626))
+
+### 💎 Enhancement
+
+- **modal:** add hide-title prop, support hide title ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
+
+### 🆎 TypeScript
+
+- **modal:** Complete missing properties in ModalConfig ([#2628](https://github.com/arco-design/arco-design-vue/pull/2628))
+- **image:** added  image-preview-action type definition ([#2625](https://github.com/arco-design/arco-design-vue/pull/2625))
+
+
 ## 2.49.3
 
 `2023-08-04`

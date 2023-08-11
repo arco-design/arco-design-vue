@@ -61,9 +61,9 @@ description: Display information content in chronological or reverse order.
 |position|Item position|`PositionType`|`-`|
 ### `<timeline-item>` Slots
 
-|Slot Name|Description|Parameters|
-|---|---|---|
-|dot|Custom dot|-|
-|label|Custom label|-|
+|Slot Name|Description|Parameters|version|
+|---|---|---|:---|
+|dot|Custom dot|-||
+|label|Custom label|-|2.50.0|
 
 

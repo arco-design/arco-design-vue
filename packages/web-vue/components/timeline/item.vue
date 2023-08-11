@@ -112,6 +112,7 @@ export default defineComponent({
    * @zh 自定义标签
    * @en Custom label
    * @slot label
+   * @version 2.50.0
    */
   setup(props) {
     const prefixCls = getPrefixCls('timeline-item');

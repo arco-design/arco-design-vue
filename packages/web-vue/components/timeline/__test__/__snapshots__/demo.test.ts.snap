@@ -45,6 +45,27 @@ exports[`<timeline> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
+exports[`<timeline> demo: render [custom] correctly 1`] = `
+"<div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\">
+  <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
+    <div class=\\"arco-timeline-item-dot-wrapper\\">
+      <div class=\\"arco-timeline-item-dot-line arco-timeline-item-dot-line-is-vertical\\" style=\\"border-left-style: solid;\\"></div>
+      <div class=\\"arco-timeline-item-dot-content\\">
+        <div class=\\"arco-timeline-item-dot arco-timeline-item-dot-solid\\"></div>
+      </div>
+    </div>
+    <div class=\\"arco-timeline-item-content-wrapper\\">
+      <div class=\\"arco-timeline-item-content\\"> Code Review </div>
+      <div class=\\"arco-timeline-item-label\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> Passed
+        <!--v-if-->
+        <!--v-if--></span>
+      </div>
+    </div>
+    <!--v-if-->
+  </div>
+</div>"
+`;
+
 exports[`<timeline> demo: render [direction] correctly 1`] = `
 "<div>
   <div class=\\"arco-row arco-row-align-center arco-row-justify-start\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-typography\\">mode: &nbsp; &nbsp;<!----><!--v-if--><!--v-if--><!--v-if--></span><span class=\\"arco-radio-group arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"top\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">top</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"bottom\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">bottom</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"alternate\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">alternate</span></label></span></div>
