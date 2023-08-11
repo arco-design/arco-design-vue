@@ -14,6 +14,8 @@ description: The auto-complete function of the input.
 
 @import ./__demo__/footer.md
 
+@import ./__demo__/virtual-list.md
+
 ## API
 
 
@@ -30,6 +32,7 @@ description: The auto-complete function of the input.
 |filter-option|Custom option filtering method|`FilterOption`|`true`||
 |trigger-props|trigger props|`TriggerProps`|`-`|2.14.0|
 |allow-clear|Whether to allow the input to be cleared|`boolean`|`false`|2.23.0|
+|virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`|2.50.0|
 ### `<auto-complete>` Events
 
 |Event Name|Description|Parameters|version|
@@ -51,4 +54,15 @@ description: The auto-complete function of the input.
 |option|Display content of options|data: `OptionInfo`|2.13.0|
 |footer|The footer of the popup menu box|-||
 
+
+### VirtualListProps
+
+|Name|Description|Type|Default|version|
+|---|---|---|:---:|:---|
+|height|Viewable area height|`number \| string`|`-`||
+|threshold|The threshold of the number of elements to enable virtual scrolling. When the number of data is less than the threshold, virtual scrolling will not be enabled.|`number`|`-`||
+|isStaticItemHeight|(Repealed) Is the element height fixed. Version 2.18.0 deprecated, please use `fixedSize`|`boolean`|`false`||
+|fixedSize|Is the element height fixed.|`boolean`|`false`|2.34.1|
+|estimatedSize|Is the element height fixed.|`number`|`-`|2.34.1|
+|buffer|The number of elements mounted in advance outside the boundary of the viewport.|`number`|`10`|2.34.1|
 
