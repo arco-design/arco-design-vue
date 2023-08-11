@@ -66,6 +66,7 @@ description: Open a floating layer on the current page to carry related operatio
 |modal-animation-name|Modal animation name|`string`|`-`|2.24.0|
 |body-class|The classname of the modal|`string \| any[]`|`-`|2.31.0|
 |body-style|Modal style|`StyleValue`|`-`|2.31.0|
+|hide-title|Whether to hide the title|`boolean`|`false`|2.50.0|
 ### `<modal>` Events
 
 |Event Name|Description|Parameters|version|
@@ -143,6 +144,7 @@ Modal._context = app._context;
 |modalStyle|Modal style|`CSSProperties`|`-`||
 |maskAnimationName|Mask layer animation name|`string`|`-`|2.24.0|
 |modalAnimationName|Modal animation name|`string`|`-`|2.24.0|
+|hideTitle|Whether to hide the title|`boolean`|`false`|2.49.3|
 
 
 

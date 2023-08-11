@@ -202,6 +202,13 @@ export interface ModalConfig {
    */
   modalAnimationName?: string;
   /**
+   * @zh 是否隐藏标题
+   * @en Whether to hide the title
+   * @defaultValue false
+   * @version 2.50.0
+   */
+  hideTitle?: boolean;
+  /**
    * @zh 对话框内容部分的类名
    * @en The classname of the modal
    */
