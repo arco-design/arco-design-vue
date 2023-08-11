@@ -80,6 +80,11 @@ description: Used to show and preview pictures.
 |closable|Whether to show close button|`boolean`|`true`|
 |actions-layout|Layout of action list|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
 |popup-container|Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body|`HTMLElement`|`-`|
+|esc-to-close|Whether to support the ESC key to close the preview|`boolean`|`true`|
+|wheel-zoom|Whether to enable wheel zoom|`boolean`|`true`|
+|keyboard|Whether to enable keyboard shortcuts|`boolean`|`true`|
+|default-scale|Default scale|`number`|`1`|
+|zoom-rate|Zoom rate, only for scroll zoom|`number`|`1.1`|
 ### `<image-preview>` Events
 
 |Event Name|Description|Parameters|
@@ -131,3 +136,23 @@ description: Used to show and preview pictures.
 |disabled|Whether to disable the action|`boolean`|`false`|
 
 
+
+## FAQ
+
+### Property Description for `image-preview`
+
+**1. Keyboard Shortcuts - `keyboard`**
+Setting this property to `true` enables corresponding keyboard shortcuts based on the `actions-layout` settings.
+
+- `esc`: Close preview
+- `left`: Switch to the previous image
+- `right`: Switch to the next image
+- `up`: Zoom in on the image
+- `down`: Zoom out on the image
+- `space`: Restore to original size
+
+**2. Default Scaling - `defaultScale`**
+This property defines the default scaling factor for images. For instance, when set to 1.5, images will be enlarged by 1.5 times their original size by default.
+
+**3. Scroll Zoom Rate - `zoomSate`**
+The `zoomSate` property controls the scaling rate of images during scrolling. Taking 1.3 as an example, each scrolling action will result in an image zoom-in or zoom-out by a factor of 1.3.
