@@ -26,6 +26,8 @@ description: Display information content in chronological or reverse order.
 
 @import ./__demo__/label.md
 
+@import ./__demo__/custom.md
+
 ## API
 
 
@@ -62,5 +64,6 @@ description: Display information content in chronological or reverse order.
 |Slot Name|Description|Parameters|
 |---|---|---|
 |dot|Custom dot|-|
+|label|Custom label|-|
 
 

@@ -14,11 +14,13 @@
         <slot />
       </div>
       <div v-if="labelPosition !== 'relative'" :class="`${prefixCls}-label`">
-        {{ label }}
+        <slot v-if="$slots.label" name="label" />
+        <template v-else>{{ label }}</template>
       </div>
     </div>
     <div v-if="labelPosition === 'relative'" :class="`${prefixCls}-label`">
-      {{ label }}
+      <slot v-if="$slots.label" name="label" />
+      <template v-else>{{ label }}</template>
     </div>
   </div>
 </template>
@@ -105,6 +107,11 @@ export default defineComponent({
    * @zh 自定义节点
    * @en Custom dot
    * @slot dot
+   */
+  /**
+   * @zh 自定义标签
+   * @en Custom label
+   * @slot label
    */
   setup(props) {
     const prefixCls = getPrefixCls('timeline-item');
