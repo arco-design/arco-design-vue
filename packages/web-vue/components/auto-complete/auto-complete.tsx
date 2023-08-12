@@ -144,6 +144,20 @@ export default defineComponent({
      * @version 2.23.0
      */
     'clear': (ev: Event) => true,
+    /**
+     * @zh 下拉菜单发生滚动时触发
+     * @en Triggered when the drop-down scrolls
+     * @param {Event} ev
+     * @version 2.51.0
+     */
+    'dropdownScroll': (ev: Event) => true,
+    /**
+     * @zh 下拉菜单滚动到底部时触发
+     * @en Triggered when the drop-down menu is scrolled to the bottom
+     * @param {Event} ev
+     * @version 2.51.0
+     */
+    'dropdownReachBottom': (ev: Event) => true,
   },
   /**
    * @zh 弹出框的页脚
@@ -240,6 +254,14 @@ export default defineComponent({
       handleChange(value);
     };
 
+    const handleDropdownScroll = (e: Event) => {
+      emit('dropdownScroll', e);
+    };
+
+    const handleDropdownReachBottom = (e: Event) => {
+      emit('dropdownReachBottom', e);
+    };
+
     const { validOptions, optionInfoMap, validOptionInfos, handleKeyDown } =
       useSelect({
         options: data,
@@ -308,6 +330,8 @@ export default defineComponent({
             'footer': slots.footer,
           }}
           virtualList={Boolean(props.virtualListProps)}
+          onScroll={handleDropdownScroll}
+          onReachBottom={handleDropdownReachBottom}
         />
       );
     };
