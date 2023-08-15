@@ -24,6 +24,7 @@ description: Configure in the outermost layer of the application, set once, and 
 |size|Size|`Size`|`-`|2.14.0|
 |global|Is global effect|`boolean`|`false`|2.25.0|
 |scroll-to-close|Whether to close the popover when scrolling|`boolean`|`false`|2.46.0|
+|exchange-time|Whether to exchange time|`boolean`|`true`|2.48.0|
 ### `<config-provider>` Slots
 
 |Slot Name|Description|Parameters|version|

@@ -56,6 +56,7 @@ declare module '@vue/runtime-core' {
     ARow: typeof import('@arco-design/web-vue')['Row'];
     AImage: typeof import('@arco-design/web-vue')['Image'];
     AImagePreview: typeof import('@arco-design/web-vue')['ImagePreview'];
+    AImagePreviewAction: typeof import('@arco-design/web-vue')['ImagePreviewAction'];
     AImagePreviewGroup: typeof import('@arco-design/web-vue')['ImagePreviewGroup'];
     AInput: typeof import('@arco-design/web-vue')['Input'];
     AInputGroup: typeof import('@arco-design/web-vue')['InputGroup'];

@@ -28,6 +28,7 @@ description: 输入框的自动补全功能。
 |filter-option|自定义选项过滤方法|`FilterOption`|`true`||
 |trigger-props|trigger 组件属性|`TriggerProps`|`-`|2.14.0|
 |allow-clear|是否允许清空输入框|`boolean`|`false`|2.23.0|
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`|2.50.0|
 ### `<auto-complete>` Events
 
 |事件名|描述|参数|版本|

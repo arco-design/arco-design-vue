@@ -28,7 +28,7 @@
         :disabled="mergedDisabled"
         :opened="panelVisible"
         :error="error"
-        :border="border"
+        :bordered="border"
         :placeholder="placeholder"
         :multiple="isMultiple"
         v-bind="$attrs"
@@ -57,7 +57,10 @@
         ]"
         :style="computedDropdownStyle"
       >
-        <div v-if="$slots.header && !isEmpty" :class="`${prefixCls}-header`">
+        <div
+          v-if="$slots.header && (!isEmpty || showHeaderOnEmpty)"
+          :class="`${prefixCls}-header`"
+        >
           <slot name="header" />
         </div>
         <slot v-if="loading" name="loader">
@@ -90,7 +93,10 @@
           :tree-slots="pickSubCompSlots($slots, 'tree')"
           @change="onSelectChange"
         />
-        <div v-if="$slots.footer && !isEmpty" :class="`${prefixCls}-footer`">
+        <div
+          v-if="$slots.footer && (!isEmpty || showFooterOnEmpty)"
+          :class="`${prefixCls}-footer`"
+        >
           <slot name="footer" />
         </div>
       </div>
@@ -189,6 +195,7 @@ export default defineComponent({
      * */
     border: {
       type: Boolean,
+      default: true,
     },
     /**
      * @zh 是否允许搜索
@@ -401,6 +408,22 @@ export default defineComponent({
     scrollbar: {
       type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
       default: true,
+    },
+    /**
+     * @zh 空状态时是否显示header
+     * @en Whether to display the header in the empty state
+     */
+    showHeaderOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
+    },
+    /**
+     * @zh 空状态时是否显示footer
+     * @en Whether to display the footer in the empty state
+     */
+    showFooterOnEmpty: {
+      type: Boolean as PropType<boolean>,
+      default: false,
     },
   },
   emits: {

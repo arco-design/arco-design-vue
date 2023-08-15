@@ -64,6 +64,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |modal-animation-name|对话框动画名字|`string`|`-`|2.24.0|
 |body-class|对话框内容部分的类名|`string \| any[]`|`-`|2.31.0|
 |body-style|对话框内容部分的样式|`StyleValue`|`-`|2.31.0|
+|hide-title|是否隐藏标题|`boolean`|`false`|2.50.0|
 ### `<modal>` Events
 
 |事件名|描述|参数|版本|
@@ -141,6 +142,9 @@ Modal._context = app._context;
 |modalStyle|对话框的样式|`CSSProperties`|`-`||
 |maskAnimationName|遮罩层动画名字|`string`|`-`|2.24.0|
 |modalAnimationName|对话框动画名字|`string`|`-`|2.24.0|
+|hideTitle|是否隐藏标题|`boolean`|`false`|2.50.0|
+|bodyClass|对话框内容部分的类名|`string \| any[]`|`-`||
+|bodyStyle|对话框内容部分的样式|`StyleValue`|`-`||
 
 
 

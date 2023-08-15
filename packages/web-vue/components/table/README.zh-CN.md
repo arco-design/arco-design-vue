@@ -110,6 +110,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 |page-change|表格分页发生改变时触发|page: `number`||
 |page-size-change|表格每页数据数量发生改变时触发|pageSize: `number`||
 |change|表格数据发生变化时触发|data: `TableData[]`<br>extra: `TableChangeExtra`<br>currentData: `TableData[]`|2.40.0 增加 currentData|
+|cell-mouse-enter|单元格 hover 进入时触发|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
+|cell-mouse-leave|单元格 hover 退出时触发|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
 |cell-click|点击单元格时触发|record: `TableData`<br>column: `TableColumnData`<br>ev: `Event`||
 |row-click|点击行数据时触发|record: `TableData`<br>ev: `Event`||
 |header-click|点击表头数据时触发|column: `TableColumnData`<br>ev: `Event`||
@@ -392,3 +394,9 @@ table 组件提供了内部元素的自定义插槽，这些插槽不同于普�
   </td>
 </template>
 ```
+
+### 2. 关于数据中的 `row-key` 设置
+
+表格默认会通过数据中设置的 `key` 字段来唯一定位行数据，在提供数据时请确保行数据中都设置了 `key` 字段。这个字段在开启选择器等功能时为必要字段，如果想要更换默认的字段名，可以修改 `row-key` 进行设置。
+
+

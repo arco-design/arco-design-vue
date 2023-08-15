@@ -23,6 +23,7 @@ description: 在应用的最外层进行配置，一次设置，全局生效。�
 |global|是否全局生效|`boolean`|`false`|2.25.0|
 |update-at-scroll|是否在容器滚动时更新弹出框的位置|`boolean`|`false`|2.25.0|
 |scroll-to-close|是否在滚动时关闭弹出框|`boolean`|`false`|2.46.0|
+|exchange-time|是否交换时间|`boolean`|`true`|2.48.0|
 ### `<config-provider>` Slots
 
 |插槽名|描述|参数|版本|

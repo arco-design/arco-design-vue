@@ -2,6 +2,27 @@
 changelog: true
 ```
 
+## 2.50.0
+
+`2023-08-11`
+
+### 💎 功能优化
+
+- 增加 `hide-title` 属性，支持隐藏标题 ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
+
+### 🆎 类型修正
+
+- 补全 ModalConfig 缺失的属性 ([#2628](https://github.com/arco-design/arco-design-vue/pull/2628))
+
+
+## 2.50.0
+
+`2023-8-1`
+
+### 💎 功能优化
+
+- 增加 `hide-title` 属性，支持隐藏标题 ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
+
 ## 2.47.0
 
 `2023-06-02`

@@ -41,7 +41,7 @@ description: The most basic list display, which can carry text, lists, pictures,
 |hoverable|Whether to display the selected style|`boolean`|`false`||
 |pagination-props|List pagination configuration|`PaginationProps`|`-`||
 |grid-props|List grid configuration|`object`|`-`||
-|max-height|Maximum height of the list|`number`|`0`||
+|max-height|Maximum height of the list|`string \| number`|`0`||
 |bottom-offset|Trigger the distance threshold to reach the bottom|`number`|`0`||
 |virtual-list-props|Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|

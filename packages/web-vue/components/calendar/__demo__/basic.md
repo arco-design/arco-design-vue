@@ -28,7 +28,7 @@ import { ref } from 'vue';
 
 export default {
   setup() {
-    const value = ref(new Date());
+    const value = ref(new Date('2023-01-01'));
 
     return {
       value

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.3
+
+`2023-08-04`
+
+### 🐛 BugFix
+
+- fix the problem of using v-show in a-grid-item, the initial value is false, but it is still displayed ([#2604](https://github.com/arco-design/arco-design-vue/pull/2604))
+
+
 ## 2.25.1
 
 `2022-04-27`

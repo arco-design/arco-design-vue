@@ -9,7 +9,7 @@ exports[`Image Should show preview on click 1`] = `
     <transition-stub>
       <div class=\\"arco-image-preview-mask\\"></div>
     </transition-stub>
-    <div class=\\"arco-image-preview-wrapper\\">
+    <div tabindex=\\"0\\" class=\\"arco-image-preview-wrapper\\">
       <!-- img -->
       <div class=\\"arco-image-preview-img-container\\" style=\\"transform: scale(1, 1);\\"><img src=\\"http://it-does-not-matter.png/\\" class=\\"arco-image-preview-img\\" style=\\"transform: translate(0px, 0px) rotate(0deg);\\"></div><!-- loading -->
       <div class=\\"arco-image-preview-loading\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">

@@ -2,6 +2,48 @@
 changelog: true
 ```
 
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 BugFix
+
+- Fix the problem of turning on the adjustment of column width in the fixed column ([#2598](https://github.com/arco-design/arco-design-vue/pull/2598))
+- fix drag issue in tree table ([#2503](https://github.com/arco-design/arco-design-vue/pull/2503))
+
+
+## 2.49.0
+
+`2023-07-21`
+
+### 🐛 BugFix
+
+- Fix the wrong parameter of rowClass function record ([#2570](https://github.com/arco-design/arco-design-vue/pull/2570))
+
+
+## 2.48.1
+
+`2023-07-14`
+
+### 🐛 BugFix
+
+- Fix the wrong outgoing parameter in the `summary-span-method` attribute ([#2552](https://github.com/arco-design/arco-design-vue/pull/2552))
+- fix the bug of merging cells in subtrees ([#2540](https://github.com/arco-design/arco-design-vue/pull/2540))
+
+
+## 2.48.0
+
+`2023-06-30`
+
+### 🆕 Feature
+
+- Added mouse in and out events for cells ([#2489](https://github.com/arco-design/arco-design-vue/pull/2489))
+
+### 🐛 BugFix
+
+- add headerCell down to adjust column width highlight ([#2519](https://github.com/arco-design/arco-design-vue/pull/2519))
+
+
 ## 2.46.1
 
 `2023-05-26`

@@ -90,7 +90,13 @@ const data = reactive({
 ```
 此时，如果想要指定当前 `form-item` 对应的值为 `id: '2222'`，需要设置 `field="people.2.id"`，值中的分隔符需要使用 `.`。数组分割也可以使用 `[]`，例如 `field="people[2].id"`
 
+### 关于在 label 插槽中使用可点击元素
+
+表单组件的标题区域默认使用 `label` 元素包裹，会在点击时激活输入组件，如果在其中放入可以点击组件，会影响其正常功能。
+此时可以使用 `label-component` 属性修改包裹元素为 `span` 解决这个问题。
+
 ---
+
 ## en-US
 ## FAQ
 
@@ -113,5 +119,10 @@ const data = reactive({
 })
 ````
 At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2222'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
+
+### About using clickable elements in the label slot
+
+The title area of the form component is wrapped with the `label` element by default, which will activate the input component when clicked. If you put a clickable component in it, it will affect its normal function.
+At this point, you can use the `label-component` attribute to modify the wrapping element to `span` to solve this problem.
 
 ---

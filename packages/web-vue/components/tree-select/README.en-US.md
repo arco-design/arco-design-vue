@@ -51,7 +51,7 @@ description: The tree structure data can be selected.
 |loading|Whether it is loading state|`boolean`|`false`||
 |error|Whether it is an error state|`boolean`|`false`||
 |size|The size of the selection box.|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
-|border|Whether to show the border|`boolean`|`false`||
+|border|Whether to show the border|`boolean`|`true`||
 |allow-search|Whether to allow searching|`boolean \| { retainInputValue?: boolean }`|`false (single) \| true (multiple)`||
 |allow-clear|Whether to allow clear|`boolean`|`false`||
 |placeholder|Prompt copy|`string`|`-`||
@@ -78,6 +78,8 @@ description: The tree structure data can be selected.
 |fallback-option|Customize node data for keys that do not match options|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|Set the nodes that can be selected, all can be selected by default|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.39.0|
+|show-header-on-empty|Whether to display the header in the empty state|`boolean`|`false`||
+|show-footer-on-empty|Whether to display the footer in the empty state|`boolean`|`false`||
 ### `<tree-select>` Events
 
 |Event Name|Description|Parameters|

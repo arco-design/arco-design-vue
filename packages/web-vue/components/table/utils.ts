@@ -66,7 +66,8 @@ const setParentFixed = (column: TableColumnData, fixed: 'left' | 'right') => {
 // Get the grouped header row data
 export const getGroupColumns = (
   columns: TableColumnData[],
-  columnMap: Map<string, TableColumnData>
+  columnMap: Map<string, TableColumnData>,
+  columnWidth: Record<string, number>
 ) => {
   const totalHeaderRows = getTotalHeaderRows(columns);
 
@@ -122,6 +123,10 @@ export const getGroupColumns = (
 
         if (isUndefined(cell.dataIndex) || isNull(cell.dataIndex)) {
           cell.dataIndex = `__arco_data_index_${dataColumns.length}`;
+        }
+
+        if (columnWidth[cell.dataIndex]) {
+          cell._resizeWidth = columnWidth[cell.dataIndex];
         }
 
         // dataColumns和groupColumns公用一个cell的引用
@@ -209,7 +214,7 @@ export const getFixedNumber = (
       if (first.dataIndex === item.dataIndex) {
         break;
       }
-      count += item.width ?? 0;
+      count += item._resizeWidth ?? item.width ?? 0;
     }
     return count;
   }
@@ -337,26 +342,29 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
   return columns;
 };
 
-export const spliceFromPath = (
-  data: TableDataWithRaw[],
-  path: number[],
-  item?: TableDataWithRaw
-): TableDataWithRaw | undefined => {
-  let parent = data;
-  for (let i = 0; i < path.length; i++) {
-    const index = path[i];
-    const isLast = i >= path.length - 1;
-    if (isLast) {
-      if (item) {
-        parent.splice(index, 0, item);
-      } else {
-        return parent.splice(index, 1)[0];
-      }
+export function mapArrayWithChildren<
+  T extends Array<{ [key: string]: any; children?: T }>
+>(arr: T): T {
+  return arr.map((item) => {
+    const newItem = { ...item };
+    if (newItem.children) {
+      newItem.children = mapArrayWithChildren(newItem.children);
     }
-    parent = parent[index].children ?? [];
-  }
-  return undefined;
-};
+    return newItem;
+  }) as T;
+}
+
+export function mapRawTableData<T extends TableDataWithRaw[]>(
+  arr: T
+): TableDataWithRaw['raw'][] {
+  return arr.map((item) => {
+    const rawItem = item.raw;
+    if (item.children && rawItem.children) {
+      rawItem.children = mapRawTableData(item.children);
+    }
+    return item.raw;
+  });
+}
 
 export const getLeafKeys = (record: TableDataWithRaw) => {
   const keys: BaseType[] = [];

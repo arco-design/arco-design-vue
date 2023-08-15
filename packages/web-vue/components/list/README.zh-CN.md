@@ -39,7 +39,7 @@ description: 最基础的列表展示，可承载文字、列表、图片、段�
 |hoverable|是否显示选中样式|`boolean`|`false`||
 |pagination-props|列表分页配置|`PaginationProps`|`-`||
 |grid-props|列表栅格配置|`object`|`-`||
-|max-height|列表的最大高度|`number`|`0`||
+|max-height|列表的最大高度|`string \| number`|`0`||
 |bottom-offset|触发到达底部的距离阈值|`number`|`0`||
 |virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.38.0|
