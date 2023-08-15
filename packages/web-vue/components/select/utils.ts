@@ -183,7 +183,14 @@ export const getValidOptions = (
     }
     return options;
   };
-
+  if (inputValue?.length) {
+    return travel(optionInfos).sort(
+      (
+        option: SelectOptionInfo | SelectOptionGroupInfo,
+        nextOption: SelectOptionInfo | SelectOptionGroupInfo
+      ) => option.label.length - nextOption.label.length
+    );
+  }
   return travel(optionInfos);
 };
 
