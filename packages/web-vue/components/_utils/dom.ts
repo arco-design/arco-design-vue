@@ -1,5 +1,5 @@
-import {VNode} from 'vue';
-import {isString} from './is';
+import { VNode } from 'vue';
+import { isString } from './is';
 
 export const NOOP = () => {
   return undefined;
