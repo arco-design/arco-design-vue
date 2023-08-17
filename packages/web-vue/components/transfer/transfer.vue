@@ -10,6 +10,7 @@
       :show-search="showSearch"
       :show-select-all="showSelectAll"
       :simple="simple"
+      :virtual-list-props="virtualListProps"
       @search="handleSearch"
     >
       <template v-if="$slots.source" #default="slotData">
@@ -57,6 +58,7 @@
       :show-search="showSearch"
       :show-select-all="showSelectAll"
       :simple="simple"
+      :virtual-list-props="virtualListProps"
       @search="handleSearch"
     >
       <template v-if="$slots.target" #default="slotData">
@@ -87,6 +89,7 @@ import IconRight from '../icon/icon-right';
 import { DataInfo, TransferItem } from './interface';
 import { transferInjectionKey } from './context';
 import { useFormItem } from '../_hooks/use-form-item';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 
 export default defineComponent({
   name: 'Transfer',
@@ -187,6 +190,14 @@ export default defineComponent({
     title: {
       type: Array as PropType<string[]>,
       default: () => ['Source', 'Target'],
+    },
+    /**
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass virtual list properties, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
+     * @version 2.40.0
+     */
+    virtualListProps: {
+      type: Object as PropType<VirtualListProps>,
     },
   },
   emits: {
