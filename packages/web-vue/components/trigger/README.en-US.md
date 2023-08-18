@@ -93,6 +93,10 @@ type TriggerPopupTranslate =
 
 在微前端项目中，需要保证子应用的挂载位置准确，可以将子应用的 `body` 样式添加 `position: relative`
 
+### 滚动触发容器
+
+组件默认仅监听了 `window` 的滚动事件，对于内部 `div` 的滚动没有进行监听，类似 `scroll-to-close` 功能也仅会对 `window` 滚动生效。可以通过开启 `update-at-scroll` 属性支持对父级 `div` 元素的滚动事件监听。
+
 ---
 ## FAQ
 
@@ -101,3 +105,7 @@ type TriggerPopupTranslate =
 The popup box is mounted on the `body` element by default. If you want to modify the mounted element, you can use the `popup-container` attribute to specify it. At the same time, you need to pay attention to ensure that the location of the mounted element can be accurately located. Generally, you can Add `position: relative` style for mount elements.
 
 In the micro-frontend project, it is necessary to ensure that the mounting position of the sub-application is accurate, you can add `position: relative` to the `body` style of the sub-application
+
+### scroll trigger container
+
+By default, the component only listens to the scrolling event of `window`, and does not listen to the scrolling of the internal `div`, and the function similar to `scroll-to-close` will only take effect on the scrolling of `window`. You can support scroll event listening on the parent `div` element by enabling the `update-at-scroll` attribute.

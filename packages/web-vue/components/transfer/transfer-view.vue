@@ -41,7 +41,11 @@
       </slot>
     </div>
     <div v-if="showSearch" :class="`${prefixCls}-search`">
-      <input-search v-model="filter" @change="handleSearch" />
+      <input-search
+        v-model="filter"
+        v-bind="inputSearchProps"
+        @change="handleSearch"
+      />
     </div>
     <div :class="`${prefixCls}-body`">
       <Scrollbar v-if="filteredData.length > 0">
@@ -119,6 +123,9 @@ export default defineComponent({
     showSearch: Boolean,
     showSelectAll: Boolean,
     simple: Boolean,
+    inputSearchProps: {
+      type: Object,
+    },
   },
   emits: ['search'],
   setup(props, { emit }) {

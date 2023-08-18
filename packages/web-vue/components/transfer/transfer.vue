@@ -10,6 +10,7 @@
       :show-search="showSearch"
       :show-select-all="showSelectAll"
       :simple="simple"
+      :input-search-props="sourceInputSearchProps"
       @search="handleSearch"
     >
       <template v-if="$slots.source" #default="slotData">
@@ -57,6 +58,7 @@
       :show-search="showSearch"
       :show-select-all="showSelectAll"
       :simple="simple"
+      :input-search-props="targetInputSearchProps"
       @search="handleSearch"
     >
       <template v-if="$slots.target" #default="slotData">
@@ -187,6 +189,22 @@ export default defineComponent({
     title: {
       type: Array as PropType<string[]>,
       default: () => ['Source', 'Target'],
+    },
+    /**
+     * @zh 源选择框的搜索框配置
+     * @en Search box configuration for source selection box
+     * @version 2.51.1
+     */
+    sourceInputSearchProps: {
+      type: Object,
+    },
+    /**
+     * @zh 目标选择框的搜索框配置
+     * @en Search box configuration for target selection box
+     * @version 2.51.1
+     */
+    targetInputSearchProps: {
+      type: Object,
     },
   },
   emits: {
