@@ -1,45 +1,8 @@
 import type { CSSProperties } from 'vue';
 import type { TriggerPosition } from '../_utils/constant';
 import { isArray } from '../_utils/is';
+import { getDocumentSize, type Size } from "../_utils/dom";
 import type { TriggerPopupTranslate } from './interface';
-
-interface Size {
-  height: number;
-  width: number;
-}
-
-const getDocumentSize = (): Size => {
-  const { body } = document;
-  const html = document.documentElement;
-  let topBody;
-  try {
-    const topWindow = window.top || window.self || window;
-    topBody = topWindow.document.body;
-  } catch {}
-
-  const size = {
-    height: Math.max(
-      body.scrollHeight,
-      body.offsetHeight,
-      html.clientHeight,
-      html.scrollHeight,
-      html.offsetHeight,
-      topBody?.scrollHeight || 0,
-      topBody?.clientHeight || 0
-    ),
-    width: Math.max(
-      body.scrollWidth,
-      body.offsetWidth,
-      html.clientWidth,
-      html.scrollWidth,
-      html.offsetWidth,
-      topBody?.scrollWidth || 0,
-      topBody?.clientWidth || 0
-    ),
-  };
-
-  return size;
-};
 
 const getViewPortSize = (): Size => {
   const { height, width } = getDocumentSize();
