@@ -39,6 +39,8 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 |show-search|是否显示搜索框|`boolean`|`false`||
 |show-select-all|是否展示全选勾选框|`boolean`|`true`|2.39.0|
 |title|源选择框和目标选择框的标题|`string[]`|`['Source', 'Target']`||
+|source-input-search-props|源选择框的搜索框配置|`object`|`-`|2.51.1|
+|target-input-search-props|目标选择框的搜索框配置|`object`|`-`|2.51.1|
 ### `<transfer>` Events
 
 |事件名|描述|参数|

@@ -41,6 +41,8 @@ description: A two-column multi-select component that moves elements from one co
 |show-search|Whether to show the search input|`boolean`|`false`||
 |show-select-all|Whether show select all checkbox on the header|`boolean`|`true`|2.39.0|
 |title|The title of the source and target selection boxes|`string[]`|`['Source', 'Target']`||
+|source-input-search-props|Search box configuration for source selection box|`object`|`-`|2.51.1|
+|target-input-search-props|Search box configuration for target selection box|`object`|`-`|2.51.1|
 ### `<transfer>` Events
 
 |Event Name|Description|Parameters|

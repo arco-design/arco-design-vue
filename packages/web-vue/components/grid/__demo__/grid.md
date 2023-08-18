@@ -43,11 +43,9 @@ import { ref } from 'vue';
 
 export default {
   setup() {
-    const hide = ref(false);
     const collapsed = ref(false);
 
     return {
-      hide,
       collapsed
     }
   },
