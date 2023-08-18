@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.50.1
+
+`2023-08-18`
+
+### 🆕 Feature
+
+- **transfer:** Increase the configuration properties of the search box ([#2656](https://github.com/arco-design/arco-design-vue/pull/2656))
+
+### 🐛 BugFix
+
+- DOM position calculation compatible with Shadow DOM ([#2649](https://github.com/arco-design/arco-design-vue/pull/2649))
+
+
 ## 2.50.0
 
 `2023-08-11`

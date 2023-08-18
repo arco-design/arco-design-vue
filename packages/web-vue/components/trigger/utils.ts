@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'vue';
 import type { TriggerPosition } from '../_utils/constant';
 import { isArray } from '../_utils/is';
-import { getDocumentSize, type Size } from "../_utils/dom";
+import { getDocumentSize, Size } from '../_utils/dom';
 import type { TriggerPopupTranslate } from './interface';
 
 const getViewPortSize = (): Size => {
