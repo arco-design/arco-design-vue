@@ -41,7 +41,11 @@ import type {
   TablePagePosition,
   TableRowSelection,
 } from './interface';
-import { getGroupColumns, spliceFromPath } from './utils';
+import {
+  getGroupColumns,
+  mapArrayWithChildren,
+  mapRawTableData,
+} from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useExpand } from './hooks/use-expand';
 import { usePagination } from './hooks/use-pagination';
@@ -760,12 +764,18 @@ export default defineComponent({
     const dataColumns = ref<TableColumnData[]>([]);
     const groupColumns = ref<TableColumnData[][]>([]);
 
+    const { resizingColumn, columnWidth, handleThMouseDown } = useColumnResize(
+      thRefs,
+      emit
+    );
+
     watch(
-      [columns, slotColumns],
+      [columns, slotColumns, columnWidth],
       ([columns, slotColumns]) => {
         const result = getGroupColumns(
           slotColumns ?? columns ?? [],
-          dataColumnMap
+          dataColumnMap,
+          columnWidth
         );
         dataColumns.value = result.dataColumns;
         groupColumns.value = result.groupColumns;
@@ -994,11 +1004,6 @@ export default defineComponent({
       handleDrop,
     } = useDrag(draggable);
 
-    const { resizingColumn, columnWidth, handleThMouseDown } = useColumnResize(
-      thRefs,
-      emit
-    );
-
     const processedData = computed(() => {
       const travel = (data: TableData[]) => {
         const result: TableDataWithRaw[] = [];
@@ -1056,7 +1061,7 @@ export default defineComponent({
     });
 
     const sortedData = computed(() => {
-      const data = [...validData.value];
+      const data = mapArrayWithChildren(validData.value);
       if (data.length > 0) {
         if (computedSorter.value?.field) {
           const column = dataColumnMap.get(computedSorter.value.field);
@@ -1082,9 +1087,40 @@ export default defineComponent({
           }
         }
 
-        if (dragState.dragging && dragState.targetPath.length > 0) {
-          const target = spliceFromPath(data, dragState.sourcePath);
-          spliceFromPath(data, dragState.targetPath, target);
+        const { sourcePath, targetPath } = dragState;
+        // drag row to another row
+        if (
+          dragState.dragging &&
+          targetPath.length &&
+          targetPath.toString() !== sourcePath.toString()
+        ) {
+          // same level drag
+          if (
+            sourcePath.length === targetPath.length &&
+            sourcePath.slice(0, -1).toString() ===
+              targetPath.slice(0, -1).toString()
+          ) {
+            let children = data;
+            for (let i = 0; i < sourcePath.length; i++) {
+              const sourceIndex = sourcePath[i];
+              const isLast = i >= sourcePath.length - 1;
+              if (isLast) {
+                const sourceChild = children[sourceIndex];
+                const targetIndex = targetPath[i];
+                if (targetIndex > sourceIndex) {
+                  // move down
+                  children.splice(targetIndex + 1, 0, sourceChild);
+                  children.splice(sourceIndex, 1);
+                } else {
+                  // move up
+                  children.splice(targetIndex, 0, sourceChild);
+                  children.splice(sourceIndex + 1, 1);
+                }
+              } else {
+                children = children[sourceIndex].children ?? [];
+              }
+            }
+          }
         }
       }
       return data;
@@ -1113,9 +1149,7 @@ export default defineComponent({
       return sortedData.value;
     });
 
-    const flattenRawData = computed(() =>
-      flattenData.value.map((item) => item.raw)
-    );
+    const flattenRawData = computed(() => mapRawTableData(flattenData.value));
 
     const getSummaryData = () => {
       return dataColumns.value.reduce((per, column, index) => {
@@ -1147,9 +1181,7 @@ export default defineComponent({
       }, {} as Record<string, any>);
     };
 
-    const getTableDataWithRaw = (
-      data?: TableData[]
-    ): TableDataWithRaw[] | undefined => {
+    const getTableDataWithRaw = (data?: TableData[]): TableDataWithRaw[] => {
       if (data && data.length > 0) {
         return data.map((raw) => {
           return {
@@ -1158,7 +1190,7 @@ export default defineComponent({
           };
         });
       }
-      return undefined;
+      return [];
     };
 
     const summaryData = computed(() => {
@@ -1173,7 +1205,7 @@ export default defineComponent({
         }
         return getTableDataWithRaw([getSummaryData()]);
       }
-      return undefined;
+      return [];
     });
 
     const containerScrollLeft = ref(0);
@@ -1554,7 +1586,7 @@ export default defineComponent({
     const { tableSpan: tableSummarySpan, removedCells: removedSummaryCells } =
       useSpan({
         spanMethod: summarySpanMethod,
-        data: flattenData,
+        data: summaryData,
         columns: allColumns,
       });
 
@@ -1583,7 +1615,7 @@ export default defineComponent({
           onClick={(ev: Event) => handleRowClick(record, ev)}
         >
           {operations.value.map((operation, index) => {
-            const cellId = `${rowIndex}-${index}`;
+            const cellId = `${rowIndex}-${index}-${record.key}`;
             const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
 
             if (removedSummaryCells.value.includes(cellId)) {
@@ -1605,7 +1637,9 @@ export default defineComponent({
             );
           })}
           {dataColumns.value.map((column, index) => {
-            const cellId = `${rowIndex}-${operations.value.length + index}`;
+            const cellId = `${rowIndex}-${operations.value.length + index}-${
+              record.key
+            }`;
             const [rowspan, colspan] = tableSummarySpan.value[cellId] ?? [1, 1];
 
             if (removedSummaryCells.value.includes(cellId)) {
@@ -1652,7 +1686,7 @@ export default defineComponent({
     };
 
     const renderSummary = () => {
-      if (summaryData.value) {
+      if (summaryData.value && summaryData.value.length > 0) {
         return (
           <tfoot>
             {summaryData.value.map((data, index) =>
@@ -1825,7 +1859,7 @@ export default defineComponent({
                 [`${prefixCls}-tr-drag`]: isDragTarget,
               },
               isFunction(props.rowClass)
-                ? props.rowClass(record, rowIndex)
+                ? props.rowClass(record.raw, rowIndex)
                 : props.rowClass,
             ]}
             rowIndex={rowIndex}
@@ -1839,7 +1873,7 @@ export default defineComponent({
             {...dragTargetEvent}
           >
             {operations.value.map((operation, index) => {
-              const cellId = `${rowIndex}-${index}`;
+              const cellId = `${rowIndex}-${index}-${record.key}`;
               const [rowspan, colspan] = props.spanAll
                 ? tableSpan.value[cellId] ?? [1, 1]
                 : [1, 1];
@@ -1872,7 +1906,7 @@ export default defineComponent({
             {dataColumns.value.map((column, index) => {
               const cellId = `${rowIndex}-${
                 props.spanAll ? operations.value.length + index : index
-              }`;
+              }-${record.key}`;
               const [rowspan, colspan] = tableSpan.value[cellId] ?? [1, 1];
 
               if (removedCells.value.includes(cellId)) {
@@ -2118,7 +2152,7 @@ export default defineComponent({
                 </Component>
               )}
             </ResizeObserver>
-            {summaryData.value && summaryData.value.length && (
+            {summaryData.value && summaryData.value.length > 0 && (
               <div
                 ref={summaryRef}
                 class={`${prefixCls}-tfoot`}
@@ -2160,7 +2194,9 @@ export default defineComponent({
             />
             {props.showHeader && renderHeader()}
             {renderBody()}
-            {summaryData.value && summaryData.value.length && renderSummary()}
+            {summaryData.value &&
+              summaryData.value.length > 0 &&
+              renderSummary()}
           </table>
         </ResizeObserver>
       );

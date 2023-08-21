@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 Feature
+
+- Scroll maxHeight supports string type ([#2544](https://github.com/arco-design/arco-design-vue/pull/2544))
+
+
 ## 2.48.0
 
 `2023-06-30`

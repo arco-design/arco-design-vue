@@ -34,6 +34,8 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 @import ./__demo__/panel.md
 
+@import ./__demo__/virtual.md
+
 ## API
 
 
@@ -71,6 +73,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |value-key|用于确定选项键值的属性名|`string`|`'value'`|2.29.0|
 |fallback|自定义不存在选项的值的展示|`boolean\| ((    value:      \| string      \| number      \| Record<string, unknown>      \| (string \| number \| Record<string, unknown>)[]  ) => string)`|`true`|2.29.0|
 |expand-child|是否展开子菜单|`boolean`|`false`|2.29.0|
+|virtual-list-props|传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`|2.49.0|
 ### `<cascader>` Events
 
 |事件名|描述|参数|

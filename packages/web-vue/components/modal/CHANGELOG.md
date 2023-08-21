@@ -2,6 +2,27 @@
 changelog: true
 ```
 
+## 2.50.0
+
+`2023-08-11`
+
+### 💎 Enhancement
+
+- add hide-title prop, support hide title ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
+
+### 🆎 TypeScript
+
+- Complete missing properties in ModalConfig ([#2628](https://github.com/arco-design/arco-design-vue/pull/2628))
+
+
+## 2.50.0
+
+`2023-8-1`
+
+### 💎 Enhancement
+
+- add hide-title prop, support hide title ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
+
 ## 2.47.0
 
 `2023-06-02`

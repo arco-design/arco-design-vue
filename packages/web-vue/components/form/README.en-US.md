@@ -191,6 +191,7 @@ const useFormItem = (data: {
 }
 ```
 
+
 ## FAQ
 
 ### About the `field` attribute of `form-item`
@@ -212,3 +213,8 @@ const data = reactive({
 })
 ````
 At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2222'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
+
+### About using clickable elements in the label slot
+
+The title area of the form component is wrapped with the `label` element by default, which will activate the input component when clicked. If you put a clickable component in it, it will affect its normal function.
+At this point, you can use the `label-component` attribute to modify the wrapping element to `span` to solve this problem.

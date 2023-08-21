@@ -74,6 +74,7 @@
         :total-level="totalLevel"
         :check-strictly="checkStrictly"
         :loading="loading"
+        :virtual-list-props="virtualListProps"
         dropdown
       >
         <template v-if="$slots.empty" #empty>
@@ -121,6 +122,7 @@ import { cascaderInjectionKey } from './context';
 import { Size } from '../_utils/constant';
 import { debounce } from '../_utils/debounce';
 import { useFormItem } from '../_hooks/use-form-item';
+import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 
 export default defineComponent({
   name: 'Cascader',
@@ -416,6 +418,15 @@ export default defineComponent({
     expandChild: {
       type: Boolean,
       default: false,
+    },
+    /**
+     * @zh 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps)
+     * @en Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)
+     * @type VirtualListProps
+     * @version 2.49.0
+     */
+    virtualListProps: {
+      type: Object as PropType<VirtualListProps>,
     },
   },
   emits: {

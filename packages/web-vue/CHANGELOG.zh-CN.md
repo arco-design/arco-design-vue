@@ -2,6 +2,111 @@
 changelog: true
 ```
 
+## 2.50.1
+
+`2023-08-18`
+
+### 🆕 新增功能
+
+- **transfer:** 增加搜索框的配置属性 ([#2656](https://github.com/arco-design/arco-design-vue/pull/2656))
+
+### 🐛 问题修复
+
+- DOM 位置计算兼容 Shadow DOM ([#2649](https://github.com/arco-design/arco-design-vue/pull/2649))
+
+
+## 2.50.0
+
+`2023-08-11`
+
+### ⚠️ 重点注意
+
+- 修正 `Alter` 为 `Alert` ([#2633](https://github.com/arco-design/arco-design-vue/pull/2633))
+
+### 🆕 新增功能
+
+- **image:** 支持键盘快捷、鼠标滚轮操作等一系列功能 ([#2616](https://github.com/arco-design/arco-design-vue/pull/2616))
+- **auto-complete:** 添加虚拟列表支持 ([#2596](https://github.com/arco-design/arco-design-vue/pull/2596))
+- **timeline:** 添加自定义标签插槽 ([#2591](https://github.com/arco-design/arco-design-vue/pull/2591))
+
+### 🐛 问题修复
+
+- 修复全局引入时提示重复注册的问题 ([#2633](https://github.com/arco-design/arco-design-vue/pull/2633))
+- 修复了导致"␍"错误的格式问题 ([#2626](https://github.com/arco-design/arco-design-vue/pull/2626))
+
+### 💎 功能优化
+
+- **modal:** 增加 `hide-title` 属性，支持隐藏标题 ([#2605](https://github.com/arco-design/arco-design-vue/pull/2605))
+
+### 🆎 类型修正
+
+- **modal:** 补全 ModalConfig 缺失的属性 ([#2628](https://github.com/arco-design/arco-design-vue/pull/2628))
+- **image:** 添加 ImagePreviewAction 类型声明 ([#2625](https://github.com/arco-design/arco-design-vue/pull/2625))
+
+
+## 2.49.3
+
+`2023-08-04`
+
+### 🐛 问题修复
+
+- **grid:** 修复a-grid-item中使用v-show，初始值为false，但仍展示出来的问题 ([#2604](https://github.com/arco-design/arco-design-vue/pull/2604))
+
+
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 问题修复
+
+- **statistic:** 修复 `value-style` 在数字内容时不能修改字体大小的问题 ([#2600](https://github.com/arco-design/arco-design-vue/pull/2600))
+- **table:** 修复在固定列中开启调整列宽出现的问题 ([#2598](https://github.com/arco-design/arco-design-vue/pull/2598))
+- **typography:** 增强对连续长单词的省略支持 ([#2583](https://github.com/arco-design/arco-design-vue/pull/2583))
+- **table:** 修复树形表格拖拽问题 ([#2503](https://github.com/arco-design/arco-design-vue/pull/2503))
+
+
+## 2.49.1
+
+`2023-07-24`
+
+### 🐛 问题修复
+
+- **tree-select:** 修复 `border` 属性默认值错误的问题 ([#2580](https://github.com/arco-design/arco-design-vue/pull/2580))
+
+
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 新增功能
+
+- **cascader:** 增加虚拟列表功能 ([#2577](https://github.com/arco-design/arco-design-vue/pull/2577))
+- **tree-select:** 增加空状态下 header 和 footer 的显示状态 ([#2573](https://github.com/arco-design/arco-design-vue/pull/2573))
+- **input-number:** 增加数值操作自定义图标插槽 ([#2560](https://github.com/arco-design/arco-design-vue/pull/2560))
+- **list:** 滚动最大高度支持字符串类型 ([#2544](https://github.com/arco-design/arco-design-vue/pull/2544))
+
+### 🐛 问题修复
+
+- **table:** 修复 rowClass 函数 record 参数错误的问题 ([#2570](https://github.com/arco-design/arco-design-vue/pull/2570))
+- **tree-select:** 修复 border 属性失效的问题 ([#2568](https://github.com/arco-design/arco-design-vue/pull/2568))
+
+### 💅 样式更新
+
+- **result:** 修复 500 图片错位问题 ([#2578](https://github.com/arco-design/arco-design-vue/pull/2578))
+
+
+## 2.48.1
+
+`2023-07-14`
+
+### 🐛 问题修复
+
+- **image:** 在错误状态下，没有 alt 或description情况图标不垂直居中 ([#2563](https://github.com/arco-design/arco-design-vue/pull/2563))
+- **divider:** 修复竖向自适应高度 ([#2561](https://github.com/arco-design/arco-design-vue/pull/2561))
+- **table:** 修复 `summary-span-method` 属性中传出参数错误的问题 ([#2552](https://github.com/arco-design/arco-design-vue/pull/2552))
+- **table:** 修复子树的合并单元格的bug ([#2540](https://github.com/arco-design/arco-design-vue/pull/2540))
+
+
 ## 2.48.0
 
 `2023-06-30`

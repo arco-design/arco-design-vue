@@ -126,7 +126,14 @@ table 组件提供了内部元素的自定义插槽，这些插槽不同于普�
   </td>
 </template>
 ```
+
+### 2. 关于数据中的 `row-key` 设置
+
+表格默认会通过数据中设置的 `key` 字段来唯一定位行数据，在提供数据时请确保行数据中都设置了 `key` 字段。这个字段在开启选择器等功能时为必要字段，如果想要更换默认的字段名，可以修改 `row-key` 进行设置。
+
 ---
+
+
 ## en-US
 The table component provides custom slots for internal elements, which are different from normal slots and have certain restrictions on what the user can pass in.
 Because the slot of vue does not provide a way to send out children and render them in the slot, we have done some special processing for the element slot in the table, and will append the original children to the content passed in by the user to ensure that children Normal rendering of the element.
@@ -166,4 +173,9 @@ example 2：
   </td>
 </template>
 ```
+
+### 2. About the `row-key` setting in the data
+
+By default, the table will uniquely locate the row data through the `key` field set in the data. When providing data, please ensure that the `key` field is set in the row data. This field is a necessary field when enabling functions such as selectors. If you want to change the default field name, you can modify `row-key` to set it.
+
 ---

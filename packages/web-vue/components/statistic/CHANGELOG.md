@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 BugFix
+
+- Fix the problem that `value-style` cannot modify the font size in digital content ([#2600](https://github.com/arco-design/arco-design-vue/pull/2600))
+
+
 ## 2.32.0
 
 `2022-06-24`

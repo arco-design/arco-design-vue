@@ -16,6 +16,8 @@ description: 仅允许输入数字格式的输入框。
 
 @import ./__demo__/prefix.md
 
+@import ./__demo__/step-icon.md
+
 @import ./__demo__/format.md
 
 @import ./__demo__/model.md
@@ -63,6 +65,8 @@ description: 仅允许输入数字格式的输入框。
 
 |插槽名|描述|参数|
 |---|:---:|---|
+|minus|数值减少图标|-|
+|plus|数值增加图标|-|
 |append|后置标签|-|
 |prepend|前置标签|-|
 |suffix|后缀|-|

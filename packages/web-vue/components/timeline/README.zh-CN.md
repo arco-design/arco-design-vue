@@ -24,6 +24,8 @@ description: 按照时间顺序或倒序规则的展示信息内容。
 
 @import ./__demo__/label.md
 
+@import ./__demo__/custom.md
+
 ## API
 
 
@@ -57,8 +59,9 @@ description: 按照时间顺序或倒序规则的展示信息内容。
 |position|Item 位置|`PositionType`|`-`|
 ### `<timeline-item>` Slots
 
-|插槽名|描述|参数|
-|---|:---:|---|
-|dot|自定义节点|-|
+|插槽名|描述|参数|版本|
+|---|:---:|---|:---|
+|dot|自定义节点|-||
+|label|自定义标签|-|2.50.0|
 
 

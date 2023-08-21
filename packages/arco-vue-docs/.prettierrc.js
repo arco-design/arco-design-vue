@@ -4,5 +4,6 @@ module.exports = {
   printWidth: 80,
   singleQuote: true,
   quoteProps: 'consistent',
+  endOfLine: 'auto',
   htmlWhitespaceSensitivity: 'strict',
 };

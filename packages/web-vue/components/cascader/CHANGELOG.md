@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.49.0
+
+`2023-07-21`
+
+### 🆕 Feature
+
+- Add virtual list support ([#2577](https://github.com/arco-design/arco-design-vue/pull/2577))
+
+
 ## 2.46.0
 
 `2023-05-12`

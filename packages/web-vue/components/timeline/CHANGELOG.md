@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.50.0
+
+`2023-08-11`
+
+### 🆕 Feature
+
+- add label slot ([#2591](https://github.com/arco-design/arco-design-vue/pull/2591))
+
+
 ## 2.34.0
 
 `2022-07-29`

@@ -29,6 +29,12 @@ export interface ImagePreviewProps {
   closable: boolean;
   actionsLayout: string[];
   popupContainer?: HTMLElement | string;
+  escToClose: boolean;
+  keyboard: boolean;
+  wheelZoom: boolean;
+  defaultScale: number;
+  zoomRate: number;
+  groupArrowProps: Record<string, any>;
   onClose?: () => void;
 }
 

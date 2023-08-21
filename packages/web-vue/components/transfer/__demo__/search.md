@@ -18,7 +18,17 @@ You can customize the search function by setting `show-search` to use the shuttl
 
 ```vue
 <template>
-  <a-transfer :data="data" :default-value="value" show-search/>
+  <a-transfer
+    show-search
+    :data="data"
+    :default-value="value"
+    :source-input-search-props="{
+      placeholder:'source item search'
+    }"
+    :target-input-search-props="{
+      placeholder:'target item search'
+    }"
+  />
 </template>
 
 <script>

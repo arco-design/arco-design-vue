@@ -3,6 +3,7 @@ module.exports = {
   semi: true,
   printWidth: 80,
   singleQuote: true,
+  endOfLine: 'auto',
   quoteProps: 'consistent',
   htmlWhitespaceSensitivity: 'strict',
 };

@@ -2,6 +2,35 @@
 changelog: true
 ```
 
+## 2.49.2
+
+`2023-07-28`
+
+### 🐛 问题修复
+
+- 修复在固定列中开启调整列宽出现的问题 ([#2598](https://github.com/arco-design/arco-design-vue/pull/2598))
+- 修复树形表格拖拽问题 ([#2503](https://github.com/arco-design/arco-design-vue/pull/2503))
+
+
+## 2.49.0
+
+`2023-07-21`
+
+### 🐛 问题修复
+
+- 修复 rowClass 函数 record 参数错误的问题 ([#2570](https://github.com/arco-design/arco-design-vue/pull/2570))
+
+
+## 2.48.1
+
+`2023-07-14`
+
+### 🐛 问题修复
+
+- 修复 `summary-span-method` 属性中传出参数错误的问题 ([#2552](https://github.com/arco-design/arco-design-vue/pull/2552))
+- 修复子树的合并单元格的bug ([#2540](https://github.com/arco-design/arco-design-vue/pull/2540))
+
+
 ## 2.48.0
 
 `2023-06-30`

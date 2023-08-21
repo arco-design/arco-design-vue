@@ -83,7 +83,6 @@ type TriggerPopupTranslate =
   | { [key in TriggerPosition]?: [number, number] };
 ```
 
-# zh-CN
 ## FAQ
 
 ### 关于弹出框的挂载位置
@@ -92,4 +91,7 @@ type TriggerPopupTranslate =
 
 在微前端项目中，需要保证子应用的挂载位置准确，可以将子应用的 `body` 样式添加 `position: relative`
 
----
+### 滚动触发容器
+
+组件默认仅监听了 `window` 的滚动事件，对于内部 `div` 的滚动没有进行监听，类似 `scroll-to-close` 功能也仅会对 `window` 滚动生效。可以通过开启 `update-at-scroll` 属性支持对父级 `div` 元素的滚动事件监听。
+
