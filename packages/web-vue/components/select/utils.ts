@@ -1,4 +1,10 @@
-import { isFunction, isNumber, isObject, isString } from '../_utils/is';
+import {
+  isBoolean,
+  isFunction,
+  isNumber,
+  isObject,
+  isString,
+} from '../_utils/is';
 import type {
   FilterOption,
   SelectOptionGroup,
@@ -32,7 +38,7 @@ export const getKeyFromValue = (
   if (isObject(value)) {
     return `__arco__option__object__${value[valueKey]}`;
   }
-  if (value || isNumber(value) || isString(value)) {
+  if (value || isNumber(value) || isString(value) || isBoolean(value)) {
     return `__arco__option__${typeof value}-${value}`;
   }
   return '';

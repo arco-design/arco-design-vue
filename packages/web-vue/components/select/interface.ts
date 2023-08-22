@@ -5,18 +5,26 @@ import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { TriggerProps } from '../trigger';
 
 export interface SelectProps {
-  options?: (string | number | SelectOptionData | SelectOptionGroup)[];
+  options?: (
+    | string
+    | number
+    | boolean
+    | SelectOptionData
+    | SelectOptionGroup
+  )[];
   multiple?: boolean;
   modelValue?:
     | string
     | number
+    | boolean
     | Record<string, unknown>
-    | (string | number | Record<string, unknown>)[];
+    | (string | number | boolean | Record<string, unknown>)[];
   defaultValue?:
     | string
     | number
+    | boolean
     | Record<string, unknown>
-    | (string | number | Record<string, unknown>)[];
+    | (string | number | boolean | Record<string, unknown>)[];
   inputValue?: string;
   defaultInputValue?: string;
   size?: Size;
@@ -41,7 +49,9 @@ export interface SelectProps {
   formatLabel?: (data: SelectOptionData) => string;
   fallbackOption?:
     | boolean
-    | ((value: string | number | Record<string, unknown>) => SelectOptionData);
+    | ((
+        value: string | number | boolean | Record<string, unknown>
+      ) => SelectOptionData);
   showExtraOptions?: boolean;
   valueKey?: string;
   searchDelay?: number;
@@ -51,7 +61,11 @@ export interface SelectProps {
   showFooterOnEmpty?: boolean;
 }
 
-export type SelectOptionValue = string | number | Record<string, unknown>;
+export type SelectOptionValue =
+  | string
+  | number
+  | boolean
+  | Record<string, unknown>;
 
 export interface OptionValueWithKey {
   value: SelectOptionValue;
@@ -65,7 +79,7 @@ export interface SelectOptionData {
    * @zh 选项值
    * @en Option Value
    */
-  value?: string | number | Record<string, unknown>;
+  value?: string | number | boolean | Record<string, unknown>;
   /**
    * @zh 选项内容
    * @en Option content
@@ -117,6 +131,7 @@ export interface SelectOptionGroup {
 export type SelectOption =
   | string
   | number
+  | boolean
   | SelectOptionData
   | SelectOptionGroup;
 

@@ -63,7 +63,10 @@ export default defineComponent({
      * @zh 选项值（如不填，会从内容中获取）
      * @en Option value (if not filled, it will be obtained from the content)
      */
-    value: [String, Number, Object],
+    value: {
+      type: [String, Number, Boolean, Object],
+      default: undefined,
+    },
     /**
      * @zh 选项标签（如不填，会从内容中获取）
      * @en Option label (if not filled, it will be obtained from the content)
