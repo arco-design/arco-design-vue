@@ -74,6 +74,22 @@ describe('Select', () => {
     expect(option.text()).toBe('Shanghai');
   });
 
+  test('should show exact match search', async () => {
+    const wrapper = mount(Select, {
+      props: {
+        options: ['AShanghai', 'BShanghai', 'Shanghai', 'Shan'],
+        allowSearch: true,
+      },
+    });
+
+    const input = wrapper.find('input');
+    await input.trigger('click');
+    await input.setValue('Shang');
+    const dropdown = wrapper.findComponent({ name: 'SelectDropdown' });
+    const option = dropdown.find('.arco-select-option');
+    expect(option.text()).toBe('Shanghai');
+  });
+
   test('should enable create option', async () => {
     const wrapper = mount(Select, {
       props: {
