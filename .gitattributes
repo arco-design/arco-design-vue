@@ -34,9 +34,11 @@
 *.styl            text
 *.tag             text
 *.ts              text
-*.tsx             text
 *.xml             text
 *.xhtml           text diff=html
+*.md              text eol=lf
+*.vue             text eol=lf
+*.tsx             text eol=lf
 
 # Scripts
 *.bash            text eol=lf
@@ -141,7 +143,7 @@ TODO              text
 *.config          text
 .editorconfig     text
 .env              text
-.gitattributes    text
+.gitattributes    text eol=lf
 .gitconfig        text
 .htaccess         text
 *.lock            text -diff

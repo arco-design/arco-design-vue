@@ -4,7 +4,40 @@ import { isString } from './is';
 export const NOOP = () => {
   return undefined;
 };
+export interface Size {
+  height: number;
+  width: number;
+}
+export const getDocumentSize = (): Size => {
+  const { body } = document;
+  const html = document.documentElement;
+  let topBody;
+  try {
+    const topWindow = window.top || window.self || window;
+    topBody = topWindow.document.body;
+  } catch {}
 
+  return {
+    height: Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight,
+      topBody?.scrollHeight || 0,
+      topBody?.clientHeight || 0
+    ),
+    width: Math.max(
+      body.scrollWidth,
+      body.offsetWidth,
+      html.clientWidth,
+      html.scrollWidth,
+      html.offsetWidth,
+      topBody?.scrollWidth || 0,
+      topBody?.clientWidth || 0
+    ),
+  };
+};
 export const isServerRendering = (() => {
   try {
     return !(typeof window !== 'undefined' && document !== undefined);
@@ -134,7 +167,6 @@ export const isScroll = (element: HTMLElement) => {
 
 export const getScrollBarWidth = (element: HTMLElement) => {
   return element.tagName === 'BODY'
-    ? window.innerWidth -
-        (document.documentElement.offsetWidth || document.body.offsetWidth)
+    ? window.innerWidth - getDocumentSize().width
     : element.offsetWidth - element.clientWidth;
 };

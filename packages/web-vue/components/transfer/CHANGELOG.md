@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.50.1
+
+`2023-08-18`
+
+### 🆕 Feature
+
+- Increase the configuration properties of the search box ([#2656](https://github.com/arco-design/arco-design-vue/pull/2656))
+
+
 ## 2.46.1
 
 `2023-05-26`

@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.50.1
+
+`2023-08-18`
+
+### 🆕 新增功能
+
+- **transfer:** 增加搜索框的配置属性 ([#2656](https://github.com/arco-design/arco-design-vue/pull/2656))
+
+### 🐛 问题修复
+
+- DOM 位置计算兼容 Shadow DOM ([#2649](https://github.com/arco-design/arco-design-vue/pull/2649))
+
+
 ## 2.50.0
 
 `2023-08-11`
