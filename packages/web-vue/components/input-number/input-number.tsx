@@ -23,6 +23,7 @@ import { getKeyDownHandler, KEYBOARD_KEY } from '../_utils/keyboard';
 
 type StepMethods = 'minus' | 'plus';
 
+const FIRST_DELAY = 800;
 const SPEED = 150;
 
 NP.enableBoundaryChecking(false);
@@ -400,7 +401,7 @@ export default defineComponent({
       if (needRepeat) {
         repeatTimer = window.setTimeout(
           () => (event.target as HTMLElement).dispatchEvent(event),
-          SPEED
+          repeatTimer ? SPEED : FIRST_DELAY
         );
       }
     };
