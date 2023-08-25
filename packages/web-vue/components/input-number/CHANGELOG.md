@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.50.2
+
+`2023-08-25`
+
+### 💎 Enhancement
+
+- Optimize the long-press effect of the step button ([#2668](https://github.com/arco-design/arco-design-vue/pull/2668))
+
+
 ## 2.49.0
 
 `2023-07-21`
