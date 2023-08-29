@@ -379,13 +379,15 @@ export default defineComponent({
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
      * @param { string | number | Record<string, any> | (string | number | Record<string, any>)[] } value
+     * @param {Record<string, any> | Record<string, any>[]} option
      */
     'change': (
       value:
         | string
         | number
         | Record<string, any>
-        | (string | number | Record<string, any>)[]
+        | (string | number | Record<string, any>)[],
+      option: Record<string, any> | Record<string, any>[]
     ) => true,
     /**
      * @zh 输入框的值发生改变时触发
@@ -697,11 +699,19 @@ export default defineComponent({
       return valueKeys.map((key) => optionInfoMap.get(key)?.value ?? '');
     };
 
+    const getOptionFromValueKeys = (valueKeys: string[]) => {
+      if (!props.multiple) {
+        return optionInfoMap.get(valueKeys[0])?.raw ?? {};
+      }
+      return valueKeys.map((key) => optionInfoMap.get(key)?.raw ?? {});
+    };
+
     const updateValue = (valueKeys: string[]) => {
       const value = getValueFromValueKeys(valueKeys);
+      const option = getOptionFromValueKeys(valueKeys);
       _value.value = value;
       emit('update:modelValue', value);
-      emit('change', value);
+      emit('change', value, option);
       eventHandlers.value?.onChange?.();
       updateSelectedOption(valueKeys);
     };
