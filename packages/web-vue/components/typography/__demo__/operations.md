@@ -8,11 +8,15 @@ title:
 
 提供复制、编辑文本等功能。
 
+注意：如果启用了按需引入，请手动引入 `@arco-design/web-vue/es/tooltip/style/css`。
+
 ---
 
 ## en-US
 
 Provide functions such as copying and editing text.
+
+Note: If On-demand Import is enabled, please manually import `@arco-design/web-vue/es/tooltip/style/css`.
 
 ---
 
