@@ -31,4 +31,5 @@ description: 日历组件。
 
 |插槽名|描述|参数|版本|
 |---|---|---|---|
+|default|每个日期中渲染的内容|year: `number`<br>month: `number`<br>date: `number`||
 |header|日历的标题|year: `number`<br>month: `number`||

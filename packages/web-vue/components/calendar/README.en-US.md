@@ -33,4 +33,5 @@ description: Calendar Component.
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
+|default|Content to be rendered in each date|year: `number`<br>month: `number`<br>date: `number`||
 |title|Header of the calendar|year: `number`<br>month: `number`||
