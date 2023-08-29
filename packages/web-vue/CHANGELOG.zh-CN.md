@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.50.2
+
+`2023-08-25`
+
+### 🐛 问题修复
+
+- 修复虚拟滚动 scrollTop 位置不对 ([#2665](https://github.com/arco-design/arco-design-vue/pull/2665))
+
+### 💎 功能优化
+
+- **input-number:** 优化步长按钮的长按效果 ([#2668](https://github.com/arco-design/arco-design-vue/pull/2668))
+
+
 ## 2.50.1
 
 `2023-08-18`

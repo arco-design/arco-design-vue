@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.50.2
+
+`2023-08-25`
+
+### 🐛 BugFix
+
+- fix the wrong scrolling position of the virtual list ([#2665](https://github.com/arco-design/arco-design-vue/pull/2665))
+
+### 💎 Enhancement
+
+- **input-number:** Optimize the long-press effect of the step button ([#2668](https://github.com/arco-design/arco-design-vue/pull/2668))
+
+
 ## 2.50.1
 
 `2023-08-18`
