@@ -106,7 +106,7 @@ export default defineComponent({
      */
     'panelChange': (date: Date) => true,
   },
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const { dayStartOfWeek, isWeek } = toRefs(props);
     const prefixCls = getPrefixCls('calendar');
     const _mode = ref(props.defaultMode);
@@ -226,6 +226,7 @@ export default defineComponent({
           onYearChange={onChangeYear}
           onMonthChange={onChangeMonth}
           changePageShowDate={changePageShowDate}
+          v-slots={{ default: slots.header }}
         />
         {computedMode.value === 'month' && (
           <div class={`${prefixCls}-body`}>
