@@ -330,6 +330,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    scrollToCloseDistance: {
+      type: Number,
+      default: 0,
+    },
   },
   emits: {
     'update:popupVisible': (visible: boolean) => true,
@@ -636,10 +640,13 @@ export default defineComponent({
       changeVisible(false);
     };
 
-    const handleScroll = throttleByRaf(() => {
+    const handleScroll = throttleByRaf((e) => {
+      const { scrollTop } = e.target;
       if (computedVisible.value) {
         if (props.scrollToClose || configCtx?.scrollToClose) {
-          changeVisible(false);
+          if (scrollTop >= props.scrollToCloseDistance) {
+            changeVisible(false);
+          }
         } else {
           updatePopupStyle();
         }
@@ -652,8 +659,11 @@ export default defineComponent({
     };
 
     const onWindowScroll = throttleByRaf(() => {
-      changeVisible(false);
-      removeWindowScroll();
+      const scrollTop = window.pageYOffset;
+      if (scrollTop >= props.scrollToCloseDistance) {
+        changeVisible(false);
+        removeWindowScroll();
+      }
     });
 
     const handleResize = () => {
