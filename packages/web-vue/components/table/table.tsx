@@ -417,6 +417,10 @@ export default defineComponent({
       type: [Object, Boolean] as PropType<boolean | ScrollbarProps>,
       default: true,
     },
+    showTreeEmpty: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:selectedKeys': (rowKeys: (string | number)[]) => true,
@@ -690,6 +694,7 @@ export default defineComponent({
       draggable,
       summarySpanMethod,
       scrollbar,
+      showTreeEmpty,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const configCtx = inject(configProviderInjectionKey, undefined);
@@ -1768,6 +1773,10 @@ export default defineComponent({
       }
     ) => {
       if (record.hasSubtree) {
+        if (record.children?.length === 0 && showTreeEmpty.value) {
+          return renderEmpty();
+        }
+
         return record.children?.map((item, index) =>
           renderRecord(item, index, {
             indentSize,
