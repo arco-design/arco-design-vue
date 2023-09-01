@@ -30,7 +30,6 @@
       </FormItemLabel>
     </ArcoCol>
     <ArcoCol
-      :id="mergedId"
       :class="wrapperColCls"
       :style="mergedWrapperStyle"
       v-bind="mergedWrapperCol"
@@ -354,6 +353,9 @@ export default defineComponent({
       const colProps = {
         ...(props.wrapperColProps ?? formCtx.wrapperColProps),
       };
+      if (mergedId.value) {
+        colProps.id = mergedId.value;
+      }
       if (props.labelColFlex || formCtx.autoLabelWidth) {
         colProps.flex = 'auto';
       }
@@ -646,7 +648,6 @@ export default defineComponent({
       mergedLabelStyle,
       wrapperColCls,
       mergedWrapperStyle,
-      mergedId,
     };
   },
 });

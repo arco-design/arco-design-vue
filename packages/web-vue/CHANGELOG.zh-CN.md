@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.51.0
+
+`2023-09-01`
+
+### ⚠️ 重点注意
+
+- **form:** `form-item` 渲染元素增加 `id` 属性，请注意对原始网页的影响
+
+### 🆕 新增功能
+
+- **form:** 新增滚动到指定表单字段 ([#2680](https://github.com/arco-design/arco-design-vue/pull/2680))
+- **table:** 支持显示空子树 ([#2673](https://github.com/arco-design/arco-design-vue/pull/2673))
+- **select:** 支持`boolean` 类型 ([#2661](https://github.com/arco-design/arco-design-vue/pull/2661))
+
+### 🐛 问题修复
+
+- **typography:** 修复按需导入时缺少相关组件样式的问题 ([#2682](https://github.com/arco-design/arco-design-vue/pull/2682))
+
+
 ## 2.50.2
 
 `2023-08-25`

@@ -23,7 +23,7 @@ An example of tree data display, when there is a `children` field in `data`, it 
     <span>checkStrictly:</span>
     <a-switch v-model="rowSelection.checkStrictly" />
   </a-space>
-  <a-table :columns="columns" :data="data" v-model:expandedKeys="expandedKeys" :row-selection="rowSelection" show-tree-empty style="margin-top: 20px"/>
+  <a-table :columns="columns" :data="data" v-model:expandedKeys="expandedKeys" :row-selection="rowSelection" show-empty-tree style="margin-top: 20px"/>
 </template>
 
 <script>

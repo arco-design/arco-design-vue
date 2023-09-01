@@ -49,7 +49,7 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |rules|表单项校验规则|`Record<string, FieldRule \| FieldRule[]>`|`-`||
 |auto-label-width|是否开启自动标签宽度，仅在 `layout="horizontal"` 下生效。|`boolean`|`false`|2.13.0|
 |id|表单控件 `id` 的前缀|`string`|`-`||
-|scroll-to-first-error|验证失败后滚动到第一个错误字段，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数|`boolean \| ScrollIntoViewOptions`|`-`||
+|scroll-to-first-error|验证失败后滚动到第一个错误字段|`boolean`|`false`|2.51.0|
 ### `<form>` Events
 
 |事件名|描述|参数|
@@ -59,14 +59,14 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |submit-failed|验证失败时触发|data: `{values: Record<string, any>; errors: Record<string, ValidatedError>}`<br>ev: `Event`|
 ### `<form>` Methods
 
-|方法名|描述|参数|返回值|
-|---|---|---|---|
-|validate|校验全部表单数据|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>|
-|validateField|校验部分表单数据|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>|
-|resetFields|重置表单数据|field: `string \| string[]`|-|
-|clearValidate|清除校验状态|field: `string \| string[]`|-|
-|setFields|设置表单项的值和状态|data: `Record<string, FieldData>`|-|
-|scrollToField|滚动到指定表单项|field: `string`<br>options: `ScrollIntoViewOptions`|-|
+|方法名|描述|参数|返回值|版本|
+|---|---|---|---|:---|
+|validate|校验全部表单数据|callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>||
+|validateField|校验部分表单数据|field: `string \| string[]`<br>callback: `(errors: undefined \| Record<string, ValidatedError>) => void`|Promise<undefined \| Record<string, ValidatedError>>||
+|resetFields|重置表单数据|field: `string \| string[]`|-||
+|clearValidate|清除校验状态|field: `string \| string[]`|-||
+|setFields|设置表单项的值和状态|data: `Record<string, FieldData>`|-||
+|scrollToField|滚动到指定表单项|field: `string`|-|2.51.0|
 
 
 

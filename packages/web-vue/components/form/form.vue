@@ -116,11 +116,13 @@ export default defineComponent({
       type: String,
     },
     /**
-     * @zh 验证失败后滚动到第一个错误字段，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数
-     * @en Scroll to the first error field after verification fails, receiving all parameters of[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)
+     * @zh 验证失败后滚动到第一个错误字段
+     * @en Scroll to the first error field after verification fails
+     * @version 2.51.0
      */
     scrollToFirstError: {
-      type: [Boolean, Object] as PropType<boolean | ScrollIntoViewOptions>,
+      type: Boolean,
+      default: false,
     },
   },
   emits: {
@@ -463,11 +465,11 @@ export default defineComponent({
      * @zh 滚动到指定表单项
      * @en Scroll to the specified form item
      * @param {string} field
-     * @param {ScrollIntoViewOptions} options
      * @public
+     * @version 2.51.0
      */
-    scrollToField(field: string, options?: ScrollIntoViewOptions) {
-      return this.innerScrollToField(field, options);
+    scrollToField(field: string) {
+      return this.innerScrollToField(field);
     },
   },
 });

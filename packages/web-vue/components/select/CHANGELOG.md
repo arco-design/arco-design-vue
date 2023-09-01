@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.51.0
+
+`2023-09-01`
+
+### 🆕 Feature
+
+- support boolean type ([#2661](https://github.com/arco-design/arco-design-vue/pull/2661))
+
+
 ## 2.47.1
 
 `2023-06-09`

@@ -96,6 +96,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |default-expand-all-rows|是否默认展开所有的行|`boolean`|`false`|2.25.0|
 |sticky-header|是否开启表头吸顶|`boolean\|number`|`false`|2.30.0|
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.38.0|
+|show-empty-tree|是否展示空子树|`boolean`|`false`|2.51.0|
 ### `<table>` Events
 
 |事件名|描述|参数|版本|

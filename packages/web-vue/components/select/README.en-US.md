@@ -53,8 +53,8 @@ description: When users need to select one or more from a group of similar data,
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |multiple|Whether to open multi-select mode (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
-|model-value **(v-model)**|Value|`string\| number\| Record<string, any>\| (string \| number \| Record<string, any>)[]`|`-`||
-|default-value|Default value (uncontrolled mode)|`string\| number\| Record<string, unknown>\| (string \| number \| Record<string, unknown>)[]`|`'' \| []`||
+|model-value **(v-model)**|Value|`string\| number\| boolean\| Record<string, any>\| (string \| number \| boolean \| Record<string, any>)[]`|`-`||
+|default-value|Default value (uncontrolled mode)|`string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[]`|`'' \| []`||
 |input-value **(v-model)**|The value of the input|`string`|`-`||
 |default-input-value|The default value of the input (uncontrolled mode)|`string`|`''`||
 |size|The size of the select|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
@@ -73,11 +73,11 @@ description: When users need to select one or more from a group of similar data,
 |default-popup-visible|Whether the popup is visible by default (uncontrolled mode)|`boolean`|`false`||
 |unmount-on-close|Whether to destroy the element when the dropdown is closed|`boolean`|`false`||
 |filter-option|Whether to filter options|`boolean \| ((inputValue: string, option: SelectOptionData) => boolean)`|`true`||
-|options|Option data|`(string \| number \| SelectOptionData \| SelectOptionGroup)[]`|`[]`||
+|options|Option data|`(string \| number \| boolean \| SelectOptionData \| SelectOptionGroup)[]`|`[]`||
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`||
 |trigger-props|Trigger props of the drop-down menu|`TriggerProps`|`-`||
 |format-label|Format display content|`(data: SelectOptionData) => string`|`-`||
-|fallback-option|Options that do not exist in custom values|`boolean\| ((    value: string \| number \| Record<string, unknown>  ) => SelectOptionData)`|`true`|2.10.0|
+|fallback-option|Options that do not exist in custom values|`boolean\| ((    value: string \| number \| boolean \| Record<string, unknown>  ) => SelectOptionData)`|`true`|2.10.0|
 |show-extra-options|Options that do not exist in custom values|`boolean`|`true`|2.10.0|
 |value-key|Used to determine the option key value attribute name|`string`|`'value'`|2.18.0|
 |search-delay|Delay time to trigger search event|`number`|`500`|2.18.0|
@@ -90,15 +90,15 @@ description: When users need to select one or more from a group of similar data,
 
 |Event Name|Description|Parameters|version|
 |---|---|---|:---|
-|change|Triggered when the value changes|value: ` string \| number \| Record<string, any> \| (string \| number \| Record<string, any>)[] `||
+|change|Triggered when the value changes|value: ` string \| number \| boolean \| Record<string, any> \| (string \| number \| boolean \| Record<string, any>)[] `||
 |input-value-change|Triggered when the value of the input changes|inputValue: `string`||
 |popup-visible-change|Triggered when the display state of the drop-down box changes|visible: `boolean`||
 |clear|Triggered when the clear button is clicked|-||
-|remove|Triggered when the delete button of the label is clicked|removed: `string \| number \| Record<string, any> \| undefined`||
+|remove|Triggered when the delete button of the label is clicked|removed: `string \| number \| boolean \| Record<string, any> \| undefined`||
 |search|Triggered when the user searches|inputValue: `string`||
 |dropdown-scroll|Triggered when the drop-down scrolls|-||
 |dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|-||
-|exceed-limit|Triggered when multiple selection exceeds the limit|value: `string \| number \| Record<string, any> \| undefined`<br>ev: `Event`|2.18.0|
+|exceed-limit|Triggered when multiple selection exceeds the limit|value: `string \| number \| boolean \| Record<string, any> \| undefined`<br>ev: `Event`|2.18.0|
 ### `<select>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -121,7 +121,7 @@ description: When users need to select one or more from a group of similar data,
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|value|Option value (if not filled, it will be obtained from the content)|`string\|number\|object`|`-`||
+|value|Option value (if not filled, it will be obtained from the content)|`string\|number\|boolean\|object`|`-`||
 |label|Option label (if not filled, it will be obtained from the content)|`string`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
 |tag-props|Displayed tag attributes|`TagProps`|`-`|2.8.0|
@@ -165,7 +165,7 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 
 |Name|Description|Type|Default|
 |---|---|---|:---:|
-|value|Option Value|`string \| number \| Record<string, unknown>`|`-`|
+|value|Option Value|`string \| number \| boolean \| Record<string, unknown>`|`-`|
 |label|Option content|`string`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 |tagProps|Props of the multi-select label corresponding to the option|`any`|`-`|
