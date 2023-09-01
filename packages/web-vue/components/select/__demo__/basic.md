@@ -28,6 +28,10 @@ Use the `trigger-props` property to customize the properties of the drop-down bo
       <a-option>Guangzhou</a-option>
       <a-option disabled>Disabled</a-option>
     </a-select>
+    <a-select :style="{width:'320px'}" placeholder="Please select ...">
+      <a-option :value="true">是</a-option>
+      <a-option :value="false">否</a-option>
+    </a-select>
     <a-select defaultValue="Beijing" :style="{width:'320px'}" placeholder="Please select ..." disabled>
       <a-option>Beijing</a-option>
       <a-option>Shanghai</a-option>
@@ -44,6 +48,7 @@ Use the `trigger-props` property to customize the properties of the drop-down bo
       <a-option>Guangzhou</a-option>
       <a-option disabled>Disabled</a-option>
     </a-select>
+    
   </a-space>
 </template>
 
