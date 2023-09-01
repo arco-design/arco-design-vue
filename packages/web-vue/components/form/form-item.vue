@@ -30,6 +30,7 @@
       </FormItemLabel>
     </ArcoCol>
     <ArcoCol
+      :id="mergedId"
       :class="wrapperColCls"
       :style="mergedWrapperStyle"
       v-bind="mergedWrapperCol"
@@ -365,6 +366,13 @@ export default defineComponent({
     const mergedWrapperStyle = computed(
       () => props.wrapperColStyle ?? formCtx.wrapperColStyle
     );
+    const mergedId = computed(() => {
+      if (formCtx.id) {
+        return `${formCtx.id}_${field.value}`;
+      }
+      return field.value;
+    });
+
     // 记录初始值，用于重置表单
     const initialValue = getValueByPath(formCtx.model, props.field);
 
@@ -638,6 +646,7 @@ export default defineComponent({
       mergedLabelStyle,
       wrapperColCls,
       mergedWrapperStyle,
+      mergedId,
     };
   },
 });

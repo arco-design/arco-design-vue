@@ -1,5 +1,5 @@
 <template>
-  <form :class="cls" @submit.prevent="handleSubmit">
+  <form ref="formRef" :class="cls" @submit.prevent="handleSubmit">
     <slot />
   </form>
 </template>
@@ -12,11 +12,15 @@ import {
   provide,
   reactive,
   toRefs,
+  ref,
 } from 'vue';
+import scrollIntoView, {
+  Options as ScrollIntoViewOptions,
+} from 'scroll-into-view-if-needed';
 import { FormItemInfo, formInjectionKey } from './context';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
-import { isArray, isFunction } from '../_utils/is';
+import { isArray, isFunction, isBoolean } from '../_utils/is';
 import { FieldData, FieldRule, ValidatedError } from './interface';
 import { useSize } from '../_hooks/use-size';
 
@@ -105,6 +109,19 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 表单控件 `id` 的前缀
+     */
+    id: {
+      type: String,
+    },
+    /**
+     * @zh 验证失败后滚动到第一个错误字段，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数
+     * @en Scroll to the first error field after verification fails, receiving all parameters of[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)
+     */
+    scrollToFirstError: {
+      type: [Boolean, Object] as PropType<boolean | ScrollIntoViewOptions>,
+    },
   },
   emits: {
     /**
@@ -143,7 +160,9 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('form');
+    const formRef = ref<HTMLFormElement>();
     const {
+      id,
       model,
       layout,
       disabled,
@@ -219,6 +238,28 @@ export default defineComponent({
       });
     };
 
+    const scrollToField = (field: string, options?: ScrollIntoViewOptions) => {
+      const node = formRef.value || document.body;
+      const fieldId = props.id ? `${props.id}_${field}` : field;
+      const fieldNode = node?.querySelector(`#${fieldId}`);
+
+      if (fieldNode) {
+        scrollIntoView(fieldNode as HTMLDivElement, {
+          behavior: 'smooth',
+          block: 'nearest',
+          scrollMode: 'if-needed',
+          ...options,
+        });
+      }
+    };
+
+    const scrollToFirstError = (field: string) => {
+      const options = !isBoolean(props.scrollToFirstError)
+        ? props.scrollToFirstError
+        : undefined;
+      scrollToField(field, options);
+    };
+
     const validate = (
       callback?: (errors: undefined | Record<string, ValidatedError>) => void
     ): Promise<undefined | Record<string, ValidatedError>> => {
@@ -237,6 +278,10 @@ export default defineComponent({
             errors[item.field] = item;
           }
         });
+
+        if (hasError && props.scrollToFirstError) {
+          scrollToFirstError(Object.keys(errors)[0]);
+        }
 
         if (isFunction(callback)) {
           callback(hasError ? errors : undefined);
@@ -271,6 +316,10 @@ export default defineComponent({
           }
         });
 
+        if (hasError && props.scrollToFirstError) {
+          scrollToFirstError(Object.keys(errors)[0]);
+        }
+
         if (isFunction(callback)) {
           callback(hasError ? errors : undefined);
         }
@@ -295,6 +344,8 @@ export default defineComponent({
           }
         });
         if (hasError) {
+          props.scrollToFirstError &&
+            scrollToFirstError(Object.keys(errors)[0]);
           emit('submitFailed', { values: model.value, errors }, e);
         } else {
           emit('submitSuccess', model.value, e);
@@ -310,6 +361,7 @@ export default defineComponent({
     provide(
       formInjectionKey,
       reactive({
+        id,
         layout,
         disabled,
         labelAlign,
@@ -343,12 +395,14 @@ export default defineComponent({
 
     return {
       cls,
+      formRef,
       handleSubmit,
       innerValidate: validate,
       innerValidateField: validateField,
       innerResetFields: resetFields,
       innerClearValidate: clearValidate,
       innerSetFields: setFields,
+      innerScrollToField: scrollToField,
     };
   },
   methods: {
@@ -404,6 +458,16 @@ export default defineComponent({
      */
     setFields(data: Record<string, FieldData>) {
       return this.innerSetFields(data);
+    },
+    /**
+     * @zh 滚动到指定表单项
+     * @en Scroll to the specified form item
+     * @param {string} field
+     * @param {ScrollIntoViewOptions} options
+     * @public
+     */
+    scrollToField(field: string, options?: ScrollIntoViewOptions) {
+      return this.innerScrollToField(field, options);
     },
   },
 });

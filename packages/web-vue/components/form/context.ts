@@ -32,6 +32,7 @@ export interface FormContext {
   removeLabelWidth: (uid?: number) => void;
   maxLabelWidth: number;
   autoLabelWidth: boolean;
+  id?: string;
 }
 
 export interface FormItemContext {
