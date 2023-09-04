@@ -330,6 +330,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 滚动阈值，当滚动距离超过该值时触发关闭
+     * @en Scroll threshold, trigger close when the scroll distance exceeds this value
+     */
+    scrollToCloseDistance: {
+      type: Number,
+      default: 0,
+    },
   },
   emits: {
     'update:popupVisible': (visible: boolean) => true,
@@ -386,6 +394,9 @@ export default defineComponent({
       top: 0,
       left: 0,
     });
+
+    let scrollPosition: [number, number] | null = null;
+    let windowScrollPosition: [number, number] | null = null;
 
     const computedVisible = computed(
       () => props.popupVisible ?? popupVisible.value
@@ -499,6 +510,11 @@ export default defineComponent({
           });
         }
       };
+
+      if (!visible) {
+        scrollPosition = null;
+        windowScrollPosition = null;
+      }
 
       if (delay) {
         cleanDelayTimer();
@@ -636,10 +652,30 @@ export default defineComponent({
       changeVisible(false);
     };
 
-    const handleScroll = throttleByRaf(() => {
+    const isExceedThreshold = (
+      oldPosition: [number, number],
+      element: HTMLElement
+    ) => {
+      const [scrollTop, scrollLeft] = oldPosition;
+      const { scrollTop: newScrollTop, scrollLeft: newScrollLeft } = element;
+      return (
+        Math.abs(newScrollTop - scrollTop) >= props.scrollToCloseDistance ||
+        Math.abs(newScrollLeft - scrollLeft) >= props.scrollToCloseDistance
+      );
+    };
+
+    const handleScroll = throttleByRaf((e) => {
       if (computedVisible.value) {
         if (props.scrollToClose || configCtx?.scrollToClose) {
-          changeVisible(false);
+          const element = e.target as HTMLElement;
+          if (!scrollPosition) {
+            scrollPosition = [element.scrollTop, element.scrollLeft];
+          }
+          if (isExceedThreshold(scrollPosition, element)) {
+            changeVisible(false);
+          } else {
+            updatePopupStyle();
+          }
         } else {
           updatePopupStyle();
         }
@@ -651,9 +687,15 @@ export default defineComponent({
       windowListener = false;
     };
 
-    const onWindowScroll = throttleByRaf(() => {
-      changeVisible(false);
-      removeWindowScroll();
+    const onWindowScroll = throttleByRaf((e) => {
+      const element = e.target.documentElement;
+      if (!windowScrollPosition) {
+        windowScrollPosition = [element.scrollTop, element.scrollLeft];
+      }
+      if (isExceedThreshold(windowScrollPosition, element)) {
+        changeVisible(false);
+        removeWindowScroll();
+      }
     });
 
     const handleResize = () => {
