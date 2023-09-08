@@ -98,6 +98,7 @@ description: It is used for data collection, display, analysis and processing, a
 |default-expand-all-rows|Whether to expand all rows by default|`boolean`|`false`|2.25.0|
 |sticky-header|Whether to open the sticky header|`boolean\|number`|`false`|2.30.0|
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|
+|show-empty-tree|Whether to display empty subtrees|`boolean`|`false`|2.51.0|
 ### `<table>` Events
 
 |Event Name|Description|Parameters|version|

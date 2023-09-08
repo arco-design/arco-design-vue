@@ -53,7 +53,11 @@ export default defineComponent({
           class={`${prefixCls}-panel-column`}
           style={{ zIndex: props.totalLevel - props.level }}
         >
-          {isVirtual.value ? (
+          {props.column.length === 0 ? (
+            <Scrollbar class={`${prefixCls}-column-content`}>
+              <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
+            </Scrollbar>
+          ) : isVirtual.value ? (
             <VirtualList
               key={props.column?.length}
               {...props.virtualListProps}
@@ -78,37 +82,33 @@ export default defineComponent({
             />
           ) : (
             <Scrollbar class={`${prefixCls}-column-content`}>
-              {props.column.length === 0 ? (
-                <div class={`${prefixCls}-list-empty`}>{renderEmpty()}</div>
-              ) : (
-                <ul
-                  role="menu"
-                  class={[
-                    `${prefixCls}-list`,
-                    {
-                      [`${prefixCls}-list-multiple`]: Boolean(props?.multiple),
-                      [`${prefixCls}-list-strictly`]: Boolean(
-                        props?.checkStrictly
-                      ),
-                    },
-                  ]}
-                >
-                  {props.column.map((item) => {
-                    return (
-                      <CascaderOption
-                        key={item.key}
-                        option={item}
-                        active={
-                          props.selectedPath.includes(item.key) ||
-                          item.key === props.activeKey
-                        }
-                        multiple={props.multiple}
-                        checkStrictly={props.checkStrictly}
-                      />
-                    );
-                  })}
-                </ul>
-              )}
+              <ul
+                role="menu"
+                class={[
+                  `${prefixCls}-list`,
+                  {
+                    [`${prefixCls}-list-multiple`]: Boolean(props?.multiple),
+                    [`${prefixCls}-list-strictly`]: Boolean(
+                      props?.checkStrictly
+                    ),
+                  },
+                ]}
+              >
+                {props.column.map((item) => {
+                  return (
+                    <CascaderOption
+                      key={item.key}
+                      option={item}
+                      active={
+                        props.selectedPath.includes(item.key) ||
+                        item.key === props.activeKey
+                      }
+                      multiple={props.multiple}
+                      checkStrictly={props.checkStrictly}
+                    />
+                  );
+                })}
+              </ul>
             </Scrollbar>
           )}
         </div>

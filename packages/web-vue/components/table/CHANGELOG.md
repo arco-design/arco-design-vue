@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.51.0
+
+`2023-09-01`
+
+### 🆕 Feature
+
+- Support displaying empty subtrees ([#2673](https://github.com/arco-design/arco-design-vue/pull/2673))
+
+
 ## 2.49.2
 
 `2023-07-28`

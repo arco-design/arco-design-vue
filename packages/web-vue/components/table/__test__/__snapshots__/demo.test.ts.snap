@@ -1851,7 +1851,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"border\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -1867,7 +1867,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"hover\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -1883,7 +1883,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"stripe\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -1899,7 +1899,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"checkbox\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -1915,7 +1915,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"checkAll\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -1931,7 +1931,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"loading\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -1947,7 +1947,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"tableHeader\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -1963,7 +1963,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-form-item-wrapper-col\\">
+    <div class=\\"arco-form-item-wrapper-col\\" id=\\"noData\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
             <!--v-if-->
@@ -3417,9 +3417,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
                 <td class=\\"arco-table-td arco-table-operation arco-table-checkbox\\"><span class=\\"arco-table-cell\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span>
                   <!----></label></span>
                 </td>
-                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><span style=\\"padding-left: 20px;\\"></span>
-                  <!----><span class=\\"arco-table-td-content\\">William Smith</span></span>
-                </td>
+                <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left arco-table-cell-expand-icon\\"><!----><span class=\\"arco-table-cell-inline-icon\\"><button type=\\"button\\" class=\\"arco-table-expand-btn\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-plus\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M5 24h38M24 5v38\\"></path></svg></button></span><span class=\\"arco-table-td-content\\">William Smith</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">27000</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">62 Park Road, London</span></span></td>
                 <td class=\\"arco-table-td\\"><span class=\\"arco-table-cell arco-table-cell-align-left\\"><!----><!----><span class=\\"arco-table-td-content\\">william.smith@example.com</span></span></td>

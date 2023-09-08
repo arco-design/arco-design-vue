@@ -41,6 +41,8 @@ description: A form with data collection, verification and submission functions,
 
 @import ./__demo__/custom.md
 
+@import ./__demo__/scroll.md
+
 ## API
 
 %%API(form.vue)%%

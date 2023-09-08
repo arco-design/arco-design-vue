@@ -2,6 +2,47 @@
 changelog: true
 ```
 
+## 2.51.1
+
+`2023-09-08`
+
+### 🐛 BugFix
+
+- **cascader:** fix empty state in Cascader Virtual list ([#2686](https://github.com/arco-design/arco-design-vue/pull/2686))
+
+
+## 2.51.0
+
+`2023-09-01`
+
+### ⚠️ Important Attention
+
+- **form:** `form-item` render element adds `id` attribute, please pay attention to the impact on the original web page
+
+### 🆕 Feature
+
+- **form:** add scroll into view to the field ([#2680](https://github.com/arco-design/arco-design-vue/pull/2680))
+- **table:** Support displaying empty subtrees ([#2673](https://github.com/arco-design/arco-design-vue/pull/2673))
+- **select:** support boolean type ([#2661](https://github.com/arco-design/arco-design-vue/pull/2661))
+
+### 🐛 BugFix
+
+- **typography:** Fix the problem of missing related component styles when importing on demand ([#2682](https://github.com/arco-design/arco-design-vue/pull/2682))
+
+
+## 2.50.2
+
+`2023-08-25`
+
+### 🐛 BugFix
+
+- fix the wrong scrolling position of the virtual list ([#2665](https://github.com/arco-design/arco-design-vue/pull/2665))
+
+### 💎 Enhancement
+
+- **input-number:** Optimize the long-press effect of the step button ([#2668](https://github.com/arco-design/arco-design-vue/pull/2668))
+
+
 ## 2.50.1
 
 `2023-08-18`

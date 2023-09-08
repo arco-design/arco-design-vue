@@ -353,6 +353,9 @@ export default defineComponent({
       const colProps = {
         ...(props.wrapperColProps ?? formCtx.wrapperColProps),
       };
+      if (mergedId.value) {
+        colProps.id = mergedId.value;
+      }
       if (props.labelColFlex || formCtx.autoLabelWidth) {
         colProps.flex = 'auto';
       }
@@ -365,6 +368,13 @@ export default defineComponent({
     const mergedWrapperStyle = computed(
       () => props.wrapperColStyle ?? formCtx.wrapperColStyle
     );
+    const mergedId = computed(() => {
+      if (formCtx.id) {
+        return `${formCtx.id}_${field.value}`;
+      }
+      return field.value;
+    });
+
     // 记录初始值，用于重置表单
     const initialValue = getValueByPath(formCtx.model, props.field);
 

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.51.0
+
+`2023-09-01`
+
+### 🆕 新增功能
+
+- 支持`boolean` 类型 ([#2661](https://github.com/arco-design/arco-design-vue/pull/2661))
+
+
 ## 2.47.1
 
 `2023-06-09`

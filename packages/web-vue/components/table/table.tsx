@@ -417,6 +417,15 @@ export default defineComponent({
       type: [Object, Boolean] as PropType<boolean | ScrollbarProps>,
       default: true,
     },
+    /**
+     * @zh 是否展示空子树
+     * @en Whether to display empty subtrees
+     * @version 2.51.0
+     */
+    showEmptyTree: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:selectedKeys': (rowKeys: (string | number)[]) => true,
@@ -690,6 +699,7 @@ export default defineComponent({
       draggable,
       summarySpanMethod,
       scrollbar,
+      showEmptyTree,
     } = toRefs(props);
     const prefixCls = getPrefixCls('table');
     const configCtx = inject(configProviderInjectionKey, undefined);
@@ -1768,6 +1778,10 @@ export default defineComponent({
       }
     ) => {
       if (record.hasSubtree) {
+        if (record.children?.length === 0 && showEmptyTree.value) {
+          return renderEmpty();
+        }
+
         return record.children?.map((item, index) =>
           renderRecord(item, index, {
             indentSize,
