@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.51.1
+
+`2023-09-08`
+
+### 🐛 BugFix
+
+- **cascader:** fix empty state in Cascader Virtual list ([#2686](https://github.com/arco-design/arco-design-vue/pull/2686))
+
+
 ## 2.51.0
 
 `2023-09-01`
