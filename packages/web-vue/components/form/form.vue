@@ -23,6 +23,7 @@ import { Size } from '../_utils/constant';
 import { isArray, isFunction, isBoolean } from '../_utils/is';
 import { FieldData, FieldRule, ValidatedError } from './interface';
 import { useSize } from '../_hooks/use-size';
+import { getFormElementId } from './utils';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
 type FormLayout = typeof FORM_LAYOUTS[number];
@@ -242,8 +243,9 @@ export default defineComponent({
 
     const scrollToField = (field: string, options?: ScrollIntoViewOptions) => {
       const node = formRef.value || document.body;
-      const fieldId = props.id ? `${props.id}_${field}` : field;
-      const fieldNode = node?.querySelector(`#${fieldId}`);
+      const fieldNode = node.querySelector(
+        `#${getFormElementId(props.id, field as string)}`
+      );
 
       if (fieldNode) {
         scrollIntoView(fieldNode as HTMLDivElement, {

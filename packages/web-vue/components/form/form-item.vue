@@ -99,7 +99,11 @@ import FormItemMessage from './form-item-message.vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { getValueByPath, setValueByPath } from '../_utils/get-value-by-path';
 import { Data } from '../_utils/types';
-import { getFinalValidateMessage, getFinalValidateStatus } from './utils';
+import {
+  getFinalValidateMessage,
+  getFinalValidateStatus,
+  getFormElementId,
+} from './utils';
 import { useI18n } from '../locale';
 
 export default defineComponent({
@@ -353,8 +357,8 @@ export default defineComponent({
       const colProps = {
         ...(props.wrapperColProps ?? formCtx.wrapperColProps),
       };
-      if (mergedId.value) {
-        colProps.id = mergedId.value;
+      if (field.value) {
+        colProps.id = getFormElementId(formCtx.id, field.value);
       }
       if (props.labelColFlex || formCtx.autoLabelWidth) {
         colProps.flex = 'auto';
@@ -368,12 +372,6 @@ export default defineComponent({
     const mergedWrapperStyle = computed(
       () => props.wrapperColStyle ?? formCtx.wrapperColStyle
     );
-    const mergedId = computed(() => {
-      if (formCtx.id) {
-        return `${formCtx.id}_${field.value}`;
-      }
-      return field.value;
-    });
 
     // 记录初始值，用于重置表单
     const initialValue = getValueByPath(formCtx.model, props.field);

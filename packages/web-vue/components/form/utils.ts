@@ -65,3 +65,8 @@ export const getFinalValidateMessage = (
   }
   return messages;
 };
+
+export const getFormElementId = (prefix: string | undefined, field: string) => {
+  const id = (field as string).replace(/[[.]/g, '_').replace(/\]/g, '');
+  return prefix ? `${prefix}-${id}` : `${id}`;
+};
