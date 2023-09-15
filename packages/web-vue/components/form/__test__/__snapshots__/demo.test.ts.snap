@@ -319,7 +319,7 @@ exports[`<form> demo: render [dynamic] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </label></div>
-    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\" id=\\"posts[0].value\\">
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\" id=\\"posts_0_value\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-left: 10px;\\">
             <!--v-if-->Delete
@@ -606,7 +606,7 @@ exports[`<form> demo: render [nest] correctly 1`] = `
             <div class=\\"arco-col arco-col-12\\" style=\\"padding-left: 4px; padding-right: 4px;\\">
               <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
                 <!--v-if-->
-                <div class=\\"arco-form-item-wrapper-col\\" id=\\"separate.firstname\\">
+                <div class=\\"arco-form-item-wrapper-col\\" id=\\"separate_firstname\\">
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your firstname...\\"><!----><!----></span></div>
                   </div>
@@ -618,7 +618,7 @@ exports[`<form> demo: render [nest] correctly 1`] = `
             <div class=\\"arco-col arco-col-12\\" style=\\"padding-left: 4px; padding-right: 4px;\\">
               <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
                 <!--v-if-->
-                <div class=\\"arco-form-item-wrapper-col\\" id=\\"separate.lastname\\">
+                <div class=\\"arco-form-item-wrapper-col\\" id=\\"separate_lastname\\">
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your lastname...\\"><!----><!----></span></div>
                   </div>
@@ -652,7 +652,7 @@ exports[`<form> demo: render [nest] correctly 1`] = `
                     <!--v-if-->
                     <!--v-if-->
                   </label></div>
-                <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\" id=\\"posts.post1\\">
+                <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\" id=\\"posts_post1\\">
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
                   </div>
@@ -669,7 +669,7 @@ exports[`<form> demo: render [nest] correctly 1`] = `
                     <!--v-if-->
                     <!--v-if-->
                   </label></div>
-                <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\" id=\\"posts.post2\\">
+                <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\" id=\\"posts_post2\\">
                   <div class=\\"arco-form-item-content-wrapper\\">
                     <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
                   </div>

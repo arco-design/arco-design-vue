@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.51.2
+
+`2023-09-15`
+
+### 🐛 BugFix
+
+- **form:** scroll-to-first-error throws error in nested form items ([#2707](https://github.com/arco-design/arco-design-vue/pull/2707))
+
+
 ## 2.51.1
 
 `2023-09-08`
