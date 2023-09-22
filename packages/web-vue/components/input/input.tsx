@@ -425,7 +425,6 @@ export default defineComponent({
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
         <input
-          {...mergeInputAttrs.value}
           ref={inputRef}
           class={cls.value}
           value={computedValue.value}
@@ -440,6 +439,7 @@ export default defineComponent({
           onCompositionstart={handleComposition}
           onCompositionupdate={handleComposition}
           onCompositionend={handleComposition}
+          {...mergeInputAttrs.value}
         />
         {showClearBtn.value && (
           <IconHover
