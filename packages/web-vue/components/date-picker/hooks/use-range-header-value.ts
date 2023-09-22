@@ -58,7 +58,7 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
     getDefaultLocalValue: getDefaultStartHeaderValue,
   } = useHeaderValue(
     reactive({
-      mode: startHeaderMode?.value || mode,
+      mode: startHeaderMode || mode,
       value: startValue,
       defaultValue: startDefaultValue,
       selectedValue: undefined,
@@ -76,7 +76,7 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
     getDefaultLocalValue: getDefaultEndHeaderValue,
   } = useHeaderValue(
     reactive({
-      mode: endHeaderMode?.value || mode,
+      mode: endHeaderMode || mode,
       value: endValue,
       defaultValue: endDefaultValue,
       selectedValue: undefined,
