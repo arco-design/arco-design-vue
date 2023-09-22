@@ -61,6 +61,7 @@ description: Used to add hover, click, focus and other events to the element, an
 |render-to-body|Whether to mount under the `body` element|`boolean`|`true`||
 |prevent-focus|Whether to prevent elements in the pop-up layer from gaining focus when clicked|`boolean`|`false`||
 |scroll-to-close|Whether to close the popover when scrolling|`boolean`|`false`|2.46.0|
+|scroll-to-close-distance|Scroll threshold, trigger close when the scroll distance exceeds this value|`number`|`0`||
 ### `<trigger>` Events
 
 |Event Name|Description|Parameters|version|

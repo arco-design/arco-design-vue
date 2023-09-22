@@ -60,6 +60,7 @@ description: 用于对元素添加 hover, click, focus 等事件，并且弹出�
 |render-to-body|是否挂载在 `body` 元素下|`boolean`|`true`||
 |prevent-focus|是否阻止弹出层中的元素点击时获取焦点|`boolean`|`false`||
 |scroll-to-close|是否在滚动时关闭弹出框|`boolean`|`false`|2.46.0|
+|scroll-to-close-distance|滚动阈值，当滚动距离超过该值时触发关闭|`number`|`0`||
 ### `<trigger>` Events
 
 |事件名|描述|参数|版本|
