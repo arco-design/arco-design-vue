@@ -46,6 +46,7 @@ description: 仅允许输入数字格式的输入框。
 |allow-clear|是否允许清空输入框|`boolean`|`false`||
 |model-event|触发 `v-model` 的事件|`'change' \| 'input'`|`'change'`||
 |read-only|只读|`boolean`|`false`|3.33.1|
+|keyboard|是否启用键盘快捷行为|`boolean`|`true`||
 ### `<input-number>` Events
 
 |事件名|描述|参数|版本|

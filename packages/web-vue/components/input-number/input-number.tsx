@@ -156,6 +156,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    /**
+     * @zh 是否启用键盘快捷行为
+     * @en If enable keyboard behavior
+     */
+    keyboard: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: {
     'update:modelValue': (value: number | undefined) => true,
@@ -462,14 +470,14 @@ export default defineComponent({
           KEYBOARD_KEY.ARROW_UP,
           (ev: Event) => {
             ev.preventDefault();
-            !props.readOnly && nextStep('plus', ev);
+            props.keyboard && !props.readOnly && nextStep('plus', ev);
           },
         ],
         [
           KEYBOARD_KEY.ARROW_DOWN,
           (ev: Event) => {
             ev.preventDefault();
-            !props.readOnly && nextStep('minus', ev);
+            props.keyboard && !props.readOnly && nextStep('minus', ev);
           },
         ],
       ])
