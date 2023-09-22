@@ -14,6 +14,8 @@ description: The auto-complete function of the input.
 
 @import ./__demo__/footer.md
 
+@import ./__demo__/scroll.md
+
 ## API
 
 
@@ -39,6 +41,9 @@ description: The auto-complete function of the input.
 |search|Emitted when the user searches|value: `string`||
 |select|Emitted when an option is selected|value: `string`||
 |clear|Triggered when the user clicks the clear button|ev: `Event`|2.23.0|
+|dropdown-scroll|Triggered when the drop-down scrolls|ev: `Event`|2.51.0|
+|dropdown-reach-bottom|Triggered when the drop-down menu is scrolled to the bottom|ev: `Event`|2.51.0|
+
 ### `<auto-complete>` Methods
 
 |Method|Description|Parameters|Return|version|
@@ -51,5 +56,3 @@ description: The auto-complete function of the input.
 |---|---|---|:---|
 |option|Display content of options|data: `OptionInfo`|2.13.0|
 |footer|The footer of the popup menu box|-||
-
-
