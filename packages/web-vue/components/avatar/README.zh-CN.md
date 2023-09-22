@@ -32,6 +32,7 @@ description: 用作头像显示，可以为图片、图标或字符形式展示�
 |auto-fix-font-size|是否自动根据头像尺寸调整字体大小|`boolean`|`true`||
 |trigger-type|可点击的头像交互类型|`'mask' \| 'button'`|`'button'`||
 |trigger-icon-style|交互图标的样式|`CSSProperties`|`-`||
+|object-fit|头像的图片在容器内的的适应类型|`'fill'\| 'contain' \| 'cover' \| 'none' \| 'scale-down'`|`'fill'`||
 ### `<avatar>` Events
 
 |事件名|描述|参数|

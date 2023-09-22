@@ -22,7 +22,11 @@
           <img
             v-if="!(hasError || !shouldLoad)"
             :src="imageUrl"
-            :style="{ width: size + 'px', height: size + 'px' }"
+            :style="{
+              width: size + 'px',
+              height: size + 'px',
+              objectFit: objectFit,
+            }"
             alt="avatar"
             @load="handleImgLoad"
             @error="handleImgError"
@@ -55,7 +59,7 @@ import {
   inject,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { AvatarShape, AvatarTriggerType } from './interface';
+import { AvatarShape, AvatarTriggerType, ObjectFit } from './interface';
 import { useIndex } from '../_hooks/use-index';
 import ResizeObserver from '../_components/resize-observer-v2';
 import { avatarGroupInjectionKey } from './context';
@@ -114,6 +118,13 @@ export default defineComponent({
      */
     triggerIconStyle: {
       type: Object as PropType<CSSProperties>,
+    },
+    /**
+     * @zh 头像的图片在容器内的的适应类型
+     * @en Object-fit type of the image in the container
+     */
+    objectFit: {
+      type: String as PropType<ObjectFit>,
     },
   },
   emits: {
