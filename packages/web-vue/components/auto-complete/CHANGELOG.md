@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.52.0
+
+`2023-09-22`
+
+### 🆕 Feature
+
+- add dropdown scroll event ([#2635](https://github.com/arco-design/arco-design-vue/pull/2635))
+
+
 ## 2.50.0
 
 `2023-08-11`

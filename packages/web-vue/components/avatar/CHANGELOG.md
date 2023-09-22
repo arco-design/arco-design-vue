@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.52.0
+
+`2023-09-22`
+
+### 🆕 Feature
+
+- Added new `ObjectFit` prop ([#2691](https://github.com/arco-design/arco-design-vue/pull/2691))
+
+
 ## 2.40.0
 
 `2022-12-09`

@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.52.0
+
+`2023-09-22`
+
+### 🆕 新增功能
+
+- **input-number:** 增加 `input-attrs` 属性 ([#2716](https://github.com/arco-design/arco-design-vue/pull/2716))
+- **transfer:** 增加操作图标插槽 ([#2708](https://github.com/arco-design/arco-design-vue/pull/2708))
+- **avatar:** 添加了新的 `ObjectFit` 属性 ([#2691](https://github.com/arco-design/arco-design-vue/pull/2691))
+- **auto-complete:** 增加下拉菜单滚动事件 ([#2635](https://github.com/arco-design/arco-design-vue/pull/2635))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复范围选择器操作箭头显示错误问题 ([#2712](https://github.com/arco-design/arco-design-vue/pull/2712))
+
+
 ## 2.51.2
 
 `2023-09-15`

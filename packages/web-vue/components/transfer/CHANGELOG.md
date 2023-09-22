@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.52.0
+
+`2023-09-22`
+
+### 🆕 Feature
+
+- add an action icon slot ([#2708](https://github.com/arco-design/arco-design-vue/pull/2708))
+
+
 ## 2.50.1
 
 `2023-08-18`

@@ -148,14 +148,14 @@ export default defineComponent({
      * @zh 下拉菜单发生滚动时触发
      * @en Triggered when the drop-down scrolls
      * @param {Event} ev
-     * @version 2.51.0
+     * @version 2.52.0
      */
     'dropdownScroll': (ev: Event) => true,
     /**
      * @zh 下拉菜单滚动到底部时触发
      * @en Triggered when the drop-down menu is scrolled to the bottom
      * @param {Event} ev
-     * @version 2.51.0
+     * @version 2.52.0
      */
     'dropdownReachBottom': (ev: Event) => true,
   },

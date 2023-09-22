@@ -101,7 +101,7 @@ exports[`<input> demo: render [status] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-wrapper arco-input-disabled\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Disabled status\\" disabled=\\"\\"><!----><!----></span></div>
   <!---->
-  <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper arco-input-error\\" style=\\"width: 320px;\\"><!----><input aria-invalid=\\"true\\" class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Error status\\"><!----><!----></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper arco-input-error\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Error status\\" aria-invalid=\\"true\\"><!----><!----></span></div>
 </div>"
 `;
 

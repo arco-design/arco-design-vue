@@ -120,8 +120,9 @@ export default defineComponent({
       type: Object as PropType<CSSProperties>,
     },
     /**
-     * @zh 头像的图片在容器内的的适应类型
+     * @zh 图片在容器内的的适应类型
      * @en Object-fit type of the image in the container
+     * @version 2.52.0
      */
     objectFit: {
       type: String as PropType<ObjectFit>,

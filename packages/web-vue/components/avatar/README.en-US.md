@@ -34,7 +34,7 @@ description: Used as an avatar, it can be displayed in the form of pictures, ico
 |auto-fix-font-size|Whether to automatically adjust the font size according to the size of the avatar.|`boolean`|`true`||
 |trigger-type|Clickable avatar interaction type|`'mask' \| 'button'`|`'button'`||
 |trigger-icon-style|Interactive icon style|`CSSProperties`|`-`||
-|object-fit|Object-fit type of the image in the container|`'fill'\| 'contain' \| 'cover' \| 'none' \| 'scale-down'`|`'fill'`||
+|object-fit|Object-fit type of the image in the container|`ObjectFit`|`-`|2.52.0|
 ### `<avatar>` Events
 
 |Event Name|Description|Parameters|

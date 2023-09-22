@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.52.0
+
+`2023-09-22`
+
+### 🆕 Feature
+
+- Add `input-attrs` attribute ([#2716](https://github.com/arco-design/arco-design-vue/pull/2716))
+
+
 ## 2.50.2
 
 `2023-08-25`

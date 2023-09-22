@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.52.0
+
+`2023-09-22`
+
+### 🐛 BugFix
+
+- fix incorrect display of operations in range selector ([#2712](https://github.com/arco-design/arco-design-vue/pull/2712))
+
+
 ## 2.47.0
 
 `2023-06-02`

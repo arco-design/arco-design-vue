@@ -47,7 +47,8 @@ description: Only input boxes in numeric format are allowed.
 |size|Input size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`||
 |allow-clear|Whether to allow the input to be cleared|`boolean`|`false`||
 |model-event|Trigger event for `v-model`|`'change' \| 'input'`|`'change'`||
-|read-only|Readonly|`boolean`|`false`|3.33.1|
+|read-only|Readonly|`boolean`|`false`|2.33.1|
+|input-attrs|Attributes of inner input elements|`object`|`-`|2.52.0|
 ### `<input-number>` Events
 
 |Event Name|Description|Parameters|version|

@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.52.0
+
+`2023-09-22`
+
+### 🆕 Feature
+
+- **input-number:** Add `input-attrs` attribute ([#2716](https://github.com/arco-design/arco-design-vue/pull/2716))
+- **transfer:** add an action icon slot ([#2708](https://github.com/arco-design/arco-design-vue/pull/2708))
+- **avatar:** Added new `ObjectFit` prop ([#2691](https://github.com/arco-design/arco-design-vue/pull/2691))
+- **auto-complete:** add dropdown scroll event ([#2635](https://github.com/arco-design/arco-design-vue/pull/2635))
+
+### 🐛 BugFix
+
+- **date-picker:** fix incorrect display of operations in range selector ([#2712](https://github.com/arco-design/arco-design-vue/pull/2712))
+
+
 ## 2.51.2
 
 `2023-09-15`

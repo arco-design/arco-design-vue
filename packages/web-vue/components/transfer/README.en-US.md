@@ -56,8 +56,8 @@ description: A two-column multi-select component that moves elements from one co
 |---|---|---|:---|
 |source|Source content|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
 |source-title|Source Header|countTotal: `number`<br>countSelected: `number`<br>searchValue: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>onSelectAllChange: `(checked:boolean) => void`<br>onClear: `() => void`|2.45.0|
-|to-target-icon| To target icon slot|-||
-|to-source-icon| To source icon slot|-||
+|to-target-icon|To target icon slot|-|2.52.0|
+|to-source-icon|To source icon slot|-|2.52.0|
 |target|Target content|data: `TransferItem[]`<br>selectedKeys: `string[]`<br>onSelect: `(value: string[]) => void`|2.39.0|
 |target-title|Target Header|countTotal: `number`<br>countSelected: `number`<br>searchValue: `string`<br>checked: `boolean`<br>indeterminate: `boolean`<br>onSelectAllChange: `(checked:boolean) => void`<br>onClear: `() => void`|2.45.0|
 |item|Option|value: `string`<br>label: `string`||

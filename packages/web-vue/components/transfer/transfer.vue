@@ -285,11 +285,13 @@ export default defineComponent({
    * @zh 移至源图标插槽
    * @en To source icon slot
    * @slot to-source-icon
+   * @version 2.52.0
    */
   /**
    * @zh 移至目标图标插槽
    * @en To target icon slot
    * @slot to-target-icon
+   * @version 2.52.0
    */
   setup(props, { emit, slots }) {
     const { mergedDisabled, eventHandlers } = useFormItem({
