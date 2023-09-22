@@ -30,7 +30,7 @@
         @click="handleClick('target')"
       >
         <template #icon>
-          <icon-right />
+          <slot name="to-target-icon"> <icon-right /> </slot>
         </template>
       </arco-button>
       <arco-button
@@ -43,7 +43,7 @@
         @click="handleClick('source')"
       >
         <template #icon>
-          <icon-left />
+          <slot name="to-source-icon"><icon-left /></slot>
         </template>
       </arco-button>
     </div>
@@ -280,6 +280,16 @@ export default defineComponent({
    * @binding {(checked:boolean) => void} onSelectAllChange
    * @binding {() => void} onClear
    * @version 2.45.0
+   */
+  /**
+   * @zh 移至源图标插槽
+   * @en To source icon slot
+   * @slot to-source-icon
+   */
+  /**
+   * @zh 移至目标图标插槽
+   * @en To target icon slot
+   * @slot to-target-icon
    */
   setup(props, { emit, slots }) {
     const { mergedDisabled, eventHandlers } = useFormItem({
