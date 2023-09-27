@@ -375,6 +375,7 @@ export default defineComponent({
                 ref={inputRef}
                 allowClear={props.allowClear}
                 modelValue={computedValue.value}
+                disabled={mergedDisabled.value}
                 onInput={handleInput}
                 onClear={handleClear}
                 onFocus={onFocus}
