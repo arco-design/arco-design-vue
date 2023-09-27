@@ -51,7 +51,7 @@ import {
   onBeforeUnmount,
 } from 'vue';
 import { useRoute } from 'vue-router';
-import { PageDurationTracker, teaLog } from '@arco-design/arco-site-utils';
+import { PageDurationTracker, teaLog } from '@arco-materials/site-utils';
 import { collapseInjectionKey } from './context';
 import AsideNav from './components/aside-nav/index.vue';
 import { getLocalStorage, setLocalStorage } from './utils/local-storage';
