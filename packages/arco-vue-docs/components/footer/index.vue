@@ -46,7 +46,7 @@
             Powered by ArcoDesign
           </a>
           <div class="arco-site-footer-copyright">
-            <span>GIP UED & 架构前端 </span>
+            <span>UED-火山引擎 & 架构前端 </span>
             <span>ⓒ Copyright ByteDance 2019-{{ latestYear }}</span>
           </div>
         </div>

@@ -27,9 +27,12 @@ const ReactApp = ({
           algoliaTag="vue"
           defaultVersion={version}
           onChangeTheme={(theme: string) => {
-            document.querySelector('#react-root')?.setAttribute('arco-theme', theme)
+            document
+              .querySelector('#react-root')
+              ?.setAttribute('arco-theme', theme);
           }}
           loginHref={`/common/login?redirectUrl=${window.location.href}`}
+          hideRtl
           versions={[
             {
               version: '1.x',

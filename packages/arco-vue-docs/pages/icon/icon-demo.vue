@@ -93,7 +93,7 @@
     <icon-font />
   </arco-article>
   <a-modal v-model:visible="configVisible" simple hide-cancel>
-    <template #title> {{ t('icon.configTitle') }} </template>
+    <template #title> {{ t('icon.configTitle') }}</template>
     <div>
       <a-typography-paragraph>
         {{ t('icon.configDesc1') }}
@@ -110,9 +110,9 @@
 import { defineComponent, computed, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import * as components from '@web-vue/components/icon';
-import icons from '@web-vue/icon/icons.json';
 import { clipboard } from '@web-vue/components/_utils/clipboard';
 import Message from '@web-vue/components/message';
+import icons from './icons.json';
 import { strEndsWith, strIncludes } from '../../utils/strings';
 import BasicDemo from './__demo__/basic.md';
 import SpinDemo from './__demo__/spin.md';
@@ -204,7 +204,7 @@ export default defineComponent({
       };
     });
 
-    const getMessage = (zh, en) => {
+    const getMessage = (zh: string, en: string) => {
       return locale.value === 'zh-CN' ? zh : en;
     };
 
