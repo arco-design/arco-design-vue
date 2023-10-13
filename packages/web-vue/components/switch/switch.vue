@@ -41,12 +41,12 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref, toRefs } from 'vue';
+import { computed, defineComponent, ref, toRefs, watch } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconLoading from '../icon/icon-loading';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
-import { isFunction } from '../_utils/is';
+import { isFunction, isNull, isUndefined } from '../_utils/is';
 
 export default defineComponent({
   name: 'Switch',
@@ -209,7 +209,7 @@ export default defineComponent({
    * @slot unchecked-icon
    */
   setup(props, { emit }) {
-    const { disabled, size } = toRefs(props);
+    const { disabled, size, modelValue } = toRefs(props);
     const prefixCls = getPrefixCls('switch');
     const { mergedSize: configSize } = useSize(size);
     const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
@@ -265,6 +265,12 @@ export default defineComponent({
       emit('blur', ev);
       eventHandlers.value?.onBlur?.(ev);
     };
+
+    watch(modelValue, (value) => {
+      if (isUndefined(value) || isNull(value)) {
+        _checked.value = props.uncheckedValue;
+      }
+    });
 
     const cls = computed(() => [
       prefixCls,
