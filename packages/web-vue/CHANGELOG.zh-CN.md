@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.52.1
+
+`2023-10-13`
+
+### 🐛 问题修复
+
+- **mention:** 修复在text-area下disabled属性无法正常工作的问题 ([#2723](https://github.com/arco-design/arco-design-vue/pull/2723))
+
+### 💎 功能优化
+
+- **switch:** 优化对 `undefined` 和 `null` 值的处理 ([#2737](https://github.com/arco-design/arco-design-vue/pull/2737))
+
+
 ## 2.52.0
 
 `2023-09-22`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.52.1
+
+`2023-10-13`
+
+### 🐛 问题修复
+
+- 修复在text-area下disabled属性无法正常工作的问题 ([#2723](https://github.com/arco-design/arco-design-vue/pull/2723))
+
+
 ## 2.47.0
 
 `2023-06-02`

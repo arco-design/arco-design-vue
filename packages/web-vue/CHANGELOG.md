@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.52.1
+
+`2023-10-13`
+
+### 🐛 BugFix
+
+- **mention:** Fixed the issue where the `disabled` attribute does not work properly under text-area ([#2723](https://github.com/arco-design/arco-design-vue/pull/2723))
+
+### 💎 Enhancement
+
+- **switch:** Optimize handling of `undefined` and `null` values ([#2737](https://github.com/arco-design/arco-design-vue/pull/2737))
+
+
 ## 2.52.0
 
 `2023-09-22`

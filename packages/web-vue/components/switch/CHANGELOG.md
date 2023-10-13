@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.52.1
+
+`2023-10-13`
+
+### 💎 Enhancement
+
+- Optimize handling of `undefined` and `null` values ([#2737](https://github.com/arco-design/arco-design-vue/pull/2737))
+
+
 ## 2.45.0
 
 `2023-04-07`
