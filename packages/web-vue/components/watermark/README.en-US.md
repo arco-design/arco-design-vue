@@ -36,7 +36,7 @@ description: Used to Add a watermark to a specified area.
 |anti-tamper|Watermark anti-tampering|`boolean`|`true`|
 |grayscale|Grayscale watermark|`boolean`|`false`|
 |repeat|Whether to repeat the watermark|`boolean`|`true`|
-|staggered|Whether to stagger the arrangement layout|`boolean`|`false`|
+|staggered|Whether to stagger the arrangement layout|`boolean`|`true`|
 
 
 

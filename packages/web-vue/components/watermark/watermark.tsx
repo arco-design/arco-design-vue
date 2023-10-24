@@ -123,7 +123,7 @@ export default defineComponent({
      */
     staggered: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   setup(props, { slots, attrs }) {

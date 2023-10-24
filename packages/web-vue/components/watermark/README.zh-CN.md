@@ -34,7 +34,7 @@ description: 用于给页面的指定区域加上水印。
 |anti-tamper|水印防篡改|`boolean`|`true`|
 |grayscale|灰阶水印|`boolean`|`false`|
 |repeat|是否重复水印|`boolean`|`true`|
-|staggered|是否错开排列|`boolean`|`false`|
+|staggered|是否错开排列|`boolean`|`true`|
 
 
 
