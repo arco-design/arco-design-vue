@@ -92,6 +92,7 @@ export default {
     treeSelect: 'TreeSelect',
     overflow: 'OverflowList',
     scrollbar: 'Scrollbar',
+    watermark: 'Watermark',
   },
   footer: {
     design: 'Design',

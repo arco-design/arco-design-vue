@@ -96,6 +96,7 @@ import Typography, {
 } from './typography';
 import Upload from './upload';
 import OverflowList from './overflow-list';
+import Watermark from './watermark';
 
 import { useFormItem } from './_hooks/use-form-item';
 
@@ -171,6 +172,7 @@ const components: Record<string, Plugin> = {
   Split,
   Icon,
   OverflowList,
+  Watermark,
 };
 
 const install = (app: App, options?: ArcoOptions) => {

@@ -184,6 +184,9 @@ const OverflowListEn = () =>
 const Scrollbar = () => import('@web-vue/components/scrollbar/README.zh-CN.md');
 const ScrollbarEn = () =>
   import('@web-vue/components/scrollbar/README.en-US.md');
+const Watermark = () => import('@web-vue/components/watermark/README.zh-CN.md');
+const WatermarkEn = () =>
+  import('@web-vue/components/watermark/README.en-US.md');
 
 const docs = [
   {
@@ -671,6 +674,11 @@ const components = [
         name: 'scrollbar',
         component: Scrollbar,
         componentEn: ScrollbarEn,
+      },
+      {
+        name: 'watermark',
+        component: Watermark,
+        componentEn: WatermarkEn,
       },
     ],
   },
