@@ -117,11 +117,10 @@ export default defineComponent({
     //   required:true
     // }
   },
-  setup(props) {
+  setup(props, { slots }) {
     const { pageData } = toRefs(props);
     const prefixCls = getPrefixCls('calendar');
     const pageShowDateYear = props.pageShowDate.year();
-
     const getCellClassName = computed(() =>
       useCellClassName({
         prefixCls,
@@ -151,15 +150,23 @@ export default defineComponent({
               class={getCellClassName.value(col, false)}
               {...tdProps}
             >
-              <div class={`${prefixCls}-date`} {...tdDivProps}>
-                <div class={`${prefixCls}-date-value`}>
-                  {props.panel ? (
-                    col.date
-                  ) : (
-                    <div class={`${prefixCls}-date-circle`}>{col.date}</div>
-                  )}
+              {slots.default ? (
+                slots.default?.({
+                  year: col.year,
+                  month: col.month,
+                  date: col.date,
+                })
+              ) : (
+                <div class={`${prefixCls}-date`} {...tdDivProps}>
+                  <div class={`${prefixCls}-date-value`}>
+                    {props.panel ? (
+                      col.date
+                    ) : (
+                      <div class={`${prefixCls}-date-circle`}>{col.date}</div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           );
         }

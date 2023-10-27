@@ -65,7 +65,7 @@ export default defineComponent({
     },
   },
   emits: ['yearChange', 'monthChange'],
-  setup(props) {
+  setup(props, { slots }) {
     // const {
     //   changePageShowDate,
     //   headerValueFormat,
@@ -88,15 +88,15 @@ export default defineComponent({
 
     const isSelectHeaderType = props.headerType === 'select';
 
-    const pageShowDateYear = props.pageShowData.year();
-    const pageShowDateMonth = props.pageShowData.month() + 1;
+    const pageShowDateYear = computed(() => props.pageShowData.year());
+    const pageShowDateMonth = computed(() => props.pageShowData.month() + 1);
     const optionsYear = computed(() => {
-      const options = [pageShowDateYear];
+      const options = [pageShowDateYear.value];
       for (let i = 1; i <= 10; i++) {
-        options.unshift(pageShowDateYear - i);
+        options.unshift(pageShowDateYear.value - i);
       }
       for (let i = 1; i < 10; i++) {
-        options.push(pageShowDateYear + i);
+        options.push(pageShowDateYear.value + i);
       }
       return options;
     });
@@ -137,7 +137,12 @@ export default defineComponent({
                 <IconLeft />
               </div>
               <div class={`${prefixCls}-header-value`}>
-                {props.pageShowData.format(props.headerValueFormat)}
+                {slots.default
+                  ? slots.default({
+                      year: pageShowDateYear,
+                      month: pageShowDateMonth,
+                    })
+                  : props.pageShowData.format(props.headerValueFormat)}
               </div>
               <div
                 role="button"

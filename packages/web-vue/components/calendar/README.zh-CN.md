@@ -27,4 +27,9 @@ description: 日历组件。
 |change|选择的日期改变时触发|date: `Date`|
 |panel-change|日期面板改变时触发|date: `Date`|
 
+### `<calendar>` Slots
 
+|插槽名|描述|参数|版本|
+|---|---|---|---|
+|default|每个日期中渲染的内容|year: `number`<br>month: `number`<br>date: `number`||
+|header|日历的标题|year: `number`<br>month: `number`||
