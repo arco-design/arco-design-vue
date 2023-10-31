@@ -16,7 +16,9 @@ export function isBoolean(obj: unknown): obj is boolean {
   return opt.call(obj) === '[object Boolean]';
 }
 
-export function isObject(obj: any): obj is Record<string, unknown> {
+export function isObject<T extends unknown>(
+  obj: T
+): obj is Extract<T, Record<string, any>> {
   return opt.call(obj) === '[object Object]';
 }
 
