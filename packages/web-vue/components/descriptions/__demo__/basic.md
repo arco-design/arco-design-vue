@@ -19,9 +19,9 @@ Simply display multiple read-only fields in groups, which are generally used for
 ```vue
 <template>
   <a-space direction="vertical" size="large" fill>
-    <a-descriptions :data="data" title="User Info" layout="inline-horizontal"/>
-    <a-descriptions :data="data" title="User Info" :column="{xs:1, md:3, lg:4}">
-      <a-descriptions-item v-for="item of data" :label="item.label">
+    <a-descriptions :data="data" title="User Info" layout="inline-horizontal" />
+    <a-descriptions title="User Info" :column="{xs:1, md:3, lg:4}">
+      <a-descriptions-item v-for="item of data" :label="item.label" :span="item.span ?? 1">
         <a-tag>{{ item.value }}</a-tag>
       </a-descriptions-item>
     </a-descriptions>
@@ -34,6 +34,7 @@ export default {
     const data = [{
       label: 'Name',
       value: 'Socrates',
+      span: 3,
     }, {
       label: 'Mobile',
       value: '123-1234-1234',

@@ -57,8 +57,8 @@ export default defineComponent({
     });
 
     const itemData = reactive({
-      index: computedIndex,
-      span,
+      index: computedIndex.value,
+      span: span.value,
     });
 
     if (instance?.uid) {
