@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.53.0
+
+`2023-11-03`
+
+### 🆕 Feature
+
+- **watermark:** add watermark component ([#2741](https://github.com/arco-design/arco-design-vue/pull/2741))
+- **calendar:** Added `header` and `default` slots ([#2674](https://github.com/arco-design/arco-design-vue/pull/2674))
+
+### 🐛 BugFix
+
+- **descriptions:** Fix the problem of invalid `span` attribute of `DescriptionsItem` component ([#2765](https://github.com/arco-design/arco-design-vue/pull/2765))
+
+
 ## 2.52.1
 
 `2023-10-13`

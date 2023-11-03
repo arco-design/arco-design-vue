@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.53.0
+
+`2023-11-03`
+
+### 🆕 Feature
+
+- Added `header` and `default` slots ([#2674](https://github.com/arco-design/arco-design-vue/pull/2674))
+
+
 ## 2.44.2
 
 `2023-03-17`

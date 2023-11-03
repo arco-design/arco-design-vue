@@ -29,9 +29,4 @@ description: Calendar Component.
 |change|Emitted when the button is clicked|date: `Date`|
 |panel-change|Emitted when the button is clicked|date: `Date`|
 
-### `<calendar>` Slots
 
-|Slot Name|Description|Parameters|version|
-|---|---|---|:---|
-|default|Content to be rendered in each date|year: `number`<br>month: `number`<br>date: `number`||
-|title|Header of the calendar|year: `number`<br>month: `number`||

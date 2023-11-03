@@ -103,10 +103,12 @@ exports[`<descriptions> demo: render [basic] correctly 1`] = `
         <table class=\\"arco-descriptions-table\\">
           <tbody>
             <tr class=\\"arco-descriptions-row\\">
-              <td class=\\"arco-descriptions-item\\" colspan=\\"1\\">
+              <td class=\\"arco-descriptions-item\\" colspan=\\"3\\">
                 <div class=\\"arco-descriptions-item-label arco-descriptions-item-label-inline\\" style=\\"text-align: left;\\">Name</div>
                 <div class=\\"arco-descriptions-item-value arco-descriptions-item-value-inline\\" style=\\"text-align: left;\\">Socrates</div>
               </td>
+            </tr>
+            <tr class=\\"arco-descriptions-row\\">
               <td class=\\"arco-descriptions-item\\" colspan=\\"1\\">
                 <div class=\\"arco-descriptions-item-label arco-descriptions-item-label-inline\\" style=\\"text-align: left;\\">Mobile</div>
                 <div class=\\"arco-descriptions-item-value arco-descriptions-item-value-inline\\" style=\\"text-align: left;\\">123-1234-1234</div>
@@ -115,13 +117,13 @@ exports[`<descriptions> demo: render [basic] correctly 1`] = `
                 <div class=\\"arco-descriptions-item-label arco-descriptions-item-label-inline\\" style=\\"text-align: left;\\">Residence</div>
                 <div class=\\"arco-descriptions-item-value arco-descriptions-item-value-inline\\" style=\\"text-align: left;\\">Beijing</div>
               </td>
-            </tr>
-            <tr class=\\"arco-descriptions-row\\">
               <td class=\\"arco-descriptions-item\\" colspan=\\"1\\">
                 <div class=\\"arco-descriptions-item-label arco-descriptions-item-label-inline\\" style=\\"text-align: left;\\">Hometown</div>
                 <div class=\\"arco-descriptions-item-value arco-descriptions-item-value-inline\\" style=\\"text-align: left;\\">Beijing</div>
               </td>
-              <td class=\\"arco-descriptions-item\\" colspan=\\"2\\">
+            </tr>
+            <tr class=\\"arco-descriptions-row\\">
+              <td class=\\"arco-descriptions-item\\" colspan=\\"3\\">
                 <div class=\\"arco-descriptions-item-label arco-descriptions-item-label-inline\\" style=\\"text-align: left;\\">Address</div>
                 <div class=\\"arco-descriptions-item-value arco-descriptions-item-value-inline\\" style=\\"text-align: left;\\">Yingdu Building, Zhichun Road, Beijing</div>
               </td>

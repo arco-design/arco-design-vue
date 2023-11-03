@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.53.0
+
+`2023-11-03`
+
+### 🐛 问题修复
+
+- 修复 `DescriptionsItem` 组件 `span` 属性失效的问题 ([#2765](https://github.com/arco-design/arco-design-vue/pull/2765))
+
+
 ## 2.39.0
 
 `2022-11-18`

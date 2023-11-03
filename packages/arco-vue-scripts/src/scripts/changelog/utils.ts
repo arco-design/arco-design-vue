@@ -70,6 +70,7 @@ const componentList = [
   'image',
   'overflow-list',
   'scrollbar',
+  'watermark',
 ];
 
 export const isValidComponent = (component: string) => {

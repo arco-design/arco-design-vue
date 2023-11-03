@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.53.0
+
+`2023-11-03`
+
+### 🆕 新增功能
+
+- **watermark:** 新增水印组件 ([#2741](https://github.com/arco-design/arco-design-vue/pull/2741))
+- **calendar:** 新增 `header` 和 `default` 插槽 ([#2674](https://github.com/arco-design/arco-design-vue/pull/2674))
+
+### 🐛 问题修复
+
+- **descriptions:** 修复 `DescriptionsItem` 组件 `span` 属性失效的问题 ([#2765](https://github.com/arco-design/arco-design-vue/pull/2765))
+
+
 ## 2.52.1
 
 `2023-10-13`
