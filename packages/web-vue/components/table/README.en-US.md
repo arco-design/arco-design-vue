@@ -70,7 +70,7 @@ description: It is used for data collection, display, analysis and processing, a
 |stripe|Whether to enable the stripe effect|`boolean`|`false`||
 |size|The size of the table|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`||
 |table-layout-fixed|The table-layout property of the table is set to fixed. After it is set to fixed, the width of the table will not be stretched beyond 100% by the content.|`boolean`|`false`||
-|loading|Whether it is loading state|`boolean\|object`|`false`||
+|loading|Whether it is loading state|`boolean \| object`|`false`||
 |row-selection|Table row selector configuration|`TableRowSelection`|`-`||
 |expandable|Expand row configuration of the table|`TableExpandable`|`-`||
 |scroll|Scrolling attribute configuration of the table. The `2.13.0` version adds support for character values. `2.20.0` version adds support for `minWidth`, `maxHeight`.|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
@@ -85,10 +85,10 @@ description: It is used for data collection, display, analysis and processing, a
 |load-more|Data lazy loading function, open the lazy loading function when it is passed in|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|Whether the filter icon is aligned to the left|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|Whether to hide expand button when subtree is empty|`boolean`|`false`|2.14.0|
-|row-class|The class name of the table row element. The `2.34.0` version adds support for function values.|`string\| any[]\| Record<string, any>\| ((record: TableData, rowIndex: number) => any)`|`-`|2.16.0|
+|row-class|The class name of the table row element. The `2.34.0` version adds support for function values.|`string \| any[] \| Record<string, any> \| ((record: TableData, rowIndex: number) => any)`|`-`|2.16.0|
 |draggable|Table drag and drop sorting configuration|`TableDraggable`|`-`|2.16.0|
 |column-resizable|Whether to allow the column width to be adjusted|`boolean`|`false`|2.16.0|
-|summary|Show footer summary row|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
+|summary|Show footer summary row|`boolean \| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|The first column of text in the summary line|`string`|`'Summary'`|2.21.0|
 |summary-span-method|Cell Merge Method for Summarizing Rows|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
 |selected-keys|Selected row (controlled mode) takes precedence over `rowSelection`|`(string \| number)[]`|`-`|2.25.0|
@@ -96,7 +96,7 @@ description: It is used for data collection, display, analysis and processing, a
 |expanded-keys|Displayed Expanded Row, Subtree (Controlled Mode) takes precedence over `expandable`|`(string \| number)[]`|`-`|2.25.0|
 |default-expanded-keys|Expand row, Subtree displayed by default (Uncontrolled mode) takes precedence over `expandable`|`(string \| number)[]`|`-`|2.25.0|
 |default-expand-all-rows|Whether to expand all rows by default|`boolean`|`false`|2.25.0|
-|sticky-header|Whether to open the sticky header|`boolean\|number`|`false`|2.30.0|
+|sticky-header|Whether to open the sticky header|`boolean \| number`|`false`|2.30.0|
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|
 |show-empty-tree|Whether to display empty subtrees|`boolean`|`false`|2.51.0|
 ### `<table>` Events
@@ -178,7 +178,7 @@ description: It is used for data collection, display, analysis and processing, a
 |body-cell-style|Custom cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
 |summary-cell-style|Customize summary column cell style|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |index|index for manually specifying option. Manual specification is no longer required after version 2.26.0|`number`|`-`|2.20.2|
-|tooltip|Whether to show text hints when omitted|`boolean\|object`|`false`|2.26.0|
+|tooltip|Whether to show text hints when omitted|`boolean \| object`|`false`|2.26.0|
 ### `<table-column>` Slots
 
 |Slot Name|Description|Parameters|version|

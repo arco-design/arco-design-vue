@@ -68,7 +68,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |stripe|是否开启斑马纹效果|`boolean`|`false`||
 |size|表格的大小|`'mini' \| 'small' \| 'medium' \| 'large'`|`'large'`||
 |table-layout-fixed|表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。|`boolean`|`false`||
-|loading|是否为加载中状态|`boolean\|object`|`false`||
+|loading|是否为加载中状态|`boolean \| object`|`false`||
 |row-selection|表格的行选择器配置|`TableRowSelection`|`-`||
 |expandable|表格的展开行配置|`TableExpandable`|`-`||
 |scroll|表格的滚动属性配置。`2.13.0` 版本增加字符型值的支持。`2.20.0` 版本增加 `minWidth`,`maxHeight` 的支持。|`{  x?: number \| string;  y?: number \| string;  minWidth?: number \| string;  maxHeight?: number \| string;}`|`-`||
@@ -83,10 +83,10 @@ description: 用于数据收集展示、分析整理、操作处理。
 |load-more|数据懒加载函数，传入时开启懒加载功能|`(record: TableData, done: (children?: TableData[]) => void) => void`|`-`|2.13.0|
 |filter-icon-align-left|筛选图标是否左对齐|`boolean`|`false`|2.13.0|
 |hide-expand-button-on-empty|是否在子树为空时隐藏展开按钮|`boolean`|`false`|2.14.0|
-|row-class|表格行元素的类名。`2.34.0` 版本增加函数值支持|`string\| any[]\| Record<string, any>\| ((record: TableData, rowIndex: number) => any)`|`-`|2.16.0|
+|row-class|表格行元素的类名。`2.34.0` 版本增加函数值支持|`string \| any[] \| Record<string, any> \| ((record: TableData, rowIndex: number) => any)`|`-`|2.16.0|
 |draggable|表格拖拽排序的配置|`TableDraggable`|`-`|2.16.0|
 |column-resizable|是否允许调整列宽|`boolean`|`false`|2.16.0|
-|summary|显示表尾总结行|`boolean\| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
+|summary|显示表尾总结行|`boolean \| ((params: {    columns: TableColumnData[];    data: TableData[];  }) => TableData[])`|`-`|2.21.0|
 |summary-text|总结行的首列文字|`string`|`'Summary'`|2.21.0|
 |summary-span-method|总结行的单元格合并方法|`(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void`|`-`|2.21.0|
 |selected-keys|已选择的行（受控模式）优先于 `rowSelection`|`(string \| number)[]`|`-`|2.25.0|
@@ -94,7 +94,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |expanded-keys|显示的展开行、子树（受控模式）优先于 `expandable`|`(string \| number)[]`|`-`|2.25.0|
 |default-expanded-keys|默认显示的展开行、子树（非受控模式）优先于 `expandable`|`(string \| number)[]`|`-`|2.25.0|
 |default-expand-all-rows|是否默认展开所有的行|`boolean`|`false`|2.25.0|
-|sticky-header|是否开启表头吸顶|`boolean\|number`|`false`|2.30.0|
+|sticky-header|是否开启表头吸顶|`boolean \| number`|`false`|2.30.0|
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.38.0|
 |show-empty-tree|是否展示空子树|`boolean`|`false`|2.51.0|
 ### `<table>` Events
@@ -176,7 +176,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |body-cell-style|自定义内容单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.29.0|
 |summary-cell-style|自定义总结栏单元格样式|`CSSProperties \| ((record: TableData) => CSSProperties)`|`-`|2.30.0|
 |index|用于手动指定选项的 index。2.26.0 版本后不再需要手动指定|`number`|`-`|2.20.2|
-|tooltip|在省略时是否显示文字提示|`boolean\|object`|`false`|2.26.0|
+|tooltip|在省略时是否显示文字提示|`boolean \| object`|`false`|2.26.0|
 ### `<table-column>` Slots
 
 |插槽名|描述|参数|版本|
