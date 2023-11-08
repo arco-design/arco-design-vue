@@ -332,6 +332,8 @@ export type {
 } from './upload';
 export { default as OverflowList } from './overflow-list';
 export type { OverflowListInstance } from './overflow-list';
+export { default as Watermark } from './watermark';
+export type { WatermarkInstance } from './watermark';
 // hooks
 export { useFormItem } from './_hooks/use-form-item';
 // components.d.ts
