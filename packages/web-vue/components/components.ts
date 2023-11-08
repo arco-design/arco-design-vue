@@ -128,6 +128,7 @@ declare module '@vue/runtime-core' {
     ATypographyTitle: typeof import('@arco-design/web-vue')['TypographyTitle'];
     ATypographyText: typeof import('@arco-design/web-vue')['TypographyText'];
     AUpload: typeof import('@arco-design/web-vue')['Upload'];
+    AWatermark: typeof import('@arco-design/web-vue')['Watermark'];
   }
 
   export interface ComponentCustomProperties {
