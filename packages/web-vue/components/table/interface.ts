@@ -273,6 +273,12 @@ export interface TableColumnData {
    */
   titleSlotName?: string;
 
+  /**
+   * @zh 设置当前列是否可调节宽度
+   * @en Set the current column resizable
+   */
+  resizable?: boolean;
+
   // private
   slots?: Slots;
   isLastLeftFixed?: boolean;
