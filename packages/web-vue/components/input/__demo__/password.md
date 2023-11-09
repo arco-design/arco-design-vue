@@ -18,6 +18,29 @@ Used to enter a password.
 
 ```vue
 <template>
-  <a-input-password :style="{width:'320px'}" placeholder="Please enter something" allow-clear/>
+  <a-space direction="vertical" size="large">
+    <a-switch v-model="visibility" />
+    <a-input-password
+      v-model:visibility="visibility"
+      placeholder="Please enter something"
+      :style="{width:'320px'}"
+      :defaultVisibility="false"
+      allow-clear
+    />
+  </a-space>
 </template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const visibility = ref(true);
+
+    return {
+      visibility
+    }
+  },
+}
+</script>
 ```
