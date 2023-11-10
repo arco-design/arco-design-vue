@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.53.2
+
+`2023-11-10`
+
+### 🐛 BugFix
+
+- Fix the problem of error reporting when styles are loaded on demand ([#2787](https://github.com/arco-design/arco-design-vue/pull/2787))
+
+
 ## 2.53.1
 
 `2023-11-08`
