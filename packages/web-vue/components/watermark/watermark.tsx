@@ -12,6 +12,7 @@ import {
 import { getPrefixCls } from '../_utils/global-config';
 import { WatermarkFont } from './interface';
 import { useMutationObserver } from './hooks/use-mutation-observer';
+import { useTheme } from './hooks/use-theme';
 import { styleToString, canvasToGray } from './utils';
 import { isArray } from '../_utils/is';
 
@@ -139,10 +140,14 @@ export default defineComponent({
     const fontWeight = computed(() => props.font?.fontWeight ?? 'normal');
     const fontStyle = computed(() => props.font?.fontStyle ?? 'normal');
     const fontFamily = computed(() => props.font?.fontFamily ?? 'sans-serif');
-    const color = computed(() => props.font?.color ?? 'rgba(0, 0, 0, 0.15)');
     const textAlign = computed(() => props.font?.textAlign ?? 'center');
     const contents = computed(() =>
       isArray(props.content) ? props.content : [props.content]
+    );
+    const color = computed(() =>
+      props.font?.color ?? theme.value === 'dark'
+        ? 'rgba(255, 255, 255, 0.15)'
+        : 'rgba(0, 0, 0, 0.15)'
     );
 
     // Watermark position related
@@ -301,6 +306,8 @@ export default defineComponent({
         }
       }
     };
+
+    const { theme } = useTheme(renderWatermark);
 
     onMounted(() => {
       renderWatermark();
