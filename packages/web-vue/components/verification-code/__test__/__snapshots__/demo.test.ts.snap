@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<verification-code> demo: render [basic] correctly 1`] = `
+"<div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!---->
+</div>"
+`;
+
+exports[`<verification-code> demo: render [form] correctly 1`] = `
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\" style=\\"width: 300px;\\">
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\"><strong class=\\"arco-form-item-label-required-symbol\\"><svg fill=\\"currentColor\\" viewBox=\\"0 0 1024 1024\\" width=\\"1em\\" height=\\"1em\\"><path d=\\"M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z\\"></path></svg></strong>code
+        <!--v-if-->
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\" id=\\"code\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\">
+          <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+            <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+            <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+            <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+            <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+            <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+            <!---->
+          </div>
+        </div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-large arco-btn-status-normal\\" type=\\"submit\\" style=\\"width: 60px;\\">
+            <!--v-if-->Submit
+          </button></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+</form>"
+`;
+
+exports[`<verification-code> demo: render [formatter] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!---->
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`<verification-code> demo: render [masked] correctly 1`] = `
+"<div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"password\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"password\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"password\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"password\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"password\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"password\\"><!----><!----></span>
+  <!---->
+</div>"
+`;
+
+exports[`<verification-code> demo: render [separator] correctly 1`] = `
+"<div class=\\"arco-verification-code\\" style=\\"width: 400px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>-<span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>-<span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\"><!----><!----></span>
+  <!---->
+</div>"
+`;
+
+exports[`<verification-code> demo: render [status] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Disabled:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <!---->
+      <div class=\\"arco-space-item\\">
+        <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input-disabled arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" disabled=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-disabled arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" disabled=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-disabled arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" disabled=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-disabled arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" disabled=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-disabled arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" disabled=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-disabled arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" disabled=\\"\\"><!----><!----></span>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Readonly:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <!---->
+      <div class=\\"arco-space-item\\">
+        <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" readonly=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" readonly=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" readonly=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" readonly=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" readonly=\\"\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" readonly=\\"\\"><!----><!----></span>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+      <!---->
+      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Error:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <!---->
+      <div class=\\"arco-space-item\\">
+        <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input-error arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" aria-invalid=\\"true\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-error arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" aria-invalid=\\"true\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-error arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" aria-invalid=\\"true\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-error arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" aria-invalid=\\"true\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-error arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" aria-invalid=\\"true\\"><!----><!----></span>
+          <!----><span class=\\"arco-input-wrapper arco-input-error arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" aria-invalid=\\"true\\"><!----><!----></span>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

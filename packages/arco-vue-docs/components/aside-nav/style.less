@@ -16,13 +16,13 @@
     position: absolute;
     top: 186px;
     right: -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--color-bg-5);
     border: 1px solid var(--color-fill-3);
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.15s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &:hover {
       background-color: var(--color-bg-5);
@@ -141,7 +141,10 @@
       background-color: var(--color-fill-2) !important;
 
       .aside-nav-item-link {
+        overflow: hidden;
         color: rgb(var(--arcoblue-6));
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
 

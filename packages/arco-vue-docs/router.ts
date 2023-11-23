@@ -187,6 +187,10 @@ const ScrollbarEn = () =>
 const Watermark = () => import('@web-vue/components/watermark/README.zh-CN.md');
 const WatermarkEn = () =>
   import('@web-vue/components/watermark/README.en-US.md');
+const VerificationCode = () =>
+  import('@web-vue/components/verification-code/README.zh-CN.md');
+const VerificationCodeEn = () =>
+  import('@web-vue/components/verification-code/README.en-US.md');
 
 const docs = [
   {
@@ -474,6 +478,11 @@ const components = [
         name: 'inputNumber',
         component: InputNumber,
         componentEn: InputNumberEn,
+      },
+      {
+        name: 'verificationCode',
+        component: VerificationCode,
+        componentEn: VerificationCodeEn,
       },
       {
         name: 'inputTag',
