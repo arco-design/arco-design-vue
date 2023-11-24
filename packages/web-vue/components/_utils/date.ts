@@ -161,7 +161,10 @@ export function getDayjsValue(
       if (isQuarter(format)) {
         return dayjs(parseQuarterToMonth(value), format.replace(/\[Q]Q/, 'MM'));
       }
-      return dayjs(value, format);
+
+      if (dayjs(value, format).isValid()) {
+        return dayjs(value, format);
+      }
     }
 
     return dayjs(value);
