@@ -435,6 +435,9 @@ export default defineComponent({
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (mergedDisabled.value || props.readonly) {
+        return;
+      }
       const keyCode = e.key || e.code;
       if (
         !isComposition.value &&
