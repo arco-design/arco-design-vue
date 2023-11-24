@@ -106,6 +106,23 @@ export default defineComponent({
      */
     'panelChange': (date: Date) => true,
   },
+  /**
+   * @zh 自定义单元格内容
+   * @en Custom cell content
+   * @slot default
+   * @binding {number} year
+   * @binding {number} month
+   * @binding {number} date
+   * @version 2.53.0
+   */
+  /**
+   * @zh 自定义头部内容
+   * @en Custom header content
+   * @slot header
+   * @binding {number} year
+   * @binding {number} month
+   * @version 2.53.0
+   */
   setup(props, { emit, slots }) {
     const { dayStartOfWeek, isWeek } = toRefs(props);
     const prefixCls = getPrefixCls('calendar');

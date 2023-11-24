@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.53.3
+
+`2023-11-24`
+
+### 🐛 问题修复
+
+- **input-tag:** 修复 `read-only` 下仍然能被删除的问题 ([#2824](https://github.com/arco-design/arco-design-vue/pull/2824))
+- **date-picker:** 修复日期与format不一致导致出现无效日期 ([#2789](https://github.com/arco-design/arco-design-vue/pull/2789))
+
+
 ## 2.53.2
 
 `2023-11-10`

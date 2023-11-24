@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.53.3
+
+`2023-11-24`
+
+### 🐛 BugFix
+
+- Fix the problem that the file can still be deleted under `read-only` ([#2824](https://github.com/arco-design/arco-design-vue/pull/2824))
+
+
 ## 2.38.1
 
 `2022-11-04`

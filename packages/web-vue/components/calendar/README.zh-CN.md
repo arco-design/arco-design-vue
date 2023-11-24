@@ -26,9 +26,11 @@ description: 日历组件。
 |---|---|---|
 |change|选择的日期改变时触发|date: `Date`|
 |panel-change|日期面板改变时触发|date: `Date`|
-
 ### `<calendar>` Slots
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
-|default|单元格内容|year: `number`<br/>month: `number`<br/>date: `number`||
+|header|自定义头部内容|year: `number`<br>month: `number`|2.53.0|
+|default|自定义单元格内容|year: `number`<br>month: `number`<br>date: `number`|2.53.0|
+
+

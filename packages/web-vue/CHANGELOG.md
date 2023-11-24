@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.53.3
+
+`2023-11-24`
+
+### 🐛 BugFix
+
+- **input-tag:** Fix the problem that the file can still be deleted under `read-only` ([#2824](https://github.com/arco-design/arco-design-vue/pull/2824))
+- **date-picker:** fix invalid date due to mismatch between date and format ([#2789](https://github.com/arco-design/arco-design-vue/pull/2789))
+
+
 ## 2.53.2
 
 `2023-11-10`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.53.3
+
+`2023-11-24`
+
+### 🐛 BugFix
+
+- fix invalid date due to mismatch between date and format ([#2789](https://github.com/arco-design/arco-design-vue/pull/2789))
+
+
 ## 2.52.0
 
 `2023-09-22`
