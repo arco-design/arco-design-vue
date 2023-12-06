@@ -12,7 +12,7 @@ title:
 
 ## en-US
 
-Customize the rendering content of the title bar through the `sourceTitle` and `targetTitle` slots
+Customize the rendering content of the title bar through the `source-title` and `target-title` slots
 
 ---
 
