@@ -6,7 +6,7 @@ title:
 
 ## zh-CN
 
-通过 `sourceTitle` ,`targetTitle` 插槽自定义标题栏的渲染内容
+通过 `source-title` ,`target-title` 插槽自定义标题栏的渲染内容
 
 ---
 
