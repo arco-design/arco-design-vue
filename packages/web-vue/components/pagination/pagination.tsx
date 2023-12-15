@@ -413,9 +413,10 @@ export default defineComponent({
         computedCurrent.value > 1 &&
         computedCurrent.value > curPages
       ) {
-        _current.value = curPages;
-        emit('update:current', curPages);
-        emit('change', curPages);
+        const newCurrent = Math.max(curPages, 1);
+        _current.value = newCurrent;
+        emit('update:current', newCurrent);
+        emit('change', newCurrent);
       }
     });
 
