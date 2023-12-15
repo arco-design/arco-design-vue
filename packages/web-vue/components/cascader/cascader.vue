@@ -553,6 +553,8 @@ export default defineComponent({
       valueKey,
       expandTrigger,
       expandChild,
+      pathMode,
+      multiple,
     } = toRefs(props);
     const _value = ref(props.defaultValue);
     const _inputValue = ref(props.defaultInputValue);
@@ -681,6 +683,17 @@ export default defineComponent({
       emit('change', value);
       eventHandlers.value?.onChange?.();
     };
+
+    watch([multiple, pathMode], () => {
+      const values: any[] = [];
+      computedValueMap.value.forEach((value, key) => {
+        const option = leafOptionMap.get(key);
+        if (option) {
+          values.push(pathMode.value ? option.pathValue : option.value);
+        }
+      });
+      updateValue(values);
+    });
 
     const handlePopupVisibleChange = (visible: boolean): void => {
       if (computedPopupVisible.value !== visible) {
