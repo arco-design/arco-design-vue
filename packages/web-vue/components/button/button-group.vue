@@ -6,7 +6,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType, provide, reactive, toRefs } from 'vue';
-import { Status, Size } from '../_utils/constant';
+import { Status, Size, BorderShape } from '../_utils/constant';
+import { ButtonTypes } from './constants';
 import { getPrefixCls } from '../_utils/global-config';
 import { buttonGroupInjectionKey } from './context';
 
@@ -18,9 +19,7 @@ export default defineComponent({
      * @en Children button types are divided into five types: secondary, primary, dashed, outline and text.
      */
     type: {
-      type: String as PropType<
-        'primary' | 'secondary' | 'outline' | 'dashed' | 'text'
-      >,
+      type: String as PropType<ButtonTypes>,
     },
     /**
      * @zh 按钮的状态
@@ -35,7 +34,7 @@ export default defineComponent({
      * @en Button shape
      */
     shape: {
-      type: String as PropType<'square' | 'round' | 'circle'>,
+      type: String as PropType<BorderShape>,
     },
     /**
      * @zh 按钮的尺寸

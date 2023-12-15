@@ -41,7 +41,8 @@
  */
 import type { PropType } from 'vue';
 import { defineComponent, computed, toRefs, inject } from 'vue';
-import { Status, Size } from '../_utils/constant';
+import { Status, Size, BorderShape } from '../_utils/constant';
+import { ButtonTypes } from './constants';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
@@ -61,16 +62,14 @@ export default defineComponent({
      * @defaultValue 'secondary'
      */
     type: {
-      type: String as PropType<
-        'primary' | 'secondary' | 'outline' | 'dashed' | 'text'
-      >,
+      type: String as PropType<ButtonTypes>,
     },
     /**
      * @zh 按钮的形状
      * @en Button shape
      */
     shape: {
-      type: String as PropType<'square' | 'round' | 'circle'>,
+      type: String as PropType<BorderShape>,
     },
     /**
      * @zh 按钮的状态

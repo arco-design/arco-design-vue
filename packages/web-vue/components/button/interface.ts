@@ -1,8 +1,9 @@
-import { Size, Status } from '../_utils/constant';
+import { Size, Status, BorderShape } from '../_utils/constant';
+import { ButtonTypes } from './constants';
 
 export interface ButtonProps {
-  type?: 'primary' | 'secondary' | 'outline' | 'dashed' | 'text';
-  shape?: 'square' | 'round' | 'circle';
+  type?: ButtonTypes;
+  shape?: BorderShape;
   status?: Status;
   size?: Size;
   long?: boolean;
