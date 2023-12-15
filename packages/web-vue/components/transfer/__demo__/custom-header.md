@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-通过 `sourceTitle` ,`targetTitle` 插槽自定义标题栏的渲染内容
+通过 `source-title` ,`target-title` 插槽自定义标题栏的渲染内容
 
 ---
 
 ## en-US
 
-Customize the rendering content of the title bar through the `sourceTitle` and `targetTitle` slots
+Customize the rendering content of the title bar through the `source-title` and `target-title` slots
 
 ---
 
