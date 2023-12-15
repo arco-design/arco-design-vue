@@ -42,6 +42,9 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
     })
   );
 
+  const startMode = computed(() => startHeaderMode?.value || mode.value);
+  const endMode = computed(() => endHeaderMode?.value || mode.value);
+
   const startValue = computed(() => value.value?.[0]);
   const endValue = computed(() => value.value?.[1]);
 
@@ -58,7 +61,7 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
     getDefaultLocalValue: getDefaultStartHeaderValue,
   } = useHeaderValue(
     reactive({
-      mode: startHeaderMode || mode,
+      mode: startMode,
       value: startValue,
       defaultValue: startDefaultValue,
       selectedValue: undefined,
@@ -76,7 +79,7 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
     getDefaultLocalValue: getDefaultEndHeaderValue,
   } = useHeaderValue(
     reactive({
-      mode: endHeaderMode || mode,
+      mode: endMode,
       value: endValue,
       defaultValue: endDefaultValue,
       selectedValue: undefined,
