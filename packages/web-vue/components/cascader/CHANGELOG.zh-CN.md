@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.0
+
+`2023-12-15`
+
+### 💎 功能优化
+
+- 修改 `multiple` 和 `pathMode` 时会触发绑定值的改变 ([#2867](https://github.com/arco-design/arco-design-vue/pull/2867))
+
+
 ## 2.51.1
 
 `2023-09-08`

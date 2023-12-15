@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.0
+
+`2023-12-15`
+
+### 💎 Enhancement
+
+- Modifying `multiple` and `pathMode` will trigger changes in the binding value ([#2867](https://github.com/arco-design/arco-design-vue/pull/2867))
+
+
 ## 2.51.1
 
 `2023-09-08`

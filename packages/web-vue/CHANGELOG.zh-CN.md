@@ -2,6 +2,28 @@
 changelog: true
 ```
 
+## 2.54.0
+
+`2023-12-15`
+
+### 🆕 新增功能
+
+- 新增验证码输入组件 ([#2823](https://github.com/arco-design/arco-design-vue/pull/2823))
+
+### 🐛 问题修复
+
+- **date-picker:** 修复日期范围部分模式下箭头点击问题 ([#2865](https://github.com/arco-design/arco-design-vue/pull/2865))
+- **pagination:** 修复页码可能为 `0` 的问题 ([#2828](https://github.com/arco-design/arco-design-vue/pull/2828))
+
+### 💎 功能优化
+
+- **cascader:** 修改 `multiple` 和 `pathMode` 时会触发绑定值的改变 ([#2867](https://github.com/arco-design/arco-design-vue/pull/2867))
+
+### 🆎 类型修正
+
+- **button:** TS类型优化 ([#2825](https://github.com/arco-design/arco-design-vue/pull/2825))
+
+
 ## 2.53.3
 
 `2023-11-24`

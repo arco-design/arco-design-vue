@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.0
+
+`2023-12-15`
+
+### 🐛 BugFix
+
+- Fix the problem that the page number may be `0` ([#2828](https://github.com/arco-design/arco-design-vue/pull/2828))
+
+
 ## 2.39.1
 
 `2022-11-25`

@@ -2,6 +2,28 @@
 changelog: true
 ```
 
+## 2.54.0
+
+`2023-12-15`
+
+### 🆕 Feature
+
+- add verification-code  component ([#2823](https://github.com/arco-design/arco-design-vue/pull/2823))
+
+### 🐛 BugFix
+
+- **date-picker:** resolve arrow click issue in range-picker ([#2865](https://github.com/arco-design/arco-design-vue/pull/2865))
+- **pagination:** Fix the problem that the page number may be `0` ([#2828](https://github.com/arco-design/arco-design-vue/pull/2828))
+
+### 💎 Enhancement
+
+- **cascader:** Modifying `multiple` and `pathMode` will trigger changes in the binding value ([#2867](https://github.com/arco-design/arco-design-vue/pull/2867))
+
+### 🆎 TypeScript
+
+- **button:** TS类型优化 ([#2825](https://github.com/arco-design/arco-design-vue/pull/2825))
+
+
 ## 2.53.3
 
 `2023-11-24`

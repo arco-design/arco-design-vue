@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.0
+
+`2023-12-15`
+
+### 🆎 类型修正
+
+- TS类型优化 ([#2825](https://github.com/arco-design/arco-design-vue/pull/2825))
+
+
 ## 2.37.4
 
 `2022-09-30`
