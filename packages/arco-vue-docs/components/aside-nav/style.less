@@ -136,15 +136,18 @@
     margin: 0 0 4px;
     padding: 0 12px;
 
+    .aside-nav-item-link {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
     &-active {
       font-weight: 500;
       background-color: var(--color-fill-2) !important;
 
       .aside-nav-item-link {
-        overflow: hidden;
         color: rgb(var(--arcoblue-6));
-        white-space: nowrap;
-        text-overflow: ellipsis;
       }
     }
 
