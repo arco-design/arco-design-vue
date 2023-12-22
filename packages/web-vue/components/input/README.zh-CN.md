@@ -84,7 +84,14 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
+|visibility **(v-model)**|是否可见，受控属性|`boolean`|`-`|
+|default-visibility|默认是否可见，非受控|`boolean`|`true`|
 |invisible-button|是否显示可见按钮|`boolean`|`true`|
+### `<input-password>` Events
+
+|事件名|描述|参数|
+|---|---|---|
+|visibility-change|visibility 改变时触发|visible: `boolean`|
 
 
 

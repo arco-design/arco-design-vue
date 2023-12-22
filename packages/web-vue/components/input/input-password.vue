@@ -1,5 +1,5 @@
 <template>
-  <a-input ref="inputRef" :type="invisible ? 'password' : 'text'">
+  <a-input ref="inputRef" :type="mergedVisible ? 'password' : 'text'">
     <template v-if="$slots.prepend" #prepend>
       <slot name="prepend" />
     </template>
@@ -13,7 +13,7 @@
         @mousedown.prevent
         @mouseup.prevent
       >
-        <icon-eye v-if="!invisible" />
+        <icon-eye v-if="!mergedVisible" />
         <icon-eye-invisible v-else />
       </a-icon-hover>
       <slot name="suffix" />
@@ -26,10 +26,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, reactive, ref, toRefs } from 'vue';
 import AIconHover from '../_components/icon-hover.vue';
 import IconEye from '../icon/icon-eye';
 import IconEyeInvisible from '../icon/icon-eye-invisible';
+import useMergeState from '../_hooks/use-merge-state';
 import AInput from './input';
 
 export default defineComponent({
@@ -42,6 +43,23 @@ export default defineComponent({
   },
   props: {
     /**
+     * @zh 是否可见，受控属性
+     * @en Whether is visible
+     * @vModel
+     */
+    visibility: {
+      type: Boolean,
+      default: undefined,
+    },
+    /**
+     * @zh 默认是否可见，非受控
+     * @en Default visiblity
+     */
+    defaultVisibility: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * @zh 是否显示可见按钮
      * @en Whether to show visible buttons
      */
@@ -50,17 +68,41 @@ export default defineComponent({
       default: true,
     },
   },
-  setup() {
+  emits: [
+    /**
+     * @zh visibility 改变时触发
+     * @en Callback when visibility changes
+     * @param {boolean} visible
+     */
+    'visibility-change',
+    'update:visibility',
+  ],
+  setup(props, { emit }) {
+    const { visibility, defaultVisibility } = toRefs(props);
     const inputRef = ref();
-    const invisible = ref(true);
 
     const handleInvisible = () => {
-      invisible.value = !invisible.value;
+      setVisible(!mergedVisible.value);
+    };
+
+    const [mergedVisible, setLocalVisible] = useMergeState(
+      defaultVisibility.value,
+      reactive({
+        value: visibility,
+      })
+    );
+
+    const setVisible = (newVisible: boolean) => {
+      if (newVisible !== mergedVisible.value) {
+        emit('visibility-change', newVisible);
+        emit('update:visibility', newVisible);
+        setLocalVisible(newVisible);
+      }
     };
 
     return {
       inputRef,
-      invisible,
+      mergedVisible,
       handleInvisible,
     };
   },
