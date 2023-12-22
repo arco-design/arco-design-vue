@@ -515,6 +515,7 @@ export default defineComponent({
       valueKey,
       multiple,
       popupVisible,
+      defaultPopupVisible,
       showExtraOptions,
       modelValue,
       fieldNames,
@@ -553,6 +554,7 @@ export default defineComponent({
     // trigger
     const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
       popupVisible,
+      defaultPopupVisible,
       emit,
     });
 
