@@ -52,4 +52,11 @@
       border-right-color: @input-color-border_focus;
     }
   }
+
+  // 针对Error状态的input边框颜色处理
+  > .@{input-prefix-cls}-wrapper.@{input-prefix-cls}-error:not(:last-child) {
+    &:focus-within {
+      border-right-color: @input-color-border_error_focus;
+    }
+  }
 }
