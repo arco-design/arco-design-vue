@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.1
+
+`2023-12-28`
+
+### 🐛 BugFix
+
+- Fix `defaultPopupVisible` failure problem ([#2881](https://github.com/arco-design/arco-design-vue/pull/2881))
+
+
 ## 2.51.0
 
 `2023-09-01`

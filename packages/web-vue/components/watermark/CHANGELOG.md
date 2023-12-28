@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.1
+
+`2023-12-28`
+
+### 🆕 Feature
+
+- watermark font color  follows the theme ([#2790](https://github.com/arco-design/arco-design-vue/pull/2790))
+
+
 ## 2.53.2
 
 `2023-11-10`

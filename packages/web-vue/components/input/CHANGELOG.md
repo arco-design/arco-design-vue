@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.1
+
+`2023-12-28`
+
+### 🆕 Feature
+
+- Enhance the input-password props ([#2784](https://github.com/arco-design/arco-design-vue/pull/2784))
+
+
 ## 2.44.2
 
 `2023-03-17`

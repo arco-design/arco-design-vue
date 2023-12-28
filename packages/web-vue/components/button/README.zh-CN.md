@@ -31,8 +31,8 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|type|按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。|`'primary' \| 'secondary' \| 'outline' \| 'dashed' \| 'text'`|`'secondary'`|
-|shape|按钮的形状|`'square' \| 'round' \| 'circle'`|`-`|
+|type|按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。|`ButtonTypes`|`'secondary'`|
+|shape|按钮的形状|`BorderShape`|`-`|
 |status|按钮的状态|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`|
 |size|按钮的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |long|按钮的宽度是否随容器自适应。|`boolean`|`false`|
@@ -58,9 +58,9 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|type|按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。|`'primary' \| 'secondary' \| 'outline' \| 'dashed' \| 'text'`|`-`|
+|type|按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。|`ButtonTypes`|`-`|
 |status|按钮的状态|`'normal' \| 'warning' \| 'success' \| 'danger'`|`-`|
-|shape|按钮的形状|`'square' \| 'round' \| 'circle'`|`-`|
+|shape|按钮的形状|`BorderShape`|`-`|
 |size|按钮的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |disabled|全部子按钮是否禁用|`boolean`|`false`|
 

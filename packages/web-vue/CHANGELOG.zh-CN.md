@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.54.1
+
+`2023-12-28`
+
+### 🆕 新增功能
+
+- **watermark:** 水印字体色跟随主题变化 ([#2790](https://github.com/arco-design/arco-design-vue/pull/2790))
+- **input:** 新增密码框密码可见性相关属性 ([#2784](https://github.com/arco-design/arco-design-vue/pull/2784))
+
+### 🐛 问题修复
+
+- **select:** 修复 `defaultPopupVisible` 失效的问题 ([#2881](https://github.com/arco-design/arco-design-vue/pull/2881))
+
+
 ## 2.54.0
 
 `2023-12-15`

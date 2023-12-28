@@ -33,8 +33,8 @@ description: Button is a command component that can initiate an instant operatio
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|type|Button types are divided into five types: secondary, primary, dashed, outline and text.|`'primary' \| 'secondary' \| 'outline' \| 'dashed' \| 'text'`|`'secondary'`|
-|shape|Button shape|`'square' \| 'round' \| 'circle'`|`-`|
+|type|Button types are divided into five types: secondary, primary, dashed, outline and text.|`ButtonTypes`|`'secondary'`|
+|shape|Button shape|`BorderShape`|`-`|
 |status|Button state|`'normal' \| 'warning' \| 'success' \| 'danger'`|`'normal'`|
 |size|Button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |long|Whether the width of the button adapts to the container.|`boolean`|`false`|
@@ -60,9 +60,9 @@ description: Button is a command component that can initiate an instant operatio
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|type|Children button types are divided into five types: secondary, primary, dashed, outline and text.|`'primary' \| 'secondary' \| 'outline' \| 'dashed' \| 'text'`|`-`|
+|type|Children button types are divided into five types: secondary, primary, dashed, outline and text.|`ButtonTypes`|`-`|
 |status|Children button state|`'normal' \| 'warning' \| 'success' \| 'danger'`|`-`|
-|shape|Button shape|`'square' \| 'round' \| 'circle'`|`-`|
+|shape|Button shape|`BorderShape`|`-`|
 |size|Children button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |disabled|All children whether the button is disabled|`boolean`|`false`|
 

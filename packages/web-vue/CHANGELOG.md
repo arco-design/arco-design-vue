@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.54.1
+
+`2023-12-28`
+
+### 🆕 Feature
+
+- **watermark:** watermark font color  follows the theme ([#2790](https://github.com/arco-design/arco-design-vue/pull/2790))
+- **input:** Enhance the input-password props ([#2784](https://github.com/arco-design/arco-design-vue/pull/2784))
+
+### 🐛 BugFix
+
+- **select:** Fix `defaultPopupVisible` failure problem ([#2881](https://github.com/arco-design/arco-design-vue/pull/2881))
+
+
 ## 2.54.0
 
 `2023-12-15`
