@@ -207,6 +207,7 @@ export default defineComponent({
       prefixCls,
       {
         [`${prefixCls}-disabled`]: props.disabled,
+        [`${prefixCls}-selected`]: isSelected.value,
         [`${prefixCls}-active`]: isActive.value,
         [`${prefixCls}-multiple`]: selectCtx?.multiple,
       },
