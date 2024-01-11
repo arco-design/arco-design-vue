@@ -82,7 +82,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 |select|Triggered when the tree node is clicked|selectedKeys: `Array<string \| number>`<br>data: `{ selected?: boolean; selectedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
 |check|Triggered when the tree node checkbox is clicked. `halfCheckedKeys` and `halfCheckedNodes` support from `2.19.0`.|checkedKeys: `Array<string \| number>`<br>data: `{ checked?: boolean; checkedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; halfCheckedKeys: (string \| number)[]; halfCheckedNodes: TreeNodeData[]; }`|
 |expand|Expand/close|expandKeys: `Array<string \| number>`<br>data: `{ expanded?: boolean; expandNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event; }`|
-|drag-start|Node starts dragging|-|
+|drag-start|Node starts dragging|ev: `DragEvent`<br>node: `TreeNodeData`|
 |drag-end|Node end drag|ev: `DragEvent`<br>node: `TreeNodeData`|
 |drag-over|The node is dragged to the releasable target|ev: `DragEvent`<br>node: `TreeNodeData`|
 |drag-leave|Node leaves to release the target|ev: `DragEvent`<br>node: `TreeNodeData`|
