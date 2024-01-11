@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.54.2
+
+`2024-01-11`
+
+### 🐛 BugFix
+
+- **table:** Fix the problem of `span-method` reporting an error after exceeding the number of rows and columns ([#2914](https://github.com/arco-design/arco-design-vue/pull/2914))
+
+### 💎 Enhancement
+
+- **select:** enhance selected state style for options ([#2895](https://github.com/arco-design/arco-design-vue/pull/2895))
+
+### 💅 Style
+
+- **input:** Fix overlapping styles of neighboring components in input-group ([#2889](https://github.com/arco-design/arco-design-vue/pull/2889))
+
+
 ## 2.54.1
 
 `2023-12-28`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.2
+
+`2024-01-11`
+
+### 💅 样式更新
+
+- 修复 input-group 相邻组件样式叠加时的问题 ([#2889](https://github.com/arco-design/arco-design-vue/pull/2889))
+
+
 ## 2.54.1
 
 `2023-12-28`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.2
+
+`2024-01-11`
+
+### 💎 Enhancement
+
+- enhance selected state style for options ([#2895](https://github.com/arco-design/arco-design-vue/pull/2895))
+
+
 ## 2.54.1
 
 `2023-12-28`

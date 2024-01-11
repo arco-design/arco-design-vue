@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.2
+
+`2024-01-11`
+
+### 🐛 BugFix
+
+- Fix the problem of `span-method` reporting an error after exceeding the number of rows and columns ([#2914](https://github.com/arco-design/arco-design-vue/pull/2914))
+
+
 ## 2.51.0
 
 `2023-09-01`

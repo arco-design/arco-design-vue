@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.54.2
+
+`2024-01-11`
+
+### 🐛 问题修复
+
+- **table:** 修复 `span-method` 在超出行列数后报错的问题 ([#2914](https://github.com/arco-design/arco-design-vue/pull/2914))
+
+### 💎 功能优化
+
+- **select:** 下拉选择器添加选中效果 ([#2895](https://github.com/arco-design/arco-design-vue/pull/2895))
+
+### 💅 样式更新
+
+- **input:** 修复 input-group 相邻组件样式叠加时的问题 ([#2889](https://github.com/arco-design/arco-design-vue/pull/2889))
+
+
 ## 2.54.1
 
 `2023-12-28`
