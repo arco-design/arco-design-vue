@@ -42,17 +42,19 @@ export const useSpan = ({
         if (rowspan > 1 || colspan > 1) {
           span[`${rowIndex}-${columnIndex}-${record.key}`] = [rowspan, colspan];
           Array.from({ length: rowspan }).forEach((_, r) => {
-            const key = tableData?.[rowIndex + r].key;
-            Array.from({ length: colspan }).forEach((_, c) => {
-              if (
-                `${rowIndex}-${columnIndex}-${record.key}` !==
-                `${rowIndex + r}-${columnIndex + c}-${key}`
-              ) {
-                spanzero.value[`${rowIndex + r}-${columnIndex + c}-${key}`] = [
-                  0, 0,
-                ];
-              }
-            });
+            if (rowIndex + r < tableData.length) {
+              const { key } = tableData[rowIndex + r] ?? {};
+              Array.from({ length: colspan }).forEach((_, c) => {
+                if (
+                  columnIndex + c < columns.value.length &&
+                  `${rowIndex}-${columnIndex}-${record.key}` !==
+                    `${rowIndex + r}-${columnIndex + c}-${key}`
+                ) {
+                  spanzero.value[`${rowIndex + r}-${columnIndex + c}-${key}`] =
+                    [0, 0];
+                }
+              });
+            }
           });
         }
       });
