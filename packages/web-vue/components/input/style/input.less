@@ -46,6 +46,7 @@
 
   &:focus-within,
   &.@{cls}-focus {
+    z-index: 1;
     background-color: @input-color-bg_focus;
     border-color: @input-color-border_focus;
     box-shadow: 0 0 0 @input-size-shadow_focus @input-color-shadow_focus;
@@ -83,6 +84,7 @@
 
   &.@{cls}-error:focus-within,
   &.@{cls}-error&-focus {
+    z-index: 1;
     background-color: @input-color-bg_error_focus;
     border-color: @input-color-border_error_focus;
     box-shadow: 0 0 0 @input-size-shadow_error_focus
