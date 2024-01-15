@@ -77,7 +77,7 @@ description: 展示和预览图片。
 |mask-closable|点击 mask 是否触发关闭|`boolean`|`true`|
 |closable|是否显示关闭按钮|`boolean`|`true`|
 |actions-layout|操作项的布局|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
-|popup-container|设置弹出框的挂载点，同 `teleport` 的 `to`，缺省值是 document.body|`HTMLElement`|`-`|
+|popup-container|设置弹出框的挂载点，同 `teleport` 的 `to`，缺省值是 document.body|`HTMLElement \| string`|`-`|
 |esc-to-close|是否支持 ESC 键关闭预览|`boolean`|`true`|
 |wheel-zoom|是否开启滚轮缩放|`boolean`|`true`|
 |keyboard|是否开启键盘控制|`boolean`|`true`|
