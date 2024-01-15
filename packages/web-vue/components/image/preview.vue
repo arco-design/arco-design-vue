@@ -155,7 +155,7 @@ export default defineComponent({
     },
     /**
      * @zh 默认是否可见，非受控
-     * @en Default visiblity
+     * @en Default visibility
      */
     defaultVisible: {
       type: Boolean,
@@ -439,7 +439,7 @@ export default defineComponent({
       changeScale(newScale);
     }
 
-    function haneleRotate(direction: 'clockwise' | 'counterclockwise') {
+    function handleRotate(direction: 'clockwise' | 'counterclockwise') {
       const isClockwise = direction === 'clockwise';
       const newRotate = isClockwise
         ? (rotate.value + ROTATE_STEP) % 360
@@ -495,14 +495,14 @@ export default defineComponent({
           key: 'rotateRight',
           name: t('imagePreview.rotateRight'),
           content: () => h(IconRotateRight),
-          onClick: () => haneleRotate('clockwise'),
+          onClick: () => handleRotate('clockwise'),
         },
         /** 逆时针旋转 */
         {
           key: 'rotateLeft',
           name: t('imagePreview.rotateLeft'),
           content: () => h(IconRotateLeft),
-          onClick: () => haneleRotate('counterclockwise'),
+          onClick: () => handleRotate('counterclockwise'),
         },
         /** 放大 */
         {

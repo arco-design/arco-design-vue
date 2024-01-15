@@ -87,7 +87,7 @@ export default defineComponent({
     },
     /**
      * @zh 默认是否可见，非受控
-     * @en Default visiblity
+     * @en Default visibility
      */
     defaultVisible: {
       type: Boolean,

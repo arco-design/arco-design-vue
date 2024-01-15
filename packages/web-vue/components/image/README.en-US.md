@@ -75,7 +75,7 @@ description: Used to show and preview pictures.
 |---|---|---|:---:|
 |src|Image src|`string`|`-`|
 |visible **(v-model)**|Whether is visible|`boolean`|`-`|
-|default-visible|Default visiblity|`boolean`|`false`|
+|default-visible|Default visibility|`boolean`|`false`|
 |mask-closable|Whether to close the modal when mask is clicked|`boolean`|`true`|
 |closable|Whether to show close button|`boolean`|`true`|
 |actions-layout|Layout of action list|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
@@ -108,7 +108,7 @@ description: Used to show and preview pictures.
 |default-current|The index of the first image shown|`number`|`0`|
 |infinite|Whether to loop infinitely|`boolean`|`false`|
 |visible **(v-model)**|Whether is visible|`boolean`|`-`|
-|default-visible|Default visiblity|`boolean`|`false`|
+|default-visible|Default visibility|`boolean`|`false`|
 |mask-closable|Whether to close the modal when mask is clicked|`boolean`|`true`|
 |closable|Whether to show close button|`boolean`|`true`|
 |actions-layout|Layout of action list|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
