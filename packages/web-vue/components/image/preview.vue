@@ -99,7 +99,6 @@ import { getPrefixCls } from '../_utils/global-config';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { off, on } from '../_utils/dom';
-import { ImagePreviewProps } from './interface';
 import PreviewArrow from './preview-arrow.vue';
 import PreviewToolbar from './preview-toolbar.vue';
 import useImageLoadStatus from './hooks/use-image-load-status';
@@ -197,7 +196,7 @@ export default defineComponent({
      * @en Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body
      */
     popupContainer: {
-      type: [Object, String] as PropType<HTMLElement>,
+      type: [Object, String] as PropType<HTMLElement | string>,
     },
     inGroup: {
       type: Boolean,
@@ -262,7 +261,7 @@ export default defineComponent({
    * @slot actions
    * @version 2.17.0
    */
-  setup(props: ImagePreviewProps, { emit }) {
+  setup(props, { emit }) {
     const { t } = useI18n();
     const {
       src,

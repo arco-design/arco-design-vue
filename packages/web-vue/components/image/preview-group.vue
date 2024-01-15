@@ -152,7 +152,7 @@ export default defineComponent({
    * @slot actions
    * @version 2.46.0
    */
-  setup(props: ImagePreviewGroupProps, { emit }) {
+  setup(props, { emit }) {
     const {
       srcList,
       visible,

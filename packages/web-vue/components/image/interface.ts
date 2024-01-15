@@ -24,17 +24,17 @@ export interface ImageProps {
 export interface ImagePreviewProps {
   src?: string;
   visible?: boolean;
-  defaultVisible: boolean;
-  maskClosable: boolean;
-  closable: boolean;
-  actionsLayout: string[];
+  defaultVisible?: boolean;
+  maskClosable?: boolean;
+  closable?: boolean;
+  actionsLayout?: string[];
   popupContainer?: HTMLElement | string;
-  escToClose: boolean;
-  keyboard: boolean;
-  wheelZoom: boolean;
-  defaultScale: number;
-  zoomRate: number;
-  groupArrowProps: Record<string, any>;
+  escToClose?: boolean;
+  keyboard?: boolean;
+  wheelZoom?: boolean;
+  defaultScale?: number;
+  zoomRate?: number;
+  groupArrowProps?: Record<string, any>;
   onClose?: () => void;
 }
 
