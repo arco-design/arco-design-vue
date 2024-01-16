@@ -97,8 +97,8 @@ const AvatarGroup = defineComponent({
       const avatarsInPopover =
         props.maxCount > 0 ? children.slice(props.maxCount) : [];
 
-      if (total.value !== avatarsToRender.length) {
-        total.value = avatarsToRender.length;
+      if (total.value !== children.length) {
+        total.value = children.length;
       }
 
       return (
@@ -109,7 +109,7 @@ const AvatarGroup = defineComponent({
               v-slots={{
                 content: () => <div>{avatarsInPopover}</div>,
               }}
-              {...(props.maxPopoverTriggerProps as unknown)}
+              {...props.maxPopoverTriggerProps}
             >
               <Avatar
                 class={`${prefixCls}-max-count-avatar`}
