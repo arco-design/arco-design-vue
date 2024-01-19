@@ -372,6 +372,8 @@ export default defineComponent({
     /**
      * @zh 节点开始拖拽
      * @en Node starts dragging
+     * @param {DragEvent} ev
+     * @param {TreeNodeData} node
      */
     'dragStart': (ev: DragEvent, node: TreeNodeData) => true,
     /**
