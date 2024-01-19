@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.54.3
+
+`2024-01-19`
+
+### 🐛 问题修复
+
+- **rate:** 修复在`nuxt`中图标元素缺失的问题 ([#2930](https://github.com/arco-design/arco-design-vue/pull/2930))
+- **avatar:** 修复头像组气泡中部分头像不显示问题 ([#2925](https://github.com/arco-design/arco-design-vue/pull/2925))
+- **image:** 修复错误的类型定义和文档说明 ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+- **image:** 修正单词拼写错误 ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+- **input:** 修正文档单词拼写错误 ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+
+
 ## 2.54.2
 
 `2024-01-11`

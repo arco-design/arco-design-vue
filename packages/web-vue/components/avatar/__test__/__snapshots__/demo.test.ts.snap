@@ -90,16 +90,16 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-avatar-group\\">
-      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 4; margin-left: -6px; background-color: rgb(123, 198, 22);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">A</span>
+      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 6; margin-left: -6px; background-color: rgb(123, 198, 22);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">A</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 4; margin-left: -6px; background-color: rgb(20, 201, 201);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">B</span>
+      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 6; margin-left: -6px; background-color: rgb(20, 201, 201);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">B</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 4; margin-left: -6px; background-color: rgb(22, 140, 255);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">C</span>
+      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 6; margin-left: -6px; background-color: rgb(22, 140, 255);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">C</span>
         <!--v-if-->
       </div>
-      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 4; margin-left: -6px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-group-max-count-avatar\\"><span class=\\"arco-avatar-text\\">+2</span>
+      <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 6; margin-left: -6px;\\" class=\\"arco-avatar arco-avatar-circle arco-avatar-group-max-count-avatar\\"><span class=\\"arco-avatar-text\\">+2</span>
         <!--v-if-->
       </div>
       <!---->

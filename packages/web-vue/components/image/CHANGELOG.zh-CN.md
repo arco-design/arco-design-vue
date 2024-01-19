@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.54.3
+
+`2024-01-19`
+
+### 🐛 问题修复
+
+- 修复错误的类型定义和文档说明 ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+- 修正单词拼写错误 ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+
+
 ## 2.50.0
 
 `2023-08-11`

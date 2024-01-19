@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.3
+
+`2024-01-19`
+
+### 🐛 BugFix
+
+- fix spelling mistakes ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+
+
 ## 2.54.2
 
 `2024-01-11`

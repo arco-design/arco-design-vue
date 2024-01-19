@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.54.3
+
+`2024-01-19`
+
+### 🐛 BugFix
+
+- **rate:** Fix missing icon elements in `nuxt` ([#2930](https://github.com/arco-design/arco-design-vue/pull/2930))
+- **avatar:** fix partial avatars not displaying in the avatar group popover ([#2925](https://github.com/arco-design/arco-design-vue/pull/2925))
+- **image:** adjust incorrect type definitions and documentation ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+- **image:** fix spelling mistakes ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+- **input:** fix spelling mistakes ([#2924](https://github.com/arco-design/arco-design-vue/pull/2924))
+
+
 ## 2.54.2
 
 `2024-01-11`
