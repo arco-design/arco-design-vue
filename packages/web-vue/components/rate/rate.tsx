@@ -229,12 +229,18 @@ export default defineComponent({
       };
     };
 
+    const renderElement = (index: number) => {
+      if (props.grading) {
+        return renderGradingCharacter(index, displayIndex.value);
+      }
+      if (slots.character) {
+        return slots.character({ index });
+      }
+      return <IconStarFill />;
+    };
+
     // TODO: need to perf
     const renderCharacter = (index: number) => {
-      const displayCharacter = props.grading
-        ? renderGradingCharacter(index, displayIndex.value)
-        : slots.character?.({ index }) ?? <IconStarFill />;
-
       const leftProps = mergedDisabled.value
         ? {}
         : {
@@ -289,7 +295,7 @@ export default defineComponent({
             {...leftProps}
             {...(props.allowHalf ? getAriaProps(index, true) : undefined)}
           >
-            {displayCharacter}
+            {renderElement(index)}
           </div>
           <div
             class={`${prefixCls}-character-right`}
@@ -297,7 +303,7 @@ export default defineComponent({
             {...rightProps}
             {...(props.allowHalf ? getAriaProps(index) : undefined)}
           >
-            {displayCharacter}
+            {renderElement(index)}
           </div>
         </div>
       );
