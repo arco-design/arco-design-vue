@@ -99,7 +99,6 @@ import { getPrefixCls } from '../_utils/global-config';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { off, on } from '../_utils/dom';
-import { ImagePreviewProps } from './interface';
 import PreviewArrow from './preview-arrow.vue';
 import PreviewToolbar from './preview-toolbar.vue';
 import useImageLoadStatus from './hooks/use-image-load-status';
@@ -155,7 +154,7 @@ export default defineComponent({
     },
     /**
      * @zh 默认是否可见，非受控
-     * @en Default visiblity
+     * @en Default visibility
      */
     defaultVisible: {
       type: Boolean,
@@ -197,7 +196,7 @@ export default defineComponent({
      * @en Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body
      */
     popupContainer: {
-      type: [Object, String] as PropType<HTMLElement>,
+      type: [Object, String] as PropType<HTMLElement | string>,
     },
     inGroup: {
       type: Boolean,
@@ -262,7 +261,7 @@ export default defineComponent({
    * @slot actions
    * @version 2.17.0
    */
-  setup(props: ImagePreviewProps, { emit }) {
+  setup(props, { emit }) {
     const { t } = useI18n();
     const {
       src,
@@ -439,7 +438,7 @@ export default defineComponent({
       changeScale(newScale);
     }
 
-    function haneleRotate(direction: 'clockwise' | 'counterclockwise') {
+    function handleRotate(direction: 'clockwise' | 'counterclockwise') {
       const isClockwise = direction === 'clockwise';
       const newRotate = isClockwise
         ? (rotate.value + ROTATE_STEP) % 360
@@ -495,14 +494,14 @@ export default defineComponent({
           key: 'rotateRight',
           name: t('imagePreview.rotateRight'),
           content: () => h(IconRotateRight),
-          onClick: () => haneleRotate('clockwise'),
+          onClick: () => handleRotate('clockwise'),
         },
         /** 逆时针旋转 */
         {
           key: 'rotateLeft',
           name: t('imagePreview.rotateLeft'),
           content: () => h(IconRotateLeft),
-          onClick: () => haneleRotate('counterclockwise'),
+          onClick: () => handleRotate('counterclockwise'),
         },
         /** 放大 */
         {

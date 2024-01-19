@@ -87,7 +87,7 @@ export default defineComponent({
     },
     /**
      * @zh 默认是否可见，非受控
-     * @en Default visiblity
+     * @en Default visibility
      */
     defaultVisible: {
       type: Boolean,
@@ -152,7 +152,7 @@ export default defineComponent({
    * @slot actions
    * @version 2.46.0
    */
-  setup(props: ImagePreviewGroupProps, { emit }) {
+  setup(props, { emit }) {
     const {
       srcList,
       visible,

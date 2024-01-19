@@ -87,7 +87,7 @@ description: Basic form components have been expanded on the basis of native con
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
 |visibility **(v-model)**|Whether is visible|`boolean`|`-`|
-|default-visibility|Default visiblity|`boolean`|`true`|
+|default-visibility|Default visibility|`boolean`|`true`|
 |invisible-button|Whether to show visible buttons|`boolean`|`true`|
 ### `<input-password>` Events
 
