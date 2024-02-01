@@ -146,6 +146,11 @@ const lang: ArcoLang = {
     collapse: 'يطوى',
     expand: 'وسعت',
   },
+  colorPicker: {
+    history: 'ألوان تاريخية',
+    preset: 'ألوان النظام المضبوطة مسبقاً',
+    empty: 'غير متوفرة',
+  },
 };
 
 export default lang;

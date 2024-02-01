@@ -146,6 +146,11 @@ const lang: ArcoLang = {
     collapse: 'พับ',
     expand: 'แฉ',
   },
+  colorPicker: {
+    history: 'สีที่ใช้ล่าสุด',
+    preset: 'สี ที่ตั้งไว้สำหรับระบบ',
+    empty: 'ไม่มีข้อมูล',
+  },
 };
 
 export default lang;

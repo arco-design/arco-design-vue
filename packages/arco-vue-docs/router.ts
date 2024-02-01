@@ -191,6 +191,10 @@ const VerificationCode = () =>
   import('@web-vue/components/verification-code/README.zh-CN.md');
 const VerificationCodeEn = () =>
   import('@web-vue/components/verification-code/README.en-US.md');
+const ColorPicker = () =>
+  import('@web-vue/components/color-picker/README.zh-CN.md');
+const ColorPickerEn = () =>
+  import('@web-vue/components/color-picker/README.en-US.md');
 
 const docs = [
   {
@@ -458,6 +462,11 @@ const components = [
         name: 'checkbox',
         component: Checkbox,
         componentEn: CheckboxEn,
+      },
+      {
+        name: 'colorPicker',
+        component: ColorPicker,
+        componentEn: ColorPickerEn,
       },
       {
         name: 'datePicker',

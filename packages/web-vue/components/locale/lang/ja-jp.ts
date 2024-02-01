@@ -194,6 +194,11 @@ const lang: ArcoLang = {
       },
     },
   },
+  colorPicker: {
+    history: '最近使用した色',
+    preset: 'システムのデフォルトの色',
+    empty: '空の',
+  },
 };
 
 export default lang;
