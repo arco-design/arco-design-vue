@@ -336,40 +336,15 @@ export default defineComponent({
       const stringValue = getStringValue(finalValue);
       if (finalValue !== valueNumber.value || _value.value !== stringValue) {
         _value.value = stringValue;
+        emit('update:modelValue', finalValue);
       }
-
-      emit('update:modelValue', finalValue);
     };
-    watch(
-      () => props.min,
-      (newVal) => {
-        const _isMin =
-          isNumber(valueNumber.value) && valueNumber.value <= newVal;
-        if (isMin.value !== _isMin) {
-          isMin.value = _isMin;
-        }
 
-        const isExceedMinValue =
-          isNumber(valueNumber.value) && valueNumber.value < newVal;
-        if (isExceedMinValue) {
-          handleExceedRange();
-        }
-      }
-    );
     watch(
-      () => props.max,
-      (newVal) => {
-        const _isMax =
-          isNumber(valueNumber.value) && valueNumber.value >= newVal;
-        if (isMax.value !== _isMax) {
-          isMax.value = _isMax;
-        }
-
-        const isExceedMaxValue =
-          isNumber(valueNumber.value) && valueNumber.value > newVal;
-        if (isExceedMaxValue) {
-          handleExceedRange();
-        }
+      () => [props.max, props.min],
+      () => {
+        handleExceedRange();
+        updateNumberStatus(valueNumber.value);
       }
     );
 
@@ -421,10 +396,12 @@ export default defineComponent({
       if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
         _value.value = props.formatter?.(value) ?? value;
         updateNumberStatus(valueNumber.value);
+
+        emit('input', valueNumber.value, _value.value, ev);
         if (props.modelEvent === 'input') {
           emit('update:modelValue', valueNumber.value);
+          emit('change', valueNumber.value, ev);
         }
-        emit('input', valueNumber.value, _value.value, ev);
       }
     };
 
@@ -433,23 +410,12 @@ export default defineComponent({
     };
 
     const handleChange = (value: string, ev: Event) => {
-      const finalValue = getLegalValue(valueNumber.value);
-      const stringValue = getStringValue(finalValue);
-      if (finalValue !== valueNumber.value || _value.value !== stringValue) {
-        _value.value = stringValue;
-        updateNumberStatus(finalValue);
+      if (ev instanceof MouseEvent && !value) {
+        return;
       }
 
-      nextTick(() => {
-        if (isNumber(props.modelValue) && props.modelValue !== finalValue) {
-          // TODO: verify number
-          _value.value = getStringValue(props.modelValue);
-          updateNumberStatus(props.modelValue);
-        }
-      });
-
-      emit('update:modelValue', finalValue);
-      emit('change', finalValue, ev);
+      handleExceedRange();
+      emit('change', valueNumber.value, ev);
     };
 
     const handleBlur = (ev: FocusEvent) => {
