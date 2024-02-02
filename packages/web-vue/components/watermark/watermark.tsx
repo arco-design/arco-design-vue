@@ -144,10 +144,12 @@ export default defineComponent({
     const contents = computed(() =>
       isArray(props.content) ? props.content : [props.content]
     );
-    const color = computed(() =>
-      props.font?.color ?? theme.value === 'dark'
-        ? 'rgba(255, 255, 255, 0.15)'
-        : 'rgba(0, 0, 0, 0.15)'
+    const color = computed(
+      () =>
+        props.font?.color ??
+        (theme.value === 'dark'
+          ? 'rgba(255, 255, 255, 0.15)'
+          : 'rgba(0, 0, 0, 0.15)')
     );
 
     // Watermark position related
