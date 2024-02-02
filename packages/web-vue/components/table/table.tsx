@@ -2102,7 +2102,7 @@ export default defineComponent({
               </Component>
             )}
             <ResizeObserver onResize={handleTbodyResize}>
-              {isVirtualList.value ? (
+              {isVirtualList.value && flattenData.value.length ? (
                 <VirtualList
                   v-slots={{
                     item: ({
@@ -2128,6 +2128,7 @@ export default defineComponent({
                     style: contentStyle.value,
                   }}
                   paddingPosition="list"
+                  height="auto"
                   {...props.virtualListProps}
                   onScroll={onTbodyScroll}
                 />
