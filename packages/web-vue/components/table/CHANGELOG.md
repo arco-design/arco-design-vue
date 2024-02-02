@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.4
+
+`2024-02-02`
+
+### 🐛 BugFix
+
+- fix virtual table list not displaying empty state ([#2949](https://github.com/arco-design/arco-design-vue/pull/2949))
+
+
 ## 2.54.2
 
 `2024-01-11`

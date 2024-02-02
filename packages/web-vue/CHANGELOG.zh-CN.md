@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.54.4
+
+`2024-02-02`
+
+### 🐛 问题修复
+
+- **table:** 修复表格虚拟列表下不显示 empty  问题 ([#2949](https://github.com/arco-design/arco-design-vue/pull/2949))
+- **watermark:** 修复字体颜色不生效问题 ([#2942](https://github.com/arco-design/arco-design-vue/pull/2942))
+- **input-number:** 修复 change 事件触发逻辑 ([#2915](https://github.com/arco-design/arco-design-vue/pull/2915))
+
+
 ## 2.54.3
 
 `2024-01-19`

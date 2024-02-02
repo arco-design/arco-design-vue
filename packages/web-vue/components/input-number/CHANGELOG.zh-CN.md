@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.4
+
+`2024-02-02`
+
+### 🐛 问题修复
+
+- 修复 change 事件触发逻辑 ([#2915](https://github.com/arco-design/arco-design-vue/pull/2915))
+
+
 ## 2.52.0
 
 `2023-09-22`

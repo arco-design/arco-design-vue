@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.54.4
+
+`2024-02-02`
+
+### 🐛 BugFix
+
+- **table:** fix virtual table list not displaying empty state ([#2949](https://github.com/arco-design/arco-design-vue/pull/2949))
+- **watermark:** Fix font color does not take effect ([#2942](https://github.com/arco-design/arco-design-vue/pull/2942))
+- **input-number:** Fix change event triggering mechanism ([#2915](https://github.com/arco-design/arco-design-vue/pull/2915))
+
+
 ## 2.54.3
 
 `2024-01-19`
