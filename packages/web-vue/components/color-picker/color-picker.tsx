@@ -167,11 +167,11 @@ export default defineComponent({
     const formatValue = computed(() => {
       const { r, g, b } = color.value.rgb;
       if (props.format === 'rgb') {
-        return alpha.value < 1
+        return alpha.value < 1 && !props.disabledAlpha
           ? `rgba(${r}, ${g}, ${b}, ${alpha.value.toFixed(2)})`
           : `rgb(${r}, ${g}, ${b})`;
       }
-      return alpha.value < 1
+      return alpha.value < 1 && !props.disabledAlpha
         ? `#${rgbaToHex(r, g, b, alpha.value)}`
         : `#${rgbToHex(r, g, b)}`;
     });

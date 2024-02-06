@@ -72,11 +72,13 @@ export default defineComponent({
           // @ts-ignore
           onPaste={onPaste}
         />
-        <InputAlpha
-          disabled={props.disabled}
-          value={props.alpha}
-          onChange={props.onAlphaChange}
-        />
+        {!props.disabledAlpha && (
+          <InputAlpha
+            disabled={props.disabled}
+            value={props.alpha}
+            onChange={props.onAlphaChange}
+          />
+        )}
       </InputGroup>
     );
   },

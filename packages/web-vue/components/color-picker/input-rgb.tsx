@@ -46,11 +46,13 @@ export default defineComponent({
             onChange={(val = 0) => handleChange({ [channel]: val })}
           />
         ))}
-        <InputAlpha
-          disabled={props.disabled}
-          value={props.alpha}
-          onChange={props.onAlphaChange}
-        />
+        {!props.disabledAlpha && (
+          <InputAlpha
+            disabled={props.disabled}
+            value={props.alpha}
+            onChange={props.onAlphaChange}
+          />
+        )}
       </InputGroup>
     );
   },

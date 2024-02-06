@@ -135,13 +135,15 @@ export default defineComponent({
                   props.onHsvChange?.({ h, s: hsv.value.s, v: hsv.value.v })
                 }
               />
-              <ControlBar
-                type="alpha"
-                x={props.alpha}
-                color={props.color}
-                colorString={props.colorString}
-                onChange={props.onAlphaChange}
-              />
+              {!props.disabledAlpha && (
+                <ControlBar
+                  type="alpha"
+                  x={props.alpha}
+                  color={props.color}
+                  colorString={props.colorString}
+                  onChange={props.onAlphaChange}
+                />
+              )}
             </div>
             <div
               class={`${prefixCls}-preview`}
