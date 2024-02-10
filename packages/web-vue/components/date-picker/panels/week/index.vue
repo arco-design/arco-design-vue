@@ -33,21 +33,22 @@ export default defineComponent({
   setup(props, { emit }) {
     const { locale } = useI18n();
     const isSameTime: IsSameTime = (current, target) => {
-      return methods.isSameWeek(
-        current,
-        target,
-        props.dayStartOfWeek,
-        locale.value
-      );
+      return methods.isSameWeek(current, target, props.dayStartOfWeek);
     };
     return {
       isSameTime,
       onSelect: (value: Dayjs) => {
-        const startDateOfWeek = methods.startOf(value, 'week');
+        const startDateOfWeek = methods.startOfWeek(
+          value,
+          props.dayStartOfWeek
+        );
         emit('select', startDateOfWeek);
       },
       onCellMouseEnter: (value: Dayjs) => {
-        const startDateOfWeek = methods.startOf(value, 'week');
+        const startDateOfWeek = methods.startOfWeek(
+          value,
+          props.dayStartOfWeek
+        );
         emit('cell-mouse-enter', startDateOfWeek);
       },
     };
