@@ -17,10 +17,11 @@ Display and select calendars
 ---
 
 ```vue
-
 <template>
-  <a-calendar v-model="value" />
-  select: {{value}}
+  <a-space direction="vertical" fill>
+    <a-calendar v-model="value" />
+    <div>Selected date in UTC: {{ value.toISOString() }}</div>
+  </a-space>
 </template>
 
 <script>
@@ -31,9 +32,9 @@ export default {
     const value = ref(new Date('2023-01-01'));
 
     return {
-      value
-    }
+      value,
+    };
   },
-}
+};
 </script>
 ```
