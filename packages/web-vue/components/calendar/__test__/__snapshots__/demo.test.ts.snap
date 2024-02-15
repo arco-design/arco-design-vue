@@ -346,7 +346,7 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
   </div>
   <!---->
   <div class=\\"arco-space-item\\">
-    <div>Selected date in UTC: 2023-01-01T00:00:00.000Z</div>
+    <div>Selected date: Sun Jan 01 2023</div>
   </div>
 </div>"
 `;
