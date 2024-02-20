@@ -13,13 +13,6 @@ export default defineComponent({
   name: 'SubMenu',
   props: {
     /**
-     * @zh 唯一标志
-     * @en Unique key
-     */
-    key: {
-      type: String,
-    },
-    /**
      * @zh 子菜单的标题
      * @en The title of the submenu
      */
