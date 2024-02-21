@@ -45,7 +45,6 @@ export interface InternalMenuProps extends MenuProps {
 }
 
 export interface SubMenuProps {
-  key: string | undefined;
   title: string | undefined;
   selectable: boolean;
   popup: boolean | ((level: number) => boolean);
@@ -57,7 +56,6 @@ export interface MenuItemGroupProps {
 }
 
 export interface MenuItemProps {
-  key: string | undefined;
   disabled?: boolean;
 }
 

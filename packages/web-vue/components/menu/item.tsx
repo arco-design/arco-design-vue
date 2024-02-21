@@ -21,13 +21,6 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     /**
-     * @zh 唯一标志
-     * @en Unique key
-     */
-    key: {
-      type: String,
-    },
-    /**
      * @zh 是否禁用
      * @en Whether to disable
      */
