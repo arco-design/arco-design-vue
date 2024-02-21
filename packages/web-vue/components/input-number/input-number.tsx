@@ -336,8 +336,8 @@ export default defineComponent({
       const stringValue = getStringValue(finalValue);
       if (finalValue !== valueNumber.value || _value.value !== stringValue) {
         _value.value = stringValue;
-        emit('update:modelValue', finalValue);
       }
+      emit('update:modelValue', finalValue);
     };
 
     watch(
