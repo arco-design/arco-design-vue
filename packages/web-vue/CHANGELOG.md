@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.54.5
+
+`2024-02-21`
+
+### 🐛 BugFix
+
+- **menu:** Fix warning “Invalid prop name: key is a reserved property.” ([#2978](https://github.com/arco-design/arco-design-vue/pull/2978))
+- **date-picker:** refactor date utility functions and week picker to correctly show selected week ([#2970](https://github.com/arco-design/arco-design-vue/pull/2970))
+- **input-number:** fix v-model not working ([#2961](https://github.com/arco-design/arco-design-vue/pull/2961))
+
+
 ## 2.54.4
 
 `2024-02-02`

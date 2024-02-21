@@ -32,7 +32,6 @@ import IconMenuUnfold from '../icon/icon-menu-unfold';
 import useMergeState from '../_hooks/use-merge-state';
 import { provideLevel } from './hooks/use-level';
 import { MenuInjectionKey } from './context';
-import { InternalMenuProps } from './interface';
 import usePickSlots from '../_hooks/use-pick-slots';
 import { omit } from '../_utils/omit';
 import useMenuDataCollector from './hooks/use-menu-data-collector';
@@ -262,7 +261,7 @@ export default defineComponent({
    * @en Icon expand right
    * @slot expand-icon-right
    */
-  setup(props: InternalMenuProps, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const {
       style,
       mode,

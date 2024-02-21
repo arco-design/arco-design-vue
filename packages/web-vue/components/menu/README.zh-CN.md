@@ -71,7 +71,6 @@ description: 收纳、排列并展示一系列选项的列表。
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
-|key|唯一标志|`string`|`-`||
 |title|子菜单的标题|`string`|`-`||
 |selectable|弹出模式下，是否将多级菜单头也作为一个菜单项，支持点击选中等状态|`boolean`|`false`||
 |popup|是否强制使用弹出模式，`level` 表示当前子菜单的层级|`boolean \| ((level: number) => boolean)`|`false`||
@@ -106,7 +105,6 @@ description: 收纳、排列并展示一系列选项的列表。
 
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
-|key|唯一标志|`string`|`-`|
 |disabled|是否禁用|`boolean`|`false`|
 ### `<menu-item>` Slots
 
@@ -114,4 +112,12 @@ description: 收纳、排列并展示一系列选项的列表。
 |---|:---:|---|:---|
 |icon|菜单的图标|-|2.11.0|
 
+
+
+
+## FAQ
+
+### `<MenuItem>` 和 `<SubMenu>` 组件的 `key` 属性为必填
+在 `<Menu>` 组件中使用 `<MenuItem>` 和 `<SubMenu>` 组件时，请传入唯一的 `key` 属性。
+组件内部在进行计算时会依赖此值，如果没有赋值会导致部分场景下异常
 

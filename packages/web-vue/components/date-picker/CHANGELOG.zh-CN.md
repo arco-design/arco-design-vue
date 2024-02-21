@@ -2,6 +2,14 @@
 changelog: true
 ```
 
+## 2.54.5
+
+`2024-02-21`
+
+### 🐛 问题修复
+
+- 重构日期 utility 函数和 WeekPicker，以正确显示所选星期 ([#2970](https://github.com/arco-design/arco-design-vue/pull/2970))
+
 ## 2.54.0
 
 `2023-12-15`

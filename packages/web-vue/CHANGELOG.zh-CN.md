@@ -2,6 +2,17 @@
 changelog: true
 ```
 
+## 2.54.5
+
+`2024-02-21`
+
+### 🐛 问题修复
+
+- **menu:** 修复警告 “Invalid prop name: key is a reserved property.” ([#2978](https://github.com/arco-design/arco-design-vue/pull/2978))
+- **date-picker:** 重构日期 utility 函数和 WeekPicker，以正确显示所选星期 ([#2970](https://github.com/arco-design/arco-design-vue/pull/2970))
+- **input-number:** 修复双向绑定失效 ([#2961](https://github.com/arco-design/arco-design-vue/pull/2961))
+
+
 ## 2.54.4
 
 `2024-02-02`

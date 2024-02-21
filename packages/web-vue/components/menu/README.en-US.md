@@ -73,7 +73,6 @@ description: Organize, arrange, and display a list of options.
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|key|Unique key|`string`|`-`||
 |title|The title of the submenu|`string`|`-`||
 |selectable|In the pop-up mode, whether the multi-level menu header is also used as a menu item to support the state such as click to select|`boolean`|`false`||
 |popup|Whether to force the use of pop-up mode, `level` indicates the level of the current submenu|`boolean \| ((level: number) => boolean)`|`false`||
@@ -108,7 +107,6 @@ description: Organize, arrange, and display a list of options.
 
 |Attribute|Description|Type|Default|
 |---|---|---|:---:|
-|key|Unique key|`string`|`-`|
 |disabled|Whether to disable|`boolean`|`false`|
 ### `<menu-item>` Slots
 
@@ -117,3 +115,11 @@ description: Organize, arrange, and display a list of options.
 |icon|the icon of menu item|-|2.11.0|
 
 
+
+
+## FAQ
+
+
+### The `key` attribute of `<MenuItem>` and `<SubMenu>` components is required
+When using `<MenuItem>` and `<SubMenu>` components in the `<Menu>` component, please pass in the unique `key` attribute.
+The component will rely on this value when calculating internally. If no value is assigned, some Abnormality in the scene

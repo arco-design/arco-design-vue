@@ -1,5 +1,4 @@
 import { computed, defineComponent, PropType, toRef, toRefs } from 'vue';
-import { SubMenuProps } from './interface';
 import SubMenuInline from './sub-menu-inline.vue';
 import SubMenuPop from './sub-menu-pop.vue';
 import useMenu from './hooks/use-menu';
@@ -68,7 +67,7 @@ export default defineComponent({
    * @en Title
    * @slot title
    */
-  setup(props: SubMenuProps, { attrs }) {
+  setup(props, { attrs }) {
     const { key } = useMenu();
     const { level } = useLevel();
     const { popup } = toRefs(props);

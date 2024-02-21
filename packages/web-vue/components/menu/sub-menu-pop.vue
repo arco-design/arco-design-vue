@@ -110,7 +110,7 @@ export default defineComponent({
       default: undefined,
     },
   },
-  setup(props: SubMenuPopProps) {
+  setup(props) {
     const { key } = useMenu();
     const { level } = useLevel();
     const { selectable, isChildrenSelected, popupMaxHeight } = toRefs(props);
@@ -147,6 +147,7 @@ export default defineComponent({
       {
         [`${prefixCls.value}-trigger-dark`]: menuContext.theme === 'dark',
       },
+      // @ts-ignore
       menuContext.triggerProps?.class,
     ]);
     const triggerProps = computed(() =>

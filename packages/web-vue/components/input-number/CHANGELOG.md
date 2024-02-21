@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.5
+
+`2024-02-21`
+
+### 🐛 BugFix
+
+- fix v-model not working ([#2961](https://github.com/arco-design/arco-design-vue/pull/2961))
+
+
 ## 2.54.4
 
 `2024-02-02`
