@@ -150,10 +150,6 @@ export default defineComponent({
     IconDragDotVertical,
   },
   props: {
-    /** 唯一标示 */
-    key: {
-      type: [String, Number] as PropType<string | number>,
-    },
     /** 标题 */
     title: {
       type: String,
