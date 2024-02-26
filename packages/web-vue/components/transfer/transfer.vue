@@ -6,6 +6,7 @@
       :title="sourceTitle"
       :data-info="dataInfo.sourceInfo"
       :data="dataInfo.sourceInfo.data"
+      :disabled="mergedDisabled"
       :selected="computedSelected"
       :show-search="showSearch"
       :show-select-all="showSelectAll"
@@ -53,6 +54,7 @@
       :title="targetTitle"
       :data-info="dataInfo.targetInfo"
       :data="dataInfo.targetInfo.data"
+      :disabled="mergedDisabled"
       :selected="computedSelected"
       :allow-clear="oneWay"
       :show-search="showSearch"
@@ -410,6 +412,7 @@ export default defineComponent({
       cls,
       dataInfo,
       computedSelected,
+      mergedDisabled,
       sourceTitle,
       targetTitle,
       handleClick,

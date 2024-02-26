@@ -22,6 +22,7 @@
             v-else
             :model-value="checked"
             :indeterminate="indeterminate"
+            :disabled="disabled"
             uninject-group-context
             @change="handleSelectAllChange"
           >
@@ -30,6 +31,7 @@
         </span>
         <icon-hover
           v-if="allowClear"
+          :disabled="disabled"
           :class="`${prefixCls}-header-clear-btn`"
           @click="handleClear"
         >
@@ -43,6 +45,7 @@
     <div v-if="showSearch" :class="`${prefixCls}-search`">
       <input-search
         v-model="filter"
+        :disabled="disabled"
         v-bind="inputSearchProps"
         @change="handleSearch"
       />
@@ -66,7 +69,7 @@
               :data="item"
               :simple="simple"
               :allow-clear="allowClear"
-              :disabled="item.disabled"
+              :disabled="disabled || item.disabled"
             />
           </list>
         </slot>
@@ -115,6 +118,7 @@ export default defineComponent({
       type: Array as PropType<TransferItem[]>,
       required: true,
     },
+    disabled: Boolean,
     allowClear: Boolean,
     selected: {
       type: Array as PropType<string[]>,
