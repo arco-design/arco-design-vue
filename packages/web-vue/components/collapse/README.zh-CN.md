@@ -51,7 +51,6 @@ description: 可以折叠 / 展开的内容区域。
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
-|key|面板的 id，对应 `activeKey` 中的值|`string\|number`|`-`||
 |header|面板的标题|`string`|`-`||
 |disabled|是否禁用|`boolean`|`false`||
 |show-expand-icon|是否显示展开图标|`boolean`|`true`||
@@ -64,4 +63,10 @@ description: 可以折叠 / 展开的内容区域。
 |expand-icon|展开图标|active: `boolean`<br>disabled: `boolean`<br>position: `'left' \| 'right'`|2.33.0|
 |header|面板的标题|-||
 
+
+
+## FAQ
+
+### `<CollapseItem>` 组件的 `key` 属性为必填
+在 `<Collapse>` 组件中每个 `<CollapseItem>` 都需要指定唯一的 `key` 属性，`key` 对应 `activeKey` 中的值。
 

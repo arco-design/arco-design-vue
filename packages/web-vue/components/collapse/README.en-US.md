@@ -53,7 +53,6 @@ description: The content area that can be collapsed/expanded.
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
-|key|The id of the panel, corresponding to the value in `activeKey`|`string\|number`|`-`||
 |header|The title of the panel|`string`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
 |show-expand-icon|Whether to show the expand icon|`boolean`|`true`||
@@ -67,3 +66,9 @@ description: The content area that can be collapsed/expanded.
 |header|The title of the panel|-||
 
 
+
+## FAQ
+
+
+### The `key` attribute of `<CollapseItem>` components is required
+In the `<Collapse>` component, each `<CollapseItem>` needs to specify a unique `key` attribute, and the `key` corresponding to the value in `activeKey`.
