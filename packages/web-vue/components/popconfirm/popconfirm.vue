@@ -183,7 +183,7 @@ export default defineComponent({
      * @en Mount container for popup
      */
     popupContainer: {
-      type: [String, Object] as PropType<string | HTMLElement | undefined>,
+      type: [String, Object] as PropType<string | HTMLElement>,
     },
     /**
      * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。

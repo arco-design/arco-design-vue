@@ -371,7 +371,7 @@ export default defineComponent({
      * @en Mount container for pop-up box
      */
     popupContainer: {
-      type: [String, Object] as PropType<string | HTMLElement | undefined>,
+      type: [String, Object] as PropType<string | HTMLElement>,
     },
     /**
      * @zh 为 value 中找不到匹配项的 key 定义节点数据

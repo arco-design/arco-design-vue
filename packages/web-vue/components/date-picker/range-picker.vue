@@ -250,9 +250,7 @@ export default defineComponent({
       default: true,
     },
     popupContainer: {
-      type: [String, Object] as PropType<
-        string | HTMLElement | null | undefined
-      >,
+      type: [String, Object] as PropType<string | HTMLElement>,
     },
     locale: {
       type: Object as PropType<Record<string, any>>,
