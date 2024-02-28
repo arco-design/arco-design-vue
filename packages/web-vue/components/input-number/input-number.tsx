@@ -555,7 +555,10 @@ export default defineComponent({
           ? {
               prepend: slots.prepend,
               prefix: slots.prefix,
-              suffix: props.hideButton ? slots.suffix : renderSuffix,
+              suffix:
+                props.hideButton || slots.prefix || slots.append
+                  ? slots.suffix
+                  : renderSuffix,
               append: slots.append,
             }
           : {
