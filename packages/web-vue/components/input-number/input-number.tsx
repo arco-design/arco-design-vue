@@ -466,7 +466,9 @@ export default defineComponent({
       }
       return (
         <>
-          {slots.suffix?.()}
+          {slots.suffix && (
+            <div class={`${prefixCls}-suffix`}>{slots.suffix?.()}</div>
+          )}
           <div class={`${prefixCls}-step`}>
             <button
               class={[

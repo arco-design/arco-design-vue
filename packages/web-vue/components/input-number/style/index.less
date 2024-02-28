@@ -49,6 +49,10 @@
     }
   }
 
+  .@{input-prefix-cls}-wrapper {
+    position: relative;
+  }
+
   &-prefix,
   &-suffix {
     .transition();
@@ -92,13 +96,18 @@
     &:not(.@{input-prefix-cls}-disabled):not(.@{input-prefix-cls}-outer-disabled) {
       &:hover,
       &:focus-within {
+        // 修正 hove 时存在 suffix 但隐藏了，视觉上 padding 过大问题
+        .@{input-prefix-cls}-suffix:has(.@{input-number-prefix-cls}-suffix) {
+          padding-left: @spacing-2;
+        }
+
         & .@{input-number-prefix-cls}-step {
           opacity: 1;
+        }
 
-          & ~ .@{input-prefix-cls}-suffix {
-            opacity: 0;
-            pointer-events: none;
-          }
+        & .@{input-number-prefix-cls}-suffix {
+          opacity: 0;
+          pointer-events: none;
         }
       }
     }
