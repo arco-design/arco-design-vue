@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.54.6
+
+`2024-03-01`
+
+### 🐛 BugFix
+
+- **input-number:** fix overlap between step button and suffix/append ([#3005](https://github.com/arco-design/arco-design-vue/pull/3005))
+- **collapse:** resolve reserved property warning ([#2997](https://github.com/arco-design/arco-design-vue/pull/2997))
+- **transfer:** fix disabled props not working ([#2996](https://github.com/arco-design/arco-design-vue/pull/2996))
+- **tree:** resolve invalid property name console warning issue ([#2995](https://github.com/arco-design/arco-design-vue/pull/2995))
+
+### 💅 Style
+
+- **modal:** fix fade-modal transition effect works on enter state ([#3007](https://github.com/arco-design/arco-design-vue/pull/3007))
+
+
 ## 2.54.5
 
 `2024-02-21`

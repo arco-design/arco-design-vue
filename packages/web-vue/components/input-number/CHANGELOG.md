@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.6
+
+`2024-03-01`
+
+### 🐛 BugFix
+
+- fix overlap between step button and suffix/append ([#3005](https://github.com/arco-design/arco-design-vue/pull/3005))
+
+
 ## 2.54.5
 
 `2024-02-21`

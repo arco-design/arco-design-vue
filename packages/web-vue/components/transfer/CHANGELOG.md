@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.6
+
+`2024-03-01`
+
+### 🐛 BugFix
+
+- fix disabled props not working ([#2996](https://github.com/arco-design/arco-design-vue/pull/2996))
+
+
 ## 2.52.0
 
 `2023-09-22`
