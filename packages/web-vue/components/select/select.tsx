@@ -959,7 +959,7 @@ export default defineComponent({
       return data?.label ?? '';
     };
 
-    return () => (
+    const renderTriggerNode = () => (
       <Trigger
         v-slots={{ content: renderDropDown }}
         trigger="click"
@@ -1012,5 +1012,15 @@ export default defineComponent({
         )}
       </Trigger>
     );
+
+    if (slots.prepend) {
+      return () => (
+        <div class={`${prefixCls}-wrapper`}>
+          <div class={`${prefixCls}-prepend`}>{slots.prepend?.()}</div>
+          {renderTriggerNode()}
+        </div>
+      );
+    }
+    return renderTriggerNode;
   },
 });
