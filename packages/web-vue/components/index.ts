@@ -49,6 +49,8 @@ export { default as Collapse, CollapseItem } from './collapse';
 export type { CollapseInstance, CollapseItemInstance } from './collapse';
 export { default as Comment } from './comment';
 export type { CommentInstance } from './comment';
+export { default as ColorPicker } from './color-picker';
+export type { ColorPickerInstance } from './color-picker';
 export { default as ConfigProvider } from './config-provider';
 export type { ConfigProviderInstance } from './config-provider';
 export {

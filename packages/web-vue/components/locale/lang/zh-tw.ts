@@ -194,6 +194,11 @@ const lang: ArcoLang = {
       },
     },
   },
+  colorPicker: {
+    history: '最近使用顏色',
+    preset: '系統預設顏色',
+    empty: '暫無',
+  },
 };
 
 export default lang;

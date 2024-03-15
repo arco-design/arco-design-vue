@@ -31,6 +31,7 @@ declare module '@vue/runtime-core' {
     ACheckboxGroup: typeof import('@arco-design/web-vue')['CheckboxGroup'];
     ACollapse: typeof import('@arco-design/web-vue')['Collapse'];
     ACollapseItem: typeof import('@arco-design/web-vue')['CollapseItem'];
+    AColorPicker: typeof import('@arco-design/web-vue')['ColorPicker'];
     AComment: typeof import('@arco-design/web-vue')['Comment'];
     AConfigProvider: typeof import('@arco-design/web-vue')['ConfigProvider'];
     ADatePicker: typeof import('@arco-design/web-vue')['DatePicker'];

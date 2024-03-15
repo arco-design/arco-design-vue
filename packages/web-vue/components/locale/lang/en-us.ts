@@ -151,6 +151,11 @@ const lang: ArcoLang = {
   form: {
     validateMessages: DefaultValidateMessage,
   },
+  colorPicker: {
+    history: 'History Colors',
+    preset: 'Preset Colors',
+    empty: 'Empty',
+  },
 };
 
 export default lang;

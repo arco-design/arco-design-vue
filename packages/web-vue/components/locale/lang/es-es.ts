@@ -146,6 +146,11 @@ const lang: ArcoLang = {
     expand: 'Expandir',
     collapse: 'Pliegue',
   },
+  colorPicker: {
+    history: 'Colores históricos',
+    preset: 'Colores predefinidos del sistema',
+    empty: 'No hay datos',
+  },
 };
 
 export default lang;

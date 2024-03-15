@@ -195,6 +195,11 @@ export interface ArcoLang {
   form?: {
     validateMessages: ValidateMessage;
   };
+  colorPicker: {
+    history: string;
+    preset: string;
+    empty: string;
+  };
 }
 
 export type ArcoI18nMessages = Record<string, ArcoLang>;
