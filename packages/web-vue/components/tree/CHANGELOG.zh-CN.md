@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.0
+
+`2024-03-15`
+
+### 🆕 新增功能
+
+- `title` 插槽新增 `title` 参数 ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+
+
 ## 2.54.6
 
 `2024-03-01`

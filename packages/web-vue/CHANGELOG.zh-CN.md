@@ -2,6 +2,21 @@
 changelog: true
 ```
 
+## 2.55.0
+
+`2024-03-15`
+
+### 🆕 新增功能
+
+- **tree-select:** 新增 `input-value` 相关属性 ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+- **tree:** `title` 插槽新增 `title` 参数 ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+- **color-picker:** 新增颜色选择器 ([#2958](https://github.com/arco-design/arco-design-vue/pull/2958))
+
+### 💅 样式更新
+
+- **tabs:** 修复 title 过渡动画效果 ([#3008](https://github.com/arco-design/arco-design-vue/pull/3008))
+
+
 ## 2.54.6
 
 `2024-03-01`

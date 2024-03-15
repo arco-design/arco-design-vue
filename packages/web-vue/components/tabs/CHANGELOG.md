@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.0
+
+`2024-03-15`
+
+### 💅 Style
+
+- fix transition animation for tab title ([#3008](https://github.com/arco-design/arco-design-vue/pull/3008))
+
+
 ## 2.45.1
 
 `2023-04-14`

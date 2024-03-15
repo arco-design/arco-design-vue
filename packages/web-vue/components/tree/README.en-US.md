@@ -106,7 +106,7 @@ description: For content with many levels, such as folders, catalogs, and organi
 
 |Slot Name|Description|Parameters|version|
 |---|---|---|:---|
-|title|Title|-||
+|title|Title|title: `string`||
 |extra|Render additional node content|-||
 |drag-icon|Custom drag icon|node: `TreeNodeData`||
 |loading-icon|Custom loading icon|-||

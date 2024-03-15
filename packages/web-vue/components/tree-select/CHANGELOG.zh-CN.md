@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.0
+
+`2024-03-15`
+
+### 🆕 新增功能
+
+- 新增 `input-value` 相关属性 ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+
+
 ## 2.49.1
 
 `2023-07-24`

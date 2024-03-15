@@ -80,14 +80,17 @@ description: The tree structure data can be selected.
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.39.0|
 |show-header-on-empty|Whether to display the header in the empty state|`boolean`|`false`||
 |show-footer-on-empty|Whether to display the footer in the empty state|`boolean`|`false`||
+|input-value **(v-model)**|The value of the input|`string`|`-`|2.55.0|
+|default-input-value|The default value of the input (uncontrolled mode)|`string`|`''`|2.55.0|
 ### `<tree-select>` Events
 
-|Event Name|Description|Parameters|
-|---|---|---|
-|change|Trigger when the value changes|value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
-|popup-visible-change|Triggered when the status of the drop-down box changes|visible: `boolean`|
-|search|Triggered when the search value changes|searchKey: `string`|
-|clear|Triggered when clear is clicked|-|
+|Event Name|Description|Parameters|version|
+|---|---|---|:---|
+|change|Trigger when the value changes|value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`||
+|popup-visible-change|Triggered when the status of the drop-down box changes|visible: `boolean`||
+|search|Triggered when the search value changes|searchKey: `string`||
+|clear|Triggered when clear is clicked|-||
+|input-value-change|Triggered when the value of the input changes|inputValue: `string`|2.55.0|
 ### `<tree-select>` Slots
 
 |Slot Name|Description|Parameters|version|
@@ -100,7 +103,7 @@ description: The tree structure data can be selected.
 |empty|Custom empty data display|-||
 |footer|The footer of the drop-down box|-||
 |tree-slot-extra|Render additional node content of the tree component|-||
-|tree-slot-title|Custom the node title of the tree component|-||
+|tree-slot-title|Custom the node title of the tree component|title: `string`||
 |tree-slot-icon|Custom node icon for the tree component|node: `TreeNodeData`|2.18.0|
 |tree-slot-switcher-icon|Custom switcher icon for the tree component|-||
 

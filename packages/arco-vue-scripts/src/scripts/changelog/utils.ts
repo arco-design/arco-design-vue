@@ -71,6 +71,7 @@ const componentList = [
   'overflow-list',
   'scrollbar',
   'watermark',
+  'color-picker',
 ];
 
 export const isValidComponent = (component: string) => {

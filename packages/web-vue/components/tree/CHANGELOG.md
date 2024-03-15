@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.0
+
+`2024-03-15`
+
+### 🆕 Feature
+
+- The `title` slot has a new `title` parameter ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+
+
 ## 2.54.6
 
 `2024-03-01`
