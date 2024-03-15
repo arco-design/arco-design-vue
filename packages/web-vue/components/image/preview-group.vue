@@ -129,7 +129,7 @@ export default defineComponent({
      * @en Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body
      */
     popupContainer: {
-      type: [Object, String] as PropType<HTMLElement | string>,
+      type: [String, Object] as PropType<string | HTMLElement>,
     },
   },
   emits: [
