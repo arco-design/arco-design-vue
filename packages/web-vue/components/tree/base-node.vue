@@ -87,7 +87,7 @@
       <span :class="`${prefixCls}-title-text`">
         <RenderFunction v-if="treeTitle" :render-func="treeTitle" />
         <!-- 标题，treeTitle 优先级高于节点的 title -->
-        <slot v-else name="title">{{ title }}</slot>
+        <slot v-else name="title" :title="title">{{ title }}</slot>
 
         <span
           v-if="draggable"

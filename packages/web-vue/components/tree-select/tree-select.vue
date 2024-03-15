@@ -425,6 +425,24 @@ export default defineComponent({
       type: Boolean as PropType<boolean>,
       default: false,
     },
+    /**
+     * @zh 输入框的值
+     * @en The value of the input
+     * @vModel
+     * @version 2.55.0
+     */
+    inputValue: {
+      type: String,
+    },
+    /**
+     * @zh 输入框的默认值（非受控模式）
+     * @en The default value of the input (uncontrolled mode)
+     * @version 2.55.0
+     */
+    defaultInputValue: {
+      type: String,
+      default: '',
+    },
   },
   emits: {
     /**
@@ -450,6 +468,7 @@ export default defineComponent({
         | LabelValue[]
         | undefined
     ) => true,
+    'update:inputValue': (inputValue: string) => true,
     /**
      * @zh 下拉框显示状态改变时触发
      * @en Triggered when the status of the drop-down box changes
@@ -468,6 +487,13 @@ export default defineComponent({
      * @en Triggered when clear is clicked
      * */
     'clear': () => true,
+    /**
+     * @zh 输入框的值发生改变时触发
+     * @en Triggered when the value of the input changes
+     * @param {string} inputValue
+     * @version 2.55.0
+     */
+    'inputValueChange': (inputValue: string) => true,
   },
   /**
    * @zh 自定义触发元素
@@ -512,6 +538,7 @@ export default defineComponent({
    * @zh 定制 tree 组件的节点标题
    * @en Custom the node title of the tree component
    * @slot tree-slot-title
+   * @binding {string} title
    */
   /**
    * @zh 定制 tree 组件的渲染额外节点内容
@@ -641,7 +668,26 @@ export default defineComponent({
       });
     };
 
-    const searchValue = ref('');
+    const _inputValue = ref(props.defaultInputValue);
+    const computedInputValue = computed(
+      () => props.inputValue ?? _inputValue.value
+    );
+
+    const updateInputValue = (inputValue: string) => {
+      _inputValue.value = inputValue;
+      emit('update:inputValue', inputValue);
+      emit('inputValueChange', inputValue);
+    };
+
+    const handleInputValueChange = (inputValue: string) => {
+      if (inputValue !== computedInputValue.value) {
+        setPanelVisible(true);
+        updateInputValue(inputValue);
+        if (props.allowSearch) {
+          emit('search', inputValue);
+        }
+      }
+    };
 
     const [panelVisible, setLocalPanelVisible] = useMergeState(
       defaultPopupVisible.value,
@@ -666,7 +712,7 @@ export default defineComponent({
     const { isEmptyFilterResult, filterTreeNode: computedFilterTreeNode } =
       useFilterTreeNode(
         reactive({
-          searchValue,
+          searchValue: computedInputValue,
           flattenTreeData,
           filterMethod: filterTreeNode,
           disableFilter,
@@ -686,8 +732,8 @@ export default defineComponent({
     ]);
 
     const onBlur = () => {
-      if (!retainInputValue.value && searchValue.value) {
-        searchValue.value = '';
+      if (!retainInputValue.value && computedInputValue.value) {
+        updateInputValue('');
       }
     };
 
@@ -698,23 +744,19 @@ export default defineComponent({
       selectedValue,
       selectedKeys,
       mergedDisabled,
-      searchValue,
+      searchValue: computedInputValue,
       panelVisible,
       isEmpty,
       computedFilterTreeNode,
       isMultiple,
       selectViewValue,
       computedDropdownStyle,
-      onSearchValueChange(newVal: string) {
-        if (newVal !== searchValue.value) {
-          setPanelVisible(true);
-          searchValue.value = newVal;
-          emit('search', newVal);
-        }
-      },
+      onSearchValueChange: handleInputValueChange,
       onSelectChange(newVal: string[]) {
         setSelectedKeys(newVal);
-        searchValue.value = '';
+        if (!retainInputValue.value && computedInputValue.value) {
+          updateInputValue('');
+        }
 
         if (!isMultiple.value) {
           setPanelVisible(false);

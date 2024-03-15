@@ -441,6 +441,7 @@ export default defineComponent({
    * @zh 标题
    * @en Title
    * @slot title
+   * @binding {string} title
    */
   setup(props, { emit, slots }) {
     const {
