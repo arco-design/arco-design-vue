@@ -211,7 +211,8 @@
         background-color: @tabs-line-color-title-bg;
         border-radius: @tabs-line-border-radius;
         opacity: 1;
-        transition: background-color,
+        transition: background-color @transition-duration-2
+            @transition-timing-function-linear,
           opacity @transition-duration-2 @transition-timing-function-linear;
         content: '';
       }
