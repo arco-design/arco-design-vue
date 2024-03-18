@@ -270,7 +270,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |render|自定义列单元格的渲染|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|设置当前列的渲染插槽的名字。插槽参数同 #cell|`string`|`-`|2.18.0|
 |titleSlotName|设置当前列的标题的渲染插槽的名字|`string`|`-`|2.23.0|
-
+|resizable|设置当前列是否可调节宽度|`boolean`|`false`||
 
 
 ### TableBorder

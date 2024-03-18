@@ -272,7 +272,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |render|Customize the rendering of column cells|`(data: {    record: TableData;    column: TableColumnData;    rowIndex: number;  }) => VNodeChild`|`-`||
 |slotName|Sets the name of the render slot for the current column. Slot parameters are the same as #cell|`string`|`-`|2.18.0|
 |titleSlotName|Set the name of the render slot for the header of the current column|`string`|`-`|2.23.0|
-
+|resizable|Set the current column resizable|`boolean`|`false`||
 
 
 ### TableBorder
