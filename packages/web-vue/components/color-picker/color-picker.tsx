@@ -5,7 +5,6 @@ import { colors } from './colors';
 import { HSV } from './interface';
 import Panel from './panel';
 import Trigger, { TriggerProps } from '../trigger';
-import useMergeState from '../_hooks/use-merge-state';
 import useState from '../_hooks/use-state';
 import {
   formatInputToHSVA,
@@ -133,10 +132,9 @@ export default defineComponent({
   },
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('color-picker');
-    const [mergeValue, setMergeValue] = useMergeState(
-      props.defaultValue,
-      reactive({ value: props.modelValue })
-    );
+    const mergeValue = computed(() => {
+      return props.modelValue ?? props.defaultValue;
+    });
 
     const formatInput = computed(() => {
       return formatInputToHSVA(mergeValue.value || '');
@@ -148,6 +146,18 @@ export default defineComponent({
       s: formatInput.value.s,
       v: formatInput.value.v,
     });
+
+    watch(
+      () => formatInput.value,
+      (value) => {
+        setAlpha(value.a);
+        setHsv({
+          h: value.h,
+          s: value.s,
+          v: value.v,
+        });
+      }
+    );
 
     const color = computed(() => {
       const rgb = hsvToRgb(hsv.value.h, hsv.value.s, hsv.value.v);
@@ -177,7 +187,6 @@ export default defineComponent({
     });
 
     watch(formatValue, (value) => {
-      setMergeValue(value);
       emit('update:modelValue', value);
       emit('change', value);
     });
