@@ -195,7 +195,7 @@ const lang: ArcoLang = {
     },
   },
   colorPicker: {
-    history: '最近使用顏色',
+    history: '最近使用颜色',
     preset: '系统预设颜色',
     empty: '暂无',
   },
