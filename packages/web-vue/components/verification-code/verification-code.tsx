@@ -104,7 +104,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('verification-code');
     const prefixInputCls = getPrefixCls('input');
-    const inputRefList = ref([] as HTMLElement[]);
+    const inputRefList = ref<InstanceType<typeof ArcoInput>[]>([]);
 
     const mergedValue = computed(() => props.modelValue ?? props.defaultValue);
     const type = computed(() => (props.masked ? 'password' : 'text'));
@@ -115,11 +115,11 @@ export default defineComponent({
       },
     ]);
 
-    const filledValue = computed(() => {
+    const filledValue = computed<string[]>(() => {
       const newVal = String(mergedValue.value).split('');
-      return new Array(props.length).fill('').map((_, index) => {
-        return isExist(newVal[index]) ? String(newVal[index]) : '';
-      }) as string[];
+      return new Array(props.length)
+        .fill('')
+        .map((_, index) => newVal[index] ?? '');
     });
 
     const innerValue = ref(filledValue.value);
@@ -137,7 +137,9 @@ export default defineComponent({
       }
     };
 
-    const handleFocus = (index: number) => inputRefList?.value[index].focus();
+    const handleFocus = (index: number) => {
+      inputRefList?.value[index]?.inputRef?.focus();
+    };
     const focusFirstEmptyInput = (index?: number) => {
       if (isExist(index) && innerValue.value[index as number]) {
         return;
@@ -152,8 +154,7 @@ export default defineComponent({
 
     const handlePaste = (e: ClipboardEvent, index: number) => {
       e.preventDefault();
-      const { clipboardData } = e;
-      const text = clipboardData?.getData('text');
+      const text = e.clipboardData?.getData('text');
       if (text) {
         const pasteValues = text.split('').slice(0, props.length - index);
         innerValue.value.splice(index, pasteValues.length, ...pasteValues);
