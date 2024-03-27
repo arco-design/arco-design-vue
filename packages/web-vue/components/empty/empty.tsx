@@ -6,6 +6,7 @@ import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Empty',
+  inheritAttrs: false,
   props: {
     /**
      * @zh 描述内容
@@ -32,7 +33,7 @@ export default defineComponent({
    * @en Image/Icon
    * @slot image
    */
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const prefixCls = getPrefixCls('empty');
     const { t } = useI18n();
     const configCtx = inject(configProviderInjectionKey, undefined);
@@ -47,7 +48,7 @@ export default defineComponent({
       }
 
       return (
-        <div class={prefixCls}>
+        <div class={prefixCls} {...attrs}>
           <div class={`${prefixCls}-image`}>
             {slots.image?.() ??
               (props.imgSrc ? (
