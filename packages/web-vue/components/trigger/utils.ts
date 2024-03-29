@@ -368,7 +368,7 @@ export const getTransformOrigin = (position: TriggerPosition) => {
   let originY = '0';
   if (['left', 'right'].includes(position)) {
     originY = '50%';
-  } else if (['top', 'tl', 'tr', 'lt', 'rt'].includes(position)) {
+  } else if (['top', 'tl', 'tr', 'lb', 'rb'].includes(position)) {
     originY = '100%';
   }
   return `${originX} ${originY}`;
