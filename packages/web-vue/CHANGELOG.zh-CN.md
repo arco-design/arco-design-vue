@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.55.1
+
+`2024-03-29`
+
+### 🐛 问题修复
+
+- **empty:** 修复属性自动继承的错误 ([#3048](https://github.com/arco-design/arco-design-vue/pull/3048))
+- **trigger:** 修正位置的弹出动画方向 ([#3045](https://github.com/arco-design/arco-design-vue/pull/3045))
+- **color-picker:** 修复双向绑定不生效问题 ([#3030](https://github.com/arco-design/arco-design-vue/pull/3030))
+- **color-picker:** 修复文案错误 ([#3028](https://github.com/arco-design/arco-design-vue/pull/3028))
+
+### 💅 样式更新
+
+- **tree:** 修复scrollHeight计算异常问题 ([#3044](https://github.com/arco-design/arco-design-vue/pull/3044))
+
+
 ## 2.55.0
 
 `2024-03-15`

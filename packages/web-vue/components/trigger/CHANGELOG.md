@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.1
+
+`2024-03-29`
+
+### 🐛 BugFix
+
+- fix animation direction for position popup ([#3045](https://github.com/arco-design/arco-design-vue/pull/3045))
+
+
 ## 2.46.0
 
 `2023-05-12`

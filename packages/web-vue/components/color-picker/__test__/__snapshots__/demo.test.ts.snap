@@ -100,7 +100,7 @@ exports[`<color-picker> demo: render [only-panel] correctly 1`] = `
       </div>
       <div class=\\"arco-color-picker-panel-colors\\">
         <div class=\\"arco-color-picker-colors-section\\">
-          <div class=\\"arco-color-picker-colors-text\\">最近使用顏色</div>
+          <div class=\\"arco-color-picker-colors-text\\">最近使用颜色</div>
           <div class=\\"arco-color-picker-colors-wrapper\\"><span class=\\"arco-color-picker-colors-empty\\">暂无</span></div>
         </div>
         <div class=\\"arco-color-picker-colors-section\\">

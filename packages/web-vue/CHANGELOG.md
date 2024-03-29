@@ -2,6 +2,22 @@
 changelog: true
 ```
 
+## 2.55.1
+
+`2024-03-29`
+
+### 🐛 BugFix
+
+- **empty:** fix automatically inherited warn ([#3048](https://github.com/arco-design/arco-design-vue/pull/3048))
+- **trigger:** fix animation direction for position popup ([#3045](https://github.com/arco-design/arco-design-vue/pull/3045))
+- **color-picker:** fix v-model not working ([#3030](https://github.com/arco-design/arco-design-vue/pull/3030))
+- **color-picker:** Fix copywriting errors ([#3028](https://github.com/arco-design/arco-design-vue/pull/3028))
+
+### 💅 Style
+
+- **tree:** fix scrollHeight calculation exception problem ([#3044](https://github.com/arco-design/arco-design-vue/pull/3044))
+
+
 ## 2.55.0
 
 `2024-03-15`

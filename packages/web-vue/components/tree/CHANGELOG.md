@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.1
+
+`2024-03-29`
+
+### 💅 Style
+
+- fix scrollHeight calculation exception problem ([#3044](https://github.com/arco-design/arco-design-vue/pull/3044))
+
+
 ## 2.55.0
 
 `2024-03-15`
