@@ -22,10 +22,6 @@ export default defineComponent({
       type: String as PropType<'default' | 'close'>,
       default: 'default',
     },
-    component: {
-      type: String as PropType<keyof HTMLElementTagNameMap>,
-      required: false,
-    },
   },
   setup(props, { attrs, slots }) {
     const { blockquote, spacing } = toRefs(props);

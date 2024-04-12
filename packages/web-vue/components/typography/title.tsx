@@ -14,10 +14,6 @@ export default defineComponent({
       type: Number as PropType<1 | 2 | 3 | 4 | 5 | 6>,
       default: 1,
     },
-    component: {
-      type: String as PropType<keyof HTMLElementTagNameMap>,
-      required: false,
-    },
   },
   setup(props, { attrs, slots }) {
     const { heading } = toRefs(props);

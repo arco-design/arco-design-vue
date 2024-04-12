@@ -11,10 +11,6 @@ export default defineComponent({
       type: [Boolean, Object] as PropType<BaseProps['ellipsis']>,
       default: false,
     },
-    component: {
-      type: String as PropType<keyof HTMLElementTagNameMap>,
-      required: false,
-    },
   },
   setup(props, { attrs, slots }) {
     const { ellipsis } = toRefs(props);
