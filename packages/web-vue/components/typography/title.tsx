@@ -1,9 +1,10 @@
 import { computed, defineComponent, PropType, toRefs } from 'vue';
 import Base from './base';
+import useListeners from '../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'TypographyTitle',
-  inheritAttrs: false,
+  extends: Base,
   props: {
     /**
      * @zh 标题级别，相当于 `h1` `h2` `h3` `h4` `h5` `h6`
@@ -13,21 +14,27 @@ export default defineComponent({
       type: Number as PropType<1 | 2 | 3 | 4 | 5 | 6>,
       default: 1,
     },
+    component: {
+      type: String as PropType<keyof HTMLElementTagNameMap>,
+      required: false,
+    },
   },
-  setup(props) {
+  setup(props, { attrs, slots }) {
     const { heading } = toRefs(props);
     const component = computed(
       () => `h${heading?.value}` as keyof HTMLElementTagNameMap
     );
 
-    return {
-      component,
-    };
-  },
-  render() {
-    const { component } = this;
-    return (
-      <Base {...this.$attrs} component={component} v-slots={this.$slots} />
+    const { listeners } = useListeners();
+
+    return () => (
+      <Base
+        {...props}
+        {...attrs}
+        {...listeners.value}
+        component={component.value}
+        v-slots={slots}
+      />
     );
   },
 });

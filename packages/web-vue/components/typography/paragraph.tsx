@@ -1,10 +1,11 @@
 import { computed, defineComponent, PropType, toRefs } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Base from './base';
+import useListeners from '../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'TypographyParagraph',
-  inheritAttrs: false,
+  extends: Base,
   props: {
     /**
      * @zh 长引用
@@ -21,8 +22,12 @@ export default defineComponent({
       type: String as PropType<'default' | 'close'>,
       default: 'default',
     },
+    component: {
+      type: String as PropType<keyof HTMLElementTagNameMap>,
+      required: false,
+    },
   },
-  setup(props) {
+  setup(props, { attrs, slots }) {
     const { blockquote, spacing } = toRefs(props);
     const prefixCls = getPrefixCls('typography');
     const component = computed(() =>
@@ -34,19 +39,16 @@ export default defineComponent({
       },
     ]);
 
-    return {
-      component,
-      classNames,
-    };
-  },
-  render() {
-    const { component, classNames } = this;
-    return (
+    const { listeners } = useListeners();
+
+    return () => (
       <Base
-        class={classNames}
-        {...this.$attrs}
-        component={component}
-        v-slots={this.$slots}
+        {...props}
+        {...attrs}
+        {...listeners.value}
+        class={classNames.value}
+        component={component.value}
+        v-slots={slots}
       />
     );
   },

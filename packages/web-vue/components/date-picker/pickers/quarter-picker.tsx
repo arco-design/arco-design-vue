@@ -1,8 +1,10 @@
 import { defineComponent, PropType } from 'vue';
 import Picker from '../picker.vue';
+import useListeners from '../../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'QuarterPicker',
+  extends: Picker,
   props: {
     /**
      * @zh 绑定值
@@ -37,8 +39,16 @@ export default defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { listeners } = useListeners();
+
     return () => (
-      <Picker {...props} {...attrs} mode="quarter" v-slots={slots} />
+      <Picker
+        {...props}
+        {...attrs}
+        {...listeners.value}
+        mode="quarter"
+        v-slots={slots}
+      />
     );
   },
 });

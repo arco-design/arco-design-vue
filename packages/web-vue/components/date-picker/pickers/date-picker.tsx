@@ -2,9 +2,11 @@ import { defineComponent, PropType } from 'vue';
 import { TimePickerProps } from '../../time-picker/interface';
 import { DisabledTimeProps, WeekStart } from '../interface';
 import Picker from '../picker.vue';
+import useListeners from '../../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'DatePicker',
+  extends: Picker,
   props: {
     /**
      * @zh 绑定值
@@ -84,6 +86,16 @@ export default defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () => <Picker {...props} {...attrs} mode="date" v-slots={slots} />;
+    const { listeners } = useListeners();
+
+    return () => (
+      <Picker
+        {...props}
+        {...attrs}
+        {...listeners.value}
+        mode="date"
+        v-slots={slots}
+      />
+    );
   },
 });
