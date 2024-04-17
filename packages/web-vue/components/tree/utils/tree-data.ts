@@ -7,6 +7,7 @@ import {
   TreeNodeKey,
   SelectableType,
   CheckableType,
+  Key2TreeNode,
 } from '../interface';
 
 interface TreeProps {
@@ -138,6 +139,8 @@ export function generateTreeData(
   treeData: TreeNodeData[],
   treeProps: TreeProps
 ) {
+  const flattenTreeData: Node[] = [];
+  const key2TreeNode: Key2TreeNode = new Map();
   function preOrder(tree: TreeNodeData[] | undefined, parentNode?: Node) {
     if (!tree) return undefined;
 
@@ -150,7 +153,8 @@ export function generateTreeData(
         parentNode,
         isTail: index === tree.length - 1,
       });
-
+      flattenTreeData.push(node);
+      key2TreeNode.set(node.key, node);
       node.children = preOrder(
         treeNodeData[
           (fieldNames?.children || 'children') as keyof TreeNodeData
@@ -162,6 +166,9 @@ export function generateTreeData(
 
     return nodes;
   }
-
-  return preOrder(treeData) as Node[];
+  return {
+    treeData: preOrder(treeData) as Node[],
+    flattenTreeData,
+    key2TreeNode,
+  };
 }
