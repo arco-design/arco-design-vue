@@ -33,7 +33,7 @@ export default function useTreeData(props: {
 
   const treeData = ref<Node[]>([]);
   const flattenTreeData = ref<Node[]>([]);
-  const key2TreeNode = ref<Key2TreeNode>({} as Key2TreeNode);
+  const key2TreeNode = ref<Key2TreeNode>(new Map() as Key2TreeNode);
   watchEffect(() => {
     const {
       treeData: _treeData,
