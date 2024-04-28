@@ -33,6 +33,8 @@ description: Organize content in the same view. You can view the content of one 
 
 @import ./__demo__/trigger.md
 
+@import ./__demo__/scroll.md
+
 ## API
 
 %%API(tabs.tsx)%%

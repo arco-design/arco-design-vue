@@ -24,6 +24,8 @@ description: Organize content in the same view. You can view the content of one 
 
 @import ./__demo__/trigger.md
 
+@import ./__demo__/scroll.md
+
 ## API
 
 
@@ -47,6 +49,7 @@ description: Organize content in the same view. You can view the content of one 
 |auto-switch|Whether to switch to a new tab after creating a tab (the last one)|`boolean`|`false`|2.18.0|
 |hide-content|Whether to hide content|`boolean`|`false`|2.25.0|
 |trigger|Trigger method|`'hover' \| 'click'`|`'click'`|2.34.0|
+|scroll-position|The scroll position of the selected tab, the default auto will scroll the activeTab to the visible area, but will not adjust the position intentionally|`'start' \| 'end' \| 'center' \| 'auto' \| number`|`'auto'`||
 ### `<tabs>` Events
 
 |Event Name|Description|Parameters|
