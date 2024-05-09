@@ -218,7 +218,7 @@ const data = reactive({
    ]
 })
 ````
-At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2222'`, you need to set `field="people.2.id"`, and the separator in the value needs to use `.`
+At this point, if you want to specify the value corresponding to the current `form-item` as `id: '2222'`, you need to set `field="people.1.id"`, and the separator in the value needs to use `.`
 
 ### About using clickable elements in the label slot
 
