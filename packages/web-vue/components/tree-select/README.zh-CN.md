@@ -72,7 +72,7 @@ description: 可以对树形结构数据进行选择。
 |filter-tree-node|自定义节点过滤函数|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`||
 |load-more|动态加载数据|`(nodeData: TreeNodeData) => Promise<void>`|`-`||
 |disable-filter|禁用内部过滤逻辑|`boolean`|`false`||
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| undefined`|`-`||
+|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`||
 |fallback-option|为 value 中找不到匹配项的 key 定义节点数据|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|设置可选择的节点，默认全部可选|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.39.0|

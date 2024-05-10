@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.2
+
+`2024-05-10`
+
+### 🐛 BugFix
+
+- import missing image styles for upload component ([#3101](https://github.com/arco-design/arco-design-vue/pull/3101))
+
+
 ## 2.55.1
 
 `2024-03-29`

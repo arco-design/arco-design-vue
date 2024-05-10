@@ -73,7 +73,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`||
 |picker-value **(v-model)**|Date displayed on the panel|`Date \| string \| number`|`-`||
 |default-picker-value|The date displayed on the panel by default|`Date \| string \| number`|`-`||
-|popup-container|Mount container for pop-up box|`string \| HTMLElement \| null \| undefined`|`-`||
+|popup-container|Mount container for pop-up box|`string \| HTMLElement`|`-`||
 |value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
 |preview-shortcut|Whether to preview the result of the shortcut|`boolean`|`true`|2.28.0|
 |show-confirm-btn|Whether to show the confirm button, always show when `showTime = true`.|`boolean`|`false`|2.29.0|

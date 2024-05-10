@@ -2,6 +2,26 @@
 changelog: true
 ```
 
+## 2.55.2
+
+`2024-05-10`
+
+### 🐛 问题修复
+
+- **verification-code:** 修复粘贴时`formatter`未生效 ([#3110](https://github.com/arco-design/arco-design-vue/pull/3110))
+- **upload:** 修复上传组件预览样式引入缺失 ([#3101](https://github.com/arco-design/arco-design-vue/pull/3101))
+- **transfer:** 修复 simple 模式下禁用失效 ([#3067](https://github.com/arco-design/arco-design-vue/pull/3067))
+- **color-picker:** 修复样式按需导入错误 ([#3052](https://github.com/arco-design/arco-design-vue/pull/3052))
+
+### 💅 样式更新
+
+- **color-picker:** 优化颜色控制条背景圆角样式 ([#3116](https://github.com/arco-design/arco-design-vue/pull/3116))
+
+### 🆎 类型修正
+
+- correct the type definition for popupContainer ([#2998](https://github.com/arco-design/arco-design-vue/pull/2998))
+
+
 ## 2.55.1
 
 `2024-03-29`

@@ -39,7 +39,7 @@ description: Click on the element and a popconfirm will pop up.
 |content-style|The style of the popup content|`CSSProperties`|`-`|
 |arrow-class|The class name of the popup arrow|`ClassName`|`-`|
 |arrow-style|The style of the popup arrow|`CSSProperties`|`-`|
-|popup-container|Mount container for popup|`string \| HTMLElement \| undefined`|`-`|
+|popup-container|Mount container for popup|`string \| HTMLElement`|`-`|
 |on-before-ok|The callback function before the ok event is triggered. If false is returned, subsequent events will not be triggered, and done can also be used to close asynchronously.|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`|
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|
 ### `<popconfirm>` Events

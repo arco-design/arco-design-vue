@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.2
+
+`2024-05-10`
+
+### 🐛 BugFix
+
+- fix disabled behavior in transfer simple mode ([#3067](https://github.com/arco-design/arco-design-vue/pull/3067))
+
+
 ## 2.54.6
 
 `2024-03-01`

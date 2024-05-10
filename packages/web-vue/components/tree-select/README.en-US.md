@@ -74,7 +74,7 @@ description: The tree structure data can be selected.
 |filter-tree-node|Custom node filter function|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`||
 |load-more|Load data dynamically|`(nodeData: TreeNodeData) => Promise<void>`|`-`||
 |disable-filter|Disable internal filtering logic|`boolean`|`false`||
-|popup-container|Mount container for pop-up box|`string \| HTMLElement \| undefined`|`-`||
+|popup-container|Mount container for pop-up box|`string \| HTMLElement`|`-`||
 |fallback-option|Customize node data for keys that do not match options|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|Set the nodes that can be selected, all can be selected by default|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.39.0|

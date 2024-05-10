@@ -72,6 +72,7 @@ const componentList = [
   'scrollbar',
   'watermark',
   'color-picker',
+  'verification-code',
 ];
 
 export const isValidComponent = (component: string) => {

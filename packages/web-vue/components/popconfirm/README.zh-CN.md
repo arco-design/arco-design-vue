@@ -37,7 +37,7 @@ description: 点击元素，弹出气泡式的确认框。
 |content-style|弹出框内容的样式|`CSSProperties`|`-`|
 |arrow-class|弹出框箭头的类名|`ClassName`|`-`|
 |arrow-style|弹出框箭头的样式|`CSSProperties`|`-`|
-|popup-container|弹出框的挂载点|`string \| HTMLElement \| undefined`|`-`|
+|popup-container|弹出框的挂载点|`string \| HTMLElement`|`-`|
 |on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`|
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`|
 ### `<popconfirm>` Events
