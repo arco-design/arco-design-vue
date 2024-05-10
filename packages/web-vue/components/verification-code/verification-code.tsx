@@ -2,7 +2,7 @@ import { PropType, VNode, computed, defineComponent, ref, watch } from 'vue';
 import { Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import ArcoInput from '../input';
-import { isExist, isFunction } from '../_utils/is';
+import { isExist, isFunction, isString } from '../_utils/is';
 import { Backspace, ArrowLeft, ArrowRight } from '../_utils/keycode';
 
 export default defineComponent({
@@ -135,6 +135,7 @@ export default defineComponent({
       if (value.length === props.length) {
         emit('finish', value);
       }
+      focusFirstEmptyInput();
     };
 
     const handleFocus = (index: number) => inputRefList?.value[index].focus();
@@ -154,11 +155,29 @@ export default defineComponent({
       e.preventDefault();
       const { clipboardData } = e;
       const text = clipboardData?.getData('text');
-      if (text) {
-        const pasteValues = text.split('').slice(0, props.length - index);
-        innerValue.value.splice(index, pasteValues.length, ...pasteValues);
-        updateValue();
-      }
+      if (!text) return;
+
+      text.split('').forEach((char, i) => {
+        if (index + i >= props.length) return;
+
+        if (isFunction(props.formatter)) {
+          const result = props.formatter(
+            char,
+            index + i,
+            innerValue.value.join('')
+          );
+          if (result === false) {
+            index -= 1;
+            return;
+          }
+          if (isString(result)) {
+            char = result.charAt(0);
+          }
+        }
+
+        innerValue.value[index + i] = char;
+      });
+      updateValue();
     };
 
     const handleKeydown = (index: number, e: KeyboardEvent) => {
@@ -168,7 +187,6 @@ export default defineComponent({
         e.preventDefault();
         innerValue.value[Math.max(index - 1, 0)] = '';
         updateValue();
-        focusFirstEmptyInput();
       } else if (keyCode === ArrowLeft.code && index > 0) {
         e.preventDefault();
         handleFocus(index - 1);
@@ -189,12 +207,13 @@ export default defineComponent({
       if (isFunction(props.formatter)) {
         const result = props.formatter(char, index, innerValue.value.join(''));
         if (result === false) return;
-        char = result as string;
+        if (isString(result)) {
+          char = result.charAt(0);
+        }
       }
 
       innerValue.value[index] = char;
       updateValue();
-      focusFirstEmptyInput();
     };
 
     return () => {
