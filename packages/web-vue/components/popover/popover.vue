@@ -17,7 +17,7 @@
   >
     <slot />
     <template #content>
-      <div v-if="title || titleSlot" :class="`${prefixCls}-title`">
+      <div v-if="title || $slots.title" :class="`${prefixCls}-title`">
         <slot name="title">{{ title }}</slot>
       </div>
       <div :class="`${prefixCls}-content`">
@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import type { PropType } from 'vue';
-import { computed, CSSProperties, defineComponent, ref, useSlots } from 'vue';
+import { computed, CSSProperties, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
 import Trigger from '../trigger';
@@ -145,9 +145,6 @@ export default defineComponent({
    */
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('popover');
-
-    const titleSlot = !!useSlots().title;
-
     const _popupVisible = ref(props.defaultPopupVisible);
     const computedPopupVisible = computed(
       () => props.popupVisible ?? _popupVisible.value
@@ -175,7 +172,6 @@ export default defineComponent({
       contentCls,
       arrowCls,
       handlePopupVisibleChange,
-      titleSlot,
     };
   },
 });
