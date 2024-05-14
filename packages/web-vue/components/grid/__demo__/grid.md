@@ -38,18 +38,10 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
   </a-grid>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const collapsed = ref(false);
-
-    return {
-      collapsed
-    }
-  },
-}
+const collapsed = ref(false);
 </script>
 
 <style scoped>
