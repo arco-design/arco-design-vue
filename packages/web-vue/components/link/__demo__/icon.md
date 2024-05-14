@@ -35,7 +35,7 @@ Customize icon node. If true, the default icon will be displayed.
       </a-link>
       <a-link href="link" disabled>
         <template #icon>
-          <icon-edit />
+          <IconEdit />
         </template>
         Link
       </a-link>
@@ -43,11 +43,7 @@ Customize icon node. If true, the default icon will be displayed.
   </div>
 </template>
 
-<script>
+<script setup>
   import { IconEdit } from '@arco-design/web-vue/es/icon';
-
-  export default {
-    components: { IconEdit }
-  };
 </script>
 ```
