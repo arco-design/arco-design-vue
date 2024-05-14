@@ -34,11 +34,7 @@ Buttons can be embedded with icons. When only icons are set, the width and heigh
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { IconPlus, IconDelete } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconPlus, IconDelete }
-};
 </script>
 ```
