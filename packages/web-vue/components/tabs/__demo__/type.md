@@ -48,19 +48,10 @@ The type of label can be set by `type`.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const type = ref('line');
-    const size = ref('medium');
-
-    return {
-      type,
-      size
-    }
-  },
-}
+const type = ref('line');
+const size = ref('medium');
 </script>
 ```

@@ -32,16 +32,9 @@ Specify the trigger method by `trigger`.
   </a-tabs>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const trigger = ref('click');
-    return {
-      trigger,
-    };
-  },
-};
+const trigger = ref('click');
 </script>
 ```
