@@ -40,6 +40,7 @@ Use `Card.Grid` to use the card content segmentation mode.
     </a-card-grid>
   </a-card>
 </template>
+
 <style scoped>
 .card-demo {
   width: 100%;

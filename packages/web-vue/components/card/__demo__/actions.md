@@ -53,17 +53,14 @@ The `actions` slot can be used to display the bottom button group.
   </a-card>
 </template>
 
-<script>
+<script setup>
 import {
   IconThumbUp,
   IconShareInternal,
   IconMore,
 } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconThumbUp, IconShareInternal, IconMore },
-};
 </script>
+
 <style scoped>
 .icon-hover {
   display: flex;
