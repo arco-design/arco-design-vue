@@ -47,17 +47,13 @@ Loading
     </template>
   </a-image>
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const timestamp = ref('');
-      return {
-        timestamp,
-      }
-    }
-  }
+
+<script setup>
+import { ref } from 'vue';
+
+const timestamp = ref('');
 </script>
+
 <style scoped>
   .loader-animate {
     width: 100%;
