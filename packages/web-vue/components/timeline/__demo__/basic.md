@@ -38,22 +38,13 @@ Basic usage
   </a-timeline>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const isReverse = ref(false);
+const isReverse = ref(false);
 
-    const onChange = (bool) => {
-      isReverse.value = bool;
-    };
-
-    return {
-      isReverse,
-      onChange
-    }
-  },
+const onChange = (bool) => {
+  isReverse.value = bool;
 };
 </script>
 ```

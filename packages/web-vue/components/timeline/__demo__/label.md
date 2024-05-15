@@ -52,29 +52,18 @@ The position of the label text can be set by `labelPosition`.
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const mode = ref('left');
-    const pos = ref('same');
+const mode = ref('left');
+const pos = ref('same');
 
-    const onLabelPositionChange = (_pos) => {
-      pos.value = _pos;
-    };
+const onLabelPositionChange = (_pos) => {
+  pos.value = _pos;
+};
 
-    const onModeChange = (_mode) => {
-      mode.value = _mode;
-    };
-
-    return {
-      mode,
-      pos,
-      onLabelPositionChange,
-      onModeChange
-    }
-  },
+const onModeChange = (_mode) => {
+  mode.value = _mode;
 };
 </script>
 ```
