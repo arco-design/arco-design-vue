@@ -26,49 +26,37 @@ The node icons `loadingIcon`, `switcherIcon`, support customization at the two l
   </a-tree>
 </template>
 
-<script>
-  import { h } from 'vue';
-  import { IconDriveFile, IconDown, IconStar } from '@arco-design/web-vue/es/icon';
+<script setup>
+import { h } from 'vue';
+import { IconDriveFile, IconDown, IconStar } from '@arco-design/web-vue/es/icon';
 
-  export default {
-    components: {
-      IconDown,
-      IconStar
-    },
-    setup() {
-      return {
-        treeData,
-      };
-    },
-  };
-
-  const treeData = [
-    {
-      title: 'Trunk',
-      key: 'node1',
-      children: [
-        {
-          title: 'Leaf',
-          key: 'node2',
-        },
-      ],
-    },
-    {
-      title: 'Trunk',
-      key: 'node3',
-      children: [
-        {
-          title: 'Leaf',
-          key: 'node4',
-          switcherIcon: () => h(IconDriveFile),
-        },
-        {
-          title: 'Leaf',
-          key: 'node5',
-          switcherIcon: () => h(IconDriveFile),
-        },
-      ],
-    },
-  ];
+const treeData = [
+  {
+    title: 'Trunk',
+    key: 'node1',
+    children: [
+      {
+        title: 'Leaf',
+        key: 'node2',
+      },
+    ],
+  },
+  {
+    title: 'Trunk',
+    key: 'node3',
+    children: [
+      {
+        title: 'Leaf',
+        key: 'node4',
+        switcherIcon: () => h(IconDriveFile),
+      },
+      {
+        title: 'Leaf',
+        key: 'node5',
+        switcherIcon: () => h(IconDriveFile),
+      },
+    ],
+  },
+];
 </script>
 ```

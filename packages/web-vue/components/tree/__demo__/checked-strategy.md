@@ -45,83 +45,71 @@ Add `checkedStrategy` to set the return value when selected.
     :data="treeData"
   />
 </template>
-<script>
-  import { ref } from 'vue';
+<script setup>
+import { ref } from 'vue';
 
-  const treeData = [
-    {
-      title: 'Trunk 0-0',
-      key: '0-0',
-      children: [
-        {
-          title: 'Leaf',
-          key: '0-0-1',
-        },
-        {
-          title: 'Branch 0-0-2',
-          key: '0-0-2',
-          children: [
-            {
-              title: 'Leaf',
-              key: '0-0-2-1'
-            }
-          ]
-        },
-      ],
-    },
-    {
-      title: 'Trunk 0-1',
-      key: '0-1',
-      children: [
-        {
-          title: 'Branch 0-1-1',
-          key: '0-1-1',
-          children: [
-            {
-              title: 'Leaf',
-              key: '0-1-1-1',
-            },
-            {
-              title: 'Leaf',
-              key: '0-1-1-2',
-            },
-          ]
-        },
-        {
-          title: 'Leaf',
-          key: '0-1-2',
-        },
-      ],
-    },
-  ];
-
-  const strategyOptions = [
-    {
-      value: 'all',
-      label: 'show all'
-    },
-    {
-      value: 'parent',
-      label: 'show parent'
-    },
-    {
-      value: 'child',
-      label: 'show child'
-    }
-  ];
-
-  export default {
-    setup() {
-      const checkedKeys = ref([]);
-      const checkedStrategy = ref('all');
-
-      return {
-        treeData,
-        strategyOptions,
-        checkedStrategy,
-        checkedKeys,
-      }
-    }
+const treeData = [
+  {
+    title: 'Trunk 0-0',
+    key: '0-0',
+    children: [
+      {
+        title: 'Leaf',
+        key: '0-0-1',
+      },
+      {
+        title: 'Branch 0-0-2',
+        key: '0-0-2',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-0-2-1'
+          }
+        ]
+      },
+    ],
+  },
+  {
+    title: 'Trunk 0-1',
+    key: '0-1',
+    children: [
+      {
+        title: 'Branch 0-1-1',
+        key: '0-1-1',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-1-1-1',
+          },
+          {
+            title: 'Leaf',
+            key: '0-1-1-2',
+          },
+        ]
+      },
+      {
+        title: 'Leaf',
+        key: '0-1-2',
+      },
+    ],
+  },
+];
+const strategyOptions = [
+  {
+    value: 'all',
+    label: 'show all'
+  },
+  {
+    value: 'parent',
+    label: 'show parent'
+  },
+  {
+    value: 'child',
+    label: 'show child'
   }
+];
+
+const checkedKeys = ref([]);
+const checkedStrategy = ref('all');
 </script>
 ```

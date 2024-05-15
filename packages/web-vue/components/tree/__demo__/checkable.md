@@ -34,73 +34,63 @@ Add the `checkable` attribute to display the checkbox, and you can use `defaultC
     :data="treeData"
   />
 </template>
-<script>
-  import { ref } from 'vue';
 
-  export default {
-    setup() {
-    const checkedKeys = ref([]);
-    const checkStrictly = ref(false);
+<script setup>
+import { ref } from 'vue';
 
-      return {
-        checkedKeys,
-        checkStrictly,
-        treeData,
-      }
-    }
-  }
-
-  const treeData = [
-    {
-      title: 'Trunk 0-0',
-      key: '0-0',
-      children: [
-        {
-          title: 'Leaf',
-          key: '0-0-1',
-        },
-        {
-          title: 'Branch 0-0-2',
-          key: '0-0-2',
-          disabled: true,
-          children: [
-            {
-              title: 'Leaf',
-              key: '0-0-2-1'
-            },
-            {
-              title: 'Leaf',
-              key: '0-0-2-2',
-              disableCheckbox: true
-            }
-          ]
-        },
-      ],
-    },
-    {
-      title: 'Trunk 0-1',
-      key: '0-1',
-      children: [
-        {
-          title: 'Branch 0-1-1',
-          key: '0-1-1',
-          children: [
-            {
-              title: 'Leaf ',
-              key: '0-1-1-1',
-            },
-            {
-              title: 'Leaf ',
-              key: '0-1-1-2',
-            },
-          ]
-        },
-        {
-          title: 'Leaf',
-          key: '0-1-2',
-        },
-      ],
-    },
-  ];
+const treeData = [
+  {
+    title: 'Trunk 0-0',
+    key: '0-0',
+    children: [
+      {
+        title: 'Leaf',
+        key: '0-0-1',
+      },
+      {
+        title: 'Branch 0-0-2',
+        key: '0-0-2',
+        disabled: true,
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-0-2-1'
+          },
+          {
+            title: 'Leaf',
+            key: '0-0-2-2',
+            disableCheckbox: true
+          }
+        ]
+      },
+    ],
+  },
+  {
+    title: 'Trunk 0-1',
+    key: '0-1',
+    children: [
+      {
+        title: 'Branch 0-1-1',
+        key: '0-1-1',
+        children: [
+          {
+            title: 'Leaf ',
+            key: '0-1-1-1',
+          },
+          {
+            title: 'Leaf ',
+            key: '0-1-1-2',
+          },
+        ]
+      },
+      {
+        title: 'Leaf',
+        key: '0-1-2',
+      },
+    ],
+  },
+];
+const checkedKeys = ref([]);
+const checkStrictly = ref(false);
 </script>
 ```

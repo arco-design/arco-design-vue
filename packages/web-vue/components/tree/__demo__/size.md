@@ -33,51 +33,43 @@ Trees of different sizes.
     :size="size"
     :data="treeData" />
 </template>
-<script>
-  import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const size = ref('medium');
+<script setup>
+import { ref } from 'vue';
 
-      return {
-        size,
-        treeData,
-      };
-    },
-  };
+const size = ref('medium');
 
-  const treeData = [
-    {
-      title: 'Trunk 0-0',
-      key: '0-0',
-      children: [
-        {
-          title: 'Branch 0-0-0',
-          key: '0-0-0',
-          children: [
-            {
-              title: 'Leaf',
-              key: '0-0-0-0',
-            },
-            {
-              title: 'Leaf',
-              key: '0-0-0-1',
-            }
-          ]
-        },
-        {
-          title: 'Branch 0-0-1',
-          key: '0-0-1',
-          children: [
-            {
-              title: 'Leaf',
-              key: '0-0-1-0',
-            },
-          ]
-        },
-      ],
-    },
-  ];
+const treeData = [
+  {
+    title: 'Trunk 0-0',
+    key: '0-0',
+    children: [
+      {
+        title: 'Branch 0-0-0',
+        key: '0-0-0',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-0-0-0',
+          },
+          {
+            title: 'Leaf',
+            key: '0-0-0-1',
+          }
+        ]
+      },
+      {
+        title: 'Branch 0-0-1',
+        key: '0-0-1',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-0-1-0',
+          },
+        ]
+      },
+    ],
+  },
+];
 </script>
 ```

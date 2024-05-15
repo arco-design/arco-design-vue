@@ -33,80 +33,67 @@ title:
     </a-tree>
   </div>
 </template>
-<script>
- import {ref} from 'vue';
- import { IconPlus } from '@arco-design/web-vue/es/icon';
 
- export default {
-   components: {
-     IconPlus,
-   },
-   setup() {
-     function onIconClick(nodeData) {
-      const children = nodeData.children || []
-      children.push({
-        title: 'new tree node',
-        key: nodeData.key + '-' + (children.length + 1)
-      })
-      nodeData.children = children
+<script setup>
+import { ref } from 'vue';
+import { IconPlus } from '@arco-design/web-vue/es/icon';
 
-      treeData.value = [...treeData.value];
-    }
+const onIconClick = (nodeData) => {
+  const children = nodeData.children || [];
+  children.push({
+    title: 'new tree node',
+    key: nodeData.key + '-' + (children.length + 1),
+  });
+  nodeData.children = children;
 
-    const treeData = ref(
-      [
-        {
-          title: 'Trunk',
-          key: '0-0',
-          children: [
-            {
-              title: 'Leaf',
-              key: '0-0-1',
-            },
-            {
-              title: 'Branch',
-              key: '0-0-2',
-              children: [
-                {
-                  title: 'Leaf',
-                  key: '0-0-2-1'
-                }
-              ]
-            },
-          ],
-        },
-        {
-          title: 'Trunk',
-          key: '0-1',
-          children: [
-            {
-              title: 'Branch',
-              key: '0-1-1',
-              children: [
-                {
-                  title: 'Leaf',
-                  key: '0-1-1-1',
-                },
-                {
-                  title: 'Leaf',
-                  key: '0-1-1-2',
-                },
-              ]
-            },
-            {
-              title: 'Leaf',
-              key: '0-1-2',
-            },
-          ],
-        },
-      ]
-    );
+  treeData.value = [...treeData.value];
+}
 
-    return {
-      onIconClick,
-      treeData,
-    };
-   }
- };
+const treeData = ref([
+  {
+    title: 'Trunk',
+    key: '0-0',
+    children: [
+      {
+        title: 'Leaf',
+        key: '0-0-1',
+      },
+      {
+        title: 'Branch',
+        key: '0-0-2',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-0-2-1',
+          },
+        ],
+     },
+   ],
+  },
+  {
+    title: 'Trunk',
+    key: '0-1',
+    children: [
+      {
+        title: 'Branch',
+        key: '0-1-1',
+        children: [
+          {
+            title: 'Leaf',
+            key: '0-1-1-1',
+          },
+          {
+            title: 'Leaf',
+            key: '0-1-1-2',
+          },
+        ],
+      },
+      {
+        title: 'Leaf',
+        key: '0-1-2',
+      },
+    ],
+  },
+]);
 </script>
 ```
