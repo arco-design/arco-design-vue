@@ -39,7 +39,9 @@ We provide a variety of preset colors for the badge. And you can also set a cust
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue';
+
 const COLORS = [
   'red',
   'orangered',
@@ -70,13 +72,8 @@ const COLORS_CUSTOM = [
   '#168CFF',
   '#FF5722',
 ];
-export default {
-  data() {
-    return {
-      colors: COLORS,
-      customColors: COLORS_CUSTOM,
-    };
-  },
-};
+
+const colors = ref(COLORS);
+const customColors = ref(COLORS_CUSTOM);
 </script>
 ```

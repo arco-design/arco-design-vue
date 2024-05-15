@@ -30,11 +30,7 @@ A red dot will be displayed instead of the count. The dot will be showed only wh
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { IconNotification } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconNotification },
-};
 </script>
 ```

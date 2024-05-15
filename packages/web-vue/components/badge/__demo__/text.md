@@ -36,11 +36,7 @@ Customize the content.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { IconUser } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconUser },
-};
 </script>
 ```
