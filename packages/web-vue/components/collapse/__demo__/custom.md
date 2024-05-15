@@ -34,20 +34,12 @@ custom panels styles.
   </a-collapse>
 </template>
 
-<script>
-export default {
-  setup() {
-    const customStyle = {
-      borderRadius: '6px',
-      marginBottom: '18px',
-      border: 'none',
-      overflow: 'hidden',
-    }
-
-    return {
-      customStyle
-    }
-  }
-}
+<script setup>
+const customStyle = {
+  borderRadius: '6px',
+  marginBottom: '18px',
+  border: 'none',
+  overflow: 'hidden',
+};
 </script>
 ```
