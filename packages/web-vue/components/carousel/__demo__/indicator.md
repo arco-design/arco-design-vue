@@ -62,27 +62,23 @@ You can specify the indicator type: `dot` | `line` | `slider` and position `left
   </a-space>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      images: [
-        'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
-        'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
-        'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
-      ],
-      indicatorType: 'dot',
-      indicatorPosition: 'bottom',
-    };
-  },
-  methods: {
-    updateType(type) {
-      this.indicatorType = type;
-    },
-    updatePosition(position) {
-      this.indicatorPosition = position;
-    },
-  },
+<script setup>
+import { ref } from 'vue';
+
+const images = ref([
+  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp',
+  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp',
+  'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
+]);
+const indicatorType = ref('dot');
+const indicatorPosition = ref('bottom');
+
+const updateType = (type) => {
+  indicatorType.value = type;
+};
+
+const updatePosition = (position) => {
+  indicatorPosition.value = position;
 };
 </script>
 ```
