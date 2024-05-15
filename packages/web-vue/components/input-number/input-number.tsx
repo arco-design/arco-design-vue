@@ -518,6 +518,9 @@ export default defineComponent({
     ]);
 
     const renderPrependButton = () => {
+      if (props.readOnly) {
+        return null;
+      }
       return (
         <ArcoButton
           size={mergedSize.value}
@@ -535,6 +538,9 @@ export default defineComponent({
     };
 
     const renderAppendButton = () => {
+      if (props.readOnly) {
+        return null;
+      }
       return (
         <ArcoButton
           size={mergedSize.value}
