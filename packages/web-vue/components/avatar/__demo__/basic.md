@@ -34,11 +34,7 @@ The basic use of avatars. If the avatar is text, the font size will be automatic
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { IconUser } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconUser },
-};
 </script>
 ```
