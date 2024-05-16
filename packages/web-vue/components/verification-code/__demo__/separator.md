@@ -27,6 +27,6 @@ Specify `separator` to customize the rendering separator
 </template>
 
 <script setup>
-import { Message} from '@arco-design/web-vue';
+import { Message } from '@arco-design/web-vue';
 </script>
 ```
