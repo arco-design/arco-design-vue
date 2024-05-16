@@ -43,32 +43,20 @@ Customize the position and click the trigger button to slide out the drawer from
   </a-drawer>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
-    const position = ref('right');
+const visible = ref(false);
+const position = ref('right');
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleOk = () => {
-      visible.value = false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      visible,
-      position,
-      handleClick,
-      handleOk,
-      handleCancel
-    }
-  },
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
 };
 </script>
 ```

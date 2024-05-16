@@ -42,32 +42,20 @@ Customize the content by slot, or set the appropriate properties to control whet
   </a-drawer>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
-    const custom = ref([])
+const visible = ref(false);
+const custom = ref([]);
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleOk = () => {
-      visible.value = false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      custom,
-      visible,
-      handleClick,
-      handleOk,
-      handleCancel
-    }
-  },
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
 };
 </script>
 ```
