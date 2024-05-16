@@ -29,47 +29,35 @@ When implementing the function of selecting all, you can display the half-select
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const indeterminate = ref(false)
-    const checkedAll = ref(false)
-    const data = ref([])
+const indeterminate = ref(false);
+const checkedAll = ref(false);
+const data = ref([]);
 
-    const handleChangeAll = (value) => {
-      indeterminate.value = false;
-      if (value) {
-        checkedAll.value = true;
-        data.value = ['1', '2', '3']
-      } else {
-        checkedAll.value = false;
-        data.value = []
-      }
-    }
+const handleChangeAll = (value) => {
+  indeterminate.value = false;
+  if (value) {
+    checkedAll.value = true;
+    data.value = ['1', '2', '3'];
+  } else {
+    checkedAll.value = false;
+    data.value = [];
+  }
+};
 
-    const handleChange = (values) => {
-      if (values.length === 3) {
-        checkedAll.value = true
-        indeterminate.value = false;
-      } else if (values.length === 0) {
-        checkedAll.value = false
-        indeterminate.value = false;
-      } else {
-        checkedAll.value = false
-        indeterminate.value = true;
-      }
-    }
-
-    return {
-      indeterminate,
-      checkedAll,
-      data,
-      handleChangeAll,
-      handleChange
-    }
-  },
-}
+const handleChange = (values) => {
+  if (values.length === 3) {
+    checkedAll.value = true;
+    indeterminate.value = false;
+  } else if (values.length === 0) {
+    checkedAll.value = false;
+    indeterminate.value = false;
+  } else {
+    checkedAll.value = false;
+    indeterminate.value = true;
+  }
+};
 </script>
 ```
