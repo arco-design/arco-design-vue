@@ -28,32 +28,26 @@ Need to set up `closable: true`, Custom elements use the `closeIconElement`, onl
   </a-space>
 </template>
 
-<script lang="jsx">
+<script lang="jsx" setup>
 import { Notification, Button } from '@arco-design/web-vue';
 import { IconCloseCircle } from '@arco-design/web-vue/es/icon';
 
-export default {
-  setup() {
-    const handleNotification = () => {
-      Notification.info({
-        title:'Notification',
-        content:'This is a notification!',
-        closable: true,
-        closeIcon: <IconCloseCircle />
-      })
-    }
+const handleNotification = () => {
+  Notification.info({
+    title:'Notification',
+    content:'This is a notification!',
+    closable: true,
+    closeIcon: <IconCloseCircle />,
+  });
+};
 
-    const handleNotification2 = () => {
-      Notification.error({
-        title:'Notification',
-        content:'This is a notification!',
-        closable: true,
-        closeIconElement: <Button size="mini">Close</Button>
-      })
-    }
-
-    return { handleNotification, handleNotification2 }
-  }
-}
+const handleNotification2 = () => {
+  Notification.error({
+    title:'Notification',
+    content:'This is a notification!',
+    closable: true,
+    closeIconElement: <Button size="mini">Close</Button>,
+  });
+};
 </script>
 ```

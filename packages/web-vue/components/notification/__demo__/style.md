@@ -23,22 +23,16 @@ You can set `style` and `class` to customize the style.
   </a-button>
 </template>
 
-<script>
+<script setup>
 import { Notification } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const handleNotification = () => {
-      Notification.info({
-        title: 'Notification',
-        content: 'This is a notification!',
-        closable: true,
-        style: { width: '500px' }
-      })
-    }
-
-    return { handleNotification }
-  }
-}
+const handleNotification = () => {
+  Notification.info({
+    title: 'Notification',
+    content: 'This is a notification!',
+    closable: true,
+    style: { width: '500px' },
+  });
+};
 </script>
 ```

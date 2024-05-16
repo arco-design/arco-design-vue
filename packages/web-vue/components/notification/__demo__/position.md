@@ -26,49 +26,38 @@ Notification has 4 different positions, `Top Left`, `Top Right (default)`, `Bott
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { Notification } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const handleNotification = () => {
-      Notification.info({
-        title: 'Title',
-        content: 'This is a Notification!',
-      })
-    }
+const handleNotification = () => {
+  Notification.info({
+    title: 'Title',
+    content: 'This is a Notification!',
+  });
+};
 
-    const handleNotificationTopLeft = () => {
-      Notification.info({
-        title: 'Title',
-        content: 'This is a Notification!',
-        position: "topLeft"
-      })
-    }
+const handleNotificationTopLeft = () => {
+  Notification.info({
+    title: 'Title',
+    content: 'This is a Notification!',
+    position: 'topLeft',
+  });
+};
 
-    const handleNotificationBottomRight = () => {
-      Notification.info({
-        title: 'Title',
-        content: 'This is a Notification!',
-        position: 'bottomRight'
-      })
-    }
+const handleNotificationBottomRight = () => {
+  Notification.info({
+    title: 'Title',
+    content: 'This is a Notification!',
+    position: 'bottomRight',
+  });
+};
 
-    const handleNotificationBottomLeft = () => {
-      Notification.info({
-        title: 'Title',
-        content: 'This is a Notification!',
-        position: "bottomLeft"
-      })
-    }
-
-    return {
-      handleNotification,
-      handleNotificationTopLeft,
-      handleNotificationBottomRight,
-      handleNotificationBottomLeft
-    }
-  }
-}
+const handleNotificationBottomLeft = () => {
+  Notification.info({
+    title: 'Title',
+    content: 'This is a Notification!',
+    position: 'bottomLeft',
+  });
+};
 </script>
 ```
