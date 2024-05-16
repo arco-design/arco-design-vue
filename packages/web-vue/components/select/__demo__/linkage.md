@@ -27,29 +27,19 @@ Show how to realize the linkage selection box.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref, watch } from 'vue';
 
-export default {
-  setup() {
-    const province = ref('Sichuan');
-    const city = ref('Chengdu');
-    const data = {
-      Beijing: ['Haidian', 'Chaoyang', 'Changping'],
-      Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
-      Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou']
-    };
+const province = ref('Sichuan');
+const city = ref('Chengdu');
+const data = {
+  Beijing: ['Haidian', 'Chaoyang', 'Changping'],
+  Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
+  Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou'],
+};
 
-    watch(province, () => {
-      city.value = ''
-    })
-
-    return {
-      province,
-      city,
-      data
-    }
-  },
-}
+watch(province, () => {
+  city.value = '';
+});
 </script>
 ```

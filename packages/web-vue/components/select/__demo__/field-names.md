@@ -22,38 +22,16 @@ The format of the data in `options` can be customized through the `field-names` 
             placeholder="Please select ..." />
 </template>
 
-<script>
+<script setup>
 import { reactive, ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref('bj');
-    const fieldNames = {value: 'city', label: 'text'}
-    const options = reactive([
-      {
-        city: 'bj',
-        text: 'Beijing'
-      },
-      {
-        city: 'sh',
-        text: 'Shanghai'
-      },
-      {
-        city: 'gz',
-        text: 'Guangzhou'
-      },
-      {
-        city: 'cd',
-        text: 'Chengdu'
-      },
-    ]);
-
-    return {
-      value,
-      fieldNames,
-      options
-    }
-  }
-}
+const value = ref('bj');
+const fieldNames = {value: 'city', label: 'text'};
+const options = reactive([
+  { city: 'bj', text: 'Beijing' },
+  { city: 'sh', text: 'Shanghai' },
+  { city: 'gz', text: 'Guangzhou' },
+  { city: 'cd', text: 'Chengdu' },
+]);
 </script>
 ```

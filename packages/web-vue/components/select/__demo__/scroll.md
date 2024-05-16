@@ -35,21 +35,12 @@ You can monitor the scroll event of the drop-down menu through `dropdown-scroll`
   </a-select>
 </template>
 
-<script>
-export default {
-  setup() {
-    const handleScroll = (ev) => {
-      console.log('scroll', ev)
-    }
-    const handleReachBottom = (ev) => {
-      console.log('reach the bottom', ev)
-    }
-
-    return {
-      handleScroll,
-      handleReachBottom
-    }
-  },
-}
+<script setup>
+const handleScroll = (ev) => {
+  console.log('scroll', ev);
+};
+const handleReachBottom = (ev) => {
+  console.log('reach the bottom', ev);
+};
 </script>
 ```

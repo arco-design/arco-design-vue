@@ -44,19 +44,12 @@ Use `fallback-option` to customize the value that does not exist in the option. 
   </a-space>
 </template>
 
-<script>
-export default {
-  setup() {
-    const fallback = (value) => {
-      return {
-        value,
-        label: `++${value}++`
-      }
-    };
-    return {
-      fallback
-    }
-  },
-}
+<script setup>
+const fallback = (value) => {
+  return {
+    value,
+    label: `++${value}++`
+  }
+};
 </script>
 ```

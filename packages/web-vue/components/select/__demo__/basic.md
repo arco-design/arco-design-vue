@@ -48,39 +48,30 @@ Use the `trigger-props` property to customize the properties of the drop-down bo
       <a-option>Guangzhou</a-option>
       <a-option disabled>Disabled</a-option>
     </a-select>
-    
+
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref();
-    const data = [{
-      value: 'beijing',
-      label: 'Beijing',
-      other: 'extra'
-    }, {
-      value: 'shanghai',
-      label: 'Shanghai',
-      other: 'extra'
-    }, {
-      value: 'guangzhou',
-      label: 'Guangzhou',
-      other: 'extra'
-    }, {
-      value: 'chengdu',
-      label: 'Chengdu',
-      other: 'extra'
-    }]
-
-    return {
-      value,
-      data
-    }
-  },
-}
+const value = ref();
+const data = [{
+  value: 'beijing',
+  label: 'Beijing',
+  other: 'extra',
+}, {
+  value: 'shanghai',
+  label: 'Shanghai',
+  other: 'extra',
+}, {
+  value: 'guangzhou',
+  label: 'Guangzhou',
+  other: 'extra',
+}, {
+  value: 'chengdu',
+  label: 'Chengdu',
+  other: 'extra',
+}];
 </script>
 ```

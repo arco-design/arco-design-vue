@@ -29,11 +29,7 @@ The display content of the select box can be customized through the `#label` slo
   </a-select>
 </template>
 
-<script>
+<script setup>
 import { IconPlus } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconPlus }
-};
 </script>
 ```
