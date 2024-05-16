@@ -26,6 +26,6 @@ Basic usage
 
 <script setup>
 import { ref } from 'vue';
-const value = ref('#165DFF')
+const value = ref('#165DFF');
 </script>
 ```

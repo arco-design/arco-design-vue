@@ -30,7 +30,7 @@ The preset color and history color areas can be opened through `showPreset` and 
 <script setup>
 import { ref } from 'vue';
 
-const history = ref(['#165DFF'])
+const history = ref(['#165DFF']);
 const addHistory = (visible, color) => {
   if (!visible) {
     const index = history.value.indexOf(color);
@@ -39,6 +39,6 @@ const addHistory = (visible, color) => {
     }
     history.value.unshift(color);
   }
-}
+};
 </script>
 ```
