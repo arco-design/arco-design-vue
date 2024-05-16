@@ -43,25 +43,14 @@ Showed the usage methods for automatically scrolling to the first error field on
   </a-form>
 </template>
 
-<script>
+<script setup>
 import { reactive, ref } from 'vue';
 
-export default {
-  setup() {
-    const formRef = ref(null);
-    const fieldCount = 20;
-    const fieldNames = Array.from({ length: fieldCount }, (_, index) => `name${index}`);
-    const form = reactive(Object.fromEntries(
-      fieldNames.map((fieldName, index) => [fieldName, index === 7 ? '' : index.toString()])
-    ));
-
-    return {
-      form,
-      formRef,
-      fieldCount,
-      fieldNames
-    };
-  },
-};
+const formRef = ref(null);
+const fieldCount = 20;
+const fieldNames = Array.from({ length: fieldCount }, (_, index) => `name${index}`);
+const form = reactive(Object.fromEntries(
+  fieldNames.map((fieldName, index) => [fieldName, index === 7 ? '' : index.toString()])
+));
 </script>
 ```
