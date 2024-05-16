@@ -44,17 +44,9 @@ and call `updatePosition` to update the position of the pin.
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const containerRef = ref();
-
-    return {
-      containerRef,
-    };
-  },
-}
+const containerRef = ref();
 </script>
 ```
