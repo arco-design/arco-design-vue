@@ -44,31 +44,21 @@ Vertical step bar.
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const current = ref(1);
+const current = ref(1);
 
-    const onPrev = () => {
-      current.value = Math.max(1, current.value - 1);
-    };
+function onPrev() {
+  current.value = Math.max(1, current.value - 1);
+}
 
-    const onNext = () => {
-      current.value = Math.min(3, current.value + 1);
-    };
-
-    return {
-      current,
-      onPrev,
-      onNext,
-    }
-  },
-};
+function onNext () {
+  current.value = Math.min(3, current.value + 1);
+}
 </script>
 
-<style scoped lang="less">
+<style scoped>
 .frame-bg {
   max-width: 780px;
   padding: 40px;
@@ -99,7 +89,7 @@ export default {
   display: flex;
   justify-content: center;
 
-  button {
+  > button {
     margin: 0 20px;
   }
 }

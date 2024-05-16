@@ -43,26 +43,22 @@ Set `changeable` to enable the click switch step.
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      current: 1,
-    };
-  },
-  methods: {
-    onPrev() {
-      this.current = Math.max(1, this.current - 1)
-    },
 
-    onNext() {
-      this.current = Math.min(3, this.current + 1)
-    },
+<script setup>
+import { ref } from 'vue';
 
-    setCurrent(current) {
-      this.current = current
-    }
-  }
-};
+const current = ref(1);
+
+function onPrev() {
+  current.value = Math.max(1, current.value - 1);
+}
+
+function onNext() {
+  current.value = Math.min(3, current.value + 1);
+}
+
+function setCurrent(current) {
+  current.value = current;
+}
 </script>
 ```

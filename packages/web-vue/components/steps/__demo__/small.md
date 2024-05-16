@@ -26,7 +26,7 @@ small steps
       <a-step>Pending</a-step>
     </a-steps>
     <a-divider/>
-    <div style="line-height: 140px; text-align: center; color: #C9CDD4; ">
+    <div style="line-height: 140px; text-align: center; color: #C9CDD4;">
       Step 2 Content
     </div>
   </div>
