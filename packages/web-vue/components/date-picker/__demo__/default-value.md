@@ -71,22 +71,16 @@ DatePicker has a default value.
     style="width: 300px; marginBottom: 24px;"
   />
 </template>
-<script>
+
+<script setup>
 import dayjs from 'dayjs';
 
-export default {
-  setup() {
-    return {
-      dayjs,
-      onSelect(dateString, date) {
-        console.log('onSelect', dateString, date);
-      },
-      onChange(dateString, date) {
-        console.log('onChange: ', dateString, date);
-      },
-      style: { width: '200px', marginBottom: '24px', marginRight: '24px' }
-    }
-  }
-}
+const onSelect = (dateString, date) => {
+  console.log('onSelect', dateString, date);
+};
+const onChange = (dateString, date) => {
+  console.log('onChange: ', dateString, date);
+};
+const style = { width: '200px', marginBottom: '24px', marginRight: '24px' };
 </script>
 ```

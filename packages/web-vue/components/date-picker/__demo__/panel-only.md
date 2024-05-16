@@ -33,14 +33,11 @@ Only use panel, hide input selection.
     />
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      pickerValue: null,
-      rangePickerValue: null,
-    };
-  }
-};
+
+<script setup>
+import { ref } from 'vue';
+
+const pickerValue = ref(null);
+const rangePickerValue = ref(null);
 </script>
 ```

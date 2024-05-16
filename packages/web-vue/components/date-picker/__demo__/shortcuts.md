@@ -89,14 +89,8 @@ Use `shortcuts` to preset time for quick selection.
     ]"
   />
 </template>
-<script>
+
+<script setup>
 import dayjs from 'dayjs';
-export default {
-  setup() {
-    return {
-      dayjs
-    }
-  }
-}
 </script>
 ```

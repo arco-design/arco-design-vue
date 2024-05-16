@@ -45,26 +45,18 @@ Use `showTime` to select a date with time.
     @ok="onOk"
   />
 </template>
-<script>
-export default {
-  setup() {
-    function onSelect(dateString, date) {
-      console.log('onSelect', dateString, date);
-    }
 
-    function onChange(dateString, date) {
-      console.log('onChange: ', dateString, date);
-    }
+<script setup>
+function onSelect(dateString, date) {
+  console.log('onSelect', dateString, date);
+}
 
-    function onOk(dateString, date) {
-      console.log('onOk: ', dateString, date);
-    }
-    return {
-      onSelect,
-      onChange,
-      onOk,
-    };
-  }
+function onChange(dateString, date) {
+  console.log('onChange: ', dateString, date);
+}
+
+function onOk(dateString, date) {
+  console.log('onOk: ', dateString, date);
 }
 </script>
 ```

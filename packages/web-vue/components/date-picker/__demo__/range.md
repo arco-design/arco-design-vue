@@ -62,18 +62,13 @@ The basic usage of RangePicker.
     style=" width: 380px; "
   />
 </template>
-<script>
-export default {
-  setup() {
-    return {
-      onSelect(dateString, date) {
-        console.log('onSelect', dateString, date);
-      },
-      onChange(dateString, date) {
-        console.log('onChange: ', dateString, date);
-      },
-    };
-  },
+
+<script setup>
+function onSelect(dateString, date) {
+  console.log('onSelect', dateString, date);
+}
+function onChange(dateString, date) {
+  console.log('onChange: ', dateString, date);
 }
 </script>
 ```

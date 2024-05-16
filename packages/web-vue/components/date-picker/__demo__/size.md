@@ -31,13 +31,10 @@ Setting `size` can use four sizes (`mini` `small` `medium` `large`). The height 
     style="width: 254px;"
   />
 </template>
-<script>
-export default {
-  data() {
-    return {
-      size: 'small'
-    }
-  }
-}
+
+<script setup>
+import { ref } from 'vue';
+
+const size = ref('small');
 </script>
 ```
