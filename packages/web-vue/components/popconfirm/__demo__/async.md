@@ -36,20 +36,20 @@ $END$
 <script setup>
 import { ref } from 'vue';
 
-const visible = ref(false)
+const visible = ref(false);
 
 const handleClick = () => {
   visible.value = true;
-}
+};
 
 const handleBeforeOk = (done) => {
   window.setTimeout(() => {
-    done()
-  }, 3000)
-}
+    done();
+  }, 3000);
+};
 
 const handleCancel = () => {
   visible.value = false;
-}
+};
 </script>
 ```
