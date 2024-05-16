@@ -25,21 +25,18 @@ The input box is divided into four sizes: `mini`, `small`, `medium`, and `large`
       <a-radio value="medium">medium</a-radio>
       <a-radio value="large">large</a-radio>
     </a-radio-group>
-    <a-input-tag :default-value="['one']" :style="{width:'320px'}" placeholder="Please enter something" :size="size" allow-clear />
+    <a-input-tag
+      :default-value="['one']"
+      :style="{width:'320px'}"
+      placeholder="Please enter something"
+      :size="size" allow-clear
+    />
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const size = ref('medium');
-
-    return {
-      size
-    }
-  },
-}
+const size = ref('medium');
 </script>
 ```
