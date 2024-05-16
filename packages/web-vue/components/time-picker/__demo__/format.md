@@ -20,13 +20,10 @@ By setting `format`, you can customize the hour, minute, and second.
 <template>
   <a-time-picker format="HH:mm" :defaultValue="defaultValue" style="width: 130px;" />
 </template>
-<script>
-export default {
-  data() {
-    return {
-      defaultValue: '09:24'
-    }
-  }
-}
+
+<script setup>
+import { ref } from 'vue';
+
+const defaultValue = ref('09:24');
 </script>
 ```

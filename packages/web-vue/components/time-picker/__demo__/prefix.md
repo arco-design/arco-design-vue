@@ -35,11 +35,7 @@ The prefix of the input box can be set through the `prefix` slot
   </div>
 </template>
 
-<script>
+<script setup>
 import { IconInfoCircle } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconInfoCircle },
-};
 </script>
 ```

@@ -25,6 +25,7 @@ By setting `step`, you can customize the step length of the hour, minute, and se
       minute: 5,
       second: 10,
     }"
-    style="width: 194px;" />
+    style="width: 194px;"
+  />
 </template>
 ```

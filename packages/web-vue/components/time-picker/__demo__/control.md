@@ -23,13 +23,10 @@ Support `v-model` for two-way data binding.
     v-model="value"
   />
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        value: null
-      }
-    }
-  }
+
+<script setup>
+import { ref } from 'vue';
+
+const value = ref(null);
 </script>
 ```
