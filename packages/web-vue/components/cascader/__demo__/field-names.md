@@ -18,72 +18,62 @@ The format of the data in `options` can be customized through the `field-names` 
 
 ```vue
 <template>
-  <a-cascader :options="options" :field-names="fieldNames" :style="{width:'320px'}"
-            placeholder="Please select ..." />
+  <a-cascader :options="options" :field-names="fieldNames" :style="{width:'320px'}" placeholder="Please select ..." />
 </template>
 
-<script>
-import { reactive } from 'vue';
+<script setup>
+import { ref } from 'vue';
 
-export default {
-  setup() {
-    const fieldNames = {value: 'city', label: 'text'}
-    const options = reactive([
+const fieldNames = {value: 'city', label: 'text'}
+const options = ref([
+  {
+    city: 'beijing',
+    text: 'Beijing',
+    children: [
       {
-        city: 'beijing',
-        text: 'Beijing',
+        city: 'chaoyang',
+        text: 'ChaoYang',
         children: [
           {
-            city: 'chaoyang',
-            text: 'ChaoYang',
-            children: [
-              {
-                city: 'datunli',
-                text: 'Datunli',
-              },
-            ],
-          },
-          {
-            city: 'haidian',
-            text: 'Haidian',
-          },
-          {
-            city: 'dongcheng',
-            text: 'Dongcheng',
-          },
-          {
-            city: 'xicheng',
-            text: 'Xicheng',
-            children: [
-              {
-                city: 'jinrongjie',
-                text: 'Jinrongjie',
-              },
-              {
-                city: 'tianqiao',
-                text: 'Tianqiao',
-              },
-            ],
+            city: 'datunli',
+            text: 'Datunli',
           },
         ],
       },
       {
-        city: 'shanghai',
-        text: 'Shanghai',
+        city: 'haidian',
+        text: 'Haidian',
+      },
+      {
+        city: 'dongcheng',
+        text: 'Dongcheng',
+      },
+      {
+        city: 'xicheng',
+        text: 'Xicheng',
         children: [
           {
-            city: 'huangpu',
-            text: 'Huangpu',
+            city: 'jinrongjie',
+            text: 'Jinrongjie',
+          },
+          {
+            city: 'tianqiao',
+            text: 'Tianqiao',
           },
         ],
       },
-    ]);
-
-    return {
-      fieldNames,
-      options
-    }
-  }
-}
+    ],
+  },
+  {
+    city: 'shanghai',
+    text: 'Shanghai',
+    children: [
+      {
+        city: 'huangpu',
+        text: 'Huangpu',
+      },
+    ],
+  },
+]);
 </script>
 ```

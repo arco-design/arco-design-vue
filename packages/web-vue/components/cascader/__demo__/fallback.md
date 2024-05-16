@@ -25,74 +25,64 @@ The component will display the value that does not exist in the options by defau
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref(['datunli', 'wuhou']);
-    const value2 = ref([['beijing', 'chaoyang', 'datunli'], ['sichuan', 'chengdu', 'wuhou']]);
-    const fallback = (value) => {
-      return value.map(item => item.toUpperCase()).join('-')
-    }
+const value = ref(['datunli', 'wuhou']);
+const value2 = ref([['beijing', 'chaoyang', 'datunli'], ['sichuan', 'chengdu', 'wuhou']]);
+const fallback = (value) => {
+  return value.map(item => item.toUpperCase()).join('-');
+};
 
-    const options = [
+const options = [
+  {
+    value: 'beijing',
+    label: 'Beijing',
+    children: [
       {
-        value: 'beijing',
-        label: 'Beijing',
+        value: 'chaoyang',
+        label: 'ChaoYang',
         children: [
           {
-            value: 'chaoyang',
-            label: 'ChaoYang',
-            children: [
-              {
-                value: 'datunli',
-                label: 'Datunli',
-              },
-            ],
-          },
-          {
-            value: 'haidian',
-            label: 'Haidian',
-          },
-          {
-            value: 'dongcheng',
-            label: 'Dongcheng',
-          },
-          {
-            value: 'xicheng',
-            label: 'Xicheng',
-            children: [
-              {
-                value: 'jinrongjie',
-                label: 'Jinrongjie',
-              },
-              {
-                value: 'tianqiao',
-                label: 'Tianqiao',
-              },
-            ],
+            value: 'datunli',
+            label: 'Datunli',
           },
         ],
       },
       {
-        value: 'shanghai',
-        label: 'Shanghai',
+        value: 'haidian',
+        label: 'Haidian',
+      },
+      {
+        value: 'dongcheng',
+        label: 'Dongcheng',
+      },
+      {
+        value: 'xicheng',
+        label: 'Xicheng',
         children: [
           {
-            value: 'huangpu',
-            label: 'Huangpu',
+            value: 'jinrongjie',
+            label: 'Jinrongjie',
+          },
+          {
+            value: 'tianqiao',
+            label: 'Tianqiao',
           },
         ],
       },
-    ];
-    return {
-      options,
-      value,
-      value2,
-      fallback
-    }
+    ],
   },
-}
+  {
+    value: 'shanghai',
+    label: 'Shanghai',
+    children: [
+      {
+        value: 'huangpu',
+        label: 'Huangpu',
+      },
+    ],
+  },
+];
 </script>
 ```

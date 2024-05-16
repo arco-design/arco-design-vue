@@ -19,79 +19,78 @@ title:
 ```vue
 <template>
   <a-space direction="vertical" size="large">
-    <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." path-mode
-                @change="handleChange" />
-    <a-cascader :options="options"
-                :default-value="[['beijing','chaoyang','datunli']]"
-                :style="{width:'320px'}"
-                placeholder="Please select ..."
-                path-mode
-                @change="handleChange" />
+    <a-cascader
+      :options="options"
+      :style="{width:'320px'}"
+      placeholder="Please select ..."
+      path-mode
+      @change="handleChange"
+    />
+    <a-cascader
+      :options="options"
+      :default-value="[['beijing','chaoyang','datunli']]"
+      :style="{width:'320px'}"
+      placeholder="Please select ..."
+      path-mode
+      @change="handleChange"
+    />
   </a-space>
 </template>
 
-<script>
-export default {
-  setup() {
-    const handleChange = (path) => {
-      console.log(path)
-    }
+<script setup>
+const options = [
+    {
+      value: 'beijing',
+      label: 'Beijing',
+      children: [
+        {
+          value: 'chaoyang',
+          label: 'ChaoYang',
+          children: [
+            {
+              value: 'datunli',
+              label: 'Datunli',
+            },
+          ],
+        },
+        {
+          value: 'haidian',
+          label: 'Haidian',
+        },
+        {
+          value: 'dongcheng',
+          label: 'Dongcheng',
+        },
+        {
+          value: 'xicheng',
+          label: 'Xicheng',
+          children: [
+            {
+              value: 'jinrongjie',
+              label: 'Jinrongjie',
+            },
+            {
+              value: 'tianqiao',
+              label: 'Tianqiao',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      value: 'shanghai',
+      label: 'Shanghai',
+      children: [
+        {
+          value: 'huangpu',
+          label: 'Huangpu',
+        },
+      ],
+    },
+  ];
 
-    const options = [
-      {
-        value: 'beijing',
-        label: 'Beijing',
-        children: [
-          {
-            value: 'chaoyang',
-            label: 'ChaoYang',
-            children: [
-              {
-                value: 'datunli',
-                label: 'Datunli',
-              },
-            ],
-          },
-          {
-            value: 'haidian',
-            label: 'Haidian',
-          },
-          {
-            value: 'dongcheng',
-            label: 'Dongcheng',
-          },
-          {
-            value: 'xicheng',
-            label: 'Xicheng',
-            children: [
-              {
-                value: 'jinrongjie',
-                label: 'Jinrongjie',
-              },
-              {
-                value: 'tianqiao',
-                label: 'Tianqiao',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        value: 'shanghai',
-        label: 'Shanghai',
-        children: [
-          {
-            value: 'huangpu',
-            label: 'Huangpu',
-          },
-        ],
-      },
-    ];
-    return {
-      options,
-      handleChange
-    }
-  },
-}
+const handleChange = (path) => {
+  console.log(path);
+};
 </script>
 ```
