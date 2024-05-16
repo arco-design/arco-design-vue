@@ -62,7 +62,8 @@ Use `collapsed` to specify the menu to collapse.
     </a-menu>
   </div>
 </template>
-<script>
+
+<script setup>
 import { ref } from 'vue';
 import {
   IconMenuFold,
@@ -72,23 +73,13 @@ import {
   IconBulb,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-  setup() {
-    const collapsed = ref(false);
-    return {
-      collapsed,
-      toggleCollapse: () => { collapsed.value = !collapsed.value; },
-    }
-  }
+const collapsed = ref(false);
+
+const toggleCollapse = () => {
+  collapsed.value = !collapsed.value;
 };
 </script>
+
 <style scoped>
 .menu-demo {
   box-sizing: border-box;

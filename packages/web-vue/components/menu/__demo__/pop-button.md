@@ -78,7 +78,9 @@ By setting `mode` to `popButton`, you can use a button group style floating menu
     </a-trigger>
   </div>
 </template>
-<script>
+
+<script setup>
+import { ref } from 'vue';
 import {
   IconBug,
   IconBulb,
@@ -86,21 +88,10 @@ import {
   IconMessage,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconBug,
-    IconBulb,
-    IconClose,
-    IconMessage,
-  },
-  data() {
-    return {
-      popupVisible1: false,
-      popupVisible2: false,
-    };
-  }
-};
+const popupVisible1 = ref(false);
+const popupVisible2 = ref(false);
 </script>
+
 <style scoped>
 .menu-demo {
   box-sizing: border-box;

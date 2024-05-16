@@ -58,7 +58,9 @@ Freely specify width of menu and height of menu item through `style`.
     </a-menu>
   </div>
 </template>
-<script>
+
+<script setup>
+import { ref } from 'vue';
 import {
   IconMenuFold,
   IconMenuUnfold,
@@ -67,21 +69,9 @@ import {
   IconBulb,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-  data() {
-    return {
-      width: 240
-    }
-  }
-};
+const width = ref(240);
 </script>
+
 <style scoped>
 .menu-demo {
   box-sizing: border-box;

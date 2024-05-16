@@ -55,8 +55,8 @@ set `breakpoint` for responsive contraction.
     </a-menu>
   </div>
 </template>
-<script>
-import { ref } from 'vue';
+
+<script setup>
 import { Message } from '@arco-design/web-vue';
 import {
   IconMenuFold,
@@ -66,27 +66,15 @@ import {
   IconBulb,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-  setup() {
-    return {
-      onCollapse(val, type) {
-        const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
-        Message.info({
-          content,
-          duration: 2000,
-        });
-      }
-    };
-  }
-};
+function onCollapse(val, type) {
+  const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
+  Message.info({
+    content,
+    duration: 2000,
+  });
+}
 </script>
+
 <style scoped>
 .menu-demo {
   box-sizing: border-box;

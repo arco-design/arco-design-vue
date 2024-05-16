@@ -48,21 +48,15 @@ Specify `mode` as `pop` to use floating menu.
     </a-menu>
   </div>
 </template>
-<script>
+
+<script setup>
 import {
   IconApps,
   IconBug,
   IconBulb,
 } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-};
 </script>
+
 <style scoped>
 .menu-demo {
   width: 100%;
