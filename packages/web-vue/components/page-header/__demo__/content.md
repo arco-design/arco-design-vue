@@ -61,9 +61,4 @@ A complete example of the header.
     </a-page-header>
   </div>
 </template>
-
-<script>
-export default {
-}
-</script>
 ```
