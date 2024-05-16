@@ -39,37 +39,25 @@ When setting `auto-upload` to `false`, you can manually upload by calling the `s
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const uploadRef = ref();
-    const files = ref([]);
+const uploadRef = ref();
+const files = ref([]);
 
-    const submitOne = (e) => {
-      e.stopPropagation();
-      console.log(files.value);
-      uploadRef.value.submit(files.value.find((x) => x.status === 'init'));
-    };
+const submitOne = (e) => {
+  e.stopPropagation();
+  console.log(files.value);
+  uploadRef.value.submit(files.value.find((x) => x.status === 'init'));
+};
 
-    const submit = (e) => {
-      e.stopPropagation();
-      uploadRef.value.submit();
-    };
+const submit = (e) => {
+  e.stopPropagation();
+  uploadRef.value.submit();
+};
 
-    const onChange = (fileList) => {
-      files.value = fileList;
-    };
-
-    return {
-      uploadRef,
-      files,
-      submitOne,
-      submit,
-      onChange,
-    };
-  },
+const onChange = (fileList) => {
+  files.value = fileList;
 };
 </script>
 ```
