@@ -40,22 +40,14 @@ Multiple Selection
     ></a-tree-select>
   </a-space>
 </template>
-<script>
-  import { h, ref } from 'vue';
-  import { IconCalendar } from '@arco-design/web-vue/es/icon';
 
-  export default {
-    setup() {
-      const selected = ref([]);
+<script setup>
+import { h, ref } from 'vue';
+import { IconCalendar } from '@arco-design/web-vue/es/icon';
 
-      return {
-        selected,
-        treeData,
-      };
-    },
-  };
+const selected = ref([]);
 
-  const treeData = [
+const treeData = [
     {
       key: 'node1',
       icon: () => h(IconCalendar),

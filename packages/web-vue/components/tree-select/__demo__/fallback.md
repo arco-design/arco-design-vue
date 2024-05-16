@@ -66,21 +66,7 @@ Use `fallback-option` to customize the display effect of the value of the option
   </a-space>
 </template>
 
-<script>
-export default {
-  setup() {
-    return {
-      treeData,
-      fallback(key) {
-        return {
-          key,
-          title: `++${key}++`
-        }
-      }
-    }
-  }
-}
-
+<script setup>
 const treeData = [
     {
       key: 'node1',
@@ -107,5 +93,12 @@ const treeData = [
       ],
     },
   ];
+
+function fallback(key) {
+  return {
+    key,
+    title: `++${key}++`,
+  };
+}
 </script>
 ```
