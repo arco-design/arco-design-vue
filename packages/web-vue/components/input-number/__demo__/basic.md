@@ -25,14 +25,10 @@ Use the mouse or keyboard to enter the standard value within the range.
   </a-space>
 </template>
 
-<script>
-export default {
-  data(){
-    return {
-      value:15
-    }
 
-  }
-}
+<script setup>
+import { ref } from 'vue';
+
+const value = ref(15);
 </script>
 ```
