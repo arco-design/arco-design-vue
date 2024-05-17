@@ -117,8 +117,8 @@ description: Used to show and preview pictures.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|change|Image switch|-|
-|visible-change|Preview visibility change|-|
+|change|Image switch|index: `number`|
+|visible-change|Preview visibility change|visible: `boolean`|
 ### `<image-preview-group>` Slots
 
 |Slot Name|Description|Parameters|version|
