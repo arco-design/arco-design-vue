@@ -23,7 +23,9 @@ Basic usage of `ResizeBox`. By setting `directions`, you can specify which of th
       :directions="['right', 'bottom']"
       :style="{ width: '500px', minWidth: '100px', maxWidth: '100%', height: '200px', textAlign: 'center' }"
     >
-      <a-typography-paragraph>We are building the future of content discovery and creation.</a-typography-paragraph>
+      <a-typography-paragraph>
+        We are building the future of content discovery and creation.
+      </a-typography-paragraph>
       <a-divider />
       <a-typography-paragraph>
         ByteDance's content platforms enable people to enjoy content powered by AI technology. We
