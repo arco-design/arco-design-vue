@@ -98,24 +98,17 @@ Customize the watermark.
   </a-watermark>
 </template>
 
-<script>
+<script setup>
 import { reactive } from 'vue';
 
-export default {
-  setup() {
-    const form = reactive({
-      rotate: 0,
-      gap: [50, 50],
-      offset: [],
-      font: { fontSize: 16 },
-      zIndex: 6,
-      repeat: true,
-      staggered: true,
-    });
-    return {
-      form,
-    };
-  },
-};
+const form = reactive({
+  rotate: 0,
+  gap: [50, 50],
+  offset: [],
+  font: { fontSize: 16 },
+  zIndex: 6,
+  repeat: true,
+  staggered: true,
+});
 </script>
 ```
