@@ -43,8 +43,7 @@ exports[`<tooltip> demo: render [color] correctly 1`] = `
 exports[`<tooltip> demo: render [mini] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Mouse over to display tooltip
-</button>
-<!---->"
+</button>"
 `;
 
 exports[`<tooltip> demo: render [position] correctly 1`] = `

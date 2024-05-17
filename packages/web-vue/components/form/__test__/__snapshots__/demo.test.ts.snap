@@ -60,11 +60,12 @@ exports[`<form> demo: render [async] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"name\\": \\"\\",
-\\"post\\": \\"\\",
-\\"isRead\\": false
-}"
+</form>
+ {
+ \\"name\\": \\"\\",
+ \\"post\\": \\"\\",
+ \\"isRead\\": false
+ }"
 `;
 
 exports[`<form> demo: render [auto-width] correctly 1`] = `
@@ -127,11 +128,12 @@ exports[`<form> demo: render [auto-width] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"name\\": \\"\\",
-\\"post\\": \\"\\",
-\\"isRead\\": false
-}"
+</form>
+ {
+ \\"name\\": \\"\\",
+ \\"post\\": \\"\\",
+ \\"isRead\\": false
+ }"
 `;
 
 exports[`<form> demo: render [basic] correctly 1`] = `
@@ -197,11 +199,12 @@ exports[`<form> demo: render [basic] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"name\\": \\"\\",
-\\"post\\": \\"\\",
-\\"isRead\\": false
-}"
+</form>
+ {
+ \\"name\\": \\"\\",
+ \\"post\\": \\"\\",
+ \\"isRead\\": false
+ }"
 `;
 
 exports[`<form> demo: render [custom] correctly 1`] = `
@@ -290,11 +293,12 @@ exports[`<form> demo: render [disabled] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"name\\": \\"\\",
-\\"post\\": \\"\\",
-\\"isRead\\": false
-}"
+</form>
+ {
+ \\"name\\": \\"\\",
+ \\"post\\": \\"\\",
+ \\"isRead\\": false
+ }"
 `;
 
 exports[`<form> demo: render [dynamic] correctly 1`] = `
@@ -332,14 +336,15 @@ exports[`<form> demo: render [dynamic] correctly 1`] = `
 </form>
 <div><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
     <!--v-if-->Add Post
-  </button></div> {
-\\"name\\": \\"\\",
-\\"posts\\": [
-{
-\\"value\\": \\"\\"
-}
-]
-}"
+  </button></div>
+ {
+ \\"name\\": \\"\\",
+ \\"posts\\": [
+ {
+ \\"value\\": \\"\\"
+ }
+ ]
+ }"
 `;
 
 exports[`<form> demo: render [extra] correctly 1`] = `
@@ -368,7 +373,7 @@ exports[`<form> demo: render [extra] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\"><!----><!----></span></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"form-blink\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"arco-form-item-message arco-form-item-message-help\\">
           <div>Custom valitae message</div>
         </div>
@@ -392,11 +397,12 @@ exports[`<form> demo: render [extra] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"name\\": \\"\\",
-\\"post\\": \\"\\",
-\\"isRead\\": false
-}"
+</form>
+ {
+ \\"name\\": \\"\\",
+ \\"post\\": \\"\\",
+ \\"isRead\\": false
+ }"
 `;
 
 exports[`<form> demo: render [grid] correctly 1`] = `
@@ -485,13 +491,14 @@ exports[`<form> demo: render [grid] correctly 1`] = `
       </div>
     </div>
   </div>
-</form> {
-\\"value1\\": \\"\\",
-\\"value2\\": \\"\\",
-\\"value3\\": \\"\\",
-\\"value4\\": \\"\\",
-\\"value5\\": \\"\\"
-}"
+</form>
+ {
+ \\"value1\\": \\"\\",
+ \\"value2\\": \\"\\",
+ \\"value3\\": \\"\\",
+ \\"value4\\": \\"\\",
+ \\"value5\\": \\"\\"
+ }"
 `;
 
 exports[`<form> demo: render [layout] correctly 1`] = `
@@ -699,21 +706,22 @@ exports[`<form> demo: render [nest] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"together\\": {
-\\"firstname\\": \\"\\",
-\\"lastname\\": \\"\\"
-},
-\\"separate\\": {
-\\"firstname\\": \\"\\",
-\\"lastname\\": \\"\\"
-},
-\\"posts\\": {
-\\"post1\\": \\"\\",
-\\"post2\\": \\"\\"
-},
-\\"isRead\\": false
-}"
+</form>
+ {
+ \\"together\\": {
+ \\"firstname\\": \\"\\",
+ \\"lastname\\": \\"\\"
+ },
+ \\"separate\\": {
+ \\"firstname\\": \\"\\",
+ \\"lastname\\": \\"\\"
+ },
+ \\"posts\\": {
+ \\"post1\\": \\"\\",
+ \\"post2\\": \\"\\"
+ },
+ \\"isRead\\": false
+ }"
 `;
 
 exports[`<form> demo: render [scroll] correctly 1`] = `
@@ -1013,7 +1021,7 @@ exports[`<form> demo: render [status] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your username...\\"><!----><span class=\\"arco-input-suffix arco-input-suffix-has-feedback\\"><!----><!----><span class=\\"arco-feedback-icon arco-feedback-icon-status-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"form-blink\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"arco-form-item-message arco-form-item-message-help\\">This is custom message</div>
       </transition-stub>
       <div class=\\"arco-form-item-extra\\">This is extra text</div>
@@ -1029,7 +1037,7 @@ exports[`<form> demo: render [status] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-medium\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter your post...\\" role=\\"spinbutton\\" aria-valuemax=\\"Infinity\\" aria-valuemin=\\"-Infinity\\" aria-valuenow=\\"\\"><!----><span class=\\"arco-input-suffix arco-input-suffix-has-feedback\\"><!----><!----><div class=\\"arco-input-number-step\\"><button class=\\"arco-input-number-step-button\\" type=\\"button\\" tabindex=\\"-1\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 30.557 24.043 15 8.487 30.557\\"></path></svg></button><button class=\\"arco-input-number-step-button\\" type=\\"button\\" tabindex=\\"-1\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></button></div><span class=\\"arco-feedback-icon arco-feedback-icon-status-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"form-blink\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"arco-form-item-message arco-form-item-message-help\\">This is custom message</div>
       </transition-stub>
       <div class=\\"arco-form-item-extra\\">This is extra text</div>
@@ -1045,13 +1053,13 @@ exports[`<form> demo: render [status] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-has-tag arco-input-tag-has-suffix\\"><span class=\\"arco-input-tag-mirror\\"></span>
           <!---->
-          <transition-group-stub><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->tag1<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
+          <transition-group-stub tag=\\"span\\" name=\\"input-tag-zoom\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-input-tag-inner\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->tag1<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
             <!--v-if--></span><input class=\\"arco-input-tag-input\\" style=\\"width: 12px;\\">
           </transition-group-stub>
           <!----><span class=\\"arco-input-tag-suffix\\"><!----><span class=\\"arco-feedback-icon arco-feedback-icon-status-success\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Zm10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0l11.5-11.5Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span></span></span>
         </div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"form-blink\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"arco-form-item-message arco-form-item-message-help\\">This is custom message</div>
       </transition-stub>
       <div class=\\"arco-form-item-extra\\">This is extra text</div>
@@ -1407,7 +1415,7 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-select-view arco-select-view-size-medium arco-select-view-has-suffix arco-select-view-has-placeholder arco-select-view-multiple arco-select\\"><span class=\\"arco-select-view-mirror\\">Please select ...</span>
           <!---->
-          <transition-group-stub><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\" placeholder=\\"Please select ...\\"></transition-group-stub>
+          <transition-group-stub tag=\\"span\\" name=\\"input-tag-zoom\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-select-view-inner\\"><input class=\\"arco-select-view-input\\" style=\\"width: 12px;\\" placeholder=\\"Please select ...\\"></transition-group-stub>
           <!----><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
           <!---->
           <!----></span></span>
@@ -1460,23 +1468,24 @@ exports[`<form> demo: render [validation] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"size\\": \\"medium\\",
-\\"name\\": \\"\\",
-\\"section\\": \\"\\",
-\\"province\\": \\"haidian\\",
-\\"options\\": [],
-\\"date\\": \\"\\",
-\\"time\\": \\"\\",
-\\"radio\\": \\"radio one\\",
-\\"slider\\": 5,
-\\"score\\": 5,
-\\"switch\\": false,
-\\"multiSelect\\": [
-\\"section one\\"
-],
-\\"treeSelect\\": \\"\\"
-}"
+</form>
+ {
+ \\"size\\": \\"medium\\",
+ \\"name\\": \\"\\",
+ \\"section\\": \\"\\",
+ \\"province\\": \\"haidian\\",
+ \\"options\\": [],
+ \\"date\\": \\"\\",
+ \\"time\\": \\"\\",
+ \\"radio\\": \\"radio one\\",
+ \\"slider\\": 5,
+ \\"score\\": 5,
+ \\"switch\\": false,
+ \\"multiSelect\\": [
+ \\"section one\\"
+ ],
+ \\"treeSelect\\": \\"\\"
+ }"
 `;
 
 exports[`<form> demo: render [validation2] correctly 1`] = `
@@ -1601,13 +1610,14 @@ exports[`<form> demo: render [validation2] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</form> {
-\\"name\\": \\"\\",
-\\"password\\": \\"\\",
-\\"password2\\": \\"\\",
-\\"email\\": \\"\\",
-\\"ip\\": \\"192.168.2.1\\",
-\\"url\\": \\"\\",
-\\"match\\": \\"\\"
-}"
+</form>
+ {
+ \\"name\\": \\"\\",
+ \\"password\\": \\"\\",
+ \\"password2\\": \\"\\",
+ \\"email\\": \\"\\",
+ \\"ip\\": \\"192.168.2.1\\",
+ \\"url\\": \\"\\",
+ \\"match\\": \\"\\"
+ }"
 `;

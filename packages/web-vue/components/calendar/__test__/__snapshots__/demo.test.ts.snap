@@ -339,5 +339,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
   </div>
   <!---->
   <!---->
-</div> select: Sun Jan 01 2023 08:00:00 GMT+0800 (China Standard Time)"
+</div>
+ select: Sun Jan 01 2023 08:00:00 GMT+0800 (China Standard Time)"
 `;

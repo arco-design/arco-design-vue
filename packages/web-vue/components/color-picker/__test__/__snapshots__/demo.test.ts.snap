@@ -25,8 +25,7 @@ exports[`<color-picker> demo: render [colors] correctly 1`] = `
 "<div class=\\"arco-color-picker arco-color-picker-size-medium\\">
   <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(22, 93, 255);\\"></div>
   <!----><input class=\\"arco-color-picker-input\\">
-</div>
-<!---->"
+</div>"
 `;
 
 exports[`<color-picker> demo: render [disabled] correctly 1`] = `

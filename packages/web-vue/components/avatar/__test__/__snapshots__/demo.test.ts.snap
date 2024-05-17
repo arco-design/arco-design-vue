@@ -38,7 +38,8 @@ exports[`<avatar> demo: render [basic] correctly 1`] = `
 exports[`<avatar> demo: render [fit] correctly 1`] = `
 "<div style=\\"margin-right: 24px; vertical-align: middle; background-color: rgb(20, 169, 248);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">B</span>
   <!--v-if-->
-</div><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"vertical-align: middle;\\">
+</div>
+<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"vertical-align: middle;\\">
   <!--v-if--> Change
 </button>"
 `;
