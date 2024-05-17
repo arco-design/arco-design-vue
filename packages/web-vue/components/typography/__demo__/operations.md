@@ -30,7 +30,8 @@ Provide functions such as copying and editing text.
     </a-typography-paragraph>
   </a-typography>
 </template>
-<script>
+
+<script setup>
 import { ref } from 'vue';
 
 const str = ref('Click the icon to edit this text.');
