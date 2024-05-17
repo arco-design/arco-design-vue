@@ -45,40 +45,30 @@ Empty state elements can be customized globally via the `empty` slot.
   </a-config-provider>
 </template>
 
-<script>
+<script setup>
 import { IconTrophy } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconTrophy
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
   },
-  setup() {
-    const columns = [
-      {
-        title: 'Name',
-        dataIndex: 'name',
-      },
-      {
-        title: 'Salary',
-        dataIndex: 'salary',
-      },
-      {
-        title: 'Address',
-        dataIndex: 'address',
-      },
-      {
-        title: 'Email',
-        dataIndex: 'email',
-      },
-    ];
-    return {
-      columns
-    }
-  }
-}
+  {
+    title: 'Salary',
+    dataIndex: 'salary',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Email',
+    dataIndex: 'email',
+  },
+];
 </script>
 
-<style>
+<style scoped>
 .my-empty {
   padding: 20px;
   width: 100%;
