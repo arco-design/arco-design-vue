@@ -1878,7 +1878,9 @@ export default defineComponent({
             ]}
             rowIndex={rowIndex}
             record={record}
-            checked={selectedRowKeys.value?.includes(currentKey)}
+            checked={
+              props.rowSelection && selectedRowKeys.value?.includes(currentKey)
+            }
             // @ts-ignore
             onClick={(ev: Event) => handleRowClick(record, ev)}
             onDblclick={(ev: Event) => handleRowDblclick(record, ev)}
