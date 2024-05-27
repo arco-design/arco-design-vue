@@ -12,7 +12,8 @@
       :style="
         fixedWidth(
           (columnWidth && item.dataIndex && columnWidth[item.dataIndex]) ||
-            item.width
+            item.width,
+          item.minWidth
         )
       "
     />
@@ -39,13 +40,17 @@ export default defineComponent({
     },
   },
   setup() {
-    const fixedWidth = (width?: number) => {
+    const fixedWidth = (width?: number, minWidth?: number) => {
       if (width) {
+        const min = Math.max(width, minWidth || 0);
         return {
           width: `${width}px`,
-          minWidth: `${width}px`,
+          minWidth: `${min}px`,
           maxWidth: `${width}px`,
         };
+      }
+      if (minWidth) {
+        return { minWidth: `${minWidth}px` };
       }
       return undefined;
     };

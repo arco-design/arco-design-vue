@@ -162,6 +162,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |data-index|列信息的标识，对应TableData中的数据|`string`|`-`||
 |title|列标题|`string`|`-`||
 |width|列宽度|`number`|`-`||
+|min-width|最小列宽|`number`|`-`||
 |align|对齐方向|`TableColumnData['align']`|`-`||
 |fixed|固定位置|`TableColumnData['fixed']`|`-`||
 |ellipsis|是否显示为省略|`boolean`|`false`||
@@ -252,6 +253,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |dataIndex|列信息的标识，对应 `TableData` 中的数据|`string`|`-`||
 |title|列标题|`string \| RenderFunction`|`-`||
 |width|列宽度|`number`|`-`||
+|minWidth|最小列宽|`number`|`-`||
 |align|对齐方向|`'left' \| 'center' \| 'right'`|`-`||
 |fixed|固定位置|`'left' \| 'right'`|`-`||
 |ellipsis|是否显示省略号|`boolean`|`false`||
