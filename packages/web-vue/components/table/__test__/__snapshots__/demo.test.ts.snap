@@ -3193,8 +3193,8 @@ exports[`<table> demo: render [sticky] correctly 1`] = `
     <div class=\\"arco-table-container arco-table-scroll-y\\">
       <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\" style=\\"height: 100%;\\">
         <div class=\\"arco-scrollbar-container arco-table-content\\">
-          <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
-            <div class=\\"arco-scrollbar-container arco-table-header arco-table-header-sticky\\" style=\\"top: 100px;\\">
+          <div class=\\"arco-scrollbar arco-scrollbar-type-embed arco-table-header-sticky\\" style=\\"top: 60px;\\">
+            <div class=\\"arco-scrollbar-container arco-table-header\\">
               <table class=\\"arco-table-element\\" cellpadding=\\"0\\" cellspacing=\\"0\\">
                 <colgroup>
                   <col>

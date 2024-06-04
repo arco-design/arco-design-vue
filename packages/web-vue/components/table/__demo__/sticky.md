@@ -18,7 +18,7 @@ Set the header suction via `sticky-header`. The calculation container for the to
 
 ```vue
 <template>
-  <a-table :columns="columns" :data="data" :sticky-header="100"/>
+  <a-table :columns="columns" :data="data" :sticky-header="60"/>
 </template>
 
 <script>
