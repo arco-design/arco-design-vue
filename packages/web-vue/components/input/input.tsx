@@ -215,6 +215,7 @@ export default defineComponent({
     const showClearBtn = computed(
       () =>
         props.allowClear &&
+        !props.readonly &&
         !mergedDisabled.value &&
         Boolean(computedValue.value)
     );
