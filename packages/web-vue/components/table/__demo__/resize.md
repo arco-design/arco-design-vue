@@ -31,11 +31,13 @@ export default {
         title: 'Name',
         dataIndex: 'name',
         width: 150,
+        minWidth: 100,
       },
       {
         title: 'Salary',
         dataIndex: 'salary',
         width: 120,
+        minWidth: 80,
       },
       {
         title: 'Address',
