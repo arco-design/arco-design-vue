@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.55.3
+
+`2024-06-07`
+
+### 🐛 BugFix
+
+- fix display of allow-clear input button in read-only state ([#3172](https://github.com/arco-design/arco-design-vue/pull/3172))
+
+
 ## 2.54.3
 
 `2024-01-19`

@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.55.3
+
+`2024-06-07`
+
+### 🐛 BugFix
+
+- Fix issue with read-only mode still being editable ([#3173](https://github.com/arco-design/arco-design-vue/pull/3173))
+- Added `placeholder` type definition ([#3173](https://github.com/arco-design/arco-design-vue/pull/3173))
+
+
 ## 2.44.6
 
 `2023-03-31`
