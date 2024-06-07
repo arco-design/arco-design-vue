@@ -37,13 +37,10 @@ Divide a panel into two parts with adjustable width or height. Use `direction` t
     </a-split>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      size: 0.5
-    }
-  }
-}
+
+<script setup>
+import { ref } from 'vue';
+
+const size = ref(0.5);
 </script>
 ```

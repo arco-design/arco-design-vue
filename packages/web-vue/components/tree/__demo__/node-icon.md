@@ -24,48 +24,38 @@ The icon of a node can be specified globally via the `icon` slot of the `tree`, 
     </template>
   </a-tree>
 </template>
-<script>
-  import { h } from 'vue';
-  import { IconStar, IconDriveFile } from '@arco-design/web-vue/es/icon';
 
-  export default {
-    components: {
-      IconStar
-    },
-    setup() {
-      return {
-        treeData,
-      };
-    },
-  };
+<script setup>
+import { h } from 'vue';
+import { IconStar, IconDriveFile } from '@arco-design/web-vue/es/icon';
 
-  const treeData = [
-    {
-      title: 'Trunk',
-      key: 'node1',
-      children: [
-        {
-          title: 'Leaf',
-          key: 'node2',
-        },
-      ],
-    },
-    {
-      title: 'Trunk',
-      key: 'node3',
-      children: [
-        {
-          title: 'Leaf',
-          key: 'node4',
-          icon: () => h(IconDriveFile),
-        },
-        {
-          title: 'Leaf',
-          key: 'node5',
-          icon: () => h(IconDriveFile),
-        },
-      ],
-    },
-  ];
+const treeData = [
+  {
+    title: 'Trunk',
+    key: 'node1',
+    children: [
+      {
+        title: 'Leaf',
+        key: 'node2',
+      },
+    ],
+  },
+  {
+    title: 'Trunk',
+    key: 'node3',
+    children: [
+      {
+        title: 'Leaf',
+        key: 'node4',
+        icon: () => h(IconDriveFile),
+      },
+      {
+        title: 'Leaf',
+        key: 'node5',
+        icon: () => h(IconDriveFile),
+      },
+    ],
+  },
+];
 </script>
 ```

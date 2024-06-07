@@ -56,17 +56,9 @@ can be set by `max-tag-count`.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const scrollbar = ref(true);
-
-    return {
-      scrollbar
-    }
-  }
-}
+const scrollbar = ref(true);
 </script>
 ```

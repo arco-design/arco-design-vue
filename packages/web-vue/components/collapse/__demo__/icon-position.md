@@ -60,19 +60,10 @@ Set the position of the expanded icon through the `expand-icon-position` propert
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const position = ref('left');
-    const hideIcon = ref(false);
-
-    return {
-      position,
-      hideIcon,
-    };
-  },
-};
+const position = ref('left');
+const hideIcon = ref(false);
 </script>
 ```

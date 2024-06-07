@@ -31,11 +31,7 @@ Button is divided into three shapes: `square` - **rectangular (default)**, `circ
     </a-button>
   </a-space>
 </template>
-<script>
+<script setup>
 import { IconPlus } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconPlus }
-};
 </script>
 ```

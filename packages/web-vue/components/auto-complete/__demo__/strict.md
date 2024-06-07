@@ -22,13 +22,7 @@ Use the `strict` attribute to specify that the matching is strictly case sensiti
   <a-auto-complete :data="data" :style="{width:'360px'}" placeholder="please enter something" strict />
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      data: ['Beijing', 'Shanghai', 'Chengdu', 'WuHan']
-    }
-  },
-}
+<script setup>
+const data = ['Beijing', 'Shanghai', 'Chengdu', 'WuHan'];
 </script>
 ```

@@ -43,19 +43,11 @@ The extra node on the far right can be set by `extra`. `extra` click to set `sto
   </a-collapse>
 </template>
 
-<script>
+<script setup>
 import { Message } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const sayHello = () => {
-      Message.info('hello');
-    };
-
-    return {
-      sayHello,
-    };
-  },
+const sayHello = () => {
+  Message.info('hello');
 };
 </script>
 ```

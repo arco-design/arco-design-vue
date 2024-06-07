@@ -30,16 +30,11 @@ Provide functions such as copying and editing text.
     </a-typography-paragraph>
   </a-typography>
 </template>
-<script>
-import { defineComponent, ref } from 'vue';
-export default defineComponent({
-  setup() {
-    const str = ref('Click the icon to edit this text.');
-    return {
-      str,
-    }
-  }
-});
+
+<script setup>
+import { ref } from 'vue';
+
+const str = ref('Click the icon to edit this text.');
 </script>
 ```
 

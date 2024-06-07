@@ -757,7 +757,8 @@ exports[`<table> demo: render [editable] correctly 1`] = `
     </div>
     <!---->
   </div>
-</div><!-- support from v2.25.0  -->
+</div>
+<!-- support from v2.25.0  -->
 <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\" style=\\"margin-top: 20px;\\">
   <!---->
   <div class=\\"arco-spin\\">

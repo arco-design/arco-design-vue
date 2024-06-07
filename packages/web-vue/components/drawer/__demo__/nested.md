@@ -34,44 +34,29 @@ Open a new drawer in the drawer.
   </a-drawer>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
-    const nestedVisible = ref(false);
+const visible = ref(false);
+const nestedVisible = ref(false);
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleOk = () => {
-      visible.value = false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-    const handleNestedClick = () => {
-      nestedVisible.value = true;
-    };
-    const handleNestedOk = () => {
-      nestedVisible.value = false;
-    };
-    const handleNestedCancel = () => {
-      nestedVisible.value = false;
-    }
-
-    return {
-      visible,
-      nestedVisible,
-      handleClick,
-      handleOk,
-      handleCancel,
-      handleNestedClick,
-      handleNestedOk,
-      handleNestedCancel
-    }
-  },
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
+const handleNestedClick = () => {
+  nestedVisible.value = true;
+};
+const handleNestedOk = () => {
+  nestedVisible.value = false;
+};
+const handleNestedCancel = () => {
+  nestedVisible.value = false;
 };
 </script>
 ```

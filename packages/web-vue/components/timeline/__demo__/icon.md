@@ -35,11 +35,7 @@ Custom node content
   </a-timeline>
 </template>
 
-<script>
+<script setup>
 import { IconExclamationCircleFill } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconExclamationCircleFill },
-};
 </script>
 ```

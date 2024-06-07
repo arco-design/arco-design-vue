@@ -25,39 +25,25 @@ The button can be in the loading state by setting `loading`. The button in the l
     <a-button type="primary" :loading="loading1" @click="handleClick1">Click Me</a-button>
     <a-button type="primary" :loading="loading2" @click="handleClick2">
       <template #icon>
-        <icon-plus />
+        <IconPlus />
       </template>
       Click Me
     </a-button>
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { IconPlus } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconPlus
-  },
-  setup() {
-    const loading1 = ref(false);
-    const loading2 = ref(false);
+const loading1 = ref(false);
+const loading2 = ref(false);
 
-    const handleClick1 = () => {
-      loading1.value = !loading1.value
-    }
-    const handleClick2 = () => {
-      loading2.value = !loading2.value
-    }
-
-    return {
-      loading1,
-      loading2,
-      handleClick1,
-      handleClick2
-    }
-  }
-}
+const handleClick1 = () => {
+  loading1.value = !loading1.value;
+};
+const handleClick2 = () => {
+  loading2.value = !loading2.value;
+};
 </script>
 ```

@@ -26,13 +26,7 @@ Customize icons and pictures through the `image` slot, or modify the text throug
   </a-empty>
 </template>
 
-<script>
+<script setup>
 import { IconExclamationCircleFill } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconExclamationCircleFill
-  },
-}
 </script>
 ```

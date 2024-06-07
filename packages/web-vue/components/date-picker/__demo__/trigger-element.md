@@ -33,17 +33,11 @@ Customize trigger element.
     </a-range-picker>
   </a-space>
 </template>
-<script>
+
+<script setup>
 import { ref } from 'vue';
-export default {
-  setup() {
-    const value = ref();
-    const rangeValue = ref();
-    return {
-      value,
-      rangeValue,
-    }
-  }
-}
+
+const value = ref();
+const rangeValue = ref();
 </script>
 ```

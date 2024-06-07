@@ -1,26 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<auto-complete> demo: render [basic] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
-<!---->"
-`;
+exports[`<auto-complete> demo: render [basic] correctly 1`] = `"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>"`;
 
-exports[`<auto-complete> demo: render [footer] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
-<!---->"
-`;
+exports[`<auto-complete> demo: render [footer] correctly 1`] = `"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>"`;
 
-exports[`<auto-complete> demo: render [scroll] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
-<!---->"
-`;
+exports[`<auto-complete> demo: render [scroll] correctly 1`] = `"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>"`;
 
-exports[`<auto-complete> demo: render [strict] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
-<!---->"
-`;
+exports[`<auto-complete> demo: render [strict] correctly 1`] = `"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>"`;
 
-exports[`<auto-complete> demo: render [virtual-list] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>
-<!---->"
-`;
+exports[`<auto-complete> demo: render [virtual-list] correctly 1`] = `"<span class=\\"arco-input-wrapper\\" style=\\"width: 360px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"please enter something\\"><!----><!----></span>"`;

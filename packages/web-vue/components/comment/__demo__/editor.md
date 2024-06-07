@@ -46,14 +46,8 @@ Use with replay
   </a-comment>
 </template>
 
-<script>
+<script setup>
 import { IconMessage } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconMessage,
-  },
-};
 </script>
 
 <style scoped>

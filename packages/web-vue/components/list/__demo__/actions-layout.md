@@ -51,7 +51,7 @@ This is an example including paging, content on the right, and list operations.
   </a-list>
 </template>
 
-<script>
+<script setup>
 import { reactive } from 'vue'
 
 const names = ['Socrates', 'Balzac', 'Plato'];
@@ -76,17 +76,10 @@ const dataSource = new Array(15).fill(null).map((_, index) => {
   };
 });
 
-export default {
-  setup() {
-    return {
-      dataSource,
-      paginationProps: reactive({
-        defaultPageSize: 3,
-        total: dataSource.length
-      })
-    }
-  },
-}
+const paginationProps = reactive({
+  defaultPageSize: 3,
+  total: dataSource.length
+});
 </script>
 
 <style scoped>

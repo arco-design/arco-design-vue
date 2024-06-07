@@ -21,16 +21,14 @@ Set `closable` to show the close button.
   <a-button @click="handleClick">Closeable Message</a-button>
 </template>
 
-<script>
-export default {
-  methods: {
-    handleClick(){
-      this.$message.info({
-        content:'This is an info message!',
-        closable: true
-      })
-    }
-  }
-};
+<script setup>
+import { Message } from '@arco-design/web-vue';
+
+function handleClick(){
+  Message.info({
+    content:'This is an info message!',
+    closable: true,
+  });
+}
 </script>
 ```

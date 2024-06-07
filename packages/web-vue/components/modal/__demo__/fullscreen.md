@@ -27,30 +27,19 @@ Enable the `fullscreen` property to make the dialog fill the entire container.
   </a-modal>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
+const visible = ref(false);
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleOk = () => {
-      visible.value = false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      visible,
-      handleClick,
-      handleOk,
-      handleCancel
-    }
-  },
-}
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
 </script>
 ```

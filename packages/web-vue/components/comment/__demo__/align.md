@@ -17,7 +17,6 @@ Alignment of datetime and actions.
 ---
 
 ```vue
-
 <template>
   <a-comment author="Balzac" datetime="1 hour" align="right">
     <template #actions>
@@ -32,7 +31,7 @@ Alignment of datetime and actions.
       </span>
       <span class="action" key="star" @click="onStarChange">
         <span v-if="star">
-          <IconStarFill style="{ color: '#ffb400' }" />
+          <IconStarFill :style="{ color: '#ffb400' }" />
         </span>
         <span v-else>
           <IconStar />
@@ -62,7 +61,7 @@ Alignment of datetime and actions.
   </a-comment>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import {
   IconHeart,
@@ -72,31 +71,14 @@ import {
   IconHeartFill,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconHeart,
-    IconMessage,
-    IconStar,
-    IconStarFill,
-    IconHeartFill,
-  },
-  setup() {
-    const like = ref(false);
-    const star = ref(false);
-    const onLikeChange = () => {
-      like.value = !like.value;
-    };
-    const onStarChange = () => {
-      star.value = !star.value;
-    };
+const like = ref(false);
+const star = ref(false);
 
-    return {
-      like,
-      star,
-      onLikeChange,
-      onStarChange
-    }
-  },
+const onLikeChange = () => {
+  like.value = !like.value;
+};
+const onStarChange = () => {
+  star.value = !star.value;
 };
 </script>
 

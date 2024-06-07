@@ -32,23 +32,14 @@ title:
   />
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false)
-    const current = ref(3);
-    const onClick = () => {
-      visible.value = true;
-    };
+const visible = ref(false);
+const current = ref(3);
 
-    return {
-      visible,
-      current,
-      onClick,
-    };
-  },
-}
+const onClick = () => {
+  visible.value = true;
+};
 </script>
 ```

@@ -24,27 +24,20 @@ Through the prop `bordered` to display a bordered tag.
   </a-space>
 </template>
 
-<script>
-export default {
-  setup() {
-    const colors = [
-      'orangered',
-      'orange',
-      'gold',
-      'lime',
-      'green',
-      'cyan',
-      'blue',
-      'arcoblue',
-      'purple',
-      'pinkpurple',
-      'magenta',
-      'gray'
-    ];
-    return {
-      colors
-    }
-  },
-}
+<script setup>
+const colors = [
+  'orangered',
+  'orange',
+  'gold',
+  'lime',
+  'green',
+  'cyan',
+  'blue',
+  'arcoblue',
+  'purple',
+  'pinkpurple',
+  'magenta',
+  'gray'
+];
 </script>
 ```

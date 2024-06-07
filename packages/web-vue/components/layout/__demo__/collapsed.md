@@ -88,8 +88,8 @@ After setting the `trigger` property of `Menu.Sider` to `null`, the built-in tri
     </a-layout>
   </a-layout>
 </template>
-<script>
-import { defineComponent, ref } from 'vue';
+<script setup>
+import { ref } from 'vue';
 import { Message} from '@arco-design/web-vue';
 import {
   IconCaretRight,
@@ -98,27 +98,13 @@ import {
   IconCalendar,
 } from '@arco-design/web-vue/es/icon';
 
-export default defineComponent({
-  components: {
-    IconCaretRight,
-    IconCaretLeft,
-    IconHome,
-    IconCalendar,
-  },
-  setup() {
-    const collapsed = ref(false);
-    const onCollapse = () => {
-      collapsed.value = !collapsed.value;
-    };
-    return {
-      collapsed,
-      onCollapse,
-      onClickMenuItem(key) {
-        Message.info({ content: `You select ${key}`, showIcon: true });
-      }
-    };
-  },
-});
+const collapsed = ref(false);
+const onCollapse = () => {
+  collapsed.value = !collapsed.value;
+};
+const onClickMenuItem = (key) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+}
 </script>
 <style scoped>
 .layout-demo {

@@ -23,14 +23,11 @@ Support two-way binding through `v-model`
     <a-range-picker v-model="rangeValue" style="width: 300px;" />
   </a-space>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      value: Date.now(),
-      rangeValue: [Date.now(), Date.now()],
-    }
-  }
-}
+
+<script setup>
+import { ref } from 'vue';
+
+const value = ref(Date.now());
+const rangeValue = ref([Date.now(), Date.now()]);
 </script>
 ```

@@ -39,17 +39,9 @@ The position of the tab bar can be customized through the `position` property.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const position = ref('top');
-
-    return {
-      position
-    }
-  },
-}
+const position = ref('top');
 </script>
 ```

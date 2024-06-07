@@ -21,22 +21,17 @@ Basic usage of auto-complete
   <a-auto-complete :data="data" @search="handleSearch" :style="{width:'360px'}" placeholder="please enter something"/>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      data: []
-    }
-  },
-  methods: {
-    handleSearch(value) {
-      if (value) {
-        this.data = [...Array(5)].map((_, index) => `${value}-${index}`)
-        console.log(this.data)
-      } else {
-        this.data = []
-      }
-    }
+<script setup>
+import { ref } from 'vue';
+
+const data = ref([]);
+
+const handleSearch = (value) => {
+  if (value) {
+    data.value = [...Array(5)].map((_, index) => `${value}-${index}`)
+    console.log(data.value)
+  } else {
+    data.value = []
   }
 }
 </script>

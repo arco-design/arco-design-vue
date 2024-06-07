@@ -28,15 +28,15 @@ You can customize the back button.
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped>
 .wrapper {
   position: relative;
 
-  ul {
+  > ul {
     height: 200px;
     overflow-y: auto;
 
-    li {
+    > li {
       line-height: 30px;
     }
   }

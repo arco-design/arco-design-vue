@@ -23,7 +23,7 @@ Basic usage
 
 <script setup>
 import { ref } from 'vue';
-import { Message} from '@arco-design/web-vue';
+import { Message } from '@arco-design/web-vue';
 
 const value = ref('654321');
 const onFinish = (value) => Message.info(`Verification code: ${value}`);

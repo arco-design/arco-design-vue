@@ -30,7 +30,7 @@ Customize form components with `useFormItem`. Available since version 2.18.0.
   </Form>
 </template>
 
-<script lang="ts">
+<script setup>
 import { h, reactive, ref } from 'vue';
 import { Form, FormItem, useFormItem } from '@arco-design/web-vue';
 
@@ -42,28 +42,14 @@ const MyInput = {
       const { value } = ev.target;
       emit('update:modelValue', value)
       eventHandlers.value?.onChange?.(ev)
-    }
-    return () => h('input', { disabled: mergedDisabled.value, onInput: handleInput })
-  }
-}
-
-export default {
-  components: {
-    Form,
-    FormItem,
-    MyInput
-  },
-  setup() {
-    const disabled = ref(false);
-    const form = reactive({
-      name: ''
-    })
-
-    return {
-      disabled,
-      form
-    }
+    };
+    return () => h('input', { disabled: mergedDisabled.value, onInput: handleInput });
   },
 }
+
+const disabled = ref(false);
+const form = reactive({
+  name: '',
+});
 </script>
 ```

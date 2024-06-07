@@ -17,7 +17,6 @@ Setting `type="circle"` will show a circular progress bar.
 ---
 
 ```vue
-
 <template>
   <a-space size="large">
     <a-progress type="circle" :percent="percent" />
@@ -30,17 +29,9 @@ Setting `type="circle"` will show a circular progress bar.
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const percent = ref(0.2);
-
-    return {
-      percent
-    }
-  },
-}
+const percent = ref(0.2);
 </script>
 ```

@@ -32,20 +32,14 @@ Basic usage of notification.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { Notification } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const handleNotification = () => {
-      Notification.info({
-        title: 'Notification',
-        content: 'This is a notification!',
-      })
-    }
-
-    return { handleNotification }
-  }
-}
+const handleNotification = () => {
+  Notification.info({
+    title: 'Notification',
+    content: 'This is a notification!',
+  });
+};
 </script>
 ```

@@ -23,29 +23,23 @@ Specifying `id` to update the existing notification.
   </a-button>
 </template>
 
-<script>
+<script setup>
 import { Notification } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const handleNotification = () => {
-      Notification.warning({
-        id: 'your_id',
-        title: 'Ready to update',
-        content: 'Will update after 2 seconds...',
-      })
+const handleNotification = () => {
+  Notification.warning({
+    id: 'your_id',
+    title: 'Ready to update',
+    content: 'Will update after 2 seconds...',
+  });
 
-      setTimeout(() => {
-        Notification.success({
-          id: 'your_id',
-          title: 'Success',
-          content: 'Update success!',
-        });
-      }, 2000)
-    }
-
-    return { handleNotification }
-  }
+  setTimeout(() => {
+    Notification.success({
+      id: 'your_id',
+      title: 'Success',
+      content: 'Update success!',
+    });
+  }, 2000);
 }
 </script>
 ```

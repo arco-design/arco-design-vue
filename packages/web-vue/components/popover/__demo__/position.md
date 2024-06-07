@@ -106,7 +106,7 @@ title:
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped>
 .button{
   width: 100px;
 }

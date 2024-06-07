@@ -24,18 +24,11 @@ Color can be customized through color. In addition, you can customize the color 
   </a-space>
 </template>
 
-<script>
-export default {
-  setup() {
-    const color = {
-      2: 'red',
-      4: 'green',
-      5: 'blue'
-    }
-    return {
-      color
-    }
-  },
-}
+<script setup>
+const color = {
+  2: 'red',
+  4: 'green',
+  5: 'blue',
+};
 </script>
 ```

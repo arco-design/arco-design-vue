@@ -28,14 +28,11 @@ There are four sizes.
   </div>
   <a-time-picker style="width: 194px;" :size="size" />
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        size: 'small'
-      }
-    }
-  }
+
+<script setup>
+import { ref } from 'vue';
+
+const size = ref('small');
 </script>
 ```
 

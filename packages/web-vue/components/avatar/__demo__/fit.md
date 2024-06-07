@@ -16,7 +16,6 @@ If the avatar content is text, the font size will be automatically adjusted to f
 ---
 
 ```vue
-
 <template>
   <a-avatar
     :style="{
@@ -36,24 +35,16 @@ If the avatar content is text, the font size will be automatically adjusted to f
   </a-button>
 </template>
 
-<script>
+<script setup>
 import { computed, ref } from 'vue';
 
 const list = ['B', 'Arco', 'Design', 'Tom', 'AD'];
-export default {
-  setup() {
-    const index = ref(0);
-    const text = computed(() => list[index.value])
 
-    const onClick = () => {
-      index.value = index.value >= list.length - 1 ? 0 : index.value + 1;
-    };
+const index = ref(0);
+const text = computed(() => list[index.value])
 
-    return {
-      text,
-      onClick
-    }
-  },
+const onClick = () => {
+  index.value = index.value >= list.length - 1 ? 0 : index.value + 1;
 };
 </script>
 ```

@@ -17,6 +17,7 @@ You can customize the interactive button through `trigger-icon` and `trigger-typ
 ---
 
 ```vue
+
 <template>
   <a-space size="large">
     <a-avatar
@@ -27,13 +28,13 @@ You can customize the interactive button through `trigger-icon` and `trigger-typ
     >
       A
       <template #trigger-icon>
-        <IconCamera />
+        <IconCamera/>
       </template>
     </a-avatar>
     <a-avatar @click="toast" :style="{ backgroundColor: '#14C9C9' }">
-      <IconUser />
+      <IconUser/>
       <template #trigger-icon>
-        <IconEdit />
+        <IconEdit/>
       </template>
     </a-avatar>
     <a-avatar
@@ -41,9 +42,9 @@ You can customize the interactive button through `trigger-icon` and `trigger-typ
       shape="square"
       :style="{ backgroundColor: '#FFC72E' }"
     >
-      <IconUser />
+      <IconUser/>
       <template #trigger-icon>
-        <IconEdit />
+        <IconEdit/>
       </template>
     </a-avatar>
     <a-avatar trigger-type="mask">
@@ -52,22 +53,18 @@ You can customize the interactive button through `trigger-icon` and `trigger-typ
         src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"
       />
       <template #trigger-icon>
-        <IconEdit />
+        <IconEdit/>
       </template>
     </a-avatar>
   </a-space>
 </template>
 
-<script>
-import { IconCamera, IconEdit, IconUser } from '@arco-design/web-vue/es/icon';
+<script setup>
+import {IconCamera, IconEdit, IconUser} from '@arco-design/web-vue/es/icon';
+import { Message } from '@arco-design/web-vue';
 
-export default {
-  components: { IconCamera, IconEdit },
-  methods: {
-    toast() {
-      this.$message.info('Uploading...');
-    },
-  },
-};
+const toast = () => {
+  Message.info('Uploading...');
+}
 </script>
 ```

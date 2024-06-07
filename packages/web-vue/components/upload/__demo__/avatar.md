@@ -66,30 +66,20 @@ Click to upload user's avatar, and validate size and format of picture with befo
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { IconEdit, IconPlus } from '@arco-design/web-vue/es/icon';
 import { ref } from 'vue';
 
-export default {
-  components: {IconPlus, IconEdit},
-  setup() {
-    const file = ref();
+const file = ref();
 
-    const onChange = (_, currentFile) => {
-      file.value = {
-        ...currentFile,
-        // url: URL.createObjectURL(currentFile.file),
-      };
-    };
-    const onProgress = (currentFile) => {
-      file.value = currentFile;
-    };
-    return {
-      file,
-      onChange,
-      onProgress
-    }
-  },
+const onChange = (_, currentFile) => {
+  file.value = {
+    ...currentFile,
+    // url: URL.createObjectURL(currentFile.file),
+  };
+};
+const onProgress = (currentFile) => {
+  file.value = currentFile;
 };
 </script>
 ```

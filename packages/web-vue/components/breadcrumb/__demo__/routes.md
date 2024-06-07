@@ -30,26 +30,20 @@ Transfer breadcrumb data through `routes`. If you want to customize bread crumbs
   </a-space>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      routes: [
-        {
-          path: '/',
-          label: 'Home'
-        },
-        {
-          path: '/channel',
-          label: 'Channel',
-        },
-        {
-          path: '/news',
-          label: 'News'
-        },
-      ],
-    }
-  }
-}
+<script setup>
+const routes = [
+  {
+    path: '/',
+    label: 'Home',
+  },
+  {
+    path: '/channel',
+    label: 'Channel',
+  },
+  {
+    path: '/news',
+    label: 'News',
+  },
+];
 </script>
 ```

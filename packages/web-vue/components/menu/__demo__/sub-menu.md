@@ -55,7 +55,8 @@ Multiple sub-items can be embedded in the menu, and the items that are opened by
     </a-menu>
   </div>
 </template>
-<script>
+
+<script setup>
 import {
   IconMenuFold,
   IconMenuUnfold,
@@ -63,17 +64,8 @@ import {
   IconBug,
   IconBulb,
 } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-};
 </script>
+
 <style scoped>
 .menu-demo {
   box-sizing: border-box;

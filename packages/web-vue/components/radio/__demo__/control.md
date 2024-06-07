@@ -34,30 +34,19 @@ Control whether the radio is selected
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const checked1 = ref(false);
-    const checked2 = ref(false);
+const checked1 = ref(false);
+const checked2 = ref(false);
 
-    const handleSetCheck = () => {
-      checked2.value = !checked2.value;
-    };
+const handleSetCheck = () => {
+  checked2.value = !checked2.value;
+};
 
-    const handleReset = () => {
-      checked1.value = false;
-      checked2.value = false;
-    };
-
-    return {
-      checked1,
-      checked2,
-      handleSetCheck,
-      handleReset,
-    };
-  },
+const handleReset = () => {
+  checked1.value = false;
+  checked2.value = false;
 };
 </script>
 ```

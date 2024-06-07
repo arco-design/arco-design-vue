@@ -50,31 +50,20 @@ custom icon
   </div>
 </template>
 
-<script>
+<script setup>
 import { h, ref } from 'vue';
 import { IconUpload, IconFileAudio, IconClose, IconFaceFrownFill } from '@arco-design/web-vue/es/icon';
 
-export default {
-  setup() {
-    const type = ref('text');
-    const getCustomIcon = () => {
-      return {
-        retryIcon: () => h(IconUpload),
-        cancelIcon: () => h(IconClose),
-        fileIcon: () => h(IconFileAudio),
-        removeIcon: () => h(IconClose),
-        errorIcon: () => h(IconFaceFrownFill),
-        fileName: (file) => {
-          return `文件名： ${file.name}`
-        },
-      };
-    };
-
-    return {
-      type,
-      getCustomIcon
-    }
-  },
+const type = ref('text');
+const getCustomIcon = () => {
+  return {
+    retryIcon: () => h(IconUpload),
+    cancelIcon: () => h(IconClose),
+    fileIcon: () => h(IconFileAudio),
+    removeIcon: () => h(IconClose),
+    errorIcon: () => h(IconFaceFrownFill),
+    fileName: (file) => `文件名： ${file.name}`,
+  };
 };
 </script>
 ```

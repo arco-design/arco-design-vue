@@ -37,6 +37,7 @@ The theme is specified by `theme`, which can be divided into two types: `light` 
     </a-menu>
   </div>
 </template>
+
 <style scoped>
 .menu-demo {
   box-sizing: border-box;

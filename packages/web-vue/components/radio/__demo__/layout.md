@@ -39,17 +39,9 @@ We can use `<a-radio>` and `<a-grid>` in `<a-radio-group>`, to implement complex
   </a-radio-group>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const checkedValue = ref('1');
-
-    return {
-      checkedValue,
-    };
-  },
-};
+const checkedValue = ref('1');
 </script>
 ```

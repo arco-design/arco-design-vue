@@ -57,22 +57,19 @@ exports[`<dropdown> demo: render [button] correctly 1`] = `
 exports[`<dropdown> demo: render [context-menu] correctly 1`] = `
 "<div style=\\"display: flex; align-items: center; justify-content: center; height: 300px;\\">
   <div>Click Me</div>
-</div>
-<!---->"
+</div>"
 `;
 
 exports[`<dropdown> demo: render [group] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
-</button>
-<!---->"
+</button>"
 `;
 
 exports[`<dropdown> demo: render [icon] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
-</button>
-<!---->"
+</button>"
 `;
 
 exports[`<dropdown> demo: render [position] correctly 1`] = `
@@ -119,8 +116,7 @@ exports[`<dropdown> demo: render [position] correctly 1`] = `
 exports[`<dropdown> demo: render [submenu] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
-</button>
-<!---->"
+</button>"
 `;
 
 exports[`<dropdown> demo: render [trigger] correctly 1`] = `

@@ -40,30 +40,19 @@ You can use 'popup-container' to set the mount position of the pop-up layer node
   </a-drawer>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
+const visible = ref(false);
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleOk = () => {
-      visible.value = false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      visible,
-      handleClick,
-      handleOk,
-      handleCancel
-    }
-  },
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
 };
 </script>
 ```

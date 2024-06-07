@@ -3,8 +3,7 @@
 exports[`<popover> demo: render [basic] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Hover
-</button>
-<!---->"
+</button>"
 `;
 
 exports[`<popover> demo: render [position] correctly 1`] = `

@@ -38,17 +38,9 @@ The list component provides three sizes `small, medium, large`, which can be sel
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const size = ref('medium');
-
-    return {
-      size
-    }
-  },
-}
+const size = ref('medium');
 </script>
 ```

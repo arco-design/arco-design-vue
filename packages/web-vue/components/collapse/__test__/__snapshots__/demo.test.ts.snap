@@ -7,7 +7,7 @@ exports[`<collapse> demo: render [accordion] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -20,7 +20,7 @@ exports[`<collapse> demo: render [accordion] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -33,7 +33,7 @@ exports[`<collapse> demo: render [accordion] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -51,7 +51,7 @@ exports[`<collapse> demo: render [basic] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -66,7 +66,7 @@ exports[`<collapse> demo: render [basic] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -81,7 +81,7 @@ exports[`<collapse> demo: render [basic] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -101,7 +101,7 @@ exports[`<collapse> demo: render [border-less] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -116,7 +116,7 @@ exports[`<collapse> demo: render [border-less] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -131,7 +131,7 @@ exports[`<collapse> demo: render [border-less] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -151,7 +151,7 @@ exports[`<collapse> demo: render [custom] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -165,7 +165,7 @@ exports[`<collapse> demo: render [custom] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -179,7 +179,7 @@ exports[`<collapse> demo: render [custom] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -198,7 +198,7 @@ exports[`<collapse> demo: render [destroy] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -213,7 +213,7 @@ exports[`<collapse> demo: render [destroy] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -229,7 +229,7 @@ exports[`<collapse> demo: render [destroy] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <!---->
       </div>
@@ -245,7 +245,7 @@ exports[`<collapse> demo: render [expand-icon] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -258,7 +258,7 @@ exports[`<collapse> demo: render [expand-icon] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -271,7 +271,7 @@ exports[`<collapse> demo: render [expand-icon] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -291,7 +291,7 @@ exports[`<collapse> demo: render [extra] correctly 1`] = `
           <path d=\\"M20 6h18a2 2 0 0 1 2 2v22M8 16v24c0 1.105.891 2 1.996 2h20.007A1.99 1.99 0 0 0 32 40.008V15.997A1.997 1.997 0 0 0 30 14H10a2 2 0 0 0-2 2Z\\"></path>
         </svg></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -307,7 +307,7 @@ exports[`<collapse> demo: render [extra] correctly 1`] = `
           <!--v-if-->hello
         </button></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -321,7 +321,7 @@ exports[`<collapse> demo: render [extra] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <div class=\\"arco-collapse-item-header-extra\\"><span class=\\"arco-tag arco-tag-size-small arco-tag-checked\\"><!--v-if-->city<!--v-if--><!--v-if--></span></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -352,7 +352,7 @@ exports[`<collapse> demo: render [icon-position] correctly 1`] = `
           <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
           <div class=\\"arco-collapse-item-header-extra\\"><span class=\\"arco-tag arco-tag-size-small arco-tag-checked\\"><!--v-if-->city<!--v-if--><!--v-if--></span></div>
         </div>
-        <transition-stub>
+        <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
             <div class=\\"arco-collapse-item-content-box\\">
               <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -367,7 +367,7 @@ exports[`<collapse> demo: render [icon-position] correctly 1`] = `
           <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
           <!---->
         </div>
-        <transition-stub>
+        <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
             <div class=\\"arco-collapse-item-content-box\\">
               <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -382,7 +382,7 @@ exports[`<collapse> demo: render [icon-position] correctly 1`] = `
           <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
           <!---->
         </div>
-        <transition-stub>
+        <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
             <div class=\\"arco-collapse-item-content-box\\">
               <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -404,7 +404,7 @@ exports[`<collapse> demo: render [nested] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div class=\\"arco-collapse\\">
@@ -413,7 +413,7 @@ exports[`<collapse> demo: render [nested] correctly 1`] = `
                 <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
                 <!---->
               </div>
-              <transition-stub>
+              <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
                 <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
                   <div class=\\"arco-collapse-item-content-box\\">
                     <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -426,7 +426,7 @@ exports[`<collapse> demo: render [nested] correctly 1`] = `
                 <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
                 <!---->
               </div>
-              <transition-stub>
+              <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
                 <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
                   <!---->
                 </div>
@@ -442,7 +442,7 @@ exports[`<collapse> demo: render [nested] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content arco-collapse-item-content-expend\\">
         <div class=\\"arco-collapse-item-content-box\\">
           <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -455,7 +455,7 @@ exports[`<collapse> demo: render [nested] correctly 1`] = `
       <div class=\\"arco-collapse-item-header-title\\">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
     </div>
-    <transition-stub>
+    <transition-stub name=\\"collapse-slider\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"region\\" class=\\"arco-collapse-item-content\\" style=\\"display: none;\\">
         <!---->
       </div>

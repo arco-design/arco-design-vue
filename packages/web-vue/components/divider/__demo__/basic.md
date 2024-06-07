@@ -54,20 +54,8 @@ It divides the text paragraphs of different chapters, the default is a horizonta
   </div>
 </template>
 
-<script>
-import {
-  IconImage,
-  IconUser,
-  IconPen,
-} from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconImage,
-    IconUser,
-    IconPen,
-  },
-};
+<script setup>
+import { IconImage, IconUser, IconPen } from '@arco-design/web-vue/es/icon';
 </script>
 
 <style scoped>

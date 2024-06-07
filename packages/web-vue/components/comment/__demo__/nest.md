@@ -60,16 +60,8 @@ Comments can be nested.
   </a-comment>
 </template>
 
-<script>
+<script setup>
 import { IconHeart, IconMessage, IconStar } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconHeart,
-    IconMessage,
-    IconStar,
-  },
-};
 </script>
 
 <style scoped>

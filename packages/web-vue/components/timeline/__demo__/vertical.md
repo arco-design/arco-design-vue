@@ -77,22 +77,13 @@ The vertical time axis.
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const mode = ref('left');
+const mode = ref('left');
 
-    const onChange = (_mode) => {
-      mode.value = _mode;
-    };
-
-    return {
-      mode,
-      onChange
-    }
-  },
+const onChange = (_mode) => {
+  mode.value = _mode;
 };
 </script>
 ```

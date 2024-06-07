@@ -37,18 +37,10 @@ Both `width` and `height` of `ResizeBox` support `v-model`..
 </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const width = ref(500);
-    const height = ref(200);
-    return {
-      width,
-      height,
-    };
-  }
-};
+const width = ref(500);
+const height = ref(200);
 </script>
 ```

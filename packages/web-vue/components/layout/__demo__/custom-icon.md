@@ -86,8 +86,8 @@ By setting the `trigger` property of `Menu.Sider`, the icon of the collapse butt
     </a-layout>
   </a-layout>
 </template>
-<script>
-import { defineComponent } from 'vue';
+
+<script setup>
 import { Message} from '@arco-design/web-vue';
 import {
   IconCaretRight,
@@ -96,20 +96,11 @@ import {
   IconCalendar,
 } from '@arco-design/web-vue/es/icon';
 
-export default defineComponent({
-  components: {
-    IconCaretRight,
-    IconCaretLeft,
-    IconHome,
-    IconCalendar,
-  },
-  methods: {
-    onClickMenuItem(key) {
-      Message.info({ content: `You select ${key}`, showIcon: true });
-    }
-  }
-});
+const onClickMenuItem = (key) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+}
 </script>
+
 <style scoped>
 .layout-demo {
   height: 500px;

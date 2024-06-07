@@ -33,38 +33,33 @@ By specifying `virtualListProps` to turn on the virtual list, high performance c
     }"
   />
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const treeRef = ref();
-      const treeData = loop();
-      return {
-        treeRef,
-        treeData,
-        scrollIntoView() {
-          treeRef.value && treeRef.value.scrollIntoView({ key: '0-0-2-2' });
-        }
-      }
+
+<script setup>
+import { ref } from 'vue';
+
+const treeRef = ref();
+const treeData = loop();
+
+function scrollIntoView() {
+  treeRef.value && treeRef.value.scrollIntoView({ key: '0-0-2-2' });
+}
+
+function loop(path = '0', level = 2) {
+  const list = [];
+  for (let i = 0; i < 10; i += 1) {
+    const key = `${path}-${i}`;
+    const treeNode = {
+      title: key,
+      key,
+    };
+
+    if (level > 0) {
+      treeNode.children = loop(key, level - 1);
     }
+
+    list.push(treeNode);
   }
-
-  function loop(path = '0', level = 2) {
-    const list = [];
-    for (let i = 0; i < 10; i += 1) {
-      const key = `${path}-${i}`;
-      const treeNode = {
-        title: key,
-        key,
-      };
-
-      if (level > 0) {
-        treeNode.children = loop(key, level - 1);
-      }
-
-      list.push(treeNode);
-    }
-    return list;
-  }
+  return list;
+}
 </script>
 ```

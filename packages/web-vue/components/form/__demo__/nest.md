@@ -75,31 +75,23 @@ If you use the grid component for layout, please set `:content-flex="false"` to 
   {{ form }}
 </template>
 
-<script>
+<script setup>
 import { reactive } from 'vue';
 
-export default {
-  setup() {
-    const form = reactive({
-      together: {
-        firstname: '',
-        lastname: '',
-      },
-      separate: {
-        firstname: '',
-        lastname: '',
-      },
-      posts: {
-        post1: '',
-        post2: ''
-      },
-      isRead: false,
-    })
-
-    return {
-      form,
-    }
+const form = reactive({
+  together: {
+    firstname: '',
+    lastname: '',
   },
-}
+  separate: {
+    firstname: '',
+    lastname: '',
+  },
+  posts: {
+    post1: '',
+    post2: ''
+  },
+  isRead: false,
+});
 </script>
 ```

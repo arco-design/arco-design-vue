@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Notification should render notification 1`] = `
-"<transition-group-stub>
+"<transition-group-stub name=\\"slide-right-notification\\" tag=\\"ul\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-notification-list arco-notification-list-top-right\\" style=\\"z-index: 0;\\">
   <li role=\\"alert\\" class=\\"arco-notification arco-notification-info\\">
     <div class=\\"arco-notification-left\\">
       <div class=\\"arco-notification-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-info-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">

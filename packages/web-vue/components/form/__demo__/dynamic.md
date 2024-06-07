@@ -33,30 +33,20 @@ Dynamically control form content through data.
   {{ form }}
 </template>
 
-<script>
+<script setup>
 import { reactive } from 'vue';
 
-export default {
-  setup() {
-    const form = reactive({
-      name: '',
-      posts: [{value: ''}]
-    })
-    const handleAdd = () => {
-      form.posts.push({
-        value: ''
-      })
-    };
-    const handleDelete = (index) => {
-      form.posts.splice(index, 1)
-    }
-
-    return {
-      form,
-      handleAdd,
-      handleDelete
-    }
-  },
-}
+const form = reactive({
+  name: '',
+  posts: [{value: ''}],
+});
+const handleAdd = () => {
+  form.posts.push({
+    value: '',
+  });
+};
+const handleDelete = (index) => {
+  form.posts.splice(index, 1);
+};
 </script>
 ```

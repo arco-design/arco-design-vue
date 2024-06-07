@@ -36,13 +36,9 @@ There are 4 built-in alignment methods, namely `start` `center` `end` `baseline`
     </a-space>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      align: 'center',
-    }
-  }
-};
+<script setup>
+import { ref } from 'vue';
+
+const align = ref('center');
 </script>
 ```

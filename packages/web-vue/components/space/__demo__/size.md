@@ -34,13 +34,9 @@ Built-in 4 sizes, `mini-4px` `small-8px (default)` `medium-16px` `large-24px`, a
     </a-space>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      size: 'medium',
-    }
-  }
-};
+<script setup>
+import { ref } from 'vue';
+
+const size = ref('medium');
 </script>
 ```

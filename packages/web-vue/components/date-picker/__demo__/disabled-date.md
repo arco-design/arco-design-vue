@@ -42,7 +42,8 @@ Use `disabledDate` to disable specified dates. And use `disabledTime` to disable
     />
   </div>
 </template>
-<script>
+
+<script setup>
 import dayjs from 'dayjs';
 
 function range(start, end) {
@@ -67,16 +68,6 @@ function getDisabledRangeTime(date, type) {
     disabledMinutes: () => type === 'end' ? range(0, 30) : [31, 60],
     disabledSeconds: () => range(30, 60),
   };
-}
-
-export default {
-  setup() {
-    return {
-      dayjs,
-      getDisabledTime,
-      getDisabledRangeTime,
-    }
-  }
 }
 </script>
 ```

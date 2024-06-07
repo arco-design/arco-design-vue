@@ -33,17 +33,9 @@ In addition, starting from `2.17.0`, the preview component `a-image-preview` pro
   </a-image>
 </template>
 
-<script>
-export default {
-  setup() {
-    const download = () => {
-      console.log('点击下载图片')
-    };
-
-    return {
-      download
-    }
-  },
-}
+<script setup>
+const download = () => {
+  console.log('点击下载图片');
+};
 </script>
 ```

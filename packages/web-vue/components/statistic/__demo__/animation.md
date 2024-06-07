@@ -27,17 +27,9 @@ Numerical animation can be turned on through `animation`.
   <a-button @click="start=true">Start</a-button>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const start = ref(false);
-
-    return {
-      start
-    }
-  },
-}
+const start = ref(false);
 </script>
 ```

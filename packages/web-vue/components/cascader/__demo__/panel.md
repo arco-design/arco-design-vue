@@ -21,68 +21,60 @@ Cascading menu can be used alone, in this case it is the `data display` componen
   <a-cascader-panel :options="options" v-model="value" expand-child/>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref('');
+const value = ref('');
 
-    const options = [
+const options = [
+  {
+    value: 'beijing',
+    label: 'Beijing',
+    children: [
       {
-        value: 'beijing',
-        label: 'Beijing',
+        value: 'chaoyang',
+        label: 'ChaoYang',
         children: [
           {
-            value: 'chaoyang',
-            label: 'ChaoYang',
-            children: [
-              {
-                value: 'datunli',
-                label: 'Datunli',
-              },
-            ],
-          },
-          {
-            value: 'haidian',
-            label: 'Haidian',
-          },
-          {
-            value: 'dongcheng',
-            label: 'Dongcheng',
-          },
-          {
-            value: 'xicheng',
-            label: 'Xicheng',
-            children: [
-              {
-                value: 'jinrongjie',
-                label: 'Jinrongjie',
-              },
-              {
-                value: 'tianqiao',
-                label: 'Tianqiao',
-              },
-            ],
+            value: 'datunli',
+            label: 'Datunli',
           },
         ],
       },
       {
-        value: 'shanghai',
-        label: 'Shanghai',
+        value: 'haidian',
+        label: 'Haidian',
+      },
+      {
+        value: 'dongcheng',
+        label: 'Dongcheng',
+      },
+      {
+        value: 'xicheng',
+        label: 'Xicheng',
         children: [
           {
-            value: 'huangpu',
-            label: 'Huangpu',
+            value: 'jinrongjie',
+            label: 'Jinrongjie',
+          },
+          {
+            value: 'tianqiao',
+            label: 'Tianqiao',
           },
         ],
       },
-    ];
-    return {
-      value,
-      options
-    }
+    ],
   },
-}
+  {
+    value: 'shanghai',
+    label: 'Shanghai',
+    children: [
+      {
+        value: 'huangpu',
+        label: 'Huangpu',
+      },
+    ],
+  },
+];
 </script>
 ```

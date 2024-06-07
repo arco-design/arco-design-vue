@@ -31,24 +31,14 @@ Control whether the check box is selected
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const checked1 = ref(false);
-    const checked2 = ref(false);
+const checked1 = ref(false);
+const checked2 = ref(false);
 
-    const handleSetCheck = () => {
-      checked2.value = !checked2.value;
-    };
-
-    return {
-      checked1,
-      checked2,
-      handleSetCheck,
-    };
-  },
+const handleSetCheck = () => {
+  checked2.value = !checked2.value;
 };
 </script>
 ```

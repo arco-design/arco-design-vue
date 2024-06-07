@@ -29,17 +29,9 @@ The pagination is divided into four sizes: `mini`, `small`, `medium`, and `large
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const size = ref('medium');
-
-    return {
-      size
-    }
-  },
-}
+const size = ref('medium');
 </script>
 ```

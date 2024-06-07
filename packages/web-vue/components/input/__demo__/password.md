@@ -30,17 +30,9 @@ Used to enter a password.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visibility = ref(true);
-
-    return {
-      visibility
-    }
-  },
-}
+const visibility = ref(true);
 </script>
 ```

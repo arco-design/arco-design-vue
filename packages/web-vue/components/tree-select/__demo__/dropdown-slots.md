@@ -48,71 +48,61 @@ Custom Tree Select the header and footer of the drop-down box.
     </template>
   </a-tree-select>
 </template>
-<script>
-  import { h, reactive, computed } from 'vue';
-  import { IconCalendar } from '@arco-design/web-vue/es/icon';
 
-  export default {
-    setup() {
-      const form = reactive({
-        empty: false,
-        showHeaderOnEmpty: false,
-        showFooterOnEmpty: false,
-      });
+<script setup>
+import { h, reactive, computed } from 'vue';
+import { IconCalendar } from '@arco-design/web-vue/es/icon';
 
-      const treeData = [
-        {
-          key: 'node1',
-          icon: () => h(IconCalendar),
-          title: 'Trunk',
-          children: [
-            {
-              key: 'node2',
-              title: 'Leaf',
-            },
-          ],
-        },
-        {
-          key: 'node3',
-          title: 'Trunk2',
-          icon: () => h(IconCalendar),
-          children: [
-            {
-              key: 'node4',
-              title: 'Leaf',
-            },
-            {
-              key: 'node5',
-              title: 'Leaf',
-            },
-          ],
-        },
-        {
-          key: 'node6',
-          title: 'Trunk3',
-          icon: () => h(IconCalendar),
-          children: [
-            {
-              key: 'node7',
-              title: 'Leaf',
-            },
-            {
-              key: 'node8',
-              title: 'Leaf',
-            },
-          ],
-        },
-      ];
+const form = reactive({
+  empty: false,
+  showHeaderOnEmpty: false,
+  showFooterOnEmpty: false,
+});
 
-      const computedTreeData = computed(() => {
-        return form.empty ? [] : treeData;
-      });
+const treeData = [
+  {
+    key: 'node1',
+    icon: () => h(IconCalendar),
+    title: 'Trunk',
+    children: [
+      {
+        key: 'node2',
+        title: 'Leaf',
+      },
+    ],
+  },
+  {
+    key: 'node3',
+    title: 'Trunk2',
+    icon: () => h(IconCalendar),
+    children: [
+      {
+        key: 'node4',
+        title: 'Leaf',
+      },
+      {
+        key: 'node5',
+        title: 'Leaf',
+      },
+    ],
+  },
+  {
+    key: 'node6',
+    title: 'Trunk3',
+    icon: () => h(IconCalendar),
+    children: [
+      {
+        key: 'node7',
+        title: 'Leaf',
+      },
+      {
+        key: 'node8',
+        title: 'Leaf',
+      },
+    ],
+  },
+];
 
-      return {
-        form,
-        computedTreeData,
-      };
-    },
-  };
+const computedTreeData = computed(() => form.empty ? [] : treeData);
 </script>
 ```

@@ -52,23 +52,9 @@ Basic usage of the drop-down menu.
   </a-space>
 </template>
 
-<script>
-export default {
-  setup() {
-    const handleSelect = (v) => {
-      console.log(v)
-    };
-
-    return {
-      handleSelect
-    }
-  },
-}
+<script setup>
+const handleSelect = (v) => {
+  console.log(v);
+};
 </script>
-
-<style>
-.arco-dropdown-open .arco-icon-down {
-  transform: rotate(180deg);
-}
-</style>
 ```

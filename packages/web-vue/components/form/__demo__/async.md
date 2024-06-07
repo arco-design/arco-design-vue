@@ -17,7 +17,6 @@ Verify the form function through an asynchronous method.
 ---
 
 ```vue
-
 <template>
   <a-form ref="formRef" :model="form" :style="{width:'600px'}">
     <a-form-item field="name" label="Username" :rules="rules">
@@ -38,49 +37,38 @@ Verify the form function through an asynchronous method.
   {{ form }}
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from 'vue';
 
-export default {
-  setup() {
-    const formRef = ref()
-    const form = reactive({
-      name: '',
-      post: '',
-      isRead: false,
-    })
-    const rules = [{
-      validator: (value, cb) => {
-        return new Promise(resolve => {
-          window.setTimeout(() => {
-            if (value !== 'admin') {
-              cb('name must be admin')
-            }
-            resolve()
-          }, 2000)
-        })
-      }
-    }];
-    const handleClick = () => {
-      formRef.value.setFields({
-        name: {
-          status: 'error',
-          message: 'async name error'
-        },
-        post: {
-          status: 'error',
-          message: 'valid post'
+const formRef = ref();
+const form = reactive({
+  name: '',
+  post: '',
+  isRead: false,
+});
+const rules = [{
+  validator: (value, cb) => {
+    return new Promise(resolve => {
+      window.setTimeout(() => {
+        if (value !== 'admin') {
+          cb('name must be admin')
         }
-      })
-    }
-
-    return {
-      formRef,
-      form,
-      rules,
-      handleClick
-    }
+        resolve();
+      }, 2000);
+    });
   },
-}
+}];
+const handleClick = () => {
+  formRef.value.setFields({
+    name: {
+      status: 'error',
+      message: 'async name error',
+    },
+    post: {
+      status: 'error',
+      message: 'valid post',
+    },
+  });
+};
 </script>
 ```

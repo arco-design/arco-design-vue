@@ -35,15 +35,9 @@ Set the size of the progress bar through `size`
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    return {
-      size: ref('medium')
-    }
-  }
-}
+const size = ref('medium');
 </script>
 ```

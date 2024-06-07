@@ -22,7 +22,7 @@ Use `masked = true` to turn on password mode
 </template>
 
 <script setup>
-import { Message} from '@arco-design/web-vue';
+import { Message } from '@arco-design/web-vue';
 
 const onFinish = (value) => Message.info(`Verification code: ${value}`);
 </script>

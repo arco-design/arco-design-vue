@@ -44,14 +44,8 @@ Disabled.
     style="width: 380px;"
   />
 </template>
-<script>
+
+<script setup>
 import dayjs from 'dayjs';
-export default {
-  setup() {
-    return {
-      dayjs
-    };
-  }
-}
 </script>
 ```

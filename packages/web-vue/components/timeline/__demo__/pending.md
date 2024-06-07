@@ -62,29 +62,17 @@ When the task state is happening and the recording is still in progress, ghost n
   </a-timeline>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { IconFire } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconFire,
-  },
-  setup() {
-    const pendingProps = ref({});
+const pendingProps = ref({});
 
-    const onChange = (newProps) => {
-      pendingProps.value = {
-        ...pendingProps.value,
-        ...newProps,
-      };
-    };
-
-    return {
-      pendingProps,
-      onChange
-    }
-  },
+const onChange = (newProps) => {
+  pendingProps.value = {
+    ...pendingProps.value,
+    ...newProps,
+  };
 };
 </script>
 ```

@@ -32,17 +32,9 @@ By setting the `animation` property, the skeleton screen can display the animati
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const animation = ref(true);
-
-    return {
-      animation
-    }
-  },
-}
+const animation = ref(true);
 </script>
 ```

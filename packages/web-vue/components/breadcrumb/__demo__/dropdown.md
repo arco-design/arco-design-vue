@@ -54,46 +54,40 @@ use `droplist` or `routes` settings dropdown menu
   </a-space>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      routes: [
-        {
-          path: '/',
-          label: 'Home'
-        },
-        {
-          path: '/channel',
-          label: 'Channel',
-          children: [
-            {
-              path: '/users',
-              label: 'Users',
-            },
-            {
-              path: '/permission',
-              label: 'Permission',
-            }
-          ]
-        },
-        {
-          path: '/news',
-          label: 'News'
-        },
-      ],
-      droplist: [
-        {
-          path: '/goods',
-          label: 'Goods',
-        },
-        {
-          path: '/wallet',
-          label: 'Wallet',
-        }
-      ]
-    }
-  }
-}
+<script setup>
+const routes = [
+  {
+    path: '/',
+    label: 'Home'
+  },
+  {
+    path: '/channel',
+    label: 'Channel',
+    children: [
+      {
+        path: '/users',
+        label: 'Users',
+      },
+      {
+        path: '/permission',
+        label: 'Permission',
+      }
+    ],
+  },
+  {
+    path: '/news',
+    label: 'News',
+  },
+];
+const droplist = [
+  {
+    path: '/goods',
+    label: 'Goods',
+  },
+  {
+    path: '/wallet',
+    label: 'Wallet',
+  },
+];
 </script>
 ```

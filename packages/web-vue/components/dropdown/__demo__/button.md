@@ -48,10 +48,4 @@ The `<dropdown-button>` component can be used to display a button with a menu of
   </a-space>
 
 </template>
-
-<style>
-.arco-dropdown-open .arco-icon-down {
-  transform: rotate(180deg);
-}
-</style>
 ```

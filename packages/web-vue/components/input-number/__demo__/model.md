@@ -21,17 +21,12 @@ Note: In this mode, the input value will exceed the set min/max, and the compone
 ```vue
 <template>
   <a-input-number v-model="value" :style="{width:'320px'}" placeholder="Please Enter" class="input-demo" :min="10" :max="100" model-event="input"/>
-  <div>value: {{value}}</div>
+  <div>value: {{ value }}</div>
 </template>
 
-<script>
-export default {
-  data(){
-    return {
-      value:15
-    }
+<script setup>
+import { ref } from 'vue';
 
-  }
-}
+const value = ref(15);
 </script>
 ```

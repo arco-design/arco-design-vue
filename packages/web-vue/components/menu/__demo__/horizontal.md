@@ -38,6 +38,7 @@ By setting `mode` to `horizontal`, you can use the horizontal menu.
     </a-menu>
   </div>
 </template>
+
 <style scoped>
 .menu-demo {
   box-sizing: border-box;

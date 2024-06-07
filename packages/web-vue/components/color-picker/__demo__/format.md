@@ -29,7 +29,7 @@ Set the format of the color value through `format`, supporting `hex` and `rgb`.
 <script setup>
 import { ref } from 'vue';
 
-const format = ref('hex')
-const formatList = ['hex', 'rgb']
+const format = ref('hex');
+const formatList = ['hex', 'rgb'];
 </script>
 ```

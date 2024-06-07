@@ -23,17 +23,9 @@ Display and select calendars
   select: {{value}}
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref(new Date('2023-01-01'));
-
-    return {
-      value
-    }
-  },
-}
+const value = ref(new Date('2023-01-01'));
 </script>
 ```

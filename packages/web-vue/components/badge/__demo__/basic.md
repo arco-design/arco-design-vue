@@ -36,11 +36,7 @@ Basic usage. Just specify `count` or `content slot` to display the badge.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { IconClockCircle } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconClockCircle },
-};
 </script>
 ```

@@ -39,6 +39,7 @@ Set `hoverable` to add a mouse hover style to the card, and you can customize th
     </a-card>
   </div>
 </template>
+
 <style scoped>
 .card-demo {
   width: 360px;

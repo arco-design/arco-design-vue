@@ -57,28 +57,19 @@ The component provides a named slot `extra` for users to customize additional co
     </template>
   </a-image>
 </template>
-<script>
-  import { ref } from 'vue';
-  import { IconEye, IconDownload, IconInfoCircle } from '@arco-design/web-vue/es/icon';
 
-  export default {
-    components: {
-      IconEye, IconDownload, IconInfoCircle
-    },
-    setup() {
-      const visible1 = ref(false);
-      const visible2 = ref(false);
+<script setup>
+import { ref } from 'vue';
+import { IconEye, IconDownload, IconInfoCircle } from '@arco-design/web-vue/es/icon';
 
-      return {
-        visible1,
-        visible2,
-        onDownLoad() {
-          console.log('download');
-        },
-      }
-    }
-  }
+const visible1 = ref(false);
+const visible2 = ref(false);
+
+const onDownLoad = () => {
+  console.log('download');
+};
 </script>
+
 <style scoped>
   .actions {
     display: flex;

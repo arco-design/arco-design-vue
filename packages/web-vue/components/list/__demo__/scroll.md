@@ -35,43 +35,31 @@ listen to the event of the bottom of the list.
   </a-list>
 </template>
 
-<script>
+<script setup>
 import { reactive, ref } from 'vue';
 
-export default {
-  setup() {
-    const current = ref(1);
-    const bottom = ref(false);
-    const data = reactive([]);
-    const scrollbar = ref(true);
+const current = ref(1);
+const bottom = ref(false);
+const data = reactive([]);
+const scrollbar = ref(true);
 
-    const fetchData = () => {
-      console.log('reach bottom!');
-      if (current.value <= 5) {
-        window.setTimeout(() => {
-          const index = data.length;
-          data.push(
-            `Beijing Bytedance Technology Co., Ltd. ${index + 1}`,
-            `Bytedance Technology Co., Ltd. ${index + 2}`,
-            `Beijing Toutiao Technology Co., Ltd. ${index + 3}`,
-            `Beijing Volcengine Technology Co., Ltd. ${index + 4}`,
-            `China Beijing Bytedance Technology Co., Ltd. ${index + 5}`
-          );
-          current.value += 1
-        }, 2000)
-      } else {
-        bottom.value = true
-      }
-    }
-
-    return {
-      current,
-      bottom,
-      data,
-      fetchData,
-      scrollbar
-    }
-  },
-}
+const fetchData = () => {
+  console.log('reach bottom!');
+  if (current.value <= 5) {
+    window.setTimeout(() => {
+      const index = data.length;
+      data.push(
+        `Beijing Bytedance Technology Co., Ltd. ${index + 1}`,
+        `Bytedance Technology Co., Ltd. ${index + 2}`,
+        `Beijing Toutiao Technology Co., Ltd. ${index + 3}`,
+        `Beijing Volcengine Technology Co., Ltd. ${index + 4}`,
+        `China Beijing Bytedance Technology Co., Ltd. ${index + 5}`
+      );
+      current.value += 1
+    }, 2000)
+  } else {
+    bottom.value = true
+  }
+};
 </script>
 ```

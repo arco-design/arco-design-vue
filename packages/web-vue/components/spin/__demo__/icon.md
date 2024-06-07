@@ -25,11 +25,7 @@ $END$
   </a-spin>
 </template>
 
-<script>
+<script setup>
 import { IconSync } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconSync }
-};
 </script>
 ```

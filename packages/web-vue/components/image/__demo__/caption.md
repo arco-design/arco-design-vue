@@ -34,15 +34,9 @@ By setting title and description, the title and description of the picture can b
   />
 </template>
 
-<script>
-export default {
-  setup() {
-    return {
-      src: 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp',
-      title: 'A user’s avatar',
-      description: 'Present by Arco Design',
-    }
-  }
-}
+<script setup>
+const src = 'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp';
+const title = 'A user’s avatar';
+const description = 'Present by Arco Design';
 </script>
 ```

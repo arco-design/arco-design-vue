@@ -56,25 +56,15 @@ The basic usage of the countdown component `countdown`.
   </a-space>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const now = Date.now();
-    const start = ref(false);
+const now = Date.now();
+const start = ref(false);
 
-    const handleFinish = () => {
-      Message.info('Finish');
-    };
-
-    return {
-      now,
-      start,
-      handleFinish,
-    };
-  },
+const handleFinish = () => {
+  Message.info('Finish');
 };
 </script>
 ```

@@ -21,7 +21,7 @@ Use the modal by function.
   <a-button @click="handleClick">Open Modal</a-button>
 </template>
 
-<script>
+<script setup>
 import { h } from 'vue';
 import { Modal, Button } from '@arco-design/web-vue';
 
@@ -30,34 +30,26 @@ const ModalContent = {
     const onClick = () => {
       Modal.info({
         title: 'Info Title',
-        content: 'This is an nest info message'
+        content: 'This is an nest info message',
       });
     };
 
     return () => h('div', {class: 'info-modal-content'}, [
       h('span', {style: 'margin-bottom: 10px;'}, 'This is an info message'),
-      h(Button, {size: 'mini', onClick}, 'Open Nest Modal')
-    ])
+      h(Button, {size: 'mini', onClick}, 'Open Nest Modal'),
+    ]);
   },
-}
+};
 
-export default {
-  setup() {
-    const handleClick = () => {
-      Modal.info({
-        title: 'Info Title',
-        content: () => h(ModalContent)
-      });
-    };
-
-    return {
-      handleClick
-    }
-  },
-}
+const handleClick = () => {
+  Modal.info({
+    title: 'Info Title',
+    content: () => h(ModalContent),
+  });
+};
 </script>
 
-<style>
+<style scoped>
 .info-modal-content {
   display: flex;
   flex-direction: column;

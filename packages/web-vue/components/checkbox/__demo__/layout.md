@@ -39,17 +39,9 @@ We can use `<a-checkbox>` and `<a-grid>` in `<a-checkbox-group>`, to implement c
   </a-checkbox-group>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const checkedValue = ref(['1', '2']);
-
-    return {
-      checkedValue,
-    };
-  },
-};
+const checkedValue = ref(['1', '2']);
 </script>
 ```

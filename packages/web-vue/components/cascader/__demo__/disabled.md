@@ -21,65 +21,58 @@ Specify the `disabled` of the `option` as `true` to disable the option.
   <a-cascader :options="options" :style="{width:'320px'}" placeholder="Please select ..." />
 </template>
 
-<script>
-export default {
-  setup() {
-    const options = [
+<script setup>
+const options = [
+  {
+    value: 'beijing',
+    label: 'Beijing',
+    children: [
       {
-        value: 'beijing',
-        label: 'Beijing',
+        value: 'chaoyang',
+        label: 'ChaoYang',
         children: [
           {
-            value: 'chaoyang',
-            label: 'ChaoYang',
-            children: [
-              {
-                value: 'datunli',
-                label: 'Datunli',
-              },
-            ],
+            value: 'datunli',
+            label: 'Datunli',
+          },
+        ],
+      },
+      {
+        value: 'haidian',
+        label: 'Haidian',
+        disabled: true
+      },
+      {
+        value: 'dongcheng',
+        label: 'Dongcheng',
+      },
+      {
+        value: 'xicheng',
+        label: 'Xicheng',
+        children: [
+          {
+            value: 'jinrongjie',
+            label: 'Jinrongjie',
           },
           {
-            value: 'haidian',
-            label: 'Haidian',
+            value: 'tianqiao',
+            label: 'Tianqiao',
             disabled: true
           },
-          {
-            value: 'dongcheng',
-            label: 'Dongcheng',
-          },
-          {
-            value: 'xicheng',
-            label: 'Xicheng',
-            children: [
-              {
-                value: 'jinrongjie',
-                label: 'Jinrongjie',
-              },
-              {
-                value: 'tianqiao',
-                label: 'Tianqiao',
-                disabled: true
-              },
-            ],
-          },
         ],
       },
-      {
-        value: 'shanghai',
-        label: 'Shanghai',
-        children: [
-          {
-            value: 'huangpu',
-            label: 'Huangpu',
-          },
-        ],
-      },
-    ];
-    return {
-      options
-    }
+    ],
   },
-}
+  {
+    value: 'shanghai',
+    label: 'Shanghai',
+    children: [
+      {
+        value: 'huangpu',
+        label: 'Huangpu',
+      },
+    ],
+  },
+];
 </script>
 ```

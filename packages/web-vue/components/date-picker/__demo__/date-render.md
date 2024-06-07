@@ -28,19 +28,13 @@ Use the named slot `cell` to customize the date cell.
     </template>
   </a-date-picker>
 </template>
-<script>
-export default {
-  setup() {
-    const highlightDates = [6, 14, 22];
-    const highlightStyle = {
-      border: '1px solid rgb(var(--arcoblue-6))',
-    };
-    return {
-      getCellStyle(date) {
-        return highlightDates.includes(date.getDate()) ? highlightStyle : {}
-      }
-    }
-  }
-}
+
+<script setup>
+const highlightDates = [6, 14, 22];
+const highlightStyle = {
+  border: '1px solid rgb(var(--arcoblue-6))',
+};
+
+const getCellStyle = (date) => highlightDates.includes(date.getDate()) ? highlightStyle : {};
 </script>
 ```

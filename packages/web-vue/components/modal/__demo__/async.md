@@ -17,7 +17,6 @@ Asynchronous shutdown can be implemented more concisely through on-before-ok
 ---
 
 ```vue
-
 <template>
   <a-button @click="handleClick">Open Modal</a-button>
   <a-modal v-model:visible="visible" @cancel="handleCancel" :on-before-ok="handleBeforeOk" unmountOnClose>
@@ -30,33 +29,22 @@ Asynchronous shutdown can be implemented more concisely through on-before-ok
   </a-modal>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
+const visible = ref(false);
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleBeforeOk = async () => {
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      return true;
-      // prevent close
-      // return false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      visible,
-      handleClick,
-      handleBeforeOk,
-      handleCancel
-    }
-  },
-}
+const handleClick = () => {
+  visible.value = true;
+};
+const handleBeforeOk = async () => {
+  await new Promise(resolve => setTimeout(resolve, 3000));
+  return true;
+  // prevent close
+  // return false;
+};
+const handleCancel = () => {
+  visible.value = false;
+};
 </script>
 ```

@@ -33,15 +33,9 @@ amount of data is used.
     }"
   />
 </template>
-<script>
-export default {
-  setup() {
-    const treeData = loop();
-    return {
-      treeData
-    }
-  }
-}
+
+<script setup>
+const treeData = loop();
 
 function loop(path = '0', level = 2) {
   const list = [];

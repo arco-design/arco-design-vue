@@ -34,7 +34,7 @@ Dynamically set the number of columns occupied by each item through parameters s
   </a-list>
 </template>
 
-<script>
+<script setup>
 const dataSource = [
   {
     title: 'Platform',
@@ -73,13 +73,5 @@ const dataSource = [
     data: ['C++', 'JavaScript', 'Python'],
   },
 ];
-
-export default {
-  setup() {
-    return {
-      dataSource
-    }
-  }
-}
 </script>
 ```
