@@ -22,9 +22,12 @@
   }
 
   &-content {
-    margin-top: @popup-margin-content-top;
     text-align: left;
     word-wrap: break-word;
+  }
+
+  &-title + &-content {
+    margin-top: @popup-margin-content-top;
   }
 
   &-popup-arrow {
