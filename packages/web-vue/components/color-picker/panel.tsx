@@ -36,6 +36,7 @@ export default defineComponent({
     const { t } = useI18n();
     const prefixCls = getPrefixCls('color-picker');
     const hsv = computed(() => props.color.hsv);
+    const huePosX = ref<number>(hsv.value.h);
     const [format, setFormat] = useState<'hex' | 'rgb'>(props.format || 'hex');
 
     const onChange = (value: any) => {
@@ -128,12 +129,13 @@ export default defineComponent({
             <div>
               <ControlBar
                 type="hue"
-                x={hsv.value.h}
+                x={huePosX.value}
                 color={props.color}
                 colorString={props.colorString}
-                onChange={(h) =>
-                  props.onHsvChange?.({ h, s: hsv.value.s, v: hsv.value.v })
-                }
+                onChange={(h) => {
+                  huePosX.value = h;
+                  props.onHsvChange?.({ h, s: hsv.value.s, v: hsv.value.v });
+                }}
               />
               {!props.disabledAlpha && (
                 <ControlBar
