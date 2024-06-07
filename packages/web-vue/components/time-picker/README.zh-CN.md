@@ -45,7 +45,7 @@ description: 在弹出面板上选择时间，以便捷完成时间输入的控�
 |readonly|是否为只读模式|`boolean`|`false`|
 |error|是否为错误状态|`boolean`|`false`|
 |format|展示日期的格式，参考[字符串解析格式](#字符串解析格式)|`string`|`'HH:mm:ss'`|
-|placeholder|提示文案|`string`|`-`|
+|placeholder|提示文案|`string \| string[]`|`-`|
 |size|输入框尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`|
 |use12-hours|12 小时制|`boolean`|`false`|

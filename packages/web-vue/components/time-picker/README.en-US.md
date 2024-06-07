@@ -47,7 +47,7 @@ description: Select the time on the pop-up panel to conveniently complete the ti
 |readonly|Whether it is read-only mode|`boolean`|`false`|
 |error|Whether it is an error state|`boolean`|`false`|
 |format|Display the format of the date, refer to [String Parsing Format](#String Parsing Format)|`string`|`'HH:mm:ss'`|
-|placeholder|Prompt copy|`string`|`-`|
+|placeholder|Prompt copy|`string \| string[]`|`-`|
 |size|Input box size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |popup-container|Mount container for pop-up box|`string \| HTMLElement`|`-`|
 |use12-hours|12 hour clock|`boolean`|`false`|
