@@ -49,7 +49,6 @@ export default defineComponent({
               class={[
                 `${prefixCls}-control-bar`,
                 `${prefixCls}-control-bar-alpha`,
-                `${prefixCls}-control-bar-alpha`,
               ]}
               style={{
                 background: `linear-gradient(to right, rgba(0, 0, 0, 0), rgb(${rgb.value.r}, ${rgb.value.g}, ${rgb.value.b}))`,

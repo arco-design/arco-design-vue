@@ -80,7 +80,7 @@ exports[`<color-picker> demo: render [only-panel] correctly 1`] = `
               <div class=\\"arco-color-picker-handler\\" style=\\"left: 61.587982832618025%; color: rgb(22, 93, 255);\\"></div>
             </div>
             <div class=\\"arco-color-picker-control-bar-bg\\">
-              <div class=\\"arco-color-picker-control-bar arco-color-picker-control-bar-alpha arco-color-picker-control-bar-alpha\\">
+              <div class=\\"arco-color-picker-control-bar arco-color-picker-control-bar-alpha\\">
                 <div class=\\"arco-color-picker-handler\\" style=\\"left: 100%; color: rgb(22, 93, 255);\\"></div>
               </div>
             </div>
@@ -192,7 +192,7 @@ exports[`<color-picker> demo: render [only-panel] correctly 1`] = `
               <div class=\\"arco-color-picker-handler\\" style=\\"left: 46.70138888888889%; color: rgb(18, 210, 172);\\"></div>
             </div>
             <div class=\\"arco-color-picker-control-bar-bg\\">
-              <div class=\\"arco-color-picker-control-bar arco-color-picker-control-bar-alpha arco-color-picker-control-bar-alpha\\">
+              <div class=\\"arco-color-picker-control-bar arco-color-picker-control-bar-alpha\\">
                 <div class=\\"arco-color-picker-handler\\" style=\\"left: 100%; color: rgb(18, 210, 172);\\"></div>
               </div>
             </div>
