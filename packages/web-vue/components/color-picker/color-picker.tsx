@@ -1,4 +1,4 @@
-import { defineComponent, PropType, computed, reactive, watch } from 'vue';
+import { defineComponent, PropType, computed, watch } from 'vue';
 import { Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { colors } from './colors';
@@ -150,12 +150,14 @@ export default defineComponent({
     watch(
       () => formatInput.value,
       (value) => {
-        setAlpha(value.a);
-        setHsv({
-          h: value.h,
-          s: value.s,
-          v: value.v,
-        });
+        if (mergeValue.value !== formatValue.value) {
+          setAlpha(value.a);
+          setHsv({
+            h: value.h,
+            s: value.s,
+            v: value.v,
+          });
+        }
       }
     );
 
