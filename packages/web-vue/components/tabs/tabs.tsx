@@ -14,6 +14,7 @@ import type {
   TabsType,
   TabData,
   TabTriggerEvent,
+  ScrollPosition,
 } from './interface';
 import { getPrefixCls } from '../_utils/global-config';
 import TabsNav from './tabs-nav';
@@ -162,6 +163,15 @@ export default defineComponent({
     trigger: {
       type: String as PropType<TabTriggerEvent>,
       default: 'click',
+    },
+    /**
+     * @zh 被选中 tab 的滚动位置，默认 auto 即会将 activeTab 滚动到可见区域，但不会特意做位置调整
+     * @en The scroll position of the selected tab, the default auto will scroll the activeTab to the visible area, but will not adjust the position intentionally
+     * @values 'start', 'end', 'center', 'auto', number
+     */
+    scrollPosition: {
+      type: [String, Number] as PropType<ScrollPosition>,
+      default: 'auto',
     },
   },
   emits: {
@@ -338,6 +348,7 @@ export default defineComponent({
             animation={props.animation}
             showAddButton={props.showAddButton}
             headerPadding={props.headerPadding}
+            scrollPosition={props.scrollPosition}
             size={mergedSize.value}
             type={props.type}
             onClick={handleClick}

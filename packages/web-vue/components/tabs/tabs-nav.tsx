@@ -9,17 +9,17 @@ import {
   toRefs,
   watch,
 } from 'vue';
-import { getTabListStyle } from './utils';
+import { getTabListStyle, updateScrollOffset } from './utils';
 import { getPrefixCls } from '../_utils/global-config';
 import type { Direction } from '../_utils/constant';
 import TabsTab from './tabs-tab.vue';
 import TabsButton from './tabs-button';
 import TabsNavInk from './tabs-nav-ink.vue';
-import type { TabData, TabsType } from './interface';
+import type { TabData, TabsType, ScrollPosition } from './interface';
 import IconHover from '../_components/icon-hover.vue';
 import IconPlus from '../icon/icon-plus';
 import ResizeObserver from '../_components/resize-observer';
-import { isUndefined } from '../_utils/is';
+import { isUndefined, isNumber } from '../_utils/is';
 
 export default defineComponent({
   name: 'TabsNav',
@@ -67,10 +67,15 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    scrollPosition: {
+      type: String as PropType<ScrollPosition>,
+      default: 'auto',
+    },
   },
   emits: ['click', 'add', 'delete'],
   setup(props, { emit, slots }) {
-    const { tabs, activeKey, activeIndex, direction } = toRefs(props);
+    const { tabs, activeKey, activeIndex, direction, scrollPosition } =
+      toRefs(props);
     const prefixCls = getPrefixCls('tabs-nav');
 
     const wrapperRef = ref<HTMLElement>();
@@ -91,7 +96,6 @@ export default defineComponent({
     const isScroll = ref(false);
     const wrapperLength = ref(0);
     const maxOffset = ref(0);
-    const tabEndOffsets = ref<number[]>([]);
     const offset = ref(0);
 
     const getWrapperLength = () => {
@@ -113,22 +117,11 @@ export default defineComponent({
       return listRef.value.offsetWidth - wrapperRef.value.offsetWidth;
     };
 
-    const getTabEndOffsets = () => {
-      return tabs.value.map((item) => {
-        const ele = tabsRef.value[item.key];
-        if (direction.value === 'vertical') {
-          return ele.offsetTop + ele.offsetHeight;
-        }
-        return ele.offsetLeft + ele.offsetWidth;
-      });
-    };
-
     const getSize = () => {
       isScroll.value = isOverflow();
       if (isScroll.value) {
         wrapperLength.value = getWrapperLength();
         maxOffset.value = getMaxOffset();
-        tabEndOffsets.value = getTabEndOffsets();
         if (offset.value > maxOffset.value) {
           offset.value = maxOffset.value;
         }
@@ -146,31 +139,65 @@ export default defineComponent({
       return false;
     };
 
-    const isInView = (index: number) => {
-      return (
-        (tabEndOffsets.value[index - 1] ?? 0) >= offset.value &&
-        tabEndOffsets.value[index] <= offset.value + wrapperLength.value
-      );
+    const setOffset = (newOffset: number) => {
+      if (!wrapperRef.value || !listRef.value || newOffset < 0) {
+        newOffset = 0;
+      }
+      offset.value = Math.min(newOffset, maxOffset.value);
     };
 
-    const getNextOffset = (type: string) => {
-      if (!wrapperRef.value) {
-        return 0;
-      }
+    const setActiveTabOffset = () => {
+      if (!activeTabRef.value || !wrapperRef.value || !isScroll.value) return;
 
-      return type === 'previous'
-        ? offset.value - wrapperLength.value
-        : offset.value + wrapperLength.value;
+      // 纠正浏览器默认行为导致的滚动偏移， 比如 Tab 聚焦
+      updateScrollOffset(wrapperRef.value, direction.value);
+
+      const isHorizontal = direction.value === 'horizontal';
+      const offsetProperty = isHorizontal ? 'offsetLeft' : 'offsetTop';
+      const sizeProperty = isHorizontal ? 'offsetWidth' : 'offsetHeight';
+      const tabOffset = activeTabRef.value[offsetProperty];
+      const tabSize = activeTabRef.value[sizeProperty];
+      const wrapperSize = wrapperRef.value[sizeProperty];
+
+      // 纠正偏移缺少 margin
+      const tabStyle = window.getComputedStyle(activeTabRef.value);
+      const marginProperty = isHorizontal
+        ? scrollPosition.value === 'end'
+          ? 'marginRight'
+          : 'marginLeft'
+        : scrollPosition.value === 'end'
+        ? 'marginBottom'
+        : 'marginTop';
+      const tabMargin = parseFloat(tabStyle[marginProperty]) || 0;
+
+      if (scrollPosition.value === 'auto') {
+        if (tabOffset < offset.value) {
+          setOffset(tabOffset - tabMargin);
+        } else if (tabOffset + tabSize > offset.value + wrapperSize) {
+          setOffset(tabOffset + tabSize - wrapperSize + tabMargin);
+        }
+      } else if (scrollPosition.value === 'center') {
+        setOffset(tabOffset + (tabSize - wrapperSize + tabMargin) / 2);
+      } else if (scrollPosition.value === 'start') {
+        setOffset(tabOffset - tabMargin);
+      } else if (scrollPosition.value === 'end') {
+        setOffset(tabOffset + tabSize - wrapperSize + tabMargin);
+      } else if (isNumber(scrollPosition.value)) {
+        setOffset(tabOffset - scrollPosition.value);
+      }
     };
 
-    const getValidOffset = (offset: number) => {
-      if (!wrapperRef.value || !listRef.value || offset < 0) {
-        return 0;
+    const handleWheel = (ev: WheelEvent) => {
+      if (!isScroll.value) return;
+      ev.preventDefault();
+
+      const { deltaX, deltaY } = ev;
+
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        setOffset(offset.value + deltaX);
+      } else {
+        setOffset(offset.value + deltaY);
       }
-      if (offset > maxOffset.value) {
-        return maxOffset.value;
-      }
-      return offset;
     };
 
     const handleClick = (key: string | number, ev: Event) => {
@@ -182,7 +209,12 @@ export default defineComponent({
     };
 
     const handleButtonClick = (type: string) => {
-      offset.value = getValidOffset(getNextOffset(type));
+      const nextOffset =
+        type === 'previous'
+          ? offset.value - wrapperLength.value
+          : offset.value + wrapperLength.value;
+
+      setOffset(nextOffset);
     };
 
     const handleResize = () => {
@@ -198,24 +230,10 @@ export default defineComponent({
       });
     });
 
-    watch(activeIndex, (current, pre) => {
-      nextTick(() => {
-        if (isScroll.value) {
-          if (current >= pre) {
-            const offsetIndex =
-              current < tabEndOffsets.value.length - 1 ? current + 1 : current;
-            if (!isInView(offsetIndex)) {
-              offset.value =
-                tabEndOffsets.value[offsetIndex] - wrapperLength.value;
-            }
-          } else {
-            const offsetIndex = current > 0 ? current - 1 : current;
-            if (!isInView(offsetIndex)) {
-              offset.value = tabEndOffsets.value[offsetIndex - 1] ?? 0;
-            }
-          }
-        }
-      });
+    watch([activeIndex, scrollPosition], () => {
+      setTimeout(() => {
+        setActiveTabOffset();
+      }, 0);
     });
 
     onMounted(() => {
@@ -282,7 +300,7 @@ export default defineComponent({
           />
         )}
         <ResizeObserver onResize={() => getSize()}>
-          <div class={tabCls.value} ref={wrapperRef}>
+          <div class={tabCls.value} ref={wrapperRef} onWheel={handleWheel}>
             <ResizeObserver onResize={handleResize}>
               <div ref={listRef} class={listCls.value} style={listStyle.value}>
                 {props.tabs.map((tab, index) => (
