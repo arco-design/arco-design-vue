@@ -1,7 +1,15 @@
 @import '../../style/mixins/index.less';
+@import './mixin.less';
 @import './token.less';
 
 @select-prefix-cls: ~'@{prefix}-select';
+
+.@{select-prefix-cls}-wrapper {
+  display: inline-flex;
+  align-items: stretch;
+
+  .select-prepend(@select-prefix-cls);
+}
 
 .@{select-prefix-cls}-dropdown {
   box-sizing: border-box;
