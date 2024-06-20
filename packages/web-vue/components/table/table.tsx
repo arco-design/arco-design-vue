@@ -1501,9 +1501,10 @@ export default defineComponent({
     const tableCls = computed(() => {
       const cls = getTableFixedCls();
 
-      if (isScroll.value.x) {
-        cls.push(getTableScrollCls());
-      }
+      // fix #2927 Re-render when scrolling to the far left or far right
+      // if (isScroll.value.x) {
+      //   cls.push(getTableScrollCls());
+      // }
 
       if (splitTable.value) {
         cls.push(`${prefixCls}-scroll-y`);
