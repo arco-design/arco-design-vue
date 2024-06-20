@@ -533,7 +533,12 @@ export default defineComponent({
       }
       if (triggerMethods.value.includes('click')) {
         updateMousePosition(e);
-        changeVisible(!computedVisible.value);
+        // https://github.com/arco-design/arco-design-vue/issues/2564
+        if (popupRef.value?.contains(e.target as HTMLElement)) {
+          changeVisible(false);
+        } else {
+          changeVisible(!computedVisible.value);
+        }
       } else if (
         triggerMethods.value.includes('contextMenu') &&
         computedVisible.value
