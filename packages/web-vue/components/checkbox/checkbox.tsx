@@ -208,33 +208,35 @@ export default defineComponent({
 
     return () => (
       <label aria-disabled={mergedDisabled.value} class={cls.value}>
-        <input
-          ref={checkboxRef}
-          type="checkbox"
-          checked={computedChecked.value}
-          value={props.value}
-          class={`${prefixCls}-target`}
-          disabled={mergedDisabled.value}
-          onClick={handleClick}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
-        {(slots.checkbox ?? checkboxGroupCtx?.slots?.checkbox)?.({
-          checked: computedChecked.value,
-          disabled: mergedDisabled.value,
-        }) ?? (
-          <IconHover
-            class={`${prefixCls}-icon-hover`}
-            disabled={mergedDisabled.value || computedChecked.value}
-          >
-            <div class={`${prefixCls}-icon`}>
-              {computedChecked.value && (
-                <IconCheck class={`${prefixCls}-icon-check`} />
-              )}
-            </div>
-          </IconHover>
-        )}
+        <span class={`${prefixCls}-input`}>
+          <input
+            ref={checkboxRef}
+            type="checkbox"
+            checked={computedChecked.value}
+            value={props.value}
+            class={`${prefixCls}-target`}
+            disabled={mergedDisabled.value}
+            onClick={handleClick}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+          {(slots.checkbox ?? checkboxGroupCtx?.slots?.checkbox)?.({
+            checked: computedChecked.value,
+            disabled: mergedDisabled.value,
+          }) ?? (
+            <IconHover
+              class={`${prefixCls}-icon-hover`}
+              disabled={mergedDisabled.value || computedChecked.value}
+            >
+              <div class={`${prefixCls}-icon`}>
+                {computedChecked.value && (
+                  <IconCheck class={`${prefixCls}-icon-check`} />
+                )}
+              </div>
+            </IconHover>
+          )}
+        </span>
         {slots.default && (
           <span class={`${prefixCls}-label`}>{slots.default()}</span>
         )}
