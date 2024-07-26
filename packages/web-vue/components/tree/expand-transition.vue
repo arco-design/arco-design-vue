@@ -1,6 +1,5 @@
 <template>
   <transition
-    @before-enter="onBeforeEnter"
     @enter="onEnter"
     @after-enter="onAfterEnter"
     @before-leave="onBeforeLeave"
@@ -20,11 +19,12 @@ export default defineComponent({
   emits: ['end'],
   setup(props, { emit }) {
     return {
-      onBeforeEnter(el: HTMLDivElement) {
-        el.style.height = props.expanded ? '0' : `${el.scrollHeight}px`;
-      },
       onEnter(el: HTMLDivElement) {
-        el.style.height = props.expanded ? `${el.scrollHeight}px` : '0';
+        const endHeight = `${el.scrollHeight}px`;
+        el.style.height = props.expanded ? '0' : endHeight;
+        // eslint-disable-next-line no-unused-expressions
+        el.offsetHeight;
+        el.style.height = props.expanded ? endHeight : '0';
       },
       onAfterEnter(el: HTMLDivElement) {
         el.style.height = props.expanded ? '' : '0';
