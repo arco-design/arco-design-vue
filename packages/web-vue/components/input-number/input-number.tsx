@@ -1,12 +1,4 @@
-import {
-  computed,
-  defineComponent,
-  nextTick,
-  PropType,
-  ref,
-  toRefs,
-  watch,
-} from 'vue';
+import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber, isUndefined } from '../_utils/is';
@@ -202,6 +194,13 @@ export default defineComponent({
      * @version 2.27.0
      */
     'input': (value: number | undefined, inputValue: string, ev: Event) => true,
+    /**
+     * @zh 按下键盘时触发
+     * @en Triggered on keydown
+     * @param {MouseEvent} ev
+     * @version 2.56.0
+     */
+    'keydown': (ev: KeyboardEvent) => true,
   },
   /**
    * @zh 前缀
@@ -430,7 +429,7 @@ export default defineComponent({
       emit('clear', ev);
     };
 
-    const onKeyDown = getKeyDownHandler(
+    const keyDownHandler = getKeyDownHandler(
       new Map([
         [
           KEYBOARD_KEY.ARROW_UP,
@@ -448,6 +447,13 @@ export default defineComponent({
         ],
       ])
     );
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      emit('keydown', event);
+      if (!event.defaultPrevented) {
+        keyDownHandler(event);
+      }
+    };
 
     watch(
       () => props.modelValue,
