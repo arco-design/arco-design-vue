@@ -58,6 +58,7 @@ description: Only input boxes in numeric format are allowed.
 |blur|Triggered when the input box loses focus|ev: `FocusEvent`||
 |clear|Triggered when the user clicks the clear button|ev: `Event`|2.23.0|
 |input|Triggered on input|value: ` number \| undefined `<br>inputValue: `string`<br>ev: `Event`|2.27.0|
+|keydown|Triggered on keydown|ev: `MouseEvent`|2.56.0|
 ### `<input-number>` Methods
 
 |Method|Description|Parameters|Return|

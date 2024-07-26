@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.56.0
+
+`2024-07-26`
+
+### 🆕 新增功能
+
+- **input-number:** 增加 'keydown' 事件，可以禁止默认行为 ([#3248](https://github.com/arco-design/arco-design-vue/pull/3248))
+
+### 🐛 问题修复
+
+- **tree:** 修复树折叠动画不生效问题 ([#3234](https://github.com/arco-design/arco-design-vue/pull/3234))
+- **color-picker:** 修复在 v-model 下选择颜色时出现的抖动问题 ([#3180](https://github.com/arco-design/arco-design-vue/pull/3180))
+- **time-picker:** triggerProps 属性未正确透传问题 ([#3178](https://github.com/arco-design/arco-design-vue/pull/3178))
+
+### 💎 功能优化
+
+- **menu:** 修复已选中菜单项中的颜色动画过渡效果 ([#3192](https://github.com/arco-design/arco-design-vue/pull/3192))
+
+
 ## 2.55.3
 
 `2024-06-07`

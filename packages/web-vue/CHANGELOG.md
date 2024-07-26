@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.56.0
+
+`2024-07-26`
+
+### 🆕 Feature
+
+- **input-number:** Added 'keydown' event to disable default behavior ([#3248](https://github.com/arco-design/arco-design-vue/pull/3248))
+
+### 🐛 BugFix
+
+- **tree:** fix tree node folding animation ([#3234](https://github.com/arco-design/arco-design-vue/pull/3234))
+- **color-picker:** fix shaking issue when selecting color with v-model ([#3180](https://github.com/arco-design/arco-design-vue/pull/3180))
+- **time-picker:** TriggerProps property not correctly passed through ([#3178](https://github.com/arco-design/arco-design-vue/pull/3178))
+
+### 💎 Enhancement
+
+- **menu:** fix color transition effect in selected menu item ([#3192](https://github.com/arco-design/arco-design-vue/pull/3192))
+
+
 ## 2.55.3
 
 `2024-06-07`

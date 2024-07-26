@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.0
+
+`2024-07-26`
+
+### 🆕 Feature
+
+- Added 'keydown' event to disable default behavior ([#3248](https://github.com/arco-design/arco-design-vue/pull/3248))
+
+
 ## 2.54.6
 
 `2024-03-01`
