@@ -14,7 +14,7 @@ description: 由用户的操作触发的轻量级全局反馈。
 
 @import ./__demo__/position.md
 
-@import ./__demo__/closeable.md
+@import ./__demo__/closable.md
 
 @import ./__demo__/update.md
 
