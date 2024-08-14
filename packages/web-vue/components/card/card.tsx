@@ -6,6 +6,7 @@ import {
   provide,
   VNode,
   toRefs,
+  CSSProperties,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import Spin from '../spin';
@@ -57,7 +58,7 @@ export default defineComponent({
      * @en The additional css style to apply to card head
      */
     headerStyle: {
-      type: Object,
+      type: Object as PropType<CSSProperties>,
       default: () => ({}),
     },
     /**
@@ -65,7 +66,7 @@ export default defineComponent({
      * @en The additional css style to apply to card content
      */
     bodyStyle: {
-      type: Object,
+      type: Object as PropType<CSSProperties>,
       default: () => ({}),
     },
     /**
