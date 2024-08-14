@@ -21,6 +21,7 @@ import {
 import { useFormItem } from '../_hooks/use-form-item';
 import { RadioOption } from './interface';
 import Radio from './radio';
+import { useSize } from '../_hooks/use-size';
 
 export default defineComponent({
   name: 'RadioGroup',
@@ -112,10 +113,15 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('radio-group');
     const { size, type, disabled, modelValue } = toRefs(props);
-    const { mergedDisabled, mergedSize, eventHandlers } = useFormItem({
+    const {
+      mergedDisabled,
+      mergedSize: _mergedSize,
+      eventHandlers,
+    } = useFormItem({
       size,
       disabled,
     });
+    const { mergedSize } = useSize(_mergedSize);
 
     const _value = ref(props.defaultValue);
 
