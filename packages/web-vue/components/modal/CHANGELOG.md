@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.6
+
+`2024-03-01`
+
+### 💅 Style
+
+- fix fade-modal transition effect works on enter state ([#3007](https://github.com/arco-design/arco-design-vue/pull/3007))
+
+
 ## 2.50.0
 
 `2023-08-11`

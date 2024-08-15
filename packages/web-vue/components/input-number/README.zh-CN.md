@@ -56,6 +56,7 @@ description: 仅允许输入数字格式的输入框。
 |blur|输入框失去焦点时触发|ev: `FocusEvent`||
 |clear|用户点击清除按钮时触发|ev: `Event`|2.23.0|
 |input|输入时触发|value: ` number \| undefined `<br>inputValue: `string`<br>ev: `Event`|2.27.0|
+|keydown|按下键盘时触发|ev: `MouseEvent`|2.56.0|
 ### `<input-number>` Methods
 
 |方法名|描述|参数|返回值|

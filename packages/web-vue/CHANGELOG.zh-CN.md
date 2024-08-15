@@ -2,6 +2,131 @@
 changelog: true
 ```
 
+## 2.56.0
+
+`2024-07-26`
+
+### 🆕 新增功能
+
+- **input-number:** 增加 'keydown' 事件，可以禁止默认行为 ([#3248](https://github.com/arco-design/arco-design-vue/pull/3248))
+
+### 🐛 问题修复
+
+- **tree:** 修复树折叠动画不生效问题 ([#3234](https://github.com/arco-design/arco-design-vue/pull/3234))
+- **color-picker:** 修复在 v-model 下选择颜色时出现的抖动问题 ([#3180](https://github.com/arco-design/arco-design-vue/pull/3180))
+- **time-picker:** triggerProps 属性未正确透传问题 ([#3178](https://github.com/arco-design/arco-design-vue/pull/3178))
+
+### 💎 功能优化
+
+- **menu:** 修复已选中菜单项中的颜色动画过渡效果 ([#3192](https://github.com/arco-design/arco-design-vue/pull/3192))
+
+
+## 2.55.3
+
+`2024-06-07`
+
+### 🆕 新增功能
+
+- **table:** column 增加 minWidth 属性 ([#3157](https://github.com/arco-design/arco-design-vue/pull/3157))
+
+### 🐛 问题修复
+
+- **time-picker:** 修复只读模式仍可编辑问题 ([#3173](https://github.com/arco-design/arco-design-vue/pull/3173))
+- **time-picker:** 补充 `placeholder` 类型定义 ([#3173](https://github.com/arco-design/arco-design-vue/pull/3173))
+- **input:** 修复只读状态下显示清空输入框按钮 ([#3172](https://github.com/arco-design/arco-design-vue/pull/3172))
+- **table:** 修复虚拟滚动条开启时 sticky-header 吸顶失效 ([#3170](https://github.com/arco-design/arco-design-vue/pull/3170))
+- **table:** table动态切换row-selection时恢复默认样式 ([#3155](https://github.com/arco-design/arco-design-vue/pull/3155))
+
+
+## 2.55.2
+
+`2024-05-10`
+
+### 🐛 问题修复
+
+- **verification-code:** 修复粘贴时`formatter`未生效 ([#3110](https://github.com/arco-design/arco-design-vue/pull/3110))
+- **upload:** 修复上传组件预览样式引入缺失 ([#3101](https://github.com/arco-design/arco-design-vue/pull/3101))
+- **transfer:** 修复 simple 模式下禁用失效 ([#3067](https://github.com/arco-design/arco-design-vue/pull/3067))
+- **color-picker:** 修复样式按需导入错误 ([#3052](https://github.com/arco-design/arco-design-vue/pull/3052))
+
+### 💅 样式更新
+
+- **color-picker:** 优化颜色控制条背景圆角样式 ([#3116](https://github.com/arco-design/arco-design-vue/pull/3116))
+
+### 🆎 类型修正
+
+- correct the type definition for popupContainer ([#2998](https://github.com/arco-design/arco-design-vue/pull/2998))
+
+
+## 2.55.1
+
+`2024-03-29`
+
+### 🐛 问题修复
+
+- **empty:** 修复属性自动继承的错误 ([#3048](https://github.com/arco-design/arco-design-vue/pull/3048))
+- **trigger:** 修正位置的弹出动画方向 ([#3045](https://github.com/arco-design/arco-design-vue/pull/3045))
+- **color-picker:** 修复双向绑定不生效问题 ([#3030](https://github.com/arco-design/arco-design-vue/pull/3030))
+- **color-picker:** 修复文案错误 ([#3028](https://github.com/arco-design/arco-design-vue/pull/3028))
+
+### 💅 样式更新
+
+- **tree:** 修复scrollHeight计算异常问题 ([#3044](https://github.com/arco-design/arco-design-vue/pull/3044))
+
+
+## 2.55.0
+
+`2024-03-15`
+
+### 🆕 新增功能
+
+- **tree-select:** 新增 `input-value` 相关属性 ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+- **tree:** `title` 插槽新增 `title` 参数 ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+- **color-picker:** 新增颜色选择器 ([#2958](https://github.com/arco-design/arco-design-vue/pull/2958))
+
+### 💅 样式更新
+
+- **tabs:** 修复 title 过渡动画效果 ([#3008](https://github.com/arco-design/arco-design-vue/pull/3008))
+
+
+## 2.54.6
+
+`2024-03-01`
+
+### 🐛 问题修复
+
+- **input-number:** 修复步进按钮与 suffix/append 的样式重叠 ([#3005](https://github.com/arco-design/arco-design-vue/pull/3005))
+- **collapse:** 解决 `vue` 保留属性警告 ([#2997](https://github.com/arco-design/arco-design-vue/pull/2997))
+- **transfer:** 修复 disabled 属性不生效问题 ([#2996](https://github.com/arco-design/arco-design-vue/pull/2996))
+- **tree:** 解决无效的属性名称控制台警告问题 ([#2995](https://github.com/arco-design/arco-design-vue/pull/2995))
+
+### 💅 样式更新
+
+- **modal:** 修复遮罩层 fade-modal 过渡动画在进入时不生效问题 ([#3007](https://github.com/arco-design/arco-design-vue/pull/3007))
+
+
+## 2.54.5
+
+`2024-02-21`
+
+### 🐛 问题修复
+
+- **menu:** 修复警告 “Invalid prop name: key is a reserved property.” ([#2978](https://github.com/arco-design/arco-design-vue/pull/2978))
+- **date-picker:** 重构日期 utility 函数和 WeekPicker，以正确显示所选星期 ([#2970](https://github.com/arco-design/arco-design-vue/pull/2970))
+- **input-number:** 修复双向绑定失效 ([#2961](https://github.com/arco-design/arco-design-vue/pull/2961))
+
+
+## 2.54.4
+
+`2024-02-02`
+
+### 🐛 问题修复
+
+- **table:** 修复表格虚拟列表下不显示 empty  问题 ([#2949](https://github.com/arco-design/arco-design-vue/pull/2949))
+- **watermark:** 修复字体颜色不生效问题 ([#2942](https://github.com/arco-design/arco-design-vue/pull/2942))
+- **input-number:** 修复 change 事件触发逻辑 ([#2915](https://github.com/arco-design/arco-design-vue/pull/2915))
+
+
 ## 2.54.3
 
 `2024-01-19`

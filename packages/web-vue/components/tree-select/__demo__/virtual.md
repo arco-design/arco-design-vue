@@ -12,45 +12,53 @@ title:
 
 ## en-US
 
-By specifying `treeProps.virtualListProps` to turn on the virtual list, high performance can be obtained when a large amount of data is used.
+By specifying `treeProps.virtualListProps` to turn on the virtual list, high performance can be obtained when a large
+amount of data is used.
 
 ```vue
 <template>
   <a-tree-select
     :data="treeData"
+    :allow-search="{
+      retainInputValue: true
+    }"
+    multiple
+    tree-checkable
+    :scrollbar="false"
+    tree-checked-strategy="parent"
     :treeProps="{
       virtualListProps: {
-        height: 200
+        height: 200,
       },
     }"
-  ></a-tree-select>
+  />
 </template>
 <script>
-  export default {
-    setup() {
-      const treeData = loop();
-      return {
-        treeData
-      }
+export default {
+  setup() {
+    const treeData = loop();
+    return {
+      treeData
     }
   }
+}
 
-  function loop(path = '0', level = 2) {
-    const list = [];
-    for (let i = 0; i < 10; i += 1) {
-      const key = `${path}-${i}`;
-      const treeNode = {
-        title: key,
-        key,
-      };
+function loop(path = '0', level = 2) {
+  const list = [];
+  for (let i = 0; i < 10; i += 1) {
+    const key = `${path}-${i}`;
+    const treeNode = {
+      title: key,
+      key,
+    };
 
-      if (level > 0) {
-        treeNode.children = loop(key, level - 1);
-      }
-
-      list.push(treeNode);
+    if (level > 0) {
+      treeNode.children = loop(key, level - 1);
     }
-    return list;
+
+    list.push(treeNode);
   }
+  return list;
+}
 </script>
 ```

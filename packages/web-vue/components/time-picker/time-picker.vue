@@ -11,6 +11,7 @@
     :prevent-focus="true"
     :unmount-on-close="unmountOnClose"
     :popup-container="popupContainer"
+    v-bind="{ ...triggerProps }"
     @popupVisibleChange="onPanelVisibleChange"
   >
     <component
@@ -28,6 +29,7 @@
       :visible="panelVisible"
       :disabled="mergedDisabled"
       :error="error"
+      :readonly="readonly"
       :editable="!readonly"
       :allow-clear="allowClear && !readonly"
       :placeholder="computedPlaceholder"
@@ -93,7 +95,6 @@ import Trigger, { TriggerProps } from '../trigger';
 import DateInput from '../_components/picker/input.vue';
 import DateRangeInput from '../_components/picker/input-range.vue';
 import IconClockCircle from '../icon/icon-clock-circle';
-import { TimePickerProps } from './interface';
 import useState from '../_hooks/use-state';
 import useTimeFormat from './hooks/use-time-format';
 import useTimeState from './hooks/use-time-state';
@@ -190,7 +191,7 @@ export default defineComponent({
      * @en Prompt copy
      * */
     placeholder: {
-      type: String,
+      type: [String, Array] as PropType<string | string[]>,
     },
     /**
      * @zh 输入框尺寸

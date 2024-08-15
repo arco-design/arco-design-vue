@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.55.2
+
+`2024-05-10`
+
+### 🐛 问题修复
+
+- 修复 simple 模式下禁用失效 ([#3067](https://github.com/arco-design/arco-design-vue/pull/3067))
+
+
+## 2.54.6
+
+`2024-03-01`
+
+### 🐛 问题修复
+
+- 修复 disabled 属性不生效问题 ([#2996](https://github.com/arco-design/arco-design-vue/pull/2996))
+
+
 ## 2.52.0
 
 `2023-09-22`

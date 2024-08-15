@@ -112,7 +112,7 @@ description: Used to show and preview pictures.
 |mask-closable|Whether to close the modal when mask is clicked|`boolean`|`true`|
 |closable|Whether to show close button|`boolean`|`true`|
 |actions-layout|Layout of action list|`string[]`|`[  'fullScreen',  'rotateRight',  'rotateLeft',  'zoomIn',  'zoomOut',  'originalSize',]`|
-|popup-container|Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body|`HTMLElement \| string`|`-`|
+|popup-container|Set the mount point of the pop-up box, the same as the `to` of `teleport`, the default value is document.body|`string \| HTMLElement`|`-`|
 ### `<image-preview-group>` Events
 
 |Event Name|Description|Parameters|

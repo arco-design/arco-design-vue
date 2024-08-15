@@ -94,6 +94,7 @@ export default {
     scrollbar: '滚动条 Scrollbar',
     watermark: '水印 Watermark',
     verificationCode: '验证码输入框 VerificationCode',
+    colorPicker: '颜色选择器 ColorPicker',
   },
   footer: {
     design: '设计',

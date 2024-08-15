@@ -2,6 +2,42 @@
 changelog: true
 ```
 
+## 2.56.0
+
+`2024-07-26`
+
+### 🐛 BugFix
+
+- fix tree node folding animation ([#3234](https://github.com/arco-design/arco-design-vue/pull/3234))
+
+
+## 2.55.1
+
+`2024-03-29`
+
+### 💅 Style
+
+- fix scrollHeight calculation exception problem ([#3044](https://github.com/arco-design/arco-design-vue/pull/3044))
+
+
+## 2.55.0
+
+`2024-03-15`
+
+### 🆕 Feature
+
+- The `title` slot has a new `title` parameter ([#3024](https://github.com/arco-design/arco-design-vue/pull/3024))
+
+
+## 2.54.6
+
+`2024-03-01`
+
+### 🐛 BugFix
+
+- resolve invalid property name console warning issue ([#2995](https://github.com/arco-design/arco-design-vue/pull/2995))
+
+
 ## 2.54.3
 
 `2024-01-19`

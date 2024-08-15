@@ -8,7 +8,6 @@ import {
 } from 'vue';
 import scrollIntoView from 'scroll-into-view-if-needed';
 import Tooltip from '../tooltip';
-import { MenuItemProps } from './interface';
 import useMenu from './hooks/use-menu';
 import useLevel from './hooks/use-level';
 import { omit } from '../_utils/omit';
@@ -20,13 +19,6 @@ export default defineComponent({
   name: 'MenuItem',
   inheritAttrs: false,
   props: {
-    /**
-     * @zh 唯一标志
-     * @en Unique key
-     */
-    key: {
-      type: String,
-    },
     /**
      * @zh 是否禁用
      * @en Whether to disable
@@ -43,7 +35,7 @@ export default defineComponent({
    * @slot icon
    * @version 2.11.0
    */
-  setup(props: MenuItemProps, { emit }) {
+  setup(props, { emit }) {
     const { key } = useMenu();
     const { level } = useLevel();
     const menuContext = useMenuContext();

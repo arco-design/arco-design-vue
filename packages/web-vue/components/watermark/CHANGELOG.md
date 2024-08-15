@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.4
+
+`2024-02-02`
+
+### 🐛 BugFix
+
+- Fix font color does not take effect ([#2942](https://github.com/arco-design/arco-design-vue/pull/2942))
+
+
 ## 2.54.1
 
 `2023-12-28`

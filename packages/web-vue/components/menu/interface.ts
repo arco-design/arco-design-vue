@@ -1,6 +1,7 @@
 import { StyleValue } from 'vue';
 import { Breakpoint } from '../_utils/responsive-observe';
 import { Data } from '../_utils/types';
+import { TriggerProps } from '../trigger';
 
 export type MenuTheme = 'light' | 'dark';
 
@@ -30,7 +31,7 @@ export interface MenuProps {
   openKeys: string[] | undefined;
   defaultOpenKeys: string[];
   scrollConfig: { [key: string]: any } | undefined;
-  triggerProps: Data | undefined;
+  triggerProps: TriggerProps | undefined;
   tooltipProps: Data | undefined;
   autoOpenSelected: boolean;
   breakpoint: Breakpoint | undefined;

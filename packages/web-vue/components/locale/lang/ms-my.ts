@@ -146,6 +146,11 @@ const lang: ArcoLang = {
     expand: 'lipat',
     collapse: 'mengembang',
   },
+  colorPicker: {
+    history: 'Warna yang digunakan baru-baru ini',
+    preset: 'Warna lalai sistem',
+    empty: 'Tiada data',
+  },
 };
 
 export default lang;

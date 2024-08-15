@@ -164,6 +164,7 @@ description: It is used for data collection, display, analysis and processing, a
 |data-index|Identifies the column information, corresponding to the data in TableData|`string`|`-`||
 |title|Column title|`string`|`-`||
 |width|Column width|`number`|`-`||
+|min-width|Minimum column width|`number`|`-`||
 |align|Alignment direction|`TableColumnData['align']`|`-`||
 |fixed|Fixed position|`TableColumnData['fixed']`|`-`||
 |ellipsis|Whether to display as omitted|`boolean`|`false`||
@@ -254,6 +255,7 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 |dataIndex|The identifier of the column information, corresponding to the data in `TableData`|`string`|`-`||
 |title|Column header|`string \| RenderFunction`|`-`||
 |width|Column width|`number`|`-`||
+|minWidth|Minimum column width|`number`|`-`||
 |align|Alignment direction|`'left' \| 'center' \| 'right'`|`-`||
 |fixed|Fixed position|`'left' \| 'right'`|`-`||
 |ellipsis|Whether to show ellipsis|`boolean`|`false`||

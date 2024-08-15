@@ -72,20 +72,23 @@ description: 可以对树形结构数据进行选择。
 |filter-tree-node|自定义节点过滤函数|`(searchKey: string, nodeData: TreeNodeData) => boolean`|`-`||
 |load-more|动态加载数据|`(nodeData: TreeNodeData) => Promise<void>`|`-`||
 |disable-filter|禁用内部过滤逻辑|`boolean`|`false`||
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| undefined`|`-`||
+|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`||
 |fallback-option|为 value 中找不到匹配项的 key 定义节点数据|`boolean \| ((key: number \| string) => TreeNodeData \| boolean)`|`true`|2.22.0|
 |selectable|设置可选择的节点，默认全部可选|`boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)`|`true`|2.27.0|
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.39.0|
 |show-header-on-empty|空状态时是否显示header|`boolean`|`false`||
 |show-footer-on-empty|空状态时是否显示footer|`boolean`|`false`||
+|input-value **(v-model)**|输入框的值|`string`|`-`|2.55.0|
+|default-input-value|输入框的默认值（非受控模式）|`string`|`''`|2.55.0|
 ### `<tree-select>` Events
 
-|事件名|描述|参数|
-|---|---|---|
-|change|值改变时触发|value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`|
-|popup-visible-change|下拉框显示状态改变时触发|visible: `boolean`|
-|search|搜索值变化时触发|searchKey: `string`|
-|clear|点击清除时触发|-|
+|事件名|描述|参数|版本|
+|---|---|---|:---|
+|change|值改变时触发|value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined`||
+|popup-visible-change|下拉框显示状态改变时触发|visible: `boolean`||
+|search|搜索值变化时触发|searchKey: `string`||
+|clear|点击清除时触发|-||
+|input-value-change|输入框的值发生改变时触发|inputValue: `string`|2.55.0|
 ### `<tree-select>` Slots
 
 |插槽名|描述|参数|版本|
@@ -98,7 +101,7 @@ description: 可以对树形结构数据进行选择。
 |empty|定制空数据展示|-||
 |footer|自定义下拉框页脚|-||
 |tree-slot-extra|定制 tree 组件的渲染额外节点内容|-||
-|tree-slot-title|定制 tree 组件的节点标题|-||
+|tree-slot-title|定制 tree 组件的节点标题|title: `string`||
 |tree-slot-icon|定制 tree 组件的节点图标|node: `TreeNodeData`|2.18.0|
 |tree-slot-switcher-icon|定制 tree 组件的 switcher 图标|-||
 

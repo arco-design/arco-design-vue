@@ -1,12 +1,4 @@
-import {
-  computed,
-  defineComponent,
-  nextTick,
-  PropType,
-  ref,
-  toRefs,
-  watch,
-} from 'vue';
+import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber, isUndefined } from '../_utils/is';
@@ -202,6 +194,13 @@ export default defineComponent({
      * @version 2.27.0
      */
     'input': (value: number | undefined, inputValue: string, ev: Event) => true,
+    /**
+     * @zh 按下键盘时触发
+     * @en Triggered on keydown
+     * @param {MouseEvent} ev
+     * @version 2.56.0
+     */
+    'keydown': (ev: KeyboardEvent) => true,
   },
   /**
    * @zh 前缀
@@ -337,39 +336,14 @@ export default defineComponent({
       if (finalValue !== valueNumber.value || _value.value !== stringValue) {
         _value.value = stringValue;
       }
-
       emit('update:modelValue', finalValue);
     };
-    watch(
-      () => props.min,
-      (newVal) => {
-        const _isMin =
-          isNumber(valueNumber.value) && valueNumber.value <= newVal;
-        if (isMin.value !== _isMin) {
-          isMin.value = _isMin;
-        }
 
-        const isExceedMinValue =
-          isNumber(valueNumber.value) && valueNumber.value < newVal;
-        if (isExceedMinValue) {
-          handleExceedRange();
-        }
-      }
-    );
     watch(
-      () => props.max,
-      (newVal) => {
-        const _isMax =
-          isNumber(valueNumber.value) && valueNumber.value >= newVal;
-        if (isMax.value !== _isMax) {
-          isMax.value = _isMax;
-        }
-
-        const isExceedMaxValue =
-          isNumber(valueNumber.value) && valueNumber.value > newVal;
-        if (isExceedMaxValue) {
-          handleExceedRange();
-        }
+      () => [props.max, props.min],
+      () => {
+        handleExceedRange();
+        updateNumberStatus(valueNumber.value);
       }
     );
 
@@ -421,10 +395,12 @@ export default defineComponent({
       if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
         _value.value = props.formatter?.(value) ?? value;
         updateNumberStatus(valueNumber.value);
+
+        emit('input', valueNumber.value, _value.value, ev);
         if (props.modelEvent === 'input') {
           emit('update:modelValue', valueNumber.value);
+          emit('change', valueNumber.value, ev);
         }
-        emit('input', valueNumber.value, _value.value, ev);
       }
     };
 
@@ -433,23 +409,12 @@ export default defineComponent({
     };
 
     const handleChange = (value: string, ev: Event) => {
-      const finalValue = getLegalValue(valueNumber.value);
-      const stringValue = getStringValue(finalValue);
-      if (finalValue !== valueNumber.value || _value.value !== stringValue) {
-        _value.value = stringValue;
-        updateNumberStatus(finalValue);
+      if (ev instanceof MouseEvent && !value) {
+        return;
       }
 
-      nextTick(() => {
-        if (isNumber(props.modelValue) && props.modelValue !== finalValue) {
-          // TODO: verify number
-          _value.value = getStringValue(props.modelValue);
-          updateNumberStatus(props.modelValue);
-        }
-      });
-
-      emit('update:modelValue', finalValue);
-      emit('change', finalValue, ev);
+      handleExceedRange();
+      emit('change', valueNumber.value, ev);
     };
 
     const handleBlur = (ev: FocusEvent) => {
@@ -464,7 +429,7 @@ export default defineComponent({
       emit('clear', ev);
     };
 
-    const onKeyDown = getKeyDownHandler(
+    const keyDownHandler = getKeyDownHandler(
       new Map([
         [
           KEYBOARD_KEY.ARROW_UP,
@@ -483,6 +448,13 @@ export default defineComponent({
       ])
     );
 
+    const onKeyDown = (event: KeyboardEvent) => {
+      emit('keydown', event);
+      if (!event.defaultPrevented) {
+        keyDownHandler(event);
+      }
+    };
+
     watch(
       () => props.modelValue,
       (value: number | undefined) => {
@@ -500,7 +472,9 @@ export default defineComponent({
       }
       return (
         <>
-          {slots.suffix?.()}
+          {slots.suffix && (
+            <div class={`${prefixCls}-suffix`}>{slots.suffix?.()}</div>
+          )}
           <div class={`${prefixCls}-step`}>
             <button
               class={[

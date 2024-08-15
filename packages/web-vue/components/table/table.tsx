@@ -1709,36 +1709,6 @@ export default defineComponent({
       return null;
     };
 
-    const renderVirtualListBody = () => {
-      return (
-        <ClientOnly>
-          <VirtualList
-            v-slots={{
-              item: ({
-                item,
-                index,
-              }: {
-                item: TableDataWithRaw;
-                index: number;
-              }) => renderRecord(item, index),
-            }}
-            ref={virtualComRef}
-            class={`${prefixCls}-body`}
-            data={flattenData.value}
-            itemKey="_key"
-            type="table"
-            outerAttrs={{
-              class: `${prefixCls}-element`,
-              style: contentStyle.value,
-            }}
-            {...props.virtualListProps}
-            onResize={handleTbodyResize}
-            onScroll={handleScroll}
-          />
-        </ClientOnly>
-      );
-    };
-
     const renderExpandBtn = (
       record: TableDataWithRaw,
       stopPropagation = true
@@ -1879,7 +1849,9 @@ export default defineComponent({
             ]}
             rowIndex={rowIndex}
             record={record}
-            checked={selectedRowKeys.value?.includes(currentKey)}
+            checked={
+              props.rowSelection && selectedRowKeys.value?.includes(currentKey)
+            }
             // @ts-ignore
             onClick={(ev: Event) => handleRowClick(record, ev)}
             onDblclick={(ev: Event) => handleRowDblclick(record, ev)}
@@ -2059,13 +2031,16 @@ export default defineComponent({
 
     const renderContent = () => {
       if (splitTable.value) {
-        const style: CSSProperties = {};
-        if (hasScrollBar.value) {
-          style.overflowY = 'scroll';
+        const top = isNumber(props.stickyHeader)
+          ? `${props.stickyHeader}px`
+          : undefined;
+
+        const mergeOuterClass = [scrollbarProps.value?.outerClass];
+        if (props.stickyHeader) {
+          mergeOuterClass.push(`${prefixCls}-header-sticky`);
         }
-        if (isNumber(props.stickyHeader)) {
-          style.top = `${props.stickyHeader}px`;
-        }
+
+        const mergeOuterStyle = { top, ...scrollbarProps.value?.outerStyle };
 
         const Component = displayScrollbar.value ? Scrollbar : 'div';
 
@@ -2076,14 +2051,22 @@ export default defineComponent({
                 ref={theadComRef}
                 class={[
                   `${prefixCls}-header`,
-                  { [`${prefixCls}-header-sticky`]: props.stickyHeader },
+                  {
+                    [`${prefixCls}-header-sticky`]:
+                      props.stickyHeader && !displayScrollbar.value,
+                  },
                 ]}
-                style={style}
+                style={{
+                  overflowY: hasScrollBar.value ? 'scroll' : undefined,
+                  top: !displayScrollbar.value ? top : undefined,
+                }}
                 {...(scrollbar.value
                   ? {
                       hide: flattenData.value.length !== 0,
                       disableVertical: true,
                       ...scrollbarProps.value,
+                      outerClass: mergeOuterClass,
+                      outerStyle: mergeOuterStyle,
                     }
                   : undefined)}
               >
@@ -2103,7 +2086,7 @@ export default defineComponent({
               </Component>
             )}
             <ResizeObserver onResize={handleTbodyResize}>
-              {isVirtualList.value ? (
+              {isVirtualList.value && flattenData.value.length ? (
                 <VirtualList
                   v-slots={{
                     item: ({
@@ -2129,6 +2112,7 @@ export default defineComponent({
                     style: contentStyle.value,
                   }}
                   paddingPosition="list"
+                  height="auto"
                   {...props.virtualListProps}
                   onScroll={onTbodyScroll}
                 />

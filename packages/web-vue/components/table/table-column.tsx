@@ -46,6 +46,11 @@ export default defineComponent({
      */
     width: Number,
     /**
+     * @zh 最小列宽
+     * @en Minimum column width
+     */
+    minWidth: Number,
+    /**
      * @zh 对齐方向
      * @en Alignment direction
      */
@@ -203,7 +208,7 @@ export default defineComponent({
    * @version 2.23.0
    */
   setup(props, { slots }) {
-    const { dataIndex, title, width, align, fixed, ellipsis, index } =
+    const { dataIndex, title, width, align, fixed, ellipsis, index, minWidth } =
       toRefs(props);
     const sortable = usePureProp(props, 'sortable');
     const filterable = usePureProp(props, 'filterable');
@@ -266,6 +271,7 @@ export default defineComponent({
       dataIndex,
       title,
       width,
+      minWidth,
       align,
       fixed,
       ellipsis,

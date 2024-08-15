@@ -60,7 +60,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 |default-popup-visible|是否默认显示下拉框（非受控状态）|`boolean`|`false`||
 |placeholder|占位符|`string`|`-`||
 |filter-option|自定义选项过滤方法|`(inputValue: string, option: CascaderOption) => boolean`|`-`||
-|popup-container|弹出框的挂载容器|`string \| HTMLElement \| null \| undefined`|`-`||
+|popup-container|弹出框的挂载容器|`string \| HTMLElement`|`-`||
 |max-tag-count|多选模式下，最多显示的标签数量。0 表示不限制|`number`|`0`||
 |format-label|格式化展示内容|`(options: CascaderOption[]) => string`|`-`||
 |trigger-props|下拉菜单的触发器属性|`TriggerProps`|`-`||

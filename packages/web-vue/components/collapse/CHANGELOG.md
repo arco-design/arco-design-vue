@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.6
+
+`2024-03-01`
+
+### 🐛 BugFix
+
+- resolve reserved property warning ([#2997](https://github.com/arco-design/arco-design-vue/pull/2997))
+
+
 ## 2.38.0-beta.1
 
 `2022-10-14`

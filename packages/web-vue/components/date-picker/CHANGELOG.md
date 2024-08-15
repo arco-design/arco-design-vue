@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.54.5
+
+`2024-02-21`
+
+### 🐛 BugFix
+
+- refactor date utility functions and week picker to correctly show selected week ([#2970](https://github.com/arco-design/arco-design-vue/pull/2970))
+
+
 ## 2.54.0
 
 `2023-12-15`

@@ -35,7 +35,7 @@ description: A tooltip that popup when the mouse hovers, focus, or click on a co
 |content-style|The style of the popup content|`CSSProperties`|`-`|
 |arrow-class|The class name of the popup arrow|`ClassName`|`-`|
 |arrow-style|The style of the popup arrow|`CSSProperties`|`-`|
-|popup-container|Mount container for popup|`string \| HTMLElement \| null \| undefined`|`-`|
+|popup-container|Mount container for popup|`string \| HTMLElement`|`-`|
 ### `<tooltip>` Events
 
 |Event Name|Description|Parameters|

@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.56.0
+
+`2024-07-26`
+
+### 🐛 问题修复
+
+- triggerProps 属性未正确透传问题 ([#3178](https://github.com/arco-design/arco-design-vue/pull/3178))
+
+
+## 2.55.3
+
+`2024-06-07`
+
+### 🐛 问题修复
+
+- 修复只读模式仍可编辑问题 ([#3173](https://github.com/arco-design/arco-design-vue/pull/3173))
+- 补充 `placeholder` 类型定义 ([#3173](https://github.com/arco-design/arco-design-vue/pull/3173))
+
+
 ## 2.44.6
 
 `2023-03-31`

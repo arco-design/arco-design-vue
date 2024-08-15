@@ -146,6 +146,11 @@ const lang: ArcoLang = {
     collapse: 'Thu gọn',
     edit: 'Chỉnh sửa',
   },
+  colorPicker: {
+    history: 'Màu sắc được sử dụng gần đây',
+    preset: 'Màu mặc định của hệ thống',
+    empty: 'Không có dữ liệu',
+  },
 };
 
 export default lang;

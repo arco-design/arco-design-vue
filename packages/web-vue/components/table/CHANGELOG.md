@@ -2,6 +2,29 @@
 changelog: true
 ```
 
+## 2.55.3
+
+`2024-06-07`
+
+### 🆕 Feature
+
+- colum added the minWidth attribute ([#3157](https://github.com/arco-design/arco-design-vue/pull/3157))
+
+### 🐛 BugFix
+
+- fix table sticky-header failure with scrollbar ([#3170](https://github.com/arco-design/arco-design-vue/pull/3170))
+- Restore default style when table dynamically switches row-selection ([#3155](https://github.com/arco-design/arco-design-vue/pull/3155))
+
+
+## 2.54.4
+
+`2024-02-02`
+
+### 🐛 BugFix
+
+- fix virtual table list not displaying empty state ([#2949](https://github.com/arco-design/arco-design-vue/pull/2949))
+
+
 ## 2.54.2
 
 `2024-01-11`

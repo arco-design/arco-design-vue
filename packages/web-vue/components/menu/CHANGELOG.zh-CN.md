@@ -2,6 +2,24 @@
 changelog: true
 ```
 
+## 2.56.0
+
+`2024-07-26`
+
+### 💎 功能优化
+
+- 修复已选中菜单项中的颜色动画过渡效果 ([#3192](https://github.com/arco-design/arco-design-vue/pull/3192))
+
+
+## 2.54.5
+
+`2024-02-21`
+
+### 🐛 问题修复
+
+- 修复警告 “Invalid prop name: key is a reserved property.” ([#2978](https://github.com/arco-design/arco-design-vue/pull/2978))
+
+
 ## 2.43.0
 
 `2023-02-10`

@@ -146,6 +146,11 @@ const lang: ArcoLang = {
     collapse: 'បង្រួម',
     edit: 'កែសម្រួល',
   },
+  colorPicker: {
+    history: 'ពណ៌ ប្រវត្តិសាស្ត្រ',
+    preset: 'ប្រព័ន្ធ កំណត់ ពណ៌',
+    empty: 'គ្មាន​ទិន្នន័យ',
+  },
 };
 
 export default lang;

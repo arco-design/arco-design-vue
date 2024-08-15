@@ -49,10 +49,8 @@ export default {
 
     const submitOne = (e) => {
       e.stopPropagation();
-      console.log(files.value)
-      uploadRef.value.submit(
-        files.value.find((x) => x.status === 'init')
-      );
+      console.log(files.value);
+      uploadRef.value.submit(files.value.find((x) => x.status === 'init'));
     };
 
     const submit = (e) => {
@@ -65,12 +63,12 @@ export default {
     };
 
     return {
+      uploadRef,
       files,
       submitOne,
       submit,
-      onChange
-    }
-
+      onChange,
+    };
   },
 };
 </script>

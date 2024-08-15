@@ -16,6 +16,7 @@ import Carousel, { CarouselItem } from './carousel';
 import Cascader, { CascaderPanel } from './cascader';
 import Checkbox, { CheckboxGroup } from './checkbox';
 import Collapse, { CollapseItem } from './collapse';
+import ColorPicker from './color-picker';
 import Comment from './comment';
 import ConfigProvider from './config-provider';
 import DatePicker, {
@@ -116,6 +117,7 @@ const components: Record<string, Plugin> = {
   Carousel,
   Collapse,
   Comment,
+  ColorPicker,
   Descriptions,
   Empty,
   Image,

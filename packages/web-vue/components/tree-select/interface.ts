@@ -69,7 +69,7 @@ export interface TreeSelectProps {
   filterTreeNode: FilterTreeNode | undefined;
   loadMore: LoadMore | undefined;
   disableFilter: boolean;
-  popupContainer: string | HTMLElement | null | undefined;
+  popupContainer?: string | HTMLElement;
   fallbackOption: FallbackOption;
   showHeaderOnEmpty?: boolean;
   showFooterOnEmpty?: boolean;
