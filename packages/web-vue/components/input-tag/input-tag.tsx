@@ -155,6 +155,15 @@ export default defineComponent({
     fieldNames: {
       type: Object as PropType<InputTagFieldNames>,
     },
+    /**
+     * @zh 标签内容不换行
+     * @en Tag content does not wrap
+     * @version 2.56.1
+     */
+    tagNowrap: {
+      type: Boolean,
+      default: false,
+    },
     // private
     baseCls: String,
     focused: Boolean,
@@ -531,7 +540,12 @@ export default defineComponent({
           tag="span"
           name="input-tag-zoom"
           // @ts-ignore
-          class={`${prefixCls}-inner`}
+          class={[
+            `${prefixCls}-inner`,
+            {
+              [`${prefixCls}-nowrap`]: props.tagNowrap,
+            },
+          ]}
         >
           {tags.value.map((item, index) => (
             <Tag
@@ -541,6 +555,7 @@ export default defineComponent({
                 !mergedDisabled.value && !props.readonly && item.closable
               }
               visible
+              nowrap={props.tagNowrap}
               {...item.tagProps}
               onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
             >
