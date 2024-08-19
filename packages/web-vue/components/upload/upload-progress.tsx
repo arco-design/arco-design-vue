@@ -84,28 +84,38 @@ export default defineComponent({
     };
 
     const renderProgress = () => {
-      if (['init', 'uploading'].includes(props.file.status ?? '')) {
-        const status = getProgressStatus(props.file.status);
+      // if (['init', 'uploading'].includes(props.file.status ?? '')) {
+      //   const status = getProgressStatus(props.file.status);
 
-        return (
-          <Progress
-            type="circle"
-            size="mini"
-            showText={false}
-            status={status}
-            percent={props.file.percent}
-          />
-        );
-      }
+      //   return (
+      //     <Progress
+      //       size="medium"
+      //       showText={true}
+      //       status={status}
+      //       percent={props.file.percent}
+      //     />
+      //   );
+      // }
 
-      return null;
+      // return null;
+
+      const status = getProgressStatus(props.file.status);
+
+      return (
+        <Progress
+          size="medium"
+          showText={true}
+          status={status}
+          percent={props.file.percent}
+        />
+      );
     };
 
     return () => (
-      <span class={prefixCls}>
+      <div class={prefixCls}>
         {renderProgress()}
         {renderIcon()}
-      </span>
+      </div>
     );
   },
 });

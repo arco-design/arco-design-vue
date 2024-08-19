@@ -213,8 +213,9 @@
     &-content {
       display: flex;
       flex: 1;
+      flex-direction: column;
       flex-wrap: nowrap;
-      align-items: center;
+      align-items: flex-start;
       box-sizing: border-box;
       width: 100%;
       padding: @upload-text-item-padding-vertical 0;
@@ -276,8 +277,17 @@
 
     & .@{upload-prefix-cls}-progress {
       position: relative;
-      margin-left: auto;
+      // margin-left: auto;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 5px;
       line-height: @upload-text-item-size-status-icon;
+
+      & > div:first-child {
+        flex: 1;
+        margin-right: 16px;
+      }
 
       &:hover {
         .@{prefix}-progress-circle-bg {
