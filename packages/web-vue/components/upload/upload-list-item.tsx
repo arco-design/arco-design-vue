@@ -69,19 +69,33 @@ export default defineComponent({
       <div class={[itemCls, `${itemCls}-${props.file.status}`]}>
         <div class={`${itemCls}-content`}>
           {uploadCtx?.listType === 'picture' && (
-            <span class={`${itemCls}-thumbnail`}>
-              {uploadCtx?.slots.image?.({ fileItem: props.file }) ?? (
-                <img
-                  src={props.file.url}
-                  alt={props.file.name}
-                  {...(uploadCtx?.imageLoading
-                    ? { loading: uploadCtx.imageLoading }
-                    : undefined)}
-                />
-              )}
-            </span>
+            <div class={`${itemCls}-thumbnail-wrap`}>
+              <span class={`${itemCls}-thumbnail`}>
+                {uploadCtx?.slots.image?.({ fileItem: props.file }) ?? (
+                  <img
+                    src={props.file.url}
+                    alt={props.file.name}
+                    {...(uploadCtx?.imageLoading
+                      ? { loading: uploadCtx.imageLoading }
+                      : undefined)}
+                  />
+                )}
+              </span>
+              <a
+                class={`${itemCls}-name-link`}
+                target="_blank"
+                href={props.file.url}
+                {...(uploadCtx?.download
+                  ? { download: props.file.name }
+                  : undefined)}
+              >
+                {uploadCtx?.slots['file-name']?.({ fileItem: props.file }) ??
+                  uploadCtx?.customIcon?.fileName?.(props.file) ??
+                  props.file.name}
+              </a>
+            </div>
           )}
-          <div class={`${itemCls}-name`}>
+          <span class={`${itemCls}-name`}>
             {uploadCtx?.listType === 'text' && (
               <span class={`${itemCls}-file-icon`}>
                 {uploadCtx?.slots['file-icon']?.({ fileItem: props.file }) ??
@@ -89,7 +103,8 @@ export default defineComponent({
                   renderFileIcon()}
               </span>
             )}
-            {uploadCtx?.showLink && props.file.url ? (
+            {uploadCtx?.listType === 'picture' ? null : uploadCtx?.showLink &&
+              props.file.url ? (
               <a
                 class={`${itemCls}-name-link`}
                 target="_blank"
@@ -124,7 +139,7 @@ export default defineComponent({
                 </span>
               </Tooltip>
             )}
-          </div>
+          </span>
           <UploadProgress file={props.file} listType={props.listType} />
         </div>
         {uploadCtx?.showRemoveButton && (
