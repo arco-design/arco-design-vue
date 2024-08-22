@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.1
+
+`2024-08-22`
+
+### 🆕 Feature
+
+- **select:** add `tagNowrap` prop ([#3270](https://github.com/arco-design/arco-design-vue/pull/3270))
+
+
 ## 2.56.0
 
 `2024-07-26`

@@ -36,6 +36,7 @@ description: 用来输入标签。
 |format-tag|格式化标签内容|`(data: TagData) => string`|`-`||
 |unique-value|是否仅创建唯一的值|`boolean`|`false`|2.15.0|
 |field-names|自定义 `TagData` 中的字段|`InputTagFieldNames`|`-`|2.22.0|
+|tag-nowrap|标签内容不换行|`boolean`|`false`|2.56.1|
 ### `<input-tag>` Events
 
 |事件名|描述|参数|

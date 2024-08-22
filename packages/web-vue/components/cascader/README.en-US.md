@@ -76,6 +76,7 @@ description: Refers to the use of multi-level classification to separate the opt
 |fallback|Options that do not exist in custom values|`boolean\| ((    value:      \| string      \| number      \| Record<string, unknown>      \| (string \| number \| Record<string, unknown>)[]  ) => string)`|`true`|2.29.0|
 |expand-child|whether to expand the submenu|`boolean`|`false`|2.29.0|
 |virtual-list-props|Pass the virtual list attribute, pass in this parameter to turn on virtual scrolling [VirtualListProps](#VirtualListProps)|`VirtualListProps`|`-`|2.49.0|
+|tag-nowrap|Tag content does not wrap|`boolean`|`false`|2.56.1|
 ### `<cascader>` Events
 
 |Event Name|Description|Parameters|

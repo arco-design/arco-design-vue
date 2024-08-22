@@ -43,6 +43,7 @@ description: Used for the selection, screening and classification of information
 |checkable|Whether the tag can be checked|`boolean`|`false`||
 |checked **(v-model)**|Whether the tag is checked (available when the tag is checkable)|`boolean`|`-`||
 |default-checked|Whether the tag is checked by default (available when the tag is checkable)|`boolean`|`true`||
+|nowrap|Tag content does not wrap|`boolean`|`false`|2.56.1|
 ### `<tag>` Events
 
 |Event Name|Description|Parameters|

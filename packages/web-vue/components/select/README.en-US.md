@@ -86,6 +86,7 @@ description: When users need to select one or more from a group of similar data,
 |scrollbar|Whether to enable virtual scroll bar|`boolean \| ScrollbarProps`|`true`|2.38.0|
 |show-header-on-empty|Whether to display the header in the empty state|`boolean`|`false`||
 |show-footer-on-empty|Whether to display the footer in the empty state|`boolean`|`false`||
+|tag-nowrap|Tag content does not wrap|`boolean`|`false`|2.56.1|
 ### `<select>` Events
 
 |Event Name|Description|Parameters|version|

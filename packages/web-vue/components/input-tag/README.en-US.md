@@ -38,6 +38,7 @@ description: Used to enter the label.
 |format-tag|Format tag content|`(data: TagData) => string`|`-`||
 |unique-value|Whether to create only unique values|`boolean`|`false`|2.15.0|
 |field-names|Customize fields in `TagData`|`InputTagFieldNames`|`-`|2.22.0|
+|tag-nowrap|Tag content does not wrap|`boolean`|`false`|2.56.1|
 ### `<input-tag>` Events
 
 |Event Name|Description|Parameters|

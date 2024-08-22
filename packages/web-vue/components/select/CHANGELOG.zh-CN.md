@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.1
+
+`2024-08-22`
+
+### 🆕 新增功能
+
+- 增加 `tagNowrap` 选项 ([#3270](https://github.com/arco-design/arco-design-vue/pull/3270))
+
+
 ## 2.54.2
 
 `2024-01-11`

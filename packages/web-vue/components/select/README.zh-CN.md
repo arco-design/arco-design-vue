@@ -84,6 +84,7 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 |scrollbar|是否开启虚拟滚动条|`boolean \| ScrollbarProps`|`true`|2.38.0|
 |show-header-on-empty|空状态时是否显示header|`boolean`|`false`||
 |show-footer-on-empty|空状态时是否显示footer|`boolean`|`false`||
+|tag-nowrap|标签内容不换行|`boolean`|`false`|2.56.1|
 ### `<select>` Events
 
 |事件名|描述|参数|版本|
