@@ -3,7 +3,10 @@
     <span v-if="$slots.icon" :class="`${prefixCls}-icon`">
       <slot name="icon" />
     </span>
-    <slot />
+    <span v-if="nowrap" :class="`${prefixCls}-text`">
+      <slot />
+    </span>
+    <slot v-else />
     <icon-hover
       v-if="closable"
       role="button"
@@ -123,6 +126,15 @@ export default defineComponent({
     defaultChecked: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * @zh 标签内容不换行
+     * @en Tag content does not wrap
+     * @version 2.56.1
+     */
+    nowrap: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: {

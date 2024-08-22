@@ -27,6 +27,7 @@
       :placeholder="placeholder"
       :loading="loading"
       :max-tag-count="maxTagCount"
+      :tag-nowrap="tagNowrap"
       v-bind="$attrs"
       @input-value-change="handleInputValueChange"
       @clear="handleClear"
@@ -425,6 +426,15 @@ export default defineComponent({
      */
     virtualListProps: {
       type: Object as PropType<VirtualListProps>,
+    },
+    /**
+     * @zh 标签内容不换行
+     * @en Tag content does not wrap
+     * @version 2.56.1
+     */
+    tagNowrap: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: {

@@ -68,6 +68,10 @@ export default defineComponent({
       type: Number,
       default: 0,
     },
+    tagNowrap: {
+      type: Boolean,
+      default: false,
+    },
     retainInputValue: {
       type: Boolean,
       default: false,
@@ -190,6 +194,7 @@ export default defineComponent({
             error={mergedError.value}
             maxTagCount={props.maxTagCount}
             disabledInput={!props.allowSearch && !props.allowCreate}
+            tagNowrap={props.tagNowrap}
             retainInputValue
             uninjectFormItemContext
             onRemove={handleRemove}

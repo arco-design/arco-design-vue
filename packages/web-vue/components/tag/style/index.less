@@ -82,6 +82,12 @@
     color: @tag-default-color-icon;
   }
 
+  &-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   each(@colors, {
     &&-checked&-@{value} {
       color: ~'@{tag-@{value}-color-text}';

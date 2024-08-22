@@ -368,6 +368,15 @@ export default defineComponent({
       type: Boolean as PropType<boolean>,
       default: false,
     },
+    /**
+     * @zh 标签内容不换行
+     * @en Tag content does not wrap
+     * @version 2.56.1
+     */
+    tagNowrap: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: {
     'update:modelValue': (
@@ -1002,6 +1011,7 @@ export default defineComponent({
             placeholder={props.placeholder}
             bordered={props.bordered}
             size={mergedSize.value}
+            tagNowrap={props.tagNowrap}
             // @ts-ignore
             onInputValueChange={handleInputValueChange}
             onRemove={handleRemove}
