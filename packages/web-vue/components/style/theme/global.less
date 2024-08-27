@@ -5,7 +5,11 @@
 @arco-vars-prefix: ~''; // css 变量的前缀
 
 // --arco-color-white or --color-white
-@arco-cssvars-prefix: if(@arco-vars-prefix = ~'', -, ~'--@{arco-vars-prefix}');
+@arco-cssvars-prefix: if(
+  @arco-vars-prefix = ~'',
+  ~'-',
+  ~'--@{arco-vars-prefix}'
+);
 
 /******** borderSize *******/
 
