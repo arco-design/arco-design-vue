@@ -1,0 +1,42 @@
+name: Issue Manager
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  issue-close:
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'arco-design-vue' }}
+    steps:
+      - name: Needs more info
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'close-issues'
+          labels: '📄 Need more info'
+          inactive-day: 7
+          body: |
+            由于该 issue 被标记为需要更多信息，却 7 天未收到回应。现关闭 issue，若有任何问题，可评论回复或点击加入[Arco Design 飞书用户群](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5)询问。
+
+            This issue has been marked as needing more information, but there hasn’t been a response for 7 days, so we’re closing it for now. If you have any questions, feel free to comment here or join the [Arco Design Feishu user group](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5) to ask for help.
+
+  check-inactive:
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'arco-design-vue' }}
+    steps:
+      - name: check-inactive
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'check-inactive'
+          inactive-label: '💤 Inactive'
+          inactive-day: 30
+

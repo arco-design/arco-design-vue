@@ -1,0 +1,57 @@
+name: Issue Labeled
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  issue-labeled:
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Welcome
+        if: github.event.label.name == '❤️ PR Welcome' || github.event.label.name == '🙏 Help wanted'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            我们完全同意该提议/反馈，欢迎直接在此仓库创建 Pull Request 来解决这个问题。贡献前请务必阅读[贡献指南](https://github.com/arco-design/arco-design-vue/blob/main/CONTRIBUTING.zh-CN.md)，Pull Request 时根据需改动内容填写[预设模板](https://github.com/arco-design/arco-design-vue/blob/main/.github/PULL_REQUEST_TEMPLATE.md)，我们会尽快进行 Review，感谢您的贡献！
+
+            We agree with this suggestion/feedback and welcome to create a Pull Request in this repository to help address the issue. Before contributing, please make sure to read the [Contributing Guide](https://github.com/arco-design/arco-design-vue/blob/main/CONTRIBUTING.md). When submitting a Pull Request, kindly use the appropriate [PR template](https://github.com/arco-design/arco-design-vue/blob/main/.github/PULL_REQUEST_TEMPLATE.md) based on the changes you’re making. We’ll review it as soon as possible. Thank you for your contribution!
+
+      - name: Need more info
+        if: github.event.label.name == '📄 Need more info'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            你好 @${{ github.event.issue.user.login }}，我们需要你提供更多的信息或复现链接以便于我们帮你排查定位问题。7 天内未跟进此 issue 将会被自动关闭。
+
+            Hello @${{ github.event.issue.user.login }}, we need more information or a reproducible link from you to help us investigate and pinpoint the issue. If there is no follow-up within 7 days, this issue will be automatically closed.
+
+      - name: Invalid
+        if: github.event.label.name == '🙅 Invalid'
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'create-comment,close-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            你好 @${{ github.event.issue.user.login }},
+
+            您的 Issue 已被标记为无效而自动关闭，原因可能如下：
+
+            - 不符合我们的格式要求、可能缺少足够的上下文或关键信息，无法有效解决问题。
+            - 非 bug 反馈和需求讨论(如询问如何使用等问题)。
+            - 它可能是已有 Issue 的重复项。请在提交新的 Issue 之前检查现有的 Issue。
+
+            可点击加入[Arco Design 飞书用户群](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5)询问，感谢您的理解与配合！
