@@ -223,7 +223,7 @@ export default defineComponent({
     const computedCheck = computed<boolean>(
       () => (props.modelValue ?? _checked.value) === props.checkedValue
     );
-    const _loading = ref(props.loading);
+    const _loading = ref(false);
     const computedLoading = computed(() => _loading.value || props.loading);
 
     const handleChange = (checked: boolean, ev: Event) => {
