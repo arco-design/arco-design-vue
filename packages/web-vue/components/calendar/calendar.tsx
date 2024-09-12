@@ -234,7 +234,7 @@ export default defineComponent({
         <Header
           move={move}
           headerValueFormat={headerValueFormat}
-          modes={['month', 'year']}
+          modes={props.modes}
           mode={computedMode.value}
           pageShowData={pageShowDate.value}
           dayStartOfWeek={props.dayStartOfWeek}
