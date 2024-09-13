@@ -37,8 +37,8 @@ description: Card is generally used as a concise introduction or a large plate a
 |loading|Loading status|`boolean`|`false`|
 |hoverable|Can be hovered|`boolean`|`false`|
 |size|Size of card|`'medium' \| 'small'`|`'medium'`|
-|header-style|The additional css style to apply to card head|`object`|`-`|
-|body-style|The additional css style to apply to card content|`object`|`-`|
+|header-style|The additional css style to apply to card head|`CSSProperties`|`() => ({})`|
+|body-style|The additional css style to apply to card content|`CSSProperties`|`() => ({})`|
 |title|Title of card|`string`|`-`|
 |extra|Content to render in the top-right corner of the card|`string`|`-`|
 ### `<card>` Slots

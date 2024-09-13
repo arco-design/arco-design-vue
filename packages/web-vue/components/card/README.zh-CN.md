@@ -35,8 +35,8 @@ description: 将信息分类后分标题、详情等区域聚合展现，一般�
 |loading|是否为加载中|`boolean`|`false`|
 |hoverable|是否可悬浮|`boolean`|`false`|
 |size|卡片尺寸|`'medium' \| 'small'`|`'medium'`|
-|header-style|自定义标题区域样式|`object`|`-`|
-|body-style|内容区域自定义样式|`object`|`-`|
+|header-style|自定义标题区域样式|`CSSProperties`|`() => ({})`|
+|body-style|内容区域自定义样式|`CSSProperties`|`() => ({})`|
 |title|卡片标题|`string`|`-`|
 |extra|卡片右上角的操作区域|`string`|`-`|
 ### `<card>` Slots

@@ -53,7 +53,7 @@ exports[`<color-picker> demo: render [disabled] correctly 1`] = `
 exports[`<color-picker> demo: render [format] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"hex\\"><span class=\\"arco-radio-button-content\\">hex</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"rgb\\"><span class=\\"arco-radio-button-content\\">rgb</span></label></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"hex\\"><span class=\\"arco-radio-button-content\\">hex</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"rgb\\"><span class=\\"arco-radio-button-content\\">rgb</span></label></span></div>
   <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-medium\\">

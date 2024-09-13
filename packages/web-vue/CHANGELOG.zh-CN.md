@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.56.2
+
+`2024-09-13`
+
+### 🆕 新增功能
+
+- 新增俄语 ([#3290](https://github.com/arco-design/arco-design-vue/pull/3290))
+
+### 🐛 问题修复
+
+- **select:** fix(switch): 修复当加载状态被真值初始化后无法受控 ([#3285](https://github.com/arco-design/arco-design-vue/pull/3285))
+- **calendar:** 修复modes 不生效问题 ([#3281](https://github.com/arco-design/arco-design-vue/pull/3281))
+- **radio:** 修复未继承注入的size问题 ([#3267](https://github.com/arco-design/arco-design-vue/pull/3267))
+
+### 🆎 类型修正
+
+- **card:** 更新headerStyle与bodyStyle的类型 ([#3268](https://github.com/arco-design/arco-design-vue/pull/3268))
+
+
 ## 2.56.1
 
 `2024-08-22`

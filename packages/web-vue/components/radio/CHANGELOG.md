@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.2
+
+`2024-09-13`
+
+### 🐛 BugFix
+
+- fix not inheriting the injected size ([#3267](https://github.com/arco-design/arco-design-vue/pull/3267))
+
+
 ## 2.38.1
 
 `2022-11-04`

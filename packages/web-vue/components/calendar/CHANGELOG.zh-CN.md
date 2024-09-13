@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.2
+
+`2024-09-13`
+
+### 🐛 问题修复
+
+- 修复modes 不生效问题 ([#3281](https://github.com/arco-design/arco-design-vue/pull/3281))
+
+
 ## 2.53.3
 
 `2023-11-24`

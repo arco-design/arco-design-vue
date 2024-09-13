@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.56.2
+
+`2024-09-13`
+
+### 🆕 Feature
+
+- Added Russian ([#3290](https://github.com/arco-design/arco-design-vue/pull/3290))
+
+### 🐛 BugFix
+
+- **select:** fix(switch): loading state can't be controlled with truthy initial state ([#3285](https://github.com/arco-design/arco-design-vue/pull/3285))
+- **calendar:** fix  modes not taking effect ([#3281](https://github.com/arco-design/arco-design-vue/pull/3281))
+- **radio:** fix not inheriting the injected size ([#3267](https://github.com/arco-design/arco-design-vue/pull/3267))
+
+### 🆎 TypeScript
+
+- **card:** update the types of headerStyle and bodyStyle ([#3268](https://github.com/arco-design/arco-design-vue/pull/3268))
+
+
 ## 2.56.1
 
 `2024-08-22`
