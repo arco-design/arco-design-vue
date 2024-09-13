@@ -136,12 +136,14 @@ export default defineComponent({
     /**
      * @zh 切换图片
      * @en Image switch
+     * @param {number} index
      */
     'change',
     'update:current',
     /**
      * @zh 预览的打开和关闭
      * @en Preview visibility change
+     * @param {boolean} visible
      */
     'visible-change',
     'update:visible',

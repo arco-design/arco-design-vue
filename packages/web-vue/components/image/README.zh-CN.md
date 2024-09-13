@@ -115,8 +115,8 @@ description: 展示和预览图片。
 
 |事件名|描述|参数|
 |---|---|---|
-|change|切换图片|-|
-|visible-change|预览的打开和关闭|-|
+|change|切换图片|index: `number`|
+|visible-change|预览的打开和关闭|visible: `boolean`|
 ### `<image-preview-group>` Slots
 
 |插槽名|描述|参数|版本|
