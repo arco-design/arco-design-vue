@@ -26,7 +26,7 @@ export const useSelectedPath = (
   const selectedPath = ref<string[]>([]);
 
   const displayColumns = computed(() => {
-    const columns: CascaderOptionInfo[][] = [options.value];
+    const columns: CascaderOptionInfo[][] = options.value?.length ? [options.value] : [];
     for (const key of selectedPath.value) {
       const option = optionMap.get(key);
       if (option?.children) {
