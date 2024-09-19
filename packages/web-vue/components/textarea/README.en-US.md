@@ -34,6 +34,7 @@ description: Multi-line plain text edit control, suitable for a paragraph of opi
 |auto-size|Whether to make the textarea adapt to the height of the content|`boolean \| { minRows?: number; maxRows?: number }`|`false`||
 |word-length|Calculation method of word length|`(value: string) => number`|`-`||
 |word-slice|Character interception method, used together with wordLength|`(value: string, maxLength: number) => string`|`-`|2.12.0|
+|textarea-attrs|Attributes passed to textarea|`Record<string, any>`|`-`||
 ### `<textarea>` Events
 
 |Event Name|Description|Parameters|
