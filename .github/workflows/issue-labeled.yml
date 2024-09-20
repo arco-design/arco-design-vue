@@ -46,12 +46,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           body: |
-            你好 @${{ github.event.issue.user.login }},
-
-            您的 Issue 已被标记为无效而自动关闭，原因可能如下：
+            你好 @${{ github.event.issue.user.login }}, 您的 Issue 已被标记为无效而自动关闭，原因可能如下：
 
             - 不符合我们的格式要求、可能缺少足够的上下文或关键信息，无法有效解决问题。
             - 非 bug 反馈和需求讨论(如询问如何使用等问题)。
             - 它可能是已有 Issue 的重复项。请在提交新的 Issue 之前检查现有的 Issue。
 
             可点击加入[Arco Design 飞书用户群](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5)询问，感谢您的理解与配合！
+
+            <img src="https://github.com/user-attachments/assets/65abfd92-38a4-4d34-ad3e-59b9031ca7c3" height="200" />
