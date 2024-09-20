@@ -15,7 +15,7 @@
     <resize-observer @resize="handleResize">
       <textarea
         ref="textareaRef"
-        v-bind="getTextareaAttrs($attrs)"
+        v-bind="mergeTextareaAttrs"
         :disabled="mergedDisabled"
         :class="prefixCls"
         :style="textareaStyle"
@@ -162,6 +162,13 @@ export default defineComponent({
      */
     wordSlice: {
       type: Function as PropType<(value: string, maxLength: number) => string>,
+    },
+    /**
+     * @zh 透传给 textarea 的属性
+     * @en Attributes passed to textarea
+     */
+    textareaAttrs: {
+      type: Object as PropType<Record<string, any>>,
     },
   },
   emits: {
@@ -385,6 +392,17 @@ export default defineComponent({
       omit(attrs, INPUT_EVENTS);
     const getTextareaAttrs = (attr: Record<string, any>) =>
       pick(attrs, INPUT_EVENTS);
+    const textareaAttrs = getTextareaAttrs(attrs);
+    const mergeTextareaAttrs = computed(() => {
+      const attrs = {
+        ...textareaAttrs,
+        ...props.textareaAttrs,
+      };
+      if (mergedError.value) {
+        attrs['aria-invalid'] = true;
+      }
+      return attrs;
+    });
 
     const wrapperCls = computed(() => [
       `${prefixCls}-wrapper`,
@@ -499,6 +517,7 @@ export default defineComponent({
       valueLength,
       computedMaxLength,
       mergedDisabled,
+      mergeTextareaAttrs,
       getWrapperAttrs,
       getTextareaAttrs,
       handleInput,

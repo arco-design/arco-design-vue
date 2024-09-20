@@ -32,6 +32,7 @@ description: 多行纯文本编辑控件，适用于评论或反馈表单中的�
 |auto-size|是否让文本框自适应内容高度|`boolean \| { minRows?: number; maxRows?: number }`|`false`||
 |word-length|字符长度的计算方法|`(value: string) => number`|`-`||
 |word-slice|字符截取方法，同 wordLength 一起使用|`(value: string, maxLength: number) => string`|`-`|2.12.0|
+|textarea-attrs|透传给 textarea 的属性|`Record<string, any>`|`-`||
 ### `<textarea>` Events
 
 |事件名|描述|参数|
