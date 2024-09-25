@@ -39,6 +39,8 @@ description: When users need to select one or more from a group of similar data,
 
 @import ./__demo__/label.md
 
+@import ./__demo__/prepend.md
+
 @import ./__demo__/linkage.md
 
 @import ./__demo__/field-names.md
