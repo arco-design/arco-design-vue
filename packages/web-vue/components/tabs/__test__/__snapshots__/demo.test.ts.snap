@@ -209,6 +209,130 @@ exports[`<tabs> demo: render [position] correctly 1`] = `
 </div>"
 `;
 
+exports[`<tabs> demo: render [scroll] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-radio-button-content\\">Left</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"top\\"><span class=\\"arco-radio-button-content\\">Top</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-radio-button-content\\">Right</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"bottom\\"><span class=\\"arco-radio-button-content\\">Bottom</span></label></span></div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-undefined arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"auto\\"><span class=\\"arco-radio-button-content\\">auto</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"start\\"><span class=\\"arco-radio-button-content\\">start</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"center\\"><span class=\\"arco-radio-button-content\\">center</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"end\\"><span class=\\"arco-radio-button-content\\">end</span></label></span></div>
+  <!---->
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+      <!--v-if--> Change: Tab1
+    </button></div>
+</div>
+<div class=\\"arco-tabs arco-tabs-horizontal arco-tabs-top arco-tabs-type-line arco-tabs-size-medium\\" style=\\"width: 100%; height: 300px; margin-top: 20px;\\">
+  <!---->
+  <div class=\\"arco-tabs-nav arco-tabs-nav-horizontal arco-tabs-nav-top arco-tabs-nav-size-medium arco-tabs-nav-type-line\\">
+    <!---->
+    <div class=\\"arco-tabs-nav-tab\\">
+      <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
+        <!---->
+      </div>
+      <!---->
+    </div>
+    <!---->
+    <div class=\\"arco-tabs-nav-extra\\">
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class=\\"arco-tabs-content\\">
+    <div class=\\"arco-tabs-content-list\\" style=\\"margin-left: -0%;\\">
+      <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 1</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 2</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 3</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 4</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 5</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 6</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 7</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 8</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 9</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 10</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 11</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 12</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 13</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 14</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 15</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 16</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 17</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 18</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 19</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 20</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 21</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 22</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 23</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 24</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 25</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 26</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 27</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 28</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 29</div>
+      </div>
+      <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-pane\\">Content of Tab Panel 30</div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`<tabs> demo: render [trigger] correctly 1`] = `
 "<span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"click\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">click</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"hover\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">hover</span></label></span>
 <div class=\\"arco-tabs arco-tabs-horizontal arco-tabs-top arco-tabs-type-line arco-tabs-size-medium\\">

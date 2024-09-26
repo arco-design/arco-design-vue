@@ -19,3 +19,5 @@ export interface TabData {
 }
 
 export type TabTriggerEvent = 'click' | 'hover';
+
+export type ScrollPosition = 'start' | 'end' | 'center' | 'auto' | number;
