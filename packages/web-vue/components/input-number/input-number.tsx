@@ -375,6 +375,9 @@ export default defineComponent({
       needRepeat = false
     ) => {
       event.preventDefault();
+
+      if (props.readOnly) return;
+
       inputRef.value?.focus();
 
       nextStep(method, event);
