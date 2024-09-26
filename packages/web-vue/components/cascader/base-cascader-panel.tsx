@@ -74,6 +74,9 @@ export default defineComponent({
           multiple={props.multiple}
           checkStrictly={props.checkStrictly}
           virtualListProps={props.virtualListProps}
+          v-slots={{
+            empty: slots.empty,
+          }}
         />
       ));
     };
