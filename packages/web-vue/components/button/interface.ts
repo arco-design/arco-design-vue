@@ -10,5 +10,6 @@ export interface ButtonProps {
   loading?: boolean;
   disabled?: boolean;
   htmlType?: string;
+  autofocus?: boolean;
   href?: string;
 }

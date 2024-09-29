@@ -23,6 +23,7 @@
       ]"
       :type="htmlType"
       :disabled="mergedDisabled"
+      :autofocus="autofocus"
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
@@ -120,6 +121,14 @@ export default defineComponent({
     htmlType: {
       type: String,
       default: 'button',
+    },
+    /**
+     * @zh 设置 `button` 的原生 `autofocus` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
+     * @en Set the native `autofocus` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
+     */
+    autofocus: {
+      type: Boolean,
+      default: false,
     },
     /**
      * @zh 设置跳转链接。设置此属性时，按钮渲染为a标签。
