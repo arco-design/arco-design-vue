@@ -59,6 +59,9 @@ export default defineComponent({
     title: {
       type: String,
     },
+    selectable: {
+      type: Boolean,
+    },
     isChildrenSelected: {
       type: Boolean,
     },
@@ -72,7 +75,7 @@ export default defineComponent({
     const menuPrefixCls = computed(() => menuContext.prefixCls);
     const prefixCls = computed(() => `${menuPrefixCls.value}-inline`);
     const classNames = computed(() => [prefixCls.value]);
-    const isSelected = computed(() => props.isChildrenSelected);
+    const isSelected = computed(() => props.isChildrenSelected || (props.selectable && (menuContext.selectedKeys || []).indexOf(key.value) > -1));
     const isOpen = computed(
       () => (menuContext.openKeys || []).indexOf(key.value) > -1
     );
