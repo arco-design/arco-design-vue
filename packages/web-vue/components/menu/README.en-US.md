@@ -74,7 +74,7 @@ description: Organize, arrange, and display a list of options.
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |title|The title of the submenu|`string`|`-`||
-|selectable|In the pop-up mode, whether the multi-level menu header is also used as a menu item to support the state such as click to select|`boolean`|`false`||
+|selectable|Whether the multi-level menu header is also used as a menu item to support the state such as click to select|`boolean`|`false`||
 |popup|Whether to force the use of pop-up mode, `level` indicates the level of the current submenu|`boolean \| ((level: number) => boolean)`|`false`||
 |popup-max-height|The maximum height of popover|`boolean \| number`|`true`|2.23.0|
 ### `<sub-menu>` Slots
