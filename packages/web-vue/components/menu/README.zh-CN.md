@@ -72,7 +72,7 @@ description: 收纳、排列并展示一系列选项的列表。
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
 |title|子菜单的标题|`string`|`-`||
-|selectable|弹出模式下，是否将多级菜单头也作为一个菜单项，支持点击选中等状态|`boolean`|`false`||
+|selectable|是否将多级菜单头也作为一个菜单项，支持点击选中等状态|`boolean`|`false`||
 |popup|是否强制使用弹出模式，`level` 表示当前子菜单的层级|`boolean \| ((level: number) => boolean)`|`false`||
 |popup-max-height|弹出框的最大高度|`boolean \| number`|`true`|2.23.0|
 ### `<sub-menu>` Slots

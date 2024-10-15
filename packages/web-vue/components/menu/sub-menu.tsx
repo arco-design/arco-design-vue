@@ -149,6 +149,7 @@ export default defineComponent({
       <SubMenuInline
         key={computedKey}
         title={props.title}
+        selectable={props.selectable}
         isChildrenSelected={isChildrenSelected}
         v-slots={_slots}
         {...attrs}
