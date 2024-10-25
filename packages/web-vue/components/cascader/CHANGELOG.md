@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.3
+
+`2024-10-25`
+
+### 🐛 BugFix
+
+- fix custom empty slot not working in some cases ([#3315](https://github.com/arco-design/arco-design-vue/pull/3315))
+
+
 ## 2.54.0
 
 `2023-12-15`

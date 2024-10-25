@@ -36,7 +36,7 @@ exports[`<textarea> demo: render [status] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-textarea-wrapper arco-textarea-error\\">
-      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Error status\\"></textarea>
+      <!--v-if--><textarea aria-invalid=\\"true\\" class=\\"arco-textarea\\" placeholder=\\"Error status\\"></textarea>
       <!--v-if-->
       <!--v-if-->
     </div>

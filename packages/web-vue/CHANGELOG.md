@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.56.3
+
+`2024-10-25`
+
+### 🆕 Feature
+
+- **button:** Support autofocus attribute for button ([#3293](https://github.com/arco-design/arco-design-vue/pull/3293))
+
+### 🐛 BugFix
+
+- Fix Khmer language translations ([#3328](https://github.com/arco-design/arco-design-vue/pull/3328))
+- **cascader:** fix custom empty slot not working in some cases ([#3315](https://github.com/arco-design/arco-design-vue/pull/3315))
+- **input-number:** fix readonly not working in button mode ([#3314](https://github.com/arco-design/arco-design-vue/pull/3314))
+
+### 💎 Enhancement
+
+- **textarea:** Support textareaAttrs attribute for textarea ([#3303](https://github.com/arco-design/arco-design-vue/pull/3303))
+
+
 ## 2.56.2
 
 `2024-09-13`

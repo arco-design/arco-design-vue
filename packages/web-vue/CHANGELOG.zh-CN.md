@@ -2,6 +2,25 @@
 changelog: true
 ```
 
+## 2.56.3
+
+`2024-10-25`
+
+### 🆕 新增功能
+
+- **button:** 支持button的autofocus属性 ([#3293](https://github.com/arco-design/arco-design-vue/pull/3293))
+
+### 🐛 问题修复
+
+- 修复高棉语翻译 ([#3328](https://github.com/arco-design/arco-design-vue/pull/3328))
+- **cascader:** 修复自定义空插槽部分情况下不生效问题 ([#3315](https://github.com/arco-design/arco-design-vue/pull/3315))
+- **input-number:** 修复左右按钮模式下只读属性不生效问题 ([#3314](https://github.com/arco-design/arco-design-vue/pull/3314))
+
+### 💎 功能优化
+
+- **textarea:** 支持textarea的textareaAttrs属性 ([#3303](https://github.com/arco-design/arco-design-vue/pull/3303))
+
+
 ## 2.56.2
 
 `2024-09-13`

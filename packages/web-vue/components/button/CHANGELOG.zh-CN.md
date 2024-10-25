@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.3
+
+`2024-10-25`
+
+### 🆕 新增功能
+
+- 支持button的autofocus属性 ([#3293](https://github.com/arco-design/arco-design-vue/pull/3293))
+
+
 ## 2.54.0
 
 `2023-12-15`

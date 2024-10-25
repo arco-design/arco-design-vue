@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.56.3
+
+`2024-10-25`
+
+### 💎 功能优化
+
+- 支持textarea的textareaAttrs属性 ([#3303](https://github.com/arco-design/arco-design-vue/pull/3303))
+
+
 ## 2.28.0
 
 `2022-05-20`
