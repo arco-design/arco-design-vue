@@ -39,6 +39,7 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 |loading|按钮是否为加载中状态|`boolean`|`false`|
 |disabled|按钮是否禁用|`boolean`|`false`|
 |html-type|设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`string`|`'button'`|
+|autofocus|设置 `button` 的原生 `autofocus` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`boolean`|`false`|
 |href|设置跳转链接。设置此属性时，按钮渲染为a标签。|`string`|`-`|
 ### `<button>` Events
 
