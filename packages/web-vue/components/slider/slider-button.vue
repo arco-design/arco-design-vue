@@ -101,6 +101,7 @@ export default defineComponent({
       isDragging.value = false;
       off(window, 'mousemove', handleMouseMove);
       off(window, 'mouseup', handleMouseUp);
+      off(window, 'touchend', handleMouseUp);
       emit('moveend');
     };
 
