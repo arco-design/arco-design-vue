@@ -15,6 +15,8 @@
       :aria-valuetext="tooltipContent"
       :class="cls"
       @mousedown="handleMouseDown"
+      @touchstart="handleMouseDown"
+      @contextmenu.prevent
       @click.stop
     />
   </tooltip>
@@ -67,28 +69,39 @@ export default defineComponent({
     const prefixCls = getPrefixCls('slider-btn');
     const isDragging = ref(false);
 
-    const handleMouseDown = (e: MouseEvent) => {
+    const handleMouseDown = (e: MouseEvent | TouchEvent) => {
       if (props.disabled) {
         return;
       }
-
       e.preventDefault();
 
       isDragging.value = true;
       on(window, 'mousemove', handleMouseMove);
+      on(window, 'touchmove', handleMouseMove);
       on(window, 'mouseup', handleMouseUp);
       on(window, 'contextmenu', handleMouseUp);
+      on(window, 'touchend', handleMouseUp);
       emit('movestart');
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      emit('moving', e.clientX, e.clientY);
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+      let clientX: number;
+      let clientY: number;
+      if (e.type.startsWith('touch')) {
+        clientY = (e as TouchEvent).touches[0].clientY;
+        clientX = (e as TouchEvent).touches[0].clientX;
+      } else {
+        clientY = (e as MouseEvent).clientY;
+        clientX = (e as MouseEvent).clientX;
+      }
+      emit('moving', clientX, clientY);
     };
 
     const handleMouseUp = () => {
       isDragging.value = false;
       off(window, 'mousemove', handleMouseMove);
       off(window, 'mouseup', handleMouseUp);
+      off(window, 'touchend', handleMouseUp);
       emit('moveend');
     };
 
