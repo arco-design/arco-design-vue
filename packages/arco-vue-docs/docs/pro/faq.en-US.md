@@ -11,7 +11,7 @@ description: Arco Design Pro Vue FAQ Collection
 
 ### 1. Initialization of arco-cli failed
 
-![](http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_16.12.14.png~tplv-49unhts6dw-image.image)
+![](https://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_16.12.14.png~tplv-49unhts6dw-image.image)
 
 If the dependency installation fails, go to the directory of the initialization project and execute the npm install or yarn install installation operation again.
 
@@ -25,7 +25,7 @@ See [Routes and menu](/vue/docs/pro/routes-and-menu) for details
 
 ### 3.Configure first-level menu items
 
-Due to the architecture, configuring a single first-level menu item requires the cooperation of multiple menu configuration items. See [#85]([/vue/docs/pro/routes-and-menu](https://github.com/arco-design/arco-design-pro-vue/issues/85#issuecomment-1142289501)) for details 
+Due to the architecture, configuring a single first-level menu item requires the cooperation of multiple menu configuration items. See [#85]([/vue/docs/pro/routes-and-menu](https://github.com/arco-design/arco-design-pro-vue/issues/85#issuecomment-1142289501)) for details
 
 ### 4.Using jsx in Vue3
 
@@ -58,7 +58,7 @@ Solution please [move](https://github.com/arco-design/arco-design-pro-vue/issues
 
 ### 2. Executing build TS type error
 
-![](http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_17.36.59.png~tplv-49unhts6dw-image.image)
+![](https://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_17.36.59.png~tplv-49unhts6dw-image.image)
 
 Reason for error:
 

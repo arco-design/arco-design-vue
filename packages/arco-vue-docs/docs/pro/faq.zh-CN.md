@@ -9,7 +9,7 @@ description: Arco Design Pro Vue 常见问题合集
 
 ### 一、arco-cli初始化失败
 
-![](http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_16.12.14.png~tplv-49unhts6dw-image.image)
+![](https://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_16.12.14.png~tplv-49unhts6dw-image.image)
 
 依赖安装失败的问题，进入到初始化项目的目录，重新执行执行npm install 或 yarn install安装操作即可。
 
@@ -45,7 +45,7 @@ description: Arco Design Pro Vue 常见问题合集
 
 ### 一. Rollup failed to resolve import "XXXXXX/node_modules/@arco-design/web-vue/es/xxx-xxx/style/css.js”
 
-报错源于按需加载构建插件(config/plugin/styleImport.ts)，该问题产生分别有以下几个原因 
+报错源于按需加载构建插件(config/plugin/styleImport.ts)，该问题产生分别有以下几个原因
 
 - 新版组件库新增了组件。
 
@@ -57,7 +57,7 @@ description: Arco Design Pro Vue 常见问题合集
 
 ### 二、执行构建TS类型报错
 
-![](http://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_17.36.59.png~tplv-49unhts6dw-image.image)
+![](https://p3-armor.byteimg.com/tos-cn-i-49unhts6dw/iShot_2022-05-26_17.36.59.png~tplv-49unhts6dw-image.image)
 
 报错原因：
 

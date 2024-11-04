@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "init": "lerna run build --stream --scope=@arco-design/{vite-plugin-arco-vue-docs,arco-vue-scripts} && lerna link && lerna run build --scope=@arco-design/arco-vue-docs-navbar && lerna run init --scope=@arco-design/web-vue",
+    "init": "lerna run build --stream --scope=@arco-design/{vite-plugin-arco-vue-docs,arco-vue-scripts} && lerna link && lerna run init --scope=@arco-design/web-vue",
     "start": "yarn workspace @arco-design/arco-vue-docs run start",
     "build:site": "yarn workspace @arco-design/arco-vue-docs run build",
     "test:screenshot": "yarn workspace @arco-design/web-vue run test:screenshot",
