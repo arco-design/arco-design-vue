@@ -75,7 +75,7 @@ export default {
         },
         {
           label: 'next 7 days',
-          value: () => [dayjs(), dayjs().add(1, 'month')],
+          value: () => [dayjs(), dayjs().add(1, 'week')],
         },
         {
           label: 'next 30 days',
