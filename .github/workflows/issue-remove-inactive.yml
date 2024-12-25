@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   issue-remove-inactive:
+    permissions:
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: remove inactive
@@ -19,4 +22,4 @@ jobs:
         with:
           actions: 'remove-labels'
           issue-number: ${{ github.event.issue.number }}
-          labels: '💤 Inactive'
+          labels: '💤 Inactive, 📄 Need more info'
