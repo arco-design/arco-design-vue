@@ -15,8 +15,7 @@ changelog: true
 - Fix Khmer language translations ([#3328](https://github.com/arco-design/arco-design-vue/pull/3328))
 - **cascader:** fix custom empty slot not working in some cases ([#3315](https://github.com/arco-design/arco-design-vue/pull/3315))
 - **input-number:** fix readonly not working in button mode ([#3314](https://github.com/arco-design/arco-design-vue/pull/3314))
-- **message:** Fixed an issue where message positioning would be affected by layout and would not be displayed ([#2735](https://github.com/arco-design/arco-design-vue/issues/2735))
-  
+
 ### 💎 Enhancement
 
 - **textarea:** Support textareaAttrs attribute for textarea ([#3303](https://github.com/arco-design/arco-design-vue/pull/3303))
