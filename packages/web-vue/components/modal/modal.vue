@@ -566,6 +566,7 @@ export default defineComponent({
                 result = (await result) ?? true;
               } catch (error) {
                 result = false;
+                throw error;
               }
             }
             if (isBoolean(result)) {
