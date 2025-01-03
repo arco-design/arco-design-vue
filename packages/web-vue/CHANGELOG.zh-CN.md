@@ -15,6 +15,7 @@ changelog: true
 - 修复高棉语翻译 ([#3328](https://github.com/arco-design/arco-design-vue/pull/3328))
 - **cascader:** 修复自定义空插槽部分情况下不生效问题 ([#3315](https://github.com/arco-design/arco-design-vue/pull/3315))
 - **input-number:** 修复左右按钮模式下只读属性不生效问题 ([#3314](https://github.com/arco-design/arco-design-vue/pull/3314))
+- **message:** 修复 message 定位会受到布局影响，从而不显示的问题 ([#2735](https://github.com/arco-design/arco-design-vue/issues/2735))
 
 ### 💎 功能优化
 

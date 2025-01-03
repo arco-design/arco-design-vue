@@ -2,6 +2,14 @@
 changelog: true
 ```
 
+## 2.56.3
+
+`2024-10-25`
+
+### 🐛 BugFix
+
+- Fixed an issue where message positioning would be affected by layout and would not be displayed ([#2735](https://github.com/arco-design/arco-design-vue/issues/2735))
+
 ## 2.41.0
 
 `2022-12-30`
