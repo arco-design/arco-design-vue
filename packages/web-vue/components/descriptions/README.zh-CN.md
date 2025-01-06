@@ -16,6 +16,8 @@ description: 一般用于详情页的信息展示。
 
 @import ./__demo__/layout.md
 
+@import ./__demo__/example.md
+
 ## API
 
 
@@ -65,6 +67,6 @@ description: 一般用于详情页的信息展示。
 |---|---|---|:---:|
 |label|标签|`string \| RenderFunction`|`-`|
 |value|数据|`string \| RenderFunction`|`-`|
-|span|所占列数|`number`|`-`|
+|span|所占列数|`number`|`1`|
 
 

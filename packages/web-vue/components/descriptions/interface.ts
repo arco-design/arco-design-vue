@@ -14,6 +14,7 @@ export interface DescData {
   /**
    * @zh 所占列数
    * @en number of columns
+   * @defaultValue 1
    */
   span?: number;
 }

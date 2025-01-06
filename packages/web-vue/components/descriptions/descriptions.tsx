@@ -1,27 +1,13 @@
 import type { PropType, VNode, CSSProperties } from 'vue';
-import {
-  computed,
-  defineComponent,
-  isVNode,
-  provide,
-  reactive,
-  toRefs,
-} from 'vue';
+import { computed, defineComponent, isVNode, toRefs } from 'vue';
 import type { Size, TextAlign } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction, isObject } from '../_utils/is';
-import { descriptionsInjectionKey } from './context';
-import { DescData, DescItemData, RenderData } from './interface';
+import { DescData, RenderData } from './interface';
 import { getAllElements, isSlotsChildren } from '../_utils/vue-utils';
 import { useResponsiveState } from '../grid/hook/use-responsive-state';
 import { ResponsiveValue } from '../grid';
 import { useSize } from '../_hooks/use-size';
-
-const getTotalSpan = (renderData?: RenderData[]) => {
-  return renderData
-    ? renderData.reduce((total, data) => total + data.span, 0)
-    : 0;
-};
 
 export default defineComponent({
   name: 'Descriptions',
@@ -153,68 +139,43 @@ export default defineComponent({
       ...props.valueStyle,
     }));
 
-    const descItemMap = reactive(new Map<number, DescItemData>());
-    const sortedSpans = computed(() =>
-      Array.from(descItemMap.values())
-        .sort((a, b) => a.index - b.index)
-        .map((data) => data.span)
-    );
-
-    const addItem = (id: number, data: DescItemData) => {
-      descItemMap.set(id, data);
-    };
-
-    const removeItem = (id: number) => {
-      descItemMap.delete(id);
-    };
-
-    provide(
-      descriptionsInjectionKey,
-      reactive({
-        addItem,
-        removeItem,
-      })
-    );
-
     const getGroupedData = (data: (DescData | VNode)[]) => {
       const groupedData: RenderData[][] = [];
-      data.forEach((item, index) => {
+      let currentRow: RenderData[] = [];
+      let currentSpan = 0;
+
+      const addRow = () => {
+        if (currentRow.length) {
+          // fill the rest span，not needed, can be removed.
+          const restSpan = computedColumn.value - currentSpan;
+          currentRow[currentRow.length - 1].span += restSpan;
+          groupedData.push(currentRow);
+        }
+      };
+
+      data.forEach((item) => {
         const itemSpan = Math.min(
-          (isVNode(item) ? sortedSpans.value[index] : item.span) ?? 1,
+          (isVNode(item) ? item.props?.span : item.span) ?? 1,
           computedColumn.value
         );
-        const lastData = groupedData[groupedData.length - 1];
-        const lastDataTotalSpan = getTotalSpan(lastData);
-        if (
-          lastDataTotalSpan === 0 ||
-          lastDataTotalSpan >= computedColumn.value
-        ) {
-          // add item to new row
-          groupedData.push([
-            {
-              data: item,
-              span: itemSpan,
-            },
-          ]);
-        } else {
-          // add item to current row
-          lastData.push({
-            data: item,
-            span:
-              itemSpan + lastDataTotalSpan > computedColumn.value
-                ? computedColumn.value - lastDataTotalSpan
-                : itemSpan,
-          });
+
+        // add item to new row
+        if (currentSpan + itemSpan > computedColumn.value) {
+          addRow();
+
+          currentRow = [];
+          currentSpan = 0;
         }
+
+        currentRow.push({
+          data: item,
+          span: itemSpan,
+        });
+        currentSpan += itemSpan;
       });
-      if (groupedData.length) {
-        const lastData = groupedData[groupedData.length - 1];
-        const lastDataTotalSpan = getTotalSpan(lastData);
-        if (lastDataTotalSpan < computedColumn.value) {
-          lastData[lastData.length - 1].span +=
-            computedColumn.value - lastDataTotalSpan;
-        }
-      }
+
+      addRow();
+
       return groupedData;
     };
 

@@ -142,17 +142,17 @@ exports[`<descriptions> demo: render [basic] correctly 1`] = `
           <tbody>
             <tr class=\\"arco-descriptions-row\\">
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Name</td>
-              <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Socrates<!--v-if--><!--v-if--></span></td>
+              <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"5\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Socrates<!--v-if--><!--v-if--></span></td>
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Mobile</td>
               <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->123-1234-1234<!--v-if--><!--v-if--></span></td>
+            </tr>
+            <tr class=\\"arco-descriptions-row\\">
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Residence</td>
               <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Beijing<!--v-if--><!--v-if--></span></td>
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Hometown</td>
               <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Beijing<!--v-if--><!--v-if--></span></td>
-            </tr>
-            <tr class=\\"arco-descriptions-row\\">
               <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Address</td>
-              <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"7\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Yingdu Building, Zhichun Road, Beijing<!--v-if--><!--v-if--></span></td>
+              <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"3\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Yingdu Building, Zhichun Road, Beijing<!--v-if--><!--v-if--></span></td>
             </tr>
           </tbody>
         </table>
@@ -184,6 +184,114 @@ exports[`<descriptions> demo: render [bordered] correctly 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>"
+`;
+
+exports[`<descriptions> demo: render [example] correctly 1`] = `
+"<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium arco-form-auto-label-width\\">
+  <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->size
+        <!--v-if-->
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->layout
+        <!--v-if-->
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"horizontal\\"><span class=\\"arco-radio-button-content\\">horizontal</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline-horizontal\\"><span class=\\"arco-radio-button-content\\">inline-horizontal</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vertical\\"><span class=\\"arco-radio-button-content\\">vertical</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline-vertical\\"><span class=\\"arco-radio-button-content\\">inline-vertical</span></label></span></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->table-layout
+        <!--v-if-->
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"auto\\"><span class=\\"arco-radio-button-content\\">auto</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"fixed\\"><span class=\\"arco-radio-button-content\\">fixed</span></label></span></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->column
+        <!--v-if-->
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"1\\"><span class=\\"arco-radio-button-content\\">1</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\"><span class=\\"arco-radio-button-content\\">2</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span class=\\"arco-radio-button-content\\">3</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"4\\"><span class=\\"arco-radio-button-content\\">4</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"5\\"><span class=\\"arco-radio-button-content\\">5</span></label></span></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
+    <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
+        <!--v-if-->firstSpan
+        <!--v-if-->
+        <!--v-if-->
+      </label></div>
+    <div class=\\"arco-col arco-form-item-wrapper-col\\" style=\\"flex-basis: auto;\\">
+      <div class=\\"arco-form-item-content-wrapper\\">
+        <div class=\\"arco-form-item-content arco-form-item-content-flex\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"1\\"><span class=\\"arco-radio-button-content\\">1</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\"><span class=\\"arco-radio-button-content\\">2</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span class=\\"arco-radio-button-content\\">3</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"4\\"><span class=\\"arco-radio-button-content\\">4</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"5\\"><span class=\\"arco-radio-button-content\\">5</span></label></span></div>
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+</form>
+<div style=\\"margin-top: 20px;\\">
+  <div class=\\"arco-descriptions arco-descriptions-layout-horizontal arco-descriptions-size-medium arco-descriptions-border\\">
+    <div class=\\"arco-descriptions-title\\">Layout Example</div>
+    <div class=\\"arco-descriptions-body\\">
+      <table class=\\"arco-descriptions-table\\">
+        <tbody>
+          <tr class=\\"arco-descriptions-row\\">
+            <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Item1</td>
+            <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"3\\">
+              <div>Span：2
+                <!--v-if-->
+              </div>
+            </td>
+            <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Item2</td>
+            <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"3\\">Span：2</td>
+          </tr>
+          <tr class=\\"arco-descriptions-row\\">
+            <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Item3</td>
+            <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"7\\">Span：3</td>
+          </tr>
+          <tr class=\\"arco-descriptions-row\\">
+            <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Item4</td>
+            <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"3\\">Span：2</td>
+            <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Item5</td>
+            <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\">Span：1</td>
+            <td class=\\"arco-descriptions-item-label arco-descriptions-item-label-block\\" style=\\"text-align: left;\\">Item6</td>
+            <td class=\\"arco-descriptions-item-value arco-descriptions-item-value-block\\" style=\\"text-align: left;\\" colspan=\\"1\\">Span：1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>"
 `;

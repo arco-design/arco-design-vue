@@ -27,6 +27,8 @@ description: Generally used for the information display of the detail page.
 
 @import ./__demo__/layout.md
 
+@import ./__demo__/example.md
+
 ## API
 
 %%API(descriptions.tsx)%%
