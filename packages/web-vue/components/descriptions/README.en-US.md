@@ -18,6 +18,8 @@ description: Generally used for the information display of the detail page.
 
 @import ./__demo__/layout.md
 
+@import ./__demo__/example.md
+
 ## API
 
 
@@ -67,6 +69,6 @@ description: Generally used for the information display of the detail page.
 |---|---|---|:---:|
 |label|Label|`string \| RenderFunction`|`-`|
 |value|Data|`string \| RenderFunction`|`-`|
-|span|number of columns|`number`|`-`|
+|span|number of columns|`number`|`1`|
 
 
