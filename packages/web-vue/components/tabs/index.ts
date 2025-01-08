@@ -3,6 +3,7 @@ import type { ArcoOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _Tabs from './tabs';
 import _TabPane from './tab-pane.vue';
+import 'default-passive-events';
 
 const Tabs = Object.assign(_Tabs, {
   TabPane: _TabPane,

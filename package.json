@@ -40,5 +40,8 @@
     "stylelint-order": "^4.1.0",
     "typescript": "^4.2.4",
     "yarn": "^1.22.10"
+  },
+  "dependencies": {
+    "default-passive-events": "^2.0.0"
   }
 }
