@@ -4,6 +4,7 @@ import {
   defineComponent,
   nextTick,
   onMounted,
+  onUnmounted,
   PropType,
   ref,
   toRefs,
@@ -20,6 +21,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconPlus from '../icon/icon-plus';
 import ResizeObserver from '../_components/resize-observer';
 import { isUndefined, isNumber } from '../_utils/is';
+import { off, on } from '../_utils/dom';
 
 export default defineComponent({
   name: 'TabsNav',
@@ -206,6 +208,9 @@ export default defineComponent({
 
     const handleDelete = (key: string | number, ev: Event) => {
       emit('delete', key, ev);
+      nextTick(() => {
+        delete tabsRef.value[key];
+      });
     };
 
     const handleButtonClick = (type: string) => {
@@ -238,6 +243,15 @@ export default defineComponent({
 
     onMounted(() => {
       getSize();
+      if (wrapperRef.value) {
+        on(wrapperRef.value, 'wheel', handleWheel, { passive: false });
+      }
+    });
+
+    onUnmounted(() => {
+      if (wrapperRef.value) {
+        off(wrapperRef.value, 'wheel', handleWheel);
+      }
     });
 
     const renderAddBtn = () => {
@@ -300,7 +314,7 @@ export default defineComponent({
           />
         )}
         <ResizeObserver onResize={() => getSize()}>
-          <div class={tabCls.value} ref={wrapperRef} onWheel={handleWheel}>
+          <div class={tabCls.value} ref={wrapperRef}>
             <ResizeObserver onResize={handleResize}>
               <div ref={listRef} class={listCls.value} style={listStyle.value}>
                 {props.tabs.map((tab, index) => (
