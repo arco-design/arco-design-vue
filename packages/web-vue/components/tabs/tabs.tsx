@@ -7,6 +7,8 @@ import {
   reactive,
   ref,
   toRefs,
+  onMounted,
+  watch,
 } from 'vue';
 import type { Direction, Size } from '../_utils/constant';
 import type {
@@ -295,6 +297,32 @@ export default defineComponent({
       emit('delete', key, ev);
     };
 
+    const contentClass = computed(() => {
+      const isRtl = document.dir === 'rtl';
+      return {
+        [`${prefixCls}-content-list`]: true,
+        [`${prefixCls}-content-animation`]: props.animation,
+        [`${prefixCls}-content-rtl`]: isRtl,
+        [`${prefixCls}-content-ltr`]: !isRtl,
+        [`${prefixCls}-content-transform`]: true,
+      };
+    });
+
+    onMounted(() => {
+      const updateTransform = () => {
+        const contentList = document.querySelector(
+          `.${prefixCls}-content-list`
+        ) as HTMLElement;
+        if (contentList) {
+          contentList.style.setProperty(
+            '--translate-x',
+            `-${activeIndex.value * 100}%`
+          );
+        }
+      };
+      watch(activeIndex, updateTransform, { immediate: true });
+    });
+
     const renderContent = () => {
       return (
         <div
@@ -305,17 +333,7 @@ export default defineComponent({
             },
           ]}
         >
-          <div
-            class={[
-              `${prefixCls}-content-list`,
-              {
-                [`${prefixCls}-content-animation`]: props.animation,
-              },
-            ]}
-            style={{ marginLeft: `-${activeIndex.value * 100}%` }}
-          >
-            {children.value}
-          </div>
+          <div class={contentClass.value}>{children.value}</div>
         </div>
       );
     };

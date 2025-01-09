@@ -563,6 +563,22 @@
     padding-top: @tabs-content-padding;
     overflow: hidden;
 
+    .@{tabs-prefix-cls}-content-list {
+      transition: transform 0.3s;
+    }
+
+    .@{tabs-prefix-cls}-content-rtl {
+      direction: rtl;
+    }
+
+    .@{tabs-prefix-cls}-content-ltr {
+      direction: ltr;
+    }
+
+    .@{tabs-prefix-cls}-content-transform {
+      transform: translateX(var(--translate-x));
+    }
+
     &-hide {
       display: none;
     }
