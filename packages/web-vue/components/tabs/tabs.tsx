@@ -7,6 +7,7 @@ import {
   reactive,
   ref,
   toRefs,
+  onMounted,
 } from 'vue';
 import type { Direction, Size } from '../_utils/constant';
 import type {
@@ -295,6 +296,19 @@ export default defineComponent({
       emit('delete', key, ev);
     };
 
+    // 用于存储组件对应的 DOM 元素
+    const tabsDOM = ref(null);
+    // 判断是否是 rtl 方向
+    const isRTL = ref(false);
+
+    // 在组件挂载后获取 DOM 元素并判断方向
+    onMounted(() => {
+      if (tabsDOM.value) {
+        const style = window.getComputedStyle(tabsDOM.value);
+        isRTL.value = style.direction === 'rtl';
+      }
+    });
+
     const renderContent = () => {
       return (
         <div
@@ -312,7 +326,12 @@ export default defineComponent({
                 [`${prefixCls}-content-animation`]: props.animation,
               },
             ]}
-            style={{ marginLeft: `-${activeIndex.value * 100}%` }}
+            style={{
+              marginLeft: isRTL.value ? 'auto' : `-${activeIndex.value * 100}%`,
+              marginRight: isRTL.value
+                ? `-${activeIndex.value * 100}%`
+                : 'auto',
+            }}
           >
             {children.value}
           </div>
@@ -335,7 +354,7 @@ export default defineComponent({
       children.value = slots.default?.();
 
       return (
-        <div class={cls.value}>
+        <div ref={tabsDOM} class={cls.value}>
           {mergedPosition.value === 'bottom' && renderContent()}
           <TabsNav
             v-slots={{ extra: slots.extra }}
