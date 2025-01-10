@@ -158,7 +158,10 @@ export default defineComponent({
       if (!text) return;
 
       text.split('').forEach((char, i) => {
-        if (index + i >= props.length) return;
+        if (index + i >= props.length) {
+          handleFocus(props.length - 1);
+          return;
+        }
 
         if (isFunction(props.formatter)) {
           const result = props.formatter(
