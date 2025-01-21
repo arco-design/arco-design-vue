@@ -10,6 +10,7 @@ export interface ConfigProvider {
   updateAtScroll?: boolean;
   scrollToClose?: boolean;
   exchangeTime?: boolean;
+  rtl?: boolean;
 }
 
 export const configProviderInjectionKey: InjectionKey<ConfigProvider> =
