@@ -5,10 +5,12 @@ import {
   PropType,
   Comment,
   Fragment,
+  inject,
 } from 'vue';
 import { isArray, isNumber } from '../_utils/is';
 import { getAllElements } from '../_utils/vue-utils';
 import { getPrefixCls } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
 
@@ -64,6 +66,10 @@ export default defineComponent({
    */
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('space');
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => {
+      return configCtx?.rtl ?? false;
+    });
 
     const mergedAlign = computed(
       () => props.align ?? (props.direction === 'horizontal' ? 'center' : '')
@@ -76,7 +82,9 @@ export default defineComponent({
         [`${prefixCls}-align-${mergedAlign.value}`]: mergedAlign.value,
         [`${prefixCls}-wrap`]: props.wrap,
         [`${prefixCls}-fill`]: props.fill,
+        [`${prefixCls}-rtl`]: rtl.value,
       },
+      rtl.value ? `${prefixCls}-rtl` : '',
     ]);
 
     function getMargin(size: SpaceSize) {
@@ -106,13 +114,20 @@ export default defineComponent({
       const marginBottom = `${getMargin(
         isArray(props.size) ? props.size[1] : props.size
       )}px`;
+      const marginLeft = `${getMargin(
+        isArray(props.size) ? props.size[0] : props.size
+      )}px`;
 
       if (isLast) {
         return props.wrap ? { marginBottom } : {};
       }
 
       if (props.direction === 'horizontal') {
-        style.marginRight = marginRight;
+        if (rtl.value) {
+          style.marginLeft = marginLeft;
+        } else {
+          style.marginRight = marginRight;
+        }
       }
       if (props.direction === 'vertical' || props.wrap) {
         style.marginBottom = marginBottom;

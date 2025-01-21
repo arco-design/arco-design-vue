@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, inject } from 'vue';
 import IconHover from '../_components/icon-hover.vue';
 import IconLeft from '../icon/icon-left';
 import IconRight from '../icon/icon-right';
@@ -7,6 +7,7 @@ import IconUp from '../icon/icon-up';
 import IconDown from '../icon/icon-down';
 import type { Direction } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 type ButtonTypes = 'previous' | 'next';
 
@@ -39,17 +40,19 @@ export default defineComponent({
       }
     };
 
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => {
+      return configCtx?.rtl ?? false;
+    });
+
     const renderIcon = () => {
       if (props.direction === 'horizontal') {
         if (props.type === 'next') {
-          return <IconRight />;
+          return rtl.value ? <IconLeft /> : <IconRight />;
         }
-        return <IconLeft />;
+        return rtl.value ? <IconRight /> : <IconLeft />;
       }
-      if (props.type === 'next') {
-        return <IconDown />;
-      }
-      return <IconUp />;
+      return props.type === 'next' ? <IconDown /> : <IconUp />;
     };
 
     const cls = computed(() => [

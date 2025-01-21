@@ -7,6 +7,8 @@ import {
   reactive,
   ref,
   toRefs,
+  inject,
+  onMounted,
 } from 'vue';
 import type { Direction, Size } from '../_utils/constant';
 import type {
@@ -22,6 +24,7 @@ import { tabsInjectionKey } from './context';
 import { isUndefined } from '../_utils/is';
 import { useSize } from '../_hooks/use-size';
 import { useChildrenComponents } from '../_hooks/use-children-components';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Tabs',
@@ -295,6 +298,15 @@ export default defineComponent({
       emit('delete', key, ev);
     };
 
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => configCtx?.rtl ?? false);
+
+    onMounted(() => {
+      nextTick(() => {
+        handleClick(Number(computedActiveKey.value), new MouseEvent('init'));
+      });
+    });
+
     const renderContent = () => {
       return (
         <div
@@ -312,7 +324,10 @@ export default defineComponent({
                 [`${prefixCls}-content-animation`]: props.animation,
               },
             ]}
-            style={{ marginLeft: `-${activeIndex.value * 100}%` }}
+            style={{
+              marginLeft: rtl.value ? 'auto' : `-${activeIndex.value * 100}%`,
+              marginRight: rtl.value ? `-${activeIndex.value * 100}%` : 'auto',
+            }}
           >
             {children.value}
           </div>
@@ -329,6 +344,7 @@ export default defineComponent({
       {
         [`${prefixCls}-justify`]: props.justify,
       },
+      rtl.value ? `${prefixCls}-rtl` : '',
     ]);
 
     return () => {
