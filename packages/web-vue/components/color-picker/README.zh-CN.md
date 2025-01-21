@@ -14,6 +14,7 @@ description: 用于选择和展示颜色
 @import ./__demo__/trigger.md
 @import ./__demo__/trigger-element.md
 @import ./__demo__/only-panel.md
+@import ./__demo__/custom-panel.md
 
 ## API
 
@@ -29,6 +30,8 @@ description: 用于选择和展示颜色
 |show-text|显示颜色值|`boolean`|`false`|
 |show-history|显示历史颜色|`boolean`|`false`|
 |show-preset|显示预设颜色|`boolean`|`false`|
+|show-palette|显示调色板|`boolean`|`true`|
+|show-controls|显示控制条|`boolean`|`true`|
 |disabled|禁用|`boolean`|`false`|
 |disabled-alpha|禁用透明通道|`boolean`|`false`|
 |hide-trigger|没有触发元素，只显示颜色面板|`boolean`|`false`|
@@ -41,5 +44,14 @@ description: 用于选择和展示颜色
 |---|---|---|
 |change|颜色值改变时触发|value: `string`|
 |popup-visible-change|颜色面板展开和收起时触发|visible: `boolean`<br>value: `string`|
+### `<color-picker>` Slots
+
+|插槽名|描述|参数|
+|---|:---:|---|
+|preset-title|预设颜色标题|-|
+|history-title|历史颜色标题|-|
+|color-section|颜色选择区域|colorSection: `() => JSX.Element`|
+|controls|控制条区域|controls: `() => JSX.Element`|
+|palette|调色板区域|palette: `() => JSX.Element`|
 
 

@@ -16,6 +16,7 @@ description: Used for select and display colors.
 @import ./__demo__/trigger.md
 @import ./__demo__/trigger-element.md
 @import ./__demo__/only-panel.md
+@import ./__demo__/custom-panel.md
 
 ## API
 
@@ -31,6 +32,8 @@ description: Used for select and display colors.
 |show-text|Show color value|`boolean`|`false`|
 |show-history|Show history colors|`boolean`|`false`|
 |show-preset|Show preset colors|`boolean`|`false`|
+|show-palette|show palette|`boolean`|`true`|
+|show-controls|show control bar|`boolean`|`true`|
 |disabled|disabled|`boolean`|`false`|
 |disabled-alpha|Disable transparency channel|`boolean`|`false`|
 |hide-trigger|There is no trigger element, only the color panel is displayed|`boolean`|`false`|
@@ -43,5 +46,14 @@ description: Used for select and display colors.
 |---|---|---|
 |change|Triggered when the color value changes|value: `string`|
 |popup-visible-change|Triggered when the color panel is expanded and collapsed|visible: `boolean`<br>value: `string`|
+### `<color-picker>` Slots
+
+|Slot Name|Description|Parameters|
+|---|---|---|
+|preset-title|Preset Colors Title|-|
+|history-title|History Colors Title|-|
+|color-section|Color Selection Area|colorSection: `() => JSX.Element`|
+|controls|Control Bar Area|controls: `() => JSX.Element`|
+|palette|Palette Area|palette: `() => JSX.Element`|
 
 
