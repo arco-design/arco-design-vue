@@ -83,6 +83,12 @@ export default defineComponent({
      * @en Callback at the end of the countdown
      */
     finish: () => true,
+    /**
+     * @zh 倒计时暂停切换时触发的回调
+     * @en Callback triggered when the countdown pause to switch
+     * @param {boolean} paused
+     */
+    pauseChange: (paused: boolean) => true,
   },
   /**
    * @zh 标题
@@ -92,6 +98,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('statistic');
     const { start, value, now, format } = toRefs(props);
+    const transitionPaused = ref(false);
+    const transitionValue = ref(0);
 
     const displayValue = ref(
       getDateString(
@@ -119,19 +127,34 @@ export default defineComponent({
       }
     };
 
-    const startTimer = () => {
-      if (dayjs(props.value).valueOf() < Date.now()) {
+    const startTimer = (value = props.value) => {
+      transitionValue.value = 0;
+      transitionPaused.value = false;
+
+      if (dayjs(value).valueOf() < Date.now()) {
         return;
       }
 
       timer.value = window.setInterval(() => {
-        const _value = dayjs(props.value).diff(dayjs(), 'millisecond');
+        const _value = dayjs(value).diff(dayjs(), 'millisecond');
         if (_value <= 0) {
           stopTimer();
           emit('finish');
         }
         displayValue.value = getDateString(Math.max(_value, 0), props.format);
+        transitionValue.value = _value;
       }, 1000 / 30);
+    };
+
+    const _pause = (value = !transitionPaused.value) => {
+      if (props.start) {
+        if (value) {
+          transitionPaused.value = true;
+          stopTimer();
+        } else {
+          startTimer(transitionValue.value + Date.now());
+        }
+      }
     };
 
     onMounted(() => {
@@ -150,10 +173,27 @@ export default defineComponent({
       }
     });
 
+    watch(transitionPaused, (value) => {
+      emit('pauseChange', value);
+    });
+
     return {
       prefixCls,
       displayValue,
+      _pause,
     };
+  },
+
+  methods: {
+    /**
+     * @zh 暂停或继续动画
+     * @en Pause or continue animation
+     * @param { boolean } paused
+     * @public
+     */
+    pause(paused?: boolean) {
+      this._pause(paused);
+    },
   },
 });
 </script>

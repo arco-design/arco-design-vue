@@ -12,7 +12,11 @@ description: 突出展示某个或某组数字、带描述的统计类数据。
 
 @import ./__demo__/animation.md
 
+@import ./__demo__/animation-control.md
+
 @import ./__demo__/countdown.md
+
+@import ./__demo__/countdown-control.md
 
 ## API
 
@@ -30,10 +34,22 @@ description: 突出展示某个或某组数字、带描述的统计类数据。
 |separator|进位分隔符（数字模式使用）|`string`|`-`||
 |show-group-separator|是否展示进位分隔符（数字模式使用）|`boolean`|`false`||
 |animation|是否开启动画|`boolean`|`false`||
-|animation-duration|动画的过度时间|`number`|`2000`||
+|animation-duration|动画的过度时间，单位`ms`|`number`|`2000`||
 |value-from|动画的起始值|`number`|`-`||
 |placeholder|提示文字（当 value 为 undefined 时显示）|`string`|`-`|2.28.0|
 |value-style|自定义显示值的样式|`CSSProperties`|`-`|2.32.0|
+### `<statistic>` Events
+
+|事件名|描述|参数|
+|---|---|---|
+|finish|动画完成后触发的回调|-|
+|pause-change|动画暂停切换时触发的回调|paused: `boolean`|
+### `<statistic>` Methods
+
+|方法名|描述|参数|返回值|
+|---|---|---|---|
+|pause|暂停或继续动画|paused: ` boolean `|-|
+|restart|重新开始执行动画|-|-|
 ### `<statistic>` Slots
 
 |插槽名|描述|参数|
@@ -61,6 +77,12 @@ description: 突出展示某个或某组数字、带描述的统计类数据。
 |事件名|描述|参数|
 |---|---|---|
 |finish|倒计时完成后触发的回调|-|
+|pause-change|倒计时暂停切换时触发的回调|paused: `boolean`|
+### `<countdown>` Methods
+
+|方法名|描述|参数|返回值|
+|---|---|---|---|
+|pause|暂停或继续动画|paused: ` boolean `|-|
 ### `<countdown>` Slots
 
 |插槽名|描述|参数|
