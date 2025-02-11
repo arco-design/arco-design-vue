@@ -21,6 +21,12 @@ description:
 
 @import ./__demo__/from.md
 
+@import ./__demo__/min.md
+
+@import ./__demo__/dynamic-element.md
+
+@import ./__demo__/custom-tips.md
+
 ## API
 
 %%API(overflow-list.tsx)%%
