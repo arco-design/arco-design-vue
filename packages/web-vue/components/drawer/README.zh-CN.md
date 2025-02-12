@@ -42,6 +42,8 @@ description: 触发命令后，从屏幕一侧滑出的抽屉式的面板。
 |height|抽屉的高度（仅在placement为top,bottom时可用）|`number\|string`|`250`||
 |popup-container|弹出框的挂载容器|`string \| HTMLElement`|`'body'`||
 |drawer-style|抽屉的样式|`CSSProperties`|`-`||
+|body-class|抽屉内容部分的类名|`string \| any[]`|`-`||
+|body-style|抽屉内容部分的样式|`StyleValue`|`-`||
 |on-before-ok|触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。|`(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`|`-`||
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`||
 |esc-to-close|是否支持 ESC 键关闭抽屉|`boolean`|`true`|2.15.0|
