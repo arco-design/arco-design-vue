@@ -44,7 +44,7 @@
                 </div>
               </slot>
             </div>
-            <div :class="`${prefixCls}-body`">
+            <div :class="[`${prefixCls}-body`, bodyClass]" :style="bodyStyle">
               <slot />
             </div>
             <div v-if="footer" :class="`${prefixCls}-footer`">
@@ -74,7 +74,7 @@
 </template>
 
 <script lang="ts">
-import type { CSSProperties, PropType } from 'vue';
+import type { CSSProperties, PropType, StyleValue } from 'vue';
 import {
   computed,
   defineComponent,
@@ -236,6 +236,20 @@ export default defineComponent({
      */
     drawerStyle: {
       type: Object as PropType<CSSProperties>,
+    },
+    /**
+     * @zh 抽屉内容部分的类名
+     * @en The classname of the drawer body
+     */
+    bodyClass: {
+      type: [String, Array] as PropType<string | any[]>,
+    },
+    /**
+     * @zh 抽屉内容部分的样式
+     * @en Drawer body style
+     */
+    bodyStyle: {
+      type: [String, Object, Array] as PropType<StyleValue>,
     },
     /**
      * @zh 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。
