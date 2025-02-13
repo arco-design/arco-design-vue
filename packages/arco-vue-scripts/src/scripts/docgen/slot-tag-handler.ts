@@ -39,7 +39,7 @@ export function slotTagHandler(documentation: Documentation, path: any) {
             (t: any) => t.title !== 'binding' && t.title !== 'slot'
           );
           if (customTags.length) {
-            const tags = customTags.reduce((pre, item) => {
+            const tags = customTags.reduce((pre: any, item: any) => {
               pre[item.title] = item;
               return pre;
             }, {} as any);

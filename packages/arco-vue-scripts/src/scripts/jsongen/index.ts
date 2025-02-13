@@ -14,16 +14,18 @@ const getComponentsFromTemplates = async () => {
   const templates = await fg('components/**/TEMPLATE.md');
 
   const components: string[] = [];
-  for (const item of templates) {
-    const dirname = path.dirname(item);
-    const source = await fs.readFile(item, 'utf8');
-    const matches = Array.from(source.matchAll(/%%API\((.+?)\)%%/g));
-    matches.forEach((match) => {
-      if (match[1]) {
-        components.push(path.resolve(dirname, match[1]));
-      }
-    });
-  }
+  await Promise.all(
+    templates.map(async (item) => {
+      const dirname = path.dirname(item);
+      const source = await fs.readFile(item, 'utf8');
+      const matches = Array.from(source.matchAll(/%%API\((.+?)\)%%/g));
+      matches.forEach((match) => {
+        if (match[1]) {
+          components.push(path.resolve(dirname, match[1]));
+        }
+      });
+    })
+  );
 
   return components;
 };
@@ -56,10 +58,10 @@ const resolveComponent = (doc: ComponentDoc) => {
     name: toKebabCase(`a${doc.displayName}`),
     props:
       doc.props
-        ?.map((descriptor) => {
+        ?.map((descriptor: any) => {
           const description = Object.values(descriptor.tags ?? {}).reduce(
-            (pre, item) => {
-              item.forEach((tag) => {
+            (pre: any, item: any) => {
+              item.forEach((tag: any) => {
                 if (isLanguageTag(tag.title)) {
                   pre[tag.title] = (tag as ParamTag).description as string;
                 }
@@ -75,12 +77,12 @@ const resolveComponent = (doc: ComponentDoc) => {
             description,
           };
         })
-        .filter((item) => Boolean(item.description.en)) ?? [],
+        .filter((item: any) => Boolean(item.description.en)) ?? [],
     events:
       doc.events
-        ?.map((descriptor) => {
+        ?.map((descriptor: any) => {
           const description = (descriptor.tags ?? []).reduce(
-            (pre, item) => {
+            (pre: any, item: any) => {
               if (isLanguageTag(item.title)) {
                 // @ts-ignore
                 pre[item.title] = item.content;
@@ -96,11 +98,12 @@ const resolveComponent = (doc: ComponentDoc) => {
           };
         })
         .filter(
-          (item) => Boolean(item.description.en) && !/^update:/.test(item.name)
+          (item: any) =>
+            Boolean(item.description.en) && !/^update:/.test(item.name)
         ) ?? [],
     slots:
       doc.slots
-        ?.map((descriptor) => {
+        ?.map((descriptor: any) => {
           const description = Object.values(descriptor.tags ?? {}).reduce(
             (pre, item) => {
               // @ts-ignore
@@ -118,7 +121,7 @@ const resolveComponent = (doc: ComponentDoc) => {
             description,
           };
         })
-        .filter((item) => Boolean(item.description.en)) ?? [],
+        .filter((item: any) => Boolean(item.description.en)) ?? [],
   };
 };
 
@@ -223,6 +226,7 @@ const jsongen = async () => {
   let datePickerBase;
   for (const item of components) {
     const doc = resolveComponent(
+      // eslint-disable-next-line no-await-in-loop
       await parseComponent(item, {
         addScriptHandlers: [slotTagHandler],
       })

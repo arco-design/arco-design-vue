@@ -36,6 +36,7 @@ export default (type: 'component' | 'icon'): InlineConfig => {
             globals: {
               vue: 'Vue',
             },
+            // @ts-ignore
             plugins: [terser()],
           },
         ],

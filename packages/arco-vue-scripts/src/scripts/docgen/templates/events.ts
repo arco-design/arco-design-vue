@@ -3,7 +3,7 @@ import { escapeCharacter, toKebabCase } from '../utils';
 
 const propertiesTmpl = (properties: EventDescriptor['properties']): string => {
   return (properties || [])
-    .map((property) => {
+    .map((property: any) => {
       const { type, name, description } = property;
       const res = [];
       name && res.push(name);
@@ -22,7 +22,7 @@ const tmpl = (events: EventDescriptor[], lang: string) => {
     (event) => event.description || event.tags?.length
   );
   const hasVersion = displayableEvents.some((event) =>
-    event?.tags?.some((tag) => tag.title === 'version')
+    event?.tags?.some((tag: any) => tag.title === 'version')
   );
   const content = displayableEvents
     .map((event) => {

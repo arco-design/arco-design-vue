@@ -3,7 +3,7 @@ import { escapeCharacter, toKebabCase } from '../utils';
 
 const bindingsTmpl = (bindings: SlotDescriptor['bindings']): string => {
   return (bindings || [])
-    .map((binding) => {
+    .map((binding: SlotDescriptor['bindings'][number]) => {
       const { type, name, description } = binding;
       const res = [];
       name && res.push(name);
