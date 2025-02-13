@@ -18,7 +18,7 @@ Multiple Selection
 
 ```vue
 <template>
-  <a-space>
+  <a-space direction="vertical">
     <a-tree-select
       v-model="selected"
       :multiple="true"
@@ -26,7 +26,7 @@ Multiple Selection
       :allow-search="true"
       :data="treeData"
       placeholder="Please select ..."
-      style="width: 300px"
+      style="width: 400px"
     ></a-tree-select>
     <a-tree-select
       v-model="selected"
@@ -36,7 +36,17 @@ Multiple Selection
       :allow-search="true"
       :data="treeData"
       placeholder="Please select ..."
-      style="width: 300px"
+      style="width: 400px"
+    ></a-tree-select>
+     <a-tree-select
+      v-model="selected"
+      :multiple="true"
+      :max-tag-count="{count: 2, showPopover: true}"
+      :allow-clear="true"
+      :allow-search="true"
+      :data="treeData"
+      placeholder="Please select ..."
+      style="width: 400px"
     ></a-tree-select>
   </a-space>
 </template>

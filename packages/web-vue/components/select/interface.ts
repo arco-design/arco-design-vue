@@ -3,6 +3,7 @@ import { FieldString } from '../_utils/types';
 import { Size } from '../_utils/constant';
 import { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import { TriggerProps } from '../trigger';
+import { PopoverProps } from '../popover';
 
 export interface SelectProps {
   options?: (
@@ -35,7 +36,9 @@ export interface SelectProps {
   allowClear?: boolean;
   allowSearch?: boolean | { retainInputValue?: boolean };
   allowCreate?: boolean;
-  maxTagCount?: number;
+  maxTagCount?:
+    | number
+    | { count: number; showPopover?: boolean | PopoverProps };
   popupContainer?: string | HTMLElement;
   bordered?: boolean;
   popupVisible?: boolean;
