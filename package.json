@@ -13,7 +13,7 @@
     "test": "pnpm --filter @arco-design/web-vue run test",
     "storybook": "pnpm --filter @arco-design/arco-vue-storybook run storybook"
   },
-  "packageManager": "pnpm@9",
+  "packageManager": "pnpm@9.5.0",
   "workspaces": [
     "packages/*"
   ],
