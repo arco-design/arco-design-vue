@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "init": "pnpm --filter @arco-design/vite-plugin-arco-vue-docs run build && pnpm --filter @arco-design/arco-vue-scripts run build && pnpm --filter @arco-design/web-vue run init",
+    "init": "pnpm -F @arco-design/arco-changelog -F @arco-design/vite-plugin-arco-vue-docs -F @arco-design/arco-vue-scripts run build && pnpm -F @arco-design/web-vue run init",
     "start": "pnpm --filter @arco-design/arco-vue-docs run start",
     "build:site": "pnpm --filter @arco-design/arco-vue-docs run build",
     "test:screenshot": "pnpm --filter @arco-design/web-vue run test:screenshot",

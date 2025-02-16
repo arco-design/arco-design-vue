@@ -11,25 +11,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
 
-      - name: setup node
-        uses: actions/setup-node@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
-          cache: 'yarn'
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install deps
-        run: npm i lerna -g && yarn
+        run: pnpm i
 
-      - name: build components
-        run: npm run init
+      - run: pnpm run init
 
       - name: build site
-        run: NODE_OPTIONS=--max-old-space-size=8192 AssetsPublicPath=/ yarn build:site
+        run: NODE_OPTIONS=--max-old-space-size=8192 AssetsPublicPath=/ pnpm run build:site
 
       - name: netlify install
-        run: yarn add netlify-cli -D
+        run: pnpm add netlify-cli -D
 
       - name: get PreviewID
         run: |
@@ -50,15 +65,6 @@ jobs:
     needs: deploy-preview
     if: github.event_name == 'pull_request'
     steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'yarn'
-
       - name: PR Comment
         uses: mshick/add-pr-comment@v2
         env:
@@ -73,21 +79,34 @@ jobs:
     needs: deploy-preview
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      - name: setup node
-        uses: actions/setup-node@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
-          cache: 'yarn'
+          node-version: 18
 
-      - name: Install deps
-        run: npm i lerna -g && yarn
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - name: build components
-        run: npm run init
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm i
+
+      - run: pnpm run init
 
       - name: get PreviewID
         run: |
@@ -98,7 +117,7 @@ jobs:
           fi
 
       - name: gen screenshots
-        run: yarn test:screenshot --domain=https://pr-preview-${{ env.PreviewID }}--arco-design-vue.netlify.app
+        run: pnpm run test:screenshot --domain=https://pr-preview-${{ env.PreviewID }}--arco-design-vue.netlify.app
 
       - name: upload screenshots to argos-cli
         run: npx @argos-ci/cli upload ./packages/web-vue/__screenshots__
