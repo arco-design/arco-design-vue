@@ -10,6 +10,7 @@
     "test:screenshot": "pnpm --filter @arco-design/web-vue run test:screenshot",
     "build:component": "pnpm --filter @arco-design/web-vue run build",
     "docgen": "pnpm --filter @arco-design/web-vue run docgen",
+    "clean": "pnpm -r exec rimraf dist",
     "test": "pnpm --filter @arco-design/web-vue run test",
     "storybook": "pnpm --filter @arco-design/arco-vue-storybook run storybook"
   },
@@ -34,6 +35,7 @@
     "husky": "^7.0.0",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
+    "rimraf": "^6.0.1",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",
