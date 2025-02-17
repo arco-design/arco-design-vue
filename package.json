@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "init": "pnpm -F @arco-design/arco-changelog -F @arco-design/vite-plugin-arco-vue-docs -F @arco-design/arco-vue-scripts run build && pnpm -F @arco-design/web-vue run init",
+    "init": "pnpm -F @arco-design/arco-changelog -F @arco-design/vite-plugin-arco-vue-docs -F @arco-design/arco-vue-scripts run build && pnpm i && pnpm -F @arco-design/web-vue run init",
     "start": "pnpm --filter @arco-design/arco-vue-docs run start",
     "build:site": "pnpm --filter @arco-design/arco-vue-docs run build",
     "test:screenshot": "pnpm --filter @arco-design/web-vue run test:screenshot",
     "build:component": "pnpm --filter @arco-design/web-vue run build",
     "docgen": "pnpm --filter @arco-design/web-vue run docgen",
-    "clean": "pnpm -r exec rimraf dist",
+    "clean": "pnpm -r exec rimraf dist node_modules",
     "test": "pnpm --filter @arco-design/web-vue run test",
     "storybook": "pnpm --filter @arco-design/arco-vue-storybook run storybook"
   },
@@ -42,5 +42,10 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "typescript": "^4.2.4"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [ "react-dom" ]
+    }
   }
 }
