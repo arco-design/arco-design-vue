@@ -1,6 +1,6 @@
 {
   "name": "@arco-design/arco-vue-scripts",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Arco Vue Scripts",
   "author": "ArcoDesign Team",
   "license": "MIT",
@@ -46,7 +46,7 @@
     "ts-node": "^10.1.0"
   },
   "dependencies": {
-    "@arco-design/vite-plugin-arco-vue-docs": "^0.1.0",
+    "@arco-design/vite-plugin-arco-vue-docs": "workspace:*",
     "@babel/core": "^7.14.6",
     "@babel/parser": "^7.14.7",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
@@ -80,7 +80,7 @@
     "vite": "^2.5.6",
     "vite-plugin-eslint": "^1.1.2",
     "vite-svg-loader": "^2.1.0",
-    "vue-docgen-api": "^4.40.0",
+    "vue-docgen-api": "4.40.0",
     "vue-jest": "^5.0.0-alpha.10"
   }
 }

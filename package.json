@@ -4,14 +4,17 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "init": "lerna run build --stream --scope=@arco-design/{vite-plugin-arco-vue-docs,arco-vue-scripts} && lerna link && lerna run init --scope=@arco-design/web-vue",
-    "start": "yarn workspace @arco-design/arco-vue-docs run start",
-    "build:site": "yarn workspace @arco-design/arco-vue-docs run build",
-    "test:screenshot": "yarn workspace @arco-design/web-vue run test:screenshot",
-    "build:component": "yarn workspace @arco-design/web-vue run build",
-    "test": "yarn workspace @arco-design/web-vue run test",
-    "storybook": "yarn workspace @arco-design/web-vue-storybook run storybook"
+    "init": "pnpm -F @arco-design/arco-changelog -F @arco-design/vite-plugin-arco-vue-docs -F @arco-design/arco-vue-scripts run build && pnpm i && pnpm -F @arco-design/web-vue run init",
+    "start": "pnpm --filter @arco-design/arco-vue-docs run start",
+    "build:site": "pnpm --filter @arco-design/arco-vue-docs run build",
+    "test:screenshot": "pnpm --filter @arco-design/web-vue run test:screenshot",
+    "build:component": "pnpm --filter @arco-design/web-vue run build",
+    "docgen": "pnpm --filter @arco-design/web-vue run docgen",
+    "clean": "pnpm -r exec rimraf dist node_modules",
+    "test": "pnpm --filter @arco-design/web-vue run test",
+    "storybook": "pnpm --filter @arco-design/arco-vue-storybook run storybook"
   },
+  "packageManager": "pnpm@9.5.0",
   "workspaces": [
     "packages/*"
   ],
@@ -30,15 +33,19 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.7.0",
     "husky": "^7.0.0",
-    "lerna": "^4.0.0",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
+    "rimraf": "^6.0.1",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
-    "typescript": "^4.2.4",
-    "yarn": "^1.22.10"
+    "typescript": "^4.2.4"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [ "react-dom" ]
+    }
   }
 }

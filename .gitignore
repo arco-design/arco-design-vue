@@ -6,10 +6,8 @@ node_modules/
 
 package-lock.json
 lerna-debug.log
+npm-debug.log
+pnpm-debug.log
 
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+package-lock.json
+yarn.lock

@@ -49,6 +49,9 @@ npm install @arco-design/web-vue
 
 // yarn
 yarn add @arco-design/web-vue
+
+// pnpm
+pnpm add @arco-design/web-vue
 ```
 
 # 例子
@@ -63,15 +66,6 @@ const app = createApp(App);
 app.use(ArcoVue);
 app.mount('#app');
 ```
-
-## 开发
-
-1. 使用 `npm install -g` 安装 `lerna` 和 `yarn` 等基础包。
-
-2. 使用 `yarn install` 安装 `workspaces` 中各个包的依赖（如果遇到 `YN0018` 错误，可以使用 `YARN_CHECKSUM_BEHAVIOR=update yarn` 进行安装）。
-
-3. 使用 `npm run init` 初始化项目。
-
 
 # 相关链接
 

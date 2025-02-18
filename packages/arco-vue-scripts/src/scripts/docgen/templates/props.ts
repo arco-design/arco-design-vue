@@ -51,7 +51,7 @@ const tmpl = (
         if (values) {
           return escapeCharacter(
             values
-              .map((item) => {
+              .map((item: string) => {
                 const fixItem =
                   fixedType === 'string' ? `'${unquote(item)}'` : item;
                 return fixItem;

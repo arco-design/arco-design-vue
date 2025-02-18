@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn workspaces foreach -v run lint-staged
+pnpm -r run lint-staged

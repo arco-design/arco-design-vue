@@ -23,16 +23,55 @@ Every significant change is documented in the changelog file.
 We use [Github issues](https://github.com/arco-design/arco-design-vue/issues) for bug reports and feature requests. Before reporting an issue, please make sure you have searched for similar [issues](https://github.com/arco-design/arco-design-vue/issues) as they may have been already answered or being fixed. A new issue should be submitted via [issue helper](https://arco.design/issue-helper?repo=arco-design-vue). For bug reporting, please include the minimum code that can be used to reproduce the problem. For feature request, please specify what changes you want and what behavior you expect.
 
 ## Sending a pull request
+This project uses [pnpm](https://pnpm.io/) for package management. Please install Yarn before development.
 
-1. Fork [the repository](https://github.com/arco-design/arco-design-vue) and create your branch from `main`. For new feature, please submit your changes directly to the `feature` branch. Other changes should go against `main` branch.
-2. Use `npm install -g` to install basic packages such as `lerna` and `yarn`.
-3. Use `yarn install` to install the dependencies of each package in `workspaces` (If you encounter a `YN0018` error, you can use `YARN_CHECKSUM_BEHAVIOR=update yarn` to install).
-4. Use `npm run init` to initialize the project.
-5. Run `npm run start` to start and preview site.
-6. Make changes to the codebase. Please add tests if applicable.
-7. Make sure the test suite passes with `npm run test`.
-8. Commit your changes, adhering to the [Commit Guidelines](#commit-guidelines)
-9. Open a new pull request, [referencing corresponding issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if available.
+### Contribution Process
+
+- **Claim an Issue**: Create an issue on GitHub and claim it (or directly claim an existing issue) to let others know you are working on it, preventing duplicate efforts.
+- **Development**: After preparing for development, proceed with bug fixes or feature implementation.
+- **Add Unit Tests**: Write unit tests for your code changes and ensure all test cases pass, aiming for reasonable test coverage.
+- **Update Snapshots**: If your changes affect the component’s DOM structure, class names, or add/remove demos, update the snapshots accordingly.
+- **Generate Documentation**: If the component API is modified, run `pnpm run docgen` to regenerate the documentation.
+- **Submit a Pull Request**
+
+### Development
+
+1. Fork [this repository](https://github.com/arco-design/arco-design-vue) and create a branch from `main`.
+   - For new features, submit a pull request to the `feature` branch.
+   - For other changes, submit to the `main` branch.
+
+```bash
+git clone git@github.com:arco-design/arco-design-vue.git
+```
+
+2. Install the dependencies of each package in `workspaces`.
+
+```bash
+pnpm install
+```
+
+3. Initialize the project.
+
+```bash
+pnpm run init
+```
+
+4. Start and preview the site.
+
+```bash
+pnpm run start
+```
+
+```bash
+# Start Storybook (optional, as debugging can also be done on the official website)
+pnpm run storybook
+```
+
+5. Make changes to the codebase. If applicable, ensure that you have written the corresponding tests.
+6. Make sure all tests pass after running `pnpm run test`.
+7. Commit your changes, adhering to the [Commit Guidelines](#commit-guidelines).
+8. Open a new pull request, [referencing corresponding issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if available.
+
 
 ## Commit Guidelines
 
@@ -62,7 +101,7 @@ The following is a list of commit types:
 
 ## Arco-Vue Repository Structure
 
-This repository is managed by lerna and includes the following packages:
+This repository is managed by pnpm workspace and includes the following packages:
 
 1. `web-vue`: UI component library
 2. `vue-site`: Component documentation site

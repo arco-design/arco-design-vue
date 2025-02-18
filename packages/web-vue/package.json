@@ -30,13 +30,13 @@
     "*.less"
   ],
   "scripts": {
-    "init": "yarn run icongen && yarn run lessgen && arco-vue-scripts build:component",
+    "init": "pnpm run icongen && pnpm run lessgen && arco-vue-scripts build:component",
     "start": "arco-vue-scripts dev:component",
     "docgen": "arco-vue-scripts docgen",
-    "icongen": "arco-vue-scripts icongen && yarn run dtsgen:icon",
+    "icongen": "arco-vue-scripts icongen && pnpm run dtsgen:icon",
     "lessgen": "arco-vue-scripts lessgen",
     "jsongen": "arco-vue-scripts jsongen",
-    "build": "yarn run build:component && yarn run build:style && yarn run dtsgen && yarn run jsongen",
+    "build": "pnpm run build:component && pnpm run build:style && pnpm run dtsgen && pnpm run jsongen",
     "build:component": "arco-vue-scripts build:component -u",
     "build:module": "arco-vue-scripts build:component",
     "build:style": "arco-vue-scripts build:style",
@@ -62,7 +62,7 @@
     ]
   },
   "devDependencies": {
-    "@arco-design/arco-vue-scripts": "^0.2.0",
+    "@arco-design/arco-vue-scripts": "workspace:*",
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",

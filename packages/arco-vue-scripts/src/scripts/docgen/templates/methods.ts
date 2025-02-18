@@ -3,8 +3,8 @@ import { escapeCharacter } from '../utils';
 
 const paramsTmpl = (params: MethodDescriptor['params']): string => {
   return (params || [])
-    .filter((param) => param.type)
-    .map((param): string => {
+    .filter((param: any) => param.type)
+    .map((param: any): string => {
       const { name, type, description } = param;
       const res = [];
       name && res.push(name);
@@ -30,7 +30,7 @@ const returnsTmpl = (returns: MethodDescriptor['returns']): string => {
     if (!elements || !elements.length) return name || '';
 
     const names: string[] = [];
-    elements.forEach((element) => {
+    elements.forEach((element: any) => {
       names.push(getNames(element));
     });
 
