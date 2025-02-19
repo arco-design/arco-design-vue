@@ -201,6 +201,7 @@ export default defineComponent({
     // 值相关
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
+    let preValue = computedValue.value;
 
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
@@ -208,7 +209,9 @@ export default defineComponent({
       }
     });
 
-    let preValue = computedValue.value;
+    watch(computedValue, (value, oldValue) => {
+      preValue = oldValue;
+    });
 
     // 状态相关
     const focused = ref(false);
@@ -291,7 +294,6 @@ export default defineComponent({
 
     const handleFocus = (ev: FocusEvent) => {
       focused.value = true;
-      preValue = computedValue.value;
       emit('focus', ev);
       eventHandlers.value?.onFocus?.(ev);
     };
