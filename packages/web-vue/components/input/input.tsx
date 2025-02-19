@@ -286,6 +286,7 @@ export default defineComponent({
 
     const emitChange = (value: string, ev: Event) => {
       if (value !== preValue) {
+        preValue = value;
         emit('change', value, ev);
         eventHandlers.value?.onChange?.(ev);
       }
