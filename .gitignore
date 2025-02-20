@@ -2,6 +2,7 @@
 # .vscode/
 
 node_modules/
+storybook-static/
 **/.DS_Store
 
 package-lock.json

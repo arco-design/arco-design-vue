@@ -12,7 +12,7 @@
     "docgen": "pnpm --filter @arco-design/web-vue run docgen",
     "clean": "pnpm -r exec rimraf dist node_modules",
     "test": "pnpm --filter @arco-design/web-vue run test",
-    "storybook": "pnpm --filter @arco-design/arco-vue-storybook run storybook"
+    "storybook": "pnpm --filter @arco-design/web-vue-storybook run storybook"
   },
   "packageManager": "pnpm@9.5.0",
   "workspaces": [

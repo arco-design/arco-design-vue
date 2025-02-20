@@ -10,10 +10,10 @@
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.0",
-    "@storybook/addon-essentials": "^6.3.0",
-    "@storybook/addon-links": "^6.3.0",
-    "@storybook/vue3": "^6.3.0",
+    "@storybook/addon-actions": "6.3.0",
+    "@storybook/addon-essentials": "6.3.0",
+    "@storybook/addon-links": "6.3.0",
+    "@storybook/vue3": "6.3.0",
     "babel-loader": "^8.2.2",
     "less": "^4.1.1",
     "less-loader": "^7.3.0",
