@@ -20,6 +20,7 @@ export type {
   CustomIcon,
   RequestOption,
   UploadRequest,
+  ShowUploadButtonOption,
 } from './interfaces';
 
 export default Upload;

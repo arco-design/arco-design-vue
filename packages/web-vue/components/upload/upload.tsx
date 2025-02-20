@@ -16,6 +16,7 @@ import type {
   ListType,
   RequestOption,
   UploadRequest,
+  ShowUploadButtonOption,
 } from './interfaces';
 import { isImage, uploadRequest } from './utils';
 import UploadButton from './upload-button';
@@ -189,9 +190,7 @@ export default defineComponent({
      * @version 2.11.0
      */
     showUploadButton: {
-      type: [Boolean, Object] as PropType<
-        boolean | { showOnExceedLimit: boolean }
-      >,
+      type: [Boolean, Object] as PropType<boolean | ShowUploadButtonOption>,
       default: true,
     },
     /**
