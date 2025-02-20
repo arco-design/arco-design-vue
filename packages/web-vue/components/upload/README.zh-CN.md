@@ -62,7 +62,7 @@ description: 用户可传输文件或提交相应的内容。
 |show-remove-button|是否显示删除按钮|`boolean`|`true`|2.11.0|
 |show-retry-button|是否显示重试按钮|`boolean`|`true`|2.11.0|
 |show-cancel-button|是否显示取消按钮|`boolean`|`true`|2.11.0|
-|show-upload-button|是否显示上传按钮。2.14.0 版本新增 `showOnExceedLimit` 支持|`boolean \| { showOnExceedLimit: boolean }`|`true`|2.11.0|
+|show-upload-button|是否显示上传按钮。2.14.0 版本新增 `showOnExceedLimit` 支持|`boolean \| ShowUploadButtonOption`|`true`|2.11.0|
 |show-preview-button|照片墙是否显示预览按钮|`boolean`|`true`|2.42.0|
 |download|是否在 `<a>` 链接上添加 download 属性|`boolean`|`false`|2.11.0|
 |show-link|在列表模式下，如果上传的文件存在 URL 则展示链接。如果关闭仅展示文字并且点击可以触发 `preview` 事件。|`boolean`|`true`|2.13.0|
@@ -164,5 +164,13 @@ description: 用户可传输文件或提交相应的内容。
 |参数名|描述|类型|默认值|
 |---|---|---|:---:|
 |abort|终止上传|`() => void`|`-`|
+
+
+
+### ShowUploadButtonOption
+
+|参数名| 描述                  | 类型      |默认值|
+|---|---|---|:---:|
+|showOnExceedLimit| 超过 limit 限制仍然显示上传按钮 |`boolean`|`-`|
 
 

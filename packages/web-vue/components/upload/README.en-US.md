@@ -64,7 +64,7 @@ description: Users can transfer files or submit corresponding content.
 |show-remove-button|Whether to display the remove button|`boolean`|`true`|2.11.0|
 |show-retry-button|Whether to display the retry button|`boolean`|`true`|2.11.0|
 |show-cancel-button|Whether to display the cancel button|`boolean`|`true`|2.11.0|
-|show-upload-button|Whether to display the retry button. Added `showOnExceedLimit` support in version 2.14.0|`boolean \| { showOnExceedLimit: boolean }`|`true`|2.11.0|
+|show-upload-button|Whether to display the retry button. Added `showOnExceedLimit` support in version 2.14.0|`boolean \| ShowUploadButtonOption`|`true`|2.11.0|
 |show-preview-button|Whether to display the preview button in picture-card|`boolean`|`true`|2.42.0|
 |download|Whether to add download attribute to `<a>` link|`boolean`|`false`|2.11.0|
 |show-link|In the list mode, if the uploaded file has a URL, the link will be displayed. If you turn off only display text and click to trigger the `preview` event.|`boolean`|`true`|2.13.0|
@@ -165,5 +165,13 @@ description: Users can transfer files or submit corresponding content.
 |Name|Description|Type|Default|
 |---|---|---|:---:|
 |abort|Terminate upload|`() => void`|`-`|
+
+
+
+### ShowUploadButtonOption
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|showOnExceedLimit|Display upload button even when exceeding the limit|`boolean`|`-`|
 
 
