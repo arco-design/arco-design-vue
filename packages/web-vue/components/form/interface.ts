@@ -7,10 +7,10 @@ export const VALIDATE_STATUSES = [
   'error',
   'validating',
 ] as const;
-export type ValidateStatus = typeof VALIDATE_STATUSES[number];
+export type ValidateStatus = (typeof VALIDATE_STATUSES)[number];
 
 export const VALIDATE_TRIGGERS = ['change', 'input', 'focus', 'blur'] as const;
-export type ValidateTrigger = typeof VALIDATE_TRIGGERS[number];
+export type ValidateTrigger = (typeof VALIDATE_TRIGGERS)[number];
 
 export interface FieldRule<FieldValue = any> {
   /**

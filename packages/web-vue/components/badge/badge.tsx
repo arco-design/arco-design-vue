@@ -23,7 +23,7 @@ export const COLORS = [
   'gray',
 ] as const;
 
-export type ColorType = typeof COLORS[number];
+export type ColorType = (typeof COLORS)[number];
 
 export const BADGE_STATUSES = [
   'normal',
@@ -32,7 +32,7 @@ export const BADGE_STATUSES = [
   'warning',
   'danger',
 ] as const;
-export type BadgeStatus = typeof BADGE_STATUSES[number];
+export type BadgeStatus = (typeof BADGE_STATUSES)[number];
 
 export default defineComponent({
   name: 'Badge',
@@ -120,7 +120,8 @@ export default defineComponent({
         computedDotStyle.marginTop = `${topOffset}px`;
       }
       const computedColorStyle =
-        !color?.value || COLORS.includes(color?.value as typeof COLORS[number])
+        !color?.value ||
+        COLORS.includes(color?.value as (typeof COLORS)[number])
           ? {}
           : { backgroundColor: color.value };
       const mergedStyle = {

@@ -62,7 +62,7 @@ const RESULT_STATUS = [
   null,
 ] as const;
 
-type ResultStatus = typeof RESULT_STATUS[number];
+type ResultStatus = (typeof RESULT_STATUS)[number];
 
 export default defineComponent({
   name: 'Result',

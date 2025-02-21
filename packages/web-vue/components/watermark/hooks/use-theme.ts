@@ -8,9 +8,9 @@ const Theme = {
 };
 
 export const useTheme = (callback?: () => void) => {
-  const theme: Ref<typeof Theme[keyof typeof Theme]> = ref(Theme.Light);
+  const theme: Ref<(typeof Theme)[keyof typeof Theme]> = ref(Theme.Light);
 
-  const setTheme = (value: typeof Theme[keyof typeof Theme]) => {
+  const setTheme = (value: (typeof Theme)[keyof typeof Theme]) => {
     theme.value = value;
   };
 
