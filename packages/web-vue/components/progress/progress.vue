@@ -62,7 +62,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { useSize } from '../_hooks/use-size';
 
 const PROGRESS_TYPES = ['line', 'circle'] as const;
-type ProgressType = typeof PROGRESS_TYPES[number];
+type ProgressType = (typeof PROGRESS_TYPES)[number];
 
 export default defineComponent({
   name: 'Progress',

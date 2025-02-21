@@ -9,7 +9,7 @@ export const NOTIFICATION_POSITION = [
   'bottomRight',
 ] as const;
 
-export type NotificationPosition = typeof NOTIFICATION_POSITION[number];
+export type NotificationPosition = (typeof NOTIFICATION_POSITION)[number];
 
 export interface NotificationMethod {
   /**

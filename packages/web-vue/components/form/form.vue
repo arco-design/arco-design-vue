@@ -26,9 +26,9 @@ import { useSize } from '../_hooks/use-size';
 import { getFormElementId } from './utils';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
-type FormLayout = typeof FORM_LAYOUTS[number];
+type FormLayout = (typeof FORM_LAYOUTS)[number];
 const FORM_LABEL_ALIGNS = ['left', 'right'] as const;
-type FormLabelAlign = typeof FORM_LABEL_ALIGNS[number];
+type FormLabelAlign = (typeof FORM_LABEL_ALIGNS)[number];
 
 export default defineComponent({
   name: 'Form',

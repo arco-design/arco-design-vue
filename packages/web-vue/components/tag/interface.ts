@@ -14,7 +14,7 @@ export const TAG_COLORS = [
   'gray',
 ] as const;
 
-export type TagColor = typeof TAG_COLORS[number];
+export type TagColor = (typeof TAG_COLORS)[number];
 
 export interface TagProps {
   /**

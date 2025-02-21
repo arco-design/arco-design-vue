@@ -103,7 +103,7 @@ export default defineComponent({
       type: String,
     },
     size: {
-      type: String as PropType<typeof SIZES[number]>,
+      type: String as PropType<(typeof SIZES)[number]>,
       default: 'medium',
     },
     strokeWidth: {

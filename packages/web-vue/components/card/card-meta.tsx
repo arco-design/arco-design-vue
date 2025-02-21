@@ -3,7 +3,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { CardContext, cardInjectionKey } from './context';
 
 export const SIZES = ['default', 'small'] as const;
-export type SizeType = typeof SIZES[number];
+export type SizeType = (typeof SIZES)[number];
 
 export default defineComponent({
   name: 'CardMeta',

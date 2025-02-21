@@ -37,7 +37,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     direction: {
-      type: String as PropType<typeof DIRECTIONS[number]>,
+      type: String as PropType<(typeof DIRECTIONS)[number]>,
       default: 'horizontal',
     },
     disabled: {
