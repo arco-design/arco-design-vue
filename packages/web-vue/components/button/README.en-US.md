@@ -40,7 +40,7 @@ description: Button is a command component that can initiate an instant operatio
 |long|Whether the width of the button adapts to the container.|`boolean`|`false`|
 |loading|Whether the button is in the loading state|`boolean`|`false`|
 |disabled|Whether the button is disabled|`boolean`|`false`|
-|html-type|Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`string`|`'button'`|
+|html-type|Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`'button' \| 'submit' \| 'reset' \| undefined`|`'button'`|
 |autofocus|Set the native `autofocus` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`boolean`|`false`|
 |href|Set up a jump link. When this property is set, the button is rendered as `<a>`|`string`|`-`|
 ### `<button>` Events
