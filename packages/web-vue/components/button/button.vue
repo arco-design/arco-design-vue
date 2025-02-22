@@ -9,7 +9,7 @@
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
-        <icon-loading v-if="loading" spin="true" />
+        <icon-loading v-if="loading" spin />
         <slot v-else name="icon" />
       </span>
       <slot />
@@ -43,7 +43,7 @@
 import type { PropType } from 'vue';
 import { defineComponent, computed, toRefs, inject } from 'vue';
 import { Status, Size, BorderShape } from '../_utils/constant';
-import { ButtonTypes } from './constants';
+import { ButtonHtmlTypes, ButtonTypes } from './constants';
 import { getPrefixCls } from '../_utils/global-config';
 import { isString } from '../_utils/is';
 import IconLoading from '../icon/icon-loading';
@@ -117,9 +117,11 @@ export default defineComponent({
     /**
      * @zh 设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
      * @en Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
+     * @values 'button','submit','reset',undefined
+     * @defaultValue 'button'
      */
     htmlType: {
-      type: String,
+      type: String as PropType<ButtonHtmlTypes>,
       default: 'button',
     },
     /**
