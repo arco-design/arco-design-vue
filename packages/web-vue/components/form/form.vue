@@ -1,5 +1,5 @@
 <template>
-  <form ref="formRef" :class="cls" @submit.prevent="handleSubmit">
+  <form :id="id" ref="formRef" :class="cls" @submit.prevent="handleSubmit">
     <slot />
   </form>
 </template>
@@ -26,9 +26,9 @@ import { useSize } from '../_hooks/use-size';
 import { getFormElementId } from './utils';
 
 const FORM_LAYOUTS = ['horizontal', 'vertical', 'inline'] as const;
-type FormLayout = typeof FORM_LAYOUTS[number];
+type FormLayout = (typeof FORM_LAYOUTS)[number];
 const FORM_LABEL_ALIGNS = ['left', 'right'] as const;
-type FormLabelAlign = typeof FORM_LABEL_ALIGNS[number];
+type FormLabelAlign = (typeof FORM_LABEL_ALIGNS)[number];
 
 export default defineComponent({
   name: 'Form',
@@ -111,7 +111,7 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 表单控件 `id` 的前缀
+     * @zh 表单 `id` 属性和表单控件 `id` 前缀
      */
     id: {
       type: String,
