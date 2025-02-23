@@ -27,7 +27,7 @@
       @click="handleClick"
     >
       <span v-if="loading || $slots.icon" :class="`${prefixCls}-icon`">
-        <icon-loading v-if="loading" :spin="true" />
+        <icon-loading v-if="loading" spin />
         <slot v-else name="icon" />
       </span>
       <slot />
