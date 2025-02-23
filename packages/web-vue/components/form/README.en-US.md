@@ -52,6 +52,7 @@ description: A form with data collection, verification and submission functions,
 |disabled|Whether to disable the form|`boolean`|`-`||
 |rules|Form item validation rules|`Record<string, FieldRule \| FieldRule[]>`|`-`||
 |auto-label-width|Whether to enable automatic label width, it only takes effect under `layout="horizontal"`.|`boolean`|`false`|2.13.0|
+|id|Form `id` attribute and form control `id` prefix|`string`|`-`||
 |scroll-to-first-error|Scroll to the first error field after verification fails|`boolean`|`false`|2.51.0|
 ### `<form>` Events
 
