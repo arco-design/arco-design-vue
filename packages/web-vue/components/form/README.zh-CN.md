@@ -50,7 +50,7 @@ description: 具有数据收集、校验和提交功能的表单，包含复选�
 |disabled|是否禁用表单|`boolean`|`-`||
 |rules|表单项校验规则|`Record<string, FieldRule \| FieldRule[]>`|`-`||
 |auto-label-width|是否开启自动标签宽度，仅在 `layout="horizontal"` 下生效。|`boolean`|`false`|2.13.0|
-|id|表单控件 `id` 的前缀|`string`|`-`||
+|id|表单 `id` 属性和表单控件 `id` 前缀|`string`|`-`||
 |scroll-to-first-error|验证失败后滚动到第一个错误字段|`boolean`|`false`|2.51.0|
 ### `<form>` Events
 
