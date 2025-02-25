@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <Button class="changelog-box-button" @click="drawerVisible = true">
     {{ t('changelogBox.changelog') }}

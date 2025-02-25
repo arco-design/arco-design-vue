@@ -33,7 +33,7 @@ import { anchorInjectionKey } from './context';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 
 const BOUNDARY_POSITIONS = ['start', 'end', 'center', 'nearest'] as const;
-type BoundaryPosition = typeof BOUNDARY_POSITIONS[number];
+type BoundaryPosition = (typeof BOUNDARY_POSITIONS)[number];
 
 export default defineComponent({
   name: 'Anchor',

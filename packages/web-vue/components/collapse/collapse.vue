@@ -19,7 +19,7 @@ import { isArray } from '../_utils/is';
 import { collapseKey } from './context';
 
 const EXPAND_ICON_POSITIONS = ['left', 'right'] as const;
-type ExpandIconPositions = typeof EXPAND_ICON_POSITIONS[number];
+type ExpandIconPositions = (typeof EXPAND_ICON_POSITIONS)[number];
 
 export default defineComponent({
   name: 'Collapse',
