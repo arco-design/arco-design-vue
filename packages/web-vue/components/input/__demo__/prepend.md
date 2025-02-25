@@ -29,6 +29,11 @@ Add elements before and after the input box by specifying the `prepend` and `app
         RMB
       </template>
     </a-input>
+
+    <a-input :style="{width:'320px'}" placeholder="Please enter something" allow-clear prepend="+86">
+    </a-input>
+    <a-input :style="{width:'320px'}" placeholder="Please enter something" allow-clear append="RMB">
+    </a-input>
   </a-space>
 </template>
 ```

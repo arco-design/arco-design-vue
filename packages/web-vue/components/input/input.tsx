@@ -122,6 +122,16 @@ export default defineComponent({
       type: String as PropType<'text' | 'password'>,
       default: 'text',
     },
+    /**
+     * @zh 前置标签
+     * @en Prepend
+     */
+    prepend: String,
+    /**
+     * @zh 后置标签
+     * @en Append
+     */
+    append: String,
   },
   emits: {
     'update:modelValue': (value: string) => true,
@@ -476,15 +486,19 @@ export default defineComponent({
     );
 
     const render = () => {
-      if (slots.prepend || slots.append) {
+      if (slots.prepend || slots.append || props.prepend || props.append) {
         return (
           <span class={outerCls.value} {...wrapperAttrs.value}>
-            {slots.prepend && (
-              <span class={`${prefixCls}-prepend`}>{slots.prepend()}</span>
+            {(slots.prepend || props.prepend) && (
+              <span class={`${prefixCls}-prepend`}>
+                {slots.prepend ? slots.prepend() : props.prepend}
+              </span>
             )}
             {renderInput(true)}
-            {slots.append && (
-              <span class={`${prefixCls}-append`}>{slots.append()}</span>
+            {(slots.append || props.append) && (
+              <span class={`${prefixCls}-append`}>
+                {slots.append ? slots.append() : props.append}
+              </span>
             )}
           </span>
         );

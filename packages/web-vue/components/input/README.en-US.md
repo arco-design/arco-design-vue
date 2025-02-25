@@ -50,6 +50,8 @@ description: Basic form components have been expanded on the basis of native con
 |word-length|Calculation method of word length|`(value: string) => number`|`-`||
 |word-slice|Character interception method, used together with wordLength|`(value: string, maxLength: number) => string`|`-`|2.12.0|
 |input-attrs|Attributes of inner input elements|`object`|`-`|2.27.0|
+|prepend|Prepend|`string`|`-`||
+|append|Append|`string`|`-`||
 ### `<input>` Events
 
 |Event Name|Description|Parameters|
@@ -113,5 +115,4 @@ description: Basic form components have been expanded on the basis of native con
 |Event Name|Description|Parameters|
 |---|---|---|
 |search|Triggered when the search button is clicked|value: `string`<br>ev: `MouseEvent`|
-
 
