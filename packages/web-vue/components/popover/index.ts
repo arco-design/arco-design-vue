@@ -13,5 +13,5 @@ const Popover = Object.assign(_Popover, {
 });
 
 export type PopoverInstance = InstanceType<typeof _Popover>;
-
+export type PopoverProps = PopoverInstance['$props'];
 export default Popover;

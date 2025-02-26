@@ -15,6 +15,7 @@ import IconSearch from '../../icon/icon-search';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
 import { SelectViewValue } from './interface';
+import { PopoverProps } from '../../popover';
 
 export default defineComponent({
   name: 'SelectView',
@@ -65,7 +66,13 @@ export default defineComponent({
       default: (props: Data) => isArray(props.modelValue),
     },
     maxTagCount: {
-      type: Number,
+      type: [Number, Object] as PropType<
+        | number
+        | {
+            count: number;
+            showPopover?: boolean | PopoverProps;
+          }
+      >,
       default: 0,
     },
     tagNowrap: {

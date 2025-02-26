@@ -124,6 +124,7 @@ import { Size } from '../_utils/constant';
 import { debounce } from '../_utils/debounce';
 import { useFormItem } from '../_hooks/use-form-item';
 import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import { PopoverProps } from '../popover';
 
 export default defineComponent({
   name: 'Cascader',
@@ -308,7 +309,13 @@ export default defineComponent({
      * @en In multi-select mode, the maximum number of labels displayed. 0 means unlimited
      */
     maxTagCount: {
-      type: Number,
+      type: [Number, Object] as PropType<
+        | number
+        | {
+            count: number;
+            showPopover?: boolean | PopoverProps;
+          }
+      >,
       default: 0,
     },
     /**
