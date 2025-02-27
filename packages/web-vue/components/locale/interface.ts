@@ -203,3 +203,20 @@ export interface ArcoLang {
 }
 
 export type ArcoI18nMessages = Record<string, ArcoLang>;
+
+type UnionToIntersection<U> = (U extends any ? (x: U) => any : never) extends (
+  x: infer R
+) => any
+  ? R
+  : never;
+type Flatten<T, Prefix extends string = ''> = UnionToIntersection<
+  {
+    [K in keyof T & string]: T[K] extends Record<string, string>
+      ? T[K] extends () => void | any[] | null
+        ? { [P in `${Prefix}${K}`]: T[K] }
+        : Flatten<T[K], `${Prefix}${K}.`>
+      : { [P in `${Prefix}${K}`]: T[K] };
+  }[keyof T & string]
+>;
+
+export type ArcoI18nKey = keyof Flatten<ArcoLang>;
