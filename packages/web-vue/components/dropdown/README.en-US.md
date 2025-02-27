@@ -38,6 +38,7 @@ description: When there are too many commands on the page, the alternative comma
 |trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'click'`||
 |position|Popup position|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br'`|`'bottom'`||
 |popup-container|Mount container for popup|`string \| HTMLElement`|`-`||
+|popup-max-height|Maximum height of the popup|`boolean\|number`|`true`|2.29.0|
 |hide-on-select|Whether to hide popup when the user selects|`boolean`|`true`|2.43.0|
 ### `<dropdown>` Events
 

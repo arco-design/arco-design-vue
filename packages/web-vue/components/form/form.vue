@@ -112,6 +112,7 @@ export default defineComponent({
     },
     /**
      * @zh 表单 `id` 属性和表单控件 `id` 前缀
+     * @en Form `id` attribute and form control `id` prefix
      */
     id: {
       type: String,

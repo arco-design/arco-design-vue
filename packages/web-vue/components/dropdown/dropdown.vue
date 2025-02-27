@@ -81,6 +81,11 @@ export default defineComponent({
     popupContainer: {
       type: [String, Object] as PropType<string | HTMLElement>,
     },
+    /**
+     * @zh 弹出框最大高度
+     * @en Maximum height of the popup
+     * @version 2.29.0
+     */
     popupMaxHeight: {
       type: [Boolean, Number],
       default: true,
