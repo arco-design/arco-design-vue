@@ -50,6 +50,7 @@ import { useFormItem } from '../_hooks/use-form-item';
 import { debounce } from '../_utils/debounce';
 import { SelectViewValue } from '../_components/select-view/interface';
 import { ScrollbarProps } from '../scrollbar';
+import { PopoverProps } from '../popover';
 
 const DEFAULT_FIELD_NAMES = {
   value: 'value',
@@ -190,7 +191,13 @@ export default defineComponent({
      * @en In multi-select mode, the maximum number of labels displayed. 0 means unlimited
      */
     maxTagCount: {
-      type: Number,
+      type: [Number, Object] as PropType<
+        | number
+        | {
+            count: number;
+            showPopover?: boolean | PopoverProps;
+          }
+      >,
       default: 0,
     },
     /**

@@ -44,6 +44,16 @@ can be set by `max-tag-count`.
       <a-option>Chengdu</a-option>
       <a-option>Wuhan</a-option>
     </a-select>
+    <a-select :default-value="['Beijing','Shanghai','Guangzhou']" :style="{width:'360px'}"
+              placeholder="Please select ..." multiple :max-tag-count="{count:2, showPopover:true}" allow-clear :scrollbar="scrollbar">
+      <a-option>Beijing</a-option>
+      <a-option>Shanghai</a-option>
+      <a-option>Guangzhou</a-option>
+      <a-option disabled>Disabled</a-option>
+      <a-option>Shenzhen</a-option>
+      <a-option>Chengdu</a-option>
+      <a-option>Wuhan</a-option>
+    </a-select>
     <a-select :default-value="['Beijing','Shanghai']" :style="{width:'360px'}" placeholder="Please select ..." multiple
               :limit="2" :scrollbar="scrollbar">
       <a-option>Beijing</a-option>
