@@ -111,7 +111,7 @@ export const OVERLAY_TYPES = [
   'drawer',
 ] as const;
 
-export const getOverlay = (type: typeof OVERLAY_TYPES[number]) => {
+export const getOverlay = (type: (typeof OVERLAY_TYPES)[number]) => {
   const popper = document.createElement('div');
   popper.setAttribute('class', `arco-overlay arco-overlay-${type}`);
   return popper;

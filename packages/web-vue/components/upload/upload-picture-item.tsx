@@ -60,15 +60,19 @@ export default defineComponent({
               </div>
             )}
             <div class={`${itemCls}-operation`}>
-              {props.file.status !== 'error' && uploadCtx?.showPreviewButton && (
-                <span
-                  class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-preview`]}
-                  onClick={() => uploadCtx?.onPreview(props.file)}
-                >
-                  {uploadCtx?.slots['preview-icon']?.() ??
-                    uploadCtx?.customIcon?.previewIcon?.() ?? <IconEye />}
-                </span>
-              )}
+              {props.file.status !== 'error' &&
+                uploadCtx?.showPreviewButton && (
+                  <span
+                    class={[
+                      uploadCtx?.iconCls,
+                      `${uploadCtx?.iconCls}-preview`,
+                    ]}
+                    onClick={() => uploadCtx?.onPreview(props.file)}
+                  >
+                    {uploadCtx?.slots['preview-icon']?.() ??
+                      uploadCtx?.customIcon?.previewIcon?.() ?? <IconEye />}
+                  </span>
+                )}
               {['init', 'error'].includes(props.file.status as string) &&
                 uploadCtx?.showRetryButton && (
                   <span

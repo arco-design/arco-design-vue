@@ -28,7 +28,7 @@ const TD_TYPES = [
   'radio',
   'expand',
 ] as const;
-type TdTypes = typeof TD_TYPES[number];
+type TdTypes = (typeof TD_TYPES)[number];
 
 export default defineComponent({
   name: 'Td',

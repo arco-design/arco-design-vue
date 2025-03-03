@@ -98,7 +98,7 @@ import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
 
 const DRAWER_PLACEMENTS = ['top', 'right', 'bottom', 'left'] as const;
-type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];
+type DrawerPlacements = (typeof DRAWER_PLACEMENTS)[number];
 
 export default defineComponent({
   name: 'Drawer',
