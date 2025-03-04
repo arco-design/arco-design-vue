@@ -58,16 +58,6 @@ Set the component to a view that reads from right to left.
           <a-tag :color="'green'" closable>green</a-tag>
         </a-space>
       </a-space>
-      <a-space style="margin-top: 20px;width: 100%;">
-        <a-date-picker />
-        <a-range-picker
-          showTime
-          :time-picker-props="{
-            defaultValue: ['00:00:00', '00:00:00']
-          }"
-          style="width: 380px;"
-        />
-      </a-space>
     </a-config-provider>
   </div>
 </template>
