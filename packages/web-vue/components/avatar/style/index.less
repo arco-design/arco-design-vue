@@ -115,6 +115,15 @@
     background-color: @avatar-color-trigger-button-bg_hover;
   }
 
+  &-rtl {
+    direction: rtl;
+  }
+
+  &-rtl &-trigger-icon-button {
+    right: unset;
+    left: -@avatar-spacing-trigger-button-right;
+  }
+
   // Group
   &-group {
     display: inline-block;
@@ -124,6 +133,10 @@
       color: @avatar-color-max-count-text;
       font-size: @avatar-font-size-max-count;
       cursor: default;
+    }
+
+    &-rtl {
+      direction: rtl;
     }
   }
 

@@ -7,6 +7,10 @@
   display: inline-block;
   line-height: 1;
 
+  &-rtl {
+    direction: rtl;
+  }
+
   &-number,
   &-dot,
   &-text,
@@ -21,6 +25,13 @@
     border-radius: @badge-size-count-height;
     transform: translate(50%, -50%);
     transform-origin: 100% 0%;
+  }
+
+  &-rtl &-number,
+  &-rtl &-dot,
+  &-rtl &-text,
+  &-rtl &-custom-dot {
+    right: unset;
   }
 
   &-custom-dot {
@@ -111,6 +122,11 @@
     color: @badge-color-status-text;
     font-size: @badge-font-status-text-size;
     line-height: @line-height-base;
+  }
+
+  &-rtl &-status-text {
+    margin-right: @badge-margin-status-text-left;
+    margin-left: 0;
   }
 
   &-number-text {

@@ -152,3 +152,20 @@
     }
   });
 }
+
+.@{tag-prefix-cls}-rtl {
+  direction: rtl;
+
+  .@{tag-prefix-cls} {
+    &-icon {
+      margin-right: 0;
+      margin-left: @tag-icon-margin-right;
+    }
+
+    &-close-btn,
+    &-loading-icon {
+      margin-right: 4px;
+      margin-left: 0;
+    }
+  }
+}

@@ -6,6 +6,8 @@
       cls,
       {
         [`${prefixCls}-with-trigger-icon`]: Boolean($slots['trigger-icon']),
+        // 添加根据 rtl 变量生成的类名
+        [`${prefixCls}-rtl`]: rtl,
       },
     ]"
     @click="onClick"
@@ -66,6 +68,7 @@ import { avatarGroupInjectionKey } from './context';
 import { isNumber } from '../_utils/is';
 import IconImageClose from '../icon/icon-image-close';
 import IconLoading from '../icon/icon-loading';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Avatar',
@@ -156,6 +159,10 @@ export default defineComponent({
       toRefs(props);
     const prefixCls = getPrefixCls('avatar');
     const groupCtx = inject(avatarGroupInjectionKey, undefined);
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => {
+      return configCtx?.rtl ?? false;
+    });
 
     const itemRef = ref<HTMLDivElement>();
     const wrapperRef = ref<HTMLElement>();
@@ -270,6 +277,7 @@ export default defineComponent({
 
     return {
       prefixCls,
+      rtl,
       itemRef,
       cls,
       outerStyle,

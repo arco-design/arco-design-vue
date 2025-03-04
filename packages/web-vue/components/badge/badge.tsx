@@ -5,8 +5,10 @@ import {
   CSSProperties,
   PropType,
   Slot,
+  inject,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export const COLORS = [
   'red',
@@ -23,7 +25,7 @@ export const COLORS = [
   'gray',
 ] as const;
 
-export type ColorType = typeof COLORS[number];
+export type ColorType = (typeof COLORS)[number];
 
 export const BADGE_STATUSES = [
   'normal',
@@ -32,7 +34,7 @@ export const BADGE_STATUSES = [
   'warning',
   'danger',
 ] as const;
-export type BadgeStatus = typeof BADGE_STATUSES[number];
+export type BadgeStatus = (typeof BADGE_STATUSES)[number];
 
 export default defineComponent({
   name: 'Badge',
@@ -104,10 +106,15 @@ export default defineComponent({
     const { status, color, dotStyle, offset, text, dot, maxCount, count } =
       toRefs(props);
     const prefixCls = getPrefixCls('badge');
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => {
+      return configCtx?.rtl ?? false;
+    });
     const wrapperClassName = useWrapperClass(
       prefixCls,
       status?.value,
-      slots?.default
+      slots?.default,
+      rtl
     );
 
     const computedStyleRef = computed(() => {
@@ -120,7 +127,8 @@ export default defineComponent({
         computedDotStyle.marginTop = `${topOffset}px`;
       }
       const computedColorStyle =
-        !color?.value || COLORS.includes(color?.value as typeof COLORS[number])
+        !color?.value ||
+        COLORS.includes(color?.value as (typeof COLORS)[number])
           ? {}
           : { backgroundColor: color.value };
       const mergedStyle = {
@@ -218,7 +226,8 @@ export default defineComponent({
 const useWrapperClass = (
   prefixCls: string,
   status?: BadgeStatus,
-  children?: Slot
+  children?: Slot,
+  rtl?: ReturnType<typeof computed>
 ) => {
   return computed(() => [
     prefixCls,
@@ -226,5 +235,6 @@ const useWrapperClass = (
       [`${prefixCls}-status`]: status,
       [`${prefixCls}-no-children`]: !children,
     },
+    rtl?.value ? `${prefixCls}-rtl` : '',
   ]);
 };

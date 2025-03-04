@@ -77,6 +77,14 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    /**
+     * @zh 视图的表现形式是从右开始向左结束。
+     * @en View starts from the right and ends on the left.
+     */
+    rtl: {
+      type: Boolean,
+      default: false,
+    },
   },
   /**
    * @zh 自定义空状态元素
@@ -99,6 +107,7 @@ export default defineComponent({
       updateAtScroll,
       scrollToClose,
       exchangeTime,
+      rtl,
     } = toRefs(props);
 
     const config = reactive({
@@ -109,6 +118,7 @@ export default defineComponent({
       updateAtScroll,
       scrollToClose,
       exchangeTime,
+      rtl,
     });
 
     if (props.global) {
