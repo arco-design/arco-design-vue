@@ -4,11 +4,11 @@ import {
   defineComponent,
   nextTick,
   onMounted,
-  onUnmounted,
   PropType,
   ref,
   toRefs,
   watch,
+  inject,
 } from 'vue';
 import { getTabListStyle, updateScrollOffset } from './utils';
 import { getPrefixCls } from '../_utils/global-config';
@@ -21,7 +21,7 @@ import IconHover from '../_components/icon-hover.vue';
 import IconPlus from '../icon/icon-plus';
 import ResizeObserver from '../_components/resize-observer';
 import { isUndefined, isNumber } from '../_utils/is';
-import { off, on } from '../_utils/dom';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'TabsNav',
@@ -79,6 +79,10 @@ export default defineComponent({
     const { tabs, activeKey, activeIndex, direction, scrollPosition } =
       toRefs(props);
     const prefixCls = getPrefixCls('tabs-nav');
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => {
+      return configCtx?.rtl ?? false;
+    });
 
     const wrapperRef = ref<HTMLElement>();
     const listRef = ref<HTMLElement>();
@@ -90,6 +94,22 @@ export default defineComponent({
       return undefined;
     });
     const inkRef = ref<ComponentPublicInstance>();
+    const tabKeys = computed(() => props.tabs.map((tab) => tab.key));
+
+    const isPreviousButtonDisabled = computed(() => {
+      if (rtl.value) {
+        return (
+          Math.abs(offset.value) >= maxOffset.value ||
+          activeIndex.value === tabKeys.value.length - 1
+        );
+      }
+      return offset.value <= 0;
+    });
+    const isNextButtonDisabled = computed(() => {
+      return rtl.value
+        ? Math.abs(offset.value) <= 0
+        : offset.value >= maxOffset.value;
+    });
 
     const mergedEditable = computed(
       () =>
@@ -142,10 +162,28 @@ export default defineComponent({
     };
 
     const setOffset = (newOffset: number) => {
-      if (!wrapperRef.value || !listRef.value || newOffset < 0) {
+      if (!wrapperRef.value || !listRef.value) {
         newOffset = 0;
+      } else if (rtl.value) {
+        newOffset = Math.min(0, Math.max(-maxOffset.value, newOffset));
+      } else {
+        newOffset = Math.max(0, Math.min(maxOffset.value, newOffset));
       }
-      offset.value = Math.min(newOffset, maxOffset.value);
+      offset.value = newOffset;
+    };
+
+    const checkInkVisibility = () => {
+      if (!activeTabRef.value || !wrapperRef.value) return;
+
+      const inkEl = activeTabRef.value;
+      const inkRect = inkEl.getBoundingClientRect();
+      const wrapperRect = wrapperRef.value!.getBoundingClientRect();
+
+      if (inkRect.left < wrapperRect.left) {
+        setOffset(offset.value - (wrapperRect.left - inkRect.left));
+      } else if (inkRect.right > wrapperRect.right) {
+        setOffset(offset.value + (inkRect.right - wrapperRect.right));
+      }
     };
 
     const setActiveTabOffset = () => {
@@ -172,7 +210,11 @@ export default defineComponent({
         : 'marginTop';
       const tabMargin = parseFloat(tabStyle[marginProperty]) || 0;
 
-      if (scrollPosition.value === 'auto') {
+      if (rtl.value) {
+        nextTick(() => {
+          checkInkVisibility();
+        });
+      } else if (scrollPosition.value === 'auto') {
         if (tabOffset < offset.value) {
           setOffset(tabOffset - tabMargin);
         } else if (tabOffset + tabSize > offset.value + wrapperSize) {
@@ -208,9 +250,6 @@ export default defineComponent({
 
     const handleDelete = (key: string | number, ev: Event) => {
       emit('delete', key, ev);
-      nextTick(() => {
-        delete tabsRef.value[key];
-      });
     };
 
     const handleButtonClick = (type: string) => {
@@ -241,17 +280,14 @@ export default defineComponent({
       }, 0);
     });
 
-    onMounted(() => {
-      getSize();
-      if (wrapperRef.value) {
-        on(wrapperRef.value, 'wheel', handleWheel, { passive: false });
-      }
+    watch(rtl, () => {
+      setTimeout(() => {
+        setActiveTabOffset();
+      }, 0);
     });
 
-    onUnmounted(() => {
-      if (wrapperRef.value) {
-        off(wrapperRef.value, 'wheel', handleWheel);
-      }
+    onMounted(() => {
+      getSize();
     });
 
     const renderAddBtn = () => {
@@ -309,15 +345,15 @@ export default defineComponent({
           <TabsButton
             type="previous"
             direction={props.direction}
-            disabled={offset.value <= 0}
+            disabled={isPreviousButtonDisabled.value}
             onClick={handleButtonClick}
           />
         )}
         <ResizeObserver onResize={() => getSize()}>
-          <div class={tabCls.value} ref={wrapperRef}>
+          <div class={tabCls.value} ref={wrapperRef} onWheel={handleWheel}>
             <ResizeObserver onResize={handleResize}>
               <div ref={listRef} class={listCls.value} style={listStyle.value}>
-                {props.tabs.map((tab, index) => (
+                {props.tabs.map((tab) => (
                   <TabsTab
                     key={tab.key}
                     ref={(component: any) => {
@@ -352,7 +388,7 @@ export default defineComponent({
           <TabsButton
             type="next"
             direction={props.direction}
-            disabled={offset.value >= maxOffset.value}
+            disabled={isNextButtonDisabled.value}
             onClick={handleButtonClick}
           />
         )}
