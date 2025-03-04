@@ -27,13 +27,14 @@
 
 <script lang="ts">
 import type { CSSProperties, PropType } from 'vue';
-import { computed, defineComponent, ref, toRefs } from 'vue';
+import { computed, defineComponent, ref, toRefs, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
 import IconLoading from '../icon/icon-loading';
 import { TAG_COLORS, TagColor } from './interface';
 import { useSize } from '../_hooks/use-size';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'Tag',
@@ -202,6 +203,8 @@ export default defineComponent({
       }
     };
 
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => configCtx?.rtl ?? false);
     const cls = computed(() => [
       prefixCls,
       `${prefixCls}-size-${mergedSize.value}`,
@@ -214,6 +217,7 @@ export default defineComponent({
         [`${prefixCls}-checked`]: computedChecked.value,
         [`${prefixCls}-custom-color`]: isCustomColor.value,
       },
+      rtl.value ? `${prefixCls}-rtl` : '',
     ]);
 
     const style = computed(() => {
