@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🆕 Feature
+
+- **input:** Added 'prepend' and 'append' attributes ([#3452](https://github.com/arco-design/arco-design-vue/pull/3452))
+- **drawer:** Add bodyClass and bodyStyle ([#3437](https://github.com/arco-design/arco-design-vue/pull/3437))
+
+### 🐛 BugFix
+
+- **form:** fix where form id attribute was consumed and could not be propagated ([#3450](https://github.com/arco-design/arco-design-vue/pull/3450))
+- **input:** Fix the preValue calculation error in the input component ([#3427](https://github.com/arco-design/arco-design-vue/pull/3427))
+- **tabs:** resolve `wheel` event listener passive warning ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+- **tabs:** optimize memory release during tab removal ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+- **descriptions:** fixes the issue related to the layout distribution of span ([#3409](https://github.com/arco-design/arco-design-vue/pull/3409))
+- **message:** Fixed an issue where message positioning would be affected by layout and would not be displayed ([#3406](https://github.com/arco-design/arco-design-vue/pull/3406))
+- **table:** Fix fixed column background style issue in dark mode ([#3398](https://github.com/arco-design/arco-design-vue/pull/3398))
+- **slider:** Fixed Drag change slider value not working on mobile side ([#3343](https://github.com/arco-design/arco-design-vue/pull/3343))
+
+### 💎 Enhancement
+
+- **modal:** fix re-throw error in onBeforeOk for proper error handling ([#3407](https://github.com/arco-design/arco-design-vue/pull/3407))
+- **drawer:** fix re-throw error in onBeforeOk for proper error handling ([#3407](https://github.com/arco-design/arco-design-vue/pull/3407))
+- **popconfirm:** fix re-throw error in onBeforeOk for proper error handling ([#3407](https://github.com/arco-design/arco-design-vue/pull/3407))
+
+
 ## 2.56.3
 
 `2024-10-25`

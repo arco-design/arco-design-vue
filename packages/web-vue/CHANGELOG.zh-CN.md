@@ -2,6 +2,33 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🆕 新增功能
+
+- **input:** 新增`prepend`、`append`属性 ([#3452](https://github.com/arco-design/arco-design-vue/pull/3452))
+- **drawer:** 增加 bodyClass 和 bodyStyle ([#3437](https://github.com/arco-design/arco-design-vue/pull/3437))
+
+### 🐛 问题修复
+
+- **form:** 修复表单 `id` 属性被消费无法透传问题 ([#3450](https://github.com/arco-design/arco-design-vue/pull/3450))
+- **input:** 修复 input 内 preValue 计算错误问题 ([#3427](https://github.com/arco-design/arco-design-vue/pull/3427))
+- **tabs:** 解决`wheel`事件监听器性能警告 ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+- **tabs:** 优化标签页动态增减时内存释放问题 ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+- **descriptions:** 修复 `span` 分配布局的错误使其更遵循用户配置 ([#3409](https://github.com/arco-design/arco-design-vue/pull/3409))
+- **message:** 修复 message 定位会受到布局影响，从而不显示的问题 ([#3406](https://github.com/arco-design/arco-design-vue/pull/3406))
+- **table:** 修复暗黑模式下固定列选中背景样式透明 ([#3398](https://github.com/arco-design/arco-design-vue/pull/3398))
+- **slider:** 修复拖动更改滑块值在移动端无效 ([#3343](https://github.com/arco-design/arco-design-vue/pull/3343))
+
+### 💎 功能优化
+
+- **modal:** 修复执行 onBeforeOk  时错误未传播的问题 ([#3407](https://github.com/arco-design/arco-design-vue/pull/3407))
+- **drawer:** 修复执行 onBeforeOk  时错误未传播的问题 ([#3407](https://github.com/arco-design/arco-design-vue/pull/3407))
+- **popconfirm:** 修复执行 onBeforeOk  时错误未传播的问题 ([#3407](https://github.com/arco-design/arco-design-vue/pull/3407))
+
+
 ## 2.56.3
 
 `2024-10-25`

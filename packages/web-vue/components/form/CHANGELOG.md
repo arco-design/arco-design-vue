@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🐛 BugFix
+
+- fix where form id attribute was consumed and could not be propagated ([#3450](https://github.com/arco-design/arco-design-vue/pull/3450))
+
+
 ## 2.54.0
 
 `2023-12-15`

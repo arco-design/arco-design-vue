@@ -3,8 +3,7 @@
 exports[`<trigger> demo: render [align-point] correctly 1`] = `
 "<div class=\\"demo-point-trigger\\">
   <div>Click Me</div>
-</div>
-<!---->"
+</div>"
 `;
 
 exports[`<trigger> demo: render [arrow] correctly 1`] = `
@@ -37,7 +36,7 @@ exports[`<trigger> demo: render [basic] correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Focus on me\\"><!----><!----></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Focus on me\\" value=\\"\\"><!----><!----></span>
     <!---->
   </div>
 </div>"
@@ -46,8 +45,7 @@ exports[`<trigger> demo: render [basic] correctly 1`] = `
 exports[`<trigger> demo: render [nest] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
-</button>
-<!---->"
+</button>"
 `;
 
 exports[`<trigger> demo: render [scroll] correctly 1`] = `
@@ -83,7 +81,4 @@ exports[`<trigger> demo: render [translate] correctly 1`] = `
 </div>"
 `;
 
-exports[`<trigger> demo: render [triggers] correctly 1`] = `
-"<span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Click/Hover/Focus on me\\"><!----><!----></span>
-<!---->"
-`;
+exports[`<trigger> demo: render [triggers] correctly 1`] = `"<span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Click/Hover/Focus on me\\" value=\\"\\"><!----><!----></span>"`;

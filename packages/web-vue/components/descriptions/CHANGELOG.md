@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🐛 BugFix
+
+- fixes the issue related to the layout distribution of span ([#3409](https://github.com/arco-design/arco-design-vue/pull/3409))
+
+
 ## 2.53.0
 
 `2023-11-03`

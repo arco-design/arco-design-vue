@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 💎 Enhancement
+
+- fix re-throw error in onBeforeOk for proper error handling ([#3407](https://github.com/arco-design/arco-design-vue/pull/3407))
+
+
 ## 2.54.6
 
 `2024-03-01`

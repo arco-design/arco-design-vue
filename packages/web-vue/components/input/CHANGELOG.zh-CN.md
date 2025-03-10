@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🆕 新增功能
+
+- 新增`prepend`、`append`属性 ([#3452](https://github.com/arco-design/arco-design-vue/pull/3452))
+
+### 🐛 问题修复
+
+- 修复 input 内 preValue 计算错误问题 ([#3427](https://github.com/arco-design/arco-design-vue/pull/3427))
+
+
 ## 2.55.3
 
 `2024-06-07`

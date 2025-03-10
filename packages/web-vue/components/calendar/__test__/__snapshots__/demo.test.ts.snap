@@ -14,7 +14,7 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
         <!--v-if-->今天
       </button>
     </div>
-    <div class=\\"arco-calendar-header-right\\"><span class=\\"arco-radio-group-button arco-radio-group-size-small arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"month\\"><span class=\\"arco-radio-button-content\\">月</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"year\\"><span class=\\"arco-radio-button-content\\">年</span></label></span></div>
+    <div class=\\"arco-calendar-header-right\\"><span class=\\"arco-radio-group-button arco-radio-group-size-small arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"month\\"><span class=\\"arco-radio-button-content\\">月</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"year\\"><span class=\\"arco-radio-button-content\\">年</span></label></span></div>
   </div>
   <div class=\\"arco-calendar-body\\">
     <div class=\\"arco-calendar-month\\">
@@ -339,5 +339,6 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
   </div>
   <!---->
   <!---->
-</div> select: Sun Jan 01 2023 08:00:00 GMT+0800 (China Standard Time)"
+</div>
+ select: Sun Jan 01 2023 08:00:00 GMT+0800 (China Standard Time)"
 `;

@@ -56,7 +56,7 @@ exports[`<comment> demo: render [editor] correctly 1`] = `
         <div class=\\"arco-comment-inner\\">
           <div class=\\"arco-comment-inner-content\\">
             <!--v-if-->
-            <div class=\\"arco-comment-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Here is you content.\\"><!----><!----></span></div>
+            <div class=\\"arco-comment-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Here is you content.\\" value=\\"\\"><!----><!----></span></div>
             <div class=\\"arco-comment-actions arco-comment-actions-align-right\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
                 <!--v-if--> Cancel
               </button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">

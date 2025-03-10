@@ -44,7 +44,7 @@ exports[`<back-top> demo: render [basic] correctly 1`] = `
     <li>This is the content</li>
     <li>This is the content</li>
   </ul>
-  <transition-stub style=\\"position: absolute;\\">
+  <transition-stub name=\\"fade-in\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" style=\\"position: absolute;\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -94,7 +94,7 @@ exports[`<back-top> demo: render [custom] correctly 1`] = `
     <li>This is the content</li>
     <li>This is the content</li>
   </ul>
-  <transition-stub style=\\"position: absolute;\\">
+  <transition-stub name=\\"fade-in\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" style=\\"position: absolute;\\">
     <!--v-if-->
   </transition-stub>
 </div>"

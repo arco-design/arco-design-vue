@@ -3,13 +3,13 @@
 exports[`<textarea> demo: render [auto-size] correctly 1`] = `
 "<div class=\\"arco-textarea-wrapper\\">
   <div class=\\"arco-textarea-mirror\\">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
-  </div><textarea class=\\"arco-textarea\\"></textarea>
+  </div><textarea class=\\"arco-textarea\\" value=\\"This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.\\"></textarea>
   <!--v-if-->
   <!--v-if-->
 </div>
 <div style=\\"margin-top: 20px;\\" class=\\"arco-textarea-wrapper\\">
   <div class=\\"arco-textarea-mirror\\">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
-  </div><textarea class=\\"arco-textarea\\"></textarea>
+  </div><textarea class=\\"arco-textarea\\" value=\\"This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.\\"></textarea>
   <!--v-if-->
   <!--v-if-->
 </div>"
@@ -17,7 +17,7 @@ exports[`<textarea> demo: render [auto-size] correctly 1`] = `
 
 exports[`<textarea> demo: render [basic] correctly 1`] = `
 "<div class=\\"arco-textarea-wrapper\\">
-  <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
+  <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\" value=\\"\\"></textarea>
   <!--v-if-->
   <!--v-if-->
 </div>"
@@ -28,7 +28,7 @@ exports[`<textarea> demo: render [status] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-textarea-wrapper arco-textarea-disabled\\">
-      <!--v-if--><textarea disabled=\\"\\" class=\\"arco-textarea\\" placeholder=\\"Disabled status\\"></textarea>
+      <!--v-if--><textarea disabled=\\"\\" class=\\"arco-textarea\\" placeholder=\\"Disabled status\\" value=\\"\\"></textarea>
       <!--v-if-->
       <!--v-if-->
     </div>
@@ -36,7 +36,7 @@ exports[`<textarea> demo: render [status] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-textarea-wrapper arco-textarea-error\\">
-      <!--v-if--><textarea aria-invalid=\\"true\\" class=\\"arco-textarea\\" placeholder=\\"Error status\\"></textarea>
+      <!--v-if--><textarea aria-invalid=\\"true\\" class=\\"arco-textarea\\" placeholder=\\"Error status\\" value=\\"\\"></textarea>
       <!--v-if-->
       <!--v-if-->
     </div>
@@ -49,7 +49,7 @@ exports[`<textarea> demo: render [word-limit] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-textarea-wrapper\\">
-      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
+      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\" value=\\"\\"></textarea>
       <div class=\\"arco-textarea-word-limit\\">0/10</div>
       <!--v-if-->
     </div>
@@ -57,7 +57,7 @@ exports[`<textarea> demo: render [word-limit] correctly 1`] = `
   <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-textarea-wrapper\\">
-      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\"></textarea>
+      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\" value=\\"\\"></textarea>
       <div class=\\"arco-textarea-word-limit\\">0/10</div>
       <!--v-if-->
     </div>

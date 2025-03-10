@@ -2,6 +2,19 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🆕 Feature
+
+- Added 'prepend' and 'append' attributes ([#3452](https://github.com/arco-design/arco-design-vue/pull/3452))
+
+### 🐛 BugFix
+
+- Fix the preValue calculation error in the input component ([#3427](https://github.com/arco-design/arco-design-vue/pull/3427))
+
+
 ## 2.55.3
 
 `2024-06-07`

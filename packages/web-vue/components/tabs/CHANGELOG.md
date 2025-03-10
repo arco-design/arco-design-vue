@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🐛 BugFix
+
+- resolve `wheel` event listener passive warning ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+- optimize memory release during tab removal ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+
+
 ## 2.55.0
 
 `2024-03-15`

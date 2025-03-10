@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Cascader should render panel (multiple) 1`] = `
-"<transition-group-stub>
+"<transition-group-stub tag=\\"div\\" name=\\"cascader-slide\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-cascader-panel arco-cascader-dropdown-panel\\">
   <div class=\\"arco-cascader-panel-column\\" style=\\"z-index: 2;\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">
@@ -32,7 +32,7 @@ exports[`Cascader should render panel (multiple) 1`] = `
 `;
 
 exports[`Cascader should render panel (multiple) 2`] = `
-"<transition-group-stub>
+"<transition-group-stub tag=\\"div\\" name=\\"cascader-slide\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-cascader-panel arco-cascader-dropdown-panel\\">
   <div class=\\"arco-cascader-panel-column\\" style=\\"z-index: 2;\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">
@@ -89,7 +89,7 @@ exports[`Cascader should render panel (multiple) 2`] = `
 `;
 
 exports[`Cascader should render panel 1`] = `
-"<transition-group-stub>
+"<transition-group-stub tag=\\"div\\" name=\\"cascader-slide\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-cascader-panel arco-cascader-dropdown-panel\\">
   <div class=\\"arco-cascader-panel-column\\" style=\\"z-index: 2;\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">
@@ -118,7 +118,7 @@ exports[`Cascader should render panel 1`] = `
 `;
 
 exports[`Cascader should render panel 2`] = `
-"<transition-group-stub>
+"<transition-group-stub tag=\\"div\\" name=\\"cascader-slide\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-cascader-panel arco-cascader-dropdown-panel\\">
   <div class=\\"arco-cascader-panel-column\\" style=\\"z-index: 2;\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-cascader-column-content\\">

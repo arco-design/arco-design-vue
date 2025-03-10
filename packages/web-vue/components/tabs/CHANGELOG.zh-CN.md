@@ -2,6 +2,16 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🐛 问题修复
+
+- 解决`wheel`事件监听器性能警告 ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+- 优化标签页动态增减时内存释放问题 ([#3413](https://github.com/arco-design/arco-design-vue/pull/3413))
+
+
 ## 2.55.0
 
 `2024-03-15`

@@ -49,16 +49,16 @@ describe('Table', () => {
     const handleChange = (data: number) => {
       current.value = data;
     };
-
+    const pagination = reactive({
+      current,
+      onChange: handleChange,
+      pageSize: 1,
+    });
     const wrapper = mount(Table as any, {
       props: {
         columns,
         data,
-        pagination: {
-          current,
-          onChange: handleChange,
-          pageSize: 1,
-        },
+        pagination,
       },
     });
     await nextTick();

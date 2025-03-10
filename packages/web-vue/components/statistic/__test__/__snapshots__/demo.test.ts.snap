@@ -7,7 +7,8 @@ exports[`<statistic> demo: render [animation] correctly 1`] = `
     <div class=\\"arco-statistic-value\\"><span class=\\"arco-statistic-prefix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-arrow-rise\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M23.992 6.01a.01.01 0 0 1 .016 0l9.978 11.974a.01.01 0 0 1-.007.016H14.02a.01.01 0 0 1-.007-.016l9.978-11.975Z\\"></path><path d=\\"m24 6 10 12H14L24 6Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M26 42h-4V16h4z\\"></path><path fill=\\"currentColor\\" stroke=\\"none\\" d=\\"M26 42h-4V16h4z\\"></path></svg></span><span class=\\"arco-statistic-value-integer\\">0</span><span class=\\"arco-statistic-value-decimal\\"> .00</span><span class=\\"arco-statistic-suffix\\">%</span></div>
     <!--v-if-->
   </div>
-</div><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+</div>
+<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Start
 </button>"
 `;

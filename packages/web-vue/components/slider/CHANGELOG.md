@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🐛 BugFix
+
+- Fixed Drag change slider value not working on mobile side ([#3343](https://github.com/arco-design/arco-design-vue/pull/3343))
+
+
 ## 2.44.2
 
 `2023-03-17`

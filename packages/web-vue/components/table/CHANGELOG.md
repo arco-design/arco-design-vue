@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.57.0
+
+`2025-03-10`
+
+### 🐛 BugFix
+
+- Fix fixed column background style issue in dark mode ([#3398](https://github.com/arco-design/arco-design-vue/pull/3398))
+
+
 ## 2.55.3
 
 `2024-06-07`

@@ -11,7 +11,9 @@ exports[`<progress> demo: render [basic] correctly 1`] = `
       <!--v-if-->
     </div>
   </div>
-</div><br><br>
+</div>
+<br>
+<br>
 <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-normal\\" style=\\"width: 50%;\\">
   <div role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"0.3\\" class=\\"arco-progress-line-wrapper\\">
     <div class=\\"arco-progress-line\\" style=\\"width: 100%; height: 4px;\\">
@@ -280,7 +282,7 @@ exports[`<progress> demo: render [mini] correctly 1`] = `
 exports[`<progress> demo: render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 50%;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></div>
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></div>
   <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
     <div class=\\"arco-progress arco-progress-type-line arco-progress-size-medium arco-progress-status-normal\\">
