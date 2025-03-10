@@ -10,7 +10,7 @@ const root = process.cwd();
 
 const base =
   process.env.AssetsPublicPath ||
-  'https://lf-cdn-tos.bytescm.com/obj/static/arcodesign/vue/';
+  'https://lf-arcosite.bytecdn.com/obj/arcosites/arcodesign/vue/';
 
 export default defineConfig({
   mode: 'production',
