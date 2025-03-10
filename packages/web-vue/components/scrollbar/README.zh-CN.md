@@ -22,7 +22,7 @@ description: 用于替换浏览器默认滚动条样式。
 
 |事件名|描述|参数|
 |---|---|---|
-|scroll|滚动时触发|-|
+|scroll|滚动时触发|ev: Event|
 ### `<scrollbar>` Methods
 
 |方法名|描述|参数|返回值|版本|
