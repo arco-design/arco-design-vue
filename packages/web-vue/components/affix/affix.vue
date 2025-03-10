@@ -3,7 +3,7 @@
     <div ref="wrapperRef">
       <div v-if="isFixed" :style="placeholderStyles" />
       <div :class="classNames" :style="fixedStyles">
-        <ResizeObserver @resize="updatePositionThrottle">
+        <ResizeObserver ref="contentRef" @resize="updatePositionThrottle">
           <slot />
         </ResizeObserver>
       </div>
@@ -12,8 +12,11 @@
 </template>
 
 <script lang="ts">
-import type { CSSProperties, PropType, Ref } from 'vue';
 import {
+  CSSProperties,
+  PropType,
+  Ref,
+  ComponentPublicInstance,
   defineComponent,
   toRefs,
   ref,
@@ -24,7 +27,7 @@ import {
 import ResizeObserver from '../_components/resize-observer';
 import { getPrefixCls } from '../_utils/global-config';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
-import { isWindow, isUndefined } from '../_utils/is';
+import { isWindow, isUndefined, isComponentInstance } from '../_utils/is';
 import { on, off, getElement } from '../_utils/dom';
 
 function getTargetRect(target: HTMLElement | Window) {
@@ -88,24 +91,31 @@ export default defineComponent({
     const prefixCls = getPrefixCls('affix');
     const { target, targetContainer } = toRefs(props);
     const wrapperRef = ref<HTMLElement>();
+    const contentRef = ref<HTMLElement | ComponentPublicInstance>();
     const targetRef = ref<HTMLElement | Window>();
     const isFixed = ref(false);
     const placeholderStyles: Ref<CSSProperties> = ref({});
     const fixedStyles: Ref<CSSProperties> = ref({});
     const classNames = computed(() => ({ [prefixCls]: isFixed.value }));
 
+    const element = computed<HTMLElement>(() =>
+      isComponentInstance(contentRef.value)
+        ? contentRef.value.$el
+        : contentRef.value
+    );
+
     const updatePositionThrottle = throttleByRaf(() => {
       if (!wrapperRef.value || !targetRef.value) return;
-
       const { offsetTop, offsetBottom } = props;
       const offsetType = isUndefined(offsetBottom) ? 'top' : 'bottom';
       const wrapperRect = wrapperRef.value.getBoundingClientRect();
       const targetRect = getTargetRect(targetRef.value);
       let newIsFixed = false;
       let newFixedStyles = {};
+
       const newPlaceholderStyles: CSSProperties = {
-        width: `${wrapperRef.value.offsetWidth}px`,
-        height: `${wrapperRef.value.offsetHeight}px`,
+        width: `${element.value.offsetWidth}px`,
+        height: `${element.value.offsetHeight}px`,
       };
 
       if (offsetType === 'top') {
@@ -139,7 +149,6 @@ export default defineComponent({
       // update fixedStyles
       fixedStyles.value = {
         ...newFixedStyles,
-        ...(newIsFixed ? newPlaceholderStyles : {}),
       };
     });
 
@@ -153,7 +162,6 @@ export default defineComponent({
           window;
 
         targetRef.value = element;
-
         if (element) {
           on(element, 'scroll', updatePositionThrottle);
           on(element, 'resize', updatePositionThrottle);
@@ -189,6 +197,7 @@ export default defineComponent({
 
     return {
       wrapperRef,
+      contentRef,
       isFixed,
       classNames,
       placeholderStyles,
