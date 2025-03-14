@@ -150,3 +150,7 @@ export interface UploadRequest extends Record<string, unknown> {
    * */
   abort?: () => void;
 }
+
+export interface ShowUploadButtonOption {
+  showOnExceedLimit?: boolean;
+}
