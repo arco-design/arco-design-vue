@@ -27,6 +27,7 @@ description: Configure in the outermost layer of the application, set once, and 
 |global|Is global effect|`boolean`|`false`|2.25.0|
 |scroll-to-close|Whether to close the popover when scrolling|`boolean`|`false`|2.46.0|
 |exchange-time|Whether to exchange time|`boolean`|`true`|2.48.0|
+|rtl|View starts from the right and ends on the left|`boolean`|`false`||
 ### `<config-provider>` Slots
 
 |Slot Name|Description|Parameters|version|

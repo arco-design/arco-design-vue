@@ -13,11 +13,9 @@ import {
   ref,
   toRefs,
   watch,
-  inject,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { Direction } from '../_utils/constant';
-import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'TabsNavInk',
@@ -36,10 +34,6 @@ export default defineComponent({
     const prefixCls = getPrefixCls('tabs-nav-ink');
     const position = ref(0);
     const size = ref(0);
-    const configCtx = inject(configProviderInjectionKey, undefined);
-    const rtl = computed(() => {
-      return configCtx?.rtl ?? false;
-    });
 
     const style = computed<CSSProperties>(() => {
       if (props.direction === 'vertical') {
@@ -77,10 +71,6 @@ export default defineComponent({
 
     onUpdated(() => {
       getInkStyle();
-    });
-
-    watch(rtl, () => {
-      nextTick(() => getInkStyle());
     });
 
     const cls = computed(() => [

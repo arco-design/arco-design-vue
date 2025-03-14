@@ -80,9 +80,7 @@ const AvatarGroup = defineComponent({
     const { shape, size, autoFixFontSize, zIndexAscend } = toRefs(props);
     const prefixCls = getPrefixCls('avatar-group');
     const configCtx = inject(configProviderInjectionKey, undefined);
-    const rtl = computed(() => {
-      return configCtx?.rtl ?? false;
-    });
+    const rtl = computed(() => configCtx?.rtl ?? false);
 
     const total = ref(0);
 

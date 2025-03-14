@@ -98,7 +98,7 @@ import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
 
 const DRAWER_PLACEMENTS = ['top', 'right', 'bottom', 'left'] as const;
-type DrawerPlacements = typeof DRAWER_PLACEMENTS[number];
+type DrawerPlacements = (typeof DRAWER_PLACEMENTS)[number];
 
 export default defineComponent({
   name: 'Drawer',
@@ -240,6 +240,7 @@ export default defineComponent({
     /**
      * @zh 抽屉内容部分的类名
      * @en The classname of the drawer body
+     * @version 2.57.0
      */
     bodyClass: {
       type: [String, Array] as PropType<string | any[]>,
@@ -247,6 +248,7 @@ export default defineComponent({
     /**
      * @zh 抽屉内容部分的样式
      * @en Drawer body style
+     * @version 2.57.0
      */
     bodyStyle: {
       type: [String, Object, Array] as PropType<StyleValue>,

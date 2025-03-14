@@ -160,9 +160,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('avatar');
     const groupCtx = inject(avatarGroupInjectionKey, undefined);
     const configCtx = inject(configProviderInjectionKey, undefined);
-    const rtl = computed(() => {
-      return configCtx?.rtl ?? false;
-    });
+    const rtl = computed(() => configCtx?.rtl ?? false);
 
     const itemRef = ref<HTMLDivElement>();
     const wrapperRef = ref<HTMLElement>();

@@ -125,11 +125,13 @@ export default defineComponent({
     /**
      * @zh 前置标签
      * @en Prepend
+     * @version 2.57.0
      */
     prepend: String,
     /**
      * @zh 后置标签
      * @en Append
+     * @version 2.57.0
      */
     append: String,
   },

@@ -48,7 +48,7 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
   <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 32px;\\">
-    <div class=\\"arco-avatar-group\\">
+    <div class=\\"arco-avatar-group \\">
       <div style=\\"z-index: 6; margin-left: -10px; background-color: rgb(123, 198, 22);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">A</span>
         <!--v-if-->
       </div>
@@ -69,7 +69,7 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
   </div>
   <!---->
   <div class=\\"arco-space-item\\" style=\\"margin-right: 32px;\\">
-    <div class=\\"arco-avatar-group\\">
+    <div class=\\"arco-avatar-group \\">
       <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 6; margin-left: -6px; background-color: rgb(123, 198, 22);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">A</span>
         <!--v-if-->
       </div>
@@ -90,7 +90,7 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
   </div>
   <!---->
   <div class=\\"arco-space-item\\">
-    <div class=\\"arco-avatar-group\\">
+    <div class=\\"arco-avatar-group \\">
       <div style=\\"width: 24px; height: 24px; font-size: 12px; z-index: 6; margin-left: -6px; background-color: rgb(123, 198, 22);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">A</span>
         <!--v-if-->
       </div>

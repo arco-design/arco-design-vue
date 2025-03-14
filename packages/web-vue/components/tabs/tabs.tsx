@@ -301,12 +301,6 @@ export default defineComponent({
     const configCtx = inject(configProviderInjectionKey, undefined);
     const rtl = computed(() => configCtx?.rtl ?? false);
 
-    onMounted(() => {
-      nextTick(() => {
-        handleClick(Number(computedActiveKey.value), new MouseEvent('init'));
-      });
-    });
-
     const renderContent = () => {
       return (
         <div
@@ -324,10 +318,11 @@ export default defineComponent({
                 [`${prefixCls}-content-animation`]: props.animation,
               },
             ]}
-            style={{
-              marginLeft: rtl.value ? 'auto' : `-${activeIndex.value * 100}%`,
-              marginRight: rtl.value ? `-${activeIndex.value * 100}%` : 'auto',
-            }}
+            style={
+              rtl.value
+                ? { marginRight: `-${activeIndex.value * 100}%` }
+                : { marginLeft: `-${activeIndex.value * 100}%` }
+            }
           >
             {children.value}
           </div>
@@ -343,8 +338,8 @@ export default defineComponent({
       `${prefixCls}-size-${mergedSize.value}`,
       {
         [`${prefixCls}-justify`]: props.justify,
+        [`${prefixCls}-rtl`]: rtl.value,
       },
-      rtl.value ? `${prefixCls}-rtl` : '',
     ]);
 
     return () => {
