@@ -169,3 +169,171 @@ exports[`<config-provider> demo: render [empty] correctly 1`] = `
   </div>
 </div>"
 `;
+
+exports[`<config-provider> demo: render [rtl] correctly 1`] = `
+"<div><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\" style=\\"margin-bottom: 20px;\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  --><span class=\\"arco-switch-text-holder\\"> RTL </span><span class=\\"arco-switch-text\\"> RTL </span></button>
+  <div class=\\"arco-tabs arco-tabs-horizontal arco-tabs-top arco-tabs-type-line arco-tabs-size-medium arco-tabs-rtl\\" style=\\"margin-bottom: 20px;\\">
+    <!---->
+    <div class=\\"arco-tabs-nav arco-tabs-nav-horizontal arco-tabs-nav-top arco-tabs-nav-size-medium arco-tabs-nav-type-line\\">
+      <!---->
+      <div class=\\"arco-tabs-nav-tab\\">
+        <div class=\\"arco-tabs-nav-tab-list\\" style=\\"transform: translateX(0px);\\">
+          <!---->
+        </div>
+        <!---->
+      </div>
+      <!---->
+      <div class=\\"arco-tabs-nav-extra\\">
+        <!---->
+        <!---->
+      </div>
+    </div>
+    <div class=\\"arco-tabs-content\\">
+      <div class=\\"arco-tabs-content-list\\" style=\\"margin-right: -0%;\\">
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 2</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 3</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 4</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 5</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 6</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 7</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 8</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 9</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 10</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 11</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 12</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 13</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 14</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 15</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 16</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 17</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 18</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 19</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 20</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 21</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 22</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 23</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 24</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 25</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 26</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 27</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 28</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 29</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 30</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 31</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 32</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 33</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 34</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 35</div>
+        </div>
+        <div class=\\"arco-tabs-content-item\\">
+          <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 36</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"arco-space arco-space-vertical arco-space-rtl\\" style=\\"width: 100%;\\">
+    <!---->
+    <div class=\\"arco-space-item\\">
+      <div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-rtl\\">
+        <!---->
+        <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
+          <!--v-if-->
+        </div><span class=\\"arco-badge-number\\"><span>9</span></span></span>
+      </div>
+      <!---->
+      <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
+        <!--v-if-->
+      </div><span class=\\"arco-badge-dot\\" style=\\"width: 10px; height: 10px;\\"></span></span>
+    </div>
+    <!---->
+    <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
+      <!--v-if-->
+    </div><span class=\\"arco-badge-custom-dot\\" style=\\"height: 16px; width: 16px; font-size: 14px;\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-clock-circle\\" style=\\"vertical-align: middle;\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 14v10h9.5m8.5 0c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z\\"></path></svg></span></span>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-red arco-tag-checked arco-tag-rtl\\"><!--v-if-->red<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
+    <!--v-if--></span>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-blue arco-tag-checked arco-tag-rtl\\"><!--v-if-->blue<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
+    <!--v-if--></span>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-green arco-tag-checked arco-tag-rtl\\"><!--v-if-->green<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
+    <!--v-if--></span>
+  </div>
+</div>
+</div>
+</div>
+</div>"
+`;

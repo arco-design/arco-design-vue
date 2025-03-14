@@ -78,8 +78,8 @@ export default defineComponent({
       default: true,
     },
     /**
-     * @zh 视图的表现形式是从右开始向左结束。
-     * @en View starts from the right and ends on the left.
+     * @zh 视图的表现形式是从右开始向左结束
+     * @en View starts from the right and ends on the left
      */
     rtl: {
       type: Boolean,

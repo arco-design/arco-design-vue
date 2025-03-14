@@ -67,9 +67,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('space');
     const configCtx = inject(configProviderInjectionKey, undefined);
-    const rtl = computed(() => {
-      return configCtx?.rtl ?? false;
-    });
+    const rtl = computed(() => configCtx?.rtl ?? false);
 
     const mergedAlign = computed(
       () => props.align ?? (props.direction === 'horizontal' ? 'center' : '')
@@ -84,7 +82,6 @@ export default defineComponent({
         [`${prefixCls}-fill`]: props.fill,
         [`${prefixCls}-rtl`]: rtl.value,
       },
-      rtl.value ? `${prefixCls}-rtl` : '',
     ]);
 
     function getMargin(size: SpaceSize) {
@@ -108,14 +105,11 @@ export default defineComponent({
     const getMarginStyle = (isLast: boolean): CSSProperties => {
       const style: CSSProperties = {};
 
-      const marginRight = `${getMargin(
+      const marginSize = `${getMargin(
         isArray(props.size) ? props.size[0] : props.size
       )}px`;
       const marginBottom = `${getMargin(
         isArray(props.size) ? props.size[1] : props.size
-      )}px`;
-      const marginLeft = `${getMargin(
-        isArray(props.size) ? props.size[0] : props.size
       )}px`;
 
       if (isLast) {
@@ -124,9 +118,9 @@ export default defineComponent({
 
       if (props.direction === 'horizontal') {
         if (rtl.value) {
-          style.marginLeft = marginLeft;
+          style.marginLeft = marginSize;
         } else {
-          style.marginRight = marginRight;
+          style.marginRight = marginSize;
         }
       }
       if (props.direction === 'vertical' || props.wrap) {

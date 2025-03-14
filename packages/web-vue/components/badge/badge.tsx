@@ -6,6 +6,7 @@ import {
   PropType,
   Slot,
   inject,
+  ComputedRef,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { configProviderInjectionKey } from '../config-provider/context';
@@ -107,15 +108,15 @@ export default defineComponent({
       toRefs(props);
     const prefixCls = getPrefixCls('badge');
     const configCtx = inject(configProviderInjectionKey, undefined);
-    const rtl = computed(() => {
-      return configCtx?.rtl ?? false;
-    });
-    const wrapperClassName = useWrapperClass(
+    const rtl = computed(() => configCtx?.rtl ?? false);
+    const wrapperClassName = computed(() => [
       prefixCls,
-      status?.value,
-      slots?.default,
-      rtl
-    );
+      {
+        [`${prefixCls}-status`]: status?.value,
+        [`${prefixCls}-no-children`]: !slots?.default,
+        [`${prefixCls}-rtl`]: rtl.value,
+      },
+    ]);
 
     const computedStyleRef = computed(() => {
       const computedDotStyle = { ...(dotStyle?.value || {}) };
@@ -222,19 +223,3 @@ export default defineComponent({
     };
   },
 });
-
-const useWrapperClass = (
-  prefixCls: string,
-  status?: BadgeStatus,
-  children?: Slot,
-  rtl?: ReturnType<typeof computed>
-) => {
-  return computed(() => [
-    prefixCls,
-    {
-      [`${prefixCls}-status`]: status,
-      [`${prefixCls}-no-children`]: !children,
-    },
-    rtl?.value ? `${prefixCls}-rtl` : '',
-  ]);
-};

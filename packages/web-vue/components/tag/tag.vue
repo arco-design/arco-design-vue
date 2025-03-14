@@ -216,8 +216,8 @@ export default defineComponent({
         [`${prefixCls}-checkable`]: props.checkable,
         [`${prefixCls}-checked`]: computedChecked.value,
         [`${prefixCls}-custom-color`]: isCustomColor.value,
+        [`${prefixCls}-rtl`]: rtl.value,
       },
-      rtl.value ? `${prefixCls}-rtl` : '',
     ]);
 
     const style = computed(() => {
