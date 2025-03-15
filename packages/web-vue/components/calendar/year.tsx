@@ -100,7 +100,7 @@ export default defineComponent({
       <div class={`${prefixCls}-year`}>
         {mg.map((row, rowIndex) => (
           <div class={`${prefixCls}-year-row`} key={rowIndex}>
-            {row.map((col) => {
+            {row.map((col: any) => {
               const time = dayjs(
                 `${showYear.value}-${padStart(col.value + 1, 2, '0')}-01`
               );

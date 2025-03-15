@@ -10,10 +10,6 @@ import { isArray } from '../_utils/is';
 import { getPrefixCls } from '../_utils/global-config';
 import { useI18n } from '../locale';
 
-function getPopupContainer(node: HTMLElement): Element {
-  return node.parentElement;
-}
-
 export default defineComponent({
   name: 'Header',
   props: {
@@ -56,7 +52,7 @@ export default defineComponent({
       required: true,
     },
     onModeChange: {
-      type: Function,
+      type: Function as PropType<(value: any, ev: Event) => void>,
       required: true,
     },
     headerValueFormat: {
@@ -110,19 +106,19 @@ export default defineComponent({
               <Select
                 size="small"
                 class={`${prefixCls}-header-value-year`}
-                value={pageShowDateYear}
+                defaultValue={pageShowDateYear.value}
                 options={optionsYear.value}
                 onChange={props.onYearChange}
-                getPopupContainer={getPopupContainer}
+                popupContainer={`${prefixCls}-header`}
               />
               {props.mode === 'month' && (
                 <Select
                   size="small"
                   class={`${prefixCls}-header-value-month`}
-                  value={pageShowDateMonth}
+                  defaultValue={pageShowDateMonth.value}
                   options={optionsMonth}
                   onChange={props.onMonthChange}
-                  getPopupContainer={getPopupContainer}
+                  popupContainer={`${prefixCls}-header`}
                 />
               )}
             </>
@@ -131,7 +127,7 @@ export default defineComponent({
               <div
                 class={`${prefixCls}-header-icon`}
                 role="button"
-                tabIndex={0}
+                tabindex={0}
                 onClick={() => props.changePageShowDate('prev', props.mode)}
               >
                 <IconLeft />
@@ -146,7 +142,7 @@ export default defineComponent({
               </div>
               <div
                 role="button"
-                tabIndex={0}
+                tabindex={0}
                 class={`${prefixCls}-header-icon`}
                 onClick={() => props.changePageShowDate('next', props.mode)}
               >

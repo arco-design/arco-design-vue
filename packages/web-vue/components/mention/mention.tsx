@@ -271,7 +271,10 @@ export default defineComponent({
       const nextValue = `${head}${match}${tail}`;
 
       _value.value = nextValue;
-      emit('select', value);
+      emit(
+        'select',
+        value as string | number | Record<string, any> | undefined
+      );
       emit('update:modelValue', nextValue);
       emit('change', nextValue);
       resetMeasureInfo();
@@ -384,27 +387,28 @@ export default defineComponent({
                 onKeydown={handleKeyDown}
               />
             </ResizeObserver>
-            {measureInfo.value.measuring && validOptionInfos.value.length > 0 && (
-              <div
-                ref={mirrorRef}
-                style={mirrorStyle.value}
-                class={`${prefixCls}-measure`}
-              >
-                {computedValue.value?.slice(0, measureInfo.value.location)}
-                <Trigger
-                  v-slots={{ content: renderDropdown }}
-                  trigger="focus"
-                  position="bl"
-                  popupOffset={4}
-                  preventFocus={true}
-                  popupVisible={computedPopupVisible.value}
-                  clickToClose={false}
-                  onPopupVisibleChange={handlePopupVisibleChange}
+            {measureInfo.value.measuring &&
+              validOptionInfos.value.length > 0 && (
+                <div
+                  ref={mirrorRef}
+                  style={mirrorStyle.value}
+                  class={`${prefixCls}-measure`}
                 >
-                  <span>@</span>
-                </Trigger>
-              </div>
-            )}
+                  {computedValue.value?.slice(0, measureInfo.value.location)}
+                  <Trigger
+                    v-slots={{ content: renderDropdown }}
+                    trigger="focus"
+                    position="bl"
+                    popupOffset={4}
+                    preventFocus={true}
+                    popupVisible={computedPopupVisible.value}
+                    clickToClose={false}
+                    onPopupVisibleChange={handlePopupVisibleChange}
+                  >
+                    <span>@</span>
+                  </Trigger>
+                </div>
+              )}
           </div>
         );
       }
