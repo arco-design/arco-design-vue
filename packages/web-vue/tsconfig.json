@@ -9,6 +9,23 @@
     "allowJs": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "jsx": "preserve"
-  }
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+  },
+  "include": [
+    "components/**/*",
+    "icon/**/*",
+    "*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "lib",
+    "es",
+    "json",
+    "**/__tests__/**/*"
+  ]
 }

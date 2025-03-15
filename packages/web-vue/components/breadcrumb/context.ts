@@ -3,7 +3,7 @@ import { InjectionKey, Slots } from 'vue';
 export interface BreadcrumbContext {
   total: number;
   maxCount: number;
-  separator: string | number;
+  separator?: string | number;
   needHide: boolean;
   slots: Slots;
 }

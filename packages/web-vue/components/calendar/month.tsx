@@ -59,7 +59,7 @@ export function getAllDaysByTime(
   }
   const rows = Array(6)
     .fill(null)
-    .map(() => []);
+    .map(() => [] as any[]);
   for (let i = 0; i < 6; i++) {
     rows[i] = flatRows.slice(i * 7, 7 * (i + 1));
     if (isWeek) {
@@ -177,7 +177,7 @@ export default defineComponent({
           const selectedWeek =
             props.value &&
             col.weekRows.find(
-              (r) => r.year === rowYear && r.month === rowMonth
+              (r: any) => r.year === rowYear && r.month === rowMonth
             ) &&
             rowWeek === col.weekOfYear;
           return (
@@ -238,7 +238,7 @@ export default defineComponent({
                 },
               ]}
             >
-              {renderDays(row)}
+              {renderDays(row as any[])}
             </div>
           ))}
         </div>
