@@ -7,7 +7,7 @@ import {
   Fragment,
   inject,
 } from 'vue';
-import { isArray, isNumber } from '../_utils/is';
+import { isNumber } from '../_utils/is';
 import { getAllElements } from '../_utils/vue-utils';
 import { getPrefixCls } from '../_utils/global-config';
 import { configProviderInjectionKey } from '../config-provider/context';
@@ -102,31 +102,25 @@ export default defineComponent({
       }
     }
 
-    const getMarginStyle = (isLast: boolean): CSSProperties => {
+    const getSpaceStyle = (): CSSProperties => {
       const style: CSSProperties = {};
 
-      const marginSize = `${getMargin(
-        isArray(props.size) ? props.size[0] : props.size
-      )}px`;
-      const marginBottom = `${getMargin(
-        isArray(props.size) ? props.size[1] : props.size
-      )}px`;
-
-      if (isLast) {
-        return props.wrap ? { marginBottom } : {};
+      if (Array.isArray(props.size)) {
+        const [colGap, rowGap] = props.size.map(getMargin);
+        style.gap = props.wrap ? `${rowGap}px ${colGap}px` : `0 ${colGap}px`;
+        style.marginBottom = props.wrap ? `${rowGap}px` : undefined;
+        return style;
       }
 
-      if (props.direction === 'horizontal') {
-        if (rtl.value) {
-          style.marginLeft = marginSize;
-        } else {
-          style.marginRight = marginSize;
-        }
-      }
-      if (props.direction === 'vertical' || props.wrap) {
-        style.marginBottom = marginBottom;
+      const size = getMargin(props.size);
+      if (props.wrap) {
+        style.gap = `${size}px`;
+        style.marginBottom = `${size}px`;
+        return style;
       }
 
+      style.gap =
+        props.direction === 'horizontal' ? `0 ${size}px` : `${size}px 0`;
       return style;
     };
 
@@ -136,25 +130,15 @@ export default defineComponent({
       );
 
       return (
-        <div class={cls.value}>
+        <div class={cls.value} style={getSpaceStyle()}>
           {children.map((child, index) => {
             const shouldRenderSplit = slots.split && index > 0;
             return (
               <Fragment key={child.key ?? `item-${index}`}>
                 {shouldRenderSplit && (
-                  <div
-                    class={`${prefixCls}-item-split`}
-                    style={getMarginStyle(false)}
-                  >
-                    {slots.split?.()}
-                  </div>
+                  <div class={`${prefixCls}-item-split`}>{slots.split?.()}</div>
                 )}
-                <div
-                  class={`${prefixCls}-item`}
-                  style={getMarginStyle(index === children.length - 1)}
-                >
-                  {child}
-                </div>
+                <div class={`${prefixCls}-item`}>{child}</div>
               </Fragment>
             );
           })}
