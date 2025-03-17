@@ -108,14 +108,12 @@ export default defineComponent({
       if (Array.isArray(props.size)) {
         const [colGap, rowGap] = props.size.map(getMargin);
         style.gap = props.wrap ? `${rowGap}px ${colGap}px` : `0 ${colGap}px`;
-        style.marginBottom = props.wrap ? `${rowGap}px` : undefined;
         return style;
       }
 
       const size = getMargin(props.size);
       if (props.wrap) {
         style.gap = `${size}px`;
-        style.marginBottom = `${size}px`;
         return style;
       }
 
