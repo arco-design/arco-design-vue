@@ -17,7 +17,7 @@
   >
     <slot />
     <template #content>
-      <div :class="`${prefixCls}-title`">
+      <div v-if="title || $slots.title" :class="`${prefixCls}-title`">
         <slot name="title">{{ title }}</slot>
       </div>
       <div :class="`${prefixCls}-content`">
@@ -143,7 +143,6 @@ export default defineComponent({
    */
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('popover');
-
     const _popupVisible = ref(props.defaultPopupVisible);
     const computedPopupVisible = computed(
       () => props.popupVisible ?? _popupVisible.value
