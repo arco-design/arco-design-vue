@@ -7,7 +7,7 @@ import {
   Fragment,
   inject,
 } from 'vue';
-import { isNumber } from '../_utils/is';
+import { isArray, isNumber } from '../_utils/is';
 import { getAllElements } from '../_utils/vue-utils';
 import { getPrefixCls } from '../_utils/global-config';
 import { configProviderInjectionKey } from '../config-provider/context';
@@ -84,7 +84,7 @@ export default defineComponent({
       },
     ]);
 
-    function getMargin(size: SpaceSize) {
+    function getSize(size: SpaceSize) {
       if (isNumber(size)) {
         return size;
       }
@@ -102,25 +102,17 @@ export default defineComponent({
       }
     }
 
-    const getSpaceStyle = (): CSSProperties => {
+    const getSpaceStyle = computed(() => {
       const style: CSSProperties = {};
+      const sizeArray = isArray(props.size)
+        ? props.size
+        : [props.size, props.size];
+      const [colGap, rowGap] = sizeArray.map(getSize);
 
-      if (Array.isArray(props.size)) {
-        const [colGap, rowGap] = props.size.map(getMargin);
-        style.gap = props.wrap ? `${rowGap}px ${colGap}px` : `0 ${colGap}px`;
-        return style;
-      }
-
-      const size = getMargin(props.size);
-      if (props.wrap) {
-        style.gap = `${size}px`;
-        return style;
-      }
-
-      style.gap =
-        props.direction === 'horizontal' ? `0 ${size}px` : `${size}px 0`;
+      style.columnGap = `${colGap}px`;
+      style.rowGap = `${rowGap}px`;
       return style;
-    };
+    });
 
     return () => {
       const children = getAllElements(slots.default?.(), true).filter(
@@ -128,7 +120,7 @@ export default defineComponent({
       );
 
       return (
-        <div class={cls.value} style={getSpaceStyle()}>
+        <div class={cls.value} style={getSpaceStyle.value}>
           {children.map((child, index) => {
             const shouldRenderSplit = slots.split && index > 0;
             return (
