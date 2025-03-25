@@ -12,7 +12,6 @@ import {
   onUpdated,
   ref,
   toRefs,
-  watch,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { Direction } from '../_utils/constant';
@@ -29,7 +28,7 @@ export default defineComponent({
     disabled: Boolean,
     animation: Boolean,
   },
-  setup(props) {
+  setup(props, { expose }) {
     const { activeTabRef } = toRefs(props);
     const prefixCls = getPrefixCls('tabs-nav-ink');
     const position = ref(0);
@@ -80,6 +79,10 @@ export default defineComponent({
         [`${prefixCls}-disabled`]: props.disabled,
       },
     ]);
+
+    expose({
+      getInkStyle,
+    });
 
     return {
       prefixCls,

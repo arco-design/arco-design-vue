@@ -28,7 +28,7 @@ Set the component to a view that reads from right to left.
       </template>
     </a-switch>
     <a-config-provider :rtl="rtlType">
-      <a-tabs default-active-key="2" style="margin-bottom: 20px;">
+      <a-tabs :default-active-key="2" style="margin-bottom: 20px;">
         <a-tab-pane
           v-for="i in 36"
           :key="i"

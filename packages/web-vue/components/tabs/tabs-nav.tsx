@@ -25,6 +25,10 @@ import { isUndefined, isNumber } from '../_utils/is';
 import { off, on } from '../_utils/dom';
 import { configProviderInjectionKey } from '../config-provider/context';
 
+interface TabsNavInkInstance {
+  getInkStyle: () => void;
+}
+
 export default defineComponent({
   name: 'TabsNav',
   props: {
@@ -96,7 +100,7 @@ export default defineComponent({
     const isRtlHorizontal = computed(
       () => rtl.value && direction.value === 'horizontal'
     );
-    const inkRef = ref<ComponentPublicInstance>();
+    const inkRef = ref<TabsNavInkInstance | null>(null);
 
     const mergedEditable = computed(
       () =>
@@ -269,6 +273,9 @@ export default defineComponent({
     watch([activeIndex, scrollPosition, rtl], () => {
       setTimeout(() => {
         setActiveTabOffset();
+        if (inkRef.value) {
+          inkRef.value.getInkStyle();
+        }
       }, 0);
     });
 
