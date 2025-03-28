@@ -164,6 +164,11 @@ export default defineComponent({
                     ) : (
                       <div class={`${prefixCls}-date-circle`}>{col.date}</div>
                     )}
+                    {slots.content?.({
+                      year: col.year,
+                      month: col.month,
+                      date: col.date,
+                    })}
                   </div>
                 </div>
               )}
