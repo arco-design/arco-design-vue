@@ -67,7 +67,6 @@ export default defineComponent({
     const total = ref(0);
     const overflowNumber = ref(0);
     const showOverflow = computed(() => overflowNumber.value > 0);
-    const nextWidth = ref(0);
 
     const isStart = computed(() => props.from === 'start');
 
@@ -87,10 +86,7 @@ export default defineComponent({
     const onResize = () => {
       if (listRef.value && children.value && spacerRef.value) {
         const spacerWidth = spacerRef.value.offsetWidth;
-        if (
-          spacerWidth > 1 &&
-          (overflowNumber.value === 0 || spacerWidth < nextWidth.value)
-        ) {
+        if (spacerWidth > 1 && overflowNumber.value === 0) {
           return;
         }
 
@@ -115,7 +111,6 @@ export default defineComponent({
             remainingWidth -= itemWidth;
             count += 1;
           } else {
-            nextWidth.value = itemWidth;
             break;
           }
         }
