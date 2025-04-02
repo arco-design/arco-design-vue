@@ -36,6 +36,8 @@ description: A two-column multi-select component that moves elements from one co
 
 @import ./__demo__/custom-header.md
 
+@import ./__demo__/order.md
+
 ## API
 
 %%API(transfer.vue)%%
