@@ -5,6 +5,10 @@
 .@{space-prefix-cls} {
   display: inline-flex;
 
+  .@{space-prefix-cls}-item:empty {
+    display: none;
+  }
+
   &-horizontal {
     .@{space-prefix-cls}-item {
       display: flex;
