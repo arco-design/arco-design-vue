@@ -85,6 +85,7 @@ export default defineComponent({
     });
 
     return {
+      getInkStyle,
       prefixCls,
       cls,
       style,

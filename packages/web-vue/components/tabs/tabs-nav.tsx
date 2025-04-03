@@ -1,5 +1,4 @@
 import {
-  ComponentPublicInstance,
   computed,
   defineComponent,
   nextTick,
@@ -24,10 +23,6 @@ import ResizeObserver from '../_components/resize-observer';
 import { isUndefined, isNumber } from '../_utils/is';
 import { off, on } from '../_utils/dom';
 import { configProviderInjectionKey } from '../config-provider/context';
-
-interface TabsNavInkInstance {
-  getInkStyle: () => void;
-}
 
 export default defineComponent({
   name: 'TabsNav',
@@ -100,7 +95,7 @@ export default defineComponent({
     const isRtlHorizontal = computed(
       () => rtl.value && direction.value === 'horizontal'
     );
-    const inkRef = ref<TabsNavInkInstance | null>(null);
+    const inkRef = ref<InstanceType<typeof TabsNavInk>>();
 
     const mergedEditable = computed(
       () =>
