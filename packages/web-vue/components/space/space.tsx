@@ -84,7 +84,7 @@ export default defineComponent({
       },
     ]);
 
-    function getMargin(size: SpaceSize) {
+    function getSize(size: SpaceSize) {
       if (isNumber(size)) {
         return size;
       }
@@ -102,33 +102,17 @@ export default defineComponent({
       }
     }
 
-    const getMarginStyle = (isLast: boolean): CSSProperties => {
+    const getSpaceStyle = computed(() => {
       const style: CSSProperties = {};
+      const sizeArray = isArray(props.size)
+        ? props.size
+        : [props.size, props.size];
+      const [colGap, rowGap] = sizeArray.map(getSize);
 
-      const marginSize = `${getMargin(
-        isArray(props.size) ? props.size[0] : props.size
-      )}px`;
-      const marginBottom = `${getMargin(
-        isArray(props.size) ? props.size[1] : props.size
-      )}px`;
-
-      if (isLast) {
-        return props.wrap ? { marginBottom } : {};
-      }
-
-      if (props.direction === 'horizontal') {
-        if (rtl.value) {
-          style.marginLeft = marginSize;
-        } else {
-          style.marginRight = marginSize;
-        }
-      }
-      if (props.direction === 'vertical' || props.wrap) {
-        style.marginBottom = marginBottom;
-      }
-
+      style.columnGap = `${colGap}px`;
+      style.rowGap = `${rowGap}px`;
       return style;
-    };
+    });
 
     return () => {
       const children = getAllElements(slots.default?.(), true).filter(
@@ -136,25 +120,15 @@ export default defineComponent({
       );
 
       return (
-        <div class={cls.value}>
+        <div class={cls.value} style={getSpaceStyle.value}>
           {children.map((child, index) => {
             const shouldRenderSplit = slots.split && index > 0;
             return (
               <Fragment key={child.key ?? `item-${index}`}>
                 {shouldRenderSplit && (
-                  <div
-                    class={`${prefixCls}-item-split`}
-                    style={getMarginStyle(false)}
-                  >
-                    {slots.split?.()}
-                  </div>
+                  <div class={`${prefixCls}-item-split`}>{slots.split?.()}</div>
                 )}
-                <div
-                  class={`${prefixCls}-item`}
-                  style={getMarginStyle(index === children.length - 1)}
-                >
-                  {child}
-                </div>
+                <div class={`${prefixCls}-item`}>{child}</div>
               </Fragment>
             );
           })}
