@@ -57,6 +57,7 @@ import koKR from '@arco-design/web-vue/es/locale/lang/ko-kr';
 import itIT from '@arco-design/web-vue/es/locale/lang/it-it';
 import thTH from '@arco-design/web-vue/es/locale/lang/th-th';
 import viVN from '@arco-design/web-vue/es/locale/lang/vi-vn';
+import nlNL from '@arco-design/web-vue/es/locale/lang/nl-nl';
 
 const locales = {
   'zh-CN': zhCN,
@@ -71,6 +72,7 @@ const locales = {
   'it-IT': itIT,
   'th-TH': thTH,
   'vi-VN': viVN,
+  'nl-NL': nlNL,
 };
 
 export default {
