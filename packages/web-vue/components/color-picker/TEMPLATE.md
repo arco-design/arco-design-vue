@@ -25,6 +25,7 @@ description: Used for select and display colors.
 @import ./__demo__/trigger.md
 @import ./__demo__/trigger-element.md
 @import ./__demo__/only-panel.md
+@import ./__demo__/custom-panel.md
 
 ## API
 
