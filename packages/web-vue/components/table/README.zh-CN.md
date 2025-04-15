@@ -160,7 +160,7 @@ description: 用于数据收集展示、分析整理、操作处理。
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
 |data-index|列信息的标识，对应TableData中的数据|`string`|`-`||
-|title|列标题|`string`|`-`||
+|title|列标题|`string \| RenderFunction`|`-`||
 |width|列宽度|`number`|`-`||
 |min-width|最小列宽|`number`|`-`||
 |align|对齐方向|`TableColumnData['align']`|`-`||
