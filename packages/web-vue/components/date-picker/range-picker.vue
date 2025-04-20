@@ -88,7 +88,7 @@ import {
   dayjs,
   getNow,
   getDateValue,
-  initializeDateLocale,
+  // initializeDateLocale,
 } from '../_utils/date';
 import useState from '../_hooks/use-state';
 import {
@@ -435,9 +435,9 @@ export default defineComponent({
 
     const { locale: globalLocal } = useI18n();
     const configCtx = inject(configProviderInjectionKey, undefined);
-    watchEffect(() => {
-      initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
-    });
+    // watchEffect(() => {
+    //   initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+    // });
 
     const mergedExchangeTime = computed(() => {
       return !(!exchangeTime.value || !(configCtx?.exchangeTime ?? true));
