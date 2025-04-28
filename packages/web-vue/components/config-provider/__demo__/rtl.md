@@ -57,6 +57,23 @@ Set the component to a view that reads from right to left.
           <a-tag :color="'blue'" closable>blue</a-tag>
           <a-tag :color="'green'" closable>green</a-tag>
         </a-space>
+        <a-space>
+          <a-date-picker
+            style="width: 220px;"
+            show-time
+            :time-picker-props="{ defaultValue: '09:09:06' }"
+            format="YYYY-MM-DD HH:mm:ss"
+            @change="onChange"
+            @select="onSelect"
+            @ok="onOk"
+          />
+          <a-range-picker
+            style="width: 360px;"
+            show-time
+            :time-picker-props="{ defaultValue: ['00:00:00', '09:09:06'] }"
+            format="YYYY-MM-DD HH:mm"
+          />
+        </a-space>
       </a-space>
     </a-config-provider>
   </div>
@@ -69,8 +86,23 @@ export default {
   setup() {
     const rtlType = ref(true);
 
+    function onSelect(dateString, date) {
+      console.log('onSelect', dateString, date);
+    }
+
+    function onChange(dateString, date) {
+      console.log('onChange: ', dateString, date);
+    }
+
+    function onOk(dateString, date) {
+      console.log('onOk: ', dateString, date);
+    }
+
     return {
       rtlType,
+      onSelect,
+      onChange,
+      onOk,
     };
   },
 };

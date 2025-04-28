@@ -6,7 +6,11 @@
           v-if="icons && icons.prevDouble"
           :render-func="icons && icons.prevDouble"
         />
-        <IconDoubleLeft v-else />
+        <template v-else>
+          <!-- <IconDoubleLeft /> -->
+          <IconDoubleRight v-if="rtl" />
+          <IconDoubleLeft v-else />
+        </template>
       </template>
     </div>
     <div :class="getIconClassName(showPrev)" @click="onPrev">
@@ -15,7 +19,10 @@
           v-if="icons && icons.prev"
           :render-func="icons && icons.prev"
         />
-        <IconLeft v-else />
+        <template v-else>
+          <IconRight v-if="rtl" />
+          <IconLeft v-else />
+        </template>
       </template>
     </div>
     <div :class="`${prefixCls}-header-title`">
@@ -42,7 +49,10 @@
           v-if="icons && icons.next"
           :render-func="icons && icons.next"
         />
-        <IconRight v-else />
+        <template v-else>
+          <IconLeft v-if="rtl" />
+          <IconRight v-else />
+        </template>
       </template>
     </div>
     <div :class="getIconClassName(showSuperNext)" @click="onSuperNext">
@@ -51,14 +61,17 @@
           v-if="icons && icons.nextDouble"
           :render-func="icons && icons.nextDouble"
         />
-        <IconDoubleRight v-else />
+        <template v-else>
+          <IconDoubleLeft v-if="rtl" />
+          <IconDoubleRight v-else />
+        </template>
       </template>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType, inject } from 'vue';
 import { Dayjs } from 'dayjs';
 import { isFunction } from '../../_utils/is';
 import IconLeft from '../../icon/icon-left';
@@ -67,6 +80,7 @@ import IconDoubleLeft from '../../icon/icon-double-left';
 import IconDoubleRight from '../../icon/icon-double-right';
 import { HeaderIcons, Mode } from '../interface';
 import RenderFunction from '../../_components/render-function';
+import { configProviderInjectionKey } from '../../config-provider/context';
 
 type ClickCallbackFunc = (payload: MouseEvent) => void;
 
@@ -118,10 +132,13 @@ export default defineComponent({
   },
   emits: ['label-click'],
   setup(props) {
+    const configCtx = inject(configProviderInjectionKey, undefined);
     return {
       showPrev: computed(() => isFunction(props.onPrev)),
       showSuperPrev: computed(() => isFunction(props.onSuperPrev)),
       showNext: computed(() => isFunction(props.onNext)),
+      configCtx,
+      rtl: computed(() => configCtx?.rtl ?? false),
       showSuperNext: computed(() => isFunction(props.onSuperNext)),
       year: computed(() =>
         ['date', 'quarter', 'month', 'week'].includes(props.mode) && props.value
