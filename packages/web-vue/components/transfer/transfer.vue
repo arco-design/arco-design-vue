@@ -21,7 +21,7 @@
         <slot name="source-title" v-bind="titleProps" />
       </template>
     </transfer-view>
-    <div v-if="!simple" :class="[`${prefixCls}-operations`]">
+    <div v-if="!simple" :class="oprationsCls">
       <arco-button
         tabindex="-1"
         aria-label="Move selected right"
@@ -207,6 +207,14 @@ export default defineComponent({
      */
     targetInputSearchProps: {
       type: Object,
+    },
+    /**
+     * @zh 是否反转源和目标选择框
+     * @en Whether to reverse the source and target selection boxes
+     */
+    reverse: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: {
@@ -404,6 +412,14 @@ export default defineComponent({
       {
         [`${prefixCls}-simple`]: props.simple,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
+        [`${prefixCls}-reversed`]: props.reverse,
+      },
+    ]);
+
+    const oprationsCls = computed(() => [
+      `${prefixCls}-operations`,
+      {
+        [`${prefixCls}-operations-reversed`]: props.reverse,
       },
     ]);
 
@@ -417,6 +433,7 @@ export default defineComponent({
       targetTitle,
       handleClick,
       handleSearch,
+      oprationsCls,
     };
   },
 });
