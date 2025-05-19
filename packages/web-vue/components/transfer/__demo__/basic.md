@@ -19,6 +19,8 @@ Basic usage of the transfer.
 ```vue
 <template>
   <a-transfer :data="data" :default-value="value" />
+  <div style="margin:1em 0;">Reversed</div>
+  <a-transfer :data="data" :default-value="value" reverse />
 </template>
 
 <script>
