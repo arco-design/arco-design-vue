@@ -11,7 +11,7 @@
       :simple="simple"
       @search="handleSearch"
     />
-    <div v-if="!simple" :class="[`${prefixCls}-operations`]">
+    <div v-if="!simple" :class="oprationsCls">
       <arco-button
         size="small"
         shape="round"
@@ -163,6 +163,30 @@ export default defineComponent({
     onChange: [Function, Array],
     onSelect: [Function, Array],
     onSearch: [Function, Array],
+    /**
+     * @zh 源选择框的搜索框配置
+     * @en Search box configuration for source selection box
+     * @version 2.51.1
+     */
+    sourceInputSearchProps: {
+      type: Object,
+    },
+    /**
+     * @zh 目标选择框的搜索框配置
+     * @en Search box configuration for target selection box
+     * @version 2.51.1
+     */
+    targetInputSearchProps: {
+      type: Object,
+    },
+    /**
+     * @zh 是否反转源和目标选择框
+     * @en Whether to reverse the source and target selection boxes
+     */
+    reverse: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: [
     'update:modelValue',
@@ -301,6 +325,14 @@ export default defineComponent({
       {
         [`${prefixCls}-simple`]: props.simple,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
+        [`${prefixCls}-reversed`]: props.reverse,
+      },
+    ]);
+
+    const oprationsCls = computed(() => [
+      `${prefixCls}-operations`,
+      {
+        [`${prefixCls}-operations-reversed`]: props.reverse,
       },
     ]);
 
@@ -313,6 +345,7 @@ export default defineComponent({
       targetTitle,
       handleClick,
       handleSearch,
+      oprationsCls,
     };
   },
 });

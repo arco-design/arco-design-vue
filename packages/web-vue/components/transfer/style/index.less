@@ -7,6 +7,11 @@
   display: flex;
   align-items: center;
 
+  &-reversed {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
   &-view {
     display: flex;
     flex-direction: column;
@@ -223,6 +228,10 @@
 
   &-operations {
     padding: 0 @transfer-operation-padding-horizontal;
+
+    &-reversed {
+      transform: rotate(180deg);
+    }
 
     .@{prefix}-btn {
       display: block;
