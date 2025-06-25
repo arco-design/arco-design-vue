@@ -18,7 +18,7 @@ Enable multiple selection mode by setting `multiple`. Set the checkedStrategy pr
 
 ```vue
 <template>
-  <a-cascader :options="options" :default-value="['chaoyang']" :style="{width:'320px'}" placeholder="Please select ..." multiple :checkedStrategy="'parent'" />
+  <a-cascader :options="options" :default-value="['chaoyang']" :style="{width:'320px'}" placeholder="Please select ..." multiple checkedStrategy="parent" />
 </template>
 
 <script>

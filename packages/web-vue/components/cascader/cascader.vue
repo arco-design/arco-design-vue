@@ -804,7 +804,7 @@ export default defineComponent({
 
     const handleRemove = (key: string) => {
       if (props.multiple) {
-        const option = leafOptionMap.get(key);
+        const option = optionMap.get(key);
         if (option) {
           selectMultiple(option, false);
         } else {
