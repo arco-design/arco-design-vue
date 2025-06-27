@@ -97,6 +97,11 @@ export interface ModalConfig {
    */
   draggable?: boolean;
   /**
+   * @zh 拖拽配置
+   * @en Drag options
+   */
+  dragOptions: ModalDragOptions;
+  /**
    * @zh 是否开启全屏
    * @en Whether to enable full screen
    * @version 2.19.0
@@ -280,4 +285,13 @@ export interface ModalMethod {
    * @en Open error modal
    */
   error: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
+}
+
+export interface ModalDragOptions {
+  /**
+   * @zh 是否允许超出屏幕
+   * @en Whether to allow dragging outside the screen
+   * @defaultValue false
+   */
+  outOfScreen: boolean;
 }

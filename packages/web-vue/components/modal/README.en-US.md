@@ -61,6 +61,7 @@ description: Open a floating layer on the current page to carry related operatio
 |on-before-cancel|The callback function before the cancel event is triggered. If it returns false, no subsequent events will be triggered.|`() => boolean`|`-`|2.7.0|
 |esc-to-close|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
 |draggable|Whether to support drag|`boolean`|`false`|2.19.0|
+|drag-options|Drag options|`ModalDragOptions`|`-`||
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 |mask-animation-name|Mask layer animation name|`string`|`-`|2.24.0|
 |modal-animation-name|Modal animation name|`string`|`-`|2.24.0|
@@ -126,6 +127,7 @@ Modal._context = app._context;
 |alignCenter|Whether the dialog box is displayed in the center|`boolean`|`true`||
 |escToClose|Whether to support the ESC key to close the dialog|`boolean`|`true`|2.15.0|
 |draggable|Whether to support drag|`boolean`|`false`|2.19.0|
+|dragOptions|Drag options|`ModalDragOptions`|`-`||
 |fullscreen|Whether to enable full screen|`boolean`|`false`|2.19.0|
 |onOk|Callback function for clicking the OK button|`(e?: Event) => void`|`-`||
 |onCancel|Callback function for clicking the Cancel button|`(e?: Event) => void`|`-`||
@@ -169,5 +171,13 @@ Modal._context = app._context;
 |success|Open success modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |warning|Open warning modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |error|Open error modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+
+
+
+### ModalDragOptions
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|outOfScreen|Whether to allow dragging outside the screen|`boolean`|`false`|
 
 
