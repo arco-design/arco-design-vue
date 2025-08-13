@@ -25,6 +25,10 @@ export default defineComponent({
       type: String as PropType<ListType>,
       required: true,
     },
+    index: {
+      type: Number,
+      required: true,
+    },
   },
   setup(props) {
     const prefixCls = getPrefixCls('upload-list');
@@ -142,7 +146,10 @@ export default defineComponent({
             </IconHover>
           </span>
         )}
-        {uploadCtx?.slots['extra-button']?.({ fileItem: props.file })}
+        {uploadCtx?.slots['extra-button']?.({
+          fileItem: props.file,
+          index: props.index,
+        })}
       </div>
     );
   },

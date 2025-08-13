@@ -35,13 +35,20 @@ export default defineComponent({
       }
 
       if (props.listType === 'picture-card') {
-        return <UploadPictureItem file={fileItem} key={`item-${index}`} />;
+        return (
+          <UploadPictureItem
+            file={fileItem}
+            key={`item-${index}`}
+            index={index}
+          />
+        );
       }
       return (
         <UploadListItem
           file={fileItem}
           listType={props.listType}
           key={`item-${index}`}
+          index={index}
         />
       );
     };
