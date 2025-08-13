@@ -19,6 +19,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    index: {
+      type: Number,
+      required: true,
+    },
   },
   setup(props) {
     const prefixCls = getPrefixCls('upload-list');
@@ -60,15 +64,19 @@ export default defineComponent({
               </div>
             )}
             <div class={`${itemCls}-operation`}>
-              {props.file.status !== 'error' && uploadCtx?.showPreviewButton && (
-                <span
-                  class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-preview`]}
-                  onClick={() => uploadCtx?.onPreview(props.file)}
-                >
-                  {uploadCtx?.slots['preview-icon']?.() ??
-                    uploadCtx?.customIcon?.previewIcon?.() ?? <IconEye />}
-                </span>
-              )}
+              {props.file.status !== 'error' &&
+                uploadCtx?.showPreviewButton && (
+                  <span
+                    class={[
+                      uploadCtx?.iconCls,
+                      `${uploadCtx?.iconCls}-preview`,
+                    ]}
+                    onClick={() => uploadCtx?.onPreview(props.file)}
+                  >
+                    {uploadCtx?.slots['preview-icon']?.() ??
+                      uploadCtx?.customIcon?.previewIcon?.() ?? <IconEye />}
+                  </span>
+                )}
               {['init', 'error'].includes(props.file.status as string) &&
                 uploadCtx?.showRetryButton && (
                   <span
@@ -88,7 +96,7 @@ export default defineComponent({
                     uploadCtx?.customIcon?.removeIcon?.() ?? <IconDelete />}
                 </span>
               )}
-              {uploadCtx?.slots['extra-button']?.(props.file)}
+              {uploadCtx?.slots['extra-button']?.(props.file, props.index)}
             </div>
           </div>
         </>

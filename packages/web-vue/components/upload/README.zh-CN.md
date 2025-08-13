@@ -96,7 +96,7 @@ description: 用户可传输文件或提交相应的内容。
 
 |插槽名|描述|参数|版本|
 |---|:---:|---|:---|
-|extra-button|上传列表额外按钮|fileItem: `FileItem`|2.43.0|
+|extra-button|上传列表额外按钮|fileItem: `FileItem`<br>index: `number`|2.56.1|
 |image|自定义图片|fileItem: `FileItem`|2.23.0|
 |file-name|文件名称|-|2.23.0|
 |file-icon|文件图标|-|2.23.0|
