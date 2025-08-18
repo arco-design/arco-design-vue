@@ -1,6 +1,6 @@
 import { PropType, computed, defineComponent, ref } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
-import { hexToRgb, rgbToHsv } from '../_utils/color';
+import { formatInputToHSVA } from '../_utils/color';
 import { Color, HSV } from './interface';
 import { useI18n } from '../locale';
 import useState from '../_hooks/use-state';
@@ -45,9 +45,9 @@ export default defineComponent({
     const showCopy = ref(false);
 
     const onHexInputChange = (value: string) => {
-      const _rgb = hexToRgb(value) || { r: 255, g: 0, b: 0 };
-      const _hsv = rgbToHsv(_rgb.r, _rgb.g, _rgb.b);
+      const _hsv = formatInputToHSVA(value);
       props.onHsvChange?.(_hsv);
+      props.onAlphaChange?.(_hsv.a);
     };
 
     const renderInput = () => {
