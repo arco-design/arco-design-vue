@@ -58,9 +58,9 @@ exports[`<image> demo: render [custom-preview-actions] correctly 1`] = `
 `;
 
 exports[`<image> demo: render [error] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 20px; row-gap: 20px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 20px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 400px; height: 300px;\\"><img class=\\"arco-image-img\\" style=\\"width: 400px; height: 300px;\\">
       <div class=\\"arco-image-overlay\\">
         <!--v-if-->
@@ -126,9 +126,9 @@ exports[`<image> demo: render [loader] correctly 1`] = `
 `;
 
 exports[`<image> demo: render [preview-group] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px;\\">
       <div class=\\"arco-image-overlay\\">
         <!--v-if-->
@@ -139,7 +139,7 @@ exports[`<image> demo: render [preview-group] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px;\\">
       <div class=\\"arco-image-overlay\\">
         <!--v-if-->
@@ -150,7 +150,7 @@ exports[`<image> demo: render [preview-group] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px;\\">
       <div class=\\"arco-image-overlay\\">
         <!--v-if-->

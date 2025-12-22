@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<config-provider> demo: render [basic] correctly 1`] = `
-"<span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"zh-CN\\"><span class=\\"arco-radio-button-content\\">zh-CN</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"en-US\\"><span class=\\"arco-radio-button-content\\">en-US</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"es-ES\\"><span class=\\"arco-radio-button-content\\">es-ES</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"ja-JP\\"><span class=\\"arco-radio-button-content\\">ja-JP</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"id-ID\\"><span class=\\"arco-radio-button-content\\">id-ID</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"fr-FR\\"><span class=\\"arco-radio-button-content\\">fr-FR</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"pt-PT\\"><span class=\\"arco-radio-button-content\\">pt-PT</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"de-DE\\"><span class=\\"arco-radio-button-content\\">de-DE</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"ko-KR\\"><span class=\\"arco-radio-button-content\\">ko-KR</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"it-IT\\"><span class=\\"arco-radio-button-content\\">it-IT</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"th-TH\\"><span class=\\"arco-radio-button-content\\">th-TH</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vi-VN\\"><span class=\\"arco-radio-button-content\\">vi-VN</span></label></span>
+"<span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"zh-CN\\"><span class=\\"arco-radio-button-content\\">zh-CN</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"en-US\\"><span class=\\"arco-radio-button-content\\">en-US</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"es-ES\\"><span class=\\"arco-radio-button-content\\">es-ES</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"ja-JP\\"><span class=\\"arco-radio-button-content\\">ja-JP</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"id-ID\\"><span class=\\"arco-radio-button-content\\">id-ID</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"fr-FR\\"><span class=\\"arco-radio-button-content\\">fr-FR</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"pt-PT\\"><span class=\\"arco-radio-button-content\\">pt-PT</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"de-DE\\"><span class=\\"arco-radio-button-content\\">de-DE</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"ko-KR\\"><span class=\\"arco-radio-button-content\\">ko-KR</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"it-IT\\"><span class=\\"arco-radio-button-content\\">it-IT</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"th-TH\\"><span class=\\"arco-radio-button-content\\">th-TH</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vi-VN\\"><span class=\\"arco-radio-button-content\\">vi-VN</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"nl-NL\\"><span class=\\"arco-radio-button-content\\">nl-NL</span></label></span>
 <div>
   <div class=\\"arco-pagination arco-pagination-size-medium\\" style=\\"margin-top: 20px; margin-bottom: 20px;\\"><span class=\\"arco-pagination-total\\">50 en total</span>
     <ul class=\\"arco-pagination-list\\"><span class=\\"arco-pagination-item arco-pagination-item-previous arco-pagination-item-disabled\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path></svg></span>
@@ -18,9 +18,9 @@ exports[`<config-provider> demo: render [basic] correctly 1`] = `
     <!--v-if--></span>
   </div>
 </div>
-<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"margin-bottom: 20px;\\">
+<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 20px; row-gap: 20px; margin-bottom: 20px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 20px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px;\\" visible=\\"false\\">
       <!--v-if-->
       <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"Fecha inicial\\"></div><span class=\\"arco-picker-separator\\">-</span>
@@ -33,7 +33,7 @@ exports[`<config-provider> demo: render [basic] correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 20px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px;\\" visible=\\"false\\" editable=\\"true\\">
       <!--v-if-->
       <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"Seleccionar hora\\"></div><span class=\\"arco-picker-separator\\"> - </span>
@@ -55,24 +55,24 @@ exports[`<config-provider> demo: render [basic] correctly 1`] = `
 `;
 
 exports[`<config-provider> demo: render [empty] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+"<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium arco-select-view-search\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"cascader\\" value=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium arco-select-view-search\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"cascader\\" value=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"select\\" value=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select arco-select-view arco-select-view-size-medium arco-select-view-search\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" placeholder=\\"select\\" value=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"tree-select\\" value=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-select-view-single arco-select-view arco-select-view-size-medium\\" title=\\"\\"><!----><input class=\\"arco-select-view-input\\" readonly=\\"\\" placeholder=\\"tree-select\\" value=\\"\\"><span class=\\"arco-select-view-value arco-select-view-value-hidden\\"><!----></span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-list-wrapper\\">
       <div class=\\"arco-spin arco-list-spin\\">
         <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
@@ -100,7 +100,7 @@ exports[`<config-provider> demo: render [empty] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-empty\\">
       <!---->
       <div class=\\"arco-spin\\">
@@ -193,7 +193,7 @@ exports[`<config-provider> demo: render [rtl] correctly 1`] = `
         <div class=\\"arco-tabs-content-item\\">
           <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 1</div>
         </div>
-        <div class=\\"arco-tabs-content-item\\">
+        <div class=\\"arco-tabs-content-item arco-tabs-content-item-active\\">
           <div class=\\"arco-tabs-pane\\"> Content of Tab Panel 2</div>
         </div>
         <div class=\\"arco-tabs-content-item\\">
@@ -301,31 +301,31 @@ exports[`<config-provider> demo: render [rtl] correctly 1`] = `
       </div>
     </div>
   </div>
-  <div class=\\"arco-space arco-space-vertical arco-space-rtl\\" style=\\"width: 100%;\\">
+  <div class=\\"arco-space arco-space-vertical arco-space-rtl\\" style=\\"column-gap: 8px; row-gap: 8px; width: 100%;\\">
     <!---->
     <div class=\\"arco-space-item\\">
-      <div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-rtl\\">
+      <div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-rtl\\" style=\\"column-gap: 40px; row-gap: 40px;\\">
         <!---->
-        <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
+        <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
           <!--v-if-->
         </div><span class=\\"arco-badge-number\\"><span>9</span></span></span>
       </div>
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
         <!--v-if-->
       </div><span class=\\"arco-badge-dot\\" style=\\"width: 10px; height: 10px;\\"></span></span>
     </div>
     <!---->
-    <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
+    <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-rtl\\"><div class=\\"arco-avatar arco-avatar-square arco-avatar-rtl\\"><span class=\\"arco-avatar-text\\"></span>
       <!--v-if-->
     </div><span class=\\"arco-badge-custom-dot\\" style=\\"height: 16px; width: 16px; font-size: 14px;\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-clock-circle\\" style=\\"vertical-align: middle;\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 14v10h9.5m8.5 0c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z\\"></path></svg></span></span>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-red arco-tag-checked arco-tag-rtl\\"><!--v-if-->red<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-red arco-tag-checked arco-tag-rtl\\"><!--v-if-->red<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-left: 40px;\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-blue arco-tag-checked arco-tag-rtl\\"><!--v-if-->blue<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-blue arco-tag-checked arco-tag-rtl\\"><!--v-if-->blue<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->

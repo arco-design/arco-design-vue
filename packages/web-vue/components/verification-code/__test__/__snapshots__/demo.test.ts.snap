@@ -55,9 +55,9 @@ exports[`<verification-code> demo: render [form] correctly 1`] = `
 `;
 
 exports[`<verification-code> demo: render [formatter] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" value=\\"1\\"><!----><!----></span>
       <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" value=\\"2\\"><!----><!----></span>
       <!----><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" value=\\"3\\"><!----><!----></span>
@@ -105,12 +105,12 @@ exports[`<verification-code> demo: render [separator] correctly 1`] = `
 `;
 
 exports[`<verification-code> demo: render [status] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
-    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Disabled:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Disabled:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
       <!---->
       <div class=\\"arco-space-item\\">
         <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input-disabled arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" disabled=\\"\\" value=\\"1\\"><!----><!----></span>
@@ -125,10 +125,10 @@ exports[`<verification-code> demo: render [status] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
-    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Readonly:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Readonly:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
       <!---->
       <div class=\\"arco-space-item\\">
         <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" readonly=\\"\\" value=\\"1\\"><!----><!----></span>
@@ -144,9 +144,9 @@ exports[`<verification-code> demo: render [status] correctly 1`] = `
   </div>
   <!---->
   <div class=\\"arco-space-item\\">
-    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Error:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-typography\\" style=\\"width: 80px;\\">Error:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
       <!---->
       <div class=\\"arco-space-item\\">
         <div class=\\"arco-verification-code\\" style=\\"width: 300px;\\"><span class=\\"arco-input-wrapper arco-input-error arco-input\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" aria-invalid=\\"true\\" value=\\"1\\"><!----><!----></span>

@@ -136,9 +136,9 @@ exports[`<rate> demo: render [clear] correctly 1`] = `
 `;
 
 exports[`<rate> demo: render [color] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-rate\\">
       <div class=\\"arco-rate-character\\" role=\\"radio\\" aria-checked=\\"false\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">
         <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">

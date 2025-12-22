@@ -208,9 +208,9 @@ exports[`<form> demo: render [basic] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [custom] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"margin-bottom: 20px;\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px; margin-bottom: 20px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
+  <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
       <!--v-if-->
     </button></div>
   <!---->
@@ -502,11 +502,11 @@ exports[`<form> demo: render [grid] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [layout] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 600px;\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 600px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"horizontal\\"><span class=\\"arco-radio-button-content\\">horizontal</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vertical\\"><span class=\\"arco-radio-button-content\\">vertical</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline\\"><span class=\\"arco-radio-button-content\\">inline</span></label></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"horizontal\\"><span class=\\"arco-radio-button-content\\">horizontal</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"vertical\\"><span class=\\"arco-radio-button-content\\">vertical</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"inline\\"><span class=\\"arco-radio-button-content\\">inline</span></label></span></div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+  <div class=\\"arco-space-item\\">
     <form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium\\">
       <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
         <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
@@ -650,9 +650,9 @@ exports[`<form> demo: render [nest] correctly 1`] = `
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content\\">
-          <div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+          <div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
             <!---->
-            <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\">
+            <div class=\\"arco-space-item\\">
               <div class=\\"arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
                 <div class=\\"arco-col arco-col-5 arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
                     <!--v-if-->Post1
@@ -725,13 +725,13 @@ exports[`<form> demo: render [nest] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [scroll] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Submit
     </button></div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Reset
     </button></div>
   <!---->
@@ -1004,9 +1004,9 @@ exports[`<form> demo: render [scroll] correctly 1`] = `
 `;
 
 exports[`<form> demo: render [status] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"validating\\"><span class=\\"arco-radio-button-content\\">validating</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"success\\"><span class=\\"arco-radio-button-content\\">success</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"error\\"><span class=\\"arco-radio-button-content\\">error</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"warning\\"><span class=\\"arco-radio-button-content\\">warning</span></label></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"validating\\"><span class=\\"arco-radio-button-content\\">validating</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"success\\"><span class=\\"arco-radio-button-content\\">success</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"error\\"><span class=\\"arco-radio-button-content\\">error</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"warning\\"><span class=\\"arco-radio-button-content\\">warning</span></label></span></div>
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
 </div>
@@ -1452,9 +1452,9 @@ exports[`<form> demo: render [validation] correctly 1`] = `
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\">
-          <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+          <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
             <!---->
-            <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
+            <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
                 <!--v-if-->Submit
               </button></div>
             <!---->
@@ -1594,9 +1594,9 @@ exports[`<form> demo: render [validation2] correctly 1`] = `
     <div class=\\"arco-col arco-col-19 arco-form-item-wrapper-col\\">
       <div class=\\"arco-form-item-content-wrapper\\">
         <div class=\\"arco-form-item-content arco-form-item-content-flex\\">
-          <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+          <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
             <!---->
-            <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
+            <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"submit\\">
                 <!--v-if-->Submit
               </button></div>
             <!---->

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<alert> demo: render [action] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\" style=\\"width: 100%;\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+  <div class=\\"arco-space-item\\">
     <transition-stub name=\\"zoom-in-top\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div role=\\"alert\\" class=\\"arco-alert arco-alert-info\\">
         <div class=\\"arco-alert-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-info-circle-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">

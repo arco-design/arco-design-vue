@@ -21,9 +21,9 @@ exports[`<input-tag> demo: render [max] correctly 1`] = `
 `;
 
 exports[`<input-tag> demo: render [size] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-has-tag arco-input-tag-has-suffix\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
     <!---->
@@ -36,16 +36,16 @@ exports[`<input-tag> demo: render [size] correctly 1`] = `
 `;
 
 exports[`<input-tag> demo: render [status] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-disabled arco-input-tag-has-tag\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-disabled arco-input-tag-has-tag\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
     <!---->
     <transition-group-stub tag=\\"span\\" name=\\"input-tag-zoom\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-input-tag-inner\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->test<!--v-if--><!--v-if--></span><input class=\\"arco-input-tag-input\\" style=\\"width: 12px;\\" disabled=\\"\\"></transition-group-stub>
     <!---->
     <!----></span>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-readonly arco-input-tag-has-tag\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-input-tag arco-input-tag-size-medium arco-input-tag-readonly arco-input-tag-has-tag\\" style=\\"width: 320px;\\"><span class=\\"arco-input-tag-mirror\\"></span>
     <!---->
     <transition-group-stub tag=\\"span\\" name=\\"input-tag-zoom\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-input-tag-inner\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-input-tag-tag\\"><!--v-if-->test<!--v-if--><!--v-if--></span><input class=\\"arco-input-tag-input\\" style=\\"width: 12px;\\" readonly=\\"\\"></transition-group-stub>
     <!---->

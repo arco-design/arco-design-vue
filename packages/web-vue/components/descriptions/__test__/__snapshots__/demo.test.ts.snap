@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<descriptions> demo: render [align] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-descriptions arco-descriptions-layout-horizontal arco-descriptions-size-medium\\">
       <div class=\\"arco-descriptions-title\\">User Info</div>
       <div class=\\"arco-descriptions-body\\">
@@ -29,7 +29,7 @@ exports[`<descriptions> demo: render [align] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-descriptions arco-descriptions-layout-horizontal arco-descriptions-size-medium\\">
       <div class=\\"arco-descriptions-title\\">User Info</div>
       <div class=\\"arco-descriptions-body\\">
@@ -94,9 +94,9 @@ exports[`<descriptions> demo: render [align] correctly 1`] = `
 `;
 
 exports[`<descriptions> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical arco-space-fill\\">
+"<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-descriptions arco-descriptions-layout-inline-horizontal arco-descriptions-size-medium\\">
       <div class=\\"arco-descriptions-title\\">User Info</div>
       <div class=\\"arco-descriptions-body\\">
