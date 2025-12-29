@@ -4,7 +4,7 @@
       <div
         v-if="!unmountOnClose || computedVisible || mounted"
         v-show="computedVisible || mounted"
-        :class="`${prefixCls}-container`"
+        :class="classNames"
         :style="
           isFixed ? { zIndex } : { zIndex: 'inherit', position: 'absolute' }
         "
@@ -378,6 +378,12 @@ export default defineComponent({
     const computedVisible = computed(() => props.visible ?? _visible.value);
     const _okLoading = ref(false);
     const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
+    const classNames = computed(() => [
+      `${prefixCls}-container`,
+      {
+        [`${prefixCls}-penetrable`]: !props.mask,
+      },
+    ]);
 
     const { teleportContainer, containerRef } = useTeleportContainer({
       popupContainer,
@@ -543,6 +549,7 @@ export default defineComponent({
 
     return {
       prefixCls,
+      classNames,
       style,
       t,
       mounted,
