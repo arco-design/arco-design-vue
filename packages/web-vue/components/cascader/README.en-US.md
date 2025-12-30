@@ -45,6 +45,7 @@ description: Refers to the use of multi-level classification to separate the opt
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
+|checked-strategy|Customize the filling method: only effective in multiple: true && non-strict mode checkStrictly: false|`'parent' \| 'child'`|`'child'`||
 |path-mode|Whether the value is a path|`boolean`|`false`||
 |multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
 |model-value **(v-model)**|Value|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`-`||
@@ -107,6 +108,7 @@ description: Refers to the use of multi-level classification to separate the opt
 
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
+|checked-strategy|Customize the filling method: only effective in multiple: true && non-strict mode checkStrictly: false|`'parent' \| 'child'`|`'child'`||
 |path-mode|Whether the value is a path|`boolean`|`false`||
 |multiple|Whether it is a multi-selection state (The search is turned on by default in the multi-select mode)|`boolean`|`false`||
 |model-value **(v-model)**|Value|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`-`||

@@ -31,13 +31,15 @@ import {
   CascaderOption,
   CascaderOptionInfo,
 } from './interface';
-import { isNull, isUndefined } from '../_utils/is';
+import { isNull, isUndefined, isArray, isObject } from '../_utils/is';
 import BaseCascaderPanel from './base-cascader-panel';
 import {
   getCheckedStatus,
   getLeafOptionInfos,
   getLeafOptionKeys,
+  getLeafOptionValues,
   getOptionInfos,
+  getRootValues,
   getValidValues,
   getValueKey,
 } from './utils';
@@ -51,6 +53,14 @@ export default defineComponent({
     BaseCascaderPanel,
   },
   props: {
+    /**
+     * @zh 定制回填方式: 仅在多选模式multiple: true && 非严格模式checkStrictly: false 下生效
+     * @en Customize the filling method: only effective in multiple: true && non-strict mode checkStrictly: false
+     */
+    checkedStrategy: {
+      type: String as PropType<'parent' | 'child'>,
+      default: 'child',
+    },
     /**
      * @zh 绑定值是否为路径
      * @en Whether the value is a path
@@ -231,6 +241,8 @@ export default defineComponent({
     const totalLevel = ref(1);
 
     const optionMap = reactive(new Map<string, CascaderOptionInfo>());
+    const valueKeyOptionMap = reactive(new Map<string, CascaderOptionInfo>());
+    const rootOptionMap = reactive(new Map<string, CascaderOptionInfo>());
     const leafOptionMap = reactive(new Map<string, CascaderOptionInfo>());
     const leafOptionValueMap = reactive(new Map<BaseType, string>());
     const leafOptionSet = reactive(new Set<CascaderOptionInfo>());
@@ -260,6 +272,8 @@ export default defineComponent({
       [options, lazyLoadOptions, mergedFieldNames],
       ([_options, _lazyLoadOptions, _fieldNames]) => {
         optionMap.clear();
+        valueKeyOptionMap.clear();
+        rootOptionMap.clear();
         leafOptionMap.clear();
         leafOptionValueMap.clear();
         leafOptionSet.clear();
@@ -268,9 +282,12 @@ export default defineComponent({
           enabledLazyLoad: Boolean(props.loadMore),
           lazyLoadOptions: _lazyLoadOptions,
           optionMap,
+          valueKeyOptionMap,
+          rootOptionMap,
           leafOptionSet,
           leafOptionMap,
           leafOptionValueMap,
+          nodeOptionValueMap: undefined,
           totalLevel,
           checkStrictly,
           fieldNames: _fieldNames,
@@ -282,8 +299,43 @@ export default defineComponent({
       }
     );
 
+    const isShowParent = computed(() => {
+      return (
+        props.multiple &&
+        !props.checkStrictly &&
+        props.checkedStrategy === 'parent'
+      );
+    });
+
+    const computedLeafValue = computed(() => {
+      const values = props.modelValue ?? _value.value;
+
+      if (isShowParent.value && isArray(values)) {
+        const _values: typeof props.modelValue = [];
+        values.forEach((value) => {
+          let _value = isObject(value) ? value[props.valueKey] : value;
+          if (isArray(value)) {
+            const lastValue = value[value.length - 1];
+            _value = isObject(lastValue)
+              ? lastValue[props.valueKey]
+              : lastValue;
+          }
+
+          const option = valueKeyOptionMap.get(String(_value));
+          if (option) {
+            _values.push(...getLeafOptionValues(option, props.pathMode));
+          } else {
+            _values.push(value);
+          }
+        });
+        return _values;
+      }
+
+      return values;
+    });
+
     const computedValueMap = computed(() => {
-      const values = getValidValues(props.modelValue ?? _value.value, {
+      const values = getValidValues(computedLeafValue.value, {
         multiple: props.multiple,
         pathMode: props.pathMode,
       });
@@ -305,7 +357,17 @@ export default defineComponent({
     );
 
     const updateValue = (values: UnionType[] | UnionType[][]) => {
-      const value = props.multiple ? values : values[0] ?? '';
+      let value = props.multiple ? values : values[0] ?? '';
+
+      // TODO: 暂时实现，子节点推导父节点
+      if (isShowParent.value && isArray(values)) {
+        value = getRootValues(values, {
+          valueKeyOptionMap,
+          rootOptionMap,
+          valueKey: props.valueKey,
+          pathMode: props.pathMode,
+        });
+      }
       if (values.length === 0) {
         setSelectedPath();
         setActiveKey();

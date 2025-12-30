@@ -18,9 +18,12 @@ export const getOptionInfos = (
   options: CascaderOption[],
   {
     optionMap,
+    valueKeyOptionMap,
+    rootOptionMap,
     leafOptionMap,
     leafOptionSet,
     leafOptionValueMap,
+    nodeOptionValueMap,
     totalLevel: innerLevel,
     checkStrictly,
     enabledLazyLoad,
@@ -29,9 +32,12 @@ export const getOptionInfos = (
     fieldNames,
   }: {
     optionMap: Map<string, CascaderOptionInfo>;
+    valueKeyOptionMap: Map<string, CascaderOptionInfo>;
+    rootOptionMap: Map<string, CascaderOptionInfo>;
     leafOptionMap: Map<string, CascaderOptionInfo>;
     leafOptionSet: Set<CascaderOptionInfo>;
     leafOptionValueMap: Map<BaseType, string>;
+    nodeOptionValueMap?: Map<BaseType, string>;
     totalLevel: Ref<number>;
     checkStrictly: Ref<boolean>;
     enabledLazyLoad: boolean;
@@ -73,7 +79,7 @@ export const getOptionInfos = (
       };
       const path = parentPath.concat(data);
       const pathValue: UnionType[] = [];
-      const key = path
+      const key = path // xxx-xxx-xxx
         .map((item) => {
           pathValue.push(item.value);
           return item.valueKey;
@@ -122,12 +128,20 @@ export const getOptionInfos = (
       }
 
       optionMap.set(data.key, data);
+      valueKeyOptionMap?.set(data.valueKey, data);
+      if (nodeOptionValueMap && !nodeOptionValueMap?.has(data.valueKey)) {
+        nodeOptionValueMap?.set(data.valueKey, data.key);
+      }
       if (data.isLeaf || checkStrictly.value) {
         leafOptionSet.add(data);
         leafOptionMap.set(data.key, data);
         if (!leafOptionValueMap.has(data.valueKey)) {
           leafOptionValueMap.set(data.valueKey, data.key);
         }
+      }
+
+      if (data.level === 0) {
+        rootOptionMap?.set(data.key, data);
       }
 
       return data;
@@ -187,6 +201,21 @@ export const getLeafOptionKeys = (option: CascaderOptionInfo) => {
     }
   }
   return keys;
+};
+
+export const getLeafOptionValues = (
+  option: CascaderOptionInfo,
+  pathMode: boolean
+) => {
+  const values: UnionType[] = [];
+  if (option.isLeaf) {
+    values.push(pathMode ? option.pathValue : option.value);
+  } else if (option.children) {
+    for (const item of option.children) {
+      values.push(...getLeafOptionValues(item, pathMode));
+    }
+  }
+  return values;
 };
 
 export const getLeafOptionInfos = (option: CascaderOptionInfo) => {
@@ -294,4 +323,78 @@ export const getKeysFromValue = (
 
 export const getOptionLabel = (option: CascaderOptionInfo) => {
   return option.path.map((item) => item.label).join(' / ');
+};
+
+export const getRootValues = (
+  values: UnionType[] | UnionType[][],
+  {
+    valueKeyOptionMap,
+    rootOptionMap,
+    valueKey,
+    pathMode,
+  }: {
+    valueKeyOptionMap: Map<string, CascaderOptionInfo>;
+    rootOptionMap: Map<string, CascaderOptionInfo>;
+    valueKey: string;
+    pathMode: boolean;
+  }
+) => {
+  const valuesMap = new Map<string, number>();
+  const rootValues: UnionType[] = [];
+
+  values.forEach((item) => {
+    if (isArray(item) && pathMode) {
+      item.reduce((isExistKeys: string[], pItem, pIndex, arr) => {
+        const key = String(isObject(pItem) ? pItem[valueKey] : pItem);
+        const isExist = valueKeyOptionMap.has(key);
+        if (pIndex === arr.length - 1) {
+          // 表示整个路径都存在
+          if (isExist && arr.length === isExistKeys.length + 1) {
+            isExistKeys.forEach((key) => {
+              valuesMap.set(key, (valuesMap?.get(key) || 0) + 1);
+            });
+            valuesMap.set(key, (valuesMap?.get(key) || 0) + 1);
+          } else {
+            // 不存在的值
+            rootValues.push(item);
+          }
+        }
+        return isExist ? isExistKeys.concat(key) : isExistKeys;
+      }, []);
+    } else {
+      // 递归父节点
+      const key = String(isObject(item) ? item[valueKey] : item);
+      let option = valueKeyOptionMap.get(key);
+      if (!option) {
+        // 不存在的值
+        rootValues.push(item);
+      }
+      while (option) {
+        valuesMap.set(
+          option.valueKey,
+          (valuesMap?.get(option.valueKey) || 0) + 1
+        );
+        option = option.parent;
+      }
+    }
+  });
+
+  const rootOptions = Array.from(rootOptionMap.values());
+  while (rootOptions.length) {
+    // eslint-disable-next-line prefer-destructuring
+    let length = rootOptions.length;
+    while (length) {
+      const option = rootOptions.shift()!;
+      if (
+        (valuesMap.get(option.valueKey) ?? -1) >= (option.totalLeafOptions ?? 0)
+      ) {
+        rootValues.push(pathMode ? option.pathValue : option.value);
+      } else {
+        rootOptions.push(...(option.children ?? []));
+      }
+      length--;
+    }
+  }
+
+  return rootValues;
 };

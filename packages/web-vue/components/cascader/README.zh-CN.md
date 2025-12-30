@@ -43,6 +43,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
+|checked-strategy|定制回填方式: 仅在多选模式multiple: true && 非严格模式checkStrictly: false 下生效|`'parent' \| 'child'`|`'child'`||
 |path-mode|绑定值是否为路径|`boolean`|`false`||
 |multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
 |model-value **(v-model)**|绑定值|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`-`||
@@ -105,6 +106,7 @@ description: 指在选择器选项数量较多时，采用多级分类的方式�
 
 |参数名|描述|类型|默认值|版本|
 |---|---|---|:---:|:---|
+|checked-strategy|定制回填方式: 仅在多选模式multiple: true && 非严格模式checkStrictly: false 下生效|`'parent' \| 'child'`|`'child'`||
 |path-mode|绑定值是否为路径|`boolean`|`false`||
 |multiple|是否为多选状态（多选模式默认开启搜索）|`boolean`|`false`||
 |model-value **(v-model)**|绑定值|`string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined`|`-`||
