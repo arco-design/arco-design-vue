@@ -19,7 +19,7 @@ description: Used for the selection, screening and classification of information
 
 @import ./__demo__/basic.md
 
-@import ./__demo__/closeable.md
+@import ./__demo__/closable.md
 
 @import ./__demo__/dynamically.md
 

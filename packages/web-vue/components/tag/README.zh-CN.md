@@ -8,7 +8,7 @@ description: 用于信息的选择、筛选、分类。用户通过标签进行�
 
 @import ./__demo__/basic.md
 
-@import ./__demo__/closeable.md
+@import ./__demo__/closable.md
 
 @import ./__demo__/dynamically.md
 
