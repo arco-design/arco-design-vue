@@ -4,6 +4,7 @@
     trigger="hover"
     :position="position"
     :popup-visible="computedPopupVisible"
+    :disabled="disabled"
     :popup-offset="10"
     show-arrow
     :content-class="contentCls"
@@ -51,6 +52,14 @@ export default defineComponent({
      * @en Whether the tooltip is visible by default (uncontrolled mode)
      */
     defaultPopupVisible: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 文字气泡是否禁用
+     * @en Whether to disable the tooltip
+     */
+    disabled: {
       type: Boolean,
       default: false,
     },
