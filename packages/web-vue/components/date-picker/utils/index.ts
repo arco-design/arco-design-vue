@@ -1,5 +1,4 @@
 import { Dayjs } from 'dayjs';
-import { dayjs, methods } from '../../_utils/date';
 import { isArray, isDayjs, isUndefined } from '../../_utils/is';
 import { CalendarValue, DisabledDate, Mode } from '../interface';
 
@@ -46,51 +45,48 @@ export function mergeValueWithTime(
 export function isDisabledDate(
   cellDate: Dayjs,
   disabledDate?: DisabledDate,
-  mode?: Mode
+  mode: Mode = 'date'
 ): boolean {
-  if (typeof disabledDate !== 'function') {
-    return false;
-  }
-  const getDisabledFromRange = (
-    currentMode: 'date' | 'month' | 'year',
-    start: number,
-    end: number
-  ): boolean => {
-    if (start > end || !Number.isInteger(start) || !Number.isInteger(end)) {
-      return false;
-    }
-    for (let current = start; current <= end; current++) {
-      const date = methods.set(cellDate, currentMode, current);
-      let isDisabled: boolean;
-      if (currentMode === 'date') {
-        isDisabled = disabledDate(date.toDate());
-      } else {
-        isDisabled = isDisabledDate(date, disabledDate, currentMode);
-      }
-      if (!isDisabled) {
-        return false;
-      }
-    }
-    return true;
-  };
+  if (typeof disabledDate !== 'function') return false;
+
+  const checkDate = (date: Dayjs) => disabledDate(date.toDate());
+
   switch (mode) {
     case 'date':
-    case 'week': {
-      return disabledDate(cellDate.toDate());
-    }
+    case 'week':
+      return checkDate(cellDate);
+
     case 'month': {
-      const startDate = 1;
-      const endDate = cellDate.endOf('month').get('date');
-      return getDisabledFromRange('date', startDate, endDate);
+      const days = cellDate.daysInMonth();
+      for (let d = 1; d <= days; d++) {
+        if (!checkDate(cellDate.date(d))) return false;
+      }
+      return true;
     }
+
     case 'quarter': {
-      const startMonth = Math.floor(cellDate.get('month') / 3) * 3;
-      const endMonth = startMonth + 2;
-      return getDisabledFromRange('month', startMonth, endMonth);
+      const startMonth = Math.floor(cellDate.month() / 3) * 3;
+      for (let m = startMonth; m < startMonth + 3; m++) {
+        const monthDate = cellDate.month(m);
+        const days = monthDate.daysInMonth();
+        for (let d = 1; d <= days; d++) {
+          if (!checkDate(monthDate.date(d))) return false;
+        }
+      }
+      return true;
     }
+
     case 'year': {
-      return getDisabledFromRange('month', 0, 11);
+      for (let m = 0; m < 12; m++) {
+        const monthDate = cellDate.month(m);
+        const days = monthDate.daysInMonth();
+        for (let d = 1; d <= days; d++) {
+          if (!checkDate(monthDate.date(d))) return false;
+        }
+      }
+      return true;
     }
+
     default:
       return false;
   }
