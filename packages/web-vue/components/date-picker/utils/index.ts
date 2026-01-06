@@ -51,41 +51,25 @@ export function isDisabledDate(
   if (typeof disabledDate !== 'function') {
     return false;
   }
-  // Whether cellDate is disabled in range
   const getDisabledFromRange = (
     currentMode: 'date' | 'month' | 'year',
     start: number,
     end: number
-  ) => {
-    let current = start;
-    while (current <= end) {
-      let date: Dayjs;
-      switch (currentMode) {
-        case 'date': {
-          date = methods.set(cellDate, 'date', current);
-          if (!disabledDate(date.toDate())) {
-            return false;
-          }
-          break;
-        }
-        case 'month': {
-          date = methods.set(cellDate, 'month', current);
-          if (!isDisabledDate(date, disabledDate, 'month')) {
-            return false;
-          }
-          break;
-        }
-        case 'year': {
-          date = methods.set(cellDate, 'year', current);
-          if (!isDisabledDate(date, disabledDate, 'year')) {
-            return false;
-          }
-          break;
-        }
-        default:
-          break;
+  ): boolean => {
+    if (start > end || !Number.isInteger(start) || !Number.isInteger(end)) {
+      return false;
+    }
+    for (let current = start; current <= end; current++) {
+      const date = methods.set(cellDate, currentMode, current);
+      let isDisabled: boolean;
+      if (currentMode === 'date') {
+        isDisabled = disabledDate(date.toDate());
+      } else {
+        isDisabled = isDisabledDate(date, disabledDate, currentMode);
       }
-      current += 1;
+      if (!isDisabled) {
+        return false;
+      }
     }
     return true;
   };
