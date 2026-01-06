@@ -1,7 +1,6 @@
 import { Dayjs } from 'dayjs';
-import { dayjs } from '../../_utils/date';
 import { isArray, isDayjs, isUndefined } from '../../_utils/is';
-import { CalendarValue } from '../interface';
+import { CalendarValue, DisabledDate, Mode } from '../interface';
 
 export function newArray<T>(length: number) {
   return [...Array<T>(length)];
@@ -41,4 +40,54 @@ export function mergeValueWithTime(
     .set('year', dateVal.year())
     .set('month', dateVal.month())
     .set('date', dateVal.date());
+}
+
+export function isDisabledDate(
+  cellDate: Dayjs,
+  disabledDate?: DisabledDate,
+  mode: Mode = 'date'
+): boolean {
+  if (typeof disabledDate !== 'function') return false;
+
+  const checkDate = (date: Dayjs) => disabledDate(date.toDate());
+
+  switch (mode) {
+    case 'date':
+    case 'week':
+      return checkDate(cellDate);
+
+    case 'month': {
+      const days = cellDate.daysInMonth();
+      for (let d = 1; d <= days; d++) {
+        if (!checkDate(cellDate.date(d))) return false;
+      }
+      return true;
+    }
+
+    case 'quarter': {
+      const startMonth = Math.floor(cellDate.month() / 3) * 3;
+      for (let m = startMonth; m < startMonth + 3; m++) {
+        const monthDate = cellDate.month(m);
+        const days = monthDate.daysInMonth();
+        for (let d = 1; d <= days; d++) {
+          if (!checkDate(monthDate.date(d))) return false;
+        }
+      }
+      return true;
+    }
+
+    case 'year': {
+      for (let m = 0; m < 12; m++) {
+        const monthDate = cellDate.month(m);
+        const days = monthDate.daysInMonth();
+        for (let d = 1; d <= days; d++) {
+          if (!checkDate(monthDate.date(d))) return false;
+        }
+      }
+      return true;
+    }
+
+    default:
+      return false;
+  }
 }

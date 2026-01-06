@@ -63,10 +63,10 @@
 import { Dayjs } from 'dayjs';
 import { computed, defineComponent, PropType, reactive, toRefs } from 'vue';
 import type { Cell, DisabledDate, IsSameTime, Mode } from '../interface';
-import { isFunction } from '../../_utils/is';
 import useCellClassName from '../hooks/use-cell-class-name';
 import RenderFunction, { RenderFunc } from '../../_components/render-function';
 import { getDateValue } from '../../_utils/date';
+import { isDisabledDate } from '../utils';
 
 export default defineComponent({
   name: 'PanelBody',
@@ -118,10 +118,7 @@ export default defineComponent({
     );
 
     const isCellDisabled = (cellData: Cell) =>
-      !!(
-        isFunction(disabledDate?.value) &&
-        disabledDate?.value(getDateValue(cellData.value))
-      );
+      isDisabledDate(cellData.value, disabledDate?.value, mode?.value);
 
     return {
       isWeek: computed(() => mode?.value === 'week'),
