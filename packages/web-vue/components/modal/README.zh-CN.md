@@ -59,6 +59,7 @@ description: 在当前页面打开一个浮层，承载相关操作。
 |on-before-cancel|触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。|`() => boolean`|`-`|2.7.0|
 |esc-to-close|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 |draggable|是否支持拖动|`boolean`|`false`|2.19.0|
+|drag-options|拖拽配置|`ModalDragOptions`|`-`||
 |fullscreen|是否开启全屏|`boolean`|`false`|2.19.0|
 |mask-animation-name|遮罩层动画名字|`string`|`-`|2.24.0|
 |modal-animation-name|对话框动画名字|`string`|`-`|2.24.0|
@@ -124,6 +125,7 @@ Modal._context = app._context;
 |alignCenter|对话框是否居中显示|`boolean`|`true`||
 |escToClose|是否支持 ESC 键关闭对话框|`boolean`|`true`|2.15.0|
 |draggable|是否支持拖动|`boolean`|`false`|2.19.0|
+|dragOptions|拖拽配置|`ModalDragOptions`|`-`||
 |fullscreen|是否开启全屏|`boolean`|`false`|2.19.0|
 |onOk|点击确定按钮的回调函数|`(e?: Event) => void`|`-`||
 |onCancel|点击取消按钮的回调函数|`(e?: Event) => void`|`-`||
@@ -167,5 +169,13 @@ Modal._context = app._context;
 |success|打开成功对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |warning|打开警告对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |error|打开错误对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+
+
+
+### ModalDragOptions
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|outOfScreen|是否允许超出屏幕|`boolean`|`false`|
 
 
