@@ -1,4 +1,4 @@
-import { defineComponent, computed, toRefs, PropType, ref } from 'vue';
+import { defineComponent, computed, toRefs, PropType, ref, watch } from 'vue';
 import { Dayjs, UnitType } from 'dayjs';
 import Month, { getAllDaysByTime } from './month';
 import Year from './year';
@@ -145,6 +145,10 @@ export default defineComponent({
     });
 
     const pageShowDate = ref(computedValue.value || getNow());
+
+    watch(computedValue, () => {
+      pageShowDate.value = computedValue.value;
+    });
 
     // page data list
     const pageData = computed(() => {
