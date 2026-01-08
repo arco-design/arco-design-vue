@@ -78,7 +78,7 @@ import { Dayjs } from 'dayjs';
 import { RenderFunc } from '../../../_components/render-function';
 import { TimePickerProps } from '../../../time-picker/interface';
 import { getPrefixCls } from '../../../_utils/global-config';
-import { getDateValue, getNow, methods } from '../../../_utils/date';
+import { getDateValue, getNow, methods, dayjs } from '../../../_utils/date';
 import type {
   Cell,
   DisabledDate,
@@ -98,6 +98,7 @@ import IconCalendar from '../../../icon/icon-calendar';
 import IconClockCircle from '../../../icon/icon-clock-circle';
 import useMergeState from '../../../_hooks/use-merge-state';
 import useDatePickerTransform from '../../hooks/use-inject-datepicker-transform';
+import { useI18n } from '../../../locale';
 
 const ROW_COUNT = 6;
 const COL_COUNT = 7;
@@ -273,13 +274,19 @@ export default defineComponent({
         };
       }
 
+      const { locale: globalLocal } = useI18n();
       const rows = newArray(ROW_COUNT).map((_, index) => {
         const row = flatData.slice(index * COL_COUNT, (index + 1) * COL_COUNT);
         if (isWeek.value) {
           // 取第一个作为周 cell 的值
           const valueOfWeek = row[0].value;
           row.unshift({
-            label: valueOfWeek.week(),
+            label: valueOfWeek
+              .locale({
+                ...dayjs.Ls[globalLocal.value.toLocaleLowerCase()],
+                weekStart: dayStartOfWeek.value,
+              })
+              .week(),
             value: valueOfWeek,
           });
         }
