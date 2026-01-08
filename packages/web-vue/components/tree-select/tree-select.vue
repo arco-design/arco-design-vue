@@ -227,7 +227,7 @@ export default defineComponent({
      * @en The maximum number of labels displayed, only valid in multi-select mode
      * */
     maxTagCount: {
-      type: Number,
+      type: [Number, Object],
     },
     /**
      * @zh 是否支持多选

@@ -17,7 +17,7 @@ import { getValueData } from './utils';
 import Tag from '../tag';
 import IconHover from '../_components/icon-hover.vue';
 import IconClose from '../icon/icon-close';
-import { InputTagFieldNames, TagData } from './interface';
+import { InputTagFieldNames, TagData, TagDataInfo } from './interface';
 import { omit } from '../_utils/omit';
 import pick from '../_utils/pick';
 import ResizeObserver from '../_components/resize-observer';
@@ -25,6 +25,7 @@ import FeedbackIcon from '../_components/feedback-icon.vue';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
 import { isNull, isObject, isUndefined } from '../_utils/is';
+import Popover, { PopoverProps } from '../popover';
 
 const DEFAULT_FIELD_NAMES = {
   value: 'value',
@@ -118,7 +119,13 @@ export default defineComponent({
      * @en The maximum number of tags displayed, `0` means unlimited
      */
     maxTagCount: {
-      type: Number,
+      type: [Number, Object] as PropType<
+        | number
+        | {
+            count: number;
+            showPopover?: boolean | PopoverProps;
+          }
+      >,
       default: 0,
     },
     /**
@@ -352,15 +359,27 @@ export default defineComponent({
     const valueData = computed(() =>
       getValueData(computedValue.value, mergedFieldNames.value)
     );
-
+    const maxTagCountValue = computed(() => {
+      if (isObject(props.maxTagCount)) {
+        return props.maxTagCount.count;
+      }
+      return props.maxTagCount;
+    });
+    const showInvisibleTagsPopover = computed(() => {
+      // eslint-disable-next-line
+      return isObject(props.maxTagCount) && !!props.maxTagCount?.showPopover;
+    });
     const tags = computed(() => {
-      if (props.maxTagCount > 0) {
-        const invisibleTags = valueData.value.length - props.maxTagCount;
-        if (invisibleTags > 0) {
-          const result = valueData.value.slice(0, props.maxTagCount);
+      if (maxTagCountValue.value > 0) {
+        const invisibleTagsNumber =
+          valueData.value.length - maxTagCountValue.value;
+        if (invisibleTagsNumber > 0) {
+          const result = valueData.value.slice(0, maxTagCountValue.value);
+          const invisibleTags = valueData.value.slice(maxTagCountValue.value);
           const raw = {
             value: '__arco__more',
-            label: `+${invisibleTags}...`,
+            label: `+${invisibleTagsNumber}...`,
+            invisibleTags,
             closable: false,
           };
           result.push({
@@ -547,23 +566,95 @@ export default defineComponent({
             },
           ]}
         >
-          {tags.value.map((item, index) => (
-            <Tag
-              key={`tag-${item.value}`}
-              class={`${prefixCls}-tag`}
-              closable={
-                !mergedDisabled.value && !props.readonly && item.closable
-              }
-              visible
-              nowrap={props.tagNowrap}
-              {...item.tagProps}
-              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
-            >
-              {slots.tag?.({ data: item.raw }) ??
-                props.formatTag?.(item.raw) ??
-                item.label}
-            </Tag>
-          ))}
+          {tags.value.map((item, index) => {
+            if (
+              showInvisibleTagsPopover.value &&
+              item.raw.value === '__arco__more'
+            ) {
+              const popoverProps: any =
+                isObject(props.maxTagCount) &&
+                isObject(props.maxTagCount.showPopover)
+                  ? props.maxTagCount.showPopover
+                  : {};
+              return (
+                <span key={`invisible-tag-${item.value}`}>
+                  <Popover
+                    v-slots={{
+                      content: () => (
+                        <div class={`${prefixCls}-invisible-popover-content`}>
+                          {(item.raw?.invisibleTags as TagDataInfo[])?.map(
+                            (tagitem) => {
+                              return (
+                                <Tag
+                                  key={`tag-${tagitem.value}`}
+                                  class={`${prefixCls}-tag`}
+                                  closable={
+                                    !mergedDisabled.value &&
+                                    !props.readonly &&
+                                    tagitem.closable
+                                  }
+                                  visible
+                                  nowrap={props.tagNowrap}
+                                  {...tagitem.tagProps}
+                                  onClose={(ev: MouseEvent) =>
+                                    handleRemove(tagitem.value, index, ev)
+                                  }
+                                >
+                                  {slots.tag?.({ data: tagitem.raw }) ??
+                                    props.formatTag?.(tagitem.raw) ??
+                                    tagitem.label}
+                                </Tag>
+                              );
+                            }
+                          )}
+                        </div>
+                      ),
+                    }}
+                    {...popoverProps}
+                  >
+                    <Tag
+                      key={`tag-${item.value}`}
+                      class={`${prefixCls}-tag`}
+                      closable={
+                        !mergedDisabled.value &&
+                        !props.readonly &&
+                        item.closable
+                      }
+                      visible
+                      nowrap={props.tagNowrap}
+                      {...item.tagProps}
+                      onClose={(ev: MouseEvent) =>
+                        handleRemove(item.value, index, ev)
+                      }
+                    >
+                      {slots.tag?.({ data: item.raw }) ??
+                        props.formatTag?.(item.raw) ??
+                        item.label}
+                    </Tag>
+                  </Popover>
+                </span>
+              );
+            }
+            return (
+              <Tag
+                key={`tag-${item.value}`}
+                class={`${prefixCls}-tag`}
+                closable={
+                  !mergedDisabled.value && !props.readonly && item.closable
+                }
+                visible
+                nowrap={props.tagNowrap}
+                {...item.tagProps}
+                onClose={(ev: MouseEvent) =>
+                  handleRemove(item.value, index, ev)
+                }
+              >
+                {slots.tag?.({ data: item.raw }) ??
+                  props.formatTag?.(item.raw) ??
+                  item.label}
+              </Tag>
+            );
+          })}
           <input
             {...inputAttrs.value}
             ref={inputRef}

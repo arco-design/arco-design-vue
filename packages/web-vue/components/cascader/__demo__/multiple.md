@@ -18,7 +18,11 @@ Enable multiple selection mode by setting `multiple`.
 
 ```vue
 <template>
-  <a-cascader :options="options" :default-value="['datunli']" :style="{width:'320px'}" placeholder="Please select ..." multiple/>
+  <a-space direction="vertical">
+    <a-cascader :options="options" :default-value="['datunli']" :style="{width:'320px'}" placeholder="Please select ..." multiple/>
+    <a-cascader :options="options" :default-value="['datunli']" :style="{width:'320px'}" placeholder="Please select ..." multiple :max-tag-count="2"/>
+    <a-cascader :options="options" :default-value="['datunli']" :style="{width:'320px'}" placeholder="Please select ..." multiple :max-tag-count="{count: 2, showPopover: true}"/>
+  </a-space>
 </template>
 
 <script>
