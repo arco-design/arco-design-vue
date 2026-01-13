@@ -28,6 +28,142 @@ exports[`<color-picker> demo: render [colors] correctly 1`] = `
 </div>"
 `;
 
+exports[`<color-picker> demo: render [custom-panel] correctly 1`] = `
+"<div class=\\"arco-space arco-space-vertical\\">
+  <!---->
+  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 32px;\\">
+    <div class=\\"arco-color-picker-panel\\">
+      <div class=\\"custom-header\\">自定义调色板</div>
+      <div class=\\"arco-color-picker-palette\\" style=\\"background-color: rgb(0, 255, 205);\\">
+        <div class=\\"arco-color-picker-handler\\" style=\\"top: 17.647058823529417%; left: 91.42857142857143%;\\"></div>
+      </div>
+      <div class=\\"custom-header\\">自定义控制条</div>
+      <div class=\\"arco-color-picker-panel-control\\">
+        <div class=\\"arco-color-picker-control-wrapper\\">
+          <div>
+            <div class=\\"arco-color-picker-control-bar arco-color-picker-control-bar-hue\\">
+              <div class=\\"arco-color-picker-handler\\" style=\\"left: 46.70138888888889%; color: rgb(18, 210, 172);\\"></div>
+            </div>
+            <div class=\\"arco-color-picker-control-bar-bg\\">
+              <div class=\\"arco-color-picker-control-bar arco-color-picker-control-bar-alpha\\">
+                <div class=\\"arco-color-picker-handler\\" style=\\"left: 100%; color: rgb(18, 210, 172);\\"></div>
+              </div>
+            </div>
+          </div>
+          <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(18, 210, 172);\\"></div>
+        </div>
+        <div class=\\"arco-color-picker-input-wrapper\\"><span class=\\"arco-select-view-single arco-select arco-color-picker-select arco-select-view arco-select-view-size-mini\\" title=\\"Hex\\"><!----><input class=\\"arco-select-view-input arco-select-view-input-hidden\\" readonly=\\"\\"><span class=\\"arco-select-view-value\\">Hex</span><span class=\\"arco-select-view-suffix\\"><!----><span class=\\"arco-select-view-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down arco-select-view-arrow-icon\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></span>
+          <!----></span></span>
+          <!---->
+          <div class=\\"arco-color-picker-group-wrapper\\">
+            <div class=\\"arco-input-group arco-color-picker-input-group\\"><span class=\\"arco-input-wrapper arco-color-picker-input-hex\\"><span class=\\"arco-input-prefix\\">#</span><input class=\\"arco-input arco-input-size-mini\\" type=\\"text\\">
+              <!---->
+              <!----></span><span class=\\"arco-input-wrapper arco-input-number arco-input-number-mode-embed arco-input-number-size-mini arco-color-picker-input-alpha\\"><!----><input class=\\"arco-input arco-input-size-mini\\" type=\\"text\\" role=\\"spinbutton\\" aria-valuemax=\\"100\\" aria-valuemin=\\"0\\" aria-valuenow=\\"100\\"><!----><span class=\\"arco-input-suffix\\"><!----><div class=\\"arco-input-number-suffix\\">%</div><div class=\\"arco-input-number-step\\"><button class=\\"arco-input-number-step-button arco-input-number-step-button-disabled\\" type=\\"button\\" tabindex=\\"-1\\" disabled=\\"\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-up\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 30.557 24.043 15 8.487 30.557\\"></path></svg></button><button class=\\"arco-input-number-step-button\\" type=\\"button\\" tabindex=\\"-1\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-down\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M39.6 17.443 24.043 33 8.487 17.443\\"></path></svg></button></div><!----></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"custom-header\\">自定义颜色区域</div>
+      <div class=\\"arco-color-picker-panel-colors\\">
+        <div class=\\"arco-color-picker-colors-section\\">
+          <div class=\\"custom-title\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-history\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M6 24c0-9.941 8.059-18 18-18s18 8.059 18 18-8.059 18-18 18c-6.26 0-11.775-3.197-15-8.047M6 24l-.5-.757h1L6 24Zm26 2h-9v-9\\"></path>
+            </svg> 最近使用 </div>
+          <div class=\\"arco-color-picker-colors-wrapper\\"><span class=\\"arco-color-picker-colors-empty\\">暂无</span></div>
+        </div>
+        <div class=\\"arco-color-picker-colors-section\\">
+          <div class=\\"custom-title\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-palette\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+              <path d=\\"M31.813 12.02C29.73 10.459 27.013 10 24 10c-9.78 0-17.708 6.987-17.708 15.042 0 8.054 8.97 14.583 18.75 14.583 5.277 0 2.485-5.318 5.73-8.333 2.767-2.574 10.937-1.563 10.937-6.25 0-2.792-.521-5.209-2.605-7.617\\"></path>
+              <path d=\\"M25.042 25.563 42.23 8.375\\"></path>
+              <circle cx=\\"22.5\\" cy=\\"17.5\\" r=\\"2.5\\" fill=\\"currentColor\\" stroke=\\"none\\"></circle>
+              <circle cx=\\"15.5\\" cy=\\"20.5\\" r=\\"2.5\\" fill=\\"currentColor\\" stroke=\\"none\\"></circle>
+              <circle cx=\\"14.5\\" cy=\\"28.5\\" r=\\"2.5\\" fill=\\"currentColor\\" stroke=\\"none\\"></circle>
+            </svg> 预设颜色 </div>
+          <div class=\\"arco-color-picker-colors-wrapper\\">
+            <div class=\\"arco-color-picker-colors-list\\">
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(0, 180, 42);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(0, 180, 42);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(60, 126, 255);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(60, 126, 255);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(255, 125, 0);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(255, 125, 0);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(247, 105, 101);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(247, 105, 101);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(247, 186, 30);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(247, 186, 30);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(245, 49, 157);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(245, 49, 157);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(217, 26, 217);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(217, 26, 217);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(159, 219, 29);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(159, 219, 29);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(250, 220, 25);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(250, 220, 25);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(114, 46, 209);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(114, 46, 209);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(52, 145, 250);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(52, 145, 250);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(123, 225, 136);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(123, 225, 136);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(147, 190, 255);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(147, 190, 255);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(255, 207, 139);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(255, 207, 139);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(251, 176, 167);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(251, 176, 167);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(252, 233, 150);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(252, 233, 150);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(251, 157, 199);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(251, 157, 199);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(240, 142, 230);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(240, 142, 230);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(220, 241, 144);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(220, 241, 144);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(253, 250, 148);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(253, 250, 148);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(195, 150, 237);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(195, 150, 237);\\"></div>
+              </div>
+              <div class=\\"arco-color-picker-color-block\\" style=\\"background-color: rgb(159, 212, 253);\\">
+                <div class=\\"arco-color-picker-block\\" style=\\"background-color: rgb(159, 212, 253);\\"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-color-picker arco-color-picker-size-medium\\">
+      <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(18, 210, 172);\\"></div>
+      <!----><input class=\\"arco-color-picker-input\\">
+    </div>
+    <!---->
+  </div>
+</div>"
+`;
+
 exports[`<color-picker> demo: render [disabled] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->

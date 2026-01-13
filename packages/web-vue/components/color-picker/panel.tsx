@@ -29,10 +29,26 @@ export default defineComponent({
     format: String as PropType<'hex' | 'rgb'>,
     historyColors: Array as PropType<string[]>,
     presetColors: Array as PropType<string[]>,
+    /**
+     * @zh 显示调色板
+     * @en show palette
+     */
+    showPalette: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 显示控制条
+     * @en show control bar
+     */
+    showControls: {
+      type: Boolean,
+      default: true,
+    },
     onAlphaChange: Function as PropType<(alpha: number) => void>,
     onHsvChange: Function as PropType<(hsv: HSV) => void>,
   },
-  setup(props) {
+  setup(props, { slots }) {
     const { t } = useI18n();
     const prefixCls = getPrefixCls('color-picker');
     const hsv = computed(() => props.color.hsv);
@@ -81,9 +97,15 @@ export default defineComponent({
       );
     };
 
-    const renderColorSection = (text: string, colors: string[] | undefined) => (
+    const renderColorSection = (
+      text: string,
+      colors: string[] | undefined,
+      type: 'history' | 'preset'
+    ) => (
       <div class={`${prefixCls}-colors-section`}>
-        <div class={`${prefixCls}-colors-text`}>{text}</div>
+        {slots[`${type}-title`]?.() ?? (
+          <div class={`${prefixCls}-colors-text`}>{text}</div>
+        )}
         <div class={`${prefixCls}-colors-wrapper`}>
           {colors?.length ? (
             <div class={`${prefixCls}-colors-list`}>
@@ -98,81 +120,122 @@ export default defineComponent({
       </div>
     );
 
+    const defaultPalette = () => (
+      <Palette
+        color={props.color}
+        onChange={(s, v) => props.onHsvChange?.({ h: hsv.value.h, s, v })}
+      />
+    );
+
+    const defaultControls = () => (
+      <div class={`${prefixCls}-panel-control`}>
+        <div class={`${prefixCls}-control-wrapper`}>
+          <div>
+            <ControlBar
+              type="hue"
+              x={hsv.value.h}
+              color={props.color}
+              colorString={props.colorString}
+              onChange={(h) =>
+                props.onHsvChange?.({ h, s: hsv.value.s, v: hsv.value.v })
+              }
+            />
+            {!props.disabledAlpha && (
+              <ControlBar
+                type="alpha"
+                x={props.alpha}
+                color={props.color}
+                colorString={props.colorString}
+                onChange={props.onAlphaChange}
+              />
+            )}
+          </div>
+          <div
+            class={`${prefixCls}-preview`}
+            style={{ backgroundColor: props.colorString }}
+          />
+        </div>
+        <div class={`${prefixCls}-input-wrapper`}>
+          <Select
+            class={`${prefixCls}-select`}
+            size="mini"
+            trigger-props={{ class: `${prefixCls}-select-popup` }}
+            options={[
+              {
+                value: 'hex',
+                label: 'Hex',
+              },
+              {
+                value: 'rgb',
+                label: 'RGB',
+              },
+            ]}
+            modelValue={format.value}
+            onChange={onChange}
+          />
+          <div class={`${prefixCls}-group-wrapper`}>{renderInput()}</div>
+        </div>
+      </div>
+    );
+
+    const defaultColorSection = () => (
+      <div
+        class={{
+          [`${prefixCls}-panel-colors`]: true,
+          [`${prefixCls}-panel-colors-only`]:
+            !props.showPalette && !props.showControls,
+        }}
+      >
+        {props.showHistory &&
+          renderColorSection(
+            t('colorPicker.history'),
+            props.historyColors,
+            'history'
+          )}
+        {props.showPreset &&
+          renderColorSection(
+            t('colorPicker.preset'),
+            props.presetColors,
+            'preset'
+          )}
+      </div>
+    );
+
+    const renderPalette = () => {
+      if (!props.showPalette) return null;
+      return slots.palette?.({ palette: defaultPalette }) ?? defaultPalette();
+    };
+
+    const renderControls = () => {
+      if (!props.showControls) return null;
+      return (
+        slots.controls?.({ controls: defaultControls }) ?? defaultControls()
+      );
+    };
+
     const renderColorSec = () => {
       if (props.showHistory || props.showPreset) {
         return (
-          <div class={`${prefixCls}-panel-colors`}>
-            {props.showHistory &&
-              renderColorSection(t('colorPicker.history'), props.historyColors)}
-            {props.showPreset &&
-              renderColorSection(t('colorPicker.preset'), props.presetColors)}
-          </div>
+          slots['color-section']?.({ colorSection: defaultColorSection }) ??
+          defaultColorSection()
         );
       }
       return null;
     };
 
-    return () => (
-      <div
-        class={{
-          [`${prefixCls}-panel`]: true,
-          [`${prefixCls}-panel-disabled`]: props.disabled,
-        }}
-      >
-        <Palette
-          color={props.color}
-          onChange={(s, v) => props.onHsvChange?.({ h: hsv.value.h, s, v })}
-        />
-        <div class={`${prefixCls}-panel-control`}>
-          <div class={`${prefixCls}-control-wrapper`}>
-            <div>
-              <ControlBar
-                type="hue"
-                x={hsv.value.h}
-                color={props.color}
-                colorString={props.colorString}
-                onChange={(h) =>
-                  props.onHsvChange?.({ h, s: hsv.value.s, v: hsv.value.v })
-                }
-              />
-              {!props.disabledAlpha && (
-                <ControlBar
-                  type="alpha"
-                  x={props.alpha}
-                  color={props.color}
-                  colorString={props.colorString}
-                  onChange={props.onAlphaChange}
-                />
-              )}
-            </div>
-            <div
-              class={`${prefixCls}-preview`}
-              style={{ backgroundColor: props.colorString }}
-            />
-          </div>
-          <div class={`${prefixCls}-input-wrapper`}>
-            <Select
-              class={`${prefixCls}-select`}
-              size="mini"
-              trigger-props={{ class: `${prefixCls}-select-popup` }}
-              options={[
-                {
-                  value: 'hex',
-                  label: 'Hex',
-                },
-                {
-                  value: 'rgb',
-                  label: 'RGB',
-                },
-              ]}
-              modelValue={format.value}
-              onChange={onChange}
-            />
-            <div class={`${prefixCls}-group-wrapper`}>{renderInput()}</div>
-          </div>
+    return () => {
+      return (
+        <div
+          class={{
+            [`${prefixCls}-panel`]: true,
+            [`${prefixCls}-panel-disabled`]: props.disabled,
+          }}
+        >
+          {renderPalette()}
+          {renderControls()}
+          {renderColorSec()}
         </div>
-        {renderColorSec()}
-      </div>
-    );
+      );
+    };
   },
 });

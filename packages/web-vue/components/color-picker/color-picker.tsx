@@ -69,6 +69,22 @@ export default defineComponent({
       default: false,
     },
     /**
+     * @zh 显示调色板
+     * @en show palette
+     */
+    showPalette: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * @zh 显示控制条
+     * @en show control bar
+     */
+    showControls: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * @zh 禁用
      * @en disabled
      */
@@ -130,6 +146,34 @@ export default defineComponent({
      */
     'popup-visible-change': (visible: boolean, value: string) => true,
   },
+  /**
+   * @zh 调色板区域
+   * @en Palette Area
+   * @slot palette
+   * @binding {() => JSX.Element} palette
+   */
+  /**
+   * @zh 控制条区域
+   * @en Control Bar Area
+   * @slot controls
+   * @binding {() => JSX.Element} controls
+   */
+  /**
+   * @zh 颜色选择区域
+   * @en Color Selection Area
+   * @slot color-section
+   * @binding {() => JSX.Element} colorSection
+   */
+  /**
+   * @zh 历史颜色标题
+   * @en History Colors Title
+   * @slot history-title
+   */
+  /**
+   * @zh 预设颜色标题
+   * @en Preset Colors Title
+   * @slot preset-title
+   */
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('color-picker');
     const mergeValue = computed(() => {
@@ -243,6 +287,9 @@ export default defineComponent({
           disabled={props.disabled}
           disabledAlpha={props.disabledAlpha}
           format={props.format}
+          showPalette={props.showPalette}
+          showControls={props.showControls}
+          v-slots={slots}
           onHsvChange={onHsvChange}
           onAlphaChange={onAlphaChange}
         />
