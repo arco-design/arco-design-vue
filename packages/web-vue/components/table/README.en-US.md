@@ -162,7 +162,7 @@ description: It is used for data collection, display, analysis and processing, a
 |Attribute|Description|Type|Default|version|
 |---|---|---|:---:|:---|
 |data-index|Identifies the column information, corresponding to the data in TableData|`string`|`-`||
-|title|Column title|`string`|`-`||
+|title|Column title|`string \| RenderFunction`|`-`||
 |width|Column width|`number`|`-`||
 |min-width|Minimum column width|`number`|`-`||
 |align|Alignment direction|`TableColumnData['align']`|`-`||
