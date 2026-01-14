@@ -1,38 +1,40 @@
 <template>
-  <li
-    role="alert"
-    :class="[
-      prefixCls,
-      `${prefixCls}-${type}`,
-      { [`${prefixCls}-closable`]: closable },
-    ]"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-  >
-    <span
-      v-if="showIcon && !(type === 'normal' && !$slots.icon)"
-      :class="`${prefixCls}-icon`"
+  <li :class="`${prefixCls}-item-wrapper`">
+    <div
+      role="alert"
+      :class="[
+        prefixCls,
+        `${prefixCls}-${type}`,
+        { [`${prefixCls}-closable`]: closable },
+      ]"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
     >
-      <slot name="icon">
-        <icon-info-circle-fill v-if="type === 'info'" />
-        <icon-check-circle-fill v-else-if="type === 'success'" />
-        <icon-exclamation-circle-fill v-else-if="type === 'warning'" />
-        <icon-close-circle-fill v-else-if="type === 'error'" />
-        <icon-loading v-else-if="type === 'loading'" />
-      </slot>
-    </span>
-    <span :class="`${prefixCls}-content`">
-      <slot />
-    </span>
-    <span
-      v-if="closable"
-      :class="`${prefixCls}-close-btn`"
-      @click="handleClose"
-    >
-      <a-icon-hover>
-        <icon-close />
-      </a-icon-hover>
-    </span>
+      <span
+        v-if="showIcon && !(type === 'normal' && !$slots.icon)"
+        :class="`${prefixCls}-icon`"
+      >
+        <slot name="icon">
+          <icon-info-circle-fill v-if="type === 'info'" />
+          <icon-check-circle-fill v-else-if="type === 'success'" />
+          <icon-exclamation-circle-fill v-else-if="type === 'warning'" />
+          <icon-close-circle-fill v-else-if="type === 'error'" />
+          <icon-loading v-else-if="type === 'loading'" />
+        </slot>
+      </span>
+      <span :class="`${prefixCls}-content`">
+        <slot />
+      </span>
+      <span
+        v-if="closable"
+        :class="`${prefixCls}-close-btn`"
+        @click="handleClose"
+      >
+        <a-icon-hover>
+          <icon-close />
+        </a-icon-hover>
+      </span>
+    </div>
   </li>
 </template>
 
