@@ -84,6 +84,13 @@ export const convertHexToDecimal = (h: string): number => {
   return parseIntFromHex(h) / 255;
 };
 
+export const DEFAULT_COLOR = {
+  h: 0,
+  s: 1,
+  v: 1,
+  a: 1,
+};
+
 export const formatInputToRgb = (
   color: string
 ): { r: number; g: number; b: number; a?: number } | false => {
@@ -156,12 +163,7 @@ export const formatInputToHSVA = (color: string) => {
       a: rgba.a ?? 1,
     };
   }
-  return {
-    h: 0,
-    s: 1,
-    v: 1,
-    a: 1,
-  };
+  return DEFAULT_COLOR;
 };
 
 export const hexToRgb = (color: string): any => {

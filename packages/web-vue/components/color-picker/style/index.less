@@ -12,6 +12,16 @@
   &-preview {
     box-sizing: border-box;
     border: @color-preview-border-size solid @color-preview-border-color;
+
+    &-transparent {
+      background-image: conic-gradient(
+        rgba(0, 0, 0, 0.06) 0 25%,
+        transparent 0 50%,
+        rgba(0, 0, 0, 0.06) 0 75%,
+        transparent 0
+      );
+      background-size: 8px 8px;
+    }
   }
 
   &-value {

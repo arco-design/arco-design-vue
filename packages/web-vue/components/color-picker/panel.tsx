@@ -1,4 +1,4 @@
-import { PropType, computed, defineComponent, ref } from 'vue';
+import { PropType, computed, defineComponent, ref, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { hexToRgb, rgbToHsv } from '../_utils/color';
 import { Color, HSV } from './interface';
@@ -9,6 +9,7 @@ import Palette from './palette';
 import Select from '../select';
 import InputRgb from './input-rgb';
 import InputHex from './input-hex';
+import { colorPickerInjectionKey } from './context';
 
 export default defineComponent({
   name: 'Panel',
@@ -37,6 +38,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('color-picker');
     const hsv = computed(() => props.color.hsv);
     const [format, setFormat] = useState<'hex' | 'rgb'>(props.format || 'hex');
+    const colorPickerCtx = inject(colorPickerInjectionKey);
 
     const onChange = (value: any) => {
       setFormat(value);
@@ -146,8 +148,14 @@ export default defineComponent({
               )}
             </div>
             <div
-              class={`${prefixCls}-preview`}
-              style={{ backgroundColor: props.colorString }}
+              class={{
+                [`${prefixCls}-preview`]: true,
+                [`${prefixCls}-preview-transparent`]:
+                  colorPickerCtx?.isEmptyColor,
+              }}
+              style={{
+                backgroundColor: colorPickerCtx?.formatValue || 'transparent',
+              }}
             />
           </div>
           <div class={`${prefixCls}-input-wrapper`}>
@@ -165,6 +173,7 @@ export default defineComponent({
                   label: 'RGB',
                 },
               ]}
+              disabled={colorPickerCtx?.isEmptyColor}
               modelValue={format.value}
               onChange={onChange}
             />

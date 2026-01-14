@@ -1,4 +1,12 @@
-import { defineComponent, PropType, computed, watch } from 'vue';
+import {
+  defineComponent,
+  PropType,
+  computed,
+  watch,
+  provide,
+  reactive,
+  ref,
+} from 'vue';
 import { Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { colors } from './colors';
@@ -11,7 +19,9 @@ import {
   hsvToRgb,
   rgbaToHex,
   rgbToHex,
+  DEFAULT_COLOR,
 } from '../_utils/color';
+import { colorPickerInjectionKey } from './context';
 
 export default defineComponent({
   name: 'ColorPicker',
@@ -20,13 +30,15 @@ export default defineComponent({
      * @zh 绑定值
      * @en Value
      */
-    modelValue: String,
+    modelValue: {
+      type: [String, null],
+    },
     /**
      * @zh 默认值（非受控状态）
      * @en Default value (uncontrolled state)
      */
     defaultValue: {
-      type: String,
+      type: [String, null],
     },
     /**
      * @zh 颜色值的格式
@@ -115,23 +127,25 @@ export default defineComponent({
     },
   },
   emits: {
-    'update:modelValue': (value: string) => true,
+    'update:modelValue': (value: string | null) => true,
     /**
      * @zh 颜色值改变时触发
      * @en Triggered when the color value changes
      * @param {string} value
      */
-    'change': (value: string) => true,
+    'change': (value: string | null) => true,
     /**
      * @zh 颜色面板展开和收起时触发
      * @en Triggered when the color panel is expanded and collapsed
      * @param {boolean} visible
      * @param {string} value
      */
-    'popup-visible-change': (visible: boolean, value: string) => true,
+    'popup-visible-change': (visible: boolean, value: string | null) => true,
   },
   setup(props, { emit, slots }) {
+    const EMPTY_COLOR = null;
     const prefixCls = getPrefixCls('color-picker');
+    const clearColor = ref(false);
     const mergeValue = computed(() => {
       return props.modelValue ?? props.defaultValue;
     });
@@ -161,6 +175,26 @@ export default defineComponent({
       }
     );
 
+    const defaultRgba = () => {
+      const { h, s, v, a } = DEFAULT_COLOR;
+      const { r, g, b } = hsvToRgb(h, s, v);
+      return {
+        r,
+        g,
+        b,
+        a,
+      };
+    };
+
+    const isEmpty = computed(() => {
+      const { r, g, b, a } = defaultRgba();
+      const defaultColorString = `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`;
+      return (
+        (!mergeValue.value || clearColor.value === true) &&
+        defaultColorString === colorString.value
+      );
+    });
+
     const color = computed(() => {
       const rgb = hsvToRgb(hsv.value.h, hsv.value.s, hsv.value.v);
       const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
@@ -178,6 +212,9 @@ export default defineComponent({
 
     const formatValue = computed(() => {
       const { r, g, b } = color.value.rgb;
+      if (isEmpty.value) {
+        return EMPTY_COLOR;
+      }
       if (props.format === 'rgb') {
         return alpha.value < 1 && !props.disabledAlpha
           ? `rgba(${r}, ${g}, ${b}, ${alpha.value.toFixed(2)})`
@@ -188,9 +225,12 @@ export default defineComponent({
         : `#${rgbToHex(r, g, b)}`;
     });
 
+    const isEmptyColor = computed(() => formatValue.value === EMPTY_COLOR);
+
     watch(formatValue, (value) => {
       emit('update:modelValue', value);
       emit('change', value);
+      clearColor.value = false;
     });
 
     const onHsvChange = (_value: HSV) => {
@@ -205,6 +245,16 @@ export default defineComponent({
       emit('popup-visible-change', visible, formatValue.value);
     };
 
+    provide(
+      colorPickerInjectionKey,
+      reactive({
+        isEmptyColor,
+        formatValue,
+        clearColor,
+        defaultRgba,
+      })
+    );
+
     const renderInput = () => {
       return (
         <div
@@ -215,10 +265,13 @@ export default defineComponent({
           }}
         >
           <div
-            class={`${prefixCls}-preview`}
-            style={{ backgroundColor: formatValue.value }}
+            class={{
+              [`${prefixCls}-preview`]: true,
+              [`${prefixCls}-preview-transparent`]: isEmptyColor.value,
+            }}
+            style={{ backgroundColor: formatValue.value || 'transparent' }}
           />
-          {props.showText && (
+          {props.showText && formatValue.value && (
             <div class={`${prefixCls}-value`}>{formatValue.value}</div>
           )}
           <input

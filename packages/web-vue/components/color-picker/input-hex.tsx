@@ -1,10 +1,11 @@
-import { defineComponent, PropType, toRefs, watch } from 'vue';
+import { defineComponent, PropType, toRefs, watch, inject } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { Color, HSV } from './interface';
 import { hexToRgb, rgbToHsv } from '../_utils/color';
 import useState from '../_hooks/use-state';
 import Input, { InputGroup } from '../input';
 import InputAlpha from './input-alpha';
+import { colorPickerInjectionKey } from './context';
 
 export default defineComponent({
   name: 'InputHex',
@@ -26,6 +27,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('color-picker');
     const { color } = toRefs(props);
     const [hex, setHex] = useState(color.value.hex);
+    const colorPickerCtx = inject(colorPickerInjectionKey);
 
     const handlerChange = (value: string) => {
       const _rgb = hexToRgb(value) || { r: 255, g: 0, b: 0 };
@@ -50,31 +52,61 @@ export default defineComponent({
       ev.preventDefault();
     };
 
+    const onInput = (value: string) => {
+      if (!value && colorPickerCtx?.clearColor === false) {
+        colorPickerCtx.clearColor = true;
+      }
+      setHex(value);
+    };
+
     watch(color, () => {
       if (color.value.hex !== hex.value) {
         setHex(color.value.hex);
       }
     });
 
-    return () => (
-      <InputGroup class={`${prefixCls}-input-group`}>
+    const renderInput = () => {
+      if (colorPickerCtx?.isEmptyColor) {
+        return (
+          <Input
+            class={`${prefixCls}-input-hex`}
+            size="mini"
+            maxLength={6}
+            disabled={props.disabled || colorPickerCtx?.isEmptyColor}
+            modelValue=""
+            onInput={onInput}
+            onChange={onInputChange}
+            onBlur={() => handlerChange}
+            onPressEnter={() => handlerChange}
+            // @ts-ignore
+            onPaste={onPaste}
+          />
+        );
+      }
+      return (
         <Input
           class={`${prefixCls}-input-hex`}
           v-slots={{ prefix: () => '#' }}
           size="mini"
           maxLength={6}
-          disabled={props.disabled}
+          disabled={props.disabled || colorPickerCtx?.isEmptyColor}
           modelValue={hex.value}
-          onInput={setHex}
+          onInput={onInput}
           onChange={onInputChange}
           onBlur={() => handlerChange}
           onPressEnter={() => handlerChange}
           // @ts-ignore
           onPaste={onPaste}
         />
+      );
+    };
+
+    return () => (
+      <InputGroup class={`${prefixCls}-input-group`}>
+        {renderInput()}
         {!props.disabledAlpha && (
           <InputAlpha
-            disabled={props.disabled}
+            disabled={props.disabled || colorPickerCtx?.isEmptyColor}
             value={props.alpha}
             onChange={props.onAlphaChange}
           />
