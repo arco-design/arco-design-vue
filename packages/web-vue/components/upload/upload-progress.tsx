@@ -30,15 +30,14 @@ export default defineComponent({
     const uploadCtx = inject(uploadInjectionKey, undefined);
 
     const renderIcon = () => {
-      if (props.file.status === 'error') {
+      if (props.file.status === 'error' && uploadCtx?.showRetryButton) {
         return (
           <span
             class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-upload`]}
             onClick={() => uploadCtx?.onUpload(props.file)}
           >
-            {(uploadCtx?.showRetryButton &&
-              (uploadCtx?.slots['retry-icon']?.() ??
-                uploadCtx?.customIcon?.retryIcon?.())) ||
+            {(uploadCtx?.slots['retry-icon']?.() ??
+              uploadCtx?.customIcon?.retryIcon?.()) ||
             props.listType === 'picture-card' ? (
               <IconUpload />
             ) : (
