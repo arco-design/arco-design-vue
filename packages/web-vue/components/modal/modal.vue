@@ -26,6 +26,7 @@
           <transition
             :name="modalAnimationName"
             appear
+            @enter="handleEnter"
             @after-enter="handleOpen"
             @after-leave="handleClose"
           >
@@ -110,6 +111,7 @@ import {
   onMounted,
   onBeforeUnmount,
   toRefs,
+  nextTick,
 } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { MessageType } from '../_utils/constant';
@@ -129,6 +131,23 @@ import { isBoolean, isFunction, isNumber, isPromise } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useDraggable } from './hooks/use-draggable';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
+
+type CursorPositionType = { left: number; top: number } | null;
+let cursorPosition: CursorPositionType | null = null;
+
+document.documentElement.addEventListener(
+  'click',
+  (e: MouseEvent) => {
+    cursorPosition = {
+      left: e.clientX,
+      top: e.clientY,
+    };
+    setTimeout(() => {
+      cursorPosition = null;
+    }, 100);
+  },
+  true
+);
 
 export default defineComponent({
   name: 'Modal',
@@ -541,6 +560,28 @@ export default defineComponent({
       alignCenter,
     });
 
+    const setTransformOrigin = () => {
+      if (!computedVisible.value) return;
+      let transformOrigin = '';
+      if (cursorPosition && modalRef.value) {
+        const { left, top } = cursorPosition;
+        const { offsetLeft, offsetTop } = modalRef.value;
+        transformOrigin = `${left - offsetLeft}px ${top - offsetTop}px`;
+        modalRef.value.style.transformOrigin = transformOrigin;
+      }
+    };
+
+    const resetTransformOrigin = () => {
+      if (!modalRef.value) return;
+      modalRef.value.style.transformOrigin = '';
+    };
+
+    const handleEnter = () => {
+      nextTick(() => {
+        setTransformOrigin();
+      });
+    };
+
     const close = () => {
       promiseNumber++;
       if (_okLoading.value) {
@@ -633,6 +674,7 @@ export default defineComponent({
 
         mounted.value = false;
         resetOverflow();
+        resetTransformOrigin();
         emit('close');
       }
     };
@@ -727,6 +769,7 @@ export default defineComponent({
       handleCancel,
       handleMaskClick,
       handleMaskMouseDown,
+      handleEnter,
       handleOpen,
       handleClose,
       mergedOkLoading,
