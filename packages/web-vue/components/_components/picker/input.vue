@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import { Dayjs } from 'dayjs';
-import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
+import { computed, defineComponent, PropType, ref, toRefs, inject } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 import { isDayjs, isFunction } from '../../_utils/is';
 import IconClose from '../../icon/icon-close';
@@ -43,6 +43,7 @@ import IconHover from '../icon-hover.vue';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
 import FeedbackIcon from '../feedback-icon.vue';
+import { configProviderInjectionKey } from '../../config-provider/context';
 
 export default defineComponent({
   name: 'DateInput',
@@ -96,6 +97,9 @@ export default defineComponent({
     } = useFormItem({ size, disabled, error });
     const { mergedSize } = useSize(_mergedSize);
 
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => configCtx?.rtl ?? false);
+
     const prefixCls = getPrefixCls('picker');
 
     const classNames = computed(() => [
@@ -106,6 +110,7 @@ export default defineComponent({
         [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-error`]: mergedError.value,
         [`${prefixCls}-has-prefix`]: slots.prefix,
+        [`${prefixCls}-rtl`]: rtl.value,
       },
     ]);
     const displayValue = computed(() => {
@@ -127,6 +132,7 @@ export default defineComponent({
       displayValue,
       mergedDisabled,
       refInput,
+      rtl,
       onPressEnter() {
         emit('press-enter');
       },

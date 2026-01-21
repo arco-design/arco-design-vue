@@ -121,6 +121,7 @@ import {
   ref,
   toRefs,
   watch,
+  inject,
 } from 'vue';
 import { Dayjs } from 'dayjs';
 import { isArray, isFunction } from '../_utils/is';
@@ -145,6 +146,7 @@ import YearPanel from './panels/year/index.vue';
 import QuarterPanel from './panels/quarter/index.vue';
 import RenderFunction, { RenderFunc } from '../_components/render-function';
 import { normalizeRangeValue } from './utils';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'DateRangePikerPanel',
@@ -280,6 +282,9 @@ export default defineComponent({
       () => isArray(shortcuts.value) && shortcuts.value.length
     );
 
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => configCtx?.rtl ?? false);
+
     const classNames = computed(() => [
       `${prefixCls.value}-range-container`,
       {
@@ -288,6 +293,7 @@ export default defineComponent({
           showShortcuts.value && shortcutsPosition.value === 'left',
         [`${prefixCls.value}-range-container-shortcuts-placement-right`]:
           showShortcuts.value && shortcutsPosition.value === 'right',
+        [`${prefixCls.value}-range-container-rtl`]: rtl.value,
       },
     ]);
 
