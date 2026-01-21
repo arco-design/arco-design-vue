@@ -1,7 +1,7 @@
 ```yaml
 title:
   zh-CN: 可关闭
-  en-US: Closeable
+  en-US: Closable
 ```
 
 ## zh-CN
@@ -18,7 +18,7 @@ Set `closable` to show the close button.
 
 ```vue
 <template>
-  <a-button @click="handleClick">Closeable Message</a-button>
+  <a-button @click="handleClick">Closable Message</a-button>
 </template>
 
 <script>

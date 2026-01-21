@@ -16,7 +16,7 @@ description: Lightweight global feedback triggered by user actions.
 
 @import ./__demo__/position.md
 
-@import ./__demo__/closeable.md
+@import ./__demo__/closable.md
 
 @import ./__demo__/update.md
 
