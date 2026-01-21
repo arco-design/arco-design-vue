@@ -13,7 +13,15 @@
   line-height: unset;
   cursor: pointer;
 
-  > input[type='checkbox'] {
+  &-input {
+    position: relative;
+    display: inline-flex;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &-input > input[type='checkbox'] {
     position: absolute;
     top: 0;
     left: 0;
@@ -27,8 +35,10 @@
   }
 
   &:hover {
-    .@{checkbox-prefix-cls}-icon-hover::before {
-      background-color: @checkbox-mask-bg-color-bg;
+    > .@{checkbox-prefix-cls}-input {
+      .@{checkbox-prefix-cls}-icon-hover::before {
+        background-color: @checkbox-mask-bg-color-bg;
+      }
     }
   }
 
@@ -74,20 +84,20 @@
     }
   }
 
-  &:hover &-icon {
+  &:hover > &-input &-icon {
     border-color: @checkbox-mask-color-border_hover;
     transition: border-color @transition-duration-1
         @transition-timing-function-linear,
       transform @transition-duration-3 @transition-timing-function-overshoot;
   }
 
-  &-checked:hover &-icon,
-  &-indeterminate:hover &-icon {
+  &-checked:hover > &-input &-icon,
+  &-indeterminate:hover > &-input &-icon {
     transition: transform @transition-duration-3
       @transition-timing-function-overshoot;
   }
 
-  &-checked &-icon {
+  &-checked > &-input &-icon {
     background-color: @checkbox-mask-color-bg_checked;
     border-color: @checkbox-mask-color-border_checked;
 
@@ -98,7 +108,7 @@
     }
   }
 
-  &-indeterminate &-icon {
+  &-indeterminate > &-input &-icon {
     background-color: @checkbox-mask-color-bg_checked;
     border-color: @checkbox-mask-color-border_checked;
 
@@ -116,27 +126,27 @@
   &&-disabled {
     cursor: not-allowed;
 
-    .@{checkbox-prefix-cls}-icon-hover {
+    > .@{checkbox-prefix-cls}-input .@{checkbox-prefix-cls}-icon-hover {
       cursor: not-allowed;
     }
 
-    &:hover .@{checkbox-prefix-cls}-mask {
+    &:hover > .@{checkbox-prefix-cls}-input .@{checkbox-prefix-cls}-mask {
       border-color: @checkbox-mask-color-border_disabled;
     }
   }
 
-  &-checked:hover &-icon,
-  &-indeterminate:hover &-icon {
+  &-checked:hover > &-input &-icon,
+  &-indeterminate:hover > &-input &-icon {
     border-color: @checkbox-mask-color-border_checked;
   }
 
-  &-disabled &-icon {
+  &-disabled > &-input &-icon {
     background-color: @checkbox-mask-color-bg_disabled;
     border-color: @checkbox-mask-color-border_disabled;
   }
 
-  &-disabled&-checked &-icon,
-  &-disabled&-checked:hover &-icon {
+  &-disabled&-checked > &-input &-icon,
+  &-disabled&-checked:hover > &-input &-icon {
     background-color: @checkbox-mask-color-bg_checked_disabled;
     border-color: @checkbox-mask-color-border_checked_disabled;
   }
@@ -144,12 +154,12 @@
   &-disabled:hover,
   &-checked:hover,
   &-indeterminate:hover {
-    .@{checkbox-prefix-cls}-icon-hover::before {
+    > @{checkbox-prefix-cls}-input .@{checkbox-prefix-cls}-icon-hover::before {
       background-color: @color-transparent;
     }
   }
 
-  &-disabled:hover &-icon {
+  &-disabled:hover > &-input &-icon {
     border-color: @checkbox-mask-color-border;
   }
 
@@ -157,7 +167,7 @@
     color: @checkbox-color-text_disabled;
   }
 
-  &-disabled &-icon-check {
+  &-disabled > &-input &-icon-check {
     color: @checkbox-color-check-icon_disabled;
   }
 }
