@@ -37,6 +37,8 @@ description: 当用户需要从一组同类数据中选择一个或多个时，�
 
 @import ./__demo__/label.md
 
+@import ./__demo__/prepend.md
+
 @import ./__demo__/linkage.md
 
 @import ./__demo__/field-names.md
