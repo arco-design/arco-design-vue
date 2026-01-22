@@ -256,7 +256,7 @@ export default defineComponent({
               isWeek={props.isWeek}
               dayStartOfWeek={props.dayStartOfWeek}
               pageShowDate={pageShowDate.value}
-              v-slots={{ default: slots.default }}
+              v-slots={{ default: slots.default, content: slots.content }}
             />
           </div>
         )}

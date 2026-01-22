@@ -19,7 +19,16 @@ Display and select calendars
 ```vue
 
 <template>
-  <a-calendar v-model="value" />
+  <a-calendar v-model="value">
+    <template #content="{ year, month, date }">
+      <a-tag v-if="`${year}-${month}-${date}` === '2023-1-1'" color="orange" style="width: 100%; margin-top: 10px; border-radius: 10px;">
+        <template #icon>
+          <icon-star/>
+        </template>
+        结婚纪念日
+      </a-tag>
+    </template>
+  </a-calendar>
   select: {{value}}
 </template>
 
