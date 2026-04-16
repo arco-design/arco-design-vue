@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.58.0
+
+`2026-04-16`
+
+### 🆕 Feature
+
+- Add disabled attributes ([#3626](https://github.com/arco-design/arco-design-vue/pull/3626))
+
+
 ## 2.18.0-beta.2
 
 `2022-02-25`

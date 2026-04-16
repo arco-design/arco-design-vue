@@ -25,6 +25,7 @@ description: 鼠标悬停、聚焦或点击在某个组件时，弹出的文字�
 |---|---|---|:---:|
 |popup-visible **(v-model)**|文字气泡是否可见|`boolean`|`-`|
 |default-popup-visible|文字气泡默认是否可见（非受控模式）|`boolean`|`false`|
+|disabled|文字气泡是否禁用|`boolean`|`false`|
 |content|文字气泡内容|`string`|`-`|
 |position|弹出位置|`'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'`|`'top'`|
 |mini|是否展示为迷你尺寸|`boolean`|`false`|

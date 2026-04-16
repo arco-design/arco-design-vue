@@ -19,9 +19,9 @@ exports[`<message> demo: render [icon] correctly 1`] = `
 `;
 
 exports[`<message> demo: render [position] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
       <!--v-if-->Top Message
     </button></div>
   <!---->
@@ -33,17 +33,17 @@ exports[`<message> demo: render [position] correctly 1`] = `
 
 exports[`<message> demo: render [type] correctly 1`] = `
 "<div>
-  <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
     <!---->
-    <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if-->Info Message
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-success\\" type=\\"button\\">
+    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-success\\" type=\\"button\\">
         <!--v-if-->Success Message
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning\\" type=\\"button\\">
+    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning\\" type=\\"button\\">
         <!--v-if-->Warning Message
       </button></div>
     <!---->
@@ -53,13 +53,13 @@ exports[`<message> demo: render [type] correctly 1`] = `
   </div>
 </div>
 <div style=\\"margin-top: 20px;\\">
-  <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
     <!---->
-    <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if-->Normal Message
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
         <!--v-if-->Normal Message With Icon
       </button></div>
     <!---->

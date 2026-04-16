@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<color-picker> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-medium\\">
       <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(22, 93, 255);\\"></div>
       <!----><input class=\\"arco-color-picker-input\\" value=\\"#165DFF\\">
@@ -29,9 +29,9 @@ exports[`<color-picker> demo: render [colors] correctly 1`] = `
 `;
 
 exports[`<color-picker> demo: render [disabled] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-medium arco-color-picker-disabled\\">
       <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(22, 93, 255);\\"></div>
       <!----><input class=\\"arco-color-picker-input\\" disabled=\\"\\" value=\\"#165DFF\\">
@@ -50,9 +50,9 @@ exports[`<color-picker> demo: render [disabled] correctly 1`] = `
 `;
 
 exports[`<color-picker> demo: render [format] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"hex\\"><span class=\\"arco-radio-button-content\\">hex</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"rgb\\"><span class=\\"arco-radio-button-content\\">rgb</span></label></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"hex\\"><span class=\\"arco-radio-button-content\\">hex</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"rgb\\"><span class=\\"arco-radio-button-content\\">rgb</span></label></span></div>
   <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-medium\\">
@@ -65,9 +65,9 @@ exports[`<color-picker> demo: render [format] correctly 1`] = `
 `;
 
 exports[`<color-picker> demo: render [only-panel] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 32px; row-gap: 32px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 32px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker-panel\\">
       <div class=\\"arco-color-picker-palette\\" style=\\"background-color: rgb(0, 78, 255);\\">
         <div class=\\"arco-color-picker-handler\\" style=\\"top: 0%; left: 91.37254901960785%;\\"></div>
@@ -291,9 +291,9 @@ exports[`<color-picker> demo: render [only-panel] correctly 1`] = `
 `;
 
 exports[`<color-picker> demo: render [size] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-mini\\">
       <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(22, 93, 255);\\"></div>
       <!----><input class=\\"arco-color-picker-input\\" value=\\"#165DFF\\">
@@ -301,7 +301,7 @@ exports[`<color-picker> demo: render [size] correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-small\\">
       <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(22, 93, 255);\\"></div>
       <!----><input class=\\"arco-color-picker-input\\" value=\\"#165DFF\\">
@@ -309,7 +309,7 @@ exports[`<color-picker> demo: render [size] correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-medium\\">
       <div class=\\"arco-color-picker-preview\\" style=\\"background-color: rgb(22, 93, 255);\\"></div>
       <!----><input class=\\"arco-color-picker-input\\" value=\\"#165DFF\\">
@@ -328,9 +328,9 @@ exports[`<color-picker> demo: render [size] correctly 1`] = `
 `;
 
 exports[`<color-picker> demo: render [trigger] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 8px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  --><span class=\\"arco-switch-text-holder\\">OFF</span><span class=\\"arco-switch-text\\">OFF</span></button></div>
+  <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" class=\\"arco-switch arco-switch-type-circle\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  --><span class=\\"arco-switch-text-holder\\">OFF</span><span class=\\"arco-switch-text\\">OFF</span></button></div>
   <!---->
   <div class=\\"arco-space-item\\">
     <div class=\\"arco-color-picker arco-color-picker-size-medium\\">
@@ -343,7 +343,7 @@ exports[`<color-picker> demo: render [trigger] correctly 1`] = `
 `;
 
 exports[`<color-picker> demo: render [trigger-element] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked arco-tag-custom-color\\" style=\\"background-color: rgb(22, 93, 255);\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-bg-colors\\" style=\\"color: rgb(255, 255, 255);\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"m9.442 25.25 10.351 10.765a1 1 0 0 0 1.428.014L32 25.25H9.442Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path><path d=\\"M19 5.25 22.75 9m0 0 12.043 12.043a1 1 0 0 1 0 1.414L32 25.25M22.75 9 8.693 23.057a1 1 0 0 0-.013 1.4l.762.793m0 0 10.351 10.765a1 1 0 0 0 1.428.014L32 25.25m-22.558 0H32M6 42h36\\"></path><path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M40.013 29.812 37.201 27l-2.812 2.812a4 4 0 1 0 5.624 0Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> #165DFF
     <!--v-if-->

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Space Size should work 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 4px; row-gap: 4px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 4px;\\">
+  <div class=\\"arco-space-item\\">
     <div>aaa</div>
   </div>
   <!---->
@@ -14,9 +14,9 @@ exports[`Space Size should work 1`] = `
 `;
 
 exports[`Space Size should work 2`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 8px;\\">
+  <div class=\\"arco-space-item\\">
     <div>aaa</div>
   </div>
   <!---->
@@ -27,9 +27,9 @@ exports[`Space Size should work 2`] = `
 `;
 
 exports[`Space Size should work 3`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 16px; row-gap: 16px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 16px;\\">
+  <div class=\\"arco-space-item\\">
     <div>aaa</div>
   </div>
   <!---->
@@ -40,9 +40,9 @@ exports[`Space Size should work 3`] = `
 `;
 
 exports[`Space Size should work 4`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\">
+  <div class=\\"arco-space-item\\">
     <div>aaa</div>
   </div>
   <!---->

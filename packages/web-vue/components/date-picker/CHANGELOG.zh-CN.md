@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.58.0
+
+`2026-04-16`
+
+### 🐛 问题修复
+
+- 添加禁用日期功能并优化日期检查逻辑 ([#3630](https://github.com/arco-design/arco-design-vue/pull/3630))
+
+
 ## 2.54.5
 
 `2024-02-21`

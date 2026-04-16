@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.58.0
+
+`2026-04-16`
+
+### 🆕 新增功能
+
+- 关闭mask,增加事件穿透 ([#3626](https://github.com/arco-design/arco-design-vue/pull/3626))
+
+
 ## 2.57.0
 
 `2025-03-10`

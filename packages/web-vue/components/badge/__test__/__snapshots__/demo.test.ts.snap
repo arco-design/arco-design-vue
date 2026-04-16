@@ -1,27 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<badge> demo: render [alone] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 40px; row-gap: 40px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>2</span></span></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>2</span></span></span></div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\" style=\\"background: rgb(229, 230, 235); color: rgb(134, 144, 156);\\"><span>2</span></span></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\" style=\\"background: rgb(229, 230, 235); color: rgb(134, 144, 156);\\"><span>2</span></span></span></div>
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>16</span></span></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>16</span></span></span></div>
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-no-children\\"><!----><span class=\\"arco-badge-number\\"><span>99+</span></span></span></div>
 </div>"
 `;
 
 exports[`<badge> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 40px; row-gap: 40px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"></span>
     <!--v-if-->
   </div><span class=\\"arco-badge-number\\"><span>9</span></span></span>
 </div>
 <!---->
-<div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"></span>
+<div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"></span>
   <!--v-if-->
 </div><span class=\\"arco-badge-dot\\" style=\\"width: 10px; height: 10px;\\"></span></span></div>
 <!---->
@@ -38,28 +38,28 @@ exports[`<badge> demo: render [color] correctly 1`] = `
 `;
 
 exports[`<badge> demo: render [dot] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 40px; row-gap: 40px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><a href=\\"#\\">Link</a><span class=\\"arco-badge-dot\\" style=\\"margin-right: -6px; margin-top: -2px;\\"></span></span></div>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><a href=\\"#\\">Link</a><span class=\\"arco-badge-dot\\" style=\\"margin-right: -6px; margin-top: -2px;\\"></span></span></div>
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-notification\\" style=\\"color: rgb(136, 136, 136); font-size: 18px; vertical-align: -3px;\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M24 9c7.18 0 13 5.82 13 13v13H11V22c0-7.18 5.82-13 13-13Zm0 0V4M6 35h36m-25 7h14\\"></path></svg><span class=\\"arco-badge-dot\\" style=\\"margin-right: -2px; margin-top: -2px;\\"></span></span></div>
 </div>"
 `;
 
 exports[`<badge> demo: render [max] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 40px; row-gap: 40px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
     <!--v-if-->
   </div>
   <!----></span>
 </div>
 <!---->
-<div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+<div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
   <!--v-if-->
 </div><span class=\\"arco-badge-number\\"><span>10+</span></span></span></div>
 <!---->
-<div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+<div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
   <!--v-if-->
 </div><span class=\\"arco-badge-number\\"><span>99+</span></span></span></div>
 <!---->
@@ -70,24 +70,24 @@ exports[`<badge> demo: render [max] correctly 1`] = `
 `;
 
 exports[`<badge> demo: render [status] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\">
+"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-bottom: 24px;\\">
-    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+  <div class=\\"arco-space-item\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-normal\\"></span>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-normal\\"></span>
         <!----></span></span>
       </div>
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-processing\\"></span>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-processing\\"></span>
         <!----></span></span>
       </div>
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-success\\"></span>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-success\\"></span>
         <!----></span></span>
       </div>
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-warning\\"></span>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-warning\\"></span>
         <!----></span></span>
       </div>
       <!---->
@@ -98,15 +98,15 @@ exports[`<badge> demo: render [status] correctly 1`] = `
   </div>
   <!---->
   <div class=\\"arco-space-item\\">
-    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+    <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-normal\\"></span><span class=\\"arco-badge-status-text\\">Normal</span></span></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-normal\\"></span><span class=\\"arco-badge-status-text\\">Normal</span></span></span></div>
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-processing\\"></span><span class=\\"arco-badge-status-text\\">Processing</span></span></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-processing\\"></span><span class=\\"arco-badge-status-text\\">Processing</span></span></span></div>
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-success\\"></span><span class=\\"arco-badge-status-text\\">Success</span></span></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-success\\"></span><span class=\\"arco-badge-status-text\\">Success</span></span></span></div>
       <!---->
-      <div class=\\"arco-space-item\\" style=\\"margin-right: 24px;\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-warning\\"></span><span class=\\"arco-badge-status-text\\">Warning</span></span></span></div>
+      <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-warning\\"></span><span class=\\"arco-badge-status-text\\">Warning</span></span></span></div>
       <!---->
       <div class=\\"arco-space-item\\"><span class=\\"arco-badge arco-badge-status arco-badge-no-children\\"><!----><span class=\\"arco-badge-status-wrapper\\"><span class=\\"arco-badge-status-dot arco-badge-status-danger\\"></span><span class=\\"arco-badge-status-text\\">Danger</span></span></span></div>
     </div>
@@ -115,9 +115,9 @@ exports[`<badge> demo: render [status] correctly 1`] = `
 `;
 
 exports[`<badge> demo: render [text] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\">
+"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 40px; row-gap: 40px;\\">
   <!---->
-  <div class=\\"arco-space-item\\" style=\\"margin-right: 40px;\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
+  <div class=\\"arco-space-item\\"><span class=\\"arco-badge\\"><div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span></span>
     <!--v-if-->
   </div><span class=\\"arco-badge-text\\">NEW</span></span>
 </div>

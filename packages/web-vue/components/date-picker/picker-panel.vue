@@ -8,6 +8,7 @@
           :header-value="headerPanelHeaderValue"
           :header-icons="headerIcons"
           :header-operations="headerPanelHeaderOperations"
+          :disabled-date="disabledDate"
           @select="onHeaderPanelSelect"
         />
         <MonthPanel
@@ -16,6 +17,7 @@
           :header-icons="headerIcons"
           :header-operations="headerPanelHeaderOperations"
           :abbreviation="abbreviation"
+          :disabled-date="disabledDate"
           @select="onHeaderPanelSelect"
           @header-label-click="onMonthHeaderLabelClick"
         />

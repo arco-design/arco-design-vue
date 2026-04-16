@@ -2,6 +2,20 @@
 changelog: true
 ```
 
+## 2.58.0
+
+`2026-04-16`
+
+### 🆕 Feature
+
+- **drawer:** Close mask, increase event penetration. ([#3626](https://github.com/arco-design/arco-design-vue/pull/3626))
+- **tooltip:** Add disabled attributes ([#3626](https://github.com/arco-design/arco-design-vue/pull/3626))
+
+### 🐛 BugFix
+
+- **date-picker:** Add a disabled date function and optimize the date checking logic ([#3630](https://github.com/arco-design/arco-design-vue/pull/3630))
+
+
 ## 2.57.0
 
 `2025-03-10`
