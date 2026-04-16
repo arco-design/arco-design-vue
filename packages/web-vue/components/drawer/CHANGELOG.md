@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.58.0
+
+`2026-04-16`
+
+### 🆕 Feature
+
+- Close mask, increase event penetration. ([#3626](https://github.com/arco-design/arco-design-vue/pull/3626))
+
+
 ## 2.57.0
 
 `2025-03-10`
