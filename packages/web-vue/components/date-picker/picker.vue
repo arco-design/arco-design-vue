@@ -27,6 +27,7 @@
         :readonly="!inputEditable || disabledInput"
         :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
+        :input-props="inputProps"
         :input-value="inputValue"
         :value="needConfirm ? panelValue : selectedValue"
         :format="inputFormat"
@@ -222,6 +223,13 @@ export default defineComponent({
      */
     placeholder: {
       type: String,
+    },
+    /**
+     * @zh 原生输入框属性
+     * @en Native input attributes
+     */
+    inputProps: {
+      type: Object as PropType<Record<string, any>>,
     },
     /**
      * @zh 是否禁用

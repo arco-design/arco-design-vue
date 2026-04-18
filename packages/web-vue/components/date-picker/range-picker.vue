@@ -27,6 +27,7 @@
         :readonly="readonly || disabledInput"
         :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
+        :input-props="inputProps"
         :input-value="inputValue"
         :value="panelValue"
         :format="computedFormat"
@@ -209,6 +210,14 @@ export default defineComponent({
       type: Object as PropType<Partial<TimePickerProps>>,
     },
     /**
+     * @zh 原生输入框属性
+     * @en Native input attributes
+     */
+    inputProps: {
+      type: Array as PropType<Record<string, any>[]>,
+      default: () => [],
+    },
+    /**
      * @zh 提示文案
      * @en Prompt copy
      * */
@@ -248,6 +257,14 @@ export default defineComponent({
     exchangeTime: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * @zh 是否固定时间
+     * @en Is it a fixed time?
+     */
+    fixedTime: {
+      type: Boolean,
+      default: false,
     },
     popupContainer: {
       type: [String, Object] as PropType<string | HTMLElement>,
@@ -429,6 +446,7 @@ export default defineComponent({
       error,
       dayStartOfWeek,
       exchangeTime,
+      fixedTime,
       previewShortcut,
       showConfirmBtn,
     } = toRefs(props);
@@ -714,8 +732,8 @@ export default defineComponent({
     }
 
     function getSortedDayjsArrayByExchangeTimeOrNot(newValue: Dayjs[]) {
-      let sortedValue = getSortedDayjsArray(newValue);
-      if (hasTime.value && !mergedExchangeTime.value) {
+      let sortedValue = getSortedDayjsArray(newValue, fixedTime.value);
+      if (hasTime.value && !mergedExchangeTime.value && !fixedTime.value) {
         sortedValue = [
           getMergedOpValue(sortedValue[0], newValue[0]),
           getMergedOpValue(sortedValue[1], newValue[1]),

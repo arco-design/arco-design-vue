@@ -68,6 +68,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |trigger-props|You can pass in the parameters of the `Trigger` component|`TriggerProps`|`-`||
 |unmount-on-close|Whether to destroy the DOM structure when hiding|`boolean`|`false`||
 |placeholder|Prompt copy|`string`|`-`||
+|input-props|Native input attributes|`Record<string, any>`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
 |disabled-date|Unselectable date|`(current?: Date) => boolean`|`-`||
 |disabled-time|Unselectable time|`(current: Date) => DisabledTimeProps`|`-`||
@@ -190,7 +191,9 @@ description: Choose a date. Support year, month, week, day type, support range s
 |disabled-date|Non-selectable date|`(current: Date, type: 'start' \| 'end') => boolean`|`-`||
 |disabled-time|Unselectable time|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
 |separator|The segmentation symbol in the input box of the range selector|`string`|`-`||
+|input-props|Native input attributes|`Record<string, any>[]`|`[]`||
 |exchange-time|Whether the time will be exchanged, by default time will affect and participate in the ordering of start and end values, if you want to fix the time order, you can turn it off.|`boolean`|`true`|2.25.0|
+|fixed-time|Is it a fixed time?|`boolean`|`false`||
 |disabled-input|Whether input is disabled with the keyboard.|`boolean`|`false`|2.43.0|
 |abbreviation|Whether to enable abbreviation|`boolean`|`true`||
 ### `<range-picker>` Events
@@ -255,6 +258,9 @@ Format|Output|Description
 
 
 ## FAQ
+
+### Customize year/month format of panel header
+You can configure panel header format through `yearFormat` and `monthFormat` in `locale`.
 
 ### About the `locale` field
 The `locale` field can be configured using the language pack provided by the component library.
