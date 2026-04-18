@@ -86,8 +86,21 @@ export function getNow() {
   return dayjs();
 }
 
-export function getSortedDayjsArray(values: Dayjs[]) {
-  return [...values].sort((a, b) => a.valueOf() - b.valueOf());
+export function getSortedDayjsArray(values: Dayjs[], fixedTime = false) {
+  const sortedValues = [...values].sort((a, b) => a.valueOf() - b.valueOf());
+
+  if (fixedTime && values.length === 2 && values[0] && values[1]) {
+    sortedValues[0] = sortedValues[0]
+      .set('hour', values[0].get('hour'))
+      .set('minute', values[0].get('minute'))
+      .set('second', values[0].get('second'));
+    sortedValues[1] = sortedValues[1]
+      .set('hour', values[1].get('hour'))
+      .set('minute', values[1].get('minute'))
+      .set('second', values[1].get('second'));
+  }
+
+  return sortedValues;
 }
 
 export function isValueChange(

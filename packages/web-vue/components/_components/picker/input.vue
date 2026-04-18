@@ -6,13 +6,15 @@
     <div :class="`${prefixCls}-input`">
       <input
         ref="refInput"
+        v-bind="nativeInputProps"
         :disabled="mergedDisabled"
+        :readonly="readonly"
         :placeholder="placeholder"
         :class="`${prefixCls}-start-time`"
         :value="displayValue"
-        v-bind="readonly ? { readonly: true } : {}"
         @keydown.enter="onPressEnter"
         @input="onChange"
+        @focus="onFocus"
         @blur="onBlur"
       />
     </div>
@@ -73,6 +75,9 @@ export default defineComponent({
     placeholder: {
       type: String,
     },
+    inputProps: {
+      type: Object as PropType<Record<string, any>>,
+    },
     inputValue: {
       type: String,
     },
@@ -86,8 +91,16 @@ export default defineComponent({
   },
   emits: ['clear', 'press-enter', 'change', 'blur'],
   setup(props, { emit, slots }) {
-    const { error, focused, disabled, size, value, format, inputValue } =
-      toRefs(props);
+    const {
+      error,
+      focused,
+      disabled,
+      size,
+      value,
+      format,
+      inputValue,
+      inputProps,
+    } = toRefs(props);
     const {
       mergedSize: _mergedSize,
       mergedDisabled,
@@ -117,26 +130,53 @@ export default defineComponent({
       }
       return undefined;
     });
+    const nativeInputProps = computed(() => {
+      const props = {
+        ...(inputProps?.value || {}),
+      };
+      delete props.onInput;
+      delete props.onChange;
+      delete props.onKeydown;
+      delete props.onKeyDown;
+      delete props.onFocus;
+      delete props.onBlur;
+      return props;
+    });
 
     const refInput = ref<HTMLInputElement>();
+    const callInputPropsEvent = (name: string, ...args: unknown[]) => {
+      const callback = inputProps?.value?.[name];
+      if (isFunction(callback)) {
+        callback(...args);
+      }
+    };
 
     return {
       feedback,
       prefixCls,
       classNames,
       displayValue,
+      nativeInputProps,
       mergedDisabled,
       refInput,
-      onPressEnter() {
+      onPressEnter(e: KeyboardEvent) {
+        callInputPropsEvent('onKeydown', e);
+        callInputPropsEvent('onKeyDown', e);
         emit('press-enter');
       },
       onChange(e: Event) {
+        callInputPropsEvent('onInput', e);
+        callInputPropsEvent('onChange', e);
         emit('change', e);
       },
       onClear(e: Event) {
         emit('clear', e);
       },
+      onFocus(e: Event) {
+        callInputPropsEvent('onFocus', e);
+      },
       onBlur(e: Event) {
+        callInputPropsEvent('onBlur', e);
         emit('blur', e);
       },
     };

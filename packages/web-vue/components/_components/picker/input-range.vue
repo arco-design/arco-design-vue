@@ -6,14 +6,17 @@
     <div :class="getInputWrapClassName(0)">
       <input
         ref="refInput0"
+        v-bind="nativeInputProps0"
         :disabled="disabled0"
+        :readonly="readonly"
         :placeholder="placeholder[0]"
         :value="displayValue0"
-        v-bind="readonly ? { readonly: true } : {}"
         @input="onChange"
         @keydown.enter="onPressEnter"
         @keydown.tab="onPressTab"
-        @click="() => changeFocusedInput(0)"
+        @click="(e) => changeFocusedInput(0, e)"
+        @focus="(e) => onFocus(e, 0)"
+        @blur="(e) => onBlur(e, 0)"
       />
     </div>
     <span :class="`${prefixCls}-separator`">
@@ -22,14 +25,17 @@
     <div :class="getInputWrapClassName(1)">
       <input
         ref="refInput1"
+        v-bind="nativeInputProps1"
         :disabled="disabled1"
+        :readonly="readonly"
         :placeholder="placeholder[1]"
         :value="displayValue1"
-        v-bind="readonly ? { readonly: true } : {}"
         @input="onChange"
         @keydown.enter="onPressEnter"
         @keydown.tab="onPressTab"
-        @click="() => changeFocusedInput(1)"
+        @click="(e) => changeFocusedInput(1, e)"
+        @focus="(e) => onFocus(e, 1)"
+        @blur="(e) => onBlur(e, 1)"
       />
     </div>
     <div :class="`${prefixCls}-suffix`">
@@ -102,6 +108,10 @@ export default defineComponent({
     inputValue: {
       type: Array as PropType<string[]>,
     },
+    inputProps: {
+      type: Array as PropType<Record<string, any>[]>,
+      default: () => [],
+    },
     value: {
       type: Array as PropType<(Dayjs | undefined)[]>,
       default: () => [],
@@ -128,6 +138,7 @@ export default defineComponent({
       format,
       focusedIndex,
       inputValue,
+      inputProps,
     } = toRefs(props);
     const {
       mergedSize: _mergedSize,
@@ -187,23 +198,74 @@ export default defineComponent({
 
     const displayValue0 = computed(() => getDisplayValue(0));
     const displayValue1 = computed(() => getDisplayValue(1));
+    const getNativeInputProps = (index: 0 | 1) => {
+      const props = {
+        ...((inputProps?.value?.[index] as Record<string, any>) || {}),
+      };
+      delete props.onInput;
+      delete props.onChange;
+      delete props.onKeydown;
+      delete props.onKeyDown;
+      delete props.onClick;
+      delete props.onFocus;
+      delete props.onBlur;
+      return props;
+    };
+    const nativeInputProps0 = computed(() => getNativeInputProps(0));
+    const nativeInputProps1 = computed(() => getNativeInputProps(1));
 
-    function changeFocusedInput(index: number) {
+    const callInputPropsEvent = (
+      index: number,
+      name: string,
+      ...args: unknown[]
+    ) => {
+      const callback = inputProps?.value?.[index]?.[name];
+      if (isFunction(callback)) {
+        callback(...args);
+      }
+    };
+
+    function changeFocusedInput(index: number, e?: Event) {
       emit('focused-index-change', index);
       emit('update:focusedIndex', index);
+      if (e) {
+        callInputPropsEvent(index, 'onClick', e);
+      }
     }
 
     function onChange(e: Event) {
       e.stopPropagation();
+      if (focusedIndex?.value === 0 || focusedIndex?.value === 1) {
+        callInputPropsEvent(focusedIndex.value, 'onInput', e);
+        callInputPropsEvent(focusedIndex.value, 'onChange', e);
+      }
       emit('change', e);
     }
 
-    function onPressEnter() {
+    function onPressEnter(e: KeyboardEvent) {
+      if (focusedIndex?.value === 0 || focusedIndex?.value === 1) {
+        callInputPropsEvent(focusedIndex.value, 'onKeydown', e);
+        callInputPropsEvent(focusedIndex.value, 'onKeyDown', e);
+      }
       emit('press-enter');
     }
 
-    function onPressTab(e: Event) {
+    function onPressTab(e: KeyboardEvent) {
+      if (focusedIndex?.value === 0 || focusedIndex?.value === 1) {
+        callInputPropsEvent(focusedIndex.value, 'onKeydown', e);
+        callInputPropsEvent(focusedIndex.value, 'onKeyDown', e);
+      }
       e.preventDefault();
+    }
+
+    function onFocus(e: Event, index: number) {
+      emit('focused-index-change', index);
+      emit('update:focusedIndex', index);
+      callInputPropsEvent(index, 'onFocus', e);
+    }
+
+    function onBlur(e: Event, index: number) {
+      callInputPropsEvent(index, 'onBlur', e);
     }
 
     function onClear(e: Event) {
@@ -222,10 +284,14 @@ export default defineComponent({
       getInputWrapClassName,
       displayValue0,
       displayValue1,
+      nativeInputProps0,
+      nativeInputProps1,
       changeFocusedInput,
       onChange,
       onPressEnter,
       onPressTab,
+      onFocus,
+      onBlur,
       onClear,
       feedback,
     };

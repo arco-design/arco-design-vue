@@ -152,6 +152,8 @@ export interface ArcoLang {
     view: ArcoCalendarLang['view'];
     month: ArcoCalendarLang['month'];
     week: ArcoCalendarLang['week'];
+    yearFormat?: string;
+    monthFormat?: string;
     placeholder: {
       date: string;
       week: string;
