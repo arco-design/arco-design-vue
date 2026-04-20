@@ -172,7 +172,9 @@
       @transition-timing-function-linear;
   }
 
-  &-cell-in-view:not(&-cell-selected):not(&-cell-range-start):not(&-cell-range-end):not(&-cell-disabled):not(&-cell-week)
+  &-cell-in-view:not(&-cell-selected):not(&-cell-range-start):not(
+      &-cell-range-end
+    ):not(&-cell-disabled):not(&-cell-week)
     &-date-value:hover {
     color: @picker-panel-color-text-cell_hover;
     background-color: @picker-panel-color-bg-cell_hover;
@@ -307,3 +309,4 @@
 @import './quarter.less';
 @import './range.less';
 @import './shortcuts.less';
+@import './rtl.less';
