@@ -14,7 +14,11 @@ description: Highlight a certain number or group of numbers and statistical data
 
 @import ./__demo__/animation.md
 
+@import ./__demo__/animation-control.md
+
 @import ./__demo__/countdown.md
+
+@import ./__demo__/countdown-control.md
 
 ## API
 
@@ -32,10 +36,22 @@ description: Highlight a certain number or group of numbers and statistical data
 |separator|Carry separator (used in number mode)|`string`|`-`||
 |show-group-separator|Whether to display the carry separator (used in number mode)|`boolean`|`false`||
 |animation|Whether to turn on animation|`boolean`|`false`||
-|animation-duration|Animation's duration time|`number`|`2000`||
+|animation-duration|Animation's duration time, the unit `ms`|`number`|`2000`||
 |value-from|The starting value of the animation|`number`|`-`||
 |placeholder|Prompt text (displayed when value is undefined )|`string`|`-`|2.28.0|
 |value-style|Custom value style|`CSSProperties`|`-`|2.32.0|
+### `<statistic>` Events
+
+|Event Name|Description|Parameters|
+|---|---|---|
+|finish|Callback at the end of the countdown|-|
+|pause-change|Callback triggered when the animation pause to switch|paused: `boolean`|
+### `<statistic>` Methods
+
+|Method|Description|Parameters|Return|
+|---|---|---|:---:|
+|pause|Pause or continue animation|paused: ` boolean `|-|
+|restart|Restart execution animation|-|-|
 ### `<statistic>` Slots
 
 |Slot Name|Description|Parameters|
@@ -63,6 +79,12 @@ description: Highlight a certain number or group of numbers and statistical data
 |Event Name|Description|Parameters|
 |---|---|---|
 |finish|Callback at the end of the countdown|-|
+|pause-change|Callback triggered when the countdown pause to switch|paused: `boolean`|
+### `<countdown>` Methods
+
+|Method|Description|Parameters|Return|
+|---|---|---|:---:|
+|pause|Pause or continue animation|paused: ` boolean `|-|
 ### `<countdown>` Slots
 
 |Slot Name|Description|Parameters|

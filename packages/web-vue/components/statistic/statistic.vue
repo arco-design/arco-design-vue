@@ -125,8 +125,8 @@ export default defineComponent({
       default: false,
     },
     /**
-     * @zh 动画的过度时间
-     * @en Animation's duration time
+     * @zh 动画的过度时间，单位`ms`
+     * @en Animation's duration time, the unit `ms`
      */
     animationDuration: {
       type: Number,
@@ -157,6 +157,19 @@ export default defineComponent({
       type: Object as PropType<CSSProperties>,
     },
   },
+  emits: {
+    /**
+     * @zh 动画完成后触发的回调
+     * @en Callback at the end of the countdown
+     */
+    finish: () => true,
+    /**
+     * @zh 动画暂停切换时触发的回调
+     * @en Callback triggered when the animation pause to switch
+     * @param {boolean} paused
+     */
+    pauseChange: (paused: boolean) => true,
+  },
   /**
    * @zh 标题
    * @en Title
@@ -177,7 +190,7 @@ export default defineComponent({
    * @en Suffix
    * @slot suffix
    */
-  setup(props) {
+  setup(props, { emit }) {
     const prefixCls = getPrefixCls('statistic');
     const numberValue = computed(() => {
       if (isNumber(props.value)) {
@@ -188,13 +201,18 @@ export default defineComponent({
     const innerValue = ref(props.valueFrom ?? props.value);
     const tween = ref(null);
     const { value } = toRefs(props);
+    const animationPaused = ref(false);
+    const animationElapsed = ref(0);
 
     const showPlaceholder = computed(() => isUndefined(props.value));
 
     const animation = (
       from: number = props.valueFrom ?? 0,
-      to: number = numberValue.value
+      to: number = numberValue.value,
+      duration: number = props.animationDuration
     ) => {
+      animationElapsed.value = 0;
+      animationPaused.value = false;
       if (from !== to) {
         tween.value = new BTween({
           from: {
@@ -203,13 +221,14 @@ export default defineComponent({
           to: {
             value: to,
           },
-          duration: props.animationDuration,
+          duration,
           easing: 'quartOut',
           onUpdate: (keys: Data) => {
             innerValue.value = keys.value;
           },
           onFinish: () => {
             innerValue.value = to;
+            emit('finish');
           },
         });
         (tween.value as any)?.start();
@@ -242,6 +261,40 @@ export default defineComponent({
       };
     });
 
+    const _pause = (value = !animationPaused.value) => {
+      if (
+        props.animation &&
+        props.start &&
+        innerValue.value !== numberValue.value
+      ) {
+        if (value) {
+          if (tween.value) {
+            animationElapsed.value = (tween.value as any)?.elapsed;
+            animationPaused.value = true;
+            (tween.value as any)?.stop();
+            tween.value = null;
+          }
+        } else {
+          animation(
+            innerValue.value as number,
+            numberValue.value,
+            Math.max(props.animationDuration - animationElapsed.value, 0)
+          );
+        }
+      }
+    };
+
+    const _restart = (value?: number | Date) => {
+      if (tween.value) {
+        (tween.value as any)?.stop();
+        tween.value = null;
+      }
+      innerValue.value = value ?? props.valueFrom ?? props.value;
+      if (props.animation && props.start) {
+        animation();
+      }
+    };
+
     onMounted(() => {
       if (props.animation && props.start) {
         animation();
@@ -257,22 +310,39 @@ export default defineComponent({
       }
     );
 
-    watch(value, (value) => {
-      if (tween.value) {
-        (tween.value as any)?.stop();
-        tween.value = null;
-      }
-      innerValue.value = value;
-      if (props.animation && props.start) {
-        animation();
-      }
+    watch(animationPaused, (value) => {
+      emit('pauseChange', value);
     });
+
+    watch(value, _restart);
 
     return {
       prefixCls,
       showPlaceholder,
       formatValue,
+      _pause,
+      _restart,
     };
+  },
+
+  methods: {
+    /**
+     * @zh 暂停或继续动画
+     * @en Pause or continue animation
+     * @param { boolean } paused
+     * @public
+     */
+    pause(paused?: boolean) {
+      this._pause(paused);
+    },
+    /**
+     * @zh 重新开始执行动画
+     * @en Restart execution animation
+     * @public
+     */
+    restart() {
+      this._restart();
+    },
   },
 });
 </script>
