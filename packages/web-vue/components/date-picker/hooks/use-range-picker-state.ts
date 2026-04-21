@@ -10,17 +10,30 @@ interface PickerStateProps {
   modelValue: (CalendarValue | undefined)[] | undefined;
   defaultValue: (CalendarValue | undefined)[] | undefined;
   format: string;
+  utcOffset?: number;
+  timezone?: string;
 }
 
 export default function useRangePickerState(props: PickerStateProps) {
-  const { modelValue, defaultValue, format } = toRefs(props);
+  const { modelValue, defaultValue, format, utcOffset, timezone } =
+    toRefs(props);
 
   const computedModelValue = computed(() => {
-    return getDayjsValue(normalizeRangeValue(modelValue.value), format.value);
+    return getDayjsValue(
+      normalizeRangeValue(modelValue.value),
+      format.value,
+      utcOffset?.value,
+      timezone?.value
+    );
   });
 
   const computedDefaultValue = computed(() => {
-    return getDayjsValue(normalizeRangeValue(defaultValue.value), format.value);
+    return getDayjsValue(
+      normalizeRangeValue(defaultValue.value),
+      format.value,
+      utcOffset?.value,
+      timezone?.value
+    );
   });
 
   // Selected value maintained internally: dayjs

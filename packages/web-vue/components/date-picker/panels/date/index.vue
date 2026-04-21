@@ -19,9 +19,11 @@
         :rows="rows"
         :value="isRange ? undefined : value"
         :range-values="rangeValues"
+        :hide-not-in-view-dates="hideNotInViewDates"
         :disabled-date="disabledDate"
         :is-same-time="mergedIsSameTime"
         :date-render="dateRender"
+        :now="panelNow"
         @cellClick="onCellClick"
         @cellMouseEnter="onCellMouseEnter"
       />
@@ -180,6 +182,12 @@ export default defineComponent({
     disabled: {
       type: Boolean,
     },
+    hideNotInViewDates: {
+      type: Boolean,
+    },
+    now: {
+      type: Object as PropType<Dayjs>,
+    },
     onHeaderLabelClick: {
       type: Function as PropType<HeaderLabelClickFunc>,
     },
@@ -202,6 +210,8 @@ export default defineComponent({
       showTime,
       currentView,
       disabledTime,
+      hideNotInViewDates,
+      now,
     } = toRefs(props);
 
     const datePickerT = useDatePickerTransform();
@@ -247,10 +257,12 @@ export default defineComponent({
       () =>
         (showTime.value &&
           disabledTime?.value?.(
-            getDateValue(footerValue?.value || getNow())
+            getDateValue(footerValue?.value || panelNow.value)
           )) ||
         {}
     );
+
+    const panelNow = computed(() => now?.value || getNow());
 
     const weekList = computed(() => {
       const list = [0, 1, 2, 3, 4, 5, 6];
@@ -270,6 +282,11 @@ export default defineComponent({
           ...getCellData(methods.add(startDate, i - startIndex, 'day')),
           isPrev: i < startIndex,
           isNext: i > startIndex + days - 1,
+          classNames:
+            hideNotInViewDates.value &&
+            (i < startIndex || i > startIndex + days - 1)
+              ? `${pickerPrefixCls}-cell-hidden`
+              : undefined,
         };
       }
 
@@ -319,6 +336,7 @@ export default defineComponent({
         isWeek.value ? [-1, ...weekList.value] : weekList.value
       ),
       mergedIsSameTime,
+      panelNow,
       disabledTimeProps,
       onCellClick,
       onCellMouseEnter,

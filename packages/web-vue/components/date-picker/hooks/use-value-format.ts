@@ -1,34 +1,55 @@
 import { Dayjs } from 'dayjs';
 import { toRefs } from 'vue';
+import { toLocal } from '../../_utils/date';
 import { CalendarValue, ValueFormat } from '../interface';
 
-export function getReturnValue(date: Dayjs, format: ValueFormat) {
+export function getReturnValue(
+  date: Dayjs,
+  format: ValueFormat,
+  utcOffset?: number,
+  timezone?: string
+) {
+  const localDate = toLocal(date, utcOffset, timezone);
+
   if (format === 'timestamp') {
-    return date.toDate().getTime();
+    return localDate.toDate().getTime();
   }
   if (format === 'Date') {
-    return date.toDate();
+    return localDate.toDate();
   }
-  return date.format(format);
+  return localDate.format(format);
 }
 
-export function useReturnValue(props: { format: ValueFormat }) {
-  const { format } = toRefs(props);
+export function useReturnValue(props: {
+  format: ValueFormat;
+  utcOffset?: number;
+  timezone?: string;
+}) {
+  const { format, utcOffset, timezone } = toRefs(props);
 
-  return (date: Dayjs) => getReturnValue(date, format.value);
+  return (date: Dayjs) =>
+    getReturnValue(date, format.value, utcOffset?.value, timezone?.value);
 }
 
 export function getReturnRangeValue(
   dates: Dayjs[],
-  format: ValueFormat
+  format: ValueFormat,
+  utcOffset?: number,
+  timezone?: string
 ): CalendarValue[];
 export function getReturnRangeValue(
   dates: (Dayjs | undefined)[],
-  format: ValueFormat
+  format: ValueFormat,
+  utcOffset?: number,
+  timezone?: string
 ): (CalendarValue | undefined)[];
 export function getReturnRangeValue(
   dates: (Dayjs | undefined)[],
-  format: ValueFormat
+  format: ValueFormat,
+  utcOffset?: number,
+  timezone?: string
 ) {
-  return dates.map((date) => (date ? getReturnValue(date, format) : undefined));
+  return dates.map((date) =>
+    date ? getReturnValue(date, format, utcOffset, timezone) : undefined
+  );
 }

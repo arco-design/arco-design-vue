@@ -33,6 +33,14 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 @import ./__demo__/disabled-date-advance.md
 
+@import ./__demo__/hide-not-in-view-dates.md
+
+@import ./__demo__/clear-range-on-reselect.md
+
+@import ./__demo__/utc-offset.md
+
+@import ./__demo__/timezone.md
+
 @import ./__demo__/size.md
 
 @import ./__demo__/extra.md
@@ -40,6 +48,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 @import ./__demo__/disabled.md
 
 @import ./__demo__/date-render.md
+
+@import ./__demo__/panel-render.md
 
 @import ./__demo__/control.md
 
@@ -67,6 +77,7 @@ description: Choose a date. Support year, month, week, day type, support range s
 |default-popup-visible|The default pop-up box is open or closed|`boolean`|`false`||
 |trigger-props|You can pass in the parameters of the `Trigger` component|`TriggerProps`|`-`||
 |unmount-on-close|Whether to destroy the DOM structure when hiding|`boolean`|`false`||
+|hide-not-in-view-dates|Hide gray dates that are not in the current time range in the panel|`boolean`|`false`||
 |placeholder|Prompt copy|`string`|`-`||
 |input-props|Native input attributes|`Record<string, any>`|`-`||
 |disabled|Whether to disable|`boolean`|`false`||
@@ -76,10 +87,13 @@ description: Choose a date. Support year, month, week, day type, support range s
 |default-picker-value|The date displayed on the panel by default|`Date \| string \| number`|`-`||
 |popup-container|Mount container for pop-up box|`string \| HTMLElement`|`-`||
 |value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
+|utc-offset|Set the timezone offset. Set to 0 for UTC time.|`number`|`-`||
+|timezone|Set timezone. If `utcOffset` is set, `utcOffset` takes precedence.|`string`|`-`||
 |preview-shortcut|Whether to preview the result of the shortcut|`boolean`|`true`|2.28.0|
 |show-confirm-btn|Whether to show the confirm button, always show when `showTime = true`.|`boolean`|`false`|2.29.0|
 |disabled-input|Whether input is disabled with the keyboard.|`boolean`|`false`|2.43.0|
 |abbreviation|Whether to enable abbreviation|`boolean`|`true`|2.45.0|
+|panel-render|Customize panel rendering|`(panelNode: any) => any`|`-`||
 ### `Common` Events
 
 |Event Name|Description|Parameters|
@@ -187,15 +201,20 @@ description: Choose a date. Support year, month, week, day type, support range s
 |value-format|The format of the value, valid for `value` `defaultValue` `pickerValue` `defaultPickerValue` and the return value in the event, supports setting as timestamp, Date and string (refer to [String parsing format](#string-parsing-format) ). If not specified, it will be formatted as a string, in the same format as `format`.|`'timestamp' \| 'Date' \| string`|`-`|2.16.0|
 |show-time|Whether to increase time selection|`boolean`|`false`||
 |time-picker-props|Time display parameters, refer to [TimePickerProps](/vue/component/time-picker)|`Partial<TimePickerProps>`|`-`||
+|input-props|Native input attributes|`Record<string, any>[]`|`[]`||
 |placeholder|Prompt copy|`string[]`|`-`||
 |disabled-date|Non-selectable date|`(current: Date, type: 'start' \| 'end') => boolean`|`-`||
 |disabled-time|Unselectable time|`(current: Date, type: 'start' \| 'end') => DisabledTimeProps`|`-`||
 |separator|The segmentation symbol in the input box of the range selector|`string`|`-`||
-|input-props|Native input attributes|`Record<string, any>[]`|`[]`||
 |exchange-time|Whether the time will be exchanged, by default time will affect and participate in the ordering of start and end values, if you want to fix the time order, you can turn it off.|`boolean`|`true`|2.25.0|
 |fixed-time|Is it a fixed time?|`boolean`|`false`||
+|clear-range-on-reselect|When reselecting the range, the previous range will be cleared for next selection|`boolean`|`false`||
+|hide-not-in-view-dates|Hide gray dates that are not in the current time range in the panel|`boolean`|`false`||
+|utc-offset|Set the timezone offset. Set to 0 for UTC time.|`number`|`-`||
+|timezone|Set timezone. If `utcOffset` is set, `utcOffset` takes precedence.|`string`|`-`||
 |disabled-input|Whether input is disabled with the keyboard.|`boolean`|`false`|2.43.0|
 |abbreviation|Whether to enable abbreviation|`boolean`|`true`||
+|panel-render|Customize panel rendering|`(panelNode: any) => any`|`-`||
 ### `<range-picker>` Events
 
 |Event Name|Description|Parameters|
@@ -258,9 +277,6 @@ Format|Output|Description
 
 
 ## FAQ
-
-### Customize year/month format of panel header
-You can configure panel header format through `yearFormat` and `monthFormat` in `locale`.
 
 ### About the `locale` field
 The `locale` field can be configured using the language pack provided by the component library.

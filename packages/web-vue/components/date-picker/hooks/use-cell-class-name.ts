@@ -10,6 +10,7 @@ interface CellClassNameProps {
   rangeValues?: Array<Dayjs | undefined>;
   isSameTime: IsSameTime;
   mode?: Mode;
+  now?: Dayjs;
 }
 
 export default function useCellClassName(props: CellClassNameProps) {
@@ -31,9 +32,10 @@ export default function useCellClassName(props: CellClassNameProps) {
 
       const isSelected = value && isSameTime(cellData.value, value);
 
-      let isToday = isSameTime(cellData.value, getNow());
+      const currentNow = props.now || getNow();
+      let isToday = isSameTime(cellData.value, currentNow);
       if (mode === 'week') {
-        isToday = getNow().isSame(cellData.value, 'date');
+        isToday = currentNow.isSame(cellData.value, 'date');
       }
 
       const isRangeStart =

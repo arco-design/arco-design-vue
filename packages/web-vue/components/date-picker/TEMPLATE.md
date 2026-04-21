@@ -42,6 +42,14 @@ description: Choose a date. Support year, month, week, day type, support range s
 
 @import ./__demo__/disabled-date-advance.md
 
+@import ./__demo__/hide-not-in-view-dates.md
+
+@import ./__demo__/clear-range-on-reselect.md
+
+@import ./__demo__/utc-offset.md
+
+@import ./__demo__/timezone.md
+
 @import ./__demo__/size.md
 
 @import ./__demo__/extra.md
@@ -49,6 +57,8 @@ description: Choose a date. Support year, month, week, day type, support range s
 @import ./__demo__/disabled.md
 
 @import ./__demo__/date-render.md
+
+@import ./__demo__/panel-render.md
 
 @import ./__demo__/control.md
 
