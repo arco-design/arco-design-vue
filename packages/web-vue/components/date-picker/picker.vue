@@ -71,7 +71,7 @@ import {
   getNow,
   isValueChange,
   getDateValue,
-  initializeDateLocale,
+  // initializeDateLocale,
 } from '../_utils/date';
 import { getPrefixCls } from '../_utils/global-config';
 import useState from '../_hooks/use-state';
@@ -102,7 +102,7 @@ import { mergeValueWithTime } from './utils';
 import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
 import { useFormItem } from '../_hooks/use-form-item';
-import { useI18n } from '../locale';
+// import { useI18n } from '../locale';
 
 /**
  * @displayName Common
@@ -481,10 +481,10 @@ export default defineComponent({
       showConfirmBtn,
     } = toRefs(props);
 
-    const { locale: globalLocal } = useI18n();
-    watchEffect(() => {
-      initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
-    });
+    // const { locale: globalLocal } = useI18n();
+    // watchEffect(() => {
+    //   initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+    // });
 
     const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
 
