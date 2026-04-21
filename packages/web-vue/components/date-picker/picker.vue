@@ -47,10 +47,10 @@
       </DateInput>
     </slot>
     <template #content>
-      <PickerPanel v-bind="panelProps" @click="onPanelClick" />
+      <RenderFunction :render-func="renderPopupPanel" />
     </template>
   </Trigger>
-  <PickerPanel v-else v-bind="{ ...$attrs, ...panelProps }" />
+  <RenderFunction v-else :render-func="renderPanelOnly" />
 </template>
 
 <script lang="ts">
@@ -58,6 +58,7 @@ import { Dayjs } from 'dayjs';
 import {
   computed,
   defineComponent,
+  h,
   PropType,
   reactive,
   ref,
@@ -67,11 +68,12 @@ import {
   onUnmounted,
 } from 'vue';
 import {
-  dayjs,
   getNow,
+  getDayjsValue,
   isValueChange,
   getDateValue,
   initializeDateLocale,
+  toLocal,
 } from '../_utils/date';
 import { getPrefixCls } from '../_utils/global-config';
 import useState from '../_hooks/use-state';
@@ -103,6 +105,7 @@ import { Size } from '../_utils/constant';
 import { useReturnValue } from './hooks/use-value-format';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useI18n } from '../locale';
+import RenderFunction from '../_components/render-function';
 
 /**
  * @displayName Common
@@ -113,8 +116,8 @@ export default defineComponent({
   components: {
     DateInput,
     Trigger,
-    PickerPanel,
     IconCalendar,
+    RenderFunction,
   },
   inheritAttrs: false,
   props: {
@@ -218,6 +221,13 @@ export default defineComponent({
       type: Boolean,
     },
     /**
+     * @zh 面板隐藏不在当前时间范围的灰色日期
+     * @en Hide gray dates that are not in the current time range in the panel
+     */
+    hideNotInViewDates: {
+      type: Boolean,
+    },
+    /**
      * @zh 提示文案
      * @en Prompt copy
      */
@@ -290,6 +300,20 @@ export default defineComponent({
       type: String as PropType<'timestamp' | 'Date' | string>,
     },
     /**
+     * @zh 设置时区偏移，如果需要 utc 时间则设置为 0。
+     * @en Set the timezone offset. Set to 0 for UTC time.
+     */
+    utcOffset: {
+      type: Number,
+    },
+    /**
+     * @zh 设置时区，如果设置了 `utcOffset`，则以 `utcOffset` 为准。
+     * @en Set timezone. If `utcOffset` is set, `utcOffset` takes precedence.
+     */
+    timezone: {
+      type: String,
+    },
+    /**
      * @zh 是否要预览快捷选择的结果
      * @en Whether to preview the result of the shortcut
      * @version 2.28.0
@@ -343,6 +367,13 @@ export default defineComponent({
     abbreviation: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * @zh 自定义渲染面板
+     * @en Customize panel rendering
+     */
+    panelRender: {
+      type: Function as PropType<(panelNode: any) => any>,
     },
   },
   emits: {
@@ -457,7 +488,7 @@ export default defineComponent({
    * @en Double arrow page backward icon
    * @slot icon-next-double
    */
-  setup(props, { emit, slots }) {
+  setup(props, { emit, slots, attrs }) {
     const {
       mode,
       modelValue,
@@ -479,6 +510,8 @@ export default defineComponent({
       dayStartOfWeek,
       previewShortcut,
       showConfirmBtn,
+      utcOffset,
+      timezone,
     } = toRefs(props);
 
     const { locale: globalLocal } = useI18n();
@@ -526,6 +559,8 @@ export default defineComponent({
     const getReturnValue = useReturnValue(
       reactive({
         format: returnValueFormat,
+        utcOffset,
+        timezone,
       })
     );
 
@@ -553,6 +588,8 @@ export default defineComponent({
         modelValue,
         defaultValue,
         format: parseValueFormat,
+        utcOffset,
+        timezone,
       })
     );
     // 操作过程中的选中值
@@ -593,13 +630,16 @@ export default defineComponent({
           defaultValue: defaultPickerValue,
           selectedValue: panelValue,
           format: parseValueFormat,
+          utcOffset,
+          timezone,
           onChange: (newVal: Dayjs) => {
             const returnValue = getReturnValue(newVal);
+            const localValue = toLocal(newVal, utcOffset.value, timezone.value);
             const formattedValue = getFormattedValue(
-              newVal,
+              localValue,
               parseValueFormat.value
             );
-            const dateValue = getDateValue(newVal);
+            const dateValue = getDateValue(localValue);
             emit('picker-value-change', returnValue, dateValue, formattedValue);
             emit('update:pickerValue', returnValue);
           },
@@ -637,9 +677,15 @@ export default defineComponent({
     });
 
     function emitChange(value: Dayjs | undefined, emitOk?: boolean) {
+      const localValue = value
+        ? toLocal(value, utcOffset.value, timezone.value)
+        : undefined;
       const returnValue = value ? getReturnValue(value) : undefined;
-      const formattedValue = getFormattedValue(value, parseValueFormat.value);
-      const dateValue = getDateValue(value);
+      const formattedValue = getFormattedValue(
+        localValue,
+        parseValueFormat.value
+      );
+      const dateValue = getDateValue(localValue);
       if (isValueChange(value, selectedValue.value)) {
         emit('update:modelValue', returnValue);
         emit('change', returnValue, dateValue, formattedValue);
@@ -679,8 +725,14 @@ export default defineComponent({
 
       if (emitSelect) {
         const returnValue = value ? getReturnValue(value) : undefined;
-        const formattedValue = getFormattedValue(value, parseValueFormat.value);
-        const dateValue = getDateValue(value);
+        const localValue = value
+          ? toLocal(value, utcOffset.value, timezone.value)
+          : undefined;
+        const formattedValue = getFormattedValue(
+          localValue,
+          parseValueFormat.value
+        );
+        const dateValue = getDateValue(localValue);
         emit('select', returnValue, dateValue, formattedValue);
       }
     }
@@ -691,7 +743,11 @@ export default defineComponent({
 
     function getMergedOpValue(date: Dayjs, time?: Dayjs) {
       if (!isDateTime.value && !timePickerProps.value) return date;
-      return mergeValueWithTime(getNow(), date, time);
+      return mergeValueWithTime(
+        getNow(utcOffset.value, timezone.value),
+        date,
+        time
+      );
     }
 
     function onPanelVisibleChange(visible: boolean) {
@@ -717,7 +773,12 @@ export default defineComponent({
 
       if (!isValidInputValue(targetValue, computedFormat.value)) return;
 
-      const newValue = dayjs(targetValue, computedFormat.value);
+      const newValue = getDayjsValue(
+        targetValue,
+        computedFormat.value,
+        utcOffset.value,
+        timezone.value
+      ) as Dayjs;
 
       if (isDisabledDate(newValue)) return;
 
@@ -823,8 +884,12 @@ export default defineComponent({
         'showTime',
         'hideTrigger',
         'abbreviation',
+        'hideNotInViewDates',
+        'utcOffset',
+        'timezone',
       ]),
       showNowBtn: props.showNowBtn && mode.value === 'date',
+      now: getNow(utcOffset.value, timezone.value),
       prefixCls,
       format: parseValueFormat.value,
       value: panelValue.value,
@@ -860,6 +925,26 @@ export default defineComponent({
       onMonthHeaderClick,
     }));
 
+    const renderPopupPanel = () => {
+      const panelNode = h(PickerPanel, {
+        ...panelProps.value,
+        onClick: onPanelClick,
+      });
+      return isFunction(props.panelRender)
+        ? props.panelRender(panelNode)
+        : panelNode;
+    };
+
+    const renderPanelOnly = () => {
+      const panelNode = h(PickerPanel, {
+        ...attrs,
+        ...panelProps.value,
+      });
+      return isFunction(props.panelRender)
+        ? props.panelRender(panelNode)
+        : panelNode;
+    };
+
     return {
       prefixCls,
       refInput,
@@ -879,6 +964,8 @@ export default defineComponent({
       onInputPressEnter,
       onInputBlur,
       onPanelClick,
+      renderPopupPanel,
+      renderPanelOnly,
     };
   },
 });

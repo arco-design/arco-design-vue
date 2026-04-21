@@ -104,6 +104,9 @@ export interface BasePickerProps {
   valueFormat?: ValueFormat;
   previewShortcut: boolean;
   showConfirm?: boolean;
+  hideNotInViewDates?: boolean;
+  utcOffset?: number;
+  timezone?: string;
 }
 
 export type PickerProps = BasePickerProps &
@@ -134,6 +137,7 @@ export interface RangePickerProps extends BasePickerProps {
   exchangeTime: boolean;
   inputProps?: Record<string, any>[];
   fixedTime?: boolean;
+  clearRangeOnReselect?: boolean;
 }
 
 export interface Cell {

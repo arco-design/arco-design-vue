@@ -14,6 +14,8 @@ interface RangeHeaderValueProps {
   defaultValue: CalendarValue[] | undefined;
   selectedValue: (Dayjs | undefined)[];
   format: string;
+  utcOffset?: number;
+  timezone?: string;
   onChange?: (newVal: Dayjs[]) => void;
 }
 
@@ -26,6 +28,8 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
     defaultValue,
     selectedValue,
     format,
+    utcOffset,
+    timezone,
     onChange,
   } = toRefs(props);
 
@@ -66,6 +70,8 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
       defaultValue: startDefaultValue,
       selectedValue: undefined,
       format,
+      utcOffset,
+      timezone,
       onChange: (newVal: Dayjs) => {
         emitChange([newVal, endHeaderValue.value]);
       },
@@ -84,6 +90,8 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
       defaultValue: endDefaultValue,
       selectedValue: undefined,
       format,
+      utcOffset,
+      timezone,
       onChange: (newVal: Dayjs) => {
         emitChange([startHeaderValue.value, newVal]);
       },

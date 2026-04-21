@@ -9,17 +9,30 @@ interface PickerStateProps {
   modelValue: CalendarValue | undefined;
   defaultValue: CalendarValue | undefined;
   format: string;
+  utcOffset?: number;
+  timezone?: string;
 }
 
 export default function usePickerState(props: PickerStateProps) {
-  const { modelValue, defaultValue, format } = toRefs(props);
+  const { modelValue, defaultValue, format, utcOffset, timezone } =
+    toRefs(props);
 
   const computedModelValue = computed(() => {
-    return getDayjsValue(modelValue.value, format.value);
+    return getDayjsValue(
+      modelValue.value,
+      format.value,
+      utcOffset?.value,
+      timezone?.value
+    );
   });
 
   const computedDefaultValue = computed(() => {
-    return getDayjsValue(defaultValue.value, format.value);
+    return getDayjsValue(
+      defaultValue.value,
+      format.value,
+      utcOffset?.value,
+      timezone?.value
+    );
   });
 
   // Selected value maintained internally: dayjs
