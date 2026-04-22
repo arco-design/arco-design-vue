@@ -31,9 +31,8 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, toRefs } from 'vue';
 import { Dayjs } from 'dayjs';
-import { padStart } from '../../../_utils/pad';
 import { getPrefixCls } from '../../../_utils/global-config';
-import { dayjs } from '../../../_utils/date';
+import { methods } from '../../../_utils/date';
 import type {
   Cell,
   DisabledDate,
@@ -89,11 +88,11 @@ export default defineComponent({
     const headerTitle = computed(() => headerValue.value.format('YYYY'));
 
     const rows = computed<Cell[][]>(() => {
-      const year = headerValue.value.year();
+      const baseValue = headerValue.value.set('date', 1);
       return [
         [1, 2, 3, 4].map((q) => ({
           label: `Q${q}`,
-          value: dayjs(`${year}-${padStart((q - 1) * 3 + 1, 2, '0')}-01`),
+          value: methods.set(baseValue, 'month', (q - 1) * 3),
         })),
       ];
     });
