@@ -102,6 +102,24 @@ const app = createApp(App);
 Modal._context = app._context;
 ```
 
+### Modal.config
+
+设置通过全局方法打开对话框时的默认配置。
+
+```ts
+Modal.config({
+  simple: false,
+});
+```
+
+### Modal.destroyAll
+
+关闭所有通过全局方法打开的对话框。
+
+```ts
+Modal.destroyAll();
+```
+
 
 ### ModalConfig
 
@@ -157,6 +175,14 @@ Modal._context = app._context;
 
 
 
+### ModalGlobalConfig
+
+|参数名|描述|类型|默认值|
+|---|---|---|:---:|
+|simple|通过全局方法打开时，是否默认开启简单模式|`boolean`|`true`|
+
+
+
 ### ModalMethod
 
 |参数名|描述|类型|默认值|
@@ -167,5 +193,7 @@ Modal._context = app._context;
 |success|打开成功对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |warning|打开警告对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |error|打开错误对话框|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+|config|配置全局方法默认参数|`(config: ModalGlobalConfig) => void`|`-`|
+|destroyAll|关闭所有通过全局方法打开的对话框|`() => void`|`-`|
 
 

@@ -104,6 +104,24 @@ const app = createApp(App);
 Modal._context = app._context;
 ````
 
+### Modal.config
+
+Set default configuration for dialogs opened by global methods.
+
+```ts
+Modal.config({
+  simple: false,
+});
+```
+
+### Modal.destroyAll
+
+Close all dialogs opened by global methods.
+
+```ts
+Modal.destroyAll();
+```
+
 
 ### ModalConfig
 
@@ -159,6 +177,14 @@ Modal._context = app._context;
 
 
 
+### ModalGlobalConfig
+
+|Name|Description|Type|Default|
+|---|---|---|:---:|
+|simple|Whether to enable simple mode by default when opening through global methods|`boolean`|`true`|
+
+
+
 ### ModalMethod
 
 |Name|Description|Type|Default|
@@ -169,5 +195,7 @@ Modal._context = app._context;
 |success|Open success modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |warning|Open warning modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
 |error|Open error modal|`(config: ModalConfig, appContext?: AppContext) => ModalReturn`|`-`|
+|config|Configure default parameters for global methods|`(config: ModalGlobalConfig) => void`|`-`|
+|destroyAll|Close all dialogs opened by global methods|`() => void`|`-`|
 
 
