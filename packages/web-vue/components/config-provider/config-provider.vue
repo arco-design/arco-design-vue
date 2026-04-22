@@ -42,6 +42,14 @@ export default defineComponent({
       type: String as PropType<Size>,
     },
     /**
+     * @zh 当按钮中是两个汉字时，自动在两个汉字中添加一个空格。
+     * @en When there are two Chinese characters in the button, a space is automatically added between two Chinese characters.
+     */
+    autoInsertSpaceInButton: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * @zh 是否全局生效
      * @en Is global effect
      * @version 2.25.0
@@ -104,6 +112,7 @@ export default defineComponent({
       prefixCls,
       locale,
       size,
+      autoInsertSpaceInButton,
       updateAtScroll,
       scrollToClose,
       exchangeTime,
@@ -115,6 +124,7 @@ export default defineComponent({
       prefixCls,
       locale,
       size,
+      autoInsertSpaceInButton,
       updateAtScroll,
       scrollToClose,
       exchangeTime,

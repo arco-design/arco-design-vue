@@ -26,7 +26,6 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 ## API
 
-
 ### `<button>` Props
 
 |参数名|描述|类型|默认值|
@@ -37,6 +36,7 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 |size|按钮的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |long|按钮的宽度是否随容器自适应。|`boolean`|`false`|
 |loading|按钮是否为加载中状态|`boolean`|`false`|
+|loading-fixed-width|当 loading 的时候，不改变按钮的宽度。|`boolean`|`false`|
 |disabled|按钮是否禁用|`boolean`|`false`|
 |html-type|设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`HTMLButtonElement['type']`|`'button'`|
 |autofocus|设置 `button` 的原生 `autofocus` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`boolean`|`false`|
@@ -64,5 +64,4 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 |shape|按钮的形状|`BorderShape`|`-`|
 |size|按钮的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |disabled|全部子按钮是否禁用|`boolean`|`false`|
-
 
