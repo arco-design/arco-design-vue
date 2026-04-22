@@ -33,7 +33,7 @@ import { computed, defineComponent, PropType, toRefs } from 'vue';
 import { Dayjs } from 'dayjs';
 import { RenderFunc } from '../../../_components/render-function';
 import { getPrefixCls } from '../../../_utils/global-config';
-import { dayjs } from '../../../_utils/date';
+import { methods } from '../../../_utils/date';
 import type {
   Cell,
   DisabledDate,
@@ -114,11 +114,11 @@ export default defineComponent({
     const headerTitle = computed(() => headerValue.value.format('YYYY'));
 
     const rows = computed(() => {
-      const year = headerValue.value.year();
       const isAbbr = props.abbreviation ? 'short' : 'long';
+      const baseValue = headerValue.value.set('date', 1);
       const flatData = newArray<Cell>(CELL_COUNT).map((_, index) => ({
         label: datePickerT(`datePicker.month.${isAbbr}.${MONTH_LIST[index]}`),
-        value: dayjs(`${year}-${index + 1}`, 'YYYY-M'),
+        value: methods.set(baseValue, 'month', index),
       }));
       const rows = newArray(ROW_COUNT).map((_, index) =>
         flatData.slice(index * COL_COUNT, (index + 1) * COL_COUNT)

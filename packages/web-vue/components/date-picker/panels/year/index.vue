@@ -29,7 +29,7 @@
 import { computed, defineComponent, PropType, toRefs } from 'vue';
 import { Dayjs } from 'dayjs';
 import { getPrefixCls } from '../../../_utils/global-config';
-import { dayjs } from '../../../_utils/date';
+import { methods } from '../../../_utils/date';
 import type {
   Cell,
   DisabledDate,
@@ -46,6 +46,7 @@ const ROW_COUNT = 4;
 const COL_COUNT = 3;
 const CELL_COUNT = ROW_COUNT * COL_COUNT;
 const SPAN = 10;
+const MIN_YEAR = 0;
 
 export default defineComponent({
   name: 'YearPanel',
@@ -86,14 +87,20 @@ export default defineComponent({
     const pickerPrefixCls = getPrefixCls('picker');
 
     const rows = computed(() => {
-      const startYear = Math.floor(headerValue.value.year() / SPAN) * SPAN - 1;
+      const currentYear = Math.max(headerValue.value.year(), MIN_YEAR);
+      const baseYear = Math.floor(currentYear / SPAN) * SPAN;
+      const startYear = Math.max(baseYear - 1, MIN_YEAR);
+      const baseValue = headerValue.value.set('month', 0).set('date', 1);
 
-      const flatData = newArray<Cell>(CELL_COUNT).map((_, index) => ({
-        label: startYear + index,
-        value: dayjs(`${startYear + index}`, 'YYYY'),
-        isPrev: index < 1,
-        isNext: index > SPAN,
-      }));
+      const flatData = newArray<Cell>(CELL_COUNT).map((_, index) => {
+        const year = startYear + index;
+        return {
+          label: year,
+          value: methods.set(baseValue, 'year', year),
+          isPrev: year < baseYear,
+          isNext: year > baseYear + SPAN - 1,
+        };
+      });
 
       const rows = newArray(ROW_COUNT).map((_, index) =>
         flatData.slice(index * COL_COUNT, (index + 1) * COL_COUNT)
@@ -102,12 +109,11 @@ export default defineComponent({
       return rows;
     });
 
-    const headerTitle = computed(
-      () =>
-        `${rows.value[0][1].label}-${
-          rows.value[ROW_COUNT - 1][COL_COUNT - 1].label
-        }`
-    );
+    const headerTitle = computed(() => {
+      const currentYear = Math.max(headerValue.value.year(), MIN_YEAR);
+      const baseYear = Math.floor(currentYear / SPAN) * SPAN;
+      return `${baseYear}-${baseYear + SPAN - 1}`;
+    });
 
     const isSameTime: IsSameTime = (current, target) =>
       current.isSame(target, 'year');

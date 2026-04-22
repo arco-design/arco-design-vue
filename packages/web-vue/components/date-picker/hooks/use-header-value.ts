@@ -34,6 +34,7 @@ export default function useHeaderValue(props: HeaderValueProps): {
   } = toRefs(props);
 
   const computedMode = computed(() => mode?.value || 'date');
+  const MIN_YEAR = 0;
 
   const { span, superSpan } = usePanelSpan(
     reactive({
@@ -109,24 +110,40 @@ export default function useHeaderValue(props: HeaderValueProps): {
 
   const showSingleBtn = computed(() => span.value !== superSpan.value);
 
-  const headerOperations = computed(() => ({
-    onSuperPrev: () => {
-      setHeaderValue(methods.subtract(headerValue.value, superSpan.value, 'M'));
-    },
-    onPrev: showSingleBtn.value
+  const canMovePrev = (months: number) =>
+    methods.subtract(headerValue.value, months, 'M').year() >= MIN_YEAR;
+
+  const headerOperations = computed(() => {
+    const onSuperPrev = canMovePrev(superSpan.value)
       ? () => {
-          setHeaderValue(methods.subtract(headerValue.value, span.value, 'M'));
+          setHeaderValue(
+            methods.subtract(headerValue.value, superSpan.value, 'M')
+          );
         }
-      : undefined,
-    onNext: showSingleBtn.value
-      ? () => {
-          setHeaderValue(methods.add(headerValue.value, span.value, 'M'));
-        }
-      : undefined,
-    onSuperNext: () => {
-      setHeaderValue(methods.add(headerValue.value, superSpan.value, 'M'));
-    },
-  }));
+      : undefined;
+
+    const onPrev =
+      showSingleBtn.value && canMovePrev(span.value)
+        ? () => {
+            setHeaderValue(
+              methods.subtract(headerValue.value, span.value, 'M')
+            );
+          }
+        : undefined;
+
+    return {
+      onSuperPrev,
+      onPrev,
+      onNext: showSingleBtn.value
+        ? () => {
+            setHeaderValue(methods.add(headerValue.value, span.value, 'M'));
+          }
+        : undefined,
+      onSuperNext: () => {
+        setHeaderValue(methods.add(headerValue.value, superSpan.value, 'M'));
+      },
+    };
+  });
 
   return {
     headerValue,
