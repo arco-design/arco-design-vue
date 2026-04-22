@@ -58,6 +58,24 @@ const app = createApp(App);
 Modal._context = app._context;
 ```
 
+### Modal.config
+
+设置通过全局方法打开对话框时的默认配置。
+
+```ts
+Modal.config({
+  simple: false,
+});
+```
+
+### Modal.destroyAll
+
+关闭所有通过全局方法打开的对话框。
+
+```ts
+Modal.destroyAll();
+```
+
 ---
 ## en-US
 ### `<modal>` Global methods
@@ -77,6 +95,24 @@ import { Modal } from '@arco-design/web-vue';
 const app = createApp(App);
 Modal._context = app._context;
 ````
+
+### Modal.config
+
+Set default configuration for dialogs opened by global methods.
+
+```ts
+Modal.config({
+  simple: false,
+});
+```
+
+### Modal.destroyAll
+
+Close all dialogs opened by global methods.
+
+```ts
+Modal.destroyAll();
+```
 
 ---
 

@@ -249,6 +249,15 @@ export interface ModalReturn {
   update: (config: ModalUpdateConfig) => void;
 }
 
+export interface ModalGlobalConfig {
+  /**
+   * @zh 通过全局方法打开时，是否默认开启简单模式
+   * @en Whether to enable simple mode by default when opening through global methods
+   * @defaultValue true
+   */
+  simple?: boolean;
+}
+
 export interface ModalMethod {
   /**
    * @zh 打开对话框
@@ -280,4 +289,14 @@ export interface ModalMethod {
    * @en Open error modal
    */
   error: (config: ModalConfig, appContext?: AppContext) => ModalReturn;
+  /**
+   * @zh 配置全局方法默认参数
+   * @en Configure default parameters for global methods
+   */
+  config: (config: ModalGlobalConfig) => void;
+  /**
+   * @zh 关闭所有通过全局方法打开的对话框
+   * @en Close all dialogs opened by global methods
+   */
+  destroyAll: () => void;
 }
