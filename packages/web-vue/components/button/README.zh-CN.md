@@ -26,6 +26,7 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 
 ## API
 
+
 ### `<button>` Props
 
 |参数名|描述|类型|默认值|
@@ -64,4 +65,5 @@ description: 按钮是一种命令组件，可发起一个即时操作。
 |shape|按钮的形状|`BorderShape`|`-`|
 |size|按钮的尺寸|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |disabled|全部子按钮是否禁用|`boolean`|`false`|
+
 
