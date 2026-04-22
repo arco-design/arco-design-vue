@@ -28,7 +28,6 @@ description: Button is a command component that can initiate an instant operatio
 
 ## API
 
-
 ### `<button>` Props
 
 |Attribute|Description|Type|Default|
@@ -39,6 +38,7 @@ description: Button is a command component that can initiate an instant operatio
 |size|Button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`'medium'`|
 |long|Whether the width of the button adapts to the container.|`boolean`|`false`|
 |loading|Whether the button is in the loading state|`boolean`|`false`|
+|loading-fixed-width|The width of the button remains unchanged on loading.|`boolean`|`false`|
 |disabled|Whether the button is disabled|`boolean`|`false`|
 |html-type|Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`HTMLButtonElement['type']`|`'button'`|
 |autofocus|Set the native `autofocus` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")|`boolean`|`false`|
@@ -66,5 +66,4 @@ description: Button is a command component that can initiate an instant operatio
 |shape|Button shape|`BorderShape`|`-`|
 |size|Children button size|`'mini' \| 'small' \| 'medium' \| 'large'`|`-`|
 |disabled|All children whether the button is disabled|`boolean`|`false`|
-
 

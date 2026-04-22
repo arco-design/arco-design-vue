@@ -1,6 +1,7 @@
 <template>
   <template v-if="href">
     <a
+      ref="buttonRef"
       :class="[
         cls,
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
@@ -12,11 +13,13 @@
         <icon-loading v-if="loading" spin />
         <slot v-else name="icon" />
       </span>
-      <slot />
+      <slot v-if="!isTwoCNChar" />
+      <span v-else><slot /></span>
     </a>
   </template>
   <template v-else>
     <button
+      ref="buttonRef"
       :class="[
         cls,
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
@@ -30,18 +33,23 @@
         <icon-loading v-if="loading" :spin="true" />
         <slot v-else name="icon" />
       </span>
-      <slot />
+      <slot v-if="!isTwoCNChar" />
+      <span v-else><slot /></span>
     </button>
   </template>
 </template>
 
 <script lang="ts">
-/**
- * @todo 添加loadingFixedWidth
- * @todo 添加twoChineseChars
- */
 import type { PropType } from 'vue';
-import { defineComponent, computed, toRefs, inject } from 'vue';
+import {
+  defineComponent,
+  computed,
+  toRefs,
+  inject,
+  ref,
+  onMounted,
+  onUpdated,
+} from 'vue';
 import { Status, Size, BorderShape } from '../_utils/constant';
 import { ButtonTypes } from './constants';
 import { getPrefixCls } from '../_utils/global-config';
@@ -50,6 +58,9 @@ import IconLoading from '../icon/icon-loading';
 import { useSize } from '../_hooks/use-size';
 import { useFormItem } from '../_hooks/use-form-item';
 import { buttonGroupInjectionKey } from './context';
+import { configProviderInjectionKey } from '../config-provider/context';
+
+const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 
 export default defineComponent({
   name: 'Button',
@@ -107,6 +118,14 @@ export default defineComponent({
       default: false,
     },
     /**
+     * @zh 当 loading 的时候，不改变按钮的宽度。
+     * @en The width of the button remains unchanged on loading.
+     */
+    loadingFixedWidth: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * @zh 按钮是否禁用
      * @en Whether the button is disabled
      * @defaultValue false
@@ -152,7 +171,11 @@ export default defineComponent({
   setup(props, { emit }) {
     const { size, disabled } = toRefs(props);
     const prefixCls = getPrefixCls('btn');
+    const configContext = inject(configProviderInjectionKey, undefined);
     const groupContext = inject(buttonGroupInjectionKey, undefined);
+    const autoInsertSpaceInButton = computed(() =>
+      Boolean(configContext?.autoInsertSpaceInButton)
+    );
     const _size = computed(() => size.value ?? groupContext?.size);
     const _disabled = computed(() =>
       Boolean(disabled.value || groupContext?.disabled)
@@ -162,6 +185,28 @@ export default defineComponent({
       disabled: _disabled,
     });
     const { mergedSize } = useSize(_mergedSize);
+    const buttonRef = ref<HTMLAnchorElement | HTMLButtonElement>();
+    const isTwoCNChar = ref(false);
+
+    const updateIsTwoCNChar = () => {
+      if (!autoInsertSpaceInButton.value) {
+        if (isTwoCNChar.value) {
+          isTwoCNChar.value = false;
+        }
+        return;
+      }
+
+      const textContent =
+        buttonRef.value?.textContent?.replace(/\s/g, '') ?? '';
+      const value = regexTwoCNChar.test(textContent);
+
+      if (value !== isTwoCNChar.value) {
+        isTwoCNChar.value = value;
+      }
+    };
+
+    onMounted(updateIsTwoCNChar);
+    onUpdated(updateIsTwoCNChar);
 
     const cls = computed(() => [
       prefixCls,
@@ -172,8 +217,11 @@ export default defineComponent({
       {
         [`${prefixCls}-long`]: props.long,
         [`${prefixCls}-loading`]: props.loading,
+        [`${prefixCls}-loading-fixed-width`]: props.loadingFixedWidth,
         [`${prefixCls}-disabled`]: mergedDisabled.value,
         [`${prefixCls}-link`]: isString(props.href),
+        [`${prefixCls}-two-chinese-chars`]:
+          autoInsertSpaceInButton.value && isTwoCNChar.value,
       },
     ]);
 
@@ -188,6 +236,8 @@ export default defineComponent({
     return {
       prefixCls,
       cls,
+      buttonRef,
+      isTwoCNChar,
       mergedDisabled,
       handleClick,
     };
