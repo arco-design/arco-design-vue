@@ -129,6 +129,7 @@ import { isBoolean, isFunction, isNumber, isPromise } from '../_utils/is';
 import { KEYBOARD_KEY } from '../_utils/keyboard';
 import { useDraggable } from './hooks/use-draggable';
 import { useTeleportContainer } from '../_hooks/use-teleport-container';
+import type { ModalDragOptions } from './interface';
 
 export default defineComponent({
   name: 'Modal',
@@ -364,6 +365,17 @@ export default defineComponent({
       default: false,
     },
     /**
+     * @zh 拖拽配置
+     * @en Drag options
+     * @defaultValue -
+     */
+    dragOptions: {
+      type: Object as PropType<ModalDragOptions>,
+      default: () => ({
+        outOfScreen: false,
+      }),
+    },
+    /**
      * @zh 是否开启全屏
      * @en Whether to enable full screen
      * @version 2.19.0
@@ -538,6 +550,7 @@ export default defineComponent({
       wrapperRef,
       modalRef,
       draggable: mergedDraggable,
+      dragOptions: props.dragOptions,
       alignCenter,
     });
 
