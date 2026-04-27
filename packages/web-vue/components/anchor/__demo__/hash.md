@@ -1,12 +1,12 @@
 ```yaml
 title:
-  zh-CN: 是否改变hash
+  zh-CN: 是否改变 hash
   en-US: Hash
 ```
 
 ## zh-CN
 
-可以设置点击锚点而不改变浏览器历史。
+可以设置点击锚点时不改变浏览器地址中的 hash。
 
 ---
 

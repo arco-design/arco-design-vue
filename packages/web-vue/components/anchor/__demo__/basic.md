@@ -6,19 +6,19 @@ title:
 
 ## zh-CN
 
-锚点的基础用法
+锚点的基础用法。
 
 ---
 
 ## en-US
 
-Basic usage of anchors
+Basic usage of anchors.
 
 ---
 
 ```vue
 <template>
-  <a-anchor>
+  <a-anchor :offset-top="60" :style="{ backgroundColor: 'var(--color-bg-2)' }">
     <a-anchor-link href="#basic">Basic</a-anchor-link>
     <a-anchor-link href="#line-less">LineLess Mode</a-anchor-link>
     <a-anchor-link href="#affix">
