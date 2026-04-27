@@ -1,12 +1,12 @@
 ```yaml
 title:
-  zh-CN: 锚点滚动偏移量
+  zh-CN: 滚动偏移量
   en-US: boundary
 ```
 
 ## zh-CN
 
-可以设置 `boundary` 来定制锚点滚动偏移量。
+可以设置 `boundary` 来自定义锚点滚动偏移量。
 
 ---
 

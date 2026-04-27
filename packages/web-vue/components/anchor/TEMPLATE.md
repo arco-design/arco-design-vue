@@ -4,7 +4,7 @@ meta:
   type: 组件
   category: 其他
 title: 锚点 Anchor
-description: 通过锚点可快速找到信息内容在当前页面的位置。
+description: 通过锚点可以快速找到信息内容在当前页面的位置。
 ```
 ---
 ## en-US
@@ -19,7 +19,11 @@ description: Through the anchor point, you can quickly find the position of the 
 
 @import ./__demo__/basic.md
 
+@import ./__demo__/static.md
+
 @import ./__demo__/line-less.md
+
+@import ./__demo__/horizontal.md
 
 @import ./__demo__/affix.md
 
