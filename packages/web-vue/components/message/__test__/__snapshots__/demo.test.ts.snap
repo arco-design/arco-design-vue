@@ -1,24 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<message> demo: render [basic] correctly 1`] = `
+exports[`<message> demo: > render [basic] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Info Message
 </button>"
 `;
 
-exports[`<message> demo: render [closeable] correctly 1`] = `
+exports[`<message> demo: > render [closeable] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Closeable Message
 </button>"
 `;
 
-exports[`<message> demo: render [icon] correctly 1`] = `
+exports[`<message> demo: > render [icon] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Info Message
 </button>"
 `;
 
-exports[`<message> demo: render [position] correctly 1`] = `
+exports[`<message> demo: > render [position] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -31,7 +31,7 @@ exports[`<message> demo: render [position] correctly 1`] = `
 </div>"
 `;
 
-exports[`<message> demo: render [type] correctly 1`] = `
+exports[`<message> demo: > render [type] correctly 1`] = `
 "<div>
   <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
     <!---->
@@ -70,7 +70,7 @@ exports[`<message> demo: render [type] correctly 1`] = `
 </div>"
 `;
 
-exports[`<message> demo: render [update] correctly 1`] = `
+exports[`<message> demo: > render [update] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Update Info Message
 </button>"

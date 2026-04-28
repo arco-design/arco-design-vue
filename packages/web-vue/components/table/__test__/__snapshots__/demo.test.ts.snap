@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<table> demo: render [basic] correctly 1`] = `
+exports[`<table> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -106,7 +106,7 @@ exports[`<table> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [custom] correctly 1`] = `
+exports[`<table> demo: > render [custom] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -275,7 +275,7 @@ exports[`<table> demo: render [custom] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [custom-dom] correctly 1`] = `
+exports[`<table> demo: > render [custom-dom] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -381,7 +381,7 @@ exports[`<table> demo: render [custom-dom] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [drag-handle] correctly 1`] = `
+exports[`<table> demo: > render [drag-handle] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -494,7 +494,7 @@ exports[`<table> demo: render [drag-handle] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [drag-row] correctly 1`] = `
+exports[`<table> demo: > render [drag-row] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -600,7 +600,7 @@ exports[`<table> demo: render [drag-row] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [editable] correctly 1`] = `
+exports[`<table> demo: > render [editable] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -918,7 +918,7 @@ exports[`<table> demo: render [editable] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [ellipsis] correctly 1`] = `
+exports[`<table> demo: > render [ellipsis] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -1024,7 +1024,7 @@ exports[`<table> demo: render [ellipsis] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [expand] correctly 1`] = `
+exports[`<table> demo: > render [expand] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -1137,7 +1137,7 @@ exports[`<table> demo: render [expand] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [filter] correctly 1`] = `
+exports[`<table> demo: > render [filter] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -1242,7 +1242,7 @@ exports[`<table> demo: render [filter] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [fixed] correctly 1`] = `
+exports[`<table> demo: > render [fixed] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -1376,7 +1376,7 @@ exports[`<table> demo: render [fixed] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [fixed-group] correctly 1`] = `
+exports[`<table> demo: > render [fixed-group] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-border-cell arco-table-hover arco-table-layout-fixed\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -1554,7 +1554,7 @@ exports[`<table> demo: render [fixed-group] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [group] correctly 1`] = `
+exports[`<table> demo: > render [group] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-border-header-cell arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -1732,7 +1732,7 @@ exports[`<table> demo: render [group] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [lazy-load] correctly 1`] = `
+exports[`<table> demo: > render [lazy-load] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -1844,7 +1844,7 @@ exports[`<table> demo: render [lazy-load] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [props] correctly 1`] = `
+exports[`<table> demo: > render [props] correctly 1`] = `
 "<form class=\\"arco-form arco-form-layout-inline arco-form-size-medium\\">
   <div class=\\"arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-inline\\">
     <div class=\\"arco-form-item-label-col\\"><label class=\\"arco-form-item-label\\">
@@ -2099,7 +2099,7 @@ exports[`<table> demo: render [props] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [radio] correctly 1`] = `
+exports[`<table> demo: > render [radio] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-type-selection\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -2222,7 +2222,7 @@ exports[`<table> demo: render [radio] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [resize] correctly 1`] = `
+exports[`<table> demo: > render [resize] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-border-cell arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -2325,7 +2325,7 @@ exports[`<table> demo: render [resize] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [row-selection] correctly 1`] = `
+exports[`<table> demo: > render [row-selection] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -2462,7 +2462,7 @@ exports[`<table> demo: render [row-selection] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [scroll] correctly 1`] = `
+exports[`<table> demo: > render [scroll] correctly 1`] = `
 "<div style=\\"margin-bottom: 20px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
     <!--v-if-->
   </button> Virtual Scrollbar </div>
@@ -2728,7 +2728,7 @@ exports[`<table> demo: render [scroll] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [sort] correctly 1`] = `
+exports[`<table> demo: > render [sort] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -2848,7 +2848,7 @@ exports[`<table> demo: render [sort] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [span] correctly 1`] = `
+exports[`<table> demo: > render [span] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -3186,7 +3186,7 @@ exports[`<table> demo: render [span] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [sticky] correctly 1`] = `
+exports[`<table> demo: > render [sticky] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-layout-fixed\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -3312,7 +3312,7 @@ exports[`<table> demo: render [sticky] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [subtree] correctly 1`] = `
+exports[`<table> demo: > render [subtree] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span>checkStrictly:</span></div>
@@ -3451,7 +3451,7 @@ exports[`<table> demo: render [subtree] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [summary] correctly 1`] = `
+exports[`<table> demo: > render [summary] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover\\">
   <!---->
   <div class=\\"arco-spin\\">
@@ -3721,7 +3721,7 @@ exports[`<table> demo: render [summary] correctly 1`] = `
 </div>"
 `;
 
-exports[`<table> demo: render [virtual-list] correctly 1`] = `
+exports[`<table> demo: > render [virtual-list] correctly 1`] = `
 "<div class=\\"arco-table arco-table-size-large arco-table-border arco-table-hover arco-table-type-selection arco-table-layout-fixed\\">
   <!---->
   <div class=\\"arco-spin\\">

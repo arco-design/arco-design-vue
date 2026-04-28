@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<slider> demo: render [basic] correctly 1`] = `
+exports[`<slider> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-slider\\" style=\\"width: 200px;\\">
   <div class=\\"arco-slider-track\\">
     <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 50%;\\"></div>
@@ -15,7 +15,7 @@ exports[`<slider> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<slider> demo: render [disabled] correctly 1`] = `
+exports[`<slider> demo: > render [disabled] correctly 1`] = `
 "<div class=\\"arco-slider\\" style=\\"width: 200px;\\">
   <div class=\\"arco-slider-track arco-slider-track-disabled\\">
     <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 50%;\\"></div>
@@ -30,7 +30,7 @@ exports[`<slider> demo: render [disabled] correctly 1`] = `
 </div>"
 `;
 
-exports[`<slider> demo: render [input] correctly 1`] = `
+exports[`<slider> demo: > render [input] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -70,7 +70,7 @@ exports[`<slider> demo: render [input] correctly 1`] = `
 </div>"
 `;
 
-exports[`<slider> demo: render [marks] correctly 1`] = `
+exports[`<slider> demo: > render [marks] correctly 1`] = `
 "<div class=\\"arco-slider arco-slider-with-marks\\" style=\\"width: 300px;\\">
   <div class=\\"arco-slider-track\\">
     <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 66.67%;\\"></div>
@@ -103,7 +103,7 @@ exports[`<slider> demo: render [marks] correctly 1`] = `
 </div>"
 `;
 
-exports[`<slider> demo: render [range] correctly 1`] = `
+exports[`<slider> demo: > render [range] correctly 1`] = `
 "<div class=\\"arco-slider\\" style=\\"width: 300px;\\">
   <div class=\\"arco-slider-track\\">
     <div class=\\"arco-slider-bar\\" style=\\"left: 5%; right: 90%;\\"></div>
@@ -119,7 +119,7 @@ exports[`<slider> demo: render [range] correctly 1`] = `
 </div>"
 `;
 
-exports[`<slider> demo: render [step] correctly 1`] = `
+exports[`<slider> demo: > render [step] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -194,7 +194,7 @@ exports[`<slider> demo: render [step] correctly 1`] = `
 </div>"
 `;
 
-exports[`<slider> demo: render [tooltip] correctly 1`] = `
+exports[`<slider> demo: > render [tooltip] correctly 1`] = `
 "<div class=\\"arco-slider\\" style=\\"width: 200px;\\">
   <div class=\\"arco-slider-track\\">
     <div class=\\"arco-slider-bar\\" style=\\"left: 0%; right: 100%;\\"></div>
@@ -209,7 +209,7 @@ exports[`<slider> demo: render [tooltip] correctly 1`] = `
 </div>"
 `;
 
-exports[`<slider> demo: render [vertical] correctly 1`] = `
+exports[`<slider> demo: > render [vertical] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-start\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">

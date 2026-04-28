@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Drawer should render Drawer 1`] = `
+exports[`Drawer > should render Drawer 1`] = `
 "<!--teleport start-->
 <div class=\\"arco-drawer-container\\" style=\\"z-index: 0; display: none;\\">
   <transition-stub name=\\"fade-drawer\\" appear=\\"true\\" persisted=\\"false\\" css=\\"true\\">

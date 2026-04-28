@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<affix> demo: render [basic] correctly 1`] = `
+exports[`<affix> demo: > render [basic] correctly 1`] = `
 "<div>
   <!--v-if-->
   <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -9,7 +9,7 @@ exports[`<affix> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<affix> demo: render [bottom] correctly 1`] = `
+exports[`<affix> demo: > render [bottom] correctly 1`] = `
 "<div>
   <!--v-if-->
   <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -18,7 +18,7 @@ exports[`<affix> demo: render [bottom] correctly 1`] = `
 </div>"
 `;
 
-exports[`<affix> demo: render [container] correctly 1`] = `
+exports[`<affix> demo: > render [container] correctly 1`] = `
 "<div style=\\"height: 200px; overflow: auto;\\">
   <div style=\\"height: 400px; background: rgb(204, 204, 204); overflow: hidden;\\">
     <div style=\\"margin: 40px;\\">
@@ -31,7 +31,7 @@ exports[`<affix> demo: render [container] correctly 1`] = `
 </div>"
 `;
 
-exports[`<affix> demo: render [fix-change] correctly 1`] = `
+exports[`<affix> demo: > render [fix-change] correctly 1`] = `
 "<div>
   <!--v-if-->
   <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -40,7 +40,7 @@ exports[`<affix> demo: render [fix-change] correctly 1`] = `
 </div>"
 `;
 
-exports[`<affix> demo: render [top] correctly 1`] = `
+exports[`<affix> demo: > render [top] correctly 1`] = `
 "<div>
   <!--v-if-->
   <div class=\\"\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">

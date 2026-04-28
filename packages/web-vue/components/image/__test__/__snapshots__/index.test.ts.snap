@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Image Should show preview on click 1`] = `
+exports[`Image > Should show preview on click 1`] = `
 "<div class=\\"arco-image arco-image-with-footer-inner\\"><img class=\\"arco-image-img\\" src=\\"http://it-does-not-matter.png/\\">
   <!--v-if-->
   <!--v-if-->

@@ -71,6 +71,12 @@ app.mount('#app');
 
 3. Use `npm run init` to initialize the project
 
+4. Run tests with Vitest:
+```bash
+pnpm run test
+pnpm run test:update
+```
+
 # Useful Links
 
 * [Documentation website](https://arco.design/)

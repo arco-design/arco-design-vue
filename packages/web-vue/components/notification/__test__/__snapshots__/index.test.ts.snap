@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Notification should render notification 1`] = `
+exports[`Notification > should render notification 1`] = `
 "<transition-group-stub name=\\"slide-right-notification\\" tag=\\"ul\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"arco-notification-list arco-notification-list-top-right\\" style=\\"z-index: 0;\\">
   <li role=\\"alert\\" class=\\"arco-notification arco-notification-info\\">
     <div class=\\"arco-notification-left\\">

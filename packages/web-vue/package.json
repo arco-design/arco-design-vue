@@ -69,7 +69,6 @@
     "@babel/plugin-transform-runtime": "^7.26.9",
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-typescript": "^7.26.0",
-    "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "@vue/babel-plugin-jsx": "^1.4.0",
@@ -81,7 +80,6 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^7.20.0",
-    "jest": "^26.6.3",
     "prettier": "^2.8.8",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
@@ -89,7 +87,8 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "typescript": "^4.9.5",
-    "vue-jest": "5.0.0-alpha.10"
+    "@vitest/coverage-v8": "^0.34.6",
+    "vitest": "^0.34.6"
   },
   "dependencies": {
     "@arco-design/color": "^0.4.0",

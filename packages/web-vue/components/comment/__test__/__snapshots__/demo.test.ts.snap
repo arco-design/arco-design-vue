@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<comment> demo: render [align] correctly 1`] = `
-"<div class=\\"arco-comment\\">
+exports[`<comment> demo: > render [align] correctly 1`] = `
+"<div data-v-5a29573f=\\"\\" class=\\"arco-comment\\">
   <div class=\\"arco-comment-avatar\\">
-    <div class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+    <div data-v-5a29573f=\\"\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\"><img data-v-5a29573f=\\"\\" alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <!--v-if-->
     </div>
   </div>
@@ -11,19 +11,19 @@ exports[`<comment> demo: render [align] correctly 1`] = `
     <div class=\\"arco-comment-inner-content\\">
       <div class=\\"arco-comment-title arco-comment-title-align-right\\"><span class=\\"arco-comment-author\\"><span>Balzac</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
       <div class=\\"arco-comment-content\\">
-        <div> A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. </div>
+        <div data-v-5a29573f=\\"\\"> A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. </div>
       </div>
-      <div class=\\"arco-comment-actions arco-comment-actions-align-right\\"><span class=\\"action\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg></span> 83</span><span class=\\"action\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg></span> 3</span><span class=\\"action\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
+      <div class=\\"arco-comment-actions arco-comment-actions-align-right\\"><span data-v-5a29573f=\\"\\" class=\\"action\\"><span data-v-5a29573f=\\"\\"><svg data-v-5a29573f=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg></span> 83</span><span data-v-5a29573f=\\"\\" class=\\"action\\"><span data-v-5a29573f=\\"\\"><svg data-v-5a29573f=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg></span> 3</span><span data-v-5a29573f=\\"\\" class=\\"action\\"><svg data-v-5a29573f=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
     </div>
     <!--v-if-->
   </div>
 </div>"
 `;
 
-exports[`<comment> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-comment\\">
+exports[`<comment> demo: > render [basic] correctly 1`] = `
+"<div data-v-e8e45030=\\"\\" class=\\"arco-comment\\">
   <div class=\\"arco-comment-avatar\\">
-    <div class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+    <div data-v-e8e45030=\\"\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\"><img data-v-e8e45030=\\"\\" alt=\\"avatar\\" src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\"></span>
       <!--v-if-->
     </div>
   </div>
@@ -31,15 +31,15 @@ exports[`<comment> demo: render [basic] correctly 1`] = `
     <div class=\\"arco-comment-inner-content\\">
       <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Socrates</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
       <div class=\\"arco-comment-content\\"><span>Comment body content.</span></div>
-      <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span class=\\"action\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg></span> 83</span><span class=\\"action\\"><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg></span> 3</span><span class=\\"action\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
+      <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span data-v-e8e45030=\\"\\" class=\\"action\\"><span data-v-e8e45030=\\"\\"><svg data-v-e8e45030=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg></span> 83</span><span data-v-e8e45030=\\"\\" class=\\"action\\"><span data-v-e8e45030=\\"\\"><svg data-v-e8e45030=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg></span> 3</span><span data-v-e8e45030=\\"\\" class=\\"action\\"><svg data-v-e8e45030=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
     </div>
     <!--v-if-->
   </div>
 </div>"
 `;
 
-exports[`<comment> demo: render [editor] correctly 1`] = `
-"<div class=\\"arco-comment\\">
+exports[`<comment> demo: > render [editor] correctly 1`] = `
+"<div data-v-61f17cba=\\"\\" class=\\"arco-comment\\">
   <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
   <div class=\\"arco-comment-inner\\">
     <div class=\\"arco-comment-inner-content\\">
@@ -48,18 +48,18 @@ exports[`<comment> demo: render [editor] correctly 1`] = `
           or system or for the implementation of an activity or process, or the
           result of that plan or specification in the form of a prototype,
           product or process.</span></div>
-      <div class=\\"arco-comment-actions arco-comment-actions-align-right\\"><span class=\\"action\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
+      <div class=\\"arco-comment-actions arco-comment-actions-align-right\\"><span data-v-61f17cba=\\"\\" class=\\"action\\"><svg data-v-61f17cba=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
     </div>
     <div class=\\"arco-comment-inner-comment\\">
-      <div class=\\"arco-comment\\">
+      <div data-v-61f17cba=\\"\\" class=\\"arco-comment\\">
         <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
         <div class=\\"arco-comment-inner\\">
           <div class=\\"arco-comment-inner-content\\">
             <!--v-if-->
-            <div class=\\"arco-comment-content\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Here is you content.\\" value=\\"\\"><!----><!----></span></div>
-            <div class=\\"arco-comment-actions arco-comment-actions-align-right\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+            <div class=\\"arco-comment-content\\"><span data-v-61f17cba=\\"\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Here is you content.\\" value=\\"\\"><!----><!----></span></div>
+            <div class=\\"arco-comment-actions arco-comment-actions-align-right\\"><button data-v-61f17cba=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
                 <!--v-if--> Cancel
-              </button><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+              </button><button data-v-61f17cba=\\"\\" class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
                 <!--v-if--> Reply
               </button></div>
           </div>
@@ -71,43 +71,43 @@ exports[`<comment> demo: render [editor] correctly 1`] = `
 </div>"
 `;
 
-exports[`<comment> demo: render [nest] correctly 1`] = `
-"<div class=\\"arco-comment\\">
+exports[`<comment> demo: > render [nest] correctly 1`] = `
+"<div data-v-5412ac8e=\\"\\" class=\\"arco-comment\\">
   <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
   <div class=\\"arco-comment-inner\\">
     <div class=\\"arco-comment-inner-content\\">
       <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Socrates</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
       <div class=\\"arco-comment-content\\"><span>Comment body content.</span></div>
-      <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span class=\\"action\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
+      <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span data-v-5412ac8e=\\"\\" class=\\"action\\"><svg data-v-5412ac8e=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
     </div>
     <div class=\\"arco-comment-inner-comment\\">
-      <div class=\\"arco-comment\\">
+      <div data-v-5412ac8e=\\"\\" class=\\"arco-comment\\">
         <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
         <div class=\\"arco-comment-inner\\">
           <div class=\\"arco-comment-inner-content\\">
             <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Balzac</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
             <div class=\\"arco-comment-content\\"><span>Comment body content.</span></div>
-            <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span class=\\"action\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
+            <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span data-v-5412ac8e=\\"\\" class=\\"action\\"><svg data-v-5412ac8e=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
           </div>
           <div class=\\"arco-comment-inner-comment\\">
-            <div class=\\"arco-comment\\">
+            <div data-v-5412ac8e=\\"\\" class=\\"arco-comment\\">
               <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/8361eeb82904210b4f55fab888fe8416.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
               <div class=\\"arco-comment-inner\\">
                 <div class=\\"arco-comment-inner-content\\">
                   <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Austen</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
                   <div class=\\"arco-comment-content\\"><span>Reply content</span></div>
-                  <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span class=\\"action\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
+                  <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span data-v-5412ac8e=\\"\\" class=\\"action\\"><svg data-v-5412ac8e=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
                 </div>
                 <!--v-if-->
               </div>
             </div>
-            <div class=\\"arco-comment\\">
+            <div data-v-5412ac8e=\\"\\" class=\\"arco-comment\\">
               <div class=\\"arco-comment-avatar\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp\\" alt=\\"comment-avatar\\"></div>
               <div class=\\"arco-comment-inner\\">
                 <div class=\\"arco-comment-inner-content\\">
                   <div class=\\"arco-comment-title arco-comment-title-align-left\\"><span class=\\"arco-comment-author\\"><span>Plato</span></span><span class=\\"arco-comment-datetime\\"><span>1 hour</span></span></div>
                   <div class=\\"arco-comment-content\\"><span>Reply content</span></div>
-                  <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span class=\\"action\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
+                  <div class=\\"arco-comment-actions arco-comment-actions-align-left\\"><span data-v-5412ac8e=\\"\\" class=\\"action\\"><svg data-v-5412ac8e=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg> Reply </span></div>
                 </div>
                 <!--v-if-->
               </div>

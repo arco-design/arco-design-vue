@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<image> demo: render [basic] correctly 1`] = `
+exports[`<image> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px;\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
@@ -11,7 +11,7 @@ exports[`<image> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<image> demo: render [caption] correctly 1`] = `
+exports[`<image> demo: > render [caption] correctly 1`] = `
 "<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px;\\" title=\\"A user’s avatar\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
@@ -30,7 +30,7 @@ exports[`<image> demo: render [caption] correctly 1`] = `
 </div>"
 `;
 
-exports[`<image> demo: render [component-preview] correctly 1`] = `
+exports[`<image> demo: > render [component-preview] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click me to preview image
 </button>
@@ -38,7 +38,7 @@ exports[`<image> demo: render [component-preview] correctly 1`] = `
 <!--teleport end-->"
 `;
 
-exports[`<image> demo: render [component-preview-group] correctly 1`] = `
+exports[`<image> demo: > render [component-preview-group] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click me to preview multiple image
 </button>
@@ -46,7 +46,7 @@ exports[`<image> demo: render [component-preview-group] correctly 1`] = `
 <!--teleport end-->"
 `;
 
-exports[`<image> demo: render [custom-preview-actions] correctly 1`] = `
+exports[`<image> demo: > render [custom-preview-actions] correctly 1`] = `
 "<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px;\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
@@ -57,7 +57,7 @@ exports[`<image> demo: render [custom-preview-actions] correctly 1`] = `
 </div>"
 `;
 
-exports[`<image> demo: render [error] correctly 1`] = `
+exports[`<image> demo: > render [error] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 20px; row-gap: 20px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -84,8 +84,8 @@ exports[`<image> demo: render [error] correctly 1`] = `
 </div>"
 `;
 
-exports[`<image> demo: render [extra] correctly 1`] = `
-"<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 260px; margin-right: 67px; vertical-align: top;\\"><img class=\\"arco-image-img\\" style=\\"width: 260px;\\" title=\\"A user’s avatar\\">
+exports[`<image> demo: > render [extra] correctly 1`] = `
+"<div data-v-0d291c64=\\"\\" class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 260px; margin-right: 67px; vertical-align: top;\\"><img class=\\"arco-image-img\\" style=\\"width: 260px;\\" title=\\"A user’s avatar\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
     <!--v-if-->
@@ -93,7 +93,7 @@ exports[`<image> demo: render [extra] correctly 1`] = `
   <!--v-if-->
   <!--v-if-->
 </div>
-<div class=\\"arco-image arco-image-with-footer-outer\\" style=\\"width: 260px;\\"><img class=\\"arco-image-img\\" style=\\"width: 260px;\\" title=\\"A user’s avatar\\">
+<div data-v-0d291c64=\\"\\" class=\\"arco-image arco-image-with-footer-outer\\" style=\\"width: 260px;\\"><img class=\\"arco-image-img\\" style=\\"width: 260px;\\" title=\\"A user’s avatar\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
     <!--v-if-->
@@ -103,11 +103,11 @@ exports[`<image> demo: render [extra] correctly 1`] = `
 </div>"
 `;
 
-exports[`<image> demo: render [loader] correctly 1`] = `
-"<div><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-bottom: 20px;\\">
+exports[`<image> demo: > render [loader] correctly 1`] = `
+"<div data-v-1bc052c5=\\"\\"><button data-v-1bc052c5=\\"\\" class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-bottom: 20px;\\">
     <!--v-if--> reload
   </button></div>
-<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px; height: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px; height: 200px;\\">
+<div data-v-1bc052c5=\\"\\" class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px; height: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px; height: 200px;\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
     <!--v-if-->
@@ -115,7 +115,7 @@ exports[`<image> demo: render [loader] correctly 1`] = `
   <!--v-if-->
   <!--v-if-->
 </div>
-<div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px; height: 200px; margin-left: 67px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px; height: 200px;\\">
+<div data-v-1bc052c5=\\"\\" class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px; height: 200px; margin-left: 67px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px; height: 200px;\\">
   <div class=\\"arco-image-overlay\\">
     <!--v-if-->
     <!--v-if-->
@@ -125,7 +125,7 @@ exports[`<image> demo: render [loader] correctly 1`] = `
 </div>"
 `;
 
-exports[`<image> demo: render [preview-group] correctly 1`] = `
+exports[`<image> demo: > render [preview-group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -176,7 +176,7 @@ exports[`<image> demo: render [preview-group] correctly 1`] = `
 <!--teleport end-->"
 `;
 
-exports[`<image> demo: render [preview-popup-container] correctly 1`] = `
+exports[`<image> demo: > render [preview-popup-container] correctly 1`] = `
 "<div id=\\"image-demo-preview-popup-container\\" style=\\"width: 100%; height: 400px; position: relative; overflow: hidden; line-height: 400px; text-align: center;\\">
   <div class=\\"arco-image arco-image-with-footer-inner\\" style=\\"width: 200px;\\"><img class=\\"arco-image-img\\" style=\\"width: 200px;\\">
     <div class=\\"arco-image-overlay\\">
@@ -189,7 +189,7 @@ exports[`<image> demo: render [preview-popup-container] correctly 1`] = `
 </div>"
 `;
 
-exports[`<image> demo: render [progressive-loader] correctly 1`] = `
+exports[`<image> demo: > render [progressive-loader] correctly 1`] = `
 "<div><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-bottom: 20px;\\">
     <!--v-if--> reload
   </button></div>

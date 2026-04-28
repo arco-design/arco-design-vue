@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<skeleton> demo: render [animation] correctly 1`] = `
+exports[`<skeleton> demo: > render [animation] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -39,7 +39,7 @@ exports[`<skeleton> demo: render [animation] correctly 1`] = `
 </div>"
 `;
 
-exports[`<skeleton> demo: render [basic] correctly 1`] = `
+exports[`<skeleton> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-skeleton\\">
   <div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
     <!---->
@@ -62,7 +62,7 @@ exports[`<skeleton> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<skeleton> demo: render [type] correctly 1`] = `
+exports[`<skeleton> demo: > render [type] correctly 1`] = `
 "<div class=\\"arco-skeleton\\">
   <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
     <!---->

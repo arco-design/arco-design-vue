@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<mention> demo: render [basic] correctly 1`] = `
+exports[`<mention> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"enter something\\" value=\\"\\"><!----><!----></span>
@@ -20,7 +20,7 @@ exports[`<mention> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<mention> demo: render [prefix] correctly 1`] = `
+exports[`<mention> demo: > render [prefix] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"input @\\" value=\\"\\"><!----><!----></span>

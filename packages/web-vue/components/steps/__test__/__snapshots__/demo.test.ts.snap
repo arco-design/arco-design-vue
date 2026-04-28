@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<steps> demo: render [arrow] correctly 1`] = `
+exports[`<steps> demo: > render [arrow] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-arrow\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <!--v-if-->
@@ -29,7 +29,7 @@ exports[`<steps> demo: render [arrow] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [basic] correctly 1`] = `
+exports[`<steps> demo: > render [basic] correctly 1`] = `
 "<div>
   <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default\\">
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
@@ -76,7 +76,7 @@ exports[`<steps> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [changeable] correctly 1`] = `
+exports[`<steps> demo: > render [changeable] correctly 1`] = `
 "<div>
   <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default arco-steps-changeable\\">
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
@@ -136,7 +136,7 @@ exports[`<steps> demo: render [changeable] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [custom-node] correctly 1`] = `
+exports[`<steps> demo: > render [custom-node] correctly 1`] = `
 "<div>
   <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-vertical arco-steps-mode-default arco-steps-changeable\\">
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
@@ -189,7 +189,7 @@ exports[`<steps> demo: render [custom-node] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [description] correctly 1`] = `
+exports[`<steps> demo: > render [description] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <!--v-if-->
@@ -230,7 +230,7 @@ exports[`<steps> demo: render [description] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [dot] correctly 1`] = `
+exports[`<steps> demo: > render [dot] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-vertical arco-steps-mode-dot\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <div class=\\"arco-steps-item-tail\\"></div>
@@ -265,7 +265,7 @@ exports[`<steps> demo: render [dot] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [error] correctly 1`] = `
+exports[`<steps> demo: > render [error] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <!--v-if-->
@@ -306,7 +306,7 @@ exports[`<steps> demo: render [error] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [icon] correctly 1`] = `
+exports[`<steps> demo: > render [icon] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <!--v-if-->
@@ -348,7 +348,7 @@ exports[`<steps> demo: render [icon] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [label-placement] correctly 1`] = `
+exports[`<steps> demo: > render [label-placement] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-vertical arco-steps-mode-default\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <div class=\\"arco-steps-item-tail\\"></div>
@@ -389,7 +389,7 @@ exports[`<steps> demo: render [label-placement] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [line-less] correctly 1`] = `
+exports[`<steps> demo: > render [line-less] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default arco-steps-line-less\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <!--v-if-->
@@ -430,7 +430,7 @@ exports[`<steps> demo: render [line-less] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [navigation] correctly 1`] = `
+exports[`<steps> demo: > render [navigation] correctly 1`] = `
 "<div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-navigation\\">
   <div class=\\"arco-steps-item arco-steps-item-finish\\">
     <!--v-if-->
@@ -471,7 +471,7 @@ exports[`<steps> demo: render [navigation] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [small] correctly 1`] = `
+exports[`<steps> demo: > render [small] correctly 1`] = `
 "<div>
   <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-default arco-steps-size-small\\">
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
@@ -518,7 +518,7 @@ exports[`<steps> demo: render [small] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [small-arrow] correctly 1`] = `
+exports[`<steps> demo: > render [small-arrow] correctly 1`] = `
 "<div>
   <div class=\\"arco-steps arco-steps-horizontal arco-steps-label-horizontal arco-steps-mode-arrow arco-steps-size-small\\" style=\\"margin-bottom: 20px;\\">
     <div class=\\"arco-steps-item arco-steps-item-finish\\">
@@ -575,12 +575,12 @@ exports[`<steps> demo: render [small-arrow] correctly 1`] = `
 </div>"
 `;
 
-exports[`<steps> demo: render [vertical] correctly 1`] = `
-"<div class=\\"frame-bg\\">
-  <div class=\\"frame-body\\">
-    <div class=\\"frame-aside\\">
-      <div class=\\"arco-steps arco-steps-vertical arco-steps-label-horizontal arco-steps-mode-default\\">
-        <div class=\\"arco-steps-item arco-steps-item-finish\\">
+exports[`<steps> demo: > render [vertical] correctly 1`] = `
+"<div data-v-4822aaf4=\\"\\" class=\\"frame-bg\\">
+  <div data-v-4822aaf4=\\"\\" class=\\"frame-body\\">
+    <div data-v-4822aaf4=\\"\\" class=\\"frame-aside\\">
+      <div data-v-4822aaf4=\\"\\" class=\\"arco-steps arco-steps-vertical arco-steps-label-horizontal arco-steps-mode-default\\">
+        <div data-v-4822aaf4=\\"\\" class=\\"arco-steps-item arco-steps-item-finish\\">
           <div class=\\"arco-steps-item-tail\\"></div>
           <div class=\\"arco-steps-item-node\\">
             <div class=\\"arco-steps-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -592,7 +592,7 @@ exports[`<steps> demo: render [vertical] correctly 1`] = `
             <!--v-if-->
           </div>
         </div>
-        <div class=\\"arco-steps-item arco-steps-item-finish\\">
+        <div data-v-4822aaf4=\\"\\" class=\\"arco-steps-item arco-steps-item-finish\\">
           <div class=\\"arco-steps-item-tail\\"></div>
           <div class=\\"arco-steps-item-node\\">
             <div class=\\"arco-steps-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -604,7 +604,7 @@ exports[`<steps> demo: render [vertical] correctly 1`] = `
             <!--v-if-->
           </div>
         </div>
-        <div class=\\"arco-steps-item arco-steps-item-finish\\">
+        <div data-v-4822aaf4=\\"\\" class=\\"arco-steps-item arco-steps-item-finish\\">
           <div class=\\"arco-steps-item-tail\\"></div>
           <div class=\\"arco-steps-item-node\\">
             <div class=\\"arco-steps-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -618,14 +618,14 @@ exports[`<steps> demo: render [vertical] correctly 1`] = `
         </div>
       </div>
     </div>
-    <div class=\\"frame-main\\">
-      <div class=\\"main-content\\">The content of this step.</div>
-      <div class=\\"main-bottom\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
-          <!--v-if--><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+    <div data-v-4822aaf4=\\"\\" class=\\"frame-main\\">
+      <div data-v-4822aaf4=\\"\\" class=\\"main-content\\">The content of this step.</div>
+      <div data-v-4822aaf4=\\"\\" class=\\"main-bottom\\"><button data-v-4822aaf4=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-btn-disabled\\" type=\\"button\\" disabled=\\"\\">
+          <!--v-if--><svg data-v-4822aaf4=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-left\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"M32 8.4 16.444 23.956 32 39.513\\"></path>
           </svg> Back
-        </button><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
-          <!--v-if--> Next <svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
+        </button><button data-v-4822aaf4=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+          <!--v-if--> Next <svg data-v-4822aaf4=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-right\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
             <path d=\\"m16 39.513 15.556-15.557L16 8.4\\"></path>
           </svg>
         </button></div>

@@ -72,6 +72,12 @@ app.mount('#app');
 
 3. 使用 `npm run init` 初始化项目
 
+4. 使用 Vitest 运行测试：
+```bash
+pnpm run test
+pnpm run test:update
+```
+
 
 # 相关链接
 

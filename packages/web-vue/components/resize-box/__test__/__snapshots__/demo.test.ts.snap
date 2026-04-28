@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<resize-box> demo: render [basic] correctly 1`] = `
+exports[`<resize-box> demo: > render [basic] correctly 1`] = `
 "<div>
   <div class=\\"arco-resizebox\\" style=\\"width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;\\">
     <div class=\\"arco-typography\\">We are building the future of content discovery and creation.
@@ -47,7 +47,7 @@ exports[`<resize-box> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<resize-box> demo: render [controlled] correctly 1`] = `
+exports[`<resize-box> demo: > render [controlled] correctly 1`] = `
 "<div>
   <div class=\\"arco-resizebox\\" style=\\"min-width: 100px; max-width: 100%; text-align: center; width: 500px; height: 200px;\\">
     <div class=\\"arco-typography\\">We are building the future of content discovery and creation.
@@ -94,25 +94,25 @@ exports[`<resize-box> demo: render [controlled] correctly 1`] = `
 </div>"
 `;
 
-exports[`<resize-box> demo: render [custom-triggers] correctly 1`] = `
-"<div class=\\"arco-resizebox\\" style=\\"width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;\\">
-  <div class=\\"arco-typography\\">We are building the future of content discovery and creation.
+exports[`<resize-box> demo: > render [custom-triggers] correctly 1`] = `
+"<div data-v-c56a8f3c=\\"\\" class=\\"arco-resizebox\\" style=\\"width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;\\">
+  <div data-v-c56a8f3c=\\"\\" class=\\"arco-typography\\">We are building the future of content discovery and creation.
     <!---->
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
   </div>
-  <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal\\">
+  <div data-v-c56a8f3c=\\"\\" role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal\\">
     <!---->
   </div>
-  <div class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
+  <div data-v-c56a8f3c=\\"\\" class=\\"arco-typography\\"> ByteDance's content platforms enable people to enjoy content powered by AI technology. We inform, entertain, and inspire people across language, culture and geography.
     <!---->
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
   </div>
-  <div role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
-  <div class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
+  <div data-v-c56a8f3c=\\"\\" role=\\"separator\\" class=\\"arco-divider arco-divider-horizontal arco-divider-with-text\\"><span class=\\"arco-divider-text arco-divider-text-center\\">ByteDance</span></div>
+  <div data-v-c56a8f3c=\\"\\" class=\\"arco-typography\\">Yiming Zhang is the founder and CEO of ByteDance.
     <!---->
     <!--v-if-->
     <!--v-if-->
@@ -120,25 +120,25 @@ exports[`<resize-box> demo: render [custom-triggers] correctly 1`] = `
   </div>
   <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-vertical arco-resizebox-direction-right\\">
     <!-- @slot 自定义内容 -->
-    <div class=\\"resizebox-demo resizebox-demo-vertical\\">
-      <div class=\\"resizebox-demo-line\\"></div>
+    <div data-v-c56a8f3c=\\"\\" class=\\"resizebox-demo resizebox-demo-vertical\\">
+      <div data-v-c56a8f3c=\\"\\" class=\\"resizebox-demo-line\\"></div>
     </div>
   </div>
   <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-horizontal arco-resizebox-direction-bottom\\">
     <!-- @slot 自定义内容 -->
-    <div class=\\"resizebox-demo resizebox-demo-horizontal\\">
-      <div class=\\"resizebox-demo-line\\"></div>
+    <div data-v-c56a8f3c=\\"\\" class=\\"resizebox-demo resizebox-demo-horizontal\\">
+      <div data-v-c56a8f3c=\\"\\" class=\\"resizebox-demo-line\\"></div>
     </div>
   </div>
 </div>"
 `;
 
-exports[`<resize-box> demo: render [layout] correctly 1`] = `
-"<div class=\\"layout-demo\\">
-  <section class=\\"arco-layout\\">
-    <header class=\\"arco-layout-header\\">Header</header>
-    <section class=\\"arco-layout\\">
-      <div class=\\"arco-resizebox arco-layout-sider arco-layout-sider-light\\" style=\\"width: 200px;\\">
+exports[`<resize-box> demo: > render [layout] correctly 1`] = `
+"<div data-v-0b6562af=\\"\\" class=\\"layout-demo\\">
+  <section data-v-0b6562af=\\"\\" class=\\"arco-layout\\">
+    <header data-v-0b6562af=\\"\\" class=\\"arco-layout-header\\">Header</header>
+    <section data-v-0b6562af=\\"\\" class=\\"arco-layout\\">
+      <div data-v-0b6562af=\\"\\" class=\\"arco-resizebox arco-layout-sider arco-layout-sider-light\\" style=\\"width: 200px;\\">
         <div class=\\"arco-layout-sider-children\\"> Sider </div>
         <!--v-if-->
         <div class=\\"arco-resizebox-trigger arco-resizebox-trigger-vertical arco-resizebox-direction-right\\">
@@ -151,9 +151,9 @@ exports[`<resize-box> demo: render [layout] correctly 1`] = `
           </div>
         </div>
       </div>
-      <main class=\\"arco-layout-content\\">Content</main>
+      <main data-v-0b6562af=\\"\\" class=\\"arco-layout-content\\">Content</main>
     </section>
-    <footer class=\\"arco-layout-footer\\">Footer</footer>
+    <footer data-v-0b6562af=\\"\\" class=\\"arco-layout-footer\\">Footer</footer>
   </section>
 </div>"
 `;

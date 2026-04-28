@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<statistic> demo: render [animation] correctly 1`] = `
+exports[`<statistic> demo: > render [animation] correctly 1`] = `
 "<div class=\\"arco-statistic\\">
   <div class=\\"arco-statistic-title\\">User Growth Rate</div>
   <div class=\\"arco-statistic-content\\">
@@ -13,7 +13,7 @@ exports[`<statistic> demo: render [animation] correctly 1`] = `
 </button>"
 `;
 
-exports[`<statistic> demo: render [basic] correctly 1`] = `
+exports[`<statistic> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -45,7 +45,7 @@ exports[`<statistic> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<statistic> demo: render [countdown] correctly 1`] = `
+exports[`<statistic> demo: > render [countdown] correctly 1`] = `
 "<div class=\\"arco-row arco-row-align-start arco-row-justify-start\\">
   <div class=\\"arco-col\\" style=\\"flex: 1;\\">
     <div class=\\"arco-statistic arco-statistic-countdown\\">
@@ -89,7 +89,7 @@ exports[`<statistic> demo: render [countdown] correctly 1`] = `
 </div>"
 `;
 
-exports[`<statistic> demo: render [prefix] correctly 1`] = `
+exports[`<statistic> demo: > render [prefix] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">

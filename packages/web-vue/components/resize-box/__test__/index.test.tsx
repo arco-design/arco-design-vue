@@ -10,18 +10,22 @@ describe('ResizeBox', () => {
 
   beforeEach(() => {
     Object.defineProperty(HTMLElement.prototype, 'clientWidth', {
+      configurable: true,
       value: wrapperElement.clientWidth,
     });
     Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
+      configurable: true,
       value: wrapperElement.clientHeight,
     });
   });
 
   afterEach(() => {
     Object.defineProperty(HTMLElement.prototype, 'clientWidth', {
+      configurable: true,
       value: HTMLElement.prototype.clientWidth,
     });
     Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
+      configurable: true,
       value: HTMLElement.prototype.clientHeight,
     });
   });
@@ -31,10 +35,10 @@ describe('ResizeBox', () => {
 
     // Simulate window events
     const map: any = {};
-    window.addEventListener = jest.fn().mockImplementation((event, cb) => {
+    window.addEventListener = vi.fn().mockImplementation((event, cb) => {
       map[event] = cb;
     });
-    window.removeEventListener = jest.fn().mockImplementation((event) => {
+    window.removeEventListener = vi.fn().mockImplementation((event) => {
       delete map[event];
     });
 
@@ -63,7 +67,7 @@ describe('ResizeBox', () => {
     expect(map.contextmenu).toBeUndefined();
   });
 
-  test('control top trigger correctly', async (done) => {
+  test('control top trigger correctly', async () => {
     const wrapper = mount(ResizeBox, {
       props: {
         directions: ['top'],
@@ -76,7 +80,7 @@ describe('ResizeBox', () => {
 
     // Simulate window events
     const map: any = {};
-    window.addEventListener = jest.fn().mockImplementation((event, cb) => {
+    window.addEventListener = vi.fn().mockImplementation((event, cb) => {
       map[event] = cb;
     });
 
@@ -87,15 +91,13 @@ describe('ResizeBox', () => {
     trigger.trigger('mousedown', { pageX: 0, pageY: startPos });
     map.mousemove({ pageX: 0, pageY: endPos });
     expect(wrapper.emitted('update:height')[0][0]).toEqual(result);
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.element.getAttribute('style')).toContain(
-        `height: ${result}px`
-      );
-      done();
-    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.element.getAttribute('style')).toContain(
+      `height: ${result}px`
+    );
   });
 
-  test('control right trigger correctly', async (done) => {
+  test('control right trigger correctly', async () => {
     const wrapper = mount(ResizeBox, {
       props: {
         directions: ['right'],
@@ -108,7 +110,7 @@ describe('ResizeBox', () => {
 
     // Simulate window events
     const map: any = {};
-    window.addEventListener = jest.fn().mockImplementation((event, cb) => {
+    window.addEventListener = vi.fn().mockImplementation((event, cb) => {
       map[event] = cb;
     });
 
@@ -119,15 +121,13 @@ describe('ResizeBox', () => {
     trigger.trigger('mousedown', { pageX: startPos, pageY: 0 });
     map.mousemove({ pageX: endPos, pageY: 0 });
     expect(wrapper.emitted('update:width')[0][0]).toEqual(result);
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.element.getAttribute('style')).toContain(
-        `width: ${result}px`
-      );
-      done();
-    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.element.getAttribute('style')).toContain(
+      `width: ${result}px`
+    );
   });
 
-  test('control bottom trigger correctly', async (done) => {
+  test('control bottom trigger correctly', async () => {
     const wrapper = mount(ResizeBox, {
       props: {
         directions: ['bottom'],
@@ -140,7 +140,7 @@ describe('ResizeBox', () => {
 
     // Simulate window events
     const map: any = {};
-    window.addEventListener = jest.fn().mockImplementation((event, cb) => {
+    window.addEventListener = vi.fn().mockImplementation((event, cb) => {
       map[event] = cb;
     });
 
@@ -151,15 +151,13 @@ describe('ResizeBox', () => {
     trigger.trigger('mousedown', { pageX: 0, pageY: startPos });
     map.mousemove({ pageX: 0, pageY: endPos });
     expect(wrapper.emitted('update:height')[0][0]).toEqual(result);
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.element.getAttribute('style')).toContain(
-        `height: ${result}px`
-      );
-      done();
-    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.element.getAttribute('style')).toContain(
+      `height: ${result}px`
+    );
   });
 
-  test('control left trigger correctly', async (done) => {
+  test('control left trigger correctly', async () => {
     const wrapper = mount(ResizeBox, {
       props: {
         directions: ['left'],
@@ -172,7 +170,7 @@ describe('ResizeBox', () => {
 
     // Simulate window events
     const map: any = {};
-    window.addEventListener = jest.fn().mockImplementation((event, cb) => {
+    window.addEventListener = vi.fn().mockImplementation((event, cb) => {
       map[event] = cb;
     });
 
@@ -183,23 +181,19 @@ describe('ResizeBox', () => {
     trigger.trigger('mousedown', { pageX: startPos, pageY: 0 });
     map.mousemove({ pageX: endPos, pageY: 0 });
     expect(wrapper.emitted('update:width')[0][0]).toEqual(result);
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.element.getAttribute('style')).toContain(
-        `width: ${result}px`
-      );
-      done();
-    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.element.getAttribute('style')).toContain(
+      `width: ${result}px`
+    );
   });
 
-  test('render trigger size correctly', async (done) => {
+  test('render trigger size correctly', async () => {
     const wrapper = mount(ResizeBox);
     const trigger = wrapper.findComponent({ name: 'ResizeTrigger' });
     trigger.vm.$emit('resize', { contentRect: { width: 100 } });
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.element.getAttribute('style')).toContain(
-        'padding-right: 100px'
-      );
-      done();
-    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.element.getAttribute('style')).toContain(
+      'padding-right: 100px'
+    );
   });
 });

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<split> demo: render [basic] correctly 1`] = `
+exports[`<split> demo: > render [basic] correctly 1`] = `
 "<div>
   <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 100%; min-width: 500px;\\">
     <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex: 0 0 calc(50% - 0px);\\">
@@ -32,7 +32,7 @@ exports[`<split> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<split> demo: render [nested] correctly 1`] = `
+exports[`<split> demo: > render [nested] correctly 1`] = `
 "<div>
   <div class=\\"arco-split arco-split-horizontal\\" style=\\"height: 200px; width: 100%; min-width: 500px;\\">
     <div class=\\"arco-split-pane arco-split-pane-first\\" style=\\"flex: 0 0 calc(50% - 0px);\\">

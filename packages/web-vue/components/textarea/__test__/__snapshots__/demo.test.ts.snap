@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<textarea> demo: render [auto-size] correctly 1`] = `
+exports[`<textarea> demo: > render [auto-size] correctly 1`] = `
 "<div class=\\"arco-textarea-wrapper\\">
   <div class=\\"arco-textarea-mirror\\">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
   </div><textarea class=\\"arco-textarea\\" value=\\"This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.\\"></textarea>
@@ -15,7 +15,7 @@ exports[`<textarea> demo: render [auto-size] correctly 1`] = `
 </div>"
 `;
 
-exports[`<textarea> demo: render [basic] correctly 1`] = `
+exports[`<textarea> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-textarea-wrapper\\">
   <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\" value=\\"\\"></textarea>
   <!--v-if-->
@@ -23,7 +23,7 @@ exports[`<textarea> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<textarea> demo: render [status] correctly 1`] = `
+exports[`<textarea> demo: > render [status] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -44,7 +44,7 @@ exports[`<textarea> demo: render [status] correctly 1`] = `
 </div>"
 `;
 
-exports[`<textarea> demo: render [word-limit] correctly 1`] = `
+exports[`<textarea> demo: > render [word-limit] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">

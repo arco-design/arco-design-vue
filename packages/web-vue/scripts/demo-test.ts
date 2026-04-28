@@ -8,24 +8,24 @@ import 'regenerator-runtime/runtime';
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation((query) => ({
+  value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   })),
 });
 
-jest.mock('resize-observer-polyfill', () => ({
+vi.mock('resize-observer-polyfill', () => ({
   __esModule: true,
-  default: jest.fn().mockImplementation(() => ({
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-    disconnect: jest.fn(),
+  default: vi.fn().mockImplementation(() => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
   })),
 }));
 
@@ -41,7 +41,9 @@ function demoTest(component: string) {
 
     test.each(table)('render [%s] correctly', async (_, filename) => {
       const demo = await import(`../${filename}`);
-      const wrapper = mount(demo.default);
+      const candidates = Object.values(demo.default?.components ?? {});
+      const target = candidates.length > 0 ? candidates[0] : demo.default;
+      const wrapper = mount(target as any);
       expect(wrapper.html()).toMatchSnapshot();
     });
   });

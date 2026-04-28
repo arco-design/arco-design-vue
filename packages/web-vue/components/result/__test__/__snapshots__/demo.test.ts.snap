@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<result> demo: render [403] correctly 1`] = `
+exports[`<result> demo: > render [403] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-403\\">
     <div class=\\"arco-result-icon-tip\\"><svg viewBox=\\"0 0 213 213\\" height=\\"100%\\" width=\\"100%\\" style=\\"fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;\\">
@@ -255,7 +255,7 @@ exports[`<result> demo: render [403] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [404] correctly 1`] = `
+exports[`<result> demo: > render [404] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-404\\">
     <div class=\\"arco-result-icon-tip\\"><svg width=\\"100%\\" height=\\"100%\\" viewBox=\\"0 0 213 213\\" style=\\"fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;\\">
@@ -446,7 +446,7 @@ exports[`<result> demo: render [404] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [500] correctly 1`] = `
+exports[`<result> demo: > render [500] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-500\\">
     <div class=\\"arco-result-icon-tip\\"><svg width=\\"100%\\" height=\\"100%\\" viewBox=\\"0 0 213 213\\" style=\\"fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;\\">
@@ -680,7 +680,7 @@ exports[`<result> demo: render [500] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [all] correctly 1`] = `
+exports[`<result> demo: > render [all] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-error\\">
     <div class=\\"arco-result-icon-tip\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-face-frown-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -709,7 +709,7 @@ exports[`<result> demo: render [all] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [basic] correctly 1`] = `
+exports[`<result> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-info\\">
     <div class=\\"arco-result-icon-tip\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-info\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -737,7 +737,7 @@ exports[`<result> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [custom] correctly 1`] = `
+exports[`<result> demo: > render [custom] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-custom\\">
     <div class=\\"arco-result-icon-tip\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-face-smile-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -762,7 +762,7 @@ exports[`<result> demo: render [custom] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [error] correctly 1`] = `
+exports[`<result> demo: > render [error] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-error\\">
     <div class=\\"arco-result-icon-tip\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -783,7 +783,7 @@ exports[`<result> demo: render [error] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [success] correctly 1`] = `
+exports[`<result> demo: > render [success] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-success\\">
     <div class=\\"arco-result-icon-tip\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -804,7 +804,7 @@ exports[`<result> demo: render [success] correctly 1`] = `
 </div>"
 `;
 
-exports[`<result> demo: render [warning] correctly 1`] = `
+exports[`<result> demo: > render [warning] correctly 1`] = `
 "<div class=\\"arco-result\\">
   <div class=\\"arco-result-icon arco-result-icon-warning\\">
     <div class=\\"arco-result-icon-tip\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-exclamation\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">

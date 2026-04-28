@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<timeline> demo: render [basic] correctly 1`] = `
+exports[`<timeline> demo: > render [basic] correctly 1`] = `
 "<div style=\\"margin-bottom: 40px;\\"><span class=\\"arco-typography\\" style=\\"vertical-align: middle; margin-right: 8px;\\"> Reverse <!----><!--v-if--><!--v-if--><!--v-if--></span><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">No Reverse</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"true\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Reverse</span></label></span></div>
 <div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\">
   <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
@@ -45,7 +45,7 @@ exports[`<timeline> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [custom] correctly 1`] = `
+exports[`<timeline> demo: > render [custom] correctly 1`] = `
 "<div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\">
   <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
     <div class=\\"arco-timeline-item-dot-wrapper\\">
@@ -66,7 +66,7 @@ exports[`<timeline> demo: render [custom] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [direction] correctly 1`] = `
+exports[`<timeline> demo: > render [direction] correctly 1`] = `
 "<div>
   <div class=\\"arco-row arco-row-align-center arco-row-justify-start\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-typography\\">mode: &nbsp; &nbsp;<!----><!--v-if--><!--v-if--><!--v-if--></span><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"top\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">top</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"bottom\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">bottom</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"alternate\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">alternate</span></label></span></div>
   <div role=\\"list\\" class=\\"arco-timeline arco-timeline-top arco-timeline-direction-horizontal\\">
@@ -148,7 +148,7 @@ exports[`<timeline> demo: render [direction] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [dot] correctly 1`] = `
+exports[`<timeline> demo: > render [dot] correctly 1`] = `
 "<div style=\\"display: flex;\\">
   <div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\" style=\\"margin-right: 40px;\\">
     <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
@@ -308,7 +308,7 @@ exports[`<timeline> demo: render [dot] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [icon] correctly 1`] = `
+exports[`<timeline> demo: > render [icon] correctly 1`] = `
 "<div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\">
   <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
     <div class=\\"arco-timeline-item-dot-wrapper\\">
@@ -367,7 +367,7 @@ exports[`<timeline> demo: render [icon] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [label] correctly 1`] = `
+exports[`<timeline> demo: > render [label] correctly 1`] = `
 "<div>
   <div class=\\"arco-row arco-row-align-center arco-row-justify-start\\"><span class=\\"arco-typography\\">labelPosition: &nbsp; &nbsp;<!----><!--v-if--><!--v-if--><!--v-if--></span><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"same\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">same</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"relative\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">relative</span></label></span></div>
   <div class=\\"arco-row arco-row-align-center arco-row-justify-start\\" style=\\"margin: 20px 0px 24px;\\"><span class=\\"arco-typography\\">mode: &nbsp; &nbsp;<!----><!--v-if--><!--v-if--><!--v-if--></span><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">left</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">right</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"alternate\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">alternate</span></label></span></div>
@@ -415,7 +415,7 @@ exports[`<timeline> demo: render [label] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [mode] correctly 1`] = `
+exports[`<timeline> demo: > render [mode] correctly 1`] = `
 "<div class=\\"arco-row arco-row-align-start arco-row-justify-space-between\\">
   <div role=\\"list\\" class=\\"arco-timeline arco-timeline-alternate arco-timeline-direction-vertical\\" style=\\"flex: 1;\\">
     <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
@@ -502,7 +502,7 @@ exports[`<timeline> demo: render [mode] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [pending] correctly 1`] = `
+exports[`<timeline> demo: > render [pending] correctly 1`] = `
 "<div class=\\"arco-row arco-row-align-center arco-row-justify-start\\" style=\\"margin-bottom: 24px;\\"><label class=\\"arco-checkbox\\" checked=\\"false\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> horizontal &nbsp; &nbsp; </span></label><label class=\\"arco-checkbox\\" checked=\\"false\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> reverse &nbsp; &nbsp; </span></label><label class=\\"arco-checkbox\\" checked=\\"false\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> pending &nbsp; &nbsp; </span></label><label class=\\"arco-checkbox\\" checked=\\"false\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\"> custom pendingDot </span></label></div>
 <div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\">
   <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
@@ -547,7 +547,7 @@ exports[`<timeline> demo: render [pending] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [type] correctly 1`] = `
+exports[`<timeline> demo: > render [type] correctly 1`] = `
 "<div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\">
   <div role=\\"listitem\\" class=\\"arco-timeline-item arco-timeline-item-vertical-left arco-timeline-item-label-same arco-timeline-item-last\\">
     <div class=\\"arco-timeline-item-dot-wrapper\\">
@@ -591,7 +591,7 @@ exports[`<timeline> demo: render [type] correctly 1`] = `
 </div>"
 `;
 
-exports[`<timeline> demo: render [vertical] correctly 1`] = `
+exports[`<timeline> demo: > render [vertical] correctly 1`] = `
 "<div>
   <div class=\\"arco-row arco-row-align-center arco-row-justify-start\\" style=\\"margin-bottom: 24px;\\"><span class=\\"arco-typography\\">mode: &nbsp; &nbsp;<!----><!--v-if--><!--v-if--><!--v-if--></span><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">left</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">right</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"alternate\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">alternate</span></label></span></div>
   <div role=\\"list\\" class=\\"arco-timeline arco-timeline-left arco-timeline-direction-vertical\\">

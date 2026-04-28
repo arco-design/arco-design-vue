@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<anchor> demo: render [affix] correctly 1`] = `
+exports[`<anchor> demo: > render [affix] correctly 1`] = `
 "<div>
   <div class=\\"arco-anchor\\">
     <div class=\\"arco-anchor-line-slider\\"></div>
@@ -28,7 +28,7 @@ exports[`<anchor> demo: render [affix] correctly 1`] = `
 </div>"
 `;
 
-exports[`<anchor> demo: render [basic] correctly 1`] = `
+exports[`<anchor> demo: > render [basic] correctly 1`] = `
 "<div>
   <div class=\\"arco-anchor\\">
     <div class=\\"arco-anchor-line-slider\\"></div>
@@ -54,7 +54,7 @@ exports[`<anchor> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<anchor> demo: render [boundary] correctly 1`] = `
+exports[`<anchor> demo: > render [boundary] correctly 1`] = `
 "<div>
   <div class=\\"arco-anchor\\">
     <div class=\\"arco-anchor-line-slider\\"></div>
@@ -80,7 +80,7 @@ exports[`<anchor> demo: render [boundary] correctly 1`] = `
 </div>"
 `;
 
-exports[`<anchor> demo: render [hash] correctly 1`] = `
+exports[`<anchor> demo: > render [hash] correctly 1`] = `
 "<div>
   <div class=\\"arco-anchor\\">
     <div class=\\"arco-anchor-line-slider\\"></div>
@@ -106,7 +106,7 @@ exports[`<anchor> demo: render [hash] correctly 1`] = `
 </div>"
 `;
 
-exports[`<anchor> demo: render [horizontal] correctly 1`] = `
+exports[`<anchor> demo: > render [horizontal] correctly 1`] = `
 "<div>
   <div class=\\"arco-typography\\">Default
     <!---->
@@ -173,7 +173,7 @@ exports[`<anchor> demo: render [horizontal] correctly 1`] = `
 </div>"
 `;
 
-exports[`<anchor> demo: render [line-less] correctly 1`] = `
+exports[`<anchor> demo: > render [line-less] correctly 1`] = `
 "<div>
   <div class=\\"arco-anchor arco-anchor-line-less\\">
     <!--v-if-->
@@ -199,7 +199,7 @@ exports[`<anchor> demo: render [line-less] correctly 1`] = `
 </div>"
 `;
 
-exports[`<anchor> demo: render [static] correctly 1`] = `
+exports[`<anchor> demo: > render [static] correctly 1`] = `
 "<div>
   <div class=\\"arco-anchor\\">
     <div class=\\"arco-anchor-line-slider\\"></div>

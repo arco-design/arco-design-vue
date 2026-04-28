@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<notification> demo: render [basic] correctly 1`] = `
+exports[`<notification> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -13,13 +13,13 @@ exports[`<notification> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<notification> demo: render [btn] correctly 1`] = `
+exports[`<notification> demo: > render [btn] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if--> Open Notification
 </button>"
 `;
 
-exports[`<notification> demo: render [custom-close] correctly 1`] = `
+exports[`<notification> demo: > render [custom-close] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -32,7 +32,7 @@ exports[`<notification> demo: render [custom-close] correctly 1`] = `
 </div>"
 `;
 
-exports[`<notification> demo: render [position] correctly 1`] = `
+exports[`<notification> demo: > render [position] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -53,13 +53,13 @@ exports[`<notification> demo: render [position] correctly 1`] = `
 </div>"
 `;
 
-exports[`<notification> demo: render [style] correctly 1`] = `
+exports[`<notification> demo: > render [style] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if--> Open Notification
 </button>"
 `;
 
-exports[`<notification> demo: render [type] correctly 1`] = `
+exports[`<notification> demo: > render [type] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -84,13 +84,13 @@ exports[`<notification> demo: render [type] correctly 1`] = `
 </div>"
 `;
 
-exports[`<notification> demo: render [update_duration] correctly 1`] = `
+exports[`<notification> demo: > render [update_duration] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if--> Open Notification
 </button>"
 `;
 
-exports[`<notification> demo: render [update_notification] correctly 1`] = `
+exports[`<notification> demo: > render [update_notification] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if--> Open Notification
 </button>"

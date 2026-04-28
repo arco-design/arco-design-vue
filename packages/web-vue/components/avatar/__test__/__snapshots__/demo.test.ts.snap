@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<avatar> demo: render [basic] correctly 1`] = `
+exports[`<avatar> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -35,7 +35,7 @@ exports[`<avatar> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<avatar> demo: render [fit] correctly 1`] = `
+exports[`<avatar> demo: > render [fit] correctly 1`] = `
 "<div style=\\"margin-right: 24px; vertical-align: middle; background-color: rgb(20, 169, 248);\\" class=\\"arco-avatar arco-avatar-circle\\"><span class=\\"arco-avatar-text\\">B</span>
   <!--v-if-->
 </div>
@@ -44,7 +44,7 @@ exports[`<avatar> demo: render [fit] correctly 1`] = `
 </button>"
 `;
 
-exports[`<avatar> demo: render [group] correctly 1`] = `
+exports[`<avatar> demo: > render [group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 32px; row-gap: 32px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -109,7 +109,7 @@ exports[`<avatar> demo: render [group] correctly 1`] = `
 </div>"
 `;
 
-exports[`<avatar> demo: render [icon] correctly 1`] = `
+exports[`<avatar> demo: > render [icon] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -146,7 +146,7 @@ exports[`<avatar> demo: render [icon] correctly 1`] = `
 </div>"
 `;
 
-exports[`<avatar> demo: render [image-url] correctly 1`] = `
+exports[`<avatar> demo: > render [image-url] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -165,7 +165,7 @@ exports[`<avatar> demo: render [image-url] correctly 1`] = `
 </div>"
 `;
 
-exports[`<avatar> demo: render [size] correctly 1`] = `
+exports[`<avatar> demo: > render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">

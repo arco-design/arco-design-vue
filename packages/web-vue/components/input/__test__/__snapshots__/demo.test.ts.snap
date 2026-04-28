@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<input> demo: render [basic] correctly 1`] = `
+exports[`<input> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\" value=\\"\\"><!----><!----></span></div>
@@ -11,7 +11,7 @@ exports[`<input> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [group] correctly 1`] = `
+exports[`<input> demo: > render [group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -27,7 +27,7 @@ exports[`<input> demo: render [group] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [password] correctly 1`] = `
+exports[`<input> demo: > render [password] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
@@ -40,7 +40,7 @@ exports[`<input> demo: render [password] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [prefix] correctly 1`] = `
+exports[`<input> demo: > render [prefix] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><span class=\\"arco-input-prefix\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-user\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3Z\\"></path><circle cx=\\"24\\" cy=\\"15\\" r=\\"8\\"></circle></svg></span><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\" value=\\"\\">
@@ -52,7 +52,7 @@ exports[`<input> demo: render [prefix] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [prepend] correctly 1`] = `
+exports[`<input> demo: > render [prepend] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-outer arco-input-outer-size-medium\\" style=\\"width: 320px;\\"><span class=\\"arco-input-prepend\\"> +86 </span><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\" value=\\"\\"><!----><!----></span>
@@ -69,7 +69,7 @@ exports[`<input> demo: render [prepend] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [search] correctly 1`] = `
+exports[`<input> demo: > render [search] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper arco-input-search\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\" value=\\"\\"><!----><span class=\\"arco-input-suffix\\"><!----><span class=\\"arco-icon-hover\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-search\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0-6.248 6.248-6.248 16.379 0 22.627 6.248 6.248 16.38 6.248 22.628 0Zm0 0 8.485 8.485\\"></path></svg></span>
@@ -81,7 +81,7 @@ exports[`<input> demo: render [search] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [search-button] correctly 1`] = `
+exports[`<input> demo: > render [search-button] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-outer arco-input-outer-size-medium arco-input-search\\" style=\\"width: 320px;\\"><!----><span class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\" value=\\"\\"><!----><!----></span><span class=\\"arco-input-append\\"><button class=\\"arco-btn arco-btn-primary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal arco-input-search-btn\\" type=\\"button\\"><!--v-if-->Search</button></span></span></div>
@@ -90,7 +90,7 @@ exports[`<input> demo: render [search-button] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [search-loading] correctly 1`] = `
+exports[`<input> demo: > render [search-loading] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper arco-input-search\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\" value=\\"\\"><!----><span class=\\"arco-input-suffix\\"><!----><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg><!----><!----></span></span></div>
@@ -99,7 +99,7 @@ exports[`<input> demo: render [search-loading] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [size] correctly 1`] = `
+exports[`<input> demo: > render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
@@ -108,7 +108,7 @@ exports[`<input> demo: render [size] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [status] correctly 1`] = `
+exports[`<input> demo: > render [status] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper arco-input-disabled\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Disabled status\\" disabled=\\"\\" value=\\"\\"><!----><!----></span></div>
@@ -119,7 +119,7 @@ exports[`<input> demo: render [status] correctly 1`] = `
 </div>"
 `;
 
-exports[`<input> demo: render [word-limit] correctly 1`] = `
+exports[`<input> demo: > render [word-limit] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-input-wrapper\\" style=\\"width: 320px;\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Please enter something\\" value=\\"\\"><!----><span class=\\"arco-input-suffix\\"><span class=\\"arco-input-word-limit\\">0/10</span>

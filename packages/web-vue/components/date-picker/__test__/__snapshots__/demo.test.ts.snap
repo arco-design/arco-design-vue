@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<date-picker> demo: render [basic] correctly 1`] = `
+exports[`<date-picker> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
@@ -11,7 +11,7 @@ exports[`<date-picker> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [clear-range-on-reselect] correctly 1`] = `
+exports[`<date-picker> demo: > render [clear-range-on-reselect] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -50,7 +50,7 @@ exports[`<date-picker> demo: render [clear-range-on-reselect] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [control] correctly 1`] = `
+exports[`<date-picker> demo: > render [control] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -78,7 +78,7 @@ exports[`<date-picker> demo: render [control] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [date-render] correctly 1`] = `
+exports[`<date-picker> demo: > render [date-render] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
@@ -89,7 +89,7 @@ exports[`<date-picker> demo: render [date-render] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [default-value] correctly 1`] = `
+exports[`<date-picker> demo: > render [default-value] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\" value=\\"2019-06-03\\"></div>
@@ -150,7 +150,7 @@ exports[`<date-picker> demo: render [default-value] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [disabled] correctly 1`] = `
+exports[`<date-picker> demo: > render [disabled] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium arco-picker-disabled\\" style=\\"width: 200px; margin-bottom: 20px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input disabled=\\"\\" placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\" value=\\"2020-08-08\\"></div>
@@ -190,7 +190,7 @@ exports[`<date-picker> demo: render [disabled] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [disabled-date] correctly 1`] = `
+exports[`<date-picker> demo: > render [disabled-date] correctly 1`] = `
 "<div>
   <div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-right: 24px; margin-bottom: 24px;\\" visible=\\"false\\">
     <!--v-if-->
@@ -233,7 +233,7 @@ exports[`<date-picker> demo: render [disabled-date] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [disabled-date-advance] correctly 1`] = `
+exports[`<date-picker> demo: > render [disabled-date-advance] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 300px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
@@ -245,7 +245,7 @@ exports[`<date-picker> demo: render [disabled-date-advance] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [extra] correctly 1`] = `
+exports[`<date-picker> demo: > render [extra] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin-bottom: 20px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
@@ -266,7 +266,7 @@ exports[`<date-picker> demo: render [extra] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [hide-not-in-view-dates] correctly 1`] = `
+exports[`<date-picker> demo: > render [hide-not-in-view-dates] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -331,7 +331,7 @@ exports[`<date-picker> demo: render [hide-not-in-view-dates] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [month] correctly 1`] = `
+exports[`<date-picker> demo: > render [month] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择月份\\" class=\\"arco-picker-start-time\\"></div>
@@ -342,7 +342,7 @@ exports[`<date-picker> demo: render [month] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [panel-only] correctly 1`] = `
+exports[`<date-picker> demo: > render [panel-only] correctly 1`] = `
 "<div>
   <div class=\\"arco-picker-container arco-picker-container-panel-only\\" style=\\"width: 268px;\\" visible=\\"false\\">
     <!--v-if-->
@@ -1158,7 +1158,7 @@ exports[`<date-picker> demo: render [panel-only] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [panel-render] correctly 1`] = `
+exports[`<date-picker> demo: > render [panel-render] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -1188,7 +1188,7 @@ exports[`<date-picker> demo: render [panel-render] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [prefix] correctly 1`] = `
+exports[`<date-picker> demo: > render [prefix] correctly 1`] = `
 "<div>
   <div>
     <div class=\\"arco-picker arco-picker-size-medium arco-picker-has-prefix\\" style=\\"width: 300px;\\" visible=\\"false\\">
@@ -1217,7 +1217,7 @@ exports[`<date-picker> demo: render [prefix] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [quarter] correctly 1`] = `
+exports[`<date-picker> demo: > render [quarter] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择季度\\" class=\\"arco-picker-start-time\\"></div>
@@ -1228,7 +1228,7 @@ exports[`<date-picker> demo: render [quarter] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [range] correctly 1`] = `
+exports[`<date-picker> demo: > render [range] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 254px; margin-bottom: 20px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始日期\\"></div><span class=\\"arco-picker-separator\\">-</span>
@@ -1290,7 +1290,7 @@ exports[`<date-picker> demo: render [range] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [shortcuts] correctly 1`] = `
+exports[`<date-picker> demo: > render [shortcuts] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 300px; margin-bottom: 24px; margin-right: 24px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
@@ -1327,7 +1327,7 @@ exports[`<date-picker> demo: render [shortcuts] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [shortcuts-position] correctly 1`] = `
+exports[`<date-picker> demo: > render [shortcuts-position] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 254px; margin-bottom: 20px; margin-right: 24px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
@@ -1365,7 +1365,7 @@ exports[`<date-picker> demo: render [shortcuts-position] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [showtime] correctly 1`] = `
+exports[`<date-picker> demo: > render [showtime] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 220px; margin: 0px 24px 24px 0px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择日期\\" class=\\"arco-picker-start-time\\"></div>
@@ -1393,7 +1393,7 @@ exports[`<date-picker> demo: render [showtime] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [size] correctly 1`] = `
+exports[`<date-picker> demo: > render [size] correctly 1`] = `
 "<div style=\\"margin-bottom: 20px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
 <div class=\\"arco-picker arco-picker-size-small\\" style=\\"width: 254px;\\" visible=\\"false\\">
   <!--v-if-->
@@ -1405,7 +1405,7 @@ exports[`<date-picker> demo: render [size] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [timezone] correctly 1`] = `
+exports[`<date-picker> demo: > render [timezone] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -1453,7 +1453,7 @@ exports[`<date-picker> demo: render [timezone] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [trigger-element] correctly 1`] = `
+exports[`<date-picker> demo: > render [trigger-element] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -1470,7 +1470,7 @@ exports[`<date-picker> demo: render [trigger-element] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [utc-offset] correctly 1`] = `
+exports[`<date-picker> demo: > render [utc-offset] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -1518,7 +1518,7 @@ exports[`<date-picker> demo: render [utc-offset] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [week] correctly 1`] = `
+exports[`<date-picker> demo: > render [week] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px; margin: 0px 24px 24px 0px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择周\\" class=\\"arco-picker-start-time\\"></div>
@@ -1537,7 +1537,7 @@ exports[`<date-picker> demo: render [week] correctly 1`] = `
 </div>"
 `;
 
-exports[`<date-picker> demo: render [year] correctly 1`] = `
+exports[`<date-picker> demo: > render [year] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 200px;\\" visible=\\"false\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择年份\\" class=\\"arco-picker-start-time\\"></div>

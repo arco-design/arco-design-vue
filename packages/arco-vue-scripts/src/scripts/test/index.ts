@@ -1,18 +1,31 @@
-import { run } from 'jest';
-import jestConfig from '../../configs/jest.config';
-import { getUserConfig } from '../../utils/config';
+import path from 'path';
+import { spawn } from 'child_process';
 
 export default async (components: string[], options: string[]) => {
-  const userConfig = await getUserConfig('jest.config.js');
+  const componentPatterns = components.map((item) => `components/${item}`);
+  const args = [
+    'run',
+    '--config',
+    path.resolve(process.cwd(), 'vitest.config.ts'),
+    ...options,
+    ...componentPatterns,
+  ];
 
-  const collectCoverageFrom =
-    components.length > 0
-      ? components.map((item) => `components/${item}/**/*.{vue,tsx,ts}`)
-      : ['components/**/*.{vue,tsx,ts}'];
+  await new Promise<void>((resolve, reject) => {
+    const cp = spawn('vitest', args, {
+      stdio: 'inherit',
+      shell: true,
+      cwd: process.cwd(),
+    });
 
-  const baseConfig = jestConfig(collectCoverageFrom);
+    cp.on('close', (code) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`Vitest exited with code ${code ?? -1}`));
+      }
+    });
 
-  const mergedConfig = userConfig?.(baseConfig) ?? baseConfig;
-
-  await run(['--config', JSON.stringify(mergedConfig), ...options]);
+    cp.on('error', reject);
+  });
 };

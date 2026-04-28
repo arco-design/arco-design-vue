@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<calendar> demo: render [basic] correctly 1`] = `
+exports[`<calendar> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-calendar arco-calendar-mode-month\\">
   <div class=\\"arco-calendar-header\\">
     <div class=\\"arco-calendar-header-left\\">
@@ -469,7 +469,7 @@ exports[`<calendar> demo: render [basic] correctly 1`] = `
  select: 2023-01-01T00:00:00.000Z"
 `;
 
-exports[`<calendar> demo: render [date-content] correctly 1`] = `
+exports[`<calendar> demo: > render [date-content] correctly 1`] = `
 "<div style=\\"width: 100%; overflow: auto;\\">
   <div class=\\"arco-calendar arco-calendar-mode-month\\">
     <div class=\\"arco-calendar-header\\">
@@ -939,7 +939,7 @@ exports[`<calendar> demo: render [date-content] correctly 1`] = `
 </div>"
 `;
 
-exports[`<calendar> demo: render [panel] correctly 1`] = `
+exports[`<calendar> demo: > render [panel] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-start\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -1347,7 +1347,7 @@ exports[`<calendar> demo: render [panel] correctly 1`] = `
 </div>"
 `;
 
-exports[`<calendar> demo: render [select-header] correctly 1`] = `
+exports[`<calendar> demo: > render [select-header] correctly 1`] = `
 "<div style=\\"width: 100%; overflow: auto;\\">
   <div class=\\"arco-calendar arco-calendar-mode-month\\">
     <div class=\\"arco-calendar-header\\">

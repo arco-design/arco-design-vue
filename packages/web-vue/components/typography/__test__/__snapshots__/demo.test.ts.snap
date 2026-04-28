@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<typography> demo: render [basic] correctly 1`] = `
+exports[`<typography> demo: > render [basic] correctly 1`] = `
 "<article class=\\"arco-typography\\" style=\\"margin-top: -40px;\\">
   <h1 class=\\"arco-typography\\"> Design system
     <!---->
@@ -72,7 +72,7 @@ exports[`<typography> demo: render [basic] correctly 1`] = `
 </article>"
 `;
 
-exports[`<typography> demo: render [ellipsis] correctly 1`] = `
+exports[`<typography> demo: > render [ellipsis] correctly 1`] = `
 "<div>
   <h4 class=\\"arco-typography\\"> A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process.
     <!---->
@@ -102,7 +102,7 @@ exports[`<typography> demo: render [ellipsis] correctly 1`] = `
 </div>"
 `;
 
-exports[`<typography> demo: render [operations] correctly 1`] = `
+exports[`<typography> demo: > render [operations] correctly 1`] = `
 "<article class=\\"arco-typography\\">
   <div class=\\"arco-typography\\"> Click the icon to copy this text.
     <!---->
@@ -119,7 +119,7 @@ exports[`<typography> demo: render [operations] correctly 1`] = `
 </article>"
 `;
 
-exports[`<typography> demo: render [paragraph] correctly 1`] = `
+exports[`<typography> demo: > render [paragraph] correctly 1`] = `
 "<article class=\\"arco-typography\\">
   <h5 class=\\"arco-typography\\">Default
     <!---->
@@ -172,7 +172,7 @@ exports[`<typography> demo: render [paragraph] correctly 1`] = `
 </article>"
 `;
 
-exports[`<typography> demo: render [text] correctly 1`] = `
+exports[`<typography> demo: > render [text] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 10px; row-gap: 10px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-typography\\"> Arco Design <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
@@ -201,7 +201,7 @@ exports[`<typography> demo: render [text] correctly 1`] = `
 </div>"
 `;
 
-exports[`<typography> demo: render [title] correctly 1`] = `
+exports[`<typography> demo: > render [title] correctly 1`] = `
 "<article class=\\"arco-typography\\">
   <h1 class=\\"arco-typography\\"> H1. The Pragmatic Romanticism
     <!---->

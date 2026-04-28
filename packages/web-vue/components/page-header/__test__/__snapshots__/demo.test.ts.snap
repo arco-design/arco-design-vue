@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<page-header> demo: render [basic] correctly 1`] = `
+exports[`<page-header> demo: > render [basic] correctly 1`] = `
 "<div style=\\"padding: 28px;\\">
   <div class=\\"arco-page-header\\">
     <div class=\\"arco-page-header-wrapper\\">
@@ -12,7 +12,7 @@ exports[`<page-header> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<page-header> demo: render [breadcrumb] correctly 1`] = `
+exports[`<page-header> demo: > render [breadcrumb] correctly 1`] = `
 "<div style=\\"padding: 28px;\\">
   <div class=\\"arco-page-header arco-page-header-with-breadcrumb\\">
     <div class=\\"arco-page-header-wrapper\\">
@@ -43,7 +43,7 @@ exports[`<page-header> demo: render [breadcrumb] correctly 1`] = `
 </div>"
 `;
 
-exports[`<page-header> demo: render [content] correctly 1`] = `
+exports[`<page-header> demo: > render [content] correctly 1`] = `
 "<div style=\\"padding: 28px;\\">
   <div class=\\"arco-page-header arco-page-header-with-breadcrumb arco-page-header-with-content\\">
     <div class=\\"arco-page-header-wrapper\\">
@@ -81,7 +81,7 @@ exports[`<page-header> demo: render [content] correctly 1`] = `
 </div>"
 `;
 
-exports[`<page-header> demo: render [transparent] correctly 1`] = `
+exports[`<page-header> demo: > render [transparent] correctly 1`] = `
 "<div style=\\"background-size: 16px 16px; padding: 28px;\\">
   <div class=\\"arco-page-header arco-page-header-with-breadcrumb\\">
     <div class=\\"arco-page-header-wrapper\\">

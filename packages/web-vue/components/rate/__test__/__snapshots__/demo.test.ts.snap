@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<rate> demo: render [basic] correctly 1`] = `
+exports[`<rate> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-rate\\">
   <div class=\\"arco-rate-character\\" role=\\"radio\\" aria-checked=\\"false\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">
     <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -45,7 +45,7 @@ exports[`<rate> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<rate> demo: render [character] correctly 1`] = `
+exports[`<rate> demo: > render [character] correctly 1`] = `
 "<div class=\\"arco-rate\\">
   <div class=\\"arco-rate-character arco-rate-character-full\\" role=\\"radio\\" aria-checked=\\"true\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">
     <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-check\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -90,7 +90,7 @@ exports[`<rate> demo: render [character] correctly 1`] = `
 </div>"
 `;
 
-exports[`<rate> demo: render [clear] correctly 1`] = `
+exports[`<rate> demo: > render [clear] correctly 1`] = `
 "<div class=\\"arco-rate\\">
   <div class=\\"arco-rate-character arco-rate-character-full\\" role=\\"radio\\" aria-checked=\\"true\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">
     <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -135,7 +135,7 @@ exports[`<rate> demo: render [clear] correctly 1`] = `
 </div>"
 `;
 
-exports[`<rate> demo: render [color] correctly 1`] = `
+exports[`<rate> demo: > render [color] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -230,7 +230,7 @@ exports[`<rate> demo: render [color] correctly 1`] = `
 </div>"
 `;
 
-exports[`<rate> demo: render [count] correctly 1`] = `
+exports[`<rate> demo: > render [count] correctly 1`] = `
 "<div class=\\"arco-rate\\">
   <div class=\\"arco-rate-character\\" role=\\"radio\\" aria-checked=\\"false\\" aria-setsize=\\"10\\" aria-posinset=\\"1\\">
     <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -315,7 +315,7 @@ exports[`<rate> demo: render [count] correctly 1`] = `
 </div>"
 `;
 
-exports[`<rate> demo: render [grading] correctly 1`] = `
+exports[`<rate> demo: > render [grading] correctly 1`] = `
 "<div class=\\"arco-rate\\">
   <div class=\\"arco-rate-character\\" role=\\"radio\\" aria-checked=\\"false\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">
     <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-face-frown-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -360,7 +360,7 @@ exports[`<rate> demo: render [grading] correctly 1`] = `
 </div>"
 `;
 
-exports[`<rate> demo: render [half] correctly 1`] = `
+exports[`<rate> demo: > render [half] correctly 1`] = `
 "<div class=\\"arco-rate\\">
   <div class=\\"arco-rate-character arco-rate-character-full\\">
     <div class=\\"arco-rate-character-left\\" role=\\"radio\\" aria-checked=\\"true\\" aria-setsize=\\"5\\" aria-posinset=\\"0.5\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
@@ -405,7 +405,7 @@ exports[`<rate> demo: render [half] correctly 1`] = `
 </div>"
 `;
 
-exports[`<rate> demo: render [readonly] correctly 1`] = `
+exports[`<rate> demo: > render [readonly] correctly 1`] = `
 "<div class=\\"arco-rate arco-rate-readonly\\">
   <div class=\\"arco-rate-character arco-rate-character-full\\" role=\\"radio\\" aria-checked=\\"true\\" aria-setsize=\\"5\\" aria-posinset=\\"1\\">
     <div class=\\"arco-rate-character-left\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star-fill\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">

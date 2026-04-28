@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<tag> demo: render [basic] correctly 1`] = `
+exports[`<tag> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Default<!--v-if--><!--v-if--></span></div>
@@ -16,7 +16,7 @@ exports[`<tag> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<tag> demo: render [bordered] correctly 1`] = `
+exports[`<tag> demo: > render [bordered] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-bordered arco-tag-checked\\"><!--v-if-->default<!--v-if--><!--v-if--></span></div>
@@ -47,7 +47,7 @@ exports[`<tag> demo: render [bordered] correctly 1`] = `
 </div>"
 `;
 
-exports[`<tag> demo: render [checkable] correctly 1`] = `
+exports[`<tag> demo: > render [checkable] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable arco-tag-checked\\"><!--v-if-->Awesome<!--v-if--><!--v-if--></span></div>
@@ -58,7 +58,7 @@ exports[`<tag> demo: render [checkable] correctly 1`] = `
 </div>"
 `;
 
-exports[`<tag> demo: render [closeable] correctly 1`] = `
+exports[`<tag> demo: > render [closeable] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
@@ -71,7 +71,7 @@ exports[`<tag> demo: render [closeable] correctly 1`] = `
 </div>"
 `;
 
-exports[`<tag> demo: render [color] correctly 1`] = `
+exports[`<tag> demo: > render [color] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-red arco-tag-checked\\"><!--v-if-->red<span class=\\"arco-icon-hover arco-tag-icon-hover arco-tag-close-btn\\" role=\\"button\\" aria-label=\\"Close\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-close\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142\\"></path></svg></span>
@@ -183,7 +183,7 @@ exports[`<tag> demo: render [color] correctly 1`] = `
 </div>"
 `;
 
-exports[`<tag> demo: render [dynamically] correctly 1`] = `
+exports[`<tag> demo: > render [dynamically] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center arco-space-wrap\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checked\\"><!--v-if-->Tag 1<!--v-if--><!--v-if--></span></div>
@@ -203,7 +203,7 @@ exports[`<tag> demo: render [dynamically] correctly 1`] = `
 </div>"
 `;
 
-exports[`<tag> demo: render [icon] correctly 1`] = `
+exports[`<tag> demo: > render [icon] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-gray arco-tag-checked\\"><span class=\\"arco-tag-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-github\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M.056 24.618c0 10.454 6.7 19.344 16.038 22.608 1.259.32 1.067-.582 1.067-1.19v-4.148c-7.265.853-7.553-3.957-8.043-4.758-.987-1.686-3.312-2.112-2.62-2.912 1.654-.853 3.34.213 5.291 3.1 1.413 2.09 4.166 1.738 5.562 1.385a6.777 6.777 0 0 1 1.856-3.253C11.687 34.112 8.55 29.519 8.55 24.057c0-2.646.874-5.082 2.586-7.045-1.088-3.243.102-6.01.26-6.422 3.11-.282 6.337 2.225 6.587 2.421 1.766-.474 3.782-.73 6.038-.73 2.266 0 4.293.26 6.069.74.603-.458 3.6-2.608 6.49-2.345.155.41 1.317 3.12.294 6.315 1.734 1.968 2.62 4.422 2.62 7.077 0 5.472-3.158 10.07-10.699 11.397a6.82 6.82 0 0 1 2.037 4.875v6.02c.042.48 0 .96.806.96 9.477-3.194 16.299-12.15 16.299-22.697C47.938 11.396 37.218.68 23.996.68 10.77.675.055 11.391.055 24.617l.001.001Z\\" fill=\\"currentColor\\" stroke=\\"none\\"></path></svg></span> Github
@@ -228,9 +228,9 @@ exports[`<tag> demo: render [icon] correctly 1`] = `
 </div>"
 `;
 
-exports[`<tag> demo: render [loading] correctly 1`] = `"<span class=\\"arco-tag arco-tag-size-medium arco-tag-loading arco-tag-checked\\"><!--v-if-->Loading<!--v-if--><span class=\\"arco-tag-loading-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg></span></span>"`;
+exports[`<tag> demo: > render [loading] correctly 1`] = `"<span class=\\"arco-tag arco-tag-size-medium arco-tag-loading arco-tag-checked\\"><!--v-if-->Loading<!--v-if--><span class=\\"arco-tag-loading-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path></svg></span></span>"`;
 
-exports[`<tag> demo: render [size] correctly 1`] = `
+exports[`<tag> demo: > render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-tag arco-tag-size-large arco-tag-checked\\"><!--v-if-->Large<!--v-if--><!--v-if--></span></div>

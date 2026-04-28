@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<time-picker> demo: render [basic] correctly 1`] = `
+exports[`<time-picker> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\"></div>
@@ -11,7 +11,7 @@ exports[`<time-picker> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [control] correctly 1`] = `
+exports[`<time-picker> demo: > render [control] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\"></div>
@@ -22,7 +22,7 @@ exports[`<time-picker> demo: render [control] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [default-value] correctly 1`] = `
+exports[`<time-picker> demo: > render [default-value] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px; margin-right: 24px; margin-bottom: 24px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\" value=\\"18:24:23\\"></div>
@@ -40,7 +40,7 @@ exports[`<time-picker> demo: render [default-value] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [disable-confirm] correctly 1`] = `
+exports[`<time-picker> demo: > render [disable-confirm] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px; margin: 0px 24px 24px 0px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\"></div>
@@ -60,7 +60,7 @@ exports[`<time-picker> demo: render [disable-confirm] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [disabled] correctly 1`] = `
+exports[`<time-picker> demo: > render [disabled] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium arco-picker-disabled\\" style=\\"margin: 0px 24px 24px 0px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input disabled=\\"\\" placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\"></div>
@@ -80,7 +80,7 @@ exports[`<time-picker> demo: render [disabled] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [disabled-time] correctly 1`] = `
+exports[`<time-picker> demo: > render [disabled-time] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px; margin: 0px 24px 24px 0px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\"></div>
@@ -100,7 +100,7 @@ exports[`<time-picker> demo: render [disabled-time] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [extra] correctly 1`] = `
+exports[`<time-picker> demo: > render [extra] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\"></div>
@@ -111,7 +111,7 @@ exports[`<time-picker> demo: render [extra] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [format] correctly 1`] = `
+exports[`<time-picker> demo: > render [format] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 130px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\" value=\\"09:24\\"></div>
@@ -121,7 +121,7 @@ exports[`<time-picker> demo: render [format] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [prefix] correctly 1`] = `
+exports[`<time-picker> demo: > render [prefix] correctly 1`] = `
 "<div>
   <div>
     <div class=\\"arco-picker arco-picker-size-medium arco-picker-has-prefix\\" style=\\"width: 194px;\\" visible=\\"false\\" editable=\\"true\\">
@@ -153,7 +153,7 @@ exports[`<time-picker> demo: render [prefix] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [rangepicker] correctly 1`] = `
+exports[`<time-picker> demo: > render [rangepicker] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-range arco-picker-size-medium\\" style=\\"width: 252px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input arco-picker-input-active\\"><input placeholder=\\"开始时间\\"></div><span class=\\"arco-picker-separator\\"> - </span>
@@ -165,7 +165,7 @@ exports[`<time-picker> demo: render [rangepicker] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [size] correctly 1`] = `
+exports[`<time-picker> demo: > render [size] correctly 1`] = `
 "<div style=\\"margin-bottom: 20px;\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span></div>
 <div class=\\"arco-picker arco-picker-size-small\\" style=\\"width: 194px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
@@ -177,7 +177,7 @@ exports[`<time-picker> demo: render [size] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [step] correctly 1`] = `
+exports[`<time-picker> demo: > render [step] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\" value=\\"10:25:30\\"></div>
@@ -187,7 +187,7 @@ exports[`<time-picker> demo: render [step] correctly 1`] = `
 </div>"
 `;
 
-exports[`<time-picker> demo: render [use-12-hours] correctly 1`] = `
+exports[`<time-picker> demo: > render [use-12-hours] correctly 1`] = `
 "<div class=\\"arco-picker arco-picker-size-medium\\" style=\\"width: 194px; margin: 0px 24px 24px 0px;\\" visible=\\"false\\" editable=\\"true\\">
   <!--v-if-->
   <div class=\\"arco-picker-input\\"><input placeholder=\\"请选择时间\\" class=\\"arco-picker-start-time\\" value=\\"12:20:20 AM\\"></div>

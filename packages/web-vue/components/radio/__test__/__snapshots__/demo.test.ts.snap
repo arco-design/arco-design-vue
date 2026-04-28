@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<radio> demo: render [basic] correctly 1`] = `
+exports[`<radio> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"radio\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Radio</span></label></div>
@@ -9,9 +9,9 @@ exports[`<radio> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<radio> demo: render [button] correctly 1`] = `"<span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Beijing\\"><span class=\\"arco-radio-button-content\\">Beijing</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Shanghai\\"><span class=\\"arco-radio-button-content\\">Shanghai</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Guangzhou\\"><span class=\\"arco-radio-button-content\\">Guangzhou</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Shenzhen\\"><span class=\\"arco-radio-button-content\\">Shenzhen</span></label></span>"`;
+exports[`<radio> demo: > render [button] correctly 1`] = `"<span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Beijing\\"><span class=\\"arco-radio-button-content\\">Beijing</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Shanghai\\"><span class=\\"arco-radio-button-content\\">Shanghai</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Guangzhou\\"><span class=\\"arco-radio-button-content\\">Guangzhou</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Shenzhen\\"><span class=\\"arco-radio-button-content\\">Shenzhen</span></label></span>"`;
 
-exports[`<radio> demo: render [control] correctly 1`] = `
+exports[`<radio> demo: > render [control] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"true\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">v-model</span></label></div>
@@ -36,31 +36,31 @@ exports[`<radio> demo: render [control] correctly 1`] = `
 </div>"
 `;
 
-exports[`<radio> demo: render [custom] correctly 1`] = `
-"<span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"1\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable arco-tag-checked\\"><!--v-if-->This is a tag radio 1<!--v-if--><!--v-if--></span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable\\"><!--v-if-->This is a tag radio 2<!--v-if--><!--v-if--></span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span class=\\"arco-tag arco-tag-size-medium arco-tag-checkable\\"><!--v-if-->This is a tag radio 3<!--v-if--><!--v-if--></span></label></span>
-<div style=\\"margin-top: 20px;\\"><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"1\\"><div class=\\"arco-space arco-space-horizontal arco-space-align-start custom-radio-card\\" style=\\"column-gap: 8px; row-gap: 8px;\\"><!----><div class=\\"arco-space-item\\"><div class=\\"custom-radio-card-mask\\"><div class=\\"custom-radio-card-mask-dot\\"></div></div></div><!----><div class=\\"arco-space-item\\"><div><div class=\\"custom-radio-card-title\\"> radio Card 1</div><span class=\\"arco-typography arco-typography-secondary\\"> this is a text <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+exports[`<radio> demo: > render [custom] correctly 1`] = `
+"<span data-v-29faac7a=\\"\\" class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label data-v-29faac7a=\\"\\" class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"1\\"><span data-v-29faac7a=\\"\\" class=\\"arco-tag arco-tag-size-medium arco-tag-checkable arco-tag-checked\\"><!--v-if-->This is a tag radio 1<!--v-if--><!--v-if--></span></label><label data-v-29faac7a=\\"\\" class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\"><span data-v-29faac7a=\\"\\" class=\\"arco-tag arco-tag-size-medium arco-tag-checkable\\"><!--v-if-->This is a tag radio 2<!--v-if--><!--v-if--></span></label><label data-v-29faac7a=\\"\\" class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span data-v-29faac7a=\\"\\" class=\\"arco-tag arco-tag-size-medium arco-tag-checkable\\"><!--v-if-->This is a tag radio 3<!--v-if--><!--v-if--></span></label></span>
+<div data-v-29faac7a=\\"\\" style=\\"margin-top: 20px;\\"><span data-v-29faac7a=\\"\\" class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label data-v-29faac7a=\\"\\" class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"1\\"><div data-v-29faac7a=\\"\\" class=\\"arco-space arco-space-horizontal arco-space-align-start custom-radio-card\\" style=\\"column-gap: 8px; row-gap: 8px;\\"><!----><div class=\\"arco-space-item\\"><div data-v-29faac7a=\\"\\" class=\\"custom-radio-card-mask\\"><div data-v-29faac7a=\\"\\" class=\\"custom-radio-card-mask-dot\\"></div></div></div><!----><div class=\\"arco-space-item\\"><div data-v-29faac7a=\\"\\"><div data-v-29faac7a=\\"\\" class=\\"custom-radio-card-title\\"> radio Card 1</div><span data-v-29faac7a=\\"\\" class=\\"arco-typography arco-typography-secondary\\"> this is a text <!----><!--v-if--><!--v-if--><!--v-if--></span></div>
 </div>
-</div></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\">
-  <div class=\\"arco-space arco-space-horizontal arco-space-align-start custom-radio-card\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+</div></label><label data-v-29faac7a=\\"\\" class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"2\\">
+  <div data-v-29faac7a=\\"\\" class=\\"arco-space arco-space-horizontal arco-space-align-start custom-radio-card\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
     <!---->
     <div class=\\"arco-space-item\\">
-      <div class=\\"custom-radio-card-mask\\">
-        <div class=\\"custom-radio-card-mask-dot\\"></div>
+      <div data-v-29faac7a=\\"\\" class=\\"custom-radio-card-mask\\">
+        <div data-v-29faac7a=\\"\\" class=\\"custom-radio-card-mask-dot\\"></div>
       </div>
     </div>
     <!---->
     <div class=\\"arco-space-item\\">
-      <div>
-        <div class=\\"custom-radio-card-title\\"> radio Card 2</div><span class=\\"arco-typography arco-typography-secondary\\"> this is a text <!----><!--v-if--><!--v-if--><!--v-if--></span>
+      <div data-v-29faac7a=\\"\\">
+        <div data-v-29faac7a=\\"\\" class=\\"custom-radio-card-title\\"> radio Card 2</div><span data-v-29faac7a=\\"\\" class=\\"arco-typography arco-typography-secondary\\"> this is a text <!----><!--v-if--><!--v-if--><!--v-if--></span>
       </div>
     </div>
   </div>
 </label></span></div>"
 `;
 
-exports[`<radio> demo: render [direction] correctly 1`] = `"<span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-vertical\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"A\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">A</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"B\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">B</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"C\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">C</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"D\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">D</span></label></span>"`;
+exports[`<radio> demo: > render [direction] correctly 1`] = `"<span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-vertical\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"A\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">A</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"B\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">B</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"C\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">C</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"D\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">D</span></label></span>"`;
 
-exports[`<radio> demo: render [group] correctly 1`] = `
+exports[`<radio> demo: > render [group] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"A\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">A</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"B\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">B</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"C\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">C</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"D\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">D</span></label></span></div>
@@ -69,7 +69,7 @@ exports[`<radio> demo: render [group] correctly 1`] = `
 </div>"
 `;
 
-exports[`<radio> demo: render [layout] correctly 1`] = `
+exports[`<radio> demo: > render [layout] correctly 1`] = `
 "<span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><div class=\\"arco-grid\\" style=\\"gap: 16px 24px; grid-template-columns: repeat(3, minmax(0px, 1fr));\\"><div class=\\"arco-grid-item\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"1\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Option 1</span></label></div>
 <div class=\\"arco-grid-item\\"><label class=\\"arco-radio arco-radio-disabled\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" disabled=\\"\\" value=\\"2\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Option 2</span></label></div>
 <div class=\\"arco-grid-item\\"><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"3\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">Option 3</span></label></div>
@@ -78,7 +78,7 @@ exports[`<radio> demo: render [layout] correctly 1`] = `
 </div></span>"
 `;
 
-exports[`<radio> demo: render [options] correctly 1`] = `
+exports[`<radio> demo: > render [options] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"plain 1\\"><span class=\\"arco-icon-hover arco-icon-hover-disabled arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">plain 1</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"plain 2\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">plain 2</span></label><label class=\\"arco-radio\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"plain 3\\"><span class=\\"arco-icon-hover arco-radio-icon-hover\\"><span class=\\"arco-radio-icon\\"></span></span><span class=\\"arco-radio-label\\">plain 3</span></label></span></div>
@@ -89,7 +89,7 @@ exports[`<radio> demo: render [options] correctly 1`] = `
 </div>"
 `;
 
-exports[`<radio> demo: render [size] correctly 1`] = `
+exports[`<radio> demo: > render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-mini arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Beijing\\"><span class=\\"arco-radio-button-content\\">Beijing</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Shanghai\\"><span class=\\"arco-radio-button-content\\">Shanghai</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Guangzhou\\"><span class=\\"arco-radio-button-content\\">Guangzhou</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"Shenzhen\\"><span class=\\"arco-radio-button-content\\">Shenzhen</span></label></span></div>

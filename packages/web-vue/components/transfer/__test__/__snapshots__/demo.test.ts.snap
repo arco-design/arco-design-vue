@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<transfer> demo: render [basic] correctly 1`] = `
+exports[`<transfer> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
@@ -84,7 +84,7 @@ exports[`<transfer> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<transfer> demo: render [custom] correctly 1`] = `
+exports[`<transfer> demo: > render [custom] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
@@ -168,7 +168,7 @@ exports[`<transfer> demo: render [custom] correctly 1`] = `
 </div>"
 `;
 
-exports[`<transfer> demo: render [custom-header] correctly 1`] = `
+exports[`<transfer> demo: > render [custom-header] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\">
@@ -260,7 +260,7 @@ exports[`<transfer> demo: render [custom-header] correctly 1`] = `
 </div>"
 `;
 
-exports[`<transfer> demo: render [one-way] correctly 1`] = `
+exports[`<transfer> demo: > render [one-way] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
@@ -340,9 +340,9 @@ exports[`<transfer> demo: render [one-way] correctly 1`] = `
 </div>"
 `;
 
-exports[`<transfer> demo: render [pagination] correctly 1`] = `""`;
+exports[`<transfer> demo: > render [pagination] correctly 1`] = `""`;
 
-exports[`<transfer> demo: render [search] correctly 1`] = `
+exports[`<transfer> demo: > render [search] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>
@@ -432,7 +432,7 @@ exports[`<transfer> demo: render [search] correctly 1`] = `
 </div>"
 `;
 
-exports[`<transfer> demo: render [simple] correctly 1`] = `
+exports[`<transfer> demo: > render [simple] correctly 1`] = `
 "<div class=\\"arco-transfer arco-transfer-simple\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><span class=\\"arco-transfer-view-header-title-simple\\">Source</span></span>
@@ -520,7 +520,7 @@ exports[`<transfer> demo: render [simple] correctly 1`] = `
 </div>"
 `;
 
-exports[`<transfer> demo: render [tree] correctly 1`] = `
+exports[`<transfer> demo: > render [tree] correctly 1`] = `
 "<div class=\\"arco-transfer\\">
   <div class=\\"arco-transfer-view arco-transfer-view-source\\">
     <div class=\\"arco-transfer-view-header\\"><span class=\\"arco-transfer-view-header-title\\"><label class=\\"arco-checkbox\\"><input type=\\"checkbox\\" class=\\"arco-checkbox-target\\" value=\\"false\\"><span class=\\"arco-icon-hover arco-checkbox-icon-hover\\"><div class=\\"arco-checkbox-icon\\"><!----></div></span><span class=\\"arco-checkbox-label\\">Source</span></label></span><span class=\\"arco-transfer-view-header-count\\">0 / 5</span></div>

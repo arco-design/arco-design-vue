@@ -15,11 +15,11 @@ const assertActiveAtIndex = (wrapper: any, index: number) => {
 
 describe('Carousel', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('Current prop should work properly', async () => {
@@ -59,10 +59,10 @@ describe('Carousel', () => {
         },
       },
     });
-    jest.advanceTimersByTime(10);
+    vi.advanceTimersByTime(10);
     await nextTick();
     assertActiveAtIndex(wrapper, 0);
-    jest.advanceTimersByTime(60);
+    vi.advanceTimersByTime(60);
     await nextTick();
     assertActiveAtIndex(wrapper, 1);
   });
@@ -159,7 +159,7 @@ describe('Carousel', () => {
     });
     await nextTick();
     wrapper.trigger('mouseenter');
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     assertActiveAtIndex(wrapper, 0);
   });
 

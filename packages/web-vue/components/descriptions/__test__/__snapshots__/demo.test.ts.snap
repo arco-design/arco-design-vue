@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<descriptions> demo: render [align] correctly 1`] = `
+exports[`<descriptions> demo: > render [align] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -93,7 +93,7 @@ exports[`<descriptions> demo: render [align] correctly 1`] = `
 </div>"
 `;
 
-exports[`<descriptions> demo: render [basic] correctly 1`] = `
+exports[`<descriptions> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -162,7 +162,7 @@ exports[`<descriptions> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<descriptions> demo: render [bordered] correctly 1`] = `
+exports[`<descriptions> demo: > render [bordered] correctly 1`] = `
 "<div class=\\"arco-descriptions arco-descriptions-layout-horizontal arco-descriptions-size-medium arco-descriptions-border\\">
   <div class=\\"arco-descriptions-title\\">User Info</div>
   <div class=\\"arco-descriptions-body\\">
@@ -188,7 +188,7 @@ exports[`<descriptions> demo: render [bordered] correctly 1`] = `
 </div>"
 `;
 
-exports[`<descriptions> demo: render [example] correctly 1`] = `
+exports[`<descriptions> demo: > render [example] correctly 1`] = `
 "<form class=\\"arco-form arco-form-layout-horizontal arco-form-size-medium arco-form-auto-label-width\\">
   <div class=\\"arco-row arco-row-nowrap arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-layout-horizontal\\">
     <div class=\\"arco-col arco-col-5 arco-form-item-label-col arco-form-item-label-col-flex\\"><label class=\\"arco-form-item-label\\">
@@ -296,7 +296,7 @@ exports[`<descriptions> demo: render [example] correctly 1`] = `
 </div>"
 `;
 
-exports[`<descriptions> demo: render [layout] correctly 1`] = `
+exports[`<descriptions> demo: > render [layout] correctly 1`] = `
 "<span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span>
 <div style=\\"margin-top: 20px;\\">
   <div class=\\"arco-descriptions arco-descriptions-layout-horizontal arco-descriptions-size-medium arco-descriptions-border\\">
@@ -418,7 +418,7 @@ exports[`<descriptions> demo: render [layout] correctly 1`] = `
 </div>"
 `;
 
-exports[`<descriptions> demo: render [single] correctly 1`] = `
+exports[`<descriptions> demo: > render [single] correctly 1`] = `
 "<span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"mini\\"><span class=\\"arco-radio-button-content\\">mini</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">large</span></label></span>
 <div class=\\"arco-descriptions arco-descriptions-layout-horizontal arco-descriptions-size-medium\\" style=\\"margin-top: 20px;\\">
   <div class=\\"arco-descriptions-title\\">User Info</div>

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<list> demo: render [actions] correctly 1`] = `
+exports[`<list> demo: > render [actions] correctly 1`] = `
 "<div class=\\"arco-list-wrapper\\">
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
@@ -134,21 +134,21 @@ exports[`<list> demo: render [actions] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [actions-layout] correctly 1`] = `
-"<div class=\\"arco-list-wrapper list-demo-action-layout\\">
+exports[`<list> demo: > render [actions-layout] correctly 1`] = `
+"<div data-v-3aaac86b=\\"\\" class=\\"arco-list-wrapper list-demo-action-layout\\">
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
       <div class=\\"arco-scrollbar-container arco-list arco-list-medium arco-list-split\\">
         <div class=\\"arco-list-content-wrapper\\">
           <!---->
           <div role=\\"list\\" class=\\"arco-list-content\\">
-            <div role=\\"listitem\\" class=\\"arco-list-item list-demo-item\\">
+            <div data-v-3aaac86b=\\"\\" role=\\"listitem\\" class=\\"arco-list-item list-demo-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
-                  <div class=\\"arco-list-item-meta\\">
+                  <div data-v-3aaac86b=\\"\\" class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                      <div data-v-3aaac86b=\\"\\" class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img data-v-3aaac86b=\\"\\" alt=\\"avatar\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -159,23 +159,23 @@ exports[`<list> demo: render [actions-layout] correctly 1`] = `
                   </div>
                 </div>
                 <ul class=\\"arco-list-item-action\\">
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg>83</span></li>
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg>0</span></li>
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg>Reply</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg>83</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg>0</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg>Reply</span></li>
                 </ul>
               </div>
               <!---->
               <div class=\\"arco-list-item-extra\\">
-                <div class=\\"image-area\\"><img alt=\\"arco-design\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/29c1f9d7d17c503c5d7bf4e538cb7c4f.png~tplv-uwbnlip3yd-webp.webp\\"></div>
+                <div data-v-3aaac86b=\\"\\" class=\\"image-area\\"><img data-v-3aaac86b=\\"\\" alt=\\"arco-design\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/29c1f9d7d17c503c5d7bf4e538cb7c4f.png~tplv-uwbnlip3yd-webp.webp\\"></div>
               </div>
             </div>
-            <div role=\\"listitem\\" class=\\"arco-list-item list-demo-item\\">
+            <div data-v-3aaac86b=\\"\\" role=\\"listitem\\" class=\\"arco-list-item list-demo-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
-                  <div class=\\"arco-list-item-meta\\">
+                  <div data-v-3aaac86b=\\"\\" class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                      <div data-v-3aaac86b=\\"\\" class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img data-v-3aaac86b=\\"\\" alt=\\"avatar\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -186,23 +186,23 @@ exports[`<list> demo: render [actions-layout] correctly 1`] = `
                   </div>
                 </div>
                 <ul class=\\"arco-list-item-action\\">
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg>83</span></li>
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg>1</span></li>
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg>Reply</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg>83</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg>1</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg>Reply</span></li>
                 </ul>
               </div>
               <!---->
               <div class=\\"arco-list-item-extra\\">
-                <div class=\\"image-area\\"><img alt=\\"arco-design\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/04d7bc31dd67dcdf380bc3f6aa07599f.png~tplv-uwbnlip3yd-webp.webp\\"></div>
+                <div data-v-3aaac86b=\\"\\" class=\\"image-area\\"><img data-v-3aaac86b=\\"\\" alt=\\"arco-design\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/04d7bc31dd67dcdf380bc3f6aa07599f.png~tplv-uwbnlip3yd-webp.webp\\"></div>
               </div>
             </div>
-            <div role=\\"listitem\\" class=\\"arco-list-item list-demo-item\\">
+            <div data-v-3aaac86b=\\"\\" role=\\"listitem\\" class=\\"arco-list-item list-demo-item\\">
               <div class=\\"arco-list-item-main\\">
                 <!---->
                 <div class=\\"arco-list-item-content\\">
-                  <div class=\\"arco-list-item-meta\\">
+                  <div data-v-3aaac86b=\\"\\" class=\\"arco-list-item-meta\\">
                     <div class=\\"arco-list-item-meta-avatar\\">
-                      <div class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img alt=\\"avatar\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp\\"></span>
+                      <div data-v-3aaac86b=\\"\\" class=\\"arco-avatar arco-avatar-square\\"><span class=\\"arco-avatar-text\\"><img data-v-3aaac86b=\\"\\" alt=\\"avatar\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp\\"></span>
                         <!--v-if-->
                       </div>
                     </div>
@@ -213,14 +213,14 @@ exports[`<list> demo: render [actions-layout] correctly 1`] = `
                   </div>
                 </div>
                 <ul class=\\"arco-list-item-action\\">
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg>83</span></li>
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg>2</span></li>
-                  <li><span><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg>Reply</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-heart\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M38.083 12.912a9.929 9.929 0 0 1 .177 13.878l-.177.18L25.76 39.273c-.972.97-2.548.97-3.52 0L9.917 26.971l-.177-.181a9.929 9.929 0 0 1 .177-13.878c3.889-3.883 10.194-3.883 14.083 0 3.889-3.883 10.194-3.883 14.083 0Z\\"></path></svg>83</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-star\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274l5.02-10.17Z\\"></path></svg>2</span></li>
+                  <li><span data-v-3aaac86b=\\"\\"><svg data-v-3aaac86b=\\"\\" viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-message\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\"><path d=\\"M15 20h18m-18 9h9M7 41h17.63C33.67 41 41 33.67 41 24.63V24c0-9.389-7.611-17-17-17S7 14.611 7 24v17Z\\"></path></svg>Reply</span></li>
                 </ul>
               </div>
               <!---->
               <div class=\\"arco-list-item-extra\\">
-                <div class=\\"image-area\\"><img alt=\\"arco-design\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/1f61854a849a076318ed527c8fca1bbf.png~tplv-uwbnlip3yd-webp.webp\\"></div>
+                <div data-v-3aaac86b=\\"\\" class=\\"image-area\\"><img data-v-3aaac86b=\\"\\" alt=\\"arco-design\\" src=\\"//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/1f61854a849a076318ed527c8fca1bbf.png~tplv-uwbnlip3yd-webp.webp\\"></div>
               </div>
             </div>
             <!---->
@@ -249,7 +249,7 @@ exports[`<list> demo: render [actions-layout] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [basic] correctly 1`] = `
+exports[`<list> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-list-wrapper\\">
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
@@ -316,7 +316,7 @@ exports[`<list> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [grid] correctly 1`] = `
+exports[`<list> demo: > render [grid] correctly 1`] = `
 "<div class=\\"arco-list-wrapper\\">
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
@@ -572,7 +572,7 @@ exports[`<list> demo: render [grid] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [meta] correctly 1`] = `
+exports[`<list> demo: > render [meta] correctly 1`] = `
 "<div class=\\"arco-list-wrapper\\">
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
@@ -678,7 +678,7 @@ exports[`<list> demo: render [meta] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [responsive-grid] correctly 1`] = `
+exports[`<list> demo: > render [responsive-grid] correctly 1`] = `
 "<div class=\\"arco-list-wrapper\\">
   <div class=\\"arco-spin arco-list-spin\\">
     <div class=\\"arco-scrollbar arco-scrollbar-type-embed\\">
@@ -1134,7 +1134,7 @@ exports[`<list> demo: render [responsive-grid] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [scroll] correctly 1`] = `
+exports[`<list> demo: > render [scroll] correctly 1`] = `
 "<div style=\\"margin-bottom: 10px;\\"><button type=\\"button\\" role=\\"switch\\" aria-checked=\\"true\\" class=\\"arco-switch arco-switch-type-circle arco-switch-checked\\"><span class=\\"arco-switch-handle\\"><span class=\\"arco-switch-handle-icon\\"></span></span><!--  prettier-ignore  -->
     <!--v-if-->
   </button> Virtual Scrollbar </div>
@@ -1167,7 +1167,7 @@ exports[`<list> demo: render [scroll] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [size] correctly 1`] = `
+exports[`<list> demo: > render [size] correctly 1`] = `
 "<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"small\\"><span class=\\"arco-radio-button-content\\">Small</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"medium\\"><span class=\\"arco-radio-button-content\\">Medium</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"large\\"><span class=\\"arco-radio-button-content\\">Large</span></label></span></div>
@@ -1241,7 +1241,7 @@ exports[`<list> demo: render [size] correctly 1`] = `
 </div>"
 `;
 
-exports[`<list> demo: render [virtual-list] correctly 1`] = `
+exports[`<list> demo: > render [virtual-list] correctly 1`] = `
 "<h3>10000 items</h3>
 <div class=\\"arco-list-wrapper\\" style=\\"width: 600px;\\">
   <div class=\\"arco-spin arco-list-spin\\">

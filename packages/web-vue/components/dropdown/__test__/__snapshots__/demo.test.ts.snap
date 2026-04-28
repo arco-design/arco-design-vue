@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<dropdown> demo: render [basic] correctly 1`] = `
+exports[`<dropdown> demo: > render [basic] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -25,7 +25,7 @@ exports[`<dropdown> demo: render [basic] correctly 1`] = `
 </div>"
 `;
 
-exports[`<dropdown> demo: render [button] correctly 1`] = `
+exports[`<dropdown> demo: > render [button] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\">
@@ -54,25 +54,25 @@ exports[`<dropdown> demo: render [button] correctly 1`] = `
 </div>"
 `;
 
-exports[`<dropdown> demo: render [context-menu] correctly 1`] = `
+exports[`<dropdown> demo: > render [context-menu] correctly 1`] = `
 "<div style=\\"display: flex; align-items: center; justify-content: center; height: 300px;\\">
   <div>Click Me</div>
 </div>"
 `;
 
-exports[`<dropdown> demo: render [group] correctly 1`] = `
+exports[`<dropdown> demo: > render [group] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
 </button>"
 `;
 
-exports[`<dropdown> demo: render [icon] correctly 1`] = `
+exports[`<dropdown> demo: > render [icon] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
 </button>"
 `;
 
-exports[`<dropdown> demo: render [position] correctly 1`] = `
+exports[`<dropdown> demo: > render [position] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
@@ -113,13 +113,13 @@ exports[`<dropdown> demo: render [position] correctly 1`] = `
 </div>"
 `;
 
-exports[`<dropdown> demo: render [submenu] correctly 1`] = `
+exports[`<dropdown> demo: > render [submenu] correctly 1`] = `
 "<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
   <!--v-if-->Click Me
 </button>"
 `;
 
-exports[`<dropdown> demo: render [trigger] correctly 1`] = `
+exports[`<dropdown> demo: > render [trigger] correctly 1`] = `
 "<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
   <!---->
   <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
