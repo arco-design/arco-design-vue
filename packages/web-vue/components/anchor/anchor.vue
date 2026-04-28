@@ -1,8 +1,5 @@
 <template>
-  <component
-    :is="wrapperComponent"
-    v-bind="wrapperProps"
-  >
+  <component :is="wrapperComponent" v-bind="wrapperProps">
     <div ref="anchorRef" :class="cls">
       <div
         v-if="!lineLess"
@@ -40,9 +37,9 @@ import { throttleByRaf } from '../_utils/throttle-by-raf';
 import Affix from '../affix';
 
 const BOUNDARY_POSITIONS = ['start', 'end', 'center', 'nearest'] as const;
-type BoundaryPosition = typeof BOUNDARY_POSITIONS[number];
+type BoundaryPosition = (typeof BOUNDARY_POSITIONS)[number];
 const DIRECTIONS = ['vertical', 'horizontal'] as const;
-type Direction = typeof DIRECTIONS[number];
+type Direction = (typeof DIRECTIONS)[number];
 
 export default defineComponent({
   name: 'Anchor',
@@ -76,7 +73,7 @@ export default defineComponent({
      */
     affix: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     /**
      * @zh 设置 Affix 组件的样式
@@ -189,7 +186,8 @@ export default defineComponent({
 
     const scrollIntoView = (hash: string) => {
       try {
-        const element = getElement(hash);
+        const element =
+          getElement(hash, containerEle.value) ?? getElement(hash);
         if (!element) return;
         let block: BoundaryPosition;
         let diff = 0;
@@ -253,7 +251,8 @@ export default defineComponent({
         : containerRect.height / 2;
 
       for (const hash of Object.keys(links)) {
-        const element = getElement(hash);
+        const element =
+          getElement(hash, containerEle.value) ?? getElement(hash);
         if (element) {
           const { top } = element.getBoundingClientRect();
           const offsetTop = isWindow(scrollContainerEle.value)

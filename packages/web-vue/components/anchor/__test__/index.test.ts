@@ -32,7 +32,7 @@ describe('Anchor', () => {
     );
   });
 
-  test('should wrap anchor with affix by default', () => {
+  test('should not wrap anchor with affix by default', () => {
     const wrapper = mount(Anchor, {
       props: {
         offsetTop: 80,
@@ -42,7 +42,7 @@ describe('Anchor', () => {
       },
     });
 
-    expect(wrapper.findComponent({ name: 'Affix' }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'Affix' }).exists()).toBe(false);
   });
 
   test('should not wrap anchor with affix when affix is false', () => {
