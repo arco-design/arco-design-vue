@@ -5,6 +5,8 @@ import Button from '../button';
 import Radio from '../radio';
 import IconLeft from '../icon/icon-left';
 import IconRight from '../icon/icon-right';
+import IconDoubleLeft from '../icon/icon-double-left';
+import IconDoubleRight from '../icon/icon-double-right';
 import { getNow } from '../_utils/date';
 import { isArray } from '../_utils/is';
 import { getPrefixCls } from '../_utils/global-config';
@@ -24,6 +26,11 @@ export default defineComponent({
     },
     panel: {
       type: Boolean,
+    },
+    panelOperations: {
+      type: Array as PropType<
+        Array<'left' | 'double-left' | 'right' | 'double-right'>
+      >,
     },
     modes: {
       type: Array as PropType<('day' | 'week' | 'month' | 'year')[]>,
@@ -83,6 +90,7 @@ export default defineComponent({
       : [];
 
     const isSelectHeaderType = props.headerType === 'select';
+    const isPanel = computed(() => !!props.panel);
 
     const pageShowDateYear = computed(() => props.pageShowData.year());
     const pageShowDateMonth = computed(() => props.pageShowData.month() + 1);
@@ -98,15 +106,107 @@ export default defineComponent({
     });
     const optionsMonth = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+    const isOperationAvailable = (
+      operation: 'left' | 'double-left' | 'right' | 'double-right'
+    ) => {
+      return isArray(props.panelOperations)
+        ? props.panelOperations.includes(operation)
+        : true;
+    };
+
+    const showDoubleLeft = computed(() => isOperationAvailable('double-left'));
+    const showLeft = computed(
+      () => isOperationAvailable('left') && props.mode !== 'year'
+    );
+    const showRight = computed(
+      () => isOperationAvailable('right') && props.mode !== 'year'
+    );
+    const showDoubleRight = computed(() =>
+      isOperationAvailable('double-right')
+    );
+
     return () => (
       <div class={`${prefixCls}-header`}>
         <div class={`${prefixCls}-header-left`}>
-          {isSelectHeaderType ? (
+          {isPanel.value ? (
+            <>
+              <div
+                class={[
+                  `${prefixCls}-header-icon`,
+                  {
+                    [`${prefixCls}-header-icon-hidden`]: !showDoubleLeft.value,
+                  },
+                ]}
+                role="button"
+                tabindex={0}
+                onClick={() =>
+                  showDoubleLeft.value &&
+                  props.changePageShowDate('prev', 'year')
+                }
+              >
+                {showDoubleLeft.value && <IconDoubleLeft />}
+              </div>
+              <div
+                class={[
+                  `${prefixCls}-header-icon`,
+                  {
+                    [`${prefixCls}-header-icon-hidden`]: !showLeft.value,
+                  },
+                ]}
+                role="button"
+                tabindex={0}
+                onClick={() =>
+                  showLeft.value && props.changePageShowDate('prev', 'month')
+                }
+              >
+                {showLeft.value && <IconLeft />}
+              </div>
+              <div class={`${prefixCls}-header-value`}>
+                {slots.default
+                  ? slots.default({
+                      year: pageShowDateYear,
+                      month: pageShowDateMonth,
+                    })
+                  : props.pageShowData.format(props.headerValueFormat)}
+              </div>
+              <div
+                class={[
+                  `${prefixCls}-header-icon`,
+                  {
+                    [`${prefixCls}-header-icon-hidden`]: !showRight.value,
+                  },
+                ]}
+                role="button"
+                tabindex={0}
+                onClick={() =>
+                  showRight.value && props.changePageShowDate('next', 'month')
+                }
+              >
+                {showRight.value && <IconRight />}
+              </div>
+              <div
+                class={[
+                  `${prefixCls}-header-icon`,
+                  {
+                    [`${prefixCls}-header-icon-hidden`]: !showDoubleRight.value,
+                  },
+                ]}
+                role="button"
+                tabindex={0}
+                onClick={() =>
+                  showDoubleRight.value &&
+                  props.changePageShowDate('next', 'year')
+                }
+              >
+                {showDoubleRight.value && <IconDoubleRight />}
+              </div>
+            </>
+          ) : isSelectHeaderType ? (
             <>
               <Select
                 size="small"
                 class={`${prefixCls}-header-value-year`}
-                defaultValue={pageShowDateYear.value}
+                modelValue={pageShowDateYear.value}
                 options={optionsYear.value}
                 onChange={props.onYearChange}
                 popupContainer={`${prefixCls}-header`}
@@ -115,7 +215,7 @@ export default defineComponent({
                 <Select
                   size="small"
                   class={`${prefixCls}-header-value-month`}
-                  defaultValue={pageShowDateMonth.value}
+                  modelValue={pageShowDateMonth.value}
                   options={optionsMonth}
                   onChange={props.onMonthChange}
                   popupContainer={`${prefixCls}-header`}
@@ -150,19 +250,23 @@ export default defineComponent({
               </div>
             </>
           )}
-          <Button size="small" onClick={() => props.move(getNow())}>
-            {t(`datePicker.today`)}
-          </Button>
+          {!isPanel.value && (
+            <Button size="small" onClick={() => props.move(getNow())}>
+              {t(`datePicker.today`)}
+            </Button>
+          )}
         </div>
-        <div class={`${prefixCls}-header-right`}>
-          <Radio.Group
-            size="small"
-            type="button"
-            options={modesOptions}
-            onChange={props.onModeChange}
-            modelValue={props.mode}
-          />
-        </div>
+        {!isPanel.value && (
+          <div class={`${prefixCls}-header-right`}>
+            <Radio.Group
+              size="small"
+              type="button"
+              options={modesOptions}
+              onChange={props.onModeChange}
+              modelValue={props.mode}
+            />
+          </div>
+        )}
       </div>
     );
   },

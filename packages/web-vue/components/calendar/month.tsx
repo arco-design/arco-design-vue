@@ -104,6 +104,15 @@ export default defineComponent({
     panel: {
       type: Boolean,
     },
+    disabledDate: {
+      type: Function as PropType<(current: Dayjs) => boolean>,
+    },
+    dateRender: {
+      type: Function as PropType<(currentDate: Dayjs) => any>,
+    },
+    dateInnerContent: {
+      type: Function as PropType<(currentDate: Dayjs) => any>,
+    },
     dayStartOfWeek: {
       type: Number as PropType<0 | 1>,
       required: true,
@@ -120,7 +129,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const { pageData } = toRefs(props);
     const prefixCls = getPrefixCls('calendar');
-    const pageShowDateYear = props.pageShowDate.year();
+    const pageShowDateYear = computed(() => props.pageShowDate.year());
     const getCellClassName = computed(() =>
       useCellClassName({
         prefixCls,
@@ -137,20 +146,23 @@ export default defineComponent({
     function renderDays(row: any[]) {
       return row.map((col, index) => {
         if (col.time) {
-          // const disabled =
-          //   typeof props.disabledDate === 'function' &&
-          //   props.disabledDate(col.time);
-          const onClickHandler = () => props.selectHandler(col.time, false);
+          const disabled =
+            typeof props.disabledDate === 'function' &&
+            props.disabledDate(col.time);
+          const onClickHandler = () =>
+            props.selectHandler(col.time, !!disabled);
           const tdProps = props.isWeek ? { onClick: onClickHandler } : {};
           const tdDivProps = !props.isWeek ? { onClick: onClickHandler } : {};
 
           return (
             <div
               key={index}
-              class={getCellClassName.value(col, false)}
+              class={getCellClassName.value(col, !!disabled)}
               {...tdProps}
             >
-              {slots.default ? (
+              {props.dateRender ? (
+                props.dateRender(col.time)
+              ) : slots.default ? (
                 slots.default?.({
                   year: col.year,
                   month: col.month,
@@ -165,6 +177,11 @@ export default defineComponent({
                       <div class={`${prefixCls}-date-circle`}>{col.date}</div>
                     )}
                   </div>
+                  {!props.panel && props.mode !== 'year' && (
+                    <div class={`${prefixCls}-date-content`}>
+                      {props.dateInnerContent?.(col.time)}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -202,16 +219,25 @@ export default defineComponent({
       });
     }
 
-    let pd = pageData.value;
-    if (typeof props.current === 'number') {
-      pd = getAllDaysByTime(
-        dayjs(`${pageShowDateYear}-${padStart(props.current + 1, 2, '0')}-01`),
-        {
-          dayStartOfWeek: props.dayStartOfWeek,
-          isWeek: props.isWeek,
-        }
-      );
-    }
+    const pd = computed(() => {
+      if (typeof props.current === 'number') {
+        return getAllDaysByTime(
+          dayjs(
+            `${pageShowDateYear.value}-${padStart(
+              props.current + 1,
+              2,
+              '0'
+            )}-01`
+          ),
+          {
+            dayStartOfWeek: props.dayStartOfWeek,
+            isWeek: props.isWeek,
+          }
+        );
+      }
+
+      return pageData.value;
+    });
 
     return () => (
       <div
@@ -228,7 +254,7 @@ export default defineComponent({
           pageData={props.pageData}
         />
         <div class={`${prefixCls}-month-cell-body`}>
-          {pd?.map((row, index) => (
+          {pd.value?.map((row, index) => (
             <div
               key={index}
               class={[
