@@ -31,7 +31,7 @@ description: Through the anchor point, you can quickly find the position of the 
 |---|---|---|:---:|
 |boundary|Scrolling boundary value. After setting the value to a number, it will stop scrolling when the distance is `boundary` from the scrolling container.|`'start' \| 'end' \| 'center' \| 'nearest' \| number`|`'start'`|
 |line-less|Whether to show the left axis|`boolean`|`false`|
-|affix|Whether to wrap anchor within Affix|`boolean`|`true`|
+|affix|Whether to wrap anchor within Affix|`boolean`|`false`|
 |affix-style|The style to be applied to Affix|`CSSProperties`|`-`|
 |offset-top|Offset from the top of the viewport|`number`|`0`|
 |offset-bottom|Offset from the bottom of the viewport|`number`|`-`|
