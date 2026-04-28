@@ -18,6 +18,9 @@ description: Calendar Component.
 ---
 
 @import ./__demo__/basic.md
+@import ./__demo__/select-header.md
+@import ./__demo__/panel.md
+@import ./__demo__/date-content.md
 
 ## API
 

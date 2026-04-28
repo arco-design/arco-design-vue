@@ -69,6 +69,12 @@ export default defineComponent({
       type: Function as PropType<(time: Dayjs, disabled: boolean) => void>,
       required: true,
     },
+    disabledDate: {
+      type: Function as PropType<(current: Dayjs) => boolean>,
+    },
+    monthRender: {
+      type: Function as PropType<(currentDate: Dayjs) => any>,
+    },
   },
   setup(props) {
     // const {
@@ -104,18 +110,21 @@ export default defineComponent({
               const time = dayjs(
                 `${showYear.value}-${padStart(col.value + 1, 2, '0')}-01`
               );
-              // const disabled =
-              //   typeof disabledDate === 'function' && disabledDate(time);
+              const disabled =
+                typeof props.disabledDate === 'function' &&
+                props.disabledDate(time);
               const divProps = props.panel
-                ? { onClick: () => props.selectHandler(time, false) }
+                ? { onClick: () => props.selectHandler(time, !!disabled) }
                 : {};
 
               return (
                 <div
                   key={col.value}
-                  class={getCellClassName.value({ ...col, time }, false)}
+                  class={getCellClassName.value({ ...col, time }, !!disabled)}
                 >
-                  {props.panel ? (
+                  {props.monthRender ? (
+                    props.monthRender(time)
+                  ) : props.panel ? (
                     <div class={`${prefixCls}-date`} {...divProps}>
                       <div class={`${prefixCls}-date-value`}>
                         {t(`calendar.month.short.${col.name}`)}
@@ -132,6 +141,7 @@ export default defineComponent({
                         dayStartOfWeek={props.dayStartOfWeek}
                         selectHandler={props.selectHandler}
                         isWeek={props.isWeek}
+                        disabledDate={props.disabledDate}
                         cell
                         current={col.value}
                         value={props.value}
