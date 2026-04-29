@@ -1,0 +1,67 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+/**********************************************
+ * Popup Box
+ **********************************************/
+$select-popup-max-height: global.$size-50;
+$select-popup-border-radius: global.$radius-medium;
+$select-popup-padding-vertical: global.$spacing-2;
+$select-popup-font-size: global.$font-size-body-3;
+$select-popup-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+$select-popup-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$select-popup-box-shadow: global.$shadow2-down;
+
+/**********************************************
+ * Popup Options
+ * status: default / disabled / selected / hover
+ **********************************************/
+$select-popup-option-height: global.$size-9;
+$select-popup-option-font-weight_selected: global.$font-weight-500;
+$select-signal-popup-option-padding-horizontal: global.$spacing-6;
+$select-multi-popup-option-padding-horizontal: global.$spacing-2;
+
+$select-popup-option-color-bg_default: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup')
+);
+$select-popup-option-color-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+$select-popup-option-color-bg_selected: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup')
+);
+$select-popup-option-color-bg_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup')
+);
+
+$select-popup-option-color-text_default: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+$select-popup-option-color-text_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+$select-popup-option-color-text_selected: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+$select-popup-option-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$select-popup-option-color-highlight-text: var(--color-text-1);
+$select-popup-option-font-highlight-weight: global.$font-weight-500;
+
+// option group title
+$select-popup-group-title-height: global.$size-5;
+$select-popup-group-title-padding-horizontal: global.$spacing-6;
+$select-popup-group-title-padding-top: global.$spacing-4;
+$select-popup-group-title-font-size: global.$font-size-body-1;
+$select-popup-group-title-color-text: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-3')
+);
+
+$dropdown-margin-left-suffix-icon: global.$spacing-6;

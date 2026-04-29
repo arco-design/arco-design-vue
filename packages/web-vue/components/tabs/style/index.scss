@@ -1,0 +1,843 @@
+@use 'sass:list';
+@use '@style/mixins/icon-hover.scss' as icon-hover;
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:map';
+@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
+@use '@style/mixins/index.scss' as *;
+@use '@components/tabs/style/token.scss' as *;
+
+$sizes: mini, small, large;
+
+$__less-vars: (
+  'color-primary-6': global.$color-primary-6,
+  'line-height-base': theme.$line-height-base,
+  'prefix': theme.$prefix,
+  'sd-cssvars-prefix': global.$sd-cssvars-prefix,
+  'sd-theme-tag': global.$sd-theme-tag,
+  'sizes': $sizes,
+  'tabs-capsule-border-header-radius': $tabs-capsule-border-header-radius,
+  'tabs-capsule-color-header-bg': $tabs-capsule-color-header-bg,
+  'tabs-capsule-color-separator-bg': $tabs-capsule-color-separator-bg,
+  'tabs-capsule-color-title-bg': $tabs-capsule-color-title-bg,
+  'tabs-capsule-color-title-bg_active': $tabs-capsule-color-title-bg_active,
+  'tabs-capsule-color-title-bg_hover': $tabs-capsule-color-title-bg_hover,
+  'tabs-capsule-margin-title-horizontal': $tabs-capsule-margin-title-horizontal,
+  'tabs-capsule-padding-header-horizontal': $tabs-capsule-padding-header-horizontal,
+  'tabs-capsule-padding-header-vertical': $tabs-capsule-padding-header-vertical,
+  'tabs-capsule-padding-title-horizontal': $tabs-capsule-padding-title-horizontal,
+  'tabs-capsule-size-separator-height': $tabs-capsule-size-separator-height,
+  'tabs-capsule-size-separator-width': $tabs-capsule-size-separator-width,
+  'tabs-card-border-content-width': $tabs-card-border-content-width,
+  'tabs-card-border-radius': $tabs-card-border-radius,
+  'tabs-card-border-width': $tabs-card-border-width,
+  'tabs-card-color-close-icon-bg_hover': $tabs-card-color-close-icon-bg_hover,
+  'tabs-card-color-title-bg': $tabs-card-color-title-bg,
+  'tabs-card-color-title-bg_active': $tabs-card-color-title-bg_active,
+  'tabs-card-color-title-bg_disabled': $tabs-card-color-title-bg_disabled,
+  'tabs-card-color-title-bg_hover': $tabs-card-color-title-bg_hover,
+  'tabs-card-color-title-border': $tabs-card-color-title-border,
+  'tabs-card-gutter-color-title-bg': $tabs-card-gutter-color-title-bg,
+  'tabs-card-gutter-color-title-bg_active': $tabs-card-gutter-color-title-bg_active,
+  'tabs-card-gutter-color-title-bg_disabled': $tabs-card-gutter-color-title-bg_disabled,
+  'tabs-card-gutter-color-title-bg_hover': $tabs-card-gutter-color-title-bg_hover,
+  'tabs-card-gutter-spacing-horizontal': $tabs-card-gutter-spacing-horizontal,
+  'tabs-card-padding-title-horizontal': $tabs-card-padding-title-horizontal,
+  'tabs-card-padding-title-right_editable': $tabs-card-padding-title-right_editable,
+  'tabs-color-icon': $tabs-color-icon,
+  'tabs-color-icon_disabled': $tabs-color-icon_disabled,
+  'tabs-color-title-text': $tabs-color-title-text,
+  'tabs-color-title-text_active': $tabs-color-title-text_active,
+  'tabs-color-title-text_disabled': $tabs-color-title-text_disabled,
+  'tabs-color-title-text_disabled_active': $tabs-color-title-text_disabled_active,
+  'tabs-color-title-text_hover': $tabs-color-title-text_hover,
+  'tabs-content-padding': $tabs-content-padding,
+  'tabs-line-border-radius': $tabs-line-border-radius,
+  'tabs-line-color-header-border': $tabs-line-color-header-border,
+  'tabs-line-color-ink-bg': $tabs-line-color-ink-bg,
+  'tabs-line-color-ink-bg_disabled': $tabs-line-color-ink-bg_disabled,
+  'tabs-line-color-title-bg': $tabs-line-color-title-bg,
+  'tabs-line-color-title-bg_active': $tabs-line-color-title-bg_active,
+  'tabs-line-color-title-bg_hover': $tabs-line-color-title-bg_hover,
+  'tabs-line-font-title-text-weight_active': $tabs-line-font-title-text-weight_active,
+  'tabs-line-font-title-text-weight_hover': $tabs-line-font-title-text-weight_hover,
+  'tabs-line-margin-title-horizontal': $tabs-line-margin-title-horizontal,
+  'tabs-line-margin-title-horizontal_first': $tabs-line-margin-title-horizontal_first,
+  'tabs-line-padding-title-horizontal_vertical': $tabs-line-padding-title-horizontal_vertical,
+  'tabs-line-size-header-border': $tabs-line-size-header-border,
+  'tabs-line-size-ink-stroke': $tabs-line-size-ink-stroke,
+  'tabs-margin-add-icon-left': $tabs-margin-add-icon-left,
+  'tabs-margin-close-icon-left': $tabs-margin-close-icon-left,
+  'tabs-padding-header-wrapper-horizontal': $tabs-padding-header-wrapper-horizontal,
+  'tabs-padding-title-text-horizontal': $tabs-padding-title-text-horizontal,
+  'tabs-padding-title-text-vertical': $tabs-padding-title-text-vertical,
+  'tabs-rounded-color-title-bg': $tabs-rounded-color-title-bg,
+  'tabs-rounded-color-title-bg_active': $tabs-rounded-color-title-bg_active,
+  'tabs-rounded-color-title-bg_disabled': $tabs-rounded-color-title-bg_disabled,
+  'tabs-rounded-color-title-bg_hover': $tabs-rounded-color-title-bg_hover,
+  'tabs-rounded-margin-title-horizontal': $tabs-rounded-margin-title-horizontal,
+  'tabs-rounded-padding-title-horizontal': $tabs-rounded-padding-title-horizontal,
+  'tabs-size-default-font-size': $tabs-size-default-font-size,
+  'tabs-size-default-font-size_capsule': $tabs-size-default-font-size_capsule,
+  'tabs-size-default-font-size_card': $tabs-size-default-font-size_card,
+  'tabs-size-default-font-size_rounded': $tabs-size-default-font-size_rounded,
+  'tabs-size-default-font-size_text': $tabs-size-default-font-size_text,
+  'tabs-size-default-header-height': $tabs-size-default-header-height,
+  'tabs-size-default-header-height_capsule': $tabs-size-default-header-height_capsule,
+  'tabs-size-default-header-height_line': $tabs-size-default-header-height_line,
+  'tabs-size-default-header-height_rounded': $tabs-size-default-header-height_rounded,
+  'tabs-size-default-header-height_text': $tabs-size-default-header-height_text,
+  'tabs-size-icon': $tabs-size-icon,
+  'tabs-size-icon-bg': $tabs-size-icon-bg,
+  'tabs-size-large-font-size': $tabs-size-large-font-size,
+  'tabs-size-large-font-size_capsule': $tabs-size-large-font-size_capsule,
+  'tabs-size-large-font-size_card': $tabs-size-large-font-size_card,
+  'tabs-size-large-font-size_rounded': $tabs-size-large-font-size_rounded,
+  'tabs-size-large-header-height': $tabs-size-large-header-height,
+  'tabs-size-large-header-height_capsule': $tabs-size-large-header-height_capsule,
+  'tabs-size-large-header-height_line': $tabs-size-large-header-height_line,
+  'tabs-size-large-header-height_rounded': $tabs-size-large-header-height_rounded,
+  'tabs-size-mini-font-size': $tabs-size-mini-font-size,
+  'tabs-size-mini-font-size_capsule': $tabs-size-mini-font-size_capsule,
+  'tabs-size-mini-font-size_card': $tabs-size-mini-font-size_card,
+  'tabs-size-mini-font-size_rounded': $tabs-size-mini-font-size_rounded,
+  'tabs-size-mini-header-height': $tabs-size-mini-header-height,
+  'tabs-size-mini-header-height_capsule': $tabs-size-mini-header-height_capsule,
+  'tabs-size-mini-header-height_line': $tabs-size-mini-header-height_line,
+  'tabs-size-mini-header-height_rounded': $tabs-size-mini-header-height_rounded,
+  'tabs-size-small-font-size': $tabs-size-small-font-size,
+  'tabs-size-small-font-size_capsule': $tabs-size-small-font-size_capsule,
+  'tabs-size-small-font-size_card': $tabs-size-small-font-size_card,
+  'tabs-size-small-font-size_rounded': $tabs-size-small-font-size_rounded,
+  'tabs-size-small-header-height': $tabs-size-small-header-height,
+  'tabs-size-small-header-height_capsule': $tabs-size-small-header-height_capsule,
+  'tabs-size-small-header-height_line': $tabs-size-small-header-height_line,
+  'tabs-size-small-header-height_rounded': $tabs-size-small-header-height_rounded,
+  'tabs-spacing-nav-icon-header': $tabs-spacing-nav-icon-header,
+  'tabs-text-color-separator-bg': $tabs-text-color-separator-bg,
+  'tabs-text-color-title-bg': $tabs-text-color-title-bg,
+  'tabs-text-color-title-bg_active': $tabs-text-color-title-bg_active,
+  'tabs-text-color-title-bg_disabled': $tabs-text-color-title-bg_disabled,
+  'tabs-text-color-title-bg_disabled_active': $tabs-text-color-title-bg_disabled_active,
+  'tabs-text-color-title-bg_hover': $tabs-text-color-title-bg_hover,
+  'tabs-text-margin-title-horizontal': $tabs-text-margin-title-horizontal,
+  'tabs-text-size-separator-height': $tabs-text-size-separator-height,
+  'tabs-text-size-separator-width': $tabs-text-size-separator-width,
+  'transition-duration-2': theme.$transition-duration-2,
+  'transition-timing-function-linear': theme.$transition-timing-function-linear,
+  'transition-timing-function-standard': theme.$transition-timing-function-standard,
+);
+
+@function less-var($name, $fallback: null) {
+  @return legacyLessVar.get($__less-vars, $name, $fallback);
+}
+
+$tabs-prefix-cls: string.unquote('#{theme.$prefix}-tabs');
+
+@function get-title-padding($header-height, $font-size, $padding-vertical) {
+  // prettier-ignore
+  @return max(0, math.round(($header-height * 0.5) - theme.$line-height-base * ($font-size * 0.5) - $padding-vertical));
+}
+
+// tabs icon style
+
+@include icon-hover.icon-hover($tabs-prefix-cls, $tabs-size-icon, $tabs-size-icon-bg);
+
+.#{$tabs-prefix-cls} {
+  & &-icon-hover {
+    color: $tabs-color-icon;
+    font-size: $tabs-size-icon;
+    user-select: none;
+  }
+
+  &-dropdown-icon {
+    margin-left: $tabs-spacing-nav-icon-header;
+    font-size: $tabs-size-icon;
+    user-select: none;
+  }
+
+  &-tab-close-btn {
+    margin-left: $tabs-margin-close-icon-left;
+    user-select: none;
+  }
+
+  &-nav-add-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $tabs-margin-add-icon-left;
+    font-size: $tabs-size-icon;
+    user-select: none;
+  }
+
+  &-add {
+    position: relative;
+  }
+
+  &-nav-button {
+    &-left {
+      margin-right: $tabs-spacing-nav-icon-header;
+      margin-left: $tabs-padding-header-wrapper-horizontal;
+    }
+
+    &-right {
+      margin-right: $tabs-padding-header-wrapper-horizontal;
+      margin-left: $tabs-spacing-nav-icon-header;
+    }
+
+    &-up {
+      margin-bottom: $tabs-padding-header-wrapper-horizontal;
+    }
+
+    &-down {
+      margin-top: $tabs-padding-header-wrapper-horizontal;
+    }
+
+    &-disabled {
+      color: $tabs-color-icon_disabled;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.#{$tabs-prefix-cls} {
+  position: relative;
+  overflow: hidden;
+
+  &-nav {
+    position: relative;
+    flex-shrink: 0;
+
+    &::before {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      clear: both;
+      height: $tabs-line-size-header-border;
+      background-color: $tabs-line-color-header-border;
+      content: '';
+    }
+  }
+
+  &-nav-tab {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &-nav-tab-list {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    transition: transform theme.$transition-duration-2 theme.$transition-timing-function-standard;
+  }
+
+  &-nav-extra {
+    display: flex;
+    align-items: center;
+    width: auto;
+    line-height: $tabs-size-default-header-height;
+
+    .#{$tabs-prefix-cls}-nav-add-btn {
+      padding-left: 0;
+    }
+  }
+
+  &-tab {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: get-title-padding(
+        $tabs-size-default-header-height,
+        $tabs-size-default-font-size,
+        $tabs-padding-title-text-vertical
+      )
+      0;
+    color: $tabs-color-title-text;
+    font-size: $tabs-size-default-font-size;
+    line-height: 1.5715;
+    outline: none;
+    cursor: pointer;
+    transition: color theme.$transition-duration-2 theme.$transition-timing-function-linear;
+
+    &-title {
+      display: inline-block;
+    }
+
+    &:hover {
+      color: $tabs-color-title-text_hover;
+      font-weight: $tabs-line-font-title-text-weight_hover;
+    }
+
+    &-disabled,
+    &-disabled:hover {
+      color: $tabs-color-title-text_disabled;
+      cursor: not-allowed;
+    }
+
+    &-active,
+    &-active:hover {
+      color: $tabs-color-title-text_active;
+      font-weight: $tabs-line-font-title-text-weight_active;
+
+      &.#{$tabs-prefix-cls}-tab-disabled {
+        color: $tabs-color-title-text_disabled_active;
+      }
+    }
+  }
+
+  &-nav-ink {
+    position: absolute;
+    top: initial;
+    right: initial;
+    bottom: 0;
+    height: $tabs-line-size-ink-stroke;
+    background-color: $tabs-line-color-ink-bg;
+    transition:
+      left theme.$transition-duration-2 theme.$transition-timing-function-standard,
+      width theme.$transition-duration-2 theme.$transition-timing-function-standard;
+
+    &.#{$tabs-prefix-cls}-header-ink-no-animation {
+      transition: none;
+    }
+
+    &-disabled {
+      background-color: $tabs-line-color-ink-bg_disabled;
+    }
+  }
+}
+
+// card card-gutter 类型
+
+.#{$tabs-prefix-cls} {
+  // type == line
+  &-nav-type-line &-nav-extra {
+    line-height: $tabs-size-default-header-height_line;
+  }
+
+  &-nav-type-line &-tab {
+    margin: 0 ($tabs-line-margin-title-horizontal * 0.5);
+    padding: get-title-padding(
+        $tabs-size-default-header-height_line,
+        $tabs-size-default-font-size,
+        $tabs-padding-title-text-vertical
+      )
+      0;
+    line-height: 1.5715;
+
+    &-title {
+      position: relative;
+      display: inline-block;
+      padding: $tabs-padding-title-text-vertical 0;
+
+      &::before {
+        position: absolute;
+        inset: 0 (-$tabs-padding-title-text-horizontal);
+        z-index: -1;
+        background-color: $tabs-line-color-title-bg;
+        border-radius: $tabs-line-border-radius;
+        opacity: 1;
+        transition:
+          background-color theme.$transition-duration-2 theme.$transition-timing-function-linear,
+          opacity theme.$transition-duration-2 theme.$transition-timing-function-linear;
+        content: '';
+      }
+    }
+
+    &:hover {
+      .#{$tabs-prefix-cls}-tab-title::before {
+        background-color: $tabs-line-color-title-bg_hover;
+      }
+    }
+
+    &-active,
+    &-active:hover {
+      .#{$tabs-prefix-cls}-tab-title::before {
+        background-color: $tabs-line-color-title-bg_active;
+      }
+    }
+
+    &-disabled,
+    &-disabled:hover {
+      .#{$tabs-prefix-cls}-tab-title::before {
+        opacity: 0;
+      }
+    }
+
+    &:focus-visible {
+      .#{$tabs-prefix-cls}-tab-title::before {
+        border: 2px solid global.$color-primary-6;
+      }
+    }
+  }
+
+  &-nav-type-line#{&}-nav-horizontal > &-tab:first-of-type {
+    margin-left: $tabs-line-margin-title-horizontal_first;
+  }
+
+  // headerPadding==false & type === line/text & horizontal
+  &-nav-type-line#{&}-nav-horizontal &-nav-tab-list-no-padding > &-tab:first-of-type,
+  &-nav-text#{&}-nav-horizontal &-nav-tab-list-no-padding > &-tab:first-of-type {
+    margin-left: 0;
+  }
+
+  // type == card card-gutter
+  &-nav-type-card,
+  &-nav-type-card-gutter {
+    .#{$tabs-prefix-cls}-tab {
+      position: relative;
+      padding: get-title-padding(
+          ($tabs-size-default-header-height - $tabs-card-border-width * 2),
+          $tabs-size-default-font-size_card,
+          0
+        )
+        $tabs-card-padding-title-horizontal;
+      font-size: $tabs-size-default-font-size_card;
+      border: $tabs-card-border-width solid $tabs-card-color-title-border;
+      transition:
+        padding theme.$transition-duration-2 theme.$transition-timing-function-linear,
+        color theme.$transition-duration-2 theme.$transition-timing-function-linear;
+
+      &-closable {
+        padding-right: $tabs-card-padding-title-right_editable;
+      }
+
+      &-closable:not(.#{$tabs-prefix-cls}-tab-active):hover
+        .#{theme.$prefix}-icon-hover:hover::before {
+        background-color: $tabs-card-color-close-icon-bg_hover;
+      }
+
+      &:focus-visible::before {
+        position: absolute;
+        inset: -1px 0 -1px -1px;
+        border: 2px solid global.$color-primary-6;
+        content: '';
+      }
+
+      &:last-child:focus-visible::before {
+        right: -1px;
+      }
+    }
+  }
+
+  &-nav-type-card,
+  &-nav-type-card-gutter {
+    .#{$tabs-prefix-cls}-nav-add-btn {
+      height: $tabs-size-default-header-height;
+    }
+  }
+
+  &-nav-type-card &-tab {
+    background-color: $tabs-card-color-title-bg;
+    border-right: none;
+
+    &:last-child {
+      border-right: $tabs-card-border-width solid $tabs-card-color-title-border;
+      border-top-right-radius: $tabs-card-border-radius;
+    }
+
+    &:first-child {
+      border-top-left-radius: $tabs-card-border-radius;
+    }
+
+    &:hover {
+      background-color: $tabs-card-color-title-bg_hover;
+    }
+
+    &-disabled,
+    &-disabled:hover {
+      background-color: $tabs-card-color-title-bg_disabled;
+    }
+
+    &-active,
+    &-active:hover {
+      background-color: $tabs-card-color-title-bg_active;
+      border-bottom-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+    }
+  }
+
+  &-nav-type-card-gutter &-tab {
+    margin-left: $tabs-card-gutter-spacing-horizontal;
+    background-color: $tabs-card-gutter-color-title-bg;
+    border-right: $tabs-card-border-width solid $tabs-card-color-title-border;
+    border-radius: $tabs-card-border-radius $tabs-card-border-radius 0 0;
+
+    &:hover {
+      background-color: $tabs-card-gutter-color-title-bg_hover;
+    }
+
+    &-disabled,
+    &-disabled:hover {
+      background-color: $tabs-card-gutter-color-title-bg_disabled;
+    }
+
+    &-active,
+    &-active:hover {
+      background-color: $tabs-card-gutter-color-title-bg_active;
+      border-bottom-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  // type == text
+  &-nav-type-text {
+    &::before {
+      display: none;
+    }
+
+    .#{$tabs-prefix-cls}-tab {
+      position: relative;
+      margin: 0 ($tabs-text-margin-title-horizontal + ($tabs-text-size-separator-width * 0.5));
+      padding: get-title-padding(
+          $tabs-size-default-header-height_text,
+          $tabs-size-default-font-size,
+          0
+        )
+        0;
+      font-size: $tabs-size-default-font-size_text;
+      line-height: 1.5715;
+
+      &:not(:first-of-type)::before {
+        position: absolute;
+        top: 50%;
+        left: -($tabs-text-margin-title-horizontal + ($tabs-text-size-separator-width * 0.5));
+        display: block;
+        width: $tabs-text-size-separator-width;
+        height: $tabs-text-size-separator-height;
+        background-color: $tabs-text-color-separator-bg;
+        transform: translateY(-50%);
+        content: '';
+      }
+
+      &-title {
+        padding-right: $tabs-text-margin-title-horizontal;
+        padding-left: $tabs-text-margin-title-horizontal;
+        background-color: $tabs-text-color-title-bg;
+      }
+
+      &-title:hover {
+        background-color: $tabs-text-color-title-bg_hover;
+      }
+
+      &-active {
+        .#{$tabs-prefix-cls}-tab-title,
+        .#{$tabs-prefix-cls}-tab-title:hover {
+          background-color: $tabs-text-color-title-bg_active;
+        }
+      }
+
+      &-disabled {
+        .#{$tabs-prefix-cls}-tab-title,
+        .#{$tabs-prefix-cls}-tab-title:hover {
+          background-color: $tabs-text-color-title-bg_disabled;
+        }
+      }
+
+      &-active#{&}-disabled {
+        .#{$tabs-prefix-cls}-tab-title,
+        .#{$tabs-prefix-cls}-tab-title:hover {
+          background-color: $tabs-text-color-title-bg_disabled_active;
+        }
+      }
+
+      &:focus-visible {
+        .#{$tabs-prefix-cls}-tab-title {
+          margin: -2px;
+          border: 2px solid global.$color-primary-6;
+        }
+      }
+    }
+  }
+
+  &-nav-type-rounded {
+    &::before {
+      display: none;
+    }
+
+    .#{$tabs-prefix-cls}-tab {
+      margin: 0 ($tabs-rounded-margin-title-horizontal * 0.5);
+      padding: get-title-padding(
+          $tabs-size-default-header-height_rounded,
+          $tabs-size-default-font-size_rounded,
+          0
+        )
+        0;
+      padding-right: $tabs-rounded-padding-title-horizontal;
+      padding-left: $tabs-rounded-padding-title-horizontal;
+      font-size: $tabs-size-default-font-size_rounded;
+      background-color: $tabs-rounded-color-title-bg;
+      border-radius: $tabs-size-default-header-height_rounded;
+
+      &:hover {
+        background-color: $tabs-rounded-color-title-bg_hover;
+      }
+
+      &-disabled:hover {
+        background-color: $tabs-rounded-color-title-bg_disabled;
+      }
+
+      &-active,
+      &-active:hover {
+        background-color: $tabs-rounded-color-title-bg_active;
+      }
+
+      &:focus-visible {
+        border-color: global.$color-primary-6;
+      }
+    }
+  }
+
+  &-nav-type-capsule {
+    &::before {
+      display: none;
+    }
+
+    .#{$tabs-prefix-cls}-nav-tab:not(.#{$tabs-prefix-cls}-nav-tab-scroll) {
+      justify-content: flex-end;
+    }
+
+    .#{$tabs-prefix-cls}-nav-tab-list {
+      padding: $tabs-capsule-padding-header-vertical $tabs-capsule-padding-header-horizontal;
+      line-height: 1;
+      background-color: $tabs-capsule-color-header-bg;
+      border-radius: $tabs-capsule-border-header-radius;
+    }
+
+    .#{$tabs-prefix-cls}-tab {
+      position: relative;
+      padding: 0 $tabs-capsule-padding-title-horizontal - 2;
+      font-size: $tabs-size-default-font-size_capsule;
+      line-height: (
+        $tabs-size-default-header-height_capsule - $tabs-capsule-padding-header-vertical * 2
+      );
+      background-color: $tabs-capsule-color-title-bg;
+
+      &:hover {
+        background-color: $tabs-capsule-color-title-bg_hover;
+      }
+
+      &-disabled:hover {
+        background-color: unset;
+      }
+
+      &-active,
+      &-active:hover {
+        background-color: $tabs-capsule-color-title-bg_active;
+
+        &::before,
+        & + .#{$tabs-prefix-cls}-tab::before {
+          opacity: 0;
+        }
+      }
+
+      &:focus-visible {
+        border-color: global.$color-primary-6;
+      }
+    }
+
+    &.#{$tabs-prefix-cls}-nav-horizontal .#{$tabs-prefix-cls}-tab:not(:first-of-type) {
+      margin-left: $tabs-capsule-margin-title-horizontal;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: -($tabs-capsule-margin-title-horizontal * 0.5) -
+          ($tabs-capsule-size-separator-width * 0.5) - 2;
+        display: block;
+        width: $tabs-capsule-size-separator-width;
+        height: $tabs-capsule-size-separator-height;
+        background-color: $tabs-capsule-color-separator-bg;
+        transform: translateY(-50%);
+        transition: all theme.$transition-duration-2 theme.$transition-timing-function-linear;
+        content: '';
+      }
+    }
+  }
+}
+
+//   /** header */
+
+.#{$tabs-prefix-cls} {
+  &-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &-content {
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: $tabs-content-padding;
+    overflow: hidden;
+
+    &-hide {
+      display: none;
+    }
+
+    .#{$tabs-prefix-cls}-content-list {
+      display: flex;
+      width: 100%;
+    }
+
+    .#{$tabs-prefix-cls}-content-item {
+      flex-shrink: 0;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+
+      &.#{$tabs-prefix-cls}-content-item-active {
+        height: auto;
+      }
+    }
+  }
+
+  &-type-card,
+  &-type-card-gutter {
+    > .#{$tabs-prefix-cls}-content {
+      border: $tabs-card-border-content-width solid $tabs-line-color-header-border;
+      border-top: none;
+    }
+  }
+
+  &-content-animation {
+    transition: all theme.$transition-duration-2 theme.$transition-timing-function-standard;
+  }
+
+  &-horizontal#{&}-justify {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .#{$tabs-prefix-cls}-content,
+    .#{$tabs-prefix-cls}-content-list,
+    .#{$tabs-prefix-cls}-pane {
+      height: 100%;
+    }
+  }
+}
+
+@mixin for($data, $i: 1) {
+  @if ($i <= list.length($data)) {
+    $size: list.nth($data, $i);
+
+    .#{$tabs-prefix-cls}-nav-size-#{$size} {
+      &.#{$tabs-prefix-cls}-nav-type-line {
+        $height: string.unquote('tabs-size-#{$size}-header-height_line');
+        $font-size: string.unquote('tabs-size-#{$size}-font-size');
+        $padding: get-title-padding(
+          less-var($height),
+          less-var($font-size),
+          $tabs-padding-title-text-vertical
+        );
+
+        .#{$tabs-prefix-cls}-nav-extra {
+          font-size: less-var($font-size);
+          line-height: less-var($height);
+        }
+
+        .#{$tabs-prefix-cls}-tab {
+          padding-top: $padding;
+          padding-bottom: $padding;
+          font-size: less-var($font-size);
+        }
+
+        .#{$tabs-prefix-cls}-nav-extra {
+          font-size: less-var($font-size);
+          line-height: less-var($height);
+        }
+      }
+
+      &.#{$tabs-prefix-cls}-nav-type-card,
+      &.#{$tabs-prefix-cls}-nav-type-card-gutter {
+        $card-font-size: string.unquote('tabs-size-#{$size}-font-size_card');
+        $card-height: string.unquote('tabs-size-#{$size}-header-height');
+        $padding: get-title-padding(
+          less-var($card-height) - $tabs-card-border-width * 2,
+          less-var($card-font-size),
+          $tabs-padding-title-text-vertical
+        );
+
+        .#{$tabs-prefix-cls}-tab {
+          padding-top: $padding;
+          padding-bottom: $padding;
+          font-size: less-var($card-font-size);
+        }
+
+        .#{$tabs-prefix-cls}-nav-extra {
+          font-size: less-var($card-font-size);
+          line-height: less-var($card-height);
+        }
+
+        .#{$tabs-prefix-cls}-nav-add-btn {
+          height: less-var($card-height);
+        }
+      }
+
+      &.#{$tabs-prefix-cls}-nav-type-capsule {
+        $capsule-font-size: string.unquote('tabs-size-#{$size}-font-size_capsule');
+        $capsule-height: string.unquote('tabs-size-#{$size}-header-height_capsule');
+
+        .#{$tabs-prefix-cls}-tab {
+          font-size: less-var($capsule-font-size);
+          line-height: less-var($capsule-height) - $tabs-capsule-padding-header-vertical * 2;
+        }
+
+        .#{$tabs-prefix-cls}-nav-extra {
+          font-size: less-var($capsule-font-size);
+          line-height: less-var($capsule-height);
+        }
+      }
+
+      &.#{$tabs-prefix-cls}-nav-type-rounded {
+        $rounded-font-size: string.unquote('tabs-size-#{$size}-font-size_rounded');
+        $rounded-height: string.unquote('tabs-size-#{$size}-header-height_rounded');
+
+        .#{$tabs-prefix-cls}-tab {
+          padding-top: get-title-padding(
+            less-var($rounded-height),
+            less-var($rounded-font-size),
+            0
+          );
+          padding-bottom: (
+            get-title-padding(less-var($rounded-height), less-var($rounded-font-size), 0)
+          );
+          font-size: less-var($rounded-font-size);
+        }
+
+        .#{$tabs-prefix-cls}-nav-extra {
+          font-size: less-var($rounded-font-size);
+          line-height: less-var($rounded-height);
+        }
+      }
+    }
+
+    @include for($data, ($i + 1));
+  }
+}
+
+@include for($sizes);
+@include meta.load-css('./vertical.scss');
+@include meta.load-css('./rtl.scss');
+
+#{global.$sd-theme-tag}[sd-theme='dark'] {
+  .#{$tabs-prefix-cls}-nav-type-capsule {
+    .#{$tabs-prefix-cls}-tab {
+      &-active {
+        background-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+      }
+
+      &:hover {
+        background-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+      }
+    }
+  }
+}

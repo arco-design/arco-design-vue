@@ -1,0 +1,91 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$transfer-width: 200px;
+
+$transfer-height: 224px;
+
+$transfer-height-title: global.$size-10;
+
+$transfer-height-footer: global.$size-10;
+
+$transfer-padding-horizontal-footer: global.$spacing-4;
+
+$transfer-border-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$transfer-border-width: global.$border-1;
+
+$transfer-border-radius: global.$radius-small;
+
+$transfer-font-size-header: global.$font-size-body-3;
+
+$transfer-font-size-header-unit: global.$font-size-body-1;
+
+$transfer-font-size-icon: global.$font-size-body-1;
+
+$transfer-font-weight-header: global.$font-weight-500;
+
+$transfer-color-text-header: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$transfer-color-text-header-unit: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+
+$transfer-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$transfer-color-bg-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$transfer-color-bg-header: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+
+$transfer-search-padding-left: 12px;
+
+$transfer-search-padding-right: 12px;
+
+$transfer-search-padding-top: 8px;
+
+$transfer-search-padding-bottom: 4px;
+
+$transfer-item-color-bg_default: global.$color-transparent;
+
+$transfer-item-color-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$transfer-item-color-bg_disabled: global.$color-transparent;
+
+$transfer-item-color_default: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$transfer-item-color_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$transfer-item-color_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$transfer-item-height: global.$size-9;
+
+$transfer-item-padding-horizontal: global.$spacing-5;
+
+$transfer-item-font-size: global.$font-size-body-3;
+
+$transfer-item-draggable-height-gap: 2px;
+
+$transfer-item-draggable-color-bg-gap: global.$color-primary-6;
+
+$transfer-item-draggable-color-bg_dragging: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1')
+);
+
+$transfer-item-draggable-color_dragging: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$transfer-item-draggable-color_blink: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
+);
+
+$transfer-pagination-width-input: global.$size-6;
+
+$transfer-pagination-gap-separator: global.$spacing-4;
+
+$transfer-operation-padding-horizontal: global.$spacing-8;
+
+$transfer-operation-gap-buttons: global.$spacing-6;

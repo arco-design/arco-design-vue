@@ -1,2 +1,2 @@
 import '../../../input/style';
-import './index.less';
+import './index.scss';

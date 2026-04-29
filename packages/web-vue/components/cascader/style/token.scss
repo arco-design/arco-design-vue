@@ -1,0 +1,51 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$cascader-size-item-height: global.$size-9;
+
+$cascader-font-item-size: global.$font-size-body-3;
+
+$cascader-margin-item-icon-left: global.$spacing-6;
+
+$cascader-color-item-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$cascader-color-item-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$cascader-padding-item-left: global.$spacing-6;
+
+$cascader-padding-item-right: global.$spacing-5;
+
+$cascader-size-item-icon: global.$size-3;
+
+$cascader-color-item-text_hover: $cascader-color-item-text;
+
+$cascader-color-item-text_active: $cascader-color-item-text;
+
+$cascader-color-item-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$cascader-color-item-text_disabled_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$cascader-font-item-weight_active: global.$font-weight-500;
+
+$cascader-color-item-bg_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$cascader-color-item-bg_hover: $cascader-color-item-bg_active;
+
+$cascader-color-item-bg_disabled: global.$color-transparent;
+
+$cascader-color-item-bg_disabled_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$cascader-color-checkbox-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$cascader-margin-checkbox-right: global.$spacing-4;

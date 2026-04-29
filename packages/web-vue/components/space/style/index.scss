@@ -1,0 +1,51 @@
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$space-prefix-cls: string.unquote('#{$prefix}-space');
+
+.#{$space-prefix-cls} {
+  display: inline-flex;
+
+  .#{$space-prefix-cls}-item:empty {
+    display: none;
+  }
+
+  &-horizontal {
+    .#{$space-prefix-cls}-item {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-vertical {
+    flex-direction: column;
+  }
+
+  &-align-baseline {
+    align-items: baseline;
+  }
+
+  &-align-start {
+    align-items: flex-start;
+  }
+
+  &-align-end {
+    align-items: flex-end;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-fill {
+    display: flex;
+  }
+
+  &-rtl {
+    direction: rtl;
+  }
+}

@@ -1,0 +1,25 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$backtop-margin-bottom: global.$spacing-9;
+
+$backtop-margin-right: global.$spacing-9;
+
+$backtop-button-size-width: global.$size-10;
+
+$backtop-button-size-font: global.$font-size-body-1;
+
+$backtop-button-size-icon: 14px;
+
+$backtop-button-color-bg: global.$color-primary-6;
+
+$backtop-button-color-bg_hover: global.$color-primary-5;
+
+$backtop-button-border-radius: global.$radius-circle;
+
+$backtop-button-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));

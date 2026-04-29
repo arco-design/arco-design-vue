@@ -1,0 +1,146 @@
+@use 'sass:string';
+@use '@style/theme/index.scss' as theme;
+
+#{theme.$sd-theme-tag} {
+  #{theme.$sd-cssvars-prefix}-color-white: theme.$color-white;
+  #{theme.$sd-cssvars-prefix}-color-black: theme.$color-black;
+  #{theme.$sd-cssvars-prefix}-color-border: theme.$color-border;
+  #{theme.$sd-cssvars-prefix}-color-bg-popup: theme.$color-bg-popup;
+  #{theme.$sd-cssvars-prefix}-color-bg-1: theme.$color-bg-1;
+  #{theme.$sd-cssvars-prefix}-color-bg-2: theme.$color-bg-2;
+  #{theme.$sd-cssvars-prefix}-color-bg-3: theme.$color-bg-3;
+  #{theme.$sd-cssvars-prefix}-color-bg-4: theme.$color-bg-4;
+  #{theme.$sd-cssvars-prefix}-color-bg-5: theme.$color-bg-5;
+  #{theme.$sd-cssvars-prefix}-color-bg-white: theme.$color-bg-white;
+  #{theme.$sd-cssvars-prefix}-color-neutral-1: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-1'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-2: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-2'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-3: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-3'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-4: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-4'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-5: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-5'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-6: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-6'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-7: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-7'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-8: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-8'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-9: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-9'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-neutral-10: rgb(
+    var(string.unquote('#{theme.$sd-cssvars-prefix}-gray-10'))
+  );
+  #{theme.$sd-cssvars-prefix}-color-text-1: theme.$color-text-1;
+  #{theme.$sd-cssvars-prefix}-color-text-2: theme.$color-text-2;
+  #{theme.$sd-cssvars-prefix}-color-text-3: theme.$color-text-3;
+  #{theme.$sd-cssvars-prefix}-color-text-4: theme.$color-text-4;
+  #{theme.$sd-cssvars-prefix}-color-border-1: theme.$color-border-1;
+  #{theme.$sd-cssvars-prefix}-color-border-2: theme.$color-border-2;
+  #{theme.$sd-cssvars-prefix}-color-border-3: theme.$color-border-3;
+  #{theme.$sd-cssvars-prefix}-color-border-4: theme.$color-border-4;
+  #{theme.$sd-cssvars-prefix}-color-fill-1: theme.$color-fill-1;
+  #{theme.$sd-cssvars-prefix}-color-fill-2: theme.$color-fill-2;
+  #{theme.$sd-cssvars-prefix}-color-fill-3: theme.$color-fill-3;
+  #{theme.$sd-cssvars-prefix}-color-fill-4: theme.$color-fill-4;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-1: theme.$color-primary-light-1;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-2: theme.$color-primary-light-2;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-3: theme.$color-primary-light-3;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-4: theme.$color-primary-light-4;
+  #{theme.$sd-cssvars-prefix}-color-link-light-1: theme.$color-link-light-1;
+  #{theme.$sd-cssvars-prefix}-color-link-light-2: theme.$color-link-light-2;
+  #{theme.$sd-cssvars-prefix}-color-link-light-3: theme.$color-link-light-3;
+  #{theme.$sd-cssvars-prefix}-color-link-light-4: theme.$color-link-light-4;
+  #{theme.$sd-cssvars-prefix}-color-secondary: theme.$color-secondary;
+  #{theme.$sd-cssvars-prefix}-color-secondary-hover: theme.$color-secondary-hover;
+  #{theme.$sd-cssvars-prefix}-color-secondary-active: theme.$color-secondary-active;
+  #{theme.$sd-cssvars-prefix}-color-secondary-disabled: theme.$color-secondary-disabled;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-1: theme.$color-danger-light-1;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-2: theme.$color-danger-light-2;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-3: theme.$color-danger-light-3;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-4: theme.$color-danger-light-4;
+  #{theme.$sd-cssvars-prefix}-color-success-light-1: theme.$color-success-light-1;
+  #{theme.$sd-cssvars-prefix}-color-success-light-2: theme.$color-success-light-2;
+  #{theme.$sd-cssvars-prefix}-color-success-light-3: theme.$color-success-light-3;
+  #{theme.$sd-cssvars-prefix}-color-success-light-4: theme.$color-success-light-4;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-1: theme.$color-warning-light-1;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-2: theme.$color-warning-light-2;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-3: theme.$color-warning-light-3;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-4: theme.$color-warning-light-4;
+
+  // radius
+  #{theme.$sd-cssvars-prefix}-border-radius-none: theme.$border-radius-none;
+  #{theme.$sd-cssvars-prefix}-border-radius-small: theme.$border-radius-small;
+  #{theme.$sd-cssvars-prefix}-border-radius-medium: theme.$border-radius-medium;
+  #{theme.$sd-cssvars-prefix}-border-radius-large: theme.$border-radius-large;
+  #{theme.$sd-cssvars-prefix}-border-radius-circle: theme.$border-radius-circle;
+  // component
+  #{theme.$sd-cssvars-prefix}-color-tooltip-bg: theme.$color-tooltip-bg;
+  #{theme.$sd-cssvars-prefix}-color-spin-layer-bg: theme.$color-spin-layer-bg;
+  #{theme.$sd-cssvars-prefix}-color-menu-dark-bg: theme.$color-menu-dark-bg;
+  #{theme.$sd-cssvars-prefix}-color-menu-light-bg: theme.$color-menu-light-bg;
+  #{theme.$sd-cssvars-prefix}-color-menu-dark-hover: theme.$color-menu-dark-hover;
+  #{theme.$sd-cssvars-prefix}-color-mask-bg: theme.$mask-color-bg;
+}
+
+#{theme.$sd-theme-tag}[sd-theme='dark'] {
+  #{theme.$sd-cssvars-prefix}-color-white: theme.$dark-color-white;
+  #{theme.$sd-cssvars-prefix}-color-black: theme.$dark-color-black;
+  #{theme.$sd-cssvars-prefix}-color-border: theme.$dark-color-border;
+  #{theme.$sd-cssvars-prefix}-color-bg-1: theme.$dark-color-bg-1;
+  #{theme.$sd-cssvars-prefix}-color-bg-2: theme.$dark-color-bg-2;
+  #{theme.$sd-cssvars-prefix}-color-bg-3: theme.$dark-color-bg-3;
+  #{theme.$sd-cssvars-prefix}-color-bg-4: theme.$dark-color-bg-4;
+  #{theme.$sd-cssvars-prefix}-color-bg-5: theme.$dark-color-bg-5;
+  #{theme.$sd-cssvars-prefix}-color-bg-white: theme.$dark-color-bg-white;
+  #{theme.$sd-cssvars-prefix}-color-text-1: theme.$dark-color-text-1;
+  #{theme.$sd-cssvars-prefix}-color-text-2: theme.$dark-color-text-2;
+  #{theme.$sd-cssvars-prefix}-color-text-3: theme.$dark-color-text-3;
+  #{theme.$sd-cssvars-prefix}-color-text-4: theme.$dark-color-text-4;
+  #{theme.$sd-cssvars-prefix}-color-fill-1: theme.$dark-color-fill-1;
+  #{theme.$sd-cssvars-prefix}-color-fill-2: theme.$dark-color-fill-2;
+  #{theme.$sd-cssvars-prefix}-color-fill-3: theme.$dark-color-fill-3;
+  #{theme.$sd-cssvars-prefix}-color-fill-4: theme.$dark-color-fill-4;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-1: theme.$dark-color-primary-light-1;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-2: theme.$dark-color-primary-light-2;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-3: theme.$dark-color-primary-light-3;
+  #{theme.$sd-cssvars-prefix}-color-primary-light-4: theme.$dark-color-primary-light-4;
+  #{theme.$sd-cssvars-prefix}-color-secondary: theme.$dark-color-secondary;
+  #{theme.$sd-cssvars-prefix}-color-secondary-hover: theme.$dark-color-secondary-hover;
+  #{theme.$sd-cssvars-prefix}-color-secondary-active: theme.$dark-color-secondary-active;
+  #{theme.$sd-cssvars-prefix}-color-secondary-disabled: theme.$dark-color-secondary-disabled;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-1: theme.$dark-color-danger-light-1;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-2: theme.$dark-color-danger-light-2;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-3: theme.$dark-color-danger-light-3;
+  #{theme.$sd-cssvars-prefix}-color-danger-light-4: theme.$dark-color-danger-light-4;
+  #{theme.$sd-cssvars-prefix}-color-success-light-1: theme.$dark-color-success-light-1;
+  #{theme.$sd-cssvars-prefix}-color-success-light-2: theme.$dark-color-success-light-2;
+  #{theme.$sd-cssvars-prefix}-color-success-light-3: theme.$dark-color-success-light-3;
+  #{theme.$sd-cssvars-prefix}-color-success-light-4: theme.$dark-color-success-light-4;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-1: theme.$dark-color-warning-light-1;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-2: theme.$dark-color-warning-light-2;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-3: theme.$dark-color-warning-light-3;
+  #{theme.$sd-cssvars-prefix}-color-warning-light-4: theme.$dark-color-warning-light-4;
+  #{theme.$sd-cssvars-prefix}-color-link-light-1: theme.$dark-color-link-light-1;
+  #{theme.$sd-cssvars-prefix}-color-link-light-2: theme.$dark-color-link-light-2;
+  #{theme.$sd-cssvars-prefix}-color-link-light-3: theme.$dark-color-link-light-3;
+  #{theme.$sd-cssvars-prefix}-color-link-light-4: theme.$dark-color-link-light-4;
+  // component
+  #{theme.$sd-cssvars-prefix}-color-tooltip-bg: theme.$dark-color-tooltip-bg;
+  #{theme.$sd-cssvars-prefix}-color-spin-layer-bg: theme.$dark-color-spin-layer-bg;
+  #{theme.$sd-cssvars-prefix}-color-menu-dark-bg: theme.$color-menu-dark-bg;
+  #{theme.$sd-cssvars-prefix}-color-menu-light-bg: theme.$color-menu-dark-bg;
+  #{theme.$sd-cssvars-prefix}-color-menu-dark-hover: theme.$dark-color-menu-dark-hover;
+  #{theme.$sd-cssvars-prefix}-color-mask-bg: theme.$dark-mask-color-bg;
+}

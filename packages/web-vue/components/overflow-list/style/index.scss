@@ -1,0 +1,20 @@
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$overflow-prefix-cls: string.unquote('#{$prefix}-overflow-list');
+
+.#{$overflow-prefix-cls} {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  > *:not(:last-child) {
+    flex-shrink: 0;
+  }
+
+  &-spacer {
+    flex: 1;
+    min-width: 0;
+    height: 1px;
+  }
+}

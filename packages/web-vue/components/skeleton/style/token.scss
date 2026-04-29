@@ -1,0 +1,27 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$skeleton-color-bg-base: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$skeleton-radius-image-border: global.$radius-small;
+
+$skeleton-size-image_default: global.$size-12;
+
+$skeleton-size-image_small: global.$size-9;
+
+$skeleton-size-image_large: global.$size-15;
+
+$skeleton-spacing-image_left-margin-right: global.$spacing-7;
+
+$skeleton-spacing-image_right-margin-left: global.$spacing-7;
+
+$skeleton-size-row-height: global.$size-4;
+
+$skeleton-spacing-last_row-margin-bottom: global.$spacing-7;
+
+$skeleton-color-animate-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));

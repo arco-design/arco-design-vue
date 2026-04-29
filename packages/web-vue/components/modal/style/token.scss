@@ -1,0 +1,57 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$modal-border-radius: global.$radius-medium;
+
+$modal-size-tip-icon: 18px;
+
+$modal-margin-top: 100px;
+
+$modal-margin-tip-icon-right: global.$spacing-5;
+
+$modal-margin-footer-button-left: global.$spacing-6;
+
+$modal-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$modal-color-header-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$modal-color-content-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$modal-font-header-size: global.$font-size-title-1;
+
+$modal-default-padding-horizontal: global.$spacing-8;
+
+$modal-default-size-header-height: global.$size-12;
+
+$modal-default-padding-content-vertical: global.$spacing-9;
+
+$modal-default-padding-footer-vertical: global.$spacing-7;
+
+$modal-default-size-width: 520px;
+
+$modal-font-content-size: global.$font-size-body-3;
+
+$modal-default-align-header: center;
+
+$modal-simple-align-header: center;
+
+$modal-simple-size-width: 400px;
+
+$modal-simple-padding-horizontal: global.$spacing-10;
+
+$modal-simple-padding-top: global.$spacing-9;
+
+$modal-simple-padding-bottom: global.$spacing-10;
+
+$modal-simple-margin-footer-top: global.$spacing-10;
+
+$modal-simple-margin-content-top: global.$spacing-9;
+
+$modal-position-close-icon-right: 16px;
+
+$modal-font-size-close-icon: 12px;

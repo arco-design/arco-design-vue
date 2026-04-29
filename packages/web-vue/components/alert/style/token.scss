@@ -1,0 +1,82 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$alert-border-width: global.$border-1;
+$alert-min-height: global.$size-10;
+$alert-border-radius: global.$radius-small;
+$alert-line-height: 1.5715;
+$alert-title-line-height: 1.5;
+$alert-title-margin-bottom: global.$spacing-2;
+$alert-margin-icon-right: global.$spacing-4;
+
+$alert-padding-horizontal: global.$spacing-7 - $alert-border-width;
+$alert-padding-vertical: 9px - $alert-border-width;
+$alert-padding-horizontal_with_title: global.$spacing-7 - $alert-border-width;
+$alert-padding-vertical_with_title: global.$spacing-7 - $alert-border-width;
+
+$alert-font-weight-title: global.$font-weight-500;
+$alert-font-size-text-title: global.$font-size-title-1;
+$alert-font-size-text-content: global.$font-size-body-3;
+$alert-font-size-icon: 16px;
+$alert-font-size-icon_with_title: 18px;
+$alert-font-size-close-icon: 12px;
+
+/*****************************************************
+ * type: info / warning / error /success
+ *****************************************************/
+$alert-normal-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-2'));
+$alert-normal-color-border: global.$color-transparent;
+$alert-normal-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-4'));
+$alert-normal-color-text-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-normal-color-text-content: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-normal-color-text-content_title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-2')
+);
+
+$alert-info-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1'));
+$alert-info-color-border: global.$color-transparent;
+$alert-info-color-icon: global.$color-primary-6;
+$alert-info-color-text-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-info-color-text-content: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-info-color-text-content_title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-2')
+);
+
+$alert-warning-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-1'));
+$alert-warning-color-border: global.$color-transparent;
+$alert-warning-color-icon: global.$color-warning-6;
+$alert-warning-color-text-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-warning-color-text-content: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-warning-color-text-content_title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-2')
+);
+
+$alert-error-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1'));
+$alert-error-color-border: global.$color-transparent;
+$alert-error-color-icon: global.$color-danger-6;
+$alert-error-color-text-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-error-color-text-content: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-error-color-text-content_title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-2')
+);
+
+$alert-success-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-1'));
+$alert-success-color-border: global.$color-transparent;
+$alert-success-color-icon: global.$color-success-6;
+$alert-success-color-text-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-success-color-text-content: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-success-color-text-content_title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-2')
+);
+
+// 关闭图标
+$alert-color-close-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$alert-color-close-icon_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$alert-margin-close-icon-left: global.$spacing-4;
+$alert-margin-action-left: global.$spacing-4;
+$alert-margin-action-right: global.$spacing-4;

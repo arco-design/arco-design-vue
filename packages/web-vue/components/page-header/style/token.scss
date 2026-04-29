@@ -1,0 +1,63 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$page-header-padding-left: global.$spacing-9;
+
+$page-header-padding-right: global.$spacing-8;
+
+$page-header-padding-vertical: global.$spacing-7;
+
+$page-header-padding-vertical_breadcrumb: global.$spacing-6;
+
+$page-header-color-back-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$page-header-size-back-icon: global.$font-size-body-3;
+
+$page-header-margin-back-icon-right: global.$spacing-6;
+
+$page-header-line-height: global.$size-7;
+
+$page-header-color-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$page-header-weight-title-text: 600;
+
+$page-header-color-back-icon-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$page-header-size-back-icon-bg_hover: 30px;
+
+$page-header-size-title-text: global.$font-size-title-2;
+
+$page-header-color-divider-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$page-header-size-divider-height: global.$size-4;
+
+$page-header-size-divider-width: 1px;
+
+$page-header-margin-divider-left: global.$spacing-6;
+
+$page-header-margin-divider-right: global.$spacing-6;
+
+$page-header-color-sub-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+
+$page-header-size-sub-title-text: global.$font-size-body-3;
+
+$page-header-color-header-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$page-header-border-header-width: global.$border-1;
+
+$page-header-border-header-style: global.$border-solid;
+
+$page-header-padding-content-vertical: global.$spacing-8;
+
+$page-header-padding-content-horizontal: global.$spacing-10;
+
+$page-header-margin-breadcrumb-bottom: global.$spacing-2;

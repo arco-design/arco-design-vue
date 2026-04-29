@@ -1,0 +1,25 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$scrollbar-track-size: 15px;
+
+$scrollbar-track-border_size: global.$border-1;
+
+$scrollbar-track-border_color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$scrollbar-track-bg_color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-1'));
+
+$scrollbar-thumb-bar-size: 9px;
+
+$scrollbar-thumb-bar-border_radius: 6px;
+
+$scrollbar-thumb-bar-bg_color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-4'));
+
+$scrollbar-thumb-bar-bg_color_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-6')
+);

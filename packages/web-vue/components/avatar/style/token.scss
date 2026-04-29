@@ -1,0 +1,57 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$avatar-size-default: global.$size-10;
+
+$avatar-font-size-text: 20px;
+
+$avatar-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+
+$avatar-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4'));
+
+$avatar-color-group-item-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$avatar-group-item-border-width: 2px;
+
+$avatar-group-item-margin-left: -10px;
+
+$avatar-group-popover-item-spacing: global.$spacing-2;
+
+$avatar-font-weight-text: global.$font-weight-500;
+
+$avatar-circle-border-radius: global.$radius-circle;
+
+$avatar-square-border-radius: global.$radius-medium;
+
+$avatar-size-trigger-button: global.$size-5;
+
+$avatar-color-trigger-button-bg: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-2')
+);
+
+$avatar-color-trigger-button-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$avatar-color-trigger-mask-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+
+$avatar-opacity-trigger-mask-bg: global.$opacity-6;
+
+$avatar-color-trigger-icon-button: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4'));
+
+$avatar-spacing-trigger-button-right: global.$spacing-2;
+
+$avatar-spacing-trigger-button-bottom: global.$spacing-2;
+
+$avatar-size-trigger-icon: global.$size-3;
+
+$avatar-border-trigger-button-radius: global.$radius-circle;
+
+$avatar-font-size-max-count: 20px;
+
+$avatar-color-max-count-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));

@@ -4,10 +4,11 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import CleanCSS from 'clean-css';
 import { globSync } from 'glob';
-import less from 'less';
-import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import fs from 'node:fs';
+import { access, cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import * as sass from 'sass';
 import { defineConfig } from 'vite-plus';
 import { configDefaults } from 'vitest/config';
 
@@ -21,6 +22,19 @@ const resolveFromRoot = (...segments: string[]) => path.resolve(packageRoot, ...
 
 const componentsRoot = resolveFromRoot('components');
 
+const styleAliasEntries = [
+  {
+    find: /^@style\/(.*)$/,
+    replacement: `${resolveFromRoot('components/style')}/$1`,
+  },
+  {
+    find: /^@components\/(.*)$/,
+    replacement: `${componentsRoot}/$1`,
+  },
+];
+
+const sassFileExtensions = ['.scss', '.sass', '.css'];
+
 const langFiles = globSync('components/locale/lang/*.ts', {
   cwd: packageRoot,
   posix: true,
@@ -30,6 +44,7 @@ function createTestSupportConfig(): UserConfig {
   return {
     resolve: {
       alias: [
+        ...styleAliasEntries,
         {
           find: /^@sdata\/web-vue$/,
           replacement: resolveFromRoot('components/index.ts'),
@@ -57,9 +72,6 @@ function createRunConfig() {
       },
       'gen:icons': {
         command: 'node ./scripts/gen-icons.mjs',
-      },
-      'gen:less': {
-        command: 'node ./scripts/gen-less-index.mjs',
       },
       'gen:web-types': {
         command: 'node ./scripts/gen-web-types.mjs',
@@ -113,6 +125,9 @@ function createRunConfig() {
 function createModuleBuildConfig(): UserConfig {
   return {
     mode: 'production',
+    resolve: {
+      alias: styleAliasEntries,
+    },
     build: {
       target: 'es2015',
       outDir: 'es',
@@ -141,6 +156,9 @@ function createModuleBuildConfig(): UserConfig {
 function createIconModuleBuildConfig(): UserConfig {
   return {
     mode: 'production',
+    resolve: {
+      alias: styleAliasEntries,
+    },
     build: {
       target: 'es2015',
       outDir: 'es',
@@ -170,6 +188,9 @@ function createUmdBuildConfig(type: 'component' | 'icon', minify: boolean): User
 
   return {
     mode: 'production',
+    resolve: {
+      alias: styleAliasEntries,
+    },
     build: {
       target: 'es2015',
       outDir: 'dist',
@@ -203,51 +224,158 @@ async function copyInto(targetPath: string, sourcePath: string) {
   await cp(sourcePath, targetPath, { recursive: true, force: true });
 }
 
-async function emitStyleArtifacts() {
-  const files = globSync('**/*.{less,js}', {
+async function canAccessFile(filePath: string) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function resolveSassImport(url: string, fromDir: string) {
+  const normalizedUrl = url.replaceAll('\\', '/');
+
+  if (/^(?:sass:|https?:|file:)/.test(normalizedUrl)) {
+    return null;
+  }
+
+  const aliasedPath = styleAliasEntries.reduce<string | null>((resolved, aliasEntry) => {
+    if (resolved || typeof aliasEntry.find === 'string') {
+      return resolved;
+    }
+
+    const match = aliasEntry.find.exec(normalizedUrl);
+
+    if (!match) {
+      return resolved;
+    }
+
+    return aliasEntry.replacement.replace('$1', match[1] ?? '');
+  }, null);
+  let basePath = path.resolve(fromDir, normalizedUrl);
+
+  if (aliasedPath) {
+    basePath = path.resolve(aliasedPath);
+  } else if (normalizedUrl.startsWith('/')) {
+    basePath = path.resolve(packageRoot, `.${normalizedUrl}`);
+  }
+  const extension = path.extname(basePath);
+  const dirname = path.dirname(basePath);
+  const basename = path.basename(basePath);
+  const candidates = extension
+    ? [basePath]
+    : [
+        ...sassFileExtensions.map((current) => `${basePath}${current}`),
+        ...sassFileExtensions.map((current) => path.join(dirname, `_${basename}${current}`)),
+        ...sassFileExtensions.map((current) => path.join(basePath, `index${current}`)),
+        ...sassFileExtensions.map((current) => path.join(basePath, `_index${current}`)),
+      ];
+
+  return candidates.find((current) => fs.existsSync(current)) ?? null;
+}
+
+const sassImporter: sass.Importer<'async'> = {
+  canonicalize(url, context) {
+    const fromDir = context.containingUrl
+      ? path.dirname(fileURLToPath(context.containingUrl))
+      : packageRoot;
+    const resolved = resolveSassImport(url, fromDir);
+
+    return resolved ? pathToFileURL(resolved) : null;
+  },
+  async load(canonicalUrl) {
+    if (canonicalUrl.protocol !== 'file:') {
+      return null;
+    }
+
+    const filePath = fileURLToPath(canonicalUrl);
+    const extension = path.extname(filePath);
+    let syntax: 'scss' | 'indented' | 'css' = 'scss';
+
+    if (extension === '.sass') {
+      syntax = 'indented';
+    } else if (extension === '.css') {
+      syntax = 'css';
+    }
+    const source = await fs.promises.readFile(filePath, 'utf8');
+
+    return {
+      contents: source,
+      syntax,
+      sourceMapUrl: canonicalUrl,
+    };
+  },
+};
+
+async function compileStyleEntry(absolutePath: string, filename: string) {
+  const source = await fs.promises.readFile(absolutePath, 'utf8');
+  const result = await sass.compileStringAsync(source, {
+    loadPaths: [path.resolve(componentsRoot, path.dirname(filename)), packageRoot],
+    importers: [sassImporter],
+    style: 'expanded',
+    url: pathToFileURL(absolutePath),
+  });
+
+  return result.css;
+}
+
+async function emitStyleArtifacts(log?: (message: string) => void) {
+  const files = globSync('**/*.{scss,js}', {
     cwd: componentsRoot,
     posix: true,
   });
+  const styleEntries = globSync('**/style/index.ts', {
+    cwd: componentsRoot,
+    posix: true,
+  }).map((filename) => filename.replace(/\.ts$/, '.scss'));
+  const styleEntrySet = new Set(styleEntries);
+  let compiledStyleEntryCount = 0;
+
+  log?.(
+    `Generating style artifacts for ${styleEntries.length} component style entries and root bundle...`,
+  );
 
   for (const filename of files) {
     const absolute = resolveFromRoot('components', filename);
     await copyInto(resolveFromRoot('es', filename), absolute);
 
-    if (filename.endsWith('index.less')) {
-      const lessContent = await readFile(absolute, 'utf8');
-      const result = await less.render(lessContent, {
-        filename,
-        paths: [path.resolve(componentsRoot, path.dirname(filename)), packageRoot],
-      });
-      const cssFilename = filename.replace('.less', '.css');
-      await writeFile(resolveFromRoot('es', cssFilename), result.css, 'utf8');
+    if (styleEntrySet.has(filename)) {
+      compiledStyleEntryCount += 1;
+      log?.(`Compiling style entry ${compiledStyleEntryCount}/${styleEntries.length}: ${filename}`);
+      const css = await compileStyleEntry(absolute, filename);
+      const cssFilename = filename.replace(/\.scss$/, '.css');
+      await writeFile(resolveFromRoot('es', cssFilename), css, 'utf8');
     }
   }
 
-  const indexLessPath = resolveFromRoot('components', 'index.less');
-  await copyInto(resolveFromRoot('es', 'index.less'), indexLessPath);
+  const indexScssPath = resolveFromRoot('components', 'index.scss');
+  const hasScssIndex = await canAccessFile(indexScssPath);
 
-  const indexLess = await readFile(indexLessPath, 'utf8');
-  const result = await less.render(indexLess, {
-    filename: indexLessPath,
-    paths: [componentsRoot],
-  });
+  if (hasScssIndex) {
+    await copyInto(resolveFromRoot('es', 'index.scss'), indexScssPath);
+  }
+
+  log?.('Compiling root style bundle: components/index.scss');
+  const css = await compileStyleEntry(indexScssPath, 'index.scss');
+  await writeFile(resolveFromRoot('es', 'index.css'), css, 'utf8');
 
   await rm(resolveFromRoot('dist'), { recursive: true, force: true });
   await mkdir(resolveFromRoot('dist'), { recursive: true });
 
-  await writeFile(resolveFromRoot('dist', 'sd.less'), "@import '../es/index.less';\n\n", 'utf8');
-  await writeFile(resolveFromRoot('dist', 'sd.css'), result.css, 'utf8');
+  await writeFile(resolveFromRoot('dist', 'sd.scss'), "@import '../es/index.scss';\n\n", 'utf8');
+  await writeFile(resolveFromRoot('dist', 'sd.css'), css, 'utf8');
 
-  const compress = (new CleanCSS() as any).minify(result.css);
+  const compress = (new CleanCSS() as any).minify(css);
   await writeFile(resolveFromRoot('dist', 'sd.min.css'), compress.styles, 'utf8');
+  log?.('Style artifact generation completed.');
 }
 
 function createStyleArtifactsPlugin(): PluginOption {
   return {
     name: 'sd-style-artifacts',
     async buildStart() {
-      await emitStyleArtifacts();
+      await emitStyleArtifacts((message) => this.info(message));
     },
   };
 }
@@ -263,6 +391,9 @@ function createStyleBuildConfig(): UserConfig {
 
   return {
     mode: 'production',
+    resolve: {
+      alias: styleAliasEntries,
+    },
     build: {
       target: 'es2015',
       outDir: 'es',
@@ -270,7 +401,7 @@ function createStyleBuildConfig(): UserConfig {
       minify: false,
       reportCompressedSize: false,
       rollupOptions: {
-        external: /less$/,
+        external: /scss$/,
         input: rollupInput,
         output: {
           format: 'es',
@@ -290,6 +421,9 @@ function createStyleBuildConfig(): UserConfig {
 function createDevBuildConfig(): UserConfig {
   return {
     mode: 'development',
+    resolve: {
+      alias: styleAliasEntries,
+    },
     build: {
       target: 'es2015',
       outDir: 'es',

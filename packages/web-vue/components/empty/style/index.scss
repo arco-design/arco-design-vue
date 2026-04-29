@@ -1,0 +1,28 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use '@components/empty/style/token.scss' as *;
+
+$empty-prefix-cls: string.unquote('#{theme.$prefix}-empty');
+
+.#{$empty-prefix-cls} {
+  box-sizing: border-box;
+  width: 100%;
+  padding: $empty-spacing-padding 0;
+  text-align: center;
+
+  &-image {
+    margin-bottom: $empty-spacing-image-margin-bottom;
+    color: $empty-color-icon;
+    font-size: $empty-font-size-image;
+    line-height: 1;
+
+    img {
+      height: $empty-size-img-height;
+    }
+  }
+
+  & &-description {
+    color: $empty-color-text;
+    font-size: $empty-font-size-text;
+  }
+}

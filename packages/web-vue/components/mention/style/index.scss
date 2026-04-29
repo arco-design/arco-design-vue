@@ -1,0 +1,20 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use '@components/mention/style/token.scss' as *;
+
+$mention-prefix-cls: string.unquote('#{theme.$prefix}-mention');
+
+.#{$mention-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+
+  &-measure {
+    position: absolute;
+    inset: 0;
+    overflow: auto;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

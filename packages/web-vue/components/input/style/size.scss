@@ -1,0 +1,166 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:math';
+@use 'sass:string';
+$input-prefix-cls: string.unquote('#{theme.$prefix}-input');
+
+@use '@components/input/style/token.scss' as *;
+
+@mixin get-padding($input-size-height, $input-font-size) {
+  /* prettier-ignore */
+  padding-top: (math.round($input-size-height - $input-border-width * 2 - theme.$line-height-base * $input-font-size) * 0.5);
+
+  /* prettier-ignore */
+  padding-bottom: (math.round($input-size-height - $input-border-width * 2 - theme.$line-height-base * $input-font-size) * 0.5);
+}
+
+// 前置后置标签
+@mixin addon-item-style($position) {
+  width: auto;
+  height: 100%;
+  margin-top: -1px;
+  margin-bottom: -1px;
+
+  @if ($position == before) {
+    margin-right: -$input-padding-horizontal;
+    margin-left: -$input-padding-horizontal - 1px;
+  }
+
+  @if ($position == after) {
+    margin-right: -$input-padding-horizontal - 1px;
+    margin-left: -$input-padding-horizontal;
+  }
+}
+
+@mixin addon-border-radius($position) {
+  @if ($position == before) {
+    border-color: transparent;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  @if ($position == after) {
+    border-color: transparent;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+@mixin addon($position, $size-height, $size-font-size) {
+  .#{theme.$prefix}-input {
+    @include addon-item-style($position);
+    @include addon-border-radius($position);
+  }
+
+  // 作为前置/后置标签时，重写一些select的样式
+  .#{theme.$prefix}-select {
+    @include addon-item-style($position);
+
+    .#{theme.$prefix}-select-view {
+      background-color: inherit;
+      border-color: transparent;
+      border-radius: 0;
+    }
+
+    &.#{theme.$prefix}-select-single {
+      .#{theme.$prefix}-select-view {
+        height: 100%;
+      }
+    }
+  }
+}
+
+// 不同尺寸的高度
+@mixin input-size-height($size-height, $size-font-size) {
+  @include get-padding($size-height, $size-font-size);
+
+  font-size: $size-font-size;
+}
+
+.size-height {
+  &-size-mini {
+    /* prettier-ignore */
+    padding-top: (math.round($input-size-mini-height - $input-border-width * 2 - 1.667 * $input-size-mini-font-size) * 0.5);
+
+    /* prettier-ignore */
+    padding-bottom: (math.round($input-size-mini-height - $input-border-width * 2 - 1.667 * $input-size-mini-font-size) * 0.5);
+    font-size: $input-size-mini-font-size;
+    line-height: 1.667;
+  }
+
+  &-size-small {
+    @include input-size-height($input-size-small-height, $input-size-small-font-size);
+  }
+
+  &-size-large {
+    @include input-size-height($input-size-large-height, $input-size-large-font-size);
+  }
+}
+
+// 不同尺寸的带有前置后置标签的高度
+@mixin outer-size-font-size(
+  $size-input-height,
+  $size-font-size,
+  $suffix-icon-size,
+  $addon-icon-size
+) {
+  .#{$input-prefix-cls}-outer {
+    font-size: $size-font-size;
+  }
+
+  .#{$input-prefix-cls}-wrapper {
+    .#{$input-prefix-cls}-prefix,
+    .#{$input-prefix-cls}-suffix {
+      font-size: $size-font-size;
+
+      > svg {
+        font-size: $suffix-icon-size;
+      }
+    }
+  }
+
+  .#{$input-prefix-cls}-prepend,
+  .#{$input-prefix-cls}-append {
+    font-size: $size-font-size;
+
+    > svg {
+      font-size: $addon-icon-size;
+    }
+  }
+
+  .#{$input-prefix-cls}-prepend {
+    @include addon(after, $size-input-height, $size-font-size);
+  }
+
+  .#{$input-prefix-cls}-append {
+    @include addon(before, $size-input-height, $size-font-size);
+  }
+}
+
+@mixin outer-size() {
+  &#{&}-size-mini {
+    @include outer-size-font-size(
+      $input-size-mini-height,
+      $input-size-mini-font-size,
+      $input-size-mini-icon-suffix-size,
+      $input-size-mini-icon-addon-size
+    );
+  }
+
+  &#{&}-size-small {
+    @include outer-size-font-size(
+      $input-size-small-height,
+      $input-size-small-font-size,
+      $input-size-small-icon-suffix-size,
+      $input-size-small-icon-addon-size
+    );
+  }
+
+  &#{&}-size-large {
+    @include outer-size-font-size(
+      $input-size-large-height,
+      $input-size-large-font-size,
+      $input-size-large-icon-suffix-size,
+      $input-size-large-icon-addon-size
+    );
+  }
+}

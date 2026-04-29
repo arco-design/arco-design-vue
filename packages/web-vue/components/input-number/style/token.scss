@@ -1,0 +1,53 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$input-number-border-radius: global.$radius-small;
+
+$input-number-step-layer-border-radius: 1px;
+
+$input-number-size-mini-step-button-width: global.$size-mini;
+
+$input-number-size-small-step-button-width: global.$size-small;
+
+$input-number-size-default-step-button-width: global.$size-default;
+
+$input-number-size-large-step-button-width: global.$size-large;
+
+$input-number-step-button-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$input-number-step-button-color_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$input-number-step-button-color-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$input-number-step-button-color-bg_default: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$input-number-step-button-color-bg_default_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);
+
+$input-number-step-button-color-bg_default_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4')
+);
+
+$input-number-step-button-color-bg_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$input-number-step-button-color-bg_disabled_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$input-number-step-button-color-bg_disabled_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);

@@ -1,0 +1,133 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$notification-wrapper-margin-top: global.$spacing-8;
+
+$notification-wrapper-margin-bottom: global.$spacing-8;
+
+$notification-wrapper-margin-left: global.$spacing-8;
+
+$notification-wrapper-margin-right: global.$spacing-8;
+
+$notification-border-radius: global.$radius-medium;
+
+$notification-margin-bottom: global.$spacing-8;
+
+$notification-width: 300px;
+
+$notification-padding-top: global.$spacing-8;
+
+$notification-padding-bottom: global.$spacing-8;
+
+$notification-padding-left: global.$spacing-8;
+
+$notification-padding-right: global.$spacing-8;
+
+$notification-font-size-icon: 24px;
+
+$notification-font-size-title: global.$font-size-title-1;
+
+$notification-font-size-content: global.$font-size-body-3;
+
+$notification-icon-margin-right: global.$spacing-7;
+
+$notification-title-margin-bottom: global.$spacing-2;
+
+$notification-btn-wrapper-margin-top: global.$spacing-7;
+
+$notification-border-width: 1px;
+
+$notification-border-style: solid;
+
+$notification-color-close-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$notification-close-icon-font-size: 12px;
+
+$notification-close-icon-top: global.$spacing-6;
+
+$notification-close-icon-right: global.$spacing-6;
+
+$notification-normal-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+
+$notification-normal-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$notification-normal-color-text-title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-normal-color-text-content: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-normal-color-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$notification-info-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+
+$notification-info-color-icon: global.$color-primary-6;
+
+$notification-info-color-text-title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-info-color-text-content: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-info-color-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$notification-success-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+
+$notification-success-color-icon: global.$color-success-6;
+
+$notification-success-color-text-title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-success-color-text-content: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-success-color-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$notification-warning-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+
+$notification-warning-color-icon: global.$color-warning-6;
+
+$notification-warning-color-text-title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-warning-color-text-content: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-warning-color-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$notification-error-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+
+$notification-error-color-icon: global.$color-danger-6;
+
+$notification-error-color-text-title: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-error-color-text-content: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$notification-error-color-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);

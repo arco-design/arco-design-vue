@@ -1,0 +1,67 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$collapse-border-width: global.$border-1;
+
+$collapse-border-radius: global.$radius-medium;
+
+$collapse-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$collapse-line-height: 1.5715;
+
+$collapse-title-line-height: 24px;
+
+$collapse-title-border-width: global.$border-1;
+
+$collapse-title-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$collapse-title-font-size: global.$font-size-body-3;
+
+$collapse-title-padding-horizontal: 13px;
+
+$collapse-title-padding-vertical: global.$spacing-4;
+
+$collapse-title-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$collapse-title-color-bg_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$collapse-title-color-bg_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$collapse-title-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$collapse-title-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$collapse-title-font-weight_active: global.$font-weight-500;
+
+$collapse-content-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$collapse-content-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$collapse-content-font-size: global.$font-size-body-3;
+
+$collapse-content-padding-vertical: global.$spacing-4;
+
+$collapse-content-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+
+$collapse-expand-icon-size: 14px;
+
+$collapse-expand-icon-size-bg: global.$size-4;
+
+$collapse-expand-icon-spacing-text: 5px;
+
+$collapse-color-expand-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-7'));
+
+$collapse-item-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-border-2'));
+
+$collapse-item-border-width: global.$border-1;
+
+$collapse-expand-icon-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));

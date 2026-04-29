@@ -17,13 +17,13 @@ description: 从 Naive UI 迁移到 SD Design Vue 的常用组件差异与改造
 
 ### 对应关系
 
-| Naive UI              | SD Design Vue                                   | 说明                             |
-| --------------------- | ----------------------------------------------- | -------------------------------- |
-| `NEllipsis`           | `sd-ellipsis` / `Ellipsis`                      | 常规文本省略组件                 |
-| `NPerformantEllipsis` | `sd-performant-ellipsis` / `PerformantEllipsis` | 大量列表场景下的轻量版本         |
-| `#tooltip`            | `#tooltip`                                      | 保留同名插槽，用于自定义提示内容 |
-| `:tooltip="false"`    | `:tooltip="false"`                              | 关闭浮层提示，退回原生 `title`   |
-| `line-clamp`          | `line-clamp`                                    | 多行省略写法保持一致             |
+| Naive UI | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `NEllipsis` | `sd-ellipsis` / `Ellipsis` | 常规文本省略组件 |
+| `NPerformantEllipsis` | `sd-performant-ellipsis` / `PerformantEllipsis` | 大量列表场景下的轻量版本 |
+| `#tooltip` | `#tooltip` | 保留同名插槽，用于自定义提示内容 |
+| `:tooltip="false"` | `:tooltip="false"` | 关闭浮层提示，退回原生 `title` |
+| `line-clamp` | `line-clamp` | 多行省略写法保持一致 |
 
 ### 主要差异
 
@@ -39,8 +39,7 @@ description: 从 Naive UI 迁移到 SD Design Vue 的常用组件差异与改造
 ```vue
 <template>
   <n-ellipsis style="max-width: 240px;">
-    A design is a plan or specification for the construction of an object or
-    system.
+    A design is a plan or specification for the construction of an object or system.
   </n-ellipsis>
 </template>
 ```
@@ -48,8 +47,7 @@ description: 从 Naive UI 迁移到 SD Design Vue 的常用组件差异与改造
 ```vue
 <template>
   <sd-ellipsis style="max-width: 240px;">
-    A design is a plan or specification for the construction of an object or
-    system.
+    A design is a plan or specification for the construction of an object or system.
   </sd-ellipsis>
 </template>
 ```
@@ -59,8 +57,8 @@ description: 从 Naive UI 迁移到 SD Design Vue 的常用组件差异与改造
 ```vue
 <template>
   <n-ellipsis :line-clamp="2" style="max-width: 320px;">
-    A design is a plan or specification for the construction of an object or
-    system or for the implementation of an activity or process.
+    A design is a plan or specification for the construction of an object or system or for the
+    implementation of an activity or process.
   </n-ellipsis>
 </template>
 ```
@@ -68,8 +66,8 @@ description: 从 Naive UI 迁移到 SD Design Vue 的常用组件差异与改造
 ```vue
 <template>
   <sd-ellipsis :line-clamp="2" style="max-width: 320px;">
-    A design is a plan or specification for the construction of an object or
-    system or for the implementation of an activity or process.
+    A design is a plan or specification for the construction of an object or system or for the
+    implementation of an activity or process.
   </sd-ellipsis>
 </template>
 ```
@@ -112,8 +110,7 @@ description: 从 Naive UI 迁移到 SD Design Vue 的常用组件差异与改造
 ```vue
 <template>
   <n-performant-ellipsis style="max-width: 240px;">
-    In large lists, performant ellipsis avoids eagerly wiring tooltip and resize
-    logic.
+    In large lists, performant ellipsis avoids eagerly wiring tooltip and resize logic.
   </n-performant-ellipsis>
 </template>
 ```
@@ -121,8 +118,7 @@ description: 从 Naive UI 迁移到 SD Design Vue 的常用组件差异与改造
 ```vue
 <template>
   <sd-performant-ellipsis style="max-width: 240px;">
-    In large lists, performant ellipsis avoids eagerly wiring tooltip and resize
-    logic.
+    In large lists, performant ellipsis avoids eagerly wiring tooltip and resize logic.
   </sd-performant-ellipsis>
 </template>
 ```

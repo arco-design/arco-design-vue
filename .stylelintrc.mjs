@@ -31,6 +31,9 @@ export default {
       files: ['**/*.{scss,sass}'],
       customSyntax: 'postcss-scss',
       rules: {
+        'annotation-no-unknown': null,
+        'at-rule-prelude-no-invalid': null,
+        'nesting-selector-no-missing-scoping-root': null,
         'scss/declaration-property-value-no-unknown': true,
       },
     },

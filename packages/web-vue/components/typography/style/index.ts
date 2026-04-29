@@ -1,5 +1,5 @@
-import '../../style/index.less';
+import '../../style/index.scss';
 import '../../input/style';
 import '../../popover/style';
 import '../../tooltip/style';
-import './index.less';
+import './index.scss';

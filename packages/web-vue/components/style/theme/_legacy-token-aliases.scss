@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use './functions.scss' as fn;
+
+$sd-legacy-token-aliases: (
+  'color-primary-6': 'primary-6',
+  'color-success-6': 'success-6',
+  'color-warning-6': 'warning-6',
+  'color-danger-6': 'danger-6',
+  'color-link-6': 'link-6',
+  'color-text-1': 'color-text-1',
+  'border-radius-medium': 'border-radius-medium',
+) !default;
+
+// Migration marker: Prefer /* LESS_JS_EVAL: fn.sd-token-var(<new-token>) */ over legacy aliases.
+@function sd-legacy-token-var($legacy-token, $fallback: null, $prefix: '--') {
+  $resolved-token: map.get($sd-legacy-token-aliases, $legacy-token);
+
+  @if $resolved-token == null {
+    $resolved-token: $legacy-token;
+  }
+
+  @return fn.sd-token-var($resolved-token, $fallback, $prefix);
+}

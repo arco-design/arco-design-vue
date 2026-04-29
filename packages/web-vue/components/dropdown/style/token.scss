@@ -1,0 +1,45 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use '@style/theme/index.scss' as *;
+
+/**********************************************
+ * Popup Box
+ **********************************************/
+$dropdown-max-height: global.$size-50;
+$dropdown-border-radius: global.$radius-medium;
+$dropdown-padding-vertical: global.$spacing-2;
+$dropdown-font-size: global.$font-size-body-3;
+$dropdown-color-bg: var(--color-bg-popup);
+$dropdown-color-border: var(--color-fill-3);
+$dropdown-box-shadow: global.$shadow2-down;
+
+/**********************************************
+ * Popup Options
+ * status: default / disabled / selected / hover
+ **********************************************/
+$dropdown-option-height: global.$size-9;
+$dropdown-option-padding-horizontal: global.$spacing-6;
+$dropdown-option-font-weight_selected: global.$font-weight-500;
+
+$dropdown-option-color-bg_default: global.$color-transparent;
+$dropdown-option-color-bg_hover: var(--color-fill-2);
+$dropdown-option-color-bg_selected: global.$color-transparent;
+$dropdown-option-color-bg_disabled: global.$color-transparent;
+
+$dropdown-option-color-text_default: var(--color-text-1);
+$dropdown-option-color-text_hover: var(--color-text-1);
+$dropdown-option-color-text_selected: var(--color-text-1);
+$dropdown-option-color-text_disabled: var(--color-text-4);
+
+// option group title
+$dropdown-group-title-height: global.$size-5;
+$dropdown-group-title-padding-horizontal: global.$spacing-6;
+$dropdown-group-title-padding-top: global.$spacing-4;
+$dropdown-group-title-margin-top: global.$spacing-4;
+$dropdown-group-title-font-size: global.$font-size-body-1;
+$dropdown-group-title-color-text: var(--color-text-3);
+
+$dropdown-margin-left-suffix-icon: global.$spacing-6;

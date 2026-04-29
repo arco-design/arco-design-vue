@@ -1,0 +1,25 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$tooltip-padding-horizontal: global.$spacing-6;
+
+$tooltip-padding-vertical: global.$spacing-4;
+
+$tooltip-mini-padding-horizontal: global.$spacing-6;
+
+$tooltip-mini-padding-vertical: global.$spacing-2;
+
+$tooltip-mini-font-size: global.$font-size-body-3;
+
+$tooltip-font-size: global.$font-size-body-3;
+
+$tooltip-border-radius: global.$radius-small;
+
+$tooltip-color-text: #fff;
+
+$tooltip-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-tooltip-bg'));

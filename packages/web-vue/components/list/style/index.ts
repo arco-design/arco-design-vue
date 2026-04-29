@@ -1,7 +1,7 @@
-import '../../style/index.less';
+import '../../style/index.scss';
 import '../../pagination/style';
 import '../../spin/style';
 import '../../grid/style';
 import '../../empty/style';
 import '../../scrollbar/style';
-import './index.less';
+import './index.scss';

@@ -27,7 +27,7 @@ declare global {
   }
 }
 
-declare module '*.less' {
+declare module '*.scss' {
   const content: string;
   export default content;
 }
@@ -40,4 +40,3 @@ declare module '*.md' {
 
 declare module 'b-tween';
 declare module 'clean-css';
-declare module 'less';

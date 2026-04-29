@@ -1,0 +1,70 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+
+@forward '@components/input/style/token.scss';
+
+@use '@style/theme/index.scss' as *;
+@use '@components/input/style/token.scss' as *;
+
+$picker-size-mini: global.$size-mini;
+$picker-size-small: global.$size-small;
+$picker-size-default: global.$size-default;
+$picker-size-large: global.$size-large;
+
+$picker-size-mini-font-size-text: global.$font-size-body-1;
+$picker-size-small-font-size-text: global.$font-size-body-3;
+$picker-size-default-font-size-text: global.$font-size-body-3;
+$picker-size-large-font-size-text: global.$font-size-body-3;
+
+$picker-input-border-radius: global.$radius-small;
+
+$picker-color-shadow_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-2')
+);
+$picker-size-shadow_focus: global.$shadow-distance-none;
+$picker-color-shadow_error_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+$picker-size-shadow_error_focus: global.$shadow-distance-none;
+
+$picker-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$picker-color-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$picker-color-bg_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+$picker-color-bg_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$picker-color-bg_error: var(string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1'));
+$picker-color-bg_error_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+$picker-color-bg_error_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$picker-color-border: global.$color-transparent;
+$picker-color-border_hover: global.$color-transparent;
+$picker-color-border_focus: global.$color-primary-6;
+$picker-color-border_disabled: global.$color-transparent;
+$picker-color-border_error: global.$color-transparent;
+$picker-color-border_error_hover: global.$color-transparent;
+$picker-color-border_error_focus: global.$color-danger-6;
+
+$picker-color-placeholder: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+$picker-color-placeholder_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+$picker-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$picker-color-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+$picker-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$picker-color-icon_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+$picker-color-separator: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+$picker-color-separator_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$picker-range-color-bg-input_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+$input-color-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+// not in design lab
+$picker-padding-horizontal: global.$spacing-2; // 4px
+$picker-input-padding-horizontal: $input-padding-horizontal - $picker-padding-horizontal; // 8px

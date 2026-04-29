@@ -1,0 +1,14 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use '@style/theme/index.scss' as *;
+
+$mentions-padding-horizontal: global.$spacing-6;
+
+$mentions-padding-vertical: global.$spacing-2;
+
+$mentions-font-size: global.$font-size-body-3;
+
+$mentions-line-height: $line-height-base;

@@ -1,0 +1,31 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$divider-margin-horizontal: global.$spacing-6;
+
+$divider-margin-vertical: global.$spacing-8;
+
+$divider-margin-vertical_text: global.$spacing-8;
+
+$divider-margin-text: global.$spacing-7;
+
+$divider-position-text-left: global.$spacing-9;
+
+$divider-position-text-right: global.$spacing-9;
+
+$divider-font-size: global.$font-size-body-3;
+
+$divider-font-weight: global.$font-weight-500;
+
+$divider-size: 1px;
+
+$divider-line-style: global.$border-solid;
+
+$divider-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$divider-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));

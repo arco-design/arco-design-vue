@@ -1,0 +1,24 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+/**********************************************
+ * status: disabled / readonly
+ **********************************************/
+$rate-min-height: global.$size-default;
+
+$rate-gap-size: global.$spacing-4;
+
+$rate-font-size: global.$font-size-title-3;
+
+$rate-scale_active: 1.2;
+
+$rate-color-bg_active: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-6')));
+
+$rate-color-bg_default: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$rate-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-5')));

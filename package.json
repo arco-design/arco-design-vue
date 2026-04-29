@@ -59,6 +59,7 @@
     "@commitlint/config-conventional": "^20.5.0",
     "axios": "^1.15.0",
     "confbox": "^0.2.4",
+    "fast-glob": "^3.3.3",
     "git-cz": "^4.9.0",
     "lint-staged": "^16.4.0",
     "npm-check-updates": "^21.0.0",

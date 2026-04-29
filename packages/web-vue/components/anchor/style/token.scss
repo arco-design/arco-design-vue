@@ -1,0 +1,36 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+// Line
+$anchor-width: 150px;
+$anchor-line-width: 2px;
+$anchor-line-slider-height: 12px;
+$anchor-line-margin-right: 12px;
+$anchor-color-bg-line: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$anchor-color-bg-line_active: global.$color-primary-6;
+
+$anchor-border-radius-title-hover: global.$radius-small;
+
+$anchor-item-inner-margin-left: global.$spacing-7;
+
+$anchor-title-padding-horizontal: global.$spacing-4;
+$anchor-title-padding-vertical: global.$spacing-2;
+$anchor-title-margin-bottom: global.$spacing-1;
+
+$anchor-color-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$anchor-color-title_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$anchor-color-title_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$anchor-font-weight-title_hover: global.$font-weight-500;
+$anchor-font-weight-title_active: global.$font-weight-500;
+$anchor-color-bg-title_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$anchor-font-size-title: 14px;
+
+// Lineless
+$anchor-lineless-color-title_active: global.$color-primary-6;
+$anchor-lineless-bg-title_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$anchor-lineless-font-weight-title_active: global.$font-weight-500;

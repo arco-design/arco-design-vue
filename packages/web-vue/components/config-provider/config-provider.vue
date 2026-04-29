@@ -4,11 +4,25 @@
 
 <script lang="ts">
   import type { PropType } from 'vue';
-  import { defineComponent, provide, reactive, toRefs, getCurrentInstance } from 'vue';
+  import {
+    defineComponent,
+    provide,
+    reactive,
+    toRefs,
+    getCurrentInstance,
+    watch,
+    onBeforeUnmount,
+  } from 'vue';
 
   import { Size } from '../_utils/constant';
   import { SDLang } from '../locale/interface';
   import { configProviderInjectionKey } from './context';
+  import {
+    SDThemeConfig,
+    normalizeTheme,
+    applyThemeCSSVariables,
+    clearThemeCSSVariables,
+  } from './theme';
 
   export default defineComponent({
     name: 'ConfigProvider',
@@ -80,6 +94,13 @@
         type: Boolean,
         default: false,
       },
+      /**
+       * @zh 主题配置对象
+       * @en Runtime theme configuration object
+       */
+      theme: {
+        type: Object as PropType<SDThemeConfig>,
+      },
     },
     /**
      * @zh 自定义空状态元素
@@ -107,6 +128,44 @@
         scrollToClose,
         exchangeTime,
         rtl,
+        theme: normalizeTheme(props.theme),
+      });
+
+      let appliedThemeKeys = new Set<string>();
+      watch(
+        () => props.theme,
+        (themeConfig) => {
+          const nextTheme = normalizeTheme(themeConfig);
+          config.theme = nextTheme;
+
+          if (typeof document === 'undefined') {
+            return;
+          }
+
+          const target = document.body || document.documentElement;
+          if (!target) {
+            return;
+          }
+
+          appliedThemeKeys = applyThemeCSSVariables(target, nextTheme, appliedThemeKeys);
+        },
+        {
+          immediate: true,
+          deep: true,
+        },
+      );
+
+      onBeforeUnmount(() => {
+        if (typeof document === 'undefined') {
+          return;
+        }
+
+        const target = document.body || document.documentElement;
+        if (!target) {
+          return;
+        }
+
+        clearThemeCSSVariables(target, appliedThemeKeys);
       });
 
       if (props.global) {

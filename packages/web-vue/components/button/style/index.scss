@@ -1,0 +1,600 @@
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use 'sass:string';
+@use 'sass:map';
+@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use '@components/button/style/token.scss' as *;
+
+$btn-prefix-cls: string.unquote('#{theme.$prefix}-btn');
+
+$__less-vars: (
+  'btn-box-shadow-radius': $btn-box-shadow-radius,
+  'btn-color-box-shadow_danger': $btn-color-box-shadow_danger,
+  'btn-color-box-shadow_success': $btn-color-box-shadow_success,
+  'btn-color-box-shadow_warning': $btn-color-box-shadow_warning,
+  'btn-dashed-color-box-shadow': $btn-dashed-color-box-shadow,
+  'btn-dashed-color-bg': $btn-dashed-color-bg,
+  'btn-dashed-color-bg_active': $btn-dashed-color-bg_active,
+  'btn-dashed-color-bg_danger': $btn-dashed-color-bg_danger,
+  'btn-dashed-color-bg_danger_active': $btn-dashed-color-bg_danger_active,
+  'btn-dashed-color-bg_danger_disabled': $btn-dashed-color-bg_danger_disabled,
+  'btn-dashed-color-bg_danger_hover': $btn-dashed-color-bg_danger_hover,
+  'btn-dashed-color-bg_disabled': $btn-dashed-color-bg_disabled,
+  'btn-dashed-color-bg_hover': $btn-dashed-color-bg_hover,
+  'btn-dashed-color-bg_success': $btn-dashed-color-bg_success,
+  'btn-dashed-color-bg_success_active': $btn-dashed-color-bg_success_active,
+  'btn-dashed-color-bg_success_disabled': $btn-dashed-color-bg_success_disabled,
+  'btn-dashed-color-bg_success_hover': $btn-dashed-color-bg_success_hover,
+  'btn-dashed-color-bg_warning': $btn-dashed-color-bg_warning,
+  'btn-dashed-color-bg_warning_active': $btn-dashed-color-bg_warning_active,
+  'btn-dashed-color-bg_warning_disabled': $btn-dashed-color-bg_warning_disabled,
+  'btn-dashed-color-bg_warning_hover': $btn-dashed-color-bg_warning_hover,
+  'btn-dashed-color-border': $btn-dashed-color-border,
+  'btn-dashed-color-border_active': $btn-dashed-color-border_active,
+  'btn-dashed-color-border_danger': $btn-dashed-color-border_danger,
+  'btn-dashed-color-border_danger_active': $btn-dashed-color-border_danger_active,
+  'btn-dashed-color-border_danger_disabled': $btn-dashed-color-border_danger_disabled,
+  'btn-dashed-color-border_danger_hover': $btn-dashed-color-border_danger_hover,
+  'btn-dashed-color-border_disabled': $btn-dashed-color-border_disabled,
+  'btn-dashed-color-border_hover': $btn-dashed-color-border_hover,
+  'btn-dashed-color-border_success': $btn-dashed-color-border_success,
+  'btn-dashed-color-border_success_active': $btn-dashed-color-border_success_active,
+  'btn-dashed-color-border_success_disabled': $btn-dashed-color-border_success_disabled,
+  'btn-dashed-color-border_success_hover': $btn-dashed-color-border_success_hover,
+  'btn-dashed-color-border_warning': $btn-dashed-color-border_warning,
+  'btn-dashed-color-border_warning_active': $btn-dashed-color-border_warning_active,
+  'btn-dashed-color-border_warning_disabled': $btn-dashed-color-border_warning_disabled,
+  'btn-dashed-color-border_warning_hover': $btn-dashed-color-border_warning_hover,
+  'btn-dashed-color-text': $btn-dashed-color-text,
+  'btn-dashed-color-text_active': $btn-dashed-color-text_active,
+  'btn-dashed-color-text_danger': $btn-dashed-color-text_danger,
+  'btn-dashed-color-text_danger_active': $btn-dashed-color-text_danger_active,
+  'btn-dashed-color-text_danger_disabled': $btn-dashed-color-text_danger_disabled,
+  'btn-dashed-color-text_danger_hover': $btn-dashed-color-text_danger_hover,
+  'btn-dashed-color-text_disabled': $btn-dashed-color-text_disabled,
+  'btn-dashed-color-text_hover': $btn-dashed-color-text_hover,
+  'btn-dashed-color-text_success': $btn-dashed-color-text_success,
+  'btn-dashed-color-text_success_active': $btn-dashed-color-text_success_active,
+  'btn-dashed-color-text_success_disabled': $btn-dashed-color-text_success_disabled,
+  'btn-dashed-color-text_success_hover': $btn-dashed-color-text_success_hover,
+  'btn-dashed-color-text_warning': $btn-dashed-color-text_warning,
+  'btn-dashed-color-text_warning_active': $btn-dashed-color-text_warning_active,
+  'btn-dashed-color-text_warning_disabled': $btn-dashed-color-text_warning_disabled,
+  'btn-dashed-color-text_warning_hover': $btn-dashed-color-text_warning_hover,
+  'btn-dashed-border-style': $btn-dashed-border-style,
+  'btn-font-weight': $btn-font-weight,
+  'btn-outline-color-bg': $btn-outline-color-bg,
+  'btn-outline-color-box-shadow': $btn-outline-color-box-shadow,
+  'btn-outline-color-bg_active': $btn-outline-color-bg_active,
+  'btn-outline-color-bg_danger': $btn-outline-color-bg_danger,
+  'btn-outline-color-bg_danger_active': $btn-outline-color-bg_danger_active,
+  'btn-outline-color-bg_danger_disabled': $btn-outline-color-bg_danger_disabled,
+  'btn-outline-color-bg_danger_hover': $btn-outline-color-bg_danger_hover,
+  'btn-outline-color-bg_disabled': $btn-outline-color-bg_disabled,
+  'btn-outline-color-bg_hover': $btn-outline-color-bg_hover,
+  'btn-outline-color-bg_success': $btn-outline-color-bg_success,
+  'btn-outline-color-bg_success_active': $btn-outline-color-bg_success_active,
+  'btn-outline-color-bg_success_disabled': $btn-outline-color-bg_success_disabled,
+  'btn-outline-color-bg_success_hover': $btn-outline-color-bg_success_hover,
+  'btn-outline-color-bg_warning': $btn-outline-color-bg_warning,
+  'btn-outline-color-bg_warning_active': $btn-outline-color-bg_warning_active,
+  'btn-outline-color-bg_warning_disabled': $btn-outline-color-bg_warning_disabled,
+  'btn-outline-color-bg_warning_hover': $btn-outline-color-bg_warning_hover,
+  'btn-outline-color-border': $btn-outline-color-border,
+  'btn-outline-color-border_active': $btn-outline-color-border_active,
+  'btn-outline-color-border_danger': $btn-outline-color-border_danger,
+  'btn-outline-color-border_danger_active': $btn-outline-color-border_danger_active,
+  'btn-outline-color-border_danger_disabled': $btn-outline-color-border_danger_disabled,
+  'btn-outline-color-border_danger_hover': $btn-outline-color-border_danger_hover,
+  'btn-outline-color-border_disabled': $btn-outline-color-border_disabled,
+  'btn-outline-color-border_hover': $btn-outline-color-border_hover,
+  'btn-outline-color-border_success': $btn-outline-color-border_success,
+  'btn-outline-color-border_success_active': $btn-outline-color-border_success_active,
+  'btn-outline-color-border_success_disabled': $btn-outline-color-border_success_disabled,
+  'btn-outline-color-border_success_hover': $btn-outline-color-border_success_hover,
+  'btn-outline-color-border_warning': $btn-outline-color-border_warning,
+  'btn-outline-color-border_warning_active': $btn-outline-color-border_warning_active,
+  'btn-outline-color-border_warning_disabled': $btn-outline-color-border_warning_disabled,
+  'btn-outline-color-border_warning_hover': $btn-outline-color-border_warning_hover,
+  'btn-outline-color-text': $btn-outline-color-text,
+  'btn-outline-color-text_active': $btn-outline-color-text_active,
+  'btn-outline-color-text_danger': $btn-outline-color-text_danger,
+  'btn-outline-color-text_danger_active': $btn-outline-color-text_danger_active,
+  'btn-outline-color-text_danger_disabled': $btn-outline-color-text_danger_disabled,
+  'btn-outline-color-text_danger_hover': $btn-outline-color-text_danger_hover,
+  'btn-outline-color-text_disabled': $btn-outline-color-text_disabled,
+  'btn-outline-color-text_hover': $btn-outline-color-text_hover,
+  'btn-outline-color-text_success': $btn-outline-color-text_success,
+  'btn-outline-color-text_success_active': $btn-outline-color-text_success_active,
+  'btn-outline-color-text_success_disabled': $btn-outline-color-text_success_disabled,
+  'btn-outline-color-text_success_hover': $btn-outline-color-text_success_hover,
+  'btn-outline-color-text_warning': $btn-outline-color-text_warning,
+  'btn-outline-color-text_warning_active': $btn-outline-color-text_warning_active,
+  'btn-outline-color-text_warning_disabled': $btn-outline-color-text_warning_disabled,
+  'btn-outline-color-text_warning_hover': $btn-outline-color-text_warning_hover,
+  'btn-outline-border-style': $btn-outline-border-style,
+  'btn-primary-color-bg': $btn-primary-color-bg,
+  'btn-primary-color-box-shadow': $btn-primary-color-box-shadow,
+  'btn-primary-color-bg_active': $btn-primary-color-bg_active,
+  'btn-primary-color-bg_danger': $btn-primary-color-bg_danger,
+  'btn-primary-color-bg_danger_active': $btn-primary-color-bg_danger_active,
+  'btn-primary-color-bg_danger_disabled': $btn-primary-color-bg_danger_disabled,
+  'btn-primary-color-bg_danger_hover': $btn-primary-color-bg_danger_hover,
+  'btn-primary-color-bg_disabled': $btn-primary-color-bg_disabled,
+  'btn-primary-color-bg_hover': $btn-primary-color-bg_hover,
+  'btn-primary-color-bg_success': $btn-primary-color-bg_success,
+  'btn-primary-color-bg_success_active': $btn-primary-color-bg_success_active,
+  'btn-primary-color-bg_success_disabled': $btn-primary-color-bg_success_disabled,
+  'btn-primary-color-bg_success_hover': $btn-primary-color-bg_success_hover,
+  'btn-primary-color-bg_warning': $btn-primary-color-bg_warning,
+  'btn-primary-color-bg_warning_active': $btn-primary-color-bg_warning_active,
+  'btn-primary-color-bg_warning_disabled': $btn-primary-color-bg_warning_disabled,
+  'btn-primary-color-bg_warning_hover': $btn-primary-color-bg_warning_hover,
+  'btn-primary-color-border': $btn-primary-color-border,
+  'btn-primary-color-border_active': $btn-primary-color-border_active,
+  'btn-primary-color-border_danger': $btn-primary-color-border_danger,
+  'btn-primary-color-border_danger_active': $btn-primary-color-border_danger_active,
+  'btn-primary-color-border_danger_disabled': $btn-primary-color-border_danger_disabled,
+  'btn-primary-color-border_danger_hover': $btn-primary-color-border_danger_hover,
+  'btn-primary-color-border_disabled': $btn-primary-color-border_disabled,
+  'btn-primary-color-border_hover': $btn-primary-color-border_hover,
+  'btn-primary-color-border_success': $btn-primary-color-border_success,
+  'btn-primary-color-border_success_active': $btn-primary-color-border_success_active,
+  'btn-primary-color-border_success_disabled': $btn-primary-color-border_success_disabled,
+  'btn-primary-color-border_success_hover': $btn-primary-color-border_success_hover,
+  'btn-primary-color-border_warning': $btn-primary-color-border_warning,
+  'btn-primary-color-border_warning_active': $btn-primary-color-border_warning_active,
+  'btn-primary-color-border_warning_disabled': $btn-primary-color-border_warning_disabled,
+  'btn-primary-color-border_warning_hover': $btn-primary-color-border_warning_hover,
+  'btn-primary-color-text': $btn-primary-color-text,
+  'btn-primary-color-text_active': $btn-primary-color-text_active,
+  'btn-primary-color-text_danger': $btn-primary-color-text_danger,
+  'btn-primary-color-text_danger_active': $btn-primary-color-text_danger_active,
+  'btn-primary-color-text_danger_disabled': $btn-primary-color-text_danger_disabled,
+  'btn-primary-color-text_danger_hover': $btn-primary-color-text_danger_hover,
+  'btn-primary-color-text_disabled': $btn-primary-color-text_disabled,
+  'btn-primary-color-text_hover': $btn-primary-color-text_hover,
+  'btn-primary-color-text_success': $btn-primary-color-text_success,
+  'btn-primary-color-text_success_active': $btn-primary-color-text_success_active,
+  'btn-primary-color-text_success_disabled': $btn-primary-color-text_success_disabled,
+  'btn-primary-color-text_success_hover': $btn-primary-color-text_success_hover,
+  'btn-primary-color-text_warning': $btn-primary-color-text_warning,
+  'btn-primary-color-text_warning_active': $btn-primary-color-text_warning_active,
+  'btn-primary-color-text_warning_disabled': $btn-primary-color-text_warning_disabled,
+  'btn-primary-color-text_warning_hover': $btn-primary-color-text_warning_hover,
+  'btn-primary-border-style': $btn-primary-border-style,
+  'btn-secondary-color-bg': $btn-secondary-color-bg,
+  'btn-secondary-color-box-shadow': $btn-secondary-color-box-shadow,
+  'btn-secondary-color-bg_active': $btn-secondary-color-bg_active,
+  'btn-secondary-color-bg_danger': $btn-secondary-color-bg_danger,
+  'btn-secondary-color-bg_danger_active': $btn-secondary-color-bg_danger_active,
+  'btn-secondary-color-bg_danger_disabled': $btn-secondary-color-bg_danger_disabled,
+  'btn-secondary-color-bg_danger_hover': $btn-secondary-color-bg_danger_hover,
+  'btn-secondary-color-bg_disabled': $btn-secondary-color-bg_disabled,
+  'btn-secondary-color-bg_hover': $btn-secondary-color-bg_hover,
+  'btn-secondary-color-bg_success': $btn-secondary-color-bg_success,
+  'btn-secondary-color-bg_success_active': $btn-secondary-color-bg_success_active,
+  'btn-secondary-color-bg_success_disabled': $btn-secondary-color-bg_success_disabled,
+  'btn-secondary-color-bg_success_hover': $btn-secondary-color-bg_success_hover,
+  'btn-secondary-color-bg_warning': $btn-secondary-color-bg_warning,
+  'btn-secondary-color-bg_warning_active': $btn-secondary-color-bg_warning_active,
+  'btn-secondary-color-bg_warning_disabled': $btn-secondary-color-bg_warning_disabled,
+  'btn-secondary-color-bg_warning_hover': $btn-secondary-color-bg_warning_hover,
+  'btn-secondary-color-border': $btn-secondary-color-border,
+  'btn-secondary-color-border_active': $btn-secondary-color-border_active,
+  'btn-secondary-color-border_danger': $btn-secondary-color-border_danger,
+  'btn-secondary-color-border_danger_active': $btn-secondary-color-border_danger_active,
+  'btn-secondary-color-border_danger_disabled': $btn-secondary-color-border_danger_disabled,
+  'btn-secondary-color-border_danger_hover': $btn-secondary-color-border_danger_hover,
+  'btn-secondary-color-border_disabled': $btn-secondary-color-border_disabled,
+  'btn-secondary-color-border_hover': $btn-secondary-color-border_hover,
+  'btn-secondary-color-border_success': $btn-secondary-color-border_success,
+  'btn-secondary-color-border_success_active': $btn-secondary-color-border_success_active,
+  'btn-secondary-color-border_success_disabled': $btn-secondary-color-border_success_disabled,
+  'btn-secondary-color-border_success_hover': $btn-secondary-color-border_success_hover,
+  'btn-secondary-color-border_warning': $btn-secondary-color-border_warning,
+  'btn-secondary-color-border_warning_active': $btn-secondary-color-border_warning_active,
+  'btn-secondary-color-border_warning_disabled': $btn-secondary-color-border_warning_disabled,
+  'btn-secondary-color-border_warning_hover': $btn-secondary-color-border_warning_hover,
+  'btn-secondary-color-text': $btn-secondary-color-text,
+  'btn-secondary-color-text_active': $btn-secondary-color-text_active,
+  'btn-secondary-color-text_danger': $btn-secondary-color-text_danger,
+  'btn-secondary-color-text_danger_active': $btn-secondary-color-text_danger_active,
+  'btn-secondary-color-text_danger_disabled': $btn-secondary-color-text_danger_disabled,
+  'btn-secondary-color-text_danger_hover': $btn-secondary-color-text_danger_hover,
+  'btn-secondary-color-text_disabled': $btn-secondary-color-text_disabled,
+  'btn-secondary-color-text_hover': $btn-secondary-color-text_hover,
+  'btn-secondary-color-text_success': $btn-secondary-color-text_success,
+  'btn-secondary-color-text_success_active': $btn-secondary-color-text_success_active,
+  'btn-secondary-color-text_success_disabled': $btn-secondary-color-text_success_disabled,
+  'btn-secondary-color-text_success_hover': $btn-secondary-color-text_success_hover,
+  'btn-secondary-color-text_warning': $btn-secondary-color-text_warning,
+  'btn-secondary-color-text_warning_active': $btn-secondary-color-text_warning_active,
+  'btn-secondary-color-text_warning_disabled': $btn-secondary-color-text_warning_disabled,
+  'btn-secondary-color-text_warning_hover': $btn-secondary-color-text_warning_hover,
+  'btn-secondary-border-style': $btn-secondary-border-style,
+  'btn-size-mini-height': $btn-size-mini-height,
+  'btn-size-mini-padding-horizontal': $btn-size-mini-padding-horizontal,
+  'btn-size-mini-font-size': $btn-size-mini-font-size,
+  'btn-size-mini-icon-spacing': $btn-size-mini-icon-spacing,
+  'btn-size-mini-radius': $btn-size-mini-radius,
+  'btn-size-mini-icon-vertical-align': $btn-size-mini-icon-vertical-align,
+  'btn-size-small-height': $btn-size-small-height,
+  'btn-size-small-padding-horizontal': $btn-size-small-padding-horizontal,
+  'btn-size-small-font-size': $btn-size-small-font-size,
+  'btn-size-small-icon-spacing': $btn-size-small-icon-spacing,
+  'btn-size-small-radius': $btn-size-small-radius,
+  'btn-size-small-icon-vertical-align': $btn-size-small-icon-vertical-align,
+  'btn-size-medium-height': $btn-size-medium-height,
+  'btn-size-medium-padding-horizontal': $btn-size-medium-padding-horizontal,
+  'btn-size-medium-font-size': $btn-size-medium-font-size,
+  'btn-size-medium-icon-spacing': $btn-size-medium-icon-spacing,
+  'btn-size-medium-radius': $btn-size-medium-radius,
+  'btn-size-medium-icon-vertical-align': $btn-size-medium-icon-vertical-align,
+  'btn-size-large-height': $btn-size-large-height,
+  'btn-size-large-padding-horizontal': $btn-size-large-padding-horizontal,
+  'btn-size-large-font-size': $btn-size-large-font-size,
+  'btn-size-large-icon-spacing': $btn-size-large-icon-spacing,
+  'btn-size-large-radius': $btn-size-large-radius,
+  'btn-size-large-icon-vertical-align': $btn-size-large-icon-vertical-align,
+  'btn-size-default-border-width': $btn-size-default-border-width,
+  'btn-text-color-bg': $btn-text-color-bg,
+  'btn-text-color-box-shadow': $btn-text-color-box-shadow,
+  'btn-text-color-bg_active': $btn-text-color-bg_active,
+  'btn-text-color-bg_danger': $btn-text-color-bg_danger,
+  'btn-text-color-bg_danger_active': $btn-text-color-bg_danger_active,
+  'btn-text-color-bg_danger_disabled': $btn-text-color-bg_danger_disabled,
+  'btn-text-color-bg_danger_hover': $btn-text-color-bg_danger_hover,
+  'btn-text-color-bg_disabled': $btn-text-color-bg_disabled,
+  'btn-text-color-bg_hover': $btn-text-color-bg_hover,
+  'btn-text-color-bg_success': $btn-text-color-bg_success,
+  'btn-text-color-bg_success_active': $btn-text-color-bg_success_active,
+  'btn-text-color-bg_success_disabled': $btn-text-color-bg_success_disabled,
+  'btn-text-color-bg_success_hover': $btn-text-color-bg_success_hover,
+  'btn-text-color-bg_warning': $btn-text-color-bg_warning,
+  'btn-text-color-bg_warning_active': $btn-text-color-bg_warning_active,
+  'btn-text-color-bg_warning_disabled': $btn-text-color-bg_warning_disabled,
+  'btn-text-color-bg_warning_hover': $btn-text-color-bg_warning_hover,
+  'btn-text-color-border': $btn-text-color-border,
+  'btn-text-color-border_active': $btn-text-color-border_active,
+  'btn-text-color-border_danger': $btn-text-color-border_danger,
+  'btn-text-color-border_danger_active': $btn-text-color-border_danger_active,
+  'btn-text-color-border_danger_disabled': $btn-text-color-border_danger_disabled,
+  'btn-text-color-border_danger_hover': $btn-text-color-border_danger_hover,
+  'btn-text-color-border_disabled': $btn-text-color-border_disabled,
+  'btn-text-color-border_hover': $btn-text-color-border_hover,
+  'btn-text-color-border_success': $btn-text-color-border_success,
+  'btn-text-color-border_success_active': $btn-text-color-border_success_active,
+  'btn-text-color-border_success_disabled': $btn-text-color-border_success_disabled,
+  'btn-text-color-border_success_hover': $btn-text-color-border_success_hover,
+  'btn-text-color-border_warning': $btn-text-color-border_warning,
+  'btn-text-color-border_warning_active': $btn-text-color-border_warning_active,
+  'btn-text-color-border_warning_disabled': $btn-text-color-border_warning_disabled,
+  'btn-text-color-border_warning_hover': $btn-text-color-border_warning_hover,
+  'btn-text-color-text': $btn-text-color-text,
+  'btn-text-color-text_active': $btn-text-color-text_active,
+  'btn-text-color-text_danger': $btn-text-color-text_danger,
+  'btn-text-color-text_danger_active': $btn-text-color-text_danger_active,
+  'btn-text-color-text_danger_disabled': $btn-text-color-text_danger_disabled,
+  'btn-text-color-text_danger_hover': $btn-text-color-text_danger_hover,
+  'btn-text-color-text_disabled': $btn-text-color-text_disabled,
+  'btn-text-color-text_hover': $btn-text-color-text_hover,
+  'btn-text-color-text_success': $btn-text-color-text_success,
+  'btn-text-color-text_success_active': $btn-text-color-text_success_active,
+  'btn-text-color-text_success_disabled': $btn-text-color-text_success_disabled,
+  'btn-text-color-text_success_hover': $btn-text-color-text_success_hover,
+  'btn-text-color-text_warning': $btn-text-color-text_warning,
+  'btn-text-color-text_warning_active': $btn-text-color-text_warning_active,
+  'btn-text-color-text_warning_disabled': $btn-text-color-text_warning_disabled,
+  'btn-text-color-text_warning_hover': $btn-text-color-text_warning_hover,
+  'btn-text-border-style': $btn-text-border-style,
+  'line-height-base': theme.$line-height-base,
+  'prefix': theme.$prefix,
+  'radius-circle': global.$radius-circle,
+  'size-mini': $btn-size-mini-height,
+  'size-small': $btn-size-small-height,
+  'size-medium': $btn-size-medium-height,
+  'size-large': $btn-size-large-height,
+  'sd-cssvars-prefix': theme.$sd-cssvars-prefix,
+  'transition-duration-1': theme.$transition-duration-1,
+  'transition-timing-function-linear': theme.$transition-timing-function-linear,
+);
+
+@function less-var($name, $fallback: null) {
+  @return legacyLessVar.get($__less-vars, $name, $fallback);
+}
+
+.#{$btn-prefix-cls} {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-weight: $btn-font-weight;
+  line-height: theme.$line-height-base;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  transition: all theme.$transition-duration-1 theme.$transition-timing-function-linear;
+  appearance: none;
+  user-select: none;
+
+  > a:only-child {
+    color: currentcolor;
+  }
+
+  &:active {
+    transition: none;
+  }
+
+  &-long {
+    display: flex;
+    width: 100%;
+  }
+
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    &:not([href]) {
+      color: var(string.unquote('#{theme.$sd-cssvars-prefix}-color-text-4'));
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.#{$btn-prefix-cls}-only-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: top;
+    }
+  }
+
+  &.#{$btn-prefix-cls}-only-icon .#{$btn-prefix-cls}-icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-loading {
+    position: relative;
+    cursor: default;
+
+    &::before {
+      position: absolute;
+      inset: -1px;
+      z-index: 1;
+      display: block;
+      background: #fff;
+      border-radius: inherit;
+      opacity: 0.4;
+      transition: opacity theme.$transition-duration-1 theme.$transition-timing-function-linear;
+      content: '';
+      pointer-events: none;
+    }
+  }
+
+  &-loading-fixed-width {
+    transition: none;
+  }
+
+  &-two-chinese-chars > *:not(svg) {
+    margin-right: -0.3em;
+    letter-spacing: 0.3em;
+  }
+}
+
+@mixin btn-type-normal($type) {
+  color: less-var('btn-#{$type}-color-text');
+  background-color: less-var('btn-#{$type}-color-bg');
+  border: $btn-size-default-border-width less-var('btn-#{$type}-border-style')
+    less-var('btn-#{$type}-color-border');
+}
+
+@mixin btn-type($type) {
+  .#{$btn-prefix-cls}-#{$type},
+  .#{$btn-prefix-cls}-#{$type}[type='button'],
+  .#{$btn-prefix-cls}-#{$type}[type='submit'] {
+    @include btn-type-normal($type);
+
+    &:hover {
+      color: less-var('btn-#{$type}-color-text_hover');
+      background-color: less-var('btn-#{$type}-color-bg_hover');
+      border-color: less-var('btn-#{$type}-color-border_hover');
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 $btn-box-shadow-radius less-var('btn-#{$type}-color-box-shadow');
+    }
+
+    &:active {
+      color: less-var('btn-#{$type}-color-text_active');
+      background-color: less-var('btn-#{$type}-color-bg_active');
+      border-color: less-var('btn-#{$type}-color-border_active');
+    }
+
+    &.#{$btn-prefix-cls}-loading {
+      @include btn-type-normal($type);
+    }
+
+    &.#{$btn-prefix-cls}-disabled {
+      color: less-var('btn-#{$type}-color-text_disabled');
+      background-color: less-var('btn-#{$type}-color-bg_disabled');
+      border: $btn-size-default-border-width less-var('btn-#{$type}-border-style')
+        less-var('btn-#{$type}-color-border_disabled');
+      cursor: not-allowed;
+    }
+  }
+}
+
+@mixin btn-status-normal($type, $status) {
+  color: less-var('btn-#{$type}-color-text_#{$status}');
+  background-color: less-var('btn-#{$type}-color-bg_#{$status}');
+  border-color: less-var('btn-#{$type}-color-border_#{$status}');
+}
+
+@mixin btn-status($type, $status) {
+  .#{$btn-prefix-cls}-#{$type}.#{$btn-prefix-cls}-status-#{$status} {
+    @include btn-status-normal($type, $status);
+
+    &:hover {
+      color: less-var('btn-#{$type}-color-text_#{$status}_hover');
+      background-color: less-var('btn-#{$type}-color-bg_#{$status}_hover');
+      border-color: less-var('btn-#{$type}-color-border_#{$status}_hover');
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 $btn-box-shadow-radius less-var('btn-color-box-shadow_#{$status}');
+    }
+
+    &:active {
+      color: less-var('btn-#{$type}-color-text_#{$status}_active');
+      background-color: less-var('btn-#{$type}-color-bg_#{$status}_active');
+      border-color: less-var('btn-#{$type}-color-border_#{$status}_active');
+    }
+
+    &.#{$btn-prefix-cls}-loading {
+      @include btn-status-normal($type, $status);
+    }
+
+    &.#{$btn-prefix-cls}-disabled {
+      color: less-var('btn-#{$type}-color-text_#{$status}_disabled');
+      background-color: less-var('btn-#{$type}-color-bg_#{$status}_disabled');
+      border: $btn-size-default-border-width less-var('btn-#{$type}-border-style')
+        less-var('btn-#{$type}-color-border_#{$status}_disabled');
+    }
+  }
+}
+
+@mixin btn-size($size) {
+  $size-type: string.unquote('size-#{$size}');
+  $size-height: string.unquote('btn-size-#{$size}-height');
+  $bsp: string.unquote('btn-#{$size-type}-padding-horizontal');
+  $bsf: string.unquote('btn-#{$size-type}-font-size');
+  $bss: string.unquote('btn-#{$size-type}-icon-spacing');
+
+  .#{$btn-prefix-cls}-#{$size-type} {
+    height: less-var($size-height);
+    padding: 0 less-var($bsp);
+    font-size: less-var($bsf);
+    border-radius: less-var('btn-#{$size-type}-radius');
+
+    &:not(.#{$btn-prefix-cls}-only-icon) .#{$btn-prefix-cls}-icon {
+      margin-right: less-var('btn-#{$size-type}-icon-spacing');
+    }
+
+    svg {
+      vertical-align: less-var('btn-#{$size-type}-icon-vertical-align');
+    }
+  }
+
+  .#{$btn-prefix-cls}-#{$size-type}.#{$btn-prefix-cls}-loading-fixed-width.#{$btn-prefix-cls}-loading {
+    padding-right: less-var($bsp) - ((less-var($bsf) + less-var($bss)) * 0.5);
+    padding-left: less-var($bsp) - ((less-var($bsf) + less-var($bss)) * 0.5);
+  }
+
+  .#{$btn-prefix-cls}-#{$size-type}.#{$btn-prefix-cls}-only-icon {
+    width: less-var($size-type);
+    height: less-var($size-type);
+    padding: 0;
+  }
+
+  .#{$btn-prefix-cls}-#{$size-type}.#{$btn-prefix-cls}-shape-circle {
+    width: less-var($size-type);
+    height: less-var($size-type);
+    padding: 0;
+    text-align: center;
+    border-radius: global.$radius-circle;
+  }
+
+  .#{$btn-prefix-cls}-#{$size-type}.#{$btn-prefix-cls}-shape-round {
+    border-radius: calc(less-var($size-type) * 0.5);
+  }
+}
+
+@include btn-type(outline);
+@include btn-status(outline, warning);
+@include btn-status(outline, danger);
+@include btn-status(outline, success);
+@include btn-type(primary);
+@include btn-status(primary, warning);
+@include btn-status(primary, danger);
+@include btn-status(primary, success);
+@include btn-type(secondary);
+@include btn-status(secondary, warning);
+@include btn-status(secondary, danger);
+@include btn-status(secondary, success);
+@include btn-type(dashed);
+@include btn-status(dashed, warning);
+@include btn-status(dashed, danger);
+@include btn-status(dashed, success);
+@include btn-type(text);
+@include btn-status(text, warning);
+@include btn-status(text, danger);
+@include btn-status(text, success);
+@include btn-size(mini);
+@include btn-size(small);
+@include btn-size(medium);
+@include btn-size(large);
+
+// 按钮组样式
+.#{$btn-prefix-cls}-group {
+  display: inline-flex;
+  align-items: center;
+
+  .#{$btn-prefix-cls}-outline:not(:first-child),
+  .#{$btn-prefix-cls}-dashed:not(:first-child) {
+    margin-left: -1px;
+  }
+
+  .#{$btn-prefix-cls}-primary:not(:last-child) {
+    border-right: 1px solid $btn-primary-color-bg_hover;
+  }
+
+  .#{$btn-prefix-cls}-secondary:not(:last-child) {
+    border-right: 1px solid $btn-secondary-color-bg_hover;
+  }
+
+  .#{$btn-prefix-cls}-status-warning:not(:last-child) {
+    border-right: 1px solid $btn-primary-color-bg_warning_hover;
+  }
+
+  .#{$btn-prefix-cls}-status-danger:not(:last-child) {
+    border-right: 1px solid $btn-primary-color-bg_danger_hover;
+  }
+
+  .#{$btn-prefix-cls}-status-success:not(:last-child) {
+    border-right: 1px solid $btn-primary-color-bg_success_hover;
+  }
+
+  .#{$btn-prefix-cls}-outline,
+  .#{$btn-prefix-cls}-dashed {
+    &:hover,
+    &:active {
+      z-index: 2;
+    }
+  }
+
+  .#{$btn-prefix-cls}:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .#{$btn-prefix-cls}:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .#{$btn-prefix-cls}:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+}
+
+body[sd-theme='dark'] {
+  .#{$btn-prefix-cls}-primary.#{$btn-prefix-cls}-disabled {
+    color: rgb(255 255 255 / 30%);
+  }
+}

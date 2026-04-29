@@ -1,0 +1,142 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$table-size-default-padding-horizontal: global.$spacing-7;
+$table-size-default-padding-vertical: 9px;
+$table-size-middle-padding-horizontal: global.$spacing-7;
+$table-size-middle-padding-vertical: 7px;
+$table-size-small-padding-horizontal: global.$spacing-7;
+$table-size-small-padding-vertical: 5px;
+$table-size-mini-padding-horizontal: global.$spacing-7;
+$table-size-mini-padding-vertical: 2px;
+
+$table-size-default-font-size: global.$font-size-body-3;
+$table-size-middle-font-size: global.$font-size-body-3;
+$table-size-small-font-size: global.$font-size-body-3;
+$table-size-mini-font-size: global.$font-size-body-1;
+
+$table-size-default-font-header-size: global.$font-size-body-3;
+$table-size-middle-font-header-size: global.$font-size-body-3;
+$table-size-small-font-header-size: global.$font-size-body-3;
+$table-size-mini-font-header-size: global.$font-size-body-1;
+
+$table-border-width: global.$border-1;
+$table-border-style: solid;
+
+$table-size-expand-button: 14px;
+$table-spacing-expand-button-margin-right: global.$spacing-2;
+$table-font-size-expand-button: 12px;
+$table-border-radius-expand-button: 2px;
+
+$table-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$table-border-radius: global.$radius-medium;
+
+$table-color-text-header-cell: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-10')));
+$table-color-bg-header-cell: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-2'));
+$table-color-bg-header-sorted-cell: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+$table-color-bg-header-sorted-cell_hover: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-gray-4')),
+  0.5
+);
+$table-color-header-filters-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$table-color-header-filters-icon_active: global.$color-primary-6;
+$table-color-bg-header-filters-icon_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-4')
+);
+$table-font-size-filters-icon: 16px;
+$table-size-filters-width: 24px;
+$table-font-weight-header-text: global.$font-weight-500;
+
+$table-color-text-body-cell: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-10')));
+$table-color-bg-body-cell: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+$table-color-bg-body-sorted-cell: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$table-color-bg-body-stripe-row: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$table-color-bg-body-row_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$table-color-bg-body-row_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$table-color-bg-body-row_active_dark: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-2')
+);
+
+$table-color-expand-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$table-color-expand-icon-border: global.$color-transparent;
+$table-color-expand-icon-border_hover: global.$color-transparent;
+$table-color-expand-icon_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$table-color-bg-expand-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$table-color-bg-expand-icon_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-4')
+);
+$table-color-bg-expand-content: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$table-color-bg-expand-content_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1')
+);
+$table-border-expand-icon-width: global.$border-1;
+
+$table-color-header-sorter-icon: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-5')
+);
+$table-color-header-sorter-icon_next: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-6')
+);
+$table-color-header-sorter-icon_active: global.$color-primary-6;
+$table-spacing-header-sorter-icon-margin-left: global.$spacing-4;
+$table-size-header-sorter-icon-height: 8px;
+$table-size-header-sorter-icon-width: 14px;
+$table-font-size-header-sorter-icon: 12px;
+$table-position-header-sorter-icon-up-top: -2px;
+$table-position-header-sorter-icon-down-top: -3px;
+$table-position-header-sorter-icon-left: 1px;
+
+// Popup
+$table-color-bg-filters-popup: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-5'));
+$table-color-border-filters-popup: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+$table-popup-min-width: 100px;
+$table-popup-max-height: 200px;
+$table-popup-border-radius: global.$radius-medium;
+
+// box shadow
+$table-shadow-left: inset 6px 0 8px -3px rgb(0 0 0 / 15%);
+$table-shadow-right: inset -6px 0 8px -3px rgb(0 0 0 / 15%);
+$table-size-shadow-wrapper-width: 10px;
+
+// editable row
+$table-color-editable-body-cell-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-white')
+);
+
+// pagination
+$table-spacing-pagination-margin: global.$spacing-6;
+
+// selection
+$table-size-selection-col-width: 40px;
+$table-size-expand-icon-col-width: 40px;
+$table-size-drag-handle-col-width: 40px;
+$table-size-body-min-width: 40px;
+$table-color-body-background: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+// vue overwrite token
+$table-size-large-padding-horizontal: $table-size-default-padding-horizontal;
+$table-size-large-padding-vertical: $table-size-default-padding-vertical;
+$table-size-large-font-size: $table-size-default-font-size;
+$table-size-large-font-header-size: $table-size-default-font-header-size;
+
+$table-size-medium-padding-horizontal: $table-size-middle-padding-horizontal;
+$table-size-medium-padding-vertical: $table-size-middle-padding-vertical;
+$table-size-medium-font-size: $table-size-middle-font-size;
+$table-size-medium-font-header-size: $table-size-middle-font-header-size;
+
+$table-color-bg-tfoot: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-2'));
+
+// filter icon align left
+$table-filters-icon-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4'));
+
+// new
+$table-color-border_resizing: global.$color-primary-6;

@@ -1,0 +1,34 @@
+@use '@style/theme/index.scss' as theme;
+@use '@components/ellipsis/style/token.scss' as *;
+
+.#{theme.$prefix}-ellipsis {
+  display: inline-block;
+  max-width: $ellipsis-max-width;
+  color: $ellipsis-color-text;
+  vertical-align: bottom;
+
+  &--single-line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &-content {
+    display: inline;
+    max-width: none;
+  }
+
+  &--line-clamp {
+    display: -webkit-box;
+    width: 100%;
+    word-break: break-word;
+  }
+
+  &--expandable {
+    cursor: pointer;
+  }
+
+  &--expanded {
+    white-space: normal;
+  }
+}

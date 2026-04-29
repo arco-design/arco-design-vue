@@ -1,0 +1,41 @@
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use 'sass:string';
+@use '@components/popover/style/token.scss' as *;
+
+$popover-prefix-cls: string.unquote('#{theme.$prefix}-popover');
+
+.#{$popover-prefix-cls} {
+  &-popup-content {
+    box-sizing: border-box;
+    padding: $popup-padding-vertical $popup-padding-horizontal;
+    color: $popup-color-content-text;
+    font-size: $popup-font-size;
+    line-height: theme.$line-height-base;
+    background-color: $popup-color-content-bg;
+    border: global.$border-1 solid $popup-color-border;
+    border-radius: $popup-border-radius;
+    box-shadow: $popup-shadow;
+  }
+
+  &-title {
+    color: $popup-color-title-text;
+    font-weight: global.$font-weight-500;
+    font-size: $popup-font-title-size;
+  }
+
+  &-content {
+    text-align: left;
+    overflow-wrap: break-word;
+  }
+
+  &-title + &-content {
+    margin-top: $popup-margin-content-top;
+  }
+
+  &-popup-arrow {
+    z-index: 1;
+    background-color: $popup-color-content-bg;
+    border: global.$border-1 solid $popup-color-border;
+  }
+}

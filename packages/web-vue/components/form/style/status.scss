@@ -1,0 +1,210 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use 'sass:map';
+@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use '@components/form/style/token.scss' as *;
+
+$form-prefix-cls: string.unquote('#{theme.$prefix}-form');
+
+// for input & textarea
+$__less-vars: (
+  'form-color-bg_error': $form-color-bg_error,
+  'form-color-bg_error_focus': $form-color-bg_error_focus,
+  'form-color-bg_error_hover': $form-color-bg_error_hover,
+  'form-color-bg_success': $form-color-bg_success,
+  'form-color-bg_success_focus': $form-color-bg_success_focus,
+  'form-color-bg_success_hover': $form-color-bg_success_hover,
+  'form-color-bg_validating': $form-color-bg_validating,
+  'form-color-bg_validating_focus': $form-color-bg_validating_focus,
+  'form-color-bg_validating_hover': $form-color-bg_validating_hover,
+  'form-color-bg_warning': $form-color-bg_warning,
+  'form-color-bg_warning_focus': $form-color-bg_warning_focus,
+  'form-color-bg_warning_hover': $form-color-bg_warning_hover,
+  'form-color-border_error': $form-color-border_error,
+  'form-color-border_error_focus': $form-color-border_error_focus,
+  'form-color-border_error_hover': $form-color-border_error_hover,
+  'form-color-border_success': $form-color-border_success,
+  'form-color-border_success_focus': $form-color-border_success_focus,
+  'form-color-border_success_hover': $form-color-border_success_hover,
+  'form-color-border_validating': $form-color-border_validating,
+  'form-color-border_validating_focus': $form-color-border_validating_focus,
+  'form-color-border_validating_hover': $form-color-border_validating_hover,
+  'form-color-border_warning': $form-color-border_warning,
+  'form-color-border_warning_focus': $form-color-border_warning_focus,
+  'form-color-border_warning_hover': $form-color-border_warning_hover,
+  'form-color-shadow_error_focus': $form-color-shadow_error_focus,
+  'form-color-shadow_success_focus': $form-color-shadow_success_focus,
+  'form-color-shadow_validating_focus': $form-color-shadow_validating_focus,
+  'form-color-shadow_warning_focus': $form-color-shadow_warning_focus,
+  'form-color-tip-icon-text_error': $form-color-tip-icon-text_error,
+  'form-color-tip-icon-text_success': $form-color-tip-icon-text_success,
+  'form-color-tip-icon-text_validating': $form-color-tip-icon-text_validating,
+  'form-color-tip-icon-text_warning': $form-color-tip-icon-text_warning,
+  'form-color-tip-text_error': $form-color-tip-text_error,
+  'form-color-tip-text_success': $form-color-tip-text_success,
+  'form-color-tip-text_validating': $form-color-tip-text_validating,
+  'form-color-tip-text_warning': $form-color-tip-text_warning,
+  'form-size-shadow_error_focus': $form-size-shadow_error_focus,
+  'form-size-shadow_success_focus': $form-size-shadow_success_focus,
+  'form-size-shadow_validating_focus': $form-size-shadow_validating_focus,
+  'form-size-shadow_warning_focus': $form-size-shadow_warning_focus,
+  'prefix': theme.$prefix,
+);
+
+@function less-var($name, $fallback: null) {
+  @return legacyLessVar.get($__less-vars, $name, $fallback);
+}
+
+@mixin input-status($status) {
+  $input-prefix-cls: string.unquote('#{theme.$prefix}-input');
+  $textarea-prefix-cls: string.unquote('#{theme.$prefix}-textarea');
+
+  .#{$input-prefix-cls}-wrapper:not(.#{$input-prefix-cls}-disabled),
+  .#{$textarea-prefix-cls}-wrapper:not(.#{$textarea-prefix-cls}-disabled) {
+    background-color: less-var('form-color-bg_#{$status}');
+    border-color: less-var('form-color-border_#{$status}');
+
+    &:hover {
+      background-color: less-var('form-color-bg_#{$status}_hover');
+      border-color: less-var('form-color-border_#{$status}_hover');
+    }
+  }
+
+  .#{$input-prefix-cls}-wrapper:not(.#{$input-prefix-cls}-disabled).#{$input-prefix-cls}-focus,
+  .#{$textarea-prefix-cls}-wrapper:not(
+      .#{$textarea-prefix-cls}-disabled
+    ).#{$textarea-prefix-cls}-focus {
+    background-color: less-var('form-color-bg_#{$status}_focus');
+    border-color: less-var('form-color-border_#{$status}_focus');
+    box-shadow: 0 0 0 less-var('form-size-shadow_#{$status}_focus')
+      less-var('form-color-shadow_#{$status}_focus');
+  }
+}
+
+@mixin select-view-status($status) {
+  $input-prefix-cls: string.unquote('#{theme.$prefix}-input-tag');
+  $select-view-prefix-cls: string.unquote('#{theme.$prefix}-select-view');
+
+  .#{$select-view-prefix-cls}:not(.#{$select-view-prefix-cls}-disabled),
+  .#{$input-prefix-cls}:not(.#{$input-prefix-cls}-disabled) {
+    background-color: less-var('form-color-bg_#{$status}');
+    border-color: less-var('form-color-border_#{$status}');
+
+    &:hover {
+      background-color: less-var('form-color-bg_#{$status}_hover');
+      border-color: less-var('form-color-border_#{$status}_hover');
+    }
+  }
+
+  .#{$select-view-prefix-cls}:not(
+      .#{$select-view-prefix-cls}-disabled
+    ).#{$select-view-prefix-cls}-focus,
+  .#{$input-prefix-cls}:not(.#{$input-prefix-cls}-disabled).#{$input-prefix-cls}-focus {
+    background-color: less-var('form-color-bg_#{$status}_focus');
+    border-color: less-var('form-color-border_#{$status}_focus');
+    box-shadow: 0 0 0 less-var('form-size-shadow_#{$status}_focus')
+      less-var('form-color-shadow_#{$status}_focus');
+  }
+}
+
+// datepicker
+@mixin picker($status) {
+  .#{theme.$prefix}-picker:not(.#{theme.$prefix}-picker-disabled) {
+    background-color: less-var('form-color-bg_#{$status}');
+    border-color: less-var('form-color-border_#{$status}');
+
+    &:hover {
+      background-color: less-var('form-color-bg_#{$status}_hover');
+      border-color: less-var('form-color-border_#{$status}_hover');
+    }
+  }
+
+  .#{theme.$prefix}-picker-focused:not(.#{theme.$prefix}-picker-disabled) {
+    &,
+    &:hover {
+      background-color: less-var('form-color-bg_#{$status}_focus');
+      border-color: less-var('form-color-border_#{$status}_focus');
+      box-shadow: 0 0 0 less-var('form-size-shadow_#{$status}_focus')
+        less-var('form-color-shadow_#{$status}_focus');
+    }
+  }
+}
+
+@mixin validate-status($status) {
+  .#{theme.$prefix}-form-item-status-#{$status} {
+    @include input-status($status);
+    @include select-view-status($status);
+    @include picker($status);
+  }
+
+  .#{theme.$prefix}-form-item-status-#{$status} {
+    .#{$form-prefix-cls}-item-message-help {
+      color: less-var('form-color-tip-text_#{$status}');
+    }
+
+    .#{$form-prefix-cls}-item-feedback {
+      color: less-var('form-color-tip-icon-text_#{$status}');
+    }
+  }
+}
+
+@mixin select-view-feedback($prefix) {
+  .#{$prefix}.#{$prefix}-multiple .#{$prefix}-view,
+  .#{$prefix}.#{$prefix}-single .#{$prefix}-view {
+    padding-right: 28px;
+  }
+
+  .#{$prefix}.#{$prefix}-multiple .#{$prefix}-suffix {
+    padding-right: 0;
+  }
+}
+
+@include validate-status(validating);
+@include validate-status(success);
+@include validate-status(warning);
+@include validate-status(error);
+
+.#{$form-prefix-cls}-item-control-children {
+  position: relative;
+}
+
+.#{$form-prefix-cls}-item-feedback {
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  font-size: 14px;
+  transform: translateY(-50%);
+
+  .#{theme.$prefix}-icon-loading {
+    font-size: 12px;
+  }
+}
+
+.#{$form-prefix-cls}-item-has-feedback {
+  .#{theme.$prefix}-input,
+  .#{theme.$prefix}-input-inner-wrapper,
+  .#{theme.$prefix}-textarea {
+    padding-right: 28px;
+  }
+
+  .#{theme.$prefix}-input-number-mode-embed .#{theme.$prefix}-input-number-step-layer {
+    right: 24px;
+  }
+
+  @include select-view-feedback(string.unquote('#{theme.$prefix}-select'));
+  @include select-view-feedback(string.unquote('#{theme.$prefix}-cascader'));
+  @include select-view-feedback(string.unquote('#{theme.$prefix}-tree-select'));
+
+  // datepicker timepicker
+  .#{theme.$prefix}-picker {
+    padding-right: 28px;
+  }
+
+  .#{theme.$prefix}-picker-suffix {
+    .#{theme.$prefix}-picker-suffix-icon,
+    .#{theme.$prefix}-picker-clear-icon {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}

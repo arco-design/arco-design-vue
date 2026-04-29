@@ -1,0 +1,45 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$timeline-color-content-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$timeline-color-label-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+
+$timeline-color-dot-bg: global.$color-primary-6;
+
+$timeline-color-line-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$timeline-font-content-size: global.$font-size-body-3;
+
+$timeline-font-label-size: global.$font-size-body-1;
+
+$timeline-item-min-height: 78px;
+
+$timeline-dot-size-width: 6px;
+
+$timeline-dot-border-radius: global.$radius-circle;
+
+$timeline-dot-border-width_hollow: global.$border-2;
+
+$timeline-color-dot-bg_hollow: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$timeline-horizontal-margin-content-spacing: global.$spacing-7;
+
+$timeline-horizontal-margin-line-left: global.$spacing-3;
+
+$timeline-horizontal-margin-line-right: global.$spacing-2;
+
+$timeline-vertical-margin-content-bottom: global.$spacing-2;
+
+$timeline-vertical-margin-content-left: global.$spacing-7;
+
+$timeline-vertical-margin-line-top: global.$spacing-2;
+
+$timeline-vertical-margin-line-bottom: global.$spacing-2;
+
+$timeline-size-line-width: global.$border-1;

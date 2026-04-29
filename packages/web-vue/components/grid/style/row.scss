@@ -1,0 +1,45 @@
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$row-prefix-cls: string.unquote('#{$prefix}-row');
+
+.#{$row-prefix-cls} {
+  display: flex;
+  flex-flow: row wrap;
+
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &-align-start {
+    align-items: flex-start;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+
+  &-align-end {
+    align-items: flex-end;
+  }
+
+  &-justify-start {
+    justify-content: flex-start;
+  }
+
+  &-justify-center {
+    justify-content: center;
+  }
+
+  &-justify-end {
+    justify-content: flex-end;
+  }
+
+  &-justify-space-around {
+    justify-content: space-around;
+  }
+
+  &-justify-space-between {
+    justify-content: space-between;
+  }
+}

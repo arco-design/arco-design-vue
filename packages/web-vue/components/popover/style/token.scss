@@ -1,0 +1,33 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$popup-color-content-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$popup-border-radius: global.$radius-large;
+
+$popup-color-content-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+
+$popup-shadow: global.$shadow2-down;
+
+$popup-padding-content-top: global.$spacing-2;
+
+$popup-padding-horizontal: global.$spacing-7;
+
+$popup-padding-vertical: global.$spacing-6;
+
+$popup-color-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$popup-font-title-size: global.$font-size-title-1;
+
+$popup-margin-content-top: global.$spacing-2;
+
+$popup-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$popup-font-size: global.$font-size-body-3;
+
+$popup-border-radius: global.$radius-medium;

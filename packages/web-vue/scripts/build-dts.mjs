@@ -44,6 +44,53 @@ async function moveDirectoryContents(sourceDir, targetDir) {
     const sourcePath = path.resolve(sourceDir, entry.name);
     const targetPath = path.resolve(targetDir, entry.name);
 
-    await cp(sourcePath, targetPath, { recursive: true, force: true });
+    if (entry.isDirectory()) {
+      await copyDirectory(sourcePath, targetPath);
+      continue;
+    }
+
+    await copyWithRetry(sourcePath, targetPath);
   }
+}
+
+async function copyDirectory(sourceDir, targetDir) {
+  await mkdir(targetDir, { recursive: true });
+
+  const entries = await readdir(sourceDir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const sourcePath = path.resolve(sourceDir, entry.name);
+    const targetPath = path.resolve(targetDir, entry.name);
+
+    if (entry.isDirectory()) {
+      await copyDirectory(sourcePath, targetPath);
+      continue;
+    }
+
+    await copyWithRetry(sourcePath, targetPath);
+  }
+}
+
+async function copyWithRetry(sourcePath, targetPath, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      await cp(sourcePath, targetPath, { recursive: false, force: true });
+      return;
+    } catch (error) {
+      const code = error?.code;
+      const isRetriable = code === 'ENOENT' || code === 'EPERM' || code === 'EACCES';
+
+      if (!isRetriable || attempt === maxRetries) {
+        throw error;
+      }
+
+      await wait(50 * attempt);
+    }
+  }
+}
+
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }

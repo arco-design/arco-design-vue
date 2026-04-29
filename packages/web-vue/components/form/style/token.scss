@@ -1,0 +1,139 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$form-size-mini-margin-item-bottom: global.$spacing-7;
+
+$form-size-small-margin-item-bottom: global.$spacing-8;
+
+$form-size-default-margin-item-bottom: global.$spacing-8;
+
+$form-size-large-margin-item-bottom: global.$spacing-8;
+
+$form-size-mini-font-label-size: global.$font-size-body-1;
+
+$form-size-small-font-label-size: global.$font-size-body-3;
+
+$form-size-large-font-label-size: global.$font-size-body-3;
+
+$form-size-default-font-label-size: global.$font-size-body-3;
+
+$form-font-extra-text-size: global.$font-size-body-1;
+
+$form-font-error-text-size: global.$font-size-body-1;
+
+$form-margin-label-right: global.$spacing-7;
+
+$form-margin-extra-bottom: global.$spacing-2;
+
+$form-margin-extra-top: global.$spacing-2;
+
+$form-inline-margin-item-right: global.$spacing-9;
+
+$form-inline-margin-item-bottom: global.$spacing-4;
+
+$form-vertical-margin-label-bottom: global.$spacing-4;
+
+$form-color-extra-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+
+$form-color-text-label: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$form-margin-tooltip-left: global.$spacing-2;
+
+$form-color-text-tooltip: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$form-color-bg_warning: var(string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-1'));
+
+$form-color-bg_warning_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-2')
+);
+
+$form-color-bg_warning_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$form-color-border_warning: global.$color-transparent;
+
+$form-color-border_warning_focus: global.$color-warning-6;
+
+$form-color-border_warning_hover: global.$color-transparent;
+
+$form-size-shadow_warning_focus: global.$shadow-distance-none;
+
+$form-color-shadow_warning_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-2')
+);
+
+$form-color-bg_success: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$form-color-bg_success_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$form-color-bg_success_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$form-color-border_success: global.$color-transparent;
+
+$form-color-border_success_focus: global.$color-success-6;
+
+$form-color-border_success_hover: global.$color-transparent;
+
+$form-size-shadow_success_focus: global.$shadow-distance-none;
+
+$form-color-shadow_success_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-2')
+);
+
+$form-color-bg_error: var(string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1'));
+
+$form-color-bg_error_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+
+$form-color-bg_error_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$form-color-border_error: global.$color-transparent;
+
+$form-color-border_error_focus: global.$color-danger-6;
+
+$form-color-border_error_hover: global.$color-transparent;
+
+$form-size-shadow_error_focus: global.$shadow-distance-none;
+
+$form-color-shadow_error_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+
+$form-color-bg_validating: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$form-color-bg_validating_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$form-color-bg_validating_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$form-color-border_validating: global.$color-transparent;
+
+$form-color-border_validating_focus: global.$color-primary-6;
+
+$form-color-border_validating_hover: global.$color-transparent;
+
+$form-size-shadow_validating_focus: global.$shadow-distance-none;
+
+$form-color-shadow_validating_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-2')
+);
+
+$form-color-tip-text_success: global.$color-success-6;
+
+$form-color-tip-icon-text_success: global.$color-success-6;
+
+$form-color-tip-text_error: global.$color-danger-6;
+
+$form-color-tip-icon-text_error: global.$color-danger-6;
+
+$form-color-tip-text_warning: global.$color-warning-6;
+
+$form-color-tip-icon-text_warning: global.$color-warning-6;
+
+$form-color-tip-text_validating: global.$color-primary-6;
+
+$form-color-tip-icon-text_validating: global.$color-primary-6;

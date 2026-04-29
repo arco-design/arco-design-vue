@@ -1,0 +1,112 @@
+@use 'sass:math';
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$col-prefix-cls: string.unquote('#{$prefix}-col');
+
+.#{$col-prefix-cls} {
+  box-sizing: border-box;
+
+  @mixin span($span, $adaptation) {
+    @if ($span > 0) and ($adaptation == '') {
+      @include span(($span - 1), $adaptation);
+
+      &-#{$span} {
+        flex: 0 0 math.div(100%, 24) * $span;
+        width: math.div(100%, 24) * $span;
+      }
+    }
+  }
+
+  @mixin span($span, $adaptation) {
+    @if ($span > 0) and (not ($adaptation == '')) {
+      @include span(($span - 1), $adaptation);
+
+      &-#{$adaptation}-#{$span} {
+        flex: 0 0 math.div(100%, 24) * $span;
+        width: math.div(100%, 24) * $span;
+      }
+    }
+  }
+
+  @include span(24, '');
+
+  @mixin offset($offset, $adaptation) {
+    @if ($offset > 0) and ($adaptation == '') {
+      @include offset(($offset - 1), $adaptation);
+
+      &-offset-#{$offset} {
+        margin-left: math.div(100%, 24) * $offset;
+      }
+    }
+  }
+
+  @mixin offset($offset, $adaptation) {
+    @if ($offset > 0) and (not ($adaptation == '')) {
+      @include offset(($offset - 1), $adaptation);
+
+      &-#{$adaptation}-offset-#{$offset} {
+        margin-left: math.div(100%, 24) * $offset;
+      }
+    }
+  }
+
+  @include offset(23, '');
+
+  @mixin order($order, $adaptation) {
+    @if ($order > 0) and ($adaptation == '') {
+      @include order(($order - 1), $adaptation);
+
+      &-order-#{$order} {
+        order: $order;
+      }
+    }
+  }
+
+  @mixin order($order, $adaptation) {
+    @if ($order > 0) and (not ($adaptation == '')) {
+      @include order(($order - 1), $adaptation);
+
+      &-#{$adaptation}-order-#{$order} {
+        order: $order;
+      }
+    }
+  }
+
+  @include order(24, '');
+
+  // adaptation
+  @include span(24, xs);
+  @include offset(23, xs);
+  @include order(24, xs);
+
+  @media (width >= 576px) {
+    @include span(24, sm);
+    @include offset(23, sm);
+    @include order(24, sm);
+  }
+
+  @media (width >= 768px) {
+    @include span(24, md);
+    @include offset(23, md);
+    @include order(24, md);
+  }
+
+  @media (width >= 992px) {
+    @include span(24, lg);
+    @include offset(23, lg);
+    @include order(24, lg);
+  }
+
+  @media (width >= 1200px) {
+    @include span(24, xl);
+    @include offset(23, xl);
+    @include order(24, xl);
+  }
+
+  @media (width >= 1600px) {
+    @include span(24, xxl);
+    @include offset(23, xxl);
+    @include order(24, xxl);
+  }
+}

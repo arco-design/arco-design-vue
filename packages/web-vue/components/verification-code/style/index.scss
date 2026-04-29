@@ -1,0 +1,34 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use '@components/verification-code/style/token.scss' as *;
+@use '@components/input/style/token.scss' as *;
+
+$verification-code-prefix-cls: string.unquote('#{theme.$prefix}-verification-code');
+$input-prefix-cls: string.unquote('#{theme.$prefix}-input');
+
+.#{$verification-code-prefix-cls} {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  column-gap: 4px;
+
+  .#{$input-prefix-cls} {
+    width: $input-size-default-height;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .#{$input-prefix-cls}-size-small {
+    width: $input-size-small-height;
+  }
+
+  .#{$input-prefix-cls}-size-mini {
+    width: $input-size-mini-height;
+  }
+
+  .#{$input-prefix-cls}-size-large {
+    width: $input-size-large-height;
+  }
+}

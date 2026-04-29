@@ -1,0 +1,181 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$tag-border-width: 1px;
+$tag-border-type: solid;
+$tag-padding-horizontal: 8px;
+$tag-padding-vertical: 0;
+$tag-icon-margin-right: global.$spacing-2;
+$tag-text-font-weight: global.$font-weight-500;
+$tag-border-radius: global.$radius-small;
+
+$tag-size-small: global.$size-5;
+$tag-size-default: global.$size-6;
+$tag-size-medium: global.$size-7;
+$tag-size-large: global.$size-8;
+
+$tag-size-small-font-size: 12px;
+$tag-size-default-font-size: 12px;
+$tag-size-medium-font-size: 14px;
+$tag-size-large-font-size: 14px;
+
+$tag-color-bg-not-checked_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$tag-custom-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+$tag-custom-color-icon-bg_hover: rgb(255 255 255 / 20%);
+
+$tag-default-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$tag-default-color-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$tag-default-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$tag-default-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$tag-default-color-border: global.$color-transparent;
+$tag-default-bordered-color-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-border-2')
+);
+$tag-default-color-border_hover: global.$color-transparent;
+
+$tag-red-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-red-1')));
+$tag-red-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-red-2')));
+$tag-red-color-border: global.$color-transparent;
+$tag-red-bordered-color-border: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-red-6')));
+$tag-red-color-border_hover: global.$color-transparent;
+$tag-red-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-red-6')));
+$tag-red-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-red-2')));
+$tag-red-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-red-6')));
+
+$tag-orangered-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orangered-1')));
+$tag-orangered-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orangered-2')));
+$tag-orangered-color-border: global.$color-transparent;
+$tag-orangered-bordered-color-border: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-orangered-6'))
+);
+$tag-orangered-color-border_hover: global.$color-transparent;
+$tag-orangered-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orangered-6')));
+$tag-orangered-color-icon-bg_hover: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-orangered-2'))
+);
+$tag-orangered-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orangered-6')));
+
+$tag-orange-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orange-1')));
+$tag-orange-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orange-2')));
+$tag-orange-color-border: global.$color-transparent;
+$tag-orange-bordered-color-border: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-orange-6'))
+);
+$tag-orange-color-border_hover: global.$color-transparent;
+$tag-orange-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orange-6')));
+$tag-orange-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orange-2')));
+$tag-orange-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orange-6')));
+
+$tag-gold-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-1')));
+$tag-gold-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-3')));
+$tag-gold-color-border: global.$color-transparent;
+$tag-gold-bordered-color-border: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-6')));
+$tag-gold-color-border_hover: global.$color-transparent;
+$tag-gold-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-6')));
+$tag-gold-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-2')));
+$tag-gold-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-6')));
+
+$tag-lime-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-lime-1')));
+$tag-lime-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-lime-2')));
+$tag-lime-color-border: global.$color-transparent;
+$tag-lime-bordered-color-border: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-lime-6')));
+$tag-lime-color-border_hover: global.$color-transparent;
+$tag-lime-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-lime-6')));
+$tag-lime-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-lime-2')));
+$tag-lime-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-lime-6')));
+
+$tag-green-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-green-1')));
+$tag-green-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-green-2')));
+$tag-green-color-border: global.$color-transparent;
+$tag-green-bordered-color-border: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-green-6')));
+$tag-green-color-border_hover: global.$color-transparent;
+$tag-green-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-green-6')));
+$tag-green-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-green-2')));
+$tag-green-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-green-6')));
+
+$tag-cyan-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-cyan-1')));
+$tag-cyan-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-cyan-2')));
+$tag-cyan-color-border: global.$color-transparent;
+$tag-cyan-bordered-color-border: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-cyan-6')));
+$tag-cyan-color-border_hover: global.$color-transparent;
+$tag-cyan-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-cyan-6')));
+$tag-cyan-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-cyan-2')));
+$tag-cyan-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-cyan-6')));
+
+$tag-blue-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-blue-1')));
+$tag-blue-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-blue-2')));
+$tag-blue-color-border: global.$color-transparent;
+$tag-blue-bordered-color-border: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-blue-6')));
+$tag-blue-color-border_hover: global.$color-transparent;
+$tag-blue-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-blue-6')));
+$tag-blue-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-blue-2')));
+$tag-blue-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-blue-6')));
+
+$tag-sdblue-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-sdblue-1')));
+$tag-sdblue-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-sdblue-2')));
+$tag-sdblue-color-border: global.$color-transparent;
+$tag-sdblue-bordered-color-border: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-sdblue-6'))
+);
+$tag-sdblue-color-border_hover: global.$color-transparent;
+$tag-sdblue-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-sdblue-6')));
+$tag-sdblue-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-sdblue-2')));
+$tag-sdblue-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-sdblue-6')));
+
+$tag-purple-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-purple-1')));
+$tag-purple-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-purple-2')));
+$tag-purple-color-border: global.$color-transparent;
+$tag-purple-bordered-color-border: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-purple-6'))
+);
+$tag-purple-color-border_hover: global.$color-transparent;
+$tag-purple-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-purple-6')));
+$tag-purple-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-purple-2')));
+$tag-purple-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-purple-6')));
+
+$tag-pinkpurple-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-pinkpurple-1')));
+$tag-pinkpurple-color-bg_hover: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-pinkpurple-2'))
+);
+$tag-pinkpurple-color-border: global.$color-transparent;
+$tag-pinkpurple-bordered-color-border: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-pinkpurple-6'))
+);
+$tag-pinkpurple-color-border_hover: global.$color-transparent;
+$tag-pinkpurple-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-pinkpurple-6')));
+$tag-pinkpurple-color-icon-bg_hover: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-pinkpurple-2'))
+);
+$tag-pinkpurple-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-pinkpurple-6')));
+
+$tag-magenta-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-magenta-1')));
+$tag-magenta-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-magenta-2')));
+$tag-magenta-color-border: global.$color-transparent;
+$tag-magenta-bordered-color-border: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-magenta-6'))
+);
+$tag-magenta-color-border_hover: global.$color-transparent;
+$tag-magenta-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-magenta-6')));
+$tag-magenta-color-icon-bg_hover: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-magenta-2'))
+);
+$tag-magenta-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-magenta-6')));
+
+$tag-gray-color-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-2')));
+$tag-gray-color-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-3')));
+$tag-gray-color-border: global.$color-transparent;
+$tag-gray-bordered-color-border: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-6')));
+$tag-gray-color-border_hover: global.$color-transparent;
+$tag-gray-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-6')));
+$tag-gray-color-icon-bg_hover: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-3')));
+$tag-gray-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-6')));
+
+// vue overwrite token
+$tag-size-medium: $tag-size-default;
+$tag-size-medium-font-size: $tag-size-default-font-size;

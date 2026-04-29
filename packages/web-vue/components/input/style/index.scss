@@ -1,0 +1,114 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use 'sass:meta';
+@use '@style/mixins/index.scss' as *;
+@use '@components/input/style/input.scss' as *;
+@use '@components/input/style/size.scss' as *;
+@use '@components/input/style/token.scss' as *;
+
+$input-prefix-cls: string.unquote('#{theme.$prefix}-input');
+
+@mixin disabled-style() {
+  color: $input-color-text_disabled;
+  background-color: $input-color-bg_disabled;
+  border-color: $input-color-border_disabled;
+  cursor: not-allowed;
+
+  &:hover {
+    color: $input-color-text_disabled;
+    background-color: $input-color-bg_disabled;
+    border-color: $input-color-border_disabled;
+  }
+
+  &::placeholder {
+    color: $input-color-text_disabled;
+  }
+}
+
+.#{$input-prefix-cls}-wrapper {
+  @include input-wrapper-style($input-prefix-cls);
+
+  .#{$input-prefix-cls} {
+    @include input-style();
+
+    &.#{$input-prefix-cls}-size-mini {
+      @include input-size(mini);
+    }
+
+    &.#{$input-prefix-cls}-size-small {
+      @include input-size(small);
+    }
+
+    &.#{$input-prefix-cls}-size-medium {
+      @include input-size(medium);
+    }
+
+    &.#{$input-prefix-cls}-size-large {
+      @include input-size(large);
+    }
+  }
+
+  .#{$input-prefix-cls}-word-limit {
+    color: $input-color-tip-text;
+    font-size: $input-font-tip-size;
+  }
+}
+
+.#{$input-prefix-cls}-outer {
+  display: inline-flex;
+  width: 100%;
+
+  > .#{$input-prefix-cls}-wrapper {
+    border-radius: 0;
+  }
+
+  > :first-child {
+    border-top-left-radius: $input-border-radius;
+    border-bottom-left-radius: $input-border-radius;
+  }
+
+  > :last-child {
+    border-top-right-radius: $input-border-radius;
+    border-bottom-right-radius: $input-border-radius;
+  }
+
+  @include outer-size();
+
+  &-disabled {
+    cursor: not-allowed;
+  }
+}
+
+.#{$input-prefix-cls}-prepend,
+.#{$input-prefix-cls}-append {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 $input-padding-horizontal;
+  color: $input-color-text;
+  white-space: nowrap;
+  background-color: $input-color-addon-bg;
+  border: 1px solid $input-color-addon-border_default;
+
+  > svg {
+    font-size: $input-size-default-icon-addon-size;
+  }
+}
+
+.#{$input-prefix-cls}-prepend {
+  border-right: $input-border-addon-separator-width solid $input-color-addon-border;
+
+  @include addon(before, $input-size-default-height, $input-size-default-font-size);
+}
+
+.#{$input-prefix-cls}-append {
+  border-left: $input-border-addon-separator-width solid $input-color-addon-border;
+
+  @include addon(after, $input-size-default-height, $input-size-default-font-size);
+}
+
+@include meta.load-css('./group.scss');
+@include meta.load-css('./textarea.scss');
+@include meta.load-css('./search.scss');
+@include meta.load-css('./password.scss');

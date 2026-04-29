@@ -1,0 +1,127 @@
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:map';
+@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use '@style/mixins/index.scss' as *;
+@use '@components/input/style/token.scss' as *;
+@use '@components/input/style/input.scss' as *;
+
+$less-vars: (
+  'input-border-width': $input-border-width,
+  'input-color-addon-border': $input-color-addon-border,
+  'input-color-addon-border_default': $input-color-addon-border_default,
+  'input-color-bg': $input-color-bg,
+  'input-color-bg_disabled': $input-color-bg_disabled,
+  'input-color-bg_error': $input-color-bg_error,
+  'input-color-bg_error_focus': $input-color-bg_error_focus,
+  'input-color-bg_error_hover': $input-color-bg_error_hover,
+  'input-color-bg_focus': $input-color-bg_focus,
+  'input-color-bg_hover': $input-color-bg_hover,
+  'input-color-border': $input-color-border,
+  'input-color-border_disabled': $input-color-border_disabled,
+  'input-color-border_error': $input-color-border_error,
+  'input-color-border_error_focus': $input-color-border_error_focus,
+  'input-color-border_error_hover': $input-color-border_error_hover,
+  'input-color-border_focus': $input-color-border_focus,
+  'input-color-border_hover': $input-color-border_hover,
+  'input-color-icon-clear-bg_hover': $input-color-icon-clear-bg_hover,
+  'input-color-shadow_error_focus': $input-color-shadow_error_focus,
+  'input-color-shadow_focus': $input-color-shadow_focus,
+  'input-color-text': $input-color-text,
+  'input-color-text_disabled': $input-color-text_disabled,
+  'input-feedback-icon-color_error': $input-feedback-icon-color_error,
+  'input-feedback-icon-color_success': $input-feedback-icon-color_success,
+  'input-feedback-icon-color_validating': $input-feedback-icon-color_validating,
+  'input-feedback-icon-color_warning': $input-feedback-icon-color_warning,
+  'input-group-border-radius_compact': $input-group-border-radius_compact,
+  'input-size-default-height': $input-size-default-height,
+  'input-size-default-font-size': $input-size-default-font-size,
+  'input-size-default-line-height': $input-size-medium-line-height,
+  'input-size-large-height': $input-size-large-height,
+  'input-size-large-font-size': $input-size-large-font-size,
+  'input-size-large-line-height': $input-size-large-line-height,
+  'input-size-medium-height': $input-size-medium-height,
+  'input-size-medium-font-size': $input-size-medium-font-size,
+  'input-size-medium-line-height': $input-size-medium-line-height,
+  'input-size-mini-font-size': $input-size-mini-font-size,
+  'input-size-mini-height': $input-size-mini-height,
+  'input-size-mini-line-height': $input-size-mini-line-height,
+  'input-size-small-height': $input-size-small-height,
+  'input-size-small-font-size': $input-size-small-font-size,
+  'input-size-small-line-height': $input-size-small-line-height,
+  'input-size-shadow_error_focus': $input-size-shadow_error_focus,
+  'input-size-shadow_focus': $input-size-shadow_focus,
+);
+
+@function less-var($name, $fallback: null) {
+  @return legacyLessVar.get($less-vars, $name, $fallback);
+}
+
+@mixin input-label-hide-input-element() {
+  // A div with width: 0 can also cause line breaks to cause the input box to be stretched, and to separate it from the standard document flow
+  position: absolute;
+  // Need to hide the input while ensuring that it can be focused by the Tab key
+  // So don't use display: none / visibility: hidden
+  width: 0 !important;
+}
+
+@mixin input-label-size($cls, $size) {
+  $height: string.unquote('input-size-#{$size}-height');
+
+  &.#{$cls}-size-#{$size} .#{$cls}-input,
+  &.#{$cls}-size-#{$size} .#{$cls}-value {
+    @include input-size($size);
+  }
+
+  &.#{$cls}-size-#{$size} .#{$cls}-value {
+    min-height: math.round(less-var($height) - $input-border-width * 2);
+  }
+}
+
+@mixin input-label-style($cls) {
+  &.#{$cls}-search {
+    cursor: text;
+
+    & .#{$cls}-value {
+      pointer-events: none;
+    }
+  }
+
+  @include input-wrapper-style($cls);
+
+  cursor: pointer;
+
+  .#{$cls}-input {
+    @include input-style();
+
+    &-hidden {
+      @include input-label-hide-input-element();
+    }
+  }
+
+  .#{$cls}-value {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+
+    @include text-ellipsis();
+
+    // Fix the style problem that the height of the outer div of the select layer exceeds 4px when the value is an empty string.
+    &::after {
+      font-size: 0;
+      line-height: 0;
+      visibility: hidden;
+      content: '.';
+    }
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  @include input-label-size($cls, mini);
+  @include input-label-size($cls, medium);
+  @include input-label-size($cls, small);
+  @include input-label-size($cls, large);
+}

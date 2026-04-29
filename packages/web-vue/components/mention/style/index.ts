@@ -1,5 +1,5 @@
-import '../../style/index.less';
+import '../../style/index.scss';
 import '../../input/style';
 import '../../textarea/style';
 import '../../select/style';
-import './index.less';
+import './index.scss';

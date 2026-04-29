@@ -1,0 +1,10 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use '@style/theme/index.scss' as *;
+
+$select-size-icon: global.$size-3;
+
+$select-size-icon-bg: global.$size-4;

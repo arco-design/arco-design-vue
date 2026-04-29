@@ -1,0 +1,13 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$trigger-color-arrow-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-5'));
+
+$trigger-size-arrow-width: global.$size-2;
+
+$trigger-border-arrow-radius: global.$radius-small;

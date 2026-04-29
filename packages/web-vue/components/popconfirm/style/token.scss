@@ -1,0 +1,26 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$popconfirm-padding-horizontal: global.$spacing-7;
+$popconfirm-padding-vertical: global.$spacing-7;
+$popconfirm-margin-title-bottom: global.$spacing-7;
+$popconfirm-size-title-icon: 18px;
+$popconfirm-margin-icon-right: global.$spacing-4;
+$popconfirm-margin-button-left: global.$spacing-4;
+$popconfirm-font-title-size: global.$font-size-body-3;
+$popconfirm-color-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$popconfirm-color-content-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+$popconfirm-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$popconfirm-border-radius: global.$radius-medium;
+$popconfirm-shadow: global.$shadow2-down;
+// type
+$popconfirm-color-title-icon: global.$color-warning-6;
+$popconfirm-color-title-icon_danger: global.$color-danger-6;
+$popconfirm-color-title-icon_success: global.$color-success-6;
+$popconfirm-color-title-icon_info: global.$color-primary-6;

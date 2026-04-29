@@ -1,0 +1,97 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$pagination-prefix-cls: string.unquote('#{$prefix}-pagination');
+
+$pagination-item-border-radius: global.$radius-small;
+$pagination-item-spacing: global.$spacing-4;
+$pagination-margin-total-spacing: global.$spacing-4;
+$pagination-margin-option-left: global.$spacing-4;
+$pagination-margin-jumper-left: global.$spacing-4;
+
+$pagination-size-mini: global.$size-mini;
+$pagination-size-small: global.$size-small;
+$pagination-size-default: global.$size-default;
+$pagination-size-large: global.$size-large;
+$pagination-padding-horizontal: 8px;
+
+$pagination-size-mini-font-size: global.$font-size-body-1;
+$pagination-size-small-font-size: global.$font-size-body-3;
+$pagination-size-default-font-size: global.$font-size-body-3;
+$pagination-size-large-font-size: global.$font-size-body-3;
+
+$pagination-size-icon-arrow_mini: global.$size-3;
+$pagination-size-icon-arrow_small: global.$size-3;
+$pagination-size-icon-arrow_default: global.$size-3;
+$pagination-size-icon-arrow_large: 14px;
+
+$pagination-size-icon-ellipsis: global.$size-4;
+
+$pagination-border-width: global.$border-none;
+$pagination-color-bg-item: global.$color-transparent;
+$pagination-color-bg-item_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
+);
+$pagination-color-bg-item_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$pagination-color-bg-item_disabled: global.$color-transparent;
+$pagination-color-bg-item_active_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1')
+);
+
+$pagination-color-item-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$pagination-color-item-text_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$pagination-color-item-text_active: global.$color-primary-6;
+$pagination-color-item-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+$pagination-color-item-text_active_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$pagination-color-item-border: global.$color-transparent;
+$pagination-color-item-border_active: global.$color-transparent;
+$pagination-color-item-border_hover: global.$color-transparent;
+$pagination-color-item-border_disabled: global.$color-transparent;
+$pagination-color-item-border_active_disabled: global.$color-transparent;
+
+$pagination-color-icon-arrow: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$pagination-color-icon-arrow-bg: global.$color-transparent;
+$pagination-color-icon-arrow-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1')
+);
+$pagination-color-icon-arrow-bg_disabled: global.$color-transparent;
+$pagination-color-icon-arrow-text_hover: global.$color-primary-6;
+$pagination-color-icon-arrow-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+// Simple
+$pagination-simple-input-width: global.$size-10;
+$pagination-simple-color-icon-arrow: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-2')
+);
+$pagination-simple-color-icon-arrow-bg: global.$color-transparent;
+$pagination-simple-color-icon-arrow-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1')
+);
+$pagination-simple-color-icon-arrow-bg_disabled: global.$color-transparent;
+$pagination-simple-color-icon-arrow-text_hover: global.$color-primary-6;
+$pagination-simple-color-icon-arrow-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$pagination-simple-margin-prev-right: global.$spacing-2;
+$pagination-simple-margin-next-left: global.$spacing-6;
+$pagination-simple-margin-separator-left: global.$spacing-6;
+$pagination-simple-margin-separator-right: global.$spacing-6;
+// jumper
+$patination-jumper-input-width: global.$size-10;
+$pagination-color-jumper-goto: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+
+// total text
+$pagination-color-text-total: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));

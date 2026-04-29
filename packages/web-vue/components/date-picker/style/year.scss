@@ -1,0 +1,12 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+$picker-prefix-cls: string.unquote('#{theme.$prefix}-picker');
+
+@use '@components/date-picker/style/token.scss' as *;
+
+$year-panel-prefix-cls: string.unquote('#{theme.$prefix}-panel-year');
+
+.#{$year-panel-prefix-cls} {
+  box-sizing: border-box;
+  width: $picker-panel-year-width;
+}

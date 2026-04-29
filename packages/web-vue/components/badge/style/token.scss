@@ -1,0 +1,64 @@
+@use '@style/color/colors.scss';
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$badge-size-count-height: global.$size-5;
+
+$badge-padding-count-horizontal: global.$spacing-3;
+
+$badge-margin-status-text-left: global.$spacing-4;
+
+$badge-font-count-size: global.$font-size-body-1;
+
+$badge-font-status-text-size: global.$font-size-body-1;
+
+$badge-color-count-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+
+$badge-color-status-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$badge-color-count-bg: global.$color-danger-6;
+
+$badge-size-dot-width: 6px;
+
+$badge-color-dot-bg_default: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4'));
+
+$badge-color-dot-bg_processing: global.$color-primary-6;
+
+$badge-color-dot-bg_success: global.$color-success-6;
+
+$badge-color-dot-bg_warning: global.$color-warning-6;
+
+$badge-color-dot-bg_error: global.$color-danger-6;
+
+$badge-font-count-weight: global.$font-weight-500;
+
+$badge-red-color-dot-bg: global.$color-danger-6;
+
+$badge-orangered-color-dot-bg: colors.$orangered-6;
+
+$badge-orange-color-dot-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-orange-6')));
+
+$badge-lime-color-dot-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-lime-6')));
+
+$badge-gold-color-dot-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gold-6')));
+
+$badge-green-color-dot-bg: global.$color-success-6;
+
+$badge-cyan-color-dot-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-cyan-6')));
+
+$badge-sdblue-color-dot-bg: global.$color-primary-6;
+
+$badge-pinkpurple-color-dot-bg: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-pinkpurple-6'))
+);
+
+$badge-purple-color-dot-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-purple-6')));
+
+$badge-magenta-color-dot-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-magenta-6')));
+
+$badge-gray-color-dot-bg: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-4')));

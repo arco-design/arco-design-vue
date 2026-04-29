@@ -2,6 +2,7 @@ import { InjectionKey, Slots } from 'vue';
 
 import { Size } from '../_utils/constant';
 import { SDLang } from '../locale/interface';
+import { SDThemeNormalized } from './theme';
 
 export interface ConfigProvider {
   slots: Slots;
@@ -12,6 +13,7 @@ export interface ConfigProvider {
   scrollToClose?: boolean;
   exchangeTime?: boolean;
   rtl?: boolean;
+  theme?: SDThemeNormalized;
 }
 
 export const configProviderInjectionKey: InjectionKey<ConfigProvider> = Symbol('SDConfigProvider');

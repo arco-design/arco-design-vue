@@ -1,0 +1,324 @@
+@use '@style/mixins/icon-hover.scss' as icon-hover;
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use 'sass:string';
+@use 'sass:map';
+@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+
+@forward '@components/tag/style/token.scss';
+
+@use '@style/mixins/index.scss' as *;
+@use '@components/tag/style/token.scss' as *;
+
+$tag-prefix-cls: string.unquote('#{theme.$prefix}-tag');
+
+$colors:
+  'red', 'orangered', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'sdblue', 'purple',
+  'pinkpurple', 'magenta';
+$__less-vars: (
+  'colors': $colors,
+  'prefix': theme.$prefix,
+  'sd-cssvars-prefix': global.$sd-cssvars-prefix,
+  'sd-theme-tag': global.$sd-theme-tag,
+  'tag-blue-color-bg': $tag-blue-color-bg,
+  'tag-blue-color-bg_hover': $tag-blue-color-bg_hover,
+  'tag-blue-color-border': $tag-blue-color-border,
+  'tag-blue-color-border_hover': $tag-blue-color-border_hover,
+  'tag-blue-color-icon-bg_hover': $tag-blue-color-icon-bg_hover,
+  'tag-border-radius': $tag-border-radius,
+  'tag-border-type': $tag-border-type,
+  'tag-border-width': $tag-border-width,
+  'tag-color-bg-not-checked_hover': $tag-color-bg-not-checked_hover,
+  'tag-custom-color-icon-bg_hover': $tag-custom-color-icon-bg_hover,
+  'tag-custom-color-text': $tag-custom-color-text,
+  'tag-cyan-color-bg': $tag-cyan-color-bg,
+  'tag-cyan-color-bg_hover': $tag-cyan-color-bg_hover,
+  'tag-cyan-color-border': $tag-cyan-color-border,
+  'tag-cyan-color-border_hover': $tag-cyan-color-border_hover,
+  'tag-cyan-color-icon-bg_hover': $tag-cyan-color-icon-bg_hover,
+  'tag-default-bordered-color-border': $tag-default-bordered-color-border,
+  'tag-default-color-bg': $tag-default-color-bg,
+  'tag-default-color-bg_hover': $tag-default-color-bg_hover,
+  'tag-default-color-border': $tag-default-color-border,
+  'tag-default-color-border_hover': $tag-default-color-border_hover,
+  'tag-default-color-icon': $tag-default-color-icon,
+  'tag-default-color-text': $tag-default-color-text,
+  'tag-gold-color-bg': $tag-gold-color-bg,
+  'tag-gold-color-bg_hover': $tag-gold-color-bg_hover,
+  'tag-gold-color-border': $tag-gold-color-border,
+  'tag-gold-color-border_hover': $tag-gold-color-border_hover,
+  'tag-gold-color-icon-bg_hover': $tag-gold-color-icon-bg_hover,
+  'tag-gray-color-bg': $tag-gray-color-bg,
+  'tag-gray-color-bg_hover': $tag-gray-color-bg_hover,
+  'tag-gray-color-border': $tag-gray-color-border,
+  'tag-gray-color-border_hover': $tag-gray-color-border_hover,
+  'tag-gray-color-icon-bg_hover': $tag-gray-color-icon-bg_hover,
+  'tag-green-color-bg': $tag-green-color-bg,
+  'tag-green-color-bg_hover': $tag-green-color-bg_hover,
+  'tag-green-color-border': $tag-green-color-border,
+  'tag-green-color-border_hover': $tag-green-color-border_hover,
+  'tag-green-color-icon-bg_hover': $tag-green-color-icon-bg_hover,
+  'tag-icon-margin-right': $tag-icon-margin-right,
+  'tag-lime-color-bg': $tag-lime-color-bg,
+  'tag-lime-color-bg_hover': $tag-lime-color-bg_hover,
+  'tag-lime-color-border': $tag-lime-color-border,
+  'tag-lime-color-border_hover': $tag-lime-color-border_hover,
+  'tag-lime-color-icon-bg_hover': $tag-lime-color-icon-bg_hover,
+  'tag-magenta-color-bg': $tag-magenta-color-bg,
+  'tag-magenta-color-bg_hover': $tag-magenta-color-bg_hover,
+  'tag-magenta-color-border': $tag-magenta-color-border,
+  'tag-magenta-color-border_hover': $tag-magenta-color-border_hover,
+  'tag-magenta-color-icon-bg_hover': $tag-magenta-color-icon-bg_hover,
+  'tag-orange-color-bg': $tag-orange-color-bg,
+  'tag-orange-color-bg_hover': $tag-orange-color-bg_hover,
+  'tag-orange-color-border': $tag-orange-color-border,
+  'tag-orange-color-border_hover': $tag-orange-color-border_hover,
+  'tag-orange-color-icon-bg_hover': $tag-orange-color-icon-bg_hover,
+  'tag-orangered-color-bg': $tag-orangered-color-bg,
+  'tag-orangered-color-bg_hover': $tag-orangered-color-bg_hover,
+  'tag-orangered-color-border': $tag-orangered-color-border,
+  'tag-orangered-color-border_hover': $tag-orangered-color-border_hover,
+  'tag-orangered-color-icon-bg_hover': $tag-orangered-color-icon-bg_hover,
+  'tag-padding-horizontal': $tag-padding-horizontal,
+  'tag-padding-vertical': $tag-padding-vertical,
+  'tag-pinkpurple-color-bg': $tag-pinkpurple-color-bg,
+  'tag-pinkpurple-color-bg_hover': $tag-pinkpurple-color-bg_hover,
+  'tag-pinkpurple-color-border': $tag-pinkpurple-color-border,
+  'tag-pinkpurple-color-border_hover': $tag-pinkpurple-color-border_hover,
+  'tag-pinkpurple-color-icon-bg_hover': $tag-pinkpurple-color-icon-bg_hover,
+  'tag-purple-color-bg': $tag-purple-color-bg,
+  'tag-purple-color-bg_hover': $tag-purple-color-bg_hover,
+  'tag-purple-color-border': $tag-purple-color-border,
+  'tag-purple-color-border_hover': $tag-purple-color-border_hover,
+  'tag-purple-color-icon-bg_hover': $tag-purple-color-icon-bg_hover,
+  'tag-red-color-bg': $tag-red-color-bg,
+  'tag-red-color-bg_hover': $tag-red-color-bg_hover,
+  'tag-red-color-border': $tag-red-color-border,
+  'tag-red-color-border_hover': $tag-red-color-border_hover,
+  'tag-red-color-icon-bg_hover': $tag-red-color-icon-bg_hover,
+  'tag-sdblue-color-bg': $tag-sdblue-color-bg,
+  'tag-sdblue-color-bg_hover': $tag-sdblue-color-bg_hover,
+  'tag-sdblue-color-border': $tag-sdblue-color-border,
+  'tag-sdblue-color-border_hover': $tag-sdblue-color-border_hover,
+  'tag-sdblue-color-icon-bg_hover': $tag-sdblue-color-icon-bg_hover,
+  'tag-size-default': $tag-size-default,
+  'tag-size-default-font-size': $tag-size-default-font-size,
+  'tag-size-large': $tag-size-large,
+  'tag-size-large-font-size': $tag-size-large-font-size,
+  'tag-size-medium': $tag-size-medium,
+  'tag-size-medium-font-size': $tag-size-medium-font-size,
+  'tag-size-small': $tag-size-small,
+  'tag-size-small-font-size': $tag-size-small-font-size,
+  'tag-text-font-weight': $tag-text-font-weight,
+  'transition-duration-1': theme.$transition-duration-1,
+  'transition-timing-function-linear': theme.$transition-timing-function-linear,
+  'tag-red-color-text': $tag-red-color-text,
+  'tag-orangered-color-text': $tag-orangered-color-text,
+  'tag-orange-color-text': $tag-orange-color-text,
+  'tag-gold-color-text': $tag-gold-color-text,
+  'tag-lime-color-text': $tag-lime-color-text,
+  'tag-green-color-text': $tag-green-color-text,
+  'tag-cyan-color-text': $tag-cyan-color-text,
+  'tag-blue-color-text': $tag-blue-color-text,
+  'tag-sdblue-color-text': $tag-sdblue-color-text,
+  'tag-purple-color-text': $tag-purple-color-text,
+  'tag-pinkpurple-color-text': $tag-pinkpurple-color-text,
+  'tag-magenta-color-text': $tag-magenta-color-text,
+  'tag-red-bordered-color-border': $tag-red-bordered-color-border,
+  'tag-red-color-icon': $tag-red-color-icon,
+  'tag-orangered-bordered-color-border': $tag-orangered-bordered-color-border,
+  'tag-orange-bordered-color-border': $tag-orange-bordered-color-border,
+  'tag-gold-bordered-color-border': $tag-gold-bordered-color-border,
+  'tag-lime-bordered-color-border': $tag-lime-bordered-color-border,
+  'tag-green-bordered-color-border': $tag-green-bordered-color-border,
+  'tag-cyan-bordered-color-border': $tag-cyan-bordered-color-border,
+  'tag-blue-bordered-color-border': $tag-blue-bordered-color-border,
+  'tag-sdblue-bordered-color-border': $tag-sdblue-bordered-color-border,
+  'tag-purple-bordered-color-border': $tag-purple-bordered-color-border,
+  'tag-pinkpurple-bordered-color-border': $tag-pinkpurple-bordered-color-border,
+  'tag-magenta-bordered-color-border': $tag-magenta-bordered-color-border,
+  'tag-orangered-color-icon': $tag-orangered-color-icon,
+  'tag-orange-color-icon': $tag-orange-color-icon,
+  'tag-gold-color-icon': $tag-gold-color-icon,
+  'tag-lime-color-icon': $tag-lime-color-icon,
+  'tag-green-color-icon': $tag-green-color-icon,
+  'tag-cyan-color-icon': $tag-cyan-color-icon,
+  'tag-blue-color-icon': $tag-blue-color-icon,
+  'tag-sdblue-color-icon': $tag-sdblue-color-icon,
+  'tag-purple-color-icon': $tag-purple-color-icon,
+  'tag-pinkpurple-color-icon': $tag-pinkpurple-color-icon,
+  'tag-magenta-color-icon': $tag-magenta-color-icon,
+);
+
+@function less-var($name, $fallback: null) {
+  @return legacyLessVar.get($__less-vars, $name, $fallback);
+}
+
+.#{$tag-prefix-cls} {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: $tag-size-default;
+  padding: $tag-padding-vertical $tag-padding-horizontal;
+  color: $tag-default-color-text;
+  font-weight: $tag-text-font-weight;
+  font-size: $tag-size-default-font-size;
+  line-height: $tag-size-default - $tag-border-width * 2 - $tag-padding-vertical * 2;
+  vertical-align: middle;
+  border: $tag-border-width $tag-border-type transparent;
+  border-radius: $tag-border-radius;
+
+  @include text-ellipsis();
+  @include icon-hover.icon-hover($tag-prefix-cls, 12px, 16px);
+  @include icon-hover.icon-hover-bg($tag-prefix-cls, $tag-default-color-bg_hover);
+
+  &-checkable {
+    cursor: pointer;
+    transition: all theme.$transition-duration-1 theme.$transition-timing-function-linear;
+  }
+
+  &-checkable:hover {
+    background-color: $tag-color-bg-not-checked_hover;
+  }
+
+  &-checked {
+    background-color: $tag-default-color-bg;
+    border-color: $tag-default-color-border;
+  }
+
+  .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked:hover {
+    background-color: $tag-default-color-bg_hover;
+    border-color: $tag-default-color-border_hover;
+  }
+
+  &-bordered,
+  .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-bordered:hover {
+    border-color: $tag-default-bordered-color-border;
+  }
+
+  // Size
+  &-size-small {
+    height: $tag-size-small;
+    font-size: $tag-size-small-font-size;
+    line-height: $tag-size-small - $tag-border-width * 2;
+  }
+
+  &-size-medium {
+    height: $tag-size-medium;
+    font-size: $tag-size-medium-font-size;
+    line-height: $tag-size-medium - $tag-border-width * 2;
+  }
+
+  &-size-large {
+    height: $tag-size-large;
+    font-size: $tag-size-large-font-size;
+    line-height: $tag-size-large - $tag-border-width * 2;
+  }
+
+  &-hide {
+    display: none;
+  }
+
+  &-loading {
+    cursor: default;
+    opacity: 0.8;
+  }
+
+  &-icon {
+    margin-right: $tag-icon-margin-right;
+    color: $tag-default-color-icon;
+  }
+
+  &-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @each $value in $colors {
+    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} {
+      color: less-var('tag-#{$value}-color-text');
+      background-color: less-var('tag-#{$value}-color-bg');
+      border: $tag-border-width $tag-border-type less-var('tag-#{$value}-color-border');
+
+      @include icon-hover.icon-hover-bg(
+        $tag-prefix-cls,
+        less-var('tag-#{$value}-color-icon-bg_hover')
+      );
+    }
+
+    .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}:hover {
+      background-color: less-var('tag-#{$value}-color-bg_hover');
+      border-color: less-var('tag-#{$value}-color-border_hover');
+    }
+
+    .#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered,
+    .#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered:hover {
+      border-color: less-var('tag-#{$value}-bordered-color-border');
+    }
+
+    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-icon,
+    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-close-btn,
+    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-loading-icon {
+      color: less-var('tag-#{$value}-color-icon');
+    }
+  }
+
+  .#{$tag-prefix-cls}.#{$tag-prefix-cls}-custom-color {
+    color: $tag-custom-color-text;
+
+    @include icon-hover.icon-hover-bg($tag-prefix-cls, $tag-custom-color-icon-bg_hover);
+  }
+
+  & &-close-btn {
+    margin-left: 4px;
+    font-size: 12px;
+
+    > svg {
+      position: relative;
+    }
+  }
+
+  & &-loading-icon {
+    margin-left: 4px;
+    font-size: 12px;
+  }
+}
+
+#{global.$sd-theme-tag}[sd-theme='dark'] {
+  .#{$tag-prefix-cls}-checked {
+    color: rgb(255 255 255 / 90%);
+  }
+
+  @each $value in $colors {
+    .#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} {
+      background-color: string.unquote('rgba(var(#{global.$sd-cssvars-prefix}-#{$value}-6), 0.2)');
+
+      @include icon-hover.icon-hover-bg(
+        $tag-prefix-cls,
+        string.unquote('rgba(var(#{global.$sd-cssvars-prefix}-#{$value}-6), 0.35)')
+      );
+    }
+
+    .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}:hover {
+      background-color: string.unquote('rgba(var(#{global.$sd-cssvars-prefix}-#{$value}-6), 0.35)');
+    }
+  }
+}
+
+.#{$tag-prefix-cls}-rtl {
+  direction: rtl;
+
+  .#{$tag-prefix-cls} {
+    &-icon {
+      margin-right: 0;
+      margin-left: $tag-icon-margin-right;
+    }
+
+    &-close-btn,
+    &-loading-icon {
+      margin-right: 4px;
+      margin-left: 0;
+    }
+  }
+}

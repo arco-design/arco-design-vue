@@ -1,0 +1,15 @@
+@use 'sass:map';
+
+@function get($vars, $name, $fallback: null) {
+  $value: map.get($vars, $name);
+
+  @if $value == null {
+    @if $fallback != null {
+      @return $fallback;
+    }
+
+    @error "Unknown Less variable: #{$name}";
+  }
+
+  @return $value;
+}

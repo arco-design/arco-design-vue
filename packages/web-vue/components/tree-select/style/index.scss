@@ -1,0 +1,53 @@
+@use '@components/select/style/token.scss' as selectToken;
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use 'sass:string';
+@use '@components/tree-select/style/token.scss' as *;
+
+$tree-prefix-cls: string.unquote('#{theme.$prefix}-tree');
+$tree-select-prefix-cls: string.unquote('#{theme.$prefix}-tree-select');
+
+// .select-view($tree-select-prefix-cls);
+
+.#{$tree-select-prefix-cls} {
+  &-popup {
+    box-sizing: border-box;
+    padding: $tree-select-padding-popup-vertical 0;
+    background-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+    border: 1px solid selectToken.$select-popup-color-border;
+    border-radius: selectToken.$select-popup-border-radius;
+    box-shadow: selectToken.$select-popup-box-shadow;
+
+    .#{$tree-select-prefix-cls}-tree-wrapper {
+      height: 100%;
+      max-height: selectToken.$select-popup-max-height;
+      padding-right: $tree-select-padding-popup-right;
+      padding-left: $tree-select-padding-popup-left;
+      overflow: auto;
+    }
+
+    .#{$tree-prefix-cls}-node {
+      padding-left: 0;
+    }
+  }
+
+  &-highlight {
+    font-weight: global.$font-weight-500;
+  }
+
+  &-has-header {
+    padding-top: 0;
+  }
+
+  &-header {
+    border-bottom: 1px solid selectToken.$select-popup-color-border;
+  }
+
+  &-has-footer {
+    padding-bottom: 0;
+  }
+
+  &-footer {
+    border-top: 1px solid selectToken.$select-popup-color-border;
+  }
+}

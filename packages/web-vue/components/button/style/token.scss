@@ -1,0 +1,469 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$btn-font-weight: global.$font-weight-400;
+$btn-border-width: global.$border-1;
+$btn-border-radius: global.$radius-small;
+
+$btn-size-mini-radius: $btn-border-radius;
+$btn-size-small-radius: $btn-border-radius;
+$btn-size-default-radius: $btn-border-radius;
+$btn-size-large-radius: $btn-border-radius;
+
+$btn-size-mini-height: global.$size-mini;
+$btn-size-small-height: global.$size-small;
+$btn-size-default-height: global.$size-default;
+$btn-size-large-height: global.$size-large;
+
+$btn-size-mini-border-width: $btn-border-width;
+$btn-size-small-border-width: $btn-border-width;
+$btn-size-default-border-width: $btn-border-width;
+$btn-size-large-border-width: $btn-border-width;
+
+$btn-size-mini-icon-spacing: global.$spacing-2;
+$btn-size-small-icon-spacing: global.$spacing-3;
+$btn-size-default-icon-spacing: global.$spacing-4;
+$btn-size-large-icon-spacing: global.$spacing-4;
+
+$btn-size-mini-icon-vertical-align: -1px;
+$btn-size-small-icon-vertical-align: -2px;
+$btn-size-default-icon-vertical-align: -2px;
+$btn-size-large-icon-vertical-align: -2px;
+
+$btn-size-mini-padding-horizontal: 11px;
+$btn-size-small-padding-horizontal: 15px;
+$btn-size-default-padding-horizontal: 15px;
+$btn-size-large-padding-horizontal: 19px;
+
+$btn-size-mini-font-size: global.$font-size-body-1;
+$btn-size-small-font-size: global.$font-size-body-3;
+$btn-size-default-font-size: global.$font-size-body-3;
+$btn-size-large-font-size: global.$font-size-body-3;
+
+/***** Outline *****/
+$btn-outline-color-text: global.$color-primary-6;
+$btn-outline-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+$btn-outline-color-text_hover: global.$color-primary-5;
+$btn-outline-color-text_active: global.$color-primary-7;
+$btn-outline-color-bg: global.$color-transparent;
+$btn-outline-color-bg_disabled: global.$color-transparent;
+$btn-outline-color-bg_hover: global.$color-transparent;
+$btn-outline-color-bg_active: global.$color-transparent;
+$btn-outline-color-border: global.$color-primary-6;
+$btn-outline-color-border_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+$btn-outline-color-border_hover: global.$color-primary-5;
+$btn-outline-color-border_active: global.$color-primary-7;
+// status
+$btn-outline-color-text_warning: global.$color-warning-6;
+$btn-outline-color-text_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-outline-color-text_warning_hover: global.$color-warning-5;
+$btn-outline-color-text_warning_active: global.$color-warning-7;
+$btn-outline-color-bg_warning: global.$color-transparent;
+$btn-outline-color-bg_warning_disabled: global.$color-transparent;
+$btn-outline-color-bg_warning_hover: global.$color-transparent;
+$btn-outline-color-bg_warning_active: global.$color-transparent;
+$btn-outline-color-border_warning: global.$color-warning-6;
+$btn-outline-color-border_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-outline-color-border_warning_hover: global.$color-warning-5;
+$btn-outline-color-border_warning_active: global.$color-warning-7;
+
+$btn-outline-color-text_danger: global.$color-danger-6;
+$btn-outline-color-text_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-outline-color-text_danger_hover: global.$color-danger-5;
+$btn-outline-color-text_danger_active: global.$color-danger-7;
+$btn-outline-color-bg_danger: global.$color-transparent;
+$btn-outline-color-bg_danger_disabled: global.$color-transparent;
+$btn-outline-color-bg_danger_hover: global.$color-transparent;
+$btn-outline-color-bg_danger_active: global.$color-transparent;
+$btn-outline-color-border_danger: global.$color-danger-6;
+$btn-outline-color-border_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-outline-color-border_danger_hover: global.$color-danger-5;
+$btn-outline-color-border_danger_active: global.$color-danger-7;
+
+$btn-outline-color-text_success: global.$color-success-6;
+$btn-outline-color-text_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-outline-color-text_success_hover: global.$color-success-5;
+$btn-outline-color-text_success_active: global.$color-success-7;
+$btn-outline-color-bg_success: global.$color-transparent;
+$btn-outline-color-bg_success_disabled: global.$color-transparent;
+$btn-outline-color-bg_success_hover: global.$color-transparent;
+$btn-outline-color-bg_success_active: global.$color-transparent;
+$btn-outline-color-border_success: global.$color-success-6;
+$btn-outline-color-border_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-outline-color-border_success_hover: global.$color-success-5;
+$btn-outline-color-border_success_active: global.$color-success-7;
+// border
+$btn-outline-border-style: global.$border-solid;
+
+/***** Primary *****/
+$btn-primary-color-text: #fff;
+$btn-primary-color-text_disabled: #fff;
+$btn-primary-color-text_hover: #fff;
+$btn-primary-color-text_active: #fff;
+$btn-primary-color-bg: global.$color-primary-6;
+$btn-primary-color-bg_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+$btn-primary-color-bg_hover: global.$color-primary-5;
+$btn-primary-color-bg_active: global.$color-primary-7;
+$btn-primary-color-border: global.$color-transparent;
+$btn-primary-color-border_disabled: global.$color-transparent;
+$btn-primary-color-border_hover: global.$color-transparent;
+$btn-primary-color-border_active: global.$color-transparent;
+// status
+$btn-primary-color-text_warning: #fff;
+$btn-primary-color-text_warning_disabled: #fff;
+$btn-primary-color-text_warning_hover: #fff;
+$btn-primary-color-text_warning_active: #fff;
+$btn-primary-color-bg_warning: global.$color-warning-6;
+$btn-primary-color-bg_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-primary-color-bg_warning_hover: global.$color-warning-5;
+$btn-primary-color-bg_warning_active: global.$color-warning-7;
+$btn-primary-color-border_warning: global.$color-transparent;
+$btn-primary-color-border_warning_disabled: global.$color-transparent;
+$btn-primary-color-border_warning_hover: global.$color-transparent;
+$btn-primary-color-border_warning_active: global.$color-transparent;
+
+$btn-primary-color-text_danger: #fff;
+$btn-primary-color-text_danger_disabled: #fff;
+$btn-primary-color-text_danger_hover: #fff;
+$btn-primary-color-text_danger_active: #fff;
+$btn-primary-color-bg_danger: global.$color-danger-6;
+$btn-primary-color-bg_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-primary-color-bg_danger_hover: global.$color-danger-5;
+$btn-primary-color-bg_danger_active: global.$color-danger-7;
+$btn-primary-color-border_danger: global.$color-transparent;
+$btn-primary-color-border_danger_disabled: global.$color-transparent;
+$btn-primary-color-border_danger_hover: global.$color-transparent;
+$btn-primary-color-border_danger_active: global.$color-transparent;
+
+$btn-primary-color-text_success: #fff;
+$btn-primary-color-text_success_disabled: #fff;
+$btn-primary-color-text_success_hover: #fff;
+$btn-primary-color-text_success_active: #fff;
+$btn-primary-color-bg_success: global.$color-success-6;
+$btn-primary-color-bg_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-primary-color-bg_success_hover: global.$color-success-5;
+$btn-primary-color-bg_success_active: global.$color-success-7;
+$btn-primary-color-border_success: global.$color-transparent;
+$btn-primary-color-border_success_disabled: global.$color-transparent;
+$btn-primary-color-border_success_hover: global.$color-transparent;
+$btn-primary-color-border_success_active: global.$color-transparent;
+// border
+$btn-primary-border-style: global.$border-solid;
+
+/***** Secondary *****/
+$btn-secondary-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$btn-secondary-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+$btn-secondary-color-text_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$btn-secondary-color-text_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$btn-secondary-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-secondary'));
+$btn-secondary-color-bg_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-secondary-disabled')
+);
+$btn-secondary-color-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-secondary-hover')
+);
+$btn-secondary-color-bg_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-secondary-active')
+);
+$btn-secondary-color-border: global.$color-transparent;
+$btn-secondary-color-border_disabled: global.$color-transparent;
+$btn-secondary-color-border_hover: global.$color-transparent;
+$btn-secondary-color-border_active: global.$color-transparent;
+// status
+$btn-secondary-color-text_warning: global.$color-warning-6;
+$btn-secondary-color-text_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-secondary-color-text_warning_hover: global.$color-warning-6;
+$btn-secondary-color-text_warning_active: global.$color-warning-6;
+$btn-secondary-color-bg_warning: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-1')
+);
+$btn-secondary-color-bg_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-1')
+);
+$btn-secondary-color-bg_warning_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-2')
+);
+$btn-secondary-color-bg_warning_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-secondary-color-border_warning: global.$color-transparent;
+$btn-secondary-color-border_warning_disabled: global.$color-transparent;
+$btn-secondary-color-border_warning_hover: global.$color-transparent;
+$btn-secondary-color-border_warning_active: global.$color-transparent;
+
+$btn-secondary-color-text_danger: global.$color-danger-6;
+$btn-secondary-color-text_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-secondary-color-text_danger_hover: global.$color-danger-6;
+$btn-secondary-color-text_danger_active: global.$color-danger-6;
+$btn-secondary-color-bg_danger: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1')
+);
+$btn-secondary-color-bg_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1')
+);
+$btn-secondary-color-bg_danger_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+$btn-secondary-color-bg_danger_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-secondary-color-border_danger: global.$color-transparent;
+$btn-secondary-color-border_danger_disabled: global.$color-transparent;
+$btn-secondary-color-border_danger_hover: global.$color-transparent;
+$btn-secondary-color-border_danger_active: global.$color-transparent;
+
+$btn-secondary-color-text_success: global.$color-success-6;
+$btn-secondary-color-text_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-secondary-color-text_success_hover: global.$color-success-6;
+$btn-secondary-color-text_success_active: global.$color-success-6;
+$btn-secondary-color-bg_success: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-1')
+);
+$btn-secondary-color-bg_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-1')
+);
+$btn-secondary-color-bg_success_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-2')
+);
+$btn-secondary-color-bg_success_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-secondary-color-border_success: global.$color-transparent;
+$btn-secondary-color-border_success_disabled: global.$color-transparent;
+$btn-secondary-color-border_success_hover: global.$color-transparent;
+$btn-secondary-color-border_success_active: global.$color-transparent;
+// border
+$btn-secondary-border-style: global.$border-solid;
+
+/***** Dashed *****/
+$btn-dashed-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$btn-dashed-color-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+$btn-dashed-color-text_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$btn-dashed-color-text_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$btn-dashed-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$btn-dashed-color-bg_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$btn-dashed-color-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$btn-dashed-color-bg_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4'));
+$btn-dashed-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$btn-dashed-color-border_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+$btn-dashed-color-border_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-4'));
+$btn-dashed-color-border_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-5')
+);
+// status
+$btn-dashed-color-text_warning: global.$color-warning-6;
+$btn-dashed-color-text_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-dashed-color-text_warning_hover: global.$color-warning-6;
+$btn-dashed-color-text_warning_active: global.$color-warning-6;
+$btn-dashed-color-bg_warning: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-1')
+);
+$btn-dashed-color-bg_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-1')
+);
+$btn-dashed-color-bg_warning_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-2')
+);
+$btn-dashed-color-bg_warning_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-dashed-color-border_warning: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-2')
+);
+$btn-dashed-color-border_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-2')
+);
+$btn-dashed-color-border_warning_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-dashed-color-border_warning_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-4')
+);
+
+$btn-dashed-color-text_danger: global.$color-danger-6;
+$btn-dashed-color-text_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-dashed-color-text_danger_hover: global.$color-danger-6;
+$btn-dashed-color-text_danger_active: global.$color-danger-6;
+$btn-dashed-color-bg_danger: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1')
+);
+$btn-dashed-color-bg_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1')
+);
+$btn-dashed-color-bg_danger_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+$btn-dashed-color-bg_danger_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-dashed-color-border_danger: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+$btn-dashed-color-border_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-2')
+);
+$btn-dashed-color-border_danger_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-dashed-color-border_danger_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-4')
+);
+
+$btn-dashed-color-text_success: global.$color-success-6;
+$btn-dashed-color-text_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-dashed-color-text_success_hover: global.$color-success-6;
+$btn-dashed-color-text_success_active: global.$color-success-6;
+$btn-dashed-color-bg_success: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-1')
+);
+$btn-dashed-color-bg_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-1')
+);
+$btn-dashed-color-bg_success_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-2')
+);
+$btn-dashed-color-bg_success_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-dashed-color-border_success: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-2')
+);
+$btn-dashed-color-border_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-2')
+);
+$btn-dashed-color-border_success_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-dashed-color-border_success_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-4')
+);
+// border
+$btn-dashed-border-style: global.$border-dashed;
+
+/***** Text *****/
+$btn-text-color-text: global.$color-primary-6;
+$btn-text-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+$btn-text-color-text_hover: global.$color-primary-6;
+$btn-text-color-text_active: global.$color-primary-6;
+$btn-text-color-bg: global.$color-transparent;
+$btn-text-color-bg_disabled: global.$color-transparent;
+$btn-text-color-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$btn-text-color-bg_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$btn-text-color-border: global.$color-transparent;
+$btn-text-color-border_disabled: global.$color-transparent;
+$btn-text-color-border_hover: global.$color-transparent;
+$btn-text-color-border_active: global.$color-transparent;
+// status
+$btn-text-color-text_warning: global.$color-warning-6;
+$btn-text-color-text_warning_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-3')
+);
+$btn-text-color-text_warning_hover: global.$color-warning-6;
+$btn-text-color-text_warning_active: global.$color-warning-6;
+$btn-text-color-bg_warning: global.$color-transparent;
+$btn-text-color-bg_warning_disabled: global.$color-transparent;
+$btn-text-color-bg_warning_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$btn-text-color-bg_warning_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$btn-text-color-border_warning: global.$color-transparent;
+$btn-text-color-border_warning_disabled: global.$color-transparent;
+$btn-text-color-border_warning_hover: global.$color-transparent;
+$btn-text-color-border_warning_active: global.$color-transparent;
+
+$btn-text-color-text_danger: global.$color-danger-6;
+$btn-text-color-text_danger_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-3')
+);
+$btn-text-color-text_danger_hover: global.$color-danger-6;
+$btn-text-color-text_danger_active: global.$color-danger-6;
+$btn-text-color-bg_danger: global.$color-transparent;
+$btn-text-color-bg_danger_disabled: global.$color-transparent;
+$btn-text-color-bg_danger_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$btn-text-color-bg_danger_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$btn-text-color-border_danger: global.$color-transparent;
+$btn-text-color-border_danger_disabled: global.$color-transparent;
+$btn-text-color-border_danger_hover: global.$color-transparent;
+$btn-text-color-border_danger_active: global.$color-transparent;
+
+$btn-text-color-text_success: global.$color-success-6;
+$btn-text-color-text_success_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-3')
+);
+$btn-text-color-text_success_hover: global.$color-success-6;
+$btn-text-color-text_success_active: global.$color-success-6;
+$btn-text-color-bg_success: global.$color-transparent;
+$btn-text-color-bg_success_disabled: global.$color-transparent;
+$btn-text-color-bg_success_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$btn-text-color-bg_success_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$btn-text-color-border_success: global.$color-transparent;
+$btn-text-color-border_success_disabled: global.$color-transparent;
+$btn-text-color-border_success_hover: global.$color-transparent;
+$btn-text-color-border_success_active: global.$color-transparent;
+// border
+$btn-text-border-style: global.$border-solid;
+
+// vue overwrite token
+$btn-size-medium-radius: $btn-size-default-radius;
+$btn-size-medium-border-width: $btn-size-default-border-width;
+$btn-size-medium-icon-spacing: $btn-size-default-icon-spacing;
+$btn-size-medium-icon-vertical-align: $btn-size-default-icon-vertical-align;
+$btn-size-medium-padding-horizontal: $btn-size-default-padding-horizontal;
+$btn-size-medium-font-size: $btn-size-default-font-size;
+$btn-size-medium-height: $btn-size-default-height;
+
+/***** focus-visible *****/
+$btn-box-shadow-radius: 0.25em;
+$btn-primary-color-box-shadow: global.$color-primary-3;
+$btn-outline-color-box-shadow: global.$color-primary-3;
+$btn-secondary-color-box-shadow: global.$color-secondary-active;
+$btn-dashed-color-box-shadow: global.$color-secondary-active;
+$btn-text-color-box-shadow: global.$color-secondary-active;
+$btn-color-box-shadow_warning: global.$color-warning-3;
+$btn-color-box-shadow_danger: global.$color-danger-3;
+$btn-color-box-shadow_success: global.$color-success-3;

@@ -1,0 +1,230 @@
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:map';
+@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use '@components/badge/style/token.scss' as *;
+
+$badge-prefix-cls: string.unquote('#{theme.$prefix}-badge');
+
+$__less-vars: (
+  'badge-color-count-bg': $badge-color-count-bg,
+  'badge-color-count-text': $badge-color-count-text,
+  'badge-color-dot-bg_default': $badge-color-dot-bg_default,
+  'badge-color-dot-bg_error': $badge-color-dot-bg_error,
+  'badge-color-dot-bg_processing': $badge-color-dot-bg_processing,
+  'badge-color-dot-bg_success': $badge-color-dot-bg_success,
+  'badge-color-dot-bg_warning': $badge-color-dot-bg_warning,
+  'badge-red-color-dot-bg': $badge-red-color-dot-bg,
+  'badge-orangered-color-dot-bg': $badge-orangered-color-dot-bg,
+  'badge-orange-color-dot-bg': $badge-orange-color-dot-bg,
+  'badge-gold-color-dot-bg': $badge-gold-color-dot-bg,
+  'badge-lime-color-dot-bg': $badge-lime-color-dot-bg,
+  'badge-green-color-dot-bg': $badge-green-color-dot-bg,
+  'badge-cyan-color-dot-bg': $badge-cyan-color-dot-bg,
+  'badge-sdblue-color-dot-bg': $badge-sdblue-color-dot-bg,
+  'badge-purple-color-dot-bg': $badge-purple-color-dot-bg,
+  'badge-pinkpurple-color-dot-bg': $badge-pinkpurple-color-dot-bg,
+  'badge-magenta-color-dot-bg': $badge-magenta-color-dot-bg,
+  'badge-gray-color-dot-bg': $badge-gray-color-dot-bg,
+  'badge-color-status-text': $badge-color-status-text,
+  'badge-font-count-size': $badge-font-count-size,
+  'badge-font-count-weight': $badge-font-count-weight,
+  'badge-font-status-text-size': $badge-font-status-text-size,
+  'badge-margin-status-text-left': $badge-margin-status-text-left,
+  'badge-padding-count-horizontal': $badge-padding-count-horizontal,
+  'badge-size-count-height': $badge-size-count-height,
+  'badge-size-dot-width': $badge-size-dot-width,
+  'line-height-base': theme.$line-height-base,
+  'prefix': theme.$prefix,
+  'radius-circle': global.$radius-circle,
+  'sd-cssvars-prefix': theme.$sd-cssvars-prefix,
+  'transition-duration-3': theme.$transition-duration-3,
+  'transition-duration-5': theme.$transition-duration-5,
+  'transition-timing-function-overshoot': theme.$transition-timing-function-overshoot,
+);
+
+@function less-var($name, $fallback: null) {
+  @return legacyLessVar.get($__less-vars, $name, $fallback);
+}
+
+.#{$badge-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+
+  &-rtl {
+    direction: rtl;
+  }
+
+  &-number,
+  &-dot,
+  &-text,
+  &-custom-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 2;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    border-radius: $badge-size-count-height;
+    transform: translate(50%, -50%);
+    transform-origin: 100% 0%;
+  }
+
+  &-rtl &-number,
+  &-rtl &-dot,
+  &-rtl &-text,
+  &-rtl &-custom-dot {
+    right: unset;
+  }
+
+  &-custom-dot {
+    background-color: var(string.unquote('#{theme.$sd-cssvars-prefix}-color-bg-2'));
+  }
+
+  &-number,
+  &-text {
+    min-width: $badge-size-count-height;
+    height: $badge-size-count-height;
+    padding: 0 $badge-padding-count-horizontal;
+    color: $badge-color-count-text;
+    font-weight: $badge-font-count-weight;
+    font-size: $badge-font-count-size;
+    line-height: $badge-size-count-height;
+    background-color: $badge-color-count-bg;
+    box-shadow: 0 0 0 2px var(string.unquote('#{theme.$sd-cssvars-prefix}-color-bg-2'));
+  }
+
+  &-dot {
+    width: $badge-size-dot-width;
+    height: $badge-size-dot-width;
+    background-color: $badge-color-count-bg;
+    border-radius: global.$radius-circle;
+    box-shadow: 0 0 0 2px var(string.unquote('#{theme.$sd-cssvars-prefix}-color-bg-2'));
+  }
+
+  &-no-children &-dot,
+  &-no-children &-number,
+  &-no-children &-text {
+    position: relative;
+    top: unset;
+    right: unset;
+    display: inline-block;
+    transform: none;
+  }
+
+  &-status-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &-status-dot {
+    display: inline-block;
+    width: $badge-size-dot-width;
+    height: $badge-size-dot-width;
+    border-radius: global.$radius-circle;
+  }
+
+  &-status-normal {
+    background-color: $badge-color-dot-bg_default;
+  }
+
+  &-status-processing {
+    background-color: $badge-color-dot-bg_processing;
+  }
+
+  &-status-success {
+    background-color: $badge-color-dot-bg_success;
+  }
+
+  &-status-warning {
+    background-color: $badge-color-dot-bg_warning;
+  }
+
+  &-status-danger {
+    background-color: $badge-color-dot-bg_error;
+  }
+
+  $colors:
+    'red', 'orangered', 'orange', 'gold', 'lime', 'green', 'cyan', 'sdblue', 'purple', 'pinkpurple',
+    'magenta', 'gray';
+
+  @mixin for($data, $i: 1) {
+    @if $i <= list.length($data) {
+      $color-name: list.nth($data, $i);
+
+      $color: string.unquote('badge-#{$color-name}-color-dot-bg');
+
+      &-color-#{$color-name} {
+        background-color: less-var($color);
+      }
+
+      @include for($data, ($i + 1));
+    }
+  }
+
+  @include for($colors);
+
+  .#{$badge-prefix-cls}-status-text {
+    margin-left: $badge-margin-status-text-left;
+    color: $badge-color-status-text;
+    font-size: $badge-font-status-text-size;
+    line-height: theme.$line-height-base;
+  }
+
+  &-rtl &-status-text {
+    margin-right: $badge-margin-status-text-left;
+    margin-left: 0;
+  }
+
+  &-number-text {
+    display: inline-block;
+    animation: #{theme.$prefix}-badge-scale theme.$transition-duration-5
+      theme.$transition-timing-function-overshoot;
+  }
+}
+
+@keyframes #{theme.$prefix}-badge-scale {
+  from {
+    transform: scale(0, 0);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+.badge-zoom-enter,
+.badge-zoom-appear {
+  transform: translate(50%, -50%) scale(0.2, 0.2);
+  // opacity: 0;
+  transform-origin: center;
+}
+
+.badge-zoom-enter-active,
+.badge-zoom-appear-active {
+  transform: translate(50%, -50%) scale(1, 1);
+  transform-origin: center;
+  opacity: 1;
+  transition:
+    opacity theme.$transition-duration-3 theme.$transition-timing-function-overshoot,
+    transform theme.$transition-duration-3 theme.$transition-timing-function-overshoot;
+}
+
+.badge-zoom-exit {
+  transform: translate(50%, -50%) scale(1, 1);
+  transform-origin: center;
+  opacity: 1;
+}
+
+.badge-zoom-exit-active {
+  transform: translate(50%, -50%) scale(0.2, 0.2);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    opacity theme.$transition-duration-3 theme.$transition-timing-function-overshoot,
+    transform theme.$transition-duration-3 theme.$transition-timing-function-overshoot;
+}

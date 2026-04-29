@@ -1,0 +1,73 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$typography-font-size-h1: 36px;
+$typography-font-size-h2: 32px;
+$typography-font-size-h3: 28px;
+$typography-font-size-h4: 24px;
+$typography-font-size-h5: 20px;
+$typography-font-size-h6: 16px;
+
+$typography-heading-font-weight: global.$font-weight-500;
+
+$typography-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$typography-text-color-text-primary: global.$color-primary-6;
+$typography-text-color-text-secondary: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-2')
+);
+$typography-text-color-text-success: global.$color-success-6;
+$typography-text-color-text-warning: global.$color-warning-6;
+$typography-text-color-text-error: global.$color-danger-6;
+$typography-text-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$typography-text-color-bg-mark: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-yellow-4')));
+$typography-text-font-weight-bold: global.$font-weight-500;
+
+$typography-text-color-code: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$typography-text-color-code-border: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+$typography-text-color-code-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-2'));
+$typography-text-padding-code-vertical: 2px;
+$typography-text-padding-code-horizontal: 8px;
+$typography-text-margin-code-horizontal: 2px;
+
+$typography-paragraph-line-height: $line-height-base;
+$typography-paragraph-line-height-close: 1.3;
+
+// Operations
+$typography-operation-margin-left: global.$spacing-1;
+$typography-color-icon-copy: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$typography-color-bg-icon-copy: global.$color-transparent;
+$typography-color-icon-copy_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$typography-color-bg-icon-copy_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+$typography-color-icon-copy_copied: global.$color-success-6;
+
+$typography-color-icon-edit: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$typography-color-bg-icon-edit: global.$color-transparent;
+$typography-color-icon-edit_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$typography-color-bg-icon-edit_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$typography-color-expand-text: global.$color-primary-6;
+$typography-color-expand-text_hover: global.$color-primary-5;
+
+$typography-color-blockquote-border-width: 2px;
+$typography-color-blockquote-border-left: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-6')
+);
+$typography-color-blockquote-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$typography-heading-margin-top: 1em;
+$typography-heading-margin-bottom: 0.5em;

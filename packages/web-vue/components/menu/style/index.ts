@@ -1,4 +1,4 @@
-import '../../style/index.less';
+import '../../style/index.scss';
 import '../../dropdown/style';
 import '../../tooltip/style';
-import './index.less';
+import './index.scss';

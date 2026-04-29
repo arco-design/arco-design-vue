@@ -1,0 +1,70 @@
+@use '@style/theme/component.scss' as component;
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$checkbox-prefix-cls: string.unquote('#{$prefix}-checkbox');
+
+$checkbox-mask-border-width: global.$border-2;
+
+$checkbox-mask-border-style: global.$border-solid;
+
+$checkbox-mask-border-radius: global.$radius-small;
+
+$checkbox-mask-height: 14px;
+
+$checkbox-mask-bg-height: global.$size-6;
+
+$checkbox-mask-bg-color-bg: component.$icon-hover-color-bg;
+
+$checkbox-mask-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$checkbox-mask-color-bg_checked: global.$color-primary-6;
+
+$checkbox-mask-color-bg_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$checkbox-mask-color-bg_checked_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$checkbox-mask-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$checkbox-mask-color-border_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4'));
+
+$checkbox-mask-color-border_checked: global.$color-transparent;
+
+$checkbox-mask-color-border_checked_disabled: global.$color-transparent;
+
+$checkbox-mask-color-border_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);
+
+$checkbox-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$checkbox-color-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$checkbox-group-spacing: global.$spacing-7;
+
+$checkbox-text-mask-spacing: global.$spacing-4;
+
+$checkbox-text-font-size: global.$font-size-body-3;
+
+$checkbox-group-size-line-height_vertical: global.$size-8;
+
+$checkbox-size-check-icon: global.$size-2;
+
+$checkbox-color-check-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+
+$checkbox-color-check-icon_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);
+
+$checkbox-color-indeterminate-icon-width: 6px;
+
+$checkbox-color-indeterminate-icon-height: 2px;
+
+$checkbox-color-indeterminate-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));

@@ -1,0 +1,32 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use '@style/theme/index.scss' as *;
+
+$spin-font-size-text: 14px;
+
+$spin-font-size-icon: 20px;
+
+$spin-font-weight: global.$font-weight-500;
+
+$spin-line-height: $line-height-base;
+
+$spin-margin-top-tip: global.$spacing-3;
+
+$spin-color-text: global.$color-primary-6;
+
+$spin-color-icon: global.$color-primary-6;
+
+$spin-dot-color-icon_default: global.$color-primary-6;
+
+$spin-dot-color-icon_second: global.$color-primary-5;
+
+$spin-dot-color-icon_third: global.$color-primary-4;
+
+$spin-dot-color-icon_forth: global.$color-primary-4;
+
+$spin-dot-color-icon_last: global.$color-primary-2;
+
+$spin-dot-size-width: global.$size-2;

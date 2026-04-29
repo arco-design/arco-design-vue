@@ -1,0 +1,108 @@
+@use '@style/theme/component.scss' as component;
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$radio-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$radio-border-width: global.$border-2;
+
+$radio-layout-height: 14px;
+
+$radio-color-border_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$radio-color-border_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$radio-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$radio-color-bg_checked: global.$color-primary-6;
+
+$radio-border-radius: global.$radius-circle;
+
+$radio-color-bg_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$radio-color-bg_checked_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$radio-color-dot-bg_checked_disabled: $radio-color-bg_disabled;
+
+$radio-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$radio-color-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$radio-color-text_checked_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$radio-font-text-size: global.$font-size-body-3;
+
+$radio-font-text-size_large: global.$font-size-body-3;
+
+$radio-font-text-size_mini: global.$font-size-body-1;
+
+$radio-font-text-size_small: global.$font-size-body-3;
+
+$radio-margin-text-left: global.$spacing-4;
+
+$radio-size-mask-height: global.$size-6;
+
+$radio-mask-bg-color-bg: component.$icon-hover-color-bg;
+
+$radio-group-margin-right: global.$spacing-8;
+
+$radio-group-button-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$radio-button-padding-horizontal: global.$spacing-6;
+
+$radio-button-spacing: 3px;
+
+$radio-button-color-bg_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-5'));
+
+$radio-button-color-bg_hover: $radio-button-color-bg_active;
+
+$radio-button-color-text_active: global.$color-primary-6;
+
+$radio-button-font-text-weight_active: global.$font-weight-500;
+
+$radio-button-color-text_hover: $radio-color-text;
+
+$radio-button-border-radius: global.$radius-small;
+
+$radio-button-bg-border-radius: $radio-button-border-radius;
+
+$radio-button-color-bg: global.$color-transparent;
+
+$radio-button-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$radio-button-color-bg_disabled: global.$color-transparent;
+
+$radio-button-color-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$radio-button-color-bg_checked_disabled: $radio-button-color-bg_active;
+
+$radio-button-color-text_checked_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$radio-button-color-separator-bg: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$radio-button-size-separator-width: 1px;
+
+$radio-button-size-separator-height: 14px;
+
+$radio-size-default-height: global.$size-default;
+
+$radio-size-small-height: global.$size-small;
+
+$radio-size-mini-height: global.$size-mini;
+
+$radio-size-large-height: global.$size-large;
+
+$radio-group-size-line-height_vertical: global.$size-8;

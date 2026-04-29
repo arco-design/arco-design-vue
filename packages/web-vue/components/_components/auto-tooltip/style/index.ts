@@ -1,2 +1,2 @@
 import '../../../tooltip/style';
-import './index.less';
+import './index.scss';

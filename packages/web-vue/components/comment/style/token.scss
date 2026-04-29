@@ -1,0 +1,35 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$comment-color-author-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$comment-color-datetime-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+
+$comment-color-content-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$comment-color-actions-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$comment-font-size: global.$font-size-body-3;
+
+$comment-font-author-size: global.$font-size-body-3;
+
+$comment-font-datetime-size: global.$font-size-body-1;
+
+$comment-margin-avatar-right: global.$spacing-6;
+
+$comment-margin-author-right: global.$spacing-4;
+
+$comment-margin-actions-top: global.$spacing-4;
+
+$comment-margin-bottom: global.$spacing-8;
+
+$comment-margin-actions-right: global.$spacing-4;
+
+$comment-size-avatar-width: global.$size-8;
+
+$comment-font-action-size: global.$font-size-body-3;

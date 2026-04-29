@@ -1,0 +1,241 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$tabs-size-mini-font-size: global.$font-size-body-1;
+
+$tabs-size-small-font-size: global.$font-size-body-3;
+
+$tabs-size-default-font-size: global.$font-size-body-3;
+
+$tabs-size-large-font-size: global.$font-size-body-3;
+
+$tabs-size-mini-font-size_card: global.$font-size-body-1;
+
+$tabs-size-small-font-size_card: global.$font-size-body-3;
+
+$tabs-size-default-font-size_card: global.$font-size-body-3;
+
+$tabs-size-large-font-size_card: global.$font-size-body-3;
+
+$tabs-size-default-font-size_text: global.$font-size-body-3;
+
+$tabs-size-default-font-size_rounded: global.$font-size-body-3;
+
+$tabs-size-mini-font-size_capsule: global.$font-size-body-1;
+
+$tabs-size-small-font-size_capsule: global.$font-size-body-3;
+
+$tabs-size-default-font-size_capsule: global.$font-size-body-3;
+
+$tabs-size-large-font-size_capsule: global.$font-size-body-3;
+
+$tabs-size-mini-font-size_rounded: global.$font-size-body-1;
+
+$tabs-size-small-font-size_rounded: global.$font-size-body-3;
+
+$tabs-size-default-font-size_rounded: global.$font-size-body-3;
+
+$tabs-size-large-font-size_rounded: global.$font-size-body-3;
+
+$tabs-size-mini-header-height_line: global.$size-8;
+
+$tabs-size-small-header-height_line: global.$size-9;
+
+$tabs-size-default-header-height_line: global.$size-10;
+
+$tabs-size-large-header-height_line: global.$size-11;
+
+$tabs-size-mini-header-height: global.$size-6;
+
+$tabs-size-small-header-height: global.$size-7;
+
+$tabs-size-default-header-height: global.$size-8;
+
+$tabs-size-large-header-height: global.$size-9;
+
+$tabs-size-mini-header-height_capsule: global.$size-6;
+
+$tabs-size-small-header-height_capsule: global.$size-7;
+
+$tabs-size-default-header-height_capsule: global.$size-8;
+
+$tabs-size-large-header-height_capsule: global.$size-9;
+
+$tabs-size-mini-header-height_rounded: global.$size-6;
+
+$tabs-size-small-header-height_rounded: global.$size-7;
+
+$tabs-size-default-header-height_rounded: global.$size-8;
+
+$tabs-size-large-header-height_rounded: global.$size-9;
+
+$tabs-size-default-header-height_text: global.$size-8;
+
+$tabs-size-default-header-height_rounded: global.$size-8;
+
+$tabs-padding-title-text-vertical: 1px;
+
+$tabs-padding-title-text-horizontal: global.$spacing-4;
+
+$tabs-color-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$tabs-color-title-text_active: global.$color-primary-6;
+
+$tabs-color-title-text_hover: $tabs-color-title-text;
+
+$tabs-color-title-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$tabs-color-title-text_disabled_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$tabs-line-size-header-border: global.$border-1;
+
+$tabs-line-color-header-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$tabs-line-size-ink-stroke: 2px;
+
+$tabs-line-color-ink-bg: global.$color-primary-6;
+
+$tabs-line-color-ink-bg_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$tabs-line-font-title-text-weight_active: global.$font-weight-500;
+
+$tabs-line-margin-title-horizontal: global.$spacing-10;
+
+$tabs-line-margin-title-horizontal_first: global.$spacing-7;
+
+$tabs-line-margin-title-vertical: global.$spacing-6;
+
+$tabs-line-padding-title-horizontal_vertical: global.$spacing-8;
+
+$tabs-line-color-title-bg: global.$color-transparent;
+
+$tabs-line-color-title-bg_active: global.$color-transparent;
+
+$tabs-line-color-title-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$tabs-line-font-title-text-weight_hover: global.$font-weight-400;
+
+$tabs-line-border-radius: global.$radius-small;
+
+$tabs-card-border-width: global.$border-1;
+
+$tabs-card-color-title-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$tabs-card-padding-title-horizontal: global.$spacing-7;
+
+$tabs-card-padding-title-right_editable: global.$spacing-6;
+
+$tabs-card-border-radius: global.$radius-small;
+
+$tabs-card-color-title-bg: global.$color-transparent;
+
+$tabs-card-color-title-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$tabs-card-color-title-bg_disabled: $tabs-card-color-title-bg;
+
+$tabs-card-color-title-bg_active: global.$color-transparent;
+
+$tabs-card-border-content-width: global.$border-1;
+
+$tabs-card-gutter-spacing-horizontal: global.$spacing-2;
+
+$tabs-card-gutter-color-title-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+
+$tabs-card-gutter-color-title-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);
+
+$tabs-card-gutter-color-title-bg_active: global.$color-transparent;
+
+$tabs-card-gutter-color-title-bg_disabled: $tabs-card-gutter-color-title-bg;
+
+$tabs-text-size-separator-height: global.$size-3;
+
+$tabs-text-size-separator-width: 2px;
+
+$tabs-text-color-separator-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$tabs-text-margin-title-horizontal: global.$spacing-4;
+
+$tabs-text-color-title-bg: global.$color-transparent;
+
+$tabs-text-color-title-bg_active: global.$color-transparent;
+
+$tabs-text-color-title-bg_disabled: global.$color-transparent;
+
+$tabs-text-color-title-bg_disabled_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$tabs-text-color-title-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$tabs-rounded-padding-title-horizontal: global.$spacing-7;
+
+$tabs-rounded-margin-title-horizontal: global.$spacing-6;
+
+$tabs-rounded-color-title-bg: global.$color-transparent;
+
+$tabs-rounded-color-title-bg_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$tabs-rounded-color-title-bg_disabled: global.$color-transparent;
+
+$tabs-rounded-color-title-bg_hover: $tabs-rounded-color-title-bg_active;
+
+$tabs-capsule-color-header-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$tabs-capsule-margin-title-horizontal: 3px;
+
+$tabs-capsule-padding-title-horizontal: global.$spacing-6;
+
+$tabs-capsule-padding-header-vertical: 3px;
+
+$tabs-capsule-padding-header-horizontal: 3px;
+
+$tabs-capsule-border-header-radius: global.$radius-small;
+
+$tabs-capsule-color-title-bg: global.$color-transparent;
+
+$tabs-capsule-color-title-bg_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$tabs-capsule-color-title-bg_hover: $tabs-capsule-color-title-bg_active;
+
+$tabs-capsule-size-separator-width: 1px;
+
+$tabs-capsule-size-separator-height: 14px;
+
+$tabs-capsule-color-separator-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$tabs-margin-close-icon-left: global.$spacing-4;
+
+$tabs-size-icon: global.$size-3;
+
+$tabs-size-icon-bg: global.$size-4;
+
+$tabs-card-color-close-icon-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4')
+);
+
+$tabs-margin-add-icon-left: global.$spacing-4;
+
+$tabs-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$tabs-color-icon_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$tabs-spacing-nav-icon-header: global.$spacing-3;
+
+$tabs-padding-header-wrapper-horizontal: global.$spacing-5;
+
+$tabs-padding-header-wrapper-vertical: global.$spacing-3;
+
+$tabs-content-padding: global.$spacing-7;

@@ -1,0 +1,75 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$card-size-small-height-title: global.$size-10;
+
+$card-size-small-font-size-title: global.$font-size-title-1;
+
+$card-size-small-font-size-title-extra: global.$font-size-body-3;
+
+$card-size-small-font-size: global.$font-size-body-3;
+
+$card-size-small-padding-horizontal-title: global.$spacing-7;
+
+$card-size-small-padding-vertical-title: global.$spacing-4;
+
+$card-size-small-padding-horizontal-body: global.$spacing-7;
+
+$card-size-small-padding-vertical-body: global.$spacing-6;
+
+$card-size-default-height-title: 46px;
+
+$card-size-default-font-size-title: global.$font-size-title-1;
+
+$card-size-default-font-size-title-extra: global.$font-size-body-3;
+
+$card-size-default-font-size: global.$font-size-body-3;
+
+$card-size-default-padding-horizontal-title: global.$spacing-7;
+
+$card-size-default-padding-vertical-title: global.$spacing-5;
+
+$card-size-default-padding-horizontal-body: global.$spacing-7;
+
+$card-size-default-padding-vertical-body: global.$spacing-7;
+
+$card-line-height: $line-height-base;
+
+$card-font-weight-title: global.$font-weight-500;
+
+$card-margin-top-meta-footer: global.$spacing-8;
+
+$card-margin-top-meta-description: global.$spacing-2;
+
+$card-margin-right-action-item: global.$spacing-6;
+
+$card-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$card-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$card-color-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$card-color-title-extra: global.$color-primary-6;
+
+$card-color-body: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$card-color-action: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$card-color-action_hover: global.$color-primary-6;
+
+$card-color-box-shadow: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-2')));
+
+$card-color-box-shadow_dark: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-1')), 40%);
+
+$card-border-width: global.$border-1;
+
+$card-border-width-title-bottom: global.$border-1;
+
+$card-border-radius: global.$radius-small;
+
+$card-border-radius-no-border: global.$radius-none;

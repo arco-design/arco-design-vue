@@ -1,0 +1,97 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+/**********************************************
+ * size: mini / small / default / large
+ **********************************************/
+$input-tag-size-mini-height: global.$size-mini;
+$input-tag-size-small-height: global.$size-small;
+$input-tag-size-default-height: global.$size-default;
+$input-tag-size-large-height: global.$size-large;
+
+$input-tag-size-mini-tag-height: global.$size-5;
+$input-tag-size-small-tag-height: global.$size-5;
+$input-tag-size-default-tag-height: global.$size-6;
+$input-tag-size-large-tag-height: global.$size-7;
+
+$input-tag-size-mini-font-size: global.$font-size-body-1;
+$input-tag-size-small-font-size: global.$font-size-body-3;
+$input-tag-size-default-font-size: global.$font-size-body-3;
+$input-tag-size-large-font-size: global.$font-size-body-3;
+
+/****************************************************
+ * status: default / error / disabled _ (hover / focus)
+ ****************************************************/
+// text color
+$input-tag-color-text_default: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$input-tag-color-text_error: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$input-tag-color-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+// icon color
+$input-tag-color-placeholder: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+$input-tag-color-icon-clear: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$input-tag-color-icon-clear-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4')
+);
+
+// border color with focus & hover
+$input-tag-color-border_default: global.$color-transparent;
+$input-tag-color-border_default_hover: global.$color-transparent;
+$input-tag-color-border_default_focus: global.$color-primary-6;
+$input-tag-color-border_error: global.$color-transparent;
+$input-tag-color-border_error_hover: global.$color-transparent;
+$input-tag-color-border_error_focus: global.$color-danger-6;
+$input-tag-color-border_disabled: global.$color-transparent;
+$input-tag-color-border_disabled_hover: $input-tag-color-border_disabled;
+$input-tag-color-border_disabled_focus: $input-tag-color-border_disabled;
+
+// bg color with focus & hover
+$input-tag-color-bg_default: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$input-tag-color-bg_default_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$input-tag-color-bg_default_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+$input-tag-color-bg_error: global.$color-danger-1;
+$input-tag-color-bg_error_hover: global.$color-danger-2;
+$input-tag-color-bg_error_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+$input-tag-color-bg_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$input-tag-color-bg_disabled_hover: $input-tag-color-bg_disabled;
+
+$input-tag-color-shadow_default_focus: global.$color-primary-2;
+$input-tag-color-shadow_error_focus: global.$color-danger-2;
+$input-tag-size-shadow_error_focus: global.$shadow-distance-none;
+$input-tag-size-shadow_default_focus: global.$shadow-distance-none;
+
+// input box
+$input-tag-tag-margin-right: global.$spacing-2;
+$input-tag-tag-margin-vertical: global.$spacing-1;
+$input-tag-padding-horizontal: global.$spacing-2;
+$input-tag-border-radius: global.$radius-small;
+$input-tag-border-width: global.$border-1;
+$input-tag-size-icon-clear: global.$size-3;
+$input-tag-size-icon-clear_hover: global.$size-5;
+
+// tags
+$input-tag-tag-font-size: global.$font-size-body-1;
+$input-tag-tag-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+$input-tag-tag-color-bg_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$input-tag-tag-color-bg_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$input-tag-tag-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$input-tag-tag-color-border_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);
+$input-tag-tag-color-border_focus: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+$input-tag-tag-remove-icon-color-bg: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+$input-tag-tag-remove-icon-color-bg_focus: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);
+
+// vue overwrite token
+$input-tag-size-medium-height: $input-tag-size-default-height;
+$input-tag-size-medium-tag-height: $input-tag-size-default-tag-height;
+$input-tag-size-medium-font-size: $input-tag-size-default-font-size;

@@ -1,0 +1,99 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$tree-color-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$tree-color-title-text_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$tree-color-title-text_active: global.$color-primary-6;
+
+$tree-color-title-text_disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$tree-color-title-text_active_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
+);
+
+$tree-color-title-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$tree-color-title-bg_highlight: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
+);
+
+$tree-color-title-text_highlight: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$tree-color-title-bg_dragging: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+
+$tree-color-title-text_dragging: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$tree-color-loading-icon: global.$color-primary-6;
+
+$tree-color-switcher-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$tree-color-drag-icon: global.$color-primary-6;
+
+$tree-node-border-radius: global.$radius-small;
+
+$tree-margin-checkbox-right: global.$spacing-5;
+
+$tree-margin-switcher-icon-right: global.$spacing-5;
+
+$tree-margin-custom-icon-right: global.$spacing-5;
+
+$tree-padding-title-horizontal: global.$spacing-2;
+
+$tree-spacing-drag-icon-right: global.$spacing-6;
+
+$tree-spacing-drag-icon-text: global.$spacing-22;
+
+$tree-draggable-color-gap-bg: global.$color-primary-6;
+
+$tree-draggable-size-gap-height: 2px;
+
+$tree-showline-color-line-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$tree-showline-color-plus-icon-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$tree-showline-size-plus-icon-stroke: 2px;
+
+$tree-showline-size-plus-icon-width: 6px;
+
+$tree-showline-size-line-width: global.$border-1;
+
+$tree-showline-style-line: global.$border-solid;
+
+$tree-showline-size-switcher-icon: 14px;
+
+$tree-showline-spacing-line-vertical: global.$spacing-2;
+
+$tree-showline-border-plus-icon-radius: global.$radius-small;
+
+$tree-size-mini-icon-size: global.$size-3;
+
+$tree-size-small-icon-size: global.$size-3;
+
+$tree-size-default-icon-size: global.$size-3;
+
+$tree-size-large-icon-size: global.$size-3;
+
+$tree-size-expand-icon-bg_hover: global.$size-4;
+
+$tree-size-mini-font-size: global.$font-size-body-1;
+
+$tree-size-small-font-size: global.$font-size-body-3;
+
+$tree-size-default-font-size: global.$font-size-body-3;
+
+$tree-size-large-font-size: global.$font-size-body-3;
+
+$tree-size-mini-line-height: global.$size-mini;
+
+$tree-size-small-line-height: global.$size-small;
+
+$tree-size-default-line-height: global.$size-default;
+
+$tree-size-large-line-height: global.$size-large;

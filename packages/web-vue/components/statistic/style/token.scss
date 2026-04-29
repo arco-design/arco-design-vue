@@ -1,0 +1,33 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$statistic-font-title-size: global.$font-size-body-3;
+
+$statistic-margin-title-bottom: global.$spacing-4;
+
+$statistic-margin-extra-top: global.$spacing-4;
+
+$statistic-font-value-size: global.$font-size-body-3;
+
+$statistic-font-int-size: 26px;
+
+$statistic-font-decimal-size: inherit;
+
+$statistic-font-value-weight: global.$font-weight-500;
+
+$statistic-color-value-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$statistic-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$statistic-size-value-icon: 14px;
+
+$statistic-font-suffix-size: 14px;
+
+$statistic-color-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$statistic-color-extra-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));

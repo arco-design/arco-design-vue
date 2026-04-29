@@ -1,0 +1,61 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$list-border-width: 1px;
+$list-border-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$list-border-radius: global.$radius-medium;
+
+$list-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$list-font-size: global.$font-size-body-3;
+$list-line-height: $line-height-base;
+
+$list-color-text-header: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$list-color-bg-item-hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$list-font-size-header: global.$font-size-title-1;
+$list-font-weight-header: global.$font-weight-500;
+$list-line-height-header: 1.5;
+
+/**********************************************
+ * size:  small / default / large
+ **********************************************/
+$list-size-small-padding-vertical-header: global.$spacing-4;
+$list-size-small-padding-horizontal-header: global.$spacing-8;
+$list-size-small-padding-vertical-item: 9px;
+$list-size-small-padding-horizontal-item: global.$spacing-8;
+
+$list-size-default-padding-vertical-header: global.$spacing-6;
+$list-size-default-padding-horizontal-header: global.$spacing-8;
+$list-size-default-padding-vertical-item: 13px;
+$list-size-default-padding-horizontal-item: global.$spacing-8;
+
+$list-size-large-padding-vertical-header: global.$spacing-7;
+$list-size-large-padding-horizontal-header: global.$spacing-8;
+$list-size-large-padding-vertical-item: 17px;
+$list-size-large-padding-horizontal-item: global.$spacing-8;
+
+// meta
+$list-meta-font-weight-title: global.$font-weight-500;
+$list-meta-color-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$list-mete-color-description: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$list-meta-margin-right-avatar: global.$spacing-7;
+$list-meta-margin-bottom-title: global.$spacing-1;
+$list-meta-padding-horizontal: global.$spacing-none;
+$list-meta-padding-vertical: global.$spacing-2;
+
+// actions
+$list-action-gap: global.$spacing-8;
+$list-action-margin-top: global.$spacing-2;
+
+// pagination
+$list-pagination-margin-top: global.$spacing-9;
+
+// vue覆盖token
+$list-size-medium-padding-vertical-header: $list-size-default-padding-vertical-header;
+$list-size-medium-padding-horizontal-header: $list-size-default-padding-horizontal-header;
+$list-size-medium-padding-vertical-item: $list-size-default-padding-vertical-item;
+$list-size-medium-padding-horizontal-item: $list-size-default-padding-horizontal-item;

@@ -1,0 +1,43 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$breadcrumb-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$breadcrumb-color-text_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$breadcrumb-color-link-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$breadcrumb-color-separator: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-4'));
+
+$breadcrumb-color-bg_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$breadcrumb-color-bg: global.$color-transparent;
+
+$breadcrumb-margin-separator-horizontal: global.$spacing-2;
+
+$breadcrumb-margin-dropdown-icon-left: global.$spacing-2;
+
+$breadcrumb-padding-text-horizontal: global.$spacing-2;
+
+$breadcrumb-border-text-radius_hover: global.$radius-small;
+
+$breadcrumb-size-text-height: global.$size-6;
+
+$breadcrumb-size-separator-height: global.$size-3;
+
+$breadcrumb-size-dropdown-icon: global.$size-3;
+
+$breadcrumb-size-font-size: global.$font-size-body-3;
+
+$breadcrumb-font-weight_active: global.$font-weight-500;
+
+$breadcrumb-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
+
+$breadcrumb-color-link-text_hover: global.$color-link-6;
+
+$breadcrumb-color-dropdown-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));

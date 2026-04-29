@@ -74,20 +74,20 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
   // @ts-ignore
   const vm = createVNode(
     _Modal,
-    ({
-	...defaultConfig,
-	...omit(config, [
-		'content',
-		'title',
-		'footer',
-		'visible',
-		'unmountOnClose',
-		'onOk',
-		'onCancel',
-		'onClose'
-	]),
-	footer: typeof config.footer === 'boolean' ? config.footer : undefined
-}),
+    {
+      ...defaultConfig,
+      ...omit(config, [
+        'content',
+        'title',
+        'footer',
+        'visible',
+        'unmountOnClose',
+        'onOk',
+        'onCancel',
+        'onClose',
+      ]),
+      footer: typeof config.footer === 'boolean' ? config.footer : undefined,
+    },
     {
       default: getSlotFunction(config.content),
       title: getSlotFunction(config.title),

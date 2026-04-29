@@ -1,0 +1,217 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use 'sass:map';
+@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use '@components/descriptions/style/token.scss' as *;
+
+$descriptions-prefix-cls: string.unquote('#{theme.$prefix}-descriptions');
+
+$__less-vars: (
+  'descriptions-border-color-bg-label': $descriptions-border-color-bg-label,
+  'descriptions-border-item-size-mini-padding-horizontal':
+    $descriptions-border-item-size-mini-padding-horizontal,
+  'descriptions-border-item-size-mini-padding-vertical':
+    $descriptions-border-item-size-mini-padding-vertical,
+  'descriptions-border-item-size-small-padding-horizontal':
+    $descriptions-border-item-size-small-padding-horizontal,
+  'descriptions-border-item-size-small-padding-vertical':
+    $descriptions-border-item-size-small-padding-vertical,
+  'descriptions-border-item-size-medium-padding-horizontal':
+    $descriptions-border-item-size-medium-padding-horizontal,
+  'descriptions-border-item-size-medium-padding-vertical':
+    $descriptions-border-item-size-medium-padding-vertical,
+  'descriptions-border-item-size-default-padding-horizontal':
+    $descriptions-border-item-size-default-padding-horizontal,
+  'descriptions-border-item-size-default-padding-vertical':
+    $descriptions-border-item-size-default-padding-vertical,
+  'descriptions-border-item-size-large-padding-horizontal':
+    $descriptions-border-item-size-large-padding-horizontal,
+  'descriptions-border-item-size-large-padding-vertical':
+    $descriptions-border-item-size-large-padding-vertical,
+  'descriptions-border-radius': $descriptions-border-radius,
+  'descriptions-border-style': $descriptions-border-style,
+  'descriptions-border-width': $descriptions-border-width,
+  'descriptions-color-border': $descriptions-color-border,
+  'descriptions-color-text-label': $descriptions-color-text-label,
+  'descriptions-color-text-value': $descriptions-color-text-value,
+  'descriptions-color-title': $descriptions-color-title,
+  'descriptions-font-size-title': $descriptions-font-size-title,
+  'descriptions-font-weight-text-label': $descriptions-font-weight-text-label,
+  'descriptions-font-weight-text-value': $descriptions-font-weight-text-value,
+  'descriptions-font-weight-title': $descriptions-font-weight-title,
+  'descriptions-item-size-mini-spacing-bottom': $descriptions-item-size-mini-spacing-bottom,
+  'descriptions-item-size-small-spacing-bottom': $descriptions-item-size-small-spacing-bottom,
+  'descriptions-item-size-medium-spacing-bottom': $descriptions-item-size-medium-spacing-bottom,
+  'descriptions-item-size-default-spacing-bottom': $descriptions-item-size-default-spacing-bottom,
+  'descriptions-item-size-large-spacing-bottom': $descriptions-item-size-large-spacing-bottom,
+  'descriptions-size-mini-font-size-text': $descriptions-size-mini-font-size-text,
+  'descriptions-size-mini-title-margin-bottom': $descriptions-size-mini-title-margin-bottom,
+  'descriptions-size-small-font-size-text': $descriptions-size-small-font-size-text,
+  'descriptions-size-small-title-margin-bottom': $descriptions-size-small-title-margin-bottom,
+  'descriptions-size-medium-font-size-text': $descriptions-size-medium-font-size-text,
+  'descriptions-size-medium-title-margin-bottom': $descriptions-size-medium-title-margin-bottom,
+  'descriptions-size-default-font-size-text': $descriptions-size-default-font-size-text,
+  'descriptions-size-default-title-margin-bottom': $descriptions-size-default-title-margin-bottom,
+  'descriptions-size-large-font-size-text': $descriptions-size-large-font-size-text,
+  'descriptions-size-large-title-margin-bottom': $descriptions-size-large-title-margin-bottom,
+  'line-height-base': theme.$line-height-base,
+  'prefix': theme.$prefix,
+);
+
+@function less-var($name, $fallback: null) {
+  @return legacyLessVar.get($__less-vars, $name, $fallback);
+}
+
+@mixin descriptions-size($size) {
+  &-size-#{$size} &-title {
+    margin-bottom: less-var('descriptions-size-#{$size}-title-margin-bottom');
+  }
+
+  &-size-#{$size} &-item-label-block,
+  &-size-#{$size} &-item-value-block {
+    padding-right: less-var('descriptions-border-item-size-#{$size}-padding-horizontal');
+    padding-bottom: less-var('descriptions-item-size-#{$size}-spacing-bottom');
+    font-size: less-var('descriptions-size-#{$size}-font-size-text');
+  }
+
+  &-size-#{$size}#{&}-border &-item-label-block,
+  &-size-#{$size}#{&}-border &-item-value-block {
+    padding: less-var('descriptions-border-item-size-#{$size}-padding-vertical')
+      less-var('descriptions-border-item-size-#{$size}-padding-horizontal');
+  }
+
+  &-size-#{$size}#{&}-border#{&}-layout-inline-vertical &-item {
+    $_descriptions-padding-vertical: string.unquote(
+      'descriptions-border-item-size-#{$size}-padding-vertical'
+    );
+
+    padding: less-var($_descriptions-padding-vertical) + 5px
+      less-var('descriptions-border-item-size-#{$size}-padding-horizontal');
+  }
+}
+
+.#{$descriptions-prefix-cls} {
+  &-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &-table-layout-fixed table {
+    table-layout: fixed;
+  }
+
+  &-title {
+    margin-bottom: $descriptions-size-default-title-margin-bottom;
+    color: $descriptions-color-title;
+    font-weight: $descriptions-font-weight-title;
+    font-size: $descriptions-font-size-title;
+    line-height: theme.$line-height-base;
+  }
+
+  &-item,
+  &-item-label,
+  &-item-value {
+    box-sizing: border-box;
+    font-size: $descriptions-size-default-font-size-text;
+    line-height: theme.$line-height-base;
+    text-align: left;
+  }
+
+  &-table-layout-fixed &-item-label {
+    width: auto;
+  }
+
+  &-item-label-block {
+    width: 1px;
+    padding: 0 4px $descriptions-item-size-default-spacing-bottom 0;
+    color: $descriptions-color-text-label;
+    font-weight: $descriptions-font-weight-text-label;
+    white-space: nowrap;
+  }
+
+  &-item-value-block {
+    padding: 0 4px $descriptions-item-size-default-spacing-bottom 0;
+    color: $descriptions-color-text-value;
+    font-weight: $descriptions-font-weight-text-value;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  &-item-label-inline,
+  &-item-value-inline {
+    box-sizing: border-box;
+    font-size: $descriptions-size-default-font-size-text;
+    line-height: theme.$line-height-base;
+    text-align: left;
+  }
+
+  &-item-label-inline {
+    margin-bottom: 2px;
+    color: $descriptions-color-text-label;
+    font-weight: $descriptions-font-weight-text-label;
+  }
+
+  &-item-value-inline {
+    color: $descriptions-color-text-value;
+    font-weight: $descriptions-font-weight-text-value;
+  }
+
+  &-layout-inline-horizontal &-item-label-inline {
+    margin-right: 4px;
+  }
+
+  &-layout-inline-horizontal &-item-label-inline,
+  &-layout-inline-horizontal &-item-value-inline {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  &-border#{&}-layout-inline-vertical &-item {
+    padding: $descriptions-border-item-size-default-padding-vertical + 5px
+      $descriptions-border-item-size-default-padding-horizontal;
+  }
+
+  &-border &-body {
+    overflow: hidden;
+    border: $descriptions-border-width $descriptions-border-style $descriptions-color-border;
+    border-radius: $descriptions-border-radius;
+  }
+
+  &-border &-row:not(:last-child) {
+    border-bottom: $descriptions-border-width $descriptions-border-style $descriptions-color-border;
+  }
+
+  &-border &-item,
+  &-border &-item-label-block,
+  &-border &-item-value-block {
+    padding: $descriptions-border-item-size-default-padding-vertical
+      $descriptions-border-item-size-default-padding-horizontal;
+    border-right: $descriptions-border-width $descriptions-border-style $descriptions-color-border;
+  }
+
+  &-border &-item-label-block {
+    background-color: $descriptions-border-color-bg-label;
+  }
+
+  &-border &-item-value-block:last-child {
+    border-right: none;
+  }
+
+  &-border &-item:last-child {
+    border-right: none;
+  }
+
+  &-border#{&}-layout-vertical &-item-label-block:last-child {
+    border-right: none;
+  }
+
+  &-layout-vertical:not(#{&}-border) &-item-value-block:first-child {
+    padding-left: 0;
+  }
+
+  // Size
+  @include descriptions-size(mini);
+  @include descriptions-size(small);
+  @include descriptions-size(medium);
+  @include descriptions-size(large);
+}

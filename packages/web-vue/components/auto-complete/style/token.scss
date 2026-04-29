@@ -1,0 +1,64 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+/**********************************************
+ * Popup Box
+ **********************************************/
+$auto-complete-popup-max-height: global.$size-50;
+
+$auto-complete-popup-border-radius: global.$radius-medium;
+
+$auto-complete-popup-padding-vertical: global.$spacing-2;
+
+$auto-complete-popup-font-size: global.$font-size-body-3;
+
+$auto-complete-popup-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+
+$auto-complete-popup-box-shadow: global.$shadow2-down;
+
+/**********************************************
+ * Popup Options
+ * status: default / disabled / selected / hover
+ **********************************************/
+$auto-complete-option-height: global.$size-9;
+
+$auto-complete-option-font-weight_selected: global.$font-weight-500;
+
+$auto-complete-option-padding-horizontal: global.$spacing-6;
+
+$auto-complete-option-color-bg_default: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup')
+);
+
+$auto-complete-option-color-bg_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+);
+
+$auto-complete-option-color-bg_selected: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup')
+);
+
+$auto-complete-option-color-bg_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup')
+);
+
+$auto-complete-option-color-text_default: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$auto-complete-option-color-text_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$auto-complete-option-color-text_selected: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+
+$auto-complete-option-color-text_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);

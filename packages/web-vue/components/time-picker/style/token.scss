@@ -1,0 +1,33 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$timepicker-wrapper-border-radius: global.$radius-medium;
+
+$timepicker-column-width: 64px;
+
+$timepicker-column-height: 224px;
+
+$timepicker-cell-height: 24px;
+
+$timepicker-cell-spacing: 4px;
+
+$timepicker-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$timepicker-color-text-cell: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$timepicker-color-bg-cell_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$timepicker-color-bg-cell_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2'));
+
+$timepicker-color-text-cell_disabled: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+
+$timepicker-font-weight-cell: global.$font-weight-500;
+
+$timepicker-font-weight-cell_active: global.$font-weight-500;

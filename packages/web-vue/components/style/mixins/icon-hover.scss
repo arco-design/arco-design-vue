@@ -1,0 +1,14 @@
+@use '@style/theme/index.scss' as *;
+
+@mixin icon-hover($prefixCls, $inner-height, $bg-height) {
+  .#{$prefix}-icon-hover.#{$prefixCls}-icon-hover::before {
+    width: $bg-height;
+    height: $bg-height;
+  }
+}
+
+@mixin icon-hover-bg($prefixCls, $background-color-hover) {
+  .#{$prefix}-icon-hover.#{$prefixCls}-icon-hover:hover::before {
+    background-color: $background-color-hover;
+  }
+}

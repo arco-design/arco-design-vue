@@ -1,0 +1,21 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+
+@forward '@components/resize-box/style/token.scss';
+
+@use '@style/theme/index.scss' as *;
+@use '@components/resize-box/style/token.scss' as *;
+
+$split-trigger-color-background: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+
+$split-trigger-size-icon-wrapper: 6px;
+
+$split-trigger-font-size-icon: 12px;
+
+$split-trigger-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));

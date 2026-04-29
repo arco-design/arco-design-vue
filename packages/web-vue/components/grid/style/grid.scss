@@ -1,0 +1,8 @@
+@use '@style/theme/index.scss' as *;
+@use 'sass:string';
+
+$grid-prefix-cls: string.unquote('#{$prefix}-grid');
+
+.#{$grid-prefix-cls} {
+  display: grid;
+}

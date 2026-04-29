@@ -1,0 +1,44 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$carousel-content-border-radius: 0;
+
+// arrow
+$carousel-arrow-position: global.$spacing-6;
+$carousel-arrow-size: global.$size-6;
+$carousel-arrow-font-size: global.$font-size-body-3;
+$carousel-arrow-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+$carousel-arrow-color-bg: rgba(global.$color-white, 0.3);
+$carousel-arrow-color-bg_hover: rgba(global.$color-white, 0.5);
+
+// indicator
+$carousel-indicator-size-wrapper: global.$size-12;
+$carousel-indicator-color-bg-wrapper: rgb(0 0 0 / 15%);
+
+$carousel-indicator-dot-size: 6px;
+$carousel-indicator-line-size-width: global.$size-3;
+$carousel-indicator-line-size-height: global.$size-1;
+$carousel-indicator-slider-size-width: global.$size-12;
+$carousel-indicator-slider-size-height: global.$size-1;
+
+$carousel-indicator-position: global.$spacing-6;
+$carousel-indicator-gap: global.$spacing-4;
+$carousel-indicator-border-radius: global.$radius-medium;
+$carousel-indicator-color_default: rgba(global.$color-white, 0.3);
+$carousel-indicator-color_active: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+
+$carousel-indicator-outer-border-radius: 20px;
+$carousel-indicator-outer-padding: global.$spacing-2;
+$carousel-indicator-outer-color_default: rgb(
+  var(string.unquote('#{global.$sd-cssvars-prefix}-gray-4')),
+  0.5
+);
+$carousel-indicator-outer-color_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-4')
+);
+$carousel-indicator-outer-color-bg: global.$color-transparent;

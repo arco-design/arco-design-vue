@@ -1,0 +1,86 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+// Panel
+$picker-container-border-radius: global.$radius-medium;
+
+$picker-header-padding-horizontal: 24px;
+$picker-header-padding-vertical: 24px;
+
+$picker-panel-date-width: 265px;
+$picker-panel-month-width: 265px;
+$picker-panel-year-width: 265px;
+$picker-panel-week-width: 298px;
+$picker-panel-quarter-width: 265px;
+
+$picker-panel-time-cell-width: 36px;
+$picker-panel-time-cell-spacing-horizontal: 4px;
+$picker-panel-time-padding-horizontal: 10px;
+
+$picker-panel-cell-padding-vertical: 4px;
+$picker-panel-cell-circle-height: 24px;
+
+$picker-color-switch-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$picker-color-bg-switch-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+$picker-color-bg-switch-icon_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);
+
+$picker-cell-font-weight-in-view: global.$font-weight-500;
+$picker-color-cell-text-in-view: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$picker-color-cell-text-not-in-view: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+$picker-color-bg-circle_selected: global.$color-primary-6;
+$picker-color-bg-circle_selected: global.$color-primary-6;
+$picker-color-bg-cell-in-range: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
+);
+$picker-color-bg-cell-disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
+$picker-color-text-cell-range-boundary: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-white')
+);
+$picker-color-bg-cell-range-boundary: global.$color-primary-6;
+$picker-color-bg-cell-hover-in-range: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
+);
+$picker-color-text-cell-hover-range-boundary: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+$picker-color-bg-cell-hover-range-boundary: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-2')
+);
+
+$picker-panel-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$picker-panel-color-text-cell_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+$picker-panel-color-bg-cell_hover: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
+$picker-panel-color-text-cell_selected: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-white')
+);
+$picker-panel-color-bg-cell_selected: global.$color-primary-6;
+$picker-panel-color-current-time-dot: global.$color-primary-6;
+
+$picker-panel-border-radius-cell_selected: global.$radius-circle;
+$picker-panel-cell-boundary-border-radius: $picker-panel-cell-circle-height;
+$picker-panel-cell-border-radius: $picker-panel-cell-circle-height;
+
+$datepicker-view-tabs-height: 50px;
+$datepicker-view-tab-pane-color-text_unactive: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
+);
+$datepicker-view-tab-pane-color-text_active: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
+$datepicker-view-tab-pane-font-size: 14px;
+$datepicker-view-tab-pane-spacing-text-icon: 8px;
+
+$picker-panel-color-bg-label_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
+);

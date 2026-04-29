@@ -1,0 +1,66 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+$input-prefix-cls: string.unquote('#{theme.$prefix}-input');
+
+@use '@components/input/style/token.scss' as *;
+
+.#{$input-prefix-cls}-group {
+  display: inline-flex;
+  align-items: center;
+
+  > * {
+    border-radius: 0;
+
+    &.#{$input-prefix-cls}-outer > :last-child,
+    &.#{$input-prefix-cls}-outer > :first-child {
+      border-radius: 0;
+    }
+
+    &:not(:last-child) {
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    &:first-child,
+    &:first-child .#{$input-prefix-cls}-group > *:first-child {
+      border-top-left-radius: $input-group-border-radius_compact;
+      border-bottom-left-radius: $input-group-border-radius_compact;
+
+      .#{theme.$prefix}-select-view {
+        border-top-left-radius: $input-group-border-radius_compact;
+        border-bottom-left-radius: $input-group-border-radius_compact;
+      }
+    }
+
+    &:last-child,
+    &:last-child .#{$input-prefix-cls}-outer > *:last-child {
+      border-top-right-radius: $input-group-border-radius_compact;
+      border-bottom-right-radius: $input-group-border-radius_compact;
+
+      .#{theme.$prefix}-select-view {
+        border-top-right-radius: $input-group-border-radius_compact;
+        border-bottom-right-radius: $input-group-border-radius_compact;
+      }
+    }
+  }
+
+  // 针对input边框颜色处理
+  > .#{$input-prefix-cls}-wrapper:not(:last-child),
+  > .#{$input-prefix-cls}-outer:not(:last-child),
+  > .#{theme.$prefix}-input-tag:not(:last-child),
+  > .#{theme.$prefix}-select-view:not(:last-child) {
+    margin-right: -$input-group-border-separator-width;
+    border-right: $input-group-border-separator-width solid $input-group-color-separator-border;
+
+    &:focus-within {
+      border-right-color: $input-color-border_focus;
+    }
+  }
+
+  // 针对Error状态的input边框颜色处理
+  > .#{$input-prefix-cls}-wrapper.#{$input-prefix-cls}-error:not(:last-child) {
+    &:focus-within {
+      border-right-color: $input-color-border_error_focus;
+    }
+  }
+}

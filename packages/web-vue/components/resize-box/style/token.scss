@@ -1,0 +1,14 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$resizeBox-trigger-color-background: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+);
+// $resizeBox-trigger-size-icon-wrapper: 6px;
+$resizeBox-trigger-font-size-icon: 12px;
+$resizeBox-trigger-color-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));

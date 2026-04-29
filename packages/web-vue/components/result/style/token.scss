@@ -1,0 +1,65 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$result-padding-top: global.$spacing-9;
+
+$result-padding-top_icon: global.$spacing-10;
+
+$result-padding-bottom: global.$spacing-9;
+
+$result-padding-horizontal: global.$spacing-10;
+
+$result-margin-icon-bottom: global.$spacing-7;
+
+$result-margin-extra-top: global.$spacing-8;
+
+$result-margin-content-top: global.$spacing-8;
+
+$result-font-title-size: global.$font-size-body-3;
+
+$result-font-title-weight: global.$font-weight-500;
+
+$result-font-subtitle-size: global.$font-size-body-3;
+
+$result-color-title-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$result-color-subtitle-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$result-size-icon: global.$size-5;
+
+$result-size-icon-wrapper: 45px;
+
+$result-size-image-width: global.$size-23;
+
+$result-color-icon_success: global.$color-success-6;
+
+$result-color-icon-bg_success: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-success-light-1')
+);
+
+$result-color-icon_error: global.$color-danger-6;
+
+$result-color-icon-bg_error: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-danger-light-1')
+);
+
+$result-color-icon_warning: global.$color-warning-6;
+
+$result-color-icon-bg_warning: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-warning-light-1')
+);
+
+$result-color-icon_info: global.$color-primary-6;
+
+$result-color-icon-bg_info: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
+);
+
+$result-size-icon_custom: 45px;
+
+$result-color-icon_default: inherit;

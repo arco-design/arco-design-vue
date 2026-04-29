@@ -1,0 +1,31 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$drawer-size-header-height: global.$size-12;
+
+$drawer-margin-footer-button-left: global.$spacing-6;
+
+$drawer-font-header-size: global.$font-size-title-1;
+
+$drawer-padding-horizontal: global.$spacing-7;
+
+$drawer-padding-footer-vertical: global.$spacing-7;
+
+$drawer-padding-content-vertical: global.$spacing-6;
+
+$drawer-font-header-weight: global.$font-weight-500;
+
+$drawer-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+
+$drawer-color-header-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$drawer-color-content-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$drawer-position-close-icon-right: global.$spacing-7;
+
+$drawer-font-size-close-icon: global.$size-3;

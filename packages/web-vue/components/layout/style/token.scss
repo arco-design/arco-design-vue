@@ -1,0 +1,21 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$layout-trigger-height: 48px;
+
+// Layout Theme Dark(Default)
+$layout-sider-background: var(string.unquote('#{global.$sd-cssvars-prefix}-color-menu-dark-bg'));
+$layout-font-color-dark: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+$layout-font-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$layout-trigger-dark-color: rgb(255 255 255 / 20%);
+
+// Layout Theme Light
+$layout-sider-background-light: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-menu-light-bg')
+);
+$layout-trigger-light-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-5'));

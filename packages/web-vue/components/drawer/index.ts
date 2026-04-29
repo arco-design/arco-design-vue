@@ -73,21 +73,21 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
   // @ts-ignore
   const vm = createVNode(
     _Drawer,
-    ({
-	...defaultConfig,
-	...omit(config, [
-		'content',
-		'title',
-		'footer',
-		'visible',
-		'unmountOnClose',
-		'onOk',
-		'onCancel',
-		'onClose'
-	]),
-	header: typeof config.header === 'boolean' ? config.header : undefined,
-	footer: typeof config.footer === 'boolean' ? config.footer : undefined
-}),
+    {
+      ...defaultConfig,
+      ...omit(config, [
+        'content',
+        'title',
+        'footer',
+        'visible',
+        'unmountOnClose',
+        'onOk',
+        'onCancel',
+        'onClose',
+      ]),
+      header: typeof config.header === 'boolean' ? config.header : undefined,
+      footer: typeof config.footer === 'boolean' ? config.footer : undefined,
+    },
     {
       default: getSlotFunction(config.content),
       header: typeof config.header !== 'boolean' ? getSlotFunction(config.header) : undefined,

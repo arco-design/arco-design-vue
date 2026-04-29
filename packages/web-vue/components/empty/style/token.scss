@@ -1,0 +1,21 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$empty-spacing-padding: global.$spacing-5;
+
+$empty-color-text: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-5')));
+
+$empty-font-size-image: global.$size-12;
+
+$empty-spacing-image-margin-bottom: global.$spacing-2;
+
+$empty-size-img-height: global.$size-20;
+
+$empty-color-icon: rgb(var(string.unquote('#{global.$sd-cssvars-prefix}-gray-5')));
+
+$empty-font-size-text: global.$font-size-body-3;

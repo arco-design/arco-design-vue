@@ -1,12 +1,15 @@
-import less from 'less';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { build } from 'rolldown';
+import { build as rolldownBuild } from 'rolldown';
+import { build as viteBuild } from 'vite';
 
 const docsNextRoot = path.resolve(import.meta.dirname, '..');
 const workspaceRoot = path.resolve(docsNextRoot, '..', '..');
 const webVueRoot = path.resolve(workspaceRoot, 'packages', 'web-vue');
+const webVueComponentsRoot = path.resolve(webVueRoot, 'components');
+const webVueStyleRoot = path.resolve(webVueComponentsRoot, 'style');
 const publicVendorRoot = path.resolve(docsNextRoot, 'public', 'vendor', 'sd-web-vue');
+const tempStyleBuildRoot = path.resolve(docsNextRoot, '.temp-vendor-style');
 const importLikePatterns = [
   /\b(?:import|export)\b[^'"`]*?from\s*['"]([^./][^'"`]*)['"]/g,
   /\bimport\s*['"]([^./][^'"`]*)['"]/g,
@@ -26,28 +29,65 @@ async function resetVendorRoot() {
 
 async function syncVendorAssets() {
   const webVueEsRoot = path.resolve(webVueRoot, 'es');
+  const styleEntryCandidates = [path.resolve(webVueRoot, 'components', 'index.scss')];
+  const styleEntryPath = await resolveFirstExistingPath(styleEntryCandidates);
 
   await assertExists(webVueEsRoot, 'packages/web-vue/es 不存在，无法同步在线编辑器浏览器模块。');
-  await assertExists(
-    path.resolve(webVueRoot, 'components', 'index.less'),
-    'packages/web-vue/components/index.less 不存在，无法编译在线编辑器样式。',
-  );
+  if (!styleEntryPath) {
+    throw new Error('packages/web-vue/components/index.scss 不存在，无法编译在线编辑器样式。');
+  }
 
   const vendorDependencyOutputs = await collectVendorDependencyOutputs(webVueEsRoot);
 
-  await fs.cp(webVueEsRoot, path.resolve(publicVendorRoot, 'es'), { recursive: true, force: true });
+  await fs.cp(webVueEsRoot, path.resolve(publicVendorRoot, 'es'), {
+    recursive: true,
+    force: true,
+  });
   await fs.mkdir(path.resolve(publicVendorRoot, 'dist'), { recursive: true });
   await bundleVendorDependencies(vendorDependencyOutputs);
   await writeVendorImportMap(vendorDependencyOutputs);
 
-  const indexLessPath = path.resolve(webVueRoot, 'components', 'index.less');
-  const indexLess = await fs.readFile(indexLessPath, 'utf8');
-  const { css } = await less.render(indexLess, {
-    filename: indexLessPath,
-    paths: [path.resolve(webVueRoot, 'components')],
+  await bundleVendorStyles(styleEntryPath);
+}
+
+async function bundleVendorStyles(styleEntryPath) {
+  await fs.rm(tempStyleBuildRoot, { recursive: true, force: true });
+
+  await viteBuild({
+    configFile: false,
+    publicDir: false,
+    logLevel: 'silent',
+    root: webVueRoot,
+    resolve: {
+      alias: {
+        '@style': webVueStyleRoot,
+        '@components': webVueComponentsRoot,
+      },
+    },
+    build: {
+      emptyOutDir: true,
+      outDir: tempStyleBuildRoot,
+      rollupOptions: {
+        input: styleEntryPath,
+        output: {
+          assetFileNames: 'assets/[name][extname]',
+          chunkFileNames: 'assets/[name].js',
+          entryFileNames: 'assets/[name].js',
+        },
+      },
+    },
   });
 
-  await fs.writeFile(path.resolve(publicVendorRoot, 'dist', 'sd.css'), css);
+  const cssFiles = (await collectFiles(tempStyleBuildRoot)).filter((filePath) =>
+    filePath.endsWith('.css'),
+  );
+
+  if (cssFiles.length !== 1) {
+    throw new Error(`期望 Vite 产出 1 个 CSS 文件，实际得到 ${cssFiles.length} 个。`);
+  }
+
+  await fs.copyFile(cssFiles[0], path.resolve(publicVendorRoot, 'dist', 'sd.css'));
+  await fs.rm(tempStyleBuildRoot, { recursive: true, force: true });
 }
 
 async function bundleVendorDependencies(vendorDependencyOutputs) {
@@ -55,7 +95,7 @@ async function bundleVendorDependencies(vendorDependencyOutputs) {
     const outfile = path.resolve(publicVendorRoot, outputPath);
 
     await fs.mkdir(path.dirname(outfile), { recursive: true });
-    await build({
+    await rolldownBuild({
       input: specifier,
       platform: 'browser',
       logLevel: 'silent',
@@ -96,7 +136,7 @@ async function collectVendorDependencyOutputs(webVueEsRoot) {
 
   return Object.fromEntries(
     Array.from(specifiers)
-      .sort()
+      .sort((left, right) => left.localeCompare(right))
       .map((specifier) => [specifier, `deps/${specifier}.js`]),
   );
 }
@@ -141,4 +181,17 @@ async function assertExists(targetPath, errorMessage) {
   } catch {
     throw new Error(errorMessage);
   }
+}
+
+async function resolveFirstExistingPath(candidates) {
+  for (const candidate of candidates) {
+    try {
+      await fs.access(candidate);
+      return candidate;
+    } catch {
+      // continue searching
+    }
+  }
+
+  return null;
 }

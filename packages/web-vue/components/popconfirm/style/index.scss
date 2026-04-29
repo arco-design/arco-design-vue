@@ -1,0 +1,73 @@
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use 'sass:string';
+@use '@components/popconfirm/style/token.scss' as *;
+@use '@components/popover/style/token.scss' as *;
+
+$popconfirm-prefix-cls: string.unquote('#{theme.$prefix}-popconfirm');
+
+.#{$popconfirm-prefix-cls} {
+  &-popup-content {
+    box-sizing: border-box;
+    padding: $popconfirm-padding-vertical $popconfirm-padding-horizontal;
+    color: $popup-color-content-text;
+    font-size: $popup-font-size;
+    line-height: theme.$line-height-base;
+    background-color: $popconfirm-color-content-bg;
+    border: global.$border-1 solid $popconfirm-color-border;
+    border-radius: $popconfirm-border-radius;
+    box-shadow: $popconfirm-shadow;
+
+    .#{$popconfirm-prefix-cls}-body {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: $popconfirm-margin-title-bottom;
+      color: $popconfirm-color-title-text;
+      font-size: $popconfirm-font-title-size;
+
+      .#{$popconfirm-prefix-cls}-icon {
+        display: inline-flex;
+        align-items: center;
+        height: theme.$line-height-base * $popconfirm-font-title-size;
+        margin-right: $popconfirm-margin-icon-right;
+        font-size: $popconfirm-size-title-icon;
+
+        .#{theme.$prefix}-icon-exclamation-circle-fill {
+          color: $popconfirm-color-title-icon;
+        }
+
+        .#{theme.$prefix}-icon-check-circle-fill {
+          color: $popconfirm-color-title-icon_success;
+        }
+
+        .#{theme.$prefix}-icon-info-circle-fill {
+          color: $popconfirm-color-title-icon_info;
+        }
+
+        .#{theme.$prefix}-icon-close-circle-fill {
+          color: $popconfirm-color-title-icon_danger;
+        }
+      }
+
+      .#{$popconfirm-prefix-cls}-content {
+        text-align: left;
+        overflow-wrap: break-word;
+      }
+    }
+
+    .#{$popconfirm-prefix-cls}-footer {
+      text-align: right;
+
+      > button {
+        margin-left: $popconfirm-margin-button-left;
+      }
+    }
+  }
+
+  &-popup-arrow {
+    z-index: 1;
+    background-color: $popup-color-content-bg;
+    border: global.$border-1 solid $popconfirm-color-border;
+  }
+}

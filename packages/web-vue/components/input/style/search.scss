@@ -1,0 +1,22 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+$input-prefix-cls: string.unquote('#{theme.$prefix}-input');
+
+@use '@components/input/style/token.scss' as *;
+
+.#{$input-prefix-cls}-search {
+  .#{$input-prefix-cls}-append {
+    padding: 0;
+    border: none;
+  }
+
+  .#{$input-prefix-cls}-suffix {
+    color: $search-color-icon;
+    font-size: $search-size-icon;
+  }
+
+  .#{$input-prefix-cls}-search-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

@@ -1,0 +1,12 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use '@components/date-picker/style/token.scss' as *;
+$picker-prefix-cls: string.unquote('#{theme.$prefix}-picker');
+
+$range-picker-prefix-cls: string.unquote('#{theme.$prefix}-picker-range');
+
+.#{$range-picker-prefix-cls} {
+  &-wrapper {
+    display: flex;
+  }
+}

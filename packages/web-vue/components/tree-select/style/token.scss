@@ -1,0 +1,16 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+@forward '@components/_components/select-view/style/token.scss';
+@forward '@components/select/style/token.scss';
+
+@use '@style/theme/index.scss' as *;
+@use '@components/_components/select-view/style/token.scss' as *;
+@use '@components/select/style/token.scss' as *;
+
+$tree-select-padding-popup-left: global.$spacing-5;
+
+$tree-select-padding-popup-right: global.$spacing-2;
+
+$tree-select-padding-popup-vertical: global.$spacing-2;

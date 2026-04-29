@@ -24,7 +24,6 @@
 
 海量的样式 tokens, 支持全局以及组件级别的主题配置。有以下 2 种方式可以定制主题：
 
-- [Less-loader](https://arco.design/vue/docs/theme)
 - [风格配置平台](https://arco.design/themes) - 推荐!
 
 ## TypeScript 友好
@@ -49,14 +48,14 @@ yarn add @sdata/web-vue
 # 例子
 
 ```typescript
-import { createApp } from "vue";
-import SDVue from "@sdata/web-vue";
-import App from "./App.vue";
-import "@sdata/web-vue/dist/sd.css";
+import { createApp } from 'vue';
+import SDVue from '@sdata/web-vue';
+import App from './App.vue';
+import '@sdata/web-vue/dist/sd.css';
 
 const app = createApp(App);
 app.use(SDVue);
-app.mount("#app");
+app.mount('#app');
 ```
 
 默认组件前缀为 `sd-`，例如 `<sd-button />`、`<sd-form />`。如果需要自定义前缀，可以在 `app.use(SDVue, { componentPrefix: 'YourPrefix' })` 中覆盖。
