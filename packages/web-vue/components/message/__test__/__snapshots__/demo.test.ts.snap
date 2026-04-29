@@ -1,77 +1,77 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<message> demo: > render [basic] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+<button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
   <!--v-if-->Info Message
-</button>"
+</button>
 `;
 
 exports[`<message> demo: > render [closeable] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+<button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
   <!--v-if-->Closeable Message
-</button>"
+</button>
 `;
 
 exports[`<message> demo: > render [icon] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+<button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
   <!--v-if-->Info Message
-</button>"
+</button>
 `;
 
 exports[`<message> demo: > render [position] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->Top Message
     </button></div>
   <!---->
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->Bottom Message
     </button></div>
-</div>"
+</div>
 `;
 
 exports[`<message> demo: > render [type] correctly 1`] = `
-"<div>
-  <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div>
+  <div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
     <!---->
-    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
         <!--v-if-->Info Message
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-success\\" type=\\"button\\">
+    <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-success" type="button">
         <!--v-if-->Success Message
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning\\" type=\\"button\\">
+    <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-warning" type="button">
         <!--v-if-->Warning Message
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-danger\\" type=\\"button\\">
+    <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-danger" type="button">
         <!--v-if-->Error Message
       </button></div>
   </div>
 </div>
-<div style=\\"margin-top: 20px;\\">
-  <div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div style="margin-top: 20px;">
+  <div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
     <!---->
-    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
         <!--v-if-->Normal Message
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+    <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
         <!--v-if-->Normal Message With Icon
       </button></div>
     <!---->
-    <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-primary\\" type=\\"button\\">
+    <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-primary" type="button">
         <!--v-if-->Loading Message
       </button></div>
   </div>
-</div>"
+</div>
 `;
 
 exports[`<message> demo: > render [update] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+<button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
   <!--v-if-->Update Info Message
-</button>"
+</button>
 `;

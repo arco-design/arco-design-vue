@@ -1,66 +1,66 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<textarea> demo: > render [auto-size] correctly 1`] = `
-"<div class=\\"arco-textarea-wrapper\\">
-  <div class=\\"arco-textarea-mirror\\">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
-  </div><textarea class=\\"arco-textarea\\" value=\\"This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.\\"></textarea>
+<div class="arco-textarea-wrapper">
+  <div class="arco-textarea-mirror">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
+  </div><textarea class="arco-textarea" value="This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea."></textarea>
   <!--v-if-->
   <!--v-if-->
 </div>
-<div style=\\"margin-top: 20px;\\" class=\\"arco-textarea-wrapper\\">
-  <div class=\\"arco-textarea-mirror\\">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
-  </div><textarea class=\\"arco-textarea\\" value=\\"This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.\\"></textarea>
+<div style="margin-top: 20px;" class="arco-textarea-wrapper">
+  <div class="arco-textarea-mirror">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
+  </div><textarea class="arco-textarea" value="This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea."></textarea>
   <!--v-if-->
   <!--v-if-->
-</div>"
+</div>
 `;
 
 exports[`<textarea> demo: > render [basic] correctly 1`] = `
-"<div class=\\"arco-textarea-wrapper\\">
-  <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\" value=\\"\\"></textarea>
+<div class="arco-textarea-wrapper">
+  <!--v-if--><textarea class="arco-textarea" placeholder="Please enter something" value=""></textarea>
   <!--v-if-->
   <!--v-if-->
-</div>"
+</div>
 `;
 
 exports[`<textarea> demo: > render [status] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px; width: 100%;\\">
+<div class="arco-space arco-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 100%;">
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-textarea-wrapper arco-textarea-disabled\\">
-      <!--v-if--><textarea disabled=\\"\\" class=\\"arco-textarea\\" placeholder=\\"Disabled status\\" value=\\"\\"></textarea>
+  <div class="arco-space-item">
+    <div class="arco-textarea-wrapper arco-textarea-disabled">
+      <!--v-if--><textarea disabled="" class="arco-textarea" placeholder="Disabled status" value=""></textarea>
       <!--v-if-->
       <!--v-if-->
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-textarea-wrapper arco-textarea-error\\">
-      <!--v-if--><textarea aria-invalid=\\"true\\" class=\\"arco-textarea\\" placeholder=\\"Error status\\" value=\\"\\"></textarea>
+  <div class="arco-space-item">
+    <div class="arco-textarea-wrapper arco-textarea-error">
+      <!--v-if--><textarea aria-invalid="true" class="arco-textarea" placeholder="Error status" value=""></textarea>
       <!--v-if-->
       <!--v-if-->
     </div>
   </div>
-</div>"
+</div>
 `;
 
 exports[`<textarea> demo: > render [word-limit] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical arco-space-fill\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
+<div class="arco-space arco-space-vertical arco-space-fill" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-textarea-wrapper\\">
-      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\" value=\\"\\"></textarea>
-      <div class=\\"arco-textarea-word-limit\\">0/10</div>
+  <div class="arco-space-item">
+    <div class="arco-textarea-wrapper">
+      <!--v-if--><textarea class="arco-textarea" placeholder="Please enter something" value=""></textarea>
+      <div class="arco-textarea-word-limit">0/10</div>
       <!--v-if-->
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-textarea-wrapper\\">
-      <!--v-if--><textarea class=\\"arco-textarea\\" placeholder=\\"Please enter something\\" value=\\"\\"></textarea>
-      <div class=\\"arco-textarea-word-limit\\">0/10</div>
+  <div class="arco-space-item">
+    <div class="arco-textarea-wrapper">
+      <!--v-if--><textarea class="arco-textarea" placeholder="Please enter something" value=""></textarea>
+      <div class="arco-textarea-word-limit">0/10</div>
       <!--v-if-->
     </div>
   </div>
-</div>"
+</div>
 `;

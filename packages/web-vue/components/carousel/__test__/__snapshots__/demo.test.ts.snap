@@ -1,83 +1,83 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<carousel> demo: > render [auto] correctly 1`] = `
-"<div class=\\"arco-carousel arco-carousel-indicator-position-bottom\\" style=\\"width: 600px; height: 240px;\\">
-  <div class=\\"arco-carousel-slide arco-carousel-horizontal\\">
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
+<div class="arco-carousel arco-carousel-indicator-position-bottom" style="width: 600px; height: 240px;">
+  <div class="arco-carousel-slide arco-carousel-horizontal">
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
   </div>
   <!---->
   <!---->
-</div>"
+</div>
 `;
 
 exports[`<carousel> demo: > render [basic] correctly 1`] = `
-"<div class=\\"arco-carousel arco-carousel-indicator-position-bottom\\" style=\\"width: 600px; height: 240px;\\">
-  <div class=\\"arco-carousel-slide arco-carousel-horizontal\\">
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
+<div class="arco-carousel arco-carousel-indicator-position-bottom" style="width: 600px; height: 240px;">
+  <div class="arco-carousel-slide arco-carousel-horizontal">
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
   </div>
   <!---->
   <!---->
-</div>"
+</div>
 `;
 
 exports[`<carousel> demo: > render [card] correctly 1`] = `
-"<div class=\\"arco-carousel arco-carousel-indicator-position-outer\\" style=\\"width: 100%; height: 240px;\\">
-  <div class=\\"arco-carousel-card arco-carousel-horizontal\\">
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
+<div class="arco-carousel arco-carousel-indicator-position-outer" style="width: 100%; height: 240px;">
+  <div class="arco-carousel-card arco-carousel-horizontal">
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms; width: 60%;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
   </div>
   <!---->
   <!---->
-</div>"
+</div>
 `;
 
 exports[`<carousel> demo: > render [direction] correctly 1`] = `
-"<div class=\\"arco-carousel arco-carousel-indicator-position-right\\" style=\\"width: 600px; height: 240px;\\">
-  <div class=\\"arco-carousel-slide arco-carousel-vertical\\">
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
+<div class="arco-carousel arco-carousel-indicator-position-right" style="width: 600px; height: 240px;">
+  <div class="arco-carousel-slide arco-carousel-vertical">
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
   </div>
   <!---->
   <!---->
-</div>"
+</div>
 `;
 
 exports[`<carousel> demo: > render [fade] correctly 1`] = `
-"<div class=\\"arco-carousel arco-carousel-indicator-position-bottom\\" style=\\"width: 600px; height: 240px;\\">
-  <div class=\\"arco-carousel-fade arco-carousel-horizontal\\">
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-    <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
+<div class="arco-carousel arco-carousel-indicator-position-bottom" style="width: 600px; height: 240px;">
+  <div class="arco-carousel-fade arco-carousel-horizontal">
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+    <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
   </div>
   <!---->
   <!---->
-</div>"
+</div>
 `;
 
 exports[`<carousel> demo: > render [indicator] correctly 1`] = `
-"<div class=\\"arco-space arco-space-vertical\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
+<div class="arco-space arco-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\"><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"dot\\"><span class=\\"arco-radio-button-content\\">dot</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"line\\"><span class=\\"arco-radio-button-content\\">line</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"slider\\"><span class=\\"arco-radio-button-content\\">slider</span></label></span></div>
+  <div class="arco-space-item"><span class="arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal"><label class="arco-radio-button arco-radio-checked"><input type="radio" checked="" class="arco-radio-target" value="dot"><span class="arco-radio-button-content">dot</span></label><label class="arco-radio-button"><input type="radio" class="arco-radio-target" value="line"><span class="arco-radio-button-content">line</span></label><label class="arco-radio-button"><input type="radio" class="arco-radio-target" value="slider"><span class="arco-radio-button-content">slider</span></label></span></div>
   <!---->
-  <div class=\\"arco-space-item\\"><span class=\\"arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal\\" style=\\"margin-bottom: 20px;\\"><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"left\\"><span class=\\"arco-radio-button-content\\">left</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"right\\"><span class=\\"arco-radio-button-content\\">right</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"top\\"><span class=\\"arco-radio-button-content\\">top</span></label><label class=\\"arco-radio-button arco-radio-checked\\"><input type=\\"radio\\" checked=\\"\\" class=\\"arco-radio-target\\" value=\\"bottom\\"><span class=\\"arco-radio-button-content\\">bottom</span></label><label class=\\"arco-radio-button\\"><input type=\\"radio\\" class=\\"arco-radio-target\\" value=\\"outer\\"><span class=\\"arco-radio-button-content\\">outer</span></label></span></div>
+  <div class="arco-space-item"><span class="arco-radio-group-button arco-radio-group-size-medium arco-radio-group-direction-horizontal" style="margin-bottom: 20px;"><label class="arco-radio-button"><input type="radio" class="arco-radio-target" value="left"><span class="arco-radio-button-content">left</span></label><label class="arco-radio-button"><input type="radio" class="arco-radio-target" value="right"><span class="arco-radio-button-content">right</span></label><label class="arco-radio-button"><input type="radio" class="arco-radio-target" value="top"><span class="arco-radio-button-content">top</span></label><label class="arco-radio-button arco-radio-checked"><input type="radio" checked="" class="arco-radio-target" value="bottom"><span class="arco-radio-button-content">bottom</span></label><label class="arco-radio-button"><input type="radio" class="arco-radio-target" value="outer"><span class="arco-radio-button-content">outer</span></label></span></div>
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-carousel arco-carousel-indicator-position-bottom\\" style=\\"width: 600px; height: 240px;\\">
-      <div class=\\"arco-carousel-slide arco-carousel-horizontal\\">
-        <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-        <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
-        <div aria-hidden=\\"true\\" class=\\"\\" style=\\"transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;\\"><img src=\\"https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp\\" style=\\"width: 100%;\\"></div>
+  <div class="arco-space-item">
+    <div class="arco-carousel arco-carousel-indicator-position-bottom" style="width: 600px; height: 240px;">
+      <div class="arco-carousel-slide arco-carousel-horizontal">
+        <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+        <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
+        <div aria-hidden="true" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" style="width: 100%;"></div>
       </div>
       <!---->
       <!---->
     </div>
   </div>
-</div>"
+</div>
 `;

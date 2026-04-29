@@ -1,88 +1,88 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<tooltip> demo: > render [basic] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->Mouse over to display tooltip
     </button>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->Mouse over to display tooltip
     </button>
     <!---->
   </div>
-</div>"
+</div>
 `;
 
 exports[`<tooltip> demo: > render [color] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->#3491FA
     </button>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->#165DFF
     </button>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->#722ED1
     </button>
     <!---->
   </div>
-</div>"
+</div>
 `;
 
 exports[`<tooltip> demo: > render [mini] correctly 1`] = `
-"<button class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+<button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
   <!--v-if-->Mouse over to display tooltip
-</button>"
+</button>
 `;
 
 exports[`<tooltip> demo: > render [position] correctly 1`] = `
-"<div data-v-f9338afa=\\"\\" style=\\"position: relative; width: 440px; height: 280px;\\"><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 70px;\\">
+<div style="position: relative; width: 440px; height: 280px;"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 0px; left: 70px;">
     <!--v-if-->TL
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 180px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 0px; left: 180px;">
     <!--v-if-->TOP
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 0px; left: 290px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 0px; left: 290px;">
     <!--v-if-->TR
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 70px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 240px; left: 70px;">
     <!--v-if-->BL
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 180px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 240px; left: 180px;">
     <!--v-if-->BOTTOM
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 240px; left: 290px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 240px; left: 290px;">
     <!--v-if-->BR
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 60px; left: 10px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 60px; left: 10px;">
     <!--v-if-->LT
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 120px; left: 10px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 120px; left: 10px;">
     <!--v-if-->LEFT
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 180px; left: 10px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 180px; left: 10px;">
     <!--v-if-->LB
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 60px; left: 350px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 60px; left: 350px;">
     <!--v-if-->RT
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 120px; left: 350px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 120px; left: 350px;">
     <!--v-if-->RIGHT
   </button>
-  <!----><button data-v-f9338afa=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button\\" type=\\"button\\" style=\\"position: absolute; top: 180px; left: 350px;\\">
+  <!----><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal button" type="button" style="position: absolute; top: 180px; left: 350px;">
     <!--v-if-->RB
   </button>
   <!---->
-</div>"
+</div>
 `;

@@ -66,17 +66,7 @@ app.mount('#app');
 
 ## 开发
 
-1. 使用 `npm install -g` 安装 `lerna` 和 `yarn` 等基础包
-
-2. 使用 `yarn install` 安装 `workspaces` 中各个包的依赖（如果遇到 `YN0018` 错误，可以使用 `YARN_CHECKSUM_BEHAVIOR=update yarn` 进行安装）
-
-3. 使用 `npm run init` 初始化项目
-
-4. 使用 Vitest 运行测试：
-```bash
-pnpm run test
-pnpm run test:update
-```
+项目开发与提交流程请参考[贡献指南](https://github.com/arco-design/arco-design-vue/blob/main/CONTRIBUTING.zh-CN.md)
 
 
 # 相关链接

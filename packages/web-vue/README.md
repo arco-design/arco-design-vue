@@ -65,17 +65,7 @@ app.mount('#app');
 
 ## Development
 
-1. Use `npm install` to install basic packages such as `lerna` and `yarn`
-
-2. Use `yarn install` to install the dependencies of each package in `workspaces` (If you encounter a `YN0018` error, you can use `YARN_CHECKSUM_BEHAVIOR=update yarn` to install)
-
-3. Use `npm run init` to initialize the project
-
-4. Run tests with Vitest:
-```bash
-pnpm run test
-pnpm run test:update
-```
+Project development and contribution process please refer to the [Contributing Guide](https://github.com/arco-design/arco-design-vue/blob/main/CONTRIBUTING.md).
 
 # Useful Links
 

@@ -1,84 +1,84 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<trigger> demo: > render [align-point] correctly 1`] = `
-"<div data-v-7c434cc9=\\"\\" class=\\"demo-point-trigger\\">
-  <div data-v-7c434cc9=\\"\\">Click Me</div>
-</div>"
+<div class="demo-point-trigger">
+  <div>Click Me</div>
+</div>
 `;
 
 exports[`<trigger> demo: > render [arrow] correctly 1`] = `
-"<div data-v-7ee4d24a=\\"\\" class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class=\\"arco-space-item\\"><button data-v-7ee4d24a=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->Click Me
     </button>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><button data-v-7ee4d24a=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->Click Me (Arrow)
     </button>
     <!---->
   </div>
-</div>"
+</div>
 `;
 
 exports[`<trigger> demo: > render [basic] correctly 1`] = `
-"<div data-v-56c497ef=\\"\\" class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class=\\"arco-space-item\\"><span data-v-56c497ef=\\"\\">Hover Me</span>
+  <div class="arco-space-item"><span>Hover Me</span>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><button data-v-56c497ef=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->Click Me
     </button>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><span data-v-56c497ef=\\"\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Focus on me\\" value=\\"\\"><!----><!----></span>
+  <div class="arco-space-item"><span class="arco-input-wrapper"><!----><input class="arco-input arco-input-size-medium" type="text" placeholder="Focus on me" value=""><!----><!----></span>
     <!---->
   </div>
-</div>"
+</div>
 `;
 
 exports[`<trigger> demo: > render [nest] correctly 1`] = `
-"<button data-v-18904fa7=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+<button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
   <!--v-if-->Click Me
-</button>"
+</button>
 `;
 
 exports[`<trigger> demo: > render [scroll] correctly 1`] = `
-"<div data-v-693ed048=\\"\\" style=\\"height: 100px; overflow-y: scroll;\\">
-  <div data-v-693ed048=\\"\\" style=\\"height: 200px;\\"><button data-v-693ed048=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\" style=\\"margin-top: 80px;\\">
+<div style="height: 100px; overflow-y: scroll;">
+  <div style="height: 200px;"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button" style="margin-top: 80px;">
       <!--v-if-->Click Me
     </button>
     <!---->
   </div>
-</div>"
+</div>
 `;
 
 exports[`<trigger> demo: > render [translate] correctly 1`] = `
-"<div data-v-5b74e88f=\\"\\" class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 8px; row-gap: 8px;\\">
+<div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class=\\"arco-space-item\\"><button data-v-5b74e88f=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->BOTTOM
     </button>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><button data-v-5b74e88f=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->BOTTOM OFFSET[100, 20]
     </button>
     <!---->
   </div>
   <!---->
-  <div class=\\"arco-space-item\\"><button data-v-5b74e88f=\\"\\" class=\\"arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal\\" type=\\"button\\">
+  <div class="arco-space-item"><button class="arco-btn arco-btn-secondary arco-btn-shape-square arco-btn-size-medium arco-btn-status-normal" type="button">
       <!--v-if-->BOTTOM OFFSET[-100, 20]
     </button>
     <!---->
   </div>
-</div>"
+</div>
 `;
 
-exports[`<trigger> demo: > render [triggers] correctly 1`] = `"<span data-v-0ff0ebec=\\"\\" class=\\"arco-input-wrapper\\"><!----><input class=\\"arco-input arco-input-size-medium\\" type=\\"text\\" placeholder=\\"Click/Hover/Focus on me\\" value=\\"\\"><!----><!----></span>"`;
+exports[`<trigger> demo: > render [triggers] correctly 1`] = `<span class="arco-input-wrapper"><!----><input class="arco-input arco-input-size-medium" type="text" placeholder="Click/Hover/Focus on me" value=""><!----><!----></span>`;
