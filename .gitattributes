@@ -39,6 +39,7 @@
 *.md              text eol=lf
 *.vue             text eol=lf
 *.tsx             text eol=lf
+*.snap            text eol=lf
 
 # Scripts
 *.bash            text eol=lf
