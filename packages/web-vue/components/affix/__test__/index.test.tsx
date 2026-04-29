@@ -1,28 +1,28 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import Affix from '../index';
 import { raf } from '../../_utils/raf';
-import { nextTick } from 'vue';
 
 const _originAddEventListener = window.addEventListener;
 const _getBoundingClientRect = HTMLElement.prototype.getBoundingClientRect;
-const events: { [eventName: string]: any} = {};
+const events: { [eventName: string]: any } = {};
 
-jest.mock("../../_utils/raf", () => ({
-  raf: jest.fn().mockImplementation((cb: (...args: any[]) => void) => cb())
+vi.mock('../../_utils/raf', () => ({
+  raf: vi.fn().mockImplementation((cb: (...args: any[]) => void) => cb()),
 }));
 
 describe('Affix Render', () => {
-  let wrapperRect: { top?: number, bottom?: number } = {
+  let wrapperRect: { top?: number; bottom?: number } = {
     top: 0,
     bottom: 0,
   };
 
-  const moveWrapper = (offset: { top?: number, bottom?: number }) => {
+  const moveWrapper = (offset: { top?: number; bottom?: number }) => {
     wrapperRect = offset;
     events.scroll({
       type: 'scroll',
     });
-    jest.runAllTimers();
+    vi.runAllTimers();
   };
 
   beforeEach(() => {
@@ -30,31 +30,35 @@ describe('Affix Render', () => {
     raf.mockClear();
   });
   beforeAll(() => {
-    jest.useFakeTimers();
-    Object.defineProperty(window, 'addEventListener', { 
-      value: jest.fn().mockImplementation((event: string, cb) => {
+    vi.useFakeTimers();
+    Object.defineProperty(window, 'addEventListener', {
+      configurable: true,
+      value: vi.fn().mockImplementation((event: string, cb) => {
         events[event] = cb;
-      })
+      }),
     });
-    Object.defineProperty(HTMLElement.prototype, 'getBoundingClientRect', { 
-      value: jest.fn().mockImplementation(() => wrapperRect)
+    Object.defineProperty(HTMLElement.prototype, 'getBoundingClientRect', {
+      configurable: true,
+      value: vi.fn().mockImplementation(() => wrapperRect),
     });
   });
   afterAll(() => {
-    jest.useRealTimers();
-    Object.defineProperty(window, 'addEventListener', { 
-      value: _originAddEventListener
+    vi.useRealTimers();
+    Object.defineProperty(window, 'addEventListener', {
+      configurable: true,
+      value: _originAddEventListener,
     });
-    Object.defineProperty(HTMLElement.prototype, 'getBoundingClientRect', { 
-      value: _getBoundingClientRect
+    Object.defineProperty(HTMLElement.prototype, 'getBoundingClientRect', {
+      configurable: true,
+      value: _getBoundingClientRect,
     });
   });
 
   it('Anchor should render correctly', async () => {
     const wrapper = mount(Affix, {
       slots: {
-        default: '<div>abc</div>'
-      }
+        default: '<div>abc</div>',
+      },
     });
     expect(wrapper.find('.arco-affix').exists()).toBe(false);
     moveWrapper({ top: -100 });
@@ -66,11 +70,11 @@ describe('Affix Render', () => {
   it('Should support bottom', async () => {
     const wrapper = mount(Affix, {
       slots: {
-        default: '<div>abc</div>'
+        default: '<div>abc</div>',
       },
       props: {
-        offsetBottom: 20
-      }
+        offsetBottom: 20,
+      },
     });
     expect(wrapper.find('.arco-affix').exists()).toBe(false);
     moveWrapper({ bottom: 2500 });

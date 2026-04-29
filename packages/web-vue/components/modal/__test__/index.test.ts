@@ -34,8 +34,8 @@ describe('Modal', () => {
   });
 
   test('should show modal and call cb', async () => {
-    const onOk = jest.fn();
-    const onCancel = jest.fn();
+    const onOk = vi.fn();
+    const onCancel = vi.fn();
 
     const wrapper = mount({
       template: `
@@ -92,7 +92,7 @@ describe('Modal', () => {
   });
 
   test('should close all global modals by destroyAll', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const modalCountBeforeOpen = document.querySelectorAll(
       '.arco-modal-container'
     ).length;
@@ -111,12 +111,12 @@ describe('Modal', () => {
       document.querySelectorAll('.arco-modal-container').length
     ).toBeGreaterThan(modalCountBeforeOpen);
     Modal.destroyAll();
-    jest.runAllTimers();
+    vi.runAllTimers();
     await nextTick();
     await nextTick();
     expect(document.querySelectorAll('.arco-modal-container').length).toBe(
       modalCountBeforeOpen
     );
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });

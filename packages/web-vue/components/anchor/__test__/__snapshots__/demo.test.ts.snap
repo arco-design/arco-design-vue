@@ -1,228 +1,228 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<anchor> demo: render [affix] correctly 1`] = `
-"<div>
-  <div class=\\"arco-anchor\\">
-    <div class=\\"arco-anchor-line-slider\\"></div>
-    <ul class=\\"arco-anchor-list\\">
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+exports[`<anchor> demo: > render [affix] correctly 1`] = `
+<div>
+  <div class="arco-anchor">
+    <div class="arco-anchor-line-slider"></div>
+    <ul class="arco-anchor-list">
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#static\\">Static</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#static">Static</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\">Affix</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix">Affix</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
         <!--v-if-->
       </li>
     </ul>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<anchor> demo: render [basic] correctly 1`] = `
-"<div>
-  <div class=\\"arco-anchor\\">
-    <div class=\\"arco-anchor-line-slider\\"></div>
-    <ul class=\\"arco-anchor-list\\">
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+exports[`<anchor> demo: > render [basic] correctly 1`] = `
+<div>
+  <div class="arco-anchor">
+    <div class="arco-anchor-line-slider"></div>
+    <ul class="arco-anchor-list">
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\"> Affix </a>
-        <ul class=\\"arco-anchor-sublist\\">
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix"> Affix </a>
+        <ul class="arco-anchor-sublist">
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
             <!--v-if-->
           </li>
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
             <!--v-if-->
           </li>
         </ul>
       </li>
     </ul>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<anchor> demo: render [boundary] correctly 1`] = `
-"<div>
-  <div class=\\"arco-anchor\\">
-    <div class=\\"arco-anchor-line-slider\\"></div>
-    <ul class=\\"arco-anchor-list\\">
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+exports[`<anchor> demo: > render [boundary] correctly 1`] = `
+<div>
+  <div class="arco-anchor">
+    <div class="arco-anchor-line-slider"></div>
+    <ul class="arco-anchor-list">
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\"> Affix </a>
-        <ul class=\\"arco-anchor-sublist\\">
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix"> Affix </a>
+        <ul class="arco-anchor-sublist">
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
             <!--v-if-->
           </li>
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
             <!--v-if-->
           </li>
         </ul>
       </li>
     </ul>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<anchor> demo: render [hash] correctly 1`] = `
-"<div>
-  <div class=\\"arco-anchor\\">
-    <div class=\\"arco-anchor-line-slider\\"></div>
-    <ul class=\\"arco-anchor-list\\">
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+exports[`<anchor> demo: > render [hash] correctly 1`] = `
+<div>
+  <div class="arco-anchor">
+    <div class="arco-anchor-line-slider"></div>
+    <ul class="arco-anchor-list">
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\"> Affix </a>
-        <ul class=\\"arco-anchor-sublist\\">
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix"> Affix </a>
+        <ul class="arco-anchor-sublist">
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
             <!--v-if-->
           </li>
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
             <!--v-if-->
           </li>
         </ul>
       </li>
     </ul>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<anchor> demo: render [horizontal] correctly 1`] = `
-"<div>
-  <div class=\\"arco-typography\\">Default
+exports[`<anchor> demo: > render [horizontal] correctly 1`] = `
+<div>
+  <div class="arco-typography">Default
     <!---->
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
   </div>
   <div>
-    <div class=\\"arco-anchor arco-anchor-horizontal\\">
-      <div class=\\"arco-anchor-line-slider\\"></div>
-      <ul class=\\"arco-anchor-list\\">
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+    <div class="arco-anchor arco-anchor-horizontal">
+      <div class="arco-anchor-line-slider"></div>
+      <ul class="arco-anchor-list">
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#static\\">Static</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#static">Static</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\">Affix</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix">Affix</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
           <!--v-if-->
         </li>
       </ul>
     </div>
   </div>
-  <div class=\\"arco-typography\\" style=\\"margin-top: 32px;\\"> LineLess mode
+  <div class="arco-typography" style="margin-top: 32px;"> LineLess mode
     <!---->
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
   </div>
   <div>
-    <div class=\\"arco-anchor arco-anchor-line-less arco-anchor-horizontal\\">
+    <div class="arco-anchor arco-anchor-line-less arco-anchor-horizontal">
       <!--v-if-->
-      <ul class=\\"arco-anchor-list\\">
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+      <ul class="arco-anchor-list">
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#static\\">Static</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#static">Static</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\">Affix</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix">Affix</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
           <!--v-if-->
         </li>
-        <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+        <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
           <!--v-if-->
         </li>
       </ul>
     </div>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<anchor> demo: render [line-less] correctly 1`] = `
-"<div>
-  <div class=\\"arco-anchor arco-anchor-line-less\\">
+exports[`<anchor> demo: > render [line-less] correctly 1`] = `
+<div>
+  <div class="arco-anchor arco-anchor-line-less">
     <!--v-if-->
-    <ul class=\\"arco-anchor-list\\">
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+    <ul class="arco-anchor-list">
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\"> Affix </a>
-        <ul class=\\"arco-anchor-sublist\\">
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix"> Affix </a>
+        <ul class="arco-anchor-sublist">
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
             <!--v-if-->
           </li>
-          <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+          <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
             <!--v-if-->
           </li>
         </ul>
       </li>
     </ul>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<anchor> demo: render [static] correctly 1`] = `
-"<div>
-  <div class=\\"arco-anchor\\">
-    <div class=\\"arco-anchor-line-slider\\"></div>
-    <ul class=\\"arco-anchor-list\\">
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#basic\\">Basic</a>
+exports[`<anchor> demo: > render [static] correctly 1`] = `
+<div>
+  <div class="arco-anchor">
+    <div class="arco-anchor-line-slider"></div>
+    <ul class="arco-anchor-list">
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#basic">Basic</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#static\\">Static</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#static">Static</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#line-less\\">LineLess Mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#line-less">LineLess Mode</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#affix\\">Affix</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#affix">Affix</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#boundary\\">Scroll Boundary</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#boundary">Scroll Boundary</a>
         <!--v-if-->
       </li>
-      <li class=\\"arco-anchor-link-item\\"><a class=\\"arco-anchor-link\\" href=\\"#hash\\">Hash mode</a>
+      <li class="arco-anchor-link-item"><a class="arco-anchor-link" href="#hash">Hash mode</a>
         <!--v-if-->
       </li>
     </ul>
   </div>
-</div>"
+</div>
 `;

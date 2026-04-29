@@ -1,98 +1,98 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<spin> demo: render [basic] correctly 1`] = `
-"<div class=\\"arco-spin\\">
-  <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+exports[`<spin> demo: > render [basic] correctly 1`] = `
+<div class="arco-spin">
+  <div class="arco-spin-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="arco-icon arco-icon-loading arco-icon-spin" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path>
     </svg></div>
   <!---->
-</div>"
+</div>
 `;
 
-exports[`<spin> demo: render [container] correctly 1`] = `
-"<div class=\\"arco-spin arco-spin-loading\\">
-  <div class=\\"arco-card arco-card-size-medium arco-card-bordered\\">
-    <div class=\\"arco-card-header\\">
-      <div class=\\"arco-card-header-title\\">Arco Card</div>
+exports[`<spin> demo: > render [container] correctly 1`] = `
+<div class="arco-spin arco-spin-loading">
+  <div class="arco-card arco-card-size-medium arco-card-bordered">
+    <div class="arco-card-header">
+      <div class="arco-card-header-title">Arco Card</div>
       <!---->
     </div>
     <!---->
-    <div class=\\"arco-card-body\\"> ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around the world. Toutiao started out as a news recommendation engine and gradually evolved into a platform delivering content in various formats.
+    <div class="arco-card-body"> ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around the world. Toutiao started out as a news recommendation engine and gradually evolved into a platform delivering content in various formats.
       <!---->
     </div>
   </div>
-  <div class=\\"arco-spin-mask\\">
-    <div class=\\"arco-spin-mask-icon\\">
-      <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-          <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+  <div class="arco-spin-mask">
+    <div class="arco-spin-mask-icon">
+      <div class="arco-spin-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="arco-icon arco-icon-loading arco-icon-spin" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+          <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path>
         </svg></div>
-      <div class=\\"arco-spin-tip\\">This may take a while...</div>
+      <div class="arco-spin-tip">This may take a while...</div>
     </div>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<spin> demo: render [dot] correctly 1`] = `
-"<div class=\\"arco-spin\\">
-  <div class=\\"arco-spin-icon\\">
-    <div class=\\"arco-dot-loading\\">
-      <div class=\\"arco-dot-loading-item\\"></div>
-      <div class=\\"arco-dot-loading-item\\"></div>
-      <div class=\\"arco-dot-loading-item\\"></div>
-      <div class=\\"arco-dot-loading-item\\"></div>
-      <div class=\\"arco-dot-loading-item\\"></div>
+exports[`<spin> demo: > render [dot] correctly 1`] = `
+<div class="arco-spin">
+  <div class="arco-spin-icon">
+    <div class="arco-dot-loading">
+      <div class="arco-dot-loading-item"></div>
+      <div class="arco-dot-loading-item"></div>
+      <div class="arco-dot-loading-item"></div>
+      <div class="arco-dot-loading-item"></div>
+      <div class="arco-dot-loading-item"></div>
     </div>
   </div>
   <!---->
-</div>"
+</div>
 `;
 
-exports[`<spin> demo: render [icon] correctly 1`] = `
-"<div class=\\"arco-spin\\">
-  <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-sync arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M11.98 11.703c-6.64 6.64-6.64 17.403 0 24.042a16.922 16.922 0 0 0 8.942 4.7M34.603 37.156l1.414-1.415c6.64-6.639 6.64-17.402 0-24.041A16.922 16.922 0 0 0 27.075 7M14.81 11.982l-1.414-1.414-1.414-1.414h2.829v2.828ZM33.192 36.02l1.414 1.414 1.414 1.415h-2.828V36.02Z\\"></path>
+exports[`<spin> demo: > render [icon] correctly 1`] = `
+<div class="arco-spin">
+  <div class="arco-spin-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="arco-icon arco-icon-sync arco-icon-spin" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      <path d="M11.98 11.703c-6.64 6.64-6.64 17.403 0 24.042a16.922 16.922 0 0 0 8.942 4.7M34.603 37.156l1.414-1.415c6.64-6.639 6.64-17.402 0-24.041A16.922 16.922 0 0 0 27.075 7M14.81 11.982l-1.414-1.414-1.414-1.414h2.829v2.828ZM33.192 36.02l1.414 1.414 1.414 1.415h-2.828V36.02Z"></path>
     </svg></div>
   <!---->
-</div>"
+</div>
 `;
 
-exports[`<spin> demo: render [size] correctly 1`] = `
-"<div class=\\"arco-space arco-space-horizontal arco-space-align-center\\" style=\\"column-gap: 24px; row-gap: 24px;\\">
+exports[`<spin> demo: > render [size] correctly 1`] = `
+<div class="arco-space arco-space-horizontal arco-space-align-center" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-spin\\">
-      <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-          <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+  <div class="arco-space-item">
+    <div class="arco-spin">
+      <div class="arco-spin-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="arco-icon arco-icon-loading arco-icon-spin" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+          <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path>
         </svg></div>
       <!---->
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-spin\\">
-      <div class=\\"arco-spin-icon\\" style=\\"font-size: 28px;\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" style=\\"font-size: 28px;\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-          <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+  <div class="arco-space-item">
+    <div class="arco-spin">
+      <div class="arco-spin-icon" style="font-size: 28px;"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="arco-icon arco-icon-loading arco-icon-spin" style="font-size: 28px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+          <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path>
         </svg></div>
       <!---->
     </div>
   </div>
   <!---->
-  <div class=\\"arco-space-item\\">
-    <div class=\\"arco-spin\\">
-      <div class=\\"arco-spin-icon\\" style=\\"font-size: 32px;\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" style=\\"font-size: 32px;\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-          <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+  <div class="arco-space-item">
+    <div class="arco-spin">
+      <div class="arco-spin-icon" style="font-size: 32px;"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="arco-icon arco-icon-loading arco-icon-spin" style="font-size: 32px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+          <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path>
         </svg></div>
       <!---->
     </div>
   </div>
-</div>"
+</div>
 `;
 
-exports[`<spin> demo: render [tip] correctly 1`] = `
-"<div class=\\"arco-spin arco-spin-with-tip\\">
-  <div class=\\"arco-spin-icon\\"><svg viewBox=\\"0 0 48 48\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" stroke=\\"currentColor\\" class=\\"arco-icon arco-icon-loading arco-icon-spin\\" stroke-width=\\"4\\" stroke-linecap=\\"butt\\" stroke-linejoin=\\"miter\\">
-      <path d=\\"M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6\\"></path>
+exports[`<spin> demo: > render [tip] correctly 1`] = `
+<div class="arco-spin arco-spin-with-tip">
+  <div class="arco-spin-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="arco-icon arco-icon-loading arco-icon-spin" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path>
     </svg></div>
-  <div class=\\"arco-spin-tip\\">This may take a while...</div>
-</div>"
+  <div class="arco-spin-tip">This may take a while...</div>
+</div>
 `;
