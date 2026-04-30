@@ -1,1 +1,1 @@
-export {};
+import './index.scss';

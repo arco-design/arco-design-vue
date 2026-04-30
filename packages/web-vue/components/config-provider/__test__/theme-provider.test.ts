@@ -3,6 +3,7 @@ import { defineComponent, h, nextTick } from 'vue';
 
 import { afterEach, describe, expect, it } from 'vitest';
 
+import Trigger from '../../trigger';
 import ThemeProvider from '../theme-provider.vue';
 
 describe('theme-provider standalone', () => {
@@ -43,5 +44,55 @@ describe('theme-provider standalone', () => {
     expect(document.body.style.getPropertyValue('--primary-6')).toBe('');
 
     wrapper.unmount();
+  });
+
+  it('keeps body-mounted popups synced with local theme provider', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ThemeProvider,
+              {
+                themeMode: 'dark',
+                theme: {
+                  tokens: {
+                    primary6: '98,76,54',
+                  },
+                },
+              },
+              {
+                default: () =>
+                  h(
+                    Trigger,
+                    {
+                      trigger: 'click',
+                      defaultPopupVisible: true,
+                    },
+                    {
+                      default: () => h('button', 'open'),
+                      content: () => h('div', { id: 'theme-popup-content' }, 'popup-content'),
+                    },
+                  ),
+              },
+            );
+        },
+      }),
+    );
+
+    await nextTick();
+    await nextTick();
+
+    const popupContent = document.body.querySelector('#theme-popup-content');
+    expect(popupContent).not.toBeNull();
+
+    const popupContainer = popupContent?.closest('.sd-theme-popup-container') as HTMLElement | null;
+    expect(popupContainer).not.toBeNull();
+    expect(popupContainer?.getAttribute('sd-theme')).toBe('dark');
+    expect(popupContainer?.style.getPropertyValue('--primary-6')).toBe('98,76,54');
+
+    wrapper.unmount();
+
+    expect(document.body.querySelector('.sd-theme-popup-container')).toBeNull();
   });
 });

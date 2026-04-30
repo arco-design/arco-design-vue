@@ -8,7 +8,7 @@ export const useTeleportContainer = ({
   defaultContainer = 'body',
   documentContainer,
 }: {
-  popupContainer: Ref<string | HTMLElement | undefined>;
+  popupContainer: Ref<string | HTMLElement | null | undefined>;
   visible: Ref<boolean>;
   defaultContainer?: string;
   documentContainer?: boolean;
@@ -17,8 +17,9 @@ export const useTeleportContainer = ({
   const containerRef = ref<HTMLElement>();
 
   const getContainer = () => {
-    const element = getElement(popupContainer.value);
-    const _teleportContainer = element ? popupContainer.value : defaultContainer;
+    const resolvedPopupContainer = popupContainer.value ?? undefined;
+    const element = getElement(resolvedPopupContainer);
+    const _teleportContainer = element ? resolvedPopupContainer : defaultContainer;
     const _containerElement =
       element ?? (documentContainer ? document.documentElement : getElement(defaultContainer));
     if (_teleportContainer !== teleportContainer.value) {
@@ -31,8 +32,12 @@ export const useTeleportContainer = ({
 
   onMounted(() => getContainer());
 
-  watch(visible, (visible) => {
-    if (teleportContainer.value !== popupContainer.value && visible) {
+  watch([popupContainer, visible], ([nextPopupContainer, nextVisible]) => {
+    if (!nextVisible) {
+      return;
+    }
+
+    if (teleportContainer.value !== nextPopupContainer) {
       getContainer();
     }
   });

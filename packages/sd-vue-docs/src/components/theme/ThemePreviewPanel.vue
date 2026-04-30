@@ -48,6 +48,8 @@
   const effectiveThemeMode = computed(() => {
     return props.themeMode ?? props.preset.mode ?? 'light';
   });
+
+  const themeGroupOptions = [{ label: '默认分组', value: 'default' }];
 </script>
 
 <template>
@@ -84,7 +86,7 @@
         <sd-card title="表单与反馈" class="theme-preview-panel__card">
           <sd-space direction="vertical" fill>
             <sd-input placeholder="搜索 token 或组件" allow-clear />
-            <sd-select placeholder="选择主题分组" />
+            <sd-select placeholder="选择主题分组" :options="themeGroupOptions" />
             <sd-alert type="success">ConfigProvider 已接收新的 theme 对象。</sd-alert>
           </sd-space>
         </sd-card>
@@ -123,7 +125,7 @@
       <sd-card title="表单与反馈" class="theme-preview-panel__card">
         <sd-space direction="vertical" fill>
           <sd-input placeholder="搜索 token 或组件" allow-clear />
-          <sd-select placeholder="选择主题分组" />
+          <sd-select placeholder="选择主题分组" :options="themeGroupOptions" />
           <sd-alert type="success">ConfigProvider 已接收新的 theme 对象。</sd-alert>
         </sd-space>
       </sd-card>
@@ -231,7 +233,7 @@
     box-shadow: 0 18px 40px color-mix(in srgb, var(--theme-preview-primary) 16%, transparent);
   }
 
-  @media (width <= 900px) {
+  @media (width <=900px) {
     .theme-preview-panel__grid {
       grid-template-columns: 1fr;
     }

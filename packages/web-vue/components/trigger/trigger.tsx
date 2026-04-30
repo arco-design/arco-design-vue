@@ -13,7 +13,6 @@ import {
   onUpdated,
   onMounted,
   onBeforeUnmount,
-  toRefs,
   onDeactivated,
 } from 'vue';
 
@@ -31,7 +30,10 @@ import { getPrefixCls } from '../_utils/global-config';
 import { omit } from '../_utils/omit';
 import { throttleByRaf } from '../_utils/throttle-by-raf';
 import { isEmptyChildren, mergeFirstChild } from '../_utils/vue-utils';
-import { configProviderInjectionKey } from '../config-provider/context';
+import {
+  configProviderInjectionKey,
+  themePopupContainerInjectionKey,
+} from '../config-provider/context';
 import { triggerInjectionKey } from './context';
 import { TriggerPopupTranslate } from './interface';
 import {
@@ -370,10 +372,13 @@ export default defineComponent({
    * @slot content
    */
   setup(props, { emit, slots, attrs }) {
-    const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('trigger');
     const popupAttrs = computed(() => omit(attrs, TRIGGER_EVENTS));
     const configCtx = inject(configProviderInjectionKey, undefined);
+    const themePopupContainer = inject(themePopupContainerInjectionKey, undefined);
+    const mergedPopupContainer = computed(() => {
+      return props.popupContainer ?? themePopupContainer?.value;
+    });
 
     const triggerMethods = computed(() => ([] as Array<TriggerEvent>).concat(props.trigger));
     // 用于多个trigger嵌套时，保持打开状态
@@ -401,7 +406,7 @@ export default defineComponent({
     const computedVisible = computed(() => props.popupVisible ?? popupVisible.value);
 
     const { teleportContainer, containerRef } = useTeleportContainer({
-      popupContainer,
+      popupContainer: mergedPopupContainer,
       visible: computedVisible,
       documentContainer: true,
     });

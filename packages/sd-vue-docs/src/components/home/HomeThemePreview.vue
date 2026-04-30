@@ -54,19 +54,13 @@
       </div>
     </aside>
 
-    <sd-config-provider
-      :theme="activeRuntimePayload.theme"
-      :theme-mode="activeRuntimePayload.mode"
-      global
-    >
+    <sd-config-provider :theme="activeRuntimePayload.theme" :theme-mode="activeRuntimePayload.mode">
       <div class="theme-preview__surface" :style="previewSurfaceStyle">
         <div class="theme-preview__summary">
           <div>
             <p class="theme-preview__eyebrow">实时预览</p>
             <h3>{{ activeTheme.name }}</h3>
-            <p>
-              首页预设使用同一份运行时 theme 协议，切换后可直接观察组件在不同主题下的视觉反馈。
-            </p>
+            <p> 该模块内可独立切换主题并实时预览，不会影响组件展示区与外部文档主题状态。 </p>
           </div>
 
           <sd-tag color="blue">{{ activeTheme.summary }}</sd-tag>
