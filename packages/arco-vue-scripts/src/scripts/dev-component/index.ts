@@ -1,13 +1,17 @@
 import ora from 'ora';
 import chalk from 'chalk';
 import { build, InlineConfig } from 'vite';
-import { RollupWatcher } from 'rollup';
 import config from '../../configs/vite.dev';
 
 const run = async () => {
   const spinner = ora();
   spinner.start(chalk.cyan('启动组件开发环境...\n'));
-  const watcher = (await build(config as InlineConfig)) as RollupWatcher;
+
+  const watcher = await build(config as InlineConfig);
+
+  if (Array.isArray(watcher) || !('on' in watcher)) {
+    throw new Error('当前构建结果不是 watcher，请检查 build.watch 配置');
+  }
 
   watcher.on('event', async (event) => {
     if (event.code === 'START' || event.code === 'END') {
