@@ -1,0 +1,44 @@
+---
+title: 主题容器 ThemeProvider
+description: 独立的局部主题容器组件，在子树内注入主题模式与运行时 theme 变量。
+---
+
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import ThemeProviderBasicDemo from '../../../../components/generated/theme-provider/basic.vue';
+import themeProviderBasicSource from '../../../../components/generated/theme-provider/basic.vue?raw';
+
+### 基本用法
+
+`ThemeProvider` 可以独立使用，不需要依赖 `ConfigProvider`。它会在当前子树内创建主题作用域容器，仅影响该子树。
+
+<DemoBlock source={themeProviderBasicSource} mainFile="src/theme-provider-basic.vue">
+
+<ThemeProviderBasicDemo client:only="vue" />
+
+</DemoBlock>
+
+## API
+
+### `<theme-provider>` Props
+
+| 参数名     | 描述                      | 类型                | 默认值  | 版本 |
+| ---------- | ------------------------- | ------------------- | :-----: | :--- |
+| theme      | 运行时主题对象            | `SDThemeConfig`     |   `-`   |      |
+| theme-mode | 当前子树主题模式          | `'light' \| 'dark'` |   `-`   |      |
+| global     | 是否直接作用于全局 `body` | `boolean`           | `false` |      |
+| tag        | 局部容器标签名            | `string`            | `'div'` |      |
+
+### `<theme-provider>` Slots
+
+| 插槽名  |   描述   | 参数 |
+| ------- | :------: | ---- |
+| default | 子树内容 | -    |
+
+## FAQ
+
+### 和 ConfigProvider 的区别是什么？
+
+- `ThemeProvider` 只处理主题作用域（`theme` / `theme-mode` / CSS variables）。
+- `ConfigProvider` 除主题能力外，还提供 `locale`、`rtl`、`size` 等全局配置。
+
+如果你只需要局部主题切换，优先使用 `ThemeProvider`。

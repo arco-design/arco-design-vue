@@ -47,8 +47,7 @@ $dot-prefix-cls: string.unquote('#{theme.$prefix}-dot-loading');
   }
 }
 
-/* prettier-ignore */
-@keyframes $dot-prefix-cls {
+@keyframes #{$dot-prefix-cls} {
   @for $value from 1 through 36 {
     $percent: math.percentage(math.div($value - 1, 36));
 

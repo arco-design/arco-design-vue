@@ -1,0 +1,343 @@
+---
+title: Tailwind 搭配使用
+description: 在 SD Design 组件库中与 Tailwind CSS v3/v4 共存的完整实践，覆盖样式优先级、Layer、Preflight、主题 Token 映射与排障。
+---
+
+本手册用于解决以下高频问题：
+
+- 原子类不生效（例如给按钮加 padding 没效果）
+- 组件样式被 Tailwind Preflight 冲掉（例如按钮背景变透明）
+- 局部主题和站点主题互相影响
+- 想在 Tailwind 原子类中直接消费组件库主题变量
+
+## 适用范围
+
+- 组件库：@sdata/web-vue
+- Tailwind：v3 / v4
+- 构建工具：Vite（其他构建工具同理）
+
+浏览器兼容目标请以项目当前 Browserslist 为准。对于 CSS Layer 等特性，建议确保目标浏览器满足现代能力基线。
+
+## 组件库 Reset 策略（重要）
+
+`@sdata/web-vue` 已内置基于 Tailwind v4 Preflight 的 reset 基线，并放在 `sd-design` layer。
+
+这意味着：
+
+1. 业务项目没有安装 Tailwind：组件库也能正常工作
+2. 业务项目安装了 Tailwind：组件库仍可正常工作，不要求业务方改 Tailwind 源码
+
+设计原则：
+
+- 组件库基于 Tailwind v4 reset 语义构建
+- 不修改 Tailwind 本身的规则语义
+- 通过 layer 顺序处理与业务 utilities 的优先级关系
+
+## 问题根因
+
+Tailwind 与组件库共存时，本质是三类样式在竞争：
+
+1. 浏览器默认样式重置（Tailwind Preflight）
+2. 组件库样式（sd.css / web-vue.css）
+3. 业务原子类（utilities）
+
+如果顺序和优先级不稳定，就会出现：
+
+- utilities 覆盖不了组件默认规则
+- Preflight 把组件基础样式重置掉
+
+## 推荐方案（现代浏览器）
+
+推荐使用 CSS Layer 显式声明优先级。
+
+目标顺序：
+
+- base（含 Preflight）最低
+- sd-design（组件库）居中
+- utilities（业务原子类）最高
+
+### Tailwind v4
+
+新建样式入口，例如 src/styles/app.css：
+
+```css
+@layer theme, base, sd-design, components, utilities;
+
+@import 'tailwindcss';
+@import '@sdata/web-vue/dist/sd.css' layer(sd-design);
+```
+
+在应用入口最前面引入：
+
+```ts
+import './styles/app.css';
+```
+
+要点：
+
+- layer 顺序声明必须在任何 layer 使用前加载
+- 组件库样式要放进同一 sd-design layer，否则会出现权重漂移
+- 业务项目可保留 Tailwind Preflight；若希望减少重复 reset，可在业务侧关闭 Preflight（可选）
+
+### Tailwind v3
+
+新建样式入口，例如 src/styles/app.css：
+
+```css
+@layer tailwind-base, sd-design, tailwind-components, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-components {
+  @tailwind components;
+}
+
+@layer tailwind-utilities {
+  @tailwind utilities;
+}
+
+@import '@sdata/web-vue/dist/sd.css' layer(sd-design);
+```
+
+入口文件中确保该 CSS 第一时间加载。
+
+## 备选方案（不使用 Layer）
+
+如果你的构建链路暂时无法稳定使用 Layer，可采用保守方案：
+
+1. 关闭 Preflight
+2. 对 utilities 提升优先级
+
+Tailwind 配置示例：
+
+```js
+// tailwind.config.js
+module.exports = {
+  corePlugins: {
+    preflight: false,
+  },
+  important: '#app',
+};
+```
+
+说明：
+
+- 该方案会改变全局原子类输出策略
+- 组件库仍包含自身 reset，不依赖业务方是否启用 Preflight
+- 建议仅作为过渡，优先回到 Layer 方案
+
+## 与局部主题共存（重点）
+
+组件库支持通过 ThemeProvider / ConfigProvider 实现局部主题作用域。
+
+实践建议：
+
+1. 局部主题演示默认使用 ThemeProvider（仅主题能力）
+2. 需要 locale/rtl/size 等再用 ConfigProvider
+3. 不要在局部演示中写入 body 级主题属性
+4. 不要在 demo 外层注入会污染文档站的全局变量
+
+示例：
+
+```vue
+<template>
+  <sd-theme-provider theme-mode="dark" :theme="theme">
+    <sd-card title="Scoped">
+      <sd-button type="primary" class="px-6">Button</sd-button>
+    </sd-card>
+  </sd-theme-provider>
+</template>
+```
+
+## 在 Tailwind 中使用组件库主题 Token
+
+### Tailwind v4（推荐）
+
+在 Tailwind 入口 CSS 中声明 @theme 映射：
+
+```css
+@import 'tailwindcss';
+
+@theme {
+  --color-sd-primary-6: rgb(var(--primary-6));
+  --color-sd-neutral-10: var(--color-neutral-10);
+  --color-sd-bg-2: var(--color-bg-2);
+  --radius-sd-md: var(--border-radius-medium);
+}
+```
+
+使用方式：
+
+- text-sd-neutral-10
+- bg-sd-bg-2
+- rounded-sd-md
+
+### Tailwind v3
+
+在 tailwind.config.js 中做 extend 映射：
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'sd-primary-6': 'rgb(var(--primary-6) / <alpha-value>)',
+        'sd-neutral-10': 'var(--color-neutral-10)',
+        'sd-bg-2': 'var(--color-bg-2)',
+      },
+      borderRadius: {
+        'sd-md': 'var(--border-radius-medium)',
+      },
+    },
+  },
+};
+```
+
+### 完整版：自动生成 Token 映射（含 GitHub raw）
+
+如果你希望避免手写 token，建议直接从组件库源码拉取并生成。
+
+组件 Token 源文件（raw）：
+
+- https://raw.githubusercontent.com/liunnn1994/sd-design/main/packages/web-vue/components/style/theme/css-variables.scss
+- https://raw.githubusercontent.com/liunnn1994/sd-design/main/packages/web-vue/components/style/theme/global.scss
+
+下面脚本会从 `css-variables.scss` 提取变量名，生成两个产物：
+
+1. Tailwind v4 的 `@theme` 映射块
+2. Tailwind v3 的 `theme.extend` 片段
+
+```js
+// scripts/generate-sd-tailwind-tokens.mjs
+import { writeFile } from 'node:fs/promises';
+
+const RAW_URL =
+  'https://raw.githubusercontent.com/liunnn1994/sd-design/main/packages/web-vue/components/style/theme/css-variables.scss';
+
+const response = await fetch(RAW_URL);
+if (!response.ok) {
+  throw new Error(`Failed to fetch token source: ${response.status}`);
+}
+
+const source = await response.text();
+
+// 从 `#{theme.$sd-cssvars-prefix}-token-name:` 里提取 token-name
+const tokenMatches = [...source.matchAll(/\$sd-cssvars-prefix\}-([a-z0-9-]+):/g)];
+const tokenNames = [...new Set(tokenMatches.map((match) => match[1]))].sort();
+
+const isRgbToken = (name) => {
+  return /^(primary|success|warning|danger|link|gray)-\d+$/.test(name);
+};
+
+const toTailwindKey = (name) => `sd-${name}`;
+
+const v4ThemeBlock = [
+  '@theme {',
+  ...tokenNames.map((name) => {
+    const value = isRgbToken(name) ? `rgb(var(--${name}))` : `var(--${name})`;
+    return `  --color-${toTailwindKey(name)}: ${value};`;
+  }),
+  '}',
+].join('\n');
+
+const v3ColorEntries = tokenNames
+  .map((name) => {
+    const value = isRgbToken(name) ? `'rgb(var(--${name}) / <alpha-value>)'` : `'var(--${name})'`;
+    return `      '${toTailwindKey(name)}': ${value},`;
+  })
+  .join('\n');
+
+const v3ExtendBlock = [
+  'theme: {',
+  '  extend: {',
+  '    colors: {',
+  v3ColorEntries,
+  '    },',
+  '  },',
+  '},',
+].join('\n');
+
+await writeFile('tailwind.sd-theme.v4.css', `${v4ThemeBlock}\n`, 'utf8');
+await writeFile('tailwind.sd-theme.v3.cjs', `${v3ExtendBlock}\n`, 'utf8');
+
+console.log(`Generated ${tokenNames.length} tokens.`);
+console.log('Output: tailwind.sd-theme.v4.css, tailwind.sd-theme.v3.cjs');
+```
+
+执行方式：
+
+```bash
+node scripts/generate-sd-tailwind-tokens.mjs
+```
+
+产物接入方式：
+
+- v4: 将 `tailwind.sd-theme.v4.css` 合并到你的入口 CSS（`@import "tailwindcss"` 后）
+- v3: 将 `tailwind.sd-theme.v3.cjs` 内容合并到 `tailwind.config.js`
+
+## 兼容性与降级策略
+
+### CSS Layer
+
+- 优点：从机制上解决 Preflight 与组件样式、业务原子类的优先级关系
+- 风险：低版本浏览器支持较弱
+- 降级：使用 PostCSS 的 cascade-layers 相关插件做构建降级
+
+### 逻辑属性与现代选择器
+
+组件库样式中会使用现代 CSS 特性（如逻辑属性、低优先级选择器策略等）。若你有更低版本浏览器诉求，建议在项目构建侧统一做 PostCSS 降级，而不是在业务代码中逐点修补。
+
+## 入口顺序检查清单
+
+发布前请逐项确认：
+
+1. Layer 顺序声明文件在入口最前引入
+2. Tailwind 入口与组件库样式都进入预期 layer
+3. 业务 utilities 能覆盖组件默认间距/排版等规则
+4. 按钮、输入框、卡片在 light/dark 下可读性正常
+5. 局部主题切换不会影响文档站导航与外层文本
+
+## 常见故障排查
+
+### 现象 1：按钮背景透明
+
+原因：Preflight 覆盖了组件按钮基础样式。
+
+处理：
+
+- 优先启用 Layer 方案并校正顺序
+- 临时方案可关闭 preflight
+
+### 现象 2：原子类对组件无效
+
+原因：utilities 优先级低于组件规则。
+
+处理：
+
+- 确认 utilities 在更高 layer
+- 无 Layer 时启用 important 前缀策略
+
+### 现象 3：局部主题影响整站文案颜色
+
+原因：局部演示把主题写到了 body 或写入了全局变量。
+
+处理：
+
+- 使用 ThemeProvider 子树隔离
+- 严禁 demo 直接改 body 主题属性
+
+## 推荐落地路径
+
+1. 先接入 Layer（v4 或 v3 对应方案）
+2. 再接入 ThemeProvider 局部主题演示
+3. 最后做 Tailwind Token 映射
+4. 用页面快照和交互回归验证 light/dark 与 utilities 覆盖链路
+
+## 相关文档
+
+- [快速上手](/guides/start/)
+- [定制主题](/guides/theme/)
+- [主题编辑器](/guides/theme-editor/)
+- [样式迁移手册](/guides/style-migration/)

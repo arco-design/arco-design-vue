@@ -80,7 +80,11 @@ export default defineConfig({
         },
       },
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/liunnn1994/sd-design' },
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/liunnn1994/sd-design',
+        },
       ],
       sidebar: docsSidebar,
       customCss: ['./src/styles/site.css'],

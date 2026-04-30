@@ -14,7 +14,7 @@ colors.$sd-cssvars-prefix: string.unquote('-');
   colors.$sd-cssvars-prefix: string.unquote('--#{colors.$sd-vars-prefix}');
 }
 
-$sd-theme-tag: body;
+$sd-theme-tag: ':where(body, [sd-theme])';
 $sd-vars-prefix: string.unquote('');
 $sd-cssvars-prefix: string.unquote('-');
 

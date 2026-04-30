@@ -95,7 +95,11 @@ $avatar-prefix-cls: string.unquote('#{theme.$prefix}-avatar');
     height: 100%;
     color: $avatar-color-trigger-mask-icon;
     font-size: 16px;
-    background-color: fade(colors.$gray-10, $avatar-opacity-trigger-mask-bg);
+    background-color: color-mix(
+      in srgb,
+      colors.$gray-10 $avatar-opacity-trigger-mask-bg,
+      transparent
+    );
     border-radius: $avatar-square-border-radius;
     opacity: 0;
     transition: all theme.$transition-duration-1 theme.$transition-timing-function-linear;

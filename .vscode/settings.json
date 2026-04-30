@@ -1,1 +1,4 @@
-{}
+{
+  "stylelint.configFile": "${workspaceFolder}/.stylelintrc.mjs",
+  "stylelint.configBasedir": "${workspaceFolder}"
+}

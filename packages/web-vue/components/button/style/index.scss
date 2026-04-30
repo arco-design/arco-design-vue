@@ -593,7 +593,7 @@ $__less-vars: (
   }
 }
 
-body[sd-theme='dark'] {
+#{global.$sd-theme-tag}[sd-theme='dark'] {
   .#{$btn-prefix-cls}-primary.#{$btn-prefix-cls}-disabled {
     color: rgb(255 255 255 / 30%);
   }

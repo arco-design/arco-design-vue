@@ -13,6 +13,8 @@ export const configProviderEmptySource =
 import ConfigProviderRtlDemo from '../../../../components/generated/config-provider/rtl.vue';
 export const configProviderRtlSource =
   '<template>\n  <div>\n    <sd-switch v-model="rtlType" style="margin-bottom: 20px;">\n      <template #checked> RTL </template>\n      <template #unchecked> LTR </template>\n    </sd-switch>\n    <sd-config-provider :rtl="rtlType">\n      <sd-tabs :default-active-key="2" style="margin-bottom: 20px;">\n        <sd-tab-pane v-for="i in 36" :key="i" :title="`Tab ${i}`">\n          Content of Tab Panel {{ i }}\n        </sd-tab-pane>\n      </sd-tabs>\n      <sd-space :direction="\'vertical\'" style="width: 100%;">\n        <sd-space :size="40">\n          <sd-badge :count="9">\n            <sd-avatar shape="square" />\n          </sd-badge>\n          <sd-badge :count="9" dot :dotStyle="{ width: \'10px\', height: \'10px\' }">\n            <sd-avatar shape="square" />\n          </sd-badge>\n          <sd-badge :dotStyle="{ height: \'16px\', width: \'16px\', fontSize: \'14px\' }">\n            <template #content>\n              <IconClockCircle :style="{ verticalAlign: \'middle\', color: \'var(--color-text-2)\' }" />\n            </template>\n            <sd-avatar shape="square" />\n          </sd-badge>\n          <sd-tag :color="\'red\'" closable>red</sd-tag>\n          <sd-tag :color="\'blue\'" closable>blue</sd-tag>\n          <sd-tag :color="\'green\'" closable>green</sd-tag>\n        </sd-space>\n      </sd-space>\n    </sd-config-provider>\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const rtlType = ref(true);\n\n      return {\n        rtlType,\n      };\n    },\n  };\n</script>';
+import ConfigProviderThemeModeDemo from '../../../../components/generated/config-provider/theme-mode.vue';
+import configProviderThemeModeSource from '../../../../components/generated/config-provider/theme-mode.vue?raw';
 
 ### 基本用法
 
@@ -44,20 +46,32 @@ export const configProviderRtlSource =
 
 </DemoBlock>
 
+### 局部主题模式
+
+`ConfigProvider` 现在可以作为局部 ThemeProvider 使用。设置 `theme-mode` 后，组件库会在当前子树上挂载真正的局部 `sd-theme` 容器，而不是只依赖 `body`。
+
+<DemoBlock source={configProviderThemeModeSource} mainFile="src/config-provider-theme-mode.vue">
+
+<ConfigProviderThemeModeDemo client:only="vue" />
+
+</DemoBlock>
+
 ## API
 
 ### `<config-provider>` Props
 
-| 参数名           | 描述                             | 类型      | 默认值  | 版本   |
-| ---------------- | -------------------------------- | --------- | :-----: | :----- |
-| prefix-cls       | 组件类名前缀                     | `string`  | `'sd'`  |        |
-| locale           | 配置语言包                       | `SDLang`  |   `-`   |        |
-| size             | 大小                             | `Size`    |   `-`   | 2.14.0 |
-| global           | 是否全局生效                     | `boolean` | `false` | 2.25.0 |
-| update-at-scroll | 是否在容器滚动时更新弹出框的位置 | `boolean` | `false` | 2.25.0 |
-| scroll-to-close  | 是否在滚动时关闭弹出框           | `boolean` | `false` | 2.46.0 |
-| exchange-time    | 是否交换时间                     | `boolean` | `true`  | 2.48.0 |
-| rtl              | 视图的表现形式是从右开始向左结束 | `boolean` | `false` |        |
+| 参数名           | 描述                               | 类型                | 默认值  | 版本   |
+| ---------------- | ---------------------------------- | ------------------- | :-----: | :----- |
+| prefix-cls       | 组件类名前缀                       | `string`            | `'sd'`  |        |
+| locale           | 配置语言包                         | `SDLang`            |   `-`   |        |
+| size             | 大小                               | `Size`              |   `-`   | 2.14.0 |
+| global           | 是否全局生效                       | `boolean`           | `false` | 2.25.0 |
+| update-at-scroll | 是否在容器滚动时更新弹出框的位置   | `boolean`           | `false` | 2.25.0 |
+| scroll-to-close  | 是否在滚动时关闭弹出框             | `boolean`           | `false` | 2.46.0 |
+| exchange-time    | 是否交换时间                       | `boolean`           | `true`  | 2.48.0 |
+| rtl              | 视图的表现形式是从右开始向左结束   | `boolean`           | `false` |        |
+| theme            | 运行时主题对象                     | `SDThemeConfig`     |   `-`   |        |
+| theme-mode       | 当前 ConfigProvider 子树的主题模式 | `'light' \| 'dark'` |   `-`   |        |
 
 ### `<config-provider>` Slots
 
@@ -71,6 +85,14 @@ export const configProviderRtlSource =
 ### 全局配置
 
 `global` 属性设置为 `true` 时，会将配置内容注入到 Vue AppContext 中，一般用于解决使用 Modal、Message 组件的函数式调用方法时，配置内容无法生效的问题。
+
+### 局部主题模式
+
+`theme-mode` 会让 `ConfigProvider` 在当前子树中创建一个局部 ThemeProvider。和直接操作 `body` 不同，这种方式适合在同一页面上并存多个不同主题的组件区域。
+
+当只传 `theme`、不传 `theme-mode` 时，当前子树会继承上层主题模式，仅对传入的 token 做局部增量覆盖。
+
+如果你只需要局部主题切换，不需要 locale、rtl、size 等其他配置，也可以直接使用 `ThemeProvider` 组件。
 
 ### 自定义空状态展示
 

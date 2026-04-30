@@ -1,0 +1,37 @@
+---
+title: 样式迁移手册
+description: 从 Less 主题覆盖迁移到 Scss + CSS variables + ConfigProvider theme 对象的步骤与风险说明。
+---
+
+这次样式升级把主题能力拆成三层：Scss token 基础层、运行时 CSS variables、ConfigProvider theme 对象。迁移目标不是把 Less 全量翻译成 Scss，而是把真正需要长期维护的主题入口收敛成一份可序列化的 theme JSON。
+
+## 推荐迁移步骤
+
+1. 盘点现有 Less modifyVars，只保留仍然影响业务品牌识别的变量。
+2. 将品牌色、中性色、背景色和圆角优先映射到 tokens。
+3. 用 ConfigProvider theme 对象先在关键页面验证视觉结果，再逐步清理旧的 Less 覆盖。
+4. 对于仍未迁移到 CSS variable 消费链路的字号、间距类 token，先记录在迁移清单中，不要同时改业务样式和组件源码。
+
+## Less 到 theme 对象的思路
+
+| 旧能力 | 新能力 | 说明 |
+| --- | --- | --- |
+| modifyVars 覆盖全局品牌色 | tokens.primary5/6/7 | 直接驱动按钮、链接、焦点态与浅色层 |
+| modifyVars 覆盖中性色 | tokens.colorNeutral2/3/8/10 | 直接影响输入框、卡片、文本层级 |
+| Less 中维护导出的主题包 | 主题 JSON 下载与上传 | 更适合跨项目共享与版本管理 |
+| 零散组件变量覆盖 | components.componentName.tokenName | 用于描述组件级偏移，后续继续完善消费链路 |
+
+## 风险说明
+
+- 不是所有历史 token 都已经进入运行时 CSS variable 消费链路。当前最稳定的是颜色和圆角，字号与间距仍在持续迁移中。
+- components 级覆盖已经能进入归一化和变量分发链路，但部分组件样式还没有完全消费这些 override 变量。
+- 同一页面上可以并存多个局部 ConfigProvider 主题区域。每个区域会在自身子树下维护变量容器，不再依赖 body 级覆盖。
+
+## 与 Naive UI 迁移的关系
+
+主题迁移和组件 API 迁移应该分开处理：
+
+- 先确认视觉 token 是否落在新的 theme 对象协议里
+- 再处理 Naive UI 组件替换与行为差异
+
+如果你当前同时在做组件替换，可以结合 [Naive UI 迁移](/guides/naive-ui-migration/) 一起推进。

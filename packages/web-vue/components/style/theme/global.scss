@@ -1,7 +1,7 @@
 @use 'sass:string';
 @use '@style/color/colors.scss' as *;
 
-$sd-theme-tag: body; // css 变量定义的选择器
+$sd-theme-tag: ':where(body, [sd-theme])'; // css 变量定义的选择器
 
 $sd-vars-prefix: ''; // css 变量的前缀
 
@@ -274,7 +274,7 @@ $radius-circle: var(string.unquote('#{$sd-cssvars-prefix}-border-radius-circle')
 
 // Other
 $color-white: #fff;
-$dark-color-white: fade(#fff, 90%); // 在亮色模式下所有白色文字对应。对应 $color-white;
+$dark-color-white: rgb(255 255 255 / 90%); // 在亮色模式下所有白色文字对应。对应 $color-white;
 
 $color-black: #000;
 $dark-color-black: #000;
@@ -288,7 +288,7 @@ $dark-mask-color-bg: rgba($dark-gray-1, $mask-bg-opacity);
 $color-menu-dark-bg: #232324;
 $color-menu-light-bg: #fff;
 $color-spin-layer-bg: rgb(255 255 255 / 60%);
-$color-menu-dark-hover: fade(#fff, 4%);
+$color-menu-dark-hover: rgb(255 255 255 / 4%);
 $color-tooltip-bg: rgb(var(string.unquote('#{$sd-cssvars-prefix}-gray-10')));
 
 // component
@@ -353,14 +353,14 @@ $dark-color-bg-3: #2a2a2b; // Secondary container background
 $dark-color-bg-4: #313132; // Three-level container background
 $dark-color-bg-5: #373739; // Drop-down box, Tooltips background
 $dark-color-bg-white: #f6f6f6; // In bright color mode radio, switch white background
-$dark-color-text-1: fade(#fff, 90%);
-$dark-color-text-2: fade(#fff, 70%);
-$dark-color-text-3: fade(#fff, 50%);
-$dark-color-text-4: fade(#fff, 30%);
-$dark-color-fill-1: fade(#fff, 4%);
-$dark-color-fill-2: fade(#fff, 8%);
-$dark-color-fill-3: fade(#fff, 12%);
-$dark-color-fill-4: fade(#fff, 16%);
+$dark-color-text-1: rgb(255 255 255 / 90%);
+$dark-color-text-2: rgb(255 255 255 / 70%);
+$dark-color-text-3: rgb(255 255 255 / 50%);
+$dark-color-text-4: rgb(255 255 255 / 30%);
+$dark-color-fill-1: rgb(255 255 255 / 4%);
+$dark-color-fill-2: rgb(255 255 255 / 8%);
+$dark-color-fill-3: rgb(255 255 255 / 12%);
+$dark-color-fill-4: rgb(255 255 255 / 16%);
 $dark-color-primary-light-1: rgb(var(string.unquote('#{$sd-cssvars-prefix}-primary-6')), 0.2);
 $dark-color-primary-light-2: rgb(var(string.unquote('#{$sd-cssvars-prefix}-primary-6')), 0.35);
 $dark-color-primary-light-3: rgb(var(string.unquote('#{$sd-cssvars-prefix}-primary-6')), 0.5);

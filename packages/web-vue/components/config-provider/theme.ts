@@ -8,6 +8,8 @@ export interface SDThemeMeta {
   cssVarPrefix?: string;
 }
 
+export type SDThemeMode = 'light' | 'dark';
+
 export interface SDThemeConfig {
   tokens?: ThemeTokenMap;
   components?: Record<string, ThemeTokenMap>;

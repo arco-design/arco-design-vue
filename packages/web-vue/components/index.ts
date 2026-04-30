@@ -41,6 +41,8 @@ export { default as ColorPicker } from './color-picker';
 export type { ColorPickerInstance } from './color-picker';
 export { default as ConfigProvider } from './config-provider';
 export type { ConfigProviderInstance } from './config-provider';
+export { default as ThemeProvider } from './theme-provider';
+export type { ThemeProviderInstance } from './theme-provider';
 export {
   default as DatePicker,
   MonthPicker,

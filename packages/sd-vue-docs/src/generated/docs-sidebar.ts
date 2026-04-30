@@ -15,16 +15,33 @@ export const docsSidebar = [
         label: '常见问题',
       },
       {
-        slug: 'guides/naive-ui-migration',
-        label: 'Naive UI 迁移',
-      },
-      {
         slug: 'guides/start',
         label: '快速上手',
       },
       {
         slug: 'guides/theme',
         label: '定制主题',
+      },
+      {
+        slug: 'guides/tailwind',
+        label: 'Tailwind 搭配使用',
+      },
+      {
+        slug: 'guides/theme-editor',
+        label: '主题编辑器',
+      },
+      {
+        label: '迁移文档',
+        items: [
+          {
+            slug: 'guides/style-migration',
+            label: '样式迁移手册',
+          },
+          {
+            slug: 'guides/naive-ui-migration',
+            label: 'Naive UI 迁移',
+          },
+        ],
       },
     ],
   },
@@ -45,6 +62,10 @@ export const docsSidebar = [
           {
             slug: 'components/config-provider',
             label: '全局配置 ConfigProvider',
+          },
+          {
+            slug: 'components/theme-provider',
+            label: '主题容器 ThemeProvider',
           },
           {
             slug: 'components/ellipsis',

@@ -1,0 +1,44 @@
+---
+title: 主题编辑器
+description: 运行时 theme 对象约定与 JSON 结构说明。
+---
+
+SD Design 的主题协议已经统一为 ConfigProvider 的 theme 对象。以下是主题结构与导入导出约定：
+
+- 可以切换默认、暗色、紧凑、品牌色、赛博朋克等预设主题
+- 可以直接编辑 meta、tokens、components，覆盖运行时可调参数
+- 可以下载带 schemaVersion 的 JSON，也可以上传 JSON 进行兼容性校验
+
+## 适用场景
+
+- 设计和研发一起确认组件在新品牌色下的可读性
+- 迁移 Less 定制主题时，先用全局 token 对照出浮层与正文一致效果
+- 给业务线输出可复用的主题 JSON，而不是单独维护一份散落的样式覆盖
+
+## JSON 约定
+
+```json
+{
+  "meta": {
+    "schemaVersion": 1,
+    "cssVarPrefix": "--",
+    "name": "Campaign Theme"
+  },
+  "tokens": {
+    "primary6": "230,57,122",
+    "colorBg2": "#fff8fb",
+    "borderRadiusMedium": "14px"
+  },
+  "components": {
+    "button": {
+      "borderRadius": "14px"
+    }
+  }
+}
+```
+
+上传时会执行三类校验：
+
+- schemaVersion 必须和当前文档站支持的版本一致
+- 至少需要包含 tokens 或 components 其中之一
+- token 值只能是字符串或数字，避免把嵌套对象误传进来

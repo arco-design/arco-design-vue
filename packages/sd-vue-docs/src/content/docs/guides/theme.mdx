@@ -1,75 +1,101 @@
 ---
 title: 定制主题
-description: SDVue提供了一套蓝色主题（SDBlue），用户可以根据自己的需求定制新主题，以满足业务和品牌上的多样化需求。
+description: 使用 ConfigProvider 的 theme 对象在运行时覆盖 CSS variables，并统一输出可分享的主题 JSON。
 ---
 
-SD Design 定义了一套默认粒子变量，可以通过对粒子变量的修改覆盖来定制主题。
+SD Design 现在以 ConfigProvider 的 theme 对象作为主题入口。你不需要再把主题能力绑定到 Less modifyVars，而是直接在运行时传入 tokens、components 和 meta 三个层级。
 
-## Less 变量替换
+## 组件级 ThemeProvider
 
-SD Design 使用了 [Less](http://lesscss.org/ '_blank') 作为预编译语言，通过 Less 的 **modifyVars** 功能，可以很方便的对样式粒子变量进行定制。
+现在支持真正的组件级主题切换。你可以直接使用 `ThemeProvider` 包裹某个局部区域，让 `sd-theme` 和对应的 CSS variables 只在这个子树内生效。
 
-全局变量可在 `global.less (@sdata/web-vue/es/style/theme/global.less)` 中可以找到。
+```vue
+<template>
+  <sd-theme-provider theme-mode="dark">
+    <sd-card title="Scoped Theme">
+      <sd-button type="primary">Primary Action</sd-button>
+      <sd-alert type="success">这里的语义 token 不会再回退到 body。</sd-alert>
+    </sd-card>
+  </sd-theme-provider>
+</template>
+```
 
-在组件库内部我们对组件样式变量做了非常细致的抽离提取，可以满足对组件细粒度的定制。例如 `Button` 组件对应的样式变量 `token.less (@sdata/web-vue/es/button/style/token.less)` 列表。
+如果你已经在用 `ConfigProvider`，也可以直接通过 `theme` 和 `theme-mode` 这两个配置项得到同样的局部主题容器能力。
 
-### 引入组件库样式文件
+注意：局部容器不会覆盖挂载到 `body` 的浮层节点（例如 Popover、Tooltip、Select 下拉）。这类场景需要全局主题能力（`global`）。
 
-如果想要进行主题定制，需要引入 less 样式文件。组件库 less 样式文件可以在 `@sdata/web-vue/dist/sd.less` 或者 `@sdata/web-vue/es/index.less` 中找到。如果使用了按需加载的方式引入组件，请确保在按需加载插件中开启了 less 样式文件的导入。
+## 主题对象结构
 
-### Vite 配置
-
-Vite 本身支持 [Less 语法](https://vitejs.dev/guides/features.html#css-pre-processors '_blank')，用户只需在配置文件中传入 Less 的配置即可：
-
-```diff
-// vite.config.js
-export default {
-  css: {
-+   preprocessorOptions: {
-+     less: {
-+       modifyVars: {
-+         'sdblue-6': '#f85959',
-+       },
-+       javascriptEnabled: true,
-+     }
-+   }
-  },
-  ...
+```ts
+interface SDThemeConfig {
+  tokens?: Record<string, string | number>;
+  components?: Record<string, Record<string, string | number>>;
+  meta?: {
+    name?: string;
+    schemaVersion?: number;
+    cssVarPrefix?: string;
+  };
 }
 ```
 
-### Webpack 配置
+推荐的约定：
 
-在 Webpack 打包的时候，通过 [less-loader](https://github.com/webpack-contrib/less-loader) 的 modifyVars，可以对所有的变量进行替换：
+- tokens 存放全局颜色、圆角、语义中性色等可跨组件复用的变量
+- components 存放组件级覆盖，用于表达某个组件相对全局 token 的偏移
+- meta 用来标记 schemaVersion、导出名称和 CSS 变量前缀
 
-```diff
-// webpack.config.js
-module.exports = {
-  rules: [{
-    test: /\.less$/,
-    use: [{
-      loader: 'style-loader',
-    }, {
-      loader: 'css-loader',
-    }, {
-      loader: 'less-loader',
-+     options: {
-+       lessOptions: {
-+         modifyVars: {
-+           'sdblue-6': '#f85959',
-+         },
-+         javascriptEnabled: true,
-+       },
-+     },
-    }],
-    ...
-  }],
-  ...
-}
+## 基本用法
+
+```vue
+<template>
+  <sd-config-provider :theme="theme">
+    <sd-space direction="vertical" fill>
+      <sd-button type="primary">主题按钮</sd-button>
+      <sd-input placeholder="查看输入框状态" />
+      <sd-card title="运行时主题">不需要重新编译样式。</sd-card>
+    </sd-space>
+  </sd-config-provider>
+</template>
+
+<script setup lang="ts">
+  const theme = {
+    meta: {
+      schemaVersion: 1,
+      cssVarPrefix: '--',
+      name: 'Brand Campaign',
+    },
+    tokens: {
+      primary5: '255,98,150',
+      primary6: '230,57,122',
+      primary7: '184,28,90',
+      colorBg2: '#fff8fb',
+      colorNeutral10: '#2d1020',
+      borderRadiusMedium: '14px',
+    },
+  };
+</script>
 ```
 
-## 风格配置平台主题包使用
+## CSS variables 约定
 
-风格配置平台 Vue 的主题包已经可以使用。
+Scss 迁移后的组件样式优先消费 CSS variables。当前已经稳定使用的变量主要集中在三类：
 
-具体使用方法可以参考 [风格配置平台文档](https://sd.design/docs/designlab/guideline)
+- 颜色变量：如 primary1 到 primary7、colorNeutral2 到 colorNeutral10、colorBg2、colorBg5
+- 语义浅色层：如 colorPrimaryLight1 到 colorPrimaryLight4、danger 和 success 的 light 层
+- 圆角变量：如 borderRadiusSmall、borderRadiusMedium、borderRadiusLarge
+
+你传入的 token key 会先被归一化，再注入成 CSS 变量。例如：
+
+- primary6 会变成 --primary-6
+- colorNeutral10 会变成 --color-neutral-10
+- borderRadiusMedium 会变成 --border-radius-medium
+
+## 主题编辑器
+
+如果想查看主题结构和 JSON 约定，参考 [主题编辑器说明](/guides/theme-editor/)。
+
+## 迁移建议
+
+- 新项目直接使用 theme 对象，不再新增 Less modifyVars 覆盖
+- 已有 Less 主题先抽取出主品牌色、中性色和圆角，映射到 tokens
+- 需要迁移步骤和风险说明时，查看 [样式迁移手册](/guides/style-migration/)

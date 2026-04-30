@@ -1,28 +1,18 @@
 <template>
-  <slot />
+  <ThemeProvider :theme="theme" :theme-mode="themeMode" :global="global">
+    <slot />
+  </ThemeProvider>
 </template>
 
 <script lang="ts">
   import type { PropType } from 'vue';
-  import {
-    defineComponent,
-    provide,
-    reactive,
-    toRefs,
-    getCurrentInstance,
-    watch,
-    onBeforeUnmount,
-  } from 'vue';
+  import { defineComponent, provide, reactive, toRefs, getCurrentInstance, watch } from 'vue';
 
   import { Size } from '../_utils/constant';
   import { SDLang } from '../locale/interface';
   import { configProviderInjectionKey } from './context';
-  import {
-    SDThemeConfig,
-    normalizeTheme,
-    applyThemeCSSVariables,
-    clearThemeCSSVariables,
-  } from './theme';
+  import { SDThemeConfig, SDThemeMode, normalizeTheme } from './theme';
+  import ThemeProvider from './theme-provider.vue';
 
   export default defineComponent({
     name: 'ConfigProvider',
@@ -101,6 +91,13 @@
       theme: {
         type: Object as PropType<SDThemeConfig>,
       },
+      /**
+       * @zh 主题模式，可局部覆盖到当前 ConfigProvider 子树
+       * @en Theme mode applied to the current ConfigProvider subtree
+       */
+      themeMode: {
+        type: String as PropType<SDThemeMode>,
+      },
     },
     /**
      * @zh 自定义空状态元素
@@ -131,42 +128,16 @@
         theme: normalizeTheme(props.theme),
       });
 
-      let appliedThemeKeys = new Set<string>();
       watch(
         () => props.theme,
         (themeConfig) => {
-          const nextTheme = normalizeTheme(themeConfig);
-          config.theme = nextTheme;
-
-          if (typeof document === 'undefined') {
-            return;
-          }
-
-          const target = document.body || document.documentElement;
-          if (!target) {
-            return;
-          }
-
-          appliedThemeKeys = applyThemeCSSVariables(target, nextTheme, appliedThemeKeys);
+          config.theme = normalizeTheme(themeConfig);
         },
         {
           immediate: true,
           deep: true,
         },
       );
-
-      onBeforeUnmount(() => {
-        if (typeof document === 'undefined') {
-          return;
-        }
-
-        const target = document.body || document.documentElement;
-        if (!target) {
-          return;
-        }
-
-        clearThemeCSSVariables(target, appliedThemeKeys);
-      });
 
       if (props.global) {
         const instance = getCurrentInstance();
@@ -176,6 +147,11 @@
       } else {
         provide(configProviderInjectionKey, config);
       }
+
+      return {};
+    },
+    components: {
+      ThemeProvider,
     },
   });
 </script>
