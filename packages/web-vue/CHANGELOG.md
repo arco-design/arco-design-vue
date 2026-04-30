@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/liunnn1994/sd-design/compare/v1.7.0...v1.7.1) (2026-04-30)
+
+### Bug Fixes
+
+- 🐛 修复局部主题会影响到全局的问题 ([10a8f46](https://github.com/liunnn1994/sd-design/commit/10a8f4697a7e30d7121d0105920630c675b637f8))
+
 # [1.7.0](https://github.com/liunnn1994/sd-design/compare/v1.6.0...v1.7.0) (2026-04-30)
 
 ### Features
