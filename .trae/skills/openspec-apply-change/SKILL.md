@@ -5,8 +5,8 @@ license: MIT
 compatibility: Requires openspec CLI.
 metadata:
   author: openspec
-  version: '1.0'
-  generatedBy: '1.2.0'
+  version: "1.0"
+  generatedBy: "1.3.1"
 ---
 
 Implement tasks from an OpenSpec change.
@@ -25,11 +25,9 @@ Implement tasks from an OpenSpec change.
    Always announce: "Using change: <name>" and how to override (e.g., `/opsx:apply <other>`).
 
 2. **Check status to understand the schema**
-
    ```bash
    openspec status --change "<name>" --json
    ```
-
    Parse the JSON to understand:
    - `schemaName`: The workflow being used (e.g., "spec-driven")
    - Which artifact contains the tasks (typically "tasks" for spec-driven, check status for others)
@@ -41,7 +39,7 @@ Implement tasks from an OpenSpec change.
    ```
 
    This returns:
-   - Context file paths (varies by schema - could be proposal/specs/design/tasks or spec/tests/implementation/docs)
+   - `contextFiles`: artifact ID -> array of concrete file paths (varies by schema - could be proposal/specs/design/tasks or spec/tests/implementation/docs)
    - Progress (total, complete, remaining)
    - Task list with status
    - Dynamic instruction based on current state
@@ -53,7 +51,8 @@ Implement tasks from an OpenSpec change.
 
 4. **Read context files**
 
-   Read the files listed in `contextFiles` from the apply instructions output. The files depend on the schema being used:
+   Read every file path listed under `contextFiles` from the apply instructions output.
+   The files depend on the schema being used:
    - **spec-driven**: proposal, specs, design, tasks
    - Other schemas: follow the contextFiles from CLI output
 
@@ -140,7 +139,6 @@ What would you like to do?
 ```
 
 **Guardrails**
-
 - Keep going through tasks until done or blocked
 - Always read context files before starting (from the apply instructions output)
 - If task is ambiguous, pause and ask before implementing

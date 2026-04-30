@@ -5,8 +5,8 @@ license: MIT
 compatibility: Requires openspec CLI.
 metadata:
   author: openspec
-  version: '1.0'
-  generatedBy: '1.2.0'
+  version: "1.0"
+  generatedBy: "1.3.1"
 ---
 
 Archive a completed change in the experimental workflow.
@@ -19,7 +19,8 @@ Archive a completed change in the experimental workflow.
 
    Run `openspec list --json` to get available changes. Use the **AskUserQuestion tool** to let the user select.
 
-   Show only active changes (not already archived). Include the schema used for each change if available.
+   Show only active changes (not already archived).
+   Include the schema used for each change if available.
 
    **IMPORTANT**: Do NOT guess or auto-select a change. Always let the user choose.
 
@@ -67,7 +68,6 @@ Archive a completed change in the experimental workflow.
 5. **Perform the archive**
 
    Create the archive directory if it doesn't exist:
-
    ```bash
    mkdir -p openspec/changes/archive
    ```
@@ -105,7 +105,6 @@ All artifacts complete. All tasks complete.
 ```
 
 **Guardrails**
-
 - Always prompt for change selection if not provided
 - Use artifact graph (openspec status --json) for completion checking
 - Don't block archive on warnings - just inform and confirm
