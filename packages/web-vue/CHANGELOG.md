@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/liunnn1994/sd-design/compare/v1.6.0...v1.7.0) (2026-04-30)
+
+### Features
+
+- 🆕 使用 scss 替换 less ([552728f](https://github.com/liunnn1994/sd-design/commit/552728fcb033d26a68eaa45bab94fe4e6050341c))
+- 🆕 添加主题的切换以及演示 ([c467c13](https://github.com/liunnn1994/sd-design/commit/c467c1395f8610439c305141578ee544cd147142))
+
 # [1.6.0](https://github.com/liunnn1994/sd-design/compare/v1.5.0...v1.6.0) (2026-04-21)
 
 ### Features
