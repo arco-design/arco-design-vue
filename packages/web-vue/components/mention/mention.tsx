@@ -228,6 +228,8 @@ export default defineComponent({
 
     const handleClear = (ev: Event) => {
       _value.value = '';
+      resetMeasureInfo();
+      _popupVisible.value = false;
       emit('update:modelValue', '');
       emit('change', '');
       eventHandlers.value?.onChange?.();
