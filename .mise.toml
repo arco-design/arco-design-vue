@@ -1,5 +1,6 @@
 [tools]
 node = "24.14.1"
+python = "3.14"
 
 [hooks]
 postinstall = "npx corepack enable"
