@@ -21,19 +21,16 @@ Set `icon` to customize the icon.
   <a-button @click="handleClick">Info Message</a-button>
 </template>
 
-<script>
+<script setup lang="ts">
 import { h } from 'vue';
+import { Message } from '@arco-design/web-vue';
 import { IconFaceSmileFill } from '@arco-design/web-vue/es/icon';
 
-export default {
-  methods: {
-    handleClick() {
-      this.$message.info({
-        content: 'This is an info message!',
-        icon: () => h(IconFaceSmileFill)
-      });
-    }
-  }
-}
+const handleClick = () => {
+  Message.info({
+    content: 'This is an info message!',
+    icon: () => h(IconFaceSmileFill),
+  });
+};
 </script>
 ```

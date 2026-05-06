@@ -28,7 +28,9 @@ The extra node on the far right can be set by `extra`. `extra` click to set `sto
     </a-collapse-item>
     <a-collapse-item header="Beijing Toutiao Technology Co., Ltd." :key="2">
       <template #extra>
-        <a-button type="primary" size="mini" @click.stop="sayHello">hello</a-button>
+        <a-button type="primary" size="mini" @click.stop="handleClick"
+          >hello</a-button
+        >
       </template>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
       <div>Beijing Toutiao Technology Co., Ltd.</div>
@@ -43,19 +45,11 @@ The extra node on the far right can be set by `extra`. `extra` click to set `sto
   </a-collapse>
 </template>
 
-<script>
+<script setup lang="ts">
 import { Message } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const sayHello = () => {
-      Message.info('hello');
-    };
-
-    return {
-      sayHello,
-    };
-  },
+const handleClick = () => {
+  Message.info('hello');
 };
 </script>
 ```

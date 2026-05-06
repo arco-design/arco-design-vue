@@ -37,9 +37,7 @@ Freely specify width of menu and height of menu item through `style`.
         <template #title>Navigation 1</template>
         <a-menu-item key="0_0">Menu 1</a-menu-item>
         <a-menu-item key="0_1">Menu 2</a-menu-item>
-        <a-menu-item key="0_2" disabled>
-          Menu 3
-        </a-menu-item>
+        <a-menu-item key="0_2" disabled> Menu 3 </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="1">
         <template #icon><IconBug></IconBug></template>
@@ -58,7 +56,8 @@ Freely specify width of menu and height of menu item through `style`.
     </a-menu>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
 import {
   IconMenuFold,
   IconMenuUnfold,
@@ -67,20 +66,11 @@ import {
   IconBulb,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-  data() {
-    return {
-      width: 240
-    }
-  }
-};
+const state = reactive({
+  width: 240,
+});
+
+const { width } = toRefs(state);
 </script>
 <style scoped>
 .menu-demo {

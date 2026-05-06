@@ -19,42 +19,51 @@ The message type of the notification.
 ```vue
 <template>
   <a-space>
-    <a-button
-      type='primary'
-      @click="() => this.$notification.info('This is an info message!')"
-    >
+    <a-button type="primary" @click="handleShowInfoNotification">
       Info
     </a-button>
     <a-button
-      type='primary'
+      type="primary"
       status="success"
-      @click="() => this.$notification.success('This is a success message!')"
+      @click="handleShowSuccessNotification"
     >
       Success
     </a-button>
     <a-button
-      type='primary'
+      type="primary"
       status="warning"
-      @click="() => this.$notification.warning('This is a warning message!')"
+      @click="handleShowWarningNotification"
     >
       Warning
     </a-button>
     <a-button
-      type='primary'
+      type="primary"
       status="danger"
-      @click="() => this.$notification.error('This is an error message!')"
+      @click="handleShowErrorNotification"
     >
       Error
     </a-button>
-    <a-button
-      type='secondary'
-      @click="() => this.$notification.info({
-        content: 'This is an error message!',
-        showIcon: false
-      })"
-    >
+    <a-button type="secondary" @click="handleShowNormalNotification">
       Normal
     </a-button>
   </a-space>
 </template>
+
+<script setup lang="ts">
+import { Notification } from '@arco-design/web-vue';
+
+const handleShowInfoNotification = () =>
+  Notification.info('This is an info message!');
+const handleShowSuccessNotification = () =>
+  Notification.success('This is a success message!');
+const handleShowWarningNotification = () =>
+  Notification.warning('This is a warning message!');
+const handleShowErrorNotification = () =>
+  Notification.error('This is an error message!');
+const handleShowNormalNotification = () =>
+  Notification.info({
+    content: 'This is an error message!',
+    showIcon: false,
+  });
+</script>
 ```

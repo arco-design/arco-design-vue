@@ -25,11 +25,7 @@ Use `Card.Grid` to use the card content segmentation mode.
       :hoverable="index % 2 === 0"
       :style="{ width: '25%' }"
     >
-      <a-card
-        class="card-demo"
-        title="Arco Card"
-        :bordered="false"
-      >
+      <a-card class="card-demo" title="Arco Card" :bordered="false">
         <template #extra>
           <a-link>More</a-link>
         </template>

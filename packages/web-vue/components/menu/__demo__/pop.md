@@ -48,20 +48,8 @@ Specify `mode` as `pop` to use floating menu.
     </a-menu>
   </div>
 </template>
-<script>
-import {
-  IconApps,
-  IconBug,
-  IconBulb,
-} from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-};
+<script setup lang="ts">
+import { IconApps, IconBug, IconBulb } from '@arco-design/web-vue/es/icon';
 </script>
 <style scoped>
 .menu-demo {
@@ -84,7 +72,9 @@ export default {
   border-radius: 50%;
 }
 
-.menu-demo .arco-menu:not(.arco-menu-collapsed) :deep(.arco-menu-collapse-button) {
+.menu-demo
+  .arco-menu:not(.arco-menu-collapsed)
+  :deep(.arco-menu-collapse-button) {
   right: 0;
   bottom: 8px;
   transform: translateX(50%);

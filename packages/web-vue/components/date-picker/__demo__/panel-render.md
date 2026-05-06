@@ -19,40 +19,25 @@ Customize the panel wrapper with `panel-render`.
 ```vue
 <template>
   <a-space direction="vertical">
-    <a-date-picker
-      style="width: 280px"
-      :panel-render="panelRender"
-    />
-    <a-range-picker
-      style="width: 360px"
-      :panel-render="panelRender"
-    />
+    <a-date-picker style="width: 280px" :panel-render="panelRender" />
+    <a-range-picker style="width: 360px" :panel-render="panelRender" />
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { h } from 'vue';
 
-export default {
-  setup() {
-    const panelRender = (panelNode) =>
-      h('div', { class: 'picker-panel-render-wrapper' }, [
-        panelNode,
-        h(
-          'div',
-          {
-            style:
-              'padding: 8px 12px; border-top: 1px solid var(--color-neutral-3); color: var(--color-text-2);',
-          },
-          'Custom panel footer'
-        ),
-      ]);
-
-    return {
-      panelRender,
-    };
-  },
-};
+const panelRender = (panelNode) =>
+  h('div', { class: 'picker-panel-render-wrapper' }, [
+    panelNode,
+    h(
+      'div',
+      {
+        style:
+          'padding: 8px 12px; border-top: 1px solid var(--color-neutral-3); color: var(--color-text-2);',
+      },
+      'Custom panel footer'
+    ),
+  ]);
 </script>
 ```
-

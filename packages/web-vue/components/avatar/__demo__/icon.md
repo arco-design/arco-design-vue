@@ -22,7 +22,7 @@ You can customize the interactive button through `trigger-icon` and `trigger-typ
     <a-avatar
       :trigger-icon-style="{ color: '#3491FA' }"
       :auto-fix-font-size="false"
-      @click="toast"
+      @click="handleToast"
       :style="{ backgroundColor: '#168CFF' }"
     >
       A
@@ -30,14 +30,14 @@ You can customize the interactive button through `trigger-icon` and `trigger-typ
         <IconCamera />
       </template>
     </a-avatar>
-    <a-avatar @click="toast" :style="{ backgroundColor: '#14C9C9' }">
+    <a-avatar @click="handleToast" :style="{ backgroundColor: '#14C9C9' }">
       <IconUser />
       <template #trigger-icon>
         <IconEdit />
       </template>
     </a-avatar>
     <a-avatar
-      @click="toast"
+      @click="handleToast"
       shape="square"
       :style="{ backgroundColor: '#FFC72E' }"
     >
@@ -58,16 +58,12 @@ You can customize the interactive button through `trigger-icon` and `trigger-typ
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
+import { Message } from '@arco-design/web-vue';
 import { IconCamera, IconEdit, IconUser } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: { IconCamera, IconEdit },
-  methods: {
-    toast() {
-      this.$message.info('Uploading...');
-    },
-  },
+const handleToast = () => {
+  Message.info('Uploading...');
 };
 </script>
 ```

@@ -3,6 +3,7 @@
 exports[`<watermark> demo: > render [basic] correctly 1`] = `
 <div class="arco-watermark" style="position: relative; overflow: hidden;">
   <div style="width: 100%; height: 350px;"></div>
+  <div style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;background-repeat:repeat;background-position:0px 0px;z-index:6;background-image:url('data:image/png;base64,00');background-size:202px"></div>
 </div>
 `;
 
@@ -167,6 +168,7 @@ exports[`<watermark> demo: > render [custom] correctly 1`] = `
       </div>
     </article><img style="position: relative; z-index: 7;" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp">
   </div>
+  <div style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;background-repeat:repeat;background-position:0px 0px;z-index:6;background-image:url('data:image/png;base64,00');background-size:122px"></div>
 </div>
 `;
 
@@ -179,5 +181,6 @@ exports[`<watermark> demo: > render [image] correctly 1`] = `
 exports[`<watermark> demo: > render [multiline] correctly 1`] = `
 <div class="arco-watermark" style="position: relative; overflow: hidden;">
   <div style="width: 100%; height: 300px;"></div>
+  <div style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;background-repeat:repeat;background-position:0px 0px;z-index:6;background-image:url('data:image/png;base64,00');background-size:202px"></div>
 </div>
 `;

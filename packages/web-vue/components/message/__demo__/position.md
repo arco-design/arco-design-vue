@@ -19,8 +19,23 @@ The prompt has 2 different pop-up positions, namely the top and the bottom.
 ```vue
 <template>
   <a-space>
-    <a-button @click="()=>this.$message.info({content:'This is an info message!'})">Top Message</a-button>
-    <a-button @click="()=>this.$message.info({content:'This is an info message!',position:'bottom'})">Bottom Message</a-button>
+    <a-button @click="handleShowTopMessage">Top Message</a-button>
+    <a-button @click="handleShowBottomMessage">Bottom Message</a-button>
   </a-space>
 </template>
+
+<script setup lang="ts">
+import { Message } from '@arco-design/web-vue';
+
+const handleShowTopMessage = () => {
+  Message.info({ content: 'This is an info message!' });
+};
+
+const handleShowBottomMessage = () => {
+  Message.info({
+    content: 'This is an info message!',
+    position: 'bottom',
+  });
+};
+</script>
 ```

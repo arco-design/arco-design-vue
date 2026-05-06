@@ -18,8 +18,11 @@ Customize the content by slot, or set the appropriate properties to control whet
 
 ```vue
 <template>
-  <a-checkbox-group v-model="custom" :options="['hide header', 'hide footer', 'hide cancel']"/>
-  <div :style="{marginTop: '20px'}">
+  <a-checkbox-group
+    v-model="custom"
+    :options="['hide header', 'hide footer', 'hide cancel']"
+  />
+  <div :style="{ marginTop: '20px' }">
     <a-button type="primary" @click="handleClick">Open Drawer</a-button>
   </div>
   <a-drawer
@@ -36,38 +39,26 @@ Customize the content by slot, or set the appropriate properties to control whet
       <span>Header and title</span>
     </template>
     <div>
-      You can customize modal body text by the current situation. This modal will be closed immediately once you
-      press the OK button.
+      You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.
     </div>
   </a-drawer>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
-    const custom = ref([])
+const visible = ref(false);
+const custom = ref([]);
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleOk = () => {
-      visible.value = false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      custom,
-      visible,
-      handleClick,
-      handleOk,
-      handleCancel
-    }
-  },
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
 };
 </script>
 ```

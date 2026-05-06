@@ -17,7 +17,6 @@ The list component provides three sizes `small, medium, large`, which can be sel
 ---
 
 ```vue
-
 <template>
   <a-space direction="vertical" size="large">
     <a-radio-group v-model="size" type="button">
@@ -26,9 +25,7 @@ The list component provides three sizes `small, medium, large`, which can be sel
       <a-radio value="large">Large</a-radio>
     </a-radio-group>
     <a-list :size="size">
-      <template #header>
-        List title
-      </template>
+      <template #header> List title </template>
       <a-list-item>Beijing Bytedance Technology Co., Ltd.</a-list-item>
       <a-list-item>Bytedance Technology Co., Ltd.</a-list-item>
       <a-list-item>Beijing Toutiao Technology Co., Ltd.</a-list-item>
@@ -38,17 +35,9 @@ The list component provides three sizes `small, medium, large`, which can be sel
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const size = ref('medium');
-
-    return {
-      size
-    }
-  },
-}
+const size = ref('medium');
 </script>
 ```

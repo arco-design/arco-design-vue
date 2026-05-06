@@ -18,6 +18,6 @@ When the page number is larger, the pagination style with more page numbers will
 
 ```vue
 <template>
-  <a-pagination :total="200"/>
+  <a-pagination :total="200" />
 </template>
 ```

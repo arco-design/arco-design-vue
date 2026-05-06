@@ -20,7 +20,11 @@ By setting `mode` to `horizontal`, you can use the horizontal menu.
 <template>
   <div class="menu-demo">
     <a-menu mode="horizontal" :default-selected-keys="['1']">
-      <a-menu-item key="0" :style="{ padding: 0, marginRight: '38px' }" disabled>
+      <a-menu-item
+        key="0"
+        :style="{ padding: 0, marginRight: '38px' }"
+        disabled
+      >
         <div
           :style="{
             width: '80px',

@@ -27,4 +27,3 @@ When `clear-range-on-reselect` is enabled, reselecting a range clears the previo
   </a-space>
 </template>
 ```
-

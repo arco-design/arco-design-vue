@@ -19,40 +19,34 @@ Click the trigger button to slide out the drawer from the right, click the mask 
 ```vue
 <template>
   <a-button type="primary" @click="handleClick">Open Drawer</a-button>
-  <a-drawer :width="340" :visible="visible" @ok="handleOk" @cancel="handleCancel" unmountOnClose>
-    <template #title>
-      Title
-    </template>
-    <div>You can customize modal body text by the current situation. This modal will be closed immediately once you
-      press the OK button.
+  <a-drawer
+    :width="340"
+    :visible="visible"
+    @ok="handleOk"
+    @cancel="handleCancel"
+    unmountOnClose
+  >
+    <template #title> Title </template>
+    <div
+      >You can customize modal body text by the current situation. This modal
+      will be closed immediately once you press the OK button.
     </div>
   </a-drawer>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
+const visible = ref(false);
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleOk = () => {
-      visible.value = false;
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      visible,
-      handleClick,
-      handleOk,
-      handleCancel
-    }
-  },
+const handleClick = () => {
+  visible.value = true;
+};
+const handleOk = () => {
+  visible.value = false;
+};
+const handleCancel = () => {
+  visible.value = false;
 };
 </script>
 ```

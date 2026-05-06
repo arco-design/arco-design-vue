@@ -46,7 +46,7 @@ Set timezone with `timezone`. If `utc-offset` is also set, `utc-offset` takes pr
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, ref } from 'vue';
 
 const zoneOptions = [
@@ -56,35 +56,23 @@ const zoneOptions = [
   'Asia/Shanghai',
 ].map((zone) => ({ label: zone, value: zone }));
 
-export default {
-  setup() {
-    const timezone = ref('Asia/Shanghai');
-    const value = ref(new Date('2022-02-22 08:00:00'));
-    const rangeValue = ref([
-      new Date('2022-02-22 08:00:00'),
-      new Date('2022-02-22 10:00:00'),
-    ]);
+const timezone = ref('Asia/Shanghai');
+const value = ref(new Date('2022-02-22 08:00:00'));
+const rangeValue = ref([
+  new Date('2022-02-22 08:00:00'),
+  new Date('2022-02-22 10:00:00'),
+]);
 
-    const output = computed(() =>
-      JSON.stringify(
-        {
-          timezone: timezone.value,
-          value: value.value,
-          rangeValue: rangeValue.value,
-        },
-        null,
-        2
-      )
-    );
-
-    return {
-      zoneOptions,
-      timezone,
-      value,
-      rangeValue,
-      output,
-    };
-  },
-};
+const output = computed(() =>
+  JSON.stringify(
+    {
+      timezone: timezone.value,
+      value: value.value,
+      rangeValue: rangeValue.value,
+    },
+    null,
+    2
+  )
+);
 </script>
 ```

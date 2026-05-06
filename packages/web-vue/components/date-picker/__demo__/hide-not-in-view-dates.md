@@ -30,4 +30,3 @@ Use `hide-not-in-view-dates` to hide gray dates outside the current month.
   </a-space>
 </template>
 ```
-

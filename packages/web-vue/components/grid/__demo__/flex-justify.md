@@ -12,8 +12,7 @@ title:
 
 ## en-US
 
-Use `justify` for horizontal layout
----
+## Use `justify` for horizontal layout
 
 ```vue
 <template>

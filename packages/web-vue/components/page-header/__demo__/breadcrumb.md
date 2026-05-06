@@ -18,7 +18,7 @@ Show breadcrumbs in the header.
 
 ```vue
 <template>
-  <div :style="{ background: 'var(--color-fill-2)', padding: '28px' }" >
+  <div :style="{ background: 'var(--color-fill-2)', padding: '28px' }">
     <a-page-header
       :style="{ background: 'var(--color-bg-2)' }"
       title="ArcoDesign"
@@ -42,5 +42,4 @@ Show breadcrumbs in the header.
     </a-page-header>
   </div>
 </template>
-
 ```

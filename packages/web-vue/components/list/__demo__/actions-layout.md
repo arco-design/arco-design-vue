@@ -36,10 +36,7 @@ This is an example including paging, content on the right, and list operations.
             <img alt="arco-design" :src="item.imageSrc" />
           </div>
         </template>
-        <a-list-item-meta
-          :title="item.title"
-          :description="item.description"
-        >
+        <a-list-item-meta :title="item.title" :description="item.description">
           <template #avatar>
             <a-avatar shape="square">
               <img alt="avatar" :src="item.avatar" />
@@ -51,8 +48,8 @@ This is an example including paging, content on the right, and list operations.
   </a-list>
 </template>
 
-<script>
-import { reactive } from 'vue'
+<script setup lang="ts">
+import { reactive } from 'vue';
 
 const names = ['Socrates', 'Balzac', 'Plato'];
 const avatarSrc = [
@@ -76,17 +73,10 @@ const dataSource = new Array(15).fill(null).map((_, index) => {
   };
 });
 
-export default {
-  setup() {
-    return {
-      dataSource,
-      paginationProps: reactive({
-        defaultPageSize: 3,
-        total: dataSource.length
-      })
-    }
-  },
-}
+const paginationProps = reactive({
+  defaultPageSize: 3,
+  total: dataSource.length,
+});
 </script>
 
 <style scoped>

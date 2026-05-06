@@ -23,7 +23,7 @@ Basic usage
       Reverse
     </a-typography-text>
     <a-radio-group
-      @change="onChange"
+      @change="handleChange"
       style="{ marginBottom: '30px' }"
       :modelValue="isReverse"
     >
@@ -38,22 +38,13 @@ Basic usage
   </a-timeline>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const isReverse = ref(false);
+const isReverse = ref(false);
 
-    const onChange = (bool) => {
-      isReverse.value = bool;
-    };
-
-    return {
-      isReverse,
-      onChange
-    }
-  },
+const handleChange = (bool) => {
+  isReverse.value = bool;
 };
 </script>
 ```

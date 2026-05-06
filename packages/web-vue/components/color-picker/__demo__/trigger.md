@@ -27,14 +27,14 @@ You can set the properties of the trigger through `trigger-props`.
   </a-space>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
 const triggerProps = ref({
   popupVisible: false,
   unmountOnClose: true,
   renderToBody: false,
-  position: 'rt'
-})
+  position: 'rt',
+});
 </script>
 ```

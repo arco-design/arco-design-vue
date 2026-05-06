@@ -17,20 +17,21 @@ Click to upload user's avatar, and validate size and format of picture with befo
 ---
 
 ```vue
-
 <template>
   <a-space direction="vertical" :style="{ width: '100%' }">
     <a-upload
       action="/"
       :fileList="file ? [file] : []"
       :show-file-list="false"
-      @change="onChange"
-      @progress="onProgress"
+      @change="handleChange"
+      @progress="handleProgress"
     >
       <template #upload-button>
         <div
           :class="`arco-upload-list-item${
-            file && file.status === 'error' ? ' arco-upload-list-item-error' : ''
+            file && file.status === 'error'
+              ? ' arco-upload-list-item-error'
+              : ''
           }`"
         >
           <div
@@ -66,30 +67,20 @@ Click to upload user's avatar, and validate size and format of picture with befo
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { IconEdit, IconPlus } from '@arco-design/web-vue/es/icon';
 import { ref } from 'vue';
 
-export default {
-  components: {IconPlus, IconEdit},
-  setup() {
-    const file = ref();
+const file = ref();
 
-    const onChange = (_, currentFile) => {
-      file.value = {
-        ...currentFile,
-        // url: URL.createObjectURL(currentFile.file),
-      };
-    };
-    const onProgress = (currentFile) => {
-      file.value = currentFile;
-    };
-    return {
-      file,
-      onChange,
-      onProgress
-    }
-  },
+const handleChange = (_, currentFile) => {
+  file.value = {
+    ...currentFile,
+    // url: URL.createObjectURL(currentFile.file),
+  };
+};
+const handleProgress = (currentFile) => {
+  file.value = currentFile;
 };
 </script>
 ```

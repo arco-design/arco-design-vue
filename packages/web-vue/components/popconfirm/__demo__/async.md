@@ -23,33 +23,33 @@ $END$
     <template #content>
       <a-form>
         <a-form-item label="Name">
-          <a-input/>
+          <a-input />
         </a-form-item>
         <a-form-item label="Post">
-          <a-input/>
+          <a-input />
         </a-form-item>
       </a-form>
     </template>
   </a-popconfirm>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-const visible = ref(false)
+const visible = ref(false);
 
 const handleClick = () => {
   visible.value = true;
-}
+};
 
 const handleBeforeOk = (done) => {
   window.setTimeout(() => {
-    done()
-  }, 3000)
-}
+    done();
+  }, 3000);
+};
 
 const handleCancel = () => {
   visible.value = false;
-}
+};
 </script>
 ```

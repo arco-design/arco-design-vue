@@ -101,7 +101,7 @@ Use the #radio slot to customize the display of radios
 .custom-radio-card:hover,
 .custom-radio-card-checked,
 .custom-radio-card:hover .custom-radio-card-mask,
-.custom-radio-card-checked  .custom-radio-card-mask{
+.custom-radio-card-checked .custom-radio-card-mask {
   border-color: rgb(var(--primary-6));
 }
 

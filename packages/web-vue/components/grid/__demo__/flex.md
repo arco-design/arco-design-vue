@@ -12,8 +12,7 @@ title:
 
 ## en-US
 
-By setting the `flex` property of the `Col` component, you can configure the flex layout arbitrarily.
----
+## By setting the `flex` property of the `Col` component, you can configure the flex layout arbitrarily.
 
 ```vue
 <template>

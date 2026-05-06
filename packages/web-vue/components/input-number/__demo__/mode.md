@@ -18,6 +18,12 @@ Specify `mode` as `button` to use a numeric input box with buttons.
 
 ```vue
 <template>
-  <a-input-number :style="{width:'320px'}" placeholder="Please Enter" :default-value="500" mode="button" class="input-demo" />
+  <a-input-number
+    :style="{ width: '320px' }"
+    placeholder="Please Enter"
+    :default-value="500"
+    mode="button"
+    class="input-demo"
+  />
 </template>
 ```

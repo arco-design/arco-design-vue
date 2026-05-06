@@ -18,6 +18,6 @@ By setting `show-page-size`, the number of items per page selector is displayed.
 
 ```vue
 <template>
-  <a-pagination :total="200" show-page-size/>
+  <a-pagination :total="200" show-page-size />
 </template>
 ```

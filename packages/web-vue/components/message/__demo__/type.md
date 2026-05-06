@@ -17,43 +17,55 @@ There are 6 different types of global prompts, namely: `info`, `success`, `warni
 ---
 
 ```vue
-
 <template>
   <div>
     <a-space>
-      <a-button @click="()=>this.$message.info('This is an info message!')">Info Message</a-button>
-      <a-button @click="()=>this.$message.success('This is a success message!')" status="success">Success Message
+      <a-button @click="handleShowInfoMessage">Info Message</a-button>
+      <a-button @click="handleShowSuccessMessage" status="success"
+        >Success Message
       </a-button>
-      <a-button @click="()=>this.$message.warning('This is a warning message!')" status="warning">Warning Message
+      <a-button @click="handleShowWarningMessage" status="warning"
+        >Warning Message
       </a-button>
-      <a-button @click="()=>this.$message.error('This is an error message!')" status="danger">Error Message</a-button>
+      <a-button @click="handleShowErrorMessage" status="danger"
+        >Error Message</a-button
+      >
     </a-space>
   </div>
   <div style="margin-top: 20px">
     <a-space>
-      <a-button @click="()=>this.$message.normal('This is a normal message!')">Normal Message</a-button>
-      <a-button @click="()=>this.$message.normal({
-    content:'This is a normal message!',
-    icon:renderIcon
-    })">Normal Message With Icon
+      <a-button @click="handleShowNormalMessage">Normal Message</a-button>
+      <a-button @click="handleShowNormalMessageWithIcon"
+        >Normal Message With Icon
       </a-button>
-      <a-button @click="()=>this.$message.loading('This is a loading message!')" status="primary">Loading Message
+      <a-button @click="handleShowLoadingMessage" status="primary"
+        >Loading Message
       </a-button>
     </a-space>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { h } from 'vue';
+import { Message } from '@arco-design/web-vue';
 import { IconExclamationCircleFill } from '@arco-design/web-vue/es/icon';
 
-export default {
-  setup() {
-    const renderIcon = () => h(IconExclamationCircleFill);
-    return {
-      renderIcon
-    }
-  }
-};
+const renderIcon = () => h(IconExclamationCircleFill);
+
+const handleShowInfoMessage = () => Message.info('This is an info message!');
+const handleShowSuccessMessage = () =>
+  Message.success('This is a success message!');
+const handleShowWarningMessage = () =>
+  Message.warning('This is a warning message!');
+const handleShowErrorMessage = () => Message.error('This is an error message!');
+const handleShowNormalMessage = () =>
+  Message.normal('This is a normal message!');
+const handleShowNormalMessageWithIcon = () =>
+  Message.normal({
+    content: 'This is a normal message!',
+    icon: renderIcon,
+  });
+const handleShowLoadingMessage = () =>
+  Message.loading('This is a loading message!');
 </script>
 ```

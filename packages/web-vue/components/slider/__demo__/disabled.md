@@ -18,6 +18,6 @@ Disable the slider.
 
 ```vue
 <template>
-  <a-slider :default-value="50" :style="{ width: '200px' }" disabled/>
+  <a-slider :default-value="50" :style="{ width: '200px' }" disabled />
 </template>
 ```

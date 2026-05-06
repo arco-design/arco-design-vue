@@ -19,12 +19,10 @@ use `droplist` or `routes` settings dropdown menu
 ```vue
 <template>
   <a-space direction="vertical">
-    <a-breadcrumb :routes="routes"/>
+    <a-breadcrumb :routes="routes" />
     <a-breadcrumb>
       <a-breadcrumb-item>Home</a-breadcrumb-item>
-      <a-breadcrumb-item :droplist="droplist">
-        Channel
-      </a-breadcrumb-item>
+      <a-breadcrumb-item :droplist="droplist"> Channel </a-breadcrumb-item>
       <a-breadcrumb-item>News</a-breadcrumb-item>
     </a-breadcrumb>
     <a-breadcrumb>
@@ -54,46 +52,45 @@ use `droplist` or `routes` settings dropdown menu
   </a-space>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      routes: [
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  routes: [
+    {
+      path: '/',
+      label: 'Home',
+    },
+    {
+      path: '/channel',
+      label: 'Channel',
+      children: [
         {
-          path: '/',
-          label: 'Home'
+          path: '/users',
+          label: 'Users',
         },
         {
-          path: '/channel',
-          label: 'Channel',
-          children: [
-            {
-              path: '/users',
-              label: 'Users',
-            },
-            {
-              path: '/permission',
-              label: 'Permission',
-            }
-          ]
-        },
-        {
-          path: '/news',
-          label: 'News'
+          path: '/permission',
+          label: 'Permission',
         },
       ],
-      droplist: [
-        {
-          path: '/goods',
-          label: 'Goods',
-        },
-        {
-          path: '/wallet',
-          label: 'Wallet',
-        }
-      ]
-    }
-  }
-}
+    },
+    {
+      path: '/news',
+      label: 'News',
+    },
+  ],
+  droplist: [
+    {
+      path: '/goods',
+      label: 'Goods',
+    },
+    {
+      path: '/wallet',
+      label: 'Wallet',
+    },
+  ],
+});
+
+const { routes, droplist } = toRefs(state);
 </script>
 ```

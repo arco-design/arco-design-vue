@@ -18,15 +18,18 @@ By setting `format`, you can customize the hour, minute, and second.
 
 ```vue
 <template>
-  <a-time-picker format="HH:mm" :defaultValue="defaultValue" style="width: 130px;" />
+  <a-time-picker
+    format="HH:mm"
+    :defaultValue="defaultValue"
+    style="width: 130px;"
+  />
 </template>
-<script>
-export default {
-  data() {
-    return {
-      defaultValue: '09:24'
-    }
-  }
-}
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  defaultValue: '09:24',
+});
+
+const { defaultValue } = toRefs(state);
 </script>
 ```

@@ -18,7 +18,12 @@ custom popup menu footer
 
 ```vue
 <template>
-  <a-auto-complete :data="data" @search="handleSearch" :style="{width:'360px'}" placeholder="please enter something">
+  <a-auto-complete
+    :data="data"
+    @search="handleSearch"
+    :style="{ width: '360px' }"
+    placeholder="please enter something"
+  >
     <template #footer>
       <div style="padding: 6px 0; text-align: center;">
         <a-button>Click Me</a-button>
@@ -27,23 +32,21 @@ custom popup menu footer
   </a-auto-complete>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      data: []
-    }
-  },
-  methods: {
-    handleSearch(value) {
-      if (value) {
-        this.data = [...Array(5)].map((_, index) => `${value}-${index}`)
-        console.log(this.data)
-      } else {
-        this.data = []
-      }
-    }
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  data: [],
+});
+
+const { data } = toRefs(state);
+
+const handleSearch = (value) => {
+  if (value) {
+    data.value = [...Array(5)].map((_, index) => `${value}-${index}`);
+    console.log(data.value);
+  } else {
+    data.value = [];
   }
-}
+};
 </script>
 ```

@@ -19,15 +19,9 @@ Six preset response sizes, namely `xs`, `sm`, `md`, `lg`, `xl`, `xxl`
 ```vue
 <template>
   <a-row class="grid-demo">
-    <a-col :xs="2" :sm="4" :md="6" :lg="8" :xl="10" :xxl="8">
-      Col
-    </a-col>
-    <a-col :xs="20" :sm="16" :md="12" :lg="8" :xl="4" :xxl="8">
-      Col
-    </a-col>
-    <a-col :xs="2" :sm="4" :md="6" :lg="8" :xl="10" :xxl="8">
-      Col
-    </a-col>
+    <a-col :xs="2" :sm="4" :md="6" :lg="8" :xl="10" :xxl="8"> Col </a-col>
+    <a-col :xs="20" :sm="16" :md="12" :lg="8" :xl="4" :xxl="8"> Col </a-col>
+    <a-col :xs="2" :sm="4" :md="6" :lg="8" :xl="10" :xxl="8"> Col </a-col>
   </a-row>
 </template>
 

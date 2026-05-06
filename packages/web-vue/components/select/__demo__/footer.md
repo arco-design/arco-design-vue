@@ -19,7 +19,12 @@ custom dropdown menu footer
 ```vue
 <template>
   <a-space>
-    <a-select :default-value="'Beijing'" :style="{width:'360px'}" placeholder="Please select ..." allow-search>
+    <a-select
+      :default-value="'Beijing'"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      allow-search
+    >
       <a-option>Beijing</a-option>
       <a-option>Shanghai</a-option>
       <a-option>Guangzhou</a-option>
@@ -32,7 +37,13 @@ custom dropdown menu footer
         </div>
       </template>
     </a-select>
-    <a-select :default-value="'Beijing'" :style="{width:'360px'}" placeholder="Please select ..." allow-search show-footer-on-empty>
+    <a-select
+      :default-value="'Beijing'"
+      :style="{ width: '360px' }"
+      placeholder="Please select ..."
+      allow-search
+      show-footer-on-empty
+    >
       <a-option>Beijing</a-option>
       <a-option>Shanghai</a-option>
       <a-option>Guangzhou</a-option>

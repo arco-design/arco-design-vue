@@ -23,15 +23,7 @@ Besides the default switch header, dropdown header is supported for faster navig
   </div>
 </template>
 
-<script>
-export default {
-  setup() {
-    const defaultValue = new Date('2020-04-01');
-
-    return {
-      defaultValue,
-    };
-  },
-};
+<script setup lang="ts">
+const defaultValue = new Date('2020-04-01');
 </script>
 ```

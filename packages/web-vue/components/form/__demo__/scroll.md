@@ -21,7 +21,9 @@ Showed the usage methods for automatically scrolling to the first error field on
   <a-space>
     <a-button @click="formRef && formRef.validate()">Submit</a-button>
     <a-button @click="formRef && formRef.resetFields()">Reset</a-button>
-    <a-button @click="formRef && formRef.scrollToField('name19')">Scroll to the last field</a-button>
+    <a-button @click="formRef && formRef.scrollToField('name19')"
+      >Scroll to the last field</a-button
+    >
   </a-space>
   <a-form
     ref="formRef"
@@ -33,9 +35,7 @@ Showed the usage methods for automatically scrolling to the first error field on
       <a-form-item
         :field="fieldName"
         :label="'user' + index"
-        :rules="[
-          { required: true, message: 'Name is required' },
-        ]"
+        :rules="[{ required: true, message: 'Name is required' }]"
       >
         <a-input v-model="form[fieldName]" />
       </a-form-item>
@@ -43,25 +43,22 @@ Showed the usage methods for automatically scrolling to the first error field on
   </a-form>
 </template>
 
-<script>
+<script setup lang="ts">
 import { reactive, ref } from 'vue';
 
-export default {
-  setup() {
-    const formRef = ref(null);
-    const fieldCount = 20;
-    const fieldNames = Array.from({ length: fieldCount }, (_, index) => `name${index}`);
-    const form = reactive(Object.fromEntries(
-      fieldNames.map((fieldName, index) => [fieldName, index === 7 ? '' : index.toString()])
-    ));
-
-    return {
-      form,
-      formRef,
-      fieldCount,
-      fieldNames
-    };
-  },
-};
+const formRef = ref(null);
+const fieldCount = 20;
+const fieldNames = Array.from(
+  { length: fieldCount },
+  (_, index) => `name${index}`
+);
+const form = reactive(
+  Object.fromEntries(
+    fieldNames.map((fieldName, index) => [
+      fieldName,
+      index === 7 ? '' : index.toString(),
+    ])
+  )
+);
 </script>
 ```

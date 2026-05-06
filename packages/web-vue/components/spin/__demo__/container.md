@@ -20,20 +20,20 @@ You can add a loading indicator to any content.
 <template>
   <a-spin :loading="loading" tip="This may take a while...">
     <a-card title="Arco Card">
-      ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around
-      the world. Toutiao started out as a news recommendation engine and gradually evolved into
-      a platform delivering content in various formats.
+      ByteDance's core product, Toutiao ('Headlines'), is a content platform in
+      China and around the world. Toutiao started out as a news recommendation
+      engine and gradually evolved into a platform delivering content in various
+      formats.
     </a-card>
   </a-spin>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      loading: true
-    }
-  }
-}
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  loading: true,
+});
+
+const { loading } = toRefs(state);
 </script>
 ```

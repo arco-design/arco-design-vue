@@ -18,6 +18,6 @@ Basic usage of pagination, `total` attribute is required.
 
 ```vue
 <template>
-  <a-pagination :total="50"/>
+  <a-pagination :total="50" />
 </template>
 ```

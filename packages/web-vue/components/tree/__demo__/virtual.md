@@ -19,7 +19,7 @@ By specifying `virtualListProps` to turn on the virtual list, high performance c
   <a-button
     type="primary"
     :style="{ marginBottom: '20px' }"
-    @click="scrollIntoView"
+    @click="handleScrollIntoView"
   >
     Scroll to 0-0-2-2, i.e. the 26th.
   </a-button>
@@ -33,38 +33,32 @@ By specifying `virtualListProps` to turn on the virtual list, high performance c
     }"
   />
 </template>
-<script>
-  import { ref } from 'vue';
-  export default {
-    setup() {
-      const treeRef = ref();
-      const treeData = loop();
-      return {
-        treeRef,
-        treeData,
-        scrollIntoView() {
-          treeRef.value && treeRef.value.scrollIntoView({ key: '0-0-2-2' });
-        }
-      }
+<script setup lang="ts">
+import { ref } from 'vue';
+
+function loop(path = '0', level = 2) {
+  const list = [];
+  for (let i = 0; i < 10; i += 1) {
+    const key = `${path}-${i}`;
+    const treeNode = {
+      title: key,
+      key,
+    };
+
+    if (level > 0) {
+      treeNode.children = loop(key, level - 1);
     }
+
+    list.push(treeNode);
   }
+  return list;
+}
 
-  function loop(path = '0', level = 2) {
-    const list = [];
-    for (let i = 0; i < 10; i += 1) {
-      const key = `${path}-${i}`;
-      const treeNode = {
-        title: key,
-        key,
-      };
+const treeRef = ref();
+const treeData = loop();
 
-      if (level > 0) {
-        treeNode.children = loop(key, level - 1);
-      }
-
-      list.push(treeNode);
-    }
-    return list;
-  }
+const handleScrollIntoView = () => {
+  treeRef.value && treeRef.value.scrollIntoView({ key: '0-0-2-2' });
+};
 </script>
 ```

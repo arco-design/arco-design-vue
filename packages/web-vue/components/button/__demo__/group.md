@@ -52,9 +52,15 @@ Use the `<a-button-group>` component to make the buttons appear as a group. Can 
         <a-button> find </a-button>
       </a-button-group>
       <a-button-group type="primary" status="warning">
-        <a-button> <template #icon><icon-heart-fill /></template> </a-button>
-        <a-button> <template #icon><icon-star-fill /></template> </a-button>
-        <a-button> <template #icon><icon-thumb-up-fill /></template> </a-button>
+        <a-button>
+          <template #icon><icon-heart-fill /></template>
+        </a-button>
+        <a-button>
+          <template #icon><icon-star-fill /></template>
+        </a-button>
+        <a-button>
+          <template #icon><icon-thumb-up-fill /></template>
+        </a-button>
       </a-button-group>
       <a-button-group size="small" disabled>
         <a-button> prev </a-button>

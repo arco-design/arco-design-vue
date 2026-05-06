@@ -18,6 +18,6 @@ Specify `allow-half` to enable half selection.
 
 ```vue
 <template>
-  <a-rate :default-value="2.5" allow-half/>
+  <a-rate :default-value="2.5" allow-half />
 </template>
 ```

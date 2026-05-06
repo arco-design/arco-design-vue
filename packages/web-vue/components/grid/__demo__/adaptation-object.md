@@ -22,13 +22,13 @@ For example, `:xs="8"` is equivalent to `:xs="{ span: 8 }"`
 <template>
   <div>
     <a-row class="grid-demo">
-      <a-col :xs="{span: 5, offset: 1}" :lg="{span: 6, offset: 2}">
+      <a-col :xs="{ span: 5, offset: 1 }" :lg="{ span: 6, offset: 2 }">
         Col
       </a-col>
-      <a-col :xs="{span: 11, offset: 1}" :lg="{span: 6, offset: 2}">
+      <a-col :xs="{ span: 11, offset: 1 }" :lg="{ span: 6, offset: 2 }">
         Col
       </a-col>
-      <a-col :xs="{span: 5, offset: 1}" :lg="{span: 6, offset: 2}">
+      <a-col :xs="{ span: 5, offset: 1 }" :lg="{ span: 6, offset: 2 }">
         Col
       </a-col>
     </a-row>

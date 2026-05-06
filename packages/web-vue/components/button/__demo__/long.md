@@ -28,7 +28,7 @@ By setting the `long` property, the width of the button follows the width of the
 </template>
 
 <style scoped lang="less">
-.wrapper{
+.wrapper {
   width: 400px;
   padding: 20px;
   border: 1px solid var(~'--color-border');

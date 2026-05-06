@@ -18,10 +18,7 @@ Skip the confirm step and click directly to select time.
 
 ```vue
 <template>
-  <a-time-picker
-    disableConfirm
-    style="width: 194px; margin: 0 24px 24px 0;"
-  />
+  <a-time-picker disableConfirm style="width: 194px; margin: 0 24px 24px 0;" />
   <a-time-picker
     type="time-range"
     disableConfirm

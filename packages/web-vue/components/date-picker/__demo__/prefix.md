@@ -29,8 +29,6 @@ The prefix of the input box can be set through the `prefix` slot
     <a-range-picker
       showTime
       :defaultValue="['2019-08-08 00:00:00', '2019-08-18 00:00:00']"
-      @select="onSelect"
-      @change="onChange"
       :style="{ width: '400px', marginTop: '20px' }"
     >
       <template #prefix>
@@ -40,11 +38,7 @@ The prefix of the input box can be set through the `prefix` slot
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { IconInfoCircle } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconInfoCircle },
-};
 </script>
 ```

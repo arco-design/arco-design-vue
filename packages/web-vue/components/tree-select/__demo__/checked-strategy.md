@@ -14,18 +14,19 @@ title:
 
 Customize the return value through the `treeCheckStrategy` property.
 
-
 ---
 
 ```vue
 <template>
   <div style="margin-bottom: 24px;">
     <a-radio-group
-      type='button'
+      type="button"
       v-model="treeCheckedStrategy"
-      @change="(value) => {
-        selected = []
-      }"
+      @change="
+        (value) => {
+          selected = [];
+        }
+      "
     >
       <a-radio
         v-for="item in strategyOptions"
@@ -47,94 +48,83 @@ Customize the return value through the `treeCheckStrategy` property.
     style="width: 300px;"
   ></a-tree-select>
 </template>
-<script>
-  import { ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const selected = ref([]);
-      const treeCheckedStrategy = ref('all');
+const strategyOptions = [
+  {
+    value: 'all',
+    label: 'show all',
+  },
+  {
+    value: 'parent',
+    label: 'show parent',
+  },
+  {
+    value: 'child',
+    label: 'show child',
+  },
+];
 
-      return {
-        selected,
-        treeCheckedStrategy,
-        strategyOptions,
-        treeData,
-      };
-    },
-  };
+const treeData = [
+  {
+    title: 'Trunk 0-0',
+    value: 'Trunk 0-0',
+    key: '0-0',
+    children: [
+      {
+        title: 'Leaf 0-0-1',
+        value: 'Leaf 0-0-1',
+        key: '0-0-1',
+      },
+      {
+        title: 'Branch 0-0-2',
+        value: 'Branch 0-0-2',
+        key: '0-0-2',
+        children: [
+          {
+            title: 'Leaf 0-0-2-1',
+            value: 'Leaf 0-0-2-1',
+            key: '0-0-2-1',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Trunk 0-1',
+    value: 'Trunk 0-1',
+    key: '0-1',
+    children: [
+      {
+        title: 'Branch 0-1-1',
+        value: 'Branch 0-1-1',
+        key: '0-1-1',
+        checkable: false,
+        children: [
+          {
+            title: 'Leaf 0-1-1-1',
+            value: 'Leaf 0-1-1-1',
+            key: '0-1-1-1',
+          },
+          {
+            title: 'Leaf 0-1-1-2',
+            value: 'Leaf 0-1-1-2',
+            key: '0-1-1-2',
+            disabled: true,
+          },
+        ],
+      },
+      {
+        title: 'Leaf 0-1-2',
+        value: 'Leaf 0-1-2',
+        key: '0-1-2',
+      },
+    ],
+  },
+];
 
-  const strategyOptions = [
-    {
-      value: 'all',
-      label: 'show all'
-    },
-    {
-      value: 'parent',
-      label: 'show parent'
-    },
-    {
-      value: 'child',
-      label: 'show child'
-    }
-  ];
-
-  const treeData = [
-    {
-      title: 'Trunk 0-0',
-      value: 'Trunk 0-0',
-      key: '0-0',
-      children: [
-        {
-          title: 'Leaf 0-0-1',
-          value: 'Leaf 0-0-1',
-          key: '0-0-1',
-        },
-        {
-          title: 'Branch 0-0-2',
-          value: 'Branch 0-0-2',
-          key: '0-0-2',
-          children: [
-            {
-              title: 'Leaf 0-0-2-1',
-              value: 'Leaf 0-0-2-1',
-              key: '0-0-2-1'
-            }
-          ]
-        },
-      ],
-    },
-    {
-      title: 'Trunk 0-1',
-      value: 'Trunk 0-1',
-      key: '0-1',
-      children: [
-        {
-          title: 'Branch 0-1-1',
-          value: 'Branch 0-1-1',
-          key: '0-1-1',
-          checkable: false,
-          children: [
-            {
-              title: 'Leaf 0-1-1-1',
-              value: 'Leaf 0-1-1-1',
-              key: '0-1-1-1',
-            },
-            {
-              title: 'Leaf 0-1-1-2',
-              value: 'Leaf 0-1-1-2',
-              key: '0-1-1-2',
-              disabled: true
-            },
-          ]
-        },
-        {
-          title: 'Leaf 0-1-2',
-          value: 'Leaf 0-1-2',
-          key: '0-1-2',
-        },
-      ],
-    },
-  ];
+const selected = ref([]);
+const treeCheckedStrategy = ref('all');
 </script>
 ```

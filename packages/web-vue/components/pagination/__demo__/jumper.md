@@ -18,6 +18,6 @@ By setting `show-jumper`, the page number jump input box is displayed.
 
 ```vue
 <template>
-  <a-pagination :total="50" show-jumper/>
+  <a-pagination :total="50" show-jumper />
 </template>
 ```

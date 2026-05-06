@@ -18,8 +18,16 @@ After moving into the area, you can click the right mouse button to trigger.
 
 ```vue
 <template>
-  <a-dropdown trigger="contextMenu" alignPoint :style="{display:'block'}">
-    <div :style="{display:'flex',alignItems:'center',justifyContent:'center', height:'300px',backgroundColor:'var(--color-fill-2)'}">
+  <a-dropdown trigger="contextMenu" alignPoint :style="{ display: 'block' }">
+    <div
+      :style="{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '300px',
+        backgroundColor: 'var(--color-fill-2)',
+      }"
+    >
       <div>Click Me</div>
     </div>
     <template #content>

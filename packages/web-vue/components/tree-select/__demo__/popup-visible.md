@@ -21,7 +21,7 @@ For example, in this demo, onVisibleChange is triggered when the mouse moves out
 ```vue
 <template>
   <div style="margin-bottom: 24px;">
-    <a-button type="primary" @click="onClick">toggle</a-button>
+    <a-button type="primary" @click="handleClick">toggle</a-button>
   </div>
   <a-tree-select
     :popupVisible="popupVisible"
@@ -31,49 +31,39 @@ For example, in this demo, onVisibleChange is triggered when the mouse moves out
     style="width: 300px"
   ></a-tree-select>
 </template>
-<script>
-  import { ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const popupVisible = ref(false);
-      function onClick() {
-        popupVisible.value = !popupVisible.value;
-      }
+const treeData = [
+  {
+    key: 'node1',
+    title: 'Trunk',
+    children: [
+      {
+        key: 'node2',
+        title: 'Leaf',
+      },
+    ],
+  },
+  {
+    key: 'node3',
+    title: 'Trunk2',
+    children: [
+      {
+        key: 'node4',
+        title: 'Leaf',
+      },
+      {
+        key: 'node5',
+        title: 'Leaf',
+      },
+    ],
+  },
+];
 
-      return {
-        onClick,
-        popupVisible,
-        treeData,
-      };
-    },
-  };
-
-  const treeData = [
-    {
-      key: 'node1',
-      title: 'Trunk',
-      children: [
-        {
-          key: 'node2',
-          title: 'Leaf',
-        },
-      ],
-    },
-    {
-      key: 'node3',
-      title: 'Trunk2',
-      children: [
-        {
-          key: 'node4',
-          title: 'Leaf',
-        },
-        {
-          key: 'node5',
-          title: 'Leaf',
-        },
-      ],
-    },
-  ];
+const popupVisible = ref(false);
+function handleClick() {
+  popupVisible.value = !popupVisible.value;
+}
 </script>
 ```

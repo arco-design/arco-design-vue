@@ -18,7 +18,11 @@ Custom Status. You need to set the Icon property
 
 ```vue
 <template>
-  <a-result :status="null" title="This is title content" subtitle="This is subtitle content">
+  <a-result
+    :status="null"
+    title="This is title content"
+    subtitle="This is subtitle content"
+  >
     <template #icon>
       <IconFaceSmileFill />
     </template>
@@ -30,13 +34,7 @@ Custom Status. You need to set the Icon property
     </template>
   </a-result>
 </template>
-<script>
+<script setup lang="ts">
 import { IconFaceSmileFill } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconFaceSmileFill
-  },
-}
 </script>
 ```

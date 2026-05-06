@@ -19,7 +19,7 @@ There are four sizes.
 ```vue
 <template>
   <div style="marginBottom: 20px">
-    <a-radio-group v-model="size" type='button'>
+    <a-radio-group v-model="size" type="button">
       <a-radio value="mini">mini</a-radio>
       <a-radio value="small">small</a-radio>
       <a-radio value="medium">medium</a-radio>
@@ -28,14 +28,12 @@ There are four sizes.
   </div>
   <a-time-picker style="width: 194px;" :size="size" />
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        size: 'small'
-      }
-    }
-  }
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  size: 'small',
+});
+
+const { size } = toRefs(state);
 </script>
 ```
-

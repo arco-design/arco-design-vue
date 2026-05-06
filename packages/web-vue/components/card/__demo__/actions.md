@@ -43,9 +43,7 @@ The `actions` slot can be used to display the bottom button group.
         <div
           :style="{ display: 'flex', alignItems: 'center', color: '#1D2129' }"
         >
-          <a-avatar :size="24" :style="{ marginRight: '8px' }">
-            A
-          </a-avatar>
+          <a-avatar :size="24" :style="{ marginRight: '8px' }"> A </a-avatar>
           <a-typography-text>Username</a-typography-text>
         </div>
       </template>
@@ -53,16 +51,12 @@ The `actions` slot can be used to display the bottom button group.
   </a-card>
 </template>
 
-<script>
+<script setup lang="ts">
 import {
   IconThumbUp,
   IconShareInternal,
   IconMore,
 } from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: { IconThumbUp, IconShareInternal, IconMore },
-};
 </script>
 <style scoped>
 .icon-hover {

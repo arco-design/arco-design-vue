@@ -34,7 +34,7 @@ title:
   align-items: center;
   justify-content: center;
   height: 300px;
-  background-color: var(--color-fill-2)
+  background-color: var(--color-fill-2);
 }
 
 .demo-point {

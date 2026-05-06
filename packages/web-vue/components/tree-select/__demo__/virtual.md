@@ -20,7 +20,7 @@ amount of data is used.
   <a-tree-select
     :data="treeData"
     :allow-search="{
-      retainInputValue: true
+      retainInputValue: true,
     }"
     multiple
     tree-checkable
@@ -33,16 +33,7 @@ amount of data is used.
     }"
   />
 </template>
-<script>
-export default {
-  setup() {
-    const treeData = loop();
-    return {
-      treeData
-    }
-  }
-}
-
+<script setup lang="ts">
 function loop(path = '0', level = 2) {
   const list = [];
   for (let i = 0; i < 10; i += 1) {
@@ -60,5 +51,7 @@ function loop(path = '0', level = 2) {
   }
   return list;
 }
+
+const treeData = loop();
 </script>
 ```

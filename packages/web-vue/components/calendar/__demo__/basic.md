@@ -17,25 +17,15 @@ Display and select calendars
 ---
 
 ```vue
-
 <template>
   <a-calendar v-model="value" />
   select: {{ displayValue }}
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref(new Date('2023-01-01'));
-    const displayValue = computed(() => value.value.toISOString());
-
-    return {
-      value,
-      displayValue,
-    }
-  },
-}
+const value = ref(new Date('2023-01-01'));
+const displayValue = computed(() => value.value.toISOString());
 </script>
 ```

@@ -20,7 +20,7 @@ Built-in 4 sizes, `mini-4px` `small-8px (default)` `medium-16px` `large-24px`, a
 <template>
   <div>
     <div style="marginBottom: 20px">
-      <a-radio-group v-model="size" type='button'>
+      <a-radio-group v-model="size" type="button">
         <a-radio value="mini">mini</a-radio>
         <a-radio value="small">small</a-radio>
         <a-radio value="medium">medium</a-radio>
@@ -34,13 +34,12 @@ Built-in 4 sizes, `mini-4px` `small-8px (default)` `medium-16px` `large-24px`, a
     </a-space>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      size: 'medium',
-    }
-  }
-};
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  size: 'medium',
+});
+
+const { size } = toRefs(state);
 </script>
 ```

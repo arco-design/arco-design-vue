@@ -25,7 +25,7 @@ By setting the `trigger` property of `Menu.Sider`, the icon of the collapse butt
         :default-open-keys="['1']"
         :default-selected-keys="['0_3']"
         :style="{ width: '100%' }"
-        @menu-item-click="onClickMenuItem"
+        @menu-item-click="handleClickMenuItem"
       >
         <a-menu-item key="0_1" disabled>
           <IconHome></IconHome>
@@ -71,9 +71,7 @@ By setting the `trigger` property of `Menu.Sider`, the icon of the collapse butt
       </template>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="padding-left: 20px;">
-        Header
-      </a-layout-header >
+      <a-layout-header style="padding-left: 20px;"> Header </a-layout-header>
       <a-layout style="padding: 0 24px;">
         <a-breadcrumb :style="{ margin: '16px 0' }">
           <a-breadcrumb-item>Home</a-breadcrumb-item>
@@ -86,9 +84,8 @@ By setting the `trigger` property of `Menu.Sider`, the icon of the collapse butt
     </a-layout>
   </a-layout>
 </template>
-<script>
-import { defineComponent } from 'vue';
-import { Message} from '@arco-design/web-vue';
+<script setup lang="ts">
+import { Message } from '@arco-design/web-vue';
 import {
   IconCaretRight,
   IconCaretLeft,
@@ -96,19 +93,9 @@ import {
   IconCalendar,
 } from '@arco-design/web-vue/es/icon';
 
-export default defineComponent({
-  components: {
-    IconCaretRight,
-    IconCaretLeft,
-    IconHome,
-    IconCalendar,
-  },
-  methods: {
-    onClickMenuItem(key) {
-      Message.info({ content: `You select ${key}`, showIcon: true });
-    }
-  }
-});
+const handleClickMenuItem = (key) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+};
 </script>
 <style scoped>
 .layout-demo {
@@ -121,10 +108,10 @@ export default defineComponent({
   margin: 12px 8px;
   background: rgba(255, 255, 255, 0.2);
 }
-.layout-demo :deep(.arco-layout-sider-light) .logo{
+.layout-demo :deep(.arco-layout-sider-light) .logo {
   background: var(--color-fill-2);
 }
-.layout-demo :deep(.arco-layout-header)  {
+.layout-demo :deep(.arco-layout-header) {
   height: 64px;
   line-height: 64px;
   background: var(--color-bg-3);
@@ -143,7 +130,7 @@ export default defineComponent({
   background: var(--color-bg-3);
 }
 .layout-demo :deep(.arco-layout-footer),
-.layout-demo :deep(.arco-layout-content)  {
+.layout-demo :deep(.arco-layout-content) {
   display: flex;
   flex-direction: column;
   justify-content: center;

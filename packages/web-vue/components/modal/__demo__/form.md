@@ -17,10 +17,14 @@ Using Form in Modal
 ---
 
 ```vue
-
 <template>
   <a-button @click="handleClick">Open Form Modal</a-button>
-  <a-modal v-model:visible="visible" title="Modal Form" @cancel="handleCancel" @before-ok="handleBeforeOk">
+  <a-modal
+    v-model:visible="visible"
+    title="Modal Form"
+    @cancel="handleCancel"
+    @before-ok="handleBeforeOk"
+  >
     <a-form :model="form">
       <a-form-item field="name" label="Name">
         <a-input v-model="form.name" />
@@ -37,40 +41,28 @@ Using Form in Modal
   </a-modal>
 </template>
 
-<script>
+<script setup lang="ts">
 import { reactive, ref } from 'vue';
 
-export default {
-  setup() {
-    const visible = ref(false);
-    const form = reactive({
-      name: '',
-      post: ''
-    });
+const visible = ref(false);
+const form = reactive({
+  name: '',
+  post: '',
+});
 
-    const handleClick = () => {
-      visible.value = true;
-    };
-    const handleBeforeOk = (done) => {
-      console.log(form)
-      window.setTimeout(() => {
-        done()
-        // prevent close
-        // done(false)
-      }, 3000)
-    };
-    const handleCancel = () => {
-      visible.value = false;
-    }
-
-    return {
-      visible,
-      form,
-      handleClick,
-      handleBeforeOk,
-      handleCancel
-    }
-  },
-}
+const handleClick = () => {
+  visible.value = true;
+};
+const handleBeforeOk = (done) => {
+  console.log(form);
+  window.setTimeout(() => {
+    done();
+    // prevent close
+    // done(false)
+  }, 3000);
+};
+const handleCancel = () => {
+  visible.value = false;
+};
 </script>
 ```
