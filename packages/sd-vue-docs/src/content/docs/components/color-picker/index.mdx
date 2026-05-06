@@ -1,37 +1,31 @@
 ---
 title: 颜色选择器 ColorPicker
-description: 用于选择和展示颜色
+description: 以 TDesign API 为主的颜色选择器，用于输入、预览和调整颜色。
 ---
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import ColorPickerBasicDemo from '../../../../components/generated/color-picker/basic.vue';
-export const colorPickerBasicSource =
-  '<template>\n  <sd-space>\n    <sd-color-picker v-model="value" />\n    <sd-color-picker defaultValue="#165DFF" showText disabledAlpha />\n  </sd-space>\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n  const value = ref(\'#165DFF\');\n</script>';
+import colorPickerBasicSource from '../../../../components/generated/color-picker/basic.vue?raw';
+import ColorPickerGradientDemo from '../../../../components/generated/color-picker/gradient.vue';
+import colorPickerGradientSource from '../../../../components/generated/color-picker/gradient.vue?raw';
 import ColorPickerColorsDemo from '../../../../components/generated/color-picker/colors.vue';
-export const colorPickerColorsSource =
-  '<template>\n  <sd-color-picker\n    defaultValue="#165DFF"\n    :historyColors="history"\n    showHistory\n    showPreset\n    @popup-visible-change="addHistory"\n  />\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n\n  const history = ref([\'#165DFF\']);\n  const addHistory = (visible, color) => {\n    if (!visible) {\n      const index = history.value.indexOf(color);\n      if (index !== -1) {\n        history.value.splice(index, 1);\n      }\n      history.value.unshift(color);\n    }\n  };\n</script>';
+import colorPickerColorsSource from '../../../../components/generated/color-picker/colors.vue?raw';
 import ColorPickerDisabledDemo from '../../../../components/generated/color-picker/disabled.vue';
-export const colorPickerDisabledSource =
-  '<template>\n  <sd-space>\n    <sd-color-picker defaultValue="#165DFF" disabled />\n    <sd-color-picker defaultValue="#165DFF" showText disabled />\n  </sd-space>\n</template>';
+import colorPickerDisabledSource from '../../../../components/generated/color-picker/disabled.vue?raw';
 import ColorPickerFormatDemo from '../../../../components/generated/color-picker/format.vue';
-export const colorPickerFormatSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-radio-group type="button" v-model="format">\n      <sd-radio v-for="item in formatList" :value="item">{{ item }}</sd-radio>\n    </sd-radio-group>\n    <sd-color-picker defaultValue="#165DFF" :format="format" showText />\n  </sd-space>\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n\n  const format = ref(\'hex\');\n  const formatList = [\'hex\', \'rgb\'];\n</script>';
+import colorPickerFormatSource from '../../../../components/generated/color-picker/format.vue?raw';
 import ColorPickerOnlyPanelDemo from '../../../../components/generated/color-picker/only-panel.vue';
-export const colorPickerOnlyPanelSource =
-  '<template>\n  <sd-space :size="32">\n    <sd-color-picker defaultValue="#165DFF" hideTrigger showHistory showPreset />\n    <sd-color-picker defaultValue="#12D2AC" disabled hideTrigger showPreset />\n  </sd-space>\n</template>';
+import colorPickerOnlyPanelSource from '../../../../components/generated/color-picker/only-panel.vue?raw';
 import ColorPickerSizeDemo from '../../../../components/generated/color-picker/size.vue';
-export const colorPickerSizeSource =
-  '<template>\n  <sd-space>\n    <sd-color-picker defaultValue="#165DFF" size="mini" />\n    <sd-color-picker defaultValue="#165DFF" size="small" />\n    <sd-color-picker defaultValue="#165DFF" size="medium" />\n    <sd-color-picker defaultValue="#165DFF" size="large" />\n  </sd-space>\n</template>';
+import colorPickerSizeSource from '../../../../components/generated/color-picker/size.vue?raw';
 import ColorPickerTriggerElementDemo from '../../../../components/generated/color-picker/trigger-element.vue';
-export const colorPickerTriggerElementSource =
-  '<template>\n  <sd-space>\n    <sd-color-picker v-model="value" size="mini">\n      <sd-tag :color="value">\n        <template #icon>\n          <icon-bg-colors style="color: #fff" />\n        </template>\n        {{ value }}\n      </sd-tag>\n    </sd-color-picker>\n  </sd-space>\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n\n  const value = ref(\'#165DFF\');\n</script>';
+import colorPickerTriggerElementSource from '../../../../components/generated/color-picker/trigger-element.vue?raw';
 import ColorPickerTriggerDemo from '../../../../components/generated/color-picker/trigger.vue';
-export const colorPickerTriggerSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-switch v-model="triggerProps.popupVisible">\n      <template #checked> ON </template>\n      <template #unchecked>OFF</template>\n    </sd-switch>\n    <sd-color-picker defaultValue="#165DFF" :trigger-props="triggerProps" />\n  </sd-space>\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n\n  const triggerProps = ref({\n    popupVisible: false,\n    unmountOnClose: true,\n    renderToBody: false,\n    position: \'rt\',\n  });\n</script>';
+import colorPickerTriggerSource from '../../../../components/generated/color-picker/trigger.vue?raw';
 
 ### 基本使用
 
-基本用法
+默认使用输入型触发器。可以直接通过输入框编辑颜色，也可以展开面板精调。
 
 <DemoBlock source={colorPickerBasicSource} mainFile="src/color-picker-basic.vue">
 
@@ -39,9 +33,19 @@ export const colorPickerTriggerSource =
 
 </DemoBlock>
 
+### 渐变与模式切换
+
+`color-modes` 现在完整支持 `monochrome` 和 `linear-gradient`。当允许渐变时，面板会提供模式切换、渐变 stop 编辑、角度设置，以及 gradient-only 的内联面板。
+
+<DemoBlock source={colorPickerGradientSource} mainFile="src/color-picker-gradient.vue">
+
+<ColorPickerGradientDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 预设颜色和历史颜色
 
-通过 `showPreset` 和 `showHistory` 开启预设颜色和历史颜色区域。历史颜色需要用户自行控制展示内容。
+通过 `recent-colors` 和 `swatch-colors` 控制最近使用颜色与系统色板。最近使用颜色变化时会触发 `recent-colors-change`。
 
 <DemoBlock source={colorPickerColorsSource} mainFile="src/color-picker-colors.vue">
 
@@ -61,7 +65,7 @@ export const colorPickerTriggerSource =
 
 ### 颜色格式
 
-通过 `format` 设置颜色值的格式，支持 `hex` 和 `rgb`。
+通过 `format` 切换输出格式。单色模式覆盖 `HEX`、`HEX8`、`RGB`、`RGBA`、`HSL`、`HSLA`、`HSV`、`HSVA`、`CMYK`、`CSS` 的字符串输出；渐变模式统一输出 `linear-gradient(...)` CSS 字符串。
 
 <DemoBlock source={colorPickerFormatSource} mainFile="src/color-picker-format.vue">
 
@@ -71,7 +75,7 @@ export const colorPickerTriggerSource =
 
 ### 只使用面板
 
-只用颜色选择面板。
+使用 `hide-trigger` 可以内联渲染颜色面板。这一能力保留自旧版 API，便于旧场景迁移。
 
 <DemoBlock source={colorPickerOnlyPanelSource} mainFile="src/color-picker-only-panel.vue">
 
@@ -81,7 +85,7 @@ export const colorPickerTriggerSource =
 
 ### 尺寸
 
-颜色选择器定义了四种尺寸（`mini`,`small`, `medium`, `large`），分别为 24px，28px，32px，36px。
+颜色选择器优先对齐 TDesign 的 `small`、`medium`、`large`，同时兼容旧版 `mini`。
 
 <DemoBlock source={colorPickerSizeSource} mainFile="src/color-picker-size.vue">
 
@@ -101,7 +105,7 @@ export const colorPickerTriggerSource =
 
 ### 触发器
 
-可以通过 `trigger-props` 设置触发器的所有属性。
+可以通过 `trigger-props` 直接透传 [TriggerProps](../../../components/trigger/index.html) 配置，行为与组件库里的 Trigger 保持一致。
 
 <DemoBlock source={colorPickerTriggerSource} mainFile="src/color-picker-trigger.vue">
 
@@ -115,23 +119,61 @@ export const colorPickerTriggerSource =
 
 | 参数名 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | :-: |
-| model-value **(v-model)** | 绑定值 | `string` | `-` |
-| default-value | 默认值（非受控状态） | `string` | `-` |
-| format | 颜色值的格式 | `'hex' \| 'rgb'` | `-` |
+| model-value **(v-model)** | 受控色值 | `string` | `-` |
+| value | 兼容 TDesign 的受控色值入口 | `string` | `-` |
+| default-value | 非受控默认色值 | `string` | `''` |
+| color-modes | 可用颜色模式 | `('monochrome' \| 'linear-gradient')[]` | `['monochrome']` |
+| enable-multiple-gradient | 是否允许新增多个渐变 stop | `boolean` | `true` |
+| format | 输出格式 | `'HEX' \| 'HEX8' \| 'RGB' \| 'RGBA' \| 'HSL' \| 'HSLA' \| 'HSV' \| 'HSVA' \| 'CMYK' \| 'CSS'` | `'RGB'` |
 | size | 尺寸 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |
-| show-text | 显示颜色值 | `boolean` | `false` |
-| show-history | 显示历史颜色 | `boolean` | `false` |
-| show-preset | 显示预设颜色 | `boolean` | `false` |
+| clearable | 是否允许清空 | `boolean` | `false` |
+| enable-alpha | 是否启用透明通道 | `boolean` | `false` |
+| show-primary-color-preview | 是否展示主色预览块 | `boolean` | `true` |
+| input-props | 透传到触发输入框的属性 | `Record<string, unknown>` | `-` |
+| trigger-props | 透传 Trigger 组件的属性 | `Partial<TriggerProps>` | `-` |
+| recent-colors | 最近使用颜色 | `string[] \| boolean \| null` | `[]` |
+| default-recent-colors | 最近使用颜色的非受控初始值 | `string[] \| boolean \| null` | `[]` |
+| swatch-colors | 系统色板 | `string[] \| null` | 内置色板 |
 | disabled | 禁用 | `boolean` | `false` |
-| disabled-alpha | 禁用透明通道 | `boolean` | `false` |
-| hide-trigger | 没有触发元素，只显示颜色面板 | `boolean` | `false` |
-| trigger-props | 接受所有 [Trigger](/components/trigger/) 组件的Props | `Partial<TriggerProps>` | `-` |
-| history-colors | 历史颜色的颜色数组 | `string[]` | `-` |
-| preset-colors | 预设颜色的颜色数组 | `string[]` | `() => colors` |
+| hide-trigger | 兼容旧版，仅渲染内联面板 | `boolean` | `false` |
+| history-colors | 旧版 recent-colors 别名 | `string[]` | `-` |
+| preset-colors | 旧版 swatch-colors 别名 | `string[]` | `-` |
+| show-history | 旧版开关，开启时使用 `history-colors` | `boolean` | `false` |
+| show-preset | 旧版开关，开启时使用 `preset-colors` | `boolean` | `false` |
+| disabled-alpha | 旧版 `enable-alpha` 反向别名 | `boolean` | `false` |
+| show-text | 旧版属性，保留兼容但不再建议新增使用 | `boolean` | `false` |
 
 ### `<color-picker>` Events
 
-| 事件名               | 描述                     | 参数                                    |
-| -------------------- | ------------------------ | --------------------------------------- |
-| change               | 颜色值改变时触发         | value: `string`                         |
+| 事件名 | 描述 | 参数 |
+| --- | --- | --- |
+| change | 颜色值变化时触发 | value: `string`<br />context: `{ color, trigger }` |
+| clear | 点击清空时触发 | `{ e: MouseEvent }` |
 | popup-visible-change | 颜色面板展开和收起时触发 | visible: `boolean`<br />value: `string` |
+| palette-bar-change | 色相条或透明度条变化时触发 | `{ color }` |
+| recent-colors-change | 最近使用颜色变化时触发 | `string[]` |
+
+### `<color-picker>` Slots
+
+| 插槽名  | 描述             |
+| ------- | ---------------- |
+| default | 自定义触发器内容 |
+
+## 迁移说明
+
+本次实现以当前组件库的 ColorPicker 和 Trigger 约定为主，同时保留了旧版 `@sdata/web-vue` color-picker 的兼容桥接。
+
+| 旧版能力                        | 新版建议                                 |
+| ------------------------------- | ---------------------------------------- |
+| `trigger-props`                 | 直接透传 `TriggerProps`                  |
+| `history-colors + show-history` | 迁移到 `recent-colors`                   |
+| `preset-colors + show-preset`   | 迁移到 `swatch-colors`                   |
+| `disabled-alpha`                | 迁移到 `enable-alpha`                    |
+| `show-text`                     | 新版默认采用输入型触发器，一般无需再使用 |
+| `hide-trigger`                  | 仍可继续使用，作为内联面板模式           |
+
+当前版本的迁移结论：
+
+- 单色与线性渐变都已经按 TDesign 能力接入，新的业务可直接使用 `color-modes` 与 `enable-multiple-gradient`。
+- 旧版常用 props 仍保留兼容桥接，但新增代码建议直接采用当前组件库的 `trigger-props` / `TriggerProps` 约定。
+- 渐变模式统一输出 CSS `linear-gradient(...)` 字符串；如果旧业务依赖旧版自定义结构，迁移时应直接改为标准 CSS 字符串。

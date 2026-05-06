@@ -14,7 +14,6 @@
   const triggerProps = ref({
     popupVisible: false,
     unmountOnClose: true,
-    renderToBody: false,
-    position: 'rt',
+    position: 'bl',
   });
 </script>

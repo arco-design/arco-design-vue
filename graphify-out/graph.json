@@ -1,0 +1,993 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "SD Design",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "sd_design"
+    },
+    {
+      "label": "Arco Design",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "arco_design"
+    },
+    {
+      "label": "pnpm workspace",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "pnpm_workspace"
+    },
+    {
+      "label": "Root Directory",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "root_directory"
+    },
+    {
+      "label": "root package.json",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "root_package_json"
+    },
+    {
+      "label": "dev flow",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "dev_flow"
+    },
+    {
+      "label": "build flow",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "build_flow"
+    },
+    {
+      "label": "Quality Gate (CI/Check)",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "quality_gate"
+    },
+    {
+      "label": "packages/web-vue",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "packages_web_vue"
+    },
+    {
+      "label": "web-vue package manifest",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "web_vue_manifest"
+    },
+    {
+      "label": "components/index.ts",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "components_index"
+    },
+    {
+      "label": "components/sd-vue.ts",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "sd_vue_plugin"
+    },
+    {
+      "label": "vite.config.ts",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "vite_config"
+    },
+    {
+      "label": "scripts/build-dts.mjs",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "build_dts_script"
+    },
+    {
+      "label": "icongen script",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "icongen_script"
+    },
+    {
+      "label": "jsongen script",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "jsongen_script"
+    },
+    {
+      "label": "web-vue test script",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "web_vue_test_script"
+    },
+    {
+      "label": "icon generation",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "icon_generation"
+    },
+    {
+      "label": "ES module build",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "module_build"
+    },
+    {
+      "label": "UMD build",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "umd_build"
+    },
+    {
+      "label": "style build",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "style_build"
+    },
+    {
+      "label": "declaration build",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "dts_build"
+    },
+    {
+      "label": "metadata generation",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "metadata_generation"
+    },
+    {
+      "label": "es artifacts",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "es_artifacts"
+    },
+    {
+      "label": "dist artifacts",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "dist_artifacts"
+    },
+    {
+      "label": "json metadata",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "json_metadata"
+    },
+    {
+      "label": "Vue 3",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "vue_3"
+    },
+    {
+      "label": "TypeScript",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "typescript"
+    },
+    {
+      "label": "Vite",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "vite"
+    },
+    {
+      "label": "vite-plus",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "vite_plus"
+    },
+    {
+      "label": "Vitest",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "vitest"
+    },
+    {
+      "label": "vue-tsc",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "vue_tsc"
+    },
+    {
+      "label": "sass",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "sass"
+    },
+    {
+      "label": "dayjs",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "id": "dayjs"
+    },
+    {
+      "label": "packages/sd-vue-docs",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "packages_sd_vue_docs"
+    },
+    {
+      "label": "sd-vue-docs package manifest",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "docs_manifest"
+    },
+    {
+      "label": "docs:prepare",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "docs_prepare"
+    },
+    {
+      "label": "docs:vendor",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "docs_vendor"
+    },
+    {
+      "label": "docs:vendor:only",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "docs_vendor_only"
+    },
+    {
+      "label": "docs dev script",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "docs_dev_script"
+    },
+    {
+      "label": "docs build script",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "docs_build_script"
+    },
+    {
+      "label": "verify-theme-runtime script",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "verify_theme_runtime"
+    },
+    {
+      "label": "Astro",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "astro"
+    },
+    {
+      "label": "Starlight",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "starlight"
+    },
+    {
+      "label": "MDX",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "id": "mdx"
+    },
+    {
+      "label": "@astrojs/vue",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "astro_vue"
+    },
+    {
+      "label": "tailwindcss",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "tailwindcss"
+    },
+    {
+      "label": "@vue/repl",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "vue_repl"
+    },
+    {
+      "label": "sharp",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "id": "sharp"
+    },
+    {
+      "label": "workspace alias",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "workspace_alias"
+    },
+    {
+      "label": "site runtime",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "runtime_site"
+    },
+    {
+      "label": "Theme Bridge",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "theme_bridge"
+    },
+    {
+      "label": "Vendor Bridge Layer",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "vendor_bridge"
+    },
+    {
+      "label": "scripts/sync-vendor.mjs",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "sync_vendor_script"
+    },
+    {
+      "label": "public/vendor",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "public_vendor"
+    },
+    {
+      "label": "import map",
+      "file_type": "document",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "id": "import_map"
+    }
+  ],
+  "edges": [
+    {
+      "relation": "based on",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "sd_design",
+      "_tgt": "arco_design",
+      "source": "sd_design",
+      "target": "arco_design"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "sd_design",
+      "_tgt": "pnpm_workspace",
+      "source": "sd_design",
+      "target": "pnpm_workspace"
+    },
+    {
+      "relation": "centers orchestration in",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "root_directory",
+      "_tgt": "root_package_json",
+      "source": "root_directory",
+      "target": "root_package_json"
+    },
+    {
+      "relation": "schedules dev/build/check for",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "root_directory",
+      "_tgt": "packages_web_vue",
+      "source": "root_directory",
+      "target": "packages_web_vue"
+    },
+    {
+      "relation": "schedules dev/build/check for",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "root_directory",
+      "_tgt": "packages_sd_vue_docs",
+      "source": "root_directory",
+      "target": "packages_sd_vue_docs"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "root_package_json",
+      "_tgt": "dev_flow",
+      "source": "root_package_json",
+      "target": "dev_flow"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "root_package_json",
+      "_tgt": "build_flow",
+      "source": "root_package_json",
+      "target": "build_flow"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "root_package_json",
+      "_tgt": "quality_gate",
+      "source": "root_package_json",
+      "target": "quality_gate"
+    },
+    {
+      "relation": "prebuilds",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "dev_flow",
+      "_tgt": "module_build",
+      "source": "dev_flow",
+      "target": "module_build"
+    },
+    {
+      "relation": "prepares resources through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "dev_flow",
+      "_tgt": "vendor_bridge",
+      "source": "dev_flow",
+      "target": "vendor_bridge"
+    },
+    {
+      "relation": "starts watch service for",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "dev_flow",
+      "_tgt": "packages_web_vue",
+      "source": "dev_flow",
+      "target": "packages_web_vue"
+    },
+    {
+      "relation": "starts dev service for",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "dev_flow",
+      "_tgt": "packages_sd_vue_docs",
+      "source": "dev_flow",
+      "target": "packages_sd_vue_docs"
+    },
+    {
+      "relation": "starts with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "build_flow",
+      "_tgt": "icon_generation",
+      "source": "build_flow",
+      "target": "icon_generation"
+    },
+    {
+      "relation": "verifies changes in",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "quality_gate",
+      "_tgt": "packages_web_vue",
+      "source": "quality_gate",
+      "target": "packages_web_vue"
+    },
+    {
+      "relation": "guards release quality for",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "quality_gate",
+      "_tgt": "packages_sd_vue_docs",
+      "source": "quality_gate",
+      "target": "packages_sd_vue_docs"
+    },
+    {
+      "relation": "described by",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "web_vue_manifest",
+      "source": "packages_web_vue",
+      "target": "web_vue_manifest"
+    },
+    {
+      "relation": "exposes on-demand entry through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "packages_web_vue",
+      "_tgt": "components_index",
+      "source": "packages_web_vue",
+      "target": "components_index"
+    },
+    {
+      "relation": "exposes full install entry through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "packages_web_vue",
+      "_tgt": "sd_vue_plugin",
+      "source": "packages_web_vue",
+      "target": "sd_vue_plugin"
+    },
+    {
+      "relation": "builds with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "packages_web_vue",
+      "_tgt": "vite_config",
+      "source": "packages_web_vue",
+      "target": "vite_config"
+    },
+    {
+      "relation": "generates declarations through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "packages_web_vue",
+      "_tgt": "build_dts_script",
+      "source": "packages_web_vue",
+      "target": "build_dts_script"
+    },
+    {
+      "relation": "runs",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "icongen_script",
+      "source": "packages_web_vue",
+      "target": "icongen_script"
+    },
+    {
+      "relation": "runs",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "jsongen_script",
+      "source": "packages_web_vue",
+      "target": "jsongen_script"
+    },
+    {
+      "relation": "verifies through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "web_vue_test_script",
+      "source": "packages_web_vue",
+      "target": "web_vue_test_script"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "packages_web_vue",
+      "_tgt": "vue_3",
+      "source": "packages_web_vue",
+      "target": "vue_3"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "packages_web_vue",
+      "_tgt": "typescript",
+      "source": "packages_web_vue",
+      "target": "typescript"
+    },
+    {
+      "relation": "uses for build",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "packages_web_vue",
+      "_tgt": "vite",
+      "source": "packages_web_vue",
+      "target": "vite"
+    },
+    {
+      "relation": "orchestrates tasks with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "vite_plus",
+      "source": "packages_web_vue",
+      "target": "vite_plus"
+    },
+    {
+      "relation": "tests with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "vitest",
+      "source": "packages_web_vue",
+      "target": "vitest"
+    },
+    {
+      "relation": "emits declarations with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "vue_tsc",
+      "source": "packages_web_vue",
+      "target": "vue_tsc"
+    },
+    {
+      "relation": "compiles styles with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "sass",
+      "source": "packages_web_vue",
+      "target": "sass"
+    },
+    {
+      "relation": "depends on",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "dayjs",
+      "source": "packages_web_vue",
+      "target": "dayjs"
+    },
+    {
+      "relation": "publishes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "es_artifacts",
+      "source": "packages_web_vue",
+      "target": "es_artifacts"
+    },
+    {
+      "relation": "publishes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "dist_artifacts",
+      "source": "packages_web_vue",
+      "target": "dist_artifacts"
+    },
+    {
+      "relation": "publishes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/web-vue-package.md",
+      "_src": "packages_web_vue",
+      "_tgt": "json_metadata",
+      "source": "packages_web_vue",
+      "target": "json_metadata"
+    },
+    {
+      "relation": "consumes workspace package",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "packages_web_vue",
+      "source": "packages_web_vue",
+      "target": "packages_sd_vue_docs"
+    },
+    {
+      "relation": "feeds",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "icon_generation",
+      "_tgt": "module_build",
+      "source": "icon_generation",
+      "target": "module_build"
+    },
+    {
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "module_build",
+      "_tgt": "umd_build",
+      "source": "module_build",
+      "target": "umd_build"
+    },
+    {
+      "relation": "outputs",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "module_build",
+      "_tgt": "es_artifacts",
+      "source": "module_build",
+      "target": "es_artifacts"
+    },
+    {
+      "relation": "requires",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "docs_prepare",
+      "_tgt": "module_build",
+      "source": "module_build",
+      "target": "docs_prepare"
+    },
+    {
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "umd_build",
+      "_tgt": "style_build",
+      "source": "umd_build",
+      "target": "style_build"
+    },
+    {
+      "relation": "outputs",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "umd_build",
+      "_tgt": "dist_artifacts",
+      "source": "umd_build",
+      "target": "dist_artifacts"
+    },
+    {
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "style_build",
+      "_tgt": "dts_build",
+      "source": "style_build",
+      "target": "dts_build"
+    },
+    {
+      "relation": "feeds styles to",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "style_build",
+      "_tgt": "vendor_bridge",
+      "source": "style_build",
+      "target": "vendor_bridge"
+    },
+    {
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "dts_build",
+      "_tgt": "metadata_generation",
+      "source": "dts_build",
+      "target": "metadata_generation"
+    },
+    {
+      "relation": "outputs",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "metadata_generation",
+      "_tgt": "json_metadata",
+      "source": "metadata_generation",
+      "target": "json_metadata"
+    },
+    {
+      "relation": "feeds",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "es_artifacts",
+      "_tgt": "vendor_bridge",
+      "source": "es_artifacts",
+      "target": "vendor_bridge"
+    },
+    {
+      "relation": "described by",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "docs_manifest",
+      "source": "packages_sd_vue_docs",
+      "target": "docs_manifest"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "astro",
+      "source": "packages_sd_vue_docs",
+      "target": "astro"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "starlight",
+      "source": "packages_sd_vue_docs",
+      "target": "starlight"
+    },
+    {
+      "relation": "renders content with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/README.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "mdx",
+      "source": "packages_sd_vue_docs",
+      "target": "mdx"
+    },
+    {
+      "relation": "embeds Vue with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "astro_vue",
+      "source": "packages_sd_vue_docs",
+      "target": "astro_vue"
+    },
+    {
+      "relation": "styles site with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "tailwindcss",
+      "source": "packages_sd_vue_docs",
+      "target": "tailwindcss"
+    },
+    {
+      "relation": "supports live examples with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "vue_repl",
+      "source": "packages_sd_vue_docs",
+      "target": "vue_repl"
+    },
+    {
+      "relation": "optimizes assets with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "sharp",
+      "source": "packages_sd_vue_docs",
+      "target": "sharp"
+    },
+    {
+      "relation": "points to source via",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "workspace_alias",
+      "source": "packages_sd_vue_docs",
+      "target": "workspace_alias"
+    },
+    {
+      "relation": "serves as",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "runtime_site",
+      "source": "packages_sd_vue_docs",
+      "target": "runtime_site"
+    },
+    {
+      "relation": "prepares vendors through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "docs_prepare",
+      "source": "packages_sd_vue_docs",
+      "target": "docs_prepare"
+    },
+    {
+      "relation": "syncs browser assets through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "docs_vendor",
+      "source": "packages_sd_vue_docs",
+      "target": "docs_vendor"
+    },
+    {
+      "relation": "runs direct vendor sync through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "docs_vendor_only",
+      "source": "packages_sd_vue_docs",
+      "target": "docs_vendor_only"
+    },
+    {
+      "relation": "starts dev server through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "docs_dev_script",
+      "source": "packages_sd_vue_docs",
+      "target": "docs_dev_script"
+    },
+    {
+      "relation": "builds site through",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "docs_build_script",
+      "source": "packages_sd_vue_docs",
+      "target": "docs_build_script"
+    },
+    {
+      "relation": "verifies runtime theme with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "verify_theme_runtime",
+      "source": "packages_sd_vue_docs",
+      "target": "verify_theme_runtime"
+    },
+    {
+      "relation": "syncs resources to",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "vendor_bridge",
+      "_tgt": "packages_sd_vue_docs",
+      "source": "packages_sd_vue_docs",
+      "target": "vendor_bridge"
+    },
+    {
+      "relation": "syncs theme via",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "packages_sd_vue_docs",
+      "_tgt": "theme_bridge",
+      "source": "packages_sd_vue_docs",
+      "target": "theme_bridge"
+    },
+    {
+      "relation": "depends on",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "docs_vendor",
+      "_tgt": "docs_prepare",
+      "source": "docs_prepare",
+      "target": "docs_vendor"
+    },
+    {
+      "relation": "delegates sync to",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "docs_vendor",
+      "_tgt": "docs_vendor_only",
+      "source": "docs_vendor",
+      "target": "docs_vendor_only"
+    },
+    {
+      "relation": "prepares vendor assets with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "docs_dev_script",
+      "_tgt": "docs_vendor",
+      "source": "docs_vendor",
+      "target": "docs_dev_script"
+    },
+    {
+      "relation": "prepares vendor assets with",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md",
+      "_src": "docs_build_script",
+      "_tgt": "docs_vendor",
+      "source": "docs_vendor",
+      "target": "docs_build_script"
+    },
+    {
+      "relation": "controls theme state in",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "theme_bridge",
+      "_tgt": "runtime_site",
+      "source": "runtime_site",
+      "target": "theme_bridge"
+    },
+    {
+      "relation": "implemented by",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "vendor_bridge",
+      "_tgt": "sync_vendor_script",
+      "source": "vendor_bridge",
+      "target": "sync_vendor_script"
+    },
+    {
+      "relation": "writes resources to",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "sync_vendor_script",
+      "_tgt": "public_vendor",
+      "source": "sync_vendor_script",
+      "target": "public_vendor"
+    },
+    {
+      "relation": "writes",
+      "confidence": "EXTRACTED",
+      "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md",
+      "_src": "sync_vendor_script",
+      "_tgt": "import_map",
+      "source": "sync_vendor_script",
+      "target": "import_map"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+# IDE 配置
+
+.idea/
+.idea
+
+# VSCode 配置（保留指定配置文件）
+
+.vscode/\*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# 依赖与构建
+
+node_modules/
+node_modules
+jspm_packages/
+dist/
+dist-ssr
+storybook-static/
+packages/sd-vue-docs/public/vendor/
+vendor/
+
+# 包管理文件
+
+package-lock.json
+yarn.lock
+.yarn-integrity
+pnpm-global
+
+# 日志文件
+
+\*_/_.log
+logs
+_.log
+npm-debug.log_
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.playwright-mcp/console-\*.log
+
+# 诊断与报告
+
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+test-results/
+playwright-report/
+
+# 运行时与缓存
+
+pids
+_.pid
+_.seed
+_.pid.lock
+.lock-wscript
+.npm
+.eslintcache
+.node_repl_history
+.cache
+_.tsbuildinfo
+.nyc_output
+lib-cov
+coverage
+\*.lcov
+
+# 编译输出
+
+build/Release
+
+# 打包文件
+
+\*.tgz
+
+# 环境变量
+
+.env
+.env.test
+.env.sentry-build-plugin
+
+# 临时文件与目录
+
+tmp/
+temp/
+TODOs.md
+draft.md
+src/api/index.json
+src/examples/data.json
+src/tutorial/data.json
+
+# macOS 系统文件
+
+\*_/.DS*Store
+.DS_Store
+.AppleDouble
+.LSOverride
+.*_
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# 测试与 Cypress
+
+/cypress/videos/
+/cypress/screenshots/
+
+# 代码检查
+
+.scannerwork
+.sonar
+
+# Serverless
+
+.serverless/
+
+# TypeScript
+
+typings/
+
+# 编辑器/系统临时文件
+
+_.suo
+_.ntvs\*
+_.njsproj
+_.sln
+_.sw?
+_.local

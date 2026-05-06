@@ -12,6 +12,8 @@
     "simple-git-hooks": "simple-git-hooks",
     "prepare": "run-s simple-git-hooks",
     "dev": "vp run dev:all",
+    "dev:web-vue": "pnpm --filter @sd-design/web-vue-debug dev",
+    "dev:color-picker-debug": "pnpm run dev:web-vue",
     "dev:all": "pnpm --filter @sdata/web-vue run build:module && pnpm --filter @sd-design/sd-vue-docs run docs:vendor:only && vp run --parallel --filter @sdata/web-vue --filter @sd-design/sd-vue-docs dev:serve",
     "dev:component": "vp run --filter @sdata/web-vue dev",
     "dev:docs": "vp run --filter @sd-design/sd-vue-docs dev",
@@ -78,7 +80,7 @@
     "stylelint-order": "^8.1.1",
     "stylelint-scss": "^7.0.0",
     "type-fest": "^5.5.0",
-    "typescript": "^6.0.2",
+    "typescript": "catalog:",
     "vite-plus": "^0.1.17"
   },
   "simple-git-hooks": {

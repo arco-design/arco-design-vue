@@ -14,7 +14,20 @@ const ColorPicker = Object.assign(_ColorPicker, {
   },
 });
 
-export type { RGB, HSV, Color } from './interface';
+export type {
+  RGB,
+  HSV,
+  HSVA,
+  Color,
+  ColorMode,
+  ColorModes,
+  ColorFormat,
+  ColorObject,
+  ColorValueState,
+  ColorPickerChangeTrigger,
+  GradientColorPoint,
+  RecentColorsValue,
+} from './interface';
 export type ColorPickerInstance = InstanceType<typeof _ColorPicker>;
 
 export default ColorPicker;

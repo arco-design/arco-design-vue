@@ -1,11 +1,13 @@
 <template>
   <sd-space>
     <sd-color-picker v-model="value" size="mini">
-      <sd-tag :color="value">
+      <sd-tag :color="value" class="color-picker-trigger-tag">
         <template #icon>
-          <icon-bg-colors style="color: #fff" />
+          <span class="color-picker-trigger-tag__contrast">
+            <icon-bg-colors />
+          </span>
         </template>
-        {{ value }}
+        <span class="color-picker-trigger-tag__contrast">{{ value }}</span>
       </sd-tag>
     </sd-color-picker>
   </sd-space>
@@ -16,3 +18,11 @@
 
   const value = ref('#165DFF');
 </script>
+
+<style scoped>
+  .color-picker-trigger-tag__contrast {
+    color: #fff;
+    mix-blend-mode: difference;
+    user-select: none;
+  }
+</style>

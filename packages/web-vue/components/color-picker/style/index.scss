@@ -176,6 +176,86 @@ $__less-vars: (
   border-radius: $color-panel-border-radius;
   box-shadow: $color-panel-box-shadow;
 
+  .#{$color-picker-prefix-cls}-panel-head {
+    display: flex;
+    justify-content: center;
+    padding: global.$spacing-4 global.$spacing-4 0;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-panel {
+    padding: global.$spacing-4 global.$spacing-4 0;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-bar-shell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 28px;
+    user-select: none;
+    margin-inline: global.$spacing-4;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-bar {
+    display: block;
+    width: 100%;
+    height: 8px;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid $color-panel-border-color;
+    border-radius: global.$border-radius-medium;
+    cursor: pointer;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-thumb {
+    position: absolute;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border-2);
+    border-radius: global.$border-radius-circle;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 14%);
+    transform: translateX(-50%);
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-thumb-active {
+    border-color: var(--color-primary-6);
+    box-shadow: 0 0 0 2px rgb(22 93 255 / 16%);
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-thumb-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: global.$border-radius-circle;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-meta {
+    display: flex;
+    gap: global.$spacing-3;
+    align-items: center;
+    margin-top: global.$spacing-4;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-label {
+    color: var(--color-text-2);
+    font-size: global.$font-size-body-1;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-degree {
+    width: 72px;
+  }
+
+  .#{$color-picker-prefix-cls}-gradient-preview {
+    height: 32px;
+    margin-top: global.$spacing-4;
+    border: 1px solid $color-panel-border-color;
+    border-radius: global.$border-radius-medium;
+  }
+
   .#{$color-picker-prefix-cls}-palette {
     position: relative;
     box-sizing: border-box;
@@ -261,10 +341,26 @@ $__less-vars: (
       margin-top: global.$spacing-6;
     }
 
+    .#{$color-picker-prefix-cls}-colors-header {
+      display: flex;
+      gap: global.$spacing-3;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .#{$color-picker-prefix-cls}-colors-text {
       color: var(--color-text-1);
       font-weight: global.$font-weight-400;
       font-size: $color-panel-section-title-font-size;
+    }
+
+    .#{$color-picker-prefix-cls}-colors-action {
+      padding: 0;
+      color: var(--color-primary-6);
+      font-size: global.$font-size-body-1;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
     }
 
     .#{$color-picker-prefix-cls}-colors-empty {
@@ -386,6 +482,14 @@ $__less-vars: (
     width: $color-panel-alpha-input-width;
   }
 
+  .#{$color-picker-prefix-cls}-input-group {
+    width: 100%;
+  }
+
+  .#{$color-picker-prefix-cls}-format-input {
+    min-width: 0;
+  }
+
   .#{$color-picker-prefix-cls}-input-hex {
     .#{theme.$prefix}-input {
       padding-left: global.$spacing-2;
@@ -396,7 +500,9 @@ $__less-vars: (
     .#{$color-picker-prefix-cls}-palette,
     .#{$color-picker-prefix-cls}-control-bar,
     .#{$color-picker-prefix-cls}-color-block,
-    .#{$color-picker-prefix-cls}-preview {
+    .#{$color-picker-prefix-cls}-preview,
+    .#{$color-picker-prefix-cls}-gradient-bar,
+    .#{$color-picker-prefix-cls}-gradient-thumb {
       cursor: not-allowed;
       opacity: 0.8;
     }

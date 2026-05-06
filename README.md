@@ -15,6 +15,7 @@
 本仓库是一个基于 pnpm workspace 的 monorepo，核心包都位于 packages 目录下。
 
 - packages/web-vue：Vue 组件库本体，包含组件源码、构建脚本、文档元数据生成和测试。
+- packages/web-vue-debug：组件联调页，作为与 web-vue 同级的最小消费端，用于本地快速验证组件交互和样式。
 - packages/sd-vue-docs：基于 Astro Starlight 的文档站，负责当前文档站的开发、构建、MDX 内容和在线示例编辑能力。
 
 根目录脚本主要用于串联组件库和文档站两个包，不再需要单独构建内部工具包。
@@ -53,6 +54,7 @@ pnpm run dev
 其中：
 
 - `pnpm run dev` 会同时启动组件库 watch 构建和文档站开发服务。
+- `pnpm run dev:web-vue` 会直接以源码别名启动 `packages/web-vue-debug`，用于组件联调和样式调试，不依赖预先构建产物。
 - `pnpm run dev:all` 是 `pnpm run dev` 的全量显式入口，适合脚本编排或新人快速理解流程。
 - `pnpm run dev:docs` 只启动文档站。
 - `pnpm run check:ci` 适合作为常规 CI 入口；`pnpm run release:check` 复用同一套发布前校验。
@@ -71,6 +73,9 @@ pnpm run dev:component
 
 # 仅启动文档站开发环境
 pnpm run dev:docs
+
+# 启动组件源码调试页
+pnpm run dev:web-vue
 
 # 打包整个项目（组件库 + 文档站）
 pnpm run build
@@ -135,6 +140,35 @@ pnpm run test:all
 # 清理 dist 和 node_modules
 pnpm run clean
 ```
+
+## 组件调试页协作方式
+
+`packages/web-vue-debug` 是一个独立于文档站的最小调试应用，目的是在不引入额外状态管理和页面壳子的前提下，以源码别名方式直接消费 `packages/web-vue/components`，专门用于组件联调和样式验证。
+
+当前默认 demo 位于 `packages/web-vue-debug/src/App.vue`，使用 `ColorPicker` 的渐变模式作为初始示例。需要调试其他组件时，优先直接修改这个文件，保持页面尽量简单，只保留当前要验证的组件和最小交互。
+
+推荐协作流程：
+
+```bash
+# 1. 安装依赖
+pnpm install
+
+# 2. 启动源码调试页
+pnpm run dev:web-vue
+```
+
+执行后会直接启动 `packages/web-vue-debug` 的 Vite 开发服务，并通过别名把下面这些入口都指向源码：
+
+- `@sdata/web-vue` -> `packages/web-vue/components/index.ts`
+- `@sdata/web-vue/es/icon` -> `packages/web-vue/components/icon/index.ts`
+- `@web-vue-src` / `@style` / `@components` -> 组件库源码与 Sass 入口
+
+协作约定：
+
+- 调试页代码放在 `packages/web-vue-debug`，不要把这类临时联调逻辑塞进文档站。
+- 调试页里按正常项目方式从 `@sdata/web-vue` 引入组件，样式总入口放在 `packages/web-vue-debug/src/main.ts` 中统一导入源码 scss。
+- 如需替换 demo，优先改 `packages/web-vue-debug/src/App.vue`；只有在确实需要时再增加少量辅助文件。
+- 如果只想保留这个入口的别名，也可以继续使用 `pnpm run dev:color-picker-debug`，它当前等价于 `pnpm run dev:web-vue`。
 
 ## 文档编写
 

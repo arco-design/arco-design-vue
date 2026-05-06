@@ -1,6 +1,6 @@
 {
   "name": "@sdata/web-vue",
-  "version": "1.7.1",
+  "version": "1.7.0",
   "description": "SD Design Vue: A Vue.js 3 UI Library",
   "keywords": [
     "sd",
@@ -78,7 +78,7 @@
     "number-precision": "^1.6.0",
     "resize-observer-polyfill": "^1.5.1",
     "scroll-into-view-if-needed": "^3.1.0",
-    "vue": "catalog:"
+    "vue": "^3.5.32"
   },
   "devDependencies": {
     "@babel/types": "^7.29.0",
@@ -88,11 +88,9 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.6",
     "@semantic-release/release-notes-generator": "^14.1.0",
-    "@types/clean-css": "^4.2.11",
-    "@vitejs/plugin-vue": "catalog:",
-    "@vitejs/plugin-vue-jsx": "catalog:",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vitejs/plugin-vue-jsx": "^5.1.5",
     "@vue/test-utils": "^2.4.6",
-    "@vueuse/core": "catalog:",
     "clean-css": "^5.3.3",
     "fast-glob": "^3.3.3",
     "glob": "^13.0.6",
@@ -101,8 +99,8 @@
     "sass": "^1.94.0",
     "semantic-release": "^25.0.3",
     "svgo": "^4.0.1",
-    "typescript": "catalog:",
-    "vite": "catalog:",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.8",
     "vite-plus": "^0.1.17",
     "vitest": "^4.1.4",
     "vue-docgen-api": "4.79.2",

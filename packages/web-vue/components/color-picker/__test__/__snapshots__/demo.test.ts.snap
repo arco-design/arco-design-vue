@@ -4,17 +4,16 @@ exports[`<color-picker> demo: > render [basic] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-medium">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <!----><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-medium"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" value="rgba(22, 93, 255, 1)"><span class="sd-icon-hover sd-input-icon-hover sd-input-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+      <!----></span>
     </div>
     <!---->
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-medium">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <div class="sd-color-picker-value">#165DFF</div><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-medium"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
@@ -22,9 +21,9 @@ exports[`<color-picker> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<color-picker> demo: > render [colors] correctly 1`] = `
-<div class="sd-color-picker sd-color-picker-size-medium">
-  <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-  <!----><input class="sd-color-picker-input" value="#165DFF">
+<div class="sd-color-picker sd-color-picker-size-medium"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" value="rgba(22, 93, 255, 1)">
+  <!---->
+  <!----></span>
 </div>
 `;
 
@@ -32,17 +31,17 @@ exports[`<color-picker> demo: > render [disabled] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-medium sd-color-picker-disabled">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <!----><input class="sd-color-picker-input" disabled="" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-medium sd-color-picker-disabled"><span class="sd-input-wrapper sd-input-disabled sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" disabled="" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-medium sd-color-picker-disabled">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <div class="sd-color-picker-value">#165DFF</div><input class="sd-color-picker-input" disabled="" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-medium sd-color-picker-disabled"><span class="sd-input-wrapper sd-input-disabled sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" disabled="" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
@@ -52,12 +51,12 @@ exports[`<color-picker> demo: > render [disabled] correctly 1`] = `
 exports[`<color-picker> demo: > render [format] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="hex"><span class="sd-radio-button-content">hex</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="rgb"><span class="sd-radio-button-content">rgb</span></label></span></div>
+  <div class="sd-space-item"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="HEX"><span class="sd-radio-button-content">HEX</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="RGBA"><span class="sd-radio-button-content">RGBA</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="HSL"><span class="sd-radio-button-content">HSL</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="HSV"><span class="sd-radio-button-content">HSV</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="CSS"><span class="sd-radio-button-content">CSS</span></label></span></div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-medium">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <div class="sd-color-picker-value">#165DFF</div><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-medium"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
@@ -86,93 +85,65 @@ exports[`<color-picker> demo: > render [only-panel] correctly 1`] = `
           </div>
           <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
         </div>
-        <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini" title="Hex"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">Hex</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+        <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini" title="RGBA"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">RGBA</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           <!----></span></span>
           <!---->
-          <div class="sd-color-picker-group-wrapper">
-            <div class="sd-input-group sd-color-picker-input-group"><span class="sd-input-wrapper sd-color-picker-input-hex"><span class="sd-input-prefix">#</span><input class="sd-input sd-input-size-mini" type="text" value="165DFF">
-              <!---->
-              <!----></span><span class="sd-input-wrapper sd-input-number sd-input-number-mode-embed sd-input-number-size-mini sd-color-picker-input-alpha"><!----><input class="sd-input sd-input-size-mini" type="text" role="spinbutton" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" value="100"><!----><span class="sd-input-suffix"><!----><div class="sd-input-number-suffix">%</div><div class="sd-input-number-step"><button class="sd-input-number-step-button sd-input-number-step-button-disabled" type="button" tabindex="-1" disabled=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg></button><button class="sd-input-number-step-button" type="button" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></button></div><!----></span></span>
-            </div>
-          </div>
+          <div class="sd-color-picker-group-wrapper"><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="rgba(22, 93, 255, 1)"><!----><!----></span></div>
         </div>
       </div>
       <div class="sd-color-picker-panel-colors">
         <div class="sd-color-picker-colors-section">
-          <div class="sd-color-picker-colors-text">最近使用颜色</div>
-          <div class="sd-color-picker-colors-wrapper"><span class="sd-color-picker-colors-empty">暂无</span></div>
+          <div class="sd-color-picker-colors-text">最近使用</div>
+          <div class="sd-color-picker-colors-wrapper"><span class="sd-color-picker-colors-empty">暂无颜色</span></div>
         </div>
         <div class="sd-color-picker-colors-section">
-          <div class="sd-color-picker-colors-text">系统预设颜色</div>
+          <div class="sd-color-picker-colors-text">系统色板</div>
           <div class="sd-color-picker-colors-wrapper">
-            <div class="sd-color-picker-colors-list">
-              <div class="sd-color-picker-color-block" style="background-color: rgb(0, 180, 42);">
+            <div class="sd-color-picker-colors-list"><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #00B42A" style="background-color: rgb(0, 180, 42);">
                 <div class="sd-color-picker-block" style="background-color: rgb(0, 180, 42);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(60, 126, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3C7EFF" style="background-color: rgb(60, 126, 255);">
                 <div class="sd-color-picker-block" style="background-color: rgb(60, 126, 255);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(255, 125, 0);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FF7D00" style="background-color: rgb(255, 125, 0);">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 125, 0);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(247, 105, 101);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F76965" style="background-color: rgb(247, 105, 101);">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 105, 101);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(247, 186, 30);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F7BA1E" style="background-color: rgb(247, 186, 30);">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 186, 30);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(245, 49, 157);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F5319D" style="background-color: rgb(245, 49, 157);">
                 <div class="sd-color-picker-block" style="background-color: rgb(245, 49, 157);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(217, 26, 217);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #D91AD9" style="background-color: rgb(217, 26, 217);">
                 <div class="sd-color-picker-block" style="background-color: rgb(217, 26, 217);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(159, 219, 29);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FDB1D" style="background-color: rgb(159, 219, 29);">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 219, 29);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(250, 220, 25);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FADC19" style="background-color: rgb(250, 220, 25);">
                 <div class="sd-color-picker-block" style="background-color: rgb(250, 220, 25);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(114, 46, 209);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #722ED1" style="background-color: rgb(114, 46, 209);">
                 <div class="sd-color-picker-block" style="background-color: rgb(114, 46, 209);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(52, 145, 250);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3491FA" style="background-color: rgb(52, 145, 250);">
                 <div class="sd-color-picker-block" style="background-color: rgb(52, 145, 250);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(123, 225, 136);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #7BE188" style="background-color: rgb(123, 225, 136);">
                 <div class="sd-color-picker-block" style="background-color: rgb(123, 225, 136);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(147, 190, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #93BEFF" style="background-color: rgb(147, 190, 255);">
                 <div class="sd-color-picker-block" style="background-color: rgb(147, 190, 255);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(255, 207, 139);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FFCF8B" style="background-color: rgb(255, 207, 139);">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 207, 139);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(251, 176, 167);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FBB0A7" style="background-color: rgb(251, 176, 167);">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 176, 167);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(252, 233, 150);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FCE996" style="background-color: rgb(252, 233, 150);">
                 <div class="sd-color-picker-block" style="background-color: rgb(252, 233, 150);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(251, 157, 199);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FB9DC7" style="background-color: rgb(251, 157, 199);">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 157, 199);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(240, 142, 230);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F08EE6" style="background-color: rgb(240, 142, 230);">
                 <div class="sd-color-picker-block" style="background-color: rgb(240, 142, 230);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(220, 241, 144);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #DCF190" style="background-color: rgb(220, 241, 144);">
                 <div class="sd-color-picker-block" style="background-color: rgb(220, 241, 144);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(253, 250, 148);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FDFA94" style="background-color: rgb(253, 250, 148);">
                 <div class="sd-color-picker-block" style="background-color: rgb(253, 250, 148);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(195, 150, 237);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #C396ED" style="background-color: rgb(195, 150, 237);">
                 <div class="sd-color-picker-block" style="background-color: rgb(195, 150, 237);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(159, 212, 253);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FD4FD" style="background-color: rgb(159, 212, 253);">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 212, 253);"></div>
-              </div>
-            </div>
+              </button></div>
           </div>
         </div>
       </div>
@@ -198,90 +169,65 @@ exports[`<color-picker> demo: > render [only-panel] correctly 1`] = `
           </div>
           <div class="sd-color-picker-preview" style="background-color: rgb(18, 210, 172);"></div>
         </div>
-        <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini" title="Hex"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">Hex</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+        <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini" title="RGBA"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">RGBA</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           <!----></span></span>
           <!---->
-          <div class="sd-color-picker-group-wrapper">
-            <div class="sd-input-group sd-color-picker-input-group"><span class="sd-input-wrapper sd-input-disabled sd-color-picker-input-hex"><span class="sd-input-prefix">#</span><input class="sd-input sd-input-size-mini" type="text" disabled="" value="12D2AC">
-              <!---->
-              <!----></span><span class="sd-input-wrapper sd-input-disabled sd-input-number sd-input-number-mode-embed sd-input-number-size-mini sd-color-picker-input-alpha"><!----><input class="sd-input sd-input-size-mini" type="text" disabled="" role="spinbutton" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" value="100"><!----><span class="sd-input-suffix"><!----><div class="sd-input-number-suffix">%</div><div class="sd-input-number-step"><button class="sd-input-number-step-button sd-input-number-step-button-disabled" type="button" tabindex="-1" disabled=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg></button><button class="sd-input-number-step-button sd-input-number-step-button-disabled" type="button" tabindex="-1" disabled=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></button></div><!----></span></span>
-            </div>
-          </div>
+          <div class="sd-color-picker-group-wrapper"><span class="sd-input-wrapper sd-input-disabled sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" disabled="" value="rgba(18, 210, 172, 1)"><!----><!----></span></div>
         </div>
       </div>
       <div class="sd-color-picker-panel-colors">
-        <!---->
         <div class="sd-color-picker-colors-section">
-          <div class="sd-color-picker-colors-text">系统预设颜色</div>
+          <div class="sd-color-picker-colors-text">最近使用</div>
+          <div class="sd-color-picker-colors-wrapper"><span class="sd-color-picker-colors-empty">暂无颜色</span></div>
+        </div>
+        <div class="sd-color-picker-colors-section">
+          <div class="sd-color-picker-colors-text">系统色板</div>
           <div class="sd-color-picker-colors-wrapper">
-            <div class="sd-color-picker-colors-list">
-              <div class="sd-color-picker-color-block" style="background-color: rgb(0, 180, 42);">
+            <div class="sd-color-picker-colors-list"><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #00B42A" style="background-color: rgb(0, 180, 42);">
                 <div class="sd-color-picker-block" style="background-color: rgb(0, 180, 42);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(60, 126, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3C7EFF" style="background-color: rgb(60, 126, 255);">
                 <div class="sd-color-picker-block" style="background-color: rgb(60, 126, 255);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(255, 125, 0);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FF7D00" style="background-color: rgb(255, 125, 0);">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 125, 0);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(247, 105, 101);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F76965" style="background-color: rgb(247, 105, 101);">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 105, 101);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(247, 186, 30);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F7BA1E" style="background-color: rgb(247, 186, 30);">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 186, 30);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(245, 49, 157);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F5319D" style="background-color: rgb(245, 49, 157);">
                 <div class="sd-color-picker-block" style="background-color: rgb(245, 49, 157);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(217, 26, 217);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #D91AD9" style="background-color: rgb(217, 26, 217);">
                 <div class="sd-color-picker-block" style="background-color: rgb(217, 26, 217);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(159, 219, 29);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FDB1D" style="background-color: rgb(159, 219, 29);">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 219, 29);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(250, 220, 25);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FADC19" style="background-color: rgb(250, 220, 25);">
                 <div class="sd-color-picker-block" style="background-color: rgb(250, 220, 25);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(114, 46, 209);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #722ED1" style="background-color: rgb(114, 46, 209);">
                 <div class="sd-color-picker-block" style="background-color: rgb(114, 46, 209);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(52, 145, 250);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3491FA" style="background-color: rgb(52, 145, 250);">
                 <div class="sd-color-picker-block" style="background-color: rgb(52, 145, 250);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(123, 225, 136);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #7BE188" style="background-color: rgb(123, 225, 136);">
                 <div class="sd-color-picker-block" style="background-color: rgb(123, 225, 136);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(147, 190, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #93BEFF" style="background-color: rgb(147, 190, 255);">
                 <div class="sd-color-picker-block" style="background-color: rgb(147, 190, 255);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(255, 207, 139);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FFCF8B" style="background-color: rgb(255, 207, 139);">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 207, 139);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(251, 176, 167);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FBB0A7" style="background-color: rgb(251, 176, 167);">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 176, 167);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(252, 233, 150);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FCE996" style="background-color: rgb(252, 233, 150);">
                 <div class="sd-color-picker-block" style="background-color: rgb(252, 233, 150);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(251, 157, 199);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FB9DC7" style="background-color: rgb(251, 157, 199);">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 157, 199);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(240, 142, 230);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F08EE6" style="background-color: rgb(240, 142, 230);">
                 <div class="sd-color-picker-block" style="background-color: rgb(240, 142, 230);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(220, 241, 144);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #DCF190" style="background-color: rgb(220, 241, 144);">
                 <div class="sd-color-picker-block" style="background-color: rgb(220, 241, 144);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(253, 250, 148);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FDFA94" style="background-color: rgb(253, 250, 148);">
                 <div class="sd-color-picker-block" style="background-color: rgb(253, 250, 148);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(195, 150, 237);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #C396ED" style="background-color: rgb(195, 150, 237);">
                 <div class="sd-color-picker-block" style="background-color: rgb(195, 150, 237);"></div>
-              </div>
-              <div class="sd-color-picker-color-block" style="background-color: rgb(159, 212, 253);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FD4FD" style="background-color: rgb(159, 212, 253);">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 212, 253);"></div>
-              </div>
-            </div>
+              </button></div>
           </div>
         </div>
       </div>
@@ -294,33 +240,33 @@ exports[`<color-picker> demo: > render [size] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-mini">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <!----><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-mini"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-mini" type="text" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-small">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <!----><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-small"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-small" type="text" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-medium">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <!----><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-medium"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-large">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <!----><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-large"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-large" type="text" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>
@@ -333,9 +279,9 @@ exports[`<color-picker> demo: > render [trigger] correctly 1`] = `
   <div class="sd-space-item"><button type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-circle"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  --><span class="sd-switch-text-holder">OFF</span><span class="sd-switch-text">OFF</span></button></div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-color-picker sd-color-picker-size-medium">
-      <div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div>
-      <!----><input class="sd-color-picker-input" value="#165DFF">
+    <div class="sd-color-picker sd-color-picker-size-medium"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-color: rgb(22, 93, 255);"></div></span><input class="sd-input sd-input-size-medium" type="text" value="rgba(22, 93, 255, 1)">
+      <!---->
+      <!----></span>
     </div>
     <!---->
   </div>

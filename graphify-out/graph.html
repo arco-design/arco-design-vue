@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>graphify - graphify-out/graph.html</title>
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; height: 100vh; overflow: hidden; }
+  #graph { flex: 1; }
+  #sidebar { width: 280px; background: #1a1a2e; border-left: 1px solid #2a2a4e; display: flex; flex-direction: column; overflow: hidden; }
+  #search-wrap { padding: 12px; border-bottom: 1px solid #2a2a4e; }
+  #search { width: 100%; background: #0f0f1a; border: 1px solid #3a3a5e; color: #e0e0e0; padding: 7px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  #search:focus { border-color: #4E79A7; }
+  #search-results { max-height: 140px; overflow-y: auto; padding: 4px 12px; border-bottom: 1px solid #2a2a4e; display: none; }
+  .search-item { padding: 4px 6px; cursor: pointer; border-radius: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .search-item:hover { background: #2a2a4e; }
+  #info-panel { padding: 14px; border-bottom: 1px solid #2a2a4e; min-height: 140px; }
+  #info-panel h3 { font-size: 13px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  #info-content { font-size: 13px; color: #ccc; line-height: 1.6; }
+  #info-content .field { margin-bottom: 5px; }
+  #info-content .field b { color: #e0e0e0; }
+  #info-content .empty { color: #555; font-style: italic; }
+  .neighbor-link { display: block; padding: 2px 6px; margin: 2px 0; border-radius: 3px; cursor: pointer; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid #333; }
+  .neighbor-link:hover { background: #2a2a4e; }
+  #neighbors-list { max-height: 160px; overflow-y: auto; margin-top: 4px; }
+  #legend-wrap { flex: 1; overflow-y: auto; padding: 12px; }
+  #legend-wrap h3 { font-size: 13px; color: #aaa; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; border-radius: 4px; font-size: 12px; }
+  .legend-item:hover { background: #2a2a4e; padding-left: 4px; }
+  .legend-item.dimmed { opacity: 0.35; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { color: #666; font-size: 11px; }
+  #stats { padding: 10px 14px; border-top: 1px solid #2a2a4e; font-size: 11px; color: #555; }
+  #legend-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 4px 0; }
+  #legend-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; color: #aaa; user-select: none; }
+  #legend-controls label:hover { color: #e0e0e0; }
+  .legend-cb, #select-all-cb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1.5px solid #3a3a5e; border-radius: 3px; background: #0f0f1a; cursor: pointer; position: relative; flex-shrink: 0; }
+  .legend-cb:checked, #select-all-cb:checked { background: #4E79A7; border-color: #4E79A7; }
+  .legend-cb:checked::after, #select-all-cb:checked::after { content: ''; position: absolute; left: 3.5px; top: 1px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #select-all-cb:indeterminate { background: #4E79A7; border-color: #4E79A7; }
+  #select-all-cb:indeterminate::after { content: ''; position: absolute; left: 2px; top: 5px; width: 8px; height: 2px; background: #fff; border: none; transform: none; }
+</style>
+</head>
+<body>
+<div id="graph"></div>
+<div id="sidebar">
+  <div id="search-wrap">
+    <input id="search" type="text" placeholder="Search nodes..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div id="info-panel">
+    <h3>Node Info</h3>
+    <div id="info-content"><span class="empty">Click a node to inspect it</span></div>
+  </div>
+  <div id="legend-wrap">
+    <h3>Communities</h3>
+    <div id="legend-controls">
+      <label><input type="checkbox" id="select-all-cb" checked onchange="toggleAllCommunities(!this.checked)">Select All</label>
+    </div>
+    <div id="legend"></div>
+  </div>
+  <div id="stats">56 nodes &middot; 72 edges &middot; 8 communities</div>
+</div>
+<script>
+const RAW_NODES = [{"id": "sd_design", "label": "SD Design", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "SD Design", "community": 5, "community_name": "Community 5", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 2}, {"id": "arco_design", "label": "Arco Design", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Arco Design", "community": 5, "community_name": "Community 5", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "pnpm_workspace", "label": "pnpm workspace", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "pnpm workspace", "community": 5, "community_name": "Community 5", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "root_directory", "label": "Root Directory", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.9, "font": {"size": 0, "color": "#ffffff"}, "title": "Root Directory", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 3}, {"id": "root_package_json", "label": "root package.json", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 15.2, "font": {"size": 12, "color": "#ffffff"}, "title": "root package.json", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 4}, {"id": "dev_flow", "label": "dev flow", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 16.5, "font": {"size": 12, "color": "#ffffff"}, "title": "dev flow", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 5}, {"id": "build_flow", "label": "build flow", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "build flow", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "quality_gate", "label": "Quality Gate (CI/Check)", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.9, "font": {"size": 0, "color": "#ffffff"}, "title": "Quality Gate (CI/Check)", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 3}, {"id": "packages_web_vue", "label": "packages/web-vue", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 40.0, "font": {"size": 12, "color": "#ffffff"}, "title": "packages/web-vue", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 23}, {"id": "web_vue_manifest", "label": "web-vue package manifest", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "web-vue package manifest", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "components_index", "label": "components/index.ts", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "components/index.ts", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 1}, {"id": "sd_vue_plugin", "label": "components/sd-vue.ts", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "components/sd-vue.ts", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 1}, {"id": "vite_config", "label": "vite.config.ts", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "vite.config.ts", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 1}, {"id": "build_dts_script", "label": "scripts/build-dts.mjs", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "scripts/build-dts.mjs", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 1}, {"id": "icongen_script", "label": "icongen script", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "icongen script", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "jsongen_script", "label": "jsongen script", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "jsongen script", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "web_vue_test_script", "label": "web-vue test script", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "web-vue test script", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "icon_generation", "label": "icon generation", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "icon generation", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "module_build", "label": "ES module build", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 16.5, "font": {"size": 12, "color": "#ffffff"}, "title": "ES module build", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 5}, {"id": "umd_build", "label": "UMD build", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.9, "font": {"size": 0, "color": "#ffffff"}, "title": "UMD build", "community": 3, "community_name": "Community 3", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 3}, {"id": "style_build", "label": "style build", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 13.9, "font": {"size": 0, "color": "#ffffff"}, "title": "style build", "community": 3, "community_name": "Community 3", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 3}, {"id": "dts_build", "label": "declaration build", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "declaration build", "community": 3, "community_name": "Community 3", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "metadata_generation", "label": "metadata generation", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "metadata generation", "community": 3, "community_name": "Community 3", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "es_artifacts", "label": "es artifacts", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.9, "font": {"size": 0, "color": "#ffffff"}, "title": "es artifacts", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 3}, {"id": "dist_artifacts", "label": "dist artifacts", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "dist artifacts", "community": 3, "community_name": "Community 3", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "json_metadata", "label": "json metadata", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "json metadata", "community": 3, "community_name": "Community 3", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "vue_3", "label": "Vue 3", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Vue 3", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "typescript", "label": "TypeScript", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "TypeScript", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "vite", "label": "Vite", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Vite", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "vite_plus", "label": "vite-plus", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "vite-plus", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "vitest", "label": "Vitest", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Vitest", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "vue_tsc", "label": "vue-tsc", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "vue-tsc", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "sass", "label": "sass", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "sass", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "dayjs", "label": "dayjs", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "dayjs", "community": 0, "community_name": "Community 0", "source_file": "graphify-input/architecture-docs/web-vue-package.md", "file_type": "document", "degree": 1}, {"id": "packages_sd_vue_docs", "label": "packages/sd-vue-docs", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 38.7, "font": {"size": 12, "color": "#ffffff"}, "title": "packages/sd-vue-docs", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 22}, {"id": "docs_manifest", "label": "sd-vue-docs package manifest", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "sd-vue-docs package manifest", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 1}, {"id": "docs_prepare", "label": "docs:prepare", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 13.9, "font": {"size": 0, "color": "#ffffff"}, "title": "docs:prepare", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 3}, {"id": "docs_vendor", "label": "docs:vendor", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 16.5, "font": {"size": 12, "color": "#ffffff"}, "title": "docs:vendor", "community": 4, "community_name": "Community 4", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 5}, {"id": "docs_vendor_only", "label": "docs:vendor:only", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "docs:vendor:only", "community": 4, "community_name": "Community 4", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 2}, {"id": "docs_dev_script", "label": "docs dev script", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "docs dev script", "community": 4, "community_name": "Community 4", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 2}, {"id": "docs_build_script", "label": "docs build script", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "docs build script", "community": 4, "community_name": "Community 4", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 2}, {"id": "verify_theme_runtime", "label": "verify-theme-runtime script", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "verify-theme-runtime script", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 1}, {"id": "astro", "label": "Astro", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Astro", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "starlight", "label": "Starlight", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Starlight", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "mdx", "label": "MDX", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "MDX", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/README.md", "file_type": "document", "degree": 1}, {"id": "astro_vue", "label": "@astrojs/vue", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "@astrojs/vue", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 1}, {"id": "tailwindcss", "label": "tailwindcss", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "tailwindcss", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 1}, {"id": "vue_repl", "label": "@vue/repl", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "@vue/repl", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 1}, {"id": "sharp", "label": "sharp", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "sharp", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/sd-vue-docs-package.md", "file_type": "document", "degree": 1}, {"id": "workspace_alias", "label": "workspace alias", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "workspace alias", "community": 1, "community_name": "Community 1", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 1}, {"id": "runtime_site", "label": "site runtime", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "site runtime", "community": 7, "community_name": "Community 7", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "theme_bridge", "label": "Theme Bridge", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 12.6, "font": {"size": 0, "color": "#ffffff"}, "title": "Theme Bridge", "community": 7, "community_name": "Community 7", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 2}, {"id": "vendor_bridge", "label": "Vendor Bridge Layer", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 16.5, "font": {"size": 12, "color": "#ffffff"}, "title": "Vendor Bridge Layer", "community": 2, "community_name": "Community 2", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 5}, {"id": "sync_vendor_script", "label": "scripts/sync-vendor.mjs", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 13.9, "font": {"size": 0, "color": "#ffffff"}, "title": "scripts/sync-vendor.mjs", "community": 6, "community_name": "Community 6", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 3}, {"id": "public_vendor", "label": "public/vendor", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "public/vendor", "community": 6, "community_name": "Community 6", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 1}, {"id": "import_map", "label": "import map", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 11.3, "font": {"size": 0, "color": "#ffffff"}, "title": "import map", "community": 6, "community_name": "Community 6", "source_file": "graphify-input/architecture-docs/ARCHITECTURE.md", "file_type": "document", "degree": 1}];
+const RAW_EDGES = [{"from": "sd_design", "to": "arco_design", "label": "based on", "title": "based on [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "sd_design", "to": "pnpm_workspace", "label": "uses", "title": "uses [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "root_directory", "to": "root_package_json", "label": "centers orchestration in", "title": "centers orchestration in [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "root_directory", "to": "packages_web_vue", "label": "schedules dev/build/check for", "title": "schedules dev/build/check for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "root_directory", "to": "packages_sd_vue_docs", "label": "schedules dev/build/check for", "title": "schedules dev/build/check for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "root_package_json", "to": "dev_flow", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "root_package_json", "to": "build_flow", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "root_package_json", "to": "quality_gate", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "dev_flow", "to": "module_build", "label": "prebuilds", "title": "prebuilds [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "dev_flow", "to": "vendor_bridge", "label": "prepares resources through", "title": "prepares resources through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "dev_flow", "to": "packages_web_vue", "label": "starts watch service for", "title": "starts watch service for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "dev_flow", "to": "packages_sd_vue_docs", "label": "starts dev service for", "title": "starts dev service for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "build_flow", "to": "icon_generation", "label": "starts with", "title": "starts with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "quality_gate", "to": "packages_web_vue", "label": "verifies changes in", "title": "verifies changes in [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "quality_gate", "to": "packages_sd_vue_docs", "label": "guards release quality for", "title": "guards release quality for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "web_vue_manifest", "label": "described by", "title": "described by [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "components_index", "label": "exposes on-demand entry through", "title": "exposes on-demand entry through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "sd_vue_plugin", "label": "exposes full install entry through", "title": "exposes full install entry through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "vite_config", "label": "builds with", "title": "builds with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "build_dts_script", "label": "generates declarations through", "title": "generates declarations through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "icongen_script", "label": "runs", "title": "runs [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "jsongen_script", "label": "runs", "title": "runs [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "web_vue_test_script", "label": "verifies through", "title": "verifies through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "vue_3", "label": "uses", "title": "uses [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "typescript", "label": "uses", "title": "uses [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "vite", "label": "uses for build", "title": "uses for build [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "vite_plus", "label": "orchestrates tasks with", "title": "orchestrates tasks with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "vitest", "label": "tests with", "title": "tests with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "vue_tsc", "label": "emits declarations with", "title": "emits declarations with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "sass", "label": "compiles styles with", "title": "compiles styles with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "dayjs", "label": "depends on", "title": "depends on [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "es_artifacts", "label": "publishes", "title": "publishes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "dist_artifacts", "label": "publishes", "title": "publishes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_web_vue", "to": "json_metadata", "label": "publishes", "title": "publishes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "packages_web_vue", "label": "consumes workspace package", "title": "consumes workspace package [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "icon_generation", "to": "module_build", "label": "feeds", "title": "feeds [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "module_build", "to": "umd_build", "label": "precedes", "title": "precedes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "module_build", "to": "es_artifacts", "label": "outputs", "title": "outputs [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "docs_prepare", "to": "module_build", "label": "requires", "title": "requires [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "umd_build", "to": "style_build", "label": "precedes", "title": "precedes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "umd_build", "to": "dist_artifacts", "label": "outputs", "title": "outputs [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "style_build", "to": "dts_build", "label": "precedes", "title": "precedes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "style_build", "to": "vendor_bridge", "label": "feeds styles to", "title": "feeds styles to [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "dts_build", "to": "metadata_generation", "label": "precedes", "title": "precedes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "metadata_generation", "to": "json_metadata", "label": "outputs", "title": "outputs [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "es_artifacts", "to": "vendor_bridge", "label": "feeds", "title": "feeds [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "docs_manifest", "label": "described by", "title": "described by [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "astro", "label": "uses", "title": "uses [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "starlight", "label": "uses", "title": "uses [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "mdx", "label": "renders content with", "title": "renders content with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "astro_vue", "label": "embeds Vue with", "title": "embeds Vue with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "tailwindcss", "label": "styles site with", "title": "styles site with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "vue_repl", "label": "supports live examples with", "title": "supports live examples with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "sharp", "label": "optimizes assets with", "title": "optimizes assets with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "workspace_alias", "label": "points to source via", "title": "points to source via [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "runtime_site", "label": "serves as", "title": "serves as [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "docs_prepare", "label": "prepares vendors through", "title": "prepares vendors through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "docs_vendor", "label": "syncs browser assets through", "title": "syncs browser assets through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "docs_vendor_only", "label": "runs direct vendor sync through", "title": "runs direct vendor sync through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "docs_dev_script", "label": "starts dev server through", "title": "starts dev server through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "docs_build_script", "label": "builds site through", "title": "builds site through [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "verify_theme_runtime", "label": "verifies runtime theme with", "title": "verifies runtime theme with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vendor_bridge", "to": "packages_sd_vue_docs", "label": "syncs resources to", "title": "syncs resources to [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "packages_sd_vue_docs", "to": "theme_bridge", "label": "syncs theme via", "title": "syncs theme via [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "docs_vendor", "to": "docs_prepare", "label": "depends on", "title": "depends on [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "docs_vendor", "to": "docs_vendor_only", "label": "delegates sync to", "title": "delegates sync to [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "docs_dev_script", "to": "docs_vendor", "label": "prepares vendor assets with", "title": "prepares vendor assets with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "docs_build_script", "to": "docs_vendor", "label": "prepares vendor assets with", "title": "prepares vendor assets with [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "theme_bridge", "to": "runtime_site", "label": "controls theme state in", "title": "controls theme state in [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "vendor_bridge", "to": "sync_vendor_script", "label": "implemented by", "title": "implemented by [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "sync_vendor_script", "to": "public_vendor", "label": "writes resources to", "title": "writes resources to [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "sync_vendor_script", "to": "import_map", "label": "writes", "title": "writes [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}];
+const LEGEND = [];
+
+// HTML-escape helper — prevents XSS when injecting graph data into innerHTML
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Build vis datasets
+const nodesDS = new vis.DataSet(RAW_NODES.map(n => ({
+  id: n.id, label: n.label, color: n.color, size: n.size,
+  font: n.font, title: n.title,
+  _community: n.community, _community_name: n.community_name,
+  _source_file: n.source_file, _file_type: n.file_type, _degree: n.degree,
+})));
+
+const edgesDS = new vis.DataSet(RAW_EDGES.map((e, i) => ({
+  id: i, from: e.from, to: e.to,
+  label: '',
+  title: e.title,
+  dashes: e.dashes,
+  width: e.width,
+  color: e.color,
+  arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+})));
+
+const container = document.getElementById('graph');
+const network = new vis.Network(container, { nodes: nodesDS, edges: edgesDS }, {
+  physics: {
+    enabled: true,
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -60,
+      centralGravity: 0.005,
+      springLength: 120,
+      springConstant: 0.08,
+      damping: 0.4,
+      avoidOverlap: 0.8,
+    },
+    stabilization: { iterations: 200, fit: true },
+  },
+  interaction: {
+    hover: true,
+    tooltipDelay: 100,
+    hideEdgesOnDrag: true,
+    navigationButtons: false,
+    keyboard: false,
+  },
+  nodes: { shape: 'dot', borderWidth: 1.5 },
+  edges: { smooth: { type: 'continuous', roundness: 0.2 }, selectionWidth: 3 },
+});
+
+network.once('stabilizationIterationsDone', () => {
+  network.setOptions({ physics: { enabled: false } });
+});
+
+function showInfo(nodeId) {
+  const n = nodesDS.get(nodeId);
+  if (!n) return;
+  const neighborIds = network.getConnectedNodes(nodeId);
+  const neighborItems = neighborIds.map(nid => {
+    const nb = nodesDS.get(nid);
+    const color = nb ? nb.color.background : '#555';
+    return `<span class="neighbor-link" style="border-left-color:${esc(color)}" onclick="focusNode(${JSON.stringify(nid)})">${esc(nb ? nb.label : nid)}</span>`;
+  }).join('');
+  document.getElementById('info-content').innerHTML = `
+    <div class="field"><b>${esc(n.label)}</b></div>
+    <div class="field">Type: ${esc(n._file_type || 'unknown')}</div>
+    <div class="field">Community: ${esc(n._community_name)}</div>
+    <div class="field">Source: ${esc(n._source_file || '-')}</div>
+    <div class="field">Degree: ${n._degree}</div>
+    ${neighborIds.length ? `<div class="field" style="margin-top:8px;color:#aaa;font-size:11px">Neighbors (${neighborIds.length})</div><div id="neighbors-list">${neighborItems}</div>` : ''}
+  `;
+}
+
+function focusNode(nodeId) {
+  network.focus(nodeId, { scale: 1.4, animation: true });
+  network.selectNodes([nodeId]);
+  showInfo(nodeId);
+}
+
+// Track hovered node — hover detection is more reliable than click params
+let hoveredNodeId = null;
+network.on('hoverNode', params => {
+  hoveredNodeId = params.node;
+  container.style.cursor = 'pointer';
+});
+network.on('blurNode', () => {
+  hoveredNodeId = null;
+  container.style.cursor = 'default';
+});
+container.addEventListener('click', () => {
+  if (hoveredNodeId !== null) {
+    showInfo(hoveredNodeId);
+    network.selectNodes([hoveredNodeId]);
+  }
+});
+network.on('click', params => {
+  if (params.nodes.length > 0) {
+    showInfo(params.nodes[0]);
+  } else if (hoveredNodeId === null) {
+    document.getElementById('info-content').innerHTML = '<span class="empty">Click a node to inspect it</span>';
+  }
+});
+
+const searchInput = document.getElementById('search');
+const searchResults = document.getElementById('search-results');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  searchResults.innerHTML = '';
+  if (!q) { searchResults.style.display = 'none'; return; }
+  const matches = RAW_NODES.filter(n => n.label.toLowerCase().includes(q)).slice(0, 20);
+  if (!matches.length) { searchResults.style.display = 'none'; return; }
+  searchResults.style.display = 'block';
+  matches.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'search-item';
+    el.textContent = n.label;
+    el.style.borderLeft = `3px solid ${n.color.background}`;
+    el.style.paddingLeft = '8px';
+    el.onclick = () => {
+      network.focus(n.id, { scale: 1.5, animation: true });
+      network.selectNodes([n.id]);
+      showInfo(n.id);
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+    };
+    searchResults.appendChild(el);
+  });
+});
+document.addEventListener('click', e => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput)
+    searchResults.style.display = 'none';
+});
+
+const hiddenCommunities = new Set();
+
+const selectAllCb = document.getElementById('select-all-cb');
+
+function updateSelectAllState() {
+  const total = LEGEND.length;
+  const hidden = hiddenCommunities.size;
+  selectAllCb.checked = hidden === 0;
+  selectAllCb.indeterminate = hidden > 0 && hidden < total;
+}
+
+function toggleAllCommunities(hide) {
+  document.querySelectorAll('.legend-item').forEach(item => {
+    hide ? item.classList.add('dimmed') : item.classList.remove('dimmed');
+  });
+  document.querySelectorAll('.legend-cb').forEach(cb => {
+    cb.checked = !hide;
+  });
+  LEGEND.forEach(c => {
+    if (hide) hiddenCommunities.add(c.cid); else hiddenCommunities.delete(c.cid);
+  });
+  const updates = RAW_NODES.map(n => ({ id: n.id, hidden: hide }));
+  nodesDS.update(updates);
+  updateSelectAllState();
+}
+
+const legendEl = document.getElementById('legend');
+LEGEND.forEach(c => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'legend-cb';
+  cb.checked = true;
+  cb.addEventListener('change', (e) => {
+    e.stopPropagation();
+    if (cb.checked) {
+      hiddenCommunities.delete(c.cid);
+      item.classList.remove('dimmed');
+    } else {
+      hiddenCommunities.add(c.cid);
+      item.classList.add('dimmed');
+    }
+    const updates = RAW_NODES
+      .filter(n => n.community === c.cid)
+      .map(n => ({ id: n.id, hidden: !cb.checked }));
+    nodesDS.update(updates);
+    updateSelectAllState();
+  });
+  item.innerHTML = `<div class="legend-dot" style="background:${c.color}"></div>
+    <span class="legend-label">${c.label}</span>
+    <span class="legend-count">${c.count}</span>`;
+  item.prepend(cb);
+  item.onclick = (e) => {
+    if (e.target === cb) return;
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  };
+  legendEl.appendChild(item);
+});
+</script>
+<script>
+// Render hyperedges as shaded regions
+const hyperedges = [];
+// afterDrawing passes ctx already transformed to network coordinate space.
+// Draw node positions raw — no manual pan/zoom/DPR math needed.
+network.on('afterDrawing', function(ctx) {
+    hyperedges.forEach(h => {
+        const positions = h.nodes
+            .map(nid => network.getPositions([nid])[nid])
+            .filter(p => p !== undefined);
+        if (positions.length < 2) return;
+        ctx.save();
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = '#6366f1';
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        // Centroid and expanded hull in network coordinates
+        const cx = positions.reduce((s, p) => s + p.x, 0) / positions.length;
+        const cy = positions.reduce((s, p) => s + p.y, 0) / positions.length;
+        const expanded = positions.map(p => ({
+            x: cx + (p.x - cx) * 1.15,
+            y: cy + (p.y - cy) * 1.15
+        }));
+        ctx.moveTo(expanded[0].x, expanded[0].y);
+        expanded.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 0.4;
+        ctx.stroke();
+        // Label
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = '#4f46e5';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(h.label, cx, cy - 5);
+        ctx.restore();
+    });
+});
+</script>
+</body>
+</html>

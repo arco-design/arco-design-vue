@@ -1,0 +1,186 @@
+{
+  "communities": {
+    "0": [
+      "build_dts_script",
+      "components_index",
+      "dayjs",
+      "icongen_script",
+      "jsongen_script",
+      "packages_web_vue",
+      "sass",
+      "sd_vue_plugin",
+      "typescript",
+      "vite",
+      "vite_config",
+      "vite_plus",
+      "vitest",
+      "vue_3",
+      "vue_tsc",
+      "web_vue_manifest",
+      "web_vue_test_script"
+    ],
+    "1": [
+      "astro",
+      "astro_vue",
+      "docs_manifest",
+      "mdx",
+      "packages_sd_vue_docs",
+      "sharp",
+      "starlight",
+      "tailwindcss",
+      "verify_theme_runtime",
+      "vue_repl",
+      "workspace_alias"
+    ],
+    "2": [
+      "build_flow",
+      "dev_flow",
+      "docs_prepare",
+      "es_artifacts",
+      "icon_generation",
+      "module_build",
+      "quality_gate",
+      "root_directory",
+      "root_package_json",
+      "vendor_bridge"
+    ],
+    "3": [
+      "dist_artifacts",
+      "dts_build",
+      "json_metadata",
+      "metadata_generation",
+      "style_build",
+      "umd_build"
+    ],
+    "4": [
+      "docs_build_script",
+      "docs_dev_script",
+      "docs_vendor",
+      "docs_vendor_only"
+    ],
+    "5": [
+      "arco_design",
+      "pnpm_workspace",
+      "sd_design"
+    ],
+    "6": [
+      "import_map",
+      "public_vendor",
+      "sync_vendor_script"
+    ],
+    "7": [
+      "runtime_site",
+      "theme_bridge"
+    ]
+  },
+  "cohesion": {},
+  "god_nodes": [
+    {
+      "id": "packages_web_vue",
+      "label": "packages/web-vue",
+      "degree": 23
+    },
+    {
+      "id": "packages_sd_vue_docs",
+      "label": "packages/sd-vue-docs",
+      "degree": 22
+    },
+    {
+      "id": "dev_flow",
+      "label": "dev flow",
+      "degree": 5
+    },
+    {
+      "id": "module_build",
+      "label": "ES module build",
+      "degree": 5
+    },
+    {
+      "id": "docs_vendor",
+      "label": "docs:vendor",
+      "degree": 5
+    },
+    {
+      "id": "vendor_bridge",
+      "label": "Vendor Bridge Layer",
+      "degree": 5
+    },
+    {
+      "id": "root_package_json",
+      "label": "root package.json",
+      "degree": 4
+    },
+    {
+      "id": "root_directory",
+      "label": "Root Directory",
+      "degree": 3
+    },
+    {
+      "id": "quality_gate",
+      "label": "Quality Gate (CI/Check)",
+      "degree": 3
+    },
+    {
+      "id": "umd_build",
+      "label": "UMD build",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "packages/web-vue",
+      "target": "dist artifacts",
+      "source_files": [
+        "graphify-input/architecture-docs/README.md",
+        "graphify-input/architecture-docs/ARCHITECTURE.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "publishes",
+      "why": "bridges separate communities; peripheral node `dist artifacts` unexpectedly reaches hub `packages/web-vue`"
+    },
+    {
+      "source": "packages/web-vue",
+      "target": "json metadata",
+      "source_files": [
+        "graphify-input/architecture-docs/README.md",
+        "graphify-input/architecture-docs/ARCHITECTURE.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "publishes",
+      "why": "bridges separate communities; peripheral node `json metadata` unexpectedly reaches hub `packages/web-vue`"
+    },
+    {
+      "source": "packages/sd-vue-docs",
+      "target": "site runtime",
+      "source_files": [
+        "graphify-input/architecture-docs/README.md",
+        "graphify-input/architecture-docs/ARCHITECTURE.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "serves as",
+      "why": "bridges separate communities; peripheral node `site runtime` unexpectedly reaches hub `packages/sd-vue-docs`"
+    },
+    {
+      "source": "packages/sd-vue-docs",
+      "target": "docs:vendor:only",
+      "source_files": [
+        "graphify-input/architecture-docs/README.md",
+        "graphify-input/architecture-docs/sd-vue-docs-package.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "runs direct vendor sync through",
+      "why": "bridges separate communities; peripheral node `docs:vendor:only` unexpectedly reaches hub `packages/sd-vue-docs`"
+    },
+    {
+      "source": "packages/sd-vue-docs",
+      "target": "docs dev script",
+      "source_files": [
+        "graphify-input/architecture-docs/README.md",
+        "graphify-input/architecture-docs/sd-vue-docs-package.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "starts dev server through",
+      "why": "bridges separate communities; peripheral node `docs dev script` unexpectedly reaches hub `packages/sd-vue-docs`"
+    }
+  ]
+}

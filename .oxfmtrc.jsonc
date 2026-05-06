@@ -54,5 +54,6 @@
     ".sonarlint",
     "vendor/**",
     ".*/",
+    "graphify-*",
   ],
 }
