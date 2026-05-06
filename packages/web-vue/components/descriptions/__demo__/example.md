@@ -5,11 +5,13 @@ title:
 ```
 
 ## zh-CN
+
 `span` 所占列数大于 `column` 可放置的数据个数时，`span` 会被设置为 `column` 的值，当行剩余列数不够放置下一列时将自动换行，每行末尾列会自动填充剩余量。
 
 ---
 
 ## en-US
+
 When the number of columns occupied by `span` is greater than the number of data that can be placed in `column`, `span` will be set to the value of `column`. When the remaining columns in the row are not enough to place the next column, it will automatically wrap, and the last column of each row will automatically fill the remaining amount.
 
 ---
@@ -63,7 +65,8 @@ When the number of columns occupied by `span` is greater than the number of data
       bordered
     >
       <a-descriptions-item label="Item1" :span="form.firstSpan">
-        <div>Span：{{form.firstSpan}}
+        <div
+          >Span：{{ form.firstSpan }}
           <span v-if="form.firstSpan > form.column" style="color: red;">
             Exceeds Column, set to Column size
           </span>
@@ -78,7 +81,7 @@ When the number of columns occupied by `span` is greater than the number of data
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue';
 
 const form = reactive({
@@ -86,7 +89,7 @@ const form = reactive({
   layout: 'horizontal',
   column: 4,
   tableLayout: 'auto',
-  firstSpan: 2
+  firstSpan: 2,
 });
 
 const layoutOptions = [

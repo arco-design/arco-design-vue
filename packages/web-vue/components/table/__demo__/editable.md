@@ -25,12 +25,18 @@ After the `2.25.0` version, you can directly modify the `record` variable from t
       <a-input v-model="data[rowIndex].name" />
     </template>
     <template #province="{ rowIndex }">
-      <a-select v-model="data[rowIndex].province" @change="()=>handleChange(rowIndex)">
-        <a-option v-for="value of Object.keys(options)">{{value}}</a-option>
+      <a-select
+        v-model="data[rowIndex].province"
+        @change="() => handleChange(rowIndex)"
+      >
+        <a-option v-for="value of Object.keys(options)">{{ value }}</a-option>
       </a-select>
     </template>
     <template #city="{ rowIndex }">
-      <a-select :options="options[data[rowIndex].province] || []" v-model="data[rowIndex].city" />
+      <a-select
+        :options="options[data[rowIndex].province] || []"
+        v-model="data[rowIndex].city"
+      />
     </template>
   </a-table>
   <!-- support from v2.25.0  -->
@@ -38,96 +44,109 @@ After the `2.25.0` version, you can directly modify the `record` variable from t
     <template #name="{ record, rowIndex }">
       <a-input v-model="record.name" />
     </template>
-    <template #province="{ record,rowIndex }">
-      <a-select v-model="record.province" @change="()=>{record.city=''}">
-        <a-option v-for="value of Object.keys(options)">{{value}}</a-option>
+    <template #province="{ record, rowIndex }">
+      <a-select
+        v-model="record.province"
+        @change="
+          () => {
+            record.city = '';
+          }
+        "
+      >
+        <a-option v-for="value of Object.keys(options)">{{ value }}</a-option>
       </a-select>
     </template>
-    <template #city="{ record,rowIndex }">
-      <a-select :options="options[record.province] || []" v-model="record.city" />
+    <template #city="{ record, rowIndex }">
+      <a-select
+        :options="options[record.province] || []"
+        v-model="record.city"
+      />
     </template>
   </a-table>
 </template>
 
-<script>
+<script setup lang="ts">
 import { reactive } from 'vue';
 
-export default {
-  setup() {
-    const options = {
-      Beijing: ['Haidian', 'Chaoyang', 'Changping'],
-      Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
-      Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou']
-    }
-    const columns = [{
-      title: 'Name',
-      dataIndex: 'name',
-      slotName: 'name'
-    }, {
-      title: 'Salary',
-      dataIndex: 'salary',
-    }, {
-      title: 'Address',
-      dataIndex: 'address',
-    }, {
-      title: 'Province',
-      dataIndex: 'province',
-      slotName: 'province'
-    }, {
-      title: 'City',
-      dataIndex: 'city',
-      slotName: 'city'
-    }, {
-      title: 'Email',
-      dataIndex: 'email',
-    }];
-
-    const data = reactive([{
-      key: '1',
-      name: 'Jane Doe',
-      salary: 23000,
-      address: '32 Park Road, London',
-      province: 'Beijing',
-      city: 'Haidian',
-      email: 'jane.doe@example.com'
-    }, {
-      key: '2',
-      name: 'Alisa Ross',
-      salary: 25000,
-      address: '35 Park Road, London',
-      email: 'alisa.ross@example.com'
-    }, {
-      key: '3',
-      name: 'Kevin Sandra',
-      salary: 22000,
-      address: '31 Park Road, London',
-      province: 'Sichuan',
-      city: 'Mianyang',
-      email: 'kevin.sandra@example.com'
-    }, {
-      key: '4',
-      name: 'Ed Hellen',
-      salary: 17000,
-      address: '42 Park Road, London',
-      email: 'ed.hellen@example.com'
-    }, {
-      key: '5',
-      name: 'William Smith',
-      salary: 27000,
-      address: '62 Park Road, London',
-      email: 'william.smith@example.com'
-    }]);
-
-    const handleChange = (rowIndex) => {
-      data[rowIndex].city = ''
-    }
-    return {
-      options,
-      columns,
-      data,
-      handleChange
-    }
+const options = {
+  Beijing: ['Haidian', 'Chaoyang', 'Changping'],
+  Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
+  Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou'],
+};
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    slotName: 'name',
   },
-}
+  {
+    title: 'Salary',
+    dataIndex: 'salary',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+  },
+  {
+    title: 'Province',
+    dataIndex: 'province',
+    slotName: 'province',
+  },
+  {
+    title: 'City',
+    dataIndex: 'city',
+    slotName: 'city',
+  },
+  {
+    title: 'Email',
+    dataIndex: 'email',
+  },
+];
+
+const data = reactive([
+  {
+    key: '1',
+    name: 'Jane Doe',
+    salary: 23000,
+    address: '32 Park Road, London',
+    province: 'Beijing',
+    city: 'Haidian',
+    email: 'jane.doe@example.com',
+  },
+  {
+    key: '2',
+    name: 'Alisa Ross',
+    salary: 25000,
+    address: '35 Park Road, London',
+    email: 'alisa.ross@example.com',
+  },
+  {
+    key: '3',
+    name: 'Kevin Sandra',
+    salary: 22000,
+    address: '31 Park Road, London',
+    province: 'Sichuan',
+    city: 'Mianyang',
+    email: 'kevin.sandra@example.com',
+  },
+  {
+    key: '4',
+    name: 'Ed Hellen',
+    salary: 17000,
+    address: '42 Park Road, London',
+    email: 'ed.hellen@example.com',
+  },
+  {
+    key: '5',
+    name: 'William Smith',
+    salary: 27000,
+    address: '62 Park Road, London',
+    email: 'william.smith@example.com',
+  },
+]);
+
+const handleChange = (rowIndex) => {
+  data[rowIndex].city = '';
+};
 </script>
 ```

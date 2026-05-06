@@ -21,14 +21,14 @@ The position of the label text can be set by `labelPosition`.
   <div>
     <a-row align="center">
       <a-typography-text>labelPosition: &nbsp; &nbsp;</a-typography-text>
-      <a-radio-group @change="onLabelPositionChange" :modelValue="pos">
+      <a-radio-group @change="handleLabelPositionChange" :modelValue="pos">
         <a-radio value="same">same</a-radio>
         <a-radio value="relative">relative</a-radio>
       </a-radio-group>
     </a-row>
     <a-row align="center" :style="{ margin: '20px 0px 24px' }">
       <a-typography-text>mode: &nbsp; &nbsp;</a-typography-text>
-      <a-radio-group @change="onModeChange" :modelValue="mode">
+      <a-radio-group @change="handleModeChange" :modelValue="mode">
         <a-radio value="left">left</a-radio>
         <a-radio value="right">right</a-radio>
         <a-radio value="alternate">alternate</a-radio>
@@ -52,29 +52,18 @@ The position of the label text can be set by `labelPosition`.
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const mode = ref('left');
-    const pos = ref('same');
+const mode = ref('left');
+const pos = ref('same');
 
-    const onLabelPositionChange = (_pos) => {
-      pos.value = _pos;
-    };
+const handleLabelPositionChange = (_pos) => {
+  pos.value = _pos;
+};
 
-    const onModeChange = (_mode) => {
-      mode.value = _mode;
-    };
-
-    return {
-      mode,
-      pos,
-      onLabelPositionChange,
-      onModeChange
-    }
-  },
+const handleModeChange = (_mode) => {
+  mode.value = _mode;
 };
 </script>
 ```

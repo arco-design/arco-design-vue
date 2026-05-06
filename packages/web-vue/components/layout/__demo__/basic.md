@@ -47,7 +47,9 @@ A typical page layout.
       <a-layout-header>Header</a-layout-header>
       <a-layout>
         <a-layout-sider style="width: 64px;">Sider</a-layout-sider>
-        <a-layout-sider style="width: 206px; margin-left: 1px;">Sider</a-layout-sider>
+        <a-layout-sider style="width: 206px; margin-left: 1px;"
+          >Sider</a-layout-sider
+        >
         <a-layout-content>Content</a-layout-content>
       </a-layout>
       <a-layout-footer>Footer</a-layout-footer>
@@ -67,7 +69,6 @@ A typical page layout.
   font-stretch: condensed;
   text-align: center;
 }
-
 
 .layout-demo :deep(.arco-layout-header),
 .layout-demo :deep(.arco-layout-footer) {

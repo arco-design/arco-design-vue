@@ -30,20 +30,12 @@ Use `affix=true` to wrap the anchor within Affix component. `affix-style` can be
   </a-anchor>
 </template>
 
-<script>
-export default {
-  setup() {
-    const affixStyle = {
-      position: 'absolute',
-      right: '-170px',
-      top: '50%',
-      zIndex: 1,
-    };
-
-    return {
-      affixStyle,
-    };
-  },
+<script setup lang="ts">
+const affixStyle = {
+  position: 'absolute',
+  right: '-170px',
+  top: '50%',
+  zIndex: 1,
 };
 </script>
 ```

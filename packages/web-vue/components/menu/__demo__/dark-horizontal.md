@@ -20,7 +20,11 @@ The theme is specified by `theme`, which can be divided into two types: `light` 
 <template>
   <div class="menu-demo">
     <a-menu mode="horizontal" theme="dark" :default-selected-keys="['1']">
-      <a-menu-item key="0" :style="{ padding: 0, marginRight: '38px' }" disabled>
+      <a-menu-item
+        key="0"
+        :style="{ padding: 0, marginRight: '38px' }"
+        disabled
+      >
         <div
           :style="{
             width: '80px',

@@ -23,28 +23,38 @@ Use with forms to implement verification.
       field="code"
       label="code"
       :rules="[
-        {required:true,message:'Verification code is required'},
-        {minLength:6, message:'Verification code is incomplete'},
+        { required: true, message: 'Verification code is required' },
+        { minLength: 6, message: 'Verification code is incomplete' },
         { match: /^\d+$/, message: 'Must be numeric' },
       ]"
     >
-      <a-verification-code v-model="form.code" style="width: 300px" @finish="onFinish" />
+      <a-verification-code
+        v-model="form.code"
+        style="width: 300px"
+        @finish="handleFinish"
+      />
     </a-form-item>
     <a-form-item>
-      <a-button style="width: 60px" type='primary' size='large' htmlType='submit'>Submit</a-button>
+      <a-button
+        style="width: 60px"
+        type="primary"
+        size="large"
+        htmlType="submit"
+        >Submit</a-button
+      >
     </a-form-item>
   </a-form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-import { Message} from '@arco-design/web-vue';
+import { Message } from '@arco-design/web-vue';
 
 const value = ref('654321');
 const formRef = ref(null);
 const form = ref({
   code: '',
-})
-const onFinish = (value) => Message.info(`Verification code: ${value}`);
+});
+const handleFinish = (value) => Message.info(`Verification code: ${value}`);
 </script>
 ```

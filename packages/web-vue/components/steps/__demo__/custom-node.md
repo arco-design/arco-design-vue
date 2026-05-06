@@ -17,14 +17,13 @@ Basic usage of the step bar.
 ---
 
 ```vue
-
 <template>
   <div>
     <a-steps
       changeable
       label-placement="vertical"
       :current="current"
-      @change="setCurrent"
+      @change="handleSetCurrent"
     >
       <a-step description="This is a description">
         Succeeded
@@ -43,7 +42,7 @@ Basic usage of the step bar.
         </template>
       </a-step>
       <a-step description="This is a description"
-      >Pending
+        >Pending
         <template v-slot:node="slotProps">
           <a-popover content="step tip" :popup-visible="current === 3">
             <span>{{ slotProps.step }}</span>
@@ -53,11 +52,11 @@ Basic usage of the step bar.
     </a-steps>
     <div style="margin-top: 20px; text-align: center;">
       <a-space size="large">
-        <a-button type="secondary" :disabled="current <= 1" @click="onPrev">
+        <a-button type="secondary" :disabled="current <= 1" @click="handlePrev">
           <IconLeft />
           Back
         </a-button>
-        <a-button type="primary" :disabled="current >= 3" @click="onNext">
+        <a-button type="primary" :disabled="current >= 3" @click="handleNext">
           Next
           <IconRight />
         </a-button>
@@ -66,32 +65,21 @@ Basic usage of the step bar.
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const current = ref(1);
+const current = ref(1);
 
-    const onPrev = () => {
-      current.value = Math.max(1, current.value - 1);
-    };
+const handlePrev = () => {
+  current.value = Math.max(1, current.value - 1);
+};
 
-    const onNext = () => {
-      current.value = Math.min(3, current.value + 1);
-    };
+const handleNext = () => {
+  current.value = Math.min(3, current.value + 1);
+};
 
-    const setCurrent = (current) => {
-      current.value = current;
-    };
-
-    return {
-      current,
-      onPrev,
-      onNext,
-      setCurrent
-    }
-  },
+const handleSetCurrent = (current) => {
+  current.value = current;
 };
 </script>
 ```

@@ -20,16 +20,16 @@ Set the format of the color value through `format`, supporting `hex` and `rgb`.
 <template>
   <a-space direction="vertical">
     <a-radio-group type="button" v-model="format">
-      <a-radio v-for="item in formatList" :value="item">{{item}}</a-radio>
+      <a-radio v-for="item in formatList" :value="item">{{ item }}</a-radio>
     </a-radio-group>
     <a-color-picker defaultValue="#165DFF" :format="format" showText />
   </a-space>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-const format = ref('hex')
-const formatList = ['hex', 'rgb']
+const format = ref('hex');
+const formatList = ['hex', 'rgb'];
 </script>
 ```

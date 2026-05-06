@@ -25,7 +25,7 @@ set `breakpoint` for responsive contraction.
       :default-selected-keys="['0_2']"
       show-collapse-button
       breakpoint="xl"
-      @collapse="onCollapse"
+      @collapse="handleCollapse"
     >
       <a-sub-menu key="0">
         <template #icon><icon-apps></icon-apps></template>
@@ -55,7 +55,7 @@ set `breakpoint` for responsive contraction.
     </a-menu>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import {
@@ -66,25 +66,12 @@ import {
   IconBulb,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  },
-  setup() {
-    return {
-      onCollapse(val, type) {
-        const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
-        Message.info({
-          content,
-          duration: 2000,
-        });
-      }
-    };
-  }
+const handleCollapse = (val: boolean, type: 'clickTrigger' | 'responsive') => {
+  const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
+  Message.info({
+    content,
+    duration: 2000,
+  });
 };
 </script>
 <style scoped>

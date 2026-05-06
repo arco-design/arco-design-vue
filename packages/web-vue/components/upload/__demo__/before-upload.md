@@ -19,29 +19,22 @@ The function will be executed before each file upload. Uploading will be aborted
 ```vue
 <template>
   <a-space direction="vertical" :style="{ width: '100%' }">
-    <a-upload action="/" @before-upload="beforeUpload" />
+    <a-upload action="/" @before-upload="handleBeforeUpload" />
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { Modal } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const beforeUpload = (file) => {
-      return new Promise((resolve, reject) => {
-        Modal.confirm({
-          title: 'beforeUpload',
-          content: `确认上传 ${file.name}`,
-          onOk: () => resolve(true),
-          onCancel: () => reject('cancel'),
-        });
-      });
-    };
-    return {
-      beforeUpload
-    }
-  },
+const handleBeforeUpload = (file) => {
+  return new Promise((resolve, reject) => {
+    Modal.confirm({
+      title: 'handleBeforeUpload',
+      content: `确认上传 ${file.name}`,
+      onOk: () => resolve(true),
+      onCancel: () => reject('cancel'),
+    });
+  });
 };
 </script>
 ```

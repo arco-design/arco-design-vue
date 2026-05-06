@@ -19,80 +19,86 @@ The component will display the value that does not exist in the options by defau
 ```vue
 <template>
   <a-space direction="vertical" size="large">
-    <a-cascader :options="options" v-model="value" :style="{width:'320px'}" placeholder="Please select ..." multiple />
-    <a-cascader :options="options" v-model="value2" :style="{width:'320px'}"
-                placeholder="Please select ..." path-mode multiple :fallback="fallback" />
+    <a-cascader
+      :options="options"
+      v-model="value"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      multiple
+    />
+    <a-cascader
+      :options="options"
+      v-model="value2"
+      :style="{ width: '320px' }"
+      placeholder="Please select ..."
+      path-mode
+      multiple
+      :fallback="fallback"
+    />
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref(['datunli', 'wuhou']);
-    const value2 = ref([['beijing', 'chaoyang', 'datunli'], ['sichuan', 'chengdu', 'wuhou']]);
-    const fallback = (value) => {
-      return value.map(item => item.toUpperCase()).join('-')
-    }
+const value = ref(['datunli', 'wuhou']);
+const value2 = ref([
+  ['beijing', 'chaoyang', 'datunli'],
+  ['sichuan', 'chengdu', 'wuhou'],
+]);
+const fallback = (value) => {
+  return value.map((item) => item.toUpperCase()).join('-');
+};
 
-    const options = [
+const options = [
+  {
+    value: 'beijing',
+    label: 'Beijing',
+    children: [
       {
-        value: 'beijing',
-        label: 'Beijing',
+        value: 'chaoyang',
+        label: 'ChaoYang',
         children: [
           {
-            value: 'chaoyang',
-            label: 'ChaoYang',
-            children: [
-              {
-                value: 'datunli',
-                label: 'Datunli',
-              },
-            ],
-          },
-          {
-            value: 'haidian',
-            label: 'Haidian',
-          },
-          {
-            value: 'dongcheng',
-            label: 'Dongcheng',
-          },
-          {
-            value: 'xicheng',
-            label: 'Xicheng',
-            children: [
-              {
-                value: 'jinrongjie',
-                label: 'Jinrongjie',
-              },
-              {
-                value: 'tianqiao',
-                label: 'Tianqiao',
-              },
-            ],
+            value: 'datunli',
+            label: 'Datunli',
           },
         ],
       },
       {
-        value: 'shanghai',
-        label: 'Shanghai',
+        value: 'haidian',
+        label: 'Haidian',
+      },
+      {
+        value: 'dongcheng',
+        label: 'Dongcheng',
+      },
+      {
+        value: 'xicheng',
+        label: 'Xicheng',
         children: [
           {
-            value: 'huangpu',
-            label: 'Huangpu',
+            value: 'jinrongjie',
+            label: 'Jinrongjie',
+          },
+          {
+            value: 'tianqiao',
+            label: 'Tianqiao',
           },
         ],
       },
-    ];
-    return {
-      options,
-      value,
-      value2,
-      fallback
-    }
+    ],
   },
-}
+  {
+    value: 'shanghai',
+    label: 'Shanghai',
+    children: [
+      {
+        value: 'huangpu',
+        label: 'Huangpu',
+      },
+    ],
+  },
+];
 </script>
 ```

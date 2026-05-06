@@ -33,31 +33,23 @@ The function will be executed before each file remove. Removing will be aborted 
           url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp',
         },
       ]"
-      @before-remove="beforeRemove"
+      @before-remove="handleBeforeRemove"
     />
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { Modal } from '@arco-design/web-vue';
 
-export default {
-  setup() {
-    const beforeRemove = (file) => {
-      return new Promise((resolve, reject) => {
-        Modal.confirm({
-          title: 'on-before-remove',
-          content: `确认删除 ${file.name}`,
-          onOk: () => resolve(true),
-          onCancel: () => reject('cancel'),
-        });
-      });
-    };
-
-    return {
-      beforeRemove
-    }
-  },
+const handleBeforeRemove = (file) => {
+  return new Promise((resolve, reject) => {
+    Modal.confirm({
+      title: 'on-before-remove',
+      content: `确认删除 ${file.name}`,
+      onOk: () => resolve(true),
+      onCancel: () => reject('cancel'),
+    });
+  });
 };
 </script>
 ```

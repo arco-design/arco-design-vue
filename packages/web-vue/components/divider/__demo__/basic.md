@@ -19,13 +19,21 @@ It divides the text paragraphs of different chapters, the default is a horizonta
 ```vue
 <template>
   <div class="divider-demo">
-    <p>A design is a plan or specification for the construction of an object.</p>
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
     <a-divider />
-    <p>A design is a plan or specification for the construction of an object.</p>
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
     <a-divider dashed />
-    <p>A design is a plan or specification for the construction of an object.</p>
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
     <a-divider :size="2" style="border-bottom-style: dotted" />
-    <p>A design is a plan or specification for the construction of an object.</p>
+    <p
+      >A design is a plan or specification for the construction of an object.</p
+    >
   </div>
   <div class="divider-demo" style="marginTop: 48px">
     <div class="flex-box">
@@ -54,20 +62,8 @@ It divides the text paragraphs of different chapters, the default is a horizonta
   </div>
 </template>
 
-<script>
-import {
-  IconImage,
-  IconUser,
-  IconPen,
-} from '@arco-design/web-vue/es/icon';
-
-export default {
-  components: {
-    IconImage,
-    IconUser,
-    IconPen,
-  },
-};
+<script setup lang="ts">
+import { IconImage, IconUser, IconPen } from '@arco-design/web-vue/es/icon';
 </script>
 
 <style scoped>

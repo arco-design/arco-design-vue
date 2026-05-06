@@ -22,7 +22,7 @@ Use the `closable` attribute to control whether the label can be closed. Closabl
     <a-tag closable>Tag</a-tag>
     <a-tag closable>
       <template #icon>
-        <icon-star/>
+        <icon-star />
       </template>
       Tag
     </a-tag>

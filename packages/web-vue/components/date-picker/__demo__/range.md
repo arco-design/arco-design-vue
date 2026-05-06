@@ -19,61 +19,60 @@ The basic usage of RangePicker.
 ```vue
 <template>
   <a-range-picker
-    @change="onChange"
-    @select="onSelect"
+    @change="handleChange"
+    @select="handleSelect"
     style="width: 254px; marginBottom: 20px;"
   />
   <br />
   <a-range-picker
     mode="week"
-    @change="onChange"
-    @select="onSelect"
+    @change="handleChange"
+    @select="handleSelect"
     style="width: 254px; marginBottom: 20px;"
   />
   <br />
   <a-range-picker
     mode="month"
-    @change="onChange"
-    @select="onSelect"
+    @change="handleChange"
+    @select="handleSelect"
     style="width: 254px; marginBottom: 20px;"
   />
   <br />
   <a-range-picker
     mode="year"
-    @change="onChange"
-    @select="onSelect"
+    @change="handleChange"
+    @select="handleSelect"
     style="width: 254px; marginBottom: 20px;"
   />
   <br />
   <a-range-picker
     mode="quarter"
-    @change="onChange"
-    @select="onSelect"
+    @change="handleChange"
+    @select="handleSelect"
     style="width: 254px; marginBottom: 20px;"
   />
   <br />
   <a-range-picker
     showTime
     :time-picker-props="{
-    defaultValue:['00:00:00','00:00:00']
+      defaultValue: ['00:00:00', '00:00:00'],
     }"
-    @change="onChange"
-    @select="onSelect"
+    @change="handleChange"
+    @select="handleSelect"
     style=" width: 380px; "
   />
 </template>
-<script>
-export default {
-  setup() {
-    return {
-      onSelect(dateString, date) {
-        console.log('onSelect', dateString, date);
-      },
-      onChange(dateString, date) {
-        console.log('onChange: ', dateString, date);
-      },
-    };
-  },
-}
+<script setup lang="ts">
+import { RangePicker } from '@arco-design/web-vue';
+
+type OnChange = NonNullable<InstanceType<typeof RangePicker>['$props']['onChange']>;
+type OnSelect = NonNullable<InstanceType<typeof RangePicker>['$props']['onSelect']>;
+
+const handleChange: OnChange = (value, date, dateString) => {
+  console.log('handleChange', value, date, dateString);
+};
+const handleSelect: OnSelect = (value, date, dateString) => {
+  console.log('handleSelect', value, date, dateString);
+};
 </script>
 ```

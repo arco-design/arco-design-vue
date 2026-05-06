@@ -39,7 +39,8 @@ We provide a variety of preset colors for the badge. And you can also set a cust
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
 const COLORS = [
   'red',
   'orangered',
@@ -70,13 +71,12 @@ const COLORS_CUSTOM = [
   '#168CFF',
   '#FF5722',
 ];
-export default {
-  data() {
-    return {
-      colors: COLORS,
-      customColors: COLORS_CUSTOM,
-    };
-  },
-};
+
+const state = reactive({
+  colors: COLORS,
+  customColors: COLORS_CUSTOM,
+});
+
+const { colors, customColors } = toRefs(state);
 </script>
 ```

@@ -14,7 +14,6 @@ title:
 
 Customize icon node. If true, the default icon will be displayed.
 
-
 ---
 
 ```vue
@@ -43,11 +42,7 @@ Customize icon node. If true, the default icon will be displayed.
   </div>
 </template>
 
-<script>
-  import { IconEdit } from '@arco-design/web-vue/es/icon';
-
-  export default {
-    components: { IconEdit }
-  };
+<script setup lang="ts">
+import { IconEdit } from '@arco-design/web-vue/es/icon';
 </script>
 ```

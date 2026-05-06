@@ -18,6 +18,6 @@ Allow the score to be cleared by setting `allow-clear`.
 
 ```vue
 <template>
-  <a-rate :default-value="3" allow-clear/>
+  <a-rate :default-value="3" allow-clear />
 </template>
 ```

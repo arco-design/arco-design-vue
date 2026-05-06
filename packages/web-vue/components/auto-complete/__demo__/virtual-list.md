@@ -27,22 +27,20 @@ How to use the virtual list.
   />
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      data: [],
-    };
-  },
-  methods: {
-    handleSearch(value) {
-      if (value) {
-        this.data = [...Array(5000)].map((_, index) => `${value}-${index}`);
-      } else {
-        this.data = [];
-      }
-    },
-  },
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  data: [],
+});
+
+const { data } = toRefs(state);
+
+const handleSearch = (value) => {
+  if (value) {
+    data.value = [...Array(5000)].map((_, index) => `${value}-${index}`);
+  } else {
+    data.value = [];
+  }
 };
 </script>
 ```

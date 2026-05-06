@@ -19,10 +19,7 @@ Set `direction="vertical"` and a vertical slider will be displayed.
 ```vue
 <template>
   <a-space align="start">
-    <a-slider
-      :default-value="50"
-      direction="vertical"
-    />
+    <a-slider :default-value="50" direction="vertical" />
 
     <a-slider
       direction="vertical"

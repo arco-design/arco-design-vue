@@ -25,7 +25,11 @@ By setting `mode` to `popButton`, you can use a button group style floating menu
       position="top"
       v-model:popupVisible="popupVisible1"
     >
-      <div :class="`button-trigger ${popupVisible1 ? 'button-trigger-active' : ''}`">
+      <div
+        :class="`button-trigger ${
+          popupVisible1 ? 'button-trigger-active' : ''
+        }`"
+      >
         <IconClose v-if="popupVisible1" />
         <IconMessage v-else />
       </div>
@@ -54,7 +58,11 @@ By setting `mode` to `popButton`, you can use a button group style floating menu
       position="top"
       v-model:popupVisible="popupVisible2"
     >
-      <div :class="`button-trigger ${popupVisible2 ? 'button-trigger-active' : ''}`">
+      <div
+        :class="`button-trigger ${
+          popupVisible2 ? 'button-trigger-active' : ''
+        }`"
+      >
         <IconClose v-if="popupVisible2" />
         <IconMessage v-else />
       </div>
@@ -78,7 +86,8 @@ By setting `mode` to `popButton`, you can use a button group style floating menu
     </a-trigger>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
 import {
   IconBug,
   IconBulb,
@@ -86,20 +95,12 @@ import {
   IconMessage,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconBug,
-    IconBulb,
-    IconClose,
-    IconMessage,
-  },
-  data() {
-    return {
-      popupVisible1: false,
-      popupVisible2: false,
-    };
-  }
-};
+const state = reactive({
+  popupVisible1: false,
+  popupVisible2: false,
+});
+
+const { popupVisible1, popupVisible2 } = toRefs(state);
 </script>
 <style scoped>
 .menu-demo {

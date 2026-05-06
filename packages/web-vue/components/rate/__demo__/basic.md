@@ -18,6 +18,6 @@ Basic usage of rate component.
 
 ```vue
 <template>
-  <a-rate/>
+  <a-rate />
 </template>
 ```

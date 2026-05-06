@@ -21,7 +21,7 @@ The vertical time axis.
   <div>
     <a-row align="center" :style="{ marginBottom: '24px' }">
       <a-typography-text>mode: &nbsp; &nbsp;</a-typography-text>
-      <a-radio-group @change="onChange" :modelValue="mode">
+      <a-radio-group @change="handleChange" :modelValue="mode">
         <a-radio value="left">left</a-radio>
         <a-radio value="right">right</a-radio>
         <a-radio value="alternate">alternate</a-radio>
@@ -77,22 +77,13 @@ The vertical time axis.
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const mode = ref('left');
+const mode = ref('left');
 
-    const onChange = (_mode) => {
-      mode.value = _mode;
-    };
-
-    return {
-      mode,
-      onChange
-    }
-  },
+const handleChange = (_mode) => {
+  mode.value = _mode;
 };
 </script>
 ```

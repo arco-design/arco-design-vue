@@ -18,6 +18,6 @@ Use `grading` to use the smiley grading.
 
 ```vue
 <template>
-  <a-rate grading/>
+  <a-rate grading />
 </template>
 ```

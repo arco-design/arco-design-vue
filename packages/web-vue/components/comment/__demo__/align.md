@@ -17,11 +17,10 @@ Alignment of datetime and actions.
 ---
 
 ```vue
-
 <template>
   <a-comment author="Balzac" datetime="1 hour" align="right">
     <template #actions>
-      <span class="action" key="heart" @click="onLikeChange">
+      <span class="action" key="heart" @click="handleLikeChange">
         <span v-if="like">
           <IconHeartFill :style="{ color: '#f53f3f' }" />
         </span>
@@ -30,7 +29,7 @@ Alignment of datetime and actions.
         </span>
         {{ 83 + (like ? 1 : 0) }}
       </span>
-      <span class="action" key="star" @click="onStarChange">
+      <span class="action" key="star" @click="handleStarChange">
         <span v-if="star">
           <IconStarFill style="{ color: '#ffb400' }" />
         </span>
@@ -39,9 +38,7 @@ Alignment of datetime and actions.
         </span>
         {{ 3 + (star ? 1 : 0) }}
       </span>
-      <span class="action" key="reply">
-        <IconMessage /> Reply
-      </span>
+      <span class="action" key="reply"> <IconMessage /> Reply </span>
     </template>
     <template #avatar>
       <a-avatar>
@@ -62,7 +59,7 @@ Alignment of datetime and actions.
   </a-comment>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 import {
   IconHeart,
@@ -72,31 +69,13 @@ import {
   IconHeartFill,
 } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: {
-    IconHeart,
-    IconMessage,
-    IconStar,
-    IconStarFill,
-    IconHeartFill,
-  },
-  setup() {
-    const like = ref(false);
-    const star = ref(false);
-    const onLikeChange = () => {
-      like.value = !like.value;
-    };
-    const onStarChange = () => {
-      star.value = !star.value;
-    };
-
-    return {
-      like,
-      star,
-      onLikeChange,
-      onStarChange
-    }
-  },
+const like = ref(false);
+const star = ref(false);
+const handleLikeChange = () => {
+  like.value = !like.value;
+};
+const handleStarChange = () => {
+  star.value = !star.value;
 };
 </script>
 

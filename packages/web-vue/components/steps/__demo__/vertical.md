@@ -30,11 +30,11 @@ Vertical step bar.
       <div class="frame-main">
         <div class="main-content">The content of this step.</div>
         <div class="main-bottom">
-          <a-button :disabled="current===1" @click="onPrev">
+          <a-button :disabled="current === 1" @click="handlePrev">
             <icon-left />
             Back
           </a-button>
-          <a-button :disabled="current===3" @click="onNext">
+          <a-button :disabled="current === 3" @click="handleNext">
             Next
             <icon-right />
           </a-button>
@@ -44,27 +44,17 @@ Vertical step bar.
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const current = ref(1);
+const current = ref(1);
 
-    const onPrev = () => {
-      current.value = Math.max(1, current.value - 1);
-    };
+const handlePrev = () => {
+  current.value = Math.max(1, current.value - 1);
+};
 
-    const onNext = () => {
-      current.value = Math.min(3, current.value + 1);
-    };
-
-    return {
-      current,
-      onPrev,
-      onNext,
-    }
-  },
+const handleNext = () => {
+  current.value = Math.min(3, current.value + 1);
 };
 </script>
 

@@ -23,21 +23,19 @@ You can add a title to the warning prompt by setting `title`.
       <a-alert title="Info">This is an info alert.</a-alert>
     </a-col>
     <a-col :span="12">
-      <a-alert title="Success" type="success">This is an success alert.</a-alert>
+      <a-alert title="Success" type="success"
+        >This is an success alert.</a-alert
+      >
     </a-col>
     <a-col :span="12">
       <a-alert type="warning">
-        <template #title>
-          Warning
-        </template>
+        <template #title> Warning </template>
         This is an warning alert.
       </a-alert>
     </a-col>
     <a-col :span="12">
       <a-alert type="error">
-        <template #title>
-          Error
-        </template>
+        <template #title> Error </template>
         This is an error alert.
       </a-alert>
     </a-col>

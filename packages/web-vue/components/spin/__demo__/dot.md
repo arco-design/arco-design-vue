@@ -17,7 +17,6 @@ The dot type indicator can be displayed through the `dot` attribute.
 ---
 
 ```vue
-
 <template>
   <a-spin dot />
 </template>

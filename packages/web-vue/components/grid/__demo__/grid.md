@@ -17,13 +17,18 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
 ---
 
 ```vue
-
 <template>
   <div style="margin-bottom: 20px;">
     <a-typography-text>折叠：</a-typography-text>
     <a-switch :checked="collapsed" @click="collapsed = !collapsed" />
   </div>
-  <a-grid :cols="3" :colGap="12" :rowGap="16" class="grid-demo-grid" :collapsed="collapsed">
+  <a-grid
+    :cols="3"
+    :colGap="12"
+    :rowGap="16"
+    class="grid-demo-grid"
+    :collapsed="collapsed"
+  >
     <a-grid-item class="demo-item">item</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
@@ -38,18 +43,10 @@ A layout component implemented by CSS-based Grid layout, supports folding, and c
   </a-grid>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const collapsed = ref(false);
-
-    return {
-      collapsed
-    }
-  },
-}
+const collapsed = ref(false);
 </script>
 
 <style scoped>

@@ -18,7 +18,12 @@ The responsive configuration format of the Grid component is `{ xs: 1, sm: 2, md
 
 ```vue
 <template>
-  <a-grid :cols="{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }" :colGap="12" :rowGap="16" class="grid-demo-grid">
+  <a-grid
+    :cols="{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }"
+    :colGap="12"
+    :rowGap="16"
+    class="grid-demo-grid"
+  >
     <a-grid-item class="demo-item">item</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>
     <a-grid-item class="demo-item">item</a-grid-item>

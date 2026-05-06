@@ -24,38 +24,41 @@ A single-column description list style.
     <a-radio value="medium">medium</a-radio>
     <a-radio value="large">large</a-radio>
   </a-radio-group>
-  <a-descriptions style="margin-top: 20px" :data="data" :size="size" title="User Info" :column="1"/>
+  <a-descriptions
+    style="margin-top: 20px"
+    :data="data"
+    :size="size"
+    title="User Info"
+    :column="1"
+  />
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const size = ref('medium');
+const size = ref('medium');
 
-    const data = [{
-      label: 'Name',
-      value: 'Socrates',
-    }, {
-      label: 'Mobile',
-      value: '123-1234-1234',
-    }, {
-      label: 'Residence',
-      value: 'Beijing'
-    }, {
-      label: 'Hometown',
-      value: 'Beijing',
-    }, {
-      label: 'Address',
-      value: 'Yingdu Building, Zhichun Road, Beijing'
-    }];
-
-    return {
-      data,
-      size
-    }
+const data = [
+  {
+    label: 'Name',
+    value: 'Socrates',
   },
-}
+  {
+    label: 'Mobile',
+    value: '123-1234-1234',
+  },
+  {
+    label: 'Residence',
+    value: 'Beijing',
+  },
+  {
+    label: 'Hometown',
+    value: 'Beijing',
+  },
+  {
+    label: 'Address',
+    value: 'Yingdu Building, Zhichun Road, Beijing',
+  },
+];
 </script>
 ```

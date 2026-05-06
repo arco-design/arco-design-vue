@@ -14,7 +14,6 @@ title:
 
 linear-gradient progress bar.
 
-
 ---
 
 ```vue
@@ -28,8 +27,8 @@ linear-gradient progress bar.
         '100%': 'rgb(var(--success-6))',
       }"
     />
-    <br/>
-    <br/>
+    <br />
+    <br />
 
     <a-progress
       :percent="1"
@@ -39,8 +38,8 @@ linear-gradient progress bar.
         '100%': 'rgb(var(--success-6))',
       }"
     />
-    <br/>
-    <br/>
+    <br />
+    <br />
     <a-space size="large">
       <a-progress
         type="circle"

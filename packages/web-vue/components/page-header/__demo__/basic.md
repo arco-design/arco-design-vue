@@ -18,7 +18,7 @@ The basic page header is suitable for use in scenarios that require a simple des
 
 ```vue
 <template>
-  <div :style="{ background: 'var(--color-fill-2)', padding: '28px' }" >
+  <div :style="{ background: 'var(--color-fill-2)', padding: '28px' }">
     <a-page-header
       :style="{ background: 'var(--color-bg-2)' }"
       title="ArcoDesign"

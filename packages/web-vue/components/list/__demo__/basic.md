@@ -19,9 +19,7 @@ Basic usage of the list. Can be used to carry text, lists, pictures and paragrap
 ```vue
 <template>
   <a-list>
-    <template #header>
-      List title
-    </template>
+    <template #header> List title </template>
     <a-list-item>Beijing Bytedance Technology Co., Ltd.</a-list-item>
     <a-list-item>Bytedance Technology Co., Ltd.</a-list-item>
     <a-list-item>Beijing Toutiao Technology Co., Ltd.</a-list-item>

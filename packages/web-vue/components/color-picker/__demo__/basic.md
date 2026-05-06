@@ -19,13 +19,13 @@ Basic usage
 ```vue
 <template>
   <a-space>
-    <a-color-picker  v-model="value" />
-    <a-color-picker defaultValue="#165DFF" showText disabledAlpha/>
+    <a-color-picker v-model="value" />
+    <a-color-picker defaultValue="#165DFF" showText disabledAlpha />
   </a-space>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-const value = ref('#165DFF')
+const value = ref('#165DFF');
 </script>
 ```

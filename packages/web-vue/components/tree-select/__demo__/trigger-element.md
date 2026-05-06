@@ -14,77 +14,62 @@ title:
 
 Customize trigger element.
 
-
 ---
 
 ```vue
 <template>
-  <a-tree-select
-    :data="treeData"
-    default-value="node1"
-    @change="onChange"
-  >
+  <a-tree-select :data="treeData" default-value="node1" @change="handleChange">
     <template #trigger>
       <a-typography-paragraph style="width: 300px">
-        You selected: <a href='javascript: void(0)'>{{ text }}</a>
+        You selected: <a href="javascript: void(0)">{{ text }}</a>
       </a-typography-paragraph>
     </template>
   </a-tree-select>
 </template>
-<script>
-  import { ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const text = ref('node1');
+const treeData = [
+  {
+    key: 'node1',
+    title: 'node1',
+    children: [
+      {
+        key: 'node2',
+        title: 'node2',
+      },
+    ],
+  },
+  {
+    key: 'node3',
+    title: 'node3',
+    children: [
+      {
+        key: 'node4',
+        title: 'node4',
+      },
+      {
+        key: 'node5',
+        title: 'node5',
+        children: [
+          {
+            key: 'node6',
+            title: 'node6',
+          },
+          {
+            key: 'node7',
+            title: 'node7',
+          },
+        ],
+      },
+    ],
+  },
+];
 
-      function onChange(selected) {
-        text.value = selected;
-      }
+const text = ref('node1');
 
-      return {
-        treeData,
-        text,
-        onChange,
-      };
-    },
-  };
-
-  const treeData = [
-    {
-      key: 'node1',
-      title: 'node1',
-      children: [
-        {
-          key: 'node2',
-          title: 'node2',
-        },
-      ],
-    },
-    {
-      key: 'node3',
-      title: 'node3',
-      children: [
-        {
-          key: 'node4',
-          title: 'node4',
-        },
-        {
-          key: 'node5',
-          title: 'node5',
-          children: [
-            {
-              key: 'node6',
-              title: 'node6',
-            },
-            {
-              key: 'node7',
-              title: 'node7',
-            },
-          ]
-        },
-      ],
-    },
-  ];
+function handleChange(selected) {
+  text.value = selected;
+}
 </script>
 ```

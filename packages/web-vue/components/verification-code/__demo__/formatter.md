@@ -20,14 +20,19 @@ Validate input using `formatter`. Additionally, it can return non-boolean types 
 <template>
   <a-space direction="vertical">
     <a-verification-code
-      defaultValue='123456'
+      defaultValue="123456"
       style="width: 300px"
-      :formatter="(inputValue) =>  /^\d*$/.test(inputValue) ? inputValue : false"
+      :formatter="
+        (inputValue) => (/^\d*$/.test(inputValue) ? inputValue : false)
+      "
     />
     <a-verification-code
-      defaultValue='abcdef'
+      defaultValue="abcdef"
       style="width: 300px"
-      :formatter="(inputValue) => /^[a-zA-Z]*$/.test(inputValue) ? inputValue.toUpperCase() : ''"
+      :formatter="
+        (inputValue) =>
+          /^[a-zA-Z]*$/.test(inputValue) ? inputValue.toUpperCase() : ''
+      "
     />
   </a-space>
 </template>

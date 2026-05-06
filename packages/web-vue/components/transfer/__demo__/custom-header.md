@@ -25,7 +25,7 @@ Customize the rendering content of the title bar through the `source-title` and 
         countSelected,
         checked,
         indeterminate,
-        onSelectAllChange,
+        handleSelectAllChange,
       }"
     >
       <div :style="styleHeader">
@@ -33,47 +33,36 @@ Customize the rendering content of the title bar through the `source-title` and 
         <a-checkbox
           :model-value="checked"
           :indeterminate="indeterminate"
-          @change="onSelectAllChange"
+          @change="handleSelectAllChange"
         />
       </div>
     </template>
 
-    <template #target-title="{ countTotal, countSelected, onClear }">
+    <template #target-title="{ countTotal, countSelected, handleClear }">
       <div :style="styleHeader">
         Target Title {{ countSelected }}-{{ countTotal }}
-        <IconDelete @click="onClear" />
+        <IconDelete @click="handleClear" />
       </div>
     </template>
   </a-transfer>
 </template>
 
-<script>
+<script setup lang="ts">
 import { IconDelete } from '@arco-design/web-vue/es/icon';
 
-export default {
-  components: { IconDelete },
-  setup() {
-    const data = Array(8)
-      .fill(undefined)
-      .map((_, index) => ({
-        value: `option${index + 1}`,
-        label: `Option ${index + 1}`,
-      }));
-    const value = ['option1', 'option3', 'option5'];
+const data = Array(8)
+  .fill(undefined)
+  .map((_, index) => ({
+    value: `option${index + 1}`,
+    label: `Option ${index + 1}`,
+  }));
+const value = ['option1', 'option3', 'option5'];
 
-    const styleHeader = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      paddingRight: '8px'
-    };
-
-    return {
-      styleHeader,
-      data,
-      value,
-    };
-  },
+const styleHeader = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  paddingRight: '8px',
 };
 </script>
 ```

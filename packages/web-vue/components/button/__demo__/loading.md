@@ -63,7 +63,7 @@ By setting `loading-fixed-width`, the button width remains unchanged during load
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { IconPlus } from '@arco-design/web-vue/es/icon';
 
@@ -77,43 +77,26 @@ const triggerLoading = (stateRef) => {
   }, 4000);
 };
 
-export default {
-  components: {
-    IconPlus,
-  },
-  setup() {
-    const loading1 = ref(false);
-    const loading2 = ref(false);
-    const loading3 = ref(false);
+const loading1 = ref(false);
+const loading2 = ref(false);
+const loading3 = ref(false);
 
-    const gridStyle = {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 100px)',
-      rowGap: '24px',
-      columnGap: '24px',
-      marginLeft: '24px',
-    };
+const gridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 100px)',
+  rowGap: '24px',
+  columnGap: '24px',
+  marginLeft: '24px',
+};
 
-    const handleClick1 = () => {
-      triggerLoading(loading1);
-    };
-    const handleClick2 = () => {
-      triggerLoading(loading2);
-    };
-    const handleClick3 = () => {
-      triggerLoading(loading3);
-    };
-
-    return {
-      loading1,
-      loading2,
-      loading3,
-      gridStyle,
-      handleClick1,
-      handleClick2,
-      handleClick3,
-    };
-  },
+const handleClick1 = () => {
+  triggerLoading(loading1);
+};
+const handleClick2 = () => {
+  triggerLoading(loading2);
+};
+const handleClick3 = () => {
+  triggerLoading(loading3);
 };
 </script>
 ```

@@ -23,15 +23,15 @@ The preset color and history color areas can be opened through `showPreset` and 
     :historyColors="history"
     showHistory
     showPreset
-    @popup-visible-change="addHistory"
+    @popup-visible-change="handleAddHistory"
   />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-const history = ref(['#165DFF'])
-const addHistory = (visible, color) => {
+const history = ref(['#165DFF']);
+const handleAddHistory = (visible, color) => {
   if (!visible) {
     const index = history.value.indexOf(color);
     if (index !== -1) {
@@ -39,6 +39,6 @@ const addHistory = (visible, color) => {
     }
     history.value.unshift(color);
   }
-}
+};
 </script>
 ```

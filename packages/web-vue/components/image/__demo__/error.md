@@ -19,11 +19,7 @@ Content displayed when the image fails to load.
 ```vue
 <template>
   <a-space :size="20">
-    <a-image
-      width="400"
-      height="300"
-      src="some-error.png"
-    />
+    <a-image width="400" height="300" src="some-error.png" />
     <a-image
       width="400"
       height="300"

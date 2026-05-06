@@ -17,7 +17,6 @@ Set the step size by `step`, the default step size is 1. It is recommended to se
 ---
 
 ```vue
-
 <template>
   <a-space direction="vertical" size="large">
     <a-form :model="data" layout="inline">
@@ -28,24 +27,21 @@ Set the step size by `step`, the default step size is 1. It is recommended to se
         <a-switch v-model="data.showTicks" />
       </a-form-item>
     </a-form>
-    <a-slider :default-value="20" :style="{ width: '300px' }" :step="data.step" :show-ticks="data.showTicks" />
+    <a-slider
+      :default-value="20"
+      :style="{ width: '300px' }"
+      :step="data.step"
+      :show-ticks="data.showTicks"
+    />
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { reactive } from 'vue';
 
-export default {
-  setup() {
-    const data = reactive({
-      step: 5,
-      showTicks: true
-    });
-
-    return {
-      data
-    }
-  },
-}
+const data = reactive({
+  step: 5,
+  showTicks: true,
+});
 </script>
 ```

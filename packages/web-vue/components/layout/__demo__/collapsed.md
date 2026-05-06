@@ -19,17 +19,13 @@ After setting the `trigger` property of `Menu.Sider` to `null`, the built-in tri
 ```vue
 <template>
   <a-layout class="layout-demo">
-    <a-layout-sider
-      hide-trigger
-      collapsible
-      :collapsed="collapsed"
-    >
+    <a-layout-sider hide-trigger collapsible :collapsed="collapsed">
       <div class="logo" />
       <a-menu
         :defaultOpenKeys="['1']"
         :defaultSelectedKeys="['0_3']"
         :style="{ width: '100%' }"
-        @menuItemClick="onClickMenuItem"
+        @menuItemClick="handleClickMenuItem"
       >
         <a-menu-item key="0_1" disabled>
           <IconHome />
@@ -71,7 +67,7 @@ After setting the `trigger` property of `Menu.Sider` to `null`, the built-in tri
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="padding-left: 20px;">
-        <a-button shape="round" @click="onCollapse">
+        <a-button shape="round" @click="handleCollapse">
           <IconCaretRight v-if="collapsed" />
           <IconCaretLeft v-else />
         </a-button>
@@ -88,9 +84,9 @@ After setting the `trigger` property of `Menu.Sider` to `null`, the built-in tri
     </a-layout>
   </a-layout>
 </template>
-<script>
+<script setup lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Message} from '@arco-design/web-vue';
+import { Message } from '@arco-design/web-vue';
 import {
   IconCaretRight,
   IconCaretLeft,
@@ -98,27 +94,14 @@ import {
   IconCalendar,
 } from '@arco-design/web-vue/es/icon';
 
-export default defineComponent({
-  components: {
-    IconCaretRight,
-    IconCaretLeft,
-    IconHome,
-    IconCalendar,
-  },
-  setup() {
-    const collapsed = ref(false);
-    const onCollapse = () => {
-      collapsed.value = !collapsed.value;
-    };
-    return {
-      collapsed,
-      onCollapse,
-      onClickMenuItem(key) {
-        Message.info({ content: `You select ${key}`, showIcon: true });
-      }
-    };
-  },
-});
+const collapsed = ref(false);
+const handleCollapse = () => {
+  collapsed.value = !collapsed.value;
+};
+
+const handleClickMenuItem = (key: string) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+};
 </script>
 <style scoped>
 .layout-demo {
@@ -131,10 +114,10 @@ export default defineComponent({
   margin: 12px 8px;
   background: rgba(255, 255, 255, 0.2);
 }
-.layout-demo :deep(.arco-layout-sider-light) .logo{
+.layout-demo :deep(.arco-layout-sider-light) .logo {
   background: var(--color-fill-2);
 }
-.layout-demo :deep(.arco-layout-header)  {
+.layout-demo :deep(.arco-layout-header) {
   height: 64px;
   line-height: 64px;
   background: var(--color-bg-3);
@@ -153,7 +136,7 @@ export default defineComponent({
   background: var(--color-bg-3);
 }
 .layout-demo :deep(.arco-layout-footer),
-.layout-demo :deep(.arco-layout-content)  {
+.layout-demo :deep(.arco-layout-content) {
   display: flex;
   flex-direction: column;
   justify-content: center;

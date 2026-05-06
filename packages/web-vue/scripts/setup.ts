@@ -1,4 +1,16 @@
-import { expect } from 'vitest';
+import 'vitest-canvas-mock';
+import { expect, vi } from 'vitest';
+
+Object.defineProperty(document, 'execCommand', {
+  configurable: true,
+  value: vi.fn(() => true),
+});
+Object.defineProperty(navigator, 'clipboard', {
+  configurable: true,
+  value: {
+    writeText: vi.fn().mockResolvedValue(undefined),
+  },
+});
 
 expect.addSnapshotSerializer({
   test: (val) => typeof val === 'string',

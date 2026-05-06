@@ -21,13 +21,11 @@ Basic usage of message.
   <a-button @click="handleClick">Info Message</a-button>
 </template>
 
-<script>
-export default {
-  methods: {
-    handleClick() {
-      this.$message.info('This is an info message')
-    }
-  }
+<script setup lang="ts">
+import { Message } from '@arco-design/web-vue';
+
+const handleClick = () => {
+  Message.info('This is an info message');
 };
 </script>
 ```

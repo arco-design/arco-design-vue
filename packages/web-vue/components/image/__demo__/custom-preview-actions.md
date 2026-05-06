@@ -28,22 +28,18 @@ In addition, starting from `2.17.0`, the preview component `a-image-preview` pro
     }"
   >
     <template #preview-actions>
-      <a-image-preview-action name="下载" @click="download"><icon-download /></a-image-preview-action>
+      <a-image-preview-action name="下载" @click="handleDownload">
+        <icon-download />
+      </a-image-preview-action>
     </template>
   </a-image>
 </template>
 
-<script>
-export default {
-  setup() {
-    const download = () => {
-      console.log('点击下载图片')
-    };
+<script setup lang="ts">
+import { IconDownload } from '@arco-design/web-vue/es/icon';
 
-    return {
-      download
-    }
-  },
-}
+const handleDownload = () => {
+  console.log('点击下载图片');
+};
 </script>
 ```

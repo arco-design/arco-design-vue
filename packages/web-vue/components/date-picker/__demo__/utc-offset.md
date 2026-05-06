@@ -46,7 +46,7 @@ Set timezone offset with `utc-offset`.
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, ref } from 'vue';
 
 const utcOptions = Array.from({ length: 25 }, (_, i) => {
@@ -57,35 +57,23 @@ const utcOptions = Array.from({ length: 25 }, (_, i) => {
   };
 });
 
-export default {
-  setup() {
-    const utcOffset = ref(0);
-    const value = ref(new Date('2022-02-22 08:00:00'));
-    const rangeValue = ref([
-      new Date('2022-02-22 08:00:00'),
-      new Date('2022-02-22 10:00:00'),
-    ]);
+const utcOffset = ref(0);
+const value = ref(new Date('2022-02-22 08:00:00'));
+const rangeValue = ref([
+  new Date('2022-02-22 08:00:00'),
+  new Date('2022-02-22 10:00:00'),
+]);
 
-    const output = computed(() =>
-      JSON.stringify(
-        {
-          utcOffset: utcOffset.value,
-          value: value.value,
-          rangeValue: rangeValue.value,
-        },
-        null,
-        2
-      )
-    );
-
-    return {
-      utcOptions,
-      utcOffset,
-      value,
-      rangeValue,
-      output,
-    };
-  },
-};
+const output = computed(() =>
+  JSON.stringify(
+    {
+      utcOffset: utcOffset.value,
+      value: value.value,
+      rangeValue: rangeValue.value,
+    },
+    null,
+    2
+  )
+);
 </script>
 ```

@@ -36,7 +36,7 @@ Basic usage of the drop-down menu.
       </template>
     </a-dropdown>
     <a-dropdown @select="handleSelect" :popup-max-height="false">
-      <a-button>No Max Height <icon-down/></a-button>
+      <a-button>No Max Height <icon-down /></a-button>
       <template #content>
         <a-doption>Option 1</a-doption>
         <a-doption disabled>Option 2</a-doption>
@@ -52,18 +52,10 @@ Basic usage of the drop-down menu.
   </a-space>
 </template>
 
-<script>
-export default {
-  setup() {
-    const handleSelect = (v) => {
-      console.log(v)
-    };
-
-    return {
-      handleSelect
-    }
-  },
-}
+<script setup lang="ts">
+const handleSelect = (v) => {
+  console.log(v);
+};
 </script>
 
 <style>

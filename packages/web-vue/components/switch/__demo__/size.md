@@ -20,7 +20,7 @@ The switch is divided into two sizes, `small` and `medium`.
 <template>
   <a-space size="large">
     <a-switch />
-    <a-switch size="small"/>
+    <a-switch size="small" />
   </a-space>
 </template>
 ```

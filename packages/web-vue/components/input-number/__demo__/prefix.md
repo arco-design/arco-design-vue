@@ -19,12 +19,21 @@ Add prefix and suffix in the input box by specifying the `prefix` and `suffix` s
 ```vue
 <template>
   <a-space direction="vertical" size="large">
-    <a-input-number :style="{width:'320px'}" placeholder="Please enter something" allow-clear>
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+    >
       <template #prefix>
         <icon-user />
       </template>
     </a-input-number>
-    <a-input-number :style="{width:'320px'}" placeholder="Please enter something" allow-clear hide-button>
+    <a-input-number
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      allow-clear
+      hide-button
+    >
       <template #suffix>
         <icon-info-circle />
       </template>

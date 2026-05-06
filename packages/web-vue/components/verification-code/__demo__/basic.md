@@ -18,14 +18,18 @@ Basic usage
 
 ```vue
 <template>
-  <a-verification-code v-model="value" style="width: 300px" @finish="onFinish" />
+  <a-verification-code
+    v-model="value"
+    style="width: 300px"
+    @finish="handleFinish"
+  />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
-import { Message} from '@arco-design/web-vue';
+import { Message } from '@arco-design/web-vue';
 
 const value = ref('654321');
-const onFinish = (value) => Message.info(`Verification code: ${value}`);
+const handleFinish = (value) => Message.info(`Verification code: ${value}`);
 </script>
 ```

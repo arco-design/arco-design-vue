@@ -20,9 +20,17 @@ You can use the `help` attribute or slot. The verification information will be b
 
 ```vue
 <template>
-  <a-form :model="form" :style="{width:'600px'}">
-    <a-form-item field="name" label="Username" validate-trigger="input" required>
-      <a-input v-model="form.name" placeholder="please enter your username..." />
+  <a-form :model="form" :style="{ width: '600px' }">
+    <a-form-item
+      field="name"
+      label="Username"
+      validate-trigger="input"
+      required
+    >
+      <a-input
+        v-model="form.name"
+        placeholder="please enter your username..."
+      />
       <template #extra>
         <div>Used to login</div>
       </template>
@@ -37,29 +45,19 @@ You can use the `help` attribute or slot. The verification information will be b
       </template>
     </a-form-item>
     <a-form-item field="isRead">
-      <a-checkbox v-model="form.isRead">
-        I have read the manual
-      </a-checkbox>
+      <a-checkbox v-model="form.isRead"> I have read the manual </a-checkbox>
     </a-form-item>
   </a-form>
   {{ form }}
 </template>
 
-<script>
+<script setup lang="ts">
 import { reactive } from 'vue';
 
-export default {
-  setup() {
-    const form = reactive({
-      name: '',
-      post: '',
-      isRead: false,
-    })
-
-    return {
-      form,
-    }
-  },
-}
+const form = reactive({
+  name: '',
+  post: '',
+  isRead: false,
+});
 </script>
 ```

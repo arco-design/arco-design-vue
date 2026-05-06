@@ -21,25 +21,25 @@ An icon can be added to the tag through the `icon` slot.
   <a-space>
     <a-tag color="gray">
       <template #icon>
-        <icon-github/>
+        <icon-github />
       </template>
       Github
     </a-tag>
     <a-tag color="orangered">
       <template #icon>
-        <icon-gitlab/>
+        <icon-gitlab />
       </template>
       Gitlab
     </a-tag>
     <a-tag color="blue">
       <template #icon>
-        <icon-twitter/>
+        <icon-twitter />
       </template>
       Twitter
     </a-tag>
     <a-tag color="arcoblue">
       <template #icon>
-        <icon-facebook/>
+        <icon-facebook />
       </template>
       Facebook
     </a-tag>

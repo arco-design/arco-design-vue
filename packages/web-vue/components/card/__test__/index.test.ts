@@ -1,7 +1,6 @@
+import { h } from 'vue';
 import { mount } from '@vue/test-utils';
 import Card from '../index';
-
-const { Meta, Grid } = Card;
 
 describe('Card', () => {
   test('Should have prefix', () => {
@@ -30,9 +29,9 @@ describe('Card', () => {
   });
 
   test('Card meta should work', () => {
-    const wrapper = mount(Meta, {
-      props: {
-        title: 'Card meta title',
+    const wrapper = mount(Card, {
+      slots: {
+        default: () => h(Card.Meta, { title: 'Card meta title' }),
       },
     });
     const titleElement = wrapper.find('.arco-card-meta-title');
@@ -40,13 +39,16 @@ describe('Card', () => {
   });
 
   test('Card grid should work', () => {
-    const wrapper = mount(Grid, {
+    const wrapper = mount(Card, {
       slots: {
-        default: [Card, Card, Card],
+        default: () => [
+          h(Card.Grid, null, { default: () => 'grid-1' }),
+          h(Card.Grid, null, { default: () => 'grid-2' }),
+          h(Card.Grid, null, { default: () => 'grid-3' }),
+        ],
       },
     });
-    expect(wrapper.classes()).toContain('arco-card-grid');
-    const cards = wrapper.findAll('.arco-card');
-    expect(cards.length).toBe(3);
+    const grids = wrapper.findAll('.arco-card-grid');
+    expect(grids.length).toBe(3);
   });
 });

@@ -26,11 +26,7 @@ Set `hoverable` to add a mouse hover style to the card, and you can customize th
       Card content <br />
       Card content
     </a-card>
-    <a-card
-      class="card-demo"
-      title="Custom hover style"
-      hoverable
-    >
+    <a-card class="card-demo" title="Custom hover style" hoverable>
       <template #extra>
         <a-link>More</a-link>
       </template>

@@ -23,48 +23,39 @@ Use `showTime` to select a date with time.
     show-time
     :time-picker-props="{ defaultValue: '09:09:06' }"
     format="YYYY-MM-DD HH:mm:ss"
-    @change="onChange"
-    @select="onSelect"
-    @ok="onOk"
+    @change="handleChange"
+    @select="handleSelect"
+    @ok="handleOk"
   />
   <a-date-picker
     style="width: 220px; margin: 0 24px 24px 0;"
     show-time
     format="YYYY-MM-DD hh:mm"
-    @change="onChange"
-    @select="onSelect"
-    @ok="onOk"
+    @change="handleChange"
+    @select="handleSelect"
+    @ok="handleOk"
   />
   <a-range-picker
     style="width: 360px; margin: 0 24px 24px 0;"
     show-time
     :time-picker-props="{ defaultValue: ['00:00:00', '09:09:06'] }"
     format="YYYY-MM-DD HH:mm"
-    @change="onChange"
-    @select="onSelect"
-    @ok="onOk"
+    @change="handleChange"
+    @select="handleSelect"
+    @ok="handleOk"
   />
 </template>
-<script>
-export default {
-  setup() {
-    function onSelect(dateString, date) {
-      console.log('onSelect', dateString, date);
-    }
+<script setup lang="ts">
+function handleSelect(dateString, date) {
+  console.log('handleSelect', dateString, date);
+}
 
-    function onChange(dateString, date) {
-      console.log('onChange: ', dateString, date);
-    }
+function handleChange(dateString, date) {
+  console.log('handleChange: ', dateString, date);
+}
 
-    function onOk(dateString, date) {
-      console.log('onOk: ', dateString, date);
-    }
-    return {
-      onSelect,
-      onChange,
-      onOk,
-    };
-  }
+function handleOk(dateString, date) {
+  console.log('handleOk: ', dateString, date);
 }
 </script>
 ```

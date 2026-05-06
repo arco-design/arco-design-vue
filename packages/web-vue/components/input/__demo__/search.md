@@ -19,8 +19,15 @@ An input box with a search button for content retrieval.
 ```vue
 <template>
   <a-space direction="vertical" size="large">
-    <a-input-search :style="{width:'320px'}" placeholder="Please enter something"/>
-    <a-input-search :style="{width:'320px'}" placeholder="Please enter something" search-button/>
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+    />
+    <a-input-search
+      :style="{ width: '320px' }"
+      placeholder="Please enter something"
+      search-button
+    />
   </a-space>
 </template>
 ```

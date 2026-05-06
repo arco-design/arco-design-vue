@@ -22,9 +22,7 @@ By `resizeDirections`, you can use the mouse to drag the sidebar to zoom in and 
     <a-layout>
       <a-layout-header>Header</a-layout-header>
       <a-layout>
-        <a-layout-sider :resize-directions="['right']">
-          Sider
-        </a-layout-sider>
+        <a-layout-sider :resize-directions="['right']"> Sider </a-layout-sider>
         <a-layout-content>Content</a-layout-content>
       </a-layout>
       <a-layout-footer>Footer</a-layout-footer>
@@ -44,7 +42,6 @@ By `resizeDirections`, you can use the mouse to drag the sidebar to zoom in and 
   font-stretch: condensed;
   text-align: center;
 }
-
 
 .layout-demo :deep(.arco-layout-header),
 .layout-demo :deep(.arco-layout-footer) {

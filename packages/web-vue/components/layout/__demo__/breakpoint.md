@@ -25,13 +25,13 @@ The Slider on the left can be set to expand/collapse in conjunction with Menu, a
       :width="220"
       collapsible
       :collapsed="collapsed"
-      @collapse="onCollapse"
+      @collapse="handleCollapse"
     >
       <div class="logo" />
       <a-menu
         :defaultOpenKeys="['1']"
         :defaultSelectedKeys="['0_2']"
-        @menuItemClick="onClickMenuItem"
+        @menuItemClick="handleClickMenuItem"
       >
         <a-menu-item key="0_1" disabled>
           <IconHome />
@@ -69,11 +69,7 @@ The Slider on the left can be set to expand/collapse in conjunction with Menu, a
     </a-layout-sider>
     <a-layout>
       <a-layout-header>
-        <a-menu
-          :openKeys="['1']"
-          :selectedKeys="['0_2']"
-          mode='horizontal'
-        >
+        <a-menu :openKeys="['1']" :selectedKeys="['0_2']" mode="horizontal">
           <a-menu-item key="0_1" disabled>
             <IconHome />
             Menu 1
@@ -120,38 +116,24 @@ The Slider on the left can be set to expand/collapse in conjunction with Menu, a
     </a-layout>
   </a-layout>
 </template>
-<script>
+<script setup lang="ts">
 import { defineComponent, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
-import {
-  IconHome,
-  IconCalendar,
-} from '@arco-design/web-vue/es/icon';
+import { IconHome, IconCalendar } from '@arco-design/web-vue/es/icon';
 
-export default defineComponent({
-  components: {
-    IconHome,
-    IconCalendar,
-  },
-  setup() {
-    const collapsed = ref(false);
-    const onCollapse = (val, type) => {
-      const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
-      Message.info({
-        content,
-        duration: 2000,
-      });
-      collapsed.value = val;
-    }
-    return {
-      collapsed,
-      onCollapse,
-      onClickMenuItem(key) {
-        Message.info({ content: `You select ${key}`, showIcon: true });
-      }
-    };
-  }
-});
+const collapsed = ref(false);
+const handleCollapse = (val, type) => {
+  const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
+  Message.info({
+    content,
+    duration: 2000,
+  });
+  collapsed.value = val;
+};
+
+const handleClickMenuItem = (key: string) => {
+  Message.info({ content: `You select ${key}`, showIcon: true });
+};
 </script>
 <style scoped>
 .layout-demo {
@@ -164,10 +146,10 @@ export default defineComponent({
   margin: 12px 8px;
   background: rgba(255, 255, 255, 0.2);
 }
-.layout-demo :deep(.arco-layout-sider-light) .logo{
+.layout-demo :deep(.arco-layout-sider-light) .logo {
   background: var(--color-fill-2);
 }
-.layout-demo :deep(.arco-layout-header)  {
+.layout-demo :deep(.arco-layout-header) {
   height: 64px;
   line-height: 64px;
   background: var(--color-bg-3);
@@ -186,7 +168,7 @@ export default defineComponent({
   background: var(--color-bg-3);
 }
 .layout-demo :deep(.arco-layout-footer),
-.layout-demo :deep(.arco-layout-content)  {
+.layout-demo :deep(.arco-layout-content) {
   display: flex;
   flex-direction: column;
   justify-content: center;

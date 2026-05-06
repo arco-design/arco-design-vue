@@ -20,20 +20,12 @@ Set the component to a view that reads from right to left.
 <template>
   <div>
     <a-switch v-model="rtlType" style="margin-bottom: 20px;">
-      <template #checked>
-        RTL
-      </template>
-      <template #unchecked>
-        LTR
-      </template>
+      <template #checked> RTL </template>
+      <template #unchecked> LTR </template>
     </a-switch>
     <a-config-provider :rtl="rtlType">
       <a-tabs :default-active-key="2" style="margin-bottom: 20px;">
-        <a-tab-pane
-          v-for="i in 36"
-          :key="i"
-          :title="`Tab ${i}`"
-        >
+        <a-tab-pane v-for="i in 36" :key="i" :title="`Tab ${i}`">
           Content of Tab Panel {{ i }}
         </a-tab-pane>
       </a-tabs>
@@ -45,10 +37,15 @@ Set the component to a view that reads from right to left.
           <a-badge :count="9" dot :dotStyle="{ width: '10px', height: '10px' }">
             <a-avatar shape="square" />
           </a-badge>
-          <a-badge :dotStyle="{ height: '16px', width: '16px', fontSize: '14px' }">
+          <a-badge
+            :dotStyle="{ height: '16px', width: '16px', fontSize: '14px' }"
+          >
             <template #content>
               <IconClockCircle
-                :style="{ verticalAlign: 'middle', color: 'var(--color-text-2)' }"
+                :style="{
+                  verticalAlign: 'middle',
+                  color: 'var(--color-text-2)',
+                }"
               />
             </template>
             <a-avatar shape="square" />
@@ -62,17 +59,9 @@ Set the component to a view that reads from right to left.
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const rtlType = ref(true);
-
-    return {
-      rtlType,
-    };
-  },
-};
+const rtlType = ref(true);
 </script>
 ```

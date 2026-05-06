@@ -23,14 +23,16 @@ When setting `auto-upload` to `false`, you can manually upload by calling the `s
       action="/"
       :auto-upload="false"
       ref="uploadRef"
-      @change="onChange"
+      @change="handleChange"
       multiple
     >
       <template #upload-button>
         <a-space>
           <a-button> select file</a-button>
-          <a-button type="primary" @click="submit"> start upload</a-button>
-          <a-button type="primary" @click="submitOne">
+          <a-button type="primary" @click="handleSubmit">
+            start upload</a-button
+          >
+          <a-button type="primary" @click="handleSubmitOne">
             only upload one
           </a-button>
         </a-space>
@@ -39,37 +41,25 @@ When setting `auto-upload` to `false`, you can manually upload by calling the `s
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const uploadRef = ref();
-    const files = ref([]);
+const uploadRef = ref();
+const files = ref([]);
 
-    const submitOne = (e) => {
-      e.stopPropagation();
-      console.log(files.value);
-      uploadRef.value.submit(files.value.find((x) => x.status === 'init'));
-    };
+const handleSubmitOne = (e) => {
+  e.stopPropagation();
+  console.log(files.value);
+  uploadRef.value.handleSubmit(files.value.find((x) => x.status === 'init'));
+};
 
-    const submit = (e) => {
-      e.stopPropagation();
-      uploadRef.value.submit();
-    };
+const handleSubmit = (e) => {
+  e.stopPropagation();
+  uploadRef.value.handleSubmit();
+};
 
-    const onChange = (fileList) => {
-      files.value = fileList;
-    };
-
-    return {
-      uploadRef,
-      files,
-      submitOne,
-      submit,
-      onChange,
-    };
-  },
+const handleChange = (fileList) => {
+  files.value = fileList;
 };
 </script>
 ```

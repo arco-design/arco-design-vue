@@ -23,24 +23,16 @@ Used to enter a password.
     <a-input-password
       v-model:visibility="visibility"
       placeholder="Please enter something"
-      :style="{width:'320px'}"
+      :style="{ width: '320px' }"
       :defaultVisibility="false"
       allow-clear
     />
   </a-space>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const visibility = ref(true);
-
-    return {
-      visibility
-    }
-  },
-}
+const visibility = ref(true);
 </script>
 ```

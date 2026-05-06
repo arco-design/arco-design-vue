@@ -18,6 +18,6 @@ Display the total number of data by setting the `show-total` property.
 
 ```vue
 <template>
-  <a-pagination :total="200" show-total/>
+  <a-pagination :total="200" show-total />
 </template>
 ```

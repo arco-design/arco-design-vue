@@ -19,9 +19,7 @@ Show titles of different levels.
 ```vue
 <template>
   <a-typography>
-    <a-typography-title>
-      H1. The Pragmatic Romanticism
-    </a-typography-title>
+    <a-typography-title> H1. The Pragmatic Romanticism </a-typography-title>
     <a-typography-title :heading="2">
       H2. The Pragmatic Romanticism
     </a-typography-title>

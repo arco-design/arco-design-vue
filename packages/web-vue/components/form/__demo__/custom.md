@@ -20,50 +20,46 @@ Customize form components with `useFormItem`. Available since version 2.18.0.
 <template>
   <a-space style="margin-bottom: 20px;">
     <a-switch v-model="disabled" />
-    Disabled: {{disabled}}
+    Disabled: {{ disabled }}
   </a-space>
-  <Form :model="form" :disabled="disabled" :style="{width:'600px'}">
-    <FormItem field="name" label="Username"
-              :rules="[{required:true,message:'name is required'},{minLength:5,message:'must be greater than 5 characters'}]">
-      <MyInput v-model="form.name" placeholder="please enter your username..." />
+  <Form :model="form" :disabled="disabled" :style="{ width: '600px' }">
+    <FormItem
+      field="name"
+      label="Username"
+      :rules="[
+        { required: true, message: 'name is required' },
+        { minLength: 5, message: 'must be greater than 5 characters' },
+      ]"
+    >
+      <MyInput
+        v-model="form.name"
+        placeholder="please enter your username..."
+      />
     </FormItem>
   </Form>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { h, reactive, ref } from 'vue';
 import { Form, FormItem, useFormItem } from '@arco-design/web-vue';
 
 const MyInput = {
   emits: ['update:modelValue'],
-  setup(_, { emit }) {
+  setup: (_, { emit }) => {
     const { mergedDisabled, eventHandlers } = useFormItem();
     const handleInput = (ev) => {
       const { value } = ev.target;
-      emit('update:modelValue', value)
-      eventHandlers.value?.onChange?.(ev)
-    }
-    return () => h('input', { disabled: mergedDisabled.value, onInput: handleInput })
-  }
-}
-
-export default {
-  components: {
-    Form,
-    FormItem,
-    MyInput
+      emit('update:modelValue', value);
+      eventHandlers.value?.onChange?.(ev);
+    };
+    return () =>
+      h('input', { disabled: mergedDisabled.value, onInput: handleInput });
   },
-  setup() {
-    const disabled = ref(false);
-    const form = reactive({
-      name: ''
-    })
+};
 
-    return {
-      disabled,
-      form
-    }
-  },
-}
+const disabled = ref(false);
+const form = reactive({
+  name: '',
+});
 </script>
 ```

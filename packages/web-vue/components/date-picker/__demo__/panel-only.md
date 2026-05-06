@@ -33,14 +33,13 @@ Only use panel, hide input selection.
     />
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      pickerValue: null,
-      rangePickerValue: null,
-    };
-  }
-};
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  pickerValue: null,
+  rangePickerValue: null,
+});
+
+const { pickerValue, rangePickerValue } = toRefs(state);
 </script>
 ```

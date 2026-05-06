@@ -12,12 +12,11 @@ title:
 
 ## en-US
 
-
 ---
 
 ```vue
 <template>
-  <a-trigger :trigger="['click','hover','focus']">
+  <a-trigger :trigger="['click', 'hover', 'focus']">
     <a-input placeholder="Click/Hover/Focus on me" />
     <template #content>
       <div class="demo-trigger">
