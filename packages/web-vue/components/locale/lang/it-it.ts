@@ -147,6 +147,55 @@ const lang: ArcoLang = {
     collapse: 'Piega',
     expand: 'Espandi',
   },
+  form: {
+    validateMessages: {
+      required: '#{field} è obbligatorio',
+      type: {
+        string: '#{field} non è un testo valido',
+        number: '#{field} non è un numero valido',
+        boolean: '#{field} non è un valore booleano valido',
+        array: '#{field} non è un array valido',
+        object: '#{field} non è un oggetto valido',
+        url: '#{field} non è un URL valido',
+        email: '#{field} non è un indirizzo email valido',
+        ip: '#{field} non è un indirizzo IP valido',
+      },
+      number: {
+        min: '`#{value}` è inferiore al valore minimo `#{min}`',
+        max: '`#{value}` è superiore al valore massimo `#{max}`',
+        equal: '`#{value}` non è uguale a `#{equal}`',
+        range: "`#{value}` non rientra nell'intervallo `#{min} ~ #{max}`",
+        positive: '`#{value}` non è un numero positivo',
+        negative: '`#{value}` non è un numero negativo',
+      },
+      array: {
+        length: 'Il numero di `#{field}` non è uguale a #{length}',
+        minLength: 'Il numero di `#{field}` deve essere almeno #{minLength}',
+        maxLength:
+          'Il numero di `#{field}` deve essere al massimo #{maxLength}',
+        includes: '#{field} non contiene #{includes}',
+        deepEqual: '#{field} non è uguale a #{deepEqual}',
+        empty: '`#{field}` non è un array vuoto',
+      },
+      string: {
+        minLength: 'Il numero di caratteri deve essere almeno #{minLength}',
+        maxLength: 'Il numero di caratteri deve essere al massimo #{maxLength}',
+        length: 'Il numero di caratteri deve essere #{length}',
+        match: '`#{value}` non corrisponde al pattern #{pattern}',
+        uppercase: '`#{value}` deve essere tutto in maiuscolo',
+        lowercase: '`#{value}` deve essere tutto in minuscolo',
+      },
+      object: {
+        deepEqual: '`#{field}` non è uguale al valore previsto',
+        hasKeys: '`#{field}` non contiene i campi obbligatori',
+        empty: '`#{field}` non è un oggetto',
+      },
+      boolean: {
+        true: 'Il valore atteso è `true`',
+        false: 'Il valore atteso è `false`',
+      },
+    },
+  },
   colorPicker: {
     history: 'Colori storici',
     preset: 'Colori preimpostati dal sistema',

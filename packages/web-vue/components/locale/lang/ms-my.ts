@@ -146,6 +146,55 @@ const lang: ArcoLang = {
     expand: 'lipat',
     collapse: 'mengembang',
   },
+  form: {
+    validateMessages: {
+      required: '#{field} wajib diisi',
+      type: {
+        string: '#{field} bukan teks yang sah',
+        number: '#{field} bukan nombor yang sah',
+        boolean: '#{field} bukan nilai boolean yang sah',
+        array: '#{field} bukan tatasusunan yang sah',
+        object: '#{field} bukan objek yang sah',
+        url: '#{field} bukan URL yang sah',
+        email: '#{field} bukan alamat e-mel yang sah',
+        ip: '#{field} bukan alamat IP yang sah',
+      },
+      number: {
+        min: '`#{value}` lebih kecil daripada nilai minimum `#{min}`',
+        max: '`#{value}` lebih besar daripada nilai maksimum `#{max}`',
+        equal: '`#{value}` tidak sama dengan `#{equal}`',
+        range: '`#{value}` tidak berada dalam julat `#{min} ~ #{max}`',
+        positive: '`#{value}` bukan nombor positif',
+        negative: '`#{value}` bukan nombor negatif',
+      },
+      array: {
+        length: 'Bilangan `#{field}` tidak sama dengan #{length}',
+        minLength:
+          'Bilangan `#{field}` mestilah sekurang-kurangnya #{minLength}',
+        maxLength: 'Bilangan `#{field}` mestilah tidak melebihi #{maxLength}',
+        includes: '#{field} tidak mengandungi #{includes}',
+        deepEqual: '#{field} tidak sama dengan #{deepEqual}',
+        empty: '`#{field}` bukan tatasusunan kosong',
+      },
+      string: {
+        minLength: 'Bilangan aksara mestilah sekurang-kurangnya #{minLength}',
+        maxLength: 'Bilangan aksara mestilah tidak melebihi #{maxLength}',
+        length: 'Bilangan aksara mestilah #{length}',
+        match: '`#{value}` tidak sepadan dengan corak #{pattern}',
+        uppercase: '`#{value}` mesti dalam huruf besar sepenuhnya',
+        lowercase: '`#{value}` mesti dalam huruf kecil sepenuhnya',
+      },
+      object: {
+        deepEqual: '`#{field}` tidak sama dengan nilai yang dijangka',
+        hasKeys: '`#{field}` tidak mengandungi medan yang diperlukan',
+        empty: '`#{field}` bukan objek',
+      },
+      boolean: {
+        true: 'Nilai yang dijangka ialah `true`',
+        false: 'Nilai yang dijangka ialah `false`',
+      },
+    },
+  },
   colorPicker: {
     history: 'Warna yang digunakan baru-baru ini',
     preset: 'Warna lalai sistem',

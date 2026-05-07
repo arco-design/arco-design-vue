@@ -146,6 +146,56 @@ const lang: ArcoLang = {
     expand: 'Expandir',
     collapse: 'Pliegue',
   },
+  form: {
+    validateMessages: {
+      required: 'El campo #{field} es obligatorio',
+      type: {
+        string: '#{field} no es un texto válido',
+        number: '#{field} no es un número válido',
+        boolean: '#{field} no es un valor booleano válido',
+        array: '#{field} no es un arreglo válido',
+        object: '#{field} no es un objeto válido',
+        url: '#{field} no es una URL válida',
+        email: '#{field} no es un correo electrónico válido',
+        ip: '#{field} no es una dirección IP válida',
+      },
+      number: {
+        min: '`#{value}` es menor que el valor mínimo `#{min}`',
+        max: '`#{value}` es mayor que el valor máximo `#{max}`',
+        equal: '`#{value}` no es igual a `#{equal}`',
+        range: '`#{value}` no está dentro del rango `#{min} ~ #{max}`',
+        positive: '`#{value}` no es un número positivo',
+        negative: '`#{value}` no es un número negativo',
+      },
+      array: {
+        length: 'La cantidad de `#{field}` no es igual a #{length}',
+        minLength: 'La cantidad de `#{field}` debe ser al menos #{minLength}',
+        maxLength:
+          'La cantidad de `#{field}` debe ser como máximo #{maxLength}',
+        includes: '#{field} no incluye #{includes}',
+        deepEqual: '#{field} no es igual a #{deepEqual}',
+        empty: '`#{field}` no es un arreglo vacío',
+      },
+      string: {
+        minLength: 'La cantidad de caracteres debe ser al menos #{minLength}',
+        maxLength:
+          'La cantidad de caracteres debe ser como máximo #{maxLength}',
+        length: 'La cantidad de caracteres debe ser #{length}',
+        match: '`#{value}` no coincide con el patrón #{pattern}',
+        uppercase: '`#{value}` debe estar completamente en mayúsculas',
+        lowercase: '`#{value}` debe estar completamente en minúsculas',
+      },
+      object: {
+        deepEqual: '`#{field}` no es igual al valor esperado',
+        hasKeys: '`#{field}` no incluye los campos obligatorios',
+        empty: '`#{field}` no es un objeto',
+      },
+      boolean: {
+        true: 'El valor esperado es `true`',
+        false: 'El valor esperado es `false`',
+      },
+    },
+  },
   colorPicker: {
     history: 'Colores históricos',
     preset: 'Colores predefinidos del sistema',

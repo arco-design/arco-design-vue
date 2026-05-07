@@ -12,7 +12,7 @@
     "jsx": "preserve",
     "jsxImportSource": "vue",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "types": ["vitest/globals", "node"],
+    "types": ["vitest/globals", "vite/client", "node"],
     "skipLibCheck": true,
     "resolveJsonModule": true,
   },
