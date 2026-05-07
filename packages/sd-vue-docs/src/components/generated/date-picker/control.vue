@@ -8,8 +8,8 @@
   export default {
     data() {
       return {
-        value: Date.now(),
-        rangeValue: [Date.now(), Date.now()],
+        value: '2026-04-16',
+        rangeValue: ['2026-04-16', '2026-04-16'],
       };
     },
   };

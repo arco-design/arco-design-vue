@@ -63,11 +63,85 @@ exports[`<color-picker> demo: > render [format] correctly 1`] = `
 </div>
 `;
 
+exports[`<color-picker> demo: > render [gradient] correctly 1`] = `
+<div class="sd-space sd-space-vertical" style="column-gap: 16px; row-gap: 16px;">
+  <!---->
+  <div class="sd-space-item">
+    <div class="sd-color-picker sd-color-picker-size-medium"><span class="sd-input-wrapper sd-color-picker-trigger-input"><span class="sd-input-prefix"><div class="sd-color-picker-preview" style="background-image: linear-gradient(90deg, rgb(79, 172, 254) 0%, rgb(0, 242, 254) 100%);"></div></span><input class="sd-input sd-input-size-medium" type="text" value="linear-gradient(90deg, rgb(79, 172, 254) 0%, rgb(0, 242, 254) 100%)">
+      <!---->
+      <!----></span>
+    </div>
+    <!---->
+  </div>
+  <!---->
+  <div class="sd-space-item">
+    <div class="sd-color-picker-panel">
+      <!---->
+      <div class="sd-color-picker-gradient-panel">
+        <div class="sd-color-picker-gradient-bar-shell"><button type="button" class="sd-color-picker-gradient-bar" style="background-image: linear-gradient(90deg, rgb(255, 126, 95) 0%, rgb(254, 180, 123) 100%);"></button><button type="button" class="sd-color-picker-gradient-thumb sd-color-picker-gradient-thumb-active" style="left: 0%;"><span class="sd-color-picker-gradient-thumb-inner" style="background-color: rgb(255, 126, 95);"></span></button><button type="button" class="sd-color-picker-gradient-thumb" style="left: 100%;"><span class="sd-color-picker-gradient-thumb-inner" style="background-color: rgb(254, 180, 123);"></span></button></div>
+        <div class="sd-color-picker-gradient-meta"><span class="sd-color-picker-gradient-label">角度</span><span class="sd-input-wrapper sd-input-number sd-input-number-mode-embed sd-input-number-size-mini sd-color-picker-gradient-degree"><!----><input class="sd-input sd-input-size-mini" type="text" role="spinbutton" aria-valuemax="360" aria-valuemin="0" aria-valuenow="135" value="135"><!----><!----></span></div>
+        <div class="sd-color-picker-gradient-preview" style="background-image: linear-gradient(135deg, rgb(255, 126, 95) 0%, rgb(254, 180, 123) 100%);"></div>
+      </div>
+      <div class="sd-color-picker-palette" style="background-color: rgb(255, 49, 0);">
+        <div class="sd-color-picker-handler" style="top: 0%; left: 62.745098039215684%;"></div>
+      </div>
+      <div class="sd-color-picker-panel-control">
+        <div class="sd-color-picker-control-wrapper">
+          <div>
+            <div class="sd-color-picker-control-bar sd-color-picker-control-bar-hue">
+              <div class="sd-color-picker-handler" style="left: 3.229166666666667%; color: rgb(255, 126, 95);"></div>
+            </div>
+            <div class="sd-color-picker-control-bar-bg">
+              <div class="sd-color-picker-control-bar sd-color-picker-control-bar-alpha" style="background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(255, 126, 95));">
+                <div class="sd-color-picker-handler" style="left: 100%; color: rgb(255, 126, 95);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="sd-color-picker-preview" style="background-image: linear-gradient(135deg, rgb(255, 126, 95) 0%, rgb(254, 180, 123) 100%);"></div>
+        </div>
+        <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini" title="RGBA"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">RGBA</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+          <!----></span></span>
+          <!---->
+          <div class="sd-color-picker-group-wrapper">
+            <div class="sd-input-group sd-color-picker-input-group"><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="255"><!----><!----></span><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="126"><!----><!----></span><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="95"><!----><!----></span><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="100%"><!----><!----></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sd-color-picker-panel-colors">
+        <div class="sd-color-picker-colors-section">
+          <div class="sd-color-picker-colors-header">
+            <div class="sd-color-picker-colors-text">最近使用</div><button type="button" class="sd-color-picker-colors-action">添加当前颜色</button>
+          </div>
+          <div class="sd-color-picker-colors-wrapper"><span class="sd-color-picker-colors-empty">暂无颜色</span></div>
+        </div>
+        <div class="sd-color-picker-colors-section">
+          <div class="sd-color-picker-colors-header">
+            <div class="sd-color-picker-colors-text">系统色板</div>
+            <!---->
+          </div>
+          <div class="sd-color-picker-colors-wrapper">
+            <div class="sd-color-picker-colors-list"><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 linear-gradient(90deg, rgba(79, 172, 254, 1) 0%, rgba(0, 242, 254, 1) 100%)">
+                <div class="sd-color-picker-block" style="background-image: linear-gradient(90deg, rgb(79, 172, 254) 0%, rgb(0, 242, 254) 100%);"></div>
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 linear-gradient(135deg, rgba(255, 126, 95, 1) 0%, rgba(254, 180, 123, 1) 100%)">
+                <div class="sd-color-picker-block" style="background-image: linear-gradient(135deg, rgb(255, 126, 95) 0%, rgb(254, 180, 123) 100%);"></div>
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 linear-gradient(120deg, rgba(67, 233, 123, 1) 0%, rgba(56, 249, 215, 1) 100%)">
+                <div class="sd-color-picker-block" style="background-image: linear-gradient(120deg, rgb(67, 233, 123) 0%, rgb(56, 249, 215) 100%);"></div>
+              </button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<color-picker> demo: > render [only-panel] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 32px; row-gap: 32px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-color-picker-panel">
+      <!---->
+      <!---->
       <div class="sd-color-picker-palette" style="background-color: rgb(0, 78, 255);">
         <div class="sd-color-picker-handler" style="top: 0%; left: 91.37254901960785%;"></div>
       </div>
@@ -88,60 +162,67 @@ exports[`<color-picker> demo: > render [only-panel] correctly 1`] = `
         <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini" title="RGBA"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">RGBA</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           <!----></span></span>
           <!---->
-          <div class="sd-color-picker-group-wrapper"><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="rgba(22, 93, 255, 1)"><!----><!----></span></div>
+          <div class="sd-color-picker-group-wrapper">
+            <div class="sd-input-group sd-color-picker-input-group"><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="22"><!----><!----></span><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="93"><!----><!----></span><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="255"><!----><!----></span><span class="sd-input-wrapper sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" value="100%"><!----><!----></span></div>
+          </div>
         </div>
       </div>
       <div class="sd-color-picker-panel-colors">
         <div class="sd-color-picker-colors-section">
-          <div class="sd-color-picker-colors-text">最近使用</div>
+          <div class="sd-color-picker-colors-header">
+            <div class="sd-color-picker-colors-text">最近使用</div><button type="button" class="sd-color-picker-colors-action">添加当前颜色</button>
+          </div>
           <div class="sd-color-picker-colors-wrapper"><span class="sd-color-picker-colors-empty">暂无颜色</span></div>
         </div>
         <div class="sd-color-picker-colors-section">
-          <div class="sd-color-picker-colors-text">系统色板</div>
+          <div class="sd-color-picker-colors-header">
+            <div class="sd-color-picker-colors-text">系统色板</div>
+            <!---->
+          </div>
           <div class="sd-color-picker-colors-wrapper">
-            <div class="sd-color-picker-colors-list"><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #00B42A" style="background-color: rgb(0, 180, 42);">
+            <div class="sd-color-picker-colors-list"><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #00B42A">
                 <div class="sd-color-picker-block" style="background-color: rgb(0, 180, 42);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3C7EFF" style="background-color: rgb(60, 126, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3C7EFF">
                 <div class="sd-color-picker-block" style="background-color: rgb(60, 126, 255);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FF7D00" style="background-color: rgb(255, 125, 0);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FF7D00">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 125, 0);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F76965" style="background-color: rgb(247, 105, 101);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F76965">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 105, 101);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F7BA1E" style="background-color: rgb(247, 186, 30);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F7BA1E">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 186, 30);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F5319D" style="background-color: rgb(245, 49, 157);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F5319D">
                 <div class="sd-color-picker-block" style="background-color: rgb(245, 49, 157);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #D91AD9" style="background-color: rgb(217, 26, 217);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #D91AD9">
                 <div class="sd-color-picker-block" style="background-color: rgb(217, 26, 217);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FDB1D" style="background-color: rgb(159, 219, 29);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FDB1D">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 219, 29);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FADC19" style="background-color: rgb(250, 220, 25);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FADC19">
                 <div class="sd-color-picker-block" style="background-color: rgb(250, 220, 25);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #722ED1" style="background-color: rgb(114, 46, 209);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #722ED1">
                 <div class="sd-color-picker-block" style="background-color: rgb(114, 46, 209);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3491FA" style="background-color: rgb(52, 145, 250);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3491FA">
                 <div class="sd-color-picker-block" style="background-color: rgb(52, 145, 250);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #7BE188" style="background-color: rgb(123, 225, 136);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #7BE188">
                 <div class="sd-color-picker-block" style="background-color: rgb(123, 225, 136);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #93BEFF" style="background-color: rgb(147, 190, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #93BEFF">
                 <div class="sd-color-picker-block" style="background-color: rgb(147, 190, 255);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FFCF8B" style="background-color: rgb(255, 207, 139);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FFCF8B">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 207, 139);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FBB0A7" style="background-color: rgb(251, 176, 167);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FBB0A7">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 176, 167);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FCE996" style="background-color: rgb(252, 233, 150);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FCE996">
                 <div class="sd-color-picker-block" style="background-color: rgb(252, 233, 150);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FB9DC7" style="background-color: rgb(251, 157, 199);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FB9DC7">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 157, 199);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F08EE6" style="background-color: rgb(240, 142, 230);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F08EE6">
                 <div class="sd-color-picker-block" style="background-color: rgb(240, 142, 230);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #DCF190" style="background-color: rgb(220, 241, 144);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #DCF190">
                 <div class="sd-color-picker-block" style="background-color: rgb(220, 241, 144);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FDFA94" style="background-color: rgb(253, 250, 148);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FDFA94">
                 <div class="sd-color-picker-block" style="background-color: rgb(253, 250, 148);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #C396ED" style="background-color: rgb(195, 150, 237);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #C396ED">
                 <div class="sd-color-picker-block" style="background-color: rgb(195, 150, 237);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FD4FD" style="background-color: rgb(159, 212, 253);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FD4FD">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 212, 253);"></div>
               </button></div>
           </div>
@@ -152,6 +233,8 @@ exports[`<color-picker> demo: > render [only-panel] correctly 1`] = `
   <!---->
   <div class="sd-space-item">
     <div class="sd-color-picker-panel sd-color-picker-panel-disabled">
+      <!---->
+      <!---->
       <div class="sd-color-picker-palette" style="background-color: rgb(0, 255, 205);">
         <div class="sd-color-picker-handler" style="top: 17.647058823529417%; left: 91.42857142857143%;"></div>
       </div>
@@ -169,63 +252,70 @@ exports[`<color-picker> demo: > render [only-panel] correctly 1`] = `
           </div>
           <div class="sd-color-picker-preview" style="background-color: rgb(18, 210, 172);"></div>
         </div>
-        <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini" title="RGBA"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">RGBA</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+        <div class="sd-color-picker-input-wrapper"><span class="sd-select-view-single sd-select sd-color-picker-select sd-select-view sd-select-view-size-mini sd-select-view-disabled" title="RGBA"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" disabled="" value=""><span class="sd-select-view-value">RGBA</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           <!----></span></span>
           <!---->
-          <div class="sd-color-picker-group-wrapper"><span class="sd-input-wrapper sd-input-disabled sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" disabled="" value="rgba(18, 210, 172, 1)"><!----><!----></span></div>
+          <div class="sd-color-picker-group-wrapper">
+            <div class="sd-input-group sd-color-picker-input-group"><span class="sd-input-wrapper sd-input-disabled sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" disabled="" value="18"><!----><!----></span><span class="sd-input-wrapper sd-input-disabled sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" disabled="" value="210"><!----><!----></span><span class="sd-input-wrapper sd-input-disabled sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" disabled="" value="172"><!----><!----></span><span class="sd-input-wrapper sd-input-disabled sd-color-picker-format-input"><!----><input class="sd-input sd-input-size-mini" type="text" disabled="" value="100%"><!----><!----></span></div>
+          </div>
         </div>
       </div>
       <div class="sd-color-picker-panel-colors">
         <div class="sd-color-picker-colors-section">
-          <div class="sd-color-picker-colors-text">最近使用</div>
+          <div class="sd-color-picker-colors-header">
+            <div class="sd-color-picker-colors-text">最近使用</div><button type="button" class="sd-color-picker-colors-action">添加当前颜色</button>
+          </div>
           <div class="sd-color-picker-colors-wrapper"><span class="sd-color-picker-colors-empty">暂无颜色</span></div>
         </div>
         <div class="sd-color-picker-colors-section">
-          <div class="sd-color-picker-colors-text">系统色板</div>
+          <div class="sd-color-picker-colors-header">
+            <div class="sd-color-picker-colors-text">系统色板</div>
+            <!---->
+          </div>
           <div class="sd-color-picker-colors-wrapper">
-            <div class="sd-color-picker-colors-list"><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #00B42A" style="background-color: rgb(0, 180, 42);">
+            <div class="sd-color-picker-colors-list"><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #00B42A">
                 <div class="sd-color-picker-block" style="background-color: rgb(0, 180, 42);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3C7EFF" style="background-color: rgb(60, 126, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3C7EFF">
                 <div class="sd-color-picker-block" style="background-color: rgb(60, 126, 255);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FF7D00" style="background-color: rgb(255, 125, 0);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FF7D00">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 125, 0);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F76965" style="background-color: rgb(247, 105, 101);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F76965">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 105, 101);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F7BA1E" style="background-color: rgb(247, 186, 30);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F7BA1E">
                 <div class="sd-color-picker-block" style="background-color: rgb(247, 186, 30);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F5319D" style="background-color: rgb(245, 49, 157);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F5319D">
                 <div class="sd-color-picker-block" style="background-color: rgb(245, 49, 157);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #D91AD9" style="background-color: rgb(217, 26, 217);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #D91AD9">
                 <div class="sd-color-picker-block" style="background-color: rgb(217, 26, 217);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FDB1D" style="background-color: rgb(159, 219, 29);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FDB1D">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 219, 29);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FADC19" style="background-color: rgb(250, 220, 25);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FADC19">
                 <div class="sd-color-picker-block" style="background-color: rgb(250, 220, 25);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #722ED1" style="background-color: rgb(114, 46, 209);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #722ED1">
                 <div class="sd-color-picker-block" style="background-color: rgb(114, 46, 209);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3491FA" style="background-color: rgb(52, 145, 250);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #3491FA">
                 <div class="sd-color-picker-block" style="background-color: rgb(52, 145, 250);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #7BE188" style="background-color: rgb(123, 225, 136);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #7BE188">
                 <div class="sd-color-picker-block" style="background-color: rgb(123, 225, 136);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #93BEFF" style="background-color: rgb(147, 190, 255);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #93BEFF">
                 <div class="sd-color-picker-block" style="background-color: rgb(147, 190, 255);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FFCF8B" style="background-color: rgb(255, 207, 139);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FFCF8B">
                 <div class="sd-color-picker-block" style="background-color: rgb(255, 207, 139);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FBB0A7" style="background-color: rgb(251, 176, 167);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FBB0A7">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 176, 167);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FCE996" style="background-color: rgb(252, 233, 150);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FCE996">
                 <div class="sd-color-picker-block" style="background-color: rgb(252, 233, 150);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FB9DC7" style="background-color: rgb(251, 157, 199);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FB9DC7">
                 <div class="sd-color-picker-block" style="background-color: rgb(251, 157, 199);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F08EE6" style="background-color: rgb(240, 142, 230);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #F08EE6">
                 <div class="sd-color-picker-block" style="background-color: rgb(240, 142, 230);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #DCF190" style="background-color: rgb(220, 241, 144);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #DCF190">
                 <div class="sd-color-picker-block" style="background-color: rgb(220, 241, 144);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FDFA94" style="background-color: rgb(253, 250, 148);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #FDFA94">
                 <div class="sd-color-picker-block" style="background-color: rgb(253, 250, 148);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #C396ED" style="background-color: rgb(195, 150, 237);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #C396ED">
                 <div class="sd-color-picker-block" style="background-color: rgb(195, 150, 237);"></div>
-              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FD4FD" style="background-color: rgb(159, 212, 253);">
+              </button><button type="button" class="sd-color-picker-color-block" aria-label="选择颜色 #9FD4FD">
                 <div class="sd-color-picker-block" style="background-color: rgb(159, 212, 253);"></div>
               </button></div>
           </div>
@@ -291,7 +381,7 @@ exports[`<color-picker> demo: > render [trigger] correctly 1`] = `
 exports[`<color-picker> demo: > render [trigger-element] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(22, 93, 255);"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bg-colors" style="color: rgb(255, 255, 255);" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="m9.442 25.25 10.351 10.765a1 1 0 0 0 1.428.014L32 25.25z"></path><path d="M19 5.25 22.75 9m0 0 12.043 12.043a1 1 0 0 1 0 1.414L32 25.25M22.75 9 8.693 23.057a1 1 0 0 0-.013 1.4l.762.793m0 0 10.351 10.765a1 1 0 0 0 1.428.014L32 25.25m-22.558 0H32M6 42h36"></path><path fill="currentColor" fill-rule="evenodd" stroke="none" d="M40.013 29.812 37.201 27l-2.812 2.812a4 4 0 1 0 5.624 0" clip-rule="evenodd"></path></svg></span> #165DFF
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color color-picker-trigger-tag" style="background-color: rgb(22, 93, 255);"><span class="sd-tag-icon"><span class="color-picker-trigger-tag__contrast"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bg-colors" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="m9.442 25.25 10.351 10.765a1 1 0 0 0 1.428.014L32 25.25z"></path><path d="M19 5.25 22.75 9m0 0 12.043 12.043a1 1 0 0 1 0 1.414L32 25.25M22.75 9 8.693 23.057a1 1 0 0 0-.013 1.4l.762.793m0 0 10.351 10.765a1 1 0 0 0 1.428.014L32 25.25m-22.558 0H32M6 42h36"></path><path fill="currentColor" fill-rule="evenodd" stroke="none" d="M40.013 29.812 37.201 27l-2.812 2.812a4 4 0 1 0 5.624 0" clip-rule="evenodd"></path></svg></span></span><span class="color-picker-trigger-tag__contrast">#165DFF</span>
     <!--v-if-->
     <!--v-if--></span>
     <!---->

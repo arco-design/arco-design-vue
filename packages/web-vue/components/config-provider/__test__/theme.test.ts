@@ -3,6 +3,8 @@ import { defineComponent, h, nextTick, ref } from 'vue';
 
 import { afterEach, describe, expect, it } from 'vitest';
 
+import AutoComplete from '../../auto-complete';
+import Input from '../../input';
 import ConfigProvider from '../config-provider.vue';
 import {
   applyThemeCSSVariables,
@@ -244,5 +246,69 @@ describe('config-provider theme', () => {
     expect(themeProvider.attributes('sd-theme')).toBeUndefined();
 
     wrapper.unmount();
+  });
+
+  it('keeps allowClear behavior unchanged when config is unset', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              {},
+              {
+                default: () => h(Input, { defaultValue: 'input value' }),
+              },
+            );
+        },
+      }),
+    );
+
+    await nextTick();
+
+    expect(wrapper.find('.sd-input-clear-btn').exists()).toBe(false);
+  });
+
+  it('enables allowClear by default for descendants when configured', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              { allowClear: true },
+              {
+                default: () => h(AutoComplete, { defaultValue: 'auto complete value' }),
+              },
+            );
+        },
+      }),
+    );
+
+    await nextTick();
+
+    expect(wrapper.find('.sd-input-clear-btn').exists()).toBe(true);
+  });
+
+  it('prefers explicit allow-clear prop over provider defaults', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              { allowClear: true },
+              {
+                default: () =>
+                  h(Input, { 'defaultValue': 'manual override', 'allow-clear': false }),
+              },
+            );
+        },
+      }),
+    );
+
+    await nextTick();
+
+    expect(wrapper.find('.sd-input-clear-btn').exists()).toBe(false);
   });
 });

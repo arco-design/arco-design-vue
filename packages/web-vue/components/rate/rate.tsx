@@ -2,6 +2,7 @@ import { computed, defineComponent, PropType, ref, toRef, toRefs, watch } from '
 
 import NP from 'number-precision';
 
+import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNull, isObject, isString, isUndefined } from '../_utils/is';
@@ -109,11 +110,12 @@ export default defineComponent({
    * @binding {number} index
    */
   setup(props, { emit, slots }) {
-    const { modelValue } = toRefs(props);
+    const { modelValue, allowClear } = toRefs(props);
     const prefixCls = getPrefixCls('rate');
     const { mergedDisabled: _mergedDisabled, eventHandlers } = useFormItem({
       disabled: toRef(props, 'disabled'),
     });
+    const { mergedAllowClear } = useAllowClear(allowClear);
     const _value = ref(props.defaultValue);
 
     const animation = ref(false);
@@ -182,7 +184,7 @@ export default defineComponent({
         emit('update:modelValue', newValue);
         emit('change', newValue);
         eventHandlers.value?.onChange?.();
-      } else if (props.allowClear) {
+      } else if (mergedAllowClear.value) {
         _value.value = 0;
         emit('update:modelValue', 0);
         emit('change', 0);

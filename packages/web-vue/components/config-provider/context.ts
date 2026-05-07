@@ -9,6 +9,7 @@ export interface ConfigProvider {
   prefixCls?: string;
   locale?: SDLang;
   size?: Size;
+  allowClear?: boolean;
   updateAtScroll?: boolean;
   scrollToClose?: boolean;
   exchangeTime?: boolean;

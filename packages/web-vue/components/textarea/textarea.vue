@@ -47,6 +47,7 @@
 
   import IconHover from '../_components/icon-hover.vue';
   import ResizeObserver from '../_components/resize-observer';
+  import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useCursor } from '../_hooks/use-cursor';
   import { useFormItem } from '../_hooks/use-form-item';
   import { INPUT_EVENTS } from '../_utils/constant';
@@ -188,13 +189,14 @@
       'blur': (_ev: FocusEvent) => true,
     },
     setup(props, { emit, attrs }) {
-      const { disabled, error, modelValue } = toRefs(props);
+      const { disabled, error, modelValue, allowClear } = toRefs(props);
       const prefixCls = getPrefixCls('textarea');
       const {
         mergedDisabled,
         mergedError: _mergedError,
         eventHandlers,
       } = useFormItem({ disabled, error });
+      const { mergedAllowClear } = useAllowClear(allowClear);
 
       const textareaRef = ref<HTMLInputElement>();
       const textareaStyle = ref<CSSProperties>();
@@ -245,9 +247,9 @@
 
       // 状态相关
       const focused = ref(false);
-      const showClearBtn = computed(
-        () => props.allowClear && !mergedDisabled.value && computedValue.value,
-      );
+      const showClearBtn = computed(() => {
+        return mergedAllowClear.value && !mergedDisabled.value && computedValue.value;
+      });
 
       // 输入法相关
       const isComposition = ref(false);

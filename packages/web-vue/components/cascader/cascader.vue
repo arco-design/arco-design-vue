@@ -20,7 +20,7 @@
       :disabled="mergedDisabled"
       :error="error"
       :multiple="multiple"
-      :allow-clear="allowClear"
+      :allow-clear="mergedAllowClear"
       :allow-search="allowSearch"
       :size="size"
       :opened="computedPopupVisible"
@@ -91,6 +91,7 @@
 
   import SelectView from '../_components/select-view/select-view';
   import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+  import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
   import { Size } from '../_utils/constant';
   import { debounce } from '../_utils/debounce';
@@ -525,12 +526,14 @@
         expandChild,
         pathMode,
         multiple,
+        allowClear,
       } = toRefs(props);
       const _value = ref(props.defaultValue);
       const _inputValue = ref(props.defaultInputValue);
       const _popupVisible = ref(props.defaultPopupVisible);
 
       const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
+      const { mergedAllowClear } = useAllowClear(allowClear);
 
       watch(modelValue, (value) => {
         if (isUndefined(value) || isNull(value)) {
@@ -937,6 +940,7 @@
         handleBlur,
         handleRemove,
         mergedDisabled,
+        mergedAllowClear,
         handleKeyDown,
         totalLevel,
       };

@@ -12,6 +12,7 @@ import {
 } from 'vue';
 
 import ResizeObserver from '../_components/resize-observer';
+import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction, isNull, isUndefined } from '../_utils/is';
@@ -146,6 +147,7 @@ export default defineComponent({
    */
   setup(props, { emit, attrs, slots }) {
     const prefixCls = getPrefixCls('mention');
+    const { mergedAllowClear } = useAllowClear(toRef(props, 'allowClear'));
 
     let styleDeclaration: CSSStyleDeclaration;
 
@@ -349,7 +351,7 @@ export default defineComponent({
               <SDTextarea
                 {...attrs}
                 ref={inputRef}
-                allowClear={props.allowClear}
+                allowClear={mergedAllowClear.value}
                 modelValue={computedValue.value}
                 disabled={mergedDisabled.value}
                 onInput={handleInput}
@@ -400,7 +402,7 @@ export default defineComponent({
             v-slots={slots}
             {...attrs}
             ref={inputRef}
-            allowClear={props.allowClear}
+            allowClear={mergedAllowClear.value}
             modelValue={computedValue.value}
             disabled={mergedDisabled.value}
             onInput={handleInput}

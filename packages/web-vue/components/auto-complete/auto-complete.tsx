@@ -11,6 +11,7 @@ import {
 
 import VirtualList from '../_components/virtual-list-v2';
 import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction, isNull, isUndefined } from '../_utils/is';
@@ -169,11 +170,12 @@ export default defineComponent({
    * @version 2.13.0
    */
   setup(props, { emit, attrs, slots }) {
-    const { modelValue } = toRefs(props);
+    const { modelValue, allowClear } = toRefs(props);
     const prefixCls = getPrefixCls('auto-complete');
     const { mergedDisabled, eventHandlers } = useFormItem({
       disabled: toRef(props, 'disabled'),
     });
+    const { mergedAllowClear } = useAllowClear(allowClear);
 
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement>();
@@ -345,7 +347,7 @@ export default defineComponent({
           v-slots={slots}
           ref={inputRef}
           {...attrs}
-          allowClear={props.allowClear}
+          allowClear={mergedAllowClear.value}
           modelValue={computedValue.value}
           disabled={mergedDisabled.value}
           onInput={handleInputValueChange}

@@ -7,13 +7,13 @@ import { globSync } from 'glob';
 import { access, cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createSassStyleSupport } from 'scripts/utils/sass-support.mts';
 import { defineConfig } from 'vite-plus';
 import { configDefaults } from 'vitest/config';
 
 import cssjsPlugin from './scripts/plugins/vite-plugin-cssjs.mjs';
 import externalPlugin from './scripts/plugins/vite-plugin-external.mjs';
 import vueExportHelperPlugin from './scripts/plugins/vite-plugin-vue-export-helper.mjs';
+import { createSassStyleSupport } from './scripts/utils/sass-support.mts';
 
 const packageRoot = path.dirname(fileURLToPath(import.meta.url));
 

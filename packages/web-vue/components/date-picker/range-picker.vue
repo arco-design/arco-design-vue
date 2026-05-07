@@ -25,7 +25,7 @@
         :error="error"
         :disabled="disabled"
         :readonly="readonly || disabledInput"
-        :allow-clear="allowClear && !readonly"
+        :allow-clear="mergedAllowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-value="inputValue"
         :value="panelValue"
@@ -73,6 +73,7 @@
   import { Dayjs } from 'dayjs';
 
   import DateRangeInput from '../_components/picker/input-range.vue';
+  import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import useState from '../_hooks/use-state';
@@ -415,6 +416,7 @@
         exchangeTime,
         previewShortcut,
         showConfirmBtn,
+        allowClear,
       } = toRefs(props);
 
       const { locale: globalLocal } = useI18n();
@@ -426,6 +428,7 @@
       const mergedExchangeTime = computed(() => {
         return !(!exchangeTime.value || !(configCtx?.exchangeTime ?? true));
       });
+      const { mergedAllowClear } = useAllowClear(allowClear);
 
       const {
         mergedSize,
@@ -978,6 +981,7 @@
         panelValue,
         inputValue,
         focusedIndex,
+        mergedAllowClear,
         triggerDisabled,
         mergedSize,
         mergedError,

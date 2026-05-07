@@ -5,6 +5,7 @@ import { SelectViewValue } from '../_components/select-view/interface';
 import SelectView from '../_components/select-view/select-view';
 import VirtualList from '../_components/virtual-list-v2';
 import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useTrigger } from '../_hooks/use-trigger';
 import { Size } from '../_utils/constant';
@@ -508,6 +509,7 @@ export default defineComponent({
       fieldNames,
       loading,
       defaultActiveFirstOption,
+      allowClear,
     } = toRefs(props);
     const prefixCls = getPrefixCls('select');
     const { mergedSize, mergedDisabled, mergedError, eventHandlers } = useFormItem({
@@ -515,6 +517,7 @@ export default defineComponent({
       disabled,
       error,
     });
+    const { mergedAllowClear } = useAllowClear(allowClear);
     const component = computed(() => (props.virtualListProps ? 'div' : 'li'));
     const retainInputValue = computed(
       () => isObject(props.allowSearch) && Boolean(props.allowSearch.retainInputValue),
@@ -932,7 +935,7 @@ export default defineComponent({
             disabled={mergedDisabled.value}
             error={mergedError.value}
             loading={props.loading}
-            allowClear={props.allowClear}
+            allowClear={mergedAllowClear.value}
             allowCreate={props.allowCreate}
             allowSearch={Boolean(props.allowSearch)}
             opened={computedPopupVisible.value}

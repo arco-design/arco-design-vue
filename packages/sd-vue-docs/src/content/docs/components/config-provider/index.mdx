@@ -13,6 +13,8 @@ export const configProviderEmptySource =
 import ConfigProviderRtlDemo from '../../../../components/generated/config-provider/rtl.vue';
 export const configProviderRtlSource =
   '<template>\n  <div>\n    <sd-switch v-model="rtlType" style="margin-bottom: 20px;">\n      <template #checked> RTL </template>\n      <template #unchecked> LTR </template>\n    </sd-switch>\n    <sd-config-provider :rtl="rtlType">\n      <sd-tabs :default-active-key="2" style="margin-bottom: 20px;">\n        <sd-tab-pane v-for="i in 36" :key="i" :title="`Tab ${i}`">\n          Content of Tab Panel {{ i }}\n        </sd-tab-pane>\n      </sd-tabs>\n      <sd-space :direction="\'vertical\'" style="width: 100%;">\n        <sd-space :size="40">\n          <sd-badge :count="9">\n            <sd-avatar shape="square" />\n          </sd-badge>\n          <sd-badge :count="9" dot :dotStyle="{ width: \'10px\', height: \'10px\' }">\n            <sd-avatar shape="square" />\n          </sd-badge>\n          <sd-badge :dotStyle="{ height: \'16px\', width: \'16px\', fontSize: \'14px\' }">\n            <template #content>\n              <IconClockCircle :style="{ verticalAlign: \'middle\', color: \'var(--color-text-2)\' }" />\n            </template>\n            <sd-avatar shape="square" />\n          </sd-badge>\n          <sd-tag :color="\'red\'" closable>red</sd-tag>\n          <sd-tag :color="\'blue\'" closable>blue</sd-tag>\n          <sd-tag :color="\'green\'" closable>green</sd-tag>\n        </sd-space>\n      </sd-space>\n    </sd-config-provider>\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const rtlType = ref(true);\n\n      return {\n        rtlType,\n      };\n    },\n  };\n</script>';
+import ConfigProviderAllowClearDemo from '../../../../components/generated/config-provider/allow-clear.vue';
+import configProviderAllowClearSource from '../../../../components/generated/config-provider/allow-clear.vue?raw';
 import ConfigProviderThemeModeDemo from '../../../../components/generated/config-provider/theme-mode.vue';
 import configProviderThemeModeSource from '../../../../components/generated/config-provider/theme-mode.vue?raw';
 
@@ -46,6 +48,16 @@ import configProviderThemeModeSource from '../../../../components/generated/conf
 
 </DemoBlock>
 
+### 默认开启 allowClear
+
+设置 `allow-clear` 后，支持清空按钮的组件会默认继承这个配置；如果组件自己显式传入了 `allow-clear` 或 `allowClear`，则以组件 props 为准。
+
+<DemoBlock source={configProviderAllowClearSource} mainFile="src/config-provider-allow-clear.vue">
+
+<ConfigProviderAllowClearDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 局部主题模式
 
 `ConfigProvider` 现在可以作为局部 ThemeProvider 使用。设置 `theme-mode` 后，组件库会在当前子树上挂载真正的局部 `sd-theme` 容器，而不是只依赖 `body`。
@@ -65,6 +77,7 @@ import configProviderThemeModeSource from '../../../../components/generated/conf
 | prefix-cls       | 组件类名前缀                       | `string`            | `'sd'`  |        |
 | locale           | 配置语言包                         | `SDLang`            |   `-`   |        |
 | size             | 大小                               | `Size`              |   `-`   | 2.14.0 |
+| allow-clear      | 是否默认开启清除按钮               | `boolean`           | `false` |        |
 | global           | 是否全局生效                       | `boolean`           | `false` | 2.25.0 |
 | update-at-scroll | 是否在容器滚动时更新弹出框的位置   | `boolean`           | `false` | 2.25.0 |
 | scroll-to-close  | 是否在滚动时关闭弹出框             | `boolean`           | `false` | 2.46.0 |
@@ -85,6 +98,8 @@ import configProviderThemeModeSource from '../../../../components/generated/conf
 ### 全局配置
 
 `global` 属性设置为 `true` 时，会将配置内容注入到 Vue AppContext 中，一般用于解决使用 Modal、Message 组件的函数式调用方法时，配置内容无法生效的问题。
+
+`allow-clear` 只会给未显式传入 `allowClear` 或 `allow-clear` 的组件提供默认值，不会覆盖组件自己已经声明的 props。
 
 ### 局部主题模式
 

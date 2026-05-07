@@ -14,6 +14,7 @@ import {
 import FeedbackIcon from '../_components/feedback-icon.vue';
 import IconHover from '../_components/icon-hover.vue';
 import ResizeObserver from '../_components/resize-observer';
+import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
 import { INPUT_EVENTS, Size } from '../_utils/constant';
@@ -236,7 +237,8 @@ export default defineComponent({
    * @binding {TagData} data
    */
   setup(props, { emit, slots, attrs }) {
-    const { size, disabled, error, uninjectFormItemContext, modelValue } = toRefs(props);
+    const { size, disabled, error, uninjectFormItemContext, modelValue, allowClear } =
+      toRefs(props);
     const prefixCls = props.baseCls || getPrefixCls('input-tag');
     const inputRef = ref<HTMLInputElement>();
     const mirrorRef = ref<HTMLElement>();
@@ -253,6 +255,7 @@ export default defineComponent({
       uninject: uninjectFormItemContext?.value,
     });
     const { mergedSize } = useSize(_mergedSize);
+    const { mergedAllowClear } = useAllowClear(allowClear);
     const mergedFieldNames = computed(() => ({
       ...DEFAULT_FIELD_NAMES,
       ...props.fieldNames,
@@ -384,7 +387,7 @@ export default defineComponent({
       () =>
         !mergedDisabled.value &&
         !props.readonly &&
-        props.allowClear &&
+        mergedAllowClear.value &&
         Boolean(computedValue.value.length),
     );
 

@@ -19,7 +19,7 @@
   const value = ref('#165DFF');
 </script>
 
-<style scoped>
+<style>
   .color-picker-trigger-tag__contrast {
     color: #fff;
     mix-blend-mode: difference;

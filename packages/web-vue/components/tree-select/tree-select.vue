@@ -21,7 +21,7 @@
         :model-value="selectViewValue"
         :input-value="searchValue"
         :allow-search="Boolean(allowSearch)"
-        :allow-clear="allowClear"
+        :allow-clear="mergedAllowClear"
         :loading="loading"
         :size="size"
         :max-tag-count="maxTagCount"
@@ -113,6 +113,7 @@
 
   import { SelectViewValue } from '../_components/select-view/interface';
   import SelectView from '../_components/select-view/select-view';
+  import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import { Size } from '../_utils/constant';
@@ -541,13 +542,14 @@
         treeProps,
         fallbackOption,
         selectable,
-        dropdownClassName,
+        allowClear,
       } = toRefs(props);
       const { mergedDisabled, eventHandlers } = useFormItem({
         disabled,
       });
       const prefixCls = getPrefixCls('tree-select');
       const configCtx = inject(configProviderInjectionKey, undefined);
+      const { mergedAllowClear } = useAllowClear(allowClear);
       const TreeSelectEmpty = configCtx?.slots.empty?.({
         component: 'tree-select',
       })?.[0];
@@ -698,6 +700,7 @@
         isEmpty,
         computedFilterTreeNode,
         isMultiple,
+        mergedAllowClear,
         selectViewValue,
         computedDropdownStyle,
         onSearchValueChange: handleInputValueChange,

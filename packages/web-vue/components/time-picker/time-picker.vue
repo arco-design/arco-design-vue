@@ -31,7 +31,7 @@
       :error="error"
       :readonly="readonly"
       :editable="!readonly"
-      :allow-clear="allowClear && !readonly"
+      :allow-clear="mergedAllowClear && !readonly"
       :placeholder="computedPlaceholder"
       @clear="onInputClear"
     >
@@ -78,6 +78,7 @@
 
   import DateRangeInput from '../_components/picker/input-range.vue';
   import DateInput from '../_components/picker/input.vue';
+  import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import useState from '../_hooks/use-state';
@@ -348,6 +349,7 @@
         defaultPopupVisible,
         disabled,
         placeholder,
+        allowClear,
         disableConfirm,
         disabledHours,
         disabledMinutes,
@@ -355,6 +357,7 @@
       } = toRefs(props);
 
       const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
+      const { mergedAllowClear } = useAllowClear(allowClear);
 
       const isRange = computed(() => type.value === 'time-range');
       const prefixCls = getPrefixCls('timepicker');
@@ -622,6 +625,7 @@
         inputValue,
         computedFormat,
         computedUse12Hours,
+        mergedAllowClear,
         inputProps,
         panelProps,
         mergedDisabled,

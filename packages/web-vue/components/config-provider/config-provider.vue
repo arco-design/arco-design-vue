@@ -41,6 +41,14 @@
         type: String as PropType<Size>,
       },
       /**
+       * @zh 是否默认开启清除按钮
+       * @en Whether to enable clear buttons by default
+       */
+      allowClear: {
+        type: Boolean,
+        default: false,
+      },
+      /**
        * @zh 是否全局生效
        * @en Is global effect
        * @version 2.25.0
@@ -113,14 +121,23 @@
      * @version 2.28.0
      */
     setup(props, { slots }) {
-      const { prefixCls, locale, size, updateAtScroll, scrollToClose, exchangeTime, rtl } =
-        toRefs(props);
+      const {
+        prefixCls,
+        locale,
+        size,
+        allowClear,
+        updateAtScroll,
+        scrollToClose,
+        exchangeTime,
+        rtl,
+      } = toRefs(props);
 
       const config = reactive({
         slots,
         prefixCls,
         locale,
         size,
+        allowClear,
         updateAtScroll,
         scrollToClose,
         exchangeTime,

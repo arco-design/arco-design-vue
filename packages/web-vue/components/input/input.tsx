@@ -3,6 +3,7 @@ import { computed, defineComponent, ref, nextTick, toRefs, watch } from 'vue';
 
 import FeedbackIcon from '../_components/feedback-icon.vue';
 import IconHover from '../_components/icon-hover.vue';
+import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useCursor } from '../_hooks/use-cursor';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
@@ -196,7 +197,7 @@ export default defineComponent({
    * @slot append
    */
   setup(props, { emit, slots, attrs }) {
-    const { size, disabled, error, modelValue } = toRefs(props);
+    const { size, disabled, error, modelValue, allowClear } = toRefs(props);
     const prefixCls = getPrefixCls('input');
     const inputRef = ref<HTMLInputElement>();
     const {
@@ -207,6 +208,7 @@ export default defineComponent({
       eventHandlers,
     } = useFormItem({ size, disabled, error });
     const { mergedSize } = useSize(_mergedSize);
+    const { mergedAllowClear } = useAllowClear(allowClear);
     const [recordCursor, setCursor] = useCursor(inputRef);
 
     // 值相关
@@ -228,7 +230,7 @@ export default defineComponent({
     const focused = ref(false);
     const showClearBtn = computed(
       () =>
-        props.allowClear &&
+        mergedAllowClear.value &&
         !props.readonly &&
         !mergedDisabled.value &&
         Boolean(computedValue.value),

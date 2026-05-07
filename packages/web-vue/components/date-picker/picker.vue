@@ -25,7 +25,7 @@
         :error="error"
         :disabled="mergedDisabled"
         :readonly="!inputEditable || disabledInput"
-        :allow-clear="allowClear && !readonly"
+        :allow-clear="mergedAllowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-value="inputValue"
         :value="needConfirm ? panelValue : selectedValue"
@@ -68,6 +68,7 @@
   import { Dayjs } from 'dayjs';
 
   import DateInput from '../_components/picker/input.vue';
+  import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import useState from '../_hooks/use-state';
@@ -457,6 +458,7 @@
         disabledDate,
         disabledTime,
         readonly,
+        allowClear,
         locale,
         pickerValue,
         defaultPickerValue,
@@ -471,6 +473,7 @@
       });
 
       const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
+      const { mergedAllowClear } = useAllowClear(allowClear);
 
       const datePickerT = useProvideDatePickerTransform(
         reactive({
@@ -837,6 +840,7 @@
         inputFormat,
         computedPlaceholder,
         panelVisible,
+        mergedAllowClear,
         inputEditable,
         needConfirm,
         mergedDisabled,

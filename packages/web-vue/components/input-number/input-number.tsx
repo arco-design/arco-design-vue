@@ -2,6 +2,7 @@ import { computed, defineComponent, PropType, ref, toRefs, watch } from 'vue';
 
 import NP from 'number-precision';
 
+import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
 import { Size } from '../_utils/constant';
@@ -235,7 +236,7 @@ export default defineComponent({
    * @slot minus
    */
   setup(props, { emit, slots }) {
-    const { size, disabled } = toRefs(props);
+    const { size, disabled, allowClear } = toRefs(props);
     const prefixCls = getPrefixCls('input-number');
     const inputRef = ref<HTMLInputElement>();
     const {
@@ -247,6 +248,7 @@ export default defineComponent({
       disabled,
     });
     const { mergedSize } = useSize(_mergedSize);
+    const { mergedAllowClear } = useAllowClear(allowClear);
     const mergedPrecision = computed(() => {
       if (isNumber(props.precision)) {
         const decimal = `${props.step}`.split('.')[1];
@@ -571,7 +573,7 @@ export default defineComponent({
           ref={inputRef}
           class={cls.value}
           type="text"
-          allowClear={props.allowClear}
+          allowClear={mergedAllowClear.value}
           size={mergedSize.value}
           modelValue={_value.value}
           placeholder={props.placeholder}
