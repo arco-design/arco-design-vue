@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/liunnn1994/sd-design/compare/v1.7.1...v1.8.0) (2026-05-07)
+
+### Features
+
+- 🆕 新增 allowClear 全局配置 ([368f106](https://github.com/liunnn1994/sd-design/commit/368f1064b3a47ea97a1bfc6a3098d2ba259be7e2))
+- 🆕 新增 color-picker ([54e12e9](https://github.com/liunnn1994/sd-design/commit/54e12e9bd77d6aafa70c9ab60d7ff3029e920139))
+
 ## [1.7.1](https://github.com/liunnn1994/sd-design/compare/v1.7.0...v1.7.1) (2026-04-30)
 
 ### Bug Fixes
