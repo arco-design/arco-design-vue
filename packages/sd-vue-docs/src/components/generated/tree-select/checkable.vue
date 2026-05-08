@@ -1,5 +1,5 @@
 <template>
-  <div style="marginbottom: 24px">
+  <div style="margin-bottom: 24px">
     <sd-checkbox
       v-model="treeCheckStrictly"
       @change="

@@ -47,7 +47,6 @@ const DEFAULT_FIELD_NAMES: Required<SelectFieldNames> = {
   children: 'children',
   disabled: 'disabled',
   tagProps: 'tagProps',
-  render: 'render',
 };
 
 interface SelectViewInstance {
@@ -114,6 +113,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    showArrow: {
+      type: Boolean,
+      default: true,
+    },
     maxTagCount: {
       type: [Number, String] as PropType<number | 'responsive'>,
       default: 'responsive',
@@ -133,9 +136,17 @@ export default defineComponent({
       type: Boolean,
       default: undefined,
     },
+    show: {
+      type: Boolean,
+      default: undefined,
+    },
     defaultPopupVisible: {
       type: Boolean,
       default: false,
+    },
+    defaultShow: {
+      type: Boolean,
+      default: undefined,
     },
     unmountOnClose: {
       type: Boolean,
@@ -156,9 +167,6 @@ export default defineComponent({
     },
     triggerProps: {
       type: Object as PropType<TriggerProps>,
-    },
-    formatLabel: {
-      type: Function as PropType<(data: SelectOptionData) => string>,
     },
     fallbackOption: {
       type: [Boolean, Function] as PropType<
@@ -207,9 +215,11 @@ export default defineComponent({
     'update:value': (_value: SelectModelValue) => true,
     'update:inputValue': (_inputValue: string) => true,
     'update:popupVisible': (_visible: boolean) => true,
+    'update:show': (_visible: boolean) => true,
     'change': (_value: SelectModelValue) => true,
     'inputValueChange': (_inputValue: string) => true,
     'popupVisibleChange': (_visible: boolean) => true,
+    'showChange': (_visible: boolean) => true,
     'clear': (_ev: Event) => true,
     'remove': (_removed: SelectOptionValue | undefined) => true,
     'search': (_inputValue: string) => true,
@@ -228,7 +238,9 @@ export default defineComponent({
       multiple,
       value: valueProp,
       popupVisible,
+      show,
       defaultPopupVisible,
+      defaultShow,
       showExtraOptions,
       modelValue,
       fieldNames,
@@ -257,7 +269,12 @@ export default defineComponent({
     const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
       popupVisible,
       defaultPopupVisible,
-      emit,
+      show,
+      defaultShow,
+      emit: emit as unknown as (
+        event: 'update:popupVisible' | 'popupVisibleChange' | 'update:show' | 'showChange',
+        visible: boolean,
+      ) => void,
     });
 
     const _value = ref<SelectModelValue>(props.defaultValue);
@@ -560,6 +577,7 @@ export default defineComponent({
             String(isObject(item.value) ? item.value[valueKey.value] : item.value),
           closable: !optionInfo.disabled,
           tagProps: optionInfo.tagProps,
+          option: optionInfo.raw,
         });
       }
 
@@ -569,10 +587,6 @@ export default defineComponent({
     const getOptionContentFunc = (optionInfo: SelectOptionInfo) => {
       if (isFunction(slots.option)) {
         return () => slots.option?.({ data: optionInfo.raw });
-      }
-
-      if (isFunction(optionInfo.render)) {
-        return optionInfo.render;
       }
 
       return () => optionInfo.label;
@@ -649,14 +663,28 @@ export default defineComponent({
     );
 
     const renderLabel = ({ data }: { data: SelectViewValue }) => {
-      if ((slots.label || isFunction(props.formatLabel)) && data) {
-        const optionInfo = optionInfoMap.get(data.value as string);
-        if (optionInfo?.raw) {
-          return slots.label?.({ data: optionInfo.raw }) ?? props.formatLabel?.(optionInfo.raw);
+      if (slots.label && data) {
+        const optionData =
+          (data.option as SelectOptionData | undefined) ??
+          optionInfoMap.get(data.value as string)?.raw;
+        if (optionData) {
+          return slots.label({ data: optionData });
         }
       }
 
       return data.label ?? '';
+    };
+
+    const renderTag = ({ data }: { data: SelectViewValue }) => {
+      const optionData =
+        (data.option as SelectOptionData | undefined) ??
+        optionInfoMap.get(data.value as string)?.raw;
+
+      if (!optionData) {
+        return renderLabel({ data });
+      }
+
+      return slots.tag?.({ data: optionData }) ?? renderLabel({ data });
     };
 
     expose({
@@ -688,6 +716,7 @@ export default defineComponent({
             ref={selectViewRef}
             v-slots={{
               'label': renderLabel,
+              'tag': renderTag,
               'prefix': slots.prefix,
               'arrow-icon': slots['arrow-icon'],
               'loading-icon': slots['loading-icon'],
@@ -703,6 +732,7 @@ export default defineComponent({
             allowClear={mergedAllowClear.value}
             allowCreate={props.allowCreate}
             allowSearch={Boolean(props.allowSearch)}
+            showArrow={props.showArrow}
             opened={computedPopupVisible.value}
             maxTagCount={props.maxTagCount}
             placeholder={props.placeholder}

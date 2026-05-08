@@ -12,7 +12,6 @@ const DEFAULT_FIELD_NAMES = {
   children: 'children',
   disabled: 'disabled',
   tagProps: 'tagProps',
-  render: 'render',
 };
 
 export const useOptions = ({

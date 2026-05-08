@@ -1,5 +1,3 @@
-import type { RenderFunction } from 'vue';
-
 import type { VirtualListProps } from '../_components/virtual-list-v2/interface';
 import type { Size } from '../_utils/constant';
 import type { ScrollbarProps } from '../scrollbar';
@@ -20,7 +18,6 @@ export interface SelectFieldNames {
   children?: string;
   disabled?: string;
   tagProps?: string;
-  render?: string;
 }
 
 export interface SelectOptionData {
@@ -44,11 +41,6 @@ export interface SelectOptionData {
    * @en Extra props for rendered tags
    */
   tagProps?: Record<string, unknown>;
-  /**
-   * @zh 自定义选项渲染
-   * @en Custom option renderer
-   */
-  render?: RenderFunction;
   [other: string]: unknown;
 }
 
@@ -105,17 +97,19 @@ export interface SelectProps {
   allowClear?: boolean;
   allowSearch?: boolean | { retainInputValue?: boolean };
   allowCreate?: boolean;
+  showArrow?: boolean;
   maxTagCount?: number | 'responsive';
   popupContainer?: string | HTMLElement;
   bordered?: boolean;
   popupVisible?: boolean;
   defaultPopupVisible?: boolean;
+  show?: boolean;
+  defaultShow?: boolean;
   defaultActiveFirstOption?: boolean;
   unmountOnClose?: boolean;
   filterOption?: FilterOption;
   virtualListProps?: VirtualListProps;
   triggerProps?: TriggerProps;
-  formatLabel?: (data: SelectOptionData) => string;
   fallbackOption?: boolean | ((value: SelectOptionValue) => SelectOptionData);
   showExtraOptions?: boolean;
   valueKey?: string;

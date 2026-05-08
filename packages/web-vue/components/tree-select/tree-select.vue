@@ -11,7 +11,7 @@
     :disabled="mergedDisabled"
     :popup-visible="panelVisible"
     :popup-container="popupContainer"
-    :click-to-close="!allowSearch"
+    :click-to-close="!Boolean(mergedAllowSearch)"
     auto-fit-transform-origin
     @popupVisibleChange="onVisibleChange"
   >
@@ -20,8 +20,9 @@
         ref="refSelectView"
         :model-value="selectViewValue"
         :input-value="searchValue"
-        :allow-search="Boolean(allowSearch)"
+        :allow-search="Boolean(mergedAllowSearch)"
         :allow-clear="mergedAllowClear"
+        :show-arrow="showArrow"
         :loading="loading"
         :size="size"
         :max-tag-count="maxTagCount"
@@ -42,6 +43,9 @@
         </template>
         <template v-if="$slots.label" #label="selectedData">
           <slot name="label" v-bind="selectedData" />
+        </template>
+        <template v-if="$slots.tag" #tag="selectedData">
+          <slot name="tag" :data="selectedData?.data?.option ?? selectedData?.data" />
         </template>
       </SelectView>
     </slot>
@@ -69,15 +73,15 @@
         <Panel
           v-else
           :selected-keys="selectedKeys"
-          :show-checkable="treeCheckable"
+          :show-checkable="mergedTreeCheckable"
           :scrollbar="scrollbar"
           :tree-props="{
             actionOnNodeClick: selectable === 'leaf' ? 'expand' : undefined,
             blockNode: true,
-            ...treeProps,
-            data,
+            ...mergedTreeProps,
+            data: mergedData,
             checkStrictly: treeCheckStrictly,
-            checkedStrategy: treeCheckedStrategy,
+            checkedStrategy: mergedTreeCheckedStrategy,
             fieldNames,
             multiple,
             loadMore,
@@ -102,6 +106,7 @@
     computed,
     CSSProperties,
     defineComponent,
+    getCurrentInstance,
     nextTick,
     PropType,
     reactive,
@@ -132,7 +137,7 @@
   import Trigger, { TriggerProps } from '../trigger';
   import useFilterTreeNode from './hooks/use-filter-tree-node';
   import useSelectedState from './hooks/use-selected-state';
-  import { LabelValue } from './interface';
+  import { LabelValue, TreeSelectValue } from './interface';
   import Panel from './panel';
 
   export default defineComponent({
@@ -191,7 +196,14 @@
        * */
       allowSearch: {
         type: [Boolean, Object] as PropType<boolean | { retainInputValue?: boolean }>,
-        default: (props: Data) => Boolean(props.multiple),
+        default: undefined,
+      },
+      /**
+       * @zh 是否允许搜索，Naive 兼容别名
+       * @en Whether to allow searching, Naive compatibility alias
+       * */
+      filterable: {
+        type: Boolean,
       },
       /**
        * @zh 是否允许清除
@@ -199,6 +211,17 @@
        * */
       allowClear: {
         type: Boolean,
+      },
+      /**
+       * @zh 是否允许清除，Naive 兼容别名
+       * @en Whether to allow clear, Naive compatibility alias
+       * */
+      clearable: {
+        type: Boolean,
+      },
+      showArrow: {
+        type: Boolean,
+        default: true,
       },
       /**
        * @zh 提示文案
@@ -212,7 +235,7 @@
        * @en The maximum number of labels displayed, only valid in multi-select mode
        * */
       maxTagCount: {
-        type: Number,
+        type: [Number, String] as PropType<number | 'responsive'>,
       },
       /**
        * @zh 是否支持多选
@@ -227,15 +250,22 @@
        * @en Default value
        * */
       defaultValue: {
-        type: [String, Number, Array, Object] as PropType<
-          string | number | Array<string | number> | LabelValue | LabelValue[]
-        >,
+        type: [String, Number, Array, Object] as PropType<TreeSelectValue>,
       },
       /**
        * @zh 绑定值
        * @en Value
        * */
       modelValue: {
+        type: [String, Number, Array, Object] as PropType<
+          string | number | Array<string | number> | LabelValue | LabelValue[]
+        >,
+      },
+      /**
+       * @zh 绑定值，Naive 兼容别名
+       * @en Value, Naive compatibility alias
+       * */
+      value: {
         type: [String, Number, Array, Object] as PropType<
           string | number | Array<string | number> | LabelValue | LabelValue[]
         >,
@@ -256,6 +286,13 @@
         default: () => [],
       },
       /**
+       * @zh 数据，Naive 兼容别名
+       * @en Data, Naive compatibility alias
+       * */
+      options: {
+        type: Array as PropType<TreeNodeData[]>,
+      },
+      /**
        * @zh 设置value格式。默认是string，设置为true时候，value格式为： { label: string, value: string }
        * @en Set the value format. The default is string, when set to true, the value format is: {label: string, value: string}
        * */
@@ -267,6 +304,13 @@
        * @en Whether to show checkbox
        * */
       treeCheckable: {
+        type: Boolean,
+      },
+      /**
+       * @zh 是否展示复选框，Naive 兼容别名
+       * @en Whether to show checkbox, Naive compatibility alias
+       * */
+      checkable: {
         type: Boolean,
       },
       /**
@@ -285,6 +329,28 @@
         default: 'all',
       },
       /**
+       * @zh 定制回显方式，Naive 兼容别名
+       * @en Customized echo method, Naive compatibility alias
+       * */
+      checkStrategy: {
+        type: String as PropType<'all' | 'parent' | 'child'>,
+      },
+      /**
+       * @zh 是否展示完整路径
+       * @en Whether to display the full path
+       * */
+      showPath: {
+        type: Boolean,
+      },
+      /**
+       * @zh 路径分隔符
+       * @en Path separator
+       * */
+      separator: {
+        type: String,
+        default: ' / ',
+      },
+      /**
        * @zh 可以接受所有 [Tree](/vue/component/tree) 组件的Props
        * @en Can accept Props of all [Tree](/vue/component/tree) components
        * */
@@ -299,11 +365,23 @@
         type: Object as PropType<Partial<TriggerProps>>,
       },
       /**
+       * @zh 是否开启虚拟滚动，Naive 兼容别名
+       * @en Whether to enable virtual scroll, Naive compatibility alias
+       * */
+      virtualScroll: {
+        type: Boolean,
+        default: undefined,
+      },
+      /**
        * @zh 弹出框是否可见
        * @en Whether the pop-up box is visible
        * @vModel
        */
       popupVisible: {
+        type: Boolean,
+        default: undefined,
+      },
+      show: {
         type: Boolean,
         default: undefined,
       },
@@ -313,6 +391,10 @@
        * */
       defaultPopupVisible: {
         type: Boolean,
+      },
+      defaultShow: {
+        type: Boolean,
+        default: undefined,
       },
       /**
        * @zh 下拉框样式
@@ -430,12 +512,9 @@
        * @en Trigger when the value changes
        * @param {string | number | LabelValue | Array<string | number> | LabelValue[] | undefined} value
        */
-      'change': (
-        _value: string | number | LabelValue | Array<string | number> | LabelValue[] | undefined,
-      ) => true,
-      'update:modelValue': (
-        _value: string | number | LabelValue | Array<string | number> | LabelValue[] | undefined,
-      ) => true,
+      'change': (_value: TreeSelectValue | undefined) => true,
+      'update:modelValue': (_value: TreeSelectValue | undefined) => true,
+      'update:value': (_value: TreeSelectValue | undefined) => true,
       'update:inputValue': (_inputValue: string) => true,
       /**
        * @zh 下拉框显示状态改变时触发
@@ -444,6 +523,8 @@
        */
       'popup-visible-change': (_visible: boolean) => true,
       'update:popupVisible': (_visible: boolean) => true,
+      'showChange': (_visible: boolean) => true,
+      'update:show': (_visible: boolean) => true,
       /**
        * @zh 搜索值变化时触发
        * @en Triggered when the search value changes
@@ -529,10 +610,13 @@
         modelValue,
         multiple,
         popupVisible,
+        show,
         defaultPopupVisible,
+        defaultShow,
         treeCheckable,
         treeCheckStrictly,
         data,
+        options,
         fieldNames,
         disabled,
         labelInValue,
@@ -542,30 +626,72 @@
         treeProps,
         fallbackOption,
         selectable,
-        allowClear,
+        checkable,
+        checkStrategy,
+        showPath,
+        separator,
+        value,
+        virtualScroll,
       } = toRefs(props);
       const { mergedDisabled, eventHandlers } = useFormItem({
         disabled,
       });
       const prefixCls = getPrefixCls('tree-select');
       const configCtx = inject(configProviderInjectionKey, undefined);
-      const { mergedAllowClear } = useAllowClear(allowClear);
+      const instance = getCurrentInstance();
+      const mergedAllowSearch = computed(() => {
+        const rawProps = instance?.vnode.props;
+        const hasAllowSearchProp =
+          !!rawProps && ['allowSearch', 'allow-search'].some((propName) => propName in rawProps);
+
+        if (hasAllowSearchProp) {
+          return props.allowSearch;
+        }
+
+        if (props.filterable !== undefined) {
+          return props.filterable;
+        }
+
+        return Boolean(props.multiple || props.treeCheckable || props.checkable);
+      });
+      const { mergedAllowClear } = useAllowClear(
+        computed(() => props.allowClear || props.clearable),
+      );
       const TreeSelectEmpty = configCtx?.slots.empty?.({
         component: 'tree-select',
       })?.[0];
-      const isMultiple = computed(() => multiple.value || treeCheckable.value);
+      const mergedModelValue = computed(() => value.value ?? modelValue.value);
+      const mergedData = computed(() => options.value ?? data.value);
+      const mergedTreeCheckable = computed(() => treeCheckable.value || checkable.value);
+      const mergedTreeCheckedStrategy = computed(
+        () => checkStrategy.value ?? props.treeCheckedStrategy,
+      );
+      const mergedTreeProps = computed(() => {
+        if (virtualScroll.value !== false) {
+          return treeProps.value || {};
+        }
+
+        const nextTreeProps = {
+          ...treeProps.value,
+        };
+
+        delete nextTreeProps.virtualListProps;
+        return nextTreeProps;
+      });
+      const isMultiple = computed(() => multiple.value || mergedTreeCheckable.value);
       const isSelectable = (node: TreeNodeData, info: { level: number; isLeaf: boolean }) => {
         if (selectable.value === 'leaf') return info.isLeaf;
         if (isFunction(selectable.value)) return selectable.value(node, info);
         return selectable.value ?? false;
       };
-      const isCheckable = computed(() => (treeCheckable.value ? isSelectable : false));
+      const isCheckable = computed(() => (mergedTreeCheckable.value ? isSelectable : false));
       const retainInputValue = computed(
-        () => isObject(props.allowSearch) && Boolean(props.allowSearch.retainInputValue),
+        () =>
+          isObject(mergedAllowSearch.value) && Boolean(mergedAllowSearch.value.retainInputValue),
       );
       const { flattenTreeData, key2TreeNode } = useTreeData(
         reactive({
-          treeData: data,
+          treeData: mergedData,
           fieldNames,
           selectable: isSelectable,
           checkable: isCheckable,
@@ -581,18 +707,20 @@
       } = useSelectedState(
         reactive({
           defaultValue,
-          modelValue,
+          modelValue: mergedModelValue,
           key2TreeNode,
           multiple,
-          treeCheckable,
+          treeCheckable: mergedTreeCheckable,
           treeCheckStrictly,
           fallbackOption,
           fieldNames,
+          showPath,
+          separator,
         }),
       );
 
       function isNodeClosable(node: Node) {
-        return treeCheckable.value ? isNodeCheckable(node) : isNodeSelectable(node);
+        return mergedTreeCheckable.value ? isNodeCheckable(node) : isNodeSelectable(node);
       }
 
       const selectViewValue = computed(() => {
@@ -604,11 +732,18 @@
             const node = key2TreeNode.value.get(i.value);
             return {
               ...i,
+              option: node?.treeNodeData,
               closable: !node || isNodeClosable(node),
             };
           }) as SelectViewValue[];
         }
-        return selectedValue.value as SelectViewValue[];
+        return selectedValue.value.map((i) => {
+          const node = key2TreeNode.value.get(i.value);
+          return {
+            ...i,
+            option: node?.treeNodeData,
+          };
+        }) as SelectViewValue[];
       });
 
       const setSelectedKeys = (newVal: TreeNodeKey[]) => {
@@ -621,6 +756,7 @@
           const emitValue = isMultiple.value ? forEmitValue : forEmitValue[0];
 
           emit('update:modelValue', emitValue);
+          emit('update:value', emitValue);
           emit('change', emitValue);
           eventHandlers.value?.onChange?.();
         });
@@ -639,16 +775,16 @@
         if (inputValue !== computedInputValue.value) {
           setPanelVisible(true);
           updateInputValue(inputValue);
-          if (props.allowSearch) {
+          if (mergedAllowSearch.value) {
             emit('search', inputValue);
           }
         }
       };
 
       const [panelVisible, setLocalPanelVisible] = useMergeState(
-        defaultPopupVisible.value,
+        defaultPopupVisible.value ?? defaultShow.value,
         reactive({
-          value: popupVisible,
+          value: computed(() => popupVisible.value ?? show.value),
         }),
       );
       const setPanelVisible = (visible: boolean) => {
@@ -656,6 +792,8 @@
           setLocalPanelVisible(visible);
           emit('popup-visible-change', visible);
           emit('update:popupVisible', visible);
+          emit('showChange', visible);
+          emit('update:show', visible);
         }
 
         if (!visible) {
@@ -679,7 +817,7 @@
 
       const computedDropdownStyle = computed<StyleValue[]>(() => [
         dropdownStyle?.value || {},
-        treeProps?.value?.virtualListProps ? { 'max-height': 'unset' } : {},
+        mergedTreeProps.value.virtualListProps ? { 'max-height': 'unset' } : {},
       ]);
 
       const onBlur = () => {
@@ -695,12 +833,17 @@
         selectedValue,
         selectedKeys,
         mergedDisabled,
+        mergedData,
         searchValue: computedInputValue,
         panelVisible,
         isEmpty,
         computedFilterTreeNode,
         isMultiple,
+        mergedAllowSearch,
         mergedAllowClear,
+        mergedTreeCheckable,
+        mergedTreeCheckedStrategy,
+        mergedTreeProps,
         selectViewValue,
         computedDropdownStyle,
         onSearchValueChange: handleInputValueChange,
@@ -726,7 +869,7 @@
         onItemRemove(id: string) {
           if (mergedDisabled.value) return;
           const node = key2TreeNode.value.get(id);
-          if (treeCheckable.value && node) {
+          if (mergedTreeCheckable.value && node) {
             if (isNodeClosable(node)) {
               const [newVal] = getCheckedStateByCheck({
                 node,

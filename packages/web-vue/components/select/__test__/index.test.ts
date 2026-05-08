@@ -118,6 +118,20 @@ describe('Select', () => {
     expect(wrapper.emitted('change')?.[0]).toEqual(['Guangzhou']);
   });
 
+  test('should support v-model:show alias', async () => {
+    const wrapper = mount(Select, {
+      props: {
+        show: false,
+        options: ['Beijing', 'Shanghai'],
+      },
+    });
+
+    await wrapper.find('.sd-select-view').trigger('click');
+
+    expect(wrapper.emitted('update:show')?.[0]).toEqual([true]);
+    expect(wrapper.emitted('showChange')?.[0]).toEqual([true]);
+  });
+
   test('should support children field names', async () => {
     const wrapper = mount(Select, {
       props: {
@@ -161,6 +175,32 @@ describe('Select', () => {
     });
 
     expect(wrapper.find('.custom-label').text()).toBe('City:Beijing');
+  });
+
+  test('should render custom tag slot with selected option data', () => {
+    const wrapper = mount(Select, {
+      props: {
+        multiple: true,
+        defaultValue: ['Beijing'],
+        options: ['Beijing', 'Shanghai', 'Guangzhou'],
+      },
+      slots: {
+        tag: ({ data }) => h('span', { class: 'custom-tag' }, `Tag:${data.label}`),
+      },
+    });
+
+    expect(wrapper.find('.custom-tag').text()).toBe('Tag:Beijing');
+  });
+
+  test('should hide arrow icon when showArrow is false', () => {
+    const wrapper = mount(Select, {
+      props: {
+        showArrow: false,
+        options: ['Beijing', 'Shanghai'],
+      },
+    });
+
+    expect(wrapper.find('.sd-select-view-arrow-icon').exists()).toBe(false);
   });
 
   test('should keep one visible tag when maxTagCount is responsive', async () => {

@@ -62,6 +62,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    showArrow: {
+      type: Boolean,
+      default: true,
+    },
     allowSearch: {
       type: Boolean,
       default: (props: Data) => isArray(props.modelValue),
@@ -136,6 +140,9 @@ export default defineComponent({
       if (slots['arrow-icon']) {
         return slots['arrow-icon']();
       }
+      if (!props.showArrow) {
+        return null;
+      }
       return <IconDown class={`${prefixCls}-arrow-icon`} />;
     };
 
@@ -180,7 +187,7 @@ export default defineComponent({
             v-slots={{
               prefix: slots.prefix,
               suffix: renderSuffix,
-              tag: slots.label,
+              tag: slots.tag ?? slots.label,
             }}
             baseCls={prefixCls}
             class={cls.value}

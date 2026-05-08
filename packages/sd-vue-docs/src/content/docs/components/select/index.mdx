@@ -3,61 +3,43 @@ title: 选择器 Select
 description: 当用户需要从一组同类数据中选择一个或多个时，可以使用下拉选择器，点击后选择对应项。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import SelectBasicDemo from "../../../../components/generated/select/basic.vue";
-export const selectBasicSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-select :style="{ width: \'320px\' }" placeholder="Please select ...">\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n    </sd-select>\n    <sd-select :style="{ width: \'320px\' }" placeholder="Please select ...">\n      <sd-option :value="true">是</sd-option>\n      <sd-option :value="false">否</sd-option>\n    </sd-select>\n    <sd-select\n      defaultValue="Beijing"\n      :style="{ width: \'320px\' }"\n      placeholder="Please select ..."\n      disabled\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n    </sd-select>\n    <sd-select v-model="value" :style="{ width: \'320px\' }" placeholder="Please select ...">\n      <sd-option v-for="item of data" :value="item" :label="item.label" />\n    </sd-select>\n    <div>Select Value: {{ value }}</div>\n    <sd-select\n      :style="{ width: \'160px\' }"\n      placeholder="Select"\n      :trigger-props="{ autoFitPopupMinWidth: true }"\n    >\n      <sd-option>Beijing-Beijing-Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n    </sd-select>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const value = ref();\n      const data = [\n        {\n          value: \'beijing\',\n          label: \'Beijing\',\n          other: \'extra\',\n        },\n        {\n          value: \'shanghai\',\n          label: \'Shanghai\',\n          other: \'extra\',\n        },\n        {\n          value: \'guangzhou\',\n          label: \'Guangzhou\',\n          other: \'extra\',\n        },\n        {\n          value: \'chengdu\',\n          label: \'Chengdu\',\n          other: \'extra\',\n        },\n      ];\n\n      return {\n        value,\n        data,\n      };\n    },\n  };\n</script>';
-import SelectBorderDemo from "../../../../components/generated/select/border.vue";
-export const selectBorderSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-select :style="{ width: \'100%\' }" placeholder="Please select ..." :bordered="false">\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n    </sd-select>\n    <sd-select\n      :default-value="[\'Beijing\', \'Shanghai\']"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      multiple\n      :bordered="false"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option :tag-props="{ color: \'red\' }">Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n  </sd-space>\n</template>';
-import SelectClearDemo from "../../../../components/generated/select/clear.vue";
-export const selectClearSource =
-  "<template>\n  <sd-select :style=\"{ width: '320px' }\" v-model=\"value\" placeholder=\"Please select ...\" allow-clear>\n    <sd-option>Beijing</sd-option>\n    <sd-option>Shanghai</sd-option>\n    <sd-option>Guangzhou</sd-option>\n    <sd-option disabled>Disabled</sd-option>\n  </sd-select>\n</template>\n\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const value = ref('Shanghai');\n      return {\n        value,\n      };\n    },\n  };\n</script>";
-import SelectCreateDemo from "../../../../components/generated/select/create.vue";
-export const selectCreateSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-select :style="{ width: \'320px\' }" placeholder="Please select ..." allow-create>\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Chengdu</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n    <sd-select :style="{ width: \'320px\' }" placeholder="Please select ..." multiple allow-create>\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Chengdu</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n  </sd-space>\n</template>';
-import SelectFallbackDemo from "../../../../components/generated/select/fallback.vue";
-export const selectFallbackSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-select\n      defaultValue="Shanxi"\n      :style="{ width: \'320px\' }"\n      placeholder="Please select ..."\n      :fallback-option="fallback"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n    </sd-select>\n    <sd-select\n      defaultValue="Shanxi"\n      :style="{ width: \'320px\' }"\n      placeholder="Please select ..."\n      :fallback-option="fallback"\n      :show-extra-options="false"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n    </sd-select>\n    <sd-select\n      :default-value="[\'Shanxi\', \'Nanjing\', \'Hangzhou\']"\n      :style="{ width: \'320px\' }"\n      placeholder="Please select ..."\n      multiple\n      :fallback-option="fallback"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Chengdu</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const fallback = (value) => {\n        return {\n          value,\n          label: `++${value}++`,\n        };\n      };\n      return {\n        fallback,\n      };\n    },\n  };\n</script>';
-import SelectFieldNamesDemo from "../../../../components/generated/select/field-names.vue";
-export const selectFieldNamesSource =
-  "<template>\n  <sd-select\n    v-model=\"value\"\n    :options=\"options\"\n    :field-names=\"fieldNames\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n  />\n</template>\n\n<script>\n  import { reactive, ref } from 'vue';\n\n  export default {\n    setup() {\n      const value = ref('bj');\n      const fieldNames = { value: 'city', label: 'text' };\n      const options = reactive([\n        {\n          city: 'bj',\n          text: 'Beijing',\n        },\n        {\n          city: 'sh',\n          text: 'Shanghai',\n        },\n        {\n          city: 'gz',\n          text: 'Guangzhou',\n        },\n        {\n          city: 'cd',\n          text: 'Chengdu',\n        },\n      ]);\n\n      return {\n        value,\n        fieldNames,\n        options,\n      };\n    },\n  };\n</script>";
-import SelectFooterDemo from "../../../../components/generated/select/footer.vue";
-export const selectFooterSource =
-  '<template>\n  <sd-space>\n    <sd-select\n      :default-value="\'Beijing\'"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      allow-search\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Wuhan</sd-option>\n      <template #footer>\n        <div style="padding: 6px 0; text-align: center;">\n          <sd-button>Click Me</sd-button>\n        </div>\n      </template>\n    </sd-select>\n    <sd-select\n      :default-value="\'Beijing\'"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      allow-search\n      show-footer-on-empty\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Wuhan</sd-option>\n      <template #footer>\n        <div style="padding: 6px 0; text-align: center;">\n          <sd-button>Click Me</sd-button>\n        </div>\n      </template>\n    </sd-select>\n  </sd-space>\n</template>';
-import SelectGroupDemo from "../../../../components/generated/select/group.vue";
-export const selectGroupSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-select :style="{ width: \'320px\' }" placeholder="Please select ...">\n      <sd-optgroup label="Group-1">\n        <sd-option>Beijing</sd-option>\n        <sd-option>Shanghai</sd-option>\n      </sd-optgroup>\n      <sd-optgroup label="Group-2">\n        <sd-option>Guangzhou</sd-option>\n        <sd-option disabled>Disabled</sd-option>\n        <sd-option>Shenzhen</sd-option>\n      </sd-optgroup>\n      <sd-optgroup label="Group-3">\n        <sd-option>Chengdu</sd-option>\n        <sd-option>Wuhan</sd-option>\n      </sd-optgroup>\n    </sd-select>\n    <sd-select :style="{ width: \'320px\' }" placeholder="Please select ..." multiple>\n      <sd-optgroup label="Group-1">\n        <sd-option>Beijing</sd-option>\n        <sd-option>Shanghai</sd-option>\n      </sd-optgroup>\n      <sd-optgroup label="Group-2">\n        <sd-option>Guangzhou</sd-option>\n        <sd-option disabled>Disabled</sd-option>\n        <sd-option>Shenzhen</sd-option>\n      </sd-optgroup>\n      <sd-optgroup label="Group-3">\n        <sd-option>Chengdu</sd-option>\n        <sd-option>Wuhan</sd-option>\n      </sd-optgroup>\n    </sd-select>\n  </sd-space>\n</template>';
-import SelectHeaderDemo from "../../../../components/generated/select/header.vue";
-export const selectHeaderSource =
-  '<template>\n  <sd-space>\n    <sd-select\n      :default-value="\'Beijing\'"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      multiple\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Wuhan</sd-option>\n      <template #header>\n        <div style="padding: 6px 12px;">\n          <sd-checkbox value="1">全选</sd-checkbox>\n        </div>\n      </template>\n    </sd-select>\n\n    <sd-select\n      :default-value="\'Beijing\'"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      multiple\n      show-header-on-empty\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Wuhan</sd-option>\n      <template #header>\n        <div style="padding: 6px 12px;">\n          <sd-checkbox value="1">全选</sd-checkbox>\n        </div>\n      </template>\n    </sd-select>\n  </sd-space>\n</template>';
-import SelectLabelDemo from "../../../../components/generated/select/label.vue";
-export const selectLabelSource =
-  '<template>\n  <sd-select default-value="Beijing" :style="{ width: \'320px\' }" placeholder="Please select ...">\n    <template #label="{ data }">\n      <span><icon-plus />{{ data?.label }}</span>\n    </template>\n    <sd-option>Beijing</sd-option>\n    <sd-option>Shanghai</sd-option>\n    <sd-option>Guangzhou</sd-option>\n    <sd-option disabled>Disabled</sd-option>\n  </sd-select>\n</template>\n\n<script>\n  import { IconPlus } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconPlus },\n  };\n</script>';
-import SelectLinkageDemo from "../../../../components/generated/select/linkage.vue";
-export const selectLinkageSource =
-  "<template>\n  <sd-space>\n    <sd-select :style=\"{ width: '200px' }\" v-model=\"province\">\n      <sd-option v-for=\"value of Object.keys(data)\">{{ value }}</sd-option>\n    </sd-select>\n    <sd-select :style=\"{ width: '200px' }\" :options=\"data[province] || []\" v-model=\"city\" />\n  </sd-space>\n</template>\n\n<script>\n  import { ref, watch } from 'vue';\n\n  export default {\n    setup() {\n      const province = ref('Sichuan');\n      const city = ref('Chengdu');\n      const data = {\n        Beijing: ['Haidian', 'Chaoyang', 'Changping'],\n        Sichuan: ['Chengdu', 'Mianyang', 'Aba'],\n        Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou'],\n      };\n\n      watch(province, () => {\n        city.value = '';\n      });\n\n      return {\n        province,\n        city,\n        data,\n      };\n    },\n  };\n</script>";
-import SelectLoadingDemo from "../../../../components/generated/select/loading.vue";
-export const selectLoadingSource =
-  '<template>\n  <sd-select :style="{ width: \'320px\' }" placeholder="Please select ..." loading>\n    <sd-option>Beijing</sd-option>\n    <sd-option>Shanghai</sd-option>\n    <sd-option>Guangzhou</sd-option>\n    <sd-option disabled>Disabled</sd-option>\n  </sd-select>\n</template>';
-import SelectMultipleDemo from "../../../../components/generated/select/multiple.vue";
-export const selectMultipleSource =
-  '<template>\n  <div style="margin-bottom: 10px">\n    <sd-switch v-model="scrollbar" />\n    Virtual Scrollbar\n  </div>\n  <sd-space direction="vertical" size="large">\n    <sd-select\n      :default-value="[\'Beijing\', \'Shanghai\']"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      multiple\n      :scrollbar="scrollbar"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option :tag-props="{ color: \'red\' }">Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n    <sd-select\n      :default-value="[\'Beijing\', \'Shanghai\', \'Guangzhou\']"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      multiple\n      :max-tag-count="2"\n      allow-clear\n      :scrollbar="scrollbar"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Chengdu</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n    <sd-select\n      :default-value="[\'Beijing\', \'Shanghai\']"\n      :style="{ width: \'360px\' }"\n      placeholder="Please select ..."\n      multiple\n      :limit="2"\n      :scrollbar="scrollbar"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option :tag-props="{ color: \'red\' }">Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const scrollbar = ref(true);\n\n      return {\n        scrollbar,\n      };\n    },\n  };\n</script>';
-import SelectRemoteDemo from "../../../../components/generated/select/remote.vue";
-export const selectRemoteSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <div>Show selections after search options</div>\n    <sd-select\n      :style="{ width: \'320px\' }"\n      :loading="loading"\n      placeholder="Please select ..."\n      multiple\n      @search="handleSearch"\n      :filter-option="false"\n    >\n      <sd-option v-for="item of options" :value="item">{{ item }}</sd-option>\n    </sd-select>\n    <div>Hide selections after search options</div>\n    <sd-select\n      :options="options"\n      :style="{ width: \'320px\' }"\n      :loading="loading"\n      placeholder="Please select ..."\n      multiple\n      @search="handleSearch"\n      :filter-option="false"\n      :show-extra-options="false"\n    />\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const options = ref([\'Option1\', \'Option2\', \'Option3\']);\n      const loading = ref(false);\n\n      const handleSearch = (value) => {\n        if (value) {\n          loading.value = true;\n          window.setTimeout(() => {\n            options.value = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`];\n            loading.value = false;\n          }, 2000);\n        } else {\n          options.value = [];\n        }\n      };\n\n      return {\n        options,\n        loading,\n        handleSearch,\n      };\n    },\n  };\n</script>';
-import SelectScrollDemo from "../../../../components/generated/select/scroll.vue";
-export const selectScrollSource =
-  '<template>\n  <sd-select\n    :style="{ width: \'320px\' }"\n    default-value="Beijing"\n    placeholder="Please select ..."\n    @dropdown-scroll="handleScroll"\n    @dropdown-reach-bottom="handleReachBottom"\n  >\n    <sd-option>Beijing</sd-option>\n    <sd-option>Shanghai</sd-option>\n    <sd-option>Guangzhou</sd-option>\n    <sd-option disabled>Disabled</sd-option>\n    <sd-option>Shenzhen</sd-option>\n    <sd-option>Chengdu</sd-option>\n    <sd-option>Wuhan</sd-option>\n  </sd-select>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const handleScroll = (ev) => {\n        console.log(\'scroll\', ev);\n      };\n      const handleReachBottom = (ev) => {\n        console.log(\'reach the bottom\', ev);\n      };\n\n      return {\n        handleScroll,\n        handleReachBottom,\n      };\n    },\n  };\n</script>';
-import SelectSearchDemo from "../../../../components/generated/select/search.vue";
-export const selectSearchSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-select :style="{ width: \'320px\' }" placeholder="Please select ..." allow-search>\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Chengdu</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n    <sd-select\n      :style="{ width: \'320px\' }"\n      placeholder="Please select ..."\n      :allow-search="{ retainInputValue: true }"\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Chengdu</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n    <sd-select\n      :options="options"\n      :style="{ width: \'320px\' }"\n      :loading="loading"\n      placeholder="Please select ..."\n      multiple\n      @search="handleSearch"\n    />\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const options = ref([\'Option1\', \'Option2\', \'Option3\']);\n      const loading = ref(false);\n\n      const handleSearch = (value) => {\n        if (value) {\n          loading.value = true;\n          window.setTimeout(() => {\n            options.value = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`];\n            loading.value = false;\n          }, 2000);\n        } else {\n          options.value = [];\n        }\n      };\n\n      return {\n        options,\n        loading,\n        handleSearch,\n      };\n    },\n  };\n</script>';
-import SelectSizeDemo from "../../../../components/generated/select/size.vue";
-export const selectSizeSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-radio-group type="button" v-model="size">\n      <sd-radio value="mini">Mini</sd-radio>\n      <sd-radio value="small">Small</sd-radio>\n      <sd-radio value="medium">Medium</sd-radio>\n      <sd-radio value="large">Large</sd-radio>\n    </sd-radio-group>\n    <sd-select\n      default-value="Beijing"\n      :style="{ width: \'320px\' }"\n      :size="size"\n      placeholder="Please select ..."\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n    </sd-select>\n    <sd-select\n      :default-value="[\'Beijing\', \'Shanghai\']"\n      :style="{ width: \'320px\' }"\n      :size="size"\n      placeholder="Please select ..."\n      multiple\n    >\n      <sd-option>Beijing</sd-option>\n      <sd-option>Shanghai</sd-option>\n      <sd-option>Guangzhou</sd-option>\n      <sd-option disabled>Disabled</sd-option>\n      <sd-option>Shenzhen</sd-option>\n      <sd-option>Chengdu</sd-option>\n      <sd-option>Wuhan</sd-option>\n    </sd-select>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const size = ref(\'medium\');\n\n      return {\n        size,\n      };\n    },\n  };\n</script>';
-import SelectVirtualListDemo from "../../../../components/generated/select/virtual-list.vue";
-export const selectVirtualListSource =
-  '<template>\n  <sd-select\n    :style="{ width: \'320px\' }"\n    :options="options"\n    placeholder="Please select ..."\n    :virtual-list-props="{ height: 200 }"\n  />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = Array(1000)\n        .fill(null)\n        .map((_, index) => `Option ${index}`);\n\n      return {\n        options,\n      };\n    },\n  };\n</script>';
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import SelectBasicDemo from '../../../../components/generated/select/basic.vue';
+import selectBasicSource from '../../../../components/generated/select/basic.vue?raw';
+import SelectBorderDemo from '../../../../components/generated/select/border.vue';
+import selectBorderSource from '../../../../components/generated/select/border.vue?raw';
+import SelectClearDemo from '../../../../components/generated/select/clear.vue';
+import selectClearSource from '../../../../components/generated/select/clear.vue?raw';
+import SelectCreateDemo from '../../../../components/generated/select/create.vue';
+import selectCreateSource from '../../../../components/generated/select/create.vue?raw';
+import SelectFallbackDemo from '../../../../components/generated/select/fallback.vue';
+import selectFallbackSource from '../../../../components/generated/select/fallback.vue?raw';
+import SelectFieldNamesDemo from '../../../../components/generated/select/field-names.vue';
+import selectFieldNamesSource from '../../../../components/generated/select/field-names.vue?raw';
+import SelectFooterDemo from '../../../../components/generated/select/footer.vue';
+import selectFooterSource from '../../../../components/generated/select/footer.vue?raw';
+import SelectGroupDemo from '../../../../components/generated/select/group.vue';
+import selectGroupSource from '../../../../components/generated/select/group.vue?raw';
+import SelectHeaderDemo from '../../../../components/generated/select/header.vue';
+import selectHeaderSource from '../../../../components/generated/select/header.vue?raw';
+import SelectLabelDemo from '../../../../components/generated/select/label.vue';
+import selectLabelSource from '../../../../components/generated/select/label.vue?raw';
+import SelectLinkageDemo from '../../../../components/generated/select/linkage.vue';
+import selectLinkageSource from '../../../../components/generated/select/linkage.vue?raw';
+import SelectLoadingDemo from '../../../../components/generated/select/loading.vue';
+import selectLoadingSource from '../../../../components/generated/select/loading.vue?raw';
+import SelectMultipleDemo from '../../../../components/generated/select/multiple.vue';
+import selectMultipleSource from '../../../../components/generated/select/multiple.vue?raw';
+import SelectRemoteDemo from '../../../../components/generated/select/remote.vue';
+import selectRemoteSource from '../../../../components/generated/select/remote.vue?raw';
+import SelectScrollDemo from '../../../../components/generated/select/scroll.vue';
+import selectScrollSource from '../../../../components/generated/select/scroll.vue?raw';
+import SelectSearchDemo from '../../../../components/generated/select/search.vue';
+import selectSearchSource from '../../../../components/generated/select/search.vue?raw';
+import SelectSizeDemo from '../../../../components/generated/select/size.vue';
+import selectSizeSource from '../../../../components/generated/select/size.vue?raw';
+import SelectVirtualListDemo from '../../../../components/generated/select/virtual-list.vue';
+import selectVirtualListSource from '../../../../components/generated/select/virtual-list.vue?raw';
 
 ### 基本用法
 
@@ -239,62 +221,245 @@ export const selectVirtualListSource =
 
 </DemoBlock>
 
+## 从 Arco Design 迁移
+
+`Select` 在当前组件库里仍然保持 Arco Design Vue 的主要使用习惯，但实现已经完全收敛到本地的 `Trigger`、`SelectView`、表单联动和主题体系。迁移时建议把它当作“标签名和少量扩展约定不变、交互和主题链路切到本地组件库”的替换。
+
+### 对应关系
+
+| Arco Design Vue | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `a-select` | `sd-select` | 选择器主体 |
+| `a-option` | `sd-option` | 选项组件 |
+| `a-optgroup` | `sd-optgroup` | 选项分组 |
+| `v-model` / `model-value` | `v-model` / `model-value` | 受控写法保持一致 |
+| `popup-visible` | `popup-visible` | 下拉框显隐控制保持一致 |
+| `:options` | `:options` | 仍支持对象数组数据源 |
+| `field-names` | `field-names` | 仍支持映射 `value` / `label` / `children` |
+| `#label` / `#option` / `#header` / `#footer` | 同名插槽 | 常见模板插槽可以直接迁移 |
+
+### 主要差异
+
+1. 迁移后的下拉层、弹出容器、表单联动和主题注入都复用当前组件库内部实现，所以涉及浮层挂载、局部主题和表单校验的场景，优先使用 `popup-container`、`trigger-props` 和 `ConfigProvider`，不要再额外包一层自定义 Teleport 或独立弹层。
+2. 当前版本不再对外暴露 render function 风格的自定义入口，选择框内容、多选标签和选项内容统一使用 `label`、`tag`、`option` 插槽。旧业务如果有 JSX / `h()` 风格的渲染函数，需要改成模板插槽。
+3. `max-tag-count="responsive"` 走的是当前组件库的响应式折叠策略：除非显式传 `0`，否则会尽量保留至少一个可见标签，再把剩余数量折叠到 `+n`。如果旧页面依赖“宽度不够时全部折叠”的表现，迁移后要重新验收。
+4. `allow-clear` 在当前组件里默认就是开启的；如果旧业务显式依赖不可清空，迁移时要补上 `:allow-clear="false"`，不要假设默认行为和历史版本完全一致。
+
+### 迁移前后示例
+
+#### 基础替换
+
+```vue
+<template>
+  <a-select v-model="city" :style="{ width: '320px' }" placeholder="Please select ...">
+    <a-option value="beijing">Beijing</a-option>
+    <a-option value="shanghai">Shanghai</a-option>
+  </a-select>
+</template>
+```
+
+```vue
+<template>
+  <sd-select v-model="city" :style="{ width: '320px' }" placeholder="Please select ...">
+    <sd-option value="beijing">Beijing</sd-option>
+    <sd-option value="shanghai">Shanghai</sd-option>
+  </sd-select>
+</template>
+```
+
+#### `options` + `field-names`
+
+```vue
+<template>
+  <a-select
+    v-model="city"
+    :options="options"
+    :field-names="{ value: 'id', label: 'name' }"
+    :style="{ width: '320px' }"
+  />
+</template>
+```
+
+```vue
+<template>
+  <sd-select
+    v-model="city"
+    :options="options"
+    :field-names="{ value: 'id', label: 'name' }"
+    :style="{ width: '320px' }"
+  />
+</template>
+```
+
+#### 自定义选中展示
+
+```vue
+<template>
+  <a-select default-value="beijing" :style="{ width: '320px' }">
+    <template #label="{ data }">
+      <span>{{ data?.label }} city</span>
+    </template>
+    <a-option value="beijing">Beijing</a-option>
+    <a-option value="shanghai">Shanghai</a-option>
+  </a-select>
+</template>
+```
+
+```vue
+<template>
+  <sd-select default-value="beijing" :style="{ width: '320px' }">
+    <template #label="{ data }">
+      <span>{{ data?.label }} city</span>
+    </template>
+    <sd-option value="beijing">Beijing</sd-option>
+    <sd-option value="shanghai">Shanghai</sd-option>
+  </sd-select>
+</template>
+```
+
+### 建议的迁移顺序
+
+1. 先替换组件标签：`a-select`、`a-option`、`a-optgroup` 分别替换为 `sd-select`、`sd-option`、`sd-optgroup`，先保证页面能渲染。
+2. 再迁移数据写法：如果原来已经使用 `options` / `field-names`，通常可以原样保留；如果历史代码混用了插槽选项和对象数组，建议先统一成一种。
+3. 接着处理自定义展示：把旧的渲染函数或外层包装逻辑收敛到 `label`、`tag`、`option`、`header`、`footer` 等插槽。
+4. 最后验收交互细节：重点检查远程搜索、多选折叠、浮层宽度、自定义挂载容器、表单校验和局部主题，确认它们已经切到当前组件库的行为链路。
+
+## 从 Naive UI 迁移
+
+`Select` 也保留了一部分 Naive UI 迁移所需的兼容面，重点是受控写法和弹层显隐别名；但整体交互仍然以当前组件库的 `Trigger`、`SelectView`、插槽体系和主题体系为准。迁移时建议优先完成组件替换，再把 Naive 风格命名逐步收敛回本地 API。
+
+### 对应关系
+
+| Naive UI | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `n-select` | `sd-select` | 选择器主体 |
+| `v-model:value` | `v-model:value` / `v-model` | 当前同时支持 Naive 风格和本地默认写法 |
+| `show` / `default-show` | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `defaultShow` | 建议逐步迁回本地命名 |
+| `options` | `options` | 对象数组数据源可直接保留 |
+| `field-names` | `field-names` | 仍支持字段映射 |
+| `multiple` | `multiple` | 多选模式写法保持一致 |
+| `max-tag-count` | `max-tag-count` | 仍支持数字和 `responsive` |
+| `clearable` | `allow-clear` | 需要改为本地命名 |
+| `filterable` | `allow-search` | 需要改为本地命名 |
+| `render-tag` / `render-label` | `#tag` / `#label` | 对外 render function 已移除，统一改用插槽 |
+
+### 主要差异
+
+1. 当前版本只兼容 Naive 中最常用的受控别名，比如 `value`、`show`、`defaultShow`。像 `filterable`、`clearable` 这类语义型属性没有保留同名别名，迁移时要主动改成 `allow-search`、`allow-clear`。
+2. 对外 render function 已经移除，原来依赖 `render-tag`、`render-label`、选项 render 回调的场景，需要改成 `tag`、`label`、`option` 插槽。
+3. 多选标签折叠走的是当前组件库的本地响应式策略，`max-tag-count="responsive"` 会尽量至少保留一个标签可见，再折叠剩余数量；如果旧页面依赖 Naive 的宽度收缩细节，需要单独回归。
+4. 弹层、滚动定位、局部主题和表单联动都接到本地实现了，所以迁移后不要继续依赖 Naive 私有 DOM、类名或外层包裹的额外定位逻辑。
+
+### 迁移前后示例
+
+#### 受控值迁移
+
+```vue
+<template>
+  <n-select v-model:value="city" :options="options" />
+</template>
+```
+
+```vue
+<template>
+  <sd-select v-model:value="city" :options="options" />
+</template>
+```
+
+#### 搜索与清空
+
+```vue
+<template>
+  <n-select v-model:value="city" :options="options" filterable clearable />
+</template>
+```
+
+```vue
+<template>
+  <sd-select v-model="city" :options="options" allow-search allow-clear />
+</template>
+```
+
+#### `render-tag` 迁移到插槽
+
+```vue
+<template>
+  <n-select v-model:value="value" multiple :options="options" :render-tag="renderTag" />
+</template>
+```
+
+```vue
+<template>
+  <sd-select v-model="value" multiple :options="options">
+    <template #tag="{ data }">
+      <span>{{ data?.label }}</span>
+    </template>
+  </sd-select>
+</template>
+```
+
+### 建议的迁移顺序
+
+1. 先把 `n-select` 替换成 `sd-select`，保留原有 `options`、`v-model:value` 等低成本兼容写法，让页面先恢复可用。
+2. 再统一属性命名：把 `filterable`、`clearable`、`show`、`default-show` 分别改成 `allow-search`、`allow-clear`、`popup-visible`、`default-popup-visible`。
+3. 接着迁移自定义渲染：把 `render-tag`、`render-label` 一类函数式扩展收敛成 `tag`、`label`、`option` 插槽。
+4. 最后回归交互细节：重点看多选标签折叠、远程搜索、清空按钮、弹层容器和表单联动，确认它们已经符合当前组件库的本地行为。
+
 ## API
 
 ### `<select>` Props
 
-| 参数名                      | 描述                                                                             | 类型                                                                                                                       |     默认值     | 版本   |
-| --------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | :------------: | :----- |
-| multiple                    | 是否开启多选模式（多选模式默认开启搜索）                                         | `boolean`                                                                                                                  |    `false`     |        |
-| value **(v-model:value)**   | 绑定值，兼容 Naive 风格双向绑定                                                  | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |      `-`       |        |
-| model-value **(v-model)**   | 绑定值                                                                           | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |      `-`       |        |
-| default-value               | 默认值（非受控模式）                                                             | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[]`         |   `'' \| []`   |        |
-| input-value **(v-model)**   | 输入框的值                                                                       | `string`                                                                                                                   |      `-`       |        |
-| default-input-value         | 输入框的默认值（非受控模式）                                                     | `string`                                                                                                                   |      `''`      |        |
-| size                        | 选择框的大小                                                                     | `'mini' \| 'small' \| 'medium' \| 'large'`                                                                                 |   `'medium'`   |        |
-| placeholder                 | 占位符                                                                           | `string`                                                                                                                   |      `-`       |        |
-| loading                     | 是否为加载中状态                                                                 | `boolean`                                                                                                                  |    `false`     |        |
-| disabled                    | 是否禁用                                                                         | `boolean`                                                                                                                  |    `false`     |        |
-| error                       | 是否为错误状态                                                                   | `boolean`                                                                                                                  |    `false`     |        |
-| allow-clear                 | 是否允许清空                                                                     | `boolean`                                                                                                                  |     `true`     |        |
-| allow-search                | 是否允许搜索                                                                     | `boolean \| { retainInputValue?: boolean }`                                                                                |     `true`     |        |
-| allow-create                | 是否允许创建                                                                     | `boolean`                                                                                                                  |    `false`     |        |
-| max-tag-count               | 多选模式下，最多显示的标签数量。`responsive` 会自动收敛为组件当前支持的展示模式  | `number \| 'responsive'`                                                                                                   | `'responsive'` |        |
-| popup-container             | 弹出框的挂载容器                                                                 | `string \| HTMLElement`                                                                                                    |      `-`       |        |
-| bordered                    | 是否显示输入框的边框                                                             | `boolean`                                                                                                                  |     `true`     |        |
-| default-active-first-option | 是否在无值时默认选择第一个选项                                                   | `boolean`                                                                                                                  |     `true`     | 2.43.0 |
-| popup-visible **(v-model)** | 是否显示下拉菜单                                                                 | `boolean`                                                                                                                  |      `-`       |        |
-| default-popup-visible       | 弹出框默认是否可见（非受控模式）                                                 | `boolean`                                                                                                                  |    `false`     |        |
-| unmount-on-close            | 是否在下拉菜单关闭时销毁元素                                                     | `boolean`                                                                                                                  |    `false`     |        |
-| filter-option               | 是否过滤选项                                                                     | `boolean \| ((inputValue: string, option: SelectOptionData) => boolean)`                                                   |     `true`     |        |
-| options                     | 选项数据                                                                         | `(string \| number \| boolean \| SelectOptionData \| SelectOptionGroup)[]`                                                 |      `[]`      |        |
-| virtual-list-props          | 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps) | `VirtualListProps`                                                                                                         |      `-`       |        |
-| trigger-props               | 下拉菜单的触发器属性                                                             | `TriggerProps`                                                                                                             |      `-`       |        |
-| format-label                | 格式化显示内容                                                                   | `(data: SelectOptionData) => string`                                                                                       |      `-`       |        |
-| fallback-option             | 自定义值中不存在的选项                                                           | `boolean\| ((    value: string \| number \| boolean \| Record<string, unknown>  ) => SelectOptionData)`                    |     `true`     | 2.10.0 |
-| show-extra-options          | 是否在下拉菜单中显示额外选项                                                     | `boolean`                                                                                                                  |     `true`     | 2.10.0 |
-| value-key                   | 用于确定选项键值的属性名                                                         | `string`                                                                                                                   |   `'value'`    | 2.18.0 |
-| search-delay                | 触发搜索事件的延迟时间                                                           | `number`                                                                                                                   |     `500`      | 2.18.0 |
-| limit                       | 多选时最多的选择个数                                                             | `number`                                                                                                                   |      `0`       | 2.18.0 |
-| field-names                 | 自定义 `SelectOptionData` 中的字段                                               | `SelectFieldNames`                                                                                                         |      `-`       | 2.22.0 |
-| scrollbar                   | 是否开启虚拟滚动条                                                               | `boolean \| ScrollbarProps`                                                                                                |     `true`     | 2.38.0 |
-| show-header-on-empty        | 空状态时是否显示header                                                           | `boolean`                                                                                                                  |    `false`     |        |
-| show-footer-on-empty        | 空状态时是否显示footer                                                           | `boolean`                                                                                                                  |    `false`     |        |
-| tag-nowrap                  | 标签内容不换行                                                                   | `boolean`                                                                                                                  |    `false`     | 2.56.1 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| multiple | 是否开启多选模式（多选模式默认开启搜索） | `boolean` | `false` |  |
+| value **(v-model:value)** | 绑定值，兼容 Naive 风格双向绑定 | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` | `-` |  |
+| model-value **(v-model)** | 绑定值 | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` | `-` |  |
+| default-value | 默认值（非受控模式） | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[]` | `'' \| []` |  |
+| input-value **(v-model)** | 输入框的值 | `string` | `-` |  |
+| default-input-value | 输入框的默认值（非受控模式） | `string` | `''` |  |
+| size | 选择框的大小 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |  |
+| placeholder | 占位符 | `string` | `-` |  |
+| loading | 是否为加载中状态 | `boolean` | `false` |  |
+| disabled | 是否禁用 | `boolean` | `false` |  |
+| error | 是否为错误状态 | `boolean` | `false` |  |
+| allow-clear | 是否允许清空 | `boolean` | `true` |  |
+| allow-search | 是否允许搜索 | `boolean \| { retainInputValue?: boolean }` | `true` |  |
+| allow-create | 是否允许创建 | `boolean` | `false` |  |
+| max-tag-count | 多选模式下，最多显示的标签数量。`responsive` 会自动收敛为组件当前支持的展示模式 | `number \| 'responsive'` | `'responsive'` |  |
+| popup-container | 弹出框的挂载容器 | `string \| HTMLElement` | `-` |  |
+| bordered | 是否显示输入框的边框 | `boolean` | `true` |  |
+| default-active-first-option | 是否在无值时默认选择第一个选项 | `boolean` | `true` | 2.43.0 |
+| popup-visible **(v-model)** | 是否显示下拉菜单 | `boolean` | `-` |  |
+| default-popup-visible | 弹出框默认是否可见（非受控模式） | `boolean` | `false` |  |
+| unmount-on-close | 是否在下拉菜单关闭时销毁元素 | `boolean` | `false` |  |
+| filter-option | 是否过滤选项 | `boolean \| ((inputValue: string, option: SelectOptionData) => boolean)` | `true` |  |
+| options | 选项数据 | `(string \| number \| boolean \| SelectOptionData \| SelectOptionGroup)[]` | `[]` |  |
+| virtual-list-props | 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps) | `VirtualListProps` | `-` |  |
+| trigger-props | 下拉菜单的触发器属性 | `TriggerProps` | `-` |  |
+| fallback-option | 自定义值中不存在的选项 | `boolean\| ((    value: string \| number \| boolean \| Record<string, unknown>  ) => SelectOptionData)` | `true` | 2.10.0 |
+| show-extra-options | 是否在下拉菜单中显示额外选项 | `boolean` | `true` | 2.10.0 |
+| value-key | 用于确定选项键值的属性名 | `string` | `'value'` | 2.18.0 |
+| search-delay | 触发搜索事件的延迟时间 | `number` | `500` | 2.18.0 |
+| limit | 多选时最多的选择个数 | `number` | `0` | 2.18.0 |
+| field-names | 自定义 `SelectOptionData` 中的字段 | `SelectFieldNames` | `-` | 2.22.0 |
+| scrollbar | 是否开启虚拟滚动条 | `boolean \| ScrollbarProps` | `true` | 2.38.0 |
+| show-header-on-empty | 空状态时是否显示header | `boolean` | `false` |  |
+| show-footer-on-empty | 空状态时是否显示footer | `boolean` | `false` |  |
+| tag-nowrap | 标签内容不换行 | `boolean` | `false` | 2.56.1 |
 
 ### `<select>` Events
 
-| 事件名                | 描述                       | 参数                                                                                                                                  | 版本   |
-| --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | :----- |
-| change                | 值发生改变时触发           | value: `string \| number \| boolean \| Record<string, unknown> \| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |        |
-| input-value-change    | 输入框的值发生改变时触发   | inputValue: `string`                                                                                                                  |        |
-| popup-visible-change  | 下拉框的显示状态改变时触发 | visible: `boolean`                                                                                                                    |        |
-| clear                 | 点击清除按钮时触发         | -                                                                                                                                     |        |
-| remove                | 点击标签的删除按钮时触发   | removed: `string \| number \| boolean \| Record<string, unknown> \| undefined`                                                        |        |
-| search                | 用户搜索时触发             | inputValue: `string`                                                                                                                  |        |
-| dropdown-scroll       | 下拉菜单发生滚动时触发     | -                                                                                                                                     |        |
-| dropdown-reach-bottom | 下拉菜单滚动到底部时触发   | -                                                                                                                                     |        |
-| exceed-limit          | 多选超出限制时触发         | value: `string \| number \| boolean \| Record<string, unknown> \| undefined`<br />ev: `Event`                                         | 2.18.0 |
+| 事件名 | 描述 | 参数 | 版本 |
+| --- | --- | --- | :-- |
+| change | 值发生改变时触发 | value: `string \| number \| boolean \| Record<string, unknown> \| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |  |
+| input-value-change | 输入框的值发生改变时触发 | inputValue: `string` |  |
+| popup-visible-change | 下拉框的显示状态改变时触发 | visible: `boolean` |  |
+| clear | 点击清除按钮时触发 | - |  |
+| remove | 点击标签的删除按钮时触发 | removed: `string \| number \| boolean \| Record<string, unknown> \| undefined` |  |
+| search | 用户搜索时触发 | inputValue: `string` |  |
+| dropdown-scroll | 下拉菜单发生滚动时触发 | - |  |
+| dropdown-reach-bottom | 下拉菜单滚动到底部时触发 | - |  |
+| exceed-limit | 多选超出限制时触发 | value: `string \| number \| boolean \| Record<string, unknown> \| undefined`<br />ev: `Event` | 2.18.0 |
 
 ### `<select>` Slots
 
@@ -308,19 +473,20 @@ export const selectVirtualListSource =
 | footer       |     下拉框的页脚     | -                        |        |
 | header       |     下拉框的页头     | -                        | 2.43.0 |
 | label        |   选择框的显示内容   | data: `SelectOptionData` |        |
+| tag          |  多选标签的显示内容  | data: `SelectOptionData` |        |
 | option       |       选项内容       | data: `SelectOptionData` |        |
 | empty        | 选项为空时的显示内容 | -                        |        |
 
 ### `<option>` Props
 
-| 参数名    | 描述                                                       | 类型                              | 默认值  | 版本   |
-| --------- | ---------------------------------------------------------- | --------------------------------- | :-----: | :----- |
-| value     | 选项值（如不填，会从内容中获取）                           | `string\|number\|boolean\|object` |   `-`   |        |
-| label     | 选项标签（如不填，会从内容中获取）                         | `string`                          |   `-`   |        |
-| disabled  | 是否禁用                                                   | `boolean`                         | `false` |        |
-| tag-props | 展示的标签属性                                             | `TagProps`                        |   `-`   | 2.8.0  |
-| extra     | 额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据 | `object`                          |   `-`   | 2.10.0 |
-| index     | 用于手动指定选项的 index                                   | `number`                          |   `-`   | 2.20.0 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| value | 选项值（如不填，会从内容中获取） | `string\|number\|boolean\|object` | `-` |  |
+| label | 选项标签（如不填，会从内容中获取） | `string` | `-` |  |
+| disabled | 是否禁用 | `boolean` | `false` |  |
+| tag-props | 展示的标签属性 | `TagProps` | `-` | 2.8.0 |
+| extra | 额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据 | `object` | `-` | 2.10.0 |
+| index | 用于手动指定选项的 index | `number` | `-` | 2.20.0 |
 
 ### `<optgroup>` Props
 
@@ -347,20 +513,17 @@ type Option = string | number | SelectOptionData | SelectOptionGroup;
  * @zh 筛选
  * @en Filter
  */
-type FilterOption =
-  | boolean
-  | ((inputValue: string, option: SelectOptionData) => boolean);
+type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) => boolean);
 ```
 
 ### SelectOptionData
 
-| 参数名   | 描述                     | 类型                                                     | 默认值  |
-| -------- | ------------------------ | -------------------------------------------------------- | :-----: |
-| value    | 选项值                   | `string \| number \| boolean \| Record<string, unknown>` |   `-`   |
-| label    | 选项内容                 | `string`                                                 |   `-`   |
-| disabled | 是否禁用                 | `boolean`                                                | `false` |
-| tagProps | 选项对应的多选标签的属性 | `Record<string, unknown>`                                |   `-`   |
-| render   | 自定义渲染               | `RenderFunction`                                         |   `-`   |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| value | 选项值 | `string \| number \| boolean \| Record<string, unknown>` | `-` |
+| label | 选项内容 | `string` | `-` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| tagProps | 选项对应的多选标签的属性 | `Record<string, unknown>` | `-` |
 
 ### SelectOptionGroup
 
@@ -372,14 +535,14 @@ type FilterOption =
 
 ### VirtualListProps
 
-| 参数名             | 描述                                                                | 类型               | 默认值  | 版本   |
-| ------------------ | ------------------------------------------------------------------- | ------------------ | :-----: | :----- |
-| height             | 可视区域高度                                                        | `number \| string` |   `-`   |        |
-| threshold          | 开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。  | `number`           |   `-`   |        |
-| isStaticItemHeight | （已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize` | `boolean`          | `false` |        |
-| fixedSize          | 元素高度是否是固定的。                                              | `boolean`          | `false` | 2.34.1 |
-| estimatedSize      | 元素高度不固定时的预估高度。                                        | `number`           |   `-`   | 2.34.1 |
-| buffer             | 视口边界外提前挂载的元素数量。                                      | `number`           |  `10`   | 2.34.1 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| height | 可视区域高度 | `number \| string` | `-` |  |
+| threshold | 开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。 | `number` | `-` |  |
+| isStaticItemHeight | （已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize` | `boolean` | `false` |  |
+| fixedSize | 元素高度是否是固定的。 | `boolean` | `false` | 2.34.1 |
+| estimatedSize | 元素高度不固定时的预估高度。 | `number` | `-` | 2.34.1 |
+| buffer | 视口边界外提前挂载的元素数量。 | `number` | `10` | 2.34.1 |
 
 ## FAQ
 
@@ -402,40 +565,40 @@ type FilterOption =
 </template>
 
 <script>
-import { ref } from "vue";
+  import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref();
-    const data = [
-      {
-        value: "beijing",
-        label: "Beijing",
-        key: "extra1",
-      },
-      {
-        value: "shanghai",
-        label: "Shanghai",
-        key: "extra2",
-      },
-      {
-        value: "guangzhou",
-        label: "Guangzhou",
-        key: "extra3",
-      },
-      {
-        value: "chengdu",
-        label: "Chengdu",
-        key: "extra4",
-      },
-    ];
+  export default {
+    setup() {
+      const value = ref();
+      const data = [
+        {
+          value: 'beijing',
+          label: 'Beijing',
+          key: 'extra1',
+        },
+        {
+          value: 'shanghai',
+          label: 'Shanghai',
+          key: 'extra2',
+        },
+        {
+          value: 'guangzhou',
+          label: 'Guangzhou',
+          key: 'extra3',
+        },
+        {
+          value: 'chengdu',
+          label: 'Chengdu',
+          key: 'extra4',
+        },
+      ];
 
-    return {
-      value,
-      data,
-    };
-  },
-};
+      return {
+        value,
+        data,
+      };
+    },
+  };
 </script>
 ```
 

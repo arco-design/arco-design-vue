@@ -5,53 +5,37 @@ description: 可以对树形结构数据进行选择。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import TreeSelectBasicDemo from '../../../../components/generated/tree-select/basic.vue';
-export const treeSelectBasicSource =
-  "<template>\n  <sd-tree-select\n    :data=\"treeData\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { h } from 'vue';\n  import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';\n\n  export default {\n    setup() {\n      return {\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: 'node1',\n      icon: () => h(IconCalendar),\n      title: 'Trunk',\n      disabled: true,\n      children: [\n        {\n          key: 'node2',\n          title: 'Leaf',\n        },\n      ],\n    },\n    {\n      key: 'node3',\n      title: 'Trunk2',\n      icon: () => h(IconCalendar),\n      children: [\n        {\n          key: 'node4',\n          title: 'Leaf',\n        },\n        {\n          key: 'node5',\n          title: 'Leaf',\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectBasicSource from '../../../../components/generated/tree-select/basic.vue?raw';
 import TreeSelectCheckableDemo from '../../../../components/generated/tree-select/checkable.vue';
-export const treeSelectCheckableSource =
-  "<template>\n  <div style=\"marginBottom: 24px;\">\n    <sd-checkbox\n      v-model=\"treeCheckStrictly\"\n      @change=\"\n        () => {\n          selected = [];\n        }\n      \"\n    >\n      treeCheckStrictly\n    </sd-checkbox>\n  </div>\n  <sd-tree-select\n    v-model=\"selected\"\n    :allow-search=\"true\"\n    :allow-clear=\"true\"\n    :tree-checkable=\"true\"\n    :tree-check-strictly=\"treeCheckStrictly\"\n    :data=\"treeData\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px;\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const selected = ref([]);\n      const treeCheckStrictly = ref(false);\n\n      return {\n        selected,\n        treeCheckStrictly,\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      title: 'Trunk 0-0',\n      value: 'Trunk 0-0',\n      key: '0-0',\n      children: [\n        {\n          title: 'Leaf 0-0-1',\n          value: 'Leaf 0-0-1',\n          key: '0-0-1',\n        },\n        {\n          title: 'Branch 0-0-2',\n          value: 'Branch 0-0-2',\n          key: '0-0-2',\n          children: [\n            {\n              title: 'Leaf 0-0-2-1',\n              value: 'Leaf 0-0-2-1',\n              key: '0-0-2-1',\n            },\n          ],\n        },\n      ],\n    },\n    {\n      title: 'Trunk 0-1',\n      value: 'Trunk 0-1',\n      key: '0-1',\n      children: [\n        {\n          title: 'Branch 0-1-1',\n          value: 'Branch 0-1-1',\n          key: '0-1-1',\n          checkable: false,\n          children: [\n            {\n              title: 'Leaf 0-1-1-1',\n              value: 'Leaf 0-1-1-1',\n              key: '0-1-1-1',\n            },\n            {\n              title: 'Leaf 0-1-1-2',\n              value: 'Leaf 0-1-1-2',\n              key: '0-1-1-2',\n              disabled: true,\n            },\n          ],\n        },\n        {\n          title: 'Leaf 0-1-2',\n          value: 'Leaf 0-1-2',\n          key: '0-1-2',\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectCheckableSource from '../../../../components/generated/tree-select/checkable.vue?raw';
 import TreeSelectCheckedStrategyDemo from '../../../../components/generated/tree-select/checked-strategy.vue';
-export const treeSelectCheckedStrategySource =
-  "<template>\n  <div style=\"margin-bottom: 24px;\">\n    <sd-radio-group\n      type=\"button\"\n      v-model=\"treeCheckedStrategy\"\n      @change=\"\n        (value) => {\n          selected = [];\n        }\n      \"\n    >\n      <sd-radio v-for=\"item in strategyOptions\" :key=\"item?.value\" :value=\"item?.value\">\n        {{ item?.label }}\n      </sd-radio>\n    </sd-radio-group>\n  </div>\n  <sd-tree-select\n    v-model=\"selected\"\n    :allow-search=\"true\"\n    :allow-clear=\"true\"\n    :tree-checkable=\"true\"\n    :tree-checked-strategy=\"treeCheckedStrategy\"\n    :data=\"treeData\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px;\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const selected = ref([]);\n      const treeCheckedStrategy = ref('all');\n\n      return {\n        selected,\n        treeCheckedStrategy,\n        strategyOptions,\n        treeData,\n      };\n    },\n  };\n\n  const strategyOptions = [\n    {\n      value: 'all',\n      label: 'show all',\n    },\n    {\n      value: 'parent',\n      label: 'show parent',\n    },\n    {\n      value: 'child',\n      label: 'show child',\n    },\n  ];\n\n  const treeData = [\n    {\n      title: 'Trunk 0-0',\n      value: 'Trunk 0-0',\n      key: '0-0',\n      children: [\n        {\n          title: 'Leaf 0-0-1',\n          value: 'Leaf 0-0-1',\n          key: '0-0-1',\n        },\n        {\n          title: 'Branch 0-0-2',\n          value: 'Branch 0-0-2',\n          key: '0-0-2',\n          children: [\n            {\n              title: 'Leaf 0-0-2-1',\n              value: 'Leaf 0-0-2-1',\n              key: '0-0-2-1',\n            },\n          ],\n        },\n      ],\n    },\n    {\n      title: 'Trunk 0-1',\n      value: 'Trunk 0-1',\n      key: '0-1',\n      children: [\n        {\n          title: 'Branch 0-1-1',\n          value: 'Branch 0-1-1',\n          key: '0-1-1',\n          checkable: false,\n          children: [\n            {\n              title: 'Leaf 0-1-1-1',\n              value: 'Leaf 0-1-1-1',\n              key: '0-1-1-1',\n            },\n            {\n              title: 'Leaf 0-1-1-2',\n              value: 'Leaf 0-1-1-2',\n              key: '0-1-1-2',\n              disabled: true,\n            },\n          ],\n        },\n        {\n          title: 'Leaf 0-1-2',\n          value: 'Leaf 0-1-2',\n          key: '0-1-2',\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectCheckedStrategySource from '../../../../components/generated/tree-select/checked-strategy.vue?raw';
 import TreeSelectControlDemo from '../../../../components/generated/tree-select/control.vue';
-export const treeSelectControlSource =
-  "<template>\n  <sd-tree-select\n    :data=\"treeData\"\n    v-model=\"selected\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { h, ref } from 'vue';\n  import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';\n\n  export default {\n    setup() {\n      const selected = ref('node2');\n\n      return {\n        selected,\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: 'node1',\n      icon: () => h(IconCalendar),\n      title: 'Trunk',\n      disabled: true,\n      children: [\n        {\n          key: 'node2',\n          title: 'Leaf',\n        },\n      ],\n    },\n    {\n      key: 'node3',\n      title: 'Trunk2',\n      icon: () => h(IconCalendar),\n      children: [\n        {\n          key: 'node4',\n          title: 'Leaf',\n        },\n        {\n          key: 'node5',\n          title: 'Leaf',\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectControlSource from '../../../../components/generated/tree-select/control.vue?raw';
 import TreeSelectDropdownSlotsDemo from '../../../../components/generated/tree-select/dropdown-slots.vue';
-export const treeSelectDropdownSlotsSource =
-  "<template>\n  <sd-form layout=\"inline\" :model=\"form\">\n    <sd-form-item label=\"empty\">\n      <sd-switch v-model=\"form.empty\" />\n    </sd-form-item>\n    <sd-form-item label=\"showHeaderOnEmpty\">\n      <sd-switch v-model=\"form.showHeaderOnEmpty\" />\n    </sd-form-item>\n    <sd-form-item label=\"showFooterOnEmpty\">\n      <sd-switch v-model=\"form.showFooterOnEmpty\" />\n    </sd-form-item>\n  </sd-form>\n  <sd-tree-select\n    style=\"width: 300px\"\n    placeholder=\"Please select ...\"\n    :data=\"computedTreeData\"\n    :show-header-on-empty=\"form.showHeaderOnEmpty\"\n    :show-footer-on-empty=\"form.showFooterOnEmpty\"\n  >\n    <template #header>\n      <div style=\"padding: 6px 12px;\">\n        <sd-checkbox value=\"1\">All</sd-checkbox>\n      </div>\n    </template>\n    <template #footer>\n      <div style=\"padding: 6px 0; text-align: center;\">\n        <sd-button>Click Me</sd-button>\n      </div>\n    </template>\n  </sd-tree-select>\n</template>\n<script>\n  import { h, reactive, computed } from 'vue';\n  import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';\n\n  export default {\n    setup() {\n      const form = reactive({\n        empty: false,\n        showHeaderOnEmpty: false,\n        showFooterOnEmpty: false,\n      });\n\n      const treeData = [\n        {\n          key: 'node1',\n          icon: () => h(IconCalendar),\n          title: 'Trunk',\n          children: [\n            {\n              key: 'node2',\n              title: 'Leaf',\n            },\n          ],\n        },\n        {\n          key: 'node3',\n          title: 'Trunk2',\n          icon: () => h(IconCalendar),\n          children: [\n            {\n              key: 'node4',\n              title: 'Leaf',\n            },\n            {\n              key: 'node5',\n              title: 'Leaf',\n            },\n          ],\n        },\n        {\n          key: 'node6',\n          title: 'Trunk3',\n          icon: () => h(IconCalendar),\n          children: [\n            {\n              key: 'node7',\n              title: 'Leaf',\n            },\n            {\n              key: 'node8',\n              title: 'Leaf',\n            },\n          ],\n        },\n      ];\n\n      const computedTreeData = computed(() => {\n        return form.empty ? [] : treeData;\n      });\n\n      return {\n        form,\n        computedTreeData,\n      };\n    },\n  };\n</script>";
+import treeSelectDropdownSlotsSource from '../../../../components/generated/tree-select/dropdown-slots.vue?raw';
 import TreeSelectFallbackDemo from '../../../../components/generated/tree-select/fallback.vue';
-export const treeSelectFallbackSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-tree-select\n      defaultValue="node0"\n      :data="treeData"\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n    <sd-tree-select\n      defaultValue="node0"\n      :data="treeData"\n      :fallback-option="false"\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n    <sd-tree-select\n      defaultValue="node0"\n      :data="treeData"\n      :fallback-option="fallback"\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n    <sd-tree-select\n      :defaultValue="[\'node0\', \'node2\']"\n      :data="treeData"\n      multiple\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n    <sd-tree-select\n      :defaultValue="[\'node0\', \'node2\']"\n      :data="treeData"\n      :fallback-option="false"\n      multiple\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n    <sd-tree-select\n      :default-value="[\'node0\', \'node2\']"\n      :data="treeData"\n      :fallback-option="fallback"\n      multiple\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      return {\n        treeData,\n        fallback(key) {\n          return {\n            key,\n            title: `++${key}++`,\n          };\n        },\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: \'node1\',\n      title: \'Trunk1\',\n      children: [\n        {\n          key: \'node2\',\n          title: \'Leaf1\',\n        },\n      ],\n    },\n    {\n      key: \'node3\',\n      title: \'Trunk2\',\n      children: [\n        {\n          key: \'node4\',\n          title: \'Leaf2\',\n        },\n        {\n          key: \'node5\',\n          title: \'Leaf3\',\n        },\n      ],\n    },\n  ];\n</script>';
+import treeSelectFallbackSource from '../../../../components/generated/tree-select/fallback.vue?raw';
 import TreeSelectFieldNamesDemo from '../../../../components/generated/tree-select/field-names.vue';
-export const treeSelectFieldNamesSource =
-  "<template>\n  <sd-tree-select\n    default-value=\"0-0-1\"\n    :fieldNames=\"{\n      key: 'value',\n      title: 'label',\n      children: 'items',\n    }\"\n    :data=\"treeData\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px;\"\n  ></sd-tree-select>\n</template>\n<script>\n  export default {\n    setup() {\n      return {\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      label: 'Trunk 0-0',\n      value: '0-0',\n      items: [\n        {\n          label: 'Branch 0-0-2',\n          value: '0-0-2',\n          selectable: false,\n          items: [\n            {\n              label: 'Leaf',\n              value: '0-0-2-1',\n              items: [\n                {\n                  label: 'Leaf 0-0-2',\n                  value: '0-0-2-1-0',\n                  items: [\n                    {\n                      label: 'Leaf',\n                      value: '0-0-2-1-0-0',\n                    },\n                  ],\n                },\n              ],\n            },\n          ],\n        },\n      ],\n    },\n    {\n      label: 'Trunk 0-1',\n      value: '0-1',\n      items: [\n        {\n          label: 'Branch 0-1-1',\n          value: '0-1-1',\n          items: [\n            {\n              label: 'Leaf',\n              value: '0-1-1-0',\n            },\n          ],\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectFieldNamesSource from '../../../../components/generated/tree-select/field-names.vue?raw';
 import TreeSelectLabelInValueDemo from '../../../../components/generated/tree-select/label-in-value.vue';
-export const treeSelectLabelInValueSource =
-  "<template>\n  <sd-tree-select\n    :data=\"treeData\"\n    :label-in-value=\"true\"\n    :default-value=\"{ value: 'node2', label: 'Leaf' }\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px\"\n    @change=\"onChange\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { h } from 'vue';\n  import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';\n\n  export default {\n    setup() {\n      function onChange(value) {\n        console.log(value);\n      }\n\n      return {\n        onChange,\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: 'node1',\n      icon: () => h(IconCalendar),\n      title: 'Trunk',\n      disabled: true,\n      children: [\n        {\n          key: 'node2',\n          title: 'Leaf',\n        },\n      ],\n    },\n    {\n      key: 'node3',\n      title: 'Trunk2',\n      icon: () => h(IconCalendar),\n      children: [\n        {\n          key: 'node4',\n          title: 'Leaf',\n        },\n        {\n          key: 'node5',\n          title: 'Leaf',\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectLabelInValueSource from '../../../../components/generated/tree-select/label-in-value.vue?raw';
 import TreeSelectLoadMoreDemo from '../../../../components/generated/tree-select/load-more.vue';
-export const treeSelectLoadMoreSource =
-  "<template>\n  <sd-tree-select\n    :data=\"treeData\"\n    :load-more=\"loadMore\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const treeData = ref(defaultTreeData);\n      const loadMore = (nodeData) => {\n        const { title, key } = nodeData;\n        const children = [\n          { title: `${title}-0`, value: `${title}-0`, key: `${key}-0` },\n          { title: `${title}-1`, value: `${title}-1`, key: `${key}-1` },\n        ];\n\n        return new Promise((resolve) => {\n          setTimeout(() => {\n            nodeData.children = children;\n            resolve();\n          }, 1000);\n        });\n      };\n\n      return {\n        treeData,\n        loadMore,\n      };\n    },\n  };\n\n  const defaultTreeData = [\n    {\n      key: 'node1',\n      title: 'node1',\n      disabled: true,\n      children: [\n        {\n          key: 'node2',\n          title: 'node2',\n        },\n      ],\n    },\n    {\n      key: 'node3',\n      title: 'node3',\n      children: [\n        {\n          key: 'node4',\n          title: 'node4',\n          isLeaf: true,\n        },\n        {\n          key: 'node5',\n          title: 'node5',\n          isLeaf: true,\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectLoadMoreSource from '../../../../components/generated/tree-select/load-more.vue?raw';
 import TreeSelectMultipleDemo from '../../../../components/generated/tree-select/multiple.vue';
-export const treeSelectMultipleSource =
-  '<template>\n  <sd-space>\n    <sd-tree-select\n      v-model="selected"\n      :multiple="true"\n      :allow-clear="true"\n      :allow-search="true"\n      :data="treeData"\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n    <sd-tree-select\n      v-model="selected"\n      :multiple="true"\n      :max-tag-count="2"\n      :allow-clear="true"\n      :allow-search="true"\n      :data="treeData"\n      placeholder="Please select ..."\n      style="width: 300px"\n    ></sd-tree-select>\n  </sd-space>\n</template>\n<script>\n  import { h, ref } from \'vue\';\n  import { IconCalendar } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    setup() {\n      const selected = ref([]);\n\n      return {\n        selected,\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: \'node1\',\n      icon: () => h(IconCalendar),\n      title: \'node1\',\n      children: [\n        {\n          key: \'node2\',\n          title: \'node2\',\n        },\n      ],\n    },\n    {\n      key: \'node3\',\n      title: \'node3\',\n      icon: () => h(IconCalendar),\n      children: [\n        {\n          key: \'node4\',\n          title: \'node4\',\n        },\n        {\n          key: \'node5\',\n          title: \'node5\',\n        },\n      ],\n    },\n  ];\n</script>';
+import treeSelectMultipleSource from '../../../../components/generated/tree-select/multiple.vue?raw';
 import TreeSelectPopupVisibleDemo from '../../../../components/generated/tree-select/popup-visible.vue';
-export const treeSelectPopupVisibleSource =
-  "<template>\n  <div style=\"margin-bottom: 24px;\">\n    <sd-button type=\"primary\" @click=\"onClick\">toggle</sd-button>\n  </div>\n  <sd-tree-select\n    :popupVisible=\"popupVisible\"\n    :allow-clear=\"true\"\n    :data=\"treeData\"\n    placeholder=\"Please select ...\"\n    style=\"width: 300px\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const popupVisible = ref(false);\n      function onClick() {\n        popupVisible.value = !popupVisible.value;\n      }\n\n      return {\n        onClick,\n        popupVisible,\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: 'node1',\n      title: 'Trunk',\n      children: [\n        {\n          key: 'node2',\n          title: 'Leaf',\n        },\n      ],\n    },\n    {\n      key: 'node3',\n      title: 'Trunk2',\n      children: [\n        {\n          key: 'node4',\n          title: 'Leaf',\n        },\n        {\n          key: 'node5',\n          title: 'Leaf',\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectPopupVisibleSource from '../../../../components/generated/tree-select/popup-visible.vue?raw';
 import TreeSelectSearchRemoteDemo from '../../../../components/generated/tree-select/search-remote.vue';
-export const treeSelectSearchRemoteSource =
-  "<template>\n  <sd-tree-select\n    :allow-search=\"true\"\n    :allow-clear=\"true\"\n    :disable-filter=\"true\"\n    :data=\"treeData\"\n    :loading=\"loading\"\n    style=\"width: 300px\"\n    placeholder=\"Please select ...\"\n    @search=\"onSearch\"\n  ></sd-tree-select>\n</template>\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const treeData = ref(defaultTreeData);\n      const loading = ref(false);\n\n      function searchData(keyword) {\n        const loop = (data) => {\n          const result = [];\n          data.forEach((item) => {\n            if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {\n              result.push({ ...item });\n            } else if (item.children) {\n              const filterData = loop(item.children);\n              if (filterData.length) {\n                result.push({\n                  ...item,\n                  children: filterData,\n                });\n              }\n            }\n          });\n          return result;\n        };\n\n        return loop(defaultTreeData);\n      }\n\n      const onSearch = (searchKey) => {\n        loading.value = true;\n        setTimeout(() => {\n          loading.value = false;\n          treeData.value = searchData(searchKey);\n        }, 200);\n      };\n\n      return {\n        treeData,\n        loading,\n        onSearch,\n      };\n    },\n  };\n\n  const defaultTreeData = [\n    {\n      title: 'Trunk 0-0',\n      key: '0-0',\n      children: [\n        {\n          title: 'Branch 0-0-1',\n          key: '0-0-1',\n          children: [\n            {\n              title: 'Leaf 0-0-1-1',\n              key: '0-0-1-1',\n            },\n            {\n              title: 'Leaf 0-0-1-2',\n              key: '0-0-1-2',\n            },\n          ],\n        },\n      ],\n    },\n    {\n      title: 'Trunk 0-1',\n      key: '0-1',\n      children: [\n        {\n          title: 'Branch 0-1-1',\n          key: '0-1-1',\n          children: [\n            {\n              title: 'Leaf 0-1-1-0',\n              key: '0-1-1-0',\n            },\n          ],\n        },\n        {\n          title: 'Branch 0-1-2',\n          key: '0-1-2',\n          children: [\n            {\n              title: 'Leaf 0-1-2-0',\n              key: '0-1-2-0',\n            },\n          ],\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectSearchRemoteSource from '../../../../components/generated/tree-select/search-remote.vue?raw';
 import TreeSelectSearchDemo from '../../../../components/generated/tree-select/search.vue';
-export const treeSelectSearchSource =
-  "<template>\n  <sd-space>\n    <sd-tree-select\n      :allow-search=\"true\"\n      :allow-clear=\"true\"\n      :data=\"treeData\"\n      placeholder=\"Please select ...\"\n      style=\"width: 300px\"\n    ></sd-tree-select>\n    <sd-tree-select\n      :allow-search=\"true\"\n      :allow-clear=\"true\"\n      :data=\"treeData\"\n      :filter-tree-node=\"filterTreeNode\"\n      placeholder=\"Please select ...\"\n      style=\"width: 300px\"\n    ></sd-tree-select>\n  </sd-space>\n</template>\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      function filterTreeNode(searchValue, nodeData) {\n        return nodeData.title.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;\n      }\n\n      return {\n        filterTreeNode,\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      title: 'Trunk 0-0',\n      key: '0-0',\n      children: [\n        {\n          title: 'Branch 0-0-1',\n          key: '0-0-1',\n          children: [\n            {\n              title: 'Leaf 0-0-1-1',\n              key: '0-0-1-1',\n            },\n            {\n              title: 'Leaf 0-0-1-2',\n              key: '0-0-1-2',\n            },\n          ],\n        },\n      ],\n    },\n    {\n      title: 'Trunk 0-1',\n      key: '0-1',\n      children: [\n        {\n          title: 'Branch 0-1-1',\n          key: '0-1-1',\n          children: [\n            {\n              title: 'Leaf 0-1-1-0',\n              key: '0-1-1-0',\n            },\n          ],\n        },\n        {\n          title: 'Branch 0-1-2',\n          key: '0-1-2',\n          children: [\n            {\n              title: 'Leaf 0-1-2-0',\n              key: '0-1-2-0',\n            },\n          ],\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectSearchSource from '../../../../components/generated/tree-select/search.vue?raw';
 import TreeSelectSizeDemo from '../../../../components/generated/tree-select/size.vue';
-export const treeSelectSizeSource =
-  '<template>\n  <div style="margin-bottom: 20px;">\n    <sd-radio-group v-model="size" type="button">\n      <sd-radio value="mini">mini</sd-radio>\n      <sd-radio value="small">small</sd-radio>\n      <sd-radio value="medium">medium</sd-radio>\n      <sd-radio value="large">large</sd-radio>\n    </sd-radio-group>\n  </div>\n  <sd-tree-select\n    defaultValue="node1"\n    :size="size"\n    :data="treeData"\n    placeholder="Please select ..."\n    style="width: 300px;"\n  ></sd-tree-select>\n</template>\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const size = ref(\'medium\');\n\n      return {\n        size,\n        treeData,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: \'node1\',\n      title: \'node1\',\n      disabled: true,\n      children: [\n        {\n          key: \'node2\',\n          title: \'node2\',\n        },\n      ],\n    },\n    {\n      key: \'node3\',\n      title: \'node3\',\n      children: [\n        {\n          key: \'node4\',\n          title: \'node4\',\n          isLeaf: true,\n        },\n        {\n          key: \'node5\',\n          title: \'node5\',\n          isLeaf: true,\n        },\n      ],\n    },\n  ];\n</script>';
+import treeSelectSizeSource from '../../../../components/generated/tree-select/size.vue?raw';
 import TreeSelectTriggerElementDemo from '../../../../components/generated/tree-select/trigger-element.vue';
-export const treeSelectTriggerElementSource =
-  "<template>\n  <sd-tree-select :data=\"treeData\" default-value=\"node1\" @change=\"onChange\">\n    <template #trigger>\n      <sd-typography-paragraph style=\"width: 300px\">\n        You selected: <a href=\"javascript: void(0)\">{{ text }}</a>\n      </sd-typography-paragraph>\n    </template>\n  </sd-tree-select>\n</template>\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const text = ref('node1');\n\n      function onChange(selected) {\n        text.value = selected;\n      }\n\n      return {\n        treeData,\n        text,\n        onChange,\n      };\n    },\n  };\n\n  const treeData = [\n    {\n      key: 'node1',\n      title: 'node1',\n      children: [\n        {\n          key: 'node2',\n          title: 'node2',\n        },\n      ],\n    },\n    {\n      key: 'node3',\n      title: 'node3',\n      children: [\n        {\n          key: 'node4',\n          title: 'node4',\n        },\n        {\n          key: 'node5',\n          title: 'node5',\n          children: [\n            {\n              key: 'node6',\n              title: 'node6',\n            },\n            {\n              key: 'node7',\n              title: 'node7',\n            },\n          ],\n        },\n      ],\n    },\n  ];\n</script>";
+import treeSelectTriggerElementSource from '../../../../components/generated/tree-select/trigger-element.vue?raw';
 import TreeSelectVirtualDemo from '../../../../components/generated/tree-select/virtual.vue';
-export const treeSelectVirtualSource =
-  '<template>\n  <sd-tree-select\n    :data="treeData"\n    :allow-search="{\n      retainInputValue: true,\n    }"\n    multiple\n    tree-checkable\n    :scrollbar="false"\n    tree-checked-strategy="parent"\n    :treeProps="{\n      virtualListProps: {\n        height: 200,\n      },\n    }"\n  />\n</template>\n<script>\n  export default {\n    setup() {\n      const treeData = loop();\n      return {\n        treeData,\n      };\n    },\n  };\n\n  function loop(path = \'0\', level = 2) {\n    const list = [];\n    for (let i = 0; i < 10; i += 1) {\n      const key = `${path}-${i}`;\n      const treeNode = {\n        title: key,\n        key,\n      };\n\n      if (level > 0) {\n        treeNode.children = loop(key, level - 1);\n      }\n\n      list.push(treeNode);\n    }\n    return list;\n  }\n</script>';
+import treeSelectVirtualSource from '../../../../components/generated/tree-select/virtual.vue?raw';
 
 ### 基本用法
 
@@ -213,6 +197,186 @@ export const treeSelectVirtualSource =
 
 </DemoBlock>
 
+## 从 Arco Design 迁移
+
+`TreeSelect` 在命名和大部分基础交互上和 Arco Design Vue 更接近，但实际实现已经切换到当前组件库内部的 `Tree`、`Trigger`、`SelectView`、表单与主题链路。迁移时通常可以先平移 API，再按需适配当前组件库的树节点插槽和弹层行为。
+
+### 对应关系
+
+| Arco Design Vue | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `a-tree-select` | `sd-tree-select` | 树选择器主体 |
+| `data` | `data` | 树数据主属性保持一致 |
+| `v-model` / `model-value` | `v-model` / `model-value` | 受控写法保持一致 |
+| `field-names` | `field-names` | 字段映射保持一致 |
+| `multiple` | `multiple` | 多选模式写法保持一致 |
+| `tree-checkable` | `tree-checkable` | 复选框模式写法保持一致 |
+| `tree-checked-strategy` | `tree-checked-strategy` | 回填策略写法保持一致 |
+| `load-more` | `load-more` | 动态加载写法保持一致 |
+| `popup-visible` | `popup-visible` | 弹层显隐控制保持一致 |
+| `#label` / `#tag` / `#header` / `#footer` | 同名插槽 | 选择框与下拉层插槽基本可直接迁移 |
+
+### 主要差异
+
+1. 当前实现的树面板完全复用本地 `Tree` 组件，因此节点内容定制更偏向 Tree 子插槽写法，像标题和额外内容应优先使用 `tree-slot-title`、`tree-slot-extra`，不要继续依赖旧版内部节点 DOM 结构。
+2. 弹层容器、局部主题和表单联动都走当前组件库内部链路。历史上如果通过外层容器 hack 修过滚动定位或局部主题，迁移后应优先改成 `popup-container`、`trigger-props` 和 `ConfigProvider`。
+3. 复选框模式、多选模式和路径展示的组合行为以当前组件库实现为准，特别是 `tree-checkable`、`show-path`、`separator` 一起使用时，建议重新验收回填文本和删除标签行为。
+4. 树节点渲染的公开扩展方式统一收敛到插槽，没有额外对外暴露函数式 render API；自定义节点 UI 时优先走模板插槽。
+
+### 迁移前后示例
+
+#### 基础替换
+
+```vue
+<template>
+  <a-tree-select v-model="value" :data="treeData" placeholder="Please select ..." />
+</template>
+```
+
+```vue
+<template>
+  <sd-tree-select v-model="value" :data="treeData" placeholder="Please select ..." />
+</template>
+```
+
+#### 复选框多选
+
+```vue
+<template>
+  <a-tree-select v-model="value" :data="treeData" tree-checkable tree-checked-strategy="child" />
+</template>
+```
+
+```vue
+<template>
+  <sd-tree-select v-model="value" :data="treeData" tree-checkable tree-checked-strategy="child" />
+</template>
+```
+
+#### 节点标题定制
+
+```vue
+<template>
+  <sd-tree-select v-model="value" :data="treeData">
+    <template #tree-slot-title="{ title }">
+      <strong>{{ title }}</strong>
+    </template>
+  </sd-tree-select>
+</template>
+```
+
+### 建议的迁移顺序
+
+1. 先直接替换组件标签并保留原有 `data`、`field-names`、`multiple`、`tree-checkable` 等写法，优先让页面恢复渲染。
+2. 再检查树节点定制：如果历史代码依赖旧版节点 DOM 或内部 class，改成 `tree-slot-title`、`tree-slot-extra` 这类公开插槽。
+3. 接着回归弹层与主题：重点检查滚动容器、局部主题、表单校验、动态加载和复选框勾选链路。
+4. 最后确认组合行为：特别是 `tree-checkable`、`tree-check-strictly`、`show-path`、`load-more` 和远程搜索一起出现的复杂场景。
+
+## 从 Naive UI 迁移
+
+`TreeSelect` 这次迁移以当前组件库的 `Tree`、`Trigger`、`SelectView` 和表单体系为基础，同时保留了 Naive UI 常用 props 的兼容别名，目标是让旧业务可以先平滑替换，再逐步回到本地优先的 API 命名。
+
+### 对应关系
+
+| Naive UI | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `n-tree-select` | `sd-tree-select` | 树选择器主体 |
+| `:options` | `:data` / `:options` | 当前组件库主属性是 `data`，但保留 `options` 兼容别名 |
+| `v-model:value` | `v-model` / `v-model:value` | 两种受控写法都支持 |
+| `filterable` | `allow-search` / `filterable` | 本地推荐使用 `allow-search` |
+| `clearable` | `allow-clear` / `clearable` | 本地推荐使用 `allow-clear` |
+| `checkable` | `tree-checkable` / `checkable` | 本地推荐使用 `tree-checkable` |
+| `check-strategy` | `tree-checked-strategy` / `checkStrategy` | 本地推荐使用 `tree-checked-strategy` |
+| `show` / `default-show` | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `defaultShow` | 显隐控制可逐步迁回本地命名 |
+| `render-tag` | `#tag` | 对外渲染函数已移除，统一改用插槽 |
+| 节点标题自定义 | `tree-slot-title` | 树节点内容通过 Tree 子插槽定制 |
+
+### 主要差异
+
+1. 运行时行为以当前组件库为主，尤其是弹层挂载、局部主题、表单联动、树节点交互和滚动容器，已经统一接入本地 `Trigger` / `Tree` / `ConfigProvider`。迁移后不要继续依赖 Naive 的内部浮层层级或私有 DOM 结构。
+2. 当前版本保留了 `options`、`value`、`show`、`filterable`、`clearable`、`checkable`、`checkStrategy` 等兼容面，但新增代码建议直接使用本地命名：`data`、`model-value`、`popup-visible`、`allow-search`、`allow-clear`、`tree-checkable`、`tree-checked-strategy`。
+3. 对外 render function 已经全部移除。原来依赖 `render-tag`、自定义节点渲染函数的场景，要分别改成 `tag`、`label`、`tree-slot-title`、`tree-slot-extra` 等插槽。
+4. `tree-checkable` 和多选展示已经接入当前组件库的本地勾选状态链路，勾选模式下的标签展示、回填策略和 `show-path` 都以当前实现为准。迁移含复选框的场景时，建议重点回归父子联动、严格模式和回填文本。
+
+### 迁移前后示例
+
+#### 基础替换
+
+```vue
+<template>
+  <n-tree-select
+    v-model:value="value"
+    :options="options"
+    filterable
+    clearable
+    placeholder="Please select ..."
+  />
+</template>
+```
+
+```vue
+<template>
+  <sd-tree-select
+    v-model="value"
+    :data="options"
+    allow-search
+    allow-clear
+    placeholder="Please select ..."
+  />
+</template>
+```
+
+#### 复选框模式
+
+```vue
+<template>
+  <n-tree-select v-model:value="value" :options="options" checkable :check-strategy="'child'" />
+</template>
+```
+
+```vue
+<template>
+  <sd-tree-select v-model="value" :data="options" tree-checkable tree-checked-strategy="child" />
+</template>
+```
+
+#### `render-tag` 迁移到插槽
+
+```vue
+<template>
+  <n-tree-select v-model:value="value" :options="options" multiple :render-tag="renderTag" />
+</template>
+```
+
+```vue
+<template>
+  <sd-tree-select v-model="value" :data="options" multiple>
+    <template #tag="{ data }">
+      <span>{{ data?.title ?? data?.label }}</span>
+    </template>
+  </sd-tree-select>
+</template>
+```
+
+#### 节点标题定制
+
+```vue
+<template>
+  <sd-tree-select v-model="value" :data="options">
+    <template #tree-slot-title="{ title }">
+      <strong>{{ title }}</strong>
+    </template>
+  </sd-tree-select>
+</template>
+```
+
+### 建议的迁移顺序
+
+1. 先替换组件本体并让页面跑起来：`n-tree-select` 改成 `sd-tree-select`，原有 `options`、`value`、`filterable`、`clearable`、`checkable` 可以先靠兼容别名维持行为。
+2. 再统一属性命名：把 `options` 迁到 `data`，把 `filterable` / `clearable` / `checkable` / `check-strategy` 逐步改成 `allow-search` / `allow-clear` / `tree-checkable` / `tree-checked-strategy`，避免新旧命名长期混用。
+3. 接着迁移自定义渲染：删除 `render-tag` 等函数式入口，改用 `label`、`tag`、`tree-slot-title`、`tree-slot-extra` 等模板插槽。
+4. 最后逐项验收交互：重点检查勾选模式、`tree-check-strictly`、`show-path`、远程搜索、虚拟列表、回退选项和弹层显隐控制，确认它们已经符合当前组件库的本地行为。
+
 ## API
 
 ### `<tree-select>` Props
@@ -224,21 +388,30 @@ export const treeSelectVirtualSource =
 | error | 是否为错误状态 | `boolean` | `false` |  |
 | size | 选择框的大小 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |  |
 | border | 是否显示边框 | `boolean` | `true` |  |
-| allow-search | 是否允许搜索 | `boolean \| { retainInputValue?: boolean }` | `false (single) \| true (multiple)` |  |
-| allow-clear | 是否允许清除 | `boolean` | `false` |  |
+| allow-search | 是否允许搜索，兼容 `filterable` 别名 | `boolean \| { retainInputValue?: boolean }` | `false (single) \| true (multiple)` |  |
+| filterable | `allow-search` 的兼容别名 | `boolean` | `-` |  |
+| allow-clear | 是否允许清除，兼容 `clearable` 别名 | `boolean` | `false` |  |
+| clearable | `allow-clear` 的兼容别名 | `boolean` | `-` |  |
 | placeholder | 提示文案 | `string` | `-` |  |
-| max-tag-count | 最多显示的标签数量，仅在多选模式有效 | `number` | `-` |  |
+| max-tag-count | 最多显示的标签数量，仅在多选模式有效，支持响应式折叠 | `number \| 'responsive'` | `-` |  |
 | multiple | 是否支持多选 | `boolean` | `false` |  |
 | default-value | 默认值 | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]` | `-` |  |
 | model-value **(v-model)** | 绑定值 | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]` | `-` |  |
+| value **(v-model:value)** | `model-value` 的兼容别名 | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]` | `-` |  |
 | field-names | 指定节点数据中的字段名 | `TreeFieldNames` | `-` |  |
-| data | 数据 | `TreeNodeData[]` | `[]` |  |
+| data | 数据，兼容 `options` 别名 | `TreeNodeData[]` | `[]` |  |
+| options | `data` 的兼容别名 | `TreeNodeData[]` | `-` |  |
 | label-in-value | 设置value格式。默认是string，设置为true时候，value格式为： &#123; label: string, value: string &#125; | `boolean` | `false` |  |
-| tree-checkable | 是否展示复选框 | `boolean` | `false` |  |
+| tree-checkable | 是否展示复选框，兼容 `checkable` 别名 | `boolean` | `false` |  |
+| checkable | `tree-checkable` 的兼容别名 | `boolean` | `-` |  |
 | tree-check-strictly | 父子节点是否关联 | `boolean` | `false` |  |
-| tree-checked-strategy | 定制回显方式 | `'all' \| 'parent' \| 'child'` | `'all'` |  |
+| tree-checked-strategy | 定制回显方式，兼容 `checkStrategy` 别名 | `'all' \| 'parent' \| 'child'` | `'all'` |  |
+| checkStrategy | `tree-checked-strategy` 的兼容别名 | `'all' \| 'parent' \| 'child'` | `-` |  |
+| show-path | 单选时展示从根节点到当前节点的完整路径 | `boolean` | `false` |  |
+| separator | `show-path` 开启时的路径分隔符 | `string` | `' / '` |  |
 | tree-props | 可以接受所有 [Tree](/components/tree/) 组件的Props | `Partial<TreeProps>` | `-` |  |
 | trigger-props | 可以接受所有 [Trigger](/components/trigger/) 组件的Props | `Partial<TriggerProps>` | `-` |  |
+| virtual-scroll | Naive 兼容开关。设为 `false` 时会关闭通过 `treeProps.virtualListProps` 注入的虚拟列表配置 | `boolean` | `-` |  |
 | popup-visible **(v-model)** | 弹出框是否可见 | `boolean` | `-` |  |
 | default-popup-visible | 默认弹出框是否可见 | `boolean` | `false` |  |
 | dropdown-style | 下拉框样式 | `CSSProperties` | `-` |  |
@@ -272,6 +445,7 @@ export const treeSelectVirtualSource =
 | trigger                 |          自定义触发元素          | -                    |        |
 | prefix                  |               前缀               | -                    |        |
 | label                   |         自定义选择框显示         | data: `mixed`        |        |
+| tag                     |        自定义多选标签显示        | data: `TreeNodeData` |        |
 | header                  |         自定义下拉框页头         | -                    |        |
 | loader                  |       定制加载中显示的内容       | -                    |        |
 | empty                   |          定制空数据展示          | -                    |        |

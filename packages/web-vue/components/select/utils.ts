@@ -78,7 +78,6 @@ export const createOptionInfo = (
       origin,
       value,
       label: option[fieldNames.label] ?? getValueString(value, valueKey),
-      render: option[fieldNames.render],
       disabled: Boolean(option[fieldNames.disabled]),
       tagProps: option[fieldNames.tagProps],
     };

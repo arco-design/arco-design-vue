@@ -38,6 +38,8 @@ export default function useSelectedState(props: {
   treeCheckStrictly?: boolean;
   fallbackOption?: FallbackOption;
   fieldNames?: TreeFieldNames;
+  showPath?: boolean;
+  separator?: string;
 }) {
   const {
     defaultValue,
@@ -47,7 +49,36 @@ export default function useSelectedState(props: {
     treeCheckable,
     fallbackOption,
     fieldNames,
+    showPath,
+    separator,
   } = toRefs(props);
+
+  function getPathLabel(key: TreeNodeKey, node: ReturnType<Key2TreeNode['value']['get']>) {
+    if (!showPath?.value || !node) {
+      return undefined;
+    }
+
+    const nodeDataTitle = (fieldNames?.value?.title || 'title') as keyof TreeNodeData;
+    const pathNodes = [...node.pathParentKeys, key]
+      .map((pathKey) => key2TreeNode.value.get(pathKey))
+      .filter((pathNode): pathNode is NonNullable<typeof pathNode> => Boolean(pathNode));
+
+    return pathNodes
+      .map((pathNode) => {
+        const pathLabel = pathNode.treeNodeData[nodeDataTitle];
+
+        if (typeof pathLabel === 'string' || typeof pathLabel === 'number') {
+          return String(pathLabel);
+        }
+
+        if (typeof pathNode.title === 'string' || typeof pathNode.title === 'number') {
+          return String(pathNode.title);
+        }
+
+        return String(pathNode.key);
+      })
+      .join(separator?.value ?? ' / ');
+  }
 
   function normalizeValue(value: TreeSelectValue) {
     const validValue = (isArray(value) ? value : [value]).filter(isValidValue);
@@ -92,6 +123,7 @@ export default function useSelectedState(props: {
           value: key,
           label:
             getLabel(item) ??
+            getPathLabel(key, node) ??
             node?.title ??
             originValueItem?.label ??
             fallbackNodeData?.[nodeDataTitle] ??
@@ -117,11 +149,13 @@ export default function useSelectedState(props: {
 
   const normalizeDefaultValue = normalizeValue(defaultValue?.value ?? []);
   const defaultKeys = getKeys(normalizeDefaultValue);
-  const defaultLabelValues = getLabelValues(defaultKeys, getLabelValues(normalizeDefaultValue));
+  const defaultLabelValues = computed(() =>
+    getLabelValues(defaultKeys, getLabelValues(normalizeDefaultValue)),
+  );
   const localValueKeys = ref(defaultKeys || []);
-  const localValue = ref(defaultLabelValues);
-  watch(localValueKeys, () => {
-    localValue.value = getLabelValues(localValueKeys.value, defaultLabelValues);
+  const localValue = ref(defaultLabelValues.value);
+  watch([localValueKeys, key2TreeNode, fieldNames, showPath, separator, defaultLabelValues], () => {
+    localValue.value = getLabelValues(localValueKeys.value, defaultLabelValues.value);
   });
   watch([computedModelValueKeys, computedModelValue], ([valueKeys, value]) => {
     localValueKeys.value = valueKeys || [];
