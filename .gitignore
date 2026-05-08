@@ -132,4 +132,5 @@ draft.md
 .playwright-mcp/console-*.log
 # 用来参考的源码，不需要提交到版本库
 vendor/
-
+# 调试用的文件，不需要提交到版本库
+packages/web-vue-debug/src/App.vue
