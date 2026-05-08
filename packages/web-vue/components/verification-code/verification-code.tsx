@@ -2,7 +2,7 @@ import { PropType, VNode, computed, defineComponent, ref, watch } from 'vue';
 import { Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import ArcoInput from '../input';
-import { isExist, isFunction, isString } from '../_utils/is';
+import { isExist, isFunction, isString, isUndefined } from '../_utils/is';
 import { Backspace, ArrowLeft, ArrowRight } from '../_utils/keycode';
 
 export default defineComponent({
@@ -140,15 +140,21 @@ export default defineComponent({
 
     const handleFocus = (index: number) => inputRefList?.value[index].focus();
     const focusFirstEmptyInput = (index?: number) => {
-      if (isExist(index) && innerValue.value[index as number]) {
-        return;
-      }
-      for (let i = 0; i < innerValue.value.length; i++) {
-        if (!innerValue.value[i]) {
-          handleFocus(i);
-          break;
-        }
-      }
+      const values = innerValue.value;
+      const len = values.length;
+      if (!isUndefined(index) && values[index]) return;
+      const firstEmpty = values.findIndex((v) => !v);
+      handleFocus(firstEmpty === -1 ? len - 1 : firstEmpty);
+    };
+
+    const handleCursorToEnd = (e: MouseEvent, i: number) => {
+      if (!innerValue.value[i]) return;
+      const target = e.target as HTMLInputElement;
+      if (!target?.setSelectionRange) return;
+      e.preventDefault();
+      target.focus();
+      const end = target.value.length;
+      target.setSelectionRange(end, end);
     };
 
     const handlePaste = (e: ClipboardEvent, index: number) => {
@@ -236,6 +242,7 @@ export default defineComponent({
                 // @ts-ignore
                 onKeydown={(e) => handleKeydown(i, e)}
                 onPaste={(e: ClipboardEvent) => handlePaste(e, i)}
+                onMousedown={(e: MouseEvent) => handleCursorToEnd(e, i)}
               />
               {props.separator?.(i, c)}
             </>

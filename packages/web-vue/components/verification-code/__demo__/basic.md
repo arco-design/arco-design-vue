@@ -29,7 +29,7 @@ Basic usage
 import { ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
 
-const value = ref('654321');
+const value = ref('');
 const handleFinish = (value) => Message.info(`Verification code: ${value}`);
 </script>
 ```

@@ -1,12 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<verification-code> demo: > render [basic] correctly 1`] = `
-<div class="arco-verification-code" style="width: 300px;"><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value="6"><!----><!----></span>
-  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value="5"><!----><!----></span>
-  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value="4"><!----><!----></span>
-  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value="3"><!----><!----></span>
-  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value="2"><!----><!----></span>
-  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value="1"><!----><!----></span>
+<div class="arco-verification-code" style="width: 300px;"><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value=""><!----><!----></span>
+  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value=""><!----><!----></span>
+  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value=""><!----><!----></span>
+  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value=""><!----><!----></span>
+  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value=""><!----><!----></span>
+  <!----><span class="arco-input-wrapper arco-input"><!----><input class="arco-input arco-input-size-medium" type="text" value=""><!----><!----></span>
   <!---->
 </div>
 `;
