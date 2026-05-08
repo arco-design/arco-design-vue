@@ -3,22 +3,22 @@
 exports[`<select> demo: > render [basic] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-disabled" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." disabled="" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search sd-select-view-disabled" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." disabled="" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -27,7 +27,7 @@ exports[`<select> demo: > render [basic] correctly 1`] = `
     <div>Select Value: </div>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 160px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Select" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 160px;"><!----><input class="sd-select-view-input" placeholder="Select" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -37,14 +37,15 @@ exports[`<select> demo: > render [basic] correctly 1`] = `
 exports[`<select> demo: > render [border] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select-view-borderless sd-select sd-select-view sd-select-view-size-medium" style="width: 100%;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select-view-borderless sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 100%;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select-view-borderless sd-select" style="width: 360px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select-view-borderless sd-select" style="width: 360px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -54,21 +55,22 @@ exports[`<select> demo: > render [border] correctly 1`] = `
 `;
 
 exports[`<select> demo: > render [clear] correctly 1`] = `
-<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
 <!----></span></span>
 `;
 
 exports[`<select> demo: > render [create] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;" title=""><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -80,19 +82,20 @@ exports[`<select> demo: > render [create] correctly 1`] = `
 exports[`<select> demo: > render [fallback] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -102,19 +105,20 @@ exports[`<select> demo: > render [fallback] correctly 1`] = `
 `;
 
 exports[`<select> demo: > render [field-names] correctly 1`] = `
-<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title="Beijing"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value">Beijing</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input sd-select-view-input-hidden" placeholder="Beijing" value=""><span class="sd-select-view-value"><span style="width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="sd-ellipsis sd-ellipsis--single-line"><span class="sd-ellipsis-content">Beijing</span></span>
+<!----></span><span class="sd-select-view-suffix"><button type="button" class="sd-select-view-clear-btn"><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></button><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
 <!----></span></span>
 `;
 
 exports[`<select> demo: > render [footer] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 360px;" title=""><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 360px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 360px;" title=""><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 360px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -124,14 +128,15 @@ exports[`<select> demo: > render [footer] correctly 1`] = `
 exports[`<select> demo: > render [group] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -143,18 +148,20 @@ exports[`<select> demo: > render [group] correctly 1`] = `
 exports[`<select> demo: > render [header] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -164,19 +171,20 @@ exports[`<select> demo: > render [header] correctly 1`] = `
 `;
 
 exports[`<select> demo: > render [label] correctly 1`] = `
-<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
 <!----></span></span>
 `;
 
 exports[`<select> demo: > render [linkage] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 200px;" title=""><!----><input class="sd-select-view-input" readonly="" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 200px;"><!----><input class="sd-select-view-input" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 200px;" title="Chengdu"><!----><input class="sd-select-view-input sd-select-view-input-hidden" readonly="" value=""><span class="sd-select-view-value">Chengdu</span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 200px;"><!----><input class="sd-select-view-input sd-select-view-input-hidden" placeholder="Chengdu" value=""><span class="sd-select-view-value"><span style="width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="sd-ellipsis sd-ellipsis--single-line"><span class="sd-ellipsis-content">Chengdu</span></span>
+    <!----></span><span class="sd-select-view-suffix"><button type="button" class="sd-select-view-clear-btn"><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></button><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
@@ -184,7 +192,7 @@ exports[`<select> demo: > render [linkage] correctly 1`] = `
 `;
 
 exports[`<select> demo: > render [loading] correctly 1`] = `
-<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span>
+<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span>
 <!----></span></span>
 `;
 
@@ -194,7 +202,18 @@ exports[`<select> demo: > render [multiple] correctly 1`] = `
   </button> Virtual Scrollbar </div>
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
+    <!---->
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+    <!---->
+    <!----></span></span>
+    <!---->
+  </div>
+  <!---->
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
+    <!---->
     <!---->
     <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
@@ -203,18 +222,10 @@ exports[`<select> demo: > render [multiple] correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
-    <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
-    <!----></span></span>
-    <!---->
-  </div>
-  <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 360px;"><span class="sd-select-view-mirror">Please select ...</span>
-    <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -230,9 +241,10 @@ exports[`<select> demo: > render [remote] correctly 1`] = `
     <div>Show selections after search options</div>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -243,9 +255,10 @@ exports[`<select> demo: > render [remote] correctly 1`] = `
     <div>Hide selections after search options</div>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -255,26 +268,27 @@ exports[`<select> demo: > render [remote] correctly 1`] = `
 `;
 
 exports[`<select> demo: > render [scroll] correctly 1`] = `
-<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
 <!----></span></span>
 `;
 
 exports[`<select> demo: > render [search] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;" title=""><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;" title=""><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -288,14 +302,15 @@ exports[`<select> demo: > render [size] correctly 1`] = `
   <!---->
   <div class="sd-space-item"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">Mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">Small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">Medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">Large</span></label></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!----></span></span>
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><span class="sd-select-view-mirror">Please select ...</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-responsive sd-select-view-has-suffix sd-select-view-has-placeholder sd-select-view-multiple sd-select" style="width: 320px;"><!----><span class="sd-select-view-mirror">Please select ...</span>
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner"><input class="sd-select-view-input" style="width: 12px;" placeholder="Please select ..."></transition-group-stub>
+    <!---->
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-select-view-inner sd-select-view-inner-responsive"><input class="sd-select-view-input" style="width: 12px; flex: 0 0 auto; min-width: 12px;" placeholder="Please select ..."></transition-group-stub>
     <!----><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
     <!---->
     <!----></span></span>
@@ -305,6 +320,6 @@ exports[`<select> demo: > render [size] correctly 1`] = `
 `;
 
 exports[`<select> demo: > render [virtual-list] correctly 1`] = `
-<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium" style="width: 320px;" title=""><!----><input class="sd-select-view-input" readonly="" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+<span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 320px;"><!----><input class="sd-select-view-input" placeholder="Please select ..." value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
 <!----></span></span>
 `;

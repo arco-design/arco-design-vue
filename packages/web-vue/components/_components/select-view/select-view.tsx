@@ -67,7 +67,7 @@ export default defineComponent({
       default: (props: Data) => isArray(props.modelValue),
     },
     maxTagCount: {
-      type: Number,
+      type: [Number, String] as PropType<number | 'responsive'>,
       default: 0,
     },
     tagNowrap: {
@@ -118,7 +118,7 @@ export default defineComponent({
       eventHandlers.value?.onBlur?.(ev);
     };
 
-    const handleRemove = (tag: string) => {
+    const handleRemove = (tag: string | number) => {
       emit('remove', tag);
     };
 
@@ -142,13 +142,16 @@ export default defineComponent({
     const renderSuffix = () => (
       <>
         {showClearBtn.value && (
-          <IconHover
+          <button
+            type="button"
             class={`${prefixCls}-clear-btn`}
             onClick={handleClear}
             onMousedown={(ev: MouseEvent) => ev.stopPropagation()}
           >
-            <IconClose />
-          </IconHover>
+            <IconHover>
+              <IconClose />
+            </IconHover>
+          </button>
         )}
         <span class={`${prefixCls}-icon`}>{renderIcon()}</span>
         {Boolean(feedback.value) && <FeedbackIcon type={feedback.value} />}
@@ -156,7 +159,7 @@ export default defineComponent({
     );
 
     watch(opened, (opened) => {
-      if (!opened && inputRef.value && inputRef.value.isSameNode(document.activeElement)) {
+      if (!opened && inputRef.value?.isSameNode(document.activeElement)) {
         inputRef.value.blur();
       }
     });

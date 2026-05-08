@@ -11,8 +11,24 @@ import type {
 
 import { isBoolean, isFunction, isNumber, isObject, isString } from '../_utils/is';
 
-export const isGroupOption = (option: SelectOption): option is SelectOptionGroup => {
-  return isObject(option) && 'isGroup' in option;
+export const isGroupOption = (
+  option: SelectOption,
+  fieldNames?: Required<SelectFieldNames>,
+): option is SelectOptionGroup => {
+  if (!isObject(option)) {
+    return false;
+  }
+
+  if ('isGroup' in option) {
+    return true;
+  }
+
+  if (!fieldNames) {
+    return false;
+  }
+
+  const children = option[fieldNames.children];
+  return Array.isArray(children);
 };
 
 export const isGroupOptionInfo = (
@@ -82,6 +98,43 @@ export const createOptionInfo = (
   };
 };
 
+const createGroupInfo = (
+  item: SelectOptionGroup,
+  {
+    valueKey,
+    fieldNames,
+    origin,
+    optionInfoMap,
+  }: {
+    valueKey: string;
+    fieldNames: Required<SelectFieldNames>;
+    origin: 'options' | 'extraOptions';
+    optionInfoMap: Map<string, SelectOptionInfo>;
+  },
+): SelectOptionGroupInfo | null => {
+  const groupOptions = item.options ?? item[fieldNames.children] ?? [];
+  const groupLabel = item[fieldNames.label] ?? item.label;
+  const options = getOptionInfos(groupOptions, {
+    valueKey,
+    fieldNames,
+    origin,
+    optionInfoMap,
+  });
+
+  if (options.length === 0) {
+    return null;
+  }
+
+  const label = typeof groupLabel === 'string' ? groupLabel : '';
+  return {
+    ...item,
+    isGroup: true,
+    label,
+    options,
+    key: `__arco__group__${label}`,
+  };
+};
+
 export const getOptionInfos = (
   options: SelectOption[],
   {
@@ -99,19 +152,15 @@ export const getOptionInfos = (
   const infos: (SelectOptionInfo | SelectOptionGroupInfo)[] = [];
 
   for (const item of options) {
-    if (isGroupOption(item)) {
-      const options = getOptionInfos(item.options ?? [], {
+    if (isGroupOption(item, fieldNames)) {
+      const groupInfo = createGroupInfo(item, {
         valueKey,
         fieldNames,
         origin,
         optionInfoMap,
       });
-      if (options.length > 0) {
-        infos.push({
-          ...item,
-          key: `__arco__group__${item.label}`,
-          options,
-        });
+      if (groupInfo) {
+        infos.push(groupInfo);
       }
     } else {
       const optionInfo = createOptionInfo(item, {

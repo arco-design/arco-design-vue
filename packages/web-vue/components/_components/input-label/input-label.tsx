@@ -7,6 +7,7 @@ import { INPUT_EVENTS, Size } from '../../_utils/constant';
 import { getPrefixCls } from '../../_utils/global-config';
 import { omit } from '../../_utils/omit';
 import pick from '../../_utils/pick';
+import Ellipsis from '../../ellipsis';
 import { SelectViewValue } from '../select-view/interface';
 
 export default defineComponent({
@@ -105,12 +106,7 @@ export default defineComponent({
     const inputAttrs = computed(() => pick(attrs, INPUT_EVENTS));
 
     const render = () => (
-      <span
-        {...wrapperAttrs.value}
-        class={cls.value}
-        title={formatLabel()}
-        onMousedown={handleMousedown}
-      >
+      <span {...wrapperAttrs.value} class={cls.value} onMousedown={handleMousedown}>
         {slots.prefix && <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>}
         <input
           {...inputAttrs.value}
@@ -140,7 +136,7 @@ export default defineComponent({
             },
           ]}
         >
-          {renderLabel()}
+          {props.modelValue && <Ellipsis style={{ width: '100%' }}>{renderLabel()}</Ellipsis>}
         </span>
         {slots.suffix && <span class={`${prefixCls}-suffix`}>{slots.suffix()}</span>}
       </span>

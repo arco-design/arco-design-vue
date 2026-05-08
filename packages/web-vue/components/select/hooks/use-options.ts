@@ -9,6 +9,7 @@ import { getOptionInfos, getValidOptions, isValidOption } from '../utils';
 const DEFAULT_FIELD_NAMES = {
   value: 'value',
   label: 'label',
+  children: 'children',
   disabled: 'disabled',
   tagProps: 'tagProps',
   render: 'render',

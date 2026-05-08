@@ -1,124 +1,80 @@
 import type { RenderFunction } from 'vue';
 
-import { VirtualListProps } from '../_components/virtual-list-v2/interface';
-import { Size } from '../_utils/constant';
-import { FieldString } from '../_utils/types';
-import { TriggerProps } from '../trigger';
-
-export interface SelectProps {
-  options?: (string | number | boolean | SelectOptionData | SelectOptionGroup)[];
-  multiple?: boolean;
-  modelValue?:
-    | string
-    | number
-    | boolean
-    | Record<string, unknown>
-    | (string | number | boolean | Record<string, unknown>)[];
-  defaultValue?:
-    | string
-    | number
-    | boolean
-    | Record<string, unknown>
-    | (string | number | boolean | Record<string, unknown>)[];
-  inputValue?: string;
-  defaultInputValue?: string;
-  size?: Size;
-  placeholder?: string;
-  loading?: boolean;
-  disabled?: boolean;
-  error?: boolean;
-  allowClear?: boolean;
-  allowSearch?: boolean | { retainInputValue?: boolean };
-  allowCreate?: boolean;
-  maxTagCount?: number;
-  popupContainer?: string | HTMLElement;
-  bordered?: boolean;
-  popupVisible?: boolean;
-  defaultPopupVisible?: boolean;
-  unmountOnClose?: boolean;
-  filterOption?: boolean | ((inputValue: string, option: SelectOptionData) => boolean);
-  virtualListProps?: VirtualListProps;
-  triggerProps?: TriggerProps;
-  formatLabel?: (data: SelectOptionData) => string;
-  fallbackOption?:
-    | boolean
-    | ((value: string | number | boolean | Record<string, unknown>) => SelectOptionData);
-  showExtraOptions?: boolean;
-  valueKey?: string;
-  searchDelay?: number;
-  limit?: number;
-  fieldNames?: SelectFieldNames;
-  showHeaderOnEmpty?: boolean;
-  showFooterOnEmpty?: boolean;
-}
+import type { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import type { Size } from '../_utils/constant';
+import type { ScrollbarProps } from '../scrollbar';
+import type { TriggerProps } from '../trigger';
 
 export type SelectOptionValue = string | number | boolean | Record<string, unknown>;
+
+export type SelectModelValue = SelectOptionValue | SelectOptionValue[] | null | undefined;
 
 export interface OptionValueWithKey {
   value: SelectOptionValue;
   key: string;
 }
 
-export type SelectFieldNames = FieldString<SelectOptionData>;
+export interface SelectFieldNames {
+  value?: string;
+  label?: string;
+  children?: string;
+  disabled?: string;
+  tagProps?: string;
+  render?: string;
+}
 
 export interface SelectOptionData {
   /**
    * @zh 选项值
-   * @en Option Value
+   * @en Option value
    */
-  value?: string | number | boolean | Record<string, unknown>;
+  value?: SelectOptionValue;
   /**
    * @zh 选项内容
-   * @en Option content
+   * @en Option label
    */
   label?: string;
   /**
    * @zh 是否禁用
-   * @en Whether to disable
+   * @en Whether the option is disabled
    */
   disabled?: boolean;
   /**
-   * @zh 选项对应的多选标签的属性
-   * @en Props of the multi-select label corresponding to the option
+   * @zh 多选标签透传属性
+   * @en Extra props for rendered tags
    */
-  tagProps?: any;
+  tagProps?: Record<string, unknown>;
   /**
-   * @zh 自定义渲染
-   * @en Custom Render
+   * @zh 自定义选项渲染
+   * @en Custom option renderer
    */
   render?: RenderFunction;
-
-  [other: string]: any;
+  [other: string]: unknown;
 }
 
 export interface SelectOptionGroup {
   /**
-   * @zh 是否为选项组
-   * @en Whether it is an option group
+   * @zh 是否为分组
+   * @en Whether the item is a group
    */
   isGroup: true;
   /**
-   * @zh 选项组标题
-   * @en Option group title
+   * @zh 分组标题
+   * @en Group label
    */
   label: string;
   /**
-   * @zh 选项组中的选项
-   * @en Options in the option group
+   * @zh 分组选项
+   * @en Group options
    */
   options: SelectOption[];
-
-  [other: string]: any;
+  [other: string]: unknown;
 }
 
-/**
- * @zh 选项
- * @en Option
- */
 export type SelectOption = string | number | boolean | SelectOptionData | SelectOptionGroup;
 
 export interface SelectOptionInfo extends SelectOptionData {
-  raw: Record<string, unknown>;
+  raw: SelectOptionData;
   key: string;
   index?: number;
   origin: 'slot' | 'options' | 'extraOptions';
@@ -131,8 +87,43 @@ export interface SelectOptionGroupInfo extends SelectOptionGroup {
   options: (SelectOptionInfo | SelectOptionGroupInfo)[];
 }
 
-/**
- * @zh 筛选
- * @en Filter
- */
 export type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) => boolean);
+
+export interface SelectProps {
+  options?: SelectOption[];
+  multiple?: boolean;
+  value?: SelectModelValue;
+  modelValue?: SelectModelValue;
+  defaultValue?: SelectModelValue;
+  inputValue?: string;
+  defaultInputValue?: string;
+  size?: Size;
+  placeholder?: string;
+  loading?: boolean;
+  disabled?: boolean;
+  error?: boolean;
+  allowClear?: boolean;
+  allowSearch?: boolean | { retainInputValue?: boolean };
+  allowCreate?: boolean;
+  maxTagCount?: number | 'responsive';
+  popupContainer?: string | HTMLElement;
+  bordered?: boolean;
+  popupVisible?: boolean;
+  defaultPopupVisible?: boolean;
+  defaultActiveFirstOption?: boolean;
+  unmountOnClose?: boolean;
+  filterOption?: FilterOption;
+  virtualListProps?: VirtualListProps;
+  triggerProps?: TriggerProps;
+  formatLabel?: (data: SelectOptionData) => string;
+  fallbackOption?: boolean | ((value: SelectOptionValue) => SelectOptionData);
+  showExtraOptions?: boolean;
+  valueKey?: string;
+  searchDelay?: number;
+  limit?: number;
+  fieldNames?: SelectFieldNames;
+  scrollbar?: boolean | ScrollbarProps;
+  showHeaderOnEmpty?: boolean;
+  showFooterOnEmpty?: boolean;
+  tagNowrap?: boolean;
+}

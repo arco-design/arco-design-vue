@@ -229,6 +229,7 @@ $less-vars: (
 
   .#{$cls}-inner {
     flex: 1;
+    min-width: 0;
     overflow: hidden;
     line-height: 0;
 
@@ -237,9 +238,17 @@ $less-vars: (
       flex-wrap: wrap;
     }
 
+    &.#{$cls}-inner-responsive {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
     .#{$cls}-tag {
       display: inline-flex;
+      flex-shrink: 0;
       align-items: center;
+      min-width: 0;
       margin-right: $input-tag-tag-margin-right;
       color: $input-tag-color-text_default;
       font-size: $input-tag-tag-font-size;
@@ -257,12 +266,32 @@ $less-vars: (
 
         @include icon-hover.icon-hover-bg($tag-prefix-cls, token.$tag-custom-color-icon-bg_hover);
       }
+
+      &.#{$cls}-tag-overflow {
+        flex-shrink: 1;
+        white-space: nowrap;
+        word-break: normal;
+
+        .#{theme.$prefix}-tag-text {
+          max-width: 100%;
+        }
+      }
+
+      &.#{$cls}-tag-counter {
+        flex-shrink: 0;
+        white-space: nowrap;
+        word-break: normal;
+      }
     }
 
     .#{$cls}-input {
       @include input-style();
 
       box-sizing: border-box;
+
+      .#{$cls}-inner-responsive & {
+        flex: 0 0 auto;
+      }
     }
   }
 
@@ -273,6 +302,30 @@ $less-vars: (
     white-space: pre;
     visibility: hidden;
     pointer-events: none;
+  }
+
+  .#{$cls}-resize-observer {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .#{$cls}-measure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    white-space: nowrap;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .#{$cls}-tag-ellipsis {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    vertical-align: bottom;
   }
 
   &.#{$cls}-focus {

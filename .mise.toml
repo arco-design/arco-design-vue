@@ -1,5 +1,5 @@
 [tools]
-node = "24.14.1"
+node = "24.15.0"
 python = "3.14"
 
 [hooks]

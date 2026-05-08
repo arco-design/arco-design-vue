@@ -46,7 +46,7 @@
     "release:check": "pnpm run check:ci",
     "upgrade:all": "run-s upgrade:audit upgrade:deps upgrade:engines upgrade:browserslist upgrade:skills format:readme format:pkg install:deps upgrade:oxlint",
     "upgrade:browserslist": "node scripts/upgradeBrowserslist.mjs",
-    "upgrade:deps": "ncu -u -c 30d -w",
+    "upgrade:deps": "ncu -u -c 7d -w",
     "upgrade:skills": "pnpx skills update -p -a trae -a claude-code",
     "upgrade:engines": "node scripts/upgradeEngines.mjs",
     "upgrade:oxlint": "node scripts/upgradeOxlint.mjs",
@@ -54,11 +54,11 @@
     "clone:vendor": "node scripts/cloneVendor.mjs"
   },
   "dependencies": {
-    "es-toolkit": "^1.45.1"
+    "es-toolkit": "^1.46.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "axios": "^1.15.0",
     "confbox": "^0.2.4",
     "fast-glob": "^3.3.3",
@@ -79,16 +79,16 @@
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
     "stylelint-scss": "^7.0.0",
-    "type-fest": "^5.5.0",
+    "type-fest": "^5.6.0",
     "typescript": "catalog:",
-    "vite-plus": "^0.1.17"
+    "vite-plus": "^0.1.20"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
     "commit-msg": "pnpm commitlint -e"
   },
   "engines": {
-    "node": "~24.14.1"
+    "node": "~24.15.0"
   },
   "packageManager": "pnpm@10.33.0"
 }
