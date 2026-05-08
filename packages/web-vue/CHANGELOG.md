@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/liunnn1994/sd-design/compare/v1.8.0...v1.9.0) (2026-05-08)
+
+### Features
+
+- 🆕 迁移 select ([b0102fa](https://github.com/liunnn1994/sd-design/commit/b0102faad9f0d4ad580b193e51d45f3f6baf72d4))
+- 🆕 迁移 select 和 tree-select ([9997da2](https://github.com/liunnn1994/sd-design/commit/9997da2175b5d93bc8f11d9b9b5678ca5730cff9))
+
 # [1.8.0](https://github.com/liunnn1994/sd-design/compare/v1.7.1...v1.8.0) (2026-05-07)
 
 ### Features
