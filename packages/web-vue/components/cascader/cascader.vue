@@ -11,7 +11,7 @@
     :auto-fit-popup-width="showSearchPanel"
     :popup-container="popupContainer"
     :prevent-focus="true"
-    :click-to-close="!allowSearch"
+    :click-to-close="!Boolean(mergedAllowSearch)"
     @popup-visible-change="handlePopupVisibleChange"
   >
     <select-view
@@ -21,7 +21,7 @@
       :error="error"
       :multiple="multiple"
       :allow-clear="mergedAllowClear"
-      :allow-search="allowSearch"
+      :allow-search="Boolean(mergedAllowSearch)"
       :size="size"
       :opened="computedPopupVisible"
       :placeholder="placeholder"
@@ -87,23 +87,40 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, PropType, provide, reactive, ref, toRefs, watch } from 'vue';
+  import {
+    computed,
+    defineComponent,
+    getCurrentInstance,
+    PropType,
+    provide,
+    reactive,
+    ref,
+    toRefs,
+    watch,
+  } from 'vue';
 
   import SelectView from '../_components/select-view/select-view';
   import { VirtualListProps } from '../_components/virtual-list-v2/interface';
   import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
+  import { useTrigger } from '../_hooks/use-trigger';
   import { Size } from '../_utils/constant';
   import { debounce } from '../_utils/debounce';
   import { isArray, isFunction, isNull, isUndefined } from '../_utils/is';
   import { KEYBOARD_KEY, getKeyDownHandler } from '../_utils/keyboard';
-  import { BaseType, Data, UnionType } from '../_utils/types';
+  import { BaseType } from '../_utils/types';
   import Trigger, { TriggerProps } from '../trigger';
   import BaseCascaderPanel from './base-cascader-panel';
   import CascaderSearchPanel from './cascader-search-panel';
   import { cascaderInjectionKey } from './context';
   import { useSelectedPath } from './hooks/use-selected-path';
-  import { CascaderFieldNames, CascaderOption, CascaderOptionInfo } from './interface';
+  import {
+    CascaderFieldNames,
+    CascaderModelValue,
+    CascaderOption,
+    CascaderOptionInfo,
+    CascaderSingleValue,
+  } from './interface';
   import {
     getCheckedStatus,
     getLeafOptionInfos,
@@ -113,6 +130,18 @@
     getValidValues,
     getValueKey,
   } from './utils';
+
+  const getDefaultValue = (multiple: boolean, pathMode: boolean): CascaderModelValue => {
+    if (multiple) {
+      return [];
+    }
+
+    if (pathMode) {
+      return undefined;
+    }
+
+    return '';
+  };
 
   export default defineComponent({
     name: 'Cascader',
@@ -145,13 +174,14 @@
        * @en Value
        */
       modelValue: {
-        type: [String, Number, Object, Array] as PropType<
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined
-        >,
+        type: [String, Number, Object, Array] as PropType<CascaderModelValue>,
+      },
+      /**
+       * @zh 绑定值，Naive 兼容别名
+       * @en Value, Naive compatibility alias
+       */
+      value: {
+        type: [String, Number, Object, Array] as PropType<CascaderModelValue>,
       },
       /**
        * @zh 默认值（非受控状态）
@@ -159,14 +189,9 @@
        * @defaultValue '' \| undefined \| []
        */
       defaultValue: {
-        type: [String, Number, Object, Array] as PropType<
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined
-        >,
-        default: (props: Data) => (props.multiple ? [] : props.pathMode ? undefined : ''),
+        type: [String, Number, Object, Array] as PropType<CascaderModelValue>,
+        default: (props: { multiple?: boolean; pathMode?: boolean }) =>
+          getDefaultValue(Boolean(props.multiple), Boolean(props.pathMode)),
       },
       /**
        * @zh 级联选择器的选项
@@ -208,7 +233,14 @@
        */
       allowSearch: {
         type: Boolean,
-        default: (props: Data) => Boolean(props.multiple),
+        default: (props: { multiple?: boolean }) => Boolean(props.multiple),
+      },
+      /**
+       * @zh 是否允许搜索，Naive 兼容别名
+       * @en Whether to allow searching, Naive compatibility alias
+       */
+      filterable: {
+        type: Boolean,
       },
       /**
        * @zh 是否允许清除
@@ -217,6 +249,13 @@
       allowClear: {
         type: Boolean,
         default: false,
+      },
+      /**
+       * @zh 是否允许清除，Naive 兼容别名
+       * @en Whether to allow clear, Naive compatibility alias
+       */
+      clearable: {
+        type: Boolean,
       },
       /**
        * @zh 输入框的值
@@ -245,6 +284,14 @@
         default: undefined,
       },
       /**
+       * @zh 是否显示下拉框，Naive 兼容别名
+       * @en Whether to show the dropdown, Naive compatibility alias
+       */
+      show: {
+        type: Boolean,
+        default: undefined,
+      },
+      /**
        * @zh 展开下一级的触发方式
        * @en Expand the trigger method of the next level
        */
@@ -259,6 +306,14 @@
       defaultPopupVisible: {
         type: Boolean,
         default: false,
+      },
+      /**
+       * @zh 是否默认显示下拉框，Naive 兼容别名
+       * @en Whether to display the dropdown by default, Naive compatibility alias
+       */
+      defaultShow: {
+        type: Boolean,
+        default: undefined,
       },
       /**
        * @zh 占位符
@@ -284,8 +339,24 @@
        * @en In multi-select mode, the maximum number of labels displayed. 0 means unlimited
        */
       maxTagCount: {
-        type: Number,
+        type: [Number, String] as PropType<number | 'responsive'>,
         default: 0,
+      },
+      /**
+       * @zh 回填时是否展示完整路径
+       * @en Whether to display the full path in selected labels
+       */
+      showPath: {
+        type: Boolean,
+        default: true,
+      },
+      /**
+       * @zh 路径分隔符
+       * @en Path separator used in selected labels
+       */
+      separator: {
+        type: String,
+        default: ' / ',
       },
       /**
        * @zh 格式化展示内容
@@ -411,28 +482,16 @@
       },
     },
     emits: {
-      'update:modelValue': (
-        _value:
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined,
-      ) => true,
+      'update:modelValue': (_value: CascaderModelValue) => true,
+      'update:value': (_value: CascaderModelValue) => true,
       'update:popupVisible': (_visible: boolean) => true,
+      'update:show': (_visible: boolean) => true,
       /**
        * @zh 选中值改变时触发
        * @en Triggered when the selected value changes
        * @property {string | number | (string | number | (string | number)[])[] | undefined} value
        */
-      'change': (
-        _value:
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined,
-      ) => true,
+      'change': (_value: CascaderModelValue) => true,
       /**
        * @zh 输入值改变时触发
        * @en Triggered when the input value changes
@@ -456,6 +515,7 @@
        * @property {boolean} visible
        */
       'popupVisibleChange': (_visible: boolean) => true,
+      'showChange': (_visible: boolean) => true,
       /**
        * @zh 获得焦点时触发
        * @en Triggered when focus
@@ -520,24 +580,67 @@
         loadMore,
         formatLabel,
         modelValue,
+        value: valueProp,
         disabled,
         valueKey,
         expandTrigger,
         expandChild,
         pathMode,
         multiple,
-        allowClear,
+        popupVisible,
+        show,
+        defaultPopupVisible,
+        defaultShow,
       } = toRefs(props);
-      const _value = ref(props.defaultValue);
+      const _value = ref<CascaderModelValue>(props.defaultValue);
       const _inputValue = ref(props.defaultInputValue);
-      const _popupVisible = ref(props.defaultPopupVisible);
+      const instance = getCurrentInstance();
 
       const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
-      const { mergedAllowClear } = useAllowClear(allowClear);
+      const mergedAllowSearch = computed(() => {
+        const rawProps = instance?.vnode.props;
+        const hasAllowSearchProp =
+          !!rawProps &&
+          ['allowSearch', 'allow-search'].some((propName) => Object.hasOwn(rawProps, propName));
 
-      watch(modelValue, (value) => {
-        if (isUndefined(value) || isNull(value)) {
-          _value.value = props.multiple ? [] : undefined;
+        if (hasAllowSearchProp) {
+          return props.allowSearch;
+        }
+
+        if (props.filterable !== undefined) {
+          return props.filterable;
+        }
+
+        return props.allowSearch;
+      });
+      const mergedAllowClearValue = computed(() => {
+        const rawProps = instance?.vnode.props;
+        const hasAllowClearProp =
+          !!rawProps &&
+          ['allowClear', 'allow-clear'].some((propName) => Object.hasOwn(rawProps, propName));
+
+        if (hasAllowClearProp) {
+          return props.allowClear;
+        }
+
+        return props.clearable ?? props.allowClear;
+      });
+      const { mergedAllowClear } = useAllowClear(mergedAllowClearValue, ['clearable']);
+      const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
+        popupVisible,
+        defaultPopupVisible,
+        show,
+        defaultShow,
+        emit: emit as unknown as (
+          event: 'update:popupVisible' | 'popupVisibleChange' | 'update:show' | 'showChange',
+          visible: boolean,
+        ) => void,
+      });
+
+      watch([modelValue, valueProp], ([nextModelValue, nextValue]) => {
+        const mergedValue = nextModelValue ?? nextValue;
+        if (isUndefined(mergedValue) || isNull(mergedValue)) {
+          _value.value = getDefaultValue(props.multiple, props.pathMode);
         }
       });
 
@@ -561,7 +664,6 @@
         disabled: 'disabled',
         children: 'children',
         tagProps: 'tagProps',
-        render: 'render',
         isLeaf: 'isLeaf',
       };
 
@@ -598,11 +700,11 @@
       );
 
       const computedValueMap = computed(() => {
-        const values = getValidValues(props.modelValue ?? _value.value, {
+        const values = getValidValues(props.modelValue ?? props.value ?? _value.value, {
           multiple: props.multiple,
           pathMode: props.pathMode,
         });
-        return new Map(
+        return new Map<string, CascaderSingleValue>(
           values.map((value) => [
             getValueKey(value, {
               valueKey: props.valueKey,
@@ -614,7 +716,6 @@
       });
 
       const computedInputValue = computed(() => props.inputValue ?? _inputValue.value);
-      const computedPopupVisible = computed(() => props.popupVisible ?? _popupVisible.value);
 
       const getFilteredStatus = (label: string) => {
         return label?.toLocaleLowerCase().includes(computedInputValue.value?.toLocaleLowerCase());
@@ -638,8 +739,8 @@
         });
       });
 
-      const updateValue = (values: UnionType[] | UnionType[][]) => {
-        const value = props.multiple ? values : (values[0] ?? '');
+      const updateValue = (values: CascaderSingleValue[]) => {
+        const value: CascaderModelValue = props.multiple ? values : (values[0] ?? '');
         if (values.length === 0) {
           setSelectedPath();
           setActiveKey();
@@ -647,12 +748,13 @@
 
         _value.value = value;
         emit('update:modelValue', value);
+        emit('update:value', value);
         emit('change', value);
         eventHandlers.value?.onChange?.();
       };
 
       watch([multiple, pathMode], () => {
-        const values: any[] = [];
+        const values: CascaderSingleValue[] = [];
         computedValueMap.value.forEach((value, key) => {
           const option = leafOptionMap.get(key);
           if (option) {
@@ -662,20 +764,13 @@
         updateValue(values);
       });
 
-      const handlePopupVisibleChange = (visible: boolean): void => {
-        if (computedPopupVisible.value !== visible) {
-          _popupVisible.value = visible;
-          emit('popupVisibleChange', visible);
-        }
-      };
-
       const handleRemove = (key: string) => {
         if (props.multiple) {
           const option = leafOptionMap.get(key);
           if (option) {
             selectMultiple(option, false);
           } else {
-            const values: any[] = [];
+            const values: CascaderSingleValue[] = [];
             computedValueMap.value.forEach((value, _key) => {
               if (_key !== key) {
                 values.push(value);
@@ -705,7 +800,7 @@
           ]);
         } else {
           const leafOptionKeys = props.checkStrictly ? [option.key] : getLeafOptionKeys(option);
-          const values: any[] = [];
+          const values: CascaderSingleValue[] = [];
           computedValueMap.value.forEach((value, key) => {
             if (!leafOptionKeys.includes(key)) {
               values.push(value);
@@ -732,14 +827,13 @@
       const handleInputValueChange = (value: string, reason: string): void => {
         if (value !== computedInputValue.value) {
           if (reason === 'manual' && !computedPopupVisible.value) {
-            _popupVisible.value = true;
-            emit('popupVisibleChange', true);
+            handlePopupVisibleChange(true);
           }
 
           _inputValue.value = value;
           emit('inputValueChange', value);
 
-          if (props.allowSearch) {
+          if (mergedAllowSearch.value) {
             handleSearch(value);
           }
         }
@@ -769,8 +863,8 @@
         e.stopPropagation();
         if (props.multiple) {
           // 保留已经被选中但被disabled的选项值
-          const newValues: any[] = [];
-          computedValueMap.value.forEach((value, key) => {
+          const newValues: CascaderSingleValue[] = [];
+          computedValueMap.value.forEach((_value, key) => {
             const option = leafOptionMap.get(key);
             if (option?.disabled) {
               newValues.push(props.pathMode ? option.pathValue : option.value);
@@ -785,7 +879,7 @@
       };
 
       const showSearchPanel = computed(
-        () => props.allowSearch && computedInputValue.value.length > 0,
+        () => Boolean(mergedAllowSearch.value) && computedInputValue.value.length > 0,
       );
 
       const handleFocus = (e: FocusEvent) => {
@@ -820,6 +914,7 @@
           expandTrigger,
           addLazyLoadOptions,
           formatLabel,
+          separator: props.separator,
           slots,
           valueMap: computedValueMap,
         }),
@@ -896,23 +991,37 @@
       );
 
       const selectViewValue = computed(() => {
-        const result: any[] = [];
+        const result: Array<{
+          value: string;
+          label: string;
+          closable: boolean;
+          tagProps?: CascaderOption['tagProps'];
+        }> = [];
         computedValueMap.value.forEach((value, key) => {
           const option = leafOptionMap.get(key);
           if (option) {
             result.push({
               value: key,
               label:
-                props.formatLabel?.(option.path.map((item) => item.raw)) ?? getOptionLabel(option),
+                props.formatLabel?.(option.path.map((item) => item.raw)) ??
+                getOptionLabel(option, {
+                  showPath: props.showPath,
+                  separator: props.separator,
+                }),
               closable: !option.disabled,
               tagProps: option.tagProps,
             });
           } else if (props.fallback) {
-            const label = isFunction(props.fallback)
-              ? props.fallback(value)
-              : isArray(value)
-                ? value.join(' / ')
-                : String(value);
+            let label: string;
+            if (isFunction(props.fallback)) {
+              label = props.fallback(value);
+            } else if (isArray(value)) {
+              label = props.showPath
+                ? value.map((item) => String(item)).join(props.separator)
+                : String(value[value.length - 1] ?? '');
+            } else {
+              label = String(value);
+            }
             result.push({
               value: key,
               label,
@@ -941,6 +1050,7 @@
         handleRemove,
         mergedDisabled,
         mergedAllowClear,
+        mergedAllowSearch,
         handleKeyDown,
         totalLevel,
       };

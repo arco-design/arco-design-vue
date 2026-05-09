@@ -4,7 +4,10 @@ import { configProviderInjectionKey } from '../config-provider/context';
 
 const ALLOW_CLEAR_PROP_NAMES = ['allowClear', 'allow-clear'] as const;
 
-export const useAllowClear = (allowClear?: Ref<boolean | undefined>) => {
+export const useAllowClear = (
+  allowClear?: Ref<boolean | undefined>,
+  extraPropNames: readonly string[] = [],
+) => {
   const instance = getCurrentInstance();
   const configProviderCtx = inject(configProviderInjectionKey, undefined);
 
@@ -15,8 +18,8 @@ export const useAllowClear = (allowClear?: Ref<boolean | undefined>) => {
       return false;
     }
 
-    return ALLOW_CLEAR_PROP_NAMES.some((propName) =>
-      Object.prototype.hasOwnProperty.call(rawProps, propName),
+    return [...ALLOW_CLEAR_PROP_NAMES, ...extraPropNames].some((propName) =>
+      Object.hasOwn(rawProps, propName),
     );
   });
 

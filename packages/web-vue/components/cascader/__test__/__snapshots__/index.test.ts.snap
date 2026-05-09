@@ -7,22 +7,22 @@ exports[`Cascader > should render panel (multiple) 1`] = `
       <div class="sd-scrollbar-container sd-cascader-column-content" data-overlayscrollbars="host">
         <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
           <ul role="menu" class="sd-cascader-list sd-cascader-list-multiple">
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Beijing" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+            <li><button type="button" aria-haspopup="true" aria-expanded="false" title="Beijing" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label>
                 <!---->
-              </label>
-              <!---->
-              <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
+            <li><button type="button" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label>
                 <!---->
-              </label>
-              <!---->
-              <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
+                <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
           </ul>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
@@ -48,22 +48,22 @@ exports[`Cascader > should render panel (multiple) 2`] = `
       <div class="sd-scrollbar-container sd-cascader-column-content" data-overlayscrollbars="host">
         <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
           <ul role="menu" class="sd-cascader-list sd-cascader-list-multiple">
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="true" title="Beijing" class="sd-cascader-option sd-cascader-option-active"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+            <li><button type="button" aria-haspopup="true" aria-expanded="true" title="Beijing" class="sd-cascader-option sd-cascader-option-active"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label>
                 <!---->
-              </label>
-              <!---->
-              <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
+            <li><button type="button" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label>
                 <!---->
-              </label>
-              <!---->
-              <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
+                <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
           </ul>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
@@ -84,22 +84,22 @@ exports[`Cascader > should render panel (multiple) 2`] = `
       <div class="sd-scrollbar-container sd-cascader-column-content" data-overlayscrollbars="host">
         <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
           <ul role="menu" class="sd-cascader-list sd-cascader-list-multiple">
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="false" aria-expanded="false" title="ChaoYang" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+            <li><button type="button" aria-haspopup="false" aria-expanded="false" title="ChaoYang" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label>
                 <!---->
-              </label>
-              <!---->
-              <div class="sd-cascader-option-label">ChaoYang
+                <div class="sd-cascader-option-label">ChaoYang
+                  <!---->
+                </div>
+              </button></li>
+            <li><button type="button" aria-haspopup="false" aria-expanded="false" title="Haidian" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label>
                 <!---->
-              </div>
-            </li>
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="false" aria-expanded="false" title="Haidian" class="sd-cascader-option"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label>
-              <!---->
-              <div class="sd-cascader-option-label">Haidian
-                <!---->
-              </div>
-            </li>
+                <div class="sd-cascader-option-label">Haidian
+                  <!---->
+                </div>
+              </button></li>
           </ul>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
@@ -125,20 +125,20 @@ exports[`Cascader > should render panel 1`] = `
       <div class="sd-scrollbar-container sd-cascader-column-content" data-overlayscrollbars="host">
         <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
           <ul role="menu" class="sd-cascader-list">
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Beijing" class="sd-cascader-option">
-              <!---->
-              <!---->
-              <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option">
-              <!---->
-              <!---->
-              <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
+            <li><button type="button" aria-haspopup="true" aria-expanded="false" title="Beijing" class="sd-cascader-option">
+                <!---->
+                <!---->
+                <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
+            <li><button type="button" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option">
+                <!---->
+                <!---->
+                <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
           </ul>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
@@ -164,20 +164,20 @@ exports[`Cascader > should render panel 2`] = `
       <div class="sd-scrollbar-container sd-cascader-column-content" data-overlayscrollbars="host">
         <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
           <ul role="menu" class="sd-cascader-list">
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="true" title="Beijing" class="sd-cascader-option sd-cascader-option-active">
-              <!---->
-              <!---->
-              <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option">
-              <!---->
-              <!---->
-              <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-                </svg></div>
-            </li>
+            <li><button type="button" aria-haspopup="true" aria-expanded="true" title="Beijing" class="sd-cascader-option sd-cascader-option-active">
+                <!---->
+                <!---->
+                <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
+            <li><button type="button" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option">
+                <!---->
+                <!---->
+                <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                    <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                  </svg></div>
+              </button></li>
           </ul>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
@@ -198,20 +198,20 @@ exports[`Cascader > should render panel 2`] = `
       <div class="sd-scrollbar-container sd-cascader-column-content" data-overlayscrollbars="host">
         <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
           <ul role="menu" class="sd-cascader-list">
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="false" aria-expanded="false" title="ChaoYang" class="sd-cascader-option">
-              <!---->
-              <!---->
-              <div class="sd-cascader-option-label">ChaoYang
+            <li><button type="button" aria-haspopup="false" aria-expanded="false" title="ChaoYang" class="sd-cascader-option">
                 <!---->
-              </div>
-            </li>
-            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="false" aria-expanded="false" title="Haidian" class="sd-cascader-option">
-              <!---->
-              <!---->
-              <div class="sd-cascader-option-label">Haidian
                 <!---->
-              </div>
-            </li>
+                <div class="sd-cascader-option-label">ChaoYang
+                  <!---->
+                </div>
+              </button></li>
+            <li><button type="button" aria-haspopup="false" aria-expanded="false" title="Haidian" class="sd-cascader-option">
+                <!---->
+                <!---->
+                <div class="sd-cascader-option-label">Haidian
+                  <!---->
+                </div>
+              </button></li>
           </ul>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
@@ -235,27 +235,27 @@ exports[`Cascader > should render search panel 1`] = `
   <div class="sd-scrollbar-container sd-cascader-panel sd-cascader-search-panel" data-overlayscrollbars="host">
     <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
       <ul role="menu" class="sd-cascader-list sd-cascader-search-list">
-        <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="false" aria-expanded="false" title="ChaoYang" class="sd-cascader-option sd-cascader-search-option">
-          <!---->
-          <!---->
-          <div class="sd-cascader-option-label">Beijing / ChaoYang
+        <li class="sd-cascader-search-option"><button type="button" aria-haspopup="false" aria-expanded="false" title="ChaoYang" class="sd-cascader-option">
             <!---->
-          </div>
-        </li>
-        <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="false" aria-expanded="false" title="Haidian" class="sd-cascader-option sd-cascader-search-option">
-          <!---->
-          <!---->
-          <div class="sd-cascader-option-label">Beijing / Haidian
             <!---->
-          </div>
-        </li>
-        <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="false" aria-expanded="false" title="Huangpu" class="sd-cascader-option sd-cascader-search-option">
-          <!---->
-          <!---->
-          <div class="sd-cascader-option-label">Shanghai / Huangpu
+            <div class="sd-cascader-option-label">Beijing / ChaoYang
+              <!---->
+            </div>
+          </button></li>
+        <li class="sd-cascader-search-option"><button type="button" aria-haspopup="false" aria-expanded="false" title="Haidian" class="sd-cascader-option">
             <!---->
-          </div>
-        </li>
+            <!---->
+            <div class="sd-cascader-option-label">Beijing / Haidian
+              <!---->
+            </div>
+          </button></li>
+        <li class="sd-cascader-search-option"><button type="button" aria-haspopup="false" aria-expanded="false" title="Huangpu" class="sd-cascader-option">
+            <!---->
+            <!---->
+            <div class="sd-cascader-option-label">Shanghai / Huangpu
+              <!---->
+            </div>
+          </button></li>
       </ul>
     </div>
     <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">

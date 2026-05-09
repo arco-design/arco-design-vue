@@ -19,11 +19,17 @@
 
   import { isNull, isUndefined } from '../_utils/is';
   import { KEYBOARD_KEY, getKeyDownHandler } from '../_utils/keyboard';
-  import { BaseType, Data, UnionType } from '../_utils/types';
+  import { BaseType } from '../_utils/types';
   import BaseCascaderPanel from './base-cascader-panel';
   import { cascaderInjectionKey } from './context';
   import { useSelectedPath } from './hooks/use-selected-path';
-  import { CascaderFieldNames, CascaderOption, CascaderOptionInfo } from './interface';
+  import {
+    CascaderFieldNames,
+    CascaderModelValue,
+    CascaderOption,
+    CascaderOptionInfo,
+    CascaderSingleValue,
+  } from './interface';
   import {
     getCheckedStatus,
     getLeafOptionInfos,
@@ -32,6 +38,18 @@
     getValidValues,
     getValueKey,
   } from './utils';
+
+  const getDefaultValue = (multiple: boolean, pathMode: boolean): CascaderModelValue => {
+    if (multiple) {
+      return [];
+    }
+
+    if (pathMode) {
+      return undefined;
+    }
+
+    return '';
+  };
 
   export default defineComponent({
     name: 'CascaderPanel',
@@ -60,13 +78,14 @@
        * @en Value
        */
       modelValue: {
-        type: [String, Number, Array] as PropType<
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined
-        >,
+        type: [String, Number, Object, Array] as PropType<CascaderModelValue>,
+      },
+      /**
+       * @zh 绑定值，Naive 兼容别名
+       * @en Value, Naive compatibility alias
+       */
+      value: {
+        type: [String, Number, Object, Array] as PropType<CascaderModelValue>,
       },
       /**
        * @zh 默认值（非受控状态）
@@ -74,14 +93,9 @@
        * @defaultValue '' \| undefined \| []
        */
       defaultValue: {
-        type: [String, Number, Array] as PropType<
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined
-        >,
-        default: (props: Data) => (props.multiple ? [] : props.pathMode ? undefined : ''),
+        type: [String, Number, Object, Array] as PropType<CascaderModelValue>,
+        default: (props: { multiple?: boolean; pathMode?: boolean }) =>
+          getDefaultValue(Boolean(props.multiple), Boolean(props.pathMode)),
       },
       /**
        * @zh 级联选择器的选项
@@ -145,27 +159,14 @@
       },
     },
     emits: {
-      'update:modelValue': (
-        _value:
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined,
-      ) => true,
+      'update:modelValue': (_value: CascaderModelValue) => true,
+      'update:value': (_value: CascaderModelValue) => true,
       /**
        * @zh 选中值改变时触发
        * @en Triggered when the selected value changes
        * @property {string | number | (string | number | (string | number)[])[] | undefined} value
        */
-      'change': (
-        _value:
-          | string
-          | number
-          | Record<string, any>
-          | (string | number | Record<string, any> | (string | number | Record<string, any>)[])[]
-          | undefined,
-      ) => true,
+      'change': (_value: CascaderModelValue) => true,
     },
     /**
      * @zh 选项为空时的显示内容
@@ -174,13 +175,22 @@
      * @version 2.23.0
      */
     setup(props, { emit, slots }) {
-      const { options, checkStrictly, loadMore, modelValue, valueKey, expandChild, expandTrigger } =
-        toRefs(props);
-      const _value = ref(props.defaultValue);
+      const {
+        options,
+        checkStrictly,
+        loadMore,
+        modelValue,
+        value: valueProp,
+        valueKey,
+        expandChild,
+        expandTrigger,
+      } = toRefs(props);
+      const _value = ref<CascaderModelValue>(props.defaultValue);
 
-      watch(modelValue, (value) => {
-        if (isUndefined(value) || isNull(value)) {
-          _value.value = props.multiple ? [] : undefined;
+      watch([modelValue, valueProp], ([nextModelValue, nextValue]) => {
+        const mergedValue = nextModelValue ?? nextValue;
+        if (isUndefined(mergedValue) || isNull(mergedValue)) {
+          _value.value = getDefaultValue(props.multiple, props.pathMode);
         }
       });
 
@@ -204,7 +214,6 @@
         disabled: 'disabled',
         children: 'children',
         tagProps: 'tagProps',
-        render: 'render',
         isLeaf: 'isLeaf',
       };
 
@@ -240,11 +249,11 @@
       );
 
       const computedValueMap = computed(() => {
-        const values = getValidValues(props.modelValue ?? _value.value, {
+        const values = getValidValues(props.modelValue ?? props.value ?? _value.value, {
           multiple: props.multiple,
           pathMode: props.pathMode,
         });
-        return new Map(
+        return new Map<string, CascaderSingleValue>(
           values.map((value) => [
             getValueKey(value, {
               valueKey: props.valueKey,
@@ -259,8 +268,8 @@
         props.checkStrictly ? Array.from(optionMap.values()) : Array.from(leafOptionSet),
       );
 
-      const updateValue = (values: UnionType[] | UnionType[][]) => {
-        const value = props.multiple ? values : (values[0] ?? '');
+      const updateValue = (values: CascaderSingleValue[]) => {
+        const value: CascaderModelValue = props.multiple ? values : (values[0] ?? '');
         if (values.length === 0) {
           setSelectedPath();
           setActiveKey();
@@ -268,6 +277,7 @@
 
         _value.value = value;
         emit('update:modelValue', value);
+        emit('update:value', value);
         emit('change', value);
       };
 
@@ -289,7 +299,7 @@
           ]);
         } else {
           const leafOptionKeys = props.checkStrictly ? [option.key] : getLeafOptionKeys(option);
-          const values: any[] = [];
+          const values: CascaderSingleValue[] = [];
           computedValueMap.value.forEach((value, key) => {
             if (!leafOptionKeys.includes(key)) {
               values.push(value);

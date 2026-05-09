@@ -1,26 +1,25 @@
-import { RenderFunction } from 'vue';
-
 import { BaseType, FieldString } from '../_utils/types';
 import { TagProps } from '../tag';
 
-export type CascaderBaseValue = BaseType | Record<string, any> | (BaseType | Record<string, any>)[];
+export type CascaderOptionValue = BaseType | Record<string, unknown>;
+
+export type CascaderPathValue = CascaderOptionValue[];
+
+export type CascaderSingleValue = CascaderOptionValue | CascaderPathValue;
+
+export type CascaderModelValue = CascaderSingleValue | CascaderSingleValue[] | undefined;
 
 export interface CascaderOption {
   /**
    * @zh 选项值，2.29.0 版本支持对象
    * @en Option value, version 2.29.0 supports objects
    */
-  value?: string | number | Record<string, any>;
+  value?: CascaderOptionValue;
   /**
    * @zh 选项文本
    * @en Option text
    */
   label?: string;
-  /**
-   * @zh 自定义渲染
-   * @en Custom render
-   */
-  render?: RenderFunction;
   /**
    * @zh 是否禁用
    * @en Whether to disable
@@ -43,7 +42,7 @@ export interface CascaderOption {
    */
   isLeaf?: boolean;
 
-  [other: string]: any;
+  [other: string]: unknown;
 }
 
 export type CascaderFieldNames = FieldString<CascaderOption>;
@@ -68,12 +67,12 @@ export interface CascaderNode extends CascaderOption {
 }
 
 export interface CascaderOptionInfo extends CascaderOptionWithTotal {
-  raw: Record<string, unknown>;
+  raw: CascaderOption;
   key: string;
   valueKey: string;
   level: number;
   index: number;
-  value: string | number;
+  value: CascaderOptionValue;
   label: string;
   disabled: boolean;
   selectionDisabled: boolean;
@@ -81,5 +80,5 @@ export interface CascaderOptionInfo extends CascaderOptionWithTotal {
   parent?: CascaderOptionInfo;
   children?: CascaderOptionInfo[];
   path: CascaderOptionInfo[];
-  pathValue: any[];
+  pathValue: CascaderPathValue;
 }

@@ -1,0 +1,93 @@
+<template>
+  <sd-space direction="vertical" size="large" fill>
+    <div>
+      <div :style="{ marginBottom: '8px', fontWeight: 600 }">先兼容迁移</div>
+      <div :style="{ marginBottom: '12px', color: 'var(--sd-color-text-3)' }">
+        保留 `value`、`show`、`filterable`、`clearable`，先把页面替换到当前组件库。
+      </div>
+      <sd-space direction="vertical" size="small" fill>
+        <sd-button size="small" @click="legacyVisible = !legacyVisible">
+          切换 show：{{ legacyVisible ? '打开' : '关闭' }}
+        </sd-button>
+        <sd-cascader
+          v-model:value="legacyValue"
+          v-model:show="legacyVisible"
+          :options="options"
+          filterable
+          clearable
+          placeholder="兼容别名写法"
+          :style="{ width: '320px' }"
+        />
+      </sd-space>
+    </div>
+
+    <div>
+      <div :style="{ marginBottom: '8px', fontWeight: 600 }">再统一到本地命名</div>
+      <div :style="{ marginBottom: '12px', color: 'var(--sd-color-text-3)' }">
+        新代码建议改成 `model-value`、`popup-visible`、`allow-search`、`allow-clear`。
+      </div>
+      <sd-space direction="vertical" size="small" fill>
+        <sd-button size="small" @click="modernVisible = !modernVisible">
+          切换 popup-visible：{{ modernVisible ? '打开' : '关闭' }}
+        </sd-button>
+        <sd-cascader
+          v-model="modernValue"
+          v-model:popup-visible="modernVisible"
+          :options="options"
+          allow-search
+          allow-clear
+          placeholder="推荐本地写法"
+          :style="{ width: '320px' }"
+        />
+      </sd-space>
+    </div>
+  </sd-space>
+</template>
+
+<script>
+  import { ref } from 'vue';
+
+  export default {
+    setup() {
+      const legacyValue = ref('chaoyang');
+      const legacyVisible = ref(false);
+      const modernValue = ref('haidian');
+      const modernVisible = ref(false);
+
+      const options = [
+        {
+          value: 'beijing',
+          label: '北京',
+          children: [
+            {
+              value: 'chaoyang',
+              label: '朝阳区',
+            },
+            {
+              value: 'haidian',
+              label: '海淀区',
+            },
+          ],
+        },
+        {
+          value: 'shanghai',
+          label: '上海',
+          children: [
+            {
+              value: 'pudong',
+              label: '浦东新区',
+            },
+          ],
+        },
+      ];
+
+      return {
+        legacyValue,
+        legacyVisible,
+        modernValue,
+        modernVisible,
+        options,
+      };
+    },
+  };
+</script>

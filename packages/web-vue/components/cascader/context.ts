@@ -1,7 +1,6 @@
 import { InjectionKey, Slots } from 'vue';
 
-import { UnionType } from '../_utils/types';
-import { CascaderOption, CascaderOptionInfo } from './interface';
+import { CascaderOption, CascaderOptionInfo, CascaderSingleValue } from './interface';
 
 export interface CascaderContext {
   onClickOption: (option: CascaderOptionInfo, checked?: boolean) => void;
@@ -10,8 +9,9 @@ export interface CascaderContext {
   loadMore: (option: CascaderOption, done: (children?: CascaderOption[]) => void) => void;
   addLazyLoadOptions: (children: CascaderOption[], key: string) => void;
   formatLabel: (options: CascaderOption[]) => string;
+  separator: string;
   slots: Slots;
-  valueMap: Map<string, UnionType | UnionType[]>;
+  valueMap: Map<string, CascaderSingleValue>;
   expandTrigger: 'click' | 'hover';
 }
 

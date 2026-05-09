@@ -1,8 +1,16 @@
 import { Ref } from 'vue';
 
 import { isArray, isNull, isNumber, isObject, isString, isUndefined } from '../_utils/is';
-import { BaseType, UnionType } from '../_utils/types';
-import { CascaderOption, CascaderOptionInfo, CascaderFieldNames } from './interface';
+import { BaseType } from '../_utils/types';
+import {
+  CascaderFieldNames,
+  CascaderModelValue,
+  CascaderOption,
+  CascaderOptionInfo,
+  CascaderOptionValue,
+  CascaderPathValue,
+  CascaderSingleValue,
+} from './interface';
 
 export const getOptionInfos = (
   options: CascaderOption[],
@@ -32,6 +40,43 @@ export const getOptionInfos = (
 ) => {
   let totalLevel = 0;
 
+  const getTotalLeafOptions = (children: CascaderOptionInfo[]) => {
+    return children.reduce((pre, item) => {
+      if (isNumber(item.totalLeafOptions)) {
+        return pre + item.totalLeafOptions;
+      }
+
+      if (item.disabled || item.selectionDisabled) {
+        return pre;
+      }
+
+      return pre + (item.isLeaf ? 1 : 0);
+    }, 0);
+  };
+
+  const resolveChildren = (
+    item: CascaderOption,
+    data: CascaderOptionInfo,
+    key: string,
+    level: number,
+  ) => {
+    if (item[fieldNames.children]) {
+      data.isLeaf = false;
+      data.children = travelOptions(item[fieldNames.children], data, level + 1);
+      return;
+    }
+
+    if (enabledLazyLoad && !data.isLeaf) {
+      data.isLeaf = false;
+      if (lazyLoadOptions[key]) {
+        data.children = travelOptions(lazyLoadOptions[key], data, level + 1);
+      }
+      return;
+    }
+
+    data.isLeaf = true;
+  };
+
   const travelOptions = (
     options: CascaderOption[],
     parent?: CascaderOptionInfo,
@@ -42,14 +87,17 @@ export const getOptionInfos = (
 
     return options.map((item, index) => {
       const value = item[fieldNames.value];
+      const normalizedValue = (value ?? '') as CascaderOptionValue;
+      const fallbackLabel = isObject(normalizedValue)
+        ? String(normalizedValue[valueKey.value])
+        : String(normalizedValue);
       const data: CascaderOptionInfo = {
         raw: item,
         // raw
-        value,
-        label: item[fieldNames.label] ?? String(value),
+        value: normalizedValue,
+        label: (item[fieldNames.label] as string | undefined) ?? fallbackLabel,
         disabled: Boolean(item[fieldNames.disabled]),
         selectionDisabled: false,
-        render: item[fieldNames.render],
         tagProps: item[fieldNames.tagProps],
         isLeaf: item[fieldNames.isLeaf],
         // other
@@ -62,41 +110,21 @@ export const getOptionInfos = (
         pathValue: [],
       };
       const path = parentPath.concat(data);
-      const pathValue: UnionType[] = [];
+      const pathValue: CascaderPathValue = [];
       const key = path
-        .map((item) => {
-          pathValue.push(item.value);
-          return item.valueKey;
+        .map((pathItem) => {
+          pathValue.push(pathItem.value);
+          return pathItem.valueKey;
         })
         .join('-');
       data.path = path;
       data.pathValue = pathValue;
       data.key = key;
 
-      if (item[fieldNames.children]) {
-        data.isLeaf = false;
-        data.children = travelOptions(item[fieldNames.children], data, (level ?? 1) + 1);
-      } else if (enabledLazyLoad && !data.isLeaf) {
-        data.isLeaf = false;
-        if (lazyLoadOptions[key]) {
-          data.children = travelOptions(lazyLoadOptions[key], data, (level ?? 1) + 1);
-        }
-      } else {
-        data.isLeaf = true;
-      }
+      resolveChildren(item, data, key, level ?? 1);
 
       if (data.children && !data.disabled) {
-        data.totalLeafOptions = data.children.reduce((pre, item) => {
-          if (isNumber(item.totalLeafOptions)) {
-            return pre + item.totalLeafOptions;
-          }
-
-          if (item.disabled || item.selectionDisabled) {
-            return pre;
-          }
-
-          return pre + (item.isLeaf ? 1 : 0);
-        }, 0);
+        data.totalLeafOptions = getTotalLeafOptions(data.children);
 
         if (data.totalLeafOptions === 0 && !checkStrictly.value) {
           data.selectionDisabled = true;
@@ -179,7 +207,7 @@ export const getLeafOptionInfos = (option: CascaderOptionInfo) => {
 };
 
 export const getValueKey = (
-  value: UnionType | UnionType[],
+  value: CascaderSingleValue,
   { valueKey, leafOptionValueMap }: { valueKey: string; leafOptionValueMap: Map<BaseType, string> },
 ): string => {
   if (isArray(value)) {
@@ -195,16 +223,16 @@ export const getValueKey = (
 };
 
 export const getValidValues = (
-  value: UnionType | UnionType[] | UnionType[][] | undefined,
+  value: CascaderModelValue,
   { multiple, pathMode }: { multiple: boolean; pathMode: boolean },
-): UnionType[] | UnionType[][] => {
+): CascaderSingleValue[] => {
   if (!isArray(value)) {
     return isUndefined(value) || isNull(value) || value === '' ? [] : [value];
   }
   if (pathMode && !multiple && value.length > 0 && !isArray(value[0])) {
-    return [value];
+    return [value as CascaderPathValue];
   }
-  return value;
+  return value as CascaderSingleValue[];
 };
 
 export const getKeysFromValue = (
@@ -242,7 +270,6 @@ export const getKeysFromValue = (
       }
     }
   } else if (isArray(value) && value.length > 0) {
-    // TODO: 更好的写法？
     if (isString(value[0]) || isNumber(value[0])) {
       const key = value.join('-');
       if (leafOptionMap.has(key)) {
@@ -262,6 +289,19 @@ export const getKeysFromValue = (
   return keys;
 };
 
-export const getOptionLabel = (option: CascaderOptionInfo) => {
-  return option.path.map((item) => item.label).join(' / ');
+export const getOptionLabel = (
+  option: CascaderOptionInfo,
+  {
+    separator = ' / ',
+    showPath = true,
+  }: {
+    separator?: string;
+    showPath?: boolean;
+  } = {},
+) => {
+  if (!showPath) {
+    return option.label;
+  }
+
+  return option.path.map((item) => item.label).join(separator);
 };

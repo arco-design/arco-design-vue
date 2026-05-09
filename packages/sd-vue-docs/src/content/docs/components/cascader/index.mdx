@@ -1,58 +1,47 @@
 ---
 title: 级联选择 Cascader
-description: 指在选择器选项数量较多时，采用多级分类的方式将选项进行分隔。
+description: 使用多级路径组织选项，适合层级化数据的单选、多选与搜索场景。
 ---
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import CascaderBasicDemo from '../../../../components/generated/cascader/basic.vue';
-export const cascaderBasicSource =
-  "<template>\n  <sd-space direction=\"vertical\" size=\"large\">\n    <sd-cascader :options=\"options\" :style=\"{ width: '320px' }\" placeholder=\"Please select ...\" />\n    <sd-cascader\n      :options=\"options\"\n      default-value=\"datunli\"\n      expand-trigger=\"hover\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n    />\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderBasicSource from '../../../../components/generated/cascader/basic.vue?raw';
 import CascaderCheckStrictlyDemo from '../../../../components/generated/cascader/check-strictly.vue';
-export const cascaderCheckStrictlySource =
-  "<template>\n  <sd-space direction=\"vertical\" size=\"large\">\n    <sd-cascader\n      :options=\"options\"\n      default-value=\"beijing\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n      check-strictly\n    />\n    <sd-cascader\n      :options=\"options\"\n      :default-value=\"['beijing']\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n      multiple\n      check-strictly\n    />\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n              disabled: true,\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderCheckStrictlySource from '../../../../components/generated/cascader/check-strictly.vue?raw';
 import CascaderClearDemo from '../../../../components/generated/cascader/clear.vue';
-export const cascaderClearSource =
-  "<template>\n  <sd-cascader\n    :options=\"options\"\n    v-model=\"value\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n    allow-clear\n  />\n</template>\n\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const value = ref('datunli');\n\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        value,\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderClearSource from '../../../../components/generated/cascader/clear.vue?raw';
 import CascaderDisabledDemo from '../../../../components/generated/cascader/disabled.vue';
-export const cascaderDisabledSource =
-  "<template>\n  <sd-cascader :options=\"options\" :style=\"{ width: '320px' }\" placeholder=\"Please select ...\" />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n              disabled: true,\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                  disabled: true,\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderDisabledSource from '../../../../components/generated/cascader/disabled.vue?raw';
+import CascaderDisplayDemo from '../../../../components/generated/cascader/display.vue';
+import cascaderDisplaySource from '../../../../components/generated/cascader/display.vue?raw';
 import CascaderExpandDemo from '../../../../components/generated/cascader/expand.vue';
-export const cascaderExpandSource =
-  "<template>\n  <sd-cascader\n    :options=\"options\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n    expand-child\n  />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderExpandSource from '../../../../components/generated/cascader/expand.vue?raw';
 import CascaderFallbackDemo from '../../../../components/generated/cascader/fallback.vue';
-export const cascaderFallbackSource =
-  "<template>\n  <sd-space direction=\"vertical\" size=\"large\">\n    <sd-cascader\n      :options=\"options\"\n      v-model=\"value\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n      multiple\n    />\n    <sd-cascader\n      :options=\"options\"\n      v-model=\"value2\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n      path-mode\n      multiple\n      :fallback=\"fallback\"\n    />\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const value = ref(['datunli', 'wuhou']);\n      const value2 = ref([\n        ['beijing', 'chaoyang', 'datunli'],\n        ['sichuan', 'chengdu', 'wuhou'],\n      ]);\n      const fallback = (value) => {\n        return value.map((item) => item.toUpperCase()).join('-');\n      };\n\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n        value,\n        value2,\n        fallback,\n      };\n    },\n  };\n</script>";
+import cascaderFallbackSource from '../../../../components/generated/cascader/fallback.vue?raw';
 import CascaderFieldNamesDemo from '../../../../components/generated/cascader/field-names.vue';
-export const cascaderFieldNamesSource =
-  "<template>\n  <sd-cascader\n    :options=\"options\"\n    :field-names=\"fieldNames\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n  />\n</template>\n\n<script>\n  import { reactive } from 'vue';\n\n  export default {\n    setup() {\n      const fieldNames = { value: 'city', label: 'text' };\n      const options = reactive([\n        {\n          city: 'beijing',\n          text: 'Beijing',\n          children: [\n            {\n              city: 'chaoyang',\n              text: 'ChaoYang',\n              children: [\n                {\n                  city: 'datunli',\n                  text: 'Datunli',\n                },\n              ],\n            },\n            {\n              city: 'haidian',\n              text: 'Haidian',\n            },\n            {\n              city: 'dongcheng',\n              text: 'Dongcheng',\n            },\n            {\n              city: 'xicheng',\n              text: 'Xicheng',\n              children: [\n                {\n                  city: 'jinrongjie',\n                  text: 'Jinrongjie',\n                },\n                {\n                  city: 'tianqiao',\n                  text: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          city: 'shanghai',\n          text: 'Shanghai',\n          children: [\n            {\n              city: 'huangpu',\n              text: 'Huangpu',\n            },\n          ],\n        },\n      ]);\n\n      return {\n        fieldNames,\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderFieldNamesSource from '../../../../components/generated/cascader/field-names.vue?raw';
 import CascaderFormatDemo from '../../../../components/generated/cascader/format.vue';
-export const cascaderFormatSource =
-  "<template>\n  <sd-cascader\n    :options=\"options\"\n    default-value=\"datunli\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n    :format-label=\"format\"\n  />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n\n      const format = (options) => {\n        const labels = options.map((option) => option.label);\n        return labels.join('-');\n      };\n\n      return {\n        options,\n        format,\n      };\n    },\n  };\n</script>";
+import cascaderFormatSource from '../../../../components/generated/cascader/format.vue?raw';
 import CascaderLazyLoadDemo from '../../../../components/generated/cascader/lazy-load.vue';
-export const cascaderLazyLoadSource =
-  "<template>\n  <sd-space>\n    <sd-cascader\n      :options=\"options\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n      :load-more=\"loadMore\"\n    />\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n              isLeaf: true,\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n              isLeaf: true,\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n              isLeaf: true,\n            },\n          ],\n        },\n      ];\n      const loadMore = (option, done) => {\n        window.setTimeout(() => {\n          const nodes = [\n            {\n              value: `${option.value}-option1`,\n              label: `${option.label}-Option1`,\n              isLeaf: true,\n            },\n            {\n              value: `${option.value}-option2`,\n              label: `${option.label}-Option2`,\n              isLeaf: true,\n            },\n          ];\n          done(nodes);\n        }, 2000);\n      };\n\n      return {\n        options,\n        loadMore,\n      };\n    },\n  };\n</script>";
+import cascaderLazyLoadSource from '../../../../components/generated/cascader/lazy-load.vue?raw';
 import CascaderLoadingDemo from '../../../../components/generated/cascader/loading.vue';
-export const cascaderLoadingSource =
-  '<template>\n  <sd-cascader :options="[]" :style="{ width: \'320px\' }" placeholder="Please select ..." loading />\n</template>';
+import cascaderLoadingSource from '../../../../components/generated/cascader/loading.vue?raw';
 import CascaderMultipleDemo from '../../../../components/generated/cascader/multiple.vue';
-export const cascaderMultipleSource =
-  "<template>\n  <sd-cascader\n    :options=\"options\"\n    :default-value=\"['datunli']\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n    multiple\n  />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderMultipleSource from '../../../../components/generated/cascader/multiple.vue?raw';
+import CascaderMigrationDemo from '../../../../components/generated/cascader/migration.vue';
+import cascaderMigrationSource from '../../../../components/generated/cascader/migration.vue?raw';
 import CascaderPanelDemo from '../../../../components/generated/cascader/panel.vue';
-export const cascaderPanelSource =
-  "<template>\n  <sd-cascader-panel :options=\"options\" v-model=\"value\" expand-child />\n</template>\n\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const value = ref('');\n\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        value,\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderPanelSource from '../../../../components/generated/cascader/panel.vue?raw';
 import CascaderPathDemo from '../../../../components/generated/cascader/path.vue';
-export const cascaderPathSource =
-  "<template>\n  <sd-space direction=\"vertical\" size=\"large\">\n    <sd-cascader\n      :options=\"options\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n      path-mode\n      @change=\"handleChange\"\n    />\n    <sd-cascader\n      :options=\"options\"\n      :default-value=\"[['beijing', 'chaoyang', 'datunli']]\"\n      :style=\"{ width: '320px' }\"\n      placeholder=\"Please select ...\"\n      path-mode\n      @change=\"handleChange\"\n    />\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const handleChange = (path) => {\n        console.log(path);\n      };\n\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n        handleChange,\n      };\n    },\n  };\n</script>";
+import cascaderPathSource from '../../../../components/generated/cascader/path.vue?raw';
 import CascaderSearchDemo from '../../../../components/generated/cascader/search.vue';
-export const cascaderSearchSource =
-  "<template>\n  <sd-cascader\n    :options=\"options\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n    allow-search\n  />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: [\n            {\n              value: 'huangpu',\n              label: 'Huangpu',\n            },\n          ],\n        },\n      ];\n      return {\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderSearchSource from '../../../../components/generated/cascader/search.vue?raw';
 import CascaderVirtualDemo from '../../../../components/generated/cascader/virtual.vue';
-export const cascaderVirtualSource =
-  "<template>\n  <sd-cascader\n    :options=\"options\"\n    :style=\"{ width: '320px' }\"\n    placeholder=\"Please select ...\"\n    :virtual-list-props=\"{ height: 200 }\"\n  />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const options = [\n        {\n          value: 'beijing',\n          label: 'Beijing',\n          children: [\n            {\n              value: 'chaoyang',\n              label: 'ChaoYang',\n              children: [\n                {\n                  value: 'datunli',\n                  label: 'Datunli',\n                },\n              ],\n            },\n            {\n              value: 'haidian',\n              label: 'Haidian',\n            },\n            {\n              value: 'dongcheng',\n              label: 'Dongcheng',\n            },\n            {\n              value: 'xicheng',\n              label: 'Xicheng',\n              children: [\n                {\n                  value: 'jinrongjie',\n                  label: 'Jinrongjie',\n                },\n                {\n                  value: 'tianqiao',\n                  label: 'Tianqiao',\n                },\n              ],\n            },\n          ],\n        },\n        {\n          value: 'shanghai',\n          label: 'Shanghai',\n          children: Array(1000)\n            .fill(null)\n            .map((_, index) => {\n              return {\n                value: `Option ${index}`,\n                label: `Option ${index}`,\n              };\n            }),\n        },\n      ];\n\n      return {\n        options,\n      };\n    },\n  };\n</script>";
+import cascaderVirtualSource from '../../../../components/generated/cascader/virtual.vue?raw';
 
 ### 基本使用
 
-级联选择器的基本用法。
+最常见的级联选择场景。默认按叶子节点提交值，也支持通过 `expand-trigger="hover"` 调整子级展开方式。
 
 <DemoBlock source={cascaderBasicSource} mainFile="src/cascader-basic.vue">
 
@@ -62,7 +51,7 @@ export const cascaderVirtualSource =
 
 ### 严格选择模式
 
-设置属性 `check-strictly`，开启严格选择模式，点击任何结点都可以选择。多选时将会解除父子节点的关联。
+开启 `check-strictly` 后，父节点也可以直接选中；多选时会同时解除父子联动。
 
 <DemoBlock source={cascaderCheckStrictlySource} mainFile="src/cascader-check-strictly.vue">
 
@@ -72,7 +61,7 @@ export const cascaderVirtualSource =
 
 ### 允许清除
 
-允许清除。
+通过 `allow-clear` 显示清除按钮，兼容 `clearable` 别名。
 
 <DemoBlock source={cascaderClearSource} mainFile="src/cascader-clear.vue">
 
@@ -82,7 +71,7 @@ export const cascaderVirtualSource =
 
 ### 禁用选项
 
-指定 `option` 的 `disabled` 为 `true`，可以禁用该选项。
+在节点上设置 `disabled` 后，该项不会参与选择和回填。
 
 <DemoBlock source={cascaderDisabledSource} mainFile="src/cascader-disabled.vue">
 
@@ -92,7 +81,7 @@ export const cascaderVirtualSource =
 
 ### 展开子菜单
 
-通过设置 `expand-child` 可以在选择时展开第一个子菜单
+设置 `expand-child` 后，进入一个分支时会自动展开它的第一个子菜单。
 
 <DemoBlock source={cascaderExpandSource} mainFile="src/cascader-expand.vue">
 
@@ -102,7 +91,7 @@ export const cascaderVirtualSource =
 
 ### 回退选项
 
-组件默认会展示在选项中不存在的值，可通过 `fallback` 自定义展示或者关闭
+当回填值在当前选项树中不存在时，可以通过 `fallback` 控制展示文本，或关闭回退展示。
 
 <DemoBlock source={cascaderFallbackSource} mainFile="src/cascader-fallback.vue">
 
@@ -112,7 +101,7 @@ export const cascaderVirtualSource =
 
 ### 自定义字段名
 
-可以通过 `field-names` 属性自定义 `options` 中数据的格式。
+通过 `field-names` 映射不同的数据结构。
 
 <DemoBlock source={cascaderFieldNamesSource} mainFile="src/cascader-field-names.vue">
 
@@ -120,9 +109,9 @@ export const cascaderVirtualSource =
 
 </DemoBlock>
 
-### 自定义输入框的展示值
+### 自定义展示值
 
-利用 `formatLabel` 对显示的内容进行自定义处理。
+使用 `format-label` 统一格式化已选路径的展示内容。
 
 <DemoBlock source={cascaderFormatSource} mainFile="src/cascader-format.vue">
 
@@ -130,9 +119,19 @@ export const cascaderVirtualSource =
 
 </DemoBlock>
 
+### 路径展示与响应式标签
+
+通过 `show-path` 和 `separator` 控制回填文案；多选时可用 `max-tag-count="responsive"` 让标签在窄宽度下自动折叠，和 Select / TreeSelect 复用同一套标签压缩逻辑。
+
+<DemoBlock source={cascaderDisplaySource} mainFile="src/cascader-display.vue">
+
+<CascaderDisplayDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 子选项懒加载
 
-通过 `load-more` 属性可以开启数据懒加载功能。开启数据懒加载功能后，需要在叶子节点标注 `isLeaf: true`，没有标注且没有 `children` 属性的节点会认为需要懒加载处理。 `load-more` 属性有提供 `done` 函数进行回调，可以在回调中传入懒加载的子数据。如果 `done` 函数没有传入数据会认为懒加载失败，此节点可以再次触发懒加载。
+传入 `load-more` 后，未标记 `isLeaf: true` 且没有 `children` 的节点会走懒加载分支。
 
 <DemoBlock source={cascaderLazyLoadSource} mainFile="src/cascader-lazy-load.vue">
 
@@ -142,7 +141,7 @@ export const cascaderVirtualSource =
 
 ### 加载中
 
-选择框和下拉菜单显示加载中状态。
+选择框和下拉面板都可以显示加载态。
 
 <DemoBlock source={cascaderLoadingSource} mainFile="src/cascader-loading.vue">
 
@@ -152,7 +151,7 @@ export const cascaderVirtualSource =
 
 ### 多选模式
 
-通过设置 `multiple` 开启多选模式。
+设置 `multiple` 后使用复选框交互，并复用当前组件库的标签回填逻辑。
 
 <DemoBlock source={cascaderMultipleSource} mainFile="src/cascader-multiple.vue">
 
@@ -160,9 +159,9 @@ export const cascaderVirtualSource =
 
 </DemoBlock>
 
-### 级联菜单
+### 级联面板
 
-级联菜单可以单独使用，此时为 `数据展示` 组件
+`CascaderPanel` 可以单独作为路径面板使用，适合详情页或组合式表单布局。
 
 <DemoBlock source={cascaderPanelSource} mainFile="src/cascader-panel.vue">
 
@@ -172,7 +171,7 @@ export const cascaderVirtualSource =
 
 ### 路径模式
 
-`modelValue` 使用路径作为值。
+开启 `path-mode` 后，值会以完整路径数组的形式回传。
 
 <DemoBlock source={cascaderPathSource} mainFile="src/cascader-path.vue">
 
@@ -180,9 +179,9 @@ export const cascaderVirtualSource =
 
 </DemoBlock>
 
-### 允许搜索
+### 搜索
 
-通过设置 `allow-search` 让输入框支持搜索功能。
+设置 `allow-search` 启用搜索，兼容 `filterable` 别名；搜索面板默认展示整条路径，也可通过 `search-option-only-label` 只展示末级标签。
 
 <DemoBlock source={cascaderSearchSource} mainFile="src/cascader-search.vue">
 
@@ -192,11 +191,58 @@ export const cascaderVirtualSource =
 
 ### 虚拟列表
 
-虚拟列表的使用方法。
+通过 `virtual-list-props` 在大数据量场景下减少渲染开销。
 
 <DemoBlock source={cascaderVirtualSource} mainFile="src/cascader-virtual.vue">
 
 <CascaderVirtualDemo client:only="vue" />
+
+</DemoBlock>
+
+## 从 Naive UI 迁移
+
+这次迁移以当前组件库内部的 `Trigger`、`SelectView`、表单联动、主题和弹层容器链路为基础实现，同时保留一层有限的 Naive 兼容别名，方便旧业务先完成替换，再逐步收敛到本地 API。
+
+### 对应关系
+
+| Naive UI | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `n-cascader` | `sd-cascader` | 级联选择器主体 |
+| `n-cascader-panel` | `sd-cascader-panel` | 面板组件 |
+| `:options` | `:options` | 选项主属性保持一致 |
+| `v-model:value` | `v-model` / `v-model:value` | 当前同时支持 `model-value` 和 `value` 兼容别名 |
+| `show` / `default-show` | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `default-show` | 新代码建议回到本地命名 |
+| `filterable` | `allow-search` / `filterable` | 新代码建议使用 `allow-search` |
+| `clearable` | `allow-clear` / `clearable` | 新代码建议使用 `allow-clear` |
+| `show-path` | `show-path` | 控制已选标签是否展示完整路径 |
+| `separator` | `separator` | 路径展示分隔符 |
+| `max-tag-count="responsive"` | `max-tag-count="responsive"` | 多选标签会按当前容器宽度自动折叠 |
+| `render-label` | `format-label` / `#label` / `#option` | 路径展示与选项展示改为本地格式化函数和插槽 |
+| `render-prefix` / `render-suffix` | `#prefix`、`#arrow-icon`、`#loading-icon`、`#search-icon` | 对外渲染入口统一收敛到插槽 |
+| `fallback-option` 风格回填 | `fallback` | 不存在的值仍可回显，但回调签名以当前组件库为准 |
+
+### 主要差异
+
+1. 运行时行为以当前组件库为准，尤其是弹层定位、表单 `onChange` / `onBlur` 联动、局部主题和容器挂载，已经统一接入本地 `Trigger` / `ConfigProvider` / `ThemeProvider`。
+2. 公开定制能力只保留插槽和少量格式化函数，不再对外保留 render function API。历史上依赖 `render-label`、`render-prefix`、`render-suffix` 的场景，建议分别迁到 `format-label`、`label`、`option`、`prefix`、`arrow-icon`、`loading-icon`、`search-icon` 等公开插槽或属性。
+3. 当前版本保留 `value`、`show`、`default-show`、`filterable`、`clearable` 等兼容别名，但新增代码更建议直接使用 `model-value`、`popup-visible`、`default-popup-visible`、`allow-search`、`allow-clear`。
+4. 搜索面板、标签回填、路径格式化和多选勾选链路都复用了当前组件库内部实现。`max-tag-count="responsive"`、`show-path`、`separator` 现在已和 Select / TreeSelect 保持一致。
+5. `check-strategy` 这一类会改变多选值语义的 Naive 行为当前仍未对齐；如果旧代码依赖它，需要保留为迁移差异单独评估。
+
+### 建议的迁移顺序
+
+1. 先替换组件标签：把 `n-cascader` / `n-cascader-panel` 替换成 `sd-cascader` / `sd-cascader-panel`，原来的 `options`、`value`、`show`、`filterable`、`clearable` 可以先靠兼容层跑通。
+2. 再统一命名：逐步把 `value`、`show`、`default-show`、`filterable`、`clearable` 迁到 `model-value`、`popup-visible`、`default-popup-visible`、`allow-search`、`allow-clear`。
+3. 然后处理自定义内容：删除 render function 写法，改用 `label`、`option`、`prefix` 等模板插槽，保持公开扩展方式一致。
+4. 最后回归复杂交互：重点检查搜索、懒加载、多选、严格选择、路径回填、虚拟列表和 `fallback` 场景。
+
+### 迁移示例
+
+下面的示例把兼容别名写法和推荐写法放在一起，方便逐步替换而不是一次性重写。
+
+<DemoBlock source={cascaderMigrationSource} mainFile="src/cascader-migration.vue">
+
+<CascaderMigrationDemo client:only="vue" />
 
 </DemoBlock>
 
@@ -207,98 +253,112 @@ export const cascaderVirtualSource =
 | 参数名 | 描述 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | :-: | :-- |
 | path-mode | 绑定值是否为路径 | `boolean` | `false` |  |
-| multiple | 是否为多选状态（多选模式默认开启搜索） | `boolean` | `false` |  |
-| model-value **(v-model)** | 绑定值 | `string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined` | `-` |  |
-| default-value | 默认值（非受控状态） | `string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined` | `'' \| undefined \| []` |  |
+| multiple | 是否为多选状态 | `boolean` | `false` |  |
+| model-value **(v-model)** | 绑定值 | `CascaderModelValue` | `-` |  |
+| value **(v-model:value)** | `model-value` 的兼容别名 | `CascaderModelValue` | `-` |  |
+| default-value | 默认值（非受控状态） | `CascaderModelValue` | `'' \| undefined \| []` |  |
 | options | 级联选择器的选项 | `CascaderOption[]` | `[]` |  |
 | disabled | 是否禁用 | `boolean` | `false` |  |
 | error | 是否为错误状态 | `boolean` | `false` |  |
 | size | 选择框的大小 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |  |
-| allow-search | 是否允许搜索 | `boolean` | `false (single) \| true (multiple)` |  |
-| allow-clear | 是否允许清除 | `boolean` | `false` |  |
+| allow-search | 是否允许搜索，兼容 `filterable` 别名 | `boolean` | `false (single) \| true (multiple)` |  |
+| filterable | `allow-search` 的兼容别名 | `boolean` | `-` |  |
+| allow-clear | 是否允许清除，兼容 `clearable` 别名 | `boolean` | `false` |  |
+| clearable | `allow-clear` 的兼容别名 | `boolean` | `-` |  |
 | input-value **(v-model)** | 输入框的值 | `string` | `-` |  |
-| default-input-value | 输入框的默认值（非受控状态） | `string` | `''` |  |
+| default-input-value | 输入框默认值 | `string` | `''` |  |
 | popup-visible **(v-model)** | 是否显示下拉框 | `boolean` | `-` |  |
+| show **(v-model:show)** | `popup-visible` 的兼容别名 | `boolean` | `-` |  |
+| default-popup-visible | 默认是否显示下拉框 | `boolean` | `false` |  |
+| default-show | `default-popup-visible` 的兼容别名 | `boolean` | `-` |  |
 | expand-trigger | 展开下一级的触发方式 | `'click' \| 'hover'` | `'click'` |  |
-| default-popup-visible | 是否默认显示下拉框（非受控状态） | `boolean` | `false` |  |
 | placeholder | 占位符 | `string` | `-` |  |
 | filter-option | 自定义选项过滤方法 | `(inputValue: string, option: CascaderOption) => boolean` | `-` |  |
-| popup-container | 弹出框的挂载容器 | `string \| HTMLElement` | `-` |  |
-| max-tag-count | 多选模式下，最多显示的标签数量。0 表示不限制 | `number` | `0` |  |
-| format-label | 格式化展示内容 | `(options: CascaderOption[]) => string` | `-` |  |
-| trigger-props | 下拉菜单的触发器属性 | `TriggerProps` | `-` |  |
+| popup-container | 弹出框挂载容器 | `string \| HTMLElement` | `-` |  |
+| max-tag-count | 多选模式最多显示的标签数量，`0` 表示不限制，`responsive` 表示按容器宽度自动折叠 | `number \| 'responsive'` | `0` |  |
+| show-path | 回填时是否展示完整路径 | `boolean` | `true` |  |
+| separator | 回填路径使用的分隔符 | `string` | `' / '` |  |
+| format-label | 自定义已选路径的展示内容 | `(options: CascaderOption[]) => string` | `-` |  |
+| trigger-props | 下拉菜单触发器属性 | `TriggerProps` | `-` |  |
 | check-strictly | 是否开启严格选择模式 | `boolean` | `false` |  |
-| load-more | 数据懒加载函数，传入时开启懒加载功能 | `(  option: CascaderOption,  done: (children?: CascaderOption[]) => void) => void` | `-` | 2.13.0 |
+| load-more | 数据懒加载函数 | `(option: CascaderOption, done: (children?: CascaderOption[]) => void) => void` | `-` | 2.13.0 |
 | loading | 是否为加载中状态 | `boolean` | `false` | 2.15.0 |
-| search-option-only-label | 搜索下拉菜单中的选项是否仅展示标签 | `boolean` | `false` | 2.18.0 |
+| search-option-only-label | 搜索面板是否只展示末级标签 | `boolean` | `false` | 2.18.0 |
 | search-delay | 触发搜索事件的延迟时间 | `number` | `500` | 2.18.0 |
-| field-names | 自定义 `CascaderOption` 中的字段 | `CascaderFieldNames` | `-` | 2.22.0 |
-| value-key | 用于确定选项键值的属性名 | `string` | `'value'` | 2.29.0 |
-| fallback | 自定义不存在选项的值的展示 | `boolean\| ((    value:      \| string      \| number      \| Record<string, unknown>      \| (string \| number \| Record<string, unknown>)[]  ) => string)` | `true` | 2.29.0 |
+| field-names | 自定义字段映射 | `CascaderFieldNames` | `-` | 2.22.0 |
+| value-key | 对象值用于确定 key 的字段 | `string` | `'value'` | 2.29.0 |
+| fallback | 自定义不存在选项值的展示 | `boolean \| ((value: CascaderOptionValue \| CascaderOptionValue[]) => string)` | `true` | 2.29.0 |
 | expand-child | 是否展开子菜单 | `boolean` | `false` | 2.29.0 |
-| virtual-list-props | 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps) | `VirtualListProps` | `-` | 2.49.0 |
+| virtual-list-props | 虚拟列表配置 | `VirtualListProps` | `-` | 2.49.0 |
 | tag-nowrap | 标签内容不换行 | `boolean` | `false` | 2.56.1 |
 
 ### `<cascader>` Events
 
-| 事件名 | 描述 | 参数 |
-| --- | --- | --- |
-| change | 选中值改变时触发 | value: `string \| number \| (string \| number \| (string \| number)[])[] \| undefined` |
-| input-value-change | 输入值改变时触发 | value: `string` |
-| clear | 点击清除按钮时触发 | - |
-| search | 用户搜索时触发 | value: `string` |
-| popup-visible-change | 下拉框的显示状态改变时触发 | visible: `boolean` |
-| focus | 获得焦点时触发 | ev: `FocusEvent` |
-| blur | 失去焦点时触发 | ev: `FocusEvent` |
+| 事件名               | 描述                       | 参数                        |
+| -------------------- | -------------------------- | --------------------------- |
+| update:modelValue    | `v-model` 更新事件         | value: `CascaderModelValue` |
+| update:value         | `value` 兼容别名的更新事件 | value: `CascaderModelValue` |
+| change               | 选中值改变时触发           | value: `CascaderModelValue` |
+| input-value-change   | 输入值改变时触发           | value: `string`             |
+| clear                | 点击清除按钮时触发         | -                           |
+| search               | 用户搜索时触发             | value: `string`             |
+| update:popup-visible | 弹层显隐更新事件           | visible: `boolean`          |
+| popup-visible-change | 弹层显隐变化时触发         | visible: `boolean`          |
+| update:show          | `show` 兼容别名的更新事件  | visible: `boolean`          |
+| showChange           | `show` 兼容别名的变化事件  | visible: `boolean`          |
+| focus                | 获得焦点时触发             | ev: `FocusEvent`            |
+| blur                 | 失去焦点时触发             | ev: `FocusEvent`            |
 
 ### `<cascader>` Slots
 
-| 插槽名       |         描述         | 参数                   | 版本   |
-| ------------ | :------------------: | ---------------------- | :----- |
-| label        |   选择框的显示内容   | data: `CascaderOption` | 2.18.0 |
-| prefix       |       前缀元素       | -                      | 2.23.0 |
-| arrow-icon   |   选择框的箭头图标   | -                      | 2.16.0 |
-| loading-icon |  选择框的加载中图标  | -                      | 2.16.0 |
-| search-icon  |   选择框的搜索图标   | -                      | 2.16.0 |
+| 插槽名       | 描述                 | 参数                   | 版本   |
+| ------------ | -------------------- | ---------------------- | :----- |
+| label        | 选择框的显示内容     | data: `CascaderOption` | 2.18.0 |
+| option       | 自定义选项内容       | data: `CascaderOption` | 2.18.0 |
+| prefix       | 前缀元素             | -                      | 2.23.0 |
+| arrow-icon   | 选择框箭头图标       | -                      | 2.16.0 |
+| loading-icon | 选择框加载图标       | -                      | 2.16.0 |
+| search-icon  | 选择框搜索图标       | -                      | 2.16.0 |
 | empty        | 选项为空时的显示内容 | -                      | 2.23.0 |
-| option       |       选项内容       | data: `CascaderOption` | 2.18.0 |
 
 ### `<cascader-panel>` Props
 
 | 参数名 | 描述 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | :-: | :-- |
 | path-mode | 绑定值是否为路径 | `boolean` | `false` |  |
-| multiple | 是否为多选状态（多选模式默认开启搜索） | `boolean` | `false` |  |
-| model-value **(v-model)** | 绑定值 | `string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined` | `-` |  |
-| default-value | 默认值（非受控状态） | `string\| number\| Record<string, any>\| (    \| string    \| number    \| Record<string, any>    \| (string \| number \| Record<string, any>)[]  )[]\| undefined` | `'' \| undefined \| []` |  |
+| multiple | 是否为多选状态 | `boolean` | `false` |  |
+| model-value **(v-model)** | 绑定值 | `CascaderModelValue` | `-` |  |
+| value **(v-model:value)** | `model-value` 的兼容别名 | `CascaderModelValue` | `-` |  |
+| default-value | 默认值（非受控状态） | `CascaderModelValue` | `'' \| undefined \| []` |  |
 | options | 级联选择器的选项 | `CascaderOption[]` | `[]` |  |
-| expand-trigger | 展开下一级的触发方式 | `string` | `'click'` |  |
+| expand-trigger | 展开下一级的触发方式 | `'click' \| 'hover'` | `'click'` |  |
 | check-strictly | 是否开启严格选择模式 | `boolean` | `false` |  |
-| load-more | 数据懒加载函数，传入时开启懒加载功能 | `(  option: CascaderOption,  done: (children?: CascaderOption[]) => void) => void` | `-` | 2.13.0 |
-| field-names | 自定义 `CascaderOption` 中的字段 | `CascaderFieldNames` | `-` | 2.22.0 |
-| value-key | 用于确定选项键值的属性名 | `string` | `'value'` | 2.29.0 |
+| load-more | 数据懒加载函数 | `(option: CascaderOption, done: (children?: CascaderOption[]) => void) => void` | `-` | 2.13.0 |
+| field-names | 自定义字段映射 | `CascaderFieldNames` | `-` | 2.22.0 |
+| value-key | 对象值用于确定 key 的字段 | `string` | `'value'` | 2.29.0 |
 | expand-child | 是否展开子菜单 | `boolean` | `false` | 2.29.0 |
 
 ### `<cascader-panel>` Events
 
-| 事件名 | 描述 | 参数 |
-| --- | --- | --- |
-| change | 选中值改变时触发 | value: `string \| number \| (string \| number \| (string \| number)[])[] \| undefined` |
+| 事件名            | 描述                       | 参数                        |
+| ----------------- | -------------------------- | --------------------------- |
+| update:modelValue | `v-model` 更新事件         | value: `CascaderModelValue` |
+| update:value      | `value` 兼容别名的更新事件 | value: `CascaderModelValue` |
+| change            | 选中值改变时触发           | value: `CascaderModelValue` |
 
 ### `<cascader-panel>` Slots
 
-| 插槽名 |         描述         | 参数 | 版本   |
-| ------ | :------------------: | ---- | :----- |
+| 插槽名 | 描述                 | 参数 | 版本   |
+| ------ | -------------------- | ---- | :----- |
 | empty  | 选项为空时的显示内容 | -    | 2.23.0 |
 
-### CascaderOption
+### `CascaderOption`
 
-| 参数名 | 描述 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | :-: | :-- |
-| value | 选项值，2.29.0 版本支持对象 | `string \| number \| Record<string, any>` | `-` |  |
-| label | 选项文本 | `string` | `-` |  |
-| render | 自定义渲染 | `RenderFunction` | `-` |  |
-| disabled | 是否禁用 | `boolean` | `false` |  |
-| tagProps | 展示的标签属性 | `TagProps` | `-` | 2.8.0 |
-| children | 下一级选项 | `CascaderOption[]` | `-` |  |
-| isLeaf | 是否是叶子节点 | `boolean` | `false` |  |
+| 参数名   | 描述               | 类型                                          | 默认值  | 版本  |
+| -------- | ------------------ | --------------------------------------------- | :-----: | :---- |
+| value    | 选项值，支持对象值 | `string \| number \| Record<string, unknown>` |   `-`   |       |
+| label    | 选项文本           | `string`                                      |   `-`   |       |
+| disabled | 是否禁用           | `boolean`                                     | `false` |       |
+| tagProps | 多选标签透传属性   | `TagProps`                                    |   `-`   | 2.8.0 |
+| children | 下一级选项         | `CascaderOption[]`                            |   `-`   |       |
+| isLeaf   | 是否为叶子节点     | `boolean`                                     | `false` |       |

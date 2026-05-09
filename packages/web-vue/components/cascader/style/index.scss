@@ -96,9 +96,11 @@ $cascader-prefix-cls: string.unquote('#{theme.$prefix}-cascader');
     &-strictly {
       .#{$cascader-prefix-cls}-option-label {
         padding-left: 0;
+        text-align: start;
       }
 
       .#{$cascader-prefix-cls}-option {
+        width: 100%;
         padding-left: $cascader-padding-item-left;
 
         .#{theme.$prefix}-checkbox,
